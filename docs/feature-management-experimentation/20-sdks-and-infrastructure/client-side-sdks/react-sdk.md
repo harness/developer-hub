@@ -66,7 +66,7 @@ yarn add @splitsoftware/splitio-react
 
 ```html
 <!-- Don't forget to include React script tags before the SDK. More details at https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags  -->
-<script src="//cdn.split.io/sdk/splitio-react-2.2.0.min.js"></script>
+<script src="//cdn.split.io/sdk/splitio-react-2.4.0.min.js"></script>
 
 ```
 
@@ -478,7 +478,7 @@ import { SplitFactoryProvider, useSplitClient, useSplitTreatments } from '@split
 // Assuming this is how the user setup the factory:
 const sdkConfig = {
   core: {
-    authorizationKey: 'YOUR_CLIENT_SIDE_API_KEY',
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
     key: 'nicolas@user'
   }
 };
@@ -543,7 +543,7 @@ import { SplitFactoryProvider, SplitClient, SplitTreatments } from '@splitsoftwa
 // Assuming this is how the user setup the factory:
 const sdkConfig = {
   core: {
-    authorizationKey: 'YOUR_CLIENT_SIDE_API_KEY',
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
     key: 'nicolas@user'
   }
 };
@@ -1385,22 +1385,42 @@ The SDK factory allows you to disable the tracking of events and impressions unt
 
 ### Server-Side Rendering
 
-The SDK follows the rules of the React component lifecycle by correctly handling the SDK factory creation and destroy side-effects and supporting running its components on the server side.
+The SDK follows the rules of React and supports running its components on the server side.
 
-When running server side, the `config` prop of the `SplitFactoryProvider` must be used, and the `factory` prop must remain unassigned. This way, the HTML rendered on the server side will match the first render on the client side, because both sides will conditionally render your components with "no ready" SDK instances. At this point, status properties like `isReady` are `false` and the treatments retrieved using `useSplitTreatments` are `'control'`. Following this state, the SDK factory is initialized on the `SplitFactoryProvider` effect. Thus, the SDK factory will be ready on the client side on a subsequent render, but will not be initialized on the server side.
+When running server side, use the `config` prop of the `SplitFactoryProvider` and leave the `factory` prop unassigned. This way, the HTML rendered on the server side will match the initial render on the client side, and there will not be memory leaks on the server side since it will not synchronize a new SDK instance per request.
 
-Usage for SSR is shown in the following code examples:
+By default, the underlying SDK instance created by the `SplitFactoryProvider` will not be ready on the initial render, but the SDK configuration object accepts an optional `initialRolloutPlan` object to initialize it with a predefined rollout plan.
+
+This way, there are two options for server-side rendering:
+
+- With the SDK not ready on the initial render (default behavior)
+- With the SDK ready on the initial render (using the `initialRolloutPlan` option)
+
+![alt text](./static/react-sdk-rendering-modes.png)
+
+#### SDK not ready on initial render
+
+If the configuration object is not provided with an `initialRolloutPlan` option, the SDK clients will not be ready during the initial component render.
+
+At this point, status properties like `isReady` are `false` and the treatments retrieved using `useSplitTreatments` are `'control'`. Following this state, the SDK factory is initialized on the `SplitFactoryProvider` effect. Thus, the SDK factory will be ready on the client side on a subsequent render, but will not be initialized on the server side.
+
+Code examples:
 
 <Tabs>
 <TabItem value="Vanilla SSR">
 
 ```javascript
 // App.jsx
-const myConfig = { ... }; // SDK configuration object
+const SDK_CONFIG = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'YOUR_TRAFFIC_KEY',
+  }
+};
 
 export const App = () => {
   return (
-    <SplitFactoryProvider config={myConfig} >
+    <SplitFactoryProvider config={SDK_CONFIG} >
       <MyComponentWithFeatureFlags />
     </SplitFactoryProvider>
   )
@@ -1437,13 +1457,18 @@ const root = hydrateRoot(domNode, <App />);
 // pages/index.jsx
 export const getServerSideProps = (async () => {
   ...
-  const myConfig = { ... } // SDK configuration object
-  return { props: { myConfig, ... } }
+  const sdkConfig = {
+    core: {
+      authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+      key: 'YOUR_TRAFFIC_KEY',
+    }
+  }
+  return { props: { sdkConfig, ... } }
 });
 
 export default function Page(props) {
   return (
-    <SplitFactoryProvider config={props.myConfig} >
+    <SplitFactoryProvider config={props.sdkConfig} >
       <MyComponentWithFeatureFlags />
     </SplitFactoryProvider>
   );
@@ -1463,12 +1488,17 @@ export default function Page(props) {
 import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
 
 export default function Providers({ children }) {
-  const [myConfig] = React.useState(() => {
-    return { ... } // SDK configuration object
+  const [sdkConfig] = React.useState(() => {
+    return {
+      core: {
+        authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+        key: 'YOUR_TRAFFIC_KEY',
+      }
+    }
   });
 
   return (
-    <SplitFactoryProvider config={myConfig}>{children}</SplitFactoryProvider>
+    <SplitFactoryProvider config={sdkConfig}>{children}</SplitFactoryProvider>
   );
 };
 
@@ -1489,8 +1519,9 @@ export default function RootLayout({ children }) {
 // app/page.jsx
 import { MyComponentWithFeatureFlags } from './MyComponentWithFeatureFlags';
 
-export default async function Home() {
-  const props = await getAsyncData();
+export default async function Page() {
+  // whatever server-side data you need to pass to your components
+  const props = await fetchData();
 
   return (
     <MyComponentWithFeatureFlags {...props} />
@@ -1518,6 +1549,239 @@ export const MyComponentWithFeatureFlags = (props) => {
 </TabItem>
 </Tabs>
 
+#### SDK ready from cache on initial render
+
+If the configuration object is provided with an `initialRolloutPlan` option, the SDK clients will be **ready from cache** immediately, including the initial component tree render.
+
+At this point, the `isReadyFromCache` status property is `true` and the treatments retrieved using `useSplitTreatments` are based on the feature flag definitions provided in the `initialRolloutPlan` option.
+
+The flow to get the rollout plan snapshot and pass it down to the SDK via the `initialRolloutPlan` configuration option consists on the following steps:
+
+1) Extract the rollout plan snapshot using the `getRolloutPlan` method of the Node.js SDK factory.
+2) Create the SDK configuration object with the `initialRolloutPlan` option.
+3) Serialize and inject the SDK configuration object in the rendered HTML. You can do this manually (see "Vanilla SSR" example below), but Web frameworks generally provide a more convenient way to do this, for example using the `getServerSideProps` function in Next.js (see "Next.js using Pages Router" example below).
+4) Pass the SDK configuration object to the `SplitFactoryProvider` component.
+
+Code examples:
+
+<Tabs>
+<TabItem value="Vanilla SSR">
+
+```javascript
+// MyComponentWithFeatureFlags.jsx
+import { useSplitTreatments } from '@splitsoftware/splitio-react';
+
+const FEATURE_FLAG_NAME = 'test_split';
+
+export const MyComponentWithFeatureFlags = () => {
+  const { treatments, isReady, isReadyFromCache } = useSplitTreatments({ names: [FEATURE_FLAG_NAME] });
+
+  return isReady || isReadyFromCache ?
+    treatments[FEATURE_FLAG_NAME].treatment === 'on' ?
+      <OnComponent /> :
+      <OffComponent /> :
+    <Loading />
+};
+
+// App.jsx
+import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
+import { MyComponentWithFeatureFlags } from './MyComponentWithFeatureFlags';
+
+export const App = ({sdkConfig}) => {
+  return (
+    <SplitFactoryProvider config={sdkConfig} >
+      <MyComponentWithFeatureFlags />
+    </SplitFactoryProvider>
+  )
+};
+
+// server.jsx
+import { renderToString } from 'react-dom/server';
+import { App } from './App';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const serverSideSdk = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  }
+});
+
+app.use('/', (request, response) => {
+  const trafficKey = request.query.trafficKey;
+  const sdkConfig = {
+    core: {
+      // In this example, traffic key is provided as a request query parameter
+      key: trafficKey,
+      authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY'
+    },
+    // Calling `getRolloutPlan` with the configuration traffic key to include its segment memberships
+    initialRolloutPlan: serverSideSdk.getRolloutPlan({ keys: [trafficKey] })
+  };
+
+  const reactHtml = renderToString(<App sdkConfig={sdkConfig} />);
+  response.send(`
+    <!DOCTYPE html>
+    <html>
+      <script>
+        // Inject the SDK configuration properly sanitized to prevent cross-site scripting (XSS) attacks or code injections
+        window.SDK_CONFIG = ${JSON.stringify(sdkConfig).replace(/</g, '\\u003c')}
+      </script>
+      <head><title>My App</title></head>
+      <body><div id="root">${reactHtml}</div></body>
+    </html>
+    <script src="/client.js" async=""></script>
+  `);
+});
+
+// client.jsx, bundled into client.js
+import { hydrateRoot } from 'react-dom/client';
+import { App } from './App'
+
+const domNode = document.getElementById('root');
+
+// pass window.SDK_CONFIG
+const root = hydrateRoot(domNode, <App sdkConfig={window.SDK_CONFIG} />);
+```
+
+</TabItem>
+<TabItem value="Next.js using Pages Router">
+
+```javascript
+// pages/index.jsx
+import { SplitFactoryProvider } from '@splitsoftware/splitio-react'
+import { SplitFactory } from '@splitsoftware/splitio';
+
+let serverSideSdk;
+
+export const getServerSideProps = (async (request) => {
+  if (!serverSideSdk) {
+    serverSideSdk = SplitFactory({
+      core: {
+        authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+      }
+    })
+  }
+
+  await serverSideSdk.client().ready();
+
+  const trafficKey = request.query.trafficKey;
+  const sdkConfig = {
+    core: {
+      // In this example, traffic key is provided as a request query parameter
+      key: trafficKey,
+      authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    },
+    // Calling `getRolloutPlan` with the configuration traffic key to include its segment memberships
+    initialRolloutPlan: serverSideSdk.getRolloutPlan({ keys: [trafficKey] });
+  }
+  return { props: { sdkConfig, ... } }
+});
+
+export default function Page(props) {
+  return (
+    <SplitFactoryProvider config={props.sdkConfig} >
+      <MyComponentWithFeatureFlags />
+    </SplitFactoryProvider>
+  );
+};
+```
+
+</TabItem>
+<TabItem value="Next.js using App Router (v13+)">
+
+```javascript
+// SDK components are traditional "Client" components, so you need to use the 'use client' directive to nest with Server components
+// https://nextjs.org/docs/app/building-your-application/rendering/client-components
+
+// app/providers.jsx
+'use client'
+
+import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
+
+export default function Providers({ children, sdkConfig }) {
+  return (
+    <SplitFactoryProvider config={sdkConfig}>{children}</SplitFactoryProvider>
+  );
+};
+
+// app/layout.jsx
+import { SplitFactory } from '@splitsoftware/splitio';
+import { cookies } from 'next/headers';
+import Providers from './providers';
+
+// In this example, traffic key is stored as a cookie
+const cookieStore = cookies();
+let serverSideSdk;
+
+async function getClientSideConfig() {
+  if (!serverSideSdk) {
+    serverSideSdk = SplitFactory({
+      core: {
+        authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+      }
+    })
+  }
+
+  await serverSideSdk.client().ready();
+
+  const trafficKey = cookieStore.get('trafficKey')?.value || 'anonymous';
+
+  return {
+    core: {
+      key: trafficKey,
+      authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    },
+    // Calling `getRolloutPlan` with the configuration traffic key to include its segment memberships
+    initialRolloutPlan: serverSideSdk.getRolloutPlan({ keys: [trafficKey] })
+  }
+}
+
+export default async function RootLayout({ children }) {
+  const sdkConfig = await getClientSideConfig();
+
+  return (
+    <html lang='en'>
+      <head />
+      <body>
+        <Providers sdkConfig={sdkConfig} >{children}</Providers>
+      </body>
+    </html>
+  );
+};
+
+// app/page.jsx
+import { MyComponentWithFeatureFlags } from './MyComponentWithFeatureFlags';
+
+export default async function Page() {
+  // whatever server-side data you need to pass to your components
+  const props = await fetchData();
+
+  return (
+    <MyComponentWithFeatureFlags {...props} />
+  );
+}
+
+// app/MyComponentWithFeatureFlags.jsx
+'use client'
+
+import { useSplitTreatments } from '@splitsoftware/splitio-react';
+
+const FEATURE_FLAG_NAME = 'test_split';
+
+export const MyComponentWithFeatureFlags = (props) => {
+  const { treatments, isReady, isReadyFromCache } = useSplitTreatments({ names: [FEATURE_FLAG_NAME] });
+
+  return isReady || isReadyFromCache ?
+    treatments[FEATURE_FLAG_NAME].treatment === 'on' ?
+      <OnComponent {...props} /> :
+      <OffComponent {...props} /> :
+    <Loading {...props} />
+};
+```
+
+</TabItem>
+</Tabs>
+
 ### Usage with the React Native SDK
 
 The React SDK can be used in React Native applications by combining it with the React Native SDK. For that, you need to instantiate a factory with the React Native SDK and pass it to the React SDK `SplitFactoryProvider` component. The React SDK will use the factory to create the client and evaluate the feature flags.
@@ -1532,7 +1796,7 @@ import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
 const reactNativeFactory = SplitFactory({
   core: {
     authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
-    key: 'key'
+    key: 'YOUR_TRAFFIC_KEY'
   },
   ...
 });
@@ -1559,7 +1823,7 @@ import { SplitSdk } from "@splitsoftware/splitio-react";
 
 const splitFactory = SplitSdk({
   core: {
-    authorizationKey: 'YOUR_BROWSER_API_KEY',
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
     key: 'key'
   }
 });
@@ -1573,8 +1837,9 @@ const treatment = client.getTreatment("splitName");
 
 The following are example applications showing how you can integrate the React SDK into your code.
 
-* [React](https://github.com/splitio/react-sdk-examples)
-* [React with TypeScript](https://github.com/splitio/react-typescript-sdk-examples)
+* [React single-page-app example](https://github.com/splitio/react-sdk-examples/tree/master/single-page-app)
+* [React server-side rendering example](https://github.com/splitio/react-sdk-examples/tree/master/server-side-rendering)
+* [React single-page app with TypeScript example](https://github.com/splitio/react-typescript-sdk-examples)
 
 ## Troubleshooting
 
