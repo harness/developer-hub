@@ -2,7 +2,7 @@
 
 By default, Harness cache steps don’t preserve inode metadata, which means restored files can appear "new" on every build. This can cause cache growth over time, also called **cache snowballing**.
 
-To address this, Harness supports a `preserveMetadata` flag in **Save Cache** and **Restore Cache** steps.
+To address this, Harness supports a `preserveMetadata` flag, which can be configured as a stage variable `PLUGIN_PRESERVE_METADATA` set to `true`.
 
 #### How it works
 
