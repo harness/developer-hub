@@ -81,7 +81,7 @@ platform:
 
 ### Complete Configuration
 
-To enable read-only root filesystems for all supported services, create an override file named `<HARNESS-READONLY-FILESYSTEM>.yaml`:
+To enable read-only root filesystems for all supported services, create an override file named `<HARNESS_READONLY_FILESYSTEM>.yaml`:
 
 ```yaml
 # Enable read-only root filesystems for all supported Harness services
@@ -150,7 +150,7 @@ Apply the read-only filesystem configuration during your Harness deployment:
 
 ```bash
 helm upgrade <HARNESS_RELEASE_NAME> harness/harness-prod -n <HARNESS_NAMESPACE> \
-  -f <HARNESS-READONLY-FILESYSTEM>.yaml \
+  -f <HARNESS_READONLY_FILESYSTEM>.yaml \
 ```
 This command upgrades your existing Harness installation with read-only root filesystem security enabled for all configured services.
 
