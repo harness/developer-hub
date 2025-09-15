@@ -1,3 +1,9 @@
+---
+title: Harness AI x Gemini CLI 
+description: Leverage Gemini CLI with Harness AI MCP Server to unleash your developer workflows
+sidebar_position: 11
+---
+
 # Harness MCP with Gemini CLI Extension
 
 Harness MCP (Model Context Protocol) integrates seamlessly with **Gemini CLI**, enabling developers to interact with Harness directly from their terminal. With this extension, you can create pipelines, troubleshoot executions, and manage connectors using natural language prompts.
