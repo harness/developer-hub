@@ -1,6 +1,27 @@
 ---
 title: CD onboarding path
 description: Ramp up on Harness CD
+tags:
+  - cd-onboarding
+  - continuous-delivery
+  - cd-pipelines
+  - deployment-strategies
+  - kubernetes-deployment
+  - devops-onboarding
+  - terraform-automation
+  - rbac
+  - approvals
+  - service-definitions
+  - environment-management
+  - triggers
+  - governance
+  - secrets-management
+  - artifacts
+  - templatization
+  - continuous-verification
+  - delegate-installation
+  - onboarding-path
+  - infrastructure-as-code
 sidebar_position: 1
 ---
 
