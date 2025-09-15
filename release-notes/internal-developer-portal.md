@@ -55,7 +55,7 @@ Harness IDP now supports the **[Access Token](https://support.atlassian.com/bitb
 * **Scorecards**: Runs automated checks and computations against repositories fetched from Bitbucket
 
 :::info Bitbucket Connector Limitation
-The Bitbucket connector with **Access Token** authentication does not work with the **[Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)** step in the [IDP stage](/docs/internal-developer-portal/flows/harness-pipeline.md#idp-stage-1). This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens.
+The Bitbucket connector with **Access Token** authentication does not work with the **[Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)** step in the [IDP stage](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1). This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens.
 
 **Workaround**: Use a separate Bitbucket connector with the **[API Token](https://support.atlassian.com/bitbucket-cloud/docs/api-tokens/)** authentication mode for repository creation through Harness Pipelines.
 :::
