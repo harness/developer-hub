@@ -32,7 +32,7 @@ A: Yes, the Harness GitOps Agent supports High Availability and scalability by a
 
 ### Which versions of ArgoCd that the latest version of the GitOps agent support? 
 
-You can find the latest supported ArgoCD versions in the [GitOps Agent Documentation](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent/#what-version-of-gitops-agent-supports-what-version-of-repo-server-and-redis-cache).
+You can find the latest supported ArgoCD versions in the [GitOps Agent Documentation](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#what-version-of-gitops-agent-supports-what-version-of-repo-server-and-redis-cache).
  
 
 ### The GitOps agent updater, can you advise that this will update the Agent, ArgoCD and Redis? Is this also true if use the option to bring our own ArgoCD?
@@ -286,7 +286,7 @@ The insert call creates a new link, but there is an update call that updates as 
 
 ###  How can we address the user's report of a GitOps agent container with errors, specifically the inability to connect to the GitOps server, and the subsequent authentication failures?
 
-The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent/).
+The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent).
 
 ### How can users set up GitOps correctly and avoid configuration errors?  
 Users should ensure:

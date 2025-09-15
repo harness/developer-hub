@@ -278,7 +278,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cd,
           description:
             "Perform GitOps deployments in Harness.",
-          link: "/docs/category/gitops",
+          link: "continuous-delivery/gitops",
           /*children: [
             {
               title: "Overview",
