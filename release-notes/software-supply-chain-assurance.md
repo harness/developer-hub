@@ -18,6 +18,24 @@ These release notes describe recent changes to Harness Supply Chain Security.
 :::
 
 
+## September 2025
+
+### Version: 1.41.0 , Plugin Version: 0.45.0
+
+#### New Features and Enhancements
+
+- Enhanced bulk ingestion of non-container artifacts: the workspace path will now be used as the artifact name in case of [non-container SBOM ingestion](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images).
+
+- Added support for OWASP Top 10 risks: you can now easily identify outdated, unmaintained, and end-of-life components, and create Jira tickets to update package versions.
+
+#### Fixed Issues
+
+- Search filters for code repositories and the license filter on the SBOM page were not working accurately—this is now fixed.
+
+- The total vulnerabilities count on the code repository page is now the correct sum of critical, high, medium, and low severity levels (previously, info level issue were also included).
+
+- Fixed Go-GitHub package parsing issue in GitHub Enterprise URL ([ZD-92576](https://harnesssupport.zendesk.com/agent/tickets/92576))
+
 
 ## August 2025
 
