@@ -1400,9 +1400,9 @@ This way, there are two options for server-side rendering:
 
 #### SDK not ready on initial render
 
-If the configuration object is not provided with an `initialRolloutPlan` option, the SDK clients will not be ready during the initial component render.
+If you don't provide an `initialRolloutPlan` in the configuration, the SDK clients start in an unready state during the initial component render. In this state, status properties like `isReady` are `false`, and `useSplitTreatments` returns `'control'`. 
 
-At this point, status properties like `isReady` are `false` and the treatments retrieved using `useSplitTreatments` are `'control'`. Following this state, the SDK factory is initialized on the `SplitFactoryProvider` effect. Thus, the SDK factory will be ready on the client side on a subsequent render, but will not be initialized on the server side.
+Afterwards, the `SplitFactoryProvider` effect initializes the SDK factory. This factory becomes ready on the client side in a subsequent render but does not initialize on the server side.
 
 Code examples:
 
