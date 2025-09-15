@@ -3,10 +3,10 @@ title: Provider Registry
 description: Learn how to publish and manage custom providers with Harness IaCM's Provider Registry.
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-The Harness IaCM **Provider Registry** allows you to securely publish and distribute <Tooltip text="A OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.">custom providers</Tooltip>. Providers are signed with <Tooltip text="A cryptographic key used to verify the authenticity and integrity of files. In this case, they ensure provider binaries have not been tampered with.">GPG keys</Tooltip>, compiled as <Tooltip text="Executable program files produced after compiling source code (for example, Go or Java). OpenTofu or Terraform uses these binaries to interact with your infrastructure.">binary files</Tooltip> for <Tooltip text="Supported platforms include Darwin/macOS (arm64, amd64), Linux (amd64), and Windows (amd64).">multiple platforms</Tooltip>, and made available for use in [OpenTofu](https://opentofu.org/) or Terraform configurations.
+The Harness IaCM **Provider Registry** allows you to securely publish and distribute <Tooltip id="iacm.provider-registry.custom-provider">custom providers</Tooltip>. Providers are signed with <Tooltip id="iacm.provider-registry.gpg-key">GPG keys</Tooltip>, compiled as <Tooltip id="iacm.provider-registry.binary-files">binary files</Tooltip> for <Tooltip id="iacm.provider-registry.multiple-platforms">multiple platforms</Tooltip>, and made available for use in [OpenTofu](https://opentofu.org/) or Terraform configurations.
 
 - Found under **IaCM > Registry** (alongside [Module Registry](/docs/infra-as-code-management/registry/module-registry) and GPG Keys).
 - Providers are published as **compiled binaries** for supported operating systems like macOS, Linux, or Windows.
@@ -171,7 +171,7 @@ provider "<provider-name>" {
 }
 ```
 
-When you run <Tooltip text="OpenTofu or Terraform command-line tool used to initialize a new or existing Terraform configuration. It downloads and configures providers, modules, and other dependencies.">`init`</Tooltip> command, OpenTofu/Terraform will automatically pull the correct binary for your operating system.
+When you run <Tooltip id="iacm.tf-commands.init">`init`</Tooltip> command, OpenTofu/Terraform will automatically pull the correct binary for your operating system.
 
 ---
 
