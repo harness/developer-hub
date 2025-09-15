@@ -137,6 +137,40 @@ const sidebars: SidebarsConfig = {
             description: "Learn how to manage and optimize cloud costs.",
           },
         },
+        // Application and API Security Posture Page
+        {
+          type: "link",
+          href: "/docs/appsec-security-posture",
+          label: "Application & API Security Posture",
+          className: "sidebar-asp",
+
+          customProps: {
+            description: "Learn how to manage your API Security Posture.",
+          },
+        },
+        // Application and API Runtime Protection Page
+        {
+          type: "link",
+          href: "/docs/appsec-runtime-protection",
+          label: "Application & API Runtime Protection",
+          className: "sidebar-arp",
+
+          customProps: {
+            description: "Learn how to manage your API Runtime Protection.",
+          },
+        },
+        // Application and API Security Testing Page
+        {
+          type: "link",
+          href: "/docs/appsec-security-testing",
+          label: "Application & API Security Testing",
+          className: "sidebar-ast",
+
+          customProps: {
+            description: "Learn how to manage your API Security Testing.",
+          },
+        },
+        // Security Testing Orchestration Landing Page
         {
           type: "link",
           href: "/docs/security-testing-orchestration",

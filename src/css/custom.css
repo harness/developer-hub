@@ -1266,6 +1266,39 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-asp > div > a::before,
+.sidebar-asp > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_api_security_posture.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-arp > div > a::before,
+.sidebar-arp > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_api_runtime_protection.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ast > div > a::before,
+.sidebar-ast > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_api_security_testing.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-sto > div > a::before,
 .sidebar-sto > a::before {
   content: ' ';

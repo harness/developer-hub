@@ -144,6 +144,18 @@ const config: Config = {
               to: 'docs/cloud-cost-management',
             },
             {
+              label: 'Application & API Security Posture',
+              to: 'docs/appsec-security-posture',
+            },
+            {
+              label: 'Application & API Runtime Protection',
+              to: 'docs/appsec-runtime-protection',
+            },
+            {
+              label: 'Application & API Security Testing',
+              to: 'docs/appsec-security-testing',
+            },
+            {
               label: 'Security Testing Orchestration',
               to: 'docs/security-testing-orchestration',
             },
