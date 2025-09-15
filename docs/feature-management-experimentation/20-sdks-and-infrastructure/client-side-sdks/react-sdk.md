@@ -1557,10 +1557,10 @@ In this state, the `isReadyFromCache` status property is `true` and `useSplitTre
 
 To get the rollout plan snapshot and pass it to the SDK via `initialRolloutPlan`, follow these steps:
 
-1) Extract the rollout plan snapshot using the `getRolloutPlan` method of the Node.js SDK factory.
-2) Create the SDK configuration object with the `initialRolloutPlan` option.
-3) Serialize and inject the SDK configuration object in the rendered HTML. You can do this manually (see "Vanilla SSR" example below), but Web frameworks generally provide a more convenient way to do this, for example using the `getServerSideProps` function in Next.js (see "Next.js using Pages Router" example below).
-4) Pass the SDK configuration object to the `SplitFactoryProvider` component.
+1. Extract the rollout plan snapshot using the Node.js SDK factory's `getRolloutPlan` method.
+1. Create the SDK configuration object with the `initialRolloutPlan` option.
+1. Serialize and inject the SDK configuration object into the rendered HTML. You can do this manually (see the "Vanilla SSR" example below) or use framework-specific methods, like Next.js's `getServerSideProps` function (see the "Next.js using Pages Router" example below).
+1. Pass the SDK configuration object to the `SplitFactoryProvider` component.
 
 Code examples:
 
