@@ -19,7 +19,7 @@ keywords:
 
 Read-only root filesystems strengthen container security by preventing unauthorized modifications to the root filesystem while maintaining full service functionality through dedicated writable volumes.
 
-## Why Enable Read-Only Root Filesystems
+## Why enable read-only root filesystems
 
 Implementing read-only root filesystems provides critical benefits for enterprise environments:
 
@@ -28,14 +28,14 @@ Implementing read-only root filesystems provides critical benefits for enterpris
 
 The implementation automatically creates writable volumes for legitimate write operations (logs, temporary files, caches) at specific mount points like `/tmp` and `/var/log`.
 
-## Supported Services
+## Supported services
 
 Read-only root filesystems are supported for these Harness services:
 
-**Chaos Module:**
+**Chaos module:**
 - `chaos-web`
 
-* **Platform module**
+* **Platform module:**
 
   * `audit-event-streaming`
   * `access-control`
@@ -55,9 +55,9 @@ Read-only root filesystems are supported for these Harness services:
   * `harness-manager`
   * `next-gen-ui`
 
-## Configuration Methods
+## Configuration methods
 
-### Individual Service Configuration
+### Individual service configuration
 
 Enable read-only root filesystem for specific services using Helm overrides:
 
@@ -79,7 +79,7 @@ platform:
       readOnlyRootFilesystem: true
 ```
 
-### Complete Configuration
+### Complete configuration
 
 To enable read-only root filesystems for all supported services, create an override file named `readonly-filesystem-override.yaml` and add the following configuration:
 
