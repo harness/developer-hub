@@ -1389,7 +1389,7 @@ The SDK follows the rules of React and supports running its components on the se
 
 When running the SDK server side, use the `config` prop of the `SplitFactoryProvider` and leave the `factory` prop unassigned. This ensures the HTML rendered on the server matches the initial client render and prevents memory leaks by avoiding a new SDK instance per request.
 
-By default, the underlying SDK instance created by the `SplitFactoryProvider` will not be ready on the initial render, but the SDK configuration object accepts an optional `initialRolloutPlan` object to initialize it with a predefined rollout plan.
+By default, the `SplitFactoryProvider` creates an SDK instance that isn't ready on the initial render. You can pass an optional `initialRolloutPlan` object in the SDK configuration to initialize it with a predefined rollout plan.
 
 This way, there are two options for server-side rendering:
 
