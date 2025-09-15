@@ -171,7 +171,7 @@ provider "<provider-name>" {
 }
 ```
 
-When you run <Tooltip id="iacm.tf-commands.init">`init`</Tooltip> command, OpenTofu/Terraform will automatically pull the correct binary for your operating system.
+When you run the <Tooltip id="iacm.tf-commands.init">init</Tooltip> command, OpenTofu/Terraform will automatically pull the correct binary for your operating system.
 
 ---
 
