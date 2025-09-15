@@ -1520,7 +1520,7 @@ export default function RootLayout({ children }) {
 import { MyComponentWithFeatureFlags } from './MyComponentWithFeatureFlags';
 
 export default async function Page() {
-  // whatever server-side data you need to pass to your components
+  // Any additional server-side data you need to pass to your components
   const props = await fetchData();
 
   return (
@@ -1610,7 +1610,7 @@ app.use('/', (request, response) => {
   const trafficKey = request.query.trafficKey;
   const sdkConfig = {
     core: {
-      // In this example, traffic key is provided as a request query parameter
+      // In this example, traffic key is provided via a request query parameter
       key: trafficKey,
       authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY'
     },
@@ -1667,7 +1667,7 @@ export const getServerSideProps = (async (request) => {
   const trafficKey = request.query.trafficKey;
   const sdkConfig = {
     core: {
-      // In this example, traffic key is provided as a request query parameter
+      // In this example, traffic key is provided via a request query parameter
       key: trafficKey,
       authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
     },
@@ -1709,7 +1709,7 @@ import { SplitFactory } from '@splitsoftware/splitio';
 import { cookies } from 'next/headers';
 import Providers from './providers';
 
-// In this example, traffic key is stored as a cookie
+// In this example, traffic key is provided via a cookie
 const cookieStore = cookies();
 let serverSideSdk;
 
@@ -1753,7 +1753,7 @@ export default async function RootLayout({ children }) {
 import { MyComponentWithFeatureFlags } from './MyComponentWithFeatureFlags';
 
 export default async function Page() {
-  // whatever server-side data you need to pass to your components
+  // Any additional server-side data you need to pass to your components
   const props = await fetchData();
 
   return (
