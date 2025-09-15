@@ -5,19 +5,15 @@ sidebar_label: Notifications for Exemptions
 sidebar_position: 63
 --- 
 
-
 The STO module is integrated with the [Harness Platform's notification system](/docs/platform/notifications/notification-settings/) to keep you informed about key events in the lifecycle of an issue exemption. You can configure notification rules to send alerts to individuals or groups via various channels like **Email**, **Microsoft Teams**, **Slack**, **PagerDuty**, or **Webhook**. You can set up notifications for the following events:
 
 - [Notify on Exemption Requested](#exemption-requested)
 - [Notify on Exemption Status Changed](#exemption-status-changed)
 
-:::note
-To use this feature, you need to have two feature flags enabled:
+<DocVideo src="https://youtu.be/f5JyySFQG4E?si=5dx7B6IxwvuFNB6I" />
 
-- **`PL_CENTRAL_NOTIFICATIONS`**: This flag enables the central notification system on the Harness Platform.
-- **`STO_EXEMPTION_NOTIFICATION`**: This flag enables STO exemptions support within the notification system.
-
-If you’d like to use this feature, please contact [Harness Support](mailto:support@harness.io) to enable these flags for your account. 
+:::info 
+This feature is behind a Feature Flag `PL_CENTRAL_NOTIFICATIONS`. This flag enables the central notification system on the Harness Platform. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 ## How to Configure Notifications for Exemption Events

@@ -106,6 +106,17 @@ For more information about CE services and how they are tracked, go to [Service 
 </details>
 
 <details>
+<summary>Harness Database DevOps (DB DevOps) Instances</summary>
+
+Harness Database DevOps is a database lifecycle and deployment management module that licenses consumption on a **per Database Instance** basis under the dev360 model.  
+
+Each provisioned DB Instance is considered a licensed unit and consumes one DB Instance entitlement; pricing scales with the number of deployed instances. Subscription details (plan type, subscribed instance limits, start & expiry dates, and live usage metrics) are available in **Account Settings → Subscriptions**. 
+
+For purchases, add-ons, or assistance with renewal or sizing, contact the [Harness Sales Team](https://www.harness.io/company/contact-sales) or open a ticket via the [Harness Support Portal](https://support.harness.io).  
+
+</details>
+
+<details>
 <summary>Infrastructure as Code Management (IACM) Executions</summary>
 
 An IACM **Execution** is counted as every successful IACM stage execution that uses an Infrastructure Provider's `apply` command (such as `terraform apply`) and results in resource changes.

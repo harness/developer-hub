@@ -31,7 +31,7 @@ This tutorial uses publicly-available code and images. You need a Harness accoun
 
 :::info
 
-The Kubernetes cluster build infrastructure option is available with Harness CI Team and Enterprise plans only. For Free plans, try the [Harness Cloud build infrastructure tutorial](/docs/continuous-integration/get-started/tutorials).
+The Kubernetes cluster build infrastructure option is available with Harness CI Team and Enterprise plans only. For Free plans, try the [Harness Cloud build infrastructure tutorial](/docs/continuous-integration/get-started/onboarding-guide).
 
 :::
 

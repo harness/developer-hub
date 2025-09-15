@@ -48,8 +48,10 @@ const config: Config = {
   },
 
   future: {
+    v4: true,
     experimental_faster: true,
   },
+
 
   presets: [
     [
@@ -278,6 +280,10 @@ const config: Config = {
             {
               label: 'Software Engineering Insights',
               to: 'university/sei',
+            },
+              {
+              label: 'Traceable by Harness',
+              to: 'university/traceable-by-harness',
             },
             {
               label: 'Virtual Instructor-Led Calendar',
