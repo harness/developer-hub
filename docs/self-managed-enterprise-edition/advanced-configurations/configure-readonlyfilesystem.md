@@ -32,8 +32,9 @@ The implementation automatically creates writable volumes for legitimate write o
 
 Read-only root filesystems are supported for these Harness services:
 
-**Chaos module:**
-- `chaos-web`
+* **Chaos module:**
+
+  * `chaos-web`
 
 * **Platform module:**
 
