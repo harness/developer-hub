@@ -38,21 +38,21 @@ A component is considered outdated when its current version is lower than the la
 
 <DocImage path={require('./static/outdated.png')} width="80%" height="80%" title="Click to view full size image" />
 
-### Unmaintained Components (OSS Risk - 4):
-
-An unmaintained component is one that has not received any version upgrades in the past year. In the SBOM tab, such components are marked with an alert symbol. Create a [Jira ticket](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#create-jira-ticket) to replace it with an alternative component.
-
-<DocImage path={require('./static/unmaintained.png')} width="80%" height="80%" title="Click to view full size image" />
-
 ### Vulnerabilities in SBOM Components (OSS Risk - 1):
 
 After you run the SBOM orchestration step followed by the STO Snyk scan, the SBOM tab displays vulnerabilities for the components identified by Snyk. This helps you effectively identify and prioritize open source risks
 
 
-
 You can also filter out the components, based on the OWASP Top 10 Risks.
 
-<DocImage path={require('./static/owasp-filters.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/snyk.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
+### Unmaintained Components (OSS Risk - 4):
+
+An unmaintained component is one that has not received any version upgrades in the past year. In the SBOM tab, such components are marked with an alert symbol. Create a [Jira ticket](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#create-jira-ticket) to replace it with an alternative component.
+
+<DocImage path={require('./static/unmaintained.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
 ### Close to End of Life Components

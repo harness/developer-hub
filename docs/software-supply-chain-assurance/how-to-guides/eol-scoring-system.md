@@ -6,7 +6,7 @@ sidebar_position: 112
 ---
 
 
-**EOL Compenent:** A component is considered End of Life (EOL) when it is no longer maintained or officially deprecated, making it risky to rely on in production.
+**EOL Component:** A component is considered End of Life (EOL) when it is no longer maintained or officially deprecated, making it risky to rely on in production.
 
 **Close to EOL Component:** A component is considered Close to EOL when warning signals (such as declining maintenance, lack of updates, or security issues) indicate that it may soon reach EOL.
 
