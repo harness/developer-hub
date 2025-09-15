@@ -23,11 +23,13 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 ### Version: 1.39.0 , Plugin Version: 0.44.0
 
+
+
 #### New features and enhancements
 
 - Added support for [Ingestion of SBOM for non-container artifacts](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images).
 - Added support for secure connect for all the SCS plugins ([ZD-87724](https://harnesssupport.zendesk.com/agent/tickets/87724)).
-- SBOM score for an artifact can now be downloaded via API.
+- SBOM score for an artifact can now be downloaded via [API](https://apidocs.harness.io/openapi-merged/sbom/getsbomscoreforartifact).
 
 #### Fixed Issues
 
