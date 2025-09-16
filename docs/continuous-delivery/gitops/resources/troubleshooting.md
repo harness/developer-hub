@@ -5,6 +5,7 @@ sidebar_label: Troubleshooting
 sidebar_position: 1200
 redirect_from:
   - /docs/continuous-delivery/gitops/gitops-ref/troubleshooting
+  - /docs/continuous-delivery/gitops/troubleshooting
 ---
 
 This documentation lists issues encountered when installing and using Harness GitOps and describes how to resolve them.

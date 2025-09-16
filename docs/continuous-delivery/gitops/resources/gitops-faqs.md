@@ -1,6 +1,8 @@
 ---
 title: GitOps FAQs
 description: Frequently asked questions about Harness GitOps.
+redirect_from:
+  - /docs/continuous-delivery/gitops/gitops-faqs 
 sidebar_position: 1100
 ---
 

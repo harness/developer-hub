@@ -713,4 +713,4 @@ Consequently, if there is a HA agent running 5 pods, all of the pods would send 
 
 * [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
 * [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart)
-* [Troubleshooting](/docs/continuous-delivery/gitops/troubleshooting)
+* [Troubleshooting](/docs/continuous-delivery/gitops/resources/troubleshooting)

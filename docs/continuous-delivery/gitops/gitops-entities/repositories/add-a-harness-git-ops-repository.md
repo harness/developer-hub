@@ -80,7 +80,7 @@ You can use any Git provider or [Harness Code Repository](/docs/code-repository)
    * **Use a Credentials Template**
       - Select the GitOps credentials template to use.
         
-        For details, go to [Harness GitOps Repository Credentials Template](/docs/continuous-delivery/gitops/repositories/add-harness-git-ops-repository-credentials-template).
+        For details, go to [Harness GitOps Repository Credentials Template](/docs/continuous-delivery/gitops/gitops-entities/repositories/add-harness-git-ops-repository-credentials-template).
 
         If you use a repository credentials template for GitOps repository authentication, then the repository path in the GitOps repository must be a subfolder of the repository path in the repository credentials template.
 
@@ -142,7 +142,7 @@ You can use any Git provider or [Harness Code Repository](/docs/code-repository)
    * **Use a Credentials Template**
       - Select the GitOps credentials template to use.
 
-        For details, go to [Harness GitOps Repository Credentials Template](/docs/continuous-delivery/gitops/repositories/add-harness-git-ops-repository-credentials-template).
+        For details, go to [Harness GitOps Repository Credentials Template](/docs/continuous-delivery/gitops/gitops-entities/repositories/add-harness-git-ops-repository-credentials-template).
 
         If you use a repository credentials template for GitOps repository authentication, then the repository path in the GitOps repository must be a subfolder of the repository path in the repository credentials template.
 
