@@ -14,7 +14,7 @@ export default function ASP() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_api_security_posture.svg`} />
+            <img src={`${baseUrl}img/icon-api-security-posture.svg`} />
             <h1>Application & API Security Posture</h1>
           </div>
           <div className={styles.btnContainer}>

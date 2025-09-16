@@ -14,7 +14,7 @@ export default function AST() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_api_security_testing.svg`} />
+            <img src={`${baseUrl}img/icon-api-security-testing.svg`} />
             <h1>Application & API Security Testing</h1>
           </div>
           <div className={styles.btnContainer}>

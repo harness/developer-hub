@@ -14,7 +14,7 @@ export default function ARP() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_api_runtime_protection.svg`} />
+            <img src={`${baseUrl}img/icon-api-runtime-protection.svg`} />
             <h1>Application & API Runtime Protection</h1>
           </div>
           <div className={styles.btnContainer}>

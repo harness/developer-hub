@@ -1344,7 +1344,7 @@ figure p {
   height: 24px;
   min-width: 24px;
   margin-right: 8px;
-  background-image: url('/img/icon_api_security_posture.svg');
+  background-image: url('/img/icon-api-security-posture.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1355,7 +1355,7 @@ figure p {
   height: 24px;
   min-width: 24px;
   margin-right: 8px;
-  background-image: url('/img/icon_api_runtime_protection.svg');
+  background-image: url('/img/icon-api-runtime-protection.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1366,7 +1366,7 @@ figure p {
   height: 24px;
   min-width: 24px;
   margin-right: 8px;
-  background-image: url('/img/icon_api_security_testing.svg');
+  background-image: url('/img/icon-api-security-testing.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
