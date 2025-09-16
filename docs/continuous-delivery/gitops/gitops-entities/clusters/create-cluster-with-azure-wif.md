@@ -1,6 +1,8 @@
 ---
 title: Create a GitOps Cluster with Azure Workload Identity Federation (WIF)
 description: Connect Harness GitOps (Argo CD) to Azure Kubernetes Service (AKS) using Workload Identity Federation for secure, keyless authentication.
+redirect_from:
+  - /docs/continuous-delivery/gitops/clusters/create-cluster-with-azure-wif
 sidebar_position: 2
 ---
 

@@ -4,6 +4,7 @@ description: This topic describes how to create a Harness GitOps Agent Operator 
 sidebar_position: 7
 redirect_from:
   - /docs/continuous-delivery/gitops/connect-and-manage/gitops-agent-with-openshift-operator
+  - /docs/continuous-delivery/gitops/agents/gitops-agent-with-openshift-operator
 ---
 
 # Harness GitOps Agent Operator for OpenShift
