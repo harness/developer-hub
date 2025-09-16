@@ -291,4 +291,4 @@ Here's the process:
 
 This topic explained how a CD pipeline execution uses Harness entities and settings at runtime.
 
-For more information on creating CD pipelines, go to [CD tutorials](/docs/category/cd-and-gitops-tutorials).
+For more information on creating CD pipelines, go to [CD tutorials](/docs/category/cd-tutorials).

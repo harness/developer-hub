@@ -388,7 +388,7 @@ All Harness documentation can be found at [https://developer.harness.io](https:/
    - [Harness CD Key Concepts](/docs/continuous-delivery/get-started/key-concepts) 
    - [CD Pipeline Modeling Overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview)
 2. Technical Training
-   - [Tutorials](/docs/category/cd-and-gitops-tutorials). Harness offers a wide variety of tutorials to help users get started.
+   - [Tutorials](/docs/category/cd-tutorials). Harness offers a wide variety of tutorials to help users get started.
    - [University](https://developer.harness.io/university/continuous-delivery/). Harness has certifications to help train and certify your developers with Harness CD.
 3. Ramp Up Guides.
    * [New users](https://developer.harness.io/docs/category/new-users)
