@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/dbdevops-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/dbdevops-certification-admin-review-guide.md";
-//import DeveloperCertificationExamDetails from "./data/dbdevops-certification-developer-exam-details.md";
-//import DeveloperCertificationReviewGuide from "./data/dbdevops-certification-developer-review-guide.md";
+// import DeveloperCertificationExamDetails from "./data/dbdevops-certification-developer-exam-details.md";
+// import DeveloperCertificationReviewGuide from "./data/dbdevops-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/dbdevops-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/dbdevops-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -17,17 +17,17 @@ import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_badge.svg`,
+    img: `${url}img/cert_dev_dbdo_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_badge.svg`,
+    img: `${url}img/cert_adm_dbdo_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_badge.svg`,
+    img: `${url}img/cert_arc_dbdo_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
@@ -269,10 +269,11 @@ export default function CertificationsDBDEVOPS() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Database DevOps - Developer
+                      Database DevOps - Developer (BETA COMING
+                      SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_badge.svg`}
+                      src={`${baseUrl}img/cert_dev_dbdo_badge.svg`}
                       alt="Harness Certified Expert - DBDevOps Developer"
                       className={styles.badge}
                     />
@@ -351,7 +352,7 @@ export default function CertificationsDBDEVOPS() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_badge.svg`}
+                      src={`${baseUrl}img/cert_adm_dbdo_badge.svg`}
                       alt="Harness Certified Expert - DBDevOps Administrator"
                       className={styles.badge}
                     />
@@ -363,7 +364,7 @@ export default function CertificationsDBDEVOPS() {
                   <div className={styles.right}>
                     {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to implement chaos
+                    Assesses the fundamental skills to implement DB DevOps
                     in your projects and the overall Harness Platform. This
                     exam builds upon the{" "}
                     <a href="/university/database-devops?lvl=developer">
@@ -439,7 +440,7 @@ export default function CertificationsDBDEVOPS() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_badge.svg`}
+                      src={`${baseUrl}img/cert_arc_dbdo_badge.svg`}
                       alt="Harness Certified Expert - DB DevOps Architect"
                       className={styles.badge}
                     />

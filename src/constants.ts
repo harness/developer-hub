@@ -28,6 +28,10 @@ export enum MODULES {
   opensource = 'opensource',
   fme = 'fme',
   ata = 'ata',
+  adra = 'adra',
+  arp = 'arp',
+  ast = 'ast',
+  tbh = 'tbh'
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -59,6 +63,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.opensource]: 'Open Source',
     [MODULES.fme]: 'Feature Management & Experimentation',
     [MODULES.ata]: 'AI Test Automation',
+    [MODULES.tbh]: 'Traceable by Harness',
 }
 
 export const MODULE_ICON = {
@@ -89,4 +94,5 @@ export const MODULE_ICON = {
     [MODULES.opensource]: 'img/icon_opensource.svg',
     [MODULES.fme]: 'img/icon_fme.svg',
     [MODULES.ata]: 'img/logo-ata.svg',
+    [MODULES.tbh]: 'img/icon_tbh.svg',
 }

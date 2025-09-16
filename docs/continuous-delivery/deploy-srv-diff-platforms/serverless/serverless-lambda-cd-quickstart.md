@@ -212,11 +212,24 @@ import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 ## Serverless framework support
 
 - Harness supports Serverless framework 1.82 and later.
-- Harness supports Serverless framework CLI versions 2.x.x and 3.x.x.
+- Harness supports Serverless framework CLI versions 2.x.x, 3.x.x, and 4.18.0.
 - Harness supports all language runtimes that Serverless supports.
 - Harness supports ZIP files and Docker image artifacts only.
   - ZIP files are supported with JFrog Artifactory.
   - Docker images are supported with AWS ECR.
+
+### Serverless V4 Support
+
+:::warning Breaking Change
+Serverless V4 CLI requires authentication. This means that any CLI based scripts are processes will require an extra input. This means upgrading to V4 could be a breaking change for your pipeline.
+:::
+
+**Features:**
+- Authenticate using the environment variable `SERVERLESS_ACCESS_KEY`.
+- You can rollback from V4 back to V3 in case something goes wrong. 
+- Supports the use of the Node.js 22 runtime. 
+
+It is not recommended to switch to Serverless V4 for existing deployments using Serverless V3.
 
 ### Containerized step images
 
@@ -245,6 +258,7 @@ There are two flavours of images available first with serverless installed and o
 
 | **Runtimes** | **With Serverless Installed** | **Without Serverless Installed** | **Version** |
 | --- | --- | --- | --- |
+| **nodejs 22** | [harness/serverless-plugin:nodejs22.x-4.18.0-1.2.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-4.18.0-1.2.0-beta-linux-amd64/images/sha256-2bd10a0834c9b05f15e99f95cafda1cae27697d9d917a81dd41aedf03ac98c78) | [harness/serverless-plugin:nodejs22.x-1.2.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-1.2.0-beta-linux-amd64/images/sha256-d971db057ff3cdca07baff9fad550945c819bc4f867193c0665e4f3254355e19) | nodejs v22.14.0 |
 | **nodejs 22** | [harness/serverless-plugin:nodejs22.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-aea2e5f4bea0d55cc54f98530910a95ec056474de5fc4a3e4f993e43a351bcbf) | [harness/serverless-plugin:nodejs22.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-1.1.0-beta-linux-amd64/images/sha256-745550b16c387abd32d9d4db9c91170649ddb0632b2151c86a60ba7ad346a38a) | nodejs v22.14.0 |
 | **nodejs 20** | [harness/serverless-plugin:nodejs20.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs20.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-87c380c39159ee07fc96eb1544acd54f16c40c7fe05475921d56e4b0ca644517) | [harness/serverless-plugin:nodejs20.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs20.x-1.1.0-beta-linux-amd64/images/sha256-f4f5895d2a09b217f5e8a6f25991e9525b0e78756127af161bc195729fc103a2) | nodejs v20.19.0 |
 | **nodejs 18** | [harness/serverless-plugin:nodejs18.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs18.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-a6c80afa3cd0c2f1be0134d25b3c11704fb5d37dac4d487b6140d009eb90d1c6) | [harness/serverless-plugin:nodejs18.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs18.x-1.1.0-beta-linux-amd64/images/sha256-205eec0eeb5e8e41658c0d1ab02bd069a2cf757df9610bbcdc18fbb7ced89341) | nodejs v18.20.7 |
@@ -254,6 +268,19 @@ There are two flavours of images available first with serverless installed and o
 | **python 3.12** | [harness/serverless-plugin:python3.12-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.12-3.39.0-1.1.0-beta-linux-amd64/images/sha256-617ccd746b0efde9e7ef65addb47e2a7c4845ffe142dd9cb4ca78f8976185c79) | [harness/serverless-plugin:python3.12-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.12-1.1.0-beta-linux-amd64/images/sha256-15888fc51e89a9b70ea36761d4f367a034e7629726d79e71a728d046ab1716b3) | Python 3.12.9 |
 | **python 3.11** | [harness/serverless-plugin:python3.11-3.39.0-1.0.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.11-3.39.0-1.0.0-beta-linux-amd64/images/sha256-47c1e7121d0b0163928c99480bcea106fb59b8c51921844eb5ee0326f3b5a3d2) | [harness/serverless-plugin:python3.11-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.11-1.1.0-beta-linux-amd64/images/sha256-7897343bb1a005b532df4f4204a6641199a89d1cb246a5a7100981d8c7172129) | Python 3.11.11 |
 | **ruby 3.2** | [harness/serverless-plugin:ruby3.2-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/ruby3.2-3.39.0-1.1.0-beta-linux-amd64/images/sha256-c9aa6fe805586b608dc377c747e9046d41825317e7eb7afcfacad3af05dd8f8b) | [harness/serverless-plugin:ruby3.2-1.0.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/ruby3.2-1.0.0-beta-linux-amd64/images/sha256-e564accd3315707dcbf6e04159a3202dba0f05b0484025354490abc1c71d48ba) | ruby 3.2.8 |
+
+:::info Serverless v4 Images
+
+Serverless V4 images are supported for the following types:
+- NodeJS22
+- NodeJS18
+- Python 
+- Ruby 
+- Java
+
+For a full list of the images, go to [serverless plugin repo in Docker Hub](https://hub.docker.com/r/harness/serverless-plugin/tags)
+
+:::
 
 For ECR users, you can access these images via the [ECR Image Repository for Serverless Plugin](https://gallery.ecr.aws/harness/harness/serverless-plugin).
 
@@ -272,6 +299,16 @@ These images can only be used in [containerized step](#containerized-steps).
 :::note
 If you are using images that don't have serverless installed and you wish to install it during the execution, you need to provide us the path where you will be installing your serverless package. You can set the path using environment variable `PLUGIN_SERVERLESS_EXECUTABLE_PATH` in your serverless step.
 :::
+
+### Build your own image
+
+You can also build your own image based on the base image provided by Harness and use it in the Serverless deployments.
+
+**How this pipeline works:**
+
+Harness provides a base image that has the Serverless plugin binary. The pipeline takes a pre-built scratch image containing the Serverless plugin binary and creates a properly tagged final image that combines it with the appropriate runtime.
+
+For an in-depth explanation on how to build your own image, go to [Build your own image](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-image-build).
 
 ## Create the Deploy stage
 
@@ -332,8 +369,8 @@ Next, we can add a `serverless.yaml` for our deployment. We'll use [the publicly
 
 5. Select **Connect through Harness Platform**.
 6. Click **Finish**.
-7. Back in **Specify Serverless Lambda Manifest Store**, click **Continue**.
-8. In **Manifest Details**, enter the following.
+7. Back in **Specify Serverless Lambda Manifest Store**, click **Continue**.
+8. In **Manifest Details**, enter the following.
    - **Manifest Identifier:** `serverless`.
    - **Git Fetch Type:** `Latest from Branch`.
    - **Branch:** `main`.
@@ -963,7 +1000,6 @@ Serverless Package Command succeeded
 
 </details>
 
-
 ### Serverless Deploy step
 
 This step performs the Serverless [deploy command](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy).
@@ -1160,7 +1196,7 @@ Expression support lets you take advantage of runtime inputs and input sets in y
 
 ```yaml
 service: <+service.name>
-frameworkVersion: '2 || 3'
+frameworkVersion: "2 || 3"
 
 provider:
   name: aws
@@ -1171,7 +1207,7 @@ functions:
     events:
       - httpApi:
           path: /tello
-          method: get  
+          method: get
 package:
   artifact: <+artifact.path>          
 plugins:
@@ -1355,7 +1391,7 @@ functions:
           path: /tello
           method: get
 package:
-  artifact: <+artifact.path>
+  artifact: <+artifact.path>          
 plugins:
   - serverless-deployment-bucket@latest
 ```

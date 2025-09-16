@@ -12,6 +12,7 @@
 .certificationsSCS,
 .certificationsCR,
 .certificationsDBDO,
+.certificationsTBH,
 .certificationsPlatform {
   background: url(/img/cert_harness_bg.svg) no-repeat;
   background-position: right;
@@ -352,6 +353,14 @@
         border-color: var(--mod-code-200);
       }
 
+      &.moduleDBDO {
+        border-color: var(--mod-dbdevops-200);
+      }
+
+      &.moduleTBH {
+        border-color: var(--mod-sto-200);
+      }
+
       .certCardContainer {
         display: flex;
         width: 100%;
@@ -401,6 +410,7 @@
               font-size: 16px;
 
               :global {
+
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
@@ -606,6 +616,7 @@
 .certificationsSCS,
 .certificationsCR,
 .certificationsDBDO,
+.certificationsTBH,
 .certificationsPlatform {
   .certDesc {
     margin-top: 80px;
@@ -675,6 +686,7 @@
             font-size: 16px;
 
             :global {
+
               .fa-solid,
               .fa-regular {
                 margin-left: 4px;
@@ -788,6 +800,7 @@
               font-size: 16px;
 
               :global {
+
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
@@ -813,22 +826,32 @@
 
 .certificationsCI {
   background-image: url(/img/cert_ci_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsCD {
   background-image: url(/img/cert_cd_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsFF {
   background-image: url(/img/cert_ff_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsCCM {
   background-image: url(/img/cert_ccm_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsSTO {
   background-image: url(/img/cert_sto_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsSEI {
@@ -863,6 +886,20 @@
 
 .certificationsCE {
   background-image: url(/img/cert_ce_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
+}
+
+.certificationsDBDO {
+  background-image: url(/img/cert_dbdo_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
+}
+
+.certificationsTBH {
+  background-image: url(/img/cert_tbh_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 // .certificationsPlatfrom {
@@ -899,6 +936,7 @@
         font-size: 16px;
 
         :global {
+
           .fa-solid,
           .fa-regular {
             margin-left: 4px;
@@ -928,6 +966,7 @@
 }
 
 @media screen and (max-width: 1344px) {
+
   /* for small desktop */
   .certificationsCI,
   .certificationsCD,
@@ -941,6 +980,8 @@
   .certificationsIACM,
   .certificationsSCS,
   .certificationsCR,
+  .certificationsDBDO,
+  .certificationsTBH,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -958,6 +999,7 @@
 }
 
 @media screen and (max-width: 1199px) {
+
   /* for laptop */
   .university {
     .hero {
@@ -982,6 +1024,8 @@
   .certificationsIACM,
   .certificationsSCS,
   .certificationsCR,
+  .certificationsDBDO,
+  .certificationsTBH,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -1064,6 +1108,7 @@
   .certificationsSCS,
   .certificationsCR,
   .certificationsDBDO,
+  .certificationsTBH,
   .certificationsPlatform {
     padding-top: 36px;
 
@@ -1139,6 +1184,7 @@
 }
 
 @media screen and (max-width: 599px) {
+
   /* for mobile */
   .university,
   .certificationsCI,
@@ -1154,6 +1200,7 @@
   .certificationsSCS,
   .certificationsCR,
   .certificationsDBDO,
+  .certificationsTBH,
   .certificationsPlatform {
     padding: 10px;
     background: none;
@@ -1304,202 +1351,238 @@
         background-image: url(/img/cert_cr_bg.svg);
       }
     }
+
   }
 
-  .hero {
-    .SelfPacedTrainingBg {
-      background-image: none !important;
-    }
-
-    .InstructorLedTrainingBg {
-      background-image: none !important;
-    }
-  }
-}
-
-@media screen and (max-width: 393px) {
-  /* for mobile */
-  .university,
-  .certificationsCI,
-  .certificationsCD,
-  .certificationsFF,
-  .certificationsCCM,
-  .certificationsSRM,
-  .certificationsSTO,
-  .certificationsCE,
-  .certificationsSEI,
-  .certificationsIDP,
-  .certificationsIACM,
-  .certificationsSCS,
-  .certificationsCR,
-  .certificationsDBDO,
-  .certificationsPlatform {
-    background: none;
-    padding: 10px;
-
+  .certificationsDBDO {
     .hero {
       .right {
-        background: url(/img/cert_harness_bg.svg) no-repeat;
-        background-position: center;
-        background-size: cover;
+        background-image: url(/img/cert_dbdo_bg.svg);
+      }
+    }
 
-        img {
-          width: 25%;
-          height: auto;
+    .certificationsTBH {
+      .hero {
+        .right {
+          background-image: url(/img/cert_tbh_bg.svg);
         }
       }
     }
 
-    .tabs {
-      margin-top: 10px;
+    .hero {
+      .SelfPacedTrainingBg {
+        background-image: none !important;
+      }
 
-      .listTabItems {
-        li {
-          padding: 4px 8px !important;
-          font-size: 12px;
+      .InstructorLedTrainingBg {
+        background-image: none !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 393px) {
+
+    /* for mobile */
+    .university,
+    .certificationsCI,
+    .certificationsCD,
+    .certificationsFF,
+    .certificationsCCM,
+    .certificationsSRM,
+    .certificationsSTO,
+    .certificationsCE,
+    .certificationsSEI,
+    .certificationsIDP,
+    .certificationsIACM,
+    .certificationsSCS,
+    .certificationsCR,
+    .certificationsDBDO,
+    .certificationsTBH,
+    .certificationsPlatform {
+      background: none;
+      padding: 10px;
+
+      .hero {
+        .right {
+          background: url(/img/cert_harness_bg.svg) no-repeat;
+          background-position: center;
+          background-size: cover;
+
+          img {
+            width: 25%;
+            height: auto;
+          }
         }
       }
 
-      .certCard {
-        .certCardContainer {
-          justify-content: center;
+      .tabs {
+        margin-top: 10px;
 
-          .right {
+        .listTabItems {
+          li {
+            padding: 4px 8px !important;
+            font-size: 12px;
+          }
+        }
+
+        .certCard {
+          .certCardContainer {
+            justify-content: center;
+
+            .right {
+              .btnContainer {
+                flex-direction: column;
+                gap: 24px;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .certificationsCI,
+    .certificationsCD,
+    .certificationsFF,
+    .certificationsCCM,
+    .certificationsSRM,
+    .certificationsSTO,
+    .certificationsCE,
+    .certificationsSEI,
+    .certificationsIDP,
+    .certificationsIACM,
+    .certificationsSCS,
+    .certificationsCR,
+    .certificationsDBDO,
+    .certificationsTBH,
+    .certificationsPlatform {
+      .certDesc {
+        .certCard {
+          .certCardContainer {
             .btnContainer {
+              margin-top: 32px;
               flex-direction: column;
-              gap: 24px;
-              justify-content: center;
+              gap: 18px;
               align-items: center;
             }
           }
         }
       }
     }
-  }
 
-  .certificationsCI,
-  .certificationsCD,
-  .certificationsFF,
-  .certificationsCCM,
-  .certificationsSRM,
-  .certificationsSTO,
-  .certificationsCE,
-  .certificationsSEI,
-  .certificationsIDP,
-  .certificationsIACM,
-  .certificationsSCS,
-  .certificationsCR,
-  .certificationsDBDO,
-  .certificationsPlatform {
-    .certDesc {
-      .certCard {
-        .certCardContainer {
-          .btnContainer {
-            margin-top: 32px;
-            flex-direction: column;
-            gap: 18px;
-            align-items: center;
-          }
+    .examDetails {
+      .examDetailsCard {
+        .btnContainer {
+          margin-top: 32px;
+          flex-direction: column;
+          gap: 18px;
+          align-items: center;
         }
       }
     }
-  }
 
-  .examDetails {
-    .examDetailsCard {
-      .btnContainer {
-        margin-top: 32px;
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
+    .certificationsCI {
+      .hero {
+        .right {
+          background-image: url(/img/cert_ci_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsCI {
-    .hero {
-      .right {
-        background-image: url(/img/cert_ci_bg.svg);
+    .certificationsCD {
+      .hero {
+        .right {
+          background-image: url(/img/cert_cd_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsCD {
-    .hero {
-      .right {
-        background-image: url(/img/cert_cd_bg.svg);
+    .certificationsFF {
+      .hero {
+        .right {
+          background-image: url(/img/cert_ff_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsFF {
-    .hero {
-      .right {
-        background-image: url(/img/cert_ff_bg.svg);
+    .certificationsCCM {
+      .hero {
+        .right {
+          background-image: url(/img/cert_ccm_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsCCM {
-    .hero {
-      .right {
-        background-image: url(/img/cert_ccm_bg.svg);
+    .certificationsSEI {
+      .hero {
+        .right {
+          background-image: url(/img/cert_sei_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsSEI {
-    .hero {
-      .right {
-        background-image: url(/img/cert_sei_bg.svg);
+    .certificationsIDP {
+      .hero {
+        .right {
+          background-image: url(/img/cert_idp_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsIDP {
-    .hero {
-      .right {
-        background-image: url(/img/cert_idp_bg.svg);
+    .certificationsIACM {
+      .hero {
+        .right {
+          background-image: url(/img/cert_iacm_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsIACM {
-    .hero {
-      .right {
-        background-image: url(/img/cert_iacm_bg.svg);
+    .certificationsSTO {
+      .hero {
+        .right {
+          background-image: url(/img/cert_sto_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsSTO {
-    .hero {
-      .right {
-        background-image: url(/img/cert_sto_bg.svg);
+    .certificationsCE {
+      .hero {
+        .right {
+          background-image: url(/img/cert_ce_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsCE {
-    .hero {
-      .right {
-        background-image: url(/img/cert_ce_bg.svg);
+    .certificationsSCS {
+      .hero {
+        .right {
+          background-image: url(/img/cert_scs_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsSCS {
-    .hero {
-      .right {
-        background-image: url(/img/cert_scs_bg.svg);
+    .certificationsCR {
+      .hero {
+        .right {
+          background-image: url(/img/cert_cr_bg.svg);
+        }
       }
     }
-  }
 
-  .certificationsCR {
-    .hero {
-      .right {
-        background-image: url(/img/cert_cr_bg.svg);
+    .certificationsDBDO {
+      .hero {
+        .right {
+          background-image: url(/img/cert_dbdo_bg.svg);
+        }
+      }
+    }
+
+    .certificationsTBH {
+      .hero {
+        .right {
+          background-image: url(/img/cert_tbh_bg.svg);
+        }
       }
     }
   }

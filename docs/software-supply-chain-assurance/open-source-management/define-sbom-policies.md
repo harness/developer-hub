@@ -5,6 +5,13 @@ sidebar_position: 22
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/define-ssca-policies
   - /docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies
+
+tags:
+  - harness-scs 
+  - sbom-policies
+  - open-source-management
+  - sbom
+    
 ---
 
 When you [create SBOM policies](./create-sbom-policies.md), you define rules for open-source component usage based on criteria such as component name, version, license, PURL, and supplier.

@@ -6,6 +6,21 @@ helpdocs_topic_id: ihboxj8xlz
 helpdocs_category_id: Dxej4ug0n5
 helpdocs_is_private: false
 helpdocs_is_published: true
+tags:
+  - cd-services
+  - license-consumption
+  - service-licensing
+  - active-services
+  - service-instances
+  - custom-deployments
+  - pipelines-with-no-service
+  - subscription-page
+  - improved-service-license-tracking
+  - gitops-service-licensing
+  - service-instance-count
+  - licensing-changes
+  - legacy-licenses
+  - license-transition
 ---
 
 Harness Continuous Delivery & GitOps (CD) module uses 'Services' as a key construct in defining and managing the pieces of software that you want to deploy. Since the core value of the CD module is in deploying these services, most Harness customers either directly license by Services (legacy model) or license by Developers (Developer 360 model) and receive services as an included entitlement. More details on the Developer 360 model are available [here](/docs/platform/get-started/subscriptions-licenses/subscriptions).

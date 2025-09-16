@@ -48,8 +48,10 @@ const config: Config = {
   },
 
   future: {
+    v4: true,
     experimental_faster: true,
   },
+
 
   presets: [
     [
@@ -178,11 +180,23 @@ const config: Config = {
             {
               label: 'Internal Developer Portal',
               to: 'docs/internal-developer-portal',
-            },           
+            },
             {
               label: 'Cloud Development Environments',
               to: 'docs/cloud-development-environments',
             },
+            // {
+            //   label: 'Application & Api Posture Management',
+            //   to: 'docs/application-api-posture-management',
+            // },
+            // {
+            //   label: 'Application & Api Security Testing',
+            //   to: 'docs/application-api-security-testing',
+            // },
+            // {
+            //   label: 'Application & Api Protection',
+            //   to: 'docs/application-api-protection',
+            // },
             {
               label: 'Software Engineering Insights',
               to: 'docs/software-engineering-insights',
@@ -240,6 +254,10 @@ const config: Config = {
               to: 'university/continuous-delivery',
             },
             {
+              label: 'Database DevOps',
+              to: 'university/database-devops',
+            },
+            {
               label: 'Infrastructure as Code Management',
               to: 'university/iacm',
             },
@@ -274,6 +292,10 @@ const config: Config = {
             {
               label: 'Software Engineering Insights',
               to: 'university/sei',
+            },
+              {
+              label: 'Traceable by Harness',
+              to: 'university/traceable-by-harness',
             },
             {
               label: 'Virtual Instructor-Led Calendar',
@@ -519,8 +541,7 @@ const config: Config = {
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
           const sidebarItems = await defaultSidebarItemsGenerator(args);
-          const sidebarItemsWithoutIndex =
-            hideIndexFromSidebarItems(sidebarItems);
+          const sidebarItemsWithoutIndex = hideIndexFromSidebarItems(sidebarItems);
           return sidebarItemsWithoutIndex;
         },
       },
@@ -620,8 +641,7 @@ const config: Config = {
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       type: 'text/css',
-      integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
   ],

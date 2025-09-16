@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-06-27T10:00
+date: 2025-09-12T10:00
 sidebar_position: 13
 ---
 
@@ -21,12 +21,58 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## September 2025
+
+### Version 1.158.0
+
+<!-- 2025-09-12 -->
+
+#### New Features and Enhancements
+
+- STO now integrates with **[GitHub Advanced Security (GHAS)](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security)**. This integration supports the following GHAS products and scan modes:
+  - **CodeQL (SAST):** Identify vulnerabilities in code. Supported in **Orchestration**, **Extraction**, and **Ingestion** scan modes.
+  - **Dependabot (SCA):** Detect vulnerable open-source dependencies. Supported in **Orchestration**, **Extraction**, and **Ingestion** scan modes.
+  - **Secret Scanning:** Detect exposed secrets. Supported in **Extraction** and **Ingestion** scan modes.
+
+  Refer to [GitHub Advanced Security Documentation](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security) for more information.
+
+- STO now supports **Notifications for Exemption Management**. You can configure notifications for exemption-related events such as when an exemption request is created or when its status changes. [View the Documentation on Notifications for Exemptions](https://developer.harness.io/docs/security-testing-orchestration/notifications/exemption-notifications/) and the [Video on Set up Notifications for Exemption Requests](https://youtu.be/f5JyySFQG4E) (currently behind the feature flag `PL_CENTRAL_NOTIFICATIONS`)
+  <DocImage path={require('./static/sto-notification-events.png')} width="100%" height="100%" title="Click to view full size image" />
+
+  <DocVideo src="https://youtu.be/f5JyySFQG4E" title="Set up Notifications for Exemption Requests" />
+
+- You can now **export scan results from the Vulnerabilities tab**. (currently behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY`)
+  - Download results in **CSV format** directly from the **Vulnerabilities** tab.  
+  - Navigate to the **Pipeline Execution Summary Dashboard** from the same tab to export results in **CSV or PDF**. Refer to [Export Scan Results Documentation](https://developer.harness.io/docs/security-testing-orchestration/view-security-test-results/export-scan-results/) for more details.  
+  <DocImage path={require('./static/sto-export-csv.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- Issue descriptions in the **Issue Details** view will now render as a formatted JSON tree when the description is in JSON format. The JSON can be expanded or collapsed for easier viewing (STO-8885, ZD-83369).
+
+  <DocImage path={require('./static/sto-json-issue-desc.png')} width="100%" height="100%" title="Click to view full size image" />
+
+#### Fixed Issues
+
+- Fixed an issue where the **Project Filter** on the Exemptions page (at the Account level) was not correctly filtering exemption data based on the selected project (STO-9669).  
+- For exemptions without a configured baseline target, the **Set in target** button (previously leading to a 404) has been removed. Instead, a direct link to the relevant target on the **Test Targets** page is now provided (STO-9715, STO-9556).  
+  
+  <DocImage path={require('./static/sto-link-to-baseline.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- Fixed an issue where the CSV downloaded from the **Vulnerabilities** tab had empty entries. The CSV data is now correctly populated (STO-9646, STO-9645).  
+- Fixed an error when configuring the **port** in the **ZAP** step’s *Scan Tool* section. Previously, the port had to be entered as a string, causing a save error. The visual editor now correctly treats the port value as an integer or runtime input, and saves without errors (STO-9316).
+
 
 ## August 2025
 
-### Version v1.155.2
+### Version 1.155.2
 
 <!-- 2025-08-29 -->
+
+#### New Feature
+- **Issue** Page is now **Generally Available**.
+This section provides a consolidated view of all security issues affecting your baseline targets, providing a comprehensive list of issues identified across the scans in your Project. This page is currently available only at the **Project** level. Support for **Organization** and **Account** levels will be available soon. Refer to [View and manage baseline issues](/docs/security-testing-orchestration/view-security-test-results/issues) and video on [Introducing Issue Page for AppSec Teams](https://youtu.be/CLqFqmZh2YM) for more details.
+  <DocImage path={require('./static/sto-issues-page.png')} width="100%" height="100%" title="Click to view full size image" />
+
+  <DocVideo src="https://youtu.be/CLqFqmZh2YM" title="Navigating the Issues section" />
 
 #### Fixed Issues
 
@@ -34,16 +80,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Fixed a bug in the **[Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab where applying a filter by **Status** affected the overall severity counts incorrectly. Severity counts now reflect accurate data irrespective of applied filters (STO-9548).    
 - Fixed incorrect project details being shown in the **[Exemption Status](/docs/security-testing-orchestration/exemptions/manage-exemptions)** view inside the Issue Details pane, specifically for exemptions scoped at the project level (STO-9628).  
 - Fixed an issue where filtering by the **[Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions)** card in the **[Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab displayed exempted issues incorrectly. Also resolved a problem where the Dashboard view showed data, but the CSV download returned empty results (STO-9640).  
-- Fixed a bug where exemption requests did not appear in the **[Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions)** page despite the tab showing a pending count. This issue occurred intermittently and is now resolved (STO-, ZD-89459).  
+- Fixed a bug where exemption requests did not appear in the **[Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions)** page despite the tab showing a pending count. This issue occurred intermittently and is now resolved (STO-9411, ZD-89459).
 - Fixed an error (`414 URI Too Long`) caused when selecting a large number of options in the **Project** and **Organization** filters on the [**Exemptions**](/docs/security-testing-orchestration/exemptions/manage-exemptions) page. Filtering now works as expected without errors at both Organization and Account levels (STO-9516, STO-9562).
 
 
-### Version v1.153.3
+### Version 1.153.3
 
 <!-- 2025-08-15 -->
 
 #### New Features and Enhancements
-- Added support for **[Harness Resource Groups](/docs/platform/role-based-access-control/add-resource-groups/)** at the Project, Org, and Account scopes. See the [STO RBAC documentation](/docs/security-testing-orchestration/rbac) and [video on configuring STO RBAC](https://youtu.be/c_JU141TGas) for details (STO-9217).  
+- Added support for **[Harness Resource Groups](/docs/platform/role-based-access-control/add-resource-groups/)** at the Project, Org, and Account scopes. See the [STO RBAC documentation](/docs/security-testing-orchestration/rbac) and [video on configuring STO RBAC](https://youtu.be/c_JU141TGas) for details (STO-9217).
+  <DocImage path={require('./static/sto-rbac.png')} width="100%" height="100%" title="Click to view full size image" />
+
+  <DocVideo src="https://youtu.be/c_JU141TGas" title="How to Configure RBAC Permissions for Harness STO" />  
 - Added a tooltip to the **Create Pull Request** button in [Harness AI recommendations](/docs/security-testing-orchestration/remediations/ai-based-remediations), which displays the reason when the required conditions for opening a pull request are not met (STO-9014).  
 - External ticket badges now indicate when a linked ticket is broken or unclickable (STO-8479, ZD-84689).  
 
@@ -54,7 +103,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## July 2025
 
-### Version v1.150.7
+### Version 1.150.7
 
 <!-- 2025-07-25 -->
 
@@ -67,7 +116,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Fixed an issue in the Vulnerabilities tab where selecting an option from the scanner filter dropdown during a [Custom Scan](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step caused other dropdowns to fail to populate, preventing the target name and variant from rendering correctly (STO-9376, ZD-88728). 
 
 
-### Version v1.148.4
+### Version 1.148.4
 
 <!-- 2025-07-17 -->
 
@@ -86,7 +135,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## June 2025
 
-### Version v1.142.1
+### Version 1.142.1
 
 <!-- 2025-06-12 -->
 
@@ -103,7 +152,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## May 2025
 
-### Version v1.140.1
+### Version 1.140.1
 
 <!-- 2025-05-17 -->
 
@@ -118,7 +167,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## April 2025
 
-### Version v1.136.1
+### Version 1.136.1
 
 <!-- 2025-04-18 -->
 
@@ -129,7 +178,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Fixed an issue where the CVSS score of issues did not match the severity label in some cases (STO-8807).
 - Fixed an issue where Harness AI failed to present remediation details if the cloned codebase did not match the ingested scan result’s repository; remediation is now shown correctly for the ingested repo (STO-8664).
 
-### Version v1.134.1
+### Version 1.134.1
 
 <!-- 2025-04-05 -->
 
@@ -143,7 +192,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2025
 
-### Version v1.130.6
+### Version 1.130.6
 
 <!-- 2025-03-25 -->
 

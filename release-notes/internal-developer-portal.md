@@ -24,7 +24,62 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         |           ⏳| ⏳          | ⏳            |
+| [2025.09.v1](/release-notes/internal-developer-portal#september---202509v1) | ✅        | ✅         | ✅           |           ⏳| ⏳          | ⏳            |
+| [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         | ✅         | ✅          | ✅            |
+
+## September - [2025.09.v1]
+
+### [New Feature] Custom User Groups Entity
+
+Take control of your organizational structure with IDP 2.0's powerful new Custom User Groups! This game-changing feature transforms how teams are represented in your developer portal, bringing your real-world organizational structure into IDP as first-class catalog entities.
+
+![](./static/internal-developer-portal/user-group-overview.png)
+
+**What's in it for you:**
+
+* **True organizational modeling** - Create and manage custom team structures directly in IDP without depending on your identity provider
+* **Powerful ownership attribution** - Make ownership crystal clear across your entire catalog with direct group assignments
+* **Rich contextual metadata** - Add team leads, regions, and critical contact information to each group
+* **Intuitive hierarchical relationships** - Build parent-child connections between teams and departments with automatic bi-directional linking
+* **Complete UI and YAML support** - Create groups through the intuitive UI or via standard YAML definitions
+
+[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group#idp2.0)
+
+
+### [New Feature] GitLab Integration Plugin
+
+Harness IDP now supports integration with [GitLab](/docs/internal-developer-portal/plugins/available-plugins/gitlab) through our new plugin. This integration enables teams to connect their GitLab repositories directly to the Software Catalog, providing seamless access to project information, merge requests, and issue tracking without leaving the developer portal.
+
+![](../docs/internal-developer-portal/plugins/available-plugins/static/gitlabplugin2.png)
+
+### [New Feature] Iframe Embedding in Sidebar Navigation
+
+Harness IDP now supports embedding external web content directly into your sidebar navigation using iframes. This feature allows you to integrate essential resources, documentation, dashboards, and tools directly into your developer portal interface.
+
+* **External Content Integration** - Add documentation, dashboards, or any web content directly in your IDP navigation
+* **Simple YAML Configuration** - Easy to implement with standard sidebar navigation format
+
+#### Example Configuration
+
+```yaml
+- name: SidebarItem
+  type: iframe
+  props:
+    to: iframe/developer_docs
+    text: Developer docs
+    url: https://developer.harness.io/
+```
+
+![](./static/internal-developer-portal/iframe-embedd.png)
+
+[Learn more about embedding iframes in your sidebar](/docs/internal-developer-portal/layout-and-appearance/sidenav#embedding-an-iframe)
+
+### Bug Fixes and Improvements 
+
+* **Jira Plugin Enhancements** - We've made several improvements to the Jira plugin:
+  * **New Components** - Added `EntityJiraActivityStreamCard` for viewing real-time activity streams and `EntityJiraQueryCard` for displaying customized Jira issues based on JQL queries
+  * **Enhanced Annotations** - Added support for `jira/label` to filter issues by specific labels and `jira/all-issues-jql` to define custom JQL queries
+  * Updated conditional display guides with specific conditions for each component type (`isJiraAvailable`, `hasJiraQuery`)
 
 ## August - [2025.08.v1]
 
@@ -33,6 +88,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 Harness Internal Developer Portal (IDP) now integrates with Harness Security Testing Orchestration (STO) to surface real-time vulnerability data directly inside the Software Catalog. Vulnerabilities such as CVEs from static and dynamic scans are displayed alongside services, projects, and components, minimizing context switching and enabling faster triage.
 
 ![](./static/sto-integrated-idp.png)
+
 
 [Learn more about STO integration with IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/sto-integration)
 #### Prerequisites
@@ -221,7 +277,6 @@ The [DX plugin configuration](https://developer.harness.io/docs/internal-develop
 
 
 
-
 ### [New Feature] Harness Feature Management & Experimentation Plugin
 
 Harness IDP now includes a native integration with Harness Feature Management & Experimentation (FME), allowing teams to view and manage feature flags directly in their service catalog.
@@ -233,6 +288,8 @@ Harness IDP now includes a native integration with Harness Feature Management & 
 * Real-time Updates - Monitor feature flag status and changes directly from your developer portal
 
 [Learn more about the Harness FME Plugin](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme) 
+
+
 
 ### Bug Fixes and Improvements
 

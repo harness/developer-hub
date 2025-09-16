@@ -121,6 +121,32 @@ metadata:
 ```
 </details>
 
+<details>
+<summary>User Group YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: Group
+type: engineering
+name: Cloud Infrastructure Team
+identifier: cloud_infrastructure_team
+spec:
+  members:
+    - user:account/jane.doe@harness.io
+    - user:account/john.smith@harness.io
+  parent: group:account/idp_team
+  profile:
+    email: cloud_infrastructure_team@techo.io
+metadata:
+  description: User Group responsible for building and maintaining the company’s core cloud infrastructure.
+  teamLead: Jane Doe
+  region: US West
+  tags:
+    - cloud
+    - engineering
+```
+</details>
+
 :::info
 Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table
 :::
@@ -205,6 +231,7 @@ With **IDP 2.0**, you can define the following `kind` types in your Catalog YAML
 * `kind: Resource`
 * `kind: Workflow`
 * `kind: System`
+* `kind: Group`
 
 Each kind represents a different type of entity within the Harness-native data model.
 [Read more about the different entity kinds here.](/docs/internal-developer-portal/catalog/catalog-yaml.md#entity-kinds)
@@ -503,6 +530,56 @@ owner: artist-relations-team
 spec: {}
 metadata:
   description: Stores artist details
+```
+
+---
+
+### Kind: Group
+**Group** entities allow organizations to model their team structure directly within the IDP catalog. Custom User Groups extend the catalog model to include organizational teams and hierarchies as first-class entities, representing real-world structures such as teams, departments, or cross-functional squads.
+
+Unlike platform user groups which are synchronized from an identity provider (LDAP, SCIM, SSO), custom user groups are created and managed entirely within IDP, allowing for richer metadata and context.
+
+#### Entity Structure
+All the fields mentioned below are the parameters required to define a Group:
+
+| **Field** | **Value** |
+| --------- | --------- |
+| `apiVersion` | **harness.io/v1** |
+| `kind` | **Group** |
+| `name` | Human-readable name for the group |
+| `identifier` | Unique identifier for the group |
+| `type` | Common values include `department`, `engineering` |
+
+#### Special Spec Fields
+
+| **Field** | **Description** |
+| --------- | --------------- |
+| `spec.members` | List of users belonging to the group |
+| `spec.parent` | Reference to a parent group, enabling hierarchy |
+| `spec.profile` | Additional profile information like email |
+
+#### Example YAML
+```yaml
+apiVersion: harness.io/v1
+kind: Group
+type: engineering
+name: Cloud Infrastructure Team
+identifier: cloud_infrastructure_team
+spec:
+  members:
+    - user:account/jane.doe@harness.io
+    - user:account/john.smith@harness.io
+  lifecycle: active
+  parent: group:account/idp_team
+  profile:
+    email: idp_team@harness.io
+metadata:
+  description: Cloud Infrastructure Team for building and maintaining the company’s core cloud infrastructure.
+  teamLead: Jane Doe
+  region: US West
+  tags:
+    - cloud
+    - engineering
 ```
 
 ---
@@ -1047,7 +1124,12 @@ The current set of well-known and common values for this field is:
 
 #### Spec owner
 
-In the Harness Internal Developer Portal, the owner of a component is identified by the [Harness User Group ID](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups). This User Group ID represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
+In the Harness Internal Developer Portal, the owner of a component can be identified by either:
+
+* **Platform User Group ID**: The [Harness User Group ID](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) for groups synced from identity providers
+* **Custom User Group** [IDP 2.0]: A [Custom User Group](/docs/internal-developer-portal/catalog/user-group) created directly within IDP as a first-class catalog entity
+
+In both cases, this User Group represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
 
 <details>
 <summary>How to get the Harness User Group ID</summary>

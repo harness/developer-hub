@@ -29,18 +29,14 @@ All SDKs continue to store impressions and events for up to 90 days. After that 
 
 ## How to initialize for multiple user IDs?
 
-The JavaScript SDK supports initializing multiple client objects from the same SDK factory, each with a unique user key (user ID), like so:
+The JavaScript SDK supports initializing [multiple client objects](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#instantiate-multiple-sdk-clients) from the same SDK factory, each with a unique user key (or user ID):
 
 ```javascript
 client1 = factory.client("user_id1");
 client2 = factory.client("user_id2");
 ```
 
-However, iOS and Android SDKs don’t support this feature. How can multiple users be handled in mobile SDKs?
-
-Since iOS and Android SDKs don’t allow multiple clients from the same factory instance, the recommended approach is to initialize a separate factory object for each user ID.
-
-Each factory creates a local cache folder named using the SDK API key. To avoid cache conflicts, you should use a **different SDK API key per factory** so each instance maintains its own cache and updates independently.
+For mobile SDKs, see the [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk/#instantiate-multiple-sdk-clients) and [Android SDK documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk/#instantiate-multiple-sdk-clients).
 
 :::info Feature flag update timing
 When you make changes to a feature flag in the Harness UI, mobile (iOS, Android) and JavaScript Browser SDKs may not reflect the update immediately for all users. 
@@ -50,18 +46,10 @@ Updates roll out gradually (some devices sync within the first day, with more de
 To ensure the latest changes are reflected, calculate treatments after the `SDK_READY` event fires, and update them if the value changes after initial load.
 :::
 
+import { Section, clientSideSDKs } from '@site/src/components/Docs/data/fmeSDKSData';
+
 ## Get started
 
 Select a platform to start integrating FME into your client application.
 
-| **SDK** | **API Key/Type** | **Links** |
-| --- | --- | --- | 
-| Android | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk), [GitHub](https://github.com/splitio/android-client) | 
-| Angular utilities | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities), [GitHub](https://github.com/splitio/angular-sdk-plugin) |
-| Browser | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk), [GitHub](https://github.com/splitio/javascript-browser-client) |
-| Flutter plugin | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin), [GitHub](https://github.com/splitio/flutter-sdk-plugin) |
-| iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk), [GitHub](https://github.com/splitio/ios-client) | 
-| JavaScript | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk), [GitHub](https://github.com/splitio/javascript-client) | 
-| React Native | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk), [GitHub](https://github.com/splitio/react-native-client) |
-| React | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk), [GitHub](https://github.com/splitio/react-client) | 
-| Redux | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk), [GitHub](https://github.com/splitio/redux-client) | 
+<Section items={clientSideSDKs} />

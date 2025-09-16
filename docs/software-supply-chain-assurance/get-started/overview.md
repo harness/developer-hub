@@ -3,6 +3,10 @@ title: Harness Supply Chain Security (SCS) overview
 sidebar_label: Overview
 description: Secure your software supply chain with Harness SCS
 sidebar_position: 1
+
+tags:
+  - harness-scs 
+  - overview
 ---
 
 In today's software development landscape, reliance on open-source components and various DevOps tools has become essential for faster development. While this approach streamlines the development process and accelerates product delivery, it also introduces potential risks to the software supply chain. These risks include security vulnerabilities from the extensive chain of dependencies, which can lead to zero-day exploits, licensing discrepancies, and other attacks. Additionally, while there are various tools involved in the software development process, the tools themselves can also open the door to multiple supply chain attacks. 

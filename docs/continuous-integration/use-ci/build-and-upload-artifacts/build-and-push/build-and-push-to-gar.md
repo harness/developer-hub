@@ -5,6 +5,7 @@ sidebar_position: 14
 redirect_from:
   - /tutorials/ci-pipelines/publish/google-gar
   - /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar
+  - /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';

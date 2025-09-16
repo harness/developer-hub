@@ -20,8 +20,21 @@ If you configure branch rules at multiple levels they are combined with an `AND`
 2. Select the **Rules** tab.
 3. Select **New Branch Rule**.
 4. Enter the rule **Name** and optional **Description**.
-5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). Patterns can be inclusive or exclusive.
-6. In **Bypass List**, you can specify users, user groups, and service accounts who can bypass this rule.
+5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). 
+
+You have the option to include or exclude repositories when setting rules at the account, org, or project level. This allows you to fine-tune which repositories the rule applies to without forcing the rule across every repo. You can do this in two ways:
+
+- **By selecting specific repositories** (for example, `billing-api`, `web-frontend`).
+- **By using name patterns** (for example, `service-*`, `exp-*`).
+
+Includes and excludes can be mixed, and excludes take precedence when there’s overlap.  
+Examples:
+- Include by pattern: `service-*`
+- Include specific repos: `billing-api`, `web-frontend`
+- Exclude by pattern: `exp-*`
+- Exclude a specific repo: `playground`
+
+6. In **Bypass List**, you can specify users, user groups, or service accounts who can bypass this rule.
 7. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
 8. Select **Create Rule**.
 
@@ -96,6 +109,15 @@ Check this box to activate the rule.
 
   * `v*` for all version tags,
   * `release/**` for nested release tags).
+* You can include or exclude repositories when creating tag rules at the account, org, or project level. This makes it possible to scope rules precisely without forcing the rule across every repo. You can do this in two ways:
+  - **By selecting specific repositories** (for example, `billing-api`, `ui`).
+  - **By using name patterns** (for example, `prod-*`, `exp-*`).
+* Includes and excludes can be mixed, and excludes take precedence when they overlap.  
+  Examples:
+  - Include by pattern: `prod-*`
+  - Include specific repos: `billing-api`, `ui`
+  - Exclude by pattern: `exp-*`
+  - Exclude a specific repo: `playground`
 
 #### Rules: Select all that apply
 
@@ -153,7 +175,7 @@ You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER 
 
 ### CODEOWNERS syntax
 
-In your Harness Code CODEOWNERS file, you can assign code ownership to users <!--and user groups-->within your Harness account<!--, organizations, or projects:-->.
+In your Harness Code CODEOWNERS file, you can assign code ownership to users and user groups within your Harness account, organizations, or projects.
 
 <!--
 * Account: `@accountIdentifier/userOrGroupName`
@@ -180,7 +202,28 @@ You could then declare a CODEOWNER at the project level with `@accountID/my_cool
 You can get user and group names where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) and [manage users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
 -->
 
-Declare CODEOWNERS by the email address associated with their Harness user profile.
+You can declare CODEOWNERS using:
+
+- The email address associated with a Harness user profile.
+- User groups at the **project**, **organization**, or **account** level.
+
+For user groups, use the following formats:
+
+* Project-level user group: `@my_project_group`
+* Org-level user group:
+  * If the repo is at org level: `@org.my_org_group` or simply `@my_org_group`
+  * If the repo is at project level: you must use `@org.my_org_group`
+* Account-level user group: `@account.my_account_group`
+
+Both the long (`@org.my_org_group`) and short (`@my_org_group`) forms are supported, but the short form only works if the repo itself is at org level.
+
+:::note
+When a CODEOWNERS rule includes a user group, any member of that group can provide the required approval.
+:::
+
+:::note Rule Precedence
+If there are multiple rules with the same pattern, the last matching rule takes precedence — only the final one is applied.
+:::
 
 You can assign ownership to specific files, directories, or otherwise. Wildcards are allowed. For example, this CODEOWNERS file demonstrates different ways you can declare ownership.
 
@@ -188,20 +231,22 @@ You can assign ownership to specific files, directories, or otherwise. Wildcards
 Harness ---
 
 # Global owner
-* @email
+* email
+# User groups at different scopes
+** @dev-team @org.security-group @account.admins
 
 # Specific file with multiple owners
-Gemfile.lock @email1 @email2
+Gemfile.lock email1 email2
 
 # Subdirectory owners
-/some_directory/ @email
-/some_directory_2/ @email1 @email2
+/some_directory/ email
+/some_directory_2/ email1 email2
 
 # Workspace owner
-WORKSPACE @email
+WORKSPACE email
 
 # Wildcards
-**/src/** @email
-*.lock @email
+**/src/** email
+*.lock email
 
 ```
