@@ -1,6 +1,7 @@
 ---
 title: Local Testing Using Make
 description: This document details the available Makefile commands.  The goal is to simplify the various commands to rapid testing and prototyping.
+sidebar_position: 2
 ---
 This document details the available Makefile commands.  The goal is to simplify the various commands to rapid testing and prototyping.
 
