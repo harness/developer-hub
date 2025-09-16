@@ -1,6 +1,4 @@
-# Fault Templates
-
-**Fault Templates** provide pre-configured chaos faults that can be reused across experiments.
+**Fault Templates** allow you to create reusable custom fault templates that can be shared and used across multiple experiments.
 
 ![fault templates](./static/templates/fault-template.png)
 
@@ -10,23 +8,22 @@
 
     ![chaos hubs](./static/templates/chaos-hub.png)
 
-2. Choose the **ChaosHub** you want to create templates in.
+2. Choose the **ChaosHub** you want to create fault template in.
 
     ![chaos hub](./static/templates/click-on-chaoshub.png)
 
-3. Start creating **Fault** templates.
+3. Click on **New Fault Template** and enter the required details and click **Configure Details**.
 
-    ![create templates](./static/templates/probe-template.png)
+    ![create templates](./static/fault-template/create-template.png)
 
-4. Import the templates into your project to make them available for use
+4. In the next screen enter the **Lib Image** and  more advanced properties, then click **Create Fault**.
 
-    ![import templates](./static/templates/import-template.png)
+    ![create templates](./static/fault-template/lib-image.png)
 
-5. Start using the templates in your experiments
+5. That's it. Your fault template is created. Now go back to **Project Settings** for your project and open **Chaos Faults**, then click on **Custom Faults** at the top right.
 
-    ![use templates](./static/templates/start-using.png)
+6. From the dropdown arrow next to **New Fault** and select **Start with a template**, to start using the template you created.
 
-## Next Steps
+    ![use templates](./static/fault-template/use-fault-template.png)
 
-- [Explore Fault Templates](/docs/chaos-engineering/faults/custom-faults/custom-fault-templates)
-- [Create your first experiment using templates](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
+

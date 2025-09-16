@@ -1,5 +1,3 @@
-# Action Templates
-
 **Action Templates** provide reusable workflow actions for experiment orchestration.
 
 ![action templates](./static/templates/action-template.png)
@@ -10,23 +8,20 @@
 
     ![chaos hubs](./static/templates/chaos-hub.png)
 
-2. Choose the **ChaosHub** you want to create templates in.
+2. Choose the **ChaosHub** you want to create action template in.
 
     ![chaos hub](./static/templates/click-on-chaoshub.png)
 
-3. Start creating **Action** templates.
+3. Navigate to **Action Templates** and click on **New Action Template**.
 
-    ![create templates](./static/templates/probe-template.png)
+4. Choose between the **Delay** or **Custom Script** action template, and start creating the template.
 
-4. Import the templates into your project to make them available for use
+    ![create templates](./static/action-templates/choose.png)
+
+5. Now to use the Action template in your project, navigate to **Probes & Actions** and go to **Actions** tab. Then click **Import Action**
 
     ![import templates](./static/templates/import-template.png)
 
-5. Start using the templates in your experiments
+6. Start using the Action template in your experiments
 
     ![use templates](./static/templates/start-using.png)
-
-## Next Steps
-
-- [Understand Actions](/docs/chaos-engineering/guides/actions/)
-- [Create your first experiment using templates](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)

@@ -1,6 +1,4 @@
-# Probe Templates
-
-**Probe Templates** offer reusable validation and monitoring configurations.
+**Probe Templates** allow you to create reusable validation and monitoring configurations that can be shared across multiple experiments to verify system behavior and resilience.
 
 ![probe templates](./static/templates/probe-template.png)
 
@@ -10,7 +8,7 @@
 
     ![chaos hubs](./static/templates/chaos-hub.png)
 
-2. Choose the **ChaosHub** you want to create templates in.
+2. Choose the **ChaosHub** you want to create Probe template in.
 
     ![chaos hub](./static/templates/click-on-chaoshub.png)
 
@@ -22,11 +20,6 @@
 
     ![import templates](./static/templates/import-template.png)
 
-5. Start using the templates in your experiments
+5. Start using the probe templates in your experiments
 
     ![use templates](./static/templates/start-using.png)
-
-## Next Steps
-
-- [Learn about Probes](/docs/chaos-engineering/guides/probes/)
-- [Create your first experiment using templates](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
