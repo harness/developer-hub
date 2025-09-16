@@ -8,7 +8,6 @@ sidebar_position: 5
 - Fixed issue with RESOURCE_VARS_ENVS_SECRETS typo
 - Added CI Golden Standard Template and documentation to provide Day-One support for standard Containerized Application builds
 - Fixed issue with Ci-Module-Primer to support setting the docker connector during setup
-- Fixed issue with Ci-Module-Primer to support setting the docker connector during setup
 
 ## August 2025
 - Updated Register IDP Templates Workflow to support single directory load and customized registration file name and path

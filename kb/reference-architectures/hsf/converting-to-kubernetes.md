@@ -7,7 +7,8 @@ description: As new enhancements are released by the Harness team, your installa
 2. Open the `Infrastructure` module and choose `Workspaces`
 3. Find and select the `Harness Pilot Light` workspace
 4. Navigate to the `Variables` tab and choose `OpenTofu Variables`
-5. Edit `kubernetes_connector` to provide an existing Kubernetes connector reference. _**Note**: The connector will need to be scoped to the correct location where the connector exists. Prefix with `account.` or `org.` depending on its location._
+5. Edit `kubernetes_connector` to provide an existing Kubernetes connector reference. 
+_**Note**: The connector will need to be scoped to the correct location where the connector exists. Prefix with `account.` or `org.` depending on its location._
 6. Optionally, edit `kubernetes_namespace` to modify the namespace into which the pods will be deployed.
 
 _**Note**: Additional details around the various options and variables can be found in the `pilot-light` directory of the Harness Solutions Factory repository_
