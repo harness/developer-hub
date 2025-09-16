@@ -33,6 +33,10 @@ Watch the 30-second animation below.  Note the order of steps and the way your u
 - To preserve the instant revert capability seen in the animation above, do not disable your SSO configuration to `app.split.io` at the moment of migration. Users who attempt to use the `app.split.io` SSO after migration will be shown a message pointing them to `app.harness.io`, so it's OK to leave both SSO configurations active for some time. 
 :::
 
+### Harness SAML Supports Strict Mode Only
+
+Once you configure SAML and are migrated to Harness, all users must use SAML to log in to Harness. Unlike legacy Split, Harness does not support toggling off SAML Strict Mode to permit username/password logins. Harness does support Local Login for admin users with the right RBAC settings. See [Harness Local Login](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#harness-local-login) for details.
+
 ## Tasks to Perform
 
 ### If Your Split Account Uses SSO Only
