@@ -219,9 +219,11 @@ The Git Clone step uses a containerized step group. For more information, refer 
 2. **Connector**: You can select a connector for the source control provider hosting the code repository that you want to clone.
 
 :::info
-For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
+- For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors.
 
-You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+
+- The [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
 
 **Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
@@ -409,9 +411,12 @@ Select the repository type you want to create, which could be public or private.
 #### Connector
 
 :::info
-For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
+- For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+
+- The [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports only **API Token** authentication mode for this step. This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens. For more details, see the reference documentation for [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
+
 
 **Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
@@ -570,9 +575,11 @@ In the example provided for this step, we have used pipeline variables as input 
 
 :::info
 
-For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
+- For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+
+- The [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
 
 **Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
@@ -644,9 +651,11 @@ In the example provided for this step we have used pipeline variables as input f
 #### Connector
 
 :::info
-For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
+- For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+
+- The [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
 
 **Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
