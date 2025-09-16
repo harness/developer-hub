@@ -336,7 +336,7 @@ There are additional steps for self-signed certificates:
 
 1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
 2. [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
-3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/agents/harness-git-ops-agent-with-self-signed-certificates/)
+3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/gitops-entities/agents/harness-git-ops-agent-with-self-signed-certificates/)
 
 ## Next steps
 

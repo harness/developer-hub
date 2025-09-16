@@ -447,7 +447,7 @@ You've just learned how to use Harness CD to deploy your own application.
 Verify that you have the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
-   - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent#requirements).
+   - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#requirements).
 2. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
 
 ## Getting Started with Harness GitOps
