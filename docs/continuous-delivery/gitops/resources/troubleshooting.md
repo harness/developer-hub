@@ -199,3 +199,15 @@ Your ApplicationSet stays **Degraded** and you see errors like:
 1. In the `harness-gitops` namespace, edit your Git repository Secret.  
 2. Remove the `data.project` key so the repo becomes cluster-scoped.  
 3. Save and allow ArgoCD to reconcile; your ApplicationSet will recover.
+
+## Applications Missing in GitOps for kube-system Namespace
+
+**Issue**  
+Apps deployed in the reserved `kube-system` namespace do not appear in GitOps reconciliation or UI.
+
+**Impact**  
+Non-system apps in `kube-system` won’t be visible or reconciled, causing deployment issues.
+
+**Workaround**  
+- Avoid deploying non-system apps to `kube-system`.  
+- Use dedicated namespaces like 'argocd' instead.  
