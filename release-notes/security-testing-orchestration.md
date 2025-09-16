@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-06-27T10:00
+date: 2025-09-12T10:00
 sidebar_position: 13
 ---
 
@@ -21,6 +21,45 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## September 2025
+
+### Version 1.158.0
+
+<!-- 2025-09-12 -->
+
+#### New Features and Enhancements
+
+- STO now integrates with **[GitHub Advanced Security (GHAS)](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security)**. This integration supports the following GHAS products and scan modes:
+  - **CodeQL (SAST):** Identify vulnerabilities in code. Supported in **Orchestration**, **Extraction**, and **Ingestion** scan modes.
+  - **Dependabot (SCA):** Detect vulnerable open-source dependencies. Supported in **Orchestration**, **Extraction**, and **Ingestion** scan modes.
+  - **Secret Scanning:** Detect exposed secrets. Supported in **Extraction** and **Ingestion** scan modes.
+
+  Refer to [GitHub Advanced Security Documentation](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security) for more information.
+
+- STO now supports **Notifications for Exemption Management**. You can configure notifications for exemption-related events such as when an exemption request is created or when its status changes. [View the Documentation on Notifications for Exemptions](https://developer.harness.io/docs/security-testing-orchestration/notifications/exemption-notifications/) and the [Video on Set up Notifications for Exemption Requests](https://youtu.be/f5JyySFQG4E) (currently behind the feature flag `PL_CENTRAL_NOTIFICATIONS`)
+  <DocImage path={require('./static/sto-notification-events.png')} width="100%" height="100%" title="Click to view full size image" />
+
+  <DocVideo src="https://youtu.be/f5JyySFQG4E" title="Set up Notifications for Exemption Requests" />
+
+- You can now **export scan results from the Vulnerabilities tab**. (currently behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY`)
+  - Download results in **CSV format** directly from the **Vulnerabilities** tab.  
+  - Navigate to the **Pipeline Execution Summary Dashboard** from the same tab to export results in **CSV or PDF**. Refer to [Export Scan Results Documentation](https://developer.harness.io/docs/security-testing-orchestration/view-security-test-results/export-scan-results/) for more details.  
+  <DocImage path={require('./static/sto-export-csv.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- Issue descriptions in the **Issue Details** view will now render as a formatted JSON tree when the description is in JSON format. The JSON can be expanded or collapsed for easier viewing (STO-8885, ZD-83369).
+
+  <DocImage path={require('./static/sto-json-issue-desc.png')} width="100%" height="100%" title="Click to view full size image" />
+
+#### Fixed Issues
+
+- Fixed an issue where the **Project Filter** on the Exemptions page (at the Account level) was not correctly filtering exemption data based on the selected project (STO-9669).  
+- For exemptions without a configured baseline target, the **Set in target** button (previously leading to a 404) has been removed. Instead, a direct link to the relevant target on the **Test Targets** page is now provided (STO-9715, STO-9556).  
+  
+  <DocImage path={require('./static/sto-link-to-baseline.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- Fixed an issue where the CSV downloaded from the **Vulnerabilities** tab had empty entries. The CSV data is now correctly populated (STO-9646, STO-9645).  
+- Fixed an error when configuring the **port** in the **ZAP** step’s *Scan Tool* section. Previously, the port had to be entered as a string, causing a save error. The visual editor now correctly treats the port value as an integer or runtime input, and saves without errors (STO-9316).
+
 
 ## August 2025
 

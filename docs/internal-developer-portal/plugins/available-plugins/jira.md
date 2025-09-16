@@ -70,14 +70,41 @@ This plugin does not require a delegate proxy to be set up because Jira is publi
 
 ## Layout
 
-This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following in the **Overview** section:
+This plugin exports several UI cards that you can show on the **Overview** tab of a service or any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following in the **Overview** section:
+
+#### EntityJiraOverviewCard
+
+For displaying a general overview of Jira issues:
 
 ```yaml
 - component: EntityJiraOverviewCard
 ```
 
-You can also make the card appear conditionally for services (only if Jira is configured for the service) by replacing the card with a switch case, as follows:
+#### EntityJiraActivityStreamCard
 
+For viewing the activity stream particularly:
+
+```yaml
+- component: EntityJiraActivityStreamCard
+```
+
+#### EntityJiraQueryCard
+
+For displaying issues based on a specific JQL query:
+
+```yaml
+- component: EntityJiraQueryCard
+```
+
+This component uses the `jira/all-issues-jql` annotation from the entity's metadata (see Annotations section below). You don't need to provide JQL in the component configuration.
+
+The JQL query is specified in the entity's annotations.
+
+### Conditional Display
+
+You can make these cards appear conditionally based on whether the required annotations are present. Each card type has its own condition:
+
+**For EntityJiraOverviewCard:**
 ```yaml
 - component: EntitySwitch
   specs:
@@ -87,17 +114,41 @@ You can also make the card appear conditionally for services (only if Jira is co
           component: EntityJiraOverviewCard
 ```
 
+**For EntityJiraQueryCard:**
+```yaml
+- component: EntitySwitch
+  specs:
+    cases:
+      - if: hasJiraQuery
+        content:
+          component: EntityJiraQueryCard
+```
+
+**For EntityJiraActivityStreamCard:**
+```yaml
+- component: EntitySwitch
+  specs:
+    cases:
+      - if: isJiraAvailable
+        content:
+          component: EntityJiraActivityStreamCard
+```
+
+This ensures that the components only appear when the necessary Jira data is available for that entity.
+
 ![](./static/jira-card.png)
 
 ## Annotations
 
-To configure the plugin for a service in the software catalog, set one of the following annotations in its `catalog-info.yaml` definition file:
+To configure the plugin for a service in the software catalog, set one or more of the following annotations in its `catalog-info.yaml` definition file:
 
 ```yaml
 metadata:
   annotations:
     jira/project-key: <example-jira-project-key>
     jira/component: <example-component> # optional, you might skip this value to fetch data for all components
+    jira/label: tech-debt # optional, for filtering issues by label
+    jira/all-issues-jql: project = "IDP" AND assignee = currentUser() AND status IN ("In Progess", "In Progress") ORDER BY created DESC # for specifying JQL queries used by EntityJiraQueryCard
 ```
 
 ## Support

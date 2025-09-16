@@ -220,11 +220,11 @@ That email will have a button that says `"ACCESS YOUR {ACCOUNT NAME} ACCOUNT"`. 
 
 ### SCIM with Okta
 
-#### Create a Service Account, API Key and Token
+#### Create a Service Account, API Key, and Token
 
-* You will need a [Harness API key and unexpired token](/docs/platform/automation/api/add-and-manage-api-keys/) that has all **Users and User Groups** [permissions](/docs/platform/automation/api/api-permissions-reference/).
-* We recommend using an API key associated with a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account/).
-* Make sure the service account has all **Users** and **User Groups** permissions.
+* You will need a [Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys/?token=sat#create-service-account-api-keys-and-tokens) that has all [**Users**](https://developer.harness.io/docs/platform/automation/api/api-permissions-reference/#users) and [**User Groups**](https://developer.harness.io/docs/platform/automation/api/api-permissions-reference/#user-groups) [permissions](/docs/platform/automation/api/api-permissions-reference/).
+* Use an API key associated with a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account/) created at the Harness account scope (in Account Settings).
+* Make sure the service account has all **Users** and **User Groups** permissions. This is determined by the role assigned to the service account. (To see permissions granted to a role, click the **Roles** tile in **Account Settings** and click on a role, then look in the **Administrative Functions** section and make sure all checkboxes are ticked for **Users** and **User Groups**.) 
 * Save the token for use in the next step below.
 
 #### Revisit Okta SSO Settings to Add and Authorize SCIM

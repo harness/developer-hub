@@ -272,8 +272,9 @@ In Manage Unallocated Costs, you can choose to show or ignore unallocated costs,
 </Tabs>
 </TabItem>
 
+
 <TabItem value="Interactive Guide" label="Interactive Guide">
-    <DocVideo src="https://app.tango.us/app/embed/89164540-a07f-4900-bca7-b303fbb37154?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="Perspective Overview in Harness CCM" />
+    <DocVideo src="https://app.tango.us/app/embed/5ff81c2d-83f0-4993-b63c-617037d2226f" style="min-height:720px" title="Create Cost Categories in Harness CCM" />
 </TabItem> 
 
 </Tabs>

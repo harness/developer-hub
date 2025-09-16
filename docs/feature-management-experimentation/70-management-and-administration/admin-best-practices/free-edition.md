@@ -13,7 +13,7 @@ If the Developer package is all you need and you’ve experimented with any of t
 
 * There is access to one workspace, and by default, the workspace that comes first alphabetically will be visible while any others you may have created will be inaccessible.  That means, of course, that you’ll want to rename your workspaces so the one to keep is first.  
 
-* There are two Environments.  If you’ve created more, you will lose access to the most recently created environments.
+* There are two Environments.  If you’ve created more, you will retain access to the most recently created environments. You will not be able to create new environments.
 
 * Flags can have a max of two treatments.  Any flags you’ve created with more than two will continue to work as expected. You will not be able to create new multivariant flags or add treatments to existing flags.
 

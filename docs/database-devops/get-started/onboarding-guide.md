@@ -24,7 +24,8 @@ tags:
   - getting-started
   - dbops
 ---
-
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import BetaIcon from '/img/icon_beta.svg';
 
 <BetaIcon />
@@ -115,7 +116,53 @@ A deployment pipeline deploys your database changes when it runs. In addition to
    - **Tag (Optional)**: You can add custom tags to each deployment. In case it is left empty, harness will add the tag during the deployment.
 7. Click `Apply Changes` and Save the Pipeline.
 8. Now, click on "Run" and wait for your pipeline to complete.
+<Tabs>
+<TabItem value="Visual Overview" label="Visual Overview" default>
+
 ![dbops-running](./static/dbops-running.png)
+</TabItem>
+<TabItem value="YAML Overview" label="YAML Overview">
+
+```yml
+pipeline:
+  name: mux-sql
+  identifier: muxsql
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: mux
+        identifier: mux
+        description: "Deploy schema to DB instance"
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: cluster
+                  identifier: cluster
+                  steps:
+                    - step:
+                        type: DBSchemaApply
+                        name: DBSchemaApply_1
+                        identifier: DBSchemaApply_1
+                        spec:
+                          connectorRef: account.harnessImage
+                          dbSchema: muxsql
+                          dbInstance: muxsql
+                          tag: v1.0.0
+                        timeout: 10m
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: db
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
+```
+</TabItem>
+</Tabs>
 
 ## Conclusion
 
