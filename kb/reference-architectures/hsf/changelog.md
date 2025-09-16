@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Changelogs and improvements to Harness Solutions Factory.
-sidebar_position: 5
+sidebar_position: 7
 ---
 
 ## September 2025

@@ -1,6 +1,7 @@
 ---
 title: Developer Environment Setup
 description: Developing for HTL involves having docker, terraform/opentofu, and git installed locally.
+sidebar_position: 1
 ---
 ## Using the DevContainer in this repository
 

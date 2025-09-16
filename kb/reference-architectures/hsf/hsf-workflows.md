@@ -58,7 +58,3 @@ After this pipeline is done, it will kick off the **Execute IACM Workspace** pip
 To see the logs you can navigate to the running instance of the pipeline and monitor it.
 
    <DocImage path={require('../static/hsf-execute-workflow-6.png')} title="Click to view full size image" />
-
-## Making Changes to a Workflow 
-
-## Making Changes to Resources Created by a Workflow 

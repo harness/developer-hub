@@ -1,6 +1,7 @@
 ---
 title: Add Custom Template Library
 description: This document will walk you through the steps required to setup a new custom Harness Template Library and connect it to your Harness Solutions Factory deployment.
+sidebar_position: 4
 ---
 
 This document will walk you through the steps required to setup a new custom Harness Template Library and connect it to your Harness Solutions Factory deployment.
