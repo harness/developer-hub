@@ -28,7 +28,7 @@ Before you begin, make sure you have:
 ---
 
 ## Provider Preparation
-Before registering your provider, you must prepare the necessary cryptographic keys and supporting files.
+Provider Registry assumes that your binaries are already signed with a GPG key. If you need to generate one, you can use the industry standard GPG commands shown below. 
 
 ### GPG Key Setup
 GPG keys are required to sign provider binaries before publishing.
@@ -121,8 +121,13 @@ Selecting multiple provider protocol versions allows your provider to be compati
 - SHA256SUMS checksum file.
 - SHA256SUMS.sig signature file.
 
-7. Verify that ALL registry files are uploaded.
-8. Click **Publish**. The system will validate the upload and publish the provider version.
+7. Verify that all registry files are uploaded.
+
+:::note Draft state
+If you do not publish the version immediately, it remains in a draft state. Drafts allow you to upload additional binaries, checksums, or signature files later before finalizing the version. Draft versions are not available for consumption in OpenTofu/Terraform until they are published.
+:::
+
+8. Click **Publish** once all files are uploaded. The system will validate the upload and publish the provider version.
 
 :::warning Publishing will fail if:
 - Any required file is missing.
