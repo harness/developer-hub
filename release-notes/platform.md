@@ -24,6 +24,16 @@ These release notes describe recent changes to Harness Platform.
 :::
 ## Important feature change notice
 
+:::danger OIDC ID Token API Access Update (Effective October 24, 2025)
+To strengthen security and reduce potential risks, the [OIDC ID token–related APIs](https://apidocs.harness.io/openapi-merged/oidc-id-token) will be made **internal to Harness** and will no longer be available for direct access.
+
+- **Previous behaviour**: OIDC ID token APIs can be directly accessed.
+- **New behaviour**: These APIs can only be used **through the Harness Connector** for OIDC-based authentication with external platforms (e.g., HashiCorp Vault, AWS).
+
+**Action Required**: If you are directly invoking OIDC ID token APIs, update your automation to use the connector before this change takes effect on **October 24, 2025**.
+:::
+
+
 :::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
 We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
 

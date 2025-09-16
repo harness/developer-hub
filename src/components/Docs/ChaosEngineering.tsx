@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/chaosEngineeringData';
 import Admonition from '@theme/Admonition';
+import DocVideo from '@site/src/components/DocVideo';
 
 export default function ChaosEngineering() {
   const { colorMode } = useColorMode();
@@ -37,53 +38,10 @@ export default function ChaosEngineering() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{maxWidth: '1200px'}}>
             <p>
-              Chaos Engineering is the practice of proactively introducing faults into your applications or infrastructure and test the resilience of business services. Developers, QA teams, Performance test teams and SREs run chaos experiments to measure the resilience of the systems and find the weaknesses in that process.
-            </p>
-            <p>
-              Harness Chaos Engineering provides end-to-end tooling to resilience testing via the chaos engineering principles. Enterprises can build highly scalable resilience testing practice with Harness because of the following capabilities:
-            </p>
-            <ul>
-              <li><strong>Experiments</strong> - faults, probes and actions</li>
-              <li><strong>ChaosGuard</strong> for governance</li>
-              <li><strong>Delegates</strong> - scalability</li>
-              <li><strong>Connectors</strong> for integration</li>
-              <li><strong>Resilience management</strong> - Resilience scores, coverages, weaknesses and mitigation plans</li>
-              <li><strong>AI Powered</strong>: Recommendations</li>
-              <li><strong>MCP Tools</strong> for AI Agent communication and simplifying the end user experience</li>
-            </ul>
-            <p>
-              In addition, the Harness platform provides the required enterprise capabilities like RBACs, SSO, logs and auditing making the entire solution scalable and easy to implement.
-            </p>
-            
-            <h3 id="new-chaos-studio-features">New Chaos Studio Features</h3>
-            <div>
-              <Admonition type="info" title="New Chaos Studio Features">
-              <p>
-                Harness Chaos Engineering now offers an enhanced <strong>New Chaos Studio</strong> experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
-              </p>
-              <ul>
-                <li><strong>New Chaos Studio</strong>: Available for customers onboarded on or after August 21, 2025</li>
-                <li><strong>Old Chaos Studio</strong>: Available for customers onboarded before August 21, 2025</li>
-              </ul>
-              <h4>New Chaos Studio Features</h4>
-              <p>The New Chaos Studio includes these enhanced capabilities:</p>
-              <ul>
-                <li><strong><Link href="/docs/chaos-engineering/guides/experiments#2.newchaosstudio">New Chaos Studio</Link></strong>: Enhanced and streamlined approach to chaos experiment design</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/experiments#2.newchaosstudio">Timeline View</Link></strong>: Visual timeline representation of experiment execution and results</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/probes/experiment-level-probes/">Experiment Level Probes</Link></strong>: Advanced probing capabilities at the experiment level</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/actions/">Actions</Link></strong>: Execute custom operations, delays, and scripts during experiments</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/chaoshub">Chaos Hubs Across Different Scopes</Link></strong>: Enhanced chaos hub management with flexible scoping options</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/experiments#2.newchaosstudio">Runtime Variable Support</Link></strong>: Dynamic variable handling during experiment execution</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/templates/">Templates</Link></strong>: Reusable fault, probe, and action templates for standardized chaos engineering</li>
-                <li><strong><Link href="/docs/category/custom-faults">Custom Faults</Link></strong>: Create and manage custom fault definitions for specific use cases</li>
-              </ul>
-              <p>
-                If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
-              </p>
-            </Admonition>
-            </div>
+            Harness Chaos Engineering provides end-to-end tooling for resilience testing at enterprise scale through proven chaos engineering principles. Chaos Engineering is the practice of proactively introducing controlled faults into applications and infrastructure to test the resilience of business services. Developers, QA teams, performance engineers, and Site Reliability Engineers (SREs) run chaos experiments to measure system resilience and discover weaknesses before they impact production.
+            </p>      
           </div>
         </div>
       </div>

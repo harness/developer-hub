@@ -7,6 +7,10 @@ description: Learn about IaCM onboarding and best practices.
 
 When defining authentication to AWS for Harness Infrastructure as Code there are several methods for doing so. Harness connectors act as a way to centrally define an authentication pattern which can then be utilized across many workspaces. Depending on the build infrastructure type you are using for your executions there are different methods that are supported.
 
+:::tip AWS Session Duration
+To increase the default session duration in IaCM steps, you can set `PLUGIN_AWS_SESSION_DURATION` as a stage variable to a custom limit (default: `15m`).
+:::
+
 ## Cloud
 
 Harness offers a [hosted execution environment](https://developer.harness.io/kb/continuous-integration/harness-cloud-faqs/) where your builds run on independent ephemeral machines. Using this environment requires that all the endpoints you are configuring using TF are exposed to the public internet.
