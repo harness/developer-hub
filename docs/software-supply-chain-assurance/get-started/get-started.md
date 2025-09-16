@@ -18,45 +18,54 @@ This guide will help you onboard to the Harness SCS features, allowing you to se
 
 To begin, navigate to the **Get Started** section in the SCS module and click on **Get Started**.
 
-<DocImage path={require('./static/get-started-01.png')} width="100%" height="100%" title="Click to view full size image" />
-
-Here, you’ll find a list of all currently supported integrations and those that are coming soon. You can also click to expand each integration and view the features it supports.
+<DocImage path={require('./static/get-started-01.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::note
-Please refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section in the onboarding document to see the full list of supported integrations for each feature.
+Please refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section in the what's supported docs to see the full list of supported integrations for each SCS feature.
 :::
 
 
-
 ## Setup RSPM and CI/CD SPM on GitHub repos and Actions
-Follow the instructions to connect your GitHub account with Harness SCS for RSPM and CI/CD SPM by installing the Harness-SCS GitHub app.
+Follow the instructions to connect your GitHub account with Harness SCS for RSPM and CI/CD SPM by installing the Harness SCS GitHub app or via Harness GitHub connector.
 
 To begin, from the **Get Started** page click to expand the **GitHub** integration.
 
-<DocImage path={require('./static/getstarted-gh.png')} width="100%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/getstarted-gh.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-You can select **Configure** in the **Repo Security** and **CI/CD Security** option. This will take you to a new screen with two steps: configuring your integration and selecting the repositories to scan.
+You can select **Configure** in the **Repo Security** and **CI/CD Security** option. This will take you to a new screen with two options.
 
-You can click on **Launch GitHub to configure** to proceed.
+- [Harness Connector](/docs/software-supply-chain-assurance/get-started/#harness-connector)
+- [Launch GitHub App to configure](/docs/software-supply-chain-assurance/get-started/#configuring-the-github-app)
 
-<DocImage path={require('./static/get-started-gh-02.png')} width="100%" height="100%" title="Click to view full size image" />
-
-You will be redirected to the Harness-SCS GitHub app to configure the app for connection with Harness SCS.
-
-
-### Configuring the GitHub App: Harness-SCS
-
-Configuring the Harness-SCS app allows SCS to connect with your GitHub and fetch necessary information.
+<DocImage path={require('./static/onboarding.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
+### Harness Connector
 
-1. Visit the [Harness-SCS GitHub app](https://github.com/apps/harness-ssca) and click the ‘Configure’ button.
+1. Click on Harness connector, where you can select Harness GitHub connector to onboard your repositories then click on **Apply Selected**.
+
+<DocImage path={require('./static/connector.png')} width="80%" height="80%" title="Click to view full size image" />
+
+2. Choose repositories to scan, By default selects all the repositories through your integration. You can make changes to your selection here or click on finish to onboard the repositories.
+
+<DocImage path={require('./static/repos.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
+
+### Configuring the GitHub App
+
+1. You can click on **Launch GitHub to configure** to proceed.
+
+<DocImage path={require('./static/get-started-gh-02.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
+2. Visit the [Harness-SCS GitHub app](https://github.com/apps/harness-ssca) and click the ‘Configure’ button.
 
 <DocImage path={require('./static/get-started-step-3.png')} width="70%" height="70%" title="Click to view full size image" />
 
 
-2. Authorize Harness by selecting the organization where you want to install the app.
+3. Authorize Harness by selecting the organization where you want to install the app.
 
 
     <DocImage path={require('./static/get-started-step-4.png')} width="50%" height="50%" title="Click to view full size image" />
