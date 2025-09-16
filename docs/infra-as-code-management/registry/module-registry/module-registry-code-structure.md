@@ -3,6 +3,7 @@ title: Module Structure
 description: Learn about the required code structure for module registry.
 sidebar_position: 10
 sidebar_label: Module Structure
+redirect_from: /docs/infra-as-code-management/iacm-features/module-registry/module-registry-code-structure
 ---
 
 OpenTofu or Terraform modules are reusable units of infrastructure configuration that help standardize deployment patterns and improve maintainability. A well-structured module simplifies usage and promotes best practices. This guide outlines the essential components of a Terraform module and how to structure it effectively.
@@ -13,7 +14,7 @@ All OpenTofu or Terraform configurations consist of at least one module, known a
 
 :::info modules folder
 When using submodules, note that they are only recognized if they are placed within the `modules` folder at the root directory. 
-Go to [submodule usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage) for more information.
+Go to [submodule usage](/docs/infra-as-code-management/registry/module-registry/root-sub-module-usage) for more information.
 :::
 
 :::important
@@ -140,5 +141,5 @@ To ensure your modules are well-structured and maintainable, follow these best p
 A well-structured IaC module enhances reusability, maintainability, and collaboration. By following these guidelines, you can create reliable and scalable modules for your infrastructure needs.
 
 For more details, refer to the following documentation:
-- [Register a Module](/docs/infra-as-code-management/iacm-features/module-registry/)  
-- [Root and Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage)
+- [Register a Module](/docs/infra-as-code-management/registry/module-registry/)  
+- [Root and Submodule Usage](/docs/infra-as-code-management/registry/module-registry/root-sub-module-usage)

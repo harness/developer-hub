@@ -1,0 +1,15 @@
+{
+    "iacm": {
+      "provider-registry": {
+        "custom-provider": "An OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.",
+        "gpg-key": "A cryptographic key used to verify the authenticity and integrity of files. In this case, it ensures provider binaries have not been tampered with.",
+        "binary-files": "Executable program files produced after compiling source code (for example, Go or Java). OpenTofu or Terraform uses these binaries to interact with your infrastructure.",
+        "multiple-platforms": "Supported platforms include Darwin/macOS (arm64, amd64), Linux (amd64), and Windows (amd64).",
+        "checksum-file": "A file listing SHA-256 hashes for each binary you plan to publish. The registry uses this to verify file integrity.",
+        "signature-file": "A detached signature produced by signing the checksum file with your GPG private key. The public key is used to verify authenticity."
+      },
+      "tf-commands": {
+        "init": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies."
+      }
+    }
+  }
