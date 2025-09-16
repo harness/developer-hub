@@ -10,8 +10,8 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md`;
-import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md`;
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 If your pipelines use [webhook triggers](/docs/platform/triggers/triggering-pipelines), you can get [Harness build statuses in your PRs](#pipeline-links-in-prs). However, you must configure your protection rules *in your SCM provider* if you want failed/running builds to block PR merges.
 

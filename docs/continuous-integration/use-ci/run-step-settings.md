@@ -16,7 +16,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import EnhancedOutVar from '/docs/continuous-integration/shared/enhanced-output-variables.md';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md`;
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 You can use a **Run** step to run commands or scripts in a CI pipeline. Here are some examples of different ways you can use **Run** steps.
 

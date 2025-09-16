@@ -8,8 +8,8 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md`;
-import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md`;
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 :::warning
 

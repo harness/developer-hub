@@ -13,7 +13,7 @@ canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md`;
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 CI pipelines that use a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) need Docker-in-Docker (DinD) if you need to run Docker commands as part of the build process. For example, if you want to build images from [two separate codebases in the same pipeline](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md): One with a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) and another with Docker commands in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md).
 

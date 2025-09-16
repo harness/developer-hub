@@ -8,8 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
-import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md`;
-import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md`;
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 This topic provides settings for the **Plugin** step. For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
