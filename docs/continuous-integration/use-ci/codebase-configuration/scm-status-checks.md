@@ -10,6 +10,8 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md`;
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md`;
 
 If your pipelines use [webhook triggers](/docs/platform/triggers/triggering-pipelines), you can get [Harness build statuses in your PRs](#pipeline-links-in-prs). However, you must configure your protection rules *in your SCM provider* if you want failed/running builds to block PR merges.
 
@@ -52,10 +54,10 @@ These steps explain how to add a status check that uses the GitHub API. For info
 2. Create [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to use for authentication, and save the token as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets).
 3. Add a [Run step](../run-step-settings.md) to your **Build** (`CI`) stage.
 4. Enter a **Name** for the step.
-5. If required by your build infrastructure, provide the **Container Registry** and **Image**.
+5. If required by your build infrastructure, provide the **Container Registry** and **Image**.  For more information on how to set this up, please [look at the section below about Container Registry and Image](#container-registry-and-image)
    * **Container Registry** is a container registry connector, such as a Docker connector.
    * **Image** is the FQN or artifact name and tag of a Docker image that has cURL installed, such as `curlimages/curl:latest` for the [official cURL Docker Hub image](https://hub.docker.com/r/curlimages/curl).
-   * To learn more about this setting and when it is required, go to [Use Run steps - Container Registry and Image](../run-step-settings.md#container-registry-and-image).
+   * To learn more about this setting and when it is required, [look at the section below about Container Registry and Image](#container-registry-and-image)
 6. For **Shell**, select **Sh**.
 7. In **Command**, enter a script that calls the GitHub API, for example:
 
@@ -166,6 +168,14 @@ You can package your status check script in a [custom plugin](../use-drone-plugi
 
 </TabItem>
 </Tabs>
+
+### Container Registry and Image
+
+The build environment must have the necessary binaries for the **SCM Status Checks**. Depending on the stage's build infrastructure, **SCM Status Checks** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries. 
+
+<WhenReq />
+
+<FQNImage />
 
 ## Troubleshoot status checks
 
