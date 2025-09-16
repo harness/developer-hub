@@ -7,7 +7,7 @@ This document will walk you through the steps required to setup a new custom Har
 
 A Custom Harness Template Library repository is included with the deployment of your Harness Solutions Factory.  This repo contains a copy of this documentation along with additional configuration files intended to help streamline the setup of new or modified Template Library entries.
 
-_**Note**: If you do not have a Custom Harness Template Library repo in the root of your Harness Platform Management organization, then proceed to the documentation on [How to upgrade your Solutions Factory implementation](./upgrading-installation.md)_
+_**Note**: If you do not have a Custom Harness Template Library repo in the root of your Harness Platform Management organization, then proceed to the documentation on [How to upgrade your Solutions Factory implementation](../upgrading-installation.md)_
 
 _**Note**: When configuring the Solutions Factory implementation for the first time, the custom-harness-template-library will import the original source repository directly into the repo.  The source for this repo can be found in [Github here](https://github.com/harness-solutions-factory/custom-harness-template-library).  Subsequent updates to the Solutions Factory installation will not synchronize any changes in this repository._
 
