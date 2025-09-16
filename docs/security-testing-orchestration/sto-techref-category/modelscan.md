@@ -7,10 +7,11 @@ sidebar_position: 240
 
 <DocsTag text="Code repo scanners" backgroundColor="#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners" />
 <DocsTag text="Orchestration" backgroundColor="#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto" />
+<DocsTag text="Ingestion" backgroundColor="#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
-The ModelScan step in Harness STO uses the open-source scanner [ModelScan](https://github.com/protectai/modelscan) to scan your machine learning (ML) models for security vulnerabilities. You can perform ModelScan scans in **Orchestration** mode. This document will guide you through configuring the ModelScan step in your STO pipeline.
+The ModelScan step in Harness STO uses the open-source scanner [ModelScan](https://github.com/protectai/modelscan) to scan your machine learning (ML) models for security vulnerabilities. You can perform ModelScan scans in both **Orchestration** and **Ingestion** modes. This document will guide you through configuring the ModelScan step in your STO pipeline.
 
 For a list of all the model formats that STO supports for ModelScan scans, refer to [What models and frameworks are supported?](https://github.com/protectai/modelscan?tab=readme-ov-file#what-models-and-frameworks-are-supported) in the ModelScan documentation.
 
@@ -31,6 +32,7 @@ Scanning ML models in binary files is not supported. Your models must be in one 
 ### Scan Mode
 
 - **Orchestration mode**: In this mode, the step executes the scan, then processes the results by normalizing and deduplicating them.
+- **Ingestion mode**: In this mode, the ModelScan step ingests scan results from a specified file. The scan results file must be in JSON format.
 
 ### Scan Configuration
 
@@ -73,6 +75,12 @@ import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md';
 
 <StoSettingTargetWorkspace />
+
+### Ingestion File
+
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
+
+<StoSettingIngestionFile />
 
 ### Log Level
 
