@@ -166,9 +166,3 @@ The Services dashboard provides a service-centric view of your deployments, enab
 3. **Compare environments**: See how services perform across production and non-production environments
 
 By utilizing the Services dashboard, you gain visibility into all your services, including GitOps applications. This helps you maintain reliable deployments and quickly address issues as they arise.
-
-## Next Steps
-
-- [Learn more about GitOps Applications](/docs/continuous-delivery/gitops/application/manage-gitops-applications)
-- [Configure GitOps Repositories](/docs/continuous-delivery/gitops/gitops-entities/repositories/add-a-harness-git-ops-repository)
-- [Set up GitOps Agent](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent)
