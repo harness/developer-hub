@@ -11,28 +11,35 @@ sidebar_position: 240
 <br/>
 <br/>
 
-The ModelScan step in Harness STO uses the open-source scanner [ModelScan](https://github.com/protectai/modelscan) to scan your machine learning (ML) models for security vulnerabilities. You can perform ModelScan scans in both **Orchestration** and **Ingestion** modes. This document will guide you through configuring the ModelScan step in your STO pipeline.
-
-For a list of all the model formats that STO supports for ModelScan scans, refer to [What models and frameworks are supported?](https://github.com/protectai/modelscan?tab=readme-ov-file#what-models-and-frameworks-are-supported) in the ModelScan documentation.
+The **ModelScan** step in Harness STO uses the open-source scanner [ModelScan](https://github.com/protectai/modelscan) to scan your machine learning (ML) models for security vulnerabilities. You can perform **ModelScan** scans in both **[Orchestration](#scan-mode)** and **[Ingestion](#scan-mode)** modes. This document will guide you through configuring the **ModelScan** step in your STO pipeline.
 
 :::info
 - To run scans as a non-root user, you can use custom STO scan images and pipelines. See [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 - STO supports multiple workflows for loading self-signed certificates. See [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 :::
 
+### Supported ML Libraries and Formats
+
+The following table lists the ML libraries and serialization formats, along with their support status in the **ModelScan** step.
+
+| ML Library                                   | Serialization Format                 | Support Status   |
+| :------------------------------------------- | :----------------------------------- | :--------------- |
+| Pytorch                                      | Pickle                               | ✅ Supported     |
+| Keras                                        | HD5 (Hierarchical Data Format)       | ✅ Supported     |
+| Classic ML Libraries (Sklearn, XGBoost, etc.) | Pickle, Cloudpickle, Dill, Joblib    | ✅ Supported     |
+| TensorFlow                                   | Protocol Buffer                      | ❌ Not Supported |
+| Keras                                        | Keras V3 (Hierarchical Data Format)  | ❌ Not Supported |
+
+Scanning ML models in **binary files** is not supported. Your models must be in one of the supported formats listed above.
 
 ## ModelScan step settings
 
-The recommended workflow is to add a ModelScan step to a **Security** or **Build** stage and then configure it as described below.
-
-:::note
-Scanning ML models in binary files is not supported. Your models must be in one of the [supported formats](https://github.com/protectai/modelscan?tab=readme-ov-file#what-models-and-frameworks-are-supported).
-:::
+The recommended workflow is to add a **ModelScan** step to a **Security** or **Build** stage and then configure it as described below.
 
 ### Scan Mode
 
 - **Orchestration mode**: In this mode, the step executes the scan, then processes the results by normalizing and deduplicating them.
-- **Ingestion mode**: In this mode, the ModelScan step ingests scan results from a specified file. The scan results file must be in JSON format.
+- **Ingestion mode**: In this mode, the **ModelScan** step ingests scan results from a specified file. The scan results file must be in JSON format.
 
 ### Scan Configuration
 
@@ -48,7 +55,7 @@ import StoSettingScanTypeRepo from './shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeRepo />
 
-You can also scan models stored in Hugging Face repositories by using the [Harness GitHub connector](/docs/platform/connectors/code-repositories/connect-to-code-repo), configured to connect to your Hugging Face account.
+You can also scan models stored in **Hugging Face** repositories by using the [Harness GitHub connector](/docs/platform/connectors/code-repositories/connect-to-code-repo), configured to connect to your Hugging Face account.
 
 #### Target and variant detection 
 
