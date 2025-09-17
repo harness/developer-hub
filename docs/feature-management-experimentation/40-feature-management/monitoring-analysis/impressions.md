@@ -62,7 +62,9 @@ The following SDKs support appending custom properties for each `getTreatment` c
   
   | **Client-side SDK** | **Version that supports impression properties** |
   |----------------------|-----------------------------------------------|
+  | [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#append-properties-to-impressions)          | 5.2.0 and later                               |
   | [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#append-properties-to-impressions)          | 1.2 and later                                 |
+  | [Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin#append-properties-to-impressions)          | 1.0.0 and later                            |
   | [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#append-properties-to-impressions)              | 3.2.0 and later                               |
   | [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#append-properties-to-impressions)       | 11.2.0 and later                              |
   | [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#append-properties-to-impressions)            | 2.1.0 and later                               |
@@ -73,16 +75,19 @@ The following SDKs support appending custom properties for each `getTreatment` c
   
   | **Client-side SDK Suite** | **Version that supports impression properties** |
   |----------------------|-----------------------------------------------|
+  | [Android Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite#append-properties-to-impressions)     | 2.1.0 and later                                  |
   | [Browser Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#append-properties-to-impressions)     | 2.1.0 and later                                  |
-  | [iOS Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#append-properties-to-impressions)         | 2.1.0 and later                                   |
+  | [iOS Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#append-properties-to-impressions)         | 2.1.0 and later                                  |
   
   </TabItem>
   <TabItem value="server-sdks" label="Server-side SDKs">
   
   | **Server-side SDK** | **Version that supports impression properties** |
   |----------------------|-----------------------------------------------|
-  | [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#append-properties-to-impressions)            | 4.15.0 and later                               |
+  | [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#append-properties-to-impressions)            | 4.15.0 and later                              |
   | [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#append-properties-to-impressions)         | 11.2.0 and later                               |
+  | [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#append-properties-to-impressions)         | 8.7.0 and later                                  |
+  | [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#append-properties-to-impressions)         | 10.4.0 and later                               |
 
   </TabItem>
 </Tabs>

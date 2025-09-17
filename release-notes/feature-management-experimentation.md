@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-07-25T10:00:00
+date: 2025-09-17T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,7 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: July 25, 2025
+#### Last updated: September 18, 2025
 
 ## July 2025
 
@@ -177,8 +177,11 @@ The following SDKs now allow you to append properties to impressions for each `g
 #### Related documentation
 
 - [Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions#impression-properties)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk/#append-properties-to-impressions)
+- [Android Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite#append-properties-to-impressions)
 - [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#append-properties-to-impressions)
 - [Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#append-properties-to-impressions)
+- [Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin#append-properties-to-impressions)
 - [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#append-properties-to-impressions)
 - [iOS SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#append-properties-to-impressions)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#append-properties-to-impressions)
@@ -186,6 +189,8 @@ The following SDKs now allow you to append properties to impressions for each `g
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#append-properties-to-impressions)
 - [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#append-properties-to-impressions)
 - [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#append-properties-to-impressions)
+- [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#append-properties-to-impressions)
+- [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#append-properties-to-impressions)
 
 ## March 2025
 ### [New Feature] Feature flag impression toggle
