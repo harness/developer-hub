@@ -16,6 +16,18 @@ An ApplicationSet works like an application factory. It defines one application 
 
 The ApplicationSet CRD is managed by the dedicated Kubernetes controller, `applicationset-controller`, similar to the Application CRD being managed by `application-controller`.
 
+:::note Version Compatibility Notes
+When upgrading between ArgoCD versions, be aware of these important changes:
+
+**ArgoCD 2.10 to 2.14 Changes:**
+- **ApplicationSet Controller Permissions**: In version 2.10, the ApplicationSet controller only required `get` permissions on app projects, but in version 2.14 it also requires `list` permission on app projects. Update your RBAC configurations accordingly.
+- **Cluster Secret Scoping**: From version 2.12, cluster secrets with a non-empty project field are now strictly scoped to that project. Applications or ApplicationSets from other projects can no longer use these secrets.
+- **Project API Response**: In version 2.14, project API responses were sanitized to remove sensitive information like credentials of project-scoped repositories and clusters for security reasons.
+- **Helm Version**: Helm was upgraded multiple times between these versions, with version 2.14 using Helm 3.16.2.
+
+When upgrading, always refer to the [official ArgoCD upgrade documentation](https://argo-cd.readthedocs.io/en/latest/operator-manual/upgrading/overview/) for complete details.
+:::
+
 ApplicationSets offer the following capabilities:
 
 * Use a single manifest to target multiple Kubernetes clusters.
