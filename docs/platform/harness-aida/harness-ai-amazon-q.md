@@ -112,6 +112,3 @@ Then interact with Harness using natural language prompts.
 -	If no resources are returned, confirm that Org ID, Project ID, or Base URL are set correctly.
 -	For performance or latency issues, ensure the MCP server has sufficient resources and review its logs.
 
-
-
-If you like, I can also include a “Security & Governance Considerations” section about Amazon Q (e.g. permissions, IAM policies, data privacy) for the doc.
