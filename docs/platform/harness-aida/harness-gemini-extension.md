@@ -20,12 +20,9 @@ Before getting started, ensure you have:
 - Docker installed (for running the MCP server)
 
 
-
----
-
 ## Introduction
 
-Harness MCP with Gemini CLI brings the power of Harness directly into the developer’s command line, turning everyday DevOps tasks into natural language conversations. Developers can instantly generate and modify pipelines, analyze failed executions with AI-powered insights, and create or manage connectors without navigating complex UIs. Teams gain faster feedback loops, reduced context switching, and easier governance by surfacing policy checks and approval flows directly in the CLI. This integration empowers developers to move from idea to deployment in minutes, improving productivity, accelerating time-to-market, and ensuring every action aligns with enterprise standards—all while staying in the environment they use most: the terminal.
+Harness MCP with Gemini CLI brings the power of Harness directly into the developer’s command line, turning everyday DevOps tasks into natural language conversations. Developers can instantly generate and modify pipelines, analyze failed executions with AI-powered insights, and create or manage connectors without navigating the Harness UI. Teams gain faster feedback loops, reduced context switching, and easier governance by surfacing policy checks and approval flows directly in the CLI. This integration empowers developers to move from idea to deployment in minutes, improving productivity, accelerating time-to-market, and ensuring every action aligns with enterprise standards—all while staying in the environment they use most: the terminal.
 
 ## Installation
 
