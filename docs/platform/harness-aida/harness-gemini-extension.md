@@ -1,5 +1,5 @@
 ---
-title: Harness AI x Gemini CLI 
+title: Harness AI x Gemini CLI Extension
 description: Leverage Gemini CLI with Harness AI MCP Server to unleash your developer workflows
 sidebar_position: 11
 ---
@@ -12,10 +12,14 @@ Harness MCP (Model Context Protocol) integrates seamlessly with **Gemini CLI**, 
 
 ## Prerequisites
 
+Before getting started, ensure you have:
+
 - Installed [Harness MCP Server](https://developer.harness.io/docs/platform/harness-aida/harness-mcp-server/)  
 - [Gemini CLI](https://github.com/google-gemini/cli) installed (requires Node.js v18+)  
-- Access to the [Harness MCP GitHub repo](https://github.com/harness/mcp-server)  
-- Harness API key with required permissions  
+- Harness API key with required permissions
+- Docker installed (for running the MCP server)
+- Gemini CLI installed  
+
 
 ---
 
@@ -23,46 +27,20 @@ Harness MCP (Model Context Protocol) integrates seamlessly with **Gemini CLI**, 
 
 Harness MCP with Gemini CLI brings the power of Harness directly into the developer’s command line, turning everyday DevOps tasks into natural language conversations. Developers can instantly generate and modify pipelines, analyze failed executions with AI-powered insights, and create or manage connectors without navigating complex UIs. Teams gain faster feedback loops, reduced context switching, and easier governance by surfacing policy checks and approval flows directly in the CLI. This integration empowers developers to move from idea to deployment in minutes, improving productivity, accelerating time-to-market, and ensuring every action aligns with enterprise standards—all while staying in the environment they use most: the terminal.
 
-## Step 1: Create a Gemini CLI Extension for Harness MCP
+## Installation
 
-Gemini CLI extensions are defined in a manifest file named `gemini-extension.json`.  
-Below is an example manifest to connect Gemini CLI with Harness MCP:
+### Step 1: Install the Harness MCP Extension
+Install the extension directly from the GitHub repository:
 
-```json
-{
-  "name": "harness-mcp-extension",
-  "version": "1.0.0",
-  "description": "Gemini CLI extension that connects Gemini to the Harness MCP Server for CI/CD and DevOps automation.",
-  "mcpServers": {
-    "harness": {
-      "command": "npx",
-      "args": ["-y", "@harness/mcp-server"],
-      "env": {
-        "HARNESS_ACCOUNT_ID": "${env:HARNESS_ACCOUNT_ID}",
-        "HARNESS_ORG_ID": "${env:HARNESS_ORG_ID}",
-        "HARNESS_PROJECT_ID": "${env:HARNESS_PROJECT_ID}",
-        "HARNESS_API_KEY": "${env:HARNESS_API_KEY}",
-        "HARNESS_ENDPOINT": "${env:HARNESS_ENDPOINT}"
-      },
-      "cwd": "${extensionPath}"
-    }
-  },
-  "commands": [
-    {
-      "name": "harness:whoami",
-      "description": "Confirm Harness credentials are valid by fetching current principal via MCP.",
-      "prompt": "Use the Harness MCP to verify my identity and current account/org/project access."
-    }
-  ]
-}
-```
+```bash
+gemini extensions install https://github.com/harness/mcp-server
 
 ## Step 2: Install and Enable the Extension
 
 1. Create a folder for your extension:  
    ```bash
    mkdir harness-mcp-extension && cd harness-mcp-extension
-   ```
+```
 
 2.	Save the gemini-extension.json file at the repo root.
 
@@ -76,33 +54,28 @@ Below is an example manifest to connect Gemini CLI with Harness MCP:
    gemini extension list
    ```
 
-## Step 3: Configure Harness Access
+### Step 2: Configure Harness Access
 
-Export the following environment variables before running commands:
+Export your Harness API key as an environment variable:
 
-```bash
-export HARNESS_ENDPOINT="https://app.harness.io/gateway"
-export HARNESS_ACCOUNT_ID="<your_account_id>"
-export HARNESS_ORG_ID="<your_org_id>"
-export HARNESS_PROJECT_ID="<your_project_id>"
-export HARNESS_API_KEY="<your_api_key>"
+```
+export HARNESS_API_KEY="your_api_key_here"
 ```
 
-## Step 4: Validate the Integration
+Optional Environment Variables:
+	•	`HARNESS_DEFAULT_ORG_ID` – Set a default organization ID
+	•	`HARNESS_DEFAULT_PROJECT_ID` – Set a default project ID
+	• `HARNESS_BASE_URL` – Defaults to https://app.harness.io
 
-Run a quick test to confirm that the extension can reach Harness MCP:
+###  Step 3: Start Using Gemini with Harness
 
-```bash
-gemini run harness:whoami
+Launch Gemini CLI:
+
+```
+gemini
 ```
 
-Or simply ask Gemini:
-
-```bash
-gemini> Using the Harness MCP, confirm my identity and list the default account/org/project in scope.
-```
-
-## Step 5: Example Prompts
+## Example Prompts
 
 ### Pipeline Management
 
@@ -128,5 +101,79 @@ Show me all services connected to my production pipelines in Harness.
 Configure a Pipeline that has a Harness Approval stage that requires the account administrator user group to approve. Minimum 2 users must approve.
 ```
 
+## How It Works
 
+The extension uses Docker to run the Harness MCP server with the following configuration:
+	•	Docker Image: harness/mcp-server:latest
+	•	Communication: Standard I/O (stdio)
+	•	Environment: Inherits your HARNESS_API_KEY and other Harness environment variables
+	•	Base URL: Defaults to https://app.harness.io
 
+## Extension Management
+
+- List Installed Extensions
+
+```shell 
+gemini extensions list
+```
+
+- Update the Extension
+
+```shell
+gemini extensions update harness-platform
+```
+
+- Disable the Extension
+
+```shell
+gemini extensions disable harness-platform
+```
+
+- Uninstall the Extension
+
+```shell
+gemini extensions uninstall harness-platform
+```
+
+## Best Practices
+
+#### Secrets
+ 
+- Keep all API keys in environment variables, never hardcode them.
+
+#### Review Before Apply
+
+- Always review generated YAML/configurations before applying them.
+
+#### RBAC Enforcement
+
+- The Harness MCP enforces RBAC, so ensure your API key has the correct permissions.
+
+ #### Scope Management
+ 
+- Use organization and project environment variables to set appropriate defaults.
+
+## Troubleshooting
+
+### Extension Installation Issues
+
+- Ensure you have a valid internet connection
+- Verify Docker is running if you encounter Docker-related errors
+- Check that the GitHub repository is accessible
+
+### Authentication Issues
+
+- Verify your HARNESS_API_KEY is valid and has appropriate permissions
+- Check that the API key hasn’t expired
+- Ensure you’re using the correct base URL for your Harness instance
+
+### Docker Issues
+
+- Ensure Docker is installed and running
+- Verify you have permission to pull Docker images
+- Check Docker daemon status if container startup fails
+
+## References
+- [Harness MCP GitHub Repository](https://github.com/harness/mcp-server)
+- [Gemini CLI Extensions Documentation](https://ai.google.dev/gemini-api/docs/cli)
+- [Harness API Documentation](https://developer.harness.io/docs)
