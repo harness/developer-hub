@@ -252,32 +252,39 @@ spec:
 <summary>Helm chart default `values.yaml` file</summary>
 <br />
 
-[Helm chart default `values.yaml` file](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml)
+For the newest references, please utilize the most up-to-date [Helm chart default `values.yaml` file example found in our repository](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml)
 
 ```yaml
-# Default configuration values for the Harness Delegate NextGen.
+# Default values for delegate-ng.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 image:
   pullPolicy: Always
+  # Uncomment below lines to use a custom registry + repository, a different repository or a different tag, this will override the delegateDockerImage
+  # registry: null
+  # repository: null
+  # tag: null
 
 fullnameOverride: ""
 
+mTLS:
+  secretName: ""
+
 serviceAccount:
-  # Specifies whether a service account should be created.
+  # Specifies whether a service account should be created
   create: true
-  # Annotations to add to the service account.
+  # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template.
+  # If not set and create is true, a name is generated using the fullname template
   name: ""
 
 service:
- # type: ClusterIP
+  # type: ClusterIP
   port: 8080
 
-# Edit this if you want to enable horizontal pod autoscaling.
+# Edit this if you want to enable horizontal pod autoscaling
 autoscaling:
   enabled: false
   minReplicas: 1
@@ -297,23 +304,30 @@ delegateName: harness-delegate-ng
 
 deployMode: "KUBERNETES"
 
-delegateDockerImage: harness/delegate:24.01.82108
+delegateDockerImage: harness/delegate:25.08.86503
 
-# Annotations for delegate deployment; Prometheus is added by default.
+commonAnnotations: {}  # Annotations that will be applied to all resources
+delegateAnnotations: {}  # Annotations that will be applied to both pod and deployment spec for Delegate
+# Annotations for delegate deployment, prometheus is added by default
 annotations:
   prometheus.io/scrape: "true"
   prometheus.io/port: "3460"
   prometheus.io/path: "/api/metrics"
 
+
+commonLabels: {}  # Labels that will be applied to all resources
+delegatePodLabels: {}  # Labels that will be applied to pod spec
+delegateLabels: {}  # Labels that will be applied to both deployment and pod spec for Delegate
+
 imagePullSecret: ""
 
-# Endpoint that will point to the Harness platform. For accessing SaaS platform use the default value.
+# Endpoint that will point to harness platform. For accessing SAAS platform use the default value.
 managerEndpoint: https://app.harness.io
 
-# If socket connection is not supported, set this flag to true to poll tasks using REST API calls.
+# If socket connection is not supported, set this flag to true to poll tasks using rest API calls
 pollForTasks: "false"
 
-# Change this to alter startup probe and liveness probe settings.
+# Change this to alter startup probe and liveness probe settings
 startupProbe:
   initialDelaySeconds: 10
   periodSeconds: 10
@@ -326,27 +340,45 @@ livenessProbe:
   failureThreshold: 3
   timeoutSeconds: 1
 
-# Add delegate description and tags.
+# Add delegate description and tags
 description: ""
 tags: ""
 
-# Permissions for the installed delegate, could be CLUSTER_ADMIN, CLUSTER_VIEWER, or NAMESPACE_ADMIN.
-# For using a custom role: Create a role in the Kubernetes cluster and refer to the role in the k8sPermissionsType field.
-# For example, if your custom role name is custom-role, then you need to add k8sPermissionsType: "custom-role".
+# Permissions for installed delegate, could be CLUSTER_ADMIN, CLUSTER_VIEWER or NAMESPACE_ADMIN
+# For using custom role: Create role in kubernetes cluster and refer role in k8sPermissionsType field.
+# for example if your custom role name is custom-role, then you need to add
+#k8sPermissionsType: "custom-role"
 k8sPermissionsType: "CLUSTER_ADMIN"
 
-# Number of pod replicas running the delegate image.
+# Number of pod replica running delegate image
 replicas: 1
 
-# The deployment strategy. Can be "RollingUpdate" or "Recreate". Can be useful if a rolling update is not
+# The deployment strategy. Can be "RollingUpdate" or "Recreate". Can be usefull if a rolling update is not
 # possible due to custom volumes or mounts that can only be attached to a single pod.
 deploymentStrategy: "RollingUpdate"
 
-# Resource limits of the container running the delegate image in Kubernetes.
+# Rolling update configuration (only applies when deploymentStrategy is "RollingUpdate").
+# By default, these are not set so Kubernetes uses its own defaults (currently 25%).
+# Uncomment and set if you want to override the defaults. You may use integers or percentage strings (e.g., "25%")
+# rollingUpdate:
+#   # Maximum number of pods that can be created above the desired replica count during updates
+#   maxSurge: "25%"
+#   # Maximum number of pods that can be unavailable during the update process
+#   maxUnavailable: "25%"
+
+# Resource limits of container running delegate image in kubernetes
+# If you want to set custom resource limits, uncomment the below line and set the values for cpu and memory request/limit
+# resources:
+#   limits:
+#     cpu: 1
+#     memory: 2048Mi
+#   requests:
+#     cpu: 1
+#     memory: 2048Mi
 cpu: 1
 memory: 2048
 
-# Script to run before delegate installation.
+# Script to run before delegate installation
 initScript: ""
 
 # This is a constant, don't change this.
@@ -357,59 +389,75 @@ javaOpts: "-Xms64M"
 upgrader:
   enabled: true
   upgraderDockerImage: "harness/upgrader:latest"
+  registryMirror: ""
+  image:
+    pullPolicy: Always
+    # Uncomment below lines to use a custom registry + repository, a different repository or a different tag, this will override the upgraderDockerImage
+    # registry: null
+    # repository: null
+    # tag: null
+  
+  # Schedule for the upgrader cronjob (cron format)
+  schedule: "0 */1 * * *"
+
+  imagePullSecret: ""
+
   cronJobServiceAccountName: "upgrader-cronjob-sa"
-  # Use an existing Secret that stores the UPGRADER_TOKEN key instead of creating a new one. The value should be set with the `UPGRADER_TOKEN` key inside the secret.
-  ## The use of external secrets allows you to manage credentials from external tools like Vault, 1Password, SealedSecrets, among others.
-  ## If set, this parameter takes precedence over "upgraderToken".
-  ## Recommendations:
+  # Use existing Secret which stores UPGRADER_TOKEN key instead of creating a new one. The value should be set with the `UPGRADER_TOKEN` key inside the secret.
+  ## The use of external secrets allows you to manage credentials from external tools like Vault, 1Password, SealedSecrets, among other.
+  ## If set, this parameter takes precedence over "upgraderToken"
+  ## Recommendation:
   ## - Use different Secrets names for `existingUpgraderToken` and `existingDelegateToken`.
-  ## - Do not use Secrets managed by other Helm deployments.
+  ## - Do not use Secrets managed by other helm delpoyments.
   existingUpgraderToken: ""
 
+  # Set security context for upgrader
+  securityContext:
+
 # This field is DEPRECATED, DON'T OVERRIDE/USE THIS!!
-# To set root/non-root access and other security context, use the delegateSecurityContext field below.
+# To set root/non-root access and other security context use delegateSecurityContext field below.
 # Not removing this field to maintain backward compatibility.
 securityContext:
   runAsRoot: true
 
-# Set security context for delegate.
+# Set security context for delegate
 delegateSecurityContext:
   allowPrivilegeEscalation: false
   runAsUser: 0
 
 nextGen: true
 
-# Below are the required fields. No default values are populated for these.
-# Please add values for the delegate to work.
+# Below are the required fields, no default values are populated for these.
+# Please add values for delegate to work.
 
-# Account Id to which the delegate will be connecting.
+# Account Id to which the delegate will be connecting
 accountId: ""
-# Delegate Token.
+# Delegate Token
 delegateToken: ""
-# Use an existing Secret which stores the DELEGATE_TOKEN key instead of creating a new one. The value should be set with the `DELEGATE_TOKEN` key inside the secret.
-## The use of external secrets allows you to manage credentials from external tools like Vault, 1Password, SealedSecrets, among others.
+# Use existing Secret which stores DELEGATE_TOKEN key instead of creating a new one. The value should be set with the `DELEGATE_TOKEN` key inside the secret.
+## The use of external secrets allows you to manage credentials from external tools like Vault, 1Password, SealedSecrets, among other.
 ## If set, this parameter takes precedence over "delegateToken".
 ## Recommendations:
 ## - Use different Secrets names for `existingUpgraderToken` and `existingDelegateToken`.
-## - Do not use Secrets managed by other Helm deployments.
+## - Do not use Secrets managed by other helm delpoyments.
 existingDelegateToken: ""
 
-# Configure a Kubernetes build farm to use self-signed certificates.
+# Configure a Kubernetes build farm to use self-signed certificates
 # https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/
 # CAUTION
-# Make sure that the destination path is not the same as the default CA certificate path of the corresponding container image.
+# Make sure that the destination path is not same as the default CA certificate path of the corresponding container image.
 #
 # If you want to override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes all certificates required by the pipelines that will use this build infrastructure.
-# This is the LEGACY way to add a cert; we recommend using destinationCaPath. Please follow the document:
+# This is LEGACY way to adding cert, we recommend to use destinationCaPath, please follow the document:
 # https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/
 shared_certificates:
   # Location in the delegate to which the ca_bundle will be mounted or a location in the custom delegate image to which the
-  # CA chain has already been placed as part of creating the custom delegate image.
+  # CA chain has already been placed as part of creating the custom delegate image
   certs_path: /shared/customer-artifacts/certificates/ca.bundle
-  # Example Certificate Chain (Multi-line files).
-  # ca_bundle should be the text of the CA Bundle to include in a secret.
+  # Example Certificate Chain (Multi-line files )
+  # ca_bundle should be the text of the CA Bundle to include in a secret
   #
-  # Note: when defined, the secret will be mounted to the certs_path location on the delegate.
+  # Note: when defined, the secret will be mounted to the certs_path location on the delegate
   ca_bundle: # |
   #   -----BEGIN CERTIFICATE-----
   #   XXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -418,39 +466,51 @@ shared_certificates:
   #   XXXXXXXXXXXXXXXXXXXXXXXXXXX
   #   -----END CERTIFICATE-------
 
-  # CI Mount targets are the locations where the secrets should be mounted in the CI Images. This will share any CA chain defined in the certs_path key to any CI image
+  # CI Mount targets are the locations that the secrets should be mounted in the CI Images.  This will share any CA chain defined in the certs_path key to any CI image
   # configured in the pod.
   ci_mount_targets:
     # - /etc/ssl/certs/ca-bundle.crt
     # - /etc/ssl/certs/ca-certificates.crt
     # - /kaniko/ssl/certs/additional-ca-cert-bundle.crt
 
-# Additional environment variables for the delegate pod.
+# additional init containers for the delegate pod
+custom_init_containers:
+  # - name: init-container
+  #   image: busybox
+  #   command: ['sh', '-c', 'echo "Hello from init container!"']
+
+# additional sidecar containers for the delegate pod
+custom_containers:
+  # - name: sidecar
+  #   image: busybox
+  #   command: ['sh', '-c', 'echo "Hello from sidecar!"']
+
+# additional environment variables for the delegate pod
 custom_envs:
   # - name: DELEGATE_TASK_CAPACITY
   #   value: "10"
 
-# Mounts for the delegate pod.
+# mounts for the delegate pod
 custom_mounts:
   # - name: certs
   #   mountPath: /shared/customer-artifacts/certificates/
 
-# Volumes to add to the delegate container.
+# volumes to add to the delegate container
 custom_volumes:
   # - name: certs
   #   persistentVolumeClaim:
   #     claimName: harness-delegate-ng-certs
 
-# Minimum number of seconds for which a newly-created Pod should be ready without any of its containers crashing, for it to be considered available.
-# This is set for improving stability during upgrade. It will tell Kubernetes to wait at least this amount of seconds before removing the old pod after the new one becomes ready.
+# minimum number of seconds for which a newly created Pod should be ready without any of its containers crashing, for it to be considered available.
+# This is set for improving stability during upgrade. It will tell kubernetes to wait at least this amount of seconds before removing the old pod after the new one becomes ready.
 minReadySeconds: 120
 
-# Enable the cluster role needed for CCM cost visibility.
-# Not needed if k8sPermissionsType: "CLUSTER_ADMIN" is specified.
+# Enable the cluster role needed for CCM cost visibility
+# Not needed if k8sPermissionsType: "CLUSTER_ADMIN" is specified
 ccm:
   visibility: false
 
-# Use this field to add additional labels.
+# Use this field to add additional labels
 additionalLabels: {}
 #  nologging: "true"
 
@@ -473,10 +533,9 @@ upgraderCustomCa:
 delegateCustomCa:
   secretName:
 
-# This is the recommended way to use custom certs with CI.
-# For more information, go to https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/
+# This is recommended way of using custom certs with CI.
+# Please refer: https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/
 destinationCaPath:
-
 ```
 
 </details>
