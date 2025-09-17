@@ -373,6 +373,10 @@ const config: Config = {
               to: 'https://harness.io/products/feature-flags',
             },
             {
+              label: 'Feature Management & Experimentation',
+              to: 'https://www.harness.io/products/feature-management-experimentation',
+            },
+            {
               label: 'Cloud Cost Management',
               to: 'https://harness.io/products/cloud-cost',
             },

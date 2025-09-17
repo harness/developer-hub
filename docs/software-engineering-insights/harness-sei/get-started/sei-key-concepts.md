@@ -1,7 +1,7 @@
 ---
 title: Key concepts in SEI 2.0 
 description: The new experience for measuring engineering insights in Harness SEI
-sidebar_label: Key concepts
+sidebar_label: Key Concepts
 sidebar_position: 10
 ---
 
