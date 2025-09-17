@@ -212,19 +212,9 @@ By utilizing the Services dashboard, you gain visibility into all your services,
 
 Since GitOps services are closely integrated with PR pipelines, understanding how they work together is crucial. PR pipelines enable you to make environment-specific changes through pull requests that are automatically merged and applied to your deployments.
 
-### GitOps Service Manifest Types
-
-When configuring GitOps services for use with PR pipelines, you need to understand two types of manifests:
-
-1. **Release Repo Manifest**: Used with the Update Release Repo step in PR pipelines. This manifest points to configuration files (like `config.json`) containing environment-specific settings.
-
-2. **Deployment Repo Manifest**: Used with the Fetch Linked Apps step. This manifest provides information about the GitOps applications associated with your service.
-
-Both manifest types are configured in your GitOps service definition and are referenced by different PR pipeline steps.
-
 ### Dynamic Path Configuration with Variables
 
-When defining manifest paths in your GitOps service, you can use environment variables to dynamically select the correct configuration:
+When defining manifest paths in your GitOps service (as described in the [Creating a GitOps Service](#creating-a-gitops-service) section), you can use environment variables to dynamically select the correct configuration:
 
 - Use `<+env.name>` in your paths to dynamically reference environment-specific files.
 - Example path: `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`
@@ -236,10 +226,12 @@ This approach allows a single service definition to work with multiple target en
 PR pipelines include several steps specifically designed for working with GitOps services:
 
 1. **Update Release Repo**: Updates configuration files and creates a PR.
+   - Uses the Release Repo Manifest configured in your service
    - Supports hierarchical variables and list updates.
    - Overrides service or environment variables with the same name.
 
 2. **Fetch Linked Apps**: Retrieves information about GitOps applications linked to your service.
+   - Uses the Deployment Repo Manifest configured in your service
    - Displays app name, agent identifier, and URL to the Harness GitOps app.
    - Requires a properly configured Deployment Repo manifest.
 
