@@ -1,0 +1,128 @@
+[
+  {
+    "flagKey": "CDS_ADD_DEPLOYMENT_FREEZE_BYPASS_AUDIT",
+    "description": "Enables audit logging for deployment freeze bypass actions.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC",
+    "description": "Provides granular role-based access control for deployment freeze operations based on environment type.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_GITLAB_TRIGGER_TAG_EVENT",
+    "description": "Enables GitLab tag event triggers for pipelines.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_TF_POLICY_EVALUATION",
+    "description": "Enables Terraform policy evaluation in Continuous Delivery workflows.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_TEXTAREA_FOR_OVERRIDE_VARIABLES",
+    "description": "Provides textarea input for override variables in deployment configurations.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_TAS_LOGIN_OPTIMIZATION",
+    "description": "Optimizes Tanzu Application Service (TAS) login performance and reliability by reducing the number of CLI initialisation calls.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE",
+    "description": "Adds support for Terraform Cloud plan refresh type operations.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP",
+    "description": "Enables configuration to block certain users from approving in Harness Approval steps based on emails.",
+    "gaStartDate": "2025-09-15",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_AZURE_OIDC_AUTHENTICATION",
+    "description": "Enables OIDC authentication for Azure connectors.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_GCP_LIST_PROJECTS_AUTH_FIX",
+    "description": "Fixes authentication issues when listing Google Cloud Platform projects.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS",
+    "description": "Enables cross-project access for Google Cloud Platform connectors.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_OPTIONAL_VALUES_YAML",
+    "description": "Enables optional values.yaml files in K8s & Helm deployments.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ENFORCE_GIT_EXPERIENCE",
+    "description": "Enforces Git-based experience for CD entities such as service, environment, infrastructure and override configurations.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_K8S_DETAILED_LOGS",
+    "description": "Provides detailed logging for Kubernetes operations in CD.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_INFRA_DEFINITION_VALIDATION",
+    "description": "Enforces certain validation for infrastructure definitions in CD.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_USE_SECONDARY_NODE_FOR_TIMESCALE_QUERIES",
+    "description": "Internal optimisation to use secondary database nodes for TimescaleDB queries to improve performance.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ADD_EXPRESSION_RESOLUTION_FOR_OVERRIDES_V2_AT_SERVICE_STEP",
+    "description": "Fixes a bug that resolves expressions in overrides at the service step.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_OVERRIDES_GITX",
+    "description": "Enables Git experience for service and infrastructure overrides management.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_EVENT_BRIDGE_WEBHOOK",
+    "description": "Enables Event Relay triggers for pipelines.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SERVICE_INFRA_FAILURE_STRATEGY",
+    "description": "Implements failure strategies for service and infrastructure deployment steps.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_OVERRIDES_V2_IDENTIFIER_SUPPORT",
+    "description": "Adds identifier support for version 2 service and infrastructure overrides.",
+    "gaStartDate": "2025-09-15",
+    "module": "Continuous Delivery"
+  }
+]
