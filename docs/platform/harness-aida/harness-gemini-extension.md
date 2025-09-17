@@ -18,7 +18,7 @@ Before getting started, ensure you have:
 - [Gemini CLI](https://github.com/google-gemini/cli) installed (requires Node.js v18+)  
 - Harness API key with required permissions
 - Docker installed (for running the MCP server)
-- Gemini CLI installed  
+
 
 
 ---
@@ -63,9 +63,10 @@ export HARNESS_API_KEY="your_api_key_here"
 ```
 
 Optional Environment Variables:
-	•	`HARNESS_DEFAULT_ORG_ID` – Set a default organization ID
-	•	`HARNESS_DEFAULT_PROJECT_ID` – Set a default project ID
-	• `HARNESS_BASE_URL` – Defaults to https://app.harness.io
+
+- `HARNESS_DEFAULT_ORG_ID` – Set a default organization ID
+- `HARNESS_DEFAULT_PROJECT_ID` – Set a default project ID
+- `HARNESS_BASE_URL` – Defaults to https://app.harness.io
 
 ###  Step 3: Start Using Gemini with Harness
 
@@ -104,10 +105,11 @@ Configure a Pipeline that has a Harness Approval stage that requires the account
 ## How It Works
 
 The extension uses Docker to run the Harness MCP server with the following configuration:
-	•	Docker Image: harness/mcp-server:latest
-	•	Communication: Standard I/O (stdio)
-	•	Environment: Inherits your HARNESS_API_KEY and other Harness environment variables
-	•	Base URL: Defaults to https://app.harness.io
+
+- Docker Image: harness/mcp-server:latest
+- Communication: Standard I/O (stdio)
+- Environment: Inherits your HARNESS_API_KEY and other Harness environment variables
+- Base URL: Defaults to https://app.harness.io
 
 ## Extension Management
 
