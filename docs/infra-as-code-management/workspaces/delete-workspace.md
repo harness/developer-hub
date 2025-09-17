@@ -7,7 +7,7 @@ sidebar_position: 90
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In cases where your workspace has become redundant and you no longer need it, you can delete it from your Harness account. As a safeguard, Harness have several confirmation steps to ensure that workspaces aren't mistakenly deleted.
+In cases where your workspace has become redundant, and you no longer need it, you can delete it from your Harness account. As a safeguard, Harness has several confirmation steps to ensure that workspaces aren't mistakenly deleted.
 
 :::warning
 Deleting a workspace will remove your workspace, along with it's associated state file from Harness, but will not remove any of your resources.
@@ -34,17 +34,17 @@ Resources are only destroyed if you run your workspace through [a destroy pipeli
         allowfullscreen="allowfullscreen"></iframe>
     </TabItem>
     <TabItem value="API">
-        If your workspace already has an `inactive` status, you can delete a workspace via the [Harness API destroy-workspace endpoint](https://apidocs.harness.io/tag/workspaces#operation/workspaces_destroy-workspace).
+        If your workspace already has an `inactive` status, you can delete a workspace via the [Harness API destroy-workspace endpoint](https://apidocs.harness.io/openapi-merged/workspaces/workspaces_destroy-workspace).
 
         ```bash
             curl -i -X DELETE \
-            'https://app.harness.io/iacm/api/orgs/{org}/projects/{project}/workspaces/{identifier}' \
-            -H 'Harness-Account: <YOUR_HARNESS_ACCOUNT_ID>' \
-            -H 'x-api-key: <YOUR_API_KEY_HERE>'
+            https://apidocs.harness.io/openapi-merged/iacm/api/orgs/{org_id}/projects/{project_id}/workspaces/{workspace_id} \
+            -H 'Harness-Account: {harness_account_id}' \
+            -H 'x-api-key: {api_key}'
         ```
-        ---
-        :::info deactivate workspace
-        If your workspace is still active, deactivate it before calling the above endpoint with a [destroy-workspace pipeline](/docs/infra-as-code-management/workspaces/destroy-workspaces).
-        :::
-    </TabItem>
+---
+:::info deactivate workspace
+If your workspace is still active, deactivate it before calling the above endpoint with a [destroy-workspace pipeline](/docs/infra-as-code-management/workspaces/destroy-workspaces).
+:::
+</TabItem>
 </Tabs>

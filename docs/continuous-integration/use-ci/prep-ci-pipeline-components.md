@@ -18,7 +18,7 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 
 ### Create a Harness CI pipeline
 
-1. Log in to your Harness account. If you don't have an account yet, go to [Try Harness CI](../get-started/tutorials.md).
+1. Log in to your Harness account. If you don't have an account yet, go to [Try Harness CI](/docs/continuous-integration/get-started/onboarding-guide).
 2. Go to the **Continuous Integration** module, select **Pipelines**, and then select **Create a Pipeline**.
 3. Enter a **Name** for the pipeline. **Description** and **Tags** are optional.
 4. Select **Inline** to store your pipeline configuration in Harness, or select **Remote** to store your pipeline as code in a Git repository.
@@ -98,7 +98,7 @@ All stages have an infrastructure definition, which represents the build infrast
 
 :::tip Tutorials
 
-* [Build on Harness Cloud build infrastructure](../get-started/tutorials.md)
+* [Build on Harness Cloud build infrastructure](/docs/continuous-integration/get-started/onboarding-guide)
 * [Build on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 :::

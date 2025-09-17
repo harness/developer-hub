@@ -39,8 +39,8 @@ The following Harness modules are integral to a **Developer's** daily workflow. 
 - **Code Repository (CODE):** All users on the Harness Platform who have permission to access Harness CODE module are considered as **CODE Developers** and consume a license.
 - **Continuous Integration (CI):** All users on the Harness Platform who have permission to access Harness CI module are considered as **CI Developers** and consume a license.
 - **Internal Developer Portal (IDP):** All users on the Harness Platform who have permission to access Harness IDP module are considered as **IDP Developers** and consume a license.
-- **Feature Flags (FF):** All users on the Harness Platform who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered as **FF Developers** and consume a license.
-- **Software Engineering Insights (SEI):** SEI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their Engineering related work. Insights may often be accessed by management / engineering leadership.
+- **Feature Management & Experimentation (FME)**: All users on the Harness Platform who have permission to access the Harness FME module consume a user seat. Seats represent named users who manage flags, experiments, environments, or integrations within FME.
+- **Software Engineering Insights (SEI):** SEI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their engineering-related work. Insights may often be accessed by management or engineering leadership.
 
 
 ### Modules with no direct developer tracking (consumption entitlements)
@@ -64,17 +64,17 @@ CD deploys software services onto infrastructure platforms spanning traditional 
 CD tracks **Service** license consumption instead of **Developers**. All **Service** licenses are tracked over a *last 30 days* active window. For more information about CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
 
 </details>
-
 <details>
-<summary>Feature Flags (FF) Developers and Monthly Active Users (MAUs)</summary>
+<summary>Feature Management & Experimentation (FME) Services</summary>
 
-Harness Feature Flags is a feature flag rollout and management module that tracks **Developers** and **MAU** (Monthly Active Users) for license consumption.
+Feature Management & Experimentation (FME) tracks license consumption using **Monthly Tracked Keys (MTKs)** and **User Seats**.
 
-All users on the Harness Platform who have permission to create, update, or delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered **FF Developers** and consume a license.
-**Monthly Active Users (MAUs)** represent the unique users seen every month from one or more client-side applications that evaluate various flags managed by Harness.
+- Monthly Tracked Keys (MTKs) represent the number of unique traffic type identifiers (e.g. `anonymous`) evaluated by FME SDKs in a given month. This measures feature flag and experiment usage at scale. For example, if your app evaluates flags for 500,000 unique end users in September, that counts as 500,000 MTKs toward your subscription.
+- User Seats represent the named users (team members) who log into Harness FME to manage flags, experiments, environments, or integrations. Each active user account with access to FME consumes one seat.
+
+FME also enforces service limits for projects, environments, flags, segments, and more to ensure reliability. These limits are not billed, but can be raised by contacting [Harness Support](/docs/feature-management-experimentation/fme-support/).
 
 </details>
-
 <details>
 <summary>Service Reliability Management (SRM) Services</summary>
 
@@ -102,6 +102,17 @@ Chaos Engineering (CE) makes it easy to run chaos experiments across diverse ser
 CE tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
 
 For more information about CE services and how they are tracked, go to [Service licensing for CE](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/license-consumption/).
+
+</details>
+
+<details>
+<summary>Harness Database DevOps (DB DevOps) Instances</summary>
+
+Harness Database DevOps is a database lifecycle and deployment management module that licenses consumption on a **per Database Instance** basis under the dev360 model.  
+
+Each provisioned DB Instance is considered a licensed unit and consumes one DB Instance entitlement; pricing scales with the number of deployed instances. Subscription details (plan type, subscribed instance limits, start & expiry dates, and live usage metrics) are available in **Account Settings → Subscriptions**. 
+
+For purchases, add-ons, or assistance with renewal or sizing, contact the [Harness Sales Team](https://www.harness.io/company/contact-sales) or open a ticket via the [Harness Support Portal](https://support.harness.io).  
 
 </details>
 
@@ -147,7 +158,6 @@ You can always acquire additional consumption entitlements as needed through add
 | **Code Repository** | Not applicable since **Developers** are tracked directly|
 | **Continuous Integration** | Not applicable since **Developers** are tracked directly|
 | **Continuous Delivery & GitOps** | 1 Service for every 3 **Developers** |
-| **Feature Flags** | 10K MAUs per **Developer** per month|
 | **Service Reliability Management** | 1 Service for every 3 **Developers** |
 | **Chaos Engineering** | 1 Service for every 3 **Developers** |
 | **Infrastructure as Code Management** | 120 Executions per **Developer** per year|
@@ -163,7 +173,6 @@ For every module where a consumption entitlement applies, you can purchase any n
 This means you can purchase more:
 
 - Services for CD, SRM, and CE
-- MAUs for Feature Flags
 - Executions for IACM
 - Security Scans for STO
 - Supply Chain Executions for SCS
@@ -212,7 +221,7 @@ For more information about specific module subscriptions and licenses, go to:
 
 - [CI Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt/)
 - [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
-- [FF Subscriptions](/docs/feature-flags/subscribe-ff/subscriptions-overview.md)
+- [FME usage and billing](/docs/feature-management-experimentation/management-and-administration/account-usage)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
 - [CE license consumption](/docs/chaos-engineering/guides/license-consumption)
 - [SEI subscriptions and licenses](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing)
