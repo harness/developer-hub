@@ -5,6 +5,9 @@ sidebar_label: SSO for Split Admins
 sidebar_position: 7
 ---
 
+import InfoOmitFMEAdmins from './shared/scim-info-omit-fme-admins.md';
+import TipRenameFMEAdmins from './shared/scim-tip-rename-fme-admins.md';
+
 ## Overview
 
 The work in this guide (which is unrelated to RBAC) must be completed and tested before your migration date. The migration process will assign the appropriate role-based access control settings to users and objects for you. You can disregard any mention of assigning roles to users in the Harness SSO documentation.  
@@ -64,6 +67,15 @@ You must ensure that all of your Split users and groups are synced (and kept con
 
 The group name `_fme_admins` is required.  You may change the name after confirming the first provisioning sync has established the immutable Group ID of `_fme_admins` on the Harness side.
 :::
+
+#### Groups not managed in SCIM
+
+It is possible that you might want to move some Split groups into Harness, but prefer not to manage these groups in SCIM going forward. In this case, **before migration** for each of these Split groups, you should follow these steps:
+
+1. Create a matching group in Harness. The Harness group name should be exactly the same as the Split group name.
+2. In Harness, manually add members to the group.
+
+If the group name in Harness exactly matches the group name in Split, the migration script will create RBAC assignments for the Harness group. This will grant the Harness group access permissions equivalent to the permissions of the legacy group in Split.
 
 ## Configure SSO
 
@@ -261,9 +273,11 @@ To enforce ongoing management of that group from the Okta side, you must perform
 1. Add all of your current Split Administrators to the `_fme_admins` Okta group.
 1. Assign and push the `_fme_admins` Okta group to the Harness application.
 
+<InfoOmitFMEAdmins />
+
 #### Assign Remaining Split-Assigned Groups to Harness
 
-Once you have created the `new _fme_admins` group on the Okta side, the next step is to assign all current Split groups to Harness as well. Be very careful not to assign the "Administrators" group found in the Split application setup. You do not want that group pushed to Harness by Okta.  
+Once you have created the new `_fme_admins` group on the Okta side, the next step is to assign all current Split groups to Harness as well. Be very careful not to assign the "Administrators" group found in the Split application setup. You do not want that group pushed to Harness by Okta.  
 
 Here are the steps:
 
@@ -277,6 +291,8 @@ Here are the steps:
 The last task is to verify that all Split users and groups now appear on the Harness side as SCIM-managed. Once you have done this, send an email to your Customer Success Manager or support@split.io with subject line, "SCIM Configured for [your account name]" so we know your account is ready for your migration day. 
 
 If you run into any issues, let us know and we'll be happy to help!
+
+<TipRenameFMEAdmins app='Okta' />
 
 ### SCIM with Microsoft Entra ID
 
@@ -313,6 +329,8 @@ Here are the steps:
 1. Add all of your current Split Administrators to the `_fme_admins` Entra ID group.
 1. Assign the `_fme_admins` Entra ID group to the Harness application.
 
+<InfoOmitFMEAdmins />
+
 #### Assign Remaining Split-Assigned Groups to Harness
 
 Once you have created the new `_fme_admins` group on the Entra ID side, the next step is to assign all current Split groups to Harness as well. Be very careful not to assign the "Administrators" group found in the Split application setup. You do not want that group pushed to Harness by Entra ID.  
@@ -329,6 +347,8 @@ Here are the steps:
 The last task is to verify that all Split users and groups now appear on the Harness side as SCIM-managed. Once you have done this, send an email to your Customer Success Manager or support@split.io with subject line, "SCIM Configured for [your account name]" so we know your account is ready for your migration day. 
 
 If you run into any issues, let us know and we'll be happy to help!
+
+<TipRenameFMEAdmins app='Entra ID' />
 
 #### SSO or SCIM With Other
 
