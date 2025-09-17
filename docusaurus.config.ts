@@ -447,7 +447,7 @@ const config: Config = {
             },
             {
               label: 'Feature Flags GA List',
-              to: '/feature-flags',
+              to: '/feature-flags-ga-timeline',
             },
             {
               label: 'Instructor-Led Training',
@@ -536,16 +536,6 @@ const config: Config = {
           const sidebarItemsWithoutIndex = hideIndexFromSidebarItems(sidebarItems);
           return sidebarItemsWithoutIndex;
         },
-      },
-    ],
-    [
-      path.resolve(__dirname, './plugins/docs-rss-plugin'),
-      {
-        id: 'feature-flags',
-        path: 'feature-flags',
-        routeBasePath: 'feature-flags',
-        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
-        editUrl: 'https://github.com/harness/developer-hub/tree/main',
       },
     ],
     // redirect plugin start

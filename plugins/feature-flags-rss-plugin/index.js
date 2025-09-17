@@ -23,7 +23,7 @@ async function featureFlagsRssPlugin(context, options) {
     async postBuild({ outDir }) {
       const jsonPath = path.join(
         context.siteDir,
-        'feature-flags/static/ff-ga-feed.json'
+        'release-notes/feature-flags-ga-timeline/static/ff-ga-feed.json'
       );
       if (!fs.existsSync(jsonPath)) {
         console.warn('[feature-flags-rss-plugin] JSON file not found:', jsonPath);
@@ -39,18 +39,18 @@ async function featureFlagsRssPlugin(context, options) {
       const baseUrl = context.siteConfig.baseUrl || '/';
       const rssFeed = new Feed({
         title: 'Feature Flags GA RSS Feed',
-        id: siteUrl + baseUrl + 'feature-flags/rss.xml',
-        link: siteUrl + baseUrl + 'feature-flags/rss.xml',
+        id: siteUrl + baseUrl + 'release-notes/feature-flags-ga-timeline/rss.xml',
+        link: siteUrl + baseUrl + 'release-notes/feature-flags-ga-timeline/rss.xml',
         updated: new Date(),
         feedLinks: {
-          rss: siteUrl + baseUrl + 'feature-flags/rss.xml',
+          rss: siteUrl + baseUrl + 'release-notes/feature-flags-ga-timeline/rss.xml',
         },
       });
       filtered.forEach(item => {
         rssFeed.addItem({
           title: item.flagKey,
           id: item.flagKey,
-          link: siteUrl + baseUrl + 'feature-flags/',
+          link: siteUrl + baseUrl + 'release-notes/feature-flags-ga-timeline/',
           description: item.description,
           date: new Date(item.gaStartDate),
           category: [
@@ -61,7 +61,7 @@ async function featureFlagsRssPlugin(context, options) {
           ],
         });
       });
-      const outputPathRSS = path.join(outDir, 'feature-flags', 'rss.xml');
+      const outputPathRSS = path.join(outDir, 'release-notes', 'feature-flags-ga-timeline', 'rss.xml');
       fs.ensureDirSync(path.dirname(outputPathRSS));
       fs.writeFileSync(outputPathRSS, rssFeed.rss2());
       console.log('[feature-flags-rss-plugin] RSS feed generated at', outputPathRSS);

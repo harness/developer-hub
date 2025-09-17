@@ -3,8 +3,8 @@ import Layout from '@theme/Layout';
 import DocsButton from '../DocsButton';
 import styles from './ga-list.module.css';
 
-const FEED_URL = '/feature-flags/static/ff-ga-feed.json';
-const ATOM_URL = 'https://developer.harness.io/feature-flags/rss.xml';
+const FEED_URL = '/release-notes/feature-flags-ga-timeline/static/ff-ga-feed.json';
+const ATOM_URL = 'https://developer.harness.io/release-notes/feature-flags-ga-timeline/rss.xml';
 
 interface FFGAEntry {
   flagKey: string;

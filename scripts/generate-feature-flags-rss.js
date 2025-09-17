@@ -2,8 +2,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const { Feed } = require('feed');
 
-const jsonPath = path.join(__dirname, '../feature-flags/static/ff-ga-feed.json');
-const outputPath = path.join(__dirname, '../build/feature-flags/rss.xml');
+const jsonPath = path.join(__dirname, '../release-notes/feature-flags-ga-timeline/static/ff-ga-feed.json');
+const outputPath = path.join(__dirname, '../build/feature-flags-ga-timeline/rss.xml');
 const siteUrl = 'https://developer.harness.io';
 const baseUrl = '/';
 
@@ -18,18 +18,18 @@ if (!Array.isArray(data) || data.length === 0) {
 }
 const feed = new Feed({
   title: 'Feature Flags GA RSS Feed',
-  id: siteUrl + baseUrl + 'feature-flags/rss.xml',
-  link: siteUrl + baseUrl + 'feature-flags/rss.xml',
+  id: siteUrl + baseUrl + '/release-notes/feature-flags-ga-timeline/rss.xml',
+  link: siteUrl + baseUrl + '/release-notes/feature-flags-ga-timeline/rss.xml',
   updated: new Date(),
   feedLinks: {
-    rss: siteUrl + baseUrl + 'feature-flags/rss.xml',
+    rss: siteUrl + baseUrl + '/release-notes/feature-flags-ga-timeline/rss.xml',
   },
 });
 data.forEach(item => {
   feed.addItem({
     title: item.flagKey,
     id: item.flagKey,
-    link: siteUrl + baseUrl + 'feature-flags/',
+    link: siteUrl + baseUrl + '/release-notes/feature-flags-ga-timeline/',
     description: item.description,
     date: new Date(item.gaStartDate),
     category: [

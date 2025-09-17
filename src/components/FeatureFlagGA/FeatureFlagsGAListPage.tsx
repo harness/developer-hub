@@ -43,7 +43,7 @@ export default function FeatureFlagsGAListPage({ flags = [], loading = false, er
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={releaseNotesStyles.btnContainer}>
-            <Link href={'https://developer.harness.io/feature-flags/rss.xml'}>
+            <Link href={'https://developer.harness.io/release-notes/feature-flags-ga-timeline/rss.xml'}>
               <button className={releaseNotesStyles.btn}>
                 <img src={`${baseUrl}img/icon_square-rss.svg`} alt="Atom" />
                 Subscribe via Atom
