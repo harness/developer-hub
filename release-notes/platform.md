@@ -159,6 +159,16 @@ The following deprecated API endpoints are longer supported:
 
 ## September 2025 
 
+### Version 1.108.x <!--September 17, 2025-->
+
+#### Fixed issues
+
+- Added a name and description to the body parameter of the [Token Validation API](https://apidocs.harness.io/openapi-merged/token/validatetoken). [PL-64820]
+
+#### New features and enhancements
+
+- Added support for running Harness services with a read-only root filesystem. [PL-65055]
+
 ### Version 1.105.x <!--September 03, 2025-->
 
 #### New features and enhancements
