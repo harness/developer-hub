@@ -124,5 +124,11 @@
     "description": "Adds identifier support for version 2 service and infrastructure overrides.",
     "gaStartDate": "2025-09-15",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ENABLE_RUN_HELM_CHART_TESTS",
+    "description": "Add the functionality to run Helm chart tests.",
+    "gaStartDate": "2025-09-17",
+    "module": "Continuous Delivery"
   }
 ]
