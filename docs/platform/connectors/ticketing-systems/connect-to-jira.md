@@ -41,7 +41,33 @@ To add a Jira connector to your Harness project:
 
 6. In Authentication, you can select one of the following: 
    - **Username and API Key**: Enter your credentials. For username, use the **full email address** you use to log into Jira.
-   For **API Key**, use a Harness [Text Secret](/docs/platform/secrets/add-use-text-secrets). Go to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
+       To obtain your **API Key**: You need to create a scoped API token in Jira with the following scopes: 
+     - `read:jira-user` - Allows Harness to read user information
+     - `read:jira-work` - Allows Harness to read Jira issues and related data
+     - `write:jira-work` - Allows Harness to create and update Jira issues
+     
+     To learn how to create a scoped API token, check out [Scoped API Tokens in Confluence Cloud](https://support.atlassian.com/confluence/kb/scoped-api-tokens-in-confluence-cloud/).
+  
+      ```yaml
+      connector:
+        name: scopedJiraApiToken
+        identifier: scopedJiraApiTokenID
+        description: "scoped API token-based Harness connector for Jira"
+        accountIdentifier: YOUR_ACCOUNT_IDENTIFIER
+        orgIdentifier: YOUR_ORG_IDENTIFIER 
+        projectIdentifier: YOUR_PROJECT_IDENTIFIER
+        type: Jira
+        spec:
+          jiraUrl: https://api.atlassian.com/ex/jira/{cloud_id} # Replace {cloud_id} with your actual Cloud ID from Jira
+          auth:
+            type: UsernamePassword
+            spec:
+              username: YOUR_EMAIL_ADDRESS_FOR_JIRA_LOGIN
+              passwordRef: YOUR_SCOPED_API_TOKEN_SECRET
+          ignoreTestConnection: false
+       ```
+     To ensure you have the correct Cloud ID, please refer to [Atlassian's detailed guide on finding your Cloud ID](https://support.atlassian.com/jira/kb/retrieve-my-atlassian-sites-cloud-id/).
+
    - **Personal Access Token**: Add your Personal Access Token (PAT) to Harness as an [encrypted text](/docs/platform/secrets/add-use-text-secrets) and select the same in the Jira connector.
       
      :::important
