@@ -122,6 +122,12 @@ If an email is not received, and is expected to be received, please check the fo
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness sends an account access notification email to the user.
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled both feature flags: `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` takes precedence over `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`. Harness adds users directly to the **Active Users** list, and Harness *doesn't* send invitation emails.
 
+#### Instances where Pending Users appear, after Feature Flags are set
+If customers' `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` or `AUTO_ACCEPT_SAML_ACCOUNT_INVITES` are enabled on their account, and users are still moving into a "pending" state, customers should see if they are hitting a limit on their account.  For Synchronization processes, the default user count to be synchronized via SCIM or LDAP is 50,000 users.  
+
+If the account is hitting this limit, customers will see that a list of Pending Users will be growing in their account, and users will not be able to access the account.  Customers should first clear out their users and confirm if the number of users is required. 
+To request a limit increase, please open a [ticket with Harness Support](mailto:support@harness.io) and provide a reason for the need for the increase in users.  
+
 ## Assign roles and resource groups
 
 You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to users to grant them permissions and access in Harness. Users can inherit roles and resource groups from [group membership](./add-user-groups.md), or you can assign roles and resource groups directly to individual users. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role binding](./rbac-in-harness.md#role-binding).
