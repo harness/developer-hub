@@ -163,7 +163,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Added a name and description to the body parameter of the [Token Validation API](https://apidocs.harness.io/openapi-merged/token/validatetoken). [PL-64820]
+- Updated the name and description of the body parameter in the [Token Validation API](https://apidocs.harness.io/openapi-merged/token/validatetoken). [PL-64820]
 
 #### New features and enhancements
 
