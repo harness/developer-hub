@@ -18,14 +18,11 @@ Before getting started, ensure you have:
 - [Gemini CLI](https://github.com/google-gemini/cli) installed (requires Node.js v18+)  
 - Harness API key with required permissions
 - Docker installed (for running the MCP server)
-- Gemini CLI installed  
 
-
----
 
 ## Introduction
 
-Harness MCP with Gemini CLI brings the power of Harness directly into the developer’s command line, turning everyday DevOps tasks into natural language conversations. Developers can instantly generate and modify pipelines, analyze failed executions with AI-powered insights, and create or manage connectors without navigating complex UIs. Teams gain faster feedback loops, reduced context switching, and easier governance by surfacing policy checks and approval flows directly in the CLI. This integration empowers developers to move from idea to deployment in minutes, improving productivity, accelerating time-to-market, and ensuring every action aligns with enterprise standards—all while staying in the environment they use most: the terminal.
+Harness MCP with Gemini CLI brings the power of Harness directly into the developer’s command line, turning everyday DevOps tasks into natural language conversations. Developers can instantly generate and modify pipelines, analyze failed executions with AI-powered insights, and create or manage connectors without navigating the Harness UI. Teams gain faster feedback loops, reduced context switching, and easier governance by surfacing policy checks and approval flows directly in the CLI. This integration empowers developers to move from idea to deployment in minutes, improving productivity, accelerating time-to-market, and ensuring every action aligns with enterprise standards—all while staying in the environment they use most: the terminal.
 
 ## Installation
 
@@ -34,25 +31,8 @@ Install the extension directly from the GitHub repository:
 
 ```bash
 gemini extensions install https://github.com/harness/mcp-server
-
-## Step 2: Install and Enable the Extension
-
-1. Create a folder for your extension:  
-   ```bash
-   mkdir harness-mcp-extension && cd harness-mcp-extension
 ```
 
-2.	Save the gemini-extension.json file at the repo root.
-
-3.	Add the extension:
-   ```bash
-    gemini extension add .
-   ```
-
-4. Verify installation:
-   ```bash
-   gemini extension list
-   ```
 
 ### Step 2: Configure Harness Access
 
@@ -63,9 +43,10 @@ export HARNESS_API_KEY="your_api_key_here"
 ```
 
 Optional Environment Variables:
-	•	`HARNESS_DEFAULT_ORG_ID` – Set a default organization ID
-	•	`HARNESS_DEFAULT_PROJECT_ID` – Set a default project ID
-	• `HARNESS_BASE_URL` – Defaults to https://app.harness.io
+
+- `HARNESS_DEFAULT_ORG_ID` – Set a default organization ID
+- `HARNESS_DEFAULT_PROJECT_ID` – Set a default project ID
+- `HARNESS_BASE_URL` – Defaults to https://app.harness.io
 
 ###  Step 3: Start Using Gemini with Harness
 
@@ -104,10 +85,11 @@ Configure a Pipeline that has a Harness Approval stage that requires the account
 ## How It Works
 
 The extension uses Docker to run the Harness MCP server with the following configuration:
-	•	Docker Image: harness/mcp-server:latest
-	•	Communication: Standard I/O (stdio)
-	•	Environment: Inherits your HARNESS_API_KEY and other Harness environment variables
-	•	Base URL: Defaults to https://app.harness.io
+
+- Docker Image: harness/mcp-server:latest
+- Communication: Standard I/O (stdio)
+- Environment: Inherits your HARNESS_API_KEY and other Harness environment variables
+- Base URL: Defaults to https://app.harness.io
 
 ## Extension Management
 
