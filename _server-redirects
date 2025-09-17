@@ -43,10 +43,10 @@
 /tutorials/security-tests /docs/security-testing-orchestration
 /docs/continuous-delivery/get-started/cd-tutorial /docs/continuous-delivery
 /tutorials/cd-pipelines /docs/continuous-delivery
-/tutorials/cd-pipelines/unified-cicd /docs/category/cd-and-gitops-tutorials
-/tutorials/cd-pipelines/kubernetes /docs/category/cd-and-gitops-tutorials
-/tutorials/cd-pipelines/serverless /docs/category/cd-and-gitops-tutorials
-/tutorials/cd-pipelines/vm /docs/category/cd-and-gitops-tutorials
+/tutorials/cd-pipelines/unified-cicd /docs/category/cd-tutorials
+/tutorials/cd-pipelines/kubernetes /docs/category/cd-tutorials
+/tutorials/cd-pipelines/serverless /docs/category/cd-tutorials
+/tutorials/cd-pipelines/vm /docs/category/cd-tutorials
 /tutorials /docs
 
 # Added by schoudhury on 3-2-2024

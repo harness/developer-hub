@@ -1,0 +1,12 @@
+{
+    "label": "Resources",
+    "position": "1000",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "description": "GitOps Troubleshooting and FAQs",
+    "link": {
+        "type": "generated-index",
+        "title": "GitOps Resources"
+    }
+  }

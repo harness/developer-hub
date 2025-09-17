@@ -5,6 +5,7 @@ sidebar_position: 10
 redirect_from:
   - /docs/continuous-delivery/gitops/create-cluster-with-iam
   - /docs/continuous-delivery/gitops/use-gitops/gitops-agent-metrics
+  - /docs/continuous-delivery/gitops/agents/gitops-agent-metrics
 ---
 
 :::info

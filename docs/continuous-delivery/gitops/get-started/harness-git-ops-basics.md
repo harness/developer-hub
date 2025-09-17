@@ -279,4 +279,4 @@ Click the link to begin and experience GitOps automation with Harness! 🚀
 
 ## FAQs
 
-For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/resources/gitops-faqs).

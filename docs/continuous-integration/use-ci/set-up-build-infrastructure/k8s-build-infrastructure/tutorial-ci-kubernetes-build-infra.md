@@ -385,4 +385,4 @@ pipeline:
 
 </details>
 
-After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/docs/category/cd-and-gitops-tutorials).
+After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/docs/category/cd-tutorials).

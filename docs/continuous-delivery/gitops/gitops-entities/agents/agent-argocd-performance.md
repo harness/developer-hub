@@ -4,6 +4,7 @@ description: Learn how to improve perfomance with your Argo deployments
 sidebar_position: 70
 redirect_from:
   - /docs/continuous-delivery/gitops/use-gitops/agent-argocd-performance
+  - /docs/continuous-delivery/gitops/agents/agent-argocd-performance
 ---
 
 Argo CD is a powerful tool for managing continuous deployments in Kubernetes environments. However, as deployments scale, users may encounter performance challenges, particularly with the **Application Controller** and **Repository Server** components. Understanding these common issues is crucial for maintaining optimal performance. 
