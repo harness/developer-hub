@@ -41,12 +41,12 @@ To add a Jira connector to your Harness project:
 
 6. In Authentication, you can select one of the following: 
    - **Username and API Key**: Enter your credentials. For username, use the **full email address** you use to log into Jira.
-       To obtain your **API Key**: You need to create a scoped API token in Jira with the following scopes: 
+       To obtain your **API Key**: You need to create a scoped API token in Jira with the following scopes:
      - `read:jira-user` - Allows Harness to read user information
      - `read:jira-work` - Allows Harness to read Jira issues and related data
      - `write:jira-work` - Allows Harness to create and update Jira issues
      
-     To learn how to create a scoped API token, check out [Scoped API Tokens in Confluence Cloud](https://support.atlassian.com/confluence/kb/scoped-api-tokens-in-confluence-cloud/).
+     To learn how to create a scoped API token, check out [Scoped API Tokens in Confluence Cloud](https://support.atlassian.com/confluence/kb/scoped-api-tokens-in-confluence-cloud/). Once you create the scoped API token, add it as a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets).
   
       ```yaml
       connector:
@@ -63,7 +63,7 @@ To add a Jira connector to your Harness project:
             type: UsernamePassword
             spec:
               username: YOUR_EMAIL_ADDRESS_FOR_JIRA_LOGIN
-              passwordRef: YOUR_SCOPED_API_TOKEN_SECRET
+              passwordRef: YOUR_TEXT_SECRET_CONTAINING_SCOPED_API_TOKEN
           ignoreTestConnection: false
        ```
      To ensure you have the correct Cloud ID, please refer to [Atlassian's detailed guide on finding your Cloud ID](https://support.atlassian.com/jira/kb/retrieve-my-atlassian-sites-cloud-id/).
