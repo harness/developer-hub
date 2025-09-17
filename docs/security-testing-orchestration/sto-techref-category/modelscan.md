@@ -89,6 +89,8 @@ import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile />
 
+The ingestion file must be in `JSON` format.
+
 ### Log Level
 
 import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
