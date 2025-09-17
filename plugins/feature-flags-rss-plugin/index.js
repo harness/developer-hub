@@ -23,7 +23,7 @@ async function featureFlagsRssPlugin(context, options) {
     async postBuild({ outDir }) {
       const jsonPath = path.join(
         context.siteDir,
-        'release-notes/feature-flags-ga-timeline/static/ff-ga-feed.json'
+        'release-notes/static/ff-ga-feed.json'
       );
       if (!fs.existsSync(jsonPath)) {
         console.warn('[feature-flags-rss-plugin] JSON file not found:', jsonPath);

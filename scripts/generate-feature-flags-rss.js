@@ -2,8 +2,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const { Feed } = require('feed');
 
-const jsonPath = path.join(__dirname, '../release-notes/feature-flags-ga-timeline/static/ff-ga-feed.json');
-const outputPath = path.join(__dirname, '../build/feature-flags-ga-timeline/rss.xml');
+const jsonPath = path.join(__dirname, '../release-notes/static/ff-ga-feed.json');
+const outputPath = path.join(__dirname, '../build/release-notes/feature-flags-ga-timeline/rss.xml');
 const siteUrl = 'https://developer.harness.io';
 const baseUrl = '/';
 

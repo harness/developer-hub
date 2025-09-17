@@ -446,8 +446,8 @@ const config: Config = {
               to: 'https://ideas.harness.io',
             },
             {
-              label: 'Feature Flags GA List',
-              to: '/feature-flags-ga-timeline',
+              label: 'Feature Flags GA Timeline',
+              to: '/release-notes/feature-flags-ga-timeline',
             },
             {
               label: 'Instructor-Led Training',
