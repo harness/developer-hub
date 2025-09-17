@@ -2,6 +2,7 @@
 title: Harness AI x Amazon Q Developer
 description: Leverage Amazon Q CLI with Harness AI MCP Server to unleash your developer workflows
 sidebar_position: 12
+---
 
 # Amazon Q Developer CLI Integration with Harness MCP Server
 
