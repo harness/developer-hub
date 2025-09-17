@@ -75,8 +75,8 @@ The impacted endpoints:
 
 ## How We’ll Support You
 
-* Admin access to your new Harness account will be provided by [DATE TBD].
-* We released Before and After Guide: API for Split Admins on March 11th, 2025 to help you update your automation code. This [Postman collection](https://github.com/splitio/public-api-postman) contains both working examples and background information to help you focus on just the endpoints and actions you need to learn.
+* Admin access to your new Harness account has been provided ahead of time. Contact your CSM or support@split.io if you do not have the invite. 
+* We released the [Before and After Guide: API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins) on March 11th, 2025 to help you update your automation code. That guide links to an online Postman collection which contains both working examples and background information to help you focus on just the endpoints and actions you need to learn.
 * Your CSM can provide a list of the specific endpoints and HTTP methods (`GET`, `PUT`, `POST`, `PATCH`, `DELETE`) used. However, they will not have access to request contents or know which of your scripts is calling them.
 
 ## FAQs
