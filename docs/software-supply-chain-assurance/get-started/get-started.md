@@ -20,7 +20,7 @@ To begin, navigate to the **Get Started** section in the Harness SCS and click o
 
 <DocImage path={require('./static/get-started-01.png')} width="80%" height="80%" title="Click to view full size image" />
 
-:::note
+:::info
 Please refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section in the what's supported page to see the full list of supported integrations for each SCS feature.
 :::
 
@@ -97,6 +97,11 @@ After clicking **Finish** a pipeline is triggered to perform operations on the s
 
 Navigate to the **Code Repositories** section to view your repositories, and the **CI/CD** section to view your pipelines, along with their risk and security posture.
 
+:::note
+
+Vanity URLs aren’t supported when onboarding repositories with a GitHub App.
+
+:::
 
 ## Setup CI/CD SPM on Harness pipelines
 From the **Get started** page, click on **Harness** under available integrations, and select **Enable** on the CI/CD Security options. This will set up the CI/CD SPM on your Harness pipelines.
