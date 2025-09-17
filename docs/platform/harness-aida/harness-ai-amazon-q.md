@@ -8,15 +8,15 @@ sidebar_position: 12
 
 ## What is Amazon Q Developer
 
-Amazon Q Developer is a generative AI-powered assistant by AWS built on Amazon Bedrock. It helps with understanding, building, extending, and operating AWS applications. You can use it in various environments including the CLI (command line), IDEs, AWS Console, chat applications, etc. It supports features like conversational assistance, code suggestions, inline completions, and translating natural language into shell commands.  ￼
+Amazon Q Developer is a generative AI-powered assistant by AWS built on Amazon Bedrock. It helps with understanding, building, extending, and operating AWS applications. You can use it in various environments including the CLI (command line), IDEs, AWS Console, chat applications, etc. It supports features like conversational assistance, code suggestions, inline completions, and translating natural language into shell commands.
 
 In the CLI context, Amazon Q Developer enhances your terminal experience by:
-	•	providing command autocompletion for many common CLIs (like git, npm, docker, aws)  ￼
-	•	enabling “chat mode” where you can ask questions in natural language from the terminal and get responses that help you build, debug, or operate your code or infrastructure  ￼
-	•	translating plain language instructions into executable shell commands  ￼
-	•	understanding context (files in the project, existing settings, AWS resource state) so that suggestions and completions are more relevant  ￼
+	•	providing command autocompletion for many common CLIs (like git, npm, docker, aws)
+	•	enabling “chat mode” where you can ask questions in natural language from the terminal and get responses that help you build, debug, or operate your code or infrastructure
+	•	translating plain language instructions into executable shell commands
+	•	understanding context (files in the project, existing settings, AWS resource state) so that suggestions and completions are more relevant
 
-There are pricing tiers including a Free Tier; Amazon Q Developer provides features in its Free and Pro tiers.  ￼
+There are pricing tiers including a Free Tier; Amazon Q Developer provides features in its Free and Pro tiers.
 
 
 
