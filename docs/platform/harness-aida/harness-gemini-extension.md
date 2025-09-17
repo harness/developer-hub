@@ -34,25 +34,8 @@ Install the extension directly from the GitHub repository:
 
 ```bash
 gemini extensions install https://github.com/harness/mcp-server
-
-## Step 2: Install and Enable the Extension
-
-1. Create a folder for your extension:  
-   ```bash
-   mkdir harness-mcp-extension && cd harness-mcp-extension
 ```
 
-2.	Save the gemini-extension.json file at the repo root.
-
-3.	Add the extension:
-   ```bash
-    gemini extension add .
-   ```
-
-4. Verify installation:
-   ```bash
-   gemini extension list
-   ```
 
 ### Step 2: Configure Harness Access
 
