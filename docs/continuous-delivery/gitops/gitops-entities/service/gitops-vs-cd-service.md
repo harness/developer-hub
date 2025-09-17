@@ -91,5 +91,4 @@ You can also combine both approaches in Harness:
 
 ## Next Steps
 
-- [Learn more about GitOps Services](/docs/continuous-delivery/gitops/gitops-entities/service/service)
-- [Compare GitOps Services with PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/service/service#using-gitops-services-with-pr-pipelines)
+- [Learn more about GitOps Services](/docs/continuous-delivery/gitops/gitops-entities/service/)
