@@ -98,72 +98,72 @@ export default function AccessibilityPage() {
                 </a>
               </li>
               <li>
-                <a href={`/doc/cd-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-cd-vpat-report.pdf`} className={styles.link} target="_blank">
                   CD VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/ci-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-ci-vpat-report.pdf`} className={styles.link} target="_blank">
                   CI VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/dbdevops-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-dbdevops-vpat-report.pdf`} className={styles.link} target="_blank">
                   DB Devops VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/sre-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-sre-vpat-report.pdf`} className={styles.link} target="_blank">
                   AI SRE VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/fme-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-fme-vpat-report.pdf`} className={styles.link} target="_blank">
                   FME VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/idp-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-idp-vpat-report.pdf`} className={styles.link} target="_blank">
                   IDP VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/ccm-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-ccm-vpat-report.pdf`} className={styles.link} target="_blank">
                   CCM VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/sei-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-sei-vpat-report.pdf`} className={styles.link} target="_blank">
                   SEI VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/ar-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-ar-vpat-report.pdf`} className={styles.link} target="_blank">
                   AR VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/ce-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-ce-vpat-report.pdf`} className={styles.link} target="_blank">
                   CE VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/iacm-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-iacm-vpat-report.pdf`} className={styles.link} target="_blank">
                   IaCM VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/sto-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-sto-vpat-report.pdf`} className={styles.link} target="_blank">
                   STO VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/scs-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-scs-vpat-report.pdf`} className={styles.link} target="_blank">
                   SCS VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/ata-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-ata-vpat-report.pdf`} className={styles.link} target="_blank">
                   ATA VPAT Report
                 </a>
               </li>
