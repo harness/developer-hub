@@ -29,3 +29,17 @@ The Environment should now be creating, and you can follow the progress by viewi
 When are are ready to delete the environment, go to the Environment page and from the Options menu at the top right, hit “Delete”. It will destroy the namespace and delete the environment.
 
 ---
+
+## Use Pipeline Approvals in Environments
+
+Environment management in Harness IDP enables integration with **[Harness Pipeline Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial)**.
+This feature allows you to add approvers in the CD service pipeline and control the environment creation process through pipeline approvals and rejections.
+
+1. Ensure that you have an **approval step/stage** added in your CD service pipeline. Refer to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) for more details.
+2. Use the same pipeline details in your environment blueprint steps `apply` and `destroy` for your [CD services](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md#2-catalog-backend-services).
+3. Create a new environment using the same environment blueprint. You will be prompted to approve the pipeline deployment for your service instances.
+![](./static/approval-prompt1.png))
+4. Approve the pipeline execution for your service instances.
+![](./static/instance-approvals.png)
+5. Once approved, your environment will be successfully created.
+![](./static/env-creation.png)
