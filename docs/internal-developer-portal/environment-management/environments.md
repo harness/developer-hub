@@ -38,7 +38,7 @@ This feature allows you to add approvers in the CD service pipeline and control 
 1. Ensure that you have an **approval step/stage** added in your CD service pipeline. Refer to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) for more details.
 2. Use the same pipeline details in your environment blueprint steps `apply` and `destroy` for your [CD services](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md#2-catalog-backend-services).
 3. Create a new environment using the same environment blueprint. You will be prompted to approve the pipeline deployment for your service instances.
-![](./static/approval-prompt1.png))
+![](./static/approval-prompt1.png)
 4. Approve the pipeline execution for your service instances.
 ![](./static/instance-approvals.png)
 5. Once approved, your environment will be successfully created.
