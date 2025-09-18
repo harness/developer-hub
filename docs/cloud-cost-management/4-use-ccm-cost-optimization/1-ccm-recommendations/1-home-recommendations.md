@@ -380,10 +380,12 @@ Using recommendations without proper assessment could result in unexpected chang
 </details>
 
 <details>
-<summary>What is the correct and expected workflow if a recommendation is applied only partially </summary>
+<summary>What is the correct and expected workflow if a recommendation is applied only partially</summary>
+
 Currently, CCM recommendations are tracked at the recommendation level. When a recommendation is marked as Applied, Harness assumes that all listed resources were actioned, and the full savings amount is recorded.
 If only a subset of resources is applied, the expected process is to:
 - Apply the recommendation.
 - Manually update the realized savings using the “Edit savings amount” option to reflect the actual savings.
+
 </details>
 
