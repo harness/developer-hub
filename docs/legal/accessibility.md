@@ -28,7 +28,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 **Evaluation Methods Used:** Webaim contrast checker, Manual keyboard checks
 
-**Download the Report:** [Harness Accessibility Conformance Report](/doc/harness_accessibility_conformance_report_2022.pdf)
+**Download the Report:** [Harness Accessibility Summary Report](/doc/accessibility-summary-report.pdf)
 
 <br/>
 
