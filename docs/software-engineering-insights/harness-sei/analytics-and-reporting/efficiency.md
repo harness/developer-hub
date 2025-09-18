@@ -101,3 +101,19 @@ This widget provides insights into how long it takes to recover from a failure o
 The following options are available for this widget:
 
   * **View Breakdown**: Provides a detailed breakdown of restoration time by team.
+
+## Troubleshooting
+
+### Lead Time for Changes
+
+#### Why does the Build phase show no data even when the PR merge time is before the build creation time?
+
+![](../static/build-time-troubleshooting.png)
+
+This occurs due to a correlation mismatch between commits and CI builds. The build time for the Effiency Profile is calculated as:
+
+$$
+\text{Build Time} = \text{First CI Build} - \text{Last PR Merged}
+$$
+
+If the build time calculation results in a negative value, for example, when the first CI build occurs before the last PR was merged (e.g. August 25 to September 2), the build time is considered `0`. This is why no data appears.
