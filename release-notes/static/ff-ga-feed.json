@@ -126,6 +126,294 @@
     "module": "Continuous Delivery"
   },
   {
+    "flagKey": "CDS_FIX_ROLLBACK_IN_SSH_WINRM",
+    "description": "Fixes rollback functionality in SSH and WinRM deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ECS_STEADY_STATE_CHECK_ON_RETRIES",
+    "description": "Enables steady state checks on retries for ECS deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ASG_FIX_LIFECYCLE_HOOKS_ORDER",
+    "description": "Fixes the order of lifecycle hooks in Auto Scaling Group deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT",
+    "description": "Adds rollback support for multi-deployment Auto Scaling Group deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_AWS_LAMBDA_CANARY_DEPLOY",
+    "description": "Enables canary deployment strategy for AWS Lambda functions.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_DETECT_ORPHAN_INSTANCES",
+    "description": "Enables detection of orphaned instances in deployments & cleans them up.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_AZURE_FUNCTION_EXTRACT_CORRECT_SLOT_NAME_USING_FUNCTION_NAME",
+    "description": "Improves slot name extraction for Azure Functions using function names.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_AWS_LAMBDA_DISABLE_DOUBLE_VERSION_PUBLISH",
+    "description": "Fixes a bug by preventing double version publishing in AWS Lambda deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS",
+    "description": "Provides a refresh button to manually refresh the status of the approval ticket in Jira and ServiceNow approval steps.",
+    "gaStartDate": "2025-09-18",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_OVERRIDES_DISABLE_ENV_API_UPDATES",
+    "description": "Disables environment API updates for service overrides on overrides V2.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_K8S_MASK_SECRETS_IN_WRAPUP_LOGS",
+    "description": "Masks secrets in Kubernetes deployment wrap-up logs for security.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SERVICE_OVERRIDES_1_0_VALIDATE_MANIFEST_TYPE",
+    "description": "Adds validation for manifest types in service overrides version 1.0.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SPOT_TRAFFIC_SHIFT",
+    "description": "Enables traffic shifting for Spot deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN",
+    "description": "Refreshes execution authentication tokens for EKS clusters.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE",
+    "description": "Validates that namespace overrides match with infrastructure namespace configurations.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SERVICE_DASHBOARD_SIMPLIFICATION",
+    "description": "Improves service dashboard load time by optimizing API calls and relocating certain data to enhance performance.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_AWS_LAMBDA_ECS_TAG_SUPPORT",
+    "description": "Adds ECS tag support for AWS Lambda deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ECS_TRAFFIC_SHIFT",
+    "description": "Enables traffic shifting capabilities for ECS deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_CONFIG_MAPS_AND_SECRETS_AS_VOLUME",
+    "description": "Enables mounting ConfigMaps and Secrets as volumes in container step groups.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT",
+    "description": "Adds support for traffic route rewrite rules in Kubernetes deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ENABLE_SERVICE_OPA_EVAL_ON_RUNTIME_CONTEXT",
+    "description": "Enables Open Policy Agent evaluation on runtime context for services.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SERVICE_OVERRIDES_MERGE_FIX",
+    "description": "Fixes a rare bug in how service overrides were merged.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ECS_MONITOR_TASK_STATUS",
+    "description": "Enables monitoring of task status in ECS deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SEND_CORRECT_SCOPE_TO_ACCESS_CONTROL_FOR_INFRA",
+    "description": "Fixes a bug where scope of the infrastructure was not being honored to enforce RBAC.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS",
+    "description": "Enables blue-green deployment validation with same target groups in ECS.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_TRAFFIC_SHIFT_WITHOUT_TEMP_VERSION",
+    "description": "Enables traffic shifting without creating temporary versions.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_OPA_CD_ENTITIES_GOVERNANCE",
+    "description": "Enables Open Policy Agent governance for CD entities such as service, environment, infrastructure and overrides.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ASYNC_EXECUTABLE_USE_SELECTORS",
+    "description": "Enables the use of selectors in asynchronous executable operations.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_CROSS_SCOPED_ENV_GROUPS",
+    "description": "Enables creating environments groups containing environments from different scopes.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL",
+    "description": "Enables service and environment dashboard at account and organization levels for better visibility.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE",
+    "description": "Fixes a bug where the Delegate selector precedence was not being honored for container step groups.",
+    "gaStartDate": "2025-09-18",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX",
+    "description": "Fixes a bug where run-as-user and privileged mode settings were not being honored for container step groups.",
+    "gaStartDate": "2025-09-18",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH",
+    "description": "Enables instance refresh during Auto Scaling Group rollout and rollback operations.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_UI_SERVICE_DASHBOARD_API_PAGINATION",
+    "description": "Implements API pagination for the service dashboard user interface for better performance.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_NG_INSTANCE_SYNC_ALWAYS_RESET_PT",
+    "description": "Always resets perpetual tasks post deployments ensuring the recent connector details are used.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_NEW_PROJECT_OVERVIEW_DASHBOARD",
+    "description": "Enables the new project overview dashboard interface for better visibility.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_INIT_STEP_FAILURE_STRATEGY",
+    "description": "Implements failure strategies for initialization steps.",
+    "gaStartDate": "2025-09-18",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_MULTI_DEPLOYMENT_ON_FAILURE",
+    "description": "Allows users to configure how the Pipeline should handle failures during multi-service/multi-environment/multi-infrastructure deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SPECIFY_INFRASTRUCTURES",
+    "description": "Enables specification of infrastructure configurations in deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_PERFORM_SHELL_SCRIPT_HOST_CAPABILITY",
+    "description": "Enables shell script execution host capability checks.",
+    "gaStartDate": "2025-09-18",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_WINRM_COPY_CONFIG_FILES_WITH_ENCODING_NG",
+    "description": "Enables WinRM configuration file copying with proper encoding support.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SKIP_INFRA_VALIDATION",
+    "description": "Allows skipping infrastructure validation during deployments.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_USE_K8S_API_FOR_STEADY_STATE_CHECK",
+    "description": "Uses Kubernetes API for steady state checks instead of kubectl.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ALLOW_USER_TYPE_FIELDS_JIRA",
+    "description": "Allows user type fields in Jira integration configurations.",
+    "gaStartDate": "2025-09-18",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_LANDING_OVERVIEW_PAGE_V2",
+    "description": "Enables a new landing overview page interface for better visibility and performance.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_NG_K8S_SERVICE_RELEASE_NAME",
+    "description": "Enables Next Generation Kubernetes service release naming.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_PRESERVE_WINRM_WORKING_DIR_FOR_COMMAND_UNITS",
+    "description": "Preserves WinRM working directory for command unit execution.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "GITOPS_MULTI_SOURCE_ENABLED",
+    "description": "Enables multiple source configurations for GitOps Applications.",
+    "gaStartDate": "2025-09-18",
+    "module": "GitOps"
+  },
+  {
     "flagKey": "CDS_ENABLE_RUN_HELM_CHART_TESTS",
     "description": "Add the functionality to run Helm chart tests.",
     "gaStartDate": "2025-09-17",
