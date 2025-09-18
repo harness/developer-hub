@@ -113,7 +113,7 @@ Below is an example AWS policy to execute the fault.
   <tr>
     <td> PROCESS_IDS / PROCESS_NAMES </td>
     <td>Process IDs or names of the target processes (comma-separated).</td>
-    <td>For example, <code>183,253,857</code> or <code>notepad.exe,explorer.exe</code>. For more information, go to <a href="#process-ids">process IDs</a> or <a href="#process-names">process names</a>.</td>
+    <td>For example, <code>183,253,857</code> or <code>notepad,explorer</code>. For more information, go to <a href="#process-ids">process IDs</a> or <a href="#process-names">process names</a>.</td>
   </tr>
 </table>
 
