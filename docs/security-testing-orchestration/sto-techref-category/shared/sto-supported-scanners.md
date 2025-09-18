@@ -27,12 +27,13 @@ A code scanner can detect one or more of the following issue types in your sourc
     <tr>
         <td valign="top">
           <ul>
-          <li><a href="/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference">Aqua Trivy</a>  Orchestration, Ingestion </li>
+          <li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy</a>  Orchestration, Ingestion </li>
           <li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Bandit</a>  Orchestration, Ingestion </li>
            <li><a href="/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>
            <li><a href="/docs/security-testing-orchestration/sto-techref-category/coverity-scanner-reference">Coverity</a> Ingestion </li>
            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a> Orchestration, Ingestion </li> 
            <li><a href="/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference">Grype</a>  Orchestration, Ingestion </li>
+           <li><a href="/docs/security-testing-orchestration/sto-techref-category/modelscan">ModelScan</a> Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference">Open Source Vulnerabilities (OSV)</a> Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP Dependency Check</a> Orchestration, Ingestion</li>  
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference">Reapsaw</a> Ingestion</li>
