@@ -32,9 +32,9 @@ This is useful for organizational restructuring, team changes, or ensuring prope
 Organization-level connectors, secrets, and templates will need to be reconfigured or recreated in the destination organization.
 :::
 
-## Steps to Move a Project
+## Steps to move a project
 
-### Step 1: Navigate and Access the Move Option
+### Step 1: Navigate and access the move option
 
 From the **Projects listing**:
 1. Navigate to **Projects** at account or organization level
@@ -46,7 +46,7 @@ From the **Project overview page**:
 2. Click the **⋮** menu in the top right
 3. Select **Move Project**
 
-### Step 2: Select Destination Organization
+### Step 2: Select destination organization
 
 1. In the Move Project modal, review the warning about potential configuration impacts
 2. Choose your destination organization from the dropdown (only organizations where you have Create Project permission appear)
@@ -55,7 +55,7 @@ From the **Project overview page**:
 
 3. Click **Move Project** to start the move process
 
-### Step 3: Confirm the Move
+### Step 3: Confirm the move
 
 1. Review the confirmation dialog showing potential impacts
 2. Type the **Project name** to confirm
@@ -66,9 +66,9 @@ From the **Project overview page**:
 
 Once the move completes, you'll be redirected to the project in its new organization. Verify that pipelines and deployments function as expected.
 
-## Post-Move Impact
+## Post-move impact
 
-### Banner Notification
+### Banner notification
 
 After moving a project, a banner appears at the top of project pages:
 
@@ -78,13 +78,13 @@ This project was recently moved from another organization. Fix references to res
 
 The banner displays for all users with project access until dismissed or after 7 days, whichever occurs first.
 
-### What Continues Working
+### What continues working
 
 - **Project-level resources**: All connectors, secrets, and templates scoped to the project
 - **Account-level resources**: All account-scoped configurations remain accessible
 - **Pipeline components**: Code sources, input sets, triggers, execution history, variables, notifications, and policy sets
 
-### What Requires Updates
+### What requires updates
 
 Organization-level resources from the source organization will no longer be accessible:
 
