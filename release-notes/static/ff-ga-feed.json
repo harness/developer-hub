@@ -408,6 +408,24 @@
     "module": "Continuous Delivery"
   },
   {
+    "flagKey": "CDS_MANIFEST_CONNECTOR_URL",
+    "description": "Add attribute connectorUrl as a manifest output from service step.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_DETECT_ORPHAN_INSTANCES",
+    "description": "Add logic to detect orphaned instance records when deleting a service, and allow service deletion.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_INSTANCE_CLEANUP_ON_TASK_INFO_DELETE",
+    "description": "Delete instance records in all cases when we are deleting the instance sync perpetual tasks related records.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
+  },
+  {
     "flagKey": "GITOPS_AUDIT_TRAIL_ENABLED",
     "description": "Adds Audit Trail for GitOps related actions.",
     "gaStartDate": "2025-09-18",
