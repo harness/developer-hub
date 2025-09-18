@@ -1,0 +1,12 @@
+{
+    "label": "Service",
+    "position": "300",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "description": "Learn how to create and use Harness GitOps service",
+    "link": {
+        "type": "generated-index",
+        "title": "Service"
+    }
+  }
