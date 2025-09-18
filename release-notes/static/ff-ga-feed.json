@@ -318,12 +318,6 @@
     "module": "Pipeline"
   },
   {
-    "flagKey": "CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH",
-    "description": "Enables instance refresh during Auto Scaling Group rollout and rollback operations.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
     "flagKey": "CDS_UI_SERVICE_DASHBOARD_API_PAGINATION",
     "description": "Implements API pagination for the service dashboard user interface for better performance.",
     "gaStartDate": "2025-09-18",
@@ -398,12 +392,6 @@
   {
     "flagKey": "CDS_NG_K8S_SERVICE_RELEASE_NAME",
     "description": "Enables Next Generation Kubernetes service release naming.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_PRESERVE_WINRM_WORKING_DIR_FOR_COMMAND_UNITS",
-    "description": "Preserves WinRM working directory for command unit execution.",
     "gaStartDate": "2025-09-18",
     "module": "Continuous Delivery"
   },
