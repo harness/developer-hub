@@ -1,7 +1,7 @@
 ---
 title: SEI 2.0 Overview
 description: The new experience for measuring engineering insights in Harness SEI
-sidebar_label: SEI 2.0 Overview
+sidebar_label: Overview
 sidebar_position: 1
 ---
 

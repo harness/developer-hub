@@ -43,7 +43,7 @@ This transition is your opportunity to start fresh, remove technical debt, and a
 
 1. **Insights Activation**
    
-   - Enable and configure [SEI 2.0 insights](/docs/category/analytics--reporting-1) as features roll out.
+   - Enable and configure [SEI 2.0 insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency) as features roll out.
    - Include DORA metrics, Productivity metrics, and Business Alignment widgets.
 
 1. **Validation & Feedback**

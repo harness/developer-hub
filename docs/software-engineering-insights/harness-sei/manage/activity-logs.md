@@ -60,4 +60,4 @@ To add a search filter to drill into specific events, click the **Filters** icon
 
 To export the full list or only the filtered logs, click the **Download** icon next to the **Filters** icon. Harness SEI saves the selected logs as a CSV file for your records.
 
-Use Activity Logs to keep your organization audit-ready and ensure that all critical changes are fully tracked. For related settings, see [Manage SEI 2.0](/docs/category/manage-sei-20).
+Use Activity Logs to keep your organization audit-ready and ensure that all critical changes are fully tracked. 
