@@ -13,7 +13,7 @@ This topic describes how to use Harness GitOps services to track your GitOps app
 In the GitOps context, a service represents an application or a group of related applications deployed through the GitOps methodology. GitOps services help you:
 
 - Track the deployment state of your applications
-- Provide a central location to manage and observe all your GitOps applications
+- Provide a central location to manage and observe all your GitOps PR pipelines and their service, and the environment details.
 
 Unlike traditional CD services that define deployment artifacts and configurations, GitOps services focus on tracking, monitoring, and visualizing the state of applications synced automatically through GitOps agents.
 
@@ -86,6 +86,8 @@ A Harness service in the GitOps context logically corresponds to a microservice/
 
 Another way is to use the App Set Reference field, wherein you provide the agent and the app set reference. This is a more dynamic way to add the service to the pipeline, as the app set and agent are already created and installed.
 
+Currently, this is behind a feature flag `GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 ![App Set Reference](./static/gitops-service-2.png)
 
 ### Linking Existing Applications to a Service
@@ -138,7 +140,9 @@ By using service variables with expressions, you can create dynamic and configur
 
 ## GitOps Service Dashboard
 
-The GitOps Service Dashboard provides visibility into your GitOps applications and services. This dashboard helps you monitor deployment activity, success rates, and service status across your entire environment.
+The GitOps Service Dashboard provides visibility into your GitOps applications and services. It helps you monitor deployment activity, success rates, and service status across your entire environment. 
+
+Note that service instances will only appear on the dashboard if they are associated with a PR pipeline that uses the specific service and environment.
 
 ### Accessing the Service Dashboard
 
