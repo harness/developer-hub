@@ -130,5 +130,11 @@
     "description": "Add the functionality to run Helm chart tests.",
     "gaStartDate": "2025-09-17",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "GITOPS_AUDIT_TRAIL_ENABLED",
+    "description": "Adds Audit Trail for GitOps related actions.",
+    "gaStartDate": "2025-09-18",
+    "module": "Continuous Delivery"
   }
 ]
