@@ -13,6 +13,8 @@ canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 CI pipelines that use a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) need Docker-in-Docker (DinD) if you need to run Docker commands as part of the build process. For example, if you want to build images from [two separate codebases in the same pipeline](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md): One with a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) and another with Docker commands in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md).
 
@@ -57,8 +59,8 @@ To demonstrate how to set up DinD in Harness CI, this topic creates a pipeline t
 In your **Build** stage, select the **Execution** tab, and add a [Background step](./background-step-settings.md) configured as follows:
 
 1. For **Name**, enter `dind_Service`.
-2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-3. For **Image**, enter the name and tag for the image that you want to use to run DinD, such as [docker:dind](https://hub.docker.com/_/docker).
+2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). 
+3. For **Image**, enter the name and tag for the image that you want to use to run DinD, such as [docker:dind](https://hub.docker.com/_/docker).  In some cases, an FQN may be necessary. More information can be found below [about setting up the registry and image](#container-registry-and-image).
 4. Under **Additional Configuration**, select **Privileged**. [Privileged mode is required](#privileged-mode-required) Docker-in-Docker to run correctly.
 5. In **Entry Point**, you can provide a list of arguments, if needed. For example, the entry point for the `docker:dind` image is `docker-entrypoint.sh`. If you want to add a `--mtu` argument, you would include both the image entry point and the additional argument in the **Entry Point** specification.
 
@@ -87,7 +89,7 @@ After the **Background** step, add a **Run** step to run your Docker commands. C
 
 1. Enter a **Name**.
 2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-3. For **Image**, enter the name and tag for the Docker image, with the Docker binary, that you want to use to execute the content of **Command**.
+3. For **Image**, enter the name and tag for the Docker image, with the Docker binary, that you want to use to execute the content of **Command**.  In some cases, an FQN may be necessary. More information can be found below [about setting up the registry and image](#container-registry-and-image).
 4. In **Command**, enter the shell commands you want to run in this step.
 
    For example, the following commands clone a Git repo, build an image, and push the image to a Docker registry:
@@ -131,6 +133,15 @@ You can also add steps to your pipeline that [run health checks on background se
 ## DinD and Docker container logs
 
 When you run your pipeline, you can review the step logs on the [Build details page](../viewing-builds.md).
+
+### Container Registry and Image
+
+The build environment must have the necessary binaries for the **DinD** step. Depending on the stage's build infrastructure, **DinD** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries.
+
+<WhenReq />
+
+<FQNImage />
+
 
 ## Pipeline YAML example
 
