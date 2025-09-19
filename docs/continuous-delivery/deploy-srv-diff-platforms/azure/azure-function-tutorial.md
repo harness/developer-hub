@@ -111,9 +111,9 @@ Within the same resource group, you can't mix Windows and Linux apps in the same
 :::info note
 In the deploy steps under Container Configuration, specify the appropriate image based on your container registry:
 
-1. [ECR Image for azure function plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
-2. [Docker Image for azure function plugin](https://hubgw.docker.com/r/harnessdev/azure-function-plugin)
-3. GAR Images for azure function plugin:
+1. [Docker Image for Azure Function Plugin](https://hub.docker.com/r/harness/azure-function-plugin/tags)
+2. [ECR Image for Azure Function Plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
+3. GAR Images for Azure Function Plugin:
    - Europe region: [GAR Image Repository for Azure Function Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fazure-function-plugin?inv=1&invt=Ab5cNA)
 
 :::
@@ -124,10 +124,24 @@ In the execution tab of the pipeline stage, select **Add Step** and select **Azu
 
 Currently Azure function deployment supports basic and custom deployment strategy.
 
+:::important Container Execution Requirements
+The Azure Function Deploy step requires a containerized execution environment:
+
+- If you select the **Basic** deployment strategy, Harness automatically adds a container Step Group with the Azure Function Deploy step inside it.
+
+- If you select the **Custom** deployment strategy, you need to manually:
+  1. Add a Step Group to your pipeline
+  2. Enable the **Container** option in the Step Group
+  3. Configure the Step Group to use your Kubernetes connector
+  4. Add the Azure function Deploy step inside this Step Group
+
+Failure to run the step in a containerized execution context will likely result in deployment failures.
+:::
+
 The Azure function Deploy step has the following settings:
 
  * **Name:** Enter a name for the step.
- * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
+ * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
  * **Container Registry**: Specify the connector that connects to the azure infrastructure and container registry you wish to use.
  * **Image**: Specify the artifact image you want to run. 
  * **Function app**: Specify the Azure Container to be used.
@@ -162,7 +176,7 @@ Additionally you can have optional configurations such as
  * **Image Pull Policy:** Specifies when the container image should be pulled from the registry.
 * **Run as User:** Configures the user identity under which the function or container should run, useful for security and access control.
 * **Limit Memory:** Defines the maximum memory that can be allocated to the container or function during execution.
-* **Limit CPU:** Sets a limit on the CPU usage for the function or container, ensuring the function does not consume excessive resources.
+* **Limit CPU:** Sets a limit on the CPU usage for the function or container, ensuring thee function does not consume excessive resources.
 
 ![](static/azure-functions-7.png)
 
