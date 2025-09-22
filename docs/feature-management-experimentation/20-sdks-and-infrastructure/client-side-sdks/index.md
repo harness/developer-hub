@@ -21,7 +21,7 @@ The Split mobile (iOS and Android) and JavaScript Browser SDKs download a local 
 The default and configuration options differ slightly by SDK:
 
 * JavaScript SDK (v11.2.0 and later): Default expiration of 10 days, configurable via the `LOCALSTORAGE` setting.
-* Browser SDK (v1.2.0 and later): Default expiration of 10 days, configurable via the `InLocalStorage` setting. See [Configuring LocalStorage cache for the SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configuring-localstorage-cache-for-the-sdk).
+* Browser SDK (v1.2.0 and later): Default expiration of 10 days, configurable via the `InLocalStorage` setting. See [Configuring persistent cache for the SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configuring-persistent-cache-for-the-sdk).
 * Android SDK (v5.3.0 and later): Default expiration of 10 days, configurable via the `rolloutCacheConfiguration` setting.
 * iOS SDK (v3.3.0 and later): Default expiration of 10 days, configurable via the `rolloutCacheConfiguration` setting.
 
