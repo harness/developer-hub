@@ -1507,6 +1507,7 @@ const sidebars: SidebarsConfig = {
                 'feature-management-experimentation/feature-management/setup/dynamic-configurations',
                 'feature-management-experimentation/feature-management/setup/default-treatment',
                 'feature-management-experimentation/feature-management/setup/control-treatment',
+                'feature-management-experimentation/feature-management/setup/fallback-treatment',
               ],
             },
             {

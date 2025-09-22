@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-07-25T10:00:00
+date: 2025-09-19T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,31 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: July 25, 2025
+#### Last updated: September 19, 2025
+
+## September 2025
+
+### [New Feature] Fallback Treatments
+----
+#### 2025-09-19
+
+Harness FME supports fallback treatments, a configuration option that lets you define a default treatment and optional configuration to be returned instead of the standard `control`. You can set fallback values globally at the SDK level or for individual flags, giving you greater flexibility and resilience in flag evaluations.
+ 
+This feature is valuable for organizations that want to:
+
+- Avoid unexpected `control` values in production by returning a predictable treatment (such as `off`)
+- Customize behavior per flag when an evaluation cannot be completed (e.g. network failure or missing attributes)
+- Ensure consistent user experience across environments and SDKs
+
+By configuring fallback treatments, you can improve reliability, reduce surprises in flag evaluation, and simplify how your applications handle edge cases.
+
+#### Related documentation
+
+- [Fallback treatment](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/)
+- Android SDK
+- iOS SDK
+- Java SDK
+- Python SDK
 
 ## July 2025
 
