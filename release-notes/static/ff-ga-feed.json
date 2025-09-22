@@ -436,5 +436,11 @@
     "description": "Use oc client when in Wrap Up and rollback when Kubernetes manifest contains Openshift resources",
     "gaStartDate": "2025-09-22",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SHOW_OVERRIDES_V2_YAML_IN_MENU",
+    "description": "Adds option in Override menu to view override yaml without expanding the specific override.",
+    "gaStartDate": "2025-09-22",
+    "modutle": "Continuous Delivery"
   }
 ]
