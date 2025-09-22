@@ -204,8 +204,8 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/static/cde/ @manishas @khushisharmaharness @Thewonderer
 
 # AI SRE Docs
-/docs/ai-sre/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
-/release-notes/ai-sre.md @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
+/docs/ai-sre/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla @NickLanam 
+/release-notes/ai-sre.md @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla @NickLanam
 
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ @ShibamD @splitterben 
