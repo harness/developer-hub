@@ -430,5 +430,11 @@
     "description": "Adds Audit Trail for GitOps related actions.",
     "gaStartDate": "2025-09-18",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ENABLE_KUBECTL_CLIENT_OVERRIDES",
+    "description": "Use oc client when in Wrap Up and rollback when Kubernetes manifest contains Openshift resources",
+    "gaStartDate": "2025-09-22",
+    "module": "Continuous Delivery"
   }
 ]
