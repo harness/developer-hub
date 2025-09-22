@@ -21,6 +21,9 @@ tags:
 
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Harness DB DevOps allows you to integrate a **Preview SQL** step in your pipeline to review generated SQL before applying schema changes to the database.  
 This workflow ensures **governance, visibility, and control**, as you can add a **Manual Approval** step between previewing and executing the changes.
 
@@ -31,7 +34,88 @@ The typical workflow looks like this:
 3. Pause the pipeline at a **Manual Approval** gate for human verification.
 4. After approval, proceed with the **DB Schema Apply** step to deploy the changes.
 
+<Tabs>
+<TabItem value="Pipeline Setup" label="Pipeline Setup">
+
 ![preview-and-approval-using-harness-ui](./static/preview-and-approval-using-harness-ui.png)
+</TabItem>
+<TabItem value="YAML Setup" label="YAML Setup">
+
+```yaml
+pipeline:
+  name: mux-sql
+  identifier: muxsql
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: deploy
+        identifier: deploy
+        description: "preview SQL changes in Harness DB DevOps pipelines and enforce manual approval before applying schema changes."
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: preview
+                  identifier: preview
+                  steps:
+                    - step:
+                        type: LiquibaseCommand
+                        name: Preview
+                        identifier: Preview
+                        spec:
+                          connectorRef: account.harnessImage
+                          command: " update-sql"
+                          dbSchema: cockroachDB
+                          dbInstance: cab
+                        timeout: 10m
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: db
+              - step:
+                  type: HarnessApproval
+                  name: Approval
+                  identifier: Approval
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
+                    approvers:
+                      userGroups:
+                        - account._account_all_users
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs: []
+                  timeout: 1d
+              - stepGroup:
+                  name: deploy
+                  identifier: deploy
+                  steps:
+                    - step:
+                        type: DBSchemaApply
+                        name: DB Schema Apply
+                        identifier: DB_Schema_Apply
+                        spec:
+                          connectorRef: account.harnessImage
+                          dbSchema: cockroachDB
+                          dbInstance: cab
+                          markNextChangeSetRun: true
+                        timeout: 10m
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: db
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
+        delegateSelectors:
+          - harness-gke-delegate
+```
+</TabItem>
+</Tabs>
 
 ## Setting Up the Workflow
 
