@@ -478,5 +478,11 @@
     "description": "Enable GitOps operator configuration.",
     "gaStartDate": "2025-09-17",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_DISABLE_FABRIC8_NG",
+    "description": "Improve handling of istio traffic routing resources for Kuberentes canary deployments",
+    "gaStartDate": "2025-09-22",
+    "modutle": "Continuous Delivery"
   }
 ]
