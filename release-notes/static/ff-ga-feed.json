@@ -448,5 +448,17 @@
     "description": "Ensures pod rollout on ConfigMap/Secret changes when Declarative Rollback is enabled.",
     "gaStartDate": "2025-09-22",
     "modutle": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_DELEGATE_VIRTUAL_SERVICE_SUPPORT",
+    "description": "Support K8s delegate virtual service during Blue/Green deployment",
+    "gaStartDate": "2025-09-22",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_NG_K8S_PASS_RELEASE_METADATA",
+    "description": "Track release name usage across services and warn during execution if same release name is used by a different service or environment for current workload",
+    "gaStartDate": "2025-09-22",
+    "module": "Continuous Delivery"
   }
 ]
