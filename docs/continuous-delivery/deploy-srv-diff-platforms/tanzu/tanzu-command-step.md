@@ -2,6 +2,14 @@
 title: Tanzu Command step
 description: Run a CF-enabled shell and use script inputs and outputs
 sidebar_position: 4
+tags:
+  - tanzu-command-step
+  - tanzu-deployments
+  - tanzu-cf-cli
+  - tanzu-harness-expressions
+  - tanzu-script-logging
+  - tanzu-deploy-stage
+
 ---
 
 The Tanzu Command step enables you to run scripts in the same Tanzu environment you are using for deployment in your pipeline.

@@ -1,6 +1,14 @@
 ---
 title: Kubernetes deployments overview
 description: High-level view of Harness Kubernetes deployment.
+tags:
+  - kubernetes
+  - kubernetes-deployment
+  - kubernetes-manifests
+  - managed-workloads
+  - blue-green-deployment
+  - canary-deployment
+  - rolling-deployment
 sidebar_position: 1
 redirect_from:
   - /docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart

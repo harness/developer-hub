@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-08-19T10:00
+date: 2025-09-16T10:00
 sidebar_position: 10
 ---
 
@@ -48,11 +48,79 @@ This update is currently being rolled out to customers, and we expect the rollou
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
 
+## September 2025
+
+### Version 1.97
+
+<!-- 2025-09-15 -->
+#### New features and enhancements
+- Added a new optional `PRESERVE_METADATA` flag (default: `false`) to the Harness CI cache plugin which ensures time-based cleanup mechanisms (such as Gradle pruning). (CI-18276)
+- The `CI_DYNAMIC_BRANCH_SELECTOR` feature flag has been deprecated and is now enabled by default across all environments. (ZD-91773, CI-18921)
+- If no configuration is found for an account, default limits are now automatically applied based on the account’s license type. (CI-18800)
+- Improved the error message shown when a pipeline fails during container creation, making failures easier to diagnose. (CI-18541)  
+
+#### Fixed issues
+- Fixed an issue where long description parameters in the Commit Status API exceeded 140 characters. Descriptions are now automatically ellipsized across all GitHub connector types (SaaS and On-Prem). (CI-18949, ZD-92691)
+- Fixed an issue where build arguments containing commas in secret values were split incorrectly, causing authentication failures (for example, with Artifactory). Build arguments are now passed as-is, and multiple build arguments are supported across all registries. (ZD-91518, CI-18923)
+- Fixed an edge case in log handling where certain printf messages were incorrectly emitted as empty log entries. Logging behavior is now consistent and reliable. (ZD-91121, CI-18805)
+- Fixed an issue where the **Init** timeout setting under Kubernetes infrastructure in the CI module was incorrectly displayed as a multi-type input. (ZD-90897, CI-18738)
+- Resolved missing file path issue for Cache Intelligence auto-detection. (CI-10788)
+- Resolved a UI issue where the **Init** step timeout was incorrectly displayed as 10 minutes. It now correctly shows 8 minutes (480 seconds). (CI-18365)
+- Fixed a race condition that caused PR status updates to not show up when pipeline execution is invoked from multiple triggers. (ZD-88522, CI-18266)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.3              | 1.17.4         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.17.3              | 1.17.4         |
+| `plugins/buildx`       | **arm64** support in Harness Cloud. | 1.3.6              | 1.3.7         |
+| `plugins/buildx-ecr`       | **arm64** support in Harness Cloud. | 1.3.4              | 1.3.5         |
+| `plugins/buildx-gar`       | **arm64** support in Harness Cloud. | 1.3.4              | 1.3.5         |
+| `plugins/buildx-acr`       | **arm64** support in Harness Cloud. | 1.3.4              | 1.3.5         |
+
+### Version 1.96
+
+<!-- 2025-09-08 -->
+#### New features and enhancements
+- Test Intelligence now supports installing the Python agent within a virtual environment, allowing customers to execute their tests inside their own venvs. (CI-17484)
+
+#### Fixed issues
+- Fixed a regression in the CD container step group where secrets (such as LDAP passwords and OIDC tokens) were exposed in logs and container executions. Masking now works correctly across all log occurrences when the `CI_ENABLE_EXTRA_CHARACTERS_SECRETS_MASKING` feature flag is enabled. (CI-18814, ZD-91214, ZD-91245) 
+- Fixed an issue where the feature flag `CI_DYNAMIC_BRANCH_SELECTOR` could not be enabled on SMP. The backend has been updated to support enabling this flag. (ZD-91773, CI-18921)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.2              | 1.17.3         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.17.2              | 1.17.3         |
+ 
+### Version 1.95
+
+<!-- 2025-09-01 -->
+#### New features and enhancements
+- Build Intelligence auto-injection now supports Gradle Kotlin DSL (`build.gradle.kts`). (CI-18842)
+- Cache Intelligence auto-injection now supports Gradle Kotlin DSL (`build.gradle.kts`).
+
+#### Fixed issues
+- Fixed **Initialize** step failures caused by large commit messages; `CI_COMMIT_MESSAGE` is now limited to 1000 characters. (ZD-90387, CI-18620)
+- Fixed incorrect tooltip for **Cache Intelligence** policy in the CI stage overview. (CI-18828)
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.1              | 1.17.2         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.17.1              | 1.17.2         |
+| `plugins/cache`          | Cache Intelligence auto-injection support for Gradle Kotlin DSL.               | 1.9.10                | 1.9.11          |
+ 
+
 ## August 2025
 
 ### Version 1.93
 
 <!-- 2025-08-25 -->
+
 #### Fixed issues
 - Fixed a bug that prevented Docker layer caching from working when the step was run inside a **Step Group**. (CI-18603, CI-18604)
 

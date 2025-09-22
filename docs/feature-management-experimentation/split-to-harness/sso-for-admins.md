@@ -5,6 +5,9 @@ sidebar_label: SSO for Split Admins
 sidebar_position: 7
 ---
 
+import InfoOmitFMEAdmins from './shared/scim-info-omit-fme-admins.md';
+import TipRenameFMEAdmins from './shared/scim-tip-rename-fme-admins.md';
+
 ## Overview
 
 The work in this guide (which is unrelated to RBAC) must be completed and tested before your migration date. The migration process will assign the appropriate role-based access control settings to users and objects for you. You can disregard any mention of assigning roles to users in the Harness SSO documentation.  
@@ -33,11 +36,15 @@ Watch the 30-second animation below.  Note the order of steps and the way your u
 - To preserve the instant revert capability seen in the animation above, do not disable your SSO configuration to `app.split.io` at the moment of migration. Users who attempt to use the `app.split.io` SSO after migration will be shown a message pointing them to `app.harness.io`, so it's OK to leave both SSO configurations active for some time. 
 :::
 
+### Harness SAML Supports Strict Mode Only
+
+Once you configure SAML and are migrated to Harness, all users must use SAML to log in to Harness. Unlike legacy Split, Harness does not support toggling off SAML Strict Mode to permit username/password logins. Harness does support Local Login for admin users with the right RBAC settings. See [Harness Local Login](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#harness-local-login) for details.
+
 ## Tasks to Perform
 
 ### If Your Split Account Uses SSO Only
 
-1. Add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
+1. Log into Harness and your IdP in separate windows to add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
 1. Assign all of your current Split users to the SSO application for app.harness.io.
 1. Notify your Harness CSM or support@split.io when the SSO steps are complete.
 
@@ -47,7 +54,7 @@ Do not create users or groups in `app.harness.io` ahead of time. The migration p
 
 ### If Your Split Account Uses SSO + SCIM
 
-1. Add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
+1. Log into Harness and your IdP in separate windows to add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
 1. Configure SCIM to provision users and groups in app.harness.io. See Configure SCIM below.
 1. Notify your Harness CSM or support@split.io when the SSO and SCIM steps are complete.
 
@@ -61,6 +68,15 @@ You must ensure that all of your Split users and groups are synced (and kept con
 The group name `_fme_admins` is required.  You may change the name after confirming the first provisioning sync has established the immutable Group ID of `_fme_admins` on the Harness side.
 :::
 
+#### Groups not managed in SCIM
+
+It is possible that you might want to move some Split groups into Harness, but prefer not to manage these groups in SCIM going forward. In this case, **before migration** for each of these Split groups, you should follow these steps:
+
+1. Create a matching group in Harness. The Harness group name should be exactly the same as the Split group name.
+2. In Harness, manually add members to the group.
+
+If the group name in Harness exactly matches the group name in Split, the migration script will create RBAC assignments for the Harness group. This will grant the Harness group access permissions equivalent to the permissions of the legacy group in Split.
+
 ## Configure SSO
 
 ### SSO with Okta
@@ -71,7 +87,7 @@ Follow the directions and tips below instead of using web search to jump into th
 Be sure to start in **Account Settings** (not **Organization Settings** or **Project Settings**) in Harness.
 :::
 
-1. Create an [app integration in Okta](/docs/platform/authentication/single-sign-on-saml/#create-app-integration-in-okta) (opens a new tab).
+1. Create an [app integration in Okta](/docs/platform/authentication/single-sign-on-saml/#create-app-integration-in-okta).
 1. Keep the [tips](#sso-with-okta-tips) below handy as you go through the steps.
 1. Perform all steps up to and including: [Enable and test SSO with Okta](/docs/platform/authentication/single-sign-on-saml/#enable-and-test-sso-with-okta).
 1. Do not perform the last step: [SAML authorization with Okta](/docs/platform/authentication/single-sign-on-saml/#saml-authorization-with-okta).
@@ -220,11 +236,11 @@ That email will have a button that says `"ACCESS YOUR {ACCOUNT NAME} ACCOUNT"`. 
 
 ### SCIM with Okta
 
-#### Create a Service Account, API Key and Token
+#### Create a Service Account, API Key, and Token
 
-* You will need a [Harness API key and unexpired token](/docs/platform/automation/api/add-and-manage-api-keys/) that has all **Users and User Groups** [permissions](/docs/platform/automation/api/api-permissions-reference/).
-* We recommend using an API key associated with a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account/).
-* Make sure the service account has all **Users** and **User Groups** permissions.
+* You will need a [Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys/?token=sat#create-service-account-api-keys-and-tokens) that has all [**Users**](https://developer.harness.io/docs/platform/automation/api/api-permissions-reference/#users) and [**User Groups**](https://developer.harness.io/docs/platform/automation/api/api-permissions-reference/#user-groups) [permissions](/docs/platform/automation/api/api-permissions-reference/).
+* Use an API key associated with a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account/) created at the Harness account scope (in Account Settings).
+* Make sure the service account has all **Users** and **User Groups** permissions. This is determined by the role assigned to the service account. (To see permissions granted to a role, click the **Roles** tile in **Account Settings** and click on a role, then look in the **Administrative Functions** section and make sure all checkboxes are ticked for **Users** and **User Groups**.) 
 * Save the token for use in the next step below.
 
 #### Revisit Okta SSO Settings to Add and Authorize SCIM
@@ -233,7 +249,7 @@ In the SSO section above, you configured an Okta application for Harness.
 
 Now, we will revisit that configuration and add SCIM to it. 
 
-Start by opening [Create an Okta app integration](/docs/platform/role-based-access-control/provision-users-with-okta-scim/#create-an-okta-app-integration) in the Harness documentation (opens in a new tab).
+Start by opening [Create an Okta app integration](/docs/platform/role-based-access-control/provision-users-with-okta-scim/#create-an-okta-app-integration) in the Harness documentation.
 
 1. Skip ahead to Step 11: In your newly created app, select the **General** tab, and then under **App Settings**, select **Edit**.
 1. Perform Steps 11 and 12.
@@ -257,9 +273,11 @@ To enforce ongoing management of that group from the Okta side, you must perform
 1. Add all of your current Split Administrators to the `_fme_admins` Okta group.
 1. Assign and push the `_fme_admins` Okta group to the Harness application.
 
+<InfoOmitFMEAdmins />
+
 #### Assign Remaining Split-Assigned Groups to Harness
 
-Once you have created the `new _fme_admins` group on the Okta side, the next step is to assign all current Split groups to Harness as well. Be very careful not to assign the "Administrators" group found in the Split application setup. You do not want that group pushed to Harness by Okta.  
+Once you have created the new `_fme_admins` group on the Okta side, the next step is to assign all current Split groups to Harness as well. Be very careful not to assign the "Administrators" group found in the Split application setup. You do not want that group pushed to Harness by Okta.  
 
 Here are the steps:
 
@@ -274,6 +292,8 @@ The last task is to verify that all Split users and groups now appear on the Har
 
 If you run into any issues, let us know and we'll be happy to help!
 
+<TipRenameFMEAdmins app='Okta' />
+
 ### SCIM with Microsoft Entra ID
 
 #### Create a Service Account, API Key and Token
@@ -285,7 +305,7 @@ If you run into any issues, let us know and we'll be happy to help!
 
 #### Follow Provisioning Steps in Harness Documentation
 
-Start by referencing [Enable Microsoft Entra ID provisioning for Harness](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/#enable-microsoft-entra-id-provisioning-for-harness) (opens in a new tab).
+Start by referencing [Enable Microsoft Entra ID provisioning for Harness](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/#enable-microsoft-entra-id-provisioning-for-harness).
 
 Continue through to the steps up to, but not including the last line, where it says, `"After enabling Microsoft Entra ID provisioning for Harness, you must assign permissions to user groups in Harness."` The migration process has already assigned the appropriate permissions to the **All FME Admins** group. Wait to explore assigning roles to other User Groups until after your account has been migrated.
 
@@ -309,6 +329,8 @@ Here are the steps:
 1. Add all of your current Split Administrators to the `_fme_admins` Entra ID group.
 1. Assign the `_fme_admins` Entra ID group to the Harness application.
 
+<InfoOmitFMEAdmins />
+
 #### Assign Remaining Split-Assigned Groups to Harness
 
 Once you have created the new `_fme_admins` group on the Entra ID side, the next step is to assign all current Split groups to Harness as well. Be very careful not to assign the "Administrators" group found in the Split application setup. You do not want that group pushed to Harness by Entra ID.  
@@ -325,6 +347,8 @@ Here are the steps:
 The last task is to verify that all Split users and groups now appear on the Harness side as SCIM-managed. Once you have done this, send an email to your Customer Success Manager or support@split.io with subject line, "SCIM Configured for [your account name]" so we know your account is ready for your migration day. 
 
 If you run into any issues, let us know and we'll be happy to help!
+
+<TipRenameFMEAdmins app='Entra ID' />
 
 #### SSO or SCIM With Other
 

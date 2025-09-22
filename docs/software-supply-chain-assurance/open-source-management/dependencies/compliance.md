@@ -5,6 +5,12 @@ description: View Compliance Reports across the Repos using Harness Dashboards
 sidebar_position: 3
 redirect_from:
 - /docs/software-supply-chain-assurance/open-source-management/dependencies/compliance
+
+tags:
+  - harness-scs 
+  - compliance-report
+  - open-source-management
+  - dashboards
 ---
 
 

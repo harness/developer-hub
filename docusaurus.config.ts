@@ -48,8 +48,10 @@ const config: Config = {
   },
 
   future: {
+    v4: true,
     experimental_faster: true,
   },
+
 
   presets: [
     [
@@ -279,6 +281,10 @@ const config: Config = {
               label: 'Software Engineering Insights',
               to: 'university/sei',
             },
+              {
+              label: 'Traceable by Harness',
+              to: 'university/traceable-by-harness',
+            },
             {
               label: 'Virtual Instructor-Led Calendar',
               to: 'https://university-registration.harness.io/calendar',
@@ -438,6 +444,10 @@ const config: Config = {
             {
               label: 'Feature Requests',
               to: 'https://ideas.harness.io',
+            },
+            {
+              label: 'Feature Flags GA Timeline',
+              to: '/release-notes/feature-flags-ga-timeline',
             },
             {
               label: 'Instructor-Led Training',
@@ -613,6 +623,7 @@ const config: Config = {
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
+    path.join(__dirname, '/plugins/feature-flags-rss-plugin'),
   ],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),

@@ -11,7 +11,7 @@ redirect_from:
 
 This interactive guide will walk you through setting up an experiment for the first time.
 
-<DocVideo src="https://app.tango.us/app/embed/1e1ad9f0-85b8-427a-8331-f35f7685c1eb" title="Create an Experiment" />
+<DocVideo src="https://app.tango.us/app/embed/1e1ad9f0-85b8-427a-8331-f35f7685c1eb?hideAuthorAndDetails=true" title="Create an Experiment" />
 
 ### Step-by-step guide
 

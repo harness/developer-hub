@@ -22,6 +22,8 @@ tags:
   - harness
   - database pipeline
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Harness Database DevOps supports **trunk-based development** for managing database schema changes. This strategy relies on a single Git branch (usually `main` or `trunk`) and leverages pipeline logic and contextual controls to manage environment-specific deployments. Trunk-based development simplifies Git workflows, reduces merge conflicts, and accelerates the flow of changes across your CI/CD pipeline.
 
@@ -40,16 +42,16 @@ Harness supports Liquibase-style contexts to manage changes across environments 
 
 This allows you to reuse the same changelog file, while ensuring each environment receives only the changes intended for it. Combined with a multi-stage pipeline structure, this forms a **hybrid deployment strategy**: context-based filtering with explicit promotion control.
 
-### 1. **Set Up Your Git Repository**  
+### 1. Set Up Your Git Repository  
 1. Commit your Liquibase changelogs or SQL scripts to a centralized Git repo.
 2. Use clear naming conventions like `changelogs/<YYYY-MM-DD>_<feature>.sql`.  
 
-### 2. **Create a Database Schema in Harness**
+### 2. Create a Database Schema in Harness
 1. Navigate to **Database Management > Schemas**
 2. Click **New Schema**, connect to your Git repo, and configure your database instance(s).
 3. Ensure your changelogs are structured to include environment-specific contexts (e.g., `context: dev, qa, prod`).
 
-### 3. Connect with Database Instance 
+### 3. Connect with Database Instance
 
 Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here’s how:
 
@@ -63,21 +65,134 @@ Before we can deploy our Database Schema, we need to connect a database instance
 3. Add the Contexts (e.g., `dev`, `qa`, `prod`) to the database instance.
 4. Click `Add Database Instance`.
    
-### 4. **Create Your Pipeline**
+### 4. Create Your Pipeline
 1. Go to **Pipelines** and select **New Pipeline**
 2. Add a `DBSchemaApply` step for each environment (e.g. `Dev`, `QA`, `Prod`)
 3. In each step
    - Select the appropriate database instance.
    - Ensure the instance is configured with the right `context` label (e.g., dev, qa, prod). Harness will automatically apply only those changesets tagged with this context.
-![Multiple Environments](../static/dbops-multiple-enviornment.png)
 
-### 5. **Configure Triggers**
+<Tabs>
+<TabItem value="Visual Overview" alt="Visual Overview">
+
+![Multiple Environments](../static/dbops-multiple-enviornment.png)
+</TabItem>
+<TabItem value="YAML Overview" alt="YAML Overview">
+
+```yml
+pipeline:
+  name: multichangeset
+  identifier: multichangeset
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: multi-environment
+        identifier: multienvironment
+        description: "Trunk Based Pipeline"
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: cross-env
+                  identifier: crossenv
+                  steps:
+                    - step:
+                        type: DBSchemaApply
+                        name: Development
+                        identifier: Development
+                        spec:
+                          connectorRef: dockerHarness
+                          dbSchema: productiondataset
+                          dbInstance: Development
+                          tag: dev1
+                        timeout: 10m
+                    - step:
+                        type: DBSchemaApply
+                        name: Staging
+                        identifier: Staging
+                        spec:
+                          connectorRef: dockerHarness
+                          dbSchema: productiondataset
+                          dbInstance: Staging
+                          tag: stage1
+                        timeout: 10m
+                        when:
+                          stageStatus: All
+                    - step:
+                        type: DBSchemaApply
+                        name: QA
+                        identifier: QA
+                        spec:
+                          connectorRef: dockerHarness
+                          dbSchema: productiondataset
+                          dbInstance: QA
+                          tag: qa1
+                        timeout: 10m
+                        when:
+                          stageStatus: All
+                    - step:
+                        type: DBSchemaApply
+                        name: NA
+                        identifier: NA
+                        spec:
+                          connectorRef: dockerHarness
+                          dbSchema: productiondataset
+                          dbInstance: ProductionNA
+                          tag: pna1
+                        timeout: 10m
+                        when:
+                          stageStatus: All
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: db
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
+    - stage:
+        name: APJ
+        identifier: APJ
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: APJ Data
+                  identifier: APJ_Data
+                  steps:
+                    - step:
+                        type: DBSchemaApply
+                        name: APJ
+                        identifier: APJ
+                        spec:
+                          connectorRef: dockerHarness
+                          dbSchema: productiondataset
+                          dbInstance: ProductionAPJ
+                          tag: papj1
+                        timeout: 10m
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: db
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
+        when:
+          pipelineStatus: All
+```
+</TabItem>
+</Tabs>
+### 5. Configure Triggers
    - Go to your pipeline settings
    - Add a **Git trigger** that listens to the `main` branch
    - Select “On Push” or “On Pull Request” depending on your workflow
    > 📘 [How to configure Git triggers in Harness →](https://developer.harness.io/docs/platform/triggers/tutorial-cd-trigger/)
 
-### 6. **Set Up Approvals & Rollbacks**
+### 6. Set Up Approvals & Rollbacks
    - Insert **Approval steps** after lower environments (e.g. promote to QA only after Dev is verified)
    - Add **rollback steps** using `DBRollback` or manual SQL if needed
 

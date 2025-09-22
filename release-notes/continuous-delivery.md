@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-8-27T10:00:00
+date: 2025-09-15T10:00:00
 sidebar_position: 8
 ---
 
@@ -48,18 +48,139 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 :::warning Announcement 
 **Google Container Registry Deprecation Notice 📢**
 
-Google Container Registry (GCR) is deprecated and scheduled to shut down on **March 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
+Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
 
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
-## August 2025
+## September 2025
 
-### Version 1.103.XX
+### Version 1.108.2
+
+#### New Features and Enhancements:
+
+- Harness now supports bearer token-based auth for the Bitbucket connector. This allows users to set up 
+  authentication for the Bitbucket connector using an access token which can be generated via Bitbucket. (**PIPE-28671**, **ZD-82455**)
+
+#### Breaking Changes:
+  
+- Users can now create asynchronous plan creation for pipeline executions to improve performance and scalability. To make this possible, the following breaking changes are coming to the Pipeline Execution API:
+
+  - **Execution Status Changes:** 
+    - Pipeline executions will now start with `QUEUED_PLAN_CREATION` status.
+    - Executions will transition to `RUNNING` status asynchronously after plan creation and policy evaluation are completed. 
+  - **API Response Changes:**
+    - Execute API Response: Governance metadata will no longer be immediately available.
+    - Layout Node Map: Will be empty or incomplete immediately after execution starts.
+    - Data Availability: Complete execution data will be available after plan creation completes (typically within a few seconds).
+  - **Required Actions for Automation Scripts:** 
+If your automation relies on the Execute API response, you must make the following changes/additions in your scripts:
+    - Add a delay: Wait 3-5 seconds after calling the Execute API.
+    - Call Summary API: Use the Pipeline Execution Summary API to retrieve complete execution details.
+    - Check execution status: Ensure execution has moved from QUEUED_PLAN_CREATION to RUNN.ING before proceeding
+This enhancement is currently controlled by feature flags `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION_FOR_TRIGGER_EXECUTIONS` and will be generally available by end of October.
+
+ #### Behavior Changes:
+
+- We have improved the visibility of pipeline executions in the notification section. Previously, only executions containing at least one CD stage were displayed in the running, waiting for approval, and failed execution notifications. With this enhancement, you can now view all pipeline executions regardless of the module type (CI, CD, etc.) by enabling the feature flag `PIPE_SHOW_ALL_EXECUTIONS_ON_ACCOUNT_OVERVIEW_PAGE`. The general availability for this feature is scheduled for four weeks from now. (**PIPE-26930**)   
+
+- We have introduced a feature update for Audit Trail to ensure consistency across the audit logs.
+  This update changes how pipeline actions are identified. Prior to this update, we utilized the **Pipeline Name** to represent the **Create**, **Update**, **Delete**, and **Move Config** pipeline actions in the audit logs. In contrast, **Pipeline Identifier** are used to represent the **Start**, **End**, **Abort**, and **Timeout** actions.
+  - With this update: **Create**, **Update**, **Delete**, and **Move Config** actions are represented through the **Pipeline Identifier**. This change aligns the behavior across all the logs associated with pipeline actions in the Audit Trail, ensuring the use of a single and consistent identifier.
+  - This feature is currently behind the feature flag `PIPE_USE_PIPELINE_IDENTIFIER_IN_AUDIT_LOGS`. If you enable this feature flag, please make sure you **update your integration points** to accommodate this change. (**PIPE-28870**)
+
+#### Fixed Issues:
+
+- Fixed issues with multi-environment deployments for GitOps Pipelines. Now, users can perform multi-environment deployments through GitOps Pipeline stages. (**CDS-113581, ZD-91288**)
+- Fixed an issue that caused the rollback stage to get skipped when using parallel steps in the pipeline. With this fix, we ensure the users that the rollback stage is always executed when using parallel steps in the pipeline. (**PIPE-28864, ZD-89332**)
+- Fixed an issue where the error message for `winrm copy artifact` was not being propagated correctly when failing to fetch AWS credentials. The error message is now correctly displayed to users when this error occurs. (**CDS-97836**, **ZD-64870**)
+- Fixed an issue that was causing the environment tag filters not to work properly. Now, environment tag filters are working as expected. (**CDS-113958**)
+- Fixed issues that led to the Harness error page coming up frequently while navigating to links within Harness. (**PIPE-29416**)
+- Fixed issues with the `Run Pipeline Button`, which, when pressed multiple times, triggered multiple executions. This fix ensures that only a single execution is triggered after pressing the button. (**PIPE-29136**, **ZD-90223**)
+
+
+### GitOps Service 1.41.1, GitOps Agent 0.101.0
+
+#### Fixed Issues
+
+- Fixed an issue where promote options were missing in GitOps application rollouts. Promote and restart options are now correctly displayed in the GitOps application interface. (**CDS-113725, ZD-91678**)
+- Fixed an issue where GitOps applications created through reconciler operations (such as those created by ApplicationSets) were not showing up in the "Referenced By" tab of linked services. These applications now properly appear in the service references, ensuring visibility of service-to-application relationships. (**CDS-113560, ZD-91232**)
+- Fixed an issue where GitOps sync was failing with "no space left on device" errors, and the App diff tab was not clickable for some applications. GitOps sync now properly handles storage resources and the App diff tab functionality has been restored. (**CDS-113506, ZD-91129**)
+- Fixed an issue where artifact and chart versions were not displayed in the GitOps Service Summary, showing as **artifact_version_unspecified** for artifacts and `-` for chart versions. Users can now see specific artifact and chart versions during deployment, improving tracking and visibility. 
+
+### Version 1.107.3
+
+#### New Features and Enhancements:
+
+- Users can now include and run the Security Testing Orchestration (STO) Ingest Step inside Container Step Groups within Deploy stages. This enables teams to perform native security scanning as part of containerized deployment workflows, providing greater flexibility and integration for security scans during deployment.
+
+#### Breaking Changes:
+
+- Users can now perform basic deployments using Serverless Framework V4, which requires authentication via the SERVERLESS_ACCESS_KEY environment variable. This update adds support for the Node.js 22 runtime and includes a rollback option back to V3 if needed. Note that this introduces a breaking change for CLI scripts requiring authentication, so users should test existing pipelines before upgrading. 
+
+#### Fixed Issues:
+
+- Fixed an issue where the list execution API documentation did not describe the timeframe filter or other UI-supported filter options. (**PIPE-29599**)
+- Fixed an issue where, with the feature flag `PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION` enabled, the Execution view did not display template version information for all steps using templates. Now, all such steps consistently show the template version to improve traceability throughout pipeline executions. (**PIPE-29372, ZD-91321**)
+- Fixed a case sensitivity issue with YAML keys in ECS deployment configurations. Harness requires all keys to begin with lowercase letters to successfully process and register scaling policies and targets, whereas the AWS CLI and Boto3 expect uppercase keys. This fix clarifies and enforces consistent lowercase key usage in YAML to prevent build failures during ES rolling deployments. (**CDS-113523, ZD-91165**)
+- Fixed an issue where notification templates were not respected in pipeline templates, causing notifications to default to the generic format. Now, custom notification templates are correctly applied and rendered in executions of pipeline templates, consistent with direct pipeline runs. (**PIPE-29306, ZD-91210**)
+- Fixed an issue where users were unable to delete service overrides if the service identifiers in the overrides no longer matched existing services due to casing differences or renaming. This fix ensures that overrides referencing outdated or mismatched service identifiers can be deleted successfully. (**CDS-113242, ZD-90809**)
+- Fixed an intermittent timeout issue in the ECS Service Setup step where the step continued waiting for pending tasks even after the service reached steady state and deployment completed. This resolves confusion and ensures accurate task state tracking during ECS deployments. (**CDS-113170, ZD-90575**)
+- Fixed an issue where the `dockerConfigJsonSecret` generated for services using Google Artifact Registry (GAR) artifacts incorrectly included the image tag in the image path. The GAR Docker config secret now correctly excludes the image tag, using only the registry hostname, project, and package fields to format the registry URL. (**CDS-108114**)
+
+### Version 1.105.3
 
 #### New Features and Enhancements
 
-- Added a new account-level setting `enable_signed_commit_for_github` to control automatic commit signing when using GitHub App authentication. You can configure this setting under **Account Settings** → **Default Settings** → **Git Experience**.
+- Harness now supports a new account-level setting `enable_signed_commit_for_github` to control automatic commit signing when using GitHub App authentication. You can configure this setting under **Account Settings** → **Default Settings** → **Git Experience**.
+
+- Introduced controlled license enforcement for pipeline chaining with feature flag protection to ensure smooth rollout.  
+  - **Tier-based access:** Pipeline chaining is now restricted for FREE/DEVOPS_ESSENTIAL users and fully available for ENTERPRISE users.  
+  - **Backend validation:** Extended validation prevents Free/Essentials users from saving pipeline configurations with chaining, including blocking direct API calls.  
+  - **API-level restrictions:** Pipeline save/update endpoints now enforce license tier checks to stop unauthorized chaining.  
+  - **Feature flag protection:** The new `PIPE_DISABLE_PIPELINE_CHAINING_FOR_FREE_TIER` flag allows gradual enforcement without disrupting existing pipelines.  
+  - **Improved error handling:** Error messages are clear and non-stacking, guiding users to upgrade when needed.  
+  - **Validation coverage:** Comprehensive checks across YAML configurations, pipeline save/update operations, and direct API calls with supporting test cases. (**PIPE-29067**)
+
+- Harness enhanced Git Experience for remote pipelines. Step outputs now include Git details (such as branch, SHA, or commit ID) for remote entities (Service, Infrastructure, Environment).  (**PIPE-22359**)
+
+- Harness now supports Azure connectors in Terraform steps (plan, apply, destroy, etc.). (**CDS-98865**)
+
+#### Behavior Changes
+
+- Introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (**PIPE-28993**)
+  - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
+  - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select multiple values for runtime input.
+  - The upcoming feature update will enhance the capability of selecting runtime input by providing a dedicated method for each mode (Single Selection or Multi Selection). The Multi Selection mode will be mapped to the `.selectManyFrom()` functor. In contrast, the Single Selection mode will be mapped to the `.selectOneFrom()` functor, thus allowing users to select multiple values or a single value for runtime input, respectively.
+  - Please note that the existing functor `.allowedValues()` continues to work as before. Existing Pipelines will see no change in behavior. However, editing the Runtime Inputs on these pipelines in Pipeline Studio will replace the `.allowedValues()` function with the newer functions as per selection. You will see this change in the Pipeline YAML, and this may affect some customers automation and testing.
+  - All new pipelines created will reflect the new behavior. 
+
+
+#### Fixed Issues
+
+- Fixed an issue where the `skipCleanup` parameter in the Helm Deploy Step API was incorrectly documented as a string instead of a boolean. The API documentation now correctly reflects its boolean type. (**CDS-113817**)  
+- Added support for containerless Git Clone in the MacOS Runner. Git Clone now runs on the host machine instead of containers, which helps mitigate transient clone issues and resolves problems caused by case-sensitive file renames in virtualized file systems. (**PIPE-29369**, **ZD-90900**)  
+- Fixed an issue where OIDC tokens retrieved via `<+connectorInputs.get(<+infra.connectorRef>).oidcToken>` were exposed in plain text in Shell Script and Run steps. Tokens are now masked consistently across logs, inputs, and step details, and remain usable as variables across steps without exposure. (**CDS-113288**, **ZD-90819**)  
+- Fixed an issue in Pipeline Studio where users repeatedly saw the message `Template has been changed. Update Pipeline to enable editing`. After clicking **Update Pipeline**, there was no option to save the pipeline, causing the prompt to reappear on re-entry. Users are now correctly prompted to review unsaved changes and can save the pipeline after updating. (**PIPE-29382, ZD-77991**)
+
+:::info
+
+Wondering where version 1.104.XX is? That release was rolled into 1.105.XX and upgrades will skip directly from 1.103.XX to 1.105.XX. Don't worry, you're not missing a thing!
+
+:::
+
+### GitOps Service 1.40.0, GitOps Agent 0.100.0
+
+#### New Features and Enhancements
+
+- Harness has enhanced the GitOps Cluster Detail Page with improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
+
+## August 2025
+
+### Version 1.103.1
+
+#### New Features and Enhancements
+
 - You can now control the automatic cleanup behavior for failed first Helm releases with the new `skipCleanup` parameter. This will help you to:
   - Preserve failed Helm releases for debugging and troubleshooting
   - Retain container logs and deployment artifacts after failures
@@ -71,7 +192,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Added a new feature to the Container step that allows users to configure resource requests (CPU and memory) directly from the UI. This provides greater flexibility for running resource-intensive tasks, such as performance tests, and ensures accurate and reliable results. **(CDS-110282)**
 - Added the ability to select user groups in email steps. (**CDS-109176**)
 
-### Behavior Changes
+#### Upcoming Behavior Changes
 
 - We will soon introduce a **feature update for Audit Trail** to ensure consistency across the audit logs.
   - This update will **change how pipeline actions are identified**. Currently, we utilize the **Pipeline Name** to represent the **Create**, **Update**, **Delete**, and **Move Config** pipeline actions in the audit logs. In contrast, the **Pipeline Identifier** represents the **Start**, **End**, **Abort**, and **Timeout** actions.
@@ -85,9 +206,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Previously, the environment variables option for the Terraform plan step only supported expression and input. We've fixed this to now include support for runtime input as well. **(CDS-113592)**
 - Fixed an issue where the pipeline would crash during the artifact tag loading step when a user selected a service and variables through an input set. Previously, an unstable dependency array in `useModalHook` caused a continuous re-render, leading to the crash. **(ZD-91140, ZD-91421, PIPE-29340)**
 
-
-
-### Version 1.102.XX
+### Version 1.102.1
 
 #### New Features and Enhancements
 
@@ -95,9 +214,11 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Harness now supports GitHub Pull Request Review as an event in webhook triggers to initiate the execution of a pipeline. This enables automatic pipeline execution when a pull request review is         submitted, edited, or dismissed. For a list of all supported events and actions, check out the [webhook triggers reference](/docs/platform/triggers/triggers-reference/#event-and-actions). (**PIPE-25264**)
 - Harness now supports [notifications for trigger failures](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#select-events), allowing users to receive alerts when a trigger fails to start pipeline execution. This improves the visibility of pipeline runs that could not start due to failed triggers. This feature is currently behind feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-27482**)
 
+#### Upcoming Behavior Changes
+
 - We are soon introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (***PIPE-28993***)
   - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
-  - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select     multiple values for runtime input.
+  - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select multiple values for runtime input.
   - The upcoming feature update will enhance the capability of selecting runtime input by providing a dedicated method for each mode (Single Selection or Multi Selection). The Multi Selection mode will be mapped to the `.selectManyFrom()` functor, while the Single Selection mode will be mapped to the `.selectOneFrom()` functor, thus allowing users to select multiple values or a single value for runtime input, respectively.
   - Please note that the existing functor `.allowedValues()` continues to work as before. Existing Pipelines will see no change in behavior. Editing the Runtime Inputs on these pipelines in Pipeline Studio, however, will replace the `.allowedValues()` functor with the newer functors as per selection. You will see this change in the Pipeline YAML.
   - All the new pipelines created after the feature is released will reflect the new behavior. This feature will be introduced by the end of August.
@@ -1345,7 +1466,7 @@ Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEP
 
 #### New features and enhancements
 
-- The Harness GitOps agent uses the **Horizontal Pod Autoscaler** for CPU and memory management, with a minimum of 1 replica and a maximum of 5 replicas in High Availability (HA) mode. For more information, go to [GitOps documentation](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent/#high-availability-ha). (CDS-100830)
+- The Harness GitOps agent uses the **Horizontal Pod Autoscaler** for CPU and memory management, with a minimum of 1 replica and a maximum of 5 replicas in High Availability (HA) mode. For more information, go to [GitOps documentation](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent/#high-availability-ha). (CDS-100830)
 
 - Harness GitOps now supports Multi-Source applications with ArgoCD. This feature is available for the GitOps agent version 0.79. Currently, this feature is behind the feature flag  `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-85518)
 

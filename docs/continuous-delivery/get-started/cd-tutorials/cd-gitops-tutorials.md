@@ -1,6 +1,35 @@
 ---
 title: CD & GitOps tutorials overview
 description: Helpful tutorials for using Harness CD and GitOps
+tags:
+  - cd-tutorials
+  - cd-gitops-tutorials
+  - cd-tutorials
+  - gitops
+  - onboarding
+  - deployment-tutorials
+  - kubernetes
+  - helm
+  - kustomize
+  - microservices
+  - ecs
+  - serverless
+  - aws-lambda
+  - aws-vms
+  - azure-vms
+  - data-center-deployment
+  - unified-ci-cd
+  - pipeline-triggers
+  - variables
+  - notifications
+  - pipeline-templates
+  - infrastructure-provisioning
+  - security
+  - verification
+  - prometheus
+  - cloudformation
+  - cosign
+  - opa
 sidebar_position: 0
 ---
 

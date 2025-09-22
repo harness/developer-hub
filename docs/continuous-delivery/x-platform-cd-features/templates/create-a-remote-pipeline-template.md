@@ -1,6 +1,13 @@
 ---
 title: Create a remote pipeline template
 description: This topic explains how to add a remote pipeline template in Harness.
+tags:
+  - remote-pipeline-template
+  - templates
+  - pipeline-templates
+  - harness-templates
+  - project-templates
+  - template-library
 sidebar_position: 2
 ---
 

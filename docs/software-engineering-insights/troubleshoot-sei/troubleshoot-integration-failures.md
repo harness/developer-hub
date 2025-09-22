@@ -6,6 +6,10 @@ sidebar_position: 10
 
 This page includes FAQs and troubleshooting information for SEI integrations.
 
+:::danger SEI Version Notice
+The following FAQs reflect SEI 1.0 behavior. If you are using SEI 2.0, see the [SEI 2.0 documentation](/docs/category/sei-recommended/).
+:::
+
 ### Can the data ingestion cadence be adjusted?
 
 Yes, the data ingestion cadence can be configured on the backend, but this functionality is not exposed in the UI. Adjusting the cadence will be considered only if there is a specific reason to do so.

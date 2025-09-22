@@ -29,88 +29,13 @@ Perspectives in Harness CCM provide powerful cost analysis capabilities through 
 - **Forecasted Cost**: The forecasted cost of the resources in the Perspective.
 - **Recommendations**: The recommendations for the resources in the Perspective.
 
-### Dynamic Perspective Reports
-
-<div style={{
-  backgroundColor: '#fff3cd',
-  border: '1px solid #ffeaa7',
-  borderRadius: '8px',
-  padding: '16px',
-  margin: '20px 0'
-}}>
-  <p style={{margin: 0}}>
-    <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
-
-    Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-  </p>
-</div>
-
-**What are Dynamic Perspective Reports?**
-
-Dynamic Perspective Reports are a new capability that allows you to generate, schedule, and manage cost reports directly from your Perspectives. Create reports from your perspectives to bookmark specific filter and grouping configurations. No need to rebuild the same view repeatedly just save it once and access it anytime. Reports dynamically include all relevant data columns based on your selected grouping criteria and filters. This ensures consistency between your interactive perspective view and exported reports.
-
-<Tabs>
-<TabItem value="create-report" label="Create Reports">
-
-
-<DocVideo src="https://app.tango.us/app/embed/9d694765-9542-47a8-a2fd-a23a2c01e2ca" style="min-height:720px" title="Perspective Overview in Harness CCM" />
-
-1. Navigate to the specific Perspective you wish to create a report for.
-2. Click the **Download/Save as Report** button in the upper-right corner of the Perspective view
-
-**Report Details** 
-  - **Name**: Provide a name for your report 
-  - **Group By**: Select how data should be organized using [available grouping options](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#grouping-options-by-data-source) 
-  - **Time Period**: Choose from Last 7 Days, Last 30 Days, Last Month, or This Month 
-  - **Granularity**: Select Daily, Weekly, or Monthly data points 
-  - **Filters**: Apply specific [filters](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#group-by) to focus your report 
-  - **Data Columns**: Customize which metrics and dimensions appear in your report. The system automatically suggests relevant columns based on your Group By selection, but you can add or remove specific data points to tailor the report to your requirements. 
-  - **Export Rows up to**: Set maximum number of data rows to include 
-  - **Exclude rows with cost below**: Optionally exclude rows below a specified cost value
-
-**Delivery Options:**
-  - **Scheduled Delivery:** Set specific date and time for automated delivery and frequency (Daily, Weekly, Monthly, Quarterly, Yearly). You can add up to 50 recipient email addresses (comma-separated)
-  - **Immediate Download:** Download Perspective Chart data or Table data as CSV
-
-:::important 
-
--  When the Dynamic Perspective Reports feature flag is enabled for your account, CCM will disable the legacy report creation method from the Perspective Creation workflow.
-
-<DocImage  path={require('./static/enabled-ff.png')} width="80%" height="80%" title="Click to view full size image" />
-
-- For previously created reports where **Group By settings, time range, or granularity were not available for reports,CCM utomatically takes these parameters from the perspective. In these cases, the maximum export row limit defaults to 10,000 rows.
-
-:::
-
-</TabItem>
-<TabItem value="view-report" label="View Saved Reports">
-
-<DocImage  path={require('./static/saved-reports.png')} width="100%" height="100%" title="Click to view full size image" />
-
-To view and manage all your saved reports: Navigate to **Cloud Costs** > **Perspectives** > **Saved Reports**
-
-The Saved Reports page provides a comprehensive view of all your configured reports with the following options:
-
-* **Report Creation**: Create new reports by clicking **+New Report** > **Perspective**
-* **Report Management**: View information for each report including:
-  * Report name and scheduled delivery frequency
-  * Associated perspective
-  * Time period selected for data
-  * Creation and modification metadata
-* **Report Actions**: You can:
-  * Edit or Delete a report.
-  * Subscribe or unsubscribe from scheduled deliveries.
-
-</TabItem>
-</Tabs>
-
 ### Group By
 
 <DocImage  path={require('./static/group-by.png')} width="100%" height="100%" title="Click to view full size image" />
 
 You can create a Perspective for your resources using rules and filters. The filters are used to group the resources. The following are the supported filters:
 
-* **Cost Categories**: You can create a perspective by filtering based on the cost categories you have created. To create cost categories, see [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md).
+* **Cost Categories**: You can create a perspective by filtering based on the cost categories you have created. To create cost categories, see [Use Cost Categories](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories).
 * **Region**: Each AWS, GCP, or Azure region you're currently running services in.
 * **Product**: Each of your active products with its cloud costs.
 * **Cloud Provider**: Filter and group costs by the cloud service provider (AWS, GCP, Azure, or Kubernetes clusters) to analyze spending across different cloud platforms.
@@ -322,7 +247,118 @@ To view only the costs that appear as "No [GroupBy]", use the **IS NULL** filter
 
 :::
 
-## 🏷️ Label Migration: Label vs. Label V2
+## Features behind Feature Flag
+
+<div style={{
+  backgroundColor: '#fff3cd',
+  border: '1px solid #ffeaa7',
+  borderRadius: '8px',
+  padding: '16px',
+  margin: '20px 0'
+}}>
+  <p style={{margin: 0}}>
+    <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
+
+    The below listed features are behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature for usage. 
+  </p>
+</div>
+
+### Dynamic Perspective Reports
+
+**What are Dynamic Perspective Reports?**
+
+Dynamic Perspective Reports are a new capability that allows you to generate, schedule, and manage cost reports directly from your Perspectives. Create reports from your perspectives to bookmark specific filter and grouping configurations. No need to rebuild the same view repeatedly just save it once and access it anytime. Reports dynamically include all relevant data columns based on your selected grouping criteria and filters. This ensures consistency between your interactive perspective view and exported reports. 
+
+
+<Tabs>
+<TabItem value="create-report" label="Create Reports">
+
+
+<DocVideo src="https://app.tango.us/app/embed/9d694765-9542-47a8-a2fd-a23a2c01e2ca" style="min-height:720px" title="Perspective Overview in Harness CCM" />
+
+1. Navigate to the specific Perspective you wish to create a report for.
+2. Click the **Download/Save as Report** button in the upper-right corner of the Perspective view
+
+**Report Details** 
+  - **Name**: Provide a name for your report 
+  - **Group By**: Select how data should be organized using [available grouping options](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#grouping-options-by-data-source) 
+  - **Time Period**: Choose from Last 7 Days, Last 30 Days, Last Month, or This Month 
+  - **Granularity**: Select Daily, Weekly, or Monthly data points 
+  - **Filters**: Apply specific [filters](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#group-by) to focus your report 
+  - **Data Columns**: Customize which metrics and dimensions appear in your report. The system automatically suggests relevant columns based on your Group By selection, but you can add or remove specific data points to tailor the report to your requirements. 
+  - **Export Rows up to**: Set maximum number of data rows to include 
+  - **Exclude rows with cost below**: Optionally exclude rows below a specified cost value
+
+**Delivery Options:**
+  - **Scheduled Delivery:** Set specific date and time for automated delivery and frequency (Daily, Weekly, Monthly, Quarterly, Yearly). You can add up to 50 recipient email addresses (comma-separated)
+  - **Immediate Download:** Download Perspective Chart data or Table data as CSV
+
+:::important 
+
+-  When the Dynamic Perspective Reports feature flag is enabled for your account, CCM will disable the legacy report creation method from the Perspective Creation workflow.
+
+<DocImage  path={require('./static/enabled-ff.png')} width="80%" height="80%" title="Click to view full size image" />
+
+- For previously created reports where **Group By settings, time range, or granularity were not available for reports,CCM utomatically takes these parameters from the perspective. In these cases, the maximum export row limit defaults to 10,000 rows.
+
+:::
+
+</TabItem>
+<TabItem value="view-report" label="View Saved Reports">
+
+<DocImage  path={require('./static/saved-reports.png')} width="100%" height="100%" title="Click to view full size image" />
+
+To view and manage all your saved reports: Navigate to **Cloud Costs** > **Perspectives** > **Saved Reports**
+
+The Saved Reports page provides a comprehensive view of all your configured reports with the following options:
+
+* **Report Creation**: Create new reports by clicking **+New Report** > **Perspective**
+* **Report Management**: View information for each report including:
+  * Report name and scheduled delivery frequency
+  * Associated perspective
+  * Time period selected for data
+  * Creation and modification metadata
+* **Report Actions**: You can:
+  * Edit or Delete a report.
+  * Subscribe or unsubscribe from scheduled deliveries.
+
+</TabItem>
+</Tabs>
+
+-----
+
+### Dynamic Cost Categories Toggle
+**Feature Flag Name: `CCM_COST_CATEGORY_STAMPED_DATA`**
+
+<DocImage  path={require('./static/dynamic-toggle.png')} width="100%" height="100%" title="Click to view full size image" />
+
+The Dynamic toggle on the Perspective page gives you control over how cost category rules are applied to your cost data. It lets you balance real-time accuracy with faster performance.
+
+#### Internal Working:
+
+<DocImage  path={require('./static/dynamic-toggle.gif')} width="100%" height="100%" title="Click to view full size image" />
+
+**If Dynamic ON (Runtime Mode):**
+- Perspectives apply **cost category rules as soon as the page loads (dynamically)**.
+- Any recent changes to cost category rules (even from a few minutes ago) are reflected immediately.
+- ⏱️ Load times may be slower since rules are processed at runtime.
+
+**If Dynamic OFF (Stored Data Mode):**
+- Harness CCM evaluates cost category rules during the daily data ingestion process and persists the results in a dedicated dataset. This optimized dataset contains pre-computed rule evaluations for the current month's cost data. 
+- When Dynamic Toggle is OFF, Perspectives use **cost category rules from the stored dataset**.
+- This ensures ⚡ **faster performance** since stored data is used without any computations at runtime.
+- Note that if in case, CCM's daily process of updating the dataset is still running, **stored data is not available and only Dynamic ON (runtime calculation) is available** and a message will be displayed on the UI to inform.
+<DocImage  path={require('./static/updation-in-process.png')} width="90%" height="90%" title="Click to view full size image" />
+
+:::note
+- **Historical Data**: CCM updates cost category rules **daily for the current month only**. For previous months with Dynamic OFF, Perspectives use the rules that existed when that month's data was ingested. To apply new rules to historical data, contact support to request a backfill.
+
+- **New Cost Categories**: When you create a new cost category and use it in a Perspective with Dynamic OFF (stored data mode), no data will be displayed initially. This occurs because the new cost category hasn't been processed by CCM's daily job yet. You'll need to either switch to Dynamic ON temporarily or wait for upto 24 hours for the new cost category data to appear.
+:::
+
+-----
+
+## Label Migration: Label vs. Label V2
 
 <div style={{
   backgroundColor: '#fff3cd',
@@ -358,7 +394,7 @@ After Label V2, AWS labels are stored as-is without any normalization.
   margin: '15px 0'
 }}>
   <h4 style={{margin: '0 0 10px 0', color: '#0066cc'}}>✅ Migration Required</h4>
-  <p style={{margin: '0'}}>You need to migrate if you have <strong>existing Perspectives that use AWS Labels</strong> for grouping or filtering. Check your Perspectives for any Label-based rules.</p>
+  <p style={{margin: '0'}}>You need to migrate if you have <strong>existing Perspectives that use AWS Labels</strong> for grouping or filtering. Migration is done by Harness CCM. If you want to know the status of your migration, please contact Harness support</p>
 </div>
 
 <div style={{
@@ -372,107 +408,6 @@ After Label V2, AWS labels are stored as-is without any normalization.
   <p style={{margin: '0'}}>If you're a new user or haven't used Labels in your Perspectives, simply use <strong>Label V2</strong> for all new configurations.</p>
 </div>
 
-### Migration Steps for Existing Users
-
-<iframe 
-  src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" 
-  title="Migrating Label to Label V2" 
-  style={{minHeight:'480px', border: '1px solid #dee2e6', borderRadius: '8px'}}
-  width="100%" 
-  height="100%" 
-  referrerpolicy="strict-origin-when-cross-origin" 
-  frameborder="0" 
-  webkitallowfullscreen="webkitallowfullscreen" 
-  mozallowfullscreen="mozallowfullscreen" 
-  allowfullscreen="allowfullscreen">
-</iframe>
-
-#### UI Migration Process
-
-1. **Identify affected Perspectives**: Review Perspectives using AWS Label-based grouping or filtering
-2. **Update each Perspective**: Change "Label" selections to "Label V2" 
-3. **Verify functionality**: Ensure cost data and filters work correctly after migration
-
-#### API Migration Process
-
-For API users, update the identifier from `LABEL` to `LABEL_V2`:
-
-<Tabs groupId="before-after">
-<TabItem value="before" label="Before (Legacy)">
-
-```json
-{
-  "field": {
-    "fieldId": "labels.value",
-    "fieldName": "key1",
-    "identifier": "LABEL",
-    "identifierName": "Label"
-  },
-  "operator": "IN",
-  "values": ["value1"]
-}
-```
-
-</TabItem>
-<TabItem value="after" label="After (Label V2)">
-
-```json
-{
-  "field": {
-    "fieldId": "labels.value",
-    "fieldName": "key1",
-    "identifier": "LABEL_V2",
-    "identifierName": "Label V2"
-  },
-  "operator": "IN",
-  "values": ["value1"]
-}
-```
-
-</TabItem>
-</Tabs>
-
-Similarly, for `labels.key`:
-
-<Tabs groupId="before-after">
-<TabItem value="before" label="Before (Legacy)">
-
-```json
-{
-  "idFilter": {
-    "field": {
-      "fieldId": "labels.key",
-      "fieldName": "",
-      "identifier": "LABEL",
-      "identifierName": "Label"
-    },
-    "operator": "IN",
-    "values": []
-  }
-}
-```
-</TabItem>
-<TabItem value="after" label="After (Label V2)">
-
-```json
-{
-  "idFilter": {
-    "field": {
-      "fieldId": "labels.key",
-      "fieldName": "",
-      "identifier": "LABEL_V2",
-      "identifierName": "Label V2"
-    },
-    "operator": "IN",
-    "values": []
-  }
-}
-```
-
-</TabItem>
-</Tabs>
-
-**Key Change**: Replace `"identifier": "LABEL"` with `"identifier": "LABEL_V2"` and update `"identifierName"` accordingly.
 
 ## Organize Perspectives using Folders
 

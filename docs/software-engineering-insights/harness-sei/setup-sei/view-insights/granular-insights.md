@@ -12,58 +12,80 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-To get more granular insights on [Efficiency](../../analytics-and-reporting/efficiency), [Productivity](../../analytics-and-reporting/productivity), and [Business Alignment](../../analytics-and-reporting/business-alignment), you can drill down into specific [teams](../setup-teams) within an [Org Tree](../setup-org-tree) and apply team-specific settings.
+Once you've set up integrations, created profiles, uploaded your developer records, and created an Org Tree, you can view  high-level insights on [Efficiency](../../analytics-and-reporting/efficiency), [Productivity](../../analytics-and-reporting/productivity), and [Business Alignment](../../analytics-and-reporting/business-alignment). To get more granular insights, drill down into specific [teams](../setup-teams) within an [Org Tree](../setup-org-tree) and apply team-specific settings.
 
 ## Viewing insights for a specific team after applying team settings
 
 To view insights for a specific team after applying team settings:
 
-1. From the left-hand navigation pane, click on **Insights**.
-1. In the left-hand panel, expand the Org Tree (e.g., "SEI org tree v7 July") to reveal the individual teams.
-1. Click on the specific team (e.g., "Noah Lewis," "Ava Patel") for which you want to view insights.
-1. Configure [Team Settings](../setup-teams) (if not already done):
+1. From the left-hand navigation pane, click **Insights**.
+1. In the left-hand panel, expand the Org Tree you want to view insights for.
+   
+   ![](../../static/insights-1.png)
 
-   - To adjust settings for a team, go to **Teams** from the left navigation.
-   - Click the **Edit** icon next to the desired team.
+1. Click on a specific team and click **View Breakdown**.
+
+   ![](../../static/granular-insights-1.png)
+
+1. Configure [Team Settings](../setup-teams) (if not already done) by navigating to **Teams** in the left-hand navigation or clicking on the **Team Settings** icon next in an Org Tree.
+
+   ![](../../static/granular-insights-2.png)
 
      <Tabs queryString="config-tab">
-     <TabItem value="integrations" label="Integrations Tab">
+     <TabItem value="team" label="Details">
+     
+     Edit the team name on the **Details** tab and click **Save Team Details**.
 
-     Select specific integrations for this team (e.g., _"Jira_For_Temporal"_, _"HarnessCD-prod-engopps/audit"_).
+     ![](../../static/granular-insights-3.png)
+
+     </TabItem>
+     <TabItem value="integrations" label="Integrations">
+     
+     Select available integrations for this team on the **Integrations** tab and click **Save Integrations**.
+
+     ![](../../static/granular-insights-4.png)
 
      </TabItem>
 
-     <TabItem value="issues" label="Issue Management Tab">
+     <TabItem value="issues" label="Issue Management">
+     
+     Create a filter set by adding conditions to define criteria for your team's issue management system on the **Projects** tab.
 
-     Define criteria for the following:
+     ![](../../static/granular-insights-5.png)
 
-         - **Production incidents or failures**: Add conditions based on project, labels, etc.
-         - **Features**: Add conditions based on issue type, status, etc.
-         - **Bugs**: Add conditions based on issue type, status, etc.
+     Create a filter set to track production failures and incidents on the **Product Incidents** tab.
+
+     ![](../../static/granular-insights-6.png)
+
+     Create a filter set to define investment categories on the **Business Alignment** tab. 
+     
+     ![](../../static/granular-insights-7.png)
+     
+     Once you've configured these filter sets, click **Save IM Settings**.
 
      </TabItem>
 
-     <TabItem value="scm" label="Source Code Management Tab">
+     <TabItem value="scm" label="Source Code Management">
+     
+     Create a filter set to define the branches used for production deployments (for example, `main`, `develop`, or `release`) on the **Source Code Management** tab.
 
-     Define the following:
-
-         - **Repositories**: Select which repositories are part of this team's work.
-         - **PR labels for incidents/hotfix-related merges**: Add conditions based on target branch or source branch.
-
+     ![](../../static/granular-insights-8.png)
+     
+     Once you've set the target branch, click **Save SCM Settings**.
+     
      </TabItem>
 
-     <TabItem value="cd" label="CD Pipelines Tab">
+     <TabItem value="cd" label="CD Pipelines">
+     
+     Create filter sets to include relevant pipelines or services, define successful deployments (for example, `Status Equals Success`), and identify production failures (for example, `Rollback Equals True`) on the **CD Pipelines** tab.
 
-     Define the following:
-
-         - **Successful deployment**: Select pipelines and criteria.
-         - **Production failure**: Select pipelines and criteria.
+     ![](../../static/granular-insights-9.png)
+     
+     Once you've configured these filter sets, click **Save CD Settings**.
 
      </TabItem>
      </Tabs>
 
-1. Click **Save Team Details** or **Save IM Settings** / **Save SCM Settings** / **Save CD Settings** as applicable for each tab.
-
-After configuring team settings, the **Insights** dashboard will refresh to show data specific to the selected team, reflecting the applied configurations. You can explore the DORA metrics for that team.
+After applying team settings, the Insights page will refresh to show data for the selected team, reflecting your configurations. You can then explore that team's DORA metrics.
 
 For more information on sharing insights surfaced by Harness SEI, see [Exporting SEI 2.0 Insights](../../analytics-and-reporting/export).

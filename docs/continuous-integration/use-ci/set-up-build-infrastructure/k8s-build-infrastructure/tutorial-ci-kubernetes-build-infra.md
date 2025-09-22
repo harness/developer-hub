@@ -31,7 +31,7 @@ This tutorial uses publicly-available code and images. You need a Harness accoun
 
 :::info
 
-The Kubernetes cluster build infrastructure option is available with Harness CI Team and Enterprise plans only. For Free plans, try the [Harness Cloud build infrastructure tutorial](/docs/continuous-integration/get-started/tutorials).
+The Kubernetes cluster build infrastructure option is available with Harness CI Team and Enterprise plans only. For Free plans, try the [Harness Cloud build infrastructure tutorial](/docs/continuous-integration/get-started/onboarding-guide).
 
 :::
 
@@ -385,4 +385,4 @@ pipeline:
 
 </details>
 
-After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/docs/category/cd-and-gitops-tutorials).
+After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/docs/category/cd-tutorials).

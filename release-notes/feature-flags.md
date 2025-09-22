@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-08-20T08:09:25
+date: 2025-09-18T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,9 +26,27 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: August 20, 2025
+#### Last updated: September 18, 2025
+
+## September 2025
+
+### Relay Proxy
+
+#### Version 2.0.15
+
+**Bug fixes**:
+
+- Fixes a issue where the Proxy could incorrectly detect a delta between cached Target Group/Flag configs and SaaS during a stream disconnect or on startup. This caused the Proxy to send unnecessary SSE event to SDKs, even when no changes occurred. (FFM-12608)
 
 ## August 2025
+
+### JavaScript SDK
+
+#### Version 1.31.2
+
+**Bug fixes**:
+
+- Apply `client.registerAPIRequestMiddleware` to SDK streaming requests.
 
 ### React Native Client SDK
 

@@ -36,7 +36,7 @@ You can import the SDK in your project by using Swift Package Manager. This can 
 You can also import the SDK into your Xcode project using CocoaPods, adding it in your **Podfile**.
 
 ```swift title="Podfile"
-pod 'Split', '~> 3.3.2'
+pod 'Split', '~> 3.3.3'
 ```
 
 #### Carthage
@@ -44,7 +44,7 @@ pod 'Split', '~> 3.3.2'
 This is another option to import the SDK. Just add it in your **Cartfile**.
 
 ```swift title="Cartfile"
-github "splitio/ios-client" 3.3.2
+github "splitio/ios-client" 3.3.3
 ```
 
 Once added, follow the steps provided in the [Carthage Readme](https://github.com/Carthage/Carthage/blob/master/README.md#if-youre-building-for-ios-tvos-or-watchos).

@@ -1,7 +1,7 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2025-08-22T10:00:00
+date: 2025-09-16T16:00
 sidebar_position: 19
 ---
 
@@ -19,6 +19,35 @@ The release notes describe recent changes to Harness AI Test Automation.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## September 2025
+
+### New Features
+
+- **API Response Interception**: Added capability to intercept and analyze API responses during test execution for enhanced debugging and validation
+- **Pagination Enhancement**: Added pagination options to display more than 20 items per page across test listings and results
+- **CSV/JSON Content Generation Control**: Introduced configurable settings to control automatic generation of CSV and JSON content during test suite execution
+- **AI-Powered Parameter Generation**: Enabled 'Generate with AI' functionality in parameter creation to support deterministic value generation for dates
+- **Test Case Import with Assertions**: Added support for creating assertions and parameters during the 'Import Test Case' process
+
+### Enhancements
+
+- **AI Thoughts Visibility**: Enhanced AI transparency by showing AI thoughts during execution of If/elseIf commands and on assertion failures
+- **Download Directory Navigation**: Added support for navigating to DOWNLOAD_DIR for improved file handling workflows
+- **Copilot Step Interactivity**: Made copilot steps clickable during execution in Interactive Authoring mode
+- **Screenshot Retry Logic**: Implemented automatic screenshot retry mechanism when confidence levels fall below retraining threshold
+
+### Bug Fixes
+
+- **Parameter Handling**: Fixed issues where empty string values were not being properly set in parameters
+- **Cursor Position**: Resolved cursor position reset issue when entering values in input fields
+- **Live Edit Improvements**: Fixed flickering and reload issues in Live Edit functionality
+- **Test Suite Navigation**: Corrected redirection problems when navigating from test details page to view test suite
+- **User Input Validation**: Prevented entry of invalid characters in parameter name input fields
+- **Login URL Display**: Fixed incorrect display of LOGIN_URL and START_URL for navigate commands
+- **Test Export/Import Error Propagation**: Improved error handling and email notifications for test export/import operations
+- **UI Styling**: Resolved double scrollbar visibility issues in Harness integration interface
+- **Polling Optimization**: Decreased polling intervals for All Test Listing Page to improve responsiveness
+
 ## August 2025
 
 ### New Features

@@ -1,11 +1,10 @@
 ---
+title: Configurations
 sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Settings
 
 Harness Open Source instance can be configured by setting Docker [environment variables](https://docs.docker.com/compose/environment-variables/set-environment-variables/) provided below.
 
