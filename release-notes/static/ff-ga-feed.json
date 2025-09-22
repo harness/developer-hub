@@ -460,5 +460,17 @@
     "description": "Track release name usage across services and warn during execution if same release name is used by a different service or environment for current workload",
     "gaStartDate": "2025-09-22",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA",
+    "description": "Approval notifications can now include details about the service, environment, and infrastructure used in the CD stages.",
+    "gaStartDate": "2025-09-22",
+    "modutle": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_USE_SWEEPING_OUTPUT_SECRET_FUNCTOR_FOR_IMAGE_PULL_SECRET",
+    "description": "Ensures sensitive information is kept safe when pulling container images.",
+    "gaStartDate": "2025-09-22",
+    "modutle": "Continuous Delivery"
   }
 ]
