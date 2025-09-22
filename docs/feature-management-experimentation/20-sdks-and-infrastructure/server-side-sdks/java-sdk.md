@@ -1644,13 +1644,40 @@ This is useful when you want to:
 
 Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
 
-TBD
+```java
+// Initialize SDK with global fallback treatment
+       FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(new FallbackTreatment("on-fallback", "{\"prop1\", \"val1\"}"),
+                null);
+
+SplitClientConfig config = SplitClientConfig.builder()
+    .fallbackTreatments(fallbackTreatmentsConfiguration)
+    .build();
+
+SplitFactory factory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
+SplitClient client = factory.client();
+```
 
 ### Flag-level fallback treatment
 
 You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
 
-TBD
+```java
+       FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(null,
+                new HashMap<String, FallbackTreatment>() {{ put("FEATURE_FLAG_NAME", new FallbackTreatment("off", "{\"prop2\", \"val2\"}")); }});
+
+SplitClientConfig config = SplitClientConfig.builder()
+    .fallbackTreatments(fallbackTreatmentsConfiguration)
+    .build();
+
+SplitFactory factory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
+SplitClient client = factory.client();
+
+// Evaluate a flag with a per-flag fallback treatment
+SplitResult result = client.getTreatmentWithConfig("user_key", "FEATURE_FLAG_NAME", "off");
+
+String treatment = result.treatment(); // "off" if evaluation fails
+String config = result.config();       // may be null
+```
 
 For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
