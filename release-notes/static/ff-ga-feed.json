@@ -472,5 +472,11 @@
     "description": "Ensures sensitive information is kept safe when pulling container images.",
     "gaStartDate": "2025-09-22",
     "modutle": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_GITOPS_OPERATOR",
+    "description": "Enable GitOps operator configuration.",
+    "gaStartDate": "2025-09-17",
+    "module": "Continuous Delivery"
   }
 ]
