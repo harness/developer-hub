@@ -442,5 +442,11 @@
     "description": "Adds option in Override menu to view override yaml without expanding the specific override.",
     "gaStartDate": "2025-09-22",
     "modutle": "Continuous Delivery"
+  },
+    {
+    "flagKey": "CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK",
+    "description": "Ensures pod rollout on ConfigMap/Secret changes when Declarative Rollback is enabled.",
+    "gaStartDate": "2025-09-22",
+    "modutle": "Continuous Delivery"
   }
 ]
