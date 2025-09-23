@@ -700,7 +700,9 @@ This `InLocalStorage` function accepts an optional object with options described
 | clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
 | wrapper | Storage wrapper used to persist the SDK cached data. | `localStorage` |
 
-By default, the SDK uses the `localStorage` global object if available. For supporting other platforms, like Android and iOS, where `localStorage` is not available, you can pass your own storage wrapper, like [`AsyncStorage`](https://react-native-async-storage.github.io/async-storage/) or any other that implements the `SplitIO.StorageWrapper` interface.
+By default, the SDK uses the `localStorage` global object if available. If it is not available, the SDK will use the default in memory storage. 
+
+To support a persistent cache on platforms like Android and iOS, where `localStorage` is not available, you can pass your own storage wrapper, such as [`AsyncStorage`](https://react-native-async-storage.github.io/async-storage/) or any other that implements the `SplitIO.StorageWrapper` interface.
 
 <Tabs>
 <TabItem value="StorageWrapper interface">

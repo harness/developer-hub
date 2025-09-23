@@ -764,7 +764,7 @@ var client = factory.client();
 </TabItem>
 </Tabs>
 
-By default, the SDK uses the `localStorage` global object if available. But you can pass your own storage wrapper like, for example, one based on `IndexedDB` or another storage solution, by implementing the `SplitIO.StorageWrapper` interface.
+By default, the SDK uses the `localStorage` global object if available. If `localStorage` is not available, the SDK will use the default in memory storage. You can pass your own storage wrapper like, for example, one based on `IndexedDB` or another storage solution, by implementing the `SplitIO.StorageWrapper` interface.
 
 <Tabs>
 <TabItem value="StorageWrapper interface">
