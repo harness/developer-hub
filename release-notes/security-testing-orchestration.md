@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2025-09-12T10:00
+date: 2025-09-23T10:00
 sidebar_position: 13
 ---
 
@@ -22,6 +22,50 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 ## September 2025
+
+### Version 1.160.0
+
+<!-- 2025-09-23 -->
+
+#### New Features and Enhancements  
+
+##### ModelScan Integration:
+STO now integrates with **ModelScan**, enabling you to scan AI/ML models directly in your CI/CD pipelines. Refer to the [ModelScan documentation](/docs/security-testing-orchestration/sto-techref-category/modelscan/models) and [video](https://youtu.be/PhvIXcwpme8
+) for details.  
+  <DocVideo src="https://youtu.be/PhvIXcwpme8" title="Scan you AI/ML Models using Harness STO" />
+
+
+##### Nexus IQ Integration:
+**Nexus IQ** is now available as a native step. Previously supported only through the Custom Scan step, you can now use the Nexus IQ native step for all scans. 
+  Refer to the [Nexus IQ documentation](/docs/security-testing-orchestration/sto-techref-category/nexus-iq/nexus-iq-scanner-reference) for more details.  
+
+  <DocImage path={require('./static/sto-nexusiq-step.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Active Issues Component:
+Added a new **[Active Issues](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results)** component to the **Vulnerabilities** tab.  
+  - This count excludes exempted and remediated issues.  
+  - Added **deduplication percentage**, which shows how much the issue count has been reduced compared to raw counts, based on STO’s deduplication logic.  
+
+  <DocImage path={require('./static/sto-active-issues.png')} width="90%" height="90%" title="Click to view full size image" />
+
+##### SonarQube Step Enhancement:
+**SonarQube** issues with type `Code Smells` and `Bug Smells` now can include proper severity mapping instead of defaulting to `info` severity.  
+  - This is controlled by the **Treat Code Smells and Bug Smells as Vulnerabilities** setting (account-level, disabled by default). Refer to the [SonarQube documentation](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-issue-categorization-in-sto) for more details.  
+
+  <DocImage path={require('./static/sto-sonarqube-code-bug-smells.png')} width="80%" height="80%" title="Click to view full size image" />  
+
+##### STO License Details Update:
+Updated the STO License details view (STO-9757)
+- Removed the **Overuse Banner** for Standard (Legacy) License accounts (still shown for Dev360 users).  
+- Updated tooltip text for Standard (Legacy) License accounts to clarify the developer-based model:  
+  - 1 Active Developer = 100 Security Scans / month
+  - Each STO step (SAST, SCA, DAST, etc.) = 1 scan
+<DocImage path={require('./static/sto-license-activity-update.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Fixed Issues  
+- Fixed an issue where dashboard components displayed as “Untitled” with no data due to a pipeline link generation problem. Visualizations in dashboards now render as expected (STO-9171, ZD-80253).  
+- Fixed an issue where URLs in the **Reference URLs** field of the Issue Details pane overflowed. They now wrap to a new line (STO-9749).  
+
 
 ### Version 1.158.0
 

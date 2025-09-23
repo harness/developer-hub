@@ -23,15 +23,29 @@ Harness STO integrates with [SonarQube](https://docs.sonarqube.org/latest/) to s
 
 ### SonarQube Issue categorization in STO
 
-STO categorizes the SonarQube issues with severities: **Critical**, **High**, **Medium**, **Low**, and **Info**. The table below outlines how specific SonarQube issue types are classified in STO.
+STO categorizes the SonarQube issues with severities: **Critical**, **High**, **Medium**, **Low**, and **Info**, refer to [STO severity levels](/docs/security-testing-orchestration/get-started/key-concepts/severities) for more details. The table below outlines how specific SonarQube issue types are classified in STO.
 
 | SonarQube Issue Type        | STO Categorization                                                        |
 |-----------------------------|-----------------------------------------------------------------------------------|
-| Vulnerabilities         | Imported, normalized, deduplicated and assigned [STO severity levels](/docs/security-testing-orchestration/get-started/key-concepts/severities)            |
-| Code Smells, Bug Smells, Maintainability issues| Imported and categorized under **Info** severity.                                   |
+| Vulnerabilities         | Imported, normalized, deduplicated and assigned [STO severity levels](/docs/security-testing-orchestration/get-started/key-concepts/severities). See [severity mapping table](#sonarqube-severity-mapping) below.            |
+| Code Smells, Bug Smells | By default, imported and categorized under **Info** severity. <br/> If you enable the **Treat Code Smells and Bug Smells as Vulnerabilities** in **Default Settings** at Account level Settings (disabled by default), STO imports these issues with their original severities. See [severity mapping table](#sonarqube-severity-mapping) below. |
+| Maintainability issues| Imported and categorized under **Info** severity.                                   |
 | [Quality Gates (Policies)](#view-sonarqube-quality-gate-failures)| Imported and categorized as policy issues with **Info** severity.                   |
 | [Code Coverage](#view-sonarqube-code-coverage-results)           | Imported as both a step output variable and a policy issue with **Info** severity.  |
 | Hotspots                | Currently not supported by STO.                                                   |
+
+<a name="sonarqube-severity-mapping"></a>
+### SonarQube Severity Mapping
+
+When STO imports SonarQube issues, it maps the SonarQube severity levels to the STO severity levels as follows:
+
+| SonarQube Severity | STO Severity     |
+| :-------------- | :------------ |
+| INFO          | Info|
+| MINOR         | Low         |
+| MAJOR         | Medium      |
+| CRITICAL      | High        |
+| BLOCKER       | Critical    |
 
 ### Step configuration guidelines
 
@@ -472,4 +486,3 @@ If SonarQube doesn't scan both the main branch and pull request (PR) branches wi
 One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
 
 This approach ensures proper configuration and execution of SonarQube scans for both main and PR branches within your pipeline.
-
