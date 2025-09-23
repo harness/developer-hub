@@ -702,7 +702,7 @@ This `InLocalStorage` function accepts an optional object with options described
 
 By default, the SDK uses the `localStorage` global object if available. If it is not available, the SDK will use the default in memory storage. 
 
-To support a persistent cache on platforms like Android and iOS, where `localStorage` is not available, you can pass your own storage wrapper, such as [`AsyncStorage`](https://react-native-async-storage.github.io/async-storage/) or any other that implements the `SplitIO.StorageWrapper` interface.
+To support a persistent cache on platforms like Android and iOS, where `localStorage` is not available, you can pass your own storage wrapper, such as [`AsyncStorage`](https://react-native-async-storage.github.io/async-storage/), that implements the `SplitIO.StorageWrapper` interface.
 
 <Tabs>
 <TabItem value="StorageWrapper interface">
