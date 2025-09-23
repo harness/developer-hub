@@ -208,11 +208,13 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/ai-sre.md @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
 
 # AI QA Assistant Docs
-/docs/ai-qa-assistant/ 
+/docs/ai-qa-assistant/ @ShibamD @splitterben 
+/release-notes/ai-test-automation.md @ShibamD @splitterben 
+/src/components/Docs/AiTestAutomation.tsx @ShibamD @splitterben 
 
 # Artifact Registry Docs
-/docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
-/src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
+/docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h @ShibamD
+/src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h @ShibamD
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @SushrutHarness
