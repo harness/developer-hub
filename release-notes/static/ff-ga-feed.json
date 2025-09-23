@@ -414,12 +414,6 @@
     "module": "Continuous Delivery"
   },
   {
-    "flagKey": "CDS_DETECT_ORPHAN_INSTANCES",
-    "description": "Add logic to detect orphaned instance records when deleting a service, and allow service deletion.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
     "flagKey": "CDS_INSTANCE_CLEANUP_ON_TASK_INFO_DELETE",
     "description": "Delete instance records in all cases when we are deleting the instance sync perpetual tasks related records.",
     "gaStartDate": "2025-09-18",
@@ -441,13 +435,13 @@
     "flagKey": "CDS_SHOW_OVERRIDES_V2_YAML_IN_MENU",
     "description": "Adds option in Override menu to view override yaml without expanding the specific override.",
     "gaStartDate": "2025-09-22",
-    "modutle": "Continuous Delivery"
+    "module": "Continuous Delivery"
   },
-    {
+  {
     "flagKey": "CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK",
     "description": "Ensures pod rollout on ConfigMap/Secret changes when Declarative Rollback is enabled.",
     "gaStartDate": "2025-09-22",
-    "modutle": "Continuous Delivery"
+    "module": "Continuous Delivery"
   },
   {
     "flagKey": "CDS_DELEGATE_VIRTUAL_SERVICE_SUPPORT",
@@ -465,13 +459,13 @@
     "flagKey": "CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA",
     "description": "Approval notifications can now include details about the service, environment, and infrastructure used in the CD stages.",
     "gaStartDate": "2025-09-22",
-    "modutle": "Continuous Delivery"
+    "module": "Continuous Delivery"
   },
   {
     "flagKey": "CDS_USE_SWEEPING_OUTPUT_SECRET_FUNCTOR_FOR_IMAGE_PULL_SECRET",
     "description": "Ensures sensitive information is kept safe when pulling container images.",
     "gaStartDate": "2025-09-22",
-    "modutle": "Continuous Delivery"
+    "module": "Continuous Delivery"
   },
   {
     "flagKey": "CDS_GITOPS_OPERATOR",
@@ -483,6 +477,12 @@
     "flagKey": "CDS_DISABLE_FABRIC8_NG",
     "description": "Improve handling of istio traffic routing resources for Kuberentes canary deployments",
     "gaStartDate": "2025-09-22",
-    "modutle": "Continuous Delivery"
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK",
+    "description": "Fixes rollback failures by ensuring correct branch reference is used when retrieving YAML files during post-deployment rollbacks.",
+    "gaStartDate": "2025-09-23",
+    "module": "Continuous Delivery"
   }
 ]
