@@ -13,8 +13,7 @@ This behavior is defined in the SDK itself and is not configured through the Har
 
 Fallback treatments are applicable in the following scenarios:
 
-- The SDK cannot connect to Harness services
-- The SDK is operating in offline mode
+- The SDK cannot connect to Harness services (for example, network failure or missing attributes)
 - Your code explicitly provides a fallback treatment when calling `getTreatment` 
 
 ## How fallback treatments differ from control treatment
