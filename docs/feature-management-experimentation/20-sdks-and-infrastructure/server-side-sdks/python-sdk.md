@@ -1665,13 +1665,36 @@ This is useful when you want to:
 
 Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
 
-TBD
+```python
+// Initialize SDK with global fallback treatment
+from splitio import get_factory
+
+config = {
+ 'fallbackTreatments': FallbackTreatmentsConfiguration(FallbackTreatment("on-local", '{"prop": "val"}'), None)
+
+}
+
+factory = get_factory("YOUR_API_KEY", config)
+client = factory.client()
+```
 
 ### Flag-level fallback treatment
 
 You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
 
-TBD
+```python
+config = {
+ 'fallbackTreatments': FallbackTreatmentsConfiguration(None, {'FEATURE_FLAG_NAME': FallbackTreatment("off", '{"prop": "val"}')})
+}
+factory = get_factory("YOUR_API_KEY", config)
+client = factory.client()
+
+// Evaluate a flag with a per-flag fallback treatment
+result = client.get_treatment_with_config("user_key", "FEATURE_FLAG_NAME")
+
+treatment = result.treatment  # "off" if evaluation fails
+config = result.config        # None if no config defined
+```
 
 For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
