@@ -176,7 +176,7 @@ Pipelines fails if a variable's default value starts with `*`. This includes run
 Use allowed values to provide a fixed range of acceptable values for a runtime input.
 
 <Tabs>
-  <TabItem value="Visual" label="Visual">
+  <TabItem value="Visual" label="Visual" default>
 
 1. In the Pipeline Studio's Visual Editor, use the **Value type selector** to select **Runtime Input**.
 
@@ -200,24 +200,40 @@ Use allowed values to provide a fixed range of acceptable values for a runtime i
 6. If you also specify a [default value](#default-values), you must include the default value in your allowed values.
 7. Select **Submit**.
 
+If you are having any trouble resolving allowed values in runtime inputs ( e.g., if you are using JSON in allowed values and are unable to resolve them, or with array-type fields such as file paths), please check how the allowed values are configured in the YAML section of [set allowed values](#set-allowed-values).
+
 </TabItem>
-  <TabItem value="YAML" label="YAML" default>
+  <TabItem value="YAML" label="YAML" >
 
-When writing pipelines in YAML, define allowed values by appending the `.allowedValues()` method to `<+input>`. For example: `<+input>.allowedValues(bengaluru,newyork)`.
+:::caution Deprecated Method
 
-If your values include commas, you must escape the value strings using the format `\'VALUE\'`. For example: `<+input>.allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
+We have introduced a new functor [`.selectManyFrom()`](#multi-selection), which is mapped to multi-selection for runtime inputs. The release of the new functor has deprecated the `.allowedValues()` functor.
 
-If you specify allowed values *and* a [default value](#default-values), the default value must be present in the list of allowed values. To specify both an allowed value and a default value, append both the `.default()` and `.allowedValues()` methods to `<+input>`, and make sure the list of allowed values includes the default value. For example: `<+input>.default(london).allowedValues(bengaluru,newyork,london)`.
+Exactly as before, the allowed values method still behaves like [`.selectOneFrom()`](#single-selection) (single selection) unless the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is enabled, in which case it is used to perform multi selection.
 
-In order to allow empty values to be included in the allowed values list, add a comma followed by nothing. For example: `<+input>.allowedValues(bengaluru,newyork,)` will allow an empty value to be an input for this variable.
+With this update:
+- Use [`.selectManyFrom()`](#multi-selection) for selecting multiple values
+- Use [`.selectOneFrom()`](#single-selection) for selecting a single value
+
+
+**Existing pipelines using `.allowedValues()` will continue to work, but editing runtime inputs in Pipeline Studio will update the YAML to use the new functors, which may affect automation and testing.**
+:::
+
+When writing pipelines in YAML, define allowed values by appending the `.selectOneFrom()` or `selectManyFrom()` method to `<+input>`. For example: `<+input>.selectOneFrom(bengaluru,newyork,california)` or  `<+input>.selectManyFrom(bengaluru,newyork,california)` depending upon whether you want to allow [single selection](#single-selection) or [multi selection](#multi-selection). 
+
+Please note that `.allowedValues(bengaluru,newyork,california)` will work as well, but it is a deprecated method and therefore we recommend using [`.selectManyFrom()`](#multi-selection) or [`.selectOneFrom()`](#single-selection) functors.
+
+If your values include commas, you must escape the value strings using the format `\'VALUE\'`. For example: `<+input>.selectManyFrom(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
+
+If you want to specify allowed values and a [default value](#default-values), the default value must be present in the list of allowed values. To specify both an allowed value and a default value, append both the `.default()` and `.selectOneFrom()` or `.selectManyFrom()` methods to `<+input>`, and make sure the list of allowed values includes the default value. For example: `<+input>.default(london).selectManyFrom(bengaluru,newyork,london)`.
+
+In order to allow empty values to be included in the allowed values list, add a comma followed by nothing. For example: `<+input>.selectManyFrom(bengaluru,newyork,)` will allow an empty value to be an input for this variable.
 
   :::info
 
   The option to allow empty values is behind the feature flag `CDS_INCLUDE_EMPTY_VALUE`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
   :::
-</TabItem>
-</Tabs>
 
 ---
 
@@ -228,14 +244,14 @@ If you use runtime input with allowed values in JSON, use double quotes as neces
 For example, these expressions both resolve to `{x:y}`:
 
 ```
-<+input>.allowedValues({"x":"y"})
-"<+input>.allowedValues({x:y})"
+<+input>.selectOneFrom({"x":"y"})
+"<+input>.selectOneFrom({x:y})"
 ```
 
 If you needed the allowed values to include quotes, such as `{"x": "y"}`, then you need to escape the quotes in the allowed values. For example:
 
 ```
-"<+input>.allowedValues({\\\"x\\\": \\\"y\\\"})"
+"<+input>.selectOneFrom({\\\"x\\\": \\\"y\\\"})"
 ```
 
 :::
@@ -243,36 +259,39 @@ If you needed the allowed values to include quotes, such as `{"x": "y"}`, then y
 
 :::info note
 
-When using `allowedValues` with runtime inputs in array-type fields (e.g., file paths), errors may occur during deployment as the system might not correctly process these inputs.
+When using `allowedValues` , `selectManyFrom` or `selectOneFrom` with runtime inputs in array-type fields (e.g., file paths), errors may occur during deployment as the system might not correctly process these inputs.
 
-Fields like paths in ECS Task Definitions and valuesPaths in Kubernetes services do not support runtime inputs in array format. Expressions like `<+input>.allowedValues(<+variable1>, <+variable2>)` can lead to deployment failures
+Fields like paths in ECS Task Definitions and valuesPaths in Kubernetes services do not support runtime inputs in array format. Expressions like `<+input>.selectManyFrom(<+variable1>, <+variable2>)` can lead to deployment failures
 
 **Workaround:-**
-Define a variable (e.g., FILE_PATH_VAR) at the pipeline or service level, assign it a value using `allowedValues`, and reference this variable in the configuration. This approach ensures the input is treated as a string.
+Define a variable (e.g., FILE_PATH_VAR) at the pipeline or service level, assign it a value using `allowedValues`, `selectManyFrom` or `selectOneFrom`, and reference this variable in the configuration. This approach ensures the input is treated as a string.
 
 **Recommendation:-**
-Avoid using `allowedValues` with runtime inputs in list fields and use the suggested workaround to ensure proper functionality
+Avoid using `allowedValues` , `selectManyFrom` or `selectOneFrom` with runtime inputs in list fields and use the suggested workaround to ensure proper functionality
 
 :::
+
+</TabItem>
+</Tabs>
 
 ## Allow Multi Selection and Single selection
 
 
-You can select a **Mode** of selection while creating allowed values in Runtime Input:- 
+You can select a **Mode** of selection while creating allowed values in Runtime Input
 
 ![](./static/mode_of_Selection_allowed_value.png)
 
 ### Multi Selection
 
-:::note
-Currently, multiple selection for runtime inputs is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+:::info note
+Multi Selection mode now by default maps to the `.selectManyFrom()` functor. This feature update is not behind a feature flag and is generally available.
 :::
 
-You can use Multi Selection if you want to choose one or more values from the list of [allowed values](#set-allowed-values). Multi Selection maps to the `.allowedValues()` functor, and Single Selection maps to the 
-`.selectOneFrom()` functor. You can use multiple selection for runtime inputs in pipelines, stages, and shell script variables only. Multiple selection is an extension of allowed values, so you must specify allowed values to use it.
+:::caution DEPRECATED
+Multiple selection for runtime inputs by leveraging the `.allowedValues()` which is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is **deprecated**. 
+:::
 
-For users who want to migrate to single selection, you can implement 
-`.selectOneFrom()` even before the FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is turned on.
+You can use Multi Selection if you want to choose one or more values from the list of [allowed values](#set-allowed-values). Multi Selection by default maps to the `.selectManyFrom()` functor  and Single Selection maps to the  [`.selectOneFrom()`](#single-selection) functor. You can use multiple selection for runtime inputs in pipelines, stages, and shell script variables only. You must specify multiple allowed values to use it.
 
 ![](./static/runtime-inputs-11.png)
 
