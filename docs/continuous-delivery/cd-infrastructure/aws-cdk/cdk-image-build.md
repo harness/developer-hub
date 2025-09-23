@@ -131,8 +131,8 @@ Parameters to change after you copy the pipeline YAML and paste it in your Harne
 
 ```yaml
 pipeline:
-  projectIdentifier: your_project_identifier
-  orgIdentifier: your_org_identifier
+  projectIdentifier: your-project-identifier
+  orgIdentifier: your-org-identifier
   tags: {}
   stages:
     - stage:
@@ -326,8 +326,8 @@ pipeline:
       description: Registry password
       required: true
       value: <+secrets.getValue("your-docker-pat")>
-  identifier: cdk-build-push
-  name: cdkbuildandpush
+  identifier: cdkbuildandpush
+  name: cdk-build-push
 ```
 </details>
 
