@@ -1,4 +1,4 @@
-####When are Container Registry and Image required?
+#### When are Container Registry and Image required?
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
