@@ -53,19 +53,25 @@ Here’s what each part means:
 - Store rollback [tags](https://developer.harness.io/docs/database-devops/concepts/glossary/tag) in external audit systems for traceability.
 - Always verify tags before running deployments in production.
 - Integrate rollback tags into approval steps for safer rollouts.
+- When deploying a git-based schema, tag using the git sha
+- when deploying an artifactory-based schema, tag using the artifact version
 
 ## FAQ
 ### 1. Is this different from Liquibase tags?
 Yes. Liquibase requires manual tagging. Harness automates this process, ensuring a rollback tag is always captured—no missed steps, no manual scripts.
+
 ### 2. Can I export tags for external systems?
-Yes, rollback tags can be logged or passed into monitoring and audit tools.
+Yes, rollback tags can be logged or passed into monitoring and audit tools. It can also be queried via this API Endpoint - `https://apidocs.harness.io/migration-state/v1migrationstateprojdbinstance`
+
 ### 3. What if no previous tag exists?
 Harness creates one automatically before the update, ensuring rollback safety every time.
+
 ### 4. Why use Harness instead of Liquibase directly?
-Harness Database DevOps builds on top of Liquibase capabilities but adds pipeline automation, governance, auditability, and intelligent defaults like automatic tagging. This means:
+Harness Database DevOps builds on top of Liquibase capabilities but adds pipeline automation, visibility, governance, auditability, and intelligent defaults like automatic tagging. This means:
 
     - You don’t need to write custom scripts for rollback safety.
     - Rollbacks are standardized across all environments.
     - Teams save time by using built-in pipeline steps instead of managing manual Liquibase commands.
+
 ### 5. How does this improve CI/CD for databases?
 Tags ensure every schema deployment is checkpointed. Combined with Harness pipelines, this makes database delivery as safe and repeatable as application delivery.
