@@ -30,14 +30,14 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### New Features and Enhancements  
 
 ##### ModelScan Integration:
-STO now integrates with **ModelScan**, enabling you to scan AI/ML models directly in your CI/CD pipelines. Refer to the [ModelScan documentation](/docs/security-testing-orchestration/sto-techref-category/modelscan/models) and [video](https://youtu.be/PhvIXcwpme8
+STO now integrates with **ModelScan**, enabling you to scan AI/ML models directly in your CI/CD pipelines. Refer to the [ModelScan documentation](/docs/security-testing-orchestration/sto-techref-category/modelscan) and [video](https://youtu.be/PhvIXcwpme8
 ) for details.  
   <DocVideo src="https://youtu.be/PhvIXcwpme8" title="Scan you AI/ML Models using Harness STO" />
 
 
 ##### Nexus IQ Integration:
 **Nexus IQ** is now available as a native step. Previously supported only through the Custom Scan step, you can now use the Nexus IQ native step for all scans. 
-  Refer to the [Nexus IQ documentation](/docs/security-testing-orchestration/sto-techref-category/nexus-iq/nexus-iq-scanner-reference) for more details.  
+  Refer to the [Nexus IQ documentation](/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference) for more details.  
 
   <DocImage path={require('./static/sto-nexusiq-step.png')} width="60%" height="60%" title="Click to view full size image" />
 
