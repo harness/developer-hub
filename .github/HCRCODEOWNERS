@@ -203,13 +203,15 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /release-notes/ai-sre.md ryan.taylor@harness.io tina.huang@harness.io vasundhara.shukla@harness.io
 
 # AI QA Assistant Docs
-/docs/ai-qa-assistant/ 
+/docs/ai-qa-assistant/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
+/release-notes/ai-test-automation.md shibam.dhar@harness.io debaditya.chatterjee@harness.io
+/src/components/Docs/AiTestAutomation.tsx shibam.dhar@harness.io debaditya.chatterjee@harness.io
 
 # Artifact Registry Docs
-/docs/artifact-registry/ shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io
-/release-notes/artifact-registry.md shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io
-/src/components/Docs/data/artifactRegistryData.ts shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io
-/src/components/Roadmap/data/artifactRegistryData.ts shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io
+/docs/artifact-registry/ shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
+/release-notes/artifact-registry.md shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
+/src/components/Docs/data/artifactRegistryData.ts shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
+/src/components/Roadmap/data/artifactRegistryData.ts shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
 
 # Open Source Docs
 /docs/open-source/ dewan.ahmed@harness.io sushrut.athavale@harness.io
