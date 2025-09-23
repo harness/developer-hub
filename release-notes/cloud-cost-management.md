@@ -19,10 +19,35 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+## September 2025 - Version 1.64.7
+#### Deployment Date: September 23, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Bin Packing Notification Enhancement:** If Bin Packing is disabled for a cluster within the Cluster Orchestrator, a notification banner and confirmation dialogue will appear upon saving, indicating that “Bin Packing must be enabled for cluster scale-down and optimal node utilisation.” [CCM-25324]
+
+- **Mandatory Fields for Bin Packing:** With the enabling of Bin Packing, the fields for Node Deletion Criteria and Delay have now been made mandatory. [CCM-25312]
+
+- **JIRA Integration for Recommendations:**
+- We have addressed an issue regarding removing JIRA tickets from the shared recommendations. An API is implemented to unlink recommendations from the associated JIRA tickets. [CCM-25455]
+
+AutoStopping Schedule Ordering Fix
+- We fixed an issue where when AutoStopping schedules from the Backend were unordered (e.g., 4, 1, 2, 3),  it caused the first schedule on UI edit to overwrite the wrong one. We now sort the Backend response before iterating or updating items to prevent mismatches. [CCM-25489]
+
+#### AutoStopping Timezone Display Correction
+- We have resolved an issue where the savings timestamp in AutoStopping Rules was coming from the BE in UTC while the UI was plotting them against the user's local timezone, causing mismatches. The chart now shows the savings in the user's local timezone.[CCM-25450]
+
+#### Cluster Orchestrator Setup Flow Improvement
+- We have made a minor improvement to the setup flow of the Cluster Orchestrator. After selecting Cluster Preferences, the workflow will now proceed to Spot Preferences, followed by Replacement Schedules, and finally to the Finish stage. This adjustment is intended to prevent any oversight in configuring essential settings during the setup process. [CCM-25325]
+
+#### Governance Rule Permissions Fix
+- Previously, the Save button in the Governance Rule Details page did not check for granular edit permissions regarding the rule. Consequently, the button was disabled if the user lacked global permissions. This issue has now been addressed. [CCM-25304] 
+
+#### Event Logs Performance Enhancement
+- We have implemented pagination and sorting capabilities in the Event Logs in Cluster Orchestrator to enhance performance when managing large lists. [CCM-24277]
 
 ## September 2025 - Version 1.63.3
-
-#### Deployment Date: Septeber 12, 2025 (Prod-1)
+#### Deployment Date: September 12, 2025 (Prod-1)
 
 ### Feature Improvements
 
