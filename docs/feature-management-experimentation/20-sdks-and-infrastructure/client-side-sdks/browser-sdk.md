@@ -764,6 +764,95 @@ var client = factory.client();
 </TabItem>
 </Tabs>
 
+By default, the SDK uses the `localStorage` global object if available. But you can pass your own storage wrapper like, for example, one based on `IndexedDB` or another storage solution, by implementing the `SplitIO.StorageWrapper` interface.
+
+<Tabs>
+<TabItem value="StorageWrapper interface">
+
+```typescript
+declare namespace SplitIO {
+  interface StorageWrapper {
+    /**
+     * Returns the value associated with the given key, or null if the key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    getItem(key: string): string | null | Promise<string | null>;
+    /**
+     * Sets the value for the given key, creating a new key/value pair if key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    setItem(key: string, value: string): void | Promise<void>;
+    /**
+     * Removes the key/value pair for the given key, if the key exists.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    removeItem(key: string): void | Promise<void>;
+  }
+  ...
+}
+```
+
+</TabItem>
+<TabItem value="StorageWrapper implementation based on IndexedDB">
+
+```typescript
+class IndexedDBWrapper implements SplitIO.StorageWrapper {
+  private dbName: string;
+  private storeName: string;
+  private dbPromise: Promise<IDBDatabase>;
+
+  constructor(dbName: string, storeName: string) {
+    this.dbName = dbName;
+    this.storeName = storeName;
+    this.dbPromise = this.openDB();
+  }
+
+  private openDB(): Promise<IDBDatabase> {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.dbName);
+
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains(this.storeName)) {
+          db.createObjectStore(this.storeName);
+        }
+      };
+
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  private async withStore(type: IDBTransactionMode, callback: (store: IDBObjectStore) => IDBRequest) {
+    const db = await this.dbPromise;
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(this.storeName, type);
+      const store = tx.objectStore(this.storeName);
+      const request = callback(store);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  // Wrapper methods:
+
+  async getItem(key: string): Promise<string | null> {
+    return this.withStore('readonly', store => store.get(key)) as Promise<string | null>;
+  }
+
+  async setItem(key: string, value: string): Promise<void> {
+    await this.withStore('readwrite', store => store.put(value, key));
+  }
+
+  async removeItem(key: string): Promise<void> {
+    await this.withStore('readwrite', store => store.delete(key));
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
 ## Localhost mode
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid or offline mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features.

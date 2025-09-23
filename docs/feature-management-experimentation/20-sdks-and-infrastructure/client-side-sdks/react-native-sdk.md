@@ -700,33 +700,9 @@ This `InLocalStorage` function accepts an optional object with options described
 | clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
 | wrapper | Storage wrapper used to persist the SDK cached data. | `localStorage` |
 
-By default, the SDK uses the Web `localStorage` global object if available. For supporting other platforms, like Android and iOS, where `localStorage` is not available, you can pass your own storage wrapper, like [`AsyncStorage`](https://react-native-async-storage.github.io/async-storage/) or any other that implements the `SplitIO.StorageWrapper` interface.
+By default, the SDK uses the `localStorage` global object if available. For supporting other platforms, like Android and iOS, where `localStorage` is not available, you can pass your own storage wrapper, like [`AsyncStorage`](https://react-native-async-storage.github.io/async-storage/) or any other that implements the `SplitIO.StorageWrapper` interface.
 
 <Tabs>
-<TabItem value="Using React Native AsyncStorage">
-
-```typescript
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-react-native';
-
-const factory: SplitIO.IBrowserSDK = SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  storage: InLocalStorage({
-    prefix: 'MY_PREFIX',
-    expirationDays: 10,
-    clearOnInit: false,
-    wrapper: AsyncStorage
-  })
-});
-
-// Now use the SDK as usual
-const client = factory.client();
-```
-
-</TabItem>
 <TabItem value="StorageWrapper interface">
 
 ```typescript
@@ -750,6 +726,30 @@ declare namespace SplitIO {
   }
   ...
 }
+```
+
+</TabItem>
+<TabItem value="Using React Native AsyncStorage">
+
+```typescript
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-react-native';
+
+const factory: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  storage: InLocalStorage({
+    prefix: 'MY_PREFIX',
+    expirationDays: 10,
+    clearOnInit: false,
+    wrapper: AsyncStorage
+  })
+});
+
+// Now use the SDK as usual
+const client = factory.client();
 ```
 
 </TabItem>
