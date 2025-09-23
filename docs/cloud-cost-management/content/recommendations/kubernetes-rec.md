@@ -258,10 +258,7 @@ When you click on an individual recommendation, the following details are shown:
     - Buffer for workloads: You can set the percentage of buffer for recommended requests/limits.
 
 
-## FAQ
-
-<details>
-<summary>What additional details are displayed for a recommendation? And what are the aggregation types?</summary>
+## Additional details and the aggregation types?
 
 - **Workload details**: The following information is displayed:
     + Workload
@@ -317,7 +314,6 @@ In the case of **absolute**, the utilization value is calculated as the followin
 
 which is equal to `0.4 + 0.4 + 0.4 = 1.2`
 
-</details>
 </TabItem>
 </Tabs>
 
