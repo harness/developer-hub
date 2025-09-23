@@ -7,8 +7,7 @@ sidebar_label: Change Types
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-A Change Type in Liquibase is a structured instruction that tells Liquibase how to update a database. Each changeset you write in YAML, XML, JSON, or SQL contains one or more change types. Liquibase then translates these into the correct SQL statements for the target database platform.
-This allows you to describe what should happen, while Liquibase figures out how to do it in the right SQL dialect.
+A Liquibase-compatible schema is composed of one or more Change Types. These are a structured instruction that defines particular database updates. Each changeset you write in YAML, XML, JSON, or SQL contains one or more change types. When Applying the change, Database DevOps translates these into the correct SQL statements for the target database platform.
 
 ## Why Change Types Matter
 - Cross-Database Compatibility: You write a single change definition; Liquibase generates SQL for MySQL, PostgreSQL, Oracle, SQL Server, and more.
@@ -23,7 +22,7 @@ Harness Database DevOps supports a wide range of change types for managing schem
 <TabItem value="entity" label="Entity Change Types" default>
 
 **1. Create Table**
-Creates a new table with defined columns. When rolled back, drops the table.
+Creates a new table with defined columns. By default, when rolled back the table is dropped.
 
 ```yaml
 - changeType: createTable
@@ -37,14 +36,14 @@ Creates a new table with defined columns. When rolled back, drops the table.
       type: varchar(255)
 ```
 2. **Drop Table**
-Removes an existing table. When rolled back, it recreates the table if definition is provided.
+Removes an existing table.
 
 ```yaml
 - changeType: dropTable
   tableName: users
 ```
 3. **Add Column**
-Adds new columns to a table. When rolled back, drops the added columns.
+Adds new columns to a table. By default when rolled back, drops the added columns.
 ```yaml
 - changeType: addColumn
   tableName: users
@@ -53,7 +52,7 @@ Adds new columns to a table. When rolled back, drops the added columns.
       type: varchar(255)
 ```
 4. **Drop Column**
-Removes a column from a table. When rolled back, tries to recreates the column if definition is provided.
+Removes a column from a table.
 ```yaml
 - changeType: dropColumn
   tableName: users
@@ -67,7 +66,9 @@ Renames a column in a table. When rolled back, renames it back.
   oldColumnName: email
   newColumnName: user_email
 ```
-
+:::note
+Renaming a column directly typically necessitates downtime because it means the database schema is not backwards compatible. For this reason, Harness recommends adding a new column using the new name, and setting up a trigger to sync the two versions. Once the old application version no longer exists in any environment, an additional changeset can be released that removes the trigger and deletes the old column.
+:::
 6. **Rename Table**
 Renames a table. When rolled back, renames it back.
 ```yaml
@@ -75,6 +76,10 @@ Renames a table. When rolled back, renames it back.
   oldTableName: users
   newTableName: app_users
 ```
+:::note
+Renaming a table directly typically necessitates downtime because it means the database schema is not backwards compatible. For this reason, Harness recommends adding a new table using the new name, and setting up a trigger to sync the two versions. Once the old application version no longer exists in any environment, an additional changeset can be released that removes the trigger and deletes the old table.
+:::
+
 </TabItem>
 <TabItem value="constraint" label="Constraint Change Types">
 
@@ -88,7 +93,6 @@ Adds a primary key constraint. When rolled back, drops the primary key.
 
 2. **Drop Primary Key**
 Removes a primary key.
-When rolled back, recreates it if definition is provided.
 ```yaml
 - changeType: dropPrimaryKey
   tableName: users
@@ -96,7 +100,6 @@ When rolled back, recreates it if definition is provided.
 
 3. **Add Foreign Key**
 Defines a foreign key relationship.
-When rolled back, drops the foreign key.
 ```yaml
 - changeType: addForeignKeyConstraint
   baseTableName: orders
@@ -107,35 +110,34 @@ When rolled back, drops the foreign key.
 
 4. **Drop Foreign Key**
 Removes a foreign key.
-When rolled back, recreates it if definition is provided.
 ```yaml
 - changeType: dropForeignKeyConstraint
   baseTableName: orders
   constraintName: fk_orders_users
 ```
 5. **Add Unique Constraint**
-Enforces uniqueness on a column. When rolled back, removes the constraint.
+Enforces uniqueness on a column. 
 ```yaml
 - changeType: addUniqueConstraint
   tableName: users
   columnNames: email
 ```
 6. **Drop Unique Constraint**
-Removes a uniqueness constraint. When rolled back, re-applies it if definition is provided.
+Removes a uniqueness constraint.
 ```yaml
 - changeType: dropUniqueConstraint
   tableName: users
   constraintName: uq_users_email
 ```
 7. **Add Not Null Constraint**
-Marks a column as NOT NULL. When rolled back, drops the NOT NULL constraint.
+Marks a column as NOT NULL.
 ```yaml
 - changeType: addNotNullConstraint
   tableName: users
   columnName: email
 ```
 8. **Drop Not Null Constraint**
-Removes a NOT NULL constraint. When rolled back, re-applies it.
+Removes a NOT NULL constraint.
 ```yaml
 - changeType: dropNotNullConstraint
   tableName: users
@@ -144,8 +146,33 @@ Removes a NOT NULL constraint. When rolled back, re-applies it.
 </TabItem>
 <TabItem value="data" label="Data Change Types">
 
-1. **Insert**
-Inserts rows into a table. When rolled back, requires manual intervention (typically delete).
+1. **Upload Load Data**
+The preferred way to manage reference or seed data. Loads rows from a CSV file into an existing table. If a record exists, it is updated; otherwise, it is inserted.
+- Generates DELETE statements automatically for rollback.
+- NULL in CSV → database NULL (not string "NULL").
+```yaml
+- changeType: loadData
+  tableName: users
+  file: data/users.csv
+```
+:::tip
+For reliable rollbacks, version your CSVs in Git or Artifactory (e.g., users-v1.csv, users-v2.csv).
+To deploy new data:
+```yml
+- changeType: loadUpdateData
+  tableName: users
+  file: data/users-v2.csv
+```
+To rollback:
+```yaml
+- changeType: loadUpdateData
+  tableName: users
+  file: data/users-v1.csv
+```
+This same pattern is also recommended for createProcedure changes.
+:::
+2. **Insert**
+Inserts rows into a table. The operation does not provide default rollback behavior.
 ```yaml
 - changeType: insert
   tableName: users
@@ -155,8 +182,8 @@ Inserts rows into a table. When rolled back, requires manual intervention (typic
     - name: name
       value: Alice
 ```
-2. **Update**
-Updates rows in a table. When rolled back, requires manual intervention (must specify original values).
+3. **Update**
+Updates rows in a table.
 ```yaml
 - changeType: update
   tableName: users
@@ -165,19 +192,12 @@ Updates rows in a table. When rolled back, requires manual intervention (must sp
     - name: name
       value: Alicia
 ```
-3. **Delete**
-Deletes rows from a table. When rolled back, requires manual intervention (must specify data to restore).
+4. **Delete**
+Deletes rows from a table.
 ```yaml
 - changeType: delete
   tableName: users
   where: id=1
-```
-4. **Load Data**
-Loads data from a CSV file. When rolled back, requires manual intervention (usually delete).
-```yaml
-- changeType: loadData
-  tableName: users
-  file: data/users.csv
 ```
 </TabItem>
 </Tabs>
@@ -187,9 +207,8 @@ The table below compares the advantages of using change types versus writing raw
 
 | Aspect          | Change Types                                                         | Raw SQL                                          |
 | --------------- | -------------------------------------------------------------------- | ------------------------------------------------ |
-| **Portability** | Works across multiple databases (Liquibase translates automatically) | Vendor-specific, may fail on different platforms |
+| **Portability** | Works across multiple databases (Liquibase translates automatically) | Vendor-specific, different SQL databases have minor SQL syntax differences that may cause failure on different platforms.|
 | **Readability** | Declarative and self-explanatory                                     | Requires SQL expertise to interpret              |
-| **Automation**  | Easily integrates into CI/CD and GitOps workflows                    | Harder to automate across environments           |
 | **Rollback**    | Built-in rollback support for most change types                      | Must be manually written and tested              |
 | **Governance**  | Easier to version, review, and audit                                 | Harder to maintain compliance and history        |
 | **Flexibility** | Covers most schema, data, and constraint changes                     | Needed for complex, vendor-specific features     |
