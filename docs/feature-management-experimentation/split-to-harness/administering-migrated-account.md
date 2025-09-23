@@ -169,7 +169,7 @@ When your account was migrated to Harness, the migration script created new Harn
 
 #### Role bindings at the account and organization levels
 
-| Legacy Split setting | Harness user group | Harness scope <br /> <span style={{fontWeight: 100}}>where the user group is created and managed</span> | Role binding <br /> <span style={{fontWeight: 100}}>Harness role + Harness resource group</span> |
+| Legacy Split setting | Harness user group | Harness scope <br /> <span style={{fontWeight: 300}}>where the user group is created and managed</span> | Role binding <br /> <span style={{fontWeight: 300}}>Harness role + Harness resource group</span> |
 |---|---|---|---|
 | Administrators <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split group</span> | All FME Admins | Harness account | <span style={{fontFamily: 'Courier New'}}>For a new Harness account:</span> <br /> Account Admin + All Resources Including Child Scopes <br /><br /> Organization Viewer + All Organization Level Resources <br /><br /> <span style={{fontFamily: 'Courier New'}}>For a pre-existing Harness account:</span> <br /> Organization Admin + All Organization Level Resources |
 | Editors <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split role</span> | All FME Editors | Harness account |  Organization Viewer + All Organization Level Resources |
