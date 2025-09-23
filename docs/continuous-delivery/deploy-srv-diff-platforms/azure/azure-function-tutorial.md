@@ -176,7 +176,7 @@ Additionally you can have optional configurations such as
  * **Image Pull Policy:** Specifies when the container image should be pulled from the registry.
 * **Run as User:** Configures the user identity under which the function or container should run, useful for security and access control.
 * **Limit Memory:** Defines the maximum memory that can be allocated to the container or function during execution.
-* **Limit CPU:** Sets a limit on the CPU usage for the function or container, ensuring thee function does not consume excessive resources.
+* **Limit CPU:** Sets a limit on the CPU usage for the function or container, ensuring the function does not consume excessive resources.
 
 ![](static/azure-functions-7.png)
 
