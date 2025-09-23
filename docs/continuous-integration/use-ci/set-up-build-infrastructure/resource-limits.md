@@ -49,14 +49,15 @@ To restrict add on (lite engine) resources, you can contact [Harness Support](ma
 
 ## Resource request logic and calculations
 
-Limit and request values are based on steps being parallel or sequential. Parallel steps sum the resources for each parallel step, and sequential steps take the maximum resources needed amongst the sequential steps.
+Limit and request values are based on steps being parallel or sequential. 
+- Parallel steps sum the resources for each parallel step
+- Sequential steps take the maximum resources needed amongst the sequential steps.
 
 The total computed resource requirements are set as the limit and request values for the stage container (also referred to as the Lite-Engine). For example, if total CPU is 600m, then the stage container's memory limit and request values are both set to 600m. This ensures selection of appropriately-sized pods, and it avoids over- or under-utilization of resources.
 
 ### Resource calculation examples
 
-<details>
-<summary>Calculation example #1: Sequential steps</summary>
+#### Calculation example #1: Sequential steps
 
 This calculation is for a pipeline with two sequential steps with no [resource limit overrides](#override-resource-limits).
 
@@ -70,10 +71,7 @@ This calculation is for a pipeline with two sequential steps with no [resource l
 * Because the steps are sequential, the stage only needs resources for one step at a time. This means the stage needs up to 400m CPU and 500Mi memory to run either step.
 * Combining the step resources with the add on resources (100m and 100Mi), the total stage resource values are 500m CPU and 600Mi memory.
 
-</details>
-
-<details>
-<summary>Calculation example #2: Parallel steps</summary>
+#### Calculation example #2: Parallel steps
 
 This calculation is for a pipeline with two steps that run in parallel and have no [resource limit overrides](#override-resource-limits).
 
@@ -92,10 +90,7 @@ This calculation is for a pipeline with two steps that run in parallel and have 
 * Because the steps are parallel, the stage needs resources to run both steps at once. Adding the resource values for each step together means the stage needs up to 800m CPU and 1000Mi memory to run the two steps.
 * Combining the step resources with the add on resources (100m and 100Mi), the total stage resource values are 900m CPU and 1100Mi memory.
 
-</details>
-
-<details>
-<summary>Calculation example #3: Sequential and parallel steps</summary>
+#### Calculation example #3: Sequential and parallel steps
 
 This calculation is for a pipeline with three steps that have no [resource limit overrides](#override-resource-limits). Two steps run in parallel and one step runs sequentially after the two parallel steps.
 
@@ -118,12 +113,9 @@ This calculation is for a pipeline with three steps that have no [resource limit
    * To run the sequential step, which runs by itself, the stage needs only 400m CPU and 500Mi memory.
 * Combining the step resources with the add on resources (100m and 100Mi), the total stage resource values are 900m CPU and 1100Mi memory.
 * To achieve optimal use of the requested resources, the sequential step (step three) is also assigned a limit of 800m CPU and 1000Mi. This allows step three to make better use of the available resources, rather than capping it at 400m CPU and 500Mi memory.
+  * The sequential step can occur before or after the parallel step.  It will still use the maxiumum limit
 
-</details>
-
-<details>
-<summary>Calculation example #4: Sequential and parallel steps with overrides</summary>
-
+#### Calculation example #4: Sequential and parallel steps with overrides
 This calculation is for a pipeline that has three steps with [resource limit overrides](#override-resource-limits). Two steps run in parallel and one step runs sequentially after the two parallel steps.
 
 <!-- ![Resource calculation example 4.](./static/resource-limit-calc4.png) -->
@@ -147,10 +139,7 @@ This calculation is for a pipeline that has three steps with [resource limit ove
    * Therefore, the greatest possible value for CPU is 3500m and the greatest possible value for memory is 3500Mi.
 * Combining the total step resources with the add on resources (100m and 100Mi), the total stage resource values are 3600m CPU and 3600Mi memory.
 
-</details>
-
-<details>
-<summary>Calculation example #5: Step groups</summary>
+#### >Calculation example #5: Step groups
 
 Using step groups doesn't inherently change a pipeline's resource needs. The logic is the same for pipelines with step groups as it is without step groups.
 
@@ -175,10 +164,7 @@ If the steps in the step group were in parallel (rather than sequential), they w
 
 Likewise, if the step group included two parallel steps and a sequential step, the resource needs would be the same, because the step group would break down as two parallel steps and one sequential step.
 
-</details>
-
-<details>
-<summary>Calculation example #6: Background steps</summary>
+#### Calculation example #6: Background steps
 
 If your pipeline has [Background steps](../manage-dependencies/background-step-settings.md), the resource requirements for each Background step are added on to the total base stage resources. The expanded calculation is as follows:
 
@@ -200,8 +186,6 @@ For example, assume you have a pipeline with one Background step, two parallel s
 * Adding the Background step resources (3000m CPU and 900Mi memory), the overall total is 3900m CPU and 2000Mi memory.
 
 If the pipeline had more than one Background step, each Background step's resources would be added separately.
-
-</details>
 
 ## Troubleshoot resource limits
 
