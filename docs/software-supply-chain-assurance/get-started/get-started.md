@@ -14,52 +14,61 @@ tags:
   - on-boarding  
 ---
 
-This guide will help you onboard to the Harness SCS features, allowing you to set up RSPM, CI/CD SPM, and Artifact Security with integrations. The onboarding process involves two main steps, configuring your integrations and selecting your resources.
+This guide will help you onboard to the Harness SCS features, allowing you to set up RSPM, CI/CD SPM, and Artifact Security with integrations.
 
-To begin, navigate to the **Get Started** section in the SCS module and click on **Get Started**.
+To begin, navigate to the **Get Started** section in the Harness SCS and click on **Get Started**.
 
-<DocImage path={require('./static/get-started-01.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/get-started-01.png')} width="80%" height="80%" title="Click to view full size image" />
 
-Here, you’ll find a list of all currently supported integrations and those that are coming soon. You can also click to expand each integration and view the features it supports.
-
-:::note
-Please refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section in the onboarding document to see the full list of supported integrations for each feature.
+:::info
+Please refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section in the what's supported page to see the full list of supported integrations for each SCS feature.
 :::
 
 
-
 ## Setup RSPM and CI/CD SPM on GitHub repos and Actions
-Follow the instructions to connect your GitHub account with Harness SCS for RSPM and CI/CD SPM by installing the Harness-SCS GitHub app.
+Follow the instructions to connect your GitHub account with Harness SCS for RSPM and CI/CD SPM by installing the Harness SCS GitHub app or via Harness GitHub connector.
 
 To begin, from the **Get Started** page click to expand the **GitHub** integration.
 
-<DocImage path={require('./static/getstarted-gh.png')} width="100%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/getstarted-gh.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-You can select **Configure** in the **Repo Security** and **CI/CD Security** option. This will take you to a new screen with two steps: configuring your integration and selecting the repositories to scan.
+You can select **Configure** in the **Repo Security** and **CI/CD Security** option. This will take you to a new screen with two options.
 
-You can click on **Launch GitHub to configure** to proceed.
+- [Harness Connector](/docs/software-supply-chain-assurance/get-started/#harness-connector)
+- [Configure the GitHub App](/docs/software-supply-chain-assurance/get-started/#configuring-the-github-app)
 
-<DocImage path={require('./static/get-started-gh-02.png')} width="100%" height="100%" title="Click to view full size image" />
-
-You will be redirected to the Harness-SCS GitHub app to configure the app for connection with Harness SCS.
-
-
-### Configuring the GitHub App: Harness-SCS
-
-Configuring the Harness-SCS app allows SCS to connect with your GitHub and fetch necessary information.
+<DocImage path={require('./static/onboarding.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
+### Harness Connector
 
-1. Visit the [Harness-SCS GitHub app](https://github.com/apps/harness-ssca) and click the ‘Configure’ button.
+1. Click on Harness connector, where you can select Harness GitHub connector to onboard your repositories then click on **Apply Selected**.
 
-<DocImage path={require('./static/get-started-step-3.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/connector.png')} width="80%" height="80%" title="Click to view full size image" />
+
+2. Choose repositories to scan. By default, all repositories are selected through your integration. You can modify your selection here or click **Finish** to onboard the repositories. You will be redirected to the Integrations page, where you can check the integration status.  A pipeline is then triggered to perform operations on the selected repositories.
+
+<DocImage path={require('./static/repos.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-2. Authorize Harness by selecting the organization where you want to install the app.
+
+### Configuring the GitHub App
+
+1. You can click on **Launch GitHub to configure** to proceed.
+
+<DocImage path={require('./static/get-started-gh-02.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-    <DocImage path={require('./static/get-started-step-4.png')} width="50%" height="50%" title="Click to view full size image" />
+2. Visit the [Harness-SCS GitHub app](https://github.com/apps/harness-ssca) and click the ‘Configure’ button.
+
+<DocImage path={require('./static/get-started-step-3.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
+3. Authorize Harness by selecting the organization where you want to install the app.
+
+
+  <DocImage path={require('./static/get-started-step-4.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
 :::note
@@ -67,18 +76,17 @@ If the button says **Authorize and Request** instead of **Install and Authorize*
 :::
 
 
+4. Grant access to repositories. You can either select all repositories or choose specific ones. By default, Harness performs scans on your repositories every 24 hours.
 
-3. Grant access to repositories. You can either select all repositories or choose specific ones. By default, Harness performs scans on your repositories every 24 hours.
 
-
-<DocImage path={require('./static/get-started-step-5.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/get-started-step-5.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
 
 After configuring, you will be redirected back to the Harness **Get Started** flow, where you can choose the list of repositories. The list will show the repositories already selected through your integration. You can modify your selection here or finish the onboarding.
 
 
-<DocImage path={require('./static/get-started-step-6.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/get-started-step-6.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
 While selecting repositories, you also have the option to automatically add any newly created repositories in the future. To enable this, simply check the option _Automatically add all future repositories owned by the resource owner._
@@ -89,10 +97,15 @@ After clicking **Finish** a pipeline is triggered to perform operations on the s
 
 Navigate to the **Code Repositories** section to view your repositories, and the **CI/CD** section to view your pipelines, along with their risk and security posture.
 
+:::note
+
+Vanity URLs aren’t supported when onboarding repositories with a GitHub App.
+
+:::
 
 ## Setup CI/CD SPM on Harness pipelines
 From the **Get started** page, click on **Harness** under available integrations, and select **Enable** on the CI/CD Security options. This will set up the CI/CD SPM on your Harness pipelines.
 
-<DocImage path={require('./static/get-started-harness-01.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/get-started-harness-01.png')} width="80%" height="80%" title="Click to view full size image" />
 
 Navigate to the **CI/CD** section to view your pipelines, along with their risk and security posture.
