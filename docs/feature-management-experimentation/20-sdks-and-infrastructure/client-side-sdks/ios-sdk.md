@@ -16,7 +16,7 @@ This guide provides detailed information about our iOS SDK. All of our SDKs are 
 This library is compatible with iOS and tvOS deployment target versions 9.0+, macOS 10.11+, and watchOS 7.0+. Xcode 12 and later is also required, but we recommend the minimum version necessary to publish apps on the [AppStore](https://developer.apple.com/news/?id=ib31uj1j). 
 
 :::tip[Rule-based segments support]
-Rule-based segments are supported in SDK versions 3.4.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+Rule-based segments are supported in SDK versions 3.3.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
 
 Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
 :::
