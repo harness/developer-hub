@@ -592,7 +592,7 @@ This section provides steps to create a service account and role bindings for an
 
 To create an Admin API key scoped to a specific project in your Harness account:
 
-1. At the account level, create the service account and assign roles:
+1. At the account level, create the service account:
    
    1. In the left navigation panel, click **Account Settings**.
    1. Click the **Access Control** button at the top of the page.
