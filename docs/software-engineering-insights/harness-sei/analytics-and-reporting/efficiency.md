@@ -106,14 +106,29 @@ The following options are available for this widget:
 
 ### Lead Time for Changes
 
-#### Why does the Build phase show no data even when the PR merge time is before the build creation time?
+#### Why do some phases in the Lead Time widget show zero values even though we have correlated data across different systems?
 
 ![](../static/build-time-troubleshooting.png)
 
-This occurs due to a correlation mismatch between commits and CI builds. The build time for the Effiency Profile is calculated as:
+This usually happens when the events defined in your Efficiency profile don’t align with the actual order of activities in your SDLC process. For example, if the profile is configured to measure Build Time as:
 
 $$
 \text{Build Time} = \text{First CI Build} - \text{Last PR Merged}
 $$
 
-If the build time calculation results in a negative value, for example, when the first CI build occurs before the last PR was merged (e.g. August 25 to September 2), the build time is considered `0`. This is why no data appears.
+then:
+
+* Expected behavior: The first CI build should run after the last pull request is merged.
+* Issue: If the first CI build happens before the last PR merge, the calculation results in a negative value. Negative values are reported as 0 in the widget.
+
+**Common reasons you may see 0:**
+
+* Process misalignment: For example in the above example a CI build triggers before the PR is merged.
+* Profile definition conflict: The defined start and end events don’t reflect the real workflow.
+
+**How to fix:**
+
+* Set up the Destination Branch filter in your team settings so that only PRs merged into the correct branch are tracked.
+* Review your SDLC workflow against the configured Efficiency profile to ensure event order matches reality.
+
+In short: 0 values highlight workflow gaps or mismatches between how your process runs and how your Lead Time profile is defined.
