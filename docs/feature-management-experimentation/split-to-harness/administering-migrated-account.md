@@ -586,6 +586,14 @@ To create an Admin API key scoped to all projects in your Harness account:
 If you prefer, you can instead create the service account at the Harness organization level. Steps 1 and 4 would be done at the organization level, and Step 2 would be omitted. The **Organization Admin** role for **All Organization Level Resources** is required for the Admin API key to be granted permission to list Harness projects and Harness elements attached to projects.
 :::
 
+:::tip Granting fewer permissions to service accounts
+While this guide recommends assigning the **Account Admin**, **Organization Admin**, and **Project Admin** roles to the service account, it is possible that an integration (authenticated by your API key token) does not require the full breadth of admin permissions.
+
+Depending on what operations the integration is performing, you can assign roles with fewer permissions or (on the Enterprise plan) you can create custom roles and assign them to the service account.
+
+For example, you may choose to omit adding permissions for modules other than FME, while enabling most of the permissions listed under **Administrative Functions**. It is very important to follow through with ___complete coverage testing___ (to ensure permissions are sufficient for all integration functionality).
+:::
+
 #### Project scope
 
 This section provides steps to create a service account and role bindings for an Admin API key scoped to specific projects in your Harness account. You can follow these steps if you don’t have a service account created during migration or prefer not to use it.
