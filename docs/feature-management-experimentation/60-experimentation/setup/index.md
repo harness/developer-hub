@@ -34,7 +34,7 @@ Setting up an experiment follows these steps:
 
    * Select a filter (e.g. `Has done the following event prior to the metric event`) and a qualifying event from the dropdown menus. 
    * Only users who trigger this event are counted as exposures.
-   * The filter applies globally to all metrics; if a [metric already has its own filter]((/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/#applying-a-filter)), both must be satisfied.
+   * The filter applies globally to all metrics; if a [metric already has its own filter](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/#applying-a-filter), both must be satisfied.
 
 1. Define the scope of your experiment by setting a start and end time, a baseline treatment, comparison treatments, and a targeting rule.
 
