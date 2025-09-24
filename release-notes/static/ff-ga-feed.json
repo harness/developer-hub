@@ -490,5 +490,11 @@
     "description": "Added a filter to exclude inactive or failed Lambda functions from being counted as instances.",
     "gaStartDate": "2025-09-24",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SERVICE_ENV_CLONING",
+    "description": "It allows to clone the environment across scopes.",
+    "gaStartDate": "2025-09-24",
+    "module": "Continuous Delivery"
   }
 ]
