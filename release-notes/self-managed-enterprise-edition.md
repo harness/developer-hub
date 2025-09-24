@@ -275,13 +275,13 @@ This release includes the following Harness module and component versions.
 |------------------------------|----------------------------------------------------------------------------------------------|
 | Helm Chart                   | [0.32.1](https://github.com/harness/helm-charts/releases/tag/harness-0.32.1)                 |
 | Air Gap Bundle               | [0.32.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.32.1) |
-| Access Control               | 1.99.1                                                                                       |
+| Access Control               | 1.99.0                                                                                       |
 | Anomaly Detection            | 1.11.0                                                                                      |
-| Audit Event Streaming        | 1.46.1                                                                                       |
+| Audit Event Streaming        | 1.46.0                                                                                       |
 | Batch Processing             | 1.58.3                                                                                       |
 | Bootstrap                    | 1.49.3                                                                                       |
 | CE Nextgen                   | 1.61.1                                                                                       |
-| Change Data Capture          | 1.46.2                                                                                       |
+| Change Data Capture          | 1.46.1                                                                                       |
 | Chaos CRD                    | 1.64.0                                                                                       |
 | Chaos K8s IFS                | 1.64.4                                                                                       |
 | Chaos Linux IFC              | 1.64.0                                                                                       |
@@ -294,28 +294,28 @@ This release includes the following Harness module and component versions.
 | Cloud Info                   | 1.11.1                                                                                        |
 | CV Nextgen                   | 1.44.0                                                                                       |
 | DB Devops Service            | 1.52.4                                                                                       |
-| Debezium Service             | 1.21.7                                                                                       |
+| Debezium Service             | 1.21.6                                                                                       |
 | Delegate Proxy               | 1.3.0                                                                                        |
 | Delegate Version             | 25.07.86402                                                                                  |
 | Event Service                | 1.12.4                                                                                       |
 | Feature Flag Pushpin Service | 1.1125.0                                                                                     |
 | Feature Flag Service         | 1.1136.0                                                                                     |
-| Gateway Service              | 1.53.3                                                                                       |
+| Gateway Service              | 1.53.1                                                                                       |
 | GitOps Service               | 1.39.4                                                                                       |
-| Harness Manager              | 1.99.3                                                                                       |
+| Harness Manager              | 1.99.1                                                                                       |
 | LE Nextgen                   | 1.6.6                                                                                        |
-| Log Service                  | 1.25.3                                                                                       |
+| Log Service                  | 1.25.2                                                                                       |
 | Looker                       | 1.7.12                                                                                       |
-| Next Gen UI                  | 1.87.12                                                                                       |
-| NG Auth UI                   | 1.36.1                                                                                       |
+| Next Gen UI                  | 1.87.8                                                                                       |
+| NG Auth UI                   | 1.36.0                                                                                       |
 | NG CE UI                     | 1.57.3                                                                                       |
 | NG Custom Dashboards         | 1.80.15                                                                                      |
-| NG Dashboard Aggregator      | 1.64.1                                                                                       |
-| NG Manager                   | 1.101.3                                                                                       |
-| Pipeline Service             | 1.141.4                                                                                      |
-| Platform Service             | 1.78.1                                                                                       |
-| Policy Management            | 1.22.2                                                                                       |
-| SCM Service                  | 1.36.2                                                                                       |
+| NG Dashboard Aggregator      | 1.64.0                                                                                       |
+| NG Manager                   | 1.101.2                                                                                       |
+| Pipeline Service             | 1.141.1                                                                                      |
+| Platform Service             | 1.78.0                                                                                       |
+| Policy Management            | 1.22.1                                                                                       |
+| SCM Service                  | 1.36.1                                                                                       |
 | Service Discovery Manager    | 0.44.2                                                                                       |
 | SRM UI                       | 1.13.1                                                                                       |
 | SSCA Manager                 | 1.37.6                                                                                       |
@@ -323,9 +323,9 @@ This release includes the following Harness module and component versions.
 | STO Core                     | 1.153.4                                                                                      |
 | STO Manager                  | 1.71.0                                                                                       |
 | Telescopes                   | 1.4.0                                                                                        |
-| Template Service             | 1.103.1                                                                                       |
+| Template Service             | 1.103.0                                                                                       |
 | Test Intelligence Service    | 1.46.1                                                                                       |
-| Queue Service                | 1.7.3                                                                                        |
+| Queue Service                | 1.7.2                                                                                        |
 | Code API                     | 1.53.26                                                                                       |
 | Code GitRPC                  | 1.53.0                                                                                       |
 | Code GitHA                   | 1.53.0                                                                                       |
@@ -355,10 +355,6 @@ gsutil -m cp \
 ```
 
 ### New Features and Enhancements
-
-#### Harness Platform
-
-- Added support for enabling read-only root filesystems (`readonlyrootfilesystem`) across Harness services. [PL-65055]
 
 #### Chaos Engineering
 
