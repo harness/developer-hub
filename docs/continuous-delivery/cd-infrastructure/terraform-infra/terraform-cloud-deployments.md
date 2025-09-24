@@ -323,7 +323,7 @@ cat <+policyChecksJson."id">
 Harness now fetches and evaluates **Open Policy Agent (OPA)** policies alongside **Sentinel** policies in your Terraform Cloud Run step. 
 
 :::note
-Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. This support is available only with delegate version `858xx` or above.
+Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. This feature needs delegate version `858xx` or above.
 
 Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
