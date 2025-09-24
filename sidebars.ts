@@ -878,6 +878,16 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    // Release Notes
+    {
+      type: 'link',
+      label: 'Release Notes',
+      className: 'sidebar-Release_Notes',
+      href: '/release-notes/ai-test-automation',
+      customProps: {
+        description: 'Learn about recent changes to Harness products.',
+      },
+    },
     // All Docs
     {
       type: 'link',

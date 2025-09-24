@@ -14,8 +14,8 @@ Getting started with AI Test Automation follows these steps:
 - [Create your first test](/docs/ai-test-automation/get-started/quickstart#create-your-first-test)
 - [Create a login task](/docs/ai-test-automation/get-started/quickstart#create-a-login-task)
 
-Note: If you are an existing Relicx customer, please continue to refer to 
-[Relicx documentation](https://docs.relicx.ai/)
+<!-- Note: If you are an existing Relicx customer, please continue to refer to 
+[Relicx documentation](https://docs.relicx.ai/) -->
 
 ## Prerequisite
 Your application must be accessible from the public cloud. For testing applications behind a corporate firewall please contact Harness support. 
