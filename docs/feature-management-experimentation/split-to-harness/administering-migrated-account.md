@@ -871,7 +871,15 @@ The environment scope of Admin API keys created in Harness post-migration will b
 
 An organization is a Harness entity that fits into the Harness structure as shown below.
 
-![](./static/org-diagram.png)
+```mermaid
+flowchart TD
+    A[Account] --> B(Organization)
+    A[Account] --> C(Organization)
+    B --> D[Project]
+    B --> E[Project]
+    C --> F[Project]
+    C --> G[Project]
+```
 
 The migration script created Harness projects that correspond to legacy Split projects. These Harness projects are created in the **default** organization (on the Free plan) or in an organization named <strong> *legacy Split account name* FME</strong> (on the Enterprise plan).
 
