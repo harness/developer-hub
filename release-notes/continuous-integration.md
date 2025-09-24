@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-09-16T10:00
+date: 2025-09-23T10:00
 sidebar_position: 10
 ---
 
@@ -49,6 +49,26 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## September 2025
+
+### Version 1.99
+
+<!-- 2025-09-22 -->
+#### New features and enhancements
+- Previously skipped tests are now re-run when properly configured with report paths. Currently supported with Java and RunTestV2 under the `CI_TI_RERUN_FAILED_TEST` feature flag (off by default). (CI-17919)
+
+#### Fixed issues
+- Fixed an inconsistency in exit code handling across operating systems. Windows exit codes that exceeded limits are now properly aligned with macOS and Linux behavior. (ZD-92102, CI-18863)
+- Fixed a misleading error in the **Clone Codebase** step. Container creation failures now surface at the **init** step if terminated containers are detected, making the error clearer. (CI-18541)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/drone-git` | Support for Windows Server 2025 | 1.7.2              | 1.7.6         |
+| `plugins/kaniko`       | Build args with commas now supported. | 1.11.4              | 1.11.5         |
+| `plugins/kaniko-ecr`       | Build args with commas now supported. | 1.11.4              | 1.11.5         |
+| `plugins/kaniko-acr`       | Build args with commas now supported. | 1.11.4              | 1.11.5         |
+| `plugins/kaniko-gar`       | Build args with commas now supported. | 1.11.4              | 1.11.5         |
 
 ### Version 1.97
 
