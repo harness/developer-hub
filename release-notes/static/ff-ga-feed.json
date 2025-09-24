@@ -484,5 +484,11 @@
     "description": "Fixes rollback failures by ensuring correct branch reference is used when retrieving YAML files during post-deployment rollbacks.",
     "gaStartDate": "2025-09-23",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_FILTER_ACTIVE_INSTANCES_SAM_SERVERLESS_PT",
+    "description": "Added a filter to exclude inactive or failed Lambda functions from being counted as instances.",
+    "gaStartDate": "2025-09-24",
+    "module": "Continuous Delivery"
   }
 ]
