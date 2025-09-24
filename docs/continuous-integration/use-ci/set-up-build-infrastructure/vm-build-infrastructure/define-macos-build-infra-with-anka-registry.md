@@ -232,8 +232,7 @@ One of these locations is feature flag dependant (e.g., if you don't have that f
 /private/tmp/harness - (CI_MOUNT_PATH_ENABLED_MAC FF is enabled)
 ```
 
-Please note that Harness will also require access to the location of any declared shared paths being utilized.
-
+Harness also needs write access to any declared shared paths that your pipelines use.
 
 ### Start the runner
 
