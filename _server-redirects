@@ -30,7 +30,7 @@
 # Added by aimurphy in Feb 2024 for Tutorial Unification
 
 # Added on 2025-09-24 for creating-tests folder redirect
-/docs/ai-test-automation/test-authoring/creating-tests /docs/ai-test-automation/test-authoring/creating-tests/create-tests-doc
+# /docs/ai-test-automation/test-authoring/creating-tests /docs/ai-test-automation/test-authoring/creating-tests/create-tests-doc
 /tutorials/ci-pipelines /docs/continuous-integration
 /tutorials/feature-flags /docs/feature-flags
 /tutorials/self-managed-enterprise-edition /docs/self-managed-enterprise-edition
