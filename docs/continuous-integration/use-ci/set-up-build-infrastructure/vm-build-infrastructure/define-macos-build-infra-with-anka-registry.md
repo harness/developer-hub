@@ -219,7 +219,9 @@ instances:
 | `auth_token` | String - Token | Required if you [enabled token authentication for the Controller and Registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/). |
 
 #### File System Access
-In `harness-docker-runner` these are default mount paths we use for Mac. Please note that write access needs to be provided as Harness will be creating directories within these locations.  If access is not provided, customers can expect to see the following 500 error.
+In `harness-docker-runner`, the following default mount paths are used on Mac. Harness requires write access to these locations because it creates directories inside them.
+
+If write access is blocked, runs will fail with a 500 error similar to:
 ```
 failed with code: 500, message: { "error_msg": "failed to create directory for host volume path: /addon: mkdir /addon: read-only file system" } 
 ```
