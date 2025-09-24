@@ -1,8 +1,8 @@
 {
-  "label": "Interactive Test Authoring",
+  "label": "Create Tests",
   "collapsible": "true",
   "collapsed": "true",
-  "link": { "type": "generated-index", "title": "Interactive Test Authoring" },
+  "link": { "type": "doc", "id": "ai-test-automation/test-authoring/creating-tests/create-tests-doc" },
   "customProps": {},
   "position": 20
 }

@@ -55,3 +55,10 @@ If you need to resume recording after making changes, click the `Go Live` button
 ![Go Live Button](./static/create-test-5.png)
 
 The next sections will cover the various commands available during test creation.
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
+```

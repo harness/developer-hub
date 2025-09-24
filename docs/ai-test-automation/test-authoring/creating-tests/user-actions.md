@@ -1,78 +1,196 @@
 ---
 title: User Actions
-description: User Actions
+description: Learn about the various interactive actions you can perform in test authoring, including clicks, form inputs, navigation, and other UI interactions.
 sidebar_position: 20
 ---
 
-# User Actions
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
+# User Actions
 ## Overview
 
-In interactive authoring of tests, Harness AIT automatically records each user action as you interact with your application. These actions create a sequence of steps that represent your activity. While user actions are captured automatically, you can also add assertions to ensure test steps execute as expected.
+Harness AI Test Automation transforms testing with its intuitive interactive authoring experience. As you naturally interact with your application, the system intelligently captures each action and converts them into robust test steps, no coding required. 
 
-This document provides an overview of all supported user actions. For information on assertions, please review the [Assertions](./assertions.md) section.
+This document explores all available user actions that can be added using the *"+ Add step"* button during test creation, including clicks, text inputs, selections, navigation, keyboard interactions, and more specialized commands like waits and viewport adjustments. 
+
+Each action can be enhanced with assertions to validate expected behavior, parametrized for flexibility, and seamlessly integrated into CI/CD pipelines. Understanding these powerful actions will help you create comprehensive test coverage for your applications, whether you're building simple workflows or complex test scenarios.
+
+<DocImage 
+  path={require('./static/user-action.png')}
+  alt="User Action"
+  title="Click to view full size image"
+/>
 
 ## Supported Actions
 
 ### Click
 
-The most commonly used command in all tests.
 
-| Feature | Description |
-|---------|-------------|
-| **Description** | Click on any place in the viewport to register a click command as a test step. No additional action required. |
-| **Parameter options** | Yes. Parameterize based on input |
-| **Advanced options** | Control Network based waits |
-| **Return value** | None |
+:::tip
+For a basic click, no additional configuration is required. It allows you to explicitly specify which element to click when multiple elements might match the selector, ensuring precision in complex UI interactions. SO just simply click on the element you want to select in the step.
+:::
+
+Click on any place in the viewport to register a click command as a test step. No additional action required. 
+
+
+<DocImage path={require('./static/click.png')} 
+alt="click"
+title="Click"
+/>
+
+#### Advanced Options
+
+<Tabs>
+  <TabItem value="navigation" label="Navigation & Timing">
+
+  - **Wait for document ready** - Pauses test execution until the document's ready state is reached, ensuring elements are available for interaction. Options include `Yes`, `No`, and `App Default`.
+  - **Expected ready state** - Specifies which document ready state to wait for, such as `complete`, `interactive`, `loaded`, or `app`.
+  - **Wait for network requests** - Delays test execution until all in-flight network requests complete. Options include `Yes` and `No`.
+  - **Wait for document timeout (ms)** - Maximum time in milliseconds to wait for the document to reach the ready state before timing out.
+  - **Wait for network request timeout (ms)** - Maximum time in milliseconds to wait for network requests to complete before continuing.
+
+  </TabItem>
+
+  <TabItem value="parameterization" label="Parameterization">
+
+  - **Text param** - Allows you to use dynamic values in your click action by connecting it to parameters defined in your test. Parameters can be set at the test level or provided at runtime, making your tests more flexible and reusable.
+  > You can use from the dropdown list or use the `+ Create Parameter` button to create a new parameter.
+
+  </TabItem>
+
+  <TabItem value="response" label="Response Data Capture">
+
+  - **URL Pattern / Regular Expression** - Defines which network requests to capture data from, using either a simple URL pattern or a regular expression to match specific endpoints
+  - **Parameter name for Response body** - The name of the parameter where the captured response data of the body will be stored for later use in your test
+  - **Response Body Path (JSONPath)** - Extracts specific data from a JSON response using JSONPath syntax, allowing you to capture only the values you need
+  - **Scope**: App, Test Suite, or Runtime - Determines where the captured parameter is stored and how widely it can be accessed across tests
+
+  </TabItem>
+
+  <TabItem value="others" label="Others">
+
+  - **Use Touch** - Enables touch events simulation along with mouse clicks, useful when testing applications designed for mobile or touch interfaces
+
+  </TabItem>
+</Tabs>
+
 
 ### Write
 
-Used to input text into form fields.
+Write text in any input field, text area, or editable element in your application. This action simulates a user typing content into a field, supporting both static text and dynamic parameters. It works with standard HTML inputs, WYSIWYG editors, rich text fields, and most other editable interfaces. 
 
-| Feature | Description |
-|---------|-------------|
-| **Description** | Write text in any input field |
-| **Parameter options** | Can be parameterized by first setting a parameter using the `Set Parameter` command |
-| **Advanced options** | None |
-| **Return value** | None |
+>Can be parameterized directly using available parameters or by creating new ones by clicking on the `{}` button 
 
-![](./static/write.png)
+<DocImage path={require('./static/write.png')} 
+alt="write"
+title="Write"
+/>
+
+
+:::tip
+For a basic write action, simply specify the text you want to input and select the appropriate input field based on your selection.
+:::
+
+#### Advanced Options
+
+<Tabs>
+  <TabItem value="navigation" label="Navigation & Timing">
+
+  - **Wait for document ready** - Pauses test execution until the document's ready state is reached, ensuring elements are available for interaction, you get options like `Yes`, `No`, and `App Default`.
+  - **Expected ready state** - Specifies which document ready state to wait for (complete, interactive, loaded, app)
+  - **Wait for network requests** - Delays test execution until all in-flight network requests complete, with option like `Yes` and `No`.
+  - **Wait for document timeout (ms)** - Maximum time in milliseconds to wait for the document to reach the ready state before timing out
+  - **Wait for network request timeout (ms)** - Maximum time in milliseconds to wait for network requests to complete before continuing
+
+  </TabItem>
+
+  <TabItem value="response" label="Response Data Capture">
+
+  - **URL Pattern / Regular Expression** - Defines which network requests to capture data from following the write action
+  - **Parameter name for Response body** - The name of the parameter where the captured response data will be stored
+  - **Response Body Path (JSONPath)** - Extracts specific data from a JSON response using JSONPath syntax
+  - **Scope**: App, Test Suite, or Runtime - Determines the scope and accessibility of the captured parameter
+
+  </TabItem>
+
+  <TabItem value="others" label="Others">
+  - **Append Text** - When enabled (true), adds the specified text to the end of any existing text in the field rather than replacing it
+  - **Hide text** - When enabled, masks the input text in logs and displays, useful for sensitive information like passwords
+
+
+  </TabItem>
+</Tabs>
 
 ### Select
 
-Used for selecting values from dropdown lists.
+Select a value from dropdown menus, select boxes, or other list interfaces. This action simulates a user choosing an option from a dropdown, allowing your test to interact with form selection elements. The system will capture both the display text and underlying value of the selected option. 
 
-| Feature | Description |
-|---------|-------------|
-| **Description** | Select a value from a list |
-| **Parameter options** | No |
-| **Advanced options** | None |
-| **Return value** | None |
 
-![](./static/select.png)
+<DocImage 
+  path={require('./static/select.png')}
+  alt="Select"
+  title="Select"
+/>
 
-:::tip
-Click, Write, and Select are automatically detected by Harness AIT. Users don't need to select these commands from a list.
+:::info
+Click, Write, and Select are automatically detected by Harness AI Test Automation. Users need not have to select these commands from a list.
 :::
 
-### Navigate
+### File Upload
 
-Used to navigate to specific URLs.
+Uploads a file to the selected input element on a webpage. Specify the absolute or relative path to the file you want to upload, and select the appropriate file input element in your application.
+The file input element where you want to upload the file. Click on the appropriate file input element in your application.
 
-| Feature | Description |
-|---------|-------------|
-| **Description** | Navigate to a specific URL |
-| **Parameter options** | No |
-| **Advanced options** | `BASE_URL` translation: Set to `True` or `False` depending on URL type. For external URLs, set to `False` |
-| **Return value** | None |
+> You can upload files from your local system or from your test resources directory. This will host to S3 bucket and the file path will be used in the test.
 
-<DocImage
-  path={require('./static/navigate.png')}
-  alt="set-parameter"
-  title="Click to view full size image"
-  width={350}
-  height={450}
+
+<DocImage 
+  path={require('./static/file-upload.png')}
+  alt="File Upload"
+  title="File Upload"
 />
+
+
+### Navigate
+Navigate to a specific URL or relative path, allowing you to direct your test to different pages or websites. Supports both absolute URLs (starting with http:// or https://) and relative paths that will be appended to your environment's base URL. 
+
+<DocImage 
+  path={require('./static/navigate.png')}
+  alt="Navigate"
+  title="Navigate"
+/>
+
+#### Advanced Options
+
+<Tabs>
+
+
+  <TabItem value="navigation" label="Navigation & Timing">
+
+  - **Wait for document ready** - Pauses test execution until the document's ready state is reached, ensuring elements are available for interaction, you get options like `Yes`, `No`, and `App Default`.
+  - **Expected ready state** - Specifies which document ready state to wait for (complete, interactive, loaded, app)
+  - **Wait for network requests** - Delays test execution until all in-flight network requests complete, with option like `Yes` and `No`.
+  - **Wait for document timeout (ms)** - Maximum time in milliseconds to wait for the document to reach the ready state before timing out
+  - **Wait for network request timeout (ms)** - Maximum time in milliseconds to wait for network requests to complete before continuing
+
+  </TabItem>
+
+  <TabItem value="parameterization" label="Parameterization">
+
+  - **Skip BASE_URL translation** - When set to true, prevents the system from prepending the environment's base URL to relative paths. Default is false, which automatically prepends the base URL to relative paths.
+
+  </TabItem>
+
+  <TabItem value="response" label="Response Data Capture">
+
+  - **URL Pattern / Regular Expression** - Defines which network requests to capture data from during navigation
+  - **Parameter name for Response body** - Name of the parameter where captured response data will be stored
+  - **Response Body Path (JSONPath)** - JSONPath expression to extract specific data from responses
+  - **Scope**: App, Test Suite, or Runtime - Determines the scope and accessibility of captured parameters
+
+  </TabItem>
+</Tabs>
 
 ### Wait for Time
 
@@ -95,51 +213,29 @@ Creates a timed pause in test execution.
 
 ### Reload
 
-Refreshes the current page.
-
-| Feature | Description |
-|---------|-------------|
-| **Description** | Reload or refresh the page (infrequently used) |
-| **Parameter options** | No |
-| **Advanced options** | No |
-| **Return value** | None |
+Just add this action step to refresh the current page.
+ ![reload](./static/reload.png)
 
 ### Viewport
 
-Adjusts the screen dimensions for testing responsive designs.
+Adjusts the screen dimensions for testing responsive designs. Set the width and height of the screen to emulate different device sizes.
 
-| Feature | Description |
-|---------|-------------|
-| **Description** | Set the width and height of the screen to emulate different device sizes |
-| **Parameter options** | Width (e.g., 1440 px), Height (e.g., 900 px) |
-| **Advanced options** | No |
-| **Return value** | None |
+
 
 <DocImage
   path={require('./static/viewport.png')}
   alt="viewport"
-  title="Click to view full size image"
-  width={500}
-  height={450}
-/> 
+/>
 
 ### Key Press
 
-Simulates keyboard input.
+Simulates a keyboard input action. Specify the key to press, for example, "Enter" or "Backspace". For key combinations, provide an array of keys like `["Control", "c"]`. Explore all supported keys from [here](`https://github.com/getgauge/taiko/blob/master/lib/data/USKeyboardLayout.js).
 
-| Feature | Description |
-|---------|-------------|
-| **Description** | Perform a key press action (e.g., `Enter` while in a text field) |
-| **Parameter options** | Command to be sent |
-| **Advanced options** | No |
-| **Return value** | None |
+> You would have to pick a target element to perform the key press action on.
 
 <DocImage
   path={require('./static/keypress.png')}
   alt="keypress"
-  title="Click to view full size image"
-  width={500}
-  height={450}
 />
 
 ### Mouse Over
@@ -193,4 +289,18 @@ Creates dynamic variables for test execution.
   title="Click to view full size image"
   width={500}
   height={750}
+/>
+
+
+### Set Checkbox
+
+Toggles a checkbox or radio button to the selected state. Use this action to check or uncheck form elements without simulating a click action.
+Determines whether to check or uncheck the element. Set to `true` to check the element or `false` to uncheck it.
+ It works on the checkbox or radio button element you want to manipulate. Click on the appropriate element in your application.
+
+<DocImage
+  path={require('./static/set-checkbox.png')}
+  alt="set-checkbox"
+  title="set-checkbox"
+
 />
