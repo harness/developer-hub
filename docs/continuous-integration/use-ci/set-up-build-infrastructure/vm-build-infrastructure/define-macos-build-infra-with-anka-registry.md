@@ -152,7 +152,7 @@ instances:
 
 You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/).
 
-#### user data example
+#### User Data Example
 
 Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration. Refer to the [user data examples for supported runtime environments](https://github.com/drone-runners/drone-runner-aws/tree/master/app/cloudinit/user_data).
 
@@ -217,6 +217,23 @@ instances:
 | `registry_url` | String - URL | Registry/Controller URL and port. This URL must be reachable by your Anka nodes. You can configure `ANKA_ANKA_REGISTRY` in your [Controller's docker-compose.yml](https://docs.veertu.com/anka/anka-build-cloud/configuration-reference/). |
 | `tag` | String - Tag | [Anka VM template tag.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/registry-vm-templates-and-tags/) |
 | `auth_token` | String - Token | Required if you [enabled token authentication for the Controller and Registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/). |
+
+#### File System Access
+In `harness-docker-runner` these are default mount paths we use for Mac. Please note that write access needs to be provided as Harness will be creating directories within these locations.  If access is not provided, customers can expect to see the following 500 error.
+```
+failed with code: 500, message: { "error_msg": "failed to create directory for host volume path: /addon: mkdir /addon: read-only file system" } 
+```
+
+
+One of these locations is feature flag dependant (e.g., if you don't have that flag enabled, then it won't be utilized)
+```
+/tmp/addon
+/tmp/harness
+/private/tmp/harness - (CI_MOUNT_PATH_ENABLED_MAC FF is enabled)
+```
+
+Please note that Harness will also require access to the location of any declared shared paths being utilized.
+
 
 ### Start the runner
 
