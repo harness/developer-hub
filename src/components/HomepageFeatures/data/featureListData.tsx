@@ -68,6 +68,27 @@ export const featureList: CardItem[] = [
     link: "docs/cloud-cost-management/get-started",
   },
   {
+    title: "API Security Posture",
+    module: MODULES.asp,
+    icon: "img/icon-api-security-posture.svg",
+    description: <>Shift left scanning of code, containers, & live apps.</>,
+    link: "/docs/appsec-security-posture",
+  },
+  {
+    title: "API Runtime Protection",
+    module: MODULES.arp,
+    icon: "img/icon-api-runtime-protection.svg",
+    description: <>Shift left scanning of code, containers, & live apps.</>,
+    link: "/docs/appsec-runtime-protection",
+  },
+  {
+    title: "API Security Testing",
+    module: MODULES.ast,
+    icon: "img/icon-api-security-testing.svg",
+    description: <>Shift left scanning of code, containers, & live apps.</>,
+    link: "/docs/appsec-security-testing",
+  },
+  {
     title: "Orchestrate Security Tests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
