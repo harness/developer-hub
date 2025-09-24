@@ -1,6 +1,7 @@
 ---
 title: Configuring Stage Infrastructure
 description: We have documented reusable code snippets that can be used for allowing user customization when writing pipeline template and Template workflows.
+sidebar_position: 3
 ---
 Within the Harness Platform, there are certain modules - CI, STO, IACM, or IDP - that require the user to configure infrastructure. When developing a pipeline with these modules a user must choose a build infrastructure type: Kubernetes or Cloud. We have documented reusable code snippets that can be used for allowing user customization when writing pipeline template and Template workflows.
 
