@@ -233,7 +233,7 @@ Default mount paths:
 - `/tmp/harness`
 - `/private/tmp/harness` (only when the `CI_MOUNT_PATH_ENABLED_MAC` feature flag is enabled)
 
-Harness also needs write access to any declared shared paths that your pipelines use.
+Harness also needs write access to any declared shared paths that your pipelines or CI Stages use.
 
 ### Start the runner
 
