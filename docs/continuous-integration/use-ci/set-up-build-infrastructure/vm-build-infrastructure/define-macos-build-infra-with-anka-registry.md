@@ -225,12 +225,11 @@ failed with code: 500, message: { "error_msg": "failed to create directory for h
 ```
 
 
-One of these locations is feature flag dependant (e.g., if you don't have that flag enabled, then it won't be utilized)
-```
-/tmp/addon
-/tmp/harness
-/private/tmp/harness - (CI_MOUNT_PATH_ENABLED_MAC FF is enabled)
-```
+Default mount paths:
+
+- `/tmp/addon`
+- `/tmp/harness`
+- `/private/tmp/harness` (only when the `CI_MOUNT_PATH_ENABLED_MAC` feature flag is enabled)
 
 Harness also needs write access to any declared shared paths that your pipelines use.
 
