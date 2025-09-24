@@ -66,7 +66,13 @@ Tags are displayed on the delegate details page in Harness Manager. Go to [Tags 
 
 ### DYNAMIC_REQUEST_HANDLING
 
-If enabled, delegate will stop acquiring new tasks if the cpu/memory usage goes beyond values defined in `CPU_USAGE_THRESHOLD` and `MEMORY_USAGE_THRESHOLD`. The default value for both is 80. 
+Dynamic task handling is designed to prevent delegates from being overloaded. When enabled, a delegate will stop picking up new tasks if CPU (`CPU_USAGE_THRESHOLD`) or memory usage goes beyond the defined threshold. By default, both thresholds are set at 80%, and you can override either of them if needed. 
+
+If you change one value, the other continues to use the default. Even when dynamic task handling is not enabled, delegates may still reject tasks once the memory threshold is reached, which is expected behavior to keep the delegate stable.
+
+:::note
+The system periodically recomputes the list of tasks and then shares the updated list with delegates. This ensures that task distribution stays fair and efficient. Re-broadcasting of the recomputed list is supported, but it is available only through a feature flag. If you’d like this capability, please reach out to [Harness Support](mailto:support@harness.io).
+:::
 
    ```yaml
         - name: DYNAMIC_REQUEST_HANDLING
