@@ -40,7 +40,7 @@ By configuring fallback treatments, you can improve reliability, reduce surprise
 
 ### [New Feature] Experiment Entry Event Filter
 ----
-#### 2025-09-24
+#### 2025-09-25
 
 You can now define an entry event filter when creating an experiment in Harness FME. This filter ensures only users who actually interact with the experiment entry point are included in the analysis. This reduces noise, increases accuracy, and helps make your metrics reusable across experiments without requiring manual filtering.
 
@@ -212,9 +212,15 @@ const App = () => (
 ----
 #### 2025-04-10
 The following SDKs now allow you to append properties to impressions for each `getTreatment` call: Browser, iOS, JavaScript, Node.js, React, and Redux. This provides additional context for in-product troubleshooting within Live tail or downstream external analysis.
+
 #### Related documentation
+
+- [Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions#impression-properties)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk/#append-properties-to-impressions)
+- [Android Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite#append-properties-to-impressions)
 - [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#append-properties-to-impressions)
 - [Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#append-properties-to-impressions)
+- [Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin#append-properties-to-impressions)
 - [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#append-properties-to-impressions)
 - [iOS SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#append-properties-to-impressions)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#append-properties-to-impressions)
@@ -222,6 +228,8 @@ The following SDKs now allow you to append properties to impressions for each `g
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#append-properties-to-impressions)
 - [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#append-properties-to-impressions)
 - [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#append-properties-to-impressions)
+- [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#append-properties-to-impressions)
+- [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#append-properties-to-impressions)
 
 ## March 2025
 ### [New Feature] Feature flag impression toggle
