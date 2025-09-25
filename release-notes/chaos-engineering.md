@@ -21,6 +21,62 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## September 2025
+### 1.66.8
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.66.0
+- harness/chaos-log-watcher:1.66.0
+- harness/service-discovery-collector:0.46.0
+- harness/chaos-ddcr-faults:1.66.1
+
+#### New Features and Enhancements
+
+- Added support for cgroup v2 in AWS ECS container chaos with backward compatibility with cgroup v1 enabling chaos experiments on modern container runtimes that use cgroup v2 while ensuring smooth operation across environments still using cgroup v1 (CHAOS-9924)
+- Added VMware Windows disk stress chaos fault in k8s-v2 using DDCR (CHAOS-9166)
+- Enhanced error details to be highlighted and shown by default (CHAOS-9401)
+- Added hotfix with the ECS Container chaos fixes (CHAOS-9965)
+- Updated ChaosResiliencyCard in pipeline to use new resilience score color and logic (CHAOS-9956)
+- Migrated cypress pipeline to use k8s connector instead of harness cloud (CHAOS-9950)
+- Added variables in probe and action template manifest (CHAOS-9921)
+- Added capability to run with readOnlyRootFilesystem: true for chaos-web (CHAOS-9856)
+- Added functionality to run vmware stress faults with non-sudo user (CHAOS-9848)
+- Updated tooltip for Probe and Fault Auth fields for HSM support (CHAOS-9847)
+- Moved Username and Host to the Auth section inside the SSH fault (CHAOS-9844)
+- Enhanced error handling in ddcr gracefully when faults execution failed (CHAOS-9834)
+- Added authEnabled field inside the faultRef of experiment (CHAOS-9810)
+- Added Authentication tab inside the faults based on FaultAuthentication category (CHAOS-9723)
+- Added HSM support to the faults (CHAOS-9599)
+- Added Select pipeline modal in chaos module with decent filters (CHAOS-9514)
+- Added UI changes for NewRelic Probe support (CHAOS-9122)
+
+#### Fixed Issues
+
+- Fixed Secret Support/Authentication Tab not coming when adding Fault Templates under Template Studio by calling the submit function directly and adding logic to catch clearing of secret input fields when they remove the value from formik (CHAOS-9941)
+- Fixed Redis REDIS_TLS_SECRET not getting saved by calling the submit function directly and adding logic to catch clearing of secret input fields when they remove the value from formik (CHAOS-9940)
+- Fixed Node Restart where none of username/secret was getting saved by calling the submit function directly and adding logic to catch clearing of secret input fields when they remove the value from formik (CHAOS-9939)
+- Fixed SSH Faults Issues by calling the submit function directly and adding logic to catch clearing of secret input fields when they remove the value from formik (CHAOS-9938)
+- Fixed Azure Secret not getting saved by calling the submit function directly and adding logic to catch clearing of secret input fields when they remove the value from formik (CHAOS-9937)
+- Fixed VMWare Fault Secret/Authentication Issues by calling the submit function directly and adding logic to catch clearing of secret input fields when they remove the value from formik (CHAOS-9936)
+- Fixed AWS Secret as well ARN for AWS both not getting saved as part for Auth Tab by calling the submit function directly and adding logic to catch clearing of secret input fields when they remove the value from formik (CHAOS-9935)
+- Fixed Fault Authentication tooltip showing content for tunables by adding tooltip for fault auth (CHAOS-9933)
+- Fixed SLO Probe not being removed when NG Exp feature flag is enabled where SLO probe will not be available when CHAOS_NG_EXPERIENCE flag is enabled but editing of pre-created slo probes will be supported (CHAOS-9932)
+- Fixed Import Probe as reference for OOTB probe not working by adjusting the logic for determining whether a probe or action is imported, ensuring that the correct references are used throughout the codebase (CHAOS-9901)
+- Fixed being able to run experiments that have inputs as runtime when clicking on run button present in 3 dot buttons in exp table page by properly handling runtime variable collection and implementing consistent execution flow across all UI components (CHAOS-9900)
+- Fixed not being able to abort experiment when it is in queued state (CHAOS-9899)
+- Fixed cleanupPolicy being empty in manifest when launching an experiment from an experiment template by adding logic to add cleanupPolicy while creating experiment from experiment template (CHAOS-9785)
+- Fixed none of the filters working on fault template drawer when creating experiment template (CHAOS-9769)
+- Fixed being able to save an experiment with non-existing infrastructure ID in windows experiment manifest by adding all infrastructure existence validation from the windows manifest (CHAOS-9543)
+- Fixed removing a probe which was added multiple times in a windows experiment removing all instances of probe from fault during editing or cloning where only the intended probe is now deleted (CHAOS-9542)
+- Fixed pipeline recommendations for CD services discovered in different project (CHAOS-9893)
+- Fixed fault_forge and nsexec links in litmus-go (CHAOS-10001)
+- Fixed high vulnerabilities in ddcr-faults docker image (CHAOS-9881)
+- Fixed vulnerabilities in ddcr (CHAOS-9880)
+- Fixed Experiment status based on the fault, probe and action statuses (CHAOS-9670)
+- Fixed experiment resilience score for erroneous experiments (CHAOS-9806)
+
+## September 2025
 ### 1.65.12
 
 #### Images required
