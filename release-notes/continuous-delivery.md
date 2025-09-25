@@ -64,7 +64,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### Breaking Changes:
   
-- Users can now create asynchronous plan creation for pipeline executions to improve performance and scalability. To make this possible, the following breaking changes are coming to the Pipeline Execution API:
+- Users can now create asynchronous plan creation for pipeline executions to improve performance and scalability. To make this possible, the following breaking changes are introduced to the Pipeline Execution API:
 
   - **Execution Status Changes:** 
     - Pipeline executions will now start with `QUEUED_PLAN_CREATION` status.
@@ -78,7 +78,8 @@ If your automation relies on the Execute API response, you must make the followi
     - Add a delay: Wait 3-5 seconds after calling the Execute API.
     - Call Summary API: Use the Pipeline Execution Summary API to retrieve complete execution details.
     - Check execution status: Ensure execution has moved from QUEUED_PLAN_CREATION to RUNN.ING before proceeding
-This enhancement is currently controlled by feature flags `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION_FOR_TRIGGER_EXECUTIONS` and will be generally available by end of October.
+
+This enhancement is currently controlled by feature flags `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION_FOR_TRIGGER_EXECUTIONS` and will be generally available by the end of October. (**PIPE-25710**)
 
  #### Behavior Changes:
 
