@@ -229,7 +229,7 @@ Adjusts the screen dimensions for testing responsive designs. Set the width and 
 
 ### Key Press
 
-Simulates a keyboard input action. Specify the key to press, for example, "Enter" or "Backspace". For key combinations, provide an array of keys like `["Control", "c"]`. Explore all supported keys from [here](`https://github.com/getgauge/taiko/blob/master/lib/data/USKeyboardLayout.js).
+Simulates a keyboard input action. Specify the key to press, for example, "Enter" or "Backspace". For key combinations, provide an array of keys like `["Control", "c"]`. Explore all supported keys from [here](https://github.com/getgauge/taiko/blob/master/lib/data/USKeyboardLayout.js).
 
 > You would have to pick a target element to perform the key press action on.
 
