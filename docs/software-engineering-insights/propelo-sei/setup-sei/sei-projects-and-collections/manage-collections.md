@@ -3,7 +3,7 @@ title: Manage collections
 description: Create and edit Collections.
 sidebar_position: 40
 redirect_from:
-  - /docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections
+  - /docs/software-engineering-insights/sei-projects-and-collections/manage-collections
 ---
 
 import Tabs from '@theme/Tabs';
