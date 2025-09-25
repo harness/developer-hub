@@ -20,6 +20,8 @@ You can leverage all the [permissions mentioned](#run-service-account-as-a-clust
 
 ### Create a new service account
 
+**Note:** This procedure is for automatically created service accounts. If you're using a pre-existing user-defined service account, you can skip the service account creation step and proceed directly to linking it with the Security Context Constraint.
+
 Execute the below commands:
 
 ```bash
