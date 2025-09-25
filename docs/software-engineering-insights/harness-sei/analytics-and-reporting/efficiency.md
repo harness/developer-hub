@@ -101,3 +101,34 @@ This widget provides insights into how long it takes to recover from a failure o
 The following options are available for this widget:
 
   * **View Breakdown**: Provides a detailed breakdown of restoration time by team.
+
+## Troubleshooting
+
+### Lead Time for Changes
+
+#### Why do some phases in the Lead Time widget show zero values even though we have correlated data across different systems?
+
+![](../static/build-time-troubleshooting.png)
+
+This usually happens when the events defined in your Efficiency profile don’t align with the actual order of activities in your SDLC process. For example, if the profile is configured to measure Build Time as:
+
+$$
+\text{Build Time} = \text{First CI Build} - \text{Last PR Merged}
+$$
+
+then:
+
+* Expected behavior: The first CI build should run after the last pull request is merged.
+* Issue: If the first CI build happens before the last PR merge, the calculation results in a negative value. Negative values are reported as 0 in the widget.
+
+**Common reasons you may see 0:**
+
+* Process misalignment: For example in the above example a CI build triggers before the PR is merged.
+* Profile definition conflict: The defined start and end events don’t reflect the real workflow.
+
+**How to fix:**
+
+* Set up the Destination Branch filter in your team settings so that only PRs merged into the correct branch are tracked.
+* Review your SDLC workflow against the configured Efficiency profile to ensure event order matches reality.
+
+In short: 0 values highlight workflow gaps or mismatches between how your process runs and how your Lead Time profile is defined.
