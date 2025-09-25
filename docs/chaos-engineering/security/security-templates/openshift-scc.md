@@ -22,17 +22,10 @@ You can leverage all the [permissions mentioned](#run-service-account-as-a-clust
 
 Execute the below commands:
 
-```
-install litmus-admin service account
-```
-
 ```bash
-$ oc apply -f https://litmuschaos.github.io/litmus/litmus-admin-rbac.yaml
+$ oc create serviceaccount litmus-admin
 
 serviceaccount/litmus-admin created
-clusterrole.rbac.authorization.k8s.io/litmus-admin created
-clusterrolebinding.rbac.authorization.k8s.io/litmus-admin created
-
 ```
 
 ### Run service account as a cluster admin
