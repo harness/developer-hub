@@ -60,11 +60,11 @@ npm install --save @splitsoftware/splitio-browserjs
 <!-- Choose the preferred script tag, you don't need both -->
 
 <!-- Slim build, smaller footprint -->
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.4.0.min.js"></script>
 
 <!-- Full build, bigger footprint but all modules are exposed and usable,
 including fetch polyfill -->
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.4.0.full.min.js"></script>
 ```
 
 </TabItem>
@@ -490,10 +490,10 @@ Three types of properties are supported: strings, numbers, and booleans.
 
 ```javascript
 const evaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -505,10 +505,10 @@ const treatment = client.getTreatment('FEATURE_FLAG_NAME', undefined, evaluation
 
 ```typescript
 const evaluationOptions: SplitIO.EvaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -625,7 +625,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
 | sync.enabled | Controls the SDK continuous synchronization flags. When `true`, a running SDK processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
 | sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the SDK's HTTP(S) requests. | undefined |
-| storage | Pluggable storage instance to be used by the SDK as a complement to in memory storage. Only supported option today is `InLocalStorage`. Read more [here](#configuring-localstorage-cache-for-the-sdk). | In memory storage |
+| storage | Pluggable storage instance to be used by the SDK as a complement to in memory storage. Only supported option today is `InLocalStorage`. Read more [here](#configuring-cache). | In memory storage |
 | debug | Either a boolean flag, string log level or logger instance for activating SDK logs. See [logging](#logging) for details. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
@@ -701,7 +701,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 </TabItem>
 </Tabs>
 
-### Configuring LocalStorage cache for the SDK
+### Configuring cache
 
 To use the pluggable `InLocalStorage` option of the SDK and be able to cache flags for subsequent loads in the same browser, you need to pass it to the SDK config on its `storage` option.
 
@@ -712,10 +712,34 @@ This `InLocalStorage` function accepts an optional object with options described
 | prefix | An optional prefix for your data, to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
 | expirationDays | Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
 | clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
+| wrapper | Storage wrapper used to persist the SDK cached data. | `localStorage` |
 
 These pluggable caches are always available on NPM, but if using the CDN you need the full bundle. Refer to the [Import the SDK into your project](#1-import-the-sdk-into-your-project) section for more information.
 
 <Tabs>
+<TabItem value="With NPM package">
+
+```javascript
+import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-browserjs';
+
+const factory: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  storage: InLocalStorage({
+    prefix: 'MY_PREFIX',
+    expirationDays: 10,
+    clearOnInit: false,
+    wrapper: window.localStorage
+  })
+});
+
+// Now use the SDK as usual
+const client = factory.client();
+```
+
+</TabItem>
 <TabItem value="With full bundle from CDN">
 
 ```javascript
@@ -728,7 +752,8 @@ var factory = window.splitio.SplitFactory({
   storage: window.splitio.InLocalStorage({
     prefix: 'MY_PREFIX',
     expirationDays: 10,
-    clearOnInit: false
+    clearOnInit: false,
+    wrapper: window.localStorage
   })
 });
 
@@ -737,23 +762,92 @@ var client = factory.client();
 ```
 
 </TabItem>
-<TabItem value="With NPM package">
+</Tabs>
 
-```javascript
-import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-browserjs';
+By default, the SDK uses the `localStorage` global object if available. If `localStorage` is not available, the SDK will use the default in memory storage. You can pass your own storage wrapper like, for example, one based on `IndexedDB` or another storage solution, by implementing the `SplitIO.StorageWrapper` interface.
 
-const factory: SplitIO.IBrowserSDK = SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  storage: InLocalStorage({
-    prefix: 'MY_PREFIX'
-  })
-});
+<Tabs>
+<TabItem value="StorageWrapper interface">
 
-// Now use the SDK as usual
-const client = factory.client();
+```typescript
+declare namespace SplitIO {
+  interface StorageWrapper {
+    /**
+     * Returns the value associated with the given key, or null if the key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    getItem(key: string): string | null | Promise<string | null>;
+    /**
+     * Sets the value for the given key, creating a new key/value pair if key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    setItem(key: string, value: string): void | Promise<void>;
+    /**
+     * Removes the key/value pair for the given key, if the key exists.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    removeItem(key: string): void | Promise<void>;
+  }
+  ...
+}
+```
+
+</TabItem>
+<TabItem value="StorageWrapper implementation based on IndexedDB">
+
+```typescript
+class IndexedDBWrapper implements SplitIO.StorageWrapper {
+  private dbName: string;
+  private storeName: string;
+  private dbPromise: Promise<IDBDatabase>;
+
+  constructor(dbName: string, storeName: string) {
+    this.dbName = dbName;
+    this.storeName = storeName;
+    this.dbPromise = this.openDB();
+  }
+
+  private openDB(): Promise<IDBDatabase> {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.dbName);
+
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains(this.storeName)) {
+          db.createObjectStore(this.storeName);
+        }
+      };
+
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  private async withStore(type: IDBTransactionMode, callback: (store: IDBObjectStore) => IDBRequest) {
+    const db = await this.dbPromise;
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(this.storeName, type);
+      const store = tx.objectStore(this.storeName);
+      const request = callback(store);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  // Wrapper methods:
+
+  async getItem(key: string): Promise<string | null> {
+    return this.withStore('readonly', store => store.get(key)) as Promise<string | null>;
+  }
+
+  async setItem(key: string, value: string): Promise<void> {
+    await this.withStore('readwrite', store => store.put(value, key));
+  }
+
+  async removeItem(key: string): Promise<void> {
+    await this.withStore('readwrite', store => store.delete(key));
+  }
+}
 ```
 
 </TabItem>
@@ -781,7 +875,7 @@ If you define just a string as the value for a feature flag name, any config ret
 <TabItem value="JavaScript" label="JavaScript (using CDN bundle)">
 
 ```javascript
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.4.0.full.min.js"></script>
 
 var sdk = splitio.SplitFactory({
   core: {
@@ -1247,9 +1341,9 @@ While the SDK does not put any limitations on the number of instances that can b
 
 You can listen for four different events from the SDK.
 
-* `SDK_READY_FROM_CACHE`. This event fires once the SDK is ready to evaluate treatments using a version of your rollout plan cached in localStorage from a previous session (which might be stale). If there is data in localStorage, this event fires almost immediately, since access to localStorage is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuring cache](#configuring-cache) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan cached in localStorage, and the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below:
@@ -1313,7 +1407,7 @@ client.once(client.Event.SDK_READY, whenReady);
 
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
   // This callback will be called after `readyTimeout` seconds (10 seconds by default)
-  // if and only if the client is not ready for that time. 
+  // if and only if the client is not ready for that time.
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });
 

@@ -687,6 +687,76 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 </TabItem>
 </Tabs>
 
+### Configuring cache
+
+To use the pluggable `InLocalStorage` option of the SDK and be able to cache flags for subsequent loads in the same browser, you need to pass it to the SDK config on its `storage` option.
+
+This `InLocalStorage` function accepts an optional object with options described below:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| prefix | An optional prefix for your data, to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
+| expirationDays | Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
+| clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
+| wrapper | Storage wrapper used to persist the SDK cached data. | `localStorage` |
+
+By default, the SDK uses the `localStorage` global object if available. If it is not available, the SDK will use the default in memory storage. 
+
+To support a persistent cache on platforms like Android and iOS, where `localStorage` is not available, you can pass your own storage wrapper, such as [`AsyncStorage`](https://react-native-async-storage.github.io/async-storage/), that implements the `SplitIO.StorageWrapper` interface.
+
+<Tabs>
+<TabItem value="StorageWrapper interface">
+
+```typescript
+declare namespace SplitIO {
+  interface StorageWrapper {
+    /**
+     * Returns the value associated with the given key, or null if the key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    getItem(key: string): string | null | Promise<string | null>;
+    /**
+     * Sets the value for the given key, creating a new key/value pair if key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    setItem(key: string, value: string): void | Promise<void>;
+    /**
+     * Removes the key/value pair for the given key, if the key exists.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    removeItem(key: string): void | Promise<void>;
+  }
+  ...
+}
+```
+
+</TabItem>
+<TabItem value="Using React Native AsyncStorage">
+
+```typescript
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-react-native';
+
+const factory: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  storage: InLocalStorage({
+    prefix: 'MY_PREFIX',
+    expirationDays: 10,
+    clearOnInit: false,
+    wrapper: AsyncStorage
+  })
+});
+
+// Now use the SDK as usual
+const client = factory.client();
+```
+
+</TabItem>
+</Tabs>
+
 ## Localhost mode
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid or offline mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. 
@@ -1172,8 +1242,9 @@ While the SDK does not put any limitations on the number of instances that can b
  
 You can listen for three different events from the SDK.
 
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuring cache](#configuring-cache) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below.
@@ -1294,15 +1365,3 @@ The [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure
 Here is an example application detailing how to configure and instantiate the Split React Native SDK. 
 
 * [React Native & Expo examples](https://github.com/splitio/react-native-sdk-example)
-
-## Troubleshooting
-
-### Running bundle using React Native and JavaScript SDK causes an error: Unable to resolve module util
-
-When running the bundle, the error occurs: `bundling failed: Error: Unable to resolve module util from ... LoggerFactory.js: Module util does not exist in the Haste module map`.
-
-The JavaScript SDK depends on the `util` class, which is built-in for most npm environments but not included by default in React Native.
-
-Install the `util` package manually: `npm install util`.
-
-As of July 29, 2021, our dedicated React Native SDK is available, which should help avoid this issue.

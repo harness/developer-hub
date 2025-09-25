@@ -571,3 +571,76 @@ Users facing namespace errors should remove namespace objects from their manifes
 
 ### Why does Helm uninstall runs after a failed initial deployment in Helm Deployment step?
 Helm recommends purging the initial release if any failure happens: [https://github.com/helm/helm/issues/3353#issuecomment-358367529](https://github.com/helm/helm/issues/3353#issuecomment-358367529). Hence, Harness purges the release if the first ever release fails in Helm Deployment step. If this is not done, then the user would be manually required to clean up the failed release, otherwise all subsequent releases would fail. Harness helps users avoid this manual effort and purges the failed initial release in this case.
+
+### Is switching between Kubernetes Deployment and Helm Deployment supported?
+
+**Yes, switching between Kubernetes Deployment and Helm Deployment types is supported**, but requires careful planning due to some important limitations and considerations.
+
+:::warning Important Considerations
+Switching between deployment types on the same infrastructure and namespace can lead to deployment failures due to immutable Kubernetes selector labels. Plan your migration carefully and consider using different namespaces or performing force deployments.
+:::
+
+#### Limitations and Considerations
+
+1. **Label Selector Handling**:
+   - When switching from Kubernetes to Helm deployments, leftover selector labels (particularly `harness.io/track: stable`) can cause deployment failures, especially when skipping canary steps.
+   - This happens because selector labels in Kubernetes are immutable and Helm's 3-way merge won't remove them from existing deployments.
+
+2. **Deployment Type Compatibility**:
+   - Canary flows typically work because Harness adds track labels in pod labels for canary deployments.
+   - Rolling deployments (skipping canary steps) may fail due to label selector mismatches between the existing deployment and the new manifests.
+
+3. **Maintenance Mode Deployments**:
+   - When services are in maintenance mode (replica: 0), skipping canary steps is often desired to avoid spinning up unnecessary pods.
+   - However, this scenario is most prone to selector mismatch issues when switching deployment types.
+
+#### Best Practices for Switching Deployment Types
+
+1. **Perform a Force Deployment**: 
+   - When switching deployment types, perform a forced fresh deployment (delete and redeploy) to remove stale selectors.
+   - This is especially important for services that are in maintenance mode or not serving traffic.
+
+2. **Enable "Skip Harness Label Selector" Setting**:
+   - For Kubernetes deployments, enable the ["Skip Harness label selector tracking" setting](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments).
+   - This helps when you need to switch between canary and rolling deployment flows.
+
+3. **Use Different Release Names and Namespaces**:
+   - When deploying the same service using both Kubernetes and Helm deployment types, use different release names and consider using separate namespaces to avoid conflicts.
+   - Avoid deploying the same service to the same infrastructure using both deployment types simultaneously.
+
+4. **Check Delegate Version**:
+   - Ensure your delegate is updated to the latest version to benefit from fixes related to label handling.
+   - If you can't update the delegate, consider updating the `harness-helm-post-renderer` binary using the following commands in the delegate's INIT_SCRIPT:
+     ```bash
+     curl -f -s -L -o client-tools/harness-helm-post-renderer/v0.1.5/harness-helm-post-renderer \
+     https://app.harness.io/public/shared/tools/harness-helm-post-renderer/release/v0.1.5/bin/linux/amd64/harness-helm-post-renderer
+     export PATH=client-tools/harness-helm-post-renderer/v0.1.5/:$PATH
+     ```
+
+5. **Feature Flag Requirements**:
+   - Ensure the feature flag `CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG` is enabled for improved Helm steady state checks.
+   - Contact [Harness Support](mailto:support@harness.io) if you need this feature flag enabled.
+
+#### Troubleshooting Common Errors
+
+If you encounter errors like:
+```
+Error: UPGRADE FAILED: cannot patch "[resource]" with kind Deployment: Deployment.apps "[resource]" is invalid: spec.template.metadata.labels: Invalid value: map[string]string{"app":"[resource]", ..., "harness.io/track":"stable", ...}: selector does not match template labels
+```
+
+This indicates a label selector mismatch. Follow these steps:
+1. Check if `harness.io/track: stable` exists in your deployment's selector labels using:
+   ```bash
+   kubectl get deployment [deployment-name] -o yaml
+   ```
+2. Perform a force deployment by deleting the existing deployment first.
+3. Deploy again with your desired configuration.
+4. If the issue persists, verify that your Helm chart doesn't contain hardcoded `harness.io/track` labels in the selector.
+
+#### Migration Strategy
+
+For a smooth transition between deployment types:
+1. **Plan the migration** during maintenance windows when possible.
+2. **Test the switch** in non-production environments first.
+3. **Document your current configuration** before making changes.
+4. **Consider using different services** for different deployment types if you need both approaches.

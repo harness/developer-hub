@@ -79,6 +79,16 @@ Harness regularly updates VM images to include:
 - Runtime updates (Node.js, Python, Java, etc.).
 - New tools and utilities based on community feedback.
 
+#### Using Your Own Images (BYOI)
+
+If you bring your own custom Docker image, note the following:
+
+:::note BYOI image pull policy
+Harness Cloud currently does not support setting an image pull policy.
+By default, the image is never pulled if it already exists on the VM.
+
+Best Practice: Always retag your custom image with a new version whenever changes are made. This ensures Harness Cloud picks up the updated image during your build.
+:::
 
 ## Pre-installed Software Version Management
 

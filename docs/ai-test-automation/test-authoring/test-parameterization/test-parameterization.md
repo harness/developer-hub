@@ -77,7 +77,7 @@ However, this flexibility isn't available when executing multiple tests or test 
 3. **Test-Level Overrides**: These take precedence over task and environment-level values. You can also define overrides specific to a combination of a test and an environment.
 4. **Test Suite-Level Overrides**: At the top of the hierarchy, overrides set at the test suite level are applied during test suite execution and override values from all other levels.
 
-**How do I set these overrides ? **
+**How do I set these overrides ?**
 
 Here is a short video explaining how to set up the parameter overrides&#x20;
 

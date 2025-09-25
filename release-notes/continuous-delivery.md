@@ -55,6 +55,50 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## September 2025
 
+### Version 1.108.2
+
+#### New Features and Enhancements:
+
+- Harness now supports bearer token-based auth for the Bitbucket connector. This allows users to set up 
+  authentication for the Bitbucket connector using an access token which can be generated via Bitbucket. (**PIPE-28671**, **ZD-82455**)
+
+#### Breaking Changes:
+  
+- Users can now create asynchronous plan creation for pipeline executions to improve performance and scalability. To make this possible, the following breaking changes are coming to the Pipeline Execution API:
+
+  - **Execution Status Changes:** 
+    - Pipeline executions will now start with `QUEUED_PLAN_CREATION` status.
+    - Executions will transition to `RUNNING` status asynchronously after plan creation and policy evaluation are completed. 
+  - **API Response Changes:**
+    - Execute API Response: Governance metadata will no longer be immediately available.
+    - Layout Node Map: Will be empty or incomplete immediately after execution starts.
+    - Data Availability: Complete execution data will be available after plan creation completes (typically within a few seconds).
+  - **Required Actions for Automation Scripts:** 
+If your automation relies on the Execute API response, you must make the following changes/additions in your scripts:
+    - Add a delay: Wait 3-5 seconds after calling the Execute API.
+    - Call Summary API: Use the Pipeline Execution Summary API to retrieve complete execution details.
+    - Check execution status: Ensure execution has moved from QUEUED_PLAN_CREATION to RUNN.ING before proceeding
+This enhancement is currently controlled by feature flags `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION_FOR_TRIGGER_EXECUTIONS` and will be generally available by end of October.
+
+ #### Behavior Changes:
+
+- We have improved the visibility of pipeline executions in the notification section. Previously, only executions containing at least one CD stage were displayed in the running, waiting for approval, and failed execution notifications. With this enhancement, you can now view all pipeline executions regardless of the module type (CI, CD, etc.) by enabling the feature flag `PIPE_SHOW_ALL_EXECUTIONS_ON_ACCOUNT_OVERVIEW_PAGE`. The general availability for this feature is scheduled for four weeks from now. (**PIPE-26930**)   
+
+- We have introduced a feature update for Audit Trail to ensure consistency across the audit logs.
+  This update changes how pipeline actions are identified. Prior to this update, we utilized the **Pipeline Name** to represent the **Create**, **Update**, **Delete**, and **Move Config** pipeline actions in the audit logs. In contrast, **Pipeline Identifier** are used to represent the **Start**, **End**, **Abort**, and **Timeout** actions.
+  - With this update: **Create**, **Update**, **Delete**, and **Move Config** actions are represented through the **Pipeline Identifier**. This change aligns the behavior across all the logs associated with pipeline actions in the Audit Trail, ensuring the use of a single and consistent identifier.
+  - This feature is currently behind the feature flag `PIPE_USE_PIPELINE_IDENTIFIER_IN_AUDIT_LOGS`. If you enable this feature flag, please make sure you **update your integration points** to accommodate this change. (**PIPE-28870**)
+
+#### Fixed Issues:
+
+- Fixed issues with multi-environment deployments for GitOps Pipelines. Now, users can perform multi-environment deployments through GitOps Pipeline stages. (**CDS-113581, ZD-91288**)
+- Fixed an issue that caused the rollback stage to get skipped when using parallel steps in the pipeline. With this fix, we ensure the users that the rollback stage is always executed when using parallel steps in the pipeline. (**PIPE-28864, ZD-89332**)
+- Fixed an issue where the error message for `winrm copy artifact` was not being propagated correctly when failing to fetch AWS credentials. The error message is now correctly displayed to users when this error occurs. (**CDS-97836**, **ZD-64870**)
+- Fixed an issue that was causing the environment tag filters not to work properly. Now, environment tag filters are working as expected. (**CDS-113958**)
+- Fixed issues that led to the Harness error page coming up frequently while navigating to links within Harness. (**PIPE-29416**)
+- Fixed issues with the `Run Pipeline Button`, which, when pressed multiple times, triggered multiple executions. This fix ensures that only a single execution is triggered after pressing the button. (**PIPE-29136**, **ZD-90223**)
+
+
 ### GitOps Service 1.41.1, GitOps Agent 0.101.0
 
 #### Fixed Issues

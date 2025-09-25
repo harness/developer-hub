@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-12-03T14:00
+date: 2025-09-24T14:00
 sidebar_position: 3
 ---
 
@@ -158,6 +158,27 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## September 2025 
+
+### Version 1.109.x <!--September 24, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where SCIM patch requests from Okta did not update User Group membership in the Harness UI. [PL-65385]
+
+#### New features and enhancements
+
+- Introduced a delegate task limit to better manage peak loads and improve system stability. [PL-56344]
+
+
+### Version 1.108.x <!--September 17, 2025-->
+
+#### Fixed issues
+
+- Updated the name and description of the body parameter in the [Token Validation API](https://apidocs.harness.io/openapi-merged/token/validatetoken). [PL-64820]
+
+#### New features and enhancements
+
+- Added support for running Harness services with a read-only root filesystem. [PL-65055]
 
 ### Version 1.105.x <!--September 03, 2025-->
 

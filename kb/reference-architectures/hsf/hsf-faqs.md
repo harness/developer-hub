@@ -1,7 +1,7 @@
 ---
 title: FAQs
 description: Get answers to some frequently asked questions about HSF.
-sidebar_position: 6
+sidebar_position: 8
 ---
 
 ### How does it work?

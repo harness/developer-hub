@@ -207,9 +207,9 @@ For more information about allowlisting, [contact Harness Support](https://suppo
 * Don't hardcode the number of processors/threads. Instead, use commands like `nproc` to specify threads/jobs in your build and test commands.
 * Don't use tools that only run on a specific cloud environment, such as `gcloud`. Harness Cloud sources its build VMs from a variety of cloud providers. It is impossible to predict which specific cloud provider hosts the Harness Cloud VM that your build uses during any single execution. Therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
 * Know the [requirements for connectors and secrets](#requirements-for-connectors-and-secrets).
-* Know that Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
-* Know that you can add steps to your pipeline to [specify versions of tools](#specify-versions) and [lock versions, set up environments, or install additional tools](#lock-versions-or-install-additional-tools).
-* Run `apt-get update` before [installing additional software](#lock-versions-or-install-additional-tools) that might not be in the image's packages list.
+* Know that Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
+* Know that you can add steps to your pipeline to [specify versions of tools](/docs/platform/references/harness-cloud-vm-images#specify-versions) and [lock versions, set up environments, or install additional tools](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools).
+* Run `apt-get update` before [installing additional software](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) that might not be in the image's packages list.
 
 ## Secure connect (private networking)
 

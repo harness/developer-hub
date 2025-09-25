@@ -29,6 +29,7 @@ Harness recommends that you publish and ingest using the scanner-specific JSON f
 - **HQL AppScan** — XML 
 - **Grype** — JSON
 - **Mend _(formerly Whitesource)_** — JSON  
+- **ModelScan** — JSON
 - **Nessus** — XML
 - **Nexus** — JSON
 - **Nikto** — XML

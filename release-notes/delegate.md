@@ -115,6 +115,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## September 2025
 
+### Version 25.09.86800 <!--September 24, 2025-->
+
+#### Fixed issues
+
+- An error message is now displayed when AWS credentials cannot be fetched. [CDS-97836]
+- Renamed the audit log field from **name** to **identifier** and standardized the format across all pipeline events for clearer, consistent terminology. [PIPE-28870]
+- Resolved an issue in EnvironmentGroups where the save filter was not working due to a missing variable, and handled cases where the tag value was null. [CDS-96157]
+
 ### Version 25.09.86703 <!--September 10, 2025-->
 
 #### Fixed issues
