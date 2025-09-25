@@ -6,6 +6,8 @@ helpdocs_topic_id: 3onmos2n3v
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- /docs/platform/delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server
 ---
 
 This Kubernetes manifest creates a permanent volume for NFS.

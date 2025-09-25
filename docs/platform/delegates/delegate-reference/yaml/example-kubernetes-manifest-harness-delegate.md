@@ -6,6 +6,8 @@ helpdocs_topic_id: cjtk5rw8z4
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- /docs/platform/delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate
 ---
 
 Go to the following for an example of a Kubernetes manifest that you can use to configure Harness Delegate and the Helm chart default `values.yaml` file.
@@ -252,17 +254,24 @@ spec:
 <summary>Helm chart default `values.yaml` file</summary>
 <br />
 
-[Helm chart default `values.yaml` file](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml)
+For the latest references, see the most up-to-date [Helm chart default `values.yaml` file example found in our repository](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml).
 
 ```yaml
-# Default configuration values for the Harness Delegate NextGen.
+# Default values for delegate-ng.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 image:
   pullPolicy: Always
+  # Uncomment below lines to use a custom registry + repository, a different repository or a different tag, this will override the delegateDockerImage
+  # registry: null
+  # repository: null
+  # tag: null
 
 fullnameOverride: ""
+
+mTLS:
+  secretName: ""
 
 serviceAccount:
   # Specifies whether a service account should be created.
@@ -274,7 +283,7 @@ serviceAccount:
   name: ""
 
 service:
- # type: ClusterIP
+  # type: ClusterIP
   port: 8080
 
 # Edit this if you want to enable horizontal pod autoscaling.
@@ -297,17 +306,23 @@ delegateName: harness-delegate-ng
 
 deployMode: "KUBERNETES"
 
-delegateDockerImage: harness/delegate:24.01.82108
+delegateDockerImage: harness/delegate:25.08.86503
 
-# Annotations for delegate deployment; Prometheus is added by default.
+commonAnnotations: {}  # Annotations that will be applied to all resources
+delegateAnnotations: {}  # Annotations that will be applied to both pod and deployment spec for Delegate
+# Annotations for delegate deployment, prometheus is added by default
 annotations:
   prometheus.io/scrape: "true"
   prometheus.io/port: "3460"
   prometheus.io/path: "/api/metrics"
 
+commonLabels: {}  # Labels that will be applied to all resources
+delegatePodLabels: {}  # Labels that will be applied to pod spec
+delegateLabels: {}  # Labels that will be applied to both deployment and pod spec for Delegate
+
 imagePullSecret: ""
 
-# Endpoint that will point to the Harness platform. For accessing SaaS platform use the default value.
+# Endpoint that will point to the Harness platform. For accessing the SaaS platform, use the default value.
 managerEndpoint: https://app.harness.io
 
 # If socket connection is not supported, set this flag to true to poll tasks using REST API calls.
@@ -342,7 +357,24 @@ replicas: 1
 # possible due to custom volumes or mounts that can only be attached to a single pod.
 deploymentStrategy: "RollingUpdate"
 
-# Resource limits of the container running the delegate image in Kubernetes.
+# Rolling update configuration (only applies when deploymentStrategy is "RollingUpdate").
+# By default, these are not set so Kubernetes uses its own defaults (currently 25%).
+# Uncomment and set if you want to override the defaults. You may use integers or percentage strings (e.g., "25%")
+# rollingUpdate:
+#   # Maximum number of pods that can be created above the desired replica count during updates
+#   maxSurge: "25%"
+#   # Maximum number of pods that can be unavailable during the update process
+#   maxUnavailable: "25%"
+
+# Resource limits of container running delegate image in kubernetes
+# If you want to set custom resource limits, uncomment the below line and set the values for cpu and memory request/limit
+# resources:
+#   limits:
+#     cpu: 1
+#     memory: 2048Mi
+#   requests:
+#     cpu: 1
+#     memory: 2048Mi
 cpu: 1
 memory: 2048
 
@@ -357,14 +389,30 @@ javaOpts: "-Xms64M"
 upgrader:
   enabled: true
   upgraderDockerImage: "harness/upgrader:latest"
+    registryMirror: ""
+  image:
+    pullPolicy: Always
+    # Uncomment below lines to use a custom registry + repository, a different repository or a different tag, this will override the upgraderDockerImage
+    # registry: null
+    # repository: null
+    # tag: null
+
+  # Schedule for the upgrader cronjob (cron format)
+  schedule: "0 */1 * * *"
+
+  imagePullSecret: ""
+
   cronJobServiceAccountName: "upgrader-cronjob-sa"
-  # Use an existing Secret that stores the UPGRADER_TOKEN key instead of creating a new one. The value should be set with the `UPGRADER_TOKEN` key inside the secret.
+  # Use an existing Secret which stores the UPGRADER_TOKEN key instead of creating a new one. The value should be set with the `UPGRADER_TOKEN` key inside the secret.
   ## The use of external secrets allows you to manage credentials from external tools like Vault, 1Password, SealedSecrets, among others.
   ## If set, this parameter takes precedence over "upgraderToken".
   ## Recommendations:
   ## - Use different Secrets names for `existingUpgraderToken` and `existingDelegateToken`.
   ## - Do not use Secrets managed by other Helm deployments.
   existingUpgraderToken: ""
+
+  # Set security context for upgrader
+  securityContext:
 
 # This field is DEPRECATED, DON'T OVERRIDE/USE THIS!!
 # To set root/non-root access and other security context, use the delegateSecurityContext field below.
@@ -426,6 +474,18 @@ shared_certificates:
     # - /kaniko/ssl/certs/additional-ca-cert-bundle.crt
 
 # Additional environment variables for the delegate pod.
+custom_init_containers:
+  # - name: init-container
+  #   image: busybox
+  #   command: ['sh', '-c', 'echo "Hello from init container!"']
+
+# additional sidecar containers for the delegate pod
+custom_containers:
+  # - name: sidecar
+  #   image: busybox
+  #   command: ['sh', '-c', 'echo "Hello from sidecar!"']
+
+# additional environment variables for the delegate pod
 custom_envs:
   # - name: DELEGATE_TASK_CAPACITY
   #   value: "10"
