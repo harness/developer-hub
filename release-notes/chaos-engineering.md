@@ -21,7 +21,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## September 2025
-### 1.66.8
+### Version 1.66.8
 
 #### Images required
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
@@ -76,8 +76,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Fixed Experiment status based on the fault, probe and action statuses (CHAOS-9670)
 - Fixed experiment resilience score for erroneous experiments (CHAOS-9806)
 
-## September 2025
-### 1.65.12
+### Version 1.65.12
 
 #### Images required
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
@@ -206,7 +205,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Fixed deleting a non-existing action not resulting in an error (CHAOS-9340)
 
 ## August 2025
-### 1.64.14
+### Version 1.64.14
 
 #### Images required
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
