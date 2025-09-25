@@ -5,6 +5,9 @@ import styles from './ga-list.module.css';
 import releaseNotesStyles from '@site/src/components/ReleaseNotes/styles.module.scss';
 
 function FeatureFlagsGATable({ flags }) {
+  // Sort flags by gaStartDate in descending order (newest first)
+  const sortedFlags = [...flags].sort((a, b) => new Date(b.gaStartDate) - new Date(a.gaStartDate));
+
   return (
     <div style={{overflowX: 'auto', marginTop: '1.5rem', marginBottom: '2rem'}}>
       <table style={{width: '100%', borderCollapse: 'collapse', background: 'white', boxShadow: '0 1.5px 3px 0 rgb(0 0 0 / 8%)'}}>
@@ -17,7 +20,7 @@ function FeatureFlagsGATable({ flags }) {
           </tr>
         </thead>
         <tbody>
-          {flags.map((flag) => (
+          {sortedFlags.map((flag) => (
             <tr key={flag.flagKey}>
               <td><b>{flag.flagKey}</b></td>
               <td>{flag.description}</td>

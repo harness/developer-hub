@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-09-19T10:00:00
+date: 2025-09-25T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,13 +12,13 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: September 19, 2025
+#### Last updated: September 25, 2025
 
 ## September 2025
 
 ### [New Feature] Fallback Treatments
 ----
-#### 2025-09-19
+#### 2025-09-25
 
 Harness FME supports fallback treatments, a configuration option that lets you define a default treatment and optional configuration to be returned instead of the standard `control`. You can set fallback values globally at the SDK level or for individual flags, giving you greater flexibility and resilience in flag evaluations.
  
@@ -33,10 +33,25 @@ By configuring fallback treatments, you can improve reliability, reduce surprise
 #### Related documentation
 
 - [Fallback treatment](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/)
-- Android SDK
-- iOS SDK
-- Java SDK
-- Python SDK
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk/#configure-fallback-treatments)
+- [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configure-fallback-treatments)
+- [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk/#configure-fallback-treatments)
+- [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#configure-fallback-treatments)
+
+### [New Feature] Experiment Entry Event Filter
+----
+#### 2025-09-24
+
+You can now define an entry event filter when creating an experiment in Harness FME. This filter ensures only users who actually interact with the experiment entry point are included in the analysis. This reduces noise, increases accuracy, and helps make your metrics reusable across experiments without requiring manual filtering.
+
+![](./static/fme/experiment-entry-filter.png)
+
+You can set this filter during experiment creation, and it is applied globally across all key, guardrail, and supporting metrics. These filters are additive, meaning if a [metric already includes a qualifying event](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/#applying-a-filter), the experiment's entry filter is applied first, and both must be satisfied. 
+
+#### Related documentation
+
+- [Create an experiment](/docs/feature-management-experimentation/getting-started/overview/create-an-experiment)
+- [Experimentation Setup](/docs/feature-management-experimentation/experimentation/setup/)
 
 ## July 2025
 

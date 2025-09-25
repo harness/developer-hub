@@ -13,7 +13,8 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 Use Background steps to [manage dependent services](./dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
@@ -57,13 +58,11 @@ If the Background step runs directly on the host or in a Kubernetes cluster buil
 
 ## Container Registry and Image
 
-**Container Registry** is a Harness container registry connector that connects to the container registry, such as Docker Hub, from which you want Harness to pull an image.
+The build environment must have the necessary binaries for the **Background** step to execute your test commands. Depending on the stage's build infrastructure, **Background** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries. 
 
-**Image** is the container image to use for the background service. The image name should include the tag, or it defaults to the `latest` tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
+<WhenReq />
 
-* **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GAR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
+<FQNImage />
 
 <figure>
 

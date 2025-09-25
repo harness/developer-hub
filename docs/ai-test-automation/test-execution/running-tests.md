@@ -15,21 +15,21 @@ If you have created a new test, it will be marked as a Draft after creation. You
 
 Clicking on the VALIDATE TEST will bring up the test run modal, where you can specify
 
-- `Environment`* *against which the validation run should be performed. Harness AI Test Automation will pick your Pre-Release environment by default but you can pick any environment from the pick list.
-- `Execution Location`. You can run tests from our default cloud location if your test environment is accessible on the Internet. Harness AIT also supports a Private Tunnels for test environments that are behind a firewall.
-- `Test Parameters`* *default to values entered by the user, unless those inputs are redacted. You can update the defualt values based on the data available in your test environment. The updated values will be saved for the future run.
+- *Environment*: against which the validation run should be performed. Harness AI Test Automation will pick your Pre-Release environment by default but you can pick any environment from the pick list.
+- *Execution Location*: You can run tests from our default cloud location if your test environment is accessible on the Internet. Harness AIT also supports a Private Tunnels for test environments that are behind a firewall.
+- *Test Parameters*: default to values entered by the user, unless those inputs are redacted. You can update the defualt values based on the data available in your test environment. The updated values will be saved for the future run.
 
 ![](./static/run-test-modal.png)
 
-:::
 
-### Run a Test
+
+
+
+#### Run a Test
 
 Once a Test has been validated, the option to "Run Test" will automatically appear. Tests with this option have already gone through the Validation process.
 
-![](./static/run-test.png)
-
-:::
+![](./static/run-test.png)  
 
 ### Environment Parameters
 
@@ -40,5 +40,4 @@ Parameters can be defined at the Applicaiton Environment Level. For Example, the
 Below "Environment Override" and "Test Default" are denoted by which variables will be used based on the environment chosen.
 
 ![](./static/environment-override.png)
-:::
 

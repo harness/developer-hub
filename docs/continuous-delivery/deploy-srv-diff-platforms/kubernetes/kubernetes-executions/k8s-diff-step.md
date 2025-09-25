@@ -100,6 +100,8 @@ You can also find the difference in the output of the step:
 
 - The command **does not display changes for secrets**, due to security restrictions designed to protect sensitive data.
 
+- The K8s Diff step is only available for the **Kubernetes Deployment** swimlane. It supports Helm chart manifests when using the K8s Deployment type, but it does not support the Native Helm deployment type.
+
 ## K8s Diff Step Sample
 
 To see an example of how to use the K8s Diff Step, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/kubernetes-steps/diff-step).

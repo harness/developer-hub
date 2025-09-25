@@ -8,6 +8,10 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import UnrestrictedProjectGroupsImage from '@site/docs/feature-management-experimentation/split-to-harness/static/unrestricted-project-groups.svg';
+
+import RestrictedProjectGroupsImage from '@site/docs/feature-management-experimentation/split-to-harness/static/restricted-project-groups.svg';
+
 ## Overview
 
 This guide is intended to be used as a reference shortly after your migration into Harness to guide you through administrative tasks. It will also help you understand permissions in Harness after your Split-to-Harness migration. It explains how legacy **Split access restrictions** map to **Harness RBAC (role-based access control) settings** in two ways:
@@ -169,7 +173,7 @@ When your account was migrated to Harness, the migration script created new Harn
 
 #### Role bindings at the account and organization levels
 
-| Legacy Split setting | Harness user group | Harness scope <br /> <span style={{fontWeight: 100}}>where the user group is created and managed</span> | Role binding <br /> <span style={{fontWeight: 100}}>Harness role + Harness resource group</span> |
+| Legacy Split setting | Harness user group | Harness scope <br /> <span style={{fontWeight: 300}}>where the user group is created and managed</span> | Role binding <br /> <span style={{fontWeight: 300}}>Harness role + Harness resource group</span> |
 |---|---|---|---|
 | Administrators <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split group</span> | All FME Admins | Harness account | <span style={{fontFamily: 'Courier New'}}>For a new Harness account:</span> <br /> Account Admin + All Resources Including Child Scopes <br /><br /> Organization Viewer + All Organization Level Resources <br /><br /> <span style={{fontFamily: 'Courier New'}}>For a pre-existing Harness account:</span> <br /> Organization Admin + All Organization Level Resources |
 | Editors <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split role</span> | All FME Editors | Harness account |  Organization Viewer + All Organization Level Resources |
@@ -238,7 +242,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
             </td>
             <td>
               <p>
-                Split FME Administrator Role
+                FME Administrator Role
               </p>
               <p>
                 Project Viewer
@@ -262,7 +266,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
             </td>
             <td>
               <p>
-                Split FME Manager Role
+                FME Manager Role
               </p>
               <p>
                 Project Viewer
@@ -309,7 +313,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
             </td>
             <td>
               <p>
-                Split FME Manager Role
+                FME Manager Role
               </p>
               <p>
                 Project Viewer
@@ -356,14 +360,14 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
 :::warning In legacy Split groups with both editors and viewers – Editors will lose permissions.
 If a group in legacy Split had both editors and viewers (legacy roles) and the group was given access to a restricted project, then post-migration the Harness group will be assigned only the **Project Viewer** role. (This prevents viewers from gaining broader permissions upon migration.) The users that were legacy Split editors will no longer have edit permissions for the project.
 
-Since RBAC is additive, you can assign edit permissions by adding the Harness user (with the legacy Editor role) at the project level and assigning the role binding: **Split FME Manager Role** role over the **All Project Level Resources** (or **FME All Resources**) resource group.
+Since RBAC is additive, you can assign edit permissions by adding the Harness user (with the legacy Editor role) at the project level and assigning the role binding: **FME Manager Role** role over the **All Project Level Resources** (or **FME All Resources**) resource group.
 :::
 
 #### Examples showing user group inheritance and role bindings
 
 For an unrestricted project:
 
-![](./static/unrestricted-project.png)
+<UnrestrictedProjectGroupsImage />
 
 The Website project was an unrestricted project in legacy Split. After migration, the FME user groups (**All FME Admins**, **All FME Editors**, and **All FME Viewers**) are inherited and role bindings are assigned at the project level as shown above. (All role bindings are for the **All Project Level Resources** resource group, created on the Harness Free plan. On the Harness Enterprise plan, the **FME All Resources** resource group would be created and used instead.)
 
@@ -373,7 +377,7 @@ The **All Project Users** is a Harness managed group that is created on project 
 
 For a restricted project:
 
-![](./static/restricted-project.png)
+<RestrictedProjectGroupsImage />
 
 The API project was a restricted project in legacy Split. After migration, only the **All FME Admins** user group and another user group are inherited at the project level, because these were explicitly added to the legacy Split project.
 
@@ -586,13 +590,21 @@ To create an Admin API key scoped to all projects in your Harness account:
 If you prefer, you can instead create the service account at the Harness organization level. Steps 1 and 4 would be done at the organization level, and Step 2 would be omitted. The **Organization Admin** role for **All Organization Level Resources** is required for the Admin API key to be granted permission to list Harness projects and Harness elements attached to projects.
 :::
 
+:::tip Granting fewer permissions to service accounts
+While this guide recommends assigning the **Account Admin**, **Organization Admin**, and **Project Admin** roles to the service account, it is possible that an integration (authenticated by your API key token) does not require the full breadth of admin permissions.
+
+Depending on what operations the integration is performing, you can assign roles with fewer permissions or (on the Enterprise plan) you can create custom roles and assign them to the service account.
+
+For example, you may choose to omit adding permissions for modules other than FME, while enabling most of the permissions listed under **Administrative Functions**. It is very important to follow through with ___complete coverage testing___ (to ensure permissions are sufficient for all integration functionality).
+:::
+
 #### Project scope
 
 This section provides steps to create a service account and role bindings for an Admin API key scoped to specific projects in your Harness account. You can follow these steps if you don’t have a service account created during migration or prefer not to use it.
 
 To create an Admin API key scoped to a specific project in your Harness account:
 
-1. At the account level, create the service account and assign roles:
+1. At the account level, create the service account:
    
    1. In the left navigation panel, click **Account Settings**.
    1. Click the **Access Control** button at the top of the page.
@@ -753,8 +765,8 @@ To implement permissions similar to the legacy Split unrestricted project:
 
 From your **Project Settings** inherit each of the [FME user groups](#fme-user-groups) and add the following project-level role bindings:
    
-   - All FME Admins: **Split FME Administrator Role** - **FME All Resources**\*
-   - All FME Editors: **Split FME Manager Role** - **FME All Resources**\*
+   - All FME Admins: **FME Administrator Role** - **FME All Resources**\*
+   - All FME Editors: **FME Manager Role** - **FME All Resources**\*
    - All FME Viewers: **Project Viewer** - **FME All Resources**\*
 
 Role bindings added at the project level grant access to the given project.
@@ -772,8 +784,8 @@ To implement permissions similar to the legacy Split restricted project:
 
 1. Apply a role binding for **FME All Resources**\* that assigns one of the following roles:
 
-   - **Split FME Administrator Role** corresponds to the legacy Split Administrator permissions
-   - **Split FME Manager Role** corresponds to the legacy Editor role
+   - **FME Administrator Role** corresponds to the legacy Split Administrator permissions
+   - **FME Manager Role** corresponds to the legacy Editor role
    - **Project Viewer** corresponds to the legacy Viewer role
 
 </TabItem>
@@ -863,7 +875,15 @@ The environment scope of Admin API keys created in Harness post-migration will b
 
 An organization is a Harness entity that fits into the Harness structure as shown below.
 
-![](./static/org-diagram.png)
+```mermaid
+flowchart TD
+    A[Account] --> B(Organization)
+    A[Account] --> C(Organization)
+    B --> D[Project]
+    B --> E[Project]
+    C --> F[Project]
+    C --> G[Project]
+```
 
 The migration script created Harness projects that correspond to legacy Split projects. These Harness projects are created in the **default** organization (on the Free plan) or in an organization named <strong> *legacy Split account name* FME</strong> (on the Enterprise plan).
 

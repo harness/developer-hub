@@ -46,7 +46,7 @@ yarn add @splitsoftware/browser-suite
 <TabItem value="CDN bundle">
 
 ```html
-<script src="//cdn.split.io/sdk/browser-suite-2.1.0.min.js"></script>
+<script src="//cdn.split.io/sdk/browser-suite-2.3.0.min.js"></script>
 
 ```
 
@@ -494,10 +494,10 @@ Three types of properties are supported: strings, numbers, and booleans.
 
 ```javascript
 const evaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -509,10 +509,10 @@ const treatment = client.getTreatment('FEATURE_FLAG_NAME', undefined, evaluation
 
 ```typescript
 const evaluationOptions: SplitIO.EvaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -541,7 +541,7 @@ The Suite client's `track` method sends events for the identity configured on th
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
 * **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
-The Suite RUM agent's `track` method sends events for all the identities configured on all instances of the Suite clients. For those clients that have not been configured with a traffic type, the `track` method uses the default traffic type `user`. The Suite RUM agent's `track` method can take up to three of the four arguments described above: `EVENT_TYPE`, `VALUE`, and `PROPERTIES`. 
+The Suite RUM agent's `track` method sends events for all the identities configured on all instances of the Suite clients. For those clients that have not been configured with a traffic type, the `track` method uses the default traffic type `user`. The Suite RUM agent's `track` method can take up to three of the four arguments described above: `EVENT_TYPE`, `VALUE`, and `PROPERTIES`.
 
 <Tabs>
 <TabItem value="Track per identity (client's track)">
@@ -636,7 +636,7 @@ Feature flagging parameters:
 | sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the Suite. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
 | sync.enabled | Controls the Suite continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
 | sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the Suite's HTTP(S) requests. | undefined |
-| storage | Pluggable storage instance to be used by the Suite as a complement to in memory storage. Only supported option today is `InLocalStorage`. See the [Configuration](#configuring-localstorage-cache-for-the-sdk) section for details. | In memory storage |
+| storage | Pluggable storage instance to be used by the Suite as a complement to in memory storage. Only supported option today is `InLocalStorage`. See the [Configuration](#configuring-cache) section for details. | In memory storage |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the Suite will fallback to the polling mechanism. If false, the Suite will poll for changes as usual without attempting to use streaming. | true |
 
 Suite RUM agent parameters:
@@ -671,8 +671,8 @@ var suite = SplitSuite({
     key: 'YOUR_KEY'
   },
   scheduler: {
-    featuresRefreshRate:      5, // 5 sec 
-    segmentsRefreshRate:     60, // 60 sec 
+    featuresRefreshRate:      5, // 5 sec
+    segmentsRefreshRate:     60, // 60 sec
     impressionsRefreshRate: 300, // 300 sec
     impressionsQueueSize: 30000, // 30000 items
     eventsPushRate:          60, // 60 sec
@@ -715,8 +715,8 @@ const suite: ISuiteSDK = SplitSuite({
     key: 'YOUR_KEY'
   },
   scheduler: {
-    featuresRefreshRate:      5, // 5 sec 
-    segmentsRefreshRate:     60, // 60 sec 
+    featuresRefreshRate:      5, // 5 sec
+    segmentsRefreshRate:     60, // 60 sec
     impressionsRefreshRate: 300, // 300 sec
     impressionsQueueSize: 30000, // 30000 items
     eventsPushRate:          60, // 60 sec
@@ -748,7 +748,7 @@ const suite: ISuiteSDK = SplitSuite({
 </TabItem>
 </Tabs>
 
-### Configuring LocalStorage cache for the Suite
+### Configuring cache
 
 To use the pluggable `InLocalStorage` option of the Suite and be able to cache flags for subsequent loads in the same browser, you need to pass it to the Suite config as the `storage` option.
 
@@ -759,6 +759,7 @@ This `InLocalStorage` function accepts an optional object with options described
 | prefix | An optional prefix for your data, to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
 | expirationDays | Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
 | clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
+| wrapper | Storage wrapper used to persist the SDK cached data. | `localStorage` |
 
 <Tabs>
 <TabItem value="With ES Modules">
@@ -774,7 +775,8 @@ const suite = SplitSuite({
   storage: InLocalStorage({
     prefix: 'MY_PREFIX',
     expirationDays: 10,
-    clearOnInit: false
+    clearOnInit: false,
+    wrapper: localStorage
   })
 });
 
@@ -1194,9 +1196,9 @@ While the Suite does not put any limitations on the number of instances that can
 
 You can listen for four different events from the Suite.
 
-* `SDK_READY_FROM_CACHE`. This event fires once the Suite is ready to evaluate treatments using a version of your rollout plan cached in localStorage from a previous session (which might be stale). If there is data in localStorage, this event fires almost immediately, since access to localStorage is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the Suite is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuring cache](#configuring-cache) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan cached in localStorage, and the Suite could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the Suite initialization was interrupted.  The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the Suite could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below:
@@ -1260,7 +1262,7 @@ client.once(client.Event.SDK_READY, whenReady);
 
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
   // This callback will be called after `readyTimeout` seconds (10 seconds by default)
-  // if and only if the client is not ready for that time. 
+  // if and only if the client is not ready for that time.
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });
 
@@ -1302,7 +1304,7 @@ var suite = SplitSuite({
     key: 'key'
   },
   // Overwrites the initial consent status of the suite instance, which is 'GRANTED' by default.
-  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data,
   // so the suite will locally track data but not send it to Harness FME servers until consent is changed to 'GRANTED'.
   userConsent: 'UNKNOWN'
 });

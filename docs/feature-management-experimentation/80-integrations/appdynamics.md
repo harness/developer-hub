@@ -1,66 +1,70 @@
 ---
-title: AppDynamics
+title: Splunk AppDynamics
 sidebar_label: AppDynamics
-description: ""
+description: "Integrate Splunk AppDynamics with Harness FME to send custom events capturing changes made in Harness FME."
 ---
 
-AppDynamics allows users to proactively monitor, manage, and optimize the most complex software environments. Harness FME integrates with AppDynamics to provide custom events in AppDynamics highlighting Harness FME changes.
+Splunk AppDynamics allows you to proactively monitor, manage, and optimize complex software environments. Harness FME integrates with Splunk AppDynamics to send custom events that highlight Harness FME changes.
 
-If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
-
-:::info[Integration requirements]
-The Harness FME pre-built integration with AppDynamics does not support AppDynamics On-Premise (self-hosted) solution.
+:::danger[Integration requirements]
+The Harness FME pre-built integration with Splunk AppDynamics does not support the Splunk AppDynamics On-Premise (self-hosted) solution.
 :::
 
-## In AppDynamics
+## In Splunk AppDynamics
  
-To connect Harness FME to AppDynamics, create a role and a user within that role.
+To connect Harness FME to Splunk AppDynamics, create an Administrator role and a user within that role.
 
-1. From AppDynamics top menu, select **Settings** > **Administration**.
+1. In Splunk AppDynamics, select the user profile dropdown menu on the top right corner and click **Administration**.
 
-   ![](./static/appdynamics-step1.png)
+   ![](./static/appd-1.png)
 
-2. Select the **Roles** tab.
-3. Click **Create New Role**.
-4. Type in a **Name** and **Description** for this role.
-5. Select the application that you want the role to be able to push events to, and select **Customized** from the **View** dropdown. 
-6. Click **View** and then **Edit** (the pencil).
+1. To create a role, navigate to the **Roles** tab and click **+ Create**. Enter a name (for example, `FME Integration Testing Role`) and a description for this role.
 
-   ![](./static/appdynamics-step2.png)
+   ![](./static/appd-2.png)
 
-7. Select **Configure Actions** as the minimal permission required for Harness FME to be configured.
+1. Navigate to the **Applications** tab and click **+ Add** under **Custom Permissions for Applications/Tiers**. Select `Custom` from the **Permissions** dropdown menu, and enable the **View** and **Edit** checkboxes.
 
-   ![](./static/appdynamics-step3.png)
+   ![](./static/appd-3.png)
 
-8. Click **OK** to close the Edit Permissions popup, then click **Save**.
-9. Select the **Users** tab.
-10. Click **+** above the user list. 
+1. Once you've clicked the **Edit** checkbox, select the permissions for this role in the **Edit permissions** modal. The minimum permissions required are `Configure Actions` and `Create Events`. 
 
-    ![](./static/appdynamics-step4.png)
+   ![](./static/appd-4.png)
 
-11. Type in a **Username**, **Name**, and **Email** for the user, and click **Change Password** to enter a password. 
+1. Click **OK**, and click **Save**.
+1. To create a user, navigate to the **Users** tab and click **+ Create**.
+1. Enter a name and an email address for this user. Use a real email address because you will need to reset your password from an email notification.
 
-    ![](./static/appdynamics-step5.png)
+    ![](./static/appd-5.png)
 
-12. Verify that the user belongs to the group you created in steps 1 through 8.
-13. Click **Save**. 
+1. Under **Roles**, click **+ Add** to add the user to the role you created (for example, `FME Integration Testing Role`) as well as `Applications & Dashboards Viewer`, `Dashboards Viewer`, and `Workflow Executor`.
+1. Click **Save**. 
 
 ## In Harness FME
 
-![](./static/appdynamics-splitadmin-step1.png)
+After creating an Administrator role and a user within that role in Splunk AppDynamics, configure the AppDynamics integration in Harness FME.
 
-1. From the left navigation, click the **profile button** at the bottom, select **Admin settings**, click **Integrations**, and navigate to the Marketplace.
+1. In Harness FME, navigate to **FME Settings** > **Integrations**.
+1. From the **Marketplace** tab, click the **Add** button to the right of `AppDynamics` and select the workspace where you want to configure the integration.
 
-   ![](./static/appdynamics-splitadmin-step2.png)
+   ![](./static/appd-6.png)
 
-2. Click **Add** next to **AppDynamics**.
+1. Add the URL for your AppDynamics tenant ID (the URL you use to access AppDynamics in the browser with) in the **URL** field. For example, `http://<YOUR-ACCOUNT>.saas.appdynamics.com/controller`.
+1. Add the AppDynamics application name (exactly as it appears) to identify where you'd like the Harness FME events added. For example, `FME-Integration-Testing`.
+1. Select the FME environment to collect events from in the **Environments** field.
+1. Enter the AppDynamics user (an email address) and password for the user you created in AppDynamics with the Administrator role.
    
-   ![](./static/appdynamics-splitadmin-step3.png)
+   ![](./static/appd-7.png)
 
-3. Paste the URL you use to access AppDynamics Controller user interface in a browser.
-      Typical value: **http://\<account\>.saas.appdynamics.com/controller**.
-4. Paste the application name (exactly as it appears) where you would like Harness FME events added.
-5.  Enter the username and password for the user you created in Step 9 through 13.
-6. Click **Save**.
+1. Click **Save**.
 
-Harness FME notifications should now be flowing into AppDynamics.  Of course, please contact [support@split.io](mailto:support@split.io) if you have any issues with this integration.
+Harness FME notifications should start appearing in Splunk AppDynamics. 
+
+## View events
+
+Actions like initializing an environment, making a change over a feature flag, or killing a feature flag trigger events that are visible in your AppDynamics application's **Application Dashboard**.
+
+![](./static/appd-8.png)
+
+In Splunk AppDynamics, navigate to **Applications** and click on the application you configured in the Harness FME configuration (for example, `FME-Integration-Testing`). Navigate to the **Events** tab to see the events that capture changes in Harness FME.
+
+Contact [support@split.io](mailto:support@split.io) if you have any issues with this integration.
