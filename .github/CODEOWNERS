@@ -156,6 +156,9 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
 /src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
 
+# HSF Docs
+/docs/harness-solutions-factory/ @ashleykim9 @goodrum-harness  
+
 # SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
 /release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
