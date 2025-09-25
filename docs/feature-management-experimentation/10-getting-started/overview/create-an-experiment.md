@@ -23,7 +23,17 @@ To create an A/B test in Harness FME:
 
 1. Navigate to **Experiments** and click **Create experiment**.
 1. Enter a name for the experiment, for example: `standard_discount`.
-1. In the assignment source section, select a feature flag (e.g.  `frontend_discount_coupon`) and an environment (e.g. `Preview`) from the dropdown menus.
+1. In the **Assignment Source** section, select a feature flag (e.g.  `frontend_discount_coupon`) and an environment (e.g. `Preview`) from the dropdown menus.
+1. Optionally, click **Show advanced** to set an experiment entry event filter. 
+
+   :::info
+   The entry event filter can only be defined during experiment creation. To make changes, create a new experiment.
+   :::
+   
+   - Select a filter (e.g. `Has done the following event prior to the metric event`) and a qualifying event from the dropdown menus. 
+   - Only users who trigger this event are counted as exposures. 
+   - The filter applies globally to all metrics; if a [metric has its own filter](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/#applying-a-filter), both must be satisfied.   
+
 1. In the **Scope** section:
 
    - Set a start and end date/time for the experiment. 
