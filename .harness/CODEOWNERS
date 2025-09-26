@@ -4,31 +4,31 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       prateek.mittal@harness.io wei.guo@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
+*       prateek.mittal@harness.io wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
 
 # Configuration Files in DS are JS.
-*.js    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io austin.lai@harness.io
-*.ts    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io austin.lai@harness.io
-*.jsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io austin.lai@harness.io
-*.tsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io austin.lai@harness.io
+*.js    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+*.ts    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+*.jsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+*.tsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Changes to Lock File
 *.lock  wei.guo@harness.io
 
 # Changes to Config Files
-*.ini  wei.guo@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
-*.json  wei.guo@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
-*.toml  wei.guo@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
-*ignore wei.guo@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
-/_server-redirect wei.guo@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
+*.ini  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
+*.json  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
+*.toml  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
+*ignore wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
+/_server-redirect wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
 
 # Changes to Netlify Files
-/netlify/ wei.guo@harness.io
+/netlify/ wei.guo@harness.io richard.black@harness.io
 
 # Contributing
-CONTRIBUTING.md prateek.mittal@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
-README.md prateek.mittal@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
-/docs/hdh/ prateek.mittal@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
+CONTRIBUTING.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io
+README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io
+/docs/hdh/ prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io
 
 # University
 /university/ ravi.lachhman@harness.io
@@ -50,29 +50,29 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ sushrut.athavale@harness.io vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
-/release-notes/continuous-delivery.md sushrut.athavale@harness.io vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
-/src/components/Roadmap/data/cdData.ts sushrut.athavale@harness.io vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
-/src/components/Docs/data/continuousDeliveryData* sushrut.athavale@harness.io vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
+/docs/continuous-delivery/ vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
+/release-notes/continuous-delivery.md vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
+/src/components/Roadmap/data/cdData.ts vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
+/src/components/Docs/data/continuousDeliveryData* vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ sushrut.athavale@harness.io vishal.vishwaroop@harness.io @thisrohangupta siddhant.dua@harness.io
+/docs/category/continuous-delivery/ vishal.vishwaroop@harness.io @thisrohangupta siddhant.dua@harness.io
 # CD FAQs
-/docs/faqs/continuous-delivery-faqs sushrut.athavale@harness.io vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io
+/docs/faqs/continuous-delivery-faqs vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io
 # GitEx FAQs
-/docs/faqs/git-exp-vs-config-as-code/ sushrut.athavale@harness.io vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io
+/docs/faqs/git-exp-vs-config-as-code/ vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io
 
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue dewan.ahmed@harness.io sushrut.athavale@harness.io @shivloka-harness
-/release-notes/continuous-integration.md @nofarblue dewan.ahmed@harness.io sushrut.athavale@harness.io @shivloka-harness
-/src/components/Roadmap/data/ciData.ts @nofarblue dewan.ahmed@harness.io sushrut.athavale@harness.io @shivloka-harness
-/src/components/Docs/data/continuousIntegrationData.ts @nofarblue dewan.ahmed@harness.io sushrut.athavale@harness.io @shivloka-harness
+/docs/continuous-integration/ nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io
+/release-notes/continuous-integration.md nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io
+/src/components/Roadmap/data/ciData.ts nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io
+/src/components/Docs/data/continuousIntegrationData.ts nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io
 
 # CODE Docs
-/docs/code-repository/ @hitesharinga dewan.ahmed@harness.io @johannesHarness @nofarblue @atefehmohseni @rkapoor10
-/release-notes/code-repository.md @hitesharinga dewan.ahmed@harness.io @johannesHarness @nofarblue @atefehmohseni @rkapoor10
-/src/components/Roadmap/data/codeData.ts @hitesharinga dewan.ahmed@harness.io @johannesHarness @nofarblue @atefehmohseni @rkapoor10
-/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga dewan.ahmed@harness.io @johannesHarness @nofarblue @atefehmohseni @rkapoor10
+/docs/code-repository/ nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io 
+/release-notes/code-repository.md nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io
+/src/components/Roadmap/data/codeData.ts nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io
+/src/components/Docs/data/codeRepositoryData.tsx nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io 
 
 # STO Docs
 /docs/security-testing-orchestration/ teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
@@ -120,7 +120,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 
 # Platform Docs
 /docs/platform/ prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
-/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io @anshul-harness vikram.sahu@harness.io sushrut.athavale@harness.io
+/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io @anshul-harness vikram.sahu@harness.io
 /release-notes/platform.md prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
 /release-notes/self-managed-enterprise-edition.md prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io @anshul-harness @raviyadalam 
 /src/components/Roadmap/data/platformData.ts prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
@@ -136,13 +136,13 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/faqs/self-managed-ee-faq/ prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
 
 # Pipeline Docs
-/docs/platform/pipelines/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/git-experience/ vishal.vishwaroop@harness.io @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/templates/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/variables-and-expressions/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/triggers/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/approvals/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/connectors/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/pipelines/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth siddhant.dua@harness.io
+/docs/platform/git-experience/ vishal.vishwaroop@harness.io @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth siddhant.dua@harness.io
+/docs/platform/templates/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth siddhant.dua@harness.io
+/docs/platform/variables-and-expressions/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth siddhant.dua@harness.io
+/docs/platform/triggers/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth siddhant.dua@harness.io
+/docs/platform/approvals/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth siddhant.dua@harness.io
+/docs/platform/connectors/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth siddhant.dua@harness.io
 
 # AI DevOps Docs
 /docs/platform/harness-aida/ dewan.ahmed@harness.io prateek.mittal@harness.io @thisrohangupta vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io
@@ -214,8 +214,8 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Roadmap/data/artifactRegistryData.ts shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
 
 # Open Source Docs
-/docs/open-source/ dewan.ahmed@harness.io sushrut.athavale@harness.io
-/src/components/Docs/data/openSourceData.tsx dewan.ahmed@harness.io sushrut.athavale@harness.io
+/docs/open-source/ nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io 
+/src/components/Docs/data/openSourceData.tsx nofar.bluestein@harness.io dewan.ahmed@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io 
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness
