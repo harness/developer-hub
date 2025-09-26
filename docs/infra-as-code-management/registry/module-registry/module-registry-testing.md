@@ -2,23 +2,11 @@
 title: Test Module Versions
 description: Learn how to validate changes of modules to ensure the reliability and functionality of your modules.
 sidebar_position: 50
+redirect_from: /docs/infra-as-code-management/iacm-features/module-registry/module-registry-testing
 ---
-
-<CTABanner
-buttonText="Learn more"
-  title="Coming soon!"
-  tagline="Module Registry Testing is currently pending release and will be available soon!"
-  link="/docs/infra-as-code-management/iacm-features/module-registry/"
-  closable={true}
-  target="_blank"
-/>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-:::warning
-**Module registry testing** is currently **pending release** and will be available soon!
-:::
 
 Modern infrastructure development relies on reusable modules to ensure consistency and scalability. However, without proper testing, modules can create risks such as regression, breaking existing functionality, and introducing security vulnerabilities.
 
@@ -152,7 +140,7 @@ pipeline:
 ---
 
 ## Branch configuration
-When defining a module while [registering it in the module registry](/docs/infra-as-code-management/iacm-features/module-registry/#register-a-module), you configure a target branch. Any PRs created against this configured branch will trigger the associated testing pipelines.
+When defining a module while [registering it in the module registry](/docs/infra-as-code-management/registry/module-registry/#register-a-module), you configure a target branch. Any PRs created against this configured branch will trigger the associated testing pipelines.
 
 ## Select a connector
 If you choose to use integration testing, you must select a connector. This is necessary because:

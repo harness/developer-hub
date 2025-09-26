@@ -3,6 +3,7 @@ title: Root & Submodule Usage
 description: Learn about the requirements and correct usage of root modules and nested submodules.
 sidebar_position: 30
 sidebar_label: Root & Submodule Usage
+redirect_from: /docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage
 ---
 
 import Tabs from '@theme/Tabs';
