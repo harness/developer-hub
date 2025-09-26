@@ -477,12 +477,6 @@ Max concurrency changes based on the following:
 
 You can specify a custom **Max Concurrency** for multi-service deployment stages. This allows you to control the maximum number of services that can be deployed simultaneously.
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 **How custom max concurrency works**
 
 - **Default Behavior**: By default, Harness calculates the **max concurrency** based on the number of services or environments involved in the deployment. However, you can override this default with a custom value.
