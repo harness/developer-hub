@@ -59,8 +59,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements:
 
-- Harness now provides an option to provide GitHub as a config file source in custom deployment templates, enabling customers to utilize GitHub as a configuration file source in addition to YAML support. (**CDS-114277, ZD-92857**)
-
+- Harness now provides an option to provide GitHub as a config file source in custom deployment templates, enabling users to utilize GitHub as a configuration file source in addition to YAML support. (**CDS-114277, ZD-92857**)
 - Harness now provides pipeline rollback action in verify step failure strategies so users can choose rollback directly in advanced options. (**CDS-114478, ZD-92214**)
 
 #### Breaking Changes:
@@ -70,23 +69,14 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 #### Fixed Issues:
 
 - Fixed an issue where pipeline execution failed with “Exceeded rate limitation” errors; rate-limit handling was improved to prevent disruption. (**CDS-114379, ZD-93157**)
-
 - Fixed an issue that was leading to missing environment names for GitOps pipelines on the dashboard, ensuring env info displays as intended. (**CDS-113864, ZD-91395**)
-
 - Fixed an issue where tag filters did not work correctly on Environment Groups and Environments lists. Filters now accurately reflect the tagged items. (**CDS-96157**)
-
 - Fixed an issue where Rolling Deploy Step didn't detect Instance Refresh Failure, ensuring more reliable rollbacks for impacted users. (**CDS-113298**)
-
-- Fixed delayed log appearance in ASG Blue Green Rollback, now logs show in real time for troubleshooting. (**CDS-112306, ZD-87850**)
-
+- Fixed delayed log appearance in ASG Blue Green rollback, now logs show in real time for troubleshooting. (**CDS-112306, ZD-87850**)
 - Fixed an issue due to which search failed on the webhooks page with Event Bridge Feature Flag enabled, search is now functional for all users. (**CDS-114400**)
-
 - Fixed rendering of WinRM credentials when the infra deployment type is WinRM in the run pipeline form. WinRM credentials now appear as options during pipeline runtime input (previously, only SSH was shown), aiding correct deployment. (**CDS-114336, ZD-93109**)
-
 - Fixed an issue due to which Node Filtering fields were not visible in edit mode, improving usability for editing pipelines. (**CDS-111527**)
-
 - Fixed the navigation issue that caused users to be directed to incorrect GitOps applications when clicking on 'Referenced by GitOps app'. (**CDS-109669**)
-
 - Fixed an issue with the Policy Evaluation tab, now it properly represents pass/fail as per the actual results of the policies and compliance. (**PIPE-29255**)
 
 ### Version 1.108.2
