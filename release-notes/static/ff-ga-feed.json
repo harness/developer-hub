@@ -502,5 +502,11 @@
     "description": "Include environment and service information in stage notifications",
     "gaStartDate": "2025-09-24",
     "modutle": "Continuous Delivery"
+  },
+  {
+    "flagKey": "PL_CENTRAL_NOTIFICATIONS",
+    "description": "Enable the Notifications management feature at all scopes",
+    "gaStartDate": "2025-09-24",
+    "module": "Platform"
   }
 ]
