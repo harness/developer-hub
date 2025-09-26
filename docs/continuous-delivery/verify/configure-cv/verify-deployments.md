@@ -101,6 +101,36 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.
 
+## Configurable Properties
+
+The Verify step supports configurable properties that allow you to customize verification behavior and access verification results in subsequent pipeline steps.
+
+:::note
+This feature is optional and currently behind the feature flag `CDS_CV_INPUT_OUTPUT_VARIABLES_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can specify a custom start time for the verification process. Adding a start time allows you to control when the verification analysis begins, which helps align verification with specific deployment events or schedules.
+
+To configure:
+1. In the Verify step configuration, expand the **Optional** section
+2. Under the **Configurable Properties** section, select **deploymentStartTime** from the dropdown for Command type.
+3. Enter the desired start time, which is a UTC zone
+
+![](./static/deployment-start-time.png)
+
+This time represents the deployment start time, allowing the system to collect pre-deployment data for the configured duration (in minutes) before this specified time.
+
+Supported formats include:
+- ISO formats (e.g., `2023-03-10T15:30:00Z`)
+- Common date/time formats (e.g., `2023-03-10 15:30:00`)
+- Unix epoch timestamps (e.g., `1678457400`)
+
+You can use an expression to set the start time based on the deployment start time. For example, you can use the expression `<+pipeline.stages.stage_name.spec.execution.steps.step_name.startTs>` to set the start time of your verify step to the deployment start time.
+
+**Limitations**:
+
+We don't support adding a future date and time as a fixed value/runtime to set the start time of the verification process. If you specify a future time that hasn't been reached yet, the verification will fail. However, if the specified future time has already been reached when the verification runs, it will work as described above.
+
 ## Step 8: Specify Artifact Tag
 
 In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables).
