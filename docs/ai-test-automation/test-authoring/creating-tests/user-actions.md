@@ -22,7 +22,7 @@ Each action can be enhanced with assertions to validate expected behavior, param
   path={require('./static/user-action.png')}
   alt="User Action"
   title="Click to view full size image"
-  width="60%"
+  width="50%"
 />
 
 ## Supported Actions
@@ -38,7 +38,7 @@ Sends HTTP requests to external APIs directly from your test. This action allows
   path={require('./static/api-call.png')}
   alt="API Call"
   title="API Call"
-  width="60%"
+  width="50%"
 />
 
 #### Options
@@ -122,7 +122,7 @@ You can use the database types of MongoDb and Postgres.
   path={require('./static/db-query.png')}
   alt="DB Query"
   title="DB Query"
-  width="60%"
+  width="50%"
 />
 
 #### Options
@@ -379,7 +379,7 @@ Adjusts the screen dimensions for testing responsive designs. Set the width and 
 <DocImage
   path={require('./static/viewport.png')}
   alt="viewport"
-  width="60%"
+  width="50%"
 />
 
 <br/>
@@ -392,7 +392,7 @@ Creates a timed pause in test execution. Specify the duration in milliseconds to
   path={require('./static/wait-for-time.png')}
   alt="Wait for Time"
   title="Wait for Time"
-  width="60%"
+  width="50%"
 />
 
 <br/>
