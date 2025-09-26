@@ -109,12 +109,12 @@ The Verify step supports configurable properties that allow you to customize ver
 This feature is optional and currently behind the feature flag `CDS_CV_INPUT_OUTPUT_VARIABLES_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can specify a custom start time for the verification process. This allows you to control when the verification analysis begins, which is useful for aligning verification with specific deployment events or schedules.
+You can specify a custom start time for the verification process. Adding a start time allows you to control when the verification analysis begins, which helps align verification with specific deployment events or schedules.
 
 To configure:
 1. In the Verify step configuration, expand the **Optional** section
 2. Under the **Configurable Properties** section, select **deploymentStartTime** from the dropdown for Command type.
-3. Enter the desired start time which is a UTC time zone
+3. Enter the desired start time, which is a UTC zone
 
 ![](./static/deployment-start-time.png)
 
@@ -125,11 +125,11 @@ Supported formats include:
 - Common date/time formats (e.g., `2023-03-10 15:30:00`)
 - Unix epoch timestamps (e.g., `1678457400`)
 
-You can use expression to set the start time based on the deployment start time. For example, you can use the expression `<+pipeline.stages.stage_name.spec.execution.steps.step_name.startTs>` to set the start time of your verify step to the deployment start time.
+You can use an expression to set the start time based on the deployment start time. For example, you can use the expression `<+pipeline.stages.stage_name.spec.execution.steps.step_name.startTs>` to set the start time of your verify step to the deployment start time.
 
 **Limitations**:
 
-We dont support adding future date and time as a fixed value/runtime to set the start time of the verification process.
+We don't support adding a future date and time as a fixed value/runtime to set the start time of the verification process.
 
 ## Step 8: Specify Artifact Tag
 
