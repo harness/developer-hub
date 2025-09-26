@@ -20,6 +20,7 @@ Each action can be enhanced with assertions to validate expected behavior, param
   path={require('./static/user-action.png')}
   alt="User Action"
   title="Click to view full size image"
+  width="60%"
 />
 
 ## Supported Actions
@@ -46,6 +47,7 @@ Sends HTTP requests to external APIs directly from your test. This action allows
   path={require('./static/api-call.png')}
   alt="API Call"
   title="API Call"
+  width="60%"
 />
 
 
@@ -53,7 +55,7 @@ Sends HTTP requests to external APIs directly from your test. This action allows
 
 
 :::tip
-For a basic click, no additional configuration is required. It allows you to explicitly specify which element to click when multiple elements might match the selector, ensuring precision in complex UI interactions. SO just simply click on the element you want to select in the step.
+For a basic click, no additional configuration is required. It allows you to explicitly specify which element to click when multiple elements might match the selector, ensuring precision in complex UI interactions. So just simply click on the element you want to select in the step.
 :::
 
 Click on any place in the viewport to register a click command as a test step. No additional action required. 
@@ -62,6 +64,7 @@ Click on any place in the viewport to register a click command as a test step. N
 <DocImage path={require('./static/click.png')} 
 alt="click"
 title="Click"
+width="60%"
 />
 
 #### Advanced Options
@@ -129,6 +132,7 @@ You can use the database types of MongoDb and Postgres.
   path={require('./static/db-query.png')}
   alt="DB Query"
   title="DB Query"
+  width="60%"
 />
 
 ### Double Click
@@ -140,13 +144,14 @@ Executes a double-click action on a specific element. This action is particularl
 Uploads a file to the selected input element on a webpage. Specify the absolute or relative path to the file you want to upload, and select the appropriate file input element in your application.
 The file input element where you want to upload the file. Click on the appropriate file input element in your application.
 
-> You can upload files from your local system or from your test resources directory. This will host to S3 bucket and the file path will be used in the test.
+> You can upload files from your local system or from your test resources directory. This will be hosted on a S3 bucket and the file path will be used in the test.
 
 
 <DocImage 
   path={require('./static/file-upload.png')}
   alt="File Upload"
   title="File Upload"
+  width="60%"
 />
 
 
@@ -154,12 +159,15 @@ The file input element where you want to upload the file. Click on the appropria
 
 Simulates a keyboard input action. Specify the key to press, for example, "Enter" or "Backspace". For key combinations, provide an array of keys like `["Control", "c"]`. Explore all supported keys from [here](https://github.com/getgauge/taiko/blob/master/lib/data/USKeyboardLayout.js).
 
-> You would have to pick a target element to perform the key press action on.
+> This action step requires selecting a target element on which to perform the key press operation.
 
 <DocImage
   path={require('./static/keypress.png')}
   alt="keypress"
+  title="keypress"
+  width="60%"
 />
+
 
 
 ### Mouse Over
@@ -172,6 +180,7 @@ Simulates hovering the mouse cursor over an element, activating hover states and
   path={require('./static/mouse-over.png')}
   alt="Mouse Over"
   title="Mouse Over"
+  width="60%"
 />
 
 
@@ -183,194 +192,8 @@ Navigate to a specific URL or relative path, allowing you to direct your test to
   path={require('./static/navigate.png')}
   alt="Navigate"
   title="Navigate"
+  width="60%"
 />
-
-### Reload
-
-Just add this action step to refresh the current page.
- ![reload](./static/reload.png)
- 
-### Right Click
-
-Simulates a right-click mouse action on a specific element. This action is useful for testing context menus, alternative options, and other functionality that's triggered by right-clicking in your application.
-
-
-
-### Scroll within a scrollable region
-
-Controlls scrolling within a scrollable region or element of a page. This action allows you to navigate within overflowing content, long pages, or specific scrollable containers.
-
-
-#### Options
-
-| Option | Description |
-|--------|-------------|
-| **Top** | Scrolls to the top of the scrollable region |
-| **Bottom** | Scrolls to the bottom of the scrollable region |
-| **Co-ordinates** | Scrolls to specific X,Y coordinates within the scrollable region |
-| **Target** | Optional element to scroll into view. You can either select a specific target element or scroll without targeting an element |
-
-<DocImage
-  path={require('./static/scroll.png')}
-  alt="Scroll"
-  title="Scroll"
-/>
-
-### Select
-
-Select a value from dropdown menus, select boxes, or other list interfaces. This action simulates a user choosing an option from a dropdown, allowing your test to interact with form selection elements. The system will capture both the display text and underlying value of the selected option. 
-
-
-<DocImage 
-  path={require('./static/select.png')}
-  alt="Select"
-  title="Select"
-/>
-
-:::info
-Click, Write, and Select are automatically detected by Harness AI Test Automation. Users need not have to select these commands from a list.
-:::
-
-
-
-### Set Parameter
-
-Creates dynamic variables for test execution. This action allows you to define parameters that can be used throughout your test, making your tests more flexible and data-driven.
-
-#### Options
-
-| Option | Description |
-|--------|-------------|
-| **Parameter name** | Name of the parameter you want to create or update | 
-| **Value** | The value to assign to the parameter |
-| **Scope** | Determines where the parameter is accessible:  `Run time`: Available only during the current test run `App`: Available across all tests in the application `Test Suite`: Available within the current test suite |
-
-<DocImage
-  path={require('./static/set-parameter.png')}
-  alt="Set Parameter"
-  title="Set Parameter"
-/>
-
-
-### Set Checkbox
-
-Toggles a checkbox to the selected state. Use this action to check or uncheck form elements without simulating a click action.
-Determines whether to check or uncheck the element. Set to `true` to check the element or `false` to uncheck it.
- It works on the checkbox element you want to manipulate. Click on the appropriate element in your application.
-
-<DocImage
-  path={require('./static/set-checkbox.png')}
-  alt="set-checkbox"
-  title="set-checkbox"
-/>
-
-
-
-### Set Radio Button
-
-Selects a specific radio button from a group of options. Use this action to choose one option from a set of radio buttons without simulating a click action.
-This action sets the selected radio button to `true` while automatically setting all other radio buttons in the same group to `false`.
-It works on the radio button element you want to select. Click on the appropriate element in your application.
-
-<DocImage
-  path={require('./static/radio.png')}
-  alt="set-radio-button"
-  title="set-radio-button"
-/>
-
-
-
-### Set Parameter from Target
-
-Extracts a value from an element on the page and stores it as a parameter. This action is useful for capturing dynamic values from the UI such as generated IDs, displayed text, or attribute values that you need to use in subsequent test steps.
-
-#### Options
-
-| Option | Description |
-|--------|-------------|
-| **Parameter name** | Name of the parameter where the extracted value will be stored |
-| **Scope** | Determines where the parameter is stored: `Run time`, `App`, or `Test Suite` |
-| **Please select a target** | The element from which to extract the value. Click on the element in your application that contains the value you want to capture |
-
-<DocImage
-  path={require('./static/set-parameter-from-target.png')}
-  alt="Set Parameter from Target"
-  title="Set Parameter from Target"
-/>
-
-### Viewport
-
-Adjusts the screen dimensions for testing responsive designs. Set the width and height of the screen to emulate different device sizes.
-
-
-
-<DocImage
-  path={require('./static/viewport.png')}
-  alt="viewport"
-/>
-
-
-
-### Wait for Time
-
-Creates a timed pause in test execution. Specify the duration in milliseconds to delay the test before proceeding to the next step. This is useful for waiting for animations to complete, giving time for background processes to finish, or creating deliberate pauses in your test flow.
-
-<DocImage
-  path={require('./static/wait-for-time.png')}
-  alt="Wait for Time"
-  title="Wait for Time"
-/>
-
-
-### Write
-
-Write text in any input field, text area, or editable element in your application. This action simulates a user typing content into a field, supporting both static text and dynamic parameters. It works with standard HTML inputs, WYSIWYG editors, rich text fields, and most other editable interfaces. 
-
->Can be parameterized directly using available parameters or by creating new ones by clicking on the `{}` button 
-
-<DocImage path={require('./static/write.png')} 
-alt="write"
-title="Write"
-/>
-
-
-:::tip
-For a basic write action, simply specify the text you want to input and select the appropriate input field based on your selection.
-:::
-
-#### Advanced Options
-
-<Tabs>
-  <TabItem value="navigation" label="Navigation & Timing">
-
-  - **Wait for document ready** - Pauses test execution until the document's ready state is reached, ensuring elements are available for interaction, you get options like `Yes`, `No`, and `App Default`.
-  - **Expected ready state** - Specifies which document ready state to wait for (complete, interactive, loaded, app)
-  - **Wait for network requests** - Delays test execution until all in-flight network requests complete, with option like `Yes` and `No`.
-  - **Wait for document timeout (ms)** - Maximum time in milliseconds to wait for the document to reach the ready state before timing out
-  - **Wait for network request timeout (ms)** - Maximum time in milliseconds to wait for network requests to complete before continuing
-
-  </TabItem>
-
-  <TabItem value="response" label="Response Data Capture">
-
-  - **URL Pattern / Regular Expression** - Defines which network requests to capture data from following the write action
-  - **Parameter name for Response body** - The name of the parameter where the captured response data will be stored
-  - **Response Body Path (JSONPath)** - Extracts specific data from a JSON response using JSONPath syntax
-  - **Scope**: App, Test Suite, or Runtime - Determines the scope and accessibility of the captured parameter
-
-  </TabItem>
-
-  <TabItem value="others" label="Others">
-  - **Append Text** - When enabled (true), adds the specified text to the end of any existing text in the field rather than replacing it
-  - **Hide text** - When enabled, masks the input text in logs and displays, useful for sensitive information like passwords
-
-
-  </TabItem>
-</Tabs>
-
-
-
-
 
 #### Advanced Options
 
@@ -402,3 +225,196 @@ For a basic write action, simply specify the text you want to input and select t
 
   </TabItem>
 </Tabs>
+
+### Reload
+
+Just add this action step to refresh the current page.
+<DocImage 
+  path={require('./static/reload.png')}
+  alt="reload"
+  title="reload"
+  width="60%"
+/>
+ 
+### Right Click
+
+Simulates a right-click mouse action on a specific element. This action is useful for testing context menus, alternative options, and other functionality that's triggered by right-clicking in your application.
+
+
+
+### Scroll within a scrollable region
+
+Controls scrolling within a scrollable region or element of a page. This action allows you to navigate within overflowing content, long pages, or specific scrollable containers.
+
+
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| **Top** | Scrolls to the top of the scrollable region |
+| **Bottom** | Scrolls to the bottom of the scrollable region |
+| **Co-ordinates** | Scrolls to specific X,Y coordinates within the scrollable region |
+| **Target** | Optional element to scroll into view. You can either select a specific target element or scroll without targeting an element |
+
+<DocImage
+  path={require('./static/scroll.png')}
+  alt="Scroll"
+  title="Scroll"
+  width="60%"
+/>
+
+### Select
+
+Select a value from dropdown menus, select boxes, or other list interfaces. This action simulates a user choosing an option from a dropdown, allowing your test to interact with form selection elements. The system will capture both the display text and underlying value of the selected option. 
+
+
+<DocImage 
+  path={require('./static/select.png')}
+  alt="Select"
+  title="Select"
+  width="60%"
+/>
+
+:::info
+Click, Write, and Select are automatically detected by Harness AI Test Automation. Users need not have to select these commands from a list.
+:::
+
+
+
+### Set Parameter
+
+Creates dynamic variables for test execution. This action allows you to define parameters that can be used throughout your test, making your tests more flexible and data-driven.
+
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| **Parameter name** | Name of the parameter you want to create or update | 
+| **Value** | The value to assign to the parameter |
+| **Scope** | Determines where the parameter is accessible:  `Run time`: Available only during the current test run `App`: Available across all tests in the application `Test Suite`: Available within the current test suite |
+
+<DocImage
+  path={require('./static/set-parameter.png')}
+  alt="Set Parameter"
+  title="Set Parameter"
+  width="60%"
+/>
+
+
+### Set Checkbox
+
+Toggles a checkbox to the selected state. Use this action to check or uncheck form elements without simulating a click action.
+Determines whether to check or uncheck the element. Set to `true` to check the element or `false` to uncheck it.
+ It works on the checkbox element you want to manipulate. Click on the appropriate element in your application.
+
+<DocImage
+  path={require('./static/set-checkbox.png')}
+  alt="set-checkbox"
+  title="set-checkbox"
+  width="60%"
+/>
+
+
+
+### Set Radio Button
+
+Selects a specific radio button from a group of options. Use this action to choose one option from a set of radio buttons without simulating a click action.
+This action sets the selected radio button to `true` while automatically setting all other radio buttons in the same group to `false`.
+It works on the radio button element you want to select. Click on the appropriate element in your application.
+
+<DocImage
+  path={require('./static/radio.png')}
+  alt="set-radio-button"
+  title="set-radio-button"
+  width="60%"
+/>
+
+
+
+### Set Parameter from Target
+
+Extracts a value from an element on the page and stores it as a parameter. This action is useful for capturing dynamic values from the UI such as generated IDs, displayed text, or attribute values that you need to use in subsequent test steps.
+
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| **Parameter name** | Name of the parameter where the extracted value will be stored |
+| **Scope** | Determines where the parameter is stored: `Run time`, `App`, or `Test Suite` |
+| **Please select a target** | The element from which to extract the value. Click on the element in your application that contains the value you want to capture |
+
+<DocImage
+  path={require('./static/set-parameter-from-target.png')}
+  alt="Set Parameter from Target"
+  title="Set Parameter from Target"
+  width="60%"
+/>
+
+### Viewport
+
+Adjusts the screen dimensions for testing responsive designs. Set the width and height of the screen to emulate different device sizes.
+
+
+
+<DocImage
+  path={require('./static/viewport.png')}
+  alt="viewport"
+  width="60%"
+/>
+
+
+
+### Wait for Time
+
+Creates a timed pause in test execution. Specify the duration in milliseconds to delay the test before proceeding to the next step. This is useful for waiting for animations to complete, giving time for background processes to finish, or creating deliberate pauses in your test flow.
+
+<DocImage
+  path={require('./static/wait-for-time.png')}
+  alt="Wait for Time"
+  title="Wait for Time"
+  width="60%"
+/>
+
+
+### Write
+
+Write text in any input field, text area, or editable element in your application. This action simulates a user typing content into a field, supporting both static text and dynamic parameters. It works with standard HTML inputs, WYSIWYG editors, rich text fields, and most other editable interfaces. 
+
+>Can be parameterized directly using available parameters or by creating new ones by clicking on the `{}` button 
+
+<DocImage path={require('./static/write.png')} 
+alt="write"
+title="Write"
+width="60%"
+/>
+
+
+:::tip
+For a basic write action, simply specify the text you want to input and select the appropriate input field based on your selection.
+:::
+
+#### Advanced Options
+
+<Tabs>
+
+  <TabItem value="response" label="Response Data Capture">
+
+  - **URL Pattern / Regular Expression** - Defines which network requests to capture data from following the write action
+  - **Parameter name for Response body** - The name of the parameter where the captured response data will be stored
+  - **Response Body Path (JSONPath)** - Extracts specific data from a JSON response using JSONPath syntax
+  - **Scope**: App, Test Suite, or Runtime - Determines the scope and accessibility of the captured parameter
+
+  </TabItem>
+
+  <TabItem value="others" label="Others">
+  - **Append Text** - When enabled (true), adds the specified text to the end of any existing text in the field rather than replacing it
+  - **Hide text** - When enabled, masks the input text in logs and displays, useful for sensitive information like passwords
+
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
