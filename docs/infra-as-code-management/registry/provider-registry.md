@@ -6,6 +6,19 @@ description: Learn how to publish and manage custom providers with Harness IaCM'
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+<CTABanner
+buttonText="Learn more"
+  title="Coming soon!"
+  tagline="Provider Registry is currently pending release and will be available soon!"
+  link="/docs/infra-as-code-management/registry/provider-registry/"
+  closable={true}
+  target="_blank"
+/>
+
+:::warning
+**Provider Registry** is currently **pending release** and will be available soon!
+:::
+
 The Harness IaCM **Provider Registry** allows you to securely publish and distribute <Tooltip id="iacm.provider-registry.custom-provider">custom providers</Tooltip>. Providers are signed with <Tooltip id="iacm.provider-registry.gpg-key">GPG keys</Tooltip>, compiled as <Tooltip id="iacm.provider-registry.binary-files">binary files</Tooltip> for <Tooltip id="iacm.provider-registry.multiple-platforms">multiple platforms</Tooltip>, and made available for use in [OpenTofu](https://opentofu.org/) or Terraform configurations.
 
 - Found under **IaCM > Registry** (alongside [Module Registry](/docs/infra-as-code-management/registry/module-registry) and GPG Keys).
