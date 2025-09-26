@@ -325,3 +325,18 @@ Alternatively, the following roles can also be used:
 To see an example of how to deploy Google CLoud Run Service using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/google-cloud-run).
 
 This repository provides a ready-to-use sample application and the necessary configuration files to help you get started quickly.
+
+### Manifest Format and CLI Compatibility
+
+Harness uses the `gcloud run` CLI commands in the background for Google Cloud Run deployments. This means we support **all manifest formats that are compatible with `gcloud run` commands**, providing full flexibility in how you define your Cloud Run services.
+
+:::info gcloud CLI Compatibility
+Harness executes `gcloud run` CLI commands in the background for Google Cloud Run steps. Therefore, we support all manifest formats that are compatible with these commands, including:
+- `gcloud run services replace` for service deployments
+- `gcloud run jobs replace` and `gcloud run jobs execute` for job deployments
+- All standard Cloud Run YAML configurations and Knative serving specifications
+
+This ensures full compatibility with Google Cloud Run's native deployment mechanisms.
+:::
+
+For detailed YAML reference and manifest specifications, refer to the official [Google Cloud Run YAML Reference](https://cloud.google.com/run/docs/reference/yaml/v1) documentation.
