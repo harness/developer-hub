@@ -16,6 +16,8 @@ This document explores all available user actions that can be added using the *"
 
 Each action can be enhanced with assertions to validate expected behavior, parametrized for flexibility, and seamlessly integrated into CI/CD pipelines. Understanding these powerful actions will help you create comprehensive test coverage for your applications, whether you're building simple workflows or complex test scenarios.
 
+<br/>
+
 <DocImage 
   path={require('./static/user-action.png')}
   alt="User Action"
@@ -32,6 +34,13 @@ Sends HTTP requests to external APIs directly from your test. This action allows
 
 > This is useful for setting up test data, verifying backend operations, or retrieving data that can be used in subsequent test steps.
 
+<DocImage
+  path={require('./static/api-call.png')}
+  alt="API Call"
+  title="API Call"
+  width="60%"
+/>
+
 #### Options
 
 | Option | Description |
@@ -43,13 +52,8 @@ Sends HTTP requests to external APIs directly from your test. This action allows
 | **Parameter name for Response body** | Name of the parameter where the API response will be stored |
 | **Scope** | Determines where the response parameter is stored: `Run time`, `App`, or `Test Suite` |
 
-<DocImage
-  path={require('./static/api-call.png')}
-  alt="API Call"
-  title="API Call"
-  width="60%"
-/>
 
+<br/>
 
 ### Click
 
@@ -103,6 +107,8 @@ width="60%"
   </TabItem>
 </Tabs>
 
+<br/>
+
 ### DB Query
 
 Executes a SQL query against a database and captures the results as parameters. This action allows you to integrate database interactions directly into your test flow, enabling data validation and dynamic test data generation.
@@ -112,6 +118,12 @@ Executes a SQL query against a database and captures the results as parameters. 
 :::note
 You can use the database types of MongoDb and Postgres.
 :::
+<DocImage
+  path={require('./static/db-query.png')}
+  alt="DB Query"
+  title="DB Query"
+  width="60%"
+/>
 
 #### Options
 
@@ -128,16 +140,13 @@ You can use the database types of MongoDb and Postgres.
 | **Tunnel Name (optional)** | Name of the SSH tunnel configuration if connecting to a database through a secure tunnel |
 
 
-<DocImage
-  path={require('./static/db-query.png')}
-  alt="DB Query"
-  title="DB Query"
-  width="60%"
-/>
+<br/>
 
 ### Double Click
 
 Executes a double-click action on a specific element. This action is particularly useful for actions that require double-clicking, such as opening files, selecting text, or activating certain interface elements that specifically respond to double-clicks.
+
+<br/>
 
 ### File Upload
 
@@ -154,6 +163,7 @@ The file input element where you want to upload the file. Click on the appropria
   width="60%"
 />
 
+<br/>
 
 ### Key Press
 
@@ -168,7 +178,7 @@ Simulates a keyboard input action. Specify the key to press, for example, "Enter
   width="60%"
 />
 
-
+<br/>
 
 ### Mouse Over
 
@@ -183,7 +193,7 @@ Simulates hovering the mouse cursor over an element, activating hover states and
   width="60%"
 />
 
-
+<br/>
 
 ### Navigate
 Navigate to a specific URL or relative path, allowing you to direct your test to different pages or websites. Supports both absolute URLs (starting with http:// or https://) and relative paths that will be appended to your environment's base URL. 
@@ -226,6 +236,8 @@ Navigate to a specific URL or relative path, allowing you to direct your test to
   </TabItem>
 </Tabs>
 
+<br/>
+
 ### Reload
 
 Just add this action step to refresh the current page.
@@ -236,16 +248,24 @@ Just add this action step to refresh the current page.
   width="60%"
 />
  
+<br/>
+
 ### Right Click
 
 Simulates a right-click mouse action on a specific element. This action is useful for testing context menus, alternative options, and other functionality that's triggered by right-clicking in your application.
 
+<br/>
 
 
 ### Scroll within a scrollable region
 
 Controls scrolling within a scrollable region or element of a page. This action allows you to navigate within overflowing content, long pages, or specific scrollable containers.
-
+<DocImage
+  path={require('./static/scroll.png')}
+  alt="Scroll"
+  title="Scroll"
+  width="60%"
+/>
 
 #### Options
 
@@ -256,12 +276,7 @@ Controls scrolling within a scrollable region or element of a page. This action 
 | **Co-ordinates** | Scrolls to specific X,Y coordinates within the scrollable region |
 | **Target** | Optional element to scroll into view. You can either select a specific target element or scroll without targeting an element |
 
-<DocImage
-  path={require('./static/scroll.png')}
-  alt="Scroll"
-  title="Scroll"
-  width="60%"
-/>
+<br/>
 
 ### Select
 
@@ -279,11 +294,19 @@ Select a value from dropdown menus, select boxes, or other list interfaces. This
 Click, Write, and Select are automatically detected by Harness AI Test Automation. Users need not have to select these commands from a list.
 :::
 
-
+<br/>
 
 ### Set Parameter
 
 Creates dynamic variables for test execution. This action allows you to define parameters that can be used throughout your test, making your tests more flexible and data-driven.
+
+<DocImage
+  path={require('./static/set-parameter.png')}
+  alt="Set Parameter"
+  title="Set Parameter"
+  width="60%"
+/>
+
 
 #### Options
 
@@ -293,13 +316,7 @@ Creates dynamic variables for test execution. This action allows you to define p
 | **Value** | The value to assign to the parameter |
 | **Scope** | Determines where the parameter is accessible:  `Run time`: Available only during the current test run `App`: Available across all tests in the application `Test Suite`: Available within the current test suite |
 
-<DocImage
-  path={require('./static/set-parameter.png')}
-  alt="Set Parameter"
-  title="Set Parameter"
-  width="60%"
-/>
-
+<br/>
 
 ### Set Checkbox
 
@@ -314,7 +331,7 @@ Determines whether to check or uncheck the element. Set to `true` to check the e
   width="60%"
 />
 
-
+<br/>
 
 ### Set Radio Button
 
@@ -329,11 +346,19 @@ It works on the radio button element you want to select. Click on the appropriat
   width="60%"
 />
 
-
+<br/>
 
 ### Set Parameter from Target
 
 Extracts a value from an element on the page and stores it as a parameter. This action is useful for capturing dynamic values from the UI such as generated IDs, displayed text, or attribute values that you need to use in subsequent test steps.
+
+<DocImage
+  path={require('./static/set-parameter-from-target.png')}
+  alt="Set Parameter from Target"
+  title="Set Parameter from Target"
+  width="60%"
+/>
+
 
 #### Options
 
@@ -343,12 +368,7 @@ Extracts a value from an element on the page and stores it as a parameter. This 
 | **Scope** | Determines where the parameter is stored: `Run time`, `App`, or `Test Suite` |
 | **Please select a target** | The element from which to extract the value. Click on the element in your application that contains the value you want to capture |
 
-<DocImage
-  path={require('./static/set-parameter-from-target.png')}
-  alt="Set Parameter from Target"
-  title="Set Parameter from Target"
-  width="60%"
-/>
+<br/>
 
 ### Viewport
 
@@ -362,7 +382,7 @@ Adjusts the screen dimensions for testing responsive designs. Set the width and 
   width="60%"
 />
 
-
+<br/>
 
 ### Wait for Time
 
@@ -375,6 +395,7 @@ Creates a timed pause in test execution. Specify the duration in milliseconds to
   width="60%"
 />
 
+<br/>
 
 ### Write
 
