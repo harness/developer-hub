@@ -20,10 +20,6 @@ export default function LearnAboutPlatform(): JSX.Element {
     <section className={styles.learnAboutPlatform}>
       <h2>Learn More</h2>
       <div className={styles.platform}>
-        <div className={styles.subSectionName}>
-          <h3>Modules</h3>
-        </div>
-        <ModuleTiles />
       </div>
 
       <div className={styles.subSectionName}>
