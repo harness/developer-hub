@@ -68,7 +68,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### Fixed Issues:
 
-- Fixed an issue where pipeline execution failed with “Exceeded rate limitation” errors; rate-limit handling was improved to prevent disruption. (**CDS-114379, ZD-93157**)
 - Fixed an issue that was leading to missing environment names for GitOps pipelines on the dashboard, ensuring env info displays as intended. (**CDS-113864, ZD-91395**)
 - Fixed an issue where tag filters did not work correctly on Environment Groups and Environments lists. Filters now accurately reflect the tagged items. (**CDS-96157**)
 - Fixed an issue where Rolling Deploy Step didn't detect Instance Refresh Failure, ensuring more reliable rollbacks for impacted users. (**CDS-113298**)
