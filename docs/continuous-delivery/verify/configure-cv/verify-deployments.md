@@ -118,7 +118,7 @@ To configure:
 
 ![](./static/deployment-start-time.png)
 
-This start time describes the time when the verification should begin.
+This time represents the deployment start time, allowing the system to collect pre-deployment data for the configured duration (in minutes) before this specified time.
 
 Supported formats include:
 - ISO formats (e.g., `2023-03-10T15:30:00Z`)
@@ -129,7 +129,7 @@ You can use an expression to set the start time based on the deployment start ti
 
 **Limitations**:
 
-We don't support adding a future date and time as a fixed value/runtime to set the start time of the verification process.
+We don't support adding a future date and time as a fixed value/runtime to set the start time of the verification process. If you specify a future time that hasn't been reached yet, the verification will fail. However, if the specified future time has already been reached when the verification runs, it will work as described above.
 
 ## Step 8: Specify Artifact Tag
 
