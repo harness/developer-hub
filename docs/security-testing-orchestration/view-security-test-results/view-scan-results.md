@@ -30,6 +30,9 @@ The **Vulnerabilities** tab provides a detailed view of all issues identified du
 
 <DocImage path={require('./static/security-tests-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
+The **Active Issues** count shows the number of vulnerabilities that still require action. It excludes any issues marked as **Exempted** or **Remediated**.
+This count also reflects how well STO’s deduplication logic is working by showing the percentage reduction in issues compared to the raw scan results.
+
 ## Understanding issue categories
 
 Issues identified in the scan are categorized as follows:
