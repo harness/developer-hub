@@ -55,13 +55,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## September 2025
 
-### GitOps Service 1.42.1, GitOps Agent 0.102.0
-
-#### Fixed Issues:
-
-- Fixed an issue where GitOps application status was not updating immediately after sync operations, causing the UI to display outdated sync status until manual navigation or refresh. Users experienced delays in seeing the correct `Out of Sync` state after Git repository updates, with status sometimes showing as `Unknown` before correcting itself after several minutes. This issue affected all GitOps applications and has been resolved to ensure real-time status updates. (**CDS-113641**, **ZD-91541**)
-- Fixed an issue where environment propagation between stages in GitOps PR pipelines was failing with validation errors. Users were unable to execute multi-stage GitOps pipelines when attempting to propagate environments from one stage to the next, even though the YAML configuration passed validation. This functionality has been restored to support proper environment propagation in GitOps workflows and is available behind the feature flag `CDS_GITOPS_ENABLE_ENV_PROPAGATION_UX`. (**CDS-105328**, **ZD-75107**, **ZD-76321**)
-
 ### Version 1.109.2
 
 #### New Features and Enhancements:
