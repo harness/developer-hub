@@ -26,7 +26,7 @@ Before setting up your Org Tree, ensure the following:
 
   The CSV file must follow the required structure:
   * Each row represents a developer.
-  * Must include at least `Name`, `Email`, and `Manager Email`. Optionally, include `Site`, `Role`, or `Team`.
+  * Must include at least `Name`, `Email`, `Manager Name`, and `Manager Email`. Optionally, include `Site`, `Role`, or `Team`.
 * You have created the relevant [Efficiency](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) and [Productivity Profiles](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile).
 * You have connected your integrations for:
   * Issue Management (e.g. Jira, Azure Boards)
