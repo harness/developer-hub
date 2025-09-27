@@ -330,7 +330,7 @@ Let's assume the following for a single S3 bucket:
 
 **Calculations:**
 
-<DocImage path={require('./static/policy_comparison.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/policy-comparison.png')} width="100%" height="100%" title="Click to view full size image" />
 
 **Total Savings**
  <DocImage path={require('./static/savings1.png')} width="60%" height="60%" title="Click to view full size image" />

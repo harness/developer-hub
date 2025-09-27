@@ -49,11 +49,11 @@ Cloud Asset Governance operates through four essential concepts working together
 - **Actions** are operations performed on the filtered resources. Actions include things like terminating an azure vm, deleting an azure storage-container, or sending an email notification.
 
 
-<DocImage path={require('./static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/anatomy-of-a-rule.png')} width="70%" height="70%" title="Click to view full size image" />
 
 So essentially, **a Rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user**. 
 
-<DocImage path={require('./static/rule_example.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/rule-example.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::info 
 We now have Terraform support for managing Governance Rules. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule) for more details.
