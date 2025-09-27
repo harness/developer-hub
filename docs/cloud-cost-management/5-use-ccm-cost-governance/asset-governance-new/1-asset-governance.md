@@ -1,16 +1,53 @@
 ---
-title: Overview
+title: Get Started
 description: This topic talks about Harness cloud asset governance.
 # sidebar_position: 2
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Cloud Asset Governance is a tool that helps organizations manage and govern their cloud resources automatically. It keeps track of your cloud accounts, enforces rules, and makes sure resources are being used efficiently, securely, and in compliance with your policies. Using the FinOps Agent, it analyzes your resources, identifies unused or misconfigured ones, and suggests actions to optimize costs, improve security, and maintain governance across AWS, Azure, and GCP.
+### What is Cloud Asset Governance ?
+Cloud Asset Governance is a governance-as-code solution that helps organizations automatically manage their cloud resources according to cost, security, and compliance standards. Instead of relying on manual checks or approvals, it uses rules written as code to enforce policies across your cloud infrastructure.
+
+<div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', margin: '20px 0'}}>
+
+<div style={{flex: '1', minWidth: '250px', border: '1px solid #e0e0e0', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', backgroundColor: '#f5f7f9'}}>
+  <h3 style={{color: '#009688', marginTop: '0'}}>What is Governance?</h3>
+  <p>Governance means establishing rules and policies that control how your cloud resources are used. It ensures your cloud environment stays:</p>
+  <ul>
+    <li>Secure against threats</li>
+    <li>Cost-effective for your business</li>
+    <li>Compliant with industry regulations</li>
+  </ul>
+</div>
+
+<div style={{flex: '1', minWidth: '250px', border: '1px solid #e0e0e0', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', backgroundColor: '#f5f7f9'}}>
+  <h3 style={{color: '#009688', marginTop: '0'}}>What is Governance-as-Code?</h3>
+  <p>Governance-as-code (GAC) treats governance policies as code instead of manual processes.</p>
+  <p>With GAC, you:</p>
+  <ul>
+    <li>Write policies in languages like YAML</li>
+    <li>Apply them automatically across your infrastructure</li>
+    <li>Enforce policies consistently at scale</li>
+  </ul>
+</div>
+
+<div style={{flex: '1', minWidth: '250px', border: '1px solid #e0e0e0', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', backgroundColor: '#f5f7f9'}}>
+  <h3 style={{color: '#009688', marginTop: '0'}}>What is Cloud Asset Governance?</h3>
+  <p>Cloud Asset Governance is a governance-as-code solution that helps you:</p>
+  <ul>
+    <li>Automatically manage cloud resources</li>
+    <li>Enforce cost, security, and compliance standards</li>
+    <li>Replace manual checks with code-based policies</li>
+    <li>Apply consistent rules across your cloud infrastructure</li>
+  </ul>
+</div>
+
+</div>
 
 <div style={{backgroundColor: '#E0F2F1', padding: '10px', borderRadius: '5px', borderLeft: '4px solid #009688', margin: '10px 0'}}>
 <h3 style={{margin: '0 0 8px 0', color: '#00796B'}}>Cloud Custodian Integration</h3>
-<strong>Cloud Asset Governance</strong> is built on top of the popular open source software Cloud Custodian and covers all the cloud resources for [AWS](https://cloudcustodian.io/docs/aws/resources/index.html), [GCP](https://cloudcustodian.io/docs/gcp/resources/index.html) and [Azure](https://cloudcustodian.io/docs/azure/resources/index.html). The cloud-custodian versions utilised currently are as following:
+<strong>Cloud Asset Governance</strong> is built on top of the popular open source software [Cloud Custodian](https://cloudcustodian.io) and covers all the cloud resources for [AWS](https://cloudcustodian.io/docs/aws/resources/index.html), [GCP](https://cloudcustodian.io/docs/gcp/resources/index.html) and [Azure](https://cloudcustodian.io/docs/azure/resources/index.html). The cloud-custodian versions utilised currently are as following:
 - c7n==0.9.44
 - c7n_azure==0.7.43
 - c7n_gcp==0.4.43
@@ -66,11 +103,17 @@ Cloud Asset Governance operates through four essential concepts working together
 
 ## Rules
 
-Rules help you set up Asset Governance for your cloud provider. A Rule is essentially a small file with a set of logic that you can run on your cloud infrastructure. For example, there might be a scenario in which you want to delete all low utilised load balancers where packet count is less than 1000 in last 72 hours on Azure. In such a case, we write and run a rule which does this for us.
+**Rules** are set of instructions you write in form of **code** to manage your cloud resources **automatically**. A **Rule** is essentially a file with a set of logic that you can run on your cloud infrastructure. 
 
-Ideally, rules include policy, resource, filters, and actions.
+**Example:** Suppose you want all your EBS volumes to use the newer, cheaper **gp3** type instead of gp2.
+- **Without rules**: you'd have to manually check every volume and upgrade it.
+- **With a rule**: the system **finds all gp2 volumes** and **migrates them to gp3** for you.
 
-- A **policy** is defined in YAML format and consists of filters and actions that are applied to a specific type of cloud resource.
+**What makes up a Rule:** Ideally, rules contain **policies** which include **resource**, **filters**, and **actions**. A rule is written in **YAML format**. Rules can include **multiple policies**.
+
+<DocImage path={require('./static/governance-rule.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- A **policy** is the overall instruction and consists of filters and actions that are applied to a specific type of cloud resource.
 
 - A **resource** is the type of cloud resource or service on which the rule will be run with the actions and filters, such as Azure VMs, AKS, Cosmos DB, etc.
 
@@ -81,7 +124,7 @@ Ideally, rules include policy, resource, filters, and actions.
 
 <DocImage path={require('./static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
 
-So essentially, **a Rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user**. Rules can include multiple policies, and policies include resource, filters and actions. 
+So essentially, **a Rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user**. 
 
 <DocImage path={require('./static/rule_example.png')} width="80%" height="80%" title="Click to view full size image" />
 
@@ -94,8 +137,7 @@ We now have Terraform support for managing Governance Rules. Please see [here](h
 
 - In **Harness**, go to **Cloud Costs** > **Asset Governance** > **Rules**. Select **+ New Rule**. 
 
-
-  <DocImage path={require('./static/asset-governance-rule-creation.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/asset-governance-rule-creation.png')} width="90%" height="90%" title="Click to view full size image" />
 
 - Enter a name for the rule, select the cloud provider. Also, enter Savings prediction in percentage (optional). This custom percentage will be honored during savings computation. Savings prediction is used to calculate the savings that can be achieved by enforcing the rule.
 - Optionally, enter a description of the rule. Select **Apply**.
@@ -114,11 +156,11 @@ We now have Terraform support for managing Governance Rules. Please see [here](h
 
   <DocImage path={require('./static/update-and-delete.png')} width="90%" height="90%" title="Click to view full size image" />
 
-### Testing Terminal
+####  Testing Terminal
 
 In the rule editor, a test terminal is present for users to see the output in the terminal itself upon evaluating a Rule. This is done to ensure that users can run the rules and try accordingly to check how the output would look on the selected subscription and region. There are two options: first, to select the target subscription and second, to select the regions. After providing the relevant inputs, the users can select either to dry run the rule first, run it once or enforce the rule. 
 
-<DocImage path={require('./static/outputTerminal.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/outputTerminal.png')} width="70%" height="70%" title="Click to view full size image" />
 
 After this, the resources identified are shown on the output terminal in JSON format. With this output, users can perform different actions like searching, downloading, filtering, sorting and picking. 
 

@@ -7,72 +7,8 @@ description: This topic describes how to optimize cloud costs using asset govern
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Governance Recommendations
-
 Recommendations help kickstart your journey with governance. Essentially, Harness run certain policies behind the scenes to generate recommendations for your governance-enabled AWS accounts. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
 
-## Rules Generating Recommendations
-
-Harness CCM now provides users the ability to monitor Governance Recommendations through the new Recommendations Insights tab in the Governance module. 
-
-This enhancement offers clear visibility into the evaluation status of each rule and provides detailed insights about the cloud account (connector) and region involved in generating the recommendations.
-
-This tab is designed to streamline troubleshooting and improve visibility into why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
-
-#### How It Works:
-- Status Tracking: Each Recommendation Rule's status is displayed in the Optimization tab.
-- Cloud Connector (Project ID): The specific cloud account associated with the rule.
-- Region: The region for which the rule is evaluated.
-
-#### Error Notifications:
-If any connector and region combination encounters an issue, the system flags it with a Failed status.
-The UI displays a detailed error message to assist in resolving the issue quickly.
-
-#### Status Breakdown:
-
-1. **Failed Status :** A failed status indicates one of the following scenarios:
-
-- Missing Permissions: The necessary permissions required for Harness to get or list resources are not provided.
-- Harness Internal Error: A system-level issue occurred during processing.
-
-2. **Ignored Status :** An ignored status indicates one of the following scenarios:
-
-- No Cost Data Available: Billing connector setup at Harness is missing cost data for the target cloud account.
-- Cost Threshold Not Met: Cost is less than $300 for the GCP project.
-- Invalid Region: The regions found in cost data is not valid to run against Governance Rule.
-
-3. **Success Status :** A successful status indicates one of the following scenarios:
-
-- Recommendation Generated: The system successfully evaluated the rule and created a recommendation.
-- No Resources in Evaluation: The rule was evaluated, but there were no resources found.
-- Savings Below Threshold: A recommendation was generated, but the potential savings were calculated to be less than $10.
-
-
-
-### Granular Recommendations
-
-Cloud Asset Governance provides valuable recommendations, but when it comes to operationalizing them at scale, it might become challenging. Additionally, when using shared cloud accounts across teams, project-level recommendations might not work out. With Granular Recommendations, Governance recommendations will now be generated at the individual resource level, ensuring greater granularity and actionable insights for both custom and out-of-the-box (OOTB) recommendations. This enhancement simplifies implementation and tracking, allowing customers to take more effective action on governance recommendations at scale.
-
-#### Enabling Granular Recommendations
-
- <iframe 
-     src="https://app.tango.us/app/embed/25a843d3-c733-4459-99f5-69558757865c" 
-     title="Enabling Granular Governance Recommendations in Cloud Cost Management" 
-     style={{minHeight:'640px'}}
-     width="100%" 
-     height="100%" 
-     referrerpolicy="strict-origin-when-cross-origin" 
-     frameborder="0" 
-     webkitallowfullscreen="webkitallowfullscreen" 
-     mozallowfullscreen="mozallowfullscreen" 
-     allowfullscreen="allowfullscreen"></iframe>
-
-Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. 
-The scope can be either at:
-
-- Rule-level
-- Rule-level + Project-level
-- Rule-level + Project-level + Resource-level.
 
 ## Recommendations By Harness
 
@@ -676,17 +612,6 @@ policies:
 ```
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
 </details>
-
-
-### AWS Resource Coverage (Examples)
-
-- EC2 instances
-- S3 buckets
-- Lambda functions
-- RDS (Relational Database Service) instances
-- CloudFormation stacks
-
-For a comprehensive list of all supported AWS resources, refer to the [AWS Resource Reference — Cloud Custodian documentation](https://cloudcustodian.io/docs/aws/resources/index.html).
 
 </TabItem>
 <TabItem value="gcp" label="GCP" default>
@@ -1548,18 +1473,75 @@ policies:
 
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
+---
 </details>
-
-### Azure Resource Coverage (Examples)
-
-- Virtual Machines (VMs)
-- Storage accounts
-- App services
-- Cosmos DB accounts
-- Key Vaults
-
-For a comprehensive list of all supported Azure resources, refer to the [Azure Resource Reference — Cloud Custodian documentation](https://cloudcustodian.io/docs/azure/resources/index.html).
 
 </TabItem>
 </Tabs>
 
+-----------
+
+## Rules Generating Recommendations
+
+The "Rules Generating Recommendations" tab shows all the rules you’ve turned on to generate recommendations. Every day, our system runs these rules across your main accounts and regions. The results are shown as recommendations, so you can track their full lifecycle from when they’re created to when they’re addressed.
+The tab also gives you insights into the rules you’ve enabled. You can see a breakdown by account and region, including whether the rule ran successfully, had an error, or found resources that don’t have any savings attached.
+
+### Using Rules Generating Recommendations
+
+1. Navigate to the **Rules Generating Recommendations** > **+New Rule** to begin the process
+2. Select a governance rule to generate recommendations
+3. Configure the rule's scope:
+   - **All Accounts**: Apply the rule across your entire cloud infrastructure
+   - **Specific Accounts**: Target only selected cloud accounts for evaluation
+4. Click **Generate Recommendations** to initiate the evaluation process
+
+<DocImage path={require('./static/rgr.png')} width="50%" height="50%" title="Click to view full size image" />
+
+After this, all the rules generating recommendations can be seen in the **Rules Generating Recommendations** tab alongwith last evaluation, recommendations, potential savings and success rate. If any connector and region combination encounters an issue, the system flags it with a Failed status.
+The UI displays a detailed error message to assist in resolving the issue quickly.
+
+#### Status Breakdown:
+
+1. **Failed Status :** A failed status indicates one of the following scenarios:
+
+- Missing Permissions: The necessary permissions required for Harness to get or list resources are not provided.
+- Harness Internal Error: A system-level issue occurred during processing.
+
+2. **Ignored Status :** An ignored status indicates one of the following scenarios:
+
+- No Cost Data Available: Billing connector setup at Harness is missing cost data for the target cloud account.
+- Cost Threshold Not Met: Cost is less than $300 for the GCP project.
+- Invalid Region: The regions found in cost data is not valid to run against Governance Rule.
+
+3. **Success Status :** A successful status indicates one of the following scenarios:
+
+- Recommendation Generated: The system successfully evaluated the rule and created a recommendation.
+- No Resources in Evaluation: The rule was evaluated, but there were no resources found.
+- Savings Below Threshold: A recommendation was generated, but the potential savings were calculated to be less than $10.
+
+---------
+
+### Granular Recommendations
+
+Cloud Asset Governance provides valuable recommendations, but when it comes to operationalizing them at scale, it might become challenging. Additionally, when using shared cloud accounts across teams, project-level recommendations might not work out. With Granular Recommendations, Governance recommendations will now be generated at the individual resource level, ensuring greater granularity and actionable insights for both custom and out-of-the-box (OOTB) recommendations. This enhancement simplifies implementation and tracking, allowing customers to take more effective action on governance recommendations at scale.
+
+#### Enabling Granular Recommendations
+
+ <iframe 
+     src="https://app.tango.us/app/embed/25a843d3-c733-4459-99f5-69558757865c" 
+     title="Enabling Granular Governance Recommendations in Cloud Cost Management" 
+     style={{minHeight:'640px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>
+
+Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. 
+The scope can be either at:
+
+- Rule-level
+- Rule-level + Project-level
+- Rule-level + Project-level + Resource-level.
