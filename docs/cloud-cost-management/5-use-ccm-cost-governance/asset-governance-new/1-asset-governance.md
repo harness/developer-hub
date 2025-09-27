@@ -122,11 +122,11 @@ Cloud Asset Governance operates through four essential concepts working together
 - **Actions** are operations performed on the filtered resources. Actions include things like terminating an azure vm, deleting an azure storage-container, or sending an email notification.
 
 
-<DocImage path={require('./static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/anatomy-of-a-rule.png')} width="70%" height="70%" title="Click to view full size image" />
 
 So essentially, **a Rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user**. 
 
-<DocImage path={require('./static/rule_example.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/rule-example.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::info 
 We now have Terraform support for managing Governance Rules. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule) for more details.
@@ -160,11 +160,11 @@ We now have Terraform support for managing Governance Rules. Please see [here](h
 
 In the rule editor, a test terminal is present for users to see the output in the terminal itself upon evaluating a Rule. This is done to ensure that users can run the rules and try accordingly to check how the output would look on the selected subscription and region. There are two options: first, to select the target subscription and second, to select the regions. After providing the relevant inputs, the users can select either to dry run the rule first, run it once or enforce the rule. 
 
-<DocImage path={require('./static/outputTerminal.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/outputterminal.png')} width="70%" height="70%" title="Click to view full size image" />
 
 After this, the resources identified are shown on the output terminal in JSON format. With this output, users can perform different actions like searching, downloading, filtering, sorting and picking. 
 
-<DocImage path={require('./static/Ouputscreen.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/ouputscreen.png')} width="90%" height="90%" title="Click to view full size image" />
 
 #### Searching in Output Terminal
 After the output is rendered, users can search for any keywords in the output terminal. This streamlines troubleshooting and debugging processes and helps to efficiently locate required information amidst large volumes of output data. 
