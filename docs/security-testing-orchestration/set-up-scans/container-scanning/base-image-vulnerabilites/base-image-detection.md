@@ -22,7 +22,7 @@ This detection and labeling is key for:
 
 This document explains how to configure base image identification in your container image scans, so that vulnerabilities originating from the base image are detected and labeled appropriately.
 
-- [Prerequisites](#prerequisites)
+- [How to Configure Base Image Detection](#how-to-configure-base-image-detection)
 - [How to view Base Image Vulnerabilities](#how-to-view-base-image-vulnerabilities)
 - [Step Output Variables for App and Base Image Vulnerabilities](#step-output-variables-for-app-and-base-image-vulnerabilities)
 
@@ -32,7 +32,7 @@ Refer to [Approve Base Image](/docs/security-testing-orchestration/set-up-scans/
 
 ---
 
-## Prerequisites
+## How to Configure Base Image Detection 
 In order to use this feature, you need to configure the following:
 1. [Enable Base Image Detection](#enable-base-image-detection)
 2. [Scan Your Base Image](#scan-your-base-image)
@@ -59,13 +59,14 @@ When you build your container image, you must include the following [OCI labels]
     *   `org.opencontainers.image.base.tag`: The tag of the base image.
     *   `org.opencontainers.image.base.digest`: The manifest digest (SHA256) of the base image.
 
+<DocImage path={require('../static/manifest-digest.png')} width="90%" height="90%"/>
 
-After completing all prerequisites, you must re-run your container image to perform base image detection. Refer to [How to view vulnerabilities from the base image](#how-to-view-vulnerabilities-from-base-image) for more details.
+After completing all the [configurations](#how-to-configure-base-image-detection), you must re-run your container image to perform base image detection. Refer to [How to view vulnerabilities from the base image](#how-to-view-vulnerabilities-from-base-image) for more details.
 
 ---
 
 ## How to view Vulnerabilities from Base Image
-After configuring the [prerequisites](#prerequisites), you must re-run your pipeline which performs you container image scanning, it's important that you use the same scanner for both base image and your container image scanning. After you re-run your pipeline to scan your container image, STO will perform the following steps:
+After configuring the [base image detection](#how-to-configure-base-image-detection), you must re-run your pipeline which performs you container image scanning, it's important that you use the same scanner for both base image and your container image scanning. After you re-run your pipeline to scan your container image, STO will perform the following steps:
 1. STO extracts the `base.digest` from the OCI labels you added as a part of [Add Labels to Your Container Image](#add-labels-to-your-container-image).
 2. It searches your Harness account for an existing scan of an image matching that digest.
 3. If a match is found, STO correlates the scans.

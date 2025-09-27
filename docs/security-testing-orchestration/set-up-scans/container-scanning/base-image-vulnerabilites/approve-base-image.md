@@ -72,8 +72,8 @@ To view the vulnerabilities associated with the approved base image, follow thes
 
 :::note
 Before proceeding, make sure that:  
-- You have completed all the [prerequisites for base image detection](/docs/security-testing-orchestration/set-up-scans/container-scanning/base-image-vulnerabilites/base-image-detection#prerequisites).  
-- You approved the image by following the steps in [How to Approve a Base Image](#how-to-approve-a-base-image). Once approved, the approval will take place from the next pipeline execution after the approval.
+- You have configured [base image detection](/docs/security-testing-orchestration/set-up-scans/container-scanning/base-image-vulnerabilites/base-image-detection#how-to-configure-base-image-detection).  
+- You approved the base image by following the steps in [How to Approve a Base Image](#how-to-approve-a-base-image). Once approved, the approval will take place from the next pipeline execution after the approval.
 :::
 
 1. Go to **Security Testing Orchestration** module.
