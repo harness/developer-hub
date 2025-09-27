@@ -28,7 +28,13 @@ Cloud Asset Governance operates through four essential concepts working together
 <Tabs>
 <TabItem value="rules" label="Rules" default>
 
-## Rules
+:::info
+Governance Rules are different from Perspective and Cost Category Rules.
+:::
+
+<Tabs>
+<TabItem value="What are Rules" label="Definition" default>
+
 
 **Rules** are set of instructions you write in form of **code** to manage your cloud resources **automatically**. A **Rule** is essentially a file with a set of logic that you can run on your cloud infrastructure. 
 
@@ -38,7 +44,7 @@ Cloud Asset Governance operates through four essential concepts working together
 
 **What makes up a Rule:** Ideally, rules contain **policies** which include **resource**, **filters**, and **actions**. A rule is written in **YAML format**. Rules can include **multiple policies**.
 
-<DocImage path={require('./static/governance-rule.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/rule-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 - A **policy** is the overall instruction and consists of filters and actions that are applied to a specific type of cloud resource.
 
@@ -53,11 +59,11 @@ Cloud Asset Governance operates through four essential concepts working together
 
 So essentially, **a Rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user**. 
 
-<DocImage path={require('./static/rule-example.png')} width="80%" height="80%" title="Click to view full size image" />
-
 :::info 
 We now have Terraform support for managing Governance Rules. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule) for more details.
 :::
+</TabItem>
+<TabItem value="Creating Rules" label="Creating Rules" default>
 
 #### Create a new Rule
 
@@ -111,14 +117,19 @@ If output needs to be streamlined and only a few keys-value pairs are required, 
 If multiple Regions and/or multiple Subscriptions are selected, the Output Terminal will render the links to the Evaluations page for all the individual evaluations per Subscription-Region pair. From that page, upon clicking on individual evaluations, detailed output and logs can be seen.
 :::
 </TabItem>
+</Tabs>
+</TabItem>
 <TabItem value="rule-sets" label="Rule Sets">
 
-## Rule Sets
+<Tabs>
+<TabItem value="What are Rulesets" label="Definition" default>
 
 As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** can be used. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
 
   <DocImage path={require('./static/rule-set.png')} width="90%" height="90%" title="Click to view full size image" />
   
+</TabItem>
+<TabItem value="Creating Rules" label="Creating Rule Sets" default>
 
 #### Create a new Rule Set
 
@@ -150,10 +161,14 @@ The rule set is created successfully.
  :::info 
 We now have Terraform support for managing Governance RuleSets. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_set) for more details.
 :::
-
+</TabItem>
+</Tabs>
 </TabItem>
 <TabItem value="enforcements" label="Enforcements">
-## Enforcements
+
+
+<Tabs>
+<TabItem value="What are Enforcements" label="Definition" default>
 
 :::info
 - Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
@@ -180,6 +195,9 @@ Harness CCM's intelligent **FinOps Agent** analyzes your cloud environment to au
 To implement a suggested enforcement, simply review and accept it. The system will then automatically create and schedule the enforcement to run against the specified accounts. All evaluations from these accepted suggestions appear on the Evaluations page alongside your manually created enforcements, providing a unified view of all governance activities.
 
 <DocImage path={require('./static/finops-agent-suggestions.png')} width="90%" height="90%" title="Click to view full size image" />
+
+</TabItem>
+<TabItem value="Creating Enforcements" label="Creating Enforcements" default>
 
 #### Create a new Enforcement
 To create an Enforcement, perform the following steps:
@@ -219,10 +237,10 @@ Furthermore, you can disable the Enforcement at any time using the toggle button
 - To delete an enforcement, simply click on “Delete” from the vertical ellipsis menu (⋮).
 
 <DocImage path={require('./static/update-and-delete-enforcement.png')} width="90%" height="90%" title="Click to view full size image" />
-
+</TabItem>
+</Tabs>
 </TabItem>
 <TabItem value="evaluations" label="Evaluations">
-## Evaluations
 
 Evaluations include all the data about enforcements run (both RUN ONCE from rule editor and from Enforcement). The Evaluations window also shows you the total cost impact with each Enforcement i.e. the costs or spendings associated with each Evaluation along with the last time that Rule/Rule set was enforced. With Evaluations, you can view and audit all the Enforcements that ran in the past.
 
