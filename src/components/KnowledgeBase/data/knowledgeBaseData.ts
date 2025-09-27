@@ -26,12 +26,6 @@ export const knowledgeBaseList: CardItem[] = [
     link: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/servicenow-api-permission",
   },  
   {
-    title: "Send Dashboard Reports to Slack Channel",
-    module: MODULES.ccm,
-    date: "Sept 08, 2023",
-    link: "/kb/cloud-cost-management/articles/slack-email-alert",
-  },
-  {
     title: "Mount Custom Cert in Delegate via ConfigMap",
     module: MODULES.platform,
     date: "July 31, 2023",
