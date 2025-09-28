@@ -42,3 +42,21 @@ Once the setup completes, your Gitspace will be successfully connected to Windsu
 
 ![](./static/windsurf-setup.png)
 
+### Harness Gitspaces Plugin
+The [Harness Gitspaces plugin](https://open-vsx.org/extension/harness-inc/gitspaces) is a Windsurf extension that lets you connect to and manage your Gitspaces directly in the Windsurf IDE. It provides a seamless workflow so you can work on Gitspaces without leaving the IDE. With the plugin, you can:
+
+* Start and open a Gitspace
+* Stop a Gitspace
+* View all your Gitspaces from within Windsurf
+
+Follow these steps to set up the Harness Gitspaces plugin in Windsurf:
+
+1. Open Windsurf and go to **Extensions**.
+2. Search for **Harness Gitspaces** and click **Install**.
+![](./static/windsurf-plugin-1.png)
+3. After installation, click **Sign in**. You’ll be redirected to the Harness sign-in page—enter your Harness credentials.
+4. Once signed in, you can manage and connect to your Gitspaces directly from the IDE.
+![](./static/windsurf-plugin-2.png)
+
+
+

@@ -41,3 +41,17 @@ Follow these steps to get started with integrating Cursor IDE into your Gitspace
 Once the setup completes, your Gitspace will be successfully connected to Cursor IDE. Congratulations! You are now ready to work on your Gitspace directly within Cursor.
 
 ![](./static/cursor-setup.png)
+
+### Harness Gitspaces Plugin
+The [Harness Gitspaces plugin](https://open-vsx.org/extension/harness-inc/gitspaces) is a Cursor extension that lets you connect to and manage your Gitspaces directly in the Cursor IDE. It provides a seamless workflow so you can work on Gitspaces without leaving the IDE. With the plugin, you can:
+
+* Start and open a Gitspace
+* Stop a Gitspace
+* View all your Gitspaces from within Cursor
+
+Follow these steps to set up the Harness Gitspaces plugin in Cursor:
+
+1. Open Cursor and go to **Extensions**.
+2. Search for **Harness Gitspaces** and click **Install**.
+3. After installation, click **Sign in**. You’ll be redirected to the Harness sign-in page—enter your Harness credentials.
+4. Once signed in, you can manage and connect to your Gitspaces directly from the IDE.
