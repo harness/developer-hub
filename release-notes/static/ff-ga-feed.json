@@ -508,5 +508,11 @@
     "description": "Enable the Notifications management feature at all scopes",
     "gaStartDate": "2025-09-24",
     "module": "Platform"
+  },
+  {
+    "flagKey": "CDS_GITOPS_ENABLE_UPDATE_GITOPS_APP_ROLLBACK",
+    "description": "Flag to indicate update GitOps app rollback behaviour. Once enabled, during rollback, application sources will be fetched from application revision history",
+    "gaStartDate": "2025-09-27",
+    "module": "GitOps"
   }
 ]
