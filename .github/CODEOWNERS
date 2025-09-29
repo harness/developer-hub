@@ -208,9 +208,9 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/ai-sre.md @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla @NickLanam
 
 # AI QA Assistant Docs
-/docs/ai-qa-assistant/ @ShibamD @splitterben 
-/release-notes/ai-test-automation.md @ShibamD @splitterben 
-/src/components/Docs/AiTestAutomation.tsx @ShibamD @splitterben 
+/docs/ai-qa-assistant/ @ShibamD @splitterben @deba-harness
+/release-notes/ai-test-automation.md @ShibamD @splitterben @deba-harness
+/src/components/Docs/AiTestAutomation.tsx @ShibamD @splitterben @deba-harness 
 
 # Artifact Registry Docs
 /docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h @ShibamD
