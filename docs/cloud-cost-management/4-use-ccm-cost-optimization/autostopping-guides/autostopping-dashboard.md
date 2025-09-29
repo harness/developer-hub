@@ -177,5 +177,5 @@ Harness AutoStopping Rules now support overlapping schedules, offering enhanced 
 
 Overlapping schedules are particularly useful for organizations with teams operating in different time zones or for scenarios where temporary overrides, such as maintenance windows, need to be added to an existing schedule. By prioritizing schedules, users can ensure that the most critical rules are applied at the right time without modifying or deleting existing configurations.  
 
-<DocImage path={require('./static/overlapping_schedules1.png')} width="90%" height="90%" title="Click to view full size image" />
-<DocImage path={require('./static/overlapping_schedules2.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/overlapping-schedules-one.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/overlapping-schedules-two.png')} width="90%" height="90%" title="Click to view full size image" />
