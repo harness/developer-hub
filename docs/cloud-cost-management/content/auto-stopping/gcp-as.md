@@ -11,7 +11,7 @@ Set up a proxy or load balancer that will intercept and manage traffic to your r
 
 An AutoStopping Proxy is a virtual machine that sits in front of your virtual machines and intelligently starts or stops them based on incoming traffic. It supports both HTTP(S) and TCP connections. Built on the proven, open-source Envoy Proxy, the AutoStopping Proxy is capable of managing traffic for multiple AutoStopping-managed VMs from a single instance
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/gcp-proxy.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('../static/gcp-proxy.png')} width="50%" height="50%" title="Click to view full size image" />
 
 1. In **Harness**, go to the **Cloud Costs** module. Click on **AutoStopping Rules** from left Navbar.
 2. Click **Load Balancers**.
@@ -55,13 +55,13 @@ Ensure that the file uploaded in the Secret value field is not encrypted or enco
 
 Click on **+ Add an instance**. Add the instances that you want to manage by this rule.
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/gcp-compute-engine.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../static/gcp-compute-engine.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="instance" label="Instance Groups">
 Click on **+ Add instance group**. Add the instance groups that you want to manage by this rule. And optionally choose to convert the selected instance(s) to spot or remain on-demand.
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/gcp-instance-groups.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../static/gcp-instance-groups.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
@@ -76,7 +76,7 @@ Click on **+ Add instance group**. Add the instance groups that you want to mana
     Link your rule to other AutoStopping rules if resources depend on each other.
       - Click **Add Dependency** and select a rule from the **RULES** drop-down list.
       - In **DELAY IN SECS**, enter the number of seconds the dependent rule should wait after warming up before warming up this rule.
-      <DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-dependencies.png')} width="100%" height="100%" title="Click to view full size image" />
+      <DocImage path={require('../static/aws-dependencies.png')} width="100%" height="100%" title="Click to view full size image" />
     </TabItem>
     <TabItem value="fixed-schedules" label="Fixed Schedules">
     Create fixed uptime or downtime schedules for the resources managed by this rule. A fixed schedule takes precedence over the idle time logic.
@@ -86,7 +86,7 @@ Click on **+ Add instance group**. Add the instance groups that you want to mana
       - Select the **Time Zone**.
       - Set the schedule period with **Begins on** and **Ends on** dates and times. You can also select the **Never ends** checkbox.
       - To set a recurring schedule, select the repeat frequency and the days of the week, and set the **Start** and **End** times. You can also select **All Day**.
-      <DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
+      <DocImage path={require('../static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
     </TabItem>
     </Tabs>
 <details>
@@ -234,3 +234,6 @@ Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
 </Tabs>
 
 
+## GCP AutoStopping Savings Computation
+
+ There are two types of exports in GCP: **Standard and Detailed**. Ensure the billing export is the detailed billing export. It is important to have a billing-enabled connector set up with detailed billing exports. The billing data will be used to compute savings for GCP instance and instance-group-based rules.

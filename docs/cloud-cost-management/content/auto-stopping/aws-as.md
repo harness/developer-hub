@@ -69,7 +69,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
 <Tabs>
 <TabItem value="Setup Load Balancer" >
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-lb.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('../static/aws-lb.png')} width="50%" height="50%" title="Click to view full size image" />
 
 1. In the AutoStopping overview page, click **Load Balancers** in the top right
 2. Enter a name and select **AWS** in **Cloud Provider**
@@ -87,7 +87,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
 
 <TabItem value="Setup Proxy" >
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-proxy.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('../static/aws-proxy.png')} width="50%" height="50%" title="Click to view full size image" />
 
 1. In **Harness**, go to the **Cloud Costs** module. Click on **AutoStopping Rules** from left Navbar.
 2. Click **Load Balancers**.
@@ -146,7 +146,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
 - Choose to **Convert to Spot Instances** or keep as On-Demand
 
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-ec.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../static/aws-ec.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="ecs" label="ECS Service">
@@ -158,7 +158,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
    - **Service Tags**: Select region, cluster, and tags
 - Specify the **Desired Task Count** that Harness should instantiate when the service is running
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-ecs.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../static/aws-ecs.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="asg" label="Auto-Scaling Groups">
@@ -168,7 +168,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
 - Choose the on-demand vs. spot ratio for your ASG
    > **Note:** The Mixed Instance Policy must be enabled for the ASG
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-asg.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../static/aws-asg.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="rds" label="RDS Instances">
@@ -176,7 +176,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
 - Select **RDS** as the resource type
 - Click **Add RDS Instance** and select the instance you want to manage
 
-<DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-rds.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../static/aws-rds.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
@@ -191,7 +191,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
     Link your rule to other AutoStopping rules if resources depend on each other.
       - Click **Add Dependency** and select a rule from the **RULES** drop-down list.
       - In **DELAY IN SECS**, enter the number of seconds the dependent rule should wait after warming up before warming up this rule.
-      <DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-dependencies.png')} width="100%" height="100%" title="Click to view full size image" />
+      <DocImage path={require('../static/aws-dependencies.png')} width="100%" height="100%" title="Click to view full size image" />
     </TabItem>
     <TabItem value="fixed-schedules" label="Fixed Schedules">
     Create fixed uptime or downtime schedules for the resources managed by this rule. A fixed schedule takes precedence over the idle time logic.
@@ -201,7 +201,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
       - Select the **Time Zone**.
       - Set the schedule period with **Begins on** and **Ends on** dates and times. You can also select the **Never ends** checkbox.
       - To set a recurring schedule, select the repeat frequency and the days of the week, and set the **Start** and **End** times. You can also select **All Day**.
-      <DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
+      <DocImage path={require('../static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
     </TabItem>
     </Tabs>
 <details>
@@ -482,4 +482,20 @@ Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
 </TabItem>
 </Tabs>
 
+## AWS AutoStopping Savings Computation
+
+For AWS, the savings are determined by calculating the total cost based on amortized values after deducting total discounts.
+
+`Cost = Amortized Cost - Total Discounts`
+
+
+### Important points to Remember:
+
+- Savings numbers will become precise only after the savings numbers are finalized after the 15th of the next month (after the final settlement). Savings will be recomputed for the previous month on the 15th of the next month to ensure any updates to CUR/billing-export are considered in the final savings numbers for the month.
+
+- GCP billing export configured in the billing connector needs to be "detailed".
+
+- Azure billing export configured in the billing connector needs to be "amortized".
+
+- For cluster-based AutoStopping rules, the corresponding billing-enabled connector of the CSP should be configured in Harness; otherwise, savings computation will be based on public pricing data.
 

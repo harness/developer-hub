@@ -21,7 +21,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
     Link your rule to other AutoStopping rules if resources depend on each other.
       - Click **Add Dependency** and select a rule from the **RULES** drop-down list.
       - In **DELAY IN SECS**, enter the number of seconds the dependent rule should wait after warming up before warming up this rule.
-      <DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-dependencies.png')} width="100%" height="100%" title="Click to view full size image" />
+      <DocImage path={require('../static/aws-dependencies.png')} width="100%" height="100%" title="Click to view full size image" />
     </TabItem>
     <TabItem value="fixed-schedules" label="Fixed Schedules">
     Create fixed uptime or downtime schedules for the resources managed by this rule. A fixed schedule takes precedence over the idle time logic.
@@ -31,7 +31,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
       - Select the **Time Zone**.
       - Set the schedule period with **Begins on** and **Ends on** dates and times. You can also select the **Never ends** checkbox.
       - To set a recurring schedule, select the repeat frequency and the days of the week, and set the **Start** and **End** times. You can also select **All Day**.
-      <DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
+      <DocImage path={require('../static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
     </TabItem>
     </Tabs>
 
@@ -166,3 +166,20 @@ Click Next once the YAML is validated.
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
 Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
+
+----
+
+## Cluster AutoStopping Savings Computation
+
+Cluster cost data (trued-up or not trued-up) is considered for savings computation. Savings will be computed in terms of tracked pods under cluster cost data only.
+
+### Important points to Remember:
+
+- Savings numbers will become precise only after the savings numbers are finalized after the 15th of the next month (after the final settlement). Savings will be recomputed for the previous month on the 15th of the next month to ensure any updates to CUR/billing-export are considered in the final savings numbers for the month.
+
+- GCP billing export configured in the billing connector needs to be "detailed".
+
+- Azure billing export configured in the billing connector needs to be "amortized".
+
+- For cluster-based AutoStopping rules, the corresponding billing-enabled connector of the CSP should be configured in Harness; otherwise, savings computation will be based on public pricing data.
+

@@ -13,7 +13,7 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
     Kubernetes: {
       path: "/cloud-cost-management/content/autostopping/kubernetes-as.md",
       logo: "/cloud-providers/kubernetes-logo.svg",
-      logoSize: 32br
+      logoSize: 32
     },
     AWS: {
       path: "/cloud-cost-management/content/autostopping/aws-as.md",
