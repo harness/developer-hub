@@ -50,16 +50,16 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
-/release-notes/continuous-delivery.md vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
-/src/components/Roadmap/data/cdData.ts vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
-/src/components/Docs/data/continuousDeliveryData* vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
+/docs/continuous-delivery/ vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
+/release-notes/continuous-delivery.md vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
+/src/components/Roadmap/data/cdData.ts vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
+/src/components/Docs/data/continuousDeliveryData* vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ vishal.vishwaroop@harness.io @thisrohangupta siddhant.dua@harness.io
+/docs/category/continuous-delivery/ vishal.vishwaroop@harness.io @thisrohangupta siddhant.dua@harness.io anshul@harness.io
 # CD FAQs
-/docs/faqs/continuous-delivery-faqs vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io
+/docs/faqs/continuous-delivery-faqs vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
 # GitEx FAQs
-/docs/faqs/git-exp-vs-config-as-code/ vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io
+/docs/faqs/git-exp-vs-config-as-code/ vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
 
 
 # Continuous Integration Docs
