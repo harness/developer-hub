@@ -36,7 +36,7 @@ The following table provides a detailed overview of each STO resource, its suppo
 | Resource          | Permissions                      | Project Scope | Organization Scope | Account Scope | Description                                                                 |
 |-------------------|----------------------------------|:-------:|:------------:|:-------:|-----------------------------------------------------------------------------|
 | Issues            | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul>        |   ✅    |      ✅      |   ✅    | Vulnerabilities identified by security scans. Tracked at project level and viewable at higher scopes. |
-| Test Targets      | <ul><li>View</li><li>Create / Edit</li></ul>                 |   ✅    |      ❌      |   ❌    | Artifacts or repositories configured for scanning within specific projects. |
+| Test Targets      | <ul><li>View</li><li>Create / Edit</li><li>Approve / Reject</li></ul>                 |   ✅    |      ❌      |   ❌    | [Approve Base Image](/docs/security-testing-orchestration/set-up-scans/container-scanning/base-image-vulnerabilites/approve-base-image) Targets for labeling and policy enforcement. |
 | Scans             | <ul><li>View</li></ul>                              |   ✅    |      ❌      |   ❌    | Security test executions within pipelines.                       |
 | Exemptions        | <ul><li>View</li><li>Create / Edit</li><li>Approve / Reject</li></ul>  (*Refer to [Exemption Permissions  Matrix](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#exemption-permissions-matrix) for more details.*)|   ✅    |      ✅      |   ✅    | Requests to ignore identified vulnerabilities from policy enforcement.    |
 | External Tickets (*coming soon*) | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul>        | ✅ (*planned*) | ❌ &nbsp; &nbsp; (*planned*) | ❌ (*planned*) | External issue-tracker tickets linked to STO vulnerabilities (e.g., Jira).  |
@@ -50,7 +50,7 @@ Permissions control the specific actions users can perform on STO resources:
 * **View**: Allows users read-only access to resources.
 * **Create/Edit**: Enables users to configure, create, or modify resources.
 * **Delete**: Grants the ability to remove resources (where applicable).
-* **Approve/Reject (Exemptions only)**: Provides authority to approve or reject exemption requests.
+* **Approve/Reject**: Provides authority to approve or reject resources.
 
 ## Built-in STO Roles (Default Roles)
 Harness includes two built-in roles specifically designed for STO use cases. **[Security Testing Developer](#security-testing-developer)** and **[Security Testing AppSec](#security-testing-appsec)**. These roles come pre-configured with sets of permissions on STO resources to match typical developer and security team responsibilities.
