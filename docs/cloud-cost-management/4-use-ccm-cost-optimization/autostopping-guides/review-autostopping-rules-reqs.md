@@ -60,11 +60,10 @@ Review the following prerequisites.
 #### Prerequisites
 
 The following prerequisites are needed:
-* See [Set up cost visibility for AWS](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) for the following topics:
-	* Access to CUR. See Cost and Usage Reports (CUR) and CCM Requirements.
-	* Permissions to create a cross-account role. See AWS Access Permissions.
-	* Permissions for AWS ECS and Resource Inventory Management. See AWS ECS and Resource Inventory Management.
-	* Permissions for AWS Resource Optimization Using AutoStopping Rules. See AWS Resource Optimization Using AutoStopping Rules.
+* Access to CUR. 
+* Permissions to create a cross-account role. 
+* Permissions for AWS ECS and Resource Inventory Management. 
+* Permissions for AWS Resource Optimization Using AutoStopping Rules. 
 * HTTP/HTTPS-based applications running on ECS
 * ECS running on EC2 nodes or Fargate
 
@@ -131,13 +130,10 @@ The following prerequisites are needed:
 * Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](/docs/cloud-cost-management/whats-supported).
 * Ensure that you have Cluster Autoscaler enabled for EKS with managed node groups
 * For EKS:
-	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
-	+ Permissions to create a cross-account role. See [AWS Access Permissions](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions)
+	+ Ensure that you have access to (Cost Usage Report) CUR. 
+	+ Permissions to create a cross-account role. 
 
 #### Questionnaire
-
-
-
 
 * What is the Kubernetes version? 
 * Do you use Fargate on Kubernetes? 
@@ -177,9 +173,4 @@ Review the following set up related questions.
  
 * How many developers access the instances? 
 * What is the number of instances? 
-
-
-### Next Steps
-
-* [AutoStopping Rules](../1-auto-stopping-rules.md)
 
