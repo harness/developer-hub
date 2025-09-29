@@ -51,4 +51,4 @@ The AutoStopping process works in four key steps:
 
 ## Ready to Get Started?
 
-Follow our [Set Up AutoStopping Rules](./set-up-autostopping-rules.md) to set up AutoStopping in your environment in three simple step.
+Follow our [Set Up AutoStopping Rules](./autostopping-rules.md) to set up AutoStopping in your environment in three simple step.

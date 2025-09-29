@@ -298,7 +298,7 @@ echo ">>> Setup complete."
 
 6. Post this, connect to your instance and upon successful connection, the proxy will show on the home page of Load Balancer Manager in AutoStopping.
 
-<details>
+</details>
 </TabItem>
 
 </Tabs>

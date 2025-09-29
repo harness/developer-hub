@@ -6,6 +6,8 @@ helpdocs_topic_id: ux8wo1l75q
 helpdocs_category_id: 6bw1qej23v
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/configure-ecg-for-auto-stopping-rules
 ---
 
 This topic describes how to configure ECG for AutoStopping Rules. You can assume ECG as an **event emitter** for your rule. It sends usage records for the configured rules.
@@ -103,7 +105,7 @@ sudo ./install.sh
 * **Account ID**: Account ID for which you want to enable ECG. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL.  
   * For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/ng/account/1a2b3c`.
 
-* **Hostname of the AutoStopping Rule**: Hostname of the AutoStopping Rule for which you want to configure the ECG. You can copy the hostname from the [AutoStopping dashboard](../1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/autostopping-dashboard.md). To obtain the hostname, do the following:
+* **Hostname of the AutoStopping Rule**: Hostname of the AutoStopping Rule for which you want to configure the ECG. You can copy the hostname from the AutoStopping dashboard. To obtain the hostname, do the following:
   * In **AutoStopping Rules**, in **Summary of Rules**, click the rule for which you want to configure the ECG.
   * Copy the hostname.
 

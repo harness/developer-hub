@@ -22,9 +22,8 @@ Review the following prerequisites and set up related questions.
 The following prerequisites are needed:
 
 * Ensure that you have AWS EC2 VMs or Auto Scaling Groups created
-* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
-* Permissions to create a cross-account role. See [AWS Access Permissions](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions)
-
+* Ensure that you have access to CUR. 
+* Permissions to create a cross-account role. 
 #### Questionnaire
 
 

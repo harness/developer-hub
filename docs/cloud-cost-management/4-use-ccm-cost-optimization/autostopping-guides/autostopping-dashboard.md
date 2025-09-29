@@ -6,11 +6,13 @@ helpdocs_topic_id: ehmi6kiynl
 helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- /docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard
 ---
 
-AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
+AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
-AutoStopping dashboard allows you to view a summary of all the AutoStopping rules you have created in a simple and intuitive interface. The following are the key features of the AutoStopping Rules dashboard:
+AutoStopping dashboard allows you to view a summary of all the AutoStopping rules you have created in a simple and intuitive interface. The following are the key features of the AutoStopping Rules dashboard:
 
 - View total savings in your setup after AutoStopping rules are created
 - View total spend in your setup after AutoStopping rules are created
@@ -135,7 +137,7 @@ You can edit an AutoStopping rule from the Summary of Rules Page or from the det
 
    ![](./static/autostopping-dashboard-45.png)
 
-3. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](/docs/category/autostopping-for-aws) and [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/create-rule-vm).
+3. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](/docs/category/autostopping-for-aws) and [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-rules#azure).
 
 #### From the Details Page
 

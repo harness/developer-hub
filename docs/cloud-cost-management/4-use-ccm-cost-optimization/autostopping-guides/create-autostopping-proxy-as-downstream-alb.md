@@ -5,6 +5,9 @@ helpdocs_topic_id: 1r80jdz2f9
 helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- /docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-proxy-as-downstream-alb
+
 ---
 
 The AutoStopping Proxy can be used as a downstream system to existing ALB(s) in order to leverage dynamic idle-time detection required for AutoStopping of resources. This can be done for various types of load balancers. This would mean no changes to existing DNS mappings done on AWS ALB and involves easier configuration without any disruptions.

@@ -446,9 +446,6 @@ Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
 
 Billing data from Azure's amortized billing export will be used to compute savings for Azure VM-based AutoStopping rules. Please ensure the connector has amortized billing export enabled.
 
-### Cluster AutoStopping Savings Computation
-
-Cluster cost data (trued-up or not trued-up) is considered for savings computation. Savings will be computed in terms of tracked pods under cluster cost data only.
 
 ### Important points to Remember:
 

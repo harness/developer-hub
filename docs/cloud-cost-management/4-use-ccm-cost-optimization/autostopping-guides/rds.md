@@ -36,7 +36,7 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 
 ### Create Harness AutoStopping proxy
 
-For more information, go to [AutoStopping Proxy for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy).
+For more information, go to [AutoStopping Proxy for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-rules#aws).
 
 1. In **Harness**, go to the **Cloud Costs** module.
 2. Under **Setup**, select **Load Balancers**.
@@ -70,7 +70,7 @@ For more information, go to [AutoStopping Proxy for AWS](/docs/cloud-cost-manage
 
 ### Set up Harness AutoStopping Rule for RDS
 
-This section walks you through the steps to configure an AutoStopping rule for your RDS instance. For more information, go to [Create AutoStopping rule for RDS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-rds).
+This section walks you through the steps to configure an AutoStopping rule for your RDS instance. For more information, go to [Create AutoStopping rule for RDS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-rules#aws).
 
 #### Define the AutoStopping rule
 
@@ -106,7 +106,7 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
 
 These are additional advanced settings:
 
-* **Dry Run:** Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dry-run-mode).
+* **Dry Run:** Toggle the button if you wish to evaluate this feature without terminating your cloud resources. 
 * **Add Dependency:** Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For more information, go to [Add Dependency](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-rds).
 * **Fixed Schedules:** Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. For more information, go to [Fixed Schedules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-rds).
 
@@ -123,7 +123,7 @@ These are additional advanced settings:
 
 In Review, verify all the configuration details and select **Save Rule**. To edit any of the configuration settings, select **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping rules summary page](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard).
+Your AutoStopping rule is listed under the AutoStopping rules summary page.
 
 ### Connect to the RDS instance
 

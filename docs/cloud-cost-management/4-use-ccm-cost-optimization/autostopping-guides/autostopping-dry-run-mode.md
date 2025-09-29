@@ -2,6 +2,8 @@
 title: Evaluate AutoStopping rules in dry-run mode
 description: This topic describes how to create AutoStopping rules in dry-run mode.
 # sidebar_position: 2
+redirect_from: 
+- /docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dry-run-mode
 ---
 
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
