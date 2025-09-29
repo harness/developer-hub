@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic covers the requirements for creating [AutoStopping Rules](../1-auto-stopping-rules.md) on all supported cloud platforms. Before you begin creating AutoStopping Rules, make sure you've reviewed the following:
+This topic covers the requirements for creating AutoStopping Rules on all supported cloud platforms. Before you begin creating AutoStopping Rules, make sure you've reviewed the following:
 
 * Prerequisites
 * Questionnaire about your cloud setup and resources

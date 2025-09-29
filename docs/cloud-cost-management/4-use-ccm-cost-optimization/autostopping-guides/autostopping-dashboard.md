@@ -137,7 +137,7 @@ You can edit an AutoStopping rule from the Summary of Rules Page or from the det
 
    ![](./static/autostopping-dashboard-45.png)
 
-3. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](/docs/category/autostopping-for-aws) and [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-rules#azure).
+3. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-rules#aws) and [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-rules#azure).
 
 #### From the Details Page
 
