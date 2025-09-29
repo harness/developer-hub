@@ -18,7 +18,7 @@ Cloud Asset Governance provides valuable recommendations, but when it comes to o
 <TabItem value="aws" label="AWS" default>
 
 <details>
-<summary>Recommendation: delete-unattached-aws-ebs</summary>
+<summary>Recommendation:delete-unattached-aws-ebs</summary>
 
 **Description:** Delete all ebs volumes which are unattached
 
