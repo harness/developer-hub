@@ -32,8 +32,8 @@ The difference between “create a pipeline” and “create a CI→CD pipeline 
 
 | Weak Prompt | Strong Prompt | Why It’s Better |
 |-------------|---------------|-----------------|
-| `Create a pipeline for my app` | `Generate a Harness CI→CD pipeline that builds a Docker image and pushes to Dockerhub. Add a CD stage to deploy a Kubernetes service to namespace dev on cluster connector k8s-dev. Include variables for IMAGE_TAG and REPLICA_COUNT, and output only valid YAML.` | Specifies source, build, deploy, connectors, and variables. |
-| `Make a pipeline` | `Create a pipeline that runs unit tests for python, builds with Dockerfile, scans image with semgrep and deploys to staging using a Rolling strategy. Use GitHub connector rohan-git, Docker connector harness docker hub, and K8s connector k8s-dev.` | Details testing, scanning, staging, strategy, and connectors. |
+| `Create a pipeline for my app` | `Generate a Harness CI→CD pipeline that builds a Docker image and pushes to Dockerhub. Add a CD stage to deploy a Kubernetes service to namespace dev on cluster co[...]` | More detailed, includes build, push, and deployment targets. |
+| `Make a pipeline` | `Create a pipeline that runs unit tests for python, builds with Dockerfile, scans image with semgrep and deploys to staging using a Rolling strategy. Use GitHub connector rohan-git.` | Specifies language, build, scan, deploy, strategy, and connector. |
 
 ---
 
@@ -41,8 +41,8 @@ The difference between “create a pipeline” and “create a CI→CD pipeline 
 
 | Weak Prompt | Strong Prompt | Why It’s Better |
 |-------------|---------------|-----------------|
-| `Make a Kubernetes service` | `Generate a Kubernetes service definition named portal using Helm with chart path /cd/chart/portal. Expose variables: IMAGE, TAG, REPLICA_COUNT. Include artifact reference to <+input> and config files section.` | Defines chart path, variables, and artifact reference. |
-| `Create a Lambda service` | `Create a serverless (AWS Lambda) service named router with runtime nodejs18.x, artifact from <+input>, and environment variables LOG_LEVEL, STAGE.` | Adds runtime, artifact, and environment configuration. |
+| `Make a Kubernetes service` | `Generate a Kubernetes service definition named portal using Helm with chart path /cd/chart/portal. Expose variables: IMAGE, TAG, REPLICA_COUNT. Include artifact references.` | Names, chart path, exposed variables, artifact refs. |
+| `Create a Lambda service` | `Create a serverless (AWS Lambda) service named router with runtime nodejs18.x, artifact from runtime input, and environment variables LOG_LEVEL, STAGE.` | Adds runtime, artifact source, and environment variables. |
 
 ---
 
@@ -69,7 +69,7 @@ The difference between “create a pipeline” and “create a CI→CD pipeline 
 
 | Weak Prompt | Strong Prompt | Why It’s Better |
 |-------------|---------------|-----------------|
-| `Make a Docker connector` | `Generate a Docker Registry connector named canary-docker pointing to harness/canary with credentials from secret refs usernameRef: canary and passwordRef: docker-hub-token.` | Provides registry, credentials, and secret references. |
+| `Make a Docker connector` | `Generate a Docker Registry connector named canary-docker pointing to harness/canary with credentials from secret refs usernameRef: canary and passwordRef: docker-hub-token.` | Names, repo, and credential refs. |
 | `Create a Vault connector` | `Create a HashiCorp Vault connector, called dev-vault and default the rest of the values.` | Identifies type, name, and defaults. |
 
 ---
@@ -101,12 +101,12 @@ Generate a pipeline at the Project scope that uses the staging environment and G
 ```
 ### 2. Include Runtime Inputs
 
-Call out variables you want parameterized with <+input>.
+Call out variables you want parameterized with `<+input>`.
 
 **Example**
 
 ```text
-Create a Kubernetes service with IMAGE and TAG as runtime inputs, defaulting to <+input>.
+Create a Kubernetes service with IMAGE and TAG as runtime inputs, defaulting to `<+input>`.
 ```
 
 ### 3. Specify Deployment Strategies
@@ -161,14 +161,13 @@ Follow up Prompt
 Add a canary rollout strategy to the deployment stage.
 ```
 
-
 ## Best Practice Checklist
 
 - Mention target platform (Kubernetes, ECS, Lambda, VM)
 - Include connector names and secret references
 - Add environment/namespace details
 - Specify deployment strategy (Rolling, Canary, Blue/Green)
--  Use variables for flexibility (`IMAGE_TAG`, `SERVICE_NAME`)  
+- Use variables for flexibility (`IMAGE_TAG`, `SERVICE_NAME`)  
 
 ---
 
@@ -177,3 +176,4 @@ Add a canary rollout strategy to the deployment stage.
 - Start with the strong prompt examples in the tables above.  
 - Adjust connectors, namespaces, and service names to match your project.  
 - Run, review, and iterate to accelerate CI/CD setup with Harness AI.  
+
