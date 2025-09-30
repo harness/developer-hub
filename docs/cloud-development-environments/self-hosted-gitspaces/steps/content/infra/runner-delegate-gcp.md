@@ -75,8 +75,10 @@ Please ensure you are installing the **Docker Delegate** in your VM instance. Fo
 
 5. Copy the **Delegate install command** and run it in your GCP VM. 
   - You can customise the **``cpus``** and **``memory``** fields and increase the spec based on the expected load. 
-  - Make sure the **``ACCOUNT_ID``** and **``DELEGATE_TOKEN``** are filled in the given command. These are **mandatory parameter**s. 
-  - Add the **``RUNNER URL``** by adding this snippet into your delegate install command: ``-e RUNNER_URL="http://vm-runner:3000/" \`` to ensure the delegate has the runner url. 
+  - Make sure the **``ACCOUNT_ID``** and **``DELEGATE_TOKEN``** are filled in the given command. These are **mandatory parameters**. 
+  - **`DELEGATE_TAGS`** is a mandatory parameter. Make sure to add the tags to the delegate install command. 
+  - Add the **``RUNNER_URL``** by adding this snippet into your delegate install command: ``-e RUNNER_URL="http://vm-runner:3000/" \`` to ensure the delegate has the runner url. 
+  - Ensure the **``MANAGER_HOST_AND_PORT``** is filled in with the latest delegate version. 
   
   Your final install command will look something like this: 
 
