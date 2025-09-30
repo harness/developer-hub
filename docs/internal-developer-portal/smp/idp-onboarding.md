@@ -1,14 +1,21 @@
 ---
-title: IDP Onboarding to SMP Environments
-sidebar_position: 1
+title: IDP Onboarding to SMP Environments [BETA]
+sidebar_position: 2
 sidebar_label: Onboarding Guide
 description: Guide for configuring and deploying Harness IDP in Self Managed Platform environments
 ---
 
 # IDP Onboarding to SMP Environments
 
+:::info Harness IDP SMP Edition [BETA]
+Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Please refer to the [Harness IDP Release Notes](/release-notes/internal-developer-portal.md) to keep track of new feature updates and improvements.
+:::
+
 This guide provides detailed instructions for deploying the Harness Internal Developer Portal (IDP) to your Self Managed Platform (SMP) environment. Following these configuration steps will help you establish a properly functioning IDP implementation integrated with your SMP infrastructure.
 
+:::info Only for IDP 2.0
+Harness IDP on SMP is available only for **IDP 2.0**. **IDP 1.0** is **not supported** on SMP.
+:::
 
 ## Infrastructure Requirements
 
@@ -159,31 +166,6 @@ idp-service:
 ```
 
 The IDP service will leverage the Workload Identity configuration from earlier steps to access Google Cloud resources securely.
-
-### Step 5: Certificate Acceptance for Microfrontend
-
-After applying all configurations, you may need to address browser security warnings for the IDP microfrontend:
-
-1. Navigate to the following URL in your browser:
-   ```
-   https://<loadbalancer-ip>/<account-id>/idp/remoteEntry.js?&routingId=<account-id>
-   ```
-
-2. When presented with the security warning, select "Proceed to unsafe" or "Advanced → Continue" (browser-dependent).
-
-3. Return to the IDP module and refresh the page to load the interface properly.
-
-:::tip Certificate Trust
-This process establishes browser trust for the IDP microfrontend certificate. The browser will store this trust decision for subsequent visits.
-:::
-
-:::note Third-Party Integration Requirements
-If you need to integrate with third-party SaaS products such as PagerDuty, GitHub, or GitLab, their domains must be whitelisted in your firewall policies.
-
-**Example for PagerDuty integration:**
-- **FQDNs**: harness.pagerduty.com
-- **Protocol/Ports**: tcp:80, tcp:443
-:::
 
 ## Troubleshooting
 
