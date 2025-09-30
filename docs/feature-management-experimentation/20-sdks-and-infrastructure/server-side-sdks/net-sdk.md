@@ -35,7 +35,7 @@ We unified the source code for Splitio and Splitio-net-core packages in one repo
 Use NuGet in the command line or the Package Manager UI in Visual Studio.
 
 ```csharp title="NuGet"
-Install-Package Splitio -Version 7.11.0
+Install-Package Splitio -Version 7.12.0
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -574,7 +574,7 @@ First, import Splitio.Redis NuGet package into your project.
 Use NuGet in the command line or the Package Manager UI in Visual Studio.
 
 ```csharp title="NuGet"
-Install-Package Splitio.Redis -Version 7.11.0
+Install-Package Splitio.Redis -Version 7.12.0
 ```
 
 To initiate an SDK with support for Redis as consumer mode, use the following code snippet:
