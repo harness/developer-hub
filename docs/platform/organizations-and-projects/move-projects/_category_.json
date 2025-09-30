@@ -1,0 +1,14 @@
+{
+    "label": "Move Projects",
+    "position": "5",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Move Projects"
+    },
+    "customProps": {
+        "helpdocs_category_id": "3trbf8xckk"
+    }
+}
