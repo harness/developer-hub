@@ -514,5 +514,137 @@
     "description": "Flag to indicate update GitOps app rollback behaviour. Once enabled, during rollback, application sources will be fetched from application revision history",
     "gaStartDate": "2025-09-27",
     "module": "GitOps"
+  },
+  {
+    "flagKey": "CDS_TEMPLATE_SET_GIT_CONTEXT",
+    "description": "Child entity should be resolved by parent git context.",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_PIPELINE_TEMPLATE_API_OPTIMISATIONS",
+    "description": "Optimisations for pipeline apis w.r.t template resolution in NG",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_PIPELINE_STAGE_TEMPLATE_VALIDATION_OPTIMISATIONS",
+    "description": "Optimisations for resolving templates for pipeline chaining validation",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_MARK_PIPELINE_AS_FAILURE",
+    "description": "Feature Flag to enable User marked pipeline failure",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_EXPRESSION_V2_OPTIMISATION",
+    "description": "Optimisation for ExpressionV2 engine",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK",
+    "description": "Allow expression resolution of previous stage in pipeline rollback mode",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_FIX_RESOURCE_RESTRAINTS_FOR_RETRY_STEPS",
+    "description": "FF to avoid recreation of resource restarint instance when a queue step is retried",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_RESTRICT_SUBGRAPH_API_TO_STEP_GROUP",
+    "description": "FF to enable to limit subGraph API to only step group nodes",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_RESTRICT_INVALID_TEMPLATE_AND_INPUT_SET_YAML_THROW_EXCEPTION",
+    "description": "FF to redirect invalid template yaml and input set yaml to yaml view of templates and input set",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_RESOLVE_TO_NULL_VALUE_BASED_ON_EXPRESSION_MODE",
+    "description": "FF to enable resolution to null value if unresolved expressions come via StringReplacer",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_RESOLVE_EXECUTION_INPUT_EXPRESSION",
+    "description": "FF to enable expression resolution for executionInput",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_SEPARATE_PLAN_CREATION_EXECUTORS",
+    "description": "FF to separate out executor services per module for plan creation",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_REVERSE_STAGE_ORDER_IN_POST_EXECUTION_ROLLBACK",
+    "description": "FF to reverse the order of stages to execute in the post-execution rollback",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD",
+    "description": "FF to mark the parent pipeline status waiting as well, In case child pipeline status is waiting",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_CACHE_OLD_RETRIED_STEP_GROUP_GRAPH",
+    "description": "FF to cache the old retried step group graph in cacheEntities collection",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_POPULATE_RETRY_NODE_METADATA",
+    "description": "FF to store start and end time of previously skipped nodes in retried execution",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_MOVE_INSTANCE_FUNCTOR_TO_PIPELINE_SERVICE",
+    "description": "FF to migrate the instance expressions resolution to pipeline-service",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_MOVE_KUBERNETES_RELEASE_FUNCTOR",
+    "description": "FF to move expression resolution of kubernetes release functor to pipeline-service",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_OPTIMISE_EXPORTED_VARIABLES_FUNCTOR",
+    "description": "FF to remove grpc call for sweeping outputs from exported variables functor",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_MASK_SECRET_EXPRESSIONS_IN_TRIGGER_PAYLOAD",
+    "description": "Mask secret expressions which are part of trigger payload",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_TRIGGER_CHANGED_FILES_EXPRESSION",
+    "description": "Includes changed files in push event in trigger expression via <+trigger.changedFiles>",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_SUPPORT_FILTER_DELETION_ON_ORG_OR_PROJECT_DELETION",
+    "description": "FF to support pipeline filter deletion on org/project deletion",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
   }
 ]
