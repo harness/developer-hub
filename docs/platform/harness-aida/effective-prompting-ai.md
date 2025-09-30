@@ -57,7 +57,7 @@ The difference between “create a pipeline” and “create a CI→CD pipeline 
 
 ## Secret Prompts
 
-⚠️ **Important:** Harness creates the secret object **without values**. You must add values manually in the UI. Secret values are never sent to AI.
+ **Important:** Harness creates the secret object **without values**. You must add values manually in the UI. Secret values are never sent to AI.
 
 | Weak Prompt | Strong Prompt | Why It’s Better |
 |-------------|---------------|-----------------|
@@ -164,11 +164,11 @@ Add a canary rollout strategy to the deployment stage.
 
 ## Best Practice Checklist
 
-✅ Mention target platform (Kubernetes, ECS, Lambda, VM)  
-✅ Include connector names and secret references  
-✅ Add environment/namespace details  
-✅ Specify deployment strategy (Rolling, Canary, Blue/Green)  
-✅ Use variables for flexibility (`IMAGE_TAG`, `SERVICE_NAME`)  
+- Mention target platform (Kubernetes, ECS, Lambda, VM)
+- Include connector names and secret references
+- Add environment/namespace details
+- Specify deployment strategy (Rolling, Canary, Blue/Green)
+-  Use variables for flexibility (`IMAGE_TAG`, `SERVICE_NAME`)  
 
 ---
 
