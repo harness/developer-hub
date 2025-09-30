@@ -26,10 +26,10 @@ The release notes describe recent changes to Harness Chaos Engineering.
 #### Images required
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
 
-- harness/chaos-ddcr:1.66.0
+- harness/chaos-ddcr:1.66.1
+- harness/chaos-ddcr-faults:1.66.2
 - harness/chaos-log-watcher:1.66.0
 - harness/service-discovery-collector:0.46.0
-- harness/chaos-ddcr-faults:1.66.1
 
 #### New Features and Enhancements
 
