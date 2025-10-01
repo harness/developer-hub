@@ -6,7 +6,7 @@ sidebar_position: 12
 
 # Getting Started with Harness AI 
 
-Harness AI lets you generate various Harness platform resources like pipelines, services, environments, connectors, secrets, and template-based pipelines directly from **natural-language prompts**.  
+Harness AI lets you generate various Harness platform resources like Pipeline, Cloud Cost, CD entities via **natural-language prompts**.  
 Use these confirmed sample prompts to quickly create configurations inside Harness.
 
 ---
@@ -21,9 +21,15 @@ For DevOps, pipeline and platform Automation use cases:
 
 > **Tip:** Be as specific as possible in your prompt—include details like deployment strategy, connector names, or namespaces for best results.
 
+
+For Cost and Efficiency use Cases:
+1. Open Harness AI in CCM
+2. Copy Sample Prompt and adjust prompt parameters
+3. Review the configuration before creation
+
 ---
 
-## Example Prompts
+## Example Prompts for DevOps
 
 ### Create Pipelines
 
@@ -170,4 +176,34 @@ Currently, Harness AI does not support generating:
 - Template Creation and Update
 - GitOps Application Creation and Update
 
+## Example Prompts for Efficiency and Cost
+
+### Create a Perspective
+
+You can use Harness to Create Cloud Cost Perspectives
+
+
+#### Prompts
+
+```text
+Could you create a Cost Perspective rules based on Application costs?
+```
+
+Use Case: Creating a perspective for an application
+
+```text
+Could you create a Cost Perspective rules based on Environment costs (dev/staging/prod)?
+```
+
+Use Case: Creating a Service/Component Cost Perspective
+
+```text
+Could you create a Cost Perspective rules based on a service/component?
+```
+
+Use Case: Creating a Team/Department cost perspectives to manage team cost
+
+```text
+Could you create a Cost Perspective rules based on Team/Department costs?
+```
 
