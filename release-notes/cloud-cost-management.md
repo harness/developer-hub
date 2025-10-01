@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-09-03T18:00
+date: 2025-10-08T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,22 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## October 2025 - Version 1.65.9
+#### Deployment Date: October 8, 2025 (Prod-1)
+
+### [New Feature] Budget Folders
+**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-cost-categories-toggle)**
+
+We are introducing Budget Folders to improve usability and streamline budget management. Budgets are now automatically associated with the Perspective folder under which they were created. This provides a consistent folder structure across both Perspectives and Budgets.
+
+The Budgets tab displays all the budgets in a new consolidated view. Users can drill down into a folder or access the complete budget list for broader visibility. Users can also select which columns they want to see in the Budgets list. This gives them the flexibility to refine their view with the following attributes: Time Period, Budget Amount, Current Spend, Forecast, Forecast vs. Budget, Current Spend vs. Budget, Thresholds, Created By, and Last Modified. 
+
+These changes improve the overall usability and discoverability of budgets, allowing users to identify and organize budgets more efficiently.  
+
+### Feature Improvements
+- **Resource ID Support in Perspectives**: Added "Resource ID" as a group by, filter, and operand across all cloud service providers, enabling more granular cost analysis and reporting. [CCM-25078]
+- **Azure Resource Group Filtering**: Added support for filtering recommendations by Azure Resource Group, aligning with Perspectives functionality and enabling more targeted cost optimization strategies. [CCM-25175]
 
 ## October 2025 - Hotfix: Added new columns for Recommendation CSV Export
 #### **Deployment Date:** October 3, 2025 
@@ -43,6 +59,7 @@ CCM has added new columns in CSV of recommendations when you export CSV, these n
   - **Applied At**: Date and time when the recommendation was applied (only for applied recommendations)
   - **Applied By**: User who applied the recommendation (only for applied recommendations)
   - **Overridden Savings**: Savings amount that has been manually adjusted for applied recommendations
+
 
 ## September 2025 - Version 1.64.7
 #### Deployment Date: September 23, 2025 (Prod-1)
