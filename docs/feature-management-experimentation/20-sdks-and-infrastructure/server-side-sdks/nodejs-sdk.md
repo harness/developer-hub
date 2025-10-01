@@ -249,7 +249,7 @@ treatments = client.getTreatmentsByFlagSet('key', 'backend');
 var flagSets = ['backend', 'server_side'];
 treatments = client.getTreatmentsByFlagSets('key', flagSets);
 
-// treatments have the following form: 
+// treatments have the following form:
 // {
 //   FEATURE_FLAG_NAME_1: 'on',
 //   FEATURE_FLAG_NAME_2: 'visa'
@@ -271,7 +271,7 @@ treatments = client.getTreatmentsByFlagSet('key', 'backend');
 const flagSets = ['backend', 'server_side'];
 treatments = client.getTreatmentsByFlagSets('key', flagSets);
 
-// treatments have the following form: 
+// treatments have the following form:
 // {
 //   FEATURE_FLAG_NAME_1: 'on',
 //   FEATURE_FLAG_NAME_2: 'visa'
@@ -335,7 +335,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSet('user_id', 'backend')
 var flagSets = ['backend', 'server_side'];
 treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets);
 
-// treatmentResults will have the following form: 
+// treatmentResults will have the following form:
 // {
 //   FEATURE_FLAG_NAME_1: {treatment: 'on',
 //                         config: "{ 'color' : 'red'}}",
@@ -349,7 +349,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets)
 
 ```javascript
 // Getting treatments by feature flag names
-const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']; 
+const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
 let treatmentResults: SplitIO.TreatmentsWithConfig = client.getTreatmentsWithConfig('user_id', flagNames);
 
 // Getting treatments by set
@@ -359,7 +359,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSet('user_id', 'backend')
 const flagSets = ['backend', 'server_side'];
 treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets);
 
-// treatmentResults will have the following form: 
+// treatmentResults will have the following form:
 // {
 //   FEATURE_FLAG_NAME_1: {treatment: 'on',
 //                         config: "{ 'color' : 'red'}}",
@@ -384,10 +384,10 @@ Three types of properties are supported: strings, numbers, and booleans.
 
 ```javascript
 const evaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -399,10 +399,10 @@ const treatment = client.getTreatment('key', 'FEATURE_FLAG_NAME', undefined, eva
 
 ```typescript
 const evaluationOptions: SplitIO.EvaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -414,7 +414,7 @@ const treatment: string = client.getTreatment('key', 'FEATURE_FLAG_NAME', undefi
 
 ### Shutdown
 
-Call the `client.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions. 
+Call the `client.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
@@ -1099,41 +1099,19 @@ SPLITIO_DEBUG='on' node app.js
 Since v9.2.0 of the SDK, you can enable logging via SDK settings and programmatically by calling the Logger API.
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger API (JavaScript)">
-
-```javascript
-var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
-
-var factory = SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY'
-  },
-  debug: true // Debug boolean option can be passed on settings.
-});
-
-// Or you can use the Logger API which two methods, enable and disable.
-// Calling this methods will have an immediate effect.
-factory.Logger.enable();
-factory.Logger.disable();
-
-// You can also set the log level programatically after v10.4.0
-// Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
-// 'DEBUG' is equivalent to `enable` method.
-// 'NONE' is equivalent to `disable` method.
-factory.Logger.setLogLevel('WARN');
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger API (TypeScript)">
+<TabItem value="TypeScript" label="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio';
 
-const factory: SplitIO.ISDK = SplitFactory({
+const factory = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY'
   },
-  debug: true  // Debug boolean option can be passed on settings
+  // Debug log level can be passed on settings.
+  // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE', 
+  // true (equivalent to 'DEBUG') and false (equivalent to 'NONE').
+  debug: true
 });
 
 // Or you can use the Logger API which two methods, enable and disable.
@@ -1141,7 +1119,7 @@ const factory: SplitIO.ISDK = SplitFactory({
 factory.Logger.enable();
 factory.Logger.disable();
 
-// You can also set the log level programatically after v10.4.0
+// You can also set the log level programmatically after v10.4.0
 // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
 // 'DEBUG' is equivalent to `enable` method.
 // 'NONE' is equivalent to `disable` method.
@@ -1155,9 +1133,49 @@ Example output is shown below.
 
 ![](../static/javascript-sdk-log-example.png)
 
-:::info[Note]
-For more information on using the logging framework in SDK versions prior to 9.2, visit [https://github.com/visionmedia/debug](https://github.com/visionmedia/debug).
-:::
+By default, the SDK uses the `console.log` method to output log messages for all log levels. 
+
+Since v11.6.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the Logger API. 
+
+The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and popular logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
+
+```typescript
+interface Logger {
+  debug(message: string): any;
+  info(message: string): any;
+  warn(message: string): any;
+  error(message: string): any;
+}
+```
+
+The following example creates an instance of the `winston` logger, passes it to the SDK, and then switches to the `console` logger.
+
+<Tabs>
+<TabItem value="Using Winston Logger and Console">
+
+```javascript
+const { createLogger, transports } = require('winston');
+const { SplitFactory } = require('@splitsoftware/splitio');
+
+const winstonLogger = createLogger({
+  level: 'debug',
+  transports: [new transports.Console()]
+});
+
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  },
+  debug: 'DEBUG',
+  logger: winstonLogger
+});
+
+// Switching to console logger
+factory.Logger.setLogger(console);
+```
+
+</TabItem>
+</Tabs>
 
 ## Proxy
 
@@ -1177,10 +1195,10 @@ const factory = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY'
   },
-  sync: { 
-    requestOptions: { 
+  sync: {
+    requestOptions: {
       agent: proxyAgent
-    } 
+    }
   }
 })
 ```
@@ -1288,7 +1306,7 @@ npm_config_yes=true npx yarn-audit-fix
 Alternatively, you can add a resolutions field to your app’s `package.json` to force the use of a fixed version:
 
 ```json
-"resolutions": { 
+"resolutions": {
   "url-parse": "1.5.10"
 }
 ```
