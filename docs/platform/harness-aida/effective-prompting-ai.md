@@ -83,6 +83,46 @@ For DevOps use cases, the difference between “create a pipeline” and “crea
 
 ---
 
+
+## Application Cost Perspectives
+
+| Weak Prompt | Strong Prompt | Use Case |
+|-------------|---------------|----------|
+| *“Make a perspective for apps.”* | *“Could you create a Cost Perspective rules based on Application costs for my payment and checkout apps?”* | Groups spend by application, giving insights into cost per app. |
+
+---
+
+## Environment Cost Perspectives
+
+| Weak Prompt | Strong Prompt | Use Case |
+|-------------|---------------|----------|
+| *“I want to see dev, test, prod costs.”* | *“Could you create a Cost Perspective rules based on Environment costs (dev/staging/prod), tagging by `env` labels in AWS?”* | Creates perspectives grouped by environment, helping you compare dev, staging, and production spend. |
+
+---
+
+## Service or Component Cost Perspectives
+
+| Weak Prompt | Strong Prompt | Use Case |
+|-------------|---------------|----------|
+| *“Show me service costs.”* | *“Could you create a Cost Perspective rules based on a service/component, such as API Gateway and Database, so I can track component-level spend?”* | Breaks down costs by key services or components for more detailed visibility. |
+
+---
+
+## Team or Department Cost Perspectives
+
+| Weak Prompt | Strong Prompt | Use Case |
+|-------------|---------------|----------|
+| *“Make a perspective for my teams.”* | *“Could you create a Cost Perspective rules based on Team/Department costs, mapping the `team` tag (payments, infra, analytics) to departments?”* | Maps spend to teams/departments, enabling cost accountability and budget tracking. |
+
+---
+
+### Best Practices for Cost Perspective Prompts
+
+- **Be clear about the grouping criteria:** Specify whether you want the perspective by application, service, environment, or team.  
+- **Use organizational terms:** If you already tag resources (e.g., `env=dev`, `team=payments`), include these tags in your prompts.  
+- **Chain prompts:** Start broad and refine. (e.g., *“Create cost perspective by team”* → *“Add filters for production-only workloads”*).  
+- **Review and adjust:** AI will create the baseline perspective, but you can refine rules to match internal tagging standards.  
+
 ## Additional Prompting Guidelines for Harness AI
 
 Beyond the basics, here are more advanced prompting techniques to get consistent and high-quality results from Harness AI.
