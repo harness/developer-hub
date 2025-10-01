@@ -50,4 +50,3 @@ Use [Propels](/docs/category/workflow-automation) to add human-in-the-loop autom
 * [SEI Onboarding Guide](/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide)
 * [Supported platforms and technologies](/docs/platform/platform-whats-supported)
 * [Propelo and Harness](/docs/software-engineering-insights/propelo-sei/get-started/propelo-and-harness)
-* [Knowledge Base and FAQs](/kb/sei/)
