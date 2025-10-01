@@ -28,7 +28,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 **Evaluation Methods Used:** Webaim contrast checker, Manual keyboard checks
 
-**Download the Report:** [Harness Accessibility Summary Report](../../build/doc/accessibility-summary-report.pdf)
+**Download the Report:** [Harness Accessibility Summary Report](../../static/doc/accessibility-summary-report.pdf)
 
 <br/>
 
@@ -85,7 +85,7 @@ Notes:
 |<p>[**2.1.2 No Keyboard Trap**](http://www.w3.org/TR/WCAG20/#keyboard-operation-trapping) (Level A)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Not supports|Does not use keyboard focus|
 |<p>[**2.2.1 Timing Adjustable**](http://www.w3.org/TR/WCAG20/#time-limits-required-behaviors) (Level A)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|` `Not applicable|Does not use time limit|
 |<p>[**2.2.2 Pause, Stop, Hide**](http://www.w3.org/TR/WCAG20/#time-limits-pause) (Level A)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Not applicable|Does not use video.|
-|<p>[**2.3.1 Three Flashes or Below Threshold**](http://www.w3.org/TR/WCAG20/#seizure-does-not-violate) (Level A)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Supports|Someoneelse does not contain anything that flashes more than three times in any one second period.|
+|<p>[**2.3.1 Three Flashes or Below Threshold**](http://www.w3.org/TR/WCAG20/#seizure-does-not-violate) (Level A)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Supports|Someone else does not contain anything that flashes more than three times in any one second period.|
 |<p>[**2.4.1 Bypass Blocks**](http://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip) (Level A)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software) – Does not apply to non-web software</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs) – Does not apply to non-web docs</p>|Does not support|Need to add links to enable skipping to content or next block of content.|
 |<p>[**2.4.2 Page Titled**](http://www.w3.org/TR/WCAG20/#navigation-mechanisms-title) (Level A)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|<p>Supports</p><p> </p>|All pages have titles describing the purpose.|
 |<p>[**2.4.3 Focus Order**](http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order) (Level A)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Supports|Navigated sequentially in a meaningful and operable manner.|
@@ -116,7 +116,7 @@ Notes:
 |<p>[**2.4.7 Focus Visible**](http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible) (Level AA)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Not Supports|` `Does not have keyboard focus|
 |<p>[**3.1.2 Language of Parts**](http://www.w3.org/TR/WCAG20/#meaning-other-lang-id) (Level AA)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Supports|The human language of each passage or phrase in the content can be programmatically determined|
 |<p>[**3.2.3 Consistent Navigation**](http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-locations) (Level AA)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software) – Does not apply to non-web software</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs) – Does not apply to non-web docs</p>|Supports|Navigation areas shown on multiple pages are presented in a consistent way.|
-|<p>[**3.2.4 Consistent Identification**](http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-functionality) (Level AA)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software) – Does not apply to non-web software</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs) – Does not apply to non-web docs</p>|Supports|Someoneelse UI components with same functionality are identified consistently|
+|<p>[**3.2.4 Consistent Identification**](http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-functionality) (Level AA)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software) – Does not apply to non-web software</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs) – Does not apply to non-web docs</p>|Supports|Someone else UI components with same functionality are identified consistently|
 |<p>[**3.3.3 Error Suggestion**](http://www.w3.org/TR/WCAG20/#minimize-error-suggestions) (Level AA)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Supports|Error feedback is designed to give the best possible suggestions to users.|
 |<p>[**3.3.4 Error Prevention (Legal, Financial, Data)**](http://www.w3.org/TR/WCAG20/#minimize-error-reversible) (Level AA)</p><p>Also applies to:</p><p>Revised Section 508</p><p>- 501 (Web)(Software)</p><p>- 504.2 (Authoring Tool)</p><p>- 602.3 (Support Docs)</p>|Supports|For all data that can be modified or deleted by users  functionalities are provided that need confirmation or can be reversed.|
 
@@ -164,15 +164,15 @@ Notes:
 
 |Criteria|Conformance Level |Remarks and Explanations|
 | - | - | - |
-|302.1 Without Vision|Supports|<p>Someoneelse uses standard</p><p>HTML attributes to describe identity, operation, and state of user interface elements to assistive technologies.</p>|
+|302.1 Without Vision|Supports|<p>Someone else uses standard</p><p>HTML attributes to describe identity, operation, and state of user interface elements to assistive technologies.</p>|
 |302.2 With Limited Vision|Supports|<p>Supports</p><p>standard browser magnification and</p><p>contrast adjustments.</p>|
 |302.3 Without Perception of Color|Partially supports|<p>Color is only used as a supplemental attribute of most user interface elements, but certain links and graphs are discernible only by colour</p><p></p>|
-|302.4 Without Hearing|Not Applicable|Someoneelse  does not use features that require hearing.|
-|302.5 With Limited Hearing|Not Applicable|Someoneelse  does not use features that require hearing.|
-|302.6 Without Speech|Not Applicable|Someoneelse  does not use features that require speech input.|
-|302.7 With Limited Manipulation|Supports|<p>Someoneelse supports standard input mechanisms such as keyboards and</p><p>pointing devices. Fine motor controls nor simultaneous actions are not required.</p>|
-|302.8 With Limited Reach and Strength|Supports|Use of Someoneelse is not restricted by limited reach or strength.|
-|302.9 With Limited Language, Cognitive, and Learning Abilities|Partially supports|Someoneelse is a complex product and needs training and technical experience. We strive to support users in the best possible ways.|
+|302.4 Without Hearing|Not Applicable|Someone else does not use features that require hearing.|
+|302.5 With Limited Hearing|Not Applicable|Someone else does not use features that require hearing.|
+|302.6 Without Speech|Not Applicable|Someone else does not use features that require speech input.|
+|302.7 With Limited Manipulation|Supports|<p>Someone else supports standard input mechanisms such as keyboards and</p><p>pointing devices. Fine motor controls nor simultaneous actions are not required.</p>|
+|302.8 With Limited Reach and Strength|Supports|Use of someone else is not restricted by limited reach or strength.|
+|302.9 With Limited Language, Cognitive, and Learning Abilities|Partially supports|Someone else is a complex product and needs training and technical experience. We strive to support users in the best possible ways.|
 
 <br />
 
@@ -187,20 +187,20 @@ Notes:
 |502.2.1 User Control of Accessibility Features|Not Applicable|Not platform software|
 |502.2.2 No Disruption of Accessibility Features|Partially supports|No accessibility features in platform documentation, but does not disrupt browser sizing options|
 |***502.3 Accessibility Services***|Heading cell – no response required|Heading cell – no response required|
-|502.3.1 Object Information|Supports|Someoneelse uses WAI-ARIA attributes to describe the role, state, and description of user interface elements to Assistive Technologies. This includes the use of “role”, “aria-invalid”, and “aria-required” attributes.|
-|502.3.2 Modification of Object Information|Supports|Someoneelse uses WAI-ARIA attributes to describe the role, state, and description of user interface elements to Assistive Technologies. This includes the use of “role”, “aria-invalid”, and “aria-required” attributes.|
-|502.3.3 Row, Column, and Headers|Supports|Someoneelse uses standard HTML attributes to define table structure and relationships, including column and row headers, to Assistive Technologies.|
-|502.3.4 Values|Supports|Someoneelse uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
-|502.3.5 Modification of Values|Supports|Someoneelse uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
-|502.3.6 Label Relationships|Supports|Someoneelse uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
-|502.3.7 Hierarchical Relationships|Supports|Someoneelse uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
-|502.3.8 Text|Supports|Someoneelse uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
-|502.3.9 Modification of Text|Supports|Someoneelse uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
-|502.3.10 List of Actions|Supports|Someoneelse uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
-|502.3.11 Actions on Objects|Supports|Someoneelse uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
-|502.3.12 Focus Cursor|Supports|Someoneelse uses standard HTML markup for maximum compatibility with assistive technologies.|
-|502.3.13 Modification of Focus Cursor|Supports|Someoneelse uses standard HTML markup for maximum compatibility with assistive technologies.|
-|502.3.14 Event Notification|Supports|Someoneelse uses standard HTML markup for maximum compatibility with assistive technologies.|
+|502.3.1 Object Information|Supports|Someone else uses WAI-ARIA attributes to describe the role, state, and description of user interface elements to Assistive Technologies. This includes the use of “role”, “aria-invalid”, and “aria-required” attributes.|
+|502.3.2 Modification of Object Information|Supports|Someone else uses WAI-ARIA attributes to describe the role, state, and description of user interface elements to Assistive Technologies. This includes the use of “role”, “aria-invalid”, and “aria-required” attributes.|
+|502.3.3 Row, Column, and Headers|Supports|Someone else uses standard HTML attributes to define table structure and relationships, including column and row headers, to Assistive Technologies.|
+|502.3.4 Values|Supports|Someone else uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
+|502.3.5 Modification of Values|Supports|Someone else uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
+|502.3.6 Label Relationships|Supports|Someone else uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
+|502.3.7 Hierarchical Relationships|Supports|Someone else uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
+|502.3.8 Text|Supports|Someone else uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
+|502.3.9 Modification of Text|Supports|Someone else uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
+|502.3.10 List of Actions|Supports|Someone else uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
+|502.3.11 Actions on Objects|Supports|Someone else uses standard HTML or ARIA object attributes for maximum compatibility with assistive technologies.|
+|502.3.12 Focus Cursor|Supports|Someone else uses standard HTML markup for maximum compatibility with assistive technologies.|
+|502.3.13 Modification of Focus Cursor|Supports|Someone else uses standard HTML markup for maximum compatibility with assistive technologies.|
+|502.3.14 Event Notification|Supports|Someone else uses standard HTML markup for maximum compatibility with assistive technologies.|
 |502.4 Platform Accessibility Features|Partially supports|Does not provide audio sync equivalents for visual events or speech output services |
 |[***503 Applications***](https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/final-rule/text-of-the-standards-and-guidelines#503-applications)|Heading cell – no response required|Heading cell – no response required|
 |503.2 User Preferences|Supports|Respects user preferences from platform or browser|
@@ -212,8 +212,8 @@ Notes:
 |504.2 Content Creation or Editing (if not authoring tool, enter “not applicable”)|See [WCAG 2.0](https://docs.google.com/document/d/1t8hxVJ2bVjiYBMkqVFqs5d5FxKJ2yDcab2IzAlskiAg/edit#bookmark=id.tyjcwt) section|See information in WCAG 2.0 section|
 |504.2.1 Preservation of Information Provided for Accessibility in Format Conversion|Partially supports |YAML available|
 |504.2.2 PDF Export|Supports |PDF export available for deployments|
-|504.3 Prompts|Does not support |No prompts although videos in documentations comply to Youtube accessibility guidelines and text elements comply to docs.Someoneelse host guidelines|
-|504.4 Templates|Partially Supports |Someoneelse templates partially supports accessibility guidelines|
+|504.3 Prompts|Does not support |No prompts although videos in documentations comply to Youtube accessibility guidelines and text elements comply to docs.Someone else host guidelines|
+|504.4 Templates|Partially Supports |Someone else templates partially supports accessibility guidelines|
 
 <br />
 
