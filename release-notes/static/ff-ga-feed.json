@@ -646,5 +646,11 @@
     "description": "FF to support pipeline filter deletion on org/project deletion",
     "gaStartDate": "2025-10-07",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ALLOW_MULTIPLE_FILEPATH_CONDITIONS",
+    "description": "FF to optimize filepath condition evaluations in triggers by allowing multiple conditions in one single delegate task",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
   }
 ]
