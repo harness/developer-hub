@@ -6,7 +6,7 @@ sidebar_position: 13
 
 # Effective Prompting with Harness AI
 
-Harness AI generates pipelines, services, environments, connectors, and secrets from natural language.  
+Harness AI generates various entities in the Harness Platform from natural language.  
 This guide shows you how to write **effective prompts** with examples of weak vs. strong phrasing.
 
 ---
@@ -14,13 +14,13 @@ This guide shows you how to write **effective prompts** with examples of weak vs
 ## Why Prompting Matters
 
 Harness AI performs best when prompts are **clear, detailed, and specific**.  
-The difference between “create a pipeline” and “create a CI→CD pipeline that builds a Docker image and deploys to Kubernetes” is the difference between vague YAML and production-ready YAML.
+For DevOps use cases, the difference between “create a pipeline” and “create a CI→CD pipeline that builds a Docker image and deploys to Kubernetes” is the difference between vague production-ready pipelines. 
 
 ---
 
 ## Prompting Guidelines
 
-- **Be specific**: Name repos, branches, connectors, and strategies.  
+- **Be specific**: Name repos, branches, connectors, services, perspectives and deployment strategies.  
 - **Use action words**: Start with *Generate*, *Create*, *Define*.  
 - **Provide inputs**: List parameters like `IMAGE_TAG`, `REPLICA_COUNT`.  
 - **Focus**: One resource per prompt is more reliable.  
@@ -92,13 +92,20 @@ Beyond the basics, here are more advanced prompting techniques to get consistent
 ## Other Prompting Guidelines
 
 ### 1. State the Resource Scope
-Always specify whether the resource should be created at the **Account**, **Org**, or **Project** level.
+Always specify whether the resource should be created at the **Account**, **Org**, or **Project** level. Also identify the **resource name** that you want to reference or use in your pipeline.
 
 **Example**
 
 ```text
 Generate a pipeline at the Project scope that uses the staging environment and GitHub connector rohan-git.
 ```
+
+For Cost, specify the actual resource scope.
+
+```text
+Could you create a Cost Perspective rules based on Team/Department costs?
+```
+
 ### 2. Include Runtime Inputs
 
 Call out variables you want parameterized with `<+input>`.
@@ -163,17 +170,12 @@ Add a canary rollout strategy to the deployment stage.
 
 ## Best Practice Checklist
 
-- Mention target platform (Kubernetes, ECS, Lambda, VM)
+- Mention target platform (Kubernetes, ECS, Lambda, VM, AWS, GCP)
 - Include connector names and secret references
-- Add environment/namespace details
-- Specify deployment strategy (Rolling, Canary, Blue/Green)
-- Use variables for flexibility (`IMAGE_TAG`, `SERVICE_NAME`)  
+- Add environment and service details
+- Specify deployment strategy (Rolling, Canary, Blue/Green) for DevOps use cases
+- Use variables for flexibility (`IMAGE_TAG`, `SERVICE_NAME`)
+  
 
----
 
-## Next Steps
-
-- Start with the strong prompt examples in the tables above.  
-- Adjust connectors, namespaces, and service names to match your project.  
-- Run, review, and iterate to accelerate CI/CD setup with Harness AI.  
 
