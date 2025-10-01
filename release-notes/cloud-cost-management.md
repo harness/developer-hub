@@ -19,6 +19,24 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## October 2025 - Version 1.65.9
+#### Deployment Date: October 1, 2025 (Prod-1)
+
+### ⭐ [New Feature] Budget Folders
+**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-cost-categories-toggle)**
+
+We are introducing Budget Folders to improve usability and streamline budget management. Budgets are now automatically associated with the Perspective folder under which they were created. This provides a consistent folder structure across both Perspectives and Budgets.
+
+The Budgets tab displays all the budgets in a new consolidated view. Users can drill down into a folder or access the complete budget list for broader visibility. Users can also select which columns they want to see in the Budgets list. This gives them the flexibility to refine their view with the following attributes: Time Period, Budget Amount, Current Spend, Forecast, Forecast vs. Budget, Current Spend vs. Budget, Thresholds, Created By, and Last Modified. 
+
+These changes improve the overall usability and discoverability of budgets, allowing users to identify and organize budgets more efficiently.  
+
+### Feature Improvements
+
+- 
+
+
 ## September 2025 - Version 1.64.7
 #### Deployment Date: September 23, 2025 (Prod-1)
 
