@@ -19,7 +19,7 @@ The Health Check is found at the top left of an Experiment page, and shows how e
 
 You can drill into your experiment's health check to view detailed breakdowns of each check. These details clarify what each check evaluates, help you assess the severity of any issues, and guide your next steps for troubleshooting. 
 
-Clicking the **See details** link in the Health check pop-up opens a slide-out panel with information on your experiment's duration (seasonality period for Sequential Testing and experimental review period for Fixed Horizon), sample ratio alignment, and exclusion rates. The possible values for these criteria and additional userful references are described in the sections below.
+Clicking the **See details** link in the Health check pop-up opens a slide-out panel with information on your experiment's duration (seasonality period for Sequential Testing and experimental review period for Fixed Horizon), sample ratio alignment, and exclusion rates. The possible values for these criteria and additional useful references are described in the sections below.
 
 When you click the **See details** link on the Health Check popup, you will see a slide out modal with your seasonality effect / experimental review period, sample ratio, and sample exclusion details. The possible values for these criteria and additional useful references are described in the sections below.
 
@@ -45,6 +45,37 @@ The seasonality effect is considered complete when the experiment has run for at
 * [Where did my statistical significance go?](/docs/feature-management-experimentation/release-monitoring/metrics/statistical-significance/#troubleshooting)
 * [When are metrics automatically recalculated?](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-calculation-schedule/#when-are-metric-cards-updated)
 * [Sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/)
+
+#### Why early sequential testing results may appear unstable
+
+If your metric exhibits strong seasonality (or other temporal effects), you may notice unusual behavior in the early phase of sequential testing results, such as:
+
+* The mean temporarily jumps outside the confidence interval
+* The p-value appears inconsistent with the confidence interval (e.g. CI covering 0 but p-value shows significance, or vice versa)
+* Results fluctuate rapidly between significant and nonsignificant
+
+This behavior occurs because the mSPRT algorithm assumes that data is stationary, meaning that each observation is drawn from the same underlying distribution with a fixed mean and variance. When this assumption holds, p-values and confidence intervals are consistent, and it is safe to monitor results as the experiment runs without inflating false positives.
+
+When seasonality is present (daily cycles, weekly cycles, or other systemic drift in user behavior), this assumption is broken, leading to three related effects:
+
+1. **Stationarity assumption is violated**: mSPRT relies on a martingale property of the likelihood ratio under the null hypothesis. 
+   If the true means shift over time, this property no longer holds; the algorithm assumes the ground is steady, but in reality, it is moving. 
+
+1. **Confidence intervals may lock in**: mSPRT constructs confidence intervals incrementally. Each new interval is the intersection of the previous interval and the current evidence. 
+
+   This means that confidence intervals can only shrink over time. With seasonality, early evidence may push the CI away from 0. Even if the effect later drifts back towards 0, the CI can remain "stuck", giving the impression of a persistent effect.
+
+1. **P-values inherit past evidence**: The mSPRT p-value is monotonic. Once it decreases, it cannot increase.
+
+   Early swings in the mean can drive the p-value below 0.05. Even if subsequent observations return the mean toward 0, the p-value remains small because it retains the memory of the early phase. This can make results appear significant even when the most recent data show no effect.
+
+In practice:
+
+- Confidence intervals may stay away from 0, ignoring oscillations in the mean
+- P-values may remain small, reflecting past rather than current evidence
+- Both measures are functioning as designed, but under seasonality, the stationary assumption fails and results can appear "wonky"
+
+To address this, practical systems may implement a reset policy. If the running mean drifts outside the confidence interval, the algorithm can recalculate or "start fresh". This prevents early observations from dominating conclusions when the environment is changing. You can either recalculate results manually or rely on Harness FME to do so automatically.
 
 ## Experimental review period completeness (for fixed horizon testing)
 
@@ -85,8 +116,8 @@ Look for a design flaw in the experiment that might be preventing random samplin
 
 #### Useful references
 * [Sample ratio check](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/)
-* [How can I troubleshoot a Sample Ratio Mismatch in my feature flag?](https://help.split.io/hc/en-us/articles/360019981952-Sample-ratio-mismatch-check)
-* [Sample ratio mismatch calculator](https://help.split.io/hc/en-us/articles/360044715132-Sample-ratio-mismatch-calculator)
+* [How can I troubleshoot a Sample Ratio Mismatch in my feature flag?](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/)
+* [Sample ratio mismatch calculator](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/)
 
 ## Number of sample exclusions
 
