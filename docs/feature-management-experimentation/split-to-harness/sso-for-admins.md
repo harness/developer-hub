@@ -59,7 +59,7 @@ Do not create users or groups in `app.harness.io` ahead of time. The migration p
 1. Notify your Harness CSM or support@split.io when the SSO and SCIM steps are complete.
 
 :::info SSO + SCIM
-Be sure to configure SCIM to continually sync changes for ALL users and groups to `app.harness.io` before migration day. If your account is configured for SCIM, the migration process will not create users and groups in `app.harness.io` for you other than the **All FME Admins** group containing your Split administrators. 
+Be sure to configure SCIM to continually sync changes for ALL users and groups to `app.harness.io` before migration day.
 
 You must ensure that all of your Split users and groups are synced (and kept continually updated) before migration day. We lead you through the process below, but here is a single image you can print out as a checklist:
 
@@ -70,12 +70,7 @@ The group name `_fme_admins` is required.  You may change the name after confirm
 
 #### Groups not managed in SCIM
 
-It is possible that you might want to move some Split groups into Harness, but prefer not to manage these groups in SCIM going forward. In this case, **before migration** for each of these Split groups, you should follow these steps:
-
-1. Create a matching group in Harness. The Harness group name should be exactly the same as the Split group name.
-2. In Harness, manually add members to the group.
-
-If the group name in Harness exactly matches the group name in Split, the migration script will create RBAC assignments for the Harness group. This will grant the Harness group access permissions equivalent to the permissions of the legacy group in Split.
+It is possible that you might want to move some Split groups into Harness, but prefer not to manage these groups in SCIM going forward. The migration script will create these groups for you at the Harness account level.
 
 ## Configure SSO
 
@@ -230,6 +225,12 @@ Instructions for naming the All FME Admins group below were changed on 4/04/25.
 To seamlessly inherit the All FME Admins group and its RBAC role, you will want to create a group on the SCIM side named after the group's permanent ID (`_fme_admins`), not its initial display name (`All FME Admins`).
 :::
 
+:::info Update 10/01/25
+The migration script was updated on 10/01/25.
+
+Any users and groups present in Split but missing in Harness will no longer cause the script to abort. The script will now create these users and groups in Harness at the account level. You will still need to synchronize these groups in SCIM to cause them to be SCIM-managed.
+:::
+
 When you complete the work below to push all current Split users into Harness (either by assigning groups or individual users to the Harness app), these users will receive an email from the Harness platform with a subject of `You are successfully added to {account name} account`. 
 
 That email will have a button that says `"ACCESS YOUR {ACCOUNT NAME} ACCOUNT"`. Your users are free to test that out, but before migration day, they will not find anything other than high-level Harness portal navigation. In other words, FME will not yet be there.
@@ -288,9 +289,7 @@ Here are the steps:
 
 #### Confirm Your Users and Groups Sync and Become SCIM-Managed
 
-The last task is to verify that all Split users and groups now appear on the Harness side as SCIM-managed. Once you have done this, send an email to your Customer Success Manager or support@split.io with subject line, "SCIM Configured for [your account name]" so we know your account is ready for your migration day. 
-
-If you run into any issues, let us know and we'll be happy to help!
+The last task is to verify that all Split users and groups now appear on the Harness side as SCIM-managed. If you run into any issues, let us know and we'll be happy to help!
 
 <TipRenameFMEAdmins app='Okta' />
 
@@ -344,9 +343,7 @@ Here are the steps:
 
 #### Confirm Your Users and Groups Sync and Become SCIM-Managed
 
-The last task is to verify that all Split users and groups now appear on the Harness side as SCIM-managed. Once you have done this, send an email to your Customer Success Manager or support@split.io with subject line, "SCIM Configured for [your account name]" so we know your account is ready for your migration day. 
-
-If you run into any issues, let us know and we'll be happy to help!
+The last task is to verify that all Split users and groups now appear on the Harness side as SCIM-managed. If you run into any issues, let us know and we'll be happy to help!
 
 <TipRenameFMEAdmins app='Entra ID' />
 
