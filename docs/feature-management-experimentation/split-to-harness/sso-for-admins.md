@@ -228,7 +228,7 @@ To seamlessly inherit the All FME Admins group and its RBAC role, you will want 
 :::info Update 10/01/25
 The migration script was updated on 10/01/25.
 
-Any users and groups present in Split but missing in Harness will no longer cause the script to abort. The script will now create these users and groups in Harness at the account level. You will still need to synchronize these groups in SCIM to cause them to be SCIM-managed.
+Any users and groups present in Split but missing in Harness will no longer cause the script to abort. The script will now create these users and groups in Harness at the account level. If your intention was for them to be SCIM-managed, you can follow up after the migration to configure sync for these users and groups in SCIM.
 :::
 
 When you complete the work below to push all current Split users into Harness (either by assigning groups or individual users to the Harness app), these users will receive an email from the Harness platform with a subject of `You are successfully added to {account name} account`. 
