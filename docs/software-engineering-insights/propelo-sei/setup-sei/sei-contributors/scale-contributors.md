@@ -1,6 +1,12 @@
 ---
-title: How to scale Contributors in Harness SEI
+title: Scale contributors
+description: Steps to scaling your teams in SEI 1.0
+sidebar_label: Scale contributors
+sidebar_position: 2
+redirect_from:
+  - /kb/software-engineering-insights/articles/how-to-onboard-devs-on-sei
 ---
+
 This guide outlines the process for efficiently scaling your teams on Harness Software Engineering Insights (SEI). Contributors include developers and team members whose actions contribute to your SEI metrics and insights.
 
 :::note Onboarding Plan
@@ -45,7 +51,7 @@ If you need to manually add a contributor, and add a row for each new contributo
 
 Organizations with large developer teams (300-2000+) can use Propels, SEI's automation framework, to automate contributor data updates. Propels allow you to create custom workflows to interact with various services.
 
-![](../static/propel-example.png)
+![](./static/propel-example.png)
 
 :::note Recommendation
 It is recommended to work closely with [Harness Support](mailto:support@harness.io) when setting up Propels to automate contributor data updates. The Harness team can provide support and ensure the Propel is configured correctly for your specific use case and SEI system setup.
@@ -58,17 +64,17 @@ Here's an example of how you can create a Propel to automatically update contrib
 * In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 * Select **Propels** under **Advanced Features** to create a new workflow automation.
 
-![](../static/sei-kb-104.png)
+![](./static/sei-kb-104.png)
 
 #### Step 2: Set up the Trigger
 
 * Choose **Scheduled** as the trigger type for the Propel.
 
-![](../static/sei-kb-105.png)
+![](./static/sei-kb-105.png)
 
 * Define the schedule (cron format) or interval for the Propel to run periodically. This can be done using a scheduled trigger in the Propel configuration.
 
-![](../static/sei-kb-article101.png)
+![](./static/sei-kb-article101.png)
 
 #### Step 3: Retrieve Team Data
 
@@ -77,7 +83,7 @@ Here's an example of how you can create a Propel to automatically update contrib
 * Configure the node with necessary credentials and permissions.
 * Set up the **API request** to fetch contributor data.
 
-![](../static/sei-kb-article102.png)
+![](./static/sei-kb-article102.png)
 
 :::info
 Note that if you're if you're fetching data from a tool for which an integration already exists in SEI (e.g., GitHub), ensure that the integration is set up with the required credentials and permissions.
@@ -109,7 +115,7 @@ function handleNode(context) {
 * Connect it to the output of the **Custom Script node**.
 * Configure the API call to update or create new contributors.
 
-![](../static/sei-kb-103.png)
+![](./static/sei-kb-103.png)
 
 #### Step 6: Configure additional Custom Script nodes
 
@@ -156,7 +162,7 @@ sequenceDiagram
 SEI allows for control utilizing Harness' [RBAC infrastructure](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).  Controls specific to SEI are available from both a scoping and role standpoint.  There are a couple of notes to RBAC for SEI that teams should be aware of
 
 - Teams looking to provide access for a person to perform changes to the people-based collection settings will also need to ensure the person has enough permissions to view the users that they wish to add to the collection.  For example, to add users that exist on an the account level, the administrator also needs viewing permissions for those users to be able to add them.  Otherwise, they may see a blank section as per the image below.
-![RBAC Collections](../static/sei-rbac-collections.png)
+![RBAC Collections](./static/sei-rbac-collections.png)
 - Customers looking to provide Resource Group control to SEI configuration settings will need to provide that access at the account level, using an `Account Only` Resource Scope.  This cannot be added through other scope levels, as the settings will refuse to be saved. 
 
 
