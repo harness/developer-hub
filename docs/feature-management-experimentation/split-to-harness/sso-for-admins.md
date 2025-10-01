@@ -44,8 +44,8 @@ Once you configure SAML and are migrated to Harness, all users must use SAML to 
 
 ### If Your Split Account Uses SSO Only
 
-1. Log into Harness and your IdP in separate windows to add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
-1. Assign all of your current Split users to the SSO application for app.harness.io.
+1. Log into Harness and your IdP in separate windows to add a new SSO application for `app.harness.io` to your IdP. See [Configure SSO](#configure-sso) below.
+1. Assign all of your current Split users to the SSO application for `app.harness.io`.
 1. Notify your Harness CSM or support@split.io when the SSO steps are complete.
 
 :::info SSO without SCIM
@@ -54,8 +54,8 @@ Do not create users or groups in `app.harness.io` ahead of time. The migration p
 
 ### If Your Split Account Uses SSO + SCIM
 
-1. Log into Harness and your IdP in separate windows to add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
-1. Configure SCIM to provision users and groups in app.harness.io. See Configure SCIM below.
+1. Log into Harness and your IdP in separate windows to add a new SSO application for `app.harness.io` to your IdP. See [Configure SSO](#configure-sso) below.
+1. Configure SCIM to provision users and groups in `app.harness.io`. See [Configure SCIM](#configure-scim) below.
 1. Notify your Harness CSM or support@split.io when the SSO and SCIM steps are complete.
 
 :::info SSO + SCIM
@@ -220,12 +220,12 @@ A: This is expected, and OK. When migrating to FME, SAML is used for authenticat
 
 If your account uses SSO only, you are finished with SSO configuration. Notify your CSM or email support@split.io. 
 
-If your account uses SSO + SCIM , proceed to [SCIM with Microsoft Entra ID](#scim-with-microsoft-entra-id).
+If your account uses SSO + SCIM, proceed to [SCIM with Microsoft Entra ID](#scim-with-microsoft-entra-id).
 
 ## Configure SCIM
 
 :::danger Update 4/04/25
-Instructions for naming the All FME Admins group below were changed on 4/4/25.
+Instructions for naming the All FME Admins group below were changed on 4/04/25.
 
 To seamlessly inherit the All FME Admins group and its RBAC role, you will want to create a group on the SCIM side named after the group's permanent ID (`_fme_admins`), not its initial display name (`All FME Admins`).
 :::
