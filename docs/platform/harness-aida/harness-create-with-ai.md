@@ -6,12 +6,14 @@ sidebar_position: 12
 
 # Getting Started with Harness AI 
 
-Harness AI lets you generate pipelines, services, environments, connectors, secrets, and template-based pipelines directly from **natural-language prompts**.  
-Use these confirmed sample prompts to quickly create YAML configurations inside Harness.
+Harness AI lets you generate various Harness platform resources like pipelines, services, environments, connectors, secrets, and template-based pipelines directly from **natural-language prompts**.  
+Use these confirmed sample prompts to quickly create configurations inside Harness.
 
 ---
 
 ## How it works
+
+For DevOps, pipeline and platform Automation use cases: 
 
 1. Open Harness AI in your project.  
 2. Copy a sample prompt and adjust values (connectors, namespaces, repo names, etc.).  
@@ -158,7 +160,9 @@ Referencing a Pipeline Template:
 ```text
 Create a Pipeline with the Golden K8s Pipeline Template
 ```
-### What’s Not Supported
+### What’s Not Supported 
+
+##### In DevOps Use Cases
 
 Currently, Harness AI does not support generating:
 
