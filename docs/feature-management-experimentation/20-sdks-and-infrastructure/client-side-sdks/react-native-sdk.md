@@ -60,8 +60,8 @@ The SDK supports two synchronization mechanisms, **streaming** (default and reco
 
 - For Expo and React Native bare projects using React Native version 0.74 or above, no additional setup is required: streaming is supported out of the box using the global `XMLHttpRequest` object.
 
-- For React Native bare projects below version 0.74, we recommend to *link* the native modules of the package, since streaming via `XMLHttpRequest` does not work on Android in debug mode.
-  - If using React Native 0.59 or below, run `react-native link @splitsoftware/splitio-react-native`
+- For React Native bare projects below version 0.74, we recommend *linking* to the native modules of the package, since streaming via `XMLHttpRequest` does not work on Android in debug mode.
+  - If using React Native 0.59 or below, run `react-native link @splitsoftware/splitio-react-native`.
   - If using React Native 0.60+, the [autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) is available and you don't need to run `react-native link`, but you still need to install the pods if developing for iOS, with the command `npx pod-install ios`.
 
 ### 2. Instantiate the SDK and create a new SDK factory client
