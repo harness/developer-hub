@@ -487,6 +487,15 @@ const sidebars: SidebarsConfig = {
         description: 'Harness API Docs.',
       },
     },
+    {
+      type: 'link',
+      label: 'Certifications & Training',
+      className: 'sidebar-university',
+      href: '/university/cr',
+      customProps: {
+        description: 'Get certified and learn in Harness Code Repository from our training programs.',
+      },
+    },
     // All Docs
     {
       type: 'link',
@@ -669,6 +678,16 @@ const sidebars: SidebarsConfig = {
       href: 'https://apidocs.harness.io/',
       customProps: {
         description: 'Harness API Docs.',
+      },
+    },
+    // University
+    {
+      type: 'link',
+      label: 'Certifications & Training',
+      className: 'sidebar-university',
+      href: '/university/continuous-integration',
+      customProps: {
+        description: 'Get certified and learn in Harness Continuous Integration from our training programs.',
       },
     },
     // All Docs
@@ -1041,6 +1060,16 @@ const sidebars: SidebarsConfig = {
         description: 'Harness API Docs.',
       },
     },
+    // University
+    {
+      type: 'link',
+      label: 'Certifications & Training',
+      className: 'sidebar-university',
+      href: '/university/continuous-delivery',
+      customProps: {
+        description: 'Get certified and learn in Harness Continuous Delivery and GitOps from our training programs.',
+      },
+    },
     // All Docs
     {
       type: 'link',
@@ -1200,6 +1229,16 @@ const sidebars: SidebarsConfig = {
         description: 'Harness API Docs.',
       },
     },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/iacm',
+      customProps: {
+        description: 'Get certified and learn in Harness Infrastructure as Code Management from our training programs.',
+      },
+    },
     // All Docs
     {
       type: 'link',
@@ -1318,6 +1357,16 @@ const sidebars: SidebarsConfig = {
       href: 'https://apidocs.harness.io/',
       customProps: {
         description: 'Harness API Docs.',
+      },
+    },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/feature-flags',
+      customProps: {
+        description: 'Get certified and learn in Harness Feature Flags from our training programs.',
       },
     },
     // All Docs
@@ -1712,6 +1761,16 @@ const sidebars: SidebarsConfig = {
         description: 'Harness API Docs.',
       },
     },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: 'https://arcade.split.io/login',
+      customProps: {
+        description: 'Get certified and learn in Harness Feature Management and Experimentation from our training programs.',
+      },
+    },
     // All Docs
     {
       type: 'link',
@@ -1828,6 +1887,16 @@ const sidebars: SidebarsConfig = {
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
+      },
+    },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/database-devops',
+      customProps: {
+        description: 'Get certified and learn in Harness Database DevOps from our training programs.',
       },
     },
     // All Docs
@@ -2113,6 +2182,16 @@ const sidebars: SidebarsConfig = {
         description: 'Harness API Docs.',
       },
     },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/cloud-cost-management',
+      customProps: {
+        description: 'Get certified and learn in Harness Cloud Cost Management from our training programs.',
+      },
+    },
     // All Docs
     {
       type: 'link',
@@ -2328,6 +2407,16 @@ const sidebars: SidebarsConfig = {
         description: 'Harness API Docs.',
       },
     },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/sto',
+      customProps: {
+        description: 'Get certified and learn in Harness Security Testing Orchestration from our training programs.',
+      },
+    },
     // All Docs
     {
       type: 'link',
@@ -2455,6 +2544,16 @@ const sidebars: SidebarsConfig = {
       href: 'https://apidocs.harness.io/',
       customProps: {
         description: 'Harness API Docs.',
+      },
+    },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/scs',
+      customProps: {
+        description: 'Get certified and learn in Harness Software Supply Chain Assurance from our training programs.',
       },
     },
     // All Docs
@@ -2707,6 +2806,16 @@ const sidebars: SidebarsConfig = {
       href: 'https://apidocs.harness.io/chaos.html',
       customProps: {
         description: 'Harness API Docs.',
+      },
+    },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/chaos-engineering',
+      customProps: {
+        description: 'Get certified and learn in Harness Chaos Engineering from our training programs.',
       },
     },
     // All Docs
@@ -3244,6 +3353,16 @@ const sidebars: SidebarsConfig = {
         description: 'Harness API Docs.',
       },
     },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/idp',
+      customProps: {
+        description: 'Get certified and learn in Harness Internal Developer Portal from our training programs.',
+      },
+    },
     // All Docs
     {
       type: 'link',
@@ -3570,6 +3689,16 @@ const sidebars: SidebarsConfig = {
       href: 'https://apidocs.harness.io/',
       customProps: {
         description: 'Harness API Docs.',
+      },
+    },
+    // University
+    {
+      type: "link",
+      label: "Certifications & Training",
+      className: "sidebar-university",
+      href: '/university/sei',
+      customProps: {
+        description: 'Get certified and learn in Harness Software Engineering Insights from our training programs.',
       },
     },
     // All Docs
