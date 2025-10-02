@@ -50,6 +50,21 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## September 2025
 
+### Version 1.101.0
+
+<!-- 2025-09-29 -->
+#### New features and enhancements
+- S3 Upload Plugin (plugins/s3): Added wildcard (*) pattern support for `PLUGIN_STRIP_PREFIX`. This allows stripping variable path segments and handle dynamic directory structures. (CI-18487)
+- Added Docker connector override support for local infrastructure. (CI-19024)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `plugins/s3` | Added wildcard (*) pattern support for `PLUGIN_STRIP_PREFIX` | 1.5.3              | 1.5.4         |
+| `harness/ci-lite-engine`       | Regular image updates | 1.17.5              | 1.17.6         |
+| `harness/ci-addon`       | Regular image updates | 1.17.5              | 1.17.6         |
+
 ### Version 1.99
 
 <!-- 2025-09-22 -->
