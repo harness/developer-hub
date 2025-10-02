@@ -267,6 +267,61 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 :::
 
+:::warning Breaking Change: Bitnami Repository Migration
+  
+  **Migration Notice: Bitnami Repository Changes**
+  
+  Customers directly pulling from `docker.io` registry for Bitnami images and are currently on version `<0.32.0` are affected.
+  
+  Bitnami has moved many of its container images from the default `bitnami` repository on Docker Hub to a new repository called `bitnamilegacy`.
+  
+  Since Harness relies on public Bitnami images, customers pulling directly from Docker Hub must update their configuration to point to `bitnamilegacy`.
+  
+  **Customers using private or air-gapped image sources are not affected.**
+  
+  **Reference:** [Upcoming changes to the Bitnami catalog (effective August 28th, 2025)](https://github.com/bitnami/charts/issues/28508)
+
+    ### Required Override
+    
+    To ensure compatibility, update your Harness overrides/add additional overrides in your install/upgrade commands as shown below:
+
+      ```yaml
+      platform:
+        bootstrap:
+          database:
+            mongodb:
+              image:
+                repository: bitnamilegacy/mongodb
+            postgresql:
+              image:
+                repository: bitnamilegacy/postgresql
+            minio:
+              image:
+                repository: bitnamilegacy/minio
+            clickhouse:
+              image:
+                repository: bitnamilegacy/clickhouse
+            timescaledb:
+              tsdbarchive:
+                image:
+                  repository: bitnamilegacy/minio
+      upgrades:
+        mongoFCVUpgrade:
+          image:
+            repository: bitnamilegacy/mongodb
+      ```
+
+    After applying this change, Harness will continue pulling the required Bitnami images without disruption.
+
+    ### Example
+    
+    Save the above override file as `bitnami-migration.yaml`:
+
+      ```bash
+      helm upgrade -i harness harness/harness -f override-prod.yaml -f bitnami-migration.yaml
+      ```
+:::
+
 ## September 26, 2025, Version 0.32.3 <!-- Draft : Sept 26, 2025 -->
 
 This release includes the following Harness module and component versions.
