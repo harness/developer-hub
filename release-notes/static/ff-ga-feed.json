@@ -652,5 +652,11 @@
     "description": "FF to optimize filepath condition evaluations in triggers by allowing multiple conditions in one single delegate task",
     "gaStartDate": "2025-10-07",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_AWS_STS_NON_DEFAULT_REGION",
+    "description": "For non-default regions, the STS URL must be customized to include the region.",
+    "gaStartDate": "2025-10-01",
+    "module": "Continuous Delivery"
   }
 ]
