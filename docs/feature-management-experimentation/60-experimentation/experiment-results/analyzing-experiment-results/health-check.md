@@ -54,7 +54,7 @@ If your metric exhibits strong seasonality (or other temporal effects), you may 
 * The p-value appears inconsistent with the confidence interval (e.g. CI covering 0 but p-value shows significance, or vice versa)
 * Results fluctuate rapidly between significant and nonsignificant
 
-This behavior occurs because the mSPRT algorithm assumes that data is stationary, meaning that each observation is drawn from the same underlying distribution with a fixed mean and variance. When this assumption holds, p-values and confidence intervals are consistent, and it is safe to monitor results as the experiment runs without inflating false positives.
+This behavior occurs because the mSPRT algorithm assumes that data is stationary, meaning that each observation over time is drawn from the same underlying distribution with a fixed mean and variance. When this assumption holds, p-values and confidence intervals are consistent, and it is safe to monitor results as the experiment runs without dramatic shifts in the results.
 
 When seasonality is present (daily cycles, weekly cycles, or other systemic drift in user behavior), this assumption is broken, leading to three related effects:
 
@@ -75,7 +75,7 @@ In practice:
 - P-values may remain small, reflecting past rather than current evidence
 - Both measures are functioning as designed, but under seasonality, the stationary assumption fails and results can appear "wonky"
 
-To address this, practical systems may implement a reset policy. If the running mean drifts outside the confidence interval, the algorithm can recalculate or "start fresh". This prevents early observations from dominating conclusions when the environment is changing. You can either recalculate results manually or rely on Harness FME to do so automatically.
+To address this, practical systems may implement a reset policy. If the running mean drifts outside the confidence interval, the algorithm can recalculate or "start fresh". This prevents early observations from dominating conclusions when the environment is changing. You can either recalculate results manually or rely on Harness FME to implement a reset policy.
 
 ## Experimental review period completeness (for fixed horizon testing)
 
