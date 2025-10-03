@@ -37,15 +37,12 @@ CCM has added new columns in CSV of recommendations when you export CSV, these n
   - **Resource Type**: Category of cloud resource 
   - **Cost Category**: Classification of cost for the resource
   - **Tags**: Resource labels used for organization and filtering
-  - **Potential Monthly Spend**: Estimated monthly cost for the resource
-  - **Potential Savings**:  If present, shown in the table
-  - **Savings Percentage**: Percentage of cost that could be saved
-  - **Recommendation Type**: Category of the cost optimization recommendation
-  - **Recommended Action**: Specific action to take for cost optimization
   - **Recommendation State**: Current status of the recommendation
   - **Resource Count**: Number of resources affected by the recommendation
   - **Custom Recommendation**: Only for Governance Recommendations if they are not OOTB
-
+  - **Applied At**: Date and time when the recommendation was applied (only for applied recommendations)
+  - **Applied By**: User who applied the recommendation (only for applied recommendations)
+  - **Overridden Savings**: Savings amount that has been manually adjusted for applied recommendations
 
 ## September 2025 - Version 1.64.7
 #### Deployment Date: September 23, 2025 (Prod-1)
