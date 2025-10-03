@@ -16,7 +16,7 @@ function hideIndexFromSidebarItems(items) {
 const config: Config = {
   title: 'Harness Developer Hub',
   tagline:
-    'Learn intelligent software delivery at your own pace. Guides, videos, and reference docs to help you deliver customer happiness.',
+    'Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.',
   url: 'https://developer.harness.io',
   baseUrl: BASE_URL,
   onBrokenLinks: 'throw',
@@ -472,19 +472,6 @@ const config: Config = {
         routeBasePath: 'university',
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-university.js'),
-        editUrl: 'https://github.com/harness/developer-hub/tree/main',
-        // ... other options
-      },
-    ],
-    [
-      path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
-
-      {
-        id: 'community',
-        path: 'community',
-        routeBasePath: 'community',
-        exclude: ['**/shared/**', '**/static/**'],
-        sidebarPath: require.resolve('./sidebars-community.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         // ... other options
       },
