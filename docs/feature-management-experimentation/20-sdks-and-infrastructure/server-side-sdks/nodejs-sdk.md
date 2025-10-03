@@ -1129,10 +1129,6 @@ factory.Logger.setLogLevel('WARN');
 </TabItem>
 </Tabs>
 
-Example output is shown below.
-
-![](../static/javascript-sdk-log-example.png)
-
 By default, the SDK uses the `console.log` method to output log messages for all log levels. 
 
 Since v11.6.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the Logger API. 
@@ -1148,16 +1144,16 @@ interface Logger {
 }
 ```
 
-The following example creates an instance of the `winston` logger, passes it to the SDK, and then switches to the `console` logger.
+The following example creates an instance of the `winston` logger, passes it to the SDK, and then switches to the `console` object as a logger.
 
 <Tabs>
 <TabItem value="Using Winston Logger and Console">
 
-```javascript
-const { createLogger, transports } = require('winston');
-const { SplitFactory } = require('@splitsoftware/splitio');
+```typescript
+import { createLogger, transports } from 'winston';
+import { SplitFactory } from '@splitsoftware/splitio';
 
-const winstonLogger = createLogger({
+const winstonLogger: SplitIO.Logger = createLogger({
   level: 'debug',
   transports: [new transports.Console()]
 });
@@ -1166,7 +1162,7 @@ const factory = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY'
   },
-  // Enable logs. Depending the log level set, the SDK will call the corresponding custom logger methods
+  // Enable logs to call the corresponding custom logger methods
   debug: true,
   logger: winstonLogger
 });
