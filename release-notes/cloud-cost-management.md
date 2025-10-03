@@ -67,10 +67,10 @@ CCM has added new columns in CSV of recommendations when you export CSV, these n
 
 ### Feature Improvements
 
-- **Improved Bin Packing Alerts:** Added notification banner and confirmation dialog when saving a cluster with disabled Bin Packing, highlighting its importance for scale-down operations and node utilization. [CCM-25324]
+- **Bin Packing Notification Enhancement:** If Bin Packing is disabled for a cluster within the Cluster Orchestrator, a notification banner and confirmation dialogue will appear upon saving, indicating that “Bin Packing must be enabled for cluster scale-down and optimal node utilisation.” [CCM-25324]
 
-- **Enhanced Bin Packing Configuration:** Made Node Deletion Criteria and Delay fields mandatory when enabling Bin Packing to ensure proper cluster optimization settings. [CCM-25312]
-p By
+- **Mandatory Fields for Bin Packing:** With the enabling of Bin Packing, the fields for Node Deletion Criteria and Delay have now been made mandatory. [CCM-25312]
+
 - **JIRA Integration for Recommendations:** We have addressed an issue regarding removing JIRA tickets from the shared recommendations. An API is implemented to unlink recommendations from the associated JIRA tickets. [CCM-25455]
 
 - **AutoStopping Schedule Ordering Fix:** We fixed an issue where when AutoStopping schedules from the Backend were unordered (e.g., 4, 1, 2, 3),  it caused the first schedule on UI edit to overwrite the wrong one. We now sort the Backend response before iterating or updating items to prevent mismatches. [CCM-25489]
