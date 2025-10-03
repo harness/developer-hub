@@ -220,87 +220,6 @@ const config: Config = {
           ],
         },
         {
-          label: 'University',
-          position: 'right',
-          type: 'dropdown',
-          to: 'university',
-          items: [
-            {
-              label: 'Learn Harness from Experts',
-              to: 'university',
-            },
-            {
-              label: 'Code Repository',
-              to: 'university/cr',
-            },
-            {
-              label: 'Continuous Integration',
-              to: 'university/continuous-integration',
-            },
-            {
-              label: 'Continuous Delivery & GitOps',
-              to: 'university/continuous-delivery',
-            },
-            {
-              label: 'Database DevOps',
-              to: 'university/database-devops',
-            },
-            {
-              label: 'Infrastructure as Code Management',
-              to: 'university/iacm',
-            },
-            {
-              label: 'Feature Flags',
-              to: 'university/feature-flags',
-            },
-            {
-              label: 'Feature Management & Experimentation',
-              to: 'https://arcade.split.io/',
-            },
-            {
-              label: 'Cloud Cost Management',
-              to: 'university/cloud-cost-management',
-            },
-            {
-              label: 'Security Testing Orchestration',
-              to: 'university/sto',
-            },
-            {
-              label: 'Supply Chain Security',
-              to: 'university/scs',
-            },
-            {
-              label: 'Chaos Engineering',
-              to: 'university/chaos-engineering',
-            },
-            {
-              label: 'Internal Developer Portal',
-              to: 'university/idp',
-            },
-            {
-              label: 'Software Engineering Insights',
-              to: 'university/sei',
-            },
-              {
-              label: 'Traceable by Harness',
-              to: 'university/traceable-by-harness',
-            },
-            {
-              label: 'Virtual Instructor-Led Calendar',
-              to: 'https://university-registration.harness.io/calendar',
-            },
-            {
-              label: 'Hands-on Instructions',
-              to: 'university/instructions',
-            },
-            {
-              label: 'Policies & FAQs',
-              to: 'university/policies-and-faqs',
-            },
-          ],
-        },
-
-        {
           label: 'Knowledge Base',
           position: 'right',
           type: 'dropdown',
@@ -314,16 +233,17 @@ const config: Config = {
               to: 'kb/reference-architectures',
               label: 'Reference Architectures',
             },
-            {
-              to: 'community',
-              label: 'Community',
-            },
           ],
         },
         {
           label: 'Roadmap',
           position: 'right',
           href: '/roadmap',
+        },
+        {
+          label: 'Release Notes',
+          position: 'right',
+          href: '/release-notes',
         },
         {
           type: 'custom-coveo-search',
