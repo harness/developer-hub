@@ -62,7 +62,6 @@ CCM has added new columns in CSV of recommendations when you export CSV, these n
   - **Applied By**: User who applied the recommendation (only for applied recommendations)
   - **Overridden Savings**: Savings amount that has been manually adjusted for applied recommendations
 
-
 ## September 2025 - Version 1.64.7
 #### Deployment Date: September 23, 2025 (Prod-1)
 
