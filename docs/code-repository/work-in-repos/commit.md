@@ -38,7 +38,6 @@ When viewing a repository in Harness Code, there are several ways you can inspec
    * You can select a commit's short SHA to inspect that commit.
    * The default branch is selected automatically. Select the default branch name to select a different branch or tag.
    * If a commit was part of a PR, the PR number is listed on next to the commit message. You can select the PR number to view that PR.
-* The **Branches** page shows the short SHA for the latest commit for each branch. Select the short SHA to inspect the commit.
 * The **Files** page shows the short SHA and commit message for the latest commit to each file in the context of the current branch or tag.
    * You can select a commit's short SHA to inspect the changes in that commit.
    * If a commit was part of a PR, the PR number is listed on next to the commit message in the files list. You can select the PR number to view that PR.
@@ -55,10 +54,6 @@ Upon selecting a short SHA, the **Commits** page opens to the diff view. Here yo
 Select the **Settings** icon to select your preferred **Diff View** and **Line Breaks** options.
 
 Select **Browse files** to inspect files in that commit.
-
-<!-- ![](./static/inspect-commit.png) -->
-
-<DocImage path={require('./static/inspect-commit.png')} />
 
 ## Revert a commit
 

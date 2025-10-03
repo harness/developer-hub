@@ -27,6 +27,7 @@ If the base branch has diverged from the source branch, you may want to rebase t
 
 * Merge conflicts will need to be resolved locally on the client before rebasing.
 * Rebase is not possible if force-push is disabled on the source branch in repository branch rules.
+* The rebase option will only be visible if one is possible.
 
 :::
 
