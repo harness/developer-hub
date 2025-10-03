@@ -1,6 +1,8 @@
 ---
-title: IaCM Module Governance
+title: Module Governance
 description: Control usage of modules in IaCM with OPA
+redirect_from:
+  - /kb/reference-architectures/iacm/iacm-module-governance
 ---
 
 
