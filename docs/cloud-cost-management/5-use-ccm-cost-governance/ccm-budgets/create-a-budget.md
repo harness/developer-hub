@@ -102,6 +102,12 @@ If your Budget Period is set to **Yearly** and the Budget Breakdown is **Monthly
 <DocImage path={require('./static/monthly-alerts.png')} width="60%" height="60%" title="Click to view full-size image" />
 :::
 
+After the budget is created, it can be viewed on the **Budgets** page. Each budget is associated with the same folder as the Perspective it was created on.  
+
+The Budgets tab displays all the budgets in a new consolidated view. Users can drill down into a folder or access the complete budget list for broader visibility. Users can also select which columns they want to see in the Budgets list. This gives them the flexibility to refine their view with the following attributes: Time Period, Budget Amount, Current Spend, Forecast, Forecast vs. Budget, Current Spend vs. Budget, Thresholds, Created By, and Last Modified. 
+
+<DocImage path={require('./static/budget-overview.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 ------
 </TabItem>
 <TabItem value="interactive-guide" label="Interactive Guide" default>
@@ -181,6 +187,8 @@ To edit a budget:
 :::danger
 Once a budget is deleted, it cannot be restored.
 :::
+
+--------
 
 ## FAQs
 

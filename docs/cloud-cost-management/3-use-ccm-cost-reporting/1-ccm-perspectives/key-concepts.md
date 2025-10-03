@@ -368,7 +368,7 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
   margin: '20px 0'
 }}>
   <h3 style={{margin: '0 0 15px 0', color: '#856404'}}>⚠️ Migration Notice for Existing Users</h3>
-  <p style={{margin: '0 0 10px 0'}}>This migration is <strong>only required for existing users</strong> who are currently using the legacy Label system. If you're a new user or haven't used Labels before, you can start directly with Label V2.</p>
+  <p style={{margin: '0 0 10px 0'}}>This migration is <strong>only required for existing users</strong> who are currently using the legacy Label system. If you're a new user or haven't used Labels before, you can start directly with Label V2. Labels are being replaced with LabelsV2 in the next release. CCM will automatically migrate the existing rules, but for scripts using Perspectives or CCs that include labels as rules, manual migration is required.</p>
 </div>
 
 Harness CCM is transitioning from the traditional Label system to the enhanced Label V2 system. Support for the legacy Label system will be discontinued in the coming months.
@@ -394,7 +394,7 @@ After Label V2, AWS labels are stored as-is without any normalization.
   margin: '15px 0'
 }}>
   <h4 style={{margin: '0 0 10px 0', color: '#0066cc'}}>✅ Migration Required</h4>
-  <p style={{margin: '0'}}>You need to migrate if you have <strong>existing Perspectives that use AWS Labels</strong> for grouping or filtering. Migration is done by Harness CCM. If you want to know the status of your migration, please contact Harness support</p>
+  <p style={{margin: '0'}}>You need to migrate if you have <strong>existing Perspectives that use Labels</strong> for grouping or filtering. Migration is done by Harness CCM. If you want to know the status of your migration, please contact Harness support</p> 
 </div>
 
 <div style={{
@@ -408,6 +408,98 @@ After Label V2, AWS labels are stored as-is without any normalization.
   <p style={{margin: '0'}}>If you're a new user or haven't used Labels in your Perspectives, simply use <strong>Label V2</strong> for all new configurations.</p>
 </div>
 
+### How to Migrate
+
+<Tabs>
+<TabItem value="via-ui" label="Via UI">
+
+- Identify affected components: Review all Perspectives that use Label-based grouping or filtering
+- Update each component: Edit each Perspective. Locate all instances where you've defined rules, filters, or grouping using AWS Labels. Change the selection from "Label" to "Label V2". Save your changes
+- Verify your updates: After updating the Perspective, confirm that your cost data appears correctly. Ensure all previously configured label-based filters work as expected
+
+
+<iframe src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" title="Migrating Label to Label V2" style={{minHeight:'480px'}} width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+
+</TabItem>
+<TabItem value="via-api" label="Via API">
+
+Earlier every request had the Label field as:
+
+```json
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key1",
+                        "identifier": "LABEL",
+                        "identifierName": "Label"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                } 
+```
+Now the request has the Label V2 field as:
+
+```json
+
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key1",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label v2"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                }
+```
+Similarly, for labels.key:
+
+Earlier:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key",
+                        "fieldName": "",
+                        "identifier": "LABEL",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+
+```
+
+Now:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key",
+                        "fieldName": "",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+``` 
+
+In short, wherever you see LABEL in "identifier", replace it with LABEL_V2 alongwith "identifierName" .
+
+Please refer the following API docs for details:
+
+- [Create a Perspective](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/createPerspective)
+- [Update a Perspective](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/updatePerspective)
+
+</TabItem>
+</Tabs>
+
+-------
 
 ## Organize Perspectives using Folders
 

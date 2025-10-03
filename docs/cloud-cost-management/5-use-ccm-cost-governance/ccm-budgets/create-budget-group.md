@@ -78,6 +78,12 @@ Budget Groups aggregate related budgets and budget groups into one consolidated 
      -  **Slack Webhook URL**: Enter the webhook URL.
 - Click **Save**. 
 
+After the budget group` is created, it can be viewed on the **Budget** > **Budget Groups** page. Budget groups are not associated with any folder since they contain budgets which are a part of different folders. 
+
+The Budgets tab displays all the budgets in a new consolidated view. Users can drill down into a folder or access the complete budget list for broader visibility. Users can also select which columns they want to see in the Budgets list. This gives them the flexibility to refine their view with the following attributes: Time Period, Budget Amount, Current Spend, Forecast, Forecast vs. Budget, Current Spend vs. Budget, Thresholds, Created By, and Last Modified. 
+
+<DocImage path={require('./static/budget-group-overview.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 ---------
 </TabItem>
 <TabItem value="interactive-guide" label="Interactive Guide">
