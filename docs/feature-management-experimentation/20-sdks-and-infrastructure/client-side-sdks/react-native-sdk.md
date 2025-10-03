@@ -58,7 +58,7 @@ expo install @splitsoftware/splitio-react-native
 
 The SDK supports two synchronization mechanisms, **streaming** (default and recommended) and **polling** which is the fallback in cases where streaming is not supported or as a temporary measure in case of any issues detected on the persistent connection. We recommend following the steps below to enable the necessary support for the Event Source modules.
 
-- For Expo and React Native bare projects using React Native version 0.74 or above, no additional setup is required: streaming is supported out of the box using the global `XMLHttpRequest` object.
+- For Expo and React Native bare projects using React Native version 0.74 or above, no additional setup is required: streaming is supported out-of-the-box using the global `XMLHttpRequest` object.
 
 - For React Native bare projects below version 0.74, we recommend *linking* to the native modules of the package, since streaming via `XMLHttpRequest` does not work on Android in debug mode.
   - If using React Native 0.59 or below, run `react-native link @splitsoftware/splitio-react-native`.
