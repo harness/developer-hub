@@ -32,6 +32,8 @@ The Budgets tab displays all the budgets in a new consolidated view. Users can d
 
 These changes improve the overall usability and discoverability of budgets, allowing users to identify and organize budgets more efficiently.  
 
+<DocImage path={require('./static/ccm/budget-folders.png')} width="90%" height="90%" title="Click to view full size image" />
+
 ### Feature Improvements
 - **Resource ID Support in Perspectives**: Added "Resource ID" as a group by, filter, and operand across all cloud service providers, enabling more granular cost analysis and reporting. [CCM-25078]
 - **Azure Resource Group Filtering**: Added support for filtering recommendations by Azure Resource Group, aligning with Perspectives functionality and enabling more targeted cost optimization strategies. [CCM-25175]
@@ -66,10 +68,10 @@ CCM has added new columns in CSV of recommendations when you export CSV, these n
 
 ### Feature Improvements
 
-- **Bin Packing Notification Enhancement:** If Bin Packing is disabled for a cluster within the Cluster Orchestrator, a notification banner and confirmation dialogue will appear upon saving, indicating that “Bin Packing must be enabled for cluster scale-down and optimal node utilisation.” [CCM-25324]
+- **Improved Bin Packing Alerts:** Added notification banner and confirmation dialog when saving a cluster with disabled Bin Packing, highlighting its importance for scale-down operations and node utilization. [CCM-25324]
 
-- **Mandatory Fields for Bin Packing:** With the enabling of Bin Packing, the fields for Node Deletion Criteria and Delay have now been made mandatory. [CCM-25312]
-
+- **Enhanced Bin Packing Configuration:** Made Node Deletion Criteria and Delay fields mandatory when enabling Bin Packing to ensure proper cluster optimization settings. [CCM-25312]
+p By
 - **JIRA Integration for Recommendations:** We have addressed an issue regarding removing JIRA tickets from the shared recommendations. An API is implemented to unlink recommendations from the associated JIRA tickets. [CCM-25455]
 
 - **AutoStopping Schedule Ordering Fix:** We fixed an issue where when AutoStopping schedules from the Backend were unordered (e.g., 4, 1, 2, 3),  it caused the first schedule on UI edit to overwrite the wrong one. We now sort the Backend response before iterating or updating items to prevent mismatches. [CCM-25489]
@@ -102,7 +104,7 @@ CCM has added new columns in CSV of recommendations when you export CSV, these n
 ## September 2025 - Hotfix: Dynamic Cost Categories Toggle in Perspectives
 #### **Deployment Date:** September 10, 2025
 
-### ⭐ [New Feature] Dynamic Cost Categories Toggle in Perspectives
+### [New Feature] Dynamic Cost Categories Toggle in Perspectives
 **[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-cost-categories-toggle)**
 
 <DocImage path={require('./static/ccm/dynamic-toggle.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -122,7 +124,7 @@ We’ve added a new Dynamic toggle on the Perspective page that gives you contro
 
 #### Deployment Date: August 29, 2025 (Prod-1)
 
-### ⭐ [New Feature] Jira Status Mapping in Recommendations
+### [New Feature] Jira Status Mapping in Recommendations
 **[CCM-23844] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#recommendation-settings)**
 
 We’ve added support for Jira Status Mapping in Recommendation Settings. Users can now map Jira statuses so that recommendations are automatically moved to either the Applied section or the Ignore List, based on their selection.
@@ -131,7 +133,7 @@ Noted that you need to have a Jira connector configured successfully for this fe
 
 <DocImage path={require('./static/ccm/status-mapping.png')} width="60%" height="60%" title="Click to view full size image" />
 
-### ⭐ [New Feature] Cluster Capacity Limits
+### [New Feature] Cluster Capacity Limits
 **[CCM-24203] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/feature-of-co)**
 
 We have added Cluster Capacity Limits in Cluster Orchestrator’s Cluster Configuration. For Karpenter Nodepools, users can now set maximum CPU (cores) and memory (bytes) limits as guardrails to prevent uncontrolled cluster scaling.
@@ -157,7 +159,7 @@ We have added Cluster Capacity Limits in Cluster Orchestrator’s Cluster Config
 ## August 2025 - Version 1.61.1
 #### **Deployment Date:** August 22, 2025 (Prod-1)
 
-### ⭐ [New Feature] Dynamic Perspective Reports
+### [New Feature] Dynamic Perspective Reports
 **[CCM-23836] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-perspective-reports)**
 
 
@@ -206,7 +208,7 @@ This feature is rolled out behind a **Feature Flag**. If the flag is enabled for
 ## August 2025 - Version 1.59.1
 #### **Deployment Date:** August 11, 2025 (Prod-1)
 
-### ⭐ [New Feature] Rules Generating Recommendations
+### [New Feature] Rules Generating Recommendations
 **[CCM-24188] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#rules-generating-recommendations)** 
 
 - Added support for Rule and Target Account Exclusions in Governance Recommendations, enabling you to define custom default rules that apply globally or to specific account subsets. This enhancement gives you precise control over which governance policies apply to specific accounts and which rules generate recommendations, streamlining compliance management across your organization.
@@ -236,7 +238,7 @@ This feature is rolled out behind a **Feature Flag**. If the flag is enabled for
 ## July 2025 - Version 1.58.3
 #### **Deployment Date:** July 28, 2025 (Prod-1)
 
-### ⭐ [New Feature] Bulk Evaluation Export
+### [New Feature] Bulk Evaluation Export
 **[CCM-23906]**
 
 CCM has introduced a new "Export" option in Cloud Asset Governance that lets you easily download results and logs from multiple evaluations run across different accounts and regions directly from the Test Terminal (for multi-target evaluations) or the Evaluations page.
@@ -348,7 +350,7 @@ When preferences are selected in a Perspective, those settings are saved automat
 
 ## June 2025 - Version 1.55.3
 
-### ⭐ [New Feature] OIDC Authentication Support
+### [New Feature] OIDC Authentication Support
 **[CCM-23638] | [AWS OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#oidc-authentication) | [GCP OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#step-4-authentication-conditional)**
 
 Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced security and streamlined connector setup. This authentication method is available for the following cloud providers and features:
@@ -362,7 +364,7 @@ Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced secur
 - Asset Governance
 - AutoStopping
 
-### ⭐ [New Feature] Event Driven Anomaly Detection
+### [New Feature] Event Driven Anomaly Detection
 **[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-detection-process)**
 
 CCM now provides **event-driven anomaly detection** that triggers automatically when cost data is ingested, complementing the existing scheduled anomaly detection jobs.
