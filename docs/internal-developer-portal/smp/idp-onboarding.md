@@ -17,6 +17,10 @@ This guide provides detailed instructions for deploying the Harness Internal Dev
 Harness IDP on SMP is available only for **IDP 2.0**. **IDP 1.0** is **not supported** on SMP.
 :::
 
+---
+
+## Overview
+
 ## Infrastructure Requirements
 
 Before proceeding with the IDP deployment to SMP, ensure the following prerequisites are met:

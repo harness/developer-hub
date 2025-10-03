@@ -15,8 +15,12 @@ Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Please
 Harness IDP on SMP is available only for **IDP 2.0**. **IDP 1.0** is **not supported** on SMP.
 :::
 
+---
+
 ## Supported Infrastructure
 The Self-Managed Enterprise Edition runs within the customer’s environment alongside existing services. You must have a Kubernetes cluster with a configured load balancer. Harness IDP is supported on SMP only when the control plane is deployed on **Google Cloud Platform (GCP)** using **Google Kubernetes Engine (GKE)**. Deployments on AWS (EKS), Azure (AKS), on-prem, or OpenShift are **not supported**.
+
+---
 
 ## Supported Features
 
@@ -29,9 +33,11 @@ The following features are supported for Harness IDP SMP Edition:
 | Scorecards               | ✅                |                              |
 | Git Experience           | ✅                |                              |
 | Environment Management   | ❌                | Not supported in SMP edition |
-| Plugins                  | ❌                | Not supported in SMP edition |
+| Plugins                  | ✅                |                              |
 | TechDocs                 | ❌                | Not supported in SMP edition |
 | RBAC                     | ✅                |                              |
+
+---
 
 ## Next Steps
 Go to [Onboarding Guide](/docs/internal-developer-portal/smp/idp-onboarding.md) to learn how to deploy Harness IDP on SMP.
