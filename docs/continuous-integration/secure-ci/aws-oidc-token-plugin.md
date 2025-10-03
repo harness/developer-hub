@@ -23,11 +23,11 @@ For more on configuring AWS for OIDC, refer to [AWS OIDC setup](https://docs.aws
     name: assume-role-with-oidc
     identifier: assume_role_with_oidc
     spec:
-      image: harnesscommunity/drone-aws-oidc
+      image: plugins/aws-oidc
       settings:
-        role_arn: arn:aws:iam::123456789012:role/harness-ci-role
-        role_session_name: foo # defaults to harness-aws-oidc
-        duration: 3600 # in seconds
+        IAMROLEARN: arn:aws:iam::123456789012:role/harness-ci-role
+        ROLE_SESSION_NAME: foo # defaults to harness-aws-oidc
+        DURATION: 3600 # in seconds
 ```       
 
 This step will use the injected OIDC token from Harness to authenticate with AWS and assume the specified role.
