@@ -72,6 +72,9 @@
   -webkit-background-clip: initial;
   -webkit-text-fill-color: initial;
 }
+:global(html[data-theme='dark']) .heroTitle {
+  color: #fff;
+}
 
 /* Subtitle: Geist, 20px, #484851, 64px underneath. */
 .heroSubTitle {
