@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-09-12T18:00
+date: 2025-10-03T18:00
 sidebar_position: 6
 ---
 
@@ -40,7 +40,7 @@ Important Update: Labels are being replaced with LabelsV2 in the next release. C
 
 ### Feature Improvements
 
-- **Resource ID Support in Perspectives:** Added "Resource ID" as a group by, filter criterion, and operand across all cloud service providers, enabling more granular cost analysis and reporting. [CCM-25078]
+- **Resource ID Support in Perspectives:** Added "Resource ID" as a group by, filter, and operand across all cloud service providers, enabling more granular cost analysis and reporting. [CCM-25078]
 - **Azure Resource Group Filtering:** Added support for filtering recommendations by Azure Resource Group, aligning with Perspectives functionality and enabling more targeted cost optimization strategies. [CCM-25175]
 
 ## September 2025 - Version 1.64.7
