@@ -7,7 +7,7 @@ sidebar_position: 8
 
 Fallback treatments are returned by an FME SDK when your application requests a treatment for a feature flag but the SDK cannot determine the value through normal evaluation. 
 
-:::danger
+:::info
 This behavior is defined in the SDK itself and is not configured through the Harness FME UI.
 :::
 
