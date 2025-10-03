@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-09-12T18:00
+date: 2025-09-031T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,34 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## October 2025 - Hotfix: Added new columns for Recommendation CSV Export
+#### **Deployment Date:** October 3, 2025 
+
+**What Was Changed**
+
+CCM has added new columns in CSV of recommendations when you export CSV, these new columns are:
+  - **Recommendation Link**: Direct URL to view the recommendation details in the CCM portal
+  - **Recommendation Date**: Date when the recommendation was generated
+  - **Account ID**: Unique identifier for the cloud account
+  - **Account Name**: Display name of the cloud account
+  - **Resource ID**: Unique identifier for the resource
+  - **Resource Name**: Display name of the resource
+  - **Cloud Provider**: Cloud service provider 
+  - **Region**: Geographic location where the resource is deployed
+  - **Resource Type**: Category of cloud resource 
+  - **Cost Category**: Classification of cost for the resource
+  - **Tags**: Resource labels used for organization and filtering
+  - **Potential Monthly Spend**: Estimated monthly cost for the resource
+  - **Potential Savings**:  If present, shown in the table
+  - **Savings Percentage**: Percentage of cost that could be saved
+  - **Recommendation Type**: Category of the cost optimization recommendation
+  - **Recommended Action**: Specific action to take for cost optimization
+  - **Recommendation State**: Current status of the recommendation
+  - **Resource Count**: Number of resources affected by the recommendation
+  - **Custom Recommendation**: Only for Governance Recommendations if they are not OOTB
+
+
 ## September 2025 - Version 1.64.7
 #### Deployment Date: September 23, 2025 (Prod-1)
 
