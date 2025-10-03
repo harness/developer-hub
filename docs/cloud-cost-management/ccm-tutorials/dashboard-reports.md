@@ -1,7 +1,10 @@
 ---
 description: KB - Configuration for sending Dashboard reports to slack channel/user.
 title: Send Dashboard reports to slack channel
+redirect_from:
+    - /kb/cloud-cost-management/articles/slack-email-alert
 ---
+
 # Introduction
 
 Harness Dashboards display key metrics and data related to your builds, deployments, security, and cloud costs. Dashboards let you track the health and performance of your deployments, monitor key metrics and KPIs, and quickly identify potential issues. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights into continuous delivery processes, so you can achieve faster and more efficient deployments.
@@ -18,12 +21,12 @@ Every slack user/channel has a unique email address which we can utilize at plac
 
 Step 1 : Go to your slack channel and then Integration, select send emails to this conversation
 
-![](../static/slack.png)
+![](./static/slack.png)
 
 Step 2 : Generate unique email address and copy it.
 
-![](../static/slackemail.png)
+![](./static/slackemail.png)
 
 Use the copied email address in place of email address for sechusling slack channel/user alert for dashbaord
 
-![](../static/email.png)
+![](./static/email.png)
