@@ -658,5 +658,17 @@
     "description": "For non-default regions, the STS URL must be customized to include the region.",
     "gaStartDate": "2025-10-01",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_LIST_BRANCH_V2",
+    "description": "FF to use newer APIs for GitX branch listing.",
+    "gaStartDate": "2025-10-03",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_PAGINATED_CONNECTORS_FETCHING_IN_TRIGGER_FILTERS",
+    "description": "Uses paginated requests to fetch connectors for webhook triggers.",
+    "gaStartDate": "2025-10-03",
+    "module": "Pipeline"
   }
 ]
