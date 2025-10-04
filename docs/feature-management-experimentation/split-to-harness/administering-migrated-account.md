@@ -524,7 +524,7 @@ This section provides steps to create a service account and role bindings for an
 
 To create an Admin API key scoped to all projects in your Harness account, view the steps in the interactive guide:
 
-  tango here
+  <DocVideo src="https://app.tango.us/app/embed/8acfbc77-8fe7-4474-8169-a63b28d5bce2?hideAuthorAndDetails=true" title="Create a new Service Account for all projects and generate an API Key and Token" />
 
   </TabItem>
   <TabItem value="step" label="Step-by-step">
@@ -578,7 +578,7 @@ To create an Admin API key scoped to all projects in your Harness account, view 
     1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
     1. Copy the token value somewhere safe.
 
-  <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
+  <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if the project was migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
 
   </TabItem>
   </Tabs>
@@ -615,7 +615,7 @@ This section provides steps to create a service account and role bindings for an
 
 To create an Admin API key scoped to a specific project in your Harness account, view the steps in the interactive guide:
 
-  tango here
+  <DocVideo src="https://app.tango.us/app/embed/8f858d3d-f095-4bfe-b697-3fe9d67404fb?hideAuthorAndDetails=true" title="Create a new Service Account for a specific project and generate an API Key and Token" />
 
   </TabItem>
   <TabItem value="step" label="Step-by-step">
@@ -653,7 +653,7 @@ To create an Admin API key scoped to a specific project in your Harness account,
     1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
     1. Copy the token value somewhere safe.
 
-  <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
+  <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if the project was migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
 
   </TabItem>
   </Tabs>
