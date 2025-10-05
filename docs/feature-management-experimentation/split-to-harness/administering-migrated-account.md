@@ -39,7 +39,7 @@ The following terminology is referenced in this guide:
   * **SDK API keys**: Authentication tokens used to authorize FME SDK requests. SDK API keys are managed by the Harness FME module.
   * **API keys**: The Harness platform manages API keys and tokens within service accounts.* When “API keys” is not preceded by “Admin” or “SDK”, then this guide is referring to these Harness platform API key entities.
 
-<span style={{fontSize: '0.8em'}}>\* *In Harness, API keys can also be created at the [personal user scope](/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens), but the migration script does not create personal access API keys and tokens, so these are outside the scope of this guide.*</span>
+<span style={{fontSize: '0.8em'}}>\* *In Harness, API keys can also be created in your personal user profile. For more information, go to the [FAQs - API keys](#can-i-create-an-admin-api-key-at-the-personal-user-scope) section.*</span>
 
 ## Users
 
@@ -864,6 +864,16 @@ To cleanly delete a project in your Harness account:
 ## FAQs
 
 ### API keys
+
+#### Can I create an Admin API key in my personal user profile in Harness?
+
+Yes. [Split Admin API](https://docs.split.io/reference/introduction) supports authenticating with API key tokens created on a user's **Profile Overview** page in Harness. These API key tokens are personal access tokens (PATs). PATs can be used for all non-deprecated Split API endpoints that require an [Admin API key](#admin-api-keys) for authorization (not the endpoints that require an [SDK API key](#sdk-api-keys)).
+
+An API key created under a personal user account will have the same RBAC permissions as the user. For example, a user in the [All FME Editors](#fme-user-groups) group (with the FME Manager Role assigned over FME All Resources at the project level, the Organization Viewer role over All Organization Level Resources, and the Account Viewer role over All Account Level Resources, as set up by the migration script) will have sufficient privileges to authorize the Split API requests.
+
+___Since PAT permissions are inseparable from a user's RBAC permissions, [creating Admin API keys in service accounts](#create-an-admin-api-key) is best. Using service accounts, you can limit the permissions granted to an API key to those specifically required by an integration.___
+
+The Harness API also [supports PATs for authentication](https://apidocs.harness.io/section/introduction/authentication#section/introduction/Authentication). For more information about PATs, see [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys) in the Harness documentation.
 
 #### Can I restrict an Admin API key to an FME environment?
 
