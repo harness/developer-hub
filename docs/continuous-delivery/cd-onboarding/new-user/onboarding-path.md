@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 
 This topic describes the different phases and steps involved in onboarding with Harness CD. Follow these steps to ensure that you have all the settings and resources required for moving forward with your own deployments.
 
-If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](/docs/category/cd-and-gitops-tutorials).
+If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](/docs/category/cd-tutorials).
 
 ## Overview
 

@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-12-03T14:00
+date: 2025-09-24T14:00
 sidebar_position: 3
 ---
 
@@ -157,7 +157,45 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## October 2025 
+
+### Version 1.110.x <!--October 03, 2025-->
+
+#### Fixed issues
+
+- Resolved a delegate name validation issue where delegates with names ending in a number could not be created through the UI, even though they worked via API and Terraform. [PL-65391]
+- Updated the system to handle errors in certain operations, including null pointer exceptions and incorrect response codes for invalid notification rule IDs. [PL-65387]
+- Fixed a scope issue that prevented certain delegates from appearing in role assignments. [PL-65324]
+- Resolved delegate startup delays on read-only file systems by loading custom certificates in a writable directory. [PL-65213]
+- Resolved an issue with cross-scope references, where users could reference child-scope channels in parent-scope rules. Such references are no longer allowed. [PL-64702]
+- Updated the system to trim trailing spaces in URLs and other fields to prevent connector creation errors. [PL-58616]
+
+#### New features and enhancements
+
+- Enhanced SMTP permissions: users can now be assigned Create/Edit, View, and Delete rights with proper error messages for missing permissions. [PL-64560]
+
 ## September 2025 
+
+### Version 1.109.x <!--September 24, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where SCIM patch requests from Okta did not update User Group membership in the Harness UI. [PL-65385]
+
+#### New features and enhancements
+
+- Introduced a delegate task limit to better manage peak loads and improve system stability. [PL-56344]
+
+
+### Version 1.108.x <!--September 17, 2025-->
+
+#### Fixed issues
+
+- Updated the name and description of the body parameter in the [Token Validation API](https://apidocs.harness.io/openapi-merged/token/validatetoken). [PL-64820]
+
+#### New features and enhancements
+
+- Added support for running Harness services with a read-only root filesystem. [PL-65055]
 
 ### Version 1.105.x <!--September 03, 2025-->
 
@@ -1396,7 +1434,7 @@ The Dashboard Intelligence feature has been temporarily disabled until further n
     When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
     :::
 
-- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
+- You can now toggle between the legacy UI navigation and the new navigation for your account. (PL-43772)
 
 #### Early access features
 

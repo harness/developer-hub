@@ -36,7 +36,7 @@ You can import the SDK in your project by using Swift Package Manager. This can 
 You can also import the SDK into your Xcode project using CocoaPods, adding it in your **Podfile**.
 
 ```swift title="Podfile"
-pod 'Split', '~> 3.3.3'
+pod 'Split', '~> 3.4.0'
 ```
 
 #### Carthage
@@ -44,7 +44,7 @@ pod 'Split', '~> 3.3.3'
 This is another option to import the SDK. Just add it in your **Cartfile**.
 
 ```swift title="Cartfile"
-github "splitio/ios-client" 3.3.3
+github "splitio/ios-client" 3.4.0
 ```
 
 Once added, follow the steps provided in the [Carthage Readme](https://github.com/Carthage/Carthage/blob/master/README.md#if-youre-building-for-ios-tvos-or-watchos).
@@ -333,6 +333,8 @@ let treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSets, at
 //   "FEATURE_FLAG_NAME_2": { "treatment": "visa", "config": "{ \"color\":\"red\" }"}
 // }
 ```
+
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
 ### Append properties to impressions
 
@@ -769,6 +771,58 @@ To enable SDK logging, the `logLevel` setting is available in `SplitClientConfig
 The following shows an example output:
 
 ![](../static/ios-sdk-log-example.png)
+
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```java
+// Initialize SDK with global fallback treatment
+let fallbackTreatmentConfiguration = FallbackTreatmentsConfig.builder()
+            .global("off")
+            .build()
+
+let config = SplitClientConfig()
+config.fallbackTreatments = fallbackTreatmentConfiguration
+
+
+let factory = DefaultSplitFactoryBuilder.setApiKey("YOUR_API_KEY").setConfig(config).build()
+let client = factory.client()
+```
+
+### Flag-level fallback treatment
+
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
+
+```swift
+let fallbackTreatmentConfiguration = FallbackTreatmentsConfig.builder()
+            .global(FallbackTreatment(treatment: "off", config: "{\"config_value\":true}"))
+            .byFlag([
+                "my_flag": "false"
+            ])
+            .byFlag([
+                "my_flag_2": FallbackTreatment(treatment: "false", config: "{\"message\": \"not found\"}")
+            ])
+            .build()
+
+let config = SplitClientConfig()
+config.fallbackTreatments = fallbackTreatmentConfiguration
+
+let factory = DefaultSplitFactoryBuilder.setApiKey("YOUR_API_KEY").setConfig(config).build()
+let client = factory.client()
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
 ## Advanced use cases
 

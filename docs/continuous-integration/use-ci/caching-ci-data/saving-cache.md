@@ -11,6 +11,7 @@ helpdocs_is_published: true
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import PreserveMetadata from '/docs/continuous-integration/shared/preserve-metadata.md';
 
 You can use caching to share data cross stages or run pipelines faster by reusing the expensive fetch operation data from previous builds.
 
@@ -294,6 +295,8 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+
+<PreserveMetadata/>
 
 ### Set shared paths for cache locations outside the stage workspace
 

@@ -27,7 +27,7 @@ In the Live Edit mode there are three things that users should pay attention to
 
 **Continue** - This button allows the user to run the test up to that set breakpoint
 
-**Step Over - **This button allows the user to execute one step at a time when a breakpoint is set.
+**Step Over** - This button allows the user to execute one step at a time when a breakpoint is set.
 
 <DocImage
   path={require('./static/edit-2-options.png')}

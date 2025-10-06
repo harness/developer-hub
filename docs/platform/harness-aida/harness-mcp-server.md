@@ -127,34 +127,34 @@ Why not just use function calls for each API?
 
 ```json
 {
-  "mcp": {
-    "servers": {
-      "harness": {
-        "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "YjJmMGNkNDAyOGQ2YWQ4ZjI2MzA4NzMxNTlhOTgyNWQ=",
-          "-e",
-          "HARNESS_DEFAULT_ORG_ID",
-          "-e",
-          "HARNESS_DEFAULT_PROJECT_ID",
-          "-e",
-          "HARNESS_BASE_URL",
-          "harness/mcp-server",
-          "stdio"
-        ],
-        "env": {
-          "HARNESS_API_KEY": "<YOUR_API_KEY>",
-          "HARNESS_DEFAULT_ORG_ID": "<YOUR_ORG_ID>",
-          "HARNESS_DEFAULT_PROJECT_ID": "<YOUR_PROJECT_ID>",
-          "HARNESS_BASE_URL": "<YOUR_BASE_URL>"
-        }
+  "servers": {
+    "harness-mcp-server": {
+      "type": "stdio",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "HARNESS_API_KEY",
+        "-e",
+        "HARNESS_DEFAULT_ORG_ID",
+        "-e",
+        "HARNESS_DEFAULT_PROJECT_ID",
+        "-e",
+        "HARNESS_BASE_URL",,
+        "harness/mcp-server",
+        "stdio"
+      ],
+      "env": {
+        "HARNESS_API_KEY": "<YOUR_API_KEY>",
+        "HARNESS_DEFAULT_ORG_ID": "<YOUR_ORG_ID>",
+        "HARNESS_DEFAULT_PROJECT_ID": "<YOUR_PROJECT_ID>",
+        "HARNESS_BASE_URL": "<YOUR_BASE_URL>"
       }
     }
-  }
+  },
+  "inputs": []
 }
 
 ```
@@ -164,11 +164,15 @@ Why not just use function calls for each API?
 ### Using Claude Code
 
 ```bash
-HARNESS_API_KEY=your_api_key \
-HARNESS_DEFAULT_ORG_ID=your_org_id \
-HARNESS_DEFAULT_PROJECT_ID=your_project_id \
-./cmd/harness-mcp-server/harness-mcp-server stdio
+claude mcp add harness -- docker run -i --rm \
+  -e HARNESS_API_KEY=your_api_key \
+  -e HARNESS_DEFAULT_ORG_ID=your_org_id \
+  -e HARNESS_DEFAULT_PROJECT_ID=your_project_id \
+  -e HARNESS_BASE_URL=your_base_url \
+  harness/mcp-server stdio
 ```
+
+[Claude Code MCP Guide](https://docs.claude.com/en/docs/claude-code/mcp)
 
 ### Building from Source
 

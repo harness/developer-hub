@@ -50,8 +50,7 @@ The following example illustrates the required format for your data:
 {  
    "meta":{  
       "key":[  
-         "issueName",  
-         "fileName"  
+         "issueName"
       ],  
       "subproduct":"MyCustomScanner"  
    },  
@@ -238,8 +237,7 @@ pipeline:
                       {  
                          "meta":{  
                             "key":[  
-                               "issueName",  
-                               "fileName"  
+                               "issueName"
                             ],  
                             "subproduct":"MyCustomScanner"  
                          },  
@@ -349,8 +347,7 @@ This command uses the filter to generate the correctly formatted output.
 {
   meta: {
     key: [
-      "issueName",
-      "fileName"
+      "issueName"
     ],
     subproduct: "mend v3 sca"
   },
@@ -433,7 +430,7 @@ def transform_issue(language; issue):
 
 {
   meta: {
-    key: ["issueName", "fileName"],
+    key: ["issueName"],
     subproduct: "mend v3 SAST"
   },
   issues: [

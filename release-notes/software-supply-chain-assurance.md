@@ -1,7 +1,7 @@
 ---
 title: Supply Chain Security release notes
 sidebar_label: Supply Chain Security
-date: 2023-09-18T10:00
+date: 2025-09-16T10:00
 sidebar_position: 15
 ---
 
@@ -18,16 +18,38 @@ These release notes describe recent changes to Harness Supply Chain Security.
 :::
 
 
+## September 2025
+
+### Version: 1.41.0 , Plugin Version: 0.45.0
+
+#### New Features and Enhancements
+
+- [SBOM ingestion of non-container artifacts](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images), the artifact path is now optional, allowing ingestion to be performed directly from the provided SBOM file. This makes it easier to manage artifact paths at scale.
+
+- Added support to manage the [OWASP Top 10 risks](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management), enables you to easily identify outdated, unmaintained, close to end of life, and end of life components, and create Jira ticket to update package version.
+
+<DocImage path={require('./static/scs/releasenotes.png')} width="90%" height="60%" title="Click to view full size image" />
+
+#### Fixed Issues
+
+- Fixed the search filters for code repositories and licenses on the SBOM page, which were previously not working accurately.
+
+- The total vulnerabilities count on the code repository page is now the exact sum of critical, high, medium, and low severity issues (previously, info-level issues were also included).
+
+- Fixed a Go-GitHub package parsing issue in GitHub Enterprise URLs ([ZD-92576](https://harnesssupport.zendesk.com/agent/tickets/92576)).
+
 
 ## August 2025
 
 ### Version: 1.39.0 , Plugin Version: 0.44.0
 
+
+
 #### New features and enhancements
 
 - Added support for [Ingestion of SBOM for non-container artifacts](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images).
 - Added support for secure connect for all the SCS plugins ([ZD-87724](https://harnesssupport.zendesk.com/agent/tickets/87724)).
-- SBOM score for an artifact can now be downloaded via API.
+- SBOM score for an artifact can now be downloaded via [API](https://apidocs.harness.io/openapi-merged/sbom/getsbomscoreforartifact).
 
 #### Fixed Issues
 

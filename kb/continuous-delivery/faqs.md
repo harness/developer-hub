@@ -3270,4 +3270,4 @@ For frequently asked questions about Harness Continuous Verification, go to [Con
 
 ### GitOps FAQs
 
-For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/resources/gitops-faqs).

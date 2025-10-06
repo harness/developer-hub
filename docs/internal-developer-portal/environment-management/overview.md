@@ -1,6 +1,7 @@
 ---
 title: Environment Management Overview & Key Concepts
 description: Overview & Key Concepts of Environment Management in the Harness IDP. 
+sidebar_label: Overview & Key Concepts
 sidebar_position: 1
 ---
 
@@ -64,7 +65,7 @@ A Component in IDP Catalog represents a service or any other type of software co
 IaCM Workspace is a container for your infrastructure resources. It integrates IaC code, variables, cloud provider connections, state files, and workflows. In Terraform, each workspace has its own state file, which tracks the status of its managed resources. Go to [Workspaces](/docs/category/workspaces) to learn more.
 
 ### Workspace Templates
-With IaCM Workspace Templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. Go to [Workspace Templates](/docs/infra-as-code-management/workspaces/workspace-tempates) to learn more.
+With IaCM Workspace Templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. Go to [Workspace Templates](/docs/infra-as-code-management/workspaces/workspace-templates) to learn more.
 
 
 

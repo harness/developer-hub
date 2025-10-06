@@ -326,6 +326,10 @@ A great benefit of a Blue Green deployment is rapid rollback: rolling back to th
 For Blue Green deployments, Harness used to scale down deployments, DaemonSets, deploymentConfig, and delete HPA and PDB resources. During scale down, Harness updated the field replicas to 0. In Kubernetes, if HPA is configured, it is not mandatory to define replicas. So when another deployment happens and Harness applies the same old deployments manifest, it does not update the replicas field and remains 0. This results in no deployment even though the pipeline is successful. To resolve this, Harness now scale down only DaemonSets and delete deployment, deploymentConfig, HPA, and PDB resources. 
 :::
 
+:::warning Multiple services deployment
+When deploying multiple services to the same namespace using Blue Green deployment, ensure that each service has a unique release name. If the same release name is used across different services in the same namespace, the ScaleDown step may incorrectly identify which deployment to scale down, resulting in unexpected behavior.
+:::
+
 You do not need to redeploy previous versions of the app and the pods that comprised their environment.
 
 Add a [Blue Green Stage Scale Down](#add-the-execution-steps) step to scale down the last successful stage environment created during a Blue Green deployment.

@@ -28,6 +28,9 @@
 /docs/category/sto-workflows /docs/category/use-sto
 
 # Added by aimurphy in Feb 2024 for Tutorial Unification
+
+# Added on 2025-09-24 for creating-tests folder redirect
+# /docs/ai-test-automation/test-authoring/creating-tests /docs/ai-test-automation/test-authoring/creating-tests/create-tests-doc
 /tutorials/ci-pipelines /docs/continuous-integration
 /tutorials/feature-flags /docs/feature-flags
 /tutorials/self-managed-enterprise-edition /docs/self-managed-enterprise-edition
@@ -43,10 +46,10 @@
 /tutorials/security-tests /docs/security-testing-orchestration
 /docs/continuous-delivery/get-started/cd-tutorial /docs/continuous-delivery
 /tutorials/cd-pipelines /docs/continuous-delivery
-/tutorials/cd-pipelines/unified-cicd /docs/category/cd-and-gitops-tutorials
-/tutorials/cd-pipelines/kubernetes /docs/category/cd-and-gitops-tutorials
-/tutorials/cd-pipelines/serverless /docs/category/cd-and-gitops-tutorials
-/tutorials/cd-pipelines/vm /docs/category/cd-and-gitops-tutorials
+/tutorials/cd-pipelines/unified-cicd /docs/category/cd-tutorials
+/tutorials/cd-pipelines/kubernetes /docs/category/cd-tutorials
+/tutorials/cd-pipelines/serverless /docs/category/cd-tutorials
+/tutorials/cd-pipelines/vm /docs/category/cd-tutorials
 /tutorials /docs
 
 # Added by schoudhury on 3-2-2024

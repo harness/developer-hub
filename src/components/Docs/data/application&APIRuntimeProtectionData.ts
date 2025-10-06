@@ -19,6 +19,7 @@ export const docsCards: CardSections = [
                     "Learn what Application and API Runtime Protection (API Protection) is within Traceable.",
                 link: "https://docs.traceable.ai/docs/traceable-runtime-protection",
             },
+            /*
             {
                 title: "Get Started with Protection",
                 module: MODULES.arp,
@@ -26,6 +27,7 @@ export const docsCards: CardSections = [
                     "Understand the components and how they work within Traceable.",
                 link: "https://docs.traceable.ai/docs/traceable-runtime-protection",
             },
+            */
             {
                 title: "Edge Deployment",
                 module: MODULES.arp,

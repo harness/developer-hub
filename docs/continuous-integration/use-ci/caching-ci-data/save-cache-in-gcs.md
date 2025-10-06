@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import PreserveMetadata from '/docs/continuous-integration/shared/preserve-metadata.md';
+
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
 In addition to loading dependencies faster, you can also use caching to share data across stages in your Harness CI pipelines. You need to use caching to share data across stages because each stage in a Harness CI pipeline has its own build infrastructure.
@@ -197,6 +199,8 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+
+<PreserveMetadata/>
 
 ### Set shared paths for cache locations outside the stage workspace
 

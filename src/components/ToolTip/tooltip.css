@@ -1,0 +1,108 @@
+/* ---- Theme tokens (light / dark) --------------------------------------- */
+:root {
+    --tt-bg: #1f2937;
+    --tt-fg: #ffffff; 
+    --tt-border: rgba(255,255,255,0.12);
+    --tt-shadow: 0 12px 28px rgba(0,0,0,0.28), 0 2px 6px rgba(0,0,0,0.18);
+    --tt-radius: 12px;
+    --tt-pad-y: 0.875rem;
+    --tt-pad-x: 1rem;
+    --tt-maxw: 420px;
+    --tt-arrow-size: 10px;
+    --tt-fade: 140ms;
+  }
+  
+  [data-theme="dark"] {
+    --tt-bg: #f9fafb;
+    --tt-fg: #111827;
+    --tt-border: rgba(0,0,0,0.15);
+    --tt-shadow: 0 16px 32px rgba(0,0,0,0.45), 0 2px 10px rgba(0,0,0,0.3);
+  }
+  
+  /* ---- Wrapper / trigger ------------------------------------------------- */
+  .tooltip-wrapper {
+    position: relative;
+    cursor: help;
+    display: inline-block;
+  }
+  
+  .tooltip-label {
+    border-bottom: 1px dotted var(--ifm-color-primary);
+  }
+  
+  /* ---- Bubble ------------------------------------------------------------ */
+  .tooltip-text {
+    position: absolute;
+    z-index: 50;
+    bottom: calc(100% + var(--tt-arrow-size) + 4px);
+    left: 50%;
+    transform: translate(-50%, 6px) scale(0.98);
+    transform-origin: bottom center;
+  
+    display: block;
+    max-width: var(--tt-maxw);
+    width: max-content;
+  
+    padding: var(--tt-pad-y) var(--tt-pad-x);
+    border-radius: var(--tt-radius);
+    background: var(--tt-bg);
+    color: var(--tt-fg);
+    border: 1px solid var(--tt-border);
+    box-shadow: var(--tt-shadow);
+    line-height: 1.45;
+    font-size: 0.95rem;
+    white-space: normal;
+  
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  
+    transition:
+      opacity var(--tt-fade) ease,
+      transform var(--tt-fade) ease,
+      visibility var(--tt-fade) step-end;
+    will-change: opacity, transform;
+  }
+  
+  /* Arrow */
+  .tooltip-text::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    border-width: var(--tt-arrow-size);
+    border-style: solid;
+    border-color: var(--tt-bg) transparent transparent transparent;
+    filter: drop-shadow(0 -1px 0 var(--tt-border));
+  }
+  
+  /* ---- Show on hover or keyboard focus ---------------------------------- */
+  .tooltip-wrapper:hover .tooltip-text,
+  .tooltip-wrapper:focus-within .tooltip-text {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, -2px) scale(1);
+  }
+  
+  .tooltip-label:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--ifm-color-primary) 30%, transparent);
+    border-bottom-color: var(--ifm-color-primary);
+  }
+  
+  /* ---- Reduced motion ---------------------------------------------------- */
+  @media (prefers-reduced-motion: reduce) {
+    .tooltip-text {
+      transition: none;
+      transform: translate(-50%, 0);
+    }
+  }
+  
+  /* ---- Small screens ----------------------------------------------------- */
+  @media (max-width: 480px) {
+    .tooltip-text {
+      max-width: 88vw;
+    }
+  }

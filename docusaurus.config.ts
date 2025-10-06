@@ -16,7 +16,7 @@ function hideIndexFromSidebarItems(items) {
 const config: Config = {
   title: 'Harness Developer Hub',
   tagline:
-    'Learn intelligent software delivery at your own pace. Guides, videos, and reference docs to help you deliver customer happiness.',
+    'Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.',
   url: 'https://developer.harness.io',
   baseUrl: BASE_URL,
   onBrokenLinks: 'throw',
@@ -232,87 +232,6 @@ const config: Config = {
           ],
         },
         {
-          label: 'University',
-          position: 'right',
-          type: 'dropdown',
-          to: 'university',
-          items: [
-            {
-              label: 'Learn Harness from Experts',
-              to: 'university',
-            },
-            {
-              label: 'Code Repository',
-              to: 'university/cr',
-            },
-            {
-              label: 'Continuous Integration',
-              to: 'university/continuous-integration',
-            },
-            {
-              label: 'Continuous Delivery & GitOps',
-              to: 'university/continuous-delivery',
-            },
-            {
-              label: 'Database DevOps',
-              to: 'university/database-devops',
-            },
-            {
-              label: 'Infrastructure as Code Management',
-              to: 'university/iacm',
-            },
-            {
-              label: 'Feature Flags',
-              to: 'university/feature-flags',
-            },
-            {
-              label: 'Feature Management & Experimentation',
-              to: 'https://arcade.split.io/',
-            },
-            {
-              label: 'Cloud Cost Management',
-              to: 'university/cloud-cost-management',
-            },
-            {
-              label: 'Security Testing Orchestration',
-              to: 'university/sto',
-            },
-            {
-              label: 'Supply Chain Security',
-              to: 'university/scs',
-            },
-            {
-              label: 'Chaos Engineering',
-              to: 'university/chaos-engineering',
-            },
-            {
-              label: 'Internal Developer Portal',
-              to: 'university/idp',
-            },
-            {
-              label: 'Software Engineering Insights',
-              to: 'university/sei',
-            },
-              {
-              label: 'Traceable by Harness',
-              to: 'university/traceable-by-harness',
-            },
-            {
-              label: 'Virtual Instructor-Led Calendar',
-              to: 'https://university-registration.harness.io/calendar',
-            },
-            {
-              label: 'Hands-on Instructions',
-              to: 'university/instructions',
-            },
-            {
-              label: 'Policies & FAQs',
-              to: 'university/policies-and-faqs',
-            },
-          ],
-        },
-
-        {
           label: 'Knowledge Base',
           position: 'right',
           type: 'dropdown',
@@ -326,16 +245,17 @@ const config: Config = {
               to: 'kb/reference-architectures',
               label: 'Reference Architectures',
             },
-            {
-              to: 'community',
-              label: 'Community',
-            },
           ],
         },
         {
           label: 'Roadmap',
           position: 'right',
           href: '/roadmap',
+        },
+        {
+          label: 'Release Notes',
+          position: 'right',
+          href: '/release-notes',
         },
         {
           type: 'custom-coveo-search',
@@ -383,6 +303,10 @@ const config: Config = {
             {
               label: 'Feature Flags',
               to: 'https://harness.io/products/feature-flags',
+            },
+            {
+              label: 'Feature Management & Experimentation',
+              to: 'https://www.harness.io/products/feature-management-experimentation',
             },
             {
               label: 'Cloud Cost Management',
@@ -456,6 +380,10 @@ const config: Config = {
             {
               label: 'Feature Requests',
               to: 'https://ideas.harness.io',
+            },
+            {
+              label: 'Feature Flags GA Timeline',
+              to: '/release-notes/feature-flags-ga-timeline',
             },
             {
               label: 'Instructor-Led Training',
@@ -562,19 +490,6 @@ const config: Config = {
     ],
     [
       path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
-
-      {
-        id: 'community',
-        path: 'community',
-        routeBasePath: 'community',
-        exclude: ['**/shared/**', '**/static/**'],
-        sidebarPath: require.resolve('./sidebars-community.js'),
-        editUrl: 'https://github.com/harness/developer-hub/tree/main',
-        // ... other options
-      },
-    ],
-    [
-      path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
       {
         id: 'kb',
         path: 'kb',
@@ -631,6 +546,7 @@ const config: Config = {
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
+    path.join(__dirname, '/plugins/feature-flags-rss-plugin'),
   ],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),

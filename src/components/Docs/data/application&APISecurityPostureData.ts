@@ -19,6 +19,7 @@ export const docsCards: CardSections = [
           "Learn what Application and API Security Posture is.",
         link: "https://docs.traceable.ai/docs/api-catalog",
       },
+      /*
       {
         title: "Get Started with Security Posture",
         module: MODULES.asp,
@@ -26,6 +27,7 @@ export const docsCards: CardSections = [
           "Understand the components of Security Posture and how they work together.",
         link: "https://docs.traceable.ai/docs/api-catalog",
       },
+      */
       {
         title: "Dashboard",
         module: MODULES.asp,

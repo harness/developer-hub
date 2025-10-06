@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/get-started/harness-git-ops-basics
+  - /docs/category/use-gitops
 ---
 
 ## Introduction
@@ -279,4 +280,4 @@ Click the link to begin and experience GitOps automation with Harness! 🚀
 
 ## FAQs
 
-For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/resources/gitops-faqs).

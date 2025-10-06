@@ -102,6 +102,13 @@ If you plan to use a custom Windows AMI in your AWS VM build farm, you must dele
 
 In Windows, sysprep checks if `state.run-once` exists at `C:\ProgramData\Amazon\EC2Launch\state.run-once`. If the file exists, sysprep doesn't run post-boot scripts (such as `cloudinit`, which is required for Harness VM build infrastructure). Therefore, you must delete this file from your AMI so it doesn't block the VM init script.
 
+:::tip
+If `C:\ProgramData\Amazon\EC2Launch\state.run-once` is not found, run the following command instead:
+```
+C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
+```
+:::
+
 If you get an error about an unrecognized `refreshenv` command, you might need to [install Chocolatey](https://chocolatey.org/install) and add it to `$profile` to enable the `refreshenv` command.
 
 ### Environment Variables

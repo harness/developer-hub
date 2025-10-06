@@ -19,7 +19,7 @@ Also, whenever new entities are created in the mapped Argo CD projects, they are
 
 With a standard Harness GitOps Agent installation (non-BYOA), Harness can install and manage Argo CD for you. This scenario is different from a BYOA where you are importing an existing Argo CD configuration into Harness GitOps.
 
-For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent).
+For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent).
 
 ### Mapping existing Argo CD projects across different Harness scopes
 
@@ -190,7 +190,6 @@ In some Argo CD versions, you are not required to specify a project for your ent
 If you are unable to edit an entity from the Argo CD UI, you can edit that entity in the cluster so that they have a project and other required values. The entities are stored in different formats in the cluster. For example, clusters, repositories, and repository credential templates are stored in `Secret`, and GnuPG keys and repository certificates are stored in `ConfigMap` in the namespace where Argo CD is installed. 
 
 Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, go to [Manage an Argo CD configuration in Git with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/manage-argo-configs#git-configuration-files).
-
 
 ## Creating GitOps entities with multiple projects
 

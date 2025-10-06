@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-09-05T10:00:10
+date: 2025-10-03T10:00:10
 sidebar_position: 15
 ---
 
@@ -17,6 +17,28 @@ These release notes describe recent changes to Harness Software Engineering Insi
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
+
+## October 2025
+
+### [New Feature] Automatch Developer Identities in SEI 2.0
+---
+#### 2025-10-03
+
+Harness SEI supports automated user identity matching across supported SEI integrations based on email-driven logic. Previously, customers had to manually update the identities for each of the integrations. 
+
+Auto Identity Discovery now simplifies the onboarding process significantly and ensures consistent identity data across integrations, helping accelerate the generation of accurate insights across all developers in your organization.
+
+![](./static/sei/automatch.png)
+
+This feature is valuable for organizations that want to:
+
+- Automatically align user identities across multiple integrations
+- Reduce manual mapping and onboarding effort
+
+#### Related documentation
+
+- [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers)
+- [Upload Developer Cloud IDs](/docs/software-engineering-insights/harness-sei/api/cloud-ids)
 
 ## August 2025
 
