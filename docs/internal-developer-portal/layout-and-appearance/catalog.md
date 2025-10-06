@@ -19,7 +19,7 @@ Note that when you enable a plugin, we auto-update the default layouts, but you 
 
 ![](./static/custom-card-and-tab.png)
 
-## Understanding Catalog Entity Kinds and Types
+## Understand Catalog Entity Kinds and Types
 
 Every Catalog Layout is uniquely designed for a particular **Kind** and **Type** of application. For example, the most common catalog layout is for a microservice and is often represented as `Kind: Component` and `spec.type: service`. You can learn more about the [available kinds in the Catalog YAML docs](/docs/internal-developer-portal/catalog/catalog-yaml.md) and its [System Model](/docs/internal-developer-portal/catalog/data-model.md) to understand the different use-cases.
 
@@ -35,7 +35,7 @@ You can access the layout of the Catalog Pages by going to the **Admin** section
 
 The Layouts are grouped by the `kind` of the Catalog entities and their use-cases in the sidebar. As you can see there are a number of layouts possible for a particular `kind`. For example, the first layout in the screen will match any Catalog entity with `kind: Component` and `spec.type: service`. Similarly, there is a different layout for `spec.type: website`. At the end, there is a catch-all layout which will be used for any other `type` which has not been explicitly created above.
 
-### Creating a new Layout
+### Create a new Layout
 
 You can create a new Layout for a new type of application by either duplicating an existing layout or clicking on the "New Catalog Layout" button above.
 
@@ -46,31 +46,6 @@ Enter a unique `type` that this layout will be applicable to. In this example, w
 ![](./static/create-new-layout.png)
 
 And voilà! Your new Layout is created which will specifically render for entities with `kind: Component` and `spec.type: library`.
-
-## How to create a new Entity type
-
-You can create any entity type by simply defining those in the Catalog Definition YAML (e.g. catalog-info.yaml) for the application. For example, if you are defining a new LLM Model and want to declare a new type `llm`, you can define this in the `catalog-info.yaml` under `spec.type` field and the new type will be available for you to use in Catalog filters as well as Layouts. Here is an example -
-
-```yaml
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: my-new-model
-  description: Description of your model
-  tags:
-    - python
-  links:
-    - url: https://admin.example-org.com
-      title: Admin Dashboard
-      type: admin-dashboard
-spec:
-  type: llm-model
-  lifecycle: production
-  owner: team-a
-  system: project-x
-```
-
-Read more on how to [register a Software Component in the Catalog](/docs/internal-developer-portal/get-started/catalog-2o.md).
 
 ## Layout YAML Reference
 
@@ -200,7 +175,33 @@ page:
 
 </details>
 
-## How to resize a card in Overview page
+
+## Create a new Entity type
+
+You can create any entity type by simply defining those in the Catalog Definition YAML (e.g. catalog-info.yaml) for the application. For example, if you are defining a new LLM Model and want to declare a new type `llm`, you can define this in the `catalog-info.yaml` under `spec.type` field and the new type will be available for you to use in Catalog filters as well as Layouts. Here is an example -
+
+```yaml
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-new-model
+  description: Description of your model
+  tags:
+    - python
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      type: admin-dashboard
+spec:
+  type: llm-model
+  lifecycle: production
+  owner: team-a
+  system: project-x
+```
+
+Read more on how to [register a Software Component in the Catalog](/docs/internal-developer-portal/get-started/catalog-2o.md).
+
+## Resize a card in Overview page
 
 The Catalog pages use a 12-column grid system for responsive layouts. Where `md` is the recommended unit, and `md: 1` stands for 1/12th of the grid. See other possible breakpoints on [Material UI docs](https://mui.com/material-ui/react-grid/).
 
@@ -218,13 +219,8 @@ Example -
       md: 6
 ```
 
-## Troubleshooting
 
-- Component Not Rendering: Check for correct `props`.
-- Layout Issues: Adjust `gridProps` for responsive design.
-
-
-## Additional Info Card \{#additional-info-card}
+## Add an additional Info Card \{#additional-info-card}
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below.
 
@@ -256,3 +252,34 @@ In case you want to display the same information you have ingested on your Overv
 3. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
 
 ![](./static/additional-info-card-new.png)
+
+## Embed an Iframe
+You can embed an iframe in the Catalog entity's detail page by using the `EntityIframeContent` component. This component allows you to embed an iframe and use external pages within the entity detail page. This way you can directly embed and view web content inside the entity details page within Harness IDP. 
+
+![](./static/entity-iframe.png)
+
+Use the following steps to embed a custom iframe in entity's details page: 
+1. Go to **Configure** -> **Layout** -> **Catalog Entities**. 
+2. Select the specific entity for which you want to edit the layout or create a new catalog layout. 
+3. Add the following code snippet to embed a custom iframe with the following input parameters: 
+  - `title`: Public title of the iframe
+  - `path`: Path to the iframe
+  - `name`: Name of the iframe
+  - `component`: `EntityIframeContent` (fixed)
+  - `url`: URL of the iframe
+
+```YAML
+- title: API Docs
+    path: iframe
+    name: iframe
+    contents:
+      - component: EntityIframeContent
+        specs:
+          props:
+            url: https://apidocs.harness.io/
+            title: API Docs
+```
+## Troubleshooting
+
+- Component Not Rendering: Check for correct `props`.
+- Layout Issues: Adjust `gridProps` for responsive design.
