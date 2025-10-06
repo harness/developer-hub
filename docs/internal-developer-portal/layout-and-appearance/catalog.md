@@ -253,32 +253,72 @@ In case you want to display the same information you have ingested on your Overv
 
 ![](./static/additional-info-card-new.png)
 
-## Embed an Iframe
-You can embed an iframe in the Catalog entity's detail page by using the `EntityIframeContent` component. This component allows you to embed an iframe and use external pages within the entity detail page. This way you can directly embed and view web content inside the entity details page within Harness IDP. 
+## Embed an iframe 
 
-![](./static/entity-iframe.png)
+You can embed an iframe on a Catalog entity’s detail page with the `EntityIframeContent` component. This enables you to display external web pages directly inside the entity view in Harness IDP.
 
-Use the following steps to embed a custom iframe in entity's details page: 
-1. Go to **Configure** -> **Layout** -> **Catalog Entities**. 
-2. Select the specific entity for which you want to edit the layout or create a new catalog layout. 
-3. Add the following code snippet to embed a custom iframe with the following input parameters: 
-  - `title`: Public title of the iframe
-  - `path`: Path to the iframe
-  - `name`: Name of the iframe
-  - `component`: `EntityIframeContent` (fixed)
-  - `url`: URL of the iframe
+![Entity iframe example](./static/entity-iframe.png)
 
-```YAML
-- title: API Docs
-    path: iframe
-    name: iframe
-    contents:
-      - component: EntityIframeContent
-        specs:
-          props:
-            url: https://apidocs.harness.io/
-            title: API Docs
+Follow the given steps: 
+1. Go to **Configure** → **Layout** → **Catalog Entities**.
+2. Select the entity whose layout you want to edit, or create a new catalog layout.
+3. Add a content block with the following parameters:
+
+   * `title`: Public title of the iframe.
+   * `path`: Path segment for the iframe tab/route.
+   * `name`: Name for this content block.
+   * `component`: Must be `EntityIframeContent`.
+   * `url`: The external page to render in the iframe.
+
+#### Example
+
+```yaml
+- title: "API Docs"
+  path: "iframe"
+  name: "iframe"
+  contents:
+    - component: "EntityIframeContent"
+      specs:
+        props:
+          url: "https://apidocs.harness.io/"
+          title: "API Docs"
 ```
+
+### Use Entity Metadata
+
+You can also reference an entity annotation for the URL:
+
+**Entity (example)**
+
+```yaml
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-service
+  annotations:
+    docs.url: https://docs.example.com/
+spec:
+  type: service
+  owner: team-a
+```
+
+**Layout usage**
+
+```yaml
+- title: "Docs"
+  path: "docs"
+  name: "iframe"
+  contents:
+    - component: "EntityIframeContent"
+      specs:
+        props:
+          url: <+metadata.annotations.docs.url>
+          title: "Docs"
+```
+
+> Note
+> The target site must allow embedding in an iframe. If `X-Frame-Options` or Content Security Policy (CSP) on the target site blocks framing, the page won’t render inside the entity.
+
 ## Troubleshooting
 
 - Component Not Rendering: Check for correct `props`.
