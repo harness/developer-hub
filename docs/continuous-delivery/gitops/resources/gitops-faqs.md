@@ -142,7 +142,7 @@ The default location for logs in the GitOps Agent is
 The max file size is 5MB, and there is max of 5 backup files that are being compressed.  The estimated space occupied should not exceed 10MB.
 
 ### How to disable pushing logs from the GitOps Agent to Stackdriver so it is STDOUT only?
-To disable logging to Stackdriver in GitOps, set `GITOPS_AGENT_ENABLE_STACK_DRIVER_LOGGER` to False in the the agent ConfigMap.  This is available as of `GitOps Service 1.42.2` with `GitOps Agent v0.102.0`.
+To disable logging to Stackdriver in GitOps, set `GITOPS_AGENT_ENABLE_STACK_DRIVER_LOGGER` to **true** in the the agent ConfigMap.  This is available as of `GitOps Service 1.42.2` with `GitOps Agent v0.102.0`.
 
 For example
 
@@ -153,7 +153,7 @@ data:
   GITOPS_ACCOUNT_IDENTIFIER: X0xxxxXxX0xx00_00xXX0x
   GITOPS_AGENT_IDENTIFIER: gitopsagent-test
   [...]
-  GITOPS_AGENT_DISABLE_FILE_LOGGING: "false"
+  GITOPS_AGENT_DISABLE_FILE_LOGGING: "true"
 ```
 
 ### What specific role does the "Add Deployment Repo Manifest" serve within the manifests for a Kubernetes service enabled with GitOps functionality?
