@@ -66,18 +66,17 @@ Tags are displayed on the delegate details page in Harness Manager. Go to [Tags 
 
 ### DYNAMIC_REQUEST_HANDLING
 
-Dynamic task handling is designed to prevent delegates from being overloaded. When enabled, a delegate will stop picking up new tasks if CPU (`CPU_USAGE_THRESHOLD`) or memory usage goes beyond the defined threshold. By default, both thresholds are set at 80%, and you can override either of them if needed. 
-
-If you change one value, the other continues to use the default. Even when dynamic task handling is not enabled, delegates may still reject tasks once the memory threshold is reached, which is expected behavior to keep the delegate stable.
+Dynamic request handling is designed to prevent delegates from being overloaded. Enabling `DYNAMIC_REQUEST_HANDLING` will stop acquiring new tasks if the default threshold for CPU or memory is exceeded. By default, the thresholds are set to 80%. You can still override these values, but if you update the threshold for one, the other will continue using the default value. 
 
 :::note
-The system periodically recomputes the list of tasks and then shares the updated list with delegates. This ensures that task distribution stays fair and efficient. Re-broadcasting of the recomputed list is supported, but it is available only through a feature flag. If you’d like this capability, please reach out to [Harness Support](mailto:support@harness.io).
+- CPU and memory thresholds are always checked during task acquisition, and the task will not be picked up if they exceed the default limits.
+- The system periodically recomputes tasks and attempts to broadcast them to the updated list. You can rebroadcast the task to the recomputed list, but this feature is available behind a feature flag. If you’d like to enable this, please contact [Harness Support](mailto:support@harness.io).
 :::
 
-   ```yaml
-        - name: DYNAMIC_REQUEST_HANDLING
-          value: "true"
-   ```
+  ```yaml
+      - name: DYNAMIC_REQUEST_HANDLING
+        value: "true"
+  ```
 
 ### DELEGATE_CPU_THRESHOLD
 
