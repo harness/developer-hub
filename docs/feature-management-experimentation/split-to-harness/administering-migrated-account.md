@@ -971,19 +971,27 @@ To view SDK API keys for a project:
 
 #### Some of my users are seeing the error message "Unable to start the FME functionality" when navigating to a page within the Harness FME module
 
-Your users may be lacking the role binding: **Account Viewer** role over **All Account Level Resources**. 
+Your users may be lacking the role binding: **Account Viewer** role over **All Account Level Resources**. Specifically, they may lack permissions at the account level to view **Users** and **User Groups**.
 
-To resolve the error, and restore these users' access to the FME module, assign this role binding in **Account Settings** using one of the following methods:
+By default, the **All Account Users** user group is assigned the **Account Viewer** role, as shown below. (This a Harness managed group that is created on account creation, and users are automatically added to this group when added to your Harness account.)
 
-* **Recommended:** Add this role binding to the **All Account Users** user group, by following the steps in [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) in the Harness platform documentation.
-* Add this role binding to a group where the users are members (by following [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups)) or to the users directly (by following [Edit direct assignments](https://developer.harness.io/docs/platform/role-based-access-control/add-users#edit-direct-assignments)).
+![All Account Users - Default permissions](./static/rbac-troubleshoot-all-account-users-permissions.png)
 
+You can click on the **Account Viewer** link to see permissions granted to this role.
+
+![Account Viewer role permissions](./static/rbac-troubleshoot-account-viewer.png)
+
+To resolve the error, and restore these users' access to the FME module, assign these permissions in **Account Settings** using one of the following methods:
+
+* Add the **Account Viewer** + **All Account Level Resources** role binding to the **All Account Users** user group, by following the steps in [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) in the Harness platform documentation.
+* Add the **Account Viewer** + **All Account Level Resources** role binding to a group where the users are members (by following [Assign roles and resource groups](/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups)) or to the users directly (by following [Edit direct assignments](/docs/platform/role-based-access-control/add-users#edit-direct-assignments)).
+* On the Enterprise plan, you can create a role in **Account Settings** with **View** permissions for **Users** and **User Groups**. Assign this role [to a group where the users are members](/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) or [to the users directly](/docs/platform/role-based-access-control/add-users#edit-direct-assignments).
 
 ### FME object creation
 
 #### The <strong>Owners</strong> dropdown is not populated with project users or user groups when creating a feature flag, metric, segment, or experiment
 
-A user lacking **Users** and **User Groups** View permissions will experience the following UI behavior when creating objects in a project:
+A user lacking **Users** and **User Groups** View permissions at the project scope will experience the following UI behavior when creating objects in a project:
 
 On the **Create a feature flag** pane:
 * The **Owners** dropdown is not populated 
