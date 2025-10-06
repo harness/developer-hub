@@ -9,8 +9,8 @@ function FeatureFlagsGATable({ flags }) {
   const sortedFlags = [...flags].sort((a, b) => new Date(b.gaStartDate) - new Date(a.gaStartDate));
 
   return (
-    <div style={{overflowX: 'auto', marginTop: '1.5rem', marginBottom: '2rem'}}>
-      <table style={{width: '100%', borderCollapse: 'collapse', background: 'white', boxShadow: '0 1.5px 3px 0 rgb(0 0 0 / 8%)'}}>
+    <div className={styles.tableWrapper}>
+      <table className={styles.gaTable}>
         <thead>
           <tr>
             <th>Flag Key</th>
