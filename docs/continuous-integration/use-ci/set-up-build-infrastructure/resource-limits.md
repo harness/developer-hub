@@ -139,7 +139,7 @@ This calculation is for a pipeline that has three steps with [resource limit ove
    * Therefore, the greatest possible value for CPU is 3500m and the greatest possible value for memory is 3500Mi.
 * Combining the total step resources with the add on resources (100m and 100Mi), the total stage resource values are 3600m CPU and 3600Mi memory.
 
-#### >Calculation example #5: Step groups
+#### Calculation example #5: Step groups
 
 Using step groups doesn't inherently change a pipeline's resource needs. The logic is the same for pipelines with step groups as it is without step groups.
 
