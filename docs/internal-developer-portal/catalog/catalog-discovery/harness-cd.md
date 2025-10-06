@@ -6,75 +6,100 @@ sidebar_label: Harness CD
 ---
 
 ## Overview
+This document is a detailed guide on how to use the **Harness IDP Catalog Auto-Discovery** integration to sync **Harness CD** services into the **IDP Catalog**. This integration populates your Catalog with CD services so you can sync, view, and manage them directly in Catalog. Services are created as **IDP service entities** and kept in **real-time, uni-directional sync** with their corresponding CD services.
 
-This document provides information on how to use the Harness IDP Catalog Auto-Discovery integration to sync Harness CD services to IDP Catalog. This integration populates your IDP Catalog with your CD services, enabling you to easily sync, view, and manage your Harness CD services directly in Catalog. All these services are populated as IDP service entities with a real-time sync between both IDP service entities and CD services. 
+---
 
 ## Before you begin
-Ensure you have all the prerequisites before you begin: 
-1. This integration is behind this feature flag **`IDP_CATALOG_CD_AUTO_DISCOVERY`**. Contact Harness support to enable this feature flag. 
-2. Harness CD is enabled for your account. This must be the same account you are using to access and use Harness IDP.  
+Make sure the following prerequisites are met:
+
+1. The feature flag **`IDP_CATALOG_CD_AUTO_DISCOVERY`** is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
+2. **Harness CD** is enabled for your account. This must be the **same account** you use for Harness IDP.
+
+---
 
 ## Catalog Auto-Discovery with Harness CD
 
-### 1. Enable the Harness CD Auto-Discovery Integration 
-To start with, follow the given instructions: 
-1. Go to **Configure** in your Harness IDP. 
-2. Go to **Integrations**. Click **Enable** in the Harness CD services integration card to enable this integration. This will enable the integration for your account. 
+### 1. Enable the Harness CD Auto-Discovery integration
 
-:::info
-Ensure that you use the same account to enable this integration for which you have Harness CD enabled. This integration fetches data from the same CD account. 
-:::
+1. In Harness IDP, go to **Configure** → **Integrations**.
+2. On the **Harness CD services** integration card, select **Enable**.
+![](./static/enable-integration-idp.png)
 
-### 2. Sync Harness CD Services to IDP Catalog
-Once the integration is enabled, you have to sync your Harness CD services to IDP Catalog. 
-- **IDP entities**: All your CD services are populated in the IDP Catalog as IDP entities with the given metadata:
-    - `kind: Component` 
-    - `type: Service`. 
-- **IDP entity fields population**: IDP entities are populated and synced with CD services with the given input fields: 
-    - `name`
-    - `identifier`
-    - `description`
-    - `tags`
-    
-    This data is always fetched and synced with Harness CD services. No changes can be made for these fields in IDP entities. These fields can only be changed in Harness CD. 
-- **Uni-directional sync**: There's a real-time sync between IDP entities and CD services. Any changes to the CD service are reflected in the IDP entity. This sync is uni-directional (CD service -> IDP entity). Any changes to the IDP entity are not reflected in the CD service.
-- **RBAC**: You'll also be able to access and sync services from all the same projects and organizations, that you have permissions for in Harness CD. RBAC configured for your account will stay the same for IDP entities and CD services. 
+### 2. Sync Harness CD services to the IDP Catalog
 
-Follow the given instructions to sync your Harness CD services in IDP Catalog:
-1. Once you have enabled the integration, click on **Edit** in the same integration card. 
-2. You can select from 2 scopes to sync Harness CD services from: 
-    - **All Scopes**: Sync all your CD services across the account (all organizations and projects). 
-    - **Particular Organizations & Projects**: Sync your CD services from some specific organizations and projects. To do this, select the project or organization from the drop-down. 
-3. Click on **Save Changes** to sync all the services. 
+After enabling the integration, configure what to sync:
 
-And that's it. Your CD services are now synced to IDP Catalog. 
+* **IDP entities created:**
+  Each CD service appears in Catalog as an IDP entity with:
 
-To know more about suspending auto-discovery of CD services, go to [Suspend Auto-Discovery](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd.md#4-suspend-auto-discovery). 
+  * `kind: Component`
+  * `type: Service`
 
-### 3. View & Manage CD Services in IDP Catalog 
-To view and manage your CD services in IDP Catalog, make sure you have completed the above steps. Once you have synced your CD services, go to IDP Catalog and search for any specific CD service. You'll find it in the IDP Catalog with all data synced from your CD service. 
+* **Entity fields populated (read-only in IDP):**
+  The following fields are fetched from the CD service and remain synced:
 
-#### View your CD Service in IDP 
-- Go to IDP Catalog and open the specific CD service you want to check. 
-- You can view all the data synced from your CD service in the IDP entity. 
-- The **CI/CD** plugin is automatically configured for this entity with the CD service. 
-- You can also open this IDP entity in CD by clicking on this **Open in Harness CD** button from the entity overview card. 
+  * `name`
+  * `identifier`
+  * `description`
+  * `tags`
 
-:::info 
-Note that you won't be able to change the IDP entity fields populated from Harness CD directly. These fields can only be changed in Harness CD. Go to [IDP entity fields population](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd.md#2-sync-harness-cd-services-to-idp-catalog) to know more. 
-:::
+  These fields **cannot be edited in IDP**. Update them in Harness CD.
 
-#### Check the IDP entity reference in CD 
-- Go to Harness CD and open the specific CD service created. 
-- Go to **Referenced by** section of that specific entity. 
-- You can check and open the IDP entity created and synced with respect to that specific CD service. 
+* **IDP-CD Service Sync:**
+  Sync is **uni-directional** from **CD service → IDP entity**. Changes made to the IDP entity are **not** propagated back to the CD service.
 
+* **RBAC:**
+  You can view and sync services from the same projects and organizations you have access to in Harness CD.
+
+  ---
+
+#### Configure the sync scope
+
+1. On the same integration card, select **Edit**.
+![](./static/edit-integ-2.png)
+2. Choose a scope:
+
+   * **All Scopes** — Sync services across the entire account (all organizations and projects).
+   ![](./static/all-scopes.png)
+   * **Particular Organizations & Projects** — Sync from selected organizations and/or projects using the dropdown.
+   ![](./static/specific-scopes.png)
+3. Select **Save Changes** to begin syncing.
+
+That’s it; your CD services will appear in the IDP Catalog.
+
+For suspending auto-discovery, see [Suspend Auto-Discovery](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd.md#4-suspend-auto-discovery).
+
+### 3. View & manage CD services in the IDP Catalog
+
+Once synced, search for any CD service in **IDP Catalog**:
+
+* Open the entity to view all data synced from the CD service.
+* The **CI/CD** plugin is automatically configured for the entity.
+![](./static/ci-cd-plugin.png)
+* Use **Open in Harness CD** on the entity overview to navigate to the service in CD.
+![](./static/open-in-harness-cd.png)
+
+#### Check the IDP entity reference in Harness CD
+
+* In **Harness CD**, open the relevant CD service.
+* Go to the **Referenced by** section.
+* From there, open the corresponding IDP entity.
+![](./static/cd-referenced-by.png)
 
 ### 4. Suspend Auto-Discovery
-You can suspend auto-discovery of Harness CD services by following the given instructions: 
-1. Go to **Configure** -> **Integrations** -> **Harness CD**. Click on **Edit**. 
-2. Select **Suspend Auto-discovery**. Click on **Save Changes**. 
 
-And that's it. Your CD services are now suspended from auto-discovery. 
+To stop auto-discovery:
+
+1. Go to **Configure** → **Integrations** → **Harness CD**, then select **Edit**.
+2. Enable **Suspend Auto-discovery** and select **Save Changes**.
+![](./static/auto-suspend.png)
+
+Auto-discovery is now suspended.
+
+---
+
+
+
 
 
