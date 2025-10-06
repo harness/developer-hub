@@ -33,7 +33,7 @@ To add developer records:
    - **Display Name**: Select the column containing the developer's name.
    - **Email**: Select the column containing the developer's email.
    - **Manager Email**: Select the column containing the manager's email.
-   - **Role**: Select the column containing the developer's role.
+   - **Role**: Optionally, select the column containing the developer's role.
 
 1. Click **Save.** A **Developer records saved successfully** message will appear.
 
