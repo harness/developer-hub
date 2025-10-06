@@ -25,8 +25,16 @@ Harness recommends:
 1. Following this guide to work with the Harness RBAC principals and role bindings that were created for you during your migration.
 1. Learning about the full potential of RBAC on the Harness platform, starting with [Platform access control](/docs/category/platform-access-control/) in the Harness documentation.
 
-:::tip Read about Environment Scope (Admin API keys)
-Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to the [Environment Scope](#environment-scope) section.
+:::tip How to use this guide if you did not have a legacy Split account
+If FME has been added to your Harness account as a proof of value (POV) and you did not have a legacy Split account, you can use this guide to understand the RBAC permissions required for FME. You can benefit from the following sections:
+
+* **[User groups](#user-groups)** - Explains the Harness built-in FME user groups and the role bindings that should be assigned at the account, organization, and project scopes.
+* **[Admin API keys](#admin-api-keys)** - Details how to set up API keys with sufficient RBAC permissions to authorize Harness FME integrations.
+* **[SDK API keys](#sdk-api-keys)** - Outlines how SDK API keys (that authorize feature flag evaluations in your code) are managed in FME Settings.
+* **[Projects](#projects)** - Describes how to enable access to a project, using RBAC settings to grant 'unrestricted' access to all your users or 'restrict' access to a subset of users, groups, or API keys.
+* **[Troubleshooting](#troubleshooting)** - This section is especially helpful to POV users, and we aim to keep it updated and relevant to you.
+
+The RBAC recommendations in this guide follow the decisions made by the engineers at Harness FME when translating legacy Split permissions to Harness. These recommendations provide you with a solid footing in a set of RBAC settings that work seamlessly with FME. If you are finding permission issues in FME, you can return to the permissions described in this guide and work from there to identify the permissions you are missing.
 :::
 
 The following terminology is referenced in this guide:
@@ -40,6 +48,12 @@ The following terminology is referenced in this guide:
   * **API keys**: The Harness platform manages API keys and tokens within service accounts.* When “API keys” is not preceded by “Admin” or “SDK”, then this guide is referring to these Harness platform API key entities.
 
 <span style={{fontSize: '0.8em'}}>\* *In Harness, API keys can also be created in your personal user profile. For more information, go to the [FAQs - API keys](#can-i-create-an-admin-api-key-at-the-personal-user-scope) section.*</span>
+
+<br /><br />
+
+:::info Environment Scope support for Admin API keys
+Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to the [Environment Scope](#environment-scope) section.
+:::
 
 ## Users
 
