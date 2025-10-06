@@ -113,7 +113,7 @@ This calculation is for a pipeline with three steps that have no [resource limit
    * To run the sequential step, which runs by itself, the stage needs only 400m CPU and 500Mi memory.
 * Combining the step resources with the add on resources (100m and 100Mi), the total stage resource values are 900m CPU and 1100Mi memory.
 * To achieve optimal use of the requested resources, the sequential step (step three) is also assigned a limit of 800m CPU and 1000Mi. This allows step three to make better use of the available resources, rather than capping it at 400m CPU and 500Mi memory.
-  * The sequential step can occur before or after the parallel step.  It will still use the maxiumum limit
+  * The sequential step can occur before or after the parallel step.  It will still use the maximum limit
 
 #### Calculation example #4: Sequential and parallel steps with overrides
 This calculation is for a pipeline that has three steps with [resource limit overrides](#override-resource-limits). Two steps run in parallel and one step runs sequentially after the two parallel steps.
