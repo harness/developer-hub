@@ -66,11 +66,10 @@ Tags are displayed on the delegate details page in Harness Manager. Go to [Tags 
 
 ### DYNAMIC_REQUEST_HANDLING
 
-Dynamic request handling is designed to prevent delegates from being overloaded. Enabling `DYNAMIC_REQUEST_HANDLING` will stop acquiring new tasks if the default threshold for CPU or memory is exceeded. By default, the thresholds are set to 80%. You can still override these values, but if you update the threshold for one, the other will continue using the default value. 
+Dynamic request handling is designed to prevent delegates from being overloaded. Enabling `DYNAMIC_REQUEST_HANDLING` will stop acquiring new tasks if the CPU default threshold is exceeded. By default, the threshold is set to 80%. You can override this value by configuring the `CPU_USAGE_THRESHOLD` variable. 
 
 :::note
-- CPU and memory thresholds are always checked during task acquisition, and the task will not be picked up if they exceed the default limits.
-- The system periodically recomputes tasks and attempts to broadcast them to the updated list. You can rebroadcast the task to the recomputed list, but this feature is available behind a feature flag. If you’d like to enable this, please contact [Harness Support](mailto:support@harness.io).
+CPU and memory thresholds are always checked during task acquisition, and the task will not be picked up if they exceed the default limits.
 :::
 
   ```yaml
