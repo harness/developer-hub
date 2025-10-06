@@ -288,7 +288,7 @@ Follow the given steps:
 
 You can also reference an entity annotation for the URL:
 
-**Entity (example)**
+**Entity YAML**
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
@@ -302,7 +302,7 @@ spec:
   owner: team-a
 ```
 
-**Layout usage**
+**Layout YAML**
 
 ```yaml
 - title: "Docs"
@@ -315,9 +315,6 @@ spec:
           url: <+metadata.annotations.docs.url>
           title: "Docs"
 ```
-
-> Note
-> The target site must allow embedding in an iframe. If `X-Frame-Options` or Content Security Policy (CSP) on the target site blocks framing, the page won’t render inside the entity.
 
 ## Troubleshooting
 
