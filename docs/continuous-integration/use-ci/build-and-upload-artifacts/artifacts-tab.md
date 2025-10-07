@@ -118,7 +118,102 @@ In Kubernetes flow, the CI manager doesn't automatically create the temporary fi
       settings:
         file_urls: https://domain.com/path/to/artifact
         artifact_file: temp.txt
-```        
+```
+
+## Using the plugin binary on hosted macOS runners
+
+Hosted macOS runners cannot run Docker containers, which means you cannot use the containerized Plugin step with the artifact-metadata-publisher. Instead, you can download and run the plugin binary directly in a Run step.
+
+### Download and use the plugin binary
+
+Use the following commands in a Run step to download the appropriate binary for macOS and publish artifacts:
+
+```yaml
+- step:
+    type: Run
+    name: Publish Artifact Metadata
+    identifier: publish_artifact_metadata
+    spec:
+      shell: Sh
+      command: |-
+        # Download the artifact-metadata-publisher binary for macOS ARM64
+        curl -L https://github.com/drone-plugins/artifact-metadata-publisher/releases/download/v2.2.0/artifact-metadata-publisher-darwin-arm64.zst -o artifact-metadata-publisher-darwin-arm64.zst
+        
+        # Decompress the binary
+        zstd -d artifact-metadata-publisher-darwin-arm64.zst -o ./artifact-metadata-publisher
+        
+        # Make the binary executable
+        chmod 700 ./artifact-metadata-publisher
+        
+        # Run the plugin with your artifact URLs
+        PLUGIN_FILE_URLS="https://domain.com/path/to/artifact" ./artifact-metadata-publisher
+```
+
+#### Note
+
+- Replace `v2.2.0` with the latest version from the [artifact-metadata-publisher releases](https://github.com/drone-plugins/artifact-metadata-publisher/releases).
+- For macOS Intel (x86_64), use `artifact-metadata-publisher-darwin-amd64.zst` instead.
+- The CI manager automatically creates a temporary file and injects it via the `PLUGIN_ARTIFACT_FILE` environment variable, so you don't need to create or manage this file manually.
+
+### Publish multiple artifacts with custom names
+
+You can publish multiple artifacts and set custom display names using the format `name:::url`, where `:::` is the delimiter between the name and URL:
+
+```yaml
+- step:
+    type: Run
+    name: Publish Multiple Artifacts
+    identifier: publish_multiple_artifacts
+    spec:
+      shell: Sh
+      command: |-
+        curl -L https://github.com/drone-plugins/artifact-metadata-publisher/releases/download/v2.2.0/artifact-metadata-publisher-darwin-arm64.zst -o artifact-metadata-publisher-darwin-arm64.zst
+        zstd -d artifact-metadata-publisher-darwin-arm64.zst -o ./artifact-metadata-publisher
+        chmod 700 ./artifact-metadata-publisher
+        
+        # Publish multiple artifacts with custom names
+        PLUGIN_FILE_URLS="Config File:::https://s3.amazonaws.com/bucket/config.json,Build Report:::https://s3.amazonaws.com/bucket/report.html" ./artifact-metadata-publisher
+```
+
+### Example: Publishing S3 presigned URLs
+
+Here's a complete example that generates a presigned URL for an S3 artifact and publishes it to the Artifacts tab:
+
+```yaml
+- step:
+    type: Run
+    name: Generate Presigned URL
+    identifier: generate_presigned_url
+    spec:
+      shell: Sh
+      command: |-
+        FILE_NAME="my-artifact.zip"
+        
+        # Generate presigned URL (assumes AWS credentials are configured)
+        PRESIGNED_URL=$(aws s3 presign s3://my-bucket/$FILE_NAME --expires-in 3600)
+        
+        echo "Generated presigned URL: $PRESIGNED_URL"
+      envVariables:
+        AWS_ACCESS_KEY_ID: <+secrets.getValue("aws_access_key")>
+        AWS_SECRET_ACCESS_KEY: <+secrets.getValue("aws_secret_key")>
+      outputVariables:
+        - name: PRESIGNED_URL
+
+- step:
+    type: Run
+    name: Publish Artifact Metadata
+    identifier: publish_artifact_metadata
+    spec:
+      shell: Sh
+      command: |-
+        curl -L https://github.com/drone-plugins/artifact-metadata-publisher/releases/download/v2.2.0/artifact-metadata-publisher-darwin-arm64.zst -o artifact-metadata-publisher-darwin-arm64.zst
+        zstd -d artifact-metadata-publisher-darwin-arm64.zst -o ./artifact-metadata-publisher
+        chmod 700 ./artifact-metadata-publisher
+        
+        # Use the presigned URL from the previous step
+        PLUGIN_FILE_URLS="my-artifact.zip:::<+execution.steps.generate_presigned_url.output.outputVariables.PRESIGNED_URL>" ./artifact-metadata-publisher
+```
+
 ## Build logs and artifact files
 
 When you run the pipeline, you can observe the step logs on the [Build details page](../viewing-builds.md), and you can find the artifact URL on the [Artifacts tab](../viewing-builds.md).

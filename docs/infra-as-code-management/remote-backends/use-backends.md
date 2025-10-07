@@ -119,5 +119,5 @@ OpenTofu handles lock acquisition and release during pipeline execution. There i
 
 ## Related Links
 - [Provision a Workspace](/docs/infra-as-code-management/workspaces/provision-workspace)
-- [IaCM Best Practices](/kb/reference-architectures/iacm/iacm-best-practices)
+- [IaCM Best Practices](/docs/infra-as-code-management/iacm-best-practices)
 - [OpenTofu](https://opentofu.org/)

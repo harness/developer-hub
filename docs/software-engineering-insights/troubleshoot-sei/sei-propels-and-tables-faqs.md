@@ -2,6 +2,8 @@
 title: Propels and tables FAQs
 description: Frequently asked questions related to Propels and Tables on SEI
 sidebar_position: 100
+redirect_from:
+  - /kb/software-engineering-insights/sei-faqs/sei-propels-and-tables-faqs
 ---
 
 This page includes FAQs and troubleshooting information for SEI propels and tables.

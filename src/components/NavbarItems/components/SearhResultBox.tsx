@@ -92,7 +92,7 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
         setResultsPerPageController(resultsPerPageController);
       }
       Initialize();
-      localStorage.setItem('coveo-facet', JSON.stringify([]));
+      // sessionStorage.setItem('coveo-facet', JSON.stringify([]));
     }, []);
 
     useEffect(() => {

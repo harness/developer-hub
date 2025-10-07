@@ -127,12 +127,10 @@ Custom certificates or self-signed certificates are only supported for linux nod
    </details>
 
    Both CI build pods and the SCM client on the delegate support this method.
-   
+  
    :::info
 
    * Custom certificates or self-signed certificates are only supported for Linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work.
-  
-   * If you're using `DESTINATION_CA_PATH` or `CI_MOUNT_VOLUMES` to provide self-signed certificates, starting with delegate release **XXX**, Harness now **appends** your custom certs to the system trust store instead of replacing them. This behavior is controlled by the feature flag `CI_APPEND_CERTS`.
 
    * Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
 
@@ -142,7 +140,6 @@ Custom certificates or self-signed certificates are only supported for linux nod
    <!-- only Git clone and kaniko steps -->
 
    :::
-
 
 3. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 
