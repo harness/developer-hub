@@ -46,6 +46,9 @@ You can create a Perspective for your resources using rules and filters. The fil
 	+ The tags are case-sensitive. If the tags are specified as `UserName` and `username`, then the number suffix `_<Number>`is added to the tag. For example, `UserName` and `username_1`.
 * **Label V2**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored. See [Understanding the Difference: Label vs. Label V2](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts?cloud-providers=cluster#understanding-the-difference-label-vs-label-v2-and-migration) and [Migrate from Label to Label V2](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts?cloud-providers=cluster#migration-from-label-to-label-v2). 
 
+LabelsV2 will replace the current labels in the next release. Harness CCM will automatically migrate your existing rules. However, if your scripts reference labels in Perspectives or CCs, you’ll need to update them manually to use LabelsV2. Existing labels will also continue to work without interruption.
+Here's how the API request format changes:
+
 #### Grouping Options by Data Source
 
 CCM provides various grouping options to analyze your cloud costs based on different dimensions. Select the appropriate tab to view available grouping options for each cloud provider, container platform, or external data source.
@@ -425,7 +428,7 @@ So, when migrating from Label to Label V2 in your API calls:
 2. Change the `identifierName` from `Label` to `Label V2`
 3. Remove any prefixes (like `user_` or `aws_`) from your tag keys
 
-Here's how the API request format changes:
+
 
 Earlier every request had the Label field as:
 
