@@ -42,13 +42,30 @@ IDP creates multiple **per-plugin databases** in PostgreSQL. Each database name 
 - If `postgresql.enabled` is `true` in your setup, IDP will reuse the **in-cluster PostgreSQL instance** and default chart credentials will be used automatically.
 - If `postgresql.enabled` is `false`, provide external PostgreSQL credentials in the following format:
 ```
-remoteKeys:
-    POSTGRES_USER:
-        name: <name>
-        property: <property>
-    POSTGRES_PASSWORD:
-        name: <name>
-        property: <property>
+postgres:
+  ## - protocol to use for connection
+  protocol: ''
+  ## - host array for external
+  hosts: []
+  extraArgs: ''
+  secrets:
+    kubernetesSecrets:
+      - secretName: ''
+        keys:
+          POSTGRES_USER: ''
+          POSTGRES_PASSWORD: ''
+    secretManagement:
+      externalSecretsOperator:
+        - secretStore:
+            name: ''
+            kind: ''
+          remoteKeys:
+            POSTGRES_USER:
+              name: ''
+              property: ''
+            POSTGRES_PASSWORD:
+              name: ''
+              property: ''
 ```
 
 ---
