@@ -59,15 +59,15 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- Harness now provides enhanced support for rollback stage action as part of the manual intervention in case of Run step failure. With this enhancement, the pipelines configured with the rollback stage option under manual intervention, on failure of a Run step inside a step group, will now execute the rollback stage when triggered, instead of failing. (**CDS-112366**,**ZD-85725,ZD-88581,ZD-88916**)
+- Harness now provides enhanced support for rollback stage action as part of the manual intervention in case of Run step failure. With this enhancement, the pipelines configured with the rollback stage option under manual intervention, on failure of a Run step inside a step group, will now execute the rollback stage when triggered, instead of failing. (**CDS-112366**, **ZD-85725, ZD-88581, ZD-88916**)
 
 #### Fixed Issues
 
 - Fixed an issue where services were redirected incorrectly after cloning into another project. Service clone now redirects to the correct detailed page. (**CDS-114494**)
-- Fixed an issue where only ten app sets were listed on the service tab, instead of all. Users now see a full list of their application sets. (**CDS-114428**,**ZD-92744**)
-- Fixed an issue where AWS connectors were not listed when creating Prometheus health sources. The Templates view now correctly lists AWS connectors when selected. (**CDS-114226**,**ZD-92775**)
-- Fixed an issue where a generic error message showed up when trying to view a pipeline persisted on Git. (**PIPE-27798**,**ZD-86414**)
-- Fixed warnings for expressions referencing child pipeline stages in selective execution, now correctly validating referenced stages. (**PIPE-29449** , **ZD-91180**)
+- Fixed an issue where only ten app sets were listed on the service tab, instead of all. Users now see a full list of their application sets. (**CDS-114428**, **ZD-92744**)
+- Fixed an issue where AWS connectors were not listed when creating Prometheus health sources. The Templates view now correctly lists AWS connectors when selected. (**CDS-114226**, **ZD-92775**)
+- Fixed an issue where a generic error message showed up when trying to view a pipeline persisted on Git. (**PIPE-27798**, **ZD-86414**)
+- Fixed warnings for expressions referencing child pipeline stages in selective execution, now correctly validating referenced stages. (**PIPE-29449**, **ZD-91180**)
 
 
 ### Version 1.109.2
