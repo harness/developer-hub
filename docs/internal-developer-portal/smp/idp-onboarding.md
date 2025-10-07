@@ -8,7 +8,7 @@ description: Guide for configuring and deploying Harness IDP in Self Managed Pla
 # IDP Onboarding to SMP Environments
 
 :::info Harness IDP SMP Edition [BETA]
-Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Please refer to the [Harness IDP Release Notes](/release-notes/internal-developer-portal.md) to keep track of new feature updates and improvements.
+Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Please refer to the [Harness IDP Release Notes](/release-notes/internal-developer-portal) to keep track of new feature updates and improvements.
 :::
 
 This guide provides detailed instructions for deploying the Harness Internal Developer Portal (IDP) to your Self Managed Platform (SMP) environment. Following these configuration steps will help you establish a properly functioning IDP implementation integrated with your SMP infrastructure.
@@ -34,7 +34,13 @@ Before proceeding with the IDP deployment to SMP, ensure the following prerequis
 3. **Service Account token** for TechDocs integration :
    The TechDocs component requires a service account token to access and render documentation properly.
 
+:::warning Network/Firewall Requirement
+If your setup integrates with third-party SaaS products (for example, PagerDuty, GitHub, or GitLab), you must whitelist their domains in your firewall policies.
 
+**PagerDuty example**
+- **FQDNs:** `harness.pagerduty.com`
+- **Protocol/Ports:** `tcp:80`, `tcp:443`
+:::
    
 ### Identity Configuration
 
