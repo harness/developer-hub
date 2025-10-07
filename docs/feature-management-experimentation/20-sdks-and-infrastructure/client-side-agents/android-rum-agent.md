@@ -161,7 +161,7 @@ Configuration using the manifest file:
 </manifest>
 ```
 
-Configuration specified programatically:
+Configuration specified programmatically:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">

@@ -1131,7 +1131,7 @@ factory.Logger.setLogLevel('WARN');
 
 By default, the SDK uses the `console.log` method to output log messages for all log levels. 
 
-Since v11.6.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the Logger API. 
+Since v11.7.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the Logger API. 
 
 The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
 
