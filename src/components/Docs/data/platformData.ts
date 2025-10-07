@@ -103,6 +103,24 @@ export const docsCards: CardSections = [
         link: "/docs/internal-developer-portal/get-started",
       },
       {
+        title: "AASP",
+        module: MODULES.asp,
+        description: "Application and API Security Posture",
+        link: "/docs/appsec-security-posture",
+      },
+      {
+        title: "AARP",
+        module: MODULES.arp,
+        description: "Application and API Runtime Protection",
+        link: "/docs/appsec-runtime-protection",
+      },
+      {
+        title: "AAST",
+        module: MODULES.ast,
+        description: "Application and API Security Testing",
+        link: "/docs/appsec-security-testing",
+      },
+      {
         title: "STO",
         module: MODULES.sto,
         description: "Security Testing Orchestration onboarding guide",
