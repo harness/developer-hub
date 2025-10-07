@@ -86,11 +86,7 @@ The timezone settings govern the display value of the settings not their actu
 
    ![](./static/create-service-now-tickets-in-cd-stages-10.png)
 
-## Understanding ServiceNow Templates
-
-ServiceNow offers different types of templates that can be used with Harness. Understanding the differences between these template types is important for proper implementation:
-
-### Form Templates
+## Create From Form Template
 
 Form Templates are a generic concept in ServiceNow that allow you to create templates containing commonly used field values for any table. These templates can be applied to any table in ServiceNow, not just specific ticket types.
 
