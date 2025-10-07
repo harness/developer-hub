@@ -360,28 +360,15 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
 
 ## Label Migration: Label vs. Label V2
 
-<div style={{
-  backgroundColor: '#fff3cd',
-  border: '1px solid #ffeaa7',
-  borderRadius: '8px',
-  padding: '20px',
-  margin: '20px 0'
-}}>
-  <h3 style={{margin: '0 0 15px 0', color: '#856404'}}>⚠️ Migration Notice for Existing Users</h3>
-  <p style={{margin: '0 0 10px 0'}}>This migration is <strong>only required for existing users</strong> who are currently using the legacy Label system. If you're a new user or haven't used Labels before, you can start directly with Label V2. Labels are being replaced with LabelsV2 in the next release. CCM will automatically migrate the existing rules, but for scripts using Perspectives or CCs that include labels as rules, manual migration is required.</p>
-</div>
-
-Harness CCM is transitioning from the traditional Label system to the enhanced Label V2 system. Support for the legacy Label system will be discontinued in the coming months.
+Harness CCM is transitioning from the traditional **Label** system to the enhanced **LabelV2** system.  
 
 - **Label (Legacy)**: Normalizes AWS tags. GCP, Azure and Clusters tags are not normalized.
 - **Label V2 (New)**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored.
 
 ### Key Benefits of Label V2:
 
-- Original tags: Displays your original cloud tag keys exactly as they appear in AWS, Azure, or GCP
+- Original tags: Displays your original cloud tag keys exactly as they appear in AWS. Please note, for other cloud providers both labels and labelsV2 are same.
 - Improved Performance: Enhanced data processing and query performance
-- Label is a label that you assign to your AWS resources. See how AWS labels are created.
-
 After Label V2, AWS labels are stored as-is without any normalization.
 
 ### Who Needs to Migrate?
@@ -394,7 +381,7 @@ After Label V2, AWS labels are stored as-is without any normalization.
   margin: '15px 0'
 }}>
   <h4 style={{margin: '0 0 10px 0', color: '#0066cc'}}>✅ Migration Required</h4>
-  <p style={{margin: '0'}}>You need to migrate if you have <strong>existing Perspectives that use Labels</strong> for grouping or filtering. Migration is done by Harness CCM. If you want to know the status of your migration, please contact Harness support</p> 
+  <p style={{margin: '0'}}>Migration of Perspectives and Cost Categories Rules using Labels is handled automatically by Harness CCM. <strong>Action is only required from your side if you have scripts that use Perspectives or Cost Categories with Label-based rules</strong>.</p> 
 </div>
 
 <div style={{
@@ -423,13 +410,30 @@ After Label V2, AWS labels are stored as-is without any normalization.
 </TabItem>
 <TabItem value="via-api" label="Via API">
 
+
+**Label (Original Format)** normalizes AWS tags as follows:
+* User-defined tags: Adds `user_` prefix (e.g., `environment` becomes `user_environment`)  
+* AWS system tags: Adds `aws_` prefix (e.g., `aws:createdBy` becomes `aws_createdBy`)  
+* Special characters: Characters not matching `[a-zA-Z0-9_]` are replaced with `_`  
+* Case sensitivity: For duplicate tag names with different cases (e.g., `UserName` and `username`), a numeric suffix is added (`UserName` and `username_1`)  
+
+**Label V2** preserves the original tag structure without these modifications
+
+So, when migrating from Label to Label V2 in your API calls:
+
+1. Change the `identifier` from `LABEL` to `LABEL_V2`
+2. Change the `identifierName` from `Label` to `Label V2`
+3. Remove any prefixes (like `user_` or `aws_`) from your tag keys
+
+Here's how the API request format changes:
+
 Earlier every request had the Label field as:
 
 ```json
                 {
                     field": {
                         "fieldId": "labels.value",
-                        "fieldName": "key1",
+                        "fieldName": " user_key1",
                         "identifier": "LABEL",
                         "identifierName": "Label"
                     },
@@ -463,7 +467,7 @@ Earlier:
 ```json
  "idFilter": {
                     "field": {
-                        "fieldId": "labels.key",
+                        "fieldId": "labels.user_key1",
                         "fieldName": "",
                         "identifier": "LABEL",
                         "identifierName": "Label V2"
@@ -479,7 +483,7 @@ Now:
 ```json
  "idFilter": {
                     "field": {
-                        "fieldId": "labels.key",
+                        "fieldId": "labels.key1",
                         "fieldName": "",
                         "identifier": "LABEL_V2",
                         "identifierName": "Label V2"
