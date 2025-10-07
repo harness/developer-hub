@@ -286,7 +286,7 @@ Follow the given steps:
 
 ### Use Entity Metadata
 
-You can also reference an entity annotation for the URL:
+You can also reference an entity annotation (`docs`) for the URL:
 
 **Entity YAML**
 
@@ -296,7 +296,8 @@ kind: Component
 metadata:
   name: my-service
   annotations:
-    docs.url: https://docs.example.com/
+    docs: 
+      url: https://docs.example.com/
 spec:
   type: service
   owner: team-a
