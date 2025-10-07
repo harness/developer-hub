@@ -52,7 +52,6 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # Continuous Delivery Docs
 /docs/continuous-delivery/ vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
 /release-notes/continuous-delivery.md vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
-/release-notes/static/ anshul@harness.io
 /src/components/Roadmap/data/cdData.ts vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
 /src/components/Docs/data/continuousDeliveryData* vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
 # FirstGen CD Docs
@@ -237,4 +236,4 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness
 
 # FF GA Feed
-/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io
+/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io
