@@ -46,8 +46,18 @@ You can create a Perspective for your resources using rules and filters. The fil
 	+ The tags are case-sensitive. If the tags are specified as `UserName` and `username`, then the number suffix `_<Number>`is added to the tag. For example, `UserName` and `username_1`.
 * **Label V2**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored. See [Understanding the Difference: Label vs. Label V2](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts?cloud-providers=cluster#understanding-the-difference-label-vs-label-v2-and-migration) and [Migrate from Label to Label V2](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts?cloud-providers=cluster#migration-from-label-to-label-v2). 
 
-LabelsV2 will replace the current labels in the next release. Harness CCM will automatically migrate your existing rules. However, if your scripts reference labels in Perspectives or CCs, you’ll need to update them manually to use LabelsV2. Existing labels will also continue to work without interruption.
-Here's how the API request format changes:
+
+<div style={{
+  backgroundColor: '#fff3cd',
+  border: '1px solid #ffeaa7',
+  borderRadius: '8px',
+  padding: '20px',
+  margin: '20px 0'
+}}>
+  <h3 style={{margin: '0 0 15px 0', color: '#856404'}}>⚠️ Migration Notice</h3>
+  <p style={{margin: '0 0 10px 0'}}><strong>LabelsV2 will replace the current labels in the next release.</strong> Harness CCM will automatically migrate your existing rules. However, if your scripts reference Labels in Perspectives or CCs, you’ll need to update them manually to use LabelsV2. Existing Labels will also continue to work without interruption.</p>
+</div>
+
 
 #### Grouping Options by Data Source
 
@@ -372,7 +382,7 @@ Harness CCM is transitioning from the traditional **Label** system to the enhanc
 
 - Original tags: Displays your original cloud tag keys exactly as they appear in AWS. Please note, for other cloud providers both labels and labelsV2 are same.
 - Improved Performance: Enhanced data processing and query performance
-After Label V2, AWS labels are stored as-is without any normalization.
+After Label V2, AWS Labels are stored as-is without any normalization.
 
 ### Who Needs to Migrate?
 
@@ -428,7 +438,7 @@ So, when migrating from Label to Label V2 in your API calls:
 2. Change the `identifierName` from `Label` to `Label V2`
 3. Remove any prefixes (like `user_` or `aws_`) from your tag keys
 
-
+Here's how the API request format changes:
 
 Earlier every request had the Label field as:
 
