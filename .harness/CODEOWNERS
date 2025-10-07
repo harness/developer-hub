@@ -235,3 +235,6 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 
 #Reference Architectures
 /kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness
+
+# FF GA Feed
+/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io
