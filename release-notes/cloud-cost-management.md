@@ -24,7 +24,7 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 #### Deployment Date: October 8, 2025 (Prod-1)
 
 ### [New Feature] Budget Folders
-**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-cost-categories-toggle)**
+**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget#budgets-overview-page)**
 
 We are introducing Budget Folders to improve usability and streamline budget management. Budgets are now automatically associated with the Perspective folder under which they were created. This provides a consistent folder structure across both Perspectives and Budgets.
 
