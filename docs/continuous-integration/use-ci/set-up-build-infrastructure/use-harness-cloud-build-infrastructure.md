@@ -199,7 +199,7 @@ When running pipeline stages on Harness Cloud, you may need to connect to intern
 
 To enable secure communication between Harness Cloud infrastructure and your private network, your networking or security team can allowlist the relevant IP ranges used by Harness Cloud. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your environment.
 
-For more information about allowlisting, [contact Harness Support](https://support.harness.io/).
+To retrieve allowlisted IPs for Harness Cloud via API, [visit the docs](/docs/platform/references/allowlist-harness-domains-and-ips#retrieve-allowlisted-ips-for-hosted-ci-via-api). For more information about allowlisting, [contact Harness Support](https://support.harness.io/).
 
 ### Harness Cloud best practices
 
