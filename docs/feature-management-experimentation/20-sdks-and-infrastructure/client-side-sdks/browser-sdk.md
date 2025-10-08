@@ -1455,9 +1455,6 @@ To instantiate an SDK working as consumer, set two configs on the root of the co
 
 The following shows how to configure and get treatments for a SDK instance in consumer or partial consumer mode:
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
-
 ```javascript
 import { SplitFactory, PluggableStorage } from '@splitsoftware/splitio-browserjs';
 
@@ -1506,9 +1503,6 @@ client.once(client.Event.SDK_READY_TIMED_OUT, function () {
   // if and only if the SDK_READY event was not emitted for that time.
 });
 ```
-
-</TabItem>
-</Tabs>
 
 You can write your own custom storage wrapper for the SDK factory client by extending the IPluggableStorageWrapper interface.
 

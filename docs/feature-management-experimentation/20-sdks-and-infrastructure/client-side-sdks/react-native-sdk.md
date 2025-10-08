@@ -1129,8 +1129,10 @@ const sdk = SplitFactory({
   logger: console
 });
 ```
+
 </TabItem>
 </Tabs>
+
 ## Advanced use cases 
 
 This section describes advanced use cases and features provided by the SDK.
