@@ -37,6 +37,7 @@ These changes improve the overall usability and discoverability of budgets, allo
 ### Feature Improvements
 - **Resource ID Support in Perspectives**: Added "Resource ID" as a group by, filter, and operand across all cloud service providers, enabling more granular cost analysis and reporting. [CCM-25078]
 - **Azure Resource Group Filtering**: Added support for filtering recommendations by Azure Resource Group, aligning with Perspectives functionality and enabling more targeted cost optimization strategies. [CCM-25175]
+- **AutoStopping Enhancements**: Simplified health check configuration by removing status enforcement requirements, allowing single status inputs. We have also stopped using the instance groups to populate the port configuration in the rule creation flow. Now user can fill the ports based on their usecase. [CCM-24597]
 
 ## October 2025 - Hotfix: Added new columns for Recommendation CSV Export
 #### **Deployment Date:** October 3, 2025 
