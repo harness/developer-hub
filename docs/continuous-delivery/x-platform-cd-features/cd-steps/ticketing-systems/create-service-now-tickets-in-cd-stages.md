@@ -124,7 +124,7 @@ If the selected template has fields, the associated secondary fields will be dis
 
 Additionally, a dropdown for templates is also provided when configuring Triggers and Input Sets for this step.
 
-## Create From Standard Template
+## Create from Standard Template
 
 Standard Templates are a specific module in ServiceNow designed to create low-impact, high-frequency changes faster. These templates are pre-approved by change managers, allowing users with lower privileges to create change requests.
 
