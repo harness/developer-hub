@@ -371,18 +371,18 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
 
 -----
 
-## Label Migration: Label vs. Label V2
+## Label Migration: Label vs. LabelsV2
 
 Harness CCM is transitioning from the traditional **Label** system to the enhanced **LabelV2** system.  
 
 - **Label (Legacy)**: Normalizes AWS tags. GCP, Azure and Clusters tags are not normalized.
-- **Label V2 (New)**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored.
+- **LabelsV2 (New)**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored.
 
-### Key Benefits of Label V2:
+### Key Benefits of LabelsV2:
 
 - Original tags: Displays your original cloud tag keys exactly as they appear in AWS. Please note, for other cloud providers both labels and labelsV2 are same.
 - Improved Performance: Enhanced data processing and query performance
-After Label V2, AWS Labels are stored as-is without any normalization.
+After LabelsV2, AWS Labels are stored as-is without any normalization.
 
 ### Who Needs to Migrate?
 
@@ -394,7 +394,7 @@ After Label V2, AWS Labels are stored as-is without any normalization.
   margin: '15px 0'
 }}>
   <h4 style={{margin: '0 0 10px 0', color: '#0066cc'}}>✅ Migration Required</h4>
-  <p style={{margin: '0'}}>Migration of Perspectives and Cost Categories Rules using Labels is handled automatically by Harness CCM. <strong>Action is only required from your side if you have scripts that use Perspectives or Cost Categories with Label-based rules</strong>.</p> 
+  <p style={{margin: '0'}}>Label V2 will replace the current labels in the next release. Harness CCM will automatically migrate your existing rules. However, if your scripts reference Labels in Perspectives or CCs, you’ll need to update them manually to use Label V2. Existing Labels will also continue to work without interruption. </p> 
 </div>
 
 <div style={{
@@ -405,20 +405,22 @@ After Label V2, AWS Labels are stored as-is without any normalization.
   margin: '15px 0'
 }}>
   <h4 style={{margin: '0 0 10px 0', color: '#155724'}}>🆕 No Migration Needed</h4>
-  <p style={{margin: '0'}}>If you're a new user or haven't used Labels in your Perspectives, simply use <strong>Label V2</strong> for all new configurations.</p>
+  <p style={{margin: '0'}}>If you're a new user or haven't used Labels in your Perspectives, simply use <strong>LabelsV2</strong> for all new configurations.</p>
 </div>
 
-### How to Migrate
+<details>
+<summary><h2>About Keyboards</h2></summary>
+</details>
 
 <Tabs>
 <TabItem value="via-ui" label="Via UI">
 
 - Identify affected components: Review all Perspectives that use Label-based grouping or filtering
-- Update each component: Edit each Perspective. Locate all instances where you've defined rules, filters, or grouping using AWS Labels. Change the selection from "Label" to "Label V2". Save your changes
+- Update each component: Edit each Perspective. Locate all instances where you've defined rules, filters, or grouping using AWS Labels. Change the selection from "Label" to "LabelsV2". Save your changes
 - Verify your updates: After updating the Perspective, confirm that your cost data appears correctly. Ensure all previously configured label-based filters work as expected
 
 
-<iframe src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" title="Migrating Label to Label V2" style={{minHeight:'480px'}} width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+<iframe src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" title="Migrating Label to LabelsV2" style={{minHeight:'480px'}} width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
 
 </TabItem>
 <TabItem value="via-api" label="Via API">
@@ -430,15 +432,19 @@ After Label V2, AWS Labels are stored as-is without any normalization.
 * Special characters: Characters not matching `[a-zA-Z0-9_]` are replaced with `_`  
 * Case sensitivity: For duplicate tag names with different cases (e.g., `UserName` and `username`), a numeric suffix is added (`UserName` and `username_1`)  
 
-**Label V2** preserves the original tag structure without these modifications
+**LabelsV2** preserves the original tag structure without these modifications
 
-So, when migrating from Label to Label V2 in your API calls:
+So, when migrating from Label to LabelsV2 in your API calls:
 
 1. Change the `identifier` from `LABEL` to `LABEL_V2`
 2. Change the `identifierName` from `Label` to `Label V2`
 3. Remove any prefixes (like `user_` or `aws_`) from your tag keys
 
 Here's how the API request format changes:
+
+<Tabs>
+<TabItem value="aws-users" label="AWS Users">
+
 
 Earlier every request had the Label field as:
 
@@ -505,6 +511,78 @@ Now:
                     "values": []
                 }
 ``` 
+
+
+</TabItem>
+<TabItem value="aws-users-label" label="Other Cloud Providers">
+
+Earlier every request had the Label field as:
+
+```json
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": " key",
+                        "identifier": "LABEL",
+                        "identifierName": "Label"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                } 
+```
+Now the request has the Label V2 field as:
+
+```json
+
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label v2"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                }
+```
+Similarly, for labels.key:
+
+Earlier:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key",
+                        "fieldName": "",
+                        "identifier": "LABEL",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+
+```
+
+Now:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key",
+                        "fieldName": "",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+``` 
+</TabItem>
+</Tabs>
 
 In short, wherever you see LABEL in "identifier", replace it with LABEL_V2 alongwith "identifierName" .
 
