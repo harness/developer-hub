@@ -79,6 +79,15 @@ global:
     enabled: true
     port: 8889
     path: /metrics
+    managedPlatform: "oss"
 ```
 
 Once these values are applied and Prometheus is set up using the [Install Prometheus](./install-prometheus.md) guide, metrics will be automatically scraped and visualized using your chosen observability tools.
+
+---
+
+## Optional: Redis Stream Monitoring
+
+For advanced monitoring of Redis stream utilization and event framework activity, you can optionally deploy the **Redis Stream Monitor**. This provides detailed metrics about stream length, memory usage, consumer lag, and dead letter queue sizes across all Harness event streams.
+
+This is particularly useful for monitoring entire events activity under Harness and troubleshooting event processing issues. See [Enable Redis Stream Monitors](./enable-redis-stream-monitors.md) for detailed setup instructions.

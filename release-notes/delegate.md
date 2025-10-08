@@ -113,6 +113,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## October 2025
+
+### Version 25.09.86801 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
 ## September 2025
 
 ### Version 25.09.86800 <!--September 24, 2025-->

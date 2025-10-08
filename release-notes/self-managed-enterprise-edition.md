@@ -21,18 +21,20 @@ These release notes describe recent changes to Harness Self-Managed Enterprise E
 
 :::
 
-:::info MongoDB Upgrade to Version 6.x in SMP Environments
+:::info MongoDB Upgrade to Version 7.x in SMP Environments
 
-With MongoDB 5 reaching end-of-life (EOL), upgrading to MongoDB 6.x is recommended for customers using an in-cluster MongoDB instance. This upgrade mitigates known CVEs and aligns with MongoDB’s recommended upgrade path.
+With MongoDB 6 reaching end-of-life (EOL), it is recommended that customers using an in-cluster MongoDB instance upgrade to MongoDB 7.x. This upgrade mitigates known CVEs and aligns with MongoDB's recommended upgrade path. Please also see the transition from Mongo 6 to Mongo 7 below.
 
 #### MongoDB Version History:
 - MongoDB 4.4 was used in versions 0.16.x.
 - MongoDB 5.0 was utilized from versions 0.17.x to 0.21.x.
-- MongoDB 6.0 is available from version 0.22.x onwards.
+- MongoDB 6.0 was utilized from version 0.22.x to 0.32.x.
+- MongoDB 7.0 is being utilized from version 0.33.x onwards
 
 #### Upgrade Path
-1. Upgrade to at least SMP 0.17.0 if you are running 0.16.0 or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 4.0 to Mongo 6.0
-2. Upgrade to 0.22.0 or above.
+1. Upgrade to at least SMP 0.17.0 if you are running 0.16.x or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 4.0 to Mongo 6.0
+2. Upgrade to at least SMP 0.23.0 if you are running 0.22.x or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 5.0 to Mongo 7.0
+2. Upgrade to 0.33.0 or above to use mongo 7.0 server.
 
 #### Harness-Specific Details
 
