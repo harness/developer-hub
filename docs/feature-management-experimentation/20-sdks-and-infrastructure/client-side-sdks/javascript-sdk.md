@@ -1109,7 +1109,7 @@ Beginning with v9.2.0 of the SDK, you can also enable the logging via SDK settin
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio';
  
-const factory = SplitFactory({ 
+const sdk = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1120,14 +1120,14 @@ const factory = SplitFactory({
 
 // Or you can use the Logger API which two methods, enable and disable.
 // Calling this methods will have an immediate effect.
-factory.Logger.enable();
-factory.Logger.disable();
+sdk.Logger.enable();
+sdk.Logger.disable();
 
 // You can also set the log level programmatically after v10.4.0
 // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
 // 'DEBUG' is equivalent to `enable` method.
 // 'NONE' is equivalent to `disable` method.
-factory.Logger.setLogLevel('WARN');
+sdk.Logger.setLogLevel('WARN');
 ```
 
 </TabItem>
@@ -1156,7 +1156,7 @@ The following example passes the `console` object as a logger, so that `console.
 ```typescript
 import { SplitFactory } from '@splitsoftware/splitio';
 
-const factory = SplitFactory({
+const sdk = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
