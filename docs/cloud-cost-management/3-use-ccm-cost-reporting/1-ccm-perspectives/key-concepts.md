@@ -409,6 +409,191 @@ After Label V2, AWS labels are stored as-is without any normalization.
 </div>
 
 
+### How to Migrate
+
+<Tabs>
+<TabItem value="via-ui" label="Via UI">
+
+- Identify affected components: Review all Perspectives that use Label-based grouping or filtering
+- Update each component: Edit each Perspective. Locate all instances where you've defined rules, filters, or grouping using AWS Labels. Change the selection from "Label" to "LabelsV2". Save your changes
+- Verify your updates: After updating the Perspective, confirm that your cost data appears correctly. Ensure all previously configured label-based filters work as expected
+
+
+<iframe src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" title="Migrating Label to LabelsV2" style={{minHeight:'480px'}} width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+
+</TabItem>
+<TabItem value="via-api" label="Via API">
+
+
+**Label (Original Format)** normalizes AWS tags as follows:
+* User-defined tags: Adds `user_` prefix (e.g., `environment` becomes `user_environment`)  
+* AWS system tags: Adds `aws_` prefix (e.g., `aws:createdBy` becomes `aws_createdBy`)  
+* Special characters: Characters not matching `[a-zA-Z0-9_]` are replaced with `_`  
+* Case sensitivity: For duplicate tag names with different cases (e.g., `UserName` and `username`), a numeric suffix is added (`UserName` and `username_1`)  
+
+**LabelsV2** preserves the original tag structure without these modifications
+
+So, when migrating from Label to LabelsV2 in your API calls:
+
+1. Change the `identifier` from `LABEL` to `LABEL_V2`
+2. Change the `identifierName` from `Label` to `Label V2`
+3. Remove any prefixes (like `user_` or `aws_`) from your tag keys
+
+Here's how the API request format changes:
+
+<Tabs>
+<TabItem value="aws-users" label="AWS Users">
+
+
+Earlier every request had the Label field as:
+
+```json
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": " user_key1",
+                        "identifier": "LABEL",
+                        "identifierName": "Label"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                } 
+```
+Now the request has the Label V2 field as:
+
+```json
+
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key1",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label v2"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                }
+```
+Similarly, for labels.key:
+
+Earlier:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.user_key1",
+                        "fieldName": "",
+                        "identifier": "LABEL",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+
+```
+
+Now:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key1",
+                        "fieldName": "",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+``` 
+
+
+</TabItem>
+<TabItem value="aws-users-label" label="Other Cloud Providers">
+
+Earlier every request had the Label field as:
+
+```json
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": " key",
+                        "identifier": "LABEL",
+                        "identifierName": "Label"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                } 
+```
+Now the request has the Label V2 field as:
+
+```json
+
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label v2"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                }
+```
+Similarly, for labels.key:
+
+Earlier:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key",
+                        "fieldName": "",
+                        "identifier": "LABEL",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+
+```
+
+Now:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key",
+                        "fieldName": "",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+``` 
+</TabItem>
+</Tabs>
+
+In short, wherever you see LABEL in "identifier", replace it with LABEL_V2 alongwith "identifierName" .
+
+Please refer the following API docs for details:
+
+- [Create a Perspective](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/createPerspective)
+- [Update a Perspective](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/updatePerspective)
+
+</TabItem>
+</Tabs>
+
+
 ## Organize Perspectives using Folders
 
 You can organize Perspectives by adding them to folders. The number of Folders that **can be created is 2000.**
