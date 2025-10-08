@@ -1,8 +1,8 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2025-09-16T16:00
-sidebar_position: 19
+date: "2025-09-29T19:40:56+05:30"
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';
@@ -20,6 +20,38 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 :::
 ## September 2025
+
+### 2025.09.v3
+
+#### New Features
+
+##### Assert Wait for Question  
+This powerful new assertion command lets users pause test execution until a specific user-defined question or condition is true. Built on the `wait for text` assertion command, it opens up dynamic, context-aware validation capabilities that make your tests smarter and more flexible than ever before.
+
+<DocImage path={require('./static/ait/assert-wait-for-ques.png')} alt="Assert Wait for Question" title="Assert Wait for Question" width="600" height="500" />
+
+
+##### Completely Overhauled Test Step Design  
+The look and functionality of test steps have been fully transformed to enhance clarity and usability. Highlights include:  
+- The “Validations” tab renamed to “Step Insights,” with validation details shown directly and auto-validations surfaced much more intuitively.  
+- New icons communicate step status more effectively, including a retrain badge for steps needing AI retraining.  
+- Execution time and locator types are now visible for each step, offering deeper insights at a glance.  
+- The approval workflow is refined for multiple issues, with suggestion actions scoped per issue, making triage simpler and more granular.
+
+<DocImage path={require('./static/ait/ui-test.png')} alt="UI Test" title="UI Test" />
+
+##### Locator Configuration in IA/IE  
+Take full control of your element selectors during Interactive Authoring and Interactive Editing! This new feature enables users to configure locators while editing steps, improving precision and reducing test maintenance headaches by ensuring the best possible target identification for elements.
+
+<DocImage path={require('./static/ait/edit-write.png')} alt="Edit Write" title="Edit Write" width="600" height="500" />
+
+
+#### Enhancements and Bug Fixes
+
+- **Max Test Parallelism Error Display:** Users now get instant feedback with an error when setting parallelism beyond allowed limits on suite details, enforcing correct configurations upfront.  
+- **Reliable Parallel Task Handling:** Errors in AI commands or fast tasks cause immediate task failure rather than just warnings, reducing confusion and improving error tracking.  
+
+
 
 ### 2025.09.v2
 

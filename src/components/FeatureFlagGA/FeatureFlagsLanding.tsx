@@ -11,7 +11,7 @@ export default function FeatureFlagsLanding({ staticFlags }) {
           </div>
         </div>
         <div style={{ marginTop: 16 }}>
-          <p style={{ fontSize: 18, lineHeight: '26px', color: '#000' }}>
+          <p style={{ fontSize: 18, lineHeight: '26px', color: 'var(--ifm-font-color-base)' }}>
             Track when Harness Feature Flags reach General Availability (GA). This timeline shows GA dates, descriptions, and the modules where each feature flag was implemented.
           </p>
         </div>

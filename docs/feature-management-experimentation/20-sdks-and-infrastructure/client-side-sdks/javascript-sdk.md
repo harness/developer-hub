@@ -55,7 +55,7 @@ npm install --save @splitsoftware/splitio
 <TabItem value="CDN bundle">
 
 ```html
-<script src="//cdn.split.io/sdk/split-11.6.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.7.0.min.js"></script>
 
 ```
 
@@ -1124,7 +1124,7 @@ var sdk = SplitFactory({
 sdk.Logger.enable();
 sdk.Logger.disable();
 
-// You can also set the log level programatically after v10.4.0
+// You can also set the log level programmatically after v10.4.0
 // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
 // 'DEBUG' is equivalent to `enable` method.
 // 'NONE' is equivalent to `disable` method.
@@ -1151,7 +1151,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 sdk.Logger.enable();
 sdk.Logger.disable();
 
-// You can also set the log level programatically after v10.4.0
+// You can also set the log level programmatically after v10.4.0
 // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
 // 'DEBUG' is equivalent to `enable` method.
 // 'NONE' is equivalent to `disable` method.

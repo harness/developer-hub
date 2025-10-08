@@ -17,13 +17,13 @@ export const knowledgeBaseList: CardItem[] = [
     title: "Use the HTTP step to set unsupported fields when creating Jira issues",
     module: MODULES.cd,
     date: "May 14, 2024",
-    link: "/kb/continuous-delivery/articles/create-cascading-fields-jira",
+    link: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-cascading-fields-jira",
   },
   {
     title: "ServiceNow create, update, and approval API permissions",
     module: MODULES.cd,
     date: "April 22, 2024",
-    link: "/kb/continuous-delivery/articles/servicenow-api-permission",
+    link: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/servicenow-api-permission",
   },  
   {
     title: "Send Dashboard Reports to Slack Channel",

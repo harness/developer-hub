@@ -1,6 +1,8 @@
 ---
 title: Use the HTTP step to set unsupported fields when creating Jira issues
 description: Instructions on setting unsupported fields when creating a JIRA issue using the HTTP step.
+redirect_from:
+  - /kb/continuous-delivery/articles/create-cascading-fields-jira
 ---
 
 
@@ -138,6 +140,6 @@ pipeline:
 
 After configuring the HTTP and Jira Update steps, run the pipeline. From the pipeline Output tab, copy the issue URL. In the Jira issue, you can see the cascading field as shown in the image below: 
 
-![](./../static/cascading-list-jira.png)
+![](./static/cascading-list-jira.png)
 
 

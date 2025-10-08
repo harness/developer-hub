@@ -34,7 +34,7 @@ After completing the SBOM Orchestration step for your [artifacts](/docs/software
 
 ### Vulnerabilities in SBOM Components (OSS Risk - 1):
 
-After you run the SBOM orchestration step followed by the STO Snyk scan, the SBOM tab displays vulnerabilities for the components identified by Snyk. This helps you effectively identify and prioritize open source risks
+After you run the SBOM Orchestration step followed by an STO scan using Snyk or Aqua Trivy, the SBOM tab displays vulnerabilities for the components identified by the selected scan tool. This helps you effectively identify and prioritize open source risks
 
 
 You can also filter out the components, based on the OWASP Top 10 Risks.
@@ -94,4 +94,114 @@ As a prerequisite, configure a [Jira connector](/docs/platform/connectors/ticket
  Once the ticket is created, its number and current status will be displayed. Any changes to the status of the ticket will automatically synced and be reflected in the side panel.
 
 <DocImage path={require('./static/jira.png')} width="80%" height="80%" title="Click to view full size image" />
+
+### Enforce Policy
+
+In the SBOM Orchestration step, you can enforce an OPA policy to block pipelines that include End of Life (EOL) components based on their count. The following is a sample policy:
+
+
+```
+package sbom
+
+import future.keywords.if
+import future.keywords.in
+
+deny[result] {
+    summary := input[0].outcome.stepArtifacts.publishedSbomArtifacts[0].ossRisksSummary
+
+    # Rule 1 - Too many total EOL components
+    summary.totalEolComponentCount > 100
+    result := {
+        "rule_name": "total_eol_components_check",
+        "description": sprintf("Found %d total End-of-Life components", [summary.totalEolComponentCount]),
+        "severity": "HIGH",
+        "details": {
+            "totalEolComponentCount": summary.totalEolComponentCount,
+            "message": "Pipeline should fail when too many EOL components are found"
+        }
+    }
+}
+
+deny[result] {
+    summary := input[0].outcome.stepArtifacts.publishedSbomArtifacts[0].ossRisksSummary
+
+    # Rule 2 - Definite EOL components
+    summary.definiteEolComponentCount > 50
+    result := {
+        "rule_name": "definite_eol_components_check",
+        "description": sprintf("Found %d definite EOL components", [summary.definiteEolComponentCount]),
+        "severity": "HIGH",
+        "details": {
+            "definiteEolComponentCount": summary.definiteEolComponentCount,
+            "message": "Pipeline should fail when definite EOL components are found"
+        }
+    }
+}
+
+deny[result] {
+    summary := input[0].outcome.stepArtifacts.publishedSbomArtifacts[0].ossRisksSummary
+
+    # Rule 3 - Derived EOL components
+    summary.derivedEolComponentCount > 50
+    result := {
+        "rule_name": "derived_eol_components_check",
+        "description": sprintf("Found %d derived EOL components", [summary.derivedEolComponentCount]),
+        "severity": "MEDIUM",
+        "details": {
+            "derivedEolComponentCount": summary.derivedEolComponentCount,
+            "message": "Review required for derived EOL components"
+        }
+    }
+}
+
+deny[result] {
+    summary := input[0].outcome.stepArtifacts.publishedSbomArtifacts[0].ossRisksSummary
+
+    # Rule 4 - Close to EOL components
+    summary.closeToEolComponentCount > 200
+    result := {
+        "rule_name": "close_to_eol_components_check",
+        "description": sprintf("Found %d components that are close to EOL", [summary.closeToEolComponentCount]),
+        "severity": "HIGH",
+        "details": {
+            "closeToEolComponentCount": summary.closeToEolComponentCount,
+            "message": "Pipeline execution should fail when close-to-EOL components are detected"
+        }
+    }
+}
+
+deny[result] {
+    summary := input[0].outcome.stepArtifacts.publishedSbomArtifacts[0].ossRisksSummary
+
+    # Rule 5 - Unmaintained components
+    summary.unmaintainedComponentCount > 500
+    result := {
+        "rule_name": "unmaintained_components_check",
+        "description": sprintf("Found %d unmaintained components", [summary.unmaintainedComponentCount]),
+        "severity": "HIGH",
+        "details": {
+            "unmaintainedComponentCount": summary.unmaintainedComponentCount,
+            "message": "Pipeline should fail when unmaintained components exceed threshold"
+        }
+    }
+}
+
+deny[result] {
+    summary := input[0].outcome.stepArtifacts.publishedSbomArtifacts[0].ossRisksSummary
+
+    # Rule 6 - Outdated components
+    summary.outdatedComponentCount > 10000
+    result := {
+        "rule_name": "outdated_components_check",
+        "description": sprintf("Found %d outdated components", [summary.outdatedComponentCount]),
+        "severity": "MEDIUM",
+        "details": {
+            "outdatedComponentCount": summary.outdatedComponentCount,
+            "message": "Consider upgrading outdated components to latest versions"
+        }
+    }
+}
+
+
+```
 
