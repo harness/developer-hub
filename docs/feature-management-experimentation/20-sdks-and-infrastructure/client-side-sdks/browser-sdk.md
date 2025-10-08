@@ -60,11 +60,11 @@ npm install --save @splitsoftware/splitio-browserjs
 <!-- Choose the preferred script tag, you don't need both -->
 
 <!-- Slim build, smaller footprint -->
-<script src="//cdn.split.io/sdk/split-browser-1.4.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.5.1.min.js"></script>
 
 <!-- Full build, bigger footprint but all modules are exposed and usable,
 including fetch polyfill -->
-<script src="//cdn.split.io/sdk/split-browser-1.4.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.5.1.full.min.js"></script>
 ```
 
 </TabItem>
@@ -217,7 +217,7 @@ The `getTreatment` method has a number of variations that are described below. E
 * **Booleans:** Use type Boolean.
 * **Sets:** Use type Array.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-syntax">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -325,7 +325,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-evals">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -387,7 +387,7 @@ type TreatmentResult = {
 
 As you can see from the object structure, the config is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter. This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-treatments-with-config">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -426,7 +426,7 @@ if (treatment === 'on') {
 
 If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to TreatmentResults instead of strings. Example usage below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-evals">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -485,7 +485,7 @@ You can append properties to an impression by passing an object of key-value pai
 
 Three types of properties are supported: strings, numbers, and booleans.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-impression-props">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -522,7 +522,7 @@ const treatment: string = client.getTreatment('FEATURE_FLAG_NAME', undefined, ev
 
 Call the `client.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-shutdown">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -568,7 +568,7 @@ The `track` method returns a boolean value of `true` or `false` to indicate whet
 
 In the case that a bad input has been provided, you can read more about our [SDK's expected behavior](/docs/feature-management-experimentation/release-monitoring/events/).
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-track">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -632,7 +632,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 
 To set each of the parameters defined above, use the following syntax:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-config">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -871,11 +871,11 @@ To use the SDK in localhost mode, replace the SDK key on `authorizationKey` prop
 
 If you define just a string as the value for a feature flag name, any config returned by our SDKs are always null. If you use a map, we return the specified treatment and the specified config (which can also be null).
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-localhost">
 <TabItem value="JavaScript" label="JavaScript (using CDN bundle)">
 
 ```javascript
-<script src="//cdn.split.io/sdk/split-browser-1.4.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.5.1.full.min.js"></script>
 
 var sdk = splitio.SplitFactory({
   core: {
@@ -959,7 +959,7 @@ config.features = { 'reporting_v3': 'off' }; // Will not emit SDK_UPDATE
 
 Use the Split Manager to get a list of features available to the SDK factory client. To instantiate a Manager in your code base, use the same factory that you used for your client:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-manager">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1000,7 +1000,7 @@ manager.once(manager.Event.SDK_READY, function() {
 
 The Manager has the following methods available:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-manager-methods">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1091,7 +1091,7 @@ There are two additional keys on this object, `ip` and `hostname`. They are not 
 
 The following is an example of how to implement a custom impression listener:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-custom-impression-listener">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1142,28 +1142,13 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 
 To trim as many bits as possible from the user application builds, we divided the logger in implementations that contain the log messages for each log level: `ErrorLogger`, `WarnLogger`, `InfoLogger`, and `DebugLogger`. Higher log level options contain the messages for the lower ones, with DebugLogger containing them all. To enable descriptive SDK logging, you need to plug in a logger instance as shown below:
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger instance (JavaScript)">
-
-```javascript
-var splitio = require('@splitsoftware/splitio-browserjs');
-
-var sdk = splitio.SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
-});
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger instance (TypeScript)">
+<Tabs groupId="java-type-logging">
+<TabItem value="JavaScript" label="Logger instance (NPM package)">
 
 ```javascript
 import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-browserjs';
 
-const sdk: SplitIO.IBrowserSDK = SplitFactory({
+const sdk = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1173,7 +1158,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 ```
 
 </TabItem>
-<TabItem value="Logger instance (UMD build)">
+<TabItem value="JavaScript Example" label="Logger instance (UMD build)">
 
 ```javascript
 var sdk = splitio.SplitFactory({
@@ -1190,33 +1175,13 @@ var sdk = splitio.SplitFactory({
 
 You can also enable the SDK logging via a boolean or log level value as `debug` settings, and change it dynamically by calling the SDK Logger API. However, in any case where the proper logger instance is not plugged in, instead of a human readable message, you'll get a code and optionally some params for the log itself. While these logs would be enough for the Harness FME support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger API (JavaScript)">
-
-```javascript
-var splitio = require('@splitsoftware/splitio-browserjs');
-
-var sdk = splitio.SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
-});
-
-// Or you can use the Logger API methods which have an immediate effect.
-sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
-sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
-sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger API (TypeScript)">
+<Tabs groupId="java-type-debug">
+<TabItem value="JavaScript" label="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-browserjs';
 
-const sdk: SplitIO.IBrowserSDK = SplitFactory({
+const sdk = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1239,8 +1204,44 @@ SDK logging can also be globally enabled via a localStorage value by opening you
 // Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
 // Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
 localStorage.splitio_debug = 'on' <enter>
-
 ```
+
+By default, the SDK uses the `console.log` method to output log messages for all log levels. 
+
+Since v1.5.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the `factory.Logger.setLogger` method. 
+
+The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
+
+```typescript
+interface Logger {
+  debug(message: string): any;
+  info(message: string): any;
+  warn(message: string): any;
+  error(message: string): any;
+}
+```
+
+The following example passes the `console` object as a logger, so that `console.error`, `console.warn`, `console.info`, and `console.debug` methods are called rather than the default `console.log` method.
+
+<Tabs>
+<TabItem value="Using Console as Logger">
+
+```typescript
+import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-browserjs';
+
+const sdk = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Enable logs to call the corresponding custom logger methods
+  debug: DebugLogger(),
+  logger: console
+});
+```
+
+</TabItem>
+</Tabs>
 
 ## Advanced use cases
 
@@ -1254,7 +1255,7 @@ Each SDK factory client is tied to one specific customer ID at a time, so if you
 
 You can do this with the example below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-clients">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1348,7 +1349,7 @@ You can listen for four different events from the SDK.
 
 The syntax to listen for each event is shown below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-events">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1454,9 +1455,6 @@ To instantiate an SDK working as consumer, set two configs on the root of the co
 
 The following shows how to configure and get treatments for a SDK instance in consumer or partial consumer mode:
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
-
 ```javascript
 import { SplitFactory, PluggableStorage } from '@splitsoftware/splitio-browserjs';
 
@@ -1505,9 +1503,6 @@ client.once(client.Event.SDK_READY_TIMED_OUT, function () {
   // if and only if the SDK_READY event was not emitted for that time.
 });
 ```
-
-</TabItem>
-</Tabs>
 
 You can write your own custom storage wrapper for the SDK factory client by extending the IPluggableStorageWrapper interface.
 
