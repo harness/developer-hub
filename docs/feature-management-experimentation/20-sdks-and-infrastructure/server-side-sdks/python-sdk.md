@@ -809,15 +809,15 @@ Three types of properties are supported: strings, numbers, and booleans.
 <TabItem value="Multi-threaded">
 
 ```python
-# Define impression properties
-properties = {
+# Define impression properties inside EvaluationOptions structure
+evaluation_option = EvaluationOptions({
     "userType": "premium",  # string
     "loginCount": 42,       # number
     "isAdmin": True         # boolean
-}
+})
 
 # Get treatment with properties
-treatment = split.get_treatment('key', 'FEATURE_FLAG_NAME', properties=properties)
+treatment = split.get_treatment('key', 'FEATURE_FLAG_NAME', evaluation_options=evaluation_option)
 
 if treatment == "on":
     # Show ON treatment
