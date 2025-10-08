@@ -20,10 +20,24 @@ Harness CCM Budgets provide comprehensive cost governance capabilities that help
 - **Track Actual vs. Forecasted Costs**: Compare real-time spending against predicted costs to make informed financial decisions
 - **Organize with [Budget Groups](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-budget-group)**: Combine multiple budgets into hierarchical groups for better organization and cascading budget management
 
+-------
+
 ## Prerequisites
 
 * [Create CCM Connector](/docs/cloud-cost-management/get-started/#aws): Create a CCM connector to connect to your cloud provider.
 * [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
+
+
+-------
+
+## Budgets Overview Page
+
+When you click on Budgets in the left navigation bar, the overview page displays. From here, you can drill down into specific folders or view the complete budget list for broader visibility. You can customize your view by selecting which columns to display, including: Time Period, Budget Amount, Current Spend, Forecast, Forecast vs. Budget, Current Spend vs. Budget, Thresholds, Created By, and Last Modified.
+Note: Budgets cannot be manually moved between folders. However, when you move a perspective from one folder to another, all budgets associated with that perspective will automatically move to the destination folder.
+
+<DocImage path={require('./static/budget-overview.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-------
 
 ## Create a Budget
 
@@ -104,9 +118,7 @@ If your Budget Period is set to **Yearly** and the Budget Breakdown is **Monthly
 
 After the budget is created, it can be viewed on the **Budgets** page. Each budget is associated with the same folder as the Perspective it was created on.  
 
-The Budgets tab displays all the budgets in a new consolidated view. Users can drill down into a folder or access the complete budget list for broader visibility. Users can also select which columns they want to see in the Budgets list. This gives them the flexibility to refine their view with the following attributes: Time Period, Budget Amount, Current Spend, Forecast, Forecast vs. Budget, Current Spend vs. Budget, Thresholds, Created By, and Last Modified. 
 
-<DocImage path={require('./static/budget-overview.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 ------
 </TabItem>
