@@ -382,7 +382,7 @@ After Label V2, AWS labels are stored as-is without any normalization.
   margin: '15px 0'
 }}>
   <h4 style={{margin: '0 0 10px 0', color: '#0066cc'}}>✅ Migration Required</h4>
-  <p style={{margin: '0'}}>Label V2 will replace the current labels in the next release. Harness CCM will automatically migrate your existing rules. However, if your scripts reference Labels in Perspectives or CCs, you’ll need to [update them manually](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#how-to-migrate) to use Label V2. <strong>Existing Labels will also continue to work without interruption</strong></p>
+  <p style={{margin: '0'}}>Label V2 will replace the current Labels in the next release. Harness CCM will automatically migrate your existing rules. However, if your scripts reference Labels in Perspectives or CCs, you’ll need to [update them manually](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#how-to-migrate) to use Label V2. <strong>Existing Labels will also continue to work without interruption</strong></p>
 </div>
 
 <div style={{
@@ -403,7 +403,7 @@ After Label V2, AWS labels are stored as-is without any normalization.
 
 - Identify affected components: Review all Perspectives that use Label-based grouping or filtering
 - Update each component: Edit each Perspective. Locate all instances where you've defined rules, filters, or grouping using AWS Labels. Change the selection from "Label" to "Label V2". Save your changes
-- Verify your updates: After updating the Perspective, confirm that your cost data appears correctly. Ensure all previously configured label-based filters work as expected
+- Verify your updates: After updating the Perspective, confirm that your cost data appears correctly. Ensure all previously configured Label-based filters work as expected
 
 
 <iframe src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" title="Migrating Label to Label V2" style={{minHeight:'480px'}} width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
@@ -464,7 +464,7 @@ Now the request has the Label V2 field as:
                     ]
                 }
 ```
-Similarly, for labels.key:
+Similarly, for `fieldId`:
 
 Earlier:
 
