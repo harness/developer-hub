@@ -16,21 +16,19 @@
    - organization restructure
 ---
 
-A project is a group of harness modules, their pipelines, and other resources used to organize and manage resources in an organization. The move projects feature allows you to transfer projects between organizations, which is useful during acquisitions, reorganizations, or ownership transitions.
+A project is a group of harness modules, their pipelines, and other resources used to organize and manage resources in an organization. The move projects feature allows you to transfer projects between organizations, which is useful during reorganizations, or ownership transitions.
 
 This capability enables teams to adapt to structural changes while preserving project configuration, resources, and history, supporting flexible governance across evolving team structures.
 
-## What Happens When You Move a Project 
+## What happens when you move a project 
 
-When you move a project to another organization in Harness, several actions take place in the background. Understanding these steps helps you anticipate changes and review configurations after the move.
+When you move a project to another organization in Harness, several actions take place in the background.
 
-1. Project ownership is transferred: Every project in Harness belongs to an organization.  Moving a project updates its ownership to associate it with the new organization while keeping it under the same account.
+1. **Entities inside the project are moved:** Pipelines, services, environments, and other [entities](#supported-entities) are carried over to the new organization. These entities remain intact; however, references to external items are validated during the move.
 
-2. Entities inside the project are moved: Pipelines, services, environments, and other CI/CD entities are carried over to the new organization. These entities remain intact, but references to external items are validated during the move.
+2. **Organization-level dependencies become stale:** If the project depends on connectors, secrets, or templates defined at the old organization level, those items may no longer be accessible in the new organization. Because organizations are isolated, these dependencies must be recreated in the new organization.
 
-3. Organization-level dependencies are re-validated: If the project depends on connectors, secrets, or templates defined at the old organization level, those items may no longer be accessible in the new organization. Because organizations are isolated, these dependencies must be recreated or re-linked in the new organization.
-
-4. Audit logs are created: All project moves are automatically logged with details including the user, timestamp, source organization, and destination organization. These audit trails provide accountability and help administrators track organizational changes for compliance purposes.
+3. **Audit logs are generated:** All project moves are logged with details such as the user, timestamp, source organization, and destination organization. These audit trails provide accountability to support compliance requirements.
 
 For detailed pre-move and post-move verification steps, refer to the [project movement checklist](project-movement-checklist.md).
 
@@ -43,34 +41,30 @@ To move a project between organization resources, you need the following roles o
 
 ## Supported Entities
 
-When a project is moved to a new organization in Harness, different entities behave differently. Understanding what moves automatically, what requires manual updates, and what may break is essential for a smooth transition.
+When a project is moved across organizations, the following entities are supported.
 
 ### Pipelines
-
+  
 Pipelines move with the project, including executions, input sets, triggers, variables, and notifications. However, there are some limitations:
 
-- Pipeline chaining fails if a child pipeline is moved.
-- Pipelines that depend on project-level delegates may take approximately one minute to run after the move.
-- OPA is not supported.
+  - Pipeline chaining fails if a child pipeline is moved.
+  - Pipelines that depend on project-level delegates may take approximately one minute to run after the move.
+  - Pipelines that were running during the move operation might fail.
 
 ### Secrets
 
 Project-scoped secrets are preserved and move with the project automatically during the migration. However, Organization-scoped secrets must be recreated in the destination organization as they don't transfer between organizations due to isolation boundaries.
 
-Additionally, custom triggers and webhooks that reference organization or project identifiers will fail after the move and need to be updated with the new organizational context to function properly.
+Additionally, triggers that reference organization or project identifiers will fail after the move and must be updated to function properly.
 
-### User Groups, Roles, and Permissions
+### Access control Components
 
-Project-level roles and permissions remain intact during the move, ensuring that user access within the project continues unchanged. However, Organization-level RBAC policies do not transfer and must be reapplied in the destination organization to maintain proper access controls at the organizational level.
+Project-level roles and permissions remain intact during the move, ensuring that user access within the project continues unchanged. However, Organization-level RBAC policies do not transfer and must be reapplied in the destination organization to maintain proper access controls.
 
-### Audit Logs and History
+### Audit Logs
 
-Historical data and execution records are fully preserved when moving projects, ensuring no loss of audit trails or pipeline run history. However, direct links to audit logs may break temporarily as they contain organization-specific URLs. 
+Historical data and execution records are fully preserved when moving projects, ensuring no loss of audit trails or pipeline run history. However, links in the audit logs may break which redirects to the entity on the old organization. 
 
-Usage metrics and telemetry continue to reflect the original organization until the next reporting cycle updates the references.
+### Notifications and Webhooks
 
-### Integrations (Notifications, Webhooks, APIs)
-
-Pipeline notifications and account-level integrations continue to function normally after the move since they operate at a higher scope. However, generic webhooks and Slack webhooks that contain organization or project identifiers will fail and require reconfiguration. 
-
-Similarly, existing API requests using old organization or project identifiers must be updated to reference the new organizational context.
+Notifications continue to function normally after the move. However, generic webhooks and Slack webhooks that contain organization or project identifiers will fail and require reconfiguration. 
