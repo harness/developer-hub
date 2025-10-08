@@ -59,7 +59,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- Harness now provides enhanced support for rollback stage action as part of the manual intervention in case of Run step failure. With this enhancement, the pipelines configured with the rollback stage option under manual intervention, on failure of a Run step inside a step group, will now execute the rollback stage when triggered, instead of failing. (**CDS-112366**, **ZD-85725, ZD-88581, ZD-88916**)
+- Harness provides enhanced support for rollback stage action as part of manual intervention in case of Run step failure. With this enhancement, when you rollback a stage through manual intervention on failure of a Run step, it will execute the rollback stage action instead of failing. This enhancement is currently controlled by feature flag `CDS_ROLLBACK_IN_STEPGROUP_MANUAL_INTERVENTION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-112366**, **ZD-85725, ZD-88581, ZD-88916**)
 
 #### Fixed Issues
 
