@@ -1,6 +1,8 @@
 ---
 description: KB - Resolving AKS permission issue for deployment
 title: Permission issue for AKS deployments
+redirect_from:
+  - /kb/continuous-delivery/articles/aks-permission-issues
 ---
 
 # Introduction
@@ -13,7 +15,7 @@ we are not able to perform deployment to target cluster as it throws below error
 
 `"Error: query: failed to query with labels: secrets is forbidden: User "addd761x-f76d-89f7-ee6f-21fgec090a7a" cannot list resource "secrets" in API group "" in the namespace "default": User does not have access to the resource in Azure. Update role assignment to allow access."`
 
-![](../static/akserrorimage.png)
+![](./static/akserrorimage.png)
 
 ## Resolution
 
