@@ -360,17 +360,6 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
 
 ## Label Migration: Label vs. Label V2
 
-<div style={{
-  backgroundColor: '#fff3cd',
-  border: '1px solid #ffeaa7',
-  borderRadius: '8px',
-  padding: '20px',
-  margin: '20px 0'
-}}>
-  <h3 style={{margin: '0 0 15px 0', color: '#856404'}}>⚠️ Migration Notice for Existing Users</h3>
-  <p style={{margin: '0 0 10px 0'}}>This migration is <strong>only required for existing users</strong> who are currently using the legacy Label system. If you're a new user or haven't used Labels before, you can start directly with Label V2.</p>
-</div>
-
 Harness CCM is transitioning from the traditional Label system to the enhanced Label V2 system. Support for the legacy Label system will be discontinued in the coming months.
 
 - **Label (Legacy)**: Normalizes AWS tags. GCP, Azure and Clusters tags are not normalized.
@@ -380,7 +369,6 @@ Harness CCM is transitioning from the traditional Label system to the enhanced L
 
 - Original tags: Displays your original cloud tag keys exactly as they appear in AWS, Azure, or GCP
 - Improved Performance: Enhanced data processing and query performance
-- Label is a label that you assign to your AWS resources. See how AWS labels are created.
 
 After Label V2, AWS labels are stored as-is without any normalization.
 
@@ -394,7 +382,7 @@ After Label V2, AWS labels are stored as-is without any normalization.
   margin: '15px 0'
 }}>
   <h4 style={{margin: '0 0 10px 0', color: '#0066cc'}}>✅ Migration Required</h4>
-  <p style={{margin: '0'}}>You need to migrate if you have <strong>existing Perspectives that use AWS Labels</strong> for grouping or filtering. Migration is done by Harness CCM. If you want to know the status of your migration, please contact Harness support</p>
+  <p style={{margin: '0'}}>Label V2 will replace the current labels in the next release. Harness CCM will automatically migrate your existing rules. However, if your scripts reference Labels in Perspectives or CCs, you’ll need to [update them manually](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#how-to-migrate) to use Label V2. <strong>Existing Labels will also continue to work without interruption</strong></p>
 </div>
 
 <div style={{
@@ -408,22 +396,20 @@ After Label V2, AWS labels are stored as-is without any normalization.
   <p style={{margin: '0'}}>If you're a new user or haven't used Labels in your Perspectives, simply use <strong>Label V2</strong> for all new configurations.</p>
 </div>
 
-
 ### How to Migrate
 
 <Tabs>
 <TabItem value="via-ui" label="Via UI">
 
 - Identify affected components: Review all Perspectives that use Label-based grouping or filtering
-- Update each component: Edit each Perspective. Locate all instances where you've defined rules, filters, or grouping using AWS Labels. Change the selection from "Label" to "LabelsV2". Save your changes
+- Update each component: Edit each Perspective. Locate all instances where you've defined rules, filters, or grouping using AWS Labels. Change the selection from "Label" to "Label V2". Save your changes
 - Verify your updates: After updating the Perspective, confirm that your cost data appears correctly. Ensure all previously configured label-based filters work as expected
 
 
-<iframe src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" title="Migrating Label to LabelsV2" style={{minHeight:'480px'}} width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+<iframe src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" title="Migrating Label to Label V2" style={{minHeight:'480px'}} width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
 
 </TabItem>
 <TabItem value="via-api" label="Via API">
-
 
 **Label (Original Format)** normalizes AWS tags as follows:
 * User-defined tags: Adds `user_` prefix (e.g., `environment` becomes `user_environment`)  
@@ -431,9 +417,9 @@ After Label V2, AWS labels are stored as-is without any normalization.
 * Special characters: Characters not matching `[a-zA-Z0-9_]` are replaced with `_`  
 * Case sensitivity: For duplicate tag names with different cases (e.g., `UserName` and `username`), a numeric suffix is added (`UserName` and `username_1`)  
 
-**LabelsV2** preserves the original tag structure without these modifications
+**Label V2** preserves the original tag structure without these modifications
 
-So, when migrating from Label to LabelsV2 in your API calls:
+So, when migrating from Label to Label V2 in your API calls:
 
 1. Change the `identifier` from `LABEL` to `LABEL_V2`
 2. Change the `identifierName` from `Label` to `Label V2`
@@ -470,7 +456,7 @@ Now the request has the Label V2 field as:
                         "fieldId": "labels.value",
                         "fieldName": "key1",
                         "identifier": "LABEL_V2",
-                        "identifierName": "Label v2"
+                        "identifierName": "Label V2"
                     },
                     "operator": "IN",
                     "values": [
@@ -540,7 +526,7 @@ Now the request has the Label V2 field as:
                         "fieldId": "labels.value",
                         "fieldName": "key",
                         "identifier": "LABEL_V2",
-                        "identifierName": "Label v2"
+                        "identifierName": "Label V2"
                     },
                     "operator": "IN",
                     "values": [
@@ -582,8 +568,6 @@ Now:
 ``` 
 </TabItem>
 </Tabs>
-
-In short, wherever you see LABEL in "identifier", replace it with LABEL_V2 alongwith "identifierName" .
 
 Please refer the following API docs for details:
 
