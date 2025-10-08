@@ -15,7 +15,7 @@ The migration has been designed to be as straightforward for you as possible. Da
 
 ## Next Steps
 
-### If you usually log in with user/password
+### To log in with user/password
 
 1. Go to `app.harness.io`.
 1. Attempt to log in with your Split login and a random password.
@@ -25,13 +25,13 @@ The migration has been designed to be as straightforward for you as possible. Da
 1. Click the **Reset Password** button in the email and set your password in the page that appears.
 1. Log in to `app.harness.io` with your new password.
 
-### If you usually log in with a single sign-on (SSO) tile
+### To log in with a single sign-on (SSO) tile
 
-If you usually start from a tile on Okta, Entra ID, or another IDP portal, then look for a new tile named "Harness" or similar and click that.
+If your administrator has configured SSO for Harness, and you usually click a tile in your portal, look for a new tile named "Harness" or similar and click that.
 
-### If you usually log in with single sign-on (SSO) from the Split login screen
+### To log in with single sign-on (SSO) from the Harness login screen
 
-If you usually go to `app.split.io` and then log in via SSO, you can now do the same on `app.harness.io`.
+If your administrator has configured SSO for Harness, and you usually go to `app.split.io` and then log in via SSO, you can now do the same on `app.harness.io`.
 
 ## Questions?
 
