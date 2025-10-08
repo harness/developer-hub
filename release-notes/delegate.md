@@ -115,6 +115,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## October 2025
 
+### Version 25.07.86403 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. The user needs to set TRUST_EARLY and ENRICH_LOGS environment variables in the delegate. [CDS-109294]
+
 ### Version 25.09.86801 <!--October 08, 2025-->
 
 #### Fixed issues
