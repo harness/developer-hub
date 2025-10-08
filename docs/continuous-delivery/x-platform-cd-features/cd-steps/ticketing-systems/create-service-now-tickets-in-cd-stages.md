@@ -86,7 +86,7 @@ The timezone settings govern the display value of the settings not their actu
 
    ![](./static/create-service-now-tickets-in-cd-stages-10.png)
 
-## Create From Form Template
+## Create from Form Template
 
 Form Templates are a generic concept in ServiceNow that allow you to create templates containing commonly used field values for any table. These templates can be applied to any table in ServiceNow, not just specific ticket types.
 
