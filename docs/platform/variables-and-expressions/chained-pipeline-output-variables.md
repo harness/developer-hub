@@ -1,6 +1,9 @@
 ---
 description: KB - How to get output variables from the pipeline stage in pipeline chaining
 title: Output variables with chained pipeline
+redirect_from:
+  - /kb/continuous-delivery/articles/chained-pipeline-output-variables
+sidebar_position: 990
 ---
 
 # Introduction
@@ -17,7 +20,7 @@ How to pass variables from a chained/child pipeline to the main/parent pipeline 
 
 At the **parent pipeline** level of the **pipeline reference stage**, head to the **output definitions section**.  The User can define the Harness expression for the output variable for the chained pipeline. 
 
-![](../static/pipelineOutputs.png)
+![](./static/pipelineOutputs.png)
 
 You can define the outputs utlizing the Harness Expressions reference utility, as references within a chained pipeline can become complicated.  
 
