@@ -1104,7 +1104,7 @@ Reload the browser to start seeing the logs.
 Beginning with v9.2.0 of the SDK, you can also enable the logging via SDK settings and programmatically by calling the Logger API.
 
 <Tabs groupId="java-type-script">
-<TabItem value="Logger API">
+<TabItem value="JavaScript" label="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio';

@@ -1143,7 +1143,7 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 To trim as many bits as possible from the user application builds, we divided the logger in implementations that contain the log messages for each log level: `ErrorLogger`, `WarnLogger`, `InfoLogger`, and `DebugLogger`. Higher log level options contain the messages for the lower ones, with DebugLogger containing them all. To enable descriptive SDK logging, you need to plug in a logger instance as shown below:
 
 <Tabs groupId="java-type-script">
-<TabItem value="Logger instance (NPM package)">
+<TabItem value="JavaScript" label="Logger instance (NPM package)">
 
 ```javascript
 import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-browserjs';
@@ -1158,7 +1158,7 @@ const sdk = SplitFactory({
 ```
 
 </TabItem>
-<TabItem value="Logger instance (UMD build)">
+<TabItem value="JavaScript" label="Logger instance (UMD build)">
 
 ```javascript
 var sdk = splitio.SplitFactory({
@@ -1176,7 +1176,7 @@ var sdk = splitio.SplitFactory({
 You can also enable the SDK logging via a boolean or log level value as `debug` settings, and change it dynamically by calling the SDK Logger API. However, in any case where the proper logger instance is not plugged in, instead of a human readable message, you'll get a code and optionally some params for the log itself. While these logs would be enough for the Harness FME support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
 
 <Tabs groupId="java-type-script">
-<TabItem value="Logger API">
+<TabItem value="JavaScript" label="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-browserjs';

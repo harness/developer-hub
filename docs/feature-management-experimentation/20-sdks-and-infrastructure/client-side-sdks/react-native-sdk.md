@@ -1051,7 +1051,7 @@ To trim as many bits as possible from the user application builds, we divided th
 Thus, to enable descriptive SDK logging you need to plug in a logger instance as shown below:
 
 <Tabs groupId="java-type-script">
-<TabItem value="Logger instance">
+<TabItem value="JavaScript" label="Logger instance">
 
 ```javascript
 import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-react-native';
@@ -1074,7 +1074,7 @@ However, in any case where the proper logger instance is not plugged in, instead
 While these logs would be enough for the Split support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
 
 <Tabs groupId="java-type-script">
-<TabItem value="Logger API">
+<TabItem value="JavaScript" label="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-react-native';
