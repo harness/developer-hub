@@ -1051,27 +1051,12 @@ To trim as many bits as possible from the user application builds, we divided th
 Thus, to enable descriptive SDK logging you need to plug in a logger instance as shown below:
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger instance (JavaScript)">
-
-```javascript
-var splitio = require('@splitsoftware/splitio-react-native');
- 
-var sdk = splitio.SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
-});
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger instance (TypeScript)">
+<TabItem value="Logger instance">
 
 ```javascript
 import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-react-native';
  
-const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+const sdk = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1089,32 +1074,12 @@ However, in any case where the proper logger instance is not plugged in, instead
 While these logs would be enough for the Split support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger API (JavaScript)">
-
-```javascript
-var splitio = require('@splitsoftware/splitio-react-native');
- 
-var sdk = splitio.SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
-});
- 
-// Or you can use the Logger API methods which have an immediate effect.
-sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
-sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
-sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger API (TypeScript)">
+<TabItem value="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-react-native';
  
-const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+const sdk = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1130,6 +1095,40 @@ sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
 
 </TabItem>
 </Tabs>
+
+By default, the SDK uses the `console.log` method to output log messages for all log levels. 
+
+Since v1.4.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the `factory.Logger.setLogger` method. 
+
+The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
+
+```typescript
+interface Logger {
+  debug(message: string): any;
+  info(message: string): any;
+  warn(message: string): any;
+  error(message: string): any;
+}
+```
+
+The following example passes the `console` object as a logger, so that `console.error`, `console.warn`, `console.info`, and `console.debug` methods are called rather than the default `console.log` method.
+
+<Tabs>
+<TabItem value="Using Console as Logger">
+
+```typescript
+import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-react-native';
+
+const sdk = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Enable logs to call the corresponding custom logger methods
+  debug: DebugLogger(),
+  logger: console
+});
+```
 
 ## Advanced use cases 
 
