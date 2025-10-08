@@ -217,7 +217,7 @@ The `getTreatment` method has a number of variations that are described below. E
 * **Booleans:** Use type Boolean.
 * **Sets:** Use type Array.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-syntax">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -325,7 +325,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-evals">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -387,7 +387,7 @@ type TreatmentResult = {
 
 As you can see from the object structure, the config is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter. This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-treatments-with-config">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -426,7 +426,7 @@ if (treatment === 'on') {
 
 If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to TreatmentResults instead of strings. Example usage below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-evals">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -485,7 +485,7 @@ You can append properties to an impression by passing an object of key-value pai
 
 Three types of properties are supported: strings, numbers, and booleans.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-impression-props">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -522,7 +522,7 @@ const treatment: string = client.getTreatment('FEATURE_FLAG_NAME', undefined, ev
 
 Call the `client.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-shutdown">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -568,7 +568,7 @@ The `track` method returns a boolean value of `true` or `false` to indicate whet
 
 In the case that a bad input has been provided, you can read more about our [SDK's expected behavior](/docs/feature-management-experimentation/release-monitoring/events/).
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-track">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -632,7 +632,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 
 To set each of the parameters defined above, use the following syntax:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-config">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -871,7 +871,7 @@ To use the SDK in localhost mode, replace the SDK key on `authorizationKey` prop
 
 If you define just a string as the value for a feature flag name, any config returned by our SDKs are always null. If you use a map, we return the specified treatment and the specified config (which can also be null).
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-localhost">
 <TabItem value="JavaScript" label="JavaScript (using CDN bundle)">
 
 ```javascript
@@ -959,7 +959,7 @@ config.features = { 'reporting_v3': 'off' }; // Will not emit SDK_UPDATE
 
 Use the Split Manager to get a list of features available to the SDK factory client. To instantiate a Manager in your code base, use the same factory that you used for your client:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-manager">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1000,7 +1000,7 @@ manager.once(manager.Event.SDK_READY, function() {
 
 The Manager has the following methods available:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-manager-methods">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1091,7 +1091,7 @@ There are two additional keys on this object, `ip` and `hostname`. They are not 
 
 The following is an example of how to implement a custom impression listener:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-custom-impression-listener">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1142,7 +1142,7 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 
 To trim as many bits as possible from the user application builds, we divided the logger in implementations that contain the log messages for each log level: `ErrorLogger`, `WarnLogger`, `InfoLogger`, and `DebugLogger`. Higher log level options contain the messages for the lower ones, with DebugLogger containing them all. To enable descriptive SDK logging, you need to plug in a logger instance as shown below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-logging">
 <TabItem value="JavaScript" label="Logger instance (NPM package)">
 
 ```javascript
@@ -1158,7 +1158,7 @@ const sdk = SplitFactory({
 ```
 
 </TabItem>
-<TabItem value="JavaScript" label="Logger instance (UMD build)">
+<TabItem value="JavaScript Example" label="Logger instance (UMD build)">
 
 ```javascript
 var sdk = splitio.SplitFactory({
@@ -1175,7 +1175,7 @@ var sdk = splitio.SplitFactory({
 
 You can also enable the SDK logging via a boolean or log level value as `debug` settings, and change it dynamically by calling the SDK Logger API. However, in any case where the proper logger instance is not plugged in, instead of a human readable message, you'll get a code and optionally some params for the log itself. While these logs would be enough for the Harness FME support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-debug">
 <TabItem value="JavaScript" label="Logger API">
 
 ```javascript
@@ -1255,7 +1255,7 @@ Each SDK factory client is tied to one specific customer ID at a time, so if you
 
 You can do this with the example below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-clients">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1349,7 +1349,7 @@ You can listen for four different events from the SDK.
 
 The syntax to listen for each event is shown below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-events">
 <TabItem value="JavaScript">
 
 ```javascript
