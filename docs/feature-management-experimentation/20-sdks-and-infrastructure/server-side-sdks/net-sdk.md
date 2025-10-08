@@ -1101,6 +1101,51 @@ var factory = new SplitFactory("YOUR_SDK_KEY", config);
 var sdk = factory.Client();
 ```
 
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```csharp title="C#"
+// Initialize SDK with global fallback treatment
+FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(new FallbackTreatment("on-global", "\"prop\":\"global\""));
+
+var config = new ConfigurationOptions
+{
+    ReadTimeout = 15000,
+    FallbackTreatments = fallbackTreatmentsConfiguration
+};            
+var splitFactory = new SplitFactory("apikey", configurations);
+```
+
+### Flag-level fallback treatment
+
+You can configure fallback treatments for specific flags in the SDK options. When a flag evaluation fails, the SDK returns the corresponding fallback treatment defined for that flag.
+
+```csharp title="C#"
+FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(new Dictionary<string, FallbackTreatment>() { { "feature", new FallbackTreatment("off-local", "\"prop\":\"local\"") } });
+
+var config = new ConfigurationOptions
+{
+    ReadTimeout = 15000,
+    FallbackTreatments = fallbackTreatmentsConfiguration
+};            
+var splitFactory = new SplitFactory("apikey", configurations);
+var sdk = factory.Client();
+var treatment = sdk.GetTreatment("KEY","feature");
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ## Troubleshooting 
 
 ### Which API Key to use with .NET Xamarin projects
