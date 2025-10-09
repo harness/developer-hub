@@ -187,6 +187,22 @@ An optional target path in the pipeline workspace where you want to clone the re
 
 You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's codebase. You can specify **Shared Paths** in your [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
 
+### Persist Credentials (Optional)
+
+When selected, Harness persists the Git credentials used during the clone step so they remain available for subsequent steps in the same build.
+
+This is useful when:
+
+- You need to run Git commands (for example, fetching submodules, tagging, or pushing commits) after the clone step.
+
+- You’re using a private Harness Code Repository or authenticated third-party repository, and you want to avoid re-authenticating in every step.
+
+:::note
+The persisted credentials remain available only within the scope of the build environment (container or VM) for the duration of the build. They are not stored or reused after the build completes.
+:::
+
+<DocImage path={require('./static/persist-creds.png')} />
+
 ### Fetch Tags
 
 Determines whether to fetch all tags when performing a shallow clone (depth > 0). Setting this to `true` is equivalent to adding the `--tags` flag.
