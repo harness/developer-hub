@@ -52,7 +52,6 @@ const config: Config = {
     experimental_faster: true,
   },
 
-
   presets: [
     [
       'classic',
@@ -144,6 +143,18 @@ const config: Config = {
             {
               label: 'Cloud Cost Management',
               to: 'docs/cloud-cost-management',
+            },
+            {
+              label: 'Application & API Security Posture',
+              to: 'docs/appsec-security-posture',
+            },
+            {
+              label: 'Application & API Runtime Protection',
+              to: 'docs/appsec-runtime-protection',
+            },
+            {
+              label: 'Application & API Security Testing',
+              to: 'docs/appsec-security-testing',
             },
             {
               label: 'Security Testing Orchestration',
@@ -473,6 +484,7 @@ const config: Config = {
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-university.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
+        // showLastUpdateTime: true,
         // ... other options
       },
     ],
@@ -484,6 +496,7 @@ const config: Config = {
         routeBasePath: 'kb',
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-kb.js'),
+        // showLastUpdateTime: true,
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         // ... other options
       },
@@ -499,6 +512,7 @@ const config: Config = {
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         routeBasePath: 'docs', //CHANGE HERE
+        // showLastUpdateTime: true,
         remarkPlugins: [
           [
             remarkMath,
@@ -528,6 +542,7 @@ const config: Config = {
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**'],
         routeBasePath: 'roadmap', //CHANGE HERE
+        // showLastUpdateTime: true,
       },
     ],
 

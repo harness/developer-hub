@@ -670,5 +670,29 @@
     "description": "Uses paginated requests to fetch connectors for webhook triggers.",
     "gaStartDate": "2025-10-03",
     "module": "Pipeline"
-  }
+  },
+  {
+    "flagKey": "CV_NEWRELIC_NEW_API",
+    "description": "FF to enable New Relic graphQL API.",
+    "gaStartDate": "2025-10-03",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CVNG_TEMPLATE_VERIFY_STEP",
+    "description": "FF to enable Verify Step Template",
+    "gaStartDate": "2025-10-03",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CV_UI_HEALTHSOURCE_SERVICE_INSTANCE_PREVIEW",
+    "description": "FF to fetch and display Service Instance Identifiers for Health Sources",
+    "gaStartDate": "2025-10-07",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ADD_STAGES_PREFIX_TO_EXECUTION_INPUT_EXPRESSIONS",
+    "description": "FF to support execution time inputs for single service propagation, without looping strategy configured at stage level",
+    "gaStartDate": "2025-10-08",
+    "module": "Continuous Delivery"
+  }  
 ]

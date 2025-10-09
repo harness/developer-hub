@@ -1,6 +1,8 @@
 ---
 description: KB - Debug ServiceNow create, update, and approval steps
 title: ServiceNow create, update, and approval API permissions
+redirect_from:
+  - /kb/continuous-delivery/articles/servicenow-api-permission
 ---
 
 This KB discusses the permissions required for ServiceNow create, update, and approval steps. Make sure that you've the permissions required for the `ticket` and `getMetadata` APIs apart from the permissions mentioned in the following sections. 
@@ -117,7 +119,7 @@ Required permission: `itil`.
    5. Once the ACLs are updated, create the ServiceNow ticket again. If the insert is successful, the issue has been resolved.
    6. ServiceNow has data restrictions on their UI. There can be various UI policies configured on ServiceNow that may not allow you to perform the operation directly on UI even it is possible via Harness. You can directly use the APIs listed above for debugging permission issues.
    7. Check if the table, for example Change Request has any scoped applications enabled. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-application-development/page/build/applications/reference/r_TableApplicationAccessFields.html).
-      ![image](../static/debug-approval-step.png)
+      ![image](./static/debug-approval-step.png)
    8. Check if there are any data policies written on the user's Dev instance on the table. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-platform-administration/page/administer/field-administration/concept/c_DataPolicy.html).
    9. When using custom tables (not Incident, Problem, Change Request, and Change Task in create/update using form templates), make sure to grant cross-scope privileges for the required table with templates (via the Harness app in ServiceNow store). For details, go to [Custom table support](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#custom-table-support).
 
