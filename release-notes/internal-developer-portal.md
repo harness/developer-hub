@@ -68,7 +68,7 @@ This release introduces a feature that lets you **embed an iframe** directly on 
 
 > Learn more about [Embed an Iframe in Catalog Entity Page](/docs/internal-developer-portal/layout-and-appearance/catalog#embed-an-iframe).
 
-![](./static/internal-developer-portal/entity-iframe.png)
+![](./static/internal-developer-portal/embed-iframe.png)
 
 ---
 

@@ -257,7 +257,7 @@ In case you want to display the same information you have ingested on your Overv
 
 You can embed an iframe on a Catalog entity’s detail page with the `EntityIframeContent` component. This enables you to display external web pages directly inside the entity view in Harness IDP.
 
-![Entity iframe example](./static/entity-iframe.png)
+![Entity iframe example](./static/embed-iframe.png)
 
 Follow the given steps: 
 1. Go to **Configure** → **Layout** → **Catalog Entities**.
