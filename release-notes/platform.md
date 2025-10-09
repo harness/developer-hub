@@ -159,6 +159,15 @@ The following deprecated API endpoints are longer supported:
 
 ## October 2025 
 
+### Version 1.111.x <!--October 08, 2025-->
+
+### New features and enhancements
+
+- Updated the images to use specific version tags instead of the latest tag. [PL-65593]
+  - aws-cli:latest -> aws-cli:2.31.7
+  - redis_exporter:latest -> redis_exporter:v1.77.0
+  - statsd-exporter:latest -> statsd-exporter:v0.28.0 
+
 ### Version 1.110.x <!--October 03, 2025-->
 
 #### Fixed issues
