@@ -183,7 +183,7 @@ Please review these important notes about using **Environment** and **Infrastruc
 
 ## Add a Dynamic stage
 
-Dynamic Stage is a pipeline feature in Harness that allows you to import and execute pipeline YAML within a stage. It is exactly like executing a whole pipeline within a stage. The pipeline YAML can either be generated and transformed at runtime in a previous stage, or directly provided to the source input of the Dynamic Stage in encoded form. Dynamic Stages work seamlessly across Harness CI and CD modules.
+Dynamic Stage is a pipeline feature in Harness that allows you to import and execute pipeline YAML within a stage. It is exactly like executing a whole pipeline within a stage. The pipeline YAML can either be generated and transformed at runtime in a previous stage, or be directly provided to the source input of the Dynamic Stage in encoded form. Dynamic Stages work seamlessly across Harness CI and CD modules.
 
 :::info note
 Currently, Dynamic Stage is behind the Feature Flag `PIPE_DYNAMIC_STAGE_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this stage.
