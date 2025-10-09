@@ -454,7 +454,7 @@ Now the request has the Label V2 field as:
                 {
                     field": {
                         "fieldId": "labels.value",
-                        "fieldName": "key1",
+                        "fieldName": "Key1",
                         "identifier": "LABEL_V2",
                         "identifierName": "Label V2"
                     },
@@ -471,10 +471,10 @@ Earlier:
 ```json
  "idFilter": {
                     "field": {
-                        "fieldId": "labels.user_key1",
+                        "fieldId": "labels.key1",
                         "fieldName": "",
                         "identifier": "LABEL",
-                        "identifierName": "Label V2"
+                        "identifierName": "Label"
                     },
                     "operator": "IN",
                     "values": []
@@ -487,7 +487,7 @@ Now:
 ```json
  "idFilter": {
                     "field": {
-                        "fieldId": "labels.key1",
+                        "fieldId": "labels.key",
                         "fieldName": "",
                         "identifier": "LABEL_V2",
                         "identifierName": "Label V2"
@@ -544,7 +544,7 @@ Earlier:
                         "fieldId": "labels.key",
                         "fieldName": "",
                         "identifier": "LABEL",
-                        "identifierName": "Label V2"
+                        "identifierName": "Label"
                     },
                     "operator": "IN",
                     "values": []
