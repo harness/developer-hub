@@ -471,7 +471,7 @@ Earlier:
 ```json
  "idFilter": {
                     "field": {
-                        "fieldId": "labels.key1",
+                        "fieldId": "labels.key",
                         "fieldName": "",
                         "identifier": "LABEL",
                         "identifierName": "Label"
