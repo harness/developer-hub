@@ -1,6 +1,6 @@
-A metric measures [events](https://help.split.io/hc/en-us/articles/360020585772) that are sent to Harness FME. Metrics can be defined to count the occurrence of events, measure event values, or measure event properties.
+A metric measures [events](/docs/feature-management-experimentation/experimentation/events/) that are sent to Harness FME. Metrics can be defined to count the occurrence of events, measure event values, or measure event properties.
 
-Metric results are calculated for each treatment of a feature flag that shares the same traffic type as the metric and has a percentage targeting rule applied. Impact can be calculated between a selected comparison treatment and baseline treatment within a feature flag. Results are displayed on the [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451) of the feature flag.
+Metric results are calculated for each treatment of a feature flag that shares the same traffic type as the metric and has a percentage targeting rule applied. Impact can be calculated between a selected comparison treatment and baseline treatment within a feature flag. Results are displayed on the [Metrics impact tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards) of the feature flag.
 
 ### Common metrics
 
@@ -37,7 +37,7 @@ In the table below, we assume the traffic type selected for the metric is `user`
 
 ## Metric categories
 
-For more information about metric categories, see [Metric categorization](./categories/).
+For more information about metric categories, see [Metric categorization](/docs/feature-management-experimentation/experimentation/metrics/categories/).
 
 ## Configure an alert policy
 
@@ -45,7 +45,7 @@ You can set an alert policy for a metric and Harness FME will notify you if a fe
 
 ## Audit logs
 
-Audit logs are captured every time the metric's definition or alert policy is changed. For more information, review the [Audit logs](https://help.split.io/hc/en-us/articles/360020579472-Audit-logs) guide.
+Audit logs are captured every time the metric's definition or alert policy is changed. For more information, review the [Audit logs](/docs/feature-management-experimentation/management-and-administration/account-settings/audit-logs/) guide.
 
 ## Metric list
 
