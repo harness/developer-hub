@@ -700,5 +700,11 @@
     "description": "Enables support for specifying command flags at the Helm step level.",
     "gaStartDate": "2025-10-09",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_K8S_NOT_ADD_TRAFFIC_ROUTING_TO_CANARY_WORKLOAD",
+    "description": "The traffic routing resources will not be added to the canary workload.",
+    "gaStartDate": "2025-10-09",
+    "module": "Continuous Delivery"
   }
 ]
