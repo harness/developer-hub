@@ -694,5 +694,11 @@
     "description": "FF to support execution time inputs for single service propagation, without looping strategy configured at stage level",
     "gaStartDate": "2025-10-08",
     "module": "Continuous Delivery"
-  }  
+  },
+  {
+    "flagKey": "CDS_HELM_STEP_COMMAND_FLAGS",
+    "description": "Enables support for specifying command flags at the Helm step level.",
+    "gaStartDate": "2025-10-09",
+    "module": "Continuous Delivery"
+  }
 ]
