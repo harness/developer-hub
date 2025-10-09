@@ -423,7 +423,7 @@ So, when migrating from Label to Label V2 in your API calls:
 
 1. Change the `identifier` from `LABEL` to `LABEL_V2`
 2. Change the `identifierName` from `Label` to `Label V2`
-3. Remove any prefixes (like `user_` or `aws_`) from your tag keys
+3. For AWS, identify all Labels that start with `user_` or `aws_ ` prefixes and replace them with the actual tag key (without the prefix). For other cloud providers, no Label prefix changes are needed.
 
 Here's how the API request format changes:
 
@@ -437,7 +437,7 @@ Earlier every request had the Label field as:
                 {
                     field": {
                         "fieldId": "labels.value",
-                        "fieldName": " user_key1",
+                        "fieldName": "user_key1",
                         "identifier": "LABEL",
                         "identifierName": "Label"
                     },
@@ -507,7 +507,7 @@ Earlier every request had the Label field as:
                 {
                     field": {
                         "fieldId": "labels.value",
-                        "fieldName": " key",
+                        "fieldName": "key",
                         "identifier": "LABEL",
                         "identifierName": "Label"
                     },
@@ -571,8 +571,8 @@ Now:
 
 Please refer the following API docs for details:
 
-- [Create a Perspective](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/createPerspective)
-- [Update a Perspective](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/updatePerspective)
+- [Create a Perspective](https://apidocs.harness.io/cloud-cost-perspectives/createperspective)
+- [Update a Perspective](https://apidocs.harness.io/cloud-cost-perspectives/updateperspective)
 
 </TabItem>
 </Tabs>
