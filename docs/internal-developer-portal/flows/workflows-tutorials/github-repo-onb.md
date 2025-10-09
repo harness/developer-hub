@@ -2105,6 +2105,8 @@ Before creating the workflow, ensure you have:
 3. **Description**: `Self-service workflow for creating GitHub repositories with automated setup`
 4. **Owner**: Set to your username or team
 
+![](./static/workflow-2.png)
+
 #### Step 3: Configure the Workflow YAML
 
 Use the following YAML configuration for your workflow:
