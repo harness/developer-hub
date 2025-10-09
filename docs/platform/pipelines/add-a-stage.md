@@ -214,7 +214,7 @@ Upon execution, the Dynamic Stage executes the stages and steps as per the Dynam
 
 <TabItem value="Visual" label="Encoded YAML via Fixed Value">
 
-Dynamic Stage accepts the encoded value of the pipeline YAML in the source input field. This allows you to convert any Harness Pipeline YAML into base64-encoded form and pass it to the Dynamic Stage in order to execute the encoded pipeline within that stage. 
+Dynamic Stage accepts the encoded value of the pipeline YAML in the source input field. You can convert any Harness Pipeline YAML into base64-encoded form and pass it to the Dynamic Stage
 
 The example below demonstrates a pipeline consisting of a Dynamic Stage where the encoded Pipeline YAML is being provided to the source as a Fixed Value. 
 
