@@ -6,9 +6,7 @@ redirect_from:
   - /docs/chaos-engineering/use-harness-ce/license-consumption/
 ---
 
-Harness Chaos Engineering uses a licensing model based on the number of **Services** that undergo chaos experimentation within each 30-day cycle. This model is integrated into the broader Harness Developer 360 framework, where each chaos service license entitles three developers to access and use the Chaos Engineering module.
-
-This approach allows targeted experimentation across a wide range of environments, optimizing license utilization and supporting the needs of different teams, applications, and infrastructure types.
+Harness Chaos Engineering module uses 'Services' as a key construct in identifying the target resources for chaos experimentation. Harness Chaos Engineering customers license by Developers (Developer 360 model) and receive services as an included entitlement. More details on the Developer 360 model are available [here](/docs/platform/get-started/subscriptions-licenses/subscriptions/). 
 
 ## What is a service?
 
