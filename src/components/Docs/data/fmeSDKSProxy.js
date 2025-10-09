@@ -65,10 +65,10 @@ export function Section({ title, items }) {
   );
 }
 
-export default function FallbackSDKsGrid() {
+export default function ProxySDKsGrid() {
   return (
     <div className="container padding--md">
-      <Section title="Fallback Treatments SDKs" items={fallbackSDKs} />
+      <Section title="Supported FME SDKs" items={proxySDKs} />
     </div>
   );
 }
