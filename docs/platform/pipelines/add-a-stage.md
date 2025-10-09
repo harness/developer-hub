@@ -34,8 +34,10 @@ This functionality is limited to the modules and settings that you have access t
    * **Security Tests:** Scan code, artifacts, and infrastructure for security vulnerabilities.
    * **Pipeline:** Run a pipeline as a stage in another pipeline.
    * **Custom Stage:** [Custom stages](#add-a-custom-stage) are flexible stages you can configure for use cases outside the standard stage types.
+   * **Dynamic Stage:** [Dynamic Stage](#add-a-dynamic-stage) allows you to import pipeline YAMLs within a stage. These YAMLs can  either be generated and transformed at runtime or be directly passed to the source field of the dynamic stage in encoded form.
 
-   ![](./static/add-a-stage-types.png)
+
+   ![](./static/all-stages-including-dynamic-stages.png)
 
    :::tip
 
@@ -178,3 +180,47 @@ Please review these important notes about using **Environment** and **Infrastruc
 :::info note
  Delegate-based steps, such as shell scripts and command steps, can run for a maximum of 4 days. This applies to any tasks executed via the Harness Delegate. Ensure that your workflows account for this runtime, as any delegate-based step exceeding 4 days will not complete successfully.
 :::
+
+## Add a Dynamic stage
+
+Dynamic Stages is a pipeline feature in Harness that allows you to add stages which are used to import and execute YAML pipelines that are either generated and transformed at runtime or directly passed to the source input field of the dynamic stage in encoded form.Dynamic stages work with both CI and CD modules of Hanress. 
+
+:::info note
+Currently, Dynamic Stage is behind the Feature Flag `PIPE_DYNAMIC_STAGE_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this stage.
+:::
+
+
+To add a Dynamic Stage to your pipeline, [add a stage](#add-a-stage) and select **Dynamic Stage** as the stage type. 
+
+![](./static/add-a-dynamic-stage.png)
+
+### Defining Source for a Dynamic Stage 
+
+You can define the source to provide pipeline YAML to the Dynamic stage using the following two methods: 
+
+<Tabs>
+<TabItem value="YAML" label="Encoded YAML via Expressions" default>
+
+Dynamic stage accepts Expressions in the source input field which enables the execution of YAML pipelines generated at runtime. In order to achieve this you can use an expression to output the YAML pipeline in base64 encoded form e.g through a previous stage or step that outputs the pipeline YAML in base64 encoded form through an output variable. 
+
+The below example demonstrates a pipeline where a Drone pipeline that is being converted into Harness pipeline through a plugin and the encoded Harness pipeline YAML is being passed to the Dynamic Stage through an expression containing the output variable belonging to the stage prior to the Dynamic Stage. This output variable stores the encoded pipeline YAML & hence serves as the source for the Dynamic Stage.
+
+![](./static/run-drone-yaml-in-dynamic-stage.png)
+
+
+</TabItem>
+
+<TabItem value="Visual" label="Encoded YAML via Fixed Value">
+
+Dynamic stage accepts Encoded value of pipeline YAML in the source input field. This allows you to convert any Harness Pipeline YAML into base64 encoded form and pass it to the Dynamic Stage in order to execute the encoded Pipeline within that stage. 
+
+The below example demonstrates a pipeline consisting of a Dynamic Stage where the encoded Pipeline YAML is being provided to the source as a Fixed Value. 
+
+![](./static/dynamic-stage-as-fixed-value.png)
+
+
+</TabItem>
+</Tabs>
+
+
+
