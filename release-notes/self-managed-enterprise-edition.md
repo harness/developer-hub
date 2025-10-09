@@ -33,7 +33,7 @@ With MongoDB 6 reaching end-of-life (EOL), it is recommended that customers usin
 
 #### Upgrade Path
 1. Upgrade to at least SMP 0.17.0 if you are running 0.16.x or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 4.0 to Mongo 6.0
-2. Upgrade to at least SMP 0.23.0 if you are running 0.22.x or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 5.0 to Mongo 7.0
+2. Upgrade to at least SMP 0.22.0 if you are running 0.21.x or below version. This is required because Mongo doesn't allow direct upgrade from Mongo 5.0 to Mongo 7.0
 2. Upgrade to 0.33.0 or above to use mongo 7.0 server.
 
 #### Harness-Specific Details
