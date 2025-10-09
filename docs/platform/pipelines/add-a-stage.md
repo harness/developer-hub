@@ -34,7 +34,7 @@ This functionality is limited to the modules and settings that you have access t
    * **Security Tests:** Scan code, artifacts, and infrastructure for security vulnerabilities.
    * **Pipeline:** Run a pipeline as a stage in another pipeline.
    * **Custom Stage:** [Custom stages](#add-a-custom-stage) are flexible stages you can configure for use cases outside the standard stage types.
-   * **Dynamic Stage:** [Dynamic Stage](#add-a-dynamic-stage) allows you to import pipeline YAMLs within a stage. These YAMLs can  either be generated and transformed at runtime or be directly passed to the source field of the dynamic stage in encoded form.
+   * **Dynamic Stage:** [Dynamic Stage](#add-a-dynamic-stage) allows you to import pipeline YAMLs within a stage. These YAMLs can either be generated and transformed at runtime or be directly passed to the source field of the dynamic stage in encoded form.
 
 
    ![](./static/all-stages-including-dynamic-stages.png)
