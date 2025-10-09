@@ -53,6 +53,21 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## October 2025
+
+### Version 1.111.6
+
+#### New Features and Enhancements
+
+- Harness has introduced a new type of stage called Dynamic Stage. It is a pipeline feature in Harness that allows you to import and execute pipeline YAML within a stage. It is exactly like executing & running a whole pipeline within a stage. The pipeline YAML can either be generated and transformed at runtime in a previous stage, or be directly provided to the source input field of the Dynamic Stage in encoded form. Dynamic Stages work seamlessly across Harness CI and CD modules. Currently, Dynamic Stage is behind the Feature Flag `PIPE_DYNAMIC_STAGE_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this stage. (**PIPE-28400**)
+
+#### Fixed Issues
+
+- Fixed an issue where GitOps instances were not visible for services with pipeline runs having multiple environments in the GitOps deploy stage (environment groups or multiple environments). Service summary now correctly reflects instance details for GitOps services with environment groups. (**CDS-114762**)
+- Fixed an issue where the GitOps Sync step would fail with a "FailedPrecondition" error when multiple GitOps pipelines with Sync steps were triggered simultaneously. The step would wait until timeout even though the application eventually synced successfully. The GitOps Sync step now properly handles concurrent sync operations. (**CDS-113241**, **ZD-88645**)
+- Fixed an issue where Jenkins job logs and status were not displayed for specific jobs due to delegate connection timeouts when monitoring Jenkins queue items. The delegate now includes fallback logic to handle connection timeouts and properly fetch Jenkins job logs and status. This fix requires delegate version 869xx and above. (**CDS-113237**, **ZD-90611**)
+- Fixed an issue where the ECR artifact expression `<+artifact.label.[PLACEHOLDER]>` failed to evaluate for multi-architecture images stored in ECR. Harness now correctly fetches and evaluates labels for multi-architecture images in ECR. (**CDS-113117**, **ZD-90035**)
+
 ## September 2025
 
 ### Version 1.110.0
