@@ -634,6 +634,51 @@ Ruby SDK respects the `HTTP_PROXY` environment variable. To use a proxy, assign 
 http_proxy=http://username:password@hostname:port
 ```
 
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```ruby
+// Initialize SDK with global fallback treatment
+fallback_config = SplitIoClient::Engine::Models::FallbackTreatmentsConfiguration.new(SplitIoClient::Engine::Models::FallbackTreatment.new("control_fallback_ruby", '{"my_feature": "control"}'))
+
+options = {block_until_ready: 5,
+  fallback_treatments: fallback_config
+}
+split_factory = SplitIoClient::SplitFactoryBuilder.build("SDK API KEY", options)
+```
+
+### Flag-level fallback treatment
+
+You can configure fallback treatments for specific flags in the SDK options. When a flag evaluation fails, the SDK returns the corresponding fallback treatment defined for that flag.
+
+```ruby
+fallback_config = SplitIoClient::Engine::Models::FallbackTreatmentsConfiguration.new(nil, {:flag_1 => SplitIoClient::Engine::Models::FallbackTreatment.new(
+	"flag_1_FALLBACK", 
+	'{"my_feature": "collection control"}')
+})
+
+options = {block_until_ready: 5,
+  fallback_treatments: fallback_config
+}
+split_factory = SplitIoClient::SplitFactoryBuilder.build("SDK API KEY", options)
+split_client = split_factory.client
+
+treatment = split_client.get_treatment_with_config("ruby", "flag_1")
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ## Troubleshooting
 
 ### SSL Certificate Error: OpenSSL::SSL::SSLError on macOS
