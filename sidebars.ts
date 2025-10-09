@@ -3777,14 +3777,14 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'html',
-          value: 'Introduction',
+          value: 'New to Self-Managed Enterprise Edition?',
           className: 'horizontal-bar',
         },
         'self-managed-enterprise-edition/smp-overview',
         'self-managed-enterprise-edition/smp-supported-platforms',
         {
           type: 'html',
-          value: 'Installation',
+          value: 'Use Self-Managed Enterprise Edition',
           className: 'horizontal-bar',
         },
         'self-managed-enterprise-edition/smp-basic-configuration',
@@ -3825,7 +3825,7 @@ const sidebars: SidebarsConfig = {
         'self-managed-enterprise-edition/smp-fips-overview',
         {
           type: 'html',
-          value: 'Troubleshooting & Monitoring',
+          value: 'Troubleshooting & Resources',
           className: 'horizontal-bar',
         },
         'self-managed-enterprise-edition/back-up-and-restore-helm',
