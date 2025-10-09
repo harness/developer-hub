@@ -62,11 +62,18 @@ import { MODULES } from "@site/src/constants"
           link: "/docs/feature-management-experimentation/release-monitoring",
         },
         {
-          title: "Experimentation",
+          title: "Cloud Experimentation",
           module: MODULES.fme,
           description:
             "Run experiments and analyze results for data-driven development.",
           link: "/docs/feature-management-experimentation/experimentation",
+        },
+        {
+          title: "Warehouse Native Experimentation",
+          module: MODULES.fme,
+          description:
+            "Run experiments and analyze results for data-driven development in your data warehouse.",
+          link: "/docs/feature-management-experimentation/warehouse-native",
         },
         {
           title: "Release Agent",
