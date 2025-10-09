@@ -114,7 +114,7 @@ flowchart LR
 To start using Warehouse Native Experimentation:
 
 1. [Connect Harness FME](/docs/feature-management-experimentation/integrations) to your data warehouse.
-1. Prepare your [assignment](/docs/feature-management-experimentation/warehouse-native/setup/assignments) and [metric source tables](/docs/feature-management-experimentation/warehouse-native/setup/metrics) in your data warehouse.
+1. Prepare your [assignment](/docs/feature-management-experimentation/warehouse-native/setup/assignment-sources) and [metric source tables](/docs/feature-management-experimentation/warehouse-native/setup/metric-sources) in your data warehouse.
 1. Configure your [assignment and metric sources](/docs/feature-management-experimentation/warehouse-native/setup) in Harness FME.
 1. Define your [metrics](/docs/feature-management-experimentation/warehouse-native/metrics/) and [create experiments](/docs/feature-management-experimentation/warehouse-native/setup/experiments) in Harness FME.
 

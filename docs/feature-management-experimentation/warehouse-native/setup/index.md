@@ -26,8 +26,8 @@ This page explains how to prepare your assignment and metric source tables, conf
 
 ## Prepare assignment and metric source tables
 
-* For assignment sources, see [Preparing Assignment Source Tables](/docs/feature-management-experimentation/warehouse-native/setup/assignments).
-* For metric sources, see [Preparing Metric Source Tables](/docs/feature-management-experimentation/warehouse-native/setup/metrics).
+* For assignment sources, see [Preparing Assignment Source Tables](/docs/feature-management-experimentation/warehouse-native/setup/assignment-sources).
+* For metric sources, see [Preparing Metric Source Tables](/docs/feature-management-experimentation/warehouse-native/setup/metric-sources).
 
 ## Configure an assignment source
 
@@ -266,7 +266,7 @@ You can edit and delete metric sources in Harness FME.
 
 ## Create and run experiments
 
-Once you've configured assignment and metric sources in Harness FME, you can create [metrics](/docs/feature-management-experimentation/warehouse-native/metrics/) and start running [experiments](/docs/feature-management-experimentation/warehouse-native/setup/experiments) in your data warehouse. For more information, see [Create a metric](/docs/feature-management-experimentation/warehouse-native/setup/metrics/).
+Once you've configured assignment and metric sources in Harness FME, you can create [metrics](/docs/feature-management-experimentation/warehouse-native/metrics/) and start running [experiments](/docs/feature-management-experimentation/warehouse-native/setup/experiments) in your data warehouse. For more information, see [Create a metric](/docs/feature-management-experimentation/warehouse-native/setup/metric-sources/).
 
 ## Troubleshooting
 
