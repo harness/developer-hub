@@ -115,6 +115,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## October 2025
 
+### Version 25.10.86900 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Added support for fetching labels for multi-architecture images stored in ECR. [CDS-113117]
+- Enhanced error messages when a delegate's dependency binaries are missing. [CDS-112385]
+- Improved error information during Git failures by including specific error details instead of generic exceptions. [CDS-104652]
+
 ### Version 25.07.86403 <!--October 08, 2025-->
 
 #### Fixed issues
