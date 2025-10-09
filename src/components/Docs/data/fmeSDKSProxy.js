@@ -4,17 +4,17 @@ export const proxySDKs = [
   {
     name: 'Android SDK',
     img: '/provider-logos/android-logo.svg',
-    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#configure-fallback-treatments',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk',
   },
   {
     name: 'Browser SDK',
     img: '/provider-logos/browser-logo.svg',
-    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configure-fallback-treatments',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk',
   },
   {
     name: 'Java SDK',
     img: '/provider-logos/java-logo.png',
-    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#configure-fallback-treatments',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk',
   },
   {
     name: 'Node.js SDK',

@@ -96,7 +96,7 @@ Some best practices include the following:
 - TLS/mTLS certificates: Use `HP_<server_name>_SSL`, `HP_<server_name>_SSL_CERTIFICATE`, `HP_<server_name>_SSL_PRIVATE_KEY`, and `HP_<server_name>_SSL_CLIENT_CERTIFICATE` to configure secure traffic and client verification.
 - Bearer authentication: Use `HP_<server_name>_AUTH_BEARER_JWKS` for providing public keys to validate tokens.
 - Outbound restrictions: Limit which hosts and ports the proxy can forward traffic to using `HP_<server_name>_ALLOWED_TARGETS` and `HP_<server_name>_ALLOWED_TARGET_PORTS`.
-- Custom NGINX configuration: You may mount your own nginx.conf file to customize worker processes, buffers, timeouts, and other settings.
+- Custom NGINX configuration: You may mount your own `nginx.conf` file to customize worker processes, buffers, timeouts, and other settings.
 - Performance tuning: Adjust `HP_WORKER_PROCESSES`, `HP_WORKER_CONNECTIONS`, and `HP_LOG_LEVEL` to scale the proxy efficiently based on traffic and environment.
 - Multiple servers: Each server instance can have unique TLS/authentication/port configurations.
 
