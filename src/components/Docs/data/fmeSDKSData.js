@@ -158,6 +158,11 @@ export const optionalInfra = [
     img: '/provider-logos/java-logo.png',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-javascript-synchronizer-tools',
   },
+  {
+    name: 'Harness Proxy',
+    img: '/provider-logos/harness-community-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy',
+  },
 ];
 
 // Helper to chunk items into rows of 4
