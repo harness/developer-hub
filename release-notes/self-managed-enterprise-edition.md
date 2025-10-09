@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2025-09-16T16:00
+date: 2025-10-10T16:00
 sidebar_position: 16
 ---
 
@@ -323,6 +323,7 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
       helm upgrade -i harness harness/harness -f override-prod.yaml -f bitnami-migration.yaml
       ```
 :::
+## October 10, 2025, Patch Version 
 
 ## October 7, 2025, Version 0.33.x <!-- Draft : Sept 29, 2025 -->
 
