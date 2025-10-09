@@ -16,7 +16,7 @@ tags:
 
 The Compliance Report provides detailed insights into your organization's compliance status. Reports are generated for each compliance standard, including Top 10 OWASP CI/CD and CIS Benchmarks, helps you identify repository-level security gaps. The dashboard supports multiple filters to help narrow down and analyze specific subsets of data. You can download or email the report for further analysis. After applying any filter, click **Reload** icon at the top right of the dashboard for the changes to take effect.
 
-You can generate the compliance report for a [single repository](/docs/software-supply-chain-assurance/open-source-management/dependencies/compliance#compliance-report-repo), or [summary report for all repositories](/docs/software-supply-chain-assurance/open-source-management/dependencies/compliance#compliance-report-summary) within a project or organization of your choice
+You can generate the compliance report for a [single repository](/docs/software-supply-chain-assurance/dashboards-and-reports/compliance#compliance-report-repo), or [summary report for all repositories](/docs/software-supply-chain-assurance/dashboards-and-reports/compliance#compliance-report-summary) within a project or organization of your choice
 
 
 ### Compliance Report (Repo)
@@ -122,4 +122,4 @@ Provides a breakdown of all evaluated compliance rules, showing the number of re
 
 <DocImage path={require('./static/compliance-rule-summary.png')} width="80%" height="100%" title="Click to view full size image" />
 
-You can also view the [Failed Issues Trend by Severity](/docs/software-supply-chain-assurance/open-source-management/dependencies/compliance#failed-issues-trend-by-severity) and [Rules Evaluation Trend](/docs/software-supply-chain-assurance/open-source-management/dependencies/compliance#rules-evaluation-trend) graphs in the compliance Report Summary dashboard for all repositories within the organization or project.
+You can also view the [Failed Issues Trend by Severity](/docs/software-supply-chain-assurance/dashboards-and-reports/compliance#failed-issues-trend-by-severity) and [Rules Evaluation Trend](/docs/software-supply-chain-assurance/dashboards-and-reports/compliance#rules-evaluation-trend) graphs in the compliance Report Summary dashboard for all repositories within the organization or project.

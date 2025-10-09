@@ -79,8 +79,8 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 - The [SBOM tab](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-security/overview#sbom-tab) now displays component-level vulnerabilities by mapping STO Snyk scan results to SBOM components.
 - Two new dashboards are now available:
-   - [Component Violations for Artifacts and Code Repositories](/docs/software-supply-chain-assurance/open-source-management/dependencies/component-violations) to flag pipelines for SBOM violations across repositories in different projects.
-   - [Component Summary for Artifacts and Code Repositories](/docs/software-supply-chain-assurance/open-source-management/dependencies/component-summary) to display all unique components across artifacts and repositories within your account
+   - [Component Violations for Artifacts and Code Repositories](/docs/software-supply-chain-assurance/dashboards-and-reports/component-violations) to flag pipelines for SBOM violations across repositories in different projects.
+   - [Component Summary for Artifacts and Code Repositories](/docs/software-supply-chain-assurance/dashboards-and-reports/component-summary) to display all unique components across artifacts and repositories within your account
 - SBOM now uses the repository name as the default application name. To override this and use `/harness` as the application name, set the stage variable `SYFT_SBOM_NO_SOURCE_NAME=TRUE`. ([ZD-87366](https://harnesssupport.zendesk.com/agent/tickets/87366))
 
 #### Fixed Issues
@@ -158,7 +158,7 @@ JFrog: `</your-repo/test-image>:tag`
 
 #### New features and enhancements
 
-- Added [Dashboards for License and Compliance Reports](/docs/software-supply-chain-assurance/open-source-management/dependencies/view-licenses) to easily access detailed information about the licenses and compliance status associated with your software components at one place.
+- Added [Dashboards for License and Compliance Reports](/docs/software-supply-chain-assurance/dashboards-and-reports/view-licenses) to easily access detailed information about the licenses and compliance status associated with your software components at one place.
 - Added [Artifact Signing and Verification](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts) steps to sign artifacts and verify the signed artifacts before it gets deployed to ensure integrity and prevent tampering.
 - With Harness Internal Developer Portal (IDP) workflow now you can use a single GitHub connector at the account level and selectively onboard repositories to the project of your choice and automatically create scan pipelines to scan those repositories.
 - Secure attestation with Cosign using HashiCorp Vault, now supported via Vault Proxy with GCP Auth for enhanced security.
