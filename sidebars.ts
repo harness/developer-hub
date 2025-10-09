@@ -2814,6 +2814,7 @@ const sidebars: SidebarsConfig = {
         },
         'chaos-engineering/resources/hce-vs-litmus',
         'chaos-engineering/resources/troubleshooting',
+        'chaos-engineering/resources/faqs',
         {
           type: 'category',
           label: 'API Reference',

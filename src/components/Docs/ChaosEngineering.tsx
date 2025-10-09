@@ -21,11 +21,11 @@ export default function ChaosEngineering() {
             <h1>Chaos Engineering</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb/chaos-engineering">
+            <Link href="/docs/chaos-engineering/resources/faqs">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
+                FAQs
               </button>
             </Link>
             <Link href="/release-notes/chaos-engineering">
