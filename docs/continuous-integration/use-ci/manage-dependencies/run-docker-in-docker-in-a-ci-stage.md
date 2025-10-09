@@ -7,7 +7,7 @@ helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
- - /docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage
+  - /docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage
 canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
 
@@ -40,16 +40,16 @@ To demonstrate how to set up DinD in Harness CI, this topic creates a pipeline t
 2. Under **Stage Details**, disable **Clone Codebase**. The example pipeline created in this topic doesn't use a [default codebase](../codebase-configuration/create-and-configure-a-codebase.md); instead, the codebase is cloned by commands in the [Run step](#add-a-docker-run-step).
 3. Under **Shared Paths**, add the following two paths:
 
-   * `/var/run`
-   * `/var/lib/docker`
+   - `/var/run`
+   - `/var/lib/docker`
 
 4. Expand **Advanced**, and add [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) for your Docker Hub Personal Access Token (PAT) and any other values that you want to parameterize.
 
    For passwords and Personal Access Tokens, select **Secret** as the variable type. For example, to add the Docker Hub PAT variable:
 
-   * **Type:** Select **Secret**.
-   * **Name:** Enter a name, such as `Docker Hub PAT`.
-   * **Value:** Select a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your Docker Hub PAT.
+   - **Type:** Select **Secret**.
+   - **Name:** Enter a name, such as `Docker Hub PAT`.
+   - **Value:** Select a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your Docker Hub PAT.
 
 5. Select the **Infrastructure** tab.
 6. Under **Infrastructure**, select **Kubernetes**, and then configure a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
@@ -59,8 +59,8 @@ To demonstrate how to set up DinD in Harness CI, this topic creates a pipeline t
 In your **Build** stage, select the **Execution** tab, and add a [Background step](./background-step-settings.md) configured as follows:
 
 1. For **Name**, enter `dind_Service`.
-2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). 
-3. For **Image**, enter the name and tag for the image that you want to use to run DinD, such as [docker:dind](https://hub.docker.com/_/docker).  In some cases, an FQN may be necessary. More information can be found below [about setting up the registry and image](#container-registry-and-image).
+2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+3. For **Image**, enter the name and tag for the image that you want to use to run DinD, such as [docker:dind](https://hub.docker.com/_/docker). In some cases, an FQN may be necessary. More information can be found below [about setting up the registry and image](#container-registry-and-image).
 4. Under **Additional Configuration**, select **Privileged**. [Privileged mode is required](#privileged-mode-required) Docker-in-Docker to run correctly.
 5. In **Entry Point**, you can provide a list of arguments, if needed. For example, the entry point for the `docker:dind` image is `docker-entrypoint.sh`. If you want to add a `--mtu` argument, you would include both the image entry point and the additional argument in the **Entry Point** specification.
 
@@ -89,7 +89,7 @@ After the **Background** step, add a **Run** step to run your Docker commands. C
 
 1. Enter a **Name**.
 2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-3. For **Image**, enter the name and tag for the Docker image, with the Docker binary, that you want to use to execute the content of **Command**.  In some cases, an FQN may be necessary. More information can be found below [about setting up the registry and image](#container-registry-and-image).
+3. For **Image**, enter the name and tag for the Docker image, with the Docker binary, that you want to use to execute the content of **Command**. In some cases, an FQN may be necessary. More information can be found below [about setting up the registry and image](#container-registry-and-image).
 4. In **Command**, enter the shell commands you want to run in this step.
 
    For example, the following commands clone a Git repo, build an image, and push the image to a Docker registry:
@@ -142,14 +142,13 @@ The build environment must have the necessary binaries for the **DinD** step. De
 
 <FQNImage />
 
-
 ## Pipeline YAML example
 
 The following YAML example defines a pipeline that:
 
-* Uses a [Kubernetes cluster build infrastructure](#kubernetes-cluster-build-infrastructure-required).
-* Has a [Background step that runs DinD](#add-a-dind-background-step)
-* Has a [Run step that runs a series of commands on a Docker image](#add-a-docker-run-step).
+- Uses a [Kubernetes cluster build infrastructure](#kubernetes-cluster-build-infrastructure-required).
+- Has a [Background step that runs DinD](#add-a-dind-background-step)
+- Has a [Run step that runs a series of commands on a Docker image](#add-a-docker-run-step).
 
 This example doesn't use a default codebase (`cloneCodebase: false`). Instead, the codebase is cloned by commands in the `Run` step.
 
@@ -244,10 +243,10 @@ pipeline:
 
 ## Troubleshoot Docker-in-Docker in Harness CI
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to script execution, using Run steps, and Docker-in-Docker, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to script execution, using Run steps, and Docker-in-Docker, such as:
 
-* [Does CI support running Docker-in-Docker images?](/kb/continuous-integration/continuous-integration-faqs/#does-ci-support-running-docker-in-docker-images)
-* [Can't connect to Docker daemon with Docker-in-Docker Background step.](/kb/continuous-integration/continuous-integration-faqs/#cant-connect-to-docker-daemon)
-* [Can I use an image that doesn't have a shell in a Run step?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-an-image-that-doesnt-have-a-shell-in-a-run-step)
-* [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/kb/continuous-integration/continuous-integration-faqs/#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
-* [How do I start a service started in a container that would usually be started by the default entry point?](/kb/continuous-integration/continuous-integration-faqs/#since-the-default-entry-point-isnt-executed-for-the-container-image-used-in-the-run-step-how-do-i-start-a-service-started-in-a-container-that-would-usually-be-started-by-the-default-entry-point)
+- [Does CI support running Docker-in-Docker images?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-ci-support-running-docker-in-docker-images)
+- [Can't connect to Docker daemon with Docker-in-Docker Background step.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#cant-connect-to-docker-daemon)
+- [Can I use an image that doesn't have a shell in a Run step?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-use-an-image-that-doesnt-have-a-shell-in-a-run-step)
+- [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
+- [How do I start a service started in a container that would usually be started by the default entry point?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#since-the-default-entry-point-isnt-executed-for-the-container-image-used-in-the-run-step-how-do-i-start-a-service-started-in-a-container-that-would-usually-be-started-by-the-default-entry-point)

@@ -29,19 +29,19 @@ cat > settings.xml <<- EOM
 EOM
 ```
 
-If you need to share `settings.xml` with multiple steps in the same stage, declare it in **Shared Paths**. For more information, go to [Share data between steps in a stage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/).
+If you need to share `settings.xml` with multiple steps in the same stage, declare it in **Shared Paths**. For more information, go to [Share data between steps in a stage](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/).
 
 ## Override secrets in settings.xml at runtime
 
-Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) by modifying the [Build stage settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) when the pipeline runs.
+Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) by modifying the [Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) when the pipeline runs.
 
-These steps assume you have an understanding of the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager). You should also be familiar with [adding text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets), [adding file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets), and [adding SSH secrets](https://developer.harness.io/docs/platform/secrets/add-use-ssh-secrets).
+These steps assume you have an understanding of the [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](/docs/platform/get-started/tutorials/add-secrets-manager). You should also be familiar with [adding text secrets](/docs/platform/secrets/add-use-text-secrets), [adding file secrets](/docs/platform/secrets/add-file-secrets), and [adding SSH secrets](/docs/platform/secrets/add-use-ssh-secrets).
 
 ### Create a secret at the account scope
 
-Create a [text secret](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets) at the [account scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) that contains the content of your `settings.xml` file.
+Create a [text secret](/docs/platform/secrets/add-use-text-secrets) at the [account scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) that contains the content of your `settings.xml` file.
 
-You need permissions to create, edit, and view secrets at the account scope to be able to do this. For more information, go to the [Permission Reference](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference).
+You need permissions to create, edit, and view secrets at the account scope to be able to do this. For more information, go to the [Permission Reference](/docs/platform/role-based-access-control/permissions-reference).
 
 1. Go to **Account Settings**, select **Account Resources**, and then select **Secrets**.
 2. Select **New Secret**, and then select **Text**.
@@ -52,7 +52,7 @@ You need permissions to create, edit, and view secrets at the account scope to b
 
 ## Transcribe the text secret into settings.xml
 
-Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) or [Test step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2) where your Maven tests run.
+Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](/docs/continuous-integration/use-ci/run-step-settings) or [Test step](/docs/continuous-integration/use-ci/run-tests/tests-v2) where your Maven tests run.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

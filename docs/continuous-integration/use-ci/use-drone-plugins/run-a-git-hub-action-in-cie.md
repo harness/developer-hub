@@ -284,8 +284,8 @@ When you run the pipeline, you can observe the GitHub Action plugin logs in the 
 
 ## Troubleshooting GitHub Actions in Harness CI
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Actions. For example:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Actions. For example:
 
-- [Can't connect to Docker daemon](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-cant-connect-to-docker-daemon)
-- [Not a git repository (or any of the parent directories)](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
-- [PATH variable overwritten in parallel GitHub Action steps](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)
+- [Can't connect to Docker daemon](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#github-action-step-cant-connect-to-docker-daemon)
+- [Not a git repository (or any of the parent directories)](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
+- [PATH variable overwritten in parallel GitHub Action steps](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)

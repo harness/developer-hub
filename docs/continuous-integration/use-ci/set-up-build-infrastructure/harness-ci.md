@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
 
-When a Harness CI pipeline runs, an *initialize* step runs automatically before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required Harness images from Docker Hub (the default), the [Harness project on GAR](http://us-docker.pkg.dev/gar-prod-setup/harness-public), or the [Harness ECR public gallery](https://gallery.ecr.aws/harness), depending on how you configure your accounts and pipelines to [connect to the Harness container registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
+When a Harness CI pipeline runs, an _initialize_ step runs automatically before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required Harness images from Docker Hub (the default), the [Harness project on GAR](http://us-docker.pkg.dev/gar-prod-setup/harness-public), or the [Harness ECR public gallery](https://gallery.ecr.aws/harness), depending on how you configure your accounts and pipelines to [connect to the Harness container registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
 
 ## Harness CI images list
 
@@ -18,18 +18,18 @@ You can find Harness CI images on Docker Hub, the [Harness project on GAR](http:
 
 Here are some examples of Harness CI images and the purpose of each image. Build image tags change often.
 
-* `harness/ci-addon`: Used to execute steps on containers in Kubernetes pods.
-* `harness/ci-lite-engine`: Used to orchestrate execution of steps on Kubernetes pods.
-* `harness/drone-git`: Used to clone git repos.
+- `harness/ci-addon`: Used to execute steps on containers in Kubernetes pods.
+- `harness/ci-lite-engine`: Used to orchestrate execution of steps on Kubernetes pods.
+- `harness/drone-git`: Used to clone git repos.
 
 Drone is part of Harness CI, and Harness CI uses [Drone plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) to run some operations. Some examples include:
 
-* `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds.
-* `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box for Kubernetes cluster build infrastructures.
-* `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box for Kubernetes cluster build infrastructures.
-* `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box for Kubernetes cluster build infrastructures.
-* `plugins/s3`: Used to upload files to AWS S3 buckets out of the box.
-* `plugins/gcs`: Used to upload files to GCP GCS service out of the box.
+- `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds.
+- `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box for Kubernetes cluster build infrastructures.
+- `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box for Kubernetes cluster build infrastructures.
+- `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box for Kubernetes cluster build infrastructures.
+- `plugins/s3`: Used to upload files to AWS S3 buckets out of the box.
+- `plugins/gcs`: Used to upload files to GCP GCS service out of the box.
 
 ## Harness CI image pulls
 
@@ -77,7 +77,7 @@ API key authentication is required. For more information about API keys, go to [
 
    ```json
    {
-    "status": "SUCCESS",
+     "status": "SUCCESS",
      "data": {
        "addonTag": "harness/ci-addon:1.16.92",
        "liteEngineTag": "harness/ci-lite-engine:1.16.92",
@@ -144,10 +144,10 @@ API key authentication is required. For more information about API keys, go to [
 
    ```json
    {
-       "status": "SUCCESS",
-       "data": {},
-       "metaData": null,
-       "correlationId": "11ce1bc8-b337-4687-9ab9-e13d553ae82f"
+     "status": "SUCCESS",
+     "data": {},
+     "metaData": null,
+     "correlationId": "11ce1bc8-b337-4687-9ab9-e13d553ae82f"
    }
    ```
 
@@ -160,7 +160,7 @@ API key authentication is required. For more information about API keys, go to [
    --data-raw '[
        {
            "field": "gitCloneTag",
-           "value": "harness/drone-git:1.6.9-rootless" 
+           "value": "harness/drone-git:1.6.9-rootless"
        },
        {
            "field": "gcsUploadTag",
@@ -190,22 +190,24 @@ API key authentication is required. For more information about API keys, go to [
 Harness images are available on Docker Hub, the [Harness project on GAR](http://us-docker.pkg.dev/gar-prod-setup/harness-public), and the [Harness ECR public gallery](https://gallery.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 February 2024. For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md#deprecation-notice-appharness-docker-registry).
 
 ## Windows Rootless
+
 :::info
 Currently, the feature to download rootless **lite-engine**, **ci-addon**, and **drone-git** images for Windows by default is behind the feature flag, `CI_ADDON_LE_WINDOWS_ROOTLESS`. [Contact Harness Support](https://support.harness.io/) to enable this feature.
 
 :::
 
-Customers who are trying to utilize Windows Images with a rootless operation can do so by downloading the appropriate images.  The rootless Windows version is available as of the following version, or higher:
-* `harness/ci-addon:rootless-1.16.92`
-* `harness/ci-lite-engine:rootless-1.16.92`
-* `harness/drone-git:1.6.9-rootless`
+Customers who are trying to utilize Windows Images with a rootless operation can do so by downloading the appropriate images. The rootless Windows version is available as of the following version, or higher:
+
+- `harness/ci-addon:rootless-1.16.92`
+- `harness/ci-lite-engine:rootless-1.16.92`
+- `harness/drone-git:1.6.9-rootless`
 
 ## Troubleshoot Harness images
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Harness-required images and pipeline initialization, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Harness-required images and pipeline initialization, such as:
 
-* [How do I get a list of tags available for an image in the Harness image registry?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-get-a-list-of-tags-available-for-an-image-in-the-harness-image-registry)
-* [Build failed with "failed to pull image" or "ErrImagePull"](/kb/continuous-integration/continuous-integration-faqs/#build-failed-with-failed-to-pull-image-or-errimagepull)
-* [What access does Harness use to pull the Harness internal images from the public image repo?](/kb/continuous-integration/continuous-integration-faqs/#what-access-does-harness-use-to-pull-the-harness-internal-images-from-the-public-image-repo)
-* [Can I use my own private registry to store Harness CI images?](#i-dont-want-to-pull-images-from-a-public-registry)
-* [Docker Hub rate limiting](#docker-hub-rate-limiting)
+- [How do I get a list of tags available for an image in the Harness image registry?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-get-a-list-of-tags-available-for-an-image-in-the-harness-image-registry)
+- [Build failed with "failed to pull image" or "ErrImagePull"](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#build-failed-with-failed-to-pull-image-or-errimagepull)
+- [What access does Harness use to pull the Harness internal images from the public image repo?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-access-does-harness-use-to-pull-the-harness-internal-images-from-the-public-image-repo)
+- [Can I use my own private registry to store Harness CI images?](#i-dont-want-to-pull-images-from-a-public-registry)
+- [Docker Hub rate limiting](#docker-hub-rate-limiting)

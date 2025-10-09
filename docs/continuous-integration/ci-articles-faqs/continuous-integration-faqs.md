@@ -541,7 +541,7 @@ Use the [Node Selector](https://developer.harness.io/docs/continuous-integration
 
 You need to set the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#service-account-name) in the Kubernetes cluster build infrastructure settings.
 
-If you get `error checking push permissions` or similar, go to the [Build and Push to ECR error article](./articles/delegate_eks_cluster).
+If you get `error checking push permissions` or similar, go to the [Build and Push to ECR error article](/docs/continuous-integration/ci-articles-faqs/articles/delegate-eks-cluster).
 
 ### Why are build pods being evicted?
 
@@ -1142,7 +1142,7 @@ No, you can't configure a [failure strategy](https://developer.harness.io/docs/p
 
 ### Can I recursively clone a repo?
 
-Yes. You can use **Include Submodules** option under [Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to clone submodules recursively.
+Yes. You can use **Include Submodules** option under [Configure Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../use-ci/codebase-configuration/git-clone-step) to clone submodules recursively.
 
 ### Can I clone a specific subdirectory rather than an entire repo?
 
@@ -1150,16 +1150,16 @@ Yes. For instructions, go to [Clone a subdirectory](https://developer.harness.io
 
 ### Does the built-in clone codebase step fetch all branches? How can I fetch all branches?
 
-You can use **Fetch Tags** option under [Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to fetch all the new commits, branches, and tags from the remote repository. Setting this to `true` by checking the box is equivalent to adding the `--tags` flag.
+You can use **Fetch Tags** option under [Configure Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../use-ci/codebase-configuration/git-clone-step) to fetch all the new commits, branches, and tags from the remote repository. Setting this to `true` by checking the box is equivalent to adding the `--tags` flag.
 
 ### Can I clone a different branch in different Build stages throughout the pipeline?
 
-Yes. Refer to the [Build Type, Branch Name, and Tag Name](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step#build-type-branch-name-and-tag-name) configuration options for the [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to specify a **Branch Name** or **Tag Name** in the stage's settings.
+Yes. Refer to the [Build Type, Branch Name, and Tag Name](../use-ci/codebase-configuration/git-clone-step#build-type-branch-name-and-tag-name) configuration options for the [Git Clone step](../use-ci/codebase-configuration/git-clone-step) to specify a **Branch Name** or **Tag Name** in the stage's settings.
 
 ### Can I clone the default codebase to a different folder than the root?
 
 Yes. Refer to the **Clone Directory options** under the
-[Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) documentation to enter an optional target path in the stage workspace where you want to clone the repo.
+[Configure Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../use-ci/codebase-configuration/git-clone-step) documentation to enter an optional target path in the stage workspace where you want to clone the repo.
 
 ### What is the default clone depth setting for CI builds?
 
@@ -1266,7 +1266,7 @@ Yes. You can run any commands in a Run step. With respect to Git, for example, y
 
 You can store authentication credentials as [secrets](https://developer.harness.io/docs/category/secrets/) and use [expressions](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs#expressions), such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call them in your git commands.
 
-You could also [pull credentials from a git connector used elsewhere in the pipeline](/kb/continuous-integration/articles/use-git-credentials-from-codebase-connector-in-ci-pipelines-run-step).
+You could also [pull credentials from a git connector used elsewhere in the pipeline](/docs/continuous-integration/ci-articles-faqs/articles/use-git-credentials-from-codebase-connector-in-ci-pipelines-run-step).
 
 ### Can I use codebase variables when cloning a codebase in a Run step?
 
@@ -1301,7 +1301,7 @@ For manual tag builds, you need to enter the tag manually at runtime.
 ### How can we set ENV variable for the git clone step as there is no option available in the UI to set the ENV variable for this step?
 
 Yes. Refer to the **Pre Fetch Command** under the
-[Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pre-fetch-command) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step#pre-fetch-command) documentation to specify any additional Git commands to run before fetching the code.
+[Configure Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase#pre-fetch-command) or [Git Clone step](../use-ci/codebase-configuration/git-clone-step#pre-fetch-command) documentation to specify any additional Git commands to run before fetching the code.
 
 ## SCM status updates and PR checks
 
@@ -1583,9 +1583,9 @@ If your build infrastructure is configured to run as a non-root user (meaning yo
 
 ### What if my security policy doesn't allow running as root?
 
-If your security policy strictly forbids running any step as root, you can use the buildah plugin to [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
+If your security policy strictly forbids running any step as root, you can use the buildah plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
-The buildah plugin requires that you use a Kubernetes cluster build infrastructure that is configured to run as non-root with `anyuid SCC` (Security Context Constraints) enabled. For information about the buildah plugin, go to [Build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
+The buildah plugin requires that you use a Kubernetes cluster build infrastructure that is configured to run as non-root with `anyuid SCC` (Security Context Constraints) enabled. For information about the buildah plugin, go to [Build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
 ### Can I enable BuildKit support with Build and Push steps? How do I run Docker build commands with buildkit enabled?
 
@@ -1615,11 +1615,11 @@ Make sure your Docker file is configured in least- to most-often changed. Make s
 
 ### Where does the Build and Push to ECR step pull the base images specified in the Dockerfile?
 
-By default, the [Build and Push to ECR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings) downloads base images from the public container registry. You can use the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#base-image-connector) setting to specify an authenticated connector to use. This can prevent rate limiting issues.
+By default, the [Build and Push to ECR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings) downloads base images from the public container registry. You can use the [Base Image Connector](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#base-image-connector) setting to specify an authenticated connector to use. This can prevent rate limiting issues.
 
 ### How can I configure the Build and Push to ECR step to pull base images from a different container registry or my internal container registry?
 
-Create a Docker connector for your desired container registry and use it in the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#base-image-connector) setting.
+Create a Docker connector for your desired container registry and use it in the [Base Image Connector](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#base-image-connector) setting.
 
 ### Build and Push to ECR step fails with error building image, failed to execute command, exec format error
 
@@ -1629,7 +1629,7 @@ Create a Docker connector for your desired container registry and use it in the 
 
 ### Build and Push to ECR step fails with error checking push permissions
 
-Go to the [Build and Push to ECR error article](./articles/delegate_eks_cluster).
+Go to the [Build and Push to ECR error article](/docs/continuous-integration/ci-articles-faqs/articles/delegate-eks-cluster).
 
 ### Where does the Build and Push step expect the Dockerfile to be?
 
@@ -1643,7 +1643,7 @@ No. [Harness expressions](https://developer.harness.io/docs/platform/variables-a
 
 In a Kubernetes cluster build infrastructure, Build and Push steps use kaniko, which doesn't support `# syntax` in the Dockerfile.
 
-If you need to parse `syntax` in your builds, you can't use the Build and Push steps. Instead, you can [use the buildah plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin) or [run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/) with buildkit enabled.
+If you need to parse `syntax` in your builds, you can't use the Build and Push steps. Instead, you can [use the buildah plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin) or [run Docker-in-Docker in a Background step](/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/) with buildkit enabled.
 
 ### Why doesn't the Build and Push step include the content of VOLUMES from my Dockerfile in the final image?
 
@@ -1653,7 +1653,7 @@ If you want to include the volume content in the image layers, consider using `C
 
 ### Can I use images from multiple Azure Container Registries (ACRs)?
 
-Yes. Go to [Use images from multiple ACRs](/kb/continuous-integration/articles/using-images-from-multiple-ACRs).
+Yes. Go to [Use images from multiple ACRs](/docs/continuous-integration/ci-articles-faqs/articles/using-images-from-multiple-acr).
 
 ### Is remote caching supported in Build and Push steps?
 
@@ -1661,7 +1661,7 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 ### Build and Push to Docker fails with kaniko container runtime error
 
-Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
+Go to the [Kaniko container runtime error article](/docs/continuous-integration/ci-articles-faqs/articles/kaniko-container-runtime-error).
 
 ### When using 'Build ans Push' steps with Base Image connector, can I pull and push from two different docker registries that have same prefix for registry URL ?
 
@@ -1689,9 +1689,9 @@ The Build and Push to Docker step can return out of memory errors, such as:
 exit status 255 Found possible error on line 70. Log: signal: killed . Possible error: Out of memory. Possible resolution: Increase memory resources for the step
 ```
 
-To address this error, enable the [Optimize setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#optimize) in the Build and Push step.
+To address this error, enable the [Optimize setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#optimize) in the Build and Push step.
 
-You can also try [adjusting container resources](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#set-container-resources), if these settings are applicable to your build infrastructure.
+You can also try [adjusting container resources](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#set-container-resources), if these settings are applicable to your build infrastructure.
 
 ### Can I configure build secrets on Build and Push steps?
 
@@ -1699,7 +1699,7 @@ No. Currently, **Build and Push** steps don't support build secrets.
 
 ### Which step can I use to build and push to a JFrog Docker registry?
 
-[You can use the Build and Push to Docker step to build and push to JFrog Docker registries.](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-jfrog)
+[You can use the Build and Push to Docker step to build and push to JFrog Docker registries.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-jfrog)
 
 ### Why build and push to ECR step is failing with the error `failed to create docker config: Username must be specified for registry`?
 
@@ -1711,7 +1711,7 @@ The build and push step doesn’t use kaniko while running the build on Harness 
 
 ### Does Harness have an artifact repository where the artifacts generated in the CI stage can be pushed and then use them in the subsequent CD stages?
 
-Harness currently doesn't provide a hosted artifact repository however you can push the artifact to the other popular artifact repos. More details about the same can be referred in the [doc](https://developer.harness.io/docs/category/uploaddownload-artifacts)
+Harness currently doesn't provide a hosted artifact repository however you can push the artifact to the other popular artifact repos. More details about the same can be referred in the [doc](/docs/category/uploaddownload-artifacts)
 
 ### Why Build and Push Steps Don't Support V2 API URLs?
 
@@ -1972,7 +1972,7 @@ Currently, you can't upload files to the root of an S3 bucket due to the glob pa
 If there are too many nested directories in your uploaded files, you can use a **Run** step to [flatten nested directories](https://www.baeldung.com/linux/flattening-nested-directory) to cache before running the Save Cache or Upload Artifact step. users can have a run step to flatten the directory before uploading.
 
 ### How can user resolve S3 bucket permission issue in save cache in S3 step?
-If the AWS connector is configured with the cross-account role ARN, the user needs to configure the `PLUGIN_USER_ROLE_ARN` stage variable as suggested in [this doc](../../docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings/#aws-connector)
+If the AWS connector is configured with the cross-account role ARN, the user needs to configure the `PLUGIN_USER_ROLE_ARN` stage variable as suggested in [this doc](../use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#aws-connector)
 
 ## Test reports
 
@@ -2154,7 +2154,7 @@ Customers are recommended to either change their Build Type to a **Git Pull Requ
 This could happen if you have a custom path added in the cache intelligence config. If you want the YARN cache to be picked from the default location, make sure you don’t configure cache intelligence with a custom path
 
 ### Can user import test results from a generic 'mvn clean deploy' Run step into the test Dashboard? Or must use the Unit Test step to display them on that tab?
-Yes, you can use the Run step to run your maven command and upload the test results. There is a field for this in the run step (like in the run tests step). Please check [the documentation](../../docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#report-paths) for more information.
+Yes, you can use the Run step to run your maven command and upload the test results. There is a field for this in the run step (like in the run tests step). Please check [the documentation](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step#report-paths) for more information.
 
 The RunTests allow you to not only run your tests, but also to use Test Intelligence to run only unit tests that are relevant to the code changes made, thus cutting down the test cycle time.
 
@@ -2769,7 +2769,7 @@ For more information about configuring connectivity, go to:
 
 ### Step logs don't load in real time
 
-Go to [CI step logs don't load in real time](./articles/CI-step-logs-dont-load-in-real-time).
+Go to [CI step logs don't load in real time](/docs/continuous-integration/ci-articles-faqs/articles/ci-step-logs-real-time-load).
 
 ### Step succeeds even when explicitly executing exit 1 in a Bash script that runs in script's background
 
@@ -2795,7 +2795,7 @@ If your builds time out with this error during stage initialization, and you're 
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
-Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](/kb/continuous-integration/articles/parallel-step-for-logging).
+Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](/docs/continuous-integration/ci-articles-faqs/articles/parallel-step-for-logging).
 
 ### How to get the build ID of a pipeline execution?
 

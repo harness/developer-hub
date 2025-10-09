@@ -1,5 +1,7 @@
 ---
 title: CI step logs don't load in real time
+redirect_from:
+    - /docs/continuous-integration/ci-articles-faqs/articles/ci-step-logs-dont-load-in-real-time
 ---
 
 ## Problem

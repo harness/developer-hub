@@ -1,5 +1,7 @@
 ---
 title: Build and Push to ECR error
+redirect_from:
+  - /docs/continuous-integration/ci-articles-faqs/articles/delegate_eks_cluster
 ---
 
 # Harness CI pipeline execution errors with the delegate in an EKS cluster and the AWS connector using IRSA

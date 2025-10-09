@@ -1,6 +1,8 @@
 ---
 description: You can use image from multiple ACRs.
 title: Use images from multiple ACRs
+redirect_from:
+  - /docs/continuous-integration/ci-articles-faqs/articles/using-images-from-multiple-acrs
 ---
 
 The harness does not have its own built-in container image registry to store and host container images. Instead, Harness relies on external container image registries, such as Docker Hub, Amazon Elastic Container Registry (ECR), Google Container Registry (GCR), or Azure Container Registry (ACR), to pull images during the deployment process.
