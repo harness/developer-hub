@@ -6,6 +6,12 @@ sidebar_position: 90
 
 This topic describes container resource allocation logic, how you can configure resource limits (if possible for your build infrastructure), and troubleshooting issues related to resource allocation.
 
+:::info
+The ability to set resource requests is behind the feature flag `CI_SUPPORT_RESOURCE_REQUESTS`. To enable it, contact [Harness Support](mailto:support@harness.io).
+
+Enabling this flag lets you define Kubernetes *resource requests* (not just limits) for individual build steps. This helps Kubernetes schedule pods more efficiently and can improve stability for resource-intensive steps (for example, large Build & Push steps) by reducing the risk of pod evictions or out-of-memory (OOM) kills.
+:::
+
 ## Build pod resource allocation
 
 Build pod resources are defined in terms of _requests_ and _limits_.
