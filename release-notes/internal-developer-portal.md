@@ -24,7 +24,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.10.v1](/release-notes/internal-developer-portal#october---202510v1) | ✅        | ✅         | ✅           |     ⏳     |     ⏳     |     ⏳     |
+| [2025.10.v1](/release-notes/internal-developer-portal#october---202510v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
 | [2025.09.v1](/release-notes/internal-developer-portal#september---202509v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
 | [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         | ✅         | ✅          | ✅            |
 
