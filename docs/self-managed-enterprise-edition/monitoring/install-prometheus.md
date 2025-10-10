@@ -22,7 +22,12 @@ Create an override file `override-prometheus.yaml` to customize resources and en
 
 ```yaml
 prometheus:
-  resourcesPreset: "medium"
+  resourcesPreset: "large"
+  image:
+    repository: bitnamilegacy/prometheus
+  thanos:
+    image:
+      repository: bitnamilegacy/thanos
   additionalScrapeConfigs:
     enabled: true
     type: internal
@@ -53,6 +58,24 @@ prometheus:
         - source_labels: [__meta_kubernetes_pod_name]
           action: replace
           target_label: kubernetes_pod_name
+kube-state-metrics:
+  image:
+    repository: bitnamilegacy/kube-state-metrics
+node-exporter:
+  image:
+    repository: bitnamilegacy/node-exporter
+operator:
+  image:
+    repository: bitnamilegacy/prometheus-operator
+alertmanager:
+  image:
+    repository: bitnamilegacy/alertmanager
+blackboxExporter:
+  image:
+    repository: bitnamilegacy/blackbox-exporter
+thanosRuler:
+  image:
+    repository: bitnamilegacy/thanos
 ```
 
 > This chart automatically installs the necessary CRDs. Use the `--skip-crds` flag in the Helm install command if you want to avoid CRD installation.
