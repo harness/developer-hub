@@ -67,7 +67,7 @@ These variables allow the proxy to scale efficiently based on deployment environ
 | `HP_PROXIES`            | Global  | Comma-separated list of server identifiers.                    | none / required | `server_mtls,server_basic_auth` |
 | `HP_WORKER_PROCESSES`   | Global  | Number of NGINX worker processes. Ideally matches CPU threads. | 4               | 8                               |
 | `HP_WORKER_CONNECTIONS` | Global  | Max connections per worker.                                    | 1024            | 2048                            |
-| `HP_LOG_LEVEL`          | Global  | Maximum level of unfiltered logs.                              | info            | debug                           |
+| `HP_LOG_LEVEL`          | Global  | Maximum level of unfiltered logs.                              | info            | `debug`                           |
 
 ### Server-Specific Configuration
 
@@ -75,8 +75,8 @@ These variables allow you to tailor each proxy instance’s ports, TLS, authenti
 
 | Variable | Context | Description | Default | Example |
 |---|---|---|---|---|
-| `HP__PORT` | Server | Port on which the server listens. | none / required | 443 |
-| `HP__SSL` | Server | Enable TLS/mTLS for the server. | false | true |
+| `HP__PORT` | Server | Port on which the server listens. | none / required | `443` |
+| `HP__SSL` | Server | Enable TLS/mTLS for the server. | false | `true` |
 | `HP__SSL_CERTIFICATE` | Server | Server certificate for TLS. | none / required if SSL enabled | `/my_volume/pki/server.crt` |
 | `HP__SSL_PRIVATE_KEY` | Server | Private key for the server certificate. | none / required if SSL enabled | `/my_volume/pki/server.key` |
 | `HP__SSL_CLIENT_CERTIFICATE` | Server | CA certificate for client verification (mTLS). | none | `/my_volume/pki/client_ca.crt` |
@@ -87,9 +87,9 @@ These variables allow you to tailor each proxy instance’s ports, TLS, authenti
 | `HP__PROXY_CHAIN` | Server | Upstream proxy to forward traffic. | none | `my-upstream-proxy:3128` |
 | `HP__PROXY_CHAIN_SSL` | Server | Use TLS when connecting to upstream proxy. | disabled | true |
 | `HP__PROXY_CHAIN_CA_CERT` | Server | CA cert to verify upstream TLS connection. | none / required if `PROXY_CHAIN_SSL` enabled | `/my_volume/pki/ca.crt` |
-| `HP__RESOLVER` | Server | DNS server to resolve upstream hosts. | 8.8.8.8 | 127.0.0.53 |
-| `HP__ALLOWED_TARGETS` | Server | Comma-separated list of host:port pairs allowed for tunnels. | `sdk.split.io:443,auth.split.io:443,streaming.split.io:443,events.split.io:443,telemetry.split.io:443` | `api.mycompany.com:443` |
-| `HP__ALLOWED_TARGET_PORTS` | Server | Comma-separated list of ports allowed for tunnels. | 443 | 443,8443 |
+| `HP__RESOLVER` | Server | DNS server to resolve upstream hosts. | `8.8.8.8` | `127.0.0.53` |
+| `HP__ALLOWED_TARGETS` | Server | Comma-separated list of `host:port` pairs allowed for tunnels. | `sdk.split.io:443,auth.split.io:443,streaming.split.io:443,events.split.io:443,telemetry.split.io:443` | `api.mycompany.com:443` |
+| `HP__ALLOWED_TARGET_PORTS` | Server | Comma-separated list of ports allowed for tunnels. | `443` | `443,8443` |
 
 Some best practices include the following:
 
