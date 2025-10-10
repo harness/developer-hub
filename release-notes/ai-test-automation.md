@@ -30,6 +30,8 @@ This powerful new assertion command lets users pause test execution until a spec
 
 <DocImage path={require('./static/ait/assert-wait-for-ques.png')} alt="Assert Wait for Question" title="Assert Wait for Question" width="600" height="500" />
 
+To know more about Assert Wait for Question, refer to [Assert Wait for Question](/docs/ai-test-automation/test-authoring/creating-tests/assertions#wait-for-question).
+
 
 ##### Completely Overhauled Test Step Design  
 The look and functionality of test steps have been fully transformed to enhance clarity and usability. Highlights include:  
