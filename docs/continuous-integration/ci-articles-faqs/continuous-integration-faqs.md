@@ -1933,7 +1933,7 @@ No. If you want to upload a compressed file, you must use a [Run step](https://d
 
 ### Can I trim the parent folder name before uploading to S3?
 
-Yes. Go to [Trim parent folder name when uploading to S3](./articles/Trimming-parent-folder-name-while-uploading-files-to-S3).
+Yes. Go to [Trim parent folder name when uploading to S3](./articles/trimming-parent-folder-name-while-uploading-files-to-s3).
 
 ### Connector errors with Upload Artifacts to S3 step.
 
