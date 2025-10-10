@@ -26,7 +26,7 @@ Harness recommends:
 1. Learn about the full potential of RBAC on the Harness platform, starting with [Platform access control](/docs/category/platform-access-control/) in the Harness documentation.
 
 :::tip Read about Environment Scope (Admin API keys)
-Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to the [Environment Scope](#environment-scope) section.
+Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to [Admin API key scoped to specific environments](?create-apikey-new-sa=environment-scope#using-a-new-service-account) in this document.
 :::
 
 The following terminology is referenced in this guide:
@@ -242,7 +242,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
             </td>
             <td>
               <p>
-                FME Administrator Role
+                Project Admin
               </p>
               <p>
                 Project Viewer
@@ -481,15 +481,9 @@ To view service accounts in your Harness project settings, click **Project Setti
 
 ### Create an Admin API key
 
-You can use a service account to create a new Harness FME Admin API key. The steps below guide you to create an access token with privileges equivalent to a legacy Split Admin API key (except that service accounts with environment-scoped Admin API keys will not be available until the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered).
+#### Using an existing service account
 
-:::info[How to use the Harness access token:]
-After your migration, use the Harness access token:
-* As the bearer token or x-api-key for legacy Split Admin API endpoints that are not deprecated. (The deprecated endpoints are replaced by Harness API endpoints for a migrated account.)
-* As the x-api-key for Harness API endpoints.
-
-For more information, go to [Authorization moves from Bearer Token to x-api-key](https://developer.harness.io/docs/feature-management-experimentation/split-to-harness/api-for-split-admins/#authorization-moves-from-bearer-token-to-x-api-key) in the FME documentation.
-:::
+You can use a service account linked with a legacy Split Admin API key to create a new Harness FME Admin API key. The new Harness FME API key will have privileges equivalent to the legacy Split Admin API key (except that service accounts with environment-scoped Admin API keys will not be available until the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered).
 
 <Tabs>
 <TabItem value="interactive" label="Interactive Guide">
@@ -516,13 +510,78 @@ To create an Admin API key with the same permissions as your legacy Split Admin 
 </TabItem>
 </Tabs>
 
-:::tip[To create an Admin API key when you don't have a service account:]
-If you don’t have a service account with role bindings set up, you can create a service account and role binding for Admin API keys scoped to all projects [(account or organization scope)](#account-or-organization-scope) or scoped to a specific project [(project scope)](#project-scope).
-:::
+#### Using a new service account
 
-#### Account or organization scope
+If you don’t have a service account with role bindings set up, you can create a service account and role binding for Admin API keys **scoped to all projects** or **scoped to a specific project**.
 
-This section provides steps to create a service account and role bindings for an Admin API key scoped to all existing projects in your Harness account or organization. You can follow these steps if you don’t have a service account created during migration or if you prefer not to use it.
+<Tabs queryString="create-apikey-new-sa">
+<TabItem value="account-org-scope" label="Admin API key scoped to all projects">
+
+This section provides steps to create a service account and role bindings for an Admin API key scoped to all existing projects in your Harness account or organization.
+
+  <Tabs>
+  <TabItem value="interactive" label="Interactive Guide">
+
+To create an Admin API key scoped to all projects in your Harness account, view the steps in the interactive guide:
+
+  <DocVideo src="https://app.tango.us/app/embed/8acfbc77-8fe7-4474-8169-a63b28d5bce2?hideAuthorAndDetails=true" title="Create a new Service Account for all projects and generate an API Key and Token" />
+
+  </TabItem>
+  <TabItem value="step" label="Step-by-step">
+
+  To create an Admin API key scoped to all projects in your Harness account:
+
+1. At the account level, create the service account and assign roles:
+    1. In the left navigation panel, click **Account Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click the **+ New Service Account** button.
+    1. Enter a **Name** for the new service account. The **Email** field will be automatically populated to match the service account name. (The email is used as an ID. It will allow the service account API key token to work with identity access management systems that require email identifiers.)
+    1. Click **Save**. The service account is listed.
+    1. Click **Manage Role Bindings** to manage role bindings for the service account.
+    1. Click **+ Add**.
+    1. Select the **Account Admin** role and the **All Account Level Resources** resource group.
+    1. Click **Apply**. The role binding is added to the service account.
+
+1. At the organization level, inherit the service account and assign roles:
+    1. In the left navigation panel, select the organization [where your Split legacy projects were migrated](#projects) (or where your FME objects are defined or will be defined).
+    1. Click **Organization Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
+    1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
+    1. Click **Apply Selected**.
+    1. Select the **Organization Admin** role.
+    1. Leave the **All Organization Level Resources** resource group selected.
+    1. Click **Save** or **Apply**. The service account and role binding are listed.
+
+1. For each project: At the project level, inherit the service account and assign roles:
+    1. In the left navigation panel, select the project.
+    1. Click **Project Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
+    1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
+    1. Click **Apply Selected**.
+    1. Select the **Project Admin** role.
+    1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
+    1. Click **Save** or **Apply**. The service account and role binding are listed.
+  
+1. Create the API key and token at the account level:
+    1. In the left navigation panel, click **Account Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click on the service account created in Step 1.
+    1. Click **+ API Key**.
+    1. Enter a name for the new API key and click **Save**.
+    1. Click **+ Token**.
+    1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
+    1. Copy the token value somewhere safe.
+
+  <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if the project was migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
+
+  </TabItem>
+  </Tabs>
 
 :::warning All Resources Including Child Scopes (resource group) is not recommended
 The steps in this section guide you to add an **Account Admin** role over **All Account Level Resources**, and then grant equivalent permissions at the organization and project levels.
@@ -533,58 +592,6 @@ The **All Resources Including Child Scopes** is not recommended because it would
     - Any projects with restricted permissions (set up before migration)
     - All projects added to the account in the future
 :::
-
-To create an Admin API key scoped to all projects in your Harness account:
-
-1. At the account level, create the service account and assign roles:
-   1. In the left navigation panel, click **Account Settings**.
-   1. Click the **Access Control** button at the top of the page.
-   1. Click the **Service Accounts** tile.
-   1. Click the **+ New Service Account** button.
-   1. Enter a name for the new service account and click **Save**. The service account is listed.
-   1. Click **Manage Role Bindings** to manage role bindings for the service account.
-   1. Click **+ Add**.
-   1. Select the **Account Admin** role and the **All Account Level Resources** resource group.
-   1. Click **Apply**. The role binding is added to the service account.
-
-1. At the organization level, inherit the service account and assign roles:
-   1. In the left navigation panel, select the organization [where your Split legacy projects were migrated](#projects) (or where your FME objects are defined or will be defined).
-   1. Click **Organization Settings**.
-   1. Click the **Access Control** button at the top of the page.
-   1. Click the **Service Accounts** tile.
-   1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
-   1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
-   1. Click **Apply Selected**.
-   1. Select the **Organization Admin** role.
-   1. Leave the **All Organization Level Resources** resource group selected.
-   1. Click **Save** or **Apply**. The service account and role binding are listed.
-
-1. For each project: At the project level, inherit the service account and assign roles:
-   1. In the left navigation panel, select the project.
-   1. Click **Project Settings**.
-   1. Click the **Access Control** button at the top of the page.
-   1. Click the **Service Accounts** tile.
-   1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
-   1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
-   1. Click **Apply Selected**.
-   1. Select the **Project Admin** role.
-   1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
-   1. Click **Save** or **Apply**. The service account and role binding are listed.
-   
-1. Create the API key and token at the account level:
-   1. In the left navigation panel, click **Account Settings**.
-   1. Click the **Access Control** button at the top of the page.
-   1. Click the **Service Accounts** tile.
-   1. Click on the service account created in Step 1.
-   1. Click **+ API Key**.
-   1. Enter a name for the new API key and click **Save**.
-   1. Click **+ Token**.
-   1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
-   1. Copy the token value somewhere safe.
-
-<span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
-
-<br /><br />
 
 :::tip Service accounts for <code>Admin API keys scoped to all projects</code> can also be created at the organization level
 If you prefer, you can instead create the service account at the Harness organization level. Steps 1 and 4 would be done at the organization level, and Step 2 would be omitted. The **Organization Admin** role for **All Organization Level Resources** is required for the Admin API key to be granted permission to list Harness projects and Harness elements attached to projects.
@@ -598,46 +605,58 @@ Depending on what operations the integration is performing, you can assign roles
 For example, you may choose to omit adding permissions for modules other than FME, while enabling most of the permissions listed under **Administrative Functions**. It is very important to follow through with ___complete coverage testing___ (to ensure permissions are sufficient for all integration functionality).
 :::
 
-#### Project scope
+</TabItem>
+<TabItem value="project-scope" label="Admin API key scoped to specific projects">
 
-This section provides steps to create a service account and role bindings for an Admin API key scoped to specific projects in your Harness account. You can follow these steps if you don’t have a service account created during migration or prefer not to use it.
+This section provides steps to create a service account and role bindings for an Admin API key scoped to specific projects in your Harness account.
 
-To create an Admin API key scoped to a specific project in your Harness account:
+  <Tabs>
+  <TabItem value="interactive" label="Interactive Guide">
+
+To create an Admin API key scoped to a specific project in your Harness account, view the steps in the interactive guide:
+
+  <DocVideo src="https://app.tango.us/app/embed/8f858d3d-f095-4bfe-b697-3fe9d67404fb?hideAuthorAndDetails=true" title="Create a new Service Account for a specific project and generate an API Key and Token" />
+
+  </TabItem>
+  <TabItem value="step" label="Step-by-step">
+
+  To create an Admin API key scoped to a specific project in your Harness account:
 
 1. At the account level, create the service account:
-   
-   1. In the left navigation panel, click **Account Settings**.
-   1. Click the **Access Control** button at the top of the page.
-   1. Click the **Service Accounts** tile.
-   1. Click the **+ New Service Account** button.
-   1. Enter a name for the new service account and click **Save**. The service account is listed.
+    1. In the left navigation panel, click **Account Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click the **+ New Service Account** button.
+    1. Enter a **Name** for the new service account. The **Email** field will be automatically populated to match the service account name. (The email is used as an ID. It will allow the service account API key token to work with identity access management systems that require email identifiers.)
+    1. Click **Save**. The service account is listed.
 
 1. At the project level, inherit the service account and assign roles:
-   1. In the left navigation panel, select the project.
-   1. Click **Project Settings**.
-   1. Click the **Access Control** button at the top of the page.
-   1. Click the **Service Accounts** tile.
-   1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
-   1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
-   1. Click **Apply Selected**.
-   1. Select the **Project Admin** role.
-   1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
-   1. Click **Save** or **Apply**. The service account and role binding are listed.
+    1. In the left navigation panel, select the project.
+    1. Click **Project Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
+    1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
+    1. Click **Apply Selected**.
+    1. Select the **Project Admin** role.
+    1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
+    1. Click **Save** or **Apply**. The service account and role binding are listed.
 
 1. Create the API key and token at the account level:
-   1. In the left navigation panel, click **Account Settings**.
-   1. Click the **Access Control** button at the top of the page.
-   1. Click the **Service Accounts** tile.
-   1. Click on the service account created in Step 1.
-   1. Click **+ API Key**.
-   1. Enter a name for the new API key and click **Save**.
-   1. Click **+ Token**.
-   1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
-   1. Copy the token value somewhere safe.
+    1. In the left navigation panel, click **Account Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click on the service account created in Step 1.
+    1. Click **+ API Key**.
+    1. Enter a name for the new API key and click **Save**.
+    1. Click **+ Token**.
+    1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
+    1. Copy the token value somewhere safe.
 
-<span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
+  <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if the project was migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
 
-<br /><br />
+  </TabItem>
+  </Tabs>
 
 :::tip Service accounts for <code>Admin API keys scoped to specific projects</code> can also be created at the organization/project level
 
@@ -649,7 +668,8 @@ If you prefer, you can instead create the service account at the Harness organiz
 If created at the project level, the API key would not be sharable (by inheriting) across multiple projects. You would only be able to use it in the project where it was created.
 :::
 
-#### Environment Scope
+</TabItem>
+<TabItem value="environment-scope" label="⚠️ Admin API key scoped to specific environments">
 
 :::warning
 Creating a new Admin API key scoped to specific FME environments in the Harness FME module is not yet possible using Harness RBAC.
@@ -663,6 +683,19 @@ Note that new API keys created in Harness cannot be scoped to specific FME envir
 
 :::info
 Your legacy Split Admin API key (created pre-migration) scoped to specific environments will continue to work that way. The legacy API key will be authorized by the back-end servers, as before migration.
+:::
+
+</TabItem>
+</Tabs>
+
+---
+
+:::info[How to use the Harness access token:]
+After your migration, use the Harness access token:
+* As the bearer token or x-api-key for legacy Split Admin API endpoints that are not deprecated. (The deprecated endpoints are replaced by Harness API endpoints for a migrated account.)
+* As the x-api-key for Harness API endpoints.
+
+For more information, go to [Authorization moves from Bearer Token to x-api-key](https://developer.harness.io/docs/feature-management-experimentation/split-to-harness/api-for-split-admins/#authorization-moves-from-bearer-token-to-x-api-key) in the FME documentation.
 :::
 
 ### Delete an Admin API key
@@ -765,7 +798,7 @@ To implement permissions similar to the legacy Split unrestricted project:
 
 From your **Project Settings** inherit each of the [FME user groups](#fme-user-groups) and add the following project-level role bindings:
    
-   - All FME Admins: **FME Administrator Role** - **FME All Resources**\*
+   - All FME Admins: **Project Admin** - **FME All Resources**\*
    - All FME Editors: **FME Manager Role** - **FME All Resources**\*
    - All FME Viewers: **Project Viewer** - **FME All Resources**\*
 
@@ -784,7 +817,7 @@ To implement permissions similar to the legacy Split restricted project:
 
 1. Apply a role binding for **FME All Resources**\* that assigns one of the following roles:
 
-   - **FME Administrator Role** corresponds to the legacy Split Administrator permissions
+   - **Project Admin** corresponds to the legacy Split Administrator permissions
    - **FME Manager Role** corresponds to the legacy Editor role
    - **Project Viewer** corresponds to the legacy Viewer role
 
@@ -795,7 +828,7 @@ To implement permissions similar to the legacy Split restricted project:
 
 ### Add an Admin API key (service account) to the project
 
-To grant an Admin API key access to your project, we recommend you follow the steps in [Create an API key - Project scope](#project-scope):
+To grant an Admin API key access to your project, we recommend you follow the steps in [Admin API key scoped to specific projects](?create-apikey-new-sa=project-scope#using-a-new-service-account):
 
 - Steps 1-3 guide you to create a service account and grant **Project Admin** permissions to **All Project Level Resources** (or **FME All Resources**) of your project.
 - Step 2 is the only step needed in the situation where the service account, API key, and token are already created.
@@ -867,7 +900,7 @@ To cleanly delete a project in your Harness account:
 
 #### Can I restrict an Admin API key to an FME environment?
 
-The environment scope of Admin API keys created in Harness post-migration will be available when the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. To learn more, go to [Admin API Keys - Environment Scope](#environment-scope).
+The environment scope of Admin API keys created in Harness post-migration will be available when the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. To learn more, go to [Admin API key scoped to specific environments](?create-apikey-new-sa=environment-scope#using-a-new-service-account).
 
 ### Harness entities
 
