@@ -323,11 +323,61 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
       helm upgrade -i harness harness/harness -f override-prod.yaml -f bitnami-migration.yaml
       ```
 :::
-## October 10, 2025, Patch Version 
+## October 10, 2025, Patch Version 0.33.1
+
+This release includes the following Harness module and component versions.
+
+| **Name**                     | **Version**                                                                                  |
+|------------------------------|----------------------------------------------------------------------------------------------|
+| batch-processing | 1.60.8 |
+| ce-nextgen | 1.63.7 |
+| looker | 1.8.1 |
+
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.33.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.1/iacm_images.tgz" \
+  .
+```
+
+### New Features and Enhancements
+
+#### Cloud Cost Management
+
+- **Additional Fields in AWS Clickhouse Explore for BI Dashboards**: The following fields have been added to all the fields available in AWS Clickhouse Explore for BI Dashboards.
+  - Account Name  
+  - ResourceId
+  - UsageType 
+  - ServiceCode
+  - Region
+  - AWS Instancetype [CCM-24703]
+
+- **AWS Account Name in Clickhouse Explorer**: Added AWS Account Name field to both AWS and Unified Clickhouse Explorer in BI dashboards for improved account-level reporting and filtering [CCM-24917]
+
+- **Improved Field Descriptions in BI Dashboards**: Enhanced field descriptions in AWS and Unified Explore BI Dashboards with more detailed explanations, simplifying the mapping between dashboard fields and CUR report fields [CCM-24572]
+
+- **AWS Unused Recurring Fee Addition**: Integrated AWS Unused Recurring Fee metric into both AWS Clickhouse Explorer and Unified Clickhouse Explorer in BI Dashboards, enabling better tracking of unutilized subscription costs [CCM-25929]
+
+- **Enhanced CC Backfill Process**: Users can now perform the Cost Category backfill for all months in a single run. Earlier, the backfill was processed month by month, which took a lot of time. With this update, customers can also monitor the status of the CC execution. Additionally, the stamped cost bucket data from previous months—when doing a CC backfill—was not appearing in the dashboard. This change ensures that older months' cost buckets are now visible in the BI Dashboard filters. [CCM-24084]
+
 
 ## October 7, 2025, Version 0.33.x <!-- Draft : Sept 29, 2025 -->
 
 This release includes the following Harness module and component versions.
+{{ ... }}
 
 | **Name**                     | **Version**                                                                                  |
 |------------------------------|----------------------------------------------------------------------------------------------|
