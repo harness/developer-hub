@@ -1,6 +1,7 @@
 ---
 title: Delegate image types
-description: Provides information about delegate image types.
+description: Learn about different Harness delegate image types including standard, minimal, and FIPS variants, their security considerations, third-party tools, and how to choose the right image for your deployment needs.
+sidebar_label: Image Types
 sidebar_position: 3
 helpdocs_topic_id: nb9zuo3mxd
 helpdocs_category_id: m9iau0y3hv

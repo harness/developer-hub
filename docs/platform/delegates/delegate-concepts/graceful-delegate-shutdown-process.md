@@ -1,6 +1,7 @@
 ---
 title: Graceful delegate shutdown
 description: Read about the process of graceful delegate shutdown.
+sidebar_label: Graceful Delegate Shutdown
 sidebar_position: 5
 ---
 

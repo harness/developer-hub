@@ -1,6 +1,7 @@
 ---
 title: Delegate automatic upgrades and expiration policy
 description: Explains the auto-upgrade feature and the delegate expiration policy.
+sidebar_label: Upgrades and Expiration Policy
 sidebar_position: 9
 ---
 
