@@ -357,7 +357,7 @@ gsutil -m cp \
 
 #### Cloud Cost Management
 
-- **Additional Fields in AWS Clickhouse Explore for BI Dashboards**: The following fields have been added to all the fields available in AWS Clickhouse Explore for BI Dashboards.
+- **Drill Down Fields in AWS Clickhouse Explore for BI Dashboards**: The following fields have been added as drill down options on all the fields available in AWS Clickhouse Explore for BI Dashboards.
     - Account Name  
     - ResourceId
     - UsageType 
