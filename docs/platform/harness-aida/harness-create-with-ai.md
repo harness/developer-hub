@@ -1,7 +1,8 @@
 ---
 title: Create with Harness AI
 description: Learn how to create Harness resources using Harness AI
-sidebar_position: 12
+sidebar_label: Get Started
+sidebar_position: 2
 ---
 
 # Getting Started with Harness AI 

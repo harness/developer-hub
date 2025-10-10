@@ -555,7 +555,7 @@ pipeline:
 
 ## Troubleshoot the Artifacts tab
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to the Artifacts tab, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to the Artifacts tab, such as:
 
-- [Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#is-it-possible-to-publish-custom-data-such-as-outputs-from-variables-or-custom-messages-to-the-artifacts-tab)
-- [Do Upload Artifacts steps compress files before uploading them?](/kb/continuous-integration/continuous-integration-faqs/#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
+- [Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#is-it-possible-to-publish-custom-data-such-as-outputs-from-variables-or-custom-messages-to-the-artifacts-tab)
+- [Do Upload Artifacts steps compress files before uploading them?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)

@@ -113,6 +113,40 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## October 2025
+
+### Version 25.10.86900 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Added support for fetching labels for multi-architecture images stored in ECR. [CDS-113117]
+- Enhanced error messages when a delegate's dependency binaries are missing. [CDS-112385]
+- Improved error information during Git failures by including specific error details instead of generic exceptions. [CDS-104652]
+
+### Version 25.08.86601 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
+### Version 25.09.86704 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
+### Version 25.07.86403 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. The user needs to set TRUST_EARLY and ENRICH_LOGS environment variables in the delegate. [CDS-109294]
+
+### Version 25.09.86801 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
 ## September 2025
 
 ### Version 25.09.86800 <!--September 24, 2025-->

@@ -293,6 +293,12 @@ Here you can see two service deployments run serially on the same infrastructure
 
 You can propagate a stage configured with multi-service from previous configured stage. In the example below, If configured multi-service in stage `deployKubernetes` you will be able to reference the service configuration in stage `dev`.
 
+:::note
+
+Execution time inputs are not supported while propagating multiple services. 
+
+:::
+
 ```yaml
     - stage:
         name: deployKubernetes

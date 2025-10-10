@@ -12,7 +12,7 @@ To increase the default session duration in IaCM steps, you can set `PLUGIN_AWS_
 :::
 
 ## Cloud
-Harness offers a [hosted execution environment](https://developer.harness.io/kb/continuous-integration/harness-cloud-faqs/) where your builds run on independent ephemeral machines. Using this environment requires that all the endpoints you are configuring using TF are exposed to the public internet.
+Harness offers a [hosted execution environment](/docs/continuous-integration/ci-articles-faqs/harness-cloud-faqs) where your builds run on independent ephemeral machines. Using this environment requires that all the endpoints you are configuring using TF are exposed to the public internet.
 
 If you are using this environment, you can use Access Keys or OIDC in a Harness AWS connector to connect. It is recommended that you use OIDC over access keys as keys have to be rotated whereas OIDC uses a trust between Harness and your AWS account to do "serverless" authentication.
 

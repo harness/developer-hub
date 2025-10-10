@@ -725,9 +725,9 @@ When using Docker in a **Run step**, `S3FS_MOUNT_DIR` must be added as a [shared
 
 ## Troubleshoot uploading artifacts
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
 
-- [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
-- [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)
-- [Does the Upload Artifacts to S3 step compress files before uploading them?](/kb/continuous-integration/continuous-integration-faqs/#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
-- [Can I use non-default ACLs, IAM roles, or ARNs with the Upload Artifacts to S3 step?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-non-default-acls-iam-roles-or-arns-with-the-upload-artifacts-to-s3-step)
+- [Can I send artifacts by email?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-send-emails-from-ci-pipelines)
+- [How do I show content on the Artifacts tab?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-show-content-on-the-artifacts-tab)
+- [Does the Upload Artifacts to S3 step compress files before uploading them?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
+- [Can I use non-default ACLs, IAM roles, or ARNs with the Upload Artifacts to S3 step?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-use-non-default-acls-iam-roles-or-arns-with-the-upload-artifacts-to-s3-step)

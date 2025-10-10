@@ -13,13 +13,14 @@ import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfq
 
 :::warning
 
-This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
+This page contains instructions for using Test Intelligence (v1) with the **Run Tests** step.
 
 While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
 
 :::
 
 ## Enable TI for Java, Kotlin, or Scala
+
 :::note
 Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
 :::
@@ -27,6 +28,7 @@ Test Intelligence requires that the code is cloned into the default workspace di
 You can enable TI for Java, Kotlin, or Scala in three steps:
 
 <!-- no toc -->
+
 1. [Add a **Run Tests** step](#add-the-run-tests-step). For Java consider using the new [**Test**](../tests-v2.md) step instead.
 2. [Trigger test selection.](#trigger-test-selection)
 3. [(Optional) Add test splitting.](#add-test-splitting)
@@ -38,24 +40,24 @@ Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructur
 You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 
 ```yaml
-              - step:
-                  type: RunTests
-                  name: Run Tests
-                  identifier: Run_Tests
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
-                    image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
-                    language: Java ## Specify Java, Kotlin, or Scala.
-                    buildTool: Maven ## Specify your build tool.
-                    args: test
-                    packages: io.harness.
-                    runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                    postCommand: mvn package -DskipTests
-                    reports: ## Reports must be in JUnit XML format.
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/reports/*.xml"
+- step:
+    type: RunTests
+    name: Run Tests
+    identifier: Run_Tests
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
+      language: Java ## Specify Java, Kotlin, or Scala.
+      buildTool: Maven ## Specify your build tool.
+      args: test
+      packages: io.harness.
+      runOnlySelectedTests: true ## Must be 'true' to enable TI.
+      postCommand: mvn package -DskipTests
+      reports: ## Reports must be in JUnit XML format.
+        type: JUnit
+        spec:
+          paths:
+            - "target/reports/*.xml"
 ```
 
 For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
@@ -66,18 +68,18 @@ If you are using Test Intelligence for Kotlin and building using Gradle, add the
 
 ```yaml
 tasks.withType<Test> {
-    val harnessJavaAgent = System.getProperty("HARNESS_JAVA_AGENT")
-    if (harnessJavaAgent != null) {
-        jvmArgs(harnessJavaAgent)
-    }
+val harnessJavaAgent = System.getProperty("HARNESS_JAVA_AGENT")
+if (harnessJavaAgent != null) {
+jvmArgs(harnessJavaAgent)
+}
 }
 
 gradle.projectsEvaluated {
-    tasks.withType<Test> {
-        filter {
-            isFailOnNoMatchingTests = false
-        }
-    }
+tasks.withType<Test> {
+filter {
+isFailOnNoMatchingTests = false
+}
+}
 }
 ```
 
@@ -95,7 +97,7 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 
 3. To trigger test selection, activate the trigger again (by opening a PR or pushing changes to your codebase).
 
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
+   The first run with TI _doesn't_ apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
 4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
 
@@ -118,7 +120,7 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 
 3. To trigger test selection, open a new PR (or push changes) to your codebase, and then run your pipeline again.
 
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
+   The first run with TI _doesn't_ apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
 4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
 
@@ -217,7 +219,7 @@ pipeline:
                   name: Run Tests
                   identifier: Run_Tests
                   spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
                     language: Java ## Specify Java, Kotlin, or Scala.
                     buildTool: Maven ## For Java or Kotlin, specify Bazel, Maven, or Gradle. For Scala, specify Bazel, Maven, Gradle, or Sbt.
@@ -284,7 +286,7 @@ Bazel is already installed on Harness Cloud runners. For other build infrastruct
 <details>
 <summary>Java Maven argLine setup</summary>
 
-If you use Maven with Java and your `pom.xml` contains `<argLine>` *or* you attach Jacoco or any agent while running unit tests, then you must modify your `pom.xml` to include `<harnessArgLine>` in the `<properties>` and the Maven plugin `<configuration>`. For example:
+If you use Maven with Java and your `pom.xml` contains `<argLine>` _or_ you attach Jacoco or any agent while running unit tests, then you must modify your `pom.xml` to include `<harnessArgLine>` in the `<properties>` and the Maven plugin `<configuration>`. For example:
 
 ```xml
 <!-- Add harnessArgLine to pom properties. -->
@@ -368,7 +370,7 @@ This can be as simple as `test` or you can include additional flags, such as: `t
 
 This setting is required for the Run Tests step to [publish test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests).
 
-Specify one or more paths to files that store [test results in JUnit XML format](/docs/continuous-integration/use-ci/run-tests/test-report-ref). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](/docs/continuous-integration/use-ci/run-tests/test-report-ref). [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported.
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
 
@@ -378,9 +380,9 @@ Used to [enable test splitting (parallelism) for TI](/docs/continuous-integratio
 
 ### Pre-Command, Post-Command, and Shell
 
-* **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as `mvn clean package dependency:copy-dependencies`
-* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests, such as `mvn package -DskipTests`.
-* **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
+- **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as `mvn clean package dependency:copy-dependencies`
+- **Post-Command:** You can enter commands used for cleaning up the environment after running the tests, such as `mvn package -DskipTests`.
+- **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
 
 ### Packages
 
@@ -433,9 +435,9 @@ Settings specific to containers are not applicable in a stages that use VM or Ha
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
 
-* **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
-* **If Not Present:** The image is pulled only if it isn't already present locally.
-* **Never:** The image is not pulled.
+- **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+- **If Not Present:** The image is pulled only if it isn't already present locally.
+- **Never:** The image is not pulled.
 
 #### Run as User
 
@@ -451,8 +453,8 @@ For container-based build infrastructures, you can enable this option to run the
 
 These settings specify the maximum resources used by the container at runtime. These setting are only available for container-based build infrastructures, such as a Kubernetes cluster build infrastructure.
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+- **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+- **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ### Timeout
 
@@ -460,10 +462,10 @@ You can set the step's timeout limit. Once the timeout is reached, the step fail
 
 ## Troubleshoot Test Intelligence
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
 
-* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
-* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
-* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
-* [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
-* [Test Intelligence fails with error 'Unable to get changed files list'.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-with-error-unable-to-get-changed-files-list)
+- [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+- [Test Intelligence call graph is empty.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+- [If the Run Tests step fails, does the Post-Command script run?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#if-the-run-tests-step-fails-does-the-post-command-script-run)
+- [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
+- [Test Intelligence fails with error 'Unable to get changed files list'.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#test-intelligence-fails-with-error-unable-to-get-changed-files-list)

@@ -12,27 +12,25 @@ redirect_from:
 
 import configure_codebase from './static/create-and-configure-a-codebase-00.png'
 
-CI pipelines build and test code that is pulled from a Git code repository. In Harness CI, you can configure a 'Codebase' for your pipeline, to define the Git repository your Build stage(s) will automatically clone during runtime (unless you stage is set to not clone the codebase). When you add a Build stage to a CI pipeline, if not already set, you will have to option to configure your codebase. 
+CI pipelines build and test code that is pulled from a Git code repository. In Harness CI, you can configure a 'Codebase' for your pipeline, to define the Git repository your Build stage(s) will automatically clone during runtime (unless you stage is set to not clone the codebase). When you add a Build stage to a CI pipeline, if not already set, you will have to option to configure your codebase.
 This topic explains how to configure codebase settings for pipeline to be used by its Build stages.
 
 This topic assumes you have an understanding of the [CI pipeline creation process](../prep-ci-pipeline-components.md).
 
-
 ## Configure the default codebase
 
-When you add a **Build** stage to a CI pipeline, you specify where your build code is stored. This becomes the pipeline's *default codebase*.
+When you add a **Build** stage to a CI pipeline, you specify where your build code is stored. This becomes the pipeline's _default codebase_.
 
 1. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 2. Enter a **Stage Name**. **Description** and **Tags** are optional.
 3. Make sure **Clone Codebase** is enabled. This tells Harness to clone the codebase into the build environment before running the steps in the stage.
-:::tip
-In VM runners and cloud infrastructure, the step to clone your codebase runs in a container by default. Enable the `CI_GIT_CLONE_CONTAINERLESS` feature flag to run it on the host, which is recommended for faster cloning on Windows by eliminating image download time.
-:::
+   :::tip
+   In VM runners and cloud infrastructure, the step to clone your codebase runs in a container by default. Enable the `CI_GIT_CLONE_CONTAINERLESS` feature flag to run it on the host, which is recommended for faster cloning on Windows by eliminating image download time.
+   :::
 4. Configure your codebase connection.
-   * To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness Code Repository**, and then select the repo to clone.
-   * To clone a repo from a third-party Git provider, select **Third-party Git provider**, select the relevant [code repo connector](/docs/category/code-repositories), and enter the name of the repo to clone, if **Repository Name** is not automatically populated.
+   - To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness Code Repository**, and then select the repo to clone.
+   - To clone a repo from a third-party Git provider, select **Third-party Git provider**, select the relevant [code repo connector](/docs/category/code-repositories), and enter the name of the repo to clone, if **Repository Name** is not automatically populated.
 5. Select **Set Up Stage**.
-
 
 If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages). You can also [clone multiple repositories in a stage](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
@@ -93,13 +91,13 @@ In the Visual editor, you can disable **Clone Codebase** in the stage's **Overvi
 In the YAML editor, set `cloneCodebase` to `false` in the `stage.spec`.
 
 ```yaml
-    - stage:
-        name: build
-        identifier: build
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: false
+- stage:
+    name: build
+    identifier: build
+    description: ""
+    type: CI
+    spec:
+      cloneCodebase: false
 ```
 
 For more information about Build stage settings, go to [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
@@ -153,7 +151,6 @@ pipeline:
         depth: 0
         sslVerify: true
         prCloneStrategy: MergeCommit
-
 ```
 
 </TabItem>
@@ -167,8 +164,8 @@ The number of commits to fetch when the pipeline clones the codebase repo.
 
 The default depth varies by build and trigger type:
 
-* For manually-triggered branch and tag builds, the default depth is `50`. This means each `git clone` operation fetches the 50 most recent commits.
-* For manually-triggered PR builds and all auto-triggered builds (such as webhook triggers), the default depth is `0`. This means each `git clone` operation fetches all commits from the relevant branch.
+- For manually-triggered branch and tag builds, the default depth is `50`. This means each `git clone` operation fetches the 50 most recent commits.
+- For manually-triggered PR builds and all auto-triggered builds (such as webhook triggers), the default depth is `0`. This means each `git clone` operation fetches all commits from the relevant branch.
 
 For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
 
@@ -190,6 +187,22 @@ An optional target path in the pipeline workspace where you want to clone the re
 
 You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's codebase. You can specify **Shared Paths** in your [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
 
+### Persist Credentials (Optional)
+
+When selected, Harness persists the Git credentials used during the clone step so they remain available for subsequent steps in the same build.
+
+This is useful when:
+
+- You need to run Git commands (for example, fetching submodules, tagging, or pushing commits) after the clone step.
+
+- You’re using a private Harness Code Repository or authenticated third-party repository, and you want to avoid re-authenticating in every step.
+
+:::note
+The persisted credentials remain available only within the scope of the build environment (container or VM) for the duration of the build. They are not stored or reused after the build completes.
+:::
+
+<DocImage path={require('./static/persist-creds.png')} />
+
 ### Fetch Tags
 
 Determines whether to fetch all tags when performing a shallow clone (depth > 0). Setting this to `true` is equivalent to adding the `--tags` flag.
@@ -206,7 +219,7 @@ Do a sparse checkout on given patterns. The subset of files is chosen by providi
 
 ### Include Submodules
 
-Determines whether to include submodules in the clone. Default is `false`. Set to `true` to include submodules or recursive to clone submodules recursively. 
+Determines whether to include submodules in the clone. Default is `false`. Set to `true` to include submodules or recursive to clone submodules recursively.
 
 ### Pre Fetch Command
 
@@ -228,18 +241,17 @@ If you want to use self-signed certificates in a Kubernetes Cluster build infras
 
 Set maximum resource limits for the containers that clone the codebase at runtime:
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-
+- **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+- **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ## Troubleshoot codebases
 
-Go to the [Harness CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for common questions and issues related to codebases, such as:
+Go to the [Harness CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for common questions and issues related to codebases, such as:
 
-* [How do I improve codebase clone time?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-reduce-clone-codebase-time)
-* [The same Git commit is not used in all stages.](/kb/continuous-integration/continuous-integration-faqs/#the-same-git-commit-is-not-used-in-all-stages)
-* [Git fetch fails with invalid index-pack output when cloning large repos.](/kb/continuous-integration/continuous-integration-faqs/#git-fetch-fails-with-invalid-index-pack-output-when-cloning-large-repos)
-* [Clone codebase fails due to missing plugin.](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
+- [How do I improve codebase clone time?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-reduce-clone-codebase-time)
+- [The same Git commit is not used in all stages.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#the-same-git-commit-is-not-used-in-all-stages)
+- [Git fetch fails with invalid index-pack output when cloning large repos.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#git-fetch-fails-with-invalid-index-pack-output-when-cloning-large-repos)
+- [Clone codebase fails due to missing plugin.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#clone-codebase-fails-due-to-missing-plugin)
 
 For information about branch protection and status checks for codebases associated with Harness CI pipelines, go to [SCM status checks](./scm-status-checks.md).
 

@@ -1,7 +1,7 @@
 ---
 title: What's supported by Harness Platform
 description: Technologies supported by Harness Platform
-sidebar_label: What's supported
+sidebar_label: What's Supported
 sidebar_position: 1
 helpdocs_topic_id: 1e536z41av
 helpdocs_category_id: kx4hs8bn38

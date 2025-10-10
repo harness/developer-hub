@@ -14,7 +14,7 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 #### Last updated: October 24, 2025
 
-## October 24, 2025
+## October 2025
 
 ### [New Feature] Warehouse Native Experimentation in Beta
 ----
@@ -22,11 +22,11 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 Harness FME now supports **Warehouse Native Experimentation** in beta. Warehouse Native allows you to run experiments directly in your data warehouse using your own assignment and event data. This approach gives you greater flexibility, transparency, and control over experiment analysis, without needing to export or duplicate data outside your analytics environment.
 
-You can use Warehouse Native to:
+You can use Warehouse Native Experimentation to:
 
 - Run analyses on experiments with data already stored in your warehouse.
 - Leverage FME's statistical engine (including CUPED and additional measurement techniques) for improved accuracy and confidence intervals.
-- Integrate with existing assignment, metric, and event tables in your data warehouse.
+- Integrate with existing assignment and metric tables in your data warehouse.
 
 To request access for the Warehouse Native Experimentation beta experience, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
 
@@ -58,6 +58,8 @@ By configuring fallback treatments, you can improve reliability, reduce surprise
 - [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configure-fallback-treatments)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk/#configure-fallback-treatments)
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#configure-fallback-treatments)
+- [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#configure-fallback-treatments)
+- [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#configure-fallback-treatments)
 
 ### [New Feature] Experiment Entry Event Filter
 ----

@@ -1,7 +1,8 @@
 ---
 title: Enable auto-upgrades for existing Docker Delegates
-description: This topic describes how to migrate existing docker delegates to enable automatic upgrades for them.
-sidebar_position: 10
+description: Learn how to migrate existing Docker delegates to enable automatic upgrades using the Docker Delegate Upgrader script.
+sidebar_label: Auto-upgrades for Docker Delegates
+sidebar_position: 8
 ---
 
 # Enable auto-upgrades for existing Docker Delegates

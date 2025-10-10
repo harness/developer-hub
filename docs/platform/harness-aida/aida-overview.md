@@ -1,6 +1,7 @@
 ---
 title: Overview of Harness AI 
 description: Learn about how AI improves your experience on the Harness platform.
+sidebar_label: Overview
 sidebar_position: 1
 ---
 

@@ -55,7 +55,7 @@ npm install --save @splitsoftware/splitio
 <TabItem value="CDN bundle">
 
 ```html
-<script src="//cdn.split.io/sdk/split-11.7.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.7.1.min.js"></script>
 
 ```
 
@@ -1097,7 +1097,6 @@ To enable SDK logging in the browser, open your DevTools console and type the fo
 // Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
 // Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
 localStorage.splitio_debug = 'on' <enter>
-
 ```
 
 Reload the browser to start seeing the logs.
@@ -1105,39 +1104,12 @@ Reload the browser to start seeing the logs.
 Beginning with v9.2.0 of the SDK, you can also enable the logging via SDK settings and programmatically by calling the Logger API.
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger API (JavaScript)">
-
-```javascript
-var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
- 
-var sdk = SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: true // Debug boolean option can be passed on settings
-  // It takes precedence over the localStorage flag.
-});
- 
-// Or you can use the Logger API which two methods, enable and disable.
-// Calling this methods will have an immediate effect.
-sdk.Logger.enable();
-sdk.Logger.disable();
-
-// You can also set the log level programmatically after v10.4.0
-// Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
-// 'DEBUG' is equivalent to `enable` method.
-// 'NONE' is equivalent to `disable` method.
-sdk.Logger.setLogLevel('WARN');
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger API (TypeScript)">
+<TabItem value="JavaScript" label="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio';
  
-const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+const sdk = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1161,13 +1133,42 @@ sdk.Logger.setLogLevel('WARN');
 </TabItem>
 </Tabs>
 
-Example output is shown below. 
+By default, the SDK uses the `console.log` method to output log messages for all log levels. 
 
-![](../static/javascript-sdk-log-example.png)
+Since v11.7.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the `factory.Logger.setLogger` method. 
 
-:::info[Note]
-For more information on using the logging framework in SDK versions prior to 9.2, refer to [https://github.com/visionmedia/debug](https://github.com/visionmedia/debug).
-:::
+The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
+
+```typescript
+interface Logger {
+  debug(message: string): any;
+  info(message: string): any;
+  warn(message: string): any;
+  error(message: string): any;
+}
+```
+
+The following example passes the `console` object as a logger, so that `console.error`, `console.warn`, `console.info`, and `console.debug` methods are called rather than the default `console.log` method.
+
+<Tabs>
+<TabItem value="Using Console as Logger">
+
+```typescript
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const sdk = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Enable logs to call the corresponding custom logger methods
+  debug: true,
+  logger: console
+});
+```
+
+</TabItem>
+</Tabs>
 
 ## Advanced use cases
 

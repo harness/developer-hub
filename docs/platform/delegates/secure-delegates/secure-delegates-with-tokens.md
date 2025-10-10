@@ -1,9 +1,8 @@
 ---
 title: Secure delegates with tokens
-description: Secure delegate to Harness communication by replacing the default delegate token with new tokens.
-# sidebar_position: 20
-helpdocs_topic_id: omydtsrycn
-helpdocs_category_id: m9iau0y3hv
+description: Learn how to secure delegate communication by managing delegate tokens - create, rotate, revoke, and store them in secret managers.
+sidebar_label: Delegates with Tokens
+sidebar_position: 1
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
