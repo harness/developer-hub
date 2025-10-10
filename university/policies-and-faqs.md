@@ -38,7 +38,7 @@ Harness is committed to maintaining the integrity and value of its Technical Cer
 The following general policies apply to all Harness Technical Certification exams, regardless of level or product area:
 
 - All exams are **non-proctored** and **open book**.
-- Candidates are expected to take exams independently and without assistance from others.
+- Candidates are expected to take exams **independently** and without assistance from others.
 - Sharing, copying, or reproducing exam content in any form is strictly prohibited.
 - Certification status is granted based on successful completion of all exam requirements and adherence to these policies.
 
