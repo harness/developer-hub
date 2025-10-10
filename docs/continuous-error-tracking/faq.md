@@ -1,7 +1,9 @@
 ---
 title: Continuous Error Tracking (CET) FAQs
 description: This article addresses some frequently asked questions about Harness Continuous Error Tracking(CET).
-sidebar_position: 2
+sidebar_position: 10
+redirect_from:
+  - /kb/continuous-error-tracking/continuous-error-tracking-faqs
 ---
 
 #### How do I setup the application name of the JVM to be monitored with the CET agent?
