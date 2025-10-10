@@ -1,7 +1,7 @@
 ---
-title: Before and After Guide on Administering a Migrated Split Account on Harness
-description: Learn how administrative tasks work after your migration into Harness FME.
-sidebar_label: Administering a Migrated Split Account on Harness
+title: RBAC for Split Admins
+description: Learn how to work with RBAC after your migration into Harness FME.
+sidebar_label: RBAC for Split Admins
 sidebar_position: 3
 ---
 
@@ -21,9 +21,9 @@ This guide is intended to be used as a reference shortly after your migration in
 
 Harness recommends:
 
-1. Using this guide to become familiar with the initial RBAC settings applied to your new Harness account.
-1. Following this guide to work with the Harness RBAC principals and role bindings that were created for you during your migration.
-1. Learning about the full potential of RBAC on the Harness platform, starting with [Platform access control](/docs/category/platform-access-control/) in the Harness documentation.
+1. Use this guide to become familiar with the initial RBAC settings applied to your new Harness account.
+1. Follow this guide to work with the Harness RBAC principals and role bindings that were created for you during your migration.
+1. Learn about the full potential of RBAC on the Harness platform, starting with [Platform access control](/docs/category/platform-access-control/) in the Harness documentation.
 
 :::tip Read about Environment Scope (Admin API keys)
 Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to the [Environment Scope](#environment-scope) section.

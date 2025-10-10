@@ -1,6 +1,7 @@
 ---
 title: Migrate from Split to Harness FME
 id: index
+sidebar_position: 0 
 slug: /feature-management-experimentation/split-to-harness
 description: Learn how to migrate from Split to Harness FME.
 ---
@@ -51,7 +52,7 @@ The integration will fulfill key promises:
 ### Scenario One: Do You Use Management Screens?
 
    - Task: Learn to use new screens for managing users, groups, projects, permissions, or API keys.
-   - Resource: Access the [Before and After Guide: Administering a Migrated Split Account on Harness](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account/).
+   - Resource: Access the [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account/) migration guide.
 
      - Compare Split and Harness admin screens side-by-side.
      - Watch short interactive and written step-by-step guides designed to quickly get you up to speed with tasks such as adding users, creating and editing groups, etc.
@@ -61,7 +62,7 @@ The integration will fulfill key promises:
 ### Scenario Two: Do You Access Split via SSO?
 
    - Task: create a new SSO Connection at least one week before migration.
-   - Resource: Access the [Before and After Guide: SSO for Split Admins](/docs/feature-management-experimentation/split-to-harness/sso-for-admins).
+   - Resource: Access the [SSO for Split Admins](/docs/feature-management-experimentation/split-to-harness/sso-for-admins) migration guide.
    - By April 4th, 2025: Harness account invites were sent to all Split Administrators
 
      - Task Detail: Accept your invite by resetting your password.
@@ -70,8 +71,8 @@ The integration will fulfill key promises:
 ### Scenario Three: Has Your Organization Automated Tasks With the Split Admin API?
 
    - Task: Update scripts if using one of the 5 impacted Split Admin API endpoints.
-   - Resource: Access the [Before and After Guide: API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins). This guide includes ready-to-run API examples in Postman.
-   - Usage Data: To learn if your organization has recently used any of the 5 impacted endpoints, look for the emails below and read [Migration: API-Updates](/docs/feature-management-experimentation/split-to-harness/api-updates). 
+   - Resource: Access the [API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins) migration guide. This guide includes ready-to-run API examples in Postman.
+   - Usage Data: To learn if your organization has recently used any of the 5 impacted endpoints, look for the emails below and read [Admin API Updates](/docs/feature-management-experimentation/split-to-harness/api-updates). 
 
      - February 21st, 2025: "Follow-Up: Changes to Split Admin API Endpoints & Migration to Harness."
      - February 27th, 2025: "Updated 2/27/25: Follow-Up: Changes to Split Admin API Endpoints & Migration to Harness." 

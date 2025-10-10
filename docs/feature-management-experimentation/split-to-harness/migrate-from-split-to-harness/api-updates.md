@@ -2,6 +2,7 @@
 title: Admin API Updates
 description: Learn how changes to the Split Admin API endpoints and the migration to Harness.
 sidebar_label: Admin API Updates
+slug: /feature-management-experimentation/split-to-harness/api-updates
 sidebar_position: 7
 ---
 
@@ -101,6 +102,6 @@ Yes. This diagram shows which endpoints would need a Harness API Key.
 
 ### Where can I learn more?
 
-Start with the [Before and After Guide: API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins). Also have a look at the [Split to Harness Migration Overview](/docs/feature-management-experimentation/split-to-harness) and [30 Seconds to Confidence: How Your Migration Will Work](/docs/feature-management-experimentation/split-to-harness/how-it-works). 
+Start with the [API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins) migration guide. Also have a look at the [Migrate from Split to Harness](/docs/feature-management-experimentation/split-to-harness) migration overview and [30 Seconds to Confidence: How Your Migration Will Work](/docs/feature-management-experimentation/split-to-harness/how-it-works). 
 
-Still have questions? Contact your CSM or support@split.io.
+Still have questions? Contact your Customer Success Manager or support@split.io.

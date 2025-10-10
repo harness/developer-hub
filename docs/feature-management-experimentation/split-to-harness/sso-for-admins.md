@@ -1,5 +1,5 @@
 ---
-title: Before and After Guide (SSO for Split Admins)
+title: SSO for Split Admins
 description: Learn how how SSO for Split administrators works before and after your account migration.
 sidebar_label: SSO for Split Admins
 sidebar_position: 7

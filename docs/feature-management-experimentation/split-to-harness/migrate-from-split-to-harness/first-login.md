@@ -2,6 +2,7 @@
 title: First Login (Four Click Setup)
 description: Learn how onboard onto Harness FME after your account has been fully migrated.
 sidebar_label: Logging into Harness FME
+slug: /feature-management-experimentation/split-to-harness/first-login
 sidebar_position: 4
 ---
 

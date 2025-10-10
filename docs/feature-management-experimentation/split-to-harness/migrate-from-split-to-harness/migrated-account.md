@@ -2,7 +2,8 @@
 title: Account Migrated to Harness
 description: Learn about next steps once your Split account has been migrated to Harness.
 sidebar_label: Account Migrated to Harness
-sidebar_position: 5
+slug: /feature-management-experimentation/split-to-harness/migrated-account
+sidebar_position: 3
 ---
 
 ## Overview
