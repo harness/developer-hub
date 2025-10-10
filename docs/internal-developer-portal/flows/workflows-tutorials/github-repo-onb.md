@@ -6,16 +6,7 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial shows you how to create a self-service GitHub repository onboarding workflow using Harness IDP. The workflow allows developers to create and configure new GitHub repositories automatically through a simple UI form interface.
-
-When a developer executes the Workflow, the system automatically:
-- Creates a new GitHub repository
-- Sets up a feature branch
-- Adds standard project files
-- Configures branch protection rules
-- Sets up webhooks
-
-This eliminates manual repository setup and ensures consistency across all projects.
+This tutorial shows you how to create a self-service GitHub repository onboarding workflow using Harness IDP. The workflow allows developers to create and configure new GitHub repositories automatically through a simple UI form interface. This eliminates manual repository setup and ensures consistency across all projects.
 
 ## Goals of the Workflow
 
@@ -32,14 +23,6 @@ The GitHub repository onboarding workflow consists of two main components that w
 
 ### 1. Harness Pipeline
 This orchestration pipeline contains all the automation logic and executes the actual repository creation steps. This Harness IDP pipeline serves as the **orchestration backend** for our GitHub repository onboarding workflow. Think of it as the engine that powers the automation - when a developer fills out the workflow form (the UI part), this pipeline executes all the technical steps needed to create and configure a GitHub repository.
-
-**Pipeline Steps Overview:**
-- **Repository Creation**: Uses the `CreateRepo` step to create a new GitHub repository
-- **Branch Management**: Creates a feature branch for initial development
-- **File Generation**: Creates standard project files (README.md, .gitignore, demo.yaml)
-- **Code Push**: Pushes the generated files to the feature branch
-- **Security Configuration**: Sets up branch protection rules on the main branch
-- **Webhook Setup**: Configures webhooks for CI/CD pipeline triggers
 
 ### 2. Harness IDP Workflow 
 The Workflow provides a user-friendly interface where developers input the following details and can create a repository without any intervention and runs the above orchestration pipeline in backend to execute the final actions of the Workflow. The Workflow includes validation to ensure proper input format and triggers the above pipeline execution to ensure all the steps are executed successfully.
@@ -293,7 +276,6 @@ This step will do the following:
 
 <Tabs>
 <TabItem value="Interactive Guide">
-
 <DocVideo src="https://app.tango.us/app/embed/8fde568c-5f2c-4a84-8a61-1afb389d7b21" title="Configure CreateRepo Step in Harness Pipeline" />
 
 </TabItem>
