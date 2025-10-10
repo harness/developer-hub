@@ -2,6 +2,7 @@
 title: Project movement checklist
 description: Pre-move checklist and post-move verification steps to ensure successful project migration between organizations.
 sidebar_label: Movement checklist
+sidebar_position: 2
 tags:
   - organizations
   - projects

@@ -2,6 +2,7 @@
  title: Move projects 
  description: Overview of moving projects between organizations, including prerequisites, limitations, and how to request or perform a move.
  sidebar_label: Overview
+ sidebar_position: 1
  tags:
    - organizations
    - projects
@@ -26,7 +27,7 @@ When you move a project to another organization in Harness, several actions take
 
 1. **Entities inside the project are moved:** Pipelines, services, environments, and other [entities](#supported-entities) are carried over to the new organization. These entities remain intact; however, references to external items are validated during the move.
 
-2. **Organization-level dependencies become stale:** If the project depends on connectors, secrets, or templates defined at the old organization level, those items may no longer be accessible in the new organization. Because organizations are isolated, these dependencies must be recreated in the new organization.
+2. **Dependencies become stale:** If the project depends on connectors, secrets, or templates defined at the old organization level, those items may no longer be accessible in the new organization. Because organizations are isolated, these dependencies must be recreated in the new organization. Any references to account- or project-level entities remain intact.
 
 3. **Audit logs are generated:** All project moves are logged with details such as the user, timestamp, source organization, and destination organization. These audit trails provide accountability to support compliance requirements.
 
@@ -68,3 +69,11 @@ Historical data and execution records are fully preserved when moving projects, 
 ### Notifications and Webhooks
 
 Notifications continue to function normally after the move. However, generic webhooks and Slack webhooks that contain organization or project identifiers will fail and require reconfiguration. 
+
+:::note Redirection may break
+
+Redirect links in pipelines, webhooks, audit logs, or other entities may stop working after a project is moved across organizations, as the old organization will no longer be available or referenced.
+
+For example, if Project P is moved from Organization O1 to O2, new entities such as audit logs will be generated under the new organization. However, any redirection links that reference the old organization (O1) in those logs will no longer function.
+
+:::
