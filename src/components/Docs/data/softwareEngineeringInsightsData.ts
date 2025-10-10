@@ -69,6 +69,13 @@ import { MODULES } from "@site/src/constants";
               "Setup Teams that represents a group of developers working together within the organizational hierarchy",
             link: "/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams",
           },
+          {
+            title: "API",
+            module: MODULES.sei,
+            description:
+              "Programmatically manage developer identities and export productivity and efficiency metrics using the SEI API.",
+            link: "/docs/software-engineering-insights/harness-sei/api/developer-records",
+          },
         ],
       },
 
