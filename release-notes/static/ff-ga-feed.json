@@ -706,5 +706,17 @@
     "description": "The traffic routing resources will not be added to the canary workload.",
     "gaStartDate": "2025-10-09",
     "module": "Continuous Delivery"
+  },
+   {
+    "flagKey": "CDS_SETTINGS_ACCORDION",
+    "description": "This will add popover for settings in the Left navigation",
+    "gaStartDate": "2025-10-13",
+    "module": "Continuous Delivery"
+  },
+    {
+    "flagKey": "PIPE_REFERENCED_TEMPLATES",
+    "description": "This will add a referenced/unreferenced tag to the templates listing card and list view.",
+    "gaStartDate": "2025-10-13",
+    "module": "Pipeline"
   }
 ]
