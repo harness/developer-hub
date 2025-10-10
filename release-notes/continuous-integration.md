@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-09-23T10:00
+date: 2025-10-06T10:00
 sidebar_position: 10
 ---
 
@@ -47,6 +47,29 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
+
+## October 2025
+
+### Version 1.102.0
+
+<!-- 2025-10-06 -->
+#### Fixed issues
+- Self-signed certificates provided through the `DESTINATION_CA_PATH` or `CI_MOUNT_VOLUMES` environment variables will now be **appended** to the existing public certificates in the same path instead of replacing them.
+This behavior is controlled by the feature flag **`CI_APPEND_CERTS`** and is currently **supported only on Linux nodes** (Windows nodes are not supported). This fix will work with internal and existing public CA certificates. (ZD-74811, ZD-87244, CI-15527)
+
+  **Limitations and considerations for `CI_APPEND_CERTS` (CI-16816)**:
+
+  - This feature applies only to certificates whose destination file path ends with `.crt`. The source paths can be PEM files, but the destination must be a `.crt` file.
+
+  - The appending operation is performed by the CI add-on and therefore requires root access when the destination is in a sensitive location such as `/etc/ssl/certs`.
+
+    - In such cases, the step performing the append must run as `user: 0` (root).
+
+  - This feature flag can be a breaking change for pipelines that:
+
+    - Use non-root users, and
+
+    - Depend on the [existing mounted certs from the build pod](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/). 
 
 ## September 2025
 
