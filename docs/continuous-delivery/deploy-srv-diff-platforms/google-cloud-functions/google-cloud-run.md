@@ -157,7 +157,7 @@ We do not use the Google Run Deploy command here as this command takes every fie
 
 For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker images:
 
-- Docker Hub: [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
+- Docker Hub: [`harness/google-cloud-run-plugin:1.0.2-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
 - GAR:
   - Europe region: [GAR Image Repository for Google Cloud Run Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fgoogle-cloud-run-plugin?inv=1&invt=Ab5cNA)
 
@@ -211,7 +211,7 @@ Here is an interactive guide to setup your Cloud Run Job Stage.
 **Container Configuration**
 
 For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker image:
-- [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.1-linux-amd64/images/sha256-bfb25c236e59041452ca81c7370a5d1ca924b361acb5309de3424ccc0645d074)
+- [`harness/google-cloud-run-plugin:1.0.2-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
 
 This image is required to perform deployments to Google Cloud Run.
 
@@ -340,3 +340,57 @@ This ensures full compatibility with Google Cloud Run's native deployment mechan
 :::
 
 For detailed YAML reference and manifest specifications, refer to the official [Google Cloud Run YAML Reference](https://cloud.google.com/run/docs/reference/yaml/v1) documentation.
+
+## Troubleshooting
+
+### Authentication Error with "Inherit from Delegate" Mode
+
+**Issue**: Pipeline fails when using a GCP connector configured with the **Inherit from Delegate** authentication mode, displaying the following error:
+
+```
+Executing command: /google-cloud-sdk/bin/gcloud auth list --filter="status:ACTIVE" --format="value(account)"
+ERROR: (gcloud.auth.list) Name expected [ table[title='Credentialed Accounts'](
+status.yesno(yes='*', no=''):label=ACTIVE,
+account
+) *HERE* "value(account)"].
+Google Cloud Run plugin execution failed with error:
+An error occurred while setting up google cloud credentials:
+Error running gcloud auth list command: error executing command: exit status 1
+```
+
+**Root Cause**: This issue occurs when the Google Cloud SDK in the plugin container outputs additional messages (such as update notifications or survey prompts) along with the account information. These extra messages interfere with the expected output format of the `gcloud auth list` command, causing the authentication setup to fail.
+
+Example of problematic output:
+```
+customer-success-244100.svc.id.goog
+
+
+Updates are available for some Google Cloud CLI components.  To install them,
+please run:
+  $ gcloud components update
+
+
+
+To take a quick anonymous survey, run:
+  $ gcloud survey
+```
+
+**Solution**: Use the updated Google Cloud Run plugin image that handles these additional messages correctly:
+
+```
+harness/google-cloud-run-plugin:1.0.2-linux-amd64
+```
+
+**Steps to Update**:
+
+1. Navigate to your pipeline's **Execution** tab.
+2. Locate the **Google Cloud Run Deploy Step** or **Google Cloud Run Job Step**.
+3. In the **Container Configuration** section, update the image reference to:
+   - Docker Hub: `harness/google-cloud-run-plugin:1.0.2-linux-amd64`
+4. Save and re-run your pipeline.
+
+:::tip
+The updated plugin image (`1.0.2`) includes improved parsing logic that filters out extraneous messages from the `gcloud` CLI output, ensuring reliable authentication when using the "Inherit from Delegate" mode.
+:::
+
+This issue specifically affects deployments using GCP connectors configured with **Inherit from Delegate** authentication. If you're using **Service Account** or **OIDC** authentication methods, you may not encounter this issue.
