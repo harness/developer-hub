@@ -21,6 +21,16 @@ export const fallbackSDKs = [
     img: '/provider-logos/python-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#configure-fallback-treatments',
   },
+  {
+    name: 'Ruby SDK',
+    img: '/provider-logos/ruby-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#configure-fallback-treatments',
+  },
+  {
+    name: '.NET SDK',
+    img: '/provider-logos/dotnet-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#configure-fallback-treatments',
+  },
 ];
 
 // Helper to chunk items into rows of 4

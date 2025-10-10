@@ -1,6 +1,12 @@
 ---
 title: Docker delegate environment variables
-description: This topic describes the environment variables that are available for use with a Docker delegate. Some of these variables are included by default; you can specify others based on use case…
+description: Reference guide for environment variables available for Docker delegates, including configuration options and usage examples.
+sidebar_label: Docker Environment Variables
+sidebar_position: 5
+helpdocs_topic_id: b032tf34k9
+helpdocs_category_id: vm60533pvt
+helpdocs_is_private: false
+helpdocs_is_published: true
 ---
 
 

@@ -1,6 +1,7 @@
 ---
 title: Harness MCP Server (Beta)
 description: A unified interface for AI agents to interact with Harness tools and services using the Model Context Protocol (MCP).
+sidebar_label: MCP Server (Beta)
 sidebar_position: 10
 ---
 

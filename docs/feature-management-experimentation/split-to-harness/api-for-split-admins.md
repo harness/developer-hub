@@ -1,8 +1,8 @@
 ---
-title: Before and After Guide (API for Split Admins)
+title: API for Split Admins
 description: Learn how how the API for Split administrators works before and after your account migration.
 sidebar_label: API for Split Admins
-sidebar_position: 8
+sidebar_position: 1
 ---
 
 ## Overview
@@ -44,4 +44,3 @@ Yes. You can access [this collection](https://github.com/splitio/public-api-post
 ### Will the existing Postman collection for Split Public API endpoints on GitHub be maintained going forward?
 
 Yes. For clarity and consistency the variables in that collection will be updated soon to use the same variables as this collection. Later, we will update it to include the “after” endpoints seen here. 
-

@@ -358,7 +358,7 @@ In the example expression above, we can create a test variable with this express
 >
 ```
 
-For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator/).
 
 #### Using isResolved and isUnresolved evaluation instead of null
 Customers may be considering using a ternary evaluations which will evaluate whether the expression `== null` or `!= null` as the condition.

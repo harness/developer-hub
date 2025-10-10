@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-10-10T10:00:00
+date: 2025-10-15T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,17 +12,19 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: October 10, 2025
+#### Last updated: October 15, 2025
 
 ## October 2025
 
 ### [New Feature] Harness Proxy
 ----
-#### 2025-10-10
+#### 2025-10-15
 
 Harness Proxy, also known as the FME Forward Proxy, allows you to securely route all outgoing Harness traffic (including FME SDK calls and additional Harness module traffic) through a centralized, customer-managed proxy. It supports multiple Harness modules, starting with [FME](/docs/feature-management-experimentation) and [Database DevOps](/docs/database-devops), and is compatible with Java, Android, Node.js, and Browser SDKs.
  
-This feature is especially valuable for organizations with strict egress controls and security requirements. By deploying the Harness Proxy, you can:
+This feature is especially valuable for organizations with strict egress controls and security requirements. 
+
+By deploying the Harness Proxy, you can:
 
 - Centralize and control all outgoing traffic
 - Simplify network configuration by avoiding per-instance firewall exceptions
@@ -58,6 +60,8 @@ By configuring fallback treatments, you can improve reliability, reduce surprise
 - [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configure-fallback-treatments)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk/#configure-fallback-treatments)
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#configure-fallback-treatments)
+- [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#configure-fallback-treatments)
+- [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#configure-fallback-treatments)
 
 ### [New Feature] Experiment Entry Event Filter
 ----

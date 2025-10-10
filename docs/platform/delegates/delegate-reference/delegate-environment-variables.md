@@ -1,7 +1,8 @@
 ---
 title: Delegate environment variables
-description: The following table describes the environment variables that apply to the delegate manifest.
-# sidebar_position: 2
+description: Reference guide for environment variables available in delegate manifests, including configuration options and usage examples.
+sidebar_label: Environment Variables
+sidebar_position: 4
 helpdocs_topic_id: b032tf34k9
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false

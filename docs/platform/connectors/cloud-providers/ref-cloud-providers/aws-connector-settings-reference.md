@@ -463,6 +463,253 @@ By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **d
 
 For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add-aws-connector/#use-irsa).
 
+<details>
+<summary>Understanding IRSA Authentication Workflow</summary>
+
+#### What is IRSA?
+
+IRSA (IAM Roles for Service Accounts) is the AWS EKS native way to allow applications running in EKS pods to access AWS APIs using permissions configured in AWS IAM roles. This eliminates the need for static AWS credentials and provides fine-grained access control.
+
+#### How IRSA Works
+
+When using an AWS connector with IRSA (IAM Roles for Service Accounts), it's important to understand when and where the authentication happens, especially in complex scenarios involving delegates, runners, and different IAM roles.
+
+**Key Components:**
+
+1. **Pod**: Your Harness Delegate running in the EKS cluster
+2. **Service Account**: A Kubernetes service account with the annotation `eks.amazonaws.com/role-arn: <IAM_ROLE_ARN>` pointing to an IAM role
+3. **IAM Role**: An AWS IAM role with:
+   - Policies granting permissions to AWS resources (e.g., S3, ECR, ECS)
+   - Trust relationship allowing the specific service account to assume the role
+4. **OIDC Provider**: The EKS cluster's OIDC identity provider registered in AWS IAM that validates service account tokens
+
+**Authentication Flow:**
+
+When you configure an AWS connector with the **Use IRSA** option:
+
+1. **Service Account Configuration**: When a service account is created in EKS with IRSA annotation (`eks.amazonaws.com/role-arn`), it is associated with an IAM role.
+
+2. **Pod Configuration**: When the delegate pod is configured to use the service account, EKS automatically:
+   - Volume-mounts the service account JWT token into the pod at `/var/run/secrets/eks.amazonaws.com/serviceaccount/token`
+   - Injects environment variables:
+     - `AWS_ROLE_ARN`: The IAM role ARN to assume
+     - `AWS_WEB_IDENTITY_TOKEN_FILE`: Path to the service account token
+
+3. **Assume Role Request**: When the delegate needs to access AWS services, the AWS SDK:
+   - Automatically reads the `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` environment variables
+   - Calls `sts:AssumeRoleWithWebIdentity` API
+   - Sends the service account JWT token as proof of identity
+
+4. **Token Validation**: AWS STS validates the request:
+   - Retrieves the OIDC provider's public keys from the EKS cluster's OIDC discovery endpoint (`.well-known/openid-configuration`)
+   - Validates the JWT signature using the public keys
+   - Verifies the JWT was issued by the trusted OIDC provider
+   - Checks the IAM role's trust policy to ensure the service account (`system:serviceaccount:namespace:sa-name`) is authorized to assume the role
+
+5. **Credentials Issued**: On successful validation, AWS STS returns temporary security credentials (access key, secret key, session token) with an expiration time (typically 1 hour).
+
+6. **AWS API Calls**: The delegate uses these temporary credentials to authenticate AWS API calls (S3, ECR, ECS, etc.). The AWS SDK automatically refreshes credentials before they expire.
+
+**IRSA Authentication Flow:**
+
+```mermaid
+sequenceDiagram
+    participant H as Harness Platform
+    participant D as Delegate Pod<br/>(with Service Account)
+    participant SDK as AWS SDK
+    participant STS as AWS STS
+    participant OIDC as EKS OIDC Provider
+    participant AWS as AWS Service<br/>(S3, ECR, etc.)
+    
+    H->>D: Execute task using AWS connector
+    D->>SDK: Request AWS credentials
+    SDK->>SDK: Read AWS_ROLE_ARN and<br/>AWS_WEB_IDENTITY_TOKEN_FILE
+    SDK->>STS: AssumeRoleWithWebIdentity<br/>(role ARN + JWT token)
+    STS->>OIDC: Fetch public keys<br/>(.well-known/openid-configuration)
+    OIDC->>STS: Return public keys
+    STS->>STS: Validate JWT signature<br/>and trust policy
+    STS->>SDK: Return temporary credentials<br/>(AccessKey, SecretKey, SessionToken)
+    SDK->>D: Provide credentials
+    D->>AWS: Make API call with credentials
+    AWS->>D: Response
+    D->>H: Task result
+```
+
+##### Multi-Environment Scenarios
+
+In scenarios where you have multiple execution environments (for example, a Kubernetes delegate and separate runners), understanding which IAM role is used is critical.
+
+**Scenario 1: Delegate on EKS with IRSA + Cross-Account Access**
+
+IRSA works seamlessly with cross-account access. You can configure:
+- **Base IAM Role** (via IRSA): The role associated with the delegate's service account in Account A
+- **Cross-Account Role**: A role in Account B that the base role can assume
+
+Example connector configuration:
+```yaml
+connector:
+  name: aws-irsa-cross-account
+  type: Aws
+  spec:
+    credential:
+      type: Irsa
+      crossAccountAccess:
+        crossAccountRoleArn: arn:aws:iam::ACCOUNT_B:role/target-role
+      region: us-east-1
+    delegateSelectors:
+      - eks-delegate
+```
+
+The authentication flow:
+1. Delegate uses IRSA to obtain temporary credentials for its base IAM role (in the same account as the EKS cluster)
+2. Using those credentials, the delegate calls `sts:AssumeRole` to assume the cross-account role in Account B
+3. Delegate performs operations in Account B using the cross-account role's temporary credentials
+
+Note: The base IAM role must have `sts:AssumeRole` permission for the cross-account role ARN, and the cross-account role must trust the base IAM role in its trust policy.
+
+**Scenario 2: Delegate on EKS with IRSA + Windows Runner on EC2**
+
+Consider this common setup:
+- **Delegate**: Running in an EKS cluster with a Kubernetes service account tied to IAM Role A (via IRSA)
+- **Windows Runner**: Running on an EC2 instance with IAM Role B attached to the instance
+
+```mermaid
+graph TB
+    subgraph "EKS Cluster"
+        D[Delegate Pod<br/>Service Account: sa-delegate<br/>IAM Role A via IRSA]
+    end
+    
+    subgraph "EC2 Instance"
+        R[Windows Runner<br/>IAM Role B via Instance Profile]
+    end
+    
+    H[Harness Platform]
+    AWS1[AWS Services<br/>for Delegate Operations]
+    AWS2[AWS Services<br/>for Runner Operations]
+    
+    H -->|Task 1: Deploy to K8s| D
+    H -->|Task 2: Build on Windows| R
+    
+    D -->|Uses IAM Role A<br/>via IRSA| AWS1
+    R -->|Uses IAM Role B<br/>via IMDS| AWS2
+    
+    style D fill:#e1f5ff
+    style R fill:#fff4e1
+    style AWS1 fill:#d4edda
+    style AWS2 fill:#d4edda
+```
+
+**Authentication behavior:**
+
+1. **For tasks executed by the delegate itself** (such as Kubernetes deployments, delegate-side operations):
+   - The delegate uses **IAM Role A** (the IRSA role from its Kubernetes service account)
+   - This includes operations like pulling images from ECR, accessing S3 for artifacts, etc.
+
+2. **For tasks executed on the Windows runner** (such as build steps, PowerShell scripts):
+   - The runner uses **IAM Role B** (the EC2 instance profile role)
+   - The AWS connector's IRSA configuration does **not** apply to the runner
+   - The runner authenticates using the EC2 instance metadata service (IMDS)
+
+**Key Points:**
+
+- **AWS connector IRSA authentication is delegate-specific**: The IRSA configuration in the AWS connector only affects operations performed by the delegate pod itself.
+- **Runners use their own IAM roles**: Runners (VM-based, Docker, or Windows) use the IAM role attached to their host infrastructure (EC2 instance profile, ECS task role, etc.).
+- **Different roles for different components**: In a mixed environment, you may have different IAM roles with different permissions for the delegate and for runners.
+
+##### When to Use IRSA
+
+Use the **Use IRSA** option when:
+
+- Your Harness Delegate runs in an EKS cluster with IRSA configured
+- You want the delegate to use a specific IAM role (not the node's instance profile)
+- You need fine-grained IAM permissions for the delegate's operations
+- You're deploying to Fargate nodes (where IMDS is not available)
+
+##### When IRSA Does Not Apply
+
+IRSA authentication does **not** apply to:
+
+- **VM-based runners** (Windows or Linux) running on EC2 instances - these use EC2 instance profiles
+- **Docker runners** - these use the IAM role of their host
+- **Harness Cloud build infrastructure** - uses Harness-managed credentials
+- **Operations performed directly by runners** - runners authenticate independently of the delegate's IRSA configuration
+
+##### Troubleshooting Authentication Issues
+
+If you encounter authentication errors:
+
+1. **Identify where the operation is executing**: Determine if the operation runs on the delegate or on a runner.
+2. **Check the appropriate IAM role**:
+   - For delegate operations: Verify the IRSA role attached to the delegate's service account
+   - For runner operations: Verify the IAM role attached to the runner's host (EC2 instance profile, ECS task role, etc.)
+3. **Verify IAM policies**: Ensure the IAM role has the necessary permissions for the AWS service being accessed.
+4. **Check trust relationships**: For IRSA, verify the IAM role's trust policy allows the EKS cluster's OIDC provider.
+5. **Review logs**: Check delegate logs and runner logs to see which credentials are being used.
+
+##### Verifying IRSA Configuration
+
+To verify that IRSA is working correctly on your delegate, you can exec into the delegate pod and run the following commands:
+
+**Check environment variables:**
+```bash
+# Exec into the delegate pod
+kubectl exec -it <delegate-pod-name> -n harness-delegate-ng -- /bin/bash
+
+# Verify IRSA environment variables are set
+echo $AWS_ROLE_ARN
+echo $AWS_WEB_IDENTITY_TOKEN_FILE
+
+# Verify the token file exists
+ls -la $AWS_WEB_IDENTITY_TOKEN_FILE
+```
+
+**Test AWS credentials:**
+```bash
+# Install AWS CLI if not already present
+microdnf install unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+
+# Verify current identity
+aws sts get-caller-identity
+
+# Test access to AWS services (example: S3)
+aws s3 ls
+
+# Test access to ECR
+aws ecr list-images --repository-name <your-repo-name>
+```
+
+**Test cross-account access (if configured):**
+```bash
+# Assume the cross-account role
+export $(printf "AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s" \
+$(aws sts assume-role \
+--role-arn "arn:aws:iam::TARGET_ACCOUNT:role/target-role" \
+--role-session-name TestSession \
+--query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
+--output text))
+
+# Verify assumed role identity
+aws sts get-caller-identity
+
+# Test operations in target account
+aws s3 ls
+aws ecr list-images --repository-name <repo-name>
+```
+
+Expected output for `aws sts get-caller-identity` with IRSA:
+```json
+{
+    "UserId": "AROAXXXXXXXXXX:botocore-session-1234567890",
+    "Account": "123456789012",
+    "Arn": "arn:aws:sts::123456789012:assumed-role/your-irsa-role/botocore-session-1234567890"
+}
+```
+
+</details>
+
 </TabItem>
 <TabItem value="oidc" label="Use OIDC">
 

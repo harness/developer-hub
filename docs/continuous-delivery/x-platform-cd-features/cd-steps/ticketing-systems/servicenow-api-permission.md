@@ -2,7 +2,7 @@
 description: KB - Debug ServiceNow create, update, and approval steps
 title: ServiceNow create, update, and approval API permissions
 redirect_from:
-  - /kb/continuous-delivery/articles/servicenow-api-permission
+  - /docs/continuous-delivery/kb-articles/articles/servicenow-api-permission
 ---
 
 This KB discusses the permissions required for ServiceNow create, update, and approval steps. Make sure that you've the permissions required for the `ticket` and `getMetadata` APIs apart from the permissions mentioned in the following sections. 

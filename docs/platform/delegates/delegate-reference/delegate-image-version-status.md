@@ -1,6 +1,7 @@
 ---
 title: Delegate image version support status
-description: This topic lists delegate image versions and their support status.
+description: View delegate image versions and their support lifecycle status including End of Support (EOS) and End of Life (EOL) dates.
+sidebar_label: Image Version Support Status
 sidebar_position: 1
 ---
 

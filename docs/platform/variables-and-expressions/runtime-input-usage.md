@@ -94,7 +94,7 @@ If your default value has a comma, you must escape the value string using the fo
 
 When you run a pipeline that includes default values for runtime input, if you provide an expression for a runtime input that resolves to `null`, then the expression **isn't** replaced by the default value.
 
-To avoid unwanted `null` values, consider using a [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+To avoid unwanted `null` values, consider using a [ternary operator](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator/).
 
 ### Use a JSON object as the default value
 

@@ -8,7 +8,7 @@ sidebar_label: Use Existing Remote State
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness IaCM lets you reuse existing remote state backends—such as **AWS S3**, **Google Cloud Storage (GCS)**, or **Azure Blob Storage**—without migrating to Harness-managed storage. Just point your `backends.tf` file to your existing backend, and Harness will use it directly with OpenTofu.
+Harness IaCM lets you reuse existing remote state backends, such as **AWS S3**, **Google Cloud Storage (GCS)**, or **Azure Blob Storage**, without migrating to Harness-managed storage. Just point your `backends.tf` file to your existing backend, and Harness will use it directly with OpenTofu.
 
 This approach is ideal if you're onboarding to IaCM, already use remote backends, or need compatibility with other systems or CI pipelines.
 
@@ -106,17 +106,29 @@ Each remote backend implements its own locking mechanism:
 OpenTofu handles lock acquisition and release during pipeline execution. There is **no additional locking layer in IaCM**—locks are managed entirely by OpenTofu based on the backend settings.
 
 ## Troubleshooting & Best Practices
-| Issue                              | Recommendation                                                                                              |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `Error acquiring the state lock`   | Ensure no other process (e.g. local Terraform CLI) is holding a lock. Retries, if any, are handled by OpenTofu/Terraform directly.                                      |
-| Permission denied                  | Check that your Harness connector or environment variables have full access to the backend bucket or table. |
-| Plan step fails with missing state | Confirm that the key or prefix in `backends.tf` matches the remote path.                                    |
 
-- Use versioned buckets and lock tables for safe collaboration.
-- Keep `backends.tf` in version control but avoid hardcoding secrets.
-- Define backend authentication via environment variables in the Harness UI.
-- Validate that only one process accesses the state at a time to avoid corruption.
+| Issue or Question | Recommendation |
+| ------------------ | -------------- |
+| `Error acquiring the state lock.` | Ensure no other process (for example, a local OpenTofu/Terraform CLI run) is holding a lock. Lock retries, if any, are handled automatically by OpenTofu/Terraform. |
+| **Plan step fails with missing or unexpected state.** | Confirm that the `key` or `prefix` in your `backends.tf` file matches the correct path in your remote backend. If you recently migrated from Terraform Cloud, verify that no `cloud {}` block remains in your configuration. Harness uses direct backend integrations instead of cloud-based blocks. |
+| **Local CLI commands behave differently than Terraform Cloud.** | Harness IaCM runs plans and applies remotely through pipelines and the IaCM CLI, not via `cloud {}` blocks. Use the Harness CLI or pipeline executions to perform remote plan and apply operations. A dedicated CLI command for direct state inspection is under development. |
+| **Pipeline fails after local testing with a temporary backend.** | If you created a local `backend.tf` for inspection, add it to `.gitignore` or remove it before running your pipeline. A committed local backend configuration overrides the workspace-managed backend during remote execution. |
+| **Permission denied or backend authentication errors.** | Check that your Harness connector or environment variables grant full read/write access to the backend bucket, table, or storage account. Review your connector credentials and environment variables in Workspace settings. |
+| **Concurrent operations on the same state file.** | Each backend handles locking independently (for example, DynamoDB for S3, object metadata for GCS, leases for Azure Blob). Wait for existing locks to clear before retrying; Harness does not add an additional locking layer. |
 
+**Best Practices**
+
+- Use versioned buckets or lock tables for safe collaboration.  
+- Keep `backends.tf` in version control, but avoid hardcoding secrets.  
+- Define backend credentials via environment variables in the Harness UI or Workspace settings.  
+- If migrating from Terraform Cloud or OpenTofu Cloud, remove any `cloud {}` blocks and rely on backend definitions instead.  
+- Validate that only one process accesses a given state at a time to prevent corruption.  
+- Run speculative plans only from pipelines to ensure consistent remote state access.  
+- Use workspace variables or pipeline inputs for backend paths when multiple environments share the same backend configuration.
+
+:::tip 
+Harness Workspaces provide the same remote execution context as Terraform Cloud workspaces — just with full control over backend configuration and pipeline orchestration.
+:::
 ## Related Links
 - [Provision a Workspace](/docs/infra-as-code-management/workspaces/provision-workspace)
 - [IaCM Best Practices](/docs/infra-as-code-management/iacm-best-practices)
