@@ -29,8 +29,6 @@ export enum MODULES {
   fme = 'fme',
   ata = 'ata',
   adra = 'adra',
-  arp = 'arp',
-  ast = 'ast',
   tbh = 'tbh'
 }
 
