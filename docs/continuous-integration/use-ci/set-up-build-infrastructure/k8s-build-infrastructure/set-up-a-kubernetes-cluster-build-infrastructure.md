@@ -18,6 +18,7 @@ import TabItem from '@theme/TabItem';
 You can use a Kubernetes cluster build infrastructure for **Build** stages in Harness CI pipelines. To do this, you need to:
 
 <!-- no toc -->
+
 1. [Set up the Kubernetes cluster to use as your build infrastructure.](#create-a-kubernetes-cluster)
 2. [Create a Kubernetes cluster connector and install the Harness Delegate.](#create-a-kubernetes-cluster-connector-and-install-the-delegate)
 3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
@@ -30,7 +31,7 @@ The following diagram shows the architecture of a kubernetes cluster build infra
 
 :::note
 You must install the Harness Delegate in the same cluster you use for the build farm.
-::: 
+:::
 
 The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
 
@@ -54,12 +55,12 @@ Create a Kubernetes cluster to use for builds. For instructions on creating clus
 
 Make sure your Kubernetes cluster meets the following requirements:
 
-* The cluster has sufficient memory and CPU to support the resources required by your builds *and* the Harness Delegate. The delegate is an agent between Harness and your cluster that you will install on the cluster as part of the process to configure this build infrastructure.
-* The cluster meets the [CI cluster requirements](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
-* The cluster has the [roles and policies required for builds](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#roles-and-policies-for-the-connector).
-* If required for your builds, the cluster supports [privileged mode for Docker-in-Docker](#docker-in-docker-requires-privileged-mode) and allows [root access for Build and Push steps](#build-and-push-steps-require-root-access).
-* If you use Istio MTLS Strict mode, you [added a headless service](#create-headless-service-for-istio-mtls-strict-mode).
-* Port 20001 needs to be open on the Kubernetes infrastructure because the Harness delegate communicates with the Lite Engine using this port.
+- The cluster has sufficient memory and CPU to support the resources required by your builds _and_ the Harness Delegate. The delegate is an agent between Harness and your cluster that you will install on the cluster as part of the process to configure this build infrastructure.
+- The cluster meets the [CI cluster requirements](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
+- The cluster has the [roles and policies required for builds](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#roles-and-policies-for-the-connector).
+- If required for your builds, the cluster supports [privileged mode for Docker-in-Docker](#docker-in-docker-requires-privileged-mode) and allows [root access for Build and Push steps](#build-and-push-steps-require-root-access).
+- If you use Istio MTLS Strict mode, you [added a headless service](#create-headless-service-for-istio-mtls-strict-mode).
+- Port 20001 needs to be open on the Kubernetes infrastructure because the Harness delegate communicates with the Lite Engine using this port.
 
 ### Docker-in-Docker requires privileged mode
 
@@ -76,17 +77,17 @@ If your build [runs as non-root](#run-as-non-root-or-a-specific-user), you can r
 If your security policy doesn't allow running as root, you can use the Builah plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md) instead of the built-in **Build and Push** steps.
 
 ### Use mTLS on Kubernetes infrastructure
+
 In order to [use mTLS](/docs/platform/delegates/secure-delegates/delegate-mtls-support/) on a Kubernetes delegate for CI, you will need to ensure you have these minimum required versions:
 
 | Service          | Minimum Version Required |
-|------------------|--------------------------|
+| ---------------- | ------------------------ |
 | log-service      | 1.17.3                   |
 | pipeline-service | 1.108.10                 |
 | ng-manager       | 1.69.11                  |
 | ci-manager       | 1.57.6                   |
 | agent-gateway    | 1.1.0                    |
 | delegate         | 24.11.84306              |
-
 
 ### Create headless service for Istio MTLS STRICT mode
 
@@ -230,36 +231,36 @@ stages:
 
 You can add a list of volumes you want to mount onto the pod where the stage runs.
 
-* **Mount Path:** Enter the path to the volume.
-* **Type:** Select **Empty Directory**, **Host Path**, or **Persistent Volume Claim**.
-* If **Type** is **Empty Directory**, you can specify the storage **Medium** and volume's maximum memory **Size**.
-* If **Type** is **Host Path**, you must specify **Path** and you can specify an optional **Path Type**.
-* If **Type** is **Persistent Volume Claim**, you must specify a **Claim Name** and whether the volume is **Read Only**.
+- **Mount Path:** Enter the path to the volume.
+- **Type:** Select **Empty Directory**, **Host Path**, or **Persistent Volume Claim**.
+- If **Type** is **Empty Directory**, you can specify the storage **Medium** and volume's maximum memory **Size**.
+- If **Type** is **Host Path**, you must specify **Path** and you can specify an optional **Path Type**.
+- If **Type** is **Persistent Volume Claim**, you must specify a **Claim Name** and whether the volume is **Read Only**.
 
 The following YAML example shows two Empty Directory volumes that would be used for PostgreSQL data.
 
 ```yaml
-            spec:
-              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
-              namespace: YOUR_K8S_CLUSTER_NAMESPACE
-              volumes:
-                - mountPath: /tmp/pgdata1
-                  type: EmptyDir
-                  spec:
-                    medium: ""
-                - mountPath: /tmp/pgdata2
-                  type: EmptyDir
-                  spec:
-                    medium: ""
+spec:
+  connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
+  namespace: YOUR_K8S_CLUSTER_NAMESPACE
+  volumes:
+    - mountPath: /tmp/pgdata1
+      type: EmptyDir
+      spec:
+        medium: ""
+    - mountPath: /tmp/pgdata2
+      type: EmptyDir
+      spec:
+        medium: ""
 ```
 
 ### Service Account Name
 
 Specify a Kubernetes service account that you want step containers to use when communicating with the Kubernetes API server. Leave this field blank if you want to use the namespace's default service account. You must set this field in any of the following cases:
 
-* Your build infrastructure runs on EKS, you have an IAM role associated with the service account, *and* the stage has a step that uses a Harness AWS connector with IRSA. For more information, go to the AWS documentation on [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
-* Your Build stage has steps that communicate with any external services using a service account other than the default. For more information, go to the Kubernetes documentation on [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
-* Your Kubernetes cluster connector inherits authentication credentials from the Delegate.
+- Your build infrastructure runs on EKS, you have an IAM role associated with the service account, _and_ the stage has a step that uses a Harness AWS connector with IRSA. For more information, go to the AWS documentation on [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
+- Your Build stage has steps that communicate with any external services using a service account other than the default. For more information, go to the Kubernetes documentation on [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
+- Your Kubernetes cluster connector inherits authentication credentials from the Delegate.
 
 ### Automount Service Account Token
 
@@ -283,12 +284,12 @@ Custom label values must use the following regex in order to be generated:
 
 Harness adds the following labels automatically:
 
-* `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
-* `stageName`: See `pipeline.stages.stage.name` in the Pipeline YAML.
-* `orgID`: See `pipeline.orgIdentifier` in the Pipeline YAML.
-* `projectID`: See `pipeline.projectIdentifier` in the Pipeline YAML.
-* `pipelineID`: See `pipeline.identifier` in the Pipeline YAML.
-* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`, for example:
+- `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
+- `stageName`: See `pipeline.stages.stage.name` in the Pipeline YAML.
+- `orgID`: See `pipeline.orgIdentifier` in the Pipeline YAML.
+- `projectID`: See `pipeline.projectIdentifier` in the Pipeline YAML.
+- `pipelineID`: See `pipeline.identifier` in the Pipeline YAML.
+- `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`, for example:
 
 ```
 https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline
@@ -302,12 +303,12 @@ You can add Kubernetes annotations to the pods in your infrastructure. An annota
 
 Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) for the stage (pod) and steps (containers):
 
-* **Privileged:** Run all containers with the [`--privileged`](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) flag enabled. This flag is disabled by default. You can override this setting in individual **Run** and **Test** steps.
-* **Allow Privilege Escalation:** When enabled, a process can gain more privileges than its parent process. This setting determines whether the [`no_new_privs`](https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt) flag gets set on the container process.
-* **Add Capabilities:** The list of capabilities to add to each step by default, in addition to the runtime defaults. This field corresponds to the [`capabilities: add`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
-* **Drop Capabilities:** The list of capabilities that must be dropped from each step. This field corresponds to the [`capabilities: drop`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
-* **Read-Only Root Filesystem:** Run all steps with a read-only root filesystem that has no writable layer.
-* **Run as Non-Root** and **Run as User:** Go to [Run as non-root or a specific user](#run-as-non-root-or-a-specific-user).
+- **Privileged:** Run all containers with the [`--privileged`](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) flag enabled. This flag is disabled by default. You can override this setting in individual **Run** and **Test** steps.
+- **Allow Privilege Escalation:** When enabled, a process can gain more privileges than its parent process. This setting determines whether the [`no_new_privs`](https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt) flag gets set on the container process.
+- **Add Capabilities:** The list of capabilities to add to each step by default, in addition to the runtime defaults. This field corresponds to the [`capabilities: add`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
+- **Drop Capabilities:** The list of capabilities that must be dropped from each step. This field corresponds to the [`capabilities: drop`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
+- **Read-Only Root Filesystem:** Run all steps with a read-only root filesystem that has no writable layer.
+- **Run as Non-Root** and **Run as User:** Go to [Run as non-root or a specific user](#run-as-non-root-or-a-specific-user).
 
 #### Run as non-root or a specific user
 
@@ -321,13 +322,13 @@ With a Kubernetes cluster build infrastructure, all [Build and Push steps](/docs
 
 If you enable **Run as Non-Root**, then you must:
 
-* Run the **Build and Push** step as root by setting **Run as User** to `0` on the **Build and Push** step. This will use the root user for that individual step only.
-* If your security policy doesn't allow running as root for any step, you must use the Buildah Drone plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
+- Run the **Build and Push** step as root by setting **Run as User** to `0` on the **Build and Push** step. This will use the root user for that individual step only.
+- If your security policy doesn't allow running as root for any step, you must use the Buildah Drone plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
 :::
 
-* **Run as Non-Root:** Enable this option to run all steps as a non-root user. If enabled, you must specify a default user ID for all containers in the **Run as User** field.
-* **Run as User:** Specify a user ID, such as `1000`, to use for all containers (steps) in the pod (stage). You can also set **Run as User** values for individual steps. If you set **Run as User** on a step, it overrides the build infrastructure **Run as User** setting.
+- **Run as Non-Root:** Enable this option to run all steps as a non-root user. If enabled, you must specify a default user ID for all containers in the **Run as User** field.
+- **Run as User:** Specify a user ID, such as `1000`, to use for all containers (steps) in the pod (stage). You can also set **Run as User** values for individual steps. If you set **Run as User** on a step, it overrides the build infrastructure **Run as User** setting.
 
 For more information, go to [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs.
 
@@ -346,15 +347,15 @@ A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-evict
 You can provide a list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints. For example:
 
 ```yaml
-              tolerations:
-                - effect: NoSchedule
-                  key: key1
-                  operator: Equal
-                  value: value1
-                - effect: NoSchedule
-                  key: key2
-                  operator: Equal
-                  value: value2
+tolerations:
+  - effect: NoSchedule
+    key: key1
+    operator: Equal
+    value: value1
+  - effect: NoSchedule
+    key: key2
+    operator: Equal
+    value: value2
 ```
 
 #### Multiple tolerations with the same key
@@ -362,52 +363,53 @@ You can provide a list of [`tolerations`](https://kubernetes.io/docs/concepts/sc
 Keys are reserved keywords used to validate unique FQNs. If you have multiple tolerations with the same key, you must include an `identifier` to differentiate them. For example:
 
 ```yaml
-    tolerations:
-      - identifier: identifier1
-        effect: NoSchedule
-        key: key1
-        operator: Equal
-        value: value1
-      - identifier: identifier2
-        effect: NoSchedule
-        key: key1
-        operator: Equal
-        value: value2
+tolerations:
+  - identifier: identifier1
+    effect: NoSchedule
+    key: key1
+    operator: Equal
+    value: value1
+  - identifier: identifier2
+    effect: NoSchedule
+    key: key1
+    operator: Equal
+    value: value2
 ```
 
 ### Customize Build Pod Configuration
 
-The `podSpecOverlay` field in the Kubernetes infrastructure settings of the CI stage allows you to apply custom configurations to the build pod. 
+The `podSpecOverlay` field in the Kubernetes infrastructure settings of the CI stage allows you to apply custom configurations to the build pod.
 
 :::note
-* podSpecOverlay is currently supported via YAML only. Please use the YAML editor to modify.
-* This feature requires using delegate version 24.09.83900 or higher.
-:::
+
+- podSpecOverlay is currently supported via YAML only. Please use the YAML editor to modify.
+- This feature requires using delegate version 24.09.83900 or higher.
+  :::
 
 By default, this field supports only `topologySpreadConstraints`. For advanced use cases like custom volumes, securityContext, or node selectors, broader `PodSpec` overrides are available behind a feature flag. For details, see [Customize the PodSpec in Kubernetes build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/customize-podspec).
 
-#### Usage example 
+#### Usage example
 
 ```yaml
-  podSpecOverlay: |-
-    topologySpreadConstraints:
-      - maxSkew: 3
-        minDomains: 2
-        topologyKey: topology.kubernetes.io/zone
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchExpressions:
-            - key: app
-              operator: In
-              values:
-                - my-app
-                - anotherapp
-            - key: tier
-              operator: NotIn
-              values:
-                - frontend
-                - backend
-                - full-stack
+podSpecOverlay: |-
+  topologySpreadConstraints:
+    - maxSkew: 3
+      minDomains: 2
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: DoNotSchedule
+      labelSelector:
+        matchExpressions:
+          - key: app
+            operator: In
+            values:
+              - my-app
+              - anotherapp
+          - key: tier
+            operator: NotIn
+            values:
+              - frontend
+              - backend
+              - full-stack
 ```
 
 ### Host Names
@@ -467,18 +469,18 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 ## Troubleshoot Kubernetes cluster build infrastructures
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including:
 
-* [How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?](/kb/continuous-integration/continuous-integration-faqs/#how-can-you-execute-docker-commands-in-a-ci-pipeline-that-runs-on-a-kubernetes-cluster-that-lacks-a-docker-runtime)
-* [How do I configure the build pod to communicate with the Kubernetes API server?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-configure-the-build-pod-to-communicate-with-the-kubernetes-api-server)
-* [Do I have to mount a service account on the build pod?](/kb/continuous-integration/continuous-integration-faqs/#do-i-have-to-mount-a-service-account-on-the-build-pod)
-* [What types of volumes can be mounted on a CI build pod?](/kb/continuous-integration/continuous-integration-faqs/#what-types-of-volumes-can-be-mounted-on-a-ci-build-pod)
-* [How can I run the build pod on a specific node?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-run-the-build-pod-on-a-specific-node)
-* [I want to use an EKS build infrastructure with an AWS connector that uses IRSA](/kb/continuous-integration/continuous-integration-faqs/#i-want-to-use-an-eks-build-infrastructure-with-an-aws-connector-that-uses-irsa)
-* [Why are build pods being evicted?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-pods-being-evicted)
-* [AKS builds timeout](/kb/continuous-integration/continuous-integration-faqs/#aks-builds-timeout)
-* [What permissions are required to run CI builds in an OpenShift cluster?](/kb/continuous-integration/continuous-integration-faqs/#what-permissions-are-required-to-run-ci-builds-in-an-openshift-cluster)
-* [Delegate is unable to connect to the created build farm](/kb/continuous-integration/continuous-integration-faqs/#delegate-is-unable-to-connect-to-the-created-build-farm)
-* [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/kb/continuous-integration/continuous-integration-faqs/#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
+- [How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-you-execute-docker-commands-in-a-ci-pipeline-that-runs-on-a-kubernetes-cluster-that-lacks-a-docker-runtime)
+- [How do I configure the build pod to communicate with the Kubernetes API server?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-configure-the-build-pod-to-communicate-with-the-kubernetes-api-server)
+- [Do I have to mount a service account on the build pod?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#do-i-have-to-mount-a-service-account-on-the-build-pod)
+- [What types of volumes can be mounted on a CI build pod?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-types-of-volumes-can-be-mounted-on-a-ci-build-pod)
+- [How can I run the build pod on a specific node?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-run-the-build-pod-on-a-specific-node)
+- [I want to use an EKS build infrastructure with an AWS connector that uses IRSA](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#i-want-to-use-an-eks-build-infrastructure-with-an-aws-connector-that-uses-irsa)
+- [Why are build pods being evicted?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-are-build-pods-being-evicted)
+- [AKS builds timeout](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#aks-builds-timeout)
+- [What permissions are required to run CI builds in an OpenShift cluster?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-permissions-are-required-to-run-ci-builds-in-an-openshift-cluster)
+- [Delegate is unable to connect to the created build farm](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#delegate-is-unable-to-connect-to-the-created-build-farm)
+- [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
 
 For more questions and issues related to Kubernetes delegates, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).

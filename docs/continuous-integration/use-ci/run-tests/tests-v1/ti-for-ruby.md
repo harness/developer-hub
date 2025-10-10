@@ -13,12 +13,11 @@ import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.m
 import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 :::warning
-This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
+This page contains instructions for using Test Intelligence (v1) with the **Run Tests** step.
 
 While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
 
 :::
-
 
 ## Enable TI for Ruby
 
@@ -75,11 +74,11 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 <summary>Trigger test selection with a manual build</summary>
 1. Open a PR or push changes to your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md), and then run your pipeline.
 
-   If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
+If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
 
-   If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
+If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
 
-   <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
+<DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 
@@ -195,7 +194,7 @@ pipeline:
                   name: Run_Ruby_Tests
                   identifier: Run_Ruby_Tests
                   spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: ruby:latest ## Specify if required by your build infrastructure.
                     language: Ruby
                     buildTool: Rspec
@@ -333,11 +332,11 @@ The timeout limit for the step. Once the timeout is reached, the step fails and 
 
 ## Troubleshoot Test Intelligence
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
 
-* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
-* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
-* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
-* [Ruby Test Intelligence can't find rspec helper file.](/kb/continuous-integration/continuous-integration-faqs/#ruby-test-intelligence-cant-find-rspec-helper-file)
-* [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
-* [Test Intelligence fails with error 'Unable to get changed files list'.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-with-error-unable-to-get-changed-files-list)
+- [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+- [Test Intelligence call graph is empty.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+- [If the Run Tests step fails, does the Post-Command script run?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#if-the-run-tests-step-fails-does-the-post-command-script-run)
+- [Ruby Test Intelligence can't find rspec helper file.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#ruby-test-intelligence-cant-find-rspec-helper-file)
+- [Does Test Intelligence support dynamic code?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-support-dynamic-code)
+- [Test Intelligence fails with error 'Unable to get changed files list'.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#test-intelligence-fails-with-error-unable-to-get-changed-files-list)

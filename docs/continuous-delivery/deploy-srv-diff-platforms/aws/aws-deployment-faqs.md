@@ -423,7 +423,7 @@ The output variables can be used within:
 - inside the pipeline
 - inside a step group
 
-Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/)
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/output-variable-for-powershell-script/)
 
 ### How to troubleshoot "Invalid request: Invalid Load balancer configuration in Service." error?
 

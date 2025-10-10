@@ -105,34 +105,34 @@ export const categories: Category[] = [
     blurb: "Protect apps from design to runtime.",
     items: [
       {
+        name: "Application & API Security Posture",
+        href: "/docs/appsec-security-posture",
+        module: "asp",
+        description: "Discover App/APIs and assess risks."
+      },
+      {
+        name: "Application & API Runtime Protection",
+        href: "/docs/appsec-runtime-protection",
+        module: "arp",
+        description: "Protect App/APIs and block attacks."
+      },
+      {
+        name: "Application & API Security Testing",
+        href: "/docs/appsec-security-testing",
+        module: "ast",
+        description: "Run security tests and detect issues."
+      },
+      {
         name: "Security Testing Orchestration",
         href: "/docs/security-testing-orchestration",
         module: "sto",
         description: "Automate security scans in pipelines."
       },
       {
-        name: "Application & API Posture Management",
-        href: "https://www.traceable.ai/application-discovery-and-risk-assessment",
-        module: "adra",
-        description: "Discover and assess app/API risks."
-      },
-      {
-        name: "Application & API Security Testing",
-        href: "https://www.traceable.ai/application-security-testing",
-        module: "ast",
-        description: "Run automated app/API security tests."
-      },
-      {
         name: "Supply Chain Security",
         href: "/docs/software-supply-chain-assurance",
         module: "ssca",
         description: "Secure dependencies and build integrity."
-      },
-      {
-        name: "Application & API Protection",
-        href: "https://www.traceable.ai/application-runtime-protection",
-        module: "arp",
-        description: "Enforce runtime app and API defenses."
       },
     ],
   },

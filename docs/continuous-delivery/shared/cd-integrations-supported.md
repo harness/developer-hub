@@ -1382,7 +1382,7 @@ You can always update the template versions manually. Go to [Reconcile Pipeline 
 Harness does not enforce any policy regarding fetching the latest image tags.
 To debug this error, consider the following implementations:
 - Ensure the correct image tag is specified in the YAML configuration.
-- For more details, go to [Latest Published Tag](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/).
+- For more details, go to [Latest Published Tag](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/last-published-tag/).
 
 
 #### How can I prevent Terraform state drift caused by AWS ECR permissions policies created by Harness?

@@ -15,9 +15,9 @@ import TabItem from '@theme/TabItem';
 
 You can configure CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
 
-* [Set up a Linux local runner build infrastructure](#set-up-a-linux-local-runner)
-* [Set up a macOS local runner build infrastructure](#set-up-a-macos-local-runner)
-* [Set up a Windows local runner build infrastructure](#set-up-a-windows-local-runner)
+- [Set up a Linux local runner build infrastructure](#set-up-a-linux-local-runner)
+- [Set up a macOS local runner build infrastructure](#set-up-a-macos-local-runner)
+- [Set up a Windows local runner build infrastructure](#set-up-a-windows-local-runner)
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
@@ -39,19 +39,20 @@ The delegate install command uses the default authentication token for your Harn
 
 Review the following requirements for local runner build infrastructures:
 
-* There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner and a delegate.
-* The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
-   * Default 0.5 CPU.
-   * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
-* The machine where the delegate runs must have Docker installed.
+- There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner and a delegate.
+- The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
+  - Default 0.5 CPU.
+  - Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
+- The machine where the delegate runs must have Docker installed.
 
 ### Install the delegate
 
 1. Refer to the [Delegate installation page](/docs/platform/delegates/install-delegates/overview).
 2. Copy the delegate install command and modify it as follows:
 
-   * Add `--net=host` to the first line.
-   * Add `-e DELEGATE_TAGS="DELEGATE_OS_ARCH"`, and replace `DELEGATE_OS_ARCH` with the tag corresponding to your Docker environment's architecture: `linux-amd64` or `linux-arm64`.
+   - Add `--net=host` to the first line.
+   - Add `-e DELEGATE_TAGS="DELEGATE_OS_ARCH"`, and replace `DELEGATE_OS_ARCH` with the tag corresponding to your Docker environment's architecture: `linux-amd64` or `linux-arm64`.
+
 3. Run the modified install command on your build host machine.
 
 ### Install the Harness Docker Runner
@@ -93,19 +94,20 @@ After configuring the host machine, you need to [set the pipeline's build infras
 
 Review the following requirements for local runner build infrastructures:
 
-* There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner and a delegate.
-* The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
-   * Default 0.5 CPU.
-   * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
-* The machine where the delegate runs must have Docker installed.
+- There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner and a delegate.
+- The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
+  - Default 0.5 CPU.
+  - Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
+- The machine where the delegate runs must have Docker installed.
 
 ### Install the delegate
 
 1. Refer to the [Delegate installation page](/docs/platform/delegates/install-delegates/overview).
 2. Copy the delegate install command and modify it as follows:
 
-   * Add `-e DELEGATE_TAGS="DELEGATE_OS_ARCH"`, and replace `DELEGATE_OS_ARCH` with the tag corresponding to your Docker environment's architecture: `macos-amd64` or `macos-arm64`.
-   * Add `-e RUNNER_URL=http://host.docker.internal:3000`.
+   - Add `-e DELEGATE_TAGS="DELEGATE_OS_ARCH"`, and replace `DELEGATE_OS_ARCH` with the tag corresponding to your Docker environment's architecture: `macos-amd64` or `macos-arm64`.
+   - Add `-e RUNNER_URL=http://host.docker.internal:3000`.
+
 3. Run the modified install command on your build host machine.
 
 ### Install the Harness Docker Runner
@@ -150,7 +152,7 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 4. Select **OK**.
 5. Select **Open Anyway** next to the `not from an identified developer` message.
 
-  ![](./static/define-a-macos-build-infrastructure-11.png)
+![](./static/define-a-macos-build-infrastructure-11.png)
 
 6. Select **Open** to confirm that you want to run the binary. If this window doesn't appear, rerun the binary start command.
 
@@ -166,21 +168,21 @@ After configuring the host machine, you need to [set the pipeline's build infras
 
 Review the following requirements for Windows local runner build infrastructures:
 
-* You need two machines *for each build host*:
-   * A Windows machine where the Harness Docker Runner will run. **This machine must have Docker for Windows installed.** The Harness Docker Runner runs as an executable.
-   * A Linux or macOS machine where the Harness Delegate will run. **This machine must have Docker installed.** The delegate runs as a container.
-* There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner machine and a delegate machine.
-* The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
-   * Default 0.5 CPU.
-   * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
+- You need two machines _for each build host_:
+  - A Windows machine where the Harness Docker Runner will run. **This machine must have Docker for Windows installed.** The Harness Docker Runner runs as an executable.
+  - A Linux or macOS machine where the Harness Delegate will run. **This machine must have Docker installed.** The delegate runs as a container.
+- There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner machine and a delegate machine.
+- The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
+  - Default 0.5 CPU.
+  - Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
 
 ### Install the delegate
 
 1. Refer to the [Delegate installation page](/docs/platform/delegates/install-delegates/overview).
 2. Copy the delegate install command and modify it as follows:
 
-   * Add `-e DELEGATE_TAGS="windows-amd64"`.
-   * Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
+   - Add `-e DELEGATE_TAGS="windows-amd64"`.
+   - Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
 
    :::warning
 
@@ -215,8 +217,8 @@ Install the Harness Docker Runner on the Windows machine that you specified in t
 
    :::info
 
-   * With Windows, volume mapping must be folder-to-folder.
-   * If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate).
+   - With Windows, volume mapping must be folder-to-folder.
+   - If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate).
 
    :::
 
@@ -240,15 +242,15 @@ The advantage to installing the Docker Runner as a Windows service is that the s
 
    Error codes 2502 or 2503 occur if the Windows MSI installation service isn't authorized to write to the `C:\windows\Temp` folder during the installation process. To resolve this, do the following:
 
-      1. In File Explorer, go to `C:\Windows`.
-      2. Right-click the `Temp` folder, and select **Properties**.
-      3. Select the **Security** tab, and then select **Advanced**.
-      4. Make sure an appropriate user is selected for **Principal**, such as an Administrator, and then select **Full control** for **Basic permissions**.
-      5. Select **OK** and then select **Apply**.
-      6. If a warning message appears, select **Yes** and **Continue**.
-      7. Restart or continue the installation process.
+   1. In File Explorer, go to `C:\Windows`.
+   2. Right-click the `Temp` folder, and select **Properties**.
+   3. Select the **Security** tab, and then select **Advanced**.
+   4. Make sure an appropriate user is selected for **Principal**, such as an Administrator, and then select **Full control** for **Basic permissions**.
+   5. Select **OK** and then select **Apply**.
+   6. If a warning message appears, select **Yes** and **Continue**.
+   7. Restart or continue the installation process.
 
-   If you get the error message `This installation package could not be opened`, you might need to [change ownership of the file](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753659(v=ws.10)) to Administrators, allow full control, and then restart or continue the installation process. If you're not already an administrator, you might need to elevate your permissions using [User Account Control (UAC)](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control).
+   If you get the error message `This installation package could not be opened`, you might need to [change ownership of the file](<https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753659(v=ws.10)>) to Administrators, allow full control, and then restart or continue the installation process. If you're not already an administrator, you might need to elevate your permissions using [User Account Control (UAC)](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control).
 
    :::
 
@@ -293,27 +295,27 @@ Edit the CI pipeline where you want to use the local runner build infrastructure
 In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` specifications, for example:
 
 ```yaml
-    - stage:
-        name: build
-        identifier: build
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Docker
-            spec: {}
+- stage:
+    name: build
+    identifier: build
+    description: ""
+    type: CI
+    spec:
+      cloneCodebase: true
+      platform:
+        os: Linux
+        arch: Amd64
+      runtime:
+        type: Docker
+        spec: {}
 ```
 
-* `platform`:
-  * `os`: Specify `Linux`, `MacOS`, or `Windows`
-  * `arch`: Specify `Amd64` or `Arm64`
-* `runtime`:
-  * `type`: `Docker`
-  * `spec`: `{}`
+- `platform`:
+  - `os`: Specify `Linux`, `MacOS`, or `Windows`
+  - `arch`: Specify `Amd64` or `Arm64`
+- `runtime`:
+  - `type`: `Docker`
+  - `spec`: `{}`
 
 </TabItem>
 </Tabs>
@@ -347,16 +349,16 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 ## Troubleshoot local runner build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to using a local runner build infrastructure, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to using a local runner build infrastructure, such as:
 
-* [How do I check the runner status?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-check-the-runner-status-for-a-local-runner-build-infrastructure)
-* [How do I check the delegate status?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-check-the-delegate-status-for-a-local-runner-build-infrastructure)
-* [How do I check that the Docker daemon is running?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-check-if-the-docker-daemon-is-running-in-a-local-runner-build-infrastructure)
-* [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
-* [Runner can't find an available, non-overlapping IPv4 address pool](/kb/continuous-integration/continuous-integration-faqs/#runner-cant-find-an-available-non-overlapping-ipv4-address-pool)
-* [Runner process quits after terminating SSH connection](/kb/continuous-integration/continuous-integration-faqs/#runner-process-quits-after-terminating-ssh-connection-for-local-runner-build-infrastructure)
-* [Can I use self-signed certs with local runner build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-self-signed-certs-with-local-runner-build-infrastructure)
-* [Git connector SCM connection errors when using self-signed certificates](/kb/continuous-integration/continuous-integration-faqs/#git-connector-scm-connection-errors-when-using-self-signed-certificates)
-* [Step continues running for a long time after the command is complete](/kb/continuous-integration/continuous-integration-faqs/#step-continues-running-for-a-long-time-after-the-command-is-complete)
-* [Is a Docker image required to use the Run step on local runner build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#is-a-docker-image-required-to-use-the-run-step-on-local-runner-build-infrastructure)
-* [Docker daemon fails with invalid working directory path on Windows](/kb/continuous-integration/continuous-integration-faqs/#docker-daemon-fails-with-invalid-working-directory-path-on-windows-local-runner-build-infrastructure)
+- [How do I check the runner status?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-check-the-runner-status-for-a-local-runner-build-infrastructure)
+- [How do I check the delegate status?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-check-the-delegate-status-for-a-local-runner-build-infrastructure)
+- [How do I check that the Docker daemon is running?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-check-if-the-docker-daemon-is-running-in-a-local-runner-build-infrastructure)
+- [Clone codebase fails due to missing plugin](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#clone-codebase-fails-due-to-missing-plugin)
+- [Runner can't find an available, non-overlapping IPv4 address pool](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#runner-cant-find-an-available-non-overlapping-ipv4-address-pool)
+- [Runner process quits after terminating SSH connection](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#runner-process-quits-after-terminating-ssh-connection-for-local-runner-build-infrastructure)
+- [Can I use self-signed certs with local runner build infrastructure?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-use-self-signed-certs-with-local-runner-build-infrastructure)
+- [Git connector SCM connection errors when using self-signed certificates](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#git-connector-scm-connection-errors-when-using-self-signed-certificates)
+- [Step continues running for a long time after the command is complete](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#step-continues-running-for-a-long-time-after-the-command-is-complete)
+- [Is a Docker image required to use the Run step on local runner build infrastructure?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#is-a-docker-image-required-to-use-the-run-step-on-local-runner-build-infrastructure)
+- [Docker daemon fails with invalid working directory path on Windows](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#docker-daemon-fails-with-invalid-working-directory-path-on-windows-local-runner-build-infrastructure)

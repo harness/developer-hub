@@ -1,7 +1,8 @@
 ---
 title: Install a delegate on Google Cloud Run
-description: This topic explains how to configure Harness delegate on Google Cloud Run.
-sidebar_position: 3
+description: Learn how to install and configure a Harness delegate on Google Cloud Run.
+sidebar_label: Google Cloud Run
+sidebar_position: 5
 helpdocs_topic_id: ql86a0iqta
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false

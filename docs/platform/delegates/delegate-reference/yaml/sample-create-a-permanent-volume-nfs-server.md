@@ -1,7 +1,8 @@
 ---
-title: Sample permanent volume - NFS server
-description: This Kubernetes manifest creates a permanent volume for NFS.
-# sidebar_position: 2
+title: Sample NFS server with persistent volume
+description: Sample Kubernetes manifest for deploying an NFS server with persistent volume configuration for delegate storage.
+sidebar_label: NFS Server with Persistent Volume
+sidebar_position: 2
 helpdocs_topic_id: 3onmos2n3v
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false
@@ -10,7 +11,7 @@ redirect_from:
 - /docs/platform/delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server
 ---
 
-This Kubernetes manifest creates a permanent volume for NFS.
+This Kubernetes manifest creates a persistent volume for NFS.
 
 ```yaml
 apiVersion: apps/v1

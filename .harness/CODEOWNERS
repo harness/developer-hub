@@ -36,7 +36,7 @@ README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness
 /src/components/University/ ravi.lachhman@harness.io
 
 # Community
-/community/ @Ompragash dewan.ahmed@harness.io
+/community/ ompragash.viswanathan@harness.io dewan.ahmed@harness.io
 
 # Redirect Archives
 /archive/  prateek.mittal@harness.io wei.guo@harness.io
@@ -50,13 +50,12 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
-/release-notes/continuous-delivery.md vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
-/release-notes/static/ anshul@harness.io
-/src/components/Roadmap/data/cdData.ts vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
-/src/components/Docs/data/continuousDeliveryData* vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
+/docs/continuous-delivery/ vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness rohan.gupta@harness.io @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
+/release-notes/continuous-delivery.md vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness rohan.gupta@harness.io @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
+/src/components/Roadmap/data/cdData.ts vishal.vishwaroop@harness.io rohan.gupta@harness.io @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
+/src/components/Docs/data/continuousDeliveryData* vishal.vishwaroop@harness.io rohan.gupta@harness.io @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ vishal.vishwaroop@harness.io @thisrohangupta siddhant.dua@harness.io anshul@harness.io
+/docs/category/continuous-delivery/ vishal.vishwaroop@harness.io rohan.gupta@harness.io siddhant.dua@harness.io anshul@harness.io
 # CD FAQs
 /docs/faqs/continuous-delivery-faqs vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io anshul@harness.io
 # GitEx FAQs
@@ -92,16 +91,16 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/cloudCostManagementData.ts @jyoti.bisht@harness.io @karan.shetty@harness.io @joseph.lopez@harness.io
 
 # FirstGen CCM Docs
-/docs/category/cloud-cost-management/ @jyoti.bisht@harness.io @karan.shetty@harness.io @joseph.lopez@harness.io
+/docs/category/cloud-cost-management/ jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io
 
 # CCM FAQs
-/docs/faqs/cloud-cost-management-faqs/ @jyoti.bisht@harness.io @karan.shetty@harness.io @joseph.lopez@harness.io
+/docs/faqs/cloud-cost-management-faqs/ jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io
 
 # CET Docs
-/docs/continuous-error-tracking/ @M-Tsur
-/release-notes/continuous-error-tracking.md @M-Tsur
-/src/components/Docs/data/continuousErrorTrackingData.ts @M-Tsur
-/src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
+/docs/continuous-error-tracking/ moshe.tsur@harness.io
+/release-notes/continuous-error-tracking.md moshe.tsur@harness.io
+/src/components/Docs/data/continuousErrorTrackingData.ts moshe.tsur@harness.io
+/src/components/Docs/ContinuousErrorTracking.tsx moshe.tsur@harness.io
 
 # SRM Docs
 /docs/service-reliability-management/ vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io moshe.tsur@harness.io prasad.satam@harness.io anshul@harness.io
@@ -111,13 +110,13 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 
 # Chaos Docs
 /docs/chaos-engineering/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io
-/release-notes/chaos-engineering.md vedant.shrotria@harness.io @ashutosh.bhadauriya@harness.io
-/src/components/Roadmap/data/ceData.ts @ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io
-/src/components/Docs/data/chaosEngineeringData* @ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io
+/release-notes/chaos-engineering.md vedant.shrotria@harness.io ashutosh.bhadauriya@harness.io
+/src/components/Roadmap/data/ceData.ts ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io
+/src/components/Docs/data/chaosEngineeringData* ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io @ashutosh.bhadauriya@harness.io
-/docs/faqs/static vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io @ashutosh.bhadauriya@harness.io
-/kb/chaos-engineering/chaos-engineering-faq karthik.s@harness.io @umasankar.mukkara@harness.io @ashutosh.bhadauriya@harness.io
+/docs/faqs/chaos-engineering-faqs vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io
+/docs/faqs/static vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io
+/kb/chaos-engineering/chaos-engineering-faq karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io
 
 # Platform Docs
 /docs/platform/ prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
@@ -146,7 +145,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/platform/connectors/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth siddhant.dua@harness.io
 
 # AI DevOps Docs
-/docs/platform/harness-aida/ dewan.ahmed@harness.io prateek.mittal@harness.io @thisrohangupta vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io
+/docs/platform/harness-aida/ dewan.ahmed@harness.io prateek.mittal@harness.io rohan.gupta@harness.iovikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io
 
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
@@ -203,8 +202,8 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/ai-sre/ ryan.taylor@harness.io tina.huang@harness.io vasundhara.shukla@harness.io nicholas.lanam@harness.io matthew.sullivan@harness.io brett.lazarus@harness.io
 /release-notes/ai-sre.md ryan.taylor@harness.io tina.huang@harness.io vasundhara.shukla@harness.io nicholas.lanam@harness.io matthew.sullivan@harness.io brett.lazarus@harness.io
 
-# AI QA Assistant Docs
-/docs/ai-qa-assistant/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
+# AI Test automation Docs
+/docs/ai-test-automation/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
 /release-notes/ai-test-automation.md shibam.dhar@harness.io debaditya.chatterjee@harness.io
 /src/components/Docs/AiTestAutomation.tsx shibam.dhar@harness.io debaditya.chatterjee@harness.io
 
@@ -230,8 +229,8 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 #Armory KB
 /kb/armory @jimin-harness @deepanshuHarness
 
-# DB DevOps
-/kb/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
-
 #Reference Architectures
 /kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness
+
+# FF GA Feed
+/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io

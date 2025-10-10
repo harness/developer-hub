@@ -41,6 +41,13 @@ Before beginning the walkthroughs in this guide, ensure you have:
 | Kubernetes cluster | Kubernetes Cluster ≥ v1.18, Harness Delegate installed ([Delegate setup guide](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/)) |
 | Database credentials | JDBC‑compatible database; user with DDL/DML privileges |
  
+<Tabs>
+<TabItem value="Interactive Guide" label="Interactive Guide" default>
+<DocVideo src="https://app.tango.us/app/embed/ba735b58-3767-43c3-940f-661cd09b01c9?skipCover=false&defaultListView=false&skipBranding=true&makeViewOnly=true&hideAuthorAndDetails=true" title="Create and Run DB Pipeline in Harness"/>
+
+</TabItem>
+<TabItem value="Step by Step" label="Step by Step">
+
 ## Setting Database DevOps
 
 ### 1. Create a Liquibase changelog
@@ -161,6 +168,8 @@ pipeline:
           serviceDependencies: []
         tags: {}
 ```
+</TabItem>
+</Tabs>
 </TabItem>
 </Tabs>
 
