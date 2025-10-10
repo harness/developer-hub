@@ -377,7 +377,6 @@ gsutil -m cp \
 ## October 7, 2025, Version 0.33.x <!-- Draft : Sept 29, 2025 -->
 
 This release includes the following Harness module and component versions.
-{{ ... }}
 
 | **Name**                     | **Version**                                                                                  |
 |------------------------------|----------------------------------------------------------------------------------------------|
