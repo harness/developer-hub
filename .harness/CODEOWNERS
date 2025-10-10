@@ -202,8 +202,8 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/ai-sre/ ryan.taylor@harness.io tina.huang@harness.io vasundhara.shukla@harness.io nicholas.lanam@harness.io matthew.sullivan@harness.io brett.lazarus@harness.io
 /release-notes/ai-sre.md ryan.taylor@harness.io tina.huang@harness.io vasundhara.shukla@harness.io nicholas.lanam@harness.io matthew.sullivan@harness.io brett.lazarus@harness.io
 
-# AI QA Assistant Docs
-/docs/ai-qa-assistant/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
+# AI Test automation Docs
+/docs/ai-test-automation/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
 /release-notes/ai-test-automation.md shibam.dhar@harness.io debaditya.chatterjee@harness.io
 /src/components/Docs/AiTestAutomation.tsx shibam.dhar@harness.io debaditya.chatterjee@harness.io
 
