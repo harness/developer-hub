@@ -138,7 +138,7 @@ Assignment Sources can be reusable and standardized, or tailored to individual e
 
 Ultimately, it’s up to your organization whether to centralize around a single reusable source or create smaller, experiment-specific sources. Many teams use a mix of both strategies depending on scale and governance needs.
 
-You can edit and delete assignment sources in Harness FME. 
+Once you've set up the assignment sources that best fit your workflow, you can manage them directly in Harness FME. 
 
 * **Edit**: You can update the table reference, query, or mappings as your data model evolves. Changes to an existing Assignment Source may disrupt any experiments that are actively using it.
 * **Delete**: Remove outdated or misconfigured sources to reduce clutter and prevent accidental use.
@@ -259,7 +259,7 @@ In order to maintaining general-purpose reusable sources while also creating cus
 * Reusable, standardized sources are recommended if you want one source to power many metric definitions (e.g., a general events table with filtering by event type).
 * Custom sources are useful if you want to tightly scope data for privacy, relevancy, or performance.
 
-You can edit and delete metric sources in Harness FME. 
+Once you've set up the metric sources that best fit your workflow, you can manage them directly in Harness FME. 
 
 - **Edit**: Update the query, mappings, or field configuration to align with schema changes in your warehouse. Changes may disrupt metrics or experiments relying on this source.
 - **Delete**: Remove unused or invalid sources to prevent accidental use. Before deletion, confirm no metric definitions depend on the source.
