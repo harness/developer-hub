@@ -123,6 +123,18 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - Enhanced error messages when a delegate's dependency binaries are missing. [CDS-112385]
 - Improved error information during Git failures by including specific error details instead of generic exceptions. [CDS-104652]
 
+### Version 25.08.86601 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
+### Version 25.09.86704 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
 ### Version 25.07.86403 <!--October 08, 2025-->
 
 #### Fixed issues

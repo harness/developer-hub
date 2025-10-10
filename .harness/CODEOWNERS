@@ -120,7 +120,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 
 # Platform Docs
 /docs/platform/ prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
-/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io @anshul-harness vikram.sahu@harness.io
+/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io anshul@harness.io vikram.sahu@harness.io
 /release-notes/platform.md prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
 /release-notes/self-managed-enterprise-edition.md prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io @anshul-harness @raviyadalam 
 /src/components/Roadmap/data/platformData.ts prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
