@@ -1,7 +1,7 @@
 ---
 title: Container Scanning
 description: Set up Container scanning using STO
-sidebar_label: Container Scanning
+sidebar_label: Set up Container Scanning
 sidebar_position: 13
 ---
 
