@@ -1,6 +1,8 @@
 ---
 description: KB - How Bidirectional sync prevents Git API Limit issue
 title: Preventing Git API Rate Limits with Bidirectional Sync
+redirect_from: 
+  - /kb/continuous-delivery/articles/biderectional-sync-prevent-github-api-limit
 ---
 # Introduction
 
@@ -20,5 +22,3 @@ In bidirectional sync, changes made on either the Git repository or Harness are 
 3. Users should [consider using GitHub App](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support) instead of a Personal Access Token (PAT)
 :::
 Read more on how to enable [Bidirectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup/).
-
-

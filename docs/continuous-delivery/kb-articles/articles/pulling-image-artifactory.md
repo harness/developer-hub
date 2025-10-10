@@ -1,5 +1,8 @@
 ---
 title: Fetching images from Artifactory artifact source via API
+description: Fetching images from Artifactory artifact source via API
+redirect_from: 
+  - /kb/continuous-delivery/articles/pulling-image-artifactory
 ---
 
 # Introduction

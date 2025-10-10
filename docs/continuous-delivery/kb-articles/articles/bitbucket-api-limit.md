@@ -1,6 +1,8 @@
 ---
-description: KB - Webhook caching prevents Bitbucket API Limit issue
+description: Webhook caching prevents the Bitbucket API Limit issue
 title: Preventing Bitbucket API Rate Limits with Webhook Caching
+redirect_from: 
+  - /kb/continuous-delivery/articles/bitbucket-api-limit
 ---
 import GitXconnect from '/docs/platform/shared/gitx-connectivity.md'
 

@@ -1,6 +1,8 @@
 ---
-description: KB - New Metrics Available After Deployment with CV
+description: New Metrics Available After Deployment with CV
 title: CV with New Deployment Time Metrics 
+redirect_from: 
+  - /kb/continuous-delivery/articles/cv-new-deployment-metrics
 ---
 
 # Verifying New Deployment Metrics with CV

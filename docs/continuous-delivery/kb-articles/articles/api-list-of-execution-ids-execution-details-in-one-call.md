@@ -1,6 +1,8 @@
 ---
-description: KB - API to get list of planExecutionIDs and all execution details
+description: API to get the list of planExecutionIDs and all execution details
 title: Fetch a lite version of execution details along with the input YAML that was passed during the execution via API
+redirect_from: 
+  - /kb/continuous-delivery/articles/api-list-of-execution-ids-execution-details-in-one-call
 ---
 
 ## Overview

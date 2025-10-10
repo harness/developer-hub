@@ -2036,7 +2036,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
   1. Use the Run Step configuration.
   2. If there isn't a Run Step configuration, use the Step Group configuration.
    
-  For more information, go to [Permissions inheritance logic from containerized step groups to steps](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/). 
+  For more information, go to [Permissions inheritance logic from containerized step groups to steps](/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step/). 
 
 - You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial/#canary-phased-deployment). 
 

@@ -1,6 +1,8 @@
 ---
-description: KB - Gain a deep understanding of Harness Approval Notifications and best practices for configuring approval message
+description: Gain a deep understanding of Harness Approval Notifications and best practices for configuring approval message
 title: "Using Harness Approval Notifications"
+redirect_from: 
+  - /kb/continuous-delivery/articles/harness-approval-notifications
 ---
 
 # Using Harness Approval Notifications - Best Practices for Approval Message 

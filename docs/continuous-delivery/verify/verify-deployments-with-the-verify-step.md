@@ -144,7 +144,7 @@ The purpose of the SII is to determine what has been deployed from a monitoring 
 ## Next steps
 
 - To start using Harness CV, go to [Configure CV](/docs/category/configure-cv).
-- To understand more about Harness CV, go to the [knowledge base](/kb/continuous-delivery).
+- To understand more about Harness CV, go to the [knowledge base](/docs/category/knowledge-base-article).
 
 ## FAQs
 

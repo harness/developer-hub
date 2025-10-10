@@ -300,7 +300,7 @@ The Output Variable of the shell script is a string, which you are trying to pas
 - First you need to convert your array list into a string and then pass it as an output variable.
 - Then convert this string into a list of string again before passing it to the repeat strategy.
 
-Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/repeat-strategy).
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/repeat-strategy).
 
 #### I need to run my step in delegate host?
 
@@ -391,7 +391,7 @@ To learn more about how to utilize this feature in Harness, go to [Resume pipeli
 
 Harness variables provide flexibility in managing environment identifiers, but dealing with uppercase identifiers like UAT and DR can pose challenges. One common requirement is converting these identifiers to lowercase for consistency. Here's how you can address this:
 
-- Using [Ternary Operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/): While if-else statements aren't directly supported in variables, you can leverage the ternary operator to achieve conditional logic.
+- Using [Ternary Operator](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator/): While if-else statements aren't directly supported in variables, you can leverage the ternary operator to achieve conditional logic.
 
 - Updating Environment Setup: Another approach is to update your environment setup to ensure identifiers like UAT and DR are stored in lowercase. By maintaining consistency in the environment setup, you can avoid issues with case sensitivity in your deployment pipelines.
 
@@ -822,7 +822,7 @@ Yes, there are many ways you can manipulate and evaluate expressions. For more i
 
 #### Can I use ternary operators with triggers?
 
-Yes, you can [use ternary operators with triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator).
+Yes, you can [use ternary operators with triggers](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator).
 
 #### Can I customize the looping conditions and behavior?
 
@@ -1947,7 +1947,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 #### How to trigger one pipeline from another and use the first pipeline's shell script output as inputs for the second, ensuring runtime inputs like environment and infrastructure names are passed?
 
 One can use output variables from one pipeline as inputs for another, defining the receiving pipeline's variables as runtime inputs.
-Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/)
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/output-variable-for-powershell-script/)
 
 #### Why can't I see a new Service Override I created through the API in the UI
 
@@ -2069,7 +2069,7 @@ To specify freeze windows for specific test environments within projects, you ca
 
 Harness variables provide flexibility in managing environment identifiers, but dealing with uppercase identifiers like UAT and DR can pose challenges. One common requirement is converting these identifiers to lowercase for consistency. Here's how you can address this:
 
-- Using [Ternary Operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/): While if-else statements aren't directly supported in variables, you can leverage the ternary operator to achieve conditional logic.
+- Using [Ternary Operator](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator/): While if-else statements aren't directly supported in variables, you can leverage the ternary operator to achieve conditional logic.
 
 - Updating Environment Setup: Another approach is to update your environment setup to ensure identifiers like UAT and DR are stored in lowercase. By maintaining consistency in the environment setup, you can avoid issues with case sensitivity in your deployment pipelines.
 

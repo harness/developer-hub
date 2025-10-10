@@ -1,6 +1,8 @@
 ---
-description: KB - How to use Custom Approval with Linear.app
+description: How to use Custom Approval with Linear.app
 title: Use Linear.app with Custom Approval
+redirect_from: 
+  -  /kb/continuous-delivery/articles/Linear.app-with-Custom%20Approval
 ---
 
 

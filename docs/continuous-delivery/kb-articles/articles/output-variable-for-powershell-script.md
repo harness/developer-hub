@@ -1,8 +1,8 @@
 ---
-description: KB - How to configure output variable for Powershell Script
+description: How to configure the output variable for the PowerShell script
 title: Output variable for Powershell Script
 redirect_from:
-  - /kb/continuous-delivery/articles/output%20variable%20for%20powershell%20script
+  - /kb/continuous-delivery/articles/output-variable-for-powershell-script
 ---
 
 # Introduction
@@ -22,7 +22,7 @@ Let's take a look at the below example:
   $env:Version="1.2.3.4"
 ```
 
-![](../static/output_var.png)
+![](../static/output-var.png)
 
 
 The output variable can be use in one of the following:
@@ -37,4 +37,4 @@ The output variable can be use in one of the following:
 
 To find the expression to reference your output variables, find the step in the Pipeline execution, and click its Output tab.
 
-![](../static/output_value.png)
+![](../static/output-value.png)

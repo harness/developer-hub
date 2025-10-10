@@ -1,5 +1,8 @@
 ---
 title: Pipeline success on failure
+description: Pipeline is showing status as Success even after having errors
+redirect_from: 
+  - /kb/continuous-delivery/articles/Pipeline-success-on-failure
 ---
 
 # Introduction

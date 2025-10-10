@@ -1,6 +1,8 @@
 ---
-description: KB - Create a Resource Group via Terraform with "Specified Orgs (with Projects) and Account Level resources included". 
+description: Create a Resource Group via Terraform with "Specified Orgs (with Projects) and Account Level resources included". 
 title: Create a Resource Group via TF
+redirect_from: 
+  - /kb/continuous-delivery/articles/create-terraform-resource-group-with-specified-scope-resorces
 ---
 # Create a Resource Group via Terraform with "Specified Orgs (with Projects) and Account Level resources included"
 

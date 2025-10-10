@@ -66,7 +66,7 @@ Harness CV monitors health trend deviations using logs and metrics obtained from
 
 ## Further reading
 
-- To understand more about Harness CV, go to the [knowledge base](/kb/continuous-delivery).
+- To understand more about Harness CV, go to the [knowledge base](/docs/category/knowledge-base-article).
 
 
 

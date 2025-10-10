@@ -1,6 +1,8 @@
 ---
-description: KB - Using API to retry pipleine with input set YAML
+description: Using API to retry pipleine with input set YAML
 title: Pipeline retry API
+redirect_from: 
+  - /kb/continuous-delivery/articles/pipeline-retry-api
 ---
 
 This knowledge base article provides step-by-step guidance on how to retry a pipeline based on the latest ExecutionId using Harness APIs.

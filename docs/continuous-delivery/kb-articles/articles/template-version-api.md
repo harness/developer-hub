@@ -1,7 +1,10 @@
 ---
-description: KB - Understanding template version API and it's working
+description: Understanding template version API and its working
 title: Template version API
+redirect_from: 
+  - /kb/continuous-delivery/articles/template-version-api
 ---
+
 # Introduction
 
 This knowledge base article provides a comprehensive understanding of the Template Version API and its functionality in managing templates. It explains the purpose of the API, highlights the difference between version and versionLabel, and provides examples of how to use the API for updating and creating template versions.

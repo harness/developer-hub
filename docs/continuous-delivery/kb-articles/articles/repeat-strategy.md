@@ -1,7 +1,10 @@
 ---
-description: KB - Parse the output list of first step to next step looping strategy "repeat" 
-title: Using List of String in Repeat Strategy
+description: Parse the output list of the first step to the next step looping strategy "repeat" 
+title: Using List of String in a Repeat Strategy
+redirect_from: 
+  - /kb/continuous-delivery/articles/repeat-strategy
 ---
+
 # Introduction
 
 This knowledge base article provides a guide on how to pass the output list of strings from one step to the next step using the looping strategy "repeat". It demonstrates how to properly convert an array into a string and then parse it back into a list of strings before utilizing the "repeat" strategy.
@@ -29,7 +32,7 @@ new_var_public_ids=$(printf "%s," "${items[@]}" | sed 's/,$//')
 ```
 Create a custom variable which would carry the value of the Output Variable as an expression and we will split it into a list of string 
 
-![](../static/custom_var.png)
+![](../static/custom-var.png)
 
 The custom variable myvar contains an expression of our Output variable note that we are doing a split here :
 
@@ -38,4 +41,4 @@ The custom variable myvar contains an expression of our Output variable note tha
 ```
 Now use this custom variable in your repeat strategy
 
-![](../static/repeat_strategy.png)
+![](../static/repeat-strategy.png)

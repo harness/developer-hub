@@ -2,7 +2,7 @@
 description: KB - Resolving AKS permission issue for deployment
 title: Permission issue for AKS deployments
 redirect_from:
-  - /kb/continuous-delivery/articles/aks-permission-issues
+  - /docs/continuous-delivery/kb-articles/articles/aks-permission-issues
 ---
 
 # Introduction

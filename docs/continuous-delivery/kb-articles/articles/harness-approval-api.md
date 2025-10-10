@@ -1,6 +1,8 @@
 ---
-description: KB - Gain a deep understanding of Harness Approval APIs and how to use them to automate workflows. 
+description: Gain a deep understanding of Harness Approval APIs and how to use them to automate workflows. 
 title: "Orchestrating Deployments with Choice: Exploring Harness Approval APIs"
+redirect_from: 
+  - /kb/continuous-delivery/articles/harness-approval-api
 ---
 
 # Orchestrating Deployments with Choice: Exploring Harness Approval APIs

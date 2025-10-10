@@ -1,6 +1,8 @@
 ---
 description: Use ternary operators with triggers
 title: Use ternary operators with triggers
+redirect_from: 
+  - /kb/continuous-delivery/articles/ternary-operator
 ---
 
 The ternary operator, also known as the conditional operator, is a shorthand notation for expressing conditional statements in various programming languages. It takes three operands and allows you to evaluate a condition and choose one of two expressions to execute based on the result of the condition.

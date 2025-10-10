@@ -25,7 +25,7 @@ The relevant fields are:
 * `Run as Non Root` - Select this option to mandate that the step group or step cannot be run as a root. Accepts boolean values. 
 * `Run as User` - Define the Id of the user here. User 0 is the root user. Accepts integers.
 
-![](../static/RunAsRootSettings.png)
+![](../static/run-as-root-settings.png)
 
 ## New permission inheritance logic use cases
 

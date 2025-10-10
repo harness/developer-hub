@@ -1,6 +1,8 @@
 ---
-description: KB - CV with Multi Service
+description: CV with Multi Service
 title: CV with Multi Service Deployments
+redirect_from: 
+  - /kb/continuous-delivery/articles/create-terraform-resource-group-with-specified-scope-resorces
 ---
 
 # Introduction

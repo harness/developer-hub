@@ -1,6 +1,8 @@
 ---
-description: KB - Migrate a Helm Deployment from Harness CD Pipeline to Harness GitOps Pipelines.
+description: Migrate a Helm Deployment from Harness CD Pipeline to Harness GitOps Pipelines.
 title: Migrate a Helm Deployment from CD Pipeline to GitOps Pipelines
+redirect_from: 
+  - /kb/continuous-delivery/articles/migrating-helm-deployment-from-cd-to-gitops
 ---
 
 # Migrate a Helm Deployment from Harness CD Pipeline to Harness GitOps Pipelines

@@ -1,7 +1,9 @@
 ---
-description: KB - Resolving Git Sync issues with Input Sets.
+description: Resolving Git Sync issues with Input Sets.
 title: Git Sync issues with Input Sets
 canonical_url: https://www.harness.io/blog/git-sync-experience
+redirect_from: 
+  - /kb/continuous-delivery/articles/input-set-gitsync
 ---
 
 # Introduction

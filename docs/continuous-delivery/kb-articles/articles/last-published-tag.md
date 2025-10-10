@@ -1,6 +1,8 @@
 ---
-description: KB - Gain a deep understanding of <+lastPublished.tag> and its behavior across different artifact servers. Discover best practices to prevent misdeployments and achieve confident deployments.
+description: Gain a deep understanding of <+lastPublished.tag> and its behavior across different artifact servers. Discover best practices to prevent misdeployments and achieve confident deployments.
 title: "Mastering <+lastPublished.tag>: Unleashing its Power with Confidence"
+redirect_from: 
+  - /kb/continuous-delivery/articles/last-published-tag
 ---
 
 # Mastering \<+lastPublished.tag>: Unleashing its Power with Confidence

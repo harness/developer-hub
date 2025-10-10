@@ -2,7 +2,7 @@
 title: Use the HTTP step to set unsupported fields when creating Jira issues
 description: Instructions on setting unsupported fields when creating a JIRA issue using the HTTP step.
 redirect_from:
-  - /kb/continuous-delivery/articles/create-cascading-fields-jira
+  - /docs/continuous-delivery/kb-articles/articles/create-cascading-fields-jira
 ---
 
 

@@ -1,6 +1,8 @@
 ---
-description: KB - This comprehensive guide serves as your roadmap to harnessing the full power of NextGen artifact sources. Learn how to configure, manage, and optimize your artifact workflow with confidence, unlocking greater efficiency and achieving faster deployments.
+description: This comprehensive guide serves as your roadmap to harnessing the full power of NextGen artifact sources. Learn how to configure, manage, and optimize your artifact workflow with confidence, unlocking greater efficiency and achieving faster deployments.
 title: "Future-Proof Your Workflow: Harness NextGen Artifact Sources"
+redirect_from: 
+  - /kb/continuous-delivery/articles/understanding-artifact-sources-in-nextgen
 ---
 # Future-Proof Your Workflow: Harness NextGen Artifact Sources
 

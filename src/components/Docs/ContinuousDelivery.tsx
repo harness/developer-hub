@@ -20,7 +20,7 @@ export default function CD() {
             <h1>Continuous Delivery & GitOps</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb/continuous-delivery">
+            <Link href="/docs/category/knowledge-base-article">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
                 Knowledge Base

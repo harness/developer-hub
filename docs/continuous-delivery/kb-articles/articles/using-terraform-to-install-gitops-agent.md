@@ -1,6 +1,8 @@
 ---
-description: KB - Using Terraform to install Gitops agent
-title: Using Terraform to install Gitops agent
+description: Using Terraform to install GitOps agent
+title: Using Terraform to install GitOps agent
+redirect_from: 
+  - /kb/continuous-delivery/articles/using-terraform-to-install-gitops-agent
 ---
 
 This article prpvides a working example of how you can configure a Harness Gitops agent using Terraform.
