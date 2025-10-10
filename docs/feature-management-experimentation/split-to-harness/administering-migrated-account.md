@@ -985,7 +985,9 @@ To view SDK API keys for a project:
 
 #### Some of my users are seeing the error message "Unable to start the FME functionality" when navigating to a page within the Harness FME module
 
-Your users may be lacking the role binding: **Account Viewer** role over **All Account Level Resources**. Specifically, they may lack permissions at the account level to view **Users** and **User Groups**.
+In rare instances, this error is caused by a mistyped URL. Confirm that the `app.harness.io` domain is typed correctly. An extra dot at the end will cause this error when navigating to an FME page after signing in to Harness.
+
+More likely, your users lack the role binding: **Account Viewer** role over **All Account Level Resources**. Specifically, they may lack permissions at the account level to view **Users** and **User Groups**.
 
 By default, the **All Account Users** user group is assigned the **Account Viewer** role, as shown below. (This a Harness managed group that is created on account creation, and users are automatically added to this group when added to your Harness account.)
 
