@@ -242,7 +242,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
             </td>
             <td>
               <p>
-                FME Administrator Role
+                Project Admin
               </p>
               <p>
                 Project Viewer
@@ -798,7 +798,7 @@ To implement permissions similar to the legacy Split unrestricted project:
 
 From your **Project Settings** inherit each of the [FME user groups](#fme-user-groups) and add the following project-level role bindings:
    
-   - All FME Admins: **FME Administrator Role** - **FME All Resources**\*
+   - All FME Admins: **Project Admin** - **FME All Resources**\*
    - All FME Editors: **FME Manager Role** - **FME All Resources**\*
    - All FME Viewers: **Project Viewer** - **FME All Resources**\*
 
@@ -817,7 +817,7 @@ To implement permissions similar to the legacy Split restricted project:
 
 1. Apply a role binding for **FME All Resources**\* that assigns one of the following roles:
 
-   - **FME Administrator Role** corresponds to the legacy Split Administrator permissions
+   - **Project Admin** corresponds to the legacy Split Administrator permissions
    - **FME Manager Role** corresponds to the legacy Editor role
    - **Project Viewer** corresponds to the legacy Viewer role
 
