@@ -168,4 +168,9 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database
 
+# Redirects required for sidebar standardization
+/docs/category/get-started-with-harness /docs/category/get-started
+/docs/category/cloud-marketplace-offerings /docs/category/cloud-marketplace
+
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

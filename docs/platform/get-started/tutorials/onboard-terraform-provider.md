@@ -1,7 +1,8 @@
 ---
-title: Onboard with Terraform Provider
-description: This tutorial shows you how to onboard with your Terraform provider.
-sidebar_position: 3
+title: Onboarding with Terraform Provider
+description: Learn how to onboard your Terraform provider and configure it for smooth integration with Harness.
+sidebar_label: Terraform Setup
+sidebar_position: 5
 redirect_from:
   - /tutorials/platform/onboard-terraform-provider
 ---
