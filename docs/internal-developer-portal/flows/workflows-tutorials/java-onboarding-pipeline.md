@@ -2,6 +2,13 @@
 title: "Scaffold Services with Cookiecutter & Harness IDP"
 description: "End-to-end guide for Platform Engineers and Developers to onboard Java services into the Internal Developer Portal (IDP) using Harness pipelines and workflows."
 sidebar_position: 1
+redirect_from: 
+  - /docs/internal-developer-portal/flows/workflows-tutorials/create-a-new-service-using-idp-stage
+  - /docs/internal-developer-portal/flows/workflows-tutorials/self-service-onboarding-pipeline-tutorial
+  - /docs/internal-developer-portal/flows/self-service-onboarding-pipeline-tutorial
+  - /docs/internal-developer-portal/flows/workflows-tutorials/create-new-service-along-with-pipeline
+  - /docs/internal-developer-portal/flows/create-new-service-along-with-pipeline
+
 tags:
   - Harness IDP
   - Developer Onboarding
