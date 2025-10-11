@@ -6,15 +6,11 @@ slug: /feature-management-experimentation/split-to-harness/first-login
 sidebar_position: 4
 ---
 
-## Overview
-
-The first time you log into Feature Management & Experimentation (FME) on Harness you will see a screen like the one below. 
-
-![](./static/login.gif)
-
 ## Setup
 
-Follow these one-time steps after your account has been fully migrated to set your account to display the left navigation you are familiar with from Split.
+Follow these one-time steps after your account has been migrated to Feature Management & Experimentation (FME) on Harness.
+
+In order to set your account to display the left navigation you are familiar with from Split:
 
 ### Step 1: Click Select A Project
 
@@ -35,3 +31,10 @@ Follow these one-time steps after your account has been fully migrated to set yo
 That's it! This is where you will land directly on all future logins.
 
 ![](./static/step-5.png)
+
+## Animation of the above
+
+Here is an animation showing the above steps and the behavior on your next login:
+
+![](./static/login.gif)
+
