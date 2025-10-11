@@ -23,8 +23,14 @@ Enter a **Name** for the WinRM credential and select **Continue**.
      2. **Username:** Enter the user name for this connection. The user must belong to the same Active Directory domain as the Windows instances that this connection uses. These are the same user account credentials you would use when logging in to the VM through an application such as Microsoft Remote Desktop.
      3. **Password:** Create or select an existing [encrypted file secret](/docs/platform/secrets/add-file-secrets) that contains the relevant WinRM key file.
      4. **Use SSL:** (Recommended) Select to enable an HTTPS connection instead of an HTTP connection.
-     5. **Skip Cert Check:** Select to skip the certificate check. When connected over HTTPS, the client doesn't validate the server certificate. 
-     6. **WinRM Port:** Leave the default port or enter a new port if needed.
+     5. **Skip Cert Check:** Select to skip the certificate check. When connected over HTTPS, the client doesn't validate the server certificate.
+     6. **No Profile** Enable this option to start the PowerShell session without loading the user's `Profile.ps1`.
+        :::info
+        
+          If your environment uses a custom `Profile.ps1`, it may produce output or set configurations that interfere with session initialization. Enabling **No Profile** ensures a clean PowerShell environment and is recommended if you're seeing unexpected behavior during execution.
+        :::
+        
+     7. **WinRM Port:** Leave the default port or enter a new port if needed.
 
 
          :::info
@@ -107,14 +113,20 @@ Enter a **Name** for the WinRM credential and select **Continue**.
       2. **Realm:** Enter a realm. A realm is a logical network served by a single Kerberos database and a set of Key Distribution Centers (KDCs).
       3. **Use SSL:** (Recommended) Select to enable an HTTPS connection instead of an HTTP connection.
       4. **Skip Cert Check:** Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate the server certificate.
-      5. **WinRM Port:** Leave the default port or enter a new port if needed 
+      5. **No Profile** Enable this option to start the PowerShell session without loading the user's `Profile.ps1`.
+        :::info
+        
+          If your environment uses a custom `Profile.ps1`, it may produce output or set configurations that interfere with session initialization. Enabling **No Profile** ensures a clean PowerShell environment and is recommended if you're seeing unexpected behavior during execution.
+        :::
+
+      7. **WinRM Port:** Leave the default port or enter a new port if needed 
       
           :::info
 
           The default port for SSL is **5986**. If you haven't selected the **Use SSL** option, the default port is **5985**. Harness switches ports depending on whether or not SSL is enabled.
          :::
 
-      6. **TGT Generation:** Select one of the following options:
+      8. **TGT Generation:** Select one of the following options:
 
           * **Key Tab File:** Generates a new TGT from KDC every time you authenticate with the service. For more information, [please see below](#generating-keytab-files)
           * **Password:** Use Harness [encrypted text secrets](/docs/platform/secrets/add-use-text-secrets) to save the password and refer to it using this option.
