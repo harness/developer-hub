@@ -16,7 +16,7 @@ This article shows how to target Standard, Large, and Rule-based segments in you
 ___Tip:___ If you don't see a segment appear when you type its name in the segment input field, it may be that the segment is not [defined](/docs/feature-management-experimentation/feature-management/targeting/segments#adding-user-ids-to-a-segment) for the given FME environment.
 
 :::warning[Server-side SDK support for Large segments]
-Server-side SDKs do not yet support Large segments, but soon will. Until they are supported, evaluations of feature flags that target Large segments will return `control` on server-side SDKs. 
+Server-side SDKs do not yet support Large segments, but will in the future. Until they are supported, evaluations of feature flags that target Large segments will return `control` on server-side SDKs. 
 :::
 
 ## Individual targeting rules
