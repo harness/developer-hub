@@ -151,7 +151,7 @@ instances:
 
 You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/).
 
-#### user data example
+#### User Data Example
 
 Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration. Refer to the [user data examples for supported runtime environments](https://github.com/drone-runners/drone-runner-aws/tree/master/app/cloudinit/user_data).
 
@@ -216,6 +216,23 @@ instances:
 | `registry_url`         | String - URL   | Registry/Controller URL and port. This URL must be reachable by your Anka nodes. You can configure `ANKA_ANKA_REGISTRY` in your [Controller's docker-compose.yml](https://docs.veertu.com/anka/anka-build-cloud/configuration-reference/).                                                                                                                                                                                                                                                   |
 | `tag`                  | String - Tag   | [Anka VM template tag.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/registry-vm-templates-and-tags/)                                                                                                                                                                                                                                                                                                                                                                       |
 | `auth_token`           | String - Token | Required if you [enabled token authentication for the Controller and Registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).                                                                                                                                                                                                                                                                                                         |
+
+#### File System Access
+In `harness-docker-runner`, the following default mount paths are used on Mac. Harness requires write access to these locations because it creates directories inside them.
+
+If write access is blocked, runs will fail with a 500 error similar to:
+```
+failed with code: 500, message: { "error_msg": "failed to create directory for host volume path: /addon: mkdir /addon: read-only file system" } 
+```
+
+
+Default mount paths:
+
+- `/tmp/addon`
+- `/tmp/harness`
+- `/private/tmp/harness` (only when the `CI_MOUNT_PATH_ENABLED_MAC` feature flag is enabled)
+
+Harness also needs write access to any declared shared paths that your pipelines or CI Stages use.
 
 ### Start the runner
 
