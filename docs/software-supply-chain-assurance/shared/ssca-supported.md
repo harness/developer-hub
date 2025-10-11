@@ -108,3 +108,5 @@ The following table shows SCS support for each infrastructure type.
 |[Generate SLSA provenance](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa) | Y | Y | N | N |
 |[Verify SLSA provenance with SLSA governance policies](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa) | Y | Y | Y | Y |
 |[Create and manage Remediation Trackers](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/create-remediation-tracker) | On Roadmap | On Roadmap | Y with Live Tracking | Y without Live Tracking |
+|[Sign Artifacts](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts) | Y | Y | N | N |
+|[Verify Artifacts](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts) | Y | Y | N | N |
