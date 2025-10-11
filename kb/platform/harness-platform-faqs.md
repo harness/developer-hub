@@ -808,6 +808,21 @@ You can find this value on the Authentication page (right below the Overview men
 
 The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
 
+### How to Change Username in Harness?
+
+A user can navigate to User Profile and change the username.
+
+### Can Two-Factor Authentication (2FA) on Harness Be Disabled?
+
+2FA can be enabled at the Account level or at the Individual User level.
+
+1. If it is enabled at the Account level, only the admin can disable it.
+2. If it is enabled at the User level, only the user can disable it by navigating to User Profile.
+
+### How Can I Add Two Users With the Same Name in Harness?
+
+We use email as the unique field. If the email addresses are unique, you can add multiple users with the same name. They can update their names under User Profile, if needed.
+
 ## Automation
 
 ### How can I use Harness CD with Google Cloud Functions?
