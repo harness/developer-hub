@@ -11,5 +11,14 @@
       "tf-commands": {
         "init": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies."
       }
+    },
+    "fme": {
+      "warehouse-native": {
+        "assignment-source": "A data source that defines how users are assigned to different variations in an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
+        "metric-source": "A data source that defines how metrics are collected and calculated for an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
+        "data-warehouse": "A centralized repository for storing and managing large volumes of structured and semi-structured data. Examples include Snowflake, BigQuery, Redshift, and Databricks.",
+        "warehouse-native": "A method of running feature management experiments directly within your data warehouse, leveraging its processing power and existing data infrastructure.",
+        "cloud-experimentation": "A method of running feature management experiments using a cloud-based service provided by Harness FME, which handles data collection, analysis, and reporting."
+      }
     }
   }
