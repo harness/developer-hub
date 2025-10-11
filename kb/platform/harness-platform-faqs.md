@@ -957,6 +957,49 @@ You might get the following error in your delegate logs.
 
 The logs are standard and won't impact functionality. Harness conducts capability checks before assigning tasks to delegates to verify their connection to the VM runner. If a delegate fails to connect, it's skipped for that task. You can disregard these logs.
 
+
+### Can I use credentials from one secret manager to authenticate another in Harness?
+No, Harness does not allow storing credentials of one secret manager inside another. This is restricted to prevent complex dependencies and security vulnerabilities. You must use Harness' Built-in Secret Manager to store authentication credentials for any external secret manager, including HashiCorp Vault.
+
+### How does Harness authenticate with HashiCorp Vault using AppRole?
+Harness uses the App Role ID and Secret ID to authenticate with Vault. These credentials are used by the delegate to fetch a Vault token. This token is cached on the delegate (not the Harness platform) for nearly the full TTL duration to improve performance. The token is refreshed only when it expires, based on the delegate executing the pipeline.
+
+### What permissions are required in Vault for a successful integration with Harness?
+Permissions depend on the secret engine type (v1 or v2) and the operation type (read-only or full access). For example, full access requires create, read, update, delete, and list on paths like secret/* or secret/harness/*. Additionally, read permission for sys/mounts is needed if you want Harness to auto-fetch secret engines.
+
+### What are the options available for authenticating with Vault in Harness?
+Harness supports multiple authentication methods:
+
+AppRole
+
+Token (Periodic)
+
+Vault Agent (Auto-Auth)
+
+AWS Auth (IAM or EC2)
+
+Kubernetes Auth
+
+JWT/OIDC Auth (via Feature Flag and newer delegate version)
+
+Each method has specific setup steps, roles, and permissions, so choose based on your environment and security policies.
+
+### What Nexus permissions are required for the user account associated with the connector?
+
+The user account must have Read permissions for all repositories in Nexus. Additionally, the Nexus UI should have Repository Browser permissions. If using Nexus 3 as a Docker repository, the account needs a role with the nx-repository-view-__ privilege*.
+
+### Which artifact types are supported by the Nexus connector in Harness?
+
+The Nexus connector in Harness supports several artifact types, including Docker Images (for Kubernetes/Helm), AWS AMI (AMI ID only), AWS CodeDeploy, AWS Lambda, JAR, RPM, TAR, WAR, ZIP, PCF, and IIS. Docker support is only available for Nexus 3 Artifact Servers.
+
+### What is the role of the Nexus Repository URL in the connector setup?
+
+The Nexus Repository URL is the endpoint that connects Harness to your Nexus server. For example, it could be something like https://nexus3.dev.mycompany.io/repository/your-repo-name. It is essential for accessing the repository and fetching the artifacts.
+
+### What credentials are required for setting up the Nexus connector in Harness?
+
+The connector requires a username and password for the Nexus account. For security, the password should be selected from Harness text secrets. These credentials are needed to authenticate and interact with the Nexus server.
+
 ### Does the Docker delegate also show expiry message in UI if the image is older than the expiry threshold?
 
 Yes, Docker delegates also show the expiry status in the UI if the image is beyond the expiry threshold.
