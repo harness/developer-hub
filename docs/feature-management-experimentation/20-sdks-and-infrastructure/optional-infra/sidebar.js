@@ -5,4 +5,5 @@ module.exports = [
   "feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer",
   "feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-javascript-synchronizer-tools",
   "feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-sync-runbook",
+  "feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy",
 ];

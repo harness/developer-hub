@@ -7,7 +7,7 @@ redirect_from:
 
 ## Overview
 
-Customer-deployed components allow you run parts of the Harness FME infrastructure within your own environment.  
+Customer-deployed components allow you to run parts of the Harness FME infrastructure within your own environment.  
 
 This gives you more control over data flow, network latency, and compliance by hosting core services locally or in your private cloud.
 
