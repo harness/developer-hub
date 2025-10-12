@@ -1,7 +1,7 @@
 ---
-title: Configure IDP 
+title: Configure Git Integrations 
 description: After enabling the Internal Developer Portal module, follow these steps to set it up in your account.
-sidebar_position: 2
+sidebar_position: 1
 redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
   - /docs/internal-developer-portal/get-started/onboarding-guide
