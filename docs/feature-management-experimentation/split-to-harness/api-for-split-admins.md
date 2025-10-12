@@ -19,7 +19,7 @@ If you downloaded the Postman collection before April 18th, download an updated 
 
 ## Postman Collection
 
-You can view the interactive collection experience [Before and After: APIs for Split Admins](https://www.postman.com/fme-tech-enablement/harness-fme/collection/evlmqcu/before-and-after-apis-for-split-admins) on Postman.
+You can view the interactive collection experience [Before and After: APIs for Split Admins](https://www.postman.com/harness-fme-enablement/harness-fme/collection/hyphfpd/before-and-after-apis-for-split-admins) on Postman.
 
 :::info Changelog for 3/24/25
  
