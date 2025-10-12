@@ -1,6 +1,8 @@
 ---
 title: GitHub Raw Files
 description: Retrieve raw JSON files from GitHub repositories
+redirect_from:
+- /kb/internal-developer-portal/articles/backend-proxies/github-raw
 ---
 
 # Overview

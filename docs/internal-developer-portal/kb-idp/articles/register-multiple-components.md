@@ -1,6 +1,12 @@
 ---
 title: Register Multiple Components Together
+redirect_from: 
+- /kb/internal-developer-portal/articles/register-multiple-components
 ---
+
+:::info
+This is relevant only to `IDP 1.0`; it won’t work with `IDP 2.0`.
+:::
 
 ### Using the Catalog API
 
