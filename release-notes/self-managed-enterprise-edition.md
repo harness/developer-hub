@@ -45,7 +45,7 @@ With MongoDB 6 reaching end-of-life (EOL), it is recommended that customers usin
   - For ArgoCD users, run the FCV upgrade job manually before performing the main upgrade.
 
 #### MongoDB FCV Upgrade Job
-To run FCV upgrade manually (required for ArgoCD users), include this job definition: (mongo-preupgradejob)[https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/src/harness/templates/mongo-preupgradejob.yaml]
+To run FCV upgrade manually (required for ArgoCD users), include this job definition: (mongo-preupgradejob)[https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/examples/mongo-fcv-upgrade/job.yaml]
 This job runs as a pre-upgrade hook to ensure FCV is compatible with the MongoDB server version.
 
 #### Configuration
