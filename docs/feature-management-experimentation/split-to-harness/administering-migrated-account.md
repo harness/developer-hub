@@ -34,7 +34,8 @@ If FME has been added to your Harness account as a proof of value (POV) and you 
 * **[Projects](#projects)** - Describes how to enable access to a project, using RBAC settings to grant 'unrestricted' access to all your users or 'restrict' access to a subset of users, groups, or API keys.
 * **[Troubleshooting](#troubleshooting)** - This section is especially helpful to POV users, and we aim to keep it updated and relevant to you.
 
-The RBAC recommendations in this guide follow the decisions made by the engineers at Harness FME when translating legacy Split permissions to Harness. These recommendations provide you with a solid footing in a set of RBAC settings that work seamlessly with FME. If you are finding permission issues in FME, you can return to the permissions described in this guide and work from there to identify the permissions you are missing.
+The RBAC recommendations in this guide follow the decisions made by the engineers at Harness FME when translating legacy Split permissions to Harness. These recommendations provide you with a solid footing in a set of RBAC settings that work well with FME. If you are finding permission issues in FME, you can return to the permissions described in this guide and work from there to identify the permissions you are missing.
+
 :::
 
 The following terminology is referenced in this guide:
@@ -257,9 +258,6 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
             <td>
               <p>
                 Project Admin
-              </p>
-              <p>
-                Project Viewer
               </p>
             </td>
             <td>
