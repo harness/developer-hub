@@ -20,6 +20,52 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 :::
 
+## Impotant Notice:  
+We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. Action required: Please update your automated scripts to ensure compatibility with the new system.
+
+[Instruction to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+
+## October 2025 - Version 1.66.0
+#### Deployment Date: October 13, 2025 (Prod-1)
+
+### [New Feature] Bulk Management and Filtering in Budgets
+**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget#budgets-overview-page)**
+
+This release introduces two powerful features to streamline budget management:
+
+**Bulk Management** enables efficient budget administration by allowing you to:
+- Select and modify multiple budgets simultaneously
+- Adjust budget amounts by percentage or fixed value
+- Manage alerts across multiple budgets (add/remove recipients, delete alerts)
+- Clone budgets with customizable options for thresholds and recipients
+
+**Saved Filters** improves budget discoverability with filters for:
+- Created By
+- Last Modified
+- Max/Min Budget Amount
+- Period
+- Perspective
+
+All filter dropdowns are now context-aware, showing only options relevant to your budgets.
+
+<DocImage path={require('./static/ccm/bulk-management.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### Feature Improvements
+
+- **Disable Functionality**: Added support for disabling Cluster Orchestrator on enabled clusters. Disabling a Cluster Orchestrator stops all its components, removes finalizers and configurations, disables Harness-managed nodepools, and prepares the cluster for Karpenter (or any autoscaler) fallback. [CCM-25739]
+
+- **Enhanced Recommendation Tags**: Added a "tags" field to each data item in the API response for the Recommendations overview list endpoint (/ccm/api/recommendation/overview/list) which contains all of the cloud tags associated with each recommendation. If no cloud tags exist for a Recommendation, "null" is given instead. [CCM-25737]
+
+- **Enhanced Ticket Management**: Added support for "Service Request" ticket type for our Service Now integration for recommendations. Using Service request tickets customers can manage recommendations more easily using automated workflows and auto discovery. Tickets lifecycle can be managed using proper fulfillment and approvals.
+
+### Fixed Issues
+
+- **Bar Chart Fix**: The Harness CCM Overview page bar chart duplicated Azure costs due to missing filters for actual vs amortised values, and the issue was resolved by fetching azureCostType from the Active Spend API and applying it as a condition. [CCM-23539]
+
+- **Budget Reassignment Fix**: Resolved an issue where budgets associated with deleted folders were not reassigned properly. All related budgets now migrate to the default folder to maintain data consistency and visibility. [CCM-26345]
+
+### [New Feature] Budget Folders
+
 ## October 2025 - Version 1.65.9
 #### Deployment Date: October 8, 2025 (Prod-1)
 
@@ -35,7 +81,15 @@ These changes improve the overall usability and discoverability of budgets, allo
 <DocImage path={require('./static/ccm/budget-folders.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### Feature Improvements
-- **Resource ID Support in Perspectives**: Added "Resource ID" as a group by, filter, and operand across all cloud service providers, enabling more granular cost analysis and reporting. [CCM-25078]
+- **Resource ID Support in Perspectives**: Added "Resource ID" as a group by, filter, and operand across all cloud service providers, enabling more granular cost analysis and reporting. Resource ID - AWS
+Global Resource Name - GCP
+
+Added for the following scenarios:
+Perspective Operand definition
+Group by Support by Resource ID
+Filter support by Resource ID
+
+These two new fields excluded from cost categories. [CCM-25078]
 - **Azure Resource Group Filtering**: Added support for filtering recommendations by Azure Resource Group, aligning with Perspectives functionality and enabling more targeted cost optimization strategies. [CCM-25175]
 - **AutoStopping Enhancements**: Simplified health check configuration by removing status enforcement requirements, allowing single status inputs. We have also stopped using the instance groups to populate the port configuration in the rule creation flow. Now user can fill the ports based on their usecase. [CCM-24597]
 
