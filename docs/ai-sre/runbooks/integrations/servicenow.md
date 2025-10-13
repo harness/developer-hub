@@ -434,6 +434,7 @@ This Business Rule will automatically push comments and work notes from ServiceN
 (function executeRule(current) {
   gs.info("[Harness IR] BR triggered for journal entry: " + current.getValue('sys_id'));
 
+  // Determine note type (e.g., comments or work_notes)
   var type = current.getValue('element');
 
   // Only continue for work_notes or comments
@@ -442,6 +443,7 @@ This Business Rule will automatically push comments and work notes from ServiceN
   //   return;
   // }
 
+  // Fetch the related Incident record
   var incidentId = current.getValue('element_id');
   var inc = new GlideRecord('incident');
   if (!inc.get(incidentId)) {
@@ -449,35 +451,44 @@ This Business Rule will automatically push comments and work notes from ServiceN
     return;
   }
 
+  // Detect instance URL dynamically
+  var instanceUrl = gs.getProperty('glide.servlet.uri'); // e.g. https://dev319566.service-now.com/
+  var incidentNumber = inc.getValue('number');
+  var incidentUrl = instanceUrl + "nav_to.do?uri=/incident.do?sysparm_query=number=" + incidentNumber;
+
+  // Build payload
   var payload = {
-    snow_incidentId: inc.getValue('number'),
-    snow_incidentSysId: inc.getUniqueValue(),
-    note_type: type,                           // "comments" | "work_notes"
+    snow_incidentId: incidentNumber,                     // e.g. INC0010234
+    snow_incidentSysId: inc.getUniqueValue(),            // Stable sys_id
+    note_type: type,                                     // "comments" | "work_notes"
     note_text: current.getValue('value') || '',
     author: current.getValue('sys_created_by') || '',
-    created_on: current.sys_created_on.getGlideObject().getNumericValue(),
+    created_on: current.sys_created_on.getGlideObject().getNumericValue(), // epoch numeric
     priority: inc.getValue('priority') || '',
     short_description: inc.getValue('short_description') || '',
-    note_id: current.getValue('sys_id')
+    note_id: current.getValue('sys_id'),                 // journal entry sys_id
+    incident_url: incidentUrl                            // Deep link to incident
   };
 
-  gs.info("[Harness IR] Sending payload: " + JSON.stringify(payload));
+  gs.info("[Harness IR] Payload prepared: " + JSON.stringify(payload));
 
   try {
     var r = new sn_ws.RESTMessageV2();
-    // TODO: replace with your AI-SRE project/org/template webhook endpoint:
+    
+    // Replace with your AI-SRE project/org/template webhook endpoint:
     r.setEndpoint('https://app.harness.io/ir/tp/api/v1/mc/account/<ACCOUNT_ID>/orgs/<ORG_ID>/projects/<PROJECT_ID>/incidentTemplate/<TEMPLATE_ID>/servicenow/webhook');
-
     r.setHttpMethod('POST');
     r.setRequestHeader("Content-Type", "application/json");
     r.setRequestBody(JSON.stringify(payload));
 
     var response = r.execute();
     var status = response.getStatusCode();
+    var body = response.getBody();
 
-    gs.info("[Harness IR] Webhook response code: " + status);
-    if (status !== 200) {
-      gs.error("[Harness IR] Non-200 response body: " + response.getBody());
+    if (status === 200) {
+      gs.info("[Harness IR] Webhook successfully sent. Status: " + status);
+    } else {
+      gs.error("[Harness IR] Webhook returned non-200 response. Status: " + status + " Body: " + body);
     }
   } catch (ex) {
     gs.error("[Harness IR] Webhook failed: " + ex.getMessage());
