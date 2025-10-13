@@ -66,3 +66,17 @@ This transition is your opportunity to start fresh, remove technical debt, and a
 - Re-imagined user experience and UI 
 - Near real-time data infrastructure 
 - Streamlined metrics setup and ownership
+
+## SEI 1.0 to SEI 2.0
+
+To access the latest [SEI 2.0](/docs/software-engineering-insights/harness-sei/sei-overview) experience, click **Switch to 2.0** below the **Account Management** button.
+
+![](../harness-sei/static/transition-2.png)
+
+## SEI 2.0 to SEI 1.0
+
+To return to the [SEI 1.0](/docs/software-engineering-insights/propelo-sei/get-started/overview) experience, click **Switch to 1.0** below the **Account Management** button. 
+
+![](../harness-sei/static/transition-1.png)
+
+You can switch back at any time without losing your existing data.
