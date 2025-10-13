@@ -1,6 +1,7 @@
 ---
 title: Harness AI Code Agent
 description: Harness AI Code Agent for enhanced coding productivity.
+sidebar_label: Code Agent
 sidebar_position: 7
 redirect_from:
   - /docs/platform/harness-aida/code-assistant

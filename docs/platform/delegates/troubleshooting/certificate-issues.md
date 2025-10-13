@@ -1,7 +1,8 @@
 ---
 title: Delegate certificate issues
 description: Troubleshoot common delegate certificate issues.
-# sidebar_position: 1
+sidebar_label: Certificate Issues
+sidebar_position: 1
 ---
 
 This topic provides solutions for common delegate certificate issues.

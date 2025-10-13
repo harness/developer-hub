@@ -4,6 +4,7 @@ description: Import CSVs into SEI Tables.
 sidebar_position: 40
 redirect_from:
   - /docs/software-engineering-insights/setup-sei/sei-propels-scripts/tables
+  - /docs/software-engineering-insights/sei-propels-scripts/tables
 ---
 
 SEI Tables can contain any custom data that you enter manually, pull from a [Propel](./propels-overview, or import from a CSV file. You can then display Table data on [Table reports](./table-reports).

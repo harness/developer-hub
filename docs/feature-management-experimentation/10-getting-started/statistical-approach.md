@@ -37,7 +37,7 @@ The minimum enforced sample size is 10 for fixed horizon testing and 100 for seq
 Harness FME includes out-of-the-box checks to ensure data quality and prevent misinterpretation of results:
 
 * [Review period check](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/review-period-check) ensures metrics aren't analyzed too soon after a flag rollout.
-* [Sample ratio mismatch (SMR) check](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check) detects uneven user allocation between treatment groups.
+* [Sample ratio mismatch (SRM) check](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check) detects uneven user allocation between treatment groups.
 
 These guardrails help you trust that your experiment results are reliable and not driven by data integrity issues.
 

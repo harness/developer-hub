@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-09-16T10:00
+date: 2025-10-06T10:00
 sidebar_position: 10
 ---
 
@@ -48,15 +48,75 @@ This update is currently being rolled out to customers, and we expect the rollou
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
 
+## October 2025
+
+### Version 1.102.0
+
+<!-- 2025-10-06 -->
+#### Fixed issues
+- Self-signed certificates provided through the `DESTINATION_CA_PATH` or `CI_MOUNT_VOLUMES` environment variables will now be **appended** to the existing public certificates in the same path instead of replacing them.
+This behavior is controlled by the feature flag **`CI_APPEND_CERTS`** and is currently **supported only on Linux nodes** (Windows nodes are not supported). This fix will work with internal and existing public CA certificates. (ZD-74811, ZD-87244, CI-15527)
+
+  **Limitations and considerations for `CI_APPEND_CERTS` (CI-16816)**:
+
+  - This feature applies only to certificates whose destination file path ends with `.crt`. The source paths can be PEM files, but the destination must be a `.crt` file.
+
+  - The appending operation is performed by the CI add-on and therefore requires root access when the destination is in a sensitive location such as `/etc/ssl/certs`.
+
+    - In such cases, the step performing the append must run as `user: 0` (root).
+
+  - This feature flag can be a breaking change for pipelines that:
+
+    - Use non-root users, and
+
+    - Depend on the [existing mounted certs from the build pod](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/). 
+
 ## September 2025
+
+### Version 1.101.0
+
+<!-- 2025-09-29 -->
+#### New features and enhancements
+- S3 Upload Plugin (plugins/s3): Added wildcard (*) pattern support for `PLUGIN_STRIP_PREFIX`. This allows stripping variable path segments and handle dynamic directory structures. (CI-18487)
+- Added Docker connector override support for local infrastructure. (CI-19024)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `plugins/s3` | Added wildcard (*) pattern support for `PLUGIN_STRIP_PREFIX` | 1.5.3              | 1.5.4         |
+| `harness/ci-lite-engine`       | Regular image updates | 1.17.5              | 1.17.6         |
+| `harness/ci-addon`       | Regular image updates | 1.17.5              | 1.17.6         |
+
+### Version 1.99
+
+<!-- 2025-09-22 -->
+#### New features and enhancements
+- **CI Stage Summary** now includes Intelligence tiles showing time saved and counts of stages optimized by Build Cache, Test Intelligence, and Docker Layer Caching. (CI-18124)
+- Previously skipped tests are now re-run when properly configured with report paths. Currently supported with Java and RunTestV2 under the `CI_TI_RERUN_FAILED_TEST` feature flag (off by default). (CI-17919)
+- Extended `drone-git` support to Windows Server 2025. Previously, support was available only up to Windows Server 2022. (ZD-92034, CI-18929)
+
+#### Fixed issues
+- Fixed an inconsistency in exit code handling across operating systems. Windows exit codes that exceeded limits are now properly aligned with macOS and Linux behavior. (ZD-92102, CI-18863)
+- Fixed a misleading error in the **Clone Codebase** step. Container creation failures now surface at the **init** step if terminated containers are detected, making the error clearer. (CI-18541)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/drone-git` | Support for Windows Server 2025 | 1.7.2              | 1.7.6         |
+| `plugins/kaniko`       | Build args with commas now supported. | 1.11.4              | 1.11.5         |
+| `plugins/kaniko-ecr`       | Build args with commas now supported. | 1.11.4              | 1.11.5         |
+| `plugins/kaniko-acr`       | Build args with commas now supported. | 1.11.4              | 1.11.5         |
+| `plugins/kaniko-gar`       | Build args with commas now supported. | 1.11.4              | 1.11.5         |
 
 ### Version 1.97
 
 <!-- 2025-09-15 -->
 #### New features and enhancements
-- Added a new optional `PRESERVE_METADATA` flag (default: `false`) to the Harness CI cache plugin which ensures time-based cleanup mechanisms (such as Gradle pruning). (CI-18276)
-- The `CI_DYNAMIC_BRANCH_SELECTOR` feature flag has been deprecated and is now enabled by default across all environments. (ZD-91773, CI-18921)
-- If no configuration is found for an account, default limits are now automatically applied based on the account’s license type. (CI-18800)
+- Added a new optional `PRESERVE_METADATA` flag (default: `false`) to the Harness CI cache plugin which ensures time-based cleanup mechanisms (such as Gradle pruning). For details, [check out the documentation](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/#preserve-file-metadata). (CI-18276)
+- The `CI_DYNAMIC_BRANCH_SELECTOR` feature flag has been deprecated and is now enabled by default across all environments. This means that Git branches in the codebase branch selector are dynamically populated when running a pipeline. (ZD-91773, CI-18921)
+- If no custom configuration is set for an account, Harness CI now automatically applies default build and resource limits based on the account’s license type. This ensures that every account has appropriate limits in place, even without manual setup. (CI-18800)
 - Improved the error message shown when a pipeline fails during container creation, making failures easier to diagnose. (CI-18541)  
 
 #### Fixed issues

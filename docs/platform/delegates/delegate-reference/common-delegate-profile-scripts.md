@@ -1,7 +1,8 @@
 ---
 title: Common delegate initialization scripts
-description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature in coming soon. This topic provides information on script availability and som…
-sidebar_position: 2
+description: Learn about delegate initialization scripts for installing applications and running commands on delegate pods, hosts, and containers.
+sidebar_label: Delegate Profile Scripts
+sidebar_position: 4
 helpdocs_topic_id: auveebqv37
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false

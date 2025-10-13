@@ -1,6 +1,7 @@
 ---
 title: Delegate registration and verification
 description: To set up a Harness Delegate, you install the delegate in your environment and the delegate automatically registers with your Harness account. The Delegate config file (for example, Kubernetes Delega…
+sidebar_label: Registration and Verification
 sidebar_position: 4
 helpdocs_topic_id: 39tx85rekj
 helpdocs_category_id: m9iau0y3hv

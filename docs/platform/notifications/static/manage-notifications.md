@@ -5,10 +5,6 @@ keywords: [Notification Settings, Slack notifications, Microsoft Teams notificat
 sidebar_position: 2
 ---
 
-:::note
-Currently, this feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 With notifications management, you can configure notifications for the delegate events below:
 
 - Delegate Disconnected

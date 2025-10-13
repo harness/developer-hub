@@ -293,6 +293,12 @@ Here you can see two service deployments run serially on the same infrastructure
 
 You can propagate a stage configured with multi-service from previous configured stage. In the example below, If configured multi-service in stage `deployKubernetes` you will be able to reference the service configuration in stage `dev`.
 
+:::note
+
+Execution time inputs are not supported while propagating multiple services. 
+
+:::
+
 ```yaml
     - stage:
         name: deployKubernetes
@@ -476,12 +482,6 @@ Max concurrency changes based on the following:
 ## Custom Max Concurrency
 
 You can specify a custom **Max Concurrency** for multi-service deployment stages. This allows you to control the maximum number of services that can be deployed simultaneously.
-
-:::note
-
-Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 **How custom max concurrency works**
 

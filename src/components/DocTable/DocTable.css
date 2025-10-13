@@ -1,0 +1,34 @@
+.docTableCard {
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: 8px;
+    overflow: hidden; /* keeps rounded corners for inner borders */
+  }
+  
+  /* Ensure true table layout and full width */
+  .docTable {
+    display: table;           /* avoid any block/table-wrapper quirks */
+    width: 100%;
+    table-layout: fixed;      /* prevents content-based shrink; uses colgroup widths */
+    border-collapse: collapse;
+    margin: 0;
+  }
+  
+  .docTable th,
+  .docTable td {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--ifm-color-emphasis-300);
+    text-align: left;
+    vertical-align: top;
+  }
+  
+  .docTable thead th {
+    background: var(--ifm-color-emphasis-100);
+    font-weight: 600;
+  }
+  
+  /* Optional zebra striping */
+  .docTable--striped tbody tr:nth-child(even) td {
+    background: var(--ifm-color-emphasis-50);
+  }

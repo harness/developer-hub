@@ -4,10 +4,9 @@ description: Set up a Harness macOS build farm that uses an Anka registry and co
 sidebar_position: 40
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import CustomCAcert from '/docs/continuous-integration/shared/windows-custom-ca-certs.md';
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -41,18 +40,18 @@ This is one of several build infrastructure options, for example, you can also r
 
 This configuration requires:
 
-* An [Anka Build license](https://veertu.com/anka-build/).
-* Familiarity with AWS EC2, Anka, and the macOS ecosystem.
-   * [What is the Anka build cloud?](https://docs.veertu.com/anka/anka-build-cloud/)
-   * [Getting started with Anka on EC2 Mac instances](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/)
-   * [Anka on AWS EC2 instances](https://docs.veertu.com/anka/aws-ec2-mac/)
-* Familiarity with the [Harness Platform](/docs/platform/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
-* Familiarity with Harness Delegates, VM runners, and pools.
-  * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
-  * [Drone VM runner overview](https://docs.drone.io/runner/vm/overview/)
-  * [Drone pools](https://docs.drone.io/runner/vm/configuration/pool/)
-  * [Drone Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/)
-  * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
+- An [Anka Build license](https://veertu.com/anka-build/).
+- Familiarity with AWS EC2, Anka, and the macOS ecosystem.
+  - [What is the Anka build cloud?](https://docs.veertu.com/anka/anka-build-cloud/)
+  - [Getting started with Anka on EC2 Mac instances](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/)
+  - [Anka on AWS EC2 instances](https://docs.veertu.com/anka/aws-ec2-mac/)
+- Familiarity with the [Harness Platform](/docs/platform/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
+- Familiarity with Harness Delegates, VM runners, and pools.
+  - [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
+  - [Drone VM runner overview](https://docs.drone.io/runner/vm/overview/)
+  - [Drone pools](https://docs.drone.io/runner/vm/configuration/pool/)
+  - [Drone Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/)
+  - [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
 ## Set up the Anka Controller and Registry
 
@@ -76,18 +75,18 @@ After setting up the Anka Controller and Registry, you can set up [Anka Virtuali
 1. In AWS EC2, [allocate a dedicated host](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-allocating). For **Instance family**, select **mac-m2**.
 2. [Launch an instance on the dedicated host](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#launching-dedicated-hosts-instances), configured as follows:
 
-   * Application and OS Images: Select **Browse AMIs** and select an [Anka community AMI](https://docs.veertu.com/anka/aws-ec2-mac/#community-ami). If you don't want to use a preconfigured AMI, you can use a different macOS AMI, but you'll need to take additional steps to [install Anka Virtualization](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/installing-the-anka-virtualization-package/) on the instance.
-   * Instance type: Select a **mac-m2** instance.
-   * Key pair: Select an existing key pair or create one.
-   * Advanced details - Tenancy: Select **Dedicated host - Launch this instance on a dedicated host**
-   * Advanced details - Target host by: Select **Host ID**
-   * Advanced details - Tenancy host ID: Select your mac-m2 dedicated host.
-   * User data: Refer to the Anka documentation on [User data](https://docs.veertu.com/anka/aws-ec2-mac/#user-data-envs).
-   * Network settings: **Allow HTTP Traffic from the Internet** might be required to use virtualization platforms, such as VNC viewer.
+   - Application and OS Images: Select **Browse AMIs** and select an [Anka community AMI](https://docs.veertu.com/anka/aws-ec2-mac/#community-ami). If you don't want to use a preconfigured AMI, you can use a different macOS AMI, but you'll need to take additional steps to [install Anka Virtualization](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/installing-the-anka-virtualization-package/) on the instance.
+   - Instance type: Select a **mac-m2** instance.
+   - Key pair: Select an existing key pair or create one.
+   - Advanced details - Tenancy: Select **Dedicated host - Launch this instance on a dedicated host**
+   - Advanced details - Target host by: Select **Host ID**
+   - Advanced details - Tenancy host ID: Select your mac-m2 dedicated host.
+   - User data: Refer to the Anka documentation on [User data](https://docs.veertu.com/anka/aws-ec2-mac/#user-data-envs).
+   - Network settings: **Allow HTTP Traffic from the Internet** might be required to use virtualization platforms, such as VNC viewer.
 
-    The first three minutes of this [Veertu YouTube video](https://www.youtube.com/watch?v=DoRaiMklIP0) briefly demonstrate the Anka community AMI set up process, include details about **User data**.
+   The first three minutes of this [Veertu YouTube video](https://www.youtube.com/watch?v=DoRaiMklIP0) briefly demonstrate the Anka community AMI set up process, include details about **User data**.
 
-3. [Connect to your instance's GUI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html#connect-to-mac-instance:~:text=public%2Ddns%2Dname-,Connect%20to%20your%20instance%27s%20graphical%20user%20interface,-(GUI)).
+3. [Connect to your instance's GUI](<https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html#connect-to-mac-instance:~:text=public%2Ddns%2Dname-,Connect%20to%20your%20instance%27s%20graphical%20user%20interface,-(GUI)>).
 4. Open a terminal and run `anka version` to check if Anka Virtualization is installed. If it is not, [Install Anka Virtualization](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/installing-the-anka-virtualization-package/).
 5. Make sure the environment is updated and necessary packages are installed. For example, you can run `softwareupdate -i -a`.
 6. [Join your Anka Virtualization node to the Controller](https://docs.veertu.com/anka/anka-build-cloud/getting-started/preparing-and-joining-your-nodes/)
@@ -130,22 +129,22 @@ The `pool.yml` file defines the VM pool size, the Anka Registry host location, a
 ```yaml
 version: "1"
 instances:
- - name: anka-build
-   default: true
-   type: ankabuild
-   pool: 2
-   limit: 10
-   platform:
-     os: darwin
-     arch: amd64
-   spec:
-     account:
-       username: anka
-       password: admin
-     vm_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
-     registry_url: https://anka-controller.myorg.com:8089
-     tag: 1.0.6
-     auth_token: sometoken
+  - name: anka-build
+    default: true
+    type: ankabuild
+    pool: 2
+    limit: 10
+    platform:
+      os: darwin
+      arch: amd64
+    spec:
+      account:
+        username: anka
+        password: admin
+      vm_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
+      registry_url: https://anka-controller.myorg.com:8089
+      tag: 1.0.6
+      auth_token: sometoken
 ```
 
 #### Pool settings reference
@@ -175,7 +174,7 @@ instances:
       image: IMAGE_NAME_OR_PATH
       machine_type: e2-medium
       zones:
-        - YOUR_GCP_ZONE  # e.g., us-central1-a
+        - YOUR_GCP_ZONE # e.g., us-central1-a
       disk:
         size: 100
       user_data: |
@@ -207,16 +206,16 @@ instances:
           - ufw allow 9079
 ```
 
-| Setting | Type | Description |
-| ------- | ---- | ----------- |
-| `name` | String | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure). |
-| `pool` | Integer | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
-| `limit` | Integer | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
-| `username`, `password` | Strings | User name and password of the Anka VM in the Anka Virtualization machine (the mac-m2 EC2 machine). These are set when you [run anka create](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/creating-vms/#:~:text=After%20executing%20anka%20create%2C%20Anka%20will%20automatically%20set%20up%20macOS%2C%20create%20the%20user%20anka%20with%20password%3A%20admin%2C%20disable%20SIP%2C%20and%20enable%20VNC%20for%20you.%20The%20VM%20will%20then%20be%20stopped.). |
-| `vm_id` | String - ID | ID of the Anka VM. |
-| `registry_url` | String - URL | Registry/Controller URL and port. This URL must be reachable by your Anka nodes. You can configure `ANKA_ANKA_REGISTRY` in your [Controller's docker-compose.yml](https://docs.veertu.com/anka/anka-build-cloud/configuration-reference/). |
-| `tag` | String - Tag | [Anka VM template tag.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/registry-vm-templates-and-tags/) |
-| `auth_token` | String - Token | Required if you [enabled token authentication for the Controller and Registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/). |
+| Setting                | Type           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                 | String         | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure).                                                                                                                                                                                                                                                                                                                        |
+| `pool`                 | Integer        | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner.                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `limit`                | Integer        | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize.                                                                                                   |
+| `username`, `password` | Strings        | User name and password of the Anka VM in the Anka Virtualization machine (the mac-m2 EC2 machine). These are set when you [run anka create](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/creating-vms/#:~:text=After%20executing%20anka%20create%2C%20Anka%20will%20automatically%20set%20up%20macOS%2C%20create%20the%20user%20anka%20with%20password%3A%20admin%2C%20disable%20SIP%2C%20and%20enable%20VNC%20for%20you.%20The%20VM%20will%20then%20be%20stopped.). |
+| `vm_id`                | String - ID    | ID of the Anka VM.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `registry_url`         | String - URL   | Registry/Controller URL and port. This URL must be reachable by your Anka nodes. You can configure `ANKA_ANKA_REGISTRY` in your [Controller's docker-compose.yml](https://docs.veertu.com/anka/anka-build-cloud/configuration-reference/).                                                                                                                                                                                                                                                   |
+| `tag`                  | String - Tag   | [Anka VM template tag.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/registry-vm-templates-and-tags/)                                                                                                                                                                                                                                                                                                                                                                       |
+| `auth_token`           | String - Token | Required if you [enabled token authentication for the Controller and Registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).                                                                                                                                                                                                                                                                                                         |
 
 ### Start the runner
 
@@ -279,11 +278,11 @@ For more information about delegates and delegate installation, go to [Delegate 
 
 1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
-	 ```
-	 docker ps
-	 docker logs DELEGATE_CONTAINER_ID
-	 docker logs RUNNER_CONTAINER_ID
-	 ```
+   ```
+   docker ps
+   docker logs DELEGATE_CONTAINER_ID
+   docker logs RUNNER_CONTAINER_ID
+   ```
 
 2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
 
@@ -295,10 +294,8 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your Anka VMs as build infrastructure.
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 1. In Harness, go to the CI pipeline that you want to use the AWS VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
@@ -311,10 +308,8 @@ Configure your pipeline's **Build** (`CI`) stage to use your Anka VMs as build i
 
 <DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 ```yaml
     - stage:
@@ -335,7 +330,6 @@ Configure your pipeline's **Build** (`CI`) stage to use your Anka VMs as build i
             steps:
             ...
 ```
-
 
 </TabItem>
 </Tabs>
@@ -375,16 +369,18 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 </details>
 
-##  Add more Mac nodes and VM templates to the Anka Registry
+<CustomCAcert/>
+
+## Add more Mac nodes and VM templates to the Anka Registry
 
 You can [launch more Anka Virtualization nodes on your EC2 dedicated host](#set-up-anka-virtualization) and [create more VM templates](#create-anka-vm-templates) as needed. After you join a Virtualization node to the Controller cluster, it can pull VM templates from the registry and use them to create VMs.
 
 ## Troubleshoot self-managed VM build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
 
-* [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
-* [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
-* [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
-* [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
-* [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+- [Can I use the same build VM for multiple CI stages?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-use-the-same-build-vm-for-multiple-ci-stages)
+- [Why are build VMs running when there are no active builds?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-are-build-vms-running-when-there-are-no-active-builds)
+- [How do I specify the disk size for a Windows instance in pool.yml?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
+- [Clone codebase fails due to missing plugin](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#clone-codebase-fails-due-to-missing-plugin)
+- [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

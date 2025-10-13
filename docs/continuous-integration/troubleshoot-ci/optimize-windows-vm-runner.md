@@ -20,6 +20,13 @@ docker pull harness/drone-git:1.6.3
 ```
 C:\ProgramData\Amazon\EC2Launch\state.run-once
 ```
+:::tip
+If `C:\ProgramData\Amazon\EC2Launch\state.run-once` is not found, run the following command instead:
+```
+C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
+```
+:::
+
 5. Create a New AMI from the Updated VM.
 
 ![Create a new AMI - part A](./static/aws-ec2-a.png)

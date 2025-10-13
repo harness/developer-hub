@@ -144,6 +144,7 @@ The ECS permissions are also used to generate recommendations to best-fit your t
                 "ec2:DescribeRegions",
                 "ec2:DescribeInstances*",
                 "cloudwatch:GetMetricData",
+                "cloudwatch:ListMetrics",
                 "ce:GetRightsizingRecommendation"
             ],
             "Effect": "Allow",

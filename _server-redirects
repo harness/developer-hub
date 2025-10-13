@@ -28,6 +28,9 @@
 /docs/category/sto-workflows /docs/category/use-sto
 
 # Added by aimurphy in Feb 2024 for Tutorial Unification
+
+# Added on 2025-09-24 for creating-tests folder redirect
+# /docs/ai-test-automation/test-authoring/creating-tests /docs/ai-test-automation/test-authoring/creating-tests/create-tests-doc
 /tutorials/ci-pipelines /docs/continuous-integration
 /tutorials/feature-flags /docs/feature-flags
 /tutorials/self-managed-enterprise-edition /docs/self-managed-enterprise-edition
@@ -164,5 +167,10 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-aws-elasticache /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-aws-elasticache
 
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database
+
+# Redirects required for sidebar standardization
+/docs/category/get-started-with-harness /docs/category/get-started
+/docs/category/cloud-marketplace-offerings /docs/category/cloud-marketplace
+
 
 # Redirects generated from Front Matter [sytem generated goes below here]:

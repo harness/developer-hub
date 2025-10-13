@@ -1,6 +1,7 @@
 ---
 title: Delegate system requirements
-description: This topic lists the requirements for the Harness Delegate.
+description: Review the system requirements for installing and running the Harness Delegate, including supported operating systems, hardware specifications, and network prerequisites.
+sidebar_label: System Requirements
 sidebar_position: 2
 helpdocs_topic_id: k7sbhe419w
 helpdocs_category_id: vm60533pvt

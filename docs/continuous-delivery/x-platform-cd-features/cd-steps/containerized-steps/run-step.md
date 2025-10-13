@@ -19,7 +19,7 @@ The Run step settings are described below.
 
 ## Important notes
 
-- Customers running a Run Step within a [Containerized Step Group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) may want to review the [Harness permissions inheritance logic](https://developer.harness.io/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/)
+- Customers running a Run Step within a [Containerized Step Group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) may want to review the [Harness permissions inheritance logic](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step/)
 
 ## Container Registry and Image
 
@@ -300,7 +300,7 @@ Select an option to set the pull policy for the image.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
 ## Run as User
-Customers can now define the UID to run all policies within the pod.  Please note both information about [Security Context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) and review the [Harness permissions inheritance logic](https://developer.harness.io/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/) when using Containerized Step Groups
+Customers can now define the UID to run all policies within the pod.  Please note both information about [Security Context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) and review the [Harness permissions inheritance logic](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step/) when using Containerized Step Groups
 
 
 ## Set Container Resources

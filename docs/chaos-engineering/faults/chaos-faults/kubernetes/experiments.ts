@@ -343,4 +343,16 @@ export const experiments: ExperimentDetails[] = [
     tags: ["pod"],
     category: "kubernetes",
   },
+  {
+    name: "Pod Application Function Error",
+    description: "Pod Application Function Error injects an error into a specified function of an application running in a Kubernetes pod. This fault is useful for testing the resilience of your application to function-level errors.",
+    tags: ["pod", "function", "error"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod Application Function Latency",
+    description: "Pod Application Function Latency injects latency into a specified function of an application running in a Kubernetes pod. This fault is useful for testing the resilience of your application to function-level delays.",
+    tags: ["pod", "function", "latency"],
+    category: "kubernetes",
+  },
 ];

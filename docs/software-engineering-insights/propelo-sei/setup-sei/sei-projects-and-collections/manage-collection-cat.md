@@ -3,7 +3,7 @@ title: Manage collection categories
 description: Create and edit Collection categories
 sidebar_position: 30
 redirect_from:
-  - /docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collection-cat
+  - /docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat
 ---
 
 Collection categories are broad classifications that serve as containers for [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections) but are not, themselves, Collections. For example, **Teams** is an Collection category; whereas **Engineering Team** and **Docs Team** are Collections under the **Teams** category.

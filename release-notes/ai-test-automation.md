@@ -1,8 +1,8 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2025-09-16T16:00
-sidebar_position: 19
+date: "2025-09-29T19:40:56+05:30"
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';
@@ -21,7 +21,58 @@ The release notes describe recent changes to Harness AI Test Automation.
 :::
 ## September 2025
 
-### New Features
+### 2025.09.v3
+
+#### New Features
+
+##### Assert Wait for Question  
+This powerful new assertion command lets users pause test execution until a specific user-defined question or condition is true. Built on the `wait for text` assertion command, it opens up dynamic, context-aware validation capabilities that make your tests smarter and more flexible than ever before.
+
+<DocImage path={require('./static/ait/assert-wait-for-ques.png')} alt="Assert Wait for Question" title="Assert Wait for Question" width="600" height="500" />
+
+To know more about Assert Wait for Question, refer to [Assert Wait for Question](/docs/ai-test-automation/test-authoring/creating-tests/assertions#wait-for-question).
+
+
+##### Completely Overhauled Test Step Design  
+The look and functionality of test steps have been fully transformed to enhance clarity and usability. Highlights include:  
+- The “Validations” tab renamed to “Step Insights,” with validation details shown directly and auto-validations surfaced much more intuitively.  
+- New icons communicate step status more effectively, including a retrain badge for steps needing AI retraining.  
+- Execution time and locator types are now visible for each step, offering deeper insights at a glance.  
+- The approval workflow is refined for multiple issues, with suggestion actions scoped per issue, making triage simpler and more granular.
+
+<DocImage path={require('./static/ait/ui-test.png')} alt="UI Test" title="UI Test" />
+
+##### Locator Configuration in IA/IE  
+Take full control of your element selectors during Interactive Authoring and Interactive Editing! This new feature enables users to configure locators while editing steps, improving precision and reducing test maintenance headaches by ensuring the best possible target identification for elements.
+
+<DocImage path={require('./static/ait/edit-write.png')} alt="Edit Write" title="Edit Write" width="600" height="500" />
+
+
+#### Enhancements and Bug Fixes
+
+- **Max Test Parallelism Error Display:** Users now get instant feedback with an error when setting parallelism beyond allowed limits on suite details, enforcing correct configurations upfront.  
+- **Reliable Parallel Task Handling:** Errors in AI commands or fast tasks cause immediate task failure rather than just warnings, reducing confusion and improving error tracking.  
+
+
+
+### 2025.09.v2
+
+
+#### Enhancements and Bug Fixes
+
+* **CLI Download for Test Results** : Quickly download CSV and JSON files from the CLI, to get all the test results in a single file just by clicking the link available after the test it run in the python cli itself.
+* **Better Gzip Debugging** : Troubleshooting compression-related issues is now easier with enhanced debugging support.
+* **Timezone Accuracy for Indonesia (WIB)** : Fixed an issue where some timezone abbreviations were not recognized. Scheduling and reporting now correctly reflect local time in Indonesia, preventing errors.
+* **Improved Filter Visibility** : Active filters now appear as chips, giving you a clear view of the criteria applied when exploring test data.
+* **Fail Tasks Immediately on AI Command or Fast Task Errors** : Tasks now properly fail if AI Commands or Fast Tasks encounter errors. Previously, failures were only flagged as warnings, which could cause confusion.
+* **Aligned Date Selection** : The start and end dates now default correctly and remain consistent in the interface, improving accuracy in reports and dashboards.
+* **Overseer Task Completion Fix**  : Overseer now completes tasks reliably, reducing delays caused by screenshot-based prioritization.
+* **Smarter Element Selection** : Relicx-specific ID attributes are now ignored in `smartselector`, ensuring more reliable element detection and reducing false positives in task execution.
+
+
+
+### 2025.09.v1
+#### New Features
 
 - **API Response Interception**: Added capability to intercept and analyze API responses during test execution for enhanced debugging and validation
 - **Pagination Enhancement**: Added pagination options to display more than 20 items per page across test listings and results
@@ -29,14 +80,14 @@ The release notes describe recent changes to Harness AI Test Automation.
 - **AI-Powered Parameter Generation**: Enabled 'Generate with AI' functionality in parameter creation to support deterministic value generation for dates
 - **Test Case Import with Assertions**: Added support for creating assertions and parameters during the 'Import Test Case' process
 
-### Enhancements
+#### Enhancements
 
 - **AI Thoughts Visibility**: Enhanced AI transparency by showing AI thoughts during execution of If/elseIf commands and on assertion failures
 - **Download Directory Navigation**: Added support for navigating to DOWNLOAD_DIR for improved file handling workflows
 - **Copilot Step Interactivity**: Made copilot steps clickable during execution in Interactive Authoring mode
 - **Screenshot Retry Logic**: Implemented automatic screenshot retry mechanism when confidence levels fall below retraining threshold
 
-### Bug Fixes
+#### Bug Fixes
 
 - **Parameter Handling**: Fixed issues where empty string values were not being properly set in parameters
 - **Cursor Position**: Resolved cursor position reset issue when entering values in input fields
