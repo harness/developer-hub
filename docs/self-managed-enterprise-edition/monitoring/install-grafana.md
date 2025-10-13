@@ -8,12 +8,26 @@ sidebar_position: 3
 
 To visualize metrics from various sources, you can import and configure Grafana dashboards.
 
-### Step 1: Install Grafana using Helm
+### Step 1: Configure Grafana Override Values
+
+Create a file named `override-grafana.yaml` with the following content:
+
+```yaml
+grafana:
+  resourcesPreset: "small"
+image:
+  repository: bitnamilegacy/grafana
+volumePermissions:
+  repository: bitnamilegacy/os-shell
+  resourcesPreset: "small"
+```
+
+### Step 2: Install Grafana using Helm
 
     ```bash
         helm repo add bitnami https://charts.bitnami.com/bitnami
         helm repo update bitnami
-        helm install grafana bitnami/grafana -n grafana --create-namespace
+        helm install grafana bitnami/grafana -n grafana --create-namespace -f override-grafana.yaml
     ```
 
 ## Open the Grafana Dashboard

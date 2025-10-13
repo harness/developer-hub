@@ -32,7 +32,7 @@ Both AWS and GCF versions cache the HTTP client used to POST to Mixpanel in thei
 
 #### Step 2: Configure Harness FME to use your webhook
 
-Copy your function/lambdas URL endpoint and paste it into the [FME impressions webhook](https://help.split.io/hc/en-us/articles/360020700232-Webhook-impressions) configuration.
+Copy your function/lambdas URL endpoint and paste it into the [FME impressions webhook](/docs/feature-management-experimentation/api/webhook/impressions/) configuration.
 
 Make sure you choose the environment from which you wish to receive impressions. If you are generating traffic in a testing environment, you will not see those impressions in production, and vice-versa.
 

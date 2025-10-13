@@ -1,7 +1,8 @@
 ---
 title: mTLS Support via Delegates
 description: How to set up mTLS support through a delegate
-# sidebar_position: 40
+sidebar_label: mTLS Support
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';

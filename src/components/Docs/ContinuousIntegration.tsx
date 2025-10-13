@@ -18,13 +18,6 @@ export default function CI() {
             <h1>Continuous Integration</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb/continuous-integration">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
             <Link href="/release-notes/continuous-integration">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}

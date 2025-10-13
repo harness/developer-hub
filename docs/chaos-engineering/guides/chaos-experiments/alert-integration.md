@@ -20,10 +20,6 @@ Alerts provide the status of the chaos experiments and other details, including 
 
 You can setup alerts by [creating a channel](#create-a-channel) and [defining conditions](#create-a-condition). Once setup, you can [apply these conditions](#select-channel-for-alerts) to a rule.
 
-:::note
-This feature is currently behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 :::tip
 - Ensure that SMTP is configured on your account. HCE configures SMTP for you as a part of the basic setup for your application.
 - To configure SMTP, ensure your account is connected to at least one delegate, regardless of the scope.

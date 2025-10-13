@@ -57,7 +57,7 @@ Make sure to include the required configurations from the [Requirements](#requir
 | **Key**         | **Value Example**       | **Description**                                            | **Required** |
 |-----------------|-------------------------|------------------------------------------------------------|-------------|
 | `TOOL`         | `Syft` or `cdxgen`        | The tool used to generate the SBOM.                        | Yes         |
-| `FORMAT`       | `spdx-json` or `cyclonedx`| The format of the generated SBOM.                          | Yes         |
+| `FORMAT`       | `spdx-json` or `cyclonedx-json`| The format of the generated SBOM.                          | Yes         |
 | `TARGET`       | `image_name:image_tag`  | The target artifact (Docker image) for SBOM generation.    | Yes         |
 | `ATTEST`       | `true` or `false`         | Boolean flag to determine if attestation is required.      | No          |
 | `KMS_KEY`      | `path/to/my/key`        | Path to the Private key used for signing the attestation.          | No          |

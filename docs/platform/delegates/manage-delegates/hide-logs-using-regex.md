@@ -1,8 +1,8 @@
 ---
 title: Hide log information based on regex patterns
-sidebar_label: Hide log information using regexes
-description: This topic describes how to sensitive log information based on regex patterns.
-sidebar_position: 9
+description: Learn how to mask sensitive information in delegate logs using custom regex patterns for enhanced security.
+sidebar_label: Hide Logs with Regex
+sidebar_position: 6
 ---
 
 Harness sanitizes deployment logs and any script outputs to mask text secret values and JSON web tokens (JWTs) by default. For more information, go to [Secrets and log sanitization](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization). You can mask other sensitive information from log streams using regular expressions based on your needs. This will remove the information you define from logs in the Harness UI.

@@ -202,7 +202,6 @@ If you’ve decided to migrate, it’s crucial to plan and complete the necessar
 To get started, familiarize yourself with the Harness platform and its capabilities. Below is a list of resources to help you prepare:
 
 * [Harness SEI Documentation](/docs/software-engineering-insights/)
-* [Harness SEI FAQs and Knowledge Base](/kb/sei)
 * [Harness SEI Release Notes](/release-notes/software-engineering-insights)
 * [Harness Blogs](https://www.harness.io/blog)
 * [Harness API Docs](https://apidocs.harness.io/)
@@ -373,9 +372,7 @@ This will display your active subscription details, including the number of cont
 You can use the following resources to learn more about the Harness platform.
 
 * [Harness SEI Documentation](/docs/software-engineering-insights/)
-* [Harness SEI FAQs and Knowledge Base](/kb/sei)
 * [Harness SEI Release Notes](/release-notes/software-engineering-insights)
 * [Harness Blogs](https://www.harness.io/blog)
 * [Harness API Docs](https://apidocs.harness.io/)
 * [Harness YouTube](https://www.youtube.com/@Harnessio)
-

@@ -88,6 +88,13 @@ The timezone settings govern the display value of the settings not their actu
 
 ## Create from Form Template
 
+Form Templates are a generic concept in ServiceNow that allow you to create templates containing commonly used field values for any table. These templates can be applied to any table in ServiceNow, not just specific ticket types.
+
+- **Applicability**: Valid for any table in ServiceNow
+- **Purpose**: Pre-populate commonly used field values to speed up ticket creation
+- **Implementation**: Harness relies on the `sys_template` table in ServiceNow which stores form templates for all tables
+- **Documentation**: For more information on Form Templates in ServiceNow, see the [ServiceNow documentation on creating templates](https://www.servicenow.com/docs/bundle/washingtondc-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html)
+
 Select **Create From Form Template** to create a ticket by using an existing form template in your ServiceNow integration.
 
 In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you select the field, or provide an expression. You can also search the templates you need.
@@ -97,6 +104,10 @@ In **Template Name**, you can enter the name of an existing template, select fro
 Make sure you have met the following requirements for searching form templates:
 - Harness Delegate version 81200 or later.
 - Integration for Harness Software Delivery Platform app version 1.0.2 or later.
+
+**Technical Implementation Details**
+- The API calls for form templates are implemented as scripts in the Harness ServiceNow app. The delegate calls these internal scripted APIs.
+- The implementation isn't open-sourced, but Harness can provide implementation details if required.
 :::
 
 This option updates tickets with values as defined in the linked form template for the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates. If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
@@ -114,6 +125,13 @@ If the selected template has fields, the associated secondary fields will be dis
 Additionally, a dropdown for templates is also provided when configuring Triggers and Input Sets for this step.
 
 ## Create from Standard Template
+
+Standard Templates are a specific module in ServiceNow designed to create low-impact, high-frequency changes faster. These templates are pre-approved by change managers, allowing users with lower privileges to create change requests.
+
+- **Applicability**: Specific to Change Request tickets only
+- **Purpose**: Enable faster creation of pre-approved change types
+- **Approval**: Standard templates are pre-approved by change managers
+- **Relationship with Form Templates**: For each standard template, ServiceNow creates a form template internally. This is why standard change templates also appear in the form templates list, but the experience is better when using the standard template flow specifically for standard templates.
 
 :::note
 

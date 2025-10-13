@@ -43,7 +43,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.18.0</version>
+    <version>4.18.1</version>
 </dependency>
 ```
 
@@ -51,7 +51,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.18.0'
+compile 'io.split.client:java-client:4.18.1'
 ```
 
 </TabItem>
@@ -378,6 +378,8 @@ val treatmentsBySets: Map<String, SplitResult> = client.getTreatmentsWithConfigB
 
 </TabItem>
 </Tabs>
+
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
 ### Append properties to impressions
 
@@ -1628,6 +1630,57 @@ client.blockUntilReady()
 </TabItem>
 </Tabs>
 
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```java
+// Initialize SDK with global fallback treatment
+       FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(new FallbackTreatment("on-fallback", "{\"prop1\", \"val1\"}"),
+                null);
+
+SplitClientConfig config = SplitClientConfig.builder()
+    .fallbackTreatments(fallbackTreatmentsConfiguration)
+    .build();
+
+SplitFactory factory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
+SplitClient client = factory.client();
+```
+
+### Flag-level fallback treatment
+
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
+
+```java
+       FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(null,
+                new HashMap<String, FallbackTreatment>() {{ put("FEATURE_FLAG_NAME", new FallbackTreatment("off", "{\"prop2\", \"val2\"}")); }});
+
+SplitClientConfig config = SplitClientConfig.builder()
+    .fallbackTreatments(fallbackTreatmentsConfiguration)
+    .build();
+
+SplitFactory factory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
+SplitClient client = factory.client();
+
+// Evaluate a flag with a per-flag fallback treatment
+SplitResult result = client.getTreatmentWithConfig("user_key", "FEATURE_FLAG_NAME", "off");
+
+String treatment = result.treatment(); // "off" if evaluation fails
+String config = result.config();       // may be null
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ## Integrations
 
 ### New Relic
@@ -1748,7 +1801,7 @@ To fix this issue, you have two options:
 1. Upgrade your JDK to version 1.7 or above. These versions include support for the stronger ciphers by default.
 1. If upgrading is not an option, install the Java Cryptography Extension (JCE) provided by your JVM vendor for Java 6 to enable support for high-strength ciphers.
 
-### Exception: PKIX path building failed — unable to find valid certification path to requested target
+### Exception: PKIX path building failed
 
 When initializing the Java SDK `SplitFactory` object, you may see the following error:
 
@@ -1763,7 +1816,7 @@ unable to find valid certification path to requested target
 
 This indicates that Java could not verify the SSL certificate from Split.io, preventing a secure connection between the SDK and Harness FME servers.
 
-Manually install the Split.io certificates into your JVM’s trust store:
+Manually install Split.io's certificates into your JVM’s trust store:
 
 1. Download the certificates for both `sdk.split.io` and `events.split.io`:
 
@@ -1772,7 +1825,7 @@ Manually install the Split.io certificates into your JVM’s trust store:
    openssl s_client -showcerts -connect events.split.io:443 </dev/null 2>/dev/null | openssl x509 -outform PEM > spliteventscert.pem
    ```
 
-1. Import the certificates into the Java cacerts keystore (replace [JAVA_HOME] with your Java installation path):
+1. Import the certificates into the Java `cacerts` keystore (replace `[JAVA_HOME]` with your Java installation path):
 
    ```bash
    keytool -importcert -file splitsdkcert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "splitsdkcert"
@@ -1780,3 +1833,33 @@ Manually install the Split.io certificates into your JVM’s trust store:
    ```
 
 1. Restart your Java application.
+
+#### Certificate renewals
+
+Harness FME relies on Split.io's managed certificates for secure SDK communication. When Split.io rotates or renews its certificates, your application should continue working if:
+
+* Your JVM's default trust store already contains the required certificate authorities (most modern JDKs do).
+* Or, you've installed the intermediate/root certificates instead of the short-lived leaf certificates.
+
+However, if you manually imported specific leaf certificates, you'll need to repeat the steps above when Split.io updates them. To avoid manual updates, consider updating your JDK to the latest version so its default trust store includes up-to-date CAs.
+
+#### Check certificate expiry proactively
+
+To see when Split.io's certificates expire, run:
+
+```bash
+echo | openssl s_client -connect sdk.split.io:443 -servername sdk.split.io 2>/dev/null \
+    | openssl x509 -noout -dates
+
+echo | openssl s_client -connect events.split.io:443 -servername events.split.io 2>/dev/null \
+    | openssl x509 -noout -dates
+```
+
+This outputs something like the following:
+
+```
+notBefore=Mar  1 00:00:00 2025 GMT
+notAfter=May 30 23:59:59 2025 GMT
+```
+
+If the `notAfter` date is approaching and you manually imported certificates, repeat the installation steps above.

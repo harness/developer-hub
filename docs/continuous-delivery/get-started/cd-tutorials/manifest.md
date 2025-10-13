@@ -209,6 +209,58 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 </details>
 
 <Tabs>
+
+<TabItem value="rolling" label="Rolling">
+
+<details open>
+<summary>What are Rolling deployments?</summary>
+
+Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+
+</details>
+
+## Interactive guide
+
+<Tabs>
+<TabItem value="Interactive guide">
+
+Here is an interactive guide to setup your Cloud Run Service pipeline.
+
+<iframe 
+	src="https://app.tango.us/app/embed/58bb4ee6-e373-4252-849b-ad9f89eda14d" 
+	style={{ minHeight: '800px'}} 
+	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+	security="restricted" 
+	title="Setting Up GCR Sample Pipeline in Harness" 
+	width="100%" 
+	height="100%" 
+	referrerpolicy="strict-origin-when-cross-origin" 
+	frameborder="0" 
+   webkitallowfullscreen="webkitallowfullscreen" 
+   mozallowfullscreen="mozallowfullscreen" 
+	allowfullscreen="allowfullscreen"
+></iframe>
+</TabItem>
+</Tabs>
+
+- In **Default Project**, select **Pipelines**.
+  - Select **New Pipeline**.
+  - Enter the name `guestbook_rolling_pipeline`.
+  - Select **Inline** to store the pipeline in Harness.
+  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+
+1. Copy the contents of [rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/rolling-pipeline.yml).
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+
+   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
+
+   <DocImage path={require('./static/k8s-manifest-tutorial/rolling.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</TabItem>
+
+
 <TabItem value="canary" label="Canary">
 
 <details open>
@@ -257,31 +309,6 @@ Blue Green deployments involve running two identical environments (stage and pro
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
    <DocImage path={require('./static/k8s-manifest-tutorial/bluegreen.png')} width="60%" height="60%" title="Click to view full size image" />
-
-</TabItem>
-<TabItem value="rolling" label="Rolling">
-
-<details open>
-<summary>What are Rolling deployments?</summary>
-
-Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
-
-</details>
-
-- In **Default Project**, select **Pipelines**.
-  - Select **New Pipeline**.
-  - Enter the name `guestbook_rolling_pipeline`.
-  - Select **Inline** to store the pipeline in Harness.
-  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
-
-1. Copy the contents of [rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/rolling-pipeline.yml).
-2. In your Harness pipeline YAML editor, paste the YAML.
-3. Select **Save**.
-
-   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
-
-   <DocImage path={require('./static/k8s-manifest-tutorial/rolling.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>

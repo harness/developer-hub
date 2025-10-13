@@ -127,13 +127,6 @@ import { MODULES } from "@site/src/constants";
             "",
           link: "/docs/category/troubleshoot-harness-ci",
         },
-        {
-          title: "CI Knowledge Base",
-          module: MODULES.ci,
-          description:
-            "",
-          link: "/kb/continuous-integration",
-        },
       ],
     },
   ];

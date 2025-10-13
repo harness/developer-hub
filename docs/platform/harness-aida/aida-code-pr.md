@@ -1,6 +1,7 @@
 ---
 title: Generate PR summaries with Harness AI
 description: Create PR summaries with Harness AI.
+sidebar_label: PR Summaries
 sidebar_position: 6
 ---
 

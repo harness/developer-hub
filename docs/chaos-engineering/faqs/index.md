@@ -241,7 +241,7 @@ Resources available:
 - **[Documentation](../overview)** - Comprehensive guides and tutorials
 - **[Community Forum](https://community.harness.io)** - Ask questions and share experiences
 - **[Slack Community](https://harnesscommunity.slack.com)** - Real-time chat with users and experts
-- **[Knowledge Base](/kb/chaos-engineering)** - Searchable articles and solutions
+- **[FAQs](../resources/faqs)** - Frequently asked questions and solutions
 - **[Training Programs](https://university.harness.io)** - Structured learning paths
 
 ### How do I contact support?
@@ -264,7 +264,7 @@ Yes, we welcome feedback:
 
 If you can't find the answer you're looking for:
 
-1. **Search our [Knowledge Base](/kb/chaos-engineering)** for detailed articles
+1. **Check our [detailed FAQs](../resources/faqs)** for technical questions
 2. **Join our [Community Forum](https://community.harness.io)** to ask questions
 3. **Contact [Support](mailto:support@harness.io)** for technical assistance
 4. **Schedule a [demo](https://harness.io/demo)** to speak with our experts

@@ -1,0 +1,115 @@
+:root {
+    --community-card-radius: 12px;
+  }
+  
+  /* Spacing consistent with CategoryGrid */
+  .wrapper { padding: 3rem 0; }
+  
+  .header { text-align: center; margin-bottom: 1.5rem; }
+  .title { margin-bottom: 0.25rem; }
+  .subTitle { opacity: 0.85; margin: 0; }
+  
+  /* Grid behavior */
+  .grid { row-gap: 16px; }
+  .col { display: flex; }
+  
+  /* Card styling */
+  :global(.community-card) {
+    --shadow-rest: 0 2px 6px rgba(0,0,0,.08);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,.10);
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  
+    background: var(--ifm-card-background-color);
+    border: 1px solid var(--ifm-color-emphasis-200);
+    border-radius: var(--community-card-radius);
+    text-decoration: none;
+    box-shadow: var(--shadow-rest);
+    transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+  }
+  
+  :global(.community-card:hover),
+  :global(.community-card:focus-visible) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    outline: none;
+    border-color: var(--ifm-color-emphasis-200);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    :global(.community-card),
+    :global(.community-card:hover),
+    :global(.community-card:focus-visible) {
+      transition: none;
+      transform: none;
+    }
+  }
+  
+  /* ---- CARD BODY: tighter + consistent spacing ---- */
+  :global(.community-card) {
+    padding: 0.75rem 1rem;   /* smaller padding for shorter tiles */
+  }
+  
+  :global(.community-card) .card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* center logo + title horizontally */
+    gap: 4px;                /* 4px spacing between all elements */
+    padding: 0;
+  }
+  
+  /* Icon centered */
+  .iconWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;            /* consistent box to align across tiles */
+    width: 100%;
+  }
+  
+  .icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* Title centered */
+  .cardTitle {
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+  }
+  
+  /* Description left aligned */
+  .cardDesc {
+    margin: 0;
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    text-align: left;
+    width: 100%;
+    max-width: 240px;        /* keep description narrow under centered title */
+  }
+  
+  @media (max-width: 900px) { .grid { row-gap: 12px; } }
+
+/* --- Tablet / large mobile: 2 per row --- */
+@media (min-width: 600px) and (max-width: 899.98px) {
+  .col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* --- Small mobile: 1 per row --- */
+@media (max-width: 599.98px) {
+  .col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

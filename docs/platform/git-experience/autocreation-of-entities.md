@@ -316,7 +316,7 @@ For example:- `.harness/overrides/account.pre_production/services/account.test_d
 
 - **Overrides directory**: `overrides`
 - **ENV_REF**: `account.pre_production`
-- **Service directory**: `service`
+- **Service directory**: `services`
 - **SERVICE_REF**: `account.test_demo`
 - **Overrides File Path name**: `overrides`
 
@@ -332,7 +332,7 @@ For example:- `.harness/orgs/test_org/overrides/org.pre_prod/services/org.test_d
 - **Organization identifier**: `test_org`
 - **Overrides directory**: `overrides`
 - **ENV_REF**: `org.pre_prod`
-- **Service directory**: `service`
+- **Service directory**: `services`
 - **SERVICE_REF**: `org.test_demo`
 - **Overrides File Path name**: `overrides`
 
@@ -353,7 +353,7 @@ For example:- `.harness/orgs/test_org/projects/<project_identifier>/overrides/[E
 - **Projects directory**: `projects`
 - **Project identifier**: `test_project`
 - **Overrides directory**: `overrides`
-- **Service directory**: `service`
+- **Service directory**: `services`
 - **SERVICE_REF**: `test_demo`
 - **ENV_REF**: `test_environment`
 - **Overrides File Path name**: `overrides`
@@ -422,7 +422,7 @@ For example:- `.harness/overrides/account.pre_production/services/account.test_d
 
 - **Overrides directory**: `overrides`
 - **ENV_REF**: `account.pre_production`
-- **Service directory**: `service`
+- **Service directory**: `services`
 - **SERVICE_REF**: `account.test_demo`
 - **Infrastructure directory**: `infras`
 - **INFRA_ID**: `infra_test`
@@ -440,7 +440,7 @@ For example:- `.harness/orgs/test_org/overrides/org.pre_production/services/org.
 - **Organization identifier**: `test_org`
 - **Overrides directory**: `overrides`
 - **ENV_REF**: `org.pre_production`
-- **Service directory**: `service`
+- **Service directory**: `services`
 - **SERVICE_REF**: `org.test_demo`
 - **Infrastructure directory**: `infras`
 - **INFRA_ID**: `infra_test`
@@ -451,9 +451,9 @@ For example:- `.harness/orgs/test_org/overrides/org.pre_production/services/org.
 
 To create a Service and Infrastructure Overrides at the Project Level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/services/[SERVICE_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
 
-For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_production/infras/infra_test/overrides.yaml`
+For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_production/services/test_demo/infras/infra_test/overrides.yaml`
 
 - **Organization directory**: `orgs`
 - **Organization identifier**: `test_org`
@@ -461,8 +461,8 @@ For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_produc
 - **Project identifier**: `test_project`
 - **Overrides directory**: `overrides`
 - **ENV_REF**: `pre_production`
-- **Service directory**: `service`
-- **SERVICE_REF**: `org.test_demo`
+- **Service directory**: `services`
+- **SERVICE_REF**: `test_demo`
 - **Infrastructure directory**: `infras`
 - **INFRA_ID**: `infra_test`
 - **Overrides File Path name**: `overrides`
