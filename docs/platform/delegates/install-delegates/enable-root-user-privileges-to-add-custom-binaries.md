@@ -1,6 +1,7 @@
 ---
 title: Enable root user privileges to add custom binaries
-description: You can install Harness Delegate with or without root user privileges. By default, the Harness Delegate container runs as root user. The delegate installer provides the option to install the delegate
+description: Learn how to enable root user privileges for Harness delegates to install custom binaries and modify delegate images.
+sidebar_label: Enable Root User Privileges
 sidebar_position: 4
 ---
 

@@ -1,6 +1,24 @@
 ---
 title: Deployment concepts and strategies
 description: This topic describes common deployment strategies.
+tags:
+  - deployments
+  - deployment-strategies
+  - blue-green-deployment
+  - canary-deployment
+  - rolling-deployment
+  - basic-deployment
+  - multi-service-deployment
+  - build-deployment
+  - gated-cd
+  - no-gate-cd
+  - approvals
+  - release-gates
+  - verification
+  - risk-management
+  - rollback
+  - cd-pipelines
+  - kubernetes-deployment
 sidebar_position: 1
 helpdocs_topic_id: 0zsf97lo3c
 helpdocs_category_id: etz0u5kujd

@@ -10,10 +10,6 @@ Use the kubectl diff command to compare the current live state of deployed Kuber
 
 The command used in this step is: `kubectl diff -f <file.yaml>`
 
-:::note
-This feature is behind the feature flag `CDS_K8S_DIFF_STEP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 ## Pre-requisites
 
 You must have the **diffutils** package installed on your system to use the `kubectl diff` command. This package provides the necessary utilities for comparing file differences.
@@ -99,6 +95,8 @@ You can also find the difference in the output of the step:
 - `kubectl diff` may not work correctly with third-party **Custom Resource Definitions (CRDs)**, as they are not always fully supported by the diff command.
 
 - The command **does not display changes for secrets**, due to security restrictions designed to protect sensitive data.
+
+- The K8s Diff step is only available for the **Kubernetes Deployment** swimlane. It supports Helm chart manifests when using the K8s Deployment type, but it does not support the Native Helm deployment type.
 
 ## K8s Diff Step Sample
 

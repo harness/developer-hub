@@ -60,6 +60,7 @@ spec:
       key: GF_SECURITY_ADMIN_PASSWORD
     adminUser:
       name: grafana-admin-credentials
+      key: GF_SECURITY_ADMIN_USER
 ```
 
 Apply it in your cluster:

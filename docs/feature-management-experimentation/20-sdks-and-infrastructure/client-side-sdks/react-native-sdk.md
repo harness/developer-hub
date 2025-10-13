@@ -20,7 +20,7 @@ Refer to this [migration guide](https://github.com/splitio/react-native-client/b
 
 ## Language support
 
-The FME SDK for React Native supports both React Native bare projects (using [React-Native CLI](https://reactnative.dev/docs/environment-setup)) and Expo managed projects (using [Expo CLI](https://docs.expo.io/get-started/installation/)).
+The FME SDK for React Native supports both [React Native bare projects](https://reactnative.dev/docs/getting-started-without-a-framework) (a.k.a. React Native without a framework) and [Expo managed projects](https://docs.expo.dev/get-started/create-a-project/).
 
 It has been validated with React Native v0.59 and later, and Expo v36 and later, but should also work with older versions.
 
@@ -58,52 +58,15 @@ expo install @splitsoftware/splitio-react-native
 
 The SDK supports two synchronization mechanisms, **streaming** (default and recommended) and **polling** which is the fallback in cases where streaming is not supported or as a temporary measure in case of any issues detected on the persistent connection. We recommend following the steps below to enable the necessary support for the Event Source modules.
 
-- For React Native bare projects, you need to *link* the native modules of the package.
+- For Expo and React Native bare projects using React Native version 0.74 or above, no additional setup is required: streaming is supported out-of-the-box using the global `XMLHttpRequest` object.
 
-If using React Native 0.59 or below, run `react-native link @splitsoftware/splitio-react-native`
-
-If using React Native 0.60+, the [autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) is available and you don't need to run `react-native link`, but you still need to install the pods if developing for iOS, with the command `npx pod-install ios`.
-
-- For Expo managed projects, SDK native modules cannot be used, but you can still support streaming by *polyfilling* the global EventSource constructor:
-
-Install an EventSource implementation such as [react-native-event-source](https://www.npmjs.com/package/react-native-event-source):
-
-```bash
-expo install react-native-event-source
-```
-
-Polyfill the global EventSource constructor, for example, by including the following in your project entrypoint file (e.g., `App.jsx`): 
-
-```javascript
-import RNEventSource from 'react-native-event-source';
-
-globalThis.EventSource = RNEventSource;
-```
+- For React Native bare projects below version 0.74, we recommend *linking* to the native modules of the package, since streaming via `XMLHttpRequest` does not work on Android in debug mode.
+  - If using React Native 0.59 or below, run `react-native link @splitsoftware/splitio-react-native`.
+  - If using React Native 0.60+, the [autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) is available and you don't need to run `react-native link`, but you still need to install the pods if developing for iOS, with the command `npx pod-install ios`.
 
 ### 2. Instantiate the SDK and create a new SDK factory client
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="JavaScript (with CommonJS)">
-
-```javascript
-var SplitFactory = require('@splitsoftware/splitio-react-native').SplitFactory;
- 
-// Instantiate the SDK
-var factory = SplitFactory({ 
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    // key represents your internal user id, or the account id that 
-    // the user belongs to. 
-    // This could also be a cookie you generate for anonymous users
-    key: 'key'
-  }
-});
- 
-// And get the client instance you'll use
-var client = factory.client();
-```
-
-</TabItem>
 <TabItem value="TypeScript" label="TypeScript (with ES modules)">
 
 ```typescript
@@ -122,6 +85,27 @@ const factory: SplitIO.IBrowserSDK = SplitFactory({
  
 // And get the client instance you'll use
 const client: SplitIO.IBrowserClient = factory.client();
+```
+
+</TabItem>
+<TabItem value="JavaScript" label="JavaScript (with CommonJS)">
+
+```javascript
+var SplitFactory = require('@splitsoftware/splitio-react-native').SplitFactory;
+ 
+// Instantiate the SDK
+var factory = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    // key represents your internal user id, or the account id that 
+    // the user belongs to. 
+    // This could also be a cookie you generate for anonymous users
+    key: 'key'
+  }
+});
+ 
+// And get the client instance you'll use
+var client = factory.client();
 ```
 
 </TabItem>
@@ -687,6 +671,76 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 </TabItem>
 </Tabs>
 
+### Configuring cache
+
+To use the pluggable `InLocalStorage` option of the SDK and be able to cache flags for subsequent loads in the same browser, you need to pass it to the SDK config on its `storage` option.
+
+This `InLocalStorage` function accepts an optional object with options described below:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| prefix | An optional prefix for your data, to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
+| expirationDays | Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
+| clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
+| wrapper | Storage wrapper used to persist the SDK cached data. | `localStorage` |
+
+By default, the SDK uses the `localStorage` global object if available. If it is not available, the SDK will use the default in memory storage. 
+
+To support a persistent cache on platforms like Android and iOS, where `localStorage` is not available, you can pass your own storage wrapper, such as [`AsyncStorage`](https://react-native-async-storage.github.io/async-storage/), that implements the `SplitIO.StorageWrapper` interface.
+
+<Tabs>
+<TabItem value="StorageWrapper interface">
+
+```typescript
+declare namespace SplitIO {
+  interface StorageWrapper {
+    /**
+     * Returns the value associated with the given key, or null if the key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    getItem(key: string): string | null | Promise<string | null>;
+    /**
+     * Sets the value for the given key, creating a new key/value pair if key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    setItem(key: string, value: string): void | Promise<void>;
+    /**
+     * Removes the key/value pair for the given key, if the key exists.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    removeItem(key: string): void | Promise<void>;
+  }
+  ...
+}
+```
+
+</TabItem>
+<TabItem value="Using React Native AsyncStorage">
+
+```typescript
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-react-native';
+
+const factory: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  storage: InLocalStorage({
+    prefix: 'MY_PREFIX',
+    expirationDays: 10,
+    clearOnInit: false,
+    wrapper: AsyncStorage
+  })
+});
+
+// Now use the SDK as usual
+const client = factory.client();
+```
+
+</TabItem>
+</Tabs>
+
 ## Localhost mode
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid or offline mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. 
@@ -997,27 +1051,12 @@ To trim as many bits as possible from the user application builds, we divided th
 Thus, to enable descriptive SDK logging you need to plug in a logger instance as shown below:
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger instance (JavaScript)">
-
-```javascript
-var splitio = require('@splitsoftware/splitio-react-native');
- 
-var sdk = splitio.SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
-});
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger instance (TypeScript)">
+<TabItem value="JavaScript" label="Logger instance">
 
 ```javascript
 import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-react-native';
  
-const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+const sdk = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1035,12 +1074,12 @@ However, in any case where the proper logger instance is not plugged in, instead
 While these logs would be enough for the Split support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger API (JavaScript)">
+<TabItem value="JavaScript" label="Logger API">
 
 ```javascript
-var splitio = require('@splitsoftware/splitio-react-native');
+import { SplitFactory } from '@splitsoftware/splitio-react-native';
  
-var sdk = splitio.SplitFactory({
+const sdk = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1055,23 +1094,40 @@ sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
 ```
 
 </TabItem>
-<TabItem value="TypeScript" label="Logger API (TypeScript)">
+</Tabs>
 
-```javascript
-import { SplitFactory } from '@splitsoftware/splitio-react-native';
- 
-const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+By default, the SDK uses the `console.log` method to output log messages for all log levels. 
+
+Since v1.4.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the `factory.Logger.setLogger` method. 
+
+The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
+
+```typescript
+interface Logger {
+  debug(message: string): any;
+  info(message: string): any;
+  warn(message: string): any;
+  error(message: string): any;
+}
+```
+
+The following example passes the `console` object as a logger, so that `console.error`, `console.warn`, `console.info`, and `console.debug` methods are called rather than the default `console.log` method.
+
+<Tabs>
+<TabItem value="Using Console as Logger">
+
+```typescript
+import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-react-native';
+
+const sdk = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
   },
-  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
+  // Enable logs to call the corresponding custom logger methods
+  debug: DebugLogger(),
+  logger: console
 });
- 
-// Or you can use the Logger API methods which have an immediate effect.
-sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
-sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
-sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
 ```
 
 </TabItem>
@@ -1172,8 +1228,9 @@ While the SDK does not put any limitations on the number of instances that can b
  
 You can listen for three different events from the SDK.
 
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuring cache](#configuring-cache) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below.
@@ -1294,15 +1351,3 @@ The [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure
 Here is an example application detailing how to configure and instantiate the Split React Native SDK. 
 
 * [React Native & Expo examples](https://github.com/splitio/react-native-sdk-example)
-
-## Troubleshooting
-
-### Running bundle using React Native and JavaScript SDK causes an error: Unable to resolve module util
-
-When running the bundle, the error occurs: `bundling failed: Error: Unable to resolve module util from ... LoggerFactory.js: Module util does not exist in the Haste module map`.
-
-The JavaScript SDK depends on the `util` class, which is built-in for most npm environments but not included by default in React Native.
-
-Install the `util` package manually: `npm install util`.
-
-As of July 29, 2021, our dedicated React Native SDK is available, which should help avoid this issue.

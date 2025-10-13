@@ -1,8 +1,8 @@
 ---
-title: Before and After Guide (API for Split Admins)
+title: API for Split Admins
 description: Learn how how the API for Split administrators works before and after your account migration.
 sidebar_label: API for Split Admins
-sidebar_position: 8
+sidebar_position: 1
 ---
 
 ## Overview
@@ -19,7 +19,7 @@ If you downloaded the Postman collection before April 18th, download an updated 
 
 ## Postman Collection
 
-You can view the interactive collection experience [Before and After: APIs for Split Admins](https://www.postman.com/fme-tech-enablement/harness-fme/collection/evlmqcu/before-and-after-apis-for-split-admins) on Postman.
+You can view the interactive collection experience [Before and After: APIs for Split Admins](https://www.postman.com/harness-fme-enablement/harness-fme/collection/hyphfpd/before-and-after-apis-for-split-admins) on Postman.
 
 :::info Changelog for 3/24/25
  
@@ -35,7 +35,7 @@ You can view the interactive collection experience [Before and After: APIs for S
 
 No. Once you know the Harness Project `identifier`, you must obtain the Harness Project `name` and use that to look up the Split Project ID (`wsId`) by calling the `GET /workspaces` with the **filter (by name)** option to obtain `thewsId`. Once you have `thewsId`, you proceed as usual with the Split Admin API endpoints.  
 
-See the discussion of **Retrieving wsId Using the Harness Project Name** in the [Projects > Harness (AFTER)](https://www.postman.com/fme-tech-enablement/harness-fme/documentation/evlmqcu/before-and-after-apis-for-split-admins?entity=folder-39aa2120-1aa4-4c0d-afc6-8679da5dd010) section of the Postman collection for more details.
+See the discussion of **Retrieving wsId Using the Harness Project Name** in the [Projects > Harness (AFTER)](https://www.postman.com/harness-fme-enablement/harness-fme/documentation/hyphfpd/before-and-after-apis-for-split-admins?entity=folder-39aa2120-1aa4-4c0d-afc6-8679da5dd010) section of the Postman collection for more details.
 
 ### Will this collection be published on GitHub as well?
 
@@ -44,4 +44,3 @@ Yes. You can access [this collection](https://github.com/splitio/public-api-post
 ### Will the existing Postman collection for Split Public API endpoints on GitHub be maintained going forward?
 
 Yes. For clarity and consistency the variables in that collection will be updated soon to use the same variables as this collection. Later, we will update it to include the “after” endpoints seen here. 
-

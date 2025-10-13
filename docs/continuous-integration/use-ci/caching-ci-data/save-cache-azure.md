@@ -4,6 +4,8 @@ description: Caching improves build times and enables you to share data across s
 sidebar_position: 41
 ---
 
+import PreserveMetadata from '/docs/continuous-integration/shared/preserve-metadata.md';
+
 You can use the [Cache plugin](https://github.com/drone-plugins/drone-meltwater-cache) in your CI pipelines to save and retrieve cached data from Azure storage.
 
 :::warning
@@ -117,6 +119,8 @@ When using the `cache` plugin to save an Azure cache, the `cache_key` is the Azu
 ```
 <+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }}
 ```
+
+<PreserveMetadata/>
 
 ### Set shared paths for cache locations outside the stage workspace
 
@@ -284,9 +288,9 @@ When you run a pipeline with caching steps, you can observe and review build log
 
 ## Troubleshoot caching
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
 
-* [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
-* [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
-* [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
-* [How can I share cache between different OS types (Linux/macOS)?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-share-cache-between-different-os-types-linuxmacos)
+* [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
+* [How can I use an artifact in a different stage from where it was created?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
+* [How can I check if the cache was restored?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-check-if-the-cache-was-restored)
+* [How can I share cache between different OS types (Linux/macOS)?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-share-cache-between-different-os-types-linuxmacos)

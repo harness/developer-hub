@@ -2,40 +2,96 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+ /**
+ * CSS files with the .module.css/.module.scss suffix are CSS Modules and scoped locally.
+ * This file is safe for other pages because classes are only applied where imported.
+ * The only potential global selector (.button) is now explicitly scoped to .homepageWrapper.
+ */
+
+:root {
+  --font-cal-sans: "Cal Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --font-geist: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
 .homepageWrapper {
   a {
-    color: var(--ifm-font-color-base); // #000;
+    color: var(--ifm-font-color-base);
     &:hover {
       color: var(--ifm-link-color);
       text-decoration: none;
     }
   }
-  :global {
-    a.button {
-      color: #fff;
-      &:hover {
-        // color: var(--ifm-color-primary-lightest);
-        // background-color: var(--ifm-color-primary-dark);
-        background-color: var(--primary-5);
-      }
-    }
+
+  /* IMPORTANT: Previously global a.button; now explicitly scoped to homepage only. */
+  :global(a.button) {
+    color: #fff;
+  }
+  :global(a.button:hover) {
+    background-color: var(--primary-5);
   }
 }
+
+/* --------------------------
+   HERO CONTAINER & SPACING
+   -------------------------- */
 .heroBanner {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
-  /* text-align: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* 100px above the heading from the nav. */
+  padding: 100px 1rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
   position: relative;
   overflow: hidden;
-  display: flex;
-  // background: url(img/hero.svg) no-repeat bottom right;
-  min-height: 400px;
-  background-size: 61%;
 }
-.heroContainer {
-  // flex-basis: 42%;
-  z-index: 9;
+
+.heroInner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
+/* --------------------------
+   TYPOGRAPHY (Harness DS)
+   -------------------------- */
+
+/* Heading: Cal Sans, 64px, #303036. */
+.heroTitle {
+  font-family: var(--font-cal-sans);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #303036;
+
+  /* 24px gap between heading and subtitle. */
+  margin: 0 0 24px;
+
+  /* Remove any previous gradient text. */
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+:global(html[data-theme='dark']) .heroTitle {
+  color: #fff;
+}
+
+/* Subtitle: Geist, 20px, #484851, 64px underneath. */
+.heroSubTitle {
+  font-family: var(--font-geist);
+  font-size: 20px;
+  font-weight: 400;
+  color: #484851;
+  margin: 0 auto;
+  max-width: 56rem;
+  line-height: 1.6;
+
+  /* 64px below to separate from next content. */
+  margin-bottom: 64px;
+}
+
+/* Keep image/animation rules intact. */
+.heroContainer { z-index: 9; }
 .heroImg {
   flex-basis: 44%;
   width: 44%;
@@ -47,30 +103,20 @@
   left: 46%;
   top: 60px;
   overflow: hidden;
+
   video {
-    /* workaround to fix the black borders on left and right
-    remove it after switch to Lottie animation */
+    /* Workaround for black borders—safe to keep. */
     margin-left: -1px;
     width: 101%;
   }
 }
-.heroTitle {
-  font-size: 48px;
-  text-align: left;
-  margin-bottom: 24px;
-  letter-spacing: -0.5px;
-}
-.heroSubTitle {
-  font-size: 18px;
-  line-height: 26px;
-  padding-right: 1em;
-  width: 42%;
-}
+
 .buttons {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
+
 .heroButton {
   background-color: #0278d5;
   font-weight: 600;
@@ -79,47 +125,85 @@
   color: #fff;
 }
 
+/* --------------------------
+   RESPONSIVE TWEAKS
+   -------------------------- */
 @media screen and (max-width: 996px) {
-  // @media screen and (max-width: 768px) {
-  /* for tablet */
   .homepageWrapper {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+
     .heroBanner {
-      padding: 2rem 2rem 0 2rem;
+      /* Keep strong but slightly reduced top offset on tablet. */
+      padding: 80px 2rem 0;
       flex-flow: column nowrap;
       min-height: unset;
       background: none;
     }
+
     .heroTitle {
-      font-size: 42px;
+      font-size: clamp(36px, 5vw, 52px);
+      margin-bottom: 24px; 
     }
+
     .heroSubTitle {
       width: 100%;
+      font-size: 18px;
+      margin-bottom: 56px;
     }
+
     .heroImg {
       flex-basis: 46%;
-      width: 46%;
+      width: 100%;
       position: unset;
       margin-bottom: -15%;
-      margin-top: 0px;
-      width: 100%;
+      margin-top: 0;
     }
   }
 }
 
 @media screen and (max-width: 393px) {
-  /* for mobile */
   .heroBanner {
     padding-left: var(--ifm-spacing-horizontal);
     padding-right: var(--ifm-spacing-horizontal);
+    padding-top: 72px; /* Reduce on very small screens while preserving space. */
+
     .heroTitle {
       font-size: 28px;
-      line-height: 150%;
+      line-height: 1.4;
     }
   }
+
+  .heroSubTitle {
+    font-size: 16px;
+    margin-bottom: 48px;
+  }
+
   .heroImg {
     display: none;
   }
+}
+
+/* Divider below hero (unchanged). */
+.sectionDivider {
+  border: 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  margin-left: 18rem;
+  margin-right: 18rem;
+}
+
+/* Fallback if balance isn’t supported */
+@supports not (text-wrap: balance) {
+  .heroSubTitle {
+    hyphens: auto;
+    word-break: normal;
+  }
+}
+
+/* Tablet/mobile: keep proportions */
+@media (max-width: 996px) {
+  .heroInner { max-width: 90vw; }
+  .heroTitle   { max-width: min(48rem, 90vw); }
+  .heroSubTitle{ max-width: min(42rem, 90vw); }
 }

@@ -37,13 +37,13 @@ When troubleshooting failed builds, you can switch to **Console View** to alloca
 
 #### Troubleshoot build log issues
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for issues and questions related to build logs, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for issues and questions related to build logs, such as:
 
-* [Truncated execution logs](/kb/continuous-integration/continuous-integration-faqs/#truncated-execution-logs)
-* [Step logs disappear](/kb/continuous-integration/continuous-integration-faqs/#step-logs-disappear)
-* [CI step logs don't load in real time.](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
-* [Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background](/kb/continuous-integration/continuous-integration-faqs/#step-succeeds-even-when-explicitly-executing-exit-1-in-a-bash-script-that-is-runs-in-scripts-background)
-* [A previous execution is missing from my Builds dashboard or Project Overview page.](/kb/continuous-integration/continuous-integration-faqs/#builds-older-than-30-days-arent-on-the-project-overview-page)
+* [Truncated execution logs](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#truncated-execution-logs)
+* [Step logs disappear](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#truncated-execution-logs#step-logs-disappear)
+* [CI step logs don't load in real time.](/docs/continuous-integration/ci-articles-faqs/articles/ci-step-logs-real-time-load)
+* [Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#step-succeeds-even-when-explicitly-executing-exit-1-in-a-bash-script-that-is-runs-in-scripts-background)
+* [A previous execution is missing from my Builds dashboard or Project Overview page.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#builds-older-than-30-days-arent-on-the-project-overview-page)
 
 ### Inputs tab
 

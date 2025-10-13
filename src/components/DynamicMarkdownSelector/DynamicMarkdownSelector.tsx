@@ -42,6 +42,8 @@ export interface DynamicMarkdownSelectorProps {
   toc: TOCItem[];
   precedingHeadingID: string;
   nextHeadingID: string;
+  defaultSelection?: string;
+  disableSort?: boolean;
 }
 
 // Determine column count for visual balance
@@ -57,8 +59,10 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
   toc,
   precedingHeadingID = "",
   nextHeadingID = "",
+  defaultSelection,
+  disableSort = false,
 }) => {
-  const labels = Object.keys(options).sort((a, b) => a.localeCompare(b));
+  const labels = disableSort ? Object.keys(options) : Object.keys(options).sort((a, b) => a.localeCompare(b));
 
   const buildHash = (sel: string, sec?: string) =>
     `#${encodeURIComponent(normalize(sel))}${

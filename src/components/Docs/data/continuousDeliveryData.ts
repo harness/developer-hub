@@ -278,7 +278,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cd,
           description:
             "Perform GitOps deployments in Harness.",
-          link: "/docs/category/gitops",
+          link: "/docs/category/get-started-with-gitops"
           /*children: [
             {
               title: "Overview",
@@ -450,7 +450,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cd,
           description:
             "",
-          link: "/kb/continuous-delivery/faqs",
+          link: "/docs/continuous-delivery/kb-articles/faqs",
         },
       ],
     },

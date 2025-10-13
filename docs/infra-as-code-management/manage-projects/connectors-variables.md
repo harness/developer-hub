@@ -2,17 +2,13 @@
 title: Connectors and Variables
 description: Learn how to configure connectors, environment variables, OpenTofu/Terraform variables, and variable files in your IaCM workspace.
 sidebar_position: 10
+redirect_from: "/docs/infra-as-code-management/project-setup/input-variables"
 ---
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-**Connectors and Variables** define the full set of inputs and integrations your workspace uses when running Plan, Apply, or Drift detection pipelines. This combined configuration is known as a **variable set**, and it includes:
-- Connectors for authenticating with cloud providers or Git
-- Environment variables and OpenTofu/Terraform variables
-- Variable files stored in version control
-
----
+**Connectors and Variables** define the full set of inputs and integrations your workspace uses when running **Plan**, **Apply**, or **Drift detection** pipelines. These inputs can come from multiple sources and are resolved based on a clear order of precedence.
 
 ## Connectors
 A **connector** is required to authenticate with cloud providers or external systems. Most workspace operations, like fetching modules or variable files, depend on a connector.
@@ -33,18 +29,56 @@ Also, see [Add Connectors](/docs/infra-as-code-management/get-started/#add-conne
 
 ### Connectors from templates
 If your workspace is created from a workspace template, it may include connectors defined in the template.
+
 - These appear in the **Connectors and Variables** tab.
 - Currently, these connectors **cannot be modified** in the workspace.
 
+### Multiple Connectors
+You can attach more than one connector to a workspace. This allows your IaCM runs to access multiple cloud providers or external systems from a single workspace (for example, both AWS and Azure). However, a workspace can only have one connector per provider type (for example, one AWS, one GCP, one Azure).
+
+- Connectors appear in the **Connectors and Variables** tab.
+- If a workspace is created from a template, template-defined connectors are included automatically (read-only).
+- You can add more connectors inline or select from account/project scope.
+
 ---
 
-## Environment variables
+## Variable sources
+:::info set variables
+You can provide variables in the following ways:
+
+- **Variable Sets:** Reusable collections of variables and secrets defined at the account level and applied to multiple workspaces.
+- **Workspace Templates:** Predefined templates that inject connectors and variables into workspaces.
+- **Workspace-level variables:** Environment variables and OpenTofu/Terraform variables defined directly in the workspace.
+- **Variable files:** `.tfvars`, `.json`, or `.yaml` files stored in Git and linked to the workspace.
+- **Connectors:** Authentication references for cloud providers, Git, and external systems (used for fetching modules, variable files, or credentials).
+- **HCL defaults:** Default values defined directly in your OpenTofu/Terraform code.
+- **Pipeline-level variables:** Values passed at runtime from pipelines.
+  :::
+
+### Order of precedence
+
+Variables can be defined in multiple places. The order of precedence determines which value is used if the same variable appears more than once.
+
+<DocTable>
+| Priority       | Source                                                                 |
+|----------------|------------------------------------------------------------------------|
+| 1 (highest)    | Workspace Template variables                                           |
+| 2              | Workspace-level variables (Environment or OpenTofu/Terraform variables)|
+| 3              | Variable Sets (in their assigned priority order)                       |
+| 4 (lowest)     | HCL default values in your code                                        |
+</DocTable>
+
+**If a variable is defined in multiple places, Harness resolves conflicts using this order of precedence.**
+
+---
+
+### Environment variables
 Environment variables provide runtime configuration for your infrastructure. These behave like standard shell variables and can be used by your provisioning logic, module behavior, or CLI tooling.
 
 - **Key**: The name of the variable (e.g., `TF_LOG`, `ENVIRONMENT`).
 - **Value**: You can set a static value, insert a pipeline variable (FQN), or use **`<+input>`** for runtime input.
 
-### Add an environment variable
+#### Add an environment variable
 1. Click **+ New Environment Variable**.
 2. Define the `Type` (usually `string`).
 3. Provide a `Key` and a `Value`.
@@ -64,7 +98,7 @@ environmentVariables:
 
 ---
 
-## OpenTofu/Terraform variables
+### OpenTofu/Terraform variables
 OpenTofu/Terraform variables (`variable {}` blocks in your code) must be declared by name and value. These are injected into Terraform runs and used in your `*.tf` files.
 
 1. Click **+ Add Variable** under the **OpenTofu/Terraform Variables** section.
@@ -75,12 +109,9 @@ OpenTofu/Terraform variables (`variable {}` blocks in your code) must be declare
 
 Each variable declared in your OpenTofu/Terraform code must be supplied with a value from one of the following input sources. If a variable is defined in multiple places, the order of precedence determines which value is used:
 
-Order of precedence:
-	1.	Pipeline-level variable (highest)
-	2.	Workspace configuration
-	3.	HCL default value in your code (lowest)
+The following options are available in order of precedence, go to [Order of Precedence](#order-of-precedence) for the full list of variable options in order of precedence:
 
-### Option 1: Define default values in HCL
+#### Option 1: Define default values in HCL
 You can assign a default value directly in your OpenTofu/Terraform code. This acts as a fallback if no value is provided from the workspace or pipeline.
 
 ```hcl
@@ -91,7 +122,7 @@ variable "instance_type" {
 }
 ```
 
-### Option 2: Provide values in the Workspace
+#### Option 2: Provide values in the Workspace
 Configure variables in the OpenTofu/Terraform Variables section of your workspace. These values override any defaults in your code.
 
 ```yaml
@@ -102,43 +133,17 @@ terraformVariables:
     type: String
     source: CUSTOM
 ```
+
 :::tip runtime input
 Use `<+input>` to prompt users for values at runtime.
 :::
 
-### Option 3: Override with Pipeline Variables
-If your workspace is triggered by a reusable pipeline, you can pass in values from pipeline-level variables. These take precedence over workspace or HCL values.
-<Tabs>
-<TabItem value="pipeline" label="Pipeline Variables">
-```yaml
-# Pipeline YAML
-variables:
-  - name: aws_region
-    type: String
-    value: us-west-2
-```
-</TabItem>
-<TabItem value="workspace-ref" label="Workspace Reference">
-```yaml
-# Workspace configuration using pipeline FQN
-terraformVariables:
-  - key: region
-    value: <+pipeline.variables.aws_region>
-    type: String
-```
-</TabItem>
-</Tabs>
-
-:::tip
-You can use [Harness pipeline variables](/docs/platform/variables-and-expressions/harness-variables/) by referencing their **Fully-Qualified Name (FQN)** in the value field.
-:::
-
 ---
 
-## Variable files
+### Variable files
 Variable files allow you to inject multiple variables via `.tfvars`, `.json`, or `.yaml` files stored in Git.
 
-### Add a variable file
+#### Add a variable file
 1. Click **+ New Variable File**.
 2. Select the **Connector** to access your Git repo.
 3. Choose a repository, branch, and file path (e.g., `main`, `envs/dev.tfvars`).
@@ -165,8 +170,28 @@ Your variable files and HCL can come from the same Git repository or different r
 
 ---
 
-## Input Sources and Runtime Behavior
+### Variable Sets
+A Variable Set is a reusable collection of environment variables, OpenTofu/Terraform variables, and secrets. They allow you to standardize configuration across multiple workspaces.
+
+Variable Sets are supported at the account, org, and project level:
+
+- Navigate to **Account Settings** > **IaCM Settings** > **Variable Sets**.
+- **Create:** Click **Create a new Variable Set**.
+- **Update:** Click an existing Variable Set tile.
+- **Delete:** Use the ellipsis menu on a Variable Set tile and select **Delete**.
+
+When applied to a workspace, Variable Sets can be prioritized. Variables from a higher-priority set will override those from lower-priority sets.
+
+:::tip Variable set priority
+In the **Connectors and Variables** tab of a workspace, drag Variable Sets to set their priority.
+Priority 1 > Priority 2 > Priority 3.
+:::
+
+---
+
+### Input Sources and Runtime Behavior
 Each variable shows its **source**, such as:
+
 - `TEMPLATE`: inherited from the selected Template.
 - `CUSTOM`: defined directly in the workspace.
 

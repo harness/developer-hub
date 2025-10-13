@@ -37,6 +37,7 @@ Here are the list of scanners supported by STO by scan type.
 - [Container Scanners](#container-scanners)
 - [Dynamic Application Security Testing - DAST Scanners](#dynamic-application-security-testing---dast-scanners)
 - [Infrastructure as Code - IaC Scanners](#infrastructure-as-code---iac-scanners)
+- [AI Scanners](#ai-scanners)
 
 In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](#scanners-supported-with-custom-scan-step).
 
@@ -99,6 +100,13 @@ Infrastructure as Code (IaC) scanning is a security testing practice that analyz
 import IacScanners from '/docs/security-testing-orchestration/set-up-scans/shared/iac-scanners.md';
 
 <IacScanners />
+
+### AI Scanners
+AI Scanners are helps you to identify vulnerabilities in your ML models. To configure and run AI scanners, refer to [ModelScan](/docs/security-testing-orchestration/sto-techref-category/modelscan) step documentation.
+
+<!-- import AiScanners from '/docs/security-testing-orchestration/set-up-scans/shared/ai-scanners.md';
+
+<AiScanners /> -->
 
 In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](#scanners-supported-with-custom-scan-step).
 

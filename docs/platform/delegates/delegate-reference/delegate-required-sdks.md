@@ -1,6 +1,8 @@
 ---
-title: Delegate-required SDKs
-description: This topic provides information about the delegate-required development kits and libraries. These resources are listed by manifest type.
+title: Delegate required SDKs
+description: Reference guide for SDK versions packaged with Harness delegates, including kubectl, Helm, and other tools by deployment type.
+sidebar_label: Required SDKs
+sidebar_position: 2
 ---
 
 This topic provides information about the SDK versions that are packaged with Harness Delegate based on manifest type.

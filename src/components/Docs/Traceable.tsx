@@ -11,7 +11,7 @@ export default function Traceable() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img width={84} src={`${baseUrl}img/logo-traceable-by-harness-light.svg`} />
+            <img width={84} src={`${baseUrl}img/icon_tbh.svg`} />
             <h1>Traceable By Harness </h1>
           </div>
           <div className={styles.btnContainer}>

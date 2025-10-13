@@ -1,14 +1,21 @@
 ---
-title: SAM Plugin Image Builder
-description: Build your AWS SAM plugin image using Harness.
+title: Building AWS SAM Runtime Images
+description: A reusable Harness pipeline to build customized AWS SAM images.
+tags: 
+  - aws-sam
+  - image-builder
 sidebar_position: 4
 ---
 
-# Overview
+This page provides a Harness CD pipeline to help you build your own Docker images for the AWS SAM CLI.  
 
-This guide walks you through the process of building custom AWS SAM plugin images for use with Harness Continuous Delivery. By following these instructions, you can create compatible Docker images that combine the Harness SAM plugin with specific AWS Lambda runtime environments.
+The purpose of this pipeline is to give you flexibility—so you can adopt newer AWS Lambda runtimes or tailor the image to your specific serverless application needs.
 
-These custom images enable you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
+## What This Pipeline Does
+
+This pipeline automates building AWS SAM images for different programming languages using Harness. It enables you to keep up with the latest SAM versions and apply customizations as required for your projects. 
+
+You can find the full pipeline YAML in the [Pipeline YAML](#pipeline-yaml) section below.
 
 ## Understanding SAM Runtimes
 
@@ -21,17 +28,35 @@ Common SAM runtimes include:
 - **Ruby**: Versions like ruby3.2
 - **Go**: Versions like go1.x
 
-When you build your own image using the Harness pipeline, you're combining the Harness SAM plugin (which provides the integration with Harness CD) with a specific SAM runtime image from AWS. This allows you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
+When you build your own image using the Harness pipeline, you're combining the Harness SAM base image (which provides the integration with Harness CD) with a specific SAM runtime image from AWS. This allows you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
 
-## Key Components
+## Key Components and pre-requisites
 
-- Uses a Deployment stage with Kubernetes infrastructure
-- Runs in a step group with KubernetesDirect infrastructure
-- Takes SAM base image from AWS ECR public gallery
-- Extracts runtime and version information from the base image name
-- Final image format: `aws-sam-plugin:${VERSION}-${SAM_RUNTIME}-${SAM_VERSION}-linux-amd64`
+This pipeline helps you build **custom AWS SAM images** using Harness, integrating the Harness SAM image with supported AWS Lambda runtimes. Key details about the pipeline include:
 
-## Pipeline Runner Permissions and Privileged Settings
+- **Deployment Stage with Kubernetes Infrastructure**
+  - Uses a Deployment stage configured to run on Kubernetes.
+
+- **Privileged Mode and Kubernetes Cluster Setup**
+  - The pipeline requires privileged mode enabled on the Kubernetes step group to support Docker-in-Docker (DinD) for building and pushing images.
+  - This mode grants necessary permissions to install and run Docker CLI commands and access the Docker daemon inside pipeline containers.
+  - When using managed Kubernetes services like GKE, **do not use Autopilot clusters**, which restrict privileged containers.
+  - Instead, use standard clusters with node pools configured to permit privileged pods.
+  - Connect your Kubernetes cluster to Harness via a Kubernetes Cluster connector with appropriate permissions.
+
+- **Use of Official AWS SAM Images**
+  - Pulls SAM base images exclusively from the [AWS ECR public gallery](https://gallery.ecr.aws/sam?page=1) for compatibility.
+
+- **Automatic Extraction of Runtime and Version**
+  - The pipeline extracts runtime and version details directly from the SAM base image name.
+
+- **Final Image Naming Convention**
+  - The final built images follow the pattern:  
+    `aws-sam-plugin:{VERSION}-{SAM_RUNTIME}-{SAM_VERSION}-linux-amd64`  
+    Example: `aws-sam-plugin:1.1.2-nodejs18.x-1.143.0-linux-amd64`
+
+
+### Pipeline Runner Privileged Mode Requirement
 
 Certain steps in the pipeline require the Kubernetes pod to run in privileged mode. This is necessary for starting Docker daemons (DinD), building container images inside pipeline steps, and granting the permissions Docker needs at runtime.
 
@@ -63,17 +88,24 @@ Without this setting, Docker builds and image pushes may fail due to insufficien
 
 ## Quick Start
 
-1. Copy the provided pipeline yaml and paste it in your Harness Project.
-2. Add an empty/do-nothing service to the pipeline.
-3. Add a Kubernetes environment to the pipeline.
-4. In the execution section, enable container-based execution and add the Kubernetes cluster connector to the pipeline. Save the pipeline.
+1. Copy the provided [pipeline YAML](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/sam-image-build#pipeline-yaml) and paste it in your Harness Project.
+2. Add an **empty/do-nothing service** to the pipeline.
+3. Add a **Kubernetes environment** to the pipeline.
+4. In the **Execution section**, enable **container-based execution** in the **step group**. Add the Kubernetes cluster connector inside the container step group. Save the pipeline.
 5. Click **Run Pipeline**.
 6. Enter the required parameters:
    - **VERSION**: Version number for your plugin (e.g., `1.1.2`). With each new code change, a new tag and Docker image are published, letting users access specific plugin versions.
-   . You can find the Harness base image from [Harness DockerHub](https://hub.docker.com/r/harness/aws-sam-plugin/tags)
+   . You can find the Harness base image on [Harness DockerHub](https://hub.docker.com/r/harness/aws-sam-plugin/tags)
    - **SAM_BASE_IMAGE**: SAM base image from AWS ECR Gallery (e.g., `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`).
 
-## Base Image Requirements
+### Base Image Requirements
+
+Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gallery.ecr.aws/sam?page=1) are supported.
+
+- Only use SAM base images from: AWS ECR Gallery - SAM
+- Only `x86_64` architecture images are supported
+- Using different base images may cause library dependency issues
+- Non-standard base images may cause the plugin to not function as required
 
 **SAM Base Image Format**
 
@@ -81,22 +113,7 @@ The pipeline supports only full formats for the SAM base image:
 
 Full Format: `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`
 
-**SAM Base Image Requirements**
-
-:::warning
-Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gallery.ecr.aws/sam?page=1) are supported.
-:::
-
-- Only use SAM base images from: AWS ECR Gallery - SAM
-- Only `x86_64` architecture images are supported
-- Using different base images may cause library dependency issues
-- Non-standard base images may cause the plugin to not function as required
-
-Example of supported base image: `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`
-
-# Image Configuration
-
-## Final Image Naming
+#### Image Configuration
 
 The final image follows this naming pattern:
 ```
@@ -109,41 +126,51 @@ aws-sam-plugin:1.1.2-nodejs18.x-1.138.0-linux-amd64
 ```
 
 Where:
-- `VERSION`: Your plugin version (e.g., `1.1.2`)
+- `VERSION`: Harness base image (e.g., `1.1.2`)
 - `SAM_RUNTIME`: Runtime extracted from SAM base image (e.g., `nodejs18.x`)
 - `SAM_VERSION`: Version extracted from SAM base image (e.g., `1.143.0`)
 
-## Variables Used in Privileged Steps
+### Variables Used in Pipeline
 
-These variables are actively used in the privileged steps of your pipeline for building and pushing the image that you need to con:
+These variables are actively used in the pipeline for building and pushing the image that you need to configure:
+
+**Pipeline variables:** - **TARGET_REPO**, **DOCKER_USERNAME**, and **DOCKER_PASSWORD** are set once as pipeline-level variables.
+
 
 | Variable        | Description                                 | Example                                                    | Required |
 |-----------------|---------------------------------------------|------------------------------------------------------------|----------|
-| VERSION         | Plugin image/version tag                    | `1.1.2`                                                    | Yes      |
-| BASE_IMAGE      | Reference to your built base image       | `harness/aws-sam-plugin:1.1.2-beta-base-image`              | Yes      |
-| SAM_BASE_IMAGE  | AWS SAM base image from ECR                 | `public.ecr.aws/sam/build-python3.12:1.143.0-20250822194415-x86_64` | Yes      |
 | TARGET_REPO     | Target Docker repository                    | `your_account/aws-sam-plugin`                            | Yes      |
 | DOCKER_USERNAME | Docker registry username                    | `your_dockerhub_username`                                               | Yes      |
 | DOCKER_PASSWORD | Docker registry password/token              | `your_dockerhub_pat`                                           | Yes      |
 
-TARGET_REPO, DOCKER_USERNAME and DOCKER_PASSWORD are the variables that you set one time in the pipeline. VERSION, BASE_IMAGE and SAM_BASE_IMAGE are the variables that you set every time you run the pipeline.
+**Runtime inputs:**
 
-## Pipeline Configuration
+| Variable        | Description                                 | Example                                                    | Required |
+|-----------------|---------------------------------------------|------------------------------------------------------------|----------|
+| VERSION         | Harness base image-version tag                    | `1.1.2`                                                    | Yes      |
+| Harness_BASE_IMAGE      | Reference to your built base image       | `harness/aws-sam-plugin:1.1.2-beta-base-image`              | Yes      |
+| SAM_BASE_IMAGE  | AWS SAM base image from ECR                 | `public.ecr.aws/sam/build-python3.12:1.143.0-20250822194415-x86_64` | Yes      |
+
+### Pipeline YAML
+
+This is the YAML for the AWS CDK image build pipeline. You can copy and paste it into your Harness Project.
+
+This is how the stage would look in the UI:
+
+<div align="center">
+  <DocImage path={require('./static/sam-build-push.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 <details>
   <summary>Pipeline YAML</summary>
 
-Additional parameters you need to change:
-
-- `projectIdentifier`: Your Harness project identifier
-- `orgIdentifier`: Your Harness organization identifier
-- `connectorRef`: Your Kubernetes cluster connector identifier
-- `your_k8s_connector`: Your Kubernetes cluster connector identifier
+Parameters to change after you copy the pipeline YAML and paste it in your Harness Project:
+- `projectIdentifier`, `orgIdentifier`, `environmentRef`, `infrastructureDefinitions`, `connectorRef` - docker-connector, `connectorRef` - k8s-connector.
 
 ```yaml
 pipeline:
   name: sam-image-build
-  identifier: sam-image-build
+  identifier: samimagebuild
   projectIdentifier: your_project
   orgIdentifier: default
   tags: {}
@@ -151,7 +178,7 @@ pipeline:
     - stage:
         name: combineImages
         identifier: combineImages
-        description: Combine scratch image with SAM base image and push to Docker
+        description: Combine Harness base image with SAM base image and push to Docker
         type: Deployment
         spec:
           deploymentType: Kubernetes
@@ -201,7 +228,7 @@ pipeline:
                             export TZ=UTC
 
                             VERSION="${VERSION:-<+pipeline.variables.VERSION>}"
-                            SCRATCH_IMAGE="${SCRATCH_IMAGE:-<+pipeline.variables.SCRATCH_IMAGE>}"
+                            HARNESS_BASE_IMAGE="${HARNESS_BASE_IMAGE:-<+pipeline.variables.HARNESS_BASE_IMAGE>}"
                             SAM_BASE_IMAGE="${SAM_BASE_IMAGE:-<+pipeline.variables.SAM_BASE_IMAGE>}"
                             TARGET_REPO="${TARGET_REPO:-<+pipeline.variables.TARGET_REPO>}"
                             DOCKER_USERNAME="<+pipeline.variables.DOCKER_USERNAME>"
@@ -275,8 +302,8 @@ pipeline:
                                 mkdir -m 777 -p /opt/harness/scripts/ && \\
                                 mkdir -m 777 -p /opt/harness/client-tools/
 
-                            COPY --from=${SCRATCH_IMAGE} /opt/harness/bin/harness-sam-plugin /opt/harness/bin/harness-sam-plugin
-                            COPY --from=${SCRATCH_IMAGE} /opt/harness/scripts/ /opt/harness/scripts/
+                            COPY --from=${HARNESS_BASE_IMAGE} /opt/harness/bin/harness-sam-plugin /opt/harness/bin/harness-sam-plugin
+                            COPY --from=${HARNESS_BASE_IMAGE} /opt/harness/scripts/ /opt/harness/scripts/
 
                             RUN chmod +x /opt/harness/bin/harness-sam-plugin && \\
                                 chmod +x /opt/harness/scripts/sam-plugin.sh
@@ -323,7 +350,7 @@ pipeline:
                     - step:
                         identifier: buildAndPushFinal
                         type: Run
-                        name: buildAndPushFinal
+                        name: buildAndPushImage
                         spec:
                           connectorRef: account.dockerhub
                           image: ubuntu:20.04
@@ -343,13 +370,13 @@ pipeline:
 
                             # Define variables from pipeline variables
                             VERSION="<+pipeline.variables.VERSION>"
-                            SCRATCH_IMAGE="<+pipeline.variables.SCRATCH_IMAGE>"
+                            HARNESS_BASE_IMAGE="<+pipeline.variables.HARNESS_BASE_IMAGE>"
                             SAM_BASE_IMAGE="<+pipeline.variables.SAM_BASE_IMAGE>"
                             TIMESTAMP="<+pipeline.variables.TIMESTAMP>"
 
                             # Print all variables for debugging
                             echo "VERSION: $VERSION"
-                            echo "SCRATCH_IMAGE: $SCRATCH_IMAGE"
+                            echo "HARNESS_BASE_IMAGE: $HARNESS_BASE_IMAGE"
                             echo "SAM_BASE_IMAGE: $SAM_BASE_IMAGE"
                             echo "TIMESTAMP: $TIMESTAMP"
                             apt-get update && apt-get install -y docker.io
@@ -394,9 +421,6 @@ pipeline:
                               memory: 8Gi
                               cpu: 4000m
                         timeout: 30m
-                        when:
-                          stageStatus: Success
-                          condition: "false"
                   stepGroupInfra:
                     type: KubernetesDirect
                     spec:
@@ -415,17 +439,17 @@ pipeline:
       type: String
       description: Plugin version (e.g., 1.1.2-beta)
       required: true
-      value: <+input>
-    - name: SCRATCH_IMAGE
+      value: <+input>.default(1.1.2)
+    - name: HARNESS_BASE_IMAGE
       type: String
-      description: Scratch image from Pipeline 1
+      description: harness base image from Pipeline 1
       required: true
-      value: <+input>
+      value: <+input>.default(harness/aws-sam-plugin:1.1.2-beta-base-image)
     - name: SAM_BASE_IMAGE
       type: String
       description: SAM base image (e.g., public.ecr.aws/sam/build-python3.12:1.143.0-20250822194415-x86_64)
       required: true
-      value: <+input>
+      value: <+input>.default(public.ecr.aws/sam/build-nodejs22.x:1.144.0-20250911030138-x86_64)
     - name: DOCKER_USERNAME
       type: String
       description: Docker Hub username
@@ -440,7 +464,7 @@ pipeline:
       type: String
       description: Target repository
       required: false
-      value: vishalav95/plugin-test-vishal
+      value: your_target_repository
     - name: TIMESTAMP
       type: String
       description: Build timestamp
@@ -449,18 +473,3 @@ pipeline:
 ```
 
 </details>
-
----
-
-## How Pipeline Works
-
-### Pipeline Stages
-
-- **Generate Timestamp:**
-  - Creates a timestamp for image labels
-  - Extracts SAM runtime and version from the base image name
-
-- **Build and Push Final Image:**
-  - Attempts multiple strategies to build the final image in order of preference:
-    - **Strategy 1:** Buildah (rootless) - Tries to build a container without privileged access
-    - **Strategy 2:** Skopeo - Falls back to copying the scratch image as the final solution

@@ -1,7 +1,8 @@
 ---
 title: Proxy configuration guide
 description: Learn how to manage connectivity in environments where outbound traffic must go through a proxy. 
-sidebar_position: 1
+sidebar_label: Proxy Configuration Guide
+sidebar_position: 4
 helpdocs_topic_id: 5ww21ewdt8
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false

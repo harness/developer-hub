@@ -60,11 +60,11 @@ npm install --save @splitsoftware/splitio-browserjs
 <!-- Choose the preferred script tag, you don't need both -->
 
 <!-- Slim build, smaller footprint -->
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.5.1.min.js"></script>
 
 <!-- Full build, bigger footprint but all modules are exposed and usable,
 including fetch polyfill -->
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.5.1.full.min.js"></script>
 ```
 
 </TabItem>
@@ -217,7 +217,7 @@ The `getTreatment` method has a number of variations that are described below. E
 * **Booleans:** Use type Boolean.
 * **Sets:** Use type Array.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-syntax">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -325,7 +325,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-evals">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -387,7 +387,7 @@ type TreatmentResult = {
 
 As you can see from the object structure, the config is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter. This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-treatments-with-config">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -426,7 +426,7 @@ if (treatment === 'on') {
 
 If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to TreatmentResults instead of strings. Example usage below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-evals">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -485,15 +485,15 @@ You can append properties to an impression by passing an object of key-value pai
 
 Three types of properties are supported: strings, numbers, and booleans.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-impression-props">
 <TabItem value="JavaScript">
 
 ```javascript
 const evaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -505,10 +505,10 @@ const treatment = client.getTreatment('FEATURE_FLAG_NAME', undefined, evaluation
 
 ```typescript
 const evaluationOptions: SplitIO.EvaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -522,7 +522,7 @@ const treatment: string = client.getTreatment('FEATURE_FLAG_NAME', undefined, ev
 
 Call the `client.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-shutdown">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -568,7 +568,7 @@ The `track` method returns a boolean value of `true` or `false` to indicate whet
 
 In the case that a bad input has been provided, you can read more about our [SDK's expected behavior](/docs/feature-management-experimentation/release-monitoring/events/).
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-track">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -625,14 +625,14 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
 | sync.enabled | Controls the SDK continuous synchronization flags. When `true`, a running SDK processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
 | sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the SDK's HTTP(S) requests. | undefined |
-| storage | Pluggable storage instance to be used by the SDK as a complement to in memory storage. Only supported option today is `InLocalStorage`. Read more [here](#configuring-localstorage-cache-for-the-sdk). | In memory storage |
+| storage | Pluggable storage instance to be used by the SDK as a complement to in memory storage. Only supported option today is `InLocalStorage`. Read more [here](#configuring-cache). | In memory storage |
 | debug | Either a boolean flag, string log level or logger instance for activating SDK logs. See [logging](#logging) for details. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
 
 To set each of the parameters defined above, use the following syntax:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-config">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -701,7 +701,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 </TabItem>
 </Tabs>
 
-### Configuring LocalStorage cache for the SDK
+### Configuring cache
 
 To use the pluggable `InLocalStorage` option of the SDK and be able to cache flags for subsequent loads in the same browser, you need to pass it to the SDK config on its `storage` option.
 
@@ -712,10 +712,34 @@ This `InLocalStorage` function accepts an optional object with options described
 | prefix | An optional prefix for your data, to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
 | expirationDays | Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
 | clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
+| wrapper | Storage wrapper used to persist the SDK cached data. | `localStorage` |
 
 These pluggable caches are always available on NPM, but if using the CDN you need the full bundle. Refer to the [Import the SDK into your project](#1-import-the-sdk-into-your-project) section for more information.
 
 <Tabs>
+<TabItem value="With NPM package">
+
+```javascript
+import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-browserjs';
+
+const factory: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  storage: InLocalStorage({
+    prefix: 'MY_PREFIX',
+    expirationDays: 10,
+    clearOnInit: false,
+    wrapper: window.localStorage
+  })
+});
+
+// Now use the SDK as usual
+const client = factory.client();
+```
+
+</TabItem>
 <TabItem value="With full bundle from CDN">
 
 ```javascript
@@ -728,7 +752,8 @@ var factory = window.splitio.SplitFactory({
   storage: window.splitio.InLocalStorage({
     prefix: 'MY_PREFIX',
     expirationDays: 10,
-    clearOnInit: false
+    clearOnInit: false,
+    wrapper: window.localStorage
   })
 });
 
@@ -737,23 +762,92 @@ var client = factory.client();
 ```
 
 </TabItem>
-<TabItem value="With NPM package">
+</Tabs>
 
-```javascript
-import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-browserjs';
+By default, the SDK uses the `localStorage` global object if available. If `localStorage` is not available, the SDK will use the default in memory storage. You can pass your own storage wrapper like, for example, one based on `IndexedDB` or another storage solution, by implementing the `SplitIO.StorageWrapper` interface.
 
-const factory: SplitIO.IBrowserSDK = SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  storage: InLocalStorage({
-    prefix: 'MY_PREFIX'
-  })
-});
+<Tabs>
+<TabItem value="StorageWrapper interface">
 
-// Now use the SDK as usual
-const client = factory.client();
+```typescript
+declare namespace SplitIO {
+  interface StorageWrapper {
+    /**
+     * Returns the value associated with the given key, or null if the key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    getItem(key: string): string | null | Promise<string | null>;
+    /**
+     * Sets the value for the given key, creating a new key/value pair if key does not exist.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    setItem(key: string, value: string): void | Promise<void>;
+    /**
+     * Removes the key/value pair for the given key, if the key exists.
+     * If the operation is asynchronous, returns a Promise.
+     */
+    removeItem(key: string): void | Promise<void>;
+  }
+  ...
+}
+```
+
+</TabItem>
+<TabItem value="StorageWrapper implementation based on IndexedDB">
+
+```typescript
+class IndexedDBWrapper implements SplitIO.StorageWrapper {
+  private dbName: string;
+  private storeName: string;
+  private dbPromise: Promise<IDBDatabase>;
+
+  constructor(dbName: string, storeName: string) {
+    this.dbName = dbName;
+    this.storeName = storeName;
+    this.dbPromise = this.openDB();
+  }
+
+  private openDB(): Promise<IDBDatabase> {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.dbName);
+
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains(this.storeName)) {
+          db.createObjectStore(this.storeName);
+        }
+      };
+
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  private async withStore(type: IDBTransactionMode, callback: (store: IDBObjectStore) => IDBRequest) {
+    const db = await this.dbPromise;
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(this.storeName, type);
+      const store = tx.objectStore(this.storeName);
+      const request = callback(store);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  // Wrapper methods:
+
+  async getItem(key: string): Promise<string | null> {
+    return this.withStore('readonly', store => store.get(key)) as Promise<string | null>;
+  }
+
+  async setItem(key: string, value: string): Promise<void> {
+    await this.withStore('readwrite', store => store.put(value, key));
+  }
+
+  async removeItem(key: string): Promise<void> {
+    await this.withStore('readwrite', store => store.delete(key));
+  }
+}
 ```
 
 </TabItem>
@@ -777,11 +871,11 @@ To use the SDK in localhost mode, replace the SDK key on `authorizationKey` prop
 
 If you define just a string as the value for a feature flag name, any config returned by our SDKs are always null. If you use a map, we return the specified treatment and the specified config (which can also be null).
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-localhost">
 <TabItem value="JavaScript" label="JavaScript (using CDN bundle)">
 
 ```javascript
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.5.1.full.min.js"></script>
 
 var sdk = splitio.SplitFactory({
   core: {
@@ -865,7 +959,7 @@ config.features = { 'reporting_v3': 'off' }; // Will not emit SDK_UPDATE
 
 Use the Split Manager to get a list of features available to the SDK factory client. To instantiate a Manager in your code base, use the same factory that you used for your client:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-manager">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -906,7 +1000,7 @@ manager.once(manager.Event.SDK_READY, function() {
 
 The Manager has the following methods available:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-manager-methods">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -997,7 +1091,7 @@ There are two additional keys on this object, `ip` and `hostname`. They are not 
 
 The following is an example of how to implement a custom impression listener:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-custom-impression-listener">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1048,28 +1142,13 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 
 To trim as many bits as possible from the user application builds, we divided the logger in implementations that contain the log messages for each log level: `ErrorLogger`, `WarnLogger`, `InfoLogger`, and `DebugLogger`. Higher log level options contain the messages for the lower ones, with DebugLogger containing them all. To enable descriptive SDK logging, you need to plug in a logger instance as shown below:
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger instance (JavaScript)">
-
-```javascript
-var splitio = require('@splitsoftware/splitio-browserjs');
-
-var sdk = splitio.SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
-});
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger instance (TypeScript)">
+<Tabs groupId="java-type-logging">
+<TabItem value="JavaScript" label="Logger instance (NPM package)">
 
 ```javascript
 import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-browserjs';
 
-const sdk: SplitIO.IBrowserSDK = SplitFactory({
+const sdk = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1079,7 +1158,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 ```
 
 </TabItem>
-<TabItem value="Logger instance (UMD build)">
+<TabItem value="JavaScript Example" label="Logger instance (UMD build)">
 
 ```javascript
 var sdk = splitio.SplitFactory({
@@ -1096,33 +1175,13 @@ var sdk = splitio.SplitFactory({
 
 You can also enable the SDK logging via a boolean or log level value as `debug` settings, and change it dynamically by calling the SDK Logger API. However, in any case where the proper logger instance is not plugged in, instead of a human readable message, you'll get a code and optionally some params for the log itself. While these logs would be enough for the Harness FME support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger API (JavaScript)">
-
-```javascript
-var splitio = require('@splitsoftware/splitio-browserjs');
-
-var sdk = splitio.SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
-});
-
-// Or you can use the Logger API methods which have an immediate effect.
-sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
-sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
-sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger API (TypeScript)">
+<Tabs groupId="java-type-debug">
+<TabItem value="JavaScript" label="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-browserjs';
 
-const sdk: SplitIO.IBrowserSDK = SplitFactory({
+const sdk = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1145,8 +1204,44 @@ SDK logging can also be globally enabled via a localStorage value by opening you
 // Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
 // Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
 localStorage.splitio_debug = 'on' <enter>
-
 ```
+
+By default, the SDK uses the `console.log` method to output log messages for all log levels. 
+
+Since v1.5.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the `factory.Logger.setLogger` method. 
+
+The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
+
+```typescript
+interface Logger {
+  debug(message: string): any;
+  info(message: string): any;
+  warn(message: string): any;
+  error(message: string): any;
+}
+```
+
+The following example passes the `console` object as a logger, so that `console.error`, `console.warn`, `console.info`, and `console.debug` methods are called rather than the default `console.log` method.
+
+<Tabs>
+<TabItem value="Using Console as Logger">
+
+```typescript
+import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-browserjs';
+
+const sdk = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Enable logs to call the corresponding custom logger methods
+  debug: DebugLogger(),
+  logger: console
+});
+```
+
+</TabItem>
+</Tabs>
 
 ## Advanced use cases
 
@@ -1160,7 +1255,7 @@ Each SDK factory client is tied to one specific customer ID at a time, so if you
 
 You can do this with the example below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-multiple-clients">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1247,14 +1342,14 @@ While the SDK does not put any limitations on the number of instances that can b
 
 You can listen for four different events from the SDK.
 
-* `SDK_READY_FROM_CACHE`. This event fires once the SDK is ready to evaluate treatments using a version of your rollout plan cached in localStorage from a previous session (which might be stale). If there is data in localStorage, this event fires almost immediately, since access to localStorage is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuring cache](#configuring-cache) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan cached in localStorage, and the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below:
 
-<Tabs groupId="java-type-script">
+<Tabs groupId="java-type-events">
 <TabItem value="JavaScript">
 
 ```javascript
@@ -1313,7 +1408,7 @@ client.once(client.Event.SDK_READY, whenReady);
 
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
   // This callback will be called after `readyTimeout` seconds (10 seconds by default)
-  // if and only if the client is not ready for that time. 
+  // if and only if the client is not ready for that time.
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });
 
@@ -1359,9 +1454,6 @@ The difference between each mode is in how generated impressions and events are 
 To instantiate an SDK working as consumer, set two configs on the root of the configuration object, `mode` and `storage`. Set `mode` with the mode of choice, either `'consumer'` or `'consumer_partial'`. Then set `storage` to a valid **storage wrapper** which is the adapter used to connect to the data storage.
 
 The following shows how to configure and get treatments for a SDK instance in consumer or partial consumer mode:
-
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
 
 ```javascript
 import { SplitFactory, PluggableStorage } from '@splitsoftware/splitio-browserjs';
@@ -1411,9 +1503,6 @@ client.once(client.Event.SDK_READY_TIMED_OUT, function () {
   // if and only if the SDK_READY event was not emitted for that time.
 });
 ```
-
-</TabItem>
-</Tabs>
 
 You can write your own custom storage wrapper for the SDK factory client by extending the IPluggableStorageWrapper interface.
 

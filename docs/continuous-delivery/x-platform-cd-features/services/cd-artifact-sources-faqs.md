@@ -59,7 +59,7 @@ If your deployment type is WinRM, then WinRM is the default option used to conne
 
 ### Can Harness deploy the latest tag version published to our artifact server?
 
-Yes, in Harness, you can deploy the latest tag version to your artifact server. By leveraging the `<+lastPublished.tag>` expression, Harness can fetch the most recent tag version available on the artifact server. For comprehensive instructions on implementing this approach, please consult the following Harness [documentation](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/)
+Yes, in Harness, you can deploy the latest tag version to your artifact server. By leveraging the `<+lastPublished.tag>` expression, Harness can fetch the most recent tag version available on the artifact server. For comprehensive instructions on implementing this approach, please consult the following Harness [documentation](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/last-published-tag/)
 
 ### Which API call is specifically used to retrieve a tag of an artifact from the GAR?
 
@@ -158,7 +158,7 @@ For using a single service of the previous stage and its artifact you can use th
 No, deploying artifacts via Harness services is not required for AWS CDK provisioning in a stage. You can set up an AWS CDK provisioner and use it in a stage to provision infrastructure without deploying any artifacts.
 
 ### How to get \<+artifacts.primary.tag> tag in custom stage?
-As per the current design there's no service(Artifact config) in custom stage, without this expression will get null in return. So in the custom stage these expression will not work. But you can use the output variable to pass the details from CD stage to the Custom stage as suggested in this [doc](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/)
+As per the current design there's no service(Artifact config) in custom stage, without this expression will get null in return. So in the custom stage these expression will not work. But you can use the output variable to pass the details from CD stage to the Custom stage as suggested in this [doc](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/output-variable-for-powershell-script/)
 
 ### Is there a wildcard on execution filter/search that I can use for artifact?
 

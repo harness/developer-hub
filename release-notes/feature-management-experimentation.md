@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-07-25T10:00:00
+date: 2025-10-09T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,48 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: July 25, 2025
+#### Last updated: October 9, 2025
+
+## September 2025
+
+### [New Feature] Fallback Treatments
+----
+#### 2025-09-25
+
+Harness FME supports fallback treatments, a configuration option that lets you define a default treatment and optional configuration to be returned instead of the standard `control`. You can set fallback values globally at the SDK level or for individual flags, giving you greater flexibility and resilience in flag evaluations.
+ 
+This feature is valuable for organizations that want to:
+
+- Avoid unexpected `control` values in production by returning a predictable treatment (such as `off`)
+- Customize behavior per flag when an evaluation cannot be completed (e.g. network failure or missing attributes)
+- Ensure consistent user experience across environments and SDKs
+
+By configuring fallback treatments, you can improve reliability, reduce surprises in flag evaluation, and simplify how your applications handle edge cases.
+
+#### Related documentation
+
+- [Fallback treatment](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk/#configure-fallback-treatments)
+- [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configure-fallback-treatments)
+- [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk/#configure-fallback-treatments)
+- [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#configure-fallback-treatments)
+- [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#configure-fallback-treatments)
+- [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#configure-fallback-treatments)
+
+### [New Feature] Experiment Entry Event Filter
+----
+#### 2025-09-25
+
+You can now define an entry event filter when creating an experiment in Harness FME. This filter ensures only users who actually interact with the experiment entry point are included in the analysis. This reduces noise, increases accuracy, and helps make your metrics reusable across experiments without requiring manual filtering.
+
+![](./static/fme/experiment-entry-filter.png)
+
+You can set this filter during experiment creation, and it is applied globally across all key, guardrail, and supporting metrics. These filters are additive, meaning if a [metric already includes a qualifying event](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/#applying-a-filter), the experiment's entry filter is applied first, and both must be satisfied. 
+
+#### Related documentation
+
+- [Create an experiment](/docs/feature-management-experimentation/getting-started/overview/create-an-experiment)
+- [Experimentation Setup](/docs/feature-management-experimentation/experimentation/setup/)
 
 ## July 2025
 
@@ -173,9 +214,15 @@ const App = () => (
 ----
 #### 2025-04-10
 The following SDKs now allow you to append properties to impressions for each `getTreatment` call: Browser, iOS, JavaScript, Node.js, React, and Redux. This provides additional context for in-product troubleshooting within Live tail or downstream external analysis.
+
 #### Related documentation
+
+- [Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions#impression-properties)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk/#append-properties-to-impressions)
+- [Android Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite#append-properties-to-impressions)
 - [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#append-properties-to-impressions)
 - [Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#append-properties-to-impressions)
+- [Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin#append-properties-to-impressions)
 - [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#append-properties-to-impressions)
 - [iOS SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#append-properties-to-impressions)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#append-properties-to-impressions)
@@ -183,6 +230,8 @@ The following SDKs now allow you to append properties to impressions for each `g
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#append-properties-to-impressions)
 - [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#append-properties-to-impressions)
 - [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#append-properties-to-impressions)
+- [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#append-properties-to-impressions)
+- [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#append-properties-to-impressions)
 
 ## March 2025
 ### [New Feature] Feature flag impression toggle

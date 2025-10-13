@@ -1,7 +1,8 @@
 ---
 title: Install delegates with custom certificates
-description: How to install delegates with custom certificates.
-# sidebar_position: 10
+description: Learn how to install Kubernetes, Docker, and Helm delegates with custom certificates for secure enterprise environments.
+sidebar_label: Custom Certificates
+sidebar_position: 2
 ---
 
 

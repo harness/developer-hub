@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2024-04-05T10:00
+date: 2025-09-12T10:00
 sidebar_position: 2
 ---
 
@@ -193,12 +193,19 @@ No early access (beta) features are available for the Harness Supply Chain Secur
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
 <!-- No early access features are available for the Harness Security Testing Orchestration module. Go to [STO Release Notes](/release-notes/security-testing-orchestration) for all the latest updates. -->
 
-#### All Issues Section at Project Level
+#### Notifications for Exemption Management
 
-* **GA date:** July 2025
-* **Early access release date:** May 2025
-* **Issue number:** STO-5430
-* **Feature flag:** `STO_ALL_ISSUES_PAGE`
+* **GA date:** October 2025
+* **Early access release date:** September 2025
+* **Feature flag:** `PL_CENTRAL_NOTIFICATIONS`
+* **Documentation:** [Notifications for Exemption Management](/docs/security-testing-orchestration/notifications/exemption-notifications)
+
+#### Export Scan Results as CSV from Vulnerabilities Tab
+
+* **GA date:** October 2025
+* **Early access release date:** September 2025
+* **Feature flag:** `STO_DOWNLOAD_SCAN_SUMMARY`
+* **Documentation:** [Export Scan Results](/docs/security-testing-orchestration/view-security-test-results/export-scan-results)
 
 ## SRM early access features
 

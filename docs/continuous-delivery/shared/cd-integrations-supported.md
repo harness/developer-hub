@@ -137,6 +137,9 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.25.6
 - 1.26.0
 - 1.27.0
+- 1.30.10
+- 1.31.8
+- 1.33.4
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
@@ -1379,7 +1382,7 @@ You can always update the template versions manually. Go to [Reconcile Pipeline 
 Harness does not enforce any policy regarding fetching the latest image tags.
 To debug this error, consider the following implementations:
 - Ensure the correct image tag is specified in the YAML configuration.
-- For more details, go to [Latest Published Tag](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/).
+- For more details, go to [Latest Published Tag](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/last-published-tag/).
 
 
 #### How can I prevent Terraform state drift caused by AWS ECR permissions policies created by Harness?

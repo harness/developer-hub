@@ -1,6 +1,7 @@
 ---
 title: Install a delegate with third-party tool custom binaries
 description: Use environment variables to install a custom toolset on the delegate minimal image.
+sidebar_label: Third-party Installation (Custom Binaries)
 sidebar_position: 2
 helpdocs_topic_id: ql86a0iqta
 helpdocs_category_id: m9iau0y3hv

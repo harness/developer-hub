@@ -70,6 +70,11 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
      * **Bitbucket** – Cloud or server-hosted Bitbucket repositories
      * **Azure Repos** – Repositories from Azure DevOps Services or Server
 
+
+     :::info
+      For authentication with the [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings), both **Access Token** and **API Token** authentication modes are supported. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
+      :::
+
      You also get the option to connect mono repository (monorepo) is a single repository that contains multiple projects or services, often organized in subdirectories.
      ![](./static/source-code-mono.png)
      * **Yes** – Select this if the component's code is located inside a specific subdirectory of a larger repository. You must also provide the **Subdirectory Path** (for example `/harness/java-service`).

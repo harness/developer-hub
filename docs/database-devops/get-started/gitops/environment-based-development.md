@@ -27,6 +27,8 @@ keywords:
   - harness trigger
   - database pipeline
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Harness Database DevOps supports managing database changes using **environment-specific branches**. This approach allows you to maintain different configurations for development, staging, and production environments directly in your Git repository.
 
@@ -57,22 +59,22 @@ While beneficial, this approach introduces some complexity:
 
 Follow these steps to configure environment-based deployments in Harness Database DevOps:
 
-### 1. **Set Up Your Git Branches**
+### 1. Set Up Your Git Branches
 Create separate branches in your Git repo for each environment: `development`, `staging`, `production`, etc.
 
-### 2. **Define Schema Configuration per Branch**
+### 2. Define Schema Configuration per Branch
 
 - Go to **Database DevOps** and Click on **Add DB Schema**.
 ![Create a New Schema](../static/dbops-schema-create.png)
 
-### 3. **Create a Database Instance**
+### 3. Create a Database Instance
 
 1. Select the **Database Schema** and click on **Add DB Instances** in Harness.
 2. Create a new instance for each environment.
 3. Attach the appropriate JDBC connector and context labels.
 ![Create a New Database Instance](../static/dbops-multienv-instance.png)
 
-### 4. **Configure a Git Trigger**
+### 4. Configure a Git Trigger
 
 1. Navigate to **Pipeline Studio > Triggers**.
 ![Pipeline Triggers](../static/dbops-pipeline-trigger.png)
@@ -96,16 +98,168 @@ Create separate branches in your Git repo for each environment: `development`, `
 You can learn more about triggers in Harness Database DevOps [Learn how to configure Git triggers →](https://developer.harness.io/docs/platform/triggers/tutorial-cd-trigger/)
 :::
 
-### 5. **Design Your Pipeline**
+### 5. Design Your Pipeline
 
 1. In **Pipelines**, create a pipeline that includes a `DBSchemaApply` step.
 2. Set up the pipeline to:
   - Deploy using the associated schema and DB instance.
   - Apply only the changes in that branch.
   - Optionally include approvals, rollback, and verification steps.
-![Pipeline Design](../static/dbops-multienv-pipeline-design.png)
+<Tabs>
+<TabItem value="Visual Overview" alt="Visual Overview">
 
-### 6. **Manage Promotion Between Environments**
+![Pipeline Design](../static/dbops-multienv-pipeline-design.png)
+</TabItem>
+<TabItem value="YAML Overview" alt="YAML Overview">
+
+```yml
+pipeline:
+  identifier: Module_Demo_Betamultienv
+  projectIdentifier: default_project
+  orgIdentifier: default
+  stages:
+    - stage:
+        identifier: DB_Migrate
+        type: Custom
+        name: DB Migrate
+        description: "Deploy DB Schema to multiple environments"
+        spec:
+          execution:
+            steps:
+              - parallel:
+                  - stepGroup:
+                      identifier: Liquibase_Update_staging
+                      name: Update Staging
+                      steps:
+                        - parallel:
+                            - step:
+                                identifier: Apply_To_Staging
+                                type: DBSchemaApply
+                                name: Apply To Staging
+                                spec:
+                                  connectorRef: account.harnessImage
+                                  resources:
+                                    limits:
+                                      memory: 500Mi
+                                      cpu: 400m
+                                  dbSchema: db_devops_demo
+                                  dbInstance: staging
+                                  tag: <+stage.variables.tag>
+                                timeout: 10m
+                                when:
+                                  stageStatus: Success
+                                  condition: <+pipeline.variables.trigger_branch>
+                                    == "staging"
+                      stepGroupInfra:
+                        type: KubernetesDirect
+                        spec:
+                          connectorRef: db
+                          namespace: harness-delegate-ng
+                          initTimeout: 10m
+                      when:
+                        stageStatus: Success
+                        condition: <+stage.variables.rollback_tag> == "" || <+stage.variables.rollback_tag>
+                          ==null
+                  - stepGroup:
+                      identifier: Liquibase_Update_prod_us
+                      name: Update Production-us
+                      steps:
+                        - step:
+                            identifier: Apply_to_Production_us
+                            type: DBSchemaApply
+                            name: Apply to Production-us
+                            spec:
+                              connectorRef: account.harnessImage
+                              resources:
+                                limits:
+                                  memory: 500Mi
+                                  cpu: 400m
+                              dbSchema: db_devops_demo
+                              dbInstance: authoring
+                              tag: <+stage.variables.tag>
+                            timeout: 10m
+                            when:
+                              stageStatus: Success
+                              condition: <+pipeline.variables.trigger_branch> == "staging"
+                      stepGroupInfra:
+                        type: KubernetesDirect
+                        spec:
+                          connectorRef: db
+                          namespace: harness-delegate-ng
+                          initTimeout: 10m
+                      when:
+                        stageStatus: Success
+                        condition: <+stage.variables.rollback_tag> == "" || <+stage.variables.rollback_tag>
+                          ==null
+                      delegateSelectors:
+                        - cockroachdb-delegate
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors: []
+              action:
+                type: Abort
+        variables:
+          - name: rollback_tag
+            type: String
+            description: Specify this if you wish to rollback to the particular tag
+            required: false
+            value: <+input>
+          - name: branch
+            type: String
+            description: ""
+            required: true
+            value: main
+          - name: changelogfile
+            type: String
+            description: ""
+            required: false
+            value: example-changelog.yaml
+          - name: tag
+            type: String
+            description: Argument to Liquibase Tag Command
+            required: false
+            value: <+trigger.commitSha>
+          - name: server_jdbc_url
+            type: String
+            description: JDBC URL of the target server
+            required: false
+            value: <+pipeline.variables.server_jdbc_url>
+          - name: arch
+            type: String
+            description: ""
+            required: false
+            value: latest
+        delegateSelectors:
+          - cockroachdb-delegate
+        when:
+          pipelineStatus: Success
+  tags:
+    demo: ""
+  variables:
+    - name: server_jdbc_url
+      type: String
+      description: ""
+      required: false
+      value: jdbc:sqlserver://<+variable.sql_server_ip_address>;database=MyTestDataBase;trustServerCertificate=true
+    - name: user
+      type: String
+      description: ""
+      required: false
+      value: <+secrets.getValue("mysql_sa_user")>
+    - name: trigger_branch
+      type: String
+      description: ""
+      required: true
+      value: <+trigger.targetBranch>
+  name: Module Demo - Beta-multi-env
+```
+</TabItem>
+</Tabs>
+
+### 6. Manage Promotion Between Environments
 
 1. Use Git pull requests to promote changes between branches. e.g., `dev` → `staging` or `staging` → `prod`
 2. Harness will auto-detect the merged changes via the trigger and deploy accordingly.

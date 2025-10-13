@@ -92,10 +92,16 @@ If you are accessing the output variable in a step within the same step group yo
 
 If your step group is configured as a loop, an index is added at the end of the identifier to identify the unique loop instance. You can use this index to reference output variables. For example, `<+execution.steps.<stepGroupID_[index]>.steps.stepID.outputVariables.[variable name]>`.
 
-
 :::info
 Execution input is not supported for step group variables.
 :::
+
+## Step group expressions
+
+The following expressions are for step groups in pipeline stages.
+
+* `<+stepGroup.variables>`: References a collection of variables within the step group.
+* `<+stepGroup.getParentStepGroup>`: References a collection of variables from the parent of the step group.
 
 ## Conditional execution
 

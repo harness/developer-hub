@@ -7,7 +7,7 @@ sidebar_position: 50
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This page includes FAQs and troubleshooting information for SEI module.
+This page includes FAQs and troubleshooting information for the SEI module.
 
 ### How long does SEI store data and for what time period can we go back in history in the widgets?
 

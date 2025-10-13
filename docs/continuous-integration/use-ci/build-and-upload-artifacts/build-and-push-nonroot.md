@@ -162,7 +162,7 @@ Many Buildah plugin settings correspond with settings for the built-in **Build a
 | Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Registry](./build-and-push/build-and-push-to-docker-registry) |
 | ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR](./build-and-push/build-and-push-to-acr.md) |
 | ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR](./build-and-push/build-and-push-to-ecr-step-settings.md) |
-| GAR/GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GAR](./build-and-push/build-and-push-to-gar.md)/[Build and Push to GCR](./build-and-push/build-and-push-to-gcr.md) |
+| GAR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GAR](./build-and-push/build-and-push-to-gar.md) |
 
 ## Stage YAML example
 

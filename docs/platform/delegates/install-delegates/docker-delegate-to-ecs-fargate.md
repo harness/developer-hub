@@ -1,7 +1,8 @@
 ---
 title: Deploy a Docker delegate to Amazon ECS or AWS Fargate
-description: Provides information and YAML for the installation of a delegate into an Amazon ECS or AWS Fargate cluster.
-sidebar_position: 5
+description: Learn how to deploy a Docker delegate to Amazon ECS or AWS Fargate clusters with configuration examples and best practices.
+sidebar_label: Docker Delegate to ECS/Fargate
+sidebar_position: 6
 canonical_url: https://www.harness.io/blog/aws-fargate-a-cloud-based-container-solution-without-kubernetes
 ---
 

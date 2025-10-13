@@ -10,10 +10,10 @@ redirect_from:
   - /docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 Use Background steps to [manage dependent services](./dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
@@ -28,9 +28,9 @@ A Background step starts a service and then proceeds. For any later step that re
 
 :::info
 
-* Background steps do not support failure strategies or output variables.
-* If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
-* Depending on the stage's build infrastructure, some settings might be unavailable, optional, or located under **Additional Configuration**.
+- Background steps do not support failure strategies or output variables.
+- If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
+- Depending on the stage's build infrastructure, some settings might be unavailable, optional, or located under **Additional Configuration**.
 
 :::
 
@@ -57,13 +57,11 @@ If the Background step runs directly on the host or in a Kubernetes cluster buil
 
 ## Container Registry and Image
 
-**Container Registry** is a Harness container registry connector that connects to the container registry, such as Docker Hub, from which you want Harness to pull an image.
+The build environment must have the necessary binaries for the **Background** step to execute your test commands. Depending on the stage's build infrastructure, **Background** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries.
 
-**Image** is the container image to use for the background service. The image name should include the tag, or it defaults to the `latest` tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
+<WhenReq />
 
-* **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GAR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
+<FQNImage />
 
 <figure>
 
@@ -76,10 +74,10 @@ If the Background step runs directly on the host or in a Kubernetes cluster buil
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
-* [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
-* [Local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Background** steps can use binaries available on the host machine. The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need.
-* [Self-managed AWS/GCP/Azure VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Background** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-managed VM build infrastructure.
-* [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Background** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
+- [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
+- [Local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Background** steps can use binaries available on the host machine. The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need.
+- [Self-managed AWS/GCP/Azure VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Background** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-managed VM build infrastructure.
+- [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Background** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
 
 :::
 
@@ -97,7 +95,6 @@ Supply a list of arguments in `exec` format. **Entry Point** arguments override 
 
 If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, include both the image `ENTRYPOINT`, such as `dockerd-entrypoint.sh`, and your additional arguments in **Entry Point**.
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
@@ -108,21 +105,17 @@ If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, inc
 <figcaption><b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
 
-
 ```yaml
-                    entrypoint:
-                      - dockerd-entrypoint.sh
-                      - "--mtu=1450"
+entrypoint:
+  - dockerd-entrypoint.sh
+  - "--mtu=1450"
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 :::tip
 
@@ -246,7 +239,7 @@ Select this option to run the container with escalated privileges. This is the e
 
 ## Report Paths
 
-The path to the files that store [results in JUnit XML format](../run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+The path to the files that store [results in JUnit XML format](../run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported.
 
 This setting is required for commands run in the Background step to be able to [publish test results](../run-tests/viewing-tests.md).
 
@@ -275,9 +268,9 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 
 If the service is running in a container, you can select an option to set the pull policy for the image.
 
-* **Always**: The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
-* **If Not Present**: The image is pulled only if it is not already present locally.
-* **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
+- **Always**: The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+- **If Not Present**: The image is pulled only if it is not already present locally.
+- **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
 ## Port Bindings
 
@@ -285,8 +278,22 @@ The host port and container port binding are similar to [port mapping in Docker]
 
 Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running. For example, assume you create a Background step with the [Name and ID](#name-and-id) `myloginservice`. To call this service in later steps in the same stage, you use:
 
-* `myloginservice:container_port` for containerized steps, such as those running in self-managed VM build infrastructures or running Docker images.
-* `localhost:host_post` for steps running in a Kubernetes cluster build infrastructure or directly on the build machine (such as a service running from a binary already installed on the host machine). For steps running MySQL in a Kubernetes cluster build infrastructure, you must use `127.0.0.1:host_port`.
+- `myloginservice:container_port` for containerized steps, such as those running in self-managed VM build infrastructures or running Docker images.
+- `localhost:host_post` for steps running in a Kubernetes cluster build infrastructure or directly on the build machine (such as a service running from a binary already installed on the host machine). For steps running MySQL in a Kubernetes cluster build infrastructure, you must use `127.0.0.1:host_port`.
+
+:::note Service Binding Inside the Container
+If your application binds only to `127.0.0.1` inside the container, it will not be reachable from outside the container — even if you configure Port Bindings in Harness.  
+To make the service accessible, ensure the application listens on `0.0.0.0`. This binds the service to all available network interfaces inside the container, allowing Docker’s `-p` port mapping (or Harness Port Bindings) to expose it.
+
+For example, in a Node.js service:
+
+```js
+app.listen(8080, "0.0.0.0", () => {
+  console.log("Listening...");
+});
+```
+
+:::
 
 :::info
 
@@ -302,16 +309,16 @@ If the service is running in a container, you can specify the user ID to use for
 
 The maximum memory and cores that the container can use.
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. Do not include spaces when entering a fixed value. The default value is `500Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+- **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. Do not include spaces when entering a fixed value. The default value is `500Mi`.
+- **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ## Troubleshoot Background steps
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Background steps, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Background steps, including:
 
-* [Do Background steps have limitations?](/kb/continuous-integration/continuous-integration-faqs/#do-background-steps-have-limitations)
-* [Can Background steps run multiple services simultaneously?](/kb/continuous-integration/continuous-integration-faqs/#can-background-steps-run-multiple-services-simultaneously)
-* [How can a step call a service started by a Background step?](/kb/continuous-integration/continuous-integration-faqs/#how-can-a-step-call-a-service-started-by-a-background-step)
-* [I can't connect to the hostname using the step ID from my Background step, and I get an "Unknown server host" error](/kb/continuous-integration/continuous-integration-faqs/#i-cant-connect-to-the-hostname-using-the-step-id-from-my-background-step-and-i-get-an-unknown-server-host-error)
-* [Why is Background step always marked as successful even if there are failures executing the entry point?](/kb/continuous-integration/continuous-integration-faqs/#why-is-background-step-always-marked-as-successful-even-if-there-are-failures-executing-the-entry-point)
-* [How can I health check services running in Background steps?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-make-sure-my-background-service-is-healthy-before-running-the-rest-of-my-pipeline-how-can-i-test-that-my-background-service-is-running)
+- [Do Background steps have limitations?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#do-background-steps-have-limitations)
+- [Can Background steps run multiple services simultaneously?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-background-steps-run-multiple-services-simultaneously)
+- [How can a step call a service started by a Background step?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-a-step-call-a-service-started-by-a-background-step)
+- [I can't connect to the hostname using the step ID from my Background step, and I get an "Unknown server host" error](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#i-cant-connect-to-the-hostname-using-the-step-id-from-my-background-step-and-i-get-an-unknown-server-host-error)
+- [Why is Background step always marked as successful even if there are failures executing the entry point?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-is-background-step-always-marked-as-successful-even-if-there-are-failures-executing-the-entry-point)
+- [How can I health check services running in Background steps?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-make-sure-my-background-service-is-healthy-before-running-the-rest-of-my-pipeline-how-can-i-test-that-my-background-service-is-running)

@@ -8,6 +8,7 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
+  - /docs/cloud-cost-management/ccm-onboarding/onboarding-path
   - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes
 ---
 

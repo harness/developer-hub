@@ -50,7 +50,7 @@ In this tutorial, we will setup the following resources:
 In the following steps, we will create an IaCM Workspace template and default pipelines to provision and destroy infrastructure - in this case, a Kubernetes namespace.
 
 #### 1. Create a new Workspace Template
-We need a **workspace template** to standardize IaCM workspace configurations by predefining essential variables, configuration settings, and other workspace options. Go to [Workspace Templates](/docs/infra-as-code-management/workspaces/workspace-tempates/) to learn more. 
+We need a **workspace template** to standardize IaCM workspace configurations by predefining essential variables, configuration settings, and other workspace options. Go to [Workspace Templates](/docs/infra-as-code-management/workspaces/workspace-templates/) to learn more. 
 
 Follow the instructions below to create a new workspace template:
 1. Go to Project Settings and under “Project-level Resources”, choose “Templates”.

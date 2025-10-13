@@ -64,7 +64,7 @@ export const docsCards: CardSections = [
         title: "CD & GitOps",
         module: MODULES.cd,
         description: "Continuous Delivery onboarding guides",
-        link: "/docs/category/cd-onboarding-guide",
+        link: "/docs/category/cd-onboarding",
       },
       {
         title: "CET",
@@ -101,6 +101,24 @@ export const docsCards: CardSections = [
         module: MODULES.idp,
         description: "Internal Developer Portal onboarding guide",
         link: "/docs/internal-developer-portal/get-started",
+      },
+      {
+        title: "AASP",
+        module: MODULES.asp,
+        description: "Application and API Security Posture",
+        link: "/docs/appsec-security-posture",
+      },
+      {
+        title: "AARP",
+        module: MODULES.arp,
+        description: "Application and API Runtime Protection",
+        link: "/docs/appsec-runtime-protection",
+      },
+      {
+        title: "AAST",
+        module: MODULES.ast,
+        description: "Application and API Security Testing",
+        link: "/docs/appsec-security-testing",
       },
       {
         title: "STO",

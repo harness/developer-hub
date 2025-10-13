@@ -21,7 +21,7 @@ The Split mobile (iOS and Android) and JavaScript Browser SDKs download a local 
 The default and configuration options differ slightly by SDK:
 
 * JavaScript SDK (v11.2.0 and later): Default expiration of 10 days, configurable via the `LOCALSTORAGE` setting.
-* Browser SDK (v1.2.0 and later): Default expiration of 10 days, configurable via the `InLocalStorage` setting. See [Configuring LocalStorage cache for the SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configuring-localstorage-cache-for-the-sdk).
+* Browser SDK (v1.2.0 and later): Default expiration of 10 days, configurable via the `InLocalStorage` setting. See [Configuring persistent cache for the SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configuring-cache).
 * Android SDK (v5.3.0 and later): Default expiration of 10 days, configurable via the `rolloutCacheConfiguration` setting.
 * iOS SDK (v3.3.0 and later): Default expiration of 10 days, configurable via the `rolloutCacheConfiguration` setting.
 
@@ -29,18 +29,14 @@ All SDKs continue to store impressions and events for up to 90 days. After that 
 
 ## How to initialize for multiple user IDs?
 
-The JavaScript SDK supports initializing multiple client objects from the same SDK factory, each with a unique user key (user ID), like so:
+The JavaScript SDK supports initializing [multiple client objects](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#instantiate-multiple-sdk-clients) from the same SDK factory, each with a unique user key (or user ID):
 
 ```javascript
 client1 = factory.client("user_id1");
 client2 = factory.client("user_id2");
 ```
 
-However, iOS and Android SDKs don’t support this feature. How can multiple users be handled in mobile SDKs?
-
-Since iOS and Android SDKs don’t allow multiple clients from the same factory instance, the recommended approach is to initialize a separate factory object for each user ID.
-
-Each factory creates a local cache folder named using the SDK API key. To avoid cache conflicts, you should use a **different SDK API key per factory** so each instance maintains its own cache and updates independently.
+For mobile SDKs, see the [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk/#instantiate-multiple-sdk-clients) and [Android SDK documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk/#instantiate-multiple-sdk-clients).
 
 :::info Feature flag update timing
 When you make changes to a feature flag in the Harness UI, mobile (iOS, Android) and JavaScript Browser SDKs may not reflect the update immediately for all users. 

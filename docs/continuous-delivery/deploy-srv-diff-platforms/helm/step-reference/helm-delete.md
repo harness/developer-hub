@@ -1,6 +1,10 @@
 ---
 title: Helm Delete Step
 description: Reference for the Helm Delete step
+tags:
+  - helm
+  - helm-delete-step
+  - helm-deployment
 sidebar_position: 60
 ---
 

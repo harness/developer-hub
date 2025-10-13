@@ -1,7 +1,7 @@
 {
-  "label": "Manage AI Test Automation",
+  "label": "AI Test Automation",
   "collapsible": "true",
   "collapsed": "true",
-  "link": { "type": "generated-index", "title": "Manage AI Test Automation" },
+  "link": { "type": "generated-index", "title": "AI Test Automation", "description": "Get started with Harness AI Test Automation." },
   "customProps": {}
 }

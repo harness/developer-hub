@@ -1,7 +1,8 @@
 ---
 title: Use delegate selectors
-description: Use delegate tags to select specific delegates in connectors, steps, and more.
-sidebar_position: 4
+description: Learn how to use delegate selectors and tags to target specific delegates for pipelines, connectors, and infrastructure tasks.
+sidebar_label: Delegate Selectors
+sidebar_position: 5
 helpdocs_topic_id: nnuf8yv13o
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false
