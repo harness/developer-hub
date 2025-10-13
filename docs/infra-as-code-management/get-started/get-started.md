@@ -8,7 +8,6 @@ sidebar_label: Get Started
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 Welcome to the Harness IaCM onboarding guide. Discover how Harness streamlines and secures your infrastructure management with Infrastructure as Code Management (IaCM).
 
 ## What is IaCM?
@@ -17,7 +16,7 @@ IaC automates infrastructure management via code. IaCM enhances this by ensuring
 ### Prerequisites
 Before beginning the walkthroughs in this guide, ensure you have:
 - Access to a Harness account.
-- Access to a Git provider with your [OpenTofu](https://opentofu.org/) or Terraform file.  
+- Access to a Git provider with your [OpenTofu](https://opentofu.org/) or Terraform file.
 - Access to a Cloud Provider such as AWS or Google Cloud Platform.
 - An [organization and project set up](/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
 
@@ -27,11 +26,12 @@ Go to [What's Supported in IaCM](/docs/infra-as-code-management/whats-supported)
 <summary>Sample terraform</summary>
 
 The following example OpenTofu/Terraform (.tf) file declares:
+
 - **Provider Configuration:** Specifies the AWS provider and sets the region to "us-east-1". Go to [AWS Regions & Availability Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for a complete region list.
 - **Resource Definition:** Creates an EC2 instance with the identifier `my_first_ec2_instance`.
 - **AMI:** Utilizes ami-123abc321cba18, go to [AWS EC2 User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) to find your AMI image ID.
 - **Instance Type:** Configures the instance to use a t2.micro. Go to the [AWS t2 instances list](https://aws.amazon.com/ec2/instance-types/t2/).  
-Tags: To facilitate easy identification and management within AWS resources, a tag name with the value `my_first_ec2_instance` is applied.
+  Tags: To facilitate easy identification and management within AWS resources, a tag name with the value `my_first_ec2_instance` is applied.
 
 ```hcl
 provider "aws" {
@@ -39,24 +39,25 @@ provider "aws" {
 }
 
 resource "aws_instance" "my_first_ec2_instance" {
-  ami = "ami-123abc321cba18" 
+  ami = "ami-123abc321cba18"
   instance_type = "t2.micro" # Got to https://aws.amazon.com/ec2/instance-types/t2/ for a full T2 instance type list.
-  
+
   tags = {
     Name = "my_first_ec2_instance"
   }
 }
 ```
 
-Go to [OpenTofu Documentation](https://opentofu.org/docs/) or [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) for more information on currently supported workspace types. 
+Go to [OpenTofu Documentation](https://opentofu.org/docs/) or [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) for more information on currently supported workspace types.
 </details>
 
 :::tip Terraform to OpenTofu migration
-Harness supports all OpenTofu versions, and Terraform MPL versions up to 1.5.x, any BSL versions (from 1.6.0) are not supported. 
+Harness supports all OpenTofu versions, and Terraform MPL versions up to 1.5.x, any BSL versions (from 1.6.0) are not supported.
 Follow this [**OpenTofu migration guide**](https://opentofu.org/docs/intro/migration/) to transition from Terraform to OpenTofu and leverage the benefits of this open-source alternative.
 :::
 
 ---
+
 ## Set up your workspace
 A workspace is a named environment for storing OpenTofu or Terraform configurations and resources. Connect your Cloud Provider and Code Repository through **Connectors** to manage infrastructure changes and updates with Harness IaCM pipelines.
 
@@ -64,7 +65,7 @@ A workspace is a named environment for storing OpenTofu or Terraform configurati
 Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](/docs/infra-as-code-management/get-started/#add-a-new-workspace).
 :::
 
-### Add connectors
+### Step 1: Add connectors
 To configure your connectors before you create a Workspace, go to the following interactive guides:
 <Tabs>
 <TabItem value="Cloud Provider connector">
@@ -95,11 +96,11 @@ Your secret key can be stored in a secret manager (default: Harness Built-in Sec
 :::
 
 4. Select the Connectivity Mode.
-    - Harness recommends selecting **Connect through Harness Platform**.
+   - Harness recommends selecting **Connect through Harness Platform**.
 5. Continue to the final step to confirm your Cloud Provider connection is verified successfully.
 6. Select **Finish**.
 
- Go to [Connect your Cloud Provider](https://developer.harness.io/docs/category/cloud-providers) for more information regarding connecting your Cloud Provider.
+Go to [Connect your Cloud Provider](https://developer.harness.io/docs/category/cloud-providers) for more information regarding connecting your Cloud Provider.
 
 #### Add a Git repository connector
 Using GitHub as an example, after following the initial five steps to reach the Connectors panel:
@@ -109,14 +110,14 @@ Using GitHub as an example, after following the initial five steps to reach the 
 3. Select **Repository** and add your GitHub Repository URL.
 4. In the Credentials step, add your GitHub Username.
 5. Select **Create or Select a Secret**.
-    - Go to [Manage your Personal Access Tokens (PAT)](https://docs.github.com/en/enterprise-server@3.9/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for more information on finding or generating a GitHub secret.
+   - Go to [Manage your Personal Access Tokens (PAT)](https://docs.github.com/en/enterprise-server@3.9/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for more information on finding or generating a GitHub secret.
 6. Select **New Secret Text**, then enter your **Secret Name** and **Secret Value**.
 7. Select **Save**.
 8. Select **Enable API access**.
 9. Under API Authentication, select **Create or Select a Secret** and choose the secret you created in Step 5.
 10. Apply the selected secret and continue.
 11. Select the Connectivity Mode.
-    - Harness recommends selecting **Connect through Harness Platform**.  
+    - Harness recommends selecting **Connect through Harness Platform**.
 12. Continue to the final step to confirm your GitHub connection is verified successfully.
 13. Select **Finish**.
 
@@ -129,7 +130,8 @@ For easier access and token management, use the **OIDC** (OpenID Connect) option
 :::
 
 ---
-### Create your workspace
+
+### Step 2: Create your workspace
 Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
 
 :::tip migrate existing projects
@@ -151,7 +153,7 @@ Complete the fields as follows:
 - **Description**: Type an optional description to help identify the Workspace.
 - **Connector**: Select the connector to use during provisioning.
 - **Workspace Type**: Select the IaC type you want to use. IaCM currently supports Terraform and OpenTofu.
-- **Provisioner Version**: Select the OpenTofu/Terraform version the configuration supports. This version determines which version of OpenTofu or Terraform to use during execution. 
+- **Provisioner Version**: Select the OpenTofu/Terraform version the configuration supports. This version determines which version of OpenTofu or Terraform to use during execution.
 
 :::info opentofu / terraform
 Harness IaCM currently supports integration with all **OpenTofu** versions<HarnessApiData
@@ -161,18 +163,20 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
     parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.  
  For **Terraform**, we support all MPL versions up to **1.5.x**, any BSL versions (from 1.6.0) are not supported.
 
- Go to [OpenTofu migration](https://opentofu.org/docs/intro/migration/) to migrate from Terraform to OpenTofu.
+Go to [OpenTofu migration](https://opentofu.org/docs/intro/migration/) to migrate from Terraform to OpenTofu.
 :::
 
 - **Repository**: Specify the Git configuration for the Terraform configuration files. You should specify the Harness Git connector, repository branch, and file path to the configuration files in the repository.
+
 5. Select **Add workspace details**.
-6. Select **Save**. 
+6. Select **Save**.
+
 </TabItem>
-</Tabs> 
+</Tabs>
 
 ---
 
-### Add a pipeline
+### Step 3: Add a provision pipeline
 A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](/docs/platform/pipelines/harness-yaml-quickstart).
 
 #### Provision with Cost Estimation
@@ -187,25 +191,25 @@ You can include **cost estimation** as part of the workspace setup and in conjun
   <TabItem value="Step-by-step">
   Start by adding the pipeline:
 
-  1. Select the **Infrastructure** module.
-  2. Select **Pipelines**, then select **Create a Pipeline**. 
-  3. Enter a **Name**, then select **Start**.
-      - This will create a blank pipeline for you to add stages to.
-  4. Click **Add Stage** and select **Infrastructure**.
-  5. **Name** the stage to describe what it should do, then select **Set Up Stage**.  
-  6. Go to the **Workspace** and select the Workspace you want the pipeline to run on.
-      Remember, the Workspace is configured with your Git and Cloud Provider connectors, which will determine where your infrastructure changes are applied.
-  7. Go to the **Execution**, where a selection of **Operations** will be presented.  
-  8. Select **Provision**, then select **Use Operation**.
-  9. Select **Save**.
-  </TabItem>
+1. Select the **Infrastructure** module.
+2. Select **Pipelines**, then select **Create a Pipeline**.
+3. Enter a **Name**, then select **Start**.
+   - This will create a blank pipeline for you to add stages to.
+4. Click **Add Stage** and select **Infrastructure**.
+5. **Name** the stage to describe what it should do, then select **Set Up Stage**.
+6. Go to the **Workspace** and select the Workspace you want the pipeline to run on.
+   Remember, the Workspace is configured with your Git and Cloud Provider connectors, which will determine where your infrastructure changes are applied.
+7. Go to the **Execution**, where a selection of **Operations** will be presented.
+8. Select **Provision**, then select **Use Operation**.
+9. Select **Save**.
+</TabItem>
 </Tabs>
-  
+
 The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/cli-commands/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
 
 ---
 
-### Add an Approval step (optional)
+### Step 4: Add an Approval step (optional)
 You can add the Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
 
 :::warning Approval steps hold resources
@@ -217,7 +221,7 @@ When using an Approval step, the underlying machine running the pipeline remains
 <DocVideo src="https://app.tango.us/app/embed/3efdb37e-0d97-4875-a0b2-91fd4442cbe9?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add an IaCM Approval step to your provision pipeline" />
 </TabItem>
 <TabItem value="Step-by-step">
-1. From the Pipeline > **Execution** tab, click on **+** between `plan` and `apply`.  
+1. From the Pipeline > **Execution** tab, click on **+** between `plan` and `apply`.
 
 ![Add Approval Step](./static/AddApprovalStep.png)
 
@@ -230,5 +234,9 @@ When using an Approval step, the underlying machine running the pipeline remains
 
 Go to [pipeline approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step) for more details about approval steps and how they work.
 
-## Conclusion
-This guide introduced you to the core functionalities and setup of Harness IaCM, from creating workspaces to configuring pipelines. For further learning and performance analysis, explore the [Project Setup guides](/docs/category/manage-projects) and [Reporting & Insights guides](/docs/category/reports--insights) to enhance your infrastructure management with Harness.
+## Next steps
+This guide introduced you to the core functionalities and setup of Harness IaCM, from creating workspaces to configuring pipelines. To enhance your experience and team efficiency, get the most out of Harness IaCM's built-in reusable features, including:
+
+- [**Workspace Templates:**](/docs/infra-as-code-management/workspaces/workspace-templates) Quickly create new workspaces using pre-defined, customizable templates.
+- [**Module Registry:**](/docs/category/module-registry) Share and reuse infrastructure modules across teams to standardize deployments.
+- [**Default Pipelines:**](/docs/infra-as-code-management/pipelines/default-pipelines) Start with ready-made pipeline templates to accelerate automation and best practices.

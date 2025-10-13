@@ -3,8 +3,7 @@ import MDXContent from '@theme/MDXContent';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './accessibility.module.scss';
-import Link from '@docusaurus/Link';
-// import Harness_CD_VPAT_Report from "../../../static/doc/"
+
 
 export default function AccessibilityPage() {
   // const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -84,15 +83,6 @@ export default function AccessibilityPage() {
             </p>
             <ul>
               <li>
-                <a
-                  href={`/doc/accessibility-summary-report.pdf`}
-                  className={styles.link}
-                  target="_blank"
-                >
-                  Accessibility Summary Report
-                </a>
-              </li>
-              <li>
                 <a href={`/doc/harness-platform-vpat.pdf`} className={styles.link} target="_blank">
                   Platform VPAT Report
                 </a>
@@ -108,32 +98,56 @@ export default function AccessibilityPage() {
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-dbdevops-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-dbdevops-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   DB Devops VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-sre-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-sre-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   AI SRE VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-fme-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-fme-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   FME VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-idp-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-idp-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   IDP VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-ccm-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-ccm-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   CCM VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-sei-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-sei-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   SEI VPAT Report
                 </a>
               </li>
@@ -148,22 +162,38 @@ export default function AccessibilityPage() {
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-iacm-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-iacm-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   IaCM VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-sto-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-sto-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   STO VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-scs-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-scs-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   SCS VPAT Report
                 </a>
               </li>
               <li>
-                <a href={`/doc/harness-ata-vpat-report.pdf`} className={styles.link} target="_blank">
+                <a
+                  href={`/doc/harness-ata-vpat-report.pdf`}
+                  className={styles.link}
+                  target="_blank"
+                >
                   ATA VPAT Report
                 </a>
               </li>

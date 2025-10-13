@@ -10,10 +10,6 @@ Use the kubectl diff command to compare the current live state of deployed Kuber
 
 The command used in this step is: `kubectl diff -f <file.yaml>`
 
-:::note
-This feature is behind the feature flag `CDS_K8S_DIFF_STEP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 ## Pre-requisites
 
 You must have the **diffutils** package installed on your system to use the `kubectl diff` command. This package provides the necessary utilities for comparing file differences.

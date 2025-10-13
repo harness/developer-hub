@@ -157,6 +157,32 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## October 2025 
+
+### Version 1.111.x <!--October 08, 2025-->
+
+### New features and enhancements
+
+- Updated the images to use specific version tags instead of the latest tag. [PL-65593]
+  - aws-cli:latest -> aws-cli:2.31.7
+  - redis_exporter:latest -> redis_exporter:v1.77.0
+  - statsd-exporter:latest -> statsd-exporter:v0.28.0 
+
+### Version 1.110.x <!--October 03, 2025-->
+
+#### Fixed issues
+
+- Resolved a delegate name validation issue where delegates with names ending in a number could not be created through the UI, even though they worked via API and Terraform. [PL-65391]
+- Updated the system to handle errors in certain operations, including null pointer exceptions and incorrect response codes for invalid notification rule IDs. [PL-65387]
+- Fixed a scope issue that prevented certain delegates from appearing in role assignments. [PL-65324]
+- Resolved delegate startup delays on read-only file systems by loading custom certificates in a writable directory. [PL-65213]
+- Resolved an issue with cross-scope references, where users could reference child-scope channels in parent-scope rules. Such references are no longer allowed. [PL-64702]
+- Updated the system to trim trailing spaces in URLs and other fields to prevent connector creation errors. [PL-58616]
+
+#### New features and enhancements
+
+- Enhanced SMTP permissions: users can now be assigned Create/Edit, View, and Delete rights with proper error messages for missing permissions. [PL-64560]
+
 ## September 2025 
 
 ### Version 1.109.x <!--September 24, 2025-->
@@ -1417,7 +1443,7 @@ The Dashboard Intelligence feature has been temporarily disabled until further n
     When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
     :::
 
-- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
+- You can now toggle between the legacy UI navigation and the new navigation for your account. (PL-43772)
 
 #### Early access features
 

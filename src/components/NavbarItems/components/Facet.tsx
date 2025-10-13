@@ -61,7 +61,7 @@ const Facet: React.FC<FacetProps> = (props) => {
         });
       });
     }
-    let existingFacets = JSON.parse(localStorage.getItem('coveo-facet') || '[]');
+    let existingFacets = JSON.parse(sessionStorage.getItem('coveo-facet') || '[]');
     if (
       !QueryCategoryname &&
       !QueryCommonsource &&
@@ -129,7 +129,7 @@ const Facet: React.FC<FacetProps> = (props) => {
       value: value.value,
     };
 
-    let existingFacets = JSON.parse(localStorage.getItem('coveo-facet') || '[]');
+    let existingFacets = JSON.parse(sessionStorage.getItem('coveo-facet') || '[]');
 
     if (existingFacets.length === 0) {
       existingFacets = [
@@ -147,7 +147,7 @@ const Facet: React.FC<FacetProps> = (props) => {
         (facet) => !(facet.facetId === newFacet.facetId && facet.value === newFacet.value),
       );
     }
-    localStorage.setItem('coveo-facet', JSON.stringify(existingFacets));
+    sessionStorage.setItem('coveo-facet', JSON.stringify(existingFacets));
   }
 
   return (

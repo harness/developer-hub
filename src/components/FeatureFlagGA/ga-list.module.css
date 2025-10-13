@@ -16,19 +16,20 @@
 .gaTable {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: var(--ifm-background-color);
   box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 8%);
+  color: var(--ifm-font-color-base);
 }
 
 .gaTable th, .gaTable td {
-  border: 1px solid var(--ifm-table-border-color, #eaeaea);
+  border: 1px solid var(--ifm-table-border-color);
   padding: 0.75rem 1rem;
   text-align: left;
 }
 
 .gaTable th {
   background: var(--ifm-table-head-background, #f5f6fa);
-  color: var(--ifm-color-primary, #00adef);
+  color: var(--ifm-color-primary);
   font-weight: 600;
 }
 
@@ -76,4 +77,34 @@
   margin-right: 4px;
   height: 24px;
   width: auto;
+}
+
+/* Dark mode support */
+[data-theme='dark'] .gaTable {
+  background: var(--ifm-background-color);
+  box-shadow: 0 1.5px 3px 0 rgb(255 255 255 / 8%);
+}
+
+[data-theme='dark'] .gaTable th {
+  background: var(--ifm-table-head-background, var(--gray-800));
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .gaTable tr:nth-child(even) {
+  background: var(--ifm-table-stripe-background, rgba(255, 255, 255, 0.05));
+}
+
+[data-theme='dark'] .gaTable tr:hover {
+  background: var(--ifm-hover-overlay, rgba(255, 255, 255, 0.1));
+}
+
+[data-theme='dark'] .btn {
+  background: var(--gray-800);
+  border: 1px solid var(--gray-600);
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .btn:hover {
+  background: var(--gray-700);
+  color: var(--ifm-color-primary);
 } 

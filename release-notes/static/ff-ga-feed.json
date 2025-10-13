@@ -508,5 +508,215 @@
     "description": "Enable the Notifications management feature at all scopes",
     "gaStartDate": "2025-09-24",
     "module": "Platform"
+  },
+  {
+    "flagKey": "CDS_GITOPS_ENABLE_UPDATE_GITOPS_APP_ROLLBACK",
+    "description": "Flag to indicate update GitOps app rollback behaviour. Once enabled, during rollback, application sources will be fetched from application revision history",
+    "gaStartDate": "2025-09-27",
+    "module": "GitOps"
+  },
+  {
+    "flagKey": "CDS_TEMPLATE_SET_GIT_CONTEXT",
+    "description": "Child entity should be resolved by parent git context.",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_PIPELINE_TEMPLATE_API_OPTIMISATIONS",
+    "description": "Optimisations for pipeline apis w.r.t template resolution in NG",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_PIPELINE_STAGE_TEMPLATE_VALIDATION_OPTIMISATIONS",
+    "description": "Optimisations for resolving templates for pipeline chaining validation",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_MARK_PIPELINE_AS_FAILURE",
+    "description": "Feature Flag to enable User marked pipeline failure",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_EXPRESSION_V2_OPTIMISATION",
+    "description": "Optimisation for ExpressionV2 engine",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK",
+    "description": "Allow expression resolution of previous stage in pipeline rollback mode",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_FIX_RESOURCE_RESTRAINTS_FOR_RETRY_STEPS",
+    "description": "FF to avoid recreation of resource restarint instance when a queue step is retried",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_RESTRICT_SUBGRAPH_API_TO_STEP_GROUP",
+    "description": "FF to enable to limit subGraph API to only step group nodes",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_RESTRICT_INVALID_TEMPLATE_AND_INPUT_SET_YAML_THROW_EXCEPTION",
+    "description": "FF to redirect invalid template yaml and input set yaml to yaml view of templates and input set",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_RESOLVE_TO_NULL_VALUE_BASED_ON_EXPRESSION_MODE",
+    "description": "FF to enable resolution to null value if unresolved expressions come via StringReplacer",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_RESOLVE_EXECUTION_INPUT_EXPRESSION",
+    "description": "FF to enable expression resolution for executionInput",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_SEPARATE_PLAN_CREATION_EXECUTORS",
+    "description": "FF to separate out executor services per module for plan creation",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_REVERSE_STAGE_ORDER_IN_POST_EXECUTION_ROLLBACK",
+    "description": "FF to reverse the order of stages to execute in the post-execution rollback",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD",
+    "description": "FF to mark the parent pipeline status waiting as well, In case child pipeline status is waiting",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_CACHE_OLD_RETRIED_STEP_GROUP_GRAPH",
+    "description": "FF to cache the old retried step group graph in cacheEntities collection",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_POPULATE_RETRY_NODE_METADATA",
+    "description": "FF to store start and end time of previously skipped nodes in retried execution",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_MOVE_INSTANCE_FUNCTOR_TO_PIPELINE_SERVICE",
+    "description": "FF to migrate the instance expressions resolution to pipeline-service",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_MOVE_KUBERNETES_RELEASE_FUNCTOR",
+    "description": "FF to move expression resolution of kubernetes release functor to pipeline-service",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_OPTIMISE_EXPORTED_VARIABLES_FUNCTOR",
+    "description": "FF to remove grpc call for sweeping outputs from exported variables functor",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_MASK_SECRET_EXPRESSIONS_IN_TRIGGER_PAYLOAD",
+    "description": "Mask secret expressions which are part of trigger payload",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_TRIGGER_CHANGED_FILES_EXPRESSION",
+    "description": "Includes changed files in push event in trigger expression via <+trigger.changedFiles>",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_SUPPORT_FILTER_DELETION_ON_ORG_OR_PROJECT_DELETION",
+    "description": "FF to support pipeline filter deletion on org/project deletion",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ALLOW_MULTIPLE_FILEPATH_CONDITIONS",
+    "description": "FF to optimize filepath condition evaluations in triggers by allowing multiple conditions in one single delegate task",
+    "gaStartDate": "2025-10-07",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_AWS_STS_NON_DEFAULT_REGION",
+    "description": "For non-default regions, the STS URL must be customized to include the region.",
+    "gaStartDate": "2025-10-01",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_LIST_BRANCH_V2",
+    "description": "FF to use newer APIs for GitX branch listing.",
+    "gaStartDate": "2025-10-03",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_PAGINATED_CONNECTORS_FETCHING_IN_TRIGGER_FILTERS",
+    "description": "Uses paginated requests to fetch connectors for webhook triggers.",
+    "gaStartDate": "2025-10-03",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CV_NEWRELIC_NEW_API",
+    "description": "FF to enable New Relic graphQL API.",
+    "gaStartDate": "2025-10-03",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CVNG_TEMPLATE_VERIFY_STEP",
+    "description": "FF to enable Verify Step Template",
+    "gaStartDate": "2025-10-03",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CV_UI_HEALTHSOURCE_SERVICE_INSTANCE_PREVIEW",
+    "description": "FF to fetch and display Service Instance Identifiers for Health Sources",
+    "gaStartDate": "2025-10-07",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_ADD_STAGES_PREFIX_TO_EXECUTION_INPUT_EXPRESSIONS",
+    "description": "FF to support execution time inputs for single service propagation, without looping strategy configured at stage level",
+    "gaStartDate": "2025-10-08",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_HELM_STEP_COMMAND_FLAGS",
+    "description": "Enables support for specifying command flags at the Helm step level.",
+    "gaStartDate": "2025-10-09",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_K8S_NOT_ADD_TRAFFIC_ROUTING_TO_CANARY_WORKLOAD",
+    "description": "The traffic routing resources will not be added to the canary workload.",
+    "gaStartDate": "2025-10-09",
+    "module": "Continuous Delivery"
+  },
+   {
+    "flagKey": "CDS_SETTINGS_ACCORDION",
+    "description": "This will add popover for settings in the Left navigation",
+    "gaStartDate": "2025-10-13",
+    "module": "Continuous Delivery"
+  },
+    {
+    "flagKey": "PIPE_REFERENCED_TEMPLATES",
+    "description": "This will add a referenced/unreferenced tag to the templates listing card and list view.",
+    "gaStartDate": "2025-10-13",
+    "module": "Pipeline"
   }
 ]

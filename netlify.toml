@@ -1,5 +1,6 @@
 [build]
  functions = "netlify/functions/"
+ command = "git fetch --unshallow && yarn build" 
 
 [functions]
   node_bundler = "esbuild"

@@ -6,9 +6,7 @@ redirect_from:
   - /docs/chaos-engineering/use-harness-ce/license-consumption/
 ---
 
-Harness Chaos Engineering uses a licensing model based on the number of **Services** that undergo chaos experimentation within each 30-day cycle. This model is integrated into the broader Harness Developer 360 framework, where each chaos service license entitles three developers to access and use the Chaos Engineering module.
-
-This approach allows targeted experimentation across a wide range of environments, optimizing license utilization and supporting the needs of different teams, applications, and infrastructure types.
+Harness Chaos Engineering module uses 'Services' as a key construct in identifying the target resources for chaos experimentation. Harness Chaos Engineering customers license by Developers (Developer 360 model) and receive services as an included entitlement. More details on the Developer 360 model are available [here](/docs/platform/get-started/subscriptions-licenses/subscriptions/). 
 
 ## What is a service?
 
@@ -21,7 +19,7 @@ The table below describes how a **Service** is considered in Chaos Engineering, 
 | Kubernetes Platform | One license service is equivalent to a Kubernetes service or a workload such as a Deployment/ReplicaSet/StatefulSet/DaemonSet/Job/CronJob. | 1:1 |
 | Virtual Machine or a Baremetal host running Windows or Linux OS | The virtual machine can be a VMware VM, a hypervisor VM, or any cloud provider VM such as EC2, GCP VM, or Azure VM. This has a one-to-one mapping with the license service. | 1:1 |
 | Serverless functions | Cloud providers offer serverless functions such as AWS Lambda, GCP Cloud Functions, or Azure Functions. Chaos experiments on 5 serverless functions are mapped to a license service. | 5:1 |
-| Cloud Container Services | This could be AWS ECS, Azure Container Apps, or GCP Cloud Run. This has a one-to-one mapping with the license service. | 1:1 |
+| Cloud Resources and Container Services | This could be AWS Load Balancers for AZ failures, AWS ECS, Azure Container Apps, or GCP Cloud Run. This has a one-to-one mapping with the license service. | 1:1 |
 | Miscellaneous (experiment runs) | Any target resource that does not fall into a specific type described above, will fall in the miscellaneous category. In this category, 100 chaos experiment runs on a given target are mapped to a license service. | 100:1 |
 
 Have questions? Go to [Frequently Asked Questions on Licenses](/docs/faqs/chaos-engineering-faqs#license).

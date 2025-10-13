@@ -19,13 +19,6 @@ export default function SRM() {
             <h1>Service Reliability Management</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb/service-reliability-management">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
             <Link href="/release-notes/service-reliability-management">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}

@@ -132,6 +132,43 @@ When accessing Google Cloud resources, use [Workload Identity Federation](https:
 
 <IssuerURI />
 
+##### Workload Identity Federation Field Requirements
+
+When configuring the GCP connector with OIDC, pay careful attention to the field formats:
+
+:::important Field Format Requirements
+
+- **Workload Pool ID**: Enter only the pool name (e.g., `harness-pool`), not the full resource path
+- **Provider ID**: Enter only the provider name (e.g., `harness-provider`), not the full resource path
+- **Project Number**: Use the numeric project number, not the project ID
+
+:::
+
+**Correct Format Examples:**
+- Workload Pool ID: `harness-pool`
+- Provider ID: `harness-provider`
+- Project Number: `421331508843`
+
+**Incorrect Format Examples (will cause errors):**
+- Workload Pool ID: `projects/421331508843/locations/global/workloadIdentityPools/harness-pool`
+- Provider ID: `projects/421331508843/locations/global/workloadIdentityPools/harness-pool/providers/harness-provider`
+
+Using full resource paths will result in duplication errors like:
+```
+"OIDC Configuration Error: Error encountered while obtaining OIDC Access Token from STS for Aud //iam.googleapis.com/projects/.../workloadIdentityPools/projects/..."
+```
+
+##### Finding Your WIF Values in GCP Console
+
+To locate the correct values in the Google Cloud Console:
+
+1. Navigate to **IAM & Admin** > **Workload Identity Federation**
+2. Select your workload identity pool
+3. Copy the **Pool ID** (name only, not the full path)
+4. Click on your identity provider
+5. Copy the **Provider ID** (name only, not the full path)
+6. The **Project Number** can be found in the project selector dropdown or project settings
+
 #### Enable Cross-Project Access
 
 You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.

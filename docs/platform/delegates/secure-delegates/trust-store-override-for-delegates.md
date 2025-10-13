@@ -1,7 +1,8 @@
 ---
 title: Truststore override for delegates
-description: Replace or use a different default truststore with Harness Delegates.
-# sidebar_position: 30
+description: Learn how to customize delegate truststores to limit trusted certificates and meet enterprise security protocols while maintaining Harness connectivity.
+sidebar_label: Truststore Override for Delegates
+sidebar_position: 6
 helpdocs_topic_id: nh6tdfse6g
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false

@@ -1,6 +1,7 @@
 ---
 title: Harness MCP Server (Beta)
 description: A unified interface for AI agents to interact with Harness tools and services using the Model Context Protocol (MCP).
+sidebar_label: MCP Server (Beta)
 sidebar_position: 10
 ---
 
@@ -127,34 +128,34 @@ Why not just use function calls for each API?
 
 ```json
 {
-  "mcp": {
-    "servers": {
-      "harness": {
-        "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "YjJmMGNkNDAyOGQ2YWQ4ZjI2MzA4NzMxNTlhOTgyNWQ=",
-          "-e",
-          "HARNESS_DEFAULT_ORG_ID",
-          "-e",
-          "HARNESS_DEFAULT_PROJECT_ID",
-          "-e",
-          "HARNESS_BASE_URL",
-          "harness/mcp-server",
-          "stdio"
-        ],
-        "env": {
-          "HARNESS_API_KEY": "<YOUR_API_KEY>",
-          "HARNESS_DEFAULT_ORG_ID": "<YOUR_ORG_ID>",
-          "HARNESS_DEFAULT_PROJECT_ID": "<YOUR_PROJECT_ID>",
-          "HARNESS_BASE_URL": "<YOUR_BASE_URL>"
-        }
+  "servers": {
+    "harness-mcp-server": {
+      "type": "stdio",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "HARNESS_API_KEY",
+        "-e",
+        "HARNESS_DEFAULT_ORG_ID",
+        "-e",
+        "HARNESS_DEFAULT_PROJECT_ID",
+        "-e",
+        "HARNESS_BASE_URL",,
+        "harness/mcp-server",
+        "stdio"
+      ],
+      "env": {
+        "HARNESS_API_KEY": "<YOUR_API_KEY>",
+        "HARNESS_DEFAULT_ORG_ID": "<YOUR_ORG_ID>",
+        "HARNESS_DEFAULT_PROJECT_ID": "<YOUR_PROJECT_ID>",
+        "HARNESS_BASE_URL": "<YOUR_BASE_URL>"
       }
     }
-  }
+  },
+  "inputs": []
 }
 
 ```

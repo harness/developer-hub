@@ -86,9 +86,7 @@ Using this structure, SEI 2.0 automatically builds a manager and reportee tree, 
 
 ![](../static/org-tree-preview.png)
 
-:::note Coming Soon
-Multi-level groupings based on custom attributes (e.g., Department → Function → Team) will be supported in future iterations. This will allow organizations to model more complex hierarchies and operational structures, making it easier to analyze engineering performance across departments, locations, and lines of business.
-:::
+Multi-level groupings based on custom attributes (e.g., Department → Function → Team) are supported in SEI 2.0. This allows organizations to model more complex hierarchies and operational structures, making it easier to analyze engineering performance across departments, locations, and lines of business.
 
 ### Teams
 
@@ -155,7 +153,7 @@ SEI 2.0 gives you immediate visibility into what matters most—with powerful, o
     * Number of Comments Per PR
     * Average Time to First Comment
 
-* Business Alignment (Coming Soon): The one dashboard that you need to track how engineering output maps to product and business goals.
+* Business Alignment: The one dashboard that you need to track how engineering output maps to product and business goals.
 
 :::note Built for Every Level of the Org
 

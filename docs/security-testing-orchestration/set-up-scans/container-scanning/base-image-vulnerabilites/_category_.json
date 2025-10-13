@@ -1,0 +1,11 @@
+{
+    "label": "Base Image Vulnerabilities",
+    "position": 14,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Base Image Vulnerabilities"
+    }
+}
