@@ -9,7 +9,7 @@ By default, Harness supports an embedded database for storing CI pipeline logs, 
 
 To use AWS S3, you must configure it as an external storage solution, which involves setting up an S3 bucket and connecting it to Harness by specifying the required details like the bucket name, region, and access credentials. This ensures your pipeline logs are stored securely and are easily accessible for analysis.
 
-### Create an S3 Bucket
+## Create an S3 Bucket
 
 1. Navigate to the **S3 API page** in the AWS Console.  
 2. Create a **General Purpose Bucket** with your desired name and ensure **public access is disabled**. 
@@ -24,7 +24,7 @@ To use AWS S3, you must configure it as an external storage solution, which invo
 
 4. Add a new access point and connect it to your VPC.
 
-### Set up Access Key, Secret Key & Policy to access Bucket
+## Set up Access Key, Secret Key & Policy to access Bucket
 
 To create an AWS Access Key ID and Secret Access Key with limited permissions for a specific S3 bucket, follow these steps:
 
@@ -64,7 +64,7 @@ To create an AWS Access Key ID and Secret Access Key with limited permissions fo
 4. **Access Key and Secret**:
    - Once the user is created, you'll see the **Access Key ID** and **Secret Access Key**. Be sure to save them securely.
 
-### Create Gateway Endpoint to Connect with S3 from a Private Subnet
+## Create Gateway Endpoint to Connect with S3 from a Private Subnet
 
 1. Go to the **Endpoints** section in the VPC page (e.g., [VPC Console](https://us-east-2.console.aws.amazon.com/vpcconsole/home?region=us-east-2#Endpoints)).
 
@@ -79,7 +79,7 @@ To create an AWS Access Key ID and Secret Access Key with limited permissions fo
 
     ![aws-s3-logs-4](./static/aws-s3-logs-4.png)
 
-### Validate Connectivity from EKS to S3
+## Validate Connectivity from EKS to S3
 
 1. **Exec into Minio Pod in your Harness Namespace**  
    Use the following command to access the Minio pod:  
@@ -108,52 +108,106 @@ To create an AWS Access Key ID and Secret Access Key with limited permissions fo
 5. **Verify the File Exists in Your Bucket**  
    Ensure the file was successfully uploaded by checking your S3 bucket.
 
-### Create Kubernetes Secret to Store AccessKey and SecretKey  
+## Configure Harness to use S3 as Log Storage
+
+Harness allows you to store logs in AWS S3 via the AWS S3 client. Harness supports connecting to AWS S3 using either static credentials (Access Key and Secret Key) or IAM Roles for Service Accounts (IRSA). You can choose the authentication method that best fits your security and operational requirements.
+
+### Option 1: Configure Harness - Using Static Credentials
+
+To configure Harness to use AWS S3 for log storage using static credentials you need the S3 Access Key, S3 Secret Key, Endpoint, Region, and Bucket Name. 
+
+1. **Create Kubernetes Secret to Store AccessKey and SecretKey**
+
+   :::info
+   The secrets are provided in plaintext here. If you choose to base64 encode them, use the `data` field instead of `stringData`. Both methods will convert the secrets into base64-encoded format on the server.
+   :::
+
+   Create a Kubernetes secret in your cluster so the application can refer to it. 
+
+   Use the following YAML format to store the `S3_ACCESS_KEY` and `S3_SECRET_ACCESS_KEY`:
+
+   ```yaml
+   apiVersion: v1
+   kind: Secret
+   metadata:
+      name: log-service-s3-secrets
+      namespace: <enter Namespace>
+   type: Opaque
+   stringData:
+      S3_ACCESS_KEY: ENTER_S3_ACCESS_KEY
+      S3_SECRET_ACCESS_KEY: ENTER_S3_SECRET_ACCESS_KEY
+   ```
+
+2. **Configure Harness Overrides to Use AWS S3**
+
+   Use the following YAML format to configure the log service to use AWS S3 using the above secrets:
+
+   ```yaml
+   platform:
+     log-service:
+       s3:
+         # Ensure gcs.endpoint is not set when defining s3.endpoint.
+         endpoint: "https://s3.<bucket-region>.amazonaws.com"
+         # Disables Minio support and sets LOG_SERVICE_MINIO_ENABLED to false. Minio is not recommended for    production.
+         enableMinioSupport: false
+         bucketName: "<bucket-name>"
+         region: "<bucket-region>"
+       secrets:
+         kubernetesSecrets:
+           - secretName: "log-service-s3-secrets" # The secret containing your AWS credentials
+             keys:
+               LOG_SERVICE_S3_ACCESS_KEY_ID: "S3_ACCESS_KEY" # Access key field in the secret
+               LOG_SERVICE_S3_SECRET_ACCESS_KEY: "S3_SECRET_ACCESS_KEY" # Secret access key field in the secret
+
+### Option 2: Configure Harness - Using IAM Role for Service Accounts (IRSA)
 
 :::info
-The secrets are provided in plaintext here. If you choose to base64 encode them, use the `data` field instead of `stringData`. Both methods will convert the secrets into base64-encoded format on the server.
+Prequisites: Your cluster must have an OIDC provider configured.
+If not you can follow the [Configure OIDC Provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html) guide to configure it.
 :::
 
-Create a Kubernetes secret in your cluster so the application can refer to it. 
+To configure Harness to use AWS S3 for log storage using IAM Role for Service Accounts (IRSA) you need Bucket Name, Bucket Policy and Region.
 
-Use the following YAML format to store the `S3_ACCESS_KEY` and `S3_SECRET_ACCESS_KEY`:
+1. **Create a Service Account with The Bucket Policy**
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: log-service-s3-secrets
-  namespace: <enter Namespace>
-type: Opaque
-stringData:
-  S3_ACCESS_KEY: ENTER_S3_ACCESS_KEY
-  S3_SECRET_ACCESS_KEY: ENTER_S3_SECRET_ACCESS_KEY
-```
+   Use the following command to create a Service Account configured with the required S3 bucket policy. This command automatically creates a new IAM Role with the specified bucket policy and attaches a trust policy that allows the Service Account to assume the role using IRSA.
+   
+   ```bash
+   eksctl create iamserviceaccount \
+   --name <service-account-name> \
+   --namespace <namespace> \
+   --cluster <cluster-name> \
+   --role-name <role-name> \
+   --attach-policy-arn <policy-arn> \
+   --approve
+   ```
 
-### Configuring AWS S3 for Log Storage in Harness
+   :::info
+   You will need the necessary cluster, IAM and Cloudtrail permissions to successfully create the service account.
+   Please check the [Assign IAM Role to Service Account](https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html) for more details.
+   :::
+   
+2. **Configure Harness Overrides to Use Custom Service Account**
 
-Harness allows you to store logs in AWS S3 via the AWS S3 client. To set this up, you need the S3 Access Key, S3 Secret Key, Endpoint, Region, and Bucket Name. First, create a Kubernetes secret with your AWS access and secret keys for the bucket.
+   Use the following YAML format to configure the log service to use the above newly created service account.
 
+   ```yaml
+   platform:
+      log-service:
+         s3:
+            # leave endpoint empty to let AWS use default endpoint
+            endpoint: ""
+            enableMinioSupport: false
+            bucketName: "<bucket-name>"
+            region: "<bucket-region>"
+         serviceAccount:
+            create: false
+            name: "<service-account-name>"  # <-- must match the SA created by eksctl above
+         secrets:
+            kubernetesSecrets: []  # No k8s secrets when using IRSA. Keep empty to avoid static keys.
+   ```
 
-```yaml
-platform:
-  log-service:
-    s3:
-      # Ensure gcs.endpoint is not set when defining s3.endpoint.
-      endpoint: "https://s3.<bucket-region>.amazonaws.com"
-      # Disables Minio support and sets LOG_SERVICE_MINIO_ENABLED to false. Minio is not recommended for production.
-      enableMinioSupport: false
-      bucketName: "<bucket-name>"
-      region: "<bucket-region>"
-    secrets:
-      kubernetesSecrets:
-        - secretName: "log-service-s3-secrets" # The secret containing your AWS credentials
-          keys:
-            LOG_SERVICE_S3_ACCESS_KEY_ID: "S3_ACCESS_KEY" # Access key field in the secret
-            LOG_SERVICE_S3_SECRET_ACCESS_KEY: "S3_SECRET_ACCESS_KEY" # Secret access key field in the secret
-```
-
-### Copying Data from Minio to AWS S3
+## Copying Data from Minio to AWS S3
 
 :::warning NOTE
 If a pipeline is running during the copy command, its logs will not be transferred to S3. As a result, the execution logs for those pipelines will be lost during the transition. To ensure accuracy, Harness recommends applying a freeze window during this transition.
