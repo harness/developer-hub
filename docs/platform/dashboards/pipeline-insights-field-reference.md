@@ -31,9 +31,9 @@ Dashboards using the old Step Executions explore will continue to function; howe
 :::
 
 Pipeline Insights provides three main data explores:
-- **Pipeline Executions v2**: High-level pipeline run data
+- **Pipeline Executions**: High-level pipeline run data
 - **Stage Executions**: Individual stage performance within pipelines  
-- **Step Executions**: Granular step-level execution details
+- **Step Executions v2**: Granular step-level execution details
 
 Each explore contains **Dimensions** (attributes for grouping and filtering) and **Measures** (calculated metrics for analysis).
 
