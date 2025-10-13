@@ -841,7 +841,7 @@ Working with user consent is demonstrated below.
   let matchingKey = Key(matchingKey: "key")
 
   // Create Suite
-  let suite = SplitSuite.builder()
+  let suite = DefaultSplitSuite.builder()
     .apiKey(sdkKey)
     .key(matchingKey)
     .config(sdkConfig).build()
