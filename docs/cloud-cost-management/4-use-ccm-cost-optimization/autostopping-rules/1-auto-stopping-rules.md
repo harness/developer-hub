@@ -33,22 +33,23 @@ AutoStopping Rules let you define:
 | <img src="/provider-logos/cloud-providers/azure-logo.svg" alt="Azure" width="20"/> <strong style={{fontSize: '1.1rem'}}>Azure</strong> | <ul><li>On-demand VMs</li><li>Kubernetes Clusters (AKS)</li></ul> |
 | <img src="/provider-logos/cloud-providers/gcp-logo.svg" alt="GCP" width="20"/> <strong style={{fontSize: '1.1rem'}}>GCP</strong> | <ul><li>GCE VMs</li><li>Kubernetes Clusters (GKE)</li><li>Instance Groups</li></ul> |
 
+AutoStopping offers:
+- **Unlimited rules and resources**: Create as many rules as needed with no restrictions
+- **Unlimited dependencies**: No limit on the number of dependencies a rule can manage
+- **Flexible configuration**: Customize idle time thresholds, schedules, and access methods
+- **Resource-specific restart times**:
+  - RDS instances: Warm-up time depends on cluster/instance size (~25 minutes)
+  - Other resources: Typically warm up in under 2 minutes (max 5 minutes)
+
 ## How AutoStopping Works
 
-The AutoStopping process works in four key steps:
+AutoStopping intelligently manages your cloud resources through a seamless four-step process:
 
-1. **Intelligent Detection**: AutoStopping continuously monitors your resources for activity
-2. **Automatic Shutdown**: After a configurable idle period, resources are automatically stopped
-3. **Seamless Restart**: When access is requested, resources are automatically restarted
-4. **Transparent Access**: Users continue to use the same access methods they always have (DNS, SSH, RDP)
-
-
-> **Note:**  
-> - There's **no limit** on the number of dependencies a rule can manage.  
-> - **RDS warm-up time** depends on cluster/instance size (~25 minutes).  
-> - Other resources warm up in under 2 minutes (max 5 minutes).
-
+1. **Intelligent Detection**: Resources are continuously monitored for user activity and workload patterns
+2. **Automatic Shutdown**: Once your configured idle threshold is reached, resources are safely stopped to eliminate wasted spend
+3. **Seamless Restart**: When access is requested, resources are automatically restarted based on your dependency configuration
+4. **Transparent Access**: End users continue using the same familiar endpoints (DNS, SSH, RDP) with minimal interruption
 
 ## Ready to Get Started?
 
-Follow our [Set Up AutoStopping Rules](./set-up-autostopping-rules.md) to set up AutoStopping in your environment in three simple step.
+Follow our [Set Up AutoStopping Rules](./set-up-autostopping-rules.md) to set up AutoStopping in your environment in three simple steps.
