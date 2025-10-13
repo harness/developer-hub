@@ -58,6 +58,8 @@ All filter dropdowns are now context-aware, showing only options relevant to you
 
 - **Enhanced Ticket Management**: Added support for "Service Request" ticket type for our Service Now integration for recommendations. Using Service request tickets customers can manage recommendations more easily using automated workflows and auto discovery. Tickets lifecycle can be managed using proper fulfillment and approvals.
 
+- **Vanity URL Support**: Added support for vanity URL redirection in budget email alerts. Earlier, alerts for customers using vanity URLs redirected to app.harness.io, which was invalid. They now correctly redirect to the customer’s vanity URL. [CCM-25920]
+
 ### Fixed Issues
 
 - **Bar Chart Fix**: The Harness CCM Overview page bar chart duplicated Azure costs due to missing filters for actual vs amortised values, and the issue was resolved by fetching azureCostType from the Active Spend API and applying it as a condition. [CCM-23539]
