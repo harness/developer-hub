@@ -24,8 +24,14 @@ Pipeline Insights offers a comprehensive set of data fields that organizations c
 
 ## Overview
 
+:::note
+The Step Executions explore has been deprecated. Please use Step Executions v2 instead.
+
+Dashboards using the old Step Executions explore will continue to function; however, we strongly recommend switching to Step Executions v2, which displays all executed steps rather than only six selected steps.
+:::
+
 Pipeline Insights provides three main data explores:
-- **Pipeline Executions**: High-level pipeline run data
+- **Pipeline Executions v2**: High-level pipeline run data
 - **Stage Executions**: Individual stage performance within pipelines  
 - **Step Executions**: Granular step-level execution details
 
