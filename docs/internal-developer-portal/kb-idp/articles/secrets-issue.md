@@ -1,5 +1,7 @@
 ---
-title: Workaround if user token is revealed in plaintext in Workflows using `ui:widget:password`
+title: Mask Tokens in Workflows 
+redirect_from:
+- /kb/internal-developer-portal/articles/secrets-issue
 ---
 
 ## Context
