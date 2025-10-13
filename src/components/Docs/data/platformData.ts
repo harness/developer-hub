@@ -100,7 +100,7 @@ export const docsCards: CardSections = [
         title: "IDP",
         module: MODULES.idp,
         description: "Internal Developer Portal onboarding guide",
-        link: "/docs/internal-developer-portal/get-started",
+        link: "/docs/internal-developer-portal/overview",
       },
       {
         title: "AASP",
