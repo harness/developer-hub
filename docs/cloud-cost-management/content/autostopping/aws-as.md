@@ -72,15 +72,24 @@ The table below shows the resources supported by AutoStopping and the appropriat
 
 <DocImage path={require('/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-rules/static/aws-lb.png')} width="50%" height="50%" title="Click to view full size image" />
 
-1. In the AutoStopping Rules page, click **Load Balancers** in the top right
+1. In the AutoStopping Rules page, click **Load Balancers** in the top right. Please refer to offcial [AWS documentation for details](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html).
 2. Enter a name and select **AWS** in **Cloud Provider**
 3. Choose a cloud connector or create a [new one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws). 
-4. Enter **Load Balancer Configuration**.
-   - Choose access type as **Internal** or **External**
-   - Select the AWS region for deployment
-   - Choose an SSL certificate
-   - Select the VPC for deployment
-   - Choose appropriate security groups
+4. Enter **Load Balancer Configuration**:
+
+   - **Access Type**: Choose **Internal** (for private network access within your VPC) or **External** (for public internet access). Internal load balancers are ideal for backend services, while external load balancers are necessary for user-facing applications.
+   
+   - **Region**: Select the AWS region where your resources are located. This must match the region where your target EC2 instances or ECS services are running.
+   
+   - **SSL Certificate**: Choose an existing certificate from AWS Certificate Manager or create a new one for HTTPS connections. This is required for secure HTTPS traffic and helps establish trust with your users.
+   
+   - **VPC**: Select the Virtual Private Cloud where your target instances are running. The load balancer must be in the same VPC as the resources it will manage.
+   
+   - **Security Groups**: Choose security groups that allow appropriate traffic (HTTP/HTTPS) to your load balancer. These act as a virtual firewall controlling which traffic can reach your load balancer and subsequently your instances.
+   
+   :::tip
+   For optimal security, configure your security groups to allow only necessary traffic on required ports (typically 80 for HTTP and 443 for HTTPS).
+   :::
 
 7. Click **Save Load Balancer**
 
