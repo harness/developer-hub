@@ -17,7 +17,7 @@ If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Ov
 
 **IDP 2.0** introduces granular RBAC across different IDP resources like Catalog, Workflows, etc., which means you can now control who can view or edit your IDP resources. **Role-based access control (RBAC)** lets you define who can access your resources and what actions they can perform on them. With this, Harness IDP introduces **scope-aware permissions** aligned with Harness Projects, Organizations, and Account.
 
-To learn more about the entities, permissions, and different scopes we've introduced with IDP 2.0, please refer to the [Data Model](/docs/internal-developer-portal/catalog/data-model.md) here. To learn more about configuring Harness RBAC, visit [Configure RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#configure-rbac-in-harness).
+To learn more about the entities, permissions, and different scopes we've introduced with IDP 2.0, please refer to the [Data Model](/docs/internal-developer-portal/catalog/data-model/data-model.md) here. To learn more about configuring Harness RBAC, visit [Configure RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#configure-rbac-in-harness).
 
 
 ![](./static/data-model.png)
