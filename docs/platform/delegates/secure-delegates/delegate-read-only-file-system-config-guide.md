@@ -1,7 +1,8 @@
 ---
 title: Running Harness Delegate on a Read-Only File System
-description: How to configure the Harness Delegate to run on a read-only file system
-# sidebar_position: 40
+description: Learn how to configure Harness delegates for read-only file systems using writable volumes for Kubernetes, Helm, and Docker deployments.
+sidebar_label: Delegate on a Read-Only File System
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

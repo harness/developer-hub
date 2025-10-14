@@ -991,9 +991,6 @@ If you omit the `namespace` key and value from a manifest in your Service Defi
 
 Kubernetes deployments in Harness give you more built-in control when it comes to namespace consistency. If used correctly, you can prevent users from deploying resources into namespaces other than the one defined in the Infrastructure.
 
-:::note
-Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 This feature requires delegate version `856xx` or later.
 :::
 

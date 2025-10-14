@@ -17,16 +17,16 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
 :::info
 
-* This topic assumes that you are familiar with how to implement SSL in Kubernetes. General information about implementing SSL is outside the scope of this topic.
-* With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Kaniko reads certificates from `/kaniko/ssl/certs/additional-ca-cert-bundle.crt`.
-* Harness uses a UBI image for the Git Clone step. UBI reads certificates from `/etc/ssl/certs/ca-bundle.crt`.
-* Different base images use different paths as their default certificate location. For example, Alpine images use the path `/etc/ssl/certs/ca-certificates.crt`. For other images, make sure you verify the default certificate path.
+- This topic assumes that you are familiar with how to implement SSL in Kubernetes. General information about implementing SSL is outside the scope of this topic.
+- With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Kaniko reads certificates from `/kaniko/ssl/certs/additional-ca-cert-bundle.crt`.
+- Harness uses a UBI image for the Git Clone step. UBI reads certificates from `/etc/ssl/certs/ca-bundle.crt`.
+- Different base images use different paths as their default certificate location. For example, Alpine images use the path `/etc/ssl/certs/ca-certificates.crt`. For other images, make sure you verify the default certificate path.
 
 :::
 
 :::warning
 
-Custom certificates or self-signed certificates are only supported for linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work. 
+Custom certificates or self-signed certificates are only supported for linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work.
 
 :::
 
@@ -55,8 +55,8 @@ Custom certificates or self-signed certificates are only supported for linux nod
 
    In the delegate pod, do the following:
 
-     1. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted.
-     2. Mount your certificate files to `/opt/harness-delegate/ca-bundle`.
+   1. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted.
+   2. Mount your certificate files to `/opt/harness-delegate/ca-bundle`.
 
    To mount the secret, go to the delegate `Deployment` YAML and update `volumeMounts` and `volumes`. For an example, expand the section below.
 
@@ -68,81 +68,77 @@ Custom certificates or self-signed certificates are only supported for linux nod
    <summary>YAML example: Mount the SSL certificate</summary>
 
    ```yaml
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        labels:
-          harness.io/name: abc-ca-kubernetes-delegate
-        name: abc-ca-kubernetes-delegate
-        namespace: abc-ca-kubernetes-delegate
-      spec:
-        replicas: 1
-        minReadySeconds: 120
-        selector:
-          matchLabels:
-            harness.io/name: abc-ca-kubernetes-delegate
-        template:
-          metadata:
-            labels:
-              harness.io/name: abc-ca-kubernetes-delegate
-            annotations:
-              # ...
-          spec:
-            terminationGracePeriodSeconds: 600
-            restartPolicy: Always
-            containers:
-            - image: harness/delegate:yy.mm.verno
-              imagePullPolicy: Always
-              name: delegate
-              securityContext:
-                # ...
-              ports:
-                # ...
-              resources:
-                # ...
-              livenessProbe:
-                # ...
-              startupProbe:
-                # ...
-              envFrom:
-                # ...
-              env:
-                # ...
-              volumeMounts:
-              ### ADD THE VOLUME MOUNT HERE
-              - name: certvol
-                mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-                subPath: ca.bundle
-            volumes:
-            ### ADD THE VOLUME HERE
-            - name: certvol
-              secret:
-                secretName: addcerts
-                items:
-                  - key: ca.bundle
-                    path: ca.bundle
-
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     labels:
+       harness.io/name: abc-ca-kubernetes-delegate
+     name: abc-ca-kubernetes-delegate
+     namespace: abc-ca-kubernetes-delegate
+   spec:
+     replicas: 1
+     minReadySeconds: 120
+     selector:
+       matchLabels:
+         harness.io/name: abc-ca-kubernetes-delegate
+     template:
+       metadata:
+         labels:
+           harness.io/name: abc-ca-kubernetes-delegate
+         annotations:
+           # ...
+       spec:
+         terminationGracePeriodSeconds: 600
+         restartPolicy: Always
+         containers:
+           - image: harness/delegate:yy.mm.verno
+             imagePullPolicy: Always
+             name: delegate
+             securityContext:
+               # ...
+             ports:
+               # ...
+             resources:
+               # ...
+             livenessProbe:
+               # ...
+             startupProbe:
+               # ...
+             envFrom:
+               # ...
+             env:
+               # ...
+             volumeMounts:
+               ### ADD THE VOLUME MOUNT HERE
+               - name: certvol
+                 mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                 subPath: ca.bundle
+         volumes:
+           ### ADD THE VOLUME HERE
+           - name: certvol
+             secret:
+               secretName: addcerts
+               items:
+                 - key: ca.bundle
+                   path: ca.bundle
    ```
 
    </details>
 
    Both CI build pods and the SCM client on the delegate support this method.
-   
+
    :::info
 
-   * Custom certificates or self-signed certificates are only supported for Linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work.
-  
-   * If you're using `DESTINATION_CA_PATH` or `CI_MOUNT_VOLUMES` to provide self-signed certificates, starting with delegate release **XXX**, Harness now **appends** your custom certs to the system trust store instead of replacing them. This behavior is controlled by the feature flag `CI_APPEND_CERTS`.
+   - Custom certificates or self-signed certificates are only supported for Linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work.
 
-   * Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
+   - Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
 
-   * If you override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes *all* certificates required by the pipelines that will use this build infrastructure.
+   - If you override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes _all_ certificates required by the pipelines that will use this build infrastructure.
 
    <!-- * To save time and minimize the number of default certificates you need to declare, you can enable the auto-mount default certificates beta feature. This feature automatically mounts certificates for certain step containers, and you no longer need to declare the certs path for the built-in steps in addition to your own self-signed certificates. Currently, auto-mounting default certificates is behind the feature flag `CI_DEFAULT_CERTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.-->
    <!-- only Git clone and kaniko steps -->
 
    :::
-
 
 3. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 
@@ -150,7 +146,7 @@ Custom certificates or self-signed certificates are only supported for linux nod
 
 :::important
 
-This workflow is applicable only if you're using a self-hosted registry to store your container images. For all other workflows, go to [Enable self-signed certificates](#enable-self-signed-certificates). 
+This workflow is applicable only if you're using a self-hosted registry to store your container images. For all other workflows, go to [Enable self-signed certificates](#enable-self-signed-certificates).
 
 :::
 
@@ -177,9 +173,9 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
    In the delegate pod, do the following:
 
-      1. Add `DESTINATION_CA_PATH` to the environment.
-      2. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted.
-      3. Mount your certificate files to `/opt/harness-delegate/ca-bundle`.
+   1. Add `DESTINATION_CA_PATH` to the environment.
+   2. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted.
+   3. Mount your certificate files to `/opt/harness-delegate/ca-bundle`.
 
    To add `DESTINATION_CA_PATH` and mount the secret, go to the delegate `Deployment` YAML and update `env`, `volumeMounts`, and `volumes`. For an example, expand the section below.
 
@@ -187,61 +183,61 @@ This workflow is applicable only if you're using a self-hosted registry to store
    <summary>YAML example: Add `DESTINATION_CA_PATH` and mount the SSL certificate</summary>
 
    ```yaml
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        labels:
-          harness.io/name: abc-ca-kubernetes-delegate
-        name: abc-ca-kubernetes-delegate
-        namespace: abc-ca-kubernetes-delegate
-      spec:
-        replicas: 1
-        minReadySeconds: 120
-        selector:
-          matchLabels:
-            harness.io/name: abc-ca-kubernetes-delegate
-        template:
-          metadata:
-            labels:
-              harness.io/name: abc-ca-kubernetes-delegate
-            annotations:
-              # ...
-          spec:
-            terminationGracePeriodSeconds: 600
-            restartPolicy: Always
-            containers:
-            - image: harness/delegate:yy.mm.verno
-              imagePullPolicy: Always
-              name: delegate
-              securityContext:
-                # ...
-              ports:
-                # ...
-              resources:
-                # ...
-              livenessProbe:
-                # ...
-              startupProbe:
-                # ...
-              envFrom:
-                # ...
-              env:
-              ### ADD DESTINATION_CA_PATH HERE
-              - name: DESTINATION_CA_PATH
-                value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
-              volumeMounts:
-              ### ADD THE VOLUME MOUNT HERE
-              - name: certvol
-                mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-                subPath: ca.bundle
-            volumes:
-            ### ADD THE VOLUME HERE
-            - name: certvol
-              secret:
-                secretName: addcerts
-                items:
-                  - key: ca.bundle
-                    path: ca.bundle
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     labels:
+       harness.io/name: abc-ca-kubernetes-delegate
+     name: abc-ca-kubernetes-delegate
+     namespace: abc-ca-kubernetes-delegate
+   spec:
+     replicas: 1
+     minReadySeconds: 120
+     selector:
+       matchLabels:
+         harness.io/name: abc-ca-kubernetes-delegate
+     template:
+       metadata:
+         labels:
+           harness.io/name: abc-ca-kubernetes-delegate
+         annotations:
+           # ...
+       spec:
+         terminationGracePeriodSeconds: 600
+         restartPolicy: Always
+         containers:
+           - image: harness/delegate:yy.mm.verno
+             imagePullPolicy: Always
+             name: delegate
+             securityContext:
+               # ...
+             ports:
+               # ...
+             resources:
+               # ...
+             livenessProbe:
+               # ...
+             startupProbe:
+               # ...
+             envFrom:
+               # ...
+             env:
+               ### ADD DESTINATION_CA_PATH HERE
+               - name: DESTINATION_CA_PATH
+                 value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+             volumeMounts:
+               ### ADD THE VOLUME MOUNT HERE
+               - name: certvol
+                 mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                 subPath: ca.bundle
+         volumes:
+           ### ADD THE VOLUME HERE
+           - name: certvol
+             secret:
+               secretName: addcerts
+               items:
+                 - key: ca.bundle
+                   path: ca.bundle
    ```
 
    </details>
@@ -250,9 +246,9 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
    :::warning
 
-   * Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
+   - Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
 
-   * If you override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes *all* certificates required by the pipelines that will use this build infrastructure.
+   - If you override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes _all_ certificates required by the pipelines that will use this build infrastructure.
 
    <!-- * To save time and minimize the number of default certificates you need to declare, you can enable the auto-mount default certificates beta feature. This feature automatically mounts certificates for certain step containers, and you no longer need to declare the certs path for the built-in steps in addition to your own self-signed certificates. Currently, auto-mounting default certificates is behind the feature flag `CI_DEFAULT_CERTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.-->
    <!-- only Git clone and kaniko steps -->
@@ -276,32 +272,32 @@ This workflow is applicable only if you're using a self-hosted registry to store
    /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt
    ```
 
-   The `CI_MOUNT_VOLUMES` list must include *all* certificates that your build containers need to interact with external services.
+   The `CI_MOUNT_VOLUMES` list must include _all_ certificates that your build containers need to interact with external services.
 
    ```yaml
-         spec:
-           containers:
-             - image: harness/delegate:yy.mm.verno
-               # ...
-               env:
-               # ADD ADDITIONAL_CERTS_PATH AND CI_MOUNT_VOLUMES HERE
-                 - name: ADDITIONAL_CERTS_PATH
-                   value: /tmp/ca.bundle
-                 - name: CI_MOUNT_VOLUMES
-                   value: "/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
-               volumeMounts:
-               # ADD VOLUME MOUNT HERE
-                 - name: certvol
-                   mountPath: /tmp/ca.bundle
-                   subPath:  ca.bundle
-           volumes:
-             # ADD VOLUME HERE
-             - name: certvol
-               secret:
-                 secretName: addcerts
-                 items:
-                 - key: ca.bundle
-                   path: ca.bundle
+   spec:
+     containers:
+       - image: harness/delegate:yy.mm.verno
+         # ...
+         env:
+           # ADD ADDITIONAL_CERTS_PATH AND CI_MOUNT_VOLUMES HERE
+           - name: ADDITIONAL_CERTS_PATH
+             value: /tmp/ca.bundle
+           - name: CI_MOUNT_VOLUMES
+             value: "/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+         volumeMounts:
+           # ADD VOLUME MOUNT HERE
+           - name: certvol
+             mountPath: /tmp/ca.bundle
+             subPath: ca.bundle
+     volumes:
+       # ADD VOLUME HERE
+       - name: certvol
+         secret:
+           secretName: addcerts
+           items:
+             - key: ca.bundle
+               path: ca.bundle
    ```
 
    </details>
@@ -346,10 +342,11 @@ Here, `custom-cr-pem` is the pem file name and `1667255857` is the random hash t
 The name is sanitized to comply with Kubernetes naming conventions. If the total length exceeds 63 characters, it is trimmed from the end to ensure compliance.
 
 :::info note
+
 1. Previously, if the characters exceeded the limit, users had to manually shorten the file or stage names to avoid errors. Now, this change for automatic trimming of secret names beyond 63 characters is available starting from **delegate release 821xx**.
 2. This behavior applies only to **Kubernetes architecture**.
 3. To avoid potential failures in Kubernetes environments, ensure that all secret names are lowercase. Starting from **delegate release 825xx**, any uppercase characters in the secret name are automatically converted to lowercase to ensure compatibility with Kubernetes naming conventions.
-:::
+   :::
 
 ## Using Dockerfile builds with self-signed certificates (BuildKit-specific)
 
@@ -428,20 +425,21 @@ Here is an example `Run` step that uses CA certs already mounted into the Delega
 ```
 
 :::note
+
 - Certs should be mounted ahead of time (e.g., through Harness secrets or volume mounts).
 
 - This approach supports multiple PEM files and ensures both Docker and BuildKit trust the self-signed certs.
 
 - You must ensure that the sharedPaths include both cert directories so that they persist across steps.
-:::
+  :::
 
 This ensures that BuildKit inside your pipeline trusts the self-signed certificate used by your private registry.
 
 ## Troubleshoot Kubernetes cluster build infrastructures
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including use of self-signed certificates, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including use of self-signed certificates, such as:
 
-* [SCM service connection issues](/kb/continuous-integration/continuous-integration-faqs/#git-connector-scm-connection-errors-when-using-self-signed-certificates)
-* [How do I make internal CA certs available to the delegate pod?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-make-internal-ca-certs-available-to-the-delegate-pod)
-* [Where should I mount internal CA certs on the build pod?](/kb/continuous-integration/continuous-integration-faqs/#where-should-i-mount-internal-ca-certs-on-the-build-pod)
-* [Certificate volumes aren't mounted to the build pod](/kb/continuous-integration/continuous-integration-faqs/#certificate-volumes-arent-mounted-to-the-build-pod)
+- [SCM service connection issues](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#git-connector-scm-connection-errors-when-using-self-signed-certificates)
+- [How do I make internal CA certs available to the delegate pod?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-make-internal-ca-certs-available-to-the-delegate-pod)
+- [Where should I mount internal CA certs on the build pod?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#where-should-i-mount-internal-ca-certs-on-the-build-pod)
+- [Certificate volumes aren't mounted to the build pod](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#certificate-volumes-arent-mounted-to-the-build-pod)

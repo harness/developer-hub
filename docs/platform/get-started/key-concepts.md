@@ -1,6 +1,6 @@
 ---
-title: Key concepts
-description: Key concepts of the Harness Platform
+title: Key Concepts
+description: Learn key concepts of the Harness Platform including accounts, organizations, projects, delegates, connectors, pipelines, and RBAC.
 sidebar_position: 1
 helpdocs_topic_id: hv2758ro4e
 helpdocs_category_id: kx4hs8bn38

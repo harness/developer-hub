@@ -8,7 +8,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Module Registry Testing",
         description: "Automate the validation and testing of modules in isolated environments before publishing, ensuring only high-quality, compliant modules are available in the private Module Registry.",
-        link: "/docs/infra-as-code-management/iacm-features/module-registry/module-registry-testing",
+        link: "/docs/infra-as-code-management/registry/module-registry/module-registry-testing",
       },
       {
         tag: [{ value: "Simplify Onboarding" }],

@@ -1,7 +1,8 @@
 ---
 title: Upgrade Legacy Delegate to Delegate
-description: Upgrade legacy delegate
-sidebar_position: 9
+description: Learn how to upgrade from deprecated legacy delegate to the latest delegate image with step-by-step instructions.
+sidebar_label: Upgrade Legacy Delegate
+sidebar_position: 7
 ---
 
 :::warning Delegate-Legacy End of Support (EOS) notice

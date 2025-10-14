@@ -9,6 +9,8 @@ import DocsButton from "../components/DocsButton";
 import DocsTag from "../components/DocsTag";
 import Telemetry from "../components/Telemetry";
 import HarnessApiData from "../components/HarnessApiData";
+import Tooltip from "../components/ToolTip/Tooltip";
+import DocTable from "../components/DocTable/DocTable";
 
 export default {
   // Re-use the default mapping
@@ -23,4 +25,6 @@ export default {
   DocsTag: DocsTag,
   Telemetry: Telemetry,
   HarnessApiData: HarnessApiData,
+  Tooltip: Tooltip,
+  DocTable: DocTable,
 };

@@ -9,7 +9,7 @@ After a successful pipeline scan execution, you can view results in the **[Vulne
 
 You can export scan results in three ways:
 
-1. **[Export as CSV from the Vulnerabilities tab](#export-as-csv-from-the-vulnerabilities-tab) (behind feature flag):** Instantly download scan results in CSV format.
+1. **[Export as CSV from the Vulnerabilities tab](#export-as-csv-from-the-vulnerabilities-tab):** Instantly download scan results in CSV format.
 2. **[Export as PDF or CSV from the Dashboard](#export-as-pdf-or-csv-from-the-dashboard):** Open the [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary) to download results in PDF or CSV format.
 3. **[Automated export via pipeline](#automated-export-using-a-pipeline-run-step):** Configure a pipeline with a **Run** step to automatically generate and email reports.
 
@@ -17,9 +17,6 @@ You can export scan results in three ways:
 
 In the **Vulnerabilities** tab of a pipeline execution, select **Download CSV** to instantly export the scan results in CSV format.
 
-:::note
-This is a new feature currently behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY` and will be generally available soon. If you’d like to try it before general availability, please contact Harness Support to enable it for your account.
-:::
 
 <DocImage path={require('/docs/security-testing-orchestration/view-security-test-results/static/download-csv-vulnerability-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -57,18 +54,9 @@ This is a new feature currently behind the feature flag `STO_DOWNLOAD_SCAN_SUMMA
 
 ## Export as PDF or CSV from the Dashboard
 
-To export scan results from the Dashboard, you need to go to the [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary). You can find the dashboard by [navigating to the Dashboards section](https://developer.harness.io/docs/platform/dashboards/dashboards-overview/#navigate-to-dashboards) in your Harness account.
-
-:::info
-If you have the feature flag `STO_DOWNLOAD_SCAN_SUMMARY` enabled, you can also access the dashboard with all your results by clicking on the **View in Dashboard** option in the **Vulnerabilities** tab.
-
-<details>
-<summary>View in Dashboard option in Vulnerabilities tab</summary>
+To export scan results from the Dashboard, you need to go to the [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary). You can find the dashboard by [navigating to the Dashboards section](https://developer.harness.io/docs/platform/dashboards/dashboards-overview/#navigate-to-dashboards) in your Harness account or you can also access the dashboard by clicking on the **View in Dashboard** option in the **Vulnerabilities** tab.
 
 <DocImage path={require('/docs/security-testing-orchestration/view-security-test-results/static/view-dashboard-vulnerability-tab.png')} width="100%" height="100%" title="Click to view full size image" />
-
-</details>
-:::
 
 Once you are on the dashboard, you need to filter the results by your pipeline execution ID. To get the execution ID, go to your pipeline execution, and copy the ID from the URL. For example, in the URL `https://app.harness.io/ng/account/ACCOUNT_ID/module/MODULE/orgs/ORG/projects/PROJECT/pipelines/PIPELINE/executions/EXECUTION_ID/pipeline`, the value after `/executions/` is the **Execution ID**.
 

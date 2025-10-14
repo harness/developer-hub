@@ -60,6 +60,27 @@ export const moduleList: CardItem[] = [
     link: 'docs/cloud-cost-management',
   },
   {
+    title: 'Application & API Security Posture',
+    module: MODULES.asp,
+    icon: "img/icon-api-security-posture.svg",
+    description: <>Discover App/APIs and assess risks.</>,
+    link: 'docs/appsec-security-posture',
+  },
+  {
+    title: 'Application & API Runtime Protection',
+    module: MODULES.arp,
+    icon: "img/icon-api-runtime-protection.svg",
+    description: <>Protect App/APIs and block attacks.</>,
+    link: 'docs/appsec-runtime-protection',
+  },
+  {
+    title: 'Application & API Security Testing',
+    module: MODULES.ast,
+    icon: "img/icon-api-security-testing.svg",
+    description: <>Run security tests and detect issues.</>,
+    link: 'docs/appsec-security-testing',
+  },
+  {
     title: 'Security Testing Orchestration',
     module: MODULES.sto,
     icon: "img/icon_sto.svg",

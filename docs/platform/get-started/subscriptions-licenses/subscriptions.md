@@ -1,7 +1,8 @@
 ---
-title: View and manage subscriptions
-description: View and manage your Harness subscriptions and licenses.
-sidebar_position: 20
+title: Subscription Overview and Management
+description: Learn how to view and manage your Harness subscriptions and licenses, including updates, usage tracking, and license details.
+sidebar_label: Manage Subscriptions
+sidebar_position: 1
 redirect_from:
   - /docs/platform/get-started/pl-subscription-mgmt
   - /docs/platform/get-started/subscriptions
@@ -229,4 +230,4 @@ For more information about specific module subscriptions and licenses, go to:
 
 ## Cloud Marketplace offerings
 
-For information about Cloud Marketplace subscriptions, go to [Cloud marketplace offerings](/docs/category/cloud-marketplace-offerings).
+For information about Cloud Marketplace subscriptions, go to [Cloud marketplace offerings](/docs/category/cloud-marketplace).

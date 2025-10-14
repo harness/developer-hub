@@ -112,3 +112,13 @@ Read more about [FOCUS](https://focus.finops.org/focus-specification/v1-1/).
 1. Navigate to **BI Dashboards** → **+Dashboard**
 2. Click on **Add Widget** and choose **Unified**
 3. Use all the listed fields in filters, group-bys, or as columns in your reports
+
+
+## FAQs
+
+<details>
+<summary>How can we identify unused portions of Reserved Instances (RI) in Azure billing data?</summary>
+By filtering on ChargeType = UnusedReservation and PricingModel = Reservation, then summing the Quantity and Cost columns, you can calculate the unused reservation portion and its cost.
+</details>
+
+

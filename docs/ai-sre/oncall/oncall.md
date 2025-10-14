@@ -75,6 +75,8 @@ Harness AI SRE's on-call management module provides a unified platform for manag
 - Predictive analytics for on-call load
 - Smart escalation path recommendations
 
+<DocImage path={require('./static/optin-sms.png')} width="95%" height="95%" title="Twilio SMS" />
+
 ## Benefits
 
 - **Reduced Response Time**: Eliminate tool switching and streamline incident management

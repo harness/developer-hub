@@ -2,6 +2,9 @@
 title: Overview
 description: Get an overview of Harness CV.
 sidebar_position: 10
+redirect_from:
+  - /docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview/
+  - /docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/instana-verification-overview/
 ---
 
 # Harness Continuous Verification (CV) overview
@@ -63,7 +66,7 @@ Harness CV monitors health trend deviations using logs and metrics obtained from
 
 ## Further reading
 
-- To understand more about Harness CV, go to the [knowledge base](/kb/continuous-delivery).
+- To understand more about Harness CV, go to the [knowledge base](/docs/category/knowledge-base-article).
 
 
 

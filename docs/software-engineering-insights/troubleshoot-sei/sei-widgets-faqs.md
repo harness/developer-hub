@@ -2,6 +2,8 @@
 title: Metrics FAQs
 description: Frequently asked questions related to SEI widgets & metrics
 sidebar_position: 60
+redirect_from:
+  - /kb/software-engineering-insights/sei-faqs/sei-reports-faqs
 ---
 
 This page includes FAQs and troubleshooting information for SEI widgets.
@@ -394,3 +396,9 @@ For reopened tickets, SEI recalculates response and resolution timers from the l
 ### Is it possible to automatically archive or suppress hygiene misses from very old tickets that are no longer relevant?
 
 While hygiene reports don't auto-archive misses, you can configure date-based filters (e.g., tickets created or updated within the last 90 days) to exclude stale issues from impacting your active hygiene scores.
+
+### What is the usage of OU UNIT OVERRIDES field in the report settings?
+
+The OU UNIT OVERRIDES field in the report settings allows you to override filters defined at the Collections scope. This means that the report will display data based solely on the report filters, ignoring the Collection filter.
+
+For example, suppose the Collection filter specifies that the Assignee must equal a certain value (e.g., a specific user). If you select "Assignee" in the "OU UNIT OVERRIDES" field, it will override the Collection filter. As a result, the report will display data for all users, not just the user specified in the Collection filter.

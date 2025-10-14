@@ -1,5 +1,5 @@
 ---
-title: Onboarding guide
+title: Onboarding Guide
 description: A self-service onboarding guide for Harness Platform
 sidebar_position: 2
 redirect_from:

@@ -83,6 +83,10 @@ In addition to this method, you can also deploy the Helm chart without adding yo
 
 See [Deploy helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
 
+### Can I inject secrets through expressions using the helm template command flag for Kubernetes Steps?
+
+Yes. You can inject secrets by providing expressions through the helm template command flag in kubernetes steps but this capability is only supported with Delegate version 25.06.86203 and above. 
+
 ### Can I run Kubernetes jobs?
 
 Yes. In Harness Kubernetes deployments, you define jobs in the Harness Service **Manifests**. Next you add the Apply step to your Harness workflow to execute the job.

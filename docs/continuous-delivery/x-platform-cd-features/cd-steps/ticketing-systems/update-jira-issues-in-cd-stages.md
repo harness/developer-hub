@@ -19,7 +19,7 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 * Harness supports only Jira fields of type `User`, `Option`, `Array`, `Any`, `Number`, `Date`, and `String`.  For example, [multi value](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/) fields to allow users to select multiple options from a drop-down list.
 * Harness does not integrate with Jira fields that manage issue links or attachments. 
-* You can add unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/).
+* You can add unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-cascading-fields-jira).
 
 
 ## Add a Jira Update step
