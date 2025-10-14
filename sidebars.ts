@@ -3495,7 +3495,6 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Environment Management',
-          className: 'sidebar-item-new',
           link: {
             type: 'generated-index',
           },
