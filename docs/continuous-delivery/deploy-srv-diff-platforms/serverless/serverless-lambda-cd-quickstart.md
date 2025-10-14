@@ -231,6 +231,8 @@ Serverless V4 CLI requires authentication. This means that any CLI based scripts
 
 It is not recommended to switch to Serverless V4 for existing deployments using Serverless V3.
 
+For limitations when using Serverless V4, including custom config file restrictions, go to [Limitations](#limitations).
+
 ### Containerized step images
 
 ### Old Images
@@ -1409,6 +1411,29 @@ functions:
   hello:
     image: <+artifact.image>
 ```
+
+## Limitations
+
+### Custom config file limitation in Serverless V4
+
+When using Serverless Framework v4, you cannot use a custom config file (via the `--config` argument or **Serverless Config File Path** setting) and keep a `serverless.yml` file in the root directory at the same time.
+
+**Issue description:**
+
+When you provide a custom serverless manifest file using the `--config` argument (or the **Serverless Config File Path** setting in Harness), the Serverless v4 CLI continues to attempt to access the default `serverless.yml` file if it exists in the same directory. If the default `serverless.yml` file has an invalid structure, the deployment fails with a JSON parsing error, even though a valid custom config file was specified.
+
+**Workaround:**
+
+To use a custom config file with Serverless Framework v4, ensure that you do not have a `serverless.yml` file in the same directory as your custom config file. Remove or rename the default `serverless.yml` file before running any serverless commands.
+
+**Example scenario:**
+
+- You have a custom config file: `serverless-custom.yml`
+- You specify it using **Serverless Config File Path** in Harness or `--config serverless-custom.yml`
+- If `serverless.yml` also exists in the same directory with invalid content, the deployment will fail
+- **Solution:** Delete or move the `serverless.yml` file from the directory
+
+This is a known behavior of the Serverless Framework v4 and not a Harness-specific issue.
 
 ## FAQs
 
