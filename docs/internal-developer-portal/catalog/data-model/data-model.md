@@ -78,7 +78,7 @@ A **System** is a high-level organizational unit that groups together related co
 
 In Harness IDP 2.0, Systems play a crucial role in organizing your catalog. Components belong to Systems, and Systems can belong to Domains. This hierarchical structure makes it easier to manage large catalogs with many interconnected components.
 
-For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/system-entity.md) here.
+For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/data-model/system-entity.md) here.
 
 ## Harness Platform Entities [IDP 2.0]
 

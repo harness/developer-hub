@@ -11,7 +11,7 @@ redirect_from:
 
 ## Introduction
 
-In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card) and track the values ingested using [Scorecard](https://developer.harness.io/docs/internal-developer-portal/scorecards/custom-data-sources).
+In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/manage-catalog/catalog-ui.md#adding-an-additional-info-card) and track the values ingested using [Scorecard](https://developer.harness.io/docs/internal-developer-portal/scorecards/custom-data-sources).
 
 <DocImage path={require('./static/ccp-usecase.png')} />
 
@@ -19,7 +19,7 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 
 ## Pre-requisites
 
-1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/manage-catalog.md) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/tutorial-catalog-ingestion.yaml) for this tutorial.
+1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog.md) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/tutorial-catalog-ingestion.yaml) for this tutorial.
 
 ## Add a new metadata
 
@@ -212,7 +212,7 @@ In case you want to display the same information you have ingested on your Overv
 
 ![](./static/add-additional-info-card.png)
 
-2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
+2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/manage-catalog/catalog-ui.md#adding-an-additional-info-card)
 
 ![](./static/additional-info-card-new.png)
 

@@ -191,8 +191,8 @@ These fields define the entity's scope. For project-scoped entities, both fields
 If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can easily convert them to the new Harness-native data model schema. There are two ways to perform this conversion:
 
 1. **Using the Harness IDP UI:**
-   Navigate to the **[Harness IDP UI](/docs/internal-developer-portal/catalog/manage-catalog.md#harness-idp-ui)** and open the **YAML view** while creating an entity. Paste your legacy Backstage Catalog YAML, and the system will automatically generate the corresponding Harness-native Catalog YAML.
-   Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog.md#catalog-yaml)**.
+   Navigate to the **[Harness IDP UI](/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog.md#harness-idp-ui)** and open the **YAML view** while creating an entity. Paste your legacy Backstage Catalog YAML, and the system will automatically generate the corresponding Harness-native Catalog YAML.
+   Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog.md#catalog-yaml)**.
 
 2. **Using the YAML Conversion API:**
    To streamline migration, we've also introduced an API that converts Backstage Catalog YAML to the Harness-native format. [Read more in the IDP 2.0 migration guide.](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
