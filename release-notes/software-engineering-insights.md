@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-10-03T10:00:10
+date: 2025-10-15T10:00:10
 sidebar_position: 15
 ---
 
@@ -19,6 +19,25 @@ These release notes describe recent changes to Harness Software Engineering Insi
 :::
 
 ## October 2025
+
+### [New Enhancement] Harness RBAC support in SEI 2.0
+---
+#### 2025-10-15
+
+You can now manage SEI 2.0 permissions directly through Harness Role-Based Access Control (RBAC). This enhancement enables consistent, centralized access management across Harness product modules.
+
+With Harness RBAC in SEI 2.0:
+
+* You can assign **SEI Admin** roles at the account level for central configuration of integrations, profiles, and data definitions.
+* You can grant **SEI Team** Manager roles at the project level to allow local management of team hierarchies, developer records, and metrics targets.
+* You can provide **SEI Viewer** roles to stakeholders who need read-only visibility into project insights and KPIs.
+
+These changes reduce the need for manual group creation and make it easier to apply consistent, least-privilege access control in SEI 2.0.
+
+#### Related documentation
+
+- [Harness RBAC for SEI 2.0](/docs/software-engineering-insights/harness-sei/get-started/rbac)
+- [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness/)
 
 ### [New Feature] Automatch Developer Identities in SEI 2.0
 ---
