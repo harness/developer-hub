@@ -40,7 +40,7 @@ For more information about managing secrets in Harness, go to:
 
 * [Secrets documentation](/docs/category/secrets)
 * [Authenticate GCP secrets in scripts](./authenticate-gcp-key-in-run-step)
-* [Override secrets in settings.xml at runtime](/kb/continuous-integration/articles/maven-settings-xml)
+* [Override secrets in settings.xml at runtime](/docs/continuous-integration/ci-articles-faqs/articles/maven-settings-xml)
 
 ## Tokens and keys
 
@@ -70,6 +70,6 @@ OIDC is also available in other areas of Harness, such as in the [platform-agnos
 
 ## FAQ and troubleshooting
 
-* [Can I reference a secret type output variable exported from a CD custom stage in a CI stage?](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#can-i-reference-a-secret-type-output-variable-exported-from-a-cd-or-custom-stage-in-ci-stage)
-* [Secrets with line breaks and shell-interpreted characters](/kb/continuous-integration/continuous-integration-faqs/#secrets-with-line-breaks-and-shell-interpreted-special-characters)
-* [How to establish a VPN connection within a CI pipeline?](/kb/continuous-integration/continuous-integration-faqs#how-to-establish-a-vpn-connection-within-a-ci-pipeline)
+* [Can I reference a secret type output variable exported from a CD custom stage in a CI stage?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-reference-a-secret-type-output-variable-exported-from-a-cd-or-custom-stage-in-ci-stage)
+* [Secrets with line breaks and shell-interpreted characters](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#secrets-with-line-breaks-and-shell-interpreted-special-characters)
+* [How to establish a VPN connection within a CI pipeline?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-to-establish-a-vpn-connection-within-a-ci-pipeline)

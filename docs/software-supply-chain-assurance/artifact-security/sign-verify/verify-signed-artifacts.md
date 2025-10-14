@@ -9,6 +9,11 @@ redirect_from:
 
   - /docs/software-supply-chain-assurance/artifact/verify-signed-artifacts
 
+tags:
+  -  artifact-security
+  -  verify-signed-artifacts
+  -  harness-scs   
+
 ---
 
 

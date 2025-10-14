@@ -8,6 +8,12 @@ redirect_from:
 
   - /docs/software-supply-chain-assurance/artifact/sign-artifacts
 
+tags:
+  -  artifact-security
+  -  sign-artifacts
+  - harness-scs
+
+
 ---
 
 import Tabs from '@theme/Tabs';

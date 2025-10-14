@@ -257,10 +257,10 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 ## Troubleshoot uploading artifacts
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
 
-* [Certificate signed by unknown authority error.](/kb/continuous-integration/continuous-integration-faqs/#upload-artifacts-to-jfrog-step-throws-certificate-signed-by-unknown-authority)
-* [mkdir permission denied when running as non-root.](/kb/continuous-integration/continuous-integration-faqs/#mkdir-permission-denied-when-running-upload-artifacts-to-jfrog-as-non-root)
-* [Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?](/kb/continuous-integration/continuous-integration-faqs/#can-i-run-the-upload-artifacts-to-jfrog-artifactory-step-with-a-non-root-user)
-* [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
-* [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)
+* [Certificate signed by unknown authority error.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#upload-artifacts-to-jfrog-step-throws-certificate-signed-by-unknown-authority)
+* [mkdir permission denied when running as non-root.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#mkdir-permission-denied-when-running-upload-artifacts-to-jfrog-as-non-root)
+* [Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-run-the-upload-artifacts-to-jfrog-artifactory-step-with-a-non-root-user)
+* [Can I send artifacts by email?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-send-emails-from-ci-pipelines)
+* [How do I show content on the Artifacts tab?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-show-content-on-the-artifacts-tab)

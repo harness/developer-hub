@@ -13,10 +13,11 @@ When you run a Harness pipeline, the Harness Delegate makes an anonymous outboun
 By default, Harness uses the built-in Harness Image Docker connector with anonymous access to pull these images from a public Docker Hub container registry. There are four ways you can modify the default behavior for pulling Harness images:
 
 <!-- no toc -->
-* [Pull images anonymously from GAR or ECR.](#pull-images-anonymously-from-gar-or-ecr)
-* [Always use credentials instead of anonymous access.](#configure-harness-to-always-use-credentials-to-pull-harness-images)
-* [Use credentials for specific stages.](#use-credentials-to-pull-harness-images-for-specific-stages)
-* [Pull images from a private registry.](#pull-harness-images-from-a-private-registry)
+
+- [Pull images anonymously from GAR or ECR.](#pull-images-anonymously-from-gar-or-ecr)
+- [Always use credentials instead of anonymous access.](#configure-harness-to-always-use-credentials-to-pull-harness-images)
+- [Use credentials for specific stages.](#use-credentials-to-pull-harness-images-for-specific-stages)
+- [Pull images from a private registry.](#pull-harness-images-from-a-private-registry)
 
 To configure any of these options, you need [permissions](../../role-based-access-control/permissions-reference) to create, edit, and view connectors at the account [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
 
@@ -41,17 +42,17 @@ If you don't want to change the behavior for your entire account, follow the ste
 4. Select **Continue** to go to the **Details** settings.
 5. For **Provider Type** and **URL**, do one of the following:
 
-   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
+   - To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
+   - To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
 
    If you want to change the connector back to Docker Hub, select **Docker Hub** and enter `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Anonymous**. You can use anonymous access to pull Harness images from GAR, ECR, or Docker Hub.
 7. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
-   * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
-   * If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
-   * For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
+   - If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
+   - If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+   - For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
@@ -74,16 +75,16 @@ If you don't want to change the behavior for your entire account, you can [Use c
 4. Select **Continue** to go to the **Details** settings.
 5. For **Provider Type** and **URL**, do one of the following:
 
-   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
-   * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
+   - To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
+   - To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
+   - To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access Docker Hub or GAR, depending on the **Docker Registry URL**. The token needs read, write, and delete permissions.
 7. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
-   * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
-   * If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
-   * For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
+   - If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
+   - If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+   - For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
@@ -112,16 +113,16 @@ If you want to change the behavior for your entire account, you can [configure H
 4. Select **Continue** to go to the **Details** settings.
 5. For **Provider Type** and **URL**, do one of the following:
 
-   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
-   * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
+   - To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
+   - To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
+   - To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access GAR, ECR, or Docker Hub. The token needs **Read, Write, Delete** permissions.
 7. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
-   * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
-   * If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
-   * For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
+   - If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
+   - If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+   - For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
@@ -167,9 +168,9 @@ Create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-
 7. For **Authentication**, select **Username and Password**, and provide a username and token to access your registry. The token needs **Read, Write, Delete** permissions.
 8. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
-   * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
-   * If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
-   * For delegate installation instructions, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+   - If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
+   - If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+   - For delegate installation instructions, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 9. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
@@ -177,9 +178,9 @@ Create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-
 
 10. Configure your pipelines to download Harness images from your private registry. In each **Build** stage where you want to pull from your private registry, go to the [Infrastructure settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure), and select your Docker connector in the **Override Image Connector** field.
 
-   When the pipeline runs, Harness will use the specified connector to download images from your private registry.
+When the pipeline runs, Harness will use the specified connector to download images from your private registry.
 
-   ![](../static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
+![](../static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
 
 ### Authentication Considerations for Amazon ECR Private Repositories
 
@@ -200,16 +201,16 @@ When selecting the connector to use to pull images, Harness follows this hierarc
 
 The end of life could impact you if:
 
-* Your built-in Harness Docker connector (`account.harnessImage`) is configured to use the `app.harness` Docker registry. To avoid errors when the deprecation takes place, modify the target image registry by following the steps in [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
-* You [pull Harness images from a private registry](#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors post end of life, make sure you are pulling images from the [Harness project on GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
-* You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
+- Your built-in Harness Docker connector (`account.harnessImage`) is configured to use the `app.harness` Docker registry. To avoid errors when the deprecation takes place, modify the target image registry by following the steps in [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
+- You [pull Harness images from a private registry](#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors post end of life, make sure you are pulling images from the [Harness project on GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
+- You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
 
 ## Troubleshoot Harness images
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Harness-required images, connectors, and pipeline initialization, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Harness-required images, connectors, and pipeline initialization, such as:
 
-* [How do I get a list of tags available for an image in the Harness image registry?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-get-a-list-of-tags-available-for-an-image-in-the-harness-image-registry)
-* [Build failed with "failed to pull image" or "ErrImagePull"](/kb/continuous-integration/continuous-integration-faqs/#build-failed-with-failed-to-pull-image-or-errimagepull)
-* [What access does Harness use to pull the Harness internal images from the public image repo?](/kb/continuous-integration/continuous-integration-faqs/#what-access-does-harness-use-to-pull-the-harness-internal-images-from-the-public-image-repo)
-* [Can I use my own private registry to store Harness CI images?](#pull-harness-images-from-a-private-registry)
-* [Docker Hub rate limiting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#docker-hub-rate-limiting)
+- [How do I get a list of tags available for an image in the Harness image registry?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-get-a-list-of-tags-available-for-an-image-in-the-harness-image-registry)
+- [Build failed with "failed to pull image" or "ErrImagePull"](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#build-failed-with-failed-to-pull-image-or-errimagepull)
+- [What access does Harness use to pull the Harness internal images from the public image repo?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-access-does-harness-use-to-pull-the-harness-internal-images-from-the-public-image-repo)
+- [Can I use my own private registry to store Harness CI images?](#pull-harness-images-from-a-private-registry)
+- [Docker Hub rate limiting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#docker-hub-rate-limiting)

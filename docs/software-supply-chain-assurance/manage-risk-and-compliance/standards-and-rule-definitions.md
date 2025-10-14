@@ -3,6 +3,12 @@ title: Rule Definitions and Standards
 sidebar_label: Rule Definitions and Standards
 description: View and manage the standards and associated rules supported by Harness SCS
 sidebar_position: 4
+tags:
+  - harness-scs 
+  - risk-and-compliance
+  - OWASP
+  - cis-benchmark
+  - oss-risks
 ---
 
 The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various target types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the [Compliance Summary](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) document.

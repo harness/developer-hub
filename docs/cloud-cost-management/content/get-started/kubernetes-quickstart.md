@@ -398,3 +398,13 @@ Explore these features to enhance your cloud cost management:
   - [Cloud Governance](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/asset-governance).
 
 Turn visibility into action and unlock cost efficiency across your Azure cloud infrastructure.
+
+---
+
+## FAQs
+
+<details>
+<summary>How can we report on which connectors are stale?</summary>
+If clusters are decommissioned, no heartbeat will be received from the delegate, and this will be reflected directly on the connector.
+On the Cloud Integration page, the Reporting tab shows whether events are being received. If events are not being received, the status will appear in red, indicating a stale connector.
+</details>

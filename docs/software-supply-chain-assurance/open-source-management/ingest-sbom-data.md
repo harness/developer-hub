@@ -6,6 +6,12 @@ sidebar_position: 20
 redirect_from:
 
 - /docs/software-supply-chain-assurance/sbom/ingest-sbom-data
+
+tags:
+  - harness-scs 
+  - ingest-sbom
+  - open-source-management
+  - sbom 
 ---
 
 
@@ -99,11 +105,15 @@ Follow the instructions below to ingest the SBOM for non-container images:
 
 **Workspace Artifact Path:** Provide the exact path to the artifact within the workspace. Ensure that you run a custom step to pull the artifact into the workspace directory.
 
-**Target Detection:** Choose between Auto and Manual.
+**Artifact Name:** Specify the name of the artifact.
 
-**Auto (default):** Automatically sets the artifact name from the provided path.
+**Version:** Provide the artifact version.
 
-**Manual:** Allows you to manually specify the artifact name and version.
+<!-- **Target Detection:** Choose between Auto and Manual. -->
+
+<!-- **Auto (default):** Automatically sets the artifact name from the provided path.
+
+**Manual:** Allows you to manually specify the artifact name and version. -->
 
 :::note
 
@@ -112,7 +122,7 @@ SBOM ingestion for non-container artifacts does not currently support attestatio
 :::
 
 
-<DocImage path={require('./static/sbom-non-container.png')} width="50%" height="50%" />
+<DocImage path={require('./static/sbom-noncontainer-ingest.png')} width="50%" height="50%" />
 
 
 ## Run the pipeline

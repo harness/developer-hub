@@ -6,6 +6,12 @@ sidebar_label: Generate SBOM with Harness GitHub Actions
 redirect_from:
 
 - /docs/software-supply-chain-assurance/sbom/generate-sbom-with-github-actions
+
+tags:
+  - harness-scs 
+  - generate-sbom-with-github-actions
+  - open-source-management
+  - sbom 
 ---
 
 [Harness GitHub Actions](https://github.com/marketplace/actions/harness-github-actions) provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks. 
@@ -51,7 +57,7 @@ Make sure to include the required configurations from the [Requirements](#requir
 | **Key**         | **Value Example**       | **Description**                                            | **Required** |
 |-----------------|-------------------------|------------------------------------------------------------|-------------|
 | `TOOL`         | `Syft` or `cdxgen`        | The tool used to generate the SBOM.                        | Yes         |
-| `FORMAT`       | `spdx-json` or `cyclonedx`| The format of the generated SBOM.                          | Yes         |
+| `FORMAT`       | `spdx-json` or `cyclonedx-json`| The format of the generated SBOM.                          | Yes         |
 | `TARGET`       | `image_name:image_tag`  | The target artifact (Docker image) for SBOM generation.    | Yes         |
 | `ATTEST`       | `true` or `false`         | Boolean flag to determine if attestation is required.      | No          |
 | `KMS_KEY`      | `path/to/my/key`        | Path to the Private key used for signing the attestation.          | No          |

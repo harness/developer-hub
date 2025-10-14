@@ -5,6 +5,9 @@ sidebar_label: Exporting SEI 2.0 Insights
 sidebar_position: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Overview
 
 Exporting SEI 2.0 Insights allows you to download and share insights from the SEI 2.0 platform in both PDF and CSV formats. This feature is designed to facilitate the sharing of key performance metrics and insights across teams and stakeholders, enabling better decision-making and performance tracking.
@@ -16,8 +19,23 @@ Exporting SEI 2.0 Insights allows you to download and share insights from the SE
 
 You can use the **Export** dropdown at the insight and widget level in Harness SEI 2.0. 
 
-- Insights Level: Export data for entire insight categories, such as Efficiency, Productivity, Overall, and Hygiene views. This includes all widget metrics like Lead Time for Changes, Deployment Frequency, Change Failure Rate, and Mean Time to Restore.
-- Widget Level: Export data specific to individual widgets within an insight view, such as Deployment Frequency within the Efficiency view or PR Velocity within the Productivity view. This is useful for focused analysis on specific metrics.
+<Tabs queryString="export-options">
+<TabItem value="insights" label="Insight Level">
+
+Export data for entire insight categories, such as Efficiency, Productivity, and Business Alignment. This includes all widget metrics like Lead Time for Changes, Deployment Frequency, Change Failure Rate, and Mean Time to Restore.
+
+![](../static/export-insight.png)
+
+</TabItem>
+
+<TabItem value="widgets" label="Widget Level">
+
+Export data specific to individual widgets within an insight view, such as Deployment Frequency within the Efficiency view or PR Velocity within the Productivity view. This is useful for focused analysis on specific metrics.
+
+![](../static/export-widget.png)
+
+</TabItem>
+</Tabs>
 
 ## File name and column format
 

@@ -11,6 +11,10 @@ sidebar_position: 120
 
 You can ingest scan results from [CodeQL](https://codeql.github.com/) into Harness STO. The following steps outline the basic workflow:
 
+:::note
+The **CodeQL** step supports only **Ingestion** scan mode, refer to [GitHub Advanced Security step documentation](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security) for **Orchestration** and other GHAS tools such as **Dependabot**, **Secret Scanning**.
+:::
+
 1. Run a CodeQL scan, either externally or as part of a Run step, and publish the results to SARIF.
 
 2. Add the SARIF data to your pipeline. If you ran the scan outside the pipeline, do the following:

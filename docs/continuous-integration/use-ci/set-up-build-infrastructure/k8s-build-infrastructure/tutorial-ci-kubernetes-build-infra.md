@@ -17,7 +17,7 @@ redirect_from:
   target="_self"
 />
 
-<DocsTag text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+<DocsTag text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 This tutorial demonstrates how you can use Harness CI to build and test on a [Kubernetes cluster build infrastructure](./set-up-a-kubernetes-cluster-build-infrastructure). In this tutorial, you'll create a Harness CI pipeline with two stages that does the following:
 
@@ -31,7 +31,7 @@ This tutorial uses publicly-available code and images. You need a Harness accoun
 
 :::info
 
-The Kubernetes cluster build infrastructure option is available with Harness CI Team and Enterprise plans only. For Free plans, try the [Harness Cloud build infrastructure tutorial](/docs/continuous-integration/get-started/tutorials).
+All build infrastructure options, including Kubernetes cluster builds, are available across Free, Team, and Enterprise plans.
 
 :::
 
@@ -385,4 +385,4 @@ pipeline:
 
 </details>
 
-After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/docs/category/cd-and-gitops-tutorials).
+After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/docs/category/cd-tutorials).

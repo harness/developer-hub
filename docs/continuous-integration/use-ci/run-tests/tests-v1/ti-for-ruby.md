@@ -9,14 +9,15 @@ canonical_url: https://www.harness.io/blog/ci-ruby-test-intelligence
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 :::warning
-This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
+This page contains instructions for using Test Intelligence (v1) with the **Run Tests** step.
 
 While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
 
 :::
-
 
 ## Enable TI for Ruby
 
@@ -73,11 +74,11 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 <summary>Trigger test selection with a manual build</summary>
 1. Open a PR or push changes to your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md), and then run your pipeline.
 
-   If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
+If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
 
-   If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
+If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
 
-   <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
+<DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 
@@ -193,7 +194,7 @@ pipeline:
                   name: Run_Ruby_Tests
                   identifier: Run_Ruby_Tests
                   spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: ruby:latest ## Specify if required by your build infrastructure.
                     language: Ruby
                     buildTool: Rspec
@@ -219,32 +220,9 @@ The following information explains how to configure most settings for the **Run 
 
 The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries. You can also install tools at runtime in [Pre-Command](#pre-command-post-command-and-shell), provided the build machine or image can execute the necessary commands, such as `curl` commands to download files.
 
-<details>
-<summary>When are Container Registry and Image required?</summary>
+<WhenReq />
 
-The stage's build infrastructure determines whether these fields are required or optional:
-
-- [Kubernetes cluster build infrastructure](../../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
-- [Local runner build infrastructure](../../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Run Tests** steps can use binaries available on the host machine. The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need.
-- [Self-managed AWS/GCP/Azure VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run Tests** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Additional Configuration** for stages that use self-managed VM build infrastructure.
-- [Harness Cloud build infrastructure](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run Tests** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need. These fields are located under **Additional Configuration** for stages that use Harness Cloud build infrastructure.
-
-</details>
-
-<details>
-<summary>What are the expected values for Container Registry and Image?</summary>
-
-For **Container Registry**, provide a Harness container registry connector, such as a Docker connector, that connects to the container registry where the **Image** is located.
-
-For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of a Docker image that has the binaries necessary to run the commands in this step, such as `ruby:latest`. If you don't include a tag, Harness uses the `latest` tag.
-
-You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
-
-- **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-- **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-- **GAR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
-
-</details>
+<FQNImage />
 
 ### Language
 
@@ -354,11 +332,11 @@ The timeout limit for the step. Once the timeout is reached, the step fails and 
 
 ## Troubleshoot Test Intelligence
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
 
-* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
-* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
-* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
-* [Ruby Test Intelligence can't find rspec helper file.](/kb/continuous-integration/continuous-integration-faqs/#ruby-test-intelligence-cant-find-rspec-helper-file)
-* [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
-* [Test Intelligence fails with error 'Unable to get changed files list'.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-with-error-unable-to-get-changed-files-list)
+- [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+- [Test Intelligence call graph is empty.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+- [If the Run Tests step fails, does the Post-Command script run?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#if-the-run-tests-step-fails-does-the-post-command-script-run)
+- [Ruby Test Intelligence can't find rspec helper file.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#ruby-test-intelligence-cant-find-rspec-helper-file)
+- [Does Test Intelligence support dynamic code?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-support-dynamic-code)
+- [Test Intelligence fails with error 'Unable to get changed files list'.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#test-intelligence-fails-with-error-unable-to-get-changed-files-list)

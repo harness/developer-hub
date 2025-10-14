@@ -7,6 +7,12 @@ redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/overview
   - /docs/software-supply-chain-assurance/sbom-policies/enforce-sbom-policies
   - /docs/software-supply-chain-assurance/sbom-policies/overview
+
+tags:
+  - harness-scs 
+  - enforce-sbom-policies
+  - open-source-management
+  - sbom   
 ---
 
 import Tabs from '@theme/Tabs';

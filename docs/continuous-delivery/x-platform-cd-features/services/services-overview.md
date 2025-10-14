@@ -1,6 +1,21 @@
 ---
 title: Services overview
 description: Learn about CD services.
+tags:
+  - services
+  - harness-services
+  - cd-services
+  - service-definition
+  - clone-services
+  - remote-services
+  - inline-services
+  - service-rbac
+  - deploy-services
+  - service-cloning
+  - service-management
+  - service-lifecycle
+  - service-security
+  - service-deployment
 sidebar_position: 1
 ---
 

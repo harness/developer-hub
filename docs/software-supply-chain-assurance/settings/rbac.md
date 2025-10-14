@@ -5,6 +5,10 @@ sidebar_position: 90
 
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-access-control
+tags:
+  - harness-scs 
+  - settings
+  - rbac  
 ---
 
 # Manage SCS Access Control

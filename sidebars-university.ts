@@ -104,6 +104,13 @@ const sidebars: SidebarsConfig = {
           id: "sei",
           className: "sidebar-sei"
         },
+         //tbh
+        {
+          type: "doc",
+          label: "Traceable by Harness",
+          id: "traceable-by-harness",
+          className: "sidebar-tbh"
+        },
         //vILT
         {
           type: "link",

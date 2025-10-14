@@ -1,6 +1,7 @@
 ---
 title: Build custom delegate images with third-party tools
 description: This document explains how to build and host custom delegate images that include the tools you select.
+sidebar_label: Build Custom Images
 sidebar_position: 3
 redirect_from:
   - /tutorials/platform/secure-delegate-default-to-minimal

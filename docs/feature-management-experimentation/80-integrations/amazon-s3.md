@@ -4,7 +4,7 @@ sidebar_label: Amazon S3
 description: ""
 ---
 
-Amazon Simple Storage Service (Amazon S3) is an object storage service offered by Amazon as part of Amazon Web Services (AWS) that offers the ability to store and retrieve any amount of data, at any time, from anywhere on the web. With this integration you can easily and reliably send high volumes of event data to Harness FME, as well as export your impression data.
+Amazon Simple Storage Service (Amazon S3) is an object storage service offered by Amazon as part of Amazon Web Services (AWS) that offers the ability to store and retrieve any amount of data, at any time, from anywhere on the web. With this integration, you can easily and reliably send high volumes of event data to Harness FME, as well as export your impression data.
 
 ## Send events to Harness FME
 
@@ -20,7 +20,7 @@ To connect your AWS S3 bucket to Harness FME, you need:
 **File restrictions:**
 
 * Compression examples: gzip, bzip2, snappy, or LZO compression.
-* File format: _parquet only_
+* File format: *Parquet only*
 * Schema:
   * environmentId: \[String\] Identifier for the environment in Harness FME
   * trafficTypeId: \[String\] Identifier for the traffic type in Harness FME
@@ -378,6 +378,27 @@ To connect your AWS S3 bucket to Harness FME, you need:
 
 * An S3 bucket destination already created.
 * An AWS account with the ability to grant Harness FME permission to read, put, and remove data in the bucket. **Note: We only remove transactional files created during the transfer.**
+
+**File specifications**:
+
+* Compression examples: gzip, bzip2, snappy, or LZO
+* File format: *Parquet only*
+* Schema: 
+  
+  * key: [String] Identifier for the user or system triggering or associated with the impression
+  * label: [String] Label associated with the impression
+  * treatment: [String] The treatment shown for this impression
+  * splitName: [String] Name of the feature flag
+  * splitVersion: [Long] Version of the feature flag
+  * properties: [String] Arbitrary properties data providing context to the impression
+  * environmentId: [String] Identifier for the environment in Harness FME
+  * trafficTypeId: [String] Identifier for the traffic type in Harness FME
+  * sdk: [String] Name of the SDK sending the impression
+  * sdkVersion: [String] Version of the SDK
+  * machineName: [String, Nullable] Name of the machine sending the impression
+  * machineIp: [String, Nullable] IP of the machine sending the impression
+  * timestamp: [Long] The time when the impression occurred, in milliseconds past epoch
+  * receptionTimestamp: [Long] Timestamp when the impression was received by Harness FME
 
 ### Configure integration in Harness FME (outbound)
 

@@ -17,6 +17,7 @@
 ![DBDO](static/img/icon_dbdevops_s.svg)
 ![AR](static/img/icon_artifact_registry_s.svg)
 ![Armory](static/img/icon_armory_s.svg)
+![Traceable](static/img/icon_tbh_s.svg)
 
 
 Welcome to the Harness Developer Hub (HDH)!
@@ -27,7 +28,3 @@ Learn intelligent software delivery skills at your own pace and in one place. Gu
 
 We welcome contributions. Check out the [Contributors Guide](CONTRIBUTING.md) for details
 on how to contribute.
-
-## Style Guide
-
-If you are contributing to HDH, please check out our [Style Guide](./docs/hdh/style-guide).

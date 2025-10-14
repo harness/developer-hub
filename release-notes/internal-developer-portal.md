@@ -24,7 +24,152 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         |           ⏳| ⏳          | ⏳            |
+| [2025.10.v1](/release-notes/internal-developer-portal#october---202510v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
+| [2025.09.v1](/release-notes/internal-developer-portal#september---202509v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
+| [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         | ✅         | ✅          | ✅            |
+
+## October - [2025.10.v1]
+
+---
+
+### [New Feature] Catalog Auto-Discovery for Harness CD Services
+**[IDP-4460]** | **[Docs](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd)**
+
+We’re introducing the **Harness IDP Catalog Auto-Discovery** integration with Harness CD Services. Previously, Harness CD users had to **manually** create IDP Catalog services from their Harness CD setup, which often led to **duplicate data** and **inefficient syncs**.
+
+With this release, you can **automatically discover and sync** your Harness CD services into the IDP Catalog; streamlining setup and reducing errors. The integration populates your Catalog with CD services so you can **sync, view, and manage** them directly in Catalog. Services are created as **IDP service entities** and maintained in **real-time, uni-directional sync** with their corresponding CD services.
+
+**Use this feature:** To use this integration, **enable the feature flag (`IDP_CATALOG_CD_AUTO_DISCOVERY`)** and ensure you’re using the **same account** as your Harness CD account.
+
+> Learn more about [Catalog Auto-Discovery for Harness CD Services](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd).
+
+![](./static/internal-developer-portal/open-in-harness-cd.png)
+
+---
+
+### [New Feature] Project/Org Filters in Scorecards
+**[IDP-5388]** | **[Docs](/docs/internal-developer-portal/scorecards/scorecard#create-a-scorecard)**
+
+This release is the first step toward full **Project/Org Filters** in Scorecards. You can now select **Project** and/or **Org** filters to control **where** a scorecard is evaluated.
+
+* When filters are applied, the scorecard evaluates **all entities within the selected scope**.
+* If **no scope** is selected, the scorecard evaluates entities across **all scopes** (account, org, and project).
+
+> Learn more about [Project/Org Filters in Scorecards](/docs/internal-developer-portal/scorecards/scorecard#create-a-scorecard).
+
+![](./static/internal-developer-portal/create-scorecard.png)
+
+---
+
+### [New Feature] Embed an Iframe in Catalog Entity Page
+**[IDP-6385]** | **[Docs](/docs/internal-developer-portal/layout-and-appearance/catalog#embed-an-iframe)**
+
+This release introduces a feature that lets you **embed an iframe** directly on a Catalog entity’s details page. With it, you can display **external web pages** right inside the entity view in **Harness IDP**.
+
+> Learn more about [Embed an Iframe in Catalog Entity Page](/docs/internal-developer-portal/layout-and-appearance/catalog#embed-an-iframe).
+
+![](./static/internal-developer-portal/embed-iframe.png)
+
+---
+
+### Feature Enhancements & Bug Fixes
+
+* **TechDocs Homepage Upgraded to IDP 2.0 Catalog Table** [IDP-6198] — The landing page for TechDocs now uses the new **IDP 2.0 Catalog Table** instead of the legacy Backstage table.
+![](./static/internal-developer-portal/techdocs-latest-table.png)
+
+* **Additional Info Card (`style` Optional)** [IDP-6412] — The `style` property is now optional when creating an Additional Info card. Previously, omitting `style` (or `style.bold`) caused the card to fail rendering, forcing users to add styling even when none was needed. This feature removes that and prevents render errors when no custom styling is intended. If `style` is omitted, it defaults to:
+
+  ```yaml
+  style:
+    bold: false
+  ```
+
+  You only need to specify `style.bold` when you actually want bold styling.
+
+* **Flexible Identity Resolution for Mismatched Emails in Jira Plugin** [IDP-6389] — Added support for additional **sign-in resolvers** from the Atlassian auth provider. When the IDP user email and Atlassian email differ, the flow now falls back to match the **local par**t of the Atlassian email with a User entity’s `metadata.name` in IDP, and then to **username matching**. This reduces login failures for users with different corporate vs. Atlassian addresses.
+
+* **Hide empty “System” field in EntityAboutCard** [IDP-6455] — The **System field** is now shown only when the entity has an assigned system. If no system relation exists, the field is hidden.
+
+* **Catalog Item opening non-existent Branch** [IDP-6446] — Fixed an issue where Catalog Items managed in GitX (Remote mode) could open a non-existent branch instead of the repository’s default branch (e.g., main). It now validates the `branch_name` query parameter and falls back to the **repo’s default branch** when the parameter is missing or invalid.
+
+* **Org-level Workflow Group cannot be deleted or edited (405 error)** [IDP-6361] — Resolved an issue where **Org-level Workflow Groups** could not be deleted (HTTP 405) and attempts to edit redirected back to the group list without saving changes. Added server-side validation to require **non-empty name and identifier** on creation, and guardrails in edit/delete handlers
+
+* **Broken Links in Relation Maps due to casing mismatch** [IDP-6281] — Fixed an issue where clicking entities in the Relation Map led to “not found” pages if the target entity’s namespace or name casing differed (e.g., `group:CICD` vs `group:cicd`). The Owner link worked correctly; the problem was isolated to **relation-map link generation**. Updated internal packages to preserve correct casing (no forced lowercase) when generating relation-map targets. 
+
+
+
+## September - [2025.09.v1]
+
+### [New Feature] Custom User Groups Entity
+
+Take control of your organizational structure with IDP 2.0's powerful new Custom User Groups! This game-changing feature transforms how teams are represented in your developer portal, bringing your real-world organizational structure into IDP as first-class catalog entities.
+
+![](./static/internal-developer-portal/user-group-overview.png)
+
+**What's in it for you:**
+
+* **True organizational modeling** - Create and manage custom team structures directly in IDP without depending on your identity provider
+* **Powerful ownership attribution** - Make ownership crystal clear across your entire catalog with direct group assignments
+* **Rich contextual metadata** - Add team leads, regions, and critical contact information to each group
+* **Intuitive hierarchical relationships** - Build parent-child connections between teams and departments with automatic bi-directional linking
+* **Complete UI and YAML support** - Create groups through the intuitive UI or via standard YAML definitions
+
+[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group#idp2.0)
+
+### [New Feature] Support for Bitbucket Access Token Authentication Mode
+
+Harness IDP now supports the **[Access Token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/)** authentication mode for the [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings). This mode not only provides a secure way to access Bitbucket repositories but also enables **higher API rate limits**, which is a critical use case for Harness IDP. This authentication mode is supported across the following IDP features:
+
+* **IDP 1.0 and 2.0**: Available wherever the Bitbucket connector is used
+* **Git Experience**: Fetches repository details from Bitbucket for Git Experience
+* **Source Code Repo Links**: Fetches repository details from Bitbucket for source code repo linking
+* **Scorecards**: Runs automated checks and computations against repositories fetched from Bitbucket
+
+:::info Bitbucket Connector Limitation
+The Bitbucket connector with **Access Token** authentication does not work with the **[Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)** step in the [IDP stage](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1). This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens.
+
+**Workaround**: Use a separate Bitbucket connector with the **[API Token](https://support.atlassian.com/bitbucket-cloud/docs/api-tokens/)** authentication mode for repository creation through Harness Pipelines.
+:::
+
+**How to enable this feature:**
+
+* [Upgrade your Harness delegate](https://developer.harness.io/docs/platform/get-started/tutorials/install-delegate/?utm_source=chatgpt.com) to version `25.08.86600` or later
+* Update your [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) with a new **[Access Token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/)** and use it across Harness IDP
+
+### [New Feature] GitLab Integration Plugin
+
+Harness IDP now supports integration with [GitLab](/docs/internal-developer-portal/plugins/available-plugins/gitlab) through our new plugin. This integration enables teams to connect their GitLab repositories directly to the Software Catalog, providing seamless access to project information, merge requests, and issue tracking without leaving the developer portal.
+
+![](../docs/internal-developer-portal/plugins/available-plugins/static/gitlabplugin2.png)
+
+### [New Feature] Iframe Embedding in Sidebar Navigation
+
+Harness IDP now supports embedding external web content directly into your sidebar navigation using iframes. This feature allows you to integrate essential resources, documentation, dashboards, and tools directly into your developer portal interface.
+
+* **External Content Integration** - Add documentation, dashboards, or any web content directly in your IDP navigation
+* **Simple YAML Configuration** - Easy to implement with standard sidebar navigation format
+
+#### Example Configuration
+
+```yaml
+- name: SidebarItem
+  type: iframe
+  props:
+    to: iframe/developer_docs
+    text: Developer docs
+    url: https://developer.harness.io/
+```
+
+![](./static/internal-developer-portal/iframe-embedd.png)
+
+[Learn more about embedding iframes in your sidebar](/docs/internal-developer-portal/layout-and-appearance/sidenav#embedding-an-iframe)
+
+### Bug Fixes and Improvements 
+
+* **Jira Plugin Enhancements** - We've made several improvements to the Jira plugin:
+  * **New Components** - Added `EntityJiraActivityStreamCard` for viewing real-time activity streams and `EntityJiraQueryCard` for displaying customized Jira issues based on JQL queries
+  * **Enhanced Annotations** - Added support for `jira/label` to filter issues by specific labels and `jira/all-issues-jql` to define custom JQL queries
+  * Updated conditional display guides with specific conditions for each component type (`isJiraAvailable`, `hasJiraQuery`)
 
 ## August - [2025.08.v1]
 
@@ -33,6 +178,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 Harness Internal Developer Portal (IDP) now integrates with Harness Security Testing Orchestration (STO) to surface real-time vulnerability data directly inside the Software Catalog. Vulnerabilities such as CVEs from static and dynamic scans are displayed alongside services, projects, and components, minimizing context switching and enabling faster triage.
 
 ![](./static/sto-integrated-idp.png)
+
 
 [Learn more about STO integration with IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/sto-integration)
 #### Prerequisites
@@ -221,7 +367,6 @@ The [DX plugin configuration](https://developer.harness.io/docs/internal-develop
 
 
 
-
 ### [New Feature] Harness Feature Management & Experimentation Plugin
 
 Harness IDP now includes a native integration with Harness Feature Management & Experimentation (FME), allowing teams to view and manage feature flags directly in their service catalog.
@@ -233,6 +378,8 @@ Harness IDP now includes a native integration with Harness Feature Management & 
 * Real-time Updates - Monitor feature flag status and changes directly from your developer portal
 
 [Learn more about the Harness FME Plugin](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme) 
+
+
 
 ### Bug Fixes and Improvements
 
@@ -1112,7 +1259,7 @@ customPlugins:
 
   - [Argo-CD Plugin for Backstage](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-argo-cd#argo-cd-plugin-for-backstage)
 
-- We have encountered an issue with usage of `ui:widget: password` which reveals the user token in plain text to the user if the field is not used in the first page of the Workflow definition. We have updated our docs with instructions. Please find more context [here](/kb/internal-developer-portal/articles/secrets-issue) if you see the issue.
+- We have encountered an issue with usage of `ui:widget: password` which reveals the user token in plain text to the user if the field is not used in the first page of the Workflow definition. We have updated our docs with instructions. Please find more context [here](/docs/internal-developer-portal/kb-idp/articles/secrets-issue) if you see the issue.
 
 #### Bug fixes
 

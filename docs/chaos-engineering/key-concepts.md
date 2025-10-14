@@ -137,7 +137,7 @@ Chaos experiments are initially [constructed](/docs/chaos-engineering/guides/cha
 In summary, creation of chaos experiments is made easier by the UI based tooling and the end result of such creation is an YAML file. This YAML file can then be used to achieve further automation using infrastructure management tools such a Terraform or Harness IaC. 
 
 #### ChaosHubs
-A [ChaosHub](/docs/chaos-engineering/guides/chaoshubs/) stores various resources of the Chaos Engineering module. Currently, the supported resource are:
+A [ChaosHub](/docs/chaos-engineering/guides/chaoshub) stores various resources of the Chaos Engineering module. Currently, the supported resource are:
 - Chaos Faults
 - Chaos Experiment Templates
 - Resilience Probe Templates

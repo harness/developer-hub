@@ -28,7 +28,7 @@ Harness Self-Managed Enterprise Edition is designed to cater to various deployme
 
 - Access to [the Harness airgap bundle on GCP](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1)
 
-- Kubernetes version 1.22+ (Harness recommends v1.23.x)
+- [Kubernetes Version](/docs/self-managed-enterprise-edition/smp-supported-platforms#supported-kubernetes-versions) Compatible with Harness SMP.
 
 ## Required images
 
@@ -38,7 +38,7 @@ If your cluster is in an air-gapped environment, your deployment requires the [l
 
 The flowchart below shows the air-gapped environment installation workflow steps.
 
-![](./static/air-gapped-environment-workflow.png)
+![](./static/air-gapped-environment-workflow.jpg)
 
 ## Download required files
 
@@ -56,7 +56,8 @@ To begin your installation, download the following files:
      - Security Testing Orchestration: `sto_images.tgz`
      - Software Supply Chain Assurance: `ssca_images.tgz`
 
-   :::info note
+
+   :::note 
    The `platform-images.tgz` file includes NextGen dashboards and policy management enabled by default. The `cdng-images.tgz` file includes GitOps by default.
    :::
 

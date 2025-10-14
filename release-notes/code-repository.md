@@ -20,6 +20,16 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+## September 2025
+
+<!-- September 9, 2025 -->
+
+### Version 1.56.x
+
+#### New features and enhancements
+
+- Added support for including user groups in [Code Owners and Reviewer assignments](/docs/code-repository/config-repos/rules#codeowners).
+
 ## August 2025
 
 <!-- August 18, 2025 -->

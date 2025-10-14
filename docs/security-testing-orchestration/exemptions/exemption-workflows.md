@@ -79,8 +79,10 @@ Add a link to supporting documentation, source code, or any relevant resource th
 
 After completing the form, click **Create Request** to submit the exemption.
 Once the exemption request is submitted:
-- Inform your **Security Testing AppSec** reviewer.  
-- Ensure they have enough context and links to make a well-informed decision.
+
+:::tip
+Once submitted, the request enters the **Pending** state. You can [set up notifications](/docs/security-testing-orchestration/notifications/exemption-notifications) to automatically alert reviewers of new requests.
+:::
 
 ### Create Exemption Request for Occurrences within Issue
 

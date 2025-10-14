@@ -19,9 +19,9 @@ Set up FME in your code base with the following two steps:
 
 Add the Harness FME SDK, RUM agent, and Suite into your project using Swift Package Manager by adding the following package dependencies:
 
-- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.3.2`
+- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.4.0`
 - [iOS RUM](https://github.com/splitio/ios-rum), latest version `0.4.0`
-- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.2.2`
+- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.3.0`
 
 :::info[Important!]
 When not using the last version of the SDK Suite, it is important to take into account the compatibility matrix below.
@@ -39,6 +39,8 @@ When not using the last version of the SDK Suite, it is important to take into a
 | 2.2.0    | 3.3.0   | 0.4.0   |
 | 2.2.1    | 3.3.1   | 0.4.0   |
 | 2.2.2    | 3.3.2   | 0.4.0   |
+| 2.2.3    | 3.3.3   | 0.4.0   |
+| 2.3.0    | 3.4.0   | 0.4.0   |
 
 Then import the Suite in your code.
 
@@ -52,14 +54,14 @@ In your code, instantiate the Suite client as shown below.
 
 ```swift title="Swift"
 // Create default Suite configuration
-let config = SplitSuiteConfig()
+let config = SplitClientConfig()
 
 // SDK key
 let sdkKey = "YOUR_SDK_KEY"
 let matchingKey = Key(matchingKey: "key")
 
 // Create Suite
-let suite = SplitSuite.builder()
+let suite = DefaultSplitSuite.builder()
     .apiKey(sdkKey)
     .key(matchingKey)
     .config(config).build()
@@ -839,7 +841,7 @@ Working with user consent is demonstrated below.
   let matchingKey = Key(matchingKey: "key")
 
   // Create Suite
-  let suite = SplitSuite.builder()
+  let suite = DefaultSplitSuite.builder()
     .apiKey(sdkKey)
     .key(matchingKey)
     .config(sdkConfig).build()

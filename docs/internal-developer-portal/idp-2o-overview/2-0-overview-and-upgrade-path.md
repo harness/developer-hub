@@ -17,8 +17,8 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | [**RBAC and Project/Org Hierarchy**](/docs/internal-developer-portal/rbac/scopes)                     | ✅ (Ready to onboard) |
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
 | [**New System Entity for grouping**](/docs/internal-developer-portal/catalog/system-entity)           | ✅ (Ready to onboard)  |
-| **Project/Org filters in Scorecards**                                                                 | ⏳ ETA Oct 2025        |
-| **Custom User Groups**                                                                               | ⏳ ETA Oct 2025        |
+| [**Custom User Groups**](/docs/internal-developer-portal/catalog/user-group)                   | ✅ (Ready to onboard)  |
+| [**Project/Org filters in Scorecards**](/docs/internal-developer-portal/scorecards/scorecard.md#create-a-scorecard)                                                                | ✅ (Ready to onboard)        |
 
 :::
 
@@ -333,11 +333,17 @@ The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelin
 
 You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. A dedicated step for this functionality will be available soon.
 
-### Custom User Groups and Custom Metadata
+### Custom User Groups
 
-In IDP 1.0, it was possible to create custom User Groups directly in the IDP Catalog without creating them as Harness User Groups. However, currently in IDP 2.0, this feature is not available - which means the only way to create User Groups is by creating them directly as Harness User Groups at the account level.
+Harness IDP 2.0 supports Custom User Groups as first-class catalog entities! These groups differ from platform user groups synced from identity providers and offer several advantages:
 
-However, we are currently working on introducing the concept of creating custom user groups, creating nested groups under groups and ingesting custom metadata on them as well.
+* Create organizational groups directly in the IDP interface or via YAML definitions
+* Model parent-child hierarchical relationships between teams and departments
+* Enrich groups with metadata like team lead, region, and contact information
+* Assign ownership of components, systems, and other catalog entities to custom groups
+* Make IDP your source of truth for team modeling and organizational structure
+
+Custom User Groups are created at the account level and coexist with platform user groups. [Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group).
 
 ## Feature Compatibility Matrix (1.0 vs 2.0)
 
@@ -366,7 +372,7 @@ However, we are currently working on introducing the concept of creating custom 
 | UI-based Workflow Creation           | ❌      | ✅      |                                                                                                                                                                                                                |
 | 📊 **Scorecards**                    |         |         |                                                                                                                                                                                                                |
 | Scorecards in Catalog View           | ❌      | ✅      |                                                                                                                                                                                                                |
-| Project/Org filters in Scorecards    | ❌      | Planned | Scorecards can be applied to entities based on their scopes.                                                                                                                                                   |
+| Project/Org filters in Scorecards    | ❌      | ✅ | Scorecards can be applied to entities based on their scopes.                                                                                                                                                    |
 | Scorecards scoped to Project/Org     | ❌      | Planned | Scorecards can be created directly at the Project or Org scope.                                                                                                                                                |
 | 🔄 **Git Experience**                |         |         |                                                                                                                                                                                                                |
 | YAMLs in Git                         | ✅      | ✅      |                                                                                                                                                                                                                |
@@ -388,7 +394,7 @@ However, we are currently working on introducing the concept of creating custom 
 | Entity CRUD APIs                     | ❌      | ✅      | Entities can be created, updated, and deleted using Harness APIs.                                                                                                                                              |
 | Catalog Ingestion APIs               | ✅      | ✅      |                                                                                                                                                                                                                |
 | Terraform Provider                   | ❌      | Planned |                                                                                                                                                                                                                |
-| Custom User Groups                   | ✅      | Planned |                                                                                                                                                                                                                |
+| Custom User Groups                   | ✅      | ✅      |                                                                                                                                                                                                                |
 
 ## Timeline
 

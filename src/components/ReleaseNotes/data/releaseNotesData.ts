@@ -42,6 +42,13 @@ import { MODULES } from "@site/src/constants";
           "",
         list: [
           {
+            title: "AI Test Automation release notes",
+            module: MODULES.ata,
+            description:
+              "",
+            link: "/release-notes/ai-test-automation",
+          },
+          {
             title: "Chaos Engineering release notes",
             module: MODULES.ce,
             description:

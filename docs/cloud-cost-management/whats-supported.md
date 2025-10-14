@@ -98,4 +98,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CCM_ANOMALIES_V2</td>
         <td>Enables the new version of CCM anomalies</td>
     </tr>
+    <tr>
+        <td>CCM_COST_CATEGORY_STAMPED_DATA</td>
+        <td>Enables the use of stored cost categories in Perspectives</td>
+    </tr>
 </table>

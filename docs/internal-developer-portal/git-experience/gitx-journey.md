@@ -65,6 +65,10 @@ Harness IDP Git Experience integrates with the following **Git Providers**:
 - [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
 - [Harness Code](https://developer.harness.io/docs/code-repository/get-started/overview/)
 
+:::info
+For authentication with the [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings), both **Access Token** and **API Token** authentication modes are supported. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
+:::
+
 ## Storing Entity YAMLs
 
 Harness Git Experience with IDP 2.0 allows you to store your Catalog entity YAMLs and Workflow YAMLs in the following two ways:

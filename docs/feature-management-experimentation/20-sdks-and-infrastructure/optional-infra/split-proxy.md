@@ -218,56 +218,56 @@ The following table includes the available command line, JSON, and environment v
 With the Split Synchronizer v5.0.0, the only accepted values for boolean flags are "true" and "false" in lowercase. Values such as "enabled", "on", "yes", or "True" result in an error when you start up. This applies to JSON, CLI arguments, and environment variables.
 :::
 
-| **Command line option** | **JSON option** | **Environment variable** (container-only) | **Description** |
-| --- | --- | --- | --- |
-| log-level | level | SPLIT_PROXY_LOG_LEVEL | Log level (error&#124;warning&#124;info&#124;debug&#124;verbose). |
-| log-output | output | SPLIT_PROXY_LOG_OUTPUT | Where to output logs (defaults to stdout). |
-| log-rotation-max-files | rotationMaxFiles | SPLIT_PROXY_LOG_ROTATION_MAX_FILES | Max number of files to keep when rotating logs. |
-| log-rotation-max-size-kb | rotationMaxSizeKb | SPLIT_PROXY_LOG_ROTATION_MAX_SIZE_KB | Max file size to keep before rotating log files. |
-| admin-host | host | SPLIT_PROXY_ADMIN_HOST | Host where the admin server will listen. |
-| admin-port | port | SPLIT_PROXY_ADMIN_PORT | Admin port where incoming connections will be accepted. |
-| admin-username | username | SPLIT_PROXY_ADMIN_USERNAME | HTTP basic auth username for admin endpoints. |
-| admin-password | password | SPLIT_PROXY_ADMIN_PASSWORD | HTTP basic auth password for admin endpoints. |
-| admin-secure-hc | secureChecks | SPLIT_PROXY_ADMIN_SECURE_HC | Secure Healthcheck endpoints as well. |
-| admin-tls-enabled | enabled | SPLIT_PROXY_ADMIN_TLS_ENABLED | Enable HTTPS on proxy endpoints. |
-| admin-tls-client-validation | clientValidation | SPLIT_PROXY_ADMIN_TLS_CLIENT_VALIDATION | Enable client cert validation. |
-| admin-tls-server-name | serverName | SPLIT_PROXY_ADMIN_TLS_SERVER_NAME | Server name as it appears in provided server-cert. |
-| admin-tls-cert-chain-fn | certChainFn | SPLIT_PROXY_ADMIN_TLS_CERT_CHAIN_FN | X509 Server certificate chain. |
-| admin-tls-private-key-fn | privateKeyFn | SPLIT_PROXY_ADMIN_TLS_PRIVATE_KEY_FN | PEM Private key file name. |
-| admin-tls-client-validation-root-cert | clientValidationRootCertFn | SPLIT_PROXY_ADMIN_TLS_CLIENT_VALIDATION_ROOT_CERT. | X509 root cert for client validation |
-| admin-tls-min-tls-version | minTlsVersion | SPLIT_PROXY_ADMIN_TLS_MIN_TLS_VERSION | Minimum TLS version to allow X.Y. |
-| admin-tls-allowed-cipher-suites | allowedCipherSuites | SPLIT_PROXY_ADMIN_TLS_ALLOWED_CIPHER_SUITES | Comma-separated list of cipher suites to allow. |
-| impression-listener-endpoint | endpoint | SPLIT_PROXY_IMPRESSION_LISTENER_ENDPOINT | HTTP endpoint to forward impressions to. |
-| impression-listener-queue-size | queueSize | SPLIT_PROXY_IMPRESSION_LISTENER_QUEUE_SIZE | max number of impressions bulks to queue. |
-| slack-webhook | webhook | SPLIT_PROXY_SLACK_WEBHOOK | slack webhook to post log messages. |
-| slack-channel | channel | SPLIT_PROXY_SLACK_CHANNEL | slack channel to post log messages. |
-| apikey | apikey | SPLIT_PROXY_APIKEY | FME server-side SDK API key. |
-| ip-address-enabled | ipAddressEnabled | SPLIT_PROXY_IP_ADDRESS_ENABLED | Bundle host's ip address when sending data to Harness FME. |
-| timeout-ms | timeoutMS | SPLIT_PROXY_TIMEOUT_MS | How long to wait until the synchronizer is ready. |
-| snapshot | snapshot | SPLIT_PROXY_SNAPSHOT | Snapshot file to use as a starting point. |
-| force-fresh-startup | forceFreshStartup | SPLIT_PROXY_FORCE_FRESH_STARTUP | Wipe storage before starting the synchronizer |
-| client-apikeys | apikeys | SPLIT_PROXY_CLIENT_APIKEYS | Apikeys that clients connecting to this Proxy will use. |
-| server-host | host | SPLIT_PROXY_SERVER_HOST | Host/IP to start the proxy server on. |
-| server-port | port | SPLIT_PROXY_SERVER_PORT | Port to listen for incoming requests from SDKs. |
-| server-tls-enabled | enabled | SPLIT_PROXY_SERVER_TLS_ENABLED | Enable HTTPS on proxy endpoints. |
-| server-tls-client-validation | clientValidation | SPLIT_PROXY_SERVER_TLS_CLIENT_VALIDATION | Enable client cert validation. |
-| server-tls-server-name | serverName | SPLIT_PROXY_SERVER_TLS_SERVER_NAME | Server name as it appears in provided server-cert. |
-| server-tls-cert-chain-fn | certChainFn | SPLIT_PROXY_SERVER_TLS_CERT_CHAIN_FN | X509 Server certificate chain. |
-| server-tls-private-key-fn | privateKeyFn | SPLIT_PROXY_SERVER_TLS_PRIVATE_KEY_FN | PEM Private key file name. |
-| server-tls-client-validation-root-cert | clientValidationRootCertFn | SPLIT_PROXY_SERVER_TLS_CLIENT_VALIDATION_ROOT_CERT | X509 root cert for client validation. |
-| server-tls-min-tls-version | minTlsVersion | SPLIT_PROXY_SERVER_TLS_MIN_TLS_VERSION | Minimum TLS version to allow X.Y. |
-| server-tls-allowed-cipher-suites | allowedCipherSuites | SPLIT_PROXY_SERVER_TLS_ALLOWED_CIPHER_SUITES | Comma-separated list of cipher suites to allow. |
-| http-cache-size | httpCacheSize | SPLIT_PROXY_HTTP_CACHE_SIZE | How many responses to cache. |
-| persistent-storage-fn | filename | SPLIT_PROXY_PERSISTENT_STORAGE_FN | Where to store flags and user-generated data. (Default: temporary file). |
-| split-refresh-rate-ms | splitRefreshRateMs | SPLIT_PROXY_SPLIT_REFRESH_RATE_MS | How often to refresh feature flags. |
-| segment-refresh-rate-ms | segmentRefreshRateMs | SPLIT_PROXY_SEGMENT_REFRESH_RATE_MS | How often to refresh segments. |
-| streaming-enabled | streamingEnabled | SPLIT_PROXY_STREAMING_ENABLED | Enable/disable streaming functionality. |
-| http-timeout-ms | httpTimeoutMs | SPLIT_PROXY_HTTP_TIMEOUT_MS | Total http request timeout. |
-| impressions-workers | impressionsWorkers | SPLIT_PROXY_IMPRESSIONS_WORKERS | #workers to forward impressions to Harness servers. |
-| events-workers | eventsWorkers | SPLIT_PROXY_EVENTS_WORKERS | #workers to forward events to Harness servers. |
-| telemetry-workers | telemetryWorkers | SPLIT_PROXY_TELEMETRY_WORKERS | #workers to forward telemetry to Harness servers. |
-| internal-metrics-rate-ms | internalTelemetryRateMs | SPLIT_PROXY_INTERNAL_METRICS_RATE_MS | How often to send internal metrics. |
-| dependencies-check-rate-ms | dependenciesCheckRateMs | SPLIT_PROXY_DEPENDENCIES_CHECK_RATE_MS | How often to check dependecies health. |
+| **Command line option** | **JSON option** | **Environment variable** (container-only) | **Default Value** | **Description** |
+|---|---|---|---|---|
+| log-level | level | SPLIT_PROXY_LOG_LEVEL | `info` | Log level: `error`, `warning`, `info`, `debug`, or `verbose`. |
+| log-output | output | SPLIT_PROXY_LOG_OUTPUT | `stdout` | Where to output logs. |
+| log-rotation-max-files | rotationMaxFiles | SPLIT_PROXY_LOG_ROTATION_MAX_FILES | `10` | Maximum number of files to keep when rotating logs. |
+| log-rotation-max-size-kb | rotationMaxSizeKb | SPLIT_PROXY_LOG_ROTATION_MAX_SIZE_KB | `1024` | Maximum log file size in KB before rotating. |
+| admin-host | host | SPLIT_PROXY_ADMIN_HOST | `0.0.0.0` | Host where the admin server will listen. |
+| admin-port | port | SPLIT_PROXY_ADMIN_PORT | `30101` | Admin port where incoming connections will be accepted. |
+| admin-username | username | SPLIT_PROXY_ADMIN_USERNAME | `ADMIN_USERNAME` | HTTP basic auth username for admin endpoints. |
+| admin-password | password | SPLIT_PROXY_ADMIN_PASSWORD | `ADMIN_PASSWORD` | HTTP basic auth password for admin endpoints. |
+| admin-secure-hc | secureChecks | SPLIT_PROXY_ADMIN_SECURE_HC | `false` | Secures health check endpoints. |
+| admin-tls-enabled | enabled | SPLIT_PROXY_ADMIN_TLS_ENABLED | `false` | Enable HTTPS on proxy endpoints. |
+| admin-tls-client-validation | clientValidation | SPLIT_PROXY_ADMIN_TLS_CLIENT_VALIDATION | `false` | Enable client certificate validation. |
+| admin-tls-server-name | serverName | SPLIT_PROXY_ADMIN_TLS_SERVER_NAME | Empty | Server name as it appears in the provided server certificate. |
+| admin-tls-cert-chain-fn | certChainFn | SPLIT_PROXY_ADMIN_TLS_CERT_CHAIN_FN | Empty | X509 Server certificate chain. |
+| admin-tls-private-key-fn | privateKeyFn | SPLIT_PROXY_ADMIN_TLS_PRIVATE_KEY_FN | Empty | PEM private key file name. |
+| admin-tls-client-validation-root-cert | clientValidationRootCertFn | SPLIT_PROXY_ADMIN_TLS_CLIENT_VALIDATION_ROOT_CERT | Empty | X509 root certificate for client validation. |
+| admin-tls-min-tls-version | minTlsVersion | SPLIT_PROXY_ADMIN_TLS_MIN_TLS_VERSION | `1.3` | Minimum TLS version allowed. |
+| admin-tls-allowed-cipher-suites | allowedCipherSuites | SPLIT_PROXY_ADMIN_TLS_ALLOWED_CIPHER_SUITES | Empty | Comma-separated list of allowed cipher suites. |
+| impression-listener-endpoint | endpoint | SPLIT_PROXY_IMPRESSION_LISTENER_ENDPOINT | Empty | HTTP endpoint to forward impressions. |
+| impression-listener-queue-size | queueSize | SPLIT_PROXY_IMPRESSION_LISTENER_QUEUE_SIZE | `100` | Maximum number of impression bulks to queue. |
+| slack-webhook | webhook | SPLIT_PROXY_SLACK_WEBHOOK | Empty | Slack webhook to post log messages. |
+| slack-channel | channel | SPLIT_PROXY_SLACK_CHANNEL | Empty | Slack channel to post log messages. |
+| apikey | apikey | SPLIT_PROXY_APIKEY | `API_KEY` | FME server-side SDK API key. |
+| ip-address-enabled | ipAddressEnabled | SPLIT_PROXY_IP_ADDRESS_ENABLED | `true` | Bundle host's IP address when sending data to Harness FME. |
+| timeout-ms | timeoutMS | SPLIT_PROXY_TIMEOUT_MS | `10000` | How long to wait until the synchronizer is ready. |
+| snapshot | snapshot | SPLIT_PROXY_SNAPSHOT | Empty | Snapshot file to use as a starting point. |
+| force-fresh-startup | forceFreshStartup | SPLIT_PROXY_FORCE_FRESH_STARTUP | `false` | Wipe storage before starting the synchronizer |
+| client-apikeys | apikeys | SPLIT_PROXY_CLIENT_APIKEYS | `SDK_API_KEY` | API keys that clients connecting to this proxy will use. |
+| server-host | host | SPLIT_PROXY_SERVER_HOST | `0.0.0.0` | Host/IP to start the proxy server on. |
+| server-port | port | SPLIT_PROXY_SERVER_PORT | `3000` | Port to listen for incoming requests from SDKs. |
+| server-tls-enabled | enabled | SPLIT_PROXY_SERVER_TLS_ENABLED | `false` | Enable HTTPS on proxy endpoints. |
+| server-tls-client-validation | clientValidation | SPLIT_PROXY_SERVER_TLS_CLIENT_VALIDATION | `false` | Enable client certificate validation. |
+| server-tls-server-name | serverName | SPLIT_PROXY_SERVER_TLS_SERVER_NAME | Empty | Server name as it appears in the provided server certificate. |
+| server-tls-cert-chain-fn | certChainFn | SPLIT_PROXY_SERVER_TLS_CERT_CHAIN_FN | Empty | X509 server certificate chain. |
+| server-tls-private-key-fn | privateKeyFn | SPLIT_PROXY_SERVER_TLS_PRIVATE_KEY_FN | Empty | PEM private key file name. |
+| server-tls-client-validation-root-cert | clientValidationRootCertFn | SPLIT_PROXY_SERVER_TLS_CLIENT_VALIDATION_ROOT_CERT | Empty | X509 root certificate for client validation. |
+| server-tls-min-tls-version | minTlsVersion | SPLIT_PROXY_SERVER_TLS_MIN_TLS_VERSION | `1.3` | Minimum TLS version allowed. |
+| server-tls-allowed-cipher-suites | allowedCipherSuites | SPLIT_PROXY_SERVER_TLS_ALLOWED_CIPHER_SUITES | Empty | Comma-separated list of allowed cipher suites. |
+| http-cache-size | httpCacheSize | SPLIT_PROXY_HTTP_CACHE_SIZE | `1000000` | How many responses to cache. |
+| persistent-storage-fn | filename | SPLIT_PROXY_PERSISTENT_STORAGE_FN | Empty | Where to store flags and user-generated data (defaults to a temporary file). |
+| split-refresh-rate-ms | splitRefreshRateMs | SPLIT_PROXY_SPLIT_REFRESH_RATE_MS | `60000` | How often to refresh feature flags. |
+| segment-refresh-rate-ms | segmentRefreshRateMs | SPLIT_PROXY_SEGMENT_REFRESH_RATE_MS | `60000` | How often to refresh segments. |
+| streaming-enabled | streamingEnabled | SPLIT_PROXY_STREAMING_ENABLED | `true` | Enable/disable streaming functionality. |
+| http-timeout-ms | httpTimeoutMs | SPLIT_PROXY_HTTP_TIMEOUT_MS | `30000` | Total HTTP request timeout. |
+| impressions-workers | impressionsWorkers | SPLIT_PROXY_IMPRESSIONS_WORKERS | `10` | Number of workers to forward impressions to Harness servers. |
+| events-workers | eventsWorkers | SPLIT_PROXY_EVENTS_WORKERS | `10` | Number of workers to forward events to Harness servers. |
+| telemetry-workers | telemetryWorkers | SPLIT_PROXY_TELEMETRY_WORKERS | `10` | Number of workers to forward telemetry to Harness servers. |
+| internal-metrics-rate-ms | internalTelemetryRateMs | SPLIT_PROXY_INTERNAL_METRICS_RATE_MS | `3600000` | How often to send internal metrics. |
+| dependencies-check-rate-ms | dependenciesCheckRateMs | SPLIT_PROXY_DEPENDENCIES_CHECK_RATE_MS | `3600000` | How often to check dependencies health. |
 
 ## Listener
 

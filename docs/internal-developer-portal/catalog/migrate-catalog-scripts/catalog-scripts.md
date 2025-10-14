@@ -33,6 +33,7 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
       path: "/internal-developer-portal/catalog/migrate-catalog-scripts/content/populate-catalog/github-idp-1.md"
     }
   }}
-  defaultValue="IDP 2.0"
+  defaultSelection="IDP 2.0"
+  disableSort={true}
   toc={toc}
 />

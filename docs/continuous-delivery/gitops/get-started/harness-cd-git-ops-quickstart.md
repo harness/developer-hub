@@ -86,7 +86,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 4. Select **New GitOps Agent**. The Agent creation wizard appears.
 
    You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. 
-5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
+5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
 
    ![](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.
@@ -295,7 +295,7 @@ In this example, we'll connect using the cluster master URL and a Service Accoun
 
 To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 
-To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOps cluster with IAM role](/docs/continuous-delivery/gitops/clusters/create-cluster-with-iam).
+To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOps cluster with IAM role](/docs/continuous-delivery/gitops/gitops-entities/clusters/create-cluster-with-iam).
 
 Here's an example of a SA and ClusterRoleBinding with `cluster-admin`:
 

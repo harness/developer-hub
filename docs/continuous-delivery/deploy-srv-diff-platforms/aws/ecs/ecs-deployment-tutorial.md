@@ -6,6 +6,30 @@ helpdocs_topic_id: vytf6s0kwc
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
+tags:
+  - ecs
+  - amazon-ecs
+  - aws-ecs
+  - ecs-deployment
+  - ecs-rolling-deploy
+  - aws-iam
+  - ecs-task-definition
+  - ecs-service-definition
+  - ecs-blue-green
+  - ecs-canary
+  - ecs-autoscaling
+  - ecs-run-task
+  - aws-service-mesh
+  - ecs-circuit-breaker
+  - ecs-overrides
+  - ecs-cloudwatch
+  - ecs-fargate
+  - ecs-infrastructure
+  - ecs-provisioning
+  - aws-elb
+  - ecs-target-groups
+  - ecs-deployment-strategies
+  - ecs-service-discovery
 ---
 
 This topic shows you how to deploy images to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy in Harness.
@@ -886,10 +910,17 @@ Harness will ignore any task definition configured in the ECS Service Definition
 
 Harness can fetch your task definitions, service definitions, scalable target and scaling policy configurations (in JSON or YAML) from the following stores:
 
-- Harness File Store.
-- AWS S3 buckets.
+- **Harness File Store**
+
+  Harness supports specifying a folder path in the Harness file store for ECS scaling policies. Instead of manually selecting individual scaling policy files, you can select a folder, and Harness will recursively fetch all scaling policy files within that folder to use as scaling policies.
+
+  :::note
+  Folder path support currently applies only to scaling policies and is not supported for scalable targets.
+  :::
+
+- **AWS S3 buckets**
   - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
-- Git providers.
+- **Git providers**
 
 ### AWS Auto Scaling with ECS
 

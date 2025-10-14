@@ -190,6 +190,14 @@
   border-color: var(--mod-code-200);
 }
 
+.dbdo:hover {
+  border-color: var(--mod-dbdevops-200);
+}
+
+.tbh:hover {
+  border-color: var(--mod-sto-200);
+}
+
 @media screen and (max-width: 1130px) {
 
   // @media screen and (max-width: 768px) {

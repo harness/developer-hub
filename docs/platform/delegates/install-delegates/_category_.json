@@ -1,6 +1,6 @@
 {
-    "position": "20", 
-    "label": "Install delegates", 
+    "position": "2", 
+    "label": "Install Delegates", 
     "collapsible": "true", 
     "collapsed": "true", 
     "className": "red", 

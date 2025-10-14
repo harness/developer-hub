@@ -272,6 +272,13 @@ Later:{
           "Automates AKS cluster provisioning, scaling, and node pool management with policy-driven orchestration",
         backgroundColor: "var(--yellow-100)",
       },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Commitment Orchestrator for Azure",
+        description:
+          "Exentding capabilities of Commitment Orchestrator for Azure.",
+        backgroundColor: "var(--yellow-100)",
+      },
     ],
   }
 };

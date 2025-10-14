@@ -113,7 +113,61 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## October 2025
+
+### Version 25.10.86900 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Added support for fetching labels for multi-architecture images stored in ECR. [CDS-113117]
+- Enhanced error messages when a delegate's dependency binaries are missing. [CDS-112385]
+- Improved error information during Git failures by including specific error details instead of generic exceptions. [CDS-104652]
+
+### Version 25.08.86601 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
+### Version 25.09.86704 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
+### Version 25.07.86403 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. The user needs to set TRUST_EARLY and ENRICH_LOGS environment variables in the delegate. [CDS-109294]
+
+### Version 25.09.86801 <!--October 08, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
 ## September 2025
+
+### Version 25.09.86800 <!--September 24, 2025-->
+
+#### Fixed issues
+
+- An error message is now displayed when AWS credentials cannot be fetched. [CDS-97836]
+- Renamed the audit log field from **name** to **identifier** and standardized the format across all pipeline events for clearer, consistent terminology. [PIPE-28870]
+- Resolved an issue in EnvironmentGroups where the save filter was not working due to a missing variable, and handled cases where the tag value was null. [CDS-96157]
+
+### Version 25.09.86703 <!--September 10, 2025-->
+
+#### Fixed issues
+
+- Enhanced webhook list filtering to honor `webhookIdentifier`. The API has been updated to include `webhookIdentifier` in the request body parameters of the webhooks/list API call, ensuring accurate filtering. [CDS-111793]
+
+### Version 25.05.85809 <!--September 04, 2025-->
+
+#### New features and enhancements
+
+- Added NO_PROXY support when delegate has PROXY_TLS_CONNECT enabled. If PROXY_TLS_CONNECT is enabled, delegate will not try to force HTTP CONNECT via TLS for destinations that are in NO_PROXY list. [PL-65142]
 
 ### Version 25.08.86504 <!--September 03, 2025-->
 

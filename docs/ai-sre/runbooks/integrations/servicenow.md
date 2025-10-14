@@ -251,7 +251,7 @@ curl -X 'POST' 'YOUR_URL' \
     "sys_id": "096654f28362ea10ea8ff3a6feaad338",
     "subcategory": null,
     "state": "2",
-    "incident_url": "https://dev319566.service-now.com/nav_to.do?uri=/incident.do?sysparm_query=number=INC0010166"
+    "incident_url": "https://<INSTANCE>.service-now.com/nav_to.do?uri=/incident.do?sysparm_query=number=<INCIDENTID>"
   }'
 ```
 
@@ -400,6 +400,163 @@ Send data from ServiceNow to Harness AI SRE using a Business Rule and RESTMessag
 
 :::info important fields
 Ensure that all required fields are included in the webhook payload. The minimum fields needed for proper incident creation are: `number`, `short_description`, `state`, and `priority`.
+:::
+
+## Syncing from ServiceNow to AI SRE
+
+To enable bidirectional synchronization where ServiceNow comments and work notes are automatically sent to AI SRE, you'll need to create an additional Business Rule that triggers when journal entries are added to incidents.
+
+### Creating the Journal Entry Business Rule
+
+This Business Rule will automatically push comments and work notes from ServiceNow to AI SRE, ensuring both systems stay synchronized even when updates are made directly in ServiceNow.
+
+#### Setup Instructions
+
+1. **Navigate to Business Rules**
+   - Go to **System Definition** > **Business Rules**
+   - Click **New**
+
+2. **Configure the Business Rule**
+   - Name: `Sync Comments to Harness AI SRE`
+   - Table: `Journal Entry [sys_journal_field]`
+   - Active: ✅
+   - Advanced: ✅
+
+3. **Set When to Run**
+   - When: `After`
+   - Insert: ✅
+   - (Optional) Add filter conditions to limit to specific journal types
+
+4. **Add the Script**
+   - Go to the **Advanced** tab and paste the following script:
+
+```javascript
+(function executeRule(current) {
+  gs.info("[Harness IR] BR triggered for journal entry: " + current.getValue('sys_id'));
+
+  // Determine note type (e.g., comments or work_notes)
+  var type = current.getValue('element');
+
+  // Only continue for work_notes or comments
+  // if (type !== "work_notes" && type !== "comments") {
+  //   gs.info("[Harness IR] Skipped (not a supported journal type)");
+  //   return;
+  // }
+
+  // Fetch the related Incident record
+  var incidentId = current.getValue('element_id');
+  var inc = new GlideRecord('incident');
+  if (!inc.get(incidentId)) {
+    gs.info("[Harness IR] Skipped (incident not found): " + incidentId);
+    return;
+  }
+
+  // Detect instance URL dynamically
+  var instanceUrl = gs.getProperty('glide.servlet.uri'); // e.g. https://dev319566.service-now.com/
+  var incidentNumber = inc.getValue('number');
+  var incidentUrl = instanceUrl + "nav_to.do?uri=/incident.do?sysparm_query=number=" + incidentNumber;
+
+  // Build payload
+  var payload = {
+    snow_incidentId: incidentNumber,                     // e.g. INC0010234
+    snow_incidentSysId: inc.getUniqueValue(),            // Stable sys_id
+    note_type: type,                                     // "comments" | "work_notes"
+    note_text: current.getValue('value') || '',
+    author: current.getValue('sys_created_by') || '',
+    created_on: current.sys_created_on.getGlideObject().getNumericValue(), // epoch numeric
+    priority: inc.getValue('priority') || '',
+    short_description: inc.getValue('short_description') || '',
+    note_id: current.getValue('sys_id'),                 // journal entry sys_id
+    incident_url: incidentUrl                            // Deep link to incident
+  };
+
+  gs.info("[Harness IR] Payload prepared: " + JSON.stringify(payload));
+
+  try {
+    var r = new sn_ws.RESTMessageV2();
+    
+    // Replace with your AI-SRE project/org/template webhook endpoint:
+    r.setEndpoint('https://app.harness.io/ir/tp/api/v1/mc/account/<ACCOUNT_ID>/orgs/<ORG_ID>/projects/<PROJECT_ID>/incidentTemplate/<TEMPLATE_ID>/servicenow/webhook');
+    r.setHttpMethod('POST');
+    r.setRequestHeader("Content-Type", "application/json");
+    r.setRequestBody(JSON.stringify(payload));
+
+    var response = r.execute();
+    var status = response.getStatusCode();
+    var body = response.getBody();
+
+    if (status === 200) {
+      gs.info("[Harness IR] Webhook successfully sent. Status: " + status);
+    } else {
+      gs.error("[Harness IR] Webhook returned non-200 response. Status: " + status + " Body: " + body);
+    }
+  } catch (ex) {
+    gs.error("[Harness IR] Webhook failed: " + ex.getMessage());
+  }
+})(current);
+```
+
+#### Configuration Notes
+
+1. **Optional Filtering**
+   - The script includes commented lines that filter for only `work_notes` and `comments`
+   - Uncomment these lines (remove `//`) if you want to limit synchronization to these specific journal types:
+   ```javascript
+   if (type !== "work_notes" && type !== "comments") {
+     gs.info("[Harness IR] Skipped (not a supported journal type)");
+     return;
+   }
+   ```
+
+2. **Table Configuration**
+   - This Business Rule must be created on the `sys_journal_field` table
+   - It triggers when journal entries (comments, work notes, etc.) are added to any record
+   - The script filters for incident-related entries automatically
+
+#### Endpoint Substitution Guide
+
+Use this guide to correctly substitute the placeholders in the webhook endpoint used by the Business Rule:
+
+```text
+https://app.harness.io/ir/tp/api/v1/mc/account/<ACCOUNT_ID>/orgs/<ORG_ID>/projects/<PROJECT_ID>/incidentTemplate/<TEMPLATE_ID>/servicenow/webhook
+```
+
+- **`<ACCOUNT_ID>`**: Your Harness account identifier.
+- **`<ORG_ID>`**: The organization identifier in which AI SRE is configured.
+- **`<PROJECT_ID>`**: The project identifier that contains your AI SRE runbooks/incidents.
+- **`<TEMPLATE_ID>`**: The incident template identifier used for this ServiceNow sync.
+
+Recommended ways to obtain values:
+- **Copy from AI SRE**: In AI SRE, open the relevant integration/template and copy the generated webhook URL. It already includes all identifiers. Paste it into `r.setEndpoint(...)`.
+- **From UI URLs/settings**: When viewing your org or project in Harness, the URL path shows `orgs/<ORG_ID>/projects/<PROJECT_ID>`. Account ID is available in account settings. The template ID is visible in the incident template details or within the generated webhook URL.
+
+Example (for illustration only):
+
+```text
+https://app.harness.io/ir/tp/api/v1/mc/account/acc_123456/orgs/engineering/projects/sre/incidentTemplate/incident_default/servicenow/webhook
+```
+
+#### Testing the Integration
+
+1. **Create a Test Comment**
+   - Open an existing incident in ServiceNow
+   - Add a comment or work note
+   - Check the system logs for webhook activity
+
+2. **Verify System Logs**
+   - Go to **System Logs** > **All**
+   - Look for entries containing "[Harness IR]" to track the webhook execution
+   - Confirm successful HTTP 200 responses
+
+3. **Check AI SRE**
+   - Navigate to the corresponding incident in AI SRE
+   - Verify that the comment or work note appears in the incident timeline
+
+:::tip best practices
+- Test the integration in a development environment first
+- Monitor system logs regularly to ensure webhook reliability
+- Consider adding additional filtering based on your organization's needs
+- Document any custom fields or modifications for future reference
 :::
 
 ## Next Steps

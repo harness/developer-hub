@@ -23,4 +23,4 @@
 | **6. Security and Analytics in Feature Flags**                                     |                                                                                                                                   |
 | Learn how to read and interpret feature flag analytics                           | [Get Data on Your Feature Flags](/docs/category/get-data-on-your-flags)                               |
 | Familiarize with Harness.io's security measures related to feature flags         | [Feature Flag Security and Compliance](/docs/feature-flags/secure-ff/rbac-at-ff/manage-access-control)                     |
-| Learn how to troubleshoot basic feature flag issues                              | [Feature Flag FAQs](https://developer.harness.io/kb/feature-flags/harness-feature-flag-faqs)                                      |
+| Learn how to troubleshoot basic feature flag issues                              | [Feature Flag FAQs](/docs/feature-flags/harness-feature-flag-faqs)                                      |

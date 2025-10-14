@@ -1,6 +1,7 @@
 ---
 title: Delegate automatic upgrades and expiration policy
 description: Explains the auto-upgrade feature and the delegate expiration policy.
+sidebar_label: Upgrades and Expiration Policy
 sidebar_position: 9
 ---
 
@@ -470,5 +471,4 @@ To update the delegate YAML, do the following:
 
 - Select **New Delegate** > **Kubernetes** > **Kubernetes Manifest** > **Custom**, and then follow the instructions on the screen.
 
-For an example of a complete Delegate YAML file, go to [Example Kubernetes manifest for Harness Delegate](/docs/platform/delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).
-
+For an example of a complete Delegate YAML file, go to [Example Kubernetes manifest for Harness Delegate](/docs/platform/delegates/delegate-reference/yaml/example-kubernetes-manifest-harness-delegate).

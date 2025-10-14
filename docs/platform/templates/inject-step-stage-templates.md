@@ -19,7 +19,7 @@ Insert block is supported for CI, CD, Custom and Approval Stages.
 ## Pros of Using Insert blocks in a template
 
 - Only the Template Editor has the flexibility to allow additional steps or stages at any given point where they want.(At beginning of all steps/stage or at the end of all steps/stages or in between the steps/stages)
-- The YAML would be very simple and incline with existing harness steps/stages YAML. Here the Insert is as simply a new type of step which starts with the key `insert`. 
+- The YAML is simple and inline with existing Harness steps/stages YAML. Here the Insert is simply a new type of step which starts with the key `insert`. 
 
 Now, let's dive into who can add insert block in the pipeline and stage template and how other users can utilise it in their pipelines.
 

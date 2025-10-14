@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-12-03T14:00
+date: 2025-09-24T14:00
 sidebar_position: 3
 ---
 
@@ -23,6 +23,30 @@ These release notes describe recent changes to Harness Platform.
 
 :::
 ## Important feature change notice
+
+:::danger OIDC ID Token API Access Update (Effective October 24, 2025)
+To strengthen security and reduce potential risks, the [OIDC ID token–related APIs](https://apidocs.harness.io/openapi-merged/oidc-id-token) will be made **internal to Harness** and will no longer be available for direct access.
+
+- **Previous behaviour**: OIDC ID token APIs can be directly accessed.
+- **New behaviour**: These APIs can only be used **through the Harness Connector** for OIDC-based authentication with external platforms (e.g., HashiCorp Vault, AWS).
+
+**Action Required**: If you are directly invoking OIDC ID token APIs, update your automation to use the connector before this change takes effect on **October 24, 2025**.
+:::
+
+
+:::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
+We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
+
+**Previous behaviour**:
+  - Successful deletion → `200 OK` with a string response body (`application/json`).
+  - Identifier not found/already deleted → `500 Internal Server Error`.
+
+**New behaviour (effective October 20, 2025)**:
+  - Successful deletion → `204 No Content` (no response body).
+  - Identifier not found/already deleted → `404 Not Found`.
+
+**Action Required**: Please review and update any automation, scripts, or integrations that depend on the old response codes before October 20, 2025.
+:::
 
 :::warning Important Update: Change in Default Container Registry for Harness Images
 
@@ -132,6 +156,65 @@ The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
+
+## October 2025 
+
+### Version 1.111.x <!--October 08, 2025-->
+
+### New features and enhancements
+
+- Updated the images to use specific version tags instead of the latest tag. [PL-65593]
+  - aws-cli:latest -> aws-cli:2.31.7
+  - redis_exporter:latest -> redis_exporter:v1.77.0
+  - statsd-exporter:latest -> statsd-exporter:v0.28.0 
+
+### Version 1.110.x <!--October 03, 2025-->
+
+#### Fixed issues
+
+- Resolved a delegate name validation issue where delegates with names ending in a number could not be created through the UI, even though they worked via API and Terraform. [PL-65391]
+- Updated the system to handle errors in certain operations, including null pointer exceptions and incorrect response codes for invalid notification rule IDs. [PL-65387]
+- Fixed a scope issue that prevented certain delegates from appearing in role assignments. [PL-65324]
+- Resolved delegate startup delays on read-only file systems by loading custom certificates in a writable directory. [PL-65213]
+- Resolved an issue with cross-scope references, where users could reference child-scope channels in parent-scope rules. Such references are no longer allowed. [PL-64702]
+- Updated the system to trim trailing spaces in URLs and other fields to prevent connector creation errors. [PL-58616]
+
+#### New features and enhancements
+
+- Enhanced SMTP permissions: users can now be assigned Create/Edit, View, and Delete rights with proper error messages for missing permissions. [PL-64560]
+
+## September 2025 
+
+### Version 1.109.x <!--September 24, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where SCIM patch requests from Okta did not update User Group membership in the Harness UI. [PL-65385]
+
+#### New features and enhancements
+
+- Introduced a delegate task limit to better manage peak loads and improve system stability. [PL-56344]
+
+
+### Version 1.108.x <!--September 17, 2025-->
+
+#### Fixed issues
+
+- Updated the name and description of the body parameter in the [Token Validation API](https://apidocs.harness.io/openapi-merged/token/validatetoken). [PL-64820]
+
+#### New features and enhancements
+
+- Added support for running Harness services with a read-only root filesystem. [PL-65055]
+
+### Version 1.105.x <!--September 03, 2025-->
+
+#### New features and enhancements
+
+- Added the ability for customers to see the task response status in delegate selection logs. [PL-58972]
+
+:::warning Important Note:
+The Dashboard Intelligence feature has been temporarily disabled until further notice. If you require access to this feature, please contact your account team or submit a [support ticket](mailto:support@harness.io).
+:::
 
 ## August 2025
 
@@ -1360,7 +1443,7 @@ The following deprecated API endpoints are longer supported:
     When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
     :::
 
-- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
+- You can now toggle between the legacy UI navigation and the new navigation for your account. (PL-43772)
 
 #### Early access features
 

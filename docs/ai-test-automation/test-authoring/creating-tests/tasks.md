@@ -58,7 +58,7 @@ It's common to have parameters within tasks, as users often need to run tests wi
 3. **Test**: A test-level override supersedes the environment and task-level values. You can also define a parameter override for a specific combination of environment and test.
 4. **Test Suites**: This is the highest level in the hierarchy. Parameter overrides set at the test suite level apply during test suite execution and take precedence over all other levels.
 
-Here is a **short video ** explaining how to set overrides for a Task parameter.&#x20;
+Here is a **short video** explaining how to set overrides for a Task parameter.&#x20;
 
 <iframe src="https://www.loom.com/embed/e9a34c116e254ad7b93f49f1744195d2?sid=5716f09d-cd35-4452-95ab-47671630f954" width="960" height="540" frameborder="0" allowfullscreen></iframe>
 

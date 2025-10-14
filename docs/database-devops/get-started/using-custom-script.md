@@ -20,6 +20,8 @@ tags:
   - harness-db-devops
 
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## Overview
 
@@ -86,6 +88,52 @@ Toggle on the "Enable container based execution".
 7. The pipeline will be created and you can see the details in the UI.
 8. Click on the `Run` button to run the pipeline.
 
-![Run DB DevOps Pipeline](../use-database-devops/static/custom-script/db-devops-custom-stage-pipeline.png)
+#### Final Result:
+<Tabs>
+<TabItem value="Visual Overview" alt="Visual Overview">
 
+![Run DB DevOps Pipeline](../use-database-devops/static/custom-script/db-devops-custom-stage-pipeline.png)
+</TabItem>
+<TabItem value="YAML Overview" alt="YAML Overview">
+
+```yml
+pipeline:
+  name: custom-changelog-script
+  identifier: customchangelogscript
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: deploy
+        identifier: deploy
+        description: "Deploy DB Schema using Custom Script"
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: apply schema
+                  identifier: apply_schema
+                  steps:
+                    - step:
+                        type: DBSchemaApply
+                        name: DBSchemaApply_1
+                        identifier: DBSchemaApply_1
+                        spec:
+                          connectorRef: dockerHarness
+                          dbSchema: customscript
+                          dbInstance: test3
+                          tag: my-deployment
+                        timeout: 10m
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: db
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
+```
+</TabItem>
+</Tabs>
 That's it! You have successfully created a DB Schema and deployed it using a custom script. You can now use this pipeline to deploy your DB Schema to the database instance.

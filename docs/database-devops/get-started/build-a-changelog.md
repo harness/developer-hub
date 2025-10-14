@@ -130,7 +130,88 @@ Toggle on the "Enable container based execution".
 
 <CommitToGit />
 
+<Tabs>
+<TabItem value="Visual Overview">
+
 ![Commit to Git](../use-database-devops/static/build-changelog/db-devops-changelog-git-commit.png)
+</TabItem>
+<TabItem value="YAML Overview">
+
+```yml
+pipeline:
+  name: changelog
+  identifier: changelog
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: generate-changelog
+        identifier: generatechangelog
+        description: "Generate Changelog using Liquibase Command"
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: changelog
+                  identifier: changelog
+                  steps:
+                    - step:
+                        type: LiquibaseCommand
+                        name: LiquibaseCommand_1
+                        identifier: LiquibaseCommand_1
+                        spec:
+                          connectorRef: account.harnessImage
+                          command: generate-changelog
+                          dbSchema: generatechangelog
+                          dbInstance: instance
+                          excludeChangeLogFile: false
+                        timeout: 10m
+                    - step:
+                        type: Run
+                        name: Commit to Git
+                        identifier: Commit_to_Git
+                        spec:
+                          connectorRef: dockerHarness
+                          image: alpine/git
+                          shell: Sh
+                          command: |-
+                            ls -la
+                            git init
+
+                            # Configure Git user
+                            git config --global user.email "john.doe@xyz.com"
+                            git config --global user.name "John Doe"
+                            git config --global user.password "<+secrets.getValue("johndoe")>"
+
+                            echo "adding"
+                            git add generated.yml
+                            echo "added"
+                            git commit -m "generated changelog from running instance"
+                            echo "committed"
+
+                            # Get current branch name
+                            CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+                            echo "Current branch: $CURRENT_BRANCH"
+
+                            # Add remote repository
+                            git remote add gitlab https://john.doe%40yxz.com:<+secrets.getValue("johndoe")>@gitlab.com/<username>/generate-changelog.git
+                            echo "remote set"
+
+                            # Push to remote using the current branch name
+                            git push -u gitlab $CURRENT_BRANCH -f
+                            echo "pushed to $CURRENT_BRANCH branch"
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: db
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
+```
+</TabItem>
+</Tabs>
 This step will ensure that the generated changelog file is committed to your Git repository, allowing you to track changes and maintain version control over your database schema changes.
 </TabItem>
 </Tabs>

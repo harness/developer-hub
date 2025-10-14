@@ -197,8 +197,6 @@ This can lead to security and governance issues, especially in shared clusters w
 
 Helm does not perform strict validation against the namespace defined in the Infrastructure. Users can override the namespace in several ways—via chart templates, values files, or by passing the `--namespace` flag during Helm install or upgrade.
 
-:::note
-Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 This feature requires delegate version `856xx` or later.
 :::

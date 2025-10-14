@@ -20,7 +20,7 @@
 | Configure pipeline features, including triggers, input sets, failure strategies, looping, and notifications | [Pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) |
 | **5. Pipeline Execution Strategies** ||
 | Get to grips with execution environments: running steps on host vs. containers | [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/) |
-| Manage outputs, PR status updates, and understand chained pipelines | [Output variables with chained pipeline](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables/) |
+| Manage outputs, PR status updates, and understand chained pipelines | [Output variables with chained pipeline](https://developer.harness.io/docs/platform/variables-and-expressions/chained-pipeline-output-variables/) |
 | Delve into advanced options like timeouts, selective stage executions, and stage context sharing | [Pipelines](/docs/category/pipelines) |
 | **6. Security and Access Control** ||
 | Understand RBAC with user groups, roles, role bindings, and service account considerations | [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) |

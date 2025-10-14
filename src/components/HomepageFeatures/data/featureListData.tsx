@@ -30,7 +30,7 @@ export const featureList: CardItem[] = [
     icon: "img/icon_cd.svg",
     description:
       "More efficient and reliable deployments.",
-    link: "docs/category/get-started-with-cd",
+    link: "docs/continuous-delivery",
   },
     {
     title: "Deploy Database Changes",
@@ -68,6 +68,27 @@ export const featureList: CardItem[] = [
     link: "docs/cloud-cost-management/get-started",
   },
   {
+    title: "API Security Posture",
+    module: MODULES.asp,
+    icon: "img/icon-api-security-posture.svg",
+    description: <>Discover App/APIs and assess risks.</>,
+    link: "/docs/appsec-security-posture",
+  },
+  {
+    title: "API Runtime Protection",
+    module: MODULES.arp,
+    icon: "img/icon-api-runtime-protection.svg",
+    description: <>Protect App/APIs and block attacks.</>,
+    link: "/docs/appsec-runtime-protection",
+  },
+  {
+    title: "API Security Testing",
+    module: MODULES.ast,
+    icon: "img/icon-api-security-testing.svg",
+    description: <>Run security tests and detect issues.</>,
+    link: "/docs/appsec-security-testing",
+  },
+  {
     title: "Orchestrate Security Tests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
@@ -86,7 +107,7 @@ export const featureList: CardItem[] = [
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, and analyze impact of changes.</>,
-    link: "docs/category/get-started-with-srm",
+    link: "docs/service-reliability-management",
   },
   {
     title: "Resilience Testing",

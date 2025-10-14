@@ -18,7 +18,7 @@ The Git cache is only used to render entities faster in the Harness UI, not to i
 You can reload the entities from Git and update the cache at any time. 
 
 ## Setting Up Caching
-Caching occurs with git entities (GitHub, Bitbucket, etc) where a webhook has been established.  For example, setting up a webhook as a part of [the GitX Bi-directional sync](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/#setup-via-webhooks-page) or a webhook as a part of [Bitbucket Caching](https://developer.harness.io/kb/continuous-delivery/articles/bitbucket-api-limit/#setting-up-a-webhook-for-caching)
+Caching occurs with git entities (GitHub, Bitbucket, etc) where a webhook has been established.  For example, setting up a webhook as a part of [the GitX Bi-directional sync](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/#setup-via-webhooks-page) or a webhook as a part of [Bitbucket Caching](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/bitbucket-api-limit/#setting-up-a-webhook-for-caching)
 
 Please note that caching occurs for each webhook created on a **per repo** basis.  Every repo that is storing entities needs its own webhook in order to establish caching.  
 
@@ -74,3 +74,5 @@ You can do one of the following when there are differences:
 
 ![](../git-experience/static/CacheDiff.png)
 
+## Changing Git Repo Name
+For information on the process a team should follow when renaming a Git Repo, please take a look at our [documentation on Repo Renaming and Git Experience Caching](https://developer.harness.io/docs/platform/git-experience/harness-git-cache-rename).

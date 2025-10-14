@@ -1,6 +1,27 @@
 ---
 title: CD onboarding path
 description: Ramp up on Harness CD
+tags:
+  - cd-onboarding
+  - continuous-delivery
+  - cd-pipelines
+  - deployment-strategies
+  - kubernetes-deployment
+  - devops-onboarding
+  - terraform-automation
+  - rbac
+  - approvals
+  - service-definitions
+  - environment-management
+  - triggers
+  - governance
+  - secrets-management
+  - artifacts
+  - templatization
+  - continuous-verification
+  - delegate-installation
+  - onboarding-path
+  - infrastructure-as-code
 sidebar_position: 1
 ---
 
@@ -9,7 +30,7 @@ import TabItem from '@theme/TabItem';
 
 This topic describes the different phases and steps involved in onboarding with Harness CD. Follow these steps to ensure that you have all the settings and resources required for moving forward with your own deployments.
 
-If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](/docs/category/cd-and-gitops-tutorials).
+If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](/docs/category/cd-tutorials).
 
 ## Overview
 

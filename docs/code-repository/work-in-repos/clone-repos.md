@@ -25,6 +25,65 @@ After [creating a repository](../config-repos/create-repo.md), you can work dire
 
 4. Once cloned locally, you can work with your Harness Code repository as you would with other Git repositories, by creating commits, pushing to the remote, pulling changes, and more.
 
+## Clone over SSH
+
+You can clone any Harness Code Repository using SSH if you prefer key-based authentication.
+:::info
+This feature is behind the `CODE_SSH_ENABLED` feature flag. To enable it, contact [Harness Support](mailto:support@harness.io).
+:::
+### Prerequisites
+
+1. You must have an SSH key pair on your local machine. To check:
+```bash
+ls ~/.ssh/id_rsa.pub
+```
+
+If it does not exist, generate one:
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Press **Enter** to accept the defaults.
+
+2. Add Your SSH Key to Harness
+
+  - In the bottom-left corner of the Harness UI, click your Profile icon.
+
+  - Select **+ SSH Key**.
+
+  - Enter a name for the key and paste your public SSH key.
+
+  - Click **Save**.
+<DocImage path={require('./static/add-ssh-key.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Steps to Clone
+
+1. In Harness, navigate to the repository you want to clone and copy its SSH URL.
+<DocImage path={require('./static/clone-over-ssh.png')} width="90%" height="90%" title="Click to view full-size image" />
+The format will look like this:
+
+```shell
+<USER_ID>@git.harness.io:<USER_ID>/<ACCOUNT_NAME>/<PROJECT_NAME>/<REPO_NAME>.git
+```
+
+2. From your terminal, run:
+```shell
+git clone '<USER_ID>@git.harness.io:<USER_ID>/<ACCOUNT_NAME>/<PROJECT_NAME>/<REPO_NAME>.git'
+```
+
+Example:
+```shell
+git clone 'AB12CD34EF56@git.harness.io:AB12CD34EF56/CODE/CODE/sample-app.git'
+```
+
+3. Change into the cloned repository directory and verify the remote:
+```shell
+cd sample-app
+git remote -v
+```
+
+4. You should see the SSH URL listed as `origin`.
+
 ## Partial and Shallow Clone Support (Filtering in git clone)
 
 Harness Code Repository supports filtering during git clone operations to improve performance, especially for large monorepos or multi-service repositories.
