@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 ## Introduction
-This document outlines the steps a Harness Account Admin can follow to set up the IDP module, including configuring Git integration.. Presently, the module needs to be enabled on request. [Read more](./enabling-module.md).
+This document outlines the steps a Harness Account Admin can follow to set up the IDP module, including configuring Git integration.. Presently, the module needs to be enabled on request.
 
 ## Pre-requisites
 
