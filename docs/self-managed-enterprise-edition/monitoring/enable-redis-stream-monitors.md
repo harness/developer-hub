@@ -19,7 +19,7 @@ The redis stream monitor chart provides descriptive and meaningful metrics about
 ### Pull the Chart
 
 ```bash
-helm pull oci://us-west1-docker.pkg.dev/gcr-prod/harness-helm-artifacts/redis-stream-monitor --version 1.6.0 --untar
+helm pull oci://us-west1-docker.pkg.dev/gcr-prod/harness-helm-artifacts/redis-stream-monitor --version 1.4.0 --untar
 ```
 
 ### Configure Override Values
