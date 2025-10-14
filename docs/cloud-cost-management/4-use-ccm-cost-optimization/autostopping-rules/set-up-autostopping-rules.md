@@ -2,6 +2,10 @@
 title: Set Up AutoStopping Rules
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
 sidebar_position: 2
+redirect_from: 
+- https://developer.harness.io/docs/category/autostopping-for-aws
+- https://developer.harness.io/docs/category/autostopping-for-azure
+- https://developer.harness.io/docs/category/autostopping-for-gcp
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -13,7 +17,7 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
     Kubernetes: {
       path: "/cloud-cost-management/content/autostopping/kubernetes-as.md",
       logo: "/cloud-providers/kubernetes-logo.svg",
-      logoSize: 32br
+      logoSize: 32
     },
     AWS: {
       path: "/cloud-cost-management/content/autostopping/aws-as.md",
@@ -34,5 +38,3 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
   }}
   toc = {toc}
 />
-
-path: "/cloud-cost-management/content/recommendations/kubernetes-rec.md
