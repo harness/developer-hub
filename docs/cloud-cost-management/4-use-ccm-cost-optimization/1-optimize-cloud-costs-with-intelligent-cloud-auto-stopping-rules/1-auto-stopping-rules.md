@@ -7,6 +7,10 @@ helpdocs_category_id: 2yrql0zhj0
 helpdocs_is_private: false
 helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/cloud-autostopping
+redirect_from: 
+- /docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/auto-stopping-rules
+- /docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/getting-started
+
 ---
 import Tabs from '@theme/Tabs';
 
@@ -25,6 +29,8 @@ AutoStopping Rules let you define:
 - **Access method**: Select load balancer, proxy, or direct IP so your teams continue to use the same DNS, SSH, or RDP endpoints without interruption.
 - **Set-and-forget automation**: Zero manual overhead after initial setup
 
+------
+
 ## What's Supported?
 
 | Cloud Provider | Supported Resources |
@@ -33,13 +39,7 @@ AutoStopping Rules let you define:
 | <img src="/provider-logos/cloud-providers/azure-logo.svg" alt="Azure" width="20"/> <strong style={{fontSize: '1.1rem'}}>Azure</strong> | <ul><li>On-demand VMs</li><li>Kubernetes Clusters (AKS)</li></ul> |
 | <img src="/provider-logos/cloud-providers/gcp-logo.svg" alt="GCP" width="20"/> <strong style={{fontSize: '1.1rem'}}>GCP</strong> | <ul><li>GCE VMs</li><li>Kubernetes Clusters (GKE)</li><li>Instance Groups</li></ul> |
 
-AutoStopping offers:
-- **Unlimited rules and resources**: Create as many rules as needed with no restrictions
-- **Unlimited dependencies**: No limit on the number of dependencies a rule can manage
-- **Flexible configuration**: Customize idle time thresholds, schedules, and access methods
-- **Resource-specific restart times**:
-  - RDS instances: Warm-up time depends on cluster/instance size (~25 minutes)
-  - Other resources: Typically warm up in under 2 minutes (max 5 minutes)
+-------
 
 ## How AutoStopping Works
 
@@ -49,6 +49,16 @@ AutoStopping intelligently manages your cloud resources through a seamless four-
 2. **Automatic Shutdown**: Once your configured idle threshold is reached, resources are safely stopped to eliminate wasted spend
 3. **Seamless Restart**: When access is requested, resources are automatically restarted based on your dependency configuration
 4. **Transparent Access**: End users continue using the same familiar endpoints (DNS, SSH, RDP) with minimal interruption
+
+AutoStopping offers:
+- **Unlimited rules and resources**: Create as many rules as needed with no restrictions
+- **Unlimited dependencies**: No limit on the number of dependencies a rule can manage
+- **Flexible configuration**: Customize idle time thresholds, schedules, and access methods
+- **Resource-specific restart times**:
+  - RDS instances: Warm-up time depends on cluster/instance size (~25 minutes)
+  - Other resources: Typically warm up in under 2 minutes (max 5 minutes)
+
+-------
 
 ## Ready to Get Started?
 

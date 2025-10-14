@@ -18,7 +18,7 @@ AutoStopping is designed to integrate seamlessly with native load-balancing solu
 
   <div className="proxy-component">
     <h4>AutoStopping Proxy</h4>
-    <p>A This proxy VM sits in front of your virtual machines and intelligently starts or stops them based on incoming traffic. It supports both HTTP(S) and TCP connections. Built on the proven, open-source Envoy Proxy, the AutoStopping Proxy is capable of managing traffic for multiple AutoStopping-managed VMs from a single instance.</p>
+    <p>This proxy VM sits in front of your virtual machines and intelligently starts or stops them based on incoming traffic. It supports both HTTP(S) and TCP connections. Built on the proven, open-source Envoy Proxy, the AutoStopping Proxy is capable of managing traffic for multiple AutoStopping-managed VMs from a single instance.</p>
   </div>
 </div>
 
@@ -57,7 +57,8 @@ AutoStopping is designed to integrate seamlessly with native load-balancing solu
 `}</style>
 
 
-Below table shows the resources supported by AutoStopping and the appropriate traffic management you can use for each resource type.
+
+The table below shows the resources supported by AutoStopping and the appropriate traffic management you can use for each resource type.
 
 | AWS Resource | AutoStopping Proxy | Application Load Balancer (ALB) |
 |--------------|-------------------|--------------------------------|
@@ -71,7 +72,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
 
 <DocImage path={require('../static/aws-lb.png')} width="50%" height="50%" title="Click to view full size image" />
 
-1. In the AutoStopping overview page, click **Load Balancers** in the top right
+1. In the AutoStopping Rules page, click **Load Balancers** in the top right
 2. Enter a name and select **AWS** in **Cloud Provider**
 3. Choose a cloud connector or create a [new one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws). 
 4. Enter **Load Balancer Configuration**.
@@ -94,7 +95,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
 3. Click **Create New Load Balancer**. Click **Create New AutoStopping Proxy**.
 4. Enter a name and select **AWS** in **Cloud Provider**.
 5. Choose an existing connector or [create a new one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
-6. Enter **Autostopping Proxy Configuration**.
+6. Enter **AutoStopping Proxy Configuration**.
     - **Region**: Select the AWS region where your target resources are hosted
     - **API Key**: Enter a Harness API key for authentication
       - Choose **No Expiration** when creating this key
@@ -119,7 +120,7 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
       - Remember to update your DNS records to point to this IP
 
 
-7. Click on "Save AutoStopping Proxy".
+7. Click **Save AutoStopping Proxy**.
 
 
 <details>
@@ -303,11 +304,13 @@ echo ">>> Setup complete."
 
 </Tabs>
 
+-------
+
 ## Create AutoStopping Rule
 
 - In Harness, navigate to **Cloud Costs** > **AutoStopping Rules** and click **New AutoStopping Rule**.
 - Select Cloud Provider as **AWS**. Select an existing AWS connector or create a new one.
-
+ 
 <Tabs>
 <TabItem value="Step1" label="Step 1: Configuration">
 
@@ -315,8 +318,8 @@ echo ">>> Setup complete."
 2. Set the **Idle Time** - the duration an instance should be inactive before stopping
 3. From the **Resources to be managed** section, choose the resource type you want to manage:
 
-<Tabs>
-<TabItem value="ec2" label="EC2 VMs">
+<details>
+<summary>EC2 VMs</summary>
 
 - Select **EC2 VMs** as the resource type
 - Choose the idle behavior: **Shut Down** or **Hibernate**
@@ -326,8 +329,10 @@ echo ">>> Setup complete."
 
 <DocImage path={require('../static/aws-ec.png')} width="100%" height="100%" title="Click to view full size image" />
 
-</TabItem>
-<TabItem value="ecs" label="ECS Service">
+</details>
+
+<details>
+<summary>ECS Service</summary>
 
 - Select **ECS Service** as the resource type
 - Click **Add an ECS Service**
@@ -338,8 +343,10 @@ echo ">>> Setup complete."
 
 <DocImage path={require('../static/aws-ecs.png')} width="100%" height="100%" title="Click to view full size image" />
 
-</TabItem>
-<TabItem value="asg" label="Auto-Scaling Groups">
+</details>
+
+<details>
+<summary>Auto-Scaling Groups</summary>
 
 - Select **ASG** as the resource type
 - Click **+ Add an auto-scaling group** and select the ASG to onboard
@@ -348,31 +355,47 @@ echo ">>> Setup complete."
 
 <DocImage path={require('../static/aws-asg.png')} width="100%" height="100%" title="Click to view full size image" />
 
-</TabItem>
-<TabItem value="rds" label="RDS Instances">
+</details>
+
+<details>
+<summary>RDS Instances</summary>
 
 - Select **RDS** as the resource type
 - Click **Add RDS Instance** and select the instance you want to manage
 
 <DocImage path={require('../static/aws-rds.png')} width="100%" height="100%" title="Click to view full size image" />
 
-</TabItem>
-</Tabs>
+</details>
 
 ------------
 
 **Advanced Configuration (Optional)**:
-    - **Hide Progress Page**: Toggle this to disable the display of a progress page during instance warm-up.
+
+    - **Hide Progress Page**: Toggle this to disable the display of a progress page during instance warm-up. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
+
     - **Dry-Run**: Toggle this button if you wish to evaluate the feature without terminating your cloud resources.
     <Tabs>
     <TabItem value="dependencies" label="Dependencies">
+    Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependent on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependent on the Rule managing the database server.
     Link your rule to other AutoStopping rules if resources depend on each other.
       - Click **Add Dependency** and select a rule from the **RULES** drop-down list.
       - In **DELAY IN SECS**, enter the number of seconds the dependent rule should wait after warming up before warming up this rule.
       <DocImage path={require('../static/aws-dependencies.png')} width="100%" height="100%" title="Click to view full size image" />
     </TabItem>
     <TabItem value="fixed-schedules" label="Fixed Schedules">
-    Create fixed uptime or downtime schedules for the resources managed by this rule. A fixed schedule takes precedence over the idle time logic.
+
+    Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
+
+    In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
+
+    :::note
+    The fixed schedule takes precedence over the defined AutoStopping Rule.
+    :::
+
+    :::note
+    Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
+    ::: 
+
       - Click **Add Fixed Schedule**.
       - Give the schedule a **Name**.
       - Select the **Type** of schedule (**Uptime** or **Downtime**).
@@ -382,65 +405,8 @@ echo ">>> Setup complete."
       <DocImage path={require('../static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
     </TabItem>
     </Tabs>
-<details>
-<summary>Click to expand advanced configuration details</summary>
 
-## (Optional) Set up advanced configuration
-
-In this step, you can configure the following settings:
-
-### Hide progress page
-
-Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
-
-### Dry Run
-
-Toggle the button if you wish to evaluate this feature without terminating your cloud resources. 
-
-### Add Dependency
-
-Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependent on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependent on the Rule managing the database server.
-
-1. Click **add dependency** to add a dependency on any existing rule.
-2. Select the rule from the **RULES** drop-down list.
-3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2 and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then first Rule 2 (dependent rule) is warmed up, and then there is a delay of 5 seconds before warming up Rule 1.
-4. Once you're done with all the configurations, click **Next**.
-
-### Fixed Schedule
-
-Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
-
-In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
-
-:::note
-The fixed schedule takes precedence over the defined AutoStopping Rule.
-:::
-
-:::note
-Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
-:::
-
-To create a fixed schedule for your rule, do the following:
-
-1. In **Fixed Schedules**, click **Add Fixed Schedule**.
-2. In **New Fixed Schedule**, enter a **Name** for your schedule.
-3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources go up or down.
-4. Select the **Time Zone** from the drop-down list.
-5. In **Set schedule period**, use the date picker to set the start and end time for your schedule.
-    1. In **Begins on**, select the start date and time for your schedule. You can select a date and specify the time.
-    2. In **Ends on**, select the end date and time for your schedule. You can select a date and specify the time. Ensure that **Never ends** checkbox is unselected to set the end time.  
-      
-      If you don't specify an end time, the schedule continues to run until you manually update the settings or remove the schedule.
-6. Select the checbox **Never ends** if you do not want to set end time for your schedule.
-7. You can also set a recurring schedule for the rule. If you want to set a recurring schedule, in **Uptime/Downtime in the selected period**, in **Repeats**, select the repeat frequency.
-    1. Select which days of the week you'd like your schedule to repeat. You can choose any day between Sunday and Saturday.
-    2. Select **Everyday**, to set the schedule for all seven days of the week.
-    3. Set your repeat schedule's beginning and ending time. In the **Time** field, specify the start and end time for the fixed schedule.
-    4. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.  
-
-</details>
-
-
+---------
 </TabItem>
 <TabItem value="setup-access" label="Step 2: Setup Access"> 
 
@@ -585,11 +551,11 @@ You can use either of the following methods:
 
 **Auto-generated URL**
 
-Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and point to the correct load balancer.
+Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and points to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
-
+--------
 
 **Custom URL**
 
@@ -599,54 +565,57 @@ Enter the custom URL currently used to access the instances. The domain name sho
 
 </details>
 
+-----
+
 </TabItem>
 <TabItem value="rds" label="RDS Instances">
 
-Since RDS has only autostopping proxy supported, you can use this to manage your traffic.
-In Setup Access, select Proxy from drop-down list or create a new one.
+Since RDS has only AutoStopping Proxy supported, you can use this to manage your traffic.
+In Set up Access, select Proxy from the drop-down list or create a new one.
 Select Source Port and Target Port.
-Click on Next.
+Click **Next**.
 
-
+------
 
 </TabItem>
 <TabItem value="ecs" label="ECS Services">
 
-A DNS link allows you to access the resources managed by the AutoStopping rule using an HTTP or HTTPS URL. To create a DNS Link, you need to:
+## Setting Up DNS Link
 
-Select a Load Balancer: The rule requires a load balancer to detect traffic and shut down appropriate instances. Multiple instances and rules can use a single load balancer. It identifies instances based on hostnames and directs the HTTP traffic appropriately.
-Select the URL Used to Access the Resources: You can use either of the following methods:
-Auto-generated URL: You can use the auto-generated URL to access the resources managed by this AutoStopping Rule.
-Custom URL: If using a custom URL:
-The domain name should be entered without prefixing the scheme.
-A rule can have multiple URLs.
-You can enter comma-separated values into a custom URL to support multiple URLs.
-AutoStopping rule can also use an additional custom domain. In such a case, it should be configured in the DNS provider.
-Select a Load Balancer
+A DNS link allows you to access the resources managed by the AutoStopping rule using an HTTP or HTTPS URL. To create a DNS Link, follow these steps:
 
-Select the load balancer from the drop-down list. The associated load balancer with your ECS service is listed.
+### 1. Select a Load Balancer
 
+1. From the dropdown list, select the load balancer associated with your ECS service.
+2. The rule requires this load balancer to detect traffic and manage instances appropriately.
 
+:::note
+Multiple instances and rules can use a single load balancer. It identifies instances based on hostnames and directs HTTP traffic accordingly.
+:::
 
-Select the URL for Accessing the Resources
+### 2. Select the URL for Accessing Resources
 
-You can use either of the following methods:
+Choose one of the following URL options:
 
-Auto-generated URL
-Custom URL
-Auto-generated URL
+#### Option A: Auto-generated URL
 
-Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the load balancer. Since the load balancer configures a wildcard domain such as *.autostopping.yourcompany.com, the auto-generated URL will work automatically and point to the correct load balancer.
+1. Select **Use the auto-generated URL** to access resources managed by this AutoStopping Rule.
+2. Every AutoStopping rule will have an auto-generated URL that works as a subdomain to the domain specified for the load balancer.
+3. Since the load balancer configures a wildcard domain (e.g., `*.autostopping.yourcompany.com`), this URL will automatically point to the correct load balancer.
 
-Select Use the auto-generated URL to access the resources managed by this AutoStopping Rule.
+#### Option B: Custom URL
 
+1. Enter the custom URL currently used to access the instances (without prefixing the scheme).
+2. For multiple URLs, enter comma-separated values.
 
+:::tip
+Custom URL features:
+- A rule can have multiple URLs
+- Custom domains must be configured in your DNS provider
+- You can change your site's URL from the default (like `autostop.harness.io`) to any domain you own
+:::
 
-Custom URL
-
-AutoStopping rule can use multiple custom domains. In such a case, it should be configured in the DNS provider. AutoStopping Rules also allows you to use custom domains or change the root of your site's URL from the default, like,autostop.harness.io, to any domain you own. To point your site's default domain to a custom domain, you can set it up in your DNS provider.
-
-Enter the custom URL currently used to access the instances. The domain name should be entered without prefixing the scheme. A rule can have multiple URLs. You can enter comma-separated values into a custom URL to support multiple URLs.
+--------
 
 </TabItem>
 </Tabs>
@@ -657,6 +626,9 @@ Enter the custom URL currently used to access the instances. The domain name sho
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
 Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
+
+------
+
 </TabItem>
 </Tabs>
 
@@ -666,14 +638,4 @@ For AWS, the savings are determined by calculating the total cost based on amort
 
 `Cost = Amortized Cost - Total Discounts`
 
-
-### Important points to Remember:
-
-- Savings numbers will become precise only after the savings numbers are finalized after the 15th of the next month (after the final settlement). Savings will be recomputed for the previous month on the 15th of the next month to ensure any updates to CUR/billing-export are considered in the final savings numbers for the month.
-
-- GCP billing export configured in the billing connector needs to be "detailed".
-
-- Azure billing export configured in the billing connector needs to be "amortized".
-
-- For cluster-based AutoStopping rules, the corresponding billing-enabled connector of the CSP should be configured in Harness; otherwise, savings computation will be based on public pricing data.
-
+Savings numbers will become precise only after the savings numbers are finalized after the 15th of the next month (after the final settlement). Savings will be recomputed for the previous month on the 15th of the next month to ensure any updates to CUR/billing-export are considered in the final savings numbers for the month.
