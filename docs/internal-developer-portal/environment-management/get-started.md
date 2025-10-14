@@ -32,7 +32,8 @@ Before you begin, ensure you have the following prerequisites setup:
     - `PIPE_DYNAMIC_PIPELINES_EXECUTION`
     - `IACM_1984_WORKSPACE_TEMPLATES`
 - Set “Enable Pipeline Dynamic Executions” to `True` in Account Settings -> Default Settings -> Pipeline. Go to [Pipeline Dynamic Executions](/docs/platform/pipelines/dynamic-execution-pipeline/) to learn more.
-- Ensure Harness Secret Manager is **NOT disabled** in your account. Environment Management uses the Harness secret manager to store some system-generated keys. Go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to learn more.
+- Ensure Harness Secret Manager is **NOT disabled** in your account. Environment Management uses the Harness secret manager to store some system-generated keys. Go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to learn more. If Harness Secret Manager is **not enabled**, ensure a secret named **`IDP_PO_API_KEY`** exists in the **same project scope** where the environments will be created. This secret must contain the **Service Account Token**.
+
 - A new Harness project where you have **Project Admin** role assigned, where you can create all the necessary Harness resources.
 
 ## Get Started
