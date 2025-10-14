@@ -18,7 +18,7 @@ export const proxySDKs = [
   },
   {
     name: 'Node.js SDK',
-    img: '/provider-logos/dotnet-logo.svg',
+    img: '/provider-logos/nodejs-logo.png',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk',
   },
 ];
