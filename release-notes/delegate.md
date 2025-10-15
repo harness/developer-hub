@@ -115,7 +115,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## October 2025
 
-### Version 25.09.86901 <!--October 15, 2025-->
+### Version 25.10.86901 <!--October 15, 2025-->
 
 #### Fixed issues
 
