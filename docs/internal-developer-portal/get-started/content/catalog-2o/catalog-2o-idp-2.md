@@ -10,22 +10,14 @@ The **Software Catalog** is a centralized registry of all your software assets â
 
 This guide walks you through the key changes introduced in IDP 2.0 and explains how to navigate the Catalog by creating and managing entities.
 
-## What's New in IDP 2.0?
-
-Harness IDP 2.0 introduces a major upgrade to the Software Catalog. Built on a Harness-native data model, it is designed to support enterprise-scale needs with robust access control. Key improvements include:
-
-* **Harness-native Platform Hierarchy:** Entities now support Account, Org, and Project scopes with fine-grained RBAC controls.
-* **No YAML Required:** Entities can be created and managed entirely via the UIâ€”no manual YAML editing or GitOps needed.
-* **Revamped UI:** A modern interface featuring updated Catalog tables, advanced filtering, smooth navigation, and inline entity creation.
-
-## Prerequisites (IDP 2.0)
+## Prerequisites
 
 Before using the Software Catalog in IDP 2.0, ensure:
 * You have reviewed the **[IDP 2.0 Overview](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path)** and **[Upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o)** guide. 
 * **IDP 2.0** is enabled behind the `IDP_2_0` Feature Flag. Contact [Harness Support](https://support.harness.io) to enable it on your account.
 * You are familiar with the **[Catalog Data Model](/docs/internal-developer-portal/catalog/data-model)** and **[Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml)** structure.
 
-## Create an Entity (IDP 2.0)
+## Create an entity manually
 
 In IDP 2.0, entity creation is simplified with full UI support and optional YAML-based creation. Entities are now "inline," which means their entire lifecycle can be managed through the UI or API, without Git integration.
 
@@ -56,8 +48,6 @@ The **identifier** is a unique key for your entity and cannot be changed after c
 
 4. Specify the **Entity Scope** (Account, Org, or Project). For this example, choose **Account scope**. [Read more about Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac).
 
-<DocImage path={require('./static/scope-entity.png')} />
-
 5. **Link to Source Code Repository**
    Configure the source code repository associated with this component. This link enables several key capabilities, such as:
   
@@ -73,15 +63,13 @@ The **identifier** is a unique key for your entity and cannot be changed after c
 
 :::info
   **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
-
-  <DocImage path={require('./static/yaml-validation.png')} />
-  :::
+:::
 
 8. If applicable, configure a plugin by referring to its documentation and adding the necessary **annotations** in the Catalog YAML.
 
-<DocImage path={require('./static/plugins-entity.png')} />
-
 9. Click **Save** to create your entity.
+
+<DocVideo src="https://app.tango.us/app/embed/8d74bc96-331e-4460-8d0e-5d839707ea9c" title="Create an entity manually via UI" />
 
 <details>
 <summary>Example Component YAML</summary>
@@ -107,6 +95,7 @@ spec:
 </details>
 
 </TabItem>
+
 <TabItem value="YAML" label="Catalog YAML">
 
 To create a **Component** using YAML:
@@ -156,7 +145,7 @@ metadata:
 </TabItem>
 </Tabs>
 
-## Delete an Entity (IDP 2.0)
+## Delete an entity
 
 You can remove any entity from the Catalog using the steps below:
 
@@ -164,9 +153,9 @@ You can remove any entity from the Catalog using the steps below:
 2. Click the three-dot menu on the entity card or details view.
 3. Select **Delete** from the dropdown. The entity will be permanently removed.
 
-<DocImage path={require('./static/delete-entity.png')} />
+<DocVideo src="https://app.tango.us/app/embed/1bf401cd-624f-4568-868a-63db3c167a1f" title="Delete an entity" />
 
-## Next Steps (IDP 2.0)
+## Next steps
 
 Now that you've created your first entity, explore these next steps:
 
