@@ -31,8 +31,6 @@ When you move a project to another organization in Harness, several actions take
 
 3. **Audit logs are generated:** All project moves are logged with details such as the user, timestamp, source organization, and destination organization. These audit trails provide accountability to support compliance requirements.
 
-For detailed pre-move and post-move verification steps, refer to the [project movement checklist](project-movement-checklist.md).
-
 ## Prerequisites and permissions
 
 To move a project between organization resources, you need the following roles on the project, its source organization, and the destination organization:
@@ -40,40 +38,20 @@ To move a project between organization resources, you need the following roles o
 - Move Permission on the project that you want to move.
 - Create Permission on the destination organization.
 
-## Supported Entities
+## Supported Modules
 
-When a project is moved across organizations, the following entities are supported.
+* [Platform](/docs/platform/platform-whats-supported)
+* [Continuous Delivery](/docs/continuous-delivery/cd-integrations)
+* [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
+* [Internal Developer Portal](/docs/internal-developer-portal/whats-supported)
+* [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
+* [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
+* [Code Repository](/docs/code-repository/code-supported)
+* [Database DevOps](/docs/database-devops/dbdevops-supported-platforms.md)
+* [Software Engineering Insights](/docs/software-engineering-insights/sei-support)
 
-### Pipelines
-  
-Pipelines move with the project, including executions, input sets, triggers, variables, and notifications. However, there are some limitations:
-
-  - Pipeline chaining fails if a child pipeline is moved.
-  - Pipelines that depend on project-level delegates may take approximately one minute to run after the move.
-  - Pipelines that were running during the move operation might fail.
-
-### Secrets
-
-Project-scoped secrets are preserved and move with the project automatically during the migration. However, Organization-scoped secrets must be recreated in the destination organization as they don't transfer between organizations due to isolation boundaries.
-
-Additionally, triggers that reference organization or project identifiers will fail after the move and must be updated to function properly.
-
-### Access control Components
-
-Project-level roles and permissions remain intact during the move, ensuring that user access within the project continues unchanged. However, Organization-level RBAC policies do not transfer and must be reapplied in the destination organization to maintain proper access controls.
-
-### Audit Logs
-
-Historical data and execution records are fully preserved when moving projects, ensuring no loss of audit trails or pipeline run history. However, links in the audit logs may break which redirects to the entity on the old organization. 
-
-### Notifications and Webhooks
-
-Notifications continue to function normally after the move. However, generic webhooks and Slack webhooks that contain organization or project identifiers will fail and require reconfiguration. 
-
-:::note Redirection may break
-
-Redirect links in pipelines, webhooks, audit logs, or other entities may stop working after a project is moved across organizations, as the old organization will no longer be available or referenced.
-
-For example, if Project P is moved from Organization O1 to O2, new entities such as audit logs will be generated under the new organization. However, any redirection links that reference the old organization (O1) in those logs will no longer function.
-
+:::note [Unsupported Entities](/docs/platform/references/harness-entity-reference)
+  - In the Continuous Delivery module, the following entities are not supported: Policy as Code (OPA), GitOps, and Continuous Verification. 
 :::
+
+For detailed pre-move and post-move verification steps, refer to the [project movement checklist](project-movement-checklist.md).
