@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2025-09-23T10:00
+date: 2025-10-15T10:00
 sidebar_position: 13
 ---
 
@@ -22,6 +22,37 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 ## September 2025
+
+### Version 1.162.0
+
+<!-- 2025-10-15 -->
+
+#### New Features and Enhancements
+
+- **GA Announcement:** The option to download security scan results as CSV from the **Vulnerabilities** tab is now **Generally Available (GA)**.  
+  - The **[Download CSV](/docs/security-testing-orchestration/view-security-test-results/export-scan-results)** button in the Vulnerabilities tab allows you to export scan results directly.  
+  - The **View in Dashboard** option now redirects you to the **[Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary)**, automatically applying your pipeline execution ID as a filter to view detailed scan results.  
+  - This feature was previously behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY`. 
+
+  <DocImage path={require('./static/sto-export-csv.png')} width="80%" height="80%" title="Click to view full size image" />
+
+- Introduced a new **AIML** scanner category dedicated to listing all AI/ML scanners. The **[ModelScan](/docs/security-testing-orchestration/sto-techref-category/modelscan)** step is now included under this category (STO-9830).
+
+  <DocImage path={require('./static/sto-aist-section.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
+- The **Vulnerabilities** tab now includes **aggregated scan results**, covering the following scenarios (STO-9829):
+    - **Chained pipelines**: Results now include vulnerabilities from pipelines linked as stages (chained pipelines) within the same project. Cross-project pipelines remain excluded as before.
+    - **Partially failed executions**: Vulnerabilities from partially failed pipeline runs are now displayed.
+    - **Retries and duplicates**: When a stage is retried, all issues from retried and non-retried stages are now shown. However, repeated scans of the same target using the same scanner mode (e.g., repository or container) are treated as redundant, and only the latest scan results will appear.
+    - **Exemptions inheritance**: Exemptions created at the pipeline scope are inherited by chained pipelines. When creating exemptions for issues originating from chained pipelines, the exemption scope will reflect the source (chained) pipeline.
+- Updated RBAC behavior: If a user has view permission, user information is now displayed correctly. Previously, users without permission to view user info would see a blank details section. Note that if the user has been deleted, data may still be unavailable (STO-8871, ZD-82948).
+
+#### Fixed Issues
+
+- Fixed a bug on the **Issues** page where navigating to a different page, opening the side panel, and closing it caused the view to reset to the first page. The view now remains on the selected page (STO-9848).
+- Fixed an issue where STO dashboards did not correctly reflect issue statuses at scan time, resulting in discrepancies. Dashboards now account for exemption states at scan time, issues are shown as exempted only after approval and rescanning (STO-8623, ZD-74374, ZD-78347, ZD-91111).
+
 
 ### Version 1.160.0
 
@@ -49,7 +80,7 @@ Added a new **[Active Issues](/docs/security-testing-orchestration/view-security
   <DocImage path={require('./static/sto-active-issues.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ##### SonarQube Step Enhancement:
-**SonarQube** issues with type `Code Smells` and `Bug Smells` now can include proper severity mapping instead of defaulting to `info` severity.  
+**SonarQube** issues with type `Code Smells` and `Bug Smells` now can include proper severity mapping instead of defaulting to `info` severity. (STO-8757)
   - This is controlled by the **Treat Code Smells and Bug Smells as Vulnerabilities** setting (account-level, disabled by default). Refer to the [SonarQube documentation](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-issue-categorization-in-sto) for more details.  
 
   <DocImage path={require('./static/sto-sonarqube-code-bug-smells.png')} width="80%" height="80%" title="Click to view full size image" />  
