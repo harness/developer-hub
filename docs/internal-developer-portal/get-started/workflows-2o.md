@@ -1,7 +1,7 @@
 ---
 title: Get Started with Workflows
 sidebar_position: 8
-sidebar_label: Get Started with Workflows
+sidebar_label: Create Self-Service Workflows
 redirect_from: /docs/internal-developer-portal/get-started/workflow-quickstart.md
 ---
 import Tabs from '@theme/Tabs';

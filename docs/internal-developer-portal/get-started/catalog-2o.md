@@ -1,7 +1,7 @@
 ---
 title: Get Started with Catalog
 sidebar_position: 3
-sidebar_label: Get Started with Catalog
+sidebar_label: Setup Software Catalog
 redirect_from: /docs/internal-developer-portal/get-started/register-a-new-software-component
 ---
 
