@@ -1828,6 +1828,46 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   }
 }
 
+/* Dropdown section headers */
+.navbar .dropdown__menu .dropdown__section-header {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-700);
+  background-color: #EEFBFF;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  box-sizing: border-box;
+}
+
+/* Dark mode header appearance */
+html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
+  color: var(--ifm-color-content);                       /* light text */
+  background-color: rgba(61, 199, 246, 0.12);            /* tint of primary-4 (#3dc7f6) */
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Remove top border on very first header (keeps dropdown clean at top) */
+.navbar .dropdown__menu .dropdown__section-header:first-of-type {
+  border-top: none;
+  margin-top: 4px;
+}
+
+/* Optional: Remove hover feedback since headers are static text */
+.navbar .dropdown__menu .dropdown__section-header:hover {
+  background-color: #EEFBFF;
+  cursor: default;
+}
+
+/* Ensure headers don’t get icon spacing */
+.navbar .dropdown__menu .dropdown__section-header::before {
+  content: none !important;
+}
+
 /* Ensure docs dropdown links are aligned with icon */
 .navbar .dropdown__link[href^="/docs/"] {
   display: flex;
