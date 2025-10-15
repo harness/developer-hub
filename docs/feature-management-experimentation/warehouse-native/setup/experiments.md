@@ -2,7 +2,7 @@
 title: Create an Experiment
 sidebar_label: Create an Experiment
 description: Learn how to create a cloud experiment in Harness FME.
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 <CTABanner

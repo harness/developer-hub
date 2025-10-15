@@ -1,8 +1,8 @@
 ---
-title: Metrics for Warehouse Native Experimentation
-sidebar_label: Metrics in Harness FME
-sidebar_position: 5
-description: Learn about metrics in Warehouse Native and Cloud Experimentation.
+title: Connect Snowflake 
+description: Learn how to integrate Snowflake with Harness FME to enable Warehouse Native Experimentation.
+sidebar_label: Snowflake
+sidebar_position: 1
 ---
 
 <CTABanner
@@ -13,9 +13,3 @@ description: Learn about metrics in Warehouse Native and Cloud Experimentation.
   closable={true}
   target="_self"
 />
-
-## Overview
-
-import Metrics from '/docs/feature-management-experimentation/shared/metrics/index.md'
-
-<Metrics />

@@ -1,8 +1,8 @@
 ---
-title: Metrics for Warehouse Native Experimentation
-sidebar_label: Metrics in Harness FME
-sidebar_position: 5
-description: Learn about metrics in Warehouse Native and Cloud Experimentation.
+title: Connect BigQuery 
+description: Learn how to integrate BigQuery with Harness FME to enable Warehouse Native Experimentation.
+sidebar_label: BigQuery
+sidebar_position: 3
 ---
 
 <CTABanner
@@ -13,9 +13,3 @@ description: Learn about metrics in Warehouse Native and Cloud Experimentation.
   closable={true}
   target="_self"
 />
-
-## Overview
-
-import Metrics from '/docs/feature-management-experimentation/shared/metrics/index.md'
-
-<Metrics />
