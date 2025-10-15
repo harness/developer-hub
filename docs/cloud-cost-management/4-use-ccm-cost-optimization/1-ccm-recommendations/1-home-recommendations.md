@@ -349,7 +349,7 @@ In ServiceNow (SNOW), a Service Request is a type of ticket that users raise whe
 
 - Log in to ServiceNow as an Administrator.
 - Navigate to the "Maintain Items" section.
-- Click "New" in the top right corner to create a new catalog item called "Harness CCM Recommendation".
+- Click "New" in the top right corner to create a new catalog item.
 <DocImage path={require('./static/snow-five.png')} width="80%" height="80%" title="Click to view full size image" />
 
 - Define a service catalog with the "Software" category. Ensure the name of the catalog item exactly matches "Harness CCM Recommendation" and mark it as Active.
