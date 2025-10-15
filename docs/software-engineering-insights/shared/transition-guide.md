@@ -69,13 +69,13 @@ This transition is your opportunity to start fresh, remove technical debt, and a
 
 ## SEI 1.0 to SEI 2.0
 
-To access the latest [SEI 2.0](/docs/software-engineering-insights/harness-sei/sei-overview) experience, click **Switch to 2.0** below the **Account Management** button.
+To access the latest [SEI 2.0](/docs/software-engineering-insights/harness-sei/sei-overview) experience, click **Switch to 2.0** below **Account Management** in the Harness SEI navigation menu.
 
 ![](../harness-sei/static/transition-2.png)
 
 ## SEI 2.0 to SEI 1.0
 
-To return to the [SEI 1.0](/docs/software-engineering-insights/propelo-sei/get-started/overview) experience, click **Switch to 1.0** below the **Account Management** button. 
+To return to the [SEI 1.0](/docs/software-engineering-insights/propelo-sei/get-started/overview) experience, click **Switch to 1.0** below **Account Management** in the Harness SEI navigation menu.
 
 ![](../harness-sei/static/transition-1.png)
 
