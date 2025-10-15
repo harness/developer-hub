@@ -71,6 +71,15 @@ import StoSettingProductConfigName from './shared/step-palette/scan/config-name.
 
 <StoSettingProductConfigName />
 
+##### Vulnerability types (Anchore VULN_TYPE)
+
+You can choose which types of Anchore vulnerabilities STO retrieves from the Anchore API. This setting filters the records returned to STO; it does not change how Anchore analyzes images.
+
+- all (default): Combination report containing both OS and non‑OS vulnerability records.
+- os: Vulnerabilities against operating system packages (RPM, DPKG, APK, etc.).
+- non-os: Vulnerabilities against language packages (NPM, GEM, Java Archive (jar, war, ear), Python PIP, .NET NuGet, etc.).
+
+Use this to tailor reports to your remediation workflow. For example, pick non-os to focus on app/library issues handled by developers, or os to isolate base/OS package findings typically addressed through base image updates.
 
 ### Target
 
@@ -334,6 +343,3 @@ pipeline:
 ```
 
 </details>
-
-
-
