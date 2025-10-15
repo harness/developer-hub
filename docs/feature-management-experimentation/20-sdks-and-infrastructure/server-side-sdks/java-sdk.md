@@ -1145,7 +1145,7 @@ Import the Redis Wrapper into your project using one of the two methods below:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:redis-wrapper:1.0.0'
+compile 'io.split.client:redis-wrapper:3.1.2'
 ```
 
 </TabItem>
