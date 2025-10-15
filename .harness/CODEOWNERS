@@ -76,12 +76,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 
 # STO Docs
 /docs/security-testing-orchestration/ teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
-/docs/faqs/security-testing-orchestration/ teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
 /release-notes/security-testing-orchestration.md teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
 /src/components/Roadmap/data/stoData.ts teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
 /src/components/Docs/data/securityTestingOrchestrationData.ts teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
 # STO FAQs
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+/docs/security-testing-orchestration/faqs.md @tejakummarikuntla @priteshchandaliya
 
 # CCM Docs
 
