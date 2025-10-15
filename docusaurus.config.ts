@@ -554,7 +554,7 @@ const config: Config = {
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
-    path.join(__dirname, '/client-modules/chatbot'),
+    // path.join(__dirname, '/client-modules/chatbot'),
   ],
   stylesheets: [
     {
