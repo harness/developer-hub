@@ -429,7 +429,12 @@ If you create a **new project in Harness** post-migration, your legacy Split Adm
 *Concept: This is a difference in the legacy Split permissioning model and the Harness RBAC model (least privilege model). In Harness, new projects are restricted upon creation and all access permissions need to be granted manually at the project level. (The exception is if you use the All Resources Including Child Scopes resource group in your Account or Organization level role bindings, but this is not recommended.)*
 :::
 
-Post-migration, your legacy Split Admin API keys are listed in **FME Settings**.
+Post-migration, your legacy Split Admin API keys are listed in **FME Settings**. _Environment-scoped_ legacy Split Admin API keys will be listed in FME Settings _if you are in the project where the [environment was created](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments/#editing)_.
+
+To view ___environment-scoped___ keys alongside the globally-scoped legacy Split Admin API keys:
+1. In the left navigation pane, click the scope selector and select the project where the environment was created.
+1. In the left navigation pane, click **FME Settings**.
+1. Under **Project settings**, click **API keys**. The environment-scoped legacy keys will be listed for that project.
 
 ![](./static/fme-settings-api-keys.png)
 
