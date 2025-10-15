@@ -1,7 +1,7 @@
 ---
-title: Cloud Cost Management release notes
+title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-10-08T18:00
+date: 2025-10-15T18:00
 sidebar_position: 6
 ---
 
@@ -20,13 +20,13 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 :::
 
-## Impotant Notice:  
-We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. Action required: Please update your automated scripts to ensure compatibility with the new system.
+## Important Notice:  
+We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
 
-[Instruction to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+[Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
 ## October 2025 - Version 1.66.0
-#### Deployment Date: October 13, 2025 (Prod-1)
+#### Deployment Date: October 15, 2025 (Prod-1)
 
 ### [New Feature] Bulk Management and Filtering in Budgets
 **[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget#budgets-overview-page)**
@@ -50,21 +50,32 @@ All filter dropdowns are now context-aware, showing only options relevant to you
 
 <DocImage path={require('./static/ccm/bulk-management.png')} width="90%" height="90%" title="Click to view full size image" />
 
+### [New Feature] Ticketing Tool Mapping
+**[CCM-25483] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#aws)**
+
+We've introduced Jira integration features to streamline your recommendation workflow:
+
+1. **Status Mapping with Resolution Codes**: Earlier, we introduced the ability to automatically update recommendation statuses based on Jira ticket status changes. Now, you can also choose Resolution Codes that will automatically update recommendations to Applied status.
+
+2. **Default Project Mapping**: Route recommendations to the right teams by mapping cost categories to specific Jira projects. When creating tickets, projects are auto-selected based on the resource's cost category, ensuring recommendations reach the appropriate stakeholders without manual routing.
+
+<DocImage path={require('./static/ccm/ticketing-tool.png')} width="50%" height="50%" title="Click to view full size image" />
+
 ### Feature Improvements
 
 - **Disable Functionality**: Added support for disabling Cluster Orchestrator on enabled clusters. Disabling a Cluster Orchestrator stops all its components, removes finalizers and configurations, disables Harness-managed nodepools, and prepares the cluster for Karpenter (or any autoscaler) fallback. [CCM-25739]
 
 - **Enhanced Recommendation Tags**: Added a "tags" field to each data item in the API response for the Recommendations overview list endpoint (/ccm/api/recommendation/overview/list) which contains all of the cloud tags associated with each recommendation. If no cloud tags exist for a Recommendation, "null" is given instead. [CCM-25737]
 
-- **Enhanced Ticket Management**: Added support for "Service Request" ticket type for our Service Now integration for recommendations. Using Service request tickets customers can manage recommendations more easily using automated workflows and auto discovery. Tickets lifecycle can be managed using proper fulfillment and approvals.
+- **Enhanced Ticket Management for ServiceNow**: Added support for "Service Request" ticket type for our ServiceNow integration for recommendations. Using Service Request tickets, customers can manage recommendations more easily with automated workflows and auto-discovery. Ticket lifecycle can be managed using proper fulfillment and approvals.
+
+<DocImage path={require('./static/ccm/snow-integration.png')} width="60%" height="60%" title="Click to view full size image" />
 
 - **Vanity URL Support**: Added support for vanity URL redirection in budget email alerts. Earlier, alerts for customers using vanity URLs redirected to app.harness.io, which was invalid. They now correctly redirect to the customer’s vanity URL. [CCM-25920]
 
 ### Fixed Issues
 
-- **Bar Chart Fix**: The Harness CCM Overview page bar chart duplicated Azure costs due to missing filters for actual vs amortised values, and the issue was resolved by fetching azureCostType from the Active Spend API and applying it as a condition. [CCM-23539]
-
-- **Budget Reassignment Fix**: Resolved an issue where budgets associated with deleted folders were not reassigned properly. All related budgets now migrate to the default folder to maintain data consistency and visibility. [CCM-26345]
+- **Bar Chart Fix**: The Harness CCM Overview page bar chart duplicated Azure costs due to missing filters for actual vs amortized values. This issue was resolved by fetching azureCostType from the Active Spend API and applying it as a condition. [CCM-23539]
 
 ### [New Feature] Budget Folders
 
