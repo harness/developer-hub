@@ -362,6 +362,8 @@ In ServiceNow (SNOW), a Service Request is a type of ticket that users raise whe
 <DocImage path={require('./static/snow-eight.png')} width="80%" height="80%" title="Click to view full size image" />
 - The variables defined in ServiceNow will be automatically populated with values from the recommendation data (keys must match) in CCM UI.
 
+<DocImage path={require('./static/snow-ticket.png')} width="80%" height="80%" title="Click to view full size image" />
+
 </TabItem>
 </Tabs>
 
