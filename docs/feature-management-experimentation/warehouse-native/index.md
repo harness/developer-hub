@@ -111,6 +111,4 @@ flowchart LR
 
 ## Get started
 
-To set up Warehouse Native Experimentation, see the [Setup documentation](/docs/feature-management-experimentation/warehouse-native/setup/).
-
-// Insert tile selector for data warehouse integration options
+To get started, [connect a data warehouse](/docs/feature-management-experimentation/warehouse-native/integrations/) and set up [assignment and metric sources](/docs/feature-management-experimentation/warehouse-native/setup/) to enable Warehouse Native Experimentation in Harness FME.

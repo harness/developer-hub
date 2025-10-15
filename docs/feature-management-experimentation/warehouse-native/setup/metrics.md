@@ -20,7 +20,7 @@ This page explains how to create, manage, and troubleshoot metric definitions fo
 
 ## Setup
 
-To create a metric in Harness FME, navigate to **Metrics** in the navigation menu and click **Create metric**.
+To create a [metric in Harness FME](/docs/feature-management-experimentation/warehouse-native/metrics/), navigate to **Metrics** in the navigation menu and click **Create metric**.
 
 Then, configure the following components in the side panel: 
 
@@ -75,9 +75,30 @@ Once created, metrics become shared, reusable definitions that teams can referen
 
 ## Troubleshooting
 
-If a metric doesn't appear or behaves unexpectedly, review the following:
+If a metric doesn't appear or behaves unexpectedly:
 
-- Metric not appearing in experiment setup: Ensure you’ve clicked **Create** and that the metric includes a valid source and event mapping.
-- Incorrect aggregation: Double-check your **Measure As** setting (for example, `Count`, `Average`, `Sum`, or `Percentage`).
-- Event mismatch: Verify that the selected event name exists in the chosen **Metric Source** and is mapped correctly.
-- Impact direction confusion: Confirm that **Increase** is used for positive outcomes (like conversion or revenue) and **Decrease** for negative ones (like latency or error rate).
+<details>
+<summary>Metric Not Appearing in Experiment Setup</summary>
+
+Ensure you’ve clicked **Create** and that the metric includes a valid source and event mapping.
+
+</details>
+
+<details>
+<summary>Incorrect Aggregation</summary>
+
+Double-check your **Measure As** setting (for example, `Count`, `Average`, `Sum`, or `Percentage`).
+
+</details>
+
+<details>
+<summary>Event Mismatch</summary>
+
+Verify that the selected event name exists in the chosen **Metric Source** and is mapped correctly.
+</details>
+
+<details>
+<summary>Impact Direction Confusion</summary>
+
+Confirm that **Increase** is used for positive outcomes (like conversion or revenue) and **Decrease** for negative ones (like latency or error rate).
+</details>
