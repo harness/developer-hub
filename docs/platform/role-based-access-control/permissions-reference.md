@@ -274,7 +274,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Schemas | <ul><li>View (`dbops_schema_view`)</li><li>Create/Edit (`dbops_schema_edit`)</li><li>Delete (`dbops_schema_delete`)</li></ul> | Active |
 | Instances | <ul><li>View (`dbops_instance_view`)</li><li>Create/Edit (`dbops_instance_edit`)</li><li>Delete (`dbops_instance_delete`)</li></ul> | Active |
 
-## Artifact Management
+### Artifact Management
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
