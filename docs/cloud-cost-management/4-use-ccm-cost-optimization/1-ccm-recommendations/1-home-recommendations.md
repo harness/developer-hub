@@ -317,6 +317,101 @@ When the user clicks "Create Ticket," an API call is made to ServiceNow to creat
 
 
 </TabItem>
+<TabItem value="snow-service-request" label="ServiceNow Service Request">
+
+## ServiceNow Service Request Integration
+
+In ServiceNow (SNOW), a Service Request is a type of ticket that users raise when they want a standard service, resource, or information from IT or another department.
+
+**Common examples of Service Requests include:**
+
+* Requesting access to software applications
+* Ordering new hardware resources
+* Creating new email distribution lists
+* Requesting password resets
+* Requesting system configurations or reports
+
+### ServiceNow Data Structure
+
+Service Request is not a table type but composed of multiple table the hierarchy looks like
+
+```
+sc_request (Request)  
+   └── sc_req_item (Requested Item - RITM)  
+           └── sc_task (Fulfillment Task)  
+```
+
+This structure follows a pattern where:
+
+* A request (REQ) is created with a unique identifier (e.g., REQ001000109)
+* Each request can contain multiple requested items (RITM) (e.g., RITM001010012)
+* Each requested item can have multiple fulfillment tasks (SCTASK) (e.g., SCTASK001003)
+
+### Creating Service Requests
+
+ServiceNow uses a service catalog containing items that users can order. When an item is ordered (either directly or through a shopping cart), a service request is created in the sc_request table.
+
+:::important
+To integrate with Harness, you need to create a dedicated catalog item in your ServiceNow service catalog with all the necessary variables for handling Harness recommendations.
+:::
+
+<DocImage path={require('./static/snow-one.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/snow-two.png')} width="80%" height="80%" title="Click to view full size image" />
+
+### Steps to raise service request using api
+
+1. Fetch the sys_id of your Harness catalog item:
+
+   ```
+   GET {url}/api/sn_sc/servicecatalog/items
+   ```
+
+2. Retrieve the variables associated with your catalog item:
+
+   ```
+   GET {url}/api/sn_sc/servicecatalog/items/{sys_id}/variables
+   ```
+
+3. Submit a new order with the recommendation details:
+
+   ```
+   POST {url}/api/sn_sc/servicecatalog/items/{sys_id}/order_now
+
+   request body: {
+     'sysparam_quantity': 1,
+     'variables': {
+       'recommendation_id': '<recommendation_id>',
+       'recommendation_link': '<recommendation_link>',
+       'description': '<description>',
+       // Additional variables as needed
+     }
+   }
+   ```
+
+When the order is successfully submitted, a request (REQ) with associated requested items (RITM) will be created in your ServiceNow instance.
+
+<DocImage path={require('./static/snow-three.png')} width="80%" height="80%" title="Click to view full size image" />
+
+<DocImage path={require('./static/snow-four.png')} width="80%" height="80%" title="Click to view full size image" />
+
+### Steps to Configure a Catalog Item in ServiceNow
+
+- Log in to ServiceNow as an Administrator.
+- Navigate to the "Maintain Items" section.
+- Click "New" in the top right corner to create a new catalog item called "Harness CCM Recommendation".
+<DocImage path={require('./static/snow-five.png')} width="80%" height="80%" title="Click to view full size image" />
+
+- Define a service catalog with the "Software" category. Ensure the name of the catalog item exactly matches "Harness CCM Recommendation" and mark it as Active.
+<DocImage path={require('./static/snow-six.png')} width="80%" height="80%" title="Click to view full size image" />
+
+- Define variables in the catalog item so that recommendation payload can be sent with the request/ticket:
+
+<DocImage path={require('./static/snow-seven.png')} width="80%" height="80%" title="Click to view full size image" />
+- Use camel case convention for variable names (e.g., awsAccountId). You can provide additional data fields such as description and shortDescription.
+<DocImage path={require('./static/snow-eight.png')} width="80%" height="80%" title="Click to view full size image" />
+- The variables defined in ServiceNow will be automatically populated with values from the recommendation data (keys must match) in CCM UI.
+
+</TabItem>
 </Tabs>
 
   
