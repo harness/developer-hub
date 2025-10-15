@@ -21,7 +21,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
-## September 2025
+## October 2025
 
 ### Version 1.162.0
 
@@ -29,30 +29,37 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### New Features and Enhancements
 
-- **GA Announcement:** The option to download security scan results as CSV from the **Vulnerabilities** tab is now **Generally Available (GA)**.  
+##### Download CSV is now Generally Available
+The option to download security scan results as CSV from the **Vulnerabilities** tab is now **Generally Available (GA)**.  
   - The **[Download CSV](/docs/security-testing-orchestration/view-security-test-results/export-scan-results)** button in the Vulnerabilities tab allows you to export scan results directly.  
   - The **View in Dashboard** option now redirects you to the **[Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary)**, automatically applying your pipeline execution ID as a filter to view detailed scan results.  
   - This feature was previously behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY`. 
 
   <DocImage path={require('./static/sto-export-csv.png')} width="80%" height="80%" title="Click to view full size image" />
 
-- Introduced a new **AIML** scanner category dedicated to listing all AI/ML scanners. The **[ModelScan](/docs/security-testing-orchestration/sto-techref-category/modelscan)** step is now included under this category (STO-9830).
+##### AIML Scanner Category
+Introduced a new **AIML** scanner category dedicated to listing all AI/ML scanners. The **[ModelScan](/docs/security-testing-orchestration/sto-techref-category/modelscan)** step is now included under this category (STO-9830).
 
   <DocImage path={require('./static/sto-aist-section.png')} width="80%" height="80%" title="Click to view full size image" />
 
+##### New scan configurations for Anchore Enterprise step
+Added new **scan configurations** for **Orchestration** and **Extraction** modes in the **[Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference)** step.  
+  These configurations let users control how reports are filtered when retrieved from the configured Anchore API:  
+  - **OS:** Includes vulnerabilities related to operating system packages (RPM, DPKG, APK, etc.).  
+  - **Non-OS:** Includes vulnerabilities related to language or application packages (NPM, GEM, Java Archive — JAR/WAR/EAR, Python PIP, .NET NuGet, etc.).  
+  - **All** (or **Default**): Provides a combined report containing both OS and Non-OS vulnerability records.
 
-- The **Vulnerabilities** tab now includes **aggregated scan results**, covering the following scenarios (STO-9829):
-    - **Chained pipelines**: Results now include vulnerabilities from pipelines linked as stages (chained pipelines) within the same project. Cross-project pipelines remain excluded as before.
-    - **Partially failed executions**: Vulnerabilities from partially failed pipeline runs are now displayed.
-    - **Retries and duplicates**: When a stage is retried, all issues from retried and non-retried stages are now shown. However, repeated scans of the same target using the same scanner mode (e.g., repository or container) are treated as redundant, and only the latest scan results will appear.
-    - **Exemptions inheritance**: Exemptions created at the pipeline scope are inherited by chained pipelines. When creating exemptions for issues originating from chained pipelines, the exemption scope will reflect the source (chained) pipeline.
-- Updated RBAC behavior: If a user has view permission, user information is now displayed correctly. Previously, users without permission to view user info would see a blank details section. Note that if the user has been deleted, data may still be unavailable (STO-8871, ZD-82948).
+  <DocImage path={require('./static/sto-anchore-scan-configs.png')} width="80%" height="80%" title="Click to view full size image" />
+
+##### Updated RBAC behavior for user info
+If a user has view permission, user information is now displayed correctly. Previously, users without permission to view user info would see a blank details section. Note that if the user has been deleted, data may still be unavailable (STO-8871, ZD-82948).
 
 #### Fixed Issues
 
 - Fixed a bug on the **Issues** page where navigating to a different page, opening the side panel, and closing it caused the view to reset to the first page. The view now remains on the selected page (STO-9848).
 - Fixed an issue where STO dashboards did not correctly reflect issue statuses at scan time, resulting in discrepancies. Dashboards now account for exemption states at scan time, issues are shown as exempted only after approval and rescanning (STO-8623, ZD-74374, ZD-78347, ZD-91111).
 
+## September 2025
 
 ### Version 1.160.0
 
