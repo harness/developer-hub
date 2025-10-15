@@ -1,7 +1,9 @@
 ---
 title: Get Started with RBAC
-sidebar_position: 9
+sidebar_position: 1
 sidebar_label: Get Started with RBAC
+redirect_from:
+  - /docs/internal-developer-portal/get-started/rbac
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

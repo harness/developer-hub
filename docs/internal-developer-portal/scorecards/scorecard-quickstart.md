@@ -1,9 +1,10 @@
 ---
 title: Get Started with Scorecards
 description: Learn how to create Scorecards to assess and track the readiness of your software components in the catalog. 
-sidebar_position: 5
+sidebar_position: 2
 redirect_from:
   - /docs/internal-developer-portal/scorecards/scorecard-quickstart
+  - /docs/internal-developer-portal/get-started/scorecard-quickstart
 sidebar_label: Get Started with Scorecards
 ---
 
