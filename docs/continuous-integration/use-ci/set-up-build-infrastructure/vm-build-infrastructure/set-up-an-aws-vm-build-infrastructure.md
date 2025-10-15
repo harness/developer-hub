@@ -10,6 +10,7 @@ helpdocs_is_published: true
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CustomCAcert from '/docs/continuous-integration/shared/windows-custom-ca-certs.md';
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -112,6 +113,8 @@ C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedul
 :::
 
 If you get an error about an unrecognized `refreshenv` command, you might need to [install Chocolatey](https://chocolatey.org/install) and add it to `$profile` to enable the `refreshenv` command.
+
+<CustomCAcert/>
 
 ### Environment Variables
 

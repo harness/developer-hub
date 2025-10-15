@@ -8,6 +8,8 @@ helpdocs_is_private: true
 helpdocs_is_published: true
 ---
 
+import CustomCAcert from '/docs/continuous-integration/shared/windows-custom-ca-certs.md';
+
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 :::note
@@ -312,6 +314,8 @@ By default, delegate selectors aren't applied to delegate-related CI codebase ta
 With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
 
 </details>
+
+<CustomCAcert/>
 
 ## Troubleshoot self-managed VM build infrastructure
 

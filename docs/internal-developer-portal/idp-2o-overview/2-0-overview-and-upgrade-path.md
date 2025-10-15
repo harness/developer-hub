@@ -18,7 +18,7 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
 | [**New System Entity for grouping**](/docs/internal-developer-portal/catalog/system-entity)           | ✅ (Ready to onboard)  |
 | [**Custom User Groups**](/docs/internal-developer-portal/catalog/user-group)                   | ✅ (Ready to onboard)  |
-| **Project/Org filters in Scorecards**                                                                 | ⏳ ETA Oct 2025        |
+| [**Project/Org filters in Scorecards**](/docs/internal-developer-portal/scorecards/scorecard.md#create-a-scorecard)                                                                | ✅ (Ready to onboard)        |
 
 :::
 
@@ -372,7 +372,7 @@ Custom User Groups are created at the account level and coexist with platform us
 | UI-based Workflow Creation           | ❌      | ✅      |                                                                                                                                                                                                                |
 | 📊 **Scorecards**                    |         |         |                                                                                                                                                                                                                |
 | Scorecards in Catalog View           | ❌      | ✅      |                                                                                                                                                                                                                |
-| Project/Org filters in Scorecards    | ❌      | Planned | Scorecards can be applied to entities based on their scopes.                                                                                                                                                   |
+| Project/Org filters in Scorecards    | ❌      | ✅ | Scorecards can be applied to entities based on their scopes.                                                                                                                                                    |
 | Scorecards scoped to Project/Org     | ❌      | Planned | Scorecards can be created directly at the Project or Org scope.                                                                                                                                                |
 | 🔄 **Git Experience**                |         |         |                                                                                                                                                                                                                |
 | YAMLs in Git                         | ✅      | ✅      |                                                                                                                                                                                                                |

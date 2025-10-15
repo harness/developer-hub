@@ -41,8 +41,6 @@ For more information about navigation 2.0, go to [Harness navigation 2.0](https:
 | CD | Troubleshoot CD deployments | Resolve your deployment failures with AI's root cause analysis (RCA). | Generally available |
 | CD | Policy As Code Assistant | Generate and integrate Open Policy Agent (OPA) Rego policies to meet your compliance standards with the Harness AI DevOps Agent. | Generally available |
 | CE | [ChaosGuard](/docs/chaos-engineering/guides/governance/governance-in-execution/) | Generate conditions for your chaos experiments with ChaosGuard. | Generally available |
-| CODE | [Semantic Search](/docs/code-repository/work-in-repos/semantic-search) | Search code repositories to provide accurate and context-aware results in Harness Code. | Generally available |
-| CODE | [Pull Request Summaries](/docs/code-repository/pull-requests/aida-code-pr) | Automatically generate comprehensive and informative PR descriptions. | Generally available |
 | CI | [Troubleshoot CI builds](/docs/continuous-integration/troubleshoot-ci/aida) | Resolve your build failures with Harness AI DevOps Agent's RCA. | Generally available |
 | FME | [AI Summarize](/docs/platform/harness-aida/release-agent#ai-summarize) | Delivers answers from Harness FME documentation and blogs while summarizing experiment and metric results on their dashboards. | Generally available |
 | STO | [Security remediation](/docs/security-testing-orchestration/remediations/ai-based-remediations) | Leverage AI to quickly analyze vulnerabilities and secure applications. | Generally available |

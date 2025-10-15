@@ -484,7 +484,7 @@ const config: Config = {
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-university.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
-        // showLastUpdateTime: true,
+        showLastUpdateTime: true,
         // ... other options
       },
     ],
@@ -496,7 +496,7 @@ const config: Config = {
         routeBasePath: 'kb',
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-kb.js'),
-        // showLastUpdateTime: true,
+        showLastUpdateTime: true,
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         // ... other options
       },
@@ -512,7 +512,7 @@ const config: Config = {
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         routeBasePath: 'docs', //CHANGE HERE
-        // showLastUpdateTime: true,
+        showLastUpdateTime: true,
         remarkPlugins: [
           [
             remarkMath,
@@ -542,7 +542,7 @@ const config: Config = {
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**'],
         routeBasePath: 'roadmap', //CHANGE HERE
-        // showLastUpdateTime: true,
+        showLastUpdateTime: true,
       },
     ],
 

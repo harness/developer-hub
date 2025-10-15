@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-09-23T10:00
+date: 2025-10-06T10:00
 sidebar_position: 10
 ---
 
@@ -47,6 +47,29 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
+
+## October 2025
+
+### Version 1.102.0
+
+<!-- 2025-10-06 -->
+#### Fixed issues
+- Self-signed certificates provided through the `DESTINATION_CA_PATH` or `CI_MOUNT_VOLUMES` environment variables will now be **appended** to the existing public certificates in the same path instead of replacing them.
+This behavior is controlled by the feature flag **`CI_APPEND_CERTS`** and is currently **supported only on Linux nodes** (Windows nodes are not supported). This fix will work with internal and existing public CA certificates. (ZD-74811, ZD-87244, CI-15527)
+
+  **Limitations and considerations for `CI_APPEND_CERTS` (CI-16816)**:
+
+  - This feature applies only to certificates whose destination file path ends with `.crt`. The source paths can be PEM files, but the destination must be a `.crt` file.
+
+  - The appending operation is performed by the CI add-on and therefore requires root access when the destination is in a sensitive location such as `/etc/ssl/certs`.
+
+    - In such cases, the step performing the append must run as `user: 0` (root).
+
+  - This feature flag can be a breaking change for pipelines that:
+
+    - Use non-root users, and
+
+    - Depend on the [existing mounted certs from the build pod](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/). 
 
 ## September 2025
 
@@ -1114,7 +1137,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 - Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
 
-- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924). When enabling this flag, the delegate version must be higher than `24.07.83503`.
+- Base image connector selection for Docker base image pulls is generally available. Select a Docker connector for base image pulls to avoid Docker rate limiting.
 
 - Bitbucket has an issue in their API; it does not support the slash character ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
   This can be worked around by using query parameters in the Bitbucket api `https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww` (CI-13826)

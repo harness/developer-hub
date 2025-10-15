@@ -718,5 +718,11 @@
     "description": "This will add a referenced/unreferenced tag to the templates listing card and list view.",
     "gaStartDate": "2025-10-13",
     "module": "Pipeline"
+  },
+   {
+    "flagKey": "CVNG_TEMPLATE_MONITORED_SERVICE",
+    "description": "FF to allow creating new Monitored Service Template",
+    "gaStartDate": "2025-10-14",
+    "module": "Continuous Delivery"
   }
 ]

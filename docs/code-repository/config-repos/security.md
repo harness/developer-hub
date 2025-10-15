@@ -21,10 +21,8 @@ Harness Code Secret Scanning scans *only new/changed code* in commits that users
 To enable Secret Scanning:
 
 1. Go to the repository where you want to enable secret scanning and select **Settings**.
-2. Select the **Security** tab.
+2. Under **General**, scroll down to the **Security** section.
 3. Enable **Secret Scanning**.
-4. Select **Save**.
-5. Repeat to enable Secret Scanning on additional repos.
 
 ### Bypass or ignore detected secrets
 
@@ -58,11 +56,9 @@ Harness Code Vulnerability Scanning scans *only new/changed code* in commits tha
 To enable Vulnerability Scanning:
 
 1. Go to the repository where you want to enable vulnerability scanning and select **Settings**.
-2. Select the **Security** tab.
+2. Under **General**, scroll down to the **Security** section.
 3. Enable **Vulnerability Scanning**.
-4. Select whether to **Detect** (warn/log) or **Block** vulnerabilities.
-5. Select **Save**.
-6. Repeat to enable Vulnerability Scanning on additional repos.
+4. Select **Save**.
 
 ## Enable OPA with Harness Policy As Code
 

@@ -1,6 +1,8 @@
 ---
 title: Harness Code Files
 description: Retrieve raw JSON files from Harness Code repositories
+redirect_from: 
+- /kb/internal-developer-portal/articles/backend-proxies/harness-code
 ---
 
 # Overview

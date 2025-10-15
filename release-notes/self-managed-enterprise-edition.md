@@ -26,10 +26,10 @@ These release notes describe recent changes to Harness Self-Managed Enterprise E
 With MongoDB 6 reaching end-of-life (EOL), it is recommended that customers using an in-cluster MongoDB instance upgrade to MongoDB 7.x. This upgrade mitigates known CVEs and aligns with MongoDB's recommended upgrade path. Please also see the transition from Mongo 6 to Mongo 7 below.
 
 #### MongoDB Version History:
-- MongoDB 4.4 was used in versions 0.16.x.
-- MongoDB 5.0 was utilized from versions 0.17.x to 0.21.x.
-- MongoDB 6.0 was utilized from version 0.22.x to 0.32.x.
-- MongoDB 7.0 is being utilized from version 0.33.x onwards
+* MongoDB 4.0 was used in versions 0.16.x and earlier.
+* MongoDB 5.0 was used in versions 0.17.x through 0.21.x.
+* MongoDB 6.0 is used starting from version 0.22.x.
+* MongoDB 7.0 is used starting from version 0.33.x.
 
 #### Upgrade Path
 1. Upgrade to at least SMP 0.17.0 if you are running 0.16.x or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 4.0 to Mongo 6.0
@@ -45,7 +45,7 @@ With MongoDB 6 reaching end-of-life (EOL), it is recommended that customers usin
   - For ArgoCD users, run the FCV upgrade job manually before performing the main upgrade.
 
 #### MongoDB FCV Upgrade Job
-To run FCV upgrade manually (required for ArgoCD users), include this job definition: (mongo-preupgradejob)[https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/src/harness/templates/mongo-preupgradejob.yaml]
+To run FCV upgrade manually (required for ArgoCD users), include this job definition: (mongo-preupgradejob)[https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/examples/mongo-fcv-upgrade/job.yaml]
 This job runs as a pre-upgrade hook to ensure FCV is compatible with the MongoDB server version.
 
 #### Configuration
@@ -5691,7 +5691,7 @@ gsutil -m cp \
 
 - Corrected the visibility of the NodeSelector field label in the CI stage infrastructure tab when using Kubernetes infrastructure. The reference for the node selector string has been fixed to ensure the label is properly populated. (CI-13867)
 
-- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924)
+- Base image connector selection for Docker base image pulls is generally available. Select a Docker connector for base image pulls to avoid Docker rate limiting.
 
 - Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
 

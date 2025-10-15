@@ -25,8 +25,17 @@ Harness recommends:
 1. Follow this guide to work with the Harness RBAC principals and role bindings that were created for you during your migration.
 1. Learn about the full potential of RBAC on the Harness platform, starting with [Platform access control](/docs/category/platform-access-control/) in the Harness documentation.
 
-:::tip Read about Environment Scope (Admin API keys)
-Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to [Admin API key scoped to specific environments](?create-apikey-new-sa=environment-scope#using-a-new-service-account) in this document.
+:::tip How to use this guide if you did not have a legacy Split account
+If FME has been added to your Harness account as a proof of value (POV) and you did not have a legacy Split account, you can use this guide to understand the RBAC permissions required for FME. You can benefit from the following sections:
+
+* **[User groups](#user-groups)** - Explains the Harness built-in FME user groups and the role bindings that should be assigned at the account, organization, and project scopes.
+* **[Admin API keys](#admin-api-keys)** - Details how to set up API keys with sufficient RBAC permissions to authorize Harness FME integrations.
+* **[SDK API keys](#sdk-api-keys)** - Outlines how SDK API keys (that authorize feature flag evaluations in your code) are managed in FME Settings.
+* **[Projects](#projects)** - Describes how to enable access to a project, using RBAC settings to grant 'unrestricted' access to all your users or 'restrict' access to a subset of users, groups, or API keys.
+* **[Troubleshooting](#troubleshooting)** - This section is especially helpful to POV users, and we aim to keep it updated and relevant to you.
+
+The RBAC recommendations in this guide follow the decisions made by the engineers at Harness FME when translating legacy Split permissions to Harness. These recommendations provide you with a solid footing in a set of RBAC settings that work well with FME. If you are finding permission issues in FME, you can return to the permissions described in this guide and work from there to identify the permissions you are missing.
+
 :::
 
 The following terminology is referenced in this guide:
@@ -39,7 +48,13 @@ The following terminology is referenced in this guide:
   * **SDK API keys**: Authentication tokens used to authorize FME SDK requests. SDK API keys are managed by the Harness FME module.
   * **API keys**: The Harness platform manages API keys and tokens within service accounts.* When “API keys” is not preceded by “Admin” or “SDK”, then this guide is referring to these Harness platform API key entities.
 
-<span style={{fontSize: '0.8em'}}>\* *In Harness, API keys can also be created at the [personal user scope](/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens), but the migration script does not create personal access API keys and tokens, so these are outside the scope of this guide.*</span>
+<span style={{fontSize: '0.8em'}}>\* *In Harness, API keys can also be created in your personal user profile. For more information, go to the [FAQs - API keys](#can-i-create-an-admin-api-key-at-the-personal-user-scope) section.*</span>
+
+<br /><br />
+
+:::info Environment Scope support for Admin API keys
+Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to the [Environment Scope](#environment-scope) section.
+:::
 
 ## Users
 
@@ -243,9 +258,6 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
             <td>
               <p>
                 Project Admin
-              </p>
-              <p>
-                Project Viewer
               </p>
             </td>
             <td>
@@ -898,6 +910,16 @@ To cleanly delete a project in your Harness account:
 
 ### API keys
 
+#### Can I create an Admin API key in my personal user profile in Harness?
+
+Yes. [Split Admin API](https://docs.split.io/reference/introduction) supports authenticating with API key tokens created on a user's **Profile Overview** page in Harness. These API key tokens are personal access tokens (PATs). PATs can be used for all non-deprecated Split API endpoints that require an [Admin API key](#admin-api-keys) for authorization (not the endpoints that require an [SDK API key](#sdk-api-keys)).
+
+An API key created under a personal user account will have the same RBAC permissions as the user. For example, a user in the [All FME Editors](#fme-user-groups) group (with the FME Manager Role assigned over FME All Resources at the project level, the Project Viewer role over All Project Level Resources, and the Account Viewer role over All Account Level Resources, as set up by the migration script) will have sufficient privileges to authorize a Split API request to [create a feature flag](https://docs.split.io/reference/create-feature-flag).
+
+___Since PAT permissions are inseparable from a user's RBAC permissions, [creating Admin API keys in service accounts](#create-an-admin-api-key) is best. Using service accounts, you can limit the permissions granted to an API key to those specifically required by an integration.___
+
+The Harness API also [supports PATs for authentication](https://apidocs.harness.io/section/introduction/authentication#section/introduction/Authentication). For more information about PATs, see [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys) in the Harness documentation.
+
 #### Can I restrict an Admin API key to an FME environment?
 
 The environment scope of Admin API keys created in Harness post-migration will be available when the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. To learn more, go to [Admin API key scoped to specific environments](?create-apikey-new-sa=environment-scope#using-a-new-service-account).
@@ -994,19 +1016,29 @@ To view SDK API keys for a project:
 
 #### Some of my users are seeing the error message "Unable to start the FME functionality" when navigating to a page within the Harness FME module
 
-Your users may be lacking the role binding: **Account Viewer** role over **All Account Level Resources**. 
+In rare instances, this error is caused by a mistyped URL. Confirm that the `app.harness.io` domain is typed correctly. An extra dot at the end will cause this error when navigating to an FME page after signing in to Harness.
 
-To resolve the error, and restore these users' access to the FME module, assign this role binding in **Account Settings** using one of the following methods:
+More likely, your users lack the role binding: **Account Viewer** role over **All Account Level Resources**. Specifically, they may lack permissions at the account level to view **Users** and **User Groups**.
 
-* **Recommended:** Add this role binding to the **All Account Users** user group, by following the steps in [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) in the Harness platform documentation.
-* Add this role binding to a group where the users are members (by following [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups)) or to the users directly (by following [Edit direct assignments](https://developer.harness.io/docs/platform/role-based-access-control/add-users#edit-direct-assignments)).
+By default, the **All Account Users** user group is assigned the **Account Viewer** role, as shown below. (This a Harness managed group that is created on account creation, and users are automatically added to this group when added to your Harness account.)
 
+![All Account Users - Default permissions](./static/rbac-troubleshoot-all-account-users-permissions.png)
+
+You can click on the **Account Viewer** link to see permissions granted to this role.
+
+![Account Viewer role permissions](./static/rbac-troubleshoot-account-viewer.png)
+
+To resolve the error, and restore these users' access to the FME module, assign these permissions in **Account Settings** using one of the following methods:
+
+* Add the **Account Viewer** + **All Account Level Resources** role binding to the **All Account Users** user group, by following the steps in [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) in the Harness platform documentation.
+* Add the **Account Viewer** + **All Account Level Resources** role binding to a group where the users are members (by following [Assign roles and resource groups](/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups)) or to the users directly (by following [Edit direct assignments](/docs/platform/role-based-access-control/add-users#edit-direct-assignments)).
+* On the Enterprise plan, you can create a role in **Account Settings** with **View** permissions for **Users** and **User Groups**. Assign this role [to a group where the users are members](/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) or [to the users directly](/docs/platform/role-based-access-control/add-users#edit-direct-assignments).
 
 ### FME object creation
 
 #### The <strong>Owners</strong> dropdown is not populated with project users or user groups when creating a feature flag, metric, segment, or experiment
 
-A user lacking **Users** and **User Groups** View permissions will experience the following UI behavior when creating objects in a project:
+A user lacking **Users** and **User Groups** View permissions at the project scope will experience the following UI behavior when creating objects in a project:
 
 On the **Create a feature flag** pane:
 * The **Owners** dropdown is not populated 
@@ -1095,4 +1127,3 @@ At the project level, grant access to the service account by assigning roles:
 <p>\* *The service account is listed on the **Organization** tab if you were migrated into an existing Harness account. If you were migrated to a new Harness account created during migration, the service account is shown on the **Account** tab.*</p>
 <p>\*\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.*</p>
 </span>
-

@@ -10,6 +10,7 @@ helpdocs_is_published: true
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CustomCAcert from '/docs/continuous-integration/shared/windows-custom-ca-certs.md';
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -346,6 +347,8 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 </details>
 
 :::
+
+<CustomCAcert/>
 
 ## Troubleshoot local runner build infrastructure
 
