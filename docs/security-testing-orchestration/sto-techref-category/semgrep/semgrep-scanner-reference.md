@@ -3,6 +3,9 @@ title: Semgrep step configuration
 description: Scan code repositories with Semgrep.
 sidebar_label: Semgrep step configuration
 sidebar_position: 20
+redirect_from:
+  - /kb/security-testing-orchestration/security-testing-orchestration-faqs
+  - /docs/faqs/security-testing-orchestration
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
@@ -43,7 +46,7 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 
 - The following topics contain useful information for setting up scanner integrations in STO:
    - [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments)
-   - [Security Testing Orchestration FAQs](/docs/faqs/security-testing-orchestration)
+   - [Security Testing Orchestration FAQs](/docs/security-testing-orchestration/faqs)
    - [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines)
 
 
