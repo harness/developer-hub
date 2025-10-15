@@ -24,7 +24,7 @@ Metric Sources are building blocks: once created, you can reuse them to define c
 When creating or editing a Metric Source, you have two options for defining the metric source table: **Table name** or **SQL query**. 
 
 <Tabs>
-<TabItem value="1" label="Table Name">
+<TabItem value="table" label="Table Name">
 
 ### Select a table
 
@@ -37,7 +37,7 @@ Recommended if your event data is already modeled into a clean event table.
 
 
 </TabItem>
-<TabItem value="2" label="SQL Query">
+<TabItem value="query" label="SQL Query">
 
 ### Use a custom SQL query
 
@@ -59,8 +59,8 @@ After setting up Metric Sources, you can create metric definitions to aggregate 
 
 ### Configure your environments
 
-<Tabs>
-<TabItem value="7" label="Column Mapping">
+<Tabs groupId="mapping-values">
+<TabItem value="column" label="Column Mapping">
 
 Select an environment column and map its values to Harness FME environments.
 
@@ -69,7 +69,7 @@ For example, select the `ENV_NAME` column and map its values (`US-Prod`, `UK-Pro
 This is recommended if a single metric source spans multiple environments.
 
 </TabItem>
-<TabItem value="8" label="Hardcoded Value">
+<TabItem value="value" label="Hardcoded Value">
 
 Instead of selecting a column, set a fixed Harness FME environment for the entire Metric Source (e.g., always `Production`).
 
@@ -82,15 +82,15 @@ This is recommended if the source is scoped to one environment.
 
 Similar to environments, traffic types can be set up in two ways:
 
-<Tabs>
-<TabItem value="9" label="Column Mapping">
+<Tabs groupId="mapping-values">
+<TabItem value="column" label="Column Mapping">
 
 Select a traffic type column (e.g., `ttid`) and map its values to Harness FME traffic types (e.g., `user`, `account`, or `anonymous`).
 
 This is recommended if the same Metric Source covers multiple population types.
 
 </TabItem>
-<TabItem value="10" label="Hardcoded Value">
+<TabItem value="value" label="Hardcoded Value">
 
 Instead of selecting a column, set a fixed Harness FME traffic type for the entire Metric Source (e.g., always `account`).
 
@@ -103,15 +103,15 @@ This is recommended if the data set only represents one population type.
 
 Metric Sources allow flexibility in how event types are set up.
 
-<Tabs>
-<TabItem value="11" label="Column Mapping">
+<Tabs groupId="mapping-values">
+<TabItem value="column" label="Column Mapping">
 
 Select an event type column (e.g., `EVENT_NAME`) so the metric source can be reused across multiple metric definitions.
 
 This is recommended for general-purpose event sources.
 
 </TabItem>
-<TabItem value="12" label="Hardcoded Value">
+<TabItem value="value" label="Hardcoded Value">
 
 Instead of selecting a column, set a fixed event name for the entire metric source (e.g., always `product_page_view`).
 

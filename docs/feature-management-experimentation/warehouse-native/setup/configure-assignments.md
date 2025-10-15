@@ -22,7 +22,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-<TabItem value="1" label="Table Name">
+<TabItem value="table" label="Table Name">
 
 ### Select a table
 
@@ -36,7 +36,7 @@ Recommended if your data is already modeled into a clean impression/exposure tab
 With Assignment Sources configured, you can can confidently create experiments, knowing all exposures are correctly captured, standardized, and reusable across analyses.
 
 </TabItem>
-<TabItem value="2" label="SQL Query">
+<TabItem value="query" label="SQL Query">
 
 ### Use a custom SQL query
 
@@ -66,17 +66,15 @@ Define the following fields from your assignment source to Harness FME:
 
 ### Configure your environments
 
-<Tabs>
-<TabItem value="3" label="Column Mapping">
+<Tabs groupId="mapping-values">
+<TabItem value="column" label="Column Mapping">
 
-Select an environment column and map its values to Harness FME environments.
-
-For example, select the `ENV_NAME` column and map its values (`US-Prod`, `UK-Prod`) to your Harness project’s `Production` environment and map the `Stg` values (`US-Stg`, `UK-Stg`) to your Harness project’s `Staging` environment.
+Select an environment column and map its values to Harness FME environments. For example, select the `ENV_NAME` column and map its values (`US-Prod`, `UK-Prod`) to your Harness project’s `Production` environment and map the `Stg` values (`US-Stg`, `UK-Stg`) to your Harness project’s `Staging` environment.
 
 This allows a single Assignment Source to span multiple environments.
 
 </TabItem>
-<TabItem value="4" label="Hardcoded Value">
+<TabItem value="value" label="Hardcoded Value">
 
 Instead of selecting a column, set a fixed Harness FME environment for the entire Assignment Source (e.g., always `Production`).
 
@@ -89,15 +87,15 @@ This is recommended if the entire source table is scoped to one environment.
 
 Similar to environments, traffic types can be set up in two ways:
 
-<Tabs>
-<TabItem value="5" label="Column Mapping">
+<Tabs groupId="mapping-values">
+<TabItem value="column" label="Column Mapping">
 
 Select a traffic type column (e.g., `ttid`) and map its values to Harness FME traffic types (e.g., `user`, `account`, or `anonymous`).
 
 This is recommended if the same Assignment Source covers multiple population types.
 
 </TabItem>
-<TabItem value="6" label="Hardcoded Value">
+<TabItem value="value" label="Hardcoded Value">
 
 Instead of selecting a column, set a fixed Harness FME traffic type for the entire Assignment Source (e.g., always `account`).
 
