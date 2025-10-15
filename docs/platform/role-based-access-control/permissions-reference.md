@@ -286,16 +286,21 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | --- | --- | --- |
 | SEI Collections | <ul><li>View (`sei_seicollections_view`)</li><li>Create (`sei_seicollections_create`)</li><li>Edit (`sei_seicollections_edit`)</li><li>Delete (`sei_seicollections_delete`)</li></ul> | Active |
 | SEI Configuration Settings | <ul><li>View (`sei_seiconfigurationsettings_view`)</li><li>Create (`sei_seiconfigurationsettings_create`)</li><li>Edit (`sei_seiconfigurationsettings_edit`)</li><li>Delete (`sei_seiconfigurationsettings_delete`)</li></ul> | Active |
+| SEI Data Settings | <ul><li>View (`sei_seidatasettings_view`)</li><li>Create (`sei_seidatasettings_create`)</li><li>Edit (`sei_seidatasettings_edit`)</li><li>Delete (`sei_seidatasettings_delete`)</li></ul> | Active |
 | SEI Insights | <ul><li>View (`sei_seiinsights_view`)</li><li>Create (`sei_seiinsights_create`)</li><li>Edit (`sei_seiinsights_edit`)</li><li>Delete (`sei_seiinsights_delete`)</li></ul> | Active |
+| SEI Insight Categories | <ul><li>View (`sei_seiinsightscategory_view`)</li></ul> | Active |
+| SEI Teams | <ul><li>View (`sei_seiteams_view`)</li><li>Create (`sei_seiteams_create`)</li><li>Edit (`sei_seiteams_edit`)</li><li>Delete (`sei_seiteams_delete`)</li></ul> | Active |
+| SEI Profiles | <ul><li>View (`sei_seiprofiles_view`)</li><li>Create (`sei_seiprofiles_create`)</li><li>Edit (`sei_seiprofiles_edit`)</li><li>Delete (`sei_seiprofiles_delete`)</li></ul> | Active |
+
 
 ### Feature Management and Experimentation
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
-| FME Environment | <ul><li>View (`fme_fmeenvironment_view`)</li><li>Create/Edit (`fme_fmeenvironment_edit`)</li><li>SDK API Key View (`fme_fmeenvironment_sdkApiKeyView`)</li><li>SDK API Key Edit (`fme_fmeenvironment_sdkApiKeyEdit`)</li><li>Data Export View (`fme_fmeenvironment_dataExportView`)</li><li>Data Export Edit (`fme_fmeenvironment_dataExportEdit`)</li></ul> | Active |
-| FME Feature Flag | <ul><li>View (`fme_fmefeatureflag_view`)</li><li>Create/Edit (`fme_fmefeatureflag_edit`)</li></ul> | Active |
-| FME Experiment | <ul><li>View (`fme_fmeexperiment_view`)</li><li>Create/Edit (`fme_fmeexperiment_edit`)</li></ul> | Active |
-| FME Segment | <ul><li>View (`fme_fmesegment_view`)</li><li>Create/Edit (`fme_fmesegment_edit`)</li></ul> | Active |
-| FME Large Segment | <ul><li>View (`fme_fmelargesegment_view`)</li><li>Create/Edit (`fme_fmelargesegment_edit`)</li></ul> | Active |
-| FME Metric | <ul><li>View (`fme_fmemetric_view`)</li><li>Create/Edit (`fme_fmemetric_edit`)</li></ul> | Active |
-| FME Traffic Type | <ul><li>View (`fme_fmetraffictype_view`)</li><li>Create/Edit (`fme_fmetraffictype_edit`)</li></ul> | Active |
+| FME Environment | <ul><li>View (`fme_fmeenvironment_view`)</li><li> Create/Edit (`fme_fmeenvironment_edit`)</li><li> SDK API Key View (`fme_fmeenvironment_sdkApiKeyView`)</li><li> SDK API Key Edit (`fme_fmeenvironment_sdkApiKeyEdit`)</li><li> Data Export View (`fme_fmeenvironment_dataExportView`)</li><li> Data Export Edit (`fme_fmeenvironment_dataExportEdit`)</li></ul> | Active |
+| FME Feature Flag | <ul><li>View (`fme_fmefeatureflag_view`)</li><li> Create/Edit (`fme_fmefeatureflag_edit`)</li></ul> | Active |
+| FME Experiment | <ul><li>View (`fme_fmeexperiment_view`)</li><li> Create/Edit (`fme_fmeexperiment_edit`)</li></ul> | Active |
+| FME Segment | <ul><li>View (`fme_fmesegment_view`)</li><li> Create/Edit (`fme_fmesegment_edit`)</li></ul> | Active |
+| FME Large Segment | <ul><li>View (`fme_fmelargesegment_view`)</li><li> Create/Edit (`fme_fmelargesegment_edit`)</li></ul> | Active |
+| FME Metric | <ul><li>View (`fme_fmemetric_view`)</li><li> Create/Edit (`fme_fmemetric_edit`)</li></ul> | Active |
+| FME Traffic Type | <ul><li>View (`fme_fmetraffictype_view`)</li><li> Create/Edit (`fme_fmetraffictype_edit`)</li></ul> | Active |
