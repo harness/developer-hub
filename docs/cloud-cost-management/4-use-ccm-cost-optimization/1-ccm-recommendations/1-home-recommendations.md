@@ -141,14 +141,20 @@ Harness CCM Recommendations are data-driven insights that help you optimize your
       </TabItem>
     </Tabs>
   </TabItem>
-  <TabItem value="status-mapping" label="Jira Status Mapping">
+  <TabItem value="status-mapping" label="Ticketing Tool Mapping">
 
-      <DocImage path={require('./static/resolution-status.png')} width="80%" height="80%" title="Click to view full size image" />
+      <DocImage path={require('./static/ticketing-tool-mapping.png')} width="80%" height="80%" title="Click to view full size image" />
+
+      **1. Applied/Ignored Status Mapping**
+
       Recommendations supports Jira Status Mapping. This feature allows you to automatically align recommendation states with the statuses of your Jira issues.
-      In **Recommendation Settings**, you can define which Jira statuses correspond to recommendations being considered **Applied** or moved to the **Ignore List**. When a linked Jira issue reaches a mapped status, the recommendation is automatically updated.
+
+      In **Recommendation Settings**, you can define which Jira statuses correspond to recommendations being considered **Applied** or moved to the **Ignore List**. When a linked Jira issue reaches a mapped status, the recommendation is automatically updated. You can also choose **Resolution Codes** with which the recommendation is automatically updated to **Applied**.
+
       - **Jira Statuses that move recommendation to Applied automatically**: Choose from a list of Jira statuses. Within an hour, CCM checks if any open recommendation is linked to a Jira issue with a mapped status, the recommendation is automatically updated to **Applied**.
 
-      - **Jira Statuses that move recommendation to Ignore List automatically**: Choose from a list of Jira statuses. Within an hour, CCM checks if any open recommendation is linked to a Jira issue with a mapped status, the recommendation is automatically updated to **Ignore List**.
+      - **Jira Statuses that move recommendation to Ignore List automatically**: Choose from a list of Jira statuses. Within an hour, CCM checks if any open recommendation is linked to a Jira issue with a mapped status, the recommendation is automatically updated to **Ignore List**. You can also choose **Resolution Codes** with which the recommendation is automatically updated to **Ignore List**.
+
       :::note
       - A Jira connector must be successfully configured for using the feature. 
       - This is not supported for ServiceNow.
@@ -156,6 +162,14 @@ Harness CCM Recommendations are data-driven insights that help you optimize your
       - Regardless of automatic status updates, users can still manually move recommendations to either the Applied or Ignore List at any time.
       - Changes will apply to all future status updates.
       :::
+      
+      **2. Default Jira Projects for Cost Categories**
+
+      Set default Jira projects for cost recommendations. When creating tickets, the project is auto-selected based on the resource's first matching cost category below. You may change the project during ticket creation.
+      
+      By mapping cost categories to specific Jira projects, you ensure that recommendations reach the right stakeholders without manual routing, reducing response time and increasing the likelihood of implementation. This is especially valuable in large organizations where different teams are responsible for different resource types. 
+      
+      To configure this feature, click on **+Add mapping** to add a new mapping, then select the cost category, cost bucket, and Jira project.
   </TabItem>
 </Tabs>
 </TabItem>
@@ -315,6 +329,40 @@ Once the user selects a ticket type, another request retrieves the fields associ
 When the user clicks "Create Ticket," an API call is made to ServiceNow to create the ticket with the provided inputs. Additionally, there is an internal call that periodically checks if the ticket has been closed. Based on this status, the recommendation is moved to the applied state.
 
 
+
+</TabItem>
+<TabItem value="snow-service-request" label="ServiceNow Service Request">
+
+## ServiceNow Service Request Integration
+
+In ServiceNow (SNOW), a Service Request is a type of ticket that users raise when they want a standard service, resource, or information from IT or another department.
+
+**Common examples of Service Requests include:**
+
+* Requesting access to software applications
+* Ordering new hardware resources
+* Creating new email distribution lists
+* Requesting password resets
+* Requesting system configurations or reports
+
+### Steps to Configure a Catalog Item in ServiceNow
+
+- Log in to ServiceNow as an Administrator.
+- Navigate to the "Maintain Items" section.
+- Click "New" in the top right corner to create a new catalog item.
+<DocImage path={require('./static/snow-five.png')} width="80%" height="80%" title="Click to view full size image" />
+
+- Define a service catalog with the "Software" category. Ensure the name of the catalog item exactly matches "Harness CCM Recommendation" and mark it as Active.
+<DocImage path={require('./static/snow-six.png')} width="80%" height="80%" title="Click to view full size image" />
+
+- Define variables in the catalog item so that recommendation payload can be sent with the request/ticket:
+
+<DocImage path={require('./static/snow-seven.png')} width="80%" height="80%" title="Click to view full size image" />
+- Use camel case convention for variable names (e.g., awsAccountId). You can provide additional data fields such as description and shortDescription.
+<DocImage path={require('./static/snow-eight.png')} width="80%" height="80%" title="Click to view full size image" />
+- The variables defined in ServiceNow will be automatically populated with values from the recommendation data (keys must match) in CCM UI.
+
+<DocImage path={require('./static/snow-ticket.png')} width="80%" height="80%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
