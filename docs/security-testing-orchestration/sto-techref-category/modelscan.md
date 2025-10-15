@@ -13,6 +13,8 @@ sidebar_position: 240
 
 The **ModelScan** step in Harness STO uses the open-source scanner [ModelScan](https://github.com/protectai/modelscan) to scan your machine learning (ML) models for security vulnerabilities. You can perform **ModelScan** scans in both **[Orchestration](#scan-mode)** and **[Ingestion](#scan-mode)** modes. This document will guide you through configuring the **ModelScan** step in your STO pipeline.
 
+<DocVideo src="https://youtu.be/PhvIXcwpme8" title="Scan your AI/ML models using ModelScan"/>
+
 :::info
 - To run scans as a non-root user, you can use custom STO scan images and pipelines. See [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 - STO supports multiple workflows for loading self-signed certificates. See [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).

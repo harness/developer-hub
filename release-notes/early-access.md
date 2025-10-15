@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2025-09-12T10:00
+date: 2025-10-15T10:00
 sidebar_position: 2
 ---
 
@@ -193,19 +193,13 @@ No early access (beta) features are available for the Harness Supply Chain Secur
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
 <!-- No early access features are available for the Harness Security Testing Orchestration module. Go to [STO Release Notes](/release-notes/security-testing-orchestration) for all the latest updates. -->
 
-#### Notifications for Exemption Management
+#### Base Image Detection
 
-* **GA date:** October 2025
-* **Early access release date:** September 2025
-* **Feature flag:** `PL_CENTRAL_NOTIFICATIONS`
-* **Documentation:** [Notifications for Exemption Management](/docs/security-testing-orchestration/notifications/exemption-notifications)
+* **GA date:** November 2025
+* **Early access release date:** October 2025
+* **Feature flag:** `BASE_IMAGE_DETECTION`
+* **Documentation:** [Detect Vulnerabilities in Base Images](/docs/security-testing-orchestration/set-up-scans/container-scanning/base-image-vulnerabilites/base-image-detection)
 
-#### Export Scan Results as CSV from Vulnerabilities Tab
-
-* **GA date:** October 2025
-* **Early access release date:** September 2025
-* **Feature flag:** `STO_DOWNLOAD_SCAN_SUMMARY`
-* **Documentation:** [Export Scan Results](/docs/security-testing-orchestration/view-security-test-results/export-scan-results)
 
 ## SRM early access features
 
