@@ -103,86 +103,107 @@ const config: Config = {
             {
               label: 'Platform',
               to: 'docs/platform',
+              className: 'navicon navicon--platform',
             },
             {
               label: 'Code Repository',
               to: 'docs/code-repository',
+              className: 'navicon navicon--code-repository',
             },
             {
               label: 'Continuous Integration',
               to: 'docs/continuous-integration',
+              className: 'navicon navicon--continuous-integration',
             },
             {
               label: 'AI Test Automation',
               to: 'docs/ai-test-automation',
+              className: 'navicon navicon--ai-test-automation',
             },
             {
               label: 'Artifact Registry',
               to: 'docs/artifact-registry',
+              className: 'navicon navicon--artifact-registry',
             },
             {
               label: 'Continuous Delivery & GitOps',
               to: 'docs/continuous-delivery',
+              className: 'navicon navicon--continuous-delivery',
             },
             {
               label: 'Database DevOps',
               to: 'docs/database-devops',
+              className: 'navicon navicon--database-devops',
             },
             {
               label: 'Infrastructure as Code Management',
               to: 'docs/infrastructure-as-code-management',
+              className: 'navicon navicon--infrastructure-as-code-management',
             },
             {
               label: 'Feature Flags',
               to: 'docs/feature-flags',
+              className: 'navicon navicon--feature-flags',
             },
             {
               label: 'Feature Management & Experimentation',
               to: 'docs/feature-management-experimentation',
+              className: 'navicon navicon--feature-management-experimentation',
             },
             {
               label: 'Cloud Cost Management',
               to: 'docs/cloud-cost-management',
+              className: 'navicon navicon--cloud-cost-management',
             },
             {
               label: 'Application & API Security Posture',
               to: 'docs/appsec-security-posture',
+              className: 'navicon navicon--appsec-security-posture',
             },
             {
               label: 'Application & API Runtime Protection',
               to: 'docs/appsec-runtime-protection',
+              className: 'navicon navicon--appsec-runtime-protection',
             },
             {
               label: 'Application & API Security Testing',
               to: 'docs/appsec-security-testing',
+              className: 'navicon navicon--appsec-security-testing',
             },
             {
               label: 'Security Testing Orchestration',
               to: 'docs/security-testing-orchestration',
+              className: 'navicon navicon--security-testing-orchestration',
             },
             {
               label: 'Supply Chain Security',
               to: 'docs/software-supply-chain-assurance',
+              className: 'navicon navicon--software-supply-chain-assurance',
             },
             {
               label: 'Chaos Engineering',
               to: 'docs/chaos-engineering',
+              className: 'navicon navicon--chaos-engineering',
             },
             {
               label: 'AI SRE',
               to: 'docs/ai-sre',
+              className: 'navicon navicon--ai-sre',
             },
             {
               label: 'Service Reliability Management',
               to: 'docs/service-reliability-management',
+              className: 'navicon navicon--service-reliability-management',
             },
             {
               label: 'Internal Developer Portal',
               to: 'docs/internal-developer-portal',
+              className: 'navicon navicon--internal-developer-portal',
             },
             {
               label: 'Cloud Development Environments',
               to: 'docs/cloud-development-environments',
+              className: 'navicon navicon--cloud-development-environments',
             },
             // {
             //   label: 'Application & Api Posture Management',
@@ -199,34 +220,37 @@ const config: Config = {
             {
               label: 'Software Engineering Insights',
               to: 'docs/software-engineering-insights',
+              className: 'navicon navicon--software-engineering-insights',
             },
             {
               label: 'Self-Managed Enterprise Edition',
               to: 'docs/self-managed-enterprise-edition',
+              className: 'navicon navicon--self-managed-enterprise-edition',
             },
             {
               label: 'Open Source',
               to: 'docs/open-source',
+              className: 'navicon navicon--open-source',
             },
             {
               label: 'FAQs',
               to: 'docs/faqs',
+              className: 'navicon navicon--faqs',
             },
             {
               label: 'Troubleshooting',
               to: 'docs/troubleshooting',
+              className: 'navicon navicon--troubleshooting',
             },
             {
               label: 'Harness Cloud Operations',
               to: 'docs/harness-cloud-operations',
-            },
-            {
-              label: 'Release Notes',
-              href: '/release-notes',
+              className: 'navicon navicon--harness-cloud-operations',
             },
             {
               label: 'API Reference',
               to: 'https://apidocs.harness.io/',
+              className: 'navicon navicon--api-reference',
             },
           ],
         },
