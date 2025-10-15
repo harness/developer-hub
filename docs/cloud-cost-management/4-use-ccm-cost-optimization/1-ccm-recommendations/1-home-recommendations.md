@@ -141,14 +141,20 @@ Harness CCM Recommendations are data-driven insights that help you optimize your
       </TabItem>
     </Tabs>
   </TabItem>
-  <TabItem value="status-mapping" label="Jira Status Mapping">
+  <TabItem value="status-mapping" label="Ticketing Tool Mapping">
 
-      <DocImage path={require('./static/resolution-status.png')} width="80%" height="80%" title="Click to view full size image" />
+      <DocImage path={require('./static/ticketing-tool-mapping.png')} width="80%" height="80%" title="Click to view full size image" />
+
+      **1. Applied/Ignored Status Mapping**
+
       Recommendations supports Jira Status Mapping. This feature allows you to automatically align recommendation states with the statuses of your Jira issues.
-      In **Recommendation Settings**, you can define which Jira statuses correspond to recommendations being considered **Applied** or moved to the **Ignore List**. When a linked Jira issue reaches a mapped status, the recommendation is automatically updated.
+
+      In **Recommendation Settings**, you can define which Jira statuses correspond to recommendations being considered **Applied** or moved to the **Ignore List**. When a linked Jira issue reaches a mapped status, the recommendation is automatically updated. You can also choose **Resolution Codes** with which the recommendation is automatically updated to **Applied**.
+
       - **Jira Statuses that move recommendation to Applied automatically**: Choose from a list of Jira statuses. Within an hour, CCM checks if any open recommendation is linked to a Jira issue with a mapped status, the recommendation is automatically updated to **Applied**.
 
-      - **Jira Statuses that move recommendation to Ignore List automatically**: Choose from a list of Jira statuses. Within an hour, CCM checks if any open recommendation is linked to a Jira issue with a mapped status, the recommendation is automatically updated to **Ignore List**.
+      - **Jira Statuses that move recommendation to Ignore List automatically**: Choose from a list of Jira statuses. Within an hour, CCM checks if any open recommendation is linked to a Jira issue with a mapped status, the recommendation is automatically updated to **Ignore List**. You can also choose **Resolution Codes** with which the recommendation is automatically updated to **Ignore List**.
+
       :::note
       - A Jira connector must be successfully configured for using the feature. 
       - This is not supported for ServiceNow.
@@ -156,6 +162,14 @@ Harness CCM Recommendations are data-driven insights that help you optimize your
       - Regardless of automatic status updates, users can still manually move recommendations to either the Applied or Ignore List at any time.
       - Changes will apply to all future status updates.
       :::
+      
+      **2. Default Jira Projects for Cost Categories**
+
+      Set default Jira projects for cost recommendations. When creating tickets, the project is auto-selected based on the resource's first matching cost category below. You may change the project during ticket creation.
+      
+      By mapping cost categories to specific Jira projects, you ensure that recommendations reach the right stakeholders without manual routing, reducing response time and increasing the likelihood of implementation. This is especially valuable in large organizations where different teams are responsible for different resource types. 
+      
+      To configure this feature, click on **+Add mapping** to add a new mapping, then select the cost category, cost bucket, and Jira project.
   </TabItem>
 </Tabs>
 </TabItem>
