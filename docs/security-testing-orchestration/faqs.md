@@ -3,6 +3,9 @@ title: Security Testing Orchestration (STO) FAQs
 description: Frequently asked questions about Harness Security Testing Orchestration (STO).
 sidebar_label: FAQs
 sidebar_position: 90
+redirect_from:
+  - /kb/security-testing-orchestration/security-testing-orchestration-faqs
+  - /docs/faqs/security-testing-orchestration/
 ---
 
 This article addresses some frequently asked questions about Security Testing Orchestration (STO).

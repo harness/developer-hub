@@ -4,8 +4,6 @@ description: Scan code repositories with Semgrep.
 sidebar_label: Semgrep step configuration
 sidebar_position: 20
 redirect_from:
-  - /kb/security-testing-orchestration/security-testing-orchestration-faqs
-  - /docs/faqs/security-testing-orchestration
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
