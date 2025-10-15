@@ -1,6 +1,6 @@
 ---
 title: Get Started with Workflows
-sidebar_position: 8
+sidebar_position: 3
 sidebar_label: Create Self-Service Workflows
 redirect_from: /docs/internal-developer-portal/get-started/workflow-quickstart.md
 ---
