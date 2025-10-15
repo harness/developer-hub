@@ -1674,7 +1674,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Warehouse Native Experimentation',
-          className: 'sidebar-item-new',
+          className: 'sidebar-item-beta',
           link: {
             type: 'doc',
             id: 'feature-management-experimentation/warehouse-native/index',

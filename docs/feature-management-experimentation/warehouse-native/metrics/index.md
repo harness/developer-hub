@@ -1,6 +1,8 @@
 ---
-title: Metrics
+title: Metrics for Warehouse Native Experimentation
+sidebar_label: Metrics in Harness FME
 sidebar_position: 3
+description: Learn about metrics in Warehouse Native and Cloud Experimentation.
 ---
 
 <CTABanner
@@ -11,6 +13,8 @@ sidebar_position: 3
   closable={true}
   target="_self"
 />
+
+## Overview
 
 import Metrics from '/docs/feature-management-experimentation/shared/metrics/index.md'
 
