@@ -1,5 +1,5 @@
 ---
-title: Configure Git Integrations
+title: Configure Git Integrations [WIP]
 description: Configure Git connector integrations to begin using Harness IDP. 
 sidebar_position: 1
 redirect_from:
