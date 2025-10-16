@@ -362,7 +362,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
 
 <span style={{fontSize: '0.8em'}}>
 
-\* *If you were migrated to a Harness account on the Enterprise plan, then the **FME All Resources** project-level resource group was created and used in role bindings (with the **Project Admin** and the **FME Manager Role**) at the project level. Harness accounts on the Free plan do not have permissions to create resource groups, so the **All Project Level Resources** Harness built-in resource group was used instead.*
+\* *If you were migrated to a Harness account on the Enterprise plan, then the **FME All Resources** project-level resource group was created and used in role bindings (with **Project Admin** and **FME Manager Role**) at the project level. Harness accounts on the Free plan do not have permissions to create resource groups, so the **All Project Level Resources** Harness built-in resource group was used instead.*
 
 \*\* *Users may lose edit permissions for a restricted project:*
 </span>
