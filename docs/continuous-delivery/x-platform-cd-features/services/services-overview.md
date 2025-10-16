@@ -35,10 +35,6 @@ For more information, go to [create services](/docs/continuous-delivery/x-platfo
 
 ## Clone Services
 
-:::info note
-Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can clone services across scopes i.e from one project to another, project to organization, account to project etc.
 
 Select **More Options** (&vellip;).
