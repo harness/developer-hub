@@ -82,4 +82,4 @@ Upgrading to Autostopping V2 is designed to be frictionless for existing V1 user
 
 ### Sample template:
 
-  <DocImage path={require('./static/ebpf.gif')} width="70%" height="70%" title="Click to view full size image" />>
+  <DocImage path={require('./static/ebpf.png')} width="70%" height="70%" title="Click to view full size image" />>
