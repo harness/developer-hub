@@ -73,11 +73,7 @@ While not required, these fields make debugging, filtering, and governance more 
 - **Flatten Properties Early**: JSON blobs are flexible but slow in downstream queries. Extract only the fields needed for metrics (e.g., `amount`, `plan_tier`, `country`).
 - **Event Naming Conventions**: Standardize event names across products and teams. Avoid mixing singular and plural (for example: `purchase` vs `purchases`).
 - **Partitioning and Indexing**: Partition large tables by `DATE(event_timestamp)`. Cluster or index by `user_id` or `event_name` for efficient joins with Assignment Sources.
-
-Value Handling
-
-Handle nulls carefully (exclude vs treat as 0 depending on the metric).
-Ensure numeric fields (event_value) use consistent units (e.g., always USD, not mixed currencies).
+- **Value Handling**: Handle nulls carefully—exclude them or treat them as `0`, depending on the metric's intent. Ensure numeric fields (for example, `event_value`) use consistent units (for example, always USD, not mixed currencies).
 
 ## Example prepared table schema
 
