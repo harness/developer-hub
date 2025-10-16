@@ -15,6 +15,8 @@ Exporting SEI 2.0 Insights allows you to download and share insights from the SE
 * **PDF Export**: Provides a snapshot of the dashboard view, including all widgets and the organizational hierarchy. This is ideal for presentations and sharing insights in a read-only format.
 * **CSV Export**: Offers a detailed data export, capturing metrics at various levels of the organizational hierarchy. This format is suitable for further data analysis and integration with other tools.
 
+To programmatically export productivity and efficiency widgets, see [Add Export Productivity and Efficiency Metrics Using the Harness SEI API](/docs/software-engineering-insights/harness-sei/api/export-insights).
+
 ## Insight categories and widgets
 
 You can use the **Export** dropdown at the insight and widget level in Harness SEI 2.0. 

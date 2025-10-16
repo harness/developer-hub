@@ -1663,9 +1663,9 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 Go to the [Kaniko container runtime error article](/docs/continuous-integration/ci-articles-faqs/articles/kaniko-container-runtime-error).
 
-### When using 'Build ans Push' steps with Base Image connector, can I pull and push from two different docker registries that have same prefix for registry URL ?
+### When using 'Build and Push' steps with Base Image Connector, can I pull and push from two different docker registries that have same prefix for registry URL ?
 
-No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing.
+No, when using Base Image Connector, ensure the prefix of the url used for pulling is different than the prefix of the url in the connector used for pushing.
 
 Docker uses a configuration file to store authentication details. If two registry URLs share the same prefix, Docker will only create a single authentication entry for that prefix, which will cause a conflict when accessing the second registry.
 
@@ -1763,7 +1763,7 @@ To avoid authentication issues, it's recommended to either use a PAT when config
 #### Harness Cloud Setup with Build and Push Steps
 If you are using Harness Cloud, please note that anonymous pulls will be tied to the IP pool assigned to the region for all Harness customers.  This means that all Harness customers would utilize the [same pool of "rate limit" as defined by Docker](https://docs.docker.com/docker-hub/usage/).
 
-In order to resolve these issues, customers should look to enable `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature with our support team to allow teams to select the `Base Image connector` that would be utilized to pull the image.  Please keep in mind the rules regarding Docker API versions for the Docker Registry URL (Please see the above [information that goes into detail about how and why this occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls))
+In order to resolve these issues, select a `Base Image Connector` to be used for pulling the image.  Please keep in mind the rules regarding Docker API versions for the Docker Registry URL (Please see the above [information that goes into detail about how and why this occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls))
 
 In **most cases** customer should set up a Docker Connector utilizing the `https://index.docker.io/v1` registry URL for Harness Cloud builds.
 
@@ -1771,6 +1771,7 @@ Please also note that if you receive a "You have reached your **unauthenticated*
 
 #### Docker Connector with Valid Credentials but using a Private Registry/Improper configuration
 Customers may encounter the `toomanyrequests: You have reached your unauthenticated pull rate limit.` error for their Build and Push steps (ECR, Docker, etc) despite having a valid Docker Connector set and credentials.  
+
 This is due to utilizing the v2 registry API for a private repository pull.  The fallback will be that Docker will attempt an unauthorized request, which results in the above response.  Please see the above [information that goes into detail about how and why this 
 occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls).
 

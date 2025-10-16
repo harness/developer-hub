@@ -72,6 +72,21 @@ In **Configure your Production Service**:
 
   The specified listener rule must reference exactly two target groups: one for the existing (production) service and one for the new (stage) service. This field identifies the stage target group in that rule.
 
+:::info Stage Target Group Selection
+
+The production listener rule must have exactly two target groups. **You must alternate the Stage Target Group ARN between deployments.**
+
+For each deployment:
+1. Select the target group that currently has **0% traffic** as the Stage Target Group ARN
+2. Deploy your new service to this target group
+3. After 100% traffic shift, this target group contains the active (BLUE) service
+4. In the next deployment, select the **other target group** (which now has 0% traffic)
+
+**Why alternation is required:** Harness deletes non-blue services from the stage target group at the start of each deployment. If you reuse the same stage target group containing your active blue service, it will be deleted, causing downtime.
+
+For automation scripts to eliminate manual selection, troubleshooting, and detailed examples, see [ECS Deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-blue-green-faqs).
+
+:::
 
 - **Same as already running instances**: When selected, the new ECS service uses the same instances as the old service after deployment.
 
@@ -306,11 +321,13 @@ For customers who want to implement progressive traffic shifting (e.g., 10% → 
 - Use **ECS Traffic Shift** steps to adjust traffic incrementally (e.g., 10%, 50%, 100%) with optional approval gates between shifts.
 - Finalize with a full cut-over to the stage target group, which is tagged as **BLUE** when traffic reaches 100%.
 
+
 ## Limitations
 
 - For supported target group weights and configuration options, refer to the [AWS ALB Listener Rules documentation](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html).
 - Maximum of 5 target groups per rule (AWS limitation).
 - **Swap** step and **Auto Scaling during swap** are not supported.
+- **Stage Target Group ARN must be manually alternated** between deployments or automated using scripts. Harness does not automatically infer the correct target group (enhancement request tracked in CDS-115275).
 
 ## Example Use Case: Controlled Traffic Shifting Across Environments
 
@@ -503,3 +520,8 @@ pipeline:
 ```
 
 </details>
+
+## See also
+
+- [ECS Blue-Green Deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-blue-green-faqs)
+- [ECS Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)

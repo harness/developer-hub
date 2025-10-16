@@ -2,6 +2,14 @@
 title: Helm Deployment FAQs
 description: This topic lists some FAQs related to Native and Harness managed Helm deployment
 sidebar_position: 6
+keywords:
+  - helm deployment
+  - service dashboard
+  - artifact version
+  - zero replicas
+  - instance sync
+  - replica count
+  - multi-cluster deployment
 ---
 
 This article addresses some frequently asked questions about Helm and Native Helm deployments in Harness.
@@ -527,6 +535,46 @@ Harness don’t handle helm hooks from our side in any way.
 ### What happens if a deployment doesn't reach a steady state with CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG enabled?
 
 If a deployment doesn't reach a steady state, CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG will log the events and errors that occur, helping you diagnose and resolve the issues that prevented the deployment from completing successfully.
+
+### Why is the Service Dashboard not updating artifact versions for deployments with zero replicas?
+
+When deploying Helm charts with `replicas: 0` specified in the manifest, the Service Dashboard does not update to show the latest artifact version, even though the deployment succeeds and the correct artifact version is applied in the manifests.
+
+#### How instance sync works
+
+The Service Dashboard relies on instance sync tasks to track and display artifact information:
+
+1. After each deployment, Harness stores details of newly created instances (instance count, artifact details, etc.).
+2. If the instance count is non-zero, a perpetual task is created to update instance information every 10 minutes.
+3. This perpetual task keeps the Service Dashboard updated with the latest instance details.
+
+#### Why zero replicas cause issues
+
+When `replicas: 0` is specified in your Helm chart:
+- After a successful deployment, there are no active instances.
+- No instance information is available to sync.
+- The perpetual task is not created because the instance count is zero.
+- The Service Dashboard continues to show information from the previous artifact.
+
+This behavior is by design. The instance sync logic is designed to track active instances, and zero-replica deployments don't create instances to track.
+
+#### Impact
+
+- Deployments succeed and manifests are rendered with the correct artifact version.
+- The Service Dashboard does not reflect the updated artifact versions.
+- This affects both the UI and the corresponding API used for inventory management.
+- The issue occurs in multi-cluster setups when deploying to a single cluster (for example, when other CD stages are conditionally disabled).
+
+
+#### Recommended workarounds
+
+The following workarounds may help, though they may not be suitable for all use cases:
+
+1. **Deploy with a valid replica count**: Deploy with at least one replica to ensure proper instance tracking and Service Dashboard updates. Note that this may not be suitable if you need services to remain passive until manual scaling.
+
+2. **Use different artifact tags**: Use different artifact tags or versions to force dashboard updates.
+
+Supporting zero-replica deployments for artifact tracking would require significant changes to the instance sync logic, which is complex and would need extensive testing. An enhancement request (CDS-114667) has been created to address this limitation in a future release.
 
 ### How to execute helm lookup expression in helm template?
 We can pass the helm template command option  `--dry-run=server`. These command options can be added in the helm manifest advanced configruation.

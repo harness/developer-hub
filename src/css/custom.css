@@ -1828,6 +1828,108 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   }
 }
 
+/* Dropdown section headers */
+.navbar .dropdown__menu .dropdown__section-header {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-700);
+  background-color: #EEFBFF;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  box-sizing: border-box;
+}
+
+/* Dark mode header appearance */
+html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
+  color: var(--ifm-color-content);                       /* light text */
+  background-color: rgba(61, 199, 246, 0.12);            /* tint of primary-4 (#3dc7f6) */
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Remove top border on very first header (keeps dropdown clean at top) */
+.navbar .dropdown__menu .dropdown__section-header:first-of-type {
+  border-top: none;
+  margin-top: 4px;
+}
+
+/* Optional: Remove hover feedback since headers are static text */
+.navbar .dropdown__menu .dropdown__section-header:hover {
+  background-color: #EEFBFF;
+  cursor: default;
+}
+
+/* Ensure headers don’t get icon spacing */
+.navbar .dropdown__menu .dropdown__section-header::before {
+  content: none !important;
+}
+
+/* Ensure docs dropdown links are aligned with icon */
+.navbar .dropdown__link[href^="/docs/"] {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .dropdown__link[href^="/docs/"]::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: no-repeat center / contain;
+  background-image: var(--nav-icon, none);
+}
+
+/* === Navbar Documentation dropdown icons (initial set) === */
+/* Not categorized */
+.navbar .dropdown__link[href*="/docs/platform"]{ --nav-icon: url('/img/icon_platform.svg'); }
+.navbar .dropdown__link[href*="/docs/code-repository"]{ --nav-icon: url('/img/icon_code.svg'); }
+.navbar .dropdown__link[href*="/docs/continuous-error-tracking"]{ --nav-icon: url('/img/icon_cet.svg'); }
+/* AI for DevOps & Automation */
+.navbar .dropdown__link[href*="/docs/continuous-delivery"]{ --nav-icon: url('/img/icon_cd.svg'); }
+.navbar .dropdown__link[href*="/docs/continuous-integration"]{ --nav-icon: url('/img/icon_ci.svg'); }
+.navbar .dropdown__link[href*="/docs/internal-developer-portal"]{ --nav-icon: url('/img/icon_idp.svg'); }
+.navbar .dropdown__link[href*="/docs/infrastructure-as-code-management"]{ --nav-icon: url('/img/icon_iacm.svg'); }
+.navbar .dropdown__link[href*="/docs/database-devops"]{ --nav-icon: url('/img/icon_dbdevops.svg'); }
+.navbar .dropdown__link[href*="/docs/artifact-registry"]{ --nav-icon: url('/img/icon-ar.svg'); }
+.navbar .dropdown__link[href*="/docs/cloud-development-environments"]{ --nav-icon: url('/img/icon-cde.svg'); }
+
+/* AI for Testing & Resilience */
+.navbar .dropdown__link[href*="/docs/feature-management-experimentation"]{ --nav-icon: url('/img/icon_fme.svg'); }
+.navbar .dropdown__link[href*="/docs/feature-flags"]{ --nav-icon: url('/img/icon_ff.svg'); }
+.navbar .dropdown__link[href*="/docs/chaos-engineering"]{ --nav-icon: url('/img/icon_ce.svg'); }
+.navbar .dropdown__link[href*="/docs/ai-test-automation"]{ --nav-icon: url('/img/logo-ata.svg'); }
+.navbar .dropdown__link[href*="/docs/ai-sre"]{ --nav-icon: url('/img/icon-ir.svg'); }
+.navbar .dropdown__link[href*="/docs/service-reliability-management"]{ --nav-icon: url('/img/icon_srm.svg'); }
+
+/* AI for Security & Compliance */
+.navbar .dropdown__link[href*="/docs/appsec-security-posture"]{ --nav-icon: url('/img/icon-arp.svg'); }
+.navbar .dropdown__link[href*="/docs/appsec-runtime-protection"]{ --nav-icon: url('/img/icon-api-runtime-protection.svg'); }
+.navbar .dropdown__link[href*="/docs/appsec-security-testing"]{ --nav-icon: url('/img/icon-ast.svg'); }
+.navbar .dropdown__link[href*="/docs/security-testing-orchestration"]{ --nav-icon: url('/img/icon_sto.svg'); }
+.navbar .dropdown__link[href*="/docs/software-supply-chain-assurance"]{ --nav-icon: url('/img/icon_ssca.svg'); }
+
+/* AI for Cost & Optimization */
+.navbar .dropdown__link[href*="/docs/cloud-cost-management"]{ --nav-icon: url('/img/icon_ccm.svg'); }
+.navbar .dropdown__link[href*="/docs/software-engineering-insights"]{ --nav-icon: url('/img/icon_sei.svg'); }
+
+/* Exceptions: links that should not display icons or spacing */
+.navbar .dropdown__link[href*="/docs/open-source"]::before,
+.navbar .dropdown__link[href*="/docs/self-managed-enterprise-edition"]::before,
+.navbar .dropdown__link[href*="/docs/faqs"]::before,
+.navbar .dropdown__link[href*="/docs/troubleshooting"]::before,
+.navbar .dropdown__link[href*="/docs/harness-cloud-operations"]::before
+{
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin-right: 0 !important;
+  background: none !important;
+}
+
 /* Hide sidebar categories that are only for navigation context */
 .sidebar-hidden {
   display: none !important;

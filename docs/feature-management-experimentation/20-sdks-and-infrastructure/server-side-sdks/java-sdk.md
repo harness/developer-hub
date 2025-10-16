@@ -43,7 +43,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.18.1</version>
+    <version>4.18.2</version>
 </dependency>
 ```
 
@@ -51,7 +51,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.18.1'
+compile 'io.split.client:java-client:4.18.2'
 ```
 
 </TabItem>
@@ -1137,7 +1137,7 @@ Import the Redis Wrapper into your project using one of the two methods below:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>redis-wrapper</artifactId>
-    <version>3.1.1</version>
+    <version>3.1.2</version>
 </dependency>
 ```
 
@@ -1145,7 +1145,7 @@ Import the Redis Wrapper into your project using one of the two methods below:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:redis-wrapper:1.0.0'
+compile 'io.split.client:redis-wrapper:3.1.2'
 ```
 
 </TabItem>

@@ -54,14 +54,14 @@ In your code, instantiate the Suite client as shown below.
 
 ```swift title="Swift"
 // Create default Suite configuration
-let config = SplitSuiteConfig()
+let config = SplitClientConfig()
 
 // SDK key
 let sdkKey = "YOUR_SDK_KEY"
 let matchingKey = Key(matchingKey: "key")
 
 // Create Suite
-let suite = SplitSuite.builder()
+let suite = DefaultSplitSuite.builder()
     .apiKey(sdkKey)
     .key(matchingKey)
     .config(config).build()
@@ -841,7 +841,7 @@ Working with user consent is demonstrated below.
   let matchingKey = Key(matchingKey: "key")
 
   // Create Suite
-  let suite = SplitSuite.builder()
+  let suite = DefaultSplitSuite.builder()
     .apiKey(sdkKey)
     .key(matchingKey)
     .config(sdkConfig).build()

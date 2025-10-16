@@ -31,10 +31,37 @@ Harness CCM Budgets provide comprehensive cost governance capabilities that help
 
 ## Budgets Overview Page
 
-When you click on Budgets in the left navigation bar, the overview page displays. From here, you can drill down into specific folders or view the complete budget list for broader visibility. You can customize your view by selecting which columns to display, including: Time Period, Budget Amount, Current Spend, Forecast, Forecast vs. Budget, Current Spend vs. Budget, Thresholds, Created By, and Last Modified.
-Note: Budgets cannot be manually moved between folders. However, when you move a perspective from one folder to another, all budgets associated with that perspective will automatically move to the destination folder.
+The Budgets Overview page provides a centralized dashboard for managing all your cost budgets. Access it by selecting **Budgets** from the left navigation bar.
 
-<DocImage path={require('./static/budget-overview.png')} width="90%" height="90%" title="Click to view full-size image" />
+From this page, you can:
+
+- **Folder Navigation**: Drill down into specific folders or view the complete budget list for comprehensive visibility
+- **Create New Budgets**: Quickly set up new budgets with customizable parameters
+- **Customizable View**: Configure your columns to display the metrics that matter most: Time Period, Budget Amount, Current Spend, Forecast, Forecast vs. Budget, Current Spend vs. Budget, Thresholds, Created By, Last Modified
+
+:::important Budget Folder Management
+Budgets are automatically associated with their perspective's folder. When you move a perspective to a different folder, all linked budgets will follow automatically.
+:::
+
+<DocImage path={require('./static/budgets-overview.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Bulk Budget Management**: Select multiple budgets to perform batch operations:
+  - **Adjust Budget Amounts**: Increase/decrease by percentage or fixed amount, or set to a specific value
+  - **Manage Alerts**: Delete existing alerts, add new alerts with custom thresholds, add or remove recipients from existing alerts
+  - **Delete Budgets**: Remove multiple budgets in a single operation
+  - **Clone Budgets**: Duplicate selected budgets with options to copy alert thresholds and recipients or customize as needed
+
+<DocImage path={require('./static/bulk-manage.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Filtering**: Quickly find relevant budgets using these filters:
+  - **Created By**: Filter by budget creator
+  - **Last Modified**: Select from preset timeframes (7/30/90 days) or choose a custom date
+  - **Budget Amount**: Set minimum and maximum budget thresholds
+  - **Period**: Filter by budget cycle (Daily, Weekly, Monthly, Quarterly, Yearly)
+  - **Perspective**: View budgets associated with specific perspectives
+
+<DocImage path={require('./static/filters.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 
 ------
 

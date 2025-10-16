@@ -355,7 +355,7 @@ Harness Terraform steps now support authenticating with Azure using Azure connec
 #### Key Features
 
 - **Azure Connector support:** Authenticate Terraform operations using Azure connectors configured in Harness.
-- **Authentication methods:** Manual credentials, Delegate-based credentials, OIDC token-based authentication are supported. Certificate-based authentication is **not supported** yet.
+- **Authentication methods:** Manual credentials, Delegate-based credentials, OIDC token-based authentication and Certificate-based authentication are supported.
 - **Additional options:** Default configuration can be overridden with environment variables like ARM_TENANT_ID and ARM_MSI_ENDPOINT for advanced scenarios.
 
 For more information on how to setup an Azure connector, go to [Azure Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
