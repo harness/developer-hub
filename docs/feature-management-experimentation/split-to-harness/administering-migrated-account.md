@@ -283,7 +283,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
               </p>
             </td>
             <td>
-               <br /> FME All Resources \* <br /><br /><br /> All Project Level Resources
+               <p> FME All Resources \* </p><br /><br /><p> All Project Level Resources </p>
             </td>
           </tr>
           <tr>
@@ -330,7 +330,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
               </p>
             </td>
             <td>
-              <br /> FME All Resources \* <br /><br /><br /> All Project Level Resources
+               <p> FME All Resources \* </p><br /><br /><p> All Project Level Resources </p>
             </td>
           </tr>
           <tr>
