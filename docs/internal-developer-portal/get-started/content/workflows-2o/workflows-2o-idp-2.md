@@ -94,7 +94,7 @@ spec:
 
   # Backend: Automation steps
   steps:
-    - id: trigger-pipeline
+    - id: trigger
       name: Trigger Welcome Pipeline
       action: trigger:harness-custom-pipeline
       input:
@@ -109,17 +109,16 @@ spec:
   output:
     links:
       - title: View Pipeline Execution
-        url: ${{ steps['trigger-pipeline'].output.PipelineUrl }}
+        url: ${{ steps.trigger.output.PipelineUrl }}
     text:
       - title: Success!
         content: |
-          🎉 Welcome {{ parameters.developer_name }}!
-          Your workflow completed successfully.
+          Welcome! Your workflow completed successfully.
           
           This demonstrates how Self-Service Workflows can:
-          ✅ Collect input from developers
-          ✅ Process that input automatically
-          ✅ Provide immediate feedback
+          - Collect input from developers
+          - Process that input automatically
+          - Provide immediate feedback
 ```
 
 </details>
@@ -201,17 +200,16 @@ Go to [Workflow Outputs](/docs/internal-developer-portal/flows/worflowyaml#workf
 output:
   links:
     - title: View Pipeline Execution
-      url: ${{ steps['trigger-pipeline'].output.PipelineUrl }}
+      url: ${{ steps.trigger.output.PipelineUrl }}
   text:
     - title: Success!
       content: |
-        🎉 Welcome {{ parameters.developer_name }}!
-        Your workflow completed successfully.
+        Welcome! Your workflow completed successfully.
         
         This demonstrates how Self-Service Workflows can:
-        ✅ Collect input from developers
-        ✅ Process that input automatically
-        ✅ Provide immediate feedback
+        - Collect input from developers
+        - Process that input automatically
+        - Provide immediate feedback
 ```
 
 #### **Workflow Metadata**
@@ -242,13 +240,21 @@ spec:
   type: service
 ```
 
-### Step 2: Create the supporting Harness Pipeline
+### Step 2: Create the supporting Harness IDP Pipeline
 
 Harness IDP Workflows can trigger Harness Pipelines to perform the actual automation. This is used to handle the backend orchestration of the Workflow. First, create a simple pipeline that will process your workflow inputs.
 
-1. Navigate to **Pipelines** in your Harness project
-2. Click **Create a Pipeline**
-3. Add a **Custom Stage** with a **Shell Script** step
+1. Navigate to **Pipelines** in your Harness IDP project.
+2. Click **Create a Pipeline**.
+3. Add a **Developer Portal Stage** with a **Run** step. This step will execute the given shell script that will generate the welcome message.
+
+```yaml
+echo "Welcome to Harness IDP, <+pipeline.variables.developer_name>!"
+echo "Team: <+pipeline.variables.team_name>"
+echo "Favorite Language: <+pipeline.variables.favorite_language>"
+echo "Workflow completed successfully!"
+```
+
 4. Configure the pipeline with these **variables**:
    - `developer_name` (String, Runtime Input)
    - `team_name` (String, Runtime Input)
@@ -259,51 +265,63 @@ Harness IDP Workflows can trigger Harness Pipelines to perform the actual automa
 
 ```yaml
 pipeline:
-  name: Hello World Welcome Pipeline
-  identifier: hello_world_welcome_pipeline
+  name: hello-world-pipeline
+  identifier: helloworldpipeline
+  projectIdentifier: <PROJECT-IDENTIFIER>
+  orgIdentifier: <ORG-IDENTIFIER>
+  tags: {}
   stages:
     - stage:
-        name: Welcome Stage
-        identifier: welcome_stage
-        type: Custom
+        name: idp-hello-world
+        identifier: idphelloworld
+        type: IDP
         spec:
           execution:
             steps:
               - step:
-                  type: ShellScript
-                  name: Generate Welcome
-                  identifier: generate_welcome
+                  type: Run
+                  name: Hello-World
+                  identifier: HelloWorld
                   spec:
-                    shell: Bash
-                    source:
-                      type: Inline
-                      spec:
-                        script: |
-                          echo "🎉 Welcome to Harness IDP, <+pipeline.variables.developer_name>!"
-                          echo "Team: <+pipeline.variables.team_name>"
-                          echo "Favorite Language: <+pipeline.variables.favorite_language>"
-                          echo "✅ Workflow completed successfully!"
+                    connectorRef: account.harnessImage
+                    image: node:18
+                    shell: Sh
+                    command: |-
+                      echo "Welcome to Harness IDP, <+pipeline.variables.developer_name>!"
+                      echo "Team: <+pipeline.variables.team_name>"
+                      echo "Favorite Language: <+pipeline.variables.favorite_language>"
+                      echo "Workflow completed successfully!"
+          platform:
+            os: Linux
+            arch: Arm64
+          runtime:
+            type: Cloud
+            spec: {}
+        tags: {}
   variables:
     - name: developer_name
       type: String
+      required: true
       value: <+input>
     - name: team_name
       type: String
+      required: true
       value: <+input>
     - name: favorite_language
       type: String
+      required: true
       value: <+input>
+
 ```
 </details>
 
 5. **Save** the pipeline and copy its **execution URL**
 
+<DocVideo src="https://app.tango.us/app/embed/f5770ad2-527c-4a02-a2ec-da4f1537a80a" title="Create the supporting Harness IDP Pipeline" />
+
 ### Step 3: Create the Workflow
 
 Now create the workflow that will collect user inputs and trigger your pipeline.
-
-<Tabs>
-<TabItem value="UI" label="Create via UI">
 
 1. Navigate to **IDP** and click **Create** in the sidebar
 2. Select **Workflow** from the entity types
@@ -312,88 +330,13 @@ Now create the workflow that will collect user inputs and trigger your pipeline.
    - **Description**: `A simple workflow to demonstrate self-service automation`
    - **Tags**: `getting-started`, `demo`
 
-4. **Define the scope**: Choose Account, Org, or Project level access
+4. **Define the scope**: Choose Account, Org, or Project level scope access. 
 
-5. **Configure the Workflow YAML**:
-   - Switch to **YAML View**
-   - **Paste the workflow YAML**
+5. **Review the YAML**: Switch to the YAML view and paste your Workflow YAML here. Replace `YOUR_PIPELINE_URL_HERE` with your actual pipeline URL.
 
-6. **Review and save** the workflow
+6. **Save** the Workflow and navigate to the Catalog to find your "Hello World Workflow". 
 
-</TabItem>
-<TabItem value="YAML" label="Create via YAML">
-
-1. Navigate to **IDP** and click **Create** in the sidebar
-2. Select **Workflow** and switch to **YAML View**
-3. **Paste the workflow YAML**:
-
-```yaml
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: hello-world-workflow
-  title: Hello World Workflow
-  description: A simple workflow to demonstrate self-service automation
-  tags:
-    - getting-started
-    - demo
-spec:
-  owner: platform-team
-  type: service
-  
-  parameters:
-    - title: Developer Information
-      required:
-        - developer_name
-        - team_name
-      properties:
-        developer_name:
-          title: Your Name
-          type: string
-          description: Enter your full name
-        team_name:
-          title: Your Team
-          type: string
-          description: Which team do you belong to?
-        favorite_language:
-          title: Favorite Programming Language
-          type: string
-          enum:
-            - JavaScript
-            - Python
-            - Java
-            - Go
-            - Other
-          default: JavaScript
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
-
-  steps:
-    - id: trigger-pipeline
-      name: Trigger Welcome Pipeline
-      action: trigger:harness-custom-pipeline
-      input:
-        url: "YOUR_PIPELINE_URL_HERE"
-        inputset:
-          developer_name: ${{ parameters.developer_name }}
-          team_name: ${{ parameters.team_name }}
-          favorite_language: ${{ parameters.favorite_language }}
-        apikey: ${{ parameters.token }}
-
-  output:
-    links:
-      - title: View Pipeline Execution
-        url: ${{ steps['trigger-pipeline'].output.PipelineUrl }}
-```
-
-4. **Replace** `YOUR_PIPELINE_URL_HERE` with your actual pipeline URL
-5. **Save** the workflow
-
-</TabItem>
-</Tabs>
+<DocVideo src="https://app.tango.us/app/embed/2ee9d6bd-6041-4c46-abe0-ce7e33d9f936" title="Create Workflow in Harness IDP" />
 
 ### Step 4: Execute your Workflow
 
