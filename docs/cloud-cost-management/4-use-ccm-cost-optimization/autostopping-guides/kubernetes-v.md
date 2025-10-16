@@ -16,41 +16,48 @@ This change brings multi-workload support in a single rule, multiple traffic ent
 ## Key Changes from V1 to V2
 
 ### 1. Removal of Proxy Layer
-Earlier:
-All incoming traffic flowed through a proxy.
-Proxy handled both traffic detection and rewiring to workloads.
-Rewiring to workloads was done once at setup; subsequent rewiring occurred only inside the proxy.
-eBPF based AutoStopping:
-Proxy has been removed entirely.
-Rewiring is now done directly on the Ingress.
-Controller updates Ingress routes dynamically whenever workloads are stopped or started.
-V2 currently supports NGINX Ingress only.
 
-2. New Traffic Detection Agent (eBPF-based)
-Why: Without the router, we needed a new way to detect traffic without being in the direct data path.
-How it works:
-Runs as a DaemonSet across all nodes in the cluster.
-Uses eBPF to monitor low-level network activity directly from the kernel.
-Detects when workloads receive traffic without introducing latency.
-Requirements:
-Works only on node-based Kubernetes clusters (VM-based).
-Not supported on serverless or fully managed offerings like AWS Fargate or GCP Autopilot.
-Requires host-level access and elevated permissions in the deployment YAML.
+**Earlier:**
+- All incoming traffic flowed through a proxy.
+- Proxy handled both traffic detection and rewiring to workloads.
+- Rewiring to workloads was done once at setup; subsequent rewiring occurred only inside the proxy.
 
-3. Multiple Workloads per Autostopping Rule
-V1 Limitation:
-Each Autostopping rule could only manage one workload.
-Example: For an application with 100 workloads, 100 separate rules were required for independent traffic-based scaling.
-V2 Improvement:
-A single Autostopping rule can now manage multiple workloads that form a complete application.
-Traffic to any workload in the group will keep the entire application running.
-Greatly reduces configuration overhead and simplifies operations.
+**eBPF based AutoStopping:**
+- Proxy has been removed entirely.
+- Rewiring is now done directly on the Ingress.
+- Controller updates Ingress routes dynamically whenever workloads are stopped or started.
+- V2 currently supports NGINX Ingress only.
 
-4. Multiple Traffic Entry Points
+### 2. New Traffic Detection Agent (eBPF-based)
+
+**Why:** Without the router, we needed a new way to detect traffic without being in the direct data path.
+
+**How it works:**
+- Runs as a DaemonSet across all nodes in the cluster.
+- Uses eBPF to monitor low-level network activity directly from the kernel.
+- Detects when workloads receive traffic without introducing latency.
+
+**Requirements:**
+- Works only on node-based Kubernetes clusters (VM-based).
+- Not supported on serverless or fully managed offerings like AWS Fargate or GCP Autopilot.
+- Requires host-level access and elevated permissions in the deployment YAML.
+
+### 3. Multiple Workloads per Autostopping Rule
+**V1 Limitation:**
+- Each Autostopping rule could only manage one workload.
+- Example: For an application with 100 workloads, 100 separate rules were required for independent traffic-based scaling.
+
+**V2 Improvement:**
+- A single Autostopping rule can now manage multiple workloads that form a complete application.
+- Traffic to any workload in the group will keep the entire application running.
+- Greatly reduces configuration overhead and simplifies operations.
+
+### 4. Multiple Traffic Entry Points
 V2 supports defining multiple ingress routes for the same workload.
-This means:
-Whether traffic comes via external.example.com or internal.example.com (or any other configured host/path), the application will start automatically.
-Useful for workloads accessed from multiple domains, subdomains, or ingress controllers.
+
+**This means:**
+- Whether traffic comes via external.example.com or internal.example.com (or any other configured host/path), the application will start automatically.
+- Useful for workloads accessed from multiple domains, subdomains, or ingress controllers.
 
 
 ## Technical Requirements
