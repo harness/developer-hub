@@ -159,6 +159,12 @@ The following deprecated API endpoints are longer supported:
 
 ## October 2025 
 
+### Version 1.112.x <!--October 14, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where data in the *Assigned To* tab on the role details page displayed incorrectly when the FF `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` was enabled. [PL-65506]
+
 ### Version 1.111.x <!--October 08, 2025-->
 
 ### New features and enhancements
