@@ -290,6 +290,10 @@ You can find the delegate logs in the following files:
 - **MacOS**: `~/Library/Logs/harness.runner/stderr.log`
 - **Linux**: `nohup-runner.out`
 
+### Metrics
+
+The unified runner exposes metrics on the `/metrics` endpoint for monitoring and observability. By default, the metrics endpoint is available at `http://localhost:3000/metrics`.
+
 ## End to End Demo
 
 This video walks through an end to end demo of the delegate installation, including usage and a pipeline execution.
