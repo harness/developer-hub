@@ -431,7 +431,7 @@ If you create a **new project in Harness** post-migration, your legacy Split Adm
 
 Post-migration, your legacy Split Admin API keys are listed in **FME Settings**. _Environment-scoped_ legacy Split Admin API keys will be listed in FME Settings _if you are in the project where the [environment was created](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments/#editing)_.
 
-To view ___environment-scoped___ keys alongside the globally-scoped legacy Split Admin API keys:
+To view **environment-scoped** keys alongside the globally-scoped legacy Split Admin API keys:
 1. In the left navigation pane, click the scope selector and select the project where the environment was created.
 1. In the left navigation pane, click **FME Settings**.
 1. Under **Project settings**, click **API keys**. The environment-scoped legacy keys will be listed for that project.
