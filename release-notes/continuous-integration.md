@@ -50,6 +50,25 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## October 2025
 
+### Version 1.103.0
+
+<!-- 2025-10-13 -->
+#### Fixed issues
+- Addressed issues where invalid or stale presigned URLs caused 404 errors during DLC cache retrieval. (CI-19203)
+- Queued status is now shown only at the stage (not steps) on Kubernetes, so wait times reflect actual stage queueing and no longer flag the Initialize step. (CI-19053)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `plugins/buildx` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.7              | 1.3.10  |
+| `plugins/buildx-ecr` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.6  |         1.3.8   |
+| `plugins/buildx-acr` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.6  |         1.3.8   |
+| `plugins/buildx-gcr` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.6  |         1.3.8   |
+| `plugins/buildx-gar` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.6  |         1.3.8   |
+| `harness/ci-lite-engine`       | Regular image updates | 1.17.7              | 1.17.8         |
+| `harness/ci-addon`       | Regular image updates | 1.17.7              | 1.17.8         |
+
 ### Version 1.102.0
 
 <!-- 2025-10-06 -->
