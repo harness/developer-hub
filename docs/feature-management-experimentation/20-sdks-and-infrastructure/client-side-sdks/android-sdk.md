@@ -957,7 +957,7 @@ The Android SDK does **not** use `SharedPreferences` to store the FME cache. It 
 
 ### Integrate with the Harness Proxy
 
-The Harness Proxy allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
 
 To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
 
@@ -1087,8 +1087,6 @@ SplitClientConfig config = SplitClientConfig.builder()
 #### Verify connection
 
 After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
-
-For more information, see the [Harness Proxy documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy).
 
 ## Localhost mode
 

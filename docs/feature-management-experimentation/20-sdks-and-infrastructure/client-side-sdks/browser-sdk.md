@@ -855,7 +855,7 @@ class IndexedDBWrapper implements SplitIO.StorageWrapper {
 
 ### Integrate with the Harness Proxy
 
-The Harness Proxy allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
 
 In web applications, proxies cannot be configured programmatically using JavaScript. Browsers restrict access to the low-level networking APIs required for handling tunneling (such as the HTTP `CONNECT` method) due to security reasons. Instead, the proxy must be configured at the browser or operating system level.
 
@@ -906,8 +906,6 @@ The recommended approach is to configure a Proxy Auto-Configuration (PAC) file. 
 #### Verify connection
 
 After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
-
-For more information, see the [Harness Proxy documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy).
 
 ## Localhost mode
 

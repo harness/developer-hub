@@ -639,121 +639,6 @@ const factory: SplitIO.ISDK = SplitFactory({
 </TabItem>
 </Tabs>
 
-### Integrate with the Harness Proxy
-
-The Harness Proxy allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
-
-To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
-
-#### Configure the proxy
-
-You can configure the Node.js SDK to route traffic through a forward proxy by setting a custom HTTP agent. This overrides the default SDK agent and allows you to define proxy URLs, authentication headers, and mTLS certificates.
-
-In Node.js, network proxies are configured via the agent option in the SDK’s `requestOptions`. Harness recommends using the `https-proxy-agent` library to simplify proxy setup and handle secure connections.
-
-The following proxy configuration parameters are available:
-
-| Configuration | Description | Required |
-|:---:|:---:|:---:|
-| `agent` | Custom HTTP agent that defines proxy behavior. | Yes |
-| `ca` | Certificate authority (CA) file for self-signed certificates. | Optional |
-| `cert` / `key` | Client certificate and private key for mTLS authentication. | Optional |
-| `headers` | Custom headers for proxy authentication (Basic or Bearer Token). | Optional |
-
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
-
-```javascript
-// Load certificates
-const fs = require('fs');
-const caCert = fs.readFileSync('certs/ca.crt');
-const clientCert = fs.readFileSync('certs/client.crt');
-const clientKey = fs.readFileSync('certs/client.key');
-
-// Renew tokens before expiration
-let bearerToken;
-refreshBearerToken();
-function refreshBearerToken() {
-  bearerToken = getNewBearerToken();
-  const decodedToken = decodeToken(bearerToken);
-  // Renew the token 1 minute before expiration
-  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
-}
-
-// Create an agent to use the forward proxy at https://harness-fproxy:3128
-const { HttpsProxyAgent } = require('https-proxy-agent');
-const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
-  ca: caCert,                   // CA certificate for self-signed cert
-  cert: clientCert,             // mTLS: client certificate
-  key: clientKey,               // mTLS: private key
-  headers: () => ({
-    // Basic authentication
-    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
-    // Bearer (JWT) authentication
-    'Proxy-Authorization': `Bearer ${bearerToken}`,
-  }),
-});
-
-// Initialize the SDK with the proxy-enabled agent
-const { SplitFactory } = require('@splitsoftware/splitio');
-const factory = SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY',
-  },
-  sync: {
-    requestOptions: {
-      agent: agentUsingProxy,
-    },
-  },
-});
-```
-
-</TabItem>
-<TabItem value="TypeScript">
-
-```typescript
-import fs from 'fs';
-import { HttpsProxyAgent } from 'https-proxy-agent';
-import { SplitFactory } from '@splitsoftware/splitio';
-
-const caCert: Buffer = fs.readFileSync('certs/ca.crt');
-const clientCert: Buffer = fs.readFileSync('certs/client.crt');
-const clientKey: Buffer = fs.readFileSync('certs/client.key');
-
-let bearerToken: string;
-refreshBearerToken();
-
-function refreshBearerToken(): void {
-  bearerToken = getNewBearerToken();
-  const decodedToken = decodeToken(bearerToken);
-  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
-}
-
-const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
-  ca: caCert,
-  cert: clientCert,
-  key: clientKey,
-  headers: (): Record<string, string> => ({
-    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
-    'Proxy-Authorization': `Bearer ${bearerToken}`,
-  }),
-});
-
-const factory = SplitFactory({
-  core: { authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY' },
-  sync: { requestOptions: { agent: agentUsingProxy } },
-});
-```
-
-</TabItem>
-</Tabs>
-
-#### Verify connection
-
-After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
-
-For more information, see the [Harness Proxy documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy).
-
 ## State sharing with Redis
 
 **Configuring this Redis integration section is optional for most setups. Read below to determine if it might be useful for your project.**
@@ -1285,10 +1170,11 @@ factory.Logger.setLogger(console);
 
 ## Proxy
 
-If you need to use a network proxy, you can provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The SDK will use this agent to perform requests to Harness servers.
+If your environment requires routing traffic through a proxy, you can configure the Node.js SDK to use one.
 
-<Tabs>
-<TabItem value="Example using the HTTPS Proxy Agent NPM library">
+If you need to use a standard network proxy, provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The SDK uses this agent to perform requests through the proxy.
+
+For example:
 
 ```javascript
 // Install with `npm install https-proxy-agent`
@@ -1309,8 +1195,118 @@ const factory = SplitFactory({
 })
 ```
 
+### Integrate with the Harness Proxy
+
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
+
+#### Configure the proxy
+
+You can configure the Node.js SDK to route traffic through a forward proxy by setting a custom HTTP agent. This overrides the default SDK agent and allows you to define proxy URLs, authentication headers, and mTLS certificates.
+
+In Node.js, network proxies are configured via the agent option in the SDK’s `requestOptions`. Harness recommends using the `https-proxy-agent` library to simplify proxy setup and handle secure connections.
+
+The following proxy configuration parameters are available:
+
+| Configuration | Description | Required |
+|:---:|:---:|:---:|
+| `agent` | Custom HTTP agent that defines proxy behavior. | Yes |
+| `ca` | Certificate authority (CA) file for self-signed certificates. | Optional |
+| `cert` / `key` | Client certificate and private key for mTLS authentication. | Optional |
+| `headers` | Custom headers for proxy authentication (Basic or Bearer Token). | Optional |
+
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript">
+
+```javascript
+// Load certificates
+const fs = require('fs');
+const caCert = fs.readFileSync('certs/ca.crt');
+const clientCert = fs.readFileSync('certs/client.crt');
+const clientKey = fs.readFileSync('certs/client.key');
+
+// Renew tokens before expiration
+let bearerToken;
+refreshBearerToken();
+function refreshBearerToken() {
+  bearerToken = getNewBearerToken();
+  const decodedToken = decodeToken(bearerToken);
+  // Renew the token 1 minute before expiration
+  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
+}
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  ca: caCert,                   // CA certificate for self-signed cert
+  cert: clientCert,             // mTLS: client certificate
+  key: clientKey,               // mTLS: private key
+  headers: () => ({
+    // Basic authentication
+    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
+    // Bearer (JWT) authentication
+    'Proxy-Authorization': `Bearer ${bearerToken}`,
+  }),
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY',
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy,
+    },
+  },
+});
+```
+
+</TabItem>
+<TabItem value="TypeScript">
+
+```typescript
+import fs from 'fs';
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const caCert: Buffer = fs.readFileSync('certs/ca.crt');
+const clientCert: Buffer = fs.readFileSync('certs/client.crt');
+const clientKey: Buffer = fs.readFileSync('certs/client.key');
+
+let bearerToken: string;
+refreshBearerToken();
+
+function refreshBearerToken(): void {
+  bearerToken = getNewBearerToken();
+  const decodedToken = decodeToken(bearerToken);
+  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
+}
+
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  ca: caCert,
+  cert: clientCert,
+  key: clientKey,
+  headers: (): Record<string, string> => ({
+    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
+    'Proxy-Authorization': `Bearer ${bearerToken}`,
+  }),
+});
+
+const factory = SplitFactory({
+  core: { authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY' },
+  sync: { requestOptions: { agent: agentUsingProxy } },
+});
+```
+
 </TabItem>
 </Tabs>
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
 
 ## Advanced use cases
 
@@ -1319,8 +1315,6 @@ This section describes advanced use cases and features provided by the SDK.
 ### Working with both sync and async storage
 
 You can write code that works with all type of SDK storage. For example, you might have an application that you want to run on both `REDIS` and `MEMORY` storage types. To accommodate this, check if the treatments are [thenable objects](https://promisesaplus.com/#terminology) to decide when to execute the code that depends on the feature flag.
-
-See example below.
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">

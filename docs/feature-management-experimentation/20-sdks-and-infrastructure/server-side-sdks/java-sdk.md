@@ -599,304 +599,6 @@ client.blockUntilReady()
 </TabItem>
 </Tabs>
 
-### Connect to a Split Proxy instance
-
-The SDK can connect to a Split Proxy instance as though it was connecting to our CDN, and the Proxy synchronizes the data and writes impressions and events back to Harness FME servers. Be sure to install the Split Proxy by following the steps in [Split Proxy guide](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy).
-
-Use the `.endpoint()` property in the SplitClientConfig builder object to point the Java SDK to the Synchronizer, making sure to use the same port specified in the Proxy command line. When creating the `SplitFactory` object, use the custom API key specified in the `client-apikeys` parameter for the Proxy. The Proxy uses the SDK key when connecting to Harness FME servers. Refer to the following code example to connect to a Proxy instance:
-
-<Tabs groupId="java-kotlin-choice">
-<TabItem value="java" label="Java">
-
-```java
-import io.split.client.SplitClient;
-import io.split.client.SplitClientConfig;
-import io.split.client.SplitFactory;
-import io.split.client.SplitFactoryBuilder;
-
-public class SplitSD {
-    public static void main(String[] args) {
-      SplitClientConfig config = SplitClientConfig.builder()
-           .setBlockUntilReadyTimeout(10000)
-           .endpoint("https://myproxy.com","https://myproxy.com")
-           .authServiceURL("https://myproxy.com" + "/api/auth")
-           .telemetryURL("https://myproxy.com" + "/api/v1")
-           .build();
-      SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config);
-      SplitClient client = splitFactory.client();
-      try {
-        client.blockUntilReady()
-        String treatment = client.getTreatment("user10","sample_feature_flag");
-        if (treatment.equals("on")) {
-          System.out.print("Treatment is on");
-        } else if (treatment.equals("off")) {
-          System.out.print("Treatment is off");
-        } else {
-          System.out.print("SDK Not ready");
-        }
-      } catch (Exception e) {
-          System.out.print("Exception: "+e.getMessage());
-      }
-    }
-}
-```
-
-</TabItem>
-<TabItem value="kotlin" label="Kotlin">
-
-```kotlin
-import io.split.client.SplitFactoryBuilder
-import io.split.client.SplitClient
-import io.split.client.SplitClientConfig
-import io.split.client.SplitFactory
-
-fun main (args: Array<String>){
-    val config: SplitClientConfig = SplitClientConfig.builder()
-                .setBlockUntilReadyTimeout(10000)
-                .endpoint("https://myproxy.com","https://myproxy.com")
-                .authServiceURL("https://myproxy.com" + "/api/auth")
-                .telemetryURL("https://myproxy.com" + "/api/v1")
-                .build()
-    val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config)
-    val client: SplitClient = splitFactory.client()
-    try {
-        client.blockUntilReady()
-        val treatment = client.getTreatment("key", "FEATURE_FLAG_NAME", attributes)
-        when (treatment) {
-            "on" -> {
-                println("Treatment is on")
-            }
-            "off" -> {
-                println("Treatment is off")
-            }
-            else -> {
-                println("SDK Not ready")
-            }
-        }
-    } catch (e: Exception) {
-        println("Exception: " + e.message)
-    }
-}
-```
-
-</TabItem>
-</Tabs>
-
-### Integrate with the Harness Proxy
-
-The Harness Proxy allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
-
-To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
-
-#### Configure the proxy 
-
-You can configure the Java SDK to route traffic through a forward proxy using the `ProxyConfiguration` class builder. This allows you to define proxy URLs, authentication credentials, and optional mTLS settings.
-
-The following proxy configuration parameters are available:
-
-| Configuration | Description | Required |
-|:---:|:---:|:---:|
-| `url` | Proxy server URL, provided as an instance of the `java.net.URL` class. | Yes |
-| `credentialsProvider` | Credentials used for proxy authentication. Provide an implementation of either `BearerCredentialsProvider` or `BasicCredentialsProvider`. | Optional |
-| `mtls` | Parameters for mTLS authentication, including the `.p12` certificate file and password. | Optional |
-
-#### Harness Proxy (URL Only)
-
-To use a proxy with no authentication, specify only the proxy URL in the configuration. Follow the pattern: `http(s)://host:port`.
-
-<Tabs groupId="java-kotlin-choice">
-<TabItem value="java" label="Java">
-
-```java
-SplitClientConfig.builder()
-    .proxyConfiguration(ProxyConfiguration.builder()
-        .url(new URL("https://fme-forward-proxy:3130"))
-        .build())
-    .build();
-```
-
-</TabItem>
-<TabItem value="kotlin" label="Kotlin">
-
-Authentication is optional. Only one authentication method can be active at a time.
-
-```kotlin
-import io.split.client.SplitClientConfig
-import io.split.client.dtos.ProxyConfiguration
-import java.net.URL
-
-val proxyConfig = ProxyConfiguration.builder()
-    .url(URL("https://fme-forward-proxy:3130"))
-    .build()
-
-val config = SplitClientConfig.builder()
-    .proxyConfiguration(proxyConfig)
-    .build()
-```
-
-</TabItem>
-</Tabs>
-
-#### Harness Proxy with Username/Password Authentication
-
-To authenticate using a username and password, implement the `BasicCredentialsProvider` interface and override the required methods.
-
-<Tabs groupId="java-kotlin-choice">
-<TabItem value="java" label="Java">
-
-```java
-import java.net.URL;
-import io.split.client.dtos.BasicCredentialsProvider;
-import io.split.client.SplitClientConfig;
-
-class MyProxyCredentialsProvider implements BasicCredentialsProvider {
-    @Override
-    public String getUsername() {
-        return "user-name";
-    }
-    @Override
-    public String getPassword() {
-        return "user-pass";
-    }
-}
-
-SplitClientConfig.builder()
-    .proxyConfiguration(ProxyConfiguration.builder()
-        .url(new URL("https://fme-forward-proxy:3130"))
-        .credentialsProvider(new MyProxyCredentialsProvider())
-        .build())
-    .build();
-```
-
-</TabItem>
-<TabItem value="kotlin" label="Kotlin">
-
-```kotlin
-import io.split.client.SplitClientConfig
-import io.split.client.dtos.ProxyConfiguration
-import io.split.client.dtos.BasicCredentialsProvider
-import java.net.URL
-
-class MyProxyCredentialsProvider : BasicCredentialsProvider {
-    override fun getUsername(): String = "user-name"
-    override fun getPassword(): String = "user-pass"
-}
-
-val proxyConfig = ProxyConfiguration.builder()
-    .url(URL("https://fme-forward-proxy:3130"))
-    .credentialsProvider(MyProxyCredentialsProvider())
-    .build()
-
-val config = SplitClientConfig.builder()
-    .proxyConfiguration(proxyConfig)
-    .build()
-```
-
-</TabItem>
-</Tabs>
-
-#### Harness Proxy with JWT Token Authentication
-
-To authenticate using a JWT, implement the `BearerCredentialsProvider` interface and override the `getToken()` method to return a valid JWT string.
-
-<Tabs groupId="java-kotlin-choice">
-<TabItem value="java" label="Java">
-
-```java
-import java.net.URL;
-import io.split.client.dtos.BearerCredentialsProvider;
-import io.split.client.SplitClientConfig;
-
-class MyProxyCredentialsProvider implements BearerCredentialsProvider {
-    @Override
-    public String getToken() {
-        // Return a valid JWT token
-        return "YOUR_JWT_TOKEN";
-    }
-}
-
-SplitClientConfig.builder()
-    .proxyConfiguration(ProxyConfiguration.builder()
-        .url(new URL("https://fme-forward-proxy:3130"))
-        .credentialsProvider(new MyProxyCredentialsProvider())
-        .build())
-    .build();
-```
-
-</TabItem>
-<TabItem value="kotlin" label="Kotlin">
-
-Refresh or update the token when it expires.
-
-```kotlin
-import io.split.client.SplitClientConfig
-import io.split.client.dtos.ProxyConfiguration
-import io.split.client.dtos.BearerCredentialsProvider
-import java.net.URL
-
-class MyProxyCredentialsProvider : BearerCredentialsProvider {
-    override fun getToken(): String {
-        return "YOUR_JWT_TOKEN"
-    }
-}
-
-val proxyConfig = ProxyConfiguration.builder()
-    .url(URL("https://fme-forward-proxy:3130"))
-    .credentialsProvider(MyProxyCredentialsProvider())
-    .build()
-
-val config = SplitClientConfig.builder()
-    .proxyConfiguration(proxyConfig)
-    .build()
-```
-
-</TabItem>
-</Tabs>
-
-#### Harness Proxy with mTLS Authentication
-
-To configure mutual TLS (mTLS) authentication, use the `mtls()` parameter to pass the `.p12` certificate file and its password.
-
-<Tabs groupId="java-kotlin-choice">
-<TabItem value="java" label="Java">
-
-```java
-SplitClientConfig.builder()
-    .proxyConfiguration(ProxyConfiguration.builder()
-        .url(new URL("https://fme-forward-proxy:3130"))
-        .mtls(new FileInputStream("/path-to-p12-file"), "file-password")
-        .build())
-    .build();
-```
-
-</TabItem>
-<TabItem value="kotlin" label="Kotlin">
-
-```kotlin
-import io.split.client.SplitClientConfig
-import io.split.client.dtos.ProxyConfiguration
-import java.io.FileInputStream
-import java.net.URL
-
-val proxyConfig = ProxyConfiguration.builder()
-    .url(URL("https://fme-forward-proxy:3130"))
-    .mtls(FileInputStream("/path-to-p12-file"), "file-password")
-    .build()
-
-val config = SplitClientConfig.builder()
-    .proxyConfiguration(proxyConfig)
-    .build()
-```
-
-</TabItem>
-</Tabs>
-
-#### Verify connection
-
-After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
-
-For more information, see the [Harness Proxy documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy).
-
 ## Localhost mode
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. To use the SDK in localhost mode, you must replace the API Key with "localhost" value.
@@ -1198,7 +900,7 @@ In the example above, we have four entries:
  * The third entry defines that `my_feature_flag` always returns `off` for all keys that don't match another entry (in this case, any key other than `key`).
  * The fourth entry shows how an example overrides a treatment for a set of keys.
 
-Use the SplitConfigBuilder object to set the location of the localhost YAML file as shown in the example below:
+Use the `SplitConfigBuilder` object to set the location of the localhost YAML file as shown in the example below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java Init example">
@@ -1940,7 +1642,312 @@ WARN [main] (IntegrationsConfig.java:72) - New Relic agent not found. Continuing
 
 ## Network proxy
 
-If you need to use a network proxy, you can configure proxies by setting the `proxyHost` and `proxyPort` options in the SDK configuration (refer [Configuration](#configuration) section for more information). The SDK reads those variables and uses them to perform the server request.
+If your environment requires routing traffic through a proxy, you can configure the Java SDK to use one.
+
+If you need to use a standard network proxy, set the `proxyHost` and `proxyPort` options in the [SDK configuration](#configuration). The SDK uses these values to perform requests through the proxy.
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .proxyHost("my.proxy.example.com")
+    .proxyPort(8080)
+    .build();
+```
+
+### Connect to a Split Proxy instance
+
+You can also connect the SDK to a [Split Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy) instance instead of connecting directly to Harness FME servers. The Proxy synchronizes data and writes impressions and events back to Harness.
+
+Use the `.endpoint()` property in the `SplitClientConfig` builder object to point the Java SDK to the Proxy endpoint, and specify the same port used in the Proxy command line. When creating the `SplitFactory` object, use the custom API key defined in the Proxy's `client-apikeys` parameter. The Proxy uses the SDK key when connecting to Harness FME servers. 
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+
+public class SplitSD {
+    public static void main(String[] args) {
+      SplitClientConfig config = SplitClientConfig.builder()
+           .setBlockUntilReadyTimeout(10000)
+           .endpoint("https://myproxy.com","https://myproxy.com")
+           .authServiceURL("https://myproxy.com" + "/api/auth")
+           .telemetryURL("https://myproxy.com" + "/api/v1")
+           .build();
+      SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config);
+      SplitClient client = splitFactory.client();
+      try {
+        client.blockUntilReady()
+        String treatment = client.getTreatment("user10","sample_feature_flag");
+        if (treatment.equals("on")) {
+          System.out.print("Treatment is on");
+        } else if (treatment.equals("off")) {
+          System.out.print("Treatment is off");
+        } else {
+          System.out.print("SDK Not ready");
+        }
+      } catch (Exception e) {
+          System.out.print("Exception: "+e.getMessage());
+      }
+    }
+}
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+import io.split.client.SplitFactoryBuilder
+import io.split.client.SplitClient
+import io.split.client.SplitClientConfig
+import io.split.client.SplitFactory
+
+fun main (args: Array<String>){
+    val config: SplitClientConfig = SplitClientConfig.builder()
+                .setBlockUntilReadyTimeout(10000)
+                .endpoint("https://myproxy.com","https://myproxy.com")
+                .authServiceURL("https://myproxy.com" + "/api/auth")
+                .telemetryURL("https://myproxy.com" + "/api/v1")
+                .build()
+    val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config)
+    val client: SplitClient = splitFactory.client()
+    try {
+        client.blockUntilReady()
+        val treatment = client.getTreatment("key", "FEATURE_FLAG_NAME", attributes)
+        when (treatment) {
+            "on" -> {
+                println("Treatment is on")
+            }
+            "off" -> {
+                println("Treatment is off")
+            }
+            else -> {
+                println("SDK Not ready")
+            }
+        }
+    } catch (e: Exception) {
+        println("Exception: " + e.message)
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Integrate with the Harness Proxy
+
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
+
+#### Configure the proxy 
+
+You can configure the Java SDK to route traffic through a forward proxy using the `ProxyConfiguration` class builder. This allows you to define proxy URLs, authentication credentials, and optional mTLS settings.
+
+The following proxy configuration parameters are available:
+
+| Configuration | Description | Required |
+|:---:|:---:|:---:|
+| `url` | Proxy server URL, provided as an instance of the `java.net.URL` class. | Yes |
+| `credentialsProvider` | Credentials used for proxy authentication. Provide an implementation of either `BearerCredentialsProvider` or `BasicCredentialsProvider`. | Optional |
+| `mtls` | Parameters for mTLS authentication, including the `.p12` certificate file and password. | Optional |
+
+#### Harness Proxy (URL Only)
+
+To use a proxy with no authentication, specify only the proxy URL in the configuration. Follow the pattern: `http(s)://host:port`.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+SplitClientConfig.builder()
+    .proxyConfiguration(ProxyConfiguration.builder()
+        .url(new URL("https://fme-forward-proxy:3130"))
+        .build())
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+Authentication is optional. Only one authentication method can be active at a time.
+
+```kotlin
+import io.split.client.SplitClientConfig
+import io.split.client.dtos.ProxyConfiguration
+import java.net.URL
+
+val proxyConfig = ProxyConfiguration.builder()
+    .url(URL("https://fme-forward-proxy:3130"))
+    .build()
+
+val config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfig)
+    .build()
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with Username/Password Authentication
+
+To authenticate using a username and password, implement the `BasicCredentialsProvider` interface and override the required methods.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+import java.net.URL;
+import io.split.client.dtos.BasicCredentialsProvider;
+import io.split.client.SplitClientConfig;
+
+class MyProxyCredentialsProvider implements BasicCredentialsProvider {
+    @Override
+    public String getUsername() {
+        return "user-name";
+    }
+    @Override
+    public String getPassword() {
+        return "user-pass";
+    }
+}
+
+SplitClientConfig.builder()
+    .proxyConfiguration(ProxyConfiguration.builder()
+        .url(new URL("https://fme-forward-proxy:3130"))
+        .credentialsProvider(new MyProxyCredentialsProvider())
+        .build())
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+import io.split.client.SplitClientConfig
+import io.split.client.dtos.ProxyConfiguration
+import io.split.client.dtos.BasicCredentialsProvider
+import java.net.URL
+
+class MyProxyCredentialsProvider : BasicCredentialsProvider {
+    override fun getUsername(): String = "user-name"
+    override fun getPassword(): String = "user-pass"
+}
+
+val proxyConfig = ProxyConfiguration.builder()
+    .url(URL("https://fme-forward-proxy:3130"))
+    .credentialsProvider(MyProxyCredentialsProvider())
+    .build()
+
+val config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfig)
+    .build()
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with JWT Token Authentication
+
+To authenticate using a JWT, implement the `BearerCredentialsProvider` interface and override the `getToken()` method to return a valid JWT string.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+import java.net.URL;
+import io.split.client.dtos.BearerCredentialsProvider;
+import io.split.client.SplitClientConfig;
+
+class MyProxyCredentialsProvider implements BearerCredentialsProvider {
+    @Override
+    public String getToken() {
+        // Return a valid JWT token
+        return "YOUR_JWT_TOKEN";
+    }
+}
+
+SplitClientConfig.builder()
+    .proxyConfiguration(ProxyConfiguration.builder()
+        .url(new URL("https://fme-forward-proxy:3130"))
+        .credentialsProvider(new MyProxyCredentialsProvider())
+        .build())
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+Refresh or update the token when it expires.
+
+```kotlin
+import io.split.client.SplitClientConfig
+import io.split.client.dtos.ProxyConfiguration
+import io.split.client.dtos.BearerCredentialsProvider
+import java.net.URL
+
+class MyProxyCredentialsProvider : BearerCredentialsProvider {
+    override fun getToken(): String {
+        return "YOUR_JWT_TOKEN"
+    }
+}
+
+val proxyConfig = ProxyConfiguration.builder()
+    .url(URL("https://fme-forward-proxy:3130"))
+    .credentialsProvider(MyProxyCredentialsProvider())
+    .build()
+
+val config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfig)
+    .build()
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with mTLS Authentication
+
+To configure mutual TLS (mTLS) authentication, use the `mtls()` parameter to pass the `.p12` certificate file and its password.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+SplitClientConfig.builder()
+    .proxyConfiguration(ProxyConfiguration.builder()
+        .url(new URL("https://fme-forward-proxy:3130"))
+        .mtls(new FileInputStream("/path-to-p12-file"), "file-password")
+        .build())
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+import io.split.client.SplitClientConfig
+import io.split.client.dtos.ProxyConfiguration
+import java.io.FileInputStream
+import java.net.URL
+
+val proxyConfig = ProxyConfiguration.builder()
+    .url(URL("https://fme-forward-proxy:3130"))
+    .mtls(FileInputStream("/path-to-p12-file"), "file-password")
+    .build()
+
+val config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfig)
+    .build()
+```
+
+</TabItem>
+</Tabs>
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
 
 ## Advanced: WebLogic container
 
