@@ -401,15 +401,15 @@ Some admins might not have Google account access to download air gap bundles. As
 # needs update
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.33.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.33.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.33.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.33.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.33.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.33.1/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.33.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.33.1/sto_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.33.1/iacm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.33.2/iacm_images.tgz" \
   .
 ```
 
@@ -425,7 +425,7 @@ gsutil -m cp \
     - Region
     - AWS Instancetype [CCM-24703]
 
-- **Improved Field Descriptions in BI Dashboards**: Updated field description for AWS Account Name in BI Dashboards. [CCM-24572]
+- **Improved Field Descriptions in BI Dashboards**: Updated field description for AWS Account Name in BI Dashboards for Cloud Cost Management. [CCM-24572]
 
 
 ## October 10, 2025, Patch Version 0.33.1
