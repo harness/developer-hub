@@ -29,9 +29,7 @@ This capability enables teams to adapt to structural changes while preserving pr
 
 3. **Access control and policies**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be reapplied in the destination organization.
 
-4. **Audit logs are preserved**: Execution history and audit logs are maintained, but redirect links to the source organization may break.
-
-5. **Default settings**: Project default settings may be affected if destination organization defaults restrict overrides.
+4. **Audit logs**: Old audit logs are maintained, but redirect links to the source organization may break.
 
 For detailed pre-move verification and post-move remediation steps, refer to the [project movement checklist](project-movement-checklist.md).
 
