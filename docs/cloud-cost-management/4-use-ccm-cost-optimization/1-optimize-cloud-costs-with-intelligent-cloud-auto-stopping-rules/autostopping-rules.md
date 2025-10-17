@@ -37,7 +37,8 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
     AWS: {
       path: "/cloud-cost-management/content/auto-stopping/aws-as.md",
       logo: "/cloud-providers/aws-logo.svg",
-      logoSize: 40
+      logoSize: 40,
+      iconOnly: true
     },
     GCP: {
       path: "/cloud-cost-management/content/auto-stopping/gcp-as.md",
