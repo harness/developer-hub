@@ -86,7 +86,7 @@ The new component will be available in your catalog.
 
 4. Now on the Dialog box select **Unregister Location**.
 
-<DocImage path={require('./static/Unregister-location.png')} />
+<DocImage path={require('./static/unregister-location.png')} />
 
 5. This will delete the software component.
 

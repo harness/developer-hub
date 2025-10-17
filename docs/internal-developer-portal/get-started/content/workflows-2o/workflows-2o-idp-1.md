@@ -76,7 +76,7 @@ Before you begin, ensure you have the following:
 
 14. Now **Add Variable** for both `github_org` and `github_repo` and set them as **Runtime Inputs**.
 
-![](static/add_variable.png)
+![](static/add-variable.png)
 
 15. **Save** the Pipeline and copy the **Pipeline URL**.
 
@@ -195,7 +195,7 @@ parameters:
 
 16. Once you're on the entity page for Workflow, **Launch the Workflow**.
 
-![](static/Launch-template.png)
+![](static/launch-template.png)
 
 17. Now fill the fields as:
     - Repository Location: Add a name for the repository you wanted to create. 
