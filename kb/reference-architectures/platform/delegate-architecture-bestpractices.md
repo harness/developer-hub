@@ -99,7 +99,7 @@ graph TD
 
 ## Common patterns adapted for Delegate Architecture, pros and cons:
 
-![Delegate Architecture](../static/delegate_hosting_infrastructure_architecture_patterns.png)
+![Delegate Architecture](../static/delegate-hosting-infrastructure-architecture-patterns.png)
 
 ## Delegate Architecture Best Practices (Applicable to All modules CI/CD/CCM/STO/IACM):
 
