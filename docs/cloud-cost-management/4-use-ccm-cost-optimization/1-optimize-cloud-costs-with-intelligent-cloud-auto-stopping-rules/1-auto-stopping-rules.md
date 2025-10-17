@@ -29,7 +29,7 @@ AutoStopping Rules let you define:
 
 | Cloud Provider | Supported Resources |
 |----------------|---------------------|
-| <img src="/provider-logos/cloud-providers/aws-logo.svg" alt="AWS" width="20"/>  <strong style={{fontSize: '1.1rem'}}>AWS</strong> | <ul><li>EC2</li><li>Auto Scaling Groups</li><li>Kubernetes (EKS)</li><li>ECS Services</li><li>RDS Instances</li></ul> |
+| <img src="/provider-logos/cloud-providers/aws-logo.svg" alt="AWS" width="20"/>  <strong style={{fontSize: '1.1rem'}}></strong> | <ul><li>EC2</li><li>Auto Scaling Groups</li><li>Kubernetes (EKS)</li><li>ECS Services</li><li>RDS Instances</li></ul> |
 | <img src="/provider-logos/cloud-providers/azure-logo.svg" alt="Azure" width="20"/> <strong style={{fontSize: '1.1rem'}}>Azure</strong> | <ul><li>On-demand VMs</li><li>Kubernetes Clusters (AKS)</li></ul> |
 | <img src="/provider-logos/cloud-providers/gcp-logo.svg" alt="GCP" width="20"/> <strong style={{fontSize: '1.1rem'}}>GCP</strong> | <ul><li>GCE VMs</li><li>Kubernetes Clusters (GKE)</li><li>Instance Groups</li></ul> |
 
