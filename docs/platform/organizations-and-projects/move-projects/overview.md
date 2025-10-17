@@ -23,17 +23,21 @@ This capability enables teams to adapt to structural changes while preserving pr
 
 ## What happens when you move a project 
 
-When you move a project to another organization in Harness, several actions take place in the background.
+1. **Modules and entities are moved**: [Supported modules and entities](#supported-modules), such as pipelines, services, environments, and monitored services, are carried over to the destination organization.
 
-1. **Entities inside the project are moved:** Pipelines, services, environments, and other [entities](#supported-modules) are carried over to the new organization. These entities remain intact; however, references to external items are validated during the move.
+2. **Dependencies become stale**: Resources scoped at the source organization level—like connectors, secrets, templates, webhooks, or notifications may become inaccessible. These dependencies need to be recreated or updated in the destination organization. References to account- or project-level entities remain intact.
 
-2. **Dependencies become stale:** If the project depends on connectors, secrets, or templates defined at the old organization level, those items may no longer be accessible in the new organization. Because organizations are isolated, these dependencies must be recreated in the new organization. Any references to account- or project-level entities remain intact.
+3. **Access control and policies**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be reapplied in the destination organization.
 
-3. **Audit logs are generated:** All project moves are logged with details such as the user, timestamp, source organization, and destination organization. These audit trails provide accountability to support compliance requirements.
+4. **Audit logs are preserved**: Execution history and audit logs are maintained, but redirect links to the source organization may break.
+
+5. **Default settings**: Project default settings may be affected if destination organization defaults restrict overrides.
+
+For detailed pre-move verification and post-move remediation steps, refer to the [project movement checklist](project-movement-checklist.md).
 
 ## Prerequisites and permissions
 
-To move a project between organization resources, you need the following roles on the project, its source organization, and the destination organization:
+To move a project across organizations, you need the following roles on the project, its source organization, and the destination organization:
 
 - Move Permission on the project that you want to move.
 - Create Permission on the destination organization.
@@ -51,7 +55,9 @@ To move a project between organization resources, you need the following roles o
 * [Software Engineering Insights](/docs/software-engineering-insights/sei-support)
 
 :::note [Unsupported Entities](/docs/platform/references/harness-entity-reference)
-  - In the Continuous Delivery module, the following entities are not supported: Policy as Code (OPA), GitOps, and Continuous Verification. 
+  In the Continuous Delivery module, the following entities are not supported: 
+    - Policy as Code (OPA). 
+    - GitOps.
+    - Continuous Verification. 
 :::
 
-For detailed pre-move and post-move verification steps, refer to the [project movement checklist](project-movement-checklist.md).

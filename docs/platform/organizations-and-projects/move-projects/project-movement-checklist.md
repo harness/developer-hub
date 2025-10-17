@@ -1,6 +1,6 @@
 ---
 title: Project movement checklist
-description: Pre-move checklist and post-move verification steps to ensure successful project migration between organizations.
+description: Pre-move checklist and post-move  steps to ensure successful project migration between organizations.
 sidebar_label: Project Movement Checklist
 sidebar_position: 2
 tags:
@@ -13,23 +13,23 @@ tags:
 keywords:
   - project move checklist
   - pre-move verification
-  - post-move validation
+  - post-move Remediation
   - project transfer steps
 ---
 
-The following checklist provides guidance for both pre-movement preparation and post-movement validation to ensure a seamless transition with minimal disruption.
+The below checklist can be used for both pre-move verification and post-move remediation to ensure a project is moved with minimal disruption.
 
-## Pre-Movement Verification
+## Pre-move verification
 
-While moving a project across organizations, you may see warning messages on various pages due to unsupported entities or broken references. Some key entities to watch for are listed below:
+When a project is moved, you may see warnings for unsupported entities or broken references. Key entities to watch are listed below:
 
 1. Pipelines:
-    - Pipelines referencing organization-level connectors will break after the move.
-    - Secrets used in pipelines may be scoped at the organization level. After moving to a new organization, these secrets might become unavailable. Recreate them in the destination organization.
+    - Pipelines that refer organization-level connectors will break after the move.
+    - Secrets used in pipelines may be scoped at the organization level. After moving to a destination organization, these secrets might become unavailable. 
     - Templates used to build pipelines may be scoped at the organization level. Review and make these templates available in the destination organization; otherwise, pipelines may fail to render or execute.
-    - YAML entities may use fully qualified identifiers, such as orgIdentifiers, that reference the source organization. If not updated, these references can become stale and cause errors.
+    - YAML entities may use fully qualified identifiers, such as orgIdentifiers, that reference the source organization. These references may become stale and cause errors.
     - [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining) will fail if the child pipeline’s project is moved.
-    - Running pipelines may fail during the project move.
+    - Pipelines that are running during the project move may fail.
 
 2. Notifications:
     - If a notification rule uses a channel from the source organization, the reference will break.
@@ -48,13 +48,13 @@ While moving a project across organizations, you may see warning messages on var
 
 6. Webhooks:
     - Git connectors, generic webhooks, or Slack webhooks using connectors or secrets referencing organization-level resources will break.
-    - Triggers where organization identifiers and project identifiers are present will break.
+    - Triggers where organization identifiers and project identifiers are present will be no longer functional.
 
 7. Access control:
-    - Organization-level RBAC policies do not transfer and must be reapplied in the destination organization to maintain proper access controls.
+    - Organization-level RBAC policies do not transfer when a project is moved and must be reapplied in the destination organization to maintain proper access controls.
 
 8. Audit logs:
-    - Historical data and execution records are fully preserved when moving projects. However, links in the audit logs may break which redirects to the entity on the source organization.
+    - Historical data and execution records are fully preserved when a project is moved. However, links in the audit logs may break which redirects to the entity on the source organization.
 
 9. Security and Governance:
     - Policies from the source organization will be removed as part of the policy set.
@@ -69,14 +69,14 @@ While moving a project across organizations, you may see warning messages on var
 2. **Project identifier reuse restriction** - Creating a project with the same identifier in the source organization is not allowed. For example, if Project P was moved from Organization A to Organization B, then creating a project with the same identifier as Project P in Organization A would not be allowed.
 :::
 
-## Post-Movement Remediation
+## Post-move remediation
 
-- Check for broken references and entities from the source organization.
+You may see warning messages across the project where references are no longer accessible and require reconfiguration. Some key points are outlined below:
+
 - Review pipeline failures for clear, actionable errors to resolve issues.
-- Recreate organization-level connectors in the destination organization.
-- Recreate organization-level secrets in the destination organization.
+- Recreate organization-level connectors and secrets in the destination organization.
 - Update notification channels to use destination organization resources.
-- Verify and update RBAC policies for proper access control.
+- Verify and update RBAC policies.
 - Update any hardcoded organization identifiers in YAML configurations.
 
 
