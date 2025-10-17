@@ -12,6 +12,9 @@ import UnrestrictedProjectGroupsImage from '@site/docs/feature-management-experi
 
 import RestrictedProjectGroupsImage from '@site/docs/feature-management-experimentation/split-to-harness/static/restricted-project-groups.svg';
 
+import rbac_service_account_admin_api_key from './static/rbac-service-account-admin-api-key.png';
+
+
 ## Overview
 
 This guide is intended to be used as a reference shortly after your migration into Harness to guide you through administrative tasks. It will also help you understand permissions in Harness after your Split-to-Harness migration. It explains how legacy **Split access restrictions** map to **Harness RBAC (role-based access control) settings** in two ways:
@@ -462,6 +465,8 @@ When your Split account is migrated to Harness, a service account is created for
 
 :::danger Do not delete service accounts linked with legacy Admin API keys
 Each service account created by the migration script and its role bindings are linked with one of your legacy Split Admin API keys. The service account role bindings define the access granted to the Admin API key over Harness resources, and are necessary for the Admin API key to authorize your API requests after your migration to Harness.
+
+<img alt="Image showing how a Harness service account is linked with a legacy Split Admin API key" src={rbac_service_account_admin_api_key} />
 
 This association between your legacy Split Admin API keys and service accounts is **not visually shown** in Harness. The service accounts do not appear to contain tokens (on the pages where they are managed in Harness); however, the tokens are the legacy Split Admin API keys (shown in FME Settings). It is best to delete the legacy Split Admin API key in FME Settings before deleting the associated service account; otherwise, if the service account is deleted before the Admin API key, then the Admin API key will not work.
 :::
