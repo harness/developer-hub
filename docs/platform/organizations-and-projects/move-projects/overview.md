@@ -1,18 +1,14 @@
 ---
  title: Move a project 
- description: Overview of moving projects between organizations, including prerequisites, limitations, and how to request or perform a move.
+ description: Overview of moving a project between organizations, including prerequisites, Supported modules and how to request or perform a move.
  sidebar_label: Overview
  sidebar_position: 1
  tags:
    - organizations
    - projects
-   - project-migration
-   - cross-org
-   - governance
-   - admin
  keywords:
    - move projects
-   - migrate project between organizations
+   - move project between organizations
    - transfer project
    - organization restructure
 ---

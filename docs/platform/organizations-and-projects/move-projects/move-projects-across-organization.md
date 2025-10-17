@@ -1,22 +1,17 @@
 ---
 title: Move a project across organizations
-description: Step-by-step guide to migrate a project from one organization to another, including prerequisites, permissions, and detailed migration procedures.
+description: Step-by-step guide to move a project from one organization to another.
 sidebar_label: Steps to move a project
 sidebar_position: 3
 tags:
   - organizations
   - projects
-  - project-migration
+  - project-movement
   - step-by-step
   - tutorial
   - admin
 keywords:
-  - move project to another organization
-  - migrate project between orgs
-  - project migration steps
-  - transfer project organization
-  - cross org project move
-  - organization project transfer
+  - move project
 ---
 
 This document provides a step-by-step guide to migrate projects from one organization to another, including prerequisites, permissions, and detailed migration procedures.

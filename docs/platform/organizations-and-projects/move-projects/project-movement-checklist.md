@@ -1,6 +1,6 @@
 ---
 title: Project movement checklist
-description: Pre-move checklist and post-move  steps to ensure successful project migration between organizations.
+description: Pre-move checklist and post-move  steps to ensure successful project movement across organizations.
 sidebar_label: Project Movement Checklist
 sidebar_position: 2
 tags:
@@ -9,12 +9,10 @@ tags:
   - project-movement
   - checklist
   - verification
-  - best-practices
 keywords:
   - project move checklist
   - pre-move verification
   - post-move Remediation
-  - project transfer steps
 ---
 
 The below checklist can be used for both pre-move verification and post-move remediation to ensure a project is moved with minimal disruption.
