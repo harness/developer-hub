@@ -468,7 +468,7 @@ Each service account created by the migration script and its role bindings are l
 
 <img alt="Image showing how a Harness service account is linked with a legacy Split Admin API key" src={rbac_service_account_admin_api_key} />
 
-This association between your legacy Split Admin API keys and service accounts is **not visually shown** in Harness. The service accounts do not appear to contain tokens (on the pages where they are managed in Harness); however, the tokens are the legacy Split Admin API keys (shown in FME Settings). It is best to delete the legacy Split Admin API key in FME Settings before deleting the associated service account; otherwise, if the service account is deleted before the Admin API key, then the Admin API key will not work.
+This association between your legacy Split Admin API keys and service accounts is **not visually shown** in Harness. The service accounts do not appear to contain tokens (on the pages where they are managed in Harness); however, the tokens are the legacy Split Admin API keys. It is best to delete the legacy Split Admin API key in FME Settings before deleting the associated service account; otherwise, if the service account is deleted before the Admin API key, then the Admin API key will not work.
 :::
 
 :::tip To find which Harness service account is linked with a legacy Split Admin API key:
