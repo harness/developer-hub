@@ -955,6 +955,141 @@ val rolloutCacheConfig = RolloutCacheConfiguration.builder()
 
 The Android SDK does **not** use `SharedPreferences` to store the FME cache. It stores the cache directly on internal storage in the app’s context folder.
 
+### Integrate with the Harness Proxy
+
+The Harness Proxy allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
+
+#### Configure the proxy 
+
+Set the proxy host and port when initializing the SDK. These values correspond to your proxy’s address and the port it listens on.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+You can optionally configure a CA certificate and/or client certificate and key for mTLS. Certificates should be in PKCS#8 format.
+
+```java
+// TLS tunneling only
+ProxyConfiguration tlsOnly = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .build();
+
+// TLS with custom CA cert
+ProxyConfiguration caCert = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .caCert(context.getResources().openRawResource(R.raw.ca))
+    .build();
+
+// mTLS
+ProxyConfiguration mtls = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .mtls(
+        context.getResources().openRawResource(R.raw.client),
+        context.getResources().openRawResource(R.raw.client_key))
+    .build();
+```
+
+You can also provide credentials using a Bearer Token or basic authentication:
+
+```java
+// Bearer token
+ProxyConfiguration bearerCreds = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .credentialsProvider(new BearerCredentialsProvider() {
+        @Override
+        public String getToken() {
+            return MY_TOKEN;
+        }
+    })
+    .build();
+
+// Basic auth
+ProxyConfiguration basicCreds = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .credentialsProvider(new BasicCredentialsProvider() {
+        @Override
+        public String getUsername() { return MY_BASIC_USER; }
+
+        @Override
+        public String getPassword() { return MY_BASIC_PASSWORD; }
+    })
+    .build();
+```
+
+Finally, set the `ProxyConfiguration` in the SDK config builder:
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfiguration)
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+You can optionally configure a CA certificate and/or client certificate and key for mTLS. Certificates should be in PKCS#8 format.
+
+```kotlin
+// TLS tunneling only
+val tlsOnly = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .build()
+
+// TLS with custom CA cert
+val caCert = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .caCert(context.resources.openRawResource(R.raw.ca))
+    .build()
+
+// mTLS
+val mtls = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .mtls(
+        context.resources.openRawResource(R.raw.client),
+        context.resources.openRawResource(R.raw.client_key))
+    .build()
+```
+
+You can also provide credentials using a Bearer Token or basic authentication:
+
+```kotlin
+// Bearer token
+val bearerCreds = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .credentialsProvider(object : BearerCredentialsProvider {
+        override fun getToken(): String = MY_TOKEN
+    })
+    .build()
+
+// Basic auth
+val basicCreds = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .credentialsProvider(object : BasicCredentialsProvider {
+        override fun getUsername(): String = MY_BASIC_USER
+        override fun getPassword(): String = MY_BASIC_PASSWORD
+    })
+    .build()
+```
+
+Finally, set the `ProxyConfiguration` in the SDK config builder:
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfiguration)
+    .build();
+```
+
+</TabItem>
+</Tabs>
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
+
+For more information, see the [Harness Proxy documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy).
+
 ## Localhost mode
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, you can start the SDK in **localhost** mode (aka, off-the-grid mode). In this mode, the SDK neither polls or updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the SDK in localhost mode, replace the API Key with `localhost`, as shown in the example below:

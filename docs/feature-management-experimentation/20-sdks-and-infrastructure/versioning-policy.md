@@ -223,7 +223,7 @@ import TabItem from '@theme/TabItem';
 
 <Tabs queryString="component-tab">
 
-<TabItem value="splitd" label="Split Daemon (Splitd)">
+<TabItem value="splitd" label="Split Daemon (SplitD)">
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
@@ -248,11 +248,19 @@ import TabItem from '@theme/TabItem';
 
 </TabItem>
 
-<TabItem value="split-sync" label="Split Synchronizer">
+<TabItem value="split-sync" label="Split Synchronizer/Proxy">
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
 | `5.0.0`   | 2021-11-01  | Actively support  |
+
+</TabItem>
+
+<TabItem value="split-sync" label="Harness Proxy">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2025-10-20  | Actively support  |
 
 </TabItem>
 

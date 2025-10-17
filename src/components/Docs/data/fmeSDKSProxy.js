@@ -4,22 +4,22 @@ export const proxySDKs = [
   {
     name: 'Android SDK',
     img: '/provider-logos/android-logo.svg',
-    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#integrate-with-the-harness-proxy',
   },
   {
     name: 'Browser SDK',
     img: '/provider-logos/browser-logo.svg',
-    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#integrate-with-the-harness-proxy',
   },
   {
     name: 'Java SDK',
     img: '/provider-logos/java-logo.png',
-    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#integrate-with-the-harness-proxy',
   },
   {
     name: 'Node.js SDK',
     img: '/provider-logos/nodejs-logo.png',
-    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#integrate-with-the-harness-proxy',
   },
 ];
 

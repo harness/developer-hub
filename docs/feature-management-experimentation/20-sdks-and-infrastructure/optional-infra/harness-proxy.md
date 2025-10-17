@@ -75,18 +75,18 @@ These variables allow you to tailor each proxy instance’s ports, TLS, authenti
 
 | Variable | Context | Description | Default | Example |
 |---|---|---|---|---|
-| `HP__PORT` | Server | Port on which the server listens. | none / required | `443` |
-| `HP__SSL` | Server | Enable TLS/mTLS for the server. | false | `true` |
-| `HP__SSL_CERTIFICATE` | Server | Server certificate for TLS. | none / required if SSL enabled | `/my_volume/pki/server.crt` |
-| `HP__SSL_PRIVATE_KEY` | Server | Private key for the server certificate. | none / required if SSL enabled | `/my_volume/pki/server.key` |
-| `HP__SSL_CLIENT_CERTIFICATE` | Server | CA certificate for client verification (mTLS). | none | `/my_volume/pki/client_ca.crt` |
-| `HP__AUTH` | Server | Enable authentication (`basic`, `digest`, `bearer`). | none | `bearer` |
-| `HP__AUTH_BASIC_PASSWD` | Server | Password file for basic auth. | none / required if `auth=basic` | `/my_volume/passwd/basic.passwd` |
-| `HP__AUTH_DIGEST_PASSWD` | Server | Password file for digest auth. | none / required if `auth=digest` | `/my_volume/passwd/digest.passwd` |
-| `HP__AUTH_BEARER_JWKS` | Server | JWKS file for validating bearer tokens. | none / required if `auth=bearer` | `/my_volume/keys/keys.jwks` |
-| `HP__PROXY_CHAIN` | Server | Upstream proxy to forward traffic. | none | `my-upstream-proxy:3128` |
-| `HP__PROXY_CHAIN_SSL` | Server | Use TLS when connecting to upstream proxy. | disabled | true |
-| `HP__PROXY_CHAIN_CA_CERT` | Server | CA cert to verify upstream TLS connection. | none / required if `PROXY_CHAIN_SSL` enabled | `/my_volume/pki/ca.crt` |
+| `HP__PORT` | Server | Port on which the server listens. | Required (no default) | `443` |
+| `HP__SSL` | Server | Enable TLS/mTLS for the server. | False | `true` |
+| `HP__SSL_CERTIFICATE` | Server | Server certificate for TLS. | None / required if SSL is enabled | `/my_volume/pki/server.crt` |
+| `HP__SSL_PRIVATE_KEY` | Server | Private key for the server certificate. | None / required if SSL is enabled | `/my_volume/pki/server.key` |
+| `HP__SSL_CLIENT_CERTIFICATE` | Server | CA certificate for client verification (mTLS). | None | `/my_volume/pki/client_ca.crt` |
+| `HP__AUTH` | Server | Enable authentication (`basic`, `digest`, `bearer`). | None | `bearer` |
+| `HP__AUTH_BASIC_PASSWD` | Server | Password file for basic auth. | None / required if `auth=basic` | `/my_volume/passwd/basic.passwd` |
+| `HP__AUTH_DIGEST_PASSWD` | Server | Password file for digest auth. | None / required if `auth=digest` | `/my_volume/passwd/digest.passwd` |
+| `HP__AUTH_BEARER_JWKS` | Server | JWKS file for validating bearer tokens. | None / required if `auth=bearer` | `/my_volume/keys/keys.jwks` |
+| `HP__PROXY_CHAIN` | Server | Upstream proxy to forward traffic. | None | `my-upstream-proxy:3128` |
+| `HP__PROXY_CHAIN_SSL` | Server | Use TLS when connecting to upstream proxy. | Disabled | true |
+| `HP__PROXY_CHAIN_CA_CERT` | Server | CA cert to verify upstream TLS connection. | None / required if `PROXY_CHAIN_SSL` enabled | `/my_volume/pki/ca.crt` |
 | `HP__RESOLVER` | Server | DNS server to resolve upstream hosts. | `8.8.8.8` | `127.0.0.53` |
 | `HP__ALLOWED_TARGETS` | Server | Comma-separated list of `host:port` pairs allowed for tunnels. | `sdk.split.io:443,auth.split.io:443,streaming.split.io:443,events.split.io:443,telemetry.split.io:443` | `api.mycompany.com:443` |
 | `HP__ALLOWED_TARGET_PORTS` | Server | Comma-separated list of ports allowed for tunnels. | `443` | `443,8443` |
