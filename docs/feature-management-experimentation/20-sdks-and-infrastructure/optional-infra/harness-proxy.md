@@ -100,8 +100,6 @@ Some best practices include the following:
 - **Performance tuning**: Adjust `HP_WORKER_PROCESSES`, `HP_WORKER_CONNECTIONS`, and `HP_LOG_LEVEL` to scale the proxy efficiently based on traffic and environment.
 - **Multiple servers**: Each server instance can have unique TLS/authentication/port configurations.
 
-For a full list of configuration options, see the [Harness Proxy GitHub repository](https://github.com/splitio/fme-proxy).
-
 ## Use FME SDKs with the Harness Proxy
 
 Harness Proxy works with multiple FME SDKs to securely forward traffic from your infrastructure to Harness services. Once configured, the SDKs establish `CONNECT` tunnels through the proxy. Traffic is opaque to the proxy, so encrypted payloads and long-lived connections (such as SSE) are fully supported without additional configuration.
