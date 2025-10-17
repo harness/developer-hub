@@ -398,7 +398,6 @@ This release includes the following Harness module and component versions.
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
-# needs update
 ```
 gsutil -m cp \
   "gs://smp-airgap-bundles/harness-0.33.2/ccm_images.tgz" \
