@@ -1,6 +1,6 @@
 {
-    "label": "Move Projects",
-    "position": "5",
+    "label": "Move a Project",
+    "position": "3",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

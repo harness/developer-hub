@@ -1,7 +1,7 @@
 ---
-title: Move projects across organizations
-description: Step-by-step guide to migrate projects from one organization to another, including prerequisites, permissions, and detailed migration procedures.
-sidebar_label: Migration steps
+title: Move a project across organizations
+description: Step-by-step guide to migrate a project from one organization to another, including prerequisites, permissions, and detailed migration procedures.
+sidebar_label: Steps to move a project
 sidebar_position: 3
 tags:
   - organizations

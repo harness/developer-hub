@@ -1,5 +1,5 @@
 ---
- title: Move projects 
+ title: Move a project 
  description: Overview of moving projects between organizations, including prerequisites, limitations, and how to request or perform a move.
  sidebar_label: Overview
  sidebar_position: 1
@@ -17,7 +17,7 @@
    - organization restructure
 ---
 
-A project is a group of harness modules, their pipelines, and other resources used to organize and manage resources in an organization. The move projects feature allows you to transfer projects between organizations, which is useful during reorganizations, or ownership transitions.
+The move projects feature allows you to transfer projects between organizations, which is useful during reorganizations, or ownership transitions.
 
 This capability enables teams to adapt to structural changes while preserving project configuration, resources, and history, supporting flexible governance across evolving team structures.
 
@@ -25,7 +25,7 @@ This capability enables teams to adapt to structural changes while preserving pr
 
 When you move a project to another organization in Harness, several actions take place in the background.
 
-1. **Entities inside the project are moved:** Pipelines, services, environments, and other [entities](#supported-entities) are carried over to the new organization. These entities remain intact; however, references to external items are validated during the move.
+1. **Entities inside the project are moved:** Pipelines, services, environments, and other [entities](#supported-modules) are carried over to the new organization. These entities remain intact; however, references to external items are validated during the move.
 
 2. **Dependencies become stale:** If the project depends on connectors, secrets, or templates defined at the old organization level, those items may no longer be accessible in the new organization. Because organizations are isolated, these dependencies must be recreated in the new organization. Any references to account- or project-level entities remain intact.
 
@@ -38,7 +38,7 @@ To move a project between organization resources, you need the following roles o
 - Move Permission on the project that you want to move.
 - Create Permission on the destination organization.
 
-## Supported Modules
+## Supported modules
 
 * [Platform](/docs/platform/platform-whats-supported)
 * [Continuous Delivery](/docs/continuous-delivery/cd-integrations)
