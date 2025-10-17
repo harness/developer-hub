@@ -20,8 +20,20 @@ Docs in Harness IDP is powered by [TechDocs Backstage Plugin](https://backstage.
 
 :::
 
-<Tabs queryString="enable-docs-location">
-<TabItem value="docs-available-in-root" label="Docs Available in the Root of Source Folder" queryString="enable-docs-location">
+:::caution
+In IDP 2.0, it's mandatory to include both of the following annotations in your component's catalog-info.yaml:
+
+```yaml
+annotations:
+  backstage.io/techdocs-ref: dir:.
+  backstage.io/source-location: url:<YOUR_GIT_REPO_URL>
+```
+- `techdocs-ref: dir:.` tells TechDocs to look for docs in the root directory.
+- `source-location` points to the source code location of the component, to enable source linking functionality within the Harness UI.
+
+Without these, TechDocs and source linking will not function correctly.
+
+:::
 
 ### Docs Available in the Root of Source Folder \{#docs-available-in-the-root-of-source-folder}
 
@@ -110,7 +122,8 @@ plugins:
 ![](static/techdocs-ref.png)
 
 
-When you see`dir:.`, you can translate it to mean:
+#### When you see`dir:.`, 
+you can translate it to mean:
 
 - That the documentation source code lives in the same location as the `catalog-info.yaml` file.
 - That, in particular, the `mkdocs.yml` file is a sibling of `catalog-info.yaml` (meaning, it is in the same directory)
@@ -140,8 +153,6 @@ If, for example, you wanted to keep a lean root directory, you could place your 
 
 :::
 
-</TabItem>
-<TabItem value="docs-not-in-root" label="Docs Available in Some Other Location">
 
 ### Docs Available in Some Other Location \{#docs-available-in-some-other-location}
 
@@ -172,6 +183,7 @@ e.g. `url:https://github.com/backstage/backstage/tree/master/plugins/techdocs-ba
 
 3. Edit the `catalog-info.yaml` and add the TechDocs annotation.
 
+
 4. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: url:https://github.com/my-org/my-service/tree/master`.
 
 ```YAML
@@ -180,16 +192,14 @@ metadata:
     backstage.io/techdocs-ref: url:https://github.com/backstage/backstage/tree/master/plugins/techdocs-backend/examples/documented-component
 ```
 
+---
 
-</TabItem>
-</Tabs>
-
-
-5. Select the refresh button on the catalog component page.
+- Select the refresh button on the catalog component page.
 
 ![](static/refresh-button.png)
 
-6. Navigate to the **Docs** tab to review the documentation, which should become available shortly. 
+- Navigate to the **Docs** tab to review the documentation, which should become available shortly. 
 
 ![](static/docs-rendered.png)
+
 

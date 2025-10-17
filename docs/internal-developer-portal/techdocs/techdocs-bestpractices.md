@@ -19,7 +19,19 @@ One-page documentation is ideal for quick-start guides, FAQs, or any standalone 
 
 2. **Serve in IDP:**
 
-- Ensure the repository is registered in your catalog-info.yaml file. TechDocs will automatically render the content without additional setup.
+- Ensure that your repository is registered in a catalog-info.yaml file, and that the file is located at the root of your documentation source. This allows TechDocs to automatically render the content in the IDP.
+
+:::caution IDP 2.0 Requirement 
+If you're using Harness IDP 2.0, you must also include the `backstage.io/source-location` annotation along with the `backstage.io/techdocs-ref` annotation in your `catalog-info.yaml`. Without this, source linking in the UI will not work, and the Docs tab may fail to display correctly.
+
+```yaml
+metadata:
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/source-location: url:<your-repo-url>
+```
+Replace `<your-repo-url>` with the URL to the Git repository (or subdirectory) where the `catalog-info.yaml` and `docs/` folder live.
+:::
 
 ## Working with Multi-Page Sites
 
