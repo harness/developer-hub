@@ -730,5 +730,11 @@
     "description": "Flag to enable new cluster details page UX",
     "gaStartDate": "2025-10-13",
     "module": "GitOps"
+  },
+  {
+    "flagKey": "GITOPS_FILTER_PANE_ENABLED",
+    "description": "Flag to enable new GitOps filter panel experience",
+    "gaStartDate": "2025-10-17",
+    "module": "GitOps"
   }
 ]
