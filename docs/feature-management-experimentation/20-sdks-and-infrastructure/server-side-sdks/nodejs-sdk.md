@@ -1344,13 +1344,15 @@ If your token expires, consider renewing it proactively as shown below:
 ```javascript
 // If your JWT bearer token can expire, renew it before expiration
 let bearerToken;
-refreshBearerToken();
+
 function refreshBearerToken() {
   bearerToken = getNewBearerToken();
   const decodedToken = decodeToken(bearerToken);
   // Renew the token, for example, 1 minute before expiration
   setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
 };
+
+refreshBearerToken();
 
 // Create an agent to use the forward proxy at https://harness-fproxy:3128 with JWT token authentication
 const { HttpsProxyAgent } = require('https-proxy-agent');
@@ -1378,15 +1380,12 @@ const factory = SplitFactory({
 </TabItem>
 <TabItem value="typescript " label="TypeScript">
 
-Refresh or update the token when it expires.
-
 ```typescript
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import { SplitFactory } from '@splitsoftware/splitio';
 
+// If your JWT bearer token can expire, renew it before expiration
 let bearerToken: string;
-
-refreshBearerToken();
 
 function refreshBearerToken(): void {
   bearerToken = getNewBearerToken();
@@ -1394,6 +1393,8 @@ function refreshBearerToken(): void {
   // Renew the token 1 minute before expiration
   setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
 }
+
+refreshBearerToken();
 
 // Create an agent to use the forward proxy at https://harness-fproxy:3128 with JWT token authentication
 const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
