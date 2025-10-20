@@ -1216,8 +1216,215 @@ The following proxy configuration parameters are available:
 | `cert` / `key` | Client certificate and private key for mTLS authentication. | Optional |
 | `headers` | Custom headers for proxy authentication (Basic or Bearer Token). | Optional |
 
+#### Harness Proxy (URL Only)
+
+To use a proxy with no authentication, specify only the proxy URL in the configuration. Follow the pattern: `http(s)://host:port`.
+
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+// Create an agent to use the forward proxy at https://harness-fproxy:3128
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128');
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128');
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with Username/Password Authentication
+
+To authenticate using a username and password, implement the `BasicCredentialsProvider` interface and override the required methods.
+
+<Tabs groupId="java-type-script">
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with user/pass authentication
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: () => ({
+    // Basic (Username/Password) authentication
+    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const username: string = 'proxyUser';
+const password: string = 'proxyPass';
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with user/pass authentication
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: (): Record<string, string> => ({
+    // Basic (Username/Password) authentication
+    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with JWT Token Authentication
+
+To authenticate using a bearer token (e.g., JWT), include the `Proxy-Authentication` header with bearer authentication.
+If your token expires, consider renewing it proactively as shown below:
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="javascript " label="JavaScript">
+
+```javascript
+// If your JWT bearer token can expire, renew it before expiration
+let bearerToken;
+refreshBearerToken();
+function refreshBearerToken() {
+  bearerToken = getNewBearerToken();
+  const decodedToken = decodeToken(bearerToken);
+  // Renew the token, for example, 1 minute before expiration
+  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
+};
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with JWT token authentication
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: () => ({
+    // Bearer (JWT) authentication
+    'Proxy-Authorization': `Bearer ${bearerToken}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript " label="TypeScript">
+
+Refresh or update the token when it expires.
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+let bearerToken: string;
+
+refreshBearerToken();
+
+function refreshBearerToken(): void {
+  bearerToken = getNewBearerToken();
+  const decodedToken = decodeToken(bearerToken);
+  // Renew the token 1 minute before expiration
+  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
+}
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with JWT token authentication
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: (): Record<string, string> => ({
+    // Bearer (JWT) authentication
+    'Proxy-Authorization': `Bearer ${bearerToken}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with a custom CA certificate or mTLS Authentication
+
+To provide a custom CA X.509 certificate for self-signed certificates or configure mutual TLS (mTLS) authentication, use the corresponding agent properties to supply the required files.
+
+<Tabs groupId="java-type-script">
+<TabItem value="javascript " label="JavaScript">
 
 ```javascript
 // Load certificates
@@ -1226,78 +1433,58 @@ const caCert = fs.readFileSync('certs/ca.crt');
 const clientCert = fs.readFileSync('certs/client.crt');
 const clientKey = fs.readFileSync('certs/client.key');
 
-// Renew tokens before expiration
-let bearerToken;
-refreshBearerToken();
-function refreshBearerToken() {
-  bearerToken = getNewBearerToken();
-  const decodedToken = decodeToken(bearerToken);
-  // Renew the token 1 minute before expiration
-  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
-}
-
-// Create an agent to use the forward proxy at https://harness-fproxy:3128
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with a custom CA certificate and mTLS
 const { HttpsProxyAgent } = require('https-proxy-agent');
 const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
-  ca: caCert,                   // CA certificate for self-signed cert
+  ca: caCert,                     // CA certificate for self-signed cert
   cert: clientCert,             // mTLS: client certificate
-  key: clientKey,               // mTLS: private key
-  headers: () => ({
-    // Basic authentication
-    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
-    // Bearer (JWT) authentication
-    'Proxy-Authorization': `Bearer ${bearerToken}`,
-  }),
+  key: clientKey                // mTLS: private key
 });
 
 // Initialize the SDK with the proxy-enabled agent
 const { SplitFactory } = require('@splitsoftware/splitio');
 const factory = SplitFactory({
   core: {
-    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY',
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
   },
   sync: {
     requestOptions: {
-      agent: agentUsingProxy,
-    },
-  },
+      agent: agentUsingProxy
+    }
+  }
 });
 ```
 
 </TabItem>
-<TabItem value="TypeScript">
+<TabItem value="typescript" label="TypeScript">
 
 ```typescript
 import fs from 'fs';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import { SplitFactory } from '@splitsoftware/splitio';
 
+// Load certificates
 const caCert: Buffer = fs.readFileSync('certs/ca.crt');
 const clientCert: Buffer = fs.readFileSync('certs/client.crt');
 const clientKey: Buffer = fs.readFileSync('certs/client.key');
 
-let bearerToken: string;
-refreshBearerToken();
-
-function refreshBearerToken(): void {
-  bearerToken = getNewBearerToken();
-  const decodedToken = decodeToken(bearerToken);
-  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
-}
-
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with a custom CA certificate and mTLS
 const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
-  ca: caCert,
-  cert: clientCert,
-  key: clientKey,
-  headers: (): Record<string, string> => ({
-    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
-    'Proxy-Authorization': `Bearer ${bearerToken}`,
-  }),
+  ca: caCert,       // CA certificate for self-signed cert
+  cert: clientCert, // mTLS: client certificate
+  key: clientKey    // mTLS: private key
 });
 
+// Initialize the SDK with the proxy-enabled agent
 const factory = SplitFactory({
-  core: { authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY' },
-  sync: { requestOptions: { agent: agentUsingProxy } },
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
 });
 ```
 

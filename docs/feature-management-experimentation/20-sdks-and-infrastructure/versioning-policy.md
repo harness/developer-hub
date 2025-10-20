@@ -256,12 +256,4 @@ import TabItem from '@theme/TabItem';
 
 </TabItem>
 
-<TabItem value="split-sync" label="Harness Proxy">
-
-| Version   | GA Date     | Support End Date  |
-|-----------|-------------|-------------------|
-| `1.0.0`   | 2025-10-20  | Actively support  |
-
-</TabItem>
-
 </Tabs>
