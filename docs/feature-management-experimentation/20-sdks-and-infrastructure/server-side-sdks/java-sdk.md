@@ -1640,7 +1640,7 @@ This integration is only enabled if the SDK detects the New Relic agent in the c
 WARN [main] (IntegrationsConfig.java:72) - New Relic agent not found. Continuing without it
 ```
 
-## Network proxy
+## Proxy
 
 If your environment requires routing traffic through a proxy, you can configure the Java SDK to use one.
 
