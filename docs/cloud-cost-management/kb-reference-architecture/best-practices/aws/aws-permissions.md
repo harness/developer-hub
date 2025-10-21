@@ -2,7 +2,7 @@
 title: AWS Permissions
 description: Fine-grain permissions for AWS
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/best-practices/aws/aws-permissions
+  - /kb/reference-architectures/ccm/best-practices/aws/aws-permissions
 ---
 
 # CCM AWS Permissions

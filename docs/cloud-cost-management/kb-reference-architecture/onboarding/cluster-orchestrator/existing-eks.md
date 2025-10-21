@@ -1,6 +1,8 @@
 ---
 title: Existing EKS
 description: Cluster Orchestrator - Using existing EKS cluster 
+redirect_from:
+  - /kb/reference-architectures/ccm/onboarding/cluster-orchestrator/existing-eks
 ---
 
 # Prereq

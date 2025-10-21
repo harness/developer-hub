@@ -2,7 +2,7 @@
 title: Governance + Pipelines for Automatic Scheduled Autostopping
 description: Automatically Create EC2 Schedule Based Autostopping Rules using a Pipeline and Asset Governance
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/patterns/asset-governance-autostopping-pipeline-ec2
+  - /kb/reference-architectures/ccm/patterns/asset-governance-autostopping-pipeline-ec2
 ---
 
 # Overview

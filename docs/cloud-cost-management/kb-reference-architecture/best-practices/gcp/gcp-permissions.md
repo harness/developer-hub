@@ -2,7 +2,7 @@
 title: GCP Permissions
 description: Fine-grain permissions for GCP
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/best-practices/gcp/gcp-permissions
+  - /kb/reference-architectures/ccm/best-practices/gcp/gcp-permissions
 ---
 
 # CCM GCP Permissions

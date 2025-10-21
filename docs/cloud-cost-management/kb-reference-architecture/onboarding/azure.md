@@ -2,7 +2,7 @@
 title: Azure
 description: Cloud Cost Management - Accelerator
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/onboarding/azure
+  - /kb/reference-architectures/ccm/onboarding/azure
 ---
 
 # Azure

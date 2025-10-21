@@ -2,7 +2,7 @@
 title: Connectors + Roles For AWS CCM
 description: Automatically create Harness connectors for accounts and IAM roles in each AWS account
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/best-practices/aws/aws-connectors-and-roles
+  - /kb/reference-architectures/ccm/best-practices/aws/aws-connectors-and-roles
 ---
 
 # Overview

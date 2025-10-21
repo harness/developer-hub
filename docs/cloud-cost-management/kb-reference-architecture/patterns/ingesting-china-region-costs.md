@@ -2,7 +2,7 @@
 title: Ingesting China Region Cost
 description: Set up AWS and Azure China region cost ingestion
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/patterns/ingesting-china-region-costs
+  - /kb/reference-architectures/ccm/patterns/ingesting-china-region-costs
 ---
 
 # Overview

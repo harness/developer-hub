@@ -2,7 +2,7 @@
 title: Connectors + Roles For Azure CCM
 description: Automatically create Harness connectors for subscriptions and IAM roles in each Azure subscription
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/best-practices/azure/azure-connectors-and-roles
+  - /kb/reference-architectures/ccm/best-practices/azure/azure-connectors-and-roles
 ---
 
 # Overview

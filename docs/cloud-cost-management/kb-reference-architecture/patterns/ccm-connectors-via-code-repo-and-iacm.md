@@ -2,7 +2,7 @@
 title: Harness Modules Code Repo + IaCM for Automatic Creation of CCM Cloud Connectors
 description: Automatically Create CCM Cloud Connectors via Harness Modules Code Repo and IaCM
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/patterns/ccm-connectors-via-code-repo-and-iacm
+  - /kb/reference-architectures/ccm/patterns/ccm-connectors-via-code-repo-and-iacm
 ---
 
 # Overview

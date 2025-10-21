@@ -2,7 +2,7 @@
 title: Azure
 description: Cloud Cost Management - AutoStopping 
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/onboarding/autostopping/azure
+  - /kb/reference-architectures/ccm/onboarding/autostopping/azure
 ---
 
 # Azure Auto Stopping

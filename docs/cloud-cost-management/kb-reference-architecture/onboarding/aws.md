@@ -2,7 +2,7 @@
 title: AWS
 description: Cloud Cost Management - Accelerator
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/onboarding/aws
+  - /kb/reference-architectures/ccm/onboarding/aws
 ---
 
 # AWS

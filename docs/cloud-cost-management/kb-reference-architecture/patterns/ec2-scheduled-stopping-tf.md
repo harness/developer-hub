@@ -2,7 +2,7 @@
 title: Scheduled EC2/RDS Autostopping using Terraform
 description: Creating schedule based autostopping rules for EC2 and RDS using Terraform
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/patterns/ec2-scheduled-stopping-tf
+  - /kb/reference-architectures/ccm/patterns/ec2-scheduled-stopping-tf
 ---
 
 # Overview

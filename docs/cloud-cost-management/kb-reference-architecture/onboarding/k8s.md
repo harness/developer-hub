@@ -2,7 +2,7 @@
 title: Kubernetes
 description: Cloud Cost Management - Accelerator
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/onboarding/k8s
+  - /kb/reference-architectures/ccm/onboarding/k8s
 ---
 
 # Kubernetes

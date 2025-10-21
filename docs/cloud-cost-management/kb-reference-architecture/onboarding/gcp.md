@@ -2,7 +2,7 @@
 title: GCP
 description: Cloud Cost Management - Accelerator
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/onboarding/gcp
+  - /kb/reference-architectures/ccm/onboarding/gcp
 ---
 
 # GCP

@@ -2,7 +2,7 @@
 title: Azure Permissions
 description: Fine-grain permissions for Azure
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/best-practices/azure/azure-permissions
+  - /kb/reference-architectures/ccm/best-practices/azure/azure-permissions
 ---
 
 # CCM Azure Permissions

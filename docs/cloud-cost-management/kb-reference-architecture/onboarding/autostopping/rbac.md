@@ -2,7 +2,7 @@
 title: RBAC
 description: Cloud Cost Management - AutoStopping - RBAC
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/onboarding/autostopping/rbac
+  - /kb/reference-architectures/ccm/onboarding/autostopping/rbac
 ---
 
 # RBAC

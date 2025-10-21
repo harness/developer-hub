@@ -2,7 +2,7 @@
 title: GCP
 description: Cloud Cost Management - AutoStopping 
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/onboarding/autostopping/gcp
+  - /kb/reference-architectures/ccm/onboarding/autostopping/gcp
 ---
 
 # GCP Auto Stopping

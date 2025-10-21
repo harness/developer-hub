@@ -2,7 +2,7 @@
 title: Proxy
 description: Cloud Cost Management - AutoStopping using a Proxy VM
 redirect_from:
-  - /cloud-cost-management/kb-reference-architecture/onboarding/autostopping/proxy
+  - /kb/reference-architectures/ccm/onboarding/autostopping/proxy
 ---
 
 # Setup
