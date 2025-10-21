@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-10-17T10:00:00
+date: 2025-10-22T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,13 +12,13 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: October 17, 2025
+#### Last updated: October 22, 2025
 
 ## October 2025
 
 ### [New Feature] Warehouse Native Experimentation in Beta
 ----
-#### 2025-10-17
+#### 2025-10-22
 
 Harness FME now supports **Warehouse Native Experimentation** in beta. Warehouse Native allows you to run experiments directly in your data warehouse using your own assignment and event data. This approach gives you greater flexibility, transparency, and control over experiment analysis, without needing to export or duplicate data outside your analytics environment.
 
