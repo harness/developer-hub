@@ -95,11 +95,11 @@ Follow these best practices for preparing your assignment table in your data war
 
 | Column             | Type      | Example                |
 | ------------------ | --------- | ---------------------- |
-| user_id            | STRING    | `abc123`               |
-| experiment_id      | STRING    | `checkout_flow_v2`     |
-| treatment          | STRING    | `control`              |
-| exposure_timestamp | TIMESTAMP | `2025-03-14T12:45:00Z` |
-| environment_id     | STRING    | `prod`                 |
-| traffic_type       | STRING    | `user`                 |
+| `user_id`            | `STRING`    | `abc123`               |
+| `experiment_id`      | `STRING`    | `checkout_flow_v2`     |
+| `treatment`          | `STRING`    | `control`              |
+| `exposure_timestamp` | `TIMESTAMP` | `2025-03-14T12:45:00Z` |
+| `environment_id`     | `STRING`    | `prod`                 |
+| `traffic_type`       | `STRING`    | `user`                 |
 
 Once your Assignment Source tables are prepared and validated, see [Setting Up an Assignment Source](/docs/feature-management-experimentation/warehouse-native/setup/) to connect them in Harness FME.
