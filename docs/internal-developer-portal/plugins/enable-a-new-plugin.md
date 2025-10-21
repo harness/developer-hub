@@ -53,9 +53,9 @@ All administrative configurations, such as plugins, layouts, connectors, configu
 
 The **Plugin details** page is displayed. The page provides information such as the plugin's name, details, layout, and configurations. It also includes an option to add a plugin secret. The plugin's layout section is read-only and displays the exported cards, tabs, or pages provided by the plugin.
 
-![](static/att_5_for_21398290667.png)
+![](static/att-5-for-21398290667.png)
 
-![](static/att_3_for_21398290667.png)
+![](static/att-3-for-21398290667.png)
 
 4. (Optional) If you want to customize the plugin's configuration, in the **Configurations** section, edit the default configuration YAML. 
 
