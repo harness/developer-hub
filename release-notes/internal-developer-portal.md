@@ -33,7 +33,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 ---
 
 ### [New Feature] Catalog Auto-Discovery for Harness CD Services
-**[IDP-4460]** | **[Docs](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd)**
+**[IDP-4460]** | **[Docs](/docs/internal-developer-portal/catalog/manage-catalog/catalog-discovery/harness-cd)**
 
 We’re introducing the **Harness IDP Catalog Auto-Discovery** integration with Harness CD Services. Previously, Harness CD users had to **manually** create IDP Catalog services from their Harness CD setup, which often led to **duplicate data** and **inefficient syncs**.
 
@@ -41,7 +41,7 @@ With this release, you can **automatically discover and sync** your Harness CD s
 
 **Use this feature:** To use this integration, **enable the feature flag (`IDP_CATALOG_CD_AUTO_DISCOVERY`)** and ensure you’re using the **same account** as your Harness CD account.
 
-> Learn more about [Catalog Auto-Discovery for Harness CD Services](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd).
+> Learn more about [Catalog Auto-Discovery for Harness CD Services](/docs/internal-developer-portal/catalog/manage-catalog/catalog-discovery/harness-cd).
 
 ![](./static/internal-developer-portal/open-in-harness-cd.png)
 
@@ -114,7 +114,7 @@ Take control of your organizational structure with IDP 2.0's powerful new Custom
 * **Intuitive hierarchical relationships** - Build parent-child connections between teams and departments with automatic bi-directional linking
 * **Complete UI and YAML support** - Create groups through the intuitive UI or via standard YAML definitions
 
-[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group#idp2.0)
+[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/data-model/user-group#idp2.0)
 
 ### [New Feature] Support for Bitbucket Access Token Authentication Mode
 
@@ -218,7 +218,7 @@ Harness Internal Developer Portal (IDP) now supports System as a high-level cata
 
 * Systems can be created at Account, Organization, or Project scope.
 * Define Systems using the IDP UI, YAML, or the Create Entity API (`kind: System`).
-* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided [YAML layout](/docs/internal-developer-portal/catalog/system-entity#the-configuration-is-defined-in-yaml-for-example) under **Admin → Layout → Catalog Entities → System**.
+* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided [YAML layout](/docs/internal-developer-portal/catalog/data-model/system-entity#the-configuration-is-defined-in-yaml-for-example) under **Admin → Layout → Catalog Entities → System**.
 ![](./static/system-layout.png)
 * The Entities tab offers a searchable, filterable, and sortable table of all Components, APIs, and Resources within the System.
 * Many-to-many relationships are supported — an entity can belong to multiple Systems.
@@ -264,7 +264,7 @@ metadata:
     - java
 ```
 
-Learn more about [System Entity](/docs/internal-developer-portal/catalog/system-entity)
+Learn more about [System Entity](/docs/internal-developer-portal/catalog/data-model/system-entity)
 
 ### [New Feature] Environment Management in Harness IDP
 

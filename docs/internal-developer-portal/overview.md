@@ -1,15 +1,15 @@
 ---
-title: Overview
+title: Overview & Key Concepts
 description: A home for developers to create, manage, and explore software.
 sidebar_position: 2
-sidebar_label: Harness IDP Overview
+sidebar_label: Overview & Key Concepts
 redirect_from:
   - /docs/internal-developer-portal/get-started/overview
   - /docs/internal-developer-portal/getting-started/overview
   - /docs/internal-developer-portal/key-concepts
 ---
 
-# Harness IDP Overview
+# Overview & Key Concepts
 
 Harness IDP enables you to create new software components quickly while adhering to your company’s best practices. It enables you to manage the software you own by presenting a developer-centric view of all relevant information such as service health, deployments, and alerts. It also enables you to explore the internal software ecosystem of the company, discover technical documentation, APIs, and services, all of which enable better collaboration.
 

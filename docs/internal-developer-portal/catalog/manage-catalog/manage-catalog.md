@@ -1,7 +1,7 @@
 ---
 title: Manage Catalog
 description: Learn more about creating and managing your Catalog entities.
-sidebar_position: 2
+sidebar_position: 5
 redirect_from: /docs/internal-developer-portal/catalog/register-software-component
 ---
 import Tabs from '@theme/Tabs';
@@ -49,7 +49,7 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
   3. Define the **entity scope** — choose whether the entity should reside at the Account, Project, or Organization level. Read more about Catalog RBAC.
   <DocImage path={require('./static/scope-entity.png')} />
   4. **Associate with System Entities**
-     Systems in Harness IDP are high-level catalog entities used to logically group related components, APIs, and resources. Associating your component with one or more Systems helps organize the catalog and improves visibility. [Learn more about System entities](/docs/internal-developer-portal/catalog/system-entity.md).
+     Systems in Harness IDP are high-level catalog entities used to logically group related components, APIs, and resources. Associating your component with one or more Systems helps organize the catalog and improves visibility. [Learn more about System entities](/docs/internal-developer-portal/catalog/data-model/system-entity.md).
 
      <DocImage path={require('./static/multiple-system.png')} />
 

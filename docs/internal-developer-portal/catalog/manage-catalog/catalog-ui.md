@@ -1,7 +1,7 @@
 ---
 title: Manage Catalog UI
 description: Understand more on how to create and manage custom Catalog UI. 
-sidebar_position: 4
+sidebar_position: 8
 sidebar_label: Manage Catalog UI
 redirect_from: 
   - /docs/internal-developer-portal/catalog/add-links-docs.md

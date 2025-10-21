@@ -245,8 +245,8 @@ The above-mentioned `catalog-info.yaml` when registered in the catalog would dis
 
 There are two ways to add and create a new API entity in your catalog:
 
-- **[Create an entity via the Harness IDP UI](/docs/internal-developer-portal/catalog/manage-catalog.md#harness-idp-ui)**: Use the Harness UI to create entities directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.
-- **[Create an entity using your catalog YAML](/docs/internal-developer-portal/catalog/manage-catalog.md#catalog-yaml)**: You can still create entities using your existing catalog YAML files. Harness will automatically convert legacy Backstage YAML into the new Harness Catalog Entity Model and register the corresponding entity.
+- **[Create an entity via the Harness IDP UI](/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog.md#harness-idp-ui)**: Use the Harness UI to create entities directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.
+- **[Create an entity using your catalog YAML](/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog.md#catalog-yaml)**: You can still create entities using your existing catalog YAML files. Harness will automatically convert legacy Backstage YAML into the new Harness Catalog Entity Model and register the corresponding entity.
 
 ![](./static/create-entity-1.png)
 

@@ -533,7 +533,7 @@ Behind the scenes, Catalog Components are entities backed by CD. This basically 
 Please note that in a couple of months after **CD based auto-discovery**, every CD service will automatically appear as Catalog Components, so you will not have to create them manually.
 :::
 
-Switch to the IDP module, and use “Create” from the sidebar. Choose “Component” and use the following YAML to create the Catalog entities. Go to [Create Catalog Entities](/docs/internal-developer-portal/catalog/manage-catalog.md#creating-entities-idp-20) to learn more. 
+Switch to the IDP module, and use “Create” from the sidebar. Choose “Component” and use the following YAML to create the Catalog entities. Go to [Create Catalog Entities](/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog.md#creating-entities-idp-20) to learn more. 
 
 <details>
 <summary>Sample Frontend Component YAML</summary>

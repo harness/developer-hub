@@ -68,7 +68,7 @@ After enabling the integration, configure what to sync:
 
 That’s it; your CD services will appear in the IDP Catalog.
 
-For suspending auto-discovery, see [Suspend Auto-Discovery](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd.md#4-suspend-auto-discovery).
+For suspending auto-discovery, see [Suspend Auto-Discovery](/docs/internal-developer-portal/catalog/manage-catalog/catalog-discovery/harness-cd.md#4-suspend-auto-discovery).
 
 ### 3. View & manage CD services in the IDP Catalog
 
