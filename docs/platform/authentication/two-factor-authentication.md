@@ -21,7 +21,7 @@ This document explains the basic steps to set up 2FA in Harness.
 You can manage 2FA in two ways:
 
 * **Individual user:** you can set up 2FA for your own **User Profile** without impacting other user accounts.
-* **All account users:** if you have **Create/Edit** permissions for Authentication Settings, you can enforce 2FA for all users in Harness. First, you set up 2FA for your own account, and then you can enforce 2FA account-wide in the Harness account's **Login Settings**.
+* **All account users:** if you have **Create/Edit** permissions for Authentication Settings, you can enforce 2FA for all users in Harness. Before beginning, the admin will need to set up 2FA for their own account, and then they can enforce 2FA account-wide in the Harness account's **Login Settings**.
 
 :::info note
 If 2FA is disabled at the account level, you can still enable 2FA for your user account. When an administrator enables the account-level 2FA setting, Harness sends users 2FA emails but does not enable the user-level 2FA settings. Users can enable or disable the user-level setting in their profiles. When a user attempts to sign in to their account, Harness sends a 2FA challenge only if one or both of the settings (the account-level setting and the user-level setting) are enabled. If both settings are disabled, Harness does not send a 2FA challenge.
@@ -43,7 +43,7 @@ You can now see **Harness-Inc** in your 2FA token generator app, which provides 
 Once you have set up 2FA for your account, you set it for all users and groups in the account. When 2FA is enforced, account users will experience the following changes:
 
 * **New members** will be able to set up 2FA during sign up.
-* **Existing members** who do not have 2FA enabled will receive an email with a QR Code, and instructions on how to set up 2FA.
+* **Existing members** who do not have 2FA enabled will receive an email with a QR Code, and instructions on how to set up 2FA.  For security purposes, this email is necessary to set up the intial 2FA authentication.
 
 To set up 2FA for all account users and groups, do the following:
 
@@ -71,7 +71,7 @@ To set up 2FA for all account users and groups, do the following:
 
 ### Reset two-factor authentication
 
-If a user loses the QR Code, an account admin can reset two-factor authentication and email them a new QR Code and secret key.
+Once a user account is set up with 2FA, an administrator can reset the two-factor authentication and email them a new QR Code and secret key.  The user must have already set up their 2FA authentication before this option is available.
 
 To reset two-factor authentication for a user, do the following:
 
