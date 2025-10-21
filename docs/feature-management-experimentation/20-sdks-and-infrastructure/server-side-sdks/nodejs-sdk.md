@@ -60,7 +60,7 @@ var client = factory.client();
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 import { SplitFactory } from '@splitsoftware/splitio';
 
 const factory: SplitIO.ISDK = SplitFactory({
@@ -134,7 +134,7 @@ client.on(client.Event.SDK_READY, function() {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 client.on(client.Event.SDK_READY, () => {
   // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
   const treatment: SplitIO.Treatment =
@@ -198,7 +198,7 @@ if (treatment === 'on') {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const attributes: SplitIO.Attributes = {
   // date attributes are handled as `millis since epoch`
   registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
@@ -259,7 +259,7 @@ treatments = client.getTreatmentsByFlagSets('key', flagSets);
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 // Getting treatments by feature flag names
 const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_1'];
 let treatments: SplitIO.Treatments = client.getTreatments('key', featureFlagNames);
@@ -309,7 +309,7 @@ var treatment = flagResult.treatment;
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const flagResult: SplitIO.TreatmentWithConfig = client.getTreatmentWithConfig('user_id', 'FEATURE_FLAG_NAME', attributes);
 const configs: any = JSON.parse(flagResult.config);
 const treatment: SplitIO.Treatment = flagResult.treatment;
@@ -347,7 +347,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets)
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 // Getting treatments by feature flag names
 const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
 let treatmentResults: SplitIO.TreatmentsWithConfig = client.getTreatmentsWithConfig('user_id', flagNames);
@@ -416,16 +416,10 @@ const treatment: string = client.getTreatment('key', 'FEATURE_FLAG_NAME', undefi
 
 Call the `client.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
-
 ```javascript
 user_client.destroy();
 user_client = null;
 ```
-
-</TabItem>
-</Tabs>
 
 After `destroy()` is called and finishes, any subsequent invocations to `getTreatment`/`getTreatments` or manager methods result in `control` or empty list, respectively.
 
@@ -487,7 +481,7 @@ queuedPromise.then(function(queued) {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 // If you would like to send an event without a value
 const queuedPromise: Promise<boolean> = client.track('key', 'TRAFFIC_TYPE', 'EVENT_TYPE');
 // Example
@@ -598,7 +592,7 @@ var factory = SplitFactory({
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const factory: SplitIO.ISDK = SplitFactory({
   core: {
     authorizationKey: 'YOUR_API_KEY',
@@ -723,7 +717,7 @@ client.once(client.Event.SDK_READY_TIMED_OUT, function () {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 import { SplitFactory } from '@splitsoftware/splitio';
 
 const config: SplitIO.INodeAsyncSettings = {
@@ -814,7 +808,7 @@ client.on(client.Event.SDK_READY, function() {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const factory: SplitIO.ISDK = SplitFactory({
   core: {
     authorizationKey: 'localhost'
@@ -925,7 +919,7 @@ manager.once(manager.Event.SDK_READY, function() {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const factory: SplitIO.ISDK = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY'
@@ -974,7 +968,7 @@ var splitNamesList = manager.names();
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 /**
  * Returns the feature flag registered with the SDK of this name.
  *
@@ -1056,7 +1050,7 @@ var factory = SplitFactory({
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 class MyImprListener implements SplitIO.IImpressionListener {
   logImpression(impressionData: SplitIO.ImpressionData) {
     // do something with impressionData
@@ -1101,7 +1095,7 @@ Since v9.2.0 of the SDK, you can enable logging via SDK settings and programmati
 <Tabs groupId="java-type-script">
 <TabItem value="TypeScript" label="Logger API">
 
-```javascript
+```typescript
 import { SplitFactory } from '@splitsoftware/splitio';
 
 const factory = SplitFactory({
@@ -1176,10 +1170,11 @@ factory.Logger.setLogger(console);
 
 ## Proxy
 
-If you need to use a network proxy, you can provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The SDK will use this agent to perform requests to Harness servers.
+If your environment requires routing traffic through a proxy, you can configure the Node.js SDK to use one.
 
-<Tabs>
-<TabItem value="Example using the HTTPS Proxy Agent NPM library">
+If you need to use a standard network proxy, provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The SDK uses this agent to perform requests through the proxy.
+
+For example:
 
 ```javascript
 // Install with `npm install https-proxy-agent`
@@ -1200,8 +1195,306 @@ const factory = SplitFactory({
 })
 ```
 
+### Integrate with the Harness Proxy
+
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
+
+#### Configure the proxy
+
+You can configure the Node.js SDK to route traffic through a forward proxy by setting a custom HTTP agent. This overrides the default SDK agent and allows you to define proxy URLs, authentication headers, and mTLS certificates.
+
+In Node.js, network proxies are configured via the agent option in the SDK’s `requestOptions`. Harness recommends using the `https-proxy-agent` library to simplify proxy setup and handle secure connections.
+
+The following proxy configuration parameters are available:
+
+| Configuration | Description | Required |
+|:---:|:---:|:---:|
+| `agent` | Custom HTTP agent that defines proxy behavior. | Yes |
+| `ca` | Certificate authority (CA) file for self-signed certificates. | Optional |
+| `cert` / `key` | Client certificate and private key for mTLS authentication. | Optional |
+| `headers` | Custom headers for proxy authentication (Basic or Bearer Token). | Optional |
+
+#### Harness Proxy (URL Only)
+
+To use a proxy with no authentication, specify only the proxy URL in the configuration. Follow the pattern: `http(s)://host:port`.
+
+<Tabs groupId="java-type-script">
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+// Create an agent to use the forward proxy at https://harness-fproxy:3128
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128');
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128');
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
 </TabItem>
 </Tabs>
+
+#### Harness Proxy with Username/Password Authentication
+
+To authenticate using a username and password, implement the `BasicCredentialsProvider` interface and override the required methods.
+
+<Tabs groupId="java-type-script">
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with user/pass authentication
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: () => ({
+    // Basic (Username/Password) authentication
+    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const username: string = 'proxyUser';
+const password: string = 'proxyPass';
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with user/pass authentication
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: (): Record<string, string> => ({
+    // Basic (Username/Password) authentication
+    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with JWT Token Authentication
+
+To authenticate using a bearer token (e.g., JWT), include the `Proxy-Authentication` header with bearer authentication.
+If your token expires, consider renewing it proactively as shown below:
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="javascript " label="JavaScript">
+
+```javascript
+// If your JWT bearer token can expire, renew it before expiration
+let bearerToken;
+
+function refreshBearerToken() {
+  bearerToken = getNewBearerToken();
+  const decodedToken = decodeToken(bearerToken);
+  // Renew the token, for example, 1 minute before expiration
+  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
+};
+
+refreshBearerToken();
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with JWT token authentication
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: () => ({
+    // Bearer (JWT) authentication
+    'Proxy-Authorization': `Bearer ${bearerToken}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript " label="TypeScript">
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+// If your JWT bearer token can expire, renew it before expiration
+let bearerToken: string;
+
+function refreshBearerToken(): void {
+  bearerToken = getNewBearerToken();
+  const decodedToken = decodeToken(bearerToken);
+  // Renew the token 1 minute before expiration
+  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
+}
+
+refreshBearerToken();
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with JWT token authentication
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: (): Record<string, string> => ({
+    // Bearer (JWT) authentication
+    'Proxy-Authorization': `Bearer ${bearerToken}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with a custom CA certificate or mTLS Authentication
+
+To provide a custom CA X.509 certificate for self-signed certificates or configure mutual TLS (mTLS) authentication, use the corresponding agent properties to supply the required files.
+
+<Tabs groupId="java-type-script">
+<TabItem value="javascript " label="JavaScript">
+
+```javascript
+// Load certificates
+const fs = require('fs');
+const caCert = fs.readFileSync('certs/ca.crt');
+const clientCert = fs.readFileSync('certs/client.crt');
+const clientKey = fs.readFileSync('certs/client.key');
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with a custom CA certificate and mTLS
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  ca: caCert,                     // CA certificate for self-signed cert
+  cert: clientCert,             // mTLS: client certificate
+  key: clientKey                // mTLS: private key
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import fs from 'fs';
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+// Load certificates
+const caCert: Buffer = fs.readFileSync('certs/ca.crt');
+const clientCert: Buffer = fs.readFileSync('certs/client.crt');
+const clientKey: Buffer = fs.readFileSync('certs/client.key');
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with a custom CA certificate and mTLS
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  ca: caCert,       // CA certificate for self-signed cert
+  cert: clientCert, // mTLS: client certificate
+  key: clientKey    // mTLS: private key
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
 
 ## Advanced use cases
 
@@ -1210,8 +1503,6 @@ This section describes advanced use cases and features provided by the SDK.
 ### Working with both sync and async storage
 
 You can write code that works with all type of SDK storage. For example, you might have an application that you want to run on both `REDIS` and `MEMORY` storage types. To accommodate this, check if the treatments are [thenable objects](https://promisesaplus.com/#terminology) to decide when to execute the code that depends on the feature flag.
-
-See example below.
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
@@ -1246,7 +1537,7 @@ function thenable(val) {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const treatment: (SplitIO.Treatment | SplitIO.AsyncTreatment) =
   client.getTreatment('key', 'FEATURE_FLAG_NAME');
 
@@ -1404,13 +1695,13 @@ You need to install the following package by running the command: `npm i @types/
 
 Using Node.js SDK, when trying to import SplitIO as a namespace in TypeScript:
 
-```
+```typescript
 import { SplitIo } from '@splitsoftware/splitio';
 ```
 
 The following error is thrown:
 
-```
+```bash
 /node_modules/@splitsoftware/splitio/types"' has no exported member 'SplitIO'.
 ```
 
@@ -1418,7 +1709,7 @@ TypeScript implicitly imports SplitIO namespace when doing `import { SplitFactor
 
 You can explicitly import the SplitIO namespace (for example, on modules/files where SplitFactory is not being imported). To achieve this, include the line:
 
-```
+```typescript
 import SplitIO from '@splitsoftware/splitio/types/splitio';
 ```
 

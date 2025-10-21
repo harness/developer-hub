@@ -20,15 +20,15 @@ These release notes describe recent changes to Harness Feature Management & Expe
 ----
 #### 2025-10-15
 
-Harness Proxy, also known as the FME Forward Proxy, allows you to securely route all outgoing Harness traffic (including FME SDK calls and additional Harness module traffic) through a centralized, customer-managed proxy. It supports multiple Harness modules, starting with [FME](/docs/feature-management-experimentation) and [Database DevOps](/docs/database-devops), and is compatible with Java, Android, Node.js, and Browser SDKs.
+Harness Proxy allows you to securely route all outgoing Harness traffic (including FME SDK calls and additional Harness module traffic) through a centralized, customer-managed proxy. Its simplicity supports multiple Harness modules, starting with [FME](/docs/feature-management-experimentation) and [Database DevOps](/docs/database-devops), and is compatible with Java, Android, Node.js, and Browser SDKs.
  
 This feature is especially valuable for organizations with strict egress controls and security requirements. 
 
 By deploying the Harness Proxy, you can:
 
 - Centralize and control all outgoing traffic
-- Simplify network configuration by avoiding per-instance firewall exceptions
-- Support secure connections with custom authentication, including OAuth and mTLS
+- Simplify network configuration by avoiding per-deployment firewall exceptions
+- Support secure SDK connections with custom authentication, including OAuth and mTLS
 - Maintain control over proxy routing and connectivity from your infrastructure to Harness SaaS while respecting end-to-end encryption
 
 Harness Proxy makes it easier for enterprise customers to meet compliance and security needs at scale, while reducing operational overhead.

@@ -701,7 +701,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 </TabItem>
 </Tabs>
 
-### Configuring cache
+### Configure cache behavior
 
 To use the pluggable `InLocalStorage` option of the SDK and be able to cache flags for subsequent loads in the same browser, you need to pass it to the SDK config on its `storage` option.
 
@@ -852,6 +852,60 @@ class IndexedDBWrapper implements SplitIO.StorageWrapper {
 
 </TabItem>
 </Tabs>
+
+### Integrate with the Harness Proxy
+
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+In web applications, proxies cannot be configured programmatically using JavaScript. Browsers restrict access to the low-level networking APIs required for handling tunneling (such as the HTTP `CONNECT` method) due to security reasons. Instead, the proxy must be configured at the browser or operating system level.
+
+#### Configure the proxy 
+
+The recommended approach is to configure a Proxy Auto-Configuration (PAC) file. A PAC file dynamically determines whether web traffic (including SDK requests) should be routed through a proxy or directly to the internet.
+
+1. Create a PAC file. Create a text file named `proxy.pac` with the following content, replacing `fme-forward-proxy:3128` with your proxy address and port.
+
+   ```javascript
+   function FindProxyForURL(url, host) {
+   // Use proxy for Split domains
+   if (shExpMatch(host, "*.split.io")) return "HTTPS fme-forward-proxy:3128";
+
+   // Connect directly for all other domains
+   return "DIRECT";
+   }
+   ```
+
+1. Serve the PAC file. Host the PAC file using any HTTP server. For example, using npm: `npx http-server public
+`. This assumes your `proxy.pac` file is located in the public directory.
+   
+   ![](./static/harness-proxy-browser-1.png)
+
+1. Configure your system or browser. You can point your browser or operating system to the hosted PAC file URL.
+   
+   For macOS: 
+
+   * Go to **System Settings** > **Network** > **Proxies** > **Automatic Proxy Configuration**.
+   * Enter the PAC file URL (for example, `http://127.0.0.1:8080/proxy.pac`).
+
+   ![](./static/harness-proxy-browser-2.png)
+
+   For Chrome (macOS or Linux), you can also start Chrome with the proxy configured from the command line:
+
+   ```bash
+   /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+     --proxy-pac-url="http://127.0.0.1:8080/proxy.pac"
+   ```
+
+1. Test the proxy. After configuration, open a browser tab and load a web application that uses the FME SDK. Requests to `*.split.io` should now be routed through your configured proxy.
+   
+   If the proxy requires authentication:
+
+   * Basic or Digest auth: The browser prompts you for a username and password when the SDK makes its first request.
+   * Bearer auth: Not supported in browser environments.
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
 
 ## Localhost mode
 
