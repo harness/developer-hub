@@ -55,6 +55,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## October 2025
 
+### GitOps Service 1.43.0, GitOps Agent 0.102.0
+
+#### Fixed Issues
+
+- Fixed an issue where clicking the vertical ellipse (context menu) on a GitOps agent from the organization-level agent list view displayed a blank screen instead of agent details. When users clicked *View Details* from the context menu, no data was displayed. This issue has been resolved, and the context menu now correctly redirects to the agent details page. (**CDS-114901, ZD-94362**)
+- Fixed an issue where the GitOps Application Details page allowed users to modify the repository configuration but failed to save the changes. Users were unable to switch repositories for existing GitOps applications through the App Details interface. This issue has been resolved, and repository changes can now be successfully saved. (**CDS-114902**)
+
 ### Version 1.111.6
 
 #### New Features and Enhancements
