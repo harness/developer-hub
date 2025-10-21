@@ -11,16 +11,6 @@ export const dataWarehouses = [
     img: '/provider-logos/whn-integrations/redshift-logo.png',
     link: '/docs/feature-management-experimentation/warehouse-native/integrations/amazon-redshift',
   },
-  {
-    name: 'BigQuery',
-    img: '/provider-logos/whn-integrations/bigquery-logo.svg',
-    link: '/docs/feature-management-experimentation/warehouse-native/integrations/bigquery',
-  },
-  {
-    name: 'Trino',
-    img: '/provider-logos/whn-integrations/trino-logo.png',
-    link: '/docs/feature-management-experimentation/warehouse-native/integrations/trino',
-  },
 ];
 
 // Helper to chunk items into rows of 4
