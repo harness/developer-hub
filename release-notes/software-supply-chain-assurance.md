@@ -18,6 +18,39 @@ These release notes describe recent changes to Harness Supply Chain Security.
 :::
 
 
+## October 2025
+
+### Version: 1.43.0 , Plugin Version: 0.48.0
+
+#### New Features and Enhancements
+
+- Added a new api to fetch the `integration id`.
+
+```
+curl --location 'https://app.harness.io/gateway/ssca-manager/v1/orgs/<ORG-NAME>/projects/<PROJECT-NAME>/integration/integration-summary?github_org_url=<GITHUB_ORG_URL>' \ --header 'x-api-key: <X-API-KEY>'
+```
+
+
+- In the SBOM Orchestration step, now you can [enforce an OPA policy](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#enforce-policy) to block pipelines that include End of Life (EOL) components based on their count.
+
+
+#### Fixed Issues
+
+- Fixed an issue where STO results were not showing up in the Artifact page and the chain of custody.
+
+- Added support to handle registry URLs that include port information (e.g., `nexus.example.com:7991/repository/group/repo`).
+
+- Fixed the intermittent SBOM failure caused by Cosign timeout ([ZD-93784](https://harnesssupport.zendesk.com/agent/tickets/93784)).
+
+- Added support to map vulnerability data for non-container artifacts.
+
+- Enabled routing to specific SCS step through the **View Pipeline Execution** links in the chain of custody.
+
+- Fixed **unsupported manifest errors** while fetching image digests in the SBOM Orchestration step ([ZD-92970](https://harnesssupport.zendesk.com/agent/tickets/92970,), [ZD-92711](https://harnesssupport.zendesk.com/agent/tickets/92711)).
+
+- Added RBAC support for secrets referenced in the SCS steps to ensure pipelines fail when the secrets are inaccessible. This is behind FF `SSCA_RBAC_CHECK_SECRETS`.
+
+
 ## September 2025
 
 ### Version: 1.41.0 , Plugin Version: 0.45.0
