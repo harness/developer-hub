@@ -307,10 +307,6 @@ The infrastructure step will fail due to the incorrect connector reference, caus
 
 ## Failure Strategy Support for Multiservice, Multi-Infrastructure, and Matrix Deployment
 
-:::info
-Currently, this feature is behind the feature flag, `CDS_MULTI_DEPLOYMENT_ON_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 Multiservice deployments can be achieved using either the native multiservice configuration or the matrix configuration.
 
 ### Applying Failure strategy during Multi-Deployment

@@ -153,8 +153,6 @@ You can review and approve or reject the refresh plan either within Harness (usi
 If no approval action is taken within the configured timeout, the pipeline fails and the run is marked as expired.
 
 :::note
-Currently, this feature is behind the feature flag `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 This features requires delegate version `857xx` or later.
 :::
 

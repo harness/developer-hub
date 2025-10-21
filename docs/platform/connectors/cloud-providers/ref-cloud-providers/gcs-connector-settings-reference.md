@@ -173,10 +173,6 @@ To locate the correct values in the Google Cloud Console:
 
 You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
 
-:::note
-Currently, the Cross-Project Access feature for GCP connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 This feature is supported when GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
 
 **Project Selection Flow**:
