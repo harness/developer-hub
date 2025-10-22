@@ -286,6 +286,24 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from Go
 
       3.  Copy the application key and, in **Harness**, paste it into the **Application Key** field.
 
+:::info Application Key Scopes for Continuous Verification
+
+When creating the Datadog application key, ensure it has the following minimum scopes:
+
+**Required scopes:**
+- `timeseries_query` - Required for fetching metrics data
+- `logs_read_data` - Required for reading log data
+- `metrics_read` - For reading metrics metadata
+- `events_read` - For reading events
+- `monitors_read` - For reading monitor configurations
+- `dashboards_read` - For reading dashboard configurations
+
+For more information on Datadog API scopes, see:
+- [Metrics API documentation](https://docs.datadoghq.com/api/latest/metrics/)
+- [Logs API documentation](https://docs.datadoghq.com/api/latest/logs/)
+
+:::
+
 12. In Encrypted API Key, enter the API key for API calls.
 
     To create an API key in Datadog, do the following:
