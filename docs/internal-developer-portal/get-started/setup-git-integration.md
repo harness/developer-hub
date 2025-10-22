@@ -70,7 +70,7 @@ You land on the IDP module by navigating from the sidebar after logging into you
 
 Now that you're on the onboarding wizard, let's get started with setting up Git connectors to onboard the software components.
 
-### 1. Setup Git Connectors
+### Step 1. Setup Git Connectors
 
 #### Connector Setup
 
@@ -96,7 +96,7 @@ The following set of Git providers are supported:
 
 <DocVideo src="https://app.tango.us/app/embed/76371411-0ce5-49f6-82f8-7aa90098d559" title="Integrate GitHub with Harness Platform" />
 
-### 2. Populate Your Catalog
+### Step 2. Populate Your Catalog
 
 After setting up the connector, you'll be presented with two onboarding paths:
 
@@ -118,7 +118,7 @@ After setting up the connector, you'll be presented with two onboarding paths:
 
 <DocVideo src="https://app.tango.us/app/embed/69e37f8a-d4c2-477d-9da8-1d2e89ad8082" title="Populate your Catalog" />
 
-### 3. Import Harness Entities
+### Step 3. Import Harness Entities
 
 #### Import Harness Services
 
@@ -138,7 +138,7 @@ After setting up the connector, you'll be presented with two onboarding paths:
 - The provided repo URL should belong to the same organization/project for which the connector has been setup.
 - **Path** - Defaults to `harness-services`. Can be changed as well.
 
-### 4. Complete the Setup
+### Step 4. Complete the Setup
 
 Once you've configured your Git connector and chosen your onboarding path, select **Complete Setup** to finish the initial configuration. Your catalog will now be populated with the entities you've imported or created.
 
