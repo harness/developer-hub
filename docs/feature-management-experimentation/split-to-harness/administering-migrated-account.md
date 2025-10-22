@@ -56,7 +56,7 @@ The following terminology is referenced in this guide:
 <br /><br />
 
 :::info Environment Scope support for Admin API keys
-Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to the [Environment Scope](#environment-scope) section.
+Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to [Admin API key scoped to specific environments](?create-apikey-new-sa=environment-scope#using-a-new-service-account).
 :::
 
 ## Users
@@ -695,7 +695,7 @@ If created at the project level, the API key would not be sharable (by inheritin
 Creating a new Admin API key scoped to specific FME environments in the Harness FME module is not yet possible using Harness RBAC.
 :::
 
-While it is currently not possible post-migration to create Admin API keys scoped to environments, we are working on extending the FME implementation of Harness RBAC to allow this functionality. The Harness FME team will release fine-grained access control for FME resources with the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme). At that time, you will be able to create custom resource groups in Harness that will grant access to specific FME environments within a project.
+While it is currently not possible post-migration to create Admin API keys scoped to environments, we are working on extending the FME implementation of Harness RBAC to allow this functionality. The Harness FME team will release fine-grained access control over FME resources with the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme). At that time, you will be able to create custom resource groups in Harness that will grant access to specific FME environments within a project.
 
 Currently, for FME resources, resource groups in Harness define RBAC access to *all* entities of a given type. This means that access to specific environments within a project cannot be configured; only access to *all* environments within a project can be granted or revoked.
 
@@ -715,7 +715,7 @@ After your migration, use the Harness access token:
 * As the bearer token or x-api-key for legacy Split Admin API endpoints that are not deprecated. (The deprecated endpoints are replaced by Harness API endpoints for a migrated account.)
 * As the x-api-key for Harness API endpoints.
 
-For more information, go to [Authorization moves from Bearer Token to x-api-key](https://developer.harness.io/docs/feature-management-experimentation/split-to-harness/api-for-split-admins/#authorization-moves-from-bearer-token-to-x-api-key) in the FME documentation.
+For more information, go to [Authorization moves from Bearer Token to x-api-key](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins/#authorization-moves-from-bearer-token-to-x-api-key) in the FME documentation.
 :::
 
 ### Delete an Admin API key
@@ -930,9 +930,9 @@ The Harness API also [supports PATs for authentication](https://apidocs.harness.
 
 #### Can I restrict an Admin API key to an FME environment?
 
-The environment scope of Admin API keys created in Harness post-migration will be available when the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered. To learn more, go to [Admin API key scoped to specific environments](?create-apikey-new-sa=environment-scope#using-a-new-service-account).
+The environment scope of Admin API keys created in Harness post-migration will be available when the “Granular permissions in RBAC” [roadmap item](/roadmap/#fme) is delivered. To learn more, go to [Admin API key scoped to specific environments](?create-apikey-new-sa=environment-scope#using-a-new-service-account).
 
-### Harness entities
+### Harness organizations and environments
 
 #### What is a Harness organization?
 
@@ -950,17 +950,30 @@ flowchart TD
 
 The migration script created Harness projects that correspond to legacy Split projects. These Harness projects are created in the **default** organization (on the Free plan) or in an organization named <strong> *legacy Split account name* FME</strong> (on the Enterprise plan).
 
-#### What are Harness environments (resources) shown in Harness Project, Organization, or Account Settings?
+#### How are FME (Split) environments different from Harness environments?
 
-There is a Harness platform resource type called [environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/) found in Harness **Project Settings**, **Organization Settings**, and **Account Settings** as well as on the project **Overview** page (shown below in Harness unified view).
+Harness FME environments and Harness platform environments are different resource types in Harness. Although they are both called environments, they are not related and do not affect each other.
+
+##### Harness environments
+
+On the **Harness platform** you can create [environments](https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview#environments) (to define infrastructure) to be used in Harness CD [pipelines](https://developer.harness.io/docs/continuous-delivery/get-started/key-concepts#pipeline). These environments are shown in Harness **Project Settings** (shown below), **Organization Settings**, and **Account Settings**, as well as on the Harness project **Overview** page (shown below in Harness unified view).
 
 ![](./static/harness-envs.png)
 
-This Harness platform resource type is currently distinct and separate from environments defined for your project in Harness FME Settings (shown below).
+Harness platform environments are distinct and separate from FME environments. (In addition to FME, some other Harness modules have the concept of environments. These module-specific environments are also unrelated to FME environments.)
+
+##### FME environments
+
+In the **Feature Management & Experimentation** module in Harness, [FME environments](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) are created for your project. FME environments are used to scope your FME SDK API keys, FME feature flag definitions, and FME experiments. Within the FME module, you can access a project's FME environments from the left navigation pane, by clicking **Environments** or by clicking **FME Settings** (and then clicking the **View** link for a project).
 
 ![](./static/fme-project-envs.png)
 
-The Harness platform resource and Harness FME object (both called environment) are currently not related and do not affect each other.
+##### Granular permissions over FME environments
+
+The Harness FME team will release fine-grained access control over FME resources with the “Granular permissions in RBAC” [roadmap item](/roadmap/#fme). At that time, you will be able to create a resource group with specified **FME Environments** (at the location shown in the image below). This is different than creating a resource group with specified _Harness platform_ **Environments**, which is already possible in Harness.
+
+![Location where granular permissions will be added for FME environments](./static/rbac-custom-resource-group.png)
+
 
 ### Harness roles
 
