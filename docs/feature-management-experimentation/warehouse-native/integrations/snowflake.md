@@ -70,6 +70,51 @@ To integrate Snowflake as a data warehouse for Warehouse Native Experimentation:
    * The table exists in your database.
    * The [schema](/docs/feature-management-experimentation/warehouse-native/setup/metric-sources#example-prepared-table-schema) matches the expected format for experiment results (such as `key`, `metric_name`, `treatment`, and more).
 
+   <br />
+   | Field | Type | Description |
+   |---|---|---|
+   | `METRICRESULTID` | `VARCHAR` | Unique identifier representing a specific calculation per metric, per experiment, per analysis run. |
+   | `TREATMENT` | `VARCHAR` | The experiment variant (e.g., Control or Treatment) associated with the metric results. |
+   | `DIMENSIONNAME`  | `VARCHAR` | The name of the dimension being analyzed (e.g., country, platform). |
+   | `DIMENSIONVALUE` | `VARCHAR` | The corresponding value of the analyzed dimension. |
+   | `ATTRIBUTEDKEYSCOUNT` | `NUMBER` | Count of unique keys (users, sessions, etc.) attributed to this metric result. |
+   | `REQUESTTIMESTAMP` | `TIMESTAMP_NTZ` | Timestamp when the metric computation request occurred. |
+   | `MIN` | `FLOAT` | Minimum observed value for the metric. |
+   | `MAX` | `FLOAT` | Maximum observed value for the metric. |
+   | `COUNT` | `NUMBER` | Total number of observations included in the metric calculation. |
+   | `SUM` | `FLOAT` | Sum of all observed metric values. |
+   | `MEAN` | `FLOAT` | Average (mean) of the metric values. |
+   | `P50` | `FLOAT` | 50th percentile (median) metric value. |
+   | `P95` | `FLOAT` | 95th percentile metric value. |
+   | `P99` | `FLOAT` | 99th percentile metric value. |
+   | `VARIANCE` | `FLOAT` | Variance of the metric values. |
+   | `EXCLUDEDUSERCOUNT` | `NUMBER` | Number of users excluded from the analysis (due to filters, SRM, etc.). |
+   | `ASOFTIMESTAMP` | `TIMESTAMP_NTZ` | Timestamp representing when the result snapshot was written. |
+
+   To create the results table with the correct structure, run the following SQL statement in Snowflake:
+
+   ```sql
+   CREATE OR REPLACE TABLE <DATABASE_NAME>.<SCHEMA_NAME>.<TABLE_NAME> (
+      METRICRESULTID VARCHAR(16777216),
+      TREATMENT VARCHAR(16777216),
+      DIMENSIONNAME VARCHAR(16777216),
+      DIMENSIONVALUE VARCHAR(16777216),
+      ATTRIBUTEDKEYSCOUNT NUMBER(38,0),
+      REQUESTTIMESTAMP TIMESTAMP_NTZ(9),
+      MIN FLOAT,
+      MAX FLOAT,
+      COUNT NUMBER(38,0),
+      SUM FLOAT,
+      MEAN FLOAT,
+      P50 FLOAT,
+      P95 FLOAT,
+      P99 FLOAT,
+      VARIANCE FLOAT,
+      EXCLUDEDUSERCOUNT NUMBER(38,0),
+      ASOFTIMESTAMP TIMESTAMP_NTZ(9)
+   );
+   ```
+
 1. Test the connection by clicking **Test Connection**. Harness FME confirms the following:
 
    * The credentials and key pair are valid.

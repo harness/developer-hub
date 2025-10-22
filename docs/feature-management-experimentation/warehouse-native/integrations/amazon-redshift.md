@@ -63,6 +63,53 @@ To integrate Amazon Redshift as a data warehouse for Warehouse Native Experiment
    * The table exists in your database.
    * The [schema](/docs/feature-management-experimentation/warehouse-native/setup/metric-sources#example-prepared-table-schema) matches the expected format for experiment results (such as `key`, `metric_name`, `treatment`, and more).
 
+   <br />
+   | Field | Type | Description |
+   |---|---|---|
+   | `METRICRESULTID` | `VARCHAR` | Unique identifier representing a specific calculation per metric, per experiment, per analysis run. |
+   | `TREATMENT` | `VARCHAR` | The experiment variant (e.g., Control or Treatment) associated with the metric results. |
+   | `DIMENSIONNAME` | `VARCHAR` | The name of the dimension being analyzed (e.g., country, platform). |
+   | `DIMENSIONVALUE` | `VARCHAR` | The corresponding value of the analyzed dimension. |
+   | `ATTRIBUTEDKEYSCOUNT` | `BIGINT` | Count of unique keys (users, sessions, etc.) attributed to this metric result. |
+   | `REQUESTTIMESTAMP` | `TIMESTAMP` | Timestamp when the metric computation request occurred. |
+   | `MIN` | `FLOAT8` | Minimum observed value for the metric. |
+   | `MAX` | `FLOAT8` | Maximum observed value for the metric. |
+   | `COUNT` | `BIGINT` | Total number of observations included in the metric calculation. |
+   | `SUM` | `FLOAT8` | Sum of all observed metric values. |
+   | `MEAN` | `FLOAT8` | Average (mean) of the metric values. |
+   | `P50` | `FLOAT8` | 50th percentile (median) metric value. |
+   | `P95` | `FLOAT8` | 95th percentile metric value. |
+   | `P99` | `FLOAT8` | 99th percentile metric value. |
+   | `VARIANCE` | `FLOAT8` | Variance of the metric values. |
+   | `EXCLUDEDUSERCOUNT` | `BIGINT` | Number of users excluded from the analysis (due to filters, SRM, etc.). |
+   | `ASOFTIMESTAMP` | `TIMESTAMP` | Timestamp representing when the result snapshot was written. |
+
+   To create the results table with the correct structure, run the following SQL statement in Amazon Redshift:
+
+   ```sql
+   CREATE TABLE IF NOT EXISTS <DATABASE_NAME>.<SCHEMA_NAME>.<TABLE_NAME> (
+      METRICRESULTID VARCHAR(256),
+      TREATMENT VARCHAR(256),
+      DIMENSIONNAME VARCHAR(256),
+      DIMENSIONVALUE VARCHAR(256),
+      ATTRIBUTEDKEYSCOUNT BIGINT,
+      REQUESTTIMESTAMP TIMESTAMP,
+      MIN FLOAT8,
+      MAX FLOAT8,
+      COUNT BIGINT,
+      SUM FLOAT8,
+      MEAN FLOAT8,
+      P50 FLOAT8,
+      P95 FLOAT8,
+      P99 FLOAT8,
+      VARIANCE FLOAT8,
+      EXCLUDEDUSERCOUNT BIGINT,
+      ASOFTIMESTAMP TIMESTAMP
+   );
+   ```
+
+
+
 1. Test the connection by clicking **Test Connection**. If the test fails, verify the following:
 
    * The IAM Role has the correct trust policy and permissions.
