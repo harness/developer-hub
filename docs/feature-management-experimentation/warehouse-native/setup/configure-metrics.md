@@ -19,7 +19,7 @@ sidebar_position: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-When creating or editing a Metric Source in the **FME Settings** page, you have two options for defining the metric source table: **Table name** or **SQL query**. 
+When creating or editing a Metric Source, navigate to your project's settings: **Admin Settings** > **Project Settings** > **View Project** (for non-migrated orgs) or **FME Settings** > **Project Settings** > **View Project** (for migrated orgs). From there, you can define the metric source table using either a **Table name** or a **SQL query**. 
 
 <Tabs>
 <TabItem value="table" label="Table Name">

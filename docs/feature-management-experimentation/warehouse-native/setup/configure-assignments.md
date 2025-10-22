@@ -16,7 +16,7 @@ sidebar_position: 3
 
 ## Overview
 
-When creating or editing an Assignment Source in the **FME Settings** page, you have two options for defining the assignment source table: **Table name** or **SQL query**. 
+When creating or editing an Assignment Source, navigate to your project's settings: **Admin Settings** > **Project Settings** > **View Project** (for non-migrated orgs) or **FME Settings** > **Project Settings** > **View Project** (for migrated orgs). From there, you can define the assignment source table using either a **Table name** or a **SQL query**. 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
