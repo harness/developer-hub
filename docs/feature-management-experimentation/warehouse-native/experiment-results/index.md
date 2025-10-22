@@ -34,14 +34,6 @@ Drill down into experiment details to validate setup, confirm metric source alig
 
 Use [detailed metric breakdowns](/docs/feature-management-experimentation/warehouse-native/experiment-results/analyze-experiment-results/) to identify anomalies or confirm expected outcomes.
 
-## Reallocate traffic
-
-Once you’ve reviewed your experiment performance, adjust your rollout strategy by [reallocating users](/docs/feature-management-experimentation/warehouse-native/experiment-results/reallocate-traffic) between treatments or promoting a winning variant to 100%.
-
-![](../static/reallocate-traffic.png)
-
-Warehouse Native Experimentation results ensure traffic decisions are grounded in accurate, verifiable data.
-
 ## Share results
 
 Download experiment metrics, statistical summaries, and warehouse query outputs in CSV or JSON format for further analysis or collaboration with your team.

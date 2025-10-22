@@ -25,7 +25,7 @@ Harness FME now supports **Warehouse Native Experimentation** in beta. Warehouse
 You can use Warehouse Native Experimentation to:
 
 - Run analyses on experiments with data already stored in your warehouse.
-- Leverage FME's statistical engine (including CUPED and additional measurement techniques) for improved accuracy and confidence intervals.
+- Leverage FME's statistical engine and additional measurement techniques for improved accuracy and confidence intervals.
 - Integrate with existing assignment and metric tables in your data warehouse.
 
 To request access for the Warehouse Native Experimentation beta experience, contact [Harness Support](/docs/feature-management-experimentation/fme-support).

@@ -18,7 +18,7 @@ description: Learn how to run experiments in your data warehouse using Harness F
 
 ## Overview
 
-Warehouse Native enables [experimentation](/docs/feature-management-experimentation/experimentation/setup/) workflows, from targeting and assignment to analysis, and provides a statistical engine for analyzing existing experiments with measurement tools like CUPED in Harness Feature Management & Experimentation (FME).
+Warehouse Native enables [experimentation](/docs/feature-management-experimentation/experimentation/setup/) workflows, from targeting and assignment to analysis, and provides a statistical engine for analyzing existing experiments with measurement tools in Harness Feature Management & Experimentation (FME).
 
 ## How Warehouse Native works
 
@@ -33,7 +33,7 @@ Key components include:
 - **Assignment data**: Tracks user or entity assignments to experiments. This includes metadata about the experiment.
 - **Performance and behavioral data**: Captures metrics, events, and user behavior relevant to the experiment.
 - **Experiment metadata**: Contains definitions for experiments, including the experiment ID, name, start/end dates, traffic allocation, and grouping logic.
-- **Metric definitions**: Defines how metrics are computed in the warehouse, including aggregation logic, denominators, and optional CUPED adjustments. These definitions ensure analyses are standardized across experiments.
+- **Metric definitions**: Defines how metrics are computed in the warehouse, including aggregation logic and denominators. These definitions ensure analyses are standardized across experiments.
 
 ### Cloud Experimentation
 
