@@ -17,7 +17,7 @@ Now that you have [populated your Catalog with Software Components](/docs/intern
 
 Before you enable a new plugin, ensure that the following prerequisites are met:
 
-- [Harness IDP is provisioned and accessible](/docs/internal-developer-portal/get-started/enabling-module).
+- [Harness IDP is provisioned and accessible](https://www.harness.io/demo/internal-developer-portal).
 - [Catalog is populated with Software Components](/docs/internal-developer-portal/get-started/catalog-2o.md)
 
 ## Plugin types
