@@ -15,7 +15,7 @@ keywords:
 ---
 
 :::note Feature availability
-This feature requires the `PL_PROJECT_MOVEMENT_ENABLED` feature flag. Contact Harness support to enable it.
+This feature requires the `PL_PROJECT_MOVEMENT_ENABLED` feature flag. Contact [Harness support](mailto:support@harness.io) to enable it.
 :::
 
 This document provides a step-by-step guide to migrate projects from one organization to another, including prerequisites, permissions, and detailed migration procedures.

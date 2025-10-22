@@ -14,6 +14,10 @@
    - organization restructure
 ---
 
+:::note Feature availability
+This feature requires the `PL_PROJECT_MOVEMENT_ENABLED` feature flag. Contact [Harness support](mailto:support@harness.io) to enable it.
+:::
+
 This feature allows you to move a project across organizations, which is useful during restructuring, or ownership transitions.
 
 ## What happens when you move a project 
