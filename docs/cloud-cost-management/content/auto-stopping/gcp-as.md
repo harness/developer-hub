@@ -50,8 +50,8 @@ Ensure that the file uploaded in the Secret value field is not encrypted or enco
 
 1. Enter a **Name** for your rule
 2. AutoStopping Type: Choose how you want your resources to be managed automatically. You can either choose **Traffic-based with schedules optionally** or **Schedules only**. 
-    - **Traffic-based with schedules optionally**: Auto-stop when idle, restart on demand. Can add schedule overrides in advanced config.
-    - **Schedules only**: Auto-stop when idle, restart on demand. Can add schedule overrides in advanced config.
+    - **Traffic-based with schedules optionally**: Resources automatically stop when idle and restart when traffic is detected. You can configure schedule overrides in advanced settings.
+    - **Schedules only**: Resources automatically start and stop based on defined schedules. You can configure multiple schedules in advanced settings. 
 
   :::info
   Please note: Schedule-only rules ccxcxdan be changed to traffic-based during edit, but traffic-based rules cannot be reverted to schedule-only. (Schedules on traffic-based rules remain editable)
