@@ -886,5 +886,11 @@
     "description": "Use users' oauth creds to fetch and commit in git",
     "gaStartDate": "2025-10-27",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "GITOPS_BULK_ACTIONS_ENABLED",
+    "description": "FF to enable bulk actions (sync/refresh) for GitOps",
+    "gaStartDate": "2025-10-22",
+    "module": "GitOps"
   }
 ]
