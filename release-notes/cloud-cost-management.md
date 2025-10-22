@@ -25,6 +25,20 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+
+## October 2025 - Version 1.67.2
+#### Deployment Date: October 22, 2025 (Prod-1)
+
+### [New Feature]
+
+### Feature Improvements
+
+### Fixed Issues
+
+- The default view of the anomalies table is sorted by "Cost Impact" in descending order. [CCM-26665]
+- On the Perspective page, the anomalies tooltip now no longer includes the 'Apply Filter' functionality. Anomalies will now honor the perspective data aggregation value. [CCM-26647]
+
+
 ## October 2025 - Version 1.66.0
 #### Deployment Date: October 15, 2025 (Prod-1)
 
