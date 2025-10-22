@@ -167,15 +167,25 @@ We’ve recently launched support for Azure WAF Gateways. Currently, only import
 </Tabs>
 
 -------
+
 ## Create AutoStopping Rule
 - In Harness, navigate to **Cloud Costs** > **AutoStopping Rules** and click **New AutoStopping Rule**.
 
 <Tabs>
 <TabItem value="configuration" label="Step 1: Configuration">
 
+<DocImage path={require('../static/autostopping-type.png')} width="80%" height="80%" title="Click to view full size image" />
 
 - Select Cloud Provider as **AWS**. Select an existing AWS connector or create a new one.
 - Enter a **Name** for your rule
+- AutoStopping Type: Choose how you want your resources to be managed automatically. You can either choose **Traffic-based with schedules optionally** or **Schedules only**. 
+    - **Traffic-based with schedules optionally**: Resources automatically stop when idle and restart when traffic is detected. You can configure schedule overrides in advanced settings.
+    - **Schedules only**: Resources automatically start and stop based on defined schedules. You can configure multiple schedules in advanced settings. 
+
+  :::info
+  Please note: Schedule-only rules can be changed to traffic-based during edit, but traffic-based rules cannot be reverted to schedule-only. (Schedules on traffic-based rules remain editable)
+  :::
+
 - Set the **Idle Time** - how long an instance should be inactive before stopping
 - In the **Resources to be managed by the AutoStopping rules** section, select "VM".  Post this, specify how you would like the resources to be handled once idle for the specified Idle Time: Shut Down or Hibernate. 
 - Click on **+ Add an instance** and select the VM you want to onboard.

@@ -323,9 +323,19 @@ echo ">>> Setup complete."
 <Tabs>
 <TabItem value="Step1" label="Step 1: Configuration">
 
-1. Enter a descriptive **Name** for your rule
-2. Set the **Idle Time** - the duration an instance should be inactive before stopping
-3. From the **Resources to be managed** section, choose the resource type you want to manage:
+<DocImage path={require('../static/autostopping-type.png')} width="80%" height="80%" title="Click to view full size image" />
+
+1. Enter a descriptive **Name** for your rule. 
+2. AutoStopping Type: Choose how you want your resources to be managed automatically. You can either choose **Traffic-based with schedules optionally** or **Schedules only**. 
+    - **Traffic-based with schedules optionally**: Resources automatically stop when idle and restart when traffic is detected. You can configure schedule overrides in advanced settings.
+    - **Schedules only**: Resources automatically start and stop based on defined schedules. You can configure multiple schedules in advanced settings. 
+
+  :::info
+  Please note: Schedule-only rules can be changed to traffic-based during edit, but traffic-based rules cannot be reverted to schedule-only. (Schedules on traffic-based rules remain editable)
+  :::
+
+3. Set the **Idle Time** - the duration an instance should be inactive before stopping
+4. From the **Resources to be managed** section, choose the resource type you want to manage:
 
 <details>
 <summary>EC2 VMs</summary>
