@@ -366,28 +366,12 @@ To [leverage dynamic configurations with your treatments](/docs/feature-manageme
 
 This method returns an object with the structure below:
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
-
-```javascript
-var TreatmentResult = {
-  String treatment;
-  String config; // or null if there is no config for the treatment
-}
-```
-
-</TabItem>
-<TabItem value="TypeScript">
-
-```typescript
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+```typescript title="TypeScript"
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
-
-</TabItem>
-</Tabs>
 
 As you can see from the object structure, the config will be a stringified version of the configuration JSON  defined in Harness FME. If there is no configuration defined for a treatment, the SDK will return `null` for the config parameter.
 
