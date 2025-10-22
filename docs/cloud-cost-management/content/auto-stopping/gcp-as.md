@@ -46,9 +46,19 @@ Ensure that the file uploaded in the Secret value field is not encrypted or enco
 <Tabs>   
 <TabItem value="configuration" label="Step 1: Configuration">
 
+<DocImage path={require('../static/autostopping-type.png')} width="80%" height="80%" title="Click to view full size image" />
+
 1. Enter a **Name** for your rule
-2. Set the **Idle Time** - how long an instance should be inactive before stopping
-3. From the **Resources to be managed** section, choose the resource type you want to manage:
+2. AutoStopping Type: Choose how you want your resources to be managed automatically. You can either choose **Traffic-based with schedules optionally** or **Schedules only**. 
+    - **Traffic-based with schedules optionally**: Auto-stop when idle, restart on demand. Can add schedule overrides in advanced config.
+    - **Schedules only**: Auto-stop when idle, restart on demand. Can add schedule overrides in advanced config.
+
+  :::info
+  Please note: Schedule-only rules ccxcxdan be changed to traffic-based during edit, but traffic-based rules cannot be reverted to schedule-only. (Schedules on traffic-based rules remain editable)
+  :::
+
+3. Set the **Idle Time** - how long an instance should be inactive before stopping
+4. From the **Resources to be managed** section, choose the resource type you want to manage:
 
 <Tabs>
 <TabItem value="compute" label="Compute Engine VMs">
