@@ -62,6 +62,27 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where clicking the vertical ellipse (context menu) on a GitOps agent from the organization-level agent list view displayed a blank screen instead of agent details. When users clicked *View Details* from the context menu, no data was displayed. This issue has been resolved, and the context menu now correctly redirects to the agent details page. (**CDS-114901, ZD-94362**)
 - Fixed an issue where the GitOps Application Details page allowed users to modify the repository configuration but failed to save the changes. Users were unable to switch repositories for existing GitOps applications through the App Details interface. This issue has been resolved, and repository changes can now be successfully saved. (**CDS-114902**)
 
+### Version 1.12.4
+
+#### New Features and Enhancements 
+
+ - Harness supports the repository URL (repoURL) to perform cache lookups through the Git cache fetch method. This feature is controlled by Feature Flag `PIPE_GITX_DISABLE_REPO_URL_FOR_GIT_CACHE`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**ZD-91839**, **PIPE-29652**) 
+ - Harness now supports Dynatrace Grail Logs as a health source for deployment verification. Configure Dynatrace connectors with Platform URL and Platform Token to monitor logs during deployments (feature flag: `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`). (**CDS-112280**)
+
+#### Fixed issues 
+
+ - Fixed issues that occurred while skipping health checks for ASG instance, when the Feature Flag `CDS_ASG_SKIP_INSTANCE_HEALTH_CHECK_BEFORE_INSTANCE_REFRESH` was turned on. (**ZD-94985**, **CDS-114980**)
+ - Fixed an issue that caused log sanitization to fail when keys were split across multiple log entries. The fix is controlled by Feature Flag `CDS_PRINT_K8S_RESOURCES_ONE_PER_LINE`. (**ZD-94043**, **CDS-114920**)
+ - Fixed an issue where pipelines with parallel stages and the feature flag `PIPE_ENABLE_BARRIER_STEPS_SETUP_OPTIMIZATION` enabled could hang if a stage was skipped, causing barrier steps to never complete. Skipped stages are now correctly handled, preventing pipeline hangs. (**ZD-93659**, **PIPE-30068**)
+ - Fixed an issue where the `/v1/kubernetes/releases/service-mapping` API endpoint was inaccessible. The endpoint is now correctly routed and accessible. (**ZD-94565**, **CDS-114854**)
+ - Fixed issues related to pipeline failures caused when the feature flag `CDS_DISABLE_FABRIC8_NG` was enabled.  (**ZD-NA**, **CDS-114820**)
+ - Fixed an issue where pipelines having parallel stages while the feature flag `PIPE_ENABLE_BARRIER_STEPS_SETUP_OPTIMIZATION` was enabled could hang if a stage was skipped, causing barrier steps to never complete. Skipped stages are now correctly handled, preventing pipeline hangs. (**ZD-93659**, **PIPE-30068**)
+ - Fixed an issue with the long waiting time for ASG deployments when the instance count was set to zero, preventing delays during rollout steps. (**ZD-91793**, **CDS-114655**)
+ - Extended sync step console logs to include additional application resource info in order to bring more clarity on why the step is waiting before resuming the execution. (**ZD-88645**, **CDS-113241**)
+ - Improved error messages related to errors occurring during the Git Fetch Files Task, thus making error messages clearer and more readable.  (**CDS-104819**)
+ - Fixed an issue that hindered the visibility of the **Edit (three dots) button** on the template details tab when using long template names with the `PIE_FLEXIBLE_TEMPLATES` feature flag enabled. The Edit button is now properly visible and accessible. (**ZD-94179**, **PIPE-30083**)
+ - Fixed a UI issue where the last stage in matrix jobs was not visible. (**ZD-93268**, **PIPE-29896**)
+
 ### Version 1.111.6
 
 #### New Features and Enhancements
