@@ -172,5 +172,8 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /docs/category/get-started-with-harness /docs/category/get-started
 /docs/category/cloud-marketplace-offerings /docs/category/cloud-marketplace
 
+# redirect for community page @10/21/2025
+/community /#community
+
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
