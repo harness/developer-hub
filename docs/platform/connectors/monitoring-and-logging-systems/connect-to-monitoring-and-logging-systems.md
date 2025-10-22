@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 Connect Harness to monitoring and logging systems by adding a verification provider Connector.
 
-You can add a verification provider Connector inline when developing your pipeline, or separately in your Account/Org/Project's resources. Once you add the Connector, it is available in Pipelines of the same Account/Org/Project.
+You can add a verification provider Connector inline when developing your pipeline, or separately in your Account/Org/Project's resources. Once you add the Connector, it will be available in the Pipelines of the same Account/Org/Project.
 
 
 ### Monitoring and Logging Systems Scope
 
 You can add a verification provider Connector at the Account/Org/Project scope.
 
-This topic explains how to add a verification provider Connector at the Project scope. The process is same for Org and Account.
+This topic explains how to add a verification provider Connector to the Project scope. The process is the same for Org and Account.
 
 ### Add AppDynamics
 
@@ -27,20 +27,20 @@ This topic explains how to add a verification provider Connector at the Project 
 
    ![](../static/connect-to-monitoring-and-logging-systems-11.png)
 
-4. In **Name**, enter a name for this connector. You will use this name when selecting the Verification Provider in Harness Environments and Workflows. If you plan to use multiple providers of the same type, ensure that you give each provider a different name.
+4. In **Name**, enter a name for this connector. When selecting the Verification Provider in Harness Environments and Workflows, you will use this name. If you plan to use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
-6. In the **Controller URL** field, enter the URL of the AppDynamic controller in the format: `http://<Controller_Host>:<port>/controller</port>`. For example, `https://xxxx.saas.appdynamics.com/controller`.
+6. In the **Controller URL** field, enter the URL of the AppDynamics controller in the format: `http://<Controller_Host>:<port>/controller</port>`. For example, `https://xxxx.saas.appdynamics.com/controller`.
 
    ![](../static/connect-to-monitoring-and-logging-systems-12.png)
 
-7. In **Account Name**, enter the name of AppDynamics account you want to use. For Harness On-Prem, enter `customer1`.
+7. In **Account Name**, enter the name of the AppDynamics account you want to use. For Harness On-Prem, enter `customer1`.
 8. In **Authentication**, you can choose one of the following options:
 	* **Username and Password**: In **User Name** and **Password**, enter the credentials to authenticate with the AppDynamics server. In **Password**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets)**.**
-	* **API Client**: In **Client Id** and **Client Secret** fields, enter a valid Id and secret string that the application uses to prove its identity when requesting a token. In **Client Secret**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets).
+	* **API Client**: In the **Client Id** and **Client Secret** fields, enter a valid ID and secret string that the application uses to prove its identity when requesting a token. In **Client Secret**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets).
 9. Click **Continue**. The Setup Delegates settings appear.
-10. You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
+10. You can choose **Connect via any available delegate** or **Connect only via delegates with all the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
 11. Click **Save and Continue**.
-12. Once the Test Connection succeeds, click **Finish**. AppDynamics is listed under the list of Connectors.
+12. Once the Test Connection succeeds, click **Finish**. AppDynamics is listed under the Connectors list.
 
 ### Add Prometheus
 
@@ -50,7 +50,7 @@ This topic explains how to add a verification provider Connector at the Project 
 
    ![](../static/connect-to-monitoring-and-logging-systems-13.png)
 
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure that you give each provider a different name.
+4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure that each provider has a different name.
 5. Click **Continue**.
 6. In the **URL** field, enter the URL of your Prometheus account. You cannot use a Grafana URL.
 
@@ -61,7 +61,7 @@ You cannot use a Grafana URL.
 :::
 
 1. Click **Next**. The Setup Delegates settings appear.
-2. You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
+2. You can choose **Connect via any available delegate** or **Connect only via delegates with all the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
 3.  Click **Save and Continue**.
 4.  Once the Test Connection succeeds, click**Finish**. Prometheus is listed under the list of Connectors.
 
@@ -73,12 +73,12 @@ You cannot use a Grafana URL.
 
    ![](../static/connect-to-monitoring-and-logging-systems-15.png)
 
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+4. In **Name**, enter a name for this connector. If you use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
 6. In the **New Relic** **URL** field, select the URL of your New Relic Insights API.
 
 :::note
-New Relic supports multiple APIs. Harness connector leverages the NerdGraph API or the deprecated New Relic Insights API that supports NRQL. See Step 8 for more details on connecting to either APIs.
+New Relic supports multiple APIs. The harness connector leverages the NerdGraph API or the deprecated New Relic Insights API, which supports NRQL. See Step 8 for more details on connecting to either API.
 
 Currently, the NerdGraph API is behind the feature flag `CV_NEWRELIC_NEW_API`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
@@ -88,19 +88,19 @@ Currently, the NerdGraph API is behind the feature flag `CV_NEWRELIC_NEW_API`. C
 7.  To get the **New Relic Account ID** for your New Relic account, copy the number after the **/accounts/** portion of the URL in the New Relic Dashboard.
 8.  In **Encrypted** **API Key**, you can choose **Create or Select a secret.**
 
-For secrets and other sensitive settings, select or create a new [Text Secret](/docs/platform/secrets/add-use-text-secrets). Enter the API key needed to connect with the server.
+Select or create a new [Text Secret](/docs/platform/secrets/add-use-text-secrets) for secrets and other sensitive settings. Enter the API key needed to connect with the server.
 
-If you are having trouble connecting to the API, follow the docs linked below depending on whether you're using the NerdGraph API or the Insight Query API.
+If you have trouble connecting to the API, follow the docs linked below, depending on whether you're using the NerdGraph API or the Insight Query API.
 
 <details>
 <summary> NerdGraph API </summary>
 
    :::note
-   Currently, this feature is behind the feature flag `CV_NEWRELIC_NEW_API`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+   Currently, this feature is behind the feature flag `CV_NEWRELIC_NEW_API`. To enable it, contact [Harness Support](mailto:support@harness.io).
    :::
 
    - For steps on connecting to the NerdGraph API, go to [NerdGraph API](https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph/) in the New Relic documentation.
-   - To gain access to this API, use the `user key` for a specific account.
+   - To access this API, use a specific account's `user key`.
 
 </details>
 
@@ -114,11 +114,11 @@ If you are having trouble connecting to the API, follow the docs linked below de
 </details>
 
 1. Click **Continue**. The Setup Delegates settings appear.
-2.  You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
+2.  You can choose **Connect via any available delegate** or **Connect only via delegates with all the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
 3.  Click **Save and Continue**.
-4.  Once the Test Connection succeeds, click **Finish**. New Relic is listed under the list of Connectors.
+4.  Once the Test Connection succeeds, click **Finish**. The new relic is listed under the Connectors list.
 
-Usage scope is inherited from the secrets used in the settings. Pro or higher subscription level is needed. For more information, see [Introduction to New Relic's REST API Explorer](https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer) from New Relic.
+The usage scope is inherited from the secrets used in the settings. A Pro or higher subscription level is needed. For more information, see [Introduction to New Relic's REST API Explorer](https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer) from New Relic.
 
 ### Add Splunk
 
@@ -128,25 +128,25 @@ Usage scope is inherited from the secrets used in the settings. Pro or higher su
 
    ![](../static/connect-to-monitoring-and-logging-systems-18.png)
 
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+4. In **Name**, enter a name for this connector. If you use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
-6. In the **URL** field, enter the URL for accessing the REST API on the Splunk server. Include the port number in the format `https://deployment-name.cloud.splunk.com:8089`. The default port number is 8089. The port number is required for hosted Splunk, such as `https://mycompany.splunkcloud.com:8089`.
+6. In the **URL** field, enter the URL to access the REST API on the Splunk server. Include the port number in the format `https://deployment-name.cloud.splunk.com:8089`. The default port number is 8089. The port number required for hosted Splunk is `https://mycompany.splunkcloud.com:8089`.
 
    ![](../static/connect-to-monitoring-and-logging-systems-20.png)
 
 
-Splunk APIs require that you authenticate with a non-SAML account. To access your Splunk Cloud deployment using the Splunk REST API and SDKs, submit a support case requesting access on the Support Portal. For managed deployments, Splunk Support opens port 8089 for REST access. You can specify a range of IP addresses to control who can access the REST API. For self-service deployments, Splunk Support defines a dedicated user and sends you credentials that enable that user to access the REST API. For information see [Using the REST API with Splunk Cloud](http://docs.splunk.com/Documentation/Splunk/7.2.0/RESTTUT/RESTandCloud).
+Splunk APIs require that you authenticate with a non-SAML account. To access your Splunk Cloud deployment using the Splunk REST API and SDKs, submit a support case requesting access on the Support Portal. For managed deployments, Splunk Support opens port 8089 for REST access. You can specify a range of IP addresses to control who can access the REST API. For self-service deployments, Splunk Support defines a dedicated user and sends you credentials that enable that user to access the REST API. For information, see [Using the REST API with Splunk Cloud](http://docs.splunk.com/Documentation/Splunk/7.2.0/RESTTUT/RESTandCloud).
 
 Ensure that the Splunk user account used to authenticate Harness with Splunk is assigned to a role that contains the following REST-related capabilities:
 
 * Search.
 * Access to the indexes you want to search.
 
-In the following example we've created a new Splunk role named **Harness User**, and assigned it search capability:
+In the following example, we've created a new Splunk role named **Harness User**, and assigned it search capability:
 
 ![](../static/connect-to-monitoring-and-logging-systems-22.png)
 
-We've given this role access to **All non-internal indexes**. However, we could restrict the access to only the few relevant indexes:
+We've given this role access to **All non-internal indexes**. However, we could restrict the access to only a few relevant indexes:
 
 ![](../static/connect-to-monitoring-and-logging-systems-23.png)
 
@@ -154,19 +154,19 @@ We've given this role access to **All non-internal indexes**. However, we could 
 2. In **Password** field, you can choose **Create or Select a secret.**
 
 :::note
-For secrets and other sensitive settings, select or create a new [Text Secret.](/docs/platform/secrets/add-use-text-secrets)
+For secrets and other sensitive settings, select or create a new [Text Secret](/docs/platform/secrets/add-use-text-secrets)
 :::
 
 :::warning
 
-The HEC authentication method works for data ingestion only. If you wish to fetch data, please use username and password authentication. 
+The HEC authentication method works only for data ingestion. If you wish to fetch data, please use username and password authentication. 
 
-If you use HEC authentication, you will not be able to use Harness Continuous Verification since that relies on data fetching. 
+If you use HEC authentication, you cannot use Harness Continuous Verification, as it relies on data fetching. 
 
 :::
 
 1. Click **Connect and Save**. The Setup Delegates settings appear.
-2.  You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
+2.  You can choose **Connect via any available delegate** or **Connect only via delegates with all the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
 3.  Click **Save and Continue**.
 4.  Once the Test Connection succeeds, click **Finish**. Splunk is listed under the list of Connectors.
 
@@ -326,52 +326,114 @@ For more information on Datadog API scopes, see:
 
 ### Add Dynatrace
 
+Harness supports two types of Dynatrace integrations through a mutually exclusive connector configuration:
+
+- **Dynatrace Classic**: For Full Stack Observability metrics using API URL and API Token
+- **Dynatrace Grail**: For Dynatrace Grail Logs using Platform URL and Platform Token
+
+:::info note
+Dynatrace Grail Logs support is behind the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. This feature requires a minimum delegate version of `869xx`.
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+**Without the feature flag enabled**, you will only see the default Dynatrace configuration (API URL + API Token for Dynatrace Classic).
+
+**With the feature flag enabled**, you will see radio buttons to select between Dynatrace Classic and Dynatrace Grail.
+:::
+
+#### Configure the connector
+
 1. Open a Harness Project.
 2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
 
-3.   Under **Monitoring and Logging Systems**, select **Dynatrace**.
+3. Under **Monitoring and Logging Systems**, select **Dynatrace**.
 
-4.	In the dialog that appears, in the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.
-If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+4. In the dialog that appears, in the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.
+   
+   If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 
-5.	In the **Credentials** tab, enter the URL of your Dynatrace account.
-You must use HTTPS to establishing connections with Dynatrace.
+5. In the **Credentials** tab:
+   
+   - **If the feature flag is disabled**: You will see the default Dynatrace configuration fields (API URL + API Token).
+   - **If the feature flag is enabled**: Select the Dynatrace service type:
+     - **Dynatrace Classic**: For Full Stack Observability (APM) metrics
+     - **Dynatrace Grail**: For Dynatrace Grail Logs
 
-6.	Select the **API Token field** > **+ New Secret Text**.
+#### Dynatrace Classic configuration
 
-7.	In the Add New Encrypted Text dialog, select a secret manager, and then enter a name for the secret.
+For configuring Dynatrace Classic, configure the following: 
 
-8.	In the **Secret Value** field, enter the API token generated in Dynatrace. If you don’t have one, follow these steps to create an API token in Dynatrace:
+![Dynatrace Classic Configuration](./static/dynatrace-classic-connector.png)
 
-      1. Sign in to your Dynatrace environment.
-      2. In the Dynatrace menu, select **Access tokens** > Select **Generate new token**.
-      3. Enter a name for your token.
-      4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you efficiently manage your tokens and delete them when they're no longer needed.
-      5. Select the following scopes:
-         - **Read metrics**: This is needed to fetch data from the Dynatrace service for collecting information to perform verification.
-         - **Read entities**: This is necessary to obtain the list of Dynatrace services and the available metrics for the specified service.
-      6. Select **Generate token**.
-      7. Copy the generated token to the clipboard. Store the token in a password manager for future use. You can only access your token once upon creation. You can't reveal it afterward.
+1. In **API URL**, enter the URL of your Dynatrace account.
+   
+   You must use HTTPS to establish connections with Dynatrace.
 
-      For more information on generating Dynatrace API tokens, go to [Dynatrace API - Tokens and authentication](https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication).
+2. Select the **API Token** field > **+ New Secret Text**.
 
-8.	Select **Save**.
+3. In the Add New Encrypted Text dialog, select a secret manager, and then enter a name for the secret.
 
-9.	In the Create or Select an Existing Secret dialog, select the Dynatrace secret that you added, and then select **Apply Selected**.
+4. In the **Secret Value** field, enter the API token generated in Dynatrace. If you don't have one, follow these steps to create an API token in Dynatrace:
 
-11.  Select **Next**.
+   1. Sign in to your Dynatrace environment.
+   2. In the Dynatrace menu, select **Access tokens** > **Generate new token**.
+   3. Enter a name for your token.
+   4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you efficiently manage your tokens and delete them when they're no longer needed.
+   5. Select the following scopes:
+      - **Read metrics**: This is needed to fetch data from the Dynatrace service for collecting information to perform verification.
+      - **Read entities**: This is necessary to obtain the list of Dynatrace services and the available metrics for the specified service.
+   6. Select **Generate token**.
+   7. Copy the generated token to the clipboard. Store the token in a password manager for future use. You can only access your token once upon creation. You can't reveal it afterward.
 
-12.  In the **Delegates Setup** tab, choose one of the following:
+   For more information on generating Dynatrace API tokens, go to [Dynatrace API - Tokens and authentication](https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication).
+
+5. Select **Save**.
+
+6. In the Create or Select an Existing Secret dialog, select the Dynatrace secret that you added, and then select **Apply Selected**.
+
+#### Dynatrace Grail configuration
+
+If you selected **Dynatrace Grail**, configure the following:
+
+![Dynatrace Grail Configuration](./static/dynatrace-grail-connector.png)
+
+1. In **Platform URL**, enter the platform URL of your Dynatrace Grail account.
+   
+   You must use HTTPS to establish connections with Dynatrace.
+
+2. Select the **Platform Token** field > **+ New Secret Text**.
+
+3. In the Add New Encrypted Text dialog, select a secret manager, and then enter a name for the secret.
+
+4. In the **Secret Value** field, enter the platform token generated in Dynatrace for Grail Logs access.
+
+5. Select **Save**.
+
+6. In the Create or Select an Existing Secret dialog, select the Dynatrace secret that you added, and then select **Apply Selected**.
+
+#### Complete the connector setup
+
+After configuring either Dynatrace Classic or Dynatrace Grail:
+
+1. Select **Next**.
+
+2. In the **Delegates Setup** tab, choose one of the following:
 
    - **Use any available Delegate**: Harness automatically assigns an available delegate.
 
    - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
 
-13.  Select **Save** and **Continue**.
-    Harness verifies the connection.
+3. Select **Save** and **Continue**.
+   
+   Harness verifies the connection.
 
-14.  Once the verification is successful, select **Finish**.
-    The Dynatrace connector is added to the list of connectors.
+4. Once the verification is successful, select **Finish**.
+   
+   The Dynatrace connector is added to the list of connectors.
+
+:::warning Important
+Each Dynatrace connector instance supports either Classic (API URL + API Token) or Grail (Platform URL + Platform Token) configuration, but not both simultaneously. This ensures clear separation between different Dynatrace service types.
+:::
 
 
 ### Add Custom Health
