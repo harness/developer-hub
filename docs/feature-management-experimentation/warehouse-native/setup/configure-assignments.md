@@ -16,7 +16,7 @@ sidebar_position: 3
 
 ## Overview
 
-When creating or editing an Assignment Source in the Harness FME UI, you have two options for defining the assignment source table: **Table name** or **SQL query**. 
+When creating or editing an Assignment Source in the **FME Settings** page, you have two options for defining the assignment source table: **Table name** or **SQL query**. 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -33,7 +33,7 @@ Recommended if your data is already modeled into a clean impression/exposure tab
 1. Select an existing table name directly from the schema.
 1. Click **Test connection** to validate that Harness can query the table successfully before continuing.
 
-With Assignment Sources configured, you can can confidently create experiments, knowing all exposures are correctly captured, standardized, and reusable across analyses.
+With Assignment Sources configured, you can confidently create experiments, knowing all exposures are correctly captured, standardized, and reusable across analyses.
 
 </TabItem>
 <TabItem value="query" label="SQL Query">

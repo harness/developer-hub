@@ -19,9 +19,7 @@ sidebar_position: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Metric Sources are building blocks: once created, you can reuse them to define consistent, standardized metrics across multiple experiments.
-
-When creating or editing a Metric Source, you have two options for defining the metric source table: **Table name** or **SQL query**. 
+When creating or editing a Metric Source in the **FME Settings** page, you have two options for defining the metric source table: **Table name** or **SQL query**. 
 
 <Tabs>
 <TabItem value="table" label="Table Name">
@@ -53,9 +51,9 @@ You must have permissions to access all tables referenced in your query, based o
 </TabItem>
 </Tabs>
 
-Harness FME will show a data preview so you can confirm the expected fields are returned.
+After setting up Metric Sources, you can create metric definitions to aggregate event data by type (i.e., count, sum, or average). With Metric Sources configured, your metrics remain consistent, standardized, and reusable across experiments and analyses.
 
-After setting up Metric Sources, you can create metric definitions to aggregate event data by type (i.e., count, sum, or average).
+Harness FME will show a data preview so you can confirm the expected fields are returned.
 
 ### Configure your environments
 
