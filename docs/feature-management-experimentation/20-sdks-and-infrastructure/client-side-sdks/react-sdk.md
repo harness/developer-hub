@@ -294,14 +294,14 @@ export default class MyComponentToggle extends React.Component {
 
 The treatments property/value returned by this library has the following shape:
 
-```javascript title="TypeScript"
+```typescript title="TypeScript"
 type TreatmentWithConfig = {
-  treatment: string,
-  config: string | null
+  treatment: string;
+  config: string | null;
 };
 
 type TreatmentsWithConfig = {
-  [featureName: string]: TreatmentWithConfig
+  [featureName: string]: TreatmentWithConfig;
 };
 ```
 

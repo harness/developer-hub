@@ -190,12 +190,14 @@ const treatments: SplitIO.Treatments = this.splitService.getTreatmentsByFlagSets
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object with the structure below:
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
-```javascript title="TypeScript"
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+This method returns an object with the structure below:
+
+```typescript title="TypeScript"
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
 

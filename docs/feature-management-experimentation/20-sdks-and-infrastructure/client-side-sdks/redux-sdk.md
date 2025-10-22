@@ -556,18 +556,12 @@ To [leverage dynamic configurations with your treatments](/docs/feature-manageme
 
 Each evaluation entry loaded into the state under the `treatments` key will have the structure below:
 
-<Tabs>
-<TabItem value="TypeScript">
-
-```typescript
+```typescript title="TypeScript"
 type TreatmentWithConfig = {
-  treatment: string,
-  config: string | null
+  treatment: string;
+  config: string | null;
 };
 ```
-
-</TabItem>
-</Tabs>
 
 As you can see from the object structure, the config will be a stringified version of the configuration JSON  defined in Harness FME. If there is no configuration defined for a treatment, the SDK will return `null` for the config parameter.
 
