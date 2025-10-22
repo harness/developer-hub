@@ -18,6 +18,8 @@ Harness IDP on SMP is available only for **IDP 2.0**. **IDP 1.0** is **not suppo
 
 ### Architecture 
 
+![](./static/smp-release-1.png)
+
 #### PostgreSQL Databases created by IDP
 
 IDP creates multiple **per-plugin databases** in PostgreSQL. Each database name is **prefixed with your Harness account ID**.
