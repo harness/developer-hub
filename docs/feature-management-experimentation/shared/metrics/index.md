@@ -1,6 +1,6 @@
 A metric measures [events](/docs/feature-management-experimentation/experimentation/events/) that are sent to Harness FME. Metrics can be defined to count the occurrence of events, measure event values, or measure event properties.
 
-Metric results are calculated for each treatment of a feature flag that shares the same traffic type as the metric and has a percentage targeting rule applied. Impact can be calculated between a selected comparison treatment and baseline treatment within a feature flag. Results are displayed on the [Metrics impact tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards) of the feature flag.
+Metric results are calculated for each treatment of a feature flag that shares the same traffic type as the metric and has a percentage targeting rule applied. Impact can be calculated between a selected comparison treatment and baseline treatment within a feature flag.
 
 ### Common metrics
 

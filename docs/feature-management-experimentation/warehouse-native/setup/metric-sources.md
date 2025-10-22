@@ -63,7 +63,7 @@ While not required, these fields make debugging, filtering, and governance more 
 
 | **Example Raw Schema**                                                                                    | **Transformations**                                                                                                                                                                                                                |
 | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `account_id`  <br /> `metric_type`  <br /> `metric_value`  <br /> `created_at` | • Map `account_id` → `user_id`. <br /> • Map `metric_type` → `event_name`. <br /> • Standardize `metric_value` → `event_value`. |
+| `account_id`  <br /> `metric_type`  <br /> `metric_value`  <br /> `created_at` | • Map `account_id` → `key`. <br /> • Map `metric_type` → `event_name`. <br /> • Standardize `metric_value` → `event_value`. |
 
 ## Prepare your metric table
 
