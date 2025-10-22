@@ -177,6 +177,10 @@ A CODEOWNERS file declares the users <!--and groups-->responsible for a reposito
 
 Harness Code recognizes CODEOWNERS in a repository if a CODEOWNERS file is present but does not automatically add them as reviewers. This prevents unnecessary notifications when changes affect files that don’t require review from all CODEOWNERS. To auto-add CODEOWNERS as reviewers, enable the **Add Code Owners as reviewers** rule.
 
+:::note
+Code Owners might not be automatically added as reviewers if the `CODEOWNERS` file contains syntax errors or invalid patterns. Make sure your file follows the correct format and resolves any errors to ensure proper reviewer assignment.
+:::
+
 You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER voluntarily reviews a PR, Harness adds them as a reviewer for record-keeping, just like any other independent review. If the **Require review from code owners** branch rule is enabled, CODEOWNERS function as an approval policy—meaning a PR cannot be merged unless the changes have been approved by the required CODEOWNERS. This requirement is displayed in the Approvals section of the PR summary.
 
 ### CODEOWNERS syntax
