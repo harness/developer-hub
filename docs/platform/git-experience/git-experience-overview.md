@@ -142,10 +142,6 @@ For Example: If the repo full directory path is: `test-group9482940/subgroup/fol
 
 ### Branch Listing
 
-:::info note
-Currently this feature is behind feature flag `CDS_LIST_BRANCH_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can now search for branches in a given repository with support for infinite scroll while creating remote entities. Simply enter any keyword to see related branches listed. If you can't find the branch you're looking for, you can also add it manually.
 
 :::important
