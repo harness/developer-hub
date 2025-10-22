@@ -1783,6 +1783,16 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: 'category',
+              label: 'OpenFeature Providers',
+              className: 'sidebar-item-new',
+              link: {
+                type: 'doc',
+                id: 'feature-management-experimentation/sdks-and-infrastructure/openfeature/index',
+              },
+              items: require('./docs/feature-management-experimentation/20-sdks-and-infrastructure/openfeature/sidebar.js'),
+            },
+            {
+              type: 'category',
               label: 'Examples',
               link: {
                 type: 'doc',

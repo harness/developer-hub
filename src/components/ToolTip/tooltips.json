@@ -11,5 +11,16 @@
       "tf-commands": {
         "init": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies."
       }
+    },
+    "fme": {
+      "openfeature": {
+        "feature-flag": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without deploying new code. It allows for controlled feature rollouts, A/B testing, and quick rollbacks if issues arise.",
+        "targeting-key": "A unique identifier used to target specific users or entities when evaluating feature flags. It helps determine which variation of a flag should be served based on predefined rules and conditions.",
+        "evaluation-api": "The Evaluation API is the main interface developers use to interact with feature flags. It enables applications to evaluate feature flags and adapt behavior based on the results, while supporting customization and integration with additional tools.",
+        "evaluation-context": "The Evaluation Context holds contextual information used during flag evaluation. It can include static data (like application or host identifiers) and dynamic data (such as a client IP address), which can be passed explicitly or propagated automatically. Static and dynamic values can be merged for richer, more targeted evaluations.",
+        "provider": "Providers  act as a bridge between the Evaluation API and the underlying flag management system. They translate API calls into the format required by the provider, which could be a vendor SDK, a custom REST API, or a local data source.",
+        "hook": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
+        "events": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values."      
+      }
     }
   }

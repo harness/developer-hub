@@ -255,5 +255,41 @@ import TabItem from '@theme/TabItem';
 | `5.0.0`   | 2021-11-01  | Actively support  |
 
 </TabItem>
+</Tabs>
 
+### OpenFeature providers
+
+<Tabs queryString="openfeature-providers">
+
+<TabItem value="android" label="Android SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2025-09-30  | Actively support  |
+
+</TabItem>
+
+<TabItem value="web" label="Web SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2025-09-30  | Actively support  |
+
+</TabItem>
+
+<TabItem value="Java" label="Java SDK">
+
+| Version   | GA Date     | Support End Date    |
+|-----------|-------------|---------------------|
+| `1.0.0`   | 2025-10-07  | Actively support    |
+
+</TabItem>
+
+<TabItem value="Node.js" label="Node.js SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2023-04-27  | Actively support  |
+
+</TabItem>
 </Tabs>
