@@ -171,13 +171,13 @@ To locate the correct values in the Google Cloud Console:
 
 #### Enable Cross-Project Access
 
-You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+You can have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. The connector allows access to multiple GCP projects.
 
 This feature is supported when GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
 
 **Project Selection Flow**:
-    * With the **feature flag enabled**, the system will query the list of GCP projects accessible via the connector.
-    * The user will be prompted to select the target project (e.g., project2), in addition to the original project (project1).
+    * The system queries the list of GCP projects accessible via the connector.
+    * You can select the target project (e.g., project2), in addition to the original project (project1).
     * With both project values, relevant APIs will be invoked in the workflow using both projects.
 
 **Configuring the Project at the Infrastructure Level**
@@ -187,7 +187,7 @@ To configure the **Project** at the infrastructure level, follow these steps:
 1. Navigate to **Project Settings** -> **Environment**, and select your desired Kubernetes environment.
 2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** or **Helm Native** and **Infrastructure Type** as **Google Kubernetes Engine**.
 3. In the **Cluster Details** section:
-  - For the **Connector**: Select the previously configured GCP OIDC cluster with the **feature flag enabled**. 
+  - For the **Connector**: Select the previously configured GCP connector. 
   - **Project (optional)**: Select the Project you want to use in dropdown
   - **Cluster**: The cluster dropdown will list all the cluster associated with the selected project
   - **Namespace**: Enter the target namespace in target cluster.
