@@ -40,7 +40,7 @@ This example showcases the fundamental workflow pattern: **Input → Process →
 
 ### Step 1: Understanding Workflow Components
 
-Before creating your workflow, it's important to understand the key components that make up a Self-Service Workflow. A Workflow is defined through a **YAML configuration file** that contains all the Workflow's metadata and logic. 
+Before creating your workflow, it's important to understand the key components that make up a Self-Service Workflow. A Workflow is defined through a **YAML configuration file** that contains all the Workflow's metadata and logic. Go to [Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml.md) to learn more.
 
 <details>
 <summary>Example Workflow YAML</summary>

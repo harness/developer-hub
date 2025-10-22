@@ -1,7 +1,7 @@
 ---
 title: Set up Software Catalog
 sidebar_position: 2
-sidebar_label: Set up Software Catalog
+sidebar_label: Set up Software Catalog [WIP]
 redirect_from: /docs/internal-developer-portal/get-started/register-a-new-software-component
 ---
 
