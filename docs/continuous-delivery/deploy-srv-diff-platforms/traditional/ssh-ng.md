@@ -957,6 +957,20 @@ You can use the following [instance expressions](/docs/platform/variables-and-ex
 Harness restores the state of deployment to the pipeline's previous successful stage execution based on `serivce`, `enviroment` and `infrastucture` details.
 Harness records the artifact version that was successfully deployed during previous successful executions. When using the Rollback step's Copy Artifact command unit, Harness copies the last successful version of the artifact deployed via Harness to the remote host.
 
+:::info
+
+#### Rollback Behavior Enhancement for SSH/WinRM
+
+Harness has improved Rollback Behavior for SSH/WinRM deployments. This enhancement in behavior is controlled by the feature flag `CDS_FIX_ROLLBACK_IN_SSH_WINRM`. The following changes in behavior can be observed when this feature flag is enabled:
+
+- The Rollback Behavior has been enhanced to ensure that it **functions correctly even in cases where multiple command steps are configured within a stage**. 
+
+- Identifier Matching: For rollback to work correctly, each command step in the rollback section **must have the same identifier as the corresponding step in the execution section**. The names of the steps may differ, but identifiers must match.
+
+- For Canary, Rolling, and Basic deployment strategies, the **auto-generated YAML also follows the improved pattern with identifier matching if the feature flag is enabled**, thus ensuring identifier alignment between execution and rollback sections.
+
+:::
+
 #### First time deployment
 If the first pipeline execution fails (regardless of stage), Harness skips the rollback since there is no record of any successful pipeline execution.
 
