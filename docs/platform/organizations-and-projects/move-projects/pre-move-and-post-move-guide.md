@@ -13,7 +13,7 @@ keywords:
   - post-move Remediation
 ---
 
-This guide helps you decide if a project move is right for you and what to consider before finalizing the decision.
+This guide highlights key pointers to be aware of before moving a project and what may be required afterward.
 
 ## Pre-move validation
 
