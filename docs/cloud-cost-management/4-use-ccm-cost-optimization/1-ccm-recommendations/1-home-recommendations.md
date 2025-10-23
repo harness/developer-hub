@@ -14,8 +14,95 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::note
+After you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the service. In **Cloud Costs**, go to the **Recommendations** page.
+:::
+
+<!-- ## Before you begin
+To know how these recommendations are computed, see the following topics:
+* [Optimize AWS ECS Costs with Recommendations](../1-ccm-recommendations/ecs-recommendations.md)
+* [Optimize Kubernetes Costs with Node Pool Recommendations](../1-ccm-recommendations/node-pool-recommendations.md)
+* [Optimize Kubernetes Costs with Workload Recommendations](../1-ccm-recommendations/workload-recommendations.md) -->
+
+Harness CCM currently supports these types of OOTB recommendations:
+- Azure VM
+- AWS EC2 instances
+- AWS ECS services
+- Nodepool
+- Workload
+- Governance
+
+:::tip [Latest Features Released in 1.47.0](/release-notes/cloud-cost-management#april-2025---version-1470)
+<Tabs>
+  <TabItem value="Improved Recommendation Tracking" label="Improved Recommendation Tracking">Users can now specify estimated savings when marking a recommendation as applied. Upon marking a recommendation as applied, users can now confirm whether the estimated savings matched the actual savings or enter the actual amount saved if different from the estimate. Additionally, after a recommendation has been applied, this savings data from the Applied Recommendations section can be edited. </TabItem>
+  <TabItem value="Cost Categories Integration" label="Cost Categories Integration">The Filter panel in the Recommendations view now includes the option to **filter by Cost Categories**. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. </TabItem>
+  <TabItem value="Recommendations Filter Revamp" label="Recommendations Filter Revamp">The Filter panel in the Recommendations view has been updated to provide a more streamlined experience.  </TabItem>
+</Tabs>
+:::
+
+## View Recommendations
+
+To view recommendations, click on the **Recommendations** tab in the navigation bar, which will take you to the homepage. On the Recommendations page, there are two tabs: Open Recommendations and Applied Recommendations. The Open Recommendations tab displays all available recommendations that have yet to be applied, while the Applied Recommendations tab shows the recommendations that have already been implemented.
+
+
+### Open Recommendations
+
+  ![](./static/recommendations-open.png)
+
+On the Open Recommendations Page, you can view:
+- Export CSV: Option to export all recommendations with every data associated with it
+- Potential Monthly Savings that can be achieved with the recommendation
+- Potential Monthly Spend without applying recommendations.
+- Recommendation action for each resource. The Rec
+- Option to create Jira Ticket
+- Option to configure preferences and presets for recommendations through Settings
+- Option to manage the recommendations added to Ignore List
+- Different Options to filter Recommendations like:
+  - Recommendation Type
+  - Cloud Provider
+  - More filters like :
+  ![](./static/recommendations-filter-new.png)
+
+
+### Applied Recommendations
+
+  ![](./static/recommendations-applied.png)
+
+When you click on an individual recommendation, you’ll be able to view a detailed breakdown of the recommendation, including relevant insights, suggested actions, and any supporting information.
+
+### Azure VM Recommendations
+A highly effective way to reduce Azure VM costs is by optimizing VM utilization. By clicking on the Azure VM recommendation, you can view detailed information, as shown below:
+
+  ![](./static/azure-vm-recommendation-drilldown.png)
+
+### AWS EC2 Recommendations
+
+![](./static/aws-ec-recommendation-drilldown.png)
+
+### AWS ECS Recommendations
+![](./static/aws-ecs-recommendation-drilldown-one.png)
+
+### Nodepool Recommendations
+![](./static/nodepool-recommendation-drilldown.png)
+
+### Workload Recommendations
+![](./static/workload-recommendation-drilldown.png)
+
+### Governance Recommendations
+
+Please see the links below for details about Governance Recommendations:
+- [Azure](https://developer.harness.io/docs/category/governance-for-azure)
+- [GCP](https://developer.harness.io/docs/category/governance-for-gcp)
+- [AWS](https://developer.harness.io/docs/category/governance-for-aws)
+
+## Recommendation Settings
+
+:::note
+New Recommendation Preferences may take up to 24 hours to fully update across the platform. However, changes will be reflected immediately on the drill-down page, while the Overview page may take additional time to reflect updates.
+
 :::info
 After you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the service. 
+
 :::
 
 ## What are Recommendations?
