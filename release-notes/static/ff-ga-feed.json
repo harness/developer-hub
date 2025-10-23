@@ -904,5 +904,11 @@
     "description": "Custom authentication path for AppRole authentication in HashiCorp Vault connector",
     "gaStartDate": "2025-10-29",
     "module": "Platform"
+  },
+  {
+    "flagKey": "PL_CENTRAL_CERTIFICATES_MANAGEMENT",
+    "description": "Custom Certificate feature in Harness is behind this flag",
+    "gaStartDate": "2025-10-29",
+    "module": "Platform"
   }
 ]
