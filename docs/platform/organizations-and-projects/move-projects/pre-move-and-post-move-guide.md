@@ -68,7 +68,7 @@ Before moving a project, validate the entities to ensure they are not affected b
 
 
 - Review pipeline failures for clear, actionable errors to resolve issues.
-- Recreate organization-level connectors and secrets in the destination organization.
+- Recreate organization-level connectors and secrets in the destination organization, if required.
 - Update notification channels to use destination organization resources.
 - Verify and update RBAC policies.
 - Update any hardcoded organization identifiers in YAML configurations.
