@@ -892,5 +892,17 @@
     "description": "FF to enable bulk actions (sync/refresh) for GitOps",
     "gaStartDate": "2025-10-22",
     "module": "GitOps"
+  },
+  {
+    "flagKey": "PL_GCP_OIDC_AUTHENTICATION",
+    "description": "OpenID Connect (OIDC) support in Google Secret Manager, Google Cloud Platform (GCP) and Google Cloud Key Management Service (Cloud KMS connectors",
+    "gaStartDate": "2025-10-29",
+    "module": "Platform"
+  },
+  {
+    "flagKey": "PL_APPROLE_CUSTOM_PATH",
+    "description": "Custom authentication path for AppRole authentication in HashiCorp Vault connector",
+    "gaStartDate": "2025-10-29",
+    "module": "Platform"
   }
 ]
