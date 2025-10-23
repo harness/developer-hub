@@ -20,7 +20,7 @@ This page explains how to create, manage, and troubleshoot metric definitions fo
 
 ## Setup
 
-To create a [metric in Harness FME](/docs/feature-management-experimentation/warehouse-native/metrics/), navigate to **Metrics** in the navigation menu and click **Create metric**.
+To create a metric in Harness FME, navigate to **Metrics** in the navigation menu and click **Create metric**.
 
 Then, configure the following components in the side panel: 
 

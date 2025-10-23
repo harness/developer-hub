@@ -68,7 +68,7 @@ To integrate Snowflake as a data warehouse for Warehouse Native Experimentation:
 1. Specify a results table. Designate a results table where Harness FME will write experiment analysis results. Ensure the following:
 
    * The table exists in your database.
-   * The [schema](/docs/feature-management-experimentation/warehouse-native/setup/metric-sources#example-prepared-table-schema) matches the expected format for experiment results (such as `key`, `metric_name`, `treatment`, and more).
+   * The schema matches the expected format for experiment results below.
 
    <br />
    | Field | Type | Description |

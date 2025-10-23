@@ -40,4 +40,4 @@ Download experiment metrics, statistical summaries, and warehouse query outputs 
 
 ![](../static/share-results.png)
 
-You can also share [experiment results](/docs/feature-management-experimentation/warehouse-native/experiment-results/share-experiment-results/) directly within Harness FME to maintain visibility across product, data, and engineering teams.
+You can also share experiment results directly within Harness FME to maintain visibility across product, data, and engineering teams.

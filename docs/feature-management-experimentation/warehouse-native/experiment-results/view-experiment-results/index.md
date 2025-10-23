@@ -42,11 +42,9 @@ Reasons you may choose to recalculate metrics:
 
 * If you create or modify a metric after the last updated metric impact calculation, recalculate to get the latest results.
 * If you assign a metric to the Key metrics or Supporting metrics groups, recalculate to populate results for those metrics.
-* If the current version of this feature flag was created more than 28 days ago, recalculate to update results with the most recent data. Note that FME’s data retention period is 90 days. The influence of data points prior to 90 days are lost, even if the feature flag version is older than 90 days.
 
 The **Recalculate** button will be disabled when:
 
-* **No impressions for this version are received within the current retention period (i.e., the last 90 days).** To enable the recalculation, check that the SDK is correctly initialized in your code and verify that the metric event was sent.
 * **A forced recalculation is already scheduled.** A calculation is in progress.  You can click the Recalculate button again, as soon as the currently running calculation finishes.
 
 ## Concluding on interim data
