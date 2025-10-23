@@ -1331,7 +1331,7 @@ gsutil -m cp \
 - Fixed an issue where the Canary deployment stage failed with a NullPointerException due to a null output from the Helm Canary step. [CDS-111738, ZD-87118]
 - Fixed an issue where rollback pipelines triggered separate PIPELINE_START and PIPELINE_SUCCESS notifications followed by a PIPELINE_FAILED notification for the main pipeline. This is resolved and behind the feature flag `PIPE_DISABLE_PIPELINE_NOTIFICATIONS_ON_ROLLBACK`. [PIPE-28097]
 - Fixed an issue where the CD Git Clone step failed due to an internal mapping error even when valid repository details were provided. [PIPE-28355, ZD-87095]
-- Fixed an issue where the Fargate deployment `EcsUpgradeContainer` step did not perform a health check on retry, resulting in false positives. This is resolved with the feature flag `CDS_ECS_STEADY_STATE_CHECK_ON_RETRIES`. [CDS-111777, ZD-86907]
+- Fixed an issue where the Fargate deployment `EcsUpgradeContainer` step did not perform a health check on retry, resulting in false positives. [CDS-111777, ZD-86907]
 - Fixed an issue where the Canary Delete step in Kubernetes deployments deleted Virtual Services during rollback, leading to service downtime. This is resolved with the feature flag `CDS_K8S_NOT_ADD_TRAFFIC_ROUTING_TO_CANARY_WORKLOAD`. [CDS-111916, ZD-87449]
 - Fixed an issue where rollback was triggered even when the last stage (a child pipeline stage) failed with a strategy of Mark as Failure. The rollback is no longer triggered in such cases. [PIPE-28067, ZD-86977]
 - Fixed an issue where a pull request creation from the Pipeline Studio incorrectly showed a failure error message, even though the PR was successfully created. [PIPE-27981]
