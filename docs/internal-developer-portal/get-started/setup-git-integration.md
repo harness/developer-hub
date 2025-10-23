@@ -15,11 +15,6 @@ import TabItem from '@theme/TabItem';
 
 This guide will walk you through the first steps of onboarding to Harness IDP, including enabling the module, configuring Git connectors, populating your catalog, and importing Harness entities.
 
-Here's a quick onboarding pathway for Harness IDP: 
-1. **Setup and configure Git connectors**: This is required to store your Catalog and Workflow YAMLs. 
-2. **Populate your Catalog**: This is required to onboard your software components.
-3. **Import Harness entities**: This is required to import your Harness entities into Harness IDP directly.
-
 ---
 
 ## Prerequisites
@@ -72,11 +67,9 @@ Now that you're on the onboarding wizard, let's get started with setting up Git 
 
 ### Step 1: Setup Git Connectors
 
-#### Connector Setup
-
 The software components in IDP are defined using YAML files, which are typically stored in your Git repositories. Configuring a connector for these Git providers is essential to fetch and manage these YAML files.
 
-The following set of Git providers are supported:
+The following Git providers are supported:
 
 - [Harness Code Repository](https://www.harness.io/products/code-repository)
 - GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
@@ -85,26 +78,42 @@ The following set of Git providers are supported:
 
 > **Note:** Multiple Connectors with different hostnames can be used for a single Git Provider at once. While setting up the connector, both Account & Repo type URLs are supported. Connection through Harness platform and delegate is supported.
 
+<Tabs>
+<TabItem value="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/76371411-0ce5-49f6-82f8-7aa90098d559" title="Integrate GitHub with Harness Platform" />
+
+</TabItem>
+<TabItem value="Step-by-Step">
+
 #### Setting up Git Connectors
 
 1. Select **Harness Code Repository** if enabled, or choose your preferred **Git Provider** from the available options.
-
 2. From the dropdown under **Select Connector**, either select an already present connector or create **+New Connector**.
 3. Configure the Connector as per the [documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo).
 4. Select **Apply Selected** to use the connector.
 5. After the connection test runs, select **Finish** to save the connector.
 
-<DocVideo src="https://app.tango.us/app/embed/76371411-0ce5-49f6-82f8-7aa90098d559" title="Integrate GitHub with Harness Platform" />
+</TabItem>
+</Tabs>
+
+---
 
 ### Step 2: Populate Your Catalog
 
-After setting up the connector, you'll be presented with two onboarding paths:
+After setting up the connector, you'll be presented with two onboarding paths to populate your catalog with entities.
+
+<Tabs>
+<TabItem value="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/69e37f8a-d4c2-477d-9da8-1d2e89ad8082" title="Populate your Catalog" />
+
+</TabItem>
+<TabItem value="Step-by-Step">
 
 #### Start with Sample Service
 
-- You will be shown a demo service metadata in the form of the `catalog-info.yaml`.
-
-- This will be added to the Git provider with the same configuration options as described below.
+You will be shown a demo service metadata in the form of the `catalog-info.yaml`. This will be added to the Git provider with the configuration options below.
 
 **For Harness Code Repository:**
 - **Connector** - The connector is selected by default.
@@ -113,19 +122,27 @@ After setting up the connector, you'll be presented with two onboarding paths:
 **For Other Git Providers:**
 - **Connector** - Select the connector of the Git provider you want to use.
 - **Repo** - Enter the full path to your repo. Example: `https://github.com/user-name/onboarding-test.git`
-- The provided repo URL should belong to the same organization/project for which the connector has been setup.
+  - The provided repo URL should belong to the same organization/project for which the connector has been setup.
 - **Path** - Defaults to `harness-services`. Can be changed as well.
 
-<DocVideo src="https://app.tango.us/app/embed/69e37f8a-d4c2-477d-9da8-1d2e89ad8082" title="Populate your Catalog" />
+</TabItem>
+</Tabs>
+
+---
 
 ### Step 3: Import Harness Entities
 
+Import existing Harness services into your IDP catalog to quickly populate it with your current infrastructure.
+
 #### Import Harness Services
 
-- This option imports all the services from your Harness account into IDP. This includes all the services from all the projects in your account.
-- The services are imported as **Component** entities in IDP. The metadata for these entities is derived from the service configuration in Harness.
-- The entities are created with metadata including Name, Description, Owner, Type, and Lifecycle stage.
-- Once imported, you can view and manage these entities in the IDP catalog.
+This option imports all the services from your Harness account into IDP:
+
+- Imports all services from all projects in your account
+- Services are imported as **Component** entities in IDP
+- Metadata is derived from the service configuration in Harness
+- Entities are created with metadata including Name, Description, Owner, Type, and Lifecycle stage
+- Once imported, you can view and manage these entities in the IDP catalog
 
 ![](./content/setup-git-integration/static/select-path.png)
 
@@ -135,12 +152,16 @@ After setting up the connector, you'll be presented with two onboarding paths:
 **For Other Git Providers:**
 - **Connector** - Select the connector of the Git provider you want to use.
 - **Repo** - Enter the full path to your repo. Example: `https://github.com/user-name/onboarding-test.git`
-- The provided repo URL should belong to the same organization/project for which the connector has been setup.
+  - The provided repo URL should belong to the same organization/project for which the connector has been setup.
 - **Path** - Defaults to `harness-services`. Can be changed as well.
+
+---
 
 ### Step 4: Complete the Setup
 
 Once you've configured your Git connector and chosen your onboarding path, select **Complete Setup** to finish the initial configuration. Your catalog will now be populated with the entities you've imported or created.
+
+---
 
 ## Next Steps
 
