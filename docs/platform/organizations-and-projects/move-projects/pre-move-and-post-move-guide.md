@@ -54,7 +54,7 @@ Before moving a project, validate the entities to ensure they are not affected b
 
 
 :::note Important note
-- Redirection links in pipelines, webhooks, audit logs, or other entities that reference the source organization may stop working after a project is moved, as the source organization will no longer be accessible.
+- Links in pipelines, webhooks, audit logs, or other entities that reference the older organization may stop working after a project is moved.
     
     For example, if Project P is moved from organization O1 to O2, new audit logs will be generated under the destination organization (O2). However, existing links in the logs that reference the source organization (O1) will no longer work.
 
