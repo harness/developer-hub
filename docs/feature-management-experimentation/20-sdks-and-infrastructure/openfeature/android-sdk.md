@@ -47,7 +47,7 @@ dependencies {
 
 ## Initialize the provider
 
-The FME OpenFeature provider requires an Android `Context` and your Harness FME SDK Key. 
+The FME OpenFeature provider requires an Android application `Context` (for SDK initialization) and your Harness FME SDK Key. 
 
 ```kotlin
 import dev.openfeature.kotlin.sdk.OpenFeatureAPI
@@ -74,7 +74,7 @@ val showNewFeature = client.getBooleanValue("new-feature", false)
 
 ## Construct an evaluation context
 
-Use an <Tooltip id="fme.openfeature.evaluation-context">evaluation context</Tooltip> with a <Tooltip id="fme.openfeature.targeting-key">targeting key</Tooltip> to pass attributes used for flag targeting. You can include identifiers such as user IDs, email addresses, plan types, and more.
+To evaluate flags, you'll need to provide an <Tooltip id="fme.openfeature.evaluation-context">evaluation context</Tooltip> with a <Tooltip id="fme.openfeature.targeting-key">targeting key</Tooltip>. The evaluation context passes targeting information such as user IDs, email addresses, or plan types for flag targeting.
 
 For example:
 

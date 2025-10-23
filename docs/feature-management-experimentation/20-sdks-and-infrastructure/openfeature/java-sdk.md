@@ -72,7 +72,7 @@ api.setProviderAndWait(new SplitProvider(splitClient));
 
 ## Construct an evaluation context
 
-Use an <Tooltip id="fme.openfeature.evaluation-context">evaluation context</Tooltip> with a <Tooltip id="fme.openfeature.targeting-key">targeting key</Tooltip> to pass attributes used for flag targeting. You can include identifiers such as user IDs, email addresses, plan types, and more.=
+To evaluate flags, you'll need to provide an <Tooltip id="fme.openfeature.evaluation-context">evaluation context</Tooltip> with a <Tooltip id="fme.openfeature.targeting-key">targeting key</Tooltip>. The evaluation context passes targeting information such as user IDs, email addresses, or plan types for flag targeting.
 
 For example:
 
@@ -123,7 +123,7 @@ To enable event tracking, your evaluation context must include the following:
 - A [`trafficType`](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) (for example, `"user"` or `"account"`)
 - A non-blank event name
 
-Optionally, you can include a numeric value and additional event properties.
+Optionally, you can include a numeric value and additional event properties. For more information, see [Sending Events](https://developer.harness.io/docs/feature-management-experimentation/api/events/#event-record-fields).
 
 For example:
 

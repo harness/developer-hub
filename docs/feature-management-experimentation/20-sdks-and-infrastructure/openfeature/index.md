@@ -53,7 +53,7 @@ flowchart LR
 
 <br />
 
-The <Tooltip id="fme.openfeature.provider">OpenFeature Provider</Tooltip> acts as a connector between the SDK and the Harness Feature Management & Experimentation (FME) service, translating evaluation requests and returning flag values. The provider and the Harness FME service communicate continuously, ensuring that flag configurations and state changes are kept up to date.
+The <Tooltip id="fme.openfeature.provider">OpenFeature Provider</Tooltip> wraps the Harness FME SDK, bridging the OpenFeature SDK with the Harness Feature Management & Experimentation (FME) service. The provider maps OpenFeature's standardized interface to the FME SDK, which handles communication with Harness services to evaluate feature flags and retrieve configuration updates.
 
 ## Use OpenFeature SDKs
 
