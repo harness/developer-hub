@@ -29,14 +29,18 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 ## October 2025 - Version 1.67.2
 #### Deployment Date: October 22, 2025 (Prod-1)
 
-### [New Feature]
-
 ### Feature Improvements
+
+- **Streamlined Autostopping Rule Creation**: CCM has introduced a use case-based setup with intuitive Traffic-based and Schedule-based mode selection. The interface dynamically adjusts to display only relevant configuration fields, simplifying the setup process and improving user experience. [CCM-24600]
+
+<DocImage path={require('./static/ccm/as-new.png')} width="90%" height="90%" title="Click to view full size image" />
+
+- **AWS Service Detail (Beta)**: CCM has added a new beta field in AWS Explore that provides granular insight into mixed services within the CUR. This feature delivers standardized service categorization by mapping service codes, product families, and usage types. It properly identifies mixed services (such as EBS, VPC, and EMR under EC2) and includes fallback logic to ensure comprehensive coverage across all AWS usage patterns. [CCM-25768]
 
 ### Fixed Issues
 
-- The default view of the anomalies table is sorted by "Cost Impact" in descending order. [CCM-26665]
-- On the Perspective page, the anomalies tooltip now no longer includes the 'Apply Filter' functionality. Anomalies will now honor the perspective data aggregation value. [CCM-26647]
+- **Anomalies Table Sorting**: The default view of the anomalies table now sorts by "Cost Impact" in descending order. [CCM-26665]
+- **Perspective Page Improvements**: CCM has removed the 'Apply Filter' functionality from the anomalies tooltip on the Perspective page. Anomalies now correctly honor the perspective data aggregation value. [CCM-26647]
 
 
 ## October 2025 - Version 1.66.0
