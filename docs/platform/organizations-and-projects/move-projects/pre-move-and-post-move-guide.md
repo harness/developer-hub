@@ -55,9 +55,6 @@ Before moving a project, validate the entities to ensure they are not affected b
 
 :::note Important note
 - Links in pipelines, webhooks, audit logs, or other entities that reference the older organization may stop working after a project is moved.
-    
-    For example, if Project P is moved from organization O1 to O2, new audit logs will be generated under the destination organization (O2). However, existing links in the logs that reference the source organization (O1) will no longer work.
-
 - The project movement will not be allowed if a project with the same identifier already exists in the destination organization.
 
     For example, if Project P is being moved from organization O1 to O2, and organization B already has a project with the same identifier (i.e., Project P), the project movement will not be allowed.
@@ -65,13 +62,12 @@ Before moving a project, validate the entities to ensure they are not affected b
 
 ## Post-move remediation
 
-
+After a project is moved, the following tips can help you identify and fix broken references. Note that this list is not exhaustive and additional actions might be needed depending on your project setup.
 
 - Review pipeline failures for clear, actionable errors to resolve issues.
 - Recreate organization-level connectors and secrets in the destination organization, if required.
 - Update notification channels to use destination organization resources.
 - Verify and update RBAC policies.
-- Update any hardcoded organization identifiers in YAML configurations.
 
 
 

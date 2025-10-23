@@ -24,7 +24,7 @@ This feature allows you to move a project across organizations, which is useful 
 
 1. **Entities are moved**: [Supported entities](#supported-modules), such as pipelines, services, environments, and monitored services, are carried over with the project to the destination organization.
 
-2. **Dependencies need to be reconfigured**: Resources scoped at the source organization level—like connectors, secrets, templates, webhooks, or notifications may become inaccessible. These dependencies need to be recreated or updated in the destination organization. References to account- or project-level entities remain intact.
+2. **Some references need to be reconfigured**: Resources scoped at the source organization level —such as connectors, secrets, templates, webhooks, or notifications—may become inaccessible after the move. These references need to be recreated or updated in the destination organization. References to account- or project-level entities remain intact.
 
 3. **Access control and policies**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be reapplied in the destination organization. When a project move is initiated, all access control components belonging to the project are migrated asynchronously. During this process, access to the project will be temporarily blocked for other users.
 
