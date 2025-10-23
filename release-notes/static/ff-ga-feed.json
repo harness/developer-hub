@@ -907,7 +907,13 @@
   },
   {
     "flagKey": "PL_CENTRAL_CERTIFICATES_MANAGEMENT",
-    "description": "Custom Certificate feature in Harness is behind this flag",
+    "description": "Custom Certificate feature in Harness is behind this feature flag",
+    "gaStartDate": "2025-10-29",
+    "module": "Platform"
+  },
+  {
+    "flagKey": "PL_SHOW_AUTO_UPGRADE_FOR_DOCKER_DELEGATE",
+    "description": " Docker Delegate Upgrader is currently behind this feature flag",
     "gaStartDate": "2025-10-29",
     "module": "Platform"
   }
