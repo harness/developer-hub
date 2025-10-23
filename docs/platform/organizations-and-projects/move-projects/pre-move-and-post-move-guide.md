@@ -50,7 +50,7 @@ Before moving a project, validate the entities to ensure they are not affected b
     - When a project move is initiated, all access control components belonging to the project are migrated asynchronously. During this process, access to the project will be temporarily blocked for users.
 
 8. Audit logs:
-    - Historical data and execution records are fully preserved when a project is moved. However, links in the audit logs may break which redirects to the entity on the source organization.
+    - Historical audit logs are fully preserved when a project is moved. Note that the audit logs before the project was moved might contain links that refer to the older org. These links might break when accessed after the project is moved.
 
 
 :::note Important note
