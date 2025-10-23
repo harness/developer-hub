@@ -120,7 +120,7 @@ The FME OpenFeature provider supports tracking user actions or conversion <Toolt
 To enable event tracking, your evaluation context must include the following:
 
 - A non-empty `targetingKey`
-- A `trafficType` (for example, `"user"` or `"account"`)
+- A [`trafficType`](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) (for example, `"user"` or `"account"`)
 - A non-blank event name
 
 Optionally, you can include a numeric value and additional event properties.

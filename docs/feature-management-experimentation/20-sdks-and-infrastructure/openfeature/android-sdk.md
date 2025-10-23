@@ -141,7 +141,7 @@ lifecycleScope.launch {
 
 ## Track events
 
-The FME OpenFeature provider supports tracking events such as user actions or conversions. To enable event tracking, set a `TrafficType` in the evaluation context.
+The FME OpenFeature provider supports tracking events such as user actions or conversions. To enable event tracking, set a [`TrafficType`](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) in the evaluation context.
 
 ```kotlin
 // Set context with trafficType
