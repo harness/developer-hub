@@ -17,7 +17,7 @@ This guide highlights key pointers to be aware of before moving a project and wh
 
 ## Pre-move validation
 
-Before moving a project, validate the following entities to ensure they are not affected by inaccessible resources or broken references.
+Before moving a project, validate the entities to ensure they are not affected by inaccessible resources or broken references. Please note that this is not an exhaustive list.
 
 1. Pipelines:
     - Pipelines that refer organization-level connectors will break after the move.
