@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `7.0.0`   | 2022-05-26  | Actively support  |
+| `7.0.0`   | 2022-05-26  | Actively supported  |
 
 </TabItem>
 
@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date    |
 |-----------|-------------|---------------------|
-| `1.0.0`   | 2025-02-25  | Actively support    |
+| `1.0.0`   | 2025-02-25  | Actively supported    |
 | `0.0.0`   | 2025-01-21  | 2026-01-27          |
 
 </TabItem>
@@ -76,7 +76,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `6.0.0`   | 2020-10-06  | Actively support  |
+| `6.0.0`   | 2020-10-06  | Actively supported  |
 
 </TabItem>
 
@@ -84,7 +84,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `4.0.0`   | 2020-08-19  | Actively support  |
+| `4.0.0`   | 2020-08-19  | Actively supported  |
 
 </TabItem>
 
@@ -92,7 +92,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `11.0.0`  | 2024-11-01  | Actively support  |
+| `11.0.0`  | 2024-11-01  | Actively supported  |
 | `10.0.0`  | 2018-02-26  | 2025-01-04        |
 
 </TabItem>
@@ -101,7 +101,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `7.0.0`   | 2021-11-23  | Actively support  |
+| `7.0.0`   | 2021-11-23  | Actively supported  |
 
 </TabItem>
 
@@ -109,7 +109,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `2.0.0`   | 2025-04-14  | Actively support  |
+| `2.0.0`   | 2025-04-14  | Actively supported  |
 | `1.1.0`   | 2023-09-06  | 2025-01-25        |
 
 </TabItem>
@@ -118,7 +118,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `10.0.0`  | 2024-06-27  | Actively support  |
+| `10.0.0`  | 2024-06-27  | Actively supported  |
 | `9.0.0`   | 2021-05-03  | 2024-02-15        |
 
 </TabItem>
@@ -127,7 +127,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `8.0.0`   | 2022-05-10  | Actively support  |
+| `8.0.0`   | 2022-05-10  | Actively supported  |
 
 </TabItem>
 
@@ -141,7 +141,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `5.0.0`   | 2024-11-01                | Actively support    |
+| `5.0.0`   | 2024-11-01                | Actively supported    |
 | `4.0.0`   | 2024-01-04                | 2025-11-01          |
 
 </TabItem>
@@ -150,7 +150,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `3.0.0`   | 2024-05-17                | Actively support    |
+| `3.0.0`   | 2024-05-17                | Actively supported    |
 | `2.0.1`   | 2024-03-11                | 2024-05-17          |
 
 </TabItem>
@@ -159,7 +159,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `1.0.0`   | 2024-11-01                | Actively support    |
+| `1.0.0`   | 2024-11-01                | Actively supported    |
 | `0.1.0`   | 2021-03-30                | 2024-11-01          |
 
 </TabItem>
@@ -168,7 +168,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `0.1.0`   | 2022-08-03                | Actively support   |
+| `0.1.0`   | 2022-08-03                | Actively supported   |
 
 </TabItem>
 
@@ -176,7 +176,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `3.0.0`   | 2024-11-01                | Actively support    |
+| `3.0.0`   | 2024-11-01                | Actively supported    |
 | `2.0.0`   | 2019-02-01                | 2024-11-01          |
 
 </TabItem>
@@ -185,7 +185,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `11.0.0`  | 2024-11-01                | Actively support    |
+| `11.0.0`  | 2024-11-01                | Actively supported    |
 | `10.0.0`  | 2018-02-26                | 2025-11-01          |
 
 </TabItem>
@@ -194,7 +194,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `2.0.0`   | 2024-11-01                | Actively support    |
+| `2.0.0`   | 2024-11-01                | Actively supported    |
 | `1.0.0`   | 2020-01-24                | 2025-04-15          |
 
 </TabItem>
@@ -203,7 +203,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `1.0.0`   | 2024-11-01                | Actively support    |
+| `1.0.0`   | 2024-11-01                | Actively supported    |
 | `0.0.1`   | 2021-07-29                | 2025-11-01          |
 
 </TabItem>
@@ -212,7 +212,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `2.0.0`   | 2024-11-14                | Actively support    |
+| `2.0.0`   | 2024-11-14                | Actively supported    |
 | `1.0.0`   | 2020-01-24                | 2025-04-01          |
 
 </TabItem>
@@ -227,7 +227,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `1.0.1`   | 2023-09-05  | Actively support  |
+| `1.0.1`   | 2023-09-05  | Actively supported  |
 
 </TabItem>
 
@@ -235,7 +235,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `2.0.0`   | 2019-09-23  | Actively support  |
+| `2.0.0`   | 2019-09-23  | Actively supported  |
 
 </TabItem>
 
@@ -243,7 +243,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date    |
 |-----------|-------------|---------------------|
-| `1.0.0`   | 2025-05-28  | Actively support    |
+| `1.0.0`   | 2025-05-28  | Actively supported    |
 | `0.1.0`   | 2022-01-11  | 2024-02-29          |
 
 </TabItem>
@@ -252,7 +252,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `5.0.0`   | 2021-11-01  | Actively support  |
+| `5.0.0`   | 2021-11-01  | Actively supported  |
 
 </TabItem>
 </Tabs>
@@ -265,7 +265,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `1.0.0`   | 2025-09-30  | Actively support  |
+| `1.0.0`   | 2025-09-30  | Actively supported  |
 
 </TabItem>
 
@@ -273,7 +273,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `1.0.0`   | 2025-09-30  | Actively support  |
+| `1.0.0`   | 2025-09-30  | Actively supported  |
 
 </TabItem>
 
@@ -281,7 +281,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date    |
 |-----------|-------------|---------------------|
-| `1.0.0`   | 2025-10-07  | Actively support    |
+| `1.0.0`   | 2025-10-07  | Actively supported    |
 
 </TabItem>
 
@@ -289,7 +289,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `1.0.0`   | 2023-04-27  | Actively support  |
+| `1.0.0`   | 2023-04-27  | Actively supported  |
 
 </TabItem>
 </Tabs>
