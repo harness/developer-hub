@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-10-15T10:00:00
+date: 2025-10-24T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,9 +12,31 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: October 15, 2025
+#### Last updated: October 24, 2025
 
 ## October 2025
+
+### [New Feature] OpenFeature Providers
+----
+#### 2025-10-24
+
+Harness FME supports [OpenFeature](https://openfeature.dev/), an open specification offering a vendor-agnostic API for feature flagging. Providers handle flag evaluations, enabling consistent, centralized control over feature flags across multiple SDKs and environments.
+ 
+This feature is valuable for organizations that want to:
+
+- Standardize feature flag behavior across services and applications
+- Reduce vendor lock-in by enabling flexible provider implementations
+- Integrate feature flags across multiple languages and platforms
+
+Harness FME offers providers for Android, Web, Java, and Node.js SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
+
+#### Related documentation
+
+- [OpenFeature Providers](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/android-sdk)
+- [Web SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/web-sdk)
+- [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/java-sdk)
+- [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk)
 
 ### [New Feature] Harness Proxy
 ----

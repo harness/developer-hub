@@ -193,7 +193,7 @@ In the example below, we are rolling out a feature flag to users. The provided a
 
 The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
-* **Strings:** Use type String.
+* **Strings:** Use type `String`.
 * **Numbers:** Use type `java.lang.Long` or `java.lang.Integer`.
 * **Dates:** Express the value in `milliseconds since epoch`. In Java, `milliseconds since epoch` is of type `java.lang.Long`. For example, the value for the `registered_date` attribute below is `System.currentTimeInMillis()`, which is a long.
 * **Booleans:** Use type `java.lang.boolean`.
@@ -342,7 +342,7 @@ val treatment: String = result.treatment()
 </TabItem>
 </Tabs>
 
-If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult instead of strings. Example usage below:
+If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to `SplitResult` instead of strings. Example usage below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -540,13 +540,13 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | proxyUsername  | Username to authenticate against the proxy server. | null |
 | proxyPassword  | Password to authenticate against the proxy server. | null |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK falls back to the polling mechanism. If false, the SDK polls for changes as usual without attempting to use streaming. | true |
-| impressionsMode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG.  In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Harness; this is useful for validations. Use DEBUG mode when you want every impression to be logged in Harness FME when trying to debug your SDK setup.  This setting does not impact the impression listener which receives all generated impressions locally. | OPTIMIZED |
-| operationMode | Defines how the SDK synchronizes its data. Two operation modes are currently supported: <br />- STANDALONE. <br />- CONSUMER| STANDALONE |
-| storageMode | Defines what kind of storage the SDK is going to use. With MEMORY, the SDK uses its own storage and runs as STANDALONE mode. Set REDIS mode if you want the SDK to run with this implementation as CONSUMER mode. | MEMORY |
+| impressionsMode | Defines how impressions are queued on the SDK. Supported modes are `OPTIMIZED`, `NONE`, and `DEBUG`.  <br /><br /> In `OPTIMIZED` mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. <br /><br /> In `NONE` mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. <br /><br /> Use `NONE` when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. <br /><br /> In `DEBUG` mode, all impressions are queued and sent to Harness; this is useful for validations. Use `DEBUG` mode when you want every impression to be logged in Harness FME when trying to debug your SDK setup.  This setting does not impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
+| operationMode | Defines how the SDK synchronizes its data. <br /><br /> Two operation modes are currently supported: <br /><br />- `STANDALONE` <br />- `CONSUMER`| `STANDALONE` |
+| storageMode | Defines what kind of storage the SDK is going to use. With `MEMORY`, the SDK uses its own storage and runs as `STANDALONE` mode. Set `REDIS` mode if you want the SDK to run with this implementation as `CONSUMER` mode. | `MEMORY` |
 | flagSetsFilter | This setting allows the SDK to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the SDK instance, bringing all the benefits from a reduced payload. | null |
 | threadFactory | Defines what kind of thread the SDK is going to use. Allows the SDK to use Virtual Threads. | null |
-| inputStream | This setting allows the SDK supports InputStream to use localhost inside a JAR. | null |
-| FileTypeEnum | Defines which kind of file is going to be the inputStream. Supported files are YAML and JSON for inputStream. | null |
+| inputStream | This setting allows the SDK supports `InputStream` to use `localhost` inside a JAR. | null |
+| FileTypeEnum | Defines which kind of file is going to be the `inputStream`. Supported files are YAML and JSON for `inputStream`. | null |
 
 To set each of the parameters defined above, use the following syntax:
 
