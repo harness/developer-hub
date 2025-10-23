@@ -964,7 +964,7 @@ Harness platform environments are distinct and separate from FME environments. (
 
 ##### FME environments
 
-In the **Feature Management & Experimentation** module in Harness, [FME environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) are created for your project. FME environments are used to scope your FME SDK API keys, FME feature flag definitions, and FME experiments. Within the FME module, you can access a project's FME environments from the left navigation pane, by clicking **Environments** or by clicking **FME Settings** (and then clicking the **View** link for a project).
+In the **Feature Management & Experimentation** module in Harness, [FME environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) are created for your project. FME environments are used to scope your FME SDK API keys, FME feature flag definitions, FME segments, and FME experiments. Within the FME module, you can access a project's FME environments from the left navigation pane, by clicking **Environments** or by clicking **FME Settings** (and then clicking the **View** link for a project).
 
 ![](./static/fme-project-envs.png)
 
