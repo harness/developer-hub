@@ -47,7 +47,7 @@ Before moving a project, validate the entities to ensure they are not affected b
 
 7. Access control:
     - Organization-level RBAC policies do not transfer when a project is moved and must be reapplied in the destination organization to maintain proper access controls.
-    - When a project move is initiated, all access control components are migrated asynchronously. During this process, access to the project will be temporarily blocked for users.
+    - When a project move is initiated, all access control components belonging to the project are migrated asynchronously. During this process, access to the project will be temporarily blocked for users.
 
 8. Audit logs:
     - Historical data and execution records are fully preserved when a project is moved. However, links in the audit logs may break which redirects to the entity on the source organization.
