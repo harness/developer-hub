@@ -7,9 +7,11 @@ sidebar_position: 1
 
 Harness Internal Developer Portal integrates with a number of third-party providers to provide a single pane of glass for developers. This page outlines all the supported integrations, providers, and features available in Harness IDP.
 
+---
+
 ## 1. Git Providers
 
-Harness IDP supports the following Git providers for storing and managing catalog entity definitions (`catalog-info.yaml` files) and workflow definitions:
+Harness IDP supports the following Git providers for storing and managing catalog entity YAML definitions and Workflow YAML definitions:
 
 | **Git Provider** | **Support Type** | **Documentation** |
 |------------------|------------------|-------------------|
@@ -26,6 +28,8 @@ Backstage doesn't support SSH auth type for integrations. **Only HTTP connection
 API calls in IDP are used to fetch YAML data, last commit SHA, and detect any new changes. SSH authentication cannot be used for making these API calls; it is only used for cloning repositories. Therefore, the main Git connector for IDP Git integration must support API requests, hence HTTP is the only supported method.
 
 :::
+
+---
 
 ## 2. CI/CD Providers
 
@@ -48,6 +52,7 @@ Harness IDP requires some secrets to be set for plugins and external integration
 
 For information about what's supported for other Harness modules and the Harness Platform overall, refer to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
+---
 ## 3. Harness IDP Plugins
 
 Harness IDP supports a curated collection of plugins to integrate the software catalog with third-party providers and extend functionality:
@@ -57,6 +62,8 @@ Harness IDP supports a curated collection of plugins to integrate the software c
 | **Harness Native Plugins** | Official plugins that integrate seamlessly with other Harness modules (CI/CD, Feature Flags, Chaos Engineering, STO, etc.) | [View Harness Plugins](/docs/category/harness-modules) |
 | **Backstage Community Plugins** | Third-party and community plugins from the Backstage ecosystem | [View Available Plugins](/docs/category/available-plugins) |
 | **Custom Plugins** | Build your own frontend plugins for specific use cases | [Build Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview) |
+
+---
 
 ## 4. IDP Entities for Git Experience
 
@@ -69,6 +76,8 @@ Harness IDP Git Experience allows you to store and version control your IDP conf
 | **Scorecards** | ❌ Not Supported | Scorecards don't currently support Git Experience |
 | **Plugins** | ❌ Not Supported | Plugin configurations don't currently support Git Experience |
 | **Layouts** | ❌ Not Supported | Layout configurations don't currently support Git Experience |
+
+---
 
 ## 5. Harness IDP Workflow Actions
 
@@ -107,6 +116,8 @@ Workflows in IDP use Harness Pipelines as orchestrators. Any secret requirements
 - Harness Secret Manager
 
 :::
+
+---
 
 ## 6. Miscellaneous
 

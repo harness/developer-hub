@@ -94,6 +94,8 @@ Scorecards help you **define, track, and improve Software Quality** across your 
 
 [Learn more about Scorecards →](/docs/internal-developer-portal/scorecards/scorecard)
 
+![](./static/trends-scorecard-2.png)
+
 </TabItem>
 
 <TabItem value="plugins" label="Plugins">
@@ -131,59 +133,23 @@ TechDocs enables a docs-as-code approach where documentation lives alongside you
 
 ---
 
+## Video Overview
+
+Watch this video to learn more about Harness IDP:
+
+<DocVideo src="https://www.youtube.com/embed/sVnI93bCr38?si=MpENxU9qv3me28cv" />
+
+---
+
 ## Get Started
 
 Ready to get started with Harness IDP? Follow these simple steps:
 
-
-```mermaid
-graph LR
-    A[1. Enable IDP] --> B[2. Setup Git]
-    B --> C[3. Populate Catalog]
-    C --> D[4. Create Workflow]
-    D --> E[5. Configure Plugins]
-    E --> F[6. Set Standards]
-    
-    style A fill:#4CAF50
-    style B fill:#4CAF50
-    style C fill:#2196F3
-    style D fill:#2196F3
-    style E fill:#FF9800
-    style F fill:#FF9800
-```
-
-<Tabs>
-<TabItem value="platform-engineers" label="For Platform Engineers" default>
-
-1. **Enable Harness IDP** - [Setup guide](/docs/internal-developer-portal/get-started/setup-git-integration#prerequisites)
-2. **Setup Git Integrations** - [Configure Git](/docs/internal-developer-portal/get-started/setup-git-integration)
-3. **Populate Your Catalog** - [Add services](/docs/internal-developer-portal/get-started/catalog-2o)
-4. **Create Your First Workflow** - [Build workflows](/docs/internal-developer-portal/get-started/workflows-2o)
-5. **Configure Plugins** - [Enable plugins](/docs/internal-developer-portal/plugins/overview)
-6. **Define Quality Standards** - [Create scorecards](/docs/internal-developer-portal/scorecards/scorecard)
-7. **Invite Developers** - [Track adoption](/docs/internal-developer-portal/adoption/how-to-track-adoption)
-
-</TabItem>
-
-<TabItem value="developers" label="For Developers">
-
-1. **Explore the Catalog** - [Browse services](/docs/internal-developer-portal/catalog/software-catalog)
-2. **Create Your First Service** - [Use workflows](/docs/internal-developer-portal/get-started/workflows-2o)
-3. **Register Existing Services** - [Add to catalog](/docs/internal-developer-portal/get-started/catalog-2o)
-4. **Improve Service Quality** - [View scorecards](/docs/internal-developer-portal/scorecards/scorecard)
-5. **Contribute Documentation** - [Enable TechDocs](/docs/internal-developer-portal/techdocs/techdocs)
-
-</TabItem>
-</Tabs>
-
----
-
-## Video Overview
-
-Watch this 4-minute demo to see Harness IDP in action:
-
-<DocVideo src="https://www.youtube.com/embed/r9urqE--aNs?si=GsophnYs-IlLfao2" />
-
-For a personalized demo tailored to your organization's needs, [schedule a live demo](https://www.harness.io/demo/internal-developer-portal) with our team.
+1. [Enable Harness IDP](/docs/internal-developer-portal/get-started/setup-git-integration#prerequisites)
+2. [Setup Git Integrations](/docs/internal-developer-portal/get-started/setup-git-integration)
+3. [Populate Your Catalog](/docs/internal-developer-portal/get-started/catalog-2o)
+4. [Create Your First Workflow](/docs/internal-developer-portal/get-started/workflows-2o)
+5. [Configure Plugins](/docs/internal-developer-portal/plugins/overview)
+6. [Define Quality Scorecards](/docs/internal-developer-portal/scorecards/scorecard)
 
 ---
