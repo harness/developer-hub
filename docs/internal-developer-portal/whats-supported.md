@@ -37,12 +37,12 @@ Harness IDP is **CI/CD agnostic** and integrates with various CI/CD tools:
 
 | **CI/CD Provider** | **Support** | **Notes** |
 |-------------------|-------------|-----------|
-| **Harness CI/CD** | ✅ Fully Supported | Recommended for the best out-of-the-box experience |
-| **GitLab CI/CD** | ✅ Supported | Works seamlessly with IDP workflows |
-| **GitHub Actions** | ✅ Supported | Compatible with IDP orchestration |
-| **CircleCI** | ✅ Supported | Can be integrated with IDP workflows |
-| **Jenkins** | ✅ Supported | Compatible through pipeline triggers |
-| **Other CI/CD Tools** | ✅ Supported | Any CI/CD tool that can be triggered via API/webhook |
+| **Harness CI/CD** | Fully Supported | Recommended for the best out-of-the-box experience |
+| **GitLab CI/CD** | Supported | Works seamlessly with IDP workflows |
+| **GitHub Actions** | Supported | Compatible with IDP orchestration |
+| **CircleCI** | Supported | Can be integrated with IDP workflows |
+| **Jenkins** | Supported | Compatible through pipeline triggers |
+| **Other CI/CD Tools** | Supported | Any CI/CD tool that can be triggered via API/webhook |
 
 :::info Secret Management
 
@@ -71,11 +71,11 @@ Harness IDP Git Experience allows you to store and version control your IDP conf
 
 | **IDP Entity** | **Git Experience Support** | **Notes** |
 |----------------|---------------------------|-----------|
-| **Catalog Entities** | ✅ Supported | Component, API, Resource, and other catalog entities can be stored as YAML files in Git |
-| **Workflows** | ✅ Supported | Workflow definitions can be stored and tracked in Git repositories |
-| **Scorecards** | ❌ Not Supported | Scorecards don't currently support Git Experience |
-| **Plugins** | ❌ Not Supported | Plugin configurations don't currently support Git Experience |
-| **Layouts** | ❌ Not Supported | Layout configurations don't currently support Git Experience |
+| **Catalog Entities** | Supported | Component, API, Resource, and other catalog entities can be stored as YAML files in Git |
+| **Workflows** | Supported | Workflow definitions can be stored and tracked in Git repositories |
+| **Scorecards** | Not Supported | Scorecards don't currently support Git Experience |
+| **Plugins** | Not Supported | Plugin configurations don't currently support Git Experience |
+| **Layouts** | Not Supported | Layout configurations don't currently support Git Experience |
 
 ---
 
@@ -125,11 +125,11 @@ Additional features and capabilities supported in Harness IDP:
 
 | **Feature** | **Support Status** | **Details** |
 |------------|-------------------|-------------|
-| **Custom Plugins** | ✅ Supported | We support only [Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview) |
-| **Scorecard Data Sources** | ✅ Supported | Multiple data sources available for scorecards. [View all data sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources) |
-| **Backstage Plugins** | ✅ Supported | Curated collection of Backstage plugins. [View available plugins](/docs/category/available-plugins) |
-| **Custom Theming and Branding** | ❌ Not Supported | Custom theming is not currently available |
-| **Developer Homepage Customization** | ✅ Supported | You can customize the Homepage for a personalized developer experience |
-| **API Support for Entity Updates** | ✅ Supported | [Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) available to programmatically update catalog entities |
-| **Harness Delegate** | ✅ Supported | Required for accessing private URLs and resources behind firewalls |
-| **Secret Managers** | ✅ Supported | All types of [secret managers](https://developer.harness.io/docs/category/secrets-management) are supported |
+| **Custom Plugins** | Supported | We support only [Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview) |
+| **Scorecard Data Sources** | Supported | Multiple data sources available for scorecards. [View all data sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources) |
+| **Backstage Plugins** | Supported | Curated collection of Backstage plugins. [View available plugins](/docs/category/available-plugins) |
+| **Custom Theming and Branding** | Not Supported | Custom theming is not currently available |
+| **Developer Homepage Customization** | Supported | You can customize the Homepage for a personalized developer experience |
+| **API Support for Entity Updates** | Supported | [Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) available to programmatically update catalog entities |
+| **Harness Delegate** | Supported | Required for accessing private URLs and resources behind firewalls |
+| **Secret Managers** | Supported | All types of [secret managers](https://developer.harness.io/docs/category/secrets-management) are supported |
