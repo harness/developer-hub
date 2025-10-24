@@ -916,5 +916,11 @@
     "description": " Docker Delegate Upgrader is currently behind this feature flag",
     "gaStartDate": "2025-10-29",
     "module": "Platform"
+  },
+  {
+    "flagKey": "CV_USE_SEPARATE_LE_TASK_TYPE_FOR_LOG_CLUSTERING",
+    "description": "FF to use CV_LOG_CLUSTER task type for log clustering instead of LOG_CLUSTER",
+    "gaStartDate": "2025-10-21",
+    "module": "Continuous Delivery"
   }
 ]
