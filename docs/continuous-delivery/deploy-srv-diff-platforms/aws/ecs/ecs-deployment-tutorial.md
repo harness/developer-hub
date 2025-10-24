@@ -1025,15 +1025,22 @@ Deleting Scaling Policies from service demo-2-ecs-svc..
 Deleted Scaling Policy TargetTrackingPolicyCPU from service demo-2-ecs-svc 
 ..
 Deleted Scaling Policies from service demo-2-ecs-svc 
-```
-Post-deployment logs with the scaling policy/target deploy:
-```
+
 Deregistering Scalable Targets from service demo-2-ecs-svc..
 Deregistered Scalable Target with Scalable Dimension ecs:service:DesiredCount from service demo-2-ecs-svc.. 
 Deregistered Scalable Targets from service demo-2-ecs-svc 
 
 Updating Service demo-2-ecs-svc with task definition arn:aws:ecs:us-west-2:xxx:task-definition/demo-2-ecs-svc-task-definition:14 and desired count 2 
 Waiting for Service demo-2-ecs-svc to reach steady state 
+```
+Post-deployment logs with the scaling policy/target deploy:
+```
+Current Deployment Status
+Service demo-2-ecs-svc Overall Status DesiredCount=2 PendingCount=0 RunningCount=2 
+Service Deployments Status
+Deployment Id=ecs-svc/5898046733595302350, Status=PRIMARY, TaskDefinition=arn:aws:ecs:us-west-2:xxx:task-definition/demo-2-ecs-svc-task-definition:14, DesiredCount=2, PendingCount=0, RunningCount=2, FailedTasks=0, RolloutState=COMPLETED
+# AWS Event: 2025-10-23 04:50:21.937 (service demo-2-ecs-svc) (deployment ecs-svc/5898046733595302350) deployment completed.
+# AWS Event: 2025-10-23 04:50:21.938 (service demo-2-ecs-svc) has reached a steady state.
 
 Service demo-2-ecs-svc reached steady state 
 Updated Service demo-2-ecs-svc with Arn arn:aws:ecs:us-west-2:xxx:service/loren-ecs-cluster/demo-2-ecs-svc 
