@@ -54,7 +54,7 @@ Before moving a project, validate the entities to ensure they are not affected b
 
 
 :::note Important note
-- Links in pipelines, webhooks, audit logs, or other entities that reference the older organization may stop working after a project is moved.
+- Links referencing the source organization—such as those in pipelines, webhooks, or audit logs—may stop working after a project is moved. Bookmarks or URLs with account, organization, or project identifiers are not redirected and will become outdated.
 - The project movement will not be allowed if a project with the same identifier already exists in the destination organization.
 
     For example, if Project P is being moved from organization O1 to O2, and organization B already has a project with the same identifier (i.e., Project P), the project movement will not be allowed.
