@@ -922,5 +922,11 @@
     "description": "FF to use CV_LOG_CLUSTER task type for log clustering instead of LOG_CLUSTER",
     "gaStartDate": "2025-10-21",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "PL_USE_IMPERSONATED_DELEGATE_LOGGING_TOKEN",
+    "description": "Enables usage of GSA for writing and reading logs from GCP",
+    "gaStartDate": "2025-10-24",
+    "module": "Platform"
   }
 ]
