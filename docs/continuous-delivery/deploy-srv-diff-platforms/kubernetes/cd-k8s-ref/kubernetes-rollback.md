@@ -124,7 +124,8 @@ The **Skip Resource Versioning** option is disabled automatically.
 
 By default, Kubernetes does not restart pods when only ConfigMap or Secret objects are updated. As a result, declarative rollbacks that involve changes to these objects may not take effect as expected.
 
-Enable the `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK` feature flag to ensure ConfigMap and Secret changes are correctly rolled back. When enabled, Harness will:
+Harness now automatically handles this scenario to ensure ConfigMap and Secret changes are correctly rolled back.
+With this capability, Harness:
 
 * Generate a hash for ConfigMap and Secret objects during deployment.
 * Add the hash to the kubernetes workload/manifest. 
@@ -136,9 +137,6 @@ This feature enhances rollback and roll-forward fidelity by ensuring pod restart
 
 This feature is only applied to blue/green and rolling deployments.
 
-:::
-
-To enable the feature flag, contact [Harness Support](mailto:support@harness.io)
 
 ### Canary and blue green deployments
 
