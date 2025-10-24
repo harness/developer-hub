@@ -22,7 +22,7 @@ export const docsCards: CardSections = [
         title: "Get started with IDP",
         module: MODULES.idp,
         description: "Learn how to configure your IDP and start onboarding.",
-        link: "/docs/internal-developer-portal/get-started/",
+        link: "/docs/internal-developer-portal/get-started/setup-git-integration",
       },
     ],
   },

@@ -1,66 +1,155 @@
 ---
 title: Overview
 description: A home for developers to create, manage, and explore software.
-sidebar_position: 2
-sidebar_label: Harness IDP Overview
+sidebar_position: 1
+sidebar_label: Overview
 redirect_from:
   - /docs/internal-developer-portal/get-started/overview
   - /docs/internal-developer-portal/getting-started/overview
   - /docs/internal-developer-portal/key-concepts
 ---
 
-# Harness IDP Overview
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-Harness IDP enables you to create new software components quickly while adhering to your company’s best practices. It enables you to manage the software you own by presenting a developer-centric view of all relevant information such as service health, deployments, and alerts. It also enables you to explore the internal software ecosystem of the company, discover technical documentation, APIs, and services, all of which enable better collaboration.
+**Harness Internal Developer Portal (IDP) is a unified platform that empowers developers to build, discover, and manage software while platform engineers automate standards and governance.**
 
-Fully integrated into the Harness platform, IDP reduces the maintenance overhead and investment required from platform engineering teams and is enterprise ready.
+Harness IDP enables you to:
+
+- *Create* new software components quickly while adhering to your company's best practices.
+- *Manage* the software you own with a developer-centric view of service health, deployments, and alerts.
+- *Explore* your organization's entire software ecosystem to discover technical documentation, APIs, and services.
+
+Fully integrated with the Harness platform, Harness IDP boosts **developer productivity** and satisfaction while reducing **maintenance overhead** for platform engineering teams, enabling your organization to ship faster with higher quality.
+
+---
+
+## What is Harness IDP?
+
+An Internal Developer Portal (IDP) is a centralized platform that brings together all the tools, services, and knowledge developers need to build and ship software efficiently. It serves as the **single source of truth** for your organization's software ecosystem.
+
+To read more about the Harness IDP core product pillars, go to [Product Pillars](/docs/internal-developer-portal/overview.md#product-pillars). 
+
+Here's a quick overview of **how Harness IDP works**:
+![](./static/harnessidpoverview.png)
+
+Here's how Harness IDP boosts developer productivity and reduce overhead toil for platform engineers:
+
+- **For Platform Engineers:** Automate developer workflows with built-in standards and guardrails. Build *golden paths* that free your team from repetitive tasks, enforce best practices across all services, and scale your platform; all while maintaining control and governance.
+- **For Developers:** Get productive faster with *self-service access* to everything you need. Create new services in minutes using pre-approved templates, discover any API or documentation instantly, and access all your tools from one unified interface; no more context switching or waiting on tickets.
+---
+
+## Product Pillars
+
+Harness IDP is built on some core pillars that work together to deliver a complete and productive developer experience. Here's how each pillar helps you:
+
+<Tabs>
+<TabItem value="catalog" label="Software Catalog" default>
+
+#### Your Single Source of Truth for All Software Assets
+
+The Software Catalog provides a **centralized registry** of all your services, APIs, libraries, and infrastructure components. Track ownership, dependencies, and metadata in **one searchable location**.
+
+**Key Capabilities:**
+- Discover any service or API instantly with powerful Catalog search. 
+- Visualize service dependencies and relationships, with all the context in one place. 
+- Track service ownership and contact information. 
+- Auto-import and populate Catalog from Git and Harness CD. 
+
+[Learn more about Software Catalog →](/docs/internal-developer-portal/catalog/software-catalog)
+
+![](./static/software-catalog-overview.png)
+
+</TabItem>
+
+<TabItem value="workflows" label="Workflows">
+
+#### Automate Service Onboarding and Day-2 operations
+
+Self-Service Workflows eliminate repetitive tasks by providing developers with **golden path templates** for common operations. Platform engineers build the workflows once, and developers use them repeatedly.
+
+**Key Capabilities:**
+- Create new services from pre-approved templates. 
+- Provision infrastructure and cloud resources automatically. 
+- Configure CI/CD pipelines without manual setup. 
+- Execute day-to-day operations with a simple form. 
+
+[Learn more about Workflows →](/docs/internal-developer-portal/flows/overview)
+
+![](./static/workflows-overview.png)
+
+</TabItem>
+
+<TabItem value="scorecards" label="Scorecards">
+
+#### Measure and enforce Software Quality standards
+
+Scorecards help you **define, track, and improve Software Quality** across your organization. Set standards for security, reliability, documentation, and DevOps maturity, then measure compliance automatically. Get **automated visibility** into which services meet your standards and which need improvement.
+
+**Key Capabilities:**
+- Define quality checks and maturity standards. 
+- Measure compliance across all services. 
+- Track improvement over time with trends. 
+- Enforce production readiness gates. 
+
+[Learn more about Scorecards →](/docs/internal-developer-portal/scorecards/scorecard)
+
+![](./static/trends-scorecard-2.png)
+
+</TabItem>
+
+<TabItem value="plugins" label="Plugins">
+
+#### Enrich your Software Catalog with contextual metadata
+
+Plugins display additional **metadata** about software components and entities **directly in the catalog**, showing information like CI/CD pipelines, alerts, incidents, and more; all without leaving the portal.
+
+**Key Capabilities:**
+- View CI/CD pipeline status, deployment history, and build information about software components directly in the Catalog.
+- Monitor alerts, incidents, and service health in real-time.
+- Upload and use custom plugins tailored to your internal tools.
+- Continuously expanding plugin library with new integrations.
+
+[Learn more about Plugins →](/docs/internal-developer-portal/plugins/overview)
+
+</TabItem>
+
+<TabItem value="techdocs" label="TechDocs">
+
+#### Documentation that lives with your Code
+
+TechDocs enables a docs-as-code approach where documentation lives alongside your source code in Git. Write docs in **Markdown**, commit them alongside your source code, and publish automatically. Your team can discover and access documentation instantly through the **Docs tab** in the Catalog, no more outdated wikis or scattered knowledge.
+
+**Key Capabilities:**
+- Write documentation in Markdown alongside your code.
+- Support for MkDocs plugins including Material theme, diagrams, and code documentation.
+- Search across all documentation.
+- Version docs alongside code for consistency.
+
+[Learn more about TechDocs →](/docs/internal-developer-portal/techdocs/enable-docs)
+
+</TabItem>
+</Tabs>
+
+---
+
+## Video Overview
+
+Watch this video to learn more about Harness IDP:
 
 <DocVideo src="https://www.youtube.com/embed/sVnI93bCr38?si=MpENxU9qv3me28cv" />
 
-## Demo
+---
 
-Here is a short 4-minute demo of the Harness Internal Developer Portal (IDP) module and all its features.
+## Get Started
 
-<DocVideo src="https://www.youtube.com/embed/r9urqE--aNs?si=GsophnYs-IlLfao2" />
+Ready to get started with Harness IDP? Follow these simple steps:
 
-For a live and in-depth demo, please [reach out](https://www.harness.io/demo/internal-developer-portal?utm_source=harness_io&utm_medium=cta&utm_campaign=idp&utm_content=hero) to us.
+1. [Enable Harness IDP](/docs/internal-developer-portal/get-started/setup-git-integration#prerequisites)
+2. [Setup Git Integrations](/docs/internal-developer-portal/get-started/setup-git-integration)
+3. [Populate Your Catalog](/docs/internal-developer-portal/get-started/catalog-2o)
+4. [Create Your First Workflow](/docs/internal-developer-portal/get-started/workflows-2o)
+5. [Configure Plugins](/docs/internal-developer-portal/plugins/overview)
+6. [Define Quality Scorecards](/docs/internal-developer-portal/scorecards/scorecard)
 
-# Key features
-
-## Workflows
-
-![](./static/workflowsv2.png)
-
-![](static/new%20app%20onboarding%20with%20idp%20stage.png)
-
-As a platform engineer, you can orchestrate the onboarding of services by creating pipelines in the Harness Pipeline Studio. On the other hand, as a developer, you can create a new backend service, API, or website by submitting a few details as configured by your platform engineering. Developers focus on what they do best, which is writing features, while Platform engineers focus on creating software templates, automating processes, and enforcing standards.
-
-## Software catalog
-
-![](static/catalog-screenshot.png)
-
-The software catalog is a centralized registry for all your software (services, websites, libraries, data pipelines, and so on), and it helps you track their ownership, metadata, and dependencies. The catalog is built from metadata YAML files, each of which is stored with its code and owned by a team.
-
-## Scorecards
-
-![](static/scorecards%20details.png)
-
-Scorecards play a pivotal role in ensuring software components are developed and utilized while adhering to organizational and industry standards. They provide a quantifiable measure of software maturity and adherence to best practices, thereby aiding developers in enhancing quality and assisting teams in making informed decisions regarding software adoption.
-
-## Extensibility through plugins
-
-![](static/plugins-screenshot.png)
-
-Harness IDP includes curated plugins. You can choose the plugins you need based on the tools that you use. The plugins enable you to customize a software component on the basis of its type, and to present all information relevant to developers in a single view. Harness IDP’s plugin library is based on the hundreds of open-source Backstage plugins available in the marketplace.
-
-## Technical documentation
-
-![](static/docs-screenshot.png)
-
-The ability to use the docs-like-code approach enables developers to deliver documentation alongside their software component. As a developer, you write your documentation in Markdown and commit it with your code. Other developers can then find your documentation with little effort. The docs-like-code approach ensures that documentation does not get outdated, and the Docs tab in the software catalog makes it discoverable and accessible by a single click.
-
-## Search
-
-![](static/search-screenshot.png)
-
-As a developer, you can use the search functionality in Harness IDP to explore your entire software ecosystem and find the services, APIs, libraries, metadata, and documentation you need. When you know who owns the resource you need, you no longer have to rely on rumor-driven development.
+---

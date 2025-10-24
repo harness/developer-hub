@@ -1,354 +1,172 @@
 ---
-title: Configure IDP 
-description: After enabling the Internal Developer Portal module, follow these steps to set it up in your account.
-sidebar_position: 2
+title: Configure Git Integrations
+description: Configure Git connector integrations to begin using Harness IDP. 
+sidebar_position: 1
 redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
   - /docs/internal-developer-portal/get-started/onboarding-guide
+  - /docs/internal-developer-portal/get-started/enabling-module
+  - /docs/internal-developer-portal/get-started/get-started
+  - /docs/internal-developer-portal/getting-started/enabling-module
 ---
-
-## Introduction
-This document outlines the steps a Harness Account Admin can follow to set up the IDP module, including configuring Git integration.. Presently, the module needs to be enabled on request. [Read more](./enabling-module.md).
-
-## Pre-requisites
-
-- IDP must be provisioned for the given account.
-
-- Only users with the **Harness Account Admin** role or assigned **IDP Admin** role (with permissions shown below) can configure IDP. Here's the detailed [documentation on how to assign roles](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#assign-roles-and-resource-groups) 
-
-![](static/assign-role.png)
-
-![](static/idp-roles.png)
-
-## Getting Started
-
-1. You land on the IDP module by navigating from the sidebar after logging into your Harness account. We strongly recommend users to follow the onboarding guide selecting the **Get Started**, for a seamless onboarding resulting in a catalog with software components.
-
-![](static/option1.png)
-![](static/option2.png)
-
-2. Now that you're on the onboarding wizard, let's get started with setting up Git connectors to onboard the software components.
-
-## Connector Setup
-
-The software components in IDP are defined using YAML files, which are typically stored in your git repositories hence configuring a connector for these git providers is essential to fetch and manage these YAML files.
-
-The following set of git providers are supported: 
-
-  - [Harness Code Repository](https://www.harness.io/products/code-repository)
-  - GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
-  - [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
-  - [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
-  - [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
-
-:::warning
-
-#### Limitations
-
-- Only HTTP mode is supported for all the git providers. SSH connection type is not supported.
-
-    In IDP, API calls to git providers are used to fetch YAML data, retrieve the last commit SHA, and detect new changes. Since SSH authentication is only suitable for cloning repositories and cannot be used for these API calls, the primary git connector for IDP's git integration must support API requests, making HTTP the only supported option.
-
-:::
-
-:::info
-
-- **Multiple Connectors with different hostname can be used for a single Git Provider at once**.
-- While setting up connector, both Account & Repo type for URL is supported.
-- Connection through Harness platform and delegate is supported.
-- You can provide the repository URL to verify repository read permission with the given host and credentials before saving the Git integration.
-
-:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This guide will walk you through the first steps of onboarding to Harness IDP, including enabling the module, configuring Git connectors, populating your catalog, and importing Harness entities.
 
-<Tabs queryString="Git-Provider">
-<TabItem value="harness-code-repo-enabled" label="Harness Code Repository Enabled">
+---
 
-### Harness Code Repository \{#harness-code-repository}
+## Prerequisites
 
-1. In case you are already using Harness Code Repository, a default connector with only **Read Permission** would be available for the code repo set-up under the same account as that of IDP. Note this connector is uneditable and managed by Harness.
+### 1. Enable the Harness IDP Module
 
-![](static/new-git-integration-hce-enabled.png)
+<Tabs groupId="idp-version">
+<TabItem value="idp-2" label="IDP 2.0" default>
 
-2. You can as well create a new connector for other git-providers under the **+New Integration**.  If you already have a connector available which you want to use in IDP to save your `catalog-info.yaml`, then select the connector under **Select Git Connector**, use a URL to validate and save the connector. If you don't have your connector configured already follow the steps mentioned below. 
+Ensure your team is ready for IDP 2.0 onboarding by reviewing the [breaking changes](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) list and understanding the key [essentials of upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md).
 
-![](static/set-up-connector.png)
+> ⚠️ Rollback is not straightforward, so it's critical to thoroughly understand the scope and impact of these changes.
 
-</TabItem>
-<TabItem value="other-git-provider" label="Harness Code Repository Not Enabled">
+Once you're confident about upgrading:
 
-1. Select the **Git Provider** you want to configure from the available options.
+* **Submit a Support Ticket**: 
+  Raise a ticket with [Harness Support](https://support.harness.io) to enable the `IDP_2_0` feature flag on your account.
 
-![](static/select-git-provider.png)
+* **Join an Upgrade Call (Early Access Customers)**: 
+  Our team will schedule a call with you to walk through the upgrade process and enable the feature flag.
 
-2. If you already have a connector available which you want to use in IDP to save your `catalog-info.yaml`, then select the connector under **Select Git Connector**, use a URL to validate and save the connector. If you don't have your connector configured already follow the steps mentioned below. 
-
-![](static/set-up-connector.png)
-
-</TabItem>
-</Tabs>
-
-
-<Tabs queryString="Connector">
-<TabItem value="harness-code-repo" label="Harness Code Repository">
-
-- **We do not allow the creation of new connectors for Harness Code Repository.**
+* **Enable in a Test Environment First (Recommended)**: 
+  If you have a **test or staging environment**, enable IDP 2.0 there first. This allows your team to safely explore the new experience before enabling it in production.
 
 </TabItem>
-<TabItem value="azure-connector" label="Azure Repository">
+<TabItem value="idp-1" label="IDP 1.0">
 
-### Azure Repository \{#azure-repository}
+Harness IDP is currently available to a limited set of customers. To get started, send an email to idp-interest@harness.io for a demo and a Harness specialist will get you going.
 
-- Select **Azure Repo** icon followed by **Create or Select a Connector**.
-- From the dropdown under **Select Azure Repo Connector** and either select an already present connector or create **+New Connector**.
-- [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can also add multiple organizations as different connectors and use them together.
-- After the connection test runs, select Finish to save the connector.
-
-</TabItem>
-<TabItem value="bitbucket-connector" label="Bitbucket">
-
-### Bitbucket \{#bitbucket}
-
-- Select **Bitbucket** icon followed by **Create or Select a Connector**.
-- From the dropdown under **Select Bitbucket Connector** and either select an already present connector or create **+New Connector**.
-- Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
-
-:::info
-
-Same secret can't be configured for both **Password & Personal Access token** as backstage makes use of API token to fetch data.Create a secret with token and configure in the Personal Access token field. [Reference for creating token](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
-
-![](./static/bitbucket-connector.png)
-
-For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. For e.g. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
-
-:::
-
-- After the connection test runs, select **Finish** to save the connector.
-
-</TabItem>
-<TabItem value="github-connector" label="GitHub">
-
-### GitHub \{#github}
-
-- Select **GitHub** icon followed by **Create or Select a Connector**.
-- From the dropdown under **Select GitHub Connector** either select an already present connector or create **+New Connector**.
-- Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). You can configure connectors for both `github.com` and `GitHub Enterprise` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
-- After the connection test runs, select **Finish** to save the connector.
-
-:::caution Important
-Please note that using the **Client ID** instead of the **App ID** is not supported when configuring Git integrations with the **GitHub App connector**.
-
-Backstage only supports GitHub App connectors that are configured using the **App ID**.
-:::
-
-:::warning
-While using GitHub App, you need a **private key for your GitHub app** to configure your Harness GitHub connector, follow the instructions mentioned [here](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/#generate-a-private-key) **to convert the key file to the necessary format for the Harness GitHub connector**
-:::
-
-More instructions on [using GitHub app in GitHub connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).
-
-</TabItem>
-<TabItem value="gitlab-connector" label="GitLab">
-
-### GitLab \{#gitlab}
-
-- Select **GitLab** icon followed by **Create or Select a Connector**.
-- From the dropdown under **Select GitLab Connector** either select an already present connector or create **+New Connector**.
-- Configure the [GitLab connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference). You can configure connectors for both `gitlab.com` and `GitLab on-prem` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
-- After the connection test runs, select **Finish** to save the connector.
+Once Harness IDP is enabled in your account, an account administrator can onboard your services and configure the required plugins.
 
 </TabItem>
 </Tabs>
 
-:::info
+### 2. Provision the IDP Admin Role 
 
-The scope is tied to URL format `https://gitprovider.com/org-name`, so all the Git Providers must provide the URL until at least the org name. Further, it can be scoped down to the repository or project level as well.
+- **Harness IDP** must be provisioned for the given account.
+- Only users with the **Harness Account Admin** role or assigned **IDP Admin** role can configure IDP. Go to [Assign Roles and Resource Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#assign-roles-and-resource-groups) to assign roles.
 
-:::
+![](./static/rbac-config.png)
 
-- Once the connectors are created, you can see all the git providers configured for IDP. 
+---
 
-![](static/connector-final-setup.png)
+## Get Started with Harness IDP
+You land on the IDP module by navigating from the sidebar after logging into your Harness account. We strongly recommend users to follow the onboarding guide by selecting **Get Started**, for a seamless onboarding resulting in a catalog with software components.
 
-:::warning
+<DocVideo src="https://app.tango.us/app/embed/e910ff06-1277-4812-aed3-0f5c7f70bc8d" title="Get Started with IDP" />
 
-Make sure to enable API access while configuring the connector for the IDP catalog setup.
+Now that you're on the onboarding wizard, let's get started with setting up Git connectors to onboard the software components.
 
-![](./static/enable-api-access.png)
+### Step 1: Setup Git Connectors
 
-::::
+The software components in IDP are defined using YAML files, which are typically stored in your Git repositories. Configuring a connector for these Git providers is essential to fetch and manage these YAML files.
 
-## Onboard Services
+The following Git providers are supported:
 
-Users will now have option to onboard existing Harness services into IDP, or start with a sample service.  
+- [Harness Code Repository](https://www.harness.io/products/code-repository)
+- GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
+- [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
+- [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
 
-![](static/select-onboarding-path.png)
+> **Note:** Multiple Connectors with different hostnames can be used for a single Git Provider at once. While setting up the connector, both Account & Repo type URLs are supported. Connection through Harness platform and delegate is supported.
 
-<Tabs queryString="Import Harness Services">
-<TabItem value="import-harness-services" label="Import Harness Services">
+<Tabs>
+<TabItem value="Interactive Guide">
 
-### Import Harness Services
+<DocVideo src="https://app.tango.us/app/embed/76371411-0ce5-49f6-82f8-7aa90098d559" title="Integrate GitHub with Harness Platform" />
 
-- User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e Harness organization is a domain, Harness project is a system and Harness service is a component in the IDP world. This list includes services at all scopes.
+</TabItem>
+<TabItem value="Step-by-Step">
 
-- User can choose all the services / individual services / no services
+#### Setting up Git Connectors
 
-| Onboarding Option | Description                                               |
-|-------------------|-----------------------------------------------------------|
-| All               | Import all Harness services into IDP.                     |
-| Individual        | Select specific Harness services to import.               |
-| No                | Start with a sample entity for testing and initial setup. |
+1. Select **Harness Code Repository** if enabled, or choose your preferred **Git Provider** from the available options.
+2. From the dropdown under **Select Connector**, either select an already present connector or create **+New Connector**.
+3. Configure the Connector as per the [documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo).
+4. Select **Apply Selected** to use the connector.
+5. After the connection test runs, select **Finish** to save the connector.
 
-![](static/select-harness-services.png)
+</TabItem>
+</Tabs>
 
-- User gets a view on how the entity definition looks like
+---
 
-![](static/preview-catalog.png)
+### Step 2: Populate Your Catalog
 
-- Now add the details on where the entities will be created in git:
+After setting up the connector, you'll be presented with two onboarding paths to populate your catalog with entities.
 
-<Tabs queryString="set-up-path">
-<TabItem value="path-to-save-yaml" label="Harness Code Repository YAML Path">
+<Tabs>
+<TabItem value="Interactive Guide">
 
+<DocVideo src="https://app.tango.us/app/embed/69e37f8a-d4c2-477d-9da8-1d2e89ad8082" title="Populate your Catalog" />
+
+</TabItem>
+<TabItem value="Step-by-Step">
+
+#### Start with Sample Service
+
+You will be shown a demo service metadata in the form of the `catalog-info.yaml`. This will be added to the Git provider with the configuration options below.
+
+**For Harness Code Repository:**
 - **Connector** - The connector is selected by default.
-
 - **Directory Path** - Give a path for the directory in which you want to write the `catalog-info.yaml` files.
 
-![](static/select-path.png)
-
-- **Repo Path** - Go to the Code Repository and under files select **Clone** and copy the repository path. 
-
-
-![](static/copy-repo-path.png)
-
-Validate the permission and the `catalog-info.yaml` files would be created in your directory in Code repository. 
-
-![](static/repo-path-code-repo.png)
-
-</TabItem>
-<TabItem value="other-git-provider-yaml-path" label="Other Git Providers YAML Path">
-
-
-- **Connector** - Select the connector of the git provider you want to use. 
-
-- **Repo** - Enter the full path to your repo. Example
-
-```
-https://github.com/user-name/onboarding-test.git
-https://github.com/user-name/onboarding-test
-```
-
-- The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
-
-**In connector** - The account path is `https://github.com/user-name`. So the repo URL in IDP onboarding flow should be `https://github.com/{USER_NAME}/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
-
-- Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
-
-- Branch - Can be new branch / some existing branch. In both the cases, the commit will be done on top of the base HEAD branch.
-
-- Path - Defaults to harness-services. Can be changed as well.
-
-![](static/write-catalog.png)
+**For Other Git Providers:**
+- **Connector** - Select the connector of the Git provider you want to use.
+- **Repo** - Enter the full path to your repo. Example: `https://github.com/user-name/onboarding-test.git`
+  - The provided repo URL should belong to the same organization/project for which the connector has been setup.
+- **Path** - Defaults to `harness-services`. Can be changed as well.
 
 </TabItem>
 </Tabs>
 
+---
 
-</TabItem>
-<TabItem value="sample-service" label="Start with Sample Service">
+### Step 3: Import Harness Entities
 
-### Start with Sample Service
+Import existing Harness services into your IDP catalog to quickly populate it with your current infrastructure.
 
-- User will be shown a demo service metadata in the form of the `catalog-info.yaml`.
+#### Import Harness Services
 
-![](static/preview-catalog.png)
+This option imports all the services from your Harness account into IDP:
 
-- Now this will be added to the git provider: 
+- Imports all services from all projects in your account
+- Services are imported as **Component** entities in IDP
+- Metadata is derived from the service configuration in Harness
+- Entities are created with metadata including Name, Description, Owner, Type, and Lifecycle stage
+- Once imported, you can view and manage these entities in the IDP catalog
 
-<Tabs queryString="set-up-path">
-<TabItem value="path-to-save-yaml" label="Harness Code Repository YAML Path">
+![](./content/setup-git-integration/static/select-path.png)
 
-- **Connector** - The connector is selected by default.
+**For Harness Code Repository:**
+- **Repo Path** - Go to the Code Repository and under files select **Clone** and copy the repository path.
 
-- **Directory Path** - Give a path for the directory in which you want to write the `catalog-info.yaml` files.
+**For Other Git Providers:**
+- **Connector** - Select the connector of the Git provider you want to use.
+- **Repo** - Enter the full path to your repo. Example: `https://github.com/user-name/onboarding-test.git`
+  - The provided repo URL should belong to the same organization/project for which the connector has been setup.
+- **Path** - Defaults to `harness-services`. Can be changed as well.
 
-![](static/select-path.png)
+---
 
-- **Repo Path** - Go to the Code Repository and under files select **Clone** and copy the repository path. 
+### Step 4: Complete the Setup
 
-:::info
+Once you've configured your Git connector and chosen your onboarding path, select **Complete Setup** to finish the initial configuration. Your catalog will now be populated with the entities you've imported or created.
 
-Once you copy the repository path replace the `git.eu.harness.io` with `accounts.eu.harness.io`.
+---
 
-![](static/replace-vanity-url.png)
+## Next Steps
 
-:::
+Now that you've completed the initial setup:
 
-![](static/copy-repo-path.png)
-
-Validate the permission and the catalog-info.yaml files would be created in your directory in Code repository. 
-
-![](static/repo-path-code-repo.png)
-
-</TabItem>
-<TabItem value="other-git-provider-yaml-path" label="Other Git Providers YAML Path">
-
-
-- **Connector** - Select the connector of the git provider you want to use. 
-
-- **Repo** - Enter the full path to your repo. Example
-
-```
-https://github.com/user-name/onboarding-test.git
-https://github.com/user-name/onboarding-test
-```
-
-- The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
-
-**In connector** - The account path is `https://github.com/user-name`. So the repo URL in IDP onboarding flow should be `https://github.com/{USER_NAME}/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
-
-- Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
-
-- Branch - Can be new branch / some existing branch. In both the cases, the commit will be done on top of the base HEAD branch.
-
-- Path - Defaults to harness-services. Can be changed as well.
-
-![](static/write-catalog.png)
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
-
-## Create and Register Entities
-
-- Once the required details are entered and submitted for importing, we will push the generated entity YAML files to the repo and path provided. You will be seeing two commits - one during the sync process and another asynchronously, which will consist of remaining entities will be pushed in an asynchronous manner. The time frame for asynchronous operation(second commit) will depend on the repo size is and number of revisions the provided repo has.
-
-- In the background, the catalog are also imported into IDP along with their associated configs.
-
-![](static/onboarding-completed.png)
-
-## Catalog
-
-- User can navigate to the IDP homepage to get started. Catalog will start showing up software components once the asynchronous operation is completed.
-
-- Since during the onboarding flow Harness will not be able to discover the complete metadata of the entity, the **owner** field will be set to **Unknown**. As part of the IDP provisioning, Harness users and groups are imported to IDP. With this in place, customers can start editing the catalog info YAML definition to update the owner for each of the entity.
-
-![](static/catalog.png)
-
-- Post onboarding, users can import any number of entities into Harness IDP using the [register component flow](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component). This flow expects you to provide the complete URL where the entity definition is stored.
-
-## Onboard Services Post Getting Started
-
-- You can add new services to the IDP after the initial onboarding flow. Simply navigate to **Admin**, select **Get Started**, and you’ll find the Onboard Service Wizard available for use.
-
-![](./static/get-started-admin.png)
-
-**Recommendations**
-
-If you're using GitHub connector, you can go with App based authentication which provides higher number of API requests in an hour window for your catalog to be in sync with the latest updates without resulting in rate limit error. Read more about [GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/setting-up-a-github-app/rate-limits-for-github-apps)
-
+- [Create and manage catalog entities](/docs/internal-developer-portal/get-started/catalog-2o.md)
+- [Set up workflows for self-service](/docs/internal-developer-portal/get-started/workflows-2o.md)
+- [Enable plugins to extend IDP functionality](/docs/internal-developer-portal/plugins/enable-a-new-plugin)
