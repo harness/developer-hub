@@ -6,8 +6,6 @@ sidebar_position: 1
 description: Learn about using Harness OpenFeature providers for feature management.
 ---
 
-## Overview
-
 [OpenFeature](https://openfeature.dev/docs/reference/intro) offers a standardized, vendor-agnostic SDK for feature flagging that can integrate with a variety of third-party providers. Whether you're using an open-source or commercial solution, self-hosted or cloud-hosted, OpenFeature gives developers a unified API for consistent feature flag evaluation. 
 
 OpenFeature SDKs provide flexible abstractions that make it easy to integrate feature flags into any application. Within your application, the feature flagging client uses the OpenFeature SDK to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> through the <Tooltip id="fme.openfeature.evaluation-api">Evaluation API</Tooltip>. 

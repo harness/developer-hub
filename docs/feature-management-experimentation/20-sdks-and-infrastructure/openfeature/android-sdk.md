@@ -5,9 +5,7 @@ sidebar_position: 1
 description: Integrate OpenFeature with Harness FME in your Android applications to evaluate feature flags, manage contexts, and track events using a standardized SDK.
 ---
 
-## Overview
-
-The <Tooltip id="fme.openfeature.provider">Android OpenFeature Provider</Tooltip> allows your Android applications to integrate with Harness FME using a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME Android SDK.
+Integrate your Android applications with Harness FME using the <Tooltip id="fme.openfeature.provider">Android OpenFeature Provider</Tooltip>, a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME Android SDK.
 
 This page walks you through installing, configuring, and using the Android OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your Android applications.
 
@@ -47,7 +45,7 @@ dependencies {
 
 ## Initialize the provider
 
-The FME OpenFeature provider requires an Android application `Context` (for SDK initialization) and your Harness FME SDK Key. 
+The Harness FME OpenFeature provider requires an Android application `Context` (for SDK initialization) and your Harness FME SDK Key. 
 
 ```kotlin
 import dev.openfeature.kotlin.sdk.OpenFeatureAPI
@@ -74,7 +72,7 @@ val showNewFeature = client.getBooleanValue("new-feature", false)
 
 ## Construct an evaluation context
 
-To evaluate flags, you'll need to provide an <Tooltip id="fme.openfeature.evaluation-context">evaluation context</Tooltip> with a <Tooltip id="fme.openfeature.targeting-key">targeting key</Tooltip>. The evaluation context passes targeting information such as user IDs, email addresses, or plan types for flag targeting.
+Provide an <Tooltip id="fme.openfeature.evaluation-context">evaluation context</Tooltip> with a <Tooltip id="fme.openfeature.targeting-key">targeting key</Tooltip> to evaluate flags. The evaluation context passes targeting information such as user IDs, email addresses, or plan types for flag targeting.
 
 For example:
 
@@ -108,7 +106,16 @@ OpenFeatureAPI.setEvaluationContext(newContext)
 
 ## Observe provider events
 
-The FME OpenFeature provider emits <Tooltip id="fme.openfeature.events">events</Tooltip> when provider state changes (for example, when flags update, configuration changes, or errors) occur. You can observe these events to react dynamically in your application.
+The Harness FME OpenFeature provider emits <Tooltip id="fme.openfeature.events">events</Tooltip> when provider state changes (for example, when flags update, configuration changes, or errors) occur. You can observe these events to update your application's behavior in real time.
+
+You can enable your application to:
+
+- Refresh feature-dependent UI when flags change
+- Gracefully handle degraded states (i.e., when the provider becomes stale)
+- Log or alert on configuration or network issues
+- Control initialization flows based on provider readiness
+
+For example: 
 
 ```kotlin
 import dev.openfeature.kotlin.sdk.events.OpenFeatureProviderEvents
@@ -141,7 +148,17 @@ lifecycleScope.launch {
 
 ## Track events
 
-The FME OpenFeature provider supports tracking events such as user actions or conversions. To enable event tracking, set a [`TrafficType`](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) in the evaluation context.
+The Harness FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.openfeature.events">events</Tooltip> directly from your Android application. 
+
+To enable event tracking, your evaluation context must include the following:
+
+- A non-empty `targetingKey`
+- A [`TrafficType`](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) (for example, `"user"` or `"account"`)
+- A non-blank event name
+
+Optionally, you can include:
+
+Optionally, you can include a numeric value (defaults to 0) and additional event properties (prefers primitives such as string, number, boolean, or null). For more information, see [Sending Events](/docs/feature-management-experimentation/api/events/#event-record-fields).
 
 ```kotlin
 // Set context with trafficType
@@ -174,4 +191,4 @@ client.track(
 )
 ```
 
-For more information, see the [Harness FME Android OpenFeature Provider GitHub repository](https://github.com/splitio/split-openfeature-provider-android/).
+For more information, go to the [Harness FME Android OpenFeature Provider GitHub repository](https://github.com/splitio/split-openfeature-provider-android/).

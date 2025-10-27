@@ -21,6 +21,7 @@
         "provider": "An OpenFeature Provider wraps the Harness FME SDK, acting as a bridge between the OpenFeature SDK and the FME SDK. It translates OpenFeature function calls into operations handled by the FME SDK, which communicates with Harness services to evaluate flags and retrieve configuration updates.",
         "hook": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
         "events": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values."      
+      },
       "warehouse-native": {
         "metric": "A quantifiable measure used to track and assess the performance of a specific aspect of an experiment. In Warehouse Native, metrics are defined in Harness FME.",
         "experiment": "A controlled test to evaluate the impact of different variations on user behavior or system performance. In Warehouse Native, experiments are defined in Harness FME.",

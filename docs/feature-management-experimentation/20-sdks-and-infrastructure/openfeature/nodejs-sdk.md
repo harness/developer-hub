@@ -5,9 +5,7 @@ sidebar_position: 4
 description: Integrate OpenFeature with Harness FME in your Node.js applications to evaluate feature flags, manage contexts, and track events using a standardized SDK.
 ---
 
-## Overview
-
-The <Tooltip id="fme.openfeature.provider">Node.js OpenFeature Provider</Tooltip> allows your Node.js applications to integrate with Harness FME using a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME Node.js SDK.
+Integrate your Node.js applications with Harness FME using the <Tooltip id="fme.openfeature.provider">Node.js OpenFeature Provider</Tooltip>, a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME Node.js SDK.
 
 This page walks you through installing, configuring, and using the Node.js OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your Node.js applications.
 
@@ -29,7 +27,7 @@ Before you begin, ensure you have the following:
 
 ## Install the provider and dependencies
 
-Install the FME OpenFeature provider and required peer dependencies:
+Install the Harness FME OpenFeature provider and required peer dependencies:
 
 ```bash
 npm install @splitsoftware/openfeature-js-split-provider
@@ -59,7 +57,7 @@ OpenFeature.setProvider(provider);
 ```
 
 </TabItem>
-<TabItem value="factory" label="Split Factory">
+<TabItem value="factory" label="Split Factory (Recommended)">
 
 If you are using a Split Factory: 
 
@@ -75,27 +73,34 @@ OpenFeature.setProvider(provider);
 ```
 
 </TabItem>
-<TabItem value="client" label="Split Client">
+<TabItem value="client" label="Split Client (Legacy)">
 
-If you are using a Split client:
+If you are using a Split client directly (not recommended for new implementations):
 
 ```javascript
 const OpenFeature = require('@openfeature/server-sdk').OpenFeature;
 const SplitFactory = require('@splitsoftware/splitio').SplitFactory;
 const OpenFeatureSplitProvider = require('@splitsoftware/openfeature-js-split-provider').OpenFeatureSplitProvider;
 
-const authorizationKey = '<YOUR_AUTH_KEY>'
-const splitClient = SplitFactory({core: {authorizationKey}}).client();
-const provider = new OpenFeatureSplitProvider({splitClient});
+const splitFactory = SplitFactory({
+  core: {
+    authorizationKey: '<YOUR_SERVER_SIDE_SDK_KEY>'
+  }
+});
+const provider = new OpenFeatureSplitProvider(splitFactory);
 OpenFeature.setProvider(provider);
 ```
+
+:::info
+The recommended approach is to pass the `splitFactory` instance instead of a splitClient. This ensures consistency with the JS Web Provider and allows future access to additional `splitFactory` features beyond the client itself.
+:::
 
 </TabItem>
 </Tabs>
 
 ## Construct an evaluation context
 
-To evaluate flags, you'll need to provide an <Tooltip id="fme.openfeature.evaluation-context">evaluation context</Tooltip> with a <Tooltip id="fme.openfeature.targeting-key">targeting key</Tooltip>. The evaluation context passes targeting information such as user IDs, email addresses, or plan types for flag targeting.
+Provide an <Tooltip id="fme.openfeature.evaluation-context">evaluation context</Tooltip> with a <Tooltip id="fme.openfeature.targeting-key">targeting key</Tooltip> to evaluate flags. The evaluation context passes targeting information such as user IDs, email addresses, or plan types for flag targeting.
 
 For example:
 
@@ -141,7 +146,7 @@ const config = booleanTreatment.flagMetadata.config
 
 ## Track events
 
-The FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.openfeature.events">events</Tooltip> directly from your Node.js application.
+The Harness FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.openfeature.events">events</Tooltip> directly from your Node.js application.
 
 To enable event tracking, your evaluation context must include the following:
 
@@ -149,7 +154,7 @@ To enable event tracking, your evaluation context must include the following:
 - A [`trafficType`](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) (for example, `"user"` or `"account"`)
 - A non-blank event name
 
-Optionally, you can include a numeric value (defaults to 0) and additional event properties (prefers primitives such as string, number, boolean, or null). For more information, see [Sending Events](https://developer.harness.io/docs/feature-management-experimentation/api/events/#event-record-fields).
+Optionally, you can include a numeric value (defaults to 0) and additional event properties (prefers primitives such as string, number, boolean, or null). For more information, see [Sending Events](/docs/feature-management-experimentation/api/events/#event-record-fields).
 
 For example:
 
@@ -160,4 +165,4 @@ const details = { value: 19.99, plan: 'pro', coupon: 'WELCOME10' }
 client.track('checkout.completed', context, details)
 ```
 
-For more information, see the [Harness FME Node.js OpenFeature Provider GitHub repository](https://github.com/splitio/split-openfeature-provider-js).
+For more information, go to the [Harness FME Node.js OpenFeature Provider GitHub repository](https://github.com/splitio/split-openfeature-provider-js).
