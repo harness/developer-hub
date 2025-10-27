@@ -160,22 +160,40 @@ This API is used to refresh or update the cost of all resources in the evaluatio
 
 <details>
 <summary>List of Savings Supported Actionss</summary>
-| Resource Name | Savings Supported Actions | 
+
+| Resource Name | Savings Supported Actions |
 | --- | --- |
-| aws.elb | delete |
-| azure | stop, delete, poweroff, resize |
+| aws.app-elb | delete |
 | aws.cache-cluster | delete |
 | aws.dynamodb | delete |
-| aws.ebs-snapshot | delete, modify |
 | aws.ebs | delete, modify |
+| aws.ebs-snapshot | delete, modify |
 | aws.ec2 | stop, terminate |
 | aws.eip | release |
 | aws.elasticsearch | delete |
 | aws.elb | delete |
-| aws.emr-serverless-app | delete |
 | aws.emr | terminate |
+| aws.emr-serverless-app | delete |
 | aws.eni | delete |
 | aws.firehose | delete |
+| aws.glue-crawler | delete |
+| aws.glue-job | delete |
+| aws.insight-rule | delete |
+| aws.lambda | delete |
+| aws.log-group | delete |
+| aws.nat-gateway | delete |
+| aws.opensearch-serverless | delete |
+| aws.rds | stop, modify, resize, modify-db, delete |
+| aws.rds-cluster | delete, stop |
+| aws.rds-cluster-snapshot | delete |
+| aws.rds-snapshot | delete |
+| aws.redshift | pause, delete |
+| aws.redshift-snapshot | delete |
+| aws.s3 | delete, set-intelligent-tiering, configure-lifecycle |
+| aws.sqs | delete |
+| aws.vpc-endpoint | not supported |
+| aws.workspaces | terminate |
+| azure | stop, delete, poweroff, resize |
 | gcp.bq-dataset | not supported |
 | gcp.bucket | not supported |
 | gcp.cloud-run-service | not supported |
@@ -190,23 +208,6 @@ This API is used to refresh or update the cost of all resources in the evaluatio
 | gcp.redis | not supported |
 | gcp.snapshot | delete |
 | gcp.sql-instance | delete, stop |
-| aws.glue-crawler | delete |
-| aws.glue-job | delete |
-| aws.insight-rule | delete |
-| aws.lambda | delete |
-| aws.log-group | delete |
-| aws.nat-gateway | delete |
-| aws.opensearch-serverless | delete |
-| aws.rds-cluster-snapshot | delete |
-| aws.rds-cluster | delete, stop |
-| aws.rds-snapshot | delete |
-| aws.rds | stop, modify, resize, modify-db, delete |
-| aws.redshift-snapshot | delete |
-| aws.redshift | pause, delete |
-| aws.s3 | delete, set-intelligent-tiering, configure-lifecycle |
-| aws.sqs | delete |
-| aws.vpc-endpoint | not supported |
-| aws.workspaces | terminate |
 
 </details>
 
