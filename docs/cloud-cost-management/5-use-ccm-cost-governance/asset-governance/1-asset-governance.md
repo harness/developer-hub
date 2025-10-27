@@ -96,7 +96,7 @@ In the rule editor, a test terminal is present for users to see the output in th
 
 After this, the resources identified are shown on the output terminal in JSON format. With this output, users can perform different actions like searching, downloading, filtering, sorting and picking. 
 
-<DocImage path={require('./static/Ouputscreen.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/ouputscreen.png')} width="90%" height="90%" title="Click to view full size image" />
 
 #### Searching in Output Terminal
 After the output is rendered, users can search for any keywords in the output terminal. This streamlines troubleshooting and debugging processes and helps to efficiently locate required information amidst large volumes of output data. 
