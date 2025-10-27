@@ -22,5 +22,12 @@
         "warehouse-native": "A method of running feature management experiments directly within your data warehouse, leveraging its processing power and existing data infrastructure.",
         "cloud-experimentation": "A method of running feature management experiments using a cloud-based service provided by Harness FME, which handles data collection, analysis, and reporting."
       }
+    },
+    "ccm": {
+      "introduction-of-co": {
+        "reserved-instances": "Reserved Instances are a pricing model offered by cloud service providers that allows customers to reserve and commit to a specific amount of computing capacity in advance for a term of one or three years",
+        "savings-plan": "Savings Plans are a flexible pricing model introduced by cloud service providers that offer customers significant discounts on their usage in exchange for committing to a consistent amount of usage, measured in dollars per hour, for a one- or three-year term.",
+        "commitment": "A commitment in the cloud is a pricing agreement where a customer commits to using a minimum level of cloud resources or spending a minimum amount of money over a fixed contract term, typically one or three years"
+     }
     }
   }
