@@ -15,7 +15,7 @@ You can:
 - Inspect feature flag definitions, [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting/#targeting-rules), and [rollout status](/docs/feature-management-experimentation/feature-management/setup/create-a-rollout-plan/)
 - Compare configurations across environments for governance and consistency
 
-By providing structured access to FME data through natural data, MCP tools help reduce context switching, accelerate [experimentation setup](/docs/feature-management-experimentation/getting-started/overview/create-an-experiment/), and improve visibility into release safety and governance.
+By providing structured access to FME data through natural language, MCP tools help reduce context switching, accelerate [experimentation setup](/docs/feature-management-experimentation/getting-started/overview/create-an-experiment/), and improve visibility into release safety and governance.
 
 ## Installation & Configuration
 
