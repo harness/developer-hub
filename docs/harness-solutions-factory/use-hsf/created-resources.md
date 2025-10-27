@@ -1,19 +1,42 @@
 ---
 title: Created Resources
 description: Understand the resources created by HSF.
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-After HSF is deployed will have the following resources in your account:
+[After HSF is deployed](/docs/harness-solutions-factory/new-to-hsf/get-started#post-deployment-of-hsf) will have the following resources in your account:
 
 ### Service Accounts
 A service account named `harness-platform-manager` is created at the account level. This service account has admin privileges and is responsible for provisioning and managing the resources necessary for running HSF workflows.
 
 ### Variables
-To support IDP workflows, account-level variables are created. These variables store key configuration values, including the project name, organization name, connector information, and platform URL. They enable workflows to dynamically locate and interact with the correct components and environments within Harness. The variables created are `HARNESS_ENDPOINT`, `HARNESS_PORTAL_RESOURCES`, `custom_template_library_connector`, `custom_template_library_repo`, `solutions_factory_template_library_connector`, `solutions_factory_template_library_repo`, `solutions_factory_endpoint`, `solutions_factory_org`, and `solutions_factory_project`.
+To support IDP workflows, several account-level variables are created.
+These variables store key configuration values—such as the project name, organization name, connector details, and platform URL—and enable workflows to dynamically locate and interact with the correct components and environments within Harness.
+
+The following variables are created:
+- `HARNESS_ENDPOINT`
+- `HARNESS_PORTAL_RESOURCES`
+- `custom_template_library_connector`
+- `custom_template_library_repo`
+- `solutions_factory_template_library_connector`
+- `solutions_factory_template_library_repo`
+- `solutions_factory_endpoint`
+- `solutions_factory_org`
+- `solutions_factory_project`
 
 ## Connectors
-Connectors are created to integrate HSF with codebases and artifact repos. The connectors that are created are `harnessSecretManager` for both `Delegate Mangement` and `Image Factory` projects, `Custom_Harness_Template_Library_Repo`, `solutions_factory_template_library_connector`, `solutions_factory_template_library_repo`, `Harness_Solutions_Factory_Repo`, `Harness_Template_Library_Repo`, `Harness_Solutions_Factory_Repo___Official`, `harnessSecretManager`, `hsf_solutions_factory_connector`, `hsf_dockerhub_connector`, and `harnessSecretManager`.
+Connectors integrate HSF with your codebases and artifact repositories.
+The following connectors are created as part of the setup:
+- `harnessSecretManager`
+    - Used for both Delegate Management and Image Factory projects.
+- `Custom_Harness_Template_Library_Repo`
+- `solutions_factory_template_library_connector`
+- `solutions_factory_template_library_repo`
+- `Harness_Solutions_Factory_Repo`
+- `Harness_Template_Library_Repo`
+- `Harness_Solutions_Factory_Repo___Official`
+- `hsf_solutions_factory_connector`
+- `hsf_dockerhub_connector`
 
 ### Organizations
 All HSF-related resources are organized under a newly created organization named `harness-platform-management`. This organization serves as the central location for all projects, configurations, and access controls associated with the HSF deployment.

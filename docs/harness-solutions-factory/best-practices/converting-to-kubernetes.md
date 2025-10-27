@@ -1,6 +1,9 @@
 ---
 title: Converting your HSF installation to use Kubernetes
 description: As new enhancements are released by the Harness team, your installation will require updates to receive the new capabilities and templates.  Additionally, there are some post-deployment tuning steps that will need to be done to adjust your implementation to suit your needs.
+sidebar_position: 50
+redirect_from: 
+    - /kb/reference-architectures/hsf/htl/converting-to-kubernetes
 ---
 
 1. Navigate to the `Solutions Factory` project within the `Harness Platform Management` organization of your Harness account

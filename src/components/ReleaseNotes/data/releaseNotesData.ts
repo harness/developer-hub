@@ -34,6 +34,13 @@ import { MODULES } from "@site/src/constants";
               "",
             link: "/release-notes/self-managed-enterprise-edition",
           },
+          {
+            title: "Harness Solutions Factory release notes",
+            module: MODULES.platform,
+            description:
+              "",
+            link: "/release-notes/harness-solutions-factory",
+          },
         ],
       },
       {

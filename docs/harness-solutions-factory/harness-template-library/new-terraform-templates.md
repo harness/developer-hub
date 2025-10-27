@@ -1,21 +1,24 @@
 ---
 title: Developer Environment Setup
 description: This document will guide the user through the creation of new Terraform templates to be included in the Harness Template Library.
+sidebar_position: 10
+redirect_from: 
+    - /kb/reference-architectures/hsf/htl/new-terraform-templates
 ---
 
 This document will guide the user through the creation of new Terraform templates to be included in the Harness Template Library. The goal will be to guide the user through adding a new local development branch and base scaffold necessary to build a new Terraform Template.
 
 ## Prerequisites
 
-This document assumes that your local development environment has followed the steps outline in the [Developer Environment Setup](./developer-env-setup.md) guide.  Please review those requirements to ensure that you have all the tools necessary to proceed.
+This document assumes that your local development environment has followed the steps outline in the [Developer Environment Setup](../best-practices/developer-env-setup.md) guide.  Please review those requirements to ensure that you have all the tools necessary to proceed.
 
 ## Walk-thru
 
-_*STOP*: Before you proceed, make sure you review the [Naming Standards](./naming-convention-standards.md) guide to ensure your new template will adhere to the project standards_
+_*STOP*: Before you proceed, make sure you review the [Naming Standards](../best-practices/naming-convention-standards.md) guide to ensure your new template will adhere to the project standards_
 
 1. Open this repository in your local IDE tool
 2. Open a terminal in this local path to this directory
-3. Choose a new name for this template. _Don't forget to review [Naming Standards](./naming-convention-standards.md) guide_
+3. Choose a new name for this template. _Don't forget to review [Naming Standards](../best-practices/naming-convention-standards.md) guide_
 4. Create a new branch for your enhancement using the pattern - `feature/<name-for-template>`
 5. Run the command `make generate type=terraform name=<name-for-template>`
    _Replace `<name-for-template>` with the name for the resource_

@@ -141,6 +141,10 @@ const config: Config = {
               to: 'docs/open-source',
             },
             {
+              label: 'Harness Solutions Factory',
+              to: 'docs/harness-solutions-factory',
+            },
+            {
               label: 'FAQs',
               to: 'docs/faqs',
             },

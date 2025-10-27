@@ -1,7 +1,11 @@
 ---
-title: Changelog
-description: Changelogs and improvements to Harness Solutions Factory.
-sidebar_position: 7
+title: Harness Solutions Factory release notes
+sidebar_label: Harness Solutions Factory
+date: 2025-05-13T10:00
+tags: [Harness Solutions Factory]
+sidebar_position: 20
+redirect_from: 
+    - /kb/reference-architectures/hsf/changelog
 ---
 
 ## September 2025
