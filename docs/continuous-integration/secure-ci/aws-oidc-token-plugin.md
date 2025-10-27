@@ -23,10 +23,10 @@ For more on configuring AWS for OIDC, refer to [AWS OIDC setup](https://docs.aws
     name: assume-role-with-oidc
     identifier: assume_role_with_oidc
     spec:
-      image: harnesscommunity/drone-aws-oidc
+      image: plugins/aws-oidc
       settings:
-        role_arn: arn:aws:iam::123456789012:role/harness-ci-role
-        role_session_name: foo # defaults to harness-aws-oidc
+        iamRoleArn: arn:aws:iam::123456789012:role/harness-ci-role
+        roleSessionName: foo # defaults to harness-aws-oidc
         duration: 3600 # in seconds
 ```       
 
@@ -45,7 +45,7 @@ The plugin automatically sets the following environment variables for use in sub
 | Key               | Required | Description                                                                 |
 |--------------------|----------|-----------------------------------------------------------------------------|
 | `iamRoleArn`       | ✅ Yes   | The ARN of the AWS IAM role to assume via OIDC.                             |
-| `oidcTokenId`      | ✅ Yes   | The OIDC token to exchange for temporary AWS credentials.                   |
+| `oidcTokenId`      | ❌ No    | The OIDC token to exchange for temporary AWS credentials.                   |
 | `roleSessionName`  | ❌ No    | Optional name for the assumed role session. Defaults to `harness-aws-oidc`. |
 | `duration`         | ❌ No    | Optional duration (in seconds) for temporary credentials.                   |
 | `logLevel`         | ❌ No    | Optional log level (e.g. `debug`, `info`, `warn`).                          |
