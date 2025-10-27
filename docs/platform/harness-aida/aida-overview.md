@@ -37,8 +37,7 @@ For more information about navigation 2.0, go to [Harness navigation 2.0](https:
 | Platform | Harness Support | Harness AI provides content recommendations when you create a support ticket. | Generally available |
 | Platform | [Dashboard Intelligence](/docs/platform/dashboards/use-dashboard-intelligence-by-aida) | Harness AI empowers you to craft customized dashboards with widget-level control through interactive prompts. | Generally available |
 | Platform | [Code Generation](/docs/platform/harness-aida/code-agent) | With the Harness AI Code Agent IDE extension, you can increase productivity by generating multi-line code updates through comments in your IDE, eliminating the need to manually write common functions or look up unknown syntax. | Beta |
-| Platform | Build Pipelines| Users can now build pipelines with Harness AI | Generally available |
-| CCM | [Generate governance rules](/docs/category/harness-aida-for-asset-governance) | Generate rules for asset governance accompanied with detailed descriptions to optimize your cloud spend. | Generally available |
+| CCM | [Generate governance rules](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations#rules-generating-recommendations) | Generate rules for asset governance accompanied with detailed descriptions to optimize your cloud spend. | Generally available |
 | CD | Troubleshoot CD deployments | Resolve your deployment failures with AI's root cause analysis (RCA). | Generally available |
 | CD | Policy As Code Assistant | Generate and integrate Open Policy Agent (OPA) Rego policies to meet your compliance standards with the Harness AI DevOps Agent. | Generally available |
 | CD | Create Resources | Harness supports creating Service, Environment, Secrets and Connectors | Generally available |

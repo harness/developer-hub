@@ -293,8 +293,8 @@ This feature is rolled out behind a **Feature Flag**. If the flag is enabled for
 ## August 2025 - Version 1.59.1
 #### **Deployment Date:** August 11, 2025 (Prod-1)
 
-### [New Feature] Rules Generating Recommendations
-**[CCM-24188] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#rules-generating-recommendations)** 
+### ⭐ [New Feature] Rules Generating Recommendations
+**[CCM-24188] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations#rules-generating-recommendations)** 
 
 - Added support for Rule and Target Account Exclusions in Governance Recommendations, enabling you to define custom default rules that apply globally or to specific account subsets. This enhancement gives you precise control over which governance policies apply to specific accounts and which rules generate recommendations, streamlining compliance management across your organization.
 
@@ -631,7 +631,7 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 ## April 2025 - Version 1.48.1
 
 ### ⭐ [New Feature] Alerts for Governance Rule Evaluations
-**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#governance-alerts)**
+**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/overview#asset-governance-overview-page)**
 
 We’ve added Alerts in Cloud Assets Governance, allowing users to configure alerts based on Cloud Provider (AWS, GCP, Azure), Resource Type (Cloud Custodian-defined), Cloud Accounts, Minimum Number of Resources Found, Minimum Cost Impact, Email IDs, and the option to attach evaluation output as a .json file. 
 
