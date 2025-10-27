@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-10-22T10:00:00
+date: 2025-10-31T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,9 +12,31 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: October 22, 2025
+#### Last updated: October 31, 2025
 
 ## October 2025
+
+### [New Feature] Harness FME MCP Tools
+----
+#### 2025-10-31
+
+The Harness FME Model Context Protocol (MCP) tools bring the power of natural language to your feature flag workflows. FME MCP enables developers, product managers, and experimentation teams to discover, inspect, and manage feature flags directly from AI-powered IDEs and assistants such as Claude Code, Windsurf, Cursor, and VS Code.
+
+This integration bridges Harness FME with AI developer tools, allowing teams to interact with their feature management data conversationally, without switching contexts or writing API calls.
+
+By using Harness FME MCP tools, you can:
+
+- Explore projects and environments interactively
+- Retrieve feature flag definitions, variations, and targeting rules
+- Understand the status and rollout of flags across environments
+- Audit or compare flag configurations for consistency and governance
+
+The Harness FME MCP helps teams accelerate feature delivery and experimentation by making key configuration data accessible through natural language. This enables faster insight, safer releases, and collaboration across engineering and product.
+
+#### Related documentation
+
+- [Harness FME MCP Tools](/docs/feature-management-experimentation/release-agent/mcp-tools)
+- [Harness MCP Server](/docs/platform/harness-aida/harness-mcp-server/)
 
 ### [New Feature] Warehouse Native Experimentation in Beta
 ----
