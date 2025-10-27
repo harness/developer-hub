@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-10-15T18:00
+date: 2025-10-22T18:00
 sidebar_position: 6
 ---
 
