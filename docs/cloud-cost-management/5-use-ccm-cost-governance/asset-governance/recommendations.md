@@ -1,7 +1,7 @@
 ---
 title: Governance Recommendations
 description: This topic describes how to optimize cloud costs using asset governance.
-# sidebar_position: 2
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
