@@ -92,7 +92,7 @@ We now have Terraform support for managing Governance Rules. Please see [here](h
 
 In the rule editor, a test terminal is present for users to see the output in the terminal itself upon evaluating a Rule. This is done to ensure that users can run the rules and try accordingly to check how the output would look on the selected subscription and region. There are two options: first, to select the target subscription and second, to select the regions. After providing the relevant inputs, the users can select either to dry run the rule first, run it once or enforce the rule. 
 
-<DocImage path={require('./static/outputTerminal.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/outputterminal.png')} width="70%" height="70%" title="Click to view full size image" />
 
 After this, the resources identified are shown on the output terminal in JSON format. With this output, users can perform different actions like searching, downloading, filtering, sorting and picking. 
 
