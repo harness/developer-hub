@@ -36,7 +36,7 @@ You can import the SDK in your project by using Swift Package Manager. This can 
 You can also import the SDK into your Xcode project using CocoaPods, adding it in your **Podfile**.
 
 ```swift title="Podfile"
-pod 'Split', '~> 3.4.0'
+pod 'Split', '~> 3.4.2'
 ```
 
 #### Carthage
@@ -44,7 +44,7 @@ pod 'Split', '~> 3.4.0'
 This is another option to import the SDK. Just add it in your **Cartfile**.
 
 ```swift title="Cartfile"
-github "splitio/ios-client" 3.4.0
+github "splitio/ios-client" 3.4.2
 ```
 
 Once added, follow the steps provided in the [Carthage Readme](https://github.com/Carthage/Carthage/blob/master/README.md#if-youre-building-for-ios-tvos-or-watchos).
@@ -989,8 +989,8 @@ certBuilder.addPin(host: "www.example1.com", hashKey: "sha256/7HIpactkIAq2Y49orF
 certBuilder.addPin(host: "www.example2.com", certificateName: "certificate.der")
 
 // Set a failure handler
-certBuilder.certificatePinningConfig { host in
-  print("Failed validation for host \(host)")
+certBuilder.failureHandler { host in
+  print("Pinning failed for host \(host)")
 }
 
 // Set the CertificatePinningConfig property for the SDK factory client configuration
