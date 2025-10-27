@@ -989,7 +989,7 @@ certBuilder.addPin(host: "www.example1.com", hashKey: "sha256/7HIpactkIAq2Y49orF
 certBuilder.addPin(host: "www.example2.com", certificateName: "certificate.der")
 
 // Set a failure handler
-certBuilder.failureHandler { handler in
+certBuilder.failureHandler { host in
   print("Pinning failed for host \(host)")
 }
 
