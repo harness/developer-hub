@@ -1,8 +1,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide will help you **create a NPM Artifact Registry** in Harness, **configure an upstream proxy**, and **manage NPM packages**.
-
 ## Prerequisites
 - Ensure you have the **NPM CLI** (`npm`) installed on your local machine.
 - Access to a Harness account with appropriate permissions to create registries and connectors.
@@ -26,7 +24,8 @@ Your registry name must start with a letter and can include `lowercase alphanume
 :::
 
 5. Optionally, add a Description and Labels for better organization.
-6. Click **Create Registry** to finalize.
+6. Choose visibility between **Public** and **Private**.
+7. Click **Create Registry** to finalize.
 </TabItem>
 </Tabs>
 

@@ -1,9 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Learn how to **create a NuGet Artifact Registry**, **configure an upstream proxy**, and **publish or install NuGet packages** using the CLI.
 
-## NuGet Package Management
 
 ## Prerequisites
 - Ensure you have the **NuGet CLI** (`nuget`) installed on your local machine.
@@ -27,7 +25,8 @@ Your registry name must start with a letter and can include `lowercase alphanume
 :::
 
 5. Optionally, add a Description and Labels for better organization.
-6. Click **Create Registry** to finalize.
+6. Choose visibility between **Public** and **Private**.
+7. Click **Create Registry** to finalize.
 </TabItem>
 </Tabs>
 
