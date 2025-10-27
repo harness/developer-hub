@@ -989,8 +989,8 @@ certBuilder.addPin(host: "www.example1.com", hashKey: "sha256/7HIpactkIAq2Y49orF
 certBuilder.addPin(host: "www.example2.com", certificateName: "certificate.der")
 
 // Set a failure handler
-certBuilder.certificatePinningConfig { host in
-  print("Failed validation for host \(host)")
+certBuilder.failureHandler { handler in
+  print("Pinning failed for host \(host)")
 }
 
 // Set the CertificatePinningConfig property for the SDK factory client configuration
