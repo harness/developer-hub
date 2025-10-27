@@ -20,9 +20,14 @@ To ensure accurate identity mapping, SEI provides two options:
 - **Developer Identity API** (JSON-based upload): Add or update identities via API calls.
 - **CSV Upload API** (File-based upload): Bulk upload identities using a CSV file.
 
+  | New Endpoint                  | Method | Notes                                                                        |
+  | ----------------------------- | ------ | ---------------------------------------------------------------------------- |
+  | `GET /v2/developers/identities` | `GET`    | Retrieve developer identities (JSON) with filtering, sorting, and pagination. |
+  | `GET /v2/developers/identities` | `GET`    | Download all developer identities as CSV (text/csv).                          |
+
 For a complete list of endpoints and schema definitions, see the [Harness API reference documentation](https://apidocs.harness.io/).
 
-## Developer Identity API (JSON)
+## Developer Identity API 
 
 Use the Developer Identity API in the following scenarios:
 
@@ -30,7 +35,49 @@ Use the Developer Identity API in the following scenarios:
 - You want to bulk override or correct developer identity mappings in SEI.
 - You need to pre-populate developer identities during onboarding to reduce manual review.
 
-**Endpoint**: `POST /v2/developers/cloud-ids`
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs> 
+<TabItem value="new" label="Current (v2)">
+
+- **JSON Endpoint**: `PATCH /v2/developers/identities`
+- **CSV Endpoint**: `PATCH /v2/developers/identities` (multipart/form-data)
+- **Authentication**: Requires an API key with `developer_records:write` scope.
+
+Add or update developer identities (JSON or CSV). Simplified resource-based URI replaces `/cloud-ids` and `/cloud-ids/upload`.
+
+If you are using JSON:
+
+```bash
+curl -X PATCH \
+  'https://app.harness.io/prod1/sei/api/v2/developers/identities' \
+  -H "accept: application/json" \
+  -H "x-api-key: <YOUR_API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '[
+    {
+      "email": "developer@example.com",
+      "integrationId": 123,
+      "identity": "bitbucket-user-123"
+    }
+  ]'
+```
+
+If you are using a CSV file:
+
+```bash
+curl -X PATCH \
+  'https://app.harness.io/prod1/sei/api/v2/developers/identities' \
+  -H "x-api-key: <YOUR_API_KEY>" \
+  -F 'file=@"/PATH/Downloads/sample_developer.csv"'
+```
+
+</TabItem> 
+<TabItem value="old" label="Previous">
+
+- **JSON Endpoint**: `POST /v2/developers/cloud-ids`
+- **CSV Endpoint**: `POST /v2/developers/cloud-ids/upload`
 
 ### Request Format
 
@@ -105,6 +152,9 @@ curl --location 'https://<sei-host>/v2/developers/cloud-ids' \
 }
 ```
 
+</TabItem> 
+</Tabs>
+
 ## CSV Upload API (File-based)
 
 Use the CSV Upload API in the following scenarios:
@@ -114,7 +164,51 @@ Use the CSV Upload API in the following scenarios:
 - You want to correct or override multiple developer mappings at once.
 - Your integration or workflow produces CSV reports with developer identifiers that can be directly uploaded.
 
-**Endpoint**: `POST /v2/developers/cloud-ids/upload`
+<Tabs> 
+<TabItem value="new" label="Current (v2)">
+
+- **Endpoint**: `PATCH /v2/developers/identities`  
+- **Authentication**: Requires an API key with `developer_records:write` scope.  
+
+### Request Format
+
+Use `Content-Type: multipart/form-data` to upload a CSV file.
+
+#### Example cURL request
+
+```bash
+curl -X PATCH \
+  'https://app.harness.io/prod1/sei/api/v2/developers/identities' \
+  -H "x-api-key: <YOUR_API_KEY>" \
+  -F 'file=@"/PATH/Downloads/sample_developer.csv"'
+```
+
+#### Response
+
+**Success (200 OK)**
+
+```json
+{
+  "status": "success",
+  "message": "CSV processed and developer identities updated successfully."
+}
+```
+
+**Failure (400/401)**
+
+```json
+{
+  "status": "error",
+  "message": "Invalid file format or missing authorization."
+}
+```
+
+</TabItem> 
+<TabItem value="old" label="Previous">
+
+- **Endpoint**: `POST /v2/developers/cloud-ids/upload`
+- **Authentication**: Requires an API key with `developer_records:write` scope.
+- Multipart form-data with CSV file upload.
 
 ### Request Format
 
@@ -152,6 +246,9 @@ curl --location 'https://<sei-cluster-base-url>/v2/developers/cloud-ids/upload' 
   "message": "Invalid file format or missing authorization."
 }
 ```
+
+</TabItem> 
+</Tabs>
 
 ## Best practices
 

@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2025-10-15T10:00
+date: 2025-10-27T10:00
 sidebar_position: 13
 ---
 
@@ -22,6 +22,18 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 ## October 2025
+
+### Version 1.164.0
+
+<!-- 2025-10-27 -->
+
+#### Fixed Issues
+
+- Fixed an issue where accessing vulnerabilities in a pipeline execution page resulted in a **“Something went wrong”** error (STO-9967, ZD-94901).  
+- Removed unexpected toast messages triggered by JIRA GET call failures. Toast messages will now only appear when related user actions occur (STO-9916, ZD-94003).  
+- Fixed an issue where the **Overview** page displayed a blank screen when navigating from the **Test Targets** or **Exemptions** pages (STO-9627).  
+- Fixed an issue in the **Issues** page where filtering vulnerabilities using the **Pipeline** filter did not work as expected (STO-10026).
+
 
 ### Version 1.162.0
 

@@ -364,30 +364,14 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 
 To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
-This method will return an object with the structure below:
+This method returns an object with the structure below:
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
-
-```javascript
-var TreatmentResult = {
-  String treatment;
-  String config; // or null if there is no config for the treatment
-}
-```
-
-</TabItem>
-<TabItem value="TypeScript">
-
-```javascript
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+```typescript title="TypeScript"
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
-
-</TabItem>
-</Tabs>
 
 As you can see from the object structure, the config is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the Suite returns `null` for the config parameter. This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 

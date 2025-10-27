@@ -13,7 +13,7 @@ This document covers:
 
 :::note
 
-This feature is behind the feature flag `STO_BASE_IMAGE_DETECTION`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+This feature is behind the feature flags `STO_BASE_IMAGE` and `STO_BASE_IMAGE_DETECTION`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
 
 :::
 

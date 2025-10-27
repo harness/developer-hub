@@ -222,11 +222,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # Knowledge Base ###
 
 # Overall KB
-/kb/ @deepanshuHarness @jimin-harness
-/src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness
+/kb/ deepanshu.grover@harness.io jimin.kim@harness.io kinnon.yee@harness.io jeremy.nelson@harness.io amit.jha@harness.io prashant.kumar@harness.io mayuresh.kshirsagar@harness.io
+/src/components/KnowledgeBase/data/ deepanshu.grover@harness.io jimin.kim@harness.io kinnon.yee@harness.io jeremy.nelson@harness.io amit.jha@harness.io prashant.kumar@harness.io mayuresh.kshirsagar@harness.io
 
 #Armory KB
-/kb/armory @jimin-harness @deepanshuHarness
+/kb/armory deepanshu.grover@harness.io jimin.kim@harness.io kinnon.yee@harness.io jeremy.nelson@harness.io amit.jha@harness.io prashant.kumar@harness.io mayuresh.kshirsagar@harness.io
 
 #Reference Architectures
 /kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness

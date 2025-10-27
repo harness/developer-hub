@@ -7,7 +7,6 @@ sidebar_position: 30
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Artifact Registry provides a secure, centralized way to manage artifacts for deployments. Before using artifacts, configure your environment with the Client Setup feature. 
 
 :::tip create a registry
 If you haven’t created a registry yet, see [create a registry](/docs/artifact-registry/manage-registries/create-registry).

@@ -21,6 +21,14 @@
         "provider": "An OpenFeature Provider wraps the Harness FME SDK, acting as a bridge between the OpenFeature SDK and the FME SDK. It translates OpenFeature function calls into operations handled by the FME SDK, which communicates with Harness services to evaluate flags and retrieve configuration updates.",
         "hook": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
         "events": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values."      
+      "warehouse-native": {
+        "metric": "A quantifiable measure used to track and assess the performance of a specific aspect of an experiment. In Warehouse Native, metrics are defined in Harness FME.",
+        "experiment": "A controlled test to evaluate the impact of different variations on user behavior or system performance. In Warehouse Native, experiments are defined in Harness FME.",
+        "assignment-source": "A data source that defines how users are assigned to different variations in an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
+        "metric-source": "A data source that defines how metrics are collected and calculated for an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
+        "data-warehouse": "A centralized repository for storing and managing large volumes of structured and semi-structured data. Examples include Snowflake, BigQuery, Redshift, and Databricks.",
+        "warehouse-native": "A method of running feature management experiments directly within your data warehouse, leveraging its processing power and existing data infrastructure.",
+        "cloud-experimentation": "A method of running feature management experiments using a cloud-based service provided by Harness FME, which handles data collection, analysis, and reporting."
       }
     }
   }

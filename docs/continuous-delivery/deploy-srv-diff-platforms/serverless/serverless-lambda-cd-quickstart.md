@@ -622,54 +622,6 @@ In cases when the delegate OS doesn't support `apt` (Red Hat Linux), you can edi
 
 Now that you have configured the Service, we can define the target for our deployment.​
 
-## Plugin Info  
-
-The **Plugin Info** section defines essential details such as the **programming language runtime** and **serverless framework version** required for serverless deployments. This ensures users receive the **latest version of images**, enabling seamless deployments.  
-
-Plugin Info is configured at the **Service** level. To automatically use the latest images, leave **Container Configuration** empty at the step level and configure **Plugin Info** at the service level.  
-
-<div align="center">
-  <DocImage path={require('./static/plugin-info.png')} width="60%" height="60%" title="Click to view full size image" />
-</div>
-
-**Key Parameters**
-- **`runtimeLanguage`**: Specifies the programming language runtime used by the plugin.  
-  - Example: `java17`  
-- **`serverlessVersion`**: Defines the version of the serverless framework image being used.  
-  - Example: `3.39.0`
-
-<details>
-<summary>Sample Service YAML</summary>
-
-Here is an example of how **Plugin Info** can be provided in the **Service YAML**:  
-
-```yaml
-service:
-  name: serverless-automation
-  identifier: serverlessautomation
-  serviceDefinition:
-    type: ServerlessAwsLambda
-    spec:
-      pluginInfo:
-        runtimeLanguage: java17
-        serverlessVersion: 3.39.0
-      manifests:
-        - manifest: ...
-```  
-</details>
-
-Container Configuration (Optional)
-
-If you have provided **Service Plugin Info** in the service, then specifying **Container Configuration** at the step level such as **Container Registry** and **Image** becomes **optional**.
-
-However, if the image is specified in the **Container Configuration** at the **Step** level, it will always take precedence over the **Plugin Info** at the service level during execution.
-
-:::warning
-If **Plugin Info** and **Container Configuration** are not configured, the pipeline will fail during execution.
-
-Ensure that either **Container Configuration** at the step level or **Plugin Info** at the service level is configured to avoid execution failures.
-:::
-
 ## Define the infrastructure
 
 You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.

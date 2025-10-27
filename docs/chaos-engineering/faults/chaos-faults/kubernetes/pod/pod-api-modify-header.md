@@ -190,6 +190,11 @@ permissions:
         <td> The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-header#using-self-signed-certificates">server certificates.</a></td>
       </tr>
       <tr>
+        <td> CLIENT_CERTIFICATES </td>
+        <td> These client certificates are used by the proxy server for the MTLS handshake between the upstream server and the proxy server. </td>
+        <td> The corresponding CA certificates should be loaded as root certificates inside the upstream server. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-block#using-self-signed-certificates">client certificates.</a></td>
+      </tr>
+      <tr>
         <td> HTTPS_ROOT_CERT_PATH </td>
         <td> Provide the root CA certificate directory path </td>
         <td> This setting must be configured if the root CA certificate directory differs from /etc/ssl/certs. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate directory based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>

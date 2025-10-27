@@ -25,21 +25,30 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 
 ![](./static/verify-deployments-with-dynatrace-14.png)
 
-1. In **Select health source type**, select **Dynatrace**.
-2. In **Health Source Name**, enter a name for the Health Source. For example Quickstart.
+1. In **Select health source type**, select **Dynatrace**.
+2. In **Health Source Name**, enter a name for the Health Source. For example Quickstart.
 3. Under **Connect Health Source**, click **Select Connector**.
-4. In **Connector** settings, you can either choose an existing connector or click **New Connector** to create a new **Connector.**
+4. In **Connector** settings, you can choose an existing connector or click **New Connector** to create a new **Connector.**
    
    ![](./static/verify-deployments-with-dynatrace-15.png)
 
-5. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
-6. In **Select Feature** you can either choose **Full Stack Observability: APM** or **Dynatrace Grail Logs**. Your choice here will change which configuration options you see next. 
+   :::info note
+   When creating a new Dynatrace connector:
+   - **Without the feature flag enabled**: You will configure a standard Dynatrace connector with API URL + API Token (for Full Stack Observability metrics).
+   - **With the feature flag enabled**: You can choose between **Dynatrace Classic** (for Full Stack Observability metrics) or **Dynatrace Grail** (for Grail Logs). Each connector supports only one type.
+   
+   For more information on configuring Dynatrace connectors, go to [Add Dynatrace connector](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems/#add-dynatrace).
+   :::
 
-:::info
+5. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
+6. In **Select Feature** you can either choose **Full Stack Observability: APM** or **Dynatrace Grail Logs** (if the feature flag is enabled). Your choice here will change which configuration options you see next. 
 
-Dynatrace Grail Logs are behind the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
-:::
+   :::info note
+   - **Full Stack Observability: APM** requires a Dynatrace Classic connector (API URL + API Token)
+   - **Dynatrace Grail Logs** requires a Dynatrace Grail connector (Platform URL + Platform Token) and the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. This feature flag needs a minimum delegate version: `869xx`.
+   
+   Contact [Harness Support](mailto:support@harness.io) to enable the Dynatrace Grail Logs feature flag.
+   :::
 
 ### Configuration
 
@@ -111,7 +120,9 @@ You can add one or more Health Sources for each APM or logging provider.
 
 :::info
 
-This feature is behind the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+This feature is behind the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. This feature requires a minimum delegate version of `869xx`.
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
 :::
 

@@ -46,6 +46,37 @@ This reduces manual edits, lowers the risk of errors, and ensures developer data
 
 ### Initial setup (Upload and save)
 
+The developer schema and baseline data must first be established using the upload and save workflow.
+
+:::danger
+Reupload, approve, and upsert operations will return `412 Precondition Failed` if attempted before completing this initial setup.
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs> 
+<TabItem value="new" label="Current (v2)">
+
+- **Endpoint**: `POST /v2/developers` <br />
+- **Authentication**: Requires an API key with `developer_records:write` scope. <br />
+- **Content-Type**: multipart/form-data
+
+Upload a CSV file containing developer data. Returns a preview with field mappings and validation errors. Response includes `versionId` for tracking.
+
+For example:
+
+```bash
+curl -X POST \
+  'https://app.harness.io/prod1/sei/api/v2/developers' \
+  -H "accept: application/json" \
+  -H "x-api-key: <YOUR_API_KEY>" \
+  -F "file=@sample_file.csv;type=text/csv"
+```
+
+</TabItem> 
+<TabItem value="old" label="Previous">
+
 ```mermaid
 graph LR
 A["CSV File"] --> B["POST /v2/developers/upload"]
@@ -66,16 +97,44 @@ classDef preview fill:#bbdefb,stroke:#333,stroke-width:1px; %% pale blue
 classDef developersSaved fill:#c8e6c9,stroke:#333,stroke-width:1px; %% pale green
 ```
 
-The developer schema and baseline data must first be established using the upload and save workflow:
-
 1. `POST /v2/developers/upload`: Upload a CSV file containing developer data (CSV only, cannot be JSON), which returns an upload preview with field mappings.
 1. `POST /v2/developers/uploads/{uploadId}/save`: Configure field mappings (such as `NAME`, `EMAIL`, `MANAGER_EMAIL`) and save developers into the system. You must complete this step before using other developer management APIs.
 
-:::danger
-Reupload, approve, and upsert operations will return `412 Precondition Failed` if attempted before completing this initial setup.
-:::
+</TabItem> 
+</Tabs>
 
 ### Bulk update (Re-upload & approve)
+
+<Tabs> 
+<TabItem value="new" label="Current (v2)">
+
+- **Re-upload Endpoint**: `PUT /v2/developers`
+- **Approve Endpoint**: `PATCH /v2/developers/versions/{versionId}`
+- **Authentication**: Requires an API key with `developer_records:write` scope.
+
+Re-upload a new developer CSV file (auto-maps fields) and approve changes to activate. Returns review data.
+
+For example:
+
+```bash
+# Re-upload
+curl -X PUT \
+  'https://app.harness.io/prod1/sei/api/v2/developers' \
+  -H "accept: application/json" \
+  -H "x-api-key: <YOUR_API_KEY>" \
+  -F "file=@Updated_Developers.csv;type=text/csv"
+
+# Approve
+curl -X PATCH \
+  'https://app.harness.io/prod1/sei/api/v2/developers/versions/<VERSION_ID>' \
+  -H "accept: application/json" \
+  -H "x-api-key: <YOUR_API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{"active": true}'
+```
+
+</TabItem> 
+<TabItem value="old" label="Previous">
 
 ```mermaid
 graph LR
@@ -101,7 +160,61 @@ To update existing developer data with a new CSV file, the initial upload/save m
 1. `POST /v2/developers/reupload`: Upload a new CSV file with updated developer data. This automatically uses existing field mappings and returns review data showing changes.
 1. `POST /v2/developers/uploads/{uploadId}/approve`: Review and approve the changes, and activate the new developer dataset. 
 
+</TabItem> 
+</Tabs>
+
+## List and download developers
+
+<Tabs> 
+<TabItem value="new" label="Current (v2)">
+
+- **List Endpoint**: `GET /v2/developers`
+- **Download Endpoint**: `GET /v2/developers` (Accept: text/csv)
+- **Authentication**: Requires an API key with `developer_records:read` scope.
+
+Retrieve filtered/sorted list of developers or download a full CSV file. Supports query parameters such as `emails`, `developerRefIds`, `searchKey`, `sortOrder`, `pageIndex`, and `pageSize`.
+
+For example:
+
+```bash
+# List JSON
+curl -X GET \
+  'https://app.harness.io/prod1/sei/api/v2/developers?searchKey=department&searchValue=Engineering&pageIndex=0&pageSize=50' \
+  -H "accept: application/json" \
+  -H "x-api-key: <YOUR_API_KEY>"
+
+# Download CSV
+curl -X GET \
+  'https://app.harness.io/prod1/sei/api/v2/developers' \
+  -H "accept: text/csv" \
+  -H "x-api-key: <YOUR_API_KEY>"
+```
+
+</TabItem> 
+<TabItem value="old" label="Previous">
+
+- **List Endpoint**: `POST /v2/developers/list`
+- **Download Endpoint**: `GET /v2/developers/download`
+
+</TabItem> 
+</Tabs>
+
+
 ## Developer endpoints
+
+<Tabs> 
+<TabItem value="new" label="Current (v2)">
+| Old Endpoint                                   | New Endpoint                                          | Method Change | Notes                 |
+| ---------------------------------------------- | ----------------------------------------------------- | ------------- | --------------------- |
+| `POST /v2/developers/upload`                     | `POST /v2/developers`                                   | None          | Multipart form data   |
+| `POST /v2/developers/reupload`                   | `PUT /v2/developers`                                    | `POST` → `PUT`    | Multipart form data   |
+| `POST /v2/developers/uploads/{uploadId}/save`    | `PUT /v2/developers/versions/{versionId}/fieldMappings` | `POST` → `PUT`    | Path parameter change |
+| `POST /v2/developers/uploads/{uploadId}/approve` | `PATCH /v2/developers/versions/{versionId}`             | `POST` → `PATCH`  | Path parameter change |
+| `POST /v2/developers/list`                       | `GET /v2/developers`                                    | `POST` → `GET`    | Query parameters      |
+| `GET /v2/developers/download`                    | `GET /v2/developers`                                    | None          | Content negotiation   |
+
+</TabItem> 
+<TabItem value="old" label="Previous">
 
 | Action | Endpoint | Usage |
 |:---:|:---:|:---:|
@@ -112,6 +225,7 @@ To update existing developer data with a new CSV file, the initial upload/save m
 | Search / list developers | `POST /v2/developers/list` | Search developers with filtering and sorting options. Search by attributes (key-value pair like "department":"Engineering", name). |
 | Get developer schema | `GET /v2/developers/schema` | Get the latest developer field mappings (schema) for the account. Retrieve the schema for developer records and field mappings. |
 | Download developer data | `GET /v2/developers/download` | Download a CSV file containing all developers currently in the system for auditing or sync back to third-party systems. |
+
 
 ### cURL commands
 
@@ -251,6 +365,9 @@ classDef developersSaved fill:#c8e6c9,stroke:#333,stroke-width:1px; %% pale gree
 1. Check for validation errors in the preview (e.g. `REQUIRED_FIELD_MISSING` or `DUPLICATE_EMAIL`) and correct errors upstream in the CSV file if necessary.
 1. Commit the uploaded developer data into the system using `POST /v2/developers/uploads/{uploadId}/save`. The initial setup must be completed before using other APIs, otherwise upsert, reupload, or approve operations will return `412 Precondition Failed`.
 1. Optionally, export the current developer list using `GET /v2/developers/download` for auditing or syncing with external systems.
+
+</TabItem> 
+</Tabs>
 
 ## Troubleshooting
 

@@ -29,7 +29,8 @@ export enum MODULES {
   fme = 'fme',
   ata = 'ata',
   adra = 'adra',
-  tbh = 'tbh'
+  tbh = 'tbh',
+  hsf = 'hsf'
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -62,6 +63,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.fme]: 'Feature Management & Experimentation',
     [MODULES.ata]: 'AI Test Automation',
     [MODULES.tbh]: 'Traceable by Harness',
+    [MODULES.hsf]: 'Harness Solutions Factory'
 }
 
 export const MODULE_ICON = {
@@ -93,4 +95,5 @@ export const MODULE_ICON = {
     [MODULES.fme]: 'img/icon_fme.svg',
     [MODULES.ata]: 'img/logo-ata.svg',
     [MODULES.tbh]: 'img/icon_tbh.svg',
+    [MODULES.hsf]: 'img/icon-hsf.svg',
 }

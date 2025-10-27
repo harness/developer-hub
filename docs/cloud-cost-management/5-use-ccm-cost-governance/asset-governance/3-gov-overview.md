@@ -152,4 +152,63 @@ This API is used to refresh or update the cost of all resources in the evaluatio
 - Cost co-relation for GCP would work only if detailed billing export is setup.
 - Changes made to "Perspective Preferences" in Account Settings of Cloud Cost Management will be now applied to Asset Governance. In case of AWS, previously, costs were taken as "Unblended". Now, users can select it to be Blended, Net-Amortised, Amortised, Effective or Unblended. Kindly note, it might take up to 30 minutes for costs to be refreshed after changes are applied.
 - Azure Preferences set in Account Settings will now also be honored.
-  :::
+:::
+
+:::important
+- The savings from the governance rule for a resource type would depend on the cost of the filtered resource and the savings percentage set on the governance rule, given one of the below action is applied on the corresponding resource.
+- For any "not supported" resource, we support cost computation on the filtered resources but not the savings computation as cloud-custodian do not provide any terminal action for that resource.
+
+<details>
+<summary>List of Savings Supported Actionss</summary>
+
+| Resource Name | Savings Supported Actions |
+| --- | --- |
+| aws.app-elb | delete |
+| aws.cache-cluster | delete |
+| aws.dynamodb | delete |
+| aws.ebs | delete, modify |
+| aws.ebs-snapshot | delete, modify |
+| aws.ec2 | stop, terminate |
+| aws.eip | release |
+| aws.elasticsearch | delete |
+| aws.elb | delete |
+| aws.emr | terminate |
+| aws.emr-serverless-app | delete |
+| aws.eni | delete |
+| aws.firehose | delete |
+| aws.glue-crawler | delete |
+| aws.glue-job | delete |
+| aws.insight-rule | delete |
+| aws.lambda | delete |
+| aws.log-group | delete |
+| aws.nat-gateway | delete |
+| aws.opensearch-serverless | delete |
+| aws.rds | stop, modify, resize, modify-db, delete |
+| aws.rds-cluster | delete, stop |
+| aws.rds-cluster-snapshot | delete |
+| aws.rds-snapshot | delete |
+| aws.redshift | pause, delete |
+| aws.redshift-snapshot | delete |
+| aws.s3 | delete, set-intelligent-tiering, configure-lifecycle |
+| aws.sqs | delete |
+| aws.vpc-endpoint | not supported |
+| aws.workspaces | terminate |
+| azure | stop, delete, poweroff, resize |
+| gcp.bq-dataset | not supported |
+| gcp.bucket | not supported |
+| gcp.cloud-run-service | not supported |
+| gcp.dataflow-job | not supported |
+| gcp.disk | delete |
+| gcp.function | delete |
+| gcp.gke-cluster | delete |
+| gcp.image | delete |
+| gcp.instance | stop, delete, suspend |
+| gcp.loadbalancer-address | delete |
+| gcp.loadbalancer-forwarding-rule | not supported |
+| gcp.redis | not supported |
+| gcp.snapshot | delete |
+| gcp.sql-instance | delete, stop |
+
+</details>
+
+:::

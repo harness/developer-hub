@@ -376,12 +376,12 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 
 To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
-This method will return an object with the structure below:
+This method returns an object with the structure below:
 
 ```typescript title="TypeScript"
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
 

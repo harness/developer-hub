@@ -144,6 +144,8 @@ For AWS CDK, the step group setting **Enable container based execution** must be
 
 For more information on containerized step groups, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
 
+In case you face any issues across AWS CDK containerized step groups, please refer to the [Limitations](#limitations) section. 
+
 :::
 
 In the step group, you need to configure the following mandatory settings:
@@ -597,3 +599,9 @@ Harness provides custom images for testing purposes for the following programmin
   Base image allready contains Node.js and JavaScript installed.
 
 Please navigate to our [DockerHub Repository](https://hub.docker.com/r/harness/aws-cdk-plugin/tags) for the latest image tags for this feature.
+
+## Limitations 
+
+- The AWS CDK step fails if the credentials are passed as output variables of type Secret from a previous containerized step group. Therefore, currently passing Secret output variables to the AWS CDK step from a previous containerized step group is not supported.
+
+- The Git Clone step, CDK diff step, and CDK Deploy step are only supported in the Containerised step group. So when we add the Clone step and CDK diff to one containerized step group and the deploy step to the second containerized step group, the Git context is lost, and the deploy step fails since the Git context can not be transferred between step groups.

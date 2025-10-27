@@ -18,11 +18,23 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 - In Harness, navigate to **Cloud Costs** > **AutoStopping Rules** and click **New AutoStopping Rule**. Choose the cloud provider from either AWS (EKS) or GCP (GKE) or Azure (AKS).
 
 ### Step 1: Configuration
+
+<DocImage path={require('../static/autostopping-type.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
 1. Enter a **Name** for your rule
-2. Set the **Idle Time** - how long an instance should be inactive before stopping
-3. In the **Resources to be managed by the AutoStopping rules** section, select "Kubernetes Cluster".
-4. Add cluster to be managed by the AutoStopping rule. 
-5. **Advanced Configuration (Optional)**:
+2. AutoStopping Type: Choose how you want your resources to be managed automatically. You can either choose **Traffic-based with schedules optionally** or **Schedules only**. 
+    - **Traffic-based with schedules optionally**: Resources automatically stop when idle and restart when traffic is detected. You can configure schedule overrides in advanced settings.
+    - **Schedules only**: Resources automatically start and stop based on defined schedules. You can configure multiple schedules in advanced settings. 
+
+  :::info
+  Please note: Schedule-only rules can be changed to traffic-based during edit, but traffic-based rules cannot be reverted to schedule-only. (Schedules on traffic-based rules remain editable)
+  :::
+
+3. Set the **Idle Time** - how long an instance should be inactive before stopping
+4. In the **Resources to be managed by the AutoStopping rules** section, select "Kubernetes Cluster".
+5. Add cluster to be managed by the AutoStopping rule. 
+6. **Advanced Configuration (Optional)**:
     - **Hide Progress Page**: Toggle this to disable the display of a progress page during instance warm-up.
     - **Dry-Run**: Toggle this button if you wish to evaluate the feature without terminating your cloud resources.
     <Tabs>
