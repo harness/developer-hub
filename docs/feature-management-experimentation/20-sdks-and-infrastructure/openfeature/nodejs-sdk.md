@@ -51,7 +51,7 @@ If you are using an SDK API key:
 const OpenFeature = require('@openfeature/server-sdk').OpenFeature;
 const OpenFeatureSplitProvider = require('@splitsoftware/openfeature-js-split-provider').OpenFeatureSplitProvider;
 
-const authorizationKey = '<YOUR_AUTH_KEY>'
+const authorizationKey = '<YOUR_SERVER_SIDE_SDK_KEY>'
 const provider = new OpenFeatureSplitProvider(authorizationKey);
 OpenFeature.setProvider(provider);
 ```
@@ -66,7 +66,7 @@ const OpenFeature = require('@openfeature/server-sdk').OpenFeature;
 const SplitFactory = require('@splitsoftware/splitio').SplitFactory;
 const OpenFeatureSplitProvider = require('@splitsoftware/openfeature-js-split-provider').OpenFeatureSplitProvider;
 
-const authorizationKey = '<YOUR_AUTH_KEY>'
+const authorizationKey = '<YOUR_SERVER_SIDE_SDK_KEY>'
 const splitFactory = SplitFactory({core: {authorizationKey}});
 const provider = new OpenFeatureSplitProvider(splitFactory);
 OpenFeature.setProvider(provider);
