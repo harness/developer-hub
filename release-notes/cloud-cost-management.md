@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-10-15T18:00
+date: 2025-10-22T18:00
 sidebar_position: 6
 ---
 
@@ -24,6 +24,24 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+
+
+## October 2025 - Version 1.67.2
+#### Deployment Date: October 22, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Streamlined Autostopping Rule Creation**: CCM has introduced a use case-based setup with intuitive Traffic-based and Schedule-based mode selection. The interface dynamically adjusts to display only relevant configuration fields, simplifying the setup process and improving user experience. [CCM-24600]
+
+<DocImage path={require('./static/ccm/as-new.png')} width="90%" height="90%" title="Click to view full size image" />
+
+- **AWS Service Detail (Beta)**: CCM has added a new beta field in AWS Explore that provides granular insight into mixed services within the CUR. This feature delivers standardized service categorization by mapping service codes, product families, and usage types. It properly identifies mixed services (such as EBS, VPC, and EMR under EC2) and includes fallback logic to ensure comprehensive coverage across all AWS usage patterns. [CCM-25768]
+
+### Fixed Issues
+
+- **Anomalies Table Sorting**: The default view of the anomalies table now sorts by "Cost Impact" in descending order. [CCM-26665]
+- **Perspective Page Improvements**: CCM has removed the 'Apply Filter' functionality from the anomalies tooltip on the Perspective page. Anomalies now correctly honor the perspective data aggregation value. [CCM-26647]
+
 
 ## October 2025 - Version 1.66.0
 #### Deployment Date: October 15, 2025 (Prod-1)

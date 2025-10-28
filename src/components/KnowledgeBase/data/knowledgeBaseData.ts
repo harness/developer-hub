@@ -29,6 +29,6 @@ export const knowledgeBaseList: CardItem[] = [
     title: "Mount Custom Cert in Delegate via ConfigMap",
     module: MODULES.platform,
     date: "July 31, 2023",
-    link: "/kb/platform/articles/mount-custom-cert-with-delegate",
+    link: "/docs/platform/knowledgebase/articles/mount-custom-cert-with-delegate",
   },
 ];
