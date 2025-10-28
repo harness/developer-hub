@@ -23,7 +23,7 @@ Before you begin, ensure you have the following:
 | --------------------------------- | ----------------------------------- |
 | Android                           | API Level 21 (Android 5.0 Lollipop) |
 | `@splitsoftware/split-openfeature-provider-android` | ≥ 1.0.0                          |
-| OpenFeature Kotlin SDK            | ≥ 1.0.0                             |
+| OpenFeature Kotlin SDK            | ≥ 0.7.0                             |
 
 ## Install the provider and dependencies
 
