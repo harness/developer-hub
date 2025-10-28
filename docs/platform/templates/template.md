@@ -152,6 +152,23 @@ You can set any version of your template as the stable version using the **Set a
 Harness emits an Audit Event whenever the stable version of a template is updated. The Audit Event includes a YAML Diff section, allowing users to easily view the differences between the old and new stable versions of the template.
 :::
 
+### Check Template Reference
+
+You can view all templates created under an account by navigating to Account Settings --> Templates. 
+A comprehensive view is offered under **Templates** with details such as Template Name, Template Type, Scope, Repository, Version, and **Template Reference for each template**.
+
+**The Template Reference status ( Referenced or Unreferenced )** allows you to see whether a template is utilized ( Referenced ) by any Harness Entity, such as a Pipeline, Connector, Notification Rule, any other such entity, or even another template. Also , it helps you to quickly identify unused templates ( Unreferenced ) without having to navigate to the preview of each template and understand dependencies across templates and entities.
+
+The **status appears next to the stable version** of each template. You can also click a template and go to **Referenced By** to view all the Harness Entities that are leveraging that template.
+
+:::info note
+Currently this feature is behind feature flag `PIPE_REFERENCED_TEMPLATES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
+
+![](./static/template-reference.png)
+
+
+
 ## Preview a template
 
 You can view the **Details** and **Activity Log** of your template by selecting **Preview Template**.
