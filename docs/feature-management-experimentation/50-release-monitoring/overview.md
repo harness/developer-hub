@@ -2,10 +2,6 @@
 title: Overview
 description: Learn about Release Monitoring capabilities in Harness FME.
 sidebar_position: 10
-id: index
-slug: /feature-management-experimentation/release-monitoring
-redirect_from:
-- /docs/feature-management-experimentation/release-monitoring/overview
 ---
 
 This document provides an overview of Release Monitoring and how it can be used to improve the performance and behavioral health of your application.
