@@ -138,7 +138,7 @@ configuration
 
 #### Policy type
 
-The [scan mode](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) to use. 
+The [scan mode](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) to use. 
 
 ##### Key
 ```
@@ -228,4 +228,3 @@ import ScannerRefAdditionalConfigs from '/docs/security-testing-orchestration/st
 import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto-techref-category/shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
-

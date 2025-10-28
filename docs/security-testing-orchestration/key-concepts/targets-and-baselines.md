@@ -5,6 +5,7 @@ sidebar_label: Targets, baselines, and variants
 sidebar_position: 10
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines
+  - /docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines
 ---
 
 This topic discusses the following STO topics:
@@ -18,14 +19,14 @@ This topic discusses the following STO topics:
 ### Targets
 
 
-import StoConceptTargets from '../shared/targets.md';
+import StoConceptTargets from '/docs/security-testing-orchestration/get-started/shared/targets.md';
 
 
 <StoConceptTargets />
 
 <figure>
 
-![Targets and baselines in the Test Targets page](../static/targets-and-baselines.png)
+![Targets and baselines in the Test Targets page](../get-started/static/targets-and-baselines.png)
 
 <figcaption>Test Targets page</figcaption>
 </figure>
@@ -60,7 +61,7 @@ If you scanned the baseline, or the baseline isn't defined, you'll see
 <figure>
 
 
-![Targets and baselines in the Test Targets page](../static/new-vs-common-issues-in-security-test-results.png)
+![New and common issues in the Test Targets page](../get-started/static/new-vs-common-issues-in-security-test-results.png)
 
 <figcaption>New and common issues in Vulnerabilities tab</figcaption>
 </figure>
@@ -71,5 +72,3 @@ If you scanned the baseline, or the baseline isn't defined, you'll see
 import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/why-define-baselines.md';
 
 <StoWhyDefineBaselines />
-
-

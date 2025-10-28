@@ -58,7 +58,7 @@ Do the following:
 
 4. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
-   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
+   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Supported Infrastructure](/docs/security-testing-orchestration/whats-supported/infrastructure) documentation.
 
 ## Add the Zap step
 
@@ -119,7 +119,7 @@ Add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap/za
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
-    - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview)
+    - `mode :` [`orchestration`](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview)
     - [`config`](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#scan-configuration) `: default # | standard | attack | quick`
       - `target : `
         - `name : https://myorg.org/welcome`
@@ -129,7 +129,7 @@ Add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap/za
       - `advanced : `
         - `log :`
           - `level : info`
-        - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : critical`
+        - [`fail_on_severity`](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity) ` : critical`
 
 Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-instance):
 
@@ -169,7 +169,7 @@ Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-
 
 :::tip
 
-It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
+It is [good practice](/docs/security-testing-orchestration/key-concepts/targets-and-baselines#every-target-needs-a-baseline) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
 
 :::
 

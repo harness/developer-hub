@@ -97,7 +97,7 @@ By ingesting your custom issues, you can benefit from STO's refinement, deduplic
 
 ## How does STO identify new issues and display them in the UI?
 
-You can define a [_baseline_](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) for each target. The baseline is the object that you want to update. For example, your scan target might be a codebase for a specific service that you're looking to update. You specify the `main` branch as the baseline. You run scans on the `main` branch and any number of non-main branches. Each scan has its own set of identified issues. 
+You can define a [_baseline_](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) for each target. The baseline is the object that you want to update. For example, your scan target might be a codebase for a specific service that you're looking to update. You specify the `main` branch as the baseline. You run scans on the `main` branch and any number of non-main branches. Each scan has its own set of identified issues. 
 
 STO identifies an issue as "new" like this:
 
@@ -125,7 +125,7 @@ Harness supports two RBAC roles specifically for STO users. You can customize th
 
 * **AppSec** role — Permissions needed for Application Security or Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions.
 
-These workflows are covered in [Add Security Testing roles](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles).
+These workflows are covered in [Add Security Testing roles](/docs/security-testing-orchestration/rbac).
 
 ## How do I set up a CheckMarx scan step in YAML?
 
@@ -197,7 +197,7 @@ The following diagram illustrates the three stages in the STO deduplication pipe
 
 STO maintains its own set of container images pre-installed with open-source scanners such as Bandit, OWASP, Zap, Prowler, and Aqua Trivy. This makes it easy to get started running scans and generating results. The STO UI uses one format to report all detected issues and includes in-depth information about each detected issue: location, severity, and links to in-depth information, and so on.
 
-To get started, go to [Get started with STO](/docs/category/get-started-with-sto).
+To get started, go to [Get started with STO](/docs/security-testing-orchestration/get-started).
 
 ## Why don't I see results from specific scans in the Security Testing Dashboard?
 

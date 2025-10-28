@@ -97,7 +97,7 @@ This integration makes security a first-class citizen in the IDP ecosystem, impr
 
 * [Scorecards Overview](https://developer.harness.io/docs/internal-developer-portal/scorecards/scorecard/)
 * [Getting Started with STO](https://developer.harness.io/docs/security-testing-orchestration/get-started/overview/)
-* [Create Test Targets in STO](https://developer.harness.io/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines/)
+* [Create Test Targets in STO](https://developer.harness.io/docs/security-testing-orchestration/key-concepts/targets-and-baselines/)
 
 ## How It Works
 
@@ -169,7 +169,7 @@ spec:
 
 ### 2. STO Test Target Annotation 
 
-The `harness.io/sto-test-target` annotation links an IDP component to the scan targets that Harness STO processes during its own, separate pipeline executions. These scan targets serve as the bridge between STO's test results and the corresponding IDP entity, ensuring that findings are accurately associated. You can always know more about [Creating Test Targets in STO](https://developer.harness.io/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines/) from our docs.
+The `harness.io/sto-test-target` annotation links an IDP component to the scan targets that Harness STO processes during its own, separate pipeline executions. These scan targets serve as the bridge between STO's test results and the corresponding IDP entity, ensuring that findings are accurately associated. You can always know more about [Creating Test Targets in STO](https://developer.harness.io/docs/security-testing-orchestration/key-concepts/targets-and-baselines/) from our docs.
 
 The targets can be of two types:
 1. **Source Code (Git-based)**

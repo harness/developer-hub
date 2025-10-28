@@ -7,6 +7,8 @@ redirect_from:
   - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data
   - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline
   - /docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline
+  - /docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines
+  - /docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline
 helpdocs_topic_id: d24n34qdbk
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false
@@ -41,5 +43,5 @@ Here are some example ingestion-only workflows that target specific use cases:
 ## See also
 
 - [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data)
-- [Ingest Results from unsupported scanners](../../custom-scanning/ingesting-issues-from-other-scanners.md)
+- [Ingest Results from unsupported scanners](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners)
 - [Harness STO scanner support](/docs/security-testing-orchestration/whats-supported/scanners)

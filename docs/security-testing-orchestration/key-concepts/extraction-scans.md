@@ -3,6 +3,8 @@ title: Extraction mode for SaaS scan tools
 description: Extract and ingest results from SaaS scanners
 sidebar_label: Extraction mode
 sidebar_position: 90
+redirect_from:
+  - /docs/security-testing-orchestration/get-started/key-concepts/extraction-scans
 ---
 
 Extraction scans can be useful when you're working with SaaS-based scanners such as [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) and [Burp Enterprise](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference), where you can extract scan results from an API endpoint. 
@@ -21,7 +23,7 @@ The most common use cases for Extraction mode are:
      1) A Run step sends a request to the SaaS API that starts the custom scan.
      2) A scan step runs in Extraction mode. When the custom scan finishes, the step extracts the results from the scanner API and correlates, deduplicates, and ingests the results.
 
-       <DocImage path={require('../static/extraction-stage-example.png')} width="70%" height="70%" title="Select policy sample" />
+       <DocImage path={require('/docs/security-testing-orchestration/get-started/static/extraction-stage-example.png')} width="70%" height="70%" title="Select policy sample" />
 
 <table>
    <tr>
@@ -107,4 +109,3 @@ Here's a simple extraction setup for Anchore Enterprise:
 1. [Domain](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#domain-1) The Anchore Enterprise SaaS URL
 2. [Access ID](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#access-id-1) 
 3. [Access token](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#access-token-1)
-

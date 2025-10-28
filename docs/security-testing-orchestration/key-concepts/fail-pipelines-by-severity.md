@@ -5,6 +5,7 @@ sidebar_position: 40
 sidebar_label: Fail pipelines based on scan results
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/fail-pipelines-by-severity
+  - /docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity
 ---
 
 You can set up your pipelines to fail automatically if a scan step detects any issues that meet your failure criteria. This is good practice for all integrated pipelines because it ensures that the pipeline doesn't build and publish updates with serious vulnerabilities. 
@@ -12,7 +13,7 @@ You can set up your pipelines to fail automatically if a scan step detects any i
 ## Basic workflow to fail pipelines by severity in STO
 
 
-import StoConceptFailOnSeverity from '../../sto-techref-category/shared/step-palette/all/fail-on-severity.md';
+import StoConceptFailOnSeverity from '../sto-techref-category/shared/step-palette/all/fail-on-severity.md';
 
 
 

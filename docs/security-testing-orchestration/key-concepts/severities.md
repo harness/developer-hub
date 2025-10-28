@@ -5,6 +5,7 @@ sidebar_label: Severity scores and levels
 sidebar_position: 20
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/severities
+  - /docs/security-testing-orchestration/get-started/key-concepts/severities
 ---
 
 STO assigns a *severity score* to each detected vulnerability. Each score is based on the [Common Vulnerability Scoring System (CVSS) version 3.1](https://www.first.org/cvss/examples). If a vulnerability doesn't have a universal CVSS score, STO uses the score assigned by the scanner that detected the vulnerability. 

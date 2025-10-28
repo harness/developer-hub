@@ -951,7 +951,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
-This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
+This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/key-concepts/output-variables). 
 
 This release includes a set of security test policy samples, which make it easy to create policies such as:
 
@@ -1212,7 +1212,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption. (STO-5056, formerly behind feature flag `STO_EXEMPTION_DETAILS`) 
 
-    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
   - The **Security Tests** tab includes a set of **Security Executions** pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212, formerly behind feature flag `STO_DROPDOWN_FILTERS`).
 
@@ -1276,7 +1276,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 
@@ -1333,7 +1333,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 

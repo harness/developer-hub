@@ -18,7 +18,7 @@ The **[Issues](#navigate-to-issues-section)** section at the **Project** level p
 <DocVideo src="https://youtu.be/CLqFqmZh2YM" title="Navigating the Issues section" />
 
 :::info
-- The **Issues** section displays only the issues impacting your project's [baselines](https://developer.harness.io/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines/). If your project has no targets or baselines configured, this page will not present the issues, even if scans have been executed against non-baseline targets.
+- The **Issues** section displays only the issues impacting your project's [baselines](https://developer.harness.io/docs/security-testing-orchestration/key-concepts/targets-and-baselines/). If your project has no targets or baselines configured, this page will not present the issues, even if scans have been executed against non-baseline targets.
 - To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 :::
 

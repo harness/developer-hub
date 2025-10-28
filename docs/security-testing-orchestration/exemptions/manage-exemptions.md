@@ -101,9 +101,9 @@ Clicking **Cancel** on an exemption request immediately removes it from the syst
 
 ## Best Practices
 
-- A user with the [Security Testing AppSec](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) role should periodically review all exemptions and update their statuses as needed.
+- A user with the [Security Testing AppSec](/docs/security-testing-orchestration/rbac) role should periodically review all exemptions and update their statuses as needed.
   
-- Always [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline). If a target doesn’t have a baseline, exemption details won’t be visible. Instead, you’ll see a link prompting you to define the target’s baseline.  
+- Always [define a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines#every-target-needs-a-baseline). If a target doesn’t have a baseline, exemption details won’t be visible. Instead, you’ll see a link prompting you to define the target’s baseline.  
   <img src={baseline_not_defined} alt="Can't view exemption details because the target has no baseline" height="50%" width="50%" />
 
 - You can view the **Time Remaining** for approved exemptions and the **Requested Duration** for pending, rejected, and expired requests.

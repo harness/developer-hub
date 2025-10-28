@@ -12,8 +12,8 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
@@ -98,7 +98,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
    - Copy results from a Wiz scan that ran outside the pipeline. 
 
-   For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
+   For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
 
 
@@ -175,9 +175,9 @@ import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto
 
 #### Name 
 
-The identifier for the [target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) such `codebaseAlpha`. Descriptive target names make it much easier to navigate your scan data in the STO UI.
+The identifier for the [target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) such `codebaseAlpha`. Descriptive target names make it much easier to navigate your scan data in the STO UI.
 
-It is good practice to [specify a baseline](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline) for every target. 
+It is good practice to [specify a baseline](/docs/security-testing-orchestration/key-concepts/targets-and-baselines#every-target-needs-a-baseline) for every target. 
 
 
 #### Variant
@@ -241,7 +241,7 @@ import StoSettingImageAccessToken from '../shared/step-palette/image/access-toke
 
 ### Ingestion File
 
-The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
+The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
 
 - The data file must be in a [supported format](/docs/security-testing-orchestration/whats-supported/scanners#supported-ingestion-formats) for the scanner.
 

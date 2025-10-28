@@ -29,7 +29,7 @@ You can use Harness Policy as Code to enforce policies such as:
     - [Harness Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
     - [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
     - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
-  - [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
+  - [Severity scores and levels in STO](/docs/security-testing-orchestration/key-concepts/severities)
 
 
 ## Security Test policy samples

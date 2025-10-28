@@ -26,8 +26,8 @@ This tutorial shows you how to use the Harness Security Testing Orchestration (S
 In addition to a Harness account, this tutorial requires the following:
 
 - A Harness account and STO module license.
-- You need to have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/get-started/onboarding-guide/#add-security-testing-roles) assigned to your user profile.
-- You also need a GitHub account and a [connector](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-a-codebase-connector) to your GitHub account.
+- You need to have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/rbac) assigned to your user profile.
+- You also need a GitHub account and a connector to your GitHub account.
   This tutorial uses an [example codebase on GitHub](https://github.com/williamwissemann/dvpwa) that contains known vulnerabilities.
 
 :::
@@ -90,14 +90,14 @@ Do the following:
 
 4. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
-   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
+   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started).
 
 ### Add a Bandit scan step
 
 <details open>
 <summary> Key concept: scan targets and variants</summary>
 
-Every STO scan has a specific [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+Every STO scan has a specific [target name and variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines).
 
 - The name specifies the repository, image, or instance to scan.
 - The variant specifies the codebase branch, image tag, app version, or other variant. 
@@ -118,13 +118,13 @@ import TabItem from '@theme/TabItem';
 
    1. Scan Mode = **Orchestration**
 
-      Indicates that this is an [orchestrated scan](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) that runs the scan and ingests the results in one step.
+      Indicates that this is an [orchestrated scan](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) that runs the scan and ingests the results in one step.
 
    2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Runtime input**. You'll specify this and other values when you run the pipeline.
 
    3. Variant — Select **Runtime input** as the value type.
 
-      Every STO scan has a [target variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) that specifies the branch, tag, or other variant to scan.
+      Every STO scan has a [target variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) that specifies the branch, tag, or other variant to scan.
 
 </TabItem>
   <TabItem value="YAML" label="YAML">
@@ -135,12 +135,12 @@ Add a `Bandit` step to your `SecurityTests` stage and configure it as follows.
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
-  - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+  - `mode :` [`orchestration`](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
     - `target : `
       - `name : <+input>`
       - `type : repository`
-      - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline.
+      - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) when you run the pipeline.
         When scanning a repository, you will generally use the repository name and branch for these fields.
     - `advanced : `
       - `log :`
@@ -472,217 +472,3 @@ You can implement [Failure Strategies](/docs/platform/pipelines/failure-handling
 2. The scanner detects issues and the Security Test step generates an error.
 3. The Failure Strategy in the Build step initiates a 30-minute pause before proceeding.
 4. The developer and security team evaluate the issues and then abort the pipeline execution or allow it to proceed.
-
-## YAML pipeline example
-
-Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
-
-```yaml
-pipeline:
-  name: your-first-pipeline-v2
-  identifier: yourfirstpipelinev2
-  projectIdentifier: YOUR_HARNESS_PROJECT_ID
-  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
-  tags: {}
-  stages:
-    - stage:
-        name: bandit_repo_scan
-        identifier: bandit_repo_scan
-        description: ""
-        type: SecurityTests
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Bandit
-                  name: bandit_repo_scan
-                  identifier: bandit_repo_scan
-                  spec:
-                    mode: orchestration
-                    config: default
-                    target:
-                      name: <+input>
-                      type: repository
-                      variant: <+input>
-                    advanced:
-                      log:
-                        level: info
-                      fail_on_severity: critical
-  properties:
-    ci:
-      codebase:
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-        repoName: <+input>
-        build: <+input>
-```
-
-<!--
-
-#### Integrated STO/CI Workflow Example
-
-The following pipeline extends the example workflow described above. After it scans the repo, it builds a container image, scans the image, and fails the pipeline if the image scan fails. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
-
-![](./static/your-first-pipeline/integrated-pipeline-in-ui.png)
-
-This pipeline works as follows:
-
-1. The **SecurityTestStage** consists of the following steps:
-
-    1. **backgroundDinD** runs Docker-in-Docker as a background service. This is required to scan the container image.
-    2. **banditScan** scans a GitHub repo used to build the container image.
-    In this case, `fail_on_severity` is set to `high`.
-    3. **buildAndPush_PRIVATE** builds a local container image from the repository and pushes it to a private registry.
-    3. The **aquaTrivyScan** step uses the open-source tool [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) to scan the local image. It has `fail_on_severity` set to `high`.
-    4. If the container image has no issues with high or critical severity, **buildAndPush_PUBLIC** pushes the image to a public registry.
-
-2. The **sendEmail** stage includes an step that sends an email if the previous stage succeeded.
-
-After the pipeline executes, you can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
-
-![](./static/your-first-pipeline/integrated-pipeline-security-tests.png)
-
-
-
-
-#### Integrated Workflow YAML
-
-Here's the YAML of the integrated workflow example we examined in this tutorial.
-
-<details>
-<summary>Integrated Workflow YAML</summary>
-
-
-``` yaml
-pipeline:
-  projectIdentifier: YOUR_HARNESS_PROJECT_ID
-  orgIdentifier: foobar
-  tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-        repoName: dvpwa
-        build: <+input>
-  stages:
-    - stage:
-        name: securityTestStage
-        identifier: securityTestStage
-        type: CI
-        spec:
-          cloneCodebase: true
-          sharedPaths:
-            - /var/run
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: YOUR_K8S_DELEGATE_CONNECTOR
-              namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              harnessImageConnectorRef: account.harnessImage
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: Background
-                  name: backgroundDinD
-                  identifier: Background_1
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: docker:dind
-                    shell: Sh
-                    privileged: true
-              - step:
-                  type: Bandit
-                  name: banditScan
-                  identifier: Bandit_1
-                  spec:
-                    mode: orchestration
-                    config: default
-                    target:
-                      name: dvpwa
-                      type: repository
-                      variant: " <+codebase.branch> "
-                    advanced:
-                      log:
-                        level: info
-                      fail_on_severity: high
-                  failureStrategies:
-                    - onFailure:
-                        errors:
-                          - AllErrors
-                        action:
-                          type: Ignore
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: buildAndPush_PRIVATE
-                  identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    repo: foobar/sto-tutorial-test-private
-                    tags:
-                      - <+pipeline.sequenceId>
-              - step:
-                  type: AquaTrivy
-                  name: aquaTrivyScan
-                  identifier: AquaTrivy_1
-                  spec:
-                    mode: orchestration
-                    config: default
-                    target:
-                      name: sto-tutorial-test-private
-                      type: container
-                      variant: <+pipeline.sequenceId>
-                    advanced:
-                      log:
-                        level: info
-                      fail_on_severity: high
-                    privileged: true
-                    image:
-                      type: docker_v2
-                      name: foobar/sto-tutorial-test-private
-                      tag: <+pipeline.sequenceId>
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: buildAndPush_PUBLIC
-                  identifier: buildAndPush_PUBLIC
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    repo: foobar/sto-tutorial-test
-                    tags:
-                      - <+pipeline.sequenceId>
-        variables: []
-    - stage:
-        name: sendEmail
-        identifier: sendEmail
-        description: ""
-        type: Custom
-        spec:
-          execution:
-            steps:
-              - step:
-                  type: Email
-                  name: Email_1
-                  identifier: Email_1
-                  spec:
-                    to: my.email@myorg.org
-                    cc: ""
-                    subject: NEW IMAGE! Scan results for <+pipeline.name>
-                    body: "STO scan of <+pipeline.name> found the following issues:  <br> --------------------------------------------------------------<br> Bandit repo scan:<br>              Critical : <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.CRITICAL> <br>              New Critical : <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_CRITICAL> <br>              High: <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.HIGH> <br>              New High: <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_HIGH> <br>              Medium: <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.MEDIUM> <br>              New Medium: <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_MEDIUM> <br>  --------------------------------------------------------------<br> Aqua Trivy image scan:<br>              Critical : <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.CRITICAL> <br>              New Critical : <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.NEW_CRITICAL> <br>              High: <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.HIGH> <br>              New High: <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.NEW_HIGH> <br>              Medium: <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.MEDIUM> <br>              New Medium: <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.NEW_MEDIUM> <br>                See https://app.harness.io/ng/#/account/MY_ACCOUNT_ID/sto/orgs/default/"
-                  timeout: 10m
-        tags: {}
-  identifier: tutorial4integratedstoci
-  name: 2023-tutorial-4-integrated-sto-ci
-
-
-```
-</details>
-
--->

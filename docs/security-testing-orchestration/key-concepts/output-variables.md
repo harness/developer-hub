@@ -5,17 +5,18 @@ sidebar_position: 30
 sidebar_label: Scan output variables
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/output-variables
+  - /docs/security-testing-orchestration/get-started/key-concepts/output-variables
 ---
 
 
-import StoConceptOutputVariables from '../shared/output-variables.md';
+import StoConceptOutputVariables from '/docs/security-testing-orchestration/get-started/shared/output-variables.md';
 
 
 <StoConceptOutputVariables />
 
 To view the output variables for a scan, go to the Pipeline Execution page, select the scan step, and click **Output**. 
 
-![output variables for a scan](../static/output-variables-in-ui.png)
+![output variables for a scan](../get-started/static/output-variables-in-ui.png)
 
 
 For information about how severity levels are calculated, go to [Severities](./severities.md).

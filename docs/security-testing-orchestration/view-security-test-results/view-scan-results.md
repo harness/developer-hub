@@ -46,7 +46,7 @@ Issues identified in the scan are categorized as follows:
 <DocImage path={require('./static/scan-comparison.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::note
-- For optimal results, define a baseline for each target in STO. See [Targets, Baselines, and Variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+- For optimal results, define a baseline for each target in STO. See [Targets, Baselines, and Variants in STO](/docs/security-testing-orchestration/key-concepts/targets-and-baselines).
 - Issue categorization (**Only in \<target>:\<variant>** and **Remediated**) relies on the baseline used during the scan execution, which may differ from the current baseline if dynamic baselines based on regular expressions are used. See [Dynamic Baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions).
 :::
 

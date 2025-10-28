@@ -5,6 +5,8 @@ sidebar_position: 60
 redirect_from: 
   - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview
   - docs/category/orchestrate-scans-and-ingest-data
+  - /docs/security-testing-orchestration/key-concepts/sto-workflows-overview
+  - /docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview
 helpdocs_topic_id: cjqnd71y07
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false
@@ -32,7 +34,7 @@ An ingestion scan requires at least two steps:
 1. A Run step saves the scan data to a shared folder. 
 2. A Security or Security Tests step ingests the data from the shared folder.
 
-For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline.md). 
+For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline.md). 
 
 ### Extraction scans in STO
 
@@ -40,4 +42,4 @@ For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/sec
 
 ![](./static/sto-workflows-overview-04.png)
 
-For more information, go to [Extraction mode for SaaS scan tools](/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans).
+For more information, go to [Extraction mode for SaaS scan tools](/docs/security-testing-orchestration/key-concepts/extraction-scans).

@@ -469,7 +469,7 @@ This feature includes the following UI enhancements for working with exemptions:
 
    ![](static/sto-click-row-to-view-exemptions.png)
 
-- For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+- For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
    ![](static/sto-exemption-details-no-baseline-selected.png)
 

@@ -8,6 +8,7 @@ helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
+  - /docs/security-testing-orchestration/get-started/overview
   - /docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics
   - /tutorials/security-tests/sto-overview
 ---
@@ -82,9 +83,9 @@ Harness STO automatically aggregates, normalizes, and deduplicates data to ident
 
 You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the pipeline automatically if any "show-stopper" vulnerabilities are detected.
 
-These workflows are covered in [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline).
+These workflows are covered in the [Get Started](/docs/security-testing-orchestration/get-started) guide.
 
-![](./static/security-testing-orchestration-basics-31.png)
+<DocImage path={require('/docs/security-testing-orchestration/get-started/static/security-testing-orchestration-basics-31.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Now let's apply these features to common use cases:
 
@@ -127,4 +128,4 @@ For a list of supported scanners, see [Scanners supported by STO](/docs/security
 
 ## Try Harness STO
 
-Check out the [STO tutorials](/docs/security-testing-orchestration/get-started/tutorials) and get started running [your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline) today!
+Check out the [Get Started guide](/docs/security-testing-orchestration/get-started) and run your first scan today!

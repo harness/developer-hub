@@ -92,10 +92,10 @@ This topic assumes that you have the following:
 
   STO supports two methods for specifying failure criteria: 
 
-   - [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity)  Every scan step has a Fail on Severity setting that fails the step if the scan detects any issues with the specified severity or higher. 
+   - [Fail on Severity](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity)  Every scan step has a Fail on Severity setting that fails the step if the scan detects any issues with the specified severity or higher. 
 
    - [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies) You can use Harness Policy as Code to write and enforce policies based on severity, reference ID, title, CVE age, STO output variables, and number of occurrences.
 
 * At least one successful build with a set of detected security issues. 
-* Security Testing Developer or [Security Testing AppSec](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user permissions are required to [request exemptions](#request-an-sto-exemption).
+* Security Testing Developer or [Security Testing AppSec](/docs/security-testing-orchestration/rbac)  user permissions are required to [request exemptions](#request-an-sto-exemption).
 * Only Security Testing AppSec users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.   -->

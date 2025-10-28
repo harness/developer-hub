@@ -10,7 +10,7 @@ helpdocs_is_published: truex
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
@@ -23,11 +23,11 @@ Harness STO integrates with [SonarQube](https://docs.sonarqube.org/latest/) to s
 
 ### SonarQube Issue categorization in STO
 
-STO categorizes the SonarQube issues with severities: **Critical**, **High**, **Medium**, **Low**, and **Info**, refer to [STO severity levels](/docs/security-testing-orchestration/get-started/key-concepts/severities) for more details. The table below outlines how specific SonarQube issue types are classified in STO.
+STO categorizes the SonarQube issues with severities: **Critical**, **High**, **Medium**, **Low**, and **Info**, refer to [STO severity levels](/docs/security-testing-orchestration/key-concepts/severities) for more details. The table below outlines how specific SonarQube issue types are classified in STO.
 
 | SonarQube Issue Type        | STO Categorization                                                        |
 |-----------------------------|-----------------------------------------------------------------------------------|
-| Vulnerabilities         | Imported, normalized, deduplicated and assigned [STO severity levels](/docs/security-testing-orchestration/get-started/key-concepts/severities). See [severity mapping table](#sonarqube-severity-mapping) below.            |
+| Vulnerabilities         | Imported, normalized, deduplicated and assigned [STO severity levels](/docs/security-testing-orchestration/key-concepts/severities). See [severity mapping table](#sonarqube-severity-mapping) below.            |
 | Code Smells, Bug Smells | By default, imported and categorized under **Info** severity. <br/> If you enable the **Treat Code Smells and Bug Smells as Vulnerabilities** in **Default Settings** at Account level Settings (disabled by default), STO imports these issues with their original severities. See [severity mapping table](#sonarqube-severity-mapping) below. |
 | Maintainability issues| Imported and categorized under **Info** severity.                                   |
 | [Quality Gates (Policies)](#view-sonarqube-quality-gate-failures)| Imported and categorized as policy issues with **Info** severity.                   |
