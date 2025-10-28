@@ -52,6 +52,7 @@ This list covers common issues but is not exhaustive. Additional organization-le
 7. Access control:
     - Organization-level RBAC policies do not transfer when a project is moved and and must be recreated in the destination organization to maintain proper access controls.
     - When a project move is initiated, all project-level access control components including role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
+    - Account-level resource groups with resource scope that includes the specificed project are moved across organizations, it will be automatically updated to reflect the new organization scope.
 
 8. Audit logs:
     - Existing audit logs remain in the source organization and are not moved with the project. Any links in these logs pointing to the moved project or older organization will become inaccessible.
