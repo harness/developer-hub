@@ -17,8 +17,8 @@ The table below outlines the current features available on the Harness Self-Mana
 | **Features** | **AWS** | **GCP** | **Kubernetes** | 
 | --- | --- | --- | --- | --- |
 |Perspectives | ✅  | ✅ | ✅ |
-|Cost categories | ✅  | ✅ | ✅ | 
-|Budgets | ✅  | ✅ | ✅ | ✅ |
+|Cost categories | ✅ | ✅ | ✅ | 
+|Budgets | ✅ | ✅ | ✅ |
 |BI dashboards |✅ | ✅ | ✅ | 
 |Anomaly detection  | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | 
