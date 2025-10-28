@@ -14,20 +14,20 @@ The table below outlines the current features available on the Harness Self-Mana
   
 ### Connected Environment 
 
-| **Features** | **AWS** | **GCP** | **Kubernetes** | 
+| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
 | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ✅ | ✅ |
-|Cost categories | ✅ | ✅ | ✅ | 
-|Budgets | ✅ | ✅ | ✅ |
-|BI dashboards |✅ | ✅ | ✅ | 
-|Anomaly detection  | ✅ | ✅ | ✅ |
-|Currency standardization | ❌ | ❌ | ❌ | 
-|Recommendations |✅ | ✅ | ✅ | 
-|AutoStopping | ❌ | ❌ | ❌ | 
-|Asset governance | ❌ | ❌ | ❌ | 
-|Perspective Preferences| ✅ | ✅ | ✅ |
-|Commitment Orchestrator | ❌ | ❌ | ❌ | 
-|Cluster Orchestrator | ❌ | ❌ | ❌ | 
+|Perspectives | ✅ | ✅  | ✅ | ✅ |
+|Cost categories | ✅ | ✅ | ✅ | ✅ | 
+|Budgets | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards | ✅ | ✅| ✅ | ✅ | 
+|Anomaly detection  | ✅ | ✅ | ✅ | ✅ |
+|Currency standardization | ❌ | ❌ | ❌ | ❌ | 
+|Recommendations |✅ | ✅ | ❌  | ✅ | 
+|AutoStopping | ❌ | ❌ | ❌ | ❌ | 
+|Asset governance | ❌ | ❌ | ❌ | ❌ | 
+|Perspective Preferences| ✅ | ✅ |✅ | ✅ |
+|Commitment Orchestrator | ❌ | ❌ | ❌ | ❌ | 
+|Cluster Orchestrator | ❌ |  ❌ | ❌ | ❌ | 
 
 
 ### Air-Gapped environment
@@ -40,11 +40,9 @@ The table below outlines the current features available on the Harness Self-Mana
 |BI dashboards |✅  | ❌  | ✅   | ✅ | 
 |Anomaly detection  | ✅ | ❌  | ✅   | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | 
-|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|Recommendations |✅ | ❌ | ❌ | ✅ | 
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
 |Perspective Preferences| ✅ | ❌  | ✅  | ✅ | 
 |Commitment Orchestrator | ❌ | ❌ | ❌ | ❌ | 
 |Cluster Orchestrator | ❌ | ❌ | ❌ | ❌ | 
-
-:::note
