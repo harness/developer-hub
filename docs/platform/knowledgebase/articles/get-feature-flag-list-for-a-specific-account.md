@@ -1,5 +1,8 @@
-# How to extract Harness Feature Flags 
-
+---
+title: How to extract Harness Feature Flags 
+redirect_from:
+  - /kb/platform/articles/get-feature-flag-list-for-a-specific-account
+---
 ## Feature Flags on the Harness Platform
 
 The Harness Platform is continuously evolving, with the product team regularly releasing new features and critical fixes. However, not all features and fixes are immediately available to all customers, as they must undergo thorough testing and validation.

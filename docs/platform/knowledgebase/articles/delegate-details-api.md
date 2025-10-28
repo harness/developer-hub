@@ -1,5 +1,7 @@
 ---
 title: Delegate disconnected via API check
+redirect_from:
+  - /kb/platform/articles/delegate-details-api
 ---
 
 ## Problem Statement

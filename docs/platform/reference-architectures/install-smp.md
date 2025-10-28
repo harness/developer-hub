@@ -1,6 +1,8 @@
 ---
 title: Install SMP using Harness SMP Installer
 description: This document describes the steps to install SMP on a cloud provider 
+redirect_from:
+    -   /kb/reference-architectures/platform/install-smp
 ---
 
 # Overview

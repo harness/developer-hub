@@ -1,6 +1,8 @@
 ---
 description: KB - Guide on creating a Harness ServiceNow connector using OIDC Refresh Token, with focus on ServiceNow configurations.
 title: Harness ServiceNow connector using OIDC Refresh Token
+redirect_from:
+  - /kb/platform/articles/snow-connector-oidc-refresh-token
 ---
 
 # ServiceNow Connector - OIDC Refresh Token

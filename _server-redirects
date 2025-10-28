@@ -175,5 +175,16 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # redirect for community page @10/21/2025
 /community /#community
 
+# Redirects required for sidebar standardization (platform kb and reference-architecture)
+
+/kb/platform /docs/category/knowledgebase
+/kb/category/articles /docs/category/articles
+/kb/category/custom-implementations /docs/category/custom-implementations
+
+/kb/platform/harness-platform-faqs /docs/platform/harness-platform-faqs
+/kb/platform/new-navigation-faqs /docs/platform/new-navigation-faqs
+/kb/platform/pipeline-faq /docs/platform/pipeline-faq
+
+/kb/reference-architectures/platform /docs/platform/reference-architectures
 
 # Redirects generated from Front Matter [sytem generated goes below here]:

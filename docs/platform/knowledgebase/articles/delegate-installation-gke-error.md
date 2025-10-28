@@ -1,5 +1,7 @@
 ---
 title: Delegate installation error in GKE
+redirect_from:
+    - /kb/platform/articles/delegate-installation-gke-error
 ---
 
 # How Can I Fix The Delegate Installation Error with Readiness Probe Failure in GKE?

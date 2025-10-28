@@ -1,4 +1,8 @@
-# Bootstrapping Harness Build Infrastructure with IaCM and the EKS Module
+---
+title: Bootstrapping Harness Build Infrastructure with IaCM and the EKS Module
+redirect_from:
+  - /kb/reference-architectures/platform/provision-harness-build-farm
+---
 
 Harness Infrastructure-as-Code allows you to run your pipelines on Harness-hosted machines or self-hosted via a Kubernetes Cluster. If you do not have a cluster today but want to run your pipelines on your own infrastructure, we can use the Harness-hosted runner to provision an EKS cluster which we can then set up for running Harness builds.
 
@@ -12,19 +16,19 @@ We will be leveraging the [AWS EKS Module for Terraform](https://github.com/terr
 
 We can chose the "Repository" type and enter the full URL to the EKS module code `https://github.com/terraform-aws-modules/terraform-aws-eks`.
 
-![](../static/iacm-build-infra-gh-0.png)
+![](./static/iacm-build-infra-gh-0.png)
 
 For authentication you can either generate a PAT, create a GitHub app, or authorize the Harness app through OAuth.
 
 Finally make sure you select "Connect through the Harness platform" as the connection type.
 
-![](../static/iacm-build-infra-gh-1.png)
+![](./static/iacm-build-infra-gh-1.png)
 
 ### AWS
 
 Since we are provisioning to AWS we will need an AWS connector, and because we are using Harness hosted infrastructure we will be limited to using IAM User keys or an OIDC role. You shouldn't need to enter a backoff strategy, and make sure you select "Connect through the Harness platform" as the connection type.
 
-![](../static/iacm-build-infra-aws-0.png)
+![](./static/iacm-build-infra-aws-0.png)
 
 ## Create IaCM Workspace
 
@@ -32,19 +36,19 @@ A workspace in IaCM represents the Terraform code you want to provision and a si
 
 Navigate to the IaCM module and workspaces, then create a new workspace. Give it a name and be sure to enable cost estimation so we can be good stewards and know the impact we are having on the bill.
 
-![](../static/iacm-build-infra-workspace-0.png)
+![](./static/iacm-build-infra-workspace-0.png)
 
 [Navigate to the module repository](https://github.com/terraform-aws-modules/terraform-aws-eks) and take a look at the most recent release.
 
-![](../static/iacm-build-infra-workspace-2.png)
+![](./static/iacm-build-infra-workspace-2.png)
 
 Then select `Third-party Git Provider` and select the connector we created for the source repository, fetch by tag and enter the latest tag we saw.
 
-![](../static/iacm-build-infra-workspace-3.png)
+![](./static/iacm-build-infra-workspace-3.png)
 
 Select the AWS connector you created, and what Terraform distribution to use.
 
-![](../static/iacm-build-infra-workspace-1.png)
+![](./static/iacm-build-infra-workspace-1.png)
 
 Click `Save` to create the workspace.
 
@@ -58,7 +62,7 @@ First we need to add an environment variable for setting the target AWS region:
 | --- | --- |
 | AWS_REGION | `us-west-2` |
 
-![](../static/iacm-build-infra-workspace-5.png)
+![](./static/iacm-build-infra-workspace-5.png)
 
 Next we set TF variables for the inputs to the module.
 
@@ -76,7 +80,7 @@ Below is an attempt at a minimum-input set to get an EKS cluster deployed:
 | enable_cluster_creator_admin_permissions | `true` |
 | eks_managed_node_groups | `{"one":{"desired_size":1,"instance_types":["t3.small"],"max_size":1,"min_size":1,"name":"node-group-1"}}` |
 
-![](../static/iacm-build-infra-workspace-4.png)
+![](./static/iacm-build-infra-workspace-4.png)
 
 ### Bootstrap with Terraform
 
@@ -191,27 +195,27 @@ resource "harness_platform_workspace" "this" {
 
 Next create a new Harness pipeline and add an IaCM stage.
 
-![](../static/iacm-build-infra-pipe-0.png)
+![](./static/iacm-build-infra-pipe-0.png)
 
 For build infrastructure we will use `Cloud`.
 
-![](../static/iacm-build-infra-pipe-1.png)
+![](./static/iacm-build-infra-pipe-1.png)
 
 Set the workspace to `Runtime Input`, this will allow this pipeline to be used with other workspaces in the future.
 
-![](../static/iacm-build-infra-pipe-2.png)
+![](./static/iacm-build-infra-pipe-2.png)
 
 On the execute page, select the `Provision` jumpstart.
 
-![](../static/iacm-build-infra-pipe-3.png)
+![](./static/iacm-build-infra-pipe-3.png)
 
 Before the apply step, add in an IaCM approval.
 
-![](../static/iacm-build-infra-pipe-4.png)
+![](./static/iacm-build-infra-pipe-4.png)
 
 Finally we can run the pipeline, and select the workspace we created above.
 
-![](../static/iacm-build-infra-pipe-5.png)
+![](./static/iacm-build-infra-pipe-5.png)
 
 ## Deploy the Delegate
 
@@ -229,7 +233,7 @@ Go to account/org/project settings (based on the scope in which you want this bu
 
 The Delegate wizard will help give you the commands necessary to deploy a delegate into the cluster. Helm is the preferred method of installation here.
 
-![](../static/iacm-build-infra-del-0.png)
+![](./static/iacm-build-infra-del-0.png)
 
 The delegate name should ideally be the name of the cluster you created.
 
@@ -243,13 +247,13 @@ Connectors tell Harness how to connect to platforms, in this case "how can we co
 
 You can go to account/org/project settings and select connectors, `+ New Connector`, then select `Kubernetes Cluster`
 
-![](../static/iacm-build-infra-con-0.png)
+![](./static/iacm-build-infra-con-0.png)
 
 Make the name of the connector the same as the cluster name.
 
 Select `Use the credentials of a specific Harness Delegate (IAM role, service account, etc)` as our connection method.
 
-![](../static/iacm-build-infra-con-1.png)
+![](./static/iacm-build-infra-con-1.png)
 
 Make sure `Only use Delegates with all of the following tags` is selected and then chose the name of the delegate you deployed from the dropdown.
 
@@ -276,6 +280,6 @@ Make sure the `delegate_selectors` match the name you gave the delegate.
 
 Now you can create a new IaCM pipeline, but when you get to the `Infrastructure` selection, select `Kubernetes`, find the connector we created, and select a namespace (that exists already) to run our pipelines in.
 
-![](../static/iacm-build-infra-infra-0.png)
+![](./static/iacm-build-infra-infra-0.png)
 
 This infrastructure can be used for IaCM, CI, and any container-based pipeline executions. You also now have a delegate deployed which is used in many different areas of Harness.

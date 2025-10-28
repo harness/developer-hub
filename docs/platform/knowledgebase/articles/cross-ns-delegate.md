@@ -1,6 +1,8 @@
 ---
 description: KB - Grant a Delegate cross-namespace access for container steps
 title: Cross-namespace access for Harness Delegates
+redirect_from:
+  - /kb/platform/articles/cross-ns-delegate
 ---
 
 ## Install delegate

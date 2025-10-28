@@ -3,6 +3,7 @@ description: KB - Trigger Deployments when Pipelines Complete
 title: Trigger Deployments when Pipelines Complete in NextGen
 redirect_from:
    - /kb/platform/articles/trigger-deployments-when-pipelines-complete-in-nextGen
+   - /kb/platform/articles/trigger-deployments-when-pipelines-complete-in-next-gen
 ---
 
 # Introduction

@@ -1,6 +1,8 @@
 ---
 title: Harness Delegate Architecture Best Practices
-description: Best Practices Document for DO's and Dont for Harness Delegate Architecture 
+description: Best Practices Document for DO's and Dont for Harness Delegate Architecture
+redirect_from:
+  - /kb/reference-architectures/platform/delegate-architecture-bestpractices
 ---
 
 # Harness Delegate Architecture Best Practices
@@ -99,7 +101,7 @@ graph TD
 
 ## Common patterns adapted for Delegate Architecture, pros and cons:
 
-![Delegate Architecture](../static/delegate-hosting-infrastructure-architecture-patterns.png)
+![Delegate Architecture](./static/delegate-hosting-infrastructure-architecture-patterns.png)
 
 ## Delegate Architecture Best Practices (Applicable to All modules CI/CD/CCM/STO/IACM):
 

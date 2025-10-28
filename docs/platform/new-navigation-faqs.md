@@ -2,6 +2,8 @@
 title: New Navigation FAQs
 description: Frequently asked questions about Harness new navigation interface
 sidebar_position: 3
+redirects_from:
+    -   /kb/platform/new-navigation-faqs
 ---
 
 ## General Information

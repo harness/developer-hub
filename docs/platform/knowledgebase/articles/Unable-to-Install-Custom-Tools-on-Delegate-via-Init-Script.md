@@ -1,5 +1,7 @@
 ---
 title: Unable to install custom tools on Delegate via init script
+redirect_from:
+   - /kb/platform/articles/Unable-to-Install-Custom-Tools-on-Delegate-via-Init-Script
 ---
 
 ## Problem

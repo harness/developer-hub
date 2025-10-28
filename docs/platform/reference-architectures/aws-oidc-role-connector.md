@@ -1,6 +1,8 @@
 ---
 title: AWS OIDC Role and Connector with OpenTofu
 description: How to create an AWS role that leverage OIDC for authentication from Harness
+redirect_from:
+  - /kb/reference-architectures/platform/aws-oidc-role-connector
 ---
 
 # AWS OIDC Role and Connector
