@@ -22,7 +22,7 @@ Before you begin, ensure you have the following:
 | Component                                | Minimum Version |
 | ---------------------------------------- | ---------------- |
 | Java                                     | 11+              |
-| `split-openfeature-provider-java`        | ≥ 1.2.1          |
+| `@splitsoftware/split-openfeature-provider-java`        | ≥ 1.2.1          |
 | OpenFeature Java SDK                     | ≥ 1.0.0          |
 
 ## Install the provider and dependencies
