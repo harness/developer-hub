@@ -1248,7 +1248,7 @@ You can listen for four different events from the SDK.
 
 * `SDK_READY_FROM_CACHE`. This event fires if you are using the `LOCALSTORAGE` storage type and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuration](#configuration) for more information). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below:
@@ -1312,7 +1312,7 @@ function whenReady() {
 client.once(client.Event.SDK_READY, whenReady);
  
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
-  // This callback will be called after `readyTimeout` seconds (10 seconds by default)
+  // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
   // if and only if the client is not ready for that time.  
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });
@@ -1373,32 +1373,6 @@ factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' t
 factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
 ```
 
-### Integrate with `react-ga` (Google Analytics)
-
-To integrate the JavaScript SDK with the `react-ga` library, a common wrapper for Google Analytics in React applications, you can configure the JavaScript SDK with the `GOOGLE_ANALYTICS_TO_SPLIT` integration and use the `plugin.require` method from `react-ga` to load the Split plugin.
-
-For example:
-
-```js
-// Adding trafficType and integrations parameters in Split config:
-const sdkConfig = {
-   core: {
-      authorizationKey: 'SDK API KEY',
-      key: 'react-guy',
-      trafficType: 'account'
-   },
-   debug: true,
-   integrations: [{
-      type: 'GOOGLE_ANALYTICS_TO_SPLIT'
-   }]
-};
-
-// Initializing ReactGA
-ReactGA.initialize('UA-xxxxxxxx-1');
-ReactGA.plugin.require('splitTracker');
-ReactGA.pageview(window.location.pathname);
-```
-
 ## Example apps
 
 The following example applications detail how to configure and instantiate the JavaScript SDK on commonly used platforms:
@@ -1412,7 +1386,7 @@ The following example applications detail how to configure and instantiate the J
 
 Using the JavaScript SDK, some percentage of User IDs are double bucketed: the same User ID is processed in the Control block, and at a later call in an actual treatment block.
 
-One possible root cause is that the JavaScript SDK engine completes fetching treatments after the `requestTimeoutBeforeReady` or `readyTimeout` parameter expires, firing the browser event `SDK_READY_TIMED_OUT`.
+One possible root cause is that the JavaScript SDK engine completes fetching treatments after the `startup.requestTimeoutBeforeReady` or `startup.readyTimeout` parameter expires, firing the browser event `SDK_READY_TIMED_OUT`.
 
 This tends to happen for mobile users with slow internet connections.
 
@@ -1450,9 +1424,9 @@ Even if the `SDK_READY_TIMED_OUT` event fires, the SDK might become ready a few 
 
    ```javascript
    startup: {
-   requestTimeoutBeforeReady: 5,    // 5 seconds
-   readyTimeout: 5,                 // 5 seconds
-   retriesOnFailureBeforeReady: 2,  // 2 retries
+     requestTimeoutBeforeReady: 5,    // 5 seconds
+     readyTimeout: 5,                 // 5 seconds
+     retriesOnFailureBeforeReady: 2,  // 2 retries
    }
    ```
 
@@ -1460,8 +1434,8 @@ Even if the `SDK_READY_TIMED_OUT` event fires, the SDK might become ready a few 
 
    ```javascript
    storage: {
-   type: 'LOCALSTORAGE',
-   prefix: 'MYPREFIX'
+     type: 'LOCALSTORAGE',
+     prefix: 'MYPREFIX'
    },
    ```
 
@@ -1527,23 +1501,23 @@ Alternatively, you can explicitly bypass certain requests in your `fetch` event 
 
 ```javascript
 self.addEventListener('fetch', event => {
-// no caching for chrome-extensions
-    if (event.request.url.startsWith('chrome-extension:')) {
-        return false;
-    }
-// prevent header striping errors from workbox strategies for EventSource types
-    if (event.request.url.includes('streaming.split.io')) {
-        return false;
-    }
-// prevent non-cacheable post requests
-    if (event.request.method != 'GET') {
-        return false;
-    }
-// all others, use NetworkFirst workbox strategies
-    if (strategies) {
-        const networkFirst = new strategies.NetworkFirst();
-        event.respondWith(networkFirst.handle({ request: event.request }));
-    }
+  // no caching for chrome-extensions
+  if (event.request.url.startsWith('chrome-extension:')) {
+    return false;
+  }
+  // prevent header striping errors from workbox strategies for EventSource types
+  if (event.request.url.includes('streaming.split.io')) {
+    return false;
+  }
+  // prevent non-cacheable post requests
+  if (event.request.method != 'GET') {
+    return false;
+  }
+  // all others, use NetworkFirst workbox strategies
+  if (strategies) {
+    const networkFirst = new strategies.NetworkFirst();
+      event.respondWith(networkFirst.handle({ request: event.request }));
+  }
 });
 ```
 
@@ -1553,8 +1527,8 @@ When using:
 
 ```javascript
 client.on(client.Event.SDK_READY, function() {
-    var treatment = client.getTreatment("SPLIT_NAME");
-    console.log("Treatment = " + treatment);
+  var treatment = client.getTreatment("SPLIT_NAME");
+  console.log("Treatment = " + treatment);
 });
 ```
 
@@ -1566,8 +1540,8 @@ Instead of relying solely on the event, use the built-in Promise:
 
 ```js
 client.ready().then(() => {
-    var treatment = client.getTreatment("SPLIT_NAME");
-    console.log("Treatment = " + treatment);
+  var treatment = client.getTreatment("SPLIT_NAME");
+  console.log("Treatment = " + treatment);
 });
 ```
 
@@ -1587,13 +1561,13 @@ You can instruct Jest to explicitly resolve to browser by setting the config in 
 
 ```json
 {
-   "name": "MYAPP",
-   "version": "X.X.X",
-   ....
-   "jest": {
-      "browser": true
-   }
-   ...
+  "name": "MYAPP",
+  "version": "X.X.X",
+  ...
+  "jest": {
+    "browser": true
+  }
+  ...
 }
 ```
 
@@ -1611,9 +1585,9 @@ Steps to reproduce:
 1. Install the SDK: `npm i @splitsoftware/splitio@10.6.0`.
 1. Import via ES module: 
    
-   ```js
-   import { SplitFactory } from '@splitsoftware/splitio';
-   ```
+```js
+import { SplitFactory } from '@splitsoftware/splitio';
+```
 
 1. Run `polymer build`.
 
@@ -1660,27 +1634,27 @@ Increase the `startup.readyTimeout` and `startup.requestTimeoutBeforeReady` valu
 
    Where `xxxx` is the fetch duration in milliseconds.
 
-1. Set the `requestTimeoutBeforeReady` and `readyTimeout` in your SDK initialization to a value higher than the fetch duration, for example:
+1. Set the `startup.requestTimeoutBeforeReady` and `startup.readyTimeout` in your SDK initialization to a value higher than the fetch duration, for example:
 
    ```js
    const sdk = SplitFactory({
-      startup: {
-        requestTimeoutBeforeReady: 5000, // 5 seconds
-        readyTimeout: 5000
-      }
-    });
+     startup: {
+       requestTimeoutBeforeReady: 5000, // 5 seconds
+       readyTimeout: 5000
+     }
+   });
    ```
 
 1. To reduce network usage, enable local caching of the FME definition by specifying storage when initializing the SDK:
 
    ```js
    const sdk = SplitFactory({
-      storage: {
-        type: 'LOCALSTORAGE',
-        prefix: 'MYPREFIX'
-      },
-      // other config ...
-    });
+     storage: {
+       type: 'LOCALSTORAGE',
+       prefix: 'MYPREFIX'
+     },
+     // other config ...
+   });
    ```
 
 This configuration ensures the SDK does not have to fetch definitions on every page load, improving readiness on slow or unstable networks.

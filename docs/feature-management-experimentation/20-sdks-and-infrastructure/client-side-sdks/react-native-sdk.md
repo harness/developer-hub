@@ -655,7 +655,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 </TabItem>
 </Tabs>
 
-### Configuring cache
+### Configure cache behavior
 
 To use the pluggable `InLocalStorage` option of the SDK and be able to cache flags for subsequent loads in the same browser, you need to pass it to the SDK config on its `storage` option.
 
@@ -1212,9 +1212,9 @@ While the SDK does not put any limitations on the number of instances that can b
  
 You can listen for three different events from the SDK.
 
-* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuring cache](#configuring-cache) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configure cache behavior](#configure-cache-behavior) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below.
@@ -1239,7 +1239,7 @@ function whenReady() {
 client.once(client.Event.SDK_READY, whenReady);
  
 client.once(client.Event.SDK_READY_TIMED_OUT, function () {
-  // This callback will be called after `readyTimeout` seconds (10 seconds by default)
+  // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
   // if and only if the client is not ready for that time.  
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });
@@ -1271,7 +1271,7 @@ function whenReady() {
 client.once(client.Event.SDK_READY, whenReady);
  
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
-  // This callback will be called after `readyTimeout` seconds (10 seconds by default)
+  // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
   // if and only if the client is not ready for that time.  
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });
