@@ -17,15 +17,19 @@ This guide highlights key pointers to be aware of before moving a project and wh
 
 ## Pre-move validation
 
-Before moving a project, validate the entities to ensure they are not affected by inaccessible resources or broken references. Please note that this is not an exhaustive list.
+Before moving a project, check the following items for organization-level dependencies that may break after the move:
+
+:::note
+This list covers common issues but is not exhaustive. Additional organization-level dependencies may exist in your project.
+:::
 
 1. Pipelines:
     - Pipelines that refer organization-level connectors will break after the move.
     - Secrets used in pipelines may be scoped at the organization level. After moving to a destination organization, these secrets might become unavailable. 
     - Templates used to build pipelines may be scoped at the organization level. Review and make these templates available in the destination organization; otherwise, pipelines may fail to render or execute.
-    - YAML entities may use fully qualified identifiers, such as `orgIdentifier`, that reference the source organization. These identifiers will become obsolete post move.
+    - YAML entities may use fully qualified identifiers, such as `orgIdentifier`, that reference the source organization. These identifiers will not be updated with destination organization identifier.
     - [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining) will fail if the child pipeline’s project is moved.
-    - Pipelines that are running when a project is moved may fail.
+    - Any pipelines running in the project will fail when the move operation begins. Ensure all pipeline executions are completed before initiating the project movement.
 
 2. Notifications:
     - If a notification rule uses a channel from the source organization, the reference will break.
@@ -43,14 +47,14 @@ Before moving a project, validate the entities to ensure they are not affected b
 
 6. Webhooks:
     - Git connectors, generic webhooks, or Slack webhooks using connectors or secrets referencing organization-level resources will break.
-    - Triggers where organization identifiers and project identifiers are present will be no longer functional.
+    - Custom webhook triggers will be no longer functional.
 
 7. Access control:
-    - Organization-level RBAC policies do not transfer when a project is moved and must be reapplied in the destination organization to maintain proper access controls.
-    - When a project move is initiated, all access control components belonging to the project are migrated asynchronously. During this process, access to the project will be temporarily blocked for users.
+    - Organization-level RBAC policies do not transfer when a project is moved and and must be recreated in the destination organization to maintain proper access controls.
+    - When a project move is initiated, all project-level access control components including role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
 
 8. Audit logs:
-    - Historical audit logs are fully preserved when a project is moved. Note that the audit logs before the project was moved might contain links that refer to the older org. These links might break when accessed after the project is moved.
+    - Existing audit logs remain in the source organization and are not moved with the project. Any links in these logs pointing to the moved project or older organization will become inaccessible.
 
 
 :::note Important note

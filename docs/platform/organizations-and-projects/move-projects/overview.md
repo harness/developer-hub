@@ -18,17 +18,17 @@
 This feature requires the `PL_PROJECT_MOVEMENT_ENABLED` feature flag. Contact [Harness support](mailto:support@harness.io) to enable it.
 :::
 
-This feature allows you to move a project across organizations, which is useful during restructuring, or ownership transitions.
+This feature allows you to move a project from one organization to another within your Harness account. This capability is essential for organizational restructuring, team reorganizations, or when consolidating projects under different business units.
 
 ## What happens when you move a project 
 
 1. **Entities are moved**: [Supported entities](#supported-modules), such as pipelines, services, environments, and monitored services, are carried over with the project to the destination organization.
 
-2. **Some references need to be reconfigured**: Resources scoped at the source organization level —such as connectors, secrets, templates, webhooks, or notifications—may become inaccessible after the move. These references need to be recreated or updated in the destination organization. References to account- or project-level entities remain intact.
+2. **Organization-scoped resources need reconfiguration**: Resources scoped at the source organization level become inaccessible after the move. You must recreate connectors, secrets, templates, webhooks, and notifications in the destination organization, then update any project references to point to these new resources. References to account-level or project-level entities remain intact.
 
-3. **Access control and policies**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be reapplied in the destination organization. When a project move is initiated, all access control components belonging to the project are migrated asynchronously. During this process, access to the project will be temporarily blocked for other users.
+3. **Access control requires reconfiguration**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be recreated in the destination organization. All Project-level access control components including role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
 
-4. **Audit logs**: Existing audit logs are preserved, but any links in the logs pointing to source organization resources may break, as those resources will no longer be accessible.
+4. **Audit logs**: Existing audit logs remain in the source organization and are not moved with the project. Any links in these logs pointing to the moved project or older organization will become inaccessible.
 
 For detailed pre-move validation and post-move remediation steps, see the [Move a Project guide](./pre-move-and-post-move-guide.md).
 
