@@ -49,7 +49,7 @@ These sample examples demonstrate practical scenarios to integrate, automate, an
 - [React Native iOS app using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/React-native-iOS-SDK)
 - [React Native Android app using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/React-native-Android-SDK)
 - [iOS Swift app project using the two SDK Factories](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/iOS-two-factories-SDK)
-- [JavaScript code using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavaScript-SDK)
+- [JavaScript code using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Javascript-SDK)
 - [Node.js with React Redux project using the FME JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/nodejs-project)
 - [Android app project using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/android-sdk)
 - [iOS app project using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/iOS-Swift-SDK)
