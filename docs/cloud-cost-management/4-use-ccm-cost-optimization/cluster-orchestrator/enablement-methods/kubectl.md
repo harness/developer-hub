@@ -43,7 +43,9 @@ For a given cluster, click on the enable option, which will take you to the enab
 
 ### Step A: Cluster Permissions
 
-You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure.
+You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure. Please make sure `CLUSTER_NAME` is set to the name of the EKS cluster you want to enable the Cluster Orchestrator for and `REGION` is set to the region of the EKS cluster.
+
+<DocImage path={require('./static/kubectl-enable.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ### Step B: Orchestrator Configuration
 
