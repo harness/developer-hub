@@ -8,6 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 
 ---
+## Before You Begin
+
+### Prerequisites
+- [Harness Kubernetes connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
+- AWS CLI: 2.15.0 or higher
+
+### Compatibility
+- Kubernetes: v1.16 through v1.32
+- Karpenter: v1.1.0 through v1.2.4
+
 
 ## Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
 
