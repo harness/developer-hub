@@ -22,6 +22,77 @@ These release notes describe recent changes to Harness Database DevOps.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
+## October 2025
+### Release 1.60.x
+The `1.60.x` release introduces enhanced logging capabilities, empowering teams to capture and analyze detailed execution-level insights for improved auditing and troubleshooting.
+
+#### Key Highlights:
+* **Feature Enhancements**
+  - Harness Database DevOps can now log additional execution details to a file by configuring the log-level and log-file Liquibase global parameters under Global Settings in pipeline steps. This enhancement enables customers to capture raw SQL statements and server responses, providing richer context for debugging and compliance audits.
+
+**Minimum Supported Versions:**
+  - `dbservice` – 1.60.x
+  - `ng-manager` – 1.110.x (required)
+
+## September 2025
+
+### Release 1.59.x
+The `1.59.x` release enhances migration flexibility, allowing teams to select the migration type per schema and improving the underlying instance structures for smoother operations.
+
+#### Key Highlights:
+* **Feature Enhancements**
+  - Updated Instance Structure which aligns with new schema types, improving consistency and forward compatibility.
+
+**Minimum Supported Versions:**
+  - `dbservice` – 1.59.x
+
+### Release 1.58.x
+The `1.58.x` release expands schema type management, enabling full CRUD operations and better validation while simplifying the UI for database administration.
+
+#### Key Highlights:
+* **Feature Enhancements**
+  - All CRUD operations supported for the new schema type.
+  - Validation Checks ensures consistency for new and default schema types.
+
+**Minimum Supported Versions:**
+  - `dbservice` – 1.58.x
+
+### Release 1.57.x
+The `1.57.x` release delivers key reliability improvements and backend optimizations, strengthening pipeline execution in concurrent and multi-schema scenarios. It also includes version upgrades for enhanced stability and validation consistency.
+
+#### Key Highlights:
+* **Feature Enhancements**
+  - Upgraded Drone-Liquibase to v1.10.0-4.33, improving validation workflows and compatibility.
+
+* **Bug Fixes**
+  - Fixed an issue where validation commands occasionally returned nil responses in plugin handlers.
+  - Resolved an issue where concurrent executions using matrix or list-based looping could fail due to shared clone directories. Each iteration now clones into a distinct directory to ensure successful parallel runs.
+
+**Minimum Supported Versions:**
+- `dbservice` – 1.57.x
+
+### Release 1.56.x
+The `1.56.x` release focuses on improving pipeline reliability, secure credential management, and change tracking for safer database operations.
+
+#### Key Highlights:
+* **Feature Enhancements**
+  - Optimized Update & Rollback Flow for faster and more reliable execution.
+  - Comma-Separated Secrets to simplify secure credential rotation.
+  - ChangeSetMetadata API Enhancements now include executed SQL commands for better visibility.
+
+**Minimum Supported Versions:**
+- `dbservice` – 1.56.x
+
+### Release 1.55.x
+The `1.55.x` release enhances visibility in the Migration State view, making it easier for teams to track deployments and understand which changes were tagged.
+
+#### Key Highlights:
+* **Feature Enhancements**
+  - "Deployed with Tag" label is added to Migration State view for improved release traceability.
+
+**Minimum Supported Versions:**
+- `dbservice` – 1.55.x
+
 ## August 2025
 
 ### Release 1.54.x

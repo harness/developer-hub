@@ -108,6 +108,13 @@ To create an AWS Access Key ID and Secret Access Key with limited permissions fo
 5. **Verify the File Exists in Your Bucket**  
    Ensure the file was successfully uploaded by checking your S3 bucket.
 
+### Copy Data from Minio to AWS S3
+To transfer data from Minio to S3, execute the following commands inside the Minio pod:
+```bash
+mc alias set S3 https://<bucket>.s3.<region>.amazonaws.com/ access_key secret_key
+mc mirror --watch local/logs/<harness-accountId> S3
+```
+
 ## Configure Harness to use S3 as Log Storage
 
 Harness allows you to store logs in AWS S3 via the AWS S3 client. Harness supports connecting to AWS S3 using either static credentials (Access Key and Secret Key) or IAM Roles for Service Accounts (IRSA). You can choose the authentication method that best fits your security and operational requirements.
@@ -207,20 +214,8 @@ To configure Harness to use AWS S3 for log storage using IAM Role for Service Ac
             kubernetesSecrets: []  # No k8s secrets when using IRSA. Keep empty to avoid static keys.
    ```
 
-## Copying Data from Minio to AWS S3
-
-:::warning NOTE
-If a pipeline is running during the copy command, its logs will not be transferred to S3. As a result, the execution logs for those pipelines will be lost during the transition. To ensure accuracy, Harness recommends applying a freeze window during this transition.
-:::
-
-To transfer data from Minio to S3, execute the following commands inside the Minio pod:
-
-```bash
-mc alias set S3 https://<bucket>.s3.<region>.amazonaws.com/ access_key secret_key
-mc cp --recursive local/logs/<harness-accountId> S3
-```
-
-Make sure to verify that the logs for existing pipelines appear correctly in the Harness UI, and that logs for new pipeline runs are stored properly.
+1. Upgrade your harness instance with above overrides
+2. Make sure to verify that the logs for existing pipelines appear correctly in the Harness UI, and that logs for new pipeline runs are stored properly.
 
 Once confirmed, you can disable Minio by setting:
 

@@ -8,6 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 
 ---
+## Before You Begin
+
+### Prerequisites
+- [Harness Kubernetes connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
+- AWS CLI: 2.15.0 or higher
+
+### Compatibility
+- Kubernetes: v1.16 through v1.32
+- Karpenter: v1.1.0 through v1.2.4
+
 
 ## Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
 
@@ -33,7 +43,9 @@ For a given cluster, click on the enable option, which will take you to the enab
 
 ### Step A: Cluster Permissions
 
-You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure.
+You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure. Please make sure `CLUSTER_NAME` is set to the name of the EKS cluster you want to enable the Cluster Orchestrator for and `REGION` is set to the region of the EKS cluster.
+
+<DocImage path={require('./static/kubectl-enable.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ### Step B: Orchestrator Configuration
 
