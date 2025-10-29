@@ -1,7 +1,7 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: "2025-09-29T19:40:56+05:30"
+date: 2025-10-28T16:00
 sidebar_position: 1
 ---
 
@@ -19,6 +19,67 @@ The release notes describe recent changes to Harness AI Test Automation.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+
+## October 2025
+
+### 2025.10.v1
+
+#### New Features
+
+
+**Rerun - Failed Tests Functionality**
+Introduced the ability to rerun failed tests directly from the Test Suite Run History page. This update features a dedicated "Run Failed Tests" dropdown and updated visual indicators consistent with the design system, allowing users to quickly spot and rerun failed executions for faster debugging and recovery.
+
+Added support for rerunning specific tests within any test suite run. Users now have the flexibility to rerun only selected tests or isolate failed tests, making it easier to target issues and streamline the test validation process.
+
+<DocImage path={require('./static/ait/rerun-faileds-tests.png')} alt="Rerun Failed Tests" title="Rerun Failed Tests" width = '70%' />
+
+**Grok (xAI) Integration**
+Added native support for **Grok (xAI)** integration within the codebase, extending AI-driven insights .
+
+
+
+**Download CSV/JSON from Pipelines**
+Added functionality to generate and download test result data in CSV or JSON formats directly from the pipeline.
+
+**Run Tasks in Import Test Case Feature**
+The Import Test Case feature now supports executing predefined tasks as part of the import process. Users can include commands in the format `Execute task <task_name>` to trigger specific automated actions during import. This enhancement enables more dynamic and customizable test case imports.
+
+
+
+#### Enhancements and Bug Fixes
+
+
+- **Duplicate Test Suite Execution Prevention (AI-1531)**
+An idempotency guard has been added to prevent duplicate test suite executions caused by task redelivery scenarios in Redis-based environments. This fix enhances reliability by ensuring that each suite runs only once per trigger.
+- **Cross-Origin Iframe Value Verification Fix (AI-1457)**
+Improved the Expected Value Agent to accurately verify values inside cross-origin iframes by incorporating frame path resolution and automatic screenshot capture. This fix resolves validation issues during cross-origin test scenarios.
+- **Set Custom Headers from Parameters (AI-1530)**
+Enhanced flexibility by allowing users to configure custom headers for test suites through parameter values defined at the app-suite scope. The system now follows a clear precedence chain (parameter → config → default) for header resolution.
+- **Store Specific Response Paths in API Call Command (AI-1538)**
+Added support for defining a JSONPath within the API call command to capture and store a specific part of the API response. This improvement aligns with the API Interception feature and increases precision in response validation.
+- **Improved Parameter Field Handling in API Call Command (AI-1546)**
+Enhanced the parameter field in the API call command to support direct selection from existing parameters via `paramInputOptions`, replacing the old manual naming flow. This update improves the configuration experience and prevents redundant parameter declarations.
+- **Default Checkboxes in Test Suite Run Page (AI-1545)**
+Added a “Select All” checkbox capability in the Test Suite Run page for improved usability when managing large test suites. This update also replaces the previous custom checkbox logic with the native `TableList` checkbox implementation, resolving styling and selection behavior issues.
+- **Auto-Refresh for Custom Headers Parameter (AI-1563)**
+Enhanced header management logic to automatically set or refresh custom HTTP headers whenever the `CUSTOM_HTTP_HEADERS` parameter is updated. This ensures header configurations remain synchronized without requiring manual refresh or login task completion.
+- **Added Enum and Intermediate Representation (IR) Support for Prompt Scoring (AI-1529)**
+Introduced support for new Enum and Intermediate Representation (IR) commands to enhance prompt scoring capabilities. This update improves how user prompt understandability scores are handled and serialized across components, ensuring more consistent and testable scoring logic.
+- **Updated Enums, Mappings, and Helper Functions (AI-1556)**
+Refined the internal command flow by updating Enums and mappings and introducing helper functions for `FINALLY_BEGIN` and `FINALLY_END`. These updates improve system stability and ensure better control flow handling during test execution and teardown processes.
+- **Fix for Prompt Scoring Enum Integration (AI-1574)**
+Resolved a build-time issue where `USER_PROMPT_UNDERSTANDABILITY_SCORE` was missing from the Command Enum. The fix ensures the new Enum value is recognized correctly during compilation, stabilizing the build process and maintaining prompt scoring functionality.
+
+
+
+
+
+
+
+
+
 ## September 2025
 
 ### 2025.09.v3
@@ -28,7 +89,7 @@ The release notes describe recent changes to Harness AI Test Automation.
 ##### Assert Wait for Question  
 This powerful new assertion command lets users pause test execution until a specific user-defined question or condition is true. Built on the `wait for text` assertion command, it opens up dynamic, context-aware validation capabilities that make your tests smarter and more flexible than ever before.
 
-<DocImage path={require('./static/ait/assert-wait-for-ques.png')} alt="Assert Wait for Question" title="Assert Wait for Question" width="600" height="500" />
+<DocImage path={require('./static/ait/assert-wait-for-ques.png')} alt="Assert Wait for Question" title="Assert Wait for Question" width='70%' />
 
 To know more about Assert Wait for Question, refer to [Assert Wait for Question](/docs/ai-test-automation/test-authoring/creating-tests/assertions#wait-for-question).
 
@@ -40,12 +101,12 @@ The look and functionality of test steps have been fully transformed to enhance 
 - Execution time and locator types are now visible for each step, offering deeper insights at a glance.  
 - The approval workflow is refined for multiple issues, with suggestion actions scoped per issue, making triage simpler and more granular.
 
-<DocImage path={require('./static/ait/ui-test.png')} alt="UI Test" title="UI Test" />
+<DocImage path={require('./static/ait/ui-test.png')} alt="UI Test" title="UI Test" width='70%' />
 
 ##### Locator Configuration in IA/IE  
 Take full control of your element selectors during Interactive Authoring and Interactive Editing! This new feature enables users to configure locators while editing steps, improving precision and reducing test maintenance headaches by ensuring the best possible target identification for elements.
 
-<DocImage path={require('./static/ait/edit-write.png')} alt="Edit Write" title="Edit Write" width="600" height="500" />
+<DocImage path={require('./static/ait/edit-write.png')} alt="Edit Write" title="Edit Write" width='70%' />
 
 
 #### Enhancements and Bug Fixes
