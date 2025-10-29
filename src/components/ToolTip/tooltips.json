@@ -13,6 +13,15 @@
       }
     },
     "fme": {
+      "openfeature": {
+        "feature-flag": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without deploying new code. It allows for controlled feature rollouts, A/B testing, and quick rollbacks if issues arise.",
+        "targeting-key": "A unique identifier used to target specific users or entities when evaluating feature flags. It helps determine which variation of a flag should be served based on predefined rules and conditions.",
+        "evaluation-api": "The Evaluation API is the main interface developers use to interact with feature flags. It enables applications to evaluate feature flags and adapt behavior based on the results, while supporting customization and integration with additional tools.",
+        "evaluation-context": "The Evaluation Context holds contextual information used during flag evaluation. It can include static data (like application or host identifiers) and dynamic data (such as a client IP address), which can be passed explicitly or propagated automatically. Static and dynamic values can be merged for richer, more targeted evaluations.",
+        "provider": "An OpenFeature Provider wraps the Harness FME SDK, acting as a bridge between the OpenFeature SDK and the FME SDK. It translates OpenFeature function calls into operations handled by the FME SDK, which communicates with Harness services to evaluate flags and retrieve configuration updates.",
+        "hook": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
+        "events": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values."      
+      },
       "warehouse-native": {
         "metric": "A quantifiable measure used to track and assess the performance of a specific aspect of an experiment. In Warehouse Native, metrics are defined in Harness FME.",
         "experiment": "A controlled test to evaluate the impact of different variations on user behavior or system performance. In Warehouse Native, experiments are defined in Harness FME.",
