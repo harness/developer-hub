@@ -49,6 +49,52 @@ To configure your credentials for Git:
 You can delete access tokens you no longer need. Under **Access tokens for Git providers**, select the trash can icon that corresponds to the Git provider token you want to delete. A confirmation message appears, asking if you want to delete the SCM. After you confirm, Harness removes the configuration.
 :::
 
+### Configure OAuth for GitHub Enterprise
+
+Harness supports OAuth integration for GitHub Enterprise. **As a prerequisite, you need to create an OAuth App in your GitHub Enterprise instance.**
+
+Check out the instructions provided in the GitHub documentation on [Creating an OAuth App](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app).
+
+As you begin setting up the OAuth App: 
+
+- You must **provide the Authorization callback URL**. Initially, you can **provide any valid URL to proceed**. Later, this URL will be updated to the URL provided during **New Provider** set-up.
+
+- Keep the **Client ID** and **Client Secret** handy. You will need them to create the provider in Harness.
+
+:::info note
+
+Currently, OAuth for GitHub Enterprise is behind the feature flag and `PIPE_ENABLE_GITHUB_ENTERPRISE_PROVIDER_FLOW`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+:::
+
+To configure your credentials for GitHub Enterprise:
+
+1. Navigate to **Account Settings** in Harness.
+2. Select Providers, Click on **New Provider**.
+
+![](./static/oauth-github-enterprise-1.png)
+
+
+3. Select **GitHub** as a provider. 
+4. Enter the **Name** and **Domain URL** of the provider. The **Domain URL** is the URL of your GitHub Enterprise instance.
+5. Specify the **Secret Manager**. This is where the token related to GitHub Enterprise will be stored.
+6. Specify the **Delegate Selector**. Click on continue.
+
+![](./static/oauth-github-enterprise-2.png)
+
+7. Copy the Redirect URL provided on the Harness Credentials page and use it to update the Authorization callback URL in your GitHub Enterprise OAuth App.
+
+![](./static/oauth-paste-url.png)
+
+8. Copy the Client ID and generated Client Secret from your GitHub Enterprise OAuth App and use them to complete the provider's setup.
+
+Now that the GitHub Enterprise provider is configured, navigate to the user profile, click on Profile Overview. Find the **Connect to a Provider** option, click on **Select a Provider**, CLick on **Custom Provider** section and select the provider you earlier created. Click on **Connect**.
+
+![](./static/oauth-auth-github-app.png)
+
+Click on **Authorize** on the GitHub auth page, and the **access token** will be created.
+
+
 ### Configure OAuth for Self-hosted Bitbucket provider
 
 To configure your credentials for Self-hosted Bitbucket provide:
