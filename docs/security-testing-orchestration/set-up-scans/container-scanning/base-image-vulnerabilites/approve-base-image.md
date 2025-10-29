@@ -13,12 +13,13 @@ This document covers:
 
 :::note
 
-This feature is behind the feature flags `STO_BASE_IMAGE` and `STO_BASE_IMAGE_DETECTION`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+- This feature is behind the feature flags `STO_BASE_IMAGE` and `STO_BASE_IMAGE_DETECTION`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+
+- Currently, this feature is supported only for scans using **Orchestration** scan mode. Support for **Ingestion** and **Extraction** scan modes will be available soon.
 
 :::
 
 <DocVideo src="https://youtu.be/pUejMRl43DA" />
-
 
 ### What is Base Image Approval?
 
