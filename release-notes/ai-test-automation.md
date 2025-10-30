@@ -1,7 +1,7 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2025-10-28T16:00
+date: 2025-10-29T16:00
 sidebar_position: 1
 ---
 
@@ -22,6 +22,36 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 
 ## October 2025
+
+
+
+### 2025.10.v2
+
+
+#### New Features
+
+**Intermediate Save in UI**
+Introduced support for **intermediate saving** in the user interface. Users can now save progress while creating or updating tasks without completing the full workflow. This prevents data loss during long editing sessions and allows task progress to be resumed seamlessly. Navigation prompts have also been added to alert users when leaving unsaved work.
+
+**Micro Frontend Automation Support**
+Enhanced the platform’s micro frontend structure to include automation routes. This update ensures automation-related pages load as part of the unified interface, improving modularity and overall responsiveness.
+
+
+
+#### Enhancements and Bug Fixes
+
+- **Faster Test Suite Run Page Loading**
+Optimized backend queries powering the Test Suite Run page, reducing load times from several seconds to nearly instant, even for large test suites. This improvement significantly enhances usability during analysis and debugging.
+- **Improved Severity Filtering and CSV Reporting**
+Updated report filtering logic to ensure accurate severity prioritization in test run reports. Added a new **Test Run ID** column to improve traceability and fixed issues with CSV exports for consistent data accuracy.
+- **Enhanced Test Suite Run Notifications**
+Email and Slack notifications now include a **final run status** field, allowing users to easily determine whether a suite completed, failed, or was aborted.
+- **Fixed Step Creation Order in Multi-Step Tasks**
+Resolved an issue where steps generated through AI input appeared in reverse order. Steps are now created in the correct sequence, ensuring consistency during test creation.
+- **Editable Visual Assert Regions**
+Added the ability to edit **assert screenshot regions** in both Interactive and Quick Edit modes. Users can now adjust visual assert regions after execution, with clear prompts to prevent editing locked or completed regions.
+
+
 
 ### 2025.10.v1
 
