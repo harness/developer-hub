@@ -1,7 +1,7 @@
 ---
 title: Experimentation Foundations Playbook 
 sidebar_label: Experimentation Foundations
-sidebar_position: 7
+sidebar_position: 3
 ---
 
 ## Overview

@@ -1741,10 +1741,10 @@ const sidebars: SidebarsConfig = {
         */
         {
           type: 'category',
-          label: 'Getting started',
+          label: 'Getting Started',
           link: {
-            type: 'generated-index',
-            slug: 'feature-management-experimentation/getting-started',
+            type: 'doc',
+            id: 'feature-management-experimentation/getting-started/overview/index',
           },
           collapsed: true,
           items: [
@@ -1915,8 +1915,8 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Release Monitoring',
           link: {
-            type: 'generated-index',
-            slug: 'feature-management-experimentation/release-monitoring',
+            type: 'doc',
+            id: 'feature-management-experimentation/release-monitoring/index',
           },
           collapsed: true,
           items: [
@@ -1930,8 +1930,8 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Cloud Experimentation',
           link: {
-            type: 'generated-index',
-            slug: 'feature-management-experimentation/experimentation',
+            type: 'doc',
+            id: 'feature-management-experimentation/experimentation/index',
           },
           collapsed: true,
           items: [
@@ -1973,7 +1973,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Team settings',
+          label: 'Team Settings',
           link: {
             type: 'doc',
             id: 'feature-management-experimentation/team-and-project-settings/index',
@@ -1988,7 +1988,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Account settings',
+          label: 'Account Settings',
           link: {
             type: 'generated-index',
             slug: 'feature-management-experimentation/account-settings',

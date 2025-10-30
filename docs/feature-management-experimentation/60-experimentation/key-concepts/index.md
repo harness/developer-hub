@@ -1,6 +1,6 @@
 ---
 title: Key concepts
-sidebar_position: 20
+sidebar_position: 2
 ---
 
 This document introduces key concepts to help you manage your team's experiments efficiently and effectively.

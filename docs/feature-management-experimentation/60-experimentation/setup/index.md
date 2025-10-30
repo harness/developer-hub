@@ -1,6 +1,6 @@
 ---
 title: Setup
-sidebar_position: 50
+sidebar_position: 4
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/faqs/is-there-a-way-to-limit-the-number-of-users-in-an-experiment/
 ---

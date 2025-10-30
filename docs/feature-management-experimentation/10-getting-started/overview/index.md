@@ -1,6 +1,8 @@
 ---
 title: Overview
 sidebar_label: Overview
+id: index
+slug: /feature-management-experimentation/getting-started/overview/index
 description: How to make Feature Management & Experimentation work for you
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/best-practices/o-reilly-book

@@ -1,6 +1,8 @@
 ---
 title: Overview
-sidebar_position: 10
+sidebar_position: 1
+id: index
+slug: /feature-management-experimentation/experimentation
 ---
 
 Experiments measure the success of your website, application, back-end performance, etc. Experiment metric results tell you if your new features are improving, degrading, or having no effect on your application users’ experience.
