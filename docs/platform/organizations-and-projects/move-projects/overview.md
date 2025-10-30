@@ -18,7 +18,7 @@
 This feature requires the `PL_PROJECT_MOVEMENT_ENABLED` feature flag. Contact [Harness support](mailto:support@harness.io) to enable it.
 :::
 
-This feature allows you to move a project across organizations within your Harness account. This capability is essential for organizational restructuring, team reorganizations, or when consolidating projects under different business units.
+This feature allows you to transfer a project from one organization to another within your Harness account. It can be used when a project needs to be moved to a different organization, such as during ownership transfers.
 
 ## What happens when you move a project 
 
