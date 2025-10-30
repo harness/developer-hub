@@ -115,6 +115,18 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## October 2025
 
+### Version 25.10.87100 <!--October 28, 2025-->
+
+#### Fixed issues
+
+- Improves clarity and readability of error messages by removing redundancy. [CDS-104819]
+
+#### New features and enhancements
+
+- Added conditional retries to pipeline steps, allowing retries to happen automatically based on the situation, improving reliability and automation. [PIPE-29808]
+- Secrets Create/Edit permission can now be split into separate [`create` and `edit` permissions](/docs/platform/role-based-access-control/rbac-in-harness#secrets). [PL-65238]
+
+
 ### Version 25.10.86901 <!--October 15, 2025-->
 
 #### Fixed issues
