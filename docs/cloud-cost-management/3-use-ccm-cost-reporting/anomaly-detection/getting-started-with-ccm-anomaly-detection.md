@@ -112,8 +112,6 @@ When you select an anomaly, you'll see:
         - **True Unexpected**: The cost increase was not anticipated
         - **False**: The system incorrectly identified this as an anomaly
 
-    This feedback helps refine the anomaly detection algorithms for more accurate results over time.
-
 
 <Tabs>
 <TabItem value="screenshot" label="Drilldown Window" default>
