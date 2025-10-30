@@ -38,12 +38,6 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
-:::note
-
-OIDC Auth type is not supported.
-
-:::
-
 </TabItem>
 
 <TabItem value="gar" label="GAR" default>
