@@ -134,7 +134,6 @@ Take full control of your element selectors during Interactive Authoring and Int
 
 ### 2025.09.v1
 #### New Features
-
 - **API Response Interception**: Added capability to intercept and analyze API responses during test execution for enhanced debugging and validation
 - **Pagination Enhancement**: Added pagination options to display more than 20 items per page across test listings and results
 - **CSV/JSON Content Generation Control**: Introduced configurable settings to control automatic generation of CSV and JSON content during test suite execution

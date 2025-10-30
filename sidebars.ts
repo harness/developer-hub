@@ -1110,6 +1110,16 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    // Release Notes
+    {
+      type: 'link',
+      label: 'Release Notes',
+      className: 'sidebar-Release_Notes',
+      href: '/release-notes/artifact-registry',
+      customProps: {
+        description: 'Learn about recent changes to Harness products.',
+      },
+    },
     // API Docs
     {
       type: 'link',
