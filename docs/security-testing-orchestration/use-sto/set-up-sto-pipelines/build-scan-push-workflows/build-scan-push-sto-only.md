@@ -32,11 +32,11 @@ The following steps describe the workflow:
 
 1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data) file.
 
-2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline)).
+2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline)).
 
 3. If the code has no critical vulnerabilities, another Run steps builds the image.
 
-4. An Aqua Trivy step scans the image and ingests the results ([orchestration workflow](/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto)).
+4. An Aqua Trivy step scans the image and ingests the results ([orchestration workflow](/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto)).
 
 5. If the image has no critical vulnerabilities, another Run step pushes the image to Docker Hub.
 
@@ -47,7 +47,7 @@ The following steps describe the workflow:
 - This workflow has the following prerequisites:
 
   - A Harness account and STO module license.
-  - You must have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
+  - You must have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/rbac) assigned.
   - A basic understanding of key STO concepts and good practices is recommended. This workflow builds on the [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) and [Container image scans with Aqua Trivy](../../../sto-techref-category/trivy/container-scan-aqua-trivy) workflows.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub.
   - GitHub requirements — This workflow assumes you have the following:
@@ -107,7 +107,7 @@ Do the following:
 
 6. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
-   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
+   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Supported Infrastructures](/docs/security-testing-orchestration/whats-supported/infrastructure) documentation.
 
 :::note
 
@@ -243,7 +243,7 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
 :::note
 
-It's generally good practice to set the [fail_on_severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) for every scan step. Leave this setting at **None** for now so you can run and test the entire-end-to-end workflow.
+It's generally good practice to set the [fail_on_severity](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity) for every scan step. Leave this setting at **None** for now so you can run and test the entire-end-to-end workflow.
 
 :::
 
@@ -268,7 +268,7 @@ It's generally good practice to set the [fail_on_severity](/docs/security-testin
 
    <!--
 
-   5. [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) = **Critical**
+   5. [Fail on Severity](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity) = **Critical**
 
    -->
 
@@ -281,17 +281,17 @@ Add a step after the `Run` step and configure it as follows:
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
-    - `mode :` [`ingestion`](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline)
+    - `mode :` [`ingestion`](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline)
     - `config: default`
       - `target : `
         - `name : <+stage.variables.GITHUB_REPO>`
         - `type : repository`
         - `variant : <+stage.variables.GITHUB_BRANCH>`
-          When scanning a repository, you will generally use the repository name and branch for the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+          When scanning a repository, you will generally use the repository name and branch for the [target name and variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines).
       - `advanced : `
         - `log :`
           - `level : info`
-          - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : none`
+          - [`fail_on_severity`](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity) ` : none`
       - `ingestion : `
         - `file : /shared/scan_results/semgrep.sarif`
 
@@ -449,7 +449,7 @@ Here's an example:
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
-1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
 
 2.  Target name — Click the "tack" button on the right side of the input field and select **Expression**. Then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
 
@@ -472,12 +472,12 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
-  - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+  - `mode :` [`orchestration`](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
   - `target : `
     - `name : <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
     - `type : container`
-    - `variant : <+stage.variables.DOCKER_IMAGE_TAG>` When scanning an image, you generally use the image label and tag for the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) .
+    - `variant : <+stage.variables.DOCKER_IMAGE_TAG>` When scanning an image, you generally use the image label and tag for the [target name and variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) .
     - `advanced : `
       - `log :`
         - `level : info`
@@ -786,4 +786,3 @@ pipeline:
   notificationRules: []
   identifier: v5_sbsp_workflow
   name: v5_sbsp_workflow
-```

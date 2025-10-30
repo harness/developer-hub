@@ -11,7 +11,7 @@ The **Security Testing Dashboard** provides an overview of security issues ident
 
 :::note
 - This dashboard requires an **Enterprise** account.
-- This dashboard shows only results for targets that have baselines defined. You should [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) in your project. 
+- This dashboard shows only results for targets that have baselines defined. You should [define a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) in your project. 
 :::
 
 The dashboard includes the following sections:

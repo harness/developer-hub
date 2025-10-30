@@ -10,6 +10,7 @@ export type FaultCardItem = {
   category: string;
   description: JSX.Element | string;
   faults?: number;
+  faultLabel?: string;
   link?: string;
 };
 
@@ -19,6 +20,7 @@ export default function FaultCard({
   category,
   description,
   faults,
+  faultLabel,
   link,
 }: FaultCardItem) {
   const details = getCategoryDetails(category);
@@ -32,7 +34,7 @@ export default function FaultCard({
       {faults && (
         <div
           className={clsx(styles.description, styles.faults)}
-        >{`(${faults} faults)`}</div>
+        >{`(${faults} ${faultLabel || "faults"})`}</div>
       )}
     </Link>
   );

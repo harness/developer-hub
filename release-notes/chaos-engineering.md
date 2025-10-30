@@ -20,6 +20,55 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## October 2025
+### Version 1.67.0
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.67.0
+- harness/chaos-ddcr-faults:1.67.1
+- harness/chaos-log-watcher:1.67.0
+- harness/service-discovery-collector:0.47.0
+
+#### New Features and Enhancements
+
+- Introduced file-based secret authentication for GCP VM Service Kill using service account JSON itself (CHAOS-9839)
+- Added support for ECS agent stop chaos fault for Kubernetes HD (CHAOS-9885)
+- Added support for ECS task stop chaos fault for Kubernetes HD (CHAOS-9883)
+- Enhanced chaos-agent with proxy support for installing dependencies, GLIBC_2.32 compatibility for EC2 SSM chaos, and fallback to app.harness.io for binary installation (CHAOS-10007, CHAOS-10006, CHAOS-9972, CHAOS-10020)
+- Added support for advance configuration for Chaos onboarding in CD pipeline (CHAOS-10043)
+- Added backend validation for the secrets.getValue representation for the APM Probes (CHAOS-9961)
+- Added sorting support to listInfrastructure APIs (CHAOS-10093)
+- Added backward compatibility support for both v1alpha1 & v1beta1 in windows infra (CHAOS-9674)
+- Updated Pipeline pages to refer to Chaos Agent (CHAOS-9980)
+- Omitted deleted probes from experiment run details under Resilience Tests Tab (CHAOS-9877)
+- Enhanced parsing logic for faultSpec to avoid sending null data (CHAOS-10079)
+- Added backend validation to restrict the experiment creation when no fault defined inside the experiment (CHAOS-9962)
+- Added support for re-onboarding of chaos experiment in pipeline (CHAOS-9966)
+- Disabled GraphQL introspection (CHAOS-10101)
+- Added AIEnabled toggle option in advance setting of onboarding (CHAOS-10102)
+- Updated command source probe to use the fault-service account (CHAOS-10103)
+- Added MTLS support to the API chaos faults (CHAOS-10107)
+- Added Pipeline Run support for windows v1beta1 experiments (CHAOS-10200)
+- Removed the image, imagePullPolicy and other unrelated fields from windows faults spec (CHAOS-10176)
+- Added support for GCP monitoring APM Probe (CHAOS-9955, CHAOS-10090)
+- Moved Chaos Guard to Project Settings with better user experience and optimized REST API support (CHAOS-10148, CHAOS-10147, CHAOS-10146, CHAOS-10145, CHAOS-10141, CHAOS-9862, CHAOS-9871, CHAOS-9870)
+
+#### Fixed Issues
+
+- Fixed Command Probe issue where marking an environment variable as runtime input would set its runtime variable name as "VALUE" instead of the key/name of the environment variable. This prevented users from setting multiple runtime environment variables inside the chaos studio. The key/name of the environment variable is now correctly used as the name of the runtime input variable (CHAOS-10097)
+- Fixed Probe Executions not showing executions for K8s V1 experiments run. The logic now appends recent runs from the v1 experiment list to the existing recent runs, ensuring a comprehensive view of the latest probe activities (CHAOS-9963)
+- Fixed Experiment Count In Application Map. The logic for managing the experiment count in application map during deletion has been refined to ensure accurate tracking and decrementing of associated resources (CHAOS-9916)
+- Fixed issue where providing volumes/mounts/labels/envs/initContainers from onboarding screen on overview page was not taking effect. Added the new fields in API (CHAOS-9449)
+- Fixed Chaos Guard condition not showing probe verification value (CHAOS-10016)
+- Fixed internal watcher filter source for the probes inside recommendations page (CHAOS-10024)
+- Fixed plain_text/encrypted toggle option to show only for Kubernetes HTTP Probe (CHAOS-10065)
+- Fixed issue where entity details would disappear from existing experiment runs after an experiment was updated and certain components were removed. Experiment runs will now continue to show all relevant details even if the experiment configuration changes later (CHAOS-10078)
+- Fixed crash in chaos-web when no fault details are available. In cases where a fault is completely templatized or is a custom fault with no tunables, the details tab inside the timeline view would crash. An appropriate error/acknowledged message is now shown (CHAOS-10077)
+
+
+
 ## September 2025
 ### Version 1.66.8
 

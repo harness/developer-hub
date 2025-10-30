@@ -38,6 +38,28 @@ The Harness FME MCP helps teams accelerate feature delivery and experimentation 
 - [Harness FME MCP Tools](/docs/feature-management-experimentation/release-agent/mcp-tools)
 - [Harness MCP Server](/docs/platform/harness-aida/harness-mcp-server/)
 
+### [New Feature] OpenFeature Providers
+----
+#### 2025-10-28
+
+Harness FME supports [OpenFeature](https://openfeature.dev/), an open specification offering a vendor-agnostic API for feature flagging. Providers handle flag evaluations, enabling consistent, centralized control over feature flags across multiple SDKs and environments.
+ 
+This feature is valuable for organizations that want to:
+
+- Standardize feature flag behavior across services and applications
+- Reduce vendor lock-in by enabling flexible provider implementations
+- Integrate feature flags across multiple languages and platforms
+
+Harness FME offers providers for Android, Web, Java, and Node.js SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
+
+#### Related documentation
+
+- [OpenFeature Providers](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/android-sdk)
+- [Web SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/web-sdk)
+- [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/java-sdk)
+- [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk)
+
 ### [New Feature] Warehouse Native Experimentation in Beta
 ----
 #### 2025-10-22

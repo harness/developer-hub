@@ -20,7 +20,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-A Software Bill of Materials (SBOM) is an exhaustive list of all components, libraries, and other dependencies utilized in a software application. The **SBOM Orchestration** step within Harness SCS facilitates the generation of SBOMs for your software artifacts and code repositories[/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories].
+A Software Bill of Materials (SBOM) is an exhaustive list of all components, libraries, and other dependencies utilized in a software application. The **SBOM Orchestration** step within Harness SCS facilitates the generation of SBOMs for your software artifacts and [code repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
 
 If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
 
@@ -179,10 +179,12 @@ After you run the SBOM orchestration step followed by the STO Snyk scan, the [SB
 
 After you run the SBOM Orchestration step, you can download or publish SBOM through multiple ways depending on your workflow:
 
-- Via [Harness API](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact) 
+- Via [Harness API](https://apidocs.harness.io/sbom/downloadsbomforartifact) 
 - Use the Download SBOM button available on the Artifacts page.
+- Download the SBOM score for an artifact via [Harness API](https://apidocs.harness.io/sbom/getsbomscoreforartifact)
 - Access the SBOM file directly from the pipeline output at the specified path `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json`.
 
 ## Next steps
 
 After generating an SBOM, you can apply [SBOM Policy Enforcement](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) to achieve open source governance.
+

@@ -11,14 +11,18 @@ redirect_from:
 ---
 
 ## Before You Begin
-Make sure you have the following prerequisites in place:
 
+### Prerequisites
 - **AWS Account** with permissions to create IAM roles and policies
 - **EKS Cluster** running and accessible via kubectl
 - **Helm 3.x or later** installed on your local machine
 - **Terraform 1.2.0 or later** installed on your local machine
 - **Harness Account** with CCM module enabled
 - **Kubernetes Connector** configured in your Harness account
+
+### Compatibility
+- Kubernetes: v1.16 through v1.32
+- Karpenter: v1.1.0 through v1.2.4
 
 ## Implementation Steps
 
@@ -199,8 +203,9 @@ resource "aws_iam_policy" "controller_role_policy" {
           "ssm:GetParameter",
           "pricing:GetProducts",
           "ec2:DescribeSpotPriceHistory",
-          "ec2:DescribeImages"
-          "ec2:GetSpotPlacementScores"
+          "ec2:DescribeImages",
+          "ec2:GetSpotPlacementScores",
+          "eks:DescribeCluster"
         ],
         "Resource" : "*",
         "Effect" : "Allow"

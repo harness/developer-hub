@@ -2,7 +2,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Learn how to **create a Hugging Face Artifact Registry**, **configure the client**, and **publish or resolve Hugging Face models and datasets** using the CLI.
 
 ## Prerequisites
 - Install the **Hugging Face CLI** (`pip install -U huggingface_hub` gives you the `hf` command).  
@@ -26,7 +25,8 @@ Your registry name must start with a letter and can include `lowercase alphanume
 :::
 
 4. (Optional) Add a Description and Labels.
-5. Click **Create Registry**.
+5. Choose visibility between **Public** and **Private**.
+6. Click **Create Registry**.
 
 :::info private registry
 This registry will serve as your private Hugging Face registry within Harness.

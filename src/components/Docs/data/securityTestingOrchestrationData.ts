@@ -13,25 +13,25 @@ import { MODULES } from "@site/src/constants";
             "",
           list: [
             {
-              title: "STO tutorials",
+              title: "Get Started",
               module: MODULES.sto,
               description:
-                "Dive in with these tutorials.",
-              link: "/docs/security-testing-orchestration/get-started/tutorials",
+                "Run your first scan quickly and see what you can do next.",
+              link: "/docs/security-testing-orchestration/get-started",
             },
             {
               title: "STO basics",
               module: MODULES.sto,
               description:
                 "Learn about the security scanning problems facing developers and how STO provides the solutions they need.",
-              link: "/docs/security-testing-orchestration/get-started/overview",
+              link: "/docs/security-testing-orchestration/overview",
             },
             {
               title: "STO concepts",
               module: MODULES.sto,
               description:
                 "Learn about key STO concepts such as scan targets, baselines, severities, and exemptions.",
-              link: "/docs/category/key-concepts-in-sto/",
+              link: "/docs/category/key-concepts",
             },
 
           ],
@@ -46,21 +46,21 @@ import { MODULES } from "@site/src/constants";
               module: MODULES.sto,
               description:
                 "Learn about the three high-level workflows for running scans and ingesting results: orchestration, extraction, and ingestion.",
-              link: "/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview",
+              link: "/docs/security-testing-orchestration/key-concepts/sto-workflows-overview",
             },
             {
               title: "Orchestration workflows",
               module: MODULES.sto,
               description:
                 "Learn how to scan an object and ingest the results automatically in one step.",
-              link: "/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto",
+              link: "/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto",
             },
             {
               title: "Ingestion workflows",
               module: MODULES.sto,
               description:
                 "Learn how to run scans in a separate step, or outside Harness entirely, and ingest the results.",
-              link: "/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline",
+              link: "/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline",
             },
             {
                 title: "Configure external scanners",

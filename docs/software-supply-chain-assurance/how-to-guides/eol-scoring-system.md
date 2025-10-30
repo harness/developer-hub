@@ -10,18 +10,21 @@ sidebar_position: 112
 
 **Close to EOL Component:** A component is considered Close to EOL when warning signals (such as declining maintenance, lack of updates, or security issues) indicate that it may soon reach EOL.
 
+
+
 ### EOL Proximity Scoring System
 
-
-The EOL scoring framework evaluates multiple risk categories and assigns a score from 0 to 100.
-
- **EOL:** 60 - 100
-
- **Close to EOL:** 30 - 59
+| **Risk Level**     | **Score Range** | **Description** |
+|--------------------|-----------------|-----------------|
+| **Definite EOL**   | 100             | Package has definitively reached End of Life - **Immediate migration required** |
+| **Derived EOL**    | 60–100          | Package appears to have reached End of Life based on patterns - **Plan migration** |
+| **Close to EOL**   | 30–59           | Package is approaching End of Life - **Monitor closely** |
 
 
 
 ## Categories that Influence the EOL Score
+
+The EOL scoring framework evaluates multiple risk categories and assigns a EOL score.
 
 | Category              | Description | Example Indicators |
 |-----------------------|-------------|--------------------|

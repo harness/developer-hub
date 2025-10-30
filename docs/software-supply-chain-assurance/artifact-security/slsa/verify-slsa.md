@@ -68,10 +68,6 @@ When modifying the existing SLSA steps, you must manually remove the digest from
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
-:::note
-OIDC Auth type is not supported.
-:::
-
 
 </TabItem>
 

@@ -82,7 +82,7 @@ curl --location 'https://app.harness.io/gateway/ssca-manager/v1/orgs/<ORG-NAME>/
 
 - Added support for [Ingestion of SBOM for non-container artifacts](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images).
 - Added support for secure connect for all the SCS plugins ([ZD-87724](https://harnesssupport.zendesk.com/agent/tickets/87724)).
-- SBOM score for an artifact can now be downloaded via [API](https://apidocs.harness.io/openapi-merged/sbom/getsbomscoreforartifact).
+- SBOM score for an artifact can now be downloaded via [API](https://apidocs.harness.io/sbom/getsbomscoreforartifact).
 
 #### Fixed Issues
 

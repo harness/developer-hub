@@ -59,7 +59,7 @@ Do the following:
 
 2. In the Semgrep step, verify that the Scan mode is **Orchestration**.
 
-3. Set [**Fail on Severity**](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) to **Medium**.
+3. Set [**Fail on Severity**](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity) to **Medium**.
 
 3. Apply your changes and save the pipeline. 
 
@@ -87,7 +87,7 @@ Do the following:
 
 :::tip
 
-It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
+It is [good practice](/docs/security-testing-orchestration/key-concepts/targets-and-baselines#every-target-needs-a-baseline) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
 
 :::
 
@@ -144,4 +144,3 @@ pipeline:
         connectorRef: YOUR_GIT_CONNECTOR_ID
         repoName: <+input>
         build: <+input>
-```

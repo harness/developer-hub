@@ -34,6 +34,11 @@ Go to [What's Supported in IaCM](/docs/infra-as-code-management/whats-supported)
       logo: "opentofu-logo.svg",
       logoSize: 24
     },
+    Terragrunt: {
+      path: "/infra-as-code-management/content/get-started/terragrunt-quickstart.md",
+      logo: "terragrunt-logo.svg",
+      logoSize: 24
+    },
     Terraform: {
       path: "/infra-as-code-management/content/get-started/terraform-quickstart.md",
       logo: "terraform-logo.svg",

@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2025-10-15T10:00
+date: 2025-10-27T10:00
 sidebar_position: 13
 ---
 
@@ -22,6 +22,18 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 ## October 2025
+
+### Version 1.164.0
+
+<!-- 2025-10-27 -->
+
+#### Fixed Issues
+
+- Fixed an issue where accessing vulnerabilities in a pipeline execution page resulted in a **“Something went wrong”** error (STO-9967, ZD-94901).  
+- Removed unexpected toast messages triggered by JIRA GET call failures. Toast messages will now only appear when related user actions occur (STO-9916, ZD-94003).  
+- Fixed an issue where the **Overview** page displayed a blank screen when navigating from the **Test Targets** or **Exemptions** pages (STO-9627).  
+- Fixed an issue in the **Issues** page where filtering vulnerabilities using the **Pipeline** filter did not work as expected (STO-10026).
+
 
 ### Version 1.162.0
 
@@ -939,7 +951,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
-This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
+This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/key-concepts/output-variables). 
 
 This release includes a set of security test policy samples, which make it easy to create policies such as:
 
@@ -1200,7 +1212,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption. (STO-5056, formerly behind feature flag `STO_EXEMPTION_DETAILS`) 
 
-    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
   - The **Security Tests** tab includes a set of **Security Executions** pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212, formerly behind feature flag `STO_DROPDOWN_FILTERS`).
 
@@ -1264,7 +1276,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 
@@ -1321,7 +1333,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 

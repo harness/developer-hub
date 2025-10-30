@@ -54,7 +54,7 @@ The **Custom Script Action** allows you to execute custom scripts during the exp
 
 Actions support different infrastructure types:
 - **Kubernetes** - Actions can be executed in Kubernetes environments
-- **Linux** - Actions can be configured for Linux infrastructure targets
+- **Windows** - Actions can be configured for Windows infrastructure targets
 
 ### Action Execution
 

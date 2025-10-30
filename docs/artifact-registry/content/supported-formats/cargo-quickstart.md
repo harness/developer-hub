@@ -1,7 +1,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Learn how to **create a Cargo Artifact Registry**, **configure an upstream proxy**, and **publish or install Cargo packages** using the CLI.
 
 ## Prerequisites
 - Ensure you have the **Cargo CLI** (`cargo`) installed on your local machine.
@@ -25,7 +24,8 @@ Your registry name must start with a letter and can include `lowercase alphanume
 :::
 
 5. Optionally, add a Description and Labels for better organization.
-6. Click **Create Registry** to finalize.
+6. Choose visibility between **Public** and **Private**.
+7. Click **Create Registry** to finalize.
 </TabItem>
 </Tabs>
 

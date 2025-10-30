@@ -1469,6 +1469,17 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-hsf > div > a::before,
+.sidebar-hsf > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_platform.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-harness-firstGen > div > a::before,
 .sidebar-harness-firstGen > a::before {
   content: ' ';
@@ -1624,6 +1635,18 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   min-width: 24px;
   margin-right: 8px;
   background-image: url('/img/ilt_instructions_icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-hsf > div > a::before,
+.sidebar-hsf > a::before {
+  content: ' ';                                                     
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-hsf.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }

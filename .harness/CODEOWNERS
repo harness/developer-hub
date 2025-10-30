@@ -167,7 +167,6 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 
 # FF Classic Docs
 /docs/feature-flags/ austin.lai@harness.io david.karow@harness.io conor.murray@harness.io james.cox@harness.io
-/docs/faqs/harness-feature-flag-faqs/ austin.lai@harness.io david.karow@harness.io james.cox@harness.io
 /release-notes/feature-flags.md austin.lai@harness.io david.karow@harness.io conor.murray@harness.io james.cox@harness.io
 /src/components/Roadmap/data/ffData.ts austin.lai@harness.io david.karow@harness.io
 /src/components/Docs/data/featureFlagsData.ts austin.lai@harness.io david.karow@harness.io
