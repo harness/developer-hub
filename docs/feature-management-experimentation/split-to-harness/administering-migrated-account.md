@@ -193,7 +193,7 @@ When your account was migrated to Harness, the migration script created new Harn
 
 | Legacy Split setting | Harness user group | Harness scope <br /> <span style={{fontWeight: 300}}>where the user group is created and managed</span> | Role binding <br /> <span style={{fontWeight: 300}}>Harness role + Harness resource group</span> |
 |---|---|---|---|
-| Administrators <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split group</span> | All FME Admins | Harness account | <span style={{fontFamily: 'Courier New'}}>For a new Harness account:</span> <br /> Account Admin + All Resources Including Child Scopes <br /><br /> Organization Viewer + All Organization Level Resources <br /><br /> <span style={{fontFamily: 'Courier New'}}>For a pre-existing Harness account:</span> <br /> Organization Admin + All Organization Level Resources |
+| Administrators <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split group</span> | All FME Admins | Harness account | <span style={{fontFamily: 'Courier New'}}>For a new Harness account:</span> <br /> Account Admin + All Resources Including Child Scopes <br /><br /> Organization Viewer + All Resources Including Child Scopes <br /><br /> <span style={{fontFamily: 'Courier New'}}>For a pre-existing Harness account:</span> <br /> Organization Admin + All Organization Level Resources |
 | Editors <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split role</span> | All FME Editors | Harness account |  Organization Viewer + All Organization Level Resources |
 | Viewers <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split role</span> | All FME Viewers | Harness account |  Organization Viewer + All Organization Level Resources |
 
@@ -614,7 +614,7 @@ The **All Resources Including Child Scopes** is not recommended because it would
 :::
 
 :::tip Service accounts for <code>Admin API keys scoped to all projects</code> can also be created at the organization level
-If you prefer, you can instead create the service account at the Harness organization level. Steps 1 and 4 would be done at the organization level, and Step 2 would be omitted. The **Organization Admin** role for **All Organization Level Resources** is required for the Admin API key to be granted permission to list Harness projects and Harness elements attached to projects.
+If you prefer, you can create the service account at the Harness organization level. Steps 1 and 4 would be done at the organization level, and Step 2 would be omitted. The role binding **Organization Admin** over **All Organization Level Resources** is required for the Admin API key to be granted permission to list Harness projects and Harness elements attached to projects.
 :::
 
 :::tip Granting fewer permissions to service accounts
@@ -680,7 +680,7 @@ To create an Admin API key scoped to a specific project in your Harness account,
 
 :::tip Service accounts for <code>Admin API keys scoped to specific projects</code> can also be created at the organization/project level
 
-If you prefer, you can instead create the service account at the Harness organization or project level:
+If you prefer, you can create the service account at the Harness organization or project level:
 
 - **Organization level**: Steps 1 and 3 would be done at the organization level.
 - **Project level**: Steps 1 and 3 would be done at the project level, and step 2 would be omitted. In step 1, you would apply the role binding: **Project Admin** role over **All Project Level Resources** (or **FME All Resources**).
