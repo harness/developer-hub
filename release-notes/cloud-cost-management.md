@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-10-22T18:00
+date: 2025-10-31T18:00
 sidebar_position: 6
 ---
 
@@ -25,6 +25,20 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## October 2025 - Version 1.68.9
+#### Deployment Date: October 21, 2025 (Prod-1)
+
+- **Enhanced Perspective Reports Delivery Options**: [CCM-26936]
+  - **Download as CSV**: Instantly export reports in CSV format for quick, ad-hoc analysis. Supports all time range options.
+  - **Create Scheduled Report**: Automate recurring deliveries to up to 50 recipients with selected time ranges. [Learn more](https://developer.harness.io/release-notes/cloud-cost-management/#new-feature-dynamic-perspective-reports)
+
+  Note that, **Download as CSV** supports all time range options but **scheduling is limited to some time range**.
+
+- **Improved Anomaly Detection in Perspectives**: Removed the 'Apply Filter' functionality from anomalies tooltip. Anomalies now correctly honor the perspective data aggregation value. [CCM-26647]
+
+- **New Filters in Cloud Integration**: We have added new filters on Account Settings > Integration for Cloud Cost.
+  - For Kubernetes Cluster: Connectivity Status, Features Enabled
+  - For Cloud Accounts: Connectivity Status, Features Enabled, Cloud Provider, AWS Account ID(s), Azure Tenant ID, Azure Subscription ID, GCP Project ID [CCM-17003]
 
 ## October 2025 - Version 1.67.2
 #### Deployment Date: October 22, 2025 (Prod-1)

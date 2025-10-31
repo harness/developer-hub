@@ -79,6 +79,10 @@ Harness CCM Recommendations are data-driven insights that help you optimize your
     - Associated ticket
     - Applied by which user and when
 
+:::note
+Marking a recommendation as "Applied" assumes all resources are actioned and full savings are recorded. If only a subset is applied, the user must manually update the realized savings using the “Edit savings amount” option.
+::::
+
 
 </TabItem>
 <TabItem value="export-ignore-settings" label="Export, Ignore List">
@@ -366,9 +370,6 @@ In ServiceNow (SNOW), a Service Request is a type of ticket that users raise whe
 
 </TabItem>
 </Tabs>
-
-  
-
 
 
 ## FAQs
