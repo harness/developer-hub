@@ -146,12 +146,70 @@ The **Canary Strategy** includes the following steps:
 We do not use the Google Run Deploy command here as this command takes every field as a command flag. Instead, we use the replace command and replace all the configurations provided in the YAML file.
 :::
 
+#### Skip Traffic Shift
+
+The Deploy step includes a **Skip Traffic Shift** option that allows you to create a new revision without immediately shifting traffic to it.
+
+**Configuration:**
+
+```yaml
+- step:
+    type: GoogleCloudRunDeploy
+    name: Google Cloud Run Deploy
+    identifier: Google_Cloud_Run_Deploy
+    spec:
+      connectorRef: account.harnessImage
+      image: harness/google-cloud-run-plugin:1.0.0-linux-amd64
+      imagePullPolicy: Always
+      skipTrafficShift: true
+    timeout: 10m
+```
+
+When `skipTrafficShift: true`:
+- The Deploy step only creates a new revision without shifting traffic to it
+- Traffic shifting will be performed explicitly in the Google Cloud Run Traffic Shift step
+- When disabled (default), traffic shifts to the new revision immediately upon deployment
+
+:::note
+For the first deployment, traffic is always shifted to the new revision regardless of this setting. This applies to subsequent deployments only.
+:::
+
 ### Google Cloud Run Traffic Shift Step
 - **Purpose**: Manages traffic distribution across different revisions of the service.  
 - **Details**:
   - Uses the `gcloud run services update-traffic` command.
   - Allows users to specify the percentage of traffic each revision should handle.
   - For more information, see the [Google Cloud Run Documentation](https://cloud.google.com/sdk/gcloud/reference/run/services/update-traffic).
+
+#### Tags
+
+The Traffic Shift step supports assigning tags to revisions. Tags provide named aliases for revisions (e.g., 'stable', 'canary', 'latest') and create named URLs for accessing specific revisions.
+
+**Configuration:**
+
+```yaml
+- step:
+    type: GoogleCloudRunTrafficShift
+    name: Google Cloud Run Traffic Shift
+    identifier: Google_Cloud_Run_Traffic_Shift
+    spec:
+      revisionTrafficDetails:
+        - revisionName: latest
+          trafficValue: 100
+          tag: canary, latest
+      connectorRef: account.harnessImage
+      image: harness/google-cloud-run-plugin:1.0.0-linux-amd64
+      imagePullPolicy: Always
+```
+
+**Field Details:**
+- `revisionName` - The name of the Cloud Run revision
+- `trafficValue` - The percentage of traffic to route to this revision (0-100)
+- `tag` (optional) - Comma-separated list of tags to assign to this revision
+
+:::note Tag Behavior
+If any tags are provided, all existing tags in the service will be removed and replaced with the new ones. If no tags are specified, existing tags will remain unchanged.
+:::
 
 ### Container Configuration
 
