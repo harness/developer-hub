@@ -1586,7 +1586,7 @@ Steps to reproduce:
 1. Import via ES module: 
    
 ```js
-import { SplitFactory } from '@splitsoftware/splitio';
+  import { SplitFactory } from '@splitsoftware/splitio';
 ```
 
 1. Run `polymer build`.
