@@ -28,6 +28,15 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | [2025.09.v1](/release-notes/internal-developer-portal#september---202509v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
 | [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         | ✅         | ✅          | ✅            |
 
+## November - [2025.11.v1]
+
+### [New Feature] Customizable Catalog Tables 
+### [New Feature] Workflow Execution Page Redesign
+### [New Feature] Advanced Checks in Scorecards
+### [New Feature] TTL support in Environment Management
+### [New Feature] Branch Selector in Workflows
+### [New Feature] AI Search in IDP
+
 ## October - [2025.10.v1]
 
 ---
