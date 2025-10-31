@@ -16,6 +16,29 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 ## October 2025
 
+### [New Enhancement] Owners Are Metadata Only
+----
+#### 2025-10-31
+
+Harness FME has updated the [owners role](/docs/feature-management-experimentation/team-and-project-settings/owners/) to improve clarity and enhance security in feature flag, segment, and metric permissions. Owners now represent responsible stakeholders, rather than users with inherent editing rights.
+
+![](./static/fme/owners-update.png)
+
+With this enhancement, you can:
+
+- Indicate who is accountable for a feature
+- Manage edit permissions through [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account)
+- Reduce confusion over who can modify production rollouts
+- Maintain access control in sensitive environments
+
+All existing edit permissions have been preserved. No one will lose the current access they rely on. To control who can edit feature flags, segments, and metrics, use the latest [FME permissions model](/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions/), which includes environment-level restrictions and optional approval workflows.
+
+#### Related documentation
+
+- [Harness FME Permissions](/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions/)
+- [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account)
+- [Owners (Legacy Split)](/docs/feature-management-experimentation/team-and-project-settings/owners)
+
 ### [New Feature] Harness FME MCP Tools
 ----
 #### 2025-10-31
