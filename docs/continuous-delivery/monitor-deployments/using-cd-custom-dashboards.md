@@ -767,4 +767,82 @@ List of dimensions:
 3. Updated At: Time at which user was updated
 4. User Name: User name
 
+## Troubleshooting
+
+This section covers common questions and issues you may encounter when working with custom dashboards for CD deployments.
+
+### Understanding drill-down behavior
+
+When you click on a deployment metric in a dashboard widget (for example, clicking on a bar in a "Deployment Frequency" chart), a drill-down page opens showing detailed pipeline execution data.
+
+**How drill-down works:**
+
+The drill-down displays data at the **stage level**, not the pipeline level. Each row in the drill-down represents a **unique combination** of:
+- Pipeline execution
+- Service name
+- Environment name
+- Start time
+- End time
+- Other stage-specific attributes
+
+**Key point**: If a pipeline has multiple CD stages (for example, 2 stages deploying to different environments), the drill-down will show **multiple rows for that single pipeline execution** — one row per stage.
+
+**Example**: 
+- A pipeline executes once with 2 stages (Deploy to QA, Deploy to Prod)
+- The widget shows: **1 deployment**
+- The drill-down shows: **2 rows** (one for each stage)
+
+This is expected behavior because the drill-down provides stage-level details including service, environment, and timing information for each deployment stage.
+
+### Dashboard count mismatch between widget and drill-down
+
+**Issue**: The count displayed in a dashboard widget (for example, "Total Deployments - Prod: 10") does not match the number of rows shown when you click through to the drill-down view (for example, 20 rows).
+
+**Cause**: This is expected behavior, not a bug. As explained above:
+
+- **Widget count**: Shows the number of pipeline executions (counts each pipeline once)
+- **Drill-down rows**: Shows stage-level details where each row represents a stage execution
+
+**Example**: 
+- A pipeline with 2 CD stages executes 10 times
+- Widget shows: **10 deployments**
+- Drill-down shows: **20 rows** (10 pipelines × 2 stages)
+
+The drill-down gives you stage-level visibility so you can see exactly which services were deployed to which environments in each pipeline execution.
+
+### Dashboard not showing recent data
+
+**Issue**: Dashboard widgets stop displaying data after a certain date, even though pipelines continue to execute successfully.
+
+**Possible causes**:
+
+1. **Data synchronization issue**: The Change Data Capture (CDC) service that synchronizes execution data to the dashboards may have experienced an interruption.
+
+2. **Dashboard configuration**: The dashboard may have date filters or time range settings that exclude recent data.
+
+**Troubleshooting steps**:
+
+1. **Check your dashboard filters**: 
+   - Review the time range filter on your dashboard
+   - Ensure date filters are set to include recent data
+   - Check if any custom filters are excluding recent executions
+
+2. **Verify pipeline executions**:
+   - Confirm that pipelines are executing successfully in the Harness UI
+   - Check the execution history to ensure data is being generated
+
+3. **Test with a new widget**:
+   - Create a new widget using the same explore (for example, "Deployments and Services V2")
+   - If the new widget shows current data, the issue may be with the specific widget configuration
+   - Consider recreating affected widgets
+
+4. **Contact Harness Support**:
+   - If the issue persists across multiple dashboards and widgets, there may be a data synchronization issue
+   - Provide the dashboard URL and the date range when data stopped appearing
+   - Include information about which explores are affected
+
+:::info
+Dashboard data is populated through a Change Data Capture (CDC) service. In rare cases, this service may require intervention from Harness Support to restore data flow.
+:::
+
 
