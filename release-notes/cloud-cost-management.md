@@ -33,9 +33,12 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
   - **Create Scheduled Report**: Automate recurring deliveries to up to 50 recipients with selected time ranges. [Learn more](https://developer.harness.io/release-notes/cloud-cost-management/#new-feature-dynamic-perspective-reports)
 
   Note that, **Download as CSV** supports all time range options but **scheduling is limited to some time range**.
-  
+
 - **Improved Anomaly Detection in Perspectives**: Removed the 'Apply Filter' functionality from anomalies tooltip. Anomalies now correctly honor the perspective data aggregation value. [CCM-26647]
 
+- **New Filters in Cloud Integration**: We have added new filters on Account Settings > Integration for Cloud Cost.
+  - For Kubernetes Cluster: Connectivity Status, Features Enabled
+  - For Cloud Accounts: Connectivity Status, Features Enabled, Cloud Provider, AWS Account ID(s), Azure Tenant ID, Azure Subscription ID, GCP Project ID [CCM-17003]
 
 ## October 2025 - Version 1.67.2
 #### Deployment Date: October 22, 2025 (Prod-1)
