@@ -55,6 +55,35 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## October 2025
 
+### Version 1.114.8
+
+#### New Features and Enhancements
+
+Harness now supports a Skip Traffic Shift option in the Google Cloud Run Deploy step, allowing you to create new revisions without immediately shifting traffic. The Traffic Shift step also now supports assigning multiple tags to revisions for easier traffic routing and management. (**CDS-112371**)
+
+Harness now supports VM infrastructure for containerized step groups. You can select VMs as the runtime infrastructure when enabling container-based execution, allowing you to run supported CD steps on Linux VMs instead of Kubernetes clusters. This feature is controlled by Feature Flag `CDS_ENABLE_VM_CONTAINER_STEP_GROUP_INFRA`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-112055**)
+
+#### Fixed Issues
+
+- Fixed an issue where the `/v1/kubernetes/releases/service-mapping` API endpoint returned a 400 error due to missing ingress route configuration. The endpoint is now properly routed and accessible for listing service and environment details using namespace and release name. (**CDS-114854, ZD-94565**)
+- Fixed an issue where Terraform policy evaluations ran in an infinite loop, causing pipeline failures with "Error getting policy evaluation data" messages. The fix eliminates redundant calls to fetch the same policy evaluation and corrects the termination condition. (**CDS-114836, ZD-94225**)
+- Fixed an issue where GitOps instances were not visible for services with pipeline runs having multiple environments in the GitOps deploy stage (environment groups or multiple environments). Service summary now correctly reflects instance details for all environments in GitOps services with environment groups. (**CDS-114762**)
+- Improved the error message when pipeline execution fails due to resolved YAML size limit. The error message now clearly indicates the YAML size limit issue instead of the generic "couldn't convert yaml to json node" message, making it easier to identify and resolve the problem. (**PIPE-29977, ZD-94188**)
+- Fixed an issue where step execution logs were not visible for certain pipeline executions despite successful task completion. Step logs now display correctly for all executions. (**PIPE-29959, ZD-94149**)
+- Fixed an issue where the service dashboard displayed "null" as a prefix in the artifact version for Nexus RAW artifacts. The service dashboard now correctly displays the artifact version without the null prefix. (**CDS-114500, ZD-93651**)
+- Fixed an issue where the Jira Create step's Reporter dropdown did not display users when the `emailAddress` field was empty in the Jira API response. The dropdown now falls back to displaying the `displayName` when `emailAddress` is unavailable. (**CDS-113858, ZD-91294**)
+- Fixed an issue where the YAML editor's Save button remained disabled after moving code blocks, even though the YAML content had changed. The Save button now correctly detects all YAML changes, including code block repositioning. (**PIPE-30193**)
+- Fixed an issue in GitOps stages where dynamic provisioning steps were automatically removed when switching from YAML view to visual view. The steps under the dynamic provisioning section now persist correctly across view changes. (**CDS-114895, ZD-94672**)
+- Fixed an issue where default failure strategies for the Verify step were visible in the UI but not reflected in the YAML until a manual change was made. Default failure strategies are now automatically added to the YAML when the Verify step is created. (**CDS-114860, ZD-94575**)
+- Fixed an issue where invalid pipeline executions were being created repeatedly every 10 seconds, consuming the pipeline's execution limit. These invalid executions could not be opened from the overview page. (**CDS-115611, ZD-96153**)
+- Fixed an issue where the deployment type (such as Kubernetes or Helm) was no longer displayed on the Service List page. The deployment type information is now visible again on the Service List page. (**CDS-114867, ZD-94391**)
+- Fixed an issue where the UI crashed when attempting to change a pipeline template using the "Change Template" option from the pipeline template context menu. Users can now successfully change pipeline templates without UI crashes. (**PIPE-29861, ZD-93400**)
+- Fixed an issue where the UI incorrectly sent a random branch in the query parameters for execute or retry APIs even though the pipeline was configured as inline. Pipeline execution and retry operations now correctly handle inline pipelines without branch parameters. (**PIPE-29656, ZD-90918**)
+
+:::info
+Wondering where version 1.113.xx is? That release was rolled into 1.114.xx and upgrades will skip directly from 1.112.xx to 1.114.xx. Don't worry, you're not missing a thing!
+:::
+
 ### GitOps Service 1.43.0, GitOps Agent 0.102.0
 
 #### Fixed Issues
@@ -109,7 +138,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- Harness provides enhanced support for rollback stage action as part of manual intervention in case of Run step failure. With this enhancement, when you rollback a stage through manual intervention on failure of a Run step, it will execute the rollback stage action instead of failing. This enhancement is currently controlled by feature flag `CDS_ROLLBACK_IN_STEPGROUP_MANUAL_INTERVENTION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-112366**, **ZD-85725, ZD-88581, ZD-88916**)
+- Harness provides enhanced support for rollback stage action as part of manual intervention in case of Run step failure. With this enhancement, when you roll back a stage through manual intervention on failure of a Run step, it will execute the rollback stage action instead of failing. This enhancement is currently controlled by feature flag `CDS_ROLLBACK_IN_STEPGROUP_MANUAL_INTERVENTION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-112366**, **ZD-85725, ZD-88581, ZD-88916**)
 
 #### Fixed Issues
 
