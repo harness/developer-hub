@@ -14,7 +14,7 @@ After running a pipeline in Harness, you can view the execution details, which i
 
 :::tip
 
-If you haven't run a pipeline yet, [Try Harness CI](/docs/continuous-integration/get-started/tutorials) to get started with Harness for free.
+If you haven't run a pipeline yet, [Try Harness CI](/docs/continuous-integration/get-started/onboarding-guide) to get started with Harness for free.
 
 :::
 

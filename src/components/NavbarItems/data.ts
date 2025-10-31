@@ -161,12 +161,13 @@ export const moduleIconAndColor = {
       color: '--mod-ce-300',
     },
   },
-  'Incident Response': {
-    iconUrl: 'https://developer.harness.io/img/icon-ir-s.svg',
+  'AI Test Automation': {
+    iconUrl:
+      'https://developer.harness.io/img/logo-ata.svg',
     colors: {
-      border: '--mod-ce-200',
-      backgroundColor: '--mod-ce-100',
-      color: '--mod-ce-300',
+      border: '--mod-aida-200',
+      backgroundColor: '--mod-aida-100',
+      color: '--mod-aida-300',
     },
   },
   'AI Code Assistant': {
@@ -179,7 +180,7 @@ export const moduleIconAndColor = {
     },
   },
   'Harness Intelligence': {
-    iconUrl: 'https://developer.harness.io/img/AIDA_Logo.svg',
+    iconUrl: 'https://developer.harness.io/img/aida-logo.svg',
     colors: {
       border: '--mod-aida-200',
       backgroundColor: '--mod-aida-100',
@@ -213,13 +214,13 @@ export const moduleIconAndColor = {
         color: '--mod-ar-300',
       },
   },
-  'Incident Response': {
+  'AI SRE': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/66df6931514873567c9cdc3c_artifact-registry-logo-icon.svg',
       colors: {
-        border: '--mod-ir-200',
-        backgroundColor: '--mod-ir-100',
-        color: '--mod-ir-300',
+        border: '--mod-aisre-200',
+        backgroundColor: '--mod-aisre-100',
+        color: '--mod-aisre-300',
       },
   },
 };

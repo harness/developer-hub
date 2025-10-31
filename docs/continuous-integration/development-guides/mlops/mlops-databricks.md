@@ -88,7 +88,7 @@ You can use the Databricks plugin in a [Plugin step](/docs/continuous-integratio
                   name: databricks
                   identifier: databricks_plugin
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: harnesscommunity/databricks-ml
                     settings:
                       host: https://abc-1234-def.cloud.databricks.com/

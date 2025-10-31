@@ -66,7 +66,7 @@ This ensures the commands run on each host retrieved via the Fetch Instances ste
 ### Is there a way to pass output variables between commands with in a Command step ?
 
 No, output variables can only be passed between steps or stages, not within a single Command step.
-Please read more on this [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables).
+Please read more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/chained-pipeline-output-variables).
 
 ###  Can we use Command step for custom stage?
 
@@ -142,7 +142,7 @@ This can later be parsed to get the desired output variables and published accor
 
 ### How to set unsupported fields when creating a Jira issue?
 
-By default, Jira plugins don't support cascading lists and other custom types. You can set the unsupported fields using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). For more details, go to [Use HTTP step to set unsupported fields when creating a Jira issue](https://developer.harness.io/kb/continuous-delivery/articles/create-cascading-fields-jira).
+By default, Jira plugins don't support cascading lists and other custom types. You can set the unsupported fields using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). For more details, go to [Use HTTP step to set unsupported fields when creating a Jira issue](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/create-cascading-fields-jira).
 
 ## Shell Script step
 
@@ -331,7 +331,7 @@ kubectl wait --for=condition=complete job/myjob -n <+infra.namespace>
 ### How to trigger one pipeline from another and use the first pipeline's shell script output as inputs for the second, ensuring runtime inputs like environment and infrastructure names are passed?
 
 One can use output variables from one pipeline as inputs for another, defining the receiving pipeline's variables as runtime inputs.
-Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/).
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/output-variable-for-powershell-script/).
 
 ## Containerized step groups
 

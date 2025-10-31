@@ -5,9 +5,9 @@ sidebar_label: Semgrep step configuration
 sidebar_position: 20
 ---
 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
@@ -43,7 +43,7 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 
 - The following topics contain useful information for setting up scanner integrations in STO:
    - [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments)
-   - [Security Testing Orchestration FAQs](/docs/faqs/security-testing-orchestration)
+   - [Security Testing Orchestration FAQs](/docs/security-testing-orchestration/faqs)
    - [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines)
 
 
@@ -83,7 +83,7 @@ Do the following:
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Vulnerabilities tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 
 </details>
@@ -107,7 +107,7 @@ There are two primary workflows to do this:
 - Add a Run step that runs a Semgrep scan from the command line and then copies the results to the shared path.
 - Copy results from a Semgrep scan that ran outside the pipeline. 
 
-For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
+For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
 
 #### Set up the Semgrep scanner
@@ -130,7 +130,7 @@ Add a Semgrep step to the stage and set it up as follows.
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Vulnerabilities tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 
 </details>

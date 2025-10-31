@@ -293,6 +293,12 @@ Here you can see two service deployments run serially on the same infrastructure
 
 You can propagate a stage configured with multi-service from previous configured stage. In the example below, If configured multi-service in stage `deployKubernetes` you will be able to reference the service configuration in stage `dev`.
 
+:::note
+
+Execution time inputs are not supported while propagating multiple services. 
+
+:::
+
 ```yaml
     - stage:
         name: deployKubernetes
@@ -477,12 +483,6 @@ Max concurrency changes based on the following:
 
 You can specify a custom **Max Concurrency** for multi-service deployment stages. This allows you to control the maximum number of services that can be deployed simultaneously.
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 **How custom max concurrency works**
 
 - **Default Behavior**: By default, Harness calculates the **max concurrency** based on the number of services or environments involved in the deployment. However, you can override this default with a custom value.
@@ -500,8 +500,36 @@ Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`.
 This will allow you to control how many services can be deployed concurrently during the multi-service deployment.
 
 <div align="center">
-  <DocImage path={require('./static/custom-max-concurrency.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/custom-max-concurrency.png')} width="70%" height="70%" title="Click to view full size image" />
 </div>
+
+## Filtering with when condition
+
+When you generate parallel stages via a matrix (for example splitting on `serviceList`, `environments` and `infra`), you can use a `when` on the **post-matrix identifier** to include or throttle exactly the combinations you need:
+
+- **Why post-matrix?**  
+  Pre-matrix tests (e.g. checking `<+service.tags>` or `variable.serviceList` directly) run before the matrix expands and will always fail.
+
+- **How to filter**  
+  ```yaml
+  matrix:
+    service: <+variables.serviceList.split(",")>
+    env: e1
+    infra: [infra1, infra2]
+
+  # later, on the generated stage:
+  when:
+    expression: <+matrix.identifier> == "e1_infra1"
+  ```
+Here only the e1_infra1 slot is executed; all other matrix rows are skipped.  
+
+**Multi-deployment**: 
+In a multi-deployment you also have access to:
+- `<+matrix.identifier> for infra/environment combos`
+- `<+matrix.serviceRef> for service combos`
+Use these in your when to precisely target which rows count toward your Custom Max Concurrency.
+
+This ensures your custom concurrency limit only applies to the exact matrix rows you intend.
 
 **Example Use Case**
 

@@ -78,7 +78,7 @@ To use the base image in a pipeline, reference it in a step's `spec.image`, for 
 
 ```yaml
                  spec:
-                   connectorRef: account.harnessImage ## Use the built-in connector or your own Docker connector.
+                   connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                    image: harnesscommunity/base:latest ## Reference the Docker Hub repo, image, and tag.
                    shell: Sh
                    command: sudo npm install -g npm ## This is an example command.
@@ -107,7 +107,7 @@ To use a language image in a pipeline, reference it in a step's `spec.image`, fo
 
 ```yaml
                  spec:
-                   connectorRef: account.harnessImage ## Use the built-in connector or your own Docker connector.
+                   connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                    image: harnesscommunity/ruby:latest ## Reference the Docker Hub repo, image, and tag.
                    shell: Sh
                    command: bundle exec rake test ## This is an example command.
@@ -125,7 +125,7 @@ To use a service image in a pipeline, reference it in a step's `spec.image`, for
 
 ```yaml
                  spec:
-                   connectorRef: account.harnessImage ## Use the built-in connector or your own Docker connector.
+                   connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                    image: harnesscommunity/postgres:14.5 ## Reference the Docker Hub repo, image, and tag.
                    shell: Sh
                    command: bundle exec rake test ## This is an example command.

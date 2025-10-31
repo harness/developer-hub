@@ -16,6 +16,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import EnhancedOutVar from '/docs/continuous-integration/shared/enhanced-output-variables.md';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
 You can use a **Run** step to run commands or scripts in a CI pipeline. Here are some examples of different ways you can use **Run** steps.
 
@@ -30,7 +31,7 @@ This example runs `pytest`, includes [code coverage](./run-tests/code-coverage.m
                   name: Run pytest
                   identifier: Run_pytest
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-
@@ -124,7 +125,7 @@ For example, this step produces [output variables](#output-variables) from Terra
                   name: Terraform Outputs
                   identifier: tf_outputs
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: kameshsampath/kube-dev-tools
                     shell: Sh
                     command: |-
@@ -152,6 +153,38 @@ Consider [creating plugins](./use-drone-plugins/custom_plugins.md) for scripts t
 :::
 
 </TabItem>
+<TabItem value="ssh" label="Connect with SSH">
+
+This example demonstrates how to set up SSH authentication in a **Run** step, such as when connecting to a private Git server or remote machine.
+
+The SSH private key must be stored in Harness as a **File-type Secret** to be used securely in the pipeline.
+
+```yaml
+- step:
+    type: Run
+    name: SSH setup and build
+    identifier: SSH_Build
+    spec:
+      shell: Sh
+      command: |-
+        mkdir -p ~/.ssh
+        echo '<+secrets.getValue("account.your-ssh-private-key")>' > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
+        git clone git@github.com:your-org/private-repo.git
+        ./build.sh
+```
+:::tip
+
+- Replace `account.your-ssh-private-key` with your actual secret reference.
+
+- The `StrictHostKeyChecking=no` flag disables host verification. For production pipelines, consider managing known hosts instead.
+
+- Ensure your build image has OpenSSH tools (ssh, git, etc.) installed.
+:::
+
+</TabItem>
+
 </Tabs>
 
 ## Add the Run step
@@ -178,7 +211,7 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
                   name: run pytest # Specify a name for the step.
                   identifier: run_pytest # Define a step ID, usually based on the name.
                   spec:
-                    connectorRef: account.harnessImage # Specify a container registry, if required.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: python:latest # Specify an image, if required.
                     shell: Sh
                     command: |- # Provide your commands
@@ -219,56 +252,7 @@ The stage's build infrastructure determines whether these fields are required or
 
 </details>
 
-<details>
-<summary>What are the expected values for Container Registry and Image?</summary>
-
-For **Container Registry**, provide a Harness container registry connector, such as a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/), that connects to a container registry, such as Docker Hub, where the **Image** is located.
-
-For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of the Docker image to use when this step runs commands, for example `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest` or `maven:3.8-jdk-11`. If you don't include a tag, Harness uses the `latest` tag.
-
-You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats, for example:
-
-* **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GAR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
-
-<figure>
-
-![](./static/run-step-settings-03.png)
-
-<figcaption>Configuring a Container Registry and Image settings.</figcaption>
-</figure>
-
-</details>
-
-<details>
-<summary>Pulling images from JFrog Artifactory Docker registries</summary>
-
-If you need to pull images from a JFrog Artifactory Docker registry, create a Docker connector that connects to your JFrog instance. **Don't use the Harness Artifactory connector** - The Artifactory connector only supports JFrog non-Docker registries.
-
-To create a Docker connector for a JFrog Docker registry:
-
-1. Go to **Connectors** in your Harness project, organization, or account resources, and select **New Connector**.
-2. Select **Docker Registry** under **Artifact Repositories**.
-3. Enter a **Name** for the connector. The **Description** and **Tags** are optional.
-4. For **Provider Type**, Select **Other**.
-5. In **Docker Registry URL**, enter your JFrog URL, such as `https://mycompany.jfrog.io`.
-6. In the **Authentication** settings, you must use **Username and Password** authentication.
-   * **Username:** Enter your JFrog username.
-   * **Password:** Select or create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password corresponding with the **Username**.
-7. Complete any other settings and save the connector. For information all Docker Registry connector settings, go to the [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-
-:::tip JFrog URLs
-
-The JFrog URL format depends on your Artifactory configuration, and whether your Artifactory instance is local, virtual, remote, or behind a proxy. To get your JFrog URL, you can select your repo in your JFrog instance, select **Set Me Up**, and get the repository URL from the server name in the `docker-login` command.
-
-![](./static/artifactory-connector-settings-reference-09.png)
-
-For more information, go to the JFrog documentation on [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) and [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories).
-
-:::
-
-</details>
+<FQNImage />
 
 ### Shell and Command
 
@@ -340,7 +324,7 @@ You can use the `Sh` option to run any shell script, provided the necessary bina
               - step:
                   ...
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-
@@ -512,18 +496,33 @@ During and after pipeline runs, you can find step logs on the [Build details pag
 
 If your pipeline runs tests, you can [view test reports](./run-tests/viewing-tests.md) on the Build details page.
 
+## Hidden/Invisible Characters
+Customers may occasionally encounter unexplained behavior in their scripts caused by hidden or invisible characters. These characters often appear when copying and pasting from non-plain-text sources and can lead to unexpected script errors. Harness includes a feature to display invisible characters, which is enabled by default.
+
+When invisible characters are present, users will see a highlighted space in their scripts.
+![](./static/invisiblechr-01.png)
+
+They can hover over the highlight to view the character and click "Adjust settings" to manage the display.
+![](./static/invisiblechr-hover.png)
+
+If a selection was accidentally made, the user can right-click within the script area and open the **Command Palette**.
+![](./static/invisiblechr-cmdplt.png)
+
+A dialog box will appear, allowing the user to search for and toggle the setting that controls how invisible characters are highlighted.
+![](./static/invisiblechr-toggle.png)
+
 ## Troubleshoot script execution (Run steps)
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to script execution and using Run steps, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to script execution and using Run steps, such as:
 
-* [Can I use an image that doesn't have a shell in a Run step?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-an-image-that-doesnt-have-a-shell-in-a-run-step)
-* [Is a Docker image required to use the Run step on local runner build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#is-a-docker-image-required-to-use-the-run-step-on-local-runner-build-infrastructure)
-* [When attempting to export an output variable from a Run step using a Python shell, the step fails with "no such file or directory"](/kb/continuous-integration/continuous-integration-faqs/#when-attempting-to-export-an-output-variable-from-a-run-step-using-a-python-shell-the-step-fails-with-no-such-file-or-directory)
-* [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/kb/continuous-integration/continuous-integration-faqs/#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
-* [Does the Harness Run step overwrite the base image container entry point?](/kb/continuous-integration/continuous-integration-faqs/#does-the-harness-run-step-overwrite-the-base-image-container-entry-point)
-* [Why is the default entry point not running for the container image used in the Run step?](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-default-entry-point-not-running-for-the-container-image-used-in-the-run-step)
-* [How do I start a service started in a container that would usually be started by the default entry point?](/kb/continuous-integration/continuous-integration-faqs/#since-the-default-entry-point-isnt-executed-for-the-container-image-used-in-the-run-step-how-do-i-start-a-service-started-in-a-container-that-would-usually-be-started-by-the-default-entry-point)
-* [How do I run the default entry point of the image used in the Run step?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-run-the-default-entry-point-of-the-image-used-in-the-run-step)
-* [Does CI support running Docker-in-Docker images?](/kb/continuous-integration/continuous-integration-faqs/#does-ci-support-running-docker-in-docker-images)
-* [Can't connect to Docker daemon with Docker-in-Docker Background step.](/kb/continuous-integration/continuous-integration-faqs/#cant-connect-to-docker-daemon)
-* [Concatenated variable values in PowerShell scripts print to multiple lines](/kb/continuous-integration/continuous-integration-faqs/#concatenated-variable-values-in-powershell-scripts-print-to-multiple-lines)
+* [Can I use an image that doesn't have a shell in a Run step?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-use-an-image-that-doesnt-have-a-shell-in-a-run-step)
+* [Is a Docker image required to use the Run step on local runner build infrastructure?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#is-a-docker-image-required-to-use-the-run-step-on-local-runner-build-infrastructure)
+* [When attempting to export an output variable from a Run step using a Python shell, the step fails with "no such file or directory"](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#when-attempting-to-export-an-output-variable-from-a-run-step-using-a-python-shell-the-step-fails-with-no-such-file-or-directory)
+* [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
+* [Does the Harness Run step overwrite the base image container entry point?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-the-harness-run-step-overwrite-the-base-image-container-entry-point)
+* [Why is the default entry point not running for the container image used in the Run step?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-is-the-default-entry-point-not-running-for-the-container-image-used-in-the-run-step)
+* [How do I start a service started in a container that would usually be started by the default entry point?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#since-the-default-entry-point-isnt-executed-for-the-container-image-used-in-the-run-step-how-do-i-start-a-service-started-in-a-container-that-would-usually-be-started-by-the-default-entry-point)
+* [How do I run the default entry point of the image used in the Run step?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-run-the-default-entry-point-of-the-image-used-in-the-run-step)
+* [Does CI support running Docker-in-Docker images?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-ci-support-running-docker-in-docker-images)
+* [Can't connect to Docker daemon with Docker-in-Docker Background step.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#cant-connect-to-docker-daemon)
+* [Concatenated variable values in PowerShell scripts print to multiple lines](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#concatenated-variable-values-in-powershell-scripts-print-to-multiple-lines)

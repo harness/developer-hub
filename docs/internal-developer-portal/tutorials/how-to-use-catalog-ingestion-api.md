@@ -445,7 +445,7 @@ In case you want to display the same information you have ingested on your Overv
 
 ![navigation-layout](./static/navigation-layout.png)
 
-2. Now go to the Software Component in the **Catalog** and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/custom-card)
+2. Now go to the Software Component in the **Catalog** and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
 
 
 </TabItem>
@@ -802,7 +802,7 @@ In case you want to display the same information you have ingested on your Overv
 
 ![navigation-layout](./static/navigation-layout.png)
 
-2. Now go to the Software Component in the **Catalog** and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/custom-card)
+2. Now go to the Software Component in the **Catalog** and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
 
 </TabItem>
 <TabItem value="add-entity-field-picker" label="Add UI Picker to dynamically fetch data in workflows">

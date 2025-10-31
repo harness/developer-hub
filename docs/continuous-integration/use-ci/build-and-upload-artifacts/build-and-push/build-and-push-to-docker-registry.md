@@ -12,6 +12,7 @@ canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
+import SshOps from '/docs/continuous-integration/shared/ssh-during-docker-build.md';
 
 This topic explains how to configure the **Build and Push an image to Docker Registry** step in a Harness CI pipeline. This step creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. This is one of several options for [building and pushing artifacts in Harness CI](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
@@ -86,6 +87,11 @@ The name of the repository where you want to store the image, for example, `<hub
 
 For private Docker registries, specify a fully qualified repo name.
 
+:::tip
+Using a private Docker registry with a self-signed certificate?  
+[Learn how to configure BuildKit to trust self-signed certs.](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+:::
+
 ### Tags
 
 Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag.
@@ -120,8 +126,6 @@ Select an authenticated connector to download base images from a Docker-complian
 When using base image connector, pushing to or pulling from multiple Docker registries with the same URL prefix (e.g., https://index.docker.io) is not supported. This limitation occurs because the second registry's credentials overwrite the first in the Docker config file. This issue doesn't affect registries with completely unique URLs, such as separate JFrog instances.
 This limitation does not apply to following build and push steps only on K8 - ACR, GAR, ECR.
 :::
-
-This setting is enabled by the feature flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR`. When enabling this flag, the delegate version must be higher than `24.07.83503`.
 
 ### Optimize
 
@@ -200,22 +204,23 @@ You can find the following settings on the **Advanced** tab in the step settings
 - [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps): Control what happens to your pipeline when a step fails.
 - [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
 
+<SshOps/>
+
 ## Troubleshoot Build and Push steps
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to building and pushing images, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to building and pushing images, such as:
 
-
-- [Why do I encounter an authentication error when using V2 API](/kb/continuous-integration/continuous-integration-faqs/#why-build-and-push-steps-dont-support-v2-api-urls)
-- [What drives the Build and Push steps? What is kaniko?](/kb/continuous-integration/continuous-integration-faqs/#what-drives-the-build-and-push-steps-what-is-kaniko)
-- [Does a kaniko build use images cached locally on the node? Can I enable caching for kaniko?](/kb/continuous-integration/continuous-integration-faqs/#does-a-kaniko-build-use-images-cached-locally-on-the-node-can-i-enable-caching-for-kaniko)
-- [Can I run Build and Push steps as root if my build infrastructure runs as non-root? What if my security policy doesn't allow running as root?](/kb/continuous-integration/continuous-integration-faqs/#can-i-run-build-and-push-steps-as-root-if-my-build-infrastructure-runs-as-non-root)
-- [Can I set kaniko and drone-docker runtime flags, such as skip-tls-verify or custom-dns?](/kb/continuous-integration/continuous-integration-faqs/#can-i-set-kaniko-and-drone-docker-runtime-flags-such-as-skip-tls-verify-or-custom-dns)
-- [Can I push without building?](/kb/continuous-integration/continuous-integration-faqs/#can-i-push-without-building)
-- [Can I build without pushing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-build-without-pushing)
-- [Is remote caching supported in Build and Push steps?](/kb/continuous-integration/continuous-integration-faqs/#is-remote-caching-supported-in-build-and-push-steps)
-- [Why doesn't the Build and Push step include the content of VOLUMES from my Dockerfile in the final image?](/kb/continuous-integration/continuous-integration-faqs/#why-doesnt-the-build-and-push-step-include-the-content-of-volumes-from-my-dockerfile-in-the-final-image)
-- [Can I use a specific version of kaniko or drone-docker?](/kb/continuous-integration/continuous-integration-faqs/#is-there-a-way-to-use-a-newer-or-older-version-of-kaniko)
-- [How do I fix this kaniko container runtime error: kaniko should only be run inside of a container?](/kb/continuous-integration/articles/kaniko_container_runtime_error)
-- [Can I push and pull from two different docker registries that have same prefix for registry URL ?](/kb/continuous-integration/continuous-integration-faqs/#can-i-push-and-pull-from-two-different-docker-registries-that-have-same-prefix-for-registry-url-)
-- [Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?](/kb/continuous-integration/continuous-integration-faqs#why-does-the-parallel-execution-of-build-and-push-steps-fail-when-using-buildx-on-kubernetes)
-- [Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?](/kb/continuous-integration/continuous-integration-faqs#why-do-build-and-push-steps-fail-with-error-while-loading-buildkit-image-exit-status-1-when-varlibdocker-is-included-in-shared-paths-during-dind-execution)
+- [Why do I encounter an authentication error when using V2 API](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-build-and-push-steps-dont-support-v2-api-urls)
+- [What drives the Build and Push steps? What is kaniko?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-drives-the-build-and-push-steps-what-is-kaniko)
+- [Does a kaniko build use images cached locally on the node? Can I enable caching for kaniko?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-a-kaniko-build-use-images-cached-locally-on-the-node-can-i-enable-caching-for-kaniko)
+- [Can I run Build and Push steps as root if my build infrastructure runs as non-root? What if my security policy doesn't allow running as root?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-run-build-and-push-steps-as-root-if-my-build-infrastructure-runs-as-non-root)
+- [Can I set kaniko and drone-docker runtime flags, such as skip-tls-verify or custom-dns?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-set-kaniko-and-drone-docker-runtime-flags-such-as-skip-tls-verify-or-custom-dns)
+- [Can I push without building?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-push-without-building)
+- [Can I build without pushing?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-build-without-pushing)
+- [Is remote caching supported in Build and Push steps?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#is-remote-caching-supported-in-build-and-push-steps)
+- [Why doesn't the Build and Push step include the content of VOLUMES from my Dockerfile in the final image?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-doesnt-the-build-and-push-step-include-the-content-of-volumes-from-my-dockerfile-in-the-final-image)
+- [Can I use a specific version of kaniko or drone-docker?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#is-there-a-way-to-use-a-newer-or-older-version-of-kaniko)
+- [How do I fix this kaniko container runtime error: kaniko should only be run inside of a container?](/docs/continuous-integration/ci-articles-faqs/articles/kaniko-container-runtime-error)
+- [Can I push and pull from two different docker registries that have same prefix for registry URL ?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-push-and-pull-from-two-different-docker-registries-that-have-same-prefix-for-registry-url-)
+- [Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-does-the-parallel-execution-of-build-and-push-steps-fail-when-using-buildx-on-kubernetes)
+- [Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-do-build-and-push-steps-fail-with-error-while-loading-buildkit-image-exit-status-1-when-varlibdocker-is-included-in-shared-paths-during-dind-execution)

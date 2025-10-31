@@ -1,6 +1,31 @@
 ---
 title: Shell Script step
 description: Execute scripts in the shell session of the stage.
+tags: 
+  - shell-script-step
+  - harness-shell-script
+  - shell-script-steps-output-variables
+  - shell-script-input-variables
+  - shell-script-inline
+  - shell-script-file-store
+  - shell-script-powershell
+  - shell-script-bash
+  - shell-script-delegate-execution
+  - shell-script-target-host
+  - shell-script-output-alias
+  - shell-script-secret-variables
+  - shell-script-error-handling
+  - shell-script-realtime-logging
+  - shell-script-ignore-failure
+  - shell-script-kubernetes
+  - shell-script-include-infra-selectors
+  - shell-script-advanced-settings
+  - shell-script-escaping-characters
+  - shell-script-oidc
+  - shell-script-mdm
+  - shell-script-uem
+  - shell-script-iot
+  - shell-script-edge
 sidebar_position: 3
 ---
 
@@ -33,6 +58,18 @@ If you must use `var`, you can use single quotes and `get()` when referencing
 * `|` `^` `&` `<` `>` `%` are reserved symbols in PowerShell and in case those are being used as a value of a Harness secret, please make sure it is escaped using `^` symbol.
 
 Instead of using `<+test.var>` use `<+test.get('var')>`.
+
+:::info
+
+**Escaping the Pipe `(|)` Symbol**
+
+In PowerShell, the pipe symbol `(|)` is used to pass output between cmdlets. You don't need to escape it when using it for piping commands.
+
+However, if you're including the pipe symbol inside a string, PowerShell may try to interpret it as a pipeline, which can cause errors. In such cases, escape it using `^|`.
+
+Example: `echo "Get-Process ^| Sort-Object"`
+Use escaping to prevent PowerShell from treating it as an actual pipeline.
+:::
 
 ### Stopping scripts after failures
 
@@ -155,6 +192,12 @@ A failed Shell Script step does not prevent a stage deployment from succeeding.
 
 The Shell Script step succeeds or fails based on the exit value of the script. A failed command in a script does not fail the script, unless you call `set -e` at the top.
 
+:::note 
+
+You can capture and access the exit code of a shell script step using a Harness expression. Check out [Access Exit Code of a Shell Script step ](#access-exit-code-of-a-shell-script-step).
+
+:::
+
 ## Shell Script step overview
 
 With the Shell Script step, you can execute scripts in the shell session of the stage in the following ways:
@@ -186,13 +229,11 @@ Select **Bash** or **Powershell**.
 
 When the script in the Shell Script step is run, Harness executes the script on the target host's or Delegate's operating system. Consequently, the behavior of the script depends on their system settings.
 
-If you select **Bash**, Harness will use `sh` because it is standardized and portable across POSIX systems.
+If you select **Bash**, Harness will use `sh` because it is standardized and portable across POSIX systems. 
 
-To support different host systems, or to explicit set the **Bash** option to use bash, you should begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). 
+If you are running the script on a remote VM via ssh, Harness will use the default shell of that machine. Importantly, shebangs in the script such as `#!/bin/sh` or `#!bin/bash` will not override the default setting.
 
-For more information, go to the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
-
-In case of PowerShell, if the script executes on Delegate it requires the powershell binary to be installed as it is not shipped with delegate tools, see the [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3) for installation instructions.
+In case of PowerShell, if the script executes on Delegate, it requires the PowerShell binary to be installed, as it is not shipped withith delegate tools, see the [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3) for installation instructions.
 
 :::info note
 PowerShell version 7.5.0 and above are not supported. Users will encounter errors when using version 7.5.0 or later in the Harness delegate.
@@ -372,6 +413,33 @@ If you need quotes around the [Harness variable expressions](/docs/platform/vari
 `export EVENT_PAYLOAD='<+trigger.eventPayload>'` 
 
 If you use [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
+
+### Access Exit Code of a Shell Script step
+
+Harness automatically captures the exit code of every Shell Script step execution. You can access the Exit Code using the expression mentioned below. 
+
+| Purpose                          | Expression                                                                 |
+|----------------------------------|----------------------------------------------------------------------------|
+| Output Exit Code                 | `<+steps.[step_id].output.exitCode>`                                       |
+
+
+### Accessing AWS and GCP OIDC Tokens from Connectors in Shell Scripts
+
+In cases where native CD steps do not support certain use cases (e.g., custom infrastructure provisioning, scripting-based deployments), you can programmatically retrieve an OIDC token from the Infrastructure connector or any scoped connector, and use it in your script to authenticate with **AWS** or **GCP**.
+
+Harness securely evaluates the expression at runtime and makes the OIDC token available for use within the script.
+
+#### Supported Expressions
+
+| Purpose                          | Expression                                                                 |
+|----------------------------------|----------------------------------------------------------------------------|
+| Connector ID                     | `<+connector.get(<+infra.connectorRef>).identifier>`                       |
+| IAM Role ARN                     | `<+connector.get(<+infra.connectorRef>).spec.credential.spec.iamRoleArn>`  |
+| AWS Region                       | `<+connector.get(<+infra.connectorRef>).spec.credential.region>`           |
+| OIDC Token (Infrastructure)      | `<+connectorInputs.get(<+infra.connectorRef>).oidcToken>`                  |
+| OIDC Token (Org-level connector) | `<+connectorInputs.get("org.awsoidc").oidcToken>`                          |
+| OIDC Token (Account-level)       | `<+connectorInputs.get("account.awsoidc").oidcToken>`                      |
+
 
 ### Specify input variables
 
@@ -893,6 +961,21 @@ The step might look like this:
 ```
 
 The `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}` line will get the `kubeconfig` from the Harness Delegate that is installed on the Kubernetes cluster.
+
+## Hidden/Invisible Characters
+An issue customers may experience are unexplained phenomenon within their scripts due to hidden or invisible characters. These characters often appear when pasting from non-plain text resources, and can cause errors in how the script operates.   Harness has a function to display invisible characters which is enabled by default.
+
+End users should see a highlighted space within their scripts, if an invisible character is contained:
+![](./static/invisiblechr-01.png)
+
+They can then manage and see what character is contained by hovering over the highlight and selecting to `adjust settings`
+![](./static/invisiblechr-hover.png)
+
+If a selection was accidentally made, the person can then make adjustments by right-clicking within the script space and selecting the `Command Palette`.
+![](./static/invisiblechr-cmdplt.png)
+
+A dialog box will appear, allowing the user to search for the ability to toggle how the highlighting will be set.
+![](./static/invisiblechr-toggle.png)
 
 ## FAQ's
 

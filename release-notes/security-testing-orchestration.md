@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-06-27T10:00
+date: 2025-10-27T10:00
 sidebar_position: 13
 ---
 
@@ -21,10 +21,247 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## October 2025
+
+### Version 1.164.0
+
+<!-- 2025-10-27 -->
+
+#### Fixed Issues
+
+- Fixed an issue where accessing vulnerabilities in a pipeline execution page resulted in a **“Something went wrong”** error (STO-9967, ZD-94901).  
+- Removed unexpected toast messages triggered by JIRA GET call failures. Toast messages will now only appear when related user actions occur (STO-9916, ZD-94003).  
+- Fixed an issue where the **Overview** page displayed a blank screen when navigating from the **Test Targets** or **Exemptions** pages (STO-9627).  
+- Fixed an issue in the **Issues** page where filtering vulnerabilities using the **Pipeline** filter did not work as expected (STO-10026).
+
+
+### Version 1.162.0
+
+<!-- 2025-10-15 -->
+
+#### New Features and Enhancements
+
+##### Download CSV is now Generally Available
+The option to download security scan results as CSV from the **Vulnerabilities** tab is now **Generally Available (GA)**.  
+  - The **[Download CSV](/docs/security-testing-orchestration/view-security-test-results/export-scan-results)** button in the Vulnerabilities tab allows you to export scan results directly.  
+  - The **View in Dashboard** option now redirects you to the **[Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary)**, automatically applying your pipeline execution ID as a filter to view detailed scan results.  
+  - This feature was previously behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY`. 
+
+  <DocImage path={require('./static/sto-export-csv.png')} width="80%" height="80%" title="Click to view full size image" />
+
+##### AIML Scanner Category
+Introduced a new **AIML** scanner category dedicated to listing all AI/ML scanners. The **[ModelScan](/docs/security-testing-orchestration/sto-techref-category/modelscan)** step is now included under this category (STO-9830).
+
+  <DocImage path={require('./static/sto-aist-section.png')} width="80%" height="80%" title="Click to view full size image" />
+
+##### New scan configurations for Anchore Enterprise step
+Added new **scan configurations** for **Orchestration** and **Extraction** modes in the **[Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference)** step.  
+  These configurations let users control how reports are filtered when retrieved from the configured Anchore API:  
+  - **OS:** Includes vulnerabilities related to operating system packages (RPM, DPKG, APK, etc.).  
+  - **Non-OS:** Includes vulnerabilities related to language or application packages (NPM, GEM, Java Archive — JAR/WAR/EAR, Python PIP, .NET NuGet, etc.).  
+  - **All** (or **Default**): Provides a combined report containing both OS and Non-OS vulnerability records.
+
+  <DocImage path={require('./static/sto-anchore-scan-configs.png')} width="80%" height="80%" title="Click to view full size image" />
+
+##### Updated RBAC behavior for user info
+If a user has view permission, user information is now displayed correctly. Previously, users without permission to view user info would see a blank details section. Note that if the user has been deleted, data may still be unavailable (STO-8871, ZD-82948).
+
+#### Fixed Issues
+
+- Fixed a bug on the **Issues** page where navigating to a different page, opening the side panel, and closing it caused the view to reset to the first page. The view now remains on the selected page (STO-9848).
+- Fixed an issue where STO dashboards did not correctly reflect issue statuses at scan time, resulting in discrepancies. Dashboards now account for exemption states at scan time, issues are shown as exempted only after approval and rescanning (STO-8623, ZD-74374, ZD-78347, ZD-91111).
+
+## September 2025
+
+### Version 1.160.0
+
+<!-- 2025-09-23 -->
+
+#### New Features and Enhancements  
+
+##### ModelScan Integration:
+STO now integrates with **ModelScan**, enabling you to scan AI/ML models directly in your CI/CD pipelines. Refer to the [ModelScan documentation](/docs/security-testing-orchestration/sto-techref-category/modelscan) and [video](https://youtu.be/PhvIXcwpme8
+) for details.  
+  <DocVideo src="https://youtu.be/PhvIXcwpme8" title="Scan you AI/ML Models using Harness STO" />
+
+
+##### Nexus IQ Integration:
+**Nexus IQ** is now available as a native step. Previously supported only through the Custom Scan step, you can now use the Nexus IQ native step for all scans. 
+  Refer to the [Nexus IQ documentation](/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference) for more details.  
+
+  <DocImage path={require('./static/sto-nexusiq-step.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Active Issues Component:
+Added a new **[Active Issues](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results)** component to the **Vulnerabilities** tab.  
+  - This count excludes exempted and remediated issues.  
+  - Added **deduplication percentage**, which shows how much the issue count has been reduced compared to raw counts, based on STO’s deduplication logic.  
+
+  <DocImage path={require('./static/sto-active-issues.png')} width="90%" height="90%" title="Click to view full size image" />
+
+##### SonarQube Step Enhancement:
+**SonarQube** issues with type `Code Smells` and `Bug Smells` now can include proper severity mapping instead of defaulting to `info` severity. (STO-8757)
+  - This is controlled by the **Treat Code Smells and Bug Smells as Vulnerabilities** setting (account-level, disabled by default). Refer to the [SonarQube documentation](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-issue-categorization-in-sto) for more details.  
+
+  <DocImage path={require('./static/sto-sonarqube-code-bug-smells.png')} width="80%" height="80%" title="Click to view full size image" />  
+
+##### STO License Details Update:
+Updated the STO License details view (STO-9757)
+- Removed the **Overuse Banner** for Standard (Legacy) License accounts (still shown for Dev360 users).  
+- Updated tooltip text for Standard (Legacy) License accounts to clarify the developer-based model:  
+  - 1 Active Developer = 100 Security Scans / month
+  - Each STO step (SAST, SCA, DAST, etc.) = 1 scan
+<DocImage path={require('./static/sto-license-activity-update.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Fixed Issues  
+- Fixed an issue where dashboard components displayed as “Untitled” with no data due to a pipeline link generation problem. Visualizations in dashboards now render as expected (STO-9171, ZD-80253).  
+- Fixed an issue where URLs in the **Reference URLs** field of the Issue Details pane overflowed. They now wrap to a new line (STO-9749).  
+
+
+### Version 1.158.0
+
+<!-- 2025-09-12 -->
+
+#### New Features and Enhancements
+
+- STO now integrates with **[GitHub Advanced Security (GHAS)](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security)**. This integration supports the following GHAS products and scan modes:
+  - **CodeQL (SAST):** Identify vulnerabilities in code. Supported in **Orchestration**, **Extraction**, and **Ingestion** scan modes.
+  - **Dependabot (SCA):** Detect vulnerable open-source dependencies. Supported in **Orchestration**, **Extraction**, and **Ingestion** scan modes.
+  - **Secret Scanning:** Detect exposed secrets. Supported in **Extraction** and **Ingestion** scan modes.
+
+  Refer to [GitHub Advanced Security Documentation](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security) for more information.
+
+- STO now supports **Notifications for Exemption Management**. You can configure notifications for exemption-related events such as when an exemption request is created or when its status changes. [View the Documentation on Notifications for Exemptions](https://developer.harness.io/docs/security-testing-orchestration/notifications/exemption-notifications/) and the [Video on Set up Notifications for Exemption Requests](https://youtu.be/f5JyySFQG4E) (currently behind the feature flag `PL_CENTRAL_NOTIFICATIONS`)
+  <DocImage path={require('./static/sto-notification-events.png')} width="100%" height="100%" title="Click to view full size image" />
+
+  <DocVideo src="https://youtu.be/f5JyySFQG4E" title="Set up Notifications for Exemption Requests" />
+
+- You can now **export scan results from the Vulnerabilities tab**. (currently behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY`)
+  - Download results in **CSV format** directly from the **Vulnerabilities** tab.  
+  - Navigate to the **Pipeline Execution Summary Dashboard** from the same tab to export results in **CSV or PDF**. Refer to [Export Scan Results Documentation](https://developer.harness.io/docs/security-testing-orchestration/view-security-test-results/export-scan-results/) for more details.  
+  <DocImage path={require('./static/sto-export-csv.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- Issue descriptions in the **Issue Details** view will now render as a formatted JSON tree when the description is in JSON format. The JSON can be expanded or collapsed for easier viewing (STO-8885, ZD-83369).
+
+  <DocImage path={require('./static/sto-json-issue-desc.png')} width="100%" height="100%" title="Click to view full size image" />
+
+#### Fixed Issues
+
+- Fixed an issue where the **Project Filter** on the Exemptions page (at the Account level) was not correctly filtering exemption data based on the selected project (STO-9669).  
+- For exemptions without a configured baseline target, the **Set in target** button (previously leading to a 404) has been removed. Instead, a direct link to the relevant target on the **Test Targets** page is now provided (STO-9715, STO-9556).  
+  
+  <DocImage path={require('./static/sto-link-to-baseline.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- Fixed an issue where the CSV downloaded from the **Vulnerabilities** tab had empty entries. The CSV data is now correctly populated (STO-9646, STO-9645).  
+- Fixed an error when configuring the **port** in the **ZAP** step’s *Scan Tool* section. Previously, the port had to be entered as a string, causing a save error. The visual editor now correctly treats the port value as an integer or runtime input, and saves without errors (STO-9316).
+
+
+## August 2025
+
+### Version 1.155.2
+
+<!-- 2025-08-29 -->
+
+#### New Feature
+- **Issue** Page is now **Generally Available**.
+This section provides a consolidated view of all security issues affecting your baseline targets, providing a comprehensive list of issues identified across the scans in your Project. This page is currently available only at the **Project** level. Support for **Organization** and **Account** levels will be available soon. Refer to [View and manage baseline issues](/docs/security-testing-orchestration/view-security-test-results/issues) and video on [Introducing Issue Page for AppSec Teams](https://youtu.be/CLqFqmZh2YM) for more details.
+  <DocImage path={require('./static/sto-issues-page.png')} width="100%" height="100%" title="Click to view full size image" />
+
+  <DocVideo src="https://youtu.be/CLqFqmZh2YM" title="Navigating the Issues section" />
+
+#### Fixed Issues
+
+- Fixed an issue where the **View Execution Results** option on the [Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions) page did not route correctly to the pipeline execution window. This is fixed by correcting the `projectId` and `orgId` to the URL (STO-9658, ZD-91336).  
+- Fixed a bug in the **[Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab where applying a filter by **Status** affected the overall severity counts incorrectly. Severity counts now reflect accurate data irrespective of applied filters (STO-9548).    
+- Fixed incorrect project details being shown in the **[Exemption Status](/docs/security-testing-orchestration/exemptions/manage-exemptions)** view inside the Issue Details pane, specifically for exemptions scoped at the project level (STO-9628).  
+- Fixed an issue where filtering by the **[Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions)** card in the **[Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab displayed exempted issues incorrectly. Also resolved a problem where the Dashboard view showed data, but the CSV download returned empty results (STO-9640).  
+- Fixed a bug where exemption requests did not appear in the **[Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions)** page despite the tab showing a pending count. This issue occurred intermittently and is now resolved (STO-9411, ZD-89459).
+- Fixed an error (`414 URI Too Long`) caused when selecting a large number of options in the **Project** and **Organization** filters on the [**Exemptions**](/docs/security-testing-orchestration/exemptions/manage-exemptions) page. Filtering now works as expected without errors at both Organization and Account levels (STO-9516, STO-9562).
+
+
+### Version 1.153.3
+
+<!-- 2025-08-15 -->
+
+#### New Features and Enhancements
+- Added support for **[Harness Resource Groups](/docs/platform/role-based-access-control/add-resource-groups/)** at the Project, Org, and Account scopes. See the [STO RBAC documentation](/docs/security-testing-orchestration/rbac) and [video on configuring STO RBAC](https://youtu.be/c_JU141TGas) for details (STO-9217).
+  <DocImage path={require('./static/sto-rbac.png')} width="100%" height="100%" title="Click to view full size image" />
+
+  <DocVideo src="https://youtu.be/c_JU141TGas" title="How to Configure RBAC Permissions for Harness STO" />  
+- Added a tooltip to the **Create Pull Request** button in [Harness AI recommendations](/docs/security-testing-orchestration/remediations/ai-based-remediations), which displays the reason when the required conditions for opening a pull request are not met (STO-9014).  
+- External ticket badges now indicate when a linked ticket is broken or unclickable (STO-8479, ZD-84689).  
+
+#### Fixed Issues
+- Updated severity override logic in the **Vulnerabilities** tab to correctly reflect changes. For example, when a severity is overridden from *medium* to *low* by **Snyk**, the UI now displays the correct direction of the override (STO-9483).  
+- Fixed an issue in the **All Issues** page where applying filters or performing a search while on a higher pagination page could result in a misleading “No Issues Found” message. The page now resets to the first page automatically (STO-9413).
+
+
+## July 2025
+
+### Version 1.150.7
+
+<!-- 2025-07-25 -->
+
+#### New Features and Enhancements
+
+- Upgraded the [SonarQube step](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) CLI from version `4.7` to `7.1`, introducing security updates and enhancements (STO-9143).
+- Improved error messaging for the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). For example, clearer messages now appear when specifying a key field that does not exist in the JSON input (STO-6110).
+
+#### Fixed Issues
+- Fixed an issue in the Vulnerabilities tab where selecting an option from the scanner filter dropdown during a [Custom Scan](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step caused other dropdowns to fail to populate, preventing the target name and variant from rendering correctly (STO-9376, ZD-88728). 
+
+
+### Version 1.148.4
+
+<!-- 2025-07-17 -->
+
+#### New Features and Enhancements
+- [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) step now supports the **Filesystem** scan configuration for scanning a repository or file using `trivy fs` (STO-8711, ZD-81541).  
+- [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) step now supports the **Trivy SBOM** scan configuration for scanning SBOM files using `trivy sbom /path/to/cyclonex.json` (STO-8940).
+- [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) step now recognizes exempted issues and no longer lists them as active. Previously exempted issues may now appear as **Remediated** after the next Wiz scan (STO-9229).
+- Added the checkbox field **Use Scanner Raw Severity** to the [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference) step to use the scanner-provided severity instead of CVSS-based severity. This is functionally equivalent to setting `ingest_tool_severity: true` (STO-8547).
+
+#### Fixed Issues
+- Fixed a bug in [Checkov](/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan) scan handling where multiple vulnerability types in one scan were not processed correctly (STO-9153, ZD-85529).
+- Enhanced the **Scanner** filter in the Vulnerabilities tab to support subproduct-based filtering, fixes the issue where custom scanners couldn’t be individually selected in the UI (STO-9010, ZD-84685).
+- Fixed a data consistency issue that caused some issues to be incorrectly marked as remediated in Custom Dashboards (STO-8997, ZD-84585).  
+- Fixed a data inconsistency where some older scans (over a year old) had no previous scan reference, which caused confusion in the Vulnerabilities tab of pipeline executions (STO-9216).  
+
+
+## June 2025
+
+### Version 1.142.1
+
+<!-- 2025-06-12 -->
+
+#### New Features and Enhancements
+- Added support for the **SonarQube** step to include privileges for creating and using the Sonar cache (STO-8889).
+- Improved the **SonarQube** step to support occurrence detection and exemption handling for Code Coverage and Bug Smells issues (STO-9067).
+- Enhanced normalization in the **Traceable** step to handle variations in scanner outputs for CVE and CWE properties (STO-9085).
+- Updated URLs in STO Custom Dashboards to use vanity URL format (STO-8643, ZD-74374).
+
+#### Fixed Issues
+- Fixed an issue causing incorrect counts for remediated issues in the **Security Testing Dashboard** (STO-9002, ZD-84585).
+- Fixed a bug where the **GitLeaks** step failed when symlinks were present in the scanned codebase (STO-8911, ZD-83119).
+
+
+## May 2025
+
+### Version 1.140.1
+
+<!-- 2025-05-17 -->
+
+#### New Features and Enhancements
+- Added support for the setting `ingest_tool_severity: true` in the **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference#use-raw-scanner-severity)**, **[Anchore](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#use-raw-scanner-severity)**, and **[Prisma Cloud](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference#use-raw-scanner-severity)** steps. When added, STO will use the severity provided directly by the scanner instead of calculating it based on CVSS scores (STO-8776, STO-8778, STO-8779).
+- Renamed the built-in STO role from `Security Testing SecOps` to `Security Testing AppSec`. This is not a breaking change and remains fully backward compatible (STO-7392).
+- Added support for the SonarQube step to include privileges for creating and using the Sonar cache (STO-8889).
+
+#### Fixed Issues
+- Fixed an issue in the Snyk step where the filename and upgrade version were missing in some cases (STO-8914).
+- Fixed an issue in the Veracode step where files with modification dates earlier than 1980 caused the scan to fail (STO-8910).
 
 ## April 2025
 
-### Version v1.136.1
+### Version 1.136.1
 
 <!-- 2025-04-18 -->
 
@@ -35,7 +272,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Fixed an issue where the CVSS score of issues did not match the severity label in some cases (STO-8807).
 - Fixed an issue where Harness AI failed to present remediation details if the cloned codebase did not match the ingested scan result’s repository; remediation is now shown correctly for the ingested repo (STO-8664).
 
-### Version v1.134.1
+### Version 1.134.1
 
 <!-- 2025-04-05 -->
 
@@ -49,7 +286,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2025
 
-### Version v1.130.6
+### Version 1.130.6
 
 <!-- 2025-03-25 -->
 
@@ -714,7 +951,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
-This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
+This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/key-concepts/output-variables). 
 
 This release includes a set of security test policy samples, which make it easy to create policies such as:
 
@@ -975,7 +1212,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption. (STO-5056, formerly behind feature flag `STO_EXEMPTION_DETAILS`) 
 
-    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
   - The **Security Tests** tab includes a set of **Security Executions** pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212, formerly behind feature flag `STO_DROPDOWN_FILTERS`).
 
@@ -1039,7 +1276,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 
@@ -1096,7 +1333,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 

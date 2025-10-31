@@ -1,6 +1,6 @@
 ---
-title: Delegate overview
-description: Harness Delegate is a service you run in your local network or VPC to connect your artifact, infrastructure, collaboration, verification, and other providers with Harness Manager.
+title: Overview
+description: Learn about Delegate, a service you run in your local network or VPC to connect your artifact, infrastructure, collaboration, verification, and other providers with Harness Manager.
 sidebar_position: 1
 helpdocs_topic_id: 2k7lnc7lvl
 helpdocs_category_id: sy6sod35zi
@@ -58,7 +58,6 @@ The video below shows how to install a delegate.
 For basic information on installing Harness Delegate, go to the following:
 
 - [Delegate installation overview](../install-delegates/overview.md)
-- [Install a legacy Kubernetes delegate](../install-delegates/install-a-kubernetes-delegate.md)
 
 For advanced installation topics, go to the following:
 

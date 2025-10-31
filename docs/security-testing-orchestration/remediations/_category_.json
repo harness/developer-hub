@@ -1,11 +1,11 @@
 {
-    "label": "Remediate issues",
+    "label": "Remediate Issues",
     "position": 80,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Remediate issues"
+        "title": "Remediate Issues"
     }
 }

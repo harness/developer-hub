@@ -13,12 +13,12 @@ This topic describes application maps, their significance, and how to create, ed
 ### Before you begin
 
 - [Service discovery](/docs/platform/service-discovery/)
-- [How Harness CE leverages Service Discovery?](/docs/chaos-engineering/use-harness-ce/service-discovery#how-does-harness-ce-leverage-discovered-services)
+- [How Harness CE leverages Service Discovery?](/docs/chaos-engineering/guides/service-discovery#how-does-harness-ce-leverage-discovered-services)
 - [Create Discovery Agent](/docs/platform/service-discovery/customize-agent#create-discovery-agent)
 
 ### What is an Application Map?
 
-An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/use-harness-ce/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
+An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/guides/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
 
 ### Why is an Application Map Required?
 
@@ -31,7 +31,7 @@ Application maps help:
 
 ### How to Use an Application Map?
 
-Once you have a list of discovered services, Harness CE creates an application map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#create-application-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
+Once you have a list of discovered services, Harness CE creates an application map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/guides/application-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
 
 You can [create](#create-application-map), [edit](#edit-application-map), and [delete](#delete-application-map) application maps.
 

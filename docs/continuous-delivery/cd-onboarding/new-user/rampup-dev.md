@@ -12,7 +12,7 @@ For this guide, we assume you have set up the necessary Harness integrations (Ha
 
 For onboarding your team, go to the [Onboarding path](/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path).
 
-For CD tutorials, go to [CD and GitOps tutorials](/docs/category/cd-and-gitops-tutorials).
+For CD tutorials, go to [CD and GitOps tutorials](/docs/category/cd-tutorials).
 
 If you have any additional questions, [reach out to us](mailto:support@harness.io) and our team will be happy to help!
 
@@ -155,7 +155,7 @@ allowStageExecutions: true
 
 Depending on the project you have access to and the pipeline you have permissions to, a Harness user can log in and deploy a service using the Harness Manager UI.
 
-To learn more, go to the [Harness CD tutorials](/docs/category/cd-and-gitops-tutorials) for various deployment types, or you can review [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
+To learn more, go to the [Harness CD tutorials](/docs/category/cd-tutorials) for various deployment types, or you can review [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 Video overview:
 

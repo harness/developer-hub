@@ -45,8 +45,8 @@ The following steps describe the workflow:
 - This workflow has the following prerequisites:
 
   - Harness STO and CI module licenses.
-  - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline) is a good introduction.
+  - You must have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/rbac) assigned.
+  - A basic understanding of key STO concepts and good practices is recommended. Start with the [Get Started guide](/docs/security-testing-orchestration/get-started).
   - GitHub requirements:
 
     - A GitHub account and access token.
@@ -110,7 +110,7 @@ Do the following:
 
 6. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
-   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
+   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Supported Infrastructures](/docs/security-testing-orchestration/whats-supported/infrastructure) documentation.
 
 :::note
 
@@ -139,7 +139,7 @@ import set_up_harness_26 from '/docs/security-testing-orchestration/use-sto/set-
 
    2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Expression**. Then enter the following expression: `<+stage.variables.GITHUB_REPO>`
 
-   3. Target variant — Select **Expression** as the value type and enter the following: `<+stage.variables.GITHUB_BRANCH>`
+   3. Target variant — Select **Expression** for the value type and enter the following: `<+stage.variables.GITHUB_BRANCH>`
 
       When scanning a code repo, you generally want to specify the repo name and branch for the target.
 
@@ -156,12 +156,12 @@ In most cases, you want to set the [Fail on Severity](/docs/security-testing-orc
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
-  - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+  - `mode :` [`orchestration`](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
     - `target : `
       - `name : <+stage.variables.GITHUB_REPO>`
       - `type : repository`
-      - `variant : <+stage.variables.GITHUB_BRANCH>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline.
+      - `variant : <+stage.variables.GITHUB_BRANCH>` You will specify the [target name and variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) when you run the pipeline.
         When scanning a repository, you will generally use the repository name and branch for these fields.
     - `advanced : `
       - `log :`
@@ -210,7 +210,7 @@ At this point, you might want to run a scan and view the detected issues.
       - Target name : **dvpwa** (= the repo name)
       - Target variant : **master** (= the branch name)
 
-3. Run the pipeline. When the execution finishes, select [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) to view the scan results.
+3. Run the pipeline. When the execution finishes, select [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) to view the scan results.
 
 ## Build and push a test image
 
@@ -275,7 +275,7 @@ Here's an example:
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
-1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
 
 2.  Target name — Click the "tack" button on the right side of the input field and select **Expression**. Then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
 
@@ -300,12 +300,12 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
-  - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+  - `mode :` [`orchestration`](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
   - `target : `
     - `name : <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
     - `type : container`
-    - `variant : <+stage.variables.DOCKER_IMAGE_TAG>` When scanning an image, you generally use the image label and tag for the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) .
+    - `variant : <+stage.variables.DOCKER_IMAGE_TAG>` When scanning an image, you generally use the image label and tag for the [target name and variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) .
     - `advanced : `
       - `log :`
         - `level : info`
@@ -331,7 +331,7 @@ Here's an example:
       target:
         name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
         type: container
-        variant: <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>-scantest-DONOTUSE
+        variant: <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>
       advanced:
         log:
           level: info
@@ -341,7 +341,7 @@ Here's an example:
         name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
         domain: docker.io
         access_token: <+secrets.getValue("YOUR_DOCKERHUB_ACCESS_TOKEN")
-        tag: <+stage.variables.DOCKER_IMAGE_TAG><+sequenceID>-scantest-DONOTUSE
+        tag: <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>-scantest-DONOTUSE
       sbom:
         format: spdx-json
 ```
@@ -370,7 +370,7 @@ This is a good time to run your pipeline and verify that it can scan the image.
 
    :::
 
-2. Click **Run Pipeline** and view the results in [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
+2. Click **Run Pipeline** and view the results in [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 ## Build and push the prod image
 
@@ -404,7 +404,7 @@ Add a **Build and Push to Docker Registry** step after the Bandit step and confi
   - `repo : <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
   - `type : container`
   - `tags : `
-    - `<+stage.variables.DOCKER_IMAGE_TAG><+sequenceID>`
+    - `<+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceID>`
 
 Here's an example:
 
@@ -510,7 +510,7 @@ pipeline:
                     connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
-                      - <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>
+                      - <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceID>
         timeout: 30m
         variables:
           - name: GITHUB_REPO

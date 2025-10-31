@@ -1,6 +1,6 @@
 This procedure describes how to refine a suggestion by providing more information, such as additional context or code snippets, to Harness AI.
 
-1. When you go to **Security Tests** and then select an issue, an initial **AI Remediation** appears in **Issue Details**. 
+1. When you go to **Vulnerabilities tab** and then select an issue, an initial **AI Remediation** appears in **Issue Details**. 
 
    This suggested remediation is based on public information about the CVE or CWE and the first detected occurrence (**Occurrence 1**) in the target. If the scanner captures the code snippet where the vulnerability is occurring, the query to Harness AI includes this snippet as well.  
 

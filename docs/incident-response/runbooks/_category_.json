@@ -1,8 +1,0 @@
-{
-  "label": "Runbook Automation",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "description": "Learn how to use Harness Incident Response Runbook Automation to streamline and automate your incident response workflows. Discover how to create runbooks, configure integrations, and leverage automation to reduce mean time to resolution (MTTR)."
-  }
-}

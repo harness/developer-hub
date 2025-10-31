@@ -45,7 +45,7 @@ Resources are components and services managed by your IaC tool and cloud provide
 - **Cloud Provider:** A company offering cloud computing services.
 - **Harness State Tracking:** Monitors the current state of a stack and tracks changes.
 - **Terraform State Backend:** Manages access to and changes in a shared Terraform state file. [Understand state backend](https://developer.harness.io/docs/category/remote-backends).
-- **Variables:** Elements used to extend and customize IaC code. [Learn about pipeline variables](https://developer.harness.io/docs/infra-as-code-management/project-setup/input-variables).
+- **Variables:** Elements used to extend and customize IaC code. [Learn about pipeline variables](https://developer.harness.io/docs/infra-as-code-management/manage-projects/connectors-variables).
 
 Go to [the IaCM onboarding guide](/docs/infra-as-code-management/get-started/) to get started or continue your IaCM journey!
 

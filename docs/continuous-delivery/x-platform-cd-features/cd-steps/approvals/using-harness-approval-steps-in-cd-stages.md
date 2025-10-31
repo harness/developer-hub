@@ -59,5 +59,5 @@ For example, in a [Kubernetes blue green deployment](/docs/continuous-delivery/d
 ## See also
 
 - [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
-- [Using Harness Approval APIs](/kb/continuous-delivery/articles/harness-approval-api)
+- [Using Harness Approval APIs](/docs/continuous-delivery/kb-articles/articles/harness-approval-api)
 - [Add ServiceNow Approval steps and stages](/docs/platform/approvals/service-now-approvals)

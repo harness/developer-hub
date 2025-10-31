@@ -358,7 +358,14 @@ In the example expression above, we can create a test variable with this express
 >
 ```
 
-For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator/).
+
+#### Using isResolved and isUnresolved evaluation instead of null
+Customers may be considering using a ternary evaluations which will evaluate whether the expression `== null` or `!= null` as the condition.
+
+Teams should instead consider using the `isResolved` and `isUnresolved` operators.  Since a null value is actually a value that may be held by an expression, the intention of the condition may not be met.  This may cause conditions evaluate unexpectedly.  For example, if the intention is to check for the actual existence of the expression, and whether a value for that expression is available, a pipeline engineer may want to check using `isResolved()` instead.
+
+For more information, please visit [the following Harness Article about utilizing the evaluations](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference/#check-expression-isresolved-isunresolved-null-replacement).
 
 ### Expressions as strings
 
@@ -592,7 +599,7 @@ namespace: <+infra.namespace>
 
 ### CI stage initialization fails with a "null value" error or timeout
 
-If a Build (`CI`) stage fails at initialization with a "null value" error or timeout, this can indicate that an expression was called before its value could be resolved or that the expression references a nonexistent value. For more information, go to [Initialize step fails with a "null value" error or timeout](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-fails-with-a-null-value-error-or-timeout).
+If a Build (`CI`) stage fails at initialization with a "null value" error or timeout, this can indicate that an expression was called before its value could be resolved or that the expression references a nonexistent value. For more information, go to [Initialize step fails with a "null value" error or timeout](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#initialize-step-fails-with-a-null-value-error-or-timeout).
 
 ### Default values can't start with an asterisk
 

@@ -99,6 +99,7 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 </TabItem>
 </Tabs>
 
+---
 
 :::info On-Prem Accounts
 
@@ -145,6 +146,15 @@ In the **Username** field, enter the Bitbucket account username as specified in 
 
 In the **Password** field, provide a Bitbucket account-level [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [app password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness encrypted text secrets](/docs/platform/secrets/add-use-text-secrets). If you use an access token, the **Username** must be `x-token-auth`.
 
+:::warning
+
+The options for the password field are limited by your account type. 
+
+  - For SaaS accounts, you cannot use `access tokens`.
+  - For self-hosted or on-prem accounts, you cannot use `app passwords`.
+
+:::
+
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 
 If you use a Google account to log in to Bitbucket, you must use an App password.
@@ -179,7 +189,11 @@ Make sure to follow the prompts to finish creating the key. For more information
 
 ### Enable API access
 
-You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires username and password authentication.
+You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access allows authentication via two methods. 
+
+
+<Tabs>
+<TabItem value="fba" label="Username and App Password">
 
 In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**, please note this might be different from what you entered in the first **Username** field. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
@@ -189,6 +203,7 @@ In the **Personal Access Token** field, provide a Bitbucket account-level [App p
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 
+
 :::warning
 
 For **HTTP** Connection Types, use the same password you used earlier, and make sure the **Username** fields are both plain-text or both encrypted. Don't use a plain-text username for one field and a secret for the other.
@@ -197,6 +212,21 @@ For On-Prem repos, if the repo URL has an extra segment before the project ID, s
 
 :::
 
+</TabItem>
+
+
+<TabItem value="atb" label="Access Token">
+
+Access tokens are linked to your Bitbucket repository, project, or workspace. While creating the Bitbucket connector, you get an option to select the access token method for API Authentication.
+
+![Enable API access](./static/bitbucket-connector-api-access.png)
+
+When you select the access token method, you can provide the reference to a secret containing your Bitbucket access token ( which can be  stored as a [Harness Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets) ) in the **Access Token** field. 
+
+In order to find out the features and limitations of Bitbucket access tokens, Please go through the [Bitbucket documentation](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/).
+
+</TabItem>
+</Tabs>
 ## Connectivity Mode settings
 
 Select whether you want Harness to connect directly to your Bitbucket account or repo, or if you want Harness to communicate with your Bitbucket account or repo through a delegate. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.

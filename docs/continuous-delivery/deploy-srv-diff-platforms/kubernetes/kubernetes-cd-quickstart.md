@@ -235,7 +235,7 @@ If you run into any errors, it is typically because the cluster does meet the re
 - Add a Kubernetes rolling update.
 - Deploy your Kubernetes pipeline to your target cluster.
 
-Next, try using Harness [Continuous Integration](/docs/continuous-integration/get-started/tutorials) to build a codebase, upload it to a repo, and run unit and integrations tests.
+Next, try using Harness [Continuous Integration](/docs/continuous-integration/get-started/onboarding-guide) to build a codebase, upload it to a repo, and run unit and integrations tests.
 
 ## Detailed diagnostics for K8s Deployment
 
@@ -268,4 +268,4 @@ For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/dele
 
 ## Next steps
 
-See [CD tutorials](/docs/category/cd-and-gitops-tutorials) for other deployment features.
+See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.

@@ -7,11 +7,12 @@ redirect_from:
   - /docs/continuous-integration/use-ci/optimize-and-more/custom_github_status_check
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
-If your pipelines use [webhook triggers](/docs/platform/triggers/triggering-pipelines), you can get [Harness build statuses in your PRs](#pipeline-links-in-prs). However, you must configure your protection rules *in your SCM provider* if you want failed/running builds to block PR merges.
+If your pipelines use [webhook triggers](/docs/platform/triggers/triggering-pipelines), you can get [Harness build statuses in your PRs](#pipeline-links-in-prs). However, you must configure your protection rules _in your SCM provider_ if you want failed/running builds to block PR merges.
 
 :::warning
 
@@ -37,7 +38,7 @@ To get status updates in your PRs, you must:
 
 1. [Configure a default codebase for your pipeline.](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase) Your pipeline must have a Build stage. Build updates are only exported for Build stages.
 2. Make sure you enable API access in your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#code-repo-connectors) settings.
-![](./static/scmstatus-apiauth.png)
+   ![](./static/scmstatus-apiauth.png)
 3. Run PR builds. Branch and tag builds don't send PR status updates. You can use [webhook triggers](/docs/platform/triggers/triggering-pipelines) to automatically run builds when PRs are created or updated.
 
 ## Custom SCM status checks
@@ -52,10 +53,10 @@ These steps explain how to add a status check that uses the GitHub API. For info
 2. Create [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to use for authentication, and save the token as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets).
 3. Add a [Run step](../run-step-settings.md) to your **Build** (`CI`) stage.
 4. Enter a **Name** for the step.
-5. If required by your build infrastructure, provide the **Container Registry** and **Image**.
-   * **Container Registry** is a container registry connector, such as a Docker connector.
-   * **Image** is the FQN or artifact name and tag of a Docker image that has cURL installed, such as `curlimages/curl:latest` for the [official cURL Docker Hub image](https://hub.docker.com/r/curlimages/curl).
-   * To learn more about this setting and when it is required, go to [Use Run steps - Container Registry and Image](../run-step-settings.md#container-registry-and-image).
+5. If required by your build infrastructure, provide the **Container Registry** and **Image**. For more information on how to set this up, please [look at the section below about Container Registry and Image](#container-registry-and-image)
+   - **Container Registry** is a container registry connector, such as a Docker connector.
+   - **Image** is the FQN or artifact name and tag of a Docker image that has cURL installed, such as `curlimages/curl:latest` for the [official cURL Docker Hub image](https://hub.docker.com/r/curlimages/curl).
+   - To learn more about this setting and when it is required, [look at the section below about Container Registry and Image](#container-registry-and-image)
 6. For **Shell**, select **Sh**.
 7. In **Command**, enter a script that calls the GitHub API, for example:
 
@@ -103,10 +104,8 @@ curl -i -u YOUR_GITHUB_ORGANIZATION:<+secrets.getValue("account.YOUR_GITHUB_TOKE
 
 If you want to include status checks in multiple pipelines, you might want to create reusable templates or plugins.
 
-
 <Tabs>
   <TabItem value="template" label="Create a step template" default>
-
 
 [Step templates](/docs/platform/templates/run-step-template-quickstart) help you quickly reuse customized or complex steps in multiple pipelines. For example, here is a YAML example of a step template for a GitHub status check step:
 
@@ -119,7 +118,7 @@ template:
   spec:
     type: Run
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: curlimages/curl:7.82.0
       shell: Sh
       command: |+
@@ -156,27 +155,29 @@ template:
   versionLabel: 1.0.0
 ```
 
-
 </TabItem>
   <TabItem value="plugin" label="Write a custom plugin">
 
-
 You can package your status check script in a [custom plugin](../use-drone-plugins/custom_plugins.md) and then add it to your pipelines in a [Plugin step](../use-drone-plugins/custom_plugins.md#add-the-plugin-step).
-
 
 </TabItem>
 </Tabs>
 
+### Container Registry and Image
+
+The build environment must have the necessary binaries for the **SCM Status Checks**. Depending on the stage's build infrastructure, **SCM Status Checks** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries.
+
+<WhenReq />
+
+<FQNImage />
+
 ## Troubleshoot status checks
 
-Go to the [Harness CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for common questions and issues related to codebases and SCM status checks, such as:
+Go to the [Harness CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for common questions and issues related to codebases and SCM status checks, such as:
 
-* [Failed pipelines don't block PR merges.](/kb/continuous-integration/continuous-integration-faqs/#failed-pipelines-dont-block-pr-merges)
-* [Pipeline status updates aren't sent to PRs.](/kb/continuous-integration/continuous-integration-faqs/#pipeline-status-updates-arent-sent-to-prs)
-* [Build statuses don't show on my PRs, even though the code base connector's token has all repo permissions.](/kb/continuous-integration/continuous-integration-faqs/#build-statuses-dont-show-on-my-prs-even-though-the-code-base-connectors-token-has-all-repo-permissions)
-* [Why does the status check for my GitHub PR redirect to a different PR's build in Harness CI?](/kb/continuous-integration/continuous-integration-faqs/#why-does-the-status-check-for-my-pr-redirect-to-a-different-prs-build-harness) 
-
-
-
+- [Failed pipelines don't block PR merges.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#failed-pipelines-dont-block-pr-merges)
+- [Pipeline status updates aren't sent to PRs.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#pipeline-status-updates-arent-sent-to-prs)
+- [Build statuses don't show on my PRs, even though the code base connector's token has all repo permissions.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#build-statuses-dont-show-on-my-prs-even-though-the-code-base-connectors-token-has-all-repo-permissions)
+- [Why does the status check for my GitHub PR redirect to a different PR's build in Harness CI?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-does-the-status-check-for-my-pr-redirect-to-a-different-prs-build-harness)
 
 For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).

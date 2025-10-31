@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            td {
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                font-family: sans-serif;
+                font-size: 14;
+                color: white;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+        <script src="https://malsup.github.com/jquery.form.js"></script>
+        <script src="https://cdn.split.io/sdk/split-10.8.4.min.js"></script>
+
+        <script>
+            var splitAPIKey=""
+            var splitName=""
+
+            var factory = splitio({
+                startup: {
+                    requestTimeoutBeforeReady:   0.8, // 800ms
+                    retriesOnFailureBeforeReady:   1, // 1 sec
+                    readyTimeout:                1.5, // 1.5 sec
+                    eventsFirstPushWindow:        10  // 10 sec
+                },
+                core: {
+                    authorizationKey: splitAPIKey,
+                    key: 'david',
+                    trafficType: 'user',
+                    labelsEnabled: true
+                },
+                scheduler: {
+                    featuresRefreshRate:    1, // 30 sec 
+                    segmentsRefreshRate:    60, // 60 sec 
+                    metricsRefreshRate:     60, // 60 sec
+                    impressionsRefreshRate: 60, // 60 sec
+                    eventsPushRate:         60, // 60 sec
+                    eventsQueueSize:       500  // 500 items
+                },
+                debug: false
+            });
+
+            var client = factory.client(); 
+            function createSDKListeners() {
+                client.on(client.Event.SDK_READY, function() {
+                    console.log('The SDK is ready!');
+                    drawTable(client);
+                });
+
+                client.on(client.Event.SDK_UPDATE, function () {
+                    console.log('The SDK has been updated!');
+                    drawTable(client);
+                });
+            }
+
+            $(document).ready(function() { 
+                createSDKListeners();
+            });
+            var users = [              
+                [ "a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9" ],
+                [ "b0", "b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9" ],
+                [ "c0", "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9" ],
+                [ "d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9" ],
+                [ "e0", "e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8", "e9" ],
+                [ "f0", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9" ],
+                [ "g0", "g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8", "g9" ],
+                [ "h0", "h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8", "h9" ],
+                [ "i0", "i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9" ],
+                [ "j0", "j1", "j2", "j3", "j4", "j5", "j6", "j7", "j8", "j9" ]
+            ];
+
+            var account = [              
+                [ "Nike", "Nike", "Nike", "Apple", "Apple", "Apple", "LinkedIn", "Best Buy", "Best Buy", "Best Buy" ],
+                [ "Nike", "Nike", "Nike", "Apple", "Apple", "Apple", "LinkedIn", "Best Buy", "Best Buy", "Best Buy" ],
+                [ "Nike", "Nike", "Nike", "Apple", "Apple", "Apple", "LinkedIn", "Best Buy", "Best Buy", "Best Buy" ],
+                [ "Google", "Google", "Google", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Best Buy", "Best Buy", "Best Buy" ],
+                [ "Google", "Google", "Google", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pintrest", "Pintrest", "Pintrest" ],
+                [ "Google", "Google", "Google", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pintrest", "Pintrest", "Pintrest" ],
+                [ "Dell", "Dell", "Dell", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pintrest", "Pintrest", "Pintrest" ],
+                [ "Zoom", "Zoom", "Zoom", "Slack", "Slack", "Slack", "Samsung", "Disney", "Disney", "Disney" ],
+                [ "Zoom", "Zoom", "Zoom", "Slack", "Slack", "Slack", "Samsung", "Disney", "Disney", "Disney" ],
+                [ "Zoom", "Zoom", "Zoom", "Slack", "Slack", "Slack", "Samsung", "Disney", "Disney", "Disney" ]
+            ];
+
+            function createPopup(message, value) {
+                return function() {                 
+                    if(message != null && value != null) {
+                        alert(message + value);
+                    } 
+                };
+            }
+
+            function drawTable(client, truncate) {
+                console.log("drawTable!");
+                var tbl = document.getElementById("myTable"); // Get the table
+
+                var tableRef = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+                if(tbl.getElementsByTagName("tbody")[0].rows.length > 1) {
+                    for(var k = 0; k < 10; k++) {
+                        tbl.getElementsByTagName("tbody")[0].deleteRow(0);
+                    }
+                }
+
+                for(var i = 0; i < 10; i++) {
+                    var row = tableRef.insertRow(tableRef.rows.length);
+                    for(var j = 0; j < 10; j++) {
+                        var cell = row.insertCell();
+                        var node = document.createTextNode(users[i][j]);
+                        cell.appendChild(node);
+                    }
+                    var cells = row.getElementsByTagName("td");
+                    for(var j = 0; j < cells.length; j++) {
+                        try {
+                            client = factory.client(users[i][j]);
+                        } catch (e) {
+                            console.log(e);
+                        }
+                        var attributes = {
+                            row : users[i][j].charAt(0),
+                            col : users[i][j].charAt(1),
+                            userid : users[i][j],
+                            account : account[i][j]
+                        }
+                        var splitResult = client.getTreatmentWithConfig(splitName, attributes);
+
+                        // Do we have any dynamic config?
+                        if(splitResult.config != null) {
+                            var configs = JSON.parse(splitResult.config);
+                            cells[j].style.fontSize = configs.font_size;
+                            cells[j].onclick = createPopup( configs.popup_message, configs.popup_value);
+                        } else {
+                            cells[j].style.fontSize = "medium";
+                            cells[j].onclick = createPopup("coming ", "soon!");
+                        }
+
+                        if (splitResult.treatment === 'premium') {
+                            cells[j].style.backgroundColor = "rgb(0, 156, 235)";
+                        } else if (splitResult.treatment === 'standard') {
+                            cells[j].style.backgroundColor = "rgb(239, 104, 32)";
+                        } else if (splitResult.treatment === 'current') {
+                            cells[j].style.backgroundColor = "rgb(21, 183, 158)";
+                        }   else {
+                            console.log("unexpected treatment: " + splitResult.treatment);
+                            cells[j].style.backgroundColor = "rgb(255, 70, 82)";
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <table id="myTable">
+            <tbody/>
+        </table>
+    </body>
+</html>
+

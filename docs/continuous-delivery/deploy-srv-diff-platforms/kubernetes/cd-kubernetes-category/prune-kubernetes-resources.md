@@ -48,6 +48,8 @@ See [Supported Platforms and Technologies](/docs/continuous-delivery/cd-integrat
   * If you make any changes to your Kubernetes resources using a tool other than Harness (before or after the deployment), Harness does not track those changes.
 * The maximum manifest/chart size is 0.5MB. When Harness prunes, it stores the full manifest in configMap to use it as part of release history. While deploying very large manifests/charts though Kubernetes, Harness is limited by configMap capacity.
 * While it is unlikely, if you are using the same entity in two Harness Services, Harness does not know this. So if you prune the resource in one deployment it might be unavailable in another deployment. Use the annotation `harness.io/skipPruning: "true"` to avoid issues.
+* Please ensure that the metadata name for deployments should be unique for each deployment.  If they are shared, this can cause configMaps to be overwritten, causing resources to be removed.  
+* Infrastructure Release Names should also be unique.  By default, this is set to `release-<+INFRA_KEY>`, but if it is adjusted, [it is important to ensure the uniqueness of the value](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference/#infra_key-and-infra_key_short_id).  
 
 ## Harness Kubernetes pruning criteria
 

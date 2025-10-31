@@ -1,8 +1,8 @@
 ---
 title: Build and set up a delegate with a minimal image type
 description: This tutorial shows you how to build and set up a delegate with a minimal image type.
-sidebar_label: Configure a delegate with the minimal image type
-sidebar_position: 6
+sidebar_label: Configure Delegate (Minimal Image)
+sidebar_position: 2
 keywords: [delegate, delegate minimal image]
 ---
 
@@ -200,8 +200,6 @@ spec:
          value:   
        - name: MANAGER_HOST_AND_PORT  
          value: https://app.harness.io/gratis  
-       - name: DEPLOY_MODE  
-         value: KUBERNETES  
        - name: DELEGATE_NAME  
          value: custom-del  
        - name: DELEGATE_TYPE  
@@ -218,10 +216,6 @@ spec:
          value: ""  
        - name: NEXT_GEN  
          value: "true"  
-       - name: CLIENT_TOOLS_DOWNLOAD_DISABLED  
-         value: "true"  
-       - name: LOG_STREAMING_SERVICE_URL  
-         value: "https://app.harness.io/gratis/log-service/"  
 
 ---  
 

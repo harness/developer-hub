@@ -179,7 +179,7 @@ For details on each stage type and configuration, go to:
 
 * **Approval:** [Using Manual Harness Approval Stages](../approvals/adding-harness-approval-stages.md) and [Adding Jira Approval Stages and Steps](../approvals/adding-jira-approval-stages.md)
 * **Build:** [CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings)
-* **Deployment:** [CD tutorials](/docs/category/cd-and-gitops-tutorials)
+* **Deployment:** [CD tutorials](/docs/category/cd-tutorials)
 * **Custom:** [Add a custom stage](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage)
 
 ![](./static/harness-yaml-quickstart-23.png)

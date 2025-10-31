@@ -158,7 +158,7 @@ An example of the **Plugin** step configuration is provided below; however, your
                   name: metadata publisher plugin
                   identifier: metadata_publisher_plugin
                   spec:
-                    connectorRef: account.harnessImage ## A Docker connector ID
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/mybucket/index.html ## Provide a URL to the artifact you want to show on the artifact tab. You can provide a list of multiple URLs to show multiple links on the Artifacts tab.
@@ -229,7 +229,7 @@ steps:
                   name: drone plugin ## Step name
                   identifier: drone_plugin ## Step ID
                   spec:
-                    connectorRef: account.harnessImage ## Docker connector to pull the plugin's Docker image
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: plugins/download ## Plugin's Docker image
                     settings: ## Plugin settings
                       source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz

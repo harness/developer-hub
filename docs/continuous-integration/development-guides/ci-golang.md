@@ -52,7 +52,7 @@ If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-step-sett
     identifier: dependencies
     name: Dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: golang:latest
       command: |-
         go get example.com/my-go-module
@@ -185,7 +185,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-step-settings) steps to bu
     identifier: build
     name: Build
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: golang:latest
       command: |-
         go build
@@ -194,7 +194,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-step-settings) steps to bu
     identifier: test
     name: Test
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: golang:latest
       command: |-
         go test -v ./...
@@ -242,7 +242,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
     identifier: test
     name: Test
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: golang
       command: |-
         go install github.com/jstemmer/go-junit-report/v2@latest
@@ -335,7 +335,7 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
     identifier: build
     name: Build
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       # use version 1.20 of Go
       image: golang:1.20
       command: |-
@@ -366,7 +366,7 @@ strategy:
     identifier: build
     name: Build
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: golang:<+matrix.goVersion>
       command: |-
         go build
@@ -567,7 +567,7 @@ pipeline:
                   identifier: build
                   name: Build
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: golang:1.20
                     command: |-
                       go build
@@ -576,7 +576,7 @@ pipeline:
                   identifier: test
                   name: Test
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: golang:1.20
                     command: |-
                       go install github.com/jstemmer/go-junit-report/v2@latest
@@ -635,7 +635,7 @@ pipeline:
                   identifier: build
                   name: Build
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: golang:<+matrix.goVersion>
                     command: |-
                       go build
@@ -644,7 +644,7 @@ pipeline:
                   name: Test
                   identifier: test
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: golang:<+matrix.goVersion>
                     command: |-
                       go install github.com/jstemmer/go-junit-report/v2@latest

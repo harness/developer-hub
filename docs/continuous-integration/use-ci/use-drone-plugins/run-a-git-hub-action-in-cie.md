@@ -119,7 +119,7 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
                      name: gcsuploader
                      type: Plugin
                      spec:
-                       connectorRef: account.harnessImage
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                        image: plugins/github-actions
                        privileged: true
                        settings:
@@ -135,7 +135,7 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
                      name: gcsuploader
                      type: Plugin
                      spec:
-                       connectorRef: account.harnessImage
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                        image: plugins/github-actions
                        privileged: true
                        settings:
@@ -162,7 +162,7 @@ Here's an example pipeline that demonstrates how to use GitHub Actions Drone Plu
                   type: Plugin
                   name: gha_plugin
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/github-actions:1.0.0
                     settings:
                       uses: Ompragash/maths-action@main
@@ -175,7 +175,7 @@ Here's an example pipeline that demonstrates how to use GitHub Actions Drone Plu
                   type: Run
                   name: Run_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-
@@ -196,7 +196,7 @@ If this is required by the Action you want to run, and the Action offers a worki
     name: Action docker publish image
     identifier: Action_docker_publish_image
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/github-actions
       privileged: true
       settings:
@@ -284,8 +284,8 @@ When you run the pipeline, you can observe the GitHub Action plugin logs in the 
 
 ## Troubleshooting GitHub Actions in Harness CI
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Actions. For example:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Actions. For example:
 
-- [Can't connect to Docker daemon](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-cant-connect-to-docker-daemon)
-- [Not a git repository (or any of the parent directories)](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
-- [PATH variable overwritten in parallel GitHub Action steps](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)
+- [Can't connect to Docker daemon](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#github-action-step-cant-connect-to-docker-daemon)
+- [Not a git repository (or any of the parent directories)](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
+- [PATH variable overwritten in parallel GitHub Action steps](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)

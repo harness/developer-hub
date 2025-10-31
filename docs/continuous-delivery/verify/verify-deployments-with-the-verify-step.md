@@ -46,8 +46,30 @@ You can set up Harness CV by adding a Verify step to a pipeline. The following a
 
 ## Sensitivity
 
-You can set the sensitivity option as **High**, **Medium**, or **Low**. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
+You can set the sensitivity option as **High**, **Medium**, or **Low**.
 
+Using the following table to see how sensitivity will affect the verification results. 
+
+:::note
+
+"With feedback" in this context refers user updated feedback. To learn more go to [Event Preference](/docs/continuous-delivery/verify/cv-results/log-feedback#set-event-preference).
+
+:::
+
+| Sensitivity | Health Status                  | Result |
+|-------------|--------------------------------|--------|
+| High        | Healthy                        | Pass   |
+| High        | Medium Healthy                 | Fail   |
+| High        | Medium Healthy (With feedback) | Pass   |
+| High        | Unhealthy                      | Fail   |
+| Medium      | Healthy                        | Pass   |
+| Medium      | Medium Healthy                 | Pass   |
+| Medium      | Medium Healthy (With feedback) | Pass   |
+| Medium      | Unhealthy                      | Fail   |
+| Low         | Healthy                        | Pass   |
+| Low         | Medium Healthy                 | Pass   |
+| Low         | Medium Healthy (With feedback) | Pass   |
+| Low         | Unhealthy                      | Fail   |
 
 ## Duration
 
@@ -122,7 +144,7 @@ The purpose of the SII is to determine what has been deployed from a monitoring 
 ## Next steps
 
 - To start using Harness CV, go to [Configure CV](/docs/category/configure-cv).
-- To understand more about Harness CV, go to the [knowledge base](/kb/continuous-delivery).
+- To understand more about Harness CV, go to the [knowledge base](/docs/category/knowledge-base-article).
 
 ## FAQs
 

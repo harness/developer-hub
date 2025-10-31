@@ -1,6 +1,7 @@
 ---
-title: Feature development and availability
+title: Feature Development and Availability
 description: Learn about what's included in Harness Beta, Limited GA, and GA releases.
+sidebar_label: Feature Lifecycle
 sidebar_position: 30
 redirect_from:
   - /docs/get-started/beta-preview-ga

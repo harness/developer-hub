@@ -1,7 +1,7 @@
 ---
 title: "How it works: Cluster Orchestrator for AWS EKS (Beta)"
 description: How Cluster Orchestrator works and how it's different from other solutions.
-# sidebar_position: 2
+sidebar_position: 7
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false

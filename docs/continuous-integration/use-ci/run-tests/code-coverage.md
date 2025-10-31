@@ -280,7 +280,7 @@ Here are examples of Run steps configured for CodeCov code coverage in the Visua
     name: Pytest code coverage
     identifier: pytest_code_coverage
     spec:
-      connectorRef: account.harnessImage ## Provide a Docker connector ID, if required for your build infrastructure.
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
       image: python:latest ## Specify an image, if required for your build infrastructure.
       shell: Sh
       command: |-
@@ -424,7 +424,7 @@ The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifa
                      name: publish artifact metadata
                      identifier: publish_artifact_metadata
                      spec:
-                       connectorRef: account.harnessImage
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                        image: plugins/artifact-metadata-publisher
                        settings:
                          file_urls: ## Provide the URL to the code coverage artifact that was uploaded in the Upload Artifacts step. If you uploaded multiple artifacts, you can provide a list of URLs.
@@ -470,7 +470,7 @@ The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3
                      name: s3-upload-publish
                      identifier: custom_plugin
                      spec:
-                       connectorRef: account.harnessImage
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                        image: harnesscommunity/drone-s3-upload-publish
                        settings:
                          aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference your AWS access ID.

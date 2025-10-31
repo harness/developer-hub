@@ -252,6 +252,25 @@ If a field in the JEXL criteria includes spaces, enclose the field in quotation 
 
 `<+issue.Priority> == "P1" && <+issue."1-line Update"> == "test" && <+issue."Remaining Estimate"> == "2h" && <+issue.Description> == "new description"`
 
+### Manual Refresh During Execution
+
+You can do a **manual status refresh** in the Pipeline Studio Execution view.
+
+When the step is waiting for a response from Jira, you can use the **Refresh** button to immediately fetch the **latest status of the approval ticket** instead of waiting for the polling interval.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Use the refresh option when:
+- The approval condition in Jira was updated after the step began execution.
+- You need quicker response handling for fast-track approvals such as incident mitigations or emergency changes.
+
+To use the refresh button:
+- Execute a pipeline with a Jira Approval step.
+- In the Pipeline Studio Execution view, locate the approval step.
+- If the step is in a waiting state, click the Refresh button.
+- The step will re-evaluate the condition and proceed if the criteria are met.
 
 ### Notes
 

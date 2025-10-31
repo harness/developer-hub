@@ -21,11 +21,13 @@ Testing is an important part of Continuous Integration (CI). Testing safeguards 
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use parallelism (test splitting) with TI to further optimize your test times.
 
-You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages
+You can used Test Intelligence with **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages.
+
+:::tip Test Intelligence Beta
+Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact Harness support or your account representative.
+:::
 
 :::info
-- Test Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 
 - Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../run-step-settings.md).
 
@@ -69,13 +71,11 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 :::tip
 
-We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2) to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
+**We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2)** to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
 
 :::
 
-
-
-For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)
+**For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)**
 
 For instructions on using the Test Intelligence (v1), go to:
 
@@ -84,6 +84,24 @@ For instructions on using the Test Intelligence (v1), go to:
 - [Enable TI with Run Tests step for Python](./tests-v1/ti-for-python.md)
 - [Enable TI with Run Tests step for Ruby](./tests-v1/ti-for-ruby.md)
 
+### Handling report files with parallelism
+
+If you're using **parallelism** (test splitting) with the **Test** step, ensure that each parallel execution generates a **unique** JUnit result file. Otherwise, the aggregated test results might show duplicated or incorrect entries.
+
+In your test script, use one of the following variables to generate unique result files:
+
+- `junitxml="result_<+strategy.iteration>.xml"` (for matrix/strategy-based parallelism)
+- `junitxml="result_$HARNESS_NODE_INDEX.xml"` (for Harness node-based parallelism)
+
+Also, in the **Report Paths** field of the **Test** step, use a wildcard to capture all generated reports, for example:
+
+```yaml
+**/result_*.xml
+```
+
+<DocImage path={require('./static/parallelism-test-intelligence.png')} />
+
+This ensures that TI parses all test reports accurately and avoids duplication in the Tests tab.
 
 ## Ignore tests or files
 
@@ -106,13 +124,13 @@ Test results and test selection are reported on the **Tests** tab. The visualiza
 
 ## Troubleshoot Test Intelligence
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
 
-* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
-* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
-* [Why did Test Intelligence Skip Analysis](/kb/continuous-integration/continuous-integration-faqs/#why-did-test-intelligence-skip-analysis)
-* [Ruby Test Intelligence can't find rspec helper file.](/kb/continuous-integration/continuous-integration-faqs/#ruby-test-intelligence-cant-find-rspec-helper-file)
-* [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
-* [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
-* [Errors when running TI on Python code.](/kb/continuous-integration/continuous-integration-faqs/#python-test-intelligence-errors)
-* [Test Intelligence fails with error 'Unable to get changed files list'.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-with-error-unable-to-get-changed-files-list)
+- [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+- [Test Intelligence call graph is empty.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+- [Why did Test Intelligence Skip Analysis](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-did-test-intelligence-skip-analysis)
+- [Ruby Test Intelligence can't find rspec helper file.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#ruby-test-intelligence-cant-find-rspec-helper-file)
+- [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
+- [Does Test Intelligence support dynamic code?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-support-dynamic-code)
+- [Errors when running TI on Python code.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#python-test-intelligence-errors)
+- [Test Intelligence fails with error 'Unable to get changed files list'.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#test-intelligence-fails-with-error-unable-to-get-changed-files-list)

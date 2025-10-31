@@ -207,6 +207,8 @@ Filter pipeline execution based on Execution mode:-
 - **All**: It lists the old retries as well for the retried executions along with the default ones.
 - **Rollback**: It only lists those executions which were executed in the rollback mode.
 
+You can also reference execution mode in your pipeline using the expression `<+pipeline.executionMode>`. For more information, refer to [Pipeline expressions](/docs/platform/variables-and-expressions/harness-expressions-reference/#pipeline-expressions)
+
 ### Trigger type
 
 Filter pipeline execution based on type of trigger.

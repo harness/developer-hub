@@ -19,7 +19,7 @@ The Run step settings are described below.
 
 ## Important notes
 
-- Customers running a Run Step within a [Containerized Step Group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) may want to review the [Harness permissions inheritance logic](https://developer.harness.io/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/)
+- Customers running a Run Step within a [Containerized Step Group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) may want to review the [Harness permissions inheritance logic](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step/)
 
 ## Container Registry and Image
 
@@ -300,14 +300,35 @@ Select an option to set the pull policy for the image.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
 ## Run as User
-Customers can now define the UID to run all policies within the pod.  Please note both information about [Security Context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) and review the [Harness permissions inheritance logic](https://developer.harness.io/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/) when using Containerized Step Groups
+Customers can now define the UID to run all policies within the pod.  Please note both information about [Security Context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) and review the [Harness permissions inheritance logic](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step/) when using Containerized Step Groups
 
 
 ## Set Container Resources
 
-Maximum resource limits for containers that clone the codebase at runtime. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+Set the resource limits and requests for the container's CPU and memory. To learn more about this, go to [Manage Resource Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container).
+
+:::info
+The ability to set resource requests is behind the feature flag `CI_SUPPORT_RESOURCE_REQUESTS`. To enable it, contact [Harness Support](mailto:support@harness.io)
+:::
+
+Define the resource limits and requests by using the units defined by Kubernetes found here: [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 In the case of utilizing a Run Step in a Step Group, please note that if you are defining resources with variables, they must be at the Stage or Pipeline level.  Step Group variables will not be evaluated at the correct time when the resource is launched. 
+
+## Hidden/Invisible Characters
+An issue customers may experience are unexplained phenomenon within their scripts due to hidden or invisible characters. These characters often appear when pasting from non-plain text resources, and can cause errors in how the script operates.   Harness has a function to display invisible characters which is enabled by default.
+
+End users should see a highlighted space within their scripts, if an invisible character is contained:
+![](./static/invisiblechr-01.png)
+
+They can then manage and see what character is contained by hovering over the highlight and selecting to `adjust settings`
+![](./static/invisiblechr-hover.png)
+
+If a selection was accidentally made, the person can then make adjustments by right-clicking within the script space and selecting the `Command Palette`.
+![](./static/invisiblechr-cmdplt.png)
+
+A dialog box will appear, allowing the user to search for the ability to toggle how the highlighting will be set.
+![](./static/invisiblechr-toggle.png)
 
 ## Advanced settings
 

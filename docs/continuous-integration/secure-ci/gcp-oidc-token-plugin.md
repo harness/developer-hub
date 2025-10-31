@@ -4,7 +4,7 @@ description: Use a plugin to publish Helm charts to Docker registries
 sidebar_position: 41
 ---
 
-The [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc) generates a [Google Cloud access token](https://cloud.google.com/docs/authentication/token-types#access) from your OIDC token and then stores the GCP token in the output variable `GCLOUD_ACCESS_TOKEN`. You can also configure the plugin to generate a `credentials.json` file and then use that file to authenticate and generate a token. You can use the `GCLOUD_ACCESS_TOKEN` output variable or credentials file in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
+The [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc) generates a [Google Cloud access token](https://cloud.google.com/docs/authentication/token-types#access) from your OIDC token and then stores the GCP token in the output variable `GCLOUD_ACCESS_TOKEN`. You can also configure the plugin to generate a `credentials.json` file and then use that file to authenticate and generate a token. You can use the `GCLOUD_ACCESS_TOKEN` output variable or credentials file in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI. This setup is supported on both Harness Cloud and Self-managed Kubernetes Infrastructure.
 
 For general information about using plugins in CI pipelines, go to [Explore plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [Use Drone plugins](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
@@ -18,7 +18,7 @@ To use the GCP OIDC plugin, [add a Plugin step](../use-ci/use-drone-plugins/run-
                   name: generate-token
                   identifier: generate-token
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/gcp-oidc
                     settings:
                       project_id: 12345678
@@ -33,7 +33,7 @@ To use the GCP OIDC plugin, configure the [Plugin step settings](../use-ci/use-d
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
-| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | YOUR_IMAGE_REGISTRY_CONNECTOR |
 | `image` | String | Enter `plugins/gcp-oidc`. You can specify an optional architecture tag. For a list of available tags, go to the [GCP OIDC plugin README](https://github.com/harness-community/drone-gcp-oidc?tab=readme-ov-file#plugin-image). | `plugins/gcp-oidc:linux-amd64` |
 | `project_id` | String | Your GCP project ID. | `12345678` |
 | `pool_id` | String | The pool ID for OIDC authentication. | `12345678` |
@@ -62,7 +62,7 @@ Here's a YAML example of a Plugin step generating a GCP token and a Run step usi
                   name: generate-token
                   identifier: generate_token
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/gcp-oidc
                     settings:
                       project_id: 12345678
@@ -92,3 +92,9 @@ gcloud config config-helper --format="json(credential)"
 ```
 
 The first line authenticates and the second line generates the access token.
+
+## Related Links
+
+[GCP OIDC plugin GitHub Repo](https://github.com/harness-community/drone-gcp-oidc)
+
+[AWS OIDC Token Plugin](/docs/continuous-integration/secure-ci/aws-oidc-token-plugin)

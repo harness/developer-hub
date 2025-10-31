@@ -181,13 +181,9 @@ To add an Infrastructure Definition with the GKE connection method, do the follo
 
 You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
 
-:::note
-Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
 
-With the feature flag  enabled, you will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
+You will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
 
 **Project** is an optional field. 
 - If the project is selected, in the **Cluster** dropdown, only the clusters associated with the selected project will be listed.
@@ -239,7 +235,7 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
-Here is the YAML for a GKE Infrastructure Definition with Cross-Project Access. In this example, the **Project** field is an additional configuration option. This feature is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. For more information on how to use this feature, navigate to the **Pipeline Studio** tab.
+Here is the YAML for a GKE Infrastructure Definition with Cross-Project Access. In this example, the **Project** field is an additional configuration option.
 
 ```yaml
 infrastructureDefinition:
@@ -368,6 +364,8 @@ Once enabled, do the following:
 3. In **CA Certification Data**, select the certificate associated with your cluster, if you have one.
 4. Select your **Cluster** and **Namespace** as described above. 
 
+This manual configuration will only work for EKS cluster and not for any other Kubernetes cluster.
+
 :::
 
 </TabItem>
@@ -406,6 +404,19 @@ Use the [harness_platform_infrastructure](https://registry.terraform.io/provider
 
 </TabItem>
 </Tabs>
+
+:::info
+**EKS Execution Authentication Token Refresh**
+
+By default, AWS EKS issues an authentication token with a 15-minute time-to-live. Long-running API calls will fail once this token expires because the `aws-iam-authenticator` does not automatically refresh it. For more info, refer [kubernetes-client/java/issues/2438](https://github.com/kubernetes-client/java/issues/2438)
+
+- **What it does**  
+  Checks the token’s expiration timestamp in the `ExecCredential` response and automatically refreshes the token.
+- **Why it matters**  
+  Prevents unexpected failures on long-running Kubernetes executions against EKS clusters.
+
+With this flag enabled, your EKS-based workflows will seamlessly refresh expired tokens and continue without interruption.  
+:::
 
 ---
 
@@ -973,9 +984,6 @@ If you omit the `namespace` key and value from a manifest in your Service Defi
 ### Enforcing Namespace Consistency
 
 Kubernetes deployments in Harness give you more built-in control when it comes to namespace consistency. If used correctly, you can prevent users from deploying resources into namespaces other than the one defined in the Infrastructure.
-
-:::note
-Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 This feature requires delegate version `856xx` or later.
 :::

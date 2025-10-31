@@ -1,15 +1,27 @@
 ---
 title: Using Artifactory Connector with Optional Archive Path Field
-sidebar_label: Using Artifactory Connector with Optional Archive Path Field
-description: Using Target Paths with Artifactory.
+sidebar_label: Artifactory Connector with Archive Path
+description: Learn how to configure the optional archive path field in an Artifactory connector for targeted artifact storage in Harness DB DevOps.
 sidebar_position: 10
+keywords:
+  - artifactory connector
+  - archive path
+  - optional archive path
+  - harness dbops
+  - dbops artifact storage
+  - artifact repository
+  - connector configuration
+  - database devops
+  - artifactory integration
+tags:
+  - harness-db-devops
+  - artifactory-integration
+  - connector-setup
+  - artifact-management
+  - archive-path
 ---
 
-## Overview
-
 This document outlines the process for utilizing the Artifactory connector to download a zip file containing change logs and how to specify the optional archive path field to point to the root change log inside that zip file.[2] This integration allows for a seamless transition from using a Git repository to an Artifactory instance for managing database change logs.
-
-
 
 ### Key Benefits:
 
@@ -21,29 +33,18 @@ This document outlines the process for utilizing the Artifactory connector to do
 
 To use the Artifactory connector effectively:
 
- 1. **Configure the Connector**: In your DB DevOps project
- settings, select the Artifactory connector and provide necessary
- authentication details.
- 
- 2. **Specify the Archive Path**: In the "Path to Archive File (Optional)" field, enter the path to the archive in your
- Artifactory repository.
- 
- 3. **Set the Schema File Path**: In the "Path to Schema File"
- field, enter the relative path to the changelog file within the
- archive.
- 4. **Save and Apply**: After entering the paths, save your configuration.
- 
- When the pipeline runs, it will:
- 
- 1. Download the specified archive from Artifactory
- 2. Extract the archive
- 3. Locate the changelog file using the provided schema file path
- 4. Execute the changes described in the changelog
+1. **Configure the Connector**: In your DB DevOps project settings, select the Artifactory connector and provide necessary authentication details.
+2. **Specify the Archive Path**: In the "Path to Archive File (Optional)" field, enter the path to the archive in your Artifactory repository.
+3. **Set the Schema File Path**: In the "Path to Schema File" field, enter the relative path to the changelog file within the archive.
+4. **Save and Apply**: After entering the paths, save your configuration. When the pipeline runs, it will:
+   1. Download the specified archive from Artifactory
+   2. Extract the archive
+   3. Locate the changelog file using the provided schema file path
+   4. Execute the changes described in the changelog
 
 ### Steps to Specify the Archive Path:
 
 1. **Locate the Archive Path Field**: In your pipeline configuration, find the field labeled "Archive Path" or "Optional Archive Path."
-
 2. **Enter the Path**: Input the path to the root change log within the downloaded zip file. This path should be relative to the root of the zip file. For example, if your zip file structure is as follows:
 
    ```

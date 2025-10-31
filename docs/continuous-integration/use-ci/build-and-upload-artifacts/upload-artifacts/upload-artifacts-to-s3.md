@@ -245,7 +245,7 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
     name: publish artifact metadata
     identifier: publish_artifact_metadata
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/artifact-metadata-publisher
       settings:
         file_urls: https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION
@@ -295,7 +295,7 @@ In your pipeline's `CI` stage, add a [Plugin step](../../use-drone-plugins/plugi
     name: s3-upload-publish
     identifier: custom_plugin
     spec:
-      connectorRef: account.harnessImage ## Use the built-in Docker connector or specify your own connector.
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
       image: harnesscommunity/drone-s3-upload-publish ## Required.
       settings:
         aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to your AWS access ID.
@@ -404,7 +404,7 @@ pipeline:
                   name: artifact metadata
                   identifier: artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://BUCKET.s3.REGION.amazonaws.com/TARGET/SOURCE_PATH/myfile.txt
@@ -452,7 +452,7 @@ pipeline:
                   name: write file
                   identifier: write_file
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: alpine:latest
                     shell: Bash
                     command: |-
@@ -473,7 +473,7 @@ pipeline:
                   name: artifact metadata
                   identifier: artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://BUCKET.s3.REGION.amazonaws.com/TARGET/SOURCE_PATH/myfile.txt
@@ -536,7 +536,7 @@ pipeline:
                   name: s3-upload-publish
                   identifier: custom_plugin
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: harnesscommunity/drone-s3-upload-publish
                     settings:
                       aws_access_key_id: <+pipeline.variables.AWS_ACCESS>
@@ -590,7 +590,7 @@ pipeline:
                   name: write file
                   identifier: write_file
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: alpine:latest
                     shell: Bash
                     command: |-
@@ -601,7 +601,7 @@ pipeline:
                   name: s3-upload-publish
                   identifier: custom_plugin
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: harnesscommunity/drone-s3-upload-publish
                     settings:
                       aws_access_key_id: <+pipeline.variables.AWS_ACCESS>
@@ -646,7 +646,7 @@ Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-setting
 
 | Keys           | Type    | Description                                                                                                                                                                                      | Value example                                   |
 | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
-| `connectorRef` | String  | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage`                          |
+| `connectorRef` | String  | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | `YOUR_IMAGE_REGISTRY_CONNECTOR`                          |
 | `image`        | String  | Enter `plugins/s3`.                                                                                                                                                                              | `plugins/s3`                                    |
 | `access_key`   | String  | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your AWS access key ID.                                                                             | `<+secrets.getValue("awsaccesskeyid")>`         |
 | `secret_key`   | String  | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your AWS secret access key.                                                                         | `<+secrets.getValue("awssecretaccesskey")>`     |
@@ -725,9 +725,9 @@ When using Docker in a **Run step**, `S3FS_MOUNT_DIR` must be added as a [shared
 
 ## Troubleshoot uploading artifacts
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
 
-- [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
-- [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)
-- [Does the Upload Artifacts to S3 step compress files before uploading them?](/kb/continuous-integration/continuous-integration-faqs/#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
-- [Can I use non-default ACLs, IAM roles, or ARNs with the Upload Artifacts to S3 step?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-non-default-acls-iam-roles-or-arns-with-the-upload-artifacts-to-s3-step)
+- [Can I send artifacts by email?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-send-emails-from-ci-pipelines)
+- [How do I show content on the Artifacts tab?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-show-content-on-the-artifacts-tab)
+- [Does the Upload Artifacts to S3 step compress files before uploading them?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
+- [Can I use non-default ACLs, IAM roles, or ARNs with the Upload Artifacts to S3 step?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-use-non-default-acls-iam-roles-or-arns-with-the-upload-artifacts-to-s3-step)

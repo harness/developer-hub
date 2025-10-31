@@ -1,6 +1,10 @@
 ---
 title: Helm Delete Step
 description: Reference for the Helm Delete step
+tags:
+  - helm
+  - helm-delete-step
+  - helm-deployment
 sidebar_position: 60
 ---
 
@@ -75,6 +79,18 @@ Currently, this feature is behind the feature flag `CDS_HELM_DELETE_STEP`. Conta
     If the **Helm Delete Step** is used in a **Custom stage**, only the flags defined in the step itself will be considered. The step will **not inherit flags or configurations** from the service in this case.
 
 - **Environment Variables**: Add any environment variables here.
+
+### Advanced Options
+
+See the following:
+
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+* [Command Flags](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart#configure-command-flags-at-step-level)
+
 
 ## Limitations
 

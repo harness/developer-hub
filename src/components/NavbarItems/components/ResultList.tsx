@@ -14,10 +14,10 @@ const ResultList: React.FC<ResultListProps> = (props) => {
       controller.subscribe(() => {
         setState(controller.state);
       }),
-    []
+    [],
   );
   if (!state.results.length) {
-    return <div>No results</div>;
+    return <div style={{ minHeight: '300px', marginTop: '16px' }}>No results</div>;
   }
   function handleClick(url: string) {
     window.location.href = url;
@@ -26,10 +26,7 @@ const ResultList: React.FC<ResultListProps> = (props) => {
     <div className={styles.resultList}>
       <ul>
         {state.results.map((result) => (
-          <li
-            key={result.uniqueId}
-            onClick={() => handleClick(result.clickUri)}
-          >
+          <li key={result.uniqueId} onClick={() => handleClick(result.clickUri)}>
             <article>
               {result?.raw?.commonsource ? (
                 <div className={styles.tagTop}>
@@ -40,11 +37,7 @@ const ResultList: React.FC<ResultListProps> = (props) => {
               )}
               <div className={styles.heading}>
                 <h2>{result.title}</h2>
-                <a
-                  href={result.clickUri}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={result.clickUri} target="_blank" rel="noopener noreferrer">
                   {result.clickUri.length > 100
                     ? `${result.clickUri.substring(0, 70)}...`
                     : result.clickUri}
@@ -52,36 +45,33 @@ const ResultList: React.FC<ResultListProps> = (props) => {
               </div>
               <p>{result.excerpt}</p>
               <div className={styles.tagBottom}>
-                {Array.isArray(result?.raw?.commonmodule) &&
-                result.raw.commonmodule.length > 0
-                  ? (result?.raw?.commonmodule as Array<string>)?.map(
-                      (module) => (
-                        <div
-                          key={module}
+                {Array.isArray(result?.raw?.commonmodule) && result.raw.commonmodule.length > 0
+                  ? (result?.raw?.commonmodule as Array<string>)?.map((module) => (
+                      <div
+                        key={module}
+                        style={{
+                          border: `1px solid var(${moduleIconAndColor[module]?.colors.border})`,
+                          backgroundColor: ` var(${moduleIconAndColor[module]?.colors.backgroundColor})`,
+                        }}
+                      >
+                        <img
+                          src={
+                            moduleIconAndColor[module]
+                              ? moduleIconAndColor[module].iconUrl
+                              : moduleIconAndColor['Harness Platform'].iconUrl
+                          }
+                          alt={module}
+                        />
+
+                        <p
                           style={{
-                            border: `1px solid var(${moduleIconAndColor[module]?.colors.border})`,
-                            backgroundColor: ` var(${moduleIconAndColor[module]?.colors.backgroundColor})`,
+                            color: ` var(${moduleIconAndColor[module]?.colors.color})`,
                           }}
                         >
-                          <img
-                            src={
-                              moduleIconAndColor[module]
-                                ? moduleIconAndColor[module].iconUrl
-                                : moduleIconAndColor['Harness Platform'].iconUrl
-                            }
-                            alt={module}
-                          />
-
-                          <p
-                            style={{
-                              color: ` var(${moduleIconAndColor[module]?.colors.color})`,
-                            }}
-                          >
-                            {module}
-                          </p>
-                        </div>
-                      )
-                    )
+                          {module}
+                        </p>
+                      </div>
+                    ))
                   : null}
 
                 {result?.raw?.categoryname && (
@@ -89,12 +79,10 @@ const ResultList: React.FC<ResultListProps> = (props) => {
                     className={styles.contentType}
                     style={{
                       backgroundColor: `var(${
-                        contentTypeData[result?.raw?.categoryname as string]
-                          ?.backgroundColor
+                        contentTypeData[result?.raw?.categoryname as string]?.backgroundColor
                       })`,
                       border: `var(${
-                        contentTypeData[result?.raw?.categoryname as string]
-                          ?.border
+                        contentTypeData[result?.raw?.categoryname as string]?.border
                       })`,
                     }}
                   >

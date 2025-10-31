@@ -1,5 +1,5 @@
 ---
-title: Enable a plugin
+title: Enable a Plugin
 description: Learn how to enable a plugin in Harness IDP and use it in your software catalog.
 sidebar_position: 4
 redirect_from:
@@ -10,14 +10,14 @@ redirect_from:
 
 Plugins are often used to show additional metadata about a software component in the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. [Read More](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)
 
-Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This document provides step-by-step instructions on how to enable a plugin in Harness IDP.
+Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started/catalog-2o.md), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This document provides step-by-step instructions on how to enable a plugin in Harness IDP.
 
 ## Pre-requisites
 
 Before you enable a new plugin, ensure that the following prerequisites are met:
 
 - [Harness IDP is provisioned and accessible](/docs/internal-developer-portal/get-started/enabling-module).
-- [Catalog is populated with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component)
+- [Catalog is populated with Software Components](/docs/internal-developer-portal/get-started/catalog-2o.md)
 
 ## Plugin types
 

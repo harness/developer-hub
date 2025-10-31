@@ -1,0 +1,11 @@
+{
+   "label":"Code Repository Integrations",
+   "position": 50,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"default",
+   "link":{
+      "type":"generated-index",
+      "title":"Code Repository Integrations"
+   }
+}

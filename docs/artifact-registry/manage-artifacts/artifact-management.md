@@ -4,6 +4,8 @@ description: Learn how to manage your artifacts.
 sidebar_position: 10
 ---
 
+import DocImage from '@site/src/components/DocImage';
+
 This page will teach you how to do artifact operations using Harness Artifact Registry. 
 
 All artifact operations start with the **Setup Client** page found inside your registry at the top right. 
@@ -39,6 +41,31 @@ If you have multiple upstream proxies, the image will be pulled from the top mos
 4. Run the command in terminal.
 
 Now, you should see the artifact appear in your registry as well as the **Artifacts** tab in the left navigation panel.
+
+
+
+## Quarantine an artifact
+
+
+:::note
+This feature is currently behind the feature flag `HAR_ARTIFACT_QUARANTINE_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+You can quarantine an artifact to prevent it from being used in your pipelines and block it from being pulled or downloaded by other users.
+
+To quarantine an artifact:
+
+1. Navigate to the **Artifacts** tab in the left navigation panel.
+
+<DocImage path={require('./static/artifact-quarantine.png')} />
+
+2. Select the artifact you want to quarantine.
+3. Click the 3-dot menu next to the artifact name.
+4. Select **Quarantine**.
+
+You will be prompted to provide a reason for quarantining the artifact. Enter your reason and click **Quarantine** to confirm.
+
+you can remove a quarantined artifact by selecting the artifact and clicking **Remove from Quarantine**.
 
 ## See Also
 

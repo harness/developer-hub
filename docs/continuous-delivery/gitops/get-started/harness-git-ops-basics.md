@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/get-started/harness-git-ops-basics
+  - /docs/category/use-gitops
 ---
 
 ## Introduction
@@ -22,7 +23,7 @@ GitOps is a modern approach to Continuous Delivery (CD) where Git acts as the si
 
 Instead of manually deploying via pipelines, GitOps continuously syncs your Kubernetes cluster with your declarative manifests (YAML, Helm, Kustomize, etc.), ensuring consistency across environments.
 
-Checkout [in-depth comparison between Argo CD and Harness GitOps](./harness-gitops-vs-argocd)
+Checkout [in-depth comparison between Argo CD and Harness GitOps](/docs/continuous-delivery/gitops/get-started/harness-gitops-vs-argocd)
 
 ## How GitOps works in Harness
 
@@ -57,10 +58,6 @@ To enable secure and automated deployments, Harness uses a **GitOps Agent**, a l
 - It makes outbound connections to Harness SaaS and the Git source repo.
 
 - Syncs the desired state from Git to the live cluster—ensuring consistency without modifying Git.
-
-✅ **Hosted GitOps (No Agent Required)**
-
-Harness also offers a [Hosted GitOps](/docs/continuous-delivery/gitops/connect-and-manage/hosted-gitops) option, allowing you to manage deployments without installing an Agent.
 
 **No Cluster-to-Git Reconciliation**
 
@@ -283,4 +280,4 @@ Click the link to begin and experience GitOps automation with Harness! 🚀
 
 ## FAQs
 
-For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/resources/gitops-faqs).

@@ -504,7 +504,7 @@ Within a single pipeline, you can define variables at the step, stage, and pipel
                   name: Background_1
                   identifier: Background_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: postgres:10.8
                     envVariables:
                       POSTGRES_USER: postgres

@@ -20,11 +20,11 @@ These conditions apply when running Windows builds on Harness CI Kubernetes clus
 
 Windows Server 2019 and 2022 images are supported.
 
-* Amazon EKS: The [AMI type](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-windows-ami.html) must be [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore).
-* GCP: Only Windows Server 2019 is supported.
-* GKS: Use the recommended image type for Windows Server 2019 or 2022.
+- Amazon EKS: The [AMI type](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-windows-ami.html) must be [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore).
+- GCP: Only Windows Server 2019 is supported.
+- GKS: Use the recommended image type for Windows Server 2019 or 2022.
 
-   ![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
+  ![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
 
 ### Some built-in steps aren't supported
 
@@ -36,7 +36,7 @@ If your build process needs to run Docker commands, [Docker-in-Docker (DinD) wit
 
 ### Custom and self-signed certificates aren't supported
 
-Custom certificates or self-signed certificates are only supported for linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work. 
+Custom certificates or self-signed certificates are only supported for linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work.
 
 ## Configure cluster and build infrastructure
 
@@ -46,7 +46,7 @@ Custom certificates or self-signed certificates are only supported for linux nod
    1. Select **Windows** for the **OS**.
    2. Expand the **Advanced** section, and add a **Node Selector** to use the Windows node pool. Enter `kubernetes.io/os` as the **Key** and `windows` as the **Value**.
 
-  ![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-11.png)
+![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-11.png)
 
 4. Save and run your pipeline.
 
@@ -65,45 +65,45 @@ COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
 This example pipeline runs on a Windows platform on a Kubernetes cluster build infrastructure. Note the presence of `os` and `nodeSelector` in `stage.spec.infrastructure.spec`.
 
 ```yaml
-pipeline:  
-  name: WindowsK8  
-  identifier: WindowsK8  
-  projectIdentifier: myproject  
-  orgIdentifier: default  
-  tags: {}  
-  properties:  
-    ci:  
-      codebase:  
-        connectorRef: $GITHUB_CONNECTOR  
-        repoName: testing-flask-with-pytest  
-        build: <+input>  
-  stages:  
-    - stage:  
-        name: Build and Test  
-        identifier: Build_and_Test  
-        type: CI  
-        spec:  
-          cloneCodebase: true  
-          infrastructure:  
-            type: KubernetesDirect  
-            spec:  
-              connectorRef: $K8S_CONNECTOR  
-              namespace: harness-delegate-ng  
-              automountServiceAccountToken: true  
-              nodeSelector:  
-                kubernetes.io/os: windows  
-              os: Windows  
-          execution:  
-            steps:  
-              - step:  
-                  type: Run  
-                  name: helloWorld  
-                  identifier: Pre  
-                  spec:  
-                    connectorRef: $DOCKERHUB_CONNECTOR  
-                    image: winamd64/python  
-                    shell: Powershell  
-                    command: "Write-Host \"hello world\" "
+pipeline:
+  name: WindowsK8
+  identifier: WindowsK8
+  projectIdentifier: myproject
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: $GITHUB_CONNECTOR
+        repoName: testing-flask-with-pytest
+        build: <+input>
+  stages:
+    - stage:
+        name: Build and Test
+        identifier: Build_and_Test
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: $K8S_CONNECTOR
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector:
+                kubernetes.io/os: windows
+              os: Windows
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: helloWorld
+                  identifier: Pre
+                  spec:
+                    connectorRef: $DOCKERHUB_CONNECTOR
+                    image: winamd64/python
+                    shell: Powershell
+                    command: 'Write-Host "hello world" '
 ```
 
 ## Default user for Windows builds
@@ -118,8 +118,8 @@ For individual steps that run in containers, Harness uses user `1000` by default
 
 ## Troubleshoot Windows builds on Kubernetes cluster build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Windows builds on Kubernetes cluster build infrastructure, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Windows builds on Kubernetes cluster build infrastructure, including:
 
-* [Error when running Docker commands on Windows build servers](/kb/continuous-integration/continuous-integration-faqs/#error-when-running-docker-commands-on-windows-build-servers)
-* [Step continues running for a long time after the command is complete](/kb/continuous-integration/continuous-integration-faqs/#step-continues-running-for-a-long-time-after-the-command-is-complete)
-* [Is privileged mode necessary for running DinD in Harness CI?](/kb/continuous-integration/continuous-integration-faqs/#is-privileged-mode-necessary-for-running-dind-in-harness-ci)
+- [Error when running Docker commands on Windows build servers](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#error-when-running-docker-commands-on-windows-build-servers)
+- [Step continues running for a long time after the command is complete](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#step-continues-running-for-a-long-time-after-the-command-is-complete)
+- [Is privileged mode necessary for running DinD in Harness CI?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#is-privileged-mode-necessary-for-running-dind-in-harness-ci)

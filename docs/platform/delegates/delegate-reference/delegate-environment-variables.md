@@ -1,7 +1,8 @@
 ---
 title: Delegate environment variables
-description: The following table describes the environment variables that apply to the delegate manifest.
-# sidebar_position: 2
+description: Reference guide for environment variables available in delegate manifests, including configuration options and usage examples.
+sidebar_label: Environment Variables
+sidebar_position: 4
 helpdocs_topic_id: b032tf34k9
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false
@@ -66,12 +67,16 @@ Tags are displayed on the delegate details page in Harness Manager. Go to [Tags 
 
 ### DYNAMIC_REQUEST_HANDLING
 
-If enabled, delegate will stop acquiring new tasks if the cpu/memory usage goes beyond values defined in `CPU_USAGE_THRESHOLD` and `MEMORY_USAGE_THRESHOLD`. The default value for both is 80. 
+Dynamic request handling is designed to prevent delegates from being overloaded. Enabling `DYNAMIC_REQUEST_HANDLING` will stop acquiring new tasks if the CPU default threshold is exceeded. By default, the threshold is set to 80%. You can override this value by configuring the `CPU_USAGE_THRESHOLD` variable. 
 
-   ```yaml
-        - name: DYNAMIC_REQUEST_HANDLING
-          value: "true"
-   ```
+:::note
+CPU and memory thresholds are always checked during task acquisition, and the task will not be picked up if they exceed the default limits.
+:::
+
+  ```yaml
+      - name: DYNAMIC_REQUEST_HANDLING
+        value: "true"
+  ```
 
 ### DELEGATE_CPU_THRESHOLD
 
@@ -133,15 +138,6 @@ Use the `JAVA_OPTS` environment variable to add or override JVM parameters. The 
 ```yaml
         - name: JAVA_OPTS
           value: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=70.0 -XX:MinRAMPercentage=40.0 -XX:+HeapDumpOnOutOfMemoryError"
-```
-
-### LOG_STREAMING_SERVICE_URL
-
-Use this variable to specify the endpoint for your log service in Harness NextGen. This variable is not used in Harness FirstGen.
-
-```yaml
-        - name: LOG_STREAMING_SERVICE_URL
-          value: "YOUR_MANAGER_ENDPOINT/log-service/"
 ```
 
 ### MANAGER_HOST_AND_PORT

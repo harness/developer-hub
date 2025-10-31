@@ -1,0 +1,150 @@
+import applyingFilters from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/applying-filters-selecting-a-version.png';
+import viewImpact from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/view-impact-for-custom-dates.png';
+import generateResults from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/generate-results-button.png';
+import metricFilters from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/metric-filter.png';
+import metricSetup from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/metrics-setup.png';
+import targetingRule from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/targeting-rule.png';
+import baselineTreat from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/baseline-treatment.png';
+import filteredBy from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/filtered-by.png';
+
+## Overview
+
+Harness FME provides the ability to filter your metric results, so you can analyze impact with greater depth and precision. 
+
+Applying a filter can help you improve the sensitivity of your metric by refining the sample used in the analysis.  Filtering is most often used to provide deeper analysis of how customers progress through a particular flow in your product.
+
+There are three required filters for analysis:
+
+- **Version or custom dates.** Identify which version of the feature flag you want to get information from, or select a custom date to view your results. By default, Harness FME selects the last feature flag version.
+- **Targeting rule.** If you are using a special targeting rule, select the one that corresponds to the traffic you want to gain insight into. By default, Harness FME selects the default rule, which is the last rule in the Targeting section of your feature flag definition.
+- **Treatments.** Select two treatments to compare, so you can understand how one treatment is performing against another. For example, you would select “on” as the treatment and “off” as the baseline for an on/off feature flag.
+
+Optionally, you can filter the metrics displayed by metric tag, metric owner, or metric result. For more information, see the [Metrics](.././#metric-list) documentation.
+
+An e-commerce company may seek to drive an increase in purchases, and while it is important to track that purchase rate globally, it is often valuable to see where in the process customers are dropping off. By filtering, you can see the behavior of customers who reach particular points in the funnel, such as abandonment by those who visited a product page, or those who added something to their cart.
+
+Filtering is also used to create metrics that target only users who engage in a particular behavior, for instance observing the support ticket rate of those users who experience an exception or of users who completed the on-boarding process, as shown below:
+
+<img src={metricFilters} alt="Applying Metric Filters" width="700" />
+
+## Applying a filter
+
+You can optionally apply filters and filter properties, and a cap to your metric value. Filters help you improve the sensitivity of your metric by refining the sample used in the analysis. Filtering provides deeper analysis of how customers progress through a particular flow in your product. 
+
+This allows you to see the behavior of customers who reach particular points in the funnel, such as abandonment by those who visited a product page, or those who added something to their cart. By filtering with events, it’s enforcing that the user has at some point seen both events of a particular version.
+
+Also, use filtering to create metrics that target only users who engage in a particular behavior, for example, observing the support ticket rate of those users who experience an exception or of users who completed the onboarding process. 
+
+To apply filters, do the following:
+
+1. Towards the bottom of the Metrics page, click the **Show advanced** link. The Advanced section displays.
+
+   <img src={metricSetup} alt="Advanced Section" width="700" />
+
+1. In the **Filter by** list, optionally apply a filter to these analyses.
+
+1. In the **Properties** field, optionally apply a property filter to the ‘has done’ event you’re filtering your metric by.
+
+1. In the **Cap at** field, apply a cap to your metric value. With metric capping, any outlier value in your metrics is capped and replaced with a fixed threshold value. This reduces the variance and increases the sensitivity of your metric. When a metric cap is set to a per user per day, this is 24 hours from a user’s first impression within a particular version of a feature flag. Refer to Metric capping for more information.
+
+1. Once finished, click **Create** to create your metric. Your new metric appears.
+
+:::info 
+To get access to alert policies, contact your customer success manager or support to enable your account. If you create a metric that is measured on a per traffic type basis, you can create an alert policy for this metric. For more information about alert policies, see [Alert policies](/docs/feature-management-experimentation/experimentation/metrics/alert-policies#creating-a-metric-alert-policy).
+:::
+
+## Selecting a version
+
+Each time a feature flag definition is changed in any way, Harness FME creates a new version. Versioning is intended to support focused and rigorous analysis of changes you make to your features.
+
+Select a version of the feature flag to see your metric results calculated for the lifetime of that version.
+
+<img src={applyingFilters} alt="Applying Filters" width="700" />
+
+### Which changes trigger a new version?
+
+| Change scope | New version is created |
+|--------------|------------------------|
+| Any field on the **Definition** tab, including **Name** or **Description** of **Treatments**, **Dynamic configuration**, **Individual targets**, **Targeting rules**, and **Alert baseline treatment**. | Yes |
+| Editable fields in the feature flag **Details** panel, including **Description**, **Tags**, **Ownership**, and **Rollout status**. | No |
+
+If you have made what you consider to be an insubstantial change to a feature flag definition (such as enhancing descriptions of your treatments, or adding a user to individual targets), consider using the custom date filter to combine versions.
+
+## Selecting custom dates
+
+With the custom date filter, you can analyze your feature flag impact for any period of time that your flag has been active within Harness FME’s [data retention period](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion#data-retention) (the last 90 days). For example, a particular week of interest or before and after a major event. 
+
+With this option, you can:
+
+- Combine multiple versions and analyze results in aggregate.
+- Select a start date and leave the end date ongoing.
+- Select a fixed time in the past, and do deeper analysis on a given timeframe.
+- Slice your data to remove unwanted information.
+
+### How it works
+
+- **Analyzing your results between a custom start and end time:** Select a start time and end time within the last 90 days. If an experiment encompasses multiple change versions, the system combines the relevant versions that are active in the time period. The results are calculated only once when you click “Generate results”. If you want to refresh results on-demand at a later time, you can do so by clicking on the recalculate button.
+- **Analyzing results between a custom start time and ongoing end time:** Select a start time within the last 90 days or the feature flag creation date (if it was created within 90 days) and keep the end time open by selecting the _Ongoing_ checkbox. The ongoing custom date filter remains active and the system automatically includes any new data or versions in the analysis. The schedule follows our [automated calculation frequency](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab#automated-alculation-frequency). As always, you can request a recalculation before the next scheduled time by clicking on the recalculate button. 
+- **Trimming:** The impression data is trimmed by the start and end times. This means the impressions seen by your end users prior to the start time and after the end time are excluded from the calculation even if they are part of the merged versions. If the experiment is ongoing, the data is trimmed at the start time and results are calculated for the impressions seen after that point.
+
+### How to set custom dates
+
+To start using custom dates on your analysis, do the following:
+
+1. Select your feature flag and then click the **Metrics impact** tab.
+2. In the **View impact for** menu list, select **Custom dates**.
+ 
+   <img src={viewImpact} alt="View Impact for Custom Dates" width="700" />
+
+3. Select the desired start date for your analysis. You can set a datetime granularity down to the minute. The time is displayed in your device’s local time. If you see grayed out dates, it means either the feature flag was not yet created, or it is beyond our data retention period of 90 days.
+
+4. Select an end time for your analysis, or select the **Ongoing** option. By selecting **Ongoing**, you are leaving the end date open, so new feature flag version changes will not reset your analysis. New data from those versions will be automatically included in your analysis.
+
+5. To start calculations for that period and get results, click the Generate results button. This operation may take 5-10 minutes for a small experiment, and 30 minutes or more for big experiments.
+
+   <img src={generateResults} alt="Generate Results" width="700" />
+
+### Scenarios to be aware of
+
+When you perform analysis with custom dates, be aware that some combinations can return results that are difficult or impossible to analyze. The following are some of the possible scenarios that could occur while combining different versions of the same feature flag:
+
+- **Excluding users switching treatments more than once:** If a user switches between targeting rules once, a user’s events are attributed to the most recent treatment and rule. The [logic for attribution](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion) remains the same as for the single versions. But since now it's possible to combine different versions, it could be that many users are excluded from the measurements, since they were exposed to multiple treatments in the time frame of analysis.
+
+- **Inconsistent or ambiguous results when targeting rules are dramatically changed or removed.** 
+
+  * A change in targeting rules excludes users from the measurements. For example, if you set Version 1 - 40/60, Version 2 - 30/70, Version 3 - 50/50, and Version 4 - 70/30, then you will be excluding 10% of your users on the first update, then 20%, and then again 20%. If the [logic for attribution](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion) determines that the reallocated users see a different treatment on each update, then you will be excluding 50% of the users from the experiment since they switched what they saw. In general, the less you modify the percentages, the less users will be excluded from the measurements, and the larger the dataset for your experiment.
+  
+  * If any of the versions included in the time range has a treatment with 100% allocation, then it's impossible to bucket users and execute statistical calculations. A message will be shown stating that the sample size is invalid.
+
+Sharing results is not currently supported when analyzing with custom dates.
+
+## Selecting a targeting rule
+ 
+To ensure statistical rigor and prevent issues that could arise due to unequal distributions across the sample set, we require customers to filter their results by the targeting rule used in the evaluation. 
+
+To see a statistically significant comparison when comparing two treatments, select a label that you want to see your metrics results. If you select the **any** targeting rule, your metrics results still show up, but do not display statistical significance. 
+
+  <img src={targetingRule} alt="Targeting Rule" width="700" />
+
+## Selecting treatment and baseline
+ 
+View metrics cards for the customers exposed to a particular treatment as well as compared against customers exposed to two treatments. Select the treatment that you want to view metric results for and optionally add a baseline comparison if you want to see statistically significant comparisons.
+
+  <img src={baselineTreat} alt="Baseline Treatment" width="700" />
+
+## Selecting tags and owners
+ 
+If your account has many metrics, you can filter the metrics displayed down to those with a particular tag and a particular owner. 
+
+To filter metrics, do the following:
+
+1. Select the desired feature flag and then click the **Metrics impact** tab. 
+
+   <img src={filteredBy} alt="Filtering Metrics" width="700" />
+
+2. In the Results area, click **0 more filters applied**. The Filtered by area appears. Fill in the fields as follows:
+   * In the Metric tag field, enter the desired tag to filter down your metrics.
+   * In the Metric owner field, enter the user or group to filter down your metrics.
+3. Click the **Apply** button to apply your selections.   
+
+For more information about tags and owners, refer to the [Tags](https://help.split.io/hc/en-us/articles/360020839151) and [Owners](https://help.split.io/hc/en-us/articles/360020582092) guides.

@@ -46,7 +46,7 @@ export default function ExperimentListSection({
           <input
             type="search"
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search Faults by Name or Tag"
+            placeholder="Search by Name or Tag"
           />
           <button onClick={() => setShowAll(!showAll)}>
             <svg

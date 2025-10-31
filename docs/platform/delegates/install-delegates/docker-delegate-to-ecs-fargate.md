@@ -1,7 +1,8 @@
 ---
 title: Deploy a Docker delegate to Amazon ECS or AWS Fargate
-description: Provides information and YAML for the installation of a delegate into an Amazon ECS or AWS Fargate cluster.
-sidebar_position: 5
+description: Learn how to deploy a Docker delegate to Amazon ECS or AWS Fargate clusters with configuration examples and best practices.
+sidebar_label: Docker Delegate to ECS/Fargate
+sidebar_position: 6
 canonical_url: https://www.harness.io/blog/aws-fargate-a-cloud-based-container-solution-without-kubernetes
 ---
 
@@ -52,11 +53,7 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
             {
               "name": "MANAGER_HOST_AND_PORT",
               "value": "<MANAGER_HOST_AND_PORT>"
-            },
-            {
-              "name": "LOG_STREAMING_SERVICE_URL",
-              "value": "<LOG_STREAMING_SERVICE_URL>"
-            },            
+            },           
             {
               "name": "DELEGATE_NAME",
               "value": "<DELEGATE_NAME>"
@@ -68,10 +65,6 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
             {
               "name": "INIT_SCRIPT",
               "value": ""
-            },
-            {
-              "name": "DEPLOY_MODE",
-              "value": "KUBERNETES"
             },
             {
               "name": "DELEGATE_TYPE",
@@ -109,7 +102,6 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
    | `ACCOUNT_ID` | Your Harness account ID. |
    | `DELEGATE_TOKEN` | The delegate token stored in your Harness account. |
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
-   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
    | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/tags. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
 
@@ -162,11 +154,7 @@ Use the following steps to create a task definition. For information about task 
             {
               "name": "MANAGER_HOST_AND_PORT",
               "value": "<MANAGER_HOST_AND_PORT>"
-            },
-            {
-              "name": "LOG_STREAMING_SERVICE_URL",
-              "value": "<LOG_STREAMING_SERVICE_URL>"
-            },            
+            },           
             {
               "name": "DELEGATE_NAME",
               "value": "<DELEGATE_NAME>"
@@ -178,10 +166,6 @@ Use the following steps to create a task definition. For information about task 
             {
               "name": "INIT_SCRIPT",
               "value": ""
-            },
-            {
-              "name": "DEPLOY_MODE",
-              "value": "KUBERNETES"
             },
             {
               "name": "DELEGATE_TYPE",
@@ -216,7 +200,6 @@ Use the following steps to create a task definition. For information about task 
    | `ACCOUNT_ID` | Your Harness account ID. |
    | `DELEGATE_TOKEN` | The delegate token stored in your Harness account. |
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
-   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
    | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/tags. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
    | `AWS_ACCOUNT_ID` | Your AWS account ID. |
@@ -269,6 +252,13 @@ Use the following steps to create a task definition. For information about task 
 The above steps to [deploy a delegate to ECS](#deploy-a-delegate-to-amazon-ecs) are also available in a Terraform module that you can reference directly or use as a starting point for your own automation. You can use an existing ECS cluster (EC2- or Fargate-based) or let the module create one for you.
 
 To access the module, go to [Harness Community GitHub](https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate).
+
+:::warning Disclaimer: Community-Maintained Resource
+The [Terraform module](https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate) for deploying a Harness delegate on ECS Fargate is hosted in a community-maintained GitHub repository and is provided as-is for reference.
+- This solution is not officially supported or maintained by Harness.
+- It may be outdated and might not support features like Auto-Upgrades.
+- Users are advised to treat this as sample/example code only.
+:::
 
 ```terraform
 module "delegate" {

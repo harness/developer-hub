@@ -1,5 +1,5 @@
 ---
-title: SLO-driven governance
+title: SLO-Driven Governance
 description: Enforce compliance for Harness entities such as pipelines during events.
 sidebar_position: 70
 ---

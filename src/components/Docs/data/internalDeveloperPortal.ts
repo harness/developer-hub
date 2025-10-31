@@ -58,7 +58,7 @@ export const docsCards: CardSections = [
         title: "Role-based access control (RBAC)",
         module: MODULES.idp,
         description: "Learn how to use RBAC to manage resource access and actions for users in IDP.",
-        link: "/docs/internal-developer-portal/rbac/resources-roles",
+        link: "/docs/internal-developer-portal/rbac/scopes",
       },
       {
         title: "Audit Trail",
@@ -82,7 +82,7 @@ export const docsCards: CardSections = [
         title: "Customize Catalog Entity Pages",
         module: MODULES.idp,
         description: "Learn how to customize the layout of catalog entity pages to fit your team's requirements.",
-        link: "/docs/internal-developer-portal/layout-and-appearance/catalog",
+        link: "/docs/internal-developer-portal/catalog/catalog-ui",
       },
       {
         title: "IDP Sidebar Navigation Customization",

@@ -35,9 +35,34 @@ Open your Harness pipeline in Pipeline Studio.
 
 In **Schedule**, use the settings to schedule the trigger.
 
-When you edit a Cron trigger later, you can type or paste in a Cron expression.
+**Timezone**: Select the timezone in which the cron expression should be evaluated. Harness supports the [IANA Time Zone convention](https://timeapi.io/documentation/iana-timezones#), such as `America/New_York`, `Asia/Kolkata`, or `Europe/London`. The default timezone is `UTC`.
 
-The Cron expression will be evaluated against UTC time.
+
+<details>
+<summary>Sample YAML with timezone</summary>
+
+Here is a sample YAML for a cron trigger with a timezone setting, with timezone set to `America/New_York`:
+
+```yaml
+  source:
+    type: Scheduled
+    spec:
+      type: Cron
+      spec:
+        expression: 0/5 * * * *
+        type: UNIX
+        timezone: America/New_York
+```
+
+</details>
+
+:::note
+Currently, the timezone setting is behind the feature flag `PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+If the feature flag is not enabled, the cron expression will always be evaluated against `UTC` time.
+
+When you edit a Cron trigger later, you can type or paste in a Cron expression.
 
 There are two types of supported cron expressions, QUARTZ and UNIX.
 

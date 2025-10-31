@@ -327,7 +327,7 @@ Now that you've set up the rule, trigger another Harness pipeline execution and 
 
 To verify the branch protection rule, you must ensure that your STO pipeline fails. To configure your pipeline to fail temporarily, you can do one of the following:
 
-- Set [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) to **Low** in the scan step of your pipeline. Then scan a repo with known vulnerabilities.
+- Set [Fail on Severity](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity/) to **Low** in the scan step of your pipeline. Then scan a repo with known vulnerabilities.
 - Add a temporary Run step to your pipeline with the command `exit(1)`.
 
 :::

@@ -1,7 +1,8 @@
 ---
 title: Running Harness Delegate on a Read-Only File System
-description: How to configure the Harness Delegate to run on a read-only file system
-# sidebar_position: 40
+description: Learn how to configure Harness delegates for read-only file systems using writable volumes for Kubernetes, Helm, and Docker deployments.
+sidebar_label: Delegate on a Read-Only File System
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
@@ -61,7 +62,6 @@ To configure the delegate in a Docker container with a read-only file system, fo
     -e ACCOUNT_ID=<account_id> \
     -e DELEGATE_TOKEN=<token> \
     -e DELEGATE_TAGS="" \
-    -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
     -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:24.08.83702.minimal
     ```
 
@@ -86,8 +86,6 @@ To configure the delegate in a Docker container with a read-only file system, fo
     - `ACCOUNT_ID`: Your Harness account ID.
 
     - `DELEGATE_TOKEN`: Your delegate token for authentication.
-
-    - `LOG_STREAMING_SERVICE_URL`: The URL for log streaming.
 
 3. **Verify the Deployment**
 
@@ -180,8 +178,6 @@ To configure the delegate in a Kubernetes cluster with a read-only file system, 
             value: <account_id>
             - name: MANAGER_HOST_AND_PORT
             value: https://app.harness.io
-            - name: DEPLOY_MODE
-            value: KUBERNETES
             - name: DELEGATE_NAME
             value: k8s-ro
             - name: DELEGATE_TYPE
@@ -198,8 +194,6 @@ To configure the delegate in a Kubernetes cluster with a read-only file system, 
             value: ""
             - name: NEXT_GEN
             value: "true"
-            - name: LOG_STREAMING_SERVICE_URL
-            value: "https://app.harness.io/log-service/"
             volumeMounts:
             - name: work-dir
             mountPath: /opt/harness-delegate/writable/

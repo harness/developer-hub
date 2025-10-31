@@ -1,8 +1,25 @@
 ---
 title: Harness DB DevOps Images
-description: Harness DB DevOps images and how to configure updates.
-sidebar_label: DB Devops Images
+description: Learn about the container images used in Harness DB DevOps and how to configure image versions and updates securely and efficiently.
+sidebar_label: DB DevOps Images
 sidebar_position: 21
+keywords:
+  - db devops images
+  - harness container images
+  - image configuration
+  - docker images
+  - harness dbops
+  - update db devops image
+  - image versioning
+  - database devops container
+  - dbops deployment image
+  - dbops infrastructure
+tags:
+  - harness-db-devops
+  - container-images
+  - image-configuration
+  - devops-infrastructure
+  - dbops-deployment
 ---
 
 Harness publishes `plugins/drone-liquibase` with `x.y.z-{liquibaseVersion}`, where `x.y.z` follows Harness semantic versioning.

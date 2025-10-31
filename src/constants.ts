@@ -1,6 +1,3 @@
-import gs from "./components/Docs/GetStarted";
-
-
 export enum MODULES {
   gs = 'gs',
   ci = 'ci',
@@ -8,9 +5,12 @@ export enum MODULES {
   ccm = 'ccm',
   ff = 'ff',
   sto = 'sto',
+  asp = 'asp',
+  arp = 'arp',
+  ast = 'ast',
   srm = 'srm',
   ce = 'ce',
-  ir = 'ir',
+  aisre = 'aisre',
   sei = 'sei',
   cet = 'cet',
   ssca = 'ssca',
@@ -19,14 +19,18 @@ export enum MODULES {
   code = 'code',
   platform = 'platform',
   cv = 'cv',
-  smp = "smp",
-  aida = "aida",
-  dbdevops = "dbdevops",
-  ar = "ar",
-  cde = "cde",
-  armory = "armory",
-  opensource = "opensource",
-  fme = "fme"
+  smp = 'smp',
+  aida = 'aida',
+  dbdevops = 'dbdevops',
+  ar = 'ar',
+  cde = 'cde',
+  armory = 'armory',
+  opensource = 'opensource',
+  fme = 'fme',
+  ata = 'ata',
+  adra = 'adra',
+  tbh = 'tbh',
+  hsf = 'hsf'
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -36,9 +40,12 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.ccm]: 'Cloud Cost Management',
     [MODULES.ff]: 'Feature Flags',
     [MODULES.sto]: 'Security Testing Orchestration',
+    [MODULES.asp]: 'Application & API Security Posture',
+    [MODULES.arp]: 'Application & API Runtime Protection',
+    [MODULES.ast]: 'Application & API Security Testing',
     [MODULES.srm]: 'Service Reliability Management',
     [MODULES.ce]: 'Chaos Engineering',
-    [MODULES.ir]: 'Incident Response',
+    [MODULES.aisre]: 'AI SRE',
     [MODULES.sei]: 'Software Engineering Insights',
     [MODULES.cet]: 'Continuous Error Tracking',
     [MODULES.ssca]: 'Supply Chain Security',
@@ -53,7 +60,10 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.cde]: 'Cloud Development Environments',
     [MODULES.armory]: 'Armory',
     [MODULES.opensource]: 'Open Source',
-    [MODULES.fme]: 'Feature Management & Experimentation'
+    [MODULES.fme]: 'Feature Management & Experimentation',
+    [MODULES.ata]: 'AI Test Automation',
+    [MODULES.tbh]: 'Traceable by Harness',
+    [MODULES.hsf]: 'Harness Solutions Factory'
 }
 
 export const MODULE_ICON = {
@@ -62,9 +72,12 @@ export const MODULE_ICON = {
     [MODULES.ccm]: 'img/icon_ccm.svg',
     [MODULES.ff]: 'img/icon_ff.svg',
     [MODULES.sto]: 'img/icon_sto.svg',
+    [MODULES.asp]: 'img/icon-api-security-posture.svg',
+    [MODULES.arp]: 'img/icon-api-runtime-protection.svg',
+    [MODULES.ast]: 'img/icon-api-security-testing.svg',
     [MODULES.srm]: 'img/icon_srm.svg',
     [MODULES.ce]: 'img/icon_ce.svg',
-    [MODULES.ir]: 'img/icon-ir.svg',
+    [MODULES.aisre]: 'img/icon-ir.svg',
     [MODULES.sei]: 'img/icon_sei.svg',
     [MODULES.cet]: 'img/icon_cet.svg',
     [MODULES.ssca]: 'img/icon_ssca.svg',
@@ -79,5 +92,8 @@ export const MODULE_ICON = {
     [MODULES.cde]: 'img/icon-cde.svg',
     [MODULES.armory]: 'img/icon_armory.svg',
     [MODULES.opensource]: 'img/icon_opensource.svg',
-    [MODULES.fme]: 'img/icon_fme.svg'
+    [MODULES.fme]: 'img/icon_fme.svg',
+    [MODULES.ata]: 'img/logo-ata.svg',
+    [MODULES.tbh]: 'img/icon_tbh.svg',
+    [MODULES.hsf]: 'img/icon-hsf.svg',
 }

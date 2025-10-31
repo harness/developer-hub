@@ -7,8 +7,8 @@ sidebar_position: 15
 
 The Snyk step in Harness STO allows you to find and fix vulnerabilities in container images based on container registry scans. This document helps you to configure Snyk step in your pipeline to perform Snyk Container scanning either through orchestration or ingestion scan modes in STO.
 
-- [**Orchestration mode**](#snyk-container-scan---orchestration-mode): In this mode, the Snyk step [runs the scan](/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto), then normalizes and deduplicates the results.
-- [**Ingestion mode**](#snyk-container-scan---ingestion-mode): In this mode, the Snyk step [reads scan results](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) from a data file, normalizes the data, and deduplicates it.
+- [**Orchestration mode**](#snyk-container-scan---orchestration-mode): In this mode, the Snyk step [runs the scan](/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto), then normalizes and deduplicates the results.
+- [**Ingestion mode**](#snyk-container-scan---ingestion-mode): In this mode, the Snyk step [reads scan results](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline) from a data file, normalizes the data, and deduplicates it.
 
 Refer to the [Snyk step configuration](./snyk-scanner-reference) document to learn more about the fields in the Snyk step and how to configure them.
 

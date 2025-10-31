@@ -1,0 +1,36 @@
+Treatments
+premium
+{
+  "font_size": "large",
+  "popup_message": "Big Discount",
+  "popup_value": " 25%"
+}
+standard
+{
+  "font_size": "large",
+  "popup_message": "Discount",
+  "popup_value": " 10%"
+}
+current
+{
+  "font_size": "large",
+  "popup_message": "Thanks for boxing",
+  "popup_value": ""
+}
+Status
+active
+Default Treatment
+current
+Target Individually User In Premium
+Target Individually Segment In Premium
+Target Individually User In Standard
+Target Individually Segment In Standard
+Target Individually User In Current
+Target Individually Segment In Current
+Traffic Allocation
+100% in Split
+Targeting Rules
+Default Rule
+0% premium
+0% standard
+100% current

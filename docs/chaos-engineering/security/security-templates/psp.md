@@ -1,6 +1,6 @@
 ---
 title: Pod Security Policy
-sidebar_position: 20
+sidebar_position: 4
 description: Applying Pod Security Policy to pods in a cluster
 redirect_from:
 - /docs/chaos-engineering/technical-reference/security/security-templates/psp
@@ -62,7 +62,7 @@ allowedCapabilities:
     - "NET_ADMIN"
     # SYS_ADMIN: used in stress chaos experiment to perform cgroup operations.
     - "SYS_ADMIN"
-hostNetwork: false
+hostNetwork: true
 hostIPC: false
     # To run fault injection on a target container using pid namespace.
     # It is used in stress, network, dns and http experiments.

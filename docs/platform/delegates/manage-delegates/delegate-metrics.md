@@ -1,7 +1,8 @@
 ---
 title: Configure delegate metrics and auto scale
-description: This topic describes how to configure Prometheus and Grafana to collect and display delegate metrics and how to auto scale using replicas.
-sidebar_position: 2
+description: Learn how to configure delegate metrics collection with Prometheus and Grafana, and set up auto scaling using replicas.
+sidebar_label: Configure Metrics and Auto Scale
+sidebar_position: 3
 redirect_from:
   - /docs/platform/delegates/manage-delegates/auto-scale-using-replicas
 canonical_url: https://www.harness.io/blog/architecting-harness-ci-for-scale
@@ -663,8 +664,6 @@ spec:
           value: YOUR_ACCOUNT_ID
         - name: MANAGER_HOST_AND_PORT
           value: https://app.harness.io
-        - name: DEPLOY_MODE
-          value: KUBERNETES
         - name: DELEGATE_NAME
           value: kubernetes-delegate
         - name: DELEGATE_TYPE
@@ -681,12 +680,6 @@ spec:
           value: ""
         - name: NEXT_GEN
           value: "true"
-        - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
-          value: "true"
-        - name: LOG_STREAMING_SERVICE_URL
-          value: "https://app.harness.io/log-service/"
-        - name: MEMORY_USAGE_THRESHOLD
-          value: ""
 
 ---
 

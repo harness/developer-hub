@@ -224,6 +224,57 @@ To define execution strategies, do the following:
 
 9. Select **Continue**. The template is published successfully.
 
+## Advanced Options
+
+After defining a pipeline template, you can configure a set of **Advanced Options** in **Template Studio**. These settings control how downstream pipelines behave and execute, but are managed centrally at the template level. Metadata fields ([Public access](/docs/platform/pipelines/executions-and-logs/allow-public-access-to-executions/) and [Dynamic execution settings](/docs/platform/pipelines/dynamic-execution-pipeline/)) no longer appear in this editor.
+
+Below is a breakdown of each Advanced Option exposed in the Template Studio:
+
+**1. Pipeline Timeout Settings**
+
+**Timeout (optional)** : Enter a timeout for the entire Pipeline. You can change this setting at any time.
+
+**Description:**  Sets a global timeout for the entire pipeline run. If the run exceeds this duration, it’s automatically aborted and marked as failed.
+
+**2. Stage Execution Settings**
+
+**Allow selective stage(s) executions?**  
+> • Yes / No
+
+**Description:** Controls whether users can pick and choose which stages to run.
+
+
+**3. Re-run Settings**
+
+> **Is Input Data uneditable when rerunning?**  
+> • Yes / No 
+
+**Description:**  Determines whether inputs provided in a previous run are locked down on retry.
+
+**4. Delegate Selector**
+
+> **Delegate Selector (optional)**  
+> Define Delegate Selector  
+
+**Description:**  Restricts which Harness delegates can execute this pipeline:
+- List one or more delegate tags  
+- If left empty, any delegate is eligible
+
+**Example YAML**
+
+```yaml
+spec:
+  timeout: 10m
+  allowStageExecutions: true
+  fixedInputsOnRerun: true
+  delegateSelectors:
+    - your-delegate
+```
+
+:::info
+When you instantiate pipelines from this template in Pipeline Studio, these four settings appear under the **Advanced** tab as **read-only** (to faithfully reflect your template). Any instance-specific options—such as **Public access** or **Dynamic execution settings**—are shown below in the same tab as editable metadata fields. Don’t overlook those! 
+:::
+
 ## Use templates
 
 After creating a template, [use it to create a pipeline](use-a-template.md).

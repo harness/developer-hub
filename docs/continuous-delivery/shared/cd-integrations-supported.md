@@ -137,6 +137,9 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.25.6
 - 1.26.0
 - 1.27.0
+- 1.30.10
+- 1.31.8
+- 1.33.4
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
@@ -273,7 +276,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Amazon AMI/ASG</summary>
 
 - **Overview:**
-  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial)
+  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial)
 - **Supported connectors for deployment:**
   - AWS cloud connector
     - IRSA
@@ -447,7 +450,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Spot Instances</summary>
 
 - **Overview:**
-  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
+  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
 - **Supported connectors for deployment:**
   - Spot Connector
     - AccountID + API Token
@@ -675,7 +678,7 @@ Harness also supports Terraform Cloud and Enterprise.
   - [Use the Command step to download or copy artifacts and configs, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step)
   - [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances)
   - [Wait step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/wait-step)
-  - [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step)
+  - [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step)
   - [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors)
 - **Build:**
   - [Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step)
@@ -1379,7 +1382,7 @@ You can always update the template versions manually. Go to [Reconcile Pipeline 
 Harness does not enforce any policy regarding fetching the latest image tags.
 To debug this error, consider the following implementations:
 - Ensure the correct image tag is specified in the YAML configuration.
-- For more details, go to [Latest Published Tag](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/).
+- For more details, go to [Latest Published Tag](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/last-published-tag/).
 
 
 #### How can I prevent Terraform state drift caused by AWS ECR permissions policies created by Harness?

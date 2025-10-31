@@ -1,0 +1,12 @@
+{
+    "label":"SBOM using GitHub Actions",
+    "position": 38,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "description": "Generate and Attest SBOM with Harness GitHub Actions",
+    "link":{
+       "type":"generated-index",
+       "title":"SBOM using GitHub Actions"
+    }
+ }

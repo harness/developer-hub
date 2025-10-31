@@ -25,7 +25,7 @@ To the event preference or log feedback:
 2. On the Update event preference page, from the Update event priority dropdown, you select one of the following preferences:
     - **Not a risk** - Ignore frequency: These logs do not impact the verification result and will be ignored during the verification process. Also, they are ignored by the Harness during future verifications. 
     - **Not a risk - Consider frequency**: These logs do not impact the verification result, but the frequency will be monitored by Harness during future verifications.
-    - **Medium risk**: A log marked as medium risk will only cause verification to fail when the verification is set to high sensitivity. Otherwise, it will not affect the verification outcome.
+    - **Medium risk**: A log marked as medium risk will set the anomaly to **medium healthy** the next time it is found, but will not cause verification to fail for any sensitivity. 
     - **High risk**: If a log is marked as high risk, any occurrence of that log will cause the verification to fail, regardless of whether it appeared in the previous version or the current version.
     - **Default Harness ML**: Harness ML marks the log based on the analysis of previous verification runs.
 

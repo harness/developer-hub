@@ -17,7 +17,7 @@ This topic provides settings and permissions for the Docker connector. You can u
 
 * **Docker registry rate limits:** Harness is restricted by the limits of the Docker repo, such as [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/) for pulling Docker images from Docker repos.
 * **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GAR through [AWS connectors](../add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../connect-to-google-cloud-platform-gcp.md).
-* **Docker base image connection rate limits:** Customers utilizing Docker as a Base Image Connector will need to consider enabling the Feature Flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR`, to utilize the defined Docker Connector for the Base Image Pull.
+* **Docker base image connection rate limits:** When using Docker as a Base Image Connector, select the Docker connector to be used for the base image pull. This capability is generally available. Ensure you use the correct Docker Registry URL and API version; see the guidance below and the CI FAQ on [why Build and Push steps don't support V2 API URLs](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-build-and-push-steps-dont-support-v2-api-urls).
 :::
 
 ## Create a Docker connector
@@ -72,7 +72,7 @@ If you select **Other**, the registry must be Docker V2 compliant.
 The URL of the Docker registry. This is usually the URL used for your [docker login](https://docs.docker.com/engine/reference/commandline/login/) credentials.
 
 * To connect to a public Docker Hub registry, use `https://index.docker.io/v2/`.
-* To connect to a private Docker Hub registry, use `https://index.docker.io/v1/`. Learn [why](/kb/continuous-integration/continuous-integration-faqs#why-build-and-push-steps-dont-support-v2-api-urls).
+* To connect to a private Docker Hub registry, use `https://index.docker.io/v1/`. If you are running into authentication issues, such as an anonymous account is used, even though a valid Docker Registry and credentials are used, learn [why this happens](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-build-and-push-steps-dont-support-v2-api-urls).
 * For other Docker registries, provide the relevant URL for your container registry provider. For example:
    * For GitHub Container Registry, provide the GHCR hostname and namespace, such as `https://ghcr.io/NAMESPACE`. The namespace is the name of a GitHub personal account or organization.
    * For JFrog Artifactory Docker registries, provide your JFrog instance URL, such as `https://mycompany.jfrog.io`. You can get this URL from the `docker-login` command on your repo's **Set Me Up** page.

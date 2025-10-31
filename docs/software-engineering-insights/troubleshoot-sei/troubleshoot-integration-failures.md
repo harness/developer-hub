@@ -2,9 +2,15 @@
 title: Troubleshoot integration failures
 description: Frequently asked questions related to SEI integrations
 sidebar_position: 10
+redirect_from:
+  - /kb/software-engineering-insights/sei-faqs/sei-integrations-faqs
 ---
 
 This page includes FAQs and troubleshooting information for SEI integrations.
+
+:::danger SEI Version Notice
+The following FAQs reflect SEI 1.0 behavior. If you are using SEI 2.0, see the [SEI 2.0 documentation](/docs/category/sei-recommended/).
+:::
 
 ### Can the data ingestion cadence be adjusted?
 
@@ -24,7 +30,18 @@ The absence of metrics for certain reports and teams/projects is by design. SEI 
 
 To ensure that the desired data is visible in the reports, you need to modify the widget or profile configuration. If you want specific data to be shown in the reports, ensure that the integration id associated with that data is added to the profile or widget.
 
-### What is the maximum time range for importing existing data from Jira and GitHub
+### Why am I not seeing the information I want when utilizing Widget Filters?
+
+The filter hierarchy for how they are applied to widget insights works as the following:
+**Collections > Widgets**.
+
+As a result, filters on the Collection level will supersede the Widget level, if the filters overlap.  For example, if a filter at the Collection level includes **Projects A, B, and C**, and the filter at the  Widget level only includes **Project A**, the Widget will ultimately show the data for **Projects A, B and C**.
+
+In this example then, Project definition should ideally lie in the Collection definition and not in the Widget settings, and Widget filters should be used only when you don't have a project definition in the collection.
+
+When utilizing a Widget Filter's **exclude** function, it would apply in addition to the Collection filter. 
+
+### What is the maximum time range for importing existing data from Jira and GitHub?
 
 The maximum time range for importing existing data from Jira and GitHub can vary due to different limitations:
 

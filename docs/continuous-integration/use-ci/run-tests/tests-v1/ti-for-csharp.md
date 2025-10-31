@@ -1,5 +1,5 @@
 ---
-title: Use Run Tests step for C# 
+title: Use Run Tests step for C#
 description: Set up TI for C# applications with .NET Core or NUnit.
 sidebar_position: 50
 redirect_from:
@@ -8,26 +8,27 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import WhenReq from '/docs/continuous-integration/shared/imageregistry-whenreq.md';
+import FQNImage from '/docs/continuous-integration/shared/imageregistry-imagesfqn.md';
 
-:::info
-This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
+:::warning
+This page contains instructions for using Test Intelligence (v1) with the **Run Tests** step.
 
 While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
-
-Currently, TI (v1) for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ## Enable TI for C#
 
 :::note
 
-* To use TI for C#, you must use .NET Core or NUnit.<!-- or Framework. Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
-* Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+- To use TI for C#, you must use .NET Core or NUnit.<!-- or Framework. Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
+- Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
 
 :::
 You can enable TI for C# in three steps:
 
 <!-- no toc -->
+
 1. [Add the Run Tests step.](#add-the-run-tests-step)
 2. [Trigger test selection.](#trigger-test-selection)
 3. [(Optional) Add test splitting.](#add-test-splitting)
@@ -36,36 +37,34 @@ You can enable TI for C# in three steps:
 
 Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-
-
 You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 
 ```yaml
-             - step:
-                  type: RunTests
-                  identifier: runTestsWithIntelligence
-                  name: runTestsWithIntelligence
-                  spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                    image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
-                    language: Csharp
-                    buildEnvironment: Core
-                    frameworkVersion: "6.0"
-                    buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
-                    namespaces: aw,fc
-                    runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                    preCommand: |-
-                      dotnet tool install -g trx2junit
-                      export PATH="$PATH:/root/.dotnet/tools"
-                      dotnet restore
-                      dotnet build
-                    postCommand: trx2junit results.trx
-                    reports: ## Reports must be in JUnit XML format.
-                        type: JUnit
-                        spec:
-                          paths:
-                            - results.xml
+- step:
+    type: RunTests
+    identifier: runTestsWithIntelligence
+    name: runTestsWithIntelligence
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
+      language: Csharp
+      buildEnvironment: Core
+      frameworkVersion: "6.0"
+      buildTool: Dotnet ## Specify Dotnet or Nunit.
+      args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
+      namespaces: aw,fc
+      runOnlySelectedTests: true ## Must be 'true' to enable TI.
+      preCommand: |-
+        dotnet tool install -g trx2junit
+        export PATH="$PATH:/root/.dotnet/tools"
+        dotnet restore
+        dotnet build
+      postCommand: trx2junit results.trx
+      reports: ## Reports must be in JUnit XML format.
+        type: JUnit
+        spec:
+          paths:
+            - results.xml
 ```
 
 For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
@@ -84,7 +83,7 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 
 3. To trigger test selection, activate the trigger again (by opening a PR or pushing changes to your codebase).
 
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
+   The first run with TI _doesn't_ apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
 4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
 
@@ -107,7 +106,7 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 
 3. To trigger test selection, open a new PR (or push changes) to your codebase, and then run your pipeline again.
 
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
+   The first run with TI _doesn't_ apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
 4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
 
@@ -127,10 +126,8 @@ You can also configure TI to [ignore tests or files](../ti-overview.md#ignore-te
 
 ## Pipeline YAML examples
 
-
 <Tabs>
   <TabItem value="cloud" label="Harness Cloud" default>
-
 
 This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on C# with .NET Core and Test Intelligence.
 
@@ -173,10 +170,10 @@ pipeline:
                       dotnet build
                     postCommand: trx2junit results.trx
                     reports: ## Reports must be in JUnit XML format.
-                        type: JUnit
-                        spec:
-                          paths:
-                            - results.xml
+                      type: JUnit
+                      spec:
+                        paths:
+                          - results.xml
           platform:
             arch: Amd64
             os: Linux
@@ -185,10 +182,8 @@ pipeline:
             type: Cloud
 ```
 
-
 </TabItem>
   <TabItem value="sh" label="Self-managed">
-
 
 This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on C# with .NET Core and Test Intelligence.
 
@@ -217,7 +212,7 @@ pipeline:
                   identifier: runTestsWithIntelligence
                   name: runTestsWithIntelligence
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
                     language: Csharp
                     buildEnvironment: Core
@@ -233,10 +228,10 @@ pipeline:
                       dotnet build
                     postCommand: trx2junit results.trx
                     reports: ## Reports must be in JUnit XML format.
-                        type: JUnit
-                        spec:
-                          paths:
-                            - results.xml
+                      type: JUnit
+                      spec:
+                        paths:
+                          - results.xml
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -247,10 +242,8 @@ pipeline:
               os: Linux
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 ## Run Tests step settings
 
@@ -260,32 +253,9 @@ The following information explains how to configure most settings for the **Run 
 
 The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries. You can also install tools at runtime in [Pre-Command](#pre-command-post-command-and-shell), provided the build machine or image can execute the necessary commands, such as `curl` commands to download files.
 
-<details>
-<summary>When are Container Registry and Image required?</summary>
+<WhenReq />
 
-The stage's build infrastructure determines whether these fields are required or optional:
-
-* [Kubernetes cluster build infrastructure](../../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
-* [Local runner build infrastructure](../../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Run Tests** steps can use binaries available on the host machine. The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need.
-* [Self-managed AWS/GCP/Azure VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run Tests** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Additional Configuration** for stages that use self-managed VM build infrastructure.
-* [Harness Cloud build infrastructure](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run Tests** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need. These fields are located under **Additional Configuration** for stages that use Harness Cloud build infrastructure.
-
-</details>
-
-<details>
-<summary>What are the expected values for Container Registry and Image?</summary>
-
-For **Container Registry**, provide a Harness container registry connector, such as a Docker connector, that connects to the container registry where the **Image** is located.
-
-For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of a Docker image that has the binaries necessary to run the commands in this step, such as `mcr.microsoft.com/dotnet/sdk:6.0`. If you don't include a tag, Harness uses the `latest` tag.
-
-You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
-
-* **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GAR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
-
-</details>
+<FQNImage />
 
 ### Language
 
@@ -338,9 +308,9 @@ For NUnit, provide runtime executables and arguments for tests, such as `. "path
 
 :::info
 
-* Harness expects `dll` injection. `csproj` isn't supported.
-* Don't inject another instrumenting agent, such as a code coverage agent, in the `args` string.
-* For NUnit, you must include both runtime arguments and executables in the `args` string.
+- Harness expects `dll` injection. `csproj` isn't supported.
+- Don't inject another instrumenting agent, such as a code coverage agent, in the `args` string.
+- For NUnit, you must include both runtime arguments and executables in the `args` string.
 
 :::
 
@@ -348,7 +318,7 @@ For NUnit, provide runtime executables and arguments for tests, such as `. "path
 
 This setting is required for the Run Tests step to [publish test results](../viewing-tests.md).
 
-Specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported.
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
 
@@ -358,17 +328,17 @@ Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 
 ### Pre-Command, Post-Command, and Shell
 
-* **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as:
+- **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as:
 
-   ```
-   dotnet tool install -g trx2junit
-   export PATH="$PATH:/root/.dotnet/tools"
-   dotnet restore
-   dotnet build
-   ```
+  ```
+  dotnet tool install -g trx2junit
+  export PATH="$PATH:/root/.dotnet/tools"
+  dotnet restore
+  dotnet build
+  ```
 
-* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests, such as `trx2junit results.trx`.
-* **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
+- **Post-Command:** You can enter commands used for cleaning up the environment after running the tests, such as `trx2junit results.trx`.
+- **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
 
 ### Packages
 
@@ -413,9 +383,9 @@ Settings specific to containers are not applicable in a stages that use VM or Ha
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
 
-* **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
-* **If Not Present:** The image is pulled only if it isn't already present locally.
-* **Never:** The image is not pulled.
+- **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+- **If Not Present:** The image is pulled only if it isn't already present locally.
+- **Never:** The image is not pulled.
 
 #### Run as User
 
@@ -431,8 +401,8 @@ For container-based build infrastructures, you can enable this option to run the
 
 These settings specify the maximum resources used by the container at runtime. These setting are only available for container-based build infrastructures, such as a Kubernetes cluster build infrastructure.
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+- **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+- **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ### Timeout
 
@@ -440,9 +410,9 @@ The timeout limit for the step. Once the timeout is reached, the step fails and 
 
 ## Troubleshoot Test Intelligence
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
 
-* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
-* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
-* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
-* [Test Intelligence fails with error 'Unable to get changed files list'.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-with-error-unable-to-get-changed-files-list)
+- [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+- [Test Intelligence call graph is empty.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+- [If the Run Tests step fails, does the Post-Command script run?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#if-the-run-tests-step-fails-does-the-post-command-script-run)
+- [Test Intelligence fails with error 'Unable to get changed files list'.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#test-intelligence-fails-with-error-unable-to-get-changed-files-list)

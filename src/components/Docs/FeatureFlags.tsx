@@ -19,13 +19,6 @@ export default function FF() {
             <h1>Feature Flags</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb/feature-flags">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
             <Link href="/release-notes/feature-flags">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
@@ -48,11 +41,11 @@ export default function FF() {
               <img
                 className={styles.illustration}
                 src={
-                  colorMode === 'light'
+                  colorMode === "light"
                     ? `${baseUrl}img/ff.svg`
                     : `${baseUrl}img/FF_Landing_Page_dark_mode.svg`
                 }
-              />{' '}
+              />{" "}
             </div>
           </div>
         </div>

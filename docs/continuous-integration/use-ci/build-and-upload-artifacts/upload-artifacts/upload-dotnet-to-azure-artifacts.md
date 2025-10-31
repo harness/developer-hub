@@ -55,7 +55,7 @@ pipeline:
                   name: Build and Package DOTNET
                   identifier: Build_and_Package_DOTNET
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:8.0
                     shell: Sh
                     command: |-
@@ -69,7 +69,7 @@ pipeline:
                   name: Push DOTNET Package
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:8.0
                     shell: Sh
                     command: |-
@@ -86,7 +86,7 @@ pipeline:
                   name: Download DOTNET Package
                   identifier: Run_3
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:8.0
                     shell: Sh
                     command: |-

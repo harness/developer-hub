@@ -123,7 +123,7 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 4. For this workshop, you'll create a new GitOps agent. When prompted with **Do you have any existing Argo CD instances?**, choose **No**, and then select **Start** to install the Harness GitOps Agent.
 
-5. In **GitOps Operator**, select **Argo** to use Argo CD as the GitOps reconciler. Harness also offers Flux as the GitOps reconciler.
+5. In **GitOps Operator**, select **Argo** to use Argo CD as the GitOps reconciler.
 
 6. In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
 

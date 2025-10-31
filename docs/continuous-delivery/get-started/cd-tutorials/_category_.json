@@ -1,11 +1,11 @@
 {
-  "label": "CD and GitOps tutorials",
+  "label": "CD tutorials",
   "position": "10",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "CD and GitOps tutorials"
+      "title": "CD tutorials"
   }
 }

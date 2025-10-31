@@ -19,6 +19,12 @@ Currently, [built-in Harness variables and expressions](/docs/category/variables
 
 :::
 
+:::warning
+
+Monitored services are not compatible with GitX. Monitored services will always fetch the service and infrastructure information from the **default branch** and not from the feature branch. 
+
+:::
+
 ## Create a monitored service at project level
 
 :::note

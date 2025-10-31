@@ -11,11 +11,14 @@ helpdocs_is_published: true
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import PreserveMetadata from '/docs/continuous-integration/shared/preserve-metadata.md';
 
 You can use caching to share data cross stages or run pipelines faster by reusing the expensive fetch operation data from previous builds.
 
 :::tip
-Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
+- Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically cache and restore software dependencies — hassle free.
+- For S3 options (path-style access or encrypted buckets such as AES256/KMS), configure **stage variables**. These variables are injected into all steps and therefore apply to **both Cache Intelligence and explicit S3 cache steps**.  
+  See [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies) for details and examples.
 :::
 
 You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
@@ -39,7 +42,7 @@ You need:
 
    :::info
 
-   The **Save Cache to S3** step doesn't work on Windows platforms using AWS cross-account roles. [This is an AWS limitation.](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html) For a workaround, go to the [CI knowledge base](/kb/continuous-integration/articles/s3-cache-windows-cross-account).
+   The **Save Cache to S3** step doesn't work on Windows platforms using AWS cross-account roles. [This is an AWS limitation.](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html) For a workaround, go to the [CI knowledge base](/docs/continuous-integration/ci-articles-faqs/articles/s3-cache-windows-cross-account).
 
    :::
 
@@ -74,7 +77,74 @@ Here is an example of an S3 cache bucket policy:
     ]
 }
 ```
+### Caching with Bucket Encryption Policies
 
+If your bucket enforces an encryption policy that denies uploads without a specific encryption type, you must add a **stage variable** named `PLUGIN_ENCRYPTION`. Set the value to match the encryption type required by your bucket policy.
+
+If your bucket policy requires AES256, set the stage variable `PLUGIN_ENCRYPTION` to `AES256`, as shown below:
+
+```yaml
+  stages:
+    - stage:
+        identifier: upload_encrypted_s3
+        name: Upload to Encrypted S3
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  identifier: save_cache_s3
+                  name: Save Cache to S3
+                  type: SaveCacheS3
+                  spec:
+                    connectorRef: YOUR_AWS_CONNECTOR
+                    bucket: YOUR_S3_BUCKET
+                    region: AWS_REGION
+                    key: YOUR_CACHE_KEY
+                    sourcePaths:
+                      - node_modules/
+        variables:
+          - name: PLUGIN_ENCRYPTION
+            type: String
+            description: Encryption type for plugin
+            value: AES256
+```
+
+```yaml
+If your bucket requires KMS encryption, set:
+
+variables:
+  PLUGIN_ENCRYPTION: aws:kms
+```
+
+You must use the exact encryption value specified in your bucket policy (for example, AES256, aws:kms, or another custom value). Using an incorrect value causes Save Cache to S3 steps to fail with **AccessDenied** errors.
+
+Here’s an example bucket policy that requires encryption:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Deny",
+    "Action": "s3:PutObject",
+    "Resource": "arn:aws:s3:::your-bucket/*",
+    "Condition": {
+      "StringNotEquals": {
+        "s3:x-amz-server-side-encryption": ["AES256", "aws:kms"]
+      }
+    }
+  }]
+}
+```
 ### Caching with non-private ACL
 
 If your bucket's ACL is set to something other than `private` (such as blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) named `PLUGIN_ACL`. Set the value to the relevant ACL value.
@@ -112,6 +182,24 @@ Here is a YAML example of a **Save Cache to S3** step.
                     archiveFormat: Tar
 ...
 ```
+
+### Avoiding Prefix Collisions During Restore
+
+To prevent prefix collisions and ensure successful cache restoration, use the featue flag `PLUGIN_STRICT_KEY_MATCHING` (default: `true`).
+
+- Strict Mode (Default): Only restores from exact key matches, preventing unexpected collisions and ensuring accurate cache restoration.
+
+- Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Processes all entries that start with the specified prefix, which may result in multiple paths being restored.
+
+:::warning
+Using Flexible Mode (i.e., setting `PLUGIN_STRICT_KEY_MATCHING` to **false**) may result in unexpected behavior as multiple paths might be restored. The recommended setting is **true**.
+:::
+
+Additional Recommendations:
+
+**Key Naming**: Avoid using cache keys where one key is a prefix of another. Ensure cache key templates are distinct to prevent collisions.
+
+**Bucket Cleanup**: If collisions occur, clean up the problematic entries in the S3 bucket by removing folders with the duplicated key structure.
 
 ### Save Cache to S3 step settings
 
@@ -207,6 +295,8 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+
+<PreserveMetadata/>
 
 ### Set shared paths for cache locations outside the stage workspace
 
@@ -494,10 +584,10 @@ If you don't enable the separator, make sure your cloned pipelines [generate uni
 
 ## Troubleshoot caching
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
 
-* [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
-* [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
-* [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
-* [Save Cache to S3 doesn't work with Windows platforms with cross-account roles.](/kb/continuous-integration/articles/s3-cache-windows-cross-account)
-* [How can I share cache between different OS types (Linux/macOS)?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-share-cache-between-different-os-types-linuxmacos)
+* [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
+* [How can I use an artifact in a different stage from where it was created?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
+* [How can I check if the cache was restored?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-check-if-the-cache-was-restored)
+* [Save Cache to S3 doesn't work with Windows platforms with cross-account roles.](/docs/continuous-integration/ci-articles-faqs/articles/s3-cache-windows-cross-account)
+* [How can I share cache between different OS types (Linux/macOS)?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-share-cache-between-different-os-types-linuxmacos)

@@ -12,27 +12,36 @@ import TabItem from '@theme/TabItem';
 
 By default, the tasks performed by Harness CD steps are run on the Harness Delegate host system, for example, the Kubernetes cluster where a Kubernetes delegate is running.
 
-To provide greater control over the resources used for CD steps, Harness also lets you use your own Kubernetes cluster as the runtime infrastructure for CD steps.
+To provide greater control over the resources used for CD steps, Harness also lets you use your own Kubernetes cluster or VMs as the runtime infrastructure for CD steps.
 
-You can use a CD step group that points to your cluster as the runtime infrastructure. Next, in the step group, you can add the steps supported by containerized step groups.
+You can use a CD step group that points to your Kubernetes cluster or VM infrastructure as the runtime. Next, in the step group, you can add the steps supported by containerized step groups.
 
 In this architecture, no tooling is installed on delegates. Delegates simply act as orchestrators. Any tooling is installed and removed on demand in the ephemeral step containers.
 
 When you use deployment types that support containerized step groups (for example, AWS SAM), containerized steps are automatically generated when you add the execution strategy for the stage.
 
 When you manually add a step group, you can enable containerized step groups by selecting the **Enable container based execution** option.
-
-![Enable container based execution option](../static/cff025c9dc3cce0ca073b10a3ba4e73ddbbf28ff98f3b53e52da92ee183d1d96.png)  
-
+ 
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/step-group-k8s-vm.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 This option is disabled for deployment types that do not support containerized step groups.
 
+### Infrastructure Options
+
+When you enable container based execution, you can choose between two infrastructure types:
+
+- **Kubernetes**: Run steps in containers on a Kubernetes cluster.
+- **VMs**: Run steps in containers on virtual machines.
 
 ## Important notes
 - CD containerized step groups are supported in Deploy and Custom stages.
 - Not all steps are supported in containerized step groups. You can see which steps are supported when you try to add steps in the containerized step group.
-- You can use the same cluster to run the Harness Delegate and the containerized step group(s), but it is not required.
-- Permissions configuration are inherited by a step within a step group. This logic has been updated over the course of Harness lifespan. This has caused breaking changes for some users. To learn more about it, go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step).
+- When using Kubernetes infrastructure:
+  - You can use the same cluster to run the Harness Delegate and the containerized step group(s), but it is not required.
+- Permissions configuration are inherited by a step within a step group. This logic has been updated over the course of Harness lifespan. This has caused breaking changes for some users. To learn more about it, go to [Step Group Inheritance Logic](/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step).
 - A containerized step group may fail when using a cross-account role if the delegate responsible for execution lacks the necessary permissions to assume the role. To resolve this, ensure that the delegate has the required permissions to assume the cross-account role.
+- You can use containerized step groups with mTLS connections. To learn more, go to [mTLS Support via Delegates](/docs/platform/delegates/secure-delegates/delegate-mtls-support).
 
 ## Add a containerized step group
 
@@ -44,7 +53,69 @@ Here are the steps for adding a containerized step group manually:
 
 1. In your Deploy (CD) stage, in **Execution**, select **Add Step**, and then select **Add Step Group**.
 2. To configure a step group as containerized, enable the **Enable container based execution** setting.
-3. Configure the following settings.
+3. Select your infrastructure type: **Kubernetes** or **VMs**.
+4. Configure the settings based on your selected infrastructure type.
+
+## VM Infrastructure
+
+:::note
+VM support for containerized step groups is currently behind the feature flag `CDS_ENABLE_VM_CONTAINER_STEP_GROUP_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+When you select **VMs** as your infrastructure type, the containerized step group will run on virtual machine infrastructure.
+
+### Prerequisites
+
+- **VM Runner**: The Drone VM Runner must be installed on your VM infrastructure to communicate with Harness and manage containerized step execution.
+- **Operating System**: Only Linux VMs are supported for CD containerized step groups.
+
+For detailed information on setting up VM infrastructure with the runner, go to [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+
+### Operating System
+
+Select the operating system for your VM infrastructure. Currently, only **Linux** is supported.
+
+### Pool Name
+
+Enter the name of the VM pool as defined in your `pool.yml` configuration file. The pool defines the VM specifications and pool size for running your containerized steps.
+
+### Override Image Connector
+
+By default, Harness pulls images from public Docker Hub repos for backend processes. You can optionally override this by selecting a different connector to use for the Harness Container Image Registry.
+
+For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+
+### Supported Steps
+
+When using VM infrastructure, only the following steps are supported:
+
+**SBOM Steps:**
+- SBOM Orchestration
+- SBOM Policy Enforcement
+- SLSA Verification
+
+**AWS CDK Steps:**
+- AWS CDK Bootstrap
+- AWS CDK Deploy
+- AWS CDK Rollback
+- AWS CDK Destroy
+
+**Serverless AWS Lambda Steps:**
+- Serverless AWS Lambda Prepare
+- Serverless AWS Lambda Package
+- Serverless AWS Lambda Deploy V2
+- Serverless AWS Lambda Rollback
+
+**Download Steps:**
+- Download AWS S3
+- Download Harness Store
+
+**Source Control Steps:**
+- Git Clone
+
+## Kubernetes Infrastructure
+
+When you select **Kubernetes** as your infrastructure type, configure the following settings:
 
 ### Kubernetes Cluster
 
@@ -69,7 +140,7 @@ This setting maps directly to Kubernetes volumes. Harness supports the following
 - ConfigMaps (`configMap`)
 - Kubernetes Secrets (`secret`)
 
-#### Use Config Maps and Secrets as Volumes
+#### Config Maps and Secrets as Volumes
 
 :::note
 Currently, this feature is behind the feature flag `CDS_CONFIG_MAPS_AND_SECRETS_AS_VOLUME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.

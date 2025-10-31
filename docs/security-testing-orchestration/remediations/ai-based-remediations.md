@@ -56,7 +56,7 @@ These features are currently **supported only** for **Harness Code Repository** 
 - **Harness Code Repository**: No configuration is needed; these features are enabled by default.
 - **GitHub**: To enable these features, you’ll need to configure your GitHub connector. Follow the steps below to set it up.
 
-Also, these features are currently **supported only** for the scan results from all the [**Secret detection**](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners) and [**SAST scanners**](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners) including both built-in open-source and commercial scanners.
+Also, these features are currently **supported only** for the scan results from all the [**Secret detection**](/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners) and [**SAST scanners**](/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners) including both built-in open-source and commercial scanners.
 
 To enable code suggestions and create pull requests in GitHub from STO, you need to configure the GitHub connector within STO’s Default Settings. Go to **Account Settings**, select **Default Settings**, and then choose the **Security Testing Orchestration** tile. Locate the **GitHub Connector for Pull Requests** field and set up your GitHub connector. Ensure your GitHub token includes the following permissions:
 - `repo` - Full control of private repositories

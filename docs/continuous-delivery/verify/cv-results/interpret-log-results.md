@@ -122,7 +122,7 @@ Event health has three possible values: **Healthy**, **Medium Healthy**, and **U
 
 The event health plays a crucial role in the verification process and is determined based on the sensitivity configuration of the verify step. The rules for determining verification outcomes are as follows:
 
-- High sensitivity: Verification fails if there is any Unhealthy or Medium Healthy cluster.
+- High sensitivity: Verification fails if there is any Unhealthy or Medium Healthy cluster that is not set by the user. If a user [sets an event preference](/docs/continuous-delivery/verify/cv-results/log-feedback#set-event-preference) to **medium risk** that will set the cluster to medium healthy, but will not fail for high sensitivity verification.
 
 - Medium sensitivity: Verification fails if there is any Unhealthy cluster.
 

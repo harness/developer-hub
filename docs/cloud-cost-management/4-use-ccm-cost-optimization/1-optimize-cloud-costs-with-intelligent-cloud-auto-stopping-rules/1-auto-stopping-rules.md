@@ -1,83 +1,65 @@
 ---
-title: AutoStopping Rules overview
+title: Overview
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
-sidebar_position: 10
+sidebar_position: 1
 helpdocs_topic_id: wzr5tz0ero
 helpdocs_category_id: 2yrql0zhj0
 helpdocs_is_private: false
 helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/cloud-autostopping
+redirect_from: 
+- /docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/auto-stopping-rules
+- /docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/getting-started
+
 ---
 import Tabs from '@theme/Tabs';
 
 import TabItem from '@theme/TabItem';
 
-
-:::tip [Latest Features Released in 1.47.0](/release-notes/cloud-cost-management#april-2025---version-1470)
-<Tabs>
-  <TabItem value="Granular permissions support for AWS Autostopping">We have introduced Granular permissions support for AWS Autostopping. With this update, users can now select the specific AWS resource types they want to enable for Autostopping such as EC2, ASG, or RDS. Based on the selected resource types, only the minimal required set of permissions will be requested.  </TabItem>
-</Tabs>
-:::
-
-AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions. With AutoStopping Rules configured:
-
-- Stop paying for cloud VMs you forgot to turn off
-- Cut non-production cloud costs by 70%
-- Stop paying for cloud waste
-
-<DocVideo src="https://youtu.be/lNf_P5sHTcE" />
-
 ## What are AutoStopping Rules?
 
-AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. It automatically shuts down idle resources and runs them on spot instances without worrying about interruptions.
+Cloud resources in non-production environments (dev, test, staging) are typically used for only 30-40% of the time they're running, yet you pay for 100% of that time. AutoStopping Rules ensure you're only **paying for resources when they're actually in use**.
 
-AutoStopping solves some of the problems, such as:
+AutoStopping Rules let you define:
 
-- Predict idle times statically, especially during work hours
-- Allow accessing the stopped or terminated machines, which is not possible with forceful shutdowns
-- Stop the cloud resources without optimization of computing, only start/stop actions
+- **Controlled resources**: Choose exactly which EC2 instances, Auto Scaling Groups, Kubernetes namespaces, RDS databases, or other supported assets the rule should manage.
+- **Idle-time threshold**: Specify how long a resource must remain inactive before AutoStopping considers it idle and eligible for shutdown.
+- **Optional fixed schedules**: Keep resources online during business hours, maintenance windows, or any recurring schedule you choose.
+- **Dependency order**: List upstream and downstream services so AutoStopping stops and starts them in the right sequence.
+- **Access method**: Select load balancer, proxy, or direct IP so your teams continue to use the same DNS, SSH, or RDP endpoints without interruption.
+- **Set-and-forget automation**: Zero manual overhead after initial setup
 
-## Why use AutoStopping Rules?
+------
 
-Using AutoStopping Rules you can automatically turn off cloud resources when idle and turn them back on when required. Here are some of the major benefits of adding AutoStopping Rules to your cloud resources:
+## What's Supported?
 
-- Automatically detect idle times and shut down (on-demand) or terminate (spot) resources.
-- Enable running the workloads on fully orchestrated spot instances without worrying about spot interruptions.
-- Stopped/terminated machines are always accessible using the same access patterns that the teams have configured, for example, DNS link, SSH, RDP.
+| Cloud Provider | Supported Resources |
+|----------------|---------------------|
+| <img src="/provider-logos/cloud-providers/aws-logo.svg" alt="AWS" width="20"/>  <strong style={{fontSize: '1.1rem'}}></strong> | <ul><li>EC2</li><li>Auto Scaling Groups</li><li>Kubernetes (EKS)</li><li>ECS Services</li><li>RDS Instances</li></ul> |
+| <img src="/provider-logos/cloud-providers/azure-logo.svg" alt="Azure" width="20"/> <strong style={{fontSize: '1.1rem'}}>Azure</strong> | <ul><li>On-demand VMs</li><li>Kubernetes Clusters (AKS)</li></ul> |
+| <img src="/provider-logos/cloud-providers/gcp-logo.svg" alt="GCP" width="20"/> <strong style={{fontSize: '1.1rem'}}>GCP</strong> | <ul><li>GCE VMs</li><li>Kubernetes Clusters (GKE)</li><li>Instance Groups</li></ul> |
 
-## What are the benefits of using AutoStopping Rules?
+-------
 
-- Tangible reduction in cloud bills, real savings of 70%+.
-- Automated enforcement making sure that there are no idle resources running, and there is no cloud waste.
-- No room for cost leakages due to manual oversight.
-- No need to remember to shut down/terminate resources after use.
-- No ongoing manual intervention after setup.
-- Easy integration with existing infrastructure provisioning practices.
+## How AutoStopping Works
 
-## Where can I use AutoStopping Rules?
+AutoStopping intelligently manages your cloud resources through a seamless four-step process:
 
-- AWS
-   - EC2
-   - AutoScaling Groups
-   - Kubernetes Clusters (EKS)
-   - ECS Service
-   - RDS Instances
-- Azure
-   - On-demand VMs
-   - Kubernetes Clusters (AKS)
-- GCP
-   - Google Compute Engine (GCE) VMs
-   - Kubernetes Clusters (GKE)
+1. **Intelligent Detection**: Resources are continuously monitored for user activity and workload patterns
+2. **Automatic Shutdown**: Once your configured idle threshold is reached, resources are safely stopped to eliminate wasted spend
+3. **Seamless Restart**: When access is requested, resources are automatically restarted based on your dependency configuration
+4. **Transparent Access**: End users continue using the same familiar endpoints (DNS, SSH, RDP) with minimal interruption
 
-To troubleshoot AutoStopping rules, go to [Troubleshoot AutoStopping rules and Proxy](../../../troubleshooting/cloud-cost-management/autostopping-troubleshooting.md).
+AutoStopping offers:
+- **Unlimited rules and resources**: Create as many rules as needed with no restrictions
+- **Unlimited dependencies**: No limit on the number of dependencies a rule can manage
+- **Flexible configuration**: Customize idle time thresholds, schedules, and access methods
+- **Resource-specific restart times**:
+  - RDS instances: Warm-up time depends on cluster/instance size (~25 minutes)
+  - Other resources: Typically warm up in under 2 minutes (max 5 minutes)
 
+-------
 
-:::important note
-- There's no limit on max number of dependencies for a rule. 
-- For RDS, warm up time is dependent on cluster(or instance) size. RDS warm up can take up to ~25 minutes. For other resources, warm up will be completed under 2 minutes and max of 5 minutes.
-:::
+## Ready to Get Started?
 
-## Learn more
-
-* [Harness Blog - Active Management of Idle Cloud Costs](https://www.harness.io/blog/cloud-autostopping)
-* [Autostopping guides](/docs/category/autostopping-guides)
+Follow our [Set Up AutoStopping Rules](./autostopping-rules.md) to set up AutoStopping in your environment in three simple step.

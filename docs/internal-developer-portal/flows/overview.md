@@ -19,8 +19,8 @@ Workflows enable developer self-service by automating manual tasks and processes
 ## Workflow Basics 
 Let’s get started with the fundamental steps to **understand, build, and configure a Workflow** from scratch.  
 
-### [Get Started with Workflows](/docs/internal-developer-portal/get-started/workflow-quickstart.md)
-Ready to start using Workflows? Follow our [**Quickstart Guide**](/docs/internal-developer-portal/get-started/workflow-quickstart.md) and **create your first Workflow** in just a few minutes.
+### [Get Started with Workflows](/docs/internal-developer-portal/get-started/workflows-2o.md)
+Ready to start using Workflows? Follow our [**Quickstart Guide**](/docs/internal-developer-portal/get-started/workflows-2o.md) and **create your first Workflow** in just a few minutes.
 
 1. **Register the Workflow** using the `workflow.yaml` file configuration.  
 2. **Execute the Workflow** by providing input details as defined in the configuration.  
@@ -48,8 +48,8 @@ You can configure your workflow's **frontend** and **backend** by defining speci
 - Get started with [**setting up your workflow’s backend using Harness Pipelines**](docs/internal-developer-portal/flows/harness-pipeline.md).  
 
 
-### [Registering Workflows](/docs/internal-developer-portal/flows/manage-workflows.md)
-Once your `workflow.yaml` is ready, you can **register a new workflow** directly in Harness IDP. Refer to this [**detailed guide**](/docs/internal-developer-portal/flows/manage-workflows.md) to learn how to create and manage your workflows seamlessly from Harness IDP.
+### [Registering Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o.md)
+Once your `workflow.yaml` is ready, you can **register a new workflow** directly in Harness IDP. Refer to this [**detailed guide**](/docs/internal-developer-portal/flows/manage-workflow-2o.md) to learn how to create and manage your workflows seamlessly from Harness IDP.
 
 
 ## Key Capabilities

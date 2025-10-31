@@ -39,6 +39,14 @@ Service accounts:
 - `mongodb-replicaset-chart`
 - `harness-timescaledb`
 - `harness-serviceaccount`
+- `chaos-linux-ifc-sa`
+- `chaos-linux-ifs-sa`
+- `chaos-machine-ifc-sa`
+- `chaos-machine-ifs-sa` 
+- `timescaledb-backup-minio`
+- `harness-manager`
+- `ng-manager`
+- `template-service`
 
 SCCs:
 - `anyuid`
@@ -47,16 +55,17 @@ SCCs:
 - `hostmount-anyuid`
 - `nonroot-v2`
 
-```
+```bash
 policies=("anyuid" "hostnetwork" "hostnetwork-v2" "hostmount-anyuid" "nonroot-v2" "anyuid")
-service_accounts=("default" "postgres" "harness-looker" "harness-default" "minio" "mongodb-replicaset-chart" "harness-timescaledb" "harness-serviceaccount")
+service_accounts=("harness-platform-service" "default" "postgres" "harness-looker" "harness-default" "minio" "mongodb-replicaset-chart" "harness-timescaledb" "harness-serviceaccount" "chaos-linux-ifc-sa" "chaos-linux-ifs-sa" "chaos-machine-ifc-sa" "chaos-machine-ifs-sa" "timescaledb-backup-minio" "harness-manager" "ng-manager" "template-service")
 
 # Loop through the policies and service accounts
 for policy in "${policies[@]}"; do
     for account in "${service_accounts[@]}"; do
-        oc adm policy add-scc-to-user -z $account -n <YOUR_NAMESPACE> $policy
+        ./oc adm policy add-scc-to-user -z $account -n harness $policy
     done
 done
+
 ```
 
 ### Assign the Nginx ingress controller

@@ -20,10 +20,10 @@ Harness Code provides Git-based repositories. [Git](https://en.wikipedia.org/wik
 While pull requests (PRs) aren't a feature of Git itself, they are often, if not always, a feature of SCM tools. Pull requests facilitate reviews by gathering a series of commits into a package that can be reviewed, approved, and then merged into the base branch.
 
 You can assign reviewers to pull requests and configure mandatory requirements or checks that must pass before the PR can be merged.
-
+<!-- 
 ## Semantic search
 
-Supercharge your [code search](../work-in-repos/semantic-search) with [Harness AIDA](/docs/platform/harness-aida/aida-overview).
+Supercharge your [code search](../work-in-repos/semantic-search) with [Harness AIDA](/docs/platform/harness-aida/aida-overview). -->
 
 ## Harness Platform components
 

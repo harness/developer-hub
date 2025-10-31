@@ -128,13 +128,18 @@ For more details, go to [Steady state check](https://developer.harness.io/docs/c
 Workflow notification strategy can only interpret Condition,Scope, and User Group fields. So, all the notification rules are applied on workflow level.
 
 
-### Is it possible to modify the looping stage runs inside a pipeline execution?
+### Can I customize the names of looping stage runs in a pipeline execution?
 
-You can use Matrix strategies where you can use labels. To use the matrix labels naming strategy, do the following:
-1. In Harness, select Account Settings.
-2. Select Account Resources, then select Pipeline.
-3. Set Enable Matrix Labels By Name to true.
-4. Select Save.
+Yes, you can. Harness uses a default matrix naming strategy that labels looping stages with numeric indices (like _2_2, _1_3, etc.). To make these names more readable, you can enable matrix labels based on axis names.
+
+To enable this:
+1. In Harness, go to Account Settings.
+2. Navigate to Default Settings at the Account, Organization, or Project level.
+3. Expand Pipeline settings.
+4. Set **Enable Matrix Labels By Name** to **true**.
+5. Select **Save**.
+
+For more information, refer [Looping Strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#customize-matrix-stage-names).
 
 
 ### How do you determine the number of service instances/licenses for our services?
@@ -159,7 +164,7 @@ You cannot do it if the stage is part of the same pipeline. However, using pipel
 
 ### Can I use ternary operators with triggers?
 
-Yes, you can [use ternary operators with triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator).
+Yes, you can [use ternary operators with triggers](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator).
 
 
 ### How long is the main repo content cached before the latest pipeline code version is pulled from the remote Github repository?
@@ -492,7 +497,7 @@ However, you can mark a specific stage as failed during pipeline execution by se
 
 
 ### How to use the output from one stage in the looping strategy of another stage?
-You can achieve this by following the steps documented here in this [article](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables).
+You can achieve this by following the steps documented here in this [article](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/chained-pipeline-output-variables).
 
 
 ### What do the fetch files step do in rollout deployment?
@@ -1128,7 +1133,7 @@ The Output Variable of the shell script is a string, which you are trying to pas
 - First you need to convert your array list into a string and then pass it as an output variable.
 - Then convert this string into a list of string again before passing it to the repeat strategy.
 
-For more details, go to [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/repeat-strategy).
+For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/repeat-strategy).
 
 
 ### How to carry forward the output variable when looping steps?
@@ -1565,7 +1570,7 @@ For more details, go to [Documentation](https://developer.harness.io/docs/contin
 ### How to trigger one pipeline from another and use the first pipeline's shell script output as inputs for the second, ensuring runtime inputs like environment and infrastructure names are passed?
 
 One can use output variables from one pipeline as inputs for another, defining the receiving pipeline's variables as runtime inputs.
-For more details, go to [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/)
+For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/output-variable-for-powershell-script/)
 
 
 ### How to fix Invalid argument(s): Loop items list cannot be null?

@@ -34,6 +34,24 @@ After creating an environment, you can define all its settings.
 * **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics).
 * **Referenced by:** displays the list of pipelines using the infrastructure definitions in the environment. 
 
+## GitOps Clusters
+
+You can select your environment (Deployments → Environments → Your Environment), then click the **GitOps Clusters** tab to view the list of GitOps clusters associated with an environment. Each row’s **Cluster ID** and **Agent** name is a link that opens the corresponding Cluster or Agent detail page in a new tab:
+
+- **Cluster ID**: Click to open the Cluster’s detail page in a new tab.  
+- **Agent name**: Click to open the linked Agent’s detail page in a new tab.
+
+To add a cluster to this list:
+
+1. Click **+ Select Cluster** at the top of the page.  
+2. In the **Select GitOps Clusters to add to Environment** popup, choose the scope tab—**Project**, **Organization**, or **Account**—to view clusters in that scope.  
+3. Select the desired GitOps cluster from the list.  
+4. Click **Apply Selected**. The selected cluster will now appear in the Environment’s **GitOps Clusters** list.
+
+<div align="center">
+  <DocImage path={require('./static/gitops-cluster.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
 ## Environments RBAC
 
 Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for examples of RBAC use cases for environments.

@@ -1,8 +1,8 @@
 ---
 hide_table_of_contents: true
 hide_title: true
-title: Chaos Engineering Docs
-# id: chaos-engineering
+title: Chaos Engineering
+id: chaos-engineering
 ---
 
 <!-- # Chaos Engineering -->

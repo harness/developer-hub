@@ -24,15 +24,15 @@ To use the Artifact Metadata Publisher plugin, add a [Plugin step](/docs/continu
 For artifacts generated in the same pipeline, the Plugin step is usually placed after the step that [uploads the artifact](./build-and-upload-an-artifact.md#upload-artifacts) to cloud storage.
 
 ```yaml
-               - step:
-                  type: Plugin
-                  name: publish artifact metadata
-                  identifier: publish_artifact_metadata
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/artifact-metadata-publisher
-                    settings:
-                      file_urls: https://domain.com/path/to/artifact
+- step:
+    type: Plugin
+    name: publish artifact metadata
+    identifier: publish_artifact_metadata
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: plugins/artifact-metadata-publisher
+      settings:
+        file_urls: https://domain.com/path/to/artifact
 ```
 
 ### Plugin step specifications
@@ -55,8 +55,8 @@ Provide the URL for the artifact you want to link on the **Artifacts** tab. In t
 
 For artifacts in cloud storage, use the appropriate URL format for your cloud storage provider, for example:
 
-* GCS: `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`
-* S3: `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`
+- GCS: `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`
+- S3: `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`
 
 For artifacts uploaded through [Upload Artifacts steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#upload-artifacts), use the **Bucket**, **Target**, and artifact name specified in the **Upload Artifacts** step.
 
@@ -65,20 +65,154 @@ For private S3 buckets, use the console view URL, such as `https://s3.console.aw
 If you uploaded multiple artifacts, you can provide a list of URLs, such as:
 
 ```yaml
-  file_urls:
-    - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
-    - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
+file_urls:
+  - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
+  - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
 ```
 
+You can also set **display name** for each of the URLs set in the plugin, by using the format `name:::file_url`, where `:::` is the delimiter that separates the name and url. For example:
 
-You can also set **display name** for each of the URLs set in the plugin, by using the format `name:::file_url`, where `:::` is the delimiter that separates the name and url. For example: 
 ```yaml
-  file_urls:
-    - artifact1:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
-    - artifact2:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
+file_urls:
+  - artifact1:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
+  - artifact2:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
 ```
+
 For information about using Harness CI to upload artifacts, go to [Build and push artifacts and images](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
+## Artifact metadata publisher environment variables
+
+The artifact-metadata-publisher plugin looks for two environment variables:
+
+- `PLUGIN_ARTIFACT_FILE`: The file path where the plugin stores artifact metadata
+- `PLUGIN_FILE_URLS`: The URLs to be published to the Artifacts tab
+
+The URLs passed via `PLUGIN_FILE_URLS` are stored in `PLUGIN_ARTIFACT_FILE` in the following JSON format, which the CI manager expects to publish under the Artifacts tab:
+
+```json
+{
+  "kind": "fileUpload/v1",
+  "data": {
+    "fileArtifacts": [
+      {
+        "name": "file-0",
+        "url": "https://example.com/artifact"
+      }
+    ]
+  }
+}
+```
+
+### Kubernetes flow differences
+
+In Kubernetes flow, the CI manager doesn't automatically create the temporary file and pass it via `PLUGIN_ARTIFACT_FILE` (unlike cloud flow). You need to pass `artifact_file: somefile.txt` explicitly as input. The plugin then creates this file (`somefile.txt`) in the JSON format above, containing the URLs passed via `PLUGIN_FILE_URLS` input, which is then processed and displayed under the Artifacts tab in the pipeline.
+
+```yaml
+- step:
+    type: Plugin
+    name: publish artifact metadata
+    identifier: publish_artifact_metadata
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: plugins/artifact-metadata-publisher
+      settings:
+        file_urls: https://domain.com/path/to/artifact
+        artifact_file: temp.txt
+```
+
+## Using the plugin binary on hosted macOS runners
+
+Hosted macOS runners cannot run Docker containers, which means you cannot use the containerized Plugin step with the artifact-metadata-publisher. Instead, you can download and run the plugin binary directly in a Run step.
+
+### Download and use the plugin binary
+
+Use the following commands in a Run step to download the appropriate binary for macOS and publish artifacts:
+
+```yaml
+- step:
+    type: Run
+    name: Publish Artifact Metadata
+    identifier: publish_artifact_metadata
+    spec:
+      shell: Sh
+      command: |-
+        # Download the artifact-metadata-publisher binary for macOS ARM64
+        curl -L https://github.com/drone-plugins/artifact-metadata-publisher/releases/download/v2.2.0/artifact-metadata-publisher-darwin-arm64.zst -o artifact-metadata-publisher-darwin-arm64.zst
+        
+        # Decompress the binary
+        zstd -d artifact-metadata-publisher-darwin-arm64.zst -o ./artifact-metadata-publisher
+        
+        # Make the binary executable
+        chmod 700 ./artifact-metadata-publisher
+        
+        # Run the plugin with your artifact URLs
+        PLUGIN_FILE_URLS="https://domain.com/path/to/artifact" ./artifact-metadata-publisher
+```
+
+#### Note
+
+- Replace `v2.2.0` with the latest version from the [artifact-metadata-publisher releases](https://github.com/drone-plugins/artifact-metadata-publisher/releases).
+- For macOS Intel (x86_64), use `artifact-metadata-publisher-darwin-amd64.zst` instead.
+- The CI manager automatically creates a temporary file and injects it via the `PLUGIN_ARTIFACT_FILE` environment variable, so you don't need to create or manage this file manually.
+
+### Publish multiple artifacts with custom names
+
+You can publish multiple artifacts and set custom display names using the format `name:::url`, where `:::` is the delimiter between the name and URL:
+
+```yaml
+- step:
+    type: Run
+    name: Publish Multiple Artifacts
+    identifier: publish_multiple_artifacts
+    spec:
+      shell: Sh
+      command: |-
+        curl -L https://github.com/drone-plugins/artifact-metadata-publisher/releases/download/v2.2.0/artifact-metadata-publisher-darwin-arm64.zst -o artifact-metadata-publisher-darwin-arm64.zst
+        zstd -d artifact-metadata-publisher-darwin-arm64.zst -o ./artifact-metadata-publisher
+        chmod 700 ./artifact-metadata-publisher
+        
+        # Publish multiple artifacts with custom names
+        PLUGIN_FILE_URLS="Config File:::https://s3.amazonaws.com/bucket/config.json,Build Report:::https://s3.amazonaws.com/bucket/report.html" ./artifact-metadata-publisher
+```
+
+### Example: Publishing S3 presigned URLs
+
+Here's a complete example that generates a presigned URL for an S3 artifact and publishes it to the Artifacts tab:
+
+```yaml
+- step:
+    type: Run
+    name: Generate Presigned URL
+    identifier: generate_presigned_url
+    spec:
+      shell: Sh
+      command: |-
+        FILE_NAME="my-artifact.zip"
+        
+        # Generate presigned URL (assumes AWS credentials are configured)
+        PRESIGNED_URL=$(aws s3 presign s3://my-bucket/$FILE_NAME --expires-in 3600)
+        
+        echo "Generated presigned URL: $PRESIGNED_URL"
+      envVariables:
+        AWS_ACCESS_KEY_ID: <+secrets.getValue("aws_access_key")>
+        AWS_SECRET_ACCESS_KEY: <+secrets.getValue("aws_secret_key")>
+      outputVariables:
+        - name: PRESIGNED_URL
+
+- step:
+    type: Run
+    name: Publish Artifact Metadata
+    identifier: publish_artifact_metadata
+    spec:
+      shell: Sh
+      command: |-
+        curl -L https://github.com/drone-plugins/artifact-metadata-publisher/releases/download/v2.2.0/artifact-metadata-publisher-darwin-arm64.zst -o artifact-metadata-publisher-darwin-arm64.zst
+        zstd -d artifact-metadata-publisher-darwin-arm64.zst -o ./artifact-metadata-publisher
+        chmod 700 ./artifact-metadata-publisher
+        
+        # Use the presigned URL from the previous step
+        PLUGIN_FILE_URLS="my-artifact.zip:::<+execution.steps.generate_presigned_url.output.outputVariables.PRESIGNED_URL>" ./artifact-metadata-publisher
+```
 
 ## Build logs and artifact files
 
@@ -138,7 +272,7 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
     name: run maven tests
     identifier: run_maven_tests
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: openjdk:11
       shell: Sh
       command: ./mvnw clean test site
@@ -147,7 +281,7 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
     name: generate allure report
     identifier: generate_allure_report
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: solutis/allure:2.9.0
       command: |
         cd target
@@ -157,7 +291,7 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
     name: combine report
     identifier: combine_report
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: shubham149/allure-combine:latest
       command: |
         cd target/allure-report
@@ -165,12 +299,6 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
         cd ../..
         cp target/allure-report/complete.html .
 ```
-
-:::tip
-
-For `connectorRef`, you can use the built-in Docker connector, `account.harnessImage`, or use your own [Docker Hub connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-
-:::
 
 </details>
 
@@ -219,7 +347,7 @@ For example, this step publishes the URL for the combined Allure report on the A
     name: publish artifact metadata
     identifier: publish_artifact_metadata
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/artifact-metadata-publisher
       settings:
         file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
@@ -278,7 +406,7 @@ pipeline:
                   name: run maven tests
                   identifier: run_maven_tests
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: openjdk:11
                     shell: Sh
                     command: ./mvnw clean test site
@@ -287,7 +415,7 @@ pipeline:
                   name: generate allure report
                   identifier: generate_allure_report
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: solutis/allure:2.9.0
                     command: |
                       cd target
@@ -297,7 +425,7 @@ pipeline:
                   name: combine report
                   identifier: combine_report
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: shubham149/allure-combine:latest
                     command: |
                       cd target/allure-report
@@ -318,7 +446,7 @@ pipeline:
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
@@ -365,7 +493,7 @@ pipeline:
                   name: run maven tests
                   identifier: run_maven_tests
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: openjdk:11
                     shell: Sh
                     command: ./mvnw clean test site
@@ -374,7 +502,7 @@ pipeline:
                   name: generate allure report
                   identifier: generate_allure_report
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: solutis/allure:2.9.0
                     command: |
                       cd target
@@ -384,7 +512,7 @@ pipeline:
                   name: combine report
                   identifier: combine_report
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: shubham149/allure-combine:latest
                     command: |
                       cd target/allure-report
@@ -405,7 +533,7 @@ pipeline:
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
@@ -418,16 +546,16 @@ pipeline:
 
 ## See also
 
-* [View test reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests/#view-reports-on-the-artifacts-tab)
-* [View code coverage reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/code-coverage/#view-code-coverage-reports-on-the-artifacts-tab)
-* [View GCS artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings/#view-artifacts-on-the-artifacts-tab)
-* [View JFrog artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog/#view-artifacts-on-the-artifacts-tab)
-* [View Sonatype Nexus artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus/#view-artifacts-on-the-artifacts-tab)
-* [View S3 artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#view-artifacts-on-the-artifacts-tab)
+- [View test reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests/#view-reports-on-the-artifacts-tab)
+- [View code coverage reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/code-coverage/#view-code-coverage-reports-on-the-artifacts-tab)
+- [View GCS artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings/#view-artifacts-on-the-artifacts-tab)
+- [View JFrog artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog/#view-artifacts-on-the-artifacts-tab)
+- [View Sonatype Nexus artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus/#view-artifacts-on-the-artifacts-tab)
+- [View S3 artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#view-artifacts-on-the-artifacts-tab)
 
 ## Troubleshoot the Artifacts tab
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to the Artifacts tab, such as:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to the Artifacts tab, such as:
 
-* [Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#is-it-possible-to-publish-custom-data-such-as-outputs-from-variables-or-custom-messages-to-the-artifacts-tab)
-* [Do Upload Artifacts steps compress files before uploading them?](/kb/continuous-integration/continuous-integration-faqs/#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
+- [Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#is-it-possible-to-publish-custom-data-such-as-outputs-from-variables-or-custom-messages-to-the-artifacts-tab)
+- [Do Upload Artifacts steps compress files before uploading them?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)

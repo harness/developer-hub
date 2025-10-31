@@ -49,7 +49,7 @@ Use [Run step](/docs/continuous-integration/use-ci/run-step-settings) to install
     identifier: dependencies
     name: Dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: node:14.18.2-alpine
       command: |-
         npm install express@14.18.2 --no-save
@@ -192,7 +192,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
     name: npm test
     identifier: npm test
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: node:latest
       shell: Sh
       command: |-
@@ -301,7 +301,7 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
     name: Node Version
     identifier: nodeversion
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: node:18.16.0
       shell: Sh
       command: |-
@@ -332,7 +332,7 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
     name: Node Version
     identifier: nodeversion
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: node:<+matrix.nodeVersion>
       shell: Sh
       command: |-

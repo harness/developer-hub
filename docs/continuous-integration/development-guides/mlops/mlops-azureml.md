@@ -92,7 +92,7 @@ You can use the Azure ML plugin in a [Plugin step](/docs/continuous-integration/
                   name: Azure ml plugin
                   identifier: azure_ml_plugin
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: harnesscommunity/azure-ml
                     settings:
                       username: <+secrets.getValue("azure_ml_user")>

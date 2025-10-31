@@ -1,9 +1,10 @@
 {
   "label": "ApplicationSets",
-  "position": "400",
+  "position": "600",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
+  "description": "Learn how to create and manage GitOps ApplicationSets",
   "link": {
       "type": "generated-index",
       "title": "ApplicationSets"

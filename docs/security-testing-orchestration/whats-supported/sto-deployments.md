@@ -2,7 +2,7 @@
 title: Harness STO Deployment Options & Supported Features 
 description: Supported STO deployments 
 sidebar_label: Deployment options
-sidebar_position: 01
+sidebar_position: 04
 redirect_from:
   - /docs/security-testing-orchestration/whats-supported
 ---

@@ -1,0 +1,14 @@
+{
+    "label":"Cloud Providers",
+    "position": 4,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Cloud Providers"
+    },
+    "customProps":{
+       "helpdocs_category_id":"66qbyn7ugu"
+    }
+ }

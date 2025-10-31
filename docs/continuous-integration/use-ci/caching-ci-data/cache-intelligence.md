@@ -14,11 +14,15 @@ With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integr
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-:::note
-Cache Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
-:::
+:::info
+* Cache Intelligence is GA.
+* Supported on Cloud and Kubernetes build infrastructure.
+* Cache Intelligence is enabled by default for newly created CI stages (configurable in [CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/).
 
+**S3 options via stage variables (applies to both Cache Intelligence _and_ S3 cache steps):**
+- **Path Style**: Set `PLUGIN_PATH_STYLE: "true"` as a **stage variable**. This is injected into all steps and used by Cache Intelligence and S3 cache steps.
+- **Encryption**: To enable server-side encryption for cache artifacts uploaded to S3, set the **encryption stage variables** described in [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies). These variables are **stage-scoped** and affect **both** Cache Intelligence and S3 cache steps.
+:::
 
 ## Supported tools and paths
 
@@ -38,8 +42,13 @@ Below is a list of the default locations cached using Cache Intelligence:
 | `F# .Net` | *.fsproj | .nuget/packages
 
 
-For other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+By default, Cache Intelligence searches for the exact filenames listed in the table above under the **Dependency Management file**.  
 
+Harness Cache Intelligence will explore the root directory as well as one directory depth below for the file to determine the tool that a customer is using in the repository.
+
+This then determines the **Default Path Cached** location that Harness will save and restore as a part of the Cache Intelligence process.  
+
+To make modifications for other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
 
 ## Cache storage
@@ -181,7 +190,7 @@ Harness generates a cache key from a hash of the build lock file (such as `pom.x
 You can define custom cache keys if you don't want to use the default cache key naming behavior or you have a use case that requires defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
 
 :::note
-When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths, unless custom paths are specified. Cache paths are stored under `<account_id>/default/path/to/directory`.  
+When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths, unless custom paths are specified. Cache paths are stored under `<account_id>/default/path/to/directory`.
 :::
 
 <Tabs>
@@ -282,6 +291,11 @@ For example, here is a pipeline with two Build (`CI`) stages using Cache Intelli
 
 The cache override allows you to force push the cache even if the cache key hasn't changed.
 
+:::note
+By default, cache override is set to `true` regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+:::
+
+
 To configure the cache override, add `override: true | false` to `stage.spec.caching`.
 
 * `override: true` - Always save the cache. Currently, this is the default setting.
@@ -329,11 +343,54 @@ curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?accoun
 
 ## Troubleshoot caching
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
+### Ignoring Cache Intel Directories in Apache RAT Scans
 
-* [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
-* [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
-* [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
-* [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)
+If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Cache Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
 
-* [How can I share cache between different OS types (Linux/macOS)?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-share-cache-between-different-os-types-linuxmacos)
+To avoid this, explicitly exclude the following directories in your pom.xml file.
+
+**Directories to Ignore**
+- Build Intelligence:
+`/harness/.mvn`
+
+- Cache Intelligence:
+`/harness/.m2`
+`/harness/.mvn` (also applies to cache-related scans)
+
+**Example: Update to pom.xml**
+Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.rat</groupId>
+      <artifactId>apache-rat-plugin</artifactId>
+      <version>0.15</version> <!-- Or use the latest version -->
+      <configuration>
+        <excludes>
+          <exclude>/harness/.mvn</exclude>
+          <exclude>/harness/.m2</exclude> <!-- Optional, but recommended -->
+        </excludes>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>verify</phase>
+          <goals>
+            <goal>check</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
+
+* [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
+* [How can I use an artifact in a different stage from where it was created?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
+* [How can I check if the cache was restored?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-check-if-the-cache-was-restored)
+* [What is the Cache Intelligence cache storage limit?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#what-is-the-cache-intelligence-cache-storage-limit)
+
+* [How can I share cache between different OS types (Linux/macOS)?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-share-cache-between-different-os-types-linuxmacos)

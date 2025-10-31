@@ -1,5 +1,5 @@
 {
-    "label":"For AWS EC2 Convertible Reserved Instances and Compute Savings Plans",
+    "label":"AWS EC2",
     "position": 4,
     "collapsible":"true",
     "collapsed":"true",

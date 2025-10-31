@@ -37,7 +37,7 @@ You can ingest custom issues from any scanning tool. STO supports a generic JSON
    ```
 
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
-  You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](../get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline.md) for an example.
+  You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline) for an example.
 
 3. Add a **Custom Ingest** step and configure the scanner to ingest the results of the scan. For information about how to configure this step, go to [Custom Ingest settings reference](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference).
 
@@ -50,8 +50,7 @@ The following example illustrates the required format for your data:
 {  
    "meta":{  
       "key":[  
-         "issueName",  
-         "fileName"  
+         "issueName"
       ],  
       "subproduct":"MyCustomScanner"  
    },  
@@ -238,8 +237,7 @@ pipeline:
                       {  
                          "meta":{  
                             "key":[  
-                               "issueName",  
-                               "fileName"  
+                               "issueName"
                             ],  
                             "subproduct":"MyCustomScanner"  
                          },  
@@ -349,8 +347,7 @@ This command uses the filter to generate the correctly formatted output.
 {
   meta: {
     key: [
-      "issueName",
-      "fileName"
+      "issueName"
     ],
     subproduct: "mend v3 sca"
   },
@@ -379,7 +376,7 @@ This command uses the filter to generate the correctly formatted output.
           else 3
           end
         ),
-        status: "open",
+        status: (issue.status // "open"),
         referenceIdentifiers: [
           {
             type: (if (.name | startswith("CVE-")) then "cve"
@@ -433,7 +430,7 @@ def transform_issue(language; issue):
 
 {
   meta: {
-    key: ["issueName", "fileName"],
+    key: ["issueName"],
     subproduct: "mend v3 SAST"
   },
   issues: [

@@ -210,6 +210,10 @@ If you [use automated provisioning](#use-automated-provisioning), user accounts 
 
 :::
 
+:::warning Important Note
+   When a user is deleted from an account and then added back, their permissions are not restored immediately. It may take 5–10 minutes for the user to inherit their previous permissions.
+:::
+
 1. Make sure you have a role, such as **Account Admin**, that has [permission](./permissions-reference.md) to manage users.
 2. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where the user exists.
 

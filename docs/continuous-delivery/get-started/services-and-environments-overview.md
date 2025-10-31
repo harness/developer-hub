@@ -8,6 +8,21 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics
+tags:
+  - services
+  - creating-services
+  - creating-environments
+  - service-overrides
+  - override-priority
+  - infrastructure-definitions
+  - infrastructure-tags
+  - values-yaml-overrides
+  - merging-values-yaml
+  - fully-overriding-values
+  - config-files
+  - runtime-inputs-and-expressions
+  - services-and-environments-rbac
+  - environment-groups
 ---
 
 This topic describes Harness Continuous Delivery (CD) services and environments.
@@ -598,9 +613,7 @@ For example, skipping certain steps in pipeline based on the tags attached to th
 ![](./static/services-and-environments-overview-29.png)
 
 :::note
-You can now define allowed values in the Select Hosts settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values. 
-
-Currently, this feature is behind the feature flag CDS_ALLOWED_VALUES_DROPDOWN_PDC_HOSTS. Please contact Harness support to enable this feature.
+You can now define allowed values in the Select Hosts settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values.
 :::
 
 ## Values YAML overrides and merges

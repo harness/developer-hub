@@ -43,27 +43,30 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 5. Click **Query specifications and mapping.**
 6. In **Query Type** you can choose either **Service Based (used for Health Score and SLI)** or **Host Based (used for CV)**.
 	If you select the query type as **Host Based** (Continuous Verification), the verification won't happen for SLI and Health Score (Service Based), and vice versa.
-1. In **Request Method**, you can select **GET** or **POST**. If you select POST, you need to define the body format.
-2. In **Path**, enter the complete path of the metric.
-3. In **Start and End Time Placeholders**, enter the following:
+7. In **Request Method**, you can select **GET** or **POST**. If you select POST, you need to define the body format.
+8. In **Path**, enter the complete path of the metric.
+9. In **Start and End Time Placeholders**, enter the following:
 	1. In **Start time placeholder**, enter the start time placeholder in the metric path.
 	2. In **Unit**, select the preferred unit of measurement.
 	3. In **End time placeholder**, enter the end time placeholder in the metric path.
 	4. In **Unit**, select the preferred unit of measurement.
-4. Click **Fetch Records** to retrieve records from the provided URL.
-5. Click **Metric values and charts**.
-6. In **Timestamp Format**, enter a static value in dd/mm/yy format.
-7. Click **Assign**. Select the services for which you want to apply the metric. You can select **Health Score** or **SLI** or both options.
+10. Click **Fetch Records** to retrieve records from the provided URL.
+11. Click **Metric values and charts**. For each path, click the **+** icon to select the appropriate path from the data source.
+	1. For **Metric Value Json Path**, it expects at least 2 `*` in the json path.
+	2. For **Timestamp Value Json Path**, it expects at least 2 `*` in the json path.
+	3. For **Service Instance Identifier Json Path**, it expects at least 1 `*` in the json path. 
+	4. In **Timestamp Format**, enter a static value in dd/mm/yy format.
+12. Click **Assign**. Select the services for which you want to apply the metric. You can select **Health Score** or **SLI** or both options.
    The subsequent steps depend on the service you select in this step.1. In **Risk Category**, select a risk type. Available options for risk types are:
 	* Errors
 	* Infrastructure
 	* Performance/Throughput
 	* Performance/Other
 	* Performance/Response Time
-8. In **Deviation compared to Baseline**, select one of the options based on the selected risk type. Available options are:
+13. In **Deviation compared to Baseline**, select one of the options based on the selected risk type. Available options are:
 	* **Higher value is higher risk** - Select this option if a high value of the selected risk type is a risk.
 	* **Lower value is higher risk** - Select this option if lower value of the selected risk type is a risk.
-9.  Click **Submit**.
+14.  Click **Submit**.
 
 ### Option: Custom Health Logs
 
@@ -86,9 +89,9 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
    ![](./static/verify-deployments-with-custom-health-metrics-93.png)
 
 9.  Once the response is retrieved, click **JSON path selection**.
-	5. In **Log Message JSON path**, click the plus icon to select the path to the log message from the data source. For example,`$.data.[*].attributes.message`.
-	6. In **Timestamp Field/Locator JSON** Path, click the plus icon to select the path to the log message from the data source. For example,`$.data.[*].attributes.timestamp`.
-	7. In **Provide Service Instance to map to Harness Service Instance**, click the plus icon to select the Service instance from the data source. For example,`$.data.[*].attributes.tags.[4]`.
+	1. In **Log Message JSON path**, click the plus icon to select the path to the log message from the data source. For example,`$.data.[*].attributes.message`.
+	2. In **Timestamp Field/Locator JSON** Path, click the plus icon to select the path to the log message from the data source. For example,`$.data.[*].attributes.timestamp`.
+	3. In **Provide Service Instance to map to Harness Service Instance**, click the plus icon to select the Service instance from the data source. For example,`$.data.[*].attributes.tags.[4]`.
 
 	![](./static/verify-deployments-with-custom-health-metrics-94.png)
 

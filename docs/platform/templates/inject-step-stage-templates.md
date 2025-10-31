@@ -19,7 +19,7 @@ Insert block is supported for CI, CD, Custom and Approval Stages.
 ## Pros of Using Insert blocks in a template
 
 - Only the Template Editor has the flexibility to allow additional steps or stages at any given point where they want.(At beginning of all steps/stage or at the end of all steps/stages or in between the steps/stages)
-- The YAML would be very simple and incline with existing harness steps/stages YAML. Here the Insert is as simply a new type of step which starts with the key `insert`. 
+- The YAML is simple and inline with existing Harness steps/stages YAML. Here the Insert is simply a new type of step which starts with the key `insert`. 
 
 Now, let's dive into who can add insert block in the pipeline and stage template and how other users can utilise it in their pipelines.
 
@@ -256,12 +256,12 @@ Now when we will run the pipeline the execution will look like:-
 
 If you will check the compiled YAML it will show the steps input as empty and thus will not fail the pipeline as well with a null error. 
 
-:::info note
+### Limitations
 1. Insert block can not be output of any step, it has to be provided.
 2. Nested insert blocks are not allowed.
-3. In the step group template, insert step cannot be added.
-4. Only service, environment, and infrastructure definitions can be propagated within an insert block; they cannot be propagated outside the insert block for other stages that are not part of it.
-:::
+3. Insert blocks cannot be added in parallel to any other stage.
+4. In the step group template, insert step cannot be added.
+5. Only service, environment, and infrastructure definitions can be propagated within an insert block; they cannot be propagated outside the insert block for other stages that are not part of it.
 
 ## Demo Video
 

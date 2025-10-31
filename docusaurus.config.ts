@@ -16,7 +16,7 @@ function hideIndexFromSidebarItems(items) {
 const config: Config = {
   title: 'Harness Developer Hub',
   tagline:
-    'Learn intelligent software delivery at your own pace. Guides, videos, and reference docs to help you deliver customer happiness.',
+    'Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.',
   url: 'https://developer.harness.io',
   baseUrl: BASE_URL,
   onBrokenLinks: 'throw',
@@ -48,6 +48,7 @@ const config: Config = {
   },
 
   future: {
+    v4: true,
     experimental_faster: true,
   },
 
@@ -88,85 +89,49 @@ const config: Config = {
         src: '/img/logo_dlp.svg',
       },
       items: [
-        /*{
-              position: "left",
-              html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
-              href: "#",
-            },*/
         {
           position: 'right',
           type: 'dropdown',
           label: 'Documentation',
           to: 'docs',
           items: [
-            {
-              label: 'Platform',
-              to: 'docs/platform',
-            },
-            {
-              label: 'Code Repository',
-              to: 'docs/code-repository',
-            },
-            {
-              label: 'Continuous Integration',
-              to: 'docs/continuous-integration',
-            },
-            {
-              label: 'Artifact Registry',
-              to: 'docs/artifact-registry',
-            },
-            {
-              label: 'Continuous Delivery & GitOps',
-              to: 'docs/continuous-delivery',
-            },
-            {
-              label: 'Database DevOps',
-              to: 'docs/database-devops',
-            },
-            {
-              label: 'Infrastructure as Code Management',
-              to: 'docs/infrastructure-as-code-management',
-            },
-            {
-              label: 'Feature Flags',
-              to: 'docs/feature-flags',
-            },
-            {
-              label: 'Cloud Cost Management',
-              to: 'docs/cloud-cost-management',
-            },
-            {
-              label: 'Security Testing Orchestration',
-              to: 'docs/security-testing-orchestration',
-            },
-            {
-              label: 'Supply Chain Security',
-              to: 'docs/software-supply-chain-assurance',
-            },
-            {
-              label: 'Chaos Engineering',
-              to: 'docs/chaos-engineering',
-            },
-            {
-              label: 'Incident Response',
-              to: 'docs/incident-response',
-            },
-            {
-              label: 'Service Reliability Management',
-              to: 'docs/service-reliability-management',
-            },
-            {
-              label: 'Internal Developer Portal',
-              to: 'docs/internal-developer-portal',
-            },           
-            {
-              label: 'Cloud Development Environments',
-              to: 'docs/cloud-development-environments',
-            },
-            {
-              label: 'Software Engineering Insights',
-              to: 'docs/software-engineering-insights',
-            },
+            // --- Unlisted / keep at top ---
+            { to: '/docs/platform', label: 'Platform' },
+            { to: '/docs/code-repository', label: 'Code Repository' },
+
+            // === DevOps & Automation ===
+            { type: 'html', value: '<div class="dropdown__section-header">DevOps & Automation</div>' },
+            { to: '/docs/continuous-delivery', label: 'Continuous Delivery & GitOps' },
+            { to: '/docs/continuous-integration', label: 'Continuous Integration' },
+            { to: '/docs/internal-developer-portal', label: 'Internal Developer Portal' },
+            { to: '/docs/infrastructure-as-code-management', label: 'Infrastructure as Code Management' },
+            { to: '/docs/database-devops', label: 'Database DevOps' },
+            { to: '/docs/artifact-registry', label: 'Artifact Registry' },
+            { to: '/docs/cloud-development-environments', label: 'Cloud Development Environments' },
+
+            // === Testing & Resilience ===
+            { type: 'html', value: '<div class="dropdown__section-header">Testing & Resilience</div>' },
+            { to: '/docs/feature-management-experimentation', label: 'Feature Management & Experimentation' },
+            { to: '/docs/feature-flags', label: 'Feature Flags' },
+            { to: '/docs/chaos-engineering', label: 'Chaos Engineering' },
+            { to: '/docs/ai-test-automation', label: 'AI Test Automation' },
+            { to: '/docs/ai-sre', label: 'AI SRE' },
+            { to: '/docs/service-reliability-management', label: 'Service Reliability Management' },
+
+            // === Security & Compliance ===
+            { type: 'html', value: '<div class="dropdown__section-header">Security & Compliance</div>' },
+            { to: '/docs/appsec-security-posture', label: 'Application & API Security Posture' },
+            { to: '/docs/appsec-runtime-protection', label: 'Application & API Runtime Protection' },
+            { to: '/docs/appsec-security-testing', label: 'Application & API Security Testing' },
+            { to: '/docs/security-testing-orchestration', label: 'Security Testing Orchestration' },
+            { to: '/docs/software-supply-chain-assurance', label: 'Supply Chain Security' },
+
+            // === Cost & Optimization ===
+            { type: 'html', value: '<div class="dropdown__section-header">Cost & Optimization</div>' },
+            { to: '/docs/cloud-cost-management', label: 'Cloud Cost Management' },
+            { to: '/docs/software-engineering-insights', label: 'Software Engineering Insights' },
+
+            // === Unlisted ===
             {
               label: 'Self-Managed Enterprise Edition',
               to: 'docs/self-managed-enterprise-edition',
@@ -174,6 +139,10 @@ const config: Config = {
             {
               label: 'Open Source',
               to: 'docs/open-source',
+            },
+            {
+              label: 'Harness Solutions Factory',
+              to: 'docs/harness-solutions-factory',
             },
             {
               label: 'FAQs',
@@ -187,89 +156,8 @@ const config: Config = {
               label: 'Harness Cloud Operations',
               to: 'docs/harness-cloud-operations',
             },
-            {
-              label: 'Release Notes',
-              href: '/release-notes',
-            },
-            {
-              label: 'API Reference',
-              to: 'https://apidocs.harness.io/',
-            },
           ],
         },
-        {
-          label: 'University',
-          position: 'right',
-          type: 'dropdown',
-          to: 'university',
-          items: [
-            {
-              label: 'Learn Harness from Experts',
-              to: 'university',
-            },
-            {
-              label: 'Code Repository',
-              to: 'university/cr',
-            },
-            {
-              label: 'Continuous Integration',
-              to: 'university/continuous-integration',
-            },
-            {
-              label: 'Continuous Delivery & GitOps',
-              to: 'university/continuous-delivery',
-            },
-            {
-              label: 'Infrastructure as Code Management',
-              to: 'university/iacm',
-            },
-            {
-              label: 'Feature Flags',
-              to: 'university/feature-flags',
-            },
-            {
-              label: 'Feature Management & Experimentation',
-              to: 'https://arcade.split.io/',
-            },
-            {
-              label: 'Cloud Cost Management',
-              to: 'university/cloud-cost-management',
-            },
-            {
-              label: 'Security Testing Orchestration',
-              to: 'university/sto',
-            },
-            {
-              label: 'Software Supply Chain',
-              to: 'university/scs',
-            },
-            {
-              label: 'Chaos Engineering',
-              to: 'university/chaos-engineering',
-            },
-            {
-              label: 'Internal Developer Portal',
-              to: 'university/idp',
-            },
-            {
-              label: 'Software Engineering Insights',
-              to: 'university/sei',
-            },
-            {
-              label: 'Virtual Instructor-Led Calendar',
-              to: 'https://university-registration.harness.io/calendar',
-            },
-            {
-              label: 'Hands-on Instructions',
-              to: 'university/instructions',
-            },
-            {
-              label: 'Policies & FAQs',
-              to: 'university/policies-and-faqs',
-            },
-          ],
-        },
-
         {
           label: 'Knowledge Base',
           position: 'right',
@@ -284,16 +172,17 @@ const config: Config = {
               to: 'kb/reference-architectures',
               label: 'Reference Architectures',
             },
-            {
-              to: 'community',
-              label: 'Community',
-            },
           ],
         },
         {
           label: 'Roadmap',
           position: 'right',
           href: '/roadmap',
+        },
+        {
+          label: 'Release Notes',
+          position: 'right',
+          href: '/release-notes',
         },
         {
           type: 'custom-coveo-search',
@@ -343,6 +232,10 @@ const config: Config = {
               to: 'https://harness.io/products/feature-flags',
             },
             {
+              label: 'Feature Management & Experimentation',
+              to: 'https://www.harness.io/products/feature-management-experimentation',
+            },
+            {
               label: 'Cloud Cost Management',
               to: 'https://harness.io/products/cloud-cost',
             },
@@ -359,8 +252,8 @@ const config: Config = {
               to: 'https://harness.io/products/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'https://harness.io/products/incident-response',
+              label: 'AI SRE',
+              to: 'https://harness.io/products/ai-sre',
             },
             {
               label: 'Service Reliability Management',
@@ -373,6 +266,10 @@ const config: Config = {
             {
               label: 'Software Engineering Insights',
               to: 'https://www.harness.io/products/software-engineering-insights',
+            },
+            {
+              label: 'AI Test Automation',
+              to: 'https://www.harness.io/products/ai-test-automation',
             },
           ],
         },
@@ -410,6 +307,10 @@ const config: Config = {
             {
               label: 'Feature Requests',
               to: 'https://ideas.harness.io',
+            },
+            {
+              label: 'Feature Flags GA Timeline',
+              to: '/release-notes/feature-flags-ga-timeline',
             },
             {
               label: 'Instructor-Led Training',
@@ -456,7 +357,7 @@ const config: Config = {
     prism: {
       theme: themes.github,
       darkTheme: themes.vsDark,
-      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
+      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git', 'java', 'powershell'],
     },
     colorMode: {
       defaultMode: 'light',
@@ -490,13 +391,12 @@ const config: Config = {
         id: 'release-notes',
         path: 'release-notes',
         routeBasePath: 'release-notes',
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         sidebarPath: require.resolve('./sidebars-release-notes.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
           const sidebarItems = await defaultSidebarItemsGenerator(args);
-          const sidebarItemsWithoutIndex =
-            hideIndexFromSidebarItems(sidebarItems);
+          const sidebarItemsWithoutIndex = hideIndexFromSidebarItems(sidebarItems);
           return sidebarItemsWithoutIndex;
         },
       },
@@ -512,19 +412,7 @@ const config: Config = {
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-university.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
-        // ... other options
-      },
-    ],
-    [
-      path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
-
-      {
-        id: 'community',
-        path: 'community',
-        routeBasePath: 'community',
-        exclude: ['**/shared/**', '**/static/**'],
-        sidebarPath: require.resolve('./sidebars-community.js'),
-        editUrl: 'https://github.com/harness/developer-hub/tree/main',
+        showLastUpdateTime: true,
         // ... other options
       },
     ],
@@ -536,6 +424,7 @@ const config: Config = {
         routeBasePath: 'kb',
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-kb.js'),
+        showLastUpdateTime: true,
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         // ... other options
       },
@@ -549,8 +438,9 @@ const config: Config = {
         sidebarPath: require.resolve('./sidebars.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         routeBasePath: 'docs', //CHANGE HERE
+        showLastUpdateTime: true,
         remarkPlugins: [
           [
             remarkMath,
@@ -580,24 +470,25 @@ const config: Config = {
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**'],
         routeBasePath: 'roadmap', //CHANGE HERE
+        showLastUpdateTime: true,
       },
     ],
 
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
+    path.join(__dirname, '/plugins/feature-flags-rss-plugin'),
   ],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
-    path.join(__dirname, '/client-modules/chatbot'),
+    // path.join(__dirname, '/client-modules/chatbot'),
   ],
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       type: 'text/css',
-      integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
   ],

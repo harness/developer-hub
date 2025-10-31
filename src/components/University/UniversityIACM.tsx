@@ -288,7 +288,7 @@ export default function CertificationsIACM() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IaCM Free/Team Plans
+                      <strong>Product version: </strong> Harness IaCM Free Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -360,8 +360,8 @@ export default function CertificationsIACM() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IaCM Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IaCM Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -448,8 +448,8 @@ export default function CertificationsIACM() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IaCM Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IaCM Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

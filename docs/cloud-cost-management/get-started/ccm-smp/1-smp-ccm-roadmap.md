@@ -10,40 +10,39 @@ redirect_from:
 # Self-Managed Enterprise Edition - Roadmap and feature availability
 The Harness Self-Managed Enterprise Edition of Cloud Cost Management is a comprehensive solution designed to optimize your cloud resources and minimize expenses. It provides granular insights into your cloud expenses, including detailed breakdowns and cost allocation. By leveraging the cost reporting features like perspectives and dashboards, CCM empowers you to make informed business decisions that align with your strategic objectives. 
 
-The table below outlines the current features availale on the Harness Self-Managed Enterprise Edition of Cloud Cost Management:
-
-## Connected Environment 
+The table below outlines the current features available on the Harness Self-Managed Enterprise Edition of Cloud Cost Management:
+  
+### Connected Environment 
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
 | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ✅ | ✅ | ✅ |
-|Cost categories | ✅  | ✅ | ✅ | ✅ | 
-|Budgets | ✅ | ✅ | ✅ | ✅ | ✅ |
-|BI dashboards |✅ | ✅ | ✅ | ✅ | 
+|Perspectives | ✅ | ✅  | ✅ | ✅ |
+|Cost categories | ✅ | ✅ | ✅ | ✅ | 
+|Budgets | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards | ✅ | ✅| ✅ | ✅ | 
 |Anomaly detection  | ✅ | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | 
-|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|Recommendations |✅ | ✅ | ❌  | ✅ | 
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
-|Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
-|Resource Inventory| ❌ | ❌ | ❌ | ❌ |
+|Perspective Preferences| ✅ | ✅ |✅ | ✅ |
+|Commitment Orchestrator | ❌ | ❌ | ❌ | ❌ | 
+|Cluster Orchestrator | ❌ |  ❌ | ❌ | ❌ | 
 
-:::info
-On SMP, four of the OOTB BI dashboards: AWS Cost Dashboard, GCP Cost Dashboard, Azure Cost Dashboard and Cluster Cost Dashboard are available. 
-:::
 
-## Air-gapped environment
+### Air-Gapped environment
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
 | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ❌  | ❌  | ✅ |
-|Cost categories | ✅  | ❌  | ❌  | ✅ | 
-|Budgets | ✅ | ❌  | ❌  | ✅ | 
-|BI dashboards |✅  | ❌  | ❌  | ✅ | 
-|Anomaly detection  | ✅ | ❌  | ❌  | ✅ |
+|Perspectives | ✅  | ❌  | ✅   | ✅ |
+|Cost categories | ✅  | ❌  | ✅   | ✅ | 
+|Budgets | ✅ | ❌  | ✅   | ✅ | 
+|BI dashboards |✅  | ❌  | ✅   | ✅ | 
+|Anomaly detection  | ✅ | ❌  | ✅   | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | 
-|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|Recommendations |✅ | ❌ | ❌ | ✅ | 
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
-|Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
-|Resource Inventory| ❌ | ❌ | ❌ | ❌ |
+|Perspective Preferences| ✅ | ❌  | ✅  | ✅ | 
+|Commitment Orchestrator | ❌ | ❌ | ❌ | ❌ | 
+|Cluster Orchestrator | ❌ | ❌ | ❌ | ❌ | 

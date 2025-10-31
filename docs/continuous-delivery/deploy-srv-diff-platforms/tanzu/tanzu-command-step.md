@@ -2,6 +2,14 @@
 title: Tanzu Command step
 description: Run a CF-enabled shell and use script inputs and outputs
 sidebar_position: 4
+tags:
+  - tanzu-command-step
+  - tanzu-deployments
+  - tanzu-cf-cli
+  - tanzu-harness-expressions
+  - tanzu-script-logging
+  - tanzu-deploy-stage
+
 ---
 
 The Tanzu Command step enables you to run scripts in the same Tanzu environment you are using for deployment in your pipeline.
@@ -144,3 +152,19 @@ export EVENT_PAYLOAD='<+trigger.eventPayload>'
 ```
 
 If you use Harness variable expressions in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate. For example, expressions that will not be resolved until later in the stage.
+
+## Disable Script Logging
+
+You can disable printing the full shell script in logs for Tanzu Command steps.
+
+By default, Harness logs the entire script before executing it. You can suppress this output by configuring a project setting.
+
+To suppress script output:
+
+1. Go to your **Project Settings** in Harness.
+2. Under **Continuous Delivery**, enable the setting:  
+   > **Disable printing script in Tanzu command step logs**
+
+This setting applies only to **Tanzu Command** steps and is **Project-scoped**.
+
+When enabled, the script content will not be printed in the console log. Only the output of the executed commands will appear.

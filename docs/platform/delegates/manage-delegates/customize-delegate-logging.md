@@ -1,12 +1,13 @@
 ---
 title: Customize delegate logging
 description: This topic describes how to customize delegate logging.
-sidebar_position: 8
+sidebar_label: Customize Delegate Logging
+sidebar_position: 2
 ---
 
 The delegate automatically creates a new log daily, named `delegate.log`. You can customize delegate logging if the default setup doesn't fit your needs. For example, you can customize the layout, verbosity, and destination of the messages.
 
-To create customized delegate logging for Kubernetes and Docker delegates, you can provide a custom `logback.xml` file to the delegate. You can accomplish this by mounting the file inside the delegate container or building it in your custom container. Then, update the delegate `JAVA_OPTS` with the logback option for the custom path to the configuration. This will enable you to customize the logging behavior of the delegate according to your specific needs.
+To create customized delegate logging for Kubernetes and Docker delegates, you can provide a     custom `logback.xml` file to the delegate. You can accomplish this by mounting the file inside the delegate container or building it in your custom container. Then, update the delegate `JAVA_OPTS` with the logback option for the custom path to the configuration. This will enable you to customize the logging behavior of the delegate according to your specific needs.
 
 For more information on default delegate logs, go to [Delegate logs](/docs/platform/delegates/delegate-concepts/delegate-overview#delegate-logs).
 
@@ -112,7 +113,6 @@ The following configurations were added by Harness to the default Logback XML.
                 <clientCertPath>${DELEGATE_CLIENT_CERTIFICATE_PATH:- }</clientCertPath>
                 <clientCertKey>${DELEGATE_CLIENT_CERTIFICATE_KEY_PATH:- }</clientCertKey>
                 <trustAllCerts>${TRUST_ALL_CERTIFICATES:-false}</trustAllCerts>
-                <logStreamingUrl>${LOG_STREAMING_SERVICE_URL:-${MANAGER_HOST_AND_PORT}/log-service/}</logStreamingUrl>
                 <delegateToken>${DELEGATE_TOKEN:-${ACCOUNT_SECRET}}</delegateToken>
                 <appName>delegate</appName>
             </appender>

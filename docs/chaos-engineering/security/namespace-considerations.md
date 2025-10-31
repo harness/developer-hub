@@ -246,11 +246,11 @@ Run an experiment, say pod-delete in both the namespaces to verify if these name
 
 For namespaceA:
 
-![namespace A](./static/namespace-considerations/nsA.png)
+![namespace A](./static/namespace-considerations/ns-a.png)
 
 For namespaceA:
 
-![namespace B](./static/namespace-considerations/nsB.png)
+![namespace B](./static/namespace-considerations/ns-b.png)
 
 You are able to run chaos on the target namespaces (`namespaceA` and `namespaceB`). Now, you can check to see if namespace `test` can be used to run chaos experiments.
 
@@ -269,3 +269,5 @@ time="2022-11-14T06:50:53Z" level=error msg="Application status check failed, er
 ```
 
 You have successfully restricted CE to run chaos on certain namespaces instead of all namespaces.
+kubectl delete clusterrole hce
+

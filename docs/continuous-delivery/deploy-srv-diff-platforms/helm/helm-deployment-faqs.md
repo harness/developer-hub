@@ -2,6 +2,14 @@
 title: Helm Deployment FAQs
 description: This topic lists some FAQs related to Native and Harness managed Helm deployment
 sidebar_position: 6
+keywords:
+  - helm deployment
+  - service dashboard
+  - artifact version
+  - zero replicas
+  - instance sync
+  - replica count
+  - multi-cluster deployment
 ---
 
 This article addresses some frequently asked questions about Helm and Native Helm deployments in Harness.
@@ -528,6 +536,46 @@ Harness don’t handle helm hooks from our side in any way.
 
 If a deployment doesn't reach a steady state, CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG will log the events and errors that occur, helping you diagnose and resolve the issues that prevented the deployment from completing successfully.
 
+### Why is the Service Dashboard not updating artifact versions for deployments with zero replicas?
+
+When deploying Helm charts with `replicas: 0` specified in the manifest, the Service Dashboard does not update to show the latest artifact version, even though the deployment succeeds and the correct artifact version is applied in the manifests.
+
+#### How instance sync works
+
+The Service Dashboard relies on instance sync tasks to track and display artifact information:
+
+1. After each deployment, Harness stores details of newly created instances (instance count, artifact details, etc.).
+2. If the instance count is non-zero, a perpetual task is created to update instance information every 10 minutes.
+3. This perpetual task keeps the Service Dashboard updated with the latest instance details.
+
+#### Why zero replicas cause issues
+
+When `replicas: 0` is specified in your Helm chart:
+- After a successful deployment, there are no active instances.
+- No instance information is available to sync.
+- The perpetual task is not created because the instance count is zero.
+- The Service Dashboard continues to show information from the previous artifact.
+
+This behavior is by design. The instance sync logic is designed to track active instances, and zero-replica deployments don't create instances to track.
+
+#### Impact
+
+- Deployments succeed and manifests are rendered with the correct artifact version.
+- The Service Dashboard does not reflect the updated artifact versions.
+- This affects both the UI and the corresponding API used for inventory management.
+- The issue occurs in multi-cluster setups when deploying to a single cluster (for example, when other CD stages are conditionally disabled).
+
+
+#### Recommended workarounds
+
+The following workarounds may help, though they may not be suitable for all use cases:
+
+1. **Deploy with a valid replica count**: Deploy with at least one replica to ensure proper instance tracking and Service Dashboard updates. Note that this may not be suitable if you need services to remain passive until manual scaling.
+
+2. **Use different artifact tags**: Use different artifact tags or versions to force dashboard updates.
+
+Supporting zero-replica deployments for artifact tracking would require significant changes to the instance sync logic, which is complex and would need extensive testing. An enhancement request (CDS-114667) has been created to address this limitation in a future release.
+
 ### How to execute helm lookup expression in helm template?
 We can pass the helm template command option  `--dry-run=server`. These command options can be added in the helm manifest advanced configruation.
 
@@ -568,3 +616,79 @@ If a namespace doesn’t exist, using the `--create-namespace` flag can resolve 
 
 ### How to resolve the issue where a user reports an issue when deploying a Helm chart in a specific namespace?
 Users facing namespace errors should remove namespace objects from their manifest templates or ensure Helm correctly scopes installation to the specified namespace. 
+
+### Why does Helm uninstall runs after a failed initial deployment in Helm Deployment step?
+Helm recommends purging the initial release if any failure happens: [https://github.com/helm/helm/issues/3353#issuecomment-358367529](https://github.com/helm/helm/issues/3353#issuecomment-358367529). Hence, Harness purges the release if the first ever release fails in Helm Deployment step. If this is not done, then the user would be manually required to clean up the failed release, otherwise all subsequent releases would fail. Harness helps users avoid this manual effort and purges the failed initial release in this case.
+
+### Is switching between Kubernetes Deployment and Helm Deployment supported?
+
+**Yes, switching between Kubernetes Deployment and Helm Deployment types is supported**, but requires careful planning due to some important limitations and considerations.
+
+:::warning Important Considerations
+Switching between deployment types on the same infrastructure and namespace can lead to deployment failures due to immutable Kubernetes selector labels. Plan your migration carefully and consider using different namespaces or performing force deployments.
+:::
+
+#### Limitations and Considerations
+
+1. **Label Selector Handling**:
+   - When switching from Kubernetes to Helm deployments, leftover selector labels (particularly `harness.io/track: stable`) can cause deployment failures, especially when skipping canary steps.
+   - This happens because selector labels in Kubernetes are immutable and Helm's 3-way merge won't remove them from existing deployments.
+
+2. **Deployment Type Compatibility**:
+   - Canary flows typically work because Harness adds track labels in pod labels for canary deployments.
+   - Rolling deployments (skipping canary steps) may fail due to label selector mismatches between the existing deployment and the new manifests.
+
+3. **Maintenance Mode Deployments**:
+   - When services are in maintenance mode (replica: 0), skipping canary steps is often desired to avoid spinning up unnecessary pods.
+   - However, this scenario is most prone to selector mismatch issues when switching deployment types.
+
+#### Best Practices for Switching Deployment Types
+
+1. **Perform a Force Deployment**: 
+   - When switching deployment types, perform a forced fresh deployment (delete and redeploy) to remove stale selectors.
+   - This is especially important for services that are in maintenance mode or not serving traffic.
+
+2. **Enable "Skip Harness Label Selector" Setting**:
+   - For Kubernetes deployments, enable the ["Skip Harness label selector tracking" setting](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments).
+   - This helps when you need to switch between canary and rolling deployment flows.
+
+3. **Use Different Release Names and Namespaces**:
+   - When deploying the same service using both Kubernetes and Helm deployment types, use different release names and consider using separate namespaces to avoid conflicts.
+   - Avoid deploying the same service to the same infrastructure using both deployment types simultaneously.
+
+4. **Check Delegate Version**:
+   - Ensure your delegate is updated to the latest version to benefit from fixes related to label handling.
+   - If you can't update the delegate, consider updating the `harness-helm-post-renderer` binary using the following commands in the delegate's INIT_SCRIPT:
+     ```bash
+     curl -f -s -L -o client-tools/harness-helm-post-renderer/v0.1.5/harness-helm-post-renderer \
+     https://app.harness.io/public/shared/tools/harness-helm-post-renderer/release/v0.1.5/bin/linux/amd64/harness-helm-post-renderer
+     export PATH=client-tools/harness-helm-post-renderer/v0.1.5/:$PATH
+     ```
+
+5. **Feature Flag Requirements**:
+   - Ensure the feature flag `CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG` is enabled for improved Helm steady state checks.
+   - Contact [Harness Support](mailto:support@harness.io) if you need this feature flag enabled.
+
+#### Troubleshooting Common Errors
+
+If you encounter errors like:
+```
+Error: UPGRADE FAILED: cannot patch "[resource]" with kind Deployment: Deployment.apps "[resource]" is invalid: spec.template.metadata.labels: Invalid value: map[string]string{"app":"[resource]", ..., "harness.io/track":"stable", ...}: selector does not match template labels
+```
+
+This indicates a label selector mismatch. Follow these steps:
+1. Check if `harness.io/track: stable` exists in your deployment's selector labels using:
+   ```bash
+   kubectl get deployment [deployment-name] -o yaml
+   ```
+2. Perform a force deployment by deleting the existing deployment first.
+3. Deploy again with your desired configuration.
+4. If the issue persists, verify that your Helm chart doesn't contain hardcoded `harness.io/track` labels in the selector.
+
+#### Migration Strategy
+
+For a smooth transition between deployment types:
+1. **Plan the migration** during maintenance windows when possible.
+2. **Test the switch** in non-production environments first.
+3. **Document your current configuration** before making changes.
+4. **Consider using different services** for different deployment types if you need both approaches.

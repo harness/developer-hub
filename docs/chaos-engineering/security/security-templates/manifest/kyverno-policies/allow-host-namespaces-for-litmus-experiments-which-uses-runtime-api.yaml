@@ -30,5 +30,5 @@ spec:
           spec:
             =(hostPID): "true"
             =(hostIPC): "false"
-            =(hostNetwork): "false"
+            =(hostNetwork): "true"
             

@@ -6,6 +6,8 @@ helpdocs_topic_id: j75xc704c8
 helpdocs_category_id: jcu7twh2t6
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/first-gen/continuous-delivery/terraform-category/terraform-destroy/
 ---
 
 This topic describes how to add a Terraform Destroy step to remove any provisioned infrastructure, just like running the `terraform destroy` command. See [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform.
@@ -103,6 +105,50 @@ This setting allows you to set the Terraform CLI options for Terraform commands 
 ## Skip Terraform Refresh
 
 Terraform refresh command won't be running when this setting is selected.
+
+## Create remote workspace with prefix
+
+:::note
+This setting is only available when the Configuration Type is **Inline**.
+
+This option is available only on delegate version `86400` or later.
+:::
+
+Enable this option to automatically create or select a remote workspace when using a workspace **prefix** in your backend configuration.
+
+When using a [Terraform remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a prefix, Terraform does **not** create the workspace automatically if it doesn’t exist. This can lead to pipeline failures with errors like:
+
+`Error: Currently selected workspace "my-app-dev" does not exist`
+
+When this option is enabled:
+
+- If the remote workspace does **not** exist, Harness creates it during execution.
+- If the remote workspace **already exists**, Harness exports it to the `TF_WORKSPACE` environment variable so that Terraform uses it.
+- If both the step configuration and environment variable specify a workspace, the **step configuration takes precedence**.
+
+:::info
+To enable automatic workspace selection when a workspace is configured in the step settings, this flag **must** be enabled.
+
+If you prefer not to use this flag, you can manually configure the workspace using the `TF_WORKSPACE` environment variable.
+:::
+
+<details>
+<summary>This is how the YAML would look like</summary>
+
+```yaml
+- step:
+    type: TerraformDestroy
+    name: Terraform Destroy
+    identifier: Terraform_Destroy
+    spec:
+      provisionerIdentifier: test
+      configuration:
+        type: Inline
+        createRemoteWorkspaceWithPrefix: true
+        spec:
+          configFiles: {}
+```
+</details>
 
 ## Working directory cleanup
 Each Terraform step runs in a specific working directory on the delegate.

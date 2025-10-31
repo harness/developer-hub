@@ -913,8 +913,6 @@ You can integrate your own microservice application into this tutorial by follow
 
 Whether you're new to GitOps or already have an Argo CD instance, this guide will assist you in getting started with Harness GitOps, both with and without Argo CD.
 
-Harness also offers a Hosted GitOps solution. A tutorial for it will be available soon.
-
 :::
 
 ## Before you begin

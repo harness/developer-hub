@@ -70,6 +70,10 @@ Users can choose between two models: **Flex** and **Custom**:
 
 * **Custom Model**: Users can select specific resource classes tailored to their needs, with defined cores allocations.
 
+:::note
+For Free plan users, builds always run on `flex` machines, which provide the maximum available resources based on current capacity in Harness Cloud.
+:::
+
 #### Rate Tables
 The following tables outline the minute multipliers for each model as of August 2023:
 

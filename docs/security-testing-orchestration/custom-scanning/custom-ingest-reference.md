@@ -14,7 +14,7 @@ The Custom Ingest step enables you to ingest results from any third-party scanne
 - Harness STO supports a custom JSON format that's useful for ingesting data from scanners that currently have no integration in STO and that cannot publish to SARIF. For more information, go to [Ingest Results from Unsupported Scanners](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners.md).  
 
 :::note
-The Custom Ingest step is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md).
+The Custom Ingest step is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Supported Scanners](/docs/security-testing-orchestration/whats-supported/scanners).
 :::
 
 ## For more information

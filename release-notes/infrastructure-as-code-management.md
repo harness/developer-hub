@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2025-04-14T10:00
+date: 2025-05-13T10:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
@@ -34,6 +34,13 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
   parse='.resource.versionInfo.version | "IAC Manager version: \(.)"'>
 </HarnessApiData>
 ::: -->
+
+## May - IAC Server Version v1.143.0 & v1.145.0
+<!-- Released on 5 May 2025 -->
+### Feature Improvements: 
+- **Scoped Repository Selection in Module Registry:** Project-scoped repositories can now be used at the organization and account levels in the Module Registry. This enhancement gives you greater flexibility and control over where your modules are sourced from—making it easier to share and reuse IaC code across teams. (IAC-3476, IAC-3485)
+
+👉 Get started by [registering a module](/docs/infra-as-code-management/registry/module-registry#register-a-module).
 
 ## April - IAC Server Version 1.138.0
 <!-- Released on 4 April 2025 -->
@@ -76,7 +83,7 @@ The Workspace Wizard UI has been updated to improve usability and streamline the
 - The prepare exec flow and default pipeline feature flags have been removed to simplify your workflows. (IAC-3295)
 
 ### Fixed Issues
-**[Module Registry](../docs/infra-as-code-management/iacm-features/module-registry):** Sparse Checkout and submodule options are now hidden for repositories in the Module Registry, improving clarity and usability. (IAC-3277)
+**[Module Registry](../docs/infra-as-code-management/registry/module-registry):** Sparse Checkout and submodule options are now hidden for repositories in the Module Registry, improving clarity and usability. (IAC-3277)
 
 **Sensitive Data Handling:** We’ve resolved an issue where non-sensitive data was incorrectly marked as sensitive in plans and state files, as well as during sensitive data pruning. (IAC-3261)
 
@@ -90,10 +97,10 @@ The Workspace Wizard UI has been updated to improve usability and streamline the
 - **Module Registry:** We've introduced the Module Registry, a centralized repository that allows you to manage and publish versions of pre-built infrastructure modules. This feature supports versioning, enhances search functionality, and integrates seamlessly with existing IaCM configurations, all while providing detailed access control settings. 
   #### What You Need to Know:
   - **Prerequisites:** Ensure your Harness connectors are set up, or if using a delegate, it should be version `25.01.85000` or later.
-For more information, check out the [Module Registry Documentation](/docs/infra-as-code-management/iacm-features/module-registry).
+For more information, check out the [Module Registry Documentation](/docs/infra-as-code-management/registry/module-registry).
 
 ### IAC-Manager: Version 1.57.0
-- **OpenTofu/Terraform import:** Harness Pipelines now support the [tofu/terraform import](/docs/infra-as-code-management/pipelines/terraform-plugins/#import) command, allowing you to bring existing infrastructure under IaC control.
+- **OpenTofu/Terraform import:** Harness Pipelines now support the [tofu/terraform import](/docs/infra-as-code-management/cli-commands/terraform-plugins/#import) command, allowing you to bring existing infrastructure under IaC control.
 
 <details>
 <summary>IaCM 2024 Release Notes</summary>

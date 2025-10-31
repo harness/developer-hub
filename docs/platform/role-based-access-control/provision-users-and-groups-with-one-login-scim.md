@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import SCIMurl from '/docs/platform/shared/scimurl.md'
+
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
 If OneLogin is your identity provider, you can efficiently provision and manage users in your Harness account. Using [OneLogin's SCIM integration](https://developers.onelogin.com/scim) with Harness enables OneLogin to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
@@ -39,9 +41,9 @@ For more information, go to the OneLogin documentation on [Adding apps](https://
 1. In OneLogin, go to **Applications** and select **Add App**.
 2. Search for `Harness`, and select the Harness app.
 3. Select **Save**.
-4. In the Harness OneLogin app settings, in the **SCIM Base URL** field, enter `https://app.harness.io/gateway/ng/api/scim/account/ACCOUNT_ID`. Replace `ACCOUNT_ID` with your Harness account ID. You can get your account ID from any Harness URL or by navigating to **Account Settings** and **Overview** in Harness.
+4. In the Harness OneLogin app settings, in the **SCIM Base URL** field, enter the appropriate URL for your cluster:
 
-   For Harness On-Prem, the URL uses your custom domain name and omits `gateway`. For example, if your On-Prem domain name is `harness.mycompany.com**`, then your SCIM base URL is `https://harness.mycompany.com/ng/api/scim/account/ACCOUNT_ID`.
+<SCIMurl />
 
 5. For **SCIM Bearer Token**, enter your [Harness token](#requirements). The SCIM Bearer Token authenticates requests and responses sent between the OneLogin SCIM provisioning service and Harness.
 6. Make sure **API Status** is enabled.

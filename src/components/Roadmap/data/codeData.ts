@@ -3,97 +3,113 @@ import { Horizon } from "./roadmapData";
 export const codeData: Horizon = {
   
   Now: {
-    description: "Q1 2025, Feb-Apr 2025",
+    description: "Q3 2025, August-October 2025",
     feature: [
       {
-        tag: [{ value: "Security" }],
-        title: "SSH Support",
-        description: "Git operations available via SSH",
+        tag: [{ value: "Code Quality" }],
+        title: "Code Coverage",
+        description: "Display a coverage overlay in the code view and show a PR status summary for overall and changed code coverage—helping teams track gaps, enforce thresholds, and improve test completeness.",
       },
       {
-        tag: [{ value: "Integrations" }],
-        title: "Jira Support",
-        description: "First-class support for Jira available in Atlassian Marketplace",
-      },
-      {
-        tag: [{ value: "Governance" }],
-        title: "Default Branch Rules",
-        description: "Centrally manage all branch rules for all repositories in a project, org, or account",
+        tag: [{ value: "AI" }, { value: "Developer Experience" }],
+        title: "Automated Code Review",
+        description: "AI-powered code review suggestions to improve developer efficiency.",
       },
       {
         tag: [{ value: "Governance" }],
         title: "Enforce Signed-Commits",
-        description: "Ensure that all repository commits are signed by a known developer",
+        description: "Ensure that all repository commits are signed by a known developer.",
+      },
+      {
+        tag: [{ "value": "Secure" }],
+        title: "Committer Identity Verification for Code Repositories",
+        description: "Harness now supports automatic verification of commit metadata to ensure that the Git committer matches the authenticated user. This helps prevent impersonation and enforces stronger commit authenticity within managed repositories."
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Compare Tags Page",
+        description: "Compare two release tags to see the delta in commits, PRs, artifacts, and deployments—helping validate changes and support audit traceability.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Support for Forked Repositories",
+        description: "Harness Code Repository will support repository forking, allowing developers to create isolated copies of repositories for experimentation, collaboration, or contributing back via pull requests — without impacting the main repository."
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "AutoLink References for External Issue Trackers",
+        description: "Support for AutoLink references will allow Harness Code to automatically hyperlink commit messages and PR titles to external issue trackers like Jira, improving traceability across tools."
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "User Group Support",
+        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
       },
       {
         tag: [{ value: "Governance" }],
         title: "Push Rules",
-        description: "More push rules for branches to enforce compliance and security standards",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Project, Org, and Account Pull Requests",
-        description: "View, search, and filter all pull requests in a project, org, or account",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Automatically Add Code Owners to Reviews",
-        description: "Enable automatically adding Code Owners to reviews",
+        description: "Introduce push protection rules to enforce compliance and security standards.",
       },
     ],
   },
   Next: {
-    description: "Q2 2025, May-Jul 2025",
+    description: "Q4 2025, November 2025 - January 2026",
     feature: [
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Issue Tracking",
-        description: "Plan and track all developer-related work across your projects in Harness Code",
+        tag: [{ value: "AI" }, { value: "Code Quality" }],
+        title: "AI-Generated Tests",
+        description: "Generate unit tests from repository code using AI, guided by coverage results to target untested areas and help improve overall code coverage.",
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Repo Insights",
-        description: "Summary insights for the repo based on downstream activity",
-      },
+        title: "Linked Repositories",
+        description: "Interact directly with your external Git repositories from within the Harness platform — enabling native experiences like code coverage overlays, autonomous code maintenance, and in-context insights across builds and pull requests." 
+      }, 
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Cross-Project Cloning",
-        description: "Enable pipelines to clone repos across various repositories in different projects",
+        tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
+        title: "Merge Queue for Pull Requests",
+        description: "Harness Code will support a merge queue to boost development velocity by automatically managing pull request merges into busy branches, ensuring each change is validated and preventing broken or incompatible commits from reaching the target branch."
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Code Templates",
-        description: "Create templates of repositories to quickly generate a collection of repositories in a project",
+        description: "Create templates of repositories to quickly generate a collection of repositories in a project.",
       },
     ],
   },
   Later: {
-    description: "Q3 2025, Aug 2025 & beyond",
+    description: "Q1 2026, February 2026 & beyond",
     feature: [
+
       {
-        tag: [{ value: "Harness AI" }],
-        title: "Automated Code Suggestions",
-        description: "",
+        tag: [{ value: "Developer Experience" }],
+        title: "Repo Insights",
+        description: "Summary insights including PR and commit metrics and security scanning results.",
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Pipeline view",
-        description: "Visualize all CI pipeline runs for a repository, branch, or pull request",
+        title: "Pipeline View",
+        description: "Visualize all CI pipeline runs for a repository, branch, or pull request.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Issue Tracking",
+        description: "Plan and track all developer-related work across your projects in Harness Code.",
       },
       {
         tag: [{ value: "Governance" }],
-        title: "Open Policy Agent (OPA) Integration",
-        description: "Adding additional events for OPA enforcement",
+        title: "Enhance Open Policy Agent (OPA) Integration",
+        description: "Introduce additional events for OPA enforcement.",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Commit Graph",
-        description: "Visualize git commit-graph within code repository",
+        description: "Visualize the Git commit graph within the code repository.",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Chat Integration",
-        description: "Integrate Slack and MS Teams with Pull Request workflow",
+        description: "Integrate Slack and MS Teams with the Pull Request workflow.",
       },
     ],
   },
@@ -102,55 +118,60 @@ export const codeData: Horizon = {
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Archive Repo",
-        description: "Mark a repo as archived to disable all future development",
+        title: "Favorite Repositories Across the Account",
+        description: "Users will be able to mark repositories as favorites for quicker access and personalized navigation across the account."
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Developer Experience" }],
+        title: "Auto-generated PR Summaries and Commit Messages",
+        description: "Automatically generate pull request summaries and commit messages to help reviewers quickly understand the scope and intent of changes.",
+      },
+      {
+        tag: [{ value: "Governance" }],
+        title: "Tag Rules",
+        description: "Introduce tag protection rules to enforce compliance and security standards.",
+      },
+      {
+        tag: [{ value: "Scalable" }, { value: "Developer Experience" }],
+        title: "Git LFS (Large File Storage) Support",
+        description: "Harness Code Repository will support Git LFS, enabling efficient versioning and storage of large binary files such as media, datasets, and compiled assets within Git."
+      },
+      {
+        tag: [{ value: "Secure" }],
+        title: "SSH Support",
+        description: "Support for Git operations via SSH.",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Atlassian Jira Marketplace Application",
+        description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
+      },
+      {
+        tag: [{ "value": "Collaboration" }],
+        title: "Default Reviewers for Pull Requests",
+        description: "Users can now configure default reviewers for pull requests in Harness Code Repository. This ensures that designated team members are automatically added to review every PR, improving review consistency and reducing manual setup."
+      },
+      {
+        tag: [{ "value": "Collaboration" }],
+        title: "Add CODEOWNERS as Reviewers Automatically",
+        description: "Harness now supports automatically adding users defined in a CODEOWNERS file as reviewers on pull requests. This ensures that the right owners are always notified to review changes to critical files and components."
+      },
+      {
+        tag: [{ "value": "Developer Experience" }],
+        title: "My PRs Page in Harness Code Repository",
+        description: "A new 'My PRs' view is available to help users track pull requests they authored, reviewed, or were mentioned in. This centralized page improves visibility and makes it easier to stay on top of open contributions and pending reviews."
       },
       {
         tag: [{ value: "Platform" }],
         title: "Self-Managed Enterprise (SMP) Support",
-        description: "Host Harness DevOps platform on your own infrastructure, including Harness Code",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Mentions",
-        description: "Mention users and groups in PR comments",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "User Group Support",
-        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
+        description: "Host Harness DevOps platform on your own infrastructure, including Harness Code.",
       },
       {
         tag: [{ value: "Migrations" }],
-        title: "Import all Repository Data",
-        description: "Import pull requests, comments, labels, and other metadata from SCM providers",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Fast-Forward Merges",
-        description: "Fast-forward target branch without a new merge commit",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Labels",
-        description: "Apply labels to categorize repositories and pull requests",
-      },
-      {
-        tag: [{ value: "Governance" }],
-        title: "New Branch Protection Rules",
-        description: "Apply new rules to protect branches including block push, block force pushes, and more",
-      },
-      {
-        tag: [{ value: "Governance" }],
-        title: "Open Policy Agent (OPA) Integration",
-        description: "Store and enforce policies for repositories, commits, and pull requests",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Security Testing Orchestration (STO)",
-        description: "Automatically remediate vulnerabilities in code repositories",
-      },
-     
+        title: "Migrate all Repository Data",
+        description: "Migrate pull requests, comments, labels, and other metadata from SCM providers.",
+      },     
     ],
   },
 };
+

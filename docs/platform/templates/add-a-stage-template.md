@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 The Harness Template Library enables you to standardize and create templates that you can use across Harness pipelines and teams. One type of template you can create is a stage template, which is a template of a Harness CD, CI, or approval stage that you can use in any pipeline in any project.
 
-To demonstrate how to create, configure, and use stage templates, this topic adds a stage template to a [CD pipeline](/docs/category/cd-and-gitops-tutorials). You can also create stage templates for [CI Build stages](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings), [manual approval stages](../approvals/adding-harness-approval-stages.md), and [Jira approval stages](../approvals/adding-jira-approval-stages.md).
+To demonstrate how to create, configure, and use stage templates, this topic adds a stage template to a [CD pipeline](/docs/category/cd-tutorials). You can also create stage templates for [CI Build stages](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings), [manual approval stages](../approvals/adding-harness-approval-stages.md), and [Jira approval stages](../approvals/adding-jira-approval-stages.md).
 
 The stage template demonstrated in this topic uses runtime inputs. Runtime inputs are placeholders for values that you provide when you start a pipeline execution. For more information, go to [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md).
 

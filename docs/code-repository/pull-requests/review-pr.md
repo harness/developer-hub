@@ -11,10 +11,10 @@ After [creating a PR](./create-pr.md), you can request review from one or more r
 To request PR reviews from other users in your Harness project.
 
 1. In your repository, go to **Pull Requests**, and select your PR.
-2. On the **Conversation** tab, in the **Reviewers** section, select **Add**.
+2. On the **Conversation** tab, in the **Reviewers** section, select **More options** (&vellip;).
 3. Select the user that you want to assign as a reviewer.
 
-   To remove a reviewer, select **More options** (&vellip;) next to the reviewer's name, and then select **Remove**.
+   To remove a reviewer, select **More options** (&vellip;) and deselect the reviewer.
 
 :::tip
 
@@ -70,17 +70,15 @@ On the **Changes** tab, you can review the aggregated, latest code changes in th
 On the **Commits** tab, you can [inspect commits](../work-in-repos/commit.md#inspect-a-commit) included in the PR. This is useful if you need to trace the PR's change history across commits.
 
 </TabItem>
-<TabItem value="checks" label="Checks">
 
-On the **Checks** tab, you can inspect the results of PR status checks.
+<!--On the **Checks** tab, you can inspect the results of PR status checks.
 
 Harness pipelines [triggered](../pipelines/code-triggers.md) by PR creation or updates automatically report the pipeline run status and other execution details on the PR.
 
 Status checks can also be reported by [custom webhooks](../config-repos/webhooks.md).
 
-Depending on the repository's [branch rules](../config-repos/rules.md), passing status checks might be required to [merge the PR](./merge-pr.md).
+Depending on the repository's [branch rules](../config-repos/rules.md), passing status checks might be required to [merge the PR](./merge-pr.md). -->
 
-</TabItem>
 </Tabs>
 
 4. If everything looks good, select **Approve** to approve the PR for merge. To request changes, select the dropdown next to **Approve** and select **Request changes**.

@@ -9,7 +9,7 @@ redirect_from:
 
 This tutorial shows you how to scan your container images using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
 
-In this tutorial, you'll set up a simple [orchestration workflow](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) with two steps:
+In this tutorial, you'll set up a simple [orchestration workflow](/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline) with two steps:
 
 1. A Background step that runs Docker-in-Docker as a service. This is required for any orchestrated or dataload scan of a container image.
 
@@ -22,10 +22,10 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
 - This tutorial has the following prerequisites:
 
   - A Harness account and STO module license.
-  - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
+  - You must have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/rbac#security-testing-appsec) assigned.
   - A basic understanding of key STO concepts and good practices is highly recommended. Here are some good resources: 
-    - [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline)
-    - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
+    - [Get Started with STO](/docs/security-testing-orchestration/get-started)
+    - [Key Concepts in STO](/docs/security-testing-orchestration/key-concepts/targets-and-baselines)
   - A [Harness connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to the Docker v2-compliant registry with the image you want to scan. 
     This tutorial uses an [example image on Docker Hub](https://hub.docker.com/r/snyklabs/goof) that contains known vulnerabilities.
 
@@ -48,7 +48,7 @@ Do the following:
 
 3. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
-   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
+   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Supported Infrastructures](/docs/security-testing-orchestration/whats-supported/infrastructure) documentation.
 
 :::note
 
@@ -97,12 +97,12 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
    *  `name:` A name for the step.
    *  `identifier:` A unique step ID.
    *  `spec :`
-      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
+      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
       -  `config: default`
       - `target : ` 
           - `name : <+input>` 
           - `type : container`
-          - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
+          - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) when you run the pipeline. 
               When scanning a repository, you will generally use the repository name and branch for these fields.
         - `advanced : ` 
           - `log :` 
@@ -150,7 +150,7 @@ Here's an example:
 
 2. When prompted, enter your runtime inputs.
 
-   - Under **Target**, enter the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+   - Under **Target**, enter the [target name and variant](/docs/security-testing-orchestration/key-concepts/targets-and-baselines).
 
    - Under **Image**, enter the [image name] and [tag] you want to use. In most cases, you want to use the repository for the target and the branch for the variant. 
 
@@ -160,11 +160,11 @@ Here's an example:
 
 3. Run the pipeline and then wait for the execution to finish.
 
-   If you used the example image, you'll see that the pipeline failed for an entirely expected reason: you configured the Trivy step to [fail the pipeline](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
+   If you used the example image, you'll see that the pipeline failed for an entirely expected reason: you configured the Trivy step to [fail the pipeline](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
 
    ![pipeline failed, critical issues found](./static/container-scan-trivy/execution-snyk-labs.png)
 
-3. Select **Security Tests** and examine any issues detected by your scan.
+3. Select **Vulnerabilities tab** and examine any issues detected by your scan.
 
    ![view scan results](./static/container-scan-trivy/scan-results-snyklabs-goof.png)
 
@@ -172,7 +172,7 @@ Here's an example:
 
 :::tip
 
-It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
+It is [good practice](/docs/security-testing-orchestration/key-concepts/targets-and-baselines#every-target-needs-a-baseline) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
 
 :::
 
@@ -250,4 +250,3 @@ pipeline:
             enabled: false
           sharedPaths:
             - /var/run
-```

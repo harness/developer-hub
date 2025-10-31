@@ -2,6 +2,22 @@
 title: CD artifact sources
 description: Connect Harness with the artifact sources to use for deployments.
 sidebar_position: 4
+tags:
+  - artifact-sources
+  - docker
+  - google-container-registry
+  - google-cloud-storage
+  - google-artifact-registry
+  - azure-devops-artifacts
+  - azure-container-registry
+  - amazon-elastic-container-registry
+  - amazon-s3-cloud-storage
+  - amazon-ec2-amis
+  - nexus
+  - artifactory
+  - bamboo
+  - github-packages
+  - custom-artifact-source
 ---
 
 In DevOps, an artifact source is a location where the compiled, tested, and ready-to-deploy software artifacts are stored. These artifacts could be container images, compiled binary files, executables, or any other software components that are part of the application.
@@ -63,10 +79,6 @@ Configuring dependent fields, such as the artifact tag, as runtime inputs when t
 :::
 
 ### Skip Artifact Consumption for the Stage
-
-:::note
-Currently, the disable artifact consumption check feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 You can bypass artifact consumption checks for a service in a **Deploy** stage by selecting the **Disable artifact in this stage** checkbox. When this option is enabled, the pipeline treats the service without artifact configuration, skips the artifact consumption check process.
 
@@ -1565,6 +1577,8 @@ You can reference artifact properties using the following expressions in a value
 
 You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
+AWS OIDC connectors are supported, starting with delegate version `849xx` or later.
+
 #### YAML
 
 
@@ -1860,6 +1874,8 @@ You can reference artifact properties using the following expressions in a value
 
 You connect to AWS using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
+AWS OIDC connectors also are supported, starting with delegate version `849xx` or later.
+
 <!-- AWS S3 -->
 
 #### YAML
@@ -2088,6 +2104,8 @@ Examples:
 ### Use Amazon EC2 AMI artifacts
 
 You connect to Amazon AWS account using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
+
+AWS OIDC connectors are supported, starting with delegate version `849xx` or later.
 
 For AWS AMI artifacts, a version number represents the name of AMI. You can filter names by using tags/filter values.
 
@@ -3121,7 +3139,9 @@ To add an artifact from Github Packages, do the following:
   :::
 15. Select **Submit**. The Artifact is added to the Service Definition.
 
+### GitHub Connectors Limitations
 
+Harness does not support **GitHub App connectors** for configuring GitHub Packages as an artifact source.
 
 ### Permissions
 

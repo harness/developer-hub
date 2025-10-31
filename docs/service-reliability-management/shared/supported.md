@@ -4,7 +4,7 @@ Harness supports the following Health Sources and Change Sources.
 
 A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../monitored-service/health-source/static/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
 #### Metrics providers and logging tools
 

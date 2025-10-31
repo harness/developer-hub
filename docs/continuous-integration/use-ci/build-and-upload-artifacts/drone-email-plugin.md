@@ -19,7 +19,7 @@ You can use the [Email plugin](https://github.com/harness-community/drone-email)
                      name: Run_1
                      identifier: Run_1
                      spec:
-                       connectorRef: rutvijdocker
+                       connectorRef: YOUR_DOCKER_CONNECTOR_ID
                        image: alpine
                        shell: Sh
                        command: |-
@@ -41,13 +41,15 @@ You can use the [Email plugin](https://github.com/harness-community/drone-email)
                        connectorRef: YOUR_DOCKER_CONNECTOR_ID
                        image: plugins/email ## This is the email plugin image.
                        settings:
-                         from: sender@mysite.com ## The email address to send the notification from. Can be the same as the From Address in your Harness SMTP configuration.
+                         from.name: Harness CI ## The sender name
+                         from.address: sender@mysite.com ## The email address to send the notification from. Can be the same as the From Address in your Harness SMTP configuration.
                          recipients: test@mysite.com ## List of recipients to send the email to (besides the commit author).
                          host: smtp.somesmtpserver.com ## SMTP server address from your Harness SMTP configuration.
                          port: "25" ## SMTP server port from your Harness SMTP configuration.
                          skip_verify: "true" ## Set to 'true' to skip cert verification.
                          subject: somesubject ## Subject line.
                          body: file:///harness/test.html ## The email body. This can be an inline template or a URL. `file:///` is allowed.
+                         recipients_only: true
    ```
 
 For information about Email plugin settings, go to the [Email plugin documentation](https://github.com/harness-community/drone-email).
@@ -70,16 +72,18 @@ Here's an example of a Plugin step where the data is in the email body.
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/email
                     settings:
-                      from: sender@mysite.com
+                      from.name: Harness CI
+                      from.address: sender@mysite.com
                       recipients: test@mysite.com
                       host: smtp.somesmtpserver.com
                       port: "25"
                       skip_verify: "true"
                       subject: somesubject
                       body: file:///harness/test.html
+                      recipients_only: true
 ```
 
 ## Send data as an attachment
@@ -94,10 +98,11 @@ Here's an example of a Plugin step where the data is sent as an attachment.
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/email
                     settings:
-                      from: sender@mysite.com
+                      from.name: Harness CI
+                      from.address: sender@mysite.com
                       recipients: test@mysite.com
                       host: smtp.somesmtpserver.com
                       port: "25"
@@ -105,4 +110,5 @@ Here's an example of a Plugin step where the data is sent as an attachment.
                       subject: somesubject
                       body: somebody
                       attachment: /harness/test.html
+                      recipients_only: true
 ```

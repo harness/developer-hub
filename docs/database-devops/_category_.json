@@ -7,5 +7,6 @@
        "title":"Database DevOps"
     },
    "customProps":{
+      "description":"Learn how to use Harness Database DevOps to manage your database changes, automate deployments, and ensure compliance with governance policies."
     }
  }

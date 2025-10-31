@@ -14,13 +14,18 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import TokenExpiry from './static/token-expiry.png';
 
 
-Harness APIs use API keys to authenticate requests. You can create API keys for your personal account or for [service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account). Personal account API keys can be created only at the account scope, while service account API keys can be created at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+Harness APIs use API keys to authenticate requests. You can create API keys for either your personal account or a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account). API keys for personal accounts can be created only at the account level, whereas service account API keys can be created at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-After creating an API key, you must add tokens to the key, and then you use the tokens in your API requests or where ever else you need to supply an API key for authentication. Each API key can have multiple tokens.
+After creating an API key, you must add one or more tokens to it. These tokens are then used in your API requests or anywhere else an API key is required for authentication. Each API key can have multiple tokens.
 
-Keys and tokens inherit the permissions of the account they are created under. If you create an API key under your personal account, then the key and tokens have the same permissions as your account. If you create an API key under a service account, then the key and tokens have the same permissions as the service account. You must be an Account Admin (or equivalent) to create service accounts and API keys for service accounts.
+API keys and their tokens inherit the permissions of the account under which they are created. If the API key is created under your personal account, it will have the same permissions as your account. If it is created under a service account, it will inherit the permissions of that service account.
+
+:::note
+ To create service accounts and their API keys, you must have Account Admin privileges (or an equivalent role).
+:::
 
 ## Create personal API keys and tokens
 
@@ -38,7 +43,8 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
    ![](./static/api-quickstart-03.png)
 
-7. If you want to set an expiration date for the token, select **Set Expiration Date** and enter an expiration date in `mm/dd/yyyy` format.
+7. To set an expiration date for the token, select Set Expiration Date and enter the date in mm/dd/yyyy format. For more information about [token expiration](#expire-tokens), see the section below.
+
 8. Select **Generate Token** and copy the token.
 
    :::warning
@@ -85,7 +91,7 @@ Use these steps to create an API key and service account token (SAT) for a servi
 Use these steps to edit the name, description, or tags for an API key. To edit tokens under API keys, go to [edit tokens](#edit-tokens) and [rotate tokens](#rotate-tokens).
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Edit personal API keys" default>
 
 
@@ -115,7 +121,7 @@ Use these steps to edit the name, description, or tags for an API key. To edit t
 Use these steps to edit the name, description, tags, and expiration dates of tokens under API keys. You can also [rotate tokens](#rotate-tokens).
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Edit personal access tokens" default>
 
 
@@ -146,7 +152,7 @@ Use these steps to edit the name, description, tags, and expiration dates of tok
 As a security best practice, rotate tokens periodically. You can rotate tokens in Harness for symmetric encryption.
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Rotate personal access tokens" default>
 
 
@@ -187,7 +193,7 @@ After rotating tokens make sure you always use the new token.
 Use these steps to delete an API key and all of its tokens. To delete individual tokens under API keys, go to [delete tokens](#delete-tokens).
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Edit personal API keys" default>
 
 
@@ -211,7 +217,7 @@ Use these steps to delete an API key and all of its tokens. To delete individual
 ## Delete tokens
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Delete personal access tokens" default>
 
 
@@ -232,3 +238,16 @@ Use these steps to delete an API key and all of its tokens. To delete individual
 </TabItem>
 </Tabs>
 
+## Token Expiry
+
+When creating a token, you can choose how long it stays active. You can set it to expire in 30, 90, or 180 days — or pick a custom date. If you don't want it to expire, select No expiration.
+
+<img src={TokenExpiry} width="400"/>
+
+To set the expiration, Go to Profile Overview → My API Keys → Token.
+
+You can set expiration for both User tokens and Service Account tokens.
+
+:::note
+  Token expiration events are recorded in the audit logs. Expiration is checked every 5 minutes, so there may be a delay of up to 5 minutes between when a token expires and when the event is logged.
+:::

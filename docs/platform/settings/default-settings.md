@@ -105,11 +105,7 @@ Pre Flight check includes a series of check on the Pipeline such as verifying Pi
 
 You can enable Pre Flight Check by default by following these steps:
 
-:::info note
-This change is behind the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
-If the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT` is enabled then you will be able to see the default setting **Run Pre Flight checks by Default for Pipeline Execution** in Pipeline settings.
+In Pipeline settings, you will see the default setting **Run Pre Flight checks by Default for Pipeline Execution**.
 
 ![](./static/prelight_setting.png)
 
@@ -117,13 +113,29 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 
 ### Continuous Integration
 
+#### Build Intelligence
+
+- **Automatically Enable Build Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be set with Build Intelligence Intelligence enabled (users will still have the option to enable/disable the feature in stage settings as well). Using Build Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
+
+- **Maven Repository URL** - Applicable only in self-hosted builds. By default, the Build Intelligence plugin is downloaded from Maven Central. If you prefer using a custom Maven repository, provide a different URL.
+
+- **Cache Server Port** - Applicable only in self-hosted builds. Enter port to for the cache service proxy, in case the default port, 8082, cannot be used. 
+
+Learn more about [Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence/).
+
+
+#### Cache Intelligence
+
+- **Automatically Enable Cache Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be set with Cache Intelligence enabled (users will still have the option to enable/disable the feature in stage settings as well). Using Cache Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
+
+- **Always Override** - Enable cache override to always update the cache, regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh.
+
+Learn more about [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/).
+
+
 #### S3-Compatible Object Store for Self-Managed Build Infrastructure
 
-:::note
-S3-Compatible Object Store for Self-Managed Build Infrastructure will appear in Default Settings page in case any of the [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features for self-hosted build is enabled in the account.
-:::
-
-To use [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features (Build Intelligence,  Docker layer caching, and Build Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
+To use [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features (Build Intelligence, Docker layer caching, and Cache Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
 
 Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** settings to connect your S3-compatible object store to your Harness account. If you want to define different object store for individual organizations or projects, you must [allow overrides](#allow-overrides) and then change these settings at the lower scopes.
 
@@ -153,7 +165,7 @@ For information about these settings, go to [Pipeline settings](/docs/platform/p
 
 ### Cloud Cost Management
 
-For information about these settings, go to [Set up perspective preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences/#default-settings-for-perspective-preferences) and [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/).
+For information about these settings, go to [Set up perspective preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective?steps=step3) and [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/).
 
 ### Notifications
 

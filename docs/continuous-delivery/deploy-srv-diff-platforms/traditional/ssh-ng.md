@@ -149,6 +149,149 @@ Write down hosts as a comma separated list.
 
 :::
 
+### Filtering Hosts by Attributes
+
+This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
+
+You can control whether multiple host‑attribute filters are combined with **OR (match any)** or **AND (match all)** logic.
+
+**Any (default)** – a host is selected if at least one filter condition matches (existing behavior).
+
+**All** – a host is selected only if every filter condition matches.
+
+Specific Attribute: This is where you specify the condition on which the match criteria is checked with. You can specify attributes like region, type, name, etc.
+
+Under **Preview Hosts**, you can see what hosts match the condition.
+
+<div align="center">
+  <DocImage path={require('./static/pdc-specify-host.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+<details>
+<summary>Example of how filtering hosts by attributes works</summary>
+
+Suppose you have two hosts specified in your physical data center
+
+```json
+// Host‑1
+{
+  "hostname": "ec2-00-00-01.compute-1.amazonaws.com",
+  "hostAttribute": {
+    "region": "us-east-1",
+    "name": "node-1"
+  }
+}
+
+// Host‑2
+{
+  "hostname": "ec2-00-00-02.compute-1.amazonaws.com",
+  "hostAttribute": {
+    "region": "us-west",
+    "name": "node-5"
+  }
+}
+```
+
+Scenario 1: `matchCriteria: ALL`
+
+**YAML Example for `matchCriteria: ALL`**
+
+```yaml
+infrastructureDefinition:
+  name: pdc
+  identifier: pdc
+  orgIdentifier: default
+  projectIdentifier: project_id
+  environmentRef: env_id
+  deploymentType: Ssh
+  type: Pdc
+  spec:
+    connectorRef: abc
+    credentialsRef: credentials_ref
+    hostFilter:
+      type: HostAttributes
+      spec:
+        value:
+          region: us-east-1
+          name: node-1
+        matchCriteria: ALL
+  allowSimultaneousDeployments: false
+```
+
+- **matchCriteria: ALL** means that **both** conditions must be true for the host to be selected (both `region=us-east-1` **and** `name=node-1`).
+
+**Host‑1**
+- `region`: us-east-1 (matches)
+- `name`: node-1 (matches)
+
+**Selected**: Host‑1 meets both conditions, so it **matches**.
+
+**Host‑2**
+- `region`: us-west (does not match `us-east-1`)
+- `name`: node-5 (does not match `node-1`)
+
+**Not Selected**: Host‑2 does not meet **both** conditions, so it **does not match**.
+
+**Summary for `ALL`**:  
+- **Host‑1** is selected because both `region` and `name` match.  
+- **Host‑2** is not selected because neither `region` nor `name` match.
+
+---
+
+Scenario 2: `matchCriteria: ANY`
+
+**YAML Example for `matchCriteria: ANY`**
+
+```yaml
+infrastructureDefinition:
+  name: pdc
+  identifier: pdc
+  orgIdentifier: default
+  projectIdentifier: project_id
+  environmentRef: env_ref
+  deploymentType: Ssh
+  type: Pdc
+  spec:
+    connectorRef: abc
+    credentialsRef: credentials_ref
+    hostFilter:
+      type: HostAttributes
+      spec:
+        value:
+          region: us-east-1
+          name: node-1
+        matchCriteria: ANY
+  allowSimultaneousDeployments: false
+
+```
+
+- **matchCriteria: ANY** means that **either** condition must be true for the host to be selected (either `region=us-east-1` **or** `name=node-1`).
+
+**Host‑1**
+- `region`: us-east-1 (matches)
+- `name`: node-1 (matches)
+
+**Selected**: Host‑1 meets both conditions, so it **matches**.
+
+**Host‑2**
+- `region`: us-west (does not match `us-east-1`)
+- `name`: node-5 (does not match `node-1`)
+
+**Not Selected**: Host‑2 does not meet either condition, so it **does not match**.
+
+**Summary for `ANY`**:  
+- **Host‑1** is selected because **both** `region` and `name` match.  
+- **Host‑2** is not selected because neither `region` nor `name` matches.
+
+---
+
+Key Takeaways:
+
+- **matchCriteria: ALL**: The host is selected only if **both** conditions are true.
+- **matchCriteria: ANY**: The host is selected if **either** of the conditions is true.
+
+</details>
+
 ### Pre-existing infrastructure
 
 Let's look at an example of setting up an Infrastructure Definition for a pre-existing infrastructure.
@@ -199,7 +342,6 @@ infrastructureDefinition:
 - Only supported with AWS & Azure infrastructure, target to specific hosts already uses the same permissions as before, no new API call required.
 
  
-
 
 #### Create the PDC connector for the hosts
 
@@ -788,22 +930,46 @@ repeat:
 
 ### Reference hosts in steps using expressions
 
-You can use all of the `<+instance...>` expressions to reference your hosts.
+You can use the following [instance expressions](/docs/platform/variables-and-expressions/harness-variables) to reference your hosts:
 
-For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
+#### For Microsoft Azure or Physical Data Center (PDC):
 
-* `<+instance.hostName>`
-* `<+instance.host.hostName>`
-* `<+instance.name>`
+- `<+instance.hostName>`
+- `<+instance.host.hostName>`
+- `<+instance.name>`
 
-For Microsoft Azure or AWS:
+#### For Microsoft Azure and AWS:
 
-* `<+instance.host.privateIp>`
-* `<+instance.host.publicIp>`
+- `<+instance.host.privateIp>`
+- `<+instance.host.publicIp>`
+
+:::info
+- **For AWS with WinRM deployments:**  
+  Hostname-based expressions like `<+instance.hostName>` and `<+instance.host.hostName>` are **not supported**. Use `<+instance.host.privateIp>` or `<+instance.host.publicIp>` instead.
+
+- **For Azure with WinRM deployments:**  
+  Hostname-based expressions are supported if the hostname is available from the VM metadata.
+
+- `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+:::
 
 ### Rollback
 Harness restores the state of deployment to the pipeline's previous successful stage execution based on `serivce`, `enviroment` and `infrastucture` details.
 Harness records the artifact version that was successfully deployed during previous successful executions. When using the Rollback step's Copy Artifact command unit, Harness copies the last successful version of the artifact deployed via Harness to the remote host.
+
+:::info
+
+#### Rollback Behavior Enhancement for SSH/WinRM
+
+Harness has improved Rollback Behavior for SSH/WinRM deployments. This enhancement in behavior is controlled by the feature flag `CDS_FIX_ROLLBACK_IN_SSH_WINRM`. The following changes in behavior can be observed when this feature flag is enabled:
+
+- The Rollback Behavior has been enhanced to ensure that it **functions correctly even in cases where multiple command steps are configured within a stage**. 
+
+- Identifier Matching: For rollback to work correctly, each command step in the rollback section **must have the same identifier as the corresponding step in the execution section**. The names of the steps may differ, but identifiers must match.
+
+- For Canary, Rolling, and Basic deployment strategies, the **auto-generated YAML also follows the improved pattern with identifier matching if the feature flag is enabled**, thus ensuring identifier alignment between execution and rollback sections.
+
+:::
 
 #### First time deployment
 If the first pipeline execution fails (regardless of stage), Harness skips the rollback since there is no record of any successful pipeline execution.

@@ -33,10 +33,7 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 - Currently, you cannot add artifacts to your Harness SAM service.
 - You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed. For more information, go to [AWS documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html#ref-sam-cli-build-options).
 - Harness doesn't support a controlled AWS SAM Rollback after a deployment pipeline failure occurs. AWS SAM will deploy the lambda function and if it fails during stack creation, cloudformation will roll it back. After a succesful AWS SAM deployment, Harness is not able to initiate a rollback, due to the AWS SAM cli's limitation to trigger rollback on demand.
-
-:::info
-Currently OIDC connectors are not supported in AWS SAM deployments. 
-:::
+- AWS OIDC connectors are supported for AWS SAM deployments starting with delegate version `855xx` or later.
 
 ## Demo Video
 
@@ -70,7 +67,7 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 ## Containerized step images
 
-#### Old Images
+### Old Images
 
 Harness supports different images for Build and Deploy for AWS SAM deployment. 
 
@@ -86,36 +83,51 @@ and  [`harnessdev/sam-deploy`](https://hub.docker.com/r/harnessdev/sam-deploy/ta
 
 We recommend you to use the new images that we have introduced with multiple runtime support.
 
-#### New Images
+### New SAM Images
 
-Harness support [multiple runtime images](https://hub.docker.com/r/harness/aws-sam-plugin/tags) for **nodejs20**, **nodejs18**, **python3.11**, **python3.12**, **ruby3.2**, **java8**, **go1.24**   and **java17**.. These are Linux AMD64 images. 
+Harness support [multiple runtime images](https://hub.docker.com/r/harness/aws-sam-plugin/tags) for **nodejs22**, **nodejs20**, **nodejs18**, **python3.11**, **python3.12**, **ruby3.2**, **java 21**,**java17**, **java8** and **go1.22**. These are Linux AMD64 images.
 
-Unlike old images, in new images a single image has the capabiliity of handling all the SAM steps.
+Unlike old images, in new images a single image has the capability of handling all the SAM steps.
 
- Runtimes | Images |
-| --- | --- |
-| nodejs 20 | harness/aws-sam-plugin:nodejs20.x-1.120.0-1.0.1-beta-linux-amd64 |
-| nodejs 18 | harness/aws-sam-plugin:nodejs18.x-1.120.0-1.0.1-beta-linux-amd64 |
-| java 17   | harness/aws-sam-plugin:java17-1.120.0-1.0.1-beta-linux-amd64 |
-| python 3.11   | harness/aws-sam-plugin:python3.11-1.20.0-1.0.1-beta-linux-amd64 |
-| python 3.12   | harness/aws-sam-plugin:python3.12-1.120.0-1.0.1-beta-linux-amd64 |
-| ruby 3.2   | harness/aws-sam-plugin:ruby3.2-1.20.0-1.0.1-beta-linux-amd64 |
-| java 8   | harness/aws-sam-plugin:java8-1.112.0-1.0.1-beta-linux-amd64 |
-| go 1.24   | harness/aws-sam-plugin:go1.x-1.113.0-1.0.1-beta-linux-amd64 |
+ Runtimes | Images | Runtime Version | SAM Version | 
+| --- | --- | --- | --- |
+| **nodejs 22** | [harness/aws-sam-plugin:nodejs22.x-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/nodejs22.x-1.143.0-1.1.2-beta-linux-amd64/images/sha256-8ca7c040ea7413771f8b7878aca8c44f10cc4781b9b08dfe763894a89ea64e9c) | nodejs v22.14.0 | 1.143.0 |
+| **nodejs 20** | [harness/aws-sam-plugin:nodejs20.x-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/nodejs20.x-1.143.0-1.1.2-beta-linux-amd64/images/sha256-a74bc2bb0697285a8d40905bb101b5d97f5734015021ef75f395bf69eb7124d9) | nodejs v20.19.0 | 1.143.0 |
+| **nodejs 18** | [harness/aws-sam-plugin:nodejs18.x-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/nodejs18.x-1.143.0-1.1.2-beta-linux-amd64/images/sha256-b5d43ce97401a8e6ea649a8f4e082f7b9139084173b0d79003b88512c30a1263) | nodejs v18.20.7 | 1.138.0 |
+| **java 21** | [harness/aws-sam-plugin:java21-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/java21-1.143.0-1.1.2-beta-linux-amd64/images/sha256-b7e1e1a40937627c6b0a04ac83d9d93de244df6ca351492eae42cefb04910da1) | openjdk 21.0.6 | 1.140.0 |
+| **java 17** | [harness/aws-sam-plugin:java17-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/java17-1.143.0-1.1.2-beta-linux-amd64/images/sha256-aaa1d65aa23ce9edb3b4eaafdb9212dcaf576782fcddace33f258570077ae3b4) | openjdk 17.0.11 | 1.143.0 |
+| **java 8** | [harness/aws-sam-plugin:java8-1.112.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/java8-1.112.0-1.1.1-beta-linux-amd64/images/sha256-78db9ae25aa1852adc2348d06205f5b98552809329825d09a88204bf9a1ca45a) | openjdk 1.8.0_372 | 1.112.0 |
+| **python 3.13** | [harness/aws-sam-plugin:python3.13-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/python3.13-1.143.0-1.1.2-beta-linux-amd64/images/sha256-a1dec87c0a2f2871da136f11d5219e2f580ab06b54d57ba9c245aec21d090d14) | Python 3.13.5 | 1.143.0 |
+| **python 3.12** | [harness/aws-sam-plugin:python3.12-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/python3.12-1.143.0-1.1.2-beta-linux-amd64/images/sha256-b9714a51a7256d8a465135a98c5597323231aa0122b181b505eea423cfa3b717) | Python 3.12.9 | 1.143.0 |
+| **python 3.11** | [harness/aws-sam-plugin:python3.11-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/python3.11-1.143.0-1.1.2-beta-linux-amd64/images/sha256-00743906b87db47c54da6726cdb4b79cd587dc2122d7d5087c09ef47ff633cd4) | Python 3.11.11 | 1.143.0 |
+| **ruby 3.2** | [harness/aws-sam-plugin:ruby3.2-1.143.0-1.1.2-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/ruby3.2-1.143.0-1.1.2-beta-linux-amd64/images/sha256-716bf196b057d85f06c3ba66fe79bd545193092095431ce08eb50d8e0aebbf61) | ruby 3.2.8 | 1.143.0 |
+| **go 1.22** | [harness/aws-sam-plugin:go1.x-1.113.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/go1.x-1.113.0-1.1.1-beta-linux-amd64/images/sha256-ba58774a45ef3f87d45984a12151112ecc97a5e6eef242e58d648402d7f703ad) | go1.22.1 | 1.113.0 |
 
 Now, let's understand the runtime image:-
-![](./static/multiple-runtime-sam.png)
+
+<div align="center">
+  <DocImage path={require('./static/multiple-runtime-sam.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
 
 For ECR users, you can access these images via the [ECR Image Repository for SAM Plugin](https://gallery.ecr.aws/harness/harness/aws-sam-plugin).
 
-:::important note
-These images can only be used in containerized step.
-:::
+For GAR users, you can access these images via the [GAR Image Repository for SAM Plugin (US region)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Faws-sam-plugin) and [GAR Image Repository for SAM Plugin(Europe region)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Faws-sam-plugin?inv=1&invt=Ab5cNA)
 
+Harness releases new AWS SAM Plugin images once every 3 months. If you want to use the latest AWS SAM Plugin images, you can build your own image using the [SAM Plugin Image Builder](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/sam-image-build).
+
+### Build your own image
+
+You can also build your own image based on the base image provided by Harness and use it in the SAM deployments. 
+
+**How this pipeline works:**
+
+Harness provide a base image that has the AWS SAM plugin binary. The pipeline takes a pre-built scratch image containing the AWS SAM plugin binary and creates a properly tagged final image that combines it with the appropriate SAM runtime.
+
+For more details, go to [SAM Plugin Image Builder](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/sam-image-build).
 
 ## Use AWS IRSA for Harness AWS connector credentials
 
-The **Use IRSA** option allows you to use a service account with a specific IAM role when making authenticated requests to resources. In order for it work in this case you will need to create a service account in the namespace where the step group will be run that has the releveant IAM role with IRSA. In this case it is the step group pod that makes the relevant API calls and hence needs the IRSA service account setup. 
+The **Use IRSA** option allows you to use a service account with a specific IAM role when making authenticated requests to resources. In order for it work in this case you will need to create a service account in the namespace where the step group will be run that has the relevant IAM role with IRSA. In this case it is the step group pod that makes the relevant API calls and hence needs the IRSA service account setup. 
 
 :::info
 
@@ -460,119 +472,6 @@ Successfully created/updated stack - STACK_NAME
 SAM Deploy Successful
 ```
 
-## FAQs for AWS SAM
-
-**Question:** Where does Harness publish it's images for AWS SAM Build and Deploy?
-
-- We publish these images in Harness' DockerHub Registry for user's to reference in their SAM Build or SAM Deploy Steps
-- For SAM Build: https://hub.docker.com/r/harnessdev/sam-build
-- For SAM Deploy: https://hub.docker.com/r/harnessdev/sam-deploy/tags
-
-In your Harness Steps, you can update the Container Configuration's Image section with a newer version of the image.
-
-**Question:** How do we debug the SAM Build or SAM Deploy Steps?
-
-Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag. This will help print more verbose errors when troubleshooting failures
-
-```YAML
-                    - step:
-                        type: AwsSamBuild
-                        name: SAM Build
-                        identifier: SAM_Build
-                        spec:
-                          connectorRef: account.harnessImage
-                          image: harnessdev/sam-build:1.82.0-latest
-                          imagePullPolicy: Always
-                          buildCommandOptions:
-                            - "--use-container"
-                            - "--debug" ## This field needs to be added.
-                            - "--build-image harnessdev/testing:5.6.4" ## This field will need to be added
-                          envVariables:
-                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml
-                          runAsUser: root
-                          samBuildDockerRegistryConnectorRef: account.harnessImage
-                        when:
-                          stageStatus: Success
-                        timeout: 10m
-```
-
-**Question:** What versions of SAM CLI Version are supported by Harness?
-
-- We support SAM CLI Version 1.84.0
-- We are working to stay up to date with the latest versions of SAM CLI and making sure it's compatible with newer versions of our steps.
-
-**Question:** Can we fetch Build Images from a Public Repo?
-
-- Yes, Harness can fetch build images from a public repo. Please see https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-image-repositories.html for all the Sam Build Image options from the public ECR Repo.
-
-- In the AWS SAM Build Command Options you can pass in an argument like so:
-
-```SH
---build-image public.ecr.aws/sam/build-nodejs18.x:1.100.0-20231031004056
-```
-
-In the Step YAML
-
-```YAML
-                    - step:
-                        type: AwsSamBuild
-                        name: SAM Build
-                        identifier: SAM_Build
-                        spec:
-                          connectorRef: account.harnessImage
-                          image: harnessdev/sam-build:1.82.0-latest
-                          imagePullPolicy: Always
-                          buildCommandOptions:
-                            - "--use-container"
-                            - "--debug"
-                            - "--build-image harnessdev/testing:5.6.4" ## This field will need to be added
-                          envVariables:
-                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml
-                          runAsUser: root
-                          samBuildDockerRegistryConnectorRef: account.harnessImage
-                        when:
-                          stageStatus: Success
-                        timeout: 10m
-```
-
-**Question:** Can we fetch Build Images from a Private Repo?
-
-- Yes Harness can fetch your Build Images from a private repo. This will require the user to have the proper permissions configured and the correct user access to the container repo.
-- In the SAM Build Step, under the SAM Build Docker Container Registry Section, you can specify the specific image repository you want to fetch your SAM Build Image.
-
-**Question:** How to access the SAM Build Step Outputs?
-
-- SAM build creates a “.aws-sam" directory in the same directory where your template.yml exists.
-
-- By default, Download Manifests Step downloads your repo in `/harness/MANIFEST_IDENTIFIER/` path which should be `/harness/dev/` in this case.
-- If you have customized the step and the SAM template.yaml exits in the root level directly, AWS SAM outputs won't be available in the root path. You need to make sure `.aws-sam` should be present `/harness/dev/` path.
-
-**Question:** How do I pass in the SAM Template path as an environment variable?
-
-- Under the Environment Variables section of the step, you can specify a key and value
-- For the Key, you can provide `PLUGIN_SAM_TEMPLATE_FILE_PATH` and the value can be a `fixed`, `expression` input.
-
-```YAML
-                    - step:
-                        type: AwsSamBuild
-                        name: SAM Build
-                        identifier: SAM_Build
-                        spec:
-                          connectorRef: account.harnessImage
-                          image: harnessdev/sam-build:1.82.0-latest
-                          imagePullPolicy: Always
-                          buildCommandOptions:
-                            - "--use-container"
-                            - "--debug"
-                            - "--build-image harnessdev/testing:5.6.4"
-                          envVariables:
-                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml  ## This field will need to be added
-                          runAsUser: root
-                          samBuildDockerRegistryConnectorRef: account.harnessImage
-                        when:
-                          stageStatus: Success
-                        timeout: 10m
-```
 ## FAQs
 
 For frequently asked questions about AWS deployments in Harness, go to [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs).

@@ -68,7 +68,7 @@ In the following YAML example, the Run step runs a Python script to get dependen
     name: Fetch Deps
     identifier: Fetch_Deps
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:latest
       shell: Sh
       command: python3 build/getdeps.py fetch --no-tests <+matrix.deps>
@@ -190,7 +190,7 @@ You can use **Run** steps to [run tests in CI pipelines](/docs/continuous-integr
     name: build and test
     identifier: build and test
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: gradle:alpine
       shell: Sh
       command: |

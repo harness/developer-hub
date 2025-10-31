@@ -5,48 +5,32 @@ sidebar_label: Anchore Enterprise step configuration
 sidebar_position: 20
 ---
 
-<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
-You can scan your container images with [Anchore Enterprise](https://docs.anchore.com/current/docs/).
+The **Anchore Enterprise** step in Harness STO lets you scan your container images using [Anchore Enterprise](https://docs.anchore.com/current/docs/).  
+This step supports the following scan modes: [Orchestration](#anchore-enterprise-orchestration-example), [Extraction](#scan-mode), and [Ingestion](#scan-mode).
 
-## Important notes for running Anchore Enterprise scans in STO
+Before running Anchore Enterprise scans in STO, make sure the following requirements are met:
 
-### Anchore Enterprise requirements
-
-- You must use the Anchore v2 API and Anchore Enterprise Server v5.0 or higher to run orchestration and extraction scans.
-
-When you deploy an Anchore Enterprise server, expose port 8228. Harness uses this port to communicate with the server.
-
-### All data ingestion methods are supported
-
-You can run Orchestration, Extraction, and Ingestion workflows with Anchore Enterprise. This topic includes an [Orchestration pipeline example](#anchore-enterprise-orchestration-example) below.
-
-### Scans in air-gapped environments are supported
-
-You can run Anchore Enterprise scans in air-gapped environments. For more information, go to the Anchore Enterprise documentation:
-
-- [Running Anchore Enterprise in an Air-Gapped Environment](https://docs.anchore.com/3.0/docs/overview/air_gapped)
-- [Anchore Enterprise Feeds](https://docs.anchore.com/current/docs/overview/feeds)
-
-### Root access requirements
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
-
-### For more information
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
-
-<StoMoreInfo />
+- **Anchore API and Version Compatibility**: Use the **Anchore v2 API** and **Anchore Enterprise Server v5.0 or later** when running [Orchestration](#anchore-enterprise-orchestration-example) or [Extraction](#scan-mode) scan modes.
+- **Server Configuration**: When deploying your Anchore Enterprise server, ensure that **port 8228** is exposed. Harness uses this port to communicate with the Anchore server.
+- **Air-Gapped Environments**: If you’re using this step in an air-gapped setup, review the following Anchore documentation for setup and feed synchronization guidance:  
+  - [Running Anchore Enterprise in an Air-Gapped Environment](https://docs.anchore.com/3.0/docs/overview/air_gapped)  
+  - [Anchore Enterprise Feeds](https://docs.anchore.com/current/docs/overview/feeds)
 
 
-## Anchore Enterprise step settings in STO
+:::info
+- To run scans as a non-root user, you can use custom STO scan images and pipelines. See [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports multiple workflows for loading self-signed certificates. See [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates).
+:::
+
+
+## Anchore Enterprise step settings
 
 The recommended workflow is to add an Anchore Enterprise step to a Build or Security stage and then configure it as described below. 
 
@@ -61,6 +45,9 @@ import StoSettingScanModeData from './shared/step-palette/scan/mode/extraction.m
 import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 <StoSettingScanModeOrch />
+
+Refer to the [Orchestration setup](#anchore-enterprise-orchestration-example) section below to learn how to configure the **Orchestration** scan mode.
+
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
@@ -71,6 +58,11 @@ import StoSettingProductConfigName from './shared/step-palette/scan/config-name.
 
 <StoSettingProductConfigName />
 
+This option allows you to set the Anchore's `VULN_TYPE` parameter. This setting filters the records returned to STO; it does not change how Anchore analyzes images.
+
+- **Default** or **All**: Combination report containing both **OS** and **Non-OS** vulnerability records.
+- **OS**: Vulnerabilities against operating system packages (RPM, DPKG, APK, etc.).
+- **Non-OS**: Vulnerabilities against language packages (NPM, GEM, Java Archive (jar, war, ear), Python PIP, .NET NuGet, etc.).
 
 ### Target
 
@@ -180,10 +172,15 @@ import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.m
 
 ### Scan Tool
 
-#### Image Name
+#### Use Raw Scanner Severity
 
-The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example, `ubuntu:20.04`.
+import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
 
+<ScannerProvidedSeverity />
+
+#### Image Name (*for **Extraction** Scan Mode*)
+
+This field appears only when you select **Extraction** as the [Scan Mode](#scan-mode). The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example, `ubuntu:20.04`.
 
 ### Log Level
 
@@ -329,6 +326,3 @@ pipeline:
 ```
 
 </details>
-
-
-

@@ -481,7 +481,7 @@ The `spec.steps` field contains only one action, and that is to trigger a Harnes
 
 ### Register the Workflow
 
-Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/catalog-2o.md).
 
 Now navigate to the **Create** page in IDP. You will see the newly created Workflow appear. Try it out!
 

@@ -1,7 +1,7 @@
 ---
 title: What's supported by Harness Platform
 description: Technologies supported by Harness Platform
-sidebar_label: What's supported
+sidebar_label: What's Supported
 sidebar_position: 1
 helpdocs_topic_id: 1e536z41av
 helpdocs_category_id: kx4hs8bn38
@@ -28,6 +28,7 @@ For supported platforms and technologies by module, go to the module documentati
 * [What's supported in CV](/docs/continuous-delivery/verify/cv-whats-supported)
 * [What's supported in CI](/docs/continuous-integration/ci-supported-platforms)
 * [What's supported in FF](/docs/feature-flags/ff-supported-platforms)
+* [What's supported in FME](/docs/feature-management-experimentation/getting-started/whats-supported)
 * [What's supported in CCM](/docs/cloud-cost-management/whats-supported)
 * [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments)
 * [What's supported in SCS](/docs/software-supply-chain-assurance/ssca-supported)
