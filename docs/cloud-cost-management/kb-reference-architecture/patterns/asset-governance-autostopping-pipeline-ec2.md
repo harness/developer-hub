@@ -444,7 +444,7 @@ Replace the url with the webhook url we copied earlier
 
 ## Execute
 
-When we run the Asset Governance rule (not in dry-run mode) and when a resource is found, Asset Governance will call our pipeline custom trigger and pass the metadata. Navigate to `Execution History` of your pipeline and ensure the latest pipeline was successful. If you want to automate the invoking of the Asset Governance rule, you can create an [enforcement](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/aws/harness-concepts#enforcements)
+When we run the Asset Governance rule (not in dry-run mode) and when a resource is found, Asset Governance will call our pipeline custom trigger and pass the metadata. Navigate to `Execution History` of your pipeline and ensure the latest pipeline was successful. If you want to automate the invoking of the Asset Governance rule, you can create an enforcement.
 
 ![](../static/ccm-asset-governance-execution-history.png)
 
