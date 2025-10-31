@@ -928,5 +928,11 @@
     "description": "Enables usage of GSA for writing and reading logs from GCP",
     "gaStartDate": "2025-10-24",
     "module": "Platform"
+  },
+  {
+    "flagKey": "CDS_GITOPS_STEP_DELEGATE_SELECTOR_PRECEDENCE",
+    "description": "Flag to follow delegate selector precedence in GitOps steps",
+    "gaStartDate": "2025-10-31",
+    "module": "GitOps"
   }
 ]
