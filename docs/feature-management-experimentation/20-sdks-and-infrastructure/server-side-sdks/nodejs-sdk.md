@@ -1437,7 +1437,7 @@ const clientKey = fs.readFileSync('certs/client.key');
 // Create an agent to use the forward proxy at https://harness-fproxy:3128 with a custom CA certificate and mTLS
 const { HttpsProxyAgent } = require('https-proxy-agent');
 const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
-  ca: caCert,                     // CA certificate for self-signed cert
+  ca: caCert,                   // CA certificate for self-signed cert
   cert: clientCert,             // mTLS: client certificate
   key: clientKey                // mTLS: private key
 });
@@ -1635,25 +1635,25 @@ const path = require('path');
 const SplitFactory = require('@splitsoftware/splitio').SplitFactory;
 
 async function createSplitClient() {
-    const SplitObj = SplitFactory({
-        core: {
-            authorizationKey: 'localhost'
-        },
-        startup: {
-            readyTimeout: 10
-        },
-        features: path.join(__dirname, 'first.yaml'),
-        debug: true
-    });
-    const client = SplitObj.client();
-    await client.ready();
-    console.log("SDK is ready");
-    return client;
+  const factory = SplitFactory({
+    core: {
+      authorizationKey: 'localhost'
+    },
+    startup: {
+      readyTimeout: 10
+    },
+    features: path.join(__dirname, 'first.yaml'),
+    debug: true
+  });
+  const client = factory.client();
+  await client.ready();
+  console.log("SDK is ready");
+  return client;
 }
 
 async function getSplitTreatment(userKey, splitName) {
-    let splitClient = await createSplitClient();
-    return await splitClient.getTreatment(userKey, splitName);
+  let splitClient = await createSplitClient();
+  return await splitClient.getTreatment(userKey, splitName);
 }
 
 getSplitTreatment("user", "first_split")
@@ -1671,13 +1671,13 @@ Using Node.js SDK, when trying to run the code below in Typescript file using Lo
 
 ```typescript
 var factory = SplitFactory({
-    core: {
-         authorizationKey: 'localhost'
-    },
-    features: path.join(__dirname, '.split'),
-    scheduler: {
-        offlineRefreshRate: 15 // 15 sec
-    }
+  core: {
+     authorizationKey: 'localhost'
+  },
+  features: path.join(__dirname, '.split'),
+  scheduler: {
+    offlineRefreshRate: 15 // 15 sec
+  }
 });
 ```
 
