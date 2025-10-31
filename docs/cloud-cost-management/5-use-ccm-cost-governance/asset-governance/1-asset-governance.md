@@ -264,6 +264,89 @@ In the output window, users can see the resources identified in form of a Table 
 
 <DocImage path={require('./static/evaluations-azure-table.png')} width="90%" height="90%" title="Click to view full size image" />
 
+## Cost Correlation
+
+Cost Correlation in Harness CCM connects governance with their actual cost impact, allowing you to quantify the financial implications. 
+
+### What's supported
+
+| Cloud | Cost Correlation                                                                                                                                                                                                                                                         | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) | Perspective Preferences |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- | --------------- | ------------ | ------------------------------ | ----------------------- |
+| AWS   | `aws.ec2`, `aws.ebs`, `aws.rds`, `aws.ebs-snapshot`, `aws.elastic-ip`, `aws.elb`, `cache-cluster`, `s3`, `redshift`, `redshift-snapshot`, `aws.log-group`, `aws.rds-snapshot`, `aws.nat-gateway`, `aws.sqs`, `aws.firehose`, `aws.dynamodb-table`                        | Yes ✅                            | Yes ✅          | Yes ✅       | Yes ✅                         | Yes ✅                  |
+| GCP   | `gcp.instance`, `gcp.disk`, `gcp.snapshot`, `gcp.sql-instance`, `gcp.image`, `gcp.loadbalancer-address`, `gcp.loadbalancer-forwarding-rule`, `gcp.bucket`, `gcp.gke-cluster`, `gcp.bq-dataset`, `gcp.function`, `gcp.redis`, `gcp.cloud-run-service`, `gcp.dataflow-job` | No ❌                             | Yes ✅          | Yes ✅       | No ❌                          | Yes ✅                  |
+| Azure | Every Resource in Billing Report                                                                                                                                                                                                                                         | Yes ✅                            | Yes ✅          | Yes ✅       | No ❌                          | Yes ✅                  |
+
+### Cost Impact/Cost Co-relation
+
+When you click on **Refresh** button on the screen, CCM refreshes or updates the cost of all resources in the evaluation. It is exposed to resolve cases where the cost for any resource is not yet part of CUR, Billing Report, or Billing Data (due to newly deployed resources, etc.). You can hit the refresh cost button only once every 30 minutes for any evaluation.
+
+:::note
+
+- Cost co-relation for GCP would work only if detailed billing export is setup.
+- Changes made to "Perspective Preferences" in Account Settings of Cloud Cost Management will be now applied to Asset Governance. In case of AWS, previously, costs were taken as "Unblended". Now, users can select it to be Blended, Net-Amortised, Amortised, Effective or Unblended. Kindly note, it might take up to 30 minutes for costs to be refreshed after changes are applied.
+- Azure Preferences set in Account Settings will now also be honored.
+:::
+
+:::important
+- The savings from the governance rule for a resource type would depend on the cost of the filtered resource and the savings percentage set on the governance rule, given one of the below action is applied on the corresponding resource.
+- For any "not supported" resource, we support cost computation on the filtered resources but not the savings computation as cloud-custodian do not provide any terminal action for that resource.
+
+<details>
+<summary>List of Savings Supported Actionss</summary>
+
+| Resource Name | Savings Supported Actions |
+| --- | --- |
+| aws.app-elb | delete |
+| aws.cache-cluster | delete |
+| aws.dynamodb | delete |
+| aws.ebs | delete, modify |
+| aws.ebs-snapshot | delete, modify |
+| aws.ec2 | stop, terminate |
+| aws.eip | release |
+| aws.elasticsearch | delete |
+| aws.elb | delete |
+| aws.emr | terminate |
+| aws.emr-serverless-app | delete |
+| aws.eni | delete |
+| aws.firehose | delete |
+| aws.glue-crawler | delete |
+| aws.glue-job | delete |
+| aws.insight-rule | delete |
+| aws.lambda | delete |
+| aws.log-group | delete |
+| aws.nat-gateway | delete |
+| aws.opensearch-serverless | delete |
+| aws.rds | stop, modify, resize, modify-db, delete |
+| aws.rds-cluster | delete, stop |
+| aws.rds-cluster-snapshot | delete |
+| aws.rds-snapshot | delete |
+| aws.redshift | pause, delete |
+| aws.redshift-snapshot | delete |
+| aws.s3 | delete, set-intelligent-tiering, configure-lifecycle |
+| aws.sqs | delete |
+| aws.vpc-endpoint | not supported |
+| aws.workspaces | terminate |
+| azure | stop, delete, poweroff, resize |
+| gcp.bq-dataset | not supported |
+| gcp.bucket | not supported |
+| gcp.cloud-run-service | not supported |
+| gcp.dataflow-job | not supported |
+| gcp.disk | delete |
+| gcp.function | delete |
+| gcp.gke-cluster | delete |
+| gcp.image | delete |
+| gcp.instance | stop, delete, suspend |
+| gcp.loadbalancer-address | delete |
+| gcp.loadbalancer-forwarding-rule | not supported |
+| gcp.redis | not supported |
+| gcp.snapshot | delete |
+| gcp.sql-instance | delete, stop |
+
+</details>
+
+:::
+
+
 #### Filters in Evaluations List Page
 
 You can create filters to view selected rules:
