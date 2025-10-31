@@ -440,7 +440,7 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Architect (BETA COMING
+                      Internal Developer Portal - Architect (BETA COMING
                       SOON)
                     </h2>
                     <img

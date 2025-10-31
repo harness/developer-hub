@@ -36,6 +36,7 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 		- [Prevent users from leveraging steps that are not allowed by the company](#prevent-users-from-leveraging-steps-that-are-not-allowed-by-the-company)
 		- [Enforce a deployment freeze via policy](#enforce-a-deployment-freeze-via-policy)
 		- [Enforce remote pipeline execution from the default branch only if the user is not part of a specific user group](#enforce-remote-pipeline-execution-from-the-default-branch-only-if-the-user-is-not-part-of-a-specific-user-group)
+		- [Restrict certain commands from Inline ShellScript or Run Steps](#restrict-certain-commands-from-inline-shellscript-or-run-steps)
 	- [Feature Flag policies](#feature-flag-policies)
 		- [Prevent feature flags from being enabled in a production environment that are not configured in a stage environment](#prevent-feature-flags-from-being-enabled-in-a-production-environment-that-are-not-configured-in-a-stage-environment)
 		- [Enforce the flag types that are configured for Feature Flags](#enforce-the-flag-types-that-are-configured-for-feature-flags)
@@ -341,6 +342,38 @@ deny[msg] {
 
 	# Show a human-friendly error message
 	msg := "Execution is only allowed from default branch for this user"
+}
+
+```
+
+#### Restrict certain commands from Inline ShellScript or Run Steps
+
+The following outlines methods to restrict certain commands from being utilized within Shell Scripts or Run Steps.  These will apply to templates as well.  Please note that scripts that are used, but are stored in Harness File Store will not be evaluated as the only YAML informatil that exists within the pipeline will be a reference to the file, and not the content of the file.
+
+For this example, a customer wants to remove any possibility of running `Maven Debug proceses`.
+
+```
+package pipeline
+
+# Deny step if shell script it contains Maven with debug
+# e.g. mvn install -X
+
+deny[msg] {
+  step := input.pipeline.stages[_].stage.spec.execution.steps[_].step
+  
+  # Find all mvn command -X matches
+  regex.match("\\b(mvn\\b[^\\n]*?\\s-X\\b[^\\n]*)\\b", step.spec.source.spec.script)
+
+  msg := sprintf("Shell Script Step contains Maven Debug Flag.  This is not allowed.",[step.identifier])
+}
+
+deny[msg] {
+  step := input.pipeline.stages[_].stage.spec.execution.steps[_].step
+  
+  # Find all mvn command -X matches
+  regex.match("\\b(mvn\\b[^\\n]*?\\s-X\\b[^\\n]*)\\b", step.spec.command)
+
+  msg := sprintf("Run Step contains Maven Debug Flag.  This is not allowed.",[step.identifier])
 }
 
 ```

@@ -8,31 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-:::danger Breaking Changes 
-   **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
-
-    Currently, **Notification Rules** and **Notification Channels** are governed by a single set of permissions:
-
-    | **Resource**                                      | **Permissions**                                                                                                              | **Current status** | **New status** |
-    |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------|
-    | **Notifications Rules and Notification Channels** | <li>View (`core_notification_view`)</li><li>Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li> | DEPRECATED             | INACTIVE     |
-
-
-    However, starting from June 12, 2025, these permissions will become non-operational. They will be replaced with separate new permissions: 
-
-    | **Resource**              | **New Permissions**                                                                                                                               | **Current status** | **New status** |
-    |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------|
-    | **Notification Rules**    | <li>View (`core_notificationrule_view`)</li><li>Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li>          | EXPERIMENTAL       | ACTIVE         |
-    | **Notification Channels** | <li>View (`core_notificationchannel_view`)</li><li>Edit (`core_notificationchannel_edit`)</li><li>Delete (`core_notificationchannel_delete`)</li> | EXPERIMENTAL       | ACTIVE         |
-
-
-    If any automation relies on these `core_notification_view/edit/delete` permissions, we recommend updating them accordingly.
-
-    **Note:** The existing legacy notification permissions are DEPRECATED and will soon be moved to an INACTIVE state. The new permissions will be released in the ACTIVE state with RBAC enforced.
-:::
-
-
 This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, go to the [API permissions reference](/docs/platform/automation/api/api-permissions-reference).
 
 :::note
@@ -108,7 +83,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | --- | --- | --- |
 | Templates | <ul><li>View (`core_template_view`)</li><li>Create/Edit (`core_template_edit`)</li><li>Delete (`core_template_delete`)</li><li>Access: Can access referenced templates at runtime (`core_template_access`)</li><li>Copy (`core_template_copy`)</li></ul> | Active |
 | Deployment Freeze | <ul><li>Manage (`core_deploymentfreeze_manager`)</li><li>Override (`core_deploymentfreeze_override`)</li><li>Global (`global`)</li></ul> | Active |
-| Secrets | <ul><li>View (`core_secret_view`)</li><li>Create/Edit (`core_secret_edit`)</li><li>Delete (`core_secret_delete`)</li><li>Access: Can access referenced secrets at runtime (`core_secret_access`)</li></ul> | Active |
+| Secrets | <ul><li>View (`core_secret_view`)</li><li>Create/Edit (`core_secret_edit`) – Default permission.<ul><em><strong>Note</strong>: You can enable feature flags to split the default <code>Create/Edit</code> permission into separate <code>Create</code> and <code>Edit</code> permissions for more granular control. See the <a href="/docs/platform/role-based-access-control/rbac-in-harness#secrets">documentation</a> for details.</em><li>Create (`core_secret_create`)</li><li>Edit (`core_secret_edit`)</li></ul></li><li>Delete (`core_secret_delete`)</li><li>Access (`core_secret_access`)</li></ul> | Active |
 | Connectors | <ul><li>View (`core_connector_view`)</li><li>Create/Edit (`core_connector_edit`)</li><li>Delete (`core_connector_delete`)</li><li>Access: Can access referenced connectors at runtime (`core_connector_access`)</li></ul> | Active |
 | Variables | <ul><li>View (`core_variable_view`)</li><li>Create/Edit (`core_variable_edit`)</li><li>Delete (`core_variable_delete`)</li></ul> | Active |
 | Files | <ul><li>View (`core_file_view`)</li><li>Create/Edit (`core_file_edit`)</li><li>Delete (`core_file_delete`)</li><li>Access (`core_file_access`)</li></ul> | Active |
@@ -274,7 +249,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Schemas | <ul><li>View (`dbops_schema_view`)</li><li>Create/Edit (`dbops_schema_edit`)</li><li>Delete (`dbops_schema_delete`)</li></ul> | Active |
 | Instances | <ul><li>View (`dbops_instance_view`)</li><li>Create/Edit (`dbops_instance_edit`)</li><li>Delete (`dbops_instance_delete`)</li></ul> | Active |
 
-## Artifact Management
+### Artifact Management
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
@@ -286,16 +261,21 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | --- | --- | --- |
 | SEI Collections | <ul><li>View (`sei_seicollections_view`)</li><li>Create (`sei_seicollections_create`)</li><li>Edit (`sei_seicollections_edit`)</li><li>Delete (`sei_seicollections_delete`)</li></ul> | Active |
 | SEI Configuration Settings | <ul><li>View (`sei_seiconfigurationsettings_view`)</li><li>Create (`sei_seiconfigurationsettings_create`)</li><li>Edit (`sei_seiconfigurationsettings_edit`)</li><li>Delete (`sei_seiconfigurationsettings_delete`)</li></ul> | Active |
+| SEI Data Settings | <ul><li>View (`sei_seidatasettings_view`)</li><li>Create (`sei_seidatasettings_create`)</li><li>Edit (`sei_seidatasettings_edit`)</li><li>Delete (`sei_seidatasettings_delete`)</li></ul> | Active |
 | SEI Insights | <ul><li>View (`sei_seiinsights_view`)</li><li>Create (`sei_seiinsights_create`)</li><li>Edit (`sei_seiinsights_edit`)</li><li>Delete (`sei_seiinsights_delete`)</li></ul> | Active |
+| SEI Insight Categories | <ul><li>View (`sei_seiinsightscategory_view`)</li></ul> | Active |
+| SEI Teams | <ul><li>View (`sei_seiteams_view`)</li><li>Create (`sei_seiteams_create`)</li><li>Edit (`sei_seiteams_edit`)</li><li>Delete (`sei_seiteams_delete`)</li></ul> | Active |
+| SEI Profiles | <ul><li>View (`sei_seiprofiles_view`)</li><li>Create (`sei_seiprofiles_create`)</li><li>Edit (`sei_seiprofiles_edit`)</li><li>Delete (`sei_seiprofiles_delete`)</li></ul> | Active |
+
 
 ### Feature Management and Experimentation
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
-| FME Environment | <ul><li>View (`fme_fmeenvironment_view`)</li><li>Create/Edit (`fme_fmeenvironment_edit`)</li><li>SDK API Key View (`fme_fmeenvironment_sdkApiKeyView`)</li><li>SDK API Key Edit (`fme_fmeenvironment_sdkApiKeyEdit`)</li><li>Data Export View (`fme_fmeenvironment_dataExportView`)</li><li>Data Export Edit (`fme_fmeenvironment_dataExportEdit`)</li></ul> | Active |
-| FME Feature Flag | <ul><li>View (`fme_fmefeatureflag_view`)</li><li>Create/Edit (`fme_fmefeatureflag_edit`)</li></ul> | Active |
-| FME Experiment | <ul><li>View (`fme_fmeexperiment_view`)</li><li>Create/Edit (`fme_fmeexperiment_edit`)</li></ul> | Active |
-| FME Segment | <ul><li>View (`fme_fmesegment_view`)</li><li>Create/Edit (`fme_fmesegment_edit`)</li></ul> | Active |
-| FME Large Segment | <ul><li>View (`fme_fmelargesegment_view`)</li><li>Create/Edit (`fme_fmelargesegment_edit`)</li></ul> | Active |
-| FME Metric | <ul><li>View (`fme_fmemetric_view`)</li><li>Create/Edit (`fme_fmemetric_edit`)</li></ul> | Active |
-| FME Traffic Type | <ul><li>View (`fme_fmetraffictype_view`)</li><li>Create/Edit (`fme_fmetraffictype_edit`)</li></ul> | Active |
+| FME Environment | <ul><li>View (`fme_fmeenvironment_view`)</li><li> Create/Edit (`fme_fmeenvironment_edit`)</li><li> SDK API Key View (`fme_fmeenvironment_sdkApiKeyView`)</li><li> SDK API Key Edit (`fme_fmeenvironment_sdkApiKeyEdit`)</li><li> Data Export View (`fme_fmeenvironment_dataExportView`)</li><li> Data Export Edit (`fme_fmeenvironment_dataExportEdit`)</li></ul> | Active |
+| FME Feature Flag | <ul><li>View (`fme_fmefeatureflag_view`)</li><li> Create/Edit (`fme_fmefeatureflag_edit`)</li></ul> | Active |
+| FME Experiment | <ul><li>View (`fme_fmeexperiment_view`)</li><li> Create/Edit (`fme_fmeexperiment_edit`)</li></ul> | Active |
+| FME Segment | <ul><li>View (`fme_fmesegment_view`)</li><li> Create/Edit (`fme_fmesegment_edit`)</li></ul> | Active |
+| FME Large Segment | <ul><li>View (`fme_fmelargesegment_view`)</li><li> Create/Edit (`fme_fmelargesegment_edit`)</li></ul> | Active |
+| FME Metric | <ul><li>View (`fme_fmemetric_view`)</li><li> Create/Edit (`fme_fmemetric_edit`)</li></ul> | Active |
+| FME Traffic Type | <ul><li>View (`fme_fmetraffictype_view`)</li><li> Create/Edit (`fme_fmetraffictype_edit`)</li></ul> | Active |

@@ -4,10 +4,6 @@ sidebar_label: Vercel
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/16469873148173-Vercel </button>
-</p>
-
 [Vercel](https://vercel.com/) is an advanced hosting and deployment platform for modern web applications.
 
 Developers can incorporate serverless code that runs in the Edge Runtime on the Vercel platform using [Edge Functions](https://vercel.com/docs/concepts/functions/edge-functions) and [Middleware](https://vercel.com/docs/concepts/functions/edge-middleware). Vercel supports compute logic in Edge Functions and Middleware that is scalable, on-demand, and stateless with the [Edge Config](https://vercel.com/docs/storage/edge-config) low-latency data store. Harness FME provides out-of-the-box integration that wraps the Edge Config data store, allowing near-instant reads at the edge.
@@ -33,7 +29,7 @@ The Harness FME integration is added from within Vercel as follows.
 
 1. Add an instance of the Edge Config to your Vercel project. (The integration will add a root-tree to the JSON contents of your Edge Config instance, but will never erase or overwrite any other existing JSON data.) If you forgot to do add the Edge Config instance, you can safely restart adding the Harness FME integration to your Vercel project from this step.
 
-2. Go to [https://vercel.com/integrations/split](https://vercel.com/integrations/split) or search for "Split" in the Vercel Marketplace, click **Add Integration**, and follow the setup process. You will be prompted to log in or create your Harness account, and then you will see the Vercel setup page. Specify each [Harness FME environment](https://help.split.io/hc/en-us/articles/360019915771-Environments) and choose the Edge Config instance that each should sync to. You are given an authentication key for each environment to use in your code to access the correct JSON root-tree for that environment in your Edge Config instance. Click **Save** to save the setup for all environments. Then click the **Finish integration** link near the top of the window to close the dialog.
+2. Go to [https://vercel.com/integrations/split](https://vercel.com/integrations/split) or search for "Split" in the Vercel Marketplace, click **Add Integration**, and follow the setup process. You will be prompted to log in or create your Harness account, and then you will see the Vercel setup page. Specify each [Harness FME environment](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) and choose the Edge Config instance that each should sync to. You are given an authentication key for each environment to use in your code to access the correct JSON root-tree for that environment in your Edge Config instance. Click **Save** to save the setup for all environments. Then click the **Finish integration** link near the top of the window to close the dialog.
 
 ## Set up the Harness FME JavaScript Browser SDK client
 

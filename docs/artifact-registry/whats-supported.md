@@ -17,20 +17,23 @@ These are the currently supported registry types.
 - **Helm:** Perfect for managing Kubernetes applications.
 - **Generic:** Flexible for all your needs.
 - **Maven:** Essential for Java projects.
-- **Gradle:** Streamline your build automation.
-- **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
-
-### Beta
 - **Python:** For all your Python packages.
 - **NPM:** JavaScript package management.
+- **NuGet:** .NET package manager.
+- **RPM:** Red Hat package management.
+
+<!-- - **Gradle:** Streamline your build automation. -->
+<!-- - **SBT (Scala Build Tool):** Tailored for Scala and Java projects. -->
+
+### Beta
+- **Go:** Support for Go modules.
+- **Cargo:** Rust package management.
+- **Hugging Face:** Machine learning models and datasets.
 
 ### Coming Soon
 In addition to the registry types above, support for the following registries will be coming soon!
-- **Go:** Support for Go modules.
-- **NuGet:** .NET package manager.
+
 - **Debian:** For Debian packages.
-- **Rust:** Rust package management.
-- **RPM:** Red Hat package management.
 - **Ruby:** RubyGems support.
 - **Conan:** C/C++ package manager.
 - **Alpine:** For Alpine Linux packages.

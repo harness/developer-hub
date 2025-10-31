@@ -53,21 +53,27 @@ You can access **Administrative Settings** from your Harness UI directly using t
 
 <DocVideo src="https://app.tango.us/app/embed/1dcbc9e9-70f4-49e7-bbec-6a2c94c97ae7" title="Create the IDP Catalog Create Role" />
 
+
 ### Configure RBAC for Project-Level Workflow Execution
 
-This example walks through configuring RBAC to allow users to **execute Workflows at a specific project level**.
+This example walks through configuring RBAC to allow users to execute Workflows at a specific project level.
 
 The configuration includes:
 
-* **Custom Role:** `IDP Workflow Execute`
-* **Custom Resource Group:** `All Workflow Execute Resources`
-* **Custom User Group:** `Workflow Execute Users`
+* Default Role: **IDP Workflow Executor** (or optionally, a custom role if needed)
+* Custom Resource Group: All Workflow Execute Resources
+* Custom User Group: Workflow Execute Users
 
+> Harness now provides a **default system role called `IDP Workflow Executor`** at all scopes. This role includes the necessary `View` and `Execute` permissions for IDP Workflows. You can assign this default role to user groups directly without creating a new one.
+>
+> However, if you want to define a custom role (e.g., with a different name or additional permissions), follow the steps below.
+
+![](./static/default-workflow-rbac.png)
 The **All Workflow Execute Resources** group exists at the **project scope** and grants **Execute** access to all Workflows within that project. The `IDP Workflow Execute` role includes the **Execute** permission for Workflows.
 
----
 
-#### Step 1: Create the IDP Workflow Execute Role
+
+#### Step 1: Use or Create the IDP Workflow Execute Role
 
 1. In Harness, navigate to the project where you want to configure RBAC.
 2. Go to **Project Settings** → **Roles** under the **Access Control** category.

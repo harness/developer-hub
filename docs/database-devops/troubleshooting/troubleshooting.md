@@ -3,6 +3,25 @@ title: Troubleshooting Guide
 description: Solutions to common pain points while using Harness Database DevOps.
 sidebar_label: Troubleshooting guide
 sidebar_position: 1
+keywords:
+  - troubleshooting
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+tags:
+  - troubleshooting
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - ci-cd
+  - dbops
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -135,4 +154,44 @@ git push -u origin main
 - Replace `my.email@gmail.com` with your Git account email (URL-encoded as %40 for @).
 - Replace `PAT_TOKEN` with the name of the Harness secret containing your GitLab PAT.
 - Make sure the secret is securely stored in Harness under **Project Settings → Secrets**.
+:::
+
+## 6. If I execute a dropTable or dropColumn and a rollback is triggered, will the data also be recovered? Or is only the schema structure restored?
+When a dropTable or dropColumn operation is executed and subsequently rolled back, only the schema structure can potentially be recreated—the original data will not be restored. While it is technically possible to instruct the rollback to recreate the table or column definition, the associated data is permanently lost unless a backup was taken beforehand.
+
+In scenarios involving destructive operations like DROP, the rollback cannot magically recover deleted data. The only viable recovery strategy would be to restore from a database backup taken prior to the drop operation—which still results in some level of data loss and operational risk.
+
+:::note warning
+Dropping tables or columns in production environments should be treated with extreme caution. It is highly recommended to adopt a backup-first approach and validate rollback strategies before applying such changes.
+:::
+
+## 7.  I encountered an error during rollback. What does it mean and how can I fix it?
+
+This error occurs in PostgreSQL when replication is enabled, and the databasechangelog table (created by Liquibase) has no primary key or replica identity. PostgreSQL requires a replica identity to process DELETE operations during rollback.
+
+**Error Message**: `ERROR: cannot delete from table "databasechangelog" because it does not have a replica identity and publishes deletes.`
+
+**How to Solve**:
+
+Run the following SQL to allow deletes even without a primary key:
+
+```sql
+ALTER TABLE databasechangelog REPLICA IDENTITY FULL;
+```
+This tells PostgreSQL to use the full row for replication tracking. We're planning to update DB DevOps to add a primary key to this table automatically in future versions.
+
+:::important note
+Apply the workaround only if your environment uses logical replication and encounters this error. In non-replicated environments, this issue typically does not occur
+:::
+
+**Long-Term Fix (Planned):**
+
+We plan to update Harness DB DevOps to include a primary key on the databasechangelog table upon creation to ensure better compatibility with replication-enabled PostgreSQL environments. Until then, applying the above workaround will unblock affected users.
+
+## 8. Why do I see the error: "The DB Instance connector cannot be an expression"?
+This is expected behavior in Database DevOps Module. Unlike other CD modules in Harness where connectors can be passed as expressions, `DB Instances` require fixed connectors.
+This is by design—features like drift detection depend on resolving the database schema, instance, and connector outside of pipeline execution. To support such functionality, the connector must be fully defined and cannot be referenced as a runtime or expression value.
+
+:::note
+Use a fixed connector when defining your DB Instance in order to enable full DB DevOps capabilities.
 :::

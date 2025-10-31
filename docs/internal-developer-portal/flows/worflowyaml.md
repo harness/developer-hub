@@ -486,7 +486,7 @@ spec:
 :::caution
 The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**.
 
-Also, please note that the feature flag "`IDP_ENABLE_WORKFLOW_FORM_CONTEXT`" is not supported in your **Workflow Playground Editor**. You won't be able to implement or test these features ([Updating Fields using Form Context](/docs/internal-developer-portal/flows/dynamic-picker.md#updating-fields-using-form-context) and [Live User Validation](/docs/internal-developer-portal/flows/dynamic-picker.md#live-user-validation-using-api-requests)) in the playground.
+Also, please note that the features [Updating Fields using Form Context](/docs/internal-developer-portal/flows/dynamic-picker.md#updating-fields-using-form-context) and [Live User Validation](/docs/internal-developer-portal/flows/dynamic-picker.md#live-user-validation-using-api-requests) are not supported in your **Workflow Playground Editor**. You won't be able to implement or test these features in the playground.
 :::
 
 Harness IDP also provides a **built-in editor** to help you build your **Workflow's Frontend**. It offers a real-time preview of the corresponding UI based on the YAML definition. Here, you can create a new workflow or edit an existing one.  '

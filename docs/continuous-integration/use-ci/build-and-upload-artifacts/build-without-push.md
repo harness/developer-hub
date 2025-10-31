@@ -39,6 +39,16 @@ Harness automatically selects the builder to be used by the **Build and Push ste
 
 To enable the `CI_USE_BUILDX_ON_K8` feature flag, contact [Harness Support](mailto:support@harness.io)
 
+### Buildah
+
+You can also use Buildah via `plugins/buildah-docker`. 
+- Buildah allows building container images without requiring a Docker daemon.
+- Supports both Dockerfile-based and script-based image builds.
+- Can run in rootless mode, making it a secure choice for unprivileged environments.
+- Commonly used when enhanced isolation or compliance with Open Container Initiative (OCI) standards is needed.
+- May require additional configuration depending on the base image and permissions.
+
+If your Kubernetes cluster build infrastructure is configured to run as non-root, you can [use the Buildah plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#individual-step-root--buildah-plugin).
 
 ## Using Environment Variables to Control Build and Push Behavior
 
@@ -213,6 +223,37 @@ stages:
                   PLUGIN_TAR_PATH: image.tar
 ```
 </TabItem>
+<TabItem value="Buildah" label="Buildah">
+
+Following is a reference `build-only` YAML snippet using Buildah on **Kubernetes**
+
+- Use the following environment variables:
+  - `dry_run`: `true` (skips pushing the image)
+  - `tar_path`: Path for saving the image as tar archive (Required). (e.g. /folder/image.tar)
+
+```YAML
+- step:
+    type: Plugin
+    name: Build Only with Buildah
+    identifier: Build_Only_with_Buildah
+    spec:
+      connectorRef: YOUR_DOCKER_CONNECTOR
+      image: plugins/buildah-docker:1.2.2
+      privileged: true
+      settings:
+        repo: YOUR_DOCKER_REPO
+        tag: YOUR_IMAGE_TAG
+        password: <+secrets.getValue("YOUR_DOCKER_SECRET")>
+        username: YOUR_DOCKER_USERNAME
+        dockerfile: Dockerfile
+        dry_run: "true"
+        tar_path: image.tar
+      imagePullPolicy: Always
+```
+:::warning Kubernetes Requirement
+When running in Kubernetes, Buildah requires privileged mode.
+:::
+</TabItem>
 </Tabs>
 The examples above demonstrate build-only mode with the native Build and Push to Docker step. You can apply this to other registries using the appropriate native build and push steps in the Harness CI step palette with the same environment variables.
 
@@ -372,6 +413,37 @@ pipeline:
                       PLUGIN_PUSH_ONLY: "true"
                       PLUGIN_SOURCE_TAR_PATH: image.tar
 ```
+</TabItem>
+<TabItem value="Buildah" label="Buildah">
+
+Following is a reference `build-only` YAML snippet using Buildah on **Kubernetes**
+
+- Use the following environment variables:
+  - `push_only`: `true` (skips building)
+  - `source_tar_path`: Path for saving the image as tar archive (Required). (e.g. /folder/image.tar)
+
+```YAML
+- step:
+    type: Plugin
+    name: Push Only with Buildah
+    identifier: Push_Only_with_Buildah
+    spec:
+      connectorRef: YOUR_DOCKER_CONNECTOR
+      image: plugins/buildah-docker:1.2.2
+      privileged: true
+      settings:
+        repo: YOUR_DOCKER_REPO
+        tag: YOUR_IMAGE_TAG
+        password: <+secrets.getValue("YOUR_DOCKER_SECRET")>
+        username: YOUR_DOCKER_USERNAME
+        dockerfile: Dockerfile
+        push_only: "true"
+        source_tar_path: image.tar
+      imagePullPolicy: Always
+```
+:::warning Kubernetes Requirement
+When running in Kubernetes, Buildah requires privileged mode.
+:::
 </TabItem>
 </Tabs>
 

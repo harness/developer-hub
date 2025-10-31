@@ -33,7 +33,7 @@ More details on descriptor format for API's could be found below in the referenc
 
 Note that to be able to read from targets that are outside the normal integration points such as `github.com`, you'll need to explicitly allow it by adding an entry in the **URL Allow List** under **Admin**
 
-![](static/url-allow-list.png)
+![URL Allow List](static/url-allow.png)
 
 :::
 
@@ -76,11 +76,32 @@ spec:
 
 </TabItem>
 </Tabs>
-:::info
 
+:::info
 In the above example we import all the API specs in `json` format as a `$text` embedding, and it's a suggested hack to import multiple APIs in openapi format. 
+:::
+
+:::note Backend URL Allow List
+
+By default, Backstage restricts backend fetching and only allows requests to public APIs defined in `catalog-info.yaml` files if the domains are explicitly allowed.
+
+To enable access:
+- Go to your IDP portal and navigate to `Configuration` > `URL Allow List`.
+- Add full domains or use wildcards (e.g., `*.apis.com`) to allow subdomains.
+- You can also list specific paths. Subdirectories are supported using a trailing slash (e.g., `/exampledir/` allows `/exampledir/example`).
+
+Make sure the host or path for your OpenAPI spec is included in this list to allow successful API documentation import.
+:::
+
+
+:::caution
+In IDP 2.0, API entity creation now supports OpenAPI specifications referenced via both **absolute URLs** (e.g., `https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml`) and **relative paths** (e.g., `./openapi.yaml`) in the `spec.definition.$text` field. 
+These paths are interpreted relative to the location specified by the `backstage.io/managed-by-location` annotation. This typically aligns with the path of your entity YAML file. When not explicitly set, `managed-by-location` is automatically derived from the `backstage.io/source-location` annotation, ensuring correct resolution even for inline or centrally managed entities.
+
+For external URLs, ensure the domain is included in the **Backend URL Allow List** under *Configure > URL Allow List* to enable proper API documentation rendering.
 
 :::
+
 
 The above-mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format. 
 
@@ -101,7 +122,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 metadata:
   description: The petstore API
   links:
@@ -139,7 +160,7 @@ spec:
   lifecycle: dev
   owner: Harness_Partners
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 ```
 </TabItem>
 </Tabs>
@@ -321,7 +342,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 metadata:
   description: The petstore API
   links:
@@ -379,7 +400,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 metadata:
   description: The petstore API
   links:
@@ -418,7 +439,7 @@ spec:
   lifecycle: dev
   owner: Harness_Partners
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 
 ```
 </TabItem>

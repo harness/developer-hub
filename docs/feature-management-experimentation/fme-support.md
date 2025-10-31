@@ -14,7 +14,7 @@ You can create a Split Zendesk Support ticket.
 To create a support ticket:
 
 1. Send an email to [support@split.io](mailto:support@split.io).
-2. In the email message, provide steps to reproduce the issue.
+2. In the email message, provide steps to reproduce the issue. If applicable, include a URL to the feature flag, segment, or metric you're experiencing an issue with.
 3. Attach any relevant screenshots or mini video clips.
 
 The request will be routed to FME support engineers and create an internal Zendesk ticket, which is actively monitored by the Harness FME team.
@@ -25,13 +25,14 @@ If you are already on the Harness platform, you can create a Harness Zendesk Sup
 
 To create a support ticket:
 
-1. Go to [https://support.harness.io](https://support.harness.io)
-2. Log in and Click on Submit a Request
-3. Enter a meaningful subject
-4. Provide steps to reproduce the issue in the description field
-5. Select the priority level
-6. Attach any relevant screenshots or mini video clips
-7. Submit the ticket
+1. Click "Help" in the Harness left navigation
+2. Click "Submit a ticket" in the dialog that appears
+3. Enter a meaningful subject and click "Continue"
+4. Select the priority level
+5. Choose "Feature Management & Experimentation" from the module menu
+6. Provide steps to reproduce the issue in the description field
+7. Attach any relevant screenshots or mini video clips
+8. Submit the ticket
 
 This will create an internal Zendesk ticket, which is actively monitored.
 
@@ -59,3 +60,4 @@ And that’s it!
 The product management team will triage these submitted ideas, ask questions if needed, allow all users interested in participating in the conversation, and provide updates on the progress and ETA. Users will automatically be notified on each change of tickets that they are subscribed to (either voted on or created the feature request).
 
 -->
+

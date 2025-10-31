@@ -1,7 +1,8 @@
 ---
-title: Troubleshoot builds and deployments with AI
-description: Troubleshoot with Harness AI DevOps agent .
-sidebar_position: 20
+title: Troubleshoot builds and deployments with Harness AI
+description: Troubleshoot builds and deployments with Harness AI.
+sidebar_label: Troubleshoot Builds and Deployments 
+sidebar_position: 3
 ---
 
 import Intro from '/docs/continuous-integration/shared/aida-intro.md';

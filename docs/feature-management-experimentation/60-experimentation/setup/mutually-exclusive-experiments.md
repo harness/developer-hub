@@ -7,7 +7,7 @@ sidebar_position: 60
 
 Mutually exclusive experiments are experiments that share no user traffic. The goal of mutually excluding experiments is to ensure that a single user cannot participate in more than one experiment at the same time. Mutually exclusive experiments run simultaneously but in isolation from each other.
 
-Generally speaking, when you run experiments with feature flags, you are testing feature variations (FME feature flag treatments) against a baseline. The baseline is your set of metric results for your base case (when a new feature is off). You typically compare the results of each feature variation (treatment)  against your base case metrics (baseline) to see how the treatment performs. 
+Generally speaking, when you run experiments with feature flags, you are testing feature variations (FME feature flag treatments) against a baseline. The baseline is your set of metric results for your base case (when a new feature is off). You typically compare the results of each feature variation (treatment) against your base case metrics (baseline) to see how the treatment performs. 
 
 While, in most cases, experiments can run concurrently and share user traffic without interfering with one another, you may choose to run some of your experiments in mutual exclusion. This may be because you anticipate interactions between variations (treatments) of different experiments, or because a variation (treatment) of one experiment would disrupt a consistent baseline for another experiment. Mutually excluding the experiments keeps your baseline and feature experiences consistent (free of the variations of another experiment), which may in some cases lead to more accurate results.
 
@@ -47,7 +47,7 @@ To create the parent feature flag:
 
 1. Set the default treatment to be *not-in-experiments*.
    
-   <img src="https://help.split.io/hc/article_attachments/25919683357453" alt="default_treatment.png" width="900" /> 
+   ![](../static/default-treatment.png)
 
 1. In the Targeting section, in Targeting rules, select **Distribute treatments as follows**. Allocate the following user traffic percentages:
     
@@ -56,7 +56,7 @@ To create the parent feature flag:
    - `pdp-test-c` - 34%
    - `not-in-experiments` - 0%
 
-   <img src="https://help.split.io/hc/article_attachments/25920092761613" alt="distribute_treatments_as_follows.png" width="900" /> 
+   ![](../static/distribute-treatments.png)
 
 1. Set the **Alert baseline treatment** to be *not-in-experiments*.
 1. You may want to restrict who can edit this feature flag’s targeting rules in the selected Environment. To do this click the **Editing** button on the Details tab, select **Restrict who can edit**, add or remove an editor, and click **Apply**.
@@ -88,18 +88,18 @@ To create a dependent (child) feature flag:
 1. Select `is in flag` in the matcher dropdown, select *pdp_test_parent* from the attributes dropdown, and select *pdp-test-a* from the values dropdown.
 1. Select **Distribute treatments as follows** and allocate user traffic percentages to this dependent flag’s treatments. For fastest experimental results, you can set on to 50% and off to 50% (or you may enter a smaller percentage for on, to begin a gradual rollout of the *php-test-a* feature).
 
-   <img src="https://help.split.io/hc/article_attachments/15834380465933" alt="distribute_treatments_as_follows_for_dependent_flag.png" width="900" />
+   ![](../static/distribute-treatments-dependent.png)
 
 1. Set the **Alert baseline treatment** to be *off*.
 1. Repeat steps 1-11 to create two more dependent feature flags: `pdp-test-b` and `pdp-test-c`.
 
-In your source code, you should directly evaluate these dependent feature flags. Your source code should be agnostic to the parent feature flag (that has the sole purpose of dividing traffic among the dependent flags). For a React code example, see this [blog](https://www.split.io/blog/a-step-by-step-guide-to-running-mutually-exclusive-experiments-in-react/).
+In your source code, you should directly evaluate these dependent feature flags. Your source code should be agnostic to the parent feature flag (that has the sole purpose of dividing traffic among the dependent flags). 
 
-For more information about dependent feature flags, see the [Target with dependencies](https://help.split.io/hc/en-us/articles/360020527652-Target-with-dependencies) help page.
+For more information about dependent feature flags, see [Target with dependencies](/docs/feature-management-experimentation/feature-management/targeting/target-with-dependencies).
 
 ## Viewing mutually exclusive experiment results
 
-Once your experiments have been running for a sufficient duration, you can view the results of each mutually exclusive experiment on the [Metrics impact](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab) tab of each dependent (child) feature flag. The metric results you see when comparing any two treatments of a child flag are generated by user populations that are mutually exclusive. You can be sure that the experimental results are free of the influence of the other experiments because no user was exposed to more than one treatment of any of the mutually exclusive experiments.
+Once your experiments have been running for a sufficient duration, you can view the results of each mutually exclusive experiment on the [Metrics impact](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/) tab of each dependent (child) feature flag. The metric results you see when comparing any two treatments of a child flag are generated by user populations that are mutually exclusive. You can be sure that the experimental results are free of the influence of the other experiments because no user was exposed to more than one treatment of any of the mutually exclusive experiments.
 
 ## Considerations and limitations
 
@@ -107,7 +107,7 @@ Mutually exclusive experiments carry some inherent limitations. You should be aw
 
 ### Ending an experiment and reallocating users
 
-The Harness FME feature flag (parent flag) that divides traffic between mutually exclusive experiments uses a random and deterministic hashing algorithm to allocate traffic. Suppose you want to end one of the concurrent mutually exclusive experiments and reallocate the users to the other experiments (and you are sure this will not invalidate your results). To learn how your traffic would be reallocated, see [How does Harness FME ensure a consistent user experience?](https://help.split.io/hc/en-us/articles/360038843991-Using-dependencies-to-run-mutually-exclusive-experiments#:~:text=How%20does%20Split%20ensure%20a%20consistent%20user%20experience%3F) You may also consider using [dynamic configuration](https://help.split.io/hc/en-us/articles/360026943552-Dynamic-configuration) in your flag definitions if you anticipate ending a mutually exclusive experiment early.
+The Harness FME feature flag (parent flag) that divides traffic between mutually exclusive experiments uses a random and deterministic hashing algorithm to allocate traffic. Suppose you want to end one of the concurrent mutually exclusive experiments and reallocate the users to the other experiments (and you are sure this will not invalidate your results). To learn how your traffic would be reallocated, see [How does Harness FME ensure a consistent user experience?](/docs/feature-management-experimentation/feature-management). You may also consider using [dynamic configuration](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations/) in your flag definitions if you anticipate ending a mutually exclusive experiment early.
 
 :::note 
 We generally do not recommend re-using the divisions created by the parent feature flag for new experiments, because you would be experimenting with the subset of your user population that was exposed to an earlier experiment. This subset may not be representative of your entire user population.

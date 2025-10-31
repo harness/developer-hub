@@ -1,7 +1,8 @@
 ---
-title: Harness UI overview
-description: Explore the Harness UI and navigate to the desired modules.
-sidebar_position: 40
+title: Overview of the Harness User Interface (UI)
+description: Explore the Harness User Interface (UI), highlighting its key components, navigation structure, and essential features to help you interact efficiently with the platform.
+sidebar_label: Harness User Interface (UI) 
+sidebar_position: 3
 redirect_from:
   - /docs/getting-started/harness-ui-overview
   - /docs/get-started/harness-ui-overview

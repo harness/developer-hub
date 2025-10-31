@@ -21,10 +21,8 @@ Harness Code Secret Scanning scans *only new/changed code* in commits that users
 To enable Secret Scanning:
 
 1. Go to the repository where you want to enable secret scanning and select **Settings**.
-2. Select the **Security** tab.
+2. Under **General**, scroll down to the **Security** section.
 3. Enable **Secret Scanning**.
-4. Select **Save**.
-5. Repeat to enable Secret Scanning on additional repos.
 
 ### Bypass or ignore detected secrets
 
@@ -58,11 +56,9 @@ Harness Code Vulnerability Scanning scans *only new/changed code* in commits tha
 To enable Vulnerability Scanning:
 
 1. Go to the repository where you want to enable vulnerability scanning and select **Settings**.
-2. Select the **Security** tab.
+2. Under **General**, scroll down to the **Security** section.
 3. Enable **Vulnerability Scanning**.
-4. Select whether to **Detect** (warn/log) or **Block** vulnerabilities.
-5. Select **Save**.
-6. Repeat to enable Vulnerability Scanning on additional repos.
+4. Select **Save**.
 
 ## Enable OPA with Harness Policy As Code
 
@@ -84,5 +80,44 @@ Users can still create and push a new branch with commits that were not authored
 
 :::
 
+## Audit Logs for Repository Events
+
+Harness Code supports audit logging for key repository events, helping you track critical actions and enforce accountability across your codebase.
+
+### Events captured in audit logs
+
+Harness automatically logs the following repository events:
+
+- **Force push** to the default branch  
+- **Bypassing** security rules, such as secret or vulnerability scans  
+- **Repository creation**  
+- **Rule creation or modification** (for example, branch protection rules)
+
+These logs are useful for regulated teams and high-trust environments, where traceability is essential for compliance and incident response.
+
+### View audit logs
+
+To view audit logs:
+
+1. Go to **Account Settings**.
+2. Select **Security and Governance**.
+3. Select **Audit Trail**.
+4. Use `Resource Type = Repository` filter to narrow the results to the **Code Repository** module.
+5. Search by user, action, or repository to investigate specific events.
+
+<DocImage path={require('/docs/code-repository/config-repos/assets/audit-trail.png')} />
+
+Audit logs include details such as:
+
+- The user who performed the action
+- Timestamp of the event
+- Type of event (e.g., force push, rule bypass)
+- Affected repository and branch
+
+:::info
+
+Audit logs are visible to users with the appropriate access level. You can export logs for external analysis or incident review.
+
+:::
 
 

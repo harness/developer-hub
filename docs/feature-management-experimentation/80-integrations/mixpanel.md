@@ -4,10 +4,6 @@ sidebar_label: Mixpanel
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360045503191-Mixpanel </button>
-</p>
-
 Mixpanel is a product analytics tool that enables you to explore user behavior data and analyze metrics like user adoption, growth, and retention. Harness FME integrations can be configured to send impressions to Mixpanel, or extract Mixpanel events to be used as events in FME.
 
 :::info[Note]
@@ -36,7 +32,7 @@ Both AWS and GCF versions cache the HTTP client used to POST to Mixpanel in thei
 
 #### Step 2: Configure Harness FME to use your webhook
 
-Copy your function/lambdas URL endpoint and paste it into the [FME impressions webhook](https://help.split.io/hc/en-us/articles/360020700232-Webhook-impressions) configuration.
+Copy your function/lambdas URL endpoint and paste it into the [FME impressions webhook](/docs/feature-management-experimentation/api/webhook/impressions/) configuration.
 
 Make sure you choose the environment from which you wish to receive impressions. If you are generating traffic in a testing environment, you will not see those impressions in production, and vice-versa.
 

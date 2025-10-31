@@ -119,7 +119,7 @@ For example, a failure strategy set on a step doesn't impact the failure strateg
 
 Both step and stage failure strategies include the **Rollback Stage** action option. There is no rollback step option.
 
-### Failure strategy actions
+## Failure strategy actions
 
 The following table lists the failure strategy actions and how they work at the step, step group, and stage levels.
 
@@ -130,7 +130,7 @@ These actions can be applied to the failure strategy as primary action and timeo
 | **Manual Intervention** | A Harness user can perform a manual intervention when the error type occurs. There are several options to select from:  **Mark as Success** **Ignore Failure** **Retry** **Abort** **Rollback Stage**Harness pauses the pipeline execution when waiting for manual intervention. The pipeline execution state appears as **Paused**. | Same as step.                                                                                                                                                     | Same as step, but applies to all steps.                                           |
 | **Mark as Success**     | The step is marked as **Successful** and the stage execution continues.                                                                                                                                                                                                                                                              | Same as step.                                                                                                                                                     | The failed step is marked as **Successful** and the pipeline execution continues. |
 | **Ignore Failure**      | The stage execution continues. The step is marked as **Failed**, but rollback is not triggered.                                                                                                                                                                                                                                      | Same as step.                                                                                                                                                     | Same as step.                                                                     |
-| **Retry Step**          | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**.                                                                                                                                                                                                                 | Same as step.                                                                                                                                                     | Same as step.                                                                     |
+| **Retry Step**          | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. Additionally, you can **define a JEXL condition to retry the step only when a specific condition is met**.                                                                                                                                                                                                                 | Same as step.                                                                                                                                                     | Same as step.                                                                     |
 | **Retry Step Group**    | N/A                                                                                                                                                                                                                                                                                                                                  | Harness will retry the execution of the complete step group automatically, from the beginning. You can set **Retry Count** and **Retry Intervals**.               | N/A                                                                               |
 | **Abort**               | Pipeline execution is aborted. If you select this option, no timeout is needed.                                                                                                                                                                                                                                                      | Same as step.                                                                                                                                                     | Same as step.                                                                     |
 | **Rollback Stage**      | The stage rolls back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing.                                                                                                                                                                                   | Same as step.                                                                                                                                                     | Same as step.                                                                     |
@@ -141,13 +141,51 @@ These actions can be applied to the failure strategy as primary action and timeo
 **Mark As Failure** as a Failure Strategy marks the stage/stepGroup/step as failed and moves the execution to next step/stage according to when conditions applied on the next step/stage.
 :::
 
-#### Manual interventions
+### Manual interventions
 
 Here is what a Manual Intervention action looks like when a failure occurs:
 
 ![](../static/define-a-failure-strategy-on-stages-and-steps-11.png)
 
 The user can select an **Action**. If the Manual Intervention exceeds the **Timeout** setting, Harness automatically selects the **Post Timeout Action**.
+
+### Customize Available Actions for Manual Intervention
+
+:::note
+Currently, this feature is behind the feature flag `CDS_MANUAL_INTERVENTION_CUSTOM_ACTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can now **restrict the set of available actions shown to the pipeline executor** during a manual intervention. This applies when a **step** or **stage** fails and the configured **Failure Strategy** is **Manual Intervention**.
+
+By customizing the available actions, you can:
+
+- Prevent unsafe actions like **Retry** or **Pipeline Rollback**
+- Ensure consistency and control over failure handling
+- Tailor manual intervention choices based on stage or step specific requirements
+
+At pipeline design time, you can whitelist the allowed manual intervention actions using a new **Allowed Actions** dropdown.
+
+**Available Actions**
+
+- Retry Step  
+- Mark as Success  
+- Mark as Failure  
+- Ignore Failure  
+- Retry from Stage  
+- Rollback Pipeline
+
+The list of available actions may vary slightly based on the **stage type** (e.g., Deploy, Approval, Custom stage, etc.).
+
+You can also use the checkbox **All Actions** to allow all available actions.
+
+After selecting the allowed actions, you **must** also configure the following:
+
+- **Timeout**: Duration to wait for manual intervention.
+- **Post-Timeout Action**: Action to take automatically if no manual decision is made within the timeout.
+
+<div align="center">
+  <DocImage path={require('./static/allowed-actions-manual-intervention.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
 
 ## Prioritization and handling
 

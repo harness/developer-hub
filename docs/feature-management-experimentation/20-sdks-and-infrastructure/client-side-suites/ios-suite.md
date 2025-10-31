@@ -3,10 +3,6 @@ title: iOS Suite
 sidebar_label: iOS Suite
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite </button>
-</p>
-
 This guide provides detailed information about our iOS Suite, an SDK designed to leverage the full power of FME. The iOS Suite is built on top of the [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) and the [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent), offering a unified solution, optimized for iOS development.
 
 The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using iOS SDK or iOS RUM Agent can be easily upgraded to iOS Suite, which is designed as a drop-in replacement.
@@ -23,9 +19,9 @@ Set up FME in your code base with the following two steps:
 
 Add the Harness FME SDK, RUM agent, and Suite into your project using Swift Package Manager by adding the following package dependencies:
 
-- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.3.0`
+- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.4.2`
 - [iOS RUM](https://github.com/splitio/ios-rum), latest version `0.4.0`
-- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.2.0`
+- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.3.2`
 
 :::info[Important!]
 When not using the last version of the SDK Suite, it is important to take into account the compatibility matrix below.
@@ -41,6 +37,11 @@ When not using the last version of the SDK Suite, it is important to take into a
 | 2.0.1    | 3.0.0   | 0.4.0   |
 | 2.1.0    | 3.2.0   | 0.4.0   |
 | 2.2.0    | 3.3.0   | 0.4.0   |
+| 2.2.1    | 3.3.1   | 0.4.0   |
+| 2.2.2    | 3.3.2   | 0.4.0   |
+| 2.2.3    | 3.3.3   | 0.4.0   |
+| 2.3.0    | 3.4.0   | 0.4.0   |
+| 2.3.2    | 3.4.2   | 0.4.0   |
 
 Then import the Suite in your code.
 
@@ -54,14 +55,14 @@ In your code, instantiate the Suite client as shown below.
 
 ```swift title="Swift"
 // Create default Suite configuration
-let config = SplitSuiteConfig()
+let config = SplitClientConfig()
 
 // SDK key
 let sdkKey = "YOUR_SDK_KEY"
 let matchingKey = Key(matchingKey: "key")
 
 // Create Suite
-let suite = SplitSuite.builder()
+let suite = DefaultSplitSuite.builder()
     .apiKey(sdkKey)
     .key(matchingKey)
     .config(config).build()
@@ -78,13 +79,13 @@ When the Suite is instantiated, it starts synchronizing feature flag and segment
 
 We recommend instantiating the Suite once as a singleton and reusing it throughout your application.
 
-Configure the Suite with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the Suite with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ## Using the Suite
 
 ### Basic use
 
-When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the Suite is properly loaded before asking it for a treatment, block until the Suite is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the Suite before asking for an evaluation.
 
@@ -109,7 +110,7 @@ client?.on(event: SplitEvent.sdkReady) {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -219,7 +220,7 @@ let treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets, attributes: 
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the `result.config` property will be `nil`.
 
@@ -250,7 +251,7 @@ let treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSets, at
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -271,22 +272,22 @@ let treatment = getTreatment("FEATURE_FLAG_NAME", attributes: nil, evaluationOpt
 
 ### Track
 
-Tracking events is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information.
+Tracking events is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](/docs/feature-management-experimentation/release-monitoring/events/) documentation for more information.
 
-The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, crashes, ANRs and app start time (see [Default events](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#default-events-and-properties)) are automatically collected by the Suite. Learn more about these and other events in the [iOS RUM Agent](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#events) documentation.
+The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, crashes, ANRs and app start time (see [Default events](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent#default-events-and-properties)) are automatically collected by the Suite. Learn more about these and other events in the [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent#events) documentation.
 
 To track custom events, you can use the `client.track()` method or the `suite.track()` method. Both methods are demonstrated in the code examples below.
 
 The `client.track()` method sends events **_for the identity configured on the client instance_**. This `track` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is `String`. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is `String`. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is `String`. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`.
 * **VALUE:** (Optional) The value used in creating the metric. This field can be sent in as nil or 0 if you intend to only use the count function when creating a metric. The expected data type is `Double`.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `suite.track()` method sends events **_for all the identities_** configured on all instances of the Suite clients. For those clients that have not been configured with a traffic type, this `track` method uses the default traffic type `user`. This `track` method can take up to three of the four arguments described above: `EVENT_TYPE`, `VALUE`, and `PROPERTIES`.
 
@@ -594,6 +595,8 @@ public class SplitView: NSObject, Codable {
         return changeNumber as NSNumber?
     }
     @objc public var configs: [String: String]?
+    @objc public var prerequisites: [Prerequisite]
+    @objc public var impressionsDisabled: Bool = false
 
 }
 ```
@@ -839,7 +842,7 @@ Working with user consent is demonstrated below.
   let matchingKey = Key(matchingKey: "key")
 
   // Create Suite
-  let suite = SplitSuite.builder()
+  let suite = DefaultSplitSuite.builder()
     .apiKey(sdkKey)
     .key(matchingKey)
     .config(sdkConfig).build()

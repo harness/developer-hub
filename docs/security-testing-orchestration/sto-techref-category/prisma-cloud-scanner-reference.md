@@ -5,10 +5,10 @@ sidebar_label: Prisma Cloud (formerly Twistlock) step configuration
 sidebar_position: 300
 ---
 
-<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Artifact scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
@@ -203,15 +203,17 @@ import StoSettingAuthAccessID from './shared/step-palette/auth/access-id.md';
 
 #### Access Token
 
-
 import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
-
-
-
 
 <StoSettingAuthAccessToken />
 
 ### Scan Tool
+
+#### Use Raw Scanner Severity
+
+import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 #### Image Name
 
@@ -284,12 +286,6 @@ import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 import ProxySettings from './shared/proxy-settings.md';
 
 <ProxySettings />
-
-## Use scanner-provided Severity
-
-import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
-
-<ScannerProvidedSeverity />
 
 ## View Prisma Cloud compliance rule failures
 Prisma Cloud compliance rule failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures. Additionally, you can apply an OPA policy to fail the pipeline based on the compliance rule failures. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).

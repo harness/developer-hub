@@ -1,0 +1,11 @@
+{
+    "label":"Open Source Management",
+    "position": 24,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Open Source Management"
+    }
+ }

@@ -1,0 +1,11 @@
+{
+  "label": "Git Providers",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "Git Providers"
+  },
+  "customProps": {}
+}

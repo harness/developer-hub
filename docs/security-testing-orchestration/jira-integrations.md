@@ -1,7 +1,7 @@
 ---
-title: Create Jira tickets
+title: Create Jira Tickets
 description: You can create Jira tickets for any issue detected during an STO pipeline execution.
-sidebar_label: Create Jira tickets
+sidebar_label: Create Jira Tickets
 sidebar_position: 85
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/jira-integrations
@@ -29,10 +29,10 @@ To create a Jira ticket from a security issue detected in STO scan results, foll
 Before you begin, you must complete a one-time setup to configure your Jira connector. For instructions, see [Set up Jira Integration for STO](#set-up-jira-integration-for-sto).
 
 :::info
-Jira tickets can only be created for targets that have baselines configured. For more information, see [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+Jira tickets can only be created for targets that have baselines configured. For more information, see [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/key-concepts/targets-and-baselines).
 :::
 
-1. Go to the **Security Tests** tab from a pipeline execution or from the **Executions** section in the left navigation panel.
+1. Go to the **Vulnerabilities** tab from a pipeline execution or from the **Executions** section in the left navigation panel.
 
 2. Locate and select the issue for which you want to create a Jira ticket, then click **Create Ticket**.
 

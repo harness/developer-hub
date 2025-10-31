@@ -13,9 +13,11 @@ You can use the **GitHub Action plugin** step (also called the **GitHub Action**
 
 :::info
 
-Currently, the **GitHub Action** step is supported for Harness Cloud build infrastructure only.
+**Node 20 support:** When running the Action step on Harness Cloud, Node 20 is supported behind the feature flag `CI_GHA_USE_NEKTOS_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag for your account.
 
-For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
+Currently, the **GitHub Action** step is supported for Harness Cloud, VM runner, and local runner build infrastructures.
+
+For Kubernetes build infrastructure, you can use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
 For more information about using plugins in CI pipelines, go to [Explore plugins](./explore-ci-plugins.md).
 
@@ -31,14 +33,14 @@ The following YAML examples use **GitHub Action** steps (`Action` steps) to set 
 This `Action` step uses the `actions/setup-node` GitHub Action to set up a Node.js environment that the subsequent steps in the stage can use.
 
 ```yaml
-              - step:
-                  type: Action
-                  name: setup nodejs
-                  identifier: setup_nodejs
-                  spec:
-                    uses: actions/setup-node@v3
-                    with:
-                      node-version: '16'
+- step:
+    type: Action
+    name: setup nodejs
+    identifier: setup_nodejs
+    spec:
+      uses: actions/setup-node@v3
+      with:
+        node-version: "16"
 ```
 
 </TabItem>
@@ -47,14 +49,14 @@ This `Action` step uses the `actions/setup-node` GitHub Action to set up a Node.
 This `Action` step uses the `actions/setup-go` GitHub Action to set up a Go environment that the subsequent steps in the stage can use. It specifies Go 1.17.
 
 ```yaml
-              - step:
-                  type: Action
-                  name: setup golang
-                  identifier: setup_go
-                  spec:
-                    uses: actions/setup-go@v3
-                    with:
-                      go-version: '1.17'
+- step:
+    type: Action
+    name: setup golang
+    identifier: setup_go
+    spec:
+      uses: actions/setup-go@v3
+      with:
+        go-version: "1.17"
 ```
 
 </TabItem>
@@ -63,15 +65,15 @@ This `Action` step uses the `actions/setup-go` GitHub Action to set up a Go envi
 This `Action` step uses the `actions/setup-java` GitHub Action to set up a Java environment that the subsequent steps in the stage can use. It specifies Java 17.
 
 ```yaml
-              - step:
-                  type: Action
-                  name: setup java
-                  identifier: setup_java
-                  spec:
-                    uses: actions/setup-java@v3
-                    with:
-                      distribution: 'temurin'
-                      java-version: '17'
+- step:
+    type: Action
+    name: setup java
+    identifier: setup_java
+    spec:
+      uses: actions/setup-java@v3
+      with:
+        distribution: "temurin"
+        java-version: "17"
 ```
 
 </TabItem>
@@ -80,14 +82,14 @@ This `Action` step uses the `actions/setup-java` GitHub Action to set up a Java 
 This `Action` step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby environment that the subsequent steps in the stage can use. It specifies Ruby 2.7.2.
 
 ```yaml
-              - step:
-                  type: Action
-                  name: setup ruby
-                  identifier: setup_ruby
-                  spec:
-                    uses: ruby/setup-ruby@v1
-                    with:
-                      ruby-version: '2.7.2'
+- step:
+    type: Action
+    name: setup ruby
+    identifier: setup_ruby
+    spec:
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: "2.7.2"
 ```
 
 </TabItem>
@@ -101,33 +103,33 @@ This `Action` step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby env
 To add a **GitHub Action** step in the YAML editor, add an `Action` step, for example:
 
 ```yaml
-              - step:
-                  type: Action
-                  name: setup golang
-                  identifier: setup_go
-                  spec:
-                    uses: actions/setup-go@v3
-                    with:
-                      go-version: '1.17'
+- step:
+    type: Action
+    name: setup golang
+    identifier: setup_go
+    spec:
+      uses: actions/setup-go@v3
+      with:
+        go-version: "1.17"
 ```
 
 The `spec` parameters define which Action to use, the Action settings, and environment variables that you need to pass to the Action. These are configured according to the GitHub Action's usage specifications.
 
-* `uses:` Specify the Action's repo, along with a branch or tag, such as `actions/stepup-go@v3`.
-* `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
-* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
+- `uses:` Specify the Action's repo, along with a branch or tag, such as `actions/stepup-go@v3`.
+- `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
+- `env:` If required by the Action, provide a mapping of environment variables to pass to the Action. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
 
-The following cases *always* require environment variables (`env`):
+The following cases _always_ require environment variables (`env`):
 
-* [Private Action repos](#private-action-repositories)
-* [Parallel Actions](#parallel-actions)
-* [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory)
+- [Private Action repos](#private-action-repositories)
+- [Parallel Actions](#parallel-actions)
+- [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory)
 
 :::tip Tips
 
-* If you already configured GitHub Actions elsewhere, you can quickly [transfer GitHub Actions into Harness CI](#transfer-github-actions-into-harness-ci) by copying the `spec` details from your existing GitHub Actions YAML.
-* You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) to call a token stored as a [Harness secret](/docs/category/secrets).
-* For GitHub Actions steps, `with` mappings are automatically exported as [output variables](#output-variables-from-github-actions-steps).
+- If you already configured GitHub Actions elsewhere, you can quickly [transfer GitHub Actions into Harness CI](#transfer-github-actions-into-harness-ci) by copying the `spec` details from your existing GitHub Actions YAML.
+- You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) to call a token stored as a [Harness secret](/docs/category/secrets).
+- For GitHub Actions steps, `with` mappings are automatically exported as [output variables](#output-variables-from-github-actions-steps).
 
 :::
 
@@ -151,21 +153,21 @@ The following cases *always* require environment variables (`env`):
 
    Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
 
-   The following cases *always* require environment variables:
+   The following cases _always_ require environment variables:
 
-   * [Private Action repos](#private-action-repositories)
-   * [Parallel Actions](#parallel-actions)
-   * [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory)
+   - [Private Action repos](#private-action-repositories)
+   - [Parallel Actions](#parallel-actions)
+   - [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory)
 
 6. Optionally, you can set the **Timeout**. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-   * [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
-   * [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+   - [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+   - [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 :::tip Tips
 
-* You can use fixed values, runtime inputs, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) that calls a token stored as a [Harness secret](/docs/category/secrets).
-* For GitHub Actions steps, **Settings** are automatically exported as [output variables](#output-variables-from-github-actions-steps).
+- You can use fixed values, runtime inputs, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) that calls a token stored as a [Harness secret](/docs/category/secrets).
+- For GitHub Actions steps, **Settings** are automatically exported as [output variables](#output-variables-from-github-actions-steps).
 
 :::
 
@@ -243,7 +245,7 @@ In the YAML editor, add `GITHUB_TOKEN` to the `env` mapping, for example:
     spec:
       uses: my-actions-repo/hello-world-javascript-action@main
       with:
-        who-to-greet: 'Mona the Octocat'
+        who-to-greet: "Mona the Octocat"
       env:
         GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>
 ```
@@ -261,8 +263,8 @@ For more information about configuring the Action step's settings, go to the [Ac
 
 In the Visual editor, specify `GITHUB_TOKEN` in the **Environment Variables**. Enter `GITHUB_TOKEN` in the key field and the token or variable expression in the value field, for example:
 
-* Key: `GITHUB_TOKEN`
-* Value: `<+secrets.getValue("[SECRET_NAME]")>`
+- Key: `GITHUB_TOKEN`
+- Value: `<+secrets.getValue("[SECRET_NAME]")>`
 
 :::tip
 
@@ -319,17 +321,17 @@ Some GitHub Actions need to run on the cloned [codebase](/docs/continuous-integr
 If this is required by the Action you want to run, and the Action offers a working directory parameter, then you need to specify the working directory as `/harness`. For example:
 
 ```yaml
-              - step:
-                  type: Action
-                  name: Action docker publish image
-                  identifier: Action_docker_publish_image
-                  spec:
-                    uses: elgohr/Publish-Docker-Github-Action@v4
-                    with:
-                      name: dockerhub/publish-docker-image
-                      username: ${{ secrets.DOCKER_USERNAME }}
-                      password: ${{ secrets.DOCKER_PASSWORD }}
-                      workdir: /harness
+- step:
+    type: Action
+    name: Action docker publish image
+    identifier: Action_docker_publish_image
+    spec:
+      uses: elgohr/Publish-Docker-Github-Action@v4
+      with:
+        name: dockerhub/publish-docker-image
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        workdir: /harness
 ```
 
 If the Action ingests the working directory as an environment variable, place it under `env`.
@@ -356,9 +358,9 @@ To reference an output variable in a stage other than the one where the output v
 
 For each expression:
 
-* Replace `STEP_ID` with the ID of the GitHub Actions step
-* Replace `VAR_NAME` with the relevant variable name, wrapped in quotes.
-* In cross-stage references, replace `STAGE_ID` with the ID of the stage where the GitHub Actions step exists.
+- Replace `STEP_ID` with the ID of the GitHub Actions step
+- Replace `VAR_NAME` with the relevant variable name, wrapped in quotes.
+- In cross-stage references, replace `STAGE_ID` with the ID of the stage where the GitHub Actions step exists.
 
 :::warning
 
@@ -413,7 +415,7 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 - name: hello-world
   uses: actions/hello-world-javascript-action@main
   with:
-    who-to-greet: 'Mona the Octocat'
+    who-to-greet: "Mona the Octocat"
   env:
     hello: world
 ```
@@ -429,7 +431,7 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
     spec:
       uses: actions/hello-world-javascript-action@main
       with:
-        who-to-greet: 'Mona the Octocat'
+        who-to-greet: "Mona the Octocat"
       env:
         hello: world
 ```
@@ -438,10 +440,73 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 </tr>
 </table>
 
+## Support for GitHub Actions on VM and Local Runner Build Infrastructure
+
+### Prerequisites for self-managed VM infrastructure
+
+To support GitHub Action steps in your self-managed VM infrastructure, your build VMs must include a few additional tools at runtime.
+
+These tools are required for the GitHub Actions runners embedded within the Harness build process.
+
+#### Required tools
+
+Ensure that all build VMs (those provisioned by your runner) include:
+
+- nodejs version 16 or higher
+
+- python3 (with python pointing to python3)
+
+- golang
+
+- A correctly set HOME environment variable
+
+These are prerequisites for the GitHub Actions step runtimes and are not automatically installed by Harness.
+
+#### Recommended: Install via user_data script
+
+To automate provisioning of these tools, you can inject setup commands through the runner’s `user_data` in your `pool.yml`.
+
+Here’s an example for Linux-based VMs:
+
+```yaml
+user_data: |
+  #cloud-config
+  runcmd:
+    - 'sed -i "1s|^|HOME=/home/ubuntu\n|" /etc/environment'
+    - 'curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
+    - 'sudo apt install -y python3 python-is-python3 nodejs golang'
+```
+
+This script:
+
+- Initializes the `HOME` variable for login shells
+
+- Installs the required language runtimes and tooling
+
+- Prepares the VM to run GitHub Actions step definitions reliably
+
+:::note Minimum Delegate Version
+
+To use GitHub Actions step types in Harness CI, your Harness Delegate must be version 863 or later.
+
+:::
+
+Check out [user-data-example](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#user-data-example) for details.
+
+### Prerequisites for local runner
+
+Starting with **v0.1.19**, local runners support **Bitrise** and **GitHub Action steps**.
+
+To use this feature, make sure:
+
+- You're using **runner version v0.1.19 or later**.
+- The **feature flag** `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` is **enabled**.
+- The machine has **access to github.com**, since the runner downloads additional binaries during execution.
+
 ## Troubleshooting GitHub Actions in Harness CI
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Action steps. For example:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Action steps. For example:
 
-* [Can't connect to Docker daemon](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-cant-connect-to-docker-daemon)
-* [Not a git repository (or any of the parent directories)](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
-* [PATH variable overwritten in parallel GitHub Action steps](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)
+- [Can't connect to Docker daemon](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#github-action-step-cant-connect-to-docker-daemon)
+- [Not a git repository (or any of the parent directories)](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
+- [PATH variable overwritten in parallel GitHub Action steps](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)

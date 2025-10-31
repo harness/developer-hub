@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-12-03T14:00
+date: 2025-09-24T14:00
 sidebar_position: 3
 ---
 
@@ -24,34 +24,22 @@ These release notes describe recent changes to Harness Platform.
 :::
 ## Important feature change notice
 
-:::warning Important Update: Change in Default Container Registry for Harness Images
+:::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
+We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
 
-**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
-on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. if you are using the default `harnessImage` with anonymous access, pipeline failures may occur. 
+**Previous behaviour**:
+  - Successful deletion → `200 OK` with a string response body (`application/json`).
+  - Identifier not found/already deleted → `500 Internal Server Error`.
 
-To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
-* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
-* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
-* **Private registry**: Pull images from your own private registry.
+**New behaviour (effective October 20, 2025)**:
+  - Successful deletion → `204 No Content` (no response body).
+  - Identifier not found/already deleted → `404 Not Found`.
 
-The `harnessImage` connector configuration is used for pulling Harness images as described in the below articles: 
-- [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci)
-- [Harness STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images#harness-sto-images-list)
-- [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
+**Action Required**: Please review and update any automation, scripts, or integrations that depend on the old response codes before October 20, 2025.
+:::
 
-[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
-
-Additionally, **starting April 1, 2025, all [Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types) will be pulled from Google Artifact Registry (GAR)** by default to improve performance, security, and scalability.
-
-GAR Path `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
-
-If your organization restricts access to Google Artifact Registry (GAR), consider one of the following options to avoid disruptions:
-* Whitelist GAR to allow seamless access to Harness images.
-* Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
-* Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
-* We will continue to publish the image to DockerHub, you can continue using Docker Hub if the restrictions do not affect you. 
-
-::: 
+<details>
+<summary>Archived Highlights</summary>
 
 :::danger Breaking Changes 
    **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
@@ -82,8 +70,6 @@ This is a notification for a feature change aimed at enhancing your experience w
 1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. On **December 11, 2023**, Harness added a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
 
 2. **Continuity Assured**: There is no impact on your existing pipelines. They remain compatible with the way secrets were referenced before this feature change. Note that this includes using an external secret manager other than the Harness Built-in Secret Manager to store the authentication secret.
-
-:::
 
 #### Why did Harness make this change?
 
@@ -121,12 +107,248 @@ Below is further explanation for each type of secret manager Harness currently s
 
 6. For **Custom Secrets Manager**, if any secret is needed in the template as a variable, then it can only be stored in the Harness Built-in Secret Manager.
 
+:::
+
+:::warning Important Update: Change in Default Container Registry for Harness Images
+
+**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
+on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. if you are using the default `harnessImage` with anonymous access, pipeline failures may occur. 
+
+To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
+* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
+* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
+* **Private registry**: Pull images from your own private registry.
+
+The `harnessImage` connector configuration is used for pulling Harness images as described in the below articles: 
+- [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci)
+- [Harness STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images#harness-sto-images-list)
+- [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
+
+[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
+
+Additionally, **starting April 1, 2025, all [Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types) will be pulled from Google Artifact Registry (GAR)** by default to improve performance, security, and scalability.
+
+GAR Path `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
+
+If your organization restricts access to Google Artifact Registry (GAR), consider one of the following options to avoid disruptions:
+* Whitelist GAR to allow seamless access to Harness images.
+* Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
+* Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
+* We will continue to publish the image to DockerHub, you can continue using Docker Hub if the restrictions do not affect you. 
+
+::: 
+
+</details>
+
 ## Deprecation notice
 
 The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
+
+## October 2025 
+
+### Version 1.114.x <!--October 28, 2025-->
+
+#### New features and enhancements
+
+- Added [NDJSON format](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) support for AWS S3 streaming destinations. This enhancement is available starting from delegate version 25.10.87100. [PL-65974]
+- Added support for [customizing the Harness UI](https://developer.harness.io/docs/platform/get-started/customize-harness-ui) with your own favicon and logo. [PL-42608]
+#### Fixed issues
+
+- Fixed access control enforcement for the delegate installation command API. Users with view-only permissions can no longer access the command. [PL-65912]
+
+### Version 1.112.x <!--October 14, 2025-->
+
+#### New features and enhancements
+
+- Secrets `Create/Edit` permission can now be split into separate [`Create` and `Edit` permissions](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#secrets). [PL-57463]
+  - Feature Flags:
+    - `PL_SECRET_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION`: For migrating existing `Create/Edit` permissions to separate `create` and `edit` permissions.
+    - `PL_SECRET_CREATE_EDIT_PERMISSION_SPLIT_ENFORCE`: To enforce split permissions.
+
+#### Fixed issues
+
+- Resolved an issue where data in the *Assigned To* tab on the role details page displayed incorrectly when the FF `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` was enabled. [PL-65506]
+
+### Version 1.111.x <!--October 08, 2025-->
+
+#### New features and enhancements
+
+- Updated the images to use specific version tags instead of the latest tag. [PL-65593]
+  - aws-cli:latest -> aws-cli:2.31.7
+  - redis_exporter:latest -> redis_exporter:v1.77.0
+  - statsd-exporter:latest -> statsd-exporter:v0.28.0 
+
+### Version 1.110.x <!--October 03, 2025-->
+
+#### Fixed issues
+
+- Resolved a delegate name validation issue where delegates with names ending in a number could not be created through the UI, even though they worked via API and Terraform. [PL-65391]
+- Updated the system to handle errors in certain operations, including null pointer exceptions and incorrect response codes for invalid notification rule IDs. [PL-65387]
+- Fixed a scope issue that prevented certain delegates from appearing in role assignments. [PL-65324]
+- Resolved delegate startup delays on read-only file systems by loading custom certificates in a writable directory. [PL-65213]
+- Resolved an issue with cross-scope references, where users could reference child-scope channels in parent-scope rules. Such references are no longer allowed. [PL-64702]
+- Updated the system to trim trailing spaces in URLs and other fields to prevent connector creation errors. [PL-58616]
+
+#### New features and enhancements
+
+- Enhanced SMTP permissions: users can now be assigned Create/Edit, View, and Delete rights with proper error messages for missing permissions. [PL-64560]
+
+## September 2025 
+
+### Version 1.109.x <!--September 24, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where SCIM patch requests from Okta did not update User Group membership in the Harness UI. [PL-65385]
+
+#### New features and enhancements
+
+- Introduced a delegate task limit to better manage peak loads and improve system stability. [PL-56344]
+
+
+### Version 1.108.x <!--September 17, 2025-->
+
+#### Fixed issues
+
+- Updated the name and description of the body parameter in the [Token Validation API](https://apidocs.harness.io/openapi-merged/token/validatetoken). [PL-64820]
+
+#### New features and enhancements
+
+- Added support for running Harness services with a read-only root filesystem. [PL-65055]
+
+### Version 1.105.x <!--September 03, 2025-->
+
+#### New features and enhancements
+
+- Added the ability for customers to see the task response status in delegate selection logs. [PL-58972]
+
+:::warning Important Note:
+The Dashboard Intelligence feature has been temporarily disabled until further notice. If you require access to this feature, please contact your account team or submit a [support ticket](mailto:support@harness.io).
+:::
+
+## August 2025
+
+### Version 1.103.x <!--August 25, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where the reconciliation banner was incorrectly displayed on the Secret Details page. [PL-64802]
+- Updated API key validation to return a 403 error (instead of 400) when a Service Account Token (SAT) is sent in place of a Personal Access Token (PAT) with `"apiKeyType": "USER"`. [PL-62520] 
+
+### Version 1.102.x <!--August 19, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue in Pipeline Studio where the "View Delegate Task Logs" link on the pipeline execution Details page redirected to a non-existent page. It now correctly redirects to the delegate URL. [PL-64747]
+- Resolved an issue where deleting a user at the Organization or Project scope also deleted their API keys and tokens from the Account. [PL-64793]
+
+#### New features and enhancements
+
+- Selection logs now also capture tasks acquired through polling, improving traceability. [PL-58880]
+
+### Version 1.101.x <!--August 13, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where, with the `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` feature flag enabled, adding a new role assignment to an inherited principal failed if one already existed, due to incorrect scope information being passed. [PL-64180]
+- Improved the delegate registration process, making it more reliable and faster under heavy load, while reducing timeouts and failed attempts. [PL-61033]
+
+### Version 1.100.x <!--August 06, 2025-->
+
+#### Fixed issues
+
+- Resolved a CSS-related issue that affected the readability of YAML diffs in the Audit Log view. The diff now renders correctly without visual glitches. [PL-64397]
+- Dashboards and Dashboard pages have been updated to support dynamic scaling, ensuring better viewing across all device sizes. [PL-64173]
+
+#### New features and enhancements
+
+- Improved backend queries to optimize how tasks are fetched by delegates. No action is needed from users. [PL-64473]
+- Added support for [deleting Delegate tokens](https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens#delete-delegate-tokens) — making it easy to clean up unused ones. [PL-63386]
+
+## July 2025
+
+### Version 1.99.x <!--July 30, 2025-->
+
+#### Fixed issues
+
+- Increased the item limit in scrollable lists beyond 100 to enhance usability and avoid display limitations. [PL-63813]
+
+#### New features and enhancements
+
+- Introduced [Secret Manager template reconciliation](/docs/platform/secrets/secrets-management/reconcilation-of-secret-manager-template) to automatically review and update linked Secret Managers and Secrets when templates are modified, preventing misconfigurations. [PL-61310]
+- Launched [Default Notification Templates](/docs/platform/notifications/default-notification-template) that automatically apply when no notification template is selected in a notification rule, providing the capability to define the notification template centrally. [PL-61479]
+- Introduced [Centralised Delegate Notifications](/docs/platform/notifications/centralised-notification) for proactive delegate monitoring with immediate alerts for disconnection, expiration, and near-expiration alerts. [PL-31873]
+- AWS KMS connector now supports adding [ARN as plain text](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager) across all authentication methods. [PL-62434]
+- Enhanced database operations during delegate registration to prevent duplicate entries in `delegateConfig`. [PL-64095]
+- Improved visibility on the service accounts' details page at a higher scope; users can now see details of service accounts that are inherited at lower scopes. [PL-63634]
+- Delegate tasks are now marked as completed instead of being deleted immediately. These completed tasks are automatically removed after a defined retention period using a TTL (Time-To-Live) index. [PL-61842]
+- ECS delegates are now deprecated. New ECS delegate registrations are no longer supported, and existing ECS delegates will gradually be disconnected. [PL-56291]
+
+### Version 1.98.x <!--July 22, 2025-->
+
+#### New features and enhancements
+
+- Enhanced the task broadcast mechanism to prevent sending tasks to non-eligible delegates. [PL-58722]
+
+### Version 1.97.x <!--July 15, 2025-->
+
+#### Fixed issues
+
+- Resolved a bug in the roll-up job by updating it to process documents one at a time, improving memory efficiency and preventing out-of-memory (OOM) errors. [PL-63838]
+- Updated User Details page where links under the RoleBindings tab now properly redirect to the correct scoped Roles and ResourceGroups. [PL-63651]
+
+#### New features and enhancements
+
+- New audit event for Delegate token expiry: An audit event gets logged whenever a delegate token gets revoked. This enhancement improves visibility and traceability of delegate token lifecycle events, supporting stronger security auditing. [PL-63995]
+
+### Version 1.96.x <!--July 08, 2025-->
+
+#### Fixed issues
+
+- SAML Authentication: Resolved time synchronization issues by introducing a 5-minute clock skew tolerance between the Identity Provider (IdP) and Harness Manager. [PL-63828]
+- Updated SMP license validation to avoid false email alerts. [PL-63554]
+
+#### New features and enhancements 
+
+- Added the `FIPS_ENABLED` environment variable to the delegate YAML when the manager is deployed with FIPS enabled. [PL-63554]
+
+### Version 1.95.x <!--July 01, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue in the Create [IP Allowlist](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) screen where pasting text into the Name field would duplicate the content. For example, pasting `ABC 1` would incorrectly result in `ABC 1ABC 1`. [PL-63331]
+
+#### New features and enhancements 
+
+- Delegates are now tagged with the appropriate scope (Account/Organization/Project) for all Assessment types in the Delegate selection logs in a pipeline. [PL-49165]
+
+## June 2025
+
+### Version 1.94.x <!--June 17, 2025-->
+
+#### Fixed issues
+
+- Previously, selecting a higher-level Secret Manager (like Account scope) without access to lower levels (like Organization scope) caused the Secret Manager screen to keep loading. This is now fixed, and users can select and use Secret Managers without issues. [PL-63165]
+
+#### New features and enhancements 
+
+- Added support for managing access control for [connectors through tags](https://developer.harness.io/docs/platform/connectors/manage-access-control-for-connectors). This feature is currently behind the feature flag: `PL_TAG_BASED_ACCESS_TO_CONNECTORS`. [PL-43468]
+
+### Version 1.93.x <!--June 10, 2025-->
+
+#### Fixed issues
+
+- Resolved missing "Variable" option in the Audit Filter dropdown list. [PL-63195]
+- Navigating to a role or resource group from user role bindings no longer leads to a blank page. [PL-63154]
+- Code Repository resource group now appears correctly in the resource group list. [PL-63120]
+
+#### New features and enhancements 
+
+- Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
+- Added support for [Custom Notifications](https://developer.harness.io/docs/platform/templates/customized-notification-template/) for all remaining channels: Email, Slack, Microsoft Teams, Datadog, PagerDuty.
 
 ## May 2025
 
@@ -149,7 +371,7 @@ The following deprecated API endpoints are longer supported:
 - Fixed an issue where updating users in an SCIM-managed group caused an error. This behavior was inconsistent with the Terraform provider. Now, instead of throwing an error, the system ignores the incoming user data and retains the existing users when saving the group. [PL-62492] 
 - Fixed an issue where the Terraform provider version is no longer hardcoded in the installation command. It will now be automatically selected based on the delegate's configuration. [PL-61735]
 
-#### New Feature and Enhancement 
+#### New features and enhancements 
 
 - SMP customers can now see the chart version in the Harness UI under Account Details. [PL-62579]
 - All SMP services now support a custom Istio gateway. [PL-61322]
@@ -391,6 +613,8 @@ The following deprecated API endpoints are longer supported:
 - Upgraded the `org.asynchttpclient_async-http-client` to version 3.0.1. (PL-59246)
 
 - Upgraded the delegate base image from `ubi8-minimal:8.10` to `ubi9-minimal:9.4`. (PL-58376)
+
+- NG Delegates have been updated to exclude the use of delegate profiles and scopes when retrieving implicit selectors, ensuring more consistent behavior. (PL-55697)
 
 ## December 2024
 ### Version 1.69.x<!-- December 12, 2024 -->
@@ -1232,7 +1456,7 @@ The following deprecated API endpoints are longer supported:
     When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
     :::
 
-- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
+- You can now toggle between the legacy UI navigation and the new navigation for your account. (PL-43772)
 
 #### Early access features
 

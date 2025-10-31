@@ -1,12 +1,12 @@
 {
-    "label": "What's supported",
+    "label": "What's Supported",
     "position": 9,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "What's supported"
+        "title": "What's Supported"
     },
     "customProps": {
         "helpdocs_category_id": "8nywcs2sa7"

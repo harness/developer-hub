@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "./styles.css";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
 import Tooltip from "rc-tooltip";
+import React from "react";
+import "./styles.css";
 
 interface Props {
   text: string;
@@ -13,8 +12,6 @@ interface Props {
 }
 const DocsButton: React.FC<Props> = (props) => {
   const size: string | null = props.size;
-  const { siteConfig } = useDocusaurusContext();
-  const baseUrl = siteConfig.url;
 
   return (
       <Link to={props.link} className="link">

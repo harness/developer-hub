@@ -1,11 +1,9 @@
 ---
 title: PHP SDK
 sidebar_label: PHP SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/php-sdk-why-is-php-unable-to-write-impressions-to-redis/
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020350372-PHP-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -58,7 +56,7 @@ We recommend instantiating the SDK factory once as a singleton and reusing it th
 
 Use the code snippet below to instantiate the client in your code base. You need to provide your Redis details and your SDK API key.
 
-Configure the SDK with the SDK API key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK API key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 Do all of this as a part of the startup sequence of your application. 
  
@@ -90,7 +88,7 @@ $splitClient = $splitFactory->client();
 
 After you instantiate the SDK factory client, use the `getTreatment` method of the SDK factory client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature flag to.
 
-From there, you need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+From there, you need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 ```php title="PHP"
 <?php
@@ -108,7 +106,7 @@ if ($treatment === 'on') {
 
 ### Attribute syntax 
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to pass an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `getTreatment` method needs to pass an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -181,7 +179,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
@@ -248,19 +246,19 @@ Due to the nature of PHP and the way HTTP requests are handled, the client is in
 
 Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
-Refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information about using track events in feature flags. 
+Refer to the [Events](/docs/feature-management-experimentation/release-monitoring/events/) documentation for more information about using track events in feature flags. 
 
 In the examples below you can see that the `.track()` method can take up to five arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `getTreatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period. 
      * This is the regular expression we use to validate the value:<br />`[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**. 
-* **PROPERTIES:** (Optional) An Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 :::warning[Redis Support]
 If you are using our SDK with Redis, you need Split Synchronizer v2.3.0 version at least in order to support *properties* in the `track` method.
@@ -268,7 +266,7 @@ If you are using our SDK with Redis, you need Split Synchronizer v2.3.0 version 
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
-In the case that a bad input has been provided, you can read more about our SDK's expected behavior in the [Events documentation](https://help.split.io/hc/en-us/articles/360020585772-Track-events) 
+In the case that a bad input has been provided, you can read more about our SDK's expected behavior in the [Events documentation](/docs/feature-management-experimentation/release-monitoring/events/). 
 
 ```php title="PHP 7.3+"
 <?php
@@ -476,7 +474,7 @@ $splitClient = $splitFactory->client();
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer. 
 
-`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlags` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
+`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlags` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name. Here is a sample `.split` file.
 
@@ -680,3 +678,36 @@ $options = [
 /** Create the client instance. */
 $splitClient = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $options);
 ```
+
+## Troubleshooting
+
+### Why is PHP unable to write impressions to Redis throwing error "NOAUTH Authentication required"?
+
+Using the PHP SDK with Redis and Split Synchronizer, calling `getTreatment` causes an exception:
+
+```csharp
+Fetching item ** SPLITIO.split.test ** from cache getTreatment method is throwing exceptions NOAUTH Authentication required.
+```
+
+The Redis instance requires authentication, but the PHP SDK configuration is missing the password parameter.
+
+Add the Redis password to the configuration parameters passed to the PHP SDK:
+
+```php
+$options = [
+  'prefix' => '',
+  'parameters' => [
+      'password' => 'REDISPASSWORD'
+  ],
+];
+
+$sdkConfig = array(
+  'cache' => array(
+    'adapter' => 'predis', 
+    'parameters' => $parameters, 
+    'options' => $options
+  )
+);
+```
+
+This ensures the SDK authenticates properly with Redis.

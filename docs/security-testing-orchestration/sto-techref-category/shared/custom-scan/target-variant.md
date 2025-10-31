@@ -1,4 +1,4 @@
-Every Custom Scan step needs a [target and baseline](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+Every Custom Scan step needs a [target and baseline](/docs/security-testing-orchestration/key-concepts/targets-and-baselines).
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
@@ -28,4 +28,4 @@ target_variant
 ```
 
 ##### Value
-A [user-defined label](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines)  for the branch, tag, or other target variant to scan.
+A [user-defined label](/docs/security-testing-orchestration/key-concepts/targets-and-baselines)  for the branch, tag, or other target variant to scan.

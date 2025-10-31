@@ -1,11 +1,13 @@
 ---
 title: Node.js SDK
 sidebar_label: Node.js SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-dependency-on-old-version-of-package-url-parse
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-using-gettreatment-in-localhost-mode-does-not-work-with-then-and-catch-blocks/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-localhost-mode-error-cannot-find-name-path/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-error-node-modules-has-no-exported-member-splitio/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-how-to-deploy-in-aws-lambda/
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -15,6 +17,12 @@ This guide provides detailed information about our Node.js SDK. All of our SDKs 
 ## Language support
 
 The JavaScript SDK supports Node.js version 14.x or later.
+
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 11.4.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
 
 ## Initialization
 
@@ -52,7 +60,7 @@ var client = factory.client();
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 import { SplitFactory } from '@splitsoftware/splitio';
 
 const factory: SplitIO.ISDK = SplitFactory({
@@ -78,7 +86,7 @@ We changed our module system to ES modules and now we are exposing an object wit
 :::
 
 :::danger[Running in the Browser?]
-Refer to our [JavaScript SDK Setup](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#1-import-the-sdk-into-your-project) as the bundles and API are slightly different.
+Refer to our [JavaScript SDK Setup](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#1-import-the-sdk-into-your-project) as the bundles and API are slightly different.
 :::
 
 :::info[Notice for TypeScript]
@@ -89,7 +97,7 @@ Feel free to dive in to the declaration files if IntelliSense is not enough!
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 Use the SDK factory client to evaluate treatments.
 
@@ -97,13 +105,13 @@ Use the SDK factory client to evaluate treatments.
 
 ### Basic use
 
-When the SDK is instantiated, it kicks off background jobs to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds. While the SDK is in this intermediate state, if it is asked to evaluate which treatment to show to the logged in customer for a specific feature flag, it may not have data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it kicks off background jobs to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds. While the SDK is in this intermediate state, if it is asked to evaluate which treatment to show to the logged in customer for a specific feature flag, it may not have data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready (as shown below). We set the client to listen for the `SDK_READY` event triggered by the SDK before asking for an evaluation.
 
 When the `SDK_READY` event fires, you can use the `getTreatment` method to return the proper treatment based on the `key` and `FEATURE_FLAG_NAME` attributes you provided.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
@@ -126,7 +134,7 @@ client.on(client.Event.SDK_READY, function() {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 client.on(client.Event.SDK_READY, () => {
   // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
   const treatment: SplitIO.Treatment =
@@ -147,7 +155,7 @@ client.on(client.Event.SDK_READY, () => {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -190,7 +198,7 @@ if (treatment === 'on') {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const attributes: SplitIO.Attributes = {
   // date attributes are handled as `millis since epoch`
   registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
@@ -241,7 +249,7 @@ treatments = client.getTreatmentsByFlagSet('key', 'backend');
 var flagSets = ['backend', 'server_side'];
 treatments = client.getTreatmentsByFlagSets('key', flagSets);
 
-// treatments have the following form: 
+// treatments have the following form:
 // {
 //   FEATURE_FLAG_NAME_1: 'on',
 //   FEATURE_FLAG_NAME_2: 'visa'
@@ -251,7 +259,7 @@ treatments = client.getTreatmentsByFlagSets('key', flagSets);
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 // Getting treatments by feature flag names
 const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_1'];
 let treatments: SplitIO.Treatments = client.getTreatments('key', featureFlagNames);
@@ -263,7 +271,7 @@ treatments = client.getTreatmentsByFlagSet('key', 'backend');
 const flagSets = ['backend', 'server_side'];
 treatments = client.getTreatmentsByFlagSets('key', flagSets);
 
-// treatments have the following form: 
+// treatments have the following form:
 // {
 //   FEATURE_FLAG_NAME_1: 'on',
 //   FEATURE_FLAG_NAME_2: 'visa'
@@ -281,7 +289,7 @@ If your code runs with both types of storage, read [Working with both sync and a
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
 This method will return an object containing the treatment and associated configuration.
 
@@ -301,7 +309,7 @@ var treatment = flagResult.treatment;
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const flagResult: SplitIO.TreatmentWithConfig = client.getTreatmentWithConfig('user_id', 'FEATURE_FLAG_NAME', attributes);
 const configs: any = JSON.parse(flagResult.config);
 const treatment: SplitIO.Treatment = flagResult.treatment;
@@ -327,7 +335,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSet('user_id', 'backend')
 var flagSets = ['backend', 'server_side'];
 treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets);
 
-// treatmentResults will have the following form: 
+// treatmentResults will have the following form:
 // {
 //   FEATURE_FLAG_NAME_1: {treatment: 'on',
 //                         config: "{ 'color' : 'red'}}",
@@ -339,9 +347,9 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets)
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 // Getting treatments by feature flag names
-const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']; 
+const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
 let treatmentResults: SplitIO.TreatmentsWithConfig = client.getTreatmentsWithConfig('user_id', flagNames);
 
 // Getting treatments by set
@@ -351,7 +359,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSet('user_id', 'backend')
 const flagSets = ['backend', 'server_side'];
 treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets);
 
-// treatmentResults will have the following form: 
+// treatmentResults will have the following form:
 // {
 //   FEATURE_FLAG_NAME_1: {treatment: 'on',
 //                         config: "{ 'color' : 'red'}}",
@@ -365,7 +373,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets)
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -376,10 +384,10 @@ Three types of properties are supported: strings, numbers, and booleans.
 
 ```javascript
 const evaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -391,10 +399,10 @@ const treatment = client.getTreatment('key', 'FEATURE_FLAG_NAME', undefined, eva
 
 ```typescript
 const evaluationOptions: SplitIO.EvaluationOptions = {
-  properties: { 
-    package: "premium", 
-    admin: true, 
-    discount: 50 
+  properties: {
+    package: "premium",
+    admin: true,
+    discount: 50
   }
 };
 
@@ -406,18 +414,12 @@ const treatment: string = client.getTreatment('key', 'FEATURE_FLAG_NAME', undefi
 
 ### Shutdown
 
-Call the `client.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions. 
-
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
+Call the `client.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
 
 ```javascript
 user_client.destroy();
 user_client = null;
 ```
-
-</TabItem>
-</Tabs>
 
 After `destroy()` is called and finishes, any subsequent invocations to `getTreatment`/`getTreatments` or manager methods result in `control` or empty list, respectively.
 
@@ -429,23 +431,23 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
-[Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in features.
+[Learn more](/docs/feature-management-experimentation/release-monitoring/events/) about using track events in features.
 
 In the examples below, you can see that the `.track()` method can take up to five arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `getTreatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of feature flag.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in your instance of feature flag.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
-In the case that a bad input has been provided, you can read more about our SDK's expected behavior [here](https://help.split.io/hc/en-us/articles/360020585772-Track-events)
+In the case that a bad input has been provided, you can read more about our SDK's expected behavior [here](/docs/feature-management-experimentation/release-monitoring/events/)
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
@@ -479,7 +481,7 @@ queuedPromise.then(function(queued) {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 // If you would like to send an event without a value
 const queuedPromise: Promise<boolean> = client.track('key', 'TRAFFIC_TYPE', 'EVENT_TYPE');
 // Example
@@ -590,7 +592,7 @@ var factory = SplitFactory({
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const factory: SplitIO.ISDK = SplitFactory({
   core: {
     authorizationKey: 'YOUR_API_KEY',
@@ -715,7 +717,7 @@ client.once(client.Event.SDK_READY_TIMED_OUT, function () {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 import { SplitFactory } from '@splitsoftware/splitio';
 
 const config: SplitIO.INodeAsyncSettings = {
@@ -806,7 +808,7 @@ client.on(client.Event.SDK_READY, function() {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const factory: SplitIO.ISDK = SplitFactory({
   core: {
     authorizationKey: 'localhost'
@@ -833,7 +835,7 @@ client.on(client.Event.SDK_READY, function() {
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer. Should you want to use another file, you just need to set the `features` key in the configuration object passed at instantiation time, to the full path of the desired file.
 
-`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
+`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them.
 
 Here is a sample `.split` file. The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name.
 
@@ -917,7 +919,7 @@ manager.once(manager.Event.SDK_READY, function() {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const factory: SplitIO.ISDK = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY'
@@ -966,7 +968,7 @@ var splitNamesList = manager.names();
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 /**
  * Returns the feature flag registered with the SDK of this name.
  *
@@ -1048,7 +1050,7 @@ var factory = SplitFactory({
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 class MyImprListener implements SplitIO.IImpressionListener {
   logImpression(impressionData: SplitIO.ImpressionData) {
     // do something with impressionData
@@ -1091,41 +1093,19 @@ SPLITIO_DEBUG='on' node app.js
 Since v9.2.0 of the SDK, you can enable logging via SDK settings and programmatically by calling the Logger API.
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger API (JavaScript)">
+<TabItem value="TypeScript" label="Logger API">
 
-```javascript
-var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
-
-var factory = SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY'
-  },
-  debug: true // Debug boolean option can be passed on settings.
-});
-
-// Or you can use the Logger API which two methods, enable and disable.
-// Calling this methods will have an immediate effect.
-factory.Logger.enable();
-factory.Logger.disable();
-
-// You can also set the log level programatically after v10.4.0
-// Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
-// 'DEBUG' is equivalent to `enable` method.
-// 'NONE' is equivalent to `disable` method.
-factory.Logger.setLogLevel('WARN');
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger API (TypeScript)">
-
-```javascript
+```typescript
 import { SplitFactory } from '@splitsoftware/splitio';
 
-const factory: SplitIO.ISDK = SplitFactory({
+const factory = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY'
   },
-  debug: true  // Debug boolean option can be passed on settings
+  // Debug log level can be passed on settings.
+  // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE', 
+  // true (equivalent to 'DEBUG') and false (equivalent to 'NONE').
+  debug: true
 });
 
 // Or you can use the Logger API which two methods, enable and disable.
@@ -1133,7 +1113,7 @@ const factory: SplitIO.ISDK = SplitFactory({
 factory.Logger.enable();
 factory.Logger.disable();
 
-// You can also set the log level programatically after v10.4.0
+// You can also set the log level programmatically after v10.4.0
 // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
 // 'DEBUG' is equivalent to `enable` method.
 // 'NONE' is equivalent to `disable` method.
@@ -1143,20 +1123,58 @@ factory.Logger.setLogLevel('WARN');
 </TabItem>
 </Tabs>
 
-Example output is shown below.
+By default, the SDK uses the `console.log` method to output log messages for all log levels. 
 
-![](../static/javascript-sdk-log-example.png)
+Since v11.7.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the Logger API. 
 
-:::info[Note]
-For more information on using the logging framework in SDK versions prior to 9.2, visit [https://github.com/visionmedia/debug](https://github.com/visionmedia/debug).
-:::
+The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
+
+```typescript
+interface Logger {
+  debug(message: string): any;
+  info(message: string): any;
+  warn(message: string): any;
+  error(message: string): any;
+}
+```
+
+The following example creates an instance of the `winston` logger, passes it to the SDK, and then switches to the `console` object as a logger.
+
+<Tabs>
+<TabItem value="Using Winston Logger and Console">
+
+```typescript
+import { createLogger, transports } from 'winston';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const winstonLogger: SplitIO.Logger = createLogger({
+  level: 'debug',
+  transports: [new transports.Console()]
+});
+
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  },
+  // Enable logs to call the corresponding custom logger methods
+  debug: true,
+  logger: winstonLogger
+});
+
+// Switching to console logger
+factory.Logger.setLogger(console);
+```
+
+</TabItem>
+</Tabs>
 
 ## Proxy
 
-If you need to use a network proxy, you can provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The SDK will use this agent to perform requests to Harness servers.
+If your environment requires routing traffic through a proxy, you can configure the Node.js SDK to use one.
 
-<Tabs>
-<TabItem value="Example using the HTTPS Proxy Agent NPM library">
+If you need to use a standard network proxy, provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The SDK uses this agent to perform requests through the proxy.
+
+For example:
 
 ```javascript
 // Install with `npm install https-proxy-agent`
@@ -1169,16 +1187,314 @@ const factory = SplitFactory({
   core: {
     authorizationKey: 'YOUR_SDK_KEY'
   },
-  sync: { 
-    requestOptions: { 
+  sync: {
+    requestOptions: {
       agent: proxyAgent
-    } 
+    }
   }
 })
 ```
 
+### Integrate with the Harness Proxy
+
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
+
+#### Configure the proxy
+
+You can configure the Node.js SDK to route traffic through a forward proxy by setting a custom HTTP agent. This overrides the default SDK agent and allows you to define proxy URLs, authentication headers, and mTLS certificates.
+
+In Node.js, network proxies are configured via the agent option in the SDK’s `requestOptions`. Harness recommends using the `https-proxy-agent` library to simplify proxy setup and handle secure connections.
+
+The following proxy configuration parameters are available:
+
+| Configuration | Description | Required |
+|:---:|:---:|:---:|
+| `agent` | Custom HTTP agent that defines proxy behavior. | Yes |
+| `ca` | Certificate authority (CA) file for self-signed certificates. | Optional |
+| `cert` / `key` | Client certificate and private key for mTLS authentication. | Optional |
+| `headers` | Custom headers for proxy authentication (Basic or Bearer Token). | Optional |
+
+#### Harness Proxy (URL Only)
+
+To use a proxy with no authentication, specify only the proxy URL in the configuration. Follow the pattern: `http(s)://host:port`.
+
+<Tabs groupId="java-type-script">
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+// Create an agent to use the forward proxy at https://harness-fproxy:3128
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128');
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128');
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
 </TabItem>
 </Tabs>
+
+#### Harness Proxy with Username/Password Authentication
+
+To authenticate using a username and password, implement the `BasicCredentialsProvider` interface and override the required methods.
+
+<Tabs groupId="java-type-script">
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with user/pass authentication
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: () => ({
+    // Basic (Username/Password) authentication
+    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const username: string = 'proxyUser';
+const password: string = 'proxyPass';
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with user/pass authentication
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: (): Record<string, string> => ({
+    // Basic (Username/Password) authentication
+    'Proxy-Authorization': `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with JWT Token Authentication
+
+To authenticate using a bearer token (e.g., JWT), include the `Proxy-Authentication` header with bearer authentication.
+If your token expires, consider renewing it proactively as shown below:
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="javascript " label="JavaScript">
+
+```javascript
+// If your JWT bearer token can expire, renew it before expiration
+let bearerToken;
+
+function refreshBearerToken() {
+  bearerToken = getNewBearerToken();
+  const decodedToken = decodeToken(bearerToken);
+  // Renew the token, for example, 1 minute before expiration
+  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
+};
+
+refreshBearerToken();
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with JWT token authentication
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: () => ({
+    // Bearer (JWT) authentication
+    'Proxy-Authorization': `Bearer ${bearerToken}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript " label="TypeScript">
+
+```typescript
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+// If your JWT bearer token can expire, renew it before expiration
+let bearerToken: string;
+
+function refreshBearerToken(): void {
+  bearerToken = getNewBearerToken();
+  const decodedToken = decodeToken(bearerToken);
+  // Renew the token 1 minute before expiration
+  setTimeout(refreshBearerToken, (decodedToken.exp - decodedToken.iat - 60) * 1000);
+}
+
+refreshBearerToken();
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with JWT token authentication
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  headers: (): Record<string, string> => ({
+    // Bearer (JWT) authentication
+    'Proxy-Authorization': `Bearer ${bearerToken}`
+  })
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with a custom CA certificate or mTLS Authentication
+
+To provide a custom CA X.509 certificate for self-signed certificates or configure mutual TLS (mTLS) authentication, use the corresponding agent properties to supply the required files.
+
+<Tabs groupId="java-type-script">
+<TabItem value="javascript " label="JavaScript">
+
+```javascript
+// Load certificates
+const fs = require('fs');
+const caCert = fs.readFileSync('certs/ca.crt');
+const clientCert = fs.readFileSync('certs/client.crt');
+const clientKey = fs.readFileSync('certs/client.key');
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with a custom CA certificate and mTLS
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  ca: caCert,                   // CA certificate for self-signed cert
+  cert: clientCert,             // mTLS: client certificate
+  key: clientKey                // mTLS: private key
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const { SplitFactory } = require('@splitsoftware/splitio');
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import fs from 'fs';
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SplitFactory } from '@splitsoftware/splitio';
+
+// Load certificates
+const caCert: Buffer = fs.readFileSync('certs/ca.crt');
+const clientCert: Buffer = fs.readFileSync('certs/client.crt');
+const clientKey: Buffer = fs.readFileSync('certs/client.key');
+
+// Create an agent to use the forward proxy at https://harness-fproxy:3128 with a custom CA certificate and mTLS
+const agentUsingProxy = new HttpsProxyAgent('https://harness-fproxy:3128', {
+  ca: caCert,       // CA certificate for self-signed cert
+  cert: clientCert, // mTLS: client certificate
+  key: clientKey    // mTLS: private key
+});
+
+// Initialize the SDK with the proxy-enabled agent
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  sync: {
+    requestOptions: {
+      agent: agentUsingProxy
+    }
+  }
+});
+```
+
+</TabItem>
+</Tabs>
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
 
 ## Advanced use cases
 
@@ -1187,8 +1503,6 @@ This section describes advanced use cases and features provided by the SDK.
 ### Working with both sync and async storage
 
 You can write code that works with all type of SDK storage. For example, you might have an application that you want to run on both `REDIS` and `MEMORY` storage types. To accommodate this, check if the treatments are [thenable objects](https://promisesaplus.com/#terminology) to decide when to execute the code that depends on the feature flag.
-
-See example below.
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
@@ -1223,7 +1537,7 @@ function thenable(val) {
 </TabItem>
 <TabItem value="TypeScript">
 
-```javascript
+```typescript
 const treatment: (SplitIO.Treatment | SplitIO.AsyncTreatment) =
   client.getTreatment('key', 'FEATURE_FLAG_NAME');
 
@@ -1254,3 +1568,149 @@ function thenable(val) {
 
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+### Dependency on Old Version of Package url-parse
+
+Node.js SDK has a dependency on an old version of package `url-parse` (< 1.5.9), which is flagged as vulnerable in security scans.
+
+This package is part of a dependency chain in the `eventsource` package: `@splitsoftware/splitio > eventsource > original > url-parse`.
+
+To upgrade the `url-parse` package, you can use the following commands depending on your package manager:
+
+For npm environment:
+
+```bash
+npm audit fix
+```
+
+For yarn environment:
+
+```bash
+npm_config_yes=true npx yarn-audit-fix
+```
+
+Alternatively, you can add a resolutions field to your app’s `package.json` to force the use of a fixed version:
+
+```json
+"resolutions": {
+  "url-parse": "1.5.10"
+}
+```
+
+Then run:
+
+```bash
+yarn upgrade
+```
+
+### Using getTreatment() in Localhost Mode Does Not Work with then() and catch() Blocks
+
+When implementing the Node.js SDK with Redis storage, the `getTreatment` method returns a Promise, so it works fine with `.then()` and `.catch()` blocks.
+
+However, when testing the SDK in localhost mode like this:
+
+```js
+client
+  .getTreatment('user_id', 'my-feature-comming-from-redis')
+  .then(treatment => {
+    // do something with the treatment
+  })
+  .catch(() => false)
+```
+
+It throws the error:
+
+```
+splitClient.getTreatment(...).then is not a function
+```
+
+In Redis storage mode, `getTreatment()` returns a Promise because it wraps a Redis fetch call. But in localhost mode, there is no Redis call, so `getTreatment()` does not return a Promise, causing `.then()` to fail.
+
+Wrap the SDK client creation and `getTreatment()` call inside an async function, and use `then()` and `catch()` on the returned Promise as shown below:
+
+```js
+const path = require('path');
+const SplitFactory = require('@splitsoftware/splitio').SplitFactory;
+
+async function createSplitClient() {
+  const factory = SplitFactory({
+    core: {
+      authorizationKey: 'localhost'
+    },
+    startup: {
+      readyTimeout: 10
+    },
+    features: path.join(__dirname, 'first.yaml'),
+    debug: true
+  });
+  const client = factory.client();
+  await client.ready();
+  console.log("SDK is ready");
+  return client;
+}
+
+async function getSplitTreatment(userKey, splitName) {
+  let splitClient = await createSplitClient();
+  return await splitClient.getTreatment(userKey, splitName);
+}
+
+getSplitTreatment("user", "first_split")
+  .then((treatment) => {
+    console.log("treatment: " + treatment);
+  })
+  .catch(() => {
+    console.log("SDK exception");
+  });
+```
+
+### While using Localhost mode, error generated: Cannot find name 'path'
+
+Using Node.js SDK, when trying to run the code below in Typescript file using Localhost mode:
+
+```typescript
+var factory = SplitFactory({
+  core: {
+     authorizationKey: 'localhost'
+  },
+  features: path.join(__dirname, '.split'),
+  scheduler: {
+    offlineRefreshRate: 15 // 15 sec
+  }
+});
+```
+
+The following error is thrown:
+
+```
+Cannot find name 'path'
+```
+
+This is a node issue. TypeScript needs typings for any module, except if that module is not written in TypeScript.
+
+You need to install the following package by running the command: `npm i @types/node -D`.
+
+### "/node_modules/@splitsoftware/splitio/types"' has no exported member 'SplitIO'
+
+Using Node.js SDK, when trying to import SplitIO as a namespace in TypeScript:
+
+```typescript
+import { SplitIo } from '@splitsoftware/splitio';
+```
+
+The following error is thrown:
+
+```bash
+/node_modules/@splitsoftware/splitio/types"' has no exported member 'SplitIO'.
+```
+
+TypeScript implicitly imports SplitIO namespace when doing `import { SplitFactory } from '@splitsoftware/splitio';`, and even the “typeRoots” config is not affecting it because the declaration file is included in the SDK package and the “types” field is properly configured.
+
+You can explicitly import the SplitIO namespace (for example, on modules/files where SplitFactory is not being imported). To achieve this, include the line:
+
+```typescript
+import SplitIO from '@splitsoftware/splitio/types/splitio';
+```
+
+This requires including `"allowSyntheticDefaultImports": true` in `tsconfig`.

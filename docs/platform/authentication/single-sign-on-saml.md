@@ -9,10 +9,12 @@ helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
+import SCIMurl from '/docs/platform/shared/scimurl.md'
+
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. This document explains how to set up SAML authentication.
 
 :::info note
-If the [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/get-started/onboarding-guide) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
+If the [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-overview) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
 :::
 
 ## Supported formats
@@ -26,10 +28,6 @@ When integrating users through any SAML provider, it is important to note that u
 
 :::
 
-:::tip
-    The **Users** column in the Harness UI is based on the `displayname` in the assertion. If you see an email address in the **Users** column, update the `displayname` with the user's first and last name.
-:::
-
 ## Use System for Cross-domain Identity Management (SCIM) protocol
 
 To ensure continuous and real-time synchronization of user group bindings and access controls, Harness recommends that you utilize the System for Cross-domain Identity Management (SCIM) protocol. SCIM enables real-time syncing of user additions with Harness user groups, ensuring that user permissions and access rights are consistently applied and maintained.
@@ -40,9 +38,10 @@ For implementation details and further guidance on provisioning users with SCIM,
 
 If you provision users and groups via SCIM API, use the following settings for your SAML integration.
 
-- **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/<YOUR_ACCOUNT_ID`
-   - Replace `YOUR_ACCOUNT_ID` with your Harness account ID.
-   The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
+- **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/[YOUR_ACCOUNT_ID]`. enter the appropriate URL for your cluster:
+
+<SCIMurl />
+
 - **Unique identifier:** `userName`
 - **Authentication Mode:** HTTP Header
 - **Authorization:** `<YOUR_SERVICE_ACCOUNT_TOKEN>`
@@ -152,7 +151,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 Download the **Identity Provider metadata** XML from your Okta app and upload it into Harness.
 
 1. In your Harness Okta app, go to the **Sign On** tab, and then select **Edit**.
-2. Select **Actions** to download the SAML metadata file.
+2. Select **Actions** to view the SAML metadata, then copy that data into a file and save it with an .xml extension.
 
    ![](./static/single-sign-on-saml-60.png)
 
@@ -421,7 +420,7 @@ You must enter the **Harness SAML Endpoint URL** from Harness in your Azure app 
 Next, you will use the **SAML SSO Provider** settings in Harness to set up your Azure app **Single sign-on**.
 
 :::info note
-For [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/get-started/onboarding-guide), replace **app.harness.io** with your custom URL.
+For [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-overview), replace **app.harness.io** with your custom URL.
 If you use a custom Harness subdomain in any Harness version, like **example.harness.io**, use that URL.
 :::
 

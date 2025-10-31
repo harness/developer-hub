@@ -1,6 +1,6 @@
 ---
 title: Openshift
-sidebar_position: 15
+sidebar_position: 7
 description: Openshift Security Context Constraint to control permissions for pods in cluster
 redirect_from:
 - /docs/chaos-engineering/technical-reference/security/security-templates/openshift-scc
@@ -20,19 +20,14 @@ You can leverage all the [permissions mentioned](#run-service-account-as-a-clust
 
 ### Create a new service account
 
+**Note:** This procedure is for automatically created service accounts. If you're using a pre-existing user-defined service account, you can skip the service account creation step and proceed directly to linking it with the Security Context Constraint.
+
 Execute the below commands:
 
-```
-install litmus-admin service account
-```
-
 ```bash
-$ oc apply -f https://litmuschaos.github.io/litmus/litmus-admin-rbac.yaml
+$ oc create serviceaccount litmus-admin
 
 serviceaccount/litmus-admin created
-clusterrole.rbac.authorization.k8s.io/litmus-admin created
-clusterrolebinding.rbac.authorization.k8s.io/litmus-admin created
-
 ```
 
 ### Run service account as a cluster admin
@@ -62,7 +57,7 @@ kind: SecurityContextConstraints
 # To mount the socket path directory in helper pod
 allowHostDirVolumePlugin: true
 allowHostIPC: false
-allowHostNetwork: false
+allowHostNetwork: true
 # To run fault injection on a target container using pid namespace.
 # It is used in stress, network, dns and http experiments.
 allowHostPID: true

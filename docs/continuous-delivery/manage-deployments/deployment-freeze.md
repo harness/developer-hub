@@ -342,10 +342,6 @@ When you enable this setting you will see **Freeze enabled on all deployments fo
 
 ## Role-based Access to Freeze Windows by Environment Type
 
-:::info
-Currently, the **Role-based Access to Freeze Windows by Environment Type** feature is behind the feature flag `CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 Harness now supports **granular access control** for managing Deployment Freeze Windows based on **environment types** for **Production** and **Pre-Production**.
 
 Previously, access to Deployment Freeze Windows could only be controlled at a higher level (e.g., across all environments). Now, you can assign specific roles to freeze deployments **only in production** or **only in pre-production** environments.

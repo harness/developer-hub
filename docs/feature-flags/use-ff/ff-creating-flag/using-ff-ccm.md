@@ -158,7 +158,7 @@ If you'd like further information about setting up your Cloud Provider, have a r
 
 #### Set up CCM for Azure
 
-Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](../../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md).
+Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/auto-stopping-rules).
 
 :::info
 
@@ -194,7 +194,7 @@ import TabItem2 from '@theme/TabItem';
 1. Go to **Account Resources** > **Connectors**.
 2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **Azure**.
-
+/docs/cloud-cost-management/use-ccm
 </TabItem2>
 <TabItem2 value="5" label="From Cloud Costs">
 

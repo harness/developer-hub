@@ -1,8 +1,25 @@
-A metric measures [events](https://help.split.io/hc/en-us/articles/360020585772) that are sent to Harness FME. Metrics can be defined to count the occurrence of events, measure event values, or measure event properties.
+A metric measures [events](/docs/feature-management-experimentation/experimentation/events/) that are sent to Harness FME. Metrics can be defined to count the occurrence of events, measure event values, or measure event properties.
 
-Metric results are calculated for each treatment of a feature flag that shares the same traffic type as the metric and has a percentage targeting rule applied. Impact can be calculated between a selected comparison treatment and baseline treatment within a feature flag. Results are displayed on the [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451) of the feature flag.
+Metric results are calculated for each treatment of a feature flag that shares the same traffic type as the metric and has a percentage targeting rule applied. Impact can be calculated between a selected comparison treatment and baseline treatment within a feature flag.
 
-Refer to our [Guide to Product Metrics](https://help.split.io/hc/en-us/articles/360058405992-Metrics-Guide) to learn about many common metrics and how to create them in Split.
+### Common metrics
+
+This section outlines common metrics and how to create them in Harness FME, empowering you to effectively measure impact and run experiments. You'll find a breakdown of various metrics, including conversions, page views, and more. 
+
+| Metric Guide | Description |
+|---|---|
+| [Conversions](https://www.harness.io/harness-devops-academy/conversions) | Map, measure, and improve the conversion rate of key user workflows. |
+| [Errors](https://www.harness.io/harness-devops-academy/errors) | Measuring errors alongside feature flags leads to faster issue identification, response, and resolution. |
+| [Inputs](https://www.harness.io/harness-devops-academy/inputs) | Track user-entered fields and forms such as radio buttons, checkboxes, sliders, and dropdowns. |
+| [Interactions](https://www.harness.io/harness-devops-academy/interactions) | Measure clicks, hover states, scroll depth, and other user interactions. |
+| [Page Load Performance](https://www.harness.io/harness-devops-academy/page-load-performance) | Use on-page events such as page load timing and load failures to understand performance. |
+| [Page Views](https://www.harness.io/harness-devops-academy/page-views) | Use page view counts and rates in conjunction with other metrics to construct ratios and funnels. |
+| [Rage Clicks](https://www.harness.io/harness-devops-academy/rage-clicks) | Identify areas of user frustration by measuring rapidly repeated clicks on an element or area of the screen. |
+| [Satisfaction](https://www.harness.io/harness-devops-academy/satisfaction) | Use feedback response rates, occurrence rates, and scores to understand user happiness. |
+| [Sessions](https://www.harness.io/harness-devops-academy/sessions) | Construct engagement metrics such as session start and end, entry and exit rates, and session length. |
+| [Shopping Cart](https://www.harness.io/harness-devops-academy/shopping-cart) | Track changes to a shopping cart to measure cart size, value, completion, and abandonment metrics. |
+
+These metrics are designed to help you build impactful products and drive business growth.
 
 ## Metric types
 
@@ -20,15 +37,15 @@ In the table below, we assume the traffic type selected for the metric is `user`
 
 ## Metric categories
 
-For more information about metric categories, see [Metric categorization](./categories/).
+For more information about metric categories, see [Metric categorization](/docs/feature-management-experimentation/experimentation/metrics/categories/).
 
 ## Configure an alert policy
 
-You can set an alert policy for a metric and Harness FME will notify you if a feature flag impacts the metric beyond a threshold you define. For more information, review the [Configuring metric alerting guide](https://help.split.io/hc/en-us/articles/19832312225293).
+You can set an alert policy for a metric and Harness FME will notify you if a feature flag impacts the metric beyond a threshold you define. For more information, review the [Configuring metric alerting guide](/docs/feature-management-experimentation/release-monitoring/metrics/setup/metric-alert-policy/).
 
 ## Audit logs
 
-Audit logs are captured every time the metric's definition or alert policy is changed. For more information, review the [Audit logs](https://help.split.io/hc/en-us/articles/360020579472-Audit-logs) guide.
+Audit logs are captured every time the metric's definition or alert policy is changed. For more information, review the [Audit logs](/docs/feature-management-experimentation/management-and-administration/account-settings/audit-logs/) guide.
 
 ## Metric list
 

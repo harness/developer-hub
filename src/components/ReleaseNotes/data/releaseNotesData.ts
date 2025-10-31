@@ -34,6 +34,13 @@ import { MODULES } from "@site/src/constants";
               "",
             link: "/release-notes/self-managed-enterprise-edition",
           },
+          {
+            title: "Harness Solutions Factory release notes",
+            module: MODULES.platform,
+            description:
+              "",
+            link: "/release-notes/harness-solutions-factory",
+          },
         ],
       },
       {
@@ -41,6 +48,20 @@ import { MODULES } from "@site/src/constants";
         description:
           "",
         list: [
+          {
+            title: "AI Test Automation release notes",
+            module: MODULES.ata,
+            description:
+              "",
+            link: "/release-notes/ai-test-automation",
+          },
+          {
+            title: "Artifact Registry release notes",
+            module: MODULES.ar,
+            description:
+              "",
+            link: "/release-notes/artifact-registry",
+          },
           {
             title: "Chaos Engineering release notes",
             module: MODULES.ce,

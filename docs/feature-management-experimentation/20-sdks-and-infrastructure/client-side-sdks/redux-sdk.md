@@ -1,11 +1,9 @@
 ---
 title: Redux SDK
 sidebar_label: Redux SDK
+redirect_from: 
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/redux-sdk-control-treatment-returned-when-sdk-is-initialized
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -29,6 +27,12 @@ This SDK is compatible with Redux v3 and later. It requires the [redux-thunk](ht
 For `react-redux` users, the SDK supports its v4 and later.
 
 In SSR setups, our library code is prepared to run in Node.js 14+.
+
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 2.2.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
 
 ## Initialization
  
@@ -175,7 +179,7 @@ Feel free to dive into the declaration files if IntelliSense is not enough!
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ## Using the SDK
 
@@ -401,7 +405,7 @@ Note that these treatments won't be updated automatically when there is a change
 
 ### Attribute syntax 
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatments` action creator needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `getTreatments` action creator needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatments` action creator call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -521,24 +525,43 @@ const treatments = {
 </TabItem>
 </Tabs>
 
+### Handling control treatment flicker on SDK initialization
+
+When implementing the Redux SDK, using the `isReady` prop is intended to guarantee that treatments returned are accurate. However, there can be a brief moment right after the SDK factory initializes when `isReady` is `true` but the treatment returned is `control`. This treatment quickly flips to the expected value (e.g. `on`).
+
+This flickering occurs because when the SDK starts, it downloads the feature flag cache asynchronously from the Harness FME servers, and during that download phase, `isReady` may be set to `true` before the cache is fully loaded. If you fetch treatments too early, you receive the control treatment.
+
+To address this, instead of dispatching `getTreatments` inside the `onReady` callback, it’s recommended to dispatch the `getTreatments` action immediately after `initSplitSdk`. This action is an asynchronous (Thunk) call that evaluates feature flags once the SDK is ready and also on subsequent SDK updates if you enable the `evalOnUpdate` parameter (which is `false` by default). This approach updates the `isReady` flag and treatment values together in a single action, preventing flicker caused by separate updates. 
+
+For example:
+
+```javascript
+export default function initialise() {
+  store.dispatch(initSplitSdk({ config: sdkBrowserConfig, onReady: onReadyCallback, onUpdate: onUpdateCallback }));
+  store.dispatch(getTreatments({ splitNames: ['Show_league'], evalOnUpdate: true }));
+}
+function onReadyCallback() {
+  console.log("Split Ready...");
+  ...
+}
+function onUpdateCallback() {
+  console.log("Split updated...");
+  ...
+}
+```
+
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you don't need to call a specific action creator for your evaluations. Instead, our SDK stores both the treatment and the associated config (or null if there isn't one) in the Redux state. To access this values you can either use the `selectTreatmentWithConfigAndStatus` selector (recommended) or just access the config from the state.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you don't need to call a specific action creator for your evaluations. Instead, our SDK stores both the treatment and the associated config (or null if there isn't one) in the Redux state. To access this values you can either use the `selectTreatmentWithConfigAndStatus` selector (recommended) or just access the config from the state.
 
 Each evaluation entry loaded into the state under the `treatments` key will have the structure below:
 
-<Tabs>
-<TabItem value="TypeScript">
-
-```typescript
+```typescript title="TypeScript"
 type TreatmentWithConfig = {
-  treatment: string,
-  config: string | null
+  treatment: string;
+  config: string | null;
 };
 ```
-
-</TabItem>
-</Tabs>
 
 As you can see from the object structure, the config will be a stringified version of the configuration JSON  defined in Harness FME. If there is no configuration defined for a treatment, the SDK will return `null` for the config parameter.
 
@@ -601,7 +624,7 @@ const treatmentResult = splitTreatments['key']['feature_flag_1'];
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time an evaluation is done using the `getTreatments` action creator. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time an evaluation is done using the `getTreatments` action creator. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatments` action creator. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -689,19 +712,19 @@ Destroying the SDK is meant to be definitive. A call to the `destroySplitSdk` fu
 
 ## Track
 
-You can use the `track` method to record any actions your users perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users’ actions and metrics. Go to [Events](https://help.split.io/hc/en-us/articles/360020585772) to learn more about using track events in feature flags. 
+You can use the `track` method to record any actions your users perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users’ actions and metrics. Go to [Events](/docs/feature-management-experimentation/release-monitoring/events/) to learn more about using track events in feature flags. 
 
 The `track` method takes a params object with up to five arguments. The data type and syntax for each are:
 
 * **key:** The `key` variable used in the `getTreatments` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period. 
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
@@ -759,7 +782,7 @@ const queued = track({ key: USER_ID, trafficType: 'user', eventType: 'page_load_
 
 The SDK has a number of parameters for configuring performance. Each parameter is set to a reasonable default. However, you can override these value in the `config` object passed to the `initSplitSdk` action creator, as shown in the [Initialization](#initialization) section above.
 
-To learn about all the available configuration options, go to the [JavaScript SDK Configuration section.](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration)
+To learn about all the available configuration options, go to the [JavaScript SDK Configuration section](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration).
 
 ## Localhost mode
 
@@ -767,7 +790,7 @@ For testing, a developer can put code behind feature flags on their development 
 
 When instantiating the SDK in localhost mode, your `authorizationKey` is `"localhost"`. Define the feature flags you want to use in the `features` object map. All feature flag evaluations with `getTreatments` actions return the one treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. If you want to update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from it. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
 
-Any feature flag that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them. Use the following additional configuration parameters when instantiating the SDK in `localhost` mode:
+Any feature flag that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them. Use the following additional configuration parameters when instantiating the SDK in `localhost` mode:
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- | 
@@ -899,7 +922,7 @@ function requestHandler(params) {
 </TabItem>
 </Tabs>
 
-For more details on about using the Manager, go to [JavaScript SDK Manager](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#manager).
+For more details on about using the Manager, go to [JavaScript SDK Manager](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#manager).
 
 ## Listener
  
@@ -975,7 +998,7 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 
 ## Logging
  
-To enable SDK logging in the browser, see how the SDK Logging works on [the client side](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#logging) or [the server side](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#logging) depending on where you're running the SDK.
+To enable SDK logging in the browser, see how the SDK Logging works on [the client side](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#logging) or [the server side](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#logging) depending on where you're running the SDK.
 
 ## Advanced use cases
 
@@ -985,7 +1008,7 @@ This section describes advanced use cases and features provided by the Redux SDK
  
 When running **on the client side** the Redux SDK factory client is tied to one specific key or ID at a time which usually belongs to one traffic type (for example, `user`, `account`, `organization`). This enhances performance and reduces caching data in the SDK.
 
-FME supports the ability to release features to multiple keys with different traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. Go to [Traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) to learn more.
+FME supports the ability to release features to multiple keys with different traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. Go to [Traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) to learn more.
 
 If you need to roll out feature flags by different traffic types, the SDK instantiates multiple clients, one for each traffic type. For example, you may want to roll out the feature flag `user-poll` by `users` and the feature flag `account-permissioning` by `accounts`. 
 
@@ -1038,9 +1061,9 @@ While the SDK does not put any limitations on the number of instances that can b
  
 The underlying JavaScript SDK has four different events:
 
-* `SDK_READY_FROM_CACHE`. This event fires in client-side code if using the `LOCALSTORAGE` storage type. This event fires once the SDK is ready to evaluate treatments using the rollout plan cached in localStorage from a previous session (which might be stale). If there is data in localStorage, this event fires almost immediately, since access to localStorage is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires in client-side code if you are using the `LOCALSTORAGE` storage type and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuration](#configuration) for more information). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan in localStorage, and the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 Besides managing `SDK_READY` on initialization, as explained in the [basic use](#basic-use) section, you can also add callbacks for the other events as shown below:
@@ -1245,7 +1268,7 @@ const FeatureFlagTogglerFromCustomStateKey = connectToggler('myFeatureFlag', key
 
 ### User consent
 
-The SDK factory allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined. To learn how to configure this feature, refer to the [JavaScript SDK User consent](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#user-consent) section.
+The SDK factory allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined. To learn how to configure this feature, refer to the [JavaScript SDK User consent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#user-consent) section.
 
 When using the Redux SDK, you can access the underlying SDK factory instance via the `splitSdk` object, as shown below:
 

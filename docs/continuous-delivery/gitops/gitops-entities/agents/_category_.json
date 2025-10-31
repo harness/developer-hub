@@ -1,0 +1,12 @@
+{
+    "label": "Agents",
+    "position": "200",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "description": "Learn how to create, manage, and use Harness GitOps Agents",
+    "link": {
+        "type": "generated-index",
+        "title": "Agents"
+    }
+  }

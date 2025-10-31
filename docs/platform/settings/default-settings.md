@@ -105,11 +105,7 @@ Pre Flight check includes a series of check on the Pipeline such as verifying Pi
 
 You can enable Pre Flight Check by default by following these steps:
 
-:::info note
-This change is behind the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
-If the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT` is enabled then you will be able to see the default setting **Run Pre Flight checks by Default for Pipeline Execution** in Pipeline settings.
+In Pipeline settings, you will see the default setting **Run Pre Flight checks by Default for Pipeline Execution**.
 
 ![](./static/prelight_setting.png)
 
@@ -169,7 +165,7 @@ For information about these settings, go to [Pipeline settings](/docs/platform/p
 
 ### Cloud Cost Management
 
-For information about these settings, go to [Set up perspective preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences/#default-settings-for-perspective-preferences) and [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/).
+For information about these settings, go to [Set up perspective preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective?steps=step3) and [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/).
 
 ### Notifications
 

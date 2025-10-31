@@ -1,8 +1,12 @@
 ---
 title: Harness Supply Chain Security (SCS) overview
 sidebar_label: Overview
-description: Secure your software supply chain with Harness SCS.
+description: Secure your software supply chain with Harness SCS
 sidebar_position: 1
+
+tags:
+  - harness-scs 
+  - overview
 ---
 
 In today's software development landscape, reliance on open-source components and various DevOps tools has become essential for faster development. While this approach streamlines the development process and accelerates product delivery, it also introduces potential risks to the software supply chain. These risks include security vulnerabilities from the extensive chain of dependencies, which can lead to zero-day exploits, licensing discrepancies, and other attacks. Additionally, while there are various tools involved in the software development process, the tools themselves can also open the door to multiple supply chain attacks. 
@@ -34,13 +38,13 @@ To realize the objectives, the SCS module offers the following features:
 
 
 
-* [Repository security posture management](../repository-security-posture-management-rspm)
+* [Repository security posture management](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm)
 * Comply with security compliance standards
     * [CIS Benchmarks](https://www.cisecurity.org/benchmark/software-supply-chain-security)
     * [OWASP Top 10 CI/CD Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/)
 * [SLSA Build Level 1, Level 2 and Level 3.](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/overview)
-* [SBOM generation and management.](/docs/software-supply-chain-assurance/sbom/generate-sbom.md)
-* [Govern the usage of open source with SBOM policy enforcement.](https://developer.harness.io/docs/software-supply-chain-assurance/sbom-policies/overview)
-* [Remediate issues related to risk & compliance and zero-day exploits.](https://developer.harness.io/docs/software-supply-chain-assurance/remediation-tracker/overview)
+* [SBOM generation and management.](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories)
+* [Govern the usage of open source with SBOM policy enforcement.](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies)
+* [Remediate issues related to risk & compliance and zero-day exploits.](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/overview)
 
-For more information about these features and how SCS integrates with the Harness Platform, go to the [SCS key concepts](https://developer.harness.io/docs/software-supply-chain-assurance/get-started/key-concepts).
+For more information about these features and how SCS integrates with the Harness Platform, go to the [SCS key concepts](/docs/software-supply-chain-assurance/get-started/key-concepts).

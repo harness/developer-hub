@@ -2,6 +2,10 @@
 title: Configure the Verify Step
 description: Learn how to verify deployments.
 sidebar_position: 1
+redirect_from:
+  - /docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview/
+  - /docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/instana-verification-overview/
+  - /docs/first-gen/continuous-delivery/continuous-verification/instana-verification/instana-service-guard/
 ---
 
 Harness Continuous Verification (CV) integrates with [various health sources](/docs/category/health-sources) to:
@@ -68,6 +72,12 @@ In **Monitored Service**, click **Click to autocreate a monitored service**.
 
 Harness automatically creates a monitored service using a concatenation of the service and environment names. For example, a service named `todolist` and an environment named `dev` results in a monitored service with the name `todolist_dev`.
 
+:::warning
+
+Monitored services are not compatible with GitX. Monitored services will always fetch the service and infrastructure information from the **default branch** and not from the feature branch. 
+
+:::
+
 :::note
 
 The option to auto-create a monitored service is not available if you have configured either a service, an environment, or both as runtime values. When you run the pipeline, Harness concatenates the service and environment values you enter in the runtime inputs screen and generates a monitored service name. If a monitored service with the same name exists, Harness assigns it to the pipeline. If no monitored service that matches the generated monitored service name exists, Harness skips the verification step. 
@@ -90,6 +100,36 @@ In **Sensitivity**, select **High**, **Medium**, or **Low** based on the risk le
 Select how long you want Harness to analyze and monitor the logs/APM data points. Harness waits for 2-3 minutes to allow enough time for the data to be sent to the APM/logging tool before it analyzes the data. This wait time is a standard with monitoring tools.
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.
+
+## Configurable Properties
+
+The Verify step supports configurable properties that allow you to customize verification behavior and access verification results in subsequent pipeline steps.
+
+:::note
+This feature is optional and currently behind the feature flag `CDS_CV_INPUT_OUTPUT_VARIABLES_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can specify a custom start time for the verification process. Adding a start time allows you to control when the verification analysis begins, which helps align verification with specific deployment events or schedules.
+
+To configure:
+1. In the Verify step configuration, expand the **Optional** section
+2. Under the **Configurable Properties** section, select **deploymentStartTime** from the dropdown for Command type.
+3. Enter the desired start time, which is a UTC zone
+
+![](./static/deployment-start-time.png)
+
+This time represents the deployment start time, allowing the system to collect pre-deployment data for the configured duration (in minutes) before this specified time.
+
+Supported formats include:
+- ISO formats (e.g., `2023-03-10T15:30:00Z`)
+- Common date/time formats (e.g., `2023-03-10 15:30:00`)
+- Unix epoch timestamps (e.g., `1678457400`)
+
+You can use an expression to set the start time based on the deployment start time. For example, you can use the expression `<+pipeline.stages.stage_name.spec.execution.steps.step_name.startTs>` to set the start time of your verify step to the deployment start time.
+
+**Limitations**:
+
+We don't support adding a future date and time as a fixed value/runtime to set the start time of the verification process. If you specify a future time that hasn't been reached yet, the verification will fail. However, if the specified future time has already been reached when the verification runs, it will work as described above.
 
 ## Step 8: Specify Artifact Tag
 

@@ -16,7 +16,7 @@ const getCategoryDetails = (category: string): Record<string, string> => {
   };
   const setDetails = (category: FaultCategory) => {
     details.icon = `${path}/${category}.svg`;
-    details.link = `${category}/`;
+    details.link = `/docs/chaos-engineering/faults/chaos-faults/${category}/`;
   };
   switch (category) {
     case FaultCategory.AWS:
@@ -59,7 +59,20 @@ const getCategoryDetails = (category: string): Record<string, string> => {
       setDetails(FaultCategory.SSH);
       break;
     case FaultCategory.BYOC:
-      setDetails(FaultCategory.BYOC);
+      details.icon = `${path}/${FaultCategory.BYOC}.svg`;
+      details.link = `/docs/chaos-engineering/faults/custom-faults/byoc/`;
+      break;
+    case "aws-probes":
+      details.icon = `${path}/aws.svg`;
+      details.link = `/docs/chaos-engineering/guides/probes/probe-templates/aws`;
+      break;
+    case "gcp-probes":
+      details.icon = `${path}/gcp.svg`;
+      details.link = `/docs/chaos-engineering/guides/probes/probe-templates/gcp`;
+      break;
+    case "kubernetes-probes":
+      details.icon = `${path}/kubernetes.svg`;
+      details.link = `/docs/chaos-engineering/guides/probes/probe-templates/kubernetes`;
       break;
     default:
       details.icon = `${path}/default.svg`;
@@ -79,6 +92,29 @@ const getFaultDetails = (
     link: "",
     anchorLink: "",
   };
+  
+  // Handle probe templates - link to individual template pages
+  if (faultName && (
+    faultName.includes("Status Check") || 
+    faultName.includes("Restart Check") ||
+    faultName.includes("Replica Count") ||
+    faultName.includes("Resource Utilisation") ||
+    faultName.includes("Startup Time") ||
+    faultName.includes("Warnings Check") ||
+    faultName.includes("AZ Check") ||
+    faultName.includes("Rule Check")
+  )) {
+    details.icon = `${path}/${category}.svg`;
+    // Generate full path based on category
+    let categoryPath = "";
+    if (category === "aws") categoryPath = "aws";
+    else if (category === "gcp") categoryPath = "gcp";
+    else if (category === "kubernetes") categoryPath = "kubernetes";
+    details.link = `/docs/chaos-engineering/guides/probes/probe-templates/${categoryPath}/${normaliseForURL(faultName)}/`;
+    details.anchorLink = `${normaliseForURL(faultName)}`;
+    return details;
+  }
+  
   const setDetails = (category: FaultCategory) => {
     details.icon = subCategory
       ? `${path}/${category}/${subCategory}/${normaliseForImagePath(

@@ -46,13 +46,13 @@ export const docsCards: CardSections = [
         title: "CE",
         module: MODULES.ce,
         description: "Chaos Engineering onboarding guides",
-        link: "/docs/chaos-engineering/getting-started/onboarding/",
+        link: "/docs/chaos-engineering/get-started/",
       },
       {
         title: "CCM",
         module: MODULES.ccm,
         description: "Cloud Cost Management onboarding guides",
-        link: "/docs/category/onboarding",
+        link: "/docs/category/get-started",
       },
       {
         title: "CODE",
@@ -64,7 +64,7 @@ export const docsCards: CardSections = [
         title: "CD & GitOps",
         module: MODULES.cd,
         description: "Continuous Delivery onboarding guides",
-        link: "/docs/category/cd-onboarding-guide",
+        link: "/docs/category/cd-onboarding",
       },
       {
         title: "CET",
@@ -85,6 +85,12 @@ export const docsCards: CardSections = [
         link: "/docs/feature-flags/get-started/onboarding-guide",
       },
       {
+        title: "FME",
+        module: MODULES.fme,
+        description: "Feature Management & Experimentation overview",
+        link: "/docs/feature-management-experimentation/getting-started/overview",
+      },
+      {
         title: "IaCM",
         module: MODULES.iacm,
         description: "Infrastructure as Code Management overview",
@@ -97,10 +103,28 @@ export const docsCards: CardSections = [
         link: "/docs/internal-developer-portal/get-started",
       },
       {
+        title: "AASP",
+        module: MODULES.asp,
+        description: "Application and API Security Posture",
+        link: "/docs/appsec-security-posture",
+      },
+      {
+        title: "AARP",
+        module: MODULES.arp,
+        description: "Application and API Runtime Protection",
+        link: "/docs/appsec-runtime-protection",
+      },
+      {
+        title: "AAST",
+        module: MODULES.ast,
+        description: "Application and API Security Testing",
+        link: "/docs/appsec-security-testing",
+      },
+      {
         title: "STO",
         module: MODULES.sto,
         description: "Security Testing Orchestration onboarding guide",
-        link: "/docs/security-testing-orchestration/get-started/onboarding-guide",
+        link: "/docs/security-testing-orchestration/get-started",
       },
       {
         title: "SRM",
@@ -112,13 +136,13 @@ export const docsCards: CardSections = [
         title: "SCS",
         module: MODULES.ssca,
         description: "Supply Chain Security onboarding guide",
-        link: "/docs/software-supply-chain-assurance/get-started/onboarding-guide",
+        link: "/docs/software-supply-chain-assurance/get-started/",
       },
       {
         title: "SEI",
         module: MODULES.sei,
         description: "Software Engineering Insights onboarding guide",
-        link: "/docs/software-engineering-insights/get-started/sei-onboarding-guide",
+        link: "/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide",
       },
     ],
   },
@@ -126,6 +150,12 @@ export const docsCards: CardSections = [
     name: "Platform feature highlights",
     description: "",
     list: [
+      {
+        title: "Pipelines",
+        module: MODULES.platform,
+        description: "Learn how to create and manage pipelines.",
+        link: "/docs/category/pipelines",
+      },
       {
         title: "Harness AI",
         module: MODULES.platform,

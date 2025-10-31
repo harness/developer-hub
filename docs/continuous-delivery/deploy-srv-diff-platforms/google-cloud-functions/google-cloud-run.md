@@ -146,6 +146,34 @@ The **Canary Strategy** includes the following steps:
 We do not use the Google Run Deploy command here as this command takes every field as a command flag. Instead, we use the replace command and replace all the configurations provided in the YAML file.
 :::
 
+#### Skip Traffic Shift
+
+The Deploy step includes a **Skip Traffic Shift** option that allows you to create a new revision without immediately shifting traffic to it.
+
+**Configuration:**
+
+```yaml
+- step:
+    type: GoogleCloudRunDeploy
+    name: Google Cloud Run Deploy
+    identifier: Google_Cloud_Run_Deploy
+    spec:
+      connectorRef: account.harnessImage
+      image: harness/google-cloud-run-plugin:1.0.0-linux-amd64
+      imagePullPolicy: Always
+      skipTrafficShift: true
+    timeout: 10m
+```
+
+When `skipTrafficShift: true`:
+- The Deploy step only creates a new revision without shifting traffic to it
+- Traffic shifting will be performed explicitly in the Google Cloud Run Traffic Shift step
+- When disabled (default), traffic shifts to the new revision immediately upon deployment
+
+:::note
+For the first deployment, traffic is always shifted to the new revision regardless of this setting. This applies to subsequent deployments only.
+:::
+
 ### Google Cloud Run Traffic Shift Step
 - **Purpose**: Manages traffic distribution across different revisions of the service.  
 - **Details**:
@@ -153,10 +181,43 @@ We do not use the Google Run Deploy command here as this command takes every fie
   - Allows users to specify the percentage of traffic each revision should handle.
   - For more information, see the [Google Cloud Run Documentation](https://cloud.google.com/sdk/gcloud/reference/run/services/update-traffic).
 
+#### Tags
+
+The Traffic Shift step supports assigning tags to revisions. Tags provide named aliases for revisions (e.g., 'stable', 'canary', 'latest') and create named URLs for accessing specific revisions.
+
+**Configuration:**
+
+```yaml
+- step:
+    type: GoogleCloudRunTrafficShift
+    name: Google Cloud Run Traffic Shift
+    identifier: Google_Cloud_Run_Traffic_Shift
+    spec:
+      revisionTrafficDetails:
+        - revisionName: latest
+          trafficValue: 100
+          tag: canary, latest
+      connectorRef: account.harnessImage
+      image: harness/google-cloud-run-plugin:1.0.0-linux-amd64
+      imagePullPolicy: Always
+```
+
+**Field Details:**
+- `revisionName` - The name of the Cloud Run revision
+- `trafficValue` - The percentage of traffic to route to this revision (0-100)
+- `tag` (optional) - Comma-separated list of tags to assign to this revision
+
+:::note Tag Behavior
+If any tags are provided, all existing tags in the service will be removed and replaced with the new ones. If no tags are specified, existing tags will remain unchanged.
+:::
+
 ### Container Configuration
 
-For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker image:
-- [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.1-linux-amd64/images/sha256-bfb25c236e59041452ca81c7370a5d1ca924b361acb5309de3424ccc0645d074) 
+For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker images:
+
+- Docker Hub: [`harness/google-cloud-run-plugin:1.0.2-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
+- GAR:
+  - Europe region: [GAR Image Repository for Google Cloud Run Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fgoogle-cloud-run-plugin?inv=1&invt=Ab5cNA)
 
 This image is required to perform deployments to Google Cloud Run
 
@@ -208,7 +269,7 @@ Here is an interactive guide to setup your Cloud Run Job Stage.
 **Container Configuration**
 
 For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker image:
-- [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.1-linux-amd64/images/sha256-bfb25c236e59041452ca81c7370a5d1ca924b361acb5309de3424ccc0645d074)
+- [`harness/google-cloud-run-plugin:1.0.2-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
 
 This image is required to perform deployments to Google Cloud Run.
 
@@ -322,3 +383,72 @@ Alternatively, the following roles can also be used:
 To see an example of how to deploy Google CLoud Run Service using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/google-cloud-run).
 
 This repository provides a ready-to-use sample application and the necessary configuration files to help you get started quickly.
+
+### Manifest Format and CLI Compatibility
+
+Harness uses the `gcloud run` CLI commands in the background for Google Cloud Run deployments. This means we support **all manifest formats that are compatible with `gcloud run` commands**, providing full flexibility in how you define your Cloud Run services.
+
+:::info gcloud CLI Compatibility
+Harness executes `gcloud run` CLI commands in the background for Google Cloud Run steps. Therefore, we support all manifest formats that are compatible with these commands, including:
+- `gcloud run services replace` for service deployments
+- `gcloud run jobs replace` and `gcloud run jobs execute` for job deployments
+- All standard Cloud Run YAML configurations and Knative serving specifications
+
+This ensures full compatibility with Google Cloud Run's native deployment mechanisms.
+:::
+
+For detailed YAML reference and manifest specifications, refer to the official [Google Cloud Run YAML Reference](https://cloud.google.com/run/docs/reference/yaml/v1) documentation.
+
+## Troubleshooting
+
+### Authentication Error with "Inherit from Delegate" Mode
+
+**Issue**: Pipeline fails when using a GCP connector configured with the **Inherit from Delegate** authentication mode, displaying the following error:
+
+```
+Executing command: /google-cloud-sdk/bin/gcloud auth list --filter="status:ACTIVE" --format="value(account)"
+ERROR: (gcloud.auth.list) Name expected [ table[title='Credentialed Accounts'](
+status.yesno(yes='*', no=''):label=ACTIVE,
+account
+) *HERE* "value(account)"].
+Google Cloud Run plugin execution failed with error:
+An error occurred while setting up google cloud credentials:
+Error running gcloud auth list command: error executing command: exit status 1
+```
+
+**Root Cause**: This issue occurs when the Google Cloud SDK in the plugin container outputs additional messages (such as update notifications or survey prompts) along with the account information. These extra messages interfere with the expected output format of the `gcloud auth list` command, causing the authentication setup to fail.
+
+Example of problematic output:
+```
+customer-success-244100.svc.id.goog
+
+
+Updates are available for some Google Cloud CLI components.  To install them,
+please run:
+  $ gcloud components update
+
+
+
+To take a quick anonymous survey, run:
+  $ gcloud survey
+```
+
+**Solution**: Use the updated Google Cloud Run plugin image that handles these additional messages correctly:
+
+```
+harness/google-cloud-run-plugin:1.0.2-linux-amd64
+```
+
+**Steps to Update**:
+
+1. Navigate to your pipeline's **Execution** tab.
+2. Locate the **Google Cloud Run Deploy Step** or **Google Cloud Run Job Step**.
+3. In the **Container Configuration** section, update the image reference to:
+   - Docker Hub: `harness/google-cloud-run-plugin:1.0.2-linux-amd64`
+4. Save and re-run your pipeline.
+
+:::tip
+The updated plugin image (`1.0.2`) includes improved parsing logic that filters out extraneous messages from the `gcloud` CLI output, ensuring reliable authentication when using the "Inherit from Delegate" mode.
+:::
+
+This issue specifically affects deployments using GCP connectors configured with **Inherit from Delegate** authentication. If you're using **Service Account** or **OIDC** authentication methods, you may not encounter this issue.

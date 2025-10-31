@@ -272,20 +272,32 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
-## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
+## Connector Credentials
+
+You can use a connector to authenticate with the target cloud provider. This is an optional configuration that takes the connector reference. The Terraform step uses this connector to authenticate with the cloud provider targeted for infrastructure provisioning.
+
+This connector configuration is available in the **Terraform Plan** step. It also appears in the **Terraform Apply** and **Terraform Destroy** steps when the **Configuration Type** is set to **Inline**.
+
+<div align="center">
+  <DocImage path={require('./static/connector-credentials.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+### AWS Connector 
 
 :::note
 This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-
 You can use an AWS connector to have the Terraform Plan and Apply step assume a role to perform infrastructure provisioning. It's an optional configuration that takes the AWS connector, a region and Role ARN. The Terraform step uses these parameters to authenticate the AWS account targeted for infrastructure provisioning.
 
 By default, AWS assumes the role session duration as 900 seconds. To increase the AWS role session duration, a  built-in environment variable, `HARNESS_AWS_ASSUME_ROLE_DURATION` is introduced, which can be used to override the assume role session duration. `HARNESS_AWS_ASSUME_ROLE_DURATION` is designed for use in Terraform steps in the environment variable section. The value must be set in seconds. This new environment variable requires Harness Delegate version 82700.
 
-When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
+When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression.
 
-```YAML
+<details>
+<summary>Sample YAML</summary>
+
+```yaml
 - step:
     type: TerraformApply
     name: Apply
@@ -305,6 +317,7 @@ When configured the optional configuration for AWS Connector these fields can be
               roleArn: <+input>
     timeout: 10m
 ```
+</details>
 
 #### Terraform variable files
 
@@ -324,6 +337,49 @@ See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-p
    ![](./static/provision-infra-dynamically-with-terraform-10.png)
 
 Click **Submit**. The remote file(s) are added.
+
+### Azure Connector
+
+Harness Terraform steps now support authenticating with Azure using Azure connectors for target provisioning. This enables seamless integration with Azure infrastructure when running Terraform Plan, Apply, and Destroy steps with inline Terraform configuration.
+
+#### Key Features
+
+- **Azure Connector support:** Authenticate Terraform operations using Azure connectors configured in Harness.
+- **Authentication methods:** Manual credentials, Delegate-based credentials, OIDC token-based authentication are supported. Certificate-based authentication is **not supported** yet.
+- **Additional options:** Default configuration can be overridden with environment variables like ARM_TENANT_ID and ARM_MSI_ENDPOINT for advanced scenarios.
+
+For more information on how to setup an Azure connector, go to [Azure Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
+
+#### YAML Configuration Example
+
+<details>
+<summary>Sample YAML</summary>
+
+```yaml
+- step:
+    type: TerraformPlan
+    name: TerraformPlan_1
+    identifier: TerraformPlan_1
+    spec:
+      provisionerIdentifier: planoidc
+      configuration:
+        command: Apply
+        configFiles:
+          store:
+            spec:
+              connectorRef: githubConnector
+              repoName: play
+              gitFetchType: Branch
+              branch: main
+              folderPath: tf/azure
+            type: Github
+        providerCredential:
+          type: Azure
+          spec:
+            connectorRef: AzureConnector
+            subscriptionId: 20xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+</details>
 
 ## Backend Configuration
 
@@ -540,10 +596,8 @@ and found no differences, so no changes are needed.
 
 ## Store Terraform Plan on Harness Delegate
 
-:::important
-* This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
-* This option requires Harness Delegate version 24.04.82705 or later.
+:::info
+This setting requires Harness Delegate version 24.04.82705 or later.
 :::
 
 Enable the **Store terraform plan on delegate** option on the Terraform Plan step to store the Terraform Plan on Harness Delegate temporarily. This is particularly useful if you don't want to save the Terraform Plan files on Secrets Manager or if there is a file size limit on Secrets Manager. 
@@ -581,7 +635,52 @@ With the **Skip state storage** option enabled, Harness allows you to skip the l
 
 This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
 
+## Create remote workspace with prefix
 
+:::note
+This option is available only on delegate version `86400` or later.
+:::
+
+When using a [remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
+
+`Error: Currently selected workspace "my-app-dev" does not exist`
+
+To address this, Harness provides the **Create remote workspace with prefix** option. When this option is enabled:
+
+- If the remote workspace does **not** exist, Harness automatically creates it and continues the execution.
+- If the remote workspace **does** exist, Harness exports it to the `TF_WORKSPACE` environment variable so Terraform uses it.
+- If both the step configuration and environment variable specify a workspace, the **step configuration takes precedence**.
+
+:::info
+To enable automatic workspace selection when a workspace is configured in the step settings, this flag **must** be enabled.
+
+If you prefer not to use this flag, you can manually configure the workspace using the `TF_WORKSPACE` environment variable.
+
+**Rollback does not delete workspaces** created using this option. Workspace cleanup must be handled manually.
+
+:::
+
+<details>
+<summary>This is how the YAML would look like</summary>
+
+
+```yaml
+- step:
+    type: TerraformPlan
+    name: TerraformPlan
+    identifier: TerraformPlan
+    timeout: 10m
+    spec:
+      provisionerIdentifier: <+input>
+      configuration:
+        command: Apply
+        configFiles: {}
+        secretManagerRef: <+input>
+        skipStateStorage: false
+        createRemoteWorkspaceWithPrefix: true
+        skipRefreshCommand: false
+```
+</details>
 
 ## Command line options
 

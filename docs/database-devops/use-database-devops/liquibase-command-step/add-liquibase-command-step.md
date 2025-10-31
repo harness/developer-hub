@@ -1,8 +1,24 @@
 ---
 title: Add the Liquibase command step
 sidebar_label: Add the Liquibase command step
-description: Explaining how to add the native Liquibase command step
+description: Learn how to add and configure the native Liquibase command step in Harness DB DevOps pipelines for advanced database control and flexibility.
 sidebar_position: 1
+keywords:
+  - liquibase command step
+  - harness dbops
+  - liquibase integration
+  - add liquibase step
+  - database devops
+  - db migration automation
+  - ci cd database pipeline
+  - liquibase command harness
+  - database changeset execution
+tags:
+  - harness-db-devops
+  - liquibase-integration
+  - pipeline-steps
+  - database-automation
+  - changeset-management
 ---
 
 When you create a pipeline in Harness Database DevOps, the Liquibase command step can help play a role in managing database changes. This step allows users to apply schema modifications and execute SQL scripts seamlessly within the pipeline.

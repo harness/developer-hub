@@ -2,99 +2,114 @@ import { Horizon } from "./roadmapData";
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q2, May 2025 - Jul 2025",
+    description: "Q3, Aug 2025 - Oct 2025",
     feature: [
       {
-        tag: [{ value: "User Experience" }, { value: "New Features" }],
-        title: "SEI 2.0",
-        description: "SEI 2.0 brings a modern UX to enable executive insights with team level actionability. SEI 2.0 will bring new collection tree navigation with support for Efficiency / Productivity / Business Alignment tracking for all teams (with Histoirical Trends).",
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Summaries and Recommendations",
+        description: "AI-first summarization of insights, including clear recommendations for managers and leaders to drive change.",
       },
       {
-        tag: [{ value: "Onboarding" }],
-        title: "New SEI 2.0 Onoarding",
-        description: "Quick setup for integrations, sync contributors, build org trees, build profiles and see Insights.",
-      },
-      {
-        tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance"}],
-        title: "New CSV based Org Trees",
-        description: "Creating and maintaining Org Trees now becomes a breeze with the CSV based org trees that stay in sync with regular CSV updates.",
-      },
-      {
-        tag: [{ value: "Insights" }],
-        title: "Playground",
-        description: "Quick time to value and ability to play with Insights, in a Playground that provides Insights across the entire organization.",
-      },
-      {
-        tag: [{ value: "Insights" }],
-        title: "Exports",
-        description: "Ability to export dashboards and widgets as PDF / CSV, to allow for easy sharing of org metrics",
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Insights",
+        description: "Track usage, cost, and impact of AI agent(s) across Productivity and Efficiency dashboards, reported across organization and teams.",
       },
       {
         tag: [{ value: "Integrations" }],
         title: "ServiceNow Integration (GA)",
-        description: "ServiceNow Integration to tie incident and change request data with DORA metrics.",
+        description: "Plug ServiceNow into Harness SEI for computing MTTR and CFR.",
+      },
+      {
+        tag: [{ value: "Onboarding" }],
+        title: "Intelligent Teams Onboarding",
+        description: "Smooth onboarding of teams with team-level defaults and intelligent auto-inferring of team settings.",
       },
     ],
   },
 
   Next: {
-    description: "Q3, Aug 2025 - Oct 2025",
+    description: "Q4, Nov 2025 - Jan 2026",
     feature: [
       {
-        tag: [{ value: "Integrations" }, { value: "Ease of Maintenance"}],
-        title: "Workday Integration (GA)",
-        description: "Direct sync with Workday to enable seamless onboarding of teams to SEI 2.0.",
+        tag: [{ value: "AI" }, { value: "New Feature"}],
+        title: "AI Efficiency Agent",
+        description: "Daily or weekly developer briefs, focus zones, manager briefs, and planning assistance.",
       },
       {
         tag: [{ value: "Actionability" }],
         title: "Scoring, Goals, KPIs & Benchmarks",
-        description: "Make metrics and insights actionable by tracking scores, setting goals, assigning KPIs and comparing across benchmarks.",
+        description: "Drive accountability and transformation with scores, goals, and KPIs.",
       },
       {
         tag: [{ value: "Insights" }],
-        title: "DevOps Insights",
-        description: "See deep insights into your DevOps workflow, to truly assess fllow and bottlenecks, after developers merge their code.",
+        title: "Benchmarks",
+        description: "Help managers understand good and bad vs. industry benchmarks.",
       },
       {
         tag: [{ value: "Insights" }],
         title: "Surveys",
-        description: "Add the qualitative context to your qunatitiative metrics, with the help of surveys that help assess Developer Satisifcation.",
+        description: "Measure Developer Satisfaction with built-in surveys. Correlate developer sentiment with metrics to draw deep insights.",
+      },
+      {
+        tag: [{ value: "Onboarding" }],
+        title: "Harness Delegate",
+        description: "Seamless and secure setup with Harness delegates for on-premises connectivity.",
       },
      ],
   },
   
   Later: {
-    description: "Nov 2025 & Beyond",
+    description: "Feb 2026 & Beyond",
     feature: [
       {
-        tag: [{ value: "AI" }, { value: "Insights" }],
-        title: "AI Usage & Impact",
-        description: "Measure, track and optimize the usage and impact of AI Coding Assistants in your developer organization.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Agents"}],
-        title: "AI Efficiency Agent",
-        description: "An Agent that offers recommendations for improving productivity, removing bottlenecks, enhancing developer experience based on qualitative and quantitative insights.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Recommendations"}],
-        title: "AI Recommendations",
-        description: "Provides actionable recommendations, beyond just the Insights.",
-      },
-      {
-        tag: [{ value: "Harness Platform" }],
-        title: "Support for Harness Delegates",
-        description: "SEI integrations that require an agent can now leverage Harness Delegates, commonly deployed at all existing Harness customers.",
-      },
-      {
-        tag: [{ value: "Insights" }],
-        title: "Canvas",
-        description: "Set up your personal Canvas that provides a custom dashboard, to track your specific metrics.",
-      },
-      {
-        tag: [{ value: "Insights" }, { value: "Cohorts" }],
+        tag: [{ value: "Insights" }, { value: "New Feature" }],
         title: "Cohort Analysis",
-        description: "Define Dynamic Cohorts that allow qualitative & quantitative analysis across miultiple cohorts, before/after analysis & more.",
+        description: "Ability to create dynamic cohorts and run experiments.",
+      },
+      {
+        tag: [{ value: "Insights" }, { value: "New Feature" }],
+        title: "Canvas",
+        description: "A customizable tab to carry over utilized metrics and widgets.",
+      },
+      {
+        tag: [{ value: "New Feature" }],
+        title: "Planning",
+        description: "Accurate forecasting and planning built on historical performance to prevent overcommitment and drive team satisfaction.",
+      },
+      {
+        tag: [{ value: "New Feature" }],
+        title: "Capitalization",
+        description: "Automate R&D costs for quick and auditable software capitalization reporting.",
+      },
+    ],
+  },
+  Released: {
+    description: "What has been released",
+    feature: [
+      {
+        tag: [{ value: "User Experience" }, { value: "New Features" }],
+        title: "SEI 2.0",
+        description:
+          "Brand new SEI 2.0 implementation optimized for low latency and near real-time access. Comes with out-of-the-box Efficiency, Productivity and Business Alignment insights, consistently reported across the entire organization.",
+        link:"http://localhost:3000/docs/category/sei-recommended",
+      },
+      {
+        tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
+        title: "Automated Developer and Organization Management",
+        description:
+          "Build a completely automated Developer and Org Tree management system, which self-refreshes as the organization evolves.",
+      },
+      {
+        tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
+        title: "Decentralized Management",
+        description:
+          "SEI 2.0 provides a decentralized management experience that empowers SEI administrators to manage the organization and profiles, while delegating team management to team managers.",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Faster Integrations",
+        description:
+          "Integrations now work faster and in near real-time for accurate and actionable insights.",
       },
     ],
   },

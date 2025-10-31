@@ -30,7 +30,7 @@ If your metric is a count, sum, average or ratio metric, use the [first calculat
 <iframe
   src="https://exp-calculators-means-9ecaf91e3a35.herokuapp.com/"
   width="100%"
-  height="600"
+  height="900"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -43,7 +43,7 @@ If your metric is a count, sum, average or ratio metric, use the [first calculat
 <iframe
   src="https://exp-calculators-proportions-00c422485fac.herokuapp.com/"
   width="100%"
-  height="600"
+  height="800"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -66,7 +66,7 @@ The second graph shows you how large or small the comparison metric would need t
 <iframe
   src="https://csb-16kyv-2r8njoik3.now.sh/?codemirror=1"
   width="100%"
-  height="600"
+  height="2400"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -79,7 +79,7 @@ The second graph shows you how large or small the comparison metric would need t
 <iframe
   src="https://csb-5kd7k-42pc8nrsq.now.sh/?codemirror=1"
   width="100%"
-  height="600"
+  height="2300"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -90,7 +90,7 @@ The second graph shows you how large or small the comparison metric would need t
 
 ## Using the calculators
 
-If you have the experiment pack and are unsure of any of the data required for the calculator, we recommend looking at the metric results for a similar feature flag you have already run or running a *100% off* feature flag with your intended targeting rules. You can then find the sample size, metric value and standard deviation from the [Metric Details and Trends](https://help.split.io/hc/en-us/articles/360025376251-Metrics-impact-Metric-details-and-trends) view reached by clicking into the metric card.
+If you have the experiment pack and are unsure of any of the data required for the calculator, we recommend looking at the metric results for a similar feature flag you have already run or running a *100% off* feature flag with your intended targeting rules. You can then find the sample size, metric value and standard deviation from the [Metric Details and Trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/) view reached by clicking into the metric card.
 
 ### Expected sample size per day
 
@@ -100,7 +100,7 @@ The Sample size column is shown under the Sample population section of the data 
 
 For example, imagine you see the below table for a feature flag that ran for a full week, to get the estimated sample size per day, first sum the sample sizes across the two treatments, to get 2000, then divide by 7 to get an estimated daily value of 285 users. 
 
-<img src="https://help.split.io/hc/article_attachments/26908355583885" alt="sample-size-column.png" width="300" />
+![](../static/sample-size.png)
 
 ### Baseline Metric Value
 
@@ -112,7 +112,7 @@ The standard deviation characterizes how much variation there is in your metric.
 
 You can find this value under the Stdev column in the Metric Dispersion section of the data table.
 
-<img src="https://help.split.io/hc/article_attachments/26908355596685" alt="mean-and-standard-deviation-columns.png" width="500" />
+![](../static/baseline-standard-deviation.png)
 
 ### What size (relative%) change do you want to be able to detect? 
 

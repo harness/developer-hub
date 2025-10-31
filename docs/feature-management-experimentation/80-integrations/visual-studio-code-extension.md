@@ -4,10 +4,6 @@ sidebar_label: Visual Studio Code extension
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/10731776599309-VSCode-extension </button>
-</p>
-
 :::info[Note]
 This feature is in beta. If you'd like to be included in the beta, contact [earlyaccess@split.io](mailto:earlyaccess@split.io).
 :::

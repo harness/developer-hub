@@ -14,12 +14,9 @@ You can use any of the [integrated scanners](#supported-scanners-for-dast) that 
 ### Supported Scanners for DAST
 Below is the list of scanners supported for DAST in Harness STO:
 
-- [**Burp Suite Enterprise Edition**](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference)
-- [**Nikto**](/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference)
-- [**Nmap**](/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference)
-- [**Traceable**](/docs/security-testing-orchestration/sto-techref-category/traceable-step-configuration)
-- [**Veracode**](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference)
-- [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference)
+import DASTScanners from '/docs/security-testing-orchestration/set-up-scans/shared/dast-scanners.md';
+
+<DASTScanners />
 
 If the scanner you use for DAST scanning is not listed, you can explore additional [scanners](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) that are compatible with the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). If the Custom Scan step does not support the scanner you need, you can use the [Custom Ingestion](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference) step to ingest and process your scan results.
 

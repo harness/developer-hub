@@ -11,7 +11,7 @@ This topic describes the Harness Relay Proxy V1 and how to use it with Feature F
 The Relay Proxy V1 enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.
 
 :::info note
-The Relay Proxy Version 2 is now available from Harness! If you want to learn more, please go to the [Relay Proxy V2](./relay_proxy_v2.md) page. You'll find information regarding how to set it up, the key features and more. 
+The Relay Proxy Version 2 is now available from Harness! If you want to learn more, please go to the [Relay Proxy V2](/docs/feature-flags/use-ff/relay-proxy/relay-proxy-v2) page. You'll find information regarding how to set it up, the key features and more. 
 :::
 
 ## Why use the Relay Proxy?

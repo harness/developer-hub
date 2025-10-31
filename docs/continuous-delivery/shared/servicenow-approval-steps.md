@@ -172,12 +172,6 @@ Here are a few expression examples that can be used to fetch the output values:
 ### Logs
 
 You can also view detailed logs that describe why the validation **failed** or **succeeded** in the **ServiceNow approval step**.
-
-:::note
-
-Currently, viewing the detailed logs is behind the feature flag `CDS_SNOW_IMPROVE_CONSOLE_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
   
 Here are examples of logs for different scenarios:
 

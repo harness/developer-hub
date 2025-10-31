@@ -3,10 +3,6 @@ title: Flutter plugin
 sidebar_label: Flutter plugin
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/8096158017165-Flutter-plugin </button>
-</p>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,6 +18,12 @@ Dart SDK v2.16.2 and greater, and Flutter v2.5.0 and greater.
 This plugin currently supports the Android and iOS platforms.
 :::
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in plugin versions 1.0.0 and above. No changes are required to your implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 Set up FME in your code base with the following two steps:
@@ -30,7 +32,7 @@ Set up FME in your code base with the following two steps:
 
 ```yaml title="pubspec.yaml" 
 dependencies:
-  splitio: 0.2.0
+  splitio: 1.0.0
 ```
 
 ### 2. Instantiate the plugin
@@ -47,13 +49,13 @@ final Splitio _split = Splitio('YOUR_SDK_KEY', 'KEY');
 
 We recommend instantiating the `Splitio` object once as a singleton and reusing it throughout your application.
 
-Configure the plugin with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the plugin with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ## Using the plugin
 
 ### Basic use
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, wait until the SDK is ready, as shown below. You can use the `onReady` parameter when creating the client to get notified when this happens.
 
@@ -76,7 +78,7 @@ _split.client(onReady: (client) async {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), pass the client's `getTreatment` method as an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), pass the client's `getTreatment` method as an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account. The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -199,7 +201,7 @@ _split.client(onReady: (client) async {
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
 This method returns an object containing the treatment and associated configuration:
 
@@ -284,6 +286,35 @@ if (treatment == 'on') {
 </TabItem>
 </Tabs>
 
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+```dart
+_split.client(onReady: (client) async {
+  final treatment = await client.getTreatment(
+    'FEATURE_FLAG_NAME',
+    properties: {
+      'userType': 'premium',  // string
+      'loginCount': 42,       // number
+      'isAdmin': true         // boolean
+    },
+  );
+
+  if (treatment == 'on') {
+    print('Feature ON');
+  } else if (treatment == 'off') {
+    print('Feature OFF');
+  } else {
+    print('Control treatment');
+  }
+});
+```
+
 ### Shutdown
 
 Call the `client.destroy()` method once you've stopped using the client, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
@@ -297,7 +328,7 @@ After `destroy()` is called and finishes, any subsequent invocations to `getTrea
 
 ## Track
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. [Learn more about using track events](https://help.split.io/hc/en-us/articles/360020585772).
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. [Learn more about using track events](/docs/feature-management-experimentation/release-monitoring/events/).
 
 In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
 
@@ -306,13 +337,13 @@ In the examples below, you can see that the `.track()` method can take up to fou
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
-* **TRAFFIC_TYPE:** (Optional) The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** (Optional) The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
 * **VALUE:** (Optional) The value is used to create the metric. The expected data type is **double**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about [event properties](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties). FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about [event properties](/docs/feature-management-experimentation/release-monitoring/events/#event-properties). FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the client was able to successfully queue the event to be sent back to Harness servers on the next event post. The service returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method is provided.
 
-In the case that a bad input is provided, you can read more about our [SDK's expected behavior](https://help.split.io/hc/en-us/articles/360020585772-Track-events).
+In the case that a bad input is provided, you can read more about our [SDK's expected behavior](/docs/feature-management-experimentation/release-monitoring/events/).
 
 ```dart title="Flutter"
 _split.client(onReady: (client) async {
@@ -364,6 +395,7 @@ The parameters available for configuration are shown below.
 | impressionsMode | This configuration defines how impressions (decisioning events) are queued. Supported modes are `ImpressionsMode.optimized`, `ImpressionsMode.none`, and `ImpressionsMode.debug`. In `ImpressionsMode.optimized` mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In `ImpressionsMode.none` mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use `ImpressionsMode.none` when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In `ImpressionsMode.debug` mode, ALL impressions are queued and sent to Harness. This is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `ImpressionsMode.optimized` |
 | readyTimeout | Maximum amount of time (in seconds) to wait until the `onTimeout` callback is fired or `whenTimeout` future is completed. A negative value means no timeout. | 10 seconds |
 | certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+| rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
 
 ## Manager
 
@@ -392,6 +424,8 @@ class SplitView {
   Map<String, String> configs = {};
   List<String> sets = [];
   String defaultTreatment;
+  List<Prerequisite> prerequisites = [];
+  bool impressionsDisabled;
 }
 ```
 
@@ -446,7 +480,7 @@ This section describes advanced use cases and features provided by the SDK.
 
 ### Instantiate multiple SDK clients
 
-FME supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
+FME supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) for more information.
 
 Each SDK factory client is tied to one specific customer ID at a time, so if you need to roll out feature flags by different keys, instantiate multiple SDK clients, one for each traffic type. For example, you may want to roll out the feature `USER_POLL` by `users` and the feature `ACCOUNT_PERMISSIONING` by `accounts`. You can do this with the example below:
 

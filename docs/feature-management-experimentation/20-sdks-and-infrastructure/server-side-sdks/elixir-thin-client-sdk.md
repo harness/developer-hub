@@ -3,10 +3,6 @@ title: Elixir Thin Client SDK
 sidebar_label: Elixir Thin Client SDK
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK </button>
-</p>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -18,7 +14,7 @@ The Elixir Thin SDK supports Elixir language version v1.14.0 and later.
 
 ## Architecture
 
-The Elixir Thin SDK depends on the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) which should be set up on the same host. The Elixir Thin SDK factory client uses splitd to maintain the local cached copy of the FME definitions and return feature flag evaluations.
+The Elixir Thin SDK depends on the [Split Daemon (splitd)](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd) which should be set up on the same host. The Elixir Thin SDK factory client uses splitd to maintain the local cached copy of the FME definitions and return feature flag evaluations.
 
 ## Initialization
 
@@ -44,7 +40,7 @@ The public release of the Elixir Thin SDK is available at [hex.pm](https://hex.p
 
 ### 2. Set up the splitd service
 
-Follow the guidance of our [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) doc to integrate splitd into your application infrastructure.
+Follow the guidance of our [Split Daemon (splitd)](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd) doc to integrate splitd into your application infrastructure.
 
 :::warning[Supported link type]
 The Elixir Thin SDK requires the Splitd daemon to be running with link type `unix-stream`. Update the `splitd.yaml` configuration file to include the following:
@@ -107,7 +103,7 @@ end
 
 After you start the SDK, you can use the `Split.get_treatment/3` function to decide what version of your features your customers are served. The function requires the `FEATURE_FLAG_NAME` argument that you want to ask for a treatment and a unique `key` argument that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if or case statement block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+From there, you simply need to use an if-else-if or case statement block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 ```elixir title="Elixir"
 ## The key here represents the string ID of the user/account/etc you're trying to evaluate a treatment for
@@ -124,7 +120,7 @@ end
 
 ### Attribute syntax 
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `get_treatment` function needs to pass an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `get_treatment` function needs to pass an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call in a map. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -189,7 +185,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `Split.get_treatment_with_config/3` function. This function returns an `Split.TreatmentWithConfig` struct containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `Split.get_treatment_with_config/3` function. This function returns an `Split.TreatmentWithConfig` struct containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `nil` for the config parameter.
 
@@ -222,23 +218,23 @@ Due to the nature of the Elixir SDK, which uses the Split Daemon, there is no ne
 
 Use the `Split.track/5` function to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
-Refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information about using track events in feature flags.
+Refer to the [Events](/docs/feature-management-experimentation/release-monitoring/events/) documentation for more information about using track events in feature flags.
 
 In the examples below you can see that the `Split.track/5` function can take up to five arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `get_treatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value:<br />`[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as `nil` or `0` if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` function returns a boolean value of `true` or `false` to indicate whether or not the event was successfully queued to be sent back to Harness servers on the next event post. The SDK will return `false` if it wasn't able to connect to the Split Daemon, or if the current queue on the Split Daemon is full, or if an incorrect input to the `track` function has been provided.
 
-In the case that a bad input has been provided, you can read more about our SDK's expected behavior in the [Events documentation](https://help.split.io/hc/en-us/articles/360020585772-Track-events)
+In the case that a bad input has been provided, you can read more about our SDK's expected behavior in the [Events documentation](/docs/feature-management-experimentation/release-monitoring/events/).
 
 ```elixir title="Elixir"
 // If you would like to send an event without a value

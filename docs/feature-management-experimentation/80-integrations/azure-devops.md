@@ -4,10 +4,6 @@ sidebar_label: Azure DevOps
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps </button>
-</p>
-
 The Harness FME integration with Azure DevOps gives you access to FME feature flags which enables a streamlined workflow when you are managing your deployment. Use this integration to:
 
 * Customize rollouts: With feature flags, teams can strategically enable rollouts as needed, including canary releases, dark launches, and A/B tests.

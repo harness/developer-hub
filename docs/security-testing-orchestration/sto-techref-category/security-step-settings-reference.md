@@ -1,58 +1,17 @@
 ---
-title: STO external scanner support and requirements
-description: This topic lists supported scanners, ingestion methods, and requirements.
-sidebar_position: 10
-sidebar_label: External scanner support and requirements
+title: STO step settings
+description: This topic lists step settings
+sidebar_position: 500
+sidebar_label: STO step settings
 helpdocs_topic_id: 0k0iubnzql
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This section describes how to set up each of the external scanners supported by Harness STO.
+This document describes a few common settings available for scanners in STO. For a list of supported scanners, see the [Supported Scanners](/docs/security-testing-orchestration/whats-supported/scanners.md) page.
 
-For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments).
-
-
-## Scanner categories supported by STO
-
-import StoSupportedCategories from './shared/sto-supported-categories.md';
-
-<StoSupportedCategories />
-
-<!-- 
-### Data ingestion methods supported by STO
-
-import StoSupportedMethods from './shared/sto-supported-methods.md';
-
-<StoSupportedMethods />
-
-The scanner, targets, and scan approach combinations are covered in the next section.
-
--->
-
-## Scanners supported by STO
-
-import StoSupportedScanners from './shared/sto-supported-scanners.md';
-
-<StoSupportedScanners />
-
-##  Operating systems and architectures supported by STO
-
-import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-category/shared/supported-infrastructures.md';
-
-<StoInfraSupport />
-
-
-## Ingestion formats supported by STO
-
-import StoSupportedFormats from './shared/sto-supported-ingestion-formats.md';
-
-<StoSupportedFormats />
-
-
-
-## Scanning a Docker image with STO
+### Scanning a Docker image with STO
 
 STO supports two primary ways of scanning a container image; scanning the docker image contained within a Docker-in-Docker background step (requiring privileged mode) or scanning an OCI/Docker archive, which **doesn't need the Docker-in-Docker background step** (this is the recommended approach).
 

@@ -9,9 +9,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview#extraction-scans-in-sto" />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/sto-workflows-overview#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
@@ -52,7 +52,7 @@ Search for and add the **Veracode** step to your pipeline. This step can be used
 
 <DocImage path={require('./static/veracode-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
 
-These are the essential settings required to perform an Orchestration scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode step Settings](#veracode-step-settings) section.
+These are the essential settings required to perform an Orchestration scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Vulnerabilities** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode step Settings](#veracode-step-settings) section.
 
 ## Ingestion mode configuration
 With the Ingestion mode in the Veracode step, you can read scan results from a data file and import them into STO. To do this, you need the scan results saved in the XML format. Importantly, before you can ingest scan results, you must perform all the Veracode prerequisites for the repo that you're scanning. If you're scanning a Java repo, for example, the Veracode documentation outlines the specific packaging and compilation requirements for scanning your Java applications. For specific requirements, go to the [Veracode docs](https://docs.veracode.com/) and search for Veracode Packaging Requirements.
@@ -66,7 +66,7 @@ Here's how you can configure your Veracode step to Ingest the scan results from 
 
 <DocImage path={require('./static/veracode-ingestion.png')} width="40%" height="40%" title="Click to view full size image" />
 
-These are the essential settings required to perform an Ingestion scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
+These are the essential settings required to perform an Ingestion scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Vulnerabilities** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
 
 ## Extraction mode configuration
 The Extraction mode in Veracode step allows you to retrieve the latest scan data of a specific Veracode Application and feed the results into STO. Here's how you can do it.
@@ -82,7 +82,7 @@ Search for and add the **Veracode** step to your pipeline. This step can be used
 
 <DocImage path={require('./static/veracode-extraction.png')} width="40%" height="40%" title="Click to view full size image" />
 
-These are the essential settings required to perform an Extraction scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
+These are the essential settings required to perform an Extraction scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Vulnerabilities** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
 
 ## Veracode step settings
 The following are the details of each field in the Veracode step.

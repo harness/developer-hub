@@ -153,10 +153,6 @@ Write down hosts as a comma separated list.
 
 This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
 
-:::note
-Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can control whether multiple host‑attribute filters are combined with **OR (match any)** or **AND (match all)** logic.
 
 **Any (default)** – a host is selected if at least one filter condition matches (existing behavior).
@@ -934,22 +930,46 @@ repeat:
 
 ### Reference hosts in steps using expressions
 
-You can use all of the `<+instance...>` expressions to reference your hosts.
+You can use the following [instance expressions](/docs/platform/variables-and-expressions/harness-variables) to reference your hosts:
 
-For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
+#### For Microsoft Azure or Physical Data Center (PDC):
 
-* `<+instance.hostName>`
-* `<+instance.host.hostName>`
-* `<+instance.name>`
+- `<+instance.hostName>`
+- `<+instance.host.hostName>`
+- `<+instance.name>`
 
-For Microsoft Azure or AWS:
+#### For Microsoft Azure and AWS:
 
-* `<+instance.host.privateIp>`
-* `<+instance.host.publicIp>`
+- `<+instance.host.privateIp>`
+- `<+instance.host.publicIp>`
+
+:::info
+- **For AWS with WinRM deployments:**  
+  Hostname-based expressions like `<+instance.hostName>` and `<+instance.host.hostName>` are **not supported**. Use `<+instance.host.privateIp>` or `<+instance.host.publicIp>` instead.
+
+- **For Azure with WinRM deployments:**  
+  Hostname-based expressions are supported if the hostname is available from the VM metadata.
+
+- `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+:::
 
 ### Rollback
 Harness restores the state of deployment to the pipeline's previous successful stage execution based on `serivce`, `enviroment` and `infrastucture` details.
 Harness records the artifact version that was successfully deployed during previous successful executions. When using the Rollback step's Copy Artifact command unit, Harness copies the last successful version of the artifact deployed via Harness to the remote host.
+
+:::info
+
+#### Rollback Behavior Enhancement for SSH/WinRM
+
+Harness has improved Rollback Behavior for SSH/WinRM deployments. This enhancement in behavior is controlled by the feature flag `CDS_FIX_ROLLBACK_IN_SSH_WINRM`. The following changes in behavior can be observed when this feature flag is enabled:
+
+- The Rollback Behavior has been enhanced to ensure that it **functions correctly even in cases where multiple command steps are configured within a stage**. 
+
+- Identifier Matching: For rollback to work correctly, each command step in the rollback section **must have the same identifier as the corresponding step in the execution section**. The names of the steps may differ, but identifiers must match.
+
+- For Canary, Rolling, and Basic deployment strategies, the **auto-generated YAML also follows the improved pattern with identifier matching if the feature flag is enabled**, thus ensuring identifier alignment between execution and rollback sections.
+
+:::
 
 #### First time deployment
 If the first pipeline execution fails (regardless of stage), Harness skips the rollback since there is no record of any successful pipeline execution.

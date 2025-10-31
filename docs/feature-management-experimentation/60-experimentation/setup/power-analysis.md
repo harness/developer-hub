@@ -7,4 +7,4 @@ Power measures an experiment's ability to detect an effect, if possible. Formall
 
 A commonly used value for statistical power is 80%, which means that the metric has 80% chance of reaching significance if the true impact is equal to the minimum likely detectable effect. Assuming all else is equal, a higher power increases the recommended sample size needed for your feature flag. In statistical terms, the power threshold is equivalent to 1 - β.
 
-For more information, see the [Power threshold](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#power-threshold) documentation.
+For more information, see the [Power threshold](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#power-threshold) documentation.

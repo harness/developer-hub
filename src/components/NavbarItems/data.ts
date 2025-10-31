@@ -214,13 +214,13 @@ export const moduleIconAndColor = {
         color: '--mod-ar-300',
       },
   },
-  'Incident Response': {
+  'AI SRE': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/66df6931514873567c9cdc3c_artifact-registry-logo-icon.svg',
       colors: {
-        border: '--mod-ir-200',
-        backgroundColor: '--mod-ir-100',
-        color: '--mod-ir-300',
+        border: '--mod-aisre-200',
+        backgroundColor: '--mod-aisre-100',
+        color: '--mod-aisre-300',
       },
   },
 };

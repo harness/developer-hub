@@ -3,10 +3,6 @@ title: Android Suite
 sidebar_label: Android Suite
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22916666123277-Android-Suite </button>
-</p>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -27,7 +23,7 @@ Set up FME in your code base with the following two steps:
 Import the SDK into your project including the dependency as follows:
 
 ```java title="Gradle"
-implementation 'io.split.client:android-suite:2.1.0'
+implementation 'io.split.client:android-suite:2.1.2'
 ```
 
 :::warning[Important]
@@ -96,13 +92,13 @@ When the Suite is instantiated, it starts synchronizing feature flag and segment
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the Suite with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the Suite with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ## Using the Suite
 
 ### Basic use
 
-When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the Suite is properly loaded before asking it for a treatment, block until the Suite is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the Suite before asking for an evaluation.
 
@@ -167,7 +163,7 @@ client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -354,7 +350,7 @@ val treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets)
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
 This method will return an object with the structure below:
 
@@ -473,24 +469,72 @@ val treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets)
 </TabItem>
 </Tabs>
 
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+<Tabs groupId="java-kotlin-choice"> 
+<TabItem value="java" label="Java">
+
+```java
+SplitClient client = suite.client();
+
+// Get treatment for a flag
+String treatment = client.getTreatment("FEATURE_FLAG_NAME");
+
+// Append properties with suite.track()
+Map<String, Object> properties = new HashMap<>();
+properties.put("package", "premium");
+properties.put("admin", true);
+properties.put("discount", 50L);
+
+suite.track("flag_evaluated", null, properties);
+```
+
+</TabItem> 
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+val client = suite.client()
+
+// Get treatment for a flag
+val treatment = client.getTreatment("FEATURE_FLAG_NAME")
+
+// Append properties with suite.track()
+val properties = mapOf(
+  "package" to "premium",
+  "admin" to true,
+  "discount" to 50L
+)
+
+suite.track("flag_evaluated", null, properties)
+```
+
+</TabItem> 
+</Tabs>
+
 ### Track
 
-Tracking events is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information.
+Tracking events is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](/docs/feature-management-experimentation/release-monitoring/events/) documentation for more information.
 
-The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, crashes, ANRs and app start time (see [Default events](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent#default-events)) are automatically collected by the Suite. Learn more about these and other events in the [Android RUM Agent](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent#events) documentation.
+The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, crashes, ANRs and app start time (see [Default events](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent/#default-events)) are automatically collected by the Suite. Learn more about these and other events in the [Android RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent/#events) documentation.
 
 To track custom events, you can use the `client.track()` method or the `suite.track()` method. Both methods are demonstrated in the code examples below.
 
 The `client.track()` method sends events **_for the identity configured on the client instance_**. This `track` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in your instance of Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `suite.track()` method sends events **_for all the identities_** configured on all instances of the Suite clients. For those clients that have not been configured with a traffic type, this `track` method uses the default traffic type `user`. This `track` method can take up to three of the four arguments described above: `EVENT_TYPE`, `VALUE`, and `PROPERTIES`.
 
@@ -937,7 +981,9 @@ public class SplitView {
     public long changeNumber;
     public Map<String, String> configs;
     public String defaultTreatment;
-    public List<String> sets;
+    public 
+    public List<Prerequisite> prerequisites;
+    public boolean impressionsDisabled;
 }
 ```
 
@@ -953,6 +999,8 @@ class SplitView(
     var changeNumber: Long
     var defaultTreatment: String?
     var sets: List<String>
+    var prerequisites: List<Prerequisite>
+    var impressionsDisabled: Boolean
 )
 ```
 

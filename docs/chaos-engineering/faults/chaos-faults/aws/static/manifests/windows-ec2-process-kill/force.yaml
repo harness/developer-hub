@@ -1,0 +1,17 @@
+# Kills processes by names with FORCE enabled on a Windows EC2 instance
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: windows-ec2-process-kill
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: windows-ec2-process-kill
+      spec:
+        components:
+          env:
+            - name: PROCESS_NAMES
+              value: 'notepad'
+            - name: FORCE
+              value: 'enable'

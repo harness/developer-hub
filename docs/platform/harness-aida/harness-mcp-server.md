@@ -1,7 +1,8 @@
 ---
 title: Harness MCP Server (Beta)
 description: A unified interface for AI agents to interact with Harness tools and services using the Model Context Protocol (MCP).
-sidebar_position: 54
+sidebar_label: MCP Server (Beta)
+sidebar_position: 10
 ---
 
 The Harness Model Context Protocol (MCP) Server (in Beta) enables integration with Harness tools, providing endpoints for pipelines, pull requests, and more. This guide outlines the installation, configuration, and usage of the MCP server.
@@ -121,38 +122,40 @@ Why not just use function calls for each API?
 
 [Cursor MCP Guide](https://docs.cursor.com/context/model-context-protocol#configuring-mcp-servers)
 
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/install-mcp?name=harness&config=eyJjb21tYW5kIjoiZG9ja2VyIHJ1biAtaSAtLXJtIC1lIEhBUk5FU1NfQVBJX0tFWSAtZSBIQVJORVNTX0RFRkFVTFRfT1JHX0lEIC1lIEhBUk5FU1NfREVGQVVMVF9QUk9KRUNUX0lEIC1lIEhBUk5FU1NfQkFTRV9VUkwgaGFybmVzcy9tY3Atc2VydmVyIHN0ZGlvIiwiZW52Ijp7IkhBUk5FU1NfQVBJX0tFWSI6IjxZT1VSX0FQSV9LRVk%2BIiwiSEFSTkVTU19ERUZBVUxUX09SR19JRCI6IjxZT1VSX09SR19JRD4iLCJIQVJORVNTX0RFRkFVTFRfUFJPSkVDVF9JRCI6IjxZT1VSX1BST0pFQ1RfSUQ%2BIiwiSEFSTkVTU19CQVNFX1VSTCI6IjxZT1VSX0JBU0VfVVJMPiJ9fQ%3D%3D)
+
 ### VS Code Configuration
 
 ```json
 {
-  "mcp": {
-    "servers": {
-      "harness": {
-        "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "YjJmMGNkNDAyOGQ2YWQ4ZjI2MzA4NzMxNTlhOTgyNWQ=",
-          "-e",
-          "HARNESS_DEFAULT_ORG_ID",
-          "-e",
-          "HARNESS_DEFAULT_PROJECT_ID",
-          "-e",
-          "HARNESS_BASE_URL",
-          "harness/mcp-server",
-          "stdio"
-        ],
-        "env": {
-          "HARNESS_API_KEY": "<YOUR_API_KEY>",
-          "HARNESS_DEFAULT_ORG_ID": "<YOUR_ORG_ID>",
-          "HARNESS_DEFAULT_PROJECT_ID": "<YOUR_PROJECT_ID>",
-          "HARNESS_BASE_URL": "<YOUR_BASE_URL>"
-        }
+  "servers": {
+    "harness-mcp-server": {
+      "type": "stdio",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "HARNESS_API_KEY",
+        "-e",
+        "HARNESS_DEFAULT_ORG_ID",
+        "-e",
+        "HARNESS_DEFAULT_PROJECT_ID",
+        "-e",
+        "HARNESS_BASE_URL",,
+        "harness/mcp-server",
+        "stdio"
+      ],
+      "env": {
+        "HARNESS_API_KEY": "<YOUR_API_KEY>",
+        "HARNESS_DEFAULT_ORG_ID": "<YOUR_ORG_ID>",
+        "HARNESS_DEFAULT_PROJECT_ID": "<YOUR_PROJECT_ID>",
+        "HARNESS_BASE_URL": "<YOUR_BASE_URL>"
       }
     }
-  }
+  },
+  "inputs": []
 }
 
 ```
@@ -162,19 +165,23 @@ Why not just use function calls for each API?
 ### Using Claude Code
 
 ```bash
-HARNESS_API_KEY=your_api_key \
-HARNESS_DEFAULT_ORG_ID=your_org_id \
-HARNESS_DEFAULT_PROJECT_ID=your_project_id \
-./cmd/harness-mcp-server/harness-mcp-server stdio
+claude mcp add harness -- docker run -i --rm \
+  -e HARNESS_API_KEY=your_api_key \
+  -e HARNESS_DEFAULT_ORG_ID=your_org_id \
+  -e HARNESS_DEFAULT_PROJECT_ID=your_project_id \
+  -e HARNESS_BASE_URL=your_base_url \
+  harness/mcp-server stdio
 ```
+
+[Claude Code MCP Guide](https://docs.claude.com/en/docs/claude-code/mcp)
 
 ### Building from Source
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/harness/harness-mcp.git  
-cd harness-mcp
+git clone https://github.com/harness/mcp-server  
+cd mcp-server
 ```
 
 2. Build the binary:
@@ -214,36 +221,30 @@ export HARNESS_API_KEY=<your_api_key>
 
 ## Command Line Arguments
 
-| Argument      | Description           |
-| ------------- | --------------------- |
-| `--toolsets`  | Enable tool groups    |
-| `--read-only` | Run in read-only mode |
-| `--log-file`  | Path to log file      |
-| `--version`   | Show version info     |
-| `--help`      | Show help             |
+Please refer to the [Harness MCP Server Command Line Arguments documentation](https://github.com/harness/mcp-server#command-line-arguments) for a full list of available command line arguments.
 
 ## Environment Variables
 
-| Variable             | Description      |
-| -------------------- | ---------------- |
-| `HARNESS_API_KEY`    | API key          |
-| `HARNESS_DEFAULT_ORG_ID`     | Org ID           |
-| `HARNESS_DEFAULT_PROJECT_ID` | Project ID       |
-| `HARNESS_TOOLSETS`   | Enabled toolsets |
-| `HARNESS_READ_ONLY`  | Read-only mode   |
-| `HARNESS_BASE_URL`   | Base URL         |
+You can customize and configure your Harness MCP server with environment variables. For a full list of options, visit the [MCP Environment Variables documentation](https://github.com/harness/mcp-server#environment-variables).
 
 ## MCP Server Tool Sets Overview
 
-[MCP Tools](https://modelcontextprotocol.io/docs/concepts/tools#overview) allow servers to expose executable functions that can be invoked by clients and used by LLMs to perform actions. At Harness, we have split our tools into the following tool sets:
+[MCP Tools](https://modelcontextprotocol.io/docs/concepts/tools#overview) allow servers to expose executable functions that can be invoked by clients and used by LLMs to perform actions. 
 
-  - Pipelines Tool Set
-  - Pull Requests Tool Set
-  - Repositories Tool Set
-  - Logs Tool Set
-  - Artifact Registries Tool Set
+For a full list of tools and toolsets available, visit the [Harness MCP toolsets documentation](https://github.com/harness/mcp-server?tab=readme-ov-file#tools).
 
-This list will be continuously changing and growing. For a full list of tools visit the MCP repo at [MCP Server](https://github.com/harness/mcp-server?tab=readme-ov-file#tools).
+By default, we currently support the following set of tools under the `default` toolset:
+
+  - `get_connector_details`: Get details of a specific connector
+  - `list_connector_catalogue`: List the Harness connector catalogue
+  - `list_connectors`: List connectors with filtering options
+  - `list_pipelines`: List pipelines in a repository
+  - `get_pipeline`: Get details of a specific pipeline
+  - `get_execution`: Get details of a specific pipeline execution
+  - `list_executions`: List pipeline executions
+  - `fetch_execution_url`: Fetch the execution URL for a pipeline execution
+  - `list_dashboards`: Lists all available Harness dashboards
+  - `get_dashboard_data`: Retrieves the data from a specific Harness dashboard
 
 ## Use Cases
 

@@ -2,6 +2,7 @@
 title: Default Pipelines
 description: Learn how to use Harness IaCM default pipelines
 sidebar_position: 30
+redirect_from: /docs/infra-as-code-management/pipelines/operations/default-pipelines
 ---
 
 import Tabs from '@theme/Tabs';

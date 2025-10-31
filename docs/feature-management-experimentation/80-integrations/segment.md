@@ -4,10 +4,6 @@ sidebar_label: Segment
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020742532-Segment </button>
-</p>
-
 Segment allows you to easily manage integrations with multiple analytics services. By tracking events and users via Segment’s API and libraries, you can send your product’s data to all of your analytics and marketing platforms, with minimal instrumentation code. They offer support for most platforms, including iOS, Android, JavaScript, Node.js, PHP, and more.
  
 Use this integration to:
@@ -19,7 +15,7 @@ Use this integration to:
 This documentation provides additional details on the different types of Segment integrations you can use, how they affect your data in Harness FME, and instructions for setting up the integration. 
 
 :::warning[Important]
-If you use both the `anonymousId` and `userId` fields on Segment's `track` call to differentiate between logged in and anonymous traffic find out how to [verify your Segment events](https://help.split.io/hc/en-us/articles/360035701011-Segment-Verifying-Segment-Events-in-Split) in Split or learn how to [successfully experiment with anonymous and logged-in users](https://help.split.io/hc/en-us/articles/360035494011-Successfully-Experiment-with-Anonymous-and-Logged-in-Users). 
+If you use both the `anonymousId` and `userId` fields on Segment's `track` call to differentiate between logged in and anonymous traffic find out how to [verify your Segment events](https://help.split.io/hc/en-us/articles/360035701011-Segment-Verifying-Segment-Events-in-Split) in Harness FME or learn how to [successfully experiment with anonymous and logged-in users](/docs/feature-management-experimentation/experimentation/setup/anonymous-and-logged-in-users/). 
 :::
 
 ## Harness FME as a source
@@ -121,7 +117,7 @@ The `identify` call lets you tie a user to their actions and record traits about
 Read more on Segment's `identify` spec [here](https://segment.com/docs/spec/identify/).
 
 ### Track
-The `track` call lets you record any actions your users perform, along with any properties that describe the action. When you enable in Harness FME and call the `track` function, FME records events within Harness FME. Learn more about Harness FME's events [here](https://help.split.io/hc/en-us/articles/360020585772).
+The `track` call lets you record any actions your users perform, along with any properties that describe the action. When you enable in Harness FME and call the `track` function, FME records events within Harness FME. For more information, see the [Events documentation](/docs/feature-management-experimentation/release-monitoring/events/).
 
 Read more on Segment's `track` spec [here](https://segment.com/docs/spec/track/).
 
@@ -184,19 +180,64 @@ Harness FME supports the ability to identify multiple traffic types (for example
 }
 ```
 
-## FAQs
+## Troubleshooting
 
-#### What happens if the eventTypeId field has spaces in Segment?
+### What happens if the eventTypeId field has spaces in Segment?
 If the name has a space, Harness FME replaces the space with an underscore changing `sample event` to `sample_event` when it appears in the Harness FME user interface.
 
-#### What does Harness FME do if the eventTypeId field is not mapped correctly?
+### What does Harness FME do if the eventTypeId field is not mapped correctly?
 The `eventTypeId` field is required, so if name does not map correctly or does not match the configuration settings, the event is dropped.
 
-#### What does Harness FME do if the eventTypeId field is mapped correctly, but the value field is not?
+### What does Harness FME do if the eventTypeId field is mapped correctly, but the value field is not?
 The `value` field is optional. If `eventTypeId` is mapped correctly but the `value` field does not align with the configuration settings, the `value` field is null in Harness FME.
 
-#### What happens in Harness FME if we have traits.company in our identify call?
+### What happens in Harness FME if we have traits.company in our identify call?
 Passing `traits.company` is received as a string version of the object in FME as an attribute `company`. We recommend flattening the object if you want to see this data in Harness FME.
 
-#### What size limits does Harness FME have on trait values?
+### What size limits does Harness FME have on trait values?
 Trait values are limited to 255 characters. 
+
+### Why is the Segment integration not showing desired events?
+
+The Segment to Split integration is set up to enable tracking event "checkout". Under the eventTypeId field, we put "checkout". However, the checkout event never shows up under "Traffic Type" page.
+
+![](./static/track-identify-segment.png)
+
+It's possible that the `eventTypeId` field in the Segment integration page is incorrectly set. You should not put the actual event name here, only the property name that holds the event name.
+
+Review the JSON structure for the desired event in Segment, and based on the structure, determine the property's path and name, and add it to the Segment integration page in the Split user interface.
+
+For example, if the Segment JSON looks like the following:
+
+```json
+{
+   "event": "checkout"
+   "properties" : {
+     "environmentId" : "xxxxx"
+     "environmentName" : "xxxxx"
+     "key" : "zxcv"
+     "machineIP" : "x.x.x.x"
+     "page" : "eCommerce"
+   }
+}
+```
+
+The `eventTypeId` field should be set to `event`.
+
+If the Segment JSON looks like the following:
+
+```json
+{
+   "eventId": "231344"
+   "properties" : {
+     "eventName" : "checkout"
+     "environmentId" : "xxxxx"
+     "environmentName" : "xxxxx"
+     "key" : "zxcv"
+     "machineIP" : "x.x.x.x"
+     "page" : "eCommerce"
+   }
+}
+```
+
+The `eventTypeId` field should be set to `properties.eventName`.

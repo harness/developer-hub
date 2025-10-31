@@ -24,7 +24,7 @@ The CDE control plane manages the Gitspace lifecycle. Your Gitspace will stay ac
 ## Actions of a Gitspace
 
 ### Creating a Gitspace
-Gitspaces can be created directly from the Harness UI. [Learn more about how you can create a Gitspace here](/docs/cloud-development-environments/introduction/quickstart-guide.md). 
+Gitspaces can be created directly from the Harness UI. [Learn more about how you can create a Gitspace here](/docs/cloud-development-environments/introduction/quickstart-tutorial.md). 
 
 When a user creates a Gitspace, a message is sent to the CDE control plane with all the required details to start the Gitspace. The CDE control plane resolves all the Gitspace details and provisions the VM as per the resource requirements. 
 

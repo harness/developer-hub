@@ -466,10 +466,6 @@ GitOps Clusters are not used in standard CD pipelines. They're used when using G
 
 ## Clone Environments
 
-:::info note
-Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can clone environment across scopes (i.e from one project to another, project to organization, account to project etc.).
 
 Select **More Options**.

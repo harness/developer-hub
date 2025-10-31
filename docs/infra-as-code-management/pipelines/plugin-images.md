@@ -87,8 +87,8 @@ RUN microdnf clean all
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
-## Switch back to the "app" user now that all tools are installed
-USER app
+## Switch back to the "harness" user now that all tools are installed
+USER harness
 ```
 </TabItem>
 </Tabs>

@@ -265,9 +265,54 @@ pipeline:
 
 </details>
 
-### Prevent approval by pipeline executor
+### Prevent executor approval
 
-If you don't want the User that initiated the Pipeline execution to approve this step, select the **Disallow the executor from approving the pipeline** option. Even if the User is in the selected in User Group, they won't be able to approve this step.
+Enable **Disallow the executor from approving the pipeline** to stop the user who started a **manual** run from approving it—even if they’re in an allowed group.
+
+- Only applies to manual executions (not webhook/Git triggers).  
+- If you need to block more than just the executor, such as a specific list of users or dynamically resolve emails during executions, use **Disallowed User Emails** instead.
+
+### Disallowed User Emails
+
+You can block users from approving this step by listing their email addresses under **Disallowed User Emails**. This applies to all execution types—manual runs and triggers from GitHub, GitLab, webhooks, etc.
+
+Supports:
+- You can provide a fixed list of emails using fixed values 
+- You can use a expressions with two options:
+
+  - Individual expression: `<+trigger.payload.pusher.email>`
+  - Combined expression: `<+ <+stage.variables.input1> + "," + <+stage.variables.input2>>.split(",")`
+  
+- You can supply a runtime input (`<+input>`) 
+
+You cannot mix fixed values and expressions.
+
+<details>
+<summary>Example: Github-triggered disallow</summary>
+
+A Github push event arrives with payload:
+
+```yaml
+{
+  ...
+  "pusher": {
+    "name": "User-1",
+    "email": "user-1@gmail.com"
+  }
+  ...
+}
+```
+
+In your pipeline YAML, reference the committer’s email:
+
+```yaml
+approvers:
+  # …other approver config…
+  disallowedUserEmails: <+trigger.payload.pusher.email>
+```
+
+When `user-1@gmail.com` logs in and views that execution, they will be prevented from approving.
+</details>
 
 ### Approver inputs
 
@@ -395,12 +440,6 @@ You can select one of the following types of expression for user groups:
 
 You can approve requests using a Service Account token.
 
-:::note
-
-Currently, Approvals API with Service Account Authentication is behind the feature flag `CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Configure a Manual Approval Stage.
 
 In the manual approval stage, select whether to use an individual service account or a combination (if more than one approval is needed). Set the input type as **Fixed value**.
@@ -445,12 +484,6 @@ Note: Along with Fixed value, expressions are also supported for userGroups, pro
 
 ### Approval notifications to approvers
 
-:::note
-
-Currently, details of service, environment and infrastructure definition for CD stages in approval notifications is behind the feature flag `CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Approval notifications are sent to each of the configured **User Groups** in the **Approvers** section. User group's notification settings are used while sending notifications. For more information, go to [Edit notification preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences).
 
 :::important
@@ -482,7 +515,7 @@ Use the **Include stage execution details in approval** option to include stage 
 
   For such cases, wherein an approval step is meant for approval of a future CD stage, and the CD stage configuration contains expressions, then we recommend having appropriate expressions as a part of **Approval Message** field. Approval notification will include the approval message with expressions resolved till the approval step.
 
-  Go to this [knowledge base article](/kb/continuous-delivery/articles/harness-approval-notifications) for approval messages best practices.
+  Go to this [knowledge base article](/docs/continuous-delivery/kb-articles/articles/harness-approval-notifications) for approval messages best practices.
 
 - Artifact details are not supported currently.
 - Environment and infrastructure filters' details are not supported currently.
@@ -510,5 +543,5 @@ After an approval is granted, [\<+approval>](/docs/platform/variables-and-expres
 
 - [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
 - [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
-- [Using Harness Approval APIs](/kb/continuous-delivery/articles/harness-approval-api)
+- [Using Harness Approval APIs](/docs/continuous-delivery/kb-articles/articles/harness-approval-api)
 - [Add ServiceNow Approval steps and stages](/docs/platform/approvals/service-now-approvals)

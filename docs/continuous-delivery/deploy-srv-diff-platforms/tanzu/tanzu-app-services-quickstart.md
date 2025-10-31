@@ -375,8 +375,6 @@ Certain CF CLI environment variables, such as CF_HOME, CF_PLUGIN_HOME, CF_USERNA
 
    ![](static/cli_environment_variables.png)
 
-Currently, this feature is behind the feature flag `CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
 :::
 
 :::note Overrides
@@ -818,7 +816,7 @@ This streamlines your workflow by eliminating the need for manual service bindin
 
 ## Next steps
 
-See [CD tutorials](/docs/category/cd-and-gitops-tutorials) for other deployment features.
+See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
 
 ## FAQs
 

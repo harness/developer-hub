@@ -1,16 +1,22 @@
 ---
 title: Ruby SDK
 sidebar_label: Ruby SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-error-uninitialized-constant/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-upgrading-from-4-to-5-plus/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-close-wait-tcp-connections-in-puma/
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020673251-Ruby-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our Ruby SDK. All of our SDKs are open source. Go to our [Ruby SDK GitHub repository](https://github.com/splitio/ruby-client) to learn more.
+
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 8.6.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
 
 ## Initialization
 
@@ -20,14 +26,14 @@ This guide provides detailed information about our Ruby SDK. All of our SDKs are
 <TabItem value="Ruby">
 
 ```ruby
-gem install splitclient-rb -v '~> 8.5.0'
+gem install splitclient-rb -v '~> 8.9.0'
 ```
 
 </TabItem>
 <TabItem value="JRuby">
 
 ```ruby
-gem install splitclient-rb -v '~> 8.5.0'
+gem install splitclient-rb -v '~> 8.9.0'
 ```
 
 </TabItem>
@@ -40,13 +46,13 @@ Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to
 
 ### 2. Instantiate the SDK and create a new SDK factory client
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block it until the SDK is ready. You can do this by using the `block_until_ready` method of the SDK factory client (or Manager) as part of the instantiation process of the SDK as shown below. Do this as a part of the startup sequence of your application.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ```ruby title="Ruby" 
 require 'splitclient-rb'
@@ -143,7 +149,7 @@ If you are running NGINX with `thread_spawn_method = 'smart'`, use our Redis int
 
 After you instantiate the SDK factory client, you can start using the `get_Treatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `KEY` attribute that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 ```ruby title="Ruby" 
 ## The key here represents the ID of the user, account, etc. you're trying to evaluate a treatment for
@@ -160,7 +166,7 @@ end
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -229,9 +235,9 @@ treatments = split.get_treatments_by_flag_sets('key', ['backend', 'server_side']
 
 You can also use the [Split Manager](#manager) if you want to get all of your treatments at once.
 
-### Get Treatments with Configurations
+### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `get_treatment_with_config` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `get_treatment_with_config` method.
 
 This method will return an object containing the treatment and associated configuration.
 
@@ -293,6 +299,36 @@ end
 </TabItem>
 </Tabs>
 
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+```ruby
+# Define impression properties
+evaluation_option = SplitIoClient::Engine::Models::EvaluationOptions.new = ({
+  :userType => 'premium',  # string
+  :loginCount => 42,       # number
+  :isAdmin => true         # boolean
+}
+
+# Get treatment with properties
+treatment = split_client.get_treatment('KEY', 'FEATURE_FLAG_NAME', {}, evaluation_option)
+
+if treatment == 'on'
+  # Show ON treatment
+elsif treatment == 'off'
+  # Show OFF treatment
+else
+  # Control treatment
+end
+```
+
 ### Shutdown
 
 Call the `.destroy` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
@@ -311,23 +347,23 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
-[Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags.
+[Learn more](/docs/feature-management-experimentation/release-monitoring/events/) about using track events in feature flags.
 
 In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `get_treatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value used in creating the metric. This field can be sent in as nil or 0 if you intend to only use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) A Hash of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) A Hash of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK successfully queued the event to be sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `events_queue_size` or if an incorrect input to the `track` method is provided.
 
-In the case that a bad input has been provided, refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) guide for more information about our SDK's expected behavior.
+In the case that a bad input has been provided, refer to the [Events](/docs/feature-management-experimentation/release-monitoring/events/) guide for more information about our SDK's expected behavior.
 
 ```ruby title="Ruby" 
 ## If you would like to send an event without a value
@@ -497,7 +533,7 @@ In the example given, a call to `get_treatment` passing `john_doe` as the key re
     config: {'desc': 'this applies only to ON and only for john_doe and jane_doe. The rest will receive OFF'}
 ```
 
-Any feature that is not provided in the `split_file` markup map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
+Any feature that is not provided in the `split_file` markup map returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them.
 
 By default, changes in the file are not automatically picked up without restarting the client. To have the client automatically pick up changes to the file, specify `reload_rate` as the interval in seconds at which changes are picked up. Here is an example of specifying both `split_file` and `reload_rate`.
 
@@ -598,12 +634,112 @@ Ruby SDK respects the `HTTP_PROXY` environment variable. To use a proxy, assign 
 http_proxy=http://username:password@hostname:port
 ```
 
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```ruby
+// Initialize SDK with global fallback treatment
+fallback_config = SplitIoClient::Engine::Models::FallbackTreatmentsConfiguration.new(SplitIoClient::Engine::Models::FallbackTreatment.new("control_fallback_ruby", '{"my_feature": "control"}'))
+
+options = {block_until_ready: 5,
+  fallback_treatments: fallback_config
+}
+split_factory = SplitIoClient::SplitFactoryBuilder.build("SDK API KEY", options)
+```
+
+### Flag-level fallback treatment
+
+You can configure fallback treatments for specific flags in the SDK options. When a flag evaluation fails, the SDK returns the corresponding fallback treatment defined for that flag.
+
+```ruby
+fallback_config = SplitIoClient::Engine::Models::FallbackTreatmentsConfiguration.new(nil, {:flag_1 => SplitIoClient::Engine::Models::FallbackTreatment.new(
+	"flag_1_FALLBACK", 
+	'{"my_feature": "collection control"}')
+})
+
+options = {block_until_ready: 5,
+  fallback_treatments: fallback_config
+}
+split_factory = SplitIoClient::SplitFactoryBuilder.build("SDK API KEY", options)
+split_client = split_factory.client
+
+treatment = split_client.get_treatment_with_config("ruby", "flag_1")
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ## Troubleshooting
 
-I am seeing the following certificate error: `OpenSSL::SSL::SSLError`
+### SSL Certificate Error: OpenSSL::SSL::SSLError on macOS
 
-On OSX, if you see an SSL issue that looks similar to the example below, refer to [this post](https://toadle.me/2015/04/16/fixing-failing-ssl-verification-with-rvm.html) for troubleshooting.
+I am seeing the following certificate error: `OpenSSL::SSL::SSLError`. On OSX, if you see an SSL issue that looks similar to the example below, refer to [this post](https://toadle.me/2015/04/16/fixing-failing-ssl-verification-with-rvm.html) for troubleshooting.
 
 ```ruby title="Error message"
 OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
 ```
+
+### Error: uninitialized constant caused by Process::RLIMIT_NOFILE in lib/net/http/persistent.rb
+
+When using Ruby SDK on Windows, initializing the SDK factory object causes the following error:
+
+```
+uninitialized constant error caused by 'Process::RLIMIT_NOFILE' in lib/net/http/persistent.rb
+```
+
+This issue is related to the `net-http-persistent` 3.0 library on Windows OS. This library is a dependency installed automatically with the SDK gem.
+
+Downgrade `net-http-persistent` to version 2.9.4, which is compatible with the Ruby SDK on Windows, by running:
+
+```bash
+gem uninstall net-http-persistent
+gem install net-http-persistent -v '2.9.4'
+```
+
+### Upgrading Ruby SDK from 4.x to 5.x and Above
+
+The Ruby SDK uses a hashing algorithm to divide users across treatments for feature flags (e.g., a 50/50 split between "on" and "off"). Historically, Split has used two hashing algorithms:
+
+* **Legacy Hash (Algorithm 1)**: A simple and fast implementation, but it produces uneven user distributions when user counts are below 100.
+* **Murmur Hash (Algorithm 2)**: An industry-standard hashing algorithm that is both fast and provides even distributions regardless of user count.
+
+In Ruby SDK versions 4.x and below, feature flags intended to use the Murmur Hash were incorrectly using the Legacy Hash. This caused inconsistent treatment assignments when compared with other language SDKs.
+
+Starting from Ruby SDK version 5.0.0 and above, this issue is fixed and the SDK correctly uses the Murmur Hash.
+
+When upgrading, if feature flags are in a ramping phase (i.e., partially rolled out), users may experience treatment shifts due to the change in hashing algorithm.
+
+* Ideally, upgrade the Ruby SDK when all experiments are at 100% distribution to avoid user treatment shifts.
+* If this is not possible, consider creating new versions of the active feature flags. This resets metric calculations and can lead to users receiving different treatments, but users won’t be excluded from metrics as no treatment changes are recorded within the same flag version.
+
+### Why do CLOSE_WAIT TCP connections in Puma not go down as expected?
+
+When using the Ruby SDK with Puma or Unicorn in cluster mode (multiple workers, single thread each), you may notice an increasing number of CLOSE_WAIT TCP connections when the SDK sends treatment events. Running the following command will confirm this:
+
+```bash
+lsof -l | grep CLOSE_WAIT | wc -l
+```
+
+If no SDK treatment calls are made, the number of `CLOSE_WAIT` connections does not decrease as expected.
+
+The SDK threads may not be terminating properly, leaving client connections hanging and waiting for the server’s final ACK signal.
+
+Puma spawns a new process for each group of incoming requests. To ensure all SDK threads are terminated before Puma closes the process, add the following to your `config/puma.rb` file:
+
+```ruby
+before_fork do
+  $split_factory.instance_variable_get(:@config).threads.each { |_, t| t.exit }
+end
+```
+
+This cleanly shuts down SDK threads, helping close the TCP connections properly.

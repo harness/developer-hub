@@ -1,6 +1,21 @@
 ---
 title: Services overview
 description: Learn about CD services.
+tags:
+  - services
+  - harness-services
+  - cd-services
+  - service-definition
+  - clone-services
+  - remote-services
+  - inline-services
+  - service-rbac
+  - deploy-services
+  - service-cloning
+  - service-management
+  - service-lifecycle
+  - service-security
+  - service-deployment
 sidebar_position: 1
 ---
 
@@ -19,10 +34,6 @@ When you create a service in a pipeline, it's automatically added to **Services*
 For more information, go to [create services](/docs/continuous-delivery/x-platform-cd-features/services/create-services).
 
 ## Clone Services
-
-:::info note
-Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 You can clone services across scopes i.e from one project to another, project to organization, account to project etc.
 

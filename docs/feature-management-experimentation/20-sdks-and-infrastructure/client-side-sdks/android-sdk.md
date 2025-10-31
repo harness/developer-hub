@@ -1,11 +1,14 @@
 ---
 title: Android SDK
 sidebar_label: Android SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-calling-client-destroy-does-not-post-impressions
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-duplicate-class-finalizablereferencequeue
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-sdk-takes-too-long-to-get-ready
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-using-kotlin-sdk-always-returns-control-treatment
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-http-exception-chain-validation-failed
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-does-the-sdk-use-sharedpreferences
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020343291-Android-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -30,6 +33,12 @@ implementation("androidx.work:work-runtime") {
 ```
 :::
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 5.3.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 To get started, set up FME in your code base with the following two steps.
@@ -39,20 +48,20 @@ To get started, set up FME in your code base with the following two steps.
 Import the SDK into your project using the following line:
 
 ```java title="Gradle"
-implementation 'io.split.client:android-client:5.3.0'
+implementation 'io.split.client:android-client:5.4.1'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
 
 The first time the SDK is instantiated, it starts background tasks to update an in-memory cache and in-storage cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of the data.
 
-If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this circumstance, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this circumstance, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 After the first initialization, the fetched data is stored. Further initializations fetch data from that cache and the configuration is immediately available.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -265,7 +274,7 @@ client.on(SplitEvent.SDK_READY_FROM_CACHE, object : SplitEventTask() {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` methods need to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `getTreatment` methods need to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide which treatment is assigned to this key.
 
@@ -555,7 +564,7 @@ val treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets)
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
@@ -627,9 +636,11 @@ val treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSetNames
 </TabItem>
 </Tabs>
 
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -702,20 +713,20 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 ## Track
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. Refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772) guide to learn about using track events. In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. Refer to the [Events](/docs/feature-management-experimentation/release-monitoring/events/) guide to learn about using track events. In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 80 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_.:a-zA-Z0-9]{0,79}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
-In case a bad input is provided, refer to the [Track events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) guide for information about our SDK's expected behavior.
+In case a bad input is provided, refer to the [Track events](/docs/feature-management-experimentation/release-monitoring/events/) guide for information about our SDK's expected behavior.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -942,6 +953,141 @@ val rolloutCacheConfig = RolloutCacheConfiguration.builder()
 - `expirationDays`: Number of days to keep cached data before it is considered expired. Default: 10 days.
 - `clearOnInit`: If set to `true`, clears previously stored rollout data when the SDK initializes. Default: `false`.
 
+The Android SDK does **not** use `SharedPreferences` to store the FME cache. It stores the cache directly on internal storage in the app’s context folder.
+
+### Integrate with the Harness Proxy
+
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
+
+#### Configure the proxy 
+
+Set the proxy host and port when initializing the SDK. These values correspond to your proxy’s address and the port it listens on.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+You can optionally configure a CA certificate and/or client certificate and key for mTLS. Certificates should be in PKCS#8 format.
+
+```java
+// TLS tunneling only
+ProxyConfiguration tlsOnly = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .build();
+
+// TLS with custom CA cert
+ProxyConfiguration caCert = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .caCert(context.getResources().openRawResource(R.raw.ca))
+    .build();
+
+// mTLS
+ProxyConfiguration mtls = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .mtls(
+        context.getResources().openRawResource(R.raw.client),
+        context.getResources().openRawResource(R.raw.client_key))
+    .build();
+```
+
+You can also provide credentials using a Bearer Token or basic authentication:
+
+```java
+// Bearer token
+ProxyConfiguration bearerCreds = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .credentialsProvider(new BearerCredentialsProvider() {
+        @Override
+        public String getToken() {
+            return MY_TOKEN;
+        }
+    })
+    .build();
+
+// Basic auth
+ProxyConfiguration basicCreds = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .credentialsProvider(new BasicCredentialsProvider() {
+        @Override
+        public String getUsername() { return MY_BASIC_USER; }
+
+        @Override
+        public String getPassword() { return MY_BASIC_PASSWORD; }
+    })
+    .build();
+```
+
+Finally, set the `ProxyConfiguration` in the SDK config builder:
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfiguration)
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+You can optionally configure a CA certificate and/or client certificate and key for mTLS. Certificates should be in PKCS#8 format.
+
+```kotlin
+// TLS tunneling only
+val tlsOnly = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .build()
+
+// TLS with custom CA cert
+val caCert = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .caCert(context.resources.openRawResource(R.raw.ca))
+    .build()
+
+// mTLS
+val mtls = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .mtls(
+        context.resources.openRawResource(R.raw.client),
+        context.resources.openRawResource(R.raw.client_key))
+    .build()
+```
+
+You can also provide credentials using a Bearer Token or basic authentication:
+
+```kotlin
+// Bearer token
+val bearerCreds = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .credentialsProvider(object : BearerCredentialsProvider {
+        override fun getToken(): String = MY_TOKEN
+    })
+    .build()
+
+// Basic auth
+val basicCreds = ProxyConfiguration.builder()
+    .url(harnessProxyUrl)
+    .credentialsProvider(object : BasicCredentialsProvider {
+        override fun getUsername(): String = MY_BASIC_USER
+        override fun getPassword(): String = MY_BASIC_PASSWORD
+    })
+    .build()
+```
+
+Finally, set the `ProxyConfiguration` in the SDK config builder:
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfiguration)
+    .build();
+```
+
+</TabItem>
+</Tabs>
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
+
 ## Localhost mode
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, you can start the SDK in **localhost** mode (aka, off-the-grid mode). In this mode, the SDK neither polls or updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the SDK in localhost mode, replace the API Key with `localhost`, as shown in the example below:
@@ -1130,6 +1276,7 @@ public class SplitView {
     public Map<String, String> configs;
     public String defaultTreatment;
     public List<String> sets;
+    public List<Prerequisite> prerequisites;
     public boolean impressionsDisabled;
 }
 ```
@@ -1146,6 +1293,7 @@ class SplitView(
     var changeNumber: Long
     var defaultTreatment: String?
     var sets: List<String>
+    var prerequisites: List<Prerequisite>
     var impressionsDisabled: Boolean
 )
 ```
@@ -1294,6 +1442,92 @@ SplitClientConfig config = builder.build();
 The following shows an example output:
 
 ![](./static/android-sdk-log-example.png)
+
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+// Initialize SDK with global fallback treatment
+SplitClientConfig config = SplitClientConfig.builder()
+    .fallbackTreatments(FallbackTreatmentsConfiguration.builder()
+      .global("off")  // global fallback instead of "control”
+.build())
+    .build();
+
+SplitFactory factory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
+SplitClient client = factory.client();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+// Initialize SDK with global fallback treatment
+val config = SplitClientConfig.builder()
+     .fallbackTreatments(FallbackTreatmentsConfiguration.builder()
+      	.global("off")  // global fallback instead of "control”
+.build())
+    .build()
+
+val factory = SplitFactoryBuilder.build("YOUR_API_KEY", config)
+val client = factory.client()
+```
+
+</TabItem>
+</Tabs>
+
+### Flag-level fallback treatment
+
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+// Initialize SDK with a per-flag fallback treatment
+SplitClientConfig config = SplitClientConfig.builder()
+    .fallbackTreatments(FallbackTreatmentsConfiguration.builder()
+       .byFlag(Collections.singletonMap("FEATURE_FLAG_NAME", new FallbackTreatment("off")))
+       .build())
+    .build();
+
+SplitFactory factory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
+SplitClient client = factory.client();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+// Initialize SDK with a per-flag fallback treatment
+val config = SplitClientConfig.builder()
+    .fallbackTreatments(FallbackTreatmentsConfiguration.builder()
+       .byFlag(mapOf("FEATURE_FLAG_NAME" to FallbackTreatment("off")))
+       .build())
+    .build()
+
+val factory = SplitFactoryBuilder.build("YOUR_API_KEY", config)
+val client = factory.client()
+```
+
+</TabItem>
+</Tabs>
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
 ## Advanced use cases
 
@@ -1658,3 +1892,65 @@ val config = SplitClientConfig.builder()
 
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+### Impressions not posted when using client.Destroy()
+
+When using the Android SDK, calling `client.Destroy()` before the app exits is intended to clear the SDK cache and post all impressions. 
+
+However, if the app process shuts down before or during the post request, the cached impressions may not appear in the Live Tail tab of the Split user interface because the request fails to reach Harness servers. 
+
+To resolve this, either add a call to the `client.Flush()` method in your app workflow (this is the recommended approach) to post cached impressions and events before shutdown, or add a short delay (2–3 seconds, adjusted for network speed) after calling `client.Destroy()` to allow enough time for the impressions to be sent before the app exits.
+
+### Duplicate class FinalizableReferenceQueue$DirectLoader error when compiling Android SDK app
+
+When compiling an Android app using the Android SDK, you may encounter the following build error:
+
+```
+Duplicate class com.google.common.base.FinalizableReferenceQueue$DirectLoader found in modules checkstyle-5.3-all.jar (checkstyle-5.3-all.jar) and guava-18.0.jar (com.google.guava:guava:18.0)
+```
+
+This error occurs because the Android SDK depends on the Google Guava 18.0 library, while Checkstyle 5.3 depends on an older library [`com.google.collections » google-collections 1.0`](https://mvnrepository.com/artifact/com.google.collections). These conflicting dependencies cause the duplicate class definition during compilation.
+
+Upgrade Checkstyle to version 7.0 or higher. Checkstyle 7.0 uses the Google Guava library, which resolves the duplication conflict and allows the project to compile successfully.
+
+### SDK takes too long to get ready on Android
+
+When using the Android SDK, the first time the app loads, the SDK takes some time to download feature definitions from Harness FME servers and cache them locally. However, on subsequent app launches, the SDK may still take a long time to get ready even though the cache already exists in the app file system.
+
+This issue occurs in Android SDK versions 2.4.2 and below, where the SDK factory still makes a full data request to Harness FME servers during initialization, regardless of existing cached data on the device.
+
+Upgrade to the latest Android SDK version, which fixes this behavior by properly utilizing the local cache. Additionally, to avoid your app waiting indefinitely on the SDK in case of network issues, listen for the `SDK_READY_TIMED_OUT` event with a configured timeout. This allows your app to continue functioning even if the SDK fails to become ready promptly.
+
+Another helpful event is `SDK_READY_FROM_CACHE`, which fires when the SDK uses cached data on initialization, allowing your app to proceed without waiting for network synchronization.
+
+### Using Kotlin, SDK always returns the control treatment
+
+When using the Android SDK in a Kotlin project, calling `getTreatment()` immediately inside the `SDK_READY` event listener returns the control treatment instead of the expected value. The code works as expected in Swift projects but not in Kotlin.
+
+In Kotlin, the `SDK_READY` event listener requires overriding the `onPostExecution` method inside `SplitEventTask` for the treatment call to work correctly. Using the event listener without this override causes the treatment to be fetched before the SDK is fully ready.
+
+Override the `onPostExecution` function inside the `SplitEventTask` to ensure the code runs only after the SDK is ready, as shown below:
+
+```kotlin
+splitClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        val treatment = splitClient.getTreatment("split-name")
+        // use treatment as needed
+    }
+})
+```
+
+### HTTP Exception: Chain validation failed
+
+When running the Android app in an emulator, the SDK shows the following error immediately after initialization:
+
+```javascript
+io.split.android.client.network.HttpException: HttpException: Error serializing request body: Chain validation failed
+```
+
+This error originates from the SSL handshake process during the SDK’s network call to https://sdk.split.io. A common cause is the device’s system time being incorrect or out of sync.
+
+Ensure the device’s Date and Time settings are synchronized with the current time. After correcting the time, restart the app to resolve the error.
+

@@ -37,7 +37,7 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
 
 ### Git Providers
 Harness IaCM supports the following source providers for seamless code management:
-- **[Harness Code Repository](https://developer.harness.io/docs/code-repository)**: Provides direct integration for streamlined operations.
+- **[Harness Code Repository](/docs/code-repository)**: Provides direct integration for streamlined operations.
 - **GitHub**: Ideal for managing projects hosted on GitHub with options for branch-specific operations.
 - **GitLab**: Connects easily with GitLab for comprehensive repository management.
 - **Bitbucket**: Integrates smoothly for managing Bitbucket repositories.
@@ -52,6 +52,9 @@ The following table describes each of the feature flags relevant to Harness IaCM
 :::note
 To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
 :::
+
+## Supported integrations
+Support for SMP (Service Management Platform) is available in IaCM. See [IACM SMP](/docs/infra-as-code-management/manage-projects/iacm-smp) for details.
 
 ## Supported plugins
 

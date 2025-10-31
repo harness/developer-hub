@@ -7,7 +7,7 @@ sidebar_position: 40
 
 The experiment health check provides an at-a-glance view of the integrity of your experiment's exposure data before you interpret the results. When all checks are passed (showing a green heart icon with a checkmark), you can be assured that your experiment has collected enough clean, reliable, and correctly attributed data and that the metric results are ready to review.
 
-<img src="https://help.split.io/hc/article_attachments/35737119980301" alt="experiment_health_check_popup.png" width="400" />
+![](../../static/health-check.png)
 
 The Health Check is found at the top left of an Experiment page, and shows how experiment data conforms to the following criteria:
 * **Seasonality effect completeness (for sequential testing):** Your experiment has run long enough to capture a full seasonality cycle, as defined by your organization, reducing the risk that results are influenced by short-term seasonal effects.
@@ -17,16 +17,19 @@ The Health Check is found at the top left of an Experiment page, and shows how e
 
 # Health check details
 
-You can drill into your experiment's health check to view detailed breakdowns of each check. These details clarify what each check evaluates, help you assess the severity of any issues, and guide your next steps for troubleshooting. Clicking the **See details** link in the Health check pop-up opens a slide-out panel with information on your experiment's duration (seasonality period for Sequential Testing and experimental review period for Fixed Horizon), sample ratio alignment, and exclusion rates. The possible values for these criteria and additional userful references are described in the sections below.
+You can drill into your experiment's health check to view detailed breakdowns of each check. These details clarify what each check evaluates, help you assess the severity of any issues, and guide your next steps for troubleshooting. 
+
+Clicking the **See details** link in the Health check pop-up opens a slide-out panel with information on your experiment's duration (seasonality period for Sequential Testing and experimental review period for Fixed Horizon), sample ratio alignment, and exclusion rates. The possible values for these criteria and additional useful references are described in the sections below.
 
 When you click the **See details** link on the Health Check popup, you will see a slide out modal with your seasonality effect / experimental review period, sample ratio, and sample exclusion details. The possible values for these criteria and additional useful references are described in the sections below.
 
 ## Seasonality effect completeness (for sequential testing)
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Seasonality effect complete
- * <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Seasonality effect incomplete
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period not started
+
+* Seasonality effect complete 
+* Seasonality effect incomplete  
+* Seasonality effect not started
  
 ### Importance of seasonality effect completeness
 
@@ -38,17 +41,49 @@ The seasonality effect is considered complete when the experiment has run for at
 
 #### Useful references:
 * [Reviewing metrics during an experiment](https://help.split.io/hc/en-us/articles/360021867572-Reviewing-metrics-during-an-experiment)
-* [Experimental review period](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#experimental-review-period)
-* [Where did my statistical significance go?](https://help.split.io/hc/en-us/articles/360040999531-Where-did-my-statistical-significance-go)
-* [When are metrics automatically recalculated?](https://help.split.io/hc/en-us/articles/360019836212-When-are-metric-cards-updated)
-* [Sample size and sensitivity calculators](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators)
+* [Experimental review period](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#experimental-review-period)
+* [Where did my statistical significance go?](/docs/feature-management-experimentation/release-monitoring/metrics/statistical-significance/#troubleshooting)
+* [When are metrics automatically recalculated?](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-calculation-schedule/#when-are-metric-cards-updated)
+* [Sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/)
+
+#### Why early sequential testing results may appear unstable
+
+If your metric exhibits strong seasonality (or other temporal effects), you may notice unusual behavior in the early phase of sequential testing results, such as:
+
+* The mean temporarily jumps outside the confidence interval
+* The p-value appears inconsistent with the confidence interval (e.g. CI covering 0 but p-value shows significance, or vice versa)
+* Results fluctuate rapidly between significant and nonsignificant
+
+This behavior occurs because the mSPRT algorithm assumes that data is stationary, meaning that each observation over time is drawn from the same underlying distribution with a fixed mean and variance. When this assumption holds, p-values and confidence intervals are consistent, and it is safe to monitor results as the experiment runs without dramatic shifts in the results.
+
+When seasonality is present (daily cycles, weekly cycles, or other systemic drift in user behavior), this assumption is broken, leading to three related effects:
+
+1. **Stationarity assumption is violated**: mSPRT relies on a martingale property of the likelihood ratio under the null hypothesis. 
+   If the true means shift over time, this property no longer holds; the algorithm assumes the ground is steady, but in reality, it is moving. 
+
+1. **Confidence intervals may lock in**: mSPRT constructs confidence intervals incrementally. Each new interval is the intersection of the previous interval and the current evidence. 
+
+   This means that confidence intervals can only shrink over time. With seasonality, early evidence may push the CI away from 0. Even if the effect later drifts back towards 0, the CI can remain "stuck", giving the impression of a persistent effect.
+
+1. **P-values inherit past evidence**: The mSPRT p-value is monotonic. Once it decreases, it cannot increase.
+
+   Early swings in the mean can drive the p-value below 0.05. Even if subsequent observations return the mean toward 0, the p-value remains small because it retains the memory of the early phase. This can make results appear significant even when the most recent data show no effect.
+
+In practice:
+
+- Confidence intervals may stay away from 0, ignoring oscillations in the mean
+- P-values may remain small, reflecting past rather than current evidence
+- Both measures are functioning as designed, but under seasonality, the stationary assumption fails and results can appear "wonky"
+
+To address this, practical systems may implement a reset policy. If the running mean drifts outside the confidence interval, the algorithm can recalculate or "start fresh". This prevents early observations from dominating conclusions when the environment is changing. You can either recalculate results manually or rely on Harness FME to implement a reset policy.
 
 ## Experimental review period completeness (for fixed horizon testing)
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period complete
- * <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period incomplete
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period not started
+
+* Experimental review period complete
+* Experimental review period incomplete
+* Experimental review period not started
 
 ### Importance of experimental review completeness
 
@@ -59,16 +94,17 @@ Fixed horizon testing is designed to detect subtle but consistent effects of exp
 The experimental review period will be complete when the experiment has run to the experiment end date. As a best practice, you can carefully evaluate that your experiment duration allows enough traffic (data entering your experiment) to raise the sensitivity (ability to find a minimal percentage impact) of your experiment to your desired level.
 
 #### Useful references:
-* [Using fixed horizons in experimental review periods](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#using-fixed-horizons-in-experimental-review-periods)
-* [Review periods](https://help.split.io/hc/en-us/articles/360019836212-When-are-metric-cards-updated#h_01HA3275YF38N5TMFQBQVG6Q60)
-* [Sample size and sensitivity calculators](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators)
+* [Using fixed horizons in experimental review periods](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#using-fixed-horizons-in-experimental-review-periods)
+* [Review periods](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-calculation-schedule/)
+* [Sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/)
 
 ## Sample ratio
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio is valid
- * <img src="https://help.split.io/hc/article_attachments/35759078118157" alt="experiment_health_check_error_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio mismatch detected
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio not applicable
+
+* Sample ratio is valid
+* Sample ratio mismatch detected
+* Sample ratio not applicable
 
 ### Importance of sample ratio
 
@@ -79,17 +115,17 @@ Accurate experiment results rely on the unbiased distribution of users across al
 Look for a design flaw in the experiment that might be preventing random sampling and causing a sample ratio mismatch.
 
 #### Useful references
-* [Sample ratio check](https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check)
-* [How can I troubleshoot a Sample Ratio Mismatch in my feature flag?](https://help.split.io/hc/en-us/articles/360019981952-Sample-ratio-mismatch-check)
-* [Sample ratio mismatch calculator](https://help.split.io/hc/en-us/articles/360044715132-Sample-ratio-mismatch-calculator)
+* [Sample ratio check](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/)
+* [How can I troubleshoot a Sample Ratio Mismatch in my feature flag?](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/)
+* [Sample ratio mismatch calculator](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/)
 
 ## Number of sample exclusions
 
 ### Possible values
-* <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> No exclusions made
-* <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> 2% of sample excluded
-* <img src="https://help.split.io/hc/article_attachments/35759078118157" alt="experiment_health_check_error_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> n% of sample excluded
-* <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Exclusions not applicable
+* No exclusions made
+* Less than 2% of sample excluded
+* n% of sample excluded
+* Exclusions not applicable
 
 ### Importance of the sample exclusions percentage
 
@@ -100,6 +136,6 @@ High sample exclusions in an experiment potentially introduce bias and reduce ge
 Examine the sample data that has come into the experiment, and consider why keys may have been reassigned treatments. To reduce the percentage of exclusions, you can introduce new data into the experiment (for example, by increasing feature flag traffic exposure) or redesign and restart the experiment with a new assignment source.
 
 #### Useful references
-* [Attribution and exclusion](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion#potential-complications) (see Exclusions)
-* [Reallocate](https://help.split.io/hc/en-us/articles/360020528352-Reallocate)
-* [Export data](https://help.split.io/hc/en-us/articles/360048120112-Export-data)
+* [Attribution and exclusion](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion/#potential-complications) (see Exclusions)
+* [Reallocate](/docs/feature-management-experimentation/feature-management/manage-flags/reallocate-traffic)
+* [Export data](/docs/feature-management-experimentation/feature-management/monitoring-analysis/export-data/)

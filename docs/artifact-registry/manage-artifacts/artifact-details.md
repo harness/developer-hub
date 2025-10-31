@@ -2,6 +2,21 @@
 title: Artifact Details
 description: Learn more about the Artifact Details page and how to use it.
 sidebar_position: 30
+tags:
+  - artifact-details
+  - tag-selection
+  - docker-digest
+  - multi-arch-images
+  - sbom
+  - vulnerabilities
+  - deployments
+keywords:
+  - select artifact tag
+  - view docker digest
+  - artifact details panel
+  - sbom vulnerability insights
+  - deployment details by tag
+  - container registry documentation
 ---
 
 The artifact details page can be found by clicking an artifact in the **Artifacts** tab. 
@@ -21,6 +36,25 @@ This information will change based on what type of artifact it is.
 This section includes an overview of the artifact, offering a glimpse at all it's relevant information needed to manage it. Use this page to copy relevant information like the registry path or the pull command required to download the artifact.
 
 ![](./static/artifact-overview.png)
+
+
+
+### Selecting by tag
+
+All artifact types let you select a tag/version from the header selector. For Docker/OCI images specifically, the selector also lets you choose the image's digest. Both tag names and digest values are clickable. Your selection determines which exact image the details panel shows (layers, manifest, SBOM, vulnerabilities, etc.).
+
+- Use a tag to browse the commonly used label (for example, `latest`, `1.25.2`, etc.).
+- For Docker/OCI, use a digest to pin an immutable reference. This is helpful when you need to verify or troubleshoot a specific image instance.
+
+
+
+The example below shows the tag/digest selector and how you can switch between them:
+
+![](./static/docker-tags.png)
+
+:::info Docker Image - Digest
+The Deployments tab shows data only when a tag is selected. Selecting a digest will not populate deployment details.
+:::
 
 ## Artifact Details
 

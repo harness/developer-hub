@@ -187,6 +187,14 @@ While the pipeline is running, you will see `Using HTTP_PROXY environment variab
 
 ## Copy an artifact or config
 
+:::note
+
+The WinRM deployment type supports Download Artifact only. You cannot use the **Copy** command type with **Artifact** in WinRM deployments.
+
+The following section is for SSH deployments only. 
+
+:::
+
 The deployment artifact for the stage is set in the service definition **Artifacts** section.
 
 Using the **Copy** command type, you can copy the deployment artifact onto the target hosts of the deployment.

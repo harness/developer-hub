@@ -1,11 +1,10 @@
 ---
 title: iOS SDK
 sidebar_label: iOS SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/ios-sdk-runtime-error-jfbcrypt-m-left-shift-of-x-by-y-places
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/ios-sdk-missing-track-method
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -15,6 +14,12 @@ This guide provides detailed information about our iOS SDK. All of our SDKs are 
 ## Language support
 
 This library is compatible with iOS and tvOS deployment target versions 9.0+, macOS 10.11+, and watchOS 7.0+. Xcode 12 and later is also required, but we recommend the minimum version necessary to publish apps on the [AppStore](https://developer.apple.com/news/?id=ib31uj1j). 
+
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 3.3.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
 
 ## Initialization
 
@@ -31,7 +36,7 @@ You can import the SDK in your project by using Swift Package Manager. This can 
 You can also import the SDK into your Xcode project using CocoaPods, adding it in your **Podfile**.
 
 ```swift title="Podfile"
-pod 'Split', '~> 3.3.0'
+pod 'Split', '~> 3.4.2'
 ```
 
 #### Carthage
@@ -39,7 +44,7 @@ pod 'Split', '~> 3.3.0'
 This is another option to import the SDK. Just add it in your **Cartfile**.
 
 ```swift title="Cartfile"
-github "splitio/ios-client" 3.3.0
+github "splitio/ios-client" 3.4.2
 ```
 
 Once added, follow the steps provided in the [Carthage Readme](https://github.com/Carthage/Carthage/blob/master/README.md#if-youre-building-for-ios-tvos-or-watchos).
@@ -48,13 +53,13 @@ Once added, follow the steps provided in the [Carthage Readme](https://github.co
 
 The first time that the SDK is instantiated, it starts background tasks to update an in-memory cache and in-storage cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data.
 
-If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 After the first initialization, the fetched data is stored. Further initializations fetch data from that cache and the configuration is available immediately.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ```swift title="Swift"
 import Split
@@ -152,7 +157,7 @@ client?.on(event: SplitEvent.sdkReadyFromCache, queue: customQueue) {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -299,7 +304,7 @@ let treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets, attributes: 
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` methods. These methods returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` methods. These methods returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
@@ -329,9 +334,11 @@ let treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSets, at
 // }
 ```
 
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -378,22 +385,22 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
-[Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags.
+[Learn more](/docs/feature-management-experimentation/release-monitoring/events/) about using track events in feature flags.
 
 In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`.
 * **VALUE:** (Optional) The value used in creating the metric. This field can be sent in as null or 0 if you intend to only use the count function when creating a metric. The expected data type is **Double**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method is provided.
 
-In case  a bad input is provided, you can read more about our SDK's expected behavior in our [Events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) guide.
+In the case that a bad input has been provided, you can read more about our SDK's expected behavior in our [Events](/docs/feature-management-experimentation/release-monitoring/events/) guide.
 
 ```swift title="Swift"
 // Event without a value
@@ -491,6 +498,7 @@ public class SplitView: NSObject, Codable {
         return changeNumber as NSNumber?
     }
     @objc public var configs: [String: String]?
+    @objc public var prerequisites: [Prerequisite]
     @objc public var impressionsDisabled: Bool = false
 
 }
@@ -764,6 +772,58 @@ The following shows an example output:
 
 ![](../static/ios-sdk-log-example.png)
 
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```java
+// Initialize SDK with global fallback treatment
+let fallbackTreatmentConfiguration = FallbackTreatmentsConfig.builder()
+            .global("off")
+            .build()
+
+let config = SplitClientConfig()
+config.fallbackTreatments = fallbackTreatmentConfiguration
+
+
+let factory = DefaultSplitFactoryBuilder.setApiKey("YOUR_API_KEY").setConfig(config).build()
+let client = factory.client()
+```
+
+### Flag-level fallback treatment
+
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
+
+```swift
+let fallbackTreatmentConfiguration = FallbackTreatmentsConfig.builder()
+            .global(FallbackTreatment(treatment: "off", config: "{\"config_value\":true}"))
+            .byFlag([
+                "my_flag": "false"
+            ])
+            .byFlag([
+                "my_flag_2": FallbackTreatment(treatment: "false", config: "{\"message\": \"not found\"}")
+            ])
+            .build()
+
+let config = SplitClientConfig()
+config.fallbackTreatments = fallbackTreatmentConfiguration
+
+let factory = DefaultSplitFactoryBuilder.setApiKey("YOUR_API_KEY").setConfig(config).build()
+let client = factory.client()
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ## Advanced use cases
 
 This section describes advanced use cases and features provided by the SDK.
@@ -929,8 +989,8 @@ certBuilder.addPin(host: "www.example1.com", hashKey: "sha256/7HIpactkIAq2Y49orF
 certBuilder.addPin(host: "www.example2.com", certificateName: "certificate.der")
 
 // Set a failure handler
-certBuilder.certificatePinningConfig { host in
-  print("Failed validation for host \(host)")
+certBuilder.failureHandler { host in
+  print("Pinning failed for host \(host)")
 }
 
 // Set the CertificatePinningConfig property for the SDK factory client configuration
@@ -940,3 +1000,34 @@ config.certificatePinningConfig = certBuilder.build()
 
 ...
 ```
+
+## Troubleshooting
+
+### Runtime error in JFBCrypt.m: left shift cannot be represented in type 'SInt32'
+
+When using the iOS SDK in an Objective-C project, you might encounter a runtime error immediately after initializing the SDK factory, similar to: `runtime error: left shift of 16488694 by 8 places cannot be represented in type 'SInt32' (aka 'int')` reported in `JFBCrypt.m`.
+
+This error occurs if the Undefined Behavior Sanitizer (UBSan) flag is enabled for your build. UBSan detects undefined behaviors in code, and this particular bit shift triggers the sanitizer.
+
+![](../static/runtime-sanitization.png)
+
+To fix this issue:
+
+1. Disable the Undefined Behavior Sanitizer flag by navigating to your target’s **Edit Scheme** > **Diagnostics** tab and unchecking the **Undefined Behavior Sanitizer** option.
+1. Clean your project build.
+1. Delete the Derived Data folder to remove cached build artifacts.
+1. Rebuild your project.
+
+This will prevent the sanitizer from flagging the bit shift as an error and allow the SDK to initialize correctly.
+
+### Is the iOS SDK Split library missing the track method?
+
+When using the iOS SDK in an Xcode project, attempting to call the `track` method results in a build error:
+
+```
+Value of type 'SplitClientProtocol' has no member 'track'
+```
+
+This error usually occurs because the iOS SDK version used is older than 1.3.0, which did not include the `track` method.
+
+Update the iOS SDK to the latest version via CocoaPods.

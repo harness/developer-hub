@@ -1,6 +1,7 @@
 ---
 title: Delegate registration and verification
 description: To set up a Harness Delegate, you install the delegate in your environment and the delegate automatically registers with your Harness account. The Delegate config file (for example, Kubernetes Delega…
+sidebar_label: Registration and Verification
 sidebar_position: 4
 helpdocs_topic_id: 39tx85rekj
 helpdocs_category_id: m9iau0y3hv
@@ -21,6 +22,16 @@ Once you have installed the delegate in your environment, select **Verify** in t
 ![](static/delegate-registration-01.png)
 
 This means Harness is waiting for the delegate you installed to register. Registration can take a few minutes. Once the delegate registers, the **Verify** screen will indicate that the delegate is running.
+
+:::danger Important Note
+
+After installation, if the delegate goes into a disconnected state, Harness applies a Time-To-Live (TTL) policy:
+
+- Delegate – 6 hours: If a delegate remains disconnected and does not send heartbeats for 6 hours, it is considered expired and will no longer appear on the Delegate page in Harness.
+
+- Delegate Group – 7 days: If no delegates in a group are active for 7 consecutive days, the entire group will be removed from the Delegate page in Harness.
+
+:::
 
 ### Verify delegate registration manually
 

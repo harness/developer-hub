@@ -119,6 +119,7 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **Payload Type** | **Event** | **Actions** |
 | --- | --- |--------------------------------|
 | **GitHub** | Pull Request | Select one or more of the following:<ul><li>Close</li><li>Edit</li><li>Open</li><li>Reopen</li><li>Label</li><li>Unlabel</li><li>Synchronize</li></ul> |
+| | Pull Request Review | Select one or more of the following:<ul><li>Submitted</li><li>Edited</li><li>Dismissed</li></ul> |
 | | Push | GitHub push triggers respond to commit and tag creation actions by default. |
 | | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
 | | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
@@ -307,7 +308,7 @@ Always make sure the path you use works with the provider's payload format and t
 
 :::info
 
-For instructions on using default values for pipeline inputs based on a trigger's payload, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+For instructions on using default values for pipeline inputs based on a trigger's payload, go to [ternary operator](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator/).
 
 :::
 
@@ -500,7 +501,7 @@ You can use [built-in Git payload expressions](#built-in-git-payload-expressions
 
 :::note
 
-For instructions on using default values in pipeline inputs, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+For instructions on using default values in pipeline inputs, go to [ternary operator](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator/).
 
 :::
 

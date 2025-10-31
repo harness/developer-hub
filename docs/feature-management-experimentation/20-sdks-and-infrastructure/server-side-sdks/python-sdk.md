@@ -1,11 +1,9 @@
 ---
 title: Python SDK
 sidebar_label: Python SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/python-sdk-error-type-argument-1-must-be-string/
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020359652-Python-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -15,6 +13,12 @@ This guide provides detailed information about our Python SDK. All of our SDKs a
 ## Language support
 
 The Python SDK supports Python 3 (3.7.16 or later).
+
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 10.4.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
 
 ## Multi-thread, multi-process and asyncio modes support
 
@@ -37,7 +41,7 @@ Set up FME in your code base with two simple steps.
 ### 1. Import the SDK into your project using pip
 
 ```bash title="Shell"
-pip install 'splitio_client[cpphash]==10.2.0'
+pip install 'splitio_client[cpphash]==10.5.1'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -46,7 +50,7 @@ pip install 'splitio_client[cpphash]==10.2.0'
 Starting in version `8.0.0`, readiness has been migrated to a two part implementation. See below for syntax changes you must make if upgrading your SDK to the newest version.
 :::
 
-When the SDK is instantiated in `in-memory` mode, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK doesn't fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated in `in-memory` mode, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK doesn't fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready.
 Since version `8.0.0` This is done by calling the `.block_until_ready()` method in the factory object.
@@ -54,7 +58,7 @@ This method also accepts a maximum time (in seconds or fractions of it) to wait 
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ```python title="Python"
 from splitio import get_factory
@@ -81,7 +85,7 @@ Set up FME in your code base with two simple steps.
 ### 1. Import the SDK into your project using pip
 
 ```bash title="Shell"
-pip install 'splitio_client[cpphash,asyncio]==10.2.0'
+pip install 'splitio_client[cpphash,asyncio]==10.5.1'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -98,7 +102,7 @@ Similar to Multi-threaded mode, when the SDK is instantiated in `in-memory`, it 
 
 We recommend instantiating the SDK once as a singleton and reusing it throughout your application.
 
-Use the code snippet below and plug in your API key. The API key is available on your **Organization Settings** page, on the **APIs** tab. The API key is of type `sdk`. For more information, see [Understanding API Keys](https://help.split.io/hc/en-us/articles/360019916211-API-keys).
+Use the code snippet below and plug in your API key. The API key is available on your **Organization Settings** page, on the **APIs** tab. The API key is of type `sdk`. For more information, see [Understanding API Keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys).
 
 ```python title="Python"
 from splitio import get_factory_async
@@ -147,14 +151,14 @@ Use `pip install` to install the SDK. Note that the package is different for sta
 <TabItem value="Multi-threaded">
 
 ```bash
-pip install 'splitio_client[redis,cpphash]==10.2.0'
+pip install 'splitio_client[redis,cpphash]==10.5.1'
 ```
 
 </TabItem>
 <TabItem value="asyncio">
 
 ```bash
-pip install 'splitio_client[redis,cpphash,asyncio]==10.2.0'
+pip install 'splitio_client[redis,cpphash,asyncio]==10.5.1'
 ```
 
 </TabItem>
@@ -474,7 +478,7 @@ For further reading about uwsgi decorators and postfork you can take a look at t
 
 After you instantiate the SDK factory client, you can start using the `get_treatment` method of the SDK factory client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
@@ -515,7 +519,7 @@ If the `key` attribute is something other than `string`, Python SDK returns `CON
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -657,9 +661,9 @@ print(treatments)
 </TabItem>
 </Tabs>
 
-### Get Treatments with Configurations
+### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `get_treatment_with_config` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `get_treatment_with_config` method.
 
 This method will return an object containing the treatment and associated configuration.
 
@@ -791,6 +795,63 @@ for feature_flag, treatment_with_config in result.items():
 </TabItem>
 </Tabs>
 
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+<Tabs groupId="python-impression-properties">
+<TabItem value="Multi-threaded">
+
+```python
+# Define impression properties inside EvaluationOptions structure
+evaluation_option = EvaluationOptions({
+    "userType": "premium",  # string
+    "loginCount": 42,       # number
+    "isAdmin": True         # boolean
+})
+
+# Get treatment with properties
+treatment = split.get_treatment('key', 'FEATURE_FLAG_NAME', evaluation_options=evaluation_option)
+
+if treatment == "on":
+    # Show ON treatment
+elif treatment == "off":
+    # Show OFF treatment
+else:
+    # Control treatment
+```
+
+</TabItem>
+<TabItem value="asyncio">
+
+```python
+# Define impression properties
+properties = {
+    "userType": "premium",  # string
+    "loginCount": 42,       # number
+    "isAdmin": True         # boolean
+}
+
+# Get treatment with properties
+treatment = await split.get_treatment('key', 'FEATURE_FLAG_NAME', properties=properties)
+
+if treatment == "on":
+    # Show ON treatment
+elif treatment == "off":
+    # Show OFF treatment
+else:
+    # Control treatment
+```
+
+</TabItem>
+</Tabs>
+
 ### Shutdown
 
 The in-memory implementation of Python uses threads in Multi-threaded mode and tasks in asyncio mode to synchronize feature flags, segments, and impressions. If at any point in the application the SDK factory client is not longer needed, you can disable it by calling the `destroy()` method on the factory object.
@@ -831,25 +892,25 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
-[Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in splits.
+[Learn more](/docs/feature-management-experimentation/release-monitoring/events/) about using track events in feature flags.
 
 In the examples below you can see that the `.track()` method can take up to five arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `get_treatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value:<br />`[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture [in the Events guide](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties). FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture [in the Events guide](/docs/feature-management-experimentation/release-monitoring/events/#event-properties). FME currently supports three types of properties: strings, numbers, and booleans.
 
 **Redis Support:** If you are using our SDK with Redis, you need Split Synchronizer **2.3.0** version at least in order to support *properties* in the `track` method.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
-In the case that a bad input has been provided, you can read more about our SDK's expected behavior [here](https://help.split.io/hc/en-us/articles/360020585772-Track-events)
+In the case that a bad input has been provided, you can read more about our SDK's expected behavior [here](/docs/feature-management-experimentation/release-monitoring/events/).
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
@@ -1644,3 +1705,80 @@ You can configure proxies by setting the environment variables `HTTP_PROXY` and 
 $ export HTTP_PROXY="http://10.10.1.10:3128"
 $ export HTTPS_PROXY="http://10.10.1.10:1080"
 ```
+
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```python
+// Initialize SDK with global fallback treatment
+from splitio import get_factory
+
+config = {
+ 'fallbackTreatments': FallbackTreatmentsConfiguration(FallbackTreatment("on-local", '{"prop": "val"}'), None)
+
+}
+
+factory = get_factory("YOUR_API_KEY", config)
+client = factory.client()
+```
+
+### Flag-level fallback treatment
+
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
+
+```python
+config = {
+ 'fallbackTreatments': FallbackTreatmentsConfiguration(None, {'FEATURE_FLAG_NAME': FallbackTreatment("off", '{"prop": "val"}')})
+}
+factory = get_factory("YOUR_API_KEY", config)
+client = factory.client()
+
+// Evaluate a flag with a per-flag fallback treatment
+result = client.get_treatment_with_config("user_key", "FEATURE_FLAG_NAME")
+
+treatment = result.treatment  # "off" if evaluation fails
+config = result.config        # None if no config defined
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
+## Troubleshooting
+
+### Error: type() argument 1 must be string, not unicode
+
+When initializing the SDK factory object in Python, the following exception occurs:
+
+```
+TypeError: type() argument 1 must be string, not unicode
+```
+
+Full traceback excerpt:
+
+```
+from splitio import get_factory
+...
+File "/Library/Python/2.7/site-packages/enum/__init__.py", line 188, in __new__
+    enum_class = super(EnumMeta, metacls).__new__(metacls, cls, bases, classdict)
+TypeError: type() argument 1 must be string, not unicode
+```
+
+This error happens because the Python SDK requires the `enum34` library version 1.1.5 or above. If an older version (e.g., 1.0.x) is installed, or your environment is forcing an older version, this exception will be thrown during SDK initialization.
+
+Upgrade the `enum34` package to version 1.1.5 or higher. Run the following command:
+
+```bash
+sudo pip install enum34 --upgrade
+```
+
+As of this writing, the latest version is 1.1.6.

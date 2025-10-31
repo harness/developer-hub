@@ -100,6 +100,33 @@ You can continue typing or select the expression from the list of suggestions.
 </TabItem>
 </Tabs>
 
+:::warning Important Note
+
+Variables and expressions can be used in pipelines to accept inputs at runtime. We recommend using them cautiously, as runtime input variables are accessible to anyone with permission to run the pipeline.
+
+For example, using secret expressions in pipeline inputs at runtime can expose sensitive values to any user with permission to execute the pipeline.
+
+To prevent such scenarios, use OPA policies like the one below. These policies block the use of secrets as input expressions at runtime. You can also create custom policies to further secure your pipeline builds.
+
+```
+package policy
+
+# Rule to check if any value in the input contains the secret substring
+has_secret_value {
+    walk(input, [_, value])
+    is_string(value)
+    contains(value, "<+secrets.getValue")
+    not contains(value,"<+secrets.getValue(\"account.")
+}
+
+# Main denial rule
+deny[msg] {
+    has_secret_value
+    msg := "Found potentially sensitive value containing 'secret.getValues' in the input"
+}
+```
+:::
+
 For more information, go to:
 
 * [Use Harness expressions](../variables-and-expressions/harness-variables.md)

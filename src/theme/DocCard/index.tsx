@@ -129,6 +129,9 @@ export default function DocCard({ item }: Props): JSX.Element {
       return <CardLink item={item} />;
     case "category":
       return <CardCategory item={item} />;
+    case "html":
+      // Ignore HTML items in generated index pages
+      return null;
     default:
       throw new Error(`unknown item type ${JSON.stringify(item)}`);
   }

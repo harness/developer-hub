@@ -531,3 +531,39 @@ This functionality is applicable across various version control platforms, inclu
 ### Events
 The skipping mechanism operates for both **push** and **pull request** events in Git repositories.
 
+
+## Send Stage Execution Status to Git on Pull Requests
+
+:::info note
+Currently, this feature is behind the feature flag `PIPE_ENABLE_SEND_STATUS_TO_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Leveraging the **Send status to Git** option for individual stages in the pipeline gives you enhanced control over the stage execution status updates.
+
+When a Git Pull Request event triggers a pipeline, Harness can send status updates for each pipeline stage back to the Git system (GitHub, GitLab, etc.) as it executes.
+
+
+### Key Capabilities and Customization
+
+With this feature, you gain the following capabilities:
+- **Stage-Level Control:** Option to enable or disable **Send status to Git** for each pipeline stage.
+
+- **Customizable Status Check Names:** Set custom names for the status checks associated with pipeline stages using fixed values or Harness expressions like `<+pipeline.variables.varStage>`. This allows for dynamic and descriptive status names.
+
+  - In case the expression can not be resolved or evaluated, the Stage Identifier will represent the status check in the Git Pull Request. 
+
+
+![Expression Nomenclature for status check git](./static/send-status-to-git-expression.png)
+
+- **Visibility on Pull Request:** Receiving status updates as checks directly on the Git Pull Request makes it easier for developers to identify the execution status of each stage in the pipeline without having to navigate to the pipeline run on Harness. 
+
+- **Status Updates for Skipped Stages:** If a stage is skipped during a pipeline run, it will be represented with **Success** status in Git PR.
+
+![Expression Nomenclature for status check git](./static/send-status-to-git-checks.png)
+
+One key fact to note here is that the order in which the status checks are displayed on the Git PR will not necessarily follow the order of execution in which Harness Pipeline Stages are executed. Instead, they will be displayed in alphabetical order on the Git PR.
+
+### Enabling Send Status to Git
+
+To configure Git status checks for your pipeline stages, navigate to the pipeline and select the stage for which you want to enable it. In the advanced settings, find the **Send status to Git** option, enable it, and enter the desired name or Harness expression.
+

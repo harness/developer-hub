@@ -5,11 +5,15 @@ sidebar_label: CodeQL step configuration
 sidebar_position: 120
 ---
 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
 You can ingest scan results from [CodeQL](https://codeql.github.com/) into Harness STO. The following steps outline the basic workflow:
+
+:::note
+The **CodeQL** step supports only **Ingestion** scan mode, refer to [GitHub Advanced Security step documentation](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security) for **Orchestration** and other GHAS tools such as **Dependabot**, **Secret Scanning**.
+:::
 
 1. Run a CodeQL scan, either externally or as part of a Run step, and publish the results to SARIF.
 

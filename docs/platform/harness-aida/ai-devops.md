@@ -1,7 +1,8 @@
 ---
 title: Harness AI DevOps Agent
 description: Harness AI DevOps Agent unlocks your pipeline productivity.
-sidebar_position: 53
+sidebar_label: DevOps Agent
+sidebar_position: 8
 ---
 # Harness AI DevOps Agent
 
@@ -11,7 +12,7 @@ The **Harness AI DevOps Agent** streamlines your DevOps processes by enabling yo
 
 The AI DevOps Agents use the following AI models to facilitate your DevOps tasks:
 
-- DevOps Agent: Claude 3.7 Sonnet
+- DevOps Agent: Claude 4.0 Sonnet
 - Support Agent: OpenAI GPT-4o
 - OPA Agent: OpenAI GPT-4o
 - Error Analyzer: OpenAI GPT-4o

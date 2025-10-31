@@ -3,6 +3,7 @@ title: Variables and Expressions FAQ's
 description: Frequently asked questions about Harness variables and expressions.
 sidebar_position: 1000
 ---
+import ToString from '/docs/platform/shared/expression-tostring.md'
 
 This article addresses some frequently asked questions about Variables and Expressions.
 
@@ -60,3 +61,5 @@ Example: These expressions will **not work** inside a CI stage:
 **What you can do instead**
 
 Use explicitly defined pipeline variables or fixed values to pass manifest-related details (like branch, repo name, or file path) into your CI steps. Avoid using manifest context expressions in CIE stages.
+
+<ToString />

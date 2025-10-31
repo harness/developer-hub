@@ -4,10 +4,6 @@ sidebar_label: BugSnag
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/5709939011085-BugSnag </button>
-</p>
-
 Harness FME + BugSnag is a community-supported integration. We do our best to ensure that we share only high-quality community integrations and solutions but we do not work on these projects directly, nor can we guarantee that they’re consistently maintained.
 
 :::info[Note]

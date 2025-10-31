@@ -3,10 +3,6 @@ title: Angular utilities
 sidebar_label: Angular utilities
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/6495326064397-Angular-utilities </button>
-</p>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -16,7 +12,13 @@ All of our SDKs are open source. Go to our [Angular Utilities GitHub repository]
 
 ## Language support
 
-These utilities guarantee support with Angular v15.2.10 or later.
+These utilities guarantee support with Angular v18.0.0 or later.
+
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 4.0.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
 
 ## Initialization
 
@@ -27,7 +29,7 @@ Set up FME in your code base with the following two steps:
 Import the utilities into your project using the following NPM command:
 
 ```bash title="NPM"
-npm install --save @splitsoftware/splitio-angular@3.0.0
+npm install --save @splitsoftware/splitio-angular@4.0.0
 ```
 
 ### 2. Instantiate the service
@@ -66,13 +68,13 @@ Feel free to access the declaration files if IntelliSense is not enough.
 
 We recommend instantiating the service once as a singleton and reusing it throughout your application.
 
-Configure the service with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the service with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ## Using the service
 
 ### Basic use
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready, as shown below. You can subscribe to `splitService.sdkReady$` observable provided by splitService before asking for an evaluation.
 
@@ -96,7 +98,7 @@ this.splitService.sdkReady$.subscribe(() => {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the splitService's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the splitService's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -159,7 +161,6 @@ const treatments: SplitIO.Treatments = this.splitService.getTreatments(flagNames
 <TabItem value="TreatmentsByFlagSet">
 
 ```javascript
-
 const treatments: SplitIO.Treatments = this.splitService.getTreatmentsByFlagSet('frontend');
 
 // treatments will have the following form:
@@ -189,12 +190,14 @@ const treatments: SplitIO.Treatments = this.splitService.getTreatmentsByFlagSets
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object with the structure below:
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
-```javascript title="TypeScript"
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+This method returns an object with the structure below:
+
+```typescript title="TypeScript"
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
 
@@ -268,6 +271,26 @@ const treatmentResults: SplitIO.TreatmentsWithConfig = this.splitService.getTrea
 </TabItem>
 </Tabs>
 
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+```javascript
+const evaluationOptions: SplitIO.EvaluationOptions = {
+  properties: { 
+    package: "premium", 
+    admin: true, 
+    discount: 50 
+  }
+};
+
+const treatmentResult: SplitIO.Treatment = this.splitService.getTreatment('FEATURE_FLAG_NAME', undefined, evaluationOptions);
+```
+
 ### Shutdown
 
 Call the `splitService.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
@@ -295,22 +318,22 @@ A call to the `destroy()` method also destroys the splitService object. When cre
 
 ## Track
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your features on your users' actions and metrics. [Learn more about using track events](https://help.split.io/hc/en-us/articles/360020585772).
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your features on your users' actions and metrics. [Learn more about using track events](/docs/feature-management-experimentation/release-monitoring/events/).
 
 In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value is used to create the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the splitService was able to successfully queue the event to be sent back to Harness servers on the next event post. The service returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
-In the case that a bad input is provided, you can read more about our [SDK's expected behavior](https://help.split.io/hc/en-us/articles/360020585772-Track-events)
+In the case that a bad input is provided, you can read more about our [SDK's expected behavior](/docs/feature-management-experimentation/release-monitoring/events/).
 
 ```javascript title="TypeScript"
 // The expected parameters are:
@@ -327,7 +350,7 @@ const queued = this.splitService.track('user', 'page_load_time', null, propertie
 
 ## Configuration
 
-The SDK has a number of knobs for configuring performance. Each knob is tuned to a reasonable default. However, you can override the value while providing the config to the splitService.init method as shown in the Initialization section of this doc. To learn about the available configuration options, go to the [JavaScript SDK Configuration section.](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration)
+The SDK has a number of knobs for configuring performance. Each knob is tuned to a reasonable default. However, you can override the value while providing the config to the splitService.init method as shown in the Initialization section of this doc. To learn about the available configuration options, go to the [JavaScript SDK Configuration section](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration).
 
 ## Manager
 
@@ -374,8 +397,10 @@ type SplitView = {
   configs: {
     [treatmentName: string]: string
   },
+  defaultTreatment: string,
   sets: Array<string>,
-  defaultTreatment: string
+  impressionsDisabled: boolean,
+  prerequisites: Array<{ flagName: string, treatments: string[] }>
 }
 ```
 
@@ -455,7 +480,7 @@ This section describes advanced use cases and features provided by the SDK.
 
 ### Instantiate multiple SDK clients
 
-FME supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
+FME supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) for more information.
 
 Each SDK factory client is tied to one specific customer ID at a time, so if you need to roll out features by different traffic types, instantiate multiple SDK clients, one for each traffic type. For example, you may want to roll out the feature `user-poll` by `users` and the feature `account-permissioning` by `accounts`.
 
@@ -506,7 +531,7 @@ You can subscribe to four different observables of the splitService.
 
 * `sdkReadyFromCache$`. This event fires once the SDK is ready to evaluate treatments using a version of your rollout plan cached in localStorage from a previous session (which might be stale). If there is data in localStorage, this event fires almost immediately, since access to localStorage is fast; otherwise, it doesn't fire.
 * `sdkReady$`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `sdkReadyTimedOut$`. This event fires if there is no cached version of your rollout plan cached in localStorage, and the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `sdkReady$` event when finished.  This delayed `sdkReady$` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `sdkReadyTimedOut$`. This event fires if there is no cached version of your rollout plan cached in localStorage, and the SDK could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `sdkReady$` event when finished.  This delayed `sdkReady$` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `sdkUpdate$`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to subscribe for each Observable is shown below:
@@ -526,27 +551,27 @@ function whenReady() {
 
 // the service is ready for start making evaluations with your data
 this.splitService.sdkReady$.subscribe(() => {
-   whenReady();
-}
+  whenReady();
+});
 
 this.splitService.sdkReadyTimedOut$.subscribe(() => {
-   // this callback will be called after 1.5 seconds if and only if the client
-   // is not ready for that time. You can still call getTreatment()
-   // but it could return CONTROL.
-}
+  // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
+  // if and only if the client is not ready for that time. 
+  // You can still call `getTreatment()` but it could return `CONTROL`.
+});
 
 this.splitService.sdkUpdate$.subscribe(() => {
-   // fired each time the client state change.
-   // For example, when a feature flag or segment changes.
+   // Fired each time the client state changes.
+   // For example, when a feature flag or a segment changes.
    console.log('The SDK has been updated!');
-}
+});
 
 // This event will fire only using the LocalStorage option and if there's FME data stored in the browser.
 this.splitService.sdkReadyFromCache$.subscribe(() => {
    // Fired after the SDK could confirm the presence of the FME data.
    // This event fires really quickly, since there's no actual fetching of information.
    // Keep in mind that data might be stale, this is NOT a replacement of sdkReady.
-}
+});
 ```
 
 ## Angular Guard

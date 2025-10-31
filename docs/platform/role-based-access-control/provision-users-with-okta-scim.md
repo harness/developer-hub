@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import SCIMurl from '/docs/platform/shared/scimurl.md'
+
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
 If Okta is your identity provider, you can efficiently provision and manage users in your Harness account. Using [Okta's SCIM integration](https://www.okta.com/blog/2017/01/what-is-scim/) with Harness enables Okta to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
@@ -41,14 +43,7 @@ To enable automated provisioning, you must add a Harness app to your Okta admini
 3. In the **General Settings**, enter a name in the **Application label** field, and then select **Next**.
 4. In the SAML settings, enter your Harness **Single sign on URL**.
 
-   The single sign on URL format is:
-
-   ```
-   https://app.harness.io/gateway/api/users/saml-login?accountId=YOUR_ACCOUNT_ID
-   ```
-
-   Replace `YOUR_ACCOUNT_ID` with your Harness account ID.
-   The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
+<SCIMurl />
 
 6. For **Audience URI (SP Entity ID)**, enter `app.harness.io`.
 7. For **Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name Format**, and set the **Value** to **user.email**.

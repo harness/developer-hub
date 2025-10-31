@@ -1,7 +1,8 @@
 ---
 title: Harness AI Code Agent
 description: Harness AI Code Agent for enhanced coding productivity.
-sidebar_position: 52
+sidebar_label: Code Agent
+sidebar_position: 7
 redirect_from:
   - /docs/platform/harness-aida/code-assistant
 ---
@@ -33,7 +34,6 @@ Once you click the login button, you will be redirected to the Harness login pag
 ![An example of AIDA code autocompletion](./static/login.png)
 
 ## Using Harness AI Code Agent: Main Features 
-After installing the Harness extension and completing the login process, you can immediately begin using the powerful features of the Harness AI DevOps Agent within your IDE.
 
 Harness AI Code Agent offers four key features: Code Generation, Chat feature and Inline Editing. Below, we provide a detailed explanation of each feature.
 

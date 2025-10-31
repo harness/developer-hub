@@ -1,11 +1,17 @@
 ---
 title: JavaScript SDK
 sidebar_label: JavaScript SDK
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/faqs/why-are-some-users-double-bucketed/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-localhost-mode-does-not-support-allowlist-keys
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-cors-error-in-streaming-call-when-running-sdk-in-service-worker
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-does-sdk-ready-event-fire-only-once
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-error-shared-client-not-supported-by-the-storage-mechanism
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-how-to-enable-conent-security-policy
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-polimer-cli-enoent-error
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-not-ready-status-in-slow-networks/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-mysegments-endpoint/
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -23,6 +29,12 @@ Refer to the [migration guide](https://github.com/splitio/javascript-client/blob
 The JavaScript SDK supports all major browsers. While the library was built to support ES5 syntax, it depends on native support for ES6 `Promise`, `Map`, and `Set` objects, and therefore, you need to **polyfill** them if they are not available in your target browsers.
 
 If you're looking for possible polyfill options, check [es6-promise](https://github.com/stefanpenner/es6-promise), [es6-map](https://github.com/medikoo/es6-map) and [es6-set](https://github.com/medikoo/es6-set) for Promise, Map and Set polyfills respectively.
+
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 11.4.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
 
 ## Initialization
  
@@ -43,7 +55,7 @@ npm install --save @splitsoftware/splitio
 <TabItem value="CDN bundle">
 
 ```html
-<script src="//cdn.split.io/sdk/split-11.2.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.7.1.min.js"></script>
 
 ```
 
@@ -130,14 +142,14 @@ Feel free to dive into the declaration files if IntelliSense is not enough.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 
 ## Using the SDK
  
 ### Basic use
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment). 
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment). 
 
 To make sure the SDK properly loads before asking it for a treatment, block until the SDK is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the SDK before asking for an evaluation. 
 
@@ -182,7 +194,7 @@ client.on(client.Event.SDK_READY, function() {
 
 ### Attribute syntax 
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -352,32 +364,16 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
 This method returns an object with the structure below:
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
-
-```javascript
-var TreatmentResult = {
-  String treatment;
-  String config; // or null if there is no config for the treatment
-}
-```
-
-</TabItem>
-<TabItem value="TypeScript">
-
-```javascript
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+```typescript title="TypeScript"
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
-
-</TabItem>
-</Tabs>
 
 As you can see from the object structure, the config is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
@@ -477,7 +473,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -545,22 +541,22 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your features on your users’ actions and metrics.
 
-Learn more about [tracking events](https://help.split.io/hc/en-us/articles/360020585772). 
+Learn more about [tracking events](/docs/feature-management-experimentation/release-monitoring/events/). 
 
 In the examples below you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are: 
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period. 
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
-In the case that a bad input has been provided, you can read more about our SDK's expected behavior [here](https://help.split.io/hc/en-us/articles/360020585772-Track-events) 
+In the case that a bad input has been provided, you can read more about our SDK's expected behavior [here](/docs/feature-management-experimentation/release-monitoring/events/). 
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
@@ -617,6 +613,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | storage.prefix | Only applies to the `LOCALSTORAGE` storage type. An optional prefix for your data to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
 | storage.expirationDays | Only applies to the `LOCALSTORAGE` storage type. Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
 | storage.clearOnInit | Only applies to the `LOCALSTORAGE` storage type. When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
+| storage.wrapper | Only applies to the `LOCALSTORAGE` storage type. Storage wrapper used to persist the SDK cached data. | `localStorage` |
 | debug | Either a boolean flag or log level string ('ERROR', 'WARN', 'INFO', or 'DEBUG'). See [logging](#logging) for details. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK falls back to the polling mechanism. If false, the SDK polls for changes as usual without attempting to use streaming. | true |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
@@ -658,7 +655,8 @@ var sdk = SplitFactory({
     type: 'LOCALSTORAGE',
     prefix: 'MYPREFIX',
     expirationDays: 10,
-    clearOnInit: false
+    clearOnInit: false,
+    wrapper: window.localStorage
   },
   streamingEnabled: true,
   debug: false
@@ -700,7 +698,8 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
     type: 'LOCALSTORAGE',
     prefix: 'MYPREFIX',
     expirationDays: 10,
-    clearOnInit: false
+    clearOnInit: false,
+    wrapper: window.localStorage
   },
   streamingEnabled: true,
   debug: false
@@ -716,7 +715,7 @@ For testing, a developer can put code behind feature flags on their development 
 
 When instantiating the SDK in localhost mode, your `authorizationKey` is `localhost`. Define the feature flags you want to use in the `features` object map. All `getTreatment` calls for a feature flag now only return the one treatment (and config, if defined) that you have defined in the map.
 
-Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK was asked to evaluate them.
+Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK was asked to evaluate them.
 
 You can use the additional configuration parameters below when instantiating the SDK in `localhost` mode.
 
@@ -834,6 +833,45 @@ config.features = { 'reporting_v3': 'off' }; // Will not emit SDK_UPDATE
 
 </TabItem>
 </Tabs>
+
+### Localhost mode limitations and Allowlist workaround
+
+JavaScript, React, Redux, and Browser SDKs use the `features` configuration parameter to set feature flags and treatment names when running in localhost mode. However, this mode does not support adding Allowlist keys within the `features` property, unlike the YAML file structure used in server-side SDKs.
+
+To mimic the behavior of allowing specific keys to receive certain treatments, you can define multiple feature flag sets keyed by your user identifier and select the appropriate set dynamically. This approach lets you flip treatments based on the key, effectively simulating an Allowlist.
+
+For example:
+
+```javascript
+const myFeatures = {
+  agus: {
+    flag1: 'on',
+    flag2: 'off'
+  },
+  sanjay: {
+    flag1: 'off',
+    flag2: 'on'
+  },
+  default: {
+    flag1: 'off',
+    flag2: 'off'
+  }
+};
+
+const config = {
+  core: {
+    authorizationKey: 'localhost',
+    key: myKey
+  },
+  features: myFeatures[myKey] || myFeatures['default'],
+  startup: {
+    readyTimeout: 5, // 5 seconds
+    retriesOnFailureBeforeReady: 3 // 3 retries
+  }
+};
+```
+
+This approach provides a simple way to control feature flag treatments per user key while running your application locally.
 
 ## Manager
 
@@ -1018,6 +1056,23 @@ An impression listener is called asynchronously from the corresponding evaluatio
 
 Even though the SDK does not fail, if there is an exception in the listener, do not block the call stack.
 
+## Content Security Policy (CSP)
+
+The Content Security Policy (CSP) can be enabled on a site that uses the JavaScript SDK. CSP is a security standard to prevent cross-site scripting (XSS) and other code injection attacks.
+
+To allow the JavaScript SDK, you can use the `nonce` keyword to permit inline scripts securely:
+
+1. Configure your server to send a response header like this (with your own random nonce value): `Content-Security-Policy: script-src 'self' cdn.split.io 'nonce-swfT4W3546RtDw4';`.
+1. Add the matching nonce attribute to the script tag that uses the SDK:
+   
+   ```html
+   <script nonce="swfT4W3546RtDw4">
+   // Your SDK code here
+   </script>
+   ```
+   
+   Make sure the nonce value in the header and script tag match exactly. The nonce should be randomly generated per request for security.
+
 ## Logging
 
 To enable SDK logging in the browser, open your DevTools console and type the following:
@@ -1026,7 +1081,6 @@ To enable SDK logging in the browser, open your DevTools console and type the fo
 // Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
 // Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
 localStorage.splitio_debug = 'on' <enter>
-
 ```
 
 Reload the browser to start seeing the logs.
@@ -1034,39 +1088,12 @@ Reload the browser to start seeing the logs.
 Beginning with v9.2.0 of the SDK, you can also enable the logging via SDK settings and programmatically by calling the Logger API.
 
 <Tabs groupId="java-type-script">
-<TabItem value="JavaScript" label="Logger API (JavaScript)">
-
-```javascript
-var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
- 
-var sdk = SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: true // Debug boolean option can be passed on settings
-  // It takes precedence over the localStorage flag.
-});
- 
-// Or you can use the Logger API which two methods, enable and disable.
-// Calling this methods will have an immediate effect.
-sdk.Logger.enable();
-sdk.Logger.disable();
-
-// You can also set the log level programatically after v10.4.0
-// Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
-// 'DEBUG' is equivalent to `enable` method.
-// 'NONE' is equivalent to `disable` method.
-sdk.Logger.setLogLevel('WARN');
-```
-
-</TabItem>
-<TabItem value="TypeScript" label="Logger API (TypeScript)">
+<TabItem value="JavaScript" label="Logger API">
 
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio';
  
-const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+const sdk = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
     key: 'key'
@@ -1080,7 +1107,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 sdk.Logger.enable();
 sdk.Logger.disable();
 
-// You can also set the log level programatically after v10.4.0
+// You can also set the log level programmatically after v10.4.0
 // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
 // 'DEBUG' is equivalent to `enable` method.
 // 'NONE' is equivalent to `disable` method.
@@ -1090,13 +1117,42 @@ sdk.Logger.setLogLevel('WARN');
 </TabItem>
 </Tabs>
 
-Example output is shown below. 
+By default, the SDK uses the `console.log` method to output log messages for all log levels. 
 
-![](../static/javascript-sdk-log-example.png)
+Since v11.7.0 of the SDK, you can provide a custom logger to handle SDK log messages by setting the `logger` configuration option or using the `factory.Logger.setLogger` method. 
 
-:::info[Note]
-For more information on using the logging framework in SDK versions prior to 9.2, refer to [https://github.com/visionmedia/debug](https://github.com/visionmedia/debug).
-:::
+The logger object must implement the `SplitIO.Logger` interface, which is compatible with the `console` object and logging libraries such as `winston`, `pino`, and `log4js`. The interface is defined as follows:
+
+```typescript
+interface Logger {
+  debug(message: string): any;
+  info(message: string): any;
+  warn(message: string): any;
+  error(message: string): any;
+}
+```
+
+The following example passes the `console` object as a logger, so that `console.error`, `console.warn`, `console.info`, and `console.debug` methods are called rather than the default `console.log` method.
+
+<Tabs>
+<TabItem value="Using Console as Logger">
+
+```typescript
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const sdk = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Enable logs to call the corresponding custom logger methods
+  debug: true,
+  logger: console
+});
+```
+
+</TabItem>
+</Tabs>
 
 ## Advanced use cases
 
@@ -1106,7 +1162,7 @@ This section describes advanced use cases and features provided by the SDK.
  
 Each JavaScript SDK factory client is tied to one specific customer and traffic type at a time (for example, `user`, `account`, `organization`). This enhances performance and reduces data cached within the SDK.
 
-FME supports the ability to release based on multiple traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to [Traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
+FME supports the ability to release based on multiple traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to [Traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) for more information.
 
 If you need to roll out features by different traffic types, instantiate multiple SDK clients, one for each traffic type. For example, you may want to roll out the feature `user-poll` by `users` and the feature `account-permissioning` by `accounts`. You can do this with the example below:
  
@@ -1190,9 +1246,9 @@ While the SDK does not put any limitations on the number of instances that can b
  
 You can listen for four different events from the SDK.
 
-* `SDK_READY_FROM_CACHE`. This event fires once the SDK is ready to evaluate treatments using a version of your rollout plan cached in localStorage from a previous session (which might be stale). If there is data in localStorage, this event fires almost immediately, since access to localStorage is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `LOCALSTORAGE` storage type and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuration](#configuration) for more information). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan cached in localStorage, and the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below:
@@ -1256,19 +1312,19 @@ function whenReady() {
 client.once(client.Event.SDK_READY, whenReady);
  
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
-  // this callback is called after 1.5 seconds if and only if the client
-  // is not ready for that time. You can still call getTreatment() 
-  // but it could return CONTROL.
+  // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
+  // if and only if the client is not ready for that time.  
+  // You can still call `getTreatment()` but it could return `CONTROL`.
 });
  
 client.on(client.Event.SDK_UPDATE, () => {
-  // fired each time the client state change. 
-  // For example, when a feature flag or segment changes.
+  // Fired each time the client state changes. 
+  // For example, when a feature flag or a segment changes.
   console.log('The SDK has been updated!');
 });
 
 // This event only fires using the LocalStorage option and if there's FME data stored in the browser.
-client.once(client.Event.SDK_READY_FROM_CACHE, function () {
+client.once(client.Event.SDK_READY_FROM_CACHE, () => {
   // Fired after the SDK could confirm the presence of the FME data.
   // This event fires really quickly, since there's no actual fetching of information.
   // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
@@ -1323,3 +1379,312 @@ The following example applications detail how to configure and instantiate the J
 
 * [Basic HTML](https://github.com/splitio/example-javascript-client)
 * [AngularJS](https://github.com/splitio/angularjs-sdk-examples)
+
+## Troubleshooting
+
+### User IDs Being Double Bucketed (SDK_READY_TIMED_OUT Event Issue)
+
+Using the JavaScript SDK, some percentage of User IDs are double bucketed: the same User ID is processed in the Control block, and at a later call in an actual treatment block.
+
+One possible root cause is that the JavaScript SDK engine completes fetching treatments after the `startup.requestTimeoutBeforeReady` or `startup.readyTimeout` parameter expires, firing the browser event `SDK_READY_TIMED_OUT`.
+
+This tends to happen for mobile users with slow internet connections.
+
+If the JavaScript code does not properly handle this event—for example, if it only raises an error and exits:
+
+```javascript
+var client = SdkFactory.client();
+this.clientReady = new Promise(function(resolve, reject) {
+  client.once(client.Event.SDK_READY, function() {
+    resolve();
+  });
+  client.once(client.Event.SDK_READY_TIMED_OUT, function() {
+    reject(new Error("Client SDK Ready Timed Out"));
+  });
+});
+```
+
+There are two possible events:
+
+* If the `SDK_READY` event comes first, the promise resolves, and everything works as expected.
+* If the `SDK_READY_TIMED_OUT` event comes first, the promise rejects and remains rejected, meaning that any `.catch()` attached will always be called—even if the SDK eventually becomes ready later.
+
+If you add a `.catch()` that does not return or throw an error, the wrapper code might continue executing as if the SDK is ready, even when it is not. For example:
+
+```javascript
+this.clientReady.catch(() => {}).then(() => {
+});
+```
+
+Here, the `.catch()` swallows the error without returning or throwing, causing the promise chain to appear "recovered." This can cause code to run prematurely against an SDK that isn’t ready.
+
+Even if the `SDK_READY_TIMED_OUT` event fires, the SDK might become ready a few milliseconds later and emit the `SDK_READY` event. You should handle these events only when you actually want to respond to them.
+
+1. Allow the SDK to retry fetching treatments a couple of times before giving up, increasing the chance the SDK becomes ready within the timeout:
+
+   ```javascript
+   startup: {
+     requestTimeoutBeforeReady: 5,    // 5 seconds
+     readyTimeout: 5,                 // 5 seconds
+     retriesOnFailureBeforeReady: 2,  // 2 retries
+   }
+   ```
+
+1. Configure the SDK to store `Splits` and `mySegments` data in the browser’s `LOCALSTORAGE`. This caches data between page loads and reduces fetch time on subsequent page visits, making the SDK ready faster:
+
+   ```javascript
+   storage: {
+     type: 'LOCALSTORAGE',
+     prefix: 'MYPREFIX'
+   },
+   ```
+
+   Use a custom prefix to prevent data collision across projects.
+
+For more information, see the [API reference documentation](https://docs.split.io/docs/javascript-sdk-overview#section-configuration).
+### CORS Error in streaming call when running the SDK in a Service Worker
+
+When running the JavaScript SDK inside a Service Worker, the SDK’s streaming HTTP call to `streaming.split.io` can be blocked by the browser’s CORS policy.
+
+A Service Worker acts as a proxy between the browser and the network, intercepting requests and optionally redirecting them to a cache. While this enables offline access, it also means requests (such as the SDK’s Server-Sent Events (SSE) stream) must be explicitly handled in the Service Worker.
+
+If SSE requests are not correctly handled (for example, when adding cache-control headers without accounting for SSE), the streaming connection between the SDK and Split’s backend can fail due to CORS restrictions.
+
+To properly handle SSE streaming connections, add logic to your Service Worker’s `fetch` event listener that detects SSE requests and allows them through.
+
+```javascript
+self.addEventListener('fetch', event => {
+  const { headers, url } = event.request;
+  const isSSERequest = headers.get('Accept') === 'text/event-stream';
+
+  // Only process SSE connections
+  if (!isSSERequest) return;
+
+  const sseHeaders = {
+    'content-type': 'text/event-stream',
+    'Transfer-Encoding': 'chunked',
+    'Connection': 'keep-alive',
+  };
+
+  const sseChunkData = (data, event, retry, id) =>
+    Object.entries({ event, id, data, retry })
+      .filter(([, value]) => ![undefined, null].includes(value))
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('\n') + '\n\n';
+
+  const serverConnections = {};
+  const getServerConnection = url => {
+    if (!serverConnections[url]) serverConnections[url] = new EventSource(url);
+    return serverConnections[url];
+  };
+
+  const onServerMessage = (controller, { data, type, retry, lastEventId }) => {
+    const responseText = sseChunkData(data, type, retry, lastEventId);
+    const responseData = Uint8Array.from(responseText, x => x.charCodeAt(0));
+    controller.enqueue(responseData);
+  };
+
+  const stream = new ReadableStream({
+    start: controller => getServerConnection(url).onmessage = onServerMessage.bind(null, controller)
+  });
+
+  const response = new Response(stream, { headers: sseHeaders });
+  event.respondWith(response);
+});
+```
+
+:::tip
+If a default handler is set to `NetworkFirst` (`setDefaultHandler(new NetworkFirst());`), it can prevent the event listener from firing. Removing the default handler resolves this.
+:::
+
+Alternatively, you can explicitly bypass certain requests in your `fetch` event listener:
+
+```javascript
+self.addEventListener('fetch', event => {
+  // no caching for chrome-extensions
+  if (event.request.url.startsWith('chrome-extension:')) {
+    return false;
+  }
+  // prevent header striping errors from workbox strategies for EventSource types
+  if (event.request.url.includes('streaming.split.io')) {
+    return false;
+  }
+  // prevent non-cacheable post requests
+  if (event.request.method != 'GET') {
+    return false;
+  }
+  // all others, use NetworkFirst workbox strategies
+  if (strategies) {
+    const networkFirst = new strategies.NetworkFirst();
+      event.respondWith(networkFirst.handle({ request: event.request }));
+  }
+});
+```
+
+### SDK_READY event not triggering
+
+When using: 
+
+```javascript
+client.on(client.Event.SDK_READY, function() {
+  var treatment = client.getTreatment("SPLIT_NAME");
+  console.log("Treatment = " + treatment);
+});
+```
+
+sometimes, the code never runs, even though no errors are shown in the SDK error log.
+
+This is because the `SDK_READY` event fires only once. If your event listener is attached after the event has already fired, it will never trigger.
+
+Instead of relying solely on the event, use the built-in Promise:
+
+```js
+client.ready().then(() => {
+  var treatment = client.getTreatment("SPLIT_NAME");
+  console.log("Treatment = " + treatment);
+});
+```
+
+This works at any time after SDK initialization.
+
+### "Shared Client not supported by the storage mechanism. Create isolated instances instead" error
+
+When testing the JavaScript SDK browser mode using Jest, it fails with the following error:
+
+```
+Shared Client not supported by the storage mechanism. Create isolated instances in stead
+```
+
+When using Jest for testing applications, Jest runs in Node.js by default, and Node.js does not support shared clients, which is why it detects the storage does not have that function. It is not possible to overwrite that method from the outside.
+
+You can instruct Jest to explicitly resolve to browser by setting the config in Jest options. For example, when using the `package.json` file, we can add the flag:
+
+```json
+{
+  "name": "MYAPP",
+  "version": "X.X.X",
+  ...
+  "jest": {
+    "browser": true
+  }
+  ...
+}
+```
+
+For more information, see the [official Jest documentation](https://jestjs.io/docs/configuration#browser-boolean).
+
+### Building JavaScript SDK using polymer-cli causes error: ENOENT: no such file or directory
+
+Using the following environment:
+
+* `@polymer/polymer`: 3.1.0
+* `polymer-cli`: 1.9.6
+
+Steps to reproduce:
+
+1. Install the SDK: `npm i @splitsoftware/splitio@10.6.0`.
+1. Import via ES module: 
+   
+```js
+import { SplitFactory } from '@splitsoftware/splitio';
+```
+
+1. Run `polymer build`.
+
+You encounter the following error: 
+
+```swift
+Error: ENOENT: no such file or directory, open '/Users/[USER_NAME]/projects/[PROJECT_NAME]/frontend/events'
+```
+
+Polymer's build process differs from bundlers like webpack. It attempts to load the Node.js path of the SDK, which requires the `events` module, a Node core module unavailable in browser environments.
+
+The SDK package contains both Node and browser versions with:
+
+```json
+{
+  "main": "./node.js",
+  "browser": "./browser.js"
+}
+```
+
+While Node.js uses the `main` field (`node.js`), bundlers are instructed to use the browser-specific code (`browser.js`). Polymer’s build does not respect this configuration, leading to the error.
+
+If you plan to implement the JavaScript SDK in both server and browser modes with Polymer, ensure your build configuration properly sets the `browser` and `main` fields to the corresponding JavaScript files to load the correct version.
+
+### Why does the JavaScript SDK return Not Ready status on slow networks?
+
+When using the JavaScript SDK in a browser, the SDK status often remains as **Not Ready** when users are on a slow network connection (e.g., 3G).
+
+The SDK takes longer to fetch feature flags and segment data from Harness FME servers over slow networks. This delay can cause the SDK to fall back to control treatments since it has not yet completed initialization.
+
+Increase the `startup.readyTimeout` and `startup.requestTimeoutBeforeReady` values to ensure they cover the time needed to fetch FME definitions on slower networks.
+
+1. Measure the fetch duration on a slow network (e.g., using Chrome DevTools to simulate 3G).
+1. Enable SDK debug logging in the browser console:
+   ```js
+   localStorage.splitio_debug = 'on';
+   ```
+
+1. Reload the page and look for the debug line:
+
+   ```
+   [TIME TRACKER]: [Fetching - Splits] took xxxx ms to finish
+   ```
+
+   Where `xxxx` is the fetch duration in milliseconds.
+
+1. Set the `startup.requestTimeoutBeforeReady` and `startup.readyTimeout` in your SDK initialization to a value higher than the fetch duration, for example:
+
+   ```js
+   const sdk = SplitFactory({
+     startup: {
+       requestTimeoutBeforeReady: 5000, // 5 seconds
+       readyTimeout: 5000
+     }
+   });
+   ```
+
+1. To reduce network usage, enable local caching of the FME definition by specifying storage when initializing the SDK:
+
+   ```js
+   const sdk = SplitFactory({
+     storage: {
+       type: 'LOCALSTORAGE',
+       prefix: 'MYPREFIX'
+     },
+     // other config ...
+   });
+   ```
+
+This configuration ensures the SDK does not have to fetch definitions on every page load, improving readiness on slow or unstable networks.
+
+### Why does the JavaScript URL return HTTP 404 error?
+
+When using the JavaScript SDK, the following URL request generates a 404 error:
+
+```perl
+GET https://sdk.split.io/api/mySegments/ 404
+```
+
+The URL is missing the required key ID (also known as customer ID). For example, if the key ID is 8879, the URL should be:
+
+```perl
+GET https://sdk.split.io/api/mySegments/8879
+```
+
+Ensure you specify the key or customer ID correctly in the SDK factory initialization and when fetching the client object, for example:
+
+```js
+var factory = splitio({ 
+  core: {
+    authorizationKey: 'YOUR_API_KEY',
+    key: 'CUSTOMER_ID',
+    trafficType: 'TRAFFIC_TYPE'
+  }
+});
+
+var user_client = factory.client('CUSTOMER_ID', 'TRAFFIC_TYPE');
+```
+
+This correctly appends the key ID to the URL and prevents the 404 error.

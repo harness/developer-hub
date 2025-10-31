@@ -1,10 +1,10 @@
 ---
-title: Enable branch rules
-description: Set up branch rules in Harness Code
+title: Enable rules
+description: Set up branch and tag rules in Harness Code
 sidebar_position: 30
 ---
 
-In Harness Code, you can use branch rules and CODEOWNERS to manage individual repositories.
+In Harness Code, you can use branch rules, tag rules, and CODEOWNERS to manage individual repositories.
 
 For broader permissions, such as the ability to view repos within a specific Harness project, go to [Access control](/docs/code-repository/get-started/onboarding-guide.md#manage-access).
 
@@ -16,12 +16,30 @@ Branch rules set on a repository only apply to that specific repository but you 
 
 If you configure branch rules at multiple levels they are combined with an `AND` clause. This generally means the more restrictive rule applies. E.g If you configure a repository branch rule that requires 1 approval before merging but the org branch rule requires 2 approvals, then 2 approvals are needed. Before the branch can be merged the repository requires 1 approval AND the org requires 2 approvals so 2 approvals are needed.
 
-1. Navigate to the level where you want to enable branch rules: repository, project, org, or account and select **Manage Repositories**.
+1. Navigate to the level where you want to enable branch rules. For projects, orgs, or accounts, select **Manage Repositories**. For a repository, click **Settings**.
 2. Select the **Rules** tab.
-3. Select **New Branch Rule**.
+3. Click **+ Create Branch Rule**.
 4. Enter the rule **Name** and optional **Description**.
-5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). Patterns can be inclusive or exclusive.
-6. In **Bypass List**, you can specify users who can bypass this rule.
+:::info
+
+**Name** must start with a letter or `_` and only contain `[a-zA-Z0-9-_.]`
+
+:::
+5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). 
+
+You have the option to include or exclude repositories when setting rules at the account, org, or project level. This allows you to fine-tune which repositories the rule applies to without forcing the rule across every repo. You can do this in two ways:
+
+- **By selecting specific repositories** (for example, `billing-api`, `web-frontend`).
+- **By using name patterns** (for example, `service-*`, `exp-*`).
+
+Includes and excludes can be mixed, and excludes take precedence when there’s overlap.  
+Examples:
+- Include by pattern: `service-*`
+- Include specific repos: `billing-api`, `web-frontend`
+- Exclude by pattern: `exp-*`
+- Exclude a specific repo: `playground`
+
+6. In **Bypass List**, you can specify users, user groups, or service accounts who can bypass this rule.
 7. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
 8. Select **Create Rule**.
 
@@ -31,11 +49,11 @@ The following rules are available when adding branch rules. Some rules require a
 
 | Rule | Additional configuration |
 | ---- | ------------------------ |
-| **Block branch creation** | This rule doesn't block users in the **Bypass List**. |
-| **Block branch update** | This rule doesn't block users in the **Bypass List**. |
-| **Block branch deletion** | This rule doesn't block users in the **Bypass List**. |
-| **Block force push** | This rule doesn't block users in the **Bypass List**. |
-| **Require pull request** | This rule doesn't block users in the **Bypass List**. |
+| **Block branch creation** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block branch update** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block branch deletion** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block force push** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Require pull request** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
 | **Enable default reviewers** | Automatically assigns default reviewers to new pull requests. Optionally, enforce a minimum number of approvals from default reviewers before merging. [Details](/docs/code-repository/config-repos/rules#default-reviewer). |
 | **Require a minimum number of reviewers** | You must specify the minimum number of reviewers. |
 | **Add Code Owners as reviewers** | This rule automatically adds relevant Code Owners as reviewers. |
@@ -63,19 +81,92 @@ Pull requests authored by a default reviewer will skip the required approval che
 Updating the rule does not retroactively assign reviewers to existing PRs—it only applies at the time of PR creation.
 :::
 
+## Add Tag Rules
+
+Harness Code Repository supports **Tag Rules**, allowing you to enforce fine-grained control over Git tag operations — similar to branch protection rules, but specific to tags.
+
+You can restrict who can create, delete, or update tags, and apply rules to specific tag patterns.
+
+To create a tag rule:
+
+1. Navigate to **Code Repository** → your repo.
+2. In the left sidebar, select **Manage Repository**.
+3. Go to the **Rules** tab.
+4. Click the **+ Create Branch Rule** dropdown and select **+ Create Tag Rule**.
+
+### Create a Tag Rule
+
+After selecting **+ Create Tag Rule**, the rule editor appears:
+
+#### Enable
+
+Check this box to activate the rule.
+
+#### Name and Description
+
+* **Name**: A human-readable name for the rule.
+* **Description** (optional): Add context for this rule’s purpose.
+
+#### Target Patterns
+
+* Define which tag patterns this rule applies to.
+* Use globstar-style matching (e.g.:
+
+  * `v*` for all version tags,
+  * `release/**` for nested release tags).
+* You can include or exclude repositories when creating tag rules at the account, org, or project level. This makes it possible to scope rules precisely without forcing the rule across every repo. You can do this in two ways:
+  - **By selecting specific repositories** (for example, `billing-api`, `ui`).
+  - **By using name patterns** (for example, `prod-*`, `exp-*`).
+* Includes and excludes can be mixed, and excludes take precedence when they overlap.  
+  Examples:
+  - Include by pattern: `prod-*`
+  - Include specific repos: `billing-api`, `ui`
+  - Exclude by pattern: `exp-*`
+  - Exclude a specific repo: `playground`
+
+#### Rules: Select all that apply
+
+Choose which operations to restrict for tags matching the pattern:
+
+* **Block tag creation** – Restrict who can create matching tags.
+* **Block tag deletion** – Restrict who can delete matching tags.
+* **Block tag update** – Restrict who can update matching tags.
+
+#### Bypass List
+
+Allow specific users, user groups, or service accounts to bypass the rule. Only those listed will be able to perform restricted operations.
+
+### Example: Prevent Accidental Release Tagging
+
+If you want to prevent unapproved users from creating or deleting tags like `v1.0.0`, you could:
+
+* Target pattern: `v*`
+* Enable:
+  * Block tag creation
+  * Block tag deletion
+  * Block tag update
+* Add your CI service account to the bypass list
+
+### Tips
+
+* Use tag rules in combination with **branch rules** for comprehensive Git policy enforcement.
+* You can view all active tag rules in the **Rules** tab of the repository, under the **Tag** filter.
+* Rules are enforced at the Git operation level — users pushing from Git CLI or through CI tools will see a rejection message if blocked.
+
 ## Toggle rules
 
-You can toggle branch rules on and off.
+You can toggle rules on and off.
 
 1. Go to your repository and select **Settings**.
 2. Select the **Rules** tab.
-3. Use the switch next to each rule to enable or disable rules.
+3. Select your rule. 
+4. Click the **Enable the rule** toggle at the top of the page to turn the rule on and off.
 
 ## Edit or delete rules
 
 1. Go to your repository and select **Settings**.
 2. Select the **Rules** tab.
-3. Locate the rule you want to edit or delete, select **More options** (&vellip;), and then select **Edit Rule** or **Delete Rule**.
+3. Locate the rule you want to edit or delete, select **More options**, and then select **Edit Rule** or **Delete Rule**.
 
 ## CODEOWNERS
 
@@ -86,11 +177,15 @@ A CODEOWNERS file declares the users <!--and groups-->responsible for a reposito
 
 Harness Code recognizes CODEOWNERS in a repository if a CODEOWNERS file is present but does not automatically add them as reviewers. This prevents unnecessary notifications when changes affect files that don’t require review from all CODEOWNERS. To auto-add CODEOWNERS as reviewers, enable the **Add Code Owners as reviewers** rule.
 
+:::note
+Code Owners might not be automatically added as reviewers if the `CODEOWNERS` file contains syntax errors or invalid patterns. Make sure your file follows the correct format and resolves any errors to ensure proper reviewer assignment.
+:::
+
 You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER voluntarily reviews a PR, Harness adds them as a reviewer for record-keeping, just like any other independent review. If the **Require review from code owners** branch rule is enabled, CODEOWNERS function as an approval policy—meaning a PR cannot be merged unless the changes have been approved by the required CODEOWNERS. This requirement is displayed in the Approvals section of the PR summary.
 
 ### CODEOWNERS syntax
 
-In your Harness Code CODEOWNERS file, you can assign code ownership to users <!--and user groups-->within your Harness account<!--, organizations, or projects:-->.
+In your Harness Code CODEOWNERS file, you can assign code ownership to users and user groups within your Harness account, organizations, or projects.
 
 <!--
 * Account: `@accountIdentifier/userOrGroupName`
@@ -117,7 +212,28 @@ You could then declare a CODEOWNER at the project level with `@accountID/my_cool
 You can get user and group names where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) and [manage users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
 -->
 
-Declare CODEOWNERS by the email address associated with their Harness user profile.
+You can declare CODEOWNERS using:
+
+- The email address associated with a Harness user profile.
+- User groups at the **project**, **organization**, or **account** level.
+
+For user groups, use the following formats:
+
+* Project-level user group: `@my_project_group`
+* Org-level user group:
+  * If the repo is at org level: `@org.my_org_group` or simply `@my_org_group`
+  * If the repo is at project level: you must use `@org.my_org_group`
+* Account-level user group: `@account.my_account_group`
+
+Both the long (`@org.my_org_group`) and short (`@my_org_group`) forms are supported, but the short form only works if the repo itself is at org level.
+
+:::note
+When a CODEOWNERS rule includes a user group, any member of that group can provide the required approval.
+:::
+
+:::note Rule Precedence
+If there are multiple rules with the same pattern, the last matching rule takes precedence — only the final one is applied.
+:::
 
 You can assign ownership to specific files, directories, or otherwise. Wildcards are allowed. For example, this CODEOWNERS file demonstrates different ways you can declare ownership.
 
@@ -125,20 +241,22 @@ You can assign ownership to specific files, directories, or otherwise. Wildcards
 Harness ---
 
 # Global owner
-* @email
+* email
+# User groups at different scopes
+** @dev-team @org.security-group @account.admins
 
 # Specific file with multiple owners
-Gemfile.lock @email1 @email2
+Gemfile.lock email1 email2
 
 # Subdirectory owners
-/some_directory/ @email
-/some_directory_2/ @email1 @email2
+/some_directory/ email
+/some_directory_2/ email1 email2
 
 # Workspace owner
-WORKSPACE @email
+WORKSPACE email
 
 # Wildcards
-**/src/** @email
-*.lock @email
+**/src/** email
+*.lock email
 
 ```

@@ -1,11 +1,11 @@
 {
-    "label": "Set up scans",
+    "label": "Set up Scans",
     "position": 30,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Set up scans"
+        "title": "Set up Scans"
     }
 }

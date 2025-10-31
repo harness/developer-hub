@@ -28,7 +28,7 @@ _No action required_
 
 _No action required_
 
-This plugin exports a single page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+It exposes the `EntityAdrContent` and this is how you configure it:
 
 ```YAML
     - name: EntityAdrContent
@@ -43,15 +43,8 @@ This plugin exports a single page. The following configuration is set by default
                   component: EntityAdrContent
 ```
 
-This plugin exports the `EntityAdrContent` that you can show on the Sidenav.  The following configuration can be set in **Layout** under **Admin** for **Sidenav**:
 
-```YAML
-    - name: SidebarItem
-      props:
-        to: adrs
-        text: ADRs
-        iconName: Extension
-```
+
 
 ## Annotations
 

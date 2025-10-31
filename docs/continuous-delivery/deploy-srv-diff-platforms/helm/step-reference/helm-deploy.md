@@ -34,6 +34,15 @@ By default, Harness checks to see if a deployed workload has reached steady stat
 
 If you select this option, Harness will not check that the workload has reached steady state.
 
+## Use Upgrade with Install
+
+Select this option to use "helm upgrade --install" instead of "helm install", allowing upgrades if the release already exists.
+
+## Skip Cleanup
+
+**Default:** `false`
+This setting prevents the automatic uninstallation of failed Helm releases. When set to `true`, failed releases remain in the cluster for debugging. Manual cleanup is required when using this setting.
+
 ## Optional Configuration
 
 Add any environment variables here.

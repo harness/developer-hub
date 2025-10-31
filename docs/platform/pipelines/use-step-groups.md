@@ -76,7 +76,7 @@ The following YAML example includes one stage with three steps. Two steps are in
 
 ## Organizing steps and step groups
 
-You can have multiple step groups in the same stage. Step groups can run in parallel, but they can't be nested.
+You can have multiple step groups in the same stage. Step groups can run in parallel.
 
 Within each step group, you can arrange the steps to run sequentially, in parallel, or a combination.
 

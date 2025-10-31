@@ -1,6 +1,6 @@
 ---
 title: Self-Managed Enterprise Edition 
-description: Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition
+description: Overview of on-premise Harness Self-Managed Enterprise Edition
 sidebar_label: Overview
 sidebar_position: 1
 ---
@@ -60,15 +60,15 @@ Below is a high-level architecture overview of how Harness Self-Managed Enterpri
     Harness Self-Managed Enterprise Edition should be chosen over the SaaS version when an organization prioritizes greater control over data security, deeper customization options, and seamless integration with existing on-premises systems, especially in highly regulated industries where strict data residency and compliance requirements are crucial, even if it means managing the infrastructure yourself and incurring higher setup costs. 
 
     Key reasons to opt for Self-Managed Enterprise Edition:
-    - Enhanced Data Security: Complete control over where data is stored and processed, allowing for stricter compliance with industry regulations by keeping data within your own network perimeter. 
-    - Customizability: Ability to tailor the Harness platform to specific needs by modifying configurations and integrating with unique internal systems that might not be readily accessible through a SaaS model. 
-    - On-Premises Integration: Seamless connection with existing on-premises infrastructure and applications, which can be challenging with a cloud-based SaaS solution. 
-    - Offline & Air-Gapped Capabilities – Deploy in fully isolated environments without external network dependencies.
-    - Network Optimization: Fine-tune network settings and performance for optimal efficiency based on your specific environment. 
+    - **Enhanced Data Security**: Complete control over where data is stored and processed, allowing for stricter compliance with industry regulations by keeping data within your own network perimeter. 
+    - **Customizability**: Ability to tailor the Harness platform to specific needs by modifying configurations and integrating with unique internal systems that might not be readily accessible through a SaaS model. 
+    - **On-Premises Integration**: Seamless connection with existing on-premises infrastructure and applications, which can be challenging with a cloud-based SaaS solution. 
+    - **Offline & Air-Gapped Capabilities** – Deploy in fully isolated environments without external network dependencies.
+    - **Network Optimization**: Fine-tune network settings and performance for optimal efficiency based on your specific environment. 
 
     However, there are certain trade-off with Self-Managed Enterprise Edition:
-    - Higher Setup and Maintenance Costs: Requires dedicated IT personnel to manage the infrastructure, including installation, updates, and troubleshooting. 
-    - Increased Complexity: More technical expertise needed to configure and maintain the self-hosted platform. 
+    - **Higher Setup and Maintenance Costs**: Requires dedicated IT personnel to manage the infrastructure, including installation, updates, and troubleshooting. 
+    - **Increased Complexity**: More technical expertise needed to configure and maintain the self-hosted platform. 
 
 ## Stay updated with Release cadence
 

@@ -8,10 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import CustomCAcert from '/docs/continuous-integration/shared/windows-custom-ca-certs.md';
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -35,15 +34,15 @@ These are the requirements to configure an Azure VM application, Entra ID app re
 
 1. In Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and create a VM to host your Harness Delegate and runner. Select a machine type with 4 vCPU and 16 GiB memory or more. Harness recommends the following machine images:
 
-   * [Ubuntu 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-pro-bionic?tab=overview)
-   * [Microsoft Windows Server 2022 Datacenter G2](https://az-vm-image.info/?cmd=--query+%22%5B%3Fcontains%28urnAlias%2C+%272022datacenter%27%29%5D%22)
-   * [Microsoft Windows Server 2019 Datacenter G2](https://az-vm-image.info/?cmd=--query+%22%5B%3Fcontains%28urnAlias%2C+%272019datacenter%27%29%5D%22)
+   - [Ubuntu 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-pro-bionic?tab=overview)
+   - [Microsoft Windows Server 2022 Datacenter G2](https://az-vm-image.info/?cmd=--query+%22%5B%3Fcontains%28urnAlias%2C+%272022datacenter%27%29%5D%22)
+   - [Microsoft Windows Server 2019 Datacenter G2](https://az-vm-image.info/?cmd=--query+%22%5B%3Fcontains%28urnAlias%2C+%272019datacenter%27%29%5D%22)
 
 2. Create a resource group for your VM.
 3. Configure the VM to allow ingress on the following:
 
-   * Port 22 for Linux for SSH login.
-   * Port 3389 if you want to run Windows builds and be able to RDP into your build VMs.
+   - Port 22 for Linux for SSH login.
+   - Port 3389 if you want to run Windows builds and be able to RDP into your build VMs.
    <!-- Port 9079 not required? -->
 
 4. Install Docker and Docker Compose on the VM.
@@ -54,7 +53,20 @@ These are the requirements to configure an Azure VM application, Entra ID app re
 
 5. [Create a VM application](https://learn.microsoft.com/en-us/azure/virtual-machines/vm-applications-how-to?tabs=portal#create-the-vm-application), and assign your VM app to the **Contributor** role for your Azure subscription.
 
-   For information about role assignment, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
+:::tip Uploading VM Application package to Azure Storage
+
+When creating a VM application in Azure (Step 5), Azure expects a source application package to be uploaded to a Storage Account. This package must be a ZIP file containing your install scripts or other assets required for VM provisioning.
+
+To do this:
+
+1. Prepare a ZIP archive with your required install script(s). For example, you might include a PowerShell script that installs the Drone runner.
+2. Upload this ZIP file to a Blob container in your Azure Storage Account.
+3. In the Azure portal, during the VM application creation process, you can either browse to the ZIP in your container or paste a Shared Access Signature (SAS) URL to reference it.
+
+For reference, see [Azure’s guide on creating VM applications](https://learn.microsoft.com/en-us/azure/virtual-machines/vm-applications-how-to#create-the-vm-application).
+
+For information about role assignment, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
+:::
 
 6. Go to [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/) and [register your VM application](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
 7. Assign your Azure VM to the **Owner** role for your VM application.
@@ -83,10 +95,8 @@ The `pool.yml` file defines the VM spec and pool size for the VM instances used 
 
 ### pool.yml examples
 
-
 <Tabs>
   <TabItem value="ubuntu" label="Ubuntu 18.04 pool.yml" default>
-
 
 ```yaml
 version: "1"
@@ -106,7 +116,7 @@ instances:
         subscription_id: XXXXXX ## Required for the runner to be able to create new VMs.
         tenant_id: XXXXXX ## Required for the runner to be able to create new VMs.
       location: eastus2 ## To minimize latency, use the same region as your Azure VM.
-      size : Standard_F2s
+      size: Standard_F2s
       tags:
         tagName: tag
       image: ## Azure VM image specs to use for build VMs.
@@ -118,46 +128,97 @@ instances:
         version: latest
 ```
 
-
 </TabItem>
   <TabItem value="windows" label="Windows Server 2022 pool.yml">
-
 
 ```yaml
 version: "1"
 instances:
-- name: ubuntu-azure
-  default: true
-  type: azure
-  platform:
-    os: windows
-  spec:
-    account:
-      client_id: XXXXXX ## Required for the runner to be able to create new VMs.
-      client_secret: XXXXX ## Required for the runner to be able to create new VMs.
-      subscription_id: XXXXXX ## Required for the runner to be able to create new VMs.
-      tenant_id: XXXXXX ## Required for the runner to be able to create new VMs.
-    location: eastus2 ## To minimize latency, use the same region as your Azure VM.
-    size: Standard_F2s
-    tags:
-      tagName: tag
-    image: ## Azure VM image specs to use for build VMs.
-      username: XXXXXXX
-      password: XXXXXXX
-      publisher: MicrosoftWindowsServer
-      offer: WindowsServer
-      sku: 2022-datacenter-g2
-      version: latest
+  - name: ubuntu-azure
+    default: true
+    type: azure
+    platform:
+      os: windows
+    spec:
+      account:
+        client_id: XXXXXX ## Required for the runner to be able to create new VMs.
+        client_secret: XXXXX ## Required for the runner to be able to create new VMs.
+        subscription_id: XXXXXX ## Required for the runner to be able to create new VMs.
+        tenant_id: XXXXXX ## Required for the runner to be able to create new VMs.
+      location: eastus2 ## To minimize latency, use the same region as your Azure VM.
+      size: Standard_F2s
+      tags:
+        tagName: tag
+      image: ## Azure VM image specs to use for build VMs.
+        username: XXXXXXX
+        password: XXXXXXX
+        publisher: MicrosoftWindowsServer
+        offer: WindowsServer
+        sku: 2022-datacenter-g2
+        version: latest
 ```
-
 
 </TabItem>
 </Tabs>
 
-
 ### Pool settings reference
 
 You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Azure drivers](https://docs.drone.io/runner/vm/drivers/azure/).
+
+#### user data example
+
+Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration. Refer to the [user data examples for supported runtime environments](https://github.com/drone-runners/drone-runner-aws/tree/master/app/cloudinit/user_data).
+
+Below is a sample `pool.yml` for GCP with `user_data` configuration:
+
+```yaml
+version: "1"
+instances:
+  - name: linux-amd64
+    type: google
+    pool: 1
+    limit: 10
+    platform:
+      os: linux
+      arch: amd64
+    spec:
+      account:
+        project_id: YOUR_PROJECT_ID
+        json_path: PATH_TO_SERVICE_ACCOUNT_JSON
+      image: IMAGE_NAME_OR_PATH
+      machine_type: e2-medium
+      zones:
+        - YOUR_GCP_ZONE # e.g., us-central1-a
+      disk:
+        size: 100
+      user_data: |
+        #cloud-config
+        {{ if and (.IsHosted) (eq .Platform.Arch "amd64") }}
+        packages: []
+        {{ else }}
+        apt:
+          sources:
+            docker.list:
+              source: deb [arch={{ .Platform.Arch }}] https://download.docker.com/linux/ubuntu $RELEASE stable
+              keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+        packages: []
+        {{ end }}
+        write_files:
+          - path: {{ .CaCertPath }}
+            path: {{ .CertPath }}
+            permissions: '0600'
+            encoding: b64
+            content: {{ .TLSCert | base64 }}
+          - path: {{ .KeyPath }}
+        runcmd:
+          - 'set -x'
+          - |
+            if .ShouldUseGoogleDNS; then
+              echo "DNS=8.8.8.8 8.8.4.4\nFallbackDNS=1.1.1.1 1.0.0.1\nDomains=~." | sudo tee -a /etc/systemd/resolved.conf
+              systemctl restart systemd-resolved
+            fi
+          - ufw allow 9079
+```
 
 :::info
 
@@ -165,13 +226,13 @@ The `account` settings (`client_id`, `client_secret`, `subscription_id`, and `te
 
 :::
 
-| Setting | Type | Example | Description |
-| ------- | ---- | ------- | ----------- |
-| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure). |
-| `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
-| `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
-| `platform` | Key-value pairs, strings | `platform: os: linux arch: amd64 variant: VERSION` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional. |
-| `spec` | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples). | Configure settings for the build VMs.<ul><li>`account`: Provide Azure account settings the runner needs to create new VMs:<ul><li>`client_id`: Your VM application's client ID from the Entra ID app registration. To find the client ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Application (client) ID** on the **Overview** page.</li><li>`client_secret`: To create a client secret, go to your app in Entra ID, and then select **Certificates and Secrets**.</li><li>`subscription_id`: The Azure subscription ID where your VM application is a Contributor.</li><li>`tenant_id`: Your Entra directory ID. To find the tenant ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Directory (tenant) ID** on the **Overview** page.</li></ul></li><li>`image`: The image type to use for the build VM. You can use your own custom-created image or use one from the [Azure VM image list](https://az-vm-image.info/).</li><li>`location`: The Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.</li><li>`size`: The Azure VM size.</li><li>`tag`: You can add an optional tag to identify build VMs.</li><li>`disk`: You can provide the `size` (as an integer representing GB) and `type` (as a string)</li></ul> |
+| Setting    | Type                     | Example                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---------- | ------------------------ | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`     | String                   | `name: windows_pool`                               | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `pool`     | Integer                  | `pool: 1`                                          | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `limit`    | Integer                  | `limit: 3`                                         | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `platform` | Key-value pairs, strings | `platform: os: linux arch: amd64 variant: VERSION` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `spec`     | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples).      | Configure settings for the build VMs.<ul><li>`account`: Provide Azure account settings the runner needs to create new VMs:<ul><li>`client_id`: Your VM application's client ID from the Entra ID app registration. To find the client ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Application (client) ID** on the **Overview** page.</li><li>`client_secret`: To create a client secret, go to your app in Entra ID, and then select **Certificates and Secrets**.</li><li>`subscription_id`: The Azure subscription ID where your VM application is a Contributor.</li><li>`tenant_id`: Your Entra directory ID. To find the tenant ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Directory (tenant) ID** on the **Overview** page.</li></ul></li><li>`image`: The image type to use for the build VM. You can use your own custom-created image or use one from the [Azure VM image list](https://az-vm-image.info/).</li><li>`location`: The Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.</li><li>`size`: The Azure VM size.</li><li>`tag`: You can add an optional tag to identify build VMs.</li><li>`disk`: You can provide the `size` (as an integer representing GB) and `type` (as a string)</li></ul> |
 
 ## Start the runner
 
@@ -198,7 +259,6 @@ The runner includes lite engine, and the lite engine process triggers VM startup
 Firewall restrictions can prevent the script from downloading these dependencies. Make sure your images don't have firewall or anti-malware restrictions that are interfering with downloading the dependencies.
 
 :::
-
 
 ## Install the delegate
 
@@ -237,11 +297,11 @@ For more information about delegates and delegate installation, go to [Delegate 
 
 1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
-	 ```
-	 $ docker ps
-	 $ docker logs DELEGATE_CONTAINER_ID
-	 $ docker logs RUNNER_CONTAINER_ID
-	 ```
+   ```
+   $ docker ps
+   $ docker logs DELEGATE_CONTAINER_ID
+   $ docker logs RUNNER_CONTAINER_ID
+   ```
 
 2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
 
@@ -256,7 +316,6 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
-
 1. In Harness, go to the CI pipeline that you want to use the Azure VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
 3. Select **VMs**.
@@ -269,7 +328,6 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 ```yaml
     - stage:
@@ -329,12 +387,14 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 </details>
 
+<CustomCAcert/>
+
 ## Troubleshoot self-managed VM build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
+Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
 
-* [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
-* [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
-* [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
-* [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
-* [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+- [Can I use the same build VM for multiple CI stages?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-use-the-same-build-vm-for-multiple-ci-stages)
+- [Why are build VMs running when there are no active builds?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#why-are-build-vms-running-when-there-are-no-active-builds)
+- [How do I specify the disk size for a Windows instance in pool.yml?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
+- [Clone codebase fails due to missing plugin](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#clone-codebase-fails-due-to-missing-plugin)
+- [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

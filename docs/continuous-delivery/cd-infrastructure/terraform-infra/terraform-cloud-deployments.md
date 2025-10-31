@@ -153,8 +153,6 @@ You can review and approve or reject the refresh plan either within Harness (usi
 If no approval action is taken within the configured timeout, the pipeline fails and the run is marked as expired.
 
 :::note
-Currently, this feature is behind the feature flag `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 This features requires delegate version `857xx` or later.
 :::
 
@@ -221,10 +219,6 @@ Select the Terraform Cloud organization that includes the workspace you want to 
 ## Project (optional)
 
 Select the **Project** that includes the workspace you want to run. 
-
-:::note
-Currently, adding a project is behind the feature flag `CDS_TF_PROJECTS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 This field is **optional**. If you populate it, the list of workspaces in the dropdown will be filtered to show only those associated with the selected project. 
 
@@ -327,7 +321,9 @@ cat <+policyChecksJson."id">
 Harness now fetches and evaluates **Open Policy Agent (OPA)** policies alongside **Sentinel** policies in your Terraform Cloud Run step. 
 
 :::note
-Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. This feature needs delegate version `858xx` or above.
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ### Behavior

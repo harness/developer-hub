@@ -1,5 +1,5 @@
 {
-    "label":"For AWS RDS Standard RIs",
+    "label":"AWS RDS (Beta)",
     "position": 4,
     "collapsible":"true",
     "collapsed":"true",

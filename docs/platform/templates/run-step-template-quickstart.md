@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 The Harness Template Library enables you to standardize and create step templates that can be re-used across pipelines and teams that use Harness.
 
-To demonstrate how to create, configure, and use step templates, this topic adds a CD Run step template to a [CD pipeline](/docs/category/cd-and-gitops-tutorials). You can also create templates for [CI Run steps](/docs/continuous-integration/use-ci/run-step-settings) or any other step type in Harness.
+To demonstrate how to create, configure, and use step templates, this topic adds a CD Run step template to a [CD pipeline](/docs/category/cd-tutorials). You can also create templates for [CI Run steps](/docs/continuous-integration/use-ci/run-step-settings) or any other step type in Harness.
 
 This topic assumes you're familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts).
 

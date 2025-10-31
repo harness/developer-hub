@@ -7,7 +7,7 @@ redirect_from:
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications
 ---
 
-When you run a scan, the security step generates a set of [output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables) that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. This topic describes how to set up automatic notifications based on these variables.
+When you run a scan, the security step generates a set of [output variables](/docs/security-testing-orchestration/key-concepts/output-variables) that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. This topic describes how to set up automatic notifications based on these variables.
 
 In this workflow, you add an Email step that sends a notification whenever the previous scan step finishes successfully.
 

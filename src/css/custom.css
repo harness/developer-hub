@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Geist:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 @import 'fontawesome/css/fontawesome.min.css';
 @import 'fontawesome/css/solid.min.css';
 @import 'fontawesome/css/regular.min.css';
@@ -233,9 +236,9 @@
 
   /* Module Colors/Feature Management & Experimentation/300 */
   --mod-fme-300: #6938c0;
- /* Module Colors/Feature Management & Experimentation/300 */
+  /* Module Colors/Feature Management & Experimentation/300 */
   --mod-fme-200: #8b73ce;
- /* Module Colors/Feature Management & Experimentation/300 */
+  /* Module Colors/Feature Management & Experimentation/300 */
   --mod-fme-100: #f6f1ff;
 
   --mod-sto-300: #1947ec;
@@ -310,11 +313,11 @@
   --mod-fme-200: var(--purple-400);
   --mod-fme-100: var(--purple-100);
 
-  /* Module Colors/Incident Response */
+  /* Module Colors/AI SRE */
   /* Change this later */
-  --mod-ir-300: #cd0056;
-  --mod-ir-200: #ff368a;
-  --mod-ir-100: #ffa1cb;
+  --mod-aisre-300: #cd0056;
+  --mod-aisre-200: #ff368a;
+  --mod-aisre-100: #ffa1cb;
 
   /* ----- */
   --ifm-link-decoration: none;
@@ -335,9 +338,14 @@
   --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
   --ifm-navbar-height: 4.25rem;
 
-  --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  --harness-font-family: Geist, Inter, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji' !important;
+
+  --ifm-heading-font-family: Cal sans, sans-serif, Inter;
+  --ifm-heading-font-weight: 600;
+  --ifm-heading-line-height: 120%;
+  --ifm-heading-color: var(--gray-800);
 
   /* here */
   --ifm-color-content-light: var(--gray-800);
@@ -358,6 +366,14 @@
   --coveo-card-bg: rgba(255, 255, 255);
   --link-color: #0278d5;
   --link-color-hover: #0059b3;
+}
+button {
+  font-family: Cal sans, sans-serif, Inter !important;
+  letter-spacing: 0.5px;
+}
+
+.admonitionHeading_Gvgb {
+  letter-spacing: 0.5px;
 }
 
 /* darkmode css */
@@ -381,13 +397,13 @@ summary {
 }
 /* logo-hdh-dark-theme.svg */
 html[data-theme='dark'] .navbar .navbar__logo {
-  /* content: url('/img/logo-hdh-dark-theme.svg'); */
-  content: url('/img/logo_pride_dark.svg');
+  content: url('/img/logo-hdh-dark-theme.svg');
+  /* content: url('/img/logo_pride_dark.svg'); */
 }
 /* logo_dlp.svg */
 html[data-theme='light'] .navbar .navbar__logo {
-  /* content: url('/img/logo_dlp.svg'); */
-  content: url('/img/logo_pride.svg');
+  content: url('/img/logo_dlp.svg');
+  /* content: url('/img/logo_pride.svg'); */
 }
 
 html[data-theme='dark'] .CoveoSearchbox .magic-box {
@@ -461,18 +477,26 @@ html *:before,
 html *:after {
   box-sizing: inherit;
 }
+.footer__title {
+  font-family: 'Cal sans';
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
 
 body {
   font-family: var(--harness-font-family) !important;
   background-color: var(--background-color);
 }
-
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500 !important;
+  letter-spacing: 0.5px;
+}
 a:hover {
   color: var(--ifm-color-primary-light);
-}
-h2 {
-  display: flex;
-  align-items: center;
 }
 
 .button--cta,
@@ -483,37 +507,41 @@ h2 {
   font-size: 16px;
   line-height: 24px;
   color: var(--white);
+  font-weight: 500;
 }
 
 .button--nav {
   background-color: var(--white);
   border: 1px solid var(--primary-7);
   color: var(--primary-7);
-  /* margin-right: -0.75rem; */
-  font-weight: 600;
   font-size: 16px;
   line-height: 24px;
+  font-weight: 500;
 }
 .btn-nav {
   margin: 8px 0px 8px 12px;
+  font-weight: 500;
 }
 
 .button--nav:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
   color: white;
+  font-weight: 500;
 }
 .button--cta:hover,
 .button--primary:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
   color: white;
+  font-weight: 500;
 }
 
 .button--primary {
   height: 48px;
   padding-left: 2em;
   padding-right: 2em;
+  font-weight: 500;
 }
 
 /* style overwriting temporarily for the beta icon */
@@ -658,6 +686,21 @@ details summary::before {
 .color-opensource {
   color: var(--mod-opensource-200);
 }
+/* ========== ToC (Table of Contents) ========== */
+.table-of-contents {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.05rem;
+  font-size: 0.80rem;
+  margin-bottom: 0.5rem;
+}
+
+.table-of-contents strong {
+  display: block;
+  margin-bottom: 0.05rem;
+  color: #111827;
+  font-weight: 600;
+}
 
 .table-of-contents ul li span[class*='color-'] {
   color: unset;
@@ -669,6 +712,57 @@ details summary::before {
 
 .theme-doc-markdown h3 > img {
   margin-right: 0.2em;
+}
+
+/* A Title to ToC */
+/* ================= Light Mode ================= */
+.theme-doc-toc-desktop {
+  padding: 1rem;
+  background: #f9fafb; /* light gray */
+  border-radius: 8px;
+}
+
+.theme-doc-toc-desktop:before {
+  content: "On this page";
+  font-weight: 600;
+  display: block;
+  color: #1f2937; /* gray-900 */
+  margin-bottom: 0.5rem;
+}
+
+.table-of-contents {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.table-of-contents li,
+.table-of-contents li a {
+  color: #1f2937; /* dark text */
+}
+
+/* ================= Dark Mode ================= */
+html[data-theme='dark'] .theme-doc-toc-desktop {
+  background: #111827; /* near-black background */
+}
+
+html[data-theme='dark'] .theme-doc-toc-desktop:before {
+  color: #f9fafb; /* white title */
+}
+
+html[data-theme='dark'] .table-of-contents {
+  background-color: #1f2937; /* dark gray background */
+}
+
+html[data-theme='dark'] .table-of-contents li,
+html[data-theme='dark'] .table-of-contents li a {
+  color: #e5e7eb; /* light gray text */
+}
+
+html[data-theme='dark'] .table-of-contents li a:hover {
+  color: #38bdf8; /* optional: sky-400 for hover */
 }
 
 /* hide the algolia logo
@@ -759,6 +853,7 @@ aside nav.menu > ul > li > ul > li > a {
   font-size: 13px;
   line-height: 20px;
   font-weight: 600;
+  padding: 8;
 }
 
 aside nav.menu > ul > li > ul > li ul > li > div > a,
@@ -796,16 +891,17 @@ a.card p.text--truncate {
 .horizontal-bar {
   margin-top: 15px;
   padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
-  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
+  font-family: 'Cal sans';
+  letter-spacing: 0.5px;
 }
 
 html[data-theme='light'] .horizontal-bar {
   border-top: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;
   background-color: #effbff;
-  color: #b0b1c1;
+  color: var(--gray-600);
 }
 
 html[data-theme='dark'] .horizontal-bar {
@@ -1113,7 +1209,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1124,7 +1220,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_code.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1135,7 +1231,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ci.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1146,7 +1242,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_artifact_registry.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1157,7 +1253,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/logo-ata.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1169,7 +1265,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_cd.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1181,7 +1277,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/cde_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1192,7 +1288,7 @@ figure p {
   display: inline-block;
   min-height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_iacm.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1203,7 +1299,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ff.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1214,7 +1310,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_fme.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1225,7 +1321,7 @@ figure p {
   display: inline-block;
   min-height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_dbdevops.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1236,8 +1332,41 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ccm.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-asp > div > a::before,
+.sidebar-asp > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-api-security-posture.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-arp > div > a::before,
+.sidebar-arp > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-api-runtime-protection.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ast > div > a::before,
+.sidebar-ast > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-api-security-testing.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1247,7 +1376,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_sto.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1258,7 +1387,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ssca.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1269,18 +1398,18 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ce.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ir > div > a::before,
-.sidebar-ir > a::before {
+.sidebar-aisre > div > a::before,
+.sidebar-aisre > a::before {
   content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon-ir.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1291,7 +1420,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_srm.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1302,7 +1431,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_cet.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1313,7 +1442,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_idp.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1324,7 +1453,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_sei.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1335,8 +1464,19 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-hsf > div > a::before,
+.sidebar-hsf > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_platform.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1346,7 +1486,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/Harness_FirstGen_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1357,7 +1497,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/Troubleshooting_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1368,7 +1508,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/API_Reference_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1379,7 +1519,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/Release_Notes_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1390,7 +1530,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/Cloud_Operations_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1401,7 +1541,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/faqs_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1413,7 +1553,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/All_Docs_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1425,7 +1565,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/armory.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1437,7 +1577,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/reference_architectures_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1449,7 +1589,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1469,8 +1609,20 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/roadmap_icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-university > div > a::before,
+.sidebar-university > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/university_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1481,8 +1633,20 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/ilt_instructions_icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-hsf > div > a::before,
+.sidebar-hsf > a::before {
+  content: ' ';                                                     
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-hsf.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1493,7 +1657,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/virtual_instructor_led_calendar_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1505,7 +1669,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/back_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1517,7 +1681,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/show_all_kb_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1529,8 +1693,64 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/university_icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-ce-new > div > a::before,
+.sidebar-ce-new > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_ce.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-application-api-protection > div > a::before,
+.sidebar-application-api-protection > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-arp.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-application-api-security-testing > div > a::before,
+.sidebar-application-api-security-testing > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-ast.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-application-api-posture-management > div > a::before,
+.sidebar-application-api-posture-management > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-adra.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-tbh > div > a::before,
+.sidebar-tbh > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_tbh.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1574,8 +1794,8 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 .feature-management--experimentation:hover {
   border-color: var(--mod-fme-200) !important;
 }
-.incident-response:hover {
-  border-color: var(--mod-ir-200) !important;
+.ai-sre:hover {
+  border-color: var(--mod-aisre-200) !important;
 }
 .infrastructure-as-code-management:hover {
   border-color: var(--mod-iacm-200) !important;
@@ -1604,6 +1824,15 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 .supply-chain-security:hover {
   border-color: var(--mod-ssca-200) !important;
 }
+.application-api-posture-management:hover {
+  border-color: var(--mod-sto-200) !important;
+}
+.application-api-security-testing:hover {
+  border-color: var(--mod-sto-200) !important;
+}
+.application-api-protection:hover {
+  border-color: var(--mod-sto-200) !important;
+}
 
 /*** /docs  cards css end ****/
 
@@ -1620,4 +1849,207 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   .navbar__items {
     font-size: 15px;
   }
+}
+
+/* Dropdown section headers */
+.navbar .dropdown__menu .dropdown__section-header {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-700);
+  background-color: #EEFBFF;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  box-sizing: border-box;
+}
+
+/* Dark mode header appearance */
+html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
+  color: var(--ifm-color-content);                       /* light text */
+  background-color: rgba(61, 199, 246, 0.12);            /* tint of primary-4 (#3dc7f6) */
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Remove top border on very first header (keeps dropdown clean at top) */
+.navbar .dropdown__menu .dropdown__section-header:first-of-type {
+  border-top: none;
+  margin-top: 4px;
+}
+
+/* Optional: Remove hover feedback since headers are static text */
+.navbar .dropdown__menu .dropdown__section-header:hover {
+  background-color: #EEFBFF;
+  cursor: default;
+}
+
+/* Ensure headers don’t get icon spacing */
+.navbar .dropdown__menu .dropdown__section-header::before {
+  content: none !important;
+}
+
+/* Ensure docs dropdown links are aligned with icon */
+.navbar .dropdown__link[href^="/docs/"] {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .dropdown__link[href^="/docs/"]::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: no-repeat center / contain;
+  background-image: var(--nav-icon, none);
+}
+
+/* === Navbar Documentation dropdown icons (initial set) === */
+/* Not categorized */
+.navbar .dropdown__link[href*="/docs/platform"]{ --nav-icon: url('/img/icon_platform.svg'); }
+.navbar .dropdown__link[href*="/docs/code-repository"]{ --nav-icon: url('/img/icon_code.svg'); }
+.navbar .dropdown__link[href*="/docs/continuous-error-tracking"]{ --nav-icon: url('/img/icon_cet.svg'); }
+/* AI for DevOps & Automation */
+.navbar .dropdown__link[href*="/docs/continuous-delivery"]{ --nav-icon: url('/img/icon_cd.svg'); }
+.navbar .dropdown__link[href*="/docs/continuous-integration"]{ --nav-icon: url('/img/icon_ci.svg'); }
+.navbar .dropdown__link[href*="/docs/internal-developer-portal"]{ --nav-icon: url('/img/icon_idp.svg'); }
+.navbar .dropdown__link[href*="/docs/infrastructure-as-code-management"]{ --nav-icon: url('/img/icon_iacm.svg'); }
+.navbar .dropdown__link[href*="/docs/database-devops"]{ --nav-icon: url('/img/icon_dbdevops.svg'); }
+.navbar .dropdown__link[href*="/docs/artifact-registry"]{ --nav-icon: url('/img/icon-ar.svg'); }
+.navbar .dropdown__link[href*="/docs/cloud-development-environments"]{ --nav-icon: url('/img/icon-cde.svg'); }
+
+/* AI for Testing & Resilience */
+.navbar .dropdown__link[href*="/docs/feature-management-experimentation"]{ --nav-icon: url('/img/icon_fme.svg'); }
+.navbar .dropdown__link[href*="/docs/feature-flags"]{ --nav-icon: url('/img/icon_ff.svg'); }
+.navbar .dropdown__link[href*="/docs/chaos-engineering"]{ --nav-icon: url('/img/icon_ce.svg'); }
+.navbar .dropdown__link[href*="/docs/ai-test-automation"]{ --nav-icon: url('/img/logo-ata.svg'); }
+.navbar .dropdown__link[href*="/docs/ai-sre"]{ --nav-icon: url('/img/icon-ir.svg'); }
+.navbar .dropdown__link[href*="/docs/service-reliability-management"]{ --nav-icon: url('/img/icon_srm.svg'); }
+
+/* AI for Security & Compliance */
+.navbar .dropdown__link[href*="/docs/appsec-security-posture"]{ --nav-icon: url('/img/icon-arp.svg'); }
+.navbar .dropdown__link[href*="/docs/appsec-runtime-protection"]{ --nav-icon: url('/img/icon-api-runtime-protection.svg'); }
+.navbar .dropdown__link[href*="/docs/appsec-security-testing"]{ --nav-icon: url('/img/icon-ast.svg'); }
+.navbar .dropdown__link[href*="/docs/security-testing-orchestration"]{ --nav-icon: url('/img/icon_sto.svg'); }
+.navbar .dropdown__link[href*="/docs/software-supply-chain-assurance"]{ --nav-icon: url('/img/icon_ssca.svg'); }
+
+/* AI for Cost & Optimization */
+.navbar .dropdown__link[href*="/docs/cloud-cost-management"]{ --nav-icon: url('/img/icon_ccm.svg'); }
+.navbar .dropdown__link[href*="/docs/software-engineering-insights"]{ --nav-icon: url('/img/icon_sei.svg'); }
+
+/* Exceptions: links that should not display icons or spacing */
+.navbar .dropdown__link[href*="/docs/open-source"]::before,
+.navbar .dropdown__link[href*="/docs/self-managed-enterprise-edition"]::before,
+.navbar .dropdown__link[href*="/docs/faqs"]::before,
+.navbar .dropdown__link[href*="/docs/troubleshooting"]::before,
+.navbar .dropdown__link[href*="/docs/harness-cloud-operations"]::before
+{
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin-right: 0 !important;
+  background: none !important;
+}
+
+/* Hide sidebar categories that are only for navigation context */
+.sidebar-hidden {
+  display: none !important;
+}
+
+/* ============ Reusable NEW Badge System ============ */
+/*
+ * HOW TO USE:
+ * Add `className: "sidebar-item-new"` to any sidebar item in sidebars.ts
+ * to automatically show a blue NEW badge with pulse animation.
+ * 
+ * Example:
+ * {
+ *   type: "category",
+ *   label: "Your Feature Name",
+ *   className: "sidebar-item-new",  // <-- Add this line
+ *   // ... rest of your config
+ * }
+ */
+/* Target only the main category link, not nested sub-items */
+.sidebar-item-new > .menu__list-item-collapsible > .menu__link {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.sidebar-item-new > .menu__list-item-collapsible > .menu__link::after {
+  content: 'NEW';
+  background: linear-gradient(135deg, #0278d5, #00ade4);
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: auto;
+  box-shadow: 0 2px 4px rgba(2, 120, 213, 0.3);
+  animation: newBadgePulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Subtle pulse animation for NEW badge */
+@keyframes newBadgePulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+/* Dark mode support */
+[data-theme='dark'] .sidebar-item-new > .menu__list-item-collapsible > .menu__link::after {
+  background: linear-gradient(135deg, #3dc7f6, #00ade4);
+  box-shadow: 0 2px 4px rgba(61, 199, 246, 0.4);
+}
+
+.sidebar-item-beta > .menu__list-item-collapsible > .menu__link {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.sidebar-item-beta > .menu__list-item-collapsible > .menu__link::after {
+  content: 'BETA';
+  background: linear-gradient(135deg, #5a00cc, #ff00cc);
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: auto;
+  box-shadow: 0 2px 6px rgba(161, 0, 255, 0.4);
+  animation: betaBadgePulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes betaBadgePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(0.97);
+  }
+}
+
+[data-theme='dark'] .sidebar-item-beta > .menu__list-item-collapsible > .menu__link::after {
+  background: linear-gradient(135deg, #c458ff, #ff66e8);
+  box-shadow: 0 2px 6px rgba(255, 102, 232, 0.5);
 }

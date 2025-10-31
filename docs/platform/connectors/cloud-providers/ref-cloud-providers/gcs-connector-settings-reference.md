@@ -7,6 +7,7 @@ helpdocs_category_id: 1ehb4tcksy
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+import IssuerURI from '/docs/continuous-integration/shared/issueruri.md'
 
 Use a Harness Google Cloud Platform (GCP) connector to integrate GCP with Harness. Use GCP with Harness to obtain artifacts, communicate with GCP services, provision infrastructure, deploy microservices, and manage other workloads.
 
@@ -42,7 +43,7 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 
 For more information, go to the GCP [Artifact registry roles reference](https://cloud.google.com/iam/docs/understanding-roles#artifact-registry-roles).
 
-Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md).
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GAR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md).
 
 ### GAR role requirements
 
@@ -124,25 +125,59 @@ Select the **Connect through Harness Delegate for OIDC** option to allow Harness
 
 To connect to GCP with OIDC, you must configure an [OIDC identity provider](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-providers) GCP and connect the service account with relevant permissions that Harness will use to operate in GCP. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
 
-   * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`
+   * Harness OIDC Issuer provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`.  See below for more details about the Issuer URL format, depending on the environment cluster for your Harness Account.
    * OIDC audience: `https://iam.googleapis.com/projects/<GCP_PROJECT_NUMBER>/locations/global/workloadIdentityPools/<POOL_ID>/providers/<WORKLOAD_PROVIDER_ID>`
 
-If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+When accessing Google Cloud resources, use [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short-term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+
+<IssuerURI />
+
+##### Workload Identity Federation Field Requirements
+
+When configuring the GCP connector with OIDC, pay careful attention to the field formats:
+
+:::important Field Format Requirements
+
+- **Workload Pool ID**: Enter only the pool name (e.g., `harness-pool`), not the full resource path
+- **Provider ID**: Enter only the provider name (e.g., `harness-provider`), not the full resource path
+- **Project Number**: Use the numeric project number, not the project ID
+
+:::
+
+**Correct Format Examples:**
+- Workload Pool ID: `harness-pool`
+- Provider ID: `harness-provider`
+- Project Number: `421331508843`
+
+**Incorrect Format Examples (will cause errors):**
+- Workload Pool ID: `projects/421331508843/locations/global/workloadIdentityPools/harness-pool`
+- Provider ID: `projects/421331508843/locations/global/workloadIdentityPools/harness-pool/providers/harness-provider`
+
+Using full resource paths will result in duplication errors like:
+```
+"OIDC Configuration Error: Error encountered while obtaining OIDC Access Token from STS for Aud //iam.googleapis.com/projects/.../workloadIdentityPools/projects/..."
+```
+
+##### Finding Your WIF Values in GCP Console
+
+To locate the correct values in the Google Cloud Console:
+
+1. Navigate to **IAM & Admin** > **Workload Identity Federation**
+2. Select your workload identity pool
+3. Copy the **Pool ID** (name only, not the full path)
+4. Click on your identity provider
+5. Copy the **Provider ID** (name only, not the full path)
+6. The **Project Number** can be found in the project selector dropdown or project settings
 
 #### Enable Cross-Project Access
 
-You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+You can have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. The connector allows access to multiple GCP projects.
 
-:::note
-Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
-Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
+This feature is supported when GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
 
 **Project Selection Flow**:
-    * With the **feature flag enabled**, the system will query the list of GCP projects accessible via the connector.
-    * The user will be prompted to select the target project (e.g., project2), in addition to the original project (project1).
+    * The system queries the list of GCP projects accessible via the connector.
+    * You can select the target project (e.g., project2), in addition to the original project (project1).
     * With both project values, relevant APIs will be invoked in the workflow using both projects.
 
 **Configuring the Project at the Infrastructure Level**
@@ -152,12 +187,40 @@ To configure the **Project** at the infrastructure level, follow these steps:
 1. Navigate to **Project Settings** -> **Environment**, and select your desired Kubernetes environment.
 2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** or **Helm Native** and **Infrastructure Type** as **Google Kubernetes Engine**.
 3. In the **Cluster Details** section:
-  - For the **Connector**: Select the previously configured GCP OIDC cluster with the **feature flag enabled**. 
+  - For the **Connector**: Select the previously configured GCP connector. 
   - **Project (optional)**: Select the Project you want to use in dropdown
   - **Cluster**: The cluster dropdown will list all the cluster associated with the selected project
   - **Namespace**: Enter the target namespace in target cluster.
 
 For more detailed instructions on using this for a Kubernetes infrastructure, refer to [Google Kubernetes Engine (GKE) for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#google-kubernetes-engine-gke).
+
+### OIDC claims supported in Harness
+
+**Trusted Claims:**
+
+  - Harness validates the following claims internally to determine if the principal has the required permissions. When configuring trust on the Cloud Provider side, only these specific claims and their exact values should be accepted. Any claims outside this list must be rejected to avoid unauthorized access.
+    * `accountId`
+    * `organizationId`
+    * `projectIdentifier`
+    * `pipelineIdentifier`
+
+  - The following claims are validated for existence in Harness, but do not include an access check:
+    * `environmentIdentifier`
+    * `connectorIdentifier`
+    * `serviceIdentifier`
+
+**Non-Trusted Claims**
+
+  - The following claims are considered non-trusted. They are not validated for existence or access control and are used for informational context only:
+
+    * `environmentType`
+    * `connectorName`
+    * `serviceName`
+    * `triggeredByName`
+    * `triggerByEmail`
+    * `stageType`
+    * `stepType`
+    * `context`
 
 #### Custom Parameters 
 

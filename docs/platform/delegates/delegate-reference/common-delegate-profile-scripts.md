@@ -1,7 +1,8 @@
 ---
 title: Common delegate initialization scripts
-description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature in coming soon. This topic provides information on script availability and som…
-sidebar_position: 2
+description: Learn about delegate initialization scripts for installing applications and running commands on delegate pods, hosts, and containers.
+sidebar_label: Delegate Profile Scripts
+sidebar_position: 4
 helpdocs_topic_id: auveebqv37
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false
@@ -130,26 +131,4 @@ Harness supports Cloud Foundry (CF) CLI version 7 only. Below is an example of C
 
 For example, if you are using buildpacks in the `manifest.yml` file of your Harness service, the CLI you install on the delegate must be the same version or later.
 
-The following example script installs Cloud Foundry CLI on a delegate:
-
-```
-wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo
-
-microdnf -y install cf-cli
-```
-The `-y` parameter is needed for a prompt.
-
-When the script has been applied and you click the timestamp for the Delegate the output will be similar to this:
-
-```
-Running transaction
-  Installing : cf-cli-6.46.1-1.x86_64                                       1/1
-  Verifying  : cf-cli-6.46.1-1.x86_64                                       1/1
-
-Installed:
-  cf-cli.x86_64 0:6.46.1-1
-
-Complete!
-```
-
-For information on installing the CLI on different distributions, go to [Installing the cf CLI](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/install-go-cli.html) from PCF.
+In order to install the PCF CLI, follow their [installation instructions](https://github.com/cloudfoundry/cli/wiki/V7-CLI-Installation-Guide) for Debian and Ubuntu distributions.

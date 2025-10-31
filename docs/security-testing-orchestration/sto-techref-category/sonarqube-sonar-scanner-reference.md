@@ -9,42 +9,66 @@ helpdocs_is_private: false
 helpdocs_is_published: truex
 ---
 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
- You can run scans and ingest results from [SonarQube](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+Harness STO integrates with [SonarQube](https://docs.sonarqube.org/latest/) to scan your code repositories for vulnerabilities, enforce policies, and maintain code quality. The SonarQube step supports all the three STO scan modes: **Orchestration**, **Ingestion**, and **Extraction**.
 
-<DocVideo src="https://www.youtube.com/embed/qP0TUQuTSfI?si=yzQslx3sXdQjXWTi" /> 
+**Language Support**: All languages supported by SonarQube are compatible. Refer to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/) for prerequisites specific to your repository's language.
 
-## Important notes for running SonarQube scans in STO
+<DocVideo src="https://www.youtube.com/embed/qP0TUQuTSfI?si=yzQslx3sXdQjXWTi" />
 
-* STO supports repository scanning only for SonarQube.
-* STO supports all languages supported by SonarQube.
-* Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
-  For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
-* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube step. 
-* You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
-* You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+### SonarQube Issue categorization in STO
 
-### Root access requirements 
+STO categorizes the SonarQube issues with severities: **Critical**, **High**, **Medium**, **Low**, and **Info**, refer to [STO severity levels](/docs/security-testing-orchestration/key-concepts/severities) for more details. The table below outlines how specific SonarQube issue types are classified in STO.
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+| SonarQube Issue Type        | STO Categorization                                                        |
+|-----------------------------|-----------------------------------------------------------------------------------|
+| Vulnerabilities         | Imported, normalized, deduplicated and assigned [STO severity levels](/docs/security-testing-orchestration/key-concepts/severities). See [severity mapping table](#sonarqube-severity-mapping) below.            |
+| Code Smells, Bug Smells | By default, imported and categorized under **Info** severity. <br/> If you enable the **Treat Code Smells and Bug Smells as Vulnerabilities** in **Default Settings** at Account level Settings (disabled by default), STO imports these issues with their original severities. See [severity mapping table](#sonarqube-severity-mapping) below. |
+| Maintainability issues| Imported and categorized under **Info** severity.                                   |
+| [Quality Gates (Policies)](#view-sonarqube-quality-gate-failures)| Imported and categorized as policy issues with **Info** severity.                   |
+| [Code Coverage](#view-sonarqube-code-coverage-results)           | Imported as both a step output variable and a policy issue with **Info** severity.  |
+| Hotspots                | Currently not supported by STO.                                                   |
 
-<StoRootRequirements />
+<a name="sonarqube-severity-mapping"></a>
+### SonarQube Severity Mapping
 
+When STO imports SonarQube issues, it maps the SonarQube severity levels to the STO severity levels as follows:
 
-### For more information
+| SonarQube Severity | STO Severity     |
+| :-------------- | :------------ |
+| INFO          | Info|
+| MINOR         | Low         |
+| MAJOR         | Medium      |
+| CRITICAL      | High        |
+| BLOCKER       | Critical    |
+
+### Step configuration guidelines
+
+Use the following guidelines when configuring and running SonarQube scans in STO:
+
+#### Resource Allocation
+  - By default, STO allocates **500Mi memory** for SonarQube scans, suitable primarily for Ingestion scans.
+  - For Orchestration and Extraction scans, allocate at least **2GB memory**. Customize resource limits per [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources).
+
+#### Certificates and Root Access
+  - Run scans with root access if adding trusted certificates at runtime.
+  - Alternatively, configure STO images and pipelines to run as non-root users and manage self-signed certificates. For details, see [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+
+:::info
+STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates-in-sto).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
-
 <StoMoreInfo />
+:::
 
-## SonarQube step settings for STO scans
+## SonarQube step settings
 
 
 The recommended workflow is to add a SonarQube step to a Security or Build stage and then configure it as described below.
@@ -462,4 +486,3 @@ If SonarQube doesn't scan both the main branch and pull request (PR) branches wi
 One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
 
 This approach ensures proper configuration and execution of SonarQube scans for both main and PR branches within your pipeline.
-

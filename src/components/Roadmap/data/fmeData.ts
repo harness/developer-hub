@@ -2,46 +2,44 @@ import { Horizon } from "./roadmapData";
 
 export const FmeData: Horizon = {
   Now: {
-    description: "Q2 2025, May-Jul 2025",
-    feature: [
-      {
-        tag: [{ value: "Better Together" }],
-        title: "Split integration into Harness, Part 1",
-        description:
-          "Incorporate Split as a fully native Harness module. Existing customers migrated.",
-      },
-      {
-        tag: [{ value: "Better Together" }],
-        title: "Authn and authz on Harness platform",
-        description: "Login, API scoping, and RBAC enhancements delivered by migration.",
-      },
-      {
-        tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
-        title: "Flag impressions properties bag",
-        description: "Decorate impression records with properties to use in downstream processing. Ongoing support for additional SDKs being developed and released.",
-      },
-      {
-        tag: [{value: "Targeting"}, {value: "Better Together"}],
-        title: "Rule-based segments",
-        description:
-          "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
-      },
-      {
-        tag: [{ value: "Targeting" }],
-        title: "Client side SDKs cache expiration",
-        description:
-          "Control when local cache on device expires.",
-      },
-    ],
-  },
-  Next: {
     description: "Q3 2025, Aug-Oct 2025",
     feature: [
       {
         tag: [{ value: "Better Together" }],
-        title: "Split integration into Harness, Part 2",
+        title: "Split integration into Harness",
         description:
-          "Migrate permission management to 100% Harness RBAC managed.",
+          "Incorporate Split as a fully native Harness module. Login, API scoping, and RBAC enhancements delivered by migration. Existing customers migrated.",
+      },
+      {
+        tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
+        title: "Flag impressions properties bag",
+        description: "Decorate impression records with properties to use in downstream processing. Support for the following SDKs and Split Proxy / Synchronizer is coming this quarter: Go, PHP Thin Client (via SplitD), .NET, and Flutter.",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "OpenFeature provider updates",
+        description: "Ongoing support for OpenFeature providers in Java, Node.js, and Browser SDKs.",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "Harness Forward proxy for FME",
+        description: "Centralize traffic going outside of a customer’s cloud. Unlike the current Split Proxy, it does not require environment-specific configuration.",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Experiment entry event filter",
+        description: "Define an entry event at the experiment level to filter exposures, ensuring sample sizes only reflect users who were exposed to your experiment.",
+      },
+    ],
+  },
+  Next: {
+    description: "Q4 2025, Nov-Jan 2026",
+    feature: [
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Granular permissions in RBAC",
+        description:
+          "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled, Split integration into Harness, Part 2.",
       },
       {
         tag: [{ value: "SDK" }],
@@ -67,7 +65,7 @@ export const FmeData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2025+, Nov 2025 & beyond",
+    description: "Q1 2026+, Feb 2026 & beyond",
     feature: [
       {
         tag: [{ value: "Better Together" }],
@@ -77,7 +75,7 @@ export const FmeData: Horizon = {
       {
         tag: [{ value: "SDK" }],
         title: "Extend SDK support",
-        description: "Support additional SDKs like Erlang.",
+        description: "Support additional SDKs.",
       },
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
@@ -89,6 +87,20 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{value: "Targeting"}, {value: "Better Together"}],
+        title: "Rule-based segments",
+        description:
+          "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-support-for-rule-based-segments",
+      },
+      {
+        tag: [{ value: "Targeting" }],
+        title: "Client side SDKs cache expiration",
+        description:
+          "Control when local cache on device expires.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-control-cache-expiration-for-client-side-sdks"
+      },
       {
         tag: [{ value: "Targeting" }],
         title: "Flag impressions toggle",
@@ -112,6 +124,12 @@ export const FmeData: Horizon = {
         title: "Experiment sample population chart",
         description: "See accumulation of sample population over time. Identify unexpected assignment or traffic level changes.",
         link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiments-dashboard",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "Flag impressions properties bag",
+        description: "Decorate impression records with properties to use in downstream processing. Supported in Browser, Android, iOS, JavaScript, React, React Native, Redux, Node.js, and Java SDKs.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-append-impression-properties",
       },
       {
         tag: [{ value: "SDK" }],

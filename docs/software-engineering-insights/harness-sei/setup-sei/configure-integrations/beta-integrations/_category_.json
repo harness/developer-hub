@@ -1,0 +1,11 @@
+{
+    "label":"Beta integrations",
+    "position": 11,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Beta integrations"
+    }
+}

@@ -19,6 +19,134 @@ If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Ov
 
 Harness IDP 2.0 marks a significant evolution of the Internal Developer Portal, introducing a Harness-native data model tailored for enterprise-scale environments and strong access control. As we transition to this new model, **legacy Backstage YAML** will no longer be supported. Going forward, only the **Harness-native data model** schema will be used and referenced. This guide walks you through the new **Harness-native YAML schema** and outlines the key changes from the previous schema.
 
+## Quick Reference: Entity YAML Examples
+
+<details>
+<summary>Component YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: Component
+name: anomaly-detection
+identifier: anomaly-detection
+type: service
+owner: group:ccmplayacc
+spec:
+  lifecycle: production
+  dependsOn:
+    - component:ng-manager
+metadata:
+  description: CCM anomaly detection backend service
+  annotations:
+    backstage.io/kubernetes-label-selector: app=anomaly-detection
+    github.com/project-slug: wings-software/ce-anomalyDetection
+    pagerduty.com/service-id: PFVOX97
+    jira/project-key: CCM
+    backstage.io/source-location: url:https://github.com/wings-software/ce-anomalyDetection/tree/main
+  links:
+    - title: repo
+      url: https://github.com/wings-software/ce-anomalyDetection
+  tags:
+    - python
+```
+</details>
+
+<details>
+<summary>API YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: API
+type: openapi
+identifier: cenextgen
+name: cenextgen
+owner: johndoe
+spec:
+  lifecycle: production
+  definition:
+    $text: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/api-with-examples.json
+metadata:
+  description: The official CE NEXTGEN service REST APIs
+```
+</details>
+
+<details>
+<summary>System YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: System
+name: Payment System
+identifier: paymentsystem
+type: domain
+owner: team-payment
+metadata:
+  description: This system groups services and libraries related to payment processing.
+  tags:
+    - rest
+    - java
+```
+</details>
+
+<details>
+<summary>Resource YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: Resource
+name: Payment Database
+identifier: payment-database
+type: database
+owner: group:ccmplayacc
+spec:
+  system:
+    - system:account/ccm_platform
+  dependsOn:
+    - resource:account/ccm-backup-storage
+metadata:
+  description: MongoDB database for CCM platform data storage
+  annotations:
+    harness.io/db-instance: mongodb-ccm-prod-01
+    harness.io/db-region: us-east-1
+    harness.io/backup-schedule: daily-2am-UTC
+  links:
+    - title: Database Dashboard
+      url: https://harness-monitoring.grafana.net/d/mongodb-ccm
+    - title: Backup Policy
+      url: https://harness.atlassian.net/wiki/spaces/CCM/pages/123456/Database+Backup+Policy
+  tags:
+    - mongodb
+    - database
+    - production
+```
+</details>
+
+<details>
+<summary>User Group YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: Group
+type: engineering
+name: Cloud Infrastructure Team
+identifier: cloud_infrastructure_team
+spec:
+  members:
+    - user:account/jane.doe@harness.io
+    - user:account/john.smith@harness.io
+  parent: group:account/idp_team
+  profile:
+    email: cloud_infrastructure_team@techo.io
+metadata:
+  description: User Group responsible for building and maintaining the company’s core cloud infrastructure.
+  teamLead: Jane Doe
+  region: US West
+  tags:
+    - cloud
+    - engineering
+```
+</details>
+
 :::info
 Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table
 :::
@@ -67,7 +195,7 @@ If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can
    Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog.md#catalog-yaml)**.
 
 2. **Using the YAML Conversion API:**
-   To streamline migration, we’ve also introduced an API that converts Backstage Catalog YAML to the Harness-native format. \[Read more here.]
+   To streamline migration, we've also introduced an API that converts Backstage Catalog YAML to the Harness-native format. [Read more in the IDP 2.0 migration guide.](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
 
 All existing Catalog entities will be **automatically migrated** to IDP 2.0, and their associated YAML files will be deprecated. Additionally, a new Git Experience tool will soon be available, allowing you to **commit the converted definitions directly to YAML files in your Git repository**.
 
@@ -102,6 +230,8 @@ With **IDP 2.0**, you can define the following `kind` types in your Catalog YAML
 * `kind: API`
 * `kind: Resource`
 * `kind: Workflow`
+* `kind: System`
+* `kind: Group`
 
 Each kind represents a different type of entity within the Harness-native data model.
 [Read more about the different entity kinds here.](/docs/internal-developer-portal/catalog/catalog-yaml.md#entity-kinds)
@@ -110,7 +240,7 @@ Each kind represents a different type of entity within the Harness-native data m
 
 ### `identifier`
 
-The `identifier` field is a **unique, machine-readable** reference for the entity. It serves as the primary key for identifying and interacting with the entity.
+The `identifier` field is a **unique, machine-readable** reference for the entity. It serves as the primary key for identifying and interacting with the entity. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 | **Property**            | **Description**                                                                                       |
 |------------------------|-------------------------------------------------------------------------------------------------------|
@@ -196,9 +326,34 @@ The `owner` field indicates the owner of that entity and maps to Harness Users o
 
 While `owner` is not mandatory, it is **strongly recommended** to associate entities with logical owning teams.
 
+:::important
+**Important Note on Owner Field and Permissions**
+
+The `owner` field is only for indicating team ownership and organizational responsibility. It **does not** control catalog entity permissions or determine who can edit components. Actual access permissions are governed by platform-level RBAC (Role-Based Access Control), meaning users with the appropriate roles can edit entities regardless of this field's value.
+:::
+
 - At **Project scope**: any User/User Group from Project, Org, or Account can be assigned.  
 - At **Org scope**: assign Users/User Groups from Org or Account.  
 - At **Account scope**: assign from Account-level only.
+
+The `spec.owner` field supports multiple formats for defining ownership:
+
+* You can use a plain value like `backend-team`. This is treated as a group by default. If no matching group is found, it is still accepted and displayed as an arbitrary string without validation.
+
+* For explicit user or group references, use one of the following formats:
+
+  * `user:<scope>/<email-or-username>`
+  * `group:<scope>/<group-name>`
+
+  Supported scope formats:
+
+  * `account`
+  * `account.<orgIdentifier>`
+  * `account.<orgIdentifier>.<projectIdentifier>`
+
+* Owner resolution is **case-sensitive**. Make sure the casing in your reference exactly matches the group names as defined in your account.
+
+> In cases where reliable resolution is critical, consider using the **user group ID** instead of just the name to avoid ambiguity.
 
 ---
 
@@ -228,6 +383,7 @@ All the fields mentioned below are the mandatory parameters required to define a
 | `kind` | **Component** |
 | `type` | You can find out more about the `type` key here. |
 | `spec.lifecycle` | You can find out more about the `lifecycle` key here. |
+| `spec.system` | Optional. Reference to System entities this Component belongs to. |
 
 #### Example YAML
 ```yaml
@@ -239,6 +395,11 @@ name: artistweb
 owner: artist-relations-team
 spec:
   lifecycle: production
+  system:
+    - system:account/marketing_systems
+    - system:account/web_platform
+  partOf:
+    - system:account/customer_experience
 metadata:
   description: The place to be, for great artists
   annotations:
@@ -252,6 +413,38 @@ metadata:
     example.com/custom: custom_label_value
   tags:
     - java
+```
+
+---
+
+### Kind: System
+A **System** is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit—enabling teams to organize and manage complex software ecosystems more effectively.
+
+#### Entity Structure  
+All the fields mentioned below are the mandatory parameters required to define a System:
+
+| **Field** | **Value** |
+| --------- | --------- |
+| `apiVersion` | **harness.io/v1** |
+| `kind` | **System** |
+| `type` | Common values include `domain`, `module`, or `platform` |
+| `owner` | The team or group responsible for the System |
+
+#### Example YAML
+```yaml
+apiVersion: harness.io/v1
+kind: System
+type: domain
+identifier: paymentsystem
+name: Payment System
+owner: team-payment
+spec:
+  lifecycle: ""
+metadata:
+  description: This system groups services and libraries related to payment processing.
+  tags:
+    - payments
+    - financial
 ```
 
 ---
@@ -289,7 +482,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 metadata:
   description: The petstore API
   links:
@@ -337,6 +530,56 @@ owner: artist-relations-team
 spec: {}
 metadata:
   description: Stores artist details
+```
+
+---
+
+### Kind: Group
+**Group** entities allow organizations to model their team structure directly within the IDP catalog. Custom User Groups extend the catalog model to include organizational teams and hierarchies as first-class entities, representing real-world structures such as teams, departments, or cross-functional squads.
+
+Unlike platform user groups which are synchronized from an identity provider (LDAP, SCIM, SSO), custom user groups are created and managed entirely within IDP, allowing for richer metadata and context.
+
+#### Entity Structure
+All the fields mentioned below are the parameters required to define a Group:
+
+| **Field** | **Value** |
+| --------- | --------- |
+| `apiVersion` | **harness.io/v1** |
+| `kind` | **Group** |
+| `name` | Human-readable name for the group |
+| `identifier` | Unique identifier for the group |
+| `type` | Common values include `department`, `engineering` |
+
+#### Special Spec Fields
+
+| **Field** | **Description** |
+| --------- | --------------- |
+| `spec.members` | List of users belonging to the group |
+| `spec.parent` | Reference to a parent group, enabling hierarchy |
+| `spec.profile` | Additional profile information like email |
+
+#### Example YAML
+```yaml
+apiVersion: harness.io/v1
+kind: Group
+type: engineering
+name: Cloud Infrastructure Team
+identifier: cloud_infrastructure_team
+spec:
+  members:
+    - user:account/jane.doe@harness.io
+    - user:account/john.smith@harness.io
+  lifecycle: active
+  parent: group:account/idp_team
+  profile:
+    email: idp_team@harness.io
+metadata:
+  description: Cloud Infrastructure Team for building and maintaining the company’s core cloud infrastructure.
+  teamLead: Jane Doe
+  region: US West
+  tags:
+    - cloud
+    - engineering
 ```
 
 ---
@@ -881,7 +1124,12 @@ The current set of well-known and common values for this field is:
 
 #### Spec owner
 
-In the Harness Internal Developer Portal, the owner of a component is identified by the [Harness User Group ID](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups). This User Group ID represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
+In the Harness Internal Developer Portal, the owner of a component can be identified by either:
+
+* **Platform User Group ID**: The [Harness User Group ID](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) for groups synced from identity providers
+* **Custom User Group** [IDP 2.0]: A [Custom User Group](/docs/internal-developer-portal/catalog/user-group) created directly within IDP as a first-class catalog entity
+
+In both cases, this User Group represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
 
 <details>
 <summary>How to get the Harness User Group ID</summary>

@@ -31,15 +31,20 @@ Let's dive deeper into how entities and scopes come together in the Harness-nati
 
 ## Harness IDP Entities [IDP 2.0]
 
-There are different entities within our Harness IDP data model. However, software is modeled in the Harness IDP Catalog using three core entities:
+There are different entities within our Harness IDP data model. However, software is modeled in the Harness IDP Catalog using five core entities:
 
 * **Components**: Individual pieces of software.
 * **APIs**: Boundaries between different components.
 * **Resources**: Physical or virtual infrastructure needed to operate a component.
+* **Systems**: High-level organizational units that group related components, APIs and resources.
+* **Groups**: Custom user groups representing team structures, departments, or any organizational unit.
+
 
 ![](static/intro-system.png)
 
-Let's explore these core entities and their usage in detail!
+
+
+
 
 ### Component
 
@@ -67,13 +72,39 @@ A Workflow is divided into three key components: Frontend, Backend, and Outputs.
 
 For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/flows/overview.md) here.
 
+### System
+
+A **System** is a high-level organizational unit that groups together related components, APIs, and resources. Systems help create logical boundaries around parts of your software ecosystem that work together to deliver specific business capabilities. They improve discoverability by providing a clear hierarchy and context for components, making it easier to navigate complex software landscapes and understand how different parts relate to each other.
+
+In Harness IDP 2.0, Systems play a crucial role in organizing your catalog. Components belong to Systems, and Systems can belong to Domains. This hierarchical structure makes it easier to manage large catalogs with many interconnected components.
+
+For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/system-entity.md) here.
+
 ## Harness Platform Entities [IDP 2.0]
 
-We also support Harness Platform Entities - Users and User Groups.
+We support both Harness Platform Entities (Users and Platform User Groups) and Custom User Groups created directly within IDP.
 
 ### Users
 
-A **User** refers to a person who has been onboarded or has access to any part of Harness IDP. Across Harness, a user is any individual registered with a unique email address. Users can be associated with multiple Harness accounts and can belong to multiple user groups. Roles and resource groups can be assigned directly to users or inherited from user groups. Here's how you can [add users](https://developer.harness.io/docs/platform/role-based-access-control/add-users/) in Harness IDP.
+A **User** entity represents a person or an automated account which has authentication details stored. If you have an identity provider configured in your Harness platform, Users from that system would be automatically reflected in the IDP catalog.
+
+### Platform User Groups
+
+A **Platform User Group** entity represents a collection of related Users which have authentication details stored and are synchronized from an identity provider (LDAP, SCIM, SSO). These are typically used for role-based access control.
+
+### Custom User Groups
+
+New in IDP 2.0, **Custom User Groups** are created and managed entirely within IDP as first-class entities. Unlike platform user groups, custom groups can be enriched with additional metadata like team lead, region, or other organizational information. Custom groups support hierarchical relationships through parent-child connections and serve as a source of truth for organizational structure within IDP.
+
+Custom User Groups can:
+* Have members (users)
+* Be organized in hierarchies with parent-child relationships
+* Own components, systems, and other entities
+* Be enriched with metadata for better context
+
+For more details on Custom User Groups, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/user-group) here.
+
+Roles and resource groups can be assigned directly to users or inherited from user groups. Here's how you can [add users](https://developer.harness.io/docs/platform/role-based-access-control/add-users/) in Harness IDP.
 
 You can [add users manually](https://developer.harness.io/docs/platform/role-based-access-control/add-users/#add-users-manually) or through [automated provisioning](https://developer.harness.io/docs/platform/role-based-access-control/add-users/#use-automated-provisioning). User groups can be created at all scopes.
 
@@ -119,13 +150,26 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 | **Scorecards** | ✅                 | ❌             | ❌                 | Only supported at the Account scope currently. Org/Project scope support is planned in the future roadmap. |
 | **Layouts**    | ✅                 | ❌             | ❌                 | Supported only at the Account scope currently. Org/Project scope support is planned.                       |
 | **Plugins**    | ✅                 | ❌             | ❌                 | Plugins can be created and configured only at the Account scope.                                           |
+| **Custom User Groups**    | ✅                 | ❌             | ❌                 | Custom User Groups can be created and managed only at the Account scope.                                   |
+
 
 
 ## Relations [IDP 2.0]
 
 The following is a non-exhaustive list of actively used relations.
 
-Each relation has a *source* (implicitly, the entity that holds the relation), a *target* (the entity it relates to), and a *type* that defines the nature of the relationship. Relations are directional. Typically, you'll find relation pairs where the reverse relation exists for the other entity (e.g., when querying A, you see `A.ownedBy.B`; when querying B, you see `B.ownerOf.A`).
+In IDP 2.0, relations are directional and defined in YAML using the source entity. For example, you might define that a API entity `providesApi` to a Service entity. Traditionally, one would also define the reverse relation (`apiProvidedBy`) explicitly. Here in IDP, this reverse relation is automatically generated by the backend and maintained internally.
+
+As a result:
+
+* You only need to declare the primary relation in your YAML.
+* The reverse relation exists in the system and is fully queryable, but it does not appear in the Edit YAML UI.
+* It is, however, visible if you view the raw YAML of the entity.
+
+**Example:**
+If ServiceA `dependsOn` LibraryB, the system automatically generates LibraryB `dependencyOf` ServiceA. When editing LibraryB in the YAML editor, you will not see the reverse relation (`dependencyOf`) listed. But in the raw YAML, the generated reverse relation is present and maintained consistently.
+
+This design reduces redundancy in YAML definitions, prevents manual errors, and ensures that all directional relationships remain consistent across the portal and backend queries.
 
 ### 1. `ownedBy` and `ownerOf`
 
@@ -170,6 +214,14 @@ Typically based on the `spec.parent` and/or `spec.children` fields.
 A membership relation, usually for users in [User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/).
 
 Typically based on the `spec.memberOf` field.
+
+### 7. `partOf` and `hasPart`
+
+A relation with a Domain, System or Component entity, typically from a Component, API, System, or Domain.
+
+These relations express that a component belongs to a larger component; a component, API or resource belongs to a system; that a system is grouped under a domain; or that a domain belongs to a larger domain.
+
+Typically based on the `spec.partOf` field.
 
 ### Example YAML
 

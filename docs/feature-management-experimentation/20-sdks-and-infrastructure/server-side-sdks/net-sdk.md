@@ -1,11 +1,10 @@
 ---
 title: .NET SDK
 sidebar_label: .NET SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/net-xamarin-which-api-key/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/net-sdk-build-error-strongly-named-assembly/
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020240172--NET-SDK </button>
-</p>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -19,6 +18,12 @@ This SDK supports the following .NET platform versions:
   - .NET Core 2.x and 3.x
   - .NET 8, .NET 7, .NET 6 and .NET 5
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 7.11.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 :::warning[Important!]
@@ -30,7 +35,7 @@ We unified the source code for Splitio and Splitio-net-core packages in one repo
 Use NuGet in the command line or the Package Manager UI in Visual Studio.
 
 ```csharp title="NuGet"
-Install-Package Splitio -Version 7.10.0
+Install-Package Splitio -Version 7.12.0
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -40,13 +45,13 @@ Starting version 5.0.0, .Ready is deprecated and migrated to the following imple
 Call `SplitClient.BlockUntilReady(int milliseconds)` or `SplitManager.BlockUntilReady(int milliseconds)`.
 :::
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready. This is done by using `.BlockUntilReady(int milliseconds)` method as part of the instantiation process of the SDK factory client as shown below. Do this all as a part of the startup sequence of your application. If SDK is not ready after the specified time, the SDK fails to initialize and throws a `TimeoutException` error.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Use the code snippet below with your own API key. Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Use the code snippet below with your own API key. Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ```csharp title="C#"
 using Splitio.Services.Client.Classes;
@@ -74,7 +79,7 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 After you instantiate the SDK factory client, you can use the `GetTreatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 <Tabs>
 <TabItem value="GetTreatment">
@@ -123,7 +128,7 @@ else
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `GetTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `GetTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `GetTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -286,9 +291,9 @@ var result = await client.GetTreatmentsByFlagSetsAsync("KEY", flagSets);
 
 You can also use the [Split Manager](#manager) to get all of your treatments at once.
 
-### Get Treatments with Configurations
+### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `GetTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `GetTreatmentWithConfig` method.
 
 This method returns an object containing the treatment and associated configuration.
 
@@ -368,6 +373,27 @@ var featureFlagResults = await splitClient.GetTreatmentsWithConfigByFlagSetsAsyn
 </TabItem>
 </Tabs>
 
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `GetTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+```csharp
+# Create EvaluationOptions instance and define impression properties
+EvaluationOptions evaluationOption = new EvaluationOptions(
+    new Dictionary<string, object> {
+        { "prop1", "val1" }
+    }
+);
+# Get treatment with properties
+var treatment = await splitClient.GetTreatmentAsync('KEY', 'FEATURE_FLAG_NAME', evaluationOptions: evaluationOption)
+```
+
 ### Shutdown
 
 Call the `.destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
@@ -399,23 +425,23 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
-[Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags.
+[Learn more](/docs/feature-management-experimentation/release-monitoring/events/) about using track events in feature flags.
 
 In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `GetTreatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Double**.
-* **PROPERTIES:** (Optional) A map of key value pairs that can be used to filter your metrics. Learn more about event property capture [in the Events guide](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties). FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) A map of key value pairs that can be used to filter your metrics. Learn more about event property capture [in the Events guide](/docs/feature-management-experimentation/release-monitoring/events/#event-properties). FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK can successfully queue the event to be sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
-In case a bad input is provided, refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) guide for more information about our SDK's expected behavior.
+In case a bad input is provided, refer to the [Events](/docs/feature-management-experimentation/release-monitoring/events/) guide for more information about our SDK's expected behavior.
 
 <Tabs>
 <TabItem value="Track">
@@ -569,7 +595,7 @@ First, import Splitio.Redis NuGet package into your project.
 Use NuGet in the command line or the Package Manager UI in Visual Studio.
 
 ```csharp title="NuGet"
-Install-Package Splitio.Redis -Version 7.10.0
+Install-Package Splitio.Redis -Version 7.12.0
 ```
 
 To initiate an SDK with support for Redis as consumer mode, use the following code snippet:
@@ -660,7 +686,7 @@ private bool CertificateValidation(object sender, X509Certificate certificate, X
 
 ### Redis cluster support
 
-The FME .NET SDK version **7.10.0 and above** supports Redis with [Cluster](https://redis.io/topics/cluster-spec).
+The FME .NET SDK version **7.11.0 and above** supports Redis with [Cluster](https://redis.io/topics/cluster-spec).
 
 To initiate the SDK with support for Redis Cluster, use the following code snippet:
 
@@ -790,7 +816,7 @@ catch (Exception ex)
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer.
 
-`GetTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
+`GetTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name. Here is a sample `.split` file.
 
@@ -885,6 +911,7 @@ public class SplitView
   public Dictionary<string, string> configs { get; }
   public string defaultTreatment { get; }
   public List<string> sets { get; }
+  public List<PrerequisitesDto> prerequisites { get; }
 }
 ```
 
@@ -1073,3 +1100,74 @@ var config = new ConfigurationOptions
 var factory = new SplitFactory("YOUR_SDK_KEY", config);
 var sdk = factory.Client();
 ```
+
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+
+This is useful when you want to:
+
+- Avoid unexpected `control` values in production
+- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
+- Customize behavior for specific flags if evaluations fail
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```csharp title="C#"
+// Initialize SDK with global fallback treatment
+FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(new FallbackTreatment("on-global", "\"prop\":\"global\""));
+
+var config = new ConfigurationOptions
+{
+    ReadTimeout = 15000,
+    FallbackTreatments = fallbackTreatmentsConfiguration
+};            
+var splitFactory = new SplitFactory("apikey", configurations);
+```
+
+### Flag-level fallback treatment
+
+You can configure fallback treatments for specific flags in the SDK options. When a flag evaluation fails, the SDK returns the corresponding fallback treatment defined for that flag.
+
+```csharp title="C#"
+FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(new Dictionary<string, FallbackTreatment>() { { "feature", new FallbackTreatment("off-local", "\"prop\":\"local\"") } });
+
+var config = new ConfigurationOptions
+{
+    ReadTimeout = 15000,
+    FallbackTreatments = fallbackTreatmentsConfiguration
+};            
+var splitFactory = new SplitFactory("apikey", configurations);
+var sdk = factory.Client();
+var treatment = sdk.GetTreatment("KEY","feature");
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
+## Troubleshooting 
+
+### Which API Key to use with .NET Xamarin projects
+
+A .NET development environment provides a Xamarin project that allows .NET code to run on both iOS and Android platforms within a container app. Which API Key should be used with the FME .NET or .NET Core SDK when developing a Xamarin project? 
+
+Use a **server-side SDK API key**.
+
+### Build Error: "Split 3.4.2.0 cannot be loaded since it needs a strongly-named assembly"
+
+In a .NET project with assembly signing enabled, adding the FME .NET SDK and building the project produces this warning:
+
+```
+Referenced Assembly 'Splitio, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null' does not have a strong name
+```
+
+At runtime, you may get this exception:
+
+```
+Could not load file or assembly 'Splitio, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. A strongly-named assembly is required.
+```
+
+SDK versions earlier than 3.4.4 include dependencies packaged without strong naming (unsigned assemblies). To build a signed SDK DLL, all dependencies must also be strongly named.
+
+Upgrade to the latest version of the FME .NET SDK, which includes signed dependencies.

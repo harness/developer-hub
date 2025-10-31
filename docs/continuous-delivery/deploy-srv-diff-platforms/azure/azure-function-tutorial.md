@@ -6,12 +6,6 @@ sidebar_position: 5
 
 Harness now supports the deployment of Azure Functions, enabling you to automate and manage serverless function deployments to Azure with ease. 
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_AZURE_FUNCTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 This topic walks you through setting up and running an Azure Functions deployment in Harness.
 
 The basic steps are:
@@ -63,6 +57,14 @@ Under Artifact Location, specify the necessary details such as Artifact Source I
 
 You can also create and use a template for artifacts.
 
+:::info
+When you set **Artifact type = Other** for a private Docker registry, you will need to populate the PLUGIN_DOCKER_USERNAME and the full registry URL in the slot’s Full Image Name and Tag. To do so, add:
+- PLUGIN_DOCKER_USERNAME: `<+secrets.getValue("account.ARTIFACTORY_SAAS_PROD_USERNAME")>`
+- PLUGIN_DOCKER_CONTAINER_NAME: `https://<your-registry-url>/<repository>/<image>:<tag>`
+
+in the Azure Deployment step so that your function can authenticate and pull the correct image.
+:::
+
 ## Azure Function Environments 
 
 Define the environment you want to use to deploy the Azure function.
@@ -103,8 +105,10 @@ Within the same resource group, you can't mix Windows and Linux apps in the same
 :::info note
 In the deploy steps under Container Configuration, specify the appropriate image based on your container registry:
 
-1. [ECR Image for azure function plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
-2. [Docker Image for azure function plugin](https://hubgw.docker.com/r/harnessdev/azure-function-plugin)
+1. [Docker Image for Azure Function Plugin](https://hub.docker.com/r/harness/azure-function-plugin/tags)
+2. [ECR Image for Azure Function Plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
+3. GAR Images for Azure Function Plugin:
+   - Europe region: [GAR Image Repository for Azure Function Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fazure-function-plugin?inv=1&invt=Ab5cNA)
 
 :::
 
@@ -114,11 +118,25 @@ In the execution tab of the pipeline stage, select **Add Step** and select **Azu
 
 Currently Azure function deployment supports basic and custom deployment strategy.
 
+:::important Container Execution Requirements
+The Azure Function Deploy step requires a containerized execution environment:
+
+- If you select the **Basic** deployment strategy, Harness automatically adds a container Step Group with the Azure Function Deploy step inside it.
+
+- If you select the **Custom** deployment strategy, you need to manually:
+  1. Add a Step Group to your pipeline
+  2. Enable the **Container** option in the Step Group
+  3. Configure the Step Group to use your Kubernetes connector
+  4. Add the Azure function Deploy step inside this Step Group
+
+Failure to run the step in a containerized execution context will likely result in deployment failures.
+:::
+
 The Azure function Deploy step has the following settings:
 
  * **Name:** Enter a name for the step.
- * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
- * **Azure Connector**: Specify the connector that connects to the azure infrastructure.
+ * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
+ * **Container Registry**: Specify the connector that connects to the azure infrastructure and container registry you wish to use.
  * **Image**: Specify the artifact image you want to run. 
  * **Function app**: Specify the Azure Container to be used.
  * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Azure Function version. Make sure the slot you enter is running.

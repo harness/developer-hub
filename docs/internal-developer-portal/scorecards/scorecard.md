@@ -31,7 +31,9 @@ Scorecards play a pivotal role in ensuring software components are developed and
 
 </details>
 
-## Enabling Scorecards
+---
+
+## Enable Scorecards
 
 :::info
 
@@ -45,7 +47,12 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 <DocImage path={require('./static/scorecard-overviewpage.png')}/>
 
-1. #### Adding Card and Tab Content for an Entity
+:::info GITX Enabled
+Scorecard calculations are based on entity data from the default branch of the associated Git repository.
+If you're using a remote Git repository to manage your Scorecard definitions, make sure that the YAML file is committed and pushed to the default branch. This behavior helps maintain a single source of truth and avoids confusion from incomplete or in-progress configurations.
+:::
+
+1. #### Add Scorecard Card and Tab Content for an Entity
 
    - Go to the **Layout** section in IDP **Admin**, and select **Service** or any other kind of catalog entity for which you want to add Scorecards.
 
@@ -74,20 +81,28 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 <DocImage path={require('./static/entity.png')}/>
 
-## Create Your Scorecard
+---
 
-- Go to the "Scorecards" tab under "Admin" and **Create New Scorecard**.
-- Add a "Name" to it and give the criteria to **Filter your catalog entities**.
-- Followed by adding the "Checks" and then select **Publish Scorecard**.
+## Create a Scorecard
+1. Go to **Configure** → **Scorecards**, and select **Create New Scorecard**.
+2. Enter values for the input fields:
 
-<DocImage path={require('./static/rename-scorecard.png')}/>
+   * **Name**: Name of the scorecard.
+   * **Description**: Description of the scorecard’s action.
+3. (Optional) Add filters to choose which Catalog entities the scorecard evaluates:
 
-:::info
+   * **Kind** (mandatory): Select the entity `kind`.
+   * **Type** (mandatory): Select the `type` for the chosen kind.
+   * **Owners** (optional): Select the entity owners to be evaluated.
+   * **Tags** (optional): Select the entity tags to be evaluated.
+   * **Lifecycle** (optional): Select the lifecycle stages of the entities.
+   * **Scope** (optional): Choose where to run the evaluation- **project**, **org**, or **account**. The scorecard evaluates **all entities** within the selected scope. If no scope is selected, it evaluates entities across **all scopes** (account, org, and project).
 
-Make sure the values under **Filter catalog entities for which the scorecard is evaluated** should match with your entity "owner" and "type" as shown below, also **tags** are applied as **AND** operations so if you select multiple tags make sure all of them are present for the software component you want to compute the score for. 
+4. Add the **Checks**, then select **Publish Scorecard**.
 
-<DocImage path={require('./static/caution-idp-scorecard.png')}/>
-:::
+![](./static/create-scorecard.png)
+
+---
 
 ## Trends Dashboard of a Scorecard  
 After creating a Scorecard, you can track its aggregate trends and component-wise details in the **Trends Dashboard**. This dashboard displays the number of components the Scorecard applies to and provides detailed scores for each component.
@@ -106,6 +121,7 @@ Follow these steps to navigate to the Trends Dashboard:
 4. The dashboard will display all components where the Scorecard was executed along with their detailed scores. You can export the aggregate data by clicking **"Export CSV"** to download it in CSV format. 
 ![](./static/trends-scorecard-2.png)
 
+---
 
 ## Trends Dashboard of a Check  
 Similarly, you can track trends for individual **Checks** to view component details and status updates.  
@@ -125,8 +141,9 @@ Follow these steps to navigate to the Trends Dashboard:
 5. The dashboard will open, displaying component-wise details and insights. You can export the aggregate data by clicking **"Export CSV"** to download it in CSV format. 
 ![](./static/trends-check-2.png)
 
+---
 
-## Refreshing Scorecards
+## Refresh Scorecards
 You can manually refresh a component's Scorecard evaluation from the **Harness IDP UI**, triggering an on-demand evaluation and updating the component's score in real time.  
 
 Follow these steps to refresh Scorecards:  
@@ -140,12 +157,16 @@ Follow these steps to refresh Scorecards:
 
 This will **manually trigger a refresh**, updating the component's score immediately.
 
-## Disabling Scorecards
+---
+
+## Disable Scorecards
 1. Comment out the Scorecard related lines added under **Layout** pages as mentioned above, to remove the Scorecard components from the Catalog pages.
 
 2. Additionally, you can also change the status of all the Scorecards you have to "draft". This will ensure that the computation will not run and will not be shown to the developer.
 
 <DocImage width="1750vw" path={require('./static/remove-scorecard.png')}/>
+
+---
 
 ## Schedule of a Scorecard
 The Trends Dashboard of a Scorecard updates **every 24 hours**. Newly created Scorecards (or Checks) will appear in the dashboard after the next update at **12:00 AM UTC**.

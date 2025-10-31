@@ -1,0 +1,10 @@
+{
+    "label": "Webhook",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Webhook"
+    }
+}

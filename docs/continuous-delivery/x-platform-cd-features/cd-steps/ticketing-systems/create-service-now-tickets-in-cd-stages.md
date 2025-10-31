@@ -33,6 +33,11 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 
 The Integration for Harness Software Delivery Platform app is required to create ServiceNow tickets using Harness templates. You can install the latest version of the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
 
+This integration is currently supported for the following ServiceNow versions:
+   - Vancouver
+   - Washington DC
+   - Yokohama
+
 For more information, go to the [ServiceNow installation guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
 
 ## Important note for using the ServiceNow API
@@ -83,6 +88,13 @@ The timezone settings govern the display value of the settings not their actu
 
 ## Create from Form Template
 
+Form Templates are a generic concept in ServiceNow that allow you to create templates containing commonly used field values for any table. These templates can be applied to any table in ServiceNow, not just specific ticket types.
+
+- **Applicability**: Valid for any table in ServiceNow
+- **Purpose**: Pre-populate commonly used field values to speed up ticket creation
+- **Implementation**: Harness relies on the `sys_template` table in ServiceNow which stores form templates for all tables
+- **Documentation**: For more information on Form Templates in ServiceNow, see the [ServiceNow documentation on creating templates](https://www.servicenow.com/docs/bundle/washingtondc-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html)
+
 Select **Create From Form Template** to create a ticket by using an existing form template in your ServiceNow integration.
 
 In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you select the field, or provide an expression. You can also search the templates you need.
@@ -92,6 +104,10 @@ In **Template Name**, you can enter the name of an existing template, select fro
 Make sure you have met the following requirements for searching form templates:
 - Harness Delegate version 81200 or later.
 - Integration for Harness Software Delivery Platform app version 1.0.2 or later.
+
+**Technical Implementation Details**
+- The API calls for form templates are implemented as scripts in the Harness ServiceNow app. The delegate calls these internal scripted APIs.
+- The implementation isn't open-sourced, but Harness can provide implementation details if required.
 :::
 
 This option updates tickets with values as defined in the linked form template for the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates. If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
@@ -110,9 +126,18 @@ Additionally, a dropdown for templates is also provided when configuring Trigger
 
 ## Create from Standard Template
 
+Standard Templates are a specific module in ServiceNow designed to create low-impact, high-frequency changes faster. These templates are pre-approved by change managers, allowing users with lower privileges to create change requests.
+
+- **Applicability**: Specific to Change Request tickets only
+- **Purpose**: Enable faster creation of pre-approved change types
+- **Approval**: Standard templates are pre-approved by change managers
+- **Relationship with Form Templates**: For each standard template, ServiceNow creates a form template internally. This is why standard change templates also appear in the form templates list, but the experience is better when using the standard template flow specifically for standard templates.
+
 :::note
 
 This feature requires Harness Delegate version 81200 or later
+
+Harness Software Delivery Platform app is **not needed** for creating standard change requests using this feature.
 :::
 
 This option appears only when the value type in the **Ticket Type** field is **Fixed value**, and the ServiceNow ticket type specified is *Change Request*. This feature can be used to create low-risk standard change requests using pre-approved standard templates.

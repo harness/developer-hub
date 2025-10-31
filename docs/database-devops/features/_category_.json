@@ -1,0 +1,13 @@
+{
+    "label":"Features of Database DevOps",
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+      "type":"generated-index",
+      "title":"Features of Database DevOps"
+    },
+    "customProps":{
+      "description": "Discover key features of Harness Database DevOps that enable secure, automated, and scalable database deployments."
+    },
+   "position": 20
+ }
