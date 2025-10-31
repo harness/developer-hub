@@ -3441,3 +3441,82 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+### How does SCIM help with user synchronization in Harness?
+SCIM (System for Cross-domain Identity Management) ensures continuous and real-time synchronization of user groups and access rights between your SAML provider and Harness. By enabling SCIM, user additions and updates in Okta (or another SAML provider) are automatically reflected in Harness, ensuring that users inherit the correct permissions and access levels. This helps in maintaining accurate access control across systems without manual intervention.
+
+### What happens if the email addresses in Okta and Harness do not match?
+For SAML SSO to work properly, the email addresses in Okta and Harness must match exactly. If there is a mismatch or case sensitivity issue, Harness will convert the email address to lowercase before registering it. Therefore, ensure that users are invited to Harness using the same email address as in Okta to avoid login issues.
+
+### What should I do if a user is a member of more than 150 groups in Microsoft Entra ID?
+When a user is part of more than 150 groups, Microsoft Entra ID limits the groups that can be included in the SAML token. In this case, a link to the Graph endpoint for retrieving group information will be included instead. To enable this functionality in Harness, you must configure the Azure app with a Client ID and Client Secret, and ensure that the required API permissions, such as User.Read.All, Directory.Read.All, and Group.Read.All, are granted for the app.
+
+### How do I configure the Unique User Identifier for Azure SSO in Harness?
+To configure the Unique User Identifier for Azure SSO in Harness, set the Azure app's user.userprincipalname as the Unique User Identifier and choose "Email address" as the Name Identifier format. If user.userprincipalname isn't used, ensure the correct attribute is mapped to the Unique User Identifier with the email address.
+
+### Can I synchronize LDAP users manually with a Harness User Group?
+Yes, you can manually synchronize LDAP users with a Harness User Group. To do this:
+Link your Harness User Group to the LDAP SSO configuration.
+Go to Account Settings and click Authentication.
+In the Login via LDAP section, click the three dots next to your LDAP SSO configuration and select Synchronize User Groups. This will allow you to manually trigger synchronization of LDAP users into the associated Harness User Group.
+
+### Can I configure multiple OIDC providers for authentication in Harness?
+Yes, Harness supports the configuration of multiple OIDC providers. This means you can authenticate users from different identity providers, providing flexibility for organizations that use more than one authentication service. Each provider can be set up to handle user access and provisioning separately.
+
+### Why should I use CyberArk Conjur for secret management in Harness?
+CyberArk Conjur provides robust security features like role-based access control (RBAC), auditing, and encryption to manage sensitive data. By integrating it with Harness, you can centralize your secret management and avoid hardcoding secrets in your pipeline or application configurations. This integration also allows you to automate secret retrieval during deployments, making your processes more secure and efficient while ensuring compliance with organizational security policies.
+
+### What is CyberArk Conjur and how does it integrate with Harness for secret management?
+CyberArk Conjur is a secrets management solution that helps organizations securely store and manage sensitive data, such as credentials, keys, and API tokens. When integrated with Harness, it enables users to securely store secrets and use them within Harness workflows, such as deployment pipelines. By linking CyberArk Conjur as a custom secret manager in Harness, you can ensure that sensitive information is fetched securely from Conjur and used dynamically during various operations without exposing it in the open.
+
+###  Why are file secrets not masked in Harness logs?
+In Harness, file secrets are not masked in logs because they can vary in format (e.g., JSON, YAML, etc.) and can contain larger, more complex data compared to text secrets. While text secrets are securely masked in logs, file secrets may include critical configuration or key data that needs to be decoded. Therefore, it's important to handle file secrets carefully, ensuring that access to logs is restricted and that appropriate security measures, such as RBAC and encrypted storage, are in place to protect sensitive information.
+
+###  What are the key permissions required for a Nexus connector in Harness?
+To successfully connect and use a Nexus connector in Harness, the user account associated with the connector must have specific permissions on the Nexus Server. These include the "Repo: All repositories (Read)" permission, which allows the account to access all repositories, and the "Nexus UI: Repository Browser" permission, which grants access to the repository browsing functionality. Additionally, if using Nexus 3 as a Docker repository, the account must have the "nx-repository-view-__*" privilege to interact with Docker images in the repository. These permissions are essential for the connector to work properly with Nexus repositories.
+
+###  What are Verification Providers in Harness?
+Verification Providers in Harness allow you to integrate monitoring and logging systems to verify the success of deployments. By connecting platforms like AppDynamics, Prometheus, New Relic, and others, you can monitor the health of your deployed applications, validate metrics, and check the system's behavior after an update. This integration ensures that your deployments align with the expected performance criteria, providing real-time feedback on the deployment status.
+
+###  How Does Service Discovery Work with Multiple Namespaces?
+Harness allows service discovery across multiple namespaces by configuring inclusion or exclusion settings in the discovery agent. This setup enables the agent to discover services in specified namespaces, requiring appropriate roles and permissions for the service account to manage the discovery process.
+
+### How Does OAuth Enhance Security in Git Operations with Harness?
+OAuth integration enhances security by ensuring that commits to Git are made using authorized user credentials, rather than shared or stored Git credentials. This provides better control over who is making changes, prevents unauthorized access, and complies with security practices by storing access tokens securely in the Harness user profile.
+
+### What are the benefits of using a local NTP server or Google Public NTP for time synchronization?
+Using a local NTP server or Google Public NTP ensures your systems are always in sync with a reliable time source. This reduces the chances of errors, helps systems stay consistent, and makes sure everything is on the same page in terms of time.
+
+### What happens if my pipeline and its referenced entities are in different Git repositories?
+Answer: Don’t worry; Harness has got your back! If your pipeline references templates or other entities from a different repository, it pulls them from the default branch of those repos. This ensures you’re always working with stable and tested configurations. It’s like having a super-efficient delivery system that always fetches the freshest, most reliable resources for your pipeline execution, no matter where they live!
+
+### Can I be a Git ninja and enforce Git Experience across all my Harness resources?
+Answer: Absolutely! By enabling "Enforce Git Experience," you’re telling Harness to only save your resources in Git repositories. It’s like creating a magical barrier that keeps everything neat and organized in Git, and no more inline pipelines slipping through the cracks. This setting makes sure your team works with only the most up-to-date, tested configurations — no more mess, just streamlined, version-controlled deployment magic!
+
+### What does the FibonacciBackOff - SocketTimeoutException: Connect timed out error mean?
+This error means the Harness Delegate can't reach the Manager endpoint, likely due to:
+Wrong Manager URL in the delegate YAML
+Network/firewall blocking port 443
+DNS issues or manager downtime
+Fix:
+Verify MANAGER_HOST_AND_PORT is correct
+Run curl or telnet to check connectivity from the node
+Ensure port 443 is open and DNS resolves the manager URL
+The delegate retries using a Fibonacci delay. Fix the network/config and it’ll reconnect automatically.
+
+###  What should I do if an inline entity is accidentally deleted in Harness?
+If an inline entity (not stored in Git) is deleted from the Harness UI, it cannot be automatically restored like remote Git-backed entities.
+What you can do:
+Check Audit Trails to view previous configurations.
+Manually recreate the entity using this data.
+Unfortunately, there's no direct restore option for inline entities — manual recreation is the only recovery method.
+
+###  How can I stop and start an EC2 instance using a Harness pipeline?
+You can stop and start an EC2 instance in a Harness pipeline using a Shell Script step that runs an AWS CLI command or a Python script with the Boto3 library. Ensure the delegate has AWS CLI and Python with Boto3 installed, and that AWS credentials are configured (via environment variables or IAM role/profile). This is helpful for workflows like upgrading EC2 instance types, where stopping and starting is required.
+
+### What does "Incomplete Secret" mean in the context of creating secrets via YAML?
+An "Incomplete Secret" status indicates that the secret has been created successfully, but it is not fully usable. This occurs because the secret value cannot be provided in plain text within the YAML file. The value must be entered manually in the visual mode after the skeleton of the secret is created via YAML.
+
+### How can I complete an "Incomplete Secret"?
+After creating the secret skeleton via YAML, you need to manually edit the secret in the visual mode of your platform. There, you can input the secret value into the appropriate password field.
+
