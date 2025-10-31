@@ -21,6 +21,7 @@ In order to get started with Self Hosted Gitspaces, you'll first need to **confi
         <li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) – `api/certificatemanager.googleapis.com`</li>
         <li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) – `api/iam.googleapis.com`</li>
         <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
+        <li>[Google Cloud Memorystore for Redis API](https://cloud.google.com/memorystore/docs/redis/reference/rest) – `api/redis.googleapis.com`</li>
       </ul>
 
 ---
@@ -49,7 +50,7 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 2. **GCP Project**: Enter the name of your **GCP project**. This is where the GCP VM Instance hosting your Gitspaces will reside.
 3. **Domain**: Provide the **domain** under which all Gitspaces created in this infrastructure will be accessible.
 4. **Gateway Machine Type**: Specify the **VM machine type** for your Gateway.
-5. **Gateway Machine Image Name**: Specify the **VM image name** for your Gateway. In case you don't have a custom image, there's a default image (`projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20250213`) used by Harness automatically. 
+5. **Gateway Machine Image Name**: Specify the **VM image name** for your Gateway. In case you don't have a custom image, there's a default image (`projects/ubuntu-os-cloud/global/images/family/ubuntu-2404-lts-amd64`) used by Harness automatically. 
 
 ![](../../static/gcp-infra-1.png)
 
@@ -85,7 +86,7 @@ You'll have to configure the **VM for Runner & Delegate** to ensure that the GCP
 Use the following **input parameters**: 
 1. **Region**: Choose the **region** from the list of regions added for your infrastructure to host your VM instance. 
 2. **Availability Zone**: Choose the **availability zone** from the region selected above for your VM instance. 
-3. **Machine Image Name**: Specify the **Machine image name** for your VM instance. In case you don't have a custom machine image, there's a default image (`projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20250213`) used by Harness automatically. 
+3. **Machine Image Name**: Specify the **Machine image name** for your VM instance. In case you don't have a custom machine image, there's a default image (`projects/ubuntu-os-cloud/global/images/family/ubuntu-2404-lts-amd64`) used by Harness automatically. 
 
 ![](../../static/gcp-infra-2.png)
 

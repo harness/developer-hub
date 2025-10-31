@@ -92,12 +92,12 @@ Use the **Infra Config YAML** file downloaded during [Gitspace Infrastructure co
 Now that all input parameters are ready:
 
 1. In the folder containing the **Infra Config YAML**, create a `main.tf` file.
-2. Paste the following Terraform snippet (taken from the [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/aws/0.0.2)):
+2. Paste the following Terraform snippet (taken from the [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/aws)):
 
 ```hcl
 module "harness-gitspaces" {
   source  = "harness/harness-gitspaces/aws"
-  version = "0.0.2"
+  version = "[LATEST VERSION TO BE ADDED FROM [DOCS](https://registry.terraform.io/modules/harness/harness-gitspaces/aws)]"
   # insert the required variables here
 }
 ```
@@ -118,7 +118,7 @@ module "harness-gitspaces" {
 ```
 module "harness-gitspaces" {
     source                      = "harness/harness-gitspaces/aws"
-    version                     = "0.0.2"
+    version                     = "[LATEST VERSION TO BE ADDED FROM [DOCS](https://registry.terraform.io/modules/harness/harness-gitspaces/aws)]"
     infra_config_yaml_file      = "infra_config.yaml"
     access_key                  = "[AWS ACCESS KEY]"
     secret_key                  = "[AWS SECRET KEY]"

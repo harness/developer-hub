@@ -1,6 +1,6 @@
 ---
 title: IntelliJ IDEA
-sidebar_position: 4
+sidebar_position: 6
 description: Connect to your Gitspaces within IntelliJ IDEA.
 sidebar_label: IntelliJ IDEA
 ---

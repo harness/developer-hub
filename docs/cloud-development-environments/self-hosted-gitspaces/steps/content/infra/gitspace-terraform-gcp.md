@@ -103,7 +103,7 @@ Now that all input parameters are ready:
 ```hcl
 module "harness-gitspaces" {
     source  = "harness/harness-gitspaces/gcp"
-    version = "[TO BE REPLACED FROM THE REGISTRY'S OFFICIAL DOCUMENTATION]"
+    version = "[TO BE REPLACED FROM THE REGISTRY'S [OFFICIAL DOCUMENTATION](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest)]"
     # insert the required input variables below
 }
 ```
@@ -121,7 +121,7 @@ module "harness-gitspaces" {
 ```
 module "harness-gitspaces" {
     source                      = "harness/harness-gitspaces/gcp"
-    version                     = "0.0.3"
+    version                     = "[TO BE REPLACED FROM THE REGISTRY'S [OFFICIAL DOCUMENTATION](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest)]"
     infra_config_yaml_file      = "infra_config.yaml"
     service_account_key_file    = "service-account-key.json"
     manage_dns_zone             = true
