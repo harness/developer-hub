@@ -142,10 +142,6 @@ This setting maps directly to Kubernetes volumes. Harness supports the following
 
 #### Config Maps and Secrets as Volumes
 
-:::note
-Currently, this feature is behind the feature flag `CDS_CONFIG_MAPS_AND_SECRETS_AS_VOLUME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 **Mounting a ConfigMap as a Volume**
 
 To mount a Kubernetes ConfigMap as a volume in a pod:
