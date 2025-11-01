@@ -12,6 +12,16 @@ export const fallbackSDKs = [
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configure-fallback-treatments',
   },
   {
+    name: 'Browser SDK',
+    img: '/provider-logos/browser-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configure-fallback-treatments',
+  },
+  {
+    name: 'JavaScript SDK',
+    img: '/provider-logos/js-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configure-fallback-treatments',
+  },
+  {
     name: 'Java SDK',
     img: '/provider-logos/java-logo.png',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#configure-fallback-treatments',
@@ -30,6 +40,11 @@ export const fallbackSDKs = [
     name: '.NET SDK',
     img: '/provider-logos/dotnet-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#configure-fallback-treatments',
+  },
+  {
+    name: 'Node.js SDK',
+    img: '/provider-logos/nodejs-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#configure-fallback-treatments',
   },
 ];
 

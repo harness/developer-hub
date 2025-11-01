@@ -1168,6 +1168,61 @@ factory.Logger.setLogger(console);
 </TabItem>
 </Tabs>
 
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally or for individual flags at the SDK level.
+
+This is useful when you want to:
+
+- Maintain a predictable user experience during outages or evaluation failures (avoid unexpected `control` in production) 
+- Protect critical user flows by returning a safe, stable treatment (for example, forcing `off` during an incident)
+- Customize behavior per flag so each evaluation inherits appropriate safe defaults if something goes wrong
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```typescript
+// Initialize SDK with global fallback treatment
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  fallbackTreatments: {
+    global: {
+      treatment: 'global-treatment', 
+      config: '{"global": true}' 
+    },
+  }
+});
+const client = factory.client();
+```
+
+### Flag-level fallback treatment
+
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`. This flag-level fallback always takes precedence over the global fallback treatment, so if both are defined, the SDK will return the flag-level value when that flag cannot be evaluated.
+
+```typescript
+// Initialize SDK with a per-flag fallback treatment
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SERVER_SIDE_SDK_KEY'
+  },
+  fallbackTreatments: {
+    byFlag: {
+      'my_feature': {
+        treatment: 'flag-level-treatment',
+        config: '{"global": false}'
+      },
+      'my_other_feature': 'off'
+    }
+  }
+});
+const client = factory.client();
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ## Proxy
 
 If your environment requires routing traffic through a proxy, you can configure the Node.js SDK to use one.

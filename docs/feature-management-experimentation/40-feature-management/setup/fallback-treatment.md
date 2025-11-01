@@ -1,6 +1,7 @@
 ---
 title: Fallback treatment
 sidebar_position: 8
+description: Learn how to configure global and per-flag fallback treatments in Harness FME SDKs to ensure predictable feature flag evaluations when the SDK cannot determine a value.
 ---
 
 ## Overview
@@ -13,8 +14,11 @@ This behavior is defined in the SDK itself and is not configured through the Har
 
 Fallback treatments are applicable in the following scenarios:
 
-- The SDK cannot connect to Harness services (for example, network failure or missing attributes)
-- Your code explicitly provides a fallback treatment when calling `getTreatment` 
+- The SDK cannot connect to Harness services (for example, due to network failure or missing attributes)
+- A feature flag or segment evaluation times out
+- The flag evaluation cannot be fetched or cached locally
+- The evaluation context is incomplete or invalid for targeting
+- An unexpected error occurs during evaluation
 
 ## How fallback treatments differ from control treatment
 
@@ -24,10 +28,51 @@ The fallback treatment, on the other hand, is customizable. You choose what the 
 
 Harness recommends providing a fallback treatment when calling the SDK to ensure a predictable user experience if Harness is unavailable, and using low-risk values (like `"off"`) as fallbacks to reduce exposure risk.
 
+## Global vs. flag-level fallback treatments
+
+Fallback treatments can be defined **globally** for the entire SDK or **per flag** for more granular control:
+
+- **Global fallback**: Returned whenever any flag cannot be evaluated, unless a flag-level fallback is defined.
+- **Flag-level fallback**: Overrides the global fallback for that specific flag, taking precedence when both are defined. This allows you to customize behavior for individual flags without affecting the global default.
+
+For example:
+
+```java
+// Global fallback treatment
+
+FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(
+    new FallbackTreatment("on-fallback", "{\"prop1\":\"val1\"}"),
+    null
+);
+
+SplitClientConfig config = SplitClientConfig.builder()
+    .fallbackTreatments(fallbackTreatmentsConfiguration)
+    .build();
+
+SplitFactory factory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
+SplitClient client = factory.client();
+
+// Flag-level fallback treatment
+// Overrides the global fallback for the specified flag
+FallbackTreatmentsConfiguration flagFallbackConfig = new FallbackTreatmentsConfiguration(
+    null,
+    new HashMap<String, FallbackTreatment>() {{
+        put("FEATURE_FLAG_NAME", new FallbackTreatment("off", "{\"prop2\":\"val2\"}"));
+    }}
+);
+
+SplitClientConfig clientConfigWithFlagFallback = SplitClientConfig.builder()
+    .fallbackTreatments(flagFallbackConfig)
+    .build();
+
+SplitFactory factoryWithFlagFallback = SplitFactoryBuilder.build("YOUR_API_KEY", clientConfigWithFlagFallback);
+SplitClient clientWithFlagFallback = factoryWithFlagFallback.client();
+```
+
 import { Section, fallbackSDKs } from '@site/src/components/Docs/data/fmeSDKSFallback';
 
 ## Supported SDKs for fallback treatments
 
-Select an SDK to configure fallback handling in your client application.
+Select an SDK to configure fallback treatments for both client and server applications.
 
 <Section items={fallbackSDKs} />
