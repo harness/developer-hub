@@ -263,6 +263,70 @@ Streaming provides a persistent connection to the SDKs. Harness Feature-Flags us
 For more information, see [Communication strategy between SDKs and Harness Feature Flags](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags).
 
 </details>
+<details> <summary><strong>How can I avoid spikiness in request rates from SDKs?</strong></summary>
+
+You can configure the SDKs to run in polling mode instead of streaming mode.
+
+In streaming mode, a long-lived connection stays open to listen for updates. When a flag or target group changes, all SDKs receive the update simultaneously, which can create spikes in request rates.
+
+In polling mode, each SDK periodically requests the latest feature configurations or target groups from the CDN at a set interval (minimum 1 minute). This spreads requests evenly over time, resulting in a more stable and predictable request pattern.
+
+If a flag or group changes in SaaS, SDKs pick up the update during their next poll, so they are only out-of-date for at most the configured poll interval.
+
+</details> <details> <summary><strong>Can I run multiple instances of the Node SDK in a single application?</strong></summary>
+
+No. Running multiple instances of the Node SDK within a single application is not supported or recommended. Each SDK instance maintains its own internal state and cache, and sharing them across instances can lead to unpredictable or incorrect behavior.
+
+</details> <details> <summary><strong>What happens if I run multiple Node SDK instances in one app?</strong></summary>
+
+If multiple Node SDK instances are initialized within the same process, they may share the same local cache. Because the cache is keyed only by flag or segment ID (not by project or environment), flag updates from one environment can overwrite or block updates from another. This can result in inconsistent feature flag behavior.
+
+</details> <details> <summary><strong>Why do flag updates behave inconsistently when using multiple SDK instances?</strong></summary>
+
+Each SDK instance compares incoming flag updates against its cached version. When two SDK instances share the same cache and the same flag ID exists in both environments, the instance with the higher version number “wins.” Updates from environments with lower flag versions may be ignored until their version surpasses the higher one.
+
+</details> <details> <summary><strong>Is running multiple SDK instances across separate Node apps supported?</strong></summary>
+
+Yes. Running separate Node applications, each with its own SDK instance, is fully supported. Each app maintains an isolated cache, so flag toggling and target group rules behave as expected.
+
+</details> <details> <summary><strong>How can I safely support multiple SDK, Harness environments, or projects?</strong></summary>
+
+To safely manage multiple environments or projects, run a single SDK instance per process. If you need to connect to multiple environments, use separate services or processes, each with its own SDK configuration.
+
+</details> <details> <summary><strong>What is the recommended architecture to avoid SDK conflicts?</strong></summary>
+
+The best practice is to run one SDK instance per application process. If your application must interact with multiple Harness environments or projects, create separate microservices or worker processes, each maintaining its own SDK instance and configuration.
+
+</details> <details> <summary><strong>In a multi-service deployment, what happens if one service fails?</strong></summary>
+
+Each service is deployed independently. If Service A fails, only Service A will rollback. The deployment of Service B or any other service will not be affected.
+
+</details> <details> <summary><strong>Why isn’t the artifact being validated when using a trigger with an expression in the service step?</strong></summary>
+
+The service step cannot validate artifact values provided as expressions. Validation only works reliably for fixed values. Expressions can potentially resolve to null at runtime, so mandatory validation cannot be enforced at this step.
+
+</details> <details> <summary><strong>Does the Java SDK support HTTP proxy configuration?</strong></summary>
+
+Yes. Starting with Java SDK version 1.8.3, experimental support for HTTP proxy configuration is available. You can set the following properties:
+```
+http.proxyHost / https.proxyHost
+
+http.proxyPort / https.proxyPort
+
+http.proxyUser
+
+http.proxyPassword
+```
+
+These settings are passed directly to OkHttp.
+
+</details> <details> <summary><strong>Why do I need to run the OpenSSL command to re-encode the private key when setting up a GitHub App connector?</strong></summary>
+
+The OpenSSL command converts a private key into unencrypted PKCS#8 PEM format.
+
+Some systems, like GitHub Apps, require private keys specifically in PKCS#8 format instead of the traditional PKCS#1 format. Running this command ensures your key is properly formatted and compatible.
+
+</details>
 
 <details>
 <summary><strong>How does the metric aggregate/batch the data before sending it to Harness?</strong></summary>
@@ -1092,3 +1156,4 @@ To see these logs, you need to set your logger level to debug. Keep in mind that
 
 Yes, in the .NET SDK, verbose logging can provide detailed information about which target group rules were evaluated and whether they matched. To access these logs, your logging level should be set to debug.
 </details>
+
