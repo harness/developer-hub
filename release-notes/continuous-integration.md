@@ -50,6 +50,29 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## October 2025
 
+### Version 1.104.0
+
+<!-- 2025-10-27-->
+#### Fixed issues
+- Fixed an issue where GitClone step in CI Stage did not work within an insert step(Flexible templates).(ZD-94965, CI-19316)
+- Fixed an issue where transient step failures displayed unclear or misleading error messages when the `CI_ADDON_RETRY_MARKER_FILE` feature flag was enabled. Error messages are now clearer and more actionable. (CI-19317)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/harness-cache-server` | Update proxy to fix gcs self hosted proxy oidc | 1.7.6 | 1.7.7 |
+| `plugins/cache` | Integrate new cache service apis in Save & Restore plugin for Harness cache steps to consume | 1.9.15 | 1.9.16 |
+| `plugins/kaniko` | Added support for Azure connector with OIDC | 1.11.5 | 1.12.0 |
+| `plugins/kaniko-ecr` | Added support for Azure connector with OIDC | 1.11.5 | 1.12.0 |
+| `plugins/kaniko-gcr` | Added support for Azure connector with OIDC | 1.11.5 | 1.12.0 |
+| `plugins/docker` | Added support for Azure connector with OIDC | 21.0.1 | 21.1.0 |
+| `plugins/acr` | Added support for Azure connector with OIDC | 21.0.1 | 21.1.0 |
+| `plugins/gcr` | Added support for Azure connector with OIDC | 21.0.1 | 21.1.0 |
+| `plugins/gar` | Added support for Azure connector with OIDC | 21.0.1 | 21.1.0 |
+| `harness/ci-addon` | Fixed misleading error message (CI-19317)| 1.17.8 | 1.17.10|
+| `harness/ci-lite-engine` | Fixed misleading error message (CI-19317) | 1.17.8 | 1.17.10 |
+
 ### Version 1.103.0
 
 <!-- 2025-10-13 -->
