@@ -6,32 +6,116 @@ redirect_from:
   - /docs/internal-developer-portal/features/checks-datasources
 ---
 
-Harness IDP allows you to integrate various data sources and implement custom checks to ensure your software components adhere to best practices and compliance. In this docs, we'll walk through how to add custom checks and data sources for [scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) in Harness IDP.
-
-### Overview
-
 Harness IDP allows you to integrate various data sources, such as GitHub, GitLab, Bitbucket, Azure DevOps, and many more, to collect specific data points for each software component. Once a data source is enabled, you can use them to create checks to be used in scorecards.
 
-### Add Custom Checks
+---
 
-1. Under the `Admin` go to `Scorecards`.
-2. In the `Scorecards` go to the `Checks` tab and select **Create Custom Check**.
-3. Now on the **Create Check** page add a name and description for your check.
-4. Under **Rules** you can find the following Data Sources to select from.
+## Custom Checks
+You can create custom checks to evaluate data points from different data sources and use them in scorecards. Follow the given steps to create custom checks: 
+
+1. In your Harness IDP account, navigate to Configure → Scorecards.
+2. On the Scorecards page, go to the **Checks** tab and select **Create Custom Check** in the top-right corner.
+3. On the Create Check page, add a name and description for your check. You can also add tags.
+4. Under **Rules Configuration**, you can add **basic rules** and **advanced rules**. See [Rules Configuration](#rules-configuration) for details.
+5. (Optional) Add a **Rule Description** for each rule to provide context and clarify what the rule checks.
+6. Click "Save changes" to save the check and its rule configuration.
+ 
+
+<DocVideo src="https://app.tango.us/app/embed/7e28b1de-fd46-4379-9560-a4afba4eaab6"/>
+
+---
+
+## Rules Configuration
+
+Harness IDP provides two modes for configuring rules in your custom checks: **Basic** and **Advanced**. Each mode is designed to cater to different levels of complexity. 
+
+### Basic Rules Configuration
+
+The **Basic** mode offers a user-friendly interface for creating simple rule expressions. 
+
+- **No Nested Operations**: Basic mode does not support nested operations, keeping the configuration straightforward.
+- **Multiple Rules**: You can add multiple rules and define how they should be evaluated together.
+- **Operation Between Rules**: Choose between All Of (Performs **AND** operation) and Any Of (Performs **OR** operation):
+  - All Of (Performs **AND** operation): All rules must be satisfied for the check to pass.
+  - Any Of (Performs **OR** operation): At least one rule must be satisfied for the check to pass.
+
+**Mode Components**: 
+
+Each rule in Basic mode consists of four components:
+1. **Data Source**: Select the data source you want to evaluate (e.g., GitHub, GitLab, Bitbucket, PagerDuty, etc.).
+2. **Data Point**: Choose the data point from the selected data source (e.g., repository name, branch protection status, number of open issues, etc.).
+3. **Operator**: Select the comparison operator (e.g., equals, not equals, greater than, less than, contains, etc.).
+4. **Value**: Specify the value to compare against.
+
+![](./static/basic-check.png)
+
+**Example:**
+
+Let's create a simple check to ensure a repository has branch protection enabled:
+1. Operation Between Rules: Select **All Of** (AND operation)
+2. Rule Configuration: 
+   - Data Source: `Bitbucket`
+   - Data Point: `Is Branch Protected`
+   - Operator: `Equals`
+   - Value: `true`
+   - Rule Description: "Ensure main branch is protected"
+
+This basic rule checks if the main branch has protection enabled in Bitbucket.
+
+---
+
+### Advanced Rules Configuration
+
+The **Advanced** mode provides a powerful Rules Expression Editor that allows you to write complex rule expressions using **JEXL** (Java Expression Language). 
+
+- **JEXL-Powered**: Write complex rule expressions using JEXL syntax, which supports nested operations, conditional logic, and advanced operators. Go to [JEXL Reference](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) for more details.
+- **Expression Validation**: Built-in JEXL validation ensures your expressions are syntactically correct before saving.
+- **Generate Rule**: Use the **+ Generate Rule** button to quickly insert rule templates or snippets.
+![](./static/generate-rule.png)
+
+**Mode Components**: 
+1. **Rules Expression Editor:**
+The editor provides a text area where you can write your JEXL expressions. The expressions can reference data points from various data sources and apply complex logic to evaluate them.
+2. **JEXL Expression Validation:**
+After writing your expression, click the **Validate JEXL** button to check if your syntax is correct. The validation feedback will appear below the editor, helping you identify and fix any errors before saving the check.
+
+![](./static/advanced-rule.png)
+
+**Example:**
+
+Here's a complex check that validates multiple conditions across different data sources:
+```jexl
+catalog.pagerdutyAnnotationExists == true && 
+catalog.annotationExists."jira/project-key" == true && 
+bitbucket.extractStringFromAFile."main"."catalog-info.yaml"."/test-/" == "True" && 
+harness.PercentageOfCIPipelinePassingInPastSevenDays == "test" && 
+bitbucket.isBranchProtected."main" == true && 
+bitbucket.isFileExists."catalog-info.yaml"."main" == true && 
+catalog.annotationExists."backstage.io/kubernetes-id" == true
+```
+
+This advanced rule checks if:
+- PagerDuty annotation exists in the catalog
+- Jira project key annotation is present
+- A specific string pattern exists in the catalog-info.yaml file
+- CI pipeline success rate meets requirements
+- Main branch is protected in Bitbucket
+- catalog-info.yaml file exists in the main branch
+- Kubernetes ID annotation is configured
 
 :::info
 
-There's a tab called `Data Sources` available in `Scorecards` page to check for supported data sources and the corresponding data points. 
+**Important:** Basic mode rules are automatically converted to JEXL expressions. You can view these in the Advanced tab at any time. However, **once you edit anything in the Advanced tab, the Basic tab will be disabled (greyed out)** for that check unless you switch back to Basic mode rule configuration. This is because manual JEXL expressions may contain complex logic that cannot be represented in the Basic UI.
+
+**Additional Notes:**
+- There's a tab called **Data Sources** available in **Scorecards** page to check for supported data sources and the corresponding data points.
+- The Git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
 
 :::
 
-:::warning
+---
 
-The git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
-
-:::
-
-### Supported Operators
+## Supported Operators
 
 We support the following `regex operators` as Operators for all the Data Points.
 
@@ -47,8 +131,9 @@ We support the following `regex operators` as Operators for all the Data Points.
 
 ![](./static/regex-operators.png)
 
+---
 
-### Support for `catalog-info.yaml` metadata as inputs.
+## Support for `catalog-info.yaml` metadata as inputs.
 
 Users can now use all the entity definition from the `catalog-info.yaml` or from additional properties [ingested using APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) as input variable(JEXL format) in Scorecard Checks. For example, `<+metadata.testCoverageScore>`, `<+metadata.annotations['backstage.io/techdocs-ref']>`. Checks e.g., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
 
@@ -72,6 +157,8 @@ metadata:
 Few datasources like **PagerDuty**, **Kubernetes** are dependent on the Plugins to fetch data using the annotations meant for the plugins in `catalog-info.yaml` as well as the proxy defined in the plugins section. 
 
 :::
+
+---
 
 ## GitHub
 
@@ -231,6 +318,8 @@ In case you mention the `branchName` field as a check config other than what's p
 
 ![](./static/match-github.png)
 
+---
+
 ## GitLab
 
 The following **Data Points** are available for GitLab Data Source. 
@@ -349,6 +438,8 @@ In case you mention the `branchName` field as a check config other than what's p
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/match-github.png)
+
+---
 
 ## Bitbucket
 
@@ -482,6 +573,8 @@ spec:
     ...
 ```
 
+---
+
 ## Harness 
 
 ### Pre-Requisites
@@ -581,6 +674,8 @@ If the rule depends on the execution of the pipeline then the latest execution o
 - *Calculation Method*: If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the backstage.io/source-location annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
 
 - *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
+
+---
 
 ## Catalog 
 
@@ -718,6 +813,8 @@ spec:
     ...
 ```
 
+---
+
 ## Kubernetes
 
 :::info
@@ -761,6 +858,8 @@ The following **Data Points** are available for Kubernetes Data Source.
 - *Prerequisites:* The Kubernetes plugin needs to be configured and enabled in the admin section. Refer [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/kubernetes) for more details. 
 
 ![](./static/days-k8s.png)
+
+---
 
 ## Jira
 
@@ -841,6 +940,8 @@ metadata:
 spec:
     ...
 ```
+
+---
 
 ## PagerDuty
 
