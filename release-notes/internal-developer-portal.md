@@ -33,7 +33,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 ---
 
 ### [New Feature] Workflow Execution Page Redesign
-**[Docs](/docs/internal-developer-portal/flows/manage-workflows)**
+**[Docs](/docs/internal-developer-portal/flows/manage-workflow-2o#idp2.0--execution-view)**
 
 We've completely redesigned the **Workflow Execution View** to provide a more intuitive and comprehensive monitoring experience. The new execution view is organized into **three distinct tabs** that give you complete visibility into your workflow runs.
 
@@ -66,13 +66,13 @@ We're introducing **Customizable Catalog Tables**, giving you full control over 
 ---
 
 ### [New Feature] Branch Selector in Workflows
-**[Docs](/docs/internal-developer-portal/flows/manage-workflows#create-workflows-with-different-branches)**
+**[Docs](/docs/internal-developer-portal/flows/manage-workflow-2o#idp2.0--create-workflows-with-different-branches)**
 
 You can now create and execute **Workflows with different branches**. When creating a Workflow from a Git repository, you can configure the **branch** from which the Workflow is created. This means **different branches** of the same repository can be used to create different Workflows.
 
 The **branch selector** feature enables you to select the branch when creating a Workflow from a Git repository, execute Workflows from different branches by switching the branch from the branch selector, and manage multiple versions of the same Workflow across different branches.
 
-> Learn more about [Creating Workflows with Different Branches](/docs/internal-developer-portal/flows/manage-workflows#create-workflows-with-different-branches).
+> Learn more about [Creating Workflows with Different Branches](/docs/internal-developer-portal/flows/manage-workflow-2o#idp2.0--create-workflows-with-different-branches).
 
 ![](./static/internal-developer-portal/workflow-branch-selector.png)
 
