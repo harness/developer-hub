@@ -16,10 +16,15 @@ Branch rules set on a repository only apply to that specific repository but you 
 
 If you configure branch rules at multiple levels they are combined with an `AND` clause. This generally means the more restrictive rule applies. E.g If you configure a repository branch rule that requires 1 approval before merging but the org branch rule requires 2 approvals, then 2 approvals are needed. Before the branch can be merged the repository requires 1 approval AND the org requires 2 approvals so 2 approvals are needed.
 
-1. Navigate to the level where you want to enable branch rules: repository, project, org, or account and select **Manage Repositories**.
+1. Navigate to the level where you want to enable branch rules. For projects, orgs, or accounts, select **Manage Repositories**. For a repository, click **Settings**.
 2. Select the **Rules** tab.
-3. Select **New Branch Rule**.
+3. Click **+ Create Branch Rule**.
 4. Enter the rule **Name** and optional **Description**.
+:::info
+
+**Name** must start with a letter or `_` and only contain `[a-zA-Z0-9-_.]`
+
+:::
 5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). 
 
 You have the option to include or exclude repositories when setting rules at the account, org, or project level. This allows you to fine-tune which repositories the rule applies to without forcing the rule across every repo. You can do this in two ways:
@@ -87,11 +92,11 @@ To create a tag rule:
 1. Navigate to **Code Repository** → your repo.
 2. In the left sidebar, select **Manage Repository**.
 3. Go to the **Rules** tab.
-4. Click the **+ New branch rule** dropdown and select **New tag rule**.
+4. Click the **+ Create Branch Rule** dropdown and select **+ Create Tag Rule**.
 
 ### Create a Tag Rule
 
-After selecting **New tag rule**, the rule editor appears:
+After selecting **+ Create Tag Rule**, the rule editor appears:
 
 #### Enable
 
@@ -154,7 +159,8 @@ You can toggle rules on and off.
 
 1. Go to your repository and select **Settings**.
 2. Select the **Rules** tab.
-3. Use the switch next to each rule to enable or disable rules.
+3. Select your rule. 
+4. Click the **Enable the rule** toggle at the top of the page to turn the rule on and off.
 
 ## Edit or delete rules
 
@@ -170,6 +176,10 @@ A CODEOWNERS file declares the users <!--and groups-->responsible for a reposito
 - `.harness/CODEOWNERS`  
 
 Harness Code recognizes CODEOWNERS in a repository if a CODEOWNERS file is present but does not automatically add them as reviewers. This prevents unnecessary notifications when changes affect files that don’t require review from all CODEOWNERS. To auto-add CODEOWNERS as reviewers, enable the **Add Code Owners as reviewers** rule.
+
+:::note
+Code Owners might not be automatically added as reviewers if the `CODEOWNERS` file contains syntax errors or invalid patterns. Make sure your file follows the correct format and resolves any errors to ensure proper reviewer assignment.
+:::
 
 You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER voluntarily reviews a PR, Harness adds them as a reviewer for record-keeping, just like any other independent review. If the **Require review from code owners** branch rule is enabled, CODEOWNERS function as an approval policy—meaning a PR cannot be merged unless the changes have been approved by the required CODEOWNERS. This requirement is displayed in the Approvals section of the PR summary.
 

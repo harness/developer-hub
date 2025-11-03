@@ -16,35 +16,33 @@ The table below outlines the current features available on the Harness Self-Mana
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
 | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ✅ | ✅ | ✅ |
-|Cost categories | ✅  | ✅ | ✅ | ✅ | 
-|Budgets | ✅ | ✅ | ✅ | ✅ | ✅ |
-|BI dashboards |✅  | ✅ | ✅ | ✅ | 
+|Perspectives | ✅ | ✅  | ✅ | ✅ |
+|Cost categories | ✅ | ✅ | ✅ | ✅ | 
+|Budgets | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards | ✅ | ✅| ✅ | ✅ | 
 |Anomaly detection  | ✅ | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | 
-|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|Recommendations |✅ | ✅ | ❌  | ✅ | 
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
-|Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
+|Perspective Preferences| ✅ | ✅ |✅ | ✅ |
 |Commitment Orchestrator | ❌ | ❌ | ❌ | ❌ | 
-|Cluster Orchestrator | ❌ | ❌ | ❌ | ❌ | 
+|Cluster Orchestrator | ❌ |  ❌ | ❌ | ❌ | 
 
 
 ### Air-Gapped environment
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
 | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ❌  | ❌  | ✅ |
-|Cost categories | ✅  | ❌  | ❌  | ✅ | 
-|Budgets | ✅ | ❌  | ❌  | ✅ | 
-|BI dashboards |✅  | ❌  | ❌  | ✅ | 
-|Anomaly detection  | ✅ | ❌  | ❌  | ✅ |
+|Perspectives | ✅  | ❌  | ✅   | ✅ |
+|Cost categories | ✅  | ❌  | ✅   | ✅ | 
+|Budgets | ✅ | ❌  | ✅   | ✅ | 
+|BI dashboards |✅  | ❌  | ✅   | ✅ | 
+|Anomaly detection  | ✅ | ❌  | ✅   | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | 
-|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|Recommendations |✅ | ❌ | ❌ | ✅ | 
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
-|Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
+|Perspective Preferences| ✅ | ❌  | ✅  | ✅ | 
 |Commitment Orchestrator | ❌ | ❌ | ❌ | ❌ | 
 |Cluster Orchestrator | ❌ | ❌ | ❌ | ❌ | 
-
-:::note

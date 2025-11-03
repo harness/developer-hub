@@ -37,6 +37,6 @@ On the AWS console, you need to create a target group for the proxy VM with a he
 
 ## Create an AutoStopping rule with custom domains
 
-In Harness, [create AutoStopping rule for AWS](/docs/category/autostopping-for-aws) with HTTP/HTTPS workload and configure custom domains in the AutoStopping rule.
+In Harness, create AutoStopping rule for AWS with HTTP/HTTPS workload and configure custom domains in the AutoStopping rule.
 
 ![](./static/create-autostopping-rule-with-custom-domain.png)

@@ -32,7 +32,24 @@ Before you begin, ensure you have the following prerequisites setup:
     - `PIPE_DYNAMIC_PIPELINES_EXECUTION`
     - `IACM_1984_WORKSPACE_TEMPLATES`
 - Set “Enable Pipeline Dynamic Executions” to `True` in Account Settings -> Default Settings -> Pipeline. Go to [Pipeline Dynamic Executions](/docs/platform/pipelines/dynamic-execution-pipeline/) to learn more.
-- Ensure Harness Secret Manager is **NOT disabled** in your account. Environment Management uses the Harness secret manager to store some system-generated keys. Go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to learn more.
+- Ensure Harness Secret Manager is **enabled** in your account. Environment Management uses the Harness secret manager to store some system-generated keys. Go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to learn more. 
+
+- If **Harness Secret Manager is not enabled**, create a secret **`IDP_PO_API_KEY`** in the **same project** where environments will be created. The secret must contain a **Service Account Token** with some IaCM Workspace permissions. This ensures the token (via `IDP_PO_API_KEY`) has exactly the permissions needed to **create, update, and delete** IaCM Workspaces in that project.
+
+    * **Scope:** Project (same project that owns the IaCM Workspaces).
+    * **[Permissions needed (IaCM Workspaces)](https://developer.harness.io/docs/infra-as-code-management/manage-projects/workspace-rbac/):**   
+      - [`View`](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/#infrastructure-as-code): View IaCM Workspaces in a project.
+      - [`Create/Edit`](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/#infrastructure-as-code): Create and edit IaCM Workspaces in a project.
+      - [`Delete`](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/#infrastructure-as-code): Delete IaCM Workspaces in a project.
+      - [`Edit Variables`](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/#infrastructure-as-code): Create and edit Environment and Terraform variables (IaCM)
+      - [`Access State`](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/#infrastructure-as-code): Access and view the state 
+      - [`View Templates`](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/#shared-resources): View Templates in a project. 
+    * **[Role](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles#create-a-role):** Create a **project-scoped Role** with the above workspace permissions.
+    * **[Resource Group](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups#create-a-resource-group):** Project-scoped; target "All Workspaces in this project" (or a specific subset) and "All Templates" used in the blueprints. 
+    * **[Service Account](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-service-account/#create-a-service-account):** Create at project scope and bind the Role + Resource Group to it.
+    * **[Token](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-service-account/#manage-api-keys):** On the Service Account → API Keys → create key → Generate Token (copy once).
+    * **[Secret](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets):** Project → Secrets → New Secret (Text) → Name: `IDP_PO_API_KEY` → Value: *paste token* → Save.
+
 - A new Harness project where you have **Project Admin** role assigned, where you can create all the necessary Harness resources.
 
 ## Get Started

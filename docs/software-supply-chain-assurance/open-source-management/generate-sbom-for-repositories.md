@@ -147,8 +147,9 @@ After you run the SBOM orchestration step followed by the STO Snyk scan, the SBO
 
 After you run the SBOM Orchestration step, you can download or publish SBOM through multiple ways depending on your workflow:
 
-- Via [Harness API](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact) 
+- Via [Harness API](https://apidocs.harness.io/sbom/downloadsbomforartifact) 
 - Use the Download SBOM button available on the Code Repositories page.
+- Download the SBOM score for repository via [Harness API](https://apidocs.harness.io/sbom/getsbomscoreforartifact)
 - Access the SBOM file directly from the pipeline output at the specified path `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json`.
 
 ## Next steps

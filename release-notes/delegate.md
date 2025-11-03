@@ -115,6 +115,24 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## October 2025
 
+### Version 25.10.87101 <!--October 28, 2025-->
+
+#### Fixed issues
+
+- Improves clarity and readability of error messages by removing redundancy. [CDS-104819]
+
+#### New features and enhancements
+
+- Added conditional retries to pipeline steps, allowing retries to happen automatically based on the situation, improving reliability and automation. [PIPE-29808]
+- Secrets Create/Edit permission can now be split into separate [`create` and `edit` permissions](/docs/platform/role-based-access-control/rbac-in-harness#secrets). [PL-65238]
+
+
+### Version 25.10.86901 <!--October 15, 2025-->
+
+#### Fixed issues
+
+- Incorrect connector type used during Kubernetes and Native Helm instance sync [CDS-114904]
+
 ### Version 25.10.86900 <!--October 08, 2025-->
 
 #### Fixed issues
@@ -421,7 +439,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed Issues
 
-- Fixed an issue where the Harness delegate incorrectly used local container credentials instead of the OIDC access token when listing GCP projects via an OIDC-authenticated connector. This is now resolved behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`, ensuring the delegate lists projects correctly based on its IAM principal. [CDS-108481]
+- Fixed an issue where the Harness delegate incorrectly used local container credentials instead of the OIDC access token when listing GCP projects via an OIDC-authenticated connector. [CDS-108481]
 
 ### Version 25.03.85503 <!-- March 27, 2025-->
 

@@ -376,12 +376,12 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 
 To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
-This method will return an object with the structure below:
+This method returns an object with the structure below:
 
 ```typescript title="TypeScript"
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
 
@@ -625,7 +625,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
 | sync.enabled | Controls the SDK continuous synchronization flags. When `true`, a running SDK processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
 | sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the SDK's HTTP(S) requests. | undefined |
-| storage | Pluggable storage instance to be used by the SDK as a complement to in memory storage. Only supported option today is `InLocalStorage`. Read more [here](#configuring-cache). | In memory storage |
+| storage | Pluggable storage instance to be used by the SDK as a complement to in memory storage. Only supported option today is `InLocalStorage`. Read more [here](#configure-cache-behavior). | In memory storage |
 | debug | Either a boolean flag, string log level or logger instance for activating SDK logs. See [logging](#logging) for details. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
@@ -701,7 +701,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 </TabItem>
 </Tabs>
 
-### Configuring cache
+### Configure cache behavior
 
 To use the pluggable `InLocalStorage` option of the SDK and be able to cache flags for subsequent loads in the same browser, you need to pass it to the SDK config on its `storage` option.
 
@@ -852,6 +852,60 @@ class IndexedDBWrapper implements SplitIO.StorageWrapper {
 
 </TabItem>
 </Tabs>
+
+### Integrate with the Harness Proxy
+
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+In web applications, proxies cannot be configured programmatically using JavaScript. Browsers restrict access to the low-level networking APIs required for handling tunneling (such as the HTTP `CONNECT` method) due to security reasons. Instead, the proxy must be configured at the browser or operating system level.
+
+#### Configure the proxy 
+
+The recommended approach is to configure a Proxy Auto-Configuration (PAC) file. A PAC file dynamically determines whether web traffic (including SDK requests) should be routed through a proxy or directly to the internet.
+
+1. Create a PAC file. Create a text file named `proxy.pac` with the following content, replacing `fme-forward-proxy:3128` with your proxy address and port.
+
+   ```javascript
+   function FindProxyForURL(url, host) {
+   // Use proxy for Split domains
+   if (shExpMatch(host, "*.split.io")) return "HTTPS fme-forward-proxy:3128";
+
+   // Connect directly for all other domains
+   return "DIRECT";
+   }
+   ```
+
+1. Serve the PAC file. Host the PAC file using any HTTP server. For example, using npm: `npx http-server public
+`. This assumes your `proxy.pac` file is located in the public directory.
+   
+   ![](./static/harness-proxy-browser-1.png)
+
+1. Configure your system or browser. You can point your browser or operating system to the hosted PAC file URL.
+   
+   For macOS: 
+
+   * Go to **System Settings** > **Network** > **Proxies** > **Automatic Proxy Configuration**.
+   * Enter the PAC file URL (for example, `http://127.0.0.1:8080/proxy.pac`).
+
+   ![](./static/harness-proxy-browser-2.png)
+
+   For Chrome (macOS or Linux), you can also start Chrome with the proxy configured from the command line:
+
+   ```bash
+   /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+     --proxy-pac-url="http://127.0.0.1:8080/proxy.pac"
+   ```
+
+1. Test the proxy. After configuration, open a browser tab and load a web application that uses the FME SDK. Requests to `*.split.io` should now be routed through your configured proxy.
+   
+   If the proxy requires authentication:
+
+   * Basic or Digest auth: The browser prompts you for a username and password when the SDK makes its first request.
+   * Bearer auth: Not supported in browser environments.
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
 
 ## Localhost mode
 
@@ -1243,6 +1297,63 @@ const sdk = SplitFactory({
 </TabItem>
 </Tabs>
 
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally or for individual flags at the SDK level.
+
+This is useful when you want to:
+
+- Maintain a predictable user experience during outages or evaluation failures (avoid unexpected `control` in production) 
+- Protect critical user flows by returning a safe, stable treatment (for example, forcing `off` during an incident)
+- Customize behavior per flag so each evaluation inherits appropriate safe defaults if something goes wrong
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated.
+
+```javascript
+// Initialize SDK with global fallback treatment
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'USER_ID'
+  },
+  fallbackTreatments: {
+    global: {
+      treatment: 'global-treatment', 
+      config: '{"global": true}' 
+    },
+  }
+});
+const client = factory.client();
+```
+
+### Flag-level fallback treatment
+
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`. This flag-level fallback always takes precedence over the global fallback treatment, so if both are defined, the SDK will return the flag-level value when that flag cannot be evaluated.
+
+```javascript
+// Initialize SDK with a per-flag fallback treatment
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'USER_ID'
+  },
+  fallbackTreatments: {
+    byFlag: {
+      'my_feature': {
+        treatment: 'flag-level-treatment',
+        config: '{"global": false}'
+      },
+      'my_other_feature': 'off'
+    }
+  }
+});
+const client = factory.client();
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ## Advanced use cases
 
 This section describes advanced use cases and features provided by the SDK.
@@ -1342,7 +1453,7 @@ While the SDK does not put any limitations on the number of instances that can b
 
 You can listen for four different events from the SDK.
 
-* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuring cache](#configuring-cache) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configure cache behavior](#configure-cache-behavior) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
 * `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
@@ -1407,7 +1518,7 @@ function whenReady() {
 client.once(client.Event.SDK_READY, whenReady);
 
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
-  // This callback will be called after `readyTimeout` seconds (10 seconds by default)
+  // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
   // if and only if the client is not ready for that time.
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });

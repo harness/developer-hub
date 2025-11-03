@@ -348,6 +348,29 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 :::
 
+### Override Image Connector
+By default, [Harness pulls certain images from public Docker Hub repos](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+
+#### How It Works
+Refer to the YAML snippet below to see how this is used. Harness Docker Runner would use the referenced Docker connector to authenticate and pull CI images.
+
+```yaml
+- stage:
+    name: build
+    identifier: build
+    description: ""
+    type: CI
+    spec:
+      cloneCodebase: true
+      platform:
+        os: Linux
+        arch: Amd64
+      runtime:
+        type: Docker
+        spec: 
+          harnessImageConnectorRef: account.docker_private_ciplay
+```
+
 <CustomCAcert/>
 
 ## Troubleshoot local runner build infrastructure

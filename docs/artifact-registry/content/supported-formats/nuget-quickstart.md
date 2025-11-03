@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Learn how to **create a NuGet Artifact Registry**, **configure an upstream proxy**, and **publish or install NuGet packages** using the CLI.
+
 
 ## Prerequisites
 - Ensure you have the **NuGet CLI** (`nuget`) installed on your local machine.
@@ -25,7 +25,8 @@ Your registry name must start with a letter and can include `lowercase alphanume
 :::
 
 5. Optionally, add a Description and Labels for better organization.
-6. Click **Create Registry** to finalize.
+6. Choose visibility between **Public** and **Private**.
+7. Click **Create Registry** to finalize.
 </TabItem>
 </Tabs>
 
@@ -69,34 +70,167 @@ If a NuGet package isn’t found in your Harness registry, the upstream proxy ca
 
 ---
 
-## Publish & Install NuGet Packages
-### Authenticate the CLI with the Harness Registry
-After creating your new NuGet registry, you will need to set up a client to authenticate with the registry.
-1. In your Harness NuGet Artifact Registry, click **Setup Client**.
-2. Click **Generate token** to generate a new identity token for CLI access.
-3. Run the following command to add the Harness registry as a package source:
+## Install and Use NuGet Packages
+<Tabs>
+<TabItem value="nuget" label="Nuget">
+
+#### Configure Authentication
+
+##### Step 1
+
+Add the Harness Registry as a package source:
+
 ```bash
-nuget sources add -Name harness \
-  -Source https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/index.json \
-  -Username <username> -Password <TOKEN>
+nuget sources add -Name harness -Source https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/index.json -Username john.doe@harness.io -Password <TOKEN>
 ```
-:::info NuGet V2 Client
-For NuGet V2 clients, use the following URL:
+
 ```bash
-https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/
+nuget setapikey <TOKEN> -Source harness
 ```
+
+:::info
+Note: For Nuget V2 Client, use this url: `https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/`
 :::
 
-### Publish a package
-Publish your package with the following command:
-```bash
-nuget push <PACKAGE_FILE> -Source harness
-```
+##### Step 2
 
-### Install a package
-Install your package with the following command:
+Generate an identity token for authentication
+
+#### Install Package
+
+
+
+Install a package using nuget:
+
 ```bash
 nuget install <ARTIFACT_NAME> -Version <VERSION> -Source harness
 ```
 
----
+#### Publish Package
+
+
+
+Publish your package:
+
+```bash
+nuget push <PACKAGE_FILE> -Source harness
+```
+
+:::info
+Note: To publish your package with nested directory, refer below command
+
+```bash
+nuget push <PACKAGE_FILE> -Source https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/<SUB_DIRECTORY> -ApiKey <TOKEN>
+```
+:::
+
+</TabItem>
+<TabItem value="dotnet" label="Dotnet">
+
+#### Configure Authentication
+
+##### Step 1
+
+Add the Harness Registry as a package source:
+
+```bash
+dotnet nuget add source https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/index.json --name harness --username john.doe@harness.io --password <TOKEN> --store-password-in-clear-text
+```
+
+:::info
+Note: For Nuget V2 Client, use this url: `https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/`
+:::
+
+##### Step 2
+
+Generate an identity token for authentication
+
+
+#### Install Package
+
+
+Add a package using dotnet:
+
+```bash
+dotnet package add <ARTIFACT_NAME> --version <VERSION> --source harness
+```
+
+#### Publish Package
+
+
+
+Publish your package:
+
+```bash
+dotnet nuget push <PACKAGE_FILE> --api-key <TOKEN> --source harness
+```
+
+:::info
+Note: To publish your package with nested directory, refer below command
+
+```bash
+dotnet nuget push <PACKAGE_FILE> --source https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/<SUB_DIRECTORY> --api-key <TOKEN>
+```
+:::
+
+</TabItem>
+<TabItem value="visual-studio" label="Visual Studio">
+
+#### Configure Nuget Package Source in Visual Studio
+
+##### Step 1
+
+Open your project in Visual Studio, then navigate to the NuGet Package Manager settings:
+
+1. Click on **Tools** in the top menu
+2. Select **NuGet Package Manager**
+3. Click on **Package Manager Settings**
+
+##### Step 2
+
+In the Options window that appears, click on **Package Sources** in the left panel.
+
+You will see the location of your NuGet.Config file displayed at the top of this window. Take note of this location as you can also directly edit this file if needed.
+
+##### Step 3
+
+In the Package Sources window:
+
+1. Click the **+** button to add a new package source
+2. Set the **Name** to `harness`
+3. Set the **Source** to `https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/index.json`
+4. Click **Update** and then **OK**
+
+##### Step 4
+
+Locate and open your NuGet.Config file (shown at the top of the Package Sources window) and ensure it contains the following configuration:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+ <packageSources>
+     <clear />
+     <add key="harness" value="https://pkg.harness.io/pkg/<account-id>/<nuget-registry-name>/nuget/index.json" />
+ </packageSources>
+ <packageSourceCredentials>
+     <harness>
+         <add key="Username" value="john.doe@harness.io" />
+         <add key="ClearTextPassword" value="<TOKEN>" />
+     </harness>
+ </packageSourceCredentials>
+</configuration>
+```
+
+![NuGet Config Example](../nuget-config-example.png)
+
+:::info
+You can get this configuration from your Harness client setup details.
+:::
+
+##### Step 5
+
+Generate an identity token for authentication in the Harness platform and replace `<TOKEN>` in the configuration with your actual token.
+
+
+</TabItem>
+</Tabs>

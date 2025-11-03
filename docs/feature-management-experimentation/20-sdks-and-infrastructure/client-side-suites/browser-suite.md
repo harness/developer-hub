@@ -364,30 +364,14 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 
 To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
-This method will return an object with the structure below:
+This method returns an object with the structure below:
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
-
-```javascript
-var TreatmentResult = {
-  String treatment;
-  String config; // or null if there is no config for the treatment
-}
-```
-
-</TabItem>
-<TabItem value="TypeScript">
-
-```javascript
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+```typescript title="TypeScript"
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
-
-</TabItem>
-</Tabs>
 
 As you can see from the object structure, the config is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the Suite returns `null` for the config parameter. This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
@@ -636,7 +620,7 @@ Feature flagging parameters:
 | sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the Suite. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
 | sync.enabled | Controls the Suite continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
 | sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the Suite's HTTP(S) requests. | undefined |
-| storage | Pluggable storage instance to be used by the Suite as a complement to in memory storage. Only supported option today is `InLocalStorage`. See the [Configuration](#configuring-cache) section for details. | In memory storage |
+| storage | Pluggable storage instance to be used by the Suite as a complement to in memory storage. Only supported option today is `InLocalStorage`. See the [Configuration](#configure-cache-behavior) section for details. | In memory storage |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the Suite will fallback to the polling mechanism. If false, the Suite will poll for changes as usual without attempting to use streaming. | true |
 
 Suite RUM agent parameters:
@@ -748,7 +732,7 @@ const suite: ISuiteSDK = SplitSuite({
 </TabItem>
 </Tabs>
 
-### Configuring cache
+### Configure cache behavior
 
 To use the pluggable `InLocalStorage` option of the Suite and be able to cache flags for subsequent loads in the same browser, you need to pass it to the Suite config as the `storage` option.
 
@@ -1196,9 +1180,9 @@ While the Suite does not put any limitations on the number of instances that can
 
 You can listen for four different events from the Suite.
 
-* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the Suite is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuring cache](#configuring-cache) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the Suite is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configure cache behavior](#configure-cache-behavior) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if the Suite could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the Suite could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below:
@@ -1261,7 +1245,7 @@ function whenReady() {
 client.once(client.Event.SDK_READY, whenReady);
 
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
-  // This callback will be called after `readyTimeout` seconds (10 seconds by default)
+  // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
   // if and only if the client is not ready for that time.
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });

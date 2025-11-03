@@ -21,7 +21,8 @@ While it is not necessarily used for binaries, you can store binaries as well.
 3. In the Registry Type dropdown, select **Generic Registry**.
 4. Provide a **Registry Name**.
 5. Optionally, add a Description and Labels for better organization.
-6. Click **Create Registry** to finalize.
+6. Choose visibility between **Public** and **Private**.
+7. Click **Create Registry** to finalize.
 
 :::info registry name criteria
 Your registry name must start with a letter and can include `lowercase alphanumerics`, `_`, `.` and `-`.

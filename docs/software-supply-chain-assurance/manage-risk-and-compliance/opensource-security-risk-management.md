@@ -15,15 +15,15 @@ Open source software plays a critical role in the software landscape, with studi
 
 After completing the SBOM Orchestration step for your [artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts) or [repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories), the [SBOM tab](/docs/software-supply-chain-assurance/artifact-security/overview#sbom-tab) will display the below components marked with specific icons that indicate their current status.
 
-- Vulnerabilities in SBOM Components 
+- [Vulnerabilities in SBOM Components](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#vulnerabilities-in-sbom-components-oss-risk---1) 
 
-- Outdated Components 
+- [Outdated Components](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#outdated-components-oss-risk---5) 
 
-- Unmaintained Components 
+- [Unmaintained Components](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#unmaintained-components-oss-risk---4) 
 
-- Close to End Of Life Components
+- [Close to End Of Life Components](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#close-to-end-of-life-components)
 
-- End Of Life Components
+- [End Of Life Components](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#end-of-life-components)
 
 :::note
 
@@ -32,17 +32,17 @@ After completing the SBOM Orchestration step for your [artifacts](/docs/software
 - Detection of EOL and Close to EOL components is currently supported for npm, Maven, and PyPI. Support for additional package managers will be added in the future.
 :::
 
-### Vulnerabilities in SBOM Components (OSS Risk - 1):
+### Vulnerabilities in SBOM Components (OSS Risk - 1)
 
 After you run the SBOM Orchestration step followed by an STO scan using Snyk or Aqua Trivy, the SBOM tab displays vulnerabilities for the components identified by the selected scan tool. This helps you effectively identify and prioritize open source risks
 
 
-You can also filter out the components, based on the OWASP Top 10 Risks.
+You can also filter out the components, based on the OSS Risks.
 
 <DocImage path={require('./static/snyk.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-### Outdated Components (OSS Risk - 5):
+### Outdated Components (OSS Risk - 5)
 
 A component is considered outdated when its current version is lower than the latest available version. In the SBOM tab, outdated components are indicated by a warning symbol next to their version. Create a [Jira ticket](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#create-jira-ticket) to update the component version to the latest available version.
 
@@ -51,7 +51,7 @@ A component is considered outdated when its current version is lower than the la
 
 
 
-### Unmaintained Components (OSS Risk - 4):
+### Unmaintained Components (OSS Risk - 4)
 
 An unmaintained component is one that has not received any version upgrades in the past year. In the SBOM tab, such components are marked with an alert symbol. Create a [Jira ticket](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#create-jira-ticket) to replace it with an alternative component.
 

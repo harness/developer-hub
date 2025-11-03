@@ -124,7 +124,7 @@ export const docsCards: CardSections = [
         title: "STO",
         module: MODULES.sto,
         description: "Security Testing Orchestration onboarding guide",
-        link: "/docs/security-testing-orchestration/get-started/onboarding-guide",
+        link: "/docs/security-testing-orchestration/get-started",
       },
       {
         title: "SRM",

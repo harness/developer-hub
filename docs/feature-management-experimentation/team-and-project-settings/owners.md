@@ -4,6 +4,12 @@ description: Learn about how owners work in Harness FME.
 sidebar_position: 4
 ---
 
+:::danger Owners Permissions Update
+Owners are no longer granted edit permissions by default. Owners are treated as metadata to help identify responsible stakeholders and filter FME resources (such as feature flags, segments, and metrics). 
+
+To manage who can edit, use [environment-level permissions](/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions) or set explicit editors on a flag, segment, or metric.
+:::
+
 ## Overview
 
 In addition to [tags](/docs/feature-management-experimentation/management-and-administration/tags/), owners allow you to organize and manage feature flags, segments, and metrics across the Split user interface. 

@@ -18,19 +18,17 @@ The versioning and support policy described here applies to all SDKs and custome
 
 Semantic versioning establishes a standard to uniquely name a particular release of an artifact. With semantic versioning, the unique label is made up by three components: `major` version number, `minor` version number, and `patch` version number which assembled and separated by a period `.`. The following summary is extracted from the specification referenced above.
 
-When we release a new version of our SDKs, we increment the major, minor, or patch number.  Which component is incremented depends on the change introduced and are separated by periods.
+When we release a new version of our SDKs, we increment the major, minor, or patch number. Which component is incremented depends on the change introduced and are separated by periods.
 
 As is conventional in semantic versioning, we increment each according to the descriptions below:
 
- * `Major` version. When we make backwards incompatible API changes
+ * `Major` version: when we make backwards incompatible API changes.
+ * `Minor` version: when we add backwards compatible new functionality.
+ * `Patch` version: when we make backwards compatible bug fixes.
 
- * `Minor` version. When we add backwards compatible new functionality
+Additional labels for pre-release candidates and build metadata are available as extensions. These vary on a per language basis. Examples include `x.x.x-rcx`, `x.x.x-canary.x`, and `x.x.x.pre.rcx`.
 
- * `Patch` version. When we make backwards compatible bug fixes
-
-Additional labels for pre-release candidates and build metadata are available as extensions.  These vary on a per language basis.  Example include `x.x.x-rcx`, `x.x.x-canary.x`, and `x.x.x.pre.rcx`.
-
-Learn more at [Semantic Versioning 2.0.](https://semver.org)
+For more information, see [Semantic Versioning 2.0](https://semver.org).
 
 ## Adding new functionality
 
@@ -61,7 +59,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `7.0.0`   | 2022-05-26  | 2025-01-04        |
+| `7.0.0`   | 2022-05-26  | Actively supported  |
 
 </TabItem>
 
@@ -69,7 +67,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date    |
 |-----------|-------------|---------------------|
-| `1.0.0`   | 2025-02-25  | Actively support    |
+| `1.0.0`   | 2025-02-25  | Actively supported    |
 | `0.0.0`   | 2025-01-21  | 2026-01-27          |
 
 </TabItem>
@@ -78,7 +76,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `6.0.0`   | 2020-10-06  | 2025-05-14        |
+| `6.0.0`   | 2020-10-06  | Actively supported  |
 
 </TabItem>
 
@@ -86,7 +84,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `4.0.0`   | 2020-08-19  | 2025-01-09        |
+| `4.0.0`   | 2020-08-19  | Actively supported  |
 
 </TabItem>
 
@@ -94,7 +92,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `11.0.0`  | 2024-11-01  | 2025-11-11        |
+| `11.0.0`  | 2024-11-01  | Actively supported  |
 | `10.0.0`  | 2018-02-26  | 2025-01-04        |
 
 </TabItem>
@@ -103,7 +101,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `7.0.0`   | 2021-11-23  | 2025-01-24        |
+| `7.0.0`   | 2021-11-23  | Actively supported  |
 
 </TabItem>
 
@@ -111,7 +109,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `2.0.0`   | 2025-04-14  | 2026-04-16        |
+| `2.0.0`   | 2025-04-14  | Actively supported  |
 | `1.1.0`   | 2023-09-06  | 2025-01-25        |
 
 </TabItem>
@@ -120,7 +118,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `10.0.0`  | 2024-06-27  | 2025-06-28        |
+| `10.0.0`  | 2024-06-27  | Actively supported  |
 | `9.0.0`   | 2021-05-03  | 2024-02-15        |
 
 </TabItem>
@@ -129,7 +127,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `8.0.0`   | 2022-05-10  | 2025-03-22        |
+| `8.0.0`   | 2022-05-10  | Actively supported  |
 
 </TabItem>
 
@@ -143,8 +141,8 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `5.0.0`   | 2024-11-01                 | Actively support    |
-| `4.0.0`   | 2024-01-04                 | 2025-11-01          |
+| `5.0.0`   | 2024-11-01                | Actively supported    |
+| `4.0.0`   | 2024-01-04                | 2025-11-01          |
 
 </TabItem>
 
@@ -152,8 +150,8 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `3.0.0`   | 2024-05-17                 | Actively support    |
-| `2.0.1`   | 2024-03-11                 | 2024-05-17          |
+| `3.0.0`   | 2024-05-17                | Actively supported    |
+| `2.0.1`   | 2024-03-11                | 2024-05-17          |
 
 </TabItem>
 
@@ -161,8 +159,8 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `1.0.0`   | 2024-11-01                 | Actively support    |
-| `0.1.0`   | 2021-03-30                 | 2024-11-01          |
+| `1.0.0`   | 2024-11-01                | Actively supported    |
+| `0.1.0`   | 2021-03-30                | 2024-11-01          |
 
 </TabItem>
 
@@ -170,7 +168,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `0.1.0`   | 2022-08-03                 | 2024-10-18          |
+| `0.1.0`   | 2022-08-03                | Actively supported   |
 
 </TabItem>
 
@@ -178,8 +176,8 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `3.0.0`   | 2024-11-01                 | Actively support    |
-| `2.0.0`   | 2019-02-01                 | 2024-11-01          |
+| `3.0.0`   | 2024-11-01                | Actively supported    |
+| `2.0.0`   | 2019-02-01                | 2024-11-01          |
 
 </TabItem>
 
@@ -187,8 +185,8 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `11.0.0`  | 2024-11-01                 | Actively support    |
-| `10.0.0`  | 2018-02-26                 | 2025-11-01          |
+| `11.0.0`  | 2024-11-01                | Actively supported    |
+| `10.0.0`  | 2018-02-26                | 2025-11-01          |
 
 </TabItem>
 
@@ -196,8 +194,8 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `2.0.0`   | 2024-11-01                 | 2025-04-15          |
-| `1.0.0`   | 2020-01-24                 | 2025-04-15          |
+| `2.0.0`   | 2024-11-01                | Actively supported    |
+| `1.0.0`   | 2020-01-24                | 2025-04-15          |
 
 </TabItem>
 
@@ -205,8 +203,8 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `1.0.0`   | 2024-11-01                 | 2025-11-01          |
-| `0.0.1`   | 2021-07-29                 | 2025-11-01          |
+| `1.0.0`   | 2024-11-01                | Actively supported    |
+| `0.0.1`   | 2021-07-29                | 2025-11-01          |
 
 </TabItem>
 
@@ -214,8 +212,8 @@ import TabItem from '@theme/TabItem';
 
 | Version   | General Availability Date | Support End Date    |
 |-----------|---------------------------|---------------------|
-| `2.0.0`   | 2024-11-14                 | 2025-04-01          |
-| `1.0.0`   | 2020-01-24                 | 2025-04-01          |
+| `2.0.0`   | 2024-11-14                | Actively supported    |
+| `1.0.0`   | 2020-01-24                | 2025-04-01          |
 
 </TabItem>
 
@@ -225,11 +223,11 @@ import TabItem from '@theme/TabItem';
 
 <Tabs queryString="component-tab">
 
-<TabItem value="splitd" label="Split Daemon (Splitd)">
+<TabItem value="splitd" label="Split Daemon (SplitD)">
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `1.0.1`   | 2023-09-05  | 2025-01-25        |
+| `1.0.1`   | 2023-09-05  | Actively supported  |
 
 </TabItem>
 
@@ -237,7 +235,7 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `2.0.0`   | 2019-09-23  | 2024-03-14        |
+| `2.0.0`   | 2019-09-23  | Actively supported  |
 
 </TabItem>
 
@@ -245,17 +243,53 @@ import TabItem from '@theme/TabItem';
 
 | Version   | GA Date     | Support End Date    |
 |-----------|-------------|---------------------|
-| `1.0.0`   | 2025-05-28  | Actively support    |
+| `1.0.0`   | 2025-05-28  | Actively supported    |
 | `0.1.0`   | 2022-01-11  | 2024-02-29          |
 
 </TabItem>
 
-<TabItem value="split-sync" label="Split Synchronizer">
+<TabItem value="split-sync" label="Split Synchronizer/Proxy">
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
-| `5.0.0`   | 2021-11-01  | 2025-01-23        |
+| `5.0.0`   | 2021-11-01  | Actively supported  |
+
+</TabItem>
+</Tabs>
+
+### OpenFeature providers
+
+<Tabs queryString="openfeature-providers">
+
+<TabItem value="android" label="Android SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2025-09-30  | Actively supported  |
 
 </TabItem>
 
+<TabItem value="web" label="Web SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2025-09-30  | Actively supported  |
+
+</TabItem>
+
+<TabItem value="Java" label="Java SDK">
+
+| Version   | GA Date     | Support End Date    |
+|-----------|-------------|---------------------|
+| `1.0.0`   | 2025-10-07  | Actively supported    |
+
+</TabItem>
+
+<TabItem value="Node.js" label="Node.js SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2023-04-27  | Actively supported  |
+
+</TabItem>
 </Tabs>

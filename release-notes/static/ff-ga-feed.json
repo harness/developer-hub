@@ -713,10 +713,226 @@
     "gaStartDate": "2025-10-13",
     "module": "Continuous Delivery"
   },
-    {
+  {
     "flagKey": "PIPE_REFERENCED_TEMPLATES",
     "description": "This will add a referenced/unreferenced tag to the templates listing card and list view.",
     "gaStartDate": "2025-10-13",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "CVNG_TEMPLATE_MONITORED_SERVICE",
+    "description": "FF to allow creating new Monitored Service Template",
+    "gaStartDate": "2025-10-14",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_GITOPS_ENABLE_UI_CLUSTER_DETAIL_UX",
+    "description": "Flag to enable new cluster details page UX",
+    "gaStartDate": "2025-10-13",
+    "module": "GitOps"
+  },
+  {
+    "flagKey": "GITOPS_FILTER_PANE_ENABLED",
+    "description": "Flag to enable new GitOps filter panel experience",
+    "gaStartDate": "2025-10-17",
+    "module": "GitOps"
+  },
+  {
+    "flagKey": "PIPE_REMOVE_AMBIANCE_POPULATION_IN_NODE_EXECUTION",
+    "description": "FF to use remove ambiance population in nodeExecution collection",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_NOTIFICATION_TEMPLATE_INPUT_VARIABLE_PROMPT_UI",
+    "description": "FF to prompt users to fill in unresolved input variables and reconfiguring pipeline-level notification rule templates.",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_BARRIER_STEPS_SETUP_OPTIMIZATION",
+    "description": "This optimization makes barrier steps avoid race conditions and unecessary locks",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_FLEXIBLE_TEMPLATES",
+    "description": "Added support for flexible templates",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_FLEXIBLE_TEMPLATES_PHASE2",
+    "description": "FF for UI to show resolved templates in preview template as read only mode.",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_USE_STAGE_EXECUTION_ID_PROJECTION_FROM_AMBIANCE",
+    "description": "Use stageExecutionId projection while getting ambiance from nodeExecution",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_FIND_ALL_TERMINAL_CHILDREN_OPTIMIZATION",
+    "description": "This optimization delegates graph lookup to mongodb on NodeExecutionsCache#findAllChildrenWithStatusInAndWithoutOldRetries",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION",
+    "description": "FF to enabled notification when trigger fails",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION",
+    "description": "FF to start storing template id and version for pipeline/stage/step per execution",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_MANUAL_STAGE_RUN",
+    "description": "FF to enable running a stage manually",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_USE_ORIGINAL_YAML_FOR_EXECUTION",
+    "description": "Enable Rerun with Original Pipeline Yaml",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_BULK_RECONCILIATION_PHASE2",
+    "description": "FF to enable bulk reconciliation for remote entities",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_BARRIERS_FOR_CHAINED_PIPELINES",
+    "description": "Added support for Barriers for Chained Pipelines",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_SUPPORT_DELEGATE_EXPRESSIONS_FOR_PIPELINE_NOTIFICATIONS",
+    "description": "Added support for Expressions Pipeline Notifications",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ADD_ORIGINAL_FAILED_CHILDREN_TO_OUTPUT",
+    "description": "Included the original failed children in the failed children sweeping output to ensure correct execution of Stage Rollback.",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_DISABLE_PIPELINE_CHAINING_FOR_FREE_TIER",
+    "description": "FF to Validate License for Pipeline Chaining Feature",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_REVERT_DEPLOYMENT_TEMPLATE_FILTER_CREATION_ISSUE_FIX",
+    "description": "FF to disable fix for deployment template filter creation issue",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_CD_DEVOPS_ESSENTIALS_RESTRICTION",
+    "description": "FF to enable CD Devops Essentials restrictions",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_BB_ONPREM_COMPARE_COMMITS_ISSUE_FIX",
+    "description": "FF to fix the compare commits API issue on BB onprem",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_DISABLE_PIPELINE_NOTIFICATIONS_ON_ROLLBACK",
+    "description": "FF to disable sending pipeline-level notifications for rollback executions",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS",
+    "description": "FF to support scheduling cron triggers across multiple timezones",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_INCLUDE_ALWAYS_USE_STABLE_VERSION_UI",
+    "description": "Added Always use the stable version support to Template Bar for all template types",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_SAVE_PIPELINE_OPA_RESPONSE_CODE_CHANGE",
+    "description": "FF to enable 4xx response code on pipeline save when OPA policy fails",
+    "gaStartDate": "2025-10-27",
+    "module": "CDC"
+  },
+  {
+    "flagKey": "PIE_RESTRICT_NEXT_OF_STARTING_NODE_IN_NODE_GRAPH",
+    "description": "FF to enable to not process next node of starting node in the graph",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_GITX_OAUTH",
+    "description": "Use users' oauth creds to fetch and commit in git",
+    "gaStartDate": "2025-10-27",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "GITOPS_BULK_ACTIONS_ENABLED",
+    "description": "FF to enable bulk actions (sync/refresh) for GitOps",
+    "gaStartDate": "2025-10-22",
+    "module": "GitOps"
+  },
+  {
+    "flagKey": "PL_GCP_OIDC_AUTHENTICATION",
+    "description": "OpenID Connect (OIDC) support in Google Secret Manager, Google Cloud Platform (GCP) and Google Cloud Key Management Service (Cloud KMS connectors",
+    "gaStartDate": "2025-10-29",
+    "module": "Platform"
+  },
+  {
+    "flagKey": "PL_APPROLE_CUSTOM_PATH",
+    "description": "Custom authentication path for AppRole authentication in HashiCorp Vault connector",
+    "gaStartDate": "2025-10-29",
+    "module": "Platform"
+  },
+  {
+    "flagKey": "PL_CENTRAL_CERTIFICATES_MANAGEMENT",
+    "description": "Custom Certificate feature in Harness is behind this feature flag",
+    "gaStartDate": "2025-10-29",
+    "module": "Platform"
+  },
+  {
+    "flagKey": "PL_SHOW_AUTO_UPGRADE_FOR_DOCKER_DELEGATE",
+    "description": " Docker Delegate Upgrader is currently behind this feature flag",
+    "gaStartDate": "2025-10-29",
+    "module": "Platform"
+  },
+  {
+    "flagKey": "CV_USE_SEPARATE_LE_TASK_TYPE_FOR_LOG_CLUSTERING",
+    "description": "FF to use CV_LOG_CLUSTER task type for log clustering instead of LOG_CLUSTER",
+    "gaStartDate": "2025-10-21",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "PL_USE_IMPERSONATED_DELEGATE_LOGGING_TOKEN",
+    "description": "Enables usage of GSA for writing and reading logs from GCP",
+    "gaStartDate": "2025-10-24",
+    "module": "Platform"
+  },
+  {
+    "flagKey": "CDS_GITOPS_STEP_DELEGATE_SELECTOR_PRECEDENCE",
+    "description": "Flag to follow delegate selector precedence in GitOps steps",
+    "gaStartDate": "2025-10-31",
+    "module": "GitOps"
   }
 ]

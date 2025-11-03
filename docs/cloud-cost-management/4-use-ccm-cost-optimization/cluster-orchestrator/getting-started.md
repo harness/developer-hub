@@ -32,10 +32,11 @@ Cluster Orchestrator is designed for quick implementation with minimal configura
 ## Prerequisites
 
 - [Harness Kubernetes connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
-- Kubernetes version compatibility: Supports v1.16 through v1.31. Note that Kubernetes v1.32 is not currently supported.
+- Kubernetes version compatibility: Supports v1.16 through v1.32.
+- AWS CLI: 2.15.0 or higher (for [kubectl](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/enablement-methods/kubectl))
 
 :::note
-Important: Kubernetes v1.32 is not currently supported. Please ensure your cluster is running a compatible Kubernetes version.
+Cluster Orchestrator supports Karpenter through 1.1.0 to 1.2.4 and Kubernetes  v1.16 through v1.32
 :::
 
 ## Quick Start

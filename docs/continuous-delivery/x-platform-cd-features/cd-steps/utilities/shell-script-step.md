@@ -192,6 +192,12 @@ A failed Shell Script step does not prevent a stage deployment from succeeding.
 
 The Shell Script step succeeds or fails based on the exit value of the script. A failed command in a script does not fail the script, unless you call `set -e` at the top.
 
+:::note 
+
+You can capture and access the exit code of a shell script step using a Harness expression. Check out [Access Exit Code of a Shell Script step ](#access-exit-code-of-a-shell-script-step).
+
+:::
+
 ## Shell Script step overview
 
 With the Shell Script step, you can execute scripts in the shell session of the stage in the following ways:
@@ -407,6 +413,15 @@ If you need quotes around the [Harness variable expressions](/docs/platform/vari
 `export EVENT_PAYLOAD='<+trigger.eventPayload>'` 
 
 If you use [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
+
+### Access Exit Code of a Shell Script step
+
+Harness automatically captures the exit code of every Shell Script step execution. You can access the Exit Code using the expression mentioned below. 
+
+| Purpose                          | Expression                                                                 |
+|----------------------------------|----------------------------------------------------------------------------|
+| Output Exit Code                 | `<+steps.[step_id].output.exitCode>`                                       |
+
 
 ### Accessing AWS and GCP OIDC Tokens from Connectors in Shell Scripts
 

@@ -48,6 +48,6 @@ Now you can switch between existing BA profiles from the profile selection optio
 
 The idle session timeout is currently set to 3 hours. This means that when a user is inactive for 3 hours, the user interface (UI) will automatically log them out and terminate their session.
 
-For troubleshooting guidance for the Harness Platform, secrets, or other modules go to the [Platform Knowledge Base](/kb/platform/) or [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
+For troubleshooting guidance for the Harness Platform, secrets, or other modules go to the [Platform Knowledge Base](/docs/category/knowledgebase/) or [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
 For additional support, you can contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community](https://developer.harness.io/community/).

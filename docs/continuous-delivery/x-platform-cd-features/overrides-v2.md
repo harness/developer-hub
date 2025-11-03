@@ -179,10 +179,6 @@ Overrides defined at project/organization/account levels have the following over
 
 ## Manage Overrides using Git Experience
 
-:::info note
-Currently, Git Experience support for overrides is behind the feature flag `CDS_OVERRIDES_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 When you create overrides, you can store them remotely or inline.
 
 - **Inline**: Overrides are stored in the Harness Platform.

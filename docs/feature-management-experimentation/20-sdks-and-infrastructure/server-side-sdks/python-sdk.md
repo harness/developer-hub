@@ -41,7 +41,7 @@ Set up FME in your code base with two simple steps.
 ### 1. Import the SDK into your project using pip
 
 ```bash title="Shell"
-pip install 'splitio_client[cpphash]==10.5.0'
+pip install 'splitio_client[cpphash]==10.5.1'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -85,7 +85,7 @@ Set up FME in your code base with two simple steps.
 ### 1. Import the SDK into your project using pip
 
 ```bash title="Shell"
-pip install 'splitio_client[cpphash,asyncio]==10.5.0'
+pip install 'splitio_client[cpphash,asyncio]==10.5.1'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -151,14 +151,14 @@ Use `pip install` to install the SDK. Note that the package is different for sta
 <TabItem value="Multi-threaded">
 
 ```bash
-pip install 'splitio_client[redis,cpphash]==10.5.0'
+pip install 'splitio_client[redis,cpphash]==10.5.1'
 ```
 
 </TabItem>
 <TabItem value="asyncio">
 
 ```bash
-pip install 'splitio_client[redis,cpphash,asyncio]==10.5.0'
+pip install 'splitio_client[redis,cpphash,asyncio]==10.5.1'
 ```
 
 </TabItem>
@@ -1708,13 +1708,13 @@ $ export HTTPS_PROXY="http://10.10.1.10:1080"
 
 ## Configure fallback treatments
 
-Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally or for individual flags at the SDK level.
 
 This is useful when you want to:
 
-- Avoid unexpected `control` values in production
-- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
-- Customize behavior for specific flags if evaluations fail
+- Maintain a predictable user experience during outages or evaluation failures (avoid unexpected `control` in production) 
+- Protect critical user flows by returning a safe, stable treatment (for example, forcing `off` during an incident)
+- Customize behavior per flag so each evaluation inherits appropriate safe defaults if something goes wrong
 
 ### Global fallback treatment
 
@@ -1735,7 +1735,7 @@ client = factory.client()
 
 ### Flag-level fallback treatment
 
-You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`. This flag-level fallback always takes precedence over the global fallback treatment, so if both are defined, the SDK will return the flag-level value when that flag cannot be evaluated.
 
 ```python
 config = {

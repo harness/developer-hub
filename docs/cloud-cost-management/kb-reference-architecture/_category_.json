@@ -1,0 +1,10 @@
+{
+    "label":"CCM Reference Architecture",
+    "position": 2,
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"CCM Reference Architecture"
+    }
+}

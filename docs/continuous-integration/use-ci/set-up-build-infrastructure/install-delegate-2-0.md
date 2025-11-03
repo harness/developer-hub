@@ -77,7 +77,7 @@ Download and install the correct binary for your OS.
 
 1. Download the binary for your system
 ```
-curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.17.0/runner-darwin-arm64'
+curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-darwin-arm64'
 ```
 
 2. Give it permission to execute
@@ -104,7 +104,7 @@ chmod +x harness-runner
 
 1. Download the binary for your system
 ```
-curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.17.0/runner-darwin-amd64'
+curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-darwin-amd64'
 ```
 
 2. Give it permission to execute
@@ -131,7 +131,7 @@ chmod +x harness-runner
 
 1. Download the binary for your system
 ```
-curl --output harness-runner https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.17.0/runner-linux-arm64
+curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-linux-arm64'
 ```
 
 2. Give it permission to execute
@@ -162,7 +162,7 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 
 1. Download the binary for your system
 ```
-curl --output harness-runner https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.17.0/runner-linux-amd64
+curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-linux-amd64'
 ```
 
 2. Give it permission to execute
@@ -193,7 +193,7 @@ Installation of the delegate on Windows is done using Powershell.
 
 1. Download the binary for your system
 ```powershell
-curl --output harness-runner.exe https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.19.2/runner-windows-amd64.exe
+curl --output harness-runner.exe https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-windows-amd64.exe
 ```
 
 2. Create a config.env file from the following code block. Ensure you replace the fields below with the data you retrieved while [getting the relevant information](#get-relevant-information) above.
@@ -289,6 +289,10 @@ CLEANUP_GRACE_PERIOD_SECONDS=30
 You can find the delegate logs in the following files:
 - **MacOS**: `~/Library/Logs/harness.runner/stderr.log`
 - **Linux**: `nohup-runner.out`
+
+### Metrics
+
+The unified runner exposes metrics on the `/metrics` endpoint for monitoring and observability. By default, the metrics endpoint is available at `http://localhost:3000/metrics`.
 
 ## End to End Demo
 

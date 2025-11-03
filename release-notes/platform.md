@@ -24,16 +24,6 @@ These release notes describe recent changes to Harness Platform.
 :::
 ## Important feature change notice
 
-:::danger OIDC ID Token API Access Update (Effective October 24, 2025)
-To strengthen security and reduce potential risks, the [OIDC ID token–related APIs](https://apidocs.harness.io/openapi-merged/oidc-id-token) will be made **internal to Harness** and will no longer be available for direct access.
-
-- **Previous behaviour**: OIDC ID token APIs can be directly accessed.
-- **New behaviour**: These APIs can only be used **through the Harness Connector** for OIDC-based authentication with external platforms (e.g., HashiCorp Vault, AWS).
-
-**Action Required**: If you are directly invoking OIDC ID token APIs, update your automation to use the connector before this change takes effect on **October 24, 2025**.
-:::
-
-
 :::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
 We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
 
@@ -48,37 +38,8 @@ We have aligned the delete APIs for Notification Rules and Channels with Harness
 **Action Required**: Please review and update any automation, scripts, or integrations that depend on the old response codes before October 20, 2025.
 :::
 
-:::warning Important Update: Change in Default Container Registry for Harness Images
-
-**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
-on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. if you are using the default `harnessImage` with anonymous access, pipeline failures may occur. 
-
-To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
-* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
-* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
-* **Private registry**: Pull images from your own private registry.
-
-The `harnessImage` connector configuration is used for pulling Harness images as described in the below articles: 
-- [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci)
-- [Harness STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images#harness-sto-images-list)
-- [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
-
-[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
-
-Additionally, **starting April 1, 2025, all [Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types) will be pulled from Google Artifact Registry (GAR)** by default to improve performance, security, and scalability.
-
-GAR Path `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
-
-If your organization restricts access to Google Artifact Registry (GAR), consider one of the following options to avoid disruptions:
-* Whitelist GAR to allow seamless access to Harness images.
-* Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
-* Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
-* We will continue to publish the image to DockerHub, you can continue using Docker Hub if the restrictions do not affect you. 
-
-::: 
-
 <details>
-<summary>Previous Highlights</summary>
+<summary>Archived Highlights</summary>
 
 :::danger Breaking Changes 
    **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
@@ -148,6 +109,35 @@ Below is further explanation for each type of secret manager Harness currently s
 
 :::
 
+:::warning Important Update: Change in Default Container Registry for Harness Images
+
+**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
+on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. if you are using the default `harnessImage` with anonymous access, pipeline failures may occur. 
+
+To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
+* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
+* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
+* **Private registry**: Pull images from your own private registry.
+
+The `harnessImage` connector configuration is used for pulling Harness images as described in the below articles: 
+- [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci)
+- [Harness STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images#harness-sto-images-list)
+- [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
+
+[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
+
+Additionally, **starting April 1, 2025, all [Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types) will be pulled from Google Artifact Registry (GAR)** by default to improve performance, security, and scalability.
+
+GAR Path `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
+
+If your organization restricts access to Google Artifact Registry (GAR), consider one of the following options to avoid disruptions:
+* Whitelist GAR to allow seamless access to Harness images.
+* Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
+* Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
+* We will continue to publish the image to DockerHub, you can continue using Docker Hub if the restrictions do not affect you. 
+
+::: 
+
 </details>
 
 ## Deprecation notice
@@ -159,9 +149,32 @@ The following deprecated API endpoints are longer supported:
 
 ## October 2025 
 
+### Version 1.114.x <!--October 28, 2025-->
+
+#### New features and enhancements
+
+- Added [NDJSON format](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) support for AWS S3 streaming destinations. This enhancement is available starting from delegate version 25.10.87100. [PL-65974]
+- Added support for [customizing the Harness UI](https://developer.harness.io/docs/platform/get-started/customize-harness-ui) with your own favicon and logo. [PL-42608]
+#### Fixed issues
+
+- Fixed access control enforcement for the delegate installation command API. Users with view-only permissions can no longer access the command. [PL-65912]
+
+### Version 1.112.x <!--October 14, 2025-->
+
+#### New features and enhancements
+
+- Secrets `Create/Edit` permission can now be split into separate [`Create` and `Edit` permissions](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#secrets). [PL-57463]
+  - Feature Flags:
+    - `PL_SECRET_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION`: For migrating existing `Create/Edit` permissions to separate `create` and `edit` permissions.
+    - `PL_SECRET_CREATE_EDIT_PERMISSION_SPLIT_ENFORCE`: To enforce split permissions.
+
+#### Fixed issues
+
+- Resolved an issue where data in the *Assigned To* tab on the role details page displayed incorrectly when the FF `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` was enabled. [PL-65506]
+
 ### Version 1.111.x <!--October 08, 2025-->
 
-### New features and enhancements
+#### New features and enhancements
 
 - Updated the images to use specific version tags instead of the latest tag. [PL-65593]
   - aws-cli:latest -> aws-cli:2.31.7

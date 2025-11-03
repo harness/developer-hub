@@ -50,6 +50,48 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## October 2025
 
+### Version 1.104.0
+
+<!-- 2025-10-27-->
+#### Fixed issues
+- Fixed an issue where GitClone step in CI Stage did not work within an insert step(Flexible templates).(ZD-94965, CI-19316)
+- Fixed an issue where transient step failures displayed unclear or misleading error messages when the `CI_ADDON_RETRY_MARKER_FILE` feature flag was enabled. Error messages are now clearer and more actionable. (CI-19317)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/harness-cache-server` | Update proxy to fix gcs self hosted proxy oidc | 1.7.6 | 1.7.7 |
+| `plugins/cache` | Integrate new cache service apis in Save & Restore plugin for Harness cache steps to consume | 1.9.15 | 1.9.16 |
+| `plugins/kaniko` | Added support for Azure connector with OIDC | 1.11.5 | 1.12.0 |
+| `plugins/kaniko-ecr` | Added support for Azure connector with OIDC | 1.11.5 | 1.12.0 |
+| `plugins/kaniko-gcr` | Added support for Azure connector with OIDC | 1.11.5 | 1.12.0 |
+| `plugins/docker` | Added support for Azure connector with OIDC | 21.0.1 | 21.1.0 |
+| `plugins/acr` | Added support for Azure connector with OIDC | 21.0.1 | 21.1.0 |
+| `plugins/gcr` | Added support for Azure connector with OIDC | 21.0.1 | 21.1.0 |
+| `plugins/gar` | Added support for Azure connector with OIDC | 21.0.1 | 21.1.0 |
+| `harness/ci-addon` | Fixed misleading error message (CI-19317)| 1.17.8 | 1.17.10|
+| `harness/ci-lite-engine` | Fixed misleading error message (CI-19317) | 1.17.8 | 1.17.10 |
+
+### Version 1.103.0
+
+<!-- 2025-10-13 -->
+#### Fixed issues
+- Addressed issues where invalid or stale presigned URLs caused 404 errors during DLC cache retrieval. (CI-19203)
+- Queued status is now shown only at the stage (not steps) on Kubernetes, so wait times reflect actual stage queueing and no longer flag the Initialize step. (CI-19053)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `plugins/buildx` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.7              | 1.3.10  |
+| `plugins/buildx-ecr` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.6  |         1.3.8   |
+| `plugins/buildx-acr` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.6  |         1.3.8   |
+| `plugins/buildx-gcr` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.6  |         1.3.8   |
+| `plugins/buildx-gar` | Addressed DLC Issue with presigned URLs and cache service failures | 1.3.6  |         1.3.8   |
+| `harness/ci-lite-engine`       | Regular image updates | 1.17.7              | 1.17.8         |
+| `harness/ci-addon`       | Regular image updates | 1.17.7              | 1.17.8         |
+
 ### Version 1.102.0
 
 <!-- 2025-10-06 -->
@@ -1137,7 +1179,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 - Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
 
-- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924). When enabling this flag, the delegate version must be higher than `24.07.83503`.
+- Base image connector selection for Docker base image pulls is generally available. Select a Docker connector for base image pulls to avoid Docker rate limiting.
 
 - Bitbucket has an issue in their API; it does not support the slash character ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
   This can be worked around by using query parameters in the Bitbucket api `https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww` (CI-13826)

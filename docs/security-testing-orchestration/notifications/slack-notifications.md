@@ -11,7 +11,7 @@ This topic describes how to generate Slack notifications for STO-related events 
 
 - A scan detected new vulnerabilities.
 - A scan detected critical- or high-severity vulnerabilities.
-- A scan step failed because it crossed my [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) threshold or violated one or more of my [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies). 
+- A scan step failed because it crossed my [Fail on Severity](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity) threshold or violated one or more of my [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies). 
 
 To set up Slack notifications, you add a simple script to your pipeline that does the following:
 
@@ -110,7 +110,7 @@ curl -X POST --data-urlencode "payload={
   \"type\": \"mrkdwn\",
   \"text\": \"$slack_msg \",
   \"icon_emoji\": \":harnesshd:\"
-}"  <+secrets.getValue("YOUR_SLACK_WEBHOOK_URL_SECRET")>
+}" <+secrets.getValue("YOUR_SLACK_WEBHOOK_URL_SECRET")>
 ```
 
 ## Script and pipeline examples for STO Slack notifications
@@ -316,7 +316,7 @@ This pipeline does the following:
 
 1. Runs a Trivy scan on a container image.
 
-2. Sends a Slack notification if the scan step fails — for example, if it exceeds the [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) threshold or violates an [OPA policy](/docs/security-testing-orchestration/policies/create-opa-policies). 
+2. Sends a Slack notification if the scan step fails — for example, if it exceeds the [Fail on Severity](/docs/security-testing-orchestration/key-concepts/fail-pipelines-by-severity) threshold or violates an [OPA policy](/docs/security-testing-orchestration/policies/create-opa-policies). 
 
 <DocImage path={require('./static/slack-on-scan-failed-pipeline.png')} width="70%" height="70%" title="Add shared path for scan results" /> 
 

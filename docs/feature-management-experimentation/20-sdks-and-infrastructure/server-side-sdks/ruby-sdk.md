@@ -636,13 +636,13 @@ http_proxy=http://username:password@hostname:port
 
 ## Configure fallback treatments
 
-Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally or for individual flags at the SDK level.
 
 This is useful when you want to:
 
-- Avoid unexpected `control` values in production
-- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
-- Customize behavior for specific flags if evaluations fail
+- Maintain a predictable user experience during outages or evaluation failures (avoid unexpected `control` in production) 
+- Protect critical user flows by returning a safe, stable treatment (for example, forcing `off` during an incident)
+- Customize behavior per flag so each evaluation inherits appropriate safe defaults if something goes wrong
 
 ### Global fallback treatment
 
@@ -660,7 +660,7 @@ split_factory = SplitIoClient::SplitFactoryBuilder.build("SDK API KEY", options)
 
 ### Flag-level fallback treatment
 
-You can configure fallback treatments for specific flags in the SDK options. When a flag evaluation fails, the SDK returns the corresponding fallback treatment defined for that flag.
+You can set a fallback treatment per flag in the SDK options. When a flag evaluation fails, the SDK returns the corresponding fallback treatment defined for that flag. This flag-level fallback always takes precedence over the global fallback treatment, so if both are defined, the SDK will return the flag-level value when that flag cannot be evaluated.
 
 ```ruby
 fallback_config = SplitIoClient::Engine::Models::FallbackTreatmentsConfiguration.new(nil, {:flag_1 => SplitIoClient::Engine::Models::FallbackTreatment.new(

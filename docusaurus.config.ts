@@ -89,117 +89,49 @@ const config: Config = {
         src: '/img/logo_dlp.svg',
       },
       items: [
-        /*{
-              position: "left",
-              html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
-              href: "#",
-            },*/
         {
           position: 'right',
           type: 'dropdown',
           label: 'Documentation',
           to: 'docs',
           items: [
-            {
-              label: 'Platform',
-              to: 'docs/platform',
-            },
-            {
-              label: 'Code Repository',
-              to: 'docs/code-repository',
-            },
-            {
-              label: 'Continuous Integration',
-              to: 'docs/continuous-integration',
-            },
-            {
-              label: 'AI Test Automation',
-              to: 'docs/ai-test-automation',
-            },
-            {
-              label: 'Artifact Registry',
-              to: 'docs/artifact-registry',
-            },
-            {
-              label: 'Continuous Delivery & GitOps',
-              to: 'docs/continuous-delivery',
-            },
-            {
-              label: 'Database DevOps',
-              to: 'docs/database-devops',
-            },
-            {
-              label: 'Infrastructure as Code Management',
-              to: 'docs/infrastructure-as-code-management',
-            },
-            {
-              label: 'Feature Flags',
-              to: 'docs/feature-flags',
-            },
-            {
-              label: 'Feature Management & Experimentation',
-              to: 'docs/feature-management-experimentation',
-            },
-            {
-              label: 'Cloud Cost Management',
-              to: 'docs/cloud-cost-management',
-            },
-            {
-              label: 'Application & API Security Posture',
-              to: 'docs/appsec-security-posture',
-            },
-            {
-              label: 'Application & API Runtime Protection',
-              to: 'docs/appsec-runtime-protection',
-            },
-            {
-              label: 'Application & API Security Testing',
-              to: 'docs/appsec-security-testing',
-            },
-            {
-              label: 'Security Testing Orchestration',
-              to: 'docs/security-testing-orchestration',
-            },
-            {
-              label: 'Supply Chain Security',
-              to: 'docs/software-supply-chain-assurance',
-            },
-            {
-              label: 'Chaos Engineering',
-              to: 'docs/chaos-engineering',
-            },
-            {
-              label: 'AI SRE',
-              to: 'docs/ai-sre',
-            },
-            {
-              label: 'Service Reliability Management',
-              to: 'docs/service-reliability-management',
-            },
-            {
-              label: 'Internal Developer Portal',
-              to: 'docs/internal-developer-portal',
-            },
-            {
-              label: 'Cloud Development Environments',
-              to: 'docs/cloud-development-environments',
-            },
-            // {
-            //   label: 'Application & Api Posture Management',
-            //   to: 'docs/application-api-posture-management',
-            // },
-            // {
-            //   label: 'Application & Api Security Testing',
-            //   to: 'docs/application-api-security-testing',
-            // },
-            // {
-            //   label: 'Application & Api Protection',
-            //   to: 'docs/application-api-protection',
-            // },
-            {
-              label: 'Software Engineering Insights',
-              to: 'docs/software-engineering-insights',
-            },
+            // --- Unlisted / keep at top ---
+            { to: '/docs/platform', label: 'Platform' },
+            { to: '/docs/code-repository', label: 'Code Repository' },
+
+            // === DevOps & Automation ===
+            { type: 'html', value: '<div class="dropdown__section-header">DevOps & Automation</div>' },
+            { to: '/docs/continuous-delivery', label: 'Continuous Delivery & GitOps' },
+            { to: '/docs/continuous-integration', label: 'Continuous Integration' },
+            { to: '/docs/internal-developer-portal', label: 'Internal Developer Portal' },
+            { to: '/docs/infrastructure-as-code-management', label: 'Infrastructure as Code Management' },
+            { to: '/docs/database-devops', label: 'Database DevOps' },
+            { to: '/docs/artifact-registry', label: 'Artifact Registry' },
+            { to: '/docs/cloud-development-environments', label: 'Cloud Development Environments' },
+
+            // === Testing & Resilience ===
+            { type: 'html', value: '<div class="dropdown__section-header">Testing & Resilience</div>' },
+            { to: '/docs/feature-management-experimentation', label: 'Feature Management & Experimentation' },
+            { to: '/docs/feature-flags', label: 'Feature Flags' },
+            { to: '/docs/chaos-engineering', label: 'Chaos Engineering' },
+            { to: '/docs/ai-test-automation', label: 'AI Test Automation' },
+            { to: '/docs/ai-sre', label: 'AI SRE' },
+            { to: '/docs/service-reliability-management', label: 'Service Reliability Management' },
+
+            // === Security & Compliance ===
+            { type: 'html', value: '<div class="dropdown__section-header">Security & Compliance</div>' },
+            { to: '/docs/appsec-security-posture', label: 'Application & API Security Posture' },
+            { to: '/docs/appsec-runtime-protection', label: 'Application & API Runtime Protection' },
+            { to: '/docs/appsec-security-testing', label: 'Application & API Security Testing' },
+            { to: '/docs/security-testing-orchestration', label: 'Security Testing Orchestration' },
+            { to: '/docs/software-supply-chain-assurance', label: 'Supply Chain Security' },
+
+            // === Cost & Optimization ===
+            { type: 'html', value: '<div class="dropdown__section-header">Cost & Optimization</div>' },
+            { to: '/docs/cloud-cost-management', label: 'Cloud Cost Management' },
+            { to: '/docs/software-engineering-insights', label: 'Software Engineering Insights' },
+
+            // === Unlisted ===
             {
               label: 'Self-Managed Enterprise Edition',
               to: 'docs/self-managed-enterprise-edition',
@@ -207,6 +139,10 @@ const config: Config = {
             {
               label: 'Open Source',
               to: 'docs/open-source',
+            },
+            {
+              label: 'Harness Solutions Factory',
+              to: 'docs/harness-solutions-factory',
             },
             {
               label: 'FAQs',
@@ -219,14 +155,6 @@ const config: Config = {
             {
               label: 'Harness Cloud Operations',
               to: 'docs/harness-cloud-operations',
-            },
-            {
-              label: 'Release Notes',
-              href: '/release-notes',
-            },
-            {
-              label: 'API Reference',
-              to: 'https://apidocs.harness.io/',
             },
           ],
         },
@@ -484,7 +412,7 @@ const config: Config = {
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-university.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
-        // showLastUpdateTime: true,
+        showLastUpdateTime: true,
         // ... other options
       },
     ],
@@ -496,7 +424,7 @@ const config: Config = {
         routeBasePath: 'kb',
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-kb.js'),
-        // showLastUpdateTime: true,
+        showLastUpdateTime: true,
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         // ... other options
       },
@@ -512,7 +440,7 @@ const config: Config = {
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         routeBasePath: 'docs', //CHANGE HERE
-        // showLastUpdateTime: true,
+        showLastUpdateTime: true,
         remarkPlugins: [
           [
             remarkMath,
@@ -542,7 +470,7 @@ const config: Config = {
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**'],
         routeBasePath: 'roadmap', //CHANGE HERE
-        // showLastUpdateTime: true,
+        showLastUpdateTime: true,
       },
     ],
 
@@ -554,7 +482,7 @@ const config: Config = {
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
-    path.join(__dirname, '/client-modules/chatbot'),
+    // path.join(__dirname, '/client-modules/chatbot'),
   ],
   stylesheets: [
     {

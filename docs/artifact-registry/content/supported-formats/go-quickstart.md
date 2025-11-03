@@ -1,7 +1,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide will help you **create a Go Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Go modules**.
 
 ## Prerequisites
 - Ensure you have **Go** installed and configured on your local machine.
@@ -26,7 +25,8 @@ Depending on your environment, you may need to run additional commands. Go to th
 4. Provide a Registry Name.
     - The registry name must start with a letter and can include lowercase alphanumeric characters, underscores (`_`), periods (`.`), and hyphens (`-`).
 5. Optionally, add a Description and Labels for better organization.
-6. Click **Create Registry** to finalize.
+6. Choose visibility between **Public** and **Private**.
+7. Click **Create Registry** to finalize.
 
 </TabItem>
 </Tabs>

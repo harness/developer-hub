@@ -11,9 +11,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-The Harness Artifact Registry module allows you to quickly and easily store your digital artifacts. 
 
-Learn how to set up and manage all supported Artifact Registry formats within Harness, streamlining your container image workflows. Select the format you want to learn more about:
+Harness Artifact Registry provides a centralized solution for storing and managing digital artifacts across your development lifecycle. Whether you're working with Docker images, Helm charts, Maven packages, Python libraries, or other formats, Artifact Registry supports your workflow.
+
+Getting started with Artifact Registry typically involves [creating a registry](/docs/artifact-registry/manage-registries/create-registry), optionally [configuring an upstream proxy](/docs/artifact-registry/manage-registries/upstream-proxy) for external dependencies, and [setting up your client](/docs/artifact-registry/manage-registries/client-setup) to connect to your registry.
+
+Select your artifact format below to get started:
 
 <DynamicMarkdownSelector
   options={{
@@ -22,15 +25,20 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       logo: "docker-logo.svg",
       logoSize: 24
     },
-    Maven: {
-      path: "/artifact-registry/content/supported-formats/maven-quickstart.md",
-      logo: "maven-logo.svg",
-      iconOnly: true,
+    Helm: {
+      path: "/artifact-registry/content/supported-formats/helm-quickstart.md",
+      logo: "helm-logo.svg",
+      logoSize: 28
     },
     Generic: {
       path: "/artifact-registry/content/supported-formats/generic-quickstart.md",
       logo: "generic-logo.svg",
       logoSize: 20
+    },
+    Maven: {
+      path: "/artifact-registry/content/supported-formats/maven-quickstart.md",
+      logo: "maven-logo.svg",
+      iconOnly: true,
     },
     Python: {
       path: "/artifact-registry/content/supported-formats/python-quickstart.md",
@@ -42,6 +50,11 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       logo: "npm-logo.svg",
       iconOnly: true,
     },
+    Nuget: {
+      path: "/artifact-registry/content/supported-formats/nuget-quickstart.md",
+      logo: "nuget-logo.svg",
+      logoSize: 24
+    },
     RPM: {
       path: "/artifact-registry/content/supported-formats/rpm-quickstart.md",
       logo: "rpm-logo.svg",
@@ -49,32 +62,23 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       logoWidth: 42,
       logoHeight: 28
     },
-    Helm: {
-      path: "/artifact-registry/content/supported-formats/helm-quickstart.md",
-      logo: "helm-logo.svg",
-      logoSize: 28
-    },
-    Nuget: {
-      path: "/artifact-registry/content/supported-formats/nuget-quickstart.md",
-      logo: "nuget-logo.svg",
-      logoSize: 24
-    },
     Cargo: {
       path: "/artifact-registry/content/supported-formats/cargo-quickstart.md",
       logo: "rust-logo.png",
-      logoSize: 24
-    },
-    "Hugging Face": {
-      path: "/artifact-registry/content/supported-formats/hugging-face-quickstart.md",
-      logo: "hugging-face-logo.svg",
       logoSize: 24
     },
     Go: {
       path: "/artifact-registry/content/supported-formats/go-quickstart.md",
       logo: "go-logo.svg",
       iconOnly: true
+    },
+    "Hugging Face": {
+      path: "/artifact-registry/content/supported-formats/hugging-face-quickstart.md",
+      logo: "hugging-face-logo.svg",
+      logoSize: 24
     }
   }}
+  disableSort={true}
   toc = {toc}
   nextHeadingID='ar-next-steps'
 />

@@ -484,12 +484,6 @@ Note: Along with Fixed value, expressions are also supported for userGroups, pro
 
 ### Approval notifications to approvers
 
-:::note
-
-Currently, details of service, environment and infrastructure definition for CD stages in approval notifications is behind the feature flag `CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Approval notifications are sent to each of the configured **User Groups** in the **Approvers** section. User group's notification settings are used while sending notifications. For more information, go to [Edit notification preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences).
 
 :::important

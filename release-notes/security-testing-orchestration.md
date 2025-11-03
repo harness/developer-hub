@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2025-09-23T10:00
+date: 2025-10-27T10:00
 sidebar_position: 13
 ---
 
@@ -21,6 +21,56 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## October 2025
+
+### Version 1.164.0
+
+<!-- 2025-10-27 -->
+
+#### Fixed Issues
+
+- Fixed an issue where accessing vulnerabilities in a pipeline execution page resulted in a **“Something went wrong”** error (STO-9967, ZD-94901).  
+- Removed unexpected toast messages triggered by JIRA GET call failures. Toast messages will now only appear when related user actions occur (STO-9916, ZD-94003).  
+- Fixed an issue where the **Overview** page displayed a blank screen when navigating from the **Test Targets** or **Exemptions** pages (STO-9627).  
+- Fixed an issue in the **Issues** page where filtering vulnerabilities using the **Pipeline** filter did not work as expected (STO-10026).
+
+
+### Version 1.162.0
+
+<!-- 2025-10-15 -->
+
+#### New Features and Enhancements
+
+##### Download CSV is now Generally Available
+The option to download security scan results as CSV from the **Vulnerabilities** tab is now **Generally Available (GA)**.  
+  - The **[Download CSV](/docs/security-testing-orchestration/view-security-test-results/export-scan-results)** button in the Vulnerabilities tab allows you to export scan results directly.  
+  - The **View in Dashboard** option now redirects you to the **[Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary)**, automatically applying your pipeline execution ID as a filter to view detailed scan results.  
+  - This feature was previously behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY`. 
+
+  <DocImage path={require('./static/sto-export-csv.png')} width="80%" height="80%" title="Click to view full size image" />
+
+##### AIML Scanner Category
+Introduced a new **AIML** scanner category dedicated to listing all AI/ML scanners. The **[ModelScan](/docs/security-testing-orchestration/sto-techref-category/modelscan)** step is now included under this category (STO-9830).
+
+  <DocImage path={require('./static/sto-aist-section.png')} width="80%" height="80%" title="Click to view full size image" />
+
+##### New scan configurations for Anchore Enterprise step
+Added new **scan configurations** for **Orchestration** and **Extraction** modes in the **[Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference)** step.  
+  These configurations let users control how reports are filtered when retrieved from the configured Anchore API:  
+  - **OS:** Includes vulnerabilities related to operating system packages (RPM, DPKG, APK, etc.).  
+  - **Non-OS:** Includes vulnerabilities related to language or application packages (NPM, GEM, Java Archive — JAR/WAR/EAR, Python PIP, .NET NuGet, etc.).  
+  - **All** (or **Default**): Provides a combined report containing both OS and Non-OS vulnerability records.
+
+  <DocImage path={require('./static/sto-anchore-scan-configs.png')} width="80%" height="80%" title="Click to view full size image" />
+
+##### Updated RBAC behavior for user info
+If a user has view permission, user information is now displayed correctly. Previously, users without permission to view user info would see a blank details section. Note that if the user has been deleted, data may still be unavailable (STO-8871, ZD-82948).
+
+#### Fixed Issues
+
+- Fixed a bug on the **Issues** page where navigating to a different page, opening the side panel, and closing it caused the view to reset to the first page. The view now remains on the selected page (STO-9848).
+- Fixed an issue where STO dashboards did not correctly reflect issue statuses at scan time, resulting in discrepancies. Dashboards now account for exemption states at scan time, issues are shown as exempted only after approval and rescanning (STO-8623, ZD-74374, ZD-78347, ZD-91111).
+
 ## September 2025
 
 ### Version 1.160.0
@@ -49,7 +99,7 @@ Added a new **[Active Issues](/docs/security-testing-orchestration/view-security
   <DocImage path={require('./static/sto-active-issues.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ##### SonarQube Step Enhancement:
-**SonarQube** issues with type `Code Smells` and `Bug Smells` now can include proper severity mapping instead of defaulting to `info` severity.  
+**SonarQube** issues with type `Code Smells` and `Bug Smells` now can include proper severity mapping instead of defaulting to `info` severity. (STO-8757)
   - This is controlled by the **Treat Code Smells and Bug Smells as Vulnerabilities** setting (account-level, disabled by default). Refer to the [SonarQube documentation](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-issue-categorization-in-sto) for more details.  
 
   <DocImage path={require('./static/sto-sonarqube-code-bug-smells.png')} width="80%" height="80%" title="Click to view full size image" />  
@@ -901,7 +951,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
-This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
+This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/key-concepts/output-variables). 
 
 This release includes a set of security test policy samples, which make it easy to create policies such as:
 
@@ -1162,7 +1212,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption. (STO-5056, formerly behind feature flag `STO_EXEMPTION_DETAILS`) 
 
-    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
   - The **Security Tests** tab includes a set of **Security Executions** pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212, formerly behind feature flag `STO_DROPDOWN_FILTERS`).
 
@@ -1226,7 +1276,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 
@@ -1283,7 +1333,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 

@@ -6,12 +6,14 @@ sidebar_position: 240
 ---
 
 <DocsTag text="Code repo scanners" backgroundColor="#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners" />
-<DocsTag text="Orchestration" backgroundColor="#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto" />
-<DocsTag text="Ingestion" backgroundColor="#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag text="Orchestration" backgroundColor="#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/run-an-orchestrated-scan-in-sto" />
+<DocsTag text="Ingestion" backgroundColor="#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
 The **ModelScan** step in Harness STO uses the open-source scanner [ModelScan](https://github.com/protectai/modelscan) to scan your machine learning (ML) models for security vulnerabilities. You can perform **ModelScan** scans in both **[Orchestration](#scan-mode)** and **[Ingestion](#scan-mode)** modes. This document will guide you through configuring the **ModelScan** step in your STO pipeline.
+
+<DocVideo src="https://youtu.be/PhvIXcwpme8" title="Scan your AI/ML models using ModelScan"/>
 
 :::info
 - To run scans as a non-root user, you can use custom STO scan images and pipelines. See [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).

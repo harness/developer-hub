@@ -76,12 +76,9 @@ static/  @rohanmaharjan100 @wei-harness
 
 # STO Docs
 /docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 /release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
 /src/components/Roadmap/data/stoData.ts @tejakummarikuntla @priteshchandaliya
 /src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @priteshchandaliya
-# STO FAQs
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 
 # CCM Docs
 
@@ -177,7 +174,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 # FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
-/docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @sanzmauro @dtk-DaveKarow 
+/docs/feature-management-experimentation/ @alai97 @richardblack-Harness @audreydo1 @NicoZelaya @charleswu01 @sanzmauro @dtk-DaveKarow 
 /docs/feature-management-experimentation/20-sdks-and-infrastructure/ @alai97 @NicoZelaya @sanzmauro @EmilianoSanchez @gthea @chillaq @MartinCardozo-SDK @nmayorsplit @ZamoraEmmanuel 
 /release-notes/feature-management-experimentation.md @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
 /release-notes/static/fme/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 

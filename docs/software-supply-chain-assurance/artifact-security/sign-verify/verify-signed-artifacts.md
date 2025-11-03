@@ -74,10 +74,6 @@ Follow the instructions below to configure the Artifact Verification step.
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
-:::note
-OIDC Auth type is not supported.
-:::
-
 
 </TabItem>
 

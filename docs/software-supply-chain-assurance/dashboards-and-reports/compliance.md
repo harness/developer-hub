@@ -39,7 +39,7 @@ This dashboard provides a centralized view of repository-level compliance evalua
 
 <DocImage path={require('./static/repo-url.png')} width="80%" height="80%" title="Click to view full size image" />
 
-### Detailed Repo Summary:
+### Detailed Repo Summary
 
 
 **Rule ID**: Unique identifier of the compliance rule.

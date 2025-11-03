@@ -10,17 +10,10 @@ export const ReferenceArchitecturesCards: CardSections = [
     description: "",
     list: [
       {
-        title: "Cloud Cost Management",
-        module: MODULES.platform,
-        description:
-          "Get started with Cloud Cost Management Reference Architectures.",
-        link: "/kb/category/cloud-cost-management",
-      },
-      {
         title: "Delegate Architecture Best Practices",
         module: MODULES.platform,
         description: "Design considerations for choosing the right Delegate Architecture",
-        link: "/kb/reference-architectures/platform/delegate-architecture-bestpractices",
+        link: "/docs/platform/reference-architectures/delegate-architecture-bestpractices",
       },
     ],
   },

@@ -190,12 +190,14 @@ const treatments: SplitIO.Treatments = this.splitService.getTreatmentsByFlagSets
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object with the structure below:
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
-```javascript title="TypeScript"
-type TreatmentResult = {
-  treatment: string,
-  config: string | null
+This method returns an object with the structure below:
+
+```typescript title="TypeScript"
+type TreatmentWithConfig = {
+  treatment: string;
+  config: string | null;
 };
 ```
 
@@ -529,7 +531,7 @@ You can subscribe to four different observables of the splitService.
 
 * `sdkReadyFromCache$`. This event fires once the SDK is ready to evaluate treatments using a version of your rollout plan cached in localStorage from a previous session (which might be stale). If there is data in localStorage, this event fires almost immediately, since access to localStorage is fast; otherwise, it doesn't fire.
 * `sdkReady$`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `sdkReadyTimedOut$`. This event fires if there is no cached version of your rollout plan cached in localStorage, and the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `sdkReady$` event when finished.  This delayed `sdkReady$` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `sdkReadyTimedOut$`. This event fires if there is no cached version of your rollout plan cached in localStorage, and the SDK could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `sdkReady$` event when finished.  This delayed `sdkReady$` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `sdkUpdate$`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to subscribe for each Observable is shown below:
@@ -553,7 +555,7 @@ this.splitService.sdkReady$.subscribe(() => {
 });
 
 this.splitService.sdkReadyTimedOut$.subscribe(() => {
-  // This callback will be called after `readyTimeout` seconds (10 seconds by default)
+  // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
   // if and only if the client is not ready for that time. 
   // You can still call `getTreatment()` but it could return `CONTROL`.
 });

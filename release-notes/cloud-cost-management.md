@@ -1,7 +1,7 @@
 ---
-title: Cloud Cost Management release notes
+title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-10-08T18:00
+date: 2025-10-31T18:00
 sidebar_position: 6
 ---
 
@@ -20,6 +20,97 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 :::
 
+## Important Notice:  
+We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
+
+[Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+
+## October 2025 - Version 1.68.9
+#### Deployment Date: October 21, 2025 (Prod-1)
+
+- **Enhanced Perspective Reports Delivery Options**: [CCM-26936]
+  - **Download as CSV**: Instantly export reports in CSV format for quick, ad-hoc analysis. Supports all time range options.
+  - **Create Scheduled Report**: Automate recurring deliveries to up to 50 recipients with selected time ranges. [Learn more](https://developer.harness.io/release-notes/cloud-cost-management/#new-feature-dynamic-perspective-reports)
+
+  Note that, **Download as CSV** supports all time range options but **scheduling is limited to some time range**.
+
+- **Improved Anomaly Detection in Perspectives**: Removed the 'Apply Filter' functionality from anomalies tooltip. Anomalies now correctly honor the perspective data aggregation value. [CCM-26647]
+
+- **New Filters in Cloud Integration**: We have added new filters on Account Settings > Integration for Cloud Cost.
+  - For Kubernetes Cluster: Connectivity Status, Features Enabled
+  - For Cloud Accounts: Connectivity Status, Features Enabled, Cloud Provider, AWS Account ID(s), Azure Tenant ID, Azure Subscription ID, GCP Project ID [CCM-17003]
+
+## October 2025 - Version 1.67.2
+#### Deployment Date: October 22, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Streamlined Autostopping Rule Creation**: CCM has introduced a use case-based setup with intuitive Traffic-based and Schedule-based mode selection. The interface dynamically adjusts to display only relevant configuration fields, simplifying the setup process and improving user experience. [CCM-24600]
+
+<DocImage path={require('./static/ccm/as-new.png')} width="90%" height="90%" title="Click to view full size image" />
+
+- **AWS Service Detail (Beta)**: CCM has added a new beta field in AWS Explore that provides granular insight into mixed services within the CUR. This feature delivers standardized service categorization by mapping service codes, product families, and usage types. It properly identifies mixed services (such as EBS, VPC, and EMR under EC2) and includes fallback logic to ensure comprehensive coverage across all AWS usage patterns. [CCM-25768]
+
+### Fixed Issues
+
+- **Anomalies Table Sorting**: The default view of the anomalies table now sorts by "Cost Impact" in descending order. [CCM-26665]
+- **Perspective Page Improvements**: CCM has removed the 'Apply Filter' functionality from the anomalies tooltip on the Perspective page. Anomalies now correctly honor the perspective data aggregation value. [CCM-26647]
+
+
+## October 2025 - Version 1.66.0
+#### Deployment Date: October 15, 2025 (Prod-1)
+
+### [New Feature] Bulk Management and Filtering in Budgets
+**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget#budgets-overview-page)**
+
+This release introduces two powerful features to streamline budget management:
+
+**Bulk Management** enables efficient budget administration by allowing you to:
+- Select and modify multiple budgets simultaneously
+- Adjust budget amounts by percentage or fixed value
+- Manage alerts across multiple budgets (add/remove recipients, delete alerts)
+- Clone budgets with customizable options for thresholds and recipients
+
+**Saved Filters** improves budget discoverability with filters for:
+- Created By
+- Last Modified
+- Max/Min Budget Amount
+- Period
+- Perspective
+
+All filter dropdowns are now context-aware, showing only options relevant to your budgets.
+
+<DocImage path={require('./static/ccm/bulk-management.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### [New Feature] Ticketing Tool Mapping
+**[CCM-25483] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#aws)**
+
+We've introduced Jira integration features to streamline your recommendation workflow:
+
+1. **Status Mapping with Resolution Codes**: Earlier, we introduced the ability to automatically update recommendation statuses based on Jira ticket status changes. Now, you can also choose Resolution Codes that will automatically update recommendations to Applied status.
+
+2. **Default Project Mapping**: Route recommendations to the right teams by mapping cost categories to specific Jira projects. When creating tickets, projects are auto-selected based on the resource's cost category, ensuring recommendations reach the appropriate stakeholders without manual routing.
+
+<DocImage path={require('./static/ccm/ticketing-tool.png')} width="50%" height="50%" title="Click to view full size image" />
+
+### Feature Improvements
+
+- **Disable Functionality**: Added support for disabling Cluster Orchestrator on enabled clusters. Disabling a Cluster Orchestrator stops all its components, removes finalizers and configurations, disables Harness-managed nodepools, and prepares the cluster for Karpenter (or any autoscaler) fallback. [CCM-25739]
+
+- **Enhanced Recommendation Tags**: Added a "tags" field to each data item in the API response for the Recommendations overview list endpoint (/ccm/api/recommendation/overview/list) which contains all of the cloud tags associated with each recommendation. If no cloud tags exist for a Recommendation, "null" is given instead. [CCM-25737]
+
+- **Enhanced Ticket Management for ServiceNow**: Added support for "Service Request" ticket type for our ServiceNow integration for recommendations. Using Service Request tickets, customers can manage recommendations more easily with automated workflows and auto-discovery. Ticket lifecycle can be managed using proper fulfillment and approvals.
+
+<DocImage path={require('./static/ccm/snow-integration.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- **Vanity URL Support**: Added support for vanity URL redirection in budget email alerts. Earlier, alerts for customers using vanity URLs redirected to app.harness.io, which was invalid. They now correctly redirect to the customer’s vanity URL. [CCM-25920]
+
+### Fixed Issues
+
+- **Bar Chart Fix**: The Harness CCM Overview page bar chart duplicated Azure costs due to missing filters for actual vs amortized values. This issue was resolved by fetching azureCostType from the Active Spend API and applying it as a condition. [CCM-23539]
+
+### [New Feature] Budget Folders
+
 ## October 2025 - Version 1.65.9
 #### Deployment Date: October 8, 2025 (Prod-1)
 
@@ -35,7 +126,15 @@ These changes improve the overall usability and discoverability of budgets, allo
 <DocImage path={require('./static/ccm/budget-folders.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### Feature Improvements
-- **Resource ID Support in Perspectives**: Added "Resource ID" as a group by, filter, and operand across all cloud service providers, enabling more granular cost analysis and reporting. [CCM-25078]
+- **Resource ID Support in Perspectives**: Added "Resource ID" as a group by, filter, and operand across all cloud service providers, enabling more granular cost analysis and reporting. Resource ID - AWS
+Global Resource Name - GCP
+
+Added for the following scenarios:
+Perspective Operand definition
+Group by Support by Resource ID
+Filter support by Resource ID
+
+These two new fields excluded from cost categories. [CCM-25078]
 - **Azure Resource Group Filtering**: Added support for filtering recommendations by Azure Resource Group, aligning with Perspectives functionality and enabling more targeted cost optimization strategies. [CCM-25175]
 - **AutoStopping Enhancements**: Simplified health check configuration by removing status enforcement requirements, allowing single status inputs. We have also stopped using the instance groups to populate the port configuration in the rule creation flow. Now user can fill the ports based on their usecase. [CCM-24597]
 
@@ -208,8 +307,8 @@ This feature is rolled out behind a **Feature Flag**. If the flag is enabled for
 ## August 2025 - Version 1.59.1
 #### **Deployment Date:** August 11, 2025 (Prod-1)
 
-### [New Feature] Rules Generating Recommendations
-**[CCM-24188] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#rules-generating-recommendations)** 
+### ⭐ [New Feature] Rules Generating Recommendations
+**[CCM-24188] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations#rules-generating-recommendations)** 
 
 - Added support for Rule and Target Account Exclusions in Governance Recommendations, enabling you to define custom default rules that apply globally or to specific account subsets. This enhancement gives you precise control over which governance policies apply to specific accounts and which rules generate recommendations, streamlining compliance management across your organization.
 
@@ -546,7 +645,7 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 ## April 2025 - Version 1.48.1
 
 ### ⭐ [New Feature] Alerts for Governance Rule Evaluations
-**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#governance-alerts)**
+**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/overview#asset-governance-overview-page)**
 
 We’ve added Alerts in Cloud Assets Governance, allowing users to configure alerts based on Cloud Provider (AWS, GCP, Azure), Resource Type (Cloud Custodian-defined), Cloud Accounts, Minimum Number of Resources Found, Minimum Cost Impact, Email IDs, and the option to attach evaluation output as a .json file. 
 

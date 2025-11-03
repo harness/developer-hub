@@ -43,7 +43,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.18.1</version>
+    <version>4.18.2</version>
 </dependency>
 ```
 
@@ -51,7 +51,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.18.1'
+compile 'io.split.client:java-client:4.18.2'
 ```
 
 </TabItem>
@@ -193,7 +193,7 @@ In the example below, we are rolling out a feature flag to users. The provided a
 
 The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
-* **Strings:** Use type String.
+* **Strings:** Use type `String`.
 * **Numbers:** Use type `java.lang.Long` or `java.lang.Integer`.
 * **Dates:** Express the value in `milliseconds since epoch`. In Java, `milliseconds since epoch` is of type `java.lang.Long`. For example, the value for the `registered_date` attribute below is `System.currentTimeInMillis()`, which is a long.
 * **Booleans:** Use type `java.lang.boolean`.
@@ -342,7 +342,7 @@ val treatment: String = result.treatment()
 </TabItem>
 </Tabs>
 
-If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult instead of strings. Example usage below:
+If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to `SplitResult` instead of strings. Example usage below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -540,13 +540,13 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | proxyUsername  | Username to authenticate against the proxy server. | null |
 | proxyPassword  | Password to authenticate against the proxy server. | null |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK falls back to the polling mechanism. If false, the SDK polls for changes as usual without attempting to use streaming. | true |
-| impressionsMode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG.  In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Harness; this is useful for validations. Use DEBUG mode when you want every impression to be logged in Harness FME when trying to debug your SDK setup.  This setting does not impact the impression listener which receives all generated impressions locally. | OPTIMIZED |
-| operationMode | Defines how the SDK synchronizes its data. Two operation modes are currently supported: <br />- STANDALONE. <br />- CONSUMER| STANDALONE |
-| storageMode | Defines what kind of storage the SDK is going to use. With MEMORY, the SDK uses its own storage and runs as STANDALONE mode. Set REDIS mode if you want the SDK to run with this implementation as CONSUMER mode. | MEMORY |
+| impressionsMode | Defines how impressions are queued on the SDK. Supported modes are `OPTIMIZED`, `NONE`, and `DEBUG`.  <br /><br /> In `OPTIMIZED` mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. <br /><br /> In `NONE` mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. <br /><br /> Use `NONE` when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. <br /><br /> In `DEBUG` mode, all impressions are queued and sent to Harness; this is useful for validations. Use `DEBUG` mode when you want every impression to be logged in Harness FME when trying to debug your SDK setup.  This setting does not impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
+| operationMode | Defines how the SDK synchronizes its data. <br /><br /> Two operation modes are currently supported: <br /><br />- `STANDALONE` <br />- `CONSUMER`| `STANDALONE` |
+| storageMode | Defines what kind of storage the SDK is going to use. With `MEMORY`, the SDK uses its own storage and runs as `STANDALONE` mode. Set `REDIS` mode if you want the SDK to run with this implementation as `CONSUMER` mode. | `MEMORY` |
 | flagSetsFilter | This setting allows the SDK to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the SDK instance, bringing all the benefits from a reduced payload. | null |
 | threadFactory | Defines what kind of thread the SDK is going to use. Allows the SDK to use Virtual Threads. | null |
-| inputStream | This setting allows the SDK supports InputStream to use localhost inside a JAR. | null |
-| FileTypeEnum | Defines which kind of file is going to be the inputStream. Supported files are YAML and JSON for inputStream. | null |
+| inputStream | This setting allows the SDK supports `InputStream` to use `localhost` inside a JAR. | null |
+| FileTypeEnum | Defines which kind of file is going to be the `inputStream`. Supported files are YAML and JSON for `inputStream`. | null |
 
 To set each of the parameters defined above, use the following syntax:
 
@@ -599,89 +599,6 @@ client.blockUntilReady()
 </TabItem>
 </Tabs>
 
-## Connecting to a Split Proxy instance
-
-The SDK can connect to a Split Proxy instance as though it was connecting to our CDN, and the Proxy synchronizes the data and writes impressions and events back to Harness FME servers. Be sure to install the Split Proxy by following the steps in [Split Proxy guide](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy).
-
-Use the `.endpoint()` property in the SplitClientConfig builder object to point the Java SDK to the Synchronizer, making sure to use the same port specified in the Proxy command line. When creating the `SplitFactory` object, use the custom API key specified in the `client-apikeys` parameter for the Proxy. The Proxy uses the SDK key when connecting to Harness FME servers. Refer to the following code example to connect to a Proxy instance:
-
-<Tabs groupId="java-kotlin-choice">
-<TabItem value="java" label="Java">
-
-```java
-import io.split.client.SplitClient;
-import io.split.client.SplitClientConfig;
-import io.split.client.SplitFactory;
-import io.split.client.SplitFactoryBuilder;
-
-public class SplitSD {
-    public static void main(String[] args) {
-      SplitClientConfig config = SplitClientConfig.builder()
-           .setBlockUntilReadyTimeout(10000)
-           .endpoint("https://myproxy.com","https://myproxy.com")
-           .authServiceURL("https://myproxy.com" + "/api/auth")
-           .telemetryURL("https://myproxy.com" + "/api/v1")
-           .build();
-      SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config);
-      SplitClient client = splitFactory.client();
-      try {
-        client.blockUntilReady()
-        String treatment = client.getTreatment("user10","sample_feature_flag");
-        if (treatment.equals("on")) {
-          System.out.print("Treatment is on");
-        } else if (treatment.equals("off")) {
-          System.out.print("Treatment is off");
-        } else {
-          System.out.print("SDK Not ready");
-        }
-      } catch (Exception e) {
-          System.out.print("Exception: "+e.getMessage());
-      }
-    }
-}
-```
-
-</TabItem>
-<TabItem value="kotlin" label="Kotlin">
-
-```kotlin
-import io.split.client.SplitFactoryBuilder
-import io.split.client.SplitClient
-import io.split.client.SplitClientConfig
-import io.split.client.SplitFactory
-
-fun main (args: Array<String>){
-    val config: SplitClientConfig = SplitClientConfig.builder()
-                .setBlockUntilReadyTimeout(10000)
-                .endpoint("https://myproxy.com","https://myproxy.com")
-                .authServiceURL("https://myproxy.com" + "/api/auth")
-                .telemetryURL("https://myproxy.com" + "/api/v1")
-                .build()
-    val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config)
-    val client: SplitClient = splitFactory.client()
-    try {
-        client.blockUntilReady()
-        val treatment = client.getTreatment("key", "FEATURE_FLAG_NAME", attributes)
-        when (treatment) {
-            "on" -> {
-                println("Treatment is on")
-            }
-            "off" -> {
-                println("Treatment is off")
-            }
-            else -> {
-                println("SDK Not ready")
-            }
-        }
-    } catch (e: Exception) {
-        println("Exception: " + e.message)
-    }
-}
-```
-
-</TabItem>
-</Tabs>
-
 ## Localhost mode
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. To use the SDK in localhost mode, you must replace the API Key with "localhost" value.
@@ -696,7 +613,7 @@ With this mode, you can instantiate the SDKS using one of the following methods:
 
 Since version `4.7.0`, our SDK supports localhost mode by using the JSON format. This version allows the user to map feature flags and segment definitions in the same format as the APIs receive the data.
 
-This new mode needs extra configuration to be set
+This new mode needs extra configuration to be set:
 
 | **Name** | **Description** | **Type** |
 | --- | --- | --- |
@@ -983,7 +900,7 @@ In the example above, we have four entries:
  * The third entry defines that `my_feature_flag` always returns `off` for all keys that don't match another entry (in this case, any key other than `key`).
  * The fourth entry shows how an example overrides a treatment for a set of keys.
 
-Use the SplitConfigBuilder object to set the location of the localhost YAML file as shown in the example below:
+Use the `SplitConfigBuilder` object to set the location of the localhost YAML file as shown in the example below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java Init example">
@@ -1137,7 +1054,7 @@ Import the Redis Wrapper into your project using one of the two methods below:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>redis-wrapper</artifactId>
-    <version>3.1.1</version>
+    <version>3.1.2</version>
 </dependency>
 ```
 
@@ -1145,7 +1062,7 @@ Import the Redis Wrapper into your project using one of the two methods below:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:redis-wrapper:1.0.0'
+compile 'io.split.client:redis-wrapper:3.1.2'
 ```
 
 </TabItem>
@@ -1632,13 +1549,13 @@ client.blockUntilReady()
 
 ## Configure fallback treatments
 
-Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally at the SDK level or for individual flags.
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally or for individual flags at the SDK level.
 
 This is useful when you want to:
 
-- Avoid unexpected `control` values in production
-- Ensure a predictable user experience by returning a stable treatment (e.g. `off`)
-- Customize behavior for specific flags if evaluations fail
+- Maintain a predictable user experience during outages or evaluation failures (avoid unexpected `control` in production) 
+- Protect critical user flows by returning a safe, stable treatment (for example, forcing `off` during an incident)
+- Customize behavior per flag so each evaluation inherits appropriate safe defaults if something goes wrong
 
 ### Global fallback treatment
 
@@ -1659,7 +1576,7 @@ SplitClient client = factory.client();
 
 ### Flag-level fallback treatment
 
-You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`.
+You can also set a fallback treatment per flag when calling `getTreatment` or `getTreatmentWithConfig`. This flag-level fallback always takes precedence over the global fallback treatment, so if both are defined, the SDK will return the flag-level value when that flag cannot be evaluated.
 
 ```java
        FallbackTreatmentsConfiguration fallbackTreatmentsConfiguration = new FallbackTreatmentsConfiguration(null,
@@ -1723,9 +1640,314 @@ This integration is only enabled if the SDK detects the New Relic agent in the c
 WARN [main] (IntegrationsConfig.java:72) - New Relic agent not found. Continuing without it
 ```
 
-## Network proxy
+## Proxy
 
-If you need to use a network proxy, you can configure proxies by setting the `proxyHost` and `proxyPort` options in the SDK configuration (refer [Configuration](#configuration) section for more information). The SDK reads those variables and uses them to perform the server request.
+If your environment requires routing traffic through a proxy, you can configure the Java SDK to use one.
+
+If you need to use a standard network proxy, set the `proxyHost` and `proxyPort` options in the [SDK configuration](#configuration). The SDK uses these values to perform requests through the proxy.
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .proxyHost("my.proxy.example.com")
+    .proxyPort(8080)
+    .build();
+```
+
+### Connect to a Split Proxy instance
+
+You can also connect the SDK to a [Split Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy) instance instead of connecting directly to Harness FME servers. The Proxy synchronizes data and writes impressions and events back to Harness.
+
+Use the `.endpoint()` property in the `SplitClientConfig` builder object to point the Java SDK to the Proxy endpoint, and specify the same port used in the Proxy command line. When creating the `SplitFactory` object, use the custom API key defined in the Proxy's `client-apikeys` parameter. The Proxy uses the SDK key when connecting to Harness FME servers. 
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+
+public class SplitSD {
+    public static void main(String[] args) {
+      SplitClientConfig config = SplitClientConfig.builder()
+           .setBlockUntilReadyTimeout(10000)
+           .endpoint("https://myproxy.com","https://myproxy.com")
+           .authServiceURL("https://myproxy.com" + "/api/auth")
+           .telemetryURL("https://myproxy.com" + "/api/v1")
+           .build();
+      SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config);
+      SplitClient client = splitFactory.client();
+      try {
+        client.blockUntilReady()
+        String treatment = client.getTreatment("user10","sample_feature_flag");
+        if (treatment.equals("on")) {
+          System.out.print("Treatment is on");
+        } else if (treatment.equals("off")) {
+          System.out.print("Treatment is off");
+        } else {
+          System.out.print("SDK Not ready");
+        }
+      } catch (Exception e) {
+          System.out.print("Exception: "+e.getMessage());
+      }
+    }
+}
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+import io.split.client.SplitFactoryBuilder
+import io.split.client.SplitClient
+import io.split.client.SplitClientConfig
+import io.split.client.SplitFactory
+
+fun main (args: Array<String>){
+    val config: SplitClientConfig = SplitClientConfig.builder()
+                .setBlockUntilReadyTimeout(10000)
+                .endpoint("https://myproxy.com","https://myproxy.com")
+                .authServiceURL("https://myproxy.com" + "/api/auth")
+                .telemetryURL("https://myproxy.com" + "/api/v1")
+                .build()
+    val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config)
+    val client: SplitClient = splitFactory.client()
+    try {
+        client.blockUntilReady()
+        val treatment = client.getTreatment("key", "FEATURE_FLAG_NAME", attributes)
+        when (treatment) {
+            "on" -> {
+                println("Treatment is on")
+            }
+            "off" -> {
+                println("Treatment is off")
+            }
+            else -> {
+                println("SDK Not ready")
+            }
+        }
+    } catch (e: Exception) {
+        println("Exception: " + e.message)
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Integrate with the Harness Proxy
+
+The [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy) allows SDK traffic to securely route through a centralized, authenticated point before reaching the Harness SaaS backend. This provides full visibility and control over network traffic while keeping API keys secure and isolated. 
+
+To use the proxy, configure the SDK to point to the proxy host and port during initialization. All SDK requests are then routed through the proxy.
+
+#### Configure the proxy 
+
+You can configure the Java SDK to route traffic through a forward proxy using the `ProxyConfiguration` class builder. This allows you to define proxy URLs, authentication credentials, and optional mTLS settings.
+
+The following proxy configuration parameters are available:
+
+| Configuration | Description | Required |
+|:---:|:---:|:---:|
+| `url` | Proxy server URL, provided as an instance of the `java.net.URL` class. | Yes |
+| `credentialsProvider` | Credentials used for proxy authentication. Provide an implementation of either `BearerCredentialsProvider` or `BasicCredentialsProvider`. | Optional |
+| `mtls` | Parameters for mTLS authentication, including the `.p12` certificate file and password. | Optional |
+
+#### Harness Proxy (URL Only)
+
+To use a proxy with no authentication, specify only the proxy URL in the configuration. Follow the pattern: `http(s)://host:port`.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+SplitClientConfig.builder()
+    .proxyConfiguration(ProxyConfiguration.builder()
+        .url(new URL("https://fme-forward-proxy:3130"))
+        .build())
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+Authentication is optional. Only one authentication method can be active at a time.
+
+```kotlin
+import io.split.client.SplitClientConfig
+import io.split.client.dtos.ProxyConfiguration
+import java.net.URL
+
+val proxyConfig = ProxyConfiguration.builder()
+    .url(URL("https://fme-forward-proxy:3130"))
+    .build()
+
+val config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfig)
+    .build()
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with Username/Password Authentication
+
+To authenticate using a username and password, implement the `BasicCredentialsProvider` interface and override the required methods.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+import java.net.URL;
+import io.split.client.dtos.BasicCredentialsProvider;
+import io.split.client.SplitClientConfig;
+
+class MyProxyCredentialsProvider implements BasicCredentialsProvider {
+    @Override
+    public String getUsername() {
+        return "user-name";
+    }
+    @Override
+    public String getPassword() {
+        return "user-pass";
+    }
+}
+
+SplitClientConfig.builder()
+    .proxyConfiguration(ProxyConfiguration.builder()
+        .url(new URL("https://fme-forward-proxy:3130"))
+        .credentialsProvider(new MyProxyCredentialsProvider())
+        .build())
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+import io.split.client.SplitClientConfig
+import io.split.client.dtos.ProxyConfiguration
+import io.split.client.dtos.BasicCredentialsProvider
+import java.net.URL
+
+class MyProxyCredentialsProvider : BasicCredentialsProvider {
+    override fun getUsername(): String = "user-name"
+    override fun getPassword(): String = "user-pass"
+}
+
+val proxyConfig = ProxyConfiguration.builder()
+    .url(URL("https://fme-forward-proxy:3130"))
+    .credentialsProvider(MyProxyCredentialsProvider())
+    .build()
+
+val config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfig)
+    .build()
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with JWT Token Authentication
+
+To authenticate using a JWT, implement the `BearerCredentialsProvider` interface and override the `getToken()` method to return a valid JWT string.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+import java.net.URL;
+import io.split.client.dtos.BearerCredentialsProvider;
+import io.split.client.SplitClientConfig;
+
+class MyProxyCredentialsProvider implements BearerCredentialsProvider {
+    @Override
+    public String getToken() {
+        // Return a valid JWT token
+        return "YOUR_JWT_TOKEN";
+    }
+}
+
+SplitClientConfig.builder()
+    .proxyConfiguration(ProxyConfiguration.builder()
+        .url(new URL("https://fme-forward-proxy:3130"))
+        .credentialsProvider(new MyProxyCredentialsProvider())
+        .build())
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+Refresh or update the token when it expires.
+
+```kotlin
+import io.split.client.SplitClientConfig
+import io.split.client.dtos.ProxyConfiguration
+import io.split.client.dtos.BearerCredentialsProvider
+import java.net.URL
+
+class MyProxyCredentialsProvider : BearerCredentialsProvider {
+    override fun getToken(): String {
+        return "YOUR_JWT_TOKEN"
+    }
+}
+
+val proxyConfig = ProxyConfiguration.builder()
+    .url(URL("https://fme-forward-proxy:3130"))
+    .credentialsProvider(MyProxyCredentialsProvider())
+    .build()
+
+val config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfig)
+    .build()
+```
+
+</TabItem>
+</Tabs>
+
+#### Harness Proxy with mTLS Authentication
+
+To configure mutual TLS (mTLS) authentication, use the `mtls()` parameter to pass the `.p12` certificate file and its password.
+
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
+```java
+SplitClientConfig.builder()
+    .proxyConfiguration(ProxyConfiguration.builder()
+        .url(new URL("https://fme-forward-proxy:3130"))
+        .mtls(new FileInputStream("/path-to-p12-file"), "file-password")
+        .build())
+    .build();
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+import io.split.client.SplitClientConfig
+import io.split.client.dtos.ProxyConfiguration
+import java.io.FileInputStream
+import java.net.URL
+
+val proxyConfig = ProxyConfiguration.builder()
+    .url(URL("https://fme-forward-proxy:3130"))
+    .mtls(FileInputStream("/path-to-p12-file"), "file-password")
+    .build()
+
+val config = SplitClientConfig.builder()
+    .proxyConfiguration(proxyConfig)
+    .build()
+```
+
+</TabItem>
+</Tabs>
+
+#### Verify connection
+
+After initialization, all SDK requests are routed through the configured proxy. You can verify successful routing by checking your proxy logs or a network monitor for SDK traffic.
 
 ## Advanced: WebLogic container
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 export const clientSideSDKs = [
   {
-    name: 'Android',
+    name: 'Android SDK',
     img: '/provider-logos/android-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk',
   },
@@ -12,7 +12,7 @@ export const clientSideSDKs = [
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities',
   },
   {
-    name: 'Browser',
+    name: 'Browser SDK',
     img: '/provider-logos/browser-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk',
   },
@@ -22,27 +22,27 @@ export const clientSideSDKs = [
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin',
   },
   {
-    name: 'iOS',
+    name: 'iOS SDK',
     img: '/provider-logos/ios-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk',
   },
   {
-    name: 'JavaScript',
+    name: 'JavaScript SDK',
     img: '/provider-logos/js-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk',
   },
   {
-    name: 'React',
+    name: 'React SDK',
     img: '/provider-logos/react-native-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk',
   },
   {
-    name: 'React Native',
+    name: 'React Native SDK',
     img: '/provider-logos/react-native-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk',
   },
   {
-    name: 'Redux',
+    name: 'Redux SDK',
     img: '/provider-logos/redux-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk',
   },
@@ -158,6 +158,34 @@ export const optionalInfra = [
     img: '/provider-logos/java-logo.png',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-javascript-synchronizer-tools',
   },
+  {
+    name: 'Harness Proxy',
+    img: '/provider-logos/harness-community-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy',
+  },
+];
+
+export const openfeatureProviders = [
+  {
+    name: 'Android SDK',
+    img: '/provider-logos/android-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/android-sdk',
+  },
+  {
+    name: 'Web SDK',
+    img: '/provider-logos/browser-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/web-sdk',
+  },
+  {
+    name: 'Java SDK',
+    img: '/provider-logos/java-logo.png',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/java-sdk',
+  },
+  {
+    name: 'Node.js SDK',
+    img: '/provider-logos/nodejs-logo.png',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk',
+  },
 ];
 
 // Helper to chunk items into rows of 4
@@ -210,6 +238,7 @@ export default function SDKGrid() {
       <Section title="Client-side RUM Agents" items={clientSideAgents} />
       <Section title="Server-side SDKs" items={serverSideSDKs} />
       <Section title="Optional Infrastructure" items={optionalInfra} />
+      <Section title="OpenFeature Providers" items={openfeatureProviders} />
     </div>
   );
 }

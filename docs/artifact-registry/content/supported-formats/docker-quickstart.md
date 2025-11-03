@@ -1,7 +1,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide will help you **create a Docker Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Docker images**.
 
 ## Prerequisites
 - Ensure you have Docker CLI installed and configured on your local machine.
@@ -21,7 +20,8 @@ This guide will help you **create a Docker Artifact Registry** in Harness, **con
 4. Provide a Registry Name.
     - Your registry name must start with a letter and can include `lowercase alphanumerics`, `_`, `.` and `-`.
 5. Optionally, add a Description and Labels for better organization.
-6. Click **Create Registry** to finalize.
+6. Choose visibility between **Public** and **Private**.
+7. Click **Create Registry** to finalize.
 
 </TabItem>
 </Tabs>

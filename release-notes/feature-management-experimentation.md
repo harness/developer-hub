@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-10-09T10:00:00
+date: 2025-10-31T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,116 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: October 9, 2025
+#### Last updated: October 31, 2025
+
+## October 2025
+
+### [New Enhancement] Owners Are Metadata Only
+----
+#### 2025-10-31
+
+Harness FME has updated the [owners role](/docs/feature-management-experimentation/team-and-project-settings/owners/) to improve clarity and enhance security in feature flag, segment, and metric permissions. Owners now represent responsible stakeholders, rather than users with inherent editing rights.
+
+![](./static/fme/owners-update.png)
+
+With this enhancement, you can:
+
+- Indicate who is accountable for a feature
+- Manage edit permissions through [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account)
+- Reduce confusion over who can modify production rollouts
+- Maintain access control in sensitive environments
+
+All existing edit permissions have been preserved. No one will lose the current access they rely on. To control who can edit feature flags, segments, and metrics, use the latest [FME permissions model](/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions/), which includes environment-level restrictions and optional approval workflows.
+
+#### Related documentation
+
+- [Harness FME Permissions](/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions/)
+- [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account)
+- [Owners (Legacy Split)](/docs/feature-management-experimentation/team-and-project-settings/owners)
+
+### [New Feature] Harness FME MCP Tools
+----
+#### 2025-10-31
+
+The Harness FME Model Context Protocol (MCP) tools bring the power of natural language to your feature flag workflows. FME MCP enables developers, product managers, and experimentation teams to discover, inspect, and manage feature flags directly from AI-powered IDEs and assistants such as Claude Code, Windsurf, Cursor, and VS Code.
+
+This integration bridges Harness FME with AI developer tools, allowing teams to interact with their feature management data conversationally, without switching contexts or writing API calls.
+
+By using Harness FME MCP tools, you can:
+
+- Explore projects and environments interactively
+- Retrieve feature flag definitions, variations, and targeting rules
+- Understand the status and rollout of flags across environments
+- Audit or compare flag configurations for consistency and governance
+
+The Harness FME MCP helps teams accelerate feature delivery and experimentation by making key configuration data accessible through natural language. This enables faster insight, safer releases, and collaboration across engineering and product.
+
+#### Related documentation
+
+- [Harness FME MCP Tools](/docs/feature-management-experimentation/release-agent/mcp-tools)
+- [Harness MCP Server](/docs/platform/harness-aida/harness-mcp-server/)
+
+### [New Feature] OpenFeature Providers
+----
+#### 2025-10-28
+
+Harness FME supports [OpenFeature](https://openfeature.dev/), an open specification offering a vendor-agnostic API for feature flagging. Providers handle flag evaluations, enabling consistent, centralized control over feature flags across multiple SDKs and environments.
+ 
+This feature is valuable for organizations that want to:
+
+- Standardize feature flag behavior across services and applications
+- Reduce vendor lock-in by enabling flexible provider implementations
+- Integrate feature flags across multiple languages and platforms
+
+Harness FME offers providers for Android, Web, Java, and Node.js SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
+
+#### Related documentation
+
+- [OpenFeature Providers](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/android-sdk)
+- [Web SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/web-sdk)
+- [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/java-sdk)
+- [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk)
+
+### [New Feature] Warehouse Native Experimentation in Beta
+----
+#### 2025-10-22
+
+Harness FME now supports **Warehouse Native Experimentation** in beta. Warehouse Native allows you to run experiments directly in your data warehouse using your own assignment and event data. This approach gives you greater flexibility, transparency, and control over experiment analysis, without needing to export or duplicate data outside your analytics environment.
+
+You can use Warehouse Native Experimentation to:
+
+- Run analyses on experiments with data already stored in your warehouse.
+- Leverage FME's statistical engine and additional measurement techniques for improved accuracy and confidence intervals.
+- Integrate with existing assignment and metric tables in your data warehouse.
+
+To request access for the Warehouse Native Experimentation beta experience, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
+
+#### Related documentation
+
+- [Warehouse Native Experimentation](/docs/feature-management-experimentation/warehouse-native)
+- [Warehouse Native Setup](/docs/feature-management-experimentation/warehouse-native/setup)
+
+### [New Feature] Harness Proxy
+----
+#### 2025-10-15
+
+Harness Proxy allows you to securely route all outgoing Harness traffic (including FME SDK calls and additional Harness module traffic) through a centralized, customer-managed proxy. Its simplicity supports multiple Harness modules, starting with [FME](/docs/feature-management-experimentation) and [Database DevOps](/docs/database-devops), and is compatible with Java, Android, Node.js, and Browser SDKs.
+ 
+This feature is especially valuable for organizations with strict egress controls and security requirements. 
+
+By deploying the Harness Proxy, you can:
+
+- Centralize and control all outgoing traffic
+- Simplify network configuration by avoiding per-deployment firewall exceptions
+- Support secure SDK connections with custom authentication, including OAuth and mTLS
+- Maintain control over proxy routing and connectivity from your infrastructure to Harness SaaS while respecting end-to-end encryption
+
+Harness Proxy makes it easier for enterprise customers to meet compliance and security needs at scale, while reducing operational overhead.
+
+#### Related documentation
+
+- [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy)
 
 ## September 2025
 
@@ -35,10 +144,13 @@ By configuring fallback treatments, you can improve reliability, reduce surprise
 - [Fallback treatment](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/)
 - [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk/#configure-fallback-treatments)
 - [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configure-fallback-treatments)
+- [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configure-fallback-treatments)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk/#configure-fallback-treatments)
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#configure-fallback-treatments)
 - [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#configure-fallback-treatments)
 - [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#configure-fallback-treatments)
+- [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configure-fallback-treatments)
+- [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#configure-fallback-treatments)
 
 ### [New Feature] Experiment Entry Event Filter
 ----
