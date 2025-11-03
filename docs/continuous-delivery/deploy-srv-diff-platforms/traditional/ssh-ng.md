@@ -55,6 +55,7 @@ In the stage **Service** tab, you add the artifact metadata and the related conf
 ### Add the artifact connector
 
 For Secure Shell, you can access artifacts from the following sources:
+- Harness Artifact Registry
 - Jenkins
 - Artifactory
 - Bamboo 
