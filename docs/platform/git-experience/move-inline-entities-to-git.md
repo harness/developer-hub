@@ -109,7 +109,7 @@ This section explains steps to move an [inline pipeline](../pipelines/add-a-stag
 
 ### Move Inline Input Sets
 
-After you move your pipeline to inline, you can move your input sets to inline as well.
+After you move your pipeline to Git, you can move your input sets to Git as well.
 
 1. Go to **Input Sets** in your pipeline. 
 2. Click the 3 dots to the right of the set and click **Move to Git**
