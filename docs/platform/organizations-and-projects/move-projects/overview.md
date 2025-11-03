@@ -24,7 +24,7 @@ This feature allows you to transfer a project from one organization to another w
 
 1. **Entities are moved**: [Supported entities](#supported-modules), such as pipelines, services, environments, and monitored services, are carried over with the project to the destination organization.
 
-2. **Organization-scoped resources need reconfiguration**: Resources scoped at the source organization level become inaccessible after the move. You must recreate connectors, secrets, templates, webhooks, and notifications in the destination organization, then update any project references to point to these new resources. References to account-level or project-level entities remain intact.
+2. **Organization-scoped resources need reconfiguration**: Resources scoped at the source organization level become inaccessible after the move. You might need to recreate connectors, secrets, templates, webhooks, and notifications in the destination organization, and then update any project references to point to these new resources.
 
 3. **Access control requires reconfiguration**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be recreated in the destination organization. All Project-level access control components including role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
 
@@ -46,7 +46,6 @@ To move a project across organizations, you need the following permissions:
 * [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
 * [Internal Developer Portal](/docs/internal-developer-portal/whats-supported)
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
-* [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
 * [Code Repository](/docs/code-repository/code-supported)
 * [Database DevOps](/docs/database-devops/dbdevops-supported-platforms.md)
 

@@ -29,7 +29,7 @@ This list covers common issues but is not exhaustive. Additional organization-le
     - Templates used to build pipelines may be scoped at the organization level. Review and make these templates available in the destination organization; otherwise, pipelines may fail to render or execute.
     - YAML entities may use fully qualified identifiers, such as `orgIdentifier`, that reference the source organization. These identifiers will not be updated with destination organization identifier.
     - [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining) will fail if the child pipeline’s project is moved.
-    - Any pipelines running in the project will fail when the move operation begins. Ensure all pipeline executions are completed before initiating the project movement.
+    - Any pipelines running in the project will fail when the move operation begins. It’s recommended to complete all pipeline executions before initiating the project move.
 
 2. Notifications:
     - If a notification rule uses a channel from the source organization, the reference will break.
@@ -50,8 +50,8 @@ This list covers common issues but is not exhaustive. Additional organization-le
     - Custom webhook triggers will be no longer functional.
 
 7. Access control:
-    - Organization-level RBAC policies do not transfer when a project is moved and and must be recreated in the destination organization to maintain proper access controls.
-    - When a project move is initiated, all project-level access control components including role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
+    - Organization-level RBAC policies aren’t transferred during a project move. You may need to recreate them in the destination organization to ensure proper access controls are maintained.
+    - When a project move is initiated, all project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
     - Account-level resource groups with resource scope that includes the specificed project are moved across organizations, it will be automatically updated to reflect the new organization scope.
 
 8. Audit logs:
