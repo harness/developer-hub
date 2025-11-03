@@ -16,7 +16,7 @@ In this topic, we will deploy a .zip file to an AWS EC2 Windows instance using H
 
 Harness connects to your target Windows instances using the WinRM protocol and executes PowerShell commands to deploy your artifact.
 
-For WinRM, you can access artifacts from **Harness Artifact Registry**, **Jenkins**, **Artifactory**, **Custom**, **Nexus** and **Amazon S3**.
+For WinRM, you can access artifacts from **Harness Artifact Registry (Docker artifact type only)**, **Jenkins**, **Artifactory**, **Custom**, **Nexus** and **Amazon S3**.
 
 The **Execution Strategies** supported for WinRM include **Blank Canvas**, **Basic**, **Rolling**, and **Canary**.
 
