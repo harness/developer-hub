@@ -52,7 +52,7 @@ This list covers common issues but is not exhaustive. Additional organization-le
 7. Access control:
     - Organization-level RBAC policies aren’t transferred during a project move. You may need to recreate them in the destination organization to ensure proper access controls are maintained.
     - When a project move is initiated, all project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
-    - Account-level resource groups with resource scope that includes the specificed project are moved across organizations, it will be automatically updated to reflect the new organization scope.
+    - If an account-level resource group includes a project that is being moved, Harness automatically updates the resource group to reflect the new organization. No action is required from users.
 
 8. Audit logs:
     - Existing audit logs remain in the source organization and are not moved with the project. Any links in these logs pointing to the moved project or older organization will become inaccessible.
@@ -60,9 +60,7 @@ This list covers common issues but is not exhaustive. Additional organization-le
 
 :::note Important note
 - Links referencing the source organization—such as those in pipelines, webhooks, or audit logs—may stop working after a project is moved. Bookmarks or URLs with account, organization, or project identifiers are not redirected and will become outdated.
-- The project movement will not be allowed if a project with the same identifier already exists in the destination organization.
-
-    For example, if Project P is being moved from organization O1 to O2, and organization B already has a project with the same identifier (i.e., Project P), the project movement will not be allowed.
+- The project movement will not be allowed if a project with the same identifier already exists in the destination organization. For example, if Project P is being moved from organization O1 to O2, and organization B already has a project with the same identifier (i.e., Project P), the project movement will not be allowed.
 :::
 
 ## Post-move remediation
