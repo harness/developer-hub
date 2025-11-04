@@ -48,10 +48,11 @@ The JDBC connector is used for connecting to your database instance.
 | **COCKROACHDB**    | `jdbc:postgresql://{HOST}:{PORT}/{DBNAME}`                                                                                       |
 | **SQLSERVER**      | `jdbc:sqlserver://{host}:{port};trustServerCertificate=true;databaseName={dbName}`                                               |
 | **MYSQL**          | `jdbc:mysql://{host}:{port}/{dbName}`                                                                                            |
-| **MONGODB**        | `mongodb://{host}:{port}/{dbName}?authSource=admin`                                                                             |
-| **MongoDB Atlas**  | `mongodb+srv://{username}:{password}@{cluster}/{dbName}?authSource=admin`                                                       |
+| **MONGODB**        | `mongodb://{host}:{port}/{dbName}?authSource=admin`                                                                              |
+| **MongoDB Atlas**  | `mongodb+srv://{username}:{password}@{cluster}/{dbName}?authSource=admin`                                                        |
 | **GOOGLE SPANNER** | `jdbc:cloudspanner:/projects/{project-id}/instances/{instance-id}/databases/{database-name}?lenient=true`                        |
-| **MongoDB SSL**    | `mongodb://{host}:{port}/{dbName}?tls=true&authSource=admin`                                                                    |
+| **GOOGLE ALLOYDB** | `jdbc:postgresql://{HOST}:{PORT}/{DBNAME}`                                                                                       |
+| **MongoDB SSL**    | `mongodb://{host}:{port}/{dbName}?tls=true&authSource=admin`                                                                     |
 | **POSTGRES SSL**   | `jdbc:postgresql://{host}:{port}/{dbName}?ssl=true`                                                                              |
 | **SQLSERVER SSL**  | `jdbc:sqlserver://{host}:{port};databaseName={dbName};encrypt=true;trustServerCertificate=false;`                                |
 | **MYSQL SSL**      | `jdbc:mysql://{host}:{port}/{dbName}?useSSL=true`                                                                                |
@@ -95,6 +96,20 @@ Google Spanner uses a unique JDBC URL format and does not require a password for
    - The GSA must have the following roles:  
      - `roles/spanner.databaseAdmin`  
      - `roles/spanner.databaseUser`
+
+---
+## Setting Up AlloyDB
+
+AlloyDB connections in Harness DB DevOps require a **Host**, **Port**, and **Database**. The username and password are also required for authentication.
+
+### Prerequisites for AlloyDB
+1. **Connection Format**:  
+   - Use `jdbc:postgresql://{HOST}:{PORT}/{DBNAME}` for AlloyDB instances.
+2. **Authentication**:  
+   - **Username/Password**: Database user credentials
+3. **Network Access**:  
+   - Ensure the Harness Delegate has network connectivity to the AlloyDB instance. (Both are in same VPC, which is also default behavior in GCP).
+
 ---
 
 ## Connector FAQs
