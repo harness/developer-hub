@@ -1,7 +1,7 @@
 ---
 title: OpenFeature Provider for Node.js SDK
 sidebar_label: Node.js OpenFeature Provider
-sidebar_position: 4
+sidebar_position: 5
 description: Integrate OpenFeature with Harness FME in your Node.js applications to evaluate feature flags, manage contexts, and track events using a standardized SDK.
 ---
 

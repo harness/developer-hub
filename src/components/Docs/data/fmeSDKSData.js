@@ -172,6 +172,11 @@ export const openfeatureProviders = [
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/android-sdk',
   },
   {
+    name: 'iOS SDK',
+    img: '/provider-logos/ios-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/ios-sdk',
+  },
+  {
     name: 'Web SDK',
     img: '/provider-logos/browser-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/web-sdk',
