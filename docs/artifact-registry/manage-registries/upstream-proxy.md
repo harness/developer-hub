@@ -7,17 +7,18 @@ sidebar_position: 20
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-An upstream proxy in Harness enables your artifact registry to automatically fetch and cache artifacts from remote sources when they are not available locally. It acts as an intermediary between your registry and external repositories such as Maven Central or Docker Hub.
+An **Upstream Proxy** in Harness Artifact Registry is a proxy configuration that allows your registry to automatically fetch and cache artifacts from external or remote registries. When a user requests an artifact that isn't available locally, the registry directs the request to the configured upstream proxy, retrieves the artifact, and caches it for future use.
 
-:::tip
-The upstream proxy is essential for caching open-source dependencies. During a build, if a required dependency is not already cached, it is retrieved from a public repository and stored in the Upstream Proxy artifact tab. This ensures continuous availability, even if the source repository (e.g. Docker Hub or Maven Central) experiences downtime. Harness’s caching mechanism enhances reliability and efficiency by reducing dependency on external services and safeguarding access to critical artifacts.
+:::tip Why use an upstream proxy?
+The upstream proxy is essential for caching open-source dependencies. During a build, if a required dependency is not already cached, it is retrieved from a public repository (e.g., Docker Hub or Maven Central) and stored in your Upstream Proxy. This ensures continuous availability, even if the source repository experiences downtime. Harness's caching mechanism enhances reliability and efficiency by reducing dependency on external services and safeguarding access to critical artifacts.
 :::
 
 ## Key benefits
-- **Caching:** Faster access to artifacts by storing them locally once fetched.
-- **Centralization:** Consolidate external repositories into one location for easier access.
-- **Access Control:** Enforce your security policies while fetching artifacts.
-- **Reliability:** Reduce dependency on external services by leveraging cached artifacts.
+
+- **Caching:** Faster access to artifacts by storing them locally once fetched
+- **Centralization:** Consolidate external repositories into one location for easier management
+- **Access Control:** Enforce your security policies while fetching artifacts
+- **Reliability:** Reduce dependency on external services by leveraging cached artifacts
 
 ## Create an upstream proxy
 
@@ -27,15 +28,56 @@ The upstream proxy is essential for caching open-source dependencies. During a b
 </TabItem>
 <TabItem value="Step-by-step">
 
+To create an upstream proxy, follow these steps:
+
 1. Select the dropdown next to **+ New Artifact Registry**, and then select **Upstream Proxy**.
-2. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you. 
+
+2. Select a [registry type](/docs/artifact-registry/whats-supported#supported-registry-types).
+
+3. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you.
    
-   :::tip allowed characters
-    This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
+   :::tip Allowed characters
+   The proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
    :::
 
-3. For the source, select Docker Hub.
-4. Choose your **Authentication** method. In this case, we only want to use public docker images, so we will select **Anonymous**.
-5. Select **Create Upstream Proxy**.
+4. Depending on the registry type, configure the source settings:
+
+    <Tabs>
+    <TabItem value="Docker" label="Docker">
+    
+    - Enter the proxy **Source**: Either **Docker Hub** or a **Custom** source
+    - If it's a custom source, enter the Docker **Remote Registry URL**
+    
+    </TabItem>
+    <TabItem value="ECR" label="ECR">
+    
+    - Select the **AWS ECR** source
+    - Enter the **ECR Remote Registry URL**
+
+    :::info AWS ECR URL format
+    Your AWS Elastic Container Registry (ECR) URL will be in this format:  
+    `https://{region}.console.aws.amazon.com/ecr/repositories/{public-or-private}/{repo-id}/{repo-name}?region={region}`
+    :::
+    
+    </TabItem>
+    <TabItem value="Helm" label="Helm">
+    
+    - Enter the Helm **Remote Registry URL**
+    
+    </TabItem>
+    </Tabs>
+
+5. Choose your **Authentication** method:
+
+   :::note Public vs Private authentication
+   - Select **Access Key and Secret Key** for private sources
+   - Select **Anonymous (No credentials required)** for public sources
+   :::
+
+6. Select **Create Upstream Proxy**.
+
 </TabItem>
 </Tabs>
+
+> **Next steps:**
+>After you've created your upstream proxy, you will need to set it in a registry. To learn how to do so, go to [Set an upstream proxy](/docs/artifact-registry/manage-registries/configure-registry#set-proxy-for-registry).
