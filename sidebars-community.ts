@@ -15,13 +15,6 @@ const sidebars: SidebarsConfig = {
       className: "sidebar-univ",
       href: "/university",
     },
-    // KB from Community
-    {
-      type: "link",
-      label: "Knowledge Base",
-      className: "sidebar-allkb",
-      href: "/kb",
-    },
     // Roadmap from Community
     {
       type: "link",

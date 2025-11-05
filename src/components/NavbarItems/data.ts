@@ -234,8 +234,4 @@ export const contentTypeData = {
     border: '--primary-3',
     backgroundColor: '--primary-3',
   },
-  'Knowledge Base': {
-    border: '',
-    backgroundColor: '',
-  },
 };

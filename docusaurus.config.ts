@@ -159,20 +159,9 @@ const config: Config = {
           ],
         },
         {
-          label: 'Knowledge Base',
+          label: 'API Reference',
           position: 'right',
-          type: 'dropdown',
-          to: 'kb',
-          items: [
-            {
-              to: 'kb',
-              label: 'Knowledge Base',
-            },
-            {
-              to: 'kb/reference-architectures',
-              label: 'Reference Architectures',
-            },
-          ],
+          href: 'https://apidocs.harness.io/',
         },
         {
           label: 'Roadmap',
@@ -416,20 +405,6 @@ const config: Config = {
         // ... other options
       },
     ],
-    [
-      path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
-      {
-        id: 'kb',
-        path: 'kb',
-        routeBasePath: 'kb',
-        exclude: ['**/shared/**', '**/static/**'],
-        sidebarPath: require.resolve('./sidebars-kb.js'),
-        showLastUpdateTime: true,
-        editUrl: 'https://github.com/harness/developer-hub/tree/main',
-        // ... other options
-      },
-    ],
-
     [
       path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
       {

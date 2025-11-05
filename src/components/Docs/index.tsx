@@ -17,12 +17,6 @@ export default function Docs() {
             <h1>Harness Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb">
-              <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
             <Link href="/release-notes">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />

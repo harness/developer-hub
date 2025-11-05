@@ -18,7 +18,7 @@ export default function IDP() {
             <h1>Internal Developer Portal</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb">
+            <Link href="/docs/category/knowledge-base">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
                 Knowledge Base
