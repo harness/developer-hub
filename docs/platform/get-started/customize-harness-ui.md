@@ -110,3 +110,6 @@ Logos appear in multiple places throughout Harness. This feature allows you to c
 </TabItem>
 </Tabs>
 
+:::note 
+After saving changes to the logo or favicon, updates are applied immediately. However, due to browser caching, they may not appear right away. Perform a hard refresh (Ctrl + Shift + R on Windows/Linux or Cmd + Shift + R on macOS) to view the latest version.
+:::
