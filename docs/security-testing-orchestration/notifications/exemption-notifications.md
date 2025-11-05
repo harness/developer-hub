@@ -94,6 +94,15 @@ This notification is sent when the status of an exemption request changes. The e
 - The exemption request is **Rejected**.
 - The exemption request is **Expired**.
 
+
+:::note
+To receive notifications when exemption requests are approved, you must configure the notification rule and channel at the **same scope** where the exemption is approved.
+
+- **Project level approvals:** To receive notifications for exemption requests approved at the **Project** scope, the notification rule must be configured at the **Project level** under **Project Settings**.
+- **Organization, Account level approvals:** To receive notifications for exemption requests approved at the **Organization** or **Account** scope, the notification rule must be configured at the corresponding **Organization Settings** or **Account Settings**.
+
+:::
+
 This notification helps keep the original requester and other stakeholders informed about the outcome of the review process. For example, a developer can be notified immediately when their exemption request has been approved, allowing them to proceed with their work.
 
 <details>
