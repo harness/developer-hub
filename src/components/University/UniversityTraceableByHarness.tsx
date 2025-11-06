@@ -512,8 +512,8 @@ export default function CertificationsTBH() {
               {spt
                 .filter((spt) => {
                   return (
-                    (spt.module === "dbdevops" && spt.cardType === "FREE") ||
-                    (spt.module === "dbdevops" && spt.tileType === "comming soon")
+                    (spt.module === "tbh" && spt.cardType === "FREE") ||
+                    (spt.module === "tbh" && spt.tileType === "comming soon")
                   );
                 })
                 .map((spt) => (
