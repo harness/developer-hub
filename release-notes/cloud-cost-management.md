@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-10-31T18:00
+date: 2025-11-07T18:00
 sidebar_position: 6
 ---
 
@@ -25,7 +25,7 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
-## November 2025 
+## November 2025 Deployment for BI Dashboards in CCM
 #### Deployment Date: November 7, 2025
 
 ### Feature Improvements
