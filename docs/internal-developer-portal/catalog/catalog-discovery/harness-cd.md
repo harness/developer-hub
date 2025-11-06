@@ -39,10 +39,13 @@ After enabling the integration, configure what to sync:
 * **Entity fields populated (read-only in IDP):**
   The following fields are fetched from the CD service and remain synced:
 
-  * `name`
-  * `identifier`
-  * `description`
-  * `tags`
+| **Harness CD Field** | **IDP Entity Field** | **Editable in IDP** |
+|---------------------|---------------------|---------------------|
+| Service Name | `metadata.name` | ❌ No (synced from CD) |
+| Service Identifier | `metadata.identifier` | ❌ No (synced from CD) |
+| Service Description | `metadata.description` | ❌ No (synced from CD) |
+| Service Tags | `metadata.tags` | ❌ No (synced from CD) |
+| Additional Metadata | Custom fields | ✅ Yes (IDP-specific) |
 
   These fields **cannot be edited in IDP**. Update them in Harness CD.
 
@@ -52,7 +55,6 @@ After enabling the integration, configure what to sync:
 * **RBAC:**
   You can view and sync services from the same projects and organizations you have access to in Harness CD.
 
-  ---
 
 #### Configure the sync scope
 
