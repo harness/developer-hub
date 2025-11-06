@@ -66,7 +66,7 @@ yarn add @splitsoftware/splitio-react
 
 ```html
 <!-- Don't forget to include React script tags before the SDK. More details at https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags  -->
-<script src="//cdn.split.io/sdk/splitio-react-2.4.0.min.js"></script>
+<script src="//cdn.split.io/sdk/splitio-react-2.6.0.min.js"></script>
 
 ```
 
@@ -206,21 +206,90 @@ Configure the SDK with the SDK key for the FME environment that you would like t
 
 ## Using the SDK
 
-### Get treatments with configurations
+### Basic use
 
 When the SDK is instantiated, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
-To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready, as shown below. We provide the `isReady` boolean prop based on the client that will be used by the component. Internally we listen for the `SDK_READY` event triggered by given SDK factory client to set the value of `isReady`.
-
-After the `isReady` prop is set to true, you can use the SDK. The `useSplitTreatments` hook returns the proper treatments based on the `names` prop value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatments` property to access the treatment values as well as the corresponding [dynamic configurations](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations) that you defined in Harness FME. Remember to handle the client returning control as a safeguard.
-
-Similarly to the vanilla JS SDK, React SDK supports the ability to evaluate flags based on cached content when using [LOCALSTORAGE](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration) as storage type. In this case, the `isReadyFromCache` prop will change to true almost instantly since access to the cache is synchronous, allowing you to consume flags earlier on components that are critical to your UI. Keep in mind that the data might be stale until `isReady` prop is true. Read more [below](#subscribe-to-events-and-changes).
-
-<Tabs>
-<TabItem value="With useSplitTreatments hook">
+To make sure the SDK is properly loaded before using treatments, render your components conditionally based on the `isReady` or `isReadyFromCache` properties, as shown below.
 
 ```javascript
-import { useSplitTreatments } from '@splitsoftware/splitio-react';
+import { useTreatment } from '@splitsoftware/splitio-react';
+import MyComponentV1 from './MyComponentV1';
+import MyComponentV2 from './MyComponentV2';
+import Spinner from './Spinner';
+
+const featureName = 'FEATURE_FLAG_NAME';
+
+export function MyComponentToggle(props) {
+
+  // Evaluate a feature flag with the `useTreatment` hook
+  const { treatment, isReady, isReadyFromCache } = useTreatment({ name: featureName });
+
+  // Render a fallback component while the SDK is not ready yet
+  if (!isReady) return <Spinner />; 
+  
+  // Render the component based on the treatment
+  return treatment === 'on' ? 
+    <MyComponentV2 {...props} /> :
+    <MyComponentV1 {...props} />;
+}
+```
+
+The SDK provides these boolean properties to indicate the state of the SDK client. Internally the client's events `SDK_READY` and `SDK_READY_FROM_CACHE` are listened to update the `isReady` and `isReadyFromCache` values respectively.
+
+Once either the `isReadyFromCache` or `isReady` prop is `true`, you can use the SDK treatments. The difference between each property is that `isReadyFromCache` indicates that the SDK cache is ready for evaluations, but its data might be stale; while `isReady` means that the cache has been synchronized with the server and is up to date. In other words, `isReady` implies `isReadyFromCache`, but the opposite is not always true, and `isReadyFromCache` might be true before `isReady` becomes true. 
+
+For example, when using `initialRolloutPlan` option (See [Server-Side Rendering](#server-side-rendering)), `isReadyFromCache` is `true` instantly since the SDK cache is preloaded with the provided rollout plan. Similarly, when using [LOCALSTORAGE](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration) as storage type, `isReadyFromCache` will be `true` almost immediately if data was persisted in a previous session, since access to a local persistence storage is faster than a remote server, allowing you to consume flags earlier on components that are critical to your UI, while `isReady` will be true later once the SDK finishes the initial sync with the server. On scenarios where cache is not preloaded, both props will be `true` together.
+
+The `useTreatment` hook returns the proper treatment based on the `name` option value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatment` result to access the treatment value that you defined in Harness FME. Remember to handle the client returning control as a safeguard.
+
+### Multiple evaluations at once
+
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the `useTreatments` hook to do this, and pass a list of the feature flag `names` or list of `flagSets` you want treatments for.
+
+```javascript
+import { useTreatments } from '@splitsoftware/splitio-react';
+
+export function MyComponentToggle(props) {
+
+  // Evaluate multiple feature flags with the `useTreatments` hook
+  const { treatments, isReady } = useTreatments({ names: ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'] });
+
+  // `treatments` have the following form:
+  // {
+  //   FEATURE_FLAG_NAME_1: 'on',
+  //   FEATURE_FLAG_NAME_2: 'visa'
+  // }
+
+  // Evaluate multiple feature flags by flag sets
+  const { treatments: treatmentsByFlagSets } = useTreatments({ byFlagSets: ['frontend', 'client_side'] });
+
+  if (!isReady) return <Spinner />; 
+    
+  if (treatments['FEATURE_FLAG_NAME_1'] === 'on') return (<MyComponentV2 {...props} />);
+
+  return (<MyComponentV1 {...props} />);
+}
+```
+
+
+### Get treatments with configurations
+
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `useTreatmentWithConfig` or `useTreatmentsWithConfig` hooks.
+
+:::info[`useSplitTreatments` hook is deprecated since v2.6.0]
+The `useSplitTreatments` hook has been deprecated and will be removed in a future major release. You can directly rename it to the `useTreatmentsWithConfig` hook, which is an alias, or use a more specific hook alternative like `useTreatment`.
+:::
+
+
+The `useTreatmentsWithConfig` hook returns the proper treatments based on the `names` prop value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatments` property to access the treatment values as well as the corresponding [dynamic configurations](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations) that you defined in Harness FME. Remember to handle the client not ready as a safeguard.
+
+
+<Tabs>
+<TabItem value="With useTreatmentsWithConfig hook">
+
+```javascript
+import { useTreatmentsWithConfig } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
 import MyComponentV2 from './MyComponentV2';
 
@@ -234,58 +303,41 @@ function renderContent(treatmentWithConfig, props) {
   return (<MyComponentV1 config={config} {...props} />);
 }
 
-/**
- * This is another way to write a toggler with a function component that uses hooks.
- **/
-function MyComponentToggle (props) {
+export function MyComponentToggle(props) {
 
-  // evaluate feature flags with the `useSplitTreatments` hook
-  const { treatments, isReady } = useSplitTreatments({ names: [featureName] });
+  const { treatments, isReady } = useTreatmentsWithConfig({ names: [featureName] });
 
   return isReady ?
     renderContent(treatments[featureName], props) : // Use the treatments and configs.
     <Spinner />; // Render a spinner if the SDK is not ready yet.
 }
-
-export default MyComponentToggle;
 ```
 
 </TabItem>
-<TabItem value="With SplitTreatments component (deprecated)">
+<TabItem value="With useTreatmentWithConfig hook">
 
 ```javascript
-import { SplitTreatments } from '@splitsoftware/splitio-react';
+import { useTreatmentWithConfig } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
 import MyComponentV2 from './MyComponentV2';
 
 const featureName = 'FEATURE_FLAG_NAME';
 
-/**
- * This is one way to write a toggler component, which might be convenient for code cleanup afterwards
- * as you remove both toggle and legacy component, then wire the version you'll keep.
- * But it's not the only way to use the treatments. Always follow the pattern that works best for you!
- **/
-export default class MyComponentToggle extends React.Component {
+function renderContent(treatmentWithConfig, props) {
+  const { treatment, config } = treatmentWithConfig;
 
-  renderContent(treatmentWithConfig) {
-    const { treatment, config } = treatmentWithConfig;
+  if (treatment === 'on') return (<MyComponentV2 config={config} {...props} />);
 
-    if (treatment === 'on') return (<MyComponentV2 config={config} {...this.props} />);
+  return (<MyComponentV1 config={config} {...props} />);
+}
 
-    return (<MyComponentV1 config={config} {...this.props} />);
-  }
+export function MyComponentToggle(props) {
 
-  render() {
-    return (
-      <SplitTreatments names={[featureName]} >
-        {({ treatments, isReady }) => { // Passes down a TreatmentsWithConfig object and SplitContext properties like the boolean `isReady` flag.
-          return isReady ?
-            this.renderContent(treatments[featureName]) : // Use the treatments and configs.
-            <Spinner />; // Render a spinner if the SDK is not ready yet. You can do what you want with this boolean.
-        }}
-      </SplitTreatments>
-    );
-  }
+  const { treatment, isReady } = useTreatmentWithConfig({ names: [featureName] });
+
+  return isReady ?
+    renderContent(treatment, props) : // Use the treatment value and config.
+    <Spinner />; // Render a spinner if the SDK is not ready yet.
 }
 ```
 
@@ -307,13 +359,13 @@ type TreatmentsWithConfig = {
 
 As you can see from the object structure, the config will be a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
-In some instances, you may want to evaluate treatments for multiple feature flags at once using flag sets. In that case, you can use the `useSplitTreatments` hook with the `flagSets` property rather than the `names` property. Like `names`, the `flagSets` property is an array of strings, each one corresponding to a different flag set name.
+In some instances, you may want to evaluate treatments for multiple feature flags at once using flag sets. In that case, you can use the `useTreatmentsWithConfig` hook with the `flagSets` property rather than the `names` property. Like `names`, the `flagSets` property is an array of strings, each one corresponding to a different flag set name.
 
 <Tabs>
-<TabItem value="Flag sets with useSplitTreatments hook">
+<TabItem value="Flag sets with useTreatmentsWithConfig hook">
 
 ```javascript
-import { useSplitTreatments } from '@splitsoftware/splitio-react';
+import { useTreatmentsWithConfig } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
 import MyComponentV2 from './MyComponentV2';
 
@@ -330,7 +382,7 @@ function renderContent(treatmentWithConfig, props) {
 
 function MyComponentToggle (props) {
 
-  const { treatments, isReady } = useSplitTreatments({ flagSets: flagSets });
+  const { treatments, isReady } = useTreatmentsWithConfig({ flagSets: flagSets });
 
   return isReady ?
     // If your flag sets are not properly configured, `treatments` might be an empty object
@@ -340,43 +392,6 @@ function MyComponentToggle (props) {
 }
 
 export default MyComponentToggle;
-```
-
-</TabItem>
-<TabItem value="Flag sets with SplitTreatments component (deprecated)">
-
-```javascript
-import { SplitTreatments } from '@splitsoftware/splitio-react';
-import MyComponentV1 from './MyComponentV1';
-import MyComponentV2 from './MyComponentV2';
-
-const flagSets = ['frontend', 'client_side'];
-const featureName = 'FEATURE_FLAG_NAME';
-
-export default class MyComponentToggle extends React.Component {
-
-  renderContent(treatmentWithConfig) {
-    const { treatment, config } = treatmentWithConfig;
-
-    if (treatment === 'on') return (<MyComponentV2 config={config} {...this.props} />);
-
-    return (<MyComponentV1 config={config} {...this.props} />);
-  }
-
-  render() {
-    return (
-      <SplitTreatments flagSets={flagSets} >
-        {({ treatments, isReady }) => {
-          return isReady ?
-            // If your flag sets are not properly configured, `treatments` might be an empty object
-            // or it might not contain the feature flags you expect.
-            this.renderContent(treatments[featureName] || { treatment: 'control' }) :
-            <Spinner />;
-        }}
-      </SplitTreatments>
-    );
-  }
-}
 ```
 
 </TabItem>
@@ -410,7 +425,7 @@ const attributes = {
 };
 
 const ComponentWithTreatments = () => {
-  const { treatments, isReady } = useSplitTreatments({ names: [featureName], attributes: attributes });
+  const { treatments, isReady } = useTreatmentsWithConfig({ names: [featureName], attributes: attributes });
 
   const treatment = treatments[featureName].treatment;
 
@@ -440,7 +455,7 @@ const attributes: SplitIO.Attributes = {
 };
 
 const ComponentWithTreatments = () => {
-  const { treatments, isReady } = useSplitTreatments({ names: [featureName], attributes: attributes });
+  const { treatments, isReady } = useTreatmentsWithConfig({ names: [featureName], attributes: attributes });
 
   const treatment: SplitIO.Treatment = treatments[featureName].treatment;
 
@@ -457,7 +472,7 @@ const ComponentWithTreatments = () => {
 
 ### Binding attributes to the client
 
-Attributes can optionally be bound to the `useSplitClient` hook or the `SplitFactoryProvider` component via props. These attributes are stored in memory and used in every evaluation to avoid the need to keep the attribute set accessible through the whole app. When an evaluation is called, for example, with the `useSplitTreatments` hook, the attributes provided (if any) at evaluation time are combined with the ones that are already loaded into the SDK memory, with the ones provided at evaluation time taking precedence. This enables those attributes to be overridden or hidden for specific evaluations.
+Attributes can optionally be bound to the `useSplitClient` hook or the `SplitFactoryProvider` component via props. These attributes are stored in memory and used in every evaluation to avoid the need to keep the attribute set accessible through the whole app. When an evaluation is called, for example, with the `useTreatment*` hooks, the attributes provided (if any) at evaluation time are combined with the ones that are already loaded into the SDK memory, with the ones provided at evaluation time taking precedence. This enables those attributes to be overridden or hidden for specific evaluations.
 
 An attribute is considered valid if it follows one of the types listed below:
 - String
@@ -473,7 +488,7 @@ To use these methods, refer to the example below:
 <TabItem value="Using the hooks">
 
 ```javascript
-import { SplitFactoryProvider, useSplitClient, useSplitTreatments } from '@splitsoftware/splitio-react';
+import { SplitFactoryProvider, useSplitClient, useTreatments } from '@splitsoftware/splitio-react';
 
 // Assuming this is how the user setup the factory:
 const sdkConfig = {
@@ -507,9 +522,9 @@ function MyComponent(props) {
    * Using the main client bound to the key passed in the config for evaluations
    * and the attributes received on SplitFactoryProvider attributes prop.
    */
-  const { isReady, treatments } = useSplitTreatments({ names: ['USER_FEATURE_FLAG_NAME'], attributes: treatmentAttributes });
+  const { isReady, treatments } = useTreatments({ names: ['USER_FEATURE_FLAG_NAME'], attributes: treatmentAttributes });
   // Do something with the treatments for the 'nicolas@user' key.
-  // This evaluation combines SplitFactoryProvider component attributes with the ones provided to the useSplitTreatments hook.
+  // This evaluation combines SplitFactoryProvider component attributes with the ones provided to the useTreatments hook.
   // Then it evaluates with attributes = { permissions: ["read", "write"], deal_size: 10000 }
 
   // You can retrieve clients for as many keys as you need, although it's not recommended to create more than you absolutely need to.
@@ -535,7 +550,7 @@ function MyComponent(props) {
 ```
 
 </TabItem>
-<TabItem value="Using SplitClient component (deprecated)">
+<TabItem value="Using SplitClient component">
 
 ```javascript
 import { SplitFactoryProvider, SplitClient, SplitTreatments } from '@splitsoftware/splitio-react';
@@ -612,9 +627,9 @@ class MyComponent extends React.Component {
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time an evaluation is done using the `useSplitTreatments` hook. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time an evaluation is done using the `useTreatment*` hooks. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
-You can append properties to an impression by passing an object of key-value pairs to the `useSplitTreatments` hook. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+You can append properties to an impression by passing an object of key-value pairs to the `useTreatment*` hooks. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
 Three types of properties are supported: strings, numbers, and booleans.
 
@@ -629,7 +644,7 @@ const properties = {
 };
 
 const MyComponent = () => {
-  const { treatments, isReady, ... } = useSplitTreatments({ names: [featureName], properties: properties });
+  const { treatment, isReady, ... } = useTreatment({ name: featureName, properties: properties });
 
   return (...);
 };
@@ -646,7 +661,7 @@ const properties: SplitIO.Properties = {
 };
 
 const MyComponent = () => {
-  const { treatments, isReady, ... } = useSplitTreatments({ names: [featureName], properties: properties });
+  const { treatment, isReady, ... } = useTreatment({ name: featureName, properties: properties });
 
   return (...);
 };
@@ -762,7 +777,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To do this, start the SDK in **localhost** mode (also called off-the-grid mode). In this mode, the SDK neither polls or updates from Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features.
 
-When instantiating the SDK in localhost mode, your `authorizationKey` is `"localhost"`. Define the feature flags you want to use in the `features` object map. All `useSplitTreatments` calls for a feature flag return the treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. If you want to update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from the `features` object. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
+When instantiating the SDK in localhost mode, your `authorizationKey` is `"localhost"`. Define the feature flags you want to use in the `features` object map. All `useTreatment*` calls for a feature flag return the treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. If you want to update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from the `features` object. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
 
 Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them. Use the following additional configuration parameters when instantiating the SDK in `localhost` mode:
 
@@ -782,7 +797,7 @@ If you define just a string as the value for a feature flag name, the config ret
 import React from "react";
 // React testing library: https://www.npmjs.com/package/@testing-library/react
 import { render, waitFor } from "@testing-library/react";
-import { SplitFactoryProvider, useSplitTreatments } from "@splitsoftware/splitio-react";
+import { SplitFactoryProvider, useTreatment } from "@splitsoftware/splitio-react";
 
 const config = {
   core: {
@@ -797,9 +812,9 @@ const config = {
 };
 
 const MyComponent = () => {
-  const { isReady, treatments } = useSplitTreatments({ names=['reporting_v2'] });
+  const { isReady, treatment } = useTreatment({ name: 'reporting_v2' });
 
-  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatments['reporting_v2'].treatment}`}</div>;
+  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatment}`}</div>;
 }
 
 const MyApp = () => {
@@ -834,7 +849,7 @@ describe('MyApp', () => {
 import React from 'react';
 // Enzyme testing utility: https://www.npmjs.com/package/enzyme
 import { mount } from 'enzyme';
-import { SplitFactoryProvider, useSplitTreatments } from '@splitsoftware/splitio-react';
+import { SplitFactoryProvider, useTreatment } from '@splitsoftware/splitio-react';
 
 const config = {
   core: {
@@ -849,9 +864,9 @@ const config = {
 };
 
 const MyComponent = () => {
-  const { isReady, treatments } = useSplitTreatments({ names=['reporting_v2'] });
+  const { isReady, treatment } = useTreatment({ name: 'reporting_v2' });
 
-  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatments['reporting_v2'].treatment}`}</div>;
+  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatment}`}</div>;
 }
 
 const MyApp = () => {
@@ -888,7 +903,7 @@ describe('MyApp', () => {
 import React from 'react';
 // React Test Renderer: https://reactjs.org/docs/test-renderer.html
 import { create } from 'react-test-renderer';
-import { SplitFactoryProvider, useSplitTreatments } from '@splitsoftware/splitio-react';
+import { SplitFactoryProvider, useTreatment } from '@splitsoftware/splitio-react';
 
 const config = {
   core: {
@@ -903,9 +918,9 @@ const config = {
 };
 
 const MyComponent = () => {
-  const { isReady, treatments } = useSplitTreatments({ names=['reporting_v2'] });
+  const { isReady, treatment } = useTreatment({ name: 'reporting_v2' });
 
-  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatments['reporting_v2'].treatment}`}</div>;
+  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatment}`}</div>;
 }
 
 const MyApp = () => {
@@ -1171,9 +1186,9 @@ class MyComponentWithFlags extends React.Component {
         </SplitTreatments>
         {
           /*
-          * To use another client, you can use the SplitClient component. Keep in mind that
-          * this client might not be ready yet if it's just being created and still downloading segments
-          * for the new key, but you can use the isReady property to block until ready.
+          * To use another client, you can use the SplitClient component. Keep in mind that this client
+          * might not be ready yet if it's just being created and still downloading segments for the new key,
+          * but you can use the isReady property to conditionally render a Loading/Fallback component until ready.
           */
         }
         <SplitClient splitKey={this.props.accountId}  >
@@ -1200,12 +1215,12 @@ While the SDK does not put any limitations on the number of instances that can b
 
 The underlying JavaScript SDK has four different events:
 
-* `SDK_READY_FROM_CACHE`. This event fires if you are using the `LOCALSTORAGE` storage type and the SDK is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configuration](#configuration) for more information). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires when the SDK is ready to evaluate treatments. If the SDK is configured to use a persistent cache using the [LOCALSTORAGE](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration) storage type, it will attempt to use a locally cached version of your rollout plan from a previous session. If data is cached, this event fires almost immediately, since access to the cache is fast, but data might be stale. Otherwise, it fires together with the `SDK_READY` event when the SDK downloads the rollout plan from Harness servers.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not fully download the data from Harness servers (`SDK_READY` event), within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
-While you could potentially access the JavaScript SDK factory client from the Split context and track this yourself, this is not trivial. The `useSplitClient` and `useSplitTreatments` hooks accept four optional boolean parameters to trigger the re-render of the component. If the parameters are set to `true` (which is the default), the component re-renders when an `SDK_READY`, `SDK_READY_FROM_CACHE`, `SDK_UPDATE` or `SDK_READY_TIMED_OUT` event fires, and you can take action if you desire to do so.
+While you could potentially access the JavaScript SDK client from the Split context and track this yourself, this is not trivial. The `useSplitClient` and `useTreatment*` hooks accept four optional boolean parameters to trigger the re-render of the component. If the parameters are set to `true` (which is the default), the component re-renders when an `SDK_READY`, `SDK_READY_FROM_CACHE`, `SDK_UPDATE` or `SDK_READY_TIMED_OUT` event fires, and you can take action if you desire to do so.
 
 * For `SDK_READY`, you can set the `updateOnSdkReady` parameter.
 * For `SDK_READY_FROM_CACHE`, you can set the `updateOnSdkReadyFromCache` parameter.
@@ -1214,14 +1229,14 @@ While you could potentially access the JavaScript SDK factory client from the Sp
 
 The default value for all these parameters is `true`.
 
-The `useSplitClient` and `useSplitTreatments` hooks return the SDK factory client and treatment evaluations respectively, together with a set of **status properties** to conditionally render the component.
+The `useTreatment*` hooks return the SDK client and treatment evaluations, together with a set of **status properties** to conditionally render the component.
 
 These properties consist of the following:
 
-- `isReady`: a boolean indicating if the `SDK_READY` event was triggered.
-- `isReadyFromCache`: a boolean indicating if the `SDK_READY_FROM_CACHE` event was triggered.
-- `hasTimedout`: a boolean indicating if the `SDK_READY_TIMED_OUT` event was triggered.
-- `isTimedout`: a boolean indicating if the `SDK_READY_TIMED_OUT` event was triggered and the SDK is not ready to be consumed. Formally, `isTimedout` is equivalent to `hasTimeout && !isReady`.
+- `isReady`: a boolean indicating if the `SDK_READY` event was emitted.
+- `isReadyFromCache`: a boolean indicating if the `SDK_READY_FROM_CACHE` event was emitted.
+- `hasTimedout`: a boolean indicating if the `SDK_READY_TIMED_OUT` event was emitted.
+- `isTimedout`: a boolean indicating if the `SDK_READY_TIMED_OUT` event was emitted and the SDK is not ready to be consumed. Formally, `isTimedout` is equivalent to `hasTimeout && !isReady`.
 - `lastUpdate`: timestamp of the last listened event.
 
 Find an example below:
@@ -1232,11 +1247,11 @@ Find an example below:
 ```javascript
 function MyApp() {
   // Evaluates feature flags for the main client bound to the key passed in the factory config.
-  const { treatments, isReady, isReadyFromCache, hasTimedout, lastUpdate } = useSplitTreatments({ names: ['USER_FEATURE_FLAG_NAME'] });
+  const { treatment, isReady, isReadyFromCache, hasTimedout, lastUpdate } = useTreatment({ name: 'USER_FEATURE_FLAG_NAME' });
 
   // But we can evaluate at a per client basis, and choose when to trigger a re-render.
   // For example, the accountId we only want to update on SDK_READY and SDK_READY_TIMED_OUT. Not on SDK_READY_FROM_CACHE or SDK_UPDATE.
-  const { treatments: accountTreatments, isReady: isReadyAccount, hasTimedout: hasTimedoutAccount } = useSplitTreatments({
+  const { treatments: accountTreatments, isReady: isReadyAccount, hasTimedout: hasTimedoutAccount } = useTreatments({
     names: ['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2'],
     splitKey: accountId,
     updateOnSdkReadyFromCache: false, // true by default
@@ -1400,7 +1415,7 @@ This way, there are two options for server-side rendering:
 
 #### SDK not ready on initial render
 
-If you don't provide an `initialRolloutPlan` in the configuration, the SDK clients start in an unready state during the initial component render. In this state, status properties like `isReady` are `false`, and `useSplitTreatments` returns `'control'`.
+If you don't provide an `initialRolloutPlan` in the configuration, the SDK clients start in an unready state during the initial component render. In this state, status properties like `isReady` are `false`, and `useTreatment*` hooks return `'control'`.
 
 Afterwards, the `SplitFactoryProvider` effect initializes the SDK factory. This factory becomes ready on the client side in a subsequent render but does not initialize on the server side.
 
@@ -1531,15 +1546,15 @@ export default async function Page() {
 // app/MyComponentWithFeatureFlags.jsx
 'use client'
 
-import { useSplitTreatments } from '@splitsoftware/splitio-react';
+import { useTreatment } from '@splitsoftware/splitio-react';
 
 const FEATURE_FLAG_NAME = 'test_split';
 
 export const MyComponentWithFeatureFlags = (props) => {
-  const { treatments, isReady } = useSplitTreatments({ names: [FEATURE_FLAG_NAME] });
+  const { treatment, isReady } = useTreatment({ name: FEATURE_FLAG_NAME });
 
   return isReady ?
-    treatments[FEATURE_FLAG_NAME].treatment === 'on' ?
+    treatment === 'on' ?
       <OnComponent {...props} /> :
       <OffComponent {...props} /> :
     <Loading {...props} />
@@ -1553,7 +1568,7 @@ export const MyComponentWithFeatureFlags = (props) => {
 
 When you provide an `initialRolloutPlan` in the configuration, the SDK clients becomes **ready from cache** immediately, including the initial component tree render.
 
-In this state, the `isReadyFromCache` status property is `true` and `useSplitTreatments` returns treatments based on the feature flag definitions in the `initialRolloutPlan`.
+In this state, the `isReadyFromCache` status property is `true` and `useTreatment*` hooks return treatments based on the feature flag definitions in the `initialRolloutPlan`.
 
 To get the rollout plan snapshot and pass it to the SDK via `initialRolloutPlan`, follow these steps:
 
@@ -1569,15 +1584,15 @@ Code examples:
 
 ```javascript
 // MyComponentWithFeatureFlags.jsx
-import { useSplitTreatments } from '@splitsoftware/splitio-react';
+import { useTreatment } from '@splitsoftware/splitio-react';
 
 const FEATURE_FLAG_NAME = 'test_split';
 
 export const MyComponentWithFeatureFlags = () => {
-  const { treatments, isReady, isReadyFromCache } = useSplitTreatments({ names: [FEATURE_FLAG_NAME] });
+  const { treatment, isReady, isReadyFromCache } = useTreatment({ name: FEATURE_FLAG_NAME });
 
   return isReady || isReadyFromCache ?
-    treatments[FEATURE_FLAG_NAME].treatment === 'on' ?
+    treatment === 'on' ?
       <OnComponent /> :
       <OffComponent /> :
     <Loading />
@@ -1662,7 +1677,7 @@ export const getServerSideProps = (async (request) => {
     })
   }
 
-  await serverSideSdk.client().ready();
+  await serverSideSdk.client().whenReady();
 
   const trafficKey = request.query.trafficKey;
   const sdkConfig = {
@@ -1722,7 +1737,7 @@ async function getClientSideConfig() {
     })
   }
 
-  await serverSideSdk.client().ready();
+  await serverSideSdk.client().whenReady();
 
   const trafficKey = cookieStore.get('trafficKey')?.value || 'anonymous';
 
@@ -1764,15 +1779,15 @@ export default async function Page() {
 // app/MyComponentWithFeatureFlags.jsx
 'use client'
 
-import { useSplitTreatments } from '@splitsoftware/splitio-react';
+import { useTreatment } from '@splitsoftware/splitio-react';
 
 const FEATURE_FLAG_NAME = 'test_split';
 
 export const MyComponentWithFeatureFlags = (props) => {
-  const { treatments, isReady, isReadyFromCache } = useSplitTreatments({ names: [FEATURE_FLAG_NAME] });
+  const { treatment, isReady, isReadyFromCache } = useTreatment({ name: FEATURE_FLAG_NAME });
 
   return isReady || isReadyFromCache ?
-    treatments[FEATURE_FLAG_NAME].treatment === 'on' ?
+    treatment === 'on' ?
       <OnComponent {...props} /> :
       <OffComponent {...props} /> :
     <Loading {...props} />
@@ -1851,13 +1866,13 @@ The React SDK’s `SplitFactoryProvider` initializes the underlying JS SDK facto
 
 The React SDK supports multiple clients sharing the same factory but with different traffic keys. The recommended approach is to configure the SDK initially with a dummy key. Once the real traffic key becomes available (e.g., after login), initialize a second client object with the real key.
 
-Starting with React SDK v2.0.0, you can specify the `splitKey` prop in hooks (`useSplitTreatments`, `useTrack`, `useSplitClient`) and in the `<SplitClient>` component. If `splitKey` is omitted, it defaults to the key provided in the factory config.
+Starting with React SDK v2.0.0, you can specify the `splitKey` prop in hooks (`useTreatment*`, `useTrack`, `useSplitClient`) and in the `<SplitClient>` component. If `splitKey` is omitted, it defaults to the key provided in the factory config.
 
 For example, passing down the `splitKey` prop:
 
 ```javascript
 import { useState, useEffect } from 'react';
-import { SplitFactoryProvider, useSplitTreatments } from '@splitsoftware/splitio-react';
+import { SplitFactoryProvider, useTreatment } from '@splitsoftware/splitio-react';
 
 const SDK_CONFIG = {
    core: {
@@ -1870,10 +1885,10 @@ const FEATURE_FLAG_NAME = 'test_split';
 
 // Prop drilling `splitKey` to child components
 function MyComponent({ splitKey }) {
-  const { treatments, isReady } = useSplitTreatments({ names: [FEATURE_FLAG_NAME], splitKey });
+  const { treatment, isReady } = useTreatment({ name: FEATURE_FLAG_NAME, splitKey });
 
   return isReady ?
-    <p>Treatment for user '{splitKey}' in {FEATURE_FLAG_NAME} is: {treatments[FEATURE_FLAG_NAME].treatment}</p> :
+    <p>Treatment for user '{splitKey}' in {FEATURE_FLAG_NAME} is: {treatment}</p> :
     <p>loading...</p>; // Render a spinner if the SDK client for `splitKey` is not ready yet
 }
 
@@ -1900,7 +1915,7 @@ Or preventing prop drilling of `splitKey`:
 
 ```javascript
 import { useState, useEffect } from 'react';
-import { SplitFactoryProvider, SplitClient, useSplitTreatments } from '@splitsoftware/splitio-react';
+import { SplitFactoryProvider, SplitClient, useTreatment } from '@splitsoftware/splitio-react';
 
 const SDK_CONFIG = {
    core: {
@@ -1912,10 +1927,10 @@ const SDK_CONFIG = {
 const FEATURE_FLAG_NAME = 'test_split';
 
 function MyComponent() {
-  const { treatments, isReady, client } = useSplitTreatments({ names: [FEATURE_FLAG_NAME] });
+  const { treatment, isReady, client } = useTreatment({ name: FEATURE_FLAG_NAME });
 
   return isReady ?
-    <p>Treatment for user '{client.key}' in {FEATURE_FLAG_NAME} is: {treatments[FEATURE_FLAG_NAME].treatment}</p> :
+    <p>Treatment for user '{client.key}' in {FEATURE_FLAG_NAME} is: {treatment}</p> :
     <p>loading...</p>; // Render a spinner if the SDK client for `userId` is not ready yet
 }
 
