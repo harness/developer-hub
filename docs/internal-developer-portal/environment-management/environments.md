@@ -11,6 +11,19 @@ An **Environment** is instantiated using an **Environment Blueprint**, consider 
 
 ---
 
+## Types of Environments
+
+Based on the time-to-live (TTL) duration, Harness IDP environment management supports two types of environments:
+
+* **Ephemeral environments**: Short-lived environments that are created and paused on demand. They run only for a specific time interval configured by the user.
+* **Long-lived environments**: Environments that run indefinitely and are not paused automatically. They are paused only when the user explicitly does so.
+
+Go to [Configure TTL](/docs/internal-developer-portal/environment-management/env-blueprint-yaml#configure-ttl-time-to-live) to learn more. 
+
+**Note:** When you update an environment’s configuration, the environment is **re-provisioned** and the TTL is **reset**. The new TTL countdown starts from the time of the update.
+
+---
+
 ## Create Environments
 Using the [Environment Blueprint](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md) we can now create and spin up an ephemeral environment. 
 
@@ -20,8 +33,19 @@ Using the [Environment Blueprint](/docs/internal-developer-portal/environment-ma
 ![](./static/config-env.png)
 3. On the new screen, you can choose and configure your inputs to the environment, and when you are satisfied, hit “Create Environment”. 
 ![](./static/config-inputs.png)
+4. Configure TTL (if enabled): If TTL is enabled for the environment blueprint, you can configure/use the TTL duration for the environment. 
+![](./static/ttl-em.png)
+
 
 The Environment should now be creating, and you can follow the progress by viewing the instances and their states, or you can dive deeper into the pipeline, by following the link next to the environment state.
+
+---
+
+## Update Environments
+
+You can update an environment’s configuration after it’s created by opening the environment’s configuration page and clicking **Edit Configuration**.
+
+**Note:** When you update an environment’s configuration, the environment is **re-provisioned** and the TTL is **reset**. The new TTL countdown starts from the time of the update.
 
 ---
 
