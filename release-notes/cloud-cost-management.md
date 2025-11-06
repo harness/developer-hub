@@ -25,8 +25,48 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## November 2025 
+#### Deployment Date: November 7, 2025
+
+### Feature Improvements
+
+- **Introduction to Period On Period (Beta) in BI Dashboards**: We are introducing a new field: Period On Period Analysis(Beta) . The Period over Period (PoP) Analysis Field enables you to compare cloud cost or usage trends across different time periods directly within your dashboards. This helps you identify changes in spending, understand performance patterns, and evaluate the impact of optimization efforts over time.
+
+With PoP, you can measure how your current costs or usage metrics perform against a previous period such as day-over-day, week-over-week, month-over-month etc.
+
+You can perform comparisons across the following standard periods:
+
+- Day over Day (DoD)
+- Week over Week (WoW)
+- Month over Month (MoM)
+- Quarter over Quarter (QoQ)
+
+And for each, you can either do: previous, difference or relative change. 
+See more details: https://docs.cloud.google.com/looker/docs/period-over-period
+
+<DocImage path={require('./static/ccm/pop-one.png')} width="90%" height="90%" title="Click to view full size image" />
+
+<DocImage path={require('./static/ccm/pop-two.png')} width="90%" height="90%" title="Click to view full size image" />
+
+
+- **GCP Inventory Explore Updates**: We’ve made updates to improve the clarity and usability of the GCP Inventory Explores. Cost fields are now exposed in the GCP Inventory Explore, enabling deeper cost visibility directly from inventory data. The following dimensions have been hidden in the GCP View to reduce redundancy and improve performance:
+
+  - `Labels: All Values`
+  - `Tags: All Values`
+  - `Project Tags: All Values`
+
+- View Refinements:
+  - In the gcp_instance_inventory view:
+    - `measure - count` and `dimension - gcp_instance_inventory__labels` have been hidden.
+  - In the gcp_inventory_cost view:
+    - `measure - count` has been hidden.
+
+
+<DocImage path={require('./static/ccm/inventory.png')} width="60%" height="60%" title="Click to view full size image" />
+
 ## October 2025 - Version 1.68.9
 #### Deployment Date: October 21, 2025 (Prod-1)
+### Feature Improvements
 
 - **Enhanced Perspective Reports Delivery Options**: [CCM-26936]
   - **Download as CSV**: Instantly export reports in CSV format for quick, ad-hoc analysis. Supports all time range options.
