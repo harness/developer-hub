@@ -191,18 +191,18 @@ export const CcmData: Horizon = {
         description:"Bulk processing of Autostopping rules enables users to select and update multiple rules at once to simplify the management of multiple rules simultaneously.",
         backgroundColor: "var(--green-100)",
       },
-    ],
-  },
- Now:{
-  description: "Q3 CY'25, Aug 2025 - Oct 2025",
-    feature: [
       {
         tag: [{value: "Commitment Orchestrator"}],
         title: " Integration with Cluster Orchestrator",
         description:
           "Enhancing Commitment Orchestrator with seamless Cluster Orchestrator integration.",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
+    ],
+  },
+ Now:{
+  description: "Q4 CY'25, Nov 2025 - Jan 2026",
+    feature: [
       {
         tag: [{value: "AutoStopping"}],
         title: "Smart Advisor",
@@ -224,6 +224,20 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--yellow-100)",
       },
       {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Cluster Orchestrator Schedules",
+        description:
+          "Cluster Orchestrator schedules allowing users to define usage windows for shared resources.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "VPA Support for Cluster Orchestrator",
+        description:
+          "VPA Support for Cluster Orchestrator.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: " Budgets 2.0 ",
         description:
@@ -237,11 +251,45 @@ export const CcmData: Horizon = {
           "General Availability of Commitment Orchestrator for Amazon RDS, enabling better cost-efficiency through commitment management for database services.",
         backgroundColor: "var(--yellow-100)",
       },
-     
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Set Email Alerts For Expiring RIs and SPs",
+        description:
+          "Set email alerts for expiring RIs and SPs to help users proactively manage their commitments and avoid unexpected charges.",
+        backgroundColor: "var(--yellow-100)",
+      }, 
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Elasticache Commitment Support",
+        description:
+          "Support for Amazon ElastiCache Commitment Orchestrator, enabling users to manage their commitments for ElastiCache services.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Commitment Orchestrator AI Summary Support",
+        description:
+          "AI-powered insights to help users analyze their commitments and notify the right stakeholders.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Commitment Orchestrator AI Summary Support",
+        description:
+          "AI-powered insights to help users analyze their commitments and notify the right stakeholders.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "eBPF support for AutoStopping",
+        description:"eBPF support for AutoStopping for Kubernetes",
+        backgroundColor: "var(--yellow-100)",
+      },
+
     ],
  },
 Later:{
-    description: "Q4 2025 and beyond",
+    description: "Q1 2026 and beyond",
     feature: [
 
       {
@@ -249,6 +297,20 @@ Later:{
         title: "AutoStopping Onboarding Assistant for EKS",
         description:
           "A smart onboarding assistant for AutoStopping that automates resource identification, rule creation, and bulk configuration for Kubernetes-based environments.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Azure Spot support in Autostopping",
+        description:
+          "Support for Azure Spot support in Autostopping.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Autostopping Global Schedules",
+        description:
+          "Global schedules for Autostopping allowing users to define usage windows for shared resources.",
         backgroundColor: "var(--yellow-100)",
       },
       {
