@@ -277,16 +277,16 @@ If a flag or group changes in SaaS, SDKs pick up the update during their next po
 </details> 
 
 <details> 
-<summary><strong>Can I run multiple instances of the Node SDK in a single application?</strong></summary>
+<summary><strong>Can I run multiple instances of the Feature Flags SDK in a single application?</strong></summary>
 
-No. Running multiple instances of the Node SDK within a single application is not supported or recommended. Each SDK instance maintains its own internal state and cache, and sharing them across instances can lead to unpredictable or incorrect behavior.
+No. Running multiple instances of the SDK within a single application is not supported or recommended. Each SDK instance maintains its own internal state and cache, and sharing them across instances can lead to unpredictable or incorrect behavior.
 
 </details> 
 
 <details> 
-<summary><strong>What happens if I run multiple Node SDK instances in one app?</strong></summary>
+<summary><strong>What happens if I run multiple SDK instances in one app?</strong></summary>
 
-If multiple Node SDK instances are initialized within the same process, they may share the same local cache. Because the cache is keyed only by flag or segment ID (not by project or environment), flag updates from one environment can overwrite or block updates from another. This can result in inconsistent feature flag behavior.
+If multiple SDK instances are initialized within the same process, they may share the same local cache. Because the cache is keyed only by flag or segment ID (not by project or environment), flag updates from one environment can overwrite or block updates from another. This can result in inconsistent feature flag behavior.
 
 </details> 
 
@@ -298,9 +298,9 @@ Each SDK instance compares incoming flag updates against its cached version. Whe
 </details> 
 
 <details> 
-<summary><strong>Is running multiple SDK instances across separate Node apps supported?</strong></summary>
+<summary><strong>Is running multiple SDK instances across separate apps supported?</strong></summary>
 
-Yes. Running separate Node applications, each with its own SDK instance, is fully supported. Each app maintains an isolated cache, so flag toggling and target group rules behave as expected.
+Yes. Running separate applications, each with its own SDK instance, is fully supported. Each app maintains an isolated cache, so flag toggling and target group rules behave as expected.
 
 </details> 
 
