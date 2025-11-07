@@ -1,60 +1,117 @@
 ---
 title: Get Started
-description: This topic describes how you can set up Commitment Orchestrator 
-# sidebar_position: 2
+description: This topic describes Commitment Orchestrator and its working.
+sidebar_position: 2
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Commitment Orchestrator can be found on Harness' dashboard under [Cloud Costs module](https://app.harness.io/). 
+### Before You Begin
 
-Prerequisites:
+To setup Commitment Orchestrator in Harness CCM, you need:
 
-- A master account with the right permissions to be added via [AWS connector](https://app.harness.io/cloud-cost-management/aws-connector) on which you want to enable orchestration.
+- **Active CCM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CCM Connectors](/docs/cloud-cost-management/get-started#aws).
 
+- A master account with the right permissions to be added via AWS connector on which you want to enable orchestration.
+
+- **Required Permissions**: Your Harness user account must belong to a user group with the following role permissions:
+
+<details>
+<summary>Required Permissions</summary>
+To enable visibility, in the master account connector, you need to add the following permissions.
+
+```
+"ec2:DescribeReservedInstancesOfferings",
+"ce:GetSavingsPlansUtilization",
+"ce:GetReservationUtilization",
+"ec2:DescribeInstanceTypeOfferings",
+"ce:GetDimensionValues",
+"ce:GetSavingsPlansUtilizationDetails",
+"ec2:DescribeReservedInstances",
+"ce:GetReservationCoverage",
+"ce:GetSavingsPlansCoverage",
+"savingsplans:DescribeSavingsPlans",
+"organizations:DescribeOrganization"
+"ce:GetCostAndUsage"
+```
+
+And to enable actual orchestration, you need to add the following permissions.
+```
+"ec2:PurchaseReservedInstancesOffering",
+"ec2:GetReservedInstancesExchangeQuote",
+"ec2:DescribeInstanceTypeOfferings",
+"ec2:AcceptReservedInstancesExchangeQuote",
+"ec2:DescribeReservedInstancesModifications",
+"ec2:ModifyReservedInstances"
+"ce:GetCostAndUsage"
+savingsplans:DescribeSavingsPlansOfferings
+savingsplans:CreateSavingsPlan
+```
+</details>
+
+-----
+
+## Steps to configure:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+- Go to Commitment Orchestrator > Setup Orchestrator.
+
 <Tabs>
-<TabItem value="step1" label="Step 1: Master Account Setup" default>
+<TabItem value="step1" label="Account and Service details" default>
 
-### Setting up the master account 
+- Specify the cloud account and service for which you want to enable orchestration. Currently, Commitment Orchestrator supports AWS Elastic Compute Cloud (EC2). Support for other cloud providers is in the works.
 
-You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration. 
+- Specify the Master Account Connector. You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration.  You can either select an existing connector for your master account or create one. Please note, even if "Commitment Orchestrator" is enabled in Connector Set Up for any other Account except for Master, it will not be visible in the connector list in Commitment Orchestrator Setup since Commitment Orchestrator requires Master Account connector.
 
-You can either select an existing connector for your master account or create one. Please note, even if "Commitment Orchestrator" is enabled in Connector Set Up for any other Account except for Master, it will not be visible in the connector list in Commitment Orchestrator Setup since Commitment Orchestrator requires Master Account connector.
 
-Select "EC2" .
-
-<DocImage path={require('./static/stepone.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/stepone-copy.png')} width="80%" height="80%" title="Click to view full size image" />
 
 </TabItem>
-<TabItem value="step2" label="Step 2: Exclusions">
+<TabItem value="step2" label="Orchestrator Exclusions (Optional)">
 
-### Exclusion
+Commitment Orchestrator provides you with an option to exclude Accounts, Regions and Instances from the orchestration.
 
-Commitment Orchestrator provides you with an option to choose the child accounts and instances you would like to exclude when orchestrating for Compute Usage.
+-   Account Exclusions: You can include or exclude specific accounts from the orchestration. The accounts marked as included will be considered for RI Orchestration.
 
-<DocImage path={require('./static/steptwo.png')} width="100%" height="100%" title="Click to view full size image" />
-<DocImage path={require('./static/stepthree.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/steptwo-copy.png')} width="100%" height="100%" title="Click to view full size image" />
+
+-   Region Exclusions: You can include or exclude specific regions from the orchestration. All the regions are shown with their coverage and compute spend for making an informed decision
+
+<DocImage path={require('./static/stepthree-copy.png')} width="100%" height="100%" title="Click to view full size image" />
+
+-   Instance Exclusions: You can include or exclude specific instances from the orchestration. 
+
+
+<DocImage path={require('./static/stepfour-copy.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::important note 
 The purchases will happen only at master account level and thus will be in turn applicable for child accounts as well. The exclusion list will only be considered for the compute spend calulations and actual RI/SP may be used against the instances if they are part of child accounts.
 :::
 
 </TabItem>
-<TabItem value="step3" label="Step 3: Coverage Percentage">
+<TabItem value="step3" label="Orchestration Preferences">
 
-### Coverage Percentage and Engine Mode
+- **Target Coverage:** The Target Coverage is the percentage of your compute spend that you want to be covered by Savings Plans or Reserved Instances. The remaining amount will continue to run as on-demand. This is capped at 75%. Commitment orchestrator automatically adjust coverage based on usage patterns. You can set the maximum limit up to which this can increase.
 
-**Coverage Percentage:** The Coverage percentage is the percentage of your compute spend that you want to be covered by Savings Plans or Reserved Instances. The remaining amount will continue to run as on-demand.
+- **Atomization:** Atomisation helps with restricting all RI base transactions to a specified date. Commitment Orchestrator intends to buy a seed RI on a monthly basis in each of the regions to create a situation where in the future there would be a seed RI expiring on a monthly basis.
 
-**Engine mode:** Select your preferred engine mode for commitment orchestration that can either be "Automated Actions without manual approval" or "Automated Actions with manual Approval"
+In simple words, if you have an expecting RI in use expiring soon, commitment, orator will intelligently extract atom T3 nano which is expiring later and modify and replace the existing RI so you have an updated RI with extended expiry
 
-<DocImage path={require('./static/stepfour.png')} width="100%" height="100%" title="Click to view full size image" />
+**What is a Seed?**
+
+A seed is a small amount of resources that is reserved to ensure that there is always a reserved instance available to cover the compute spend. This helps in ensuring that the compute spend is always covered by a reserved instance and there is no undercommitment.
+
+<DocImage path={require('./static/stepfive-copy.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
+You can select the atom purchase frequency and select the atom purchase terms and you can also see the cost implications pf atomization
+
+
+<DocImage path={require('./static/stepsix.png')} width="80%" height="80%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="step4" label="Step 4: Review & Complete">
@@ -63,77 +120,7 @@ The purchases will happen only at master account level and thus will be in turn 
 
 After all the set-up steps, you can review and finalise your inputs.
 
-<DocImage path={require('./static/stepfive.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/stepseven.png')} width="80%" height="80%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
-
-## Commitment Orchestrator Dashboard
-
-<DocImage path={require('./static/dashboard-co.png')} width="100%" height="100%" title="Click to view full size image" />
-
-Post set-up, you can view your dashboard with all the information required . You can manipulate the information shown according to the filters such as Instances and Regions and see all the information related to Computer Coverage, Savings, Commitment Utilisation alongwith Log history. This way, the dashboard allows you to easily keep a track of your commitments and make informed decisions.
-
-- **Compute Spend**: Total amount spent on EC2 compute resources across your selected accounts, instance families, and regions. This includes both On-Demand and Reserved Instance and/or Savings Plans costs, providing a comprehensive view of your EC2 expenditure over the selected time period.
-
-- **Compute Coverage**: Percentage of your EC2 compute usage that is covered by Reserved Instances or Savings Plans. 
-
-- **Savings**: Total cost savings achieved through Reserved Instances, Savings Plans as compared to On-Demand rates. This shows the actual dollar amount saved by using commitment orchestration and helps quantify the ROI of your optimization efforts.
-
-- **Commitment Utilisation**: Percentage of your purchased Reserved Instances and Savings Plans that are actively being used. 
-
-### Compute Coverage Graph
-
-The Compute Coverage Graph provides a visual representation of your EC2 compute usage coverage by Reserved Instances and Savings Plans over time. You can customize the view by grouping the data by:
-
-- **Commitment Type**: Compare coverage between, On-Demand, Reserved Instances and Savings Plans to understand which commitment types are providing the most coverage and total cost across all commitment types.
-- **Instance Family**: Analyze coverage across different EC2 instance families (e.g., m5, c5, r5) to identify optimization opportunities.
-- **Region**: View coverage distribution across AWS regions to ensure balanced commitment utilization geographically.
-
-### Savings Graph
-
-<DocImage path={require('./static/savings-graph.png')} width="100%" height="100%" title="Click to view full size image" />
-
-The Savings Graph displays the total cost savings achieved through Reserved Instances and Savings Plans compared to On-Demand rates. You can customize the view by grouping the data by:
-
-- **Commitment Type**: Compare savings from Reserved Instances, and Savings Plans to understand which commitment types are delivering the most value
-- **Instance Family**: Analyze savings across different EC2 instance families (e.g., t2, t3) to identify the most cost-effective instance types
-- **Region**: View savings distribution across AWS regions to optimize your regional commitment strategy
-
-### Commitment Utilisation Graph
-
-The Commitment Utilisation Graph shows the percentage of your purchased Reserved Instances and Savings Plans that are actively being used. This line chart displays utilization trends for both commitment types and includes detailed metrics for each commitment:
-
-- **Name**:  Reserved Instance or Savings Plan
-- **Compute Spend**: The amount of compute costs covered by the commitment
-- **Utilisation**: The absolute utilization amount
-- **Utilisation (%)**: The percentage utilization rate
-
-### Log History
-
-The Log History section provides a comprehensive audit trail of all Commitment Orchestrator activities, including date, connector name, type (RI Event and SP Event), description of the purchase.
-
-### Active Actions
-
-The Active Actions feature enables users to review and manage recommendations generated by the Commitment Orchestrator. You can view all recommendations categorized by day and type, then approve or reject them individually, in subsets, or all at once across different master accounts and regions.
-
-<DocImage path={require('./static/native-user-approval.png')} width="100%" height="100%" title="Click to view full size image" />
-
-### Supported Actions:
-
-The Commitment Orchestrator supports six action states currently:
-
-* **APPROVED**: You can approve the recommendation, allowing the action to proceed.
-* **REJECTED**: You can choose to reject the recommendation, preventing the action from taking place.
-* **APPROVAL_PENDING**: The action is pending approval by the user. This is the default state for all recommendations and any pending actions will expire in 24 hours.
-* **EXPIRED**: The recommended action has expired.
-* **ERROR**: The approval process encounters an error.
-* **COMPLETED**: The approved recommendation has been successfully completed.
-
-<DocImage path={require('./static/action-state.png')} width="90%" height="90%" title="Click to view full size image" />
-
-
-:::info
-You can change and select the mode (either automatic approval or manual approval) during the setup flow. 
-:::
-
