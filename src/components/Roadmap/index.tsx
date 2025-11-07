@@ -11,6 +11,11 @@ const Roadmap = () => {
   const modules = [
     { value: 'platform', name: 'Platform', icon: 'icon_platform.svg' },
     { value: 'aida', name: 'Harness AI', icon: 'icon_aida.svg' },
+    {
+      value: 'ar',
+      name: 'Artifact Registry',
+      icon: 'icon_artifact_registry.svg',
+    },
     { value: 'ata', name: 'AI Test Automation', icon: 'logo-ata.svg' },
     { value: 'code', name: 'Code Repository', icon: 'icon_code.svg' },
     { value: 'ci', name: 'Continuous Integration', icon: 'icon_ci.svg' },
@@ -45,7 +50,7 @@ const Roadmap = () => {
       value: 'cde',
       name: 'Cloud Development Environments',
       icon: 'icon-cde.svg',
-    },
+    }
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

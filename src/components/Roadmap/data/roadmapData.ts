@@ -15,7 +15,8 @@ import { aidaData } from "./aidaData";
 import { codeData } from "./codeData";
 import { CdeData } from "./cdeData"; 
 import { DbdevopsData } from "./dbdevopsData"; 
-import { AtaData } from "./ataData"; 
+import { AtaData } from "./ataData";
+import { arData } from "./arData"; 
 
 
 export interface ModuleData {
@@ -151,6 +152,12 @@ const ModuleData: ModuleData[] = [
     description: "SaaS release status: GA, SMP release status: On Roadmap",
     module: MODULES.cde,
     horizon: CdeData,
+  },
+  {
+    title: "Artifact Registry",
+    description: "SaaS release status: GA, SMP release status: GA",
+    module: MODULES.ar,
+    horizon: arData,
   },
 
 ];
