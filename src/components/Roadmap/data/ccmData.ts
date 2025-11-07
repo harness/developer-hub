@@ -283,13 +283,7 @@ export const CcmData: Horizon = {
         tag: [{value: "AutoStopping"}],
         title: "eBPF support for AutoStopping",
         description:"eBPF support for AutoStopping for Kubernetes",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "eBPF support for AutoStopping",
-        description:"eBPF support for AutoStopping for Kubernetes",
-        backgroundColor: "var(--green-100)",
+        backgroundColor: "var(--yellow-100)",
       },
 
     ],
