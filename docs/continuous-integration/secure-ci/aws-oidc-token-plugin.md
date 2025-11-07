@@ -23,7 +23,7 @@ For more on configuring AWS for OIDC, refer to [AWS OIDC setup](https://docs.aws
     name: assume-role-with-oidc
     identifier: assume_role_with_oidc
     spec:
-      image: harnesscommunity/drone-aws-oidc
+      image: plugins/aws-oidc
       settings:
         role_arn: arn:aws:iam::123456789012:role/harness-ci-role
         role_session_name: foo # defaults to harness-aws-oidc
