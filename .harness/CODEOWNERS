@@ -179,10 +179,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /release-notes/static/fme/ austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io trevor.stuart@harness.io 
 
 # SEI Docs
-/docs/software-engineering-insights/ austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
-/release-notes/software-engineering-insights.md austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
-/src/components/Roadmap/data/seiData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
-/src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
+/docs/software-engineering-insights/ austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
+/release-notes/software-engineering-insights.md austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
+/src/components/Roadmap/data/seiData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
+/src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
 
 # DB DevOps Docs
 /docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
