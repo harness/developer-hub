@@ -182,6 +182,16 @@ export const openfeatureProviders = [
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/web-sdk',
   },
   {
+    name: 'Angular',
+    img: '/provider-logos/angular-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/angular-sdk',
+  },
+  {
+    name: 'React',
+    img: '/provider-logos/react-native-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/react-sdk',
+  },
+  {
     name: 'Java SDK',
     img: '/provider-logos/java-logo.png',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/java-sdk',

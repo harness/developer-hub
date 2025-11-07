@@ -81,6 +81,8 @@ Harness FME offers providers for Android, iOS, Web, Java, and Node.js SDKs. Your
 - [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/android-sdk)
 - [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/ios-sdk)
 - [Web SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/web-sdk)
+- [Angular](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/angular-sdk)
+- [React](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/react-sdk)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/java-sdk)
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk)
 
