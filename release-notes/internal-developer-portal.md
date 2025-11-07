@@ -1241,7 +1241,7 @@ Here’s what these features do:
 
 ![](./static/internal-developer-portal/idp-jira-task.png)
 
-- Users can now onboard new services anytime using the [Get Started option under the Admin section](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#onboard-services-post-getting-started), even after completing the initial onboarding flow. [IDP-3984]
+- Users can now onboard new services anytime using the [Get Started option under the Admin section](https://developer.harness.io/docs/internal-developer-portal/get-started), even after completing the initial onboarding flow. [IDP-3984]
 
 ![](./static/internal-developer-portal/idp-re-onboarding.png)
 
@@ -1552,7 +1552,7 @@ Happy Juneteenth and welcome to the June release of IDP. In this release we have
 
 - orgIdentifier is now an optional field in the Create Project Step [IDP-2857]
 
-- Added support for [Harness Code Repository](https://www.harness.io/products/code-repository) as a [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) [IDP-2724]
+- Added support for [Harness Code Repository](https://www.harness.io/products/code-repository) as a [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started) [IDP-2724]
 
 - We now support private registry configuration for IDP stage. [IDP-2773]
 
@@ -1581,7 +1581,7 @@ Happy Juneteenth and welcome to the June release of IDP. In this release we have
 
 #### New features and enhancements
 
-- We now have an updated [onboarding flow](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#getting-started) for new users, to onboard your already existing harness services as well as new services into IDP as part of the getting started with the module. This new onboarding flow is async wherein users could skip it and add a [git-integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) later under admin section [IDP-2213]
+- We now have an updated [onboarding flow](https://developer.harness.io/docs/internal-developer-portal/get-started) for new users, to onboard your already existing harness services as well as new services into IDP as part of the getting started with the module. This new onboarding flow is async wherein users could skip it and add a [git-integration](https://developer.harness.io/docs/internal-developer-portal/get-started) later under admin section [IDP-2213]
 
 - We have updated the custom action [`trigger:trigger-pipeline-with-webhook`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook) to trigger workflows based on pipeline [`inputset`](https://developer.harness.io/docs/platform/pipelines/input-sets/#create-input-sets) id. [IDP-2611]
 
@@ -1605,7 +1605,7 @@ Welcome to first release of April, and in this release we bring you features lik
 
 #### New features and enhancements
 
-- We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
+- We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
 
 - We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](/docs/internal-developer-portal/flows/flows-input#1-entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
 
@@ -2019,7 +2019,7 @@ Since last release, we have released some interesting docs and video tutorials t
 [Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here's a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what's happening in this year's edition of the event. Here's some of the content updates:
 
 - **Himanshu's(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
-- **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started/setup-git-integration/), [Public API](/docs/internal-developer-portal/api-refernces/public-api)
+- **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started), [Public API](/docs/internal-developer-portal/api-refernces/public-api)
 - **Tutorial:** [How to add Links in Software Components](/docs/internal-developer-portal/catalog/software-catalog)
 
 #### New features and enhancements
@@ -2042,7 +2042,7 @@ Post-Limited GA, we've taken your genius tips and mixed them into the Internal D
 
 - **Blogs:** [Got Monorepos Instead of Microservices? This is How Harness IDP Has Got You Covered](https://www.harness.io/blog/mono-repos-harness-idp)
 - **Video Tutorial:** [Scorecards](https://youtu.be/jvLDdWS3rFE?si=EBoE9TXh4HCVNU3i)
-- **Tutorial:** [How to register Software Components in Catalog](/docs/internal-developer-portal/get-started/catalog-2o)
+- **Tutorial:** [How to register Software Components in Catalog](/docs/internal-developer-portal/get-started)
 - **Docs:** [Scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) and [Data Sources](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources)
 
 #### New features and enhancements
