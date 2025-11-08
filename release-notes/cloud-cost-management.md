@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-10-31T18:00
+date: 2025-11-07T18:00
 sidebar_position: 6
 ---
 
@@ -25,8 +25,29 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## November 2025 Deployment for BI Dashboards in CCM
+#### Deployment Date: November 7, 2025
+
+### Feature Improvements
+
+- **GCP Inventory Explore Updates**: We’ve made updates to improve the clarity and usability of the GCP Inventory Explores. Cost fields are now exposed in the GCP Inventory Explore, enabling deeper cost visibility directly from inventory data. The following dimensions have been hidden in the GCP View to reduce redundancy and improve performance:
+
+  - `Labels: All Values`
+  - `Tags: All Values`
+  - `Project Tags: All Values`
+
+- View Refinements:
+  - In the gcp_instance_inventory view:
+    - `measure - count` and `dimension - gcp_instance_inventory__labels` have been hidden.
+  - In the gcp_inventory_cost view:
+    - `measure - count` has been hidden.
+
+
+<DocImage path={require('./static/ccm/inventory.png')} width="60%" height="60%" title="Click to view full size image" />
+
 ## October 2025 - Version 1.68.9
 #### Deployment Date: October 21, 2025 (Prod-1)
+### Feature Improvements
 
 - **Enhanced Perspective Reports Delivery Options**: [CCM-26936]
   - **Download as CSV**: Instantly export reports in CSV format for quick, ad-hoc analysis. Supports all time range options.
