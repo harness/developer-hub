@@ -96,45 +96,55 @@ There are two major parts of savings as discussed earlier: Savings Plans (SPs) a
 
 ## FAQs
 
-1. Which cloud providers are supported at the moment?
+<details>
+<summary>Which cloud providers are supported at the moment?</summary>
+Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
+</details>
 
--  Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
+<details>
+<summary>Is Audit trails support available?</summary>
+Audit trails are supported but only if "Automated Actions with manual Approval" mode is selected when setting up the Commitment Orchestrator.
+</details>
 
-2. Is Audit trails support available?
+<details>
+<summary>How many Saving Plan purchases happen in a month?</summary>
+Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
+</details>
 
--  Audit trails are supported but only if "Automated Actions with manual Approval" mode is selected when setting up the Commitment Orchestrator.
+<details>
+<summary>How many exchanges happen in a month?</summary>
+Number of exchanges depends on the requirement of the user.
+</details>
 
-3. How many Saving Plan purchases happen in a month?
+<details>
+<summary>Where can I see the history of all the actions taken?</summary>
+In the visibility section, you can see all the actions under the logs
+</details>  
 
--  Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
+<details>
+<summary>Is RBAC supported?</summary>
+Yes, there are two permissions : view(Visibility) and edit (Setup)
+</details>
 
-4. How many exchanges happen in a month?
+<details>
+<summary>Can orchestration be setup on any account?</summary>
+No, only master account with correct permission listed above will be allowed and it can be done for multiple master accounts.
+</details>
 
-- Number of exchanges depends on the requirement of the user.
+<details>
+<summary>When does Harness make RI purchase?</summary>
+If the account does not have any RI in a given region.
+</details>
 
-5. Where can I see the history of all the actions taken?
+<details>
+<summary>Do exclusions apply only to Source RI or Target RI?  From above, it appears that it only excluded on Source RI.</summary>
+Exclusion is for the target instance type. 
+</details>
 
-- In the visibility section, you can see all the actions under the logs
-
-6. Is RBAC supported?
-
--  Yes, there are two permissions : view(Visibility) and edit (Setup)
-
-7. Can orchestration be setup on any account?
-
--  No, only master account with correct permission listed above will be allowed and it can be done for multiple master accounts.
-
-9. When does Harness make RI purchase?
-
-- If the account does not have any RI in a given region.
-
-10. Do exclusions apply only to Source RI or Target RI?  From above, it appears that it only excluded on Source RI.
-- Exclusion is for the target instance type. 
-
-11. It looks like you have to set it by region and by machine type.  Is there a way to wildcard it for all machine types in a region?
-- We currently support exclusion at instance type and region level. Machine type (Platform as in Linux/ Windows) is not supported. That would be an enhancement request if needed. We have a way for users to filter the instances by family and region and apply for all the matching cases in the UI using a single “Exclude All” checkbox.
-
-
+<details>
+<summary>It looks like you have to set it by region and by machine type.  Is there a way to wildcard it for all machine types in a region?</summary>
+We currently support exclusion at instance type and region level. Machine type (Platform as in Linux/ Windows) is not supported. That would be an enhancement request if needed. We have a way for users to filter the instances by family and region and apply for all the matching cases in the UI using a single “Exclude All” checkbox.
+</details>
 
 
 
