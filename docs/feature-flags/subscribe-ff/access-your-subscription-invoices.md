@@ -10,6 +10,15 @@ helpdocs_is_published: true
 
 import invoice from './static/8-access-your-subscription-invoices-03.png'
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 To get a copy of your subscription invoice:
 
 1. On the Harness Platform, on the lefthand navigation, click **Help**.
@@ -25,4 +34,3 @@ To get a copy of your subscription invoice:
 	
 	<img src={invoice} alt="An example of the feedback form for requesting a subscription invoice." height="500" width="400" />
 	 
-

@@ -1,17 +1,27 @@
-import Link from '@docusaurus/Link';
+import { useColorMode } from '@docusaurus/theme-common';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import React from 'react';
-import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
-// Define the cards in "***Data.ts"
+import Link from '@docusaurus/Link';
+import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import { docsCards } from './data/featureFlagsData';
 
-import { useColorMode } from '@docusaurus/theme-common';
 export default function FF() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className="container">
+      {/* Banner at the very top */}
+      <div
+        className={styles.tipBanner}
+        style={{ backgroundColor: '#fff9c4', padding: '16px', borderRadius: '8px' }}
+      >
+        <p>
+          <strong>Note</strong>: This documentation is for Harness Feature Flags. 
+          For customers who have migrated to or are using Feature Management Engine (FME), refer to the{' '}
+          <a href="/docs/feature-management-experimentation">FME documentation</a> for the latest features and SDK updates. 
+        </p>
+      </div>
+
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
@@ -21,7 +31,6 @@ export default function FF() {
           <div className={styles.btnContainer}>
             <Link href="/release-notes/feature-flags">
               <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
               </button>
@@ -45,7 +54,7 @@ export default function FF() {
                     ? `${baseUrl}img/ff.svg`
                     : `${baseUrl}img/FF_Landing_Page_dark_mode.svg`
                 }
-              />{" "}
+              />
             </div>
           </div>
         </div>

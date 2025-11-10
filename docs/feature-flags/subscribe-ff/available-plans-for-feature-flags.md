@@ -8,6 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 With Feature Flags, there are three tiers of subscription plans you can choose from:
 
 * Free plan
@@ -16,11 +25,8 @@ With Feature Flags, there are three tiers of subscription plans you can choose f
 
 Below is an overview of the features of each plan. For a full list of all features, go to the [Pricing & Plans](https://harness.io/pricing?module=ff#). 
 
-
-
-|  |  |  |
-| --- | --- | --- |
 | **Free plan** | **Team plan** | **Enterprise plan** |
+| --- | --- | --- |
 | Up to 2 developers | Up to 50 developers | Unlimited developers |
 | 25,000 client monthly active users (MAUs) | 100,000 client monthly active users (MAUs) included, with more available for purchase if needed | 1 million client monthly active users (MAUs) included, with more available for purchase if needed |
 | Unlimited Feature Flags and Environments | Unlimited Feature Flags and Environments | Unlimited Feature Flags and Environments |

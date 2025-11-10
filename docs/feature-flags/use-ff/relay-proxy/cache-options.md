@@ -4,7 +4,17 @@ description: This topic provides an overview of how the Proxy's in memory cache 
 sidebar_position: 40
 redirect_from:
   - /docs/feature-flags/relay-proxy/cache_options
+  - /docs/feature-flags/use-ff/relay-proxy/cache_options
 ---
+
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
 
 ## In memory cache
 

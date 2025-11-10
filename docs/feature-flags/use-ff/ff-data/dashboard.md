@@ -6,6 +6,15 @@ redirect_from:
   - /docs/feature-flags/ff-data/dashboard
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 Feature Flags comes with an out-of-the-box dashboard that provides various aggregated views of data about your flags at an organization level. This includes flags across all projects and environments in an organization. 
 
 With Harness dashboards, you can:
@@ -17,7 +26,6 @@ With Harness dashboards, you can:
 For more information, go to [Harness dashboards](/docs/category/harness-dashboards).
 
 This topic provides some highlights and useful information about the Feature Flags dashboard.
-
 
 ## Feature Flags dashboard highlights
 

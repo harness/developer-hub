@@ -10,6 +10,15 @@ redirect_from:
   - /docs/feature-flags/ff-data/view-metrics
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 Metrics allow you to view the following details of a feature flag for the selected time period:
 
 * Variations
@@ -21,4 +30,3 @@ Metrics allow you to view the following details of a feature flag for the select
 1. In **Feature Flags** select the feature flag for which you want to view the metrics.
 2. Select the **date range** for the feature flag you want to view.
 3. Feature Flag details are displayed. The Y-axis denotes the number of evaluations.
-

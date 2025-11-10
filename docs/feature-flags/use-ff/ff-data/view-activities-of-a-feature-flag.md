@@ -12,6 +12,15 @@ redirect_from:
 
 import ff_metrics from './static/2-view-activities-of-a-feature-flag-01.png'
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 The **Activity** tab allows you to view the actions performed on the selected Feature Flag. The following details are available on the Activity page:
 
 * **Time**: The time at which the Flag was turned `on` or `off`

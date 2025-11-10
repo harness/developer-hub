@@ -6,10 +6,17 @@ redirect_from:
   - /docs/feature-flags/relay-proxy/debugging
 ---
 
-# Debugging
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
 
 ### Outbound requests
-To learn more about what requests the Relay Proxy sends see [Endpoints](/docs/feature-flags/use-ff/relay-proxy/outbound_endpoints).
+To learn more about what requests the Relay Proxy sends see [Endpoints](/docs/feature-flags/use-ff/relay-proxy/outbound-endpoints).
 
 ### Debug mode
 
@@ -57,7 +64,7 @@ If you've configured a custom port using the PORT environment variable, your hea
 
 `curl https://localhost:10000/health`
 
-If using a [Redis cache](/docs/feature-flags/use-ff/relay-proxy/cache_options#redis-cache), the cache healthcheck verifies that Harness could successfully ping the Redis client.
+If using a [Redis cache](/docs/feature-flags/use-ff/relay-proxy/cache-options#redis-cache), the cache healthcheck verifies that Harness could successfully ping the Redis client.
 
 There is a health entry for each environment you've configured the Relay Proxy with. This is displayed if your streaming connection for these environments is healthy. You can find which friendly environment identifier this UUID maps to by checking your proxy startup logs.
 
@@ -72,7 +79,7 @@ On startup, SDKS and the Relay Proxy make these four requests for each environme
 - /target-segments
 - /stream
 
-You can find examples of how to send requests directly to these endpoints in our [Sample Requests](/docs/feature-flags/use-ff/relay-proxy/sample_curl_requests).
+You can find examples of how to send requests directly to these endpoints in our [Sample Requests](/docs/feature-flags/use-ff/relay-proxy/sample-curl-requests).
 
 ## Common Issues
 

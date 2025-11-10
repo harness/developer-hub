@@ -6,6 +6,15 @@ redirect_from:
   - /docs/feature-flags/integrate-feature-flag-with-jira
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 With **Harness Feature Flags for Jira**, teams can use feature flags more quickly and easily from a single place.
 
 Integrating your flags with Jira provides these benefits:

@@ -8,6 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 This topic describes how to subscribe to Feature Flags through the Harness Platform. Currently, you can subscribe only to Feature Flags through the Harness Platform if you are a self-serve customer. If you are an enterprise customer, or if you want to add other modules to your account, contact our [Sales team](https://harness.io/company/contact-sales).
 
 If you haven't signed up for a Harness account yet, go to [app.harness.io](https://app.harness.io/) and select **Sign Up**.

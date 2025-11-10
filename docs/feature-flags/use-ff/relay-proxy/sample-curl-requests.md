@@ -4,7 +4,17 @@ description: This topic contains some example curl requests that can be useful f
 sidebar_position: 110
 redirect_from:
   - /docs/feature-flags/relay-proxy/sample_curl_requests
+  - /docs/feature-flags/use-ff/relay-proxy/sample_curl_requests
 ---
+
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
 
 These requests can be useful to debug information coming from Harness SaaS or from the Relay Proxy.
 

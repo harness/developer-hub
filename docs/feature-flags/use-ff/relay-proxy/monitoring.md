@@ -7,6 +7,15 @@ redirect_from:
   - /docs/feature-flags/relay-proxy/monitoring
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 The proxy uses [Prometheus](https://prometheus.io/docs/introduction/overview/) for recording metrics that can be used to understand how the proxy is behaving and performing. You can view and scrape these metrics by hitting the proxy's `/metrics` endpoint. For example, if you're running the proxy locally on port 7000, you can view the metrics it exposes by making the following request:
 
  `$ curl localhost:7000/metrics`

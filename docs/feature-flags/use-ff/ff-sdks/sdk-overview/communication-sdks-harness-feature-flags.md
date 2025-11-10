@@ -11,6 +11,15 @@ redirect_from:
 canonical_url: https://www.harness.io/blog/benefits-of-feature-flags
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 This topic describes how the Feature Flags SDKs communicate with Harness Feature Flags to receive flag changes.
 
 ## Visual summary

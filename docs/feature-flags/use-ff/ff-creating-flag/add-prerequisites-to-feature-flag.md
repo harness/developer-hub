@@ -16,6 +16,14 @@ redirect_from:
 import pre_req_1 from './static/3-add-prerequisites-to-feature-flag-02.png'
 import pre_req_2 from './static/3-add-prerequisites-to-feature-flag-03.png'
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
 
 A Prerequisite is a Feature Flag that you add as a dependency to another Feature Flag. That dependency must be met before that second Feature Flag can be toggled `ON` or `OFF`. For example, if you have a flag that allows users to write Java, the user must be able to read the Java first. Therefore, you add a Prerequisite to the `Write_Java` flag that says the `Read_Java` flag must be enabled before the `Write_Java` flag can be toggled on. 
 

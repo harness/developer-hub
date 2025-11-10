@@ -17,6 +17,15 @@ import target_group_4 from './static/2-add-target-groups-09.png'
 import target_group_5 from './static/2-add-target-groups-10.png'
 import target_group_6 from './static/2-add-target-groups-11.png'
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 :::info note
 While targets are often users, a target can be anything that can be uniquely identified. For example, a target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
 :::

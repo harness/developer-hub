@@ -8,6 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 This topic describes how to view which Harness modules you are currently subscribed to, and how to view the details of your subscriptions. On the Harness Platform, you can view the following subscription details:
 
 * Account name
@@ -33,5 +42,3 @@ To view the details of a subscription: 
 4. The subscription details are displayed in **Subscription Overview**, under **Subscription Details**.  
 
 	![](./static/4-view-your-current-subscriptions-01.png)
-
-

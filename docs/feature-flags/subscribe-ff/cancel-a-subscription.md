@@ -10,6 +10,14 @@ helpdocs_is_published: true
 
 import cancel_sub from './static/9-cancel-a-subscription-06.png'
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
 
 To cancel your subscription: 
 
@@ -22,8 +30,6 @@ To cancel your subscription:
 	* **Message**: Request a cancelation of your subscription.
 	* **Priority**: Select **Priority:Normal**.
 4. Click **Send Feedback.**
-
 	
 	<img src={cancel_sub} alt="An example of the feedback form requesting cancellation." height="400" width="500" />
 	
-

@@ -4,9 +4,17 @@ description: This topic focuses on tagging and its uses within Feature Flags.
 sidebar_position: 45
 redirect_from:
   - /docs/feature-flags/ff-creating-flag/tag-management
+  - /docs/feature-flags/use-ff/ff-creating-flag/tag_management/
 ---
 
-# Tagging Management Overview
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
 
 ## What is Tagging?
 

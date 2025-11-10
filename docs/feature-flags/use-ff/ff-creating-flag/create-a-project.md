@@ -11,10 +11,18 @@ redirect_from:
 canonical_url: https://www.harness.io/blog/benefits-of-feature-flags
 ---
 
-
 import create_project from './static/1-create-a-project-00.png'
 import about_project from './static/1-create-a-project-01.png'
 import invite_collabs from './static/1-create-a-project-02.png'
+
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
 
 This topic contains instructions for completing the prerequisites, if you haven't done so already, for creating Feature Flags:
 
