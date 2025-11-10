@@ -816,7 +816,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 - Harness now supports alphabetically sorting the list of Projects, Organizations, and Accounts when configuring Approver User Groups. (**CDS-95935**)
 
-- Harness is introducing the **Elastigroup Blue Green Traffic Shift** step to support weighted traffic shifting for Spot Elastigroup deployments, enabling gradual rollout strategies for services with low task counts. Currently, this feature is behind the feature flag `CDS_SPOT_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Elastigroup Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-traffic-shifting/). (**CDS-100276**)
+- Harness is introducing the **Elastigroup Blue Green Traffic Shift** step to support weighted traffic shifting for Spot Elastigroup deployments, enabling gradual rollout strategies for services with low task counts. For more information, refer to [Elastigroup Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-traffic-shifting/). (**CDS-100276**)
 
 #### Fixed Issues
 
