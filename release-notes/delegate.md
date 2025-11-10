@@ -113,6 +113,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## November 2025
+
+### Version 25.10.87102 <!--November 10,2025-->
+
+#### Fixed issues
+- Resources annotated with harness.io/skipPruning: 'true' were being deleted during Kubernetes prune instead of being ignored. [CDS-115797]
+
 ## October 2025
 
 ### Version 25.10.87101 <!--October 28, 2025-->
