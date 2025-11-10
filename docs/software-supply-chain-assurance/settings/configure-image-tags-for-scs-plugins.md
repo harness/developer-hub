@@ -36,3 +36,90 @@ Below are the supported plugin images and their tags:
   "provenanceTag": "harness/slsa-plugin"
 }
 ```
+
+
+### Curl command to update the plugin versions of SCS steps
+
+Please use the curl command below to update the plugin version. Make sure to provide the account ID, `x-api-key`, and infrastructure type (based on whether it’s K8s or VM).
+
+```
+
+curl --location 'https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=<accountId>&infra=K8' \
+--header 'X-API-KEY: <x-api-key>' \
+--header 'Content-Type: application/json' \
+--data '[
+    {
+        "field": "sscaOrchestrationTag",
+        "value": "harness/ssca-plugin:0.49.1"
+    },
+    {
+        "field": "sscaEnforcementTag",
+        "value": "harness/ssca-plugin:0.49.1"
+    },
+    {
+        "field": "sscaCdxgenOrchestrationTag",
+        "value": "harness/ssca-cdxgen-plugin:0.49.1"
+    },
+    {
+        "field": "provenanceTag",
+        "value": "harness/slsa-plugin:0.49.1"
+    },
+    {
+        "field": "slsaVerificationTag",
+        "value": "harness/slsa-plugin:0.49.1"
+    },
+    {
+        "field": "sscaComplianceTag",
+        "value": "harness/ssca-compliance-plugin:0.49.1"
+    },
+    {
+        "field": "sscaArtifactSigningTag",
+        "value": "harness/ssca-artifact-signing-plugin:0.49.1"
+    },
+    {
+        "field": "sscaArtifactVerificationTag",
+        "value": "harness/ssca-artifact-signing-plugin:0.49.1"
+    }
+]'
+
+```
+
+
+### Curl command to revert the plugin versions of SCS steps
+
+
+Please use the curl command below to revert the plugin version. Make sure to provide the account ID, `x-api-key`, and infrastructure type (based on whether it’s K8s or VM).
+
+
+```
+curl --location 'https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=accountId&infra=K8' \
+--header 'X-API-KEY: pat' \
+--header 'Content-Type: application/json' \
+--data '[
+    {
+        "field": "sscaOrchestrationTag"
+    },
+    {
+        "field": "sscaEnforcementTag"
+    },
+    {
+        "field": "sscaCdxgenOrchestrationTag"
+    },
+    {
+        "field": "provenanceTag"
+    },
+    {
+        "field": "slsaVerificationTag"
+    },
+    {
+        "field": "sscaArtifactSigningTag"
+    },
+    {
+        "field": "sscaArtifactVerificationTag"
+    },
+    {
+        "field": "sscaComplianceTag"
+    }
+]'
+
+```
