@@ -99,11 +99,8 @@ The purchases will happen only at master account level and thus will be in turn 
 
 - **Atomization:** Atomisation helps with restricting all RI base transactions to a specified date. Commitment Orchestrator intends to buy a seed RI on a monthly basis in each of the regions to create a situation where in the future there would be a seed RI expiring on a monthly basis.
 
-In simple words, if you have an expecting RI in use expiring soon, commitment, orator will intelligently extract atom T3 nano which is expiring later and modify and replace the existing RI so you have an updated RI with extended expiry
-
-**What is a Seed?**
-
-A seed is a small amount of resources that is reserved to ensure that there is always a reserved instance available to cover the compute spend. This helps in ensuring that the compute spend is always covered by a reserved instance and there is no undercommitment.
+    Atom RI helps with restricting all RI based transactions to a specified date. To extend on this approach, Harness Commitment Orchestrator intends to buy an Atom RI on a monthly basis in each of the regions to create a situation where in the future there would be a Atom RI expiring on a monthly basis.
+    This provides Harness Commitment Orchestrator with a unique situation of being able to aggressively perform RI based exchanges to obtain higher savings with low risk factor.
 
 <DocImage path={require('./static/stepfive-copy.png')} width="100%" height="100%" title="Click to view full size image" />
 
