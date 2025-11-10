@@ -65,6 +65,7 @@ Manage your complete pipelines with features including:
 - **Intelligent Pipeline Creation:** Automatically generate pipelines based on project context.
 - **Seamless Editing:** Modify pipelines quickly to adapt to evolving requirements.
 
+
 #### Pipeline Generation Demo
 
 For a demo of the Harness DevOps Agent generating pipelines, see the following: 
@@ -84,16 +85,231 @@ This feature helps maintain robust security and compliance postures by ensuring 
 
 ### Error Analyzer
 
-The Harness Error Analyzer feature helps developers identify the root cause of issues and provides remediation guidance on how to fix them. By analyzing pipeline logs and the Harness pipeline context, it is able to process and interpret relevant information.
+Harness AI analyzes pipeline failures by correlating recent changes, examining dependencies, identifying historical patterns, and recommending specific fixes. Use this feature to quickly diagnose and resolve pipeline issues without manual debugging.
 
-    - Troubleshoot your pipeline errors
-    - Receive proposed fixes for your pipeline errors
+When a pipeline fails, Harness AI performs:
 
-#### Error Analyzer Demo
+- **Change impact analysis** - Identifies recent pipeline modifications that may have caused the failure
+- **Dependency checks** - Verifies the status of external infrastructure and services
+- **Historical pattern matching** - Compares the failure against similar past failures
+- **Root cause analysis** - Determines the specific step and command causing the issue
+- **Automated recommendations** - Suggests prioritized action items with justifications
 
-For a demo of the error analyzer, see the following:
+**Analyze a pipeline error**
 
-<DocVideo src="https://www.loom.com/share/f4ae8141f74c4b8f9e80b174acaee7d2?sid=73a0dd74-0a5e-4fd5-9f5c-b776d2985604" />
+1. Navigate to the failed pipeline execution.
+2. Select **Analyze Error**.
+3. Review the analysis results in the Change Impact Correlation panel.
+
+The analysis includes:
+
+- Recent changes with timestamps and authors
+- External dependency status
+- Historical failure patterns with similarity scores
+- Prioritized recommendations
+- Impact assessment and risk level
+
+Harness AI provides action items with:
+
+- **Priority** - High, Medium, or Low urgency
+- **Action** - Specific steps to resolve the issue
+- **Justification** - Explanation of why the action is needed
+
+Each recommendation targets a specific problem, such as:
+
+- Removing intentional failure commands
+- Replacing placeholder commands with actual build steps
+- Implementing proper error handling
+
+Automatically fix pipeline YAML:
+
+1. In the analysis panel, select **Help me fix the pipeline yaml**.
+2. Review the Pipeline Fix Summary showing:
+   - Problem identified
+   - Solution applied
+   - Before and after YAML comparison
+3. Examine the Updated Step YAML in the preview panel.
+4. Select **Accept** to apply the changes to your pipeline.
+
+**Use pipeline error analysis to:**
+
+- Diagnose failures faster than manual log review
+- Identify whether failures stem from code changes or infrastructure issues
+- Learn from historical failure patterns across your organization
+- Generate fixes for common pipeline configuration errors
+- Assess the blast radius of pipeline failures
+
+**View audit trail**
+
+To see the complete history of pipeline changes:
+
+1. In the analysis panel, select **Show Me the Audit trail**.
+2. Review the chronological list of pipeline modifications.
+
+Use the audit trail to understand the sequence of changes leading to the failure.
+
+
+### Service Creation and Update
+
+Harness AI generates complete service definitions through conversational prompts. Describe your application requirements, and Harness AI creates a fully configured service with manifests, artifacts, and connectors.
+
+Harness AI creates services by:
+
+- **Understanding your requirements** - Analyzes your conversational input about application type, deployment needs, and infrastructure
+- **Generating complete YAML** - Creates service definitions with all required components
+- **Configuring manifests** - Sets up Kubernetes manifests, Helm charts, or other deployment configurations
+- **Connecting artifacts** - Links to artifact registries with appropriate image references
+- **Adding metadata** - Includes descriptions, tags, and identifiers for organization
+
+**Create a service**
+
+1. Open the Harness AI assistant in your project.
+2. Describe the service you want to create. For example:
+   - "Create a Kubernetes service"
+   - "Set up a service for my Node.js application"
+   - "Generate a service for nginx deployment"
+3. Review the generated service definition:
+   - Service name and identifier
+   - Service type (Kubernetes, ECS, etc.)
+   - Manifest configuration
+   - Artifact details
+   - Connector references
+4. Preview the complete YAML in the YAML Preview panel.
+5. Select **Create** to add the service to your project.
+
+Use AI service creation to:
+
+- Quickly onboard new applications without manual YAML writing
+- Standardize service configurations across projects
+- Generate baseline configurations for customization
+- Learn proper service structure through examples
+- Migrate applications to Harness faster
+
+#### Best practices
+
+- **Provide specific details** - More context leads to better configurations (for example, "Create a Kubernetes service for a Node.js API with 5 replicas")
+- **Verify connector references** - Ensure referenced connectors exist in your project before creating the service
+- **Update image tags** - Replace `latest` tags with specific versions for production services
+- **Review resource settings** - Adjust CPU and memory limits based on actual application requirements
+- **Add service variables** - Include environment-specific variables after creation
+- **Use Git sync** - Store service definitions in Git for version control
+
+
+
+### Connector Creation and Update
+
+Harness AI guides you through connector creation with intelligent recommendations for authentication, permissions, and configuration. Describe what you want to connect, and Harness AI helps you set up secure, validated connections.
+
+Harness AI creates connectors by:
+
+- **Understanding connection requirements** - Analyzes your input about target infrastructure, cloud provider, or service
+- **Recommending authentication methods** - Suggests secure authentication approaches (IAM roles, service accounts, API keys)
+- **Guiding configuration** - Provides step-by-step setup with contextual help
+- **Validating credentials** - Tests connections and identifies permission issues
+- **Generating complete YAML** - Creates connector definitions with all required fields
+
+**Connector details**
+- **Name** - Human-readable connector name
+- **Identifier** - Unique connector identifier for API and service references
+- **Type** - Connector category (Kubernetes, AWS, Docker Registry, Git, etc.)
+- **Description** - Auto-generated description with creation timestamp
+
+**Authentication configuration**
+- **Auth method** - Recommended authentication approach:
+  - Service account tokens (Kubernetes)
+  - IAM roles or access keys (AWS, Azure, GCP)
+  - Username/password or personal access tokens (Git providers)
+  - API keys (various services)
+- **Credential references** - Links to Harness secrets for secure storage. Harness doesn't accept any actual credentials when configuring a connector. Users will need to update the connector manually to provide secret.
+- **Permission recommendations** - Minimum required permissions for least-privilege access
+
+### Environment Creation and Update
+
+Harness AI generates complete environment definitions through conversational prompts. Describe your deployment target, and Harness AI creates a fully configured environment with infrastructure definitions and overrides.
+
+
+Harness AI creates environments by:
+
+- **Understanding deployment context** - Analyzes your input about environment purpose, infrastructure, and deployment stage
+- **Generating complete YAML** - Creates environment definitions with infrastructure configurations
+- **Configuring infrastructure definitions** - Sets up clusters, namespaces, regions, or resource groups
+- **Setting environment type** - Classifies as Production or Pre-Production based on context
+- **Adding metadata** - Includes descriptions, tags, and identifiers for organization
+
+**Create Environment**
+
+1. Open the Harness AI assistant in your project.
+2. Describe the environment you want to create. For example:
+   - "Create a production Kubernetes environment"
+   - "Set up a staging environment in AWS"
+   - "Generate a dev environment for my GKE cluster"
+3. Review the generated environment definition:
+   - Environment name and identifier
+   - Environment type (Production/Pre-Production)
+   - Infrastructure definitions
+   - Connector references
+   - Service overrides
+4. Preview the complete YAML in the YAML Preview panel.
+5. Select **Create** to add the environment to your project.
+
+Environment details
+- **Name** - Human-readable environment name (for example, `production`, `staging-us-east`)
+- **Identifier** - Unique environment identifier for API and pipeline references
+- **Type** - Production or Pre-Production classification
+- **Description** - Auto-generated description with creation timestamp
+
+Use AI environment creation to:
+
+- Quickly set up deployment environments without manual YAML writing
+- Replicate environment configurations across projects
+- Generate baseline configurations for customization
+- Create consistent dev/staging/prod environment structures
+- Set up multi-region or multi-cluster deployments faster
+
+### Secret Creation and Update
+
+Harness AI helps you create secret configurations by generating the secret object structure with proper naming, scope, and metadata. After AI creates the secret object, you provide the actual secret value manually in the Harness UI for security.
+
+Harness AI creates secret configurations by:
+
+- **Understanding secret requirements** - Analyzes your input about what credentials or sensitive data you need to store
+- **Recommending secret types** - Suggests text secrets, file secrets, or SSH keys based on your use case
+- **Generating secret metadata** - Creates the secret object with name, description, and scope
+- **Setting up references** - Configures the secret for use in connectors, pipelines, and services
+- **Guiding value entry** - Directs you to provide the actual secret value securely
+
+For security reasons, Harness AI creates the secret object structure but **cannot and will not generate actual secret values**. After AI creates the secret, you must provide the real credential, token, password, or sensitive data through the Harness UI. This ensures your sensitive information remains secure and under your control.
+
+1. Open the Harness AI assistant in your project or account settings.
+2. Describe the secret you need to create. For example:
+   - "Create a secret for my Docker Hub password"
+   - "Set up a secret for GitHub personal access token"
+   - "Add a secret for AWS access key"
+   - "Create an SSH key secret for deployment"
+3. Review the generated secret configuration:
+   - Secret name and identifier
+   - Secret type (Text, File, SSH Key)
+   - Scope (Project, Organization, Account)
+   - Description and tags
+4. Preview the configuration in the YAML Preview panel.
+5. Select **Create** to generate the secret object.
+6. **Immediately provide the secret value** in the prompt that appears.
+7. Select **Save** to store the secret securely.
+
+Harness AI generates identifiers following these patterns:
+
+- **Secret name** - Descriptive name indicating purpose (for example, `docker_hub_password`, `github_pat`)
+- **Identifier** - Converts name to lowercase with underscores (for example, `docker_hub_password`)
+- **Description** - Explains what the secret is for (for example, "Docker Hub authentication password for nginx images")
+
+Use AI secret creation to:
+
+- Quickly set up credential storage with proper naming
+- Standardize secret naming across projects
+- Create secrets at the appropriate scope level
+- Generate metadata for compliance and audit trails
+- Organize secrets with consistent tagging
+
 
 
 #### Pipeline Summarizer
