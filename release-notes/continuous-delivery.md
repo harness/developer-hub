@@ -53,15 +53,36 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## November 2025
+
+### Version 1.115.7
+
+#### Fixed Issues
+
+- Fixed an issue where Azure Repos connector test failed with "Couldn't connect to given repo" error despite valid PAT and repository access. The connector validation now properly handles Azure DevOps project-level connectors and provides more actionable error messages when connection issues occur. (**PIPE-30389, ZD-95538**)
+- Fixed an issue where shell script tasks in Kubernetes deployments failed with `NullPointerException: Cannot invoke "java.io.File.toPath()" because "this.file" is null` when processing kubeconfig files with exec-based authentication. The delegate now properly handles kubeconfig file references during credential processing. (**CDS-115508, ZD-95136**)
+- Fixed an issue where intermittent Helm chart fetch failures occurred from S3-backed ChartMuseum with "EOF" errors when multiple deployments ran simultaneously. The issue was caused by race conditions when sharing repository configuration files across concurrent deployments using the same S3 bucket. Each deployment now uses isolated repository configuration to prevent conflicts. (**CDS-115441, ZD-95548**)
+- Fixed an issue where Manual Intervention failure strategy did not respect the `availableActions` configuration when triggered via `onRetryFailure` after a Retry action. All actions were displayed instead of only the specified available actions. Manual Intervention now correctly limits the available actions as configured. (**PIPE-30318, ZD-94795**)
+- Fixed an issue where delegate pods were OOMKilled during connection tests for JFrog Artifactory and Helm connectors due to excessive memory consumption. The delegate now properly manages memory usage during connector validation operations. (**CDS-115302, ZD-95107**)
+- Fixed an issue where infrastructure selectors were incorrectly appended to Step Group delegate selectors when using Delegate Selection Expression List, causing task execution failures with "no eligible delegates" errors. Infrastructure selectors are now properly isolated from Step Group delegate selection expressions. (**CDS-114486, ZD-93472, ZD-95160**)
+- Fixed an issue where input set reference fields in chained pipeline templates were not removed from the YAML after being deleted from the UI, causing inconsistencies between the visual editor and YAML representation. The YAML now correctly reflects input set reference removals. (**PIPE-30550, ZD-96190**)
+- Improved loading performance for pipelines and input sets with large configurations and multiple connector references. The UI now loads connector references more efficiently, reducing load times for complex input sets. (**PIPE-30458, ZD-95871**)
+- Fixed an issue where the Jira Create step's Reporter dropdown did not display users when the `emailAddress` field was missing or empty in the Jira API response. The dropdown now falls back to displaying the `displayName` when `emailAddress` is unavailable, ensuring users can be selected for the Reporter field. (**CDS-115386**)
+- Fixed an issue where using expressions in the ServiceNow Create step's Template Name field failed with "Missing template name" error during pipeline planning. The Template Name field now properly resolves expressions for parameterized ServiceNow template selection. (**CDS-115272, ZD-95426**)
+- Fixed an issue where console logs disappeared from the UI when a Manual Intervention failure strategy was triggered in steps like Terraform Plan. The logs now remain visible during Manual Intervention, allowing users to review execution details before making intervention decisions. (**PIPE-29254, ZD-77586**)
+- Fixed an issue where File Store steps intermittently failed with `SocketTimeoutException: timeout` errors when fetching file content. The pipeline service now uses improved timeout handling and retry logic when communicating with the file service, reducing transient failures during file retrieval. (**CDS-115740, ZD-96621**)
+
 ## October 2025
 
 ### Version 1.114.8
 
 #### New Features and Enhancements
 
-Harness now supports a Skip Traffic Shift option in the Google Cloud Run Deploy step, allowing you to create new revisions without immediately shifting traffic. The Traffic Shift step also now supports assigning multiple tags to revisions for easier traffic routing and management. (**CDS-112371**)
+- Harness now supports a Skip Traffic Shift option in the Google Cloud Run Deploy step, allowing you to create new revisions without immediately shifting traffic. The Traffic Shift step also now supports assigning multiple tags to revisions for easier traffic routing and management. This feature is released with plugin version harness/google-cloud-run-plugin:1.0.3-linux-amd64. (**CDS-112371**)
 
-Harness now supports VM infrastructure for containerized step groups. You can select VMs as the runtime infrastructure when enabling container-based execution, allowing you to run supported CD steps on Linux VMs instead of Kubernetes clusters. This feature is controlled by Feature Flag `CDS_ENABLE_VM_CONTAINER_STEP_GROUP_INFRA`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-112055**)
+- Harness now supports VM infrastructure for containerized step groups. You can select VMs as the runtime infrastructure when enabling container-based execution, allowing you to run supported CD steps on Linux VMs instead of Kubernetes clusters. This feature is controlled by Feature Flag `CDS_ENABLE_VM_CONTAINER_STEP_GROUP_INFRA`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-112055**)
+
+- Harness now supports Harness Artifact Registry as a native artifact source for SSH and WinRM deployments (Docker artifact type only). (**CDS-115561**)
 
 #### Fixed Issues
 
