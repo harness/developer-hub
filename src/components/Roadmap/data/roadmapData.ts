@@ -155,7 +155,7 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "Artifact Registry",
-    description: "SaaS release status: GA, SMP release status: GA",
+    description: "SaaS release status: GA",
     module: MODULES.ar,
     horizon: arData,
   },
