@@ -25,6 +25,42 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+
+## November 2025 - Version 1.69.2
+#### Deployment Date: November 10, 2025 (Prod-1)
+
+### Feature Improvements
+- **Enhanced GCP Discount Preferences**: We've expanded the single GCP discount preference into five distinct options for more precise cost management
+    - **Subscription Credits**
+    - **Sustained Use Discounts**
+    - **Resource-based CUD Credits**
+    - **Legacy Spend-based CUD Credits**
+    - **Other Discounts**
+  For existing perspectives with the previous `Include Discounts` preference enabled, all five new preferences will be automatically enabled. You can adjust these individually according to your reporting needs.
+
+**Complete GCP Preferences Categories**:
+  - **Savings Programs**
+    - Legacy spend-based CUD credits
+    - Resource-based CUD credits
+  - **Other Savings**
+    - Promotional credits
+    - Sustained use discounts (SUDs)
+    - Spending-based discounts
+    - Subscription credits
+    - Negotiated savings
+  - **Invoice Level Charges**
+    - Tax
+
+    [CCM-24740]
+
+- **Improved Anomaly Alert Email Validation**: Added UI validation for email format when creating anomaly alerts, preventing invalid email submissions. [CCM-25070]
+
+- **Improved Permissions for Governance**: Previously, users with granular permissions on Governance Alerts couldn’t open the alerts drawer because it checked for global view permissions. This issue has now been resolved. If a user doesn’t have access to any alerts, the drawer will now display an appropriate error state indicating that. [CCM-26473]
+
+- **Persistent behaviour across Perspective Rules **: Previously, when adding new rules, the Perspective’s default group-by and time range values were being reset to their defaults. This has now been fixed — they will persist across rule changes. [CCM-25493]
+
+- **Folder ID Now Mandatory for Budget Creation via API:** To ensure better organization and visibility of budgets in the UI, the folderId field is now mandatory when creating budgets through the API. Previously, budgets created without a folder ID did not appear in the UI, leading to inconsistencies in reporting. With this update, any API request that omits the folderId will return an error. This change ensures that all budgets are created under the correct folders, improving overall organization, visibility, and reporting accuracy. Users integrating with the API should update their automation or scripts to include the folderId parameter to avoid errors during budget creation. [CCM-27057]
+
 ## October 2025 - Version 1.68.9
 #### Deployment Date: October 21, 2025 (Prod-1)
 
