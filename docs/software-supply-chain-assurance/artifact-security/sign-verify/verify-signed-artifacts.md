@@ -39,7 +39,7 @@ The Artifact Verification step pulls the `.sig` file from the artifact registry 
 
 Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#container-images) and [non-container images](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#non-container-images).
 
-<DocImage path={require('./static/artifact-verify.png')} width="50%" height="50%" />
+<DocImage path={require('./static/verify-artifact.png')} width="50%" height="50%" />
 
 ### Container Images
 
@@ -53,6 +53,14 @@ Follow the instructions below to configure the Artifact Verification step.
 
 
 <Tabs>
+
+<TabItem value="har" label="HAR" default>
+
+* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
+
+* **Image:** Enter the name of your image with tag or digest, such as `imagename:tag` or `imagename:digest`.
+
+</TabItem>
 
   <TabItem value="dockerhub" label="Docker Registry" default >
 
@@ -135,7 +143,7 @@ To configure Artifact Verification for non-container images, provide the followi
 
 Non-container images can be verified using **Cosign** or **Cosign with Secret Manager**, just like container images.
 
-<DocImage path={require('./static/non-container-verify.png')} width="50%" height="50%" />
+<DocImage path={require('./static/non-container-signing.png')} width="50%" height="50%" />
 
 
 ## View Verified Artifacts
