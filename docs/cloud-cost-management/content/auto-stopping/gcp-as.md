@@ -5,7 +5,13 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 
-## Prerequisite: Set Up Proxy 
+## Prerequisite
+
+- [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/#aws)
+- Proxy for Traffic-based AutoStopping Rules. For scheduled only AutoStopping Rules, this is not required.
+
+
+## Set Up Proxy 
 
 Set up a proxy or load balancer that will intercept and manage traffic to your resources. This component is what enables the seamless start/stop functionality.
 
@@ -159,7 +165,7 @@ To create a fixed schedule for your rule, do the following:
 
 </TabItem>
 
-<TabItem value="setup-access" label="Step 2: Setup Access"> 
+<TabItem value="setup-access" label="Step 2: Setup Access [Traffic-based AutoStopping Rules]"> 
 
 <Tabs>
 <TabItem value="compute-engine" label="Compute Engine VMs">
