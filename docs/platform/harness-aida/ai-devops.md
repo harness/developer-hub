@@ -95,6 +95,39 @@ For a demo of the error analyzer, see the following:
 
 <DocVideo src="https://www.loom.com/share/f4ae8141f74c4b8f9e80b174acaee7d2?sid=73a0dd74-0a5e-4fd5-9f5c-b776d2985604" />
 
+
+#### Pipeline Summarizer
+
+Harness AI can generate detailed pipeline summaries by analyzing your pipeline, its executions, and dependent resources. Use these summaries to quickly understand what your pipelines do without manually reviewing each step.
+
+The DevOps Agent analyzes:
+
+- Pipeline configuration and steps
+- Recent execution history
+- Dependent resources (connectors, secrets, infrastructure)
+
+Harness AI then generates a natural language summary explaining the pipeline's purpose, key steps, and outcomes.
+
+1. Navigate to your pipeline in the Harness platform.
+2. Select **AI Summarize** in the 3 dots menu
+3. Review the generated summary.
+
+The summary appears in the pipeline details view and includes:
+
+- Pipeline purpose and goals
+- Key stages and steps
+- Deployment targets and environments
+- Recent execution patterns
+
+**Use Cases**
+
+Use pipeline summaries to:
+
+- Onboard new team members to existing pipelines
+- Document pipeline behavior for compliance
+- Quickly understand inherited or legacy pipelines
+- Review pipeline changes before approval
+
 ## Data Storage and Privacy Policies
 
 Harness AI is designed with strict data privacy and security principles. This section explains what data is used, how it is handled, and how it is discarded when you interact with the DevOps Agent or any AI-powered features in Harness. No configuration is necessary to ensure your privacy since Harness applies strict privacy defaults:
