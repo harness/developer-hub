@@ -55,6 +55,14 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## November 2025
 
+### GitOps Service 1.44.3, GitOps Agent 0.103.0
+
+#### Fixed Issues
+
+- Fixed an issue where GitOps applications intermittently displayed incorrect resource creation times in the Resource View tab. This occurred when resources didn't have a date set during creation or due to errors, causing the system to default to the Unix epoch start date (January 1, 1970). The system now handles missing dates gracefully by not displaying a date value instead of showing the epoch timestamp. (**CDS-115096, ZD-95086**)
+- Fixed an issue in the GitOps Helm chart where the container name was hardcoded to `gitops-agent` in the upgrader ConfigMap. This caused the creation of an unintended sidecar container when users overrode the agent pod or container name, preventing proper upgrades. The Helm chart now correctly respects the agent name specified in the `values.yaml` file. (**CDS-114819, ZD-93676, ZD-95329**)
+- Fixed an issue where duplicate log lines appeared when viewing logs from the Resource View panel in GitOps applications. Logs now display correctly without duplication. (**CDS-114656, ZD-94084, ZD-95360**)
+
 ### Version 1.115.7
 
 #### Fixed Issues
