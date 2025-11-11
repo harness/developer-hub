@@ -20,6 +20,19 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+## November 2025
+
+<!-- November 3, 2025 -->
+
+### Version 1.64.x
+####  New features and enhancements
+- Harness Code introduces a complete UI revamp, offering a faster, cleaner, and more intuitive experience with improved navigation, search, and code review workflows. Developers can now opt in or out to explore the redesigned layout and streamlined repository management before it becomes the default. This is currently behind the following feature flags `CODE_ENABLE_MFE_V2` & `PL_UNIFIED_OPT_IN_ENABLED` that need to be enabled for the opt-in experience.
+
+#### Bug Fixes and Improvements
+- Fixed an issue where filename with a special character "%" caused the file view or the landing page of the repository to break.
+- Fixed syntax highlighting issue. Users will now see raw text without syntax highlighting if the underlying text has syntax errors.
+
+
 ## September 2025
 
 <!-- September 9, 2025 -->
