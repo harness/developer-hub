@@ -59,6 +59,10 @@ Here are a few important points to note when using CodeQL with **Orchestration m
 
 For **Extraction mode**, CodeQL works with both **Default** and **Advanced setup**.  
 
+:::note
+The **CodeQL** scan configuration using the **[Orchestration](#scan-mode)** scan mode requires a minimum of `2Gi` of RAM. You can set this in the **[Additional Configuration](#additional-configuration)** section of your step.
+:::
+
 ---
 
 ### Dependabot
