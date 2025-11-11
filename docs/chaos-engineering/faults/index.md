@@ -24,6 +24,6 @@ Create and manage your own custom chaos faults using BYOC (Bring Your Own Chaos)
 
 ## Next Steps
 
-- [Run your first experiment](../get-started)
+- [Run your first experiment](../quickstart)
 - [Learn about probes](../guides/probes)
 - [Set up governance](../guides/governance/rbac)

@@ -169,8 +169,8 @@ The agents are:
 Go to [prerequisites](/docs/chaos-engineering/guides/on-premises-smp/#prerequisites) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/tutorials) or execute [your first chaos experiment](/docs/chaos-engineering/on-premise-vs-saas).
 **OR**
 If you want a head start to your journey with Harness CE, you can onboard Harness CE in two ways:
-- [Automated onboarding](/docs/chaos-engineering/get-started); and
-- [Guided onboarding](/docs/chaos-engineering/get-started).
+- [Automated onboarding](/docs/chaos-engineering/quickstart); and
+- [Guided onboarding](/docs/chaos-engineering/quickstart).
 
 #### Can all the Chaos Operations be managed via APIs (agent, experiment life cycles etc.,)
 Yes, all chaos operations can be managed using APIs. For more information, go to [Harness CE API documentation](https://apidocs.harness.io/chaos.html).

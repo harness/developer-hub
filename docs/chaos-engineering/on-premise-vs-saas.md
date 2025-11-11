@@ -141,7 +141,7 @@ Both deployments support the same fault types across Linux, Kubernetes, Windows,
 1. **Sign Up**: Create your Harness account at [app.harness.io](https://app.harness.io)
 2. **Create Project**: Set up your first chaos engineering project
 3. **Connect Infrastructure**: Link your Kubernetes clusters or cloud accounts
-4. **Run First Experiment**: Follow the [getting started guide](./get-started)
+4. **Run First Experiment**: Follow the [getting started guide](./quickstart)
 
 ### Self-Managed Enterprise Edition
 1. **Contact Sales**: Discuss licensing and requirements

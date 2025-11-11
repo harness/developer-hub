@@ -295,7 +295,7 @@ Define acceptable system performance during chaos:
 
 Now that you understand these key concepts, you can:
 
-1. **Set Up Your Environment**: Create your first [environment and chaos infrastructure](./get-started)
+1. **Set Up Your Environment**: Create your first [environment and chaos infrastructure](./quickstart)
 2. **Run Your First Experiment**: Follow our [tutorials](./tutorials) to execute a simple chaos experiment
 3. **Explore ChaosHub**: Browse the [Enterprise ChaosHub](./faults/chaos-faults) for available fault types
 4. **Learn Advanced Features**: Discover [integrations](./integrations/cicd/jenkins) and governance capabilities
@@ -304,6 +304,6 @@ Now that you understand these key concepts, you can:
 
 - **[What's Supported](./whats-supported)**: Review supported platforms and deployment options
 - **[SaaS vs Self-Managed](./on-premise-vs-saas)**: Choose the right deployment model
-- **[Get Started Guide](./get-started)**: Begin your chaos engineering journey
+- **[Get Started Guide](./quickstart)**: Begin your chaos engineering journey
 
 Understanding these Harness-specific concepts provides the foundation for successful chaos engineering implementation. The platform's enterprise features and integrations make it easier to adopt chaos engineering practices at scale.

@@ -118,5 +118,5 @@ All CE features and platforms supported in [Self-Managed Enterprise Edition](#se
 4. **[Explore integrations](./integrations/cicd/jenkins)** - Connect with your existing tools
 
 :::tip Ready to get started?
-Check out our **[Get Started](./get-started)** guide to begin your chaos engineering journey.
+Check out our **[Get Started](./quickstart)** guide to begin your chaos engineering journey.
 :::
