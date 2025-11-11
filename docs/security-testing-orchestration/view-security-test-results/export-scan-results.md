@@ -23,7 +23,7 @@ In the **Vulnerabilities** tab of a pipeline execution, select **Download CSV** 
 <details>
 <summary>Example Scan Results from Download CSV option</summary>
 
-| Organisation name | Project Name | Pipeline Name | Execution ID | Issue ID | Issue Title | Severity | Severity Score | No. of Occurrences | Target Type | Target Name | Status | Exemption Status | Scanner Name | Exemption Requestor Email | Exemption Approver Email | Only in Current Scan |
+| Organisation name | Project Name | Pipeline Name | Pipeline Execution ID | Issue ID | Issue Title | Severity | Severity Score | No. of Occurrences | Target Type | Target Name | Status | Exemption Status | Scanner Name | Exemption Requestor Email | Exemption Approver Email | Only in Current Scan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | default | WebApp-Frontend | CI-Gitleaks-Scan | exec-id-1 | issue-id-1 | Discord API Key Detected | High | 8.5 | 3 | repository | frontend-app | REMEDIATED | Approved | Aqua Trivy | requestor1@example.com | approver1@example.com | yes |
 | default | Backend-API | Dev-Bandit-Scan | exec-id-2 | issue-id-2 | Hardcoded Password | Critical | 9.2 | 1 | repository | user-service | NONE | Pending | Bandit | requestor2@example.com | | no |
@@ -32,8 +32,8 @@ In the **Vulnerabilities** tab of a pipeline execution, select **Download CSV** 
 
 * **Organisation name**: The name of the organisation (e.g., `default`).
 * **Project Name**: The name of the project (e.g., `WebApp-Frontend`).
-* **Pipeline Name**: The name of the pipeline (e.g., `CI-Gitleaks-Scan`).
-* **Execution ID**: The unique identifier for the execution (e.g., `iDtDn5tnTW2qg21iURaJWA`).
+* **Pipeline Name**: The name of the pipeline (e.g., `CI-Gitleaks-Scan`). This column can show multiple values if your pipeline includes **child pipelines** as **Pipeline stages**, or if the pipeline is re-run from a selected stage of an existing execution.
+* **Pipeline Execution ID**: The unique identifier of the pipeline execution (e.g., `iDtDn5tnTW2qg21iURaJWA`). This column can also contain multiple IDs if your pipeline includes **child pipelines** as **Pipeline stages**, or if it is re-run from a selected stage of a previous execution.
 * **Issue ID**: The unique identifier for the issue (e.g., `8-Yp-1vlRB6MIqa69DdtVj`).
 * **Issue Title**: A descriptive title for the issue (e.g., `Discord API Key Detected`).
 * **Severity**: The vulnerability's severity level. If a severity override exists, STO uses the scanner-provided severity. Otherwise, it uses the severity that STO provides. Possible values are `Critical`, `High`, `Medium`, `Low`, and `Info`.
@@ -49,6 +49,8 @@ In the **Vulnerabilities** tab of a pipeline execution, select **Download CSV** 
 * **Only in Current Scan**:
     - **Yes**: This indicates a new vulnerability. It is found in the most recent scan but was not present in the baseline or previous scan you are comparing against.
     - **No**: This indicates a pre-existing or recurring vulnerability. It is found in the current scan and was also present in the baseline scan.
+
+
 
 </details>
 
