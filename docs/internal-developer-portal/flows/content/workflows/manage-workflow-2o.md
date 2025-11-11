@@ -137,6 +137,10 @@ When Workflows are stored in a Git repository, you can execute them from differe
 
 ### Execution View
 
+:::info
+This feature is behind a feature flag `IDP_WORKFLOW_EXECUTION_V2`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
+
 Once you execute a Workflow, you'll be taken to the **Workflow execution view** where you can monitor the progress in real-time. 
 
 The top bar of the execution view displays key information about the Workflow run like:

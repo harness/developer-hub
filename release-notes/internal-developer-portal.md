@@ -24,7 +24,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.11.v1](/release-notes/internal-developer-portal#october---202510v1) | ✅        | ✅         | ✅           |     🧵     |     🧵     |     🧵     |
+| [2025.11.v1](/release-notes/internal-developer-portal#october---202510v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
 | [2025.10.v1](/release-notes/internal-developer-portal#september---202509v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
 | [2025.09.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         | ✅         | ✅          | ✅            |
 
@@ -34,6 +34,10 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ### [New Feature] Workflow Execution Page Redesign
 **[Docs](/docs/internal-developer-portal/flows/manage-workflow-2o#idp2.0--execution-view)**
+
+:::info
+This feature is behind a feature flag `IDP_WORKFLOW_EXECUTION_V2`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
 
 We've completely redesigned the **Workflow Execution View** to provide a more intuitive and comprehensive monitoring experience. The new execution view is organized into **three distinct tabs** that give you complete visibility into your workflow runs.
 
