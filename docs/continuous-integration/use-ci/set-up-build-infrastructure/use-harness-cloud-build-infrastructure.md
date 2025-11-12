@@ -40,17 +40,13 @@ Free plans require credit card validation to use Harness Cloud. If you don't wan
 
 ## Platforms and image specifications
 
-Harness Cloud offers Linux, macOS, and Windows platforms. To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
+Harness Cloud offers Linux, macOS, and Windows platforms. For more information about image components and preinstalled software, see [Harness Cloud VM Images](/docs/platform/references/harness-cloud-vm-images).
 
-For detailed information about image components and preinstalled software, check out [this page](/docs/platform/references/harness-cloud-vm-images).
+:::tip
+To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
+:::
 
 **You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](/docs/platform/references/harness-cloud-vm-images#specify-versions), ensure that a step [uses a specific version every time](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools), or [install additional tools and versions](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
-
-:::info
-
-Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
-
-:::
 
 ## Requirements for connectors and secrets
 
@@ -135,12 +131,6 @@ pipeline:
 
 </TabItem>
 </Tabs>
-
-:::info
-
-Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
-
-:::
 
 ### Using Resource Classes
 
