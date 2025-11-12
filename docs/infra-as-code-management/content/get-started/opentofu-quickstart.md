@@ -85,7 +85,7 @@ Once you have configured your connectors, you can create a Workspace and select 
 For first-time use, use our [migration tool](/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
 :::
 
-<Tabs>
+<Tabs queryString="create-workspace">
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/e6ec4051-90e5-4430-a003-a9bcce4d8981?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create an OpenTofu Workspace in Harness IaCM" />
 </TabItem>
@@ -106,6 +106,24 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
 - **Git Connector**: Select the Git connector you created in the previous step.
 - **Git Fetch Type**: Select the Git fetch type, either **Latest from branch**, **Git tag** or **Commit SHA**.
 - **Git Branch**: Specify the branch you want to use for the workspace.
+
+:::tip branch with jexl
+  you can configure the workspace branch to be a [JEXL expressions](/docs/platform/variables-and-expressions/harness-variables/) that references a pipeline variable, and then set the pipeline variable as a run time input.
+
+  ![](./static/branch-with-jexl.png)
+
+  Set you branch variable as a runtime input in the pipeline:
+
+  ```
+  variables:
+   - name: iacm_branch
+     type: String
+     description: ""
+     required: true
+     value: <+input>.default(main)
+   ```
+  :::
+
 - **Folder Path**: Specify the folder path to the OpenTofu configuration files in the repository.
 
 **Advanced** options allow you to **include submodules** if your code repository includes modules and submodules. Go to [Module Registry](/docs/category/module-registry) for more information.

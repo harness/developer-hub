@@ -17,7 +17,9 @@ Users can define a Terraform configuration with multiple workspaces to enforce t
 For example, you can have a single configuration of a Kubernetes cluster and create multiple workspaces out of it, each leading to different clusters. The configuration is unique to each workspace and can be managed through environment or OpenTofu/Terraform variables.
 
 ## Workspace statuses
+
 A workspace can have one of the following statuses:
+
 - **Active:** Successfully deployed and running.
 - **Inactive:** Successfully destroyed or was not provisioned.
 - **Drifted:** Drift was detected.
@@ -30,18 +32,21 @@ A workspace can have one of the following statuses:
 Go to [workspace statuses](/docs/infra-as-code-management/workspaces/worksace-statuses) to find out more about filtering workspace by status.
 
 ## Create a new workspace
-<Tabs>
+
+<Tabs queryString="create-workspace">
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a IaCM Workspace in Harness" />
 </TabItem>
 <TabItem value="Step-by-step">
 
 To create a new workspace, follow these steps:
+
 1. Sign in to [app.harness.io](https://app.harness.io).
 2. In the module pane, select **Infrastructures as Code Management**.
 3. Select **Workspaces**, and then select **+New Workspace**, and **Start from scratch**.
 
 ### Step 1: About Workspace
+
 - Enter a Name for your workspace. This name will appear in your workspace list.
 - (Optional) Add a Description to clarify the purpose of the workspace.
 - (Optional) Add Tags for easier filtering and organization.
@@ -49,33 +54,55 @@ To create a new workspace, follow these steps:
 - Click Next.
 
 ### Step 2: Configure Repository Details
+
 - Select Git Provider: Choose either:
-	- Harness Code Repository, or
-	- Third-party Git provider (e.g., GitHub, GitLab, Bitbucket).
+  - Harness Code Repository, or
+  - Third-party Git provider (e.g., GitHub, GitLab, Bitbucket).
 - Select a Git Connector: Choose an existing connector or create a new one.
 - Choose Git Fetch Type:
-	- Latest from Branch is selected by default.
-	- Enter Git Branch: Type the name of the branch you want to fetch from.
-	- (Optional) Enter Folder Path: If your IaC code resides in a subdirectory, specify the folder path.
-	- Click Next.
+
+  - Latest from Branch is selected by default.
+  - Enter Git Branch: Type the name of the branch you want to fetch from.
+
+  :::tip branch with jexl
+  you can configure the workspace branch to be a [JEXL expressions](/docs/platform/variables-and-expressions/harness-variables/) that references a pipeline variable, and then set the pipeline variable as a run time input.
+
+  ![](./static/branch-with-jexl.png)
+
+  Set you branch variable as a runtime input in the pipeline:
+
+  ```
+  variables:
+   - name: iacm_branch
+     type: String
+     description: ""
+     required: true
+     value: <+input>.default(main)
+   ```
+  :::
+
+  - (Optional) Enter Folder Path: If your IaC code resides in a subdirectory, specify the folder path.
+  - Click Next.
 
 ### Step 3: Provisioner
 - Select a Connector: Choose the connector for the cloud provider or backend system (e.g., aws-oidc).
 - Set Scope: Confirm the scope for the connector (e.g., Account, Project, etc.).
 - Choose Workspace Type:
-	- Select OpenTofu or Terraform based on your IaC framework.
+  - Select OpenTofu or Terraform based on your IaC framework.
 - Select the Version of OpenTofu or Terraform to use (e.g., 1.9.0).
 - Click Create to finalize and create the workspace.
 </TabItem>
 </Tabs>
+
 ---
 
 If you need to use either environment or Terraform variables during execution, select the **Variables** tab to define the variables.
+
 - **Environment Variables** can be either String, [Secret](/docs/category/secrets), or a reference to another variable using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (it can be in the same or a different workspace or from the pipeline).
 - **Terraform Variables** Can be provided in the following ways:
 - **Inline** Users can define Terraform variables within the workspace. Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](/docs/category/secrets), or a reference to another variable, using [JEXL expression](/docs/platform/variables-and-expressions/harness-variables/) (can be in the same or a different workspace, or from the pipeline).
-- **From Git Repo (Implicit)** Users can store ``.tfvar`` in the same folder as the Terraform code for the workspace.
-- **From Git Repo (Explicit)** Users can define a specific folder for ``.tfvar`` files (which can be different from the Terraform code's location). These files can be in the same or different repository as the Terraform code.
+- **From Git Repo (Implicit)** Users can store `.tfvar` in the same folder as the Terraform code for the workspace.
+- **From Git Repo (Explicit)** Users can define a specific folder for `.tfvar` files (which can be different from the Terraform code's location). These files can be in the same or different repository as the Terraform code.
 
 :::info tfvar jexl support
 [JEXL expressions](/docs/platform/variables-and-expressions/harness-variables/) cannot be used to reference `tfvar` files.
@@ -86,9 +113,10 @@ The values defined in line with the workspace will take precedence over the git 
 ![Workspace variables](static/workspace-variables.png)
 
 ## Clone a workspace
+
 Harness supports workspace cloning for quick setup of new workspaces with the same or similar configuration as existing workspaces.
 
-<Tabs>
+<Tabs queryString="clone-workspace">
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/64cc1d48-a7c5-451e-aaa8-98d3888027d4?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Clone your workspace" />
 </TabItem>
@@ -100,12 +128,14 @@ Harness supports workspace cloning for quick setup of new workspaces with the sa
       - The default placeholder name will be "*cloned_workspace_name*-clone".
    5. Select **Clone**.
 
-   Review your new workspace and make any amendments in the Configuration tab if necessary.
+Review your new workspace and make any amendments in the Configuration tab if necessary.
 </TabItem>
 </Tabs>
 
 ## Workspace templates
+
 Create reuseable workspace templates to standardize your workspace configurations across projects. Go to [workspace templates](/docs/infra-as-code-management/workspaces/workspace-templates) to learn how to create and manage workspace templates.
 
 ## Next step
+
 Once you have created your workspace, by creating a new workspace from scratch, cloning, or using a template, you can [provision](/docs/infra-as-code-management/workspaces/provision-workspace) it to apply your OpenTofu or Terraform state.
