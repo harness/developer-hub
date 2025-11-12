@@ -309,6 +309,7 @@ pipeline:
                             RUNTIME_BASE_IMAGE_VERSION="${RUNTIME_BASE_IMAGE_VERSION:-<+pipeline.variables.RUNTIME_BASE_IMAGE_VERSION>}"
                             NODEJS_BASE_IMAGE_VERSION="${NODEJS_BASE_IMAGE_VERSION:-<+pipeline.variables.NODEJS_BASE_IMAGE_VERSION>}"
                             SERVERLESS_VERSION="${SERVERLESS_VERSION:-<+pipeline.variables.SERVERLESS_VERSION>}"
+                            TARGET_REPO="<+pipeline.variables.TARGET_REPO>"
 
                             TIMESTAMP=$(date -u +"%Y%m%d%H%M%S")
                             DOCKER_USERNAME="<+pipeline.variables.DOCKER_USERNAME>"
@@ -342,7 +343,7 @@ pipeline:
                             fi
 
                             # Compose final image tag
-                            local FINAL_IMAGE="${TARGET_REPO}/serverless-plugin:${RUNTIME_NAME}-${SERVERLESS_TAG_PART}${VERSION}-linux-amd64"
+                            local FINAL_IMAGE="${TARGET_REPO}:${RUNTIME_NAME}-${SERVERLESS_TAG_PART}${VERSION}-linux-amd64"
 
                                 echo "Building ${IMAGE_TYPE} image: ${FINAL_IMAGE}"
 
