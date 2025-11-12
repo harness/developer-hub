@@ -13,36 +13,20 @@ sidebar_position: 220
 <br/>
 <br/>
 
-You can scan your code repositories, artifacts, and application instances using [Mend](https://www.mend.io). 
 
+The **Mend step** in Harness STO enables you to scan both **code repositories** and **container images**. You can perform **SAST**, **SCA** and **Container** scans using the available scan modes: **Orchestration**, **Extraction**, and **Ingestion**.
 
-## Important notes for running Mend scans in STO
+:::info
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
-<!--
-
-### Docker-in-Docker requirements
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-<StoDinDRequirements />
-
--->
-
-### Root access requirements
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
-
-### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
-
-
-## Mend step settings for STO scans
+## Mend step settings
 
 The recommended workflow is to add a Mend step to a Security or Build stage and then configure it as described below. 
 
@@ -75,6 +59,10 @@ import StoSettingProductConfigName from './shared/step-palette/scan/config-name.
 
 
 <StoSettingProductConfigName />
+
+- **Default**: Uses the legacy Mend Unified Agent CLI with the V2 API. This configuration performs only **SCA (Software Composition Analysis)** for repositories and uses the legacy method for container image scanning.
+
+- **SAST, SCA, Container**: Uses the newer Mend CLI with the V3 API. This configuration supports **SAST**, **SCA** for repositories, and **Container** for container image scanning.
 
 
 ### Target
