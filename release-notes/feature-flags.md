@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-11-06T08:09:25
+date: 2025-11-11T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,7 +26,22 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: November 6, 2025
+#### Last updated: November 11, 2025
+
+## November 2025
+
+### Node.js SDK
+
+#### Version 1.8.10
+
+**New features and enhancements**:
+
+- Validate and convert `Target.identifier` to a string before sending to the metrics processor, improving data handling robustness. (FFM-12708)
+
+**Bug fixes**: 
+
+- Updated Axios dependency to resolve CVE-2025-58754. (FFM-12641)
+- Version bump and supporting updates related to Axios upgrade. (FFM-12641)
 
 ## September 2025
 
