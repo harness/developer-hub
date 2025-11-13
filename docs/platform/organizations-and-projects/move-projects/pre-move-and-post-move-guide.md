@@ -55,7 +55,12 @@ This list covers common issues but is not exhaustive. Additional organization-le
     - If an account-level resource group includes a project that is being moved, Harness automatically updates the resource group to reflect the new organization. No action is required from users.
 
 8. Audit logs:
-    - Existing audit logs remain in the source organization and are not moved with the project. Any links in these logs pointing to the moved project or older organization will become inaccessible.
+    - Account-level audit logs: No impact - all logs remain accessible.
+    - Organization-level audit logs: 
+        - Logs belonging to the project from before the move stay in the source organization and are not transferred.
+        - Links in old logs pointing to the moved project in the older organization will break.
+        - New audit logs for the moved project will appear in the newer organization.
+
 
 
 :::note Important note

@@ -28,7 +28,12 @@ This feature allows you to transfer a project from one organization to another w
 
 3. **Access control requires reconfiguration**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be recreated in the destination organization. All Project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users or service accounts that have access to the project might temporarily be unable to access it.
 
-4. **Audit logs**: Existing audit logs remain in the source organization and are not moved with the project. Any links in these logs pointing to the moved project or older organization will become inaccessible.
+4. **Audit logs**: 
+  - Account-level audit logs: No impact - all logs remain accessible.
+  - Organization-level audit logs: 
+    - Logs belonging to the project from before the move stay in the source organization and are not transferred.
+    - Links in old logs pointing to the moved project in the older organization will break.
+    - New audit logs for the moved project will appear in the newer organization.
 
 For detailed pre-move validation and post-move remediation steps, see the [Move a Project guide](./pre-move-and-post-move-guide.md).
 
