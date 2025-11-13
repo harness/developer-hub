@@ -115,6 +115,17 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## November 2025
 
+### Version 25.11.87202 <!--November 13,2025-->
+
+#### Fixed issues
+
+- Fixed an issue where multiple canary phases in the same pipeline created separate ReplicaSets; they now reuse the active release revision for seamless phased deployment. Enable the `CDS_K8S_CONTINUOUS_CANARY_DEPLOYMENT` feature flag and upgrade to delegate version 25.11.87202 or later. [CDS-115547]
+- Resolved an issue where, during GitX-based service creation, the response from ng-manager was not properly read, causing silent failures visible only in logs. [CDS-112220]
+
+#### New features and enhancements
+
+- Added [NDJSON format](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) support for GCP GCS streaming destinations. [PL-65730]
+
 ### Version 25.10.87102 <!--November 10,2025-->
 
 #### Fixed issues
