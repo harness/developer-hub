@@ -36,6 +36,16 @@ export const openfeatureSDKs = [
     img: '/provider-logos/nodejs-logo.png',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk',
   },
+  {
+    name: 'Python SDK',
+    img: '/provider-logos/python-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/python-sdk',
+  },
+  {
+    name: '.NET SDK',
+    img: '/provider-logos/dotnet-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/net-sdk',
+  },
 ];
 
 // Helper to chunk items into rows of 4

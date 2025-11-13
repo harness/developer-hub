@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-11-05T10:00:00
+date: 2025-11-12T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,7 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: November 5, 2025
+#### Last updated: November 12, 2025
 
 ## October 2025
 
@@ -85,6 +85,8 @@ Harness FME offers providers for Android, iOS, Web, Java, and Node.js SDKs. Your
 - [React](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/react-sdk)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/java-sdk)
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk)
+- [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/python-sdk)
+- [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/net-sdk)
 
 ### [New Feature] Warehouse Native Experimentation in Beta
 ----
