@@ -149,6 +149,12 @@ The following deprecated API endpoints are longer supported:
 
 ## November 2025
 
+### Version 1.116.x <!--November 13, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where the Test Connection button was incorrectly enabled after revisiting the step. Testing notification channels is now disabled when connectivity mode is set to Delegate or when the value is an expression, with tooltips added to explain these restrictions. [PL-66502]
+
 ### Version 1.115.x <!--November 07, 2025-->
 
 No enhancements or fixes were released in this cycle.
