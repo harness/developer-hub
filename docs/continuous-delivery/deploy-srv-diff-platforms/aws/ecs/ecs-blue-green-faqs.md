@@ -118,6 +118,27 @@ Stage target group selection is a manual input to support various traffic split 
 4. **Verify before deployment**: Check the AWS Console to confirm which target group currently has 100% traffic (this is your blue service)
 5. **Select the opposite**: Choose the other target group as the stage target group for the new deployment
 
+## Does Harness support Network Load Balancers (NLB) with multiple listeners for Blue/Green deployments?
+
+**Short answer**: No, multi-listener Blue/Green deployments with NLB are not currently supported.
+
+**Detailed explanation**:
+
+Harness supports Blue/Green deployments using Network Load Balancers (NLB), but **only with a single pair of stage/production listeners**. If your ECS service uses an NLB with multiple listeners (multiple ports exposed), the Blue/Green deployment strategy with dynamic target group switching will not work.
+
+**Current Harness limitation:**
+- Only one stage listener and one production listener pair is supported
+- Multi-listener configurations are not supported, even though ECS natively supports them
+
+**What this means:**
+- If your NLB exposes multiple ports (e.g., port 80, port 443, port 8080), Harness cannot perform automatic traffic shifting across all these listeners
+- Only a single listener/target group pair will be managed by Harness during Blue/Green deployments
+
+**Alternative approaches:**
+- Use Application Load Balancer (ALB) instead, which fully supports Blue/Green deployments with Harness
+- Use Rolling deployment strategy instead of Blue/Green if NLB with multiple listeners is required
+- Configure separate load balancers for each port/service if Blue/Green is required
+
 ## Related documentation
 
 - [ECS Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/traffic-shifting)

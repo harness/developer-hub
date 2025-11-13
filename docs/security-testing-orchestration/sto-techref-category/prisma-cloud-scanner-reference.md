@@ -67,22 +67,18 @@ import StoSettingProductConfigName from './shared/step-palette/scan/config-name.
 #### Type
 
 import StoSettingScanType from './shared/step-palette/scan/type.md';
-import StoSettingScanTypeRepo     from './shared/step-palette/target/type/repo.md';
 import StoSettingScanTypeCont from './shared/step-palette/target/type/image.md';
 
 
 <StoSettingScanType />
-<StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
 
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectRepo from './shared/step-palette/target/auto-detect/code-repo.md';
 import StoSettingScanTypeAutodetectContainer from './shared/step-palette/target/auto-detect/container-image.md';
 import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
-<StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
 <StoSettingScanTypeAutodetectNote/>
 

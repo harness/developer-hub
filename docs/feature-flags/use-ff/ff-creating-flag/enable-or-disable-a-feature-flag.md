@@ -14,6 +14,15 @@ redirect_from:
   - /docs/feature-flags/ff-creating-flag/enable-or-disable-a-feature-flag
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 This topic describes how to turn a Feature Flag `on` or `off`. Flags you create are available in all environments, but the state of the flag is independent, which means the same flag can be turned on in `Environment_A` and turned off in `Environment_B`.
 
 Before enabling or disabling a flag, consider the following:

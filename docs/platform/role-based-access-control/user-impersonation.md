@@ -24,7 +24,7 @@ By impersonating a user, Account admins can see exactly what that user sees and 
 
 - A user must have the [Account Admin role](/docs/platform/role-based-access-control/add-manage-roles/#platform-roles) to impersonate other users.
 
-### How to Impersonate a User
+### How to impersonate a user
 
 1. Navigate to **Account Settings**, **Access Control** and select **Users**.
 
@@ -49,6 +49,12 @@ By impersonating a user, Account admins can see exactly what that user sees and 
 6. When the session ends, a prompt appears giving you the option to either **Restart Session** or **Quit**.
 
     ![end-impersonate-session](./static/end-impersonate.png)
+
+### View impersonated user info 
+
+You can view the impersonated user info in the pipeline **execution history**. This allows you to **identify the impersonator and the impersonated user**.
+
+![impersonated-execution-user-info](./static/impersonated-user.png)
 
 ### Impersonation session audit events
 

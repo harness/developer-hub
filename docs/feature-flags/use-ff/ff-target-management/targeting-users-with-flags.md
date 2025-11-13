@@ -10,6 +10,15 @@ redirect_from:
   - /docs/feature-flags/ff-using-flags/ff-target-management/target-users-with-flags
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 Feature Flag targeting allows you to serve a particular Variation of a flag to specific target when the flag is enabled. Targets are anything that can be uniquely identified, we refer to these Targets as users, but they could also be apps, machines, resources, emails etc. 
 
 For example:

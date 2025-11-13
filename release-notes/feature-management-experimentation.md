@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-10-31T10:00:00
+date: 2025-11-12T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,7 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: October 31, 2025
+#### Last updated: November 12, 2025
 
 ## October 2025
 
@@ -73,15 +73,20 @@ This feature is valuable for organizations that want to:
 - Reduce vendor lock-in by enabling flexible provider implementations
 - Integrate feature flags across multiple languages and platforms
 
-Harness FME offers providers for Android, Web, Java, and Node.js SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
+Harness FME offers providers for Android, iOS, Web, Java, and Node.js SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
 
 #### Related documentation
 
 - [OpenFeature Providers](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature)
 - [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/android-sdk)
+- [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/ios-sdk)
 - [Web SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/web-sdk)
+- [Angular](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/angular-sdk)
+- [React](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/react-sdk)
 - [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/java-sdk)
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk)
+- [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/python-sdk)
+- [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/net-sdk)
 
 ### [New Feature] Warehouse Native Experimentation in Beta
 ----

@@ -9,6 +9,15 @@ redirect_from:
   - /docs/feature-flags/connect-monitored-service
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 You may want to monitor your services to be notified when there are issues related to Feature Flag changes. To do this, you can connect a Feature Flag to a monitored service. A monitored service is a combination of a Service and Environment that Harness [Service Reliability Management (SRM)](/docs/service-reliability-management) monitors for changes, events, and health trends. Connecting a Feature Flag to the service lets you analyze how service health is impacted by a feature. 
 
 For example, let's say you use SRM to monitor some services and to correlate change events to service health.

@@ -9,3 +9,4 @@ The production environment requires the following resources.
 | FF | 3 | 3 | 6 | 0 |
 | Chaos | 15 | 12 | 24 | 50 |
 | SCS | 2 | 4 | 8 | 0 |
+| CODE | 8 | 8 | 8 | 768 | 

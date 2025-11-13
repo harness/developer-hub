@@ -199,7 +199,7 @@ spec:
   system: project-x
 ```
 
-Read more on how to [register a Software Component in the Catalog](/docs/internal-developer-portal/get-started/catalog-2o.md).
+Read more on how to [register a Software Component in the Catalog](/docs/internal-developer-portal/get-started).
 
 ## Resize a card in Overview page
 

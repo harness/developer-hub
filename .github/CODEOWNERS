@@ -115,7 +115,6 @@ static/  @rohanmaharjan100 @wei-harness
 # Chaos FAQs
 /docs/faqs/chaos-engineering-faqs @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 /docs/faqs/static @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
-/kb/chaos-engineering/chaos-engineering-faq @ksatchit @umamukkara @Ashutosh-Bhadauriya
 
 # Platform Docs
 /docs/platform/ @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
@@ -219,15 +218,3 @@ static/  @rohanmaharjan100 @wei-harness
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness
-
-# Knowledge Base ###
-
-# Overall KB
-/kb/ @deepanshuHarness @jimin-harness
-/src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness
-
-#Armory KB
-/kb/armory @jimin-harness @deepanshuHarness
-
-#Reference Architectures
-/kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness

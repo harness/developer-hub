@@ -147,6 +147,12 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## November 2025
+
+### Version 1.115.x <!--November 07, 2025-->
+
+No enhancements or fixes were released in this cycle.
+
 ## October 2025 
 
 ### Version 1.114.x <!--October 28, 2025-->
@@ -158,6 +164,10 @@ The following deprecated API endpoints are longer supported:
 #### Fixed issues
 
 - Fixed access control enforcement for the delegate installation command API. Users with view-only permissions can no longer access the command. [PL-65912]
+
+### Version 1.113.x <!--October 21, 2025-->
+
+No enhancements or fixes were released in this cycle.
 
 ### Version 1.112.x <!--October 14, 2025-->
 

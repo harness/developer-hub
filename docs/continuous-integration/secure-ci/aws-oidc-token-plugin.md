@@ -23,12 +23,12 @@ For more on configuring AWS for OIDC, refer to [AWS OIDC setup](https://docs.aws
     name: assume-role-with-oidc
     identifier: assume_role_with_oidc
     spec:
-      image: harnesscommunity/drone-aws-oidc
+      image: plugins/aws-oidc
       settings:
-        role_arn: arn:aws:iam::123456789012:role/harness-ci-role
+        iamRoleArn: arn:aws:iam::123456789012:role/harness-ci-role
         role_session_name: foo # defaults to harness-aws-oidc
         duration: 3600 # in seconds
-```       
+```
 
 This step will use the injected OIDC token from Harness to authenticate with AWS and assume the specified role.
 
@@ -43,12 +43,12 @@ The plugin automatically sets the following environment variables for use in sub
 ## Inputs
 
 | Key               | Required | Description                                                                 |
-|--------------------|----------|-----------------------------------------------------------------------------|
-| `iamRoleArn`       | ✅ Yes   | The ARN of the AWS IAM role to assume via OIDC.                             |
-| `oidcTokenId`      | ✅ Yes   | The OIDC token to exchange for temporary AWS credentials.                   |
-| `roleSessionName`  | ❌ No    | Optional name for the assumed role session. Defaults to `harness-aws-oidc`. |
-| `duration`         | ❌ No    | Optional duration (in seconds) for temporary credentials.                   |
-| `logLevel`         | ❌ No    | Optional log level (e.g. `debug`, `info`, `warn`).                          |
+| ----------------- | -------- | --------------------------------------------------------------------------- |
+| `iamRoleArn`      | ✅ Yes   | The ARN of the AWS IAM role to assume via OIDC.                             |
+| `oidcTokenId`     | ✅ Yes   | The OIDC token to exchange for temporary AWS credentials.                   |
+| `roleSessionName` | ❌ No    | Optional name for the assumed role session. Defaults to `harness-aws-oidc`. |
+| `duration`        | ❌ No    | Optional duration (in seconds) for temporary credentials.                   |
+| `logLevel`        | ❌ No    | Optional log level (e.g. `debug`, `info`, `warn`).                          |
 
 ## Follow-up Usage
 
@@ -73,6 +73,7 @@ Example:
         AWS_SESSION_TOKEN: <+steps.assume_role_with_oidc.output.outputVariables.AWS_SESSION_TOKEN>
       command: aws s3 ls
 ```
+
 ## Related Links
 
 [AWS OIDC plugin GitHub Repo](https://github.com/harness-community/drone-aws-oidc)

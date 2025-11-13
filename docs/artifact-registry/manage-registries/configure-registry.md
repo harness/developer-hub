@@ -44,7 +44,7 @@ Policy Sets allow you to define a collection of rules that automatically evaluat
 When an artifact violates a policy, it can be automatically quarantined to prevent it from being used in pipelines or downloaded by users. You can learn more about managing manually quarantined artifacts in the [Artifact Quarantine](/docs/artifact-registry/manage-artifacts/artifact-management.md#quarantine-an-artifact) section.
 
 
-### Establish artifact filtering rules
+### Artifact Filtering Rules
 
 Use these rules to establish which artifacts are allowed or blocked entry into your registry.
 
@@ -67,22 +67,41 @@ This will allow in any artifact that ends with `-prod` and block any artifact th
 
 ## Advanced settings
 
-### Set an upstream proxy
+### Set proxy for registry
 
-After [creating an upstream proxy](/docs/artifact-registry/manage-registries/create-registry#create-an-upstream-proxy), you can set it in your artifact registry. To do so, follow these steps:
+You can configure your artifact registry to fetch artifacts from public upstream registries as well as other configured artifact registries. Harness supports two types of proxy configurations:
+
+- **Upstream Proxy**: Connect to external registries (e.g., Docker Hub, Maven Central). Learn how to [create an upstream proxy](/docs/artifact-registry/manage-registries/upstream-proxy).
+- **Artifact Registry**: Aggregate multiple Harness artifact registries within your account into a single access point.
+
+#### Configure proxy settings
+
+To set up either an upstream proxy or aggregate multiple registries into a single access point:
 
 1. In your registry, select **Configuration**.
 2. Open the **Advanced (Optional)** dropdown menu. 
 3. Select **Configure Upstream**.
-4. Under **Available upstream proxies**, you will see a list of available upstream proxies. Select as many as you would like. 
-5. Under **Selected proxies**, you will see an ordered list of selected proxies for this registry. When the registry receives a request, the proxies will be *queried in order* from top to bottom.
+4. Under **Available upstream proxies**, you will see a list that includes:
+   - Upstream proxy (indicated by a proxy icon)
+   - Artifact Registry (indicated by a registry icon)
+5. Select the proxies you want to use. You can select multiple proxies of either type.
+6. Under **Selected proxies**, arrange the order of proxies. When the registry receives a request, it will query the proxies in order from top to bottom.
 
-![](./static/set-upstream-proxy-1.png)
+![](./static/set-upstream-proxy.png)
 
-*In the example above, when the registry is asked for an artifact, it will query the base registry, then `docs-docker-proxy`, then `custom-proxy`.*
+*In the example above, the registry has three selected proxies. When the registry is asked for an artifact, it will query the base registry first, then `docker-up-15`, followed by the two local registries in order.*
 
-6. Click **Save** in the top right corner. 
+7. Click **Save** in the top right corner.
 
+
+
+:::note Feature flag requirement
+The feature to add Artifact Registry to the Upstream Proxy list is currently behind the feature flag `HAR_SUPPORT_LOCAL_REGISTRY_AS_UPSTREAM_PROXY`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+:::info Important
+If you are adding an Artifact Registry to the Upstream Proxy list, ensure that there are no upstream proxies configured within your artifact registry.
+:::
 
 ### Cleanup Policies
 

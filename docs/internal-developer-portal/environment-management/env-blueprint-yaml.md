@@ -249,6 +249,74 @@ entities:
 
 ---
 
+### Configure TTL (time-to-live)
+
+You can configure TTL for environments in the environment blueprint. Defining a TTL specifies how long an environment can run before it is **automatically paused**. This helps control costs and prevents lingering environments.
+
+Based on the TTL specification, there are two environment types: **Ephemeral** and **Long-lived**. Go to [Types of Environments](/docs/internal-developer-portal/environment-management/environments.md#types-of-environments) to learn more.
+
+#### Set TTL in an Environment Blueprint
+
+To define a TTL, add the `spec.ttl` field to the environment blueprint YAML. The `ttl` field is specified as follows:
+
+**1. TTL specification**
+
+```yaml
+spec:
+  ttl:
+    kind: <ttl-kind>
+    default: <default-ttl-duration>   # Optional
+    max: <max-ttl-duration>           # Optional
+```
+
+Durations support hours, minutes, and seconds (e.g., `1h`, `30m`, `1h30m`).
+
+**2. TTL kinds**
+
+* **`fixed`** — A fixed, preconfigured duration in the blueprint. Users **cannot** change it when creating an environment.
+* **`custom`** — A user-configurable duration chosen at environment creation time.
+* **`none`** — No TTL. The environment is **long-lived** and is only paused/stopped when a user does so explicitly.
+
+**3. TTL parameters**
+
+* **`default`** — The default TTL duration for the blueprint (optional).
+* **`max`** — The maximum allowed TTL duration for the blueprint (optional).
+
+**4. Examples**
+
+Fixed 1-hour TTL; the environment pauses automatically after 1 hour:
+
+```yaml
+spec:
+  ttl:
+    kind: fixed
+    default: 1h
+    max: 24h
+```
+
+User-defined TTL with a default of 3 hours (if no input is provided) and a 24-hour cap:
+
+```yaml
+spec:
+  ttl:
+    kind: custom
+    default: 3h
+    max: 24h
+```
+
+Long-lived environment (no automatic pause):
+
+```yaml
+spec:
+  ttl:
+    kind: none
+```
+
+**Note:** When you update an environment’s configuration, the environment is **re-provisioned** and the TTL is **reset**. The new TTL countdown starts from the time of the update.
+
+---
+
+
 ### YAML Templating System
 
 Environment Blueprints use a powerful templating system for dynamic configuration:

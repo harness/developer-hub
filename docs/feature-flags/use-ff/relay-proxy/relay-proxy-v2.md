@@ -7,6 +7,15 @@ redirect_from:
   - /docs/feature-flags/use-ff/relay-proxy/relay_proxy_v2
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 This topic describes the Harness Relay Proxy V2 and how to use it with Feature Flags (FF).
 
 :::info note
@@ -45,7 +54,7 @@ There are various modes for both versions of Relay Proxy. The Relay Proxy V2, it
  - A connection to Harness SaaS.
  - Connectivity to a Redis cache.
 
-To learn more about using [Caching Options in the Harness Relay Proxy](./cache_options.md), you can find more information in the Harness docs including common FAQs about the caching options. 
+To learn more about using [Caching Options in the Harness Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/cache-options), you can find more information in the Harness docs including common FAQs about the caching options. 
 
 :::info note
 To learn more about the supported modes for **Relay Proxy Version 1**, please go to the [Relay Proxy V1](./relay-proxy.md) page.

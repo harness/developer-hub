@@ -4,6 +4,15 @@ description: Using Webhook for Feature Flag Implementation with Harness
 sidebar_position: 9
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 Webhooks are automated, real-time communication mechanisms that allow applications to send instant notifications or data to other systems when specific events occur. In the context of Harness Feature Flags, webhooks play a crucial role in enhancing the `gitSync` functionality. They act as a bridge, enabling near-instantaneous synchronization between your Git repository and the Harness platform. 
 
 By leveraging webhooks, Harness can now respond to Git updates almost immediately, ensuring that feature flag configurations are always up-to-date and aligned with the latest code changes. 

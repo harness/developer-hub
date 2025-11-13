@@ -16,8 +16,8 @@ import CustomCAcert from '/docs/continuous-integration/shared/windows-custom-ca-
 
 :::warning
 
-This feature will be deprecated on Jan 31, 2026 and replaced with an improved VM cluster manager.
-We’ll share more information closer to launch, and customers will be given ample time and support to transition before the deprecation takes effect.
+This feature will be deprecated on April 30, 2026 and replaced with an improved VM cluster manager.
+We'll share more information closer to launch, and customers will be given ample time and support to transition before the deprecation takes effect.
 If you have any questions, please contact your account representative or [Harness Support](mailto:support@harness.io).
 
 :::

@@ -2,44 +2,66 @@ import { Horizon } from "./roadmapData";
 
 export const FmeData: Horizon = {
   Now: {
-    description: "Q3 2025, Aug-Oct 2025",
+    description: "Q4 2025, Nov-Jan 2026",
     feature: [
       {
         tag: [{ value: "Better Together" }],
         title: "Split integration into Harness",
         description:
-          "Incorporate Split as a fully native Harness module. Login, API scoping, and RBAC enhancements delivered by migration. Existing customers migrated.",
-      },
-      {
-        tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
-        title: "Flag impressions properties bag",
-        description: "Decorate impression records with properties to use in downstream processing. Support for the following SDKs and Split Proxy / Synchronizer is coming this quarter: Go, PHP Thin Client (via SplitD), .NET, and Flutter.",
+          "Support for additional Harness environments, including Prod 3.",
       },
       {
         tag: [{ value: "SDK" }],
         title: "OpenFeature provider updates",
-        description: "Ongoing support for OpenFeature providers in Java, Node.js, and Browser SDKs.",
+        description:
+          "Ongoing support for OpenFeature providers in .NET, Python, React, and Angular.",
       },
-      {
-        tag: [{ value: "SDK" }],
-        title: "Harness Forward proxy for FME",
-        description: "Centralize traffic going outside of a customer’s cloud. Unlike the current Split Proxy, it does not require environment-specific configuration.",
-      },
-      {
-        tag: [{ value: "Experimentation" }],
-        title: "Experiment entry event filter",
-        description: "Define an entry event at the experiment level to filter exposures, ensuring sample sizes only reflect users who were exposed to your experiment.",
-      },
-    ],
-  },
-  Next: {
-    description: "Q4 2025, Nov-Jan 2026",
-    feature: [
       {
         tag: [{ value: "Better Together" }],
         title: "Granular permissions in RBAC",
         description:
           "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled, Split integration into Harness, Part 2.",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Automated release pipelines",
+        description: "Leverage Harness pipelines for feature flags to automate release processes.",
+      },
+      {
+        tag: [{ value: "Feature Management" }],
+        title: "Flag archiving",
+        description: "Archive feature flags to streamline flag management and console visualization.",
+      },
+      {
+        tag: [{ value: "Monitoring" }],
+        title: "Alert webhook",
+        description: "Automate downstream processes based on FME data with alert webhooks.",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Warehouse-native experimentation",
+        description: "Experiment directly on impressions & events in your data warehouse.",
+      },
+    ],
+  },
+  Next: {
+    description: "Q1 2026, Feb-Apr 2026",
+    feature: [
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Split integration into Harness",
+        description:
+          "Support for additional Harness environments, including Prod 0, EU, and Single Tenancy.",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Automated release pipelines continued",
+        description: "Leverage Harness pipelines for segment changes to automate release processes.",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Policy as code",
+        description: "Leverage Harness policy as code to enforce governance policies across your feature management lifecycle.",
       },
       {
         tag: [{ value: "SDK" }],
@@ -53,24 +75,26 @@ export const FmeData: Horizon = {
           "Top level flag dependencies enforced (new) as well as within rules (existing).",
       },
       {
-        tag: [{ value: "Experimentation" }],
-        title: "Warehouse-native experimentation",
-        description: "Experiment directly on impressions & events in your data warehouse.",
+        tag: [{value: "Experimentation"}],
+        title: "Additional data warehouse support",
+        description:
+          "Extend Warehouse Native Experimentation to support Trino and BigQuery.",
       },
       {
-        tag: [{ value: "Better Together" }],
-        title: "Automated release pipelines",
-        description: "Leverage Harness pipelines for feature flags to automate release processes.",
+        tag: [{value: "Experimentation"}],
+        title: "CUPED",
+        description:
+          "Introduce CUPED to leverage pre-experiment data to reduce variance.",
       },
     ],
   },
   Later: {
-    description: "Q1 2026+, Feb 2026 & beyond",
+    description: "Q2 2026+, May 2026 & beyond",
     feature: [
       {
         tag: [{ value: "Better Together" }],
         title: "Data checks in automated release pipelines",
-        description: "Add built-in data checks to increase safety for feature flag driven releases.",
+        description: "Add built-in data checks to increase safety for feature flag-driven releases.",
       },
       {
         tag: [{ value: "SDK" }],
@@ -80,13 +104,49 @@ export const FmeData: Horizon = {
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
         title: "Expanded guardrail metric insights",
-        description: "Make data-driven decisions at every stage of your rollout, even if it doesn’t meet the requirements for statistical comparison.",
+        description: "Make data-driven decisions at every stage of your rollout, even if it doesn't meet the requirements for statistical comparison.",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Config management",
+        description: "Enterprise cloud config management, leveraging FME's real-time flag delivery infrastructure.",
       },
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
+        title: "Flag impressions properties bag",
+        description: "Decorate impression records with properties to use in downstream processing. Support for the following SDKs and Split Proxy / Synchronizer is coming this quarter: Go, PHP Thin Client (via SplitD), .NET, and Flutter.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-append-impression-properties",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "OpenFeature provider updates",
+        description: "Ongoing support for OpenFeature providers in Java, Node.js, and Browser SDKs.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-openfeature-providers",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "Harness Forward proxy for FME",
+        description: "Centralize traffic going outside of a customer's cloud. Unlike the current Split Proxy, it does not require environment-specific configuration.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-harness-proxy",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Experiment entry event filter",
+        description: "Define an entry event at the experiment level to filter exposures, ensuring sample sizes only reflect users who were exposed to your experiment.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiment-entry-event-filter",
+      },
+      {
+        tag: [{value: "Targeting"}],
+        title: "Fallback treatments",
+        description:
+          "A configuration option that lets you define a default treatment and optional configuration to be returned instead of the standard control.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-fallback-treatments",
+      },
       {
         tag: [{value: "Targeting"}, {value: "Better Together"}],
         title: "Rule-based segments",

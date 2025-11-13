@@ -84,9 +84,9 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # CCM Docs
 
 /docs/cloud-cost-management/ jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io jyoti.arora@harness.io rajarshee.chatterjee@harness.io
-/release-notes/cloud-cost-management.md jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io
-/src/components/Roadmap/data/ccmData.ts jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io
-/src/components/Docs/data/cloudCostManagementData.ts jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io
+/release-notes/cloud-cost-management.md jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io rajarshee.chatterjee@harness.io
+/src/components/Roadmap/data/ccmData.ts jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io rajarshee.chatterjee@harness.io
+/src/components/Docs/data/cloudCostManagementData.ts jyoti.bisht@harness.io karan.shetty@harness.io joseph.lopez@harness.io rajarshee.chatterjee@harness.io
 /docs/cloud-cost-management/kb-reference-architecture/ richard.black@harness.io riley.snyder@harness.io rajeswari.koppala@harness.io christopher.suran@harness.io venkat.padmanabhan@harness.io brandon.welu@harness.io jeremy.goodrum@harness.io
 
 # FirstGen CCM Docs
@@ -147,11 +147,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/platform/harness-aida/ dewan.ahmed@harness.io prateek.mittal@harness.io rohan.gupta@harness.iovikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io
 
 # IDP Docs
-/docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
-/release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
-/release-notes/static/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
-/src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
-/src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
+/docs/internal-developer-portal/ khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/release-notes/internal-developer-portal.md khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/release-notes/static/internal-developer-portal/ khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/src/components/Roadmap/data/idpData.ts khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/src/components/Docs/data/internalDeveloperPortal.ts khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
 
 # SCS Docs
 /docs/software-supply-chain-assurance/  lavakush.biyani@harness.io pranay.shah@harness.io teja.kummarikuntla@harness.io sahil.jugiani@harness.io
@@ -160,10 +160,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx  lavakush.biyani@harness.io pranay.shah@harness.io teja.kummarikuntla@harness.io sahil.jugiani@harness.io
 
 # IACM Docs
-/docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io
-/release-notes/infrastructure-as-code-management.md richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io
-/src/components/Roadmap/data/iacmData.ts richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io
-/src/components/Docs/data/iacmData.ts richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io
+/docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
+/release-notes/infrastructure-as-code-management.md richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
+/src/components/Roadmap/data/iacmData.ts richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
+/src/components/Docs/data/iacmData.ts richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
 
 # FF Classic Docs
 /docs/feature-flags/ austin.lai@harness.io david.karow@harness.io conor.murray@harness.io james.cox@harness.io
@@ -172,17 +172,17 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/featureFlagsData.ts austin.lai@harness.io david.karow@harness.io
 
 # FME Docs
-/src/components/Roadmap/data/fmeData.ts austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io 
-/docs/feature-management-experimentation/ austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io richard.black@harness.io mauro.sanz@harness.io
+/src/components/Roadmap/data/fmeData.ts austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io 
+/docs/feature-management-experimentation/ austin.lai@harness.io trevor.stuart@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io richard.black@harness.io mauro.sanz@harness.io
 /docs/feature-management-experimentation/20-sdks-and-infrastructure/ austin.lai@harness.io nicolas.zelaya@harness.io mauro.sanz@harness.io emmanuel.zamora@harness.io gaston.thea@harness.io emiliano.sanchez@harness.io nadia.mayor@harness.io bilal.al-shahwany@harness.io martin.cardozo@harness.io
-/release-notes/feature-management-experimentation.md austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io  
-/release-notes/static/fme/ austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io 
+/release-notes/feature-management-experimentation.md austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io trevor.stuart@harness.io  
+/release-notes/static/fme/ austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io trevor.stuart@harness.io 
 
 # SEI Docs
-/docs/software-engineering-insights/ austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
-/release-notes/software-engineering-insights.md austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
-/src/components/Roadmap/data/seiData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
-/src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
+/docs/software-engineering-insights/ austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
+/release-notes/software-engineering-insights.md austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
+/src/components/Roadmap/data/seiData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
+/src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
 
 # DB DevOps Docs
 /docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
@@ -218,17 +218,8 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness
 
-# Knowledge Base ###
-
-# Overall KB
-/kb/ deepanshu.grover@harness.io jimin.kim@harness.io kinnon.yee@harness.io jeremy.nelson@harness.io amit.jha@harness.io prashant.kumar@harness.io mayuresh.kshirsagar@harness.io
-/src/components/KnowledgeBase/data/ deepanshu.grover@harness.io jimin.kim@harness.io kinnon.yee@harness.io jeremy.nelson@harness.io amit.jha@harness.io prashant.kumar@harness.io mayuresh.kshirsagar@harness.io
-
-#Armory KB
-/kb/armory deepanshu.grover@harness.io jimin.kim@harness.io kinnon.yee@harness.io jeremy.nelson@harness.io amit.jha@harness.io prashant.kumar@harness.io mayuresh.kshirsagar@harness.io
-
-#Reference Architectures
-/kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness
-
 # FF GA Feed
 /release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io
+
+# Harness Solutions Factory
+/docs/harness-solutions-factory jeremy.goodrum@harness.io ashley.kim@harness.io aditya.kashyap@harness.io riley.snyder@harness.io

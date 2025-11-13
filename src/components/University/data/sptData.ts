@@ -125,4 +125,16 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
 
+  {
+    title: "Traceable by Harness Platform Fundamentals",
+    module: MODULES.tbh,
+    type: type.user,
+    description:
+      "Self-paced video course introducing the Traceable by Harness Platform.",
+    version: "Traceable by Harness Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-traceable-platform-fundamentals",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+
 ];

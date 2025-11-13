@@ -93,7 +93,9 @@ The following tables outline the minute multipliers for each model as of August 
 |             | medium                  | 8         | 5                     |
 |             | large                   | 16        | 10                    |
 |             | xlarge                  | 30        | 20                    |
-| **Windows** | small                   | 4         | 8                     |
+| **Windows** | small                   | 4         | 6                     |
+|             | medium                  | 8         | 12                    |
+|             | large                   | 16        | 24                    |
 | **macOS**   | small                   | 6         | 60                    |
 
 

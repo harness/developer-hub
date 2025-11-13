@@ -495,6 +495,34 @@ In the **Execution Rollback** section you will see the **Web App Rollback** step
 
 For details on rollbacks, see [Notes](#notes) below.
 
+## Health check polling for steady state verification
+
+Harness now supports health check status polling to verify deployment success for Azure Web Apps. This provides a more reliable way to confirm that your application is running correctly after deployment.
+
+**How it works**
+
+When health check is enabled on your Azure Web App, Harness monitors the health status of your application instances during deployment. The deployment is considered successful when all instances report a healthy status, providing confidence that your application is ready to serve traffic.
+
+This verification works alongside existing deployment monitoring to ensure faster and more accurate deployment validation.
+
+:::note
+
+This feature is behind the feature flag `CDS_SUPPORT_AZURE_WEBAPP_HEALTH_CHECK_FOR_STEADY_STATE` and requires a minimum delegate version of `25.10.872xx`.
+
+:::
+
+**Prerequisites**
+
+To use health check polling, you must enable the Health Check feature on your Azure Web App. In the Azure portal, navigate to your Web App's **Monitoring** section and select **Health check**. Configure a health probe path (for example, `/`) and enable the health check toggle.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/azure-health-check-config.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
+
+If health check is not configured on your Web App, Harness will continue using only container log polling for steady state verification.
+
+This feature requires no changes to your pipeline configuration or step settings—it works automatically when the feature flag is enabled and health check is configured on your Azure Web App.
+
 ## Notes
 
 ### Important notes

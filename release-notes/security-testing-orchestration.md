@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2025-10-27T10:00
+date: 2025-11-11T10:00
 sidebar_position: 13
 ---
 
@@ -21,6 +21,33 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## November 2025
+
+### Version 1.165.0
+
+<!-- 2025-11-11 -->
+
+#### New Features and Enhancements
+
+##### Base Image Detection 
+Base Image Detection is now available in **Early Access**. This feature helps identify vulnerabilities originating from the base image layer versus the application layer. It is currently behind feature flags (`STO_BASE_IMAGE`, `STO_BASE_IMAGE_DETECTION`). Refer to the [Base Image Detection documentation](/docs/security-testing-orchestration/set-up-scans/container-scanning/base-image-vulnerabilites/base-image-detection) or watch the [video guide](https://www.youtube.com/watch?v=hwMDORuctaQ) to learn how to configure and use this feature.  
+
+<DocVideo src="https://www.youtube.com/watch?v=hwMDORuctaQ" />
+
+##### **Mend** CLI Upgrade with new Scan Configs 
+**Mend** now supports the **V3 API** and the latest CLI version. You can use the new scan configurations **SAST**, **SCA**, and **Container** for scanning code repositories and container images (STO-9858). 
+
+<DocImage path={require('./static/sto-mend-upgrade.png')} width="50%" height="50%" title="Click to view full size image" />
+
+#### Fixed Issues
+
+- Fixed an issue where the **raw issue count** displayed in the **Vulnerabilities** tab was incorrect. Previously, the deduplication percentage and count did not align with the raw issue numbers shown by scanners (e.g., deduplicating from 185 instead of 823). The deduplication logic now correctly reflects the number of raw issues extracted by the scanner (STO-9980, ZD-94770, ZD-94772).  
+
+- Fixed an issue in the **GitHub Advanced Security** step where scans running in **Extraction** mode failed with the error: `Exited with message: The scan with ID <example_id> has failed`.  This issue is now resolved (STO-10065).  
+
+- Updated the **CSV export** from scan results:  The column header **Execution Id** is now renamed to **Pipeline Execution ID** for better clarity (STO-9876).  
+
+
 ## October 2025
 
 ### Version 1.164.0

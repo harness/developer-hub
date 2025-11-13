@@ -112,6 +112,10 @@ When Git Experience is enabled for your pipeline, the **Pipeline Input** tab inc
 
 This default is applicable *only* if the trigger is webhook-based. For all other trigger types, you need to enter a specific branch name.
 
+#### Pipeline clone information and trigger configuration
+
+By default, the pipeline derives clone information from the input set configuration. If the branch is defined as `<+trigger.branch>`, the pipeline uses the clone information from the trigger. You can use `<+trigger.sourceBranch>` in the input set to retain the default behavior of using the branch from the input set regardless of the trigger type.
+
 #### Create input set before creating trigger
 
 If you want to use an input set as part of a trigger, create and sync the input set before creating the trigger.

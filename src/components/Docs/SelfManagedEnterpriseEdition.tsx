@@ -19,13 +19,6 @@ export default function SelfManagedEnterpriseEdition() {
             <h1>Self-Managed Enterprise Edition</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
             <Link href="/release-notes/self-managed-enterprise-edition">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}

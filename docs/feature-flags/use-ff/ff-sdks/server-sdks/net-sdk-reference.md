@@ -14,6 +14,14 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Closeclient from '../shared/close-sdk-client.md'
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
 
 :::warning 
 In Version 1.1.4 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:

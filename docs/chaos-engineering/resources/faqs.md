@@ -240,8 +240,8 @@ Go to [prerequisites](/docs/chaos-engineering/on-premise-vs-saas) to fulfill the
 **OR**
 
 If you want a head start to your journey with Harness CE, you can onboard Harness CE in two ways:
-- [Automated onboarding](/docs/chaos-engineering/get-started); and
-- [Guided onboarding](/docs/chaos-engineering/get-started).
+- [Automated onboarding](/docs/chaos-engineering/quickstart); and
+- [Guided onboarding](/docs/chaos-engineering/quickstart).
 </details>
 
 <details>

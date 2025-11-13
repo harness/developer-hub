@@ -934,5 +934,17 @@
     "description": "Flag to follow delegate selector precedence in GitOps steps",
     "gaStartDate": "2025-10-31",
     "module": "GitOps"
+  },
+  {
+    "flagKey": "GITOPS_APPSYNCS_ON_SERVICE_DASHBOARD",
+    "description": "FF to enable GitOps AppSyncs dashboards on Service Dashboard page",
+    "gaStartDate": "2025-11-05",
+    "module": "GitOps"
+  },
+  {
+    "flagKey": "STO_SONARQUBE_CODE_SMELLS",
+    "description": "Enable proper severity mapping for Code Smells and Bug Smells from SonarQube instead of using info as the default severity",
+    "gaStartDate": "2025-11-11",
+    "module": "Security Test Orchestration"
   }
 ]

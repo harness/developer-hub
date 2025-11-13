@@ -24,6 +24,15 @@ import git_6 from './static/4-git-blue-circle.png'
 import git_7 from './static/5-manage-featureflags-in-git-repos-09.png' 
 import git_8 from './static/8-git-off.png' 
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 :::warning
  There is a known issue with this feature. When you turn on a Feature Flag, some target rules may be reordered in your Git repo. This doesn't affect the functionality of your Feature Flag or targets and we are working to fix this issue as soon as possible.
 :::

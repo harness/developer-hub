@@ -1942,6 +1942,7 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 /* Exceptions: links that should not display icons or spacing */
 .navbar .dropdown__link[href*="/docs/open-source"]::before,
 .navbar .dropdown__link[href*="/docs/self-managed-enterprise-edition"]::before,
+.navbar .dropdown__link[href*="/docs/harness-solutions-factory"]::before,
 .navbar .dropdown__link[href*="/docs/faqs"]::before,
 .navbar .dropdown__link[href*="/docs/troubleshooting"]::before,
 .navbar .dropdown__link[href*="/docs/harness-cloud-operations"]::before

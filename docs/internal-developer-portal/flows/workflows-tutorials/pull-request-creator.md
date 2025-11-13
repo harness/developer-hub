@@ -35,7 +35,7 @@ The workflow enables developers to:
 Before starting, ensure you meet the following requirements: 
 - **Harness IDP is enabled** for your account. Refer to this guide for setup instructions.
 - You have [**IDP Admin Role access**](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles/?_gl=1*1h45u39*_gcl_au*MTM1MTQwNTM4MS4xNzM5ODU0OTEy*_ga*NTc0NTQ1NDY5LjE3Mzk4NTQ5MTI.*_ga_46758J5H8P*MTc0MDM5NTIwOS44LjEuMTc0MDM5NTIxMC41OS4wLjA.#1-idp-admin) or a role with full access to IDP resources.
-- [**Git Integration**](/docs/internal-developer-portal/get-started/setup-git-integration.md#connector-setup) is configured and setup for your Harness IDP account.
+- [**Git Integration**](/docs/internal-developer-portal/get-started) is configured and setup for your Harness IDP account.
 - A [**GitHub token**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) is stored as a secret in Harness IDP for API authentication. You can add the token as a secret directly while creating a [Backend Proxy](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator#defining-a-backend-proxy).
 
 ## Creating the Workflow

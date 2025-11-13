@@ -14,14 +14,6 @@ export default function Traceable() {
             <img width={84} src={`${baseUrl}img/icon_tbh.svg`} />
             <h1>Traceable By Harness </h1>
           </div>
-          <div className={styles.btnContainer}>
-            <Link href="/kb">
-              <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
-          </div>
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>

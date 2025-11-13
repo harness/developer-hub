@@ -269,11 +269,35 @@ import TabItem from '@theme/TabItem';
 
 </TabItem>
 
+<TabItem value="iOS" label="iOS SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2023-10-31  | Actively supported  |
+
+</TabItem>
+
 <TabItem value="web" label="Web SDK">
 
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
 | `1.0.0`   | 2025-09-30  | Actively supported  |
+
+</TabItem>
+
+<TabItem value="Angular" label="Angular">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2023-09-30  | Actively supported  |
+
+</TabItem>
+
+<TabItem value="React" label="React">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2023-09-30  | Actively supported  |
 
 </TabItem>
 
@@ -290,6 +314,22 @@ import TabItem from '@theme/TabItem';
 | Version   | GA Date     | Support End Date  |
 |-----------|-------------|-------------------|
 | `1.0.0`   | 2023-04-27  | Actively supported  |
+
+</TabItem>
+
+<TabItem value="Python" label="Python SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `1.0.0`   | 2023-11-10  | Actively supported  |
+
+</TabItem>
+
+<TabItem value=".NET" label=".NET SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `2.0.0`   | 2023-11-12  | Actively supported  |
 
 </TabItem>
 </Tabs>

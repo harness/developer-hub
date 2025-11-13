@@ -13,6 +13,15 @@ redirect_from:
   - /docs/feature-flags/ff-security-compliance/gdpr-compliance
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 Harness Feature Flags are General Data Protection Regulation (GDPR) compliant. To ensure this:
 
 * Harness doesn't provide a European data residency option, but it does provide teams easy abstractions to remain GDPR compliant in any use case.
@@ -21,4 +30,3 @@ Harness Feature Flags are General Data Protection Regulation (GDPR) compliant. T
 * The data Harness has is then anonymized and not traceable back to end-users directly. Additionally, all data is encrypted in transit.
 * For the US, only the IP and email addresses of your team members are stored by Harness.
 * Harness provides a data protection agreement to cover this data if necessary.
-

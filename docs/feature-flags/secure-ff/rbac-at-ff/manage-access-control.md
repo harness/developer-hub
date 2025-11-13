@@ -15,6 +15,15 @@ redirect_from:
   - /docs/feature-flags/ff-security-compliance/manage-access-control
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness resources according to the user's role. By using RBAC, you can increase security and improve efficiency.
 
 This topic describes the roles available for Feature Flags. For more information about how RBAC works in Harness and instructions for implementing access control, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
@@ -90,7 +99,7 @@ If a user has the resource group ‘Feature Flag by tag’ assigned, the followi
  - **Tag-Specific Config Permissions**: Users will only be able to edit the configuration of flags that have the tag(s) defined in their resource group.
 
 :::info
-If you'd like to learn more about the Tagging Feature, you can head over to the Harness [Tagging Management on Feature Flags](/docs/feature-flags/use-ff/ff-creating-flag/tag_management.md) here.
+If you'd like to learn more about the Tagging Feature, you can head over to the Harness [Tagging Management on Feature Flags](/docs/feature-flags/use-ff/ff-creating-flag/tag-management) here.
 :::
 
 By following these steps, you can ensure that users are only able to interact with the Feature Flags that have the specific tags assigned to their resource groups, providing a finer level of access control.
@@ -105,4 +114,4 @@ The following topics can help you understand how to implement Access Control:
 * [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md)
 * [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles.md)
-* [Tagging Management on Feature Flags](/docs/feature-flags/use-ff/ff-creating-flag/tag_management.md)
+* [Tagging Management on Feature Flags](/docs/feature-flags/use-ff/ff-creating-flag/tag-management)

@@ -215,7 +215,7 @@ If any tags are provided, all existing tags in the service will be removed and r
 
 For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker images:
 
-- Docker Hub: [`harness/google-cloud-run-plugin:1.0.2-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
+- Docker Hub: [`harness/google-cloud-run-plugin:1.0.4-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
 - GAR:
   - Europe region: [GAR Image Repository for Google Cloud Run Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fgoogle-cloud-run-plugin?inv=1&invt=Ab5cNA)
 
@@ -269,7 +269,7 @@ Here is an interactive guide to setup your Cloud Run Job Stage.
 **Container Configuration**
 
 For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker image:
-- [`harness/google-cloud-run-plugin:1.0.2-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
+- [`harness/google-cloud-run-plugin:1.0.4-linux-amd64`](https://hub.docker.com/r/harness/google-cloud-run-plugin/tags)
 
 This image is required to perform deployments to Google Cloud Run.
 
@@ -436,7 +436,7 @@ To take a quick anonymous survey, run:
 **Solution**: Use the updated Google Cloud Run plugin image that handles these additional messages correctly:
 
 ```
-harness/google-cloud-run-plugin:1.0.2-linux-amd64
+harness/google-cloud-run-plugin:1.0.4-linux-amd64
 ```
 
 **Steps to Update**:
@@ -444,11 +444,11 @@ harness/google-cloud-run-plugin:1.0.2-linux-amd64
 1. Navigate to your pipeline's **Execution** tab.
 2. Locate the **Google Cloud Run Deploy Step** or **Google Cloud Run Job Step**.
 3. In the **Container Configuration** section, update the image reference to:
-   - Docker Hub: `harness/google-cloud-run-plugin:1.0.2-linux-amd64`
+   - Docker Hub: `harness/google-cloud-run-plugin:1.0.4-linux-amd64`
 4. Save and re-run your pipeline.
 
 :::tip
-The updated plugin image (`1.0.2`) includes improved parsing logic that filters out extraneous messages from the `gcloud` CLI output, ensuring reliable authentication when using the "Inherit from Delegate" mode.
+The updated plugin image (`1.0.4`) includes improved parsing logic that filters out extraneous messages from the `gcloud` CLI output, ensuring reliable authentication when using the "Inherit from Delegate" mode.
 :::
 
 This issue specifically affects deployments using GCP connectors configured with **Inherit from Delegate** authentication. If you're using **Service Account** or **OIDC** authentication methods, you may not encounter this issue.

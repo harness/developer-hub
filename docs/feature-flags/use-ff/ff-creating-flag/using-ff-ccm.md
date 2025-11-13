@@ -6,7 +6,16 @@ redirect_from:
   - /docs/feature-flags/ff-creating-flag/using-ff-ccm
 ---
 
-# Feature Flags with Cloud Cost Module Overview
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
+## Feature Flags with Cloud Cost Module Overview
 
 Feature Flag with Cloud Cost Management tool is a new feature that will enable you to easily identify cost anomalies when enabling a feature. The Feature Flags module integrates with the Harness Cloud Cost Management (CCM) and is able to identify potential correlations between flag change events and cost anomalies.
  

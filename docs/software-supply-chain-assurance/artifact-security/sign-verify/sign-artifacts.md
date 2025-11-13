@@ -51,7 +51,7 @@ The Artifact Signing step allows you to sign your artifacts and optionally push 
 
 Artifact Signing step supports both [**container**](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts#container-images) as well as [**non-container images**](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts#non-container-images).
 
-<DocImage path={require('./static/artifact-sign.png')} width="50%" height="50%" />
+<DocImage path={require('./static/signing-artifact.png')} width="50%" height="50%" />
 
 ### Container Images
 
@@ -71,6 +71,15 @@ Follow the instructions below to configure the Artifact Signing step.
 
 
 <Tabs>
+
+
+<TabItem value="har" label="HAR" default>
+
+* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
+
+* **Image:** Enter the name of your image with tag or digest, such as `imagename:tag` or `imagename:digest`.
+
+</TabItem>
 
 
   <TabItem value="dockerhub" label="Docker Registry" default>
@@ -181,7 +190,7 @@ Follow the instructions below to configure the Artifact Signing step for non-con
 
 Non-container images can be signed using **Cosign** or **Cosign with Secret Manager**, just like container images.
 
-<DocImage path={require('./static/non-container-signing.png')} width="50%" height="50%" />
+<DocImage path={require('./static/non-container-verify.png')} width="50%" height="50%" />
 
 ## View Signed Artifacts
 

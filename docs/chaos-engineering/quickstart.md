@@ -2,6 +2,11 @@
 title: Get Started
 description: Run your first chaos experiment in minutes with Harness Chaos Engineering
 sidebar_position: 5
+redirect_from:
+  - /docs/chaos-engineering/getting-started/getting-started
+  - /docs/chaos-engineering/getting-started
+  - /docs/chaos-engineering/getting-started/prerequisites
+  - /docs/chaos-engineering/get-started/
 ---
 
 import Tabs from '@theme/Tabs';

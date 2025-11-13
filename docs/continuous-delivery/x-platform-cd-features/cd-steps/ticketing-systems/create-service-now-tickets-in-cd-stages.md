@@ -31,7 +31,7 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 
 ### Required ServiceNow integration app for Harness templates
 
-The Integration for Harness Software Delivery Platform app is required to create ServiceNow tickets using Harness templates. You can install the latest version of the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
+The Integration for Harness Software Delivery Platform app is required to create ServiceNow tickets using **ServiceNow Form templates**. You can install the latest version of the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
 
 This integration is currently supported for the following ServiceNow versions:
    - Vancouver

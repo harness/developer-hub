@@ -1106,7 +1106,25 @@ You do not need to register instances for the target groups. Harness will perfor
 
 For more information on ELB Application Load Balancers, see [What Is an Application Load Balancer?](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html) from AWS.
 
-Application Load Balancer (ALB) and Network Load Balancer (NLB) are supported.##### Ports Used in Blue/Green Using ELB
+Application Load Balancer (ALB) and Network Load Balancer (NLB) are supported.
+
+:::note Network Load Balancer Limitation
+
+Harness supports Blue/Green deployments with Network Load Balancers (NLB), **but only with a single pair of stage/production listeners**. 
+
+If your NLB has **multiple listeners** (exposing multiple ports), Blue/Green deployments with dynamic target group switching are **not currently supported** by Harness. This limitation exists even though ECS natively supports multi-listener Blue/Green strategies.
+
+**Supported configuration:**
+- NLB with one stage listener and one production listener
+- Single port exposed per load balancer
+
+**Not supported:**
+- NLB with multiple listener pairs for different ports
+- Multi-listener Blue/Green deployments
+
+:::
+
+##### Ports Used in Blue/Green Using ELB
 
 There are three places where ports are configured in this deployment:
 

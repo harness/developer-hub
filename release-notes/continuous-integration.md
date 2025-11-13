@@ -20,37 +20,41 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-:::warning
-
-**Network Allowlisting Update for Cloud Linux/ARM**
-
-Harness supports allowlisting of its SaaS infrastructure IPs to enable secure access to private networks. This is helpful when you want to connect Harness to internal systems such as Kubernetes clusters, artifact repositories, SCMs, or other internal services.
-
-We recommend contacting [Harness Support](https://support.harness.io/) to receive the correct list of IPs and guidance based on your use case, region, and Harness modules in use.
-:::
-
-:::note
-
-**New UI for License Management in Harness CI**
-
-We’re excited to introduce an updated UI for managing your Harness Continuous Integration (CI) licenses. With the [new subscription page](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#developer-360-modules-subscriptions), you can now easily track and assign licenses based on the number of developers using the platform, offering greater flexibility and control over your license allocation.
-
-This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
-
-:::
-
 :::note
 **Harness Cloud – New VM Image Capabilities**:
 
 - **Select VM Image Version** – Choose a specific VM image version for your CI stages via UI or YAML (requires `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT` flag).
-- **Updated `latest` Tag** - Stages without a specified image will now default to **Ubuntu 24.04** (behind `CI_ENABLE_HOSTED_BETA_IMAGES flag`).
+- **Updated `latest` Tag** - Please note that `latest` tag now points to **Ubuntu 24.04** (when `CI_ENABLE_HOSTED_BETA_IMAGES` flag is enabled).
+- **Select New MacOS Images** - Choose the latest macOS images for your CI stages via UI or YAML. Harness now supports macOS Sequoia (15.6.1) pre-installed with the latest Xcode versions (26.0, 16.4, 16.3). This feature is currently behind the `CI_ENABLE_MAC_HOSTED_BETA_IMAGES` feature flag.
 
+Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
 
+## November 2025
+### Version 1.106.0
+
+<!-- 2025-11-03-->
+
+#### New Feature and Enhancements
+- Harness now supports **Native Annotations**, enabling pipelines to publish rich, markdown-based summaries directly to the Annotations tab of an execution. Using the hcli-annotate command, teams can surface structured insights such as test results, build metrics, or deployment summaries—right within the execution view. This capability is not limited to CI pipelines, it can be used across steps in different stages that support shell execution.
+- Harness Cloud introduces new Save Cache and Restore Cache steps for advanced caching control. Cloud customers can now define exactly when and where caching happens in their pipelines. Unlike Cache Intelligence, which runs automatically at stage boundaries, these steps let you generate custom cache keys and control cache restore and save timing, delivering greater flexibility for complex and performance-sensitive builds. For more information, please visit [Caching with Harness](/docs/continuous-integration/use-ci/caching-ci-data/save-restore-cache-in-harness).
+- Harness CI supports macOS Sequoia (15.6.1) image pre-installed with the latest XCode versions (26.0, 16.4 and 16.3). This feature is currently behind feature flag `CI_ENABLE_MAC_HOSTED_BETA_IMAGES`.
+- Harness CI now supports passwordless Azure authentication using OpenID Connect (OIDC). Teams can securely build and push to Azure Container registry using temporary access tokens(CI-15268).
+- Harness CI now offers additional machine sizes for Windows builds. Users can now select Small(4 cores), Medium(8 cores) and large machines(16 cores) under [Using resource classes](/docs/continuous-integration/get-started/ci-subscription-mgmt#custom-model).
+
+#### Fixed issues
+- Resolved an issue where pipelines using remote templates incorrectly flagged the template as modified if it used runtime inputs for the repository name. (CI-19410)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/drone-git` | Added support for Bitbucket in Clone Steps using Local/K8s Runner & Added support for containerless Bitbucket Git Clone step (CI) using Delegate 2.0 (PIPE-30743) | 1.7.6 | 1.7.7 |
+
 ## October 2025
 
-### Version 1.104.0
+### Version 1.105.0
 
 <!-- 2025-10-27-->
 #### Fixed issues

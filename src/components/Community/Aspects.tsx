@@ -21,14 +21,6 @@ export default function communityAspects() {
                 </button>
               </Tooltip>
             </Link>
-            <Link href="/kb">
-              <Tooltip placement="top" overlay="Knowledge Base">
-                <button className={styles.btn}>
-                  <img src={`${baseUrl}img/kb.svg`} />
-                  Knowledge Base
-                </button>
-              </Tooltip>
-            </Link>
             <Link href="https://www.youtube.com/@Harnesscommunity/videos">
               <Tooltip placement="top" overlay="YouTube Channel">
                 <button className={styles.btn}>

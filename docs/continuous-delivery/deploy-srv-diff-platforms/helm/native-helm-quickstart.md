@@ -241,8 +241,6 @@ In this example, we're going to use a Rolling [deployment strategy](/docs/contin
 You can optionally override or add native Helm command parameters directly in the Helm Deploy step. This provides greater flexibility to customize Helm CLI behavior without modifying the Service definition.
 
 :::note
-This feature is currently behind the feature flag `CDS_HELM_STEP_COMMAND_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 Command Flags at the step level are supported for **Helm v3** only.
 :::
 

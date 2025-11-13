@@ -2,12 +2,12 @@ import { Horizon } from "./roadmapData";
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q3, Aug 2025 - Oct 2025",
+    description: "Q4, Nov 2025 - Jan 2026",
     feature: [
       {
         tag: [{ value: "AI" }, { value: "Insights" }],
         title: "AI Summaries and Recommendations",
-        description: "AI-first summarization of insights, including clear recommendations for managers and leaders to drive change.",
+        description: "AI-first summarization of insights, including clear recommendations and summaries for managers and leaders to drive measurable change.",
       },
       {
         tag: [{ value: "AI" }, { value: "Insights" }],
@@ -15,61 +15,61 @@ export const SeiData: Horizon = {
         description: "Track usage, cost, and impact of AI agent(s) across Productivity and Efficiency dashboards, reported across organization and teams.",
       },
       {
-        tag: [{ value: "Integrations" }],
-        title: "ServiceNow Integration (GA)",
-        description: "Plug ServiceNow into Harness SEI for computing MTTR and CFR.",
+        tag: [{ value: "Insights" }],
+        title: "Sprint Insights",
+        description: "Insights into the efficiency of your sprint process that enable you to track and optimize plan, creep, or delivery-related metrics.",
       },
       {
-        tag: [{ value: "Onboarding" }],
-        title: "Intelligent Teams Onboarding",
-        description: "Smooth onboarding of teams with team-level defaults and intelligent auto-inferring of team settings.",
+        tag: [{ value: "Insights" }],
+        title: "Flow Insights",
+        description: "Insights into the flow of work and overall team throughput.",
+      },
+      {
+        tag: [{ value: "Insights" }],
+        title: "Additional Insights",
+        description: "Security Insights, Test Insights, Quality Insights, and custom insights.",
       },
     ],
   },
 
   Next: {
-    description: "Q4, Nov 2025 - Jan 2026",
+    description: "Q1, Feb 2026 - April 2026",
     feature: [
       {
-        tag: [{ value: "AI" }, { value: "New Feature"}],
-        title: "AI Efficiency Agent",
-        description: "Daily or weekly developer briefs, focus zones, manager briefs, and planning assistance.",
-      },
-      {
         tag: [{ value: "Actionability" }],
-        title: "Scoring, Goals, KPIs & Benchmarks",
-        description: "Drive accountability and transformation with scores, goals, and KPIs.",
+        title: "Scoring, Goals, KPIs, and Benchmarks",
+        description: "Track scores, compare with benchmarks, define goals, and drive accountability.",
       },
       {
         tag: [{ value: "Insights" }],
-        title: "Benchmarks",
-        description: "Help managers understand good and bad vs. industry benchmarks.",
-      },
-      {
-        tag: [{ value: "Insights" }],
-        title: "Surveys",
-        description: "Measure Developer Satisfaction with built-in surveys. Correlate developer sentiment with metrics to draw deep insights.",
+        title: "Conversational Analytics & Canvas",
+        description: "Converse with the Efficiency Agent to generate custom metrics, charts, and arrange them on a Canvas.",
       },
       {
         tag: [{ value: "Onboarding" }],
-        title: "Harness Delegate",
-        description: "Seamless and secure setup with Harness delegates for on-premises connectivity.",
+        title: "Automated Team Onboarding",
+        description: "Automatically detect and configure all the right IM projects, SCM repos, CI/CD pipelines for a team, to make the onboarding process seamless.",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Integrations",
+        description: "ServiceNow, GitLab CI/CD, and Jira Services Management.",
       },
      ],
   },
   
   Later: {
-    description: "Feb 2026 & Beyond",
+    description: "May 2026 & Beyond",
     feature: [
       {
         tag: [{ value: "Insights" }, { value: "New Feature" }],
-        title: "Cohort Analysis",
-        description: "Ability to create dynamic cohorts and run experiments.",
+        title: "DevSecOps Insights",
+        description: "Deep insights into the build, test, secure, deploy, and feature flagging workflows through the DevSecOps user journey.",
       },
       {
         tag: [{ value: "Insights" }, { value: "New Feature" }],
-        title: "Canvas",
-        description: "A customizable tab to carry over utilized metrics and widgets.",
+        title: "Surveys",
+        description: "Measure Developer Satisfaction with built-in surveys. Correlate developer sentiment with metrics for deeper insights.",
       },
       {
         tag: [{ value: "New Feature" }],
@@ -90,26 +90,22 @@ export const SeiData: Horizon = {
         tag: [{ value: "User Experience" }, { value: "New Features" }],
         title: "SEI 2.0",
         description:
-          "Brand new SEI 2.0 implementation optimized for low latency and near real-time access. Comes with out-of-the-box Efficiency, Productivity and Business Alignment insights, consistently reported across the entire organization.",
-        link:"http://localhost:3000/docs/category/sei-recommended",
+          "SEI 2.0 implementation optimized for low latency and near real-time access. Comes with out-of-the-box Efficiency, Productivity and Business Alignment insights, consistently reported across the entire organization.",
+        link:"https://developer.harness.io/docs/category/sei-recommended",
       },
       {
         tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
-        title: "Automated Developer and Organization Management",
+        title: "SEI 2.0 Refinements",
         description:
-          "Build a completely automated Developer and Org Tree management system, which self-refreshes as the organization evolves.",
-      },
+          "Multi-level Org Trees, Trendlines, Metric Maturity Model, improved Integration Monitoring, Custom Issue Management fields, Developer APIs, Export APIs, Activity Logs, Auto Developer Identity, and an improved correlation engine for Lead Time Tracking.",
+        link:"https://developer.harness.io/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree#multi-level-hierarchies",
+        },
       {
         tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
-        title: "Decentralized Management",
+        title: "RBAC in SEI 2.0",
         description:
-          "SEI 2.0 provides a decentralized management experience that empowers SEI administrators to manage the organization and profiles, while delegating team management to team managers.",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Faster Integrations",
-        description:
-          "Integrations now work faster and in near real-time for accurate and actionable insights.",
+          "Improved granular role-based access for more control and increased reusability.",
+        link:"https://developer.harness.io/docs/software-engineering-insights/harness-sei/get-started/rbac/",
       },
     ],
   },

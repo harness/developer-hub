@@ -532,7 +532,7 @@ Some important points to note:
 
 ## Troubleshooting expressions
 
-The following sections describe some common issues or troubleshooting scenarios for expressions. For more troubleshooting information, go to the [Harness Knowledge Base](/kb).
+The following sections describe some common issues or troubleshooting scenarios for expressions. For more troubleshooting information, go to the [Harness Platform Knowledge Base](/docs/category/knowledgebase).
 
 ### Debugging expressions
 

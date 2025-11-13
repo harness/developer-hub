@@ -18,12 +18,6 @@ export default function CDE() {
             <h1>Cloud Development Environments</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb">
-              <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
             <Link href="/release-notes/cloud-development-environments">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />

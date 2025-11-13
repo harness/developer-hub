@@ -70,7 +70,8 @@ Only the latest comment from an approval or rejection action is displayed in the
 
 
 :::tip
-Always review the **Exemption Details** and consider the **Requested Duration** before approving. The exemption remains active only for the specified time window (e.g., 7 days from the approval date).
+- Always review the **Exemption Details** and consider the **Requested Duration** before approving. The exemption remains active only for the specified time window (e.g., 7 days from the approval date).
+- You can configure notifications to alert users when the status of an exemption changes. For more details, see [Notifications for Exemptions](/docs/security-testing-orchestration/notifications/exemption-notifications).
 :::
 
 <DocImage path={require('./static/approve-exemption-project-view.png')} width="100%" height="100%" title="Click to view full size image" />

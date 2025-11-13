@@ -734,7 +734,7 @@ To onboard and access an RDS instance/cluster with Autostopping, you have severa
 <details>
 <summary><strong>Can we schedule several VMs to stop in order via an autostopping rule?</strong></summary>
 
-You can configure dependencies for the rule in this case: [Doc](https://developer.harness.io/kb/cloud-cost-management/articles/autostopping/aws/#dependencies) You can define a dependency on another autostopping rule, ensuring that the dependent rule is active when the rule with the configured dependency is active.
+You can configure dependencies for the rule in this case: [Doc](/docs/cloud-cost-management/kb-reference-architecture/onboarding/autostopping/aws#dependencies) You can define a dependency on another autostopping rule, ensuring that the dependent rule is active when the rule with the configured dependency is active.
 </details>
 
 <details>

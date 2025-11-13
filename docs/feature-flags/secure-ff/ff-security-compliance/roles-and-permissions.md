@@ -6,6 +6,15 @@ redirects from:
   - /docs/feature-flags/ff-security-compliance/roles-and-permissions
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 ## Overview
 
 This topic explains the roles and permissions within Harness Feature Flags. 
@@ -23,7 +32,6 @@ With Harness Feature Flags, each
 
 :::info
 In line with the custom roles and permissions, Role Based Access Control (RBAC) is a useful tool you can set to have more control over your workflow. For more information, go to [RBAC within the Harness Platform](../../../platform/role-based-access-control/rbac-in-harness.md).
-
 :::
 
 ## Roles

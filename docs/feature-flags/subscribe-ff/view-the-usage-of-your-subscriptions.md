@@ -8,6 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 When you subscribe to a Harness module, you select a number of licenses for developers and monthly active users (MAUs) to include in your subscription. You can check how many of these licenses you’re currently using on the Harness Platform. To do this:
 
 1. Go to the Harness Platform.
@@ -19,4 +28,3 @@ When you subscribe to a Harness module, you select a number of licenses for deve
 	* Current Feature Flags in your account
 
 	![A screenshot of the Activity and Usage section of the Subscription Overview.](./static/5-view-the-usage-of-your-subscriptions-08.png)
-

@@ -6,6 +6,15 @@ redirect_from:
   - /docs/feature-flags/ff-using-flags/relay-proxy/relay-proxy
 ---
 
+<CTABanner
+  buttonText="Go to the FME Docs"
+  title="Using Harness Feature Flags?"
+  tagline="This documentation is for Harness Feature Flags. If your organization is using or has migrated to Feature Management & Experimentation, refer to the FME documentation for the latest features and SDK updates."
+  link="https://developer.harness.io/docs/feature-management-experimentation"
+  closable={true}
+  target="_self"
+/>
+
 This topic describes the Harness Relay Proxy V1 and how to use it with Feature Flags (FF).
 
 The Relay Proxy V1 enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.
@@ -36,7 +45,7 @@ The Proxy can also use streaming functionality if it is configured with Redis. T
 
 ### How the Relay Proxy V1 stores data
 
-The Proxy stores authentication, feature, target, and target group configurations in a [cache](/docs/feature-flags/use-ff/relay-proxy/cache_options).
+The Proxy stores authentication, feature, target, and target group configurations in a [cache](/docs/feature-flags/use-ff/relay-proxy/cache-options).
 
 * Keys are stored against a map of fields and values in the feature, target, and target group settings.
 * The authentication configuration is stored as a key-value pair, with the key being a hashed API key and the value being an environment ID.
@@ -63,7 +72,7 @@ Whereas with the Relay Proxy V2, it only supports running **Online with Redis Ca
  - A connection to Harness SaaS.
  - Connectivity to a Redis cache.
 
-To learn more about using [Caching Options in the Harness Relay Proxy](./cache_options.md), you can find more information in the Harness docs including common FAQs about the caching options. 
+To learn more about using [Caching Options in the Harness Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/cache-options), you can find more information in the Harness docs including common FAQs about the caching options. 
 
 ## More information
 

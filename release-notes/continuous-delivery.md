@@ -53,15 +53,59 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## November 2025
+
+### Version 1.116.11
+
+#### Fixed Issues
+
+- Fixed an issue where the Harness Terraform provider incorrectly returned the project ID in the `org_id` field for file store resources. This caused the organization identifier to be replaced with the project identifier when updating file store files via Terraform, affecting resource state management. The file store API now correctly populates the organization identifier field. (**CDS-116087, ZD-97578**)
+- Fixed an issue where service deletion failed with a 400 error "Unexpected error occurred while getting the optional perpetual task." This error occurred during both regular and force delete operations, preventing users from removing services. Service deletion now properly handles perpetual task cleanup. (**CDS-115952, ZD-97057, ZD-97208**)
+- Fixed an issue where Kubernetes resources with the `harness.io/skipPruning: 'true'` annotation were incorrectly deleted during the prune step instead of being skipped. Resources marked with this annotation are now properly excluded from pruning operations. (**CDS-115797, ZD-96795**)
+- Fixed an issue where clicking a GitOps cluster link from the environment details page displayed an incorrect cluster name. The cluster name now correctly reflects the actual cluster identifier when navigating from the environment's GitOps section. (**CDS-115614, ZD-96170**)
+- Fixed an issue where promoting canary deployments to primary caused a sudden drop in primary pod count before new pods scaled up, resulting in temporary traffic starvation. The promotion process now maintains smooth pod transitions without capacity gaps. Additionally, sub-steps in the "Promotion to Primary" step logs can now be expanded and viewed. (**CDS-115547, ZD-96024**)
+- Fixed an issue where JWT tokens generated for GCP OIDC connectors were missing important claims such as `project_id`, `pipeline_id`, and `environment_id`. These claims are now included in the JWT token, enabling more granular access control configuration in Google Cloud workload identity pools. (**CDS-115293, ZD-95472**)
+- Fixed an issue where deployments using the "Inherit from Delegate" option in the Apply step failed when jobs ran longer than 30 minutes due to kubeconfig service account token expiration. Harness was only reading the token once at deployment start from `/var/run/secrets/kubernetes.io/serviceaccount/token`. The system now refreshes the token as needed to support long-running deployments. (**CDS-114874, ZD-94183**)
+- Improved CD cost reporting to provide better clarity on service instance metrics. The metrics page now clearly indicates when displaying rolling 30-day averages versus current service counts, reducing confusion when comparing Harness metrics with external monitoring tools. (**CDS-113766, ZD-91587**)
+- Fixed an issue where repository name and file path expressions in Terraform step config files reverted to fixed values after saving the pipeline. Runtime inputs and expressions for these fields now persist correctly in the edit view. (**CDS-115463, ZD-94883**)
+- Fixed an issue where SAM build pipelines failed with "client version 1.35 is too old. Minimum supported API version is 1.44" error when using the latest docker:dind image in containerized steps. The latest docker:dind image removed support for older EOL APIs that SAM plugin was using. **Affected pipelines should pin the Docker image version to `docker:28-dind` in the background step used with the SAM plugin to ensure compatibility.** (***CDS-116229, ZD-97780**)
+
+### GitOps Service 1.44.3, GitOps Agent 0.103.0
+
+#### Fixed Issues
+
+- Fixed an issue where GitOps applications intermittently displayed incorrect resource creation times in the Resource View tab. This occurred when resources didn't have a date set during creation or due to errors, causing the system to default to the Unix epoch start date (January 1, 1970). The system now handles missing dates gracefully by not displaying a date value instead of showing the epoch timestamp. (**CDS-115096, ZD-95086**)
+- Fixed an issue in the GitOps Helm chart where the container name was hardcoded to `gitops-agent` in the upgrader ConfigMap. This caused the creation of an unintended sidecar container when users overrode the agent pod or container name, preventing proper upgrades. The Helm chart now correctly respects the agent name specified in the `values.yaml` file. (**CDS-114819, ZD-93676, ZD-95329**)
+- Fixed an issue where duplicate log lines appeared when viewing logs from the Resource View panel in GitOps applications. Logs now display correctly without duplication. (**CDS-114656, ZD-94084, ZD-95360**)
+
+### Version 1.115.7
+
+#### Fixed Issues
+
+- Fixed an issue where Azure Repos connector test failed with "Couldn't connect to given repo" error despite valid PAT and repository access. The connector validation now properly handles Azure DevOps project-level connectors and provides more actionable error messages when connection issues occur. (**PIPE-30389, ZD-95538**)
+- Fixed an issue where shell script tasks in Kubernetes deployments failed with `NullPointerException: Cannot invoke "java.io.File.toPath()" because "this.file" is null` when processing kubeconfig files with exec-based authentication. The delegate now properly handles kubeconfig file references during credential processing. (**CDS-115508, ZD-95136**)
+- Fixed an issue where intermittent Helm chart fetch failures occurred from S3-backed ChartMuseum with "EOF" errors when multiple deployments ran simultaneously. The issue was caused by race conditions when sharing repository configuration files across concurrent deployments using the same S3 bucket. Each deployment now uses isolated repository configuration to prevent conflicts. (**CDS-115441, ZD-95548**)
+- Fixed an issue where Manual Intervention failure strategy did not respect the `availableActions` configuration when triggered via `onRetryFailure` after a Retry action. All actions were displayed instead of only the specified available actions. Manual Intervention now correctly limits the available actions as configured. (**PIPE-30318, ZD-94795**)
+- Fixed an issue where delegate pods were OOMKilled during connection tests for JFrog Artifactory and Helm connectors due to excessive memory consumption. The delegate now properly manages memory usage during connector validation operations. (**CDS-115302, ZD-95107**)
+- Fixed an issue where infrastructure selectors were incorrectly appended to Step Group delegate selectors when using Delegate Selection Expression List, causing task execution failures with "no eligible delegates" errors. Infrastructure selectors are now properly isolated from Step Group delegate selection expressions. (**CDS-114486, ZD-93472, ZD-95160**)
+- Fixed an issue where input set reference fields in chained pipeline templates were not removed from the YAML after being deleted from the UI, causing inconsistencies between the visual editor and YAML representation. The YAML now correctly reflects input set reference removals. (**PIPE-30550, ZD-96190**)
+- Improved loading performance for pipelines and input sets with large configurations and multiple connector references. The UI now loads connector references more efficiently, reducing load times for complex input sets. (**PIPE-30458, ZD-95871**)
+- Fixed an issue where the Jira Create step's Reporter dropdown did not display users when the `emailAddress` field was missing or empty in the Jira API response. The dropdown now falls back to displaying the `displayName` when `emailAddress` is unavailable, ensuring users can be selected for the Reporter field. (**CDS-115386**)
+- Fixed an issue where using expressions in the ServiceNow Create step's Template Name field failed with "Missing template name" error during pipeline planning. The Template Name field now properly resolves expressions for parameterized ServiceNow template selection. (**CDS-115272, ZD-95426**)
+- Fixed an issue where console logs disappeared from the UI when a Manual Intervention failure strategy was triggered in steps like Terraform Plan. The logs now remain visible during Manual Intervention, allowing users to review execution details before making intervention decisions. (**PIPE-29254, ZD-77586**)
+- Fixed an issue where File Store steps intermittently failed with `SocketTimeoutException: timeout` errors when fetching file content. The pipeline service now uses improved timeout handling and retry logic when communicating with the file service, reducing transient failures during file retrieval. (**CDS-115740, ZD-96621**)
+
 ## October 2025
 
 ### Version 1.114.8
 
 #### New Features and Enhancements
 
-Harness now supports a Skip Traffic Shift option in the Google Cloud Run Deploy step, allowing you to create new revisions without immediately shifting traffic. The Traffic Shift step also now supports assigning multiple tags to revisions for easier traffic routing and management. (**CDS-112371**)
+- Harness now supports a Skip Traffic Shift option in the Google Cloud Run Deploy step, allowing you to create new revisions without immediately shifting traffic. The Traffic Shift step also now supports assigning multiple tags to revisions for easier traffic routing and management. This feature is released with plugin version harness/google-cloud-run-plugin:1.0.3-linux-amd64. (**CDS-112371**)
 
-Harness now supports VM infrastructure for containerized step groups. You can select VMs as the runtime infrastructure when enabling container-based execution, allowing you to run supported CD steps on Linux VMs instead of Kubernetes clusters. This feature is controlled by Feature Flag `CDS_ENABLE_VM_CONTAINER_STEP_GROUP_INFRA`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-112055**)
+- Harness now supports VM infrastructure for containerized step groups. You can select VMs as the runtime infrastructure when enabling container-based execution, allowing you to run supported CD steps on Linux VMs instead of Kubernetes clusters. This feature is controlled by Feature Flag `CDS_ENABLE_VM_CONTAINER_STEP_GROUP_INFRA`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-112055**)
+
+- Harness now supports Harness Artifact Registry as a native artifact source for SSH and WinRM deployments (Docker artifact type only). (**CDS-115561**)
 
 #### Fixed Issues
 
@@ -795,7 +839,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 - Harness now supports alphabetically sorting the list of Projects, Organizations, and Accounts when configuring Approver User Groups. (**CDS-95935**)
 
-- Harness is introducing the **Elastigroup Blue Green Traffic Shift** step to support weighted traffic shifting for Spot Elastigroup deployments, enabling gradual rollout strategies for services with low task counts. Currently, this feature is behind the feature flag `CDS_SPOT_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Elastigroup Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-traffic-shifting/). (**CDS-100276**)
+- Harness is introducing the **Elastigroup Blue Green Traffic Shift** step to support weighted traffic shifting for Spot Elastigroup deployments, enabling gradual rollout strategies for services with low task counts. For more information, refer to [Elastigroup Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-traffic-shifting/). (**CDS-100276**)
 
 #### Fixed Issues
 
@@ -846,7 +890,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 #### New Features and Enhancements
 
-- Harness now supports configuring Helm native command flags directly at the step level. Currently, this feature is behind the feature flag `CDS_HELM_STEP_COMMAND_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Command Flags at Step Level](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/#command-flags-at-step-level). (**CDS-101899**) 
+- Harness now supports configuring Helm native command flags directly at the step level. For more information, refer to [Command Flags at Step Level](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/#command-flags-at-step-level). (**CDS-101899**) 
 
 - Users can now avoid printing the entire script content in the console log before the output of **Tanzu Command Step**. For more information, refer to [Disable Script Logging](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-command-step/#disable-script-logging). (**CDS-101641, ZD-71075**)
 

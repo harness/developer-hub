@@ -1,7 +1,7 @@
 ---
 title: Scorecards Overview
 description: Measure software maturity and enforce best practices
-sidebar_position: 3
+sidebar_position: 1
 sidebar_label: Overview
 redirect_from:
   - /docs/internal-developer-portal/features/scorecard
@@ -11,9 +11,7 @@ redirect_from:
 
 Scorecards play a pivotal role in ensuring software components are developed and utilized while adhering to organizational and industry standards. They provide a quantifiable measure of software maturity and adherence to best practices, thereby aiding developers in enhancing quality and assisting teams in making informed decisions regarding software adoption.
 
-<DocVideo src="https://www.youtube.com/embed/jvLDdWS3rFE?si=MBalzaKnDnr4p4QV" />
-
-<DocImage path={require('./static/scorecard.png')}/>
+![](./static/scorecard-overview.png)
 
 <details>
 <summary>Purpose & Concept of Scorecards</summary>
@@ -156,6 +154,42 @@ Follow these steps to refresh Scorecards:
 ![](./static/refresh-scorecards-2.png)
 
 This will **manually trigger a refresh**, updating the component's score immediately.
+
+---
+
+## View Check Details
+
+You can view detailed information about each check's execution status directly from the entity's Scorecard view. This helps you understand why a check passed or failed and take appropriate action.
+
+#### Accessing Check Details
+
+1. Navigate to the entity details view in the Catalog.
+2. Click on **Scorecard** from the navigation bar.
+3. Click on any **Check** to view its detailed execution results.
+
+#### Passed Checks
+
+When a check passes, you'll see a "Passed" status with a confirmation message
+- **About the check**: Description of what the check validates. 
+- **Rule Expression**: Toggle between two views:
+  - **JQL View**: Shows the JEXL expression that was evaluated. 
+  ![](./static/passed-check-jql.png)
+
+  - **Visual View**: Displays the rule in a basic format showing the data point, condition, and resulted value. 
+  ![](./static/passed-check-visual.png)
+
+#### Failed Checks
+
+When a check fails, you'll see a "Failed" status with an **AI-powered explanation** of why the check failed and what needs to be fixed. 
+- **About the check**: Description of what the check validates. 
+- **Rule Expression**: Toggle between two views:
+  - **JQL View**: Shows the JEXL expression that was evaluated. 
+  ![](./static/failed-check-jql.png)
+  
+  - **Visual View**: Displays a table with all rules, their conditions, and the actual resulted values that caused the failure. 
+  ![](./static/failed-check-visual.png)
+
+The Visual view is particularly helpful for failed checks as it shows you exactly which data points didn't meet the expected criteria, making it easier to troubleshoot and resolve issues.
 
 ---
 

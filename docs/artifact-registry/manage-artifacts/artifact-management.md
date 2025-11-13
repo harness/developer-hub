@@ -6,7 +6,6 @@ sidebar_position: 10
 
 import DocImage from '@site/src/components/DocImage';
 
-This page will teach you how to do artifact operations using Harness Artifact Registry. 
 
 All artifact operations start with the **Setup Client** page found inside your registry at the top right. 
 

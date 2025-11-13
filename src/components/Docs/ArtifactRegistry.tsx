@@ -18,7 +18,7 @@ export default function AR() {
             <h1>Artifact Registry</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb">
+            <Link href="/docs/artifact-registry/ar-best-practices">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
                 Knowledge Base
