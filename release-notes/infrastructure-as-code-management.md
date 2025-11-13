@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2025-05-13T10:00
+date: 2025-11-10T10:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
@@ -35,6 +35,78 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 </HarnessApiData>
 ::: -->
 
+## October 2025
+### New Features & Enhancements:
+- **Terragrunt Support | [Docs](/docs/infra-as-code-management/get-started/#terragrunt)** 
+  - Added comprehensive support for Terragrunt workspaces including drift detection, cost estimation, and OPA policy integration
+- **Provider Registry Beta | [Docs](/docs/infra-as-code-management/registry/provider-registry)** 
+  - Advanced provider registry capabilities with custom provider support
+- **Variable Sets | [Docs](/docs/infra-as-code-management/manage-projects/connectors-variables#variable-sets)** 
+  - Introduced variable sets functionality for better configuration management
+- **Custom Git Tags for Module Registry | [Docs](/docs/infra-as-code-management/registry/module-registry/module-registry-tabs?module-tabs=Step-by-step#module-versions)** 
+  - Added support for custom Git tags and monorepo configurations
+
+### Bug Fixes & Improvements:
+- Fixed template validation issues for provider connectors
+- Improved error handling for SCM terraform parsing
+- Enhanced module testing capabilities for terraform provider
+- Resolved issues with workspace deletion functionality
+- Fixed issues with Bitbucket SSH connector PR automation
+- Improved Ansible plugin output and error handling
+- Enhanced workspace resource management and display
+
+---
+
+## September 2025
+### New Features & Enhancements:
+- **Enhanced Pipeline Support:** Added support for common pipeline steps in IaCM stages
+
+### Bug Fixes & Improvements:
+- Fixed various Ansible execution issues and improved error messaging
+- Improved workspace configuration and management
+- Resolved issues with cost estimation and drift detection
+
+---
+
+## August 2025
+### New Features & Enhancements:
+- **Enhanced Resource Tracking:** Improved resource binding and management capabilities
+- **Module Registry Improvements:** Better support for module versioning and management
+- **Advanced Configuration Options:** Additional OpenTofu and Terraform configuration options including `target` and `replace` in the plan step. 
+
+### Bug Fixes & Improvements:
+- Fixed database connection issues for pricing API service
+- Improved workspace template validation
+- Resolved issues with connector authentication
+
+---
+
+## July 2025
+### New Features & Enhancements:
+- **Enhanced Resource Management:** New resource tracking and management capabilities
+- **Advanced Workspace Features:** Enhanced workspace configuration and management
+
+### Bug Fixes & Improvements:
+- Fixed issues with workspace resource display
+- Improved template input handling
+- Resolved various pipeline execution issues
+
+---
+
+## June 2025
+### New Features & Enhancements:
+- **Module Testing Support | [Docs](/docs/infra-as-code-management/registry/module-registry/module-registry-testing)** 
+  - Added capability to enable module testing for terraform modules
+- **Resource Management Foundation:** Core infrastructure for advanced resource tracking
+- **CLI Improvements | [Docs](/docs/infra-as-code-management/cli-commands/cli-iacm-plan)** 
+  Enhanced CLI functionality and permissions
+
+### Bug Fixes & Improvements:
+- Fixed various workspace and pipeline execution issues
+- Resolved authentication and connector-related issues
+
+---
+
 ## May - IAC Server Version v1.143.0 & v1.145.0
 <!-- Released on 5 May 2025 -->
 ### Feature Improvements: 
@@ -42,6 +114,7 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 
 👉 Get started by [registering a module](/docs/infra-as-code-management/registry/module-registry#register-a-module).
 
+---
 ## April - IAC Server Version 1.138.0
 <!-- Released on 4 April 2025 -->
 

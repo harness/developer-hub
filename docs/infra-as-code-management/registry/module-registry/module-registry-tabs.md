@@ -112,7 +112,7 @@ Submodules can provide users with the flexibility to override or customize certa
     - A cloud storage module might include submodules for S3 buckets, IAM roles, and lifecycle policies, allowing users to only configure the features they need.
 
 ## Top level overview
-<Tabs>
+<Tabs groupId="module-tabs" queryString>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/338cf3be-ddf5-4272-9178-fe3f84d815d4" title="Harness IaCM registered module overview" />
 </TabItem>
