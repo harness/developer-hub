@@ -27,7 +27,7 @@ Before you begin, ensure you have the following:
 
 ## Install the provider and dependencies
 
-Install the Harness FME OpenFeature provider from NuGet:
+Install the Harness FME OpenFeature provider from [NuGet](https://www.nuget.org/packages/Splitio.OpenFeature.Provider/):
 
 ```bash
 dotnet add package Splitio.OpenFeature.Provider

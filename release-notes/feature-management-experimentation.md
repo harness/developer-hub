@@ -73,7 +73,7 @@ This feature is valuable for organizations that want to:
 - Reduce vendor lock-in by enabling flexible provider implementations
 - Integrate feature flags across multiple languages and platforms
 
-Harness FME offers providers for Android, iOS, Web, Java, and Node.js SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
+Harness FME offers providers for Android, iOS, Web, Angular, React, Java, Node.js, Python, and .NET SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
 
 #### Related documentation
 
