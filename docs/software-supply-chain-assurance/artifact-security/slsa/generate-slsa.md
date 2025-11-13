@@ -31,9 +31,9 @@ In Harness SCS, you can use the **SLSA Generation** step to configure your pipel
 <DocImage path={require('./static/slsa-gen-overview.png')} width="90%" height="90%" />
 <!-- <DocVideo src="https://youtu.be/shU2tbSoC1k?si=ZHftRb_gpnCHEtUi" /> -->
 
-:::warning Deprecation Alert  
+<!-- :::warning Deprecation Alert  
 The configuration for SLSA Generation and attestation previously handled in the **Overview** section of the pipeline stage is no longer supported. To generate SLSA Provenance and attestation, use the dedicated **SLSA Generation** step. For detailed instructions, refer to the **[SLSA Generation step configuration](#slsa-generation-step-configuration)** documentation. If your pipelines are currently configured through the Overview section, we strongly recommend migrating to the **SLSA Generation** step to ensure compatibility and continued support.
-:::
+::: -->
 
 ## SLSA Generation step configuration
 The **SLSA Generation** step enables you to generate SLSA Provenance and optionally attest it. The generated provenance is saved in the [Artifact section](/docs/software-supply-chain-assurance/artifact-security/overview) in SCS, while the attestation file is pushed to the configured container registry. This step should be configured immediately after completing your image-building process, as the image digest is required for provenance generation and attestation.
@@ -294,6 +294,15 @@ This step will fetch the digest of the image and exposes it as a variable `diges
 <DocImage path={require('./static/slsa-gen-run-step.png')} width="50%" height="50%" />  
 
 For performing the attestation, refer to the section [Attest SLSA Provenance](#attest-slsa-provenance) -->
+
+
+:::tip
+When SBOM and SLSA attestation steps run in parallel, only one attestation layer may be uploaded to the container registry due to a race condition in Cosign.
+
+**Recommended approach:**
+- Run the SBOM and SLSA attestation steps **sequential** rather than in parallel way to avoid SLSA verification or SBOM policy enforcement failures.  
+- Place the SLSA generation step just after the **Docker Build and Push step.**
+:::
 
 ## Run the pipeline
 

@@ -26,14 +26,6 @@ If you already possess an SBOM and wish to ingest it, please refer to the [Inges
 
 <DocVideo src="https://youtu.be/k5TAO1RLJvY?si=y_mC2cq5YD8MziK-" />
 
-## Requirements
-
-### Generate the keys for SBOM Attestation - optional
-
-import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-consign-keys-prerequisite.md';
-
-<GenerateKeysPrerequisite />
-
 ## SBOM Orchestration step configuration
 
 <DocImage path={require('./static/sbomm-overvieww.png')} width="50%" height="50%" />
@@ -119,6 +111,14 @@ This feature allows you to track changes in SBOMs by comparing against the last 
 <DocImage path={require('./static/sbom-drift.png')} width="70%" height="70%" />
 
 
+:::tip
+
+When SBOM and SLSA attestation steps run in parallel, only one attestation layer may be uploaded to the container registry due to a race condition in Cosign.
+
+**Recommended approach:**
+- Run the SBOM and SLSA attestation steps **sequential** rather than in parallel way to avoid SLSA verification or SBOM policy enforcement failures.  
+- Place the SLSA generation step just after the **Docker Build and Push step.**
+:::
 
 ## Run the pipeline
 
