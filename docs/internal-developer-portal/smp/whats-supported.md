@@ -98,6 +98,7 @@ The following features are supported for Harness IDP SMP Edition:
 | Environment Management   | ❌                | Not supported in SMP edition |
 | Plugins                  | ✅                |                              |
 | TechDocs                 | ❌                | Not supported in SMP edition |
+| Custom Plugins           | ❌                | Not supported in SMP edition |
 | RBAC                     | ✅                |                              |
 
 ---
