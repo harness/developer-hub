@@ -67,6 +67,27 @@ Using SBOM Orchestration step you can generate the SBOM for both Container image
 
 </details>
 
+
+### Configure cdxgen with Extended Java Support
+
+If you are using cdxgen to generate an SBOM, the default cdxgen image doesn’t include all Java runtime dependencies.
+
+To resolve this, override the default cdxgen image by providing the tag `cdxgen-full` in the optional configuration section of the SBOM Orchestration step to enable extended Java support.
+
+**Container Registry:** By default, Harness pulls cdxgen image from Docker Hub. To pull the image from private registry, select a connector that points to it.
+
+**Image tag:** Provide the tag `cdxgen-full` to support environments like Java.
+
+**Limit Memory and CPU:** Set the minimum memory to `8 Gi` and CPU to `4`.
+
+<DocImage path={require('./static/cdxgen-full-image.png')} width="50%" height="50%" />
+
+
+:::note
+
+The CocoaPods ecosystem is not fully supported by cdxgen at the moment
+
+:::
  *  **Source**: Select the **Source** as a Repository to generate the SBOM for source code.
 
  * **Repository URL:** The Repository URL you've configured for cloning into the workspace.
