@@ -55,6 +55,21 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## November 2025
 
+### Version 1.116.11
+
+#### Fixed Issues
+
+- Fixed an issue where the Harness Terraform provider incorrectly returned the project ID in the `org_id` field for file store resources. This caused the organization identifier to be replaced with the project identifier when updating file store files via Terraform, affecting resource state management. The file store API now correctly populates the organization identifier field. (**CDS-116087, ZD-97578**)
+- Fixed an issue where service deletion failed with a 400 error "Unexpected error occurred while getting the optional perpetual task." This error occurred during both regular and force delete operations, preventing users from removing services. Service deletion now properly handles perpetual task cleanup. (**CDS-115952, ZD-97057, ZD-97208**)
+- Fixed an issue where Kubernetes resources with the `harness.io/skipPruning: 'true'` annotation were incorrectly deleted during the prune step instead of being skipped. Resources marked with this annotation are now properly excluded from pruning operations. (**CDS-115797, ZD-96795**)
+- Fixed an issue where clicking a GitOps cluster link from the environment details page displayed an incorrect cluster name. The cluster name now correctly reflects the actual cluster identifier when navigating from the environment's GitOps section. (**CDS-115614, ZD-96170**)
+- Fixed an issue where promoting canary deployments to primary caused a sudden drop in primary pod count before new pods scaled up, resulting in temporary traffic starvation. The promotion process now maintains smooth pod transitions without capacity gaps. Additionally, sub-steps in the "Promotion to Primary" step logs can now be expanded and viewed. (**CDS-115547, ZD-96024**)
+- Fixed an issue where JWT tokens generated for GCP OIDC connectors were missing important claims such as `project_id`, `pipeline_id`, and `environment_id`. These claims are now included in the JWT token, enabling more granular access control configuration in Google Cloud workload identity pools. (**CDS-115293, ZD-95472**)
+- Fixed an issue where deployments using the "Inherit from Delegate" option in the Apply step failed when jobs ran longer than 30 minutes due to kubeconfig service account token expiration. Harness was only reading the token once at deployment start from `/var/run/secrets/kubernetes.io/serviceaccount/token`. The system now refreshes the token as needed to support long-running deployments. (**CDS-114874, ZD-94183**)
+- Improved CD cost reporting to provide better clarity on service instance metrics. The metrics page now clearly indicates when displaying rolling 30-day averages versus current service counts, reducing confusion when comparing Harness metrics with external monitoring tools. (**CDS-113766, ZD-91587**)
+- Fixed an issue where repository name and file path expressions in Terraform step config files reverted to fixed values after saving the pipeline. Runtime inputs and expressions for these fields now persist correctly in the edit view. (**CDS-115463, ZD-94883**)
+- Fixed an issue where SAM build pipelines failed with "client version 1.35 is too old. Minimum supported API version is 1.44" error when using the latest docker:dind image in containerized steps. The latest docker:dind image removed support for older EOL APIs that SAM plugin was using. **Affected pipelines should pin the Docker image version to `docker:28-dind` in the background step used with the SAM plugin to ensure compatibility.** (***CDS-116229, ZD-97780**)
+
 ### GitOps Service 1.44.3, GitOps Agent 0.103.0
 
 #### Fixed Issues
