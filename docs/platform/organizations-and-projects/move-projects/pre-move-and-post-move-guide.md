@@ -35,33 +35,36 @@ This list covers common issues but is not exhaustive. Additional organization-le
     - If a notification rule uses a channel from the source organization, the reference will break.
     - Email notification channels using organization-level user groups will stop working.
 
-3. Services:
+3. Git Experience:
+    - Git file paths become stale after the move, as they still reference the source organization in URLs and navigation links. 
+
+4. Services:
     - Project-level services like manifest sources and artifact sources referencing organization-level connectors will break.
 
-4. Environments:
+5. Environments:
     - Environment configuration files, application settings, manifest sources, or connection strings referencing organization-level resources will become unavailable.
     - Service overrides, infrastructure definitions, or GitOps clusters referencing organization-level resources will break. 
 
-5. Monitored Services:
+6. Monitored Services:
     - Services or environments referencing organization-level resources will become inaccessible.
 
-6. Webhooks:
+7. Webhooks:
     - Git connectors, generic webhooks, or Slack webhooks using connectors or secrets referencing organization-level resources will break.
     - Custom webhook triggers will be no longer functional.
 
-7. Access control:
+8. Access control:
     - Organization-level RBAC policies aren’t transferred during a project move. You may need to recreate them in the destination organization to ensure proper access controls are maintained.
     - When a project move is initiated, all project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
     - If an account-level resource group includes a project that is being moved, Harness automatically updates the resource group to reflect the new organization. No action is required from users.
 
-8. Audit logs:
+9. Audit logs:
     - Account-level audit logs: No impact - all logs remain accessible.
     - Organization-level audit logs: 
         - Logs belonging to the project from before the move stay in the source organization and are not transferred.
         - Links in old logs pointing to the moved project in the older organization will break.
         - New audit logs for the moved project will appear in the newer organization.
 
-9. Terraform Resource and State Management:
+10. Terraform Resource and State Management:
     - Terraform state and configuration files that reference the moved project may become inconsistent after the move.
     - Resources created using the Harness Terraform Provider include organization and project level identifiers that will no longer match the new organization.
     - Terraform state and configuration management are highly variable, depending on how you define, reference, and structure your Terraform code, you may need to manually update your Terraform state and configuration files after the move.
@@ -76,45 +79,44 @@ This list covers common issues but is not exhaustive. Additional organization-le
 
 After a project is moved, follow these steps to identify and fix broken references. Note that this list is not exhaustive and additional actions might be needed depending on your project setup.
 
-### Pipelines
-- Test all pipelines to identify failures and broken references.
-- Update pipeline references to use connectors and secrets from the destination organization.
-- Recreate or import organization-level templates in the destination organization.
-- Update YAML entities with hardcoded `orgIdentifier` references to match the new organization.
-- Fix pipeline chaining references if child pipelines were also moved.
+1. Pipelines
+    - Test all pipelines to identify failures and broken references.
+    - Update pipeline references to use connectors and secrets from the destination organization.
+    - Recreate or import organization-level templates in the destination organization.
+    - Update YAML entities with hardcoded `orgIdentifier` references to match the new organization.
+    - Fix pipeline chaining references if child pipelines were also moved.
 
-### Connectors and Secrets
-- Recreate organization-level connectors in the destination organization.
-- Recreate organization-level secrets in the destination organization.
-- Update all references in services, environments, and pipelines to use the new connectors and secrets.
+2. Connectors and Secrets
+    - Recreate organization-level connectors in the destination organization.
+    - Recreate organization-level secrets in the destination organization.
+    - Update all references in services, environments, and pipelines to use the new connectors and secrets.
 
-### Services and Environments
-- Update service manifest sources and artifact sources to reference destination organization connectors.
-- Update environment configuration files and connection strings.
-- Recreate service overrides and infrastructure definitions that reference organization-level resources.
-- Update GitOps cluster references to use destination organization resources.
+3. Services and Environments
+    - Update service manifest sources and artifact sources to reference destination organization connectors.
+    - Update environment configuration files and connection strings.
+    - Recreate service overrides and infrastructure definitions that reference organization-level resources.
+    - Update GitOps cluster references to use destination organization resources.
 
-### Notifications and Webhooks
-- Recreate notification channels in the destination organization.
-- Update notification rules to use the new channels.
-- Recreate webhook configurations using destination organization connectors and secrets.
-- Test custom webhook triggers and update as needed.
+4. Notifications and Webhooks
+    - Recreate notification channels in the destination organization.
+    - Update notification rules to use the new channels.
+    - Recreate webhook configurations using destination organization connectors and secrets.
+    - Test custom webhook triggers and update as needed.
 
-### Access Control
-- Recreate organization-level RBAC policies in the destination organization.
-- Verify user access and permissions are working correctly.
-- Update user group memberships if needed.
+5. Access Control
+    - Recreate organization-level RBAC policies in the destination organization.
+    - Verify user access and permissions are working correctly.
+    - Update user group memberships if needed.
 
-### Monitored Services
-- Update monitored services to reference destination organization resources.
-- Verify monitoring configurations are working correctly.
+6. Monitored Services
+    - Update monitored services to reference destination organization resources.
+    - Verify monitoring configurations are working correctly.
 
-### Terraform Management
-- Update Terraform configuration files with new organization and project identifiers.
-- Update Terraform state files to reflect the new organization structure.
-- Run `terraform plan` to identify any remaining drift or issues.
+7. Terraform Management
+    - Review Terraform configuration (`.tf`) and state files for any hardcoded organization references.
+    - Run `terraform plan` to identify any drift or inconsistencies.
+    - Update organization references (e.g., org_id, organization_id) manually in both `.tf` and state files if necessary.
+    - Apply changes once the plan shows the expected alignment.
 
-### General Validation
-- Update bookmarks and saved URLs to reflect the new organization path.
-- Test end-to-end workflows to ensure everything functions correctly.
-- Review and update any documentation or runbooks that reference the old organization path.
+In addition, update bookmarks and saved URLs to reflect the new organization path. Test end-to-end workflows to ensure everything functions correctly. Review and update any documentation or runbooks that reference the old organization path.
+
