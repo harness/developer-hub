@@ -11,7 +11,7 @@ Harness FME MCP provides a conversational interface for exploring your feature m
 
 You can:
 
-- Discover [projects](/docs/feature-management-experimentation/management-and-administration/account-settings/projects/), [environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments/), and active [feature flags](/docs/feature-management-experimentation/getting-started/overview/create-a-feature-flag/)
+- Discover [projects](/docs/feature-management-experimentation/projects/), [environments](/docs/feature-management-experimentation/environments/), and active [feature flags](/docs/feature-management-experimentation/getting-started/overview/create-a-feature-flag/)
 - Inspect feature flag definitions, [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting/#targeting-rules), and [rollout status](/docs/feature-management-experimentation/feature-management/setup/create-a-rollout-plan/)
 - Compare configurations across environments for governance and consistency
 

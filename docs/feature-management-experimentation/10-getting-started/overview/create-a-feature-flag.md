@@ -17,7 +17,7 @@ You can create a feature flag in three steps:
 
 To create your first feature flag, from the left navigation, click **Feature flags** and then **Create feature flag** button. From there, enter the flag name.
 
-Select the traffic type user to get started. Traffic types give you the ability to split on different levels of your customers (e.g., for B2B software, you could create the traffic type account or user). You can also create additional traffic types in settings. Learn more about [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/). We are referring to the traffic type user throughout the rest of this document.
+Select the traffic type user to get started. Traffic types give you the ability to split on different levels of your customers (e.g., for B2B software, you could create the traffic type account or user). You can also create additional traffic types in settings. Learn more about [traffic types](/docs/feature-management-experimentation/traffic-types/). We are referring to the traffic type user throughout the rest of this document.
 
 Owners, tags, and the description make it easy to sort, filter, and locate the features your team is rolling out. By default, administrators and the creator of the feature flag are considered its owners. Utilize groups with this owner field to organize your flags across your team. Learn more about owners and tags.
 

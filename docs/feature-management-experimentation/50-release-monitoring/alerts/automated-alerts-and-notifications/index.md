@@ -51,7 +51,7 @@ To enable or disable alert notifications for a specific feature flag, do the fol
 
 1. Next to the feature flag name, click on the gear icon, and select **Alerts setup**.
 
-1. Note that feature flag alerts can only be enabled for all production environments at this time. (You can change the Environment type to **Production** when you edit an environment in Admin settings, accessed via the top button in the left navigation panel.) For more information about environments, see the [Environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments/) documentation.
+1. Note that feature flag alerts can only be enabled for all production environments at this time. (You can change the Environment type to **Production** when you edit an environment in Admin settings, accessed via the top button in the left navigation panel.) For more information about environments, see the [Environments](/docs/feature-management-experimentation/environments/) documentation.
 
 1. Under Alert conditions, check the box **When a key metric reaches significance** to turn the feature flag’s alerting on. This means that an alert will be immediately triggered whenever one of this feature flag’s key metrics reaches a desired or undesired impact. Unchecking the box will turn the feature flag’s alerting off.
 

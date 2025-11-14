@@ -20,7 +20,7 @@ When you create a feature flag, you specify metadata, including the flag name, d
 
 Harness FME (powered by Split) uses a **deterministic hashing algorithm** to decide which treatment (experience) to deliver for a feature flag. The algorithm takes two main inputs:
 
-- **User ID:** This can be an anonymous user ID, logged-in user ID, account number, or any string representing the entity. The ID’s type is specified by its [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/).
+- **User ID:** This can be an anonymous user ID, logged-in user ID, account number, or any string representing the entity. The ID’s type is specified by its [traffic type](/docs/feature-management-experimentation/traffic-types/).
 - **Feature flag:** When the SDK initializes, it downloads targeting plans for all flags. Each flag has a unique **seed** — a random number cached as part of the rollout plan and consistent across all SDKs evaluating that flag.
 
 ### How Bucketing Works

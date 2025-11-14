@@ -21,8 +21,8 @@ Use this integration to send exceptions from your Projects in Sentry to Harness 
 In order to use this integration, you will need to:
 
 * Be on Sentry's Business plan or above.
-* [Send Environment data](https://docs.sentry.io/enriching-error-data/environments/?platform=javascript#how-to-send-environment-data) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [Harness FME environment](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments).
-* [Send key data](https://docs.sentry.io/platforms/javascript/enriching-events/identify-user/) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [FME traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types) and to set the proper `key` for track events in Harness FME.
+* [Send Environment data](https://docs.sentry.io/enriching-error-data/environments/?platform=javascript#how-to-send-environment-data) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [Harness FME environment](/docs/feature-management-experimentation/environments).
+* [Send key data](https://docs.sentry.io/platforms/javascript/enriching-events/identify-user/) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [FME traffic type](/docs/feature-management-experimentation/traffic-types) and to set the proper `key` for track events in Harness FME.
 
 ### In Sentry
 

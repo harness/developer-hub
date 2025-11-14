@@ -80,7 +80,7 @@ SplitRumAgent.setup("YOUR_SDK_KEY")
 
 While the Agent will work without having an Identity, events won't be sent to FME services until at least one is set.
 
-Identity objects consist of a key and a [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/). The traffic type value must match the name of a traffic type that you have defined in Harness FME.
+Identity objects consist of a key and a [traffic type](/docs/feature-management-experimentation/traffic-types/). The traffic type value must match the name of a traffic type that you have defined in Harness FME.
 
 The RUM Agent provides methods to manage Identities, as shown below:
 

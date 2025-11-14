@@ -26,7 +26,7 @@ In addition to double checking the effectiveness and accuracy of your implementa
 
 #### Step 1: Choose a traffic type
 
-Running an A/A test is simple. First, decide for which traffic type you wish to run the test. Best practice is to run an A/A test for every [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) for which you are running experiments.
+Running an A/A test is simple. First, decide for which traffic type you wish to run the test. Best practice is to run an A/A test for every [traffic type](/docs/feature-management-experimentation/traffic-types/) for which you are running experiments.
 
 #### Step 2: Create a new feature flag
 

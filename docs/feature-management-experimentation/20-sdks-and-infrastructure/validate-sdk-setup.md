@@ -29,7 +29,7 @@ The following validation considerations are relevant for all FME SDKs.
 
 * **Ensure any code calling getTreatment is able to handle when ‘CONTROL’ is returned.** The SDKs return ‘CONTROL’ as a treatment string when there is a connectivity error. Ensure that there is a fall through in the if-statement to support this.
 
-* **Validate SDK Versions are up to date.** Review the SDK tab on the Account usage data page. Ensure that the SDKs are up to date, or, at the minimum, they are on the same major version. It is helpful to establish and document a regular SDK update cadence, such as quarterly or biannually. Check the SDK CHANGES.txt on github for any SDKs you are using to see if anything may be relevant to your usage of Harness FME.
+* **Validate SDK Versions are up to date.** Review the SDK tab on the Usage data page. Ensure that the SDKs are up to date, or, at the minimum, they are on the same major version. It is helpful to establish and document a regular SDK update cadence, such as quarterly or biannually. Check the SDK CHANGES.txt on github for any SDKs you are using to see if anything may be relevant to your usage of Harness FME.
 
 * **Evaluate if you can take advantage of the SDK .destroy() method.** The .destroy() method of the SDK flushes all stored unpublished events and impressions. This is primarily advantageous for the client side SDKs where you have parts of the user journey that explicitly end their session. On the browser, .destroy() returns a promise. If it’s resolved, then you can be sure that all data is pushed to Harness. On the server side it also may be useful in the event that you need to shutdown a service running the FME SDK. Calling .destroy() ensures that data is posted back to Harness. 
 

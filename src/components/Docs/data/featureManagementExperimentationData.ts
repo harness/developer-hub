@@ -89,17 +89,17 @@ import { MODULES } from "@site/src/constants"
       description: "",
       list: [
         {
-          title: "Team Settings",
+          title: "Permissions",
           module: MODULES.fme,
           description:
-            "Manage users, roles and projects to scale your experimentation.",
-          link: "/docs/feature-management-experimentation/team-and-project-settings",
+            "Manage approval workflows and governance for environment-level changes in Harness FME.",
+          link: "/docs/feature-management-experimentation/permissions",
         },
         {
-          title: "Account Settings",
+          title: "RBAC",
           module: MODULES.fme,
-          description: "Configure account-level settings for your organization.",
-          link: "/docs/feature-management-experimentation/account-settings",
+          description: "Control who can view and edit FME resources across projects and environments.",
+          link: "/docs/feature-management-experimentation/permissions/rbac",
         },
         {
           title: "Integrations",

@@ -151,7 +151,7 @@ The Harness FME OpenFeature provider supports tracking user actions or conversio
 To enable event tracking, your evaluation context must include the following:
 
 - A non-empty `targetingKey`
-- A [`trafficType`](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) (for example, `"user"` or `"account"`)
+- A [`trafficType`](/docs/feature-management-experimentation/traffic-types/) (for example, `"user"` or `"account"`)
 - A non-blank event name
 
 Optionally, you can include a numeric value (defaults to 0) and additional event properties (prefers primitives such as string, number, boolean, or null). For more information, see [Sending Events](/docs/feature-management-experimentation/api/events/#event-record-fields).

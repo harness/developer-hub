@@ -179,7 +179,7 @@ Feel free to dive into the declaration files if IntelliSense is not enough!
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/api-keys) to learn more.
 
 ## Using the SDK
 
@@ -717,7 +717,7 @@ You can use the `track` method to record any actions your users perform. Each ac
 The `track` method takes a params object with up to five arguments. The data type and syntax for each are:
 
 * **key:** The `key` variable used in the `getTreatments` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/traffic-types/) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
@@ -1008,7 +1008,7 @@ This section describes advanced use cases and features provided by the Redux SDK
  
 When running **on the client side** the Redux SDK factory client is tied to one specific key or ID at a time which usually belongs to one traffic type (for example, `user`, `account`, `organization`). This enhances performance and reduces caching data in the SDK.
 
-FME supports the ability to release features to multiple keys with different traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. Go to [Traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) to learn more.
+FME supports the ability to release features to multiple keys with different traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. Go to [Traffic type](/docs/feature-management-experimentation/traffic-types/) to learn more.
 
 If you need to roll out feature flags by different traffic types, the SDK instantiates multiple clients, one for each traffic type. For example, you may want to roll out the feature flag `user-poll` by `users` and the feature flag `account-permissioning` by `accounts`. 
 

@@ -117,7 +117,7 @@ When impression tracking is toggled off, feature flag evaluations return treatme
 
 * **Data export** does not include feature flag evaluation data for flag definitions when impression tracking was toggled off. Only impressions created while impression tracking was toggled on are retrieved and exported.
 
-Toggling impressions on or off does not impact your [MTKs](/docs/feature-management-experimentation/management-and-administration/admin-best-practices/mtk-efficiency#what-is-an-mtk) (the number of unique keys for which you evaluate feature flags in a month) or [Account usage data](/docs/feature-management-experimentation/management-and-administration/account-usage#usage-data).
+Toggling impressions on or off does not impact your [MTKs](/docs/feature-management-experimentation/admin-best-practices/mtk-efficiency#what-is-an-mtk) (the number of unique keys for which you evaluate feature flags in a month) or [Usage data](/docs/feature-management-experimentation/account-usage#usage-data).
 
 To turn impression tracking on or off:
 

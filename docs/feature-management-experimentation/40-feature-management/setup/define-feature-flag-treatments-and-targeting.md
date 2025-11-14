@@ -71,7 +71,7 @@ Here are a few examples:
 * logged in user ID
 * account number
 
-Be mindful of using random user IDs, as [overuse of random IDs](/docs/feature-management-experimentation/management-and-administration/admin-best-practices/mtk-efficiency#use-of-unstable-ids) can increase your MTK count (and [costs](/docs/feature-management-experimentation/management-and-administration/account-usage)) unnecessarily.
+Be mindful of using random user IDs, as [overuse of random IDs](/docs/feature-management-experimentation/admin-best-practices/mtk-efficiency#use-of-unstable-ids) can increase your MTK count (and [costs](/docs/feature-management-experimentation/account-usage)) unnecessarily.
 :::
 
 Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](/docs/feature-management-experimentation/feature-management/targeting/segments) if you need to target a large number of user IDs.

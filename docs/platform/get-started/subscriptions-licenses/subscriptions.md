@@ -222,7 +222,7 @@ For more information about specific module subscriptions and licenses, go to:
 
 - [CI Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt/)
 - [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
-- [FME usage and billing](/docs/feature-management-experimentation/management-and-administration/account-usage)
+- [FME usage and billing](/docs/feature-management-experimentation/account-usage)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
 - [CE license consumption](/docs/chaos-engineering/guides/license-consumption)
 - [SEI subscriptions and licenses](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing)

@@ -2,7 +2,7 @@
 title: Control treatment
 sidebar_label: Control treatment
 description: ""
-sidebar_position: 13
+sidebar_position: 7
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/control-treatment
 ---

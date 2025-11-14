@@ -152,7 +152,7 @@ SplitRumAgent.addIdentity({ key: 'user_id', trafficType: 'user' });
 </TabItem>
 </Tabs>
 
-Identity objects consist of a key and a [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/). The traffic type value must match the name of a traffic type that you have defined in Harness FME.
+Identity objects consist of a key and a [traffic type](/docs/feature-management-experimentation/traffic-types/). The traffic type value must match the name of a traffic type that you have defined in Harness FME.
 
 These identities are used to associate the events captured by the RUM Agent to some user, before sending them to FME services. If you provide more than one identity, the captured events will be duplicated and sent to FME services for each identity.
 

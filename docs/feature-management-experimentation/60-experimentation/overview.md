@@ -17,7 +17,7 @@ For more information about creating an experiment, see the [Setup documentation]
 
 You can add **tags** to experiments to make it easier to search, filter, and apply standards. Tags are flexible labels that let you group experiments by team, purpose, status, or any internal conventions. 
 
-Learn more about [experiment tags](/docs/feature-management-experimentation/management-and-administration/tags/).
+Learn more about [experiment tags](/docs/feature-management-experimentation/tags).
 
 ## Review metrics during an experiment
 

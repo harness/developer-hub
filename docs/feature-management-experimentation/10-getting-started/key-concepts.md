@@ -82,13 +82,13 @@ Your company has one Harness account. Your account is the highest level containe
 A Harness user is someone with access to the Harness user interface. Administrators can invite new users to Harness. All paid plans include SSO for user authentication and can support either invites or just in time provisioning.
 
 ### User groups
-A group is a convenient way to manage a collection of users in your account. You can use groups to grant administrative controls and grant environment, feature flag, or segment-level controls. Refer to the [Manage user groups](/docs/feature-management-experimentation/management-and-administration/account-settings/groups) guide for more information.
+A group is a convenient way to manage a collection of users in your account. You can use groups to grant administrative controls and grant environment, feature flag, or segment-level controls. Refer to the [Manage user groups](/docs/feature-management-experimentation/groups) guide for more information.
 
 ### Projects
-Projects provide separation or partitioning of work to reduce clutter or to enforce security. All accounts have at least one project. Use multiple projects only when you want to deliberately separate the work of different teams, product lines, or areas of work from each other. By design, objects within FME are not meant to be shared or moved across projects. Refer to the [Projects](/docs/feature-management-experimentation/management-and-administration/account-settings/projects) guide for more information.
+Projects provide separation or partitioning of work to reduce clutter or to enforce security. All accounts have at least one project. Use multiple projects only when you want to deliberately separate the work of different teams, product lines, or areas of work from each other. By design, objects within FME are not meant to be shared or moved across projects. Refer to the [Projects](/docs/feature-management-experimentation/projects) guide for more information.
 
 ### Environment
-Within each project, you may have multiple environments, such as development, staging, and production. Refer to the [Environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) guide for more information.
+Within each project, you may have multiple environments, such as development, staging, and production. Refer to the [Environments](/docs/feature-management-experimentation/environments) guide for more information.
 
 ### Feature flags
 Feature flags are created at the project level where you specify the feature flag name, traffic type, owners, and description. Targeting rules are then created and managed at the environment level as part of the feature flag definition. Refer to the [Feature flag management](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag) guide for more information.
@@ -102,10 +102,10 @@ A segment is a list of users or unique keys for targeting purposes. Segments are
 ### Traffic type
 Targeting decisions are made on a per-user or per unique key basis, but what are the available types of unique keys you intend to target? These are your traffic types, and you can define up to ten unique key types at the project level.
 
-For feature flags that make decisions or observe metrics at the userId level, the traffic type should be user. If decisions and observations are based on account membership (to facilitate all users for a particular customer being treated the same, for instance), the traffic type should be account. Other common types are anonymous and device, but you have total flexibility in employing different traffic types. Refer to the [Traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) guide for more information.
+For feature flags that make decisions or observe metrics at the userId level, the traffic type should be user. If decisions and observations are based on account membership (to facilitate all users for a particular customer being treated the same, for instance), the traffic type should be account. Other common types are anonymous and device, but you have total flexibility in employing different traffic types. Refer to the [Traffic type](/docs/feature-management-experimentation/traffic-types/) guide for more information.
 
 ### Tag
-Use tags to organize and filter feature flags, segments, and metrics across the Harness user interface. Because they allow you to filter items in lists, they are a great way to filter by team, epic, layer of system (front-end vs back-end), or any other. Refer to the [Tags](/docs/feature-management-experimentation/management-and-administration/tags) guide for more information on how to use them.
+Use tags to organize and filter feature flags, segments, and metrics across the Harness user interface. Because they allow you to filter items in lists, they are a great way to filter by team, epic, layer of system (front-end vs back-end), or any other. Refer to the [Tags](/docs/feature-management-experimentation/tags) guide for more information on how to use them.
 
 ### Statuses
-Statuses provide a way for teams to indicate which stage of a release or rollout a feature is in at any given moment, and as a way for teammates to filter their feature flags to see only features in a particular stage of the internal release process. There is a fixed list of status types. Refer to the [Use statuses](/docs/feature-management-experimentation/team-and-project-settings/statuses) guide for more information.
+Statuses provide a way for teams to indicate which stage of a release or rollout a feature is in at any given moment, and as a way for teammates to filter their feature flags to see only features in a particular stage of the internal release process. There is a fixed list of status types. Refer to the [Use statuses](/docs/feature-management-experimentation/feature-management/setup/assign-flag-status) guide for more information.

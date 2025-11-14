@@ -270,7 +270,7 @@ For more information about selecting a valid baseline treatment, see [Select the
 ## Saving changes to a feature flag
 
 :::tip
-If you make changes to your feature flag, it’s good practice to get them reviewed by submitting them for approval. To learn more, see [Approval flows](/docs/feature-management-experimentation/management-and-administration/fme-settings/approval-flows).
+If you make changes to your feature flag, it’s good practice to get them reviewed by submitting them for approval. To learn more, see [Approval flows](/docs/feature-management-experimentation/feature-management/setup/approval-flows).
 :::
 
 To save changes you make to your feature flag, do the following:

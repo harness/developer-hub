@@ -74,7 +74,7 @@ Arguments passed to the `setup` method will override any value contained in the 
 
 While the Agent will work without having an Identity, events won't be sent to FME services until at least one is set.
 
-Identity objects consist of a key and a [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/). You can only pass values that match the names of traffic types already defined in Harness FME.
+Identity objects consist of a key and a [traffic type](/docs/feature-management-experimentation/traffic-types/). You can only pass values that match the names of traffic types already defined in Harness FME.
 
  The RUM Agent provides methods to manage Identities, as shown in the table below.
 

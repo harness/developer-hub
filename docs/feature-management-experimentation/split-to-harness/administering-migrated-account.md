@@ -55,10 +55,6 @@ The following terminology is referenced in this guide:
 
 <br /><br />
 
-:::info Environment Scope support for Admin API keys
-Creation of new environment-scoped Admin API keys in Harness post-migration will be available when the "Granular permissions in RBAC" [roadmap item](/roadmap/#fme) is delivered. Existing environment-scoped Admin API keys continue to function as before, but cannot be cloned or rotated. To learn more, go to [Admin API key scoped to specific environments](?create-apikey-new-sa=environment-scope#using-a-new-service-account).
-:::
-
 ## Users
 
 This section explains:
@@ -428,7 +424,7 @@ If you create a **new project in Harness** post-migration, your legacy Split Adm
 *Concept: This is a difference in the legacy Split permissioning model and the Harness RBAC model (least privilege model). In Harness, new projects are restricted upon creation and all access permissions need to be granted manually at the project level. (The exception is if you use the All Resources Including Child Scopes resource group in your Account or Organization level role bindings, but this is not recommended.)*
 :::
 
-Post-migration, your legacy Split Admin API keys are listed in **FME Settings**. _Environment-scoped_ legacy Split Admin API keys will be listed in FME Settings _if you are in the project where the [environment was created](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments/#editing)_.
+Post-migration, your legacy Split Admin API keys are listed in **FME Settings**. _Environment-scoped_ legacy Split Admin API keys will be listed in FME Settings _if you are in the project where the [environment was created](/docs/feature-management-experimentation/environments/#editing)_.
 
 To view **environment-scoped** keys alongside the globally-scoped legacy Split Admin API keys:
 1. In the left navigation pane, click the scope selector and select the project where the environment was created.
@@ -691,18 +687,15 @@ If created at the project level, the API key would not be sharable (by inheritin
 </TabItem>
 <TabItem value="environment-scope" label="⚠️ Admin API key scoped to specific environments">
 
-:::warning
-Creating a new Admin API key scoped to specific FME environments in the Harness FME module is not yet possible using Harness RBAC.
-:::
+Harness FME now supports granular access control for Admin API keys through Harness RBAC.  
 
-While it is currently not possible post-migration to create Admin API keys scoped to environments, we are working on extending the FME implementation of Harness RBAC to allow this functionality. The Harness FME team will release fine-grained access control over FME resources with the “Granular permissions in RBAC” [roadmap item](/roadmap/#fme). At that time, you will be able to create custom resource groups in Harness that will grant access to specific FME environments within a project.
+For more information, see:
 
-Currently, for FME resources, resource groups in Harness define RBAC access to *all* entities of a given type. This means that access to specific environments within a project cannot be configured; only access to *all* environments within a project can be granted or revoked.
-
-Note that new API keys created in Harness cannot be scoped to specific FME environments of a project, even if you add the API key to a Harness service account linked to an environment-scoped legacy Split Admin API key.
+- [Harness RBAC in FME](/docs/feature-management-experimentation/permissions/rbac)
+- [FME Permissions Enforcement](/docs/feature-management-experimentation/permissions/enforcement?split-harness-users=split-migrated-existing)
 
 :::info
-Your legacy Split Admin API key (created pre-migration) scoped to specific environments will continue to work that way. The legacy API key will be authorized by the back-end servers, as before migration.
+Legacy Split Admin API keys (created before migration) scoped to specific environments continue to work but are no longer recommended.
 :::
 
 </TabItem>
@@ -964,16 +957,17 @@ Harness platform environments are distinct and separate from FME environments. (
 
 ##### FME environments
 
-In the **Feature Management & Experimentation** module in Harness, [FME environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) are created for your project. FME environments are used to scope your FME SDK API keys, FME feature flag definitions, FME segments, and FME experiments. Within the FME module, you can access a project's FME environments from the left navigation pane, by clicking **Environments** or by clicking **FME Settings** (and then clicking the **View** link for a project).
+In the **Feature Management & Experimentation** module in Harness, [FME environments](/docs/feature-management-experimentation/environments) are created for your project. FME environments are used to scope your FME SDK API keys, FME feature flag definitions, FME segments, and FME experiments. Within the FME module, you can access a project's FME environments from the left navigation pane, by clicking **Environments** or by clicking **FME Settings** (and then clicking the **View** link for a project).
 
 ![](./static/fme-project-envs.png)
 
 ##### Granular permissions over FME environments
 
-The Harness FME team will release fine-grained access control over FME resources with the “Granular permissions in RBAC” [roadmap item](/roadmap/#fme). At that time, you will be able to create a resource group with specified **FME Environments** (at the location shown in the image below). This is different than creating a resource group with specified _Harness platform_ **Environments**, which is already possible in Harness.
+Harness FME supports fine-grained access control over FME resources. You can create resource groups that grant access to specific FME environments within a project.
 
 ![Location where granular permissions will be added for FME environments](./static/rbac-custom-resource-group.png)
 
+Legacy Split Admin API keys scoped to specific environments (created before migration) continue to work but are no longer recommended. See [Harness RBAC in FME](/docs/feature-management-experimentation/permissions/rbac) to configure permissions for FME resources and [FME Permissions Enforcement](/docs/feature-management-experimentation/permissions/enforcement) to learn how RBAC rules are enforced in Harness FME.
 
 ### Harness roles
 

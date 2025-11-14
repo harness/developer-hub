@@ -51,7 +51,7 @@ To make sure the SDK is properly loaded before asking it for a treatment, block 
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Use the code snippet below with your own API key. Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
+Use the code snippet below with your own API key. Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](/docs/feature-management-experimentation/api-keys) to learn more.
 
 ```csharp title="C#"
 using Splitio.Services.Client.Classes;
@@ -430,7 +430,7 @@ Use the `track` method to record any actions your customers perform. Each action
 In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `GetTreatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/traffic-types/) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.

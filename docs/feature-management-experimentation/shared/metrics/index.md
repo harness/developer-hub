@@ -45,7 +45,7 @@ You can set an alert policy for a metric and Harness FME will notify you if a fe
 
 ## Audit logs
 
-Audit logs are captured every time the metric's definition or alert policy is changed. For more information, review the [Audit logs](/docs/feature-management-experimentation/management-and-administration/account-settings/audit-logs/) guide.
+Audit logs are captured every time the metric's definition or alert policy is changed. For more information, see [Audit logs](/docs/feature-management-experimentation/audit-logs/).
 
 ## Metric list
 

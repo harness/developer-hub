@@ -14,13 +14,66 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 #### Last updated: November 12, 2025
 
-## October 2025
+## November 2025
+
+### [New Feature] Permissions Enforcement Controls for Transitioning from Split Legacy Permissions
+----
+#### 2025-11-05
+
+Harness FME now provides a streamlined way for administrators to manage the transition from Split legacy permissions to centralized RBAC governance. Migrated customers can now choose how Split legacy environment-level and object-level permissions interact with Harness RBAC on the **Permissions Enforcement** page in **FME Settings**.
+
+RBAC permissions are always enforced. Legacy settings serve only as an additional layer of restriction. 
+
+Administrators can select one of three permissions enforcement modes:
+
+| Enforcement Mode | Description |
+|:---:|:---:|
+| **RBAC permissions + legacy environment-level + legacy object-level permissions** | Continues to enforce Split legacy restrictions on who can edit/export in environments and provides legacy object-level edit controls for feature flag, segment, and metric definitions. |
+| **RBAC permissions + legacy object-level permissions only** | Disables Split legacy environment-level restrictions while retaining object-level edit controls for feature flag, segment, and metric definitions. |
+| **RBAC permissions only** | Fully removes legacy Split permissions from the UI and enforcement. Harness RBAC becomes the single governance layer. |
+
+With Permissions Enforcement, organizations can:
+
+- Remove redundant environment-level governance once RBAC controls are in place
+- Reduce UI clutter and operational confusion from overlapping permission systems
+- Retain object-level edit protection temporarily while evaluating modern governance alternatives
+- Standardize how access is managed and audited across FME and additional Harness product modules
+
+This feature provides administrators with full control over their transition from Split legacy permissions to centralized RBAC, providing a smooth, customer-paced migration path that simplifies governance and ensures minimal operational disruption. 
+
+#### Related documentation
+
+- [Permissions Enforcement for FME](/docs/feature-management-experimentation/permissions/enforcement)
+- [Harness RBAC for FME](/docs/feature-management-experimentation/permissions/rbac)
+- [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness)
+
+### [New Feature] Environment-level RBAC Governance in FME
+----
+#### 2025-11-05
+
+Harness FME now supports granular access control at the environment level through Harness Role-Based Access Control (RBAC). Administrators can define [resource groups](/docs/platform/role-based-access-control/add-resource-groups/) that limit access to specific [FME environments](/docs/feature-management-experimentation/environments) by name, controlling who can view, edit, or manage FME resources such as feature flags and segment definitions within those environments. 
+
+Environment-level permissions can now be configured in Harness RBAC using Resource Groups and Roles. Legacy environment permissions in **FME Settings** can be replaced with Harness RBAC. This enhancement enables consistent governance across Harness modules while improving security and release workflows in Harness FME. 
+
+With environment-level RBAC in FME, teams can:
+
+- Prevent unauthorized changes in production environments 
+- Allow development and QA teams to safely experiment in non-production environments 
+- Centralize permissions and remove reliance on Split legacy permission settings 
+- Maintain auditability of who can modify resources in each environment
+
+This feature enables Harness FME administrators to use resource groups to control access to FME resources by a specific environment, ensuring precise permissions, safer non-production edits, and auditable governance.
+
+#### Related documentation
+
+- [Harness RBAC for FME](/docs/feature-management-experimentation/permissions/rbac)
+- [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness)
 
 ### [New Enhancement] Owners Are Metadata Only
 ----
 #### 2025-10-31
 
-Harness FME has updated the [owners role](/docs/feature-management-experimentation/team-and-project-settings/owners/) to improve clarity and enhance security in feature flag, segment, and metric permissions. Owners now represent responsible stakeholders, rather than users with inherent editing rights.
+Harness FME has updated the [owners role](/docs/feature-management-experimentation/owners) to improve clarity and enhance security in feature flag, segment, and metric permissions. Owners now represent responsible stakeholders, rather than users with inherent editing rights.
 
 ![](./static/fme/owners-update.png)
 
@@ -31,13 +84,13 @@ With this enhancement, you can:
 - Reduce confusion over who can modify production rollouts
 - Maintain access control in sensitive environments
 
-All existing edit permissions have been preserved. No one will lose the current access they rely on. To control who can edit feature flags, segments, and metrics, use the latest [FME permissions model](/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions/), which includes environment-level restrictions and optional approval workflows.
+All existing edit permissions have been preserved. No one will lose the current access they rely on. To control who can edit feature flags, segments, and metrics, use the latest [FME permissions model](/docs/feature-management-experimentation/permissions), which includes environment-level restrictions and optional approval workflows.
 
 #### Related documentation
 
-- [Harness FME Permissions](/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions/)
+- [Harness FME Permissions](/docs/feature-management-experimentation/permissions/)
 - [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account)
-- [Owners (Legacy Split)](/docs/feature-management-experimentation/team-and-project-settings/owners)
+- [Owners (Legacy Split)](/docs/feature-management-experimentation/owners)
 
 ### [New Feature] Harness FME MCP Tools
 ----
@@ -247,7 +300,7 @@ This is especially helpful for organizations with multiple teams running experim
 
 #### Related documentation
 
-- [Tags](/docs/feature-management-experimentation/management-and-administration/tags/)
+- [Tags](/docs/feature-management-experimentation/tags/)
 - [Experimentation Overview](/docs/feature-management-experimentation/experimentation/overview)
 - [Experiments Setup](/docs/feature-management-experimentation/experimentation/setup/)
 
@@ -811,7 +864,7 @@ Customers can now map Split traffic types to [mParticle MPID](/docs/feature-mana
 ### 2023-04-27
 #### Admin API Keys Enhancements
 ##### Clone API Keys
-Users can now [clone API Keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys#cloning-api-keys) with the same access levels and scope as the key that is cloned. This will enable users to securely change/rotate keys on a regular basis while eliminating manual work.
+Users can now [clone API Keys](/docs/feature-management-experimentation/api-keys#cloning-api-keys) with the same access levels and scope as the key that is cloned. This will enable users to securely change/rotate keys on a regular basis while eliminating manual work.
 #### SDK Enhancements
 ##### TLS support
 Split now supports TLS encryption for [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#cli-configuration-options-and-its-equivalents-in-json--environment-variables) and [Split Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy#cli-configuration-options-and-its-equivalents-in-json-and-environment-variables) endpoints. This will enable developers to further secure their SDK traffic.
@@ -828,7 +881,7 @@ Developers can now [configure specific proxies](/docs/feature-management-experim
 ##### Essential Scheduling
 [Essential scheduling](/docs/feature-management-experimentation/feature-management/manage-flags/using-essential-scheduling/) provides the capability to launch a feature on a certain date and time, up to 90 days in advance. This enables users to get all the necessary rollout work done, like getting approvals, long before the release.
 ##### Simplified Feature Flag Configurations: Split Environment Usability Updates (Release 1)
-There are new UI and UX updates to the feature flag editing experience that make the selection of [environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) and the editing of flag details more intuitive and easier. The updates include an environment pick list showcasing feature flag traffic per environment, production environment indicators, and upgraded headers to easily edit flag details.
+There are new UI and UX updates to the feature flag editing experience that make the selection of [environments](/docs/feature-management-experimentation/environments) and the editing of flag details more intuitive and easier. The updates include an environment pick list showcasing feature flag traffic per environment, production environment indicators, and upgraded headers to easily edit flag details.
 #### Security
 ##### SCIM Support
 With [SCIM Support](https://help.split.io/hc/en-us/sections/14249918421005-SCIM), IT Admins can now manage Split users and groups using their preferred Identity Provider (IdP) including [Azure Active Directory](https://help.split.io/hc/en-us/articles/12386431119245-SCIM-for-Azure-AD) and [Okta](https://help.split.io/hc/en-us/articles/10488076923021-SCIM-for-Okta). This will help streamline the onboarding/offboarding processes as well as reduce the risk when governing users outside one's security platform.
@@ -841,7 +894,7 @@ Developers can now start their [Go](/docs/feature-management-experimentation/sdk
 ### 2023-03-23
 #### Feature Management Console
 ##### Individual Target Key Limit
-The [individual target key limit](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) has been updated to 500. This will enable users to deliver changes to their users faster without any impact on the application load times.
+The [individual target key limit](/docs/feature-management-experimentation/environments) has been updated to 500. This will enable users to deliver changes to their users faster without any impact on the application load times.
 ### 2023-03-17
 #### Documentation
 ##### SDK Validation Checklist
@@ -856,7 +909,7 @@ Users will now see a section on their **My Work** page that lists [experiments r
 ### 2023-03-01
 #### Feature Management Console
 ##### Metric Audit Logs
-[Metric Audit Logs](/docs/feature-management-experimentation/management-and-administration/account-settings/audit-logs) will now capture when a metric name is updated and when an alert policy is created, updated, or deleted. This will help increase visibility across teams of all the changes made across Split.### February 2023
+[Metric Audit Logs](/docs/feature-management-experimentation/audit-logs) will now capture when a metric name is updated and when an alert policy is created, updated, or deleted. This will help increase visibility across teams of all the changes made across Split.### February 2023
 ### 2023-02-27
 #### Monitoring
 ##### Metric Definition Filters
@@ -924,7 +977,7 @@ Split has extended its iOS SDK capability to now [support watchOS, macOS, and tv
 #### 2022-10-20
 ##### Feature Management Console
 ###### Change Request ID More Accessible
-Users can now access the [change request ID](/docs/feature-management-experimentation/management-and-administration/fme-settings/approval-flows#reviewing-a-request) directly from the change summary page. This will eliminate the need to copy the ID from a web browser address bar.
+Users can now access the [change request ID](/docs/feature-management-experimentation/feature-management/setup/approval-flows#reviewing-a-request) directly from the change summary page. This will eliminate the need to copy the ID from a web browser address bar.
 #### 2022-10-14
 ##### SDK Enhancements
 ###### Evaluate Without Sending Impressions
@@ -962,7 +1015,7 @@ The [Google Tag Manager (GTM) integration](/docs/feature-management-experimentat
 #### 2022-07-26
 ##### Admin Console
 ###### **Allow Admins to Skip Approval Flows**
-To avoid delays when changes need to occur right away, admins can now [skip approval flows](/docs/feature-management-experimentation/management-and-administration/fme-settings/approval-flows) on selected environments.
+To avoid delays when changes need to occur right away, admins can now [skip approval flows](/docs/feature-management-experimentation/feature-management/setup/approval-flows) on selected environments.
 #### 2022-07-15
 ##### Admin API Enhancements
 ###### Get/Create Split API Enhancements
