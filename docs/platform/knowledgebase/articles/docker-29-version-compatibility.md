@@ -5,13 +5,13 @@ redirect_from:
   - /kb/platform/articles/docker-29-version-compatibility
 ---
 
-# Docker Engine v29 — Compatibility Notice for Harness CI
+# Docker Engine v29 — Compatibility Notice for Harness 
 
-Docker Engine **v29** introduces significant API changes that are **not backward-compatible** with older Docker clients or tooling. These changes can impact CI pipelines running on:
+Docker Engine **v29** introduces significant API changes that are **not backward-compatible** with older Docker clients or tooling. These changes can impact pipelines that:
 
-- Harness **VM Runner**
-- Harness **Local Runner**
-- **Docker-in-Docker (DinD)** workflows
+- Run on pipeline stages using **VM Runner**
+- Run on pipeline stages uHarness **Local Runner**
+- Leverage **Docker-in-Docker (DinD)** workflows
 
 This page summarizes the impact and required actions to ensure your pipelines continue to run successfully.
 
@@ -36,9 +36,9 @@ These errors typically occur when the Docker daemon upgrades but the Docker clie
 - **Docker Blog: Engine v29 Overview**  
 [Docker Blog: Engine v29 Overview](https://www.docker.com/blog/docker-engine-version-29/)
 
-## Impact on Harness CI VM Runner
+## Impact on Harness VM Runner
 
-Docker 29 is **not compatible** with the **Moby client** bundled with the Harness CI VM Runner.  
+Docker 29 is **not compatible** with the **Moby client** bundled with the Harness VM Runner.  
 If a VM Runner environment upgrades to Docker 29, Docker-related steps may begin to fail.
 
 ### Required Action
@@ -49,7 +49,7 @@ If a VM Runner environment upgrades to Docker 29, Docker-related steps may begin
 
 `drone-runners/drone-runner-aws: v1.0.0-rc.221`
 
-## Impact on Harness CI Local Runner
+## Impact on Harness Local Runner
 
 If your build VM automatically updates packages, it may pull Docker 29, which is **incompatible** with the Docker client bundled with the Local Runner.
 
@@ -58,14 +58,22 @@ If your build VM automatically updates packages, it may pull Docker 29, which is
 - If your Docker version is **29.x or higher**, downgrade back to **28.x**.  
 - **Pin** the Docker package to prevent future auto-upgrades until a fully compatible version of the Local Runner is available.
 
-Reference issue for similar API mismatch:
+Alternatively, follow these instructions if you do not wish to downgrade: 
 
-- *“client version 1.24 is too old”* — traefik/traefik Issue #12253
+The instructions below are for Ubuntu Linux: 
+```
+systemctl edit docker.service
+Add this part above the line ### Lines below this comment will be discarded:
+[Service]
+Environment=DOCKER_MIN_API_VERSION=1.24
+Save the file and exit
+systemctl restart docker
+```
 
 
 ## Docker-in-Docker (DinD) Compatibility Guidelines
 
-If your CI pipeline uses Docker-in-Docker, you must prevent your DinD container from upgrading to Docker 29.
+If your pipeline uses Docker-in-Docker, you must prevent your DinD container from upgrading to Docker 29.
 
 ### Required Actions
 
