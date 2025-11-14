@@ -32,6 +32,31 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## November 2025
+
+### Version 1.107.0
+
+<!-- 2025-11-10-->
+
+#### New Feature and Enhancements
+- Improved markdown support in Pipeline Annotations. Tables are simplified and users can now display badges inside tables. (CI-19568)
+
+#### Fixed issues
+- Resolved a UI loading issue on the Run pipeline screen where the branch list could be stuck showing an infinite loader. (CI-19632)
+- Resolved an issue where IRSA authentication failed during Build and Push steps using DLC, as token files and auth-related environment variables were not passed to BuildKit. With the new flag PLUGIN_BUILDKIT_INHERIT_AUTH, AWS auth now inherits correctly, ensuring seamless authentication. (CI-19689)
+- Improved logging for pipeline failure due to invalid secret, we now log more information for easier troubleshoot.(CI-18745)
+
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `plugins/buildx` | Enhance buildx to automatically pass all aws variables | 1.3.10 | 1.3.11 |
+| `plugins/buildx-ecr` | Enhance buildx to automatically pass all aws variables | 1.3.8 | 1.3.9 |
+| `plugins/buildx-acr` | Enhance buildx to automatically pass all aws variables | 1.4.0 | 1.4.1 |
+| `plugins/buildxgar` | Enhance buildx to automatically pass all aws variables | 1.3.8 | 1.3.9 |
+| `harness/ci-lite-engine`       | Regular image updates | 1.17.11             | 1.17.12         |
+| `harness/ci-addon`       | Regular image updates | 1.17.11              | 1.17.12         |
+
 ### Version 1.106.0
 
 <!-- 2025-11-03-->
