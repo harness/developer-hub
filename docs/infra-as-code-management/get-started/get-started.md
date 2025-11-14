@@ -57,3 +57,8 @@ This guide introduced you to the core functionalities and setup of Harness IaCM,
 - [**Default Pipelines:**](/docs/infra-as-code-management/pipelines/default-pipelines) Start with ready-made pipeline templates to accelerate automation and best practices.
 
 Go to [Harness AI Chat use cases](/docs/platform/harness-aida/harness-ai-chat-guide/) for more use cases on Harness AI, and platform integration.
+
+<UniversityAdmonition title="Harness IaCM self-paced training">
+  For an interactive onboarding experience including further use cases and features like **drift detection**, **remote backends**, and **policy enforcement**, check out [**Harness IaCM self-paced training**](https://university-registration.harness.io/self-paced-training-harness-infrastructure-as-code-management).
+</UniversityAdmonition>
+

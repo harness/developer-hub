@@ -1,0 +1,31 @@
+/* White card with blue border and left stripe */
+.university-admonition {
+    background: #ffffff;
+    border: 1px solid #c2e0ff;
+    border-left: 6px solid #0284ff;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+  
+  /* Hide the default Docusaurus icon */
+  .admonition.admonition-info.university-admonition .admonition-icon {
+    display: none !important;
+  }
+  
+  /* Title and logo */
+  .university-admonition__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    color: #0b3d62;
+  }
+  
+  .university-admonition__logo {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }

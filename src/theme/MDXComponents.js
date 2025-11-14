@@ -11,6 +11,7 @@ import Telemetry from "../components/Telemetry";
 import HarnessApiData from "../components/HarnessApiData";
 import Tooltip from "../components/ToolTip/Tooltip";
 import DocTable from "../components/DocTable/DocTable";
+import UniversityAdmonition from "../components/Admonition/UniversityAdmonition";
 
 export default {
   // Re-use the default mapping
@@ -27,4 +28,5 @@ export default {
   HarnessApiData: HarnessApiData,
   Tooltip: Tooltip,
   DocTable: DocTable,
+  UniversityAdmonition: UniversityAdmonition,
 };
