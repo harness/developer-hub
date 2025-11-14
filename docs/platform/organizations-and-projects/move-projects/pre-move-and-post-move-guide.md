@@ -61,6 +61,9 @@ This list covers common issues but is not exhaustive. Additional organization-le
         - Links in old logs pointing to the moved project in the older organization will break.
         - New audit logs for the moved project will appear in the newer organization.
 
+9. Terraform Resource and State Management:
+    - Terraform state and configuration files that reference the moved project may become inconsistent after the move.
+    - Resources created using the Harness Terraform Provider include organization and project identifiers that will no longer match the new organization.
 
 
 :::note Important note

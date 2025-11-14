@@ -29,32 +29,32 @@ This document provides a step-by-step guide to migrate projects from one organiz
 
 ### Step 1: Navigate and access the move option
 
-From the **Projects listing**:
 1. Navigate to **Projects** at account or organization level
 2. Click the **⋮** menu next to your project
 3. Select **Move Project**
 
-From the **Project overview page**:
-1. Open your project
-2. Click the **⋮** menu in the top right
-3. Select **Move Project**
+    <DocImage path={require('../static/project-list-view.png')} width="80%" height="80%" title="Move project modal" />
 
 ### Step 2: Select destination organization
 
-1. In the Move Project modal, review the warning about potential configuration impacts
-2. Choose your destination organization from the dropdown (only organizations where you have Create Project permission appear)
-  
-    <!--<DocImage path={require('./static/move-project-modal.png')} width="50%" height="50%" title="Move project modal" />-->
+1. In the Move Project modal, review the warning about potential impacts
+
+  <DocImage path={require('../static/review-move-project.png')} width="50%" height="50%" title="Move project modal" />
+
+2. Select the destination organization from the dropdown. Only organizations where you have Create Project permission are available.
+
+  <DocImage path={require('../static/select-destination-org.png')} width="50%" height="50%" title="Move project modal" />
 
 3. Click **Move Project** to start the move process
 
+  <DocImage path={require('../static/move-project.png')} width="50%" height="50%" title="Move project modal" />
+
 ### Step 3: Confirm Move
 
-1. Review the confirmation dialog showing potential impacts
-2. Type the **Project name** to confirm
+1. Review the confirmation dialog showing potential impacts. Type the **Project name** to confirm
 
-    <!--<DocImage path={require('./static/confirm-project-move.png')} width="50%" height="50%" title="Move project confirm" />-->
+2. Click **Confirm Move**
 
-3. Click **Confirm Move**
+  <DocImage path={require('../static/move-confirm.png')} width="50%" height="50%" title="Move project confirm" />
 
-Once the move completes, you'll be redirected to the project in its new organization. Verify that pipelines and deployments function as expected.
+Once the move completes, you'll be redirected to the project in its new organization. Follow the [post-move remediation](./pre-move-and-post-move-guide/#post-move-remediation) guide to complete the movement.
