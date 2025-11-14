@@ -63,22 +63,58 @@ This list covers common issues but is not exhaustive. Additional organization-le
 
 9. Terraform Resource and State Management:
     - Terraform state and configuration files that reference the moved project may become inconsistent after the move.
-    - Resources created using the Harness Terraform Provider include organization and project identifiers that will no longer match the new organization.
-
+    - Resources created using the Harness Terraform Provider include organization and project level identifiers that will no longer match the new organization.
+    - Terraform state and configuration management are highly variable, depending on how you define, reference, and structure your Terraform code, you may need to manually update your Terraform state and configuration files after the move.
 
 :::note Important note
 - Links referencing the source organization—such as those in pipelines, webhooks, or audit logs—may stop working after a project is moved. Bookmarks or URLs with account, organization, or project identifiers are not redirected and will become outdated.
 - The project movement will not be allowed if a project with the same identifier already exists in the destination organization. For example, if Project P is being moved from organization O1 to O2, and organization B already has a project with the same identifier (i.e., Project P), the project movement will not be allowed.
+- Harness does not provide automated tools to update Terraform configuration or state files after project movement. You must manually manage and update your Terraform resources and state files when moving projects across organizations.
 :::
 
 ## Post-move remediation
 
-After a project is moved, the following tips can help you identify and fix broken references. Note that this list is not exhaustive and additional actions might be needed depending on your project setup.
+After a project is moved, follow these steps to identify and fix broken references. Note that this list is not exhaustive and additional actions might be needed depending on your project setup.
 
-- Review pipeline failures for clear, actionable errors to resolve issues.
-- Recreate organization-level connectors and secrets in the destination organization, if required.
-- Update notification channels to use destination organization resources.
-- Verify and update RBAC policies.
+### Pipelines
+- Test all pipelines to identify failures and broken references.
+- Update pipeline references to use connectors and secrets from the destination organization.
+- Recreate or import organization-level templates in the destination organization.
+- Update YAML entities with hardcoded `orgIdentifier` references to match the new organization.
+- Fix pipeline chaining references if child pipelines were also moved.
 
+### Connectors and Secrets
+- Recreate organization-level connectors in the destination organization.
+- Recreate organization-level secrets in the destination organization.
+- Update all references in services, environments, and pipelines to use the new connectors and secrets.
 
+### Services and Environments
+- Update service manifest sources and artifact sources to reference destination organization connectors.
+- Update environment configuration files and connection strings.
+- Recreate service overrides and infrastructure definitions that reference organization-level resources.
+- Update GitOps cluster references to use destination organization resources.
 
+### Notifications and Webhooks
+- Recreate notification channels in the destination organization.
+- Update notification rules to use the new channels.
+- Recreate webhook configurations using destination organization connectors and secrets.
+- Test custom webhook triggers and update as needed.
+
+### Access Control
+- Recreate organization-level RBAC policies in the destination organization.
+- Verify user access and permissions are working correctly.
+- Update user group memberships if needed.
+
+### Monitored Services
+- Update monitored services to reference destination organization resources.
+- Verify monitoring configurations are working correctly.
+
+### Terraform Management
+- Update Terraform configuration files with new organization and project identifiers.
+- Update Terraform state files to reflect the new organization structure.
+- Run `terraform plan` to identify any remaining drift or issues.
+
+### General Validation
+- Update bookmarks and saved URLs to reflect the new organization path.
+- Test end-to-end workflows to ensure everything functions correctly.
+- Review and update any documentation or runbooks that reference the old organization path.
