@@ -536,7 +536,7 @@ You can also initiate a Sync or Refresh from the main GitOps page.
 - **Sync** will sync the desired Git state with the live cluster state.
 
 :::info note
-We currently do not support using [Harness expressions](/docs/platform/variables-and-expressions/harness-expressions-reference) in GitOps manifests.
+Harness supports using Harness secret expressions in GitOps manifests. Other Harness expressions are not supported. For details on using Harness secret expressions in your manifests, go to [Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications#harness-secret-expressions-in-application-manifests).
 :::
 
 ## Application filters
