@@ -44,7 +44,7 @@ Select the **Feature Management & Experimentation** module.
 
 ### Step 3: Access your feature flags
 
-When you log in, you'll land in Harness FME with the left navigation menu you're familiar with on the [My Work](/docs/feature-management-experimentation/team-and-project-settings/my-work) page.
+When you log in, you'll land in Harness FME with the left navigation menu you're familiar with on the [My Work](/docs/feature-management-experimentation/my-work) page.
 
 From the left navigation menu, select **Feature flags** to view and manage your migrated flags.
 
