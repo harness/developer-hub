@@ -37,6 +37,18 @@ Here is an example AWS superset policy to execute all AWS faults.
                 "ec2:DescribeSubnets",
                 "ec2:DescribeInstanceStatus",
                 "ec2:DescribeInstances",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeNetworkAcls",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:CreateNetworkAcl",
+                "ec2:CreateNetworkAclEntry",
+                "ec2:ReplaceNetworkAclAssociation",
+                "ec2:DeleteNetworkAcl",
+                "ec2:ModifyNetworkAclEntry",
+                "ec2:DeleteRoute",
+                "ec2:CreateRoute",
                 "ec2messages:AcknowledgeMessage",
                 "ec2messages:DeleteMessage",
                 "ec2messages:FailMessage",
@@ -51,6 +63,7 @@ Here is an example AWS superset policy to execute all AWS faults.
             "Action": [
               "ec2:AuthorizeSecurityGroupEgress",
               "ec2:RevokeSecurityGroupEgress",
+              "ec2:AuthorizeSecurityGroupIngress",
               "ec2:RevokeSecurityGroupIngress",
               "ec2:DescribeSecurityGroups"
             ],
@@ -120,14 +133,12 @@ Here is an example AWS superset policy to execute all AWS faults.
                 "lambda:UpdateFunctionConfiguration",
                 "lambda:GetFunctionConcurrency",
                 "lambda:GetFunction",
+                "lambda:GetFunctionConfiguration",
                 "lambda:DeleteFunctionConcurrency",
                 "lambda:PutFunctionConcurrency",
                 "lambda:DeleteLayerVersion",
                 "lambda:GetLayerVersion",
-                "lambda:ListLayerVersions",
-                "iam:ListAttachedRolePolicies",
-                "iam:DetachRolePolicy",
-                "iam:AttachRolePolicy"
+                "lambda:ListLayerVersions"
              ],
             "Resource": "*"
         },
@@ -149,6 +160,31 @@ Here is an example AWS superset policy to execute all AWS faults.
                 "rds:DescribeDBInstances",
                 "rds:DeleteDBInstance",
                 "rds:RebootDBInstance"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:DescribeTable"
+            ],
+            "Resource": "arn:aws:dynamodb:*:*:table/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "fis:CreateExperimentTemplate",
+                "fis:StartExperiment",
+                "fis:StopExperiment",
+                "fis:GetExperiment",
+                "fis:ListExperiments"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:DescribeAlarms"
             ],
             "Resource": "*"
         }
