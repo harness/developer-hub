@@ -21,14 +21,14 @@ These are the currently supported registry types.
 - **NPM:** JavaScript package management.
 - **NuGet:** .NET package manager.
 - **RPM:** Red Hat package management.
-
-<!-- - **Gradle:** Streamline your build automation. -->
-<!-- - **SBT (Scala Build Tool):** Tailored for Scala and Java projects. -->
+- **Gradle:** Streamline your build automation.
+- **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
 
 ### Beta
 - **Go:** Support for Go modules.
 - **Cargo:** Rust package management.
 - **Hugging Face:** Machine learning models and datasets.
+- **Conda:** To support your python and R packages.
 
 ### Coming Soon
 In addition to the registry types above, support for the following registries will be coming soon!
