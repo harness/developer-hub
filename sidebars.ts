@@ -3300,6 +3300,7 @@ const sidebars: SidebarsConfig = {
           className: 'horizontal-bar',
         },
         'ai-sre/get-started/overview',
+        'ai-sre/get-started/onboarding-guide',
         {
           type: 'html',
           value: 'Use AI SRE',
