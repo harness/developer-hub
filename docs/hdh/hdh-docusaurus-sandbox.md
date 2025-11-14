@@ -12,7 +12,7 @@ redirect_from:
   buttonText="Banner Button Text"
   title="Title text."
   tagline="Tagline text!"
-  link="https://www.harness.io/training"
+  link="https://www.harness.io/university"
   closable={true}
   target="_self"
 />
@@ -72,9 +72,11 @@ Some second level text
 </details>
 </details>
 
-## Notes
+## Notes aka Admonitions
 
 These are called [admonitions](https://docusaurus.io/docs/markdown-features/admonitions).
+
+### Out of the Box DS Admonitions
 
 :::note
 
@@ -105,6 +107,20 @@ Information text.
 Danger text.
 
 :::
+
+### Custom Admonitions
+
+<UniversityAdmonition title="Use the Harness University Admonition">
+
+  Take a look at the source code to leverage this. E.g 
+
+```
+  <UniversityAdmonition title="Your CTA Title">
+    Some Text
+  </UniversityAdmonition>
+```
+
+</UniversityAdmonition>
 
 ## Tabs
 

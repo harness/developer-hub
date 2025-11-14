@@ -302,6 +302,10 @@ const config: Config = {
               to: '/release-notes/feature-flags-ga-timeline',
             },
             {
+              label: 'University',
+              to: '/university',
+            },
+            {
               label: 'Instructor-Led Training',
               to: '/university?ilt',
             },
