@@ -399,7 +399,11 @@ This ensures full compatibility with Google Cloud Run's native deployment mechan
 
 For detailed YAML reference and manifest specifications, refer to the official [Google Cloud Run YAML Reference](https://cloud.google.com/run/docs/reference/yaml/v1) documentation.
 
-## Troubleshooting
+## Limitations and Troubleshooting 
+
+### Invalid Service Name Error
+
+Google Cloud Run service names must use only lowercase alphanumeric characters and dashes. Underscores are not allowed. If you encounter `Invalid resource name` errors, replace underscores with dashes in your service name (e.g., `my_service` → `my-service`). For details, see [Google Cloud Run naming conventions](https://cloud.google.com/run/docs/resource-model#resource-names).
 
 ### Authentication Error with "Inherit from Delegate" Mode
 
