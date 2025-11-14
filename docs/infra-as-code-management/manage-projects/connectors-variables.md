@@ -72,13 +72,13 @@ Variables can be defined in multiple places. The order of precedence determines 
 
 ---
 
-### Environment variables
+## Environment variables
 Environment variables provide runtime configuration for your infrastructure. These behave like standard shell variables and can be used by your provisioning logic, module behavior, or CLI tooling.
 
 - **Key**: The name of the variable (e.g., `TF_LOG`, `ENVIRONMENT`).
 - **Value**: You can set a static value, insert a pipeline variable (FQN), or use **`<+input>`** for runtime input.
 
-#### Add an environment variable
+### Add an environment variable
 1. Click **+ New Environment Variable**.
 2. Define the `Type` (usually `string`).
 3. Provide a `Key` and a `Value`.
@@ -98,7 +98,7 @@ environmentVariables:
 
 ---
 
-### OpenTofu/Terraform variables
+## OpenTofu/Terraform variables
 OpenTofu/Terraform variables (`variable {}` blocks in your code) must be declared by name and value. These are injected into Terraform runs and used in your `*.tf` files.
 
 1. Click **+ Add Variable** under the **OpenTofu/Terraform Variables** section.
@@ -140,10 +140,10 @@ Use `<+input>` to prompt users for values at runtime.
 
 ---
 
-### Variable files
+## Variable files
 Variable files allow you to inject multiple variables via `.tfvars`, `.json`, or `.yaml` files stored in Git.
 
-#### Add a variable file
+### Add a variable file
 1. Click **+ New Variable File**.
 2. Select the **Connector** to access your Git repo.
 3. Choose a repository, branch, and file path (e.g., `main`, `envs/dev.tfvars`).
@@ -170,7 +170,7 @@ Your variable files and HCL can come from the same Git repository or different r
 
 ---
 
-### Variable Sets
+## Variable Sets
 A Variable Set is a reusable collection of environment variables, OpenTofu/Terraform variables, and secrets. They allow you to standardize configuration across multiple workspaces.
 
 Variable Sets are supported at the account, org, and project level:
@@ -182,14 +182,23 @@ Variable Sets are supported at the account, org, and project level:
 
 When applied to a workspace, Variable Sets can be prioritized. Variables from a higher-priority set will override those from lower-priority sets.
 
-:::tip Variable set priority
-In the **Connectors and Variables** tab of a workspace, drag Variable Sets to set their priority.
-Priority 1 > Priority 2 > Priority 3.
+### Referenced By Tab
+When viewing a Variable Set, you can use the **Referenced By** tab to see all workspaces where the variable set is being used. This helps you identify the downstream impact when making changes to a variable set, ensuring you understand which workspaces might be affected by any modifications.
+
+:::info Variable Set Priority
+When multiple Variable Sets are applied to a workspace, you can control their priority to determine which values take precedence when conflicts occur:
+
+1. In the Connectors and Variables tab of a workspace, you can view all attached Variable Sets.
+2. Variable Sets can be reordered using drag-and-drop functionality to change their priority.
+3. The system will clearly indicate when variables conflict between sets, showing which one takes precedence.
+4. Priority order is: Priority 1 > Priority 2 > Priority 3, etc.
 :::
+
+When variables with the same name exist in multiple Variable Sets, the value from the highest priority set will be used. The interface will show which Variable Set is providing the value that will actually be used during execution.
 
 ---
 
-### Input Sources and Runtime Behavior
+## Input Sources and Runtime Behavior
 Each variable shows its **source**, such as:
 
 - `TEMPLATE`: inherited from the selected Template.
