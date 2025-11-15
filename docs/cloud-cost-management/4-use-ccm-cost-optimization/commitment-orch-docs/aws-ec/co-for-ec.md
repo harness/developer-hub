@@ -1,50 +1,35 @@
 ---
-title: Overview
+title: Introduction
 description: This topic describes Commitment Orchestrator and its working.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+The rise in cloud costs reflects the growing scale of business operations in the cloud environment, as many organizations transition from on-premises infrastructure to cloud-based solutions or ramp up their existing cloud utilization. It signifies the expanding scope and investment in cloud services.
 
-:::info
+To help bring down the cloud costs, providers often offer special discounted rates against on-demand costs to the customers. These commitments are mostly in form of <Tooltip id="ccm.introduction-of-co.reserved-instances">**RI (Reserved Instances)**</Tooltip> or <Tooltip id="ccm.introduction-of-co.savings-plan">**SPs(Savings Plan)**</Tooltip>. 
 
-To enable Commitment Orchestrator please enable Commitment Orchestrator in the setup window for new connectors. For already established connectors, visit "Account Settings" and choose the connector and select Commitment Orchestrator in the edit window.
-:::
-
-# Introduction to Commitment Orchestrator 
-
-In recent years, organizations leveraging cloud services have witnessed a notable trend - the steady increase in cloud costs. As businesses increasingly migrate their operations to the cloud or expand their existing cloud infrastructure, the expenses associated with cloud infrastructure, storage, and data processing have become a significant portion of their overall expenditures.
-
-This rise in cloud costs reflects the growing scale of business operations in the cloud environment, as many organizations transition from on-premises infrastructure to cloud-based solutions or ramp up their existing cloud utilization. It signifies the expanding scope and investment in cloud services.
-
-To help bring down the cloud costs, providers often offer special discounted rates against on-demand costs to the customers. These commitments are mostly in form of **RI (Reserved Instances)** or **SPs(Savings Plan)**. 
-
-1. **Reserved Instances**: Reserved Instances are a pricing model offered by cloud service providers that allows customers to reserve and commit to a specific amount of computing capacity in advance for a term of one or three years. This commitment comes with a significant discount compared to on-demand pricing, making it a cost-effective option for workloads with predictable and sustained usage.
-
-2. **Savings Plans**: Savings Plans are a flexible pricing model introduced by cloud service providers that offer customers significant discounts on their usage in exchange for committing to a consistent amount of usage, measured in dollars per hour, for a one- or three-year term. Unlike Reserved Instances, Savings Plans offer more flexibility in terms of instance type, region, and operating system, making them suitable for workloads with variable usage patterns.
 
 <DocImage path={require('./static/ri-vs-sp.png')} width="70%" height="70%" title="Click to view full size image" />
 
-Here's how Savings Plans are referred to by major cloud providers:
 
-- **Amazon Web Services (AWS)**: In the context of AWS, Savings Plans are known as Savings Plans.
-- **Microsoft Azure**: Azure refers to its equivalent of Savings Plans as Azure Reserved VM Instances (RIs) or Azure Reserved Capacity.
-- **Google Cloud Platform (GCP)**: GCP's counterpart to Savings Plans is called Committed Use Discounts (CUDs) or Committed Use Contracts (CUCs).
+It's essential for organizations to carefully analyze their usage patterns before making <Tooltip id="ccm.introduction-of-co.commitment">**commitments**</Tooltip> to ensure they choose the most suitable Reserved Instances for their needs.
 
-It's essential for organizations to carefully analyze their usage patterns before making commitments to ensure they choose the most suitable Reserved Instances for their needs.
+
+## Challenges with Commitments
 
 Commitments in the cloud, such as Reserved Instances (RIs) or other long-term contracts, can pose challenges in various situations if not managed correctly. To highlight a few:
 
-- If the organization's workload patterns or compute spend changes significantly due to policy or market factors, commitments made based on initial assumptions may no longer align with actual resource needs. 
-- Rapid changes in technology or the adoption of new services may render existing commitments less cost-effective or even obsolete.
-- Overcommitting to a specific cloud provider or service may lead to vendor lock-in, making it challenging to switch to a different provider or adopt a multi-cloud strategy. 
-- Economic or business uncertainties can make long-term commitments risky, especially if there's a chance of downsizing or changes in strategy.
-- Some commitments, such as rigid long-term contracts, may lack flexibility to adapt to changing circumstances or unexpected events.
-- Overcommitting resources may result in underutilization, leading to inefficient use of commitments and potentially higher overall costs due to unnecessary commitment plans.
-- While managing commitments, there's always overhead in understanding the context of the need of purchase and to identify what to purchase next among the multiple options for commitments, It requires continuous manual effort and is a lot more human error prone in case of wrong predictions.
+- If the organization's **workload patterns** or **compute spend** changes significantly due to policy or market factors, commitments made based on initial assumptions may **no longer align** with actual resource needs. 
+- **Rapid changes** in technology or the adoption of new services may render existing commitments **less cost-effective** or even **obsolete**.
+- Overcommitting to a specific cloud provider or service may lead to **vendor lock-in**, making it challenging to switch to a different provider or adopt a **multi-cloud strategy**. 
+- Economic or business **uncertainties** can make long-term commitments **risky**, especially if there's a chance of downsizing or changes in strategy.
+- Some commitments, such as rigid long-term contracts, may **lack flexibility** to adapt to changing circumstances or unexpected events.
+- Overcommitting resources may result in **underutilization**, leading to **inefficient use** of commitments and potentially **higher overall costs** due to unnecessary commitment plans.
+- While managing commitments, there's always **overhead** in understanding the context of the need of purchase and to identify what to purchase next among the multiple options for commitments. It requires **continuous manual effort** and is a lot more **human error prone** in case of wrong predictions.
 
 At Harness, we are committed to bring in the power of **AI and ML to manage the commitments**. Harness CCM helps you to track everything about your cloud spends so that you have an optimized cloud spend. With our latest addition of **Commitment Orchestrator for AWS EC2 Convertible RIs and Compute Savings Plans**, we focus on managing your commitments for optimal performance and mitigating the problems associated with manual management of commitments.
 
@@ -90,53 +75,6 @@ Commitment Orchestrator does all of this with the help of its 2 engines: **Utili
 | --- | --- |
 | The utilization engine leverages machine learning (ML) and intelligent analysis of existing usage patterns to optimize resource utilization and increase the efficiency of underutilized Reserved Instances (RIs) or Savings Plan.. It breaks RIs into the smallest units and assembles them to meet target instance types. By intelligently analyzing these patterns, the engine identifies opportunities for optimization that can lead to significant cost savings for the business. | The purchase engine analyzes  the on-demand spend and then purchases the RIs/SPs basis the target coverage.|
 
-### Interactive walkthrough for Commitment Orchestrator:
-
-  <iframe 
-     src="https://app.tango.us/app/embed/0be51f8b-45a5-453f-9864-fbb5adb580dd" 
-     title="Set up Commitment Orchestrator" 
-     style={{minHeight:'720px'}}
-     width="100%" 
-     height="100%" 
-     referrerpolicy="strict-origin-when-cross-origin" 
-     frameborder="0" 
-     webkitallowfullscreen="webkitallowfullscreen" 
-     mozallowfullscreen="mozallowfullscreen" 
-     allowfullscreen="allowfullscreen"></iframe>    
-
-
-## Steps to configure:
-
-### Visibility
-To enable visibility, in the master account connector, you need to add the following permissions.
-```
-"ec2:DescribeReservedInstancesOfferings",
-"ce:GetSavingsPlansUtilization",
-"ce:GetReservationUtilization",
-"ec2:DescribeInstanceTypeOfferings",
-"ce:GetDimensionValues",
-"ce:GetSavingsPlansUtilizationDetails",
-"ec2:DescribeReservedInstances",
-"ce:GetReservationCoverage",
-"ce:GetSavingsPlansCoverage",
-"savingsplans:DescribeSavingsPlans",
-"organizations:DescribeOrganization"
-"ce:GetCostAndUsage"
-```
-
-Step 2: Setup flow (to enable actual orchestration)
-```
-"ec2:PurchaseReservedInstancesOffering",
-"ec2:GetReservedInstancesExchangeQuote",
-"ec2:DescribeInstanceTypeOfferings",
-"ec2:AcceptReservedInstancesExchangeQuote",
-"ec2:DescribeReservedInstancesModifications",
-"ec2:ModifyReservedInstances"
-"ce:GetCostAndUsage"
-savingsplans:DescribeSavingsPlansOfferings
-savingsplans:CreateSavingsPlan
-```
-
 ## Savings and Pricing Computation for Commitment Orchestrator
 
 There are two major parts of savings as discussed earlier: Savings Plans (SPs) and Reserved Instances (RIs). If Harness has purchased them for you, those costs will be considered for pricing. We have introduced a new toggle that shows you savings by Harness, indicating how much of the savings were achieved through Harness. The savings achieved by SPs and RIs purchased via Harness are considered for pricing.
@@ -155,54 +93,58 @@ There are two major parts of savings as discussed earlier: Savings Plans (SPs) a
 6. **Detailed Activity Logs**: Harness’ Commitment Orchestrator also provides comprehensive logs detailing every action performed within the Commitment Orchestrator, ensuring transparency and accountability.
 7. **RBAC Support**: Role-Based Access Control (RBAC) is included to manage permissions and access levels within the Commitment Orchestrator, enhancing security and governance.
 
-| **Persona** | **Scenario** | **Value Added** |
-| --- | --- | --- |
-| Cloud Financial Manager/ Cloud Architect | A Cloud Financial Manager aims to maximize cost savings for the organization's AWS commitments and Cloud Architects are responsible for designing and overseeing the organization's cloud infrastructure with varying workloads | Cost optimization and Automated Purchase Management : Commitment Orchestrator assists the manager in optimizing commitment utilization, preventing overcommitment or underutilization, and ensuring maximum ROI on cloud expenditures. The Purchase Engine of Commitment Orchestrator, automated by Cloud Architects, streamlines the analysis of on-demand spend and purchases Reserved Instances or Savings Plans based on target coverage, ensuring efficient resource allocation.
-| Cloud Administrators |Cloud Administrators handle day-to-day cloud operations, including managing Convertible Reserved Instances. | Convertible RI Management: The Utilization Engine of Commitment Orchestrator, managed by Cloud Administrators, identifies underutilized Convertible RIs and performs conversions to increase utilization, optimizing resource usage and cost efficiency.| 
-| IT Managers | IT Managers need detailed insights into commitments, utilization, and savings across multiple accounts and regions.| Visibility and Reporting: Commitment Orchestrator provides visibility into account breakdowns, savings, and utilization, supporting IT Managers in making informed decisions about cloud commitments and expenditures |
-| Organizations with multiple AWS accounts | Organizations with multiple AWS accounts seek flexibility in commitment management due to the ability to support multiple master accounts and set separate coverage for each of them. | Staggered Purchase to Prevent Overcommitment: Commitment Orchestrator's daily staggered purchases, orchestrated by administrators in multi-account structures, prevent overcommitments, ensuring financial flexibility and optimal resource allocation.|
-
 
 ## FAQs
-1. Which cloud providers are supported at the moment?
 
--  Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
+<details>
+<summary>Which cloud providers are supported at the moment?</summary>
+Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
+</details>
 
-2. Is Audit trails support available?
+<details>
+<summary>Is Audit trails support available?</summary>
+Audit trails are supported but only if "Automated Actions with manual Approval" mode is selected when setting up the Commitment Orchestrator.
+</details>
 
--  Audit trails are supported but only if "Automated Actions with manual Approval" mode is selected when setting up the Commitment Orchestrator.
+<details>
+<summary>How many Saving Plan purchases happen in a month?</summary>
+Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
+</details>
 
-3. How many Saving Plan purchases happen in a month?
+<details>
+<summary>How many exchanges happen in a month?</summary>
+Number of exchanges depends on the requirement of the user.
+</details>
 
--  Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
+<details>
+<summary>Where can I see the history of all the actions taken?</summary>
+In the visibility section, you can see all the actions under the logs
+</details>  
 
-4. How many exchanges happen in a month?
+<details>
+<summary>Is RBAC supported?</summary>
+Yes, there are two permissions : view(Visibility) and edit (Setup)
+</details>
 
-- Number of exchanges depends on the requirement of the user.
+<details>
+<summary>Can orchestration be setup on any account?</summary>
+No, only master account with correct permission listed above will be allowed and it can be done for multiple master accounts.
+</details>
 
-5. Where can I see the history of all the actions taken?
+<details>
+<summary>When does Harness make RI purchase?</summary>
+If the account does not have any RI in a given region.
+</details>
 
-- In the visibility section, you can see all the actions under the logs
+<details>
+<summary>Do exclusions apply only to Source RI or Target RI?  From above, it appears that it only excluded on Source RI.</summary>
+Exclusion is for the target instance type. 
+</details>
 
-6. Is RBAC supported?
-
--  Yes, there are two permissions : view(Visibility) and edit (Setup)
-
-7. Can orchestration be setup on any account?
-
--  No, only master account with correct permission listed above will be allowed and it can be done for multiple master accounts.
-
-9. When does Harness make RI purchase?
-
-- If the account does not have any RI in a given region.
-
-10. Do exclusions apply only to Source RI or Target RI?  From above, it appears that it only excluded on Source RI.
-- Exclusion is for the target instance type. 
-
-11. It looks like you have to set it by region and by machine type.  Is there a way to wildcard it for all machine types in a region?
-- We currently support exclusion at instance type and region level. Machine type (Platform as in Linux/ Windows) is not supported. That would be an enhancement request if needed. We have a way for users to filter the instances by family and region and apply for all the matching cases in the UI using a single “Exclude All” checkbox.
-
-
+<details>
+<summary>It looks like you have to set it by region and by machine type.  Is there a way to wildcard it for all machine types in a region?</summary>
+We currently support exclusion at instance type and region level. Machine type (Platform as in Linux/ Windows) is not supported. That would be an enhancement request if needed. We have a way for users to filter the instances by family and region and apply for all the matching cases in the UI using a single “Exclude All” checkbox.
+</details>
 
 
 
