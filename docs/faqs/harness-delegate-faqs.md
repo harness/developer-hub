@@ -27,15 +27,13 @@ There are two options, automatic and manual.
 
 #### Delegate automatic updates
 
-The delegate updates automatically. The delegate installation also installs a **Watcher** program that checks the Harness cloud periodically for new versions.
+The delegate updates automatically. By default the delegate installation also creates a **Upgrader** kubernetes cron job that checks the Harness cloud periodically for new versions.
 
-Watcher ensures there is exactly one delegate process of each published version running.
-
-If there is a published version that is not running, Watcher downloads the JAR file for that version securely over HTTPS, installs it, and updates the delegate connection to Harness Manager. There is no downtime.
+If there is a new image version available for the delegate then Upgrader makes a call to kuberapi to patch the image version for the delegate deployment to the new one. Kubernetes then does a rolling deployment of the new version of the delegate. Please note that older version of delegates finish the running tasks before exiting to ensure there is no disruptions during upgrade. 
 
 #### Delegate manual updates
 
-You update the delegate. When you install a delegate by downloading the delegate YAML file from Harness, you select the manual update option.
+You update the delegate. When you install a delegate by downloading the delegate YAML file from Harness, the YAML file has a upgrader cron job. You can either delete or suspend the job. To upgrade you can then directly update the image version and redeploy.
 
 The delegate is upgraded using a ring methodology commonly used in software release management.
 
