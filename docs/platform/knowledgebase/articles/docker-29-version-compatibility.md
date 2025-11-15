@@ -5,12 +5,12 @@ redirect_from:
   - /kb/platform/articles/docker-29-version-compatibility
 ---
 
-# Docker Engine v29 — Compatibility Notice for Harness 
+# Docker Engine v29 — Compatibility Notice for Harness
 
 Docker Engine **v29** introduces significant API changes that are **not backward-compatible** with older Docker clients or tooling. These changes can impact pipelines that:
 
 - Run on pipeline stages using **VM Runner**
-- Run on pipeline stages uHarness **Local Runner**
+- Run on pipeline stages using Harness **Local Runner**
 - Leverage **Docker-in-Docker (DinD)** workflows
 
 This page summarizes the impact and required actions to ensure your pipelines continue to run successfully.
@@ -32,9 +32,9 @@ These errors typically occur when the Docker daemon upgrades but the Docker clie
 ## Official Documentation
 
 - **Docker Engine v29 Release Notes**  
-[Docker Release Notes](https://www.docs.docker.com/engine/release-notes/29/)
+[Docker Release Notes](https://docs.docker.com/engine/release-notes/29/)
 - **Docker Blog: Engine v29 Overview**  
-[Docker Blog: Engine v29 Overview](https://www.docker.com/blog/docker-engine-version-29/)
+[Docker Blog: Engine v29 Overview](https://docker.com/blog/docker-engine-version-29/)
 
 ## Impact on Harness VM Runner
 
