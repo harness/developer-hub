@@ -324,7 +324,7 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
       ```
 :::
 
-## November 14, 2025, Version 0.34.1 
+## November 17, 2025, Version 0.34.1 
 
 This release includes the following Harness module and component versions.
 
