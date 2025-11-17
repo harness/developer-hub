@@ -95,23 +95,24 @@ The purchases will happen only at master account level and thus will be in turn 
 </TabItem>
 <TabItem value="step3" label="Orchestration Preferences">
 
-- **Target Coverage:** The Target Coverage is the percentage of your compute spend that you want to be covered by Savings Plans or Reserved Instances. The remaining amount will continue to run as on-demand. This is capped at 75%. Commitment orchestrator automatically adjust coverage based on usage patterns. You can set the maximum limit up to which this can increase.
+- **Target Coverage:** The Target Coverage is the percentage of your compute spend that you want to be covered by Savings Plans or Reserved Instances. The remaining amount will continue to run as on-demand. Commitment orchestrator automatically adjust coverage based on usage patterns. You can set the maximum limit up to which this can increase.
 
-- **Atomization:** Atomisation helps with restricting all RI base transactions to a specified date. Commitment Orchestrator intends to buy a seed RI on a monthly basis in each of the regions to create a situation where in the future there would be a seed RI expiring on a monthly basis.
+- **Atomization:** Atomization helps with restricting all RI based transactions to a specified date. To extend on this approach, Harness Commitment Orchestrator intends to buy a Atom RI on a monthly basis in each of the regions to create a situation where in the future there would be a Atom RI expiring on a monthly basis.
 
-    Atom RI helps with restricting all RI based transactions to a specified date. To extend on this approach, Harness Commitment Orchestrator intends to buy an Atom RI on a monthly basis in each of the regions to create a situation where in the future there would be a Atom RI expiring on a monthly basis.
-    This provides Harness Commitment Orchestrator with a unique situation of being able to aggressively perform RI based exchanges to obtain higher savings with low risk factor.
+You can select the atom purchase frequency and select the atom purchase terms and you can also see the cost implications of atomization.
 
-<DocImage path={require('./static/stepfive-copy.png')} width="100%" height="100%" title="Click to view full size image" />
+- **Orchestration Mode:**
 
+Select how the orchestrator executes recommended commitment purchases:
 
-You can select the atom purchase frequency and select the atom purchase terms and you can also see the cost implications pf atomization
+- **Fully Automated**: Commitment purchases are executed automatically without requiring manual approval.
 
+- **Manual**: All commitment purchases require explicit manual approval before execution, giving you complete control over the process.
 
 <DocImage path={require('./static/stepsix.png')} width="80%" height="80%" title="Click to view full size image" />
 
 </TabItem>
-<TabItem value="step4" label="Step 4: Review & Complete">
+<TabItem value="step4" label="Review & Complete">
 
 ### Review
 
