@@ -1,0 +1,9 @@
+{
+    "label": "Artifact Registry CLI",
+    "collapsible": "true",
+    "collapsed": "true",
+    "link": { "type": "generated-index", "title": "Artifact Registry CLI" },
+    "customProps": {},
+    "position": 1
+  }
+  

@@ -4,7 +4,34 @@ description: Reference doc for all the commands and options available in Harness
 sidebar_position: 3
 ---
 
-Documentation containing information about all available commands and options within the Harness CLI utility tool.
+import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+
+:::info CLI Versions
+Harness offers two versions of the CLI:
+- **v0 (`harness`)**: This will be deprecated in the future. Use v1 (`hc`) instead.
+- **v1 (`hc`)**: The new unified CLI with enhanced features and improved user experience
+
+Select your preferred version below to get started.
+:::
+
+Select your CLI version to view the complete command reference:
+
+<DynamicMarkdownSelector
+  options={{
+    "v1 - hc": {
+      path: "/platform/automation/cli/content/reference/v1.md",
+      label: "v1 - New CLI Reference"
+    },
+    "v0 - harness": {
+      path: "/platform/automation/cli/content/reference/v0.md",
+      label: "v0 - Original CLI Reference"
+    }
+  }}
+  disableSort={true}
+  toc={toc}
+/>
+
+<!-- Legacy content below - kept for reference
 
 ## Synopsis
 
@@ -297,20 +324,3 @@ HARNESS_API_TOKEN - Override the API Token stored in .secrets.json file.
 
 HARNESS_ACCOUNT_ID - Override the Account Id stored in .secrets.json file.
 -->
-
-## Files
-
-`~/.secrets.json` - Serves as a repository for credentials, containing the Harness API Token and Account Id..
-
-## Author
-
-The original authorship of the Harness CLI utility tool can be attributed to Harness, Inc.
-
-## License
-
-Harness CLI is released under the terms of the [MIT License](https://github.com/harness/harness-cli/blob/develop/LICENSE).
-
-## See also
-
-- [Install and Configure Harness CLI](./install.md)
-- [Harness CLI Examples](./examples.md)
