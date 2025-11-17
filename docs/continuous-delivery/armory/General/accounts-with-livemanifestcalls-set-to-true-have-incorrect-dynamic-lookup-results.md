@@ -1,0 +1,13 @@
+---
+title: Accounts with liveManifestCalls Set to True Have Incorrect Dynamic Lookup Results
+---
+
+## Issue
+After enabling ```liveManifestCalls: true```, the environment begins exhibiting odd behaviors.  Resources that have been deployed/changed in previous stages are not being taken in to consideration in current stages, leading to errors and issues in the Pipeline DeploymentThis can be especially detrimental to any pipelines that use a rollout strategy along with a ```strategy.spinnaker.io/max-version-history``` annotation, causing inconsistent state of deployment targets, and also pipeline failures
+
+## Cause
+When the flag is set to true, the 'Deploy Manifest' stage waits for the newly-deployed resource by directly polling the cluster instead of by checking in Spinnaker's cache. In general, the stage will finish more quickly, as it can complete as soon as the resource is ready instead of once the new resource is reflected in the cache. 
+One significant issue that may occur though, that the stage may complete before the cache reflects these changes. Spinnaker expects that stages mutating infrastructure will not complete until the cache has been updated to reflect these mutations.
+**The result is that any downstream stages that rely on the cache being up-to-date (as stages are generally allowed to do) will either fail or produce incorrect results**. 
+As for how it relates to this issue, any stages that use **dynamic target selection** to patch/enable/disable a resource. Stages looking in the cache to find the oldest/newest/etc. resource, and act based on the state of the cache when they run will also be affected.  Finally, rollout strategies are another example where dynamic target selection is affected.  As a result of the cache not being up to date, this can lead to omitting a newly deployed/deleted/patched resource from a prior stage.For pipelines that have use a rollout strategy along with a ```[strategy.spinnaker.io/max-version-history](http://strategy.spinnaker.io/max-version-history)``` annotation, this can be especially painful.  When a ```max version flag``` is set, at the time of execution **Clouddriver knows only of** **N replicasets existing** and will try to disable the **N-1 older replicasets**.This means that there are situations where although Orca plans for X disable manifest tasks, the oldest one is already deleted at the time of the task execution causing a pipeline failure.Furthermore if a failed pipeline is executed 2-3 or more times until it succeeds it causing a very inconsistent state of the deployment targets depending on which Disable manifest task completes and which doesn't.
+

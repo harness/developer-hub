@@ -187,4 +187,11 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 
 /kb/reference-architectures/platform /docs/platform/reference-architectures
 
+# Redirects required for sidebar standardization (armory kb)
+# /kb/armory → Armory category landing
+/kb/armory /docs/category/armory
+
+# Preserve all subpaths and send them to the new content
+/kb/armory/* /docs/continuous-delivery/armory/:splat
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
