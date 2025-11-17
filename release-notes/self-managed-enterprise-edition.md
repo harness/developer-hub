@@ -415,7 +415,7 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- **Enabled Global Registry For MongoDB FCV Upgrade Job**: Global registry can be enabled for the MongoDB FCV upgrade job by configuring the `global.imageRegistry` field in the override file.
+- **Enabled Global Registry For MongoDB FCV Upgrade Job**: Global registry can be enabled for the MongoDB FCV upgrade job by configuring the `global.imageRegistry` field in the override file. [PL-65853]
 
 
 
