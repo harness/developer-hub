@@ -58,7 +58,7 @@ You can only add streaming destinations at the Account scope. Follow these steps
 
 ## Configure the streaming connector
 
-Once a streaming destination is added, you're ready to configure the streaming connector. For object storage services(AWS S3), you can choose to stream audit events in either JSON and NDJSON formats.
+Once a streaming destination is added, you're ready to configure the streaming connector. For object storage services(AWS S3 and GCP GCS), you can choose to stream audit events in either JSON and NDJSON formats.
 
 <Tabs>
 <TabItem value="S3" label="Amazon S3" default>
@@ -77,9 +77,9 @@ To configure the Amazon S3 streaming connector:
 
 4. Select the **Format** of the data — either [JSON or NDJSON](#example-audit-event).
 
-  :::note
-  [NDJSON](https://en.wikipedia.org/wiki/JSON_streaming#Newline-delimited_JSON) format is supported in Harness Delegate version 25.10.87100 or later. 
-  :::
+    :::note
+    [NDJSON](https://en.wikipedia.org/wiki/JSON_streaming#Newline-delimited_JSON) format is supported in Harness Delegate version 25.10.87100 or later. 
+    :::
 
     ![](./static/streaming-connector-aws-format.png)
 
@@ -116,19 +116,27 @@ To configure the GCP GCS streaming connector:
 
 2. In **Select Connector**, select an existing GCP connector or create a new one.
 
-   You can use either the **Connect through a Harness Delegate** or **Connect through Harness Platform** connectivity mode options when setting up your GCP connector. Audit streaming supports both options.
+   You can use either to **Connect through a Harness Delegate** or **Connect through Harness Platform** connectivity mode options when setting up your GCP connector. Audit streaming supports both options.
 
    Go to [Add an GCP connector](../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md) for steps to create a new GCP Provider connector.
 
 3. Select **Apply Selected**.
 
-4. In **Google Cloud Storage Bucket**, enter the bucket name. Harness writes all the streaming records to this destination.
+4. Select the **Format** of the data — either [JSON or NDJSON](#example-audit-event).
+    
+    :::note
+    [NDJSON](https://en.wikipedia.org/wiki/JSON_streaming#Newline-delimited_JSON) format is supported in Harness Delegate version 25.11.87200 or later. 
+    :::
+      
+    ![](./static/streaming-gcp-format.png)
+
+5. In **Google Cloud Storage Bucket**, enter the bucket name. Harness writes all the streaming records to this destination.
 
     ![](./static/streaming-connector-gcp.png)
 
-5. Select **Save** and **Continue**.
+6. Select **Save** and **Continue**.
 
-6. After the connection test is successful, select **Finish**.
+7. After the connection test is successful, select **Finish**.
 
    The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default the destination is inactive.
 
