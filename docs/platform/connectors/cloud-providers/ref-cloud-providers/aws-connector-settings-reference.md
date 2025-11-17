@@ -927,6 +927,8 @@ To assume the role specified in the **Cross account role ARN** field, the AWS ac
 
 If the administrator of the account to which the role belongs provided you with an external ID, you can input this value in the **External Id** field. For more information, go to the AWS documentation about [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
 
+In the **Assume Role Duration (seconds)** field, you can set the AssumeRole session duration. Harness supports a time range between 15 minutes (900 seconds) to 12 hours (43200 seconds). For more information, go to the AWS documentation on [Session Duration](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html#API_AssumeRole_RequestParameters) in the AWS AssumeRole documentation.
+
 ### Test Region and AWS GovCloud Support
 
 By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors.
