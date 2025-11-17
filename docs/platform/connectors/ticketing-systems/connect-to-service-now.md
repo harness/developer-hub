@@ -20,6 +20,14 @@ You can connect Harness to ServiceNow using a Harness ServiceNow connector. This
 * Your account should also have the `import_admin` or `import_transformer` role to manage import set transform maps. For details, go to ServiceNow's [Base System Roles](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/roles/reference/r_BaseSystemRoles.html) documentation.
 * Your ServiceNow REST API account must have permission to view tickets.
 
+### Minimum permissions for read-only access
+
+If your use case only requires reading tickets from ServiceNow (for example, to fetch ticket status for visibility without performing create, update, or modify operations), your service account needs the following minimum permission:
+
+* **Role: `itil`** - Provides read-only access to ITSM tables and ticket data, including incident, change, and problem tables, without any write permissions.
+
+This read-only configuration is ideal when you only need to monitor ticket status and do not want to perform any write actions in ServiceNow.
+
 ### Add a ServiceNow connector
 
 This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
