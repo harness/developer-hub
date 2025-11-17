@@ -342,7 +342,8 @@ For details, see **Kustomize deployment with the Apply step** in [Use Kustomize 
 
 ## Notes
 
-* The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: true`). See [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning).
+* The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: true`). See [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning).
+* **Kubectl apply merge behavior**: Harness uses `kubectl apply` with merge behavior. New manifests merge with existing resource state rather than replacing it. Configurations (like environment variables) not in the new manifest may persist. To remove a configuration, explicitly set it to an empty or default value to avoid configuration drift.
 
 ## Next steps
 
