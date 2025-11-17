@@ -7,7 +7,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## Prerequisite
 
-- [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/#aws)
+- [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/#gcp)
 - Proxy for Traffic-based AutoStopping Rules. For scheduled only AutoStopping Rules, this is not required.
 
 
@@ -30,7 +30,7 @@ An AutoStopping Proxy is a virtual machine that sits in front of your virtual ma
     - **VPC**: Select the Virtual Private Cloud where your resources are located
     - **Network tags**: Select the **Network tags** to enable ports on the proxy VM which would be receiving traffic or the one that would be used to access the proxy.
     - **Subnet**: Select the subnet for the proxy deployment
-    - **Machine type**: Select an appropriate AWS instance type for the proxy
+    - **Machine type**: Select an appropriate instance type for the proxy
       - Choose based on your expected traffic volume and performance needs
     - **TLS Certificate Secret Version**: Create a secret in your GCP account. Go to [Create a secret](https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets). 
     - **TLS Private Key Secret Version**: Provide the ARN of your private key secret

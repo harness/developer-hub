@@ -6,7 +6,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 
 ## Prerequisite
-- [Create an AWS Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/#aws)
+- [Create an Azure Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/#azure)
 - Proxy and/or Load Balancer for Traffic-based AutoStopping Rules. For scheduled only AutoStopping Rules, this is not required.
 
 ## Set Up Proxy and/or Load Balancer
