@@ -141,7 +141,7 @@ path "auth/token/renew-self" {
 #### Custom Authentication Path for AppRole Login
 
 :::note
-This feature is supported on delegate version `837xx` and above and is available behind the Feature Flag `PL_APPROLE_CUSTOM_PATH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature is supported on delegate version `837xx` and above.
 :::
 
 The `appRoleLogin` method now supports a custom authentication path, utilizing it if provided, or defaulting to the standard `approle` endpoint if not specified.
