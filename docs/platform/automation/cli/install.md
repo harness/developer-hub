@@ -12,17 +12,17 @@ This documentation section will serve as your compass, guiding you through the i
 
 :::info CLI Versions
 Harness offers two versions of the CLI:
-- **v0 (`harness`)**: This will be deprecated in the future. Use v1 (`hc`) instead.
-- **v1 (`hc`)**: The new unified CLI with enhanced features and improved user experience
+- **v0 (`harness`)**: This will be deprecated in the future. Use v1.0.0 (`hc`) instead.
+- **v1.0.0 (`hc`)**: The new unified CLI with enhanced features and improved user experience
 
 Select your preferred version below to get started.
 :::
 
 <DynamicMarkdownSelector
   options={{
-    "v1 - hc": {
+    "v1.0.0 - hc": {
       path: "/platform/automation/cli/content/versions/v1.md",
-      label: "v1 - New CLI"
+      label: "v1.0.0 - New CLI"
     },  "v0 - harness": {
       path: "/platform/automation/cli/content/versions/v0.md",
       label: "v0 - Original CLI"

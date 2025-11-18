@@ -8,8 +8,8 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 
 :::info CLI Versions
 Harness offers two versions of the CLI:
-- **v0 (`harness`)**: This will be deprecated in the future. Use v1 (`hc`) instead.
-- **v1 (`hc`)**: The new unified CLI with enhanced features and improved user experience
+- **v0 (`harness`)**: This will be deprecated in the future. Use v1.0.0 (`hc`) instead.
+- **v1.0.0 (`hc`)**: The new unified CLI with enhanced features and improved user experience
 
 Select your preferred version below to get started.
 :::
@@ -18,9 +18,9 @@ Select your CLI version to view the complete command reference:
 
 <DynamicMarkdownSelector
   options={{
-    "v1 - hc": {
+    "v1.0.0 - hc": {
       path: "/platform/automation/cli/content/reference/v1.md",
-      label: "v1 - New CLI Reference"
+      label: "v1.0.0 - New CLI Reference"
     },
     "v0 - harness": {
       path: "/platform/automation/cli/content/reference/v0.md",

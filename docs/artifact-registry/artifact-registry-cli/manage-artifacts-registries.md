@@ -15,6 +15,7 @@ tags:
 ---
 
 This guide covers the essential commands for working with the Artifact Registry from the command line.
+This will require installation of the [Harness CLI](/docs/platform/automation/cli/install) and authentication to your Harness account.
 
 ## Registry Management
 
