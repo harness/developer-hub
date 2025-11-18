@@ -29,7 +29,7 @@ The Go SDK can run in three different modes to fit in different infrastructure c
 Since version 6, the Go SDK uses modules to handle all dependencies including itself, and due to semantic import versioning, both `dep` and bare-bones `go-get` are deprecated. To start using our SDK with modules, update your `go.mod` file as follows:
 
 ```go title="go.mod"
-require "github.com/splitio/go-client/v6 v6.7.0"
+require "github.com/splitio/go-client/v6 v6.8.1"
 ```
 
 And update the import paths in your application to use the `v6` package suffix as follows:
@@ -39,7 +39,7 @@ import "github.com/splitio/go-client/v6/splitio/client
 ```
 
 ```go title="Go get"
-go get github.com/splitio/go-client/v6@v6.7.0
+go get github.com/splitio/go-client/v6@v6.8.1
 ```
 
 :::warning[If using Synchronizer with Redis - Synchronizer 2.x required after SDK Version 5.0.0]
@@ -50,7 +50,7 @@ Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to
 
 You can import the SDK into your project as shown below.
 
-```go title="go-client > v6.7.0"
+```go title="go-client > v6.8.1"
 import (
 	"github.com/splitio/go-client/v6/splitio/client"
 	"github.com/splitio/go-client/v6/splitio/conf"
