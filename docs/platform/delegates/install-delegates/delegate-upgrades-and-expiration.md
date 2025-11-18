@@ -133,12 +133,6 @@ spec:
 
 ### Docker Delegate
 
-:::note Feature flag details
-
- The Docker Delegate Upgrader is currently behind the feature flag `PL_SHOW_AUTO_UPGRADE_FOR_DOCKER_DELEGATE`, which must be enabled to access this functionality. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 The Docker Delegate upgrader is responsible for two tasks: upgrading the Docker images used for running Docker delegates and performing health checks on those delegates.
 
 :::info Note
