@@ -1,7 +1,7 @@
 ---
 title: Disable/Delete Cluster Orchestrator
 description: Learn how to disable and delete Harness Cluster Orchestrator for AWS EKS using kubectl
-sidebar_position: 5
+sidebar_position: 3
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
