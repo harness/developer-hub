@@ -179,6 +179,10 @@ In Harness you can use webhook notifications to inform an external application o
 </TabItem>
 <TabItem value="Datadog">
 
+:::note
+Currently, the Datadog notifications feature is behind the feature flag `PIPE_DATADOG_NOTIFICATIONS`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
 To configure Datadog notification, you need a Datadog [API key](https://docs.datadoghq.com/account_management/api_keys/) to integrate with Harness. Copy or store this key from Datadog's **Configuration** > **API Keys** > **API Key Details dialog** > **Integrations** tab.
 
 1. Select the **Notify** icon on the right side of the Harness pipeline studio.
