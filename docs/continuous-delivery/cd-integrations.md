@@ -84,7 +84,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_AUTH_CHECK_IN_WEBHOOK_DETAILS_ENDPOINTS | Enables users to track deployment status programmatically via REST using the apiUrl from a custom trigger's JSON response. <b> This feature is in Limited GA. </b>|
 | CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION | Enables users to run RBAC validation before executing inline pipelines to ensure access to required environments and resources. <b> This feature is in Limited GA. </b>|
 | CDS_PIPELINE_ABORT_RBAC_PERMISSION | Enables users to control Abort permission separately from other pipeline execute functions. <b> This Feature is in Beta. </b> |
-| PL_GCP_OIDC_AUTHENTICATION | Enables user to configure custom attributes for OIDC with the GCP connector. <b> This feature is in Limited GA. </b> |
 | CDS_EVENT_BRIDGE_WEBHOOK and CD_TRIGGERS_REFACTOR| Enables users to trigger pipelines in real time using the newly introduced EventBridge webhooks, which can be configured with Git, Slack, or generic options (such as Nexus artifacts). <b> This feature is in Limited GA. </b> |
 | PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT | Enables users to upload files as a runtime input during execution of a pipeline using **File Upload** step. <b> This feature is in Limited GA. </b>|
 | CDS_ENCODE_API_REQUESTS | Enables users to fetch an artifact version from Nexus during deployment. <b> This feature is in Limited GA. </b>|

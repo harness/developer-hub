@@ -105,9 +105,7 @@ To configure the Amazon S3 streaming connector:
 <TabItem value="GCS" label="GCP GCS" default>
 
 :::note
-Currently, this feature is behind the feature flag `PL_GCP_GCS_STREAMING_DESTINATION_ENABLED`. Additionally, if you are using OIDC credentials, you will need the `PL_GCP_OIDC_AUTHENTICATION` feature flag. 
-
-Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `PL_GCP_GCS_STREAMING_DESTINATION_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 To configure the GCP GCS streaming connector:

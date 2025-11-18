@@ -88,10 +88,6 @@ To configure a Service Account Key for Google KMS in Harness, refer to our [Serv
 
 #### 2. OpenID Connect (OIDC)
 
-:::note
-OIDC support requires the PL_GCP_OIDC_AUTHENTICATION feature flag in Harness. Contact Harness Support to enable this feature.
-:::
-
 For setting up OIDC, refer to our [OIDC Setup Guide](../../connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md#use-openid-connect-oidc) for detailed steps on configuring a workload identity pool and identity provider with Harness.
 
 **Permissions Required**: When using OIDC with Google KMS, ensure the identity provider in Google Cloud is granted the following permissions:
