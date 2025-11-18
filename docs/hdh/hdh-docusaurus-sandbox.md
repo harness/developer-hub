@@ -234,6 +234,7 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
   toc={toc}
   precedingHeadingID='#dynamic-markdown-selector'
   nextHeadingID='#code-formatting'
+  disableHash
 />
 
 ## Code Formatting

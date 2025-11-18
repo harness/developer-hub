@@ -44,6 +44,7 @@ export interface DynamicMarkdownSelectorProps {
   nextHeadingID: string;
   defaultSelection?: string;
   disableSort?: boolean;
+  disableHash?: boolean;
 }
 
 // Determine column count for visual balance
@@ -61,6 +62,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
   nextHeadingID = "",
   defaultSelection,
   disableSort = false,
+  disableHash = false,
 }) => {
   const labels = disableSort ? Object.keys(options) : Object.keys(options).sort((a, b) => a.localeCompare(b));
 
@@ -107,6 +109,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
   // Update selection if hash changes
 
   useEffect(() => {
+    if (disableHash) return;
     const onHashChange = () => {
       const { sel, sec } = parseHash(window.location.hash);
       const match =
@@ -116,9 +119,10 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
     };
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
-  }, [labels]);
+  }, [labels, disableHash]);
 
   useEffect(() => {
+    if (disableHash) return;
     if (typeof window !== "undefined") {
       window.history.replaceState(
         null,
@@ -126,7 +130,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
         buildHash(selected, sectionId || undefined)
       );
     }
-  }, [selected, sectionId]);
+  }, [selected, sectionId, disableHash]);
 
   useEffect(() => {
     if (!ExecutionEnvironment.canUseDOM) return;
@@ -143,14 +147,16 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
       // Force compound hash.
       e.preventDefault();
       setSectionId(targetId);
-      window.history.pushState(null, "", buildHash(selected, targetId));
+      if (!disableHash) {
+        window.history.pushState(null, "", buildHash(selected, targetId));
+      }
       const el = document.getElementById(targetId);
       if (el) el.scrollIntoView({ block: "start" });
     };
 
     container.addEventListener("click", handler);
     return () => container.removeEventListener("click", handler);
-  }, [selected]);
+  }, [selected, disableHash]);
 
   useEffect(() => {
     // If changing selected invalidates current sectionId, clear it.
@@ -201,7 +207,8 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
     precedingHeadingID,
     nextHeadingID,
     mdxCtx("." + options[selected]?.path)?.toc || [], //e.g. mdxCtx('./cloud-cost-management/content/get-started/aws-quickstart.md').toc
-    selected
+    selected,
+    disableHash
   );
 
   return (
@@ -297,7 +304,8 @@ function spliceMDToc(
   precedingHeadingID: string = "",
   nextHeadingID: string = "",
   dmsToc: TOCItem[],
-  selected: string
+  selected: string,
+  disableHash: boolean = false
 ) {
   if (!mdToc) return;
 
@@ -321,7 +329,7 @@ function spliceMDToc(
   if (dmsToc) {
     // (re-)add DMS toc content
     mdToc.splice(mdTocSpliceStart, 0, ...dmsToc);
-    updateTocHTML(mdToc, selected);
+    updateTocHTML(mdToc, selected, disableHash);
   }
 
   addPlaceholder(mdToc);
@@ -333,7 +341,7 @@ function spliceMDToc(
  *  patterns (i.e. we can't define state variables in the md page and pass them to the child component).
  * @param mdToc The parent component's toc (table of contents) array. We copy these headings to the DOM tree.
  */
-function updateTocHTML(mdToc: TOCItem[], selectedLabel: string) {
+function updateTocHTML(mdToc: TOCItem[], selectedLabel: string, disableHash: boolean = false) {
   if (!ExecutionEnvironment.canUseDOM) return;
   const pgToc: Element | null = document
     .getElementsByClassName("table-of-contents table-of-contents__left-border")
@@ -348,7 +356,7 @@ function updateTocHTML(mdToc: TOCItem[], selectedLabel: string) {
   while (i < mdToc.length) {
     const li = document.createElement("li");
     const id2 = mdToc[i].id;
-    const href2 = `#${selHash}${DELIM}${encodeURIComponent(id2)}`;
+    const href2 = disableHash ? `#${encodeURIComponent(id2)}` : `#${selHash}${DELIM}${encodeURIComponent(id2)}`;
     li.innerHTML = `<a href="${href2}" class="table-of-contents__link toc-highlight table-of-contents__link">${mdToc[i].value}</a>`;
 
     i++;
@@ -357,7 +365,7 @@ function updateTocHTML(mdToc: TOCItem[], selectedLabel: string) {
     while (i < mdToc.length && mdToc[i].level >= 3) {
       if (mdToc[i].level === 3) {
         const id3 = mdToc[i].id;
-        const href3 = `#${selHash}${DELIM}${encodeURIComponent(id3)}`;
+        const href3 = disableHash ? `#${encodeURIComponent(id3)}` : `#${selHash}${DELIM}${encodeURIComponent(id3)}`;
         l3 += `<li><a href="${href3}" class="table-of-contents__link toc-highlight table-of-contents__link">${mdToc[i].value}</a></li>`;
       }
       i++;
