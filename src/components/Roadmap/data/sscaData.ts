@@ -112,7 +112,7 @@ export const SscaData: Horizon = {
       {
         tag: [{value : "AIBOM"}],
         title: "AIBOM",
-        description: "Gain visibility into all AI models, datasets, and prompts used across your systems, enabling governance, risk assessment, and secure AI adoption.",
+        description: "Gain visibility into all AI models and datasets used across your systems, enabling governance, risk assessment, and secure AI adoption.",
       },
       {
         tag: [{value : "SBOM"}, {value : "SLSA"}, {value: "CI/CD Security"}],
