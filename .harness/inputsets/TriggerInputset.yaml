@@ -1,0 +1,14 @@
+inputSet:
+  name: TriggerInputset
+  identifier: TriggerInputset
+  orgIdentifier: PROD
+  projectIdentifier: Harness_Commons
+  pipeline:
+    identifier: harnessDeveloperHub
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>

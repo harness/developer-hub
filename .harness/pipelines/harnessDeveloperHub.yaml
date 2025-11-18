@@ -1,0 +1,253 @@
+pipeline:
+  name: harnessDeveloperHub
+  identifier: harnessDeveloperHub
+  projectIdentifier: Harness_Commons
+  orgIdentifier: PROD
+  description: This is for HDH checks and build previews pipeline
+  tags:
+    Owner: DEVX
+    TicketID: HDH-386
+    BT-14506: ""
+  stages:
+    - stage:
+        name: Build
+        identifier: build
+        description: This is for HDH checks and build previews pipeline
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: xlarge
+          execution:
+            steps:
+              - parallel:
+                  - step:
+                      type: Run
+                      name: ESLint Check
+                      identifier: ESLint_Check
+                      spec:
+                        shell: Bash
+                        command: |-
+                          # Install fnm
+                          curl -o- https://fnm.vercel.app/install | bash
+
+                          # Load fnm into current shell (so we don’t have to reopen terminal)
+                          export FNM_PATH="$HOME/.local/share/fnm"
+                          if [ -d "$FNM_PATH" ]; then
+                            export PATH="$FNM_PATH:$PATH"
+                            eval "`$FNM_PATH/fnm env`"
+                          fi
+
+                          # Install and use Node.js 22
+                          fnm install 22
+                          fnm use 22
+
+                          echo "Verify node version:"
+                          node -v
+
+                          echo "Verify npm version:"
+                          npm -v
+
+                          echo "Installing dependencies..."
+                          yarn
+
+                          echo "Running ESLint..."
+                          yarn run lint:ci
+                  - step:
+                      type: Run
+                      name: kebab-case Check
+                      identifier: kebabcase_Check
+                      spec:
+                        shell: Sh
+                        command: |-
+                          # Define color codes for output
+                           Red='\033[0;31m'
+                                                Green='\033[0;32m'
+                                                Yellow='\033[0;33m'
+                                                Blue='\033[0;34m'
+                                                Reset='\033[0m'
+
+                                                echo -e "${Blue}Checking all changed Markdown and image files...${Reset}"
+
+                                                failure_flag=0
+
+                                                # Get changed files (Harness clones PR ref by default, so use FETCH_HEAD for PR builds)
+                                                changed_files=$(git diff --name-only --diff-filter=d HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$' | grep -E '^(docs|kb|community|roadmap|static|university|release-notes)/' || true)
+
+                                                if [ -z "$changed_files" ]; then
+                                                  echo -e "${Green}No relevant files were changed in this PR.${Reset}"
+                                                  exit 0
+                                                fi
+
+                                                echo -e "${Blue}Changed files:${Reset}"
+                                                x=1
+                                                echo "$changed_files" | while read -r file; do
+                                                  echo -e "${Yellow}$x. $file${Reset}"
+                                                  x=$((x + 1))
+                                                done
+
+                                                # Kebab-case validation
+                                                invalid_kebab_case=$(echo "$changed_files" | grep -vE '^([a-z0-9]+(-[a-z0-9]+)*)(/([a-z0-9]+(-[a-z0-9]+)*))*\.(md|jpg|png|jpeg|svg)$' || true)
+
+                                                if [ -n "$invalid_kebab_case" ]; then
+                                                  echo -e "${Red}The following filenames are not in kebab-case:${Reset}"
+                                                  x=1
+                                                  echo "$invalid_kebab_case" | while read -r file; do
+                                                    echo -e "${Red}$x. $file${Reset}"
+                                                    x=$((x + 1))
+                                                  done
+                                                  failure_flag=1
+                                                else
+                                                  echo -e "${Green}All filenames are in kebab-case.${Reset}"
+                                                fi
+
+                                                # Length validation
+                                                changed_files_for_length_check=$(echo "$changed_files" | xargs -n1 basename)
+                                                long_files=$(echo "$changed_files_for_length_check" | awk 'length($0) > 100')
+
+                                                if [ -n "$long_files" ]; then
+                                                  echo -e "${Red}The following filenames exceed 100 characters:${Reset}"
+                                                  x=1
+                                                  echo "$long_files" | while read -r file; do
+                                                    echo -e "${Red}$x. $file${Reset}"
+                                                    x=$((x + 1))
+                                                  done
+                                                  failure_flag=1
+                                                else
+                                                  echo -e "${Green}All filenames are of valid length.${Reset}"
+                                                fi
+
+                                                if [ "$failure_flag" -eq 0 ]; then
+                                                  echo -e "${Green}All validations passed.${Reset}"
+                                                  exit 0
+                                                else
+                                                  echo -e "${Red}Validation failed.${Reset}"
+                                                  exit 1
+                                                fi
+              - step:
+                  type: Run
+                  name: Build
+                  identifier: Build
+                  spec:
+                    connectorRef: dockerhub_harness_jenkins
+                    image: node:22
+                    shell: Sh
+                    command: |-
+                      yarn
+                      yarn build
+                    privileged: true
+                    envVariables:
+                      SEGMENT_API_KEY: <+pipeline.variables.yarnBuildSegmentApiKey>
+                      HARNESS_GENERIC_READ_ONLY_KEY: <+pipeline.variables.hdhYarnBuild>
+                      HARNESS_GENERIC_ACCOUNT_IDENTIFIER: <+pipeline.variables.hdhPipelineAccountId>
+                      COVEO_API_KEY: <+pipeline.variables.coveoApiKey>
+              - step:
+                  type: Plugin
+                  name: Publish-Netifly-Preview
+                  identifier: Publish_Netlify_Preview
+                  spec:
+                    connectorRef: dockerhub_harness_jenkins
+                    image: rlachhman/netlify-drone-plugin
+                    privileged: true
+                    settings:
+                      dir: ./build
+                      site_id: <+pipeline.variables.netiflySiteId>
+                      token: <+pipeline.variables.netiflyPubToken>
+                      debug: "true"
+                  when:
+                    stageStatus: Success
+                    condition: <+trigger.event>.equals("PR") && <+trigger.branch>!~"/^main$/"
+              - step:
+                  type: Run
+                  name: Commentor
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: |-
+                      COMMENT_ID=$(curl -s -X POST \
+                       -H "Authorization: Bearer $commentorToken" \
+                       -H "Content-Type: application/json" \
+                       -d '{"text": "Please check the Execution Link of the Pipeline for the Website Draft URL. This is located in the Preview Step behind the Harness VPN and also is available in #hdh_alerts. E.g Website Draft URL: https://unique-id--harness-developer.netlify.app. Current Draft URL is: <+execution.steps.Publish_Netlify_Preview.output.outputVariables.DRAFT_URL>"}' \
+                       "https://harness0.harness.io/gateway/code/api/v1/repos/l7B_kbSEQD2wjrM7PShm5w/PROD/Harness_Commons/developer-hub/+/pullreq/<+codebase.prNumber>/comments" \
+                       | jq -r '.id')
+
+                      curl -X PUT \
+                       -H "Authorization: Bearer $commentorToken" \
+                       -H "Content-Type: application/json" \
+                       -d '{"status":"resolved"}' \
+                       "https://harness0.harness.io/gateway/code/api/v1/repos/l7B_kbSEQD2wjrM7PShm5w/PROD/Harness_Commons/developer-hub/+/pullreq/<+codebase.prNumber>/comments/$COMMENT_ID/status"
+                    envVariables:
+                      commentorToken: <+pipeline.variables.harnessCodeCommentorToken>
+                  when:
+                    stageStatus: Success
+                    condition: <+trigger.event>.equals("PR") && <+trigger.branch>!~"/^main$/"
+              - step:
+                  type: Plugin
+                  name: Publish-Netifly-Prod
+                  identifier: PublishNetiflyProd
+                  spec:
+                    connectorRef: dockerhub_harness_jenkins
+                    image: rlachhman/netlify-drone-plugin
+                    privileged: true
+                    settings:
+                      dir: ./build
+                      prod: "true"
+                      site_id: <+pipeline.variables.netiflySiteId>
+                      token: <+pipeline.variables.netiflyPubToken>
+                      debug: "true"
+                  when:
+                    condition: <+trigger.event>.equals("PUSH") && <+trigger.targetBranch>.equals("main")
+                    stageStatus: Success
+          caching:
+            enabled: false
+            paths: []
+          buildIntelligence:
+            enabled: false
+  properties:
+    ci:
+      codebase:
+        repoName: developer-hub
+        build: <+input>
+        sparseCheckout: []
+        depth: 0
+  variables:
+    - name: netiflyPubToken
+      type: Secret
+      description: ""
+      required: false
+      value: netiflyPublishingToken
+    - name: harnessCodeCommentorToken
+      type: Secret
+      description: ""
+      required: false
+      value: harnessCodeHdhCommentorToken
+    - name: hdhYarnBuild
+      type: Secret
+      description: ""
+      required: false
+      value: hdhYarnBuildToken
+    - name: coveoApiKey
+      type: Secret
+      description: ""
+      required: false
+      value: coveoApiKey
+    - name: yarnBuildSegmentApiKey
+      type: Secret
+      description: ""
+      required: false
+      value: yarnBuildSegmentApiKey
+    - name: hdhPipelineAccountId
+      type: Secret
+      description: ""
+      required: false
+      value: hdhPipelineAccountId
+    - name: netiflySiteId
+      type: Secret
+      description: ""
+      required: false
+      value: netiflySiteId
