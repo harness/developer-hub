@@ -1,12 +1,11 @@
 ---
 title: Via kubectl
 description: Learn how to set up and configure Harness Cluster Orchestrator for AWS EKS using kubectl
-sidebar_position: 5
+sidebar_position: 1
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
-
 ---
 ## Before You Begin
 
@@ -113,4 +112,3 @@ Define precise time windows when cluster disruptions are acceptable for maintena
   - **Spot Preference Application**: Controls when spot instance preferences and distribution strategies are applied
 
 -----
-

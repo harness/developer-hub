@@ -1,7 +1,7 @@
 ---
 title: Via Terraform and Helm 
 description: Learn how to set up and configure Harness Cluster Orchestrator for AWS EKS using Terraform and Helm
-sidebar_position: 5
+sidebar_position: 2
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
