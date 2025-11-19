@@ -63,6 +63,10 @@ This tab provides a list of commits that triggered the build, along with source 
 
 This tab presents test results from **Run** or **Test** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
 
+### Annotations tab
+
+This tab presents all the annotations created during the build. Annotations provide a quick and customizable summary of critical build metrics and are sorted by priority. For more information, go to [Pipeline Annotations](/docs/platform/pipelines/harness-annotations).
+
 ### Other tabs
 
 The **Policy Evaluations** and **Security Tests** tabs report information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.

@@ -26,29 +26,29 @@ You can use a **Run** step to run commands or scripts in a CI pipeline. Here are
 This example runs `pytest`, includes [code coverage](./run-tests/code-coverage.md), and produces a report in JUnit XML format.
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Run pytest
-                  identifier: Run_pytest
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    image: python:latest
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      uname -a
-                      pip install pytest
-                      pip install pytest-cov
-                      pip install -r requirements.txt
+    - step:
+        type: Run
+        name: Run pytest
+        identifier: Run_pytest
+        spec:
+          connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+          image: python:latest
+          shell: Sh
+          command: |-
+            echo "Welcome to Harness CI"
+            uname -a
+            pip install pytest
+            pip install pytest-cov
+            pip install -r requirements.txt
 
-                      pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
+            pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
 
-                      echo "Done"
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "**/*.xml"
+            echo "Done"
+          reports:
+            type: JUnit
+            spec:
+              paths:
+                - "**/*.xml"
 ```
 
 :::tip
@@ -63,14 +63,14 @@ In Harness CI, you can [use test splitting (parallelism)](/docs/continuous-integ
 This example installs Go dependencies.
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      go get example.com/my-go-module
+    - step:
+        type: Run
+        identifier: dependencies
+        name: Dependencies
+        spec:
+          shell: Sh
+          command: |-
+            go get example.com/my-go-module
 ```
 
 </TabItem>
@@ -79,15 +79,15 @@ This example installs Go dependencies.
 This example uses a **Run** step to select a version of Xcode.
 
 ```yaml
-              - step:
-                  type: Run
-                  name: set_xcode_version
-                  identifier: set_xcode_version
-                  spec:
-                    shell: Sh
-                    command: |-
-                      sudo xcode-select -switch /Applications/Xcode_15.1.0.app
-                      xcodebuild -version
+    - step:
+        type: Run
+        name: set_xcode_version
+        identifier: set_xcode_version
+        spec:
+          shell: Sh
+          command: |-
+            sudo xcode-select -switch /Applications/Xcode_15.1.0.app
+            xcodebuild -version
 ```
 
 </TabItem>
@@ -96,14 +96,14 @@ This example uses a **Run** step to select a version of Xcode.
 This example clones a GitHub repository.
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: clone
-                  name: clone
-                  spec:
-                    shell: Sh
-                    command: |-
-                      git clone https://GH_PERSONAL_ACCESS_TOKEN@github.com/ACCOUNT_NAME/REPO_NAME.git
+    - step:
+        type: Run
+        identifier: clone
+        name: clone
+        spec:
+          shell: Sh
+          command: |-
+            git clone https://GH_PERSONAL_ACCESS_TOKEN@github.com/ACCOUNT_NAME/REPO_NAME.git
 ```
 
 To use this command, you would replace:
@@ -120,30 +120,30 @@ To use this command, you would replace:
 For example, this step produces [output variables](#output-variables) from Terraform value. This step is from the [Terraform notifications trigger tutorial](/docs/platform/triggers/tutorial-terraform-cloud-notification-trigger), and these output variables are used by another step later in the same pipeline.
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Terraform Outputs
-                  identifier: tf_outputs
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    image: kameshsampath/kube-dev-tools
-                    shell: Sh
-                    command: |-
-                      cd /harness/vanilla-gke/infra
-                      terraform init
-                      GCP_PROJECT=$(terraform output -raw project-name)
-                      GCP_ZONE=$(terraform output -raw zone)
-                      GKE_CLUSTER_NAME=$(terraform output -raw kubernetes-cluster-name)
-                    envVariables:
-                      TF_TOKEN_app_terraform_io: <+secrets.getValue("terraform_cloud_api_token")>
-                      TF_WORKSPACE: <+trigger.payload.workspace_name>
-                      TF_CLOUD_ORGANIZATION: <+trigger.payload.organization_name>
-                    outputVariables:
-                      - name: GCP_PROJECT
-                      - name: GCP_ZONE
-                      - name: GKE_CLUSTER_NAME
-                    imagePullPolicy: Always
-                  description: Get the outputs of terraform provision
+    - step:
+        type: Run
+        name: Terraform Outputs
+        identifier: tf_outputs
+        spec:
+          connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+          image: kameshsampath/kube-dev-tools
+          shell: Sh
+          command: |-
+            cd /harness/vanilla-gke/infra
+            terraform init
+            GCP_PROJECT=$(terraform output -raw project-name)
+            GCP_ZONE=$(terraform output -raw zone)
+            GKE_CLUSTER_NAME=$(terraform output -raw kubernetes-cluster-name)
+          envVariables:
+            TF_TOKEN_app_terraform_io: <+secrets.getValue("terraform_cloud_api_token")>
+            TF_WORKSPACE: <+trigger.payload.workspace_name>
+            TF_CLOUD_ORGANIZATION: <+trigger.payload.organization_name>
+          outputVariables:
+            - name: GCP_PROJECT
+            - name: GCP_ZONE
+            - name: GKE_CLUSTER_NAME
+          imagePullPolicy: Always
+        description: Get the outputs of terraform provision
 ```
 
 :::tip
@@ -160,19 +160,19 @@ This example demonstrates how to set up SSH authentication in a **Run** step, su
 The SSH private key must be stored in Harness as a **File-type Secret** to be used securely in the pipeline.
 
 ```yaml
-- step:
-    type: Run
-    name: SSH setup and build
-    identifier: SSH_Build
-    spec:
-      shell: Sh
-      command: |-
-        mkdir -p ~/.ssh
-        echo '<+secrets.getValue("account.your-ssh-private-key")>' > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
-        git clone git@github.com:your-org/private-repo.git
-        ./build.sh
+    - step:
+        type: Run
+        name: SSH setup and build
+        identifier: SSH_Build
+        spec:
+          shell: Sh
+          command: |-
+            mkdir -p ~/.ssh
+            echo '<+secrets.getValue("account.your-ssh-private-key")>' > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
+            git clone git@github.com:your-org/private-repo.git
+            ./build.sh
 ```
 :::tip
 
@@ -184,7 +184,45 @@ The SSH private key must be stored in Harness as a **File-type Secret** to be us
 :::
 
 </TabItem>
+<TabItem value="hcli-annotate" label="Annotations">
 
+```yaml
+    - step:
+        identifier: build_and_test
+        type: Run
+        name: Build and Test
+        spec:
+        connectorRef: my-k8s-connector
+        image: harness/ci-addon:latest
+        shell: Bash
+        command: |-
+            # Step 1: Create markdown content for our reports
+            # A comprehensive build report
+            cat > build-results.md << 'EOF'
+            # 🚀 Build Pipeline Results
+            ![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+            > **Note:** View full build logs [here](https://example.com).
+            ## 🧪 Test Summary
+            - **Total Tests:** 247
+            - **Passed:** ✅ **245**
+            - **Failed:** ❌ **2**
+            - **Coverage:** **92.4%**
+            EOF
+
+            # Step 2: Publish the annotations using hcli
+
+            # Publish the main build report with a WARNING style and high priority
+            hcli annotate --context "build-validation" --style "warning" --summary-file "build-results.md" --priority 8
+
+            # Step 3: Append additional notes to an existing context
+            echo "Flaky tests have been quarantined." > extra-notes.md
+            hcli annotate --context "build-validation" --summary-file "extra-notes.md" --mode "append"
+```
+:::Note
+To learn about how you could summarize critical pipeline metrics go to: [Pipeline Annotations](/docs/platform/pipelines/harness-annotations) 
+:::
+
+</TabItem>
 </Tabs>
 
 ## Add the Run step
@@ -206,16 +244,16 @@ In order for the **Run** step to execute your commands, the build environment mu
 In Harness, go to the pipeline where you want to add the `Run` step. In the `CI` stage, add a `Run` step and configure the [Run step settings](#run-step-settings).
 
 ```yaml
-              - step:
-                  type: Run
-                  name: run pytest # Specify a name for the step.
-                  identifier: run_pytest # Define a step ID, usually based on the name.
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
-                    image: python:latest # Specify an image, if required.
-                    shell: Sh
-                    command: |- # Provide your commands
-                      pytest test_main.py --junit-xml=output-test.xml
+    - step:
+        type: Run
+        name: run pytest # Specify a name for the step.
+        identifier: run_pytest # Define a step ID, usually based on the name.
+        spec:
+          connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
+          image: python:latest # Specify an image, if required.
+          shell: Sh
+          command: |- # Provide your commands
+            pytest test_main.py --junit-xml=output-test.xml
 ```
 
 </TabItem>
@@ -268,17 +306,17 @@ In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) she
 For Bash, set the `shell` to `Bash` and enter your Bash script in `command`. For example, the following step runs a Bash script that checks the Java version:
 
 ```yaml
-              - step:
-                  ...
-                  spec:
-                    shell: Bash
-                    command: |-
-                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
-                      if [[ $JAVA_VER == 17 ]]; then
-                        echo successfully installed $JAVA_VER
-                      else
-                        exit 1
-                      fi
+    - step:
+        ...
+        spec:
+          shell: Bash
+          command: |-
+            JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+            if [[ $JAVA_VER == 17 ]]; then
+              echo successfully installed $JAVA_VER
+            else
+              exit 1
+            fi
 ```
 
 </TabItem>
@@ -287,11 +325,11 @@ For Bash, set the `shell` to `Bash` and enter your Bash script in `command`. For
 For PowerShell, set the `shell` to `Powershell` and enter your PowerShell script in `command`, for example:
 
 ```yaml
-              - step:
-                  ...
-                  spec:
-                    shell: Powershell
-                    command: Wait-Event -SourceIdentifier "ProcessStarted"
+    - step:
+        ...
+        spec:
+          shell: Powershell
+          command: Wait-Event -SourceIdentifier "ProcessStarted"
 ```
 
 :::tip
@@ -306,13 +344,13 @@ You can run PowerShell commands on Windows VMs running in AWS build farms.
 You can run PowerShell Core commands in pods or containers that have `pwsh` installed. For PowerShell Core, set the `shell` to `Pwsh` and enter your PowerShell Core script in `command`. For example, this step runs `ForEach-Object` over a list of events.
 
 ```yaml
-              - step:
-                  ...
-                  spec:
-                    shell: Pwsh
-                    command: |-
-                      $Events = Get-EventLog -LogName System -Newest 1000
-                      $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -FilePath Events.txt -Append -InputObject $_.Message} -End {Get-Date}
+    - step:
+        ...
+        spec:
+          shell: Pwsh
+          command: |-
+            $Events = Get-EventLog -LogName System -Newest 1000
+            $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -FilePath Events.txt -Append -InputObject $_.Message} -End {Get-Date}
 ```
 
 </TabItem>
@@ -321,20 +359,20 @@ You can run PowerShell Core commands in pods or containers that have `pwsh` inst
 You can use the `Sh` option to run any shell script, provided the necessary binaries are available. For example, this step pulls the latest `python` image and then executes a shell script (`Sh`) that runs `pytest` with code coverage.
 
 ```yaml
-              - step:
-                  ...
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    image: python:latest
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      uname -a
-                      pip install pytest
-                      pip install pytest-cov
-                      pip install -r requirements.txt
+    - step:
+        ...
+        spec:
+          connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+          image: python:latest
+          shell: Sh
+          command: |-
+            echo "Welcome to Harness CI"
+            uname -a
+            pip install pytest
+            pip install pytest-cov
+            pip install -r requirements.txt
 
-                      pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
+            pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
 ```
 
 </TabItem>
@@ -343,13 +381,13 @@ You can use the `Sh` option to run any shell script, provided the necessary bina
 For Python, set the `shell` to `python` and enter your Python commands in `command`, for example:
 
 ```yaml
-            steps:
-              - step:
-                  ...
-                  spec:
-                    shell: Python
-                    command: |-
-                      print('Hello, world!')
+    steps:
+      - step:
+          ...
+          spec:
+            shell: Python
+            command: |-
+              print('Hello, world!')
 ```
 
 </TabItem>
@@ -373,17 +411,17 @@ If the Background step is inside a step group, you must include step group ID, s
 If your script produces an output variable, you must declare the output variable in the Run step's [Output Variables](#output-variables). For example, the following step runs a `python` script that defines an output variable called `OS_VAR`, and `OS_VAR` is also declared in the `outputVariables`.
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Run_2
-                  identifier: Run_2
-                  spec:
-                    shell: Python
-                    command: |-
-                      import os
-                      os.environ["OS_VAR"] = value
-                    outputVariables:
-                      - name: OS_VAR
+    - step:
+        type: Run
+        name: Run_2
+        identifier: Run_2
+        spec:
+          shell: Python
+          command: |-
+            import os
+            os.environ["OS_VAR"] = value
+          outputVariables:
+            - name: OS_VAR
 ```
 
 #### Images without a shell
@@ -401,19 +439,19 @@ This setting is required for the Run step to be able to [publish test results](.
 For example, this step runs `pytest` and produces a test report in JUnit XML format.
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Pytest
-                  identifier: Pytest
-                  spec:
-                    shell: Sh
-                    command: |-
-                      pytest test_main.py --junit-xml=output-test.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - output-test.xml
+    - step:
+        type: Run
+        name: Pytest
+        identifier: Pytest
+        spec:
+          shell: Sh
+          command: |-
+            pytest test_main.py --junit-xml=output-test.xml
+          reports:
+            type: JUnit
+            spec:
+              paths:
+                - output-test.xml
 ```
 
 ### Environment Variables
@@ -495,6 +533,12 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 During and after pipeline runs, you can find step logs on the [Build details page](./viewing-builds.md).
 
 If your pipeline runs tests, you can [view test reports](./run-tests/viewing-tests.md) on the Build details page.
+
+## Run step and Pipeline Annotations
+
+Pipeline Annotations allow you to publish rich, structured insights directly into the Harness pipeline execution page. Instead of sifting through thousands of lines of logs to find critical information like test summaries, security scan results, or deployment notes, you can use the `hcli annotate` command to push this data to a dedicated **Annotations** tab in the Harness UI.
+
+For more information visit [Pipeline Annotations](/docs/platform/pipelines/harness-annotations)
 
 ## Hidden/Invisible Characters
 Customers may occasionally encounter unexplained behavior in their scripts caused by hidden or invisible characters. These characters often appear when copying and pasting from non-plain-text sources and can lead to unexpected script errors. Harness includes a feature to display invisible characters, which is enabled by default.
