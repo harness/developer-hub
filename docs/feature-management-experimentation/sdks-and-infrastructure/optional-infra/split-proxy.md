@@ -133,7 +133,6 @@ Save the JSON config file on your server in your desired folder. For example, on
   "initialization": {
     "timeoutMS": 10000,
     "snapshot": "",
-    "forceFreshStartup": false
   },
   "server": {
     "apikeys": [
@@ -245,7 +244,6 @@ With the Split Synchronizer v5.0.0, the only accepted values for boolean flags a
 | ip-address-enabled | ipAddressEnabled | SPLIT_PROXY_IP_ADDRESS_ENABLED | `true` | Bundle host's IP address when sending data to Harness FME. |
 | timeout-ms | timeoutMS | SPLIT_PROXY_TIMEOUT_MS | `10000` | How long to wait until the synchronizer is ready. |
 | snapshot | snapshot | SPLIT_PROXY_SNAPSHOT | Empty | Snapshot file to use as a starting point. |
-| force-fresh-startup | forceFreshStartup | SPLIT_PROXY_FORCE_FRESH_STARTUP | `false` | Wipe storage before starting the synchronizer |
 | client-apikeys | apikeys | SPLIT_PROXY_CLIENT_APIKEYS | `SDK_API_KEY` | API keys that clients connecting to this proxy will use. |
 | server-host | host | SPLIT_PROXY_SERVER_HOST | `0.0.0.0` | Host/IP to start the proxy server on. |
 | server-port | port | SPLIT_PROXY_SERVER_PORT | `3000` | Port to listen for incoming requests from SDKs. |
@@ -477,7 +475,6 @@ Returns a JSON object describing the current configuration of the proxy.
     "initialization": {
       "timeoutMS": 10000,
       "snapshot": "",
-      "forceFreshStartup": false
     },
     "server": {
       "apikeys": [
