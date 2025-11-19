@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-10-31T18:00
+date: 2025-11-17T18:00
 sidebar_position: 6
 ---
 
@@ -25,6 +25,22 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+
+## November 2025 - Version 1.70.0
+#### Deployment Date: November 18, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Cluster Orchestrator Deletion**: We have added a deletion flow for Cluster Orchestrator, enabling users to fully remove all orchestrator resources and revert clusters via API, script, or Helm uninstall. This operation is only available for disabled clusters. [CCM-26694]
+
+<DocImage path={require('./static/ccm/delete-orchestrator.png')} width="90%" height="90%" title="Click to view full size image" />
+
+- **Recommendations Cost Settings**: We have added support for configuring AWS cost type settings (Net Amortized or Unblended) for EC2 recommendations. These settings inherit from your Account Settings defaults but can be overridden specifically for this feature. This feature is currently behind a Feature Flag. Please contact Harness support to enable it for your account. [CCM-27040]
+
+<DocImage path={require('./static/ccm/rec-settings-cost.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### Fixed Issues
+- **Shared Cost Buckets in Budgets**: Added support for shared cost buckets in budget calculations, enabling more comprehensive and accurate budget management. [CCM-24034]
 
 ## November 2025 - Version 1.69.2
 #### Deployment Date: November 10, 2025 (Prod-1)
