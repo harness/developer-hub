@@ -41,6 +41,10 @@ You can add up to 50,000 users in paid plans. Free plans and Harness Community E
 
 :::
 
+:::note
+When a new user is added to a project, the user is automatically added to the `All Organization Users` user group of the parent organization. However, when a user is removed from a project, they are not removed from the `All Organization Users` user group of the parent organization.
+:::
+
 1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where you want to add the user.
 
    * To add a user at the account scope, select **Account Settings**, and then select **Access Control**.
