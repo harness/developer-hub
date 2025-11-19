@@ -22,7 +22,50 @@ These release notes describe recent changes to Harness Database DevOps.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
+## November 2025
+
+### Release 1.65.x
+The `1.65.x` release introduces foundational improvements to ensure Flyway migrations benefit from the same visibility and operational consistency that customers already rely on with Liquibase.
+
+#### Key Highlights:
+* **Feature Enhancements**
+- All Flyway-supported commands now supported in DBOPS service, aligning the Flyway experience similar to Liquibase.
+- The Flyway container image has been upgraded to support these new data-sync capabilities, improving reliability and ensuring forward compatibility with upcoming Flyway features in Harness.
+
+* **Minimum Supported Versions:**
+- `dbservice` – 1.65.x
+
+### Release 1.64.x
+The `1.64.x` release delivers expanded synchronization capabilities for Flyway users, improving traceability and visibility across environments.
+
+#### Key Highlights:
+* **Feature Enhancements**
+- Added synchronization for Flyway migration state and command execution history, ensuring consistent tracking of applied, pending, and failed migrations across all stages.
+
+* **Minimum Supported Versions:**
+- `dbservice` – 1.64.x
+
+### Release 1.63.x
+The `1.63.x` release expands Flyway coverage across core DB Ops workflows, enabling teams to operationalize Flyway migrations with the same consistency and governance as Liquibase.
+
+#### Key Highlights:
+
+* **Feature Enhancements**
+ - Teams can now execute Flyway-based schema changes through DBApplySchema, ensuring alignment with existing deployment pipelines.
+ - Added support for defining migration and configuration (TOML) file paths, providing stronger flexibility for multi-directory and modular repository structures.
+ - Introduced rollback execution support for Flyway within DB Ops, enabling controlled reversions in line with Flyway’s versioned migration model.
+
+* **Minimum Supported Versions:**
+- `dbservice` – 1.63.x
+
 ## October 2025
+
+### Release 1.62.x
+No customer-facing updates.
+
+### Release 1.61.x
+No customer-facing updates.
+
 ### Release 1.60.x
 The `1.60.x` release introduces enhanced logging capabilities, empowering teams to capture and analyze detailed execution-level insights for improved auditing and troubleshooting.
 
