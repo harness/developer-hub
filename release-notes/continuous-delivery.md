@@ -55,6 +55,29 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## November 2025
 
+### GitOps Service 1.45, GitOps Agent 0.104.0
+
+#### New Features and Enhancements
+
+- **GitOps ApplicationSets as First-Class Entities**  
+  Harness now supports GitOps ApplicationSets as first-class entities, enabling you to create and manage multiple GitOps applications from a single template through an intuitive UI wizard. Key capabilities include:
+  - Full CRUD operations via UI and API
+  - Support for all Argo CD generator types (List, Git, Cluster, Matrix, and more)
+  - Seamless integration with Harness Services and Environments
+  - Import existing ApplicationSets from your Argo CD instances
+  - PR pipeline integration for automated configuration updates
+  - Automatic generation and sync of child applications with configurable lifecycle policies
+  
+  This provides a scalable solution for multi-environment and multi-cluster deployments. Currently, this feature is controlled by Feature Flag `GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. For more information, go to [ApplicationSets](/docs/category/applicationsets). (**CDS-105825**)
+
+- **Harness Secret Expressions in Application Manifests**: You can now use Harness secret expressions directly in Kubernetes manifests using `<+secrets.getValue()>` syntax. Secrets are resolved and decrypted during manifest rendering for Kubernetes `Secret` objects. Supports account, org, and project-level secrets configured in HashiCorp Vault or Harness Secret Manager. This feature requires Feature Flag `CDS_GITOPS_SECRET_RESOLUTION_ENABLED` and enabling the ArgoCD Harness Plugin during agent installation. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. For more information, go to [Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications/#harness-secret-expressions-in-application-manifests).
+
+- Added an **Allow Syncing** toggle switch to the Agent Details page for managing system-managed sync windows during disaster recovery (DR) switchover workflows. This enhancement provides better control over automated sync window management without affecting user-configured windows. (**CDS-115196**)
+
+#### Fixed Issue
+
+- Fixed an issue where duplicate log lines appeared when viewing logs from the Resource View panel in GitOps applications. This issue affected both SaaS and SMP installations. Logs now display correctly without duplication. (**CDS-114656, ZD-94084, ZD-95360**)
+
 ### Version 1.116.11
 
 #### Fixed Issues
