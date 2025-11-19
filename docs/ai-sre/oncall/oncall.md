@@ -52,12 +52,24 @@ Follow this step-by-step guide to set up your on-call rotation schedule:
 
 <DocVideo src="https://app.tango.us/app/embed/bc9db76e-c622-457e-95b1-45aa0ff06906?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create On-Call Schedule" />
 
+#### Creating Schedule Overrides
+
+Learn how to create temporary schedule overrides for coverage changes:
+
+<DocVideo src="https://app.tango.us/app/embed/2fe2c6c2-d4ed-40ce-80da-369a005c9259?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create an Override Schedule" />
+
 ### Escalation Policies
 - Multi-level escalation policy configuration
 - User or group-based escalation targets
 - Configurable timeout periods and retry attempts
 - Schedule attachment to escalation policies
 - Automatic escalation when no acknowledgment is received
+
+#### Setting Up Escalation Policies
+
+Learn how to create and configure escalation policies for your on-call teams:
+
+<DocVideo src="https://app.tango.us/app/embed/004cfc98-17f2-4947-84a3-75dfbb3aeeaf?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create Escalation Policy" />
 
 ### Alert Rules and Automatic Paging
 - Configurable alert rules that automatically page on-call personnel
