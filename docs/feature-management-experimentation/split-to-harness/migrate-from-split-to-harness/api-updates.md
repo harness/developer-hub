@@ -10,7 +10,7 @@ sidebar_position: 7
 
 This page provides an update to information originally shared via email on 2/21/25 regarding changes to Split Admin API Endpoints & Migration to Harness. Going forward, we will publish further updates here as needed. Our goal is to provide one place to look regarding this topic going forward.
 
-> As of **2/26/25**: The “GET workspaces” API endpoint is no longer on the list of impacted API endpoints. We are retaining this endpoint to make this transition easier for you, our customer. <br /><br /> As of **3/11/25**: The Before and After Guide: API for Split Admins has been published.
+> As of **2/26/25**: The “GET workspaces” API endpoint is no longer on the list of impacted API endpoints. We are retaining this endpoint to make this transition easier for you, our customer. <br /> As of **3/11/25**: The Before and After Guide: API for Split Admins has been published.
 
 ## What’s Changing for the Split Admin API?
 
@@ -24,37 +24,39 @@ On your migration date, five Split Admin API endpoints will be disabled and repl
 
 ## Am I impacted?
 
-To help you determine if you need to take action, Harness took a sample of your Split Admin API usage between **January 24 – February 19**. We provided the results to all admins by email on Feb 21, 2025. We then made a change on Feb 26, 2025 to reduce the number of accounts impacted by 50%. These updated findings were sent to admins on Feb 27, 2025, and placed your account into one of four groups:
+To help you determine if you need to take action, Harness took a sample of your Split Admin API usage between **January 24 – February 19**. We provided the results to all admins by email on Feb 21, 2025. We then made a change on Feb 26, 2025 to reduce the number of accounts impacted by 50%. 
+
+These updated findings were sent to admins on Feb 27, 2025, and placed your account into one of four groups:
 
 1. **No use of impacted API endpoints found**
 
-We found no usage of the five impacted endpoints above in your account during the sample period. However, if you might only occasionally use these endpoints or were planning to start using them later, you may still be affected even though we did not detect such usage.
+   We found no usage of the five impacted endpoints above in your account during the sample period. However, if you might only occasionally use these endpoints or were planning to start using them later, you may still be affected even though we did not detect such usage.
 
 2. **Use limited to GET workspaces endpoint found - no longer an impacted endpoint**
 
-Since the `GET` workspaces endpoint is no longer impacted and it was the only such endpoint we observed between **January 24 - February 19**, you no longer have an issue to resolve and your advice as of 2/27/25 is as follows:
+   Since the `GET` workspaces endpoint is no longer impacted and it was the only such endpoint we observed between **January 24 - February 19**, you no longer have an issue to resolve and your advice as of 2/27/25 is as follows:
 
-We found no usage of the five impacted endpoints above in your account during the sample period. However, if you might only occasionally use these endpoints or were planning to start using them later, you may still be affected even though we did not detect such usage.
+   We found no usage of the five impacted endpoints above in your account during the sample period. However, if you might only occasionally use these endpoints or were planning to start using them later, you may still be affected even though we did not detect such usage.
 
 3. **Use of to-be-disabled GET (read only) endpoints found**
 
-We found some usage of these five endpoints in your account between **January 24 – February 19**. The API calls observed were all `GET` operations. `GET` calls are used to retrieve information from Split but not make administrative changes.
+   We found some usage of these five endpoints in your account between **January 24 – February 19**. The API calls observed were all `GET` operations. `GET` calls are used to retrieve information from Split but not make administrative changes.
 
-If you do not update your API interactions before your migration date, any external systems that rely on these endpoints (such as dashboards or reports) will no longer be able to retrieve data.
+   If you do not update your API interactions before your migration date, any external systems that rely on these endpoints (such as dashboards or reports) will no longer be able to retrieve data.
 
-Additionally, if you occasionally use Split Admin API operations to make administrative changes—but did not do so during the observed period—your ability to automate those changes will be disrupted if updates are not made.
+   Additionally, if you occasionally use Split Admin API operations to make administrative changes—but did not do so during the observed period—your ability to automate those changes will be disrupted if updates are not made.
 
 4. **Use of endpoints that make changes found**
 
-We found significant usage of these five endpoints in your account between **January 24 – February 19**. The API calls observed included both:
+    We found significant usage of these five endpoints in your account between **January 24 – February 19**. The API calls observed included both:
 
-* **Information Retrieval**: Queries retrieving data from Split.
-* **Administrative Actions**: Operations making changes to your Split account.
+    * **Information Retrieval**: Queries retrieving data from Split.
+    * **Administrative Actions**: Operations making changes to your Split account.
 
-If you do not update your API interactions before your migration date, you may experience:
+    If you do not update your API interactions before your migration date, you may experience:
 
-* **Loss of Data Access**: External systems (e.g., dashboards) relying on these endpoints will no longer be able to retrieve data.
-* **Disruptions to Automated Updates**: Any automated processes that modify users, groups, projects, or permissions will need to be updated to ensure continued functionality.
+    * **Loss of Data Access**: External systems (e.g., dashboards) relying on these endpoints will no longer be able to retrieve data.
+    * **Disruptions to Automated Updates**: Any automated processes that modify users, groups, projects, or permissions will need to be updated to ensure continued functionality.
 
 ## What to Do If Action Is Required
 
@@ -70,7 +72,6 @@ The impacted endpoints:
 * `/restrictions` (Project View Permissions)
 * `/users`
 * `/workspaces` 
-
   * `GET` workspaces will remain available after migration
   * `POST`, `PATCH`, and `DELETE` workspaces will be disabled upon migration
 
@@ -88,7 +89,7 @@ No, this change does not affect the APIs used by Split SDKs or customer-deployed
 
 ### Are all Split Admin APIs moving to Harness?
 
-No, only the above Admin API endpoints related to Authentication and Authorization are migrating.
+No, only the above Admin API endpoints related to access and project management are migrating.
 
 ### Do I need to share this with all developers in my organization?
 
@@ -96,9 +97,47 @@ No, only with teammates who write or maintain admin automation code for managing
 
 ### Will I need a Harness API Key to use the new Harness endpoints?
 
-Yes. This diagram shows which endpoints would need a Harness API Key. 
+Yes. Harness API keys are required to call any [Harness API endpoint](https://apidocs.harness.io/). Harness API keys replace Split Admin API keys only for the administrative workflows that have already moved in Harness FME. 
 
-![](./static/api-key-diagram.png)
+Split Admin API keys continue to work for all Split Admin APIs, including flags, segments, and traffic types, but you will no longer be able to create new Split Admin API keys after migration. Both existing Split API keys and Harness API keys can authenticate Split Admin API endpoints.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="harness-split-api-keys">
+<TabItem value="harness" label="Harness FME">
+
+Once your migration is complete, you must use a Harness API key to call the following [Harness API endpoints](https://apidocs.harness.io/):
+
+- [Users](https://apidocs.harness.io/user)
+- [User Groups](https://apidocs.harness.io/user-group)
+- [Projects](https://apidocs.harness.io/org-project)
+
+All administrative actions require a Harness API key.
+
+</TabItem>
+<TabItem value="split" label="Legacy Split">
+
+After migration, Split Admin API keys are no longer valid for the following [Split API endpoints](https://docs.split.io/reference/introduction):
+
+- [Users](https://docs.split.io/reference/users-overview)
+- [User Groups](https://docs.split.io/reference/groups-overview)
+- [Projects](https://docs.split.io/reference/workspaces-overview)
+- [Project View Permissions](https://docs.split.io/reference/update-restrictions) 
+- [Admin API Keys](https://docs.split.io/reference/api-keys-overview)
+
+:::tip
+Split Admin API keys continue to work for all Split APIs, including feature flag-related endpoints (such as flags, segments, and traffic types).
+
+After migration, Split Admin API keys are no longer valid only for the administrative endpoints that have moved into Harness FME (such as users, user groups, projects, permissions, and Admin API keys). Existing Split API keys, and Harness API keys, can continue to authenticate Split Admin API endpoints.
+:::
+
+</TabItem>
+</Tabs>
+
+### Can I use my Split Admin API key to create a new Harness API key?
+
+No. Split Admin API keys cannot create Harness API keys for [service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account/), and they cannot call Harness API endpoints.
 
 ### Where can I learn more?
 
