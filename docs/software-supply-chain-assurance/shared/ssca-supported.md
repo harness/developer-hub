@@ -30,6 +30,7 @@ All features of '[SCS on Harness SaaS](#scs-on-harness-saas)' are available in a
 - Logging the attestation record in the Sigstore public [Rekor](https://docs.sigstore.dev/logging/overview/) will not be performed during the SBOM and SLSA Provenance attestation process, but this will not impact the attestation itself.
 - Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.
 - Achieving [SLSA Level 3](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-3) compliance is not possible in SMP, as it requires Harness hosted build infrastructure. This capability is available through '[SCS on Harness SaaS](#scs-on-harness-saas)'.
+- Detection of [Outdated](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#outdated-components-oss-risk---5), [Unmaintained](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#unmaintained-components-oss-risk---4), [Close to EOL](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#close-to-end-of-life-components), and [EOL Components](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#end-of-life-components) is not yet supported.
 
 ### SCS Steps Support Across Stages
 
