@@ -120,7 +120,6 @@ Each notification method has a different payload format, so you’ll need to cre
 
 Here are the notification methods and their sample payload format:
 
-
 <Tabs>
   <TabItem value="email" label="Email" default>
 
@@ -465,6 +464,12 @@ Each notification method has its own payload format. Ensure that your custom tem
 :::
 
 Once applied, the custom template overrides the default webhook payload sent during pipeline execution.
+
+## Notification Templates for reference
+
+You can also refer to the ready to use default notification templates in the [harness-schema gitHub repository](https://github.com/harness/harness-schema/tree/main/notificationtemplates/defaulttemplates).
+
+These templates will help you to understand the payload format better for each notification method.
 
 ## Variables in the Notification Template
 
