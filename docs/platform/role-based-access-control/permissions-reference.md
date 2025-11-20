@@ -29,7 +29,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource Groups | <ul><li>View (`core_resourcegroup_view`)</li><li>Create/Edit (`core_resourcegroup_edit`)</li><li>Delete (`core_resourcegroup_delete`)</li></ul> | Active |
 | Account Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_setting_view`)</li><li>Edit (`core_setting_edit`)</li></ul> | Active |
 | Default Settings | <ul><li>Create/Edit</li></ul> | Active |
-| Projects | <ul><li>View (`core_project_view`)</li><li>Create (`core_project_create`)</li><li>Edit (`core_project_edit`)</li><li>Delete (`core_project_delete`)</li></ul> | Active |
+| Projects | <ul><li>View (`core_project_view`)</li><li>Create (`core_project_create`)</li><li>Edit (`core_project_edit`)</li><li>Delete (`core_project_delete`)</li><li>Move (`core_project_move`)</li></ul> | Active |
 | User Groups | <ul><li>View (`core_usergroup_view`)</li><li>Manage: Create, edit, and delete user groups (`core_usergroup_manage`)</li></ul> | Active |
 | Service Accounts | <ul><li>View (`core_serviceaccount_view`)</li><li>Create/Edit (`core_serviceaccount_edit`)</li><li>Delete (`core_serviceaccount_delete`)</li><li>Manage: Create, edit, and delete API keys and tokens for service accounts (`core_serviceaccount_manageapikey`)</li><li>List Service Accounts (`core_serviceaccount_list`)</li></ul> | Active |
 | Organizations | Available at the account and org [scopes](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_organization_view`)</li><li>Create (`core_organization_create`)</li><li>Edit (`core_organization_edit`)</li><li>Delete (`core_organization_delete`)</li></ul> | Active |

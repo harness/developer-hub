@@ -18,7 +18,7 @@ keywords:
 This feature requires the `PL_PROJECT_MOVEMENT_ENABLED` feature flag. Contact [Harness support](mailto:support@harness.io) to enable it.
 :::
 
-This document provides a step-by-step guide to migrate projects from one organization to another, including prerequisites, permissions, and detailed migration procedures.
+This document provides step-by-step guide to move a project across organizations, including prerequisites and detailed movement steps.
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ This document provides a step-by-step guide to migrate projects from one organiz
 
 ### Step 1: Navigate and access the move option
 
-1. Navigate to **Projects** at account or organization level
+1. Navigate to the source organization in your account and locate the project you want to move.
 2. Click the **⋮** icon next to the project you want to move
 3. Select **Move Project**
 
@@ -39,22 +39,32 @@ This document provides a step-by-step guide to migrate projects from one organiz
 
 1. In the Move Project modal, review the warning about potential impacts
 
-  <DocImage path={require('../static/review-move-project.png')} width="50%" height="50%" title="Move project modal" />
+    <DocImage path={require('../static/review-move-project.png')} width="50%" height="50%" title="Move project modal" />
 
 2. Select the destination organization from the dropdown where you want to move the selected project. Only organizations where you have Create Project permission (`core_project_create`) are listed in the dropdown.
 
-  <DocImage path={require('../static/select-destination-org.png')} width="50%" height="50%" title="Move project modal" />
+    <DocImage path={require('../static/select-destination-org.png')} width="50%" height="50%" title="Move project modal" />
 
-3. Click **Move Project** to start the move process
 
-  <DocImage path={require('../static/move-project.png')} width="50%" height="50%" title="Move project modal" />
+3. Click **Move Project** to proceed
+
+    <DocImage path={require('../static/move-project.png')} width="50%" height="50%" title="Move project modal" />
 
 ### Step 3: Confirm Move
 
-1. Review the confirmation dialog showing potential impacts. Type the **Project name** to confirm
+1. Review the confirmation dialog showing potential impacts. Type the **Project identifier** to confirm
 
 2. Click **Confirm Move**
 
-  <DocImage path={require('../static/move-confirm.png')} width="50%" height="50%" title="Move project confirm" />
+    <DocImage path={require('../static/move-confirm.png')} width="50%" height="50%" title="Move project confirm" />
 
-Once the move completes, you'll be redirected to the project in its new organization. Follow the [post-move remediation](./pre-move-and-post-move-guide/#post-move-remediation) guide to complete the movement.
+:::note
+While a project is being moved, all project-level access control components—including users, service accounts, user groups, role bindings, resource groups, and roles—are moved asynchronously in the background, which can take some time.
+:::
+
+Once the move completes, you'll be redirected to the project in its new organization. A banner appears with the message, "*This project was recently moved from another organization. Some entities may reference resources that no longer exist*" as shown in the image below.
+
+<DocImage path={require('../static/move-complete.png')} width="80%" height="80%" title="Move project confirm" />
+
+Follow the [post-move remediation](./pre-move-and-post-move-guide/#post-move-remediation) guide to verify and update any broken references, and ensure the project functions correctly in its new organization.
+

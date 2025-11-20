@@ -54,7 +54,7 @@ This list covers common issues but is not exhaustive. Additional organization-le
 
 8. Access control:
     - Organization-level RBAC policies aren’t transferred during a project move. You may need to recreate them in the destination organization to ensure proper access controls are maintained.
-    - When a project move is initiated, all project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
+    - When a project move is initiated, all project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are moved asynchronously. While the move is in progress, users may experience temporary access restrictions during the move process.
     - If an account-level resource group includes a project that is being moved, Harness automatically updates the resource group to reflect the new organization. No action is required from users.
 
 9. Audit logs:
@@ -65,8 +65,8 @@ This list covers common issues but is not exhaustive. Additional organization-le
         - New audit logs for the moved project will appear in the newer organization.
 
 10. Terraform Resource and State Management:
-    - Terraform state and configuration files that reference the moved project may become inconsistent after the move.
-    - Resources created using the Harness Terraform Provider include organization and project level identifiers that will no longer match the new organization.
+    - Terraform state and configuration files that reference the moved project may become inconsistent after a project is moved.
+    - Resources created using the Harness Terraform Provider include organization and project level identifiers that will no longer match the new organization identifier.
     - Terraform state and configuration management are highly variable, depending on how you define, reference, and structure your Terraform code, you may need to manually update your Terraform state and configuration files after the move.
 
 :::note Important note
@@ -77,7 +77,7 @@ This list covers common issues but is not exhaustive. Additional organization-le
 
 ## Post-move remediation
 
-After a project is moved, follow these steps to identify and fix broken references. Note that this list is not exhaustive and additional actions might be needed depending on your project setup.
+After a project is moved, you may follow these steps to identify and fix broken references. Note that this list is not exhaustive and additional actions might be needed depending on your project setup.
 
 1. Pipelines
     - Test all pipelines to identify failures and broken references.
@@ -95,7 +95,6 @@ After a project is moved, follow these steps to identify and fix broken referenc
     - Update service manifest sources and artifact sources to reference destination organization connectors.
     - Update environment configuration files and connection strings.
     - Recreate service overrides and infrastructure definitions that reference organization-level resources.
-    - Update GitOps cluster references to use destination organization resources.
 
 4. Notifications and Webhooks
     - Recreate notification channels in the destination organization.
@@ -106,11 +105,10 @@ After a project is moved, follow these steps to identify and fix broken referenc
 5. Access Control
     - Recreate organization-level RBAC policies in the destination organization.
     - Verify user access and permissions are working correctly.
-    - Update user group memberships if needed.
+    - Update user group if needed.
 
 6. Monitored Services
     - Update monitored services to reference destination organization resources.
-    - Verify monitoring configurations are working correctly.
 
 7. Terraform Management
     - Review Terraform configuration (`.tf`) and state files for any hardcoded organization references.
@@ -118,5 +116,5 @@ After a project is moved, follow these steps to identify and fix broken referenc
     - Update organization references (e.g., org_id, organization_id) manually in both `.tf` and state files if necessary.
     - Apply changes once the plan shows the expected alignment.
 
-In addition, update bookmarks and saved URLs to reflect the new organization path. Test end-to-end workflows to ensure everything functions correctly. Review and update any documentation or runbooks that reference the old organization path.
+Update bookmarks and saved URLs to use the new organization path, test end-to-end workflows, and refresh any documentation or runbooks that reference the old organization.
 

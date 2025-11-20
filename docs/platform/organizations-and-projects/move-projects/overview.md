@@ -26,7 +26,7 @@ This feature allows you to transfer a project from one organization to another w
 
 2. **Organization-scoped resources need reconfiguration**: Resources scoped at the source organization level become inaccessible after the move. You might need to recreate connectors, secrets, templates, webhooks, and notifications in the destination organization, and then update any project references to point to these new resources.
 
-3. **Access control requires reconfiguration**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be recreated in the destination organization. All Project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are migrated asynchronously. While the move is in progress, users or service accounts that have access to the project might temporarily be unable to access it.
+3. **Access control requires reconfiguration**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be recreated in the destination organization. All Project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are moved asynchronously. While the move is in progress, users or service accounts that have access to the project might temporarily be unable to access it.
 
 4. **Audit logs**: 
     - Account-level audit logs: No impact - all logs remain accessible.
