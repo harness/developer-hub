@@ -37,16 +37,28 @@ This document provides step-by-step guide to move a project across organizations
 
 ### Step 2: Select destination organization
 
-1. In the Move Project modal, review the warning about potential impacts
+1. In the Move Project modal, review the warning about potential impacts. 
 
     <DocImage path={require('../static/review-move-project.png')} width="50%" height="50%" title="Move project modal" />
 
-2. Select the destination organization from the dropdown where you want to move the selected project. Only organizations where you have Create Project permission (`core_project_create`) are listed in the dropdown.
+2. Review the list of entities that may break after the move. This list is not exhaustive, so additional entities might also be affected. As shown below, you can view details and select each referred entity type to explore further.
+    <iframe
+    src="https://app.tango.us/app/embed/59110a63-da09-4967-af2c-f40c42bc0782"
+    style={{ minHeight: "440px" }}
+    sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+    title="View Expired Delegates in Harness"
+    width="80%"
+    height="40%"
+    referrerPolicy="strict-origin-when-cross-origin"
+    frameBorder="0"
+    allowFullScreen
+    ></iframe>
+
+3. Select the destination organization from the dropdown where you want to move the selected project. Note that only organizations where you have create project permission are listed in the dropdown.
 
     <DocImage path={require('../static/select-destination-org.png')} width="50%" height="50%" title="Move project modal" />
 
-
-3. Click **Move Project** to proceed
+4. Click **Move Project** to proceed
 
     <DocImage path={require('../static/move-project.png')} width="50%" height="50%" title="Move project modal" />
 

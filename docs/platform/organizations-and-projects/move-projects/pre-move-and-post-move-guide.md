@@ -80,32 +80,28 @@ This list covers common issues but is not exhaustive. Additional organization-le
 After a project is moved, you may follow these steps to identify and fix broken references. Note that this list is not exhaustive and additional actions might be needed depending on your project setup.
 
 1. Pipelines
-    - Test all pipelines to identify failures and broken references.
+    - Test all pipelines to identify broken references.
     - Update pipeline references to use connectors and secrets from the destination organization.
-    - Recreate or import organization-level templates in the destination organization.
+    - Recreate organization-level templates in the destination organization.
     - Update YAML entities with hardcoded `orgIdentifier` references to match the new organization.
     - Fix pipeline chaining references if child pipelines were also moved.
 
 2. Connectors and Secrets
-    - Recreate organization-level connectors in the destination organization.
-    - Recreate organization-level secrets in the destination organization.
-    - Update all references in services, environments, and pipelines to use the new connectors and secrets.
+    - Recreate organization-level connectors and secrets in the destination organization.
 
 3. Services and Environments
     - Update service manifest sources and artifact sources to reference destination organization connectors.
     - Update environment configuration files and connection strings.
-    - Recreate service overrides and infrastructure definitions that reference organization-level resources.
+    - Recreate service overrides and infrastructure definitions that reference source organization-level resources.
 
 4. Notifications and Webhooks
     - Recreate notification channels in the destination organization.
-    - Update notification rules to use the new channels.
+    - Update notification rules to use the destination organization channels.
     - Recreate webhook configurations using destination organization connectors and secrets.
     - Test custom webhook triggers and update as needed.
 
 5. Access Control
-    - Recreate organization-level RBAC policies in the destination organization.
-    - Verify user access and permissions are working correctly.
-    - Update user group if needed.
+    - Recreate organization-level RBAC policies in the destination organization and verify that users and service accounts still have the expected project access.
 
 6. Monitored Services
     - Update monitored services to reference destination organization resources.
@@ -116,5 +112,5 @@ After a project is moved, you may follow these steps to identify and fix broken 
     - Update organization references (e.g., org_id, organization_id) manually in both `.tf` and state files if necessary.
     - Apply changes once the plan shows the expected alignment.
 
-Update bookmarks and saved URLs to use the new organization path, test end-to-end workflows, and refresh any documentation or runbooks that reference the old organization.
+Additionally, you may need to update bookmarks, saved URLs and runbooks to use the new organization path, that reference the old organization.
 
