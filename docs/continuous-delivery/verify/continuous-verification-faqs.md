@@ -171,7 +171,6 @@ Yes, you can configure multiple health sources as part of the monitored service.
 Yes, logs ingested from APMs and metric tools are stored for audit purposes only—not for any ML or AI training.
 
 These logs follow Harness’s data retention policies:
-- Execution data (including verification logs) is retained for up to 6 months.
-[View data retention policy](https://developer.harness.io/docs/platform/references/data-retention/)
+- Execution data (including verification logs) is retained for up to 6 months. To extend it to one year, get the feature flag `CDS_CV_DATA_RETENTION_FOR_ONE_YEAR_ENABLED` enabled. [View data retention policy](https://developer.harness.io/docs/platform/references/data-retention/) for more information
 - Audit trail data is retained for up to 2 years.
-[Learn more about audit trails](https://developer.harness.io/docs/platform/governance/audit-trail/)
+[Learn more about audit trails](https://developer.harness.io/docs/platform/governance/audit-trail/) 
