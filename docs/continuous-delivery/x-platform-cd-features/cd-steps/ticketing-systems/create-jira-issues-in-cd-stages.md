@@ -51,8 +51,34 @@ The fields that are required are determined by your definitions that are set in 
 
 In Jira fields, you can select specific fields within a Jira issue. For more information on custom fields, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
+Review the [limitations section](#limitations) to know more about the supported issue fields and limitations.
 
-Review the [limitations section](#limitations) to know more about the supported issue fields and limitations. 
+### Referencing JIRA fields with spaces or special characters in expressions
+
+When you need to reference JIRA custom field values using Harness expressions (for example, in conditional execution or when passing values between steps), fields that contain spaces or special characters must be enclosed in **single quotes** (`'`).
+
+**Examples:**
+
+**Fields with spaces - Correct syntax:**
+```
+<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.'Risk Level'>
+<+execution.steps.jiraCreate.issue.'Custom Field'>
+```
+
+**Fields without spaces - No quotes needed:**
+```
+<+execution.steps.jiraCreate.issue.Status>
+<+execution.steps.jiraCreate.issue.Priority>
+```
+
+**Using in conditional expressions:**
+```
+<+execution.steps.jiraCreate.issue.'Risk Level'> == "High"
+```
+
+:::tip
+When referencing JIRA issue fields created by the Jira Create step in subsequent steps or expressions, remember to use single quotes around field names that contain spaces or special characters.
+::: 
 
 ## Jira Date field support
 

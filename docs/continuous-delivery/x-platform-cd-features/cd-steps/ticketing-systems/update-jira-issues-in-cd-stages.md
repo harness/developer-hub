@@ -81,15 +81,41 @@ In **Optional Configuration**:
 - * In **Status**, enter the status type (Issue Action) to update the issue with (In Progress, Done, etc). Harness will automatically update the issue with this status.
 - * In **Transition Name**, enter the name of the transition to move the issues into (for example, `Transition to`, `PR Testing`, `Ready for Test`).
 
-![](static/status-and-transition.png)
 
 If the issue is not part of a Jira workflow and does not have transition options, then the step will fail. For more information, go to [statuses and transitions](https://support.atlassian.com/jira-cloud-administration/docs/work-with-issue-workflows/#Workingwithworkflows-steps) from Atlasssian.
 
 ## Add Issue fields
 
-You can select specific fields to update within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
+You can select specific fields to update within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
-Review the [limitations section](#limitations) to know more about the supported issue fields and limitations. 
+Review the [limitations section](#limitations) to know more about the supported issue fields and limitations.
+
+### Referencing JIRA fields with spaces or special characters in expressions
+
+When you need to reference JIRA custom field values using Harness expressions (for example, in conditional execution, approval criteria, or when passing values between steps), fields that contain spaces or special characters must be enclosed in **single quotes** (`'`).
+
+**Examples:**
+
+**Fields with spaces - Correct syntax:**
+```
+<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Update.issue.'Risk Level'>
+<+execution.steps.jiraUpdate.issue.'Custom Field'>
+```
+
+**Fields without spaces - No quotes needed:**
+```
+<+execution.steps.jiraUpdate.issue.Status>
+<+execution.steps.jiraUpdate.issue.Priority>
+```
+
+**Using in conditional expressions:**
+```
+<+execution.steps.jiraUpdate.issue.'Risk Level'> == "High"
+```
+
+:::tip
+When referencing JIRA issue fields updated by the Jira Update step in subsequent steps or expressions, remember to use single quotes around field names that contain spaces or special characters.
+:::
 
 In **Optional Configuration**, select **+ Fields** to add Jira fields.
 

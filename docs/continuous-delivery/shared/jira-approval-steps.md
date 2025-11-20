@@ -248,9 +248,52 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
 
 `Status` is an issue field. You can use any issue field.
 
-If a field in the JEXL criteria includes spaces, enclose the field in quotation marks, as shown in the following example:
+#### Referencing JIRA fields with spaces or special characters
 
-`<+issue.Priority> == "P1" && <+issue."1-line Update"> == "test" && <+issue."Remaining Estimate"> == "2h" && <+issue.Description> == "new description"`
+When referencing JIRA custom fields that contain spaces or special characters in their names, you must enclose the field name in **single quotes** (`'`) within the Harness expression. Without quotes, the expression evaluation will fail.
+
+**Examples:**
+
+**Fields with spaces - Correct syntax:**
+```
+<+issue.'Risk Level'> == "High"
+<+issue.'1-line Update'> == "test"
+<+issue.'Remaining Estimate'> == "2h"
+```
+
+**Fields without spaces - No quotes needed:**
+```
+<+issue.Priority> == "P1"
+<+issue.Status> == "Done"
+<+issue.Description> == "new description"
+```
+
+**Complex expression combining both:**
+```
+((<+issue.'Risk Level'> == "High") && (<+issue.Labels>.indexOf('crm-approved') >= 0)) || (<+issue.'Risk Level'> == "Low")
+```
+
+This expression checks if:
+- The "Risk Level" custom field equals "High" AND the Labels field contains "crm-approved", OR
+- The "Risk Level" custom field equals "Low"
+
+**Incorrect syntax (will fail):**
+```
+<+issue.Risk Level> == "High"  // FAILS - no quotes around field name with space
+<+issue.customfield_1234> == "High"  // May work for custom field IDs, but use field names with quotes for better readability
+```
+
+:::tip
+- Use single quotes (`'`) around field names that contain spaces or special characters
+- Standard field names without spaces (like `Status`, `Priority`, `Labels`) don't require quotes
+- For better readability, use the custom field name with quotes rather than the `customfield_XXXX` identifier
+:::
+
+**Additional examples:**
+
+```
+<+issue.Priority> == "P1" && <+issue."1-line Update"> == "test" && <+issue."Remaining Estimate"> == "2h" && <+issue.Description> == "new description"
+```
 
 ### Manual Refresh During Execution
 
