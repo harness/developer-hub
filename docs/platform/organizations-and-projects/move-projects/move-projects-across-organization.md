@@ -22,8 +22,8 @@ This document provides a step-by-step guide to migrate projects from one organiz
 
 ## Prerequisites
 
-- Move Project permission on the source project
-- Create Project permission in the destination organization
+ - Move Project (`core_project_move`) permission on the source project.
+ - Create Project (`core_project_create`) permission in the destination organization.
 
 ## Steps to move a project
 
