@@ -37,22 +37,22 @@ This document provides step-by-step guide to move a project across organizations
 
 ### Step 2: Select destination organization
 
-1. In the Move Project modal, review the warning about potential impacts. 
+1. In the Move Project modal, review the warning about potential impacts and the list of entities that may break after the move. This list is not exhaustive, so additional entities might also be affected.
 
     <DocImage path={require('../static/review-move-project.png')} width="50%" height="50%" title="Move project modal" />
 
-2. Review the list of entities that may break after the move. This list is not exhaustive, so additional entities might also be affected. As shown below, you can view details and select each referred entity type to explore further.
-    <iframe
-    src="https://app.tango.us/app/embed/59110a63-da09-4967-af2c-f40c42bc0782"
-    style={{ minHeight: "440px" }}
-    sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
-    title="View Expired Delegates in Harness"
-    width="80%"
-    height="40%"
-    referrerPolicy="strict-origin-when-cross-origin"
-    frameBorder="0"
-    allowFullScreen
-    ></iframe>
+    If needed, view details and select each referenced entity type to explore further.
+        <iframe
+        src="https://app.tango.us/app/embed/59110a63-da09-4967-af2c-f40c42bc0782"
+        style={{ minHeight: "440px" }}
+        sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+        title="View Expired Delegates in Harness"
+        width="80%"
+        height="40%"
+        referrerPolicy="strict-origin-when-cross-origin"
+        frameBorder="0"
+        allowFullScreen
+        ></iframe>
 
 3. Select the destination organization from the dropdown where you want to move the selected project. 
 
@@ -71,12 +71,12 @@ This document provides step-by-step guide to move a project across organizations
     <DocImage path={require('../static/move-confirm.png')} width="50%" height="50%" title="Move project confirm" />
 
 :::note
-While a project is being moved, all project-level access control components—including users, service accounts, user groups, role bindings, resource groups, and roles—are moved asynchronously in the background, which can take some time.
+While a project is being moved, all project-level access control components—including users, service accounts, user groups, role bindings, resource groups, and roles—are updated asynchronously in the background, which may take some time to complete.
 :::
 
-Once the move is complete, you'll be redirected to the project in its new organization. A banner will appear stating: _This project was recently moved from another organization. Some entities may reference resources that no longer exist._ and you can also view the new destination organization, as shown in the image below.
+Once a project is moved, you'll be redirected to the project in its new organization. A banner will appear stating: _This project was recently moved from another organization. Some entities may reference resources that no longer exist._ and you can also view the new destination organization, as shown in the image below.
 
 <DocImage path={require('../static/move-complete.png')} width="80%" height="80%" title="Move project confirm" />
 
-Follow the [post-move remediation](./pre-move-and-post-move-guide/#post-move-remediation) guide to verify and update any broken references, and ensure the project functions correctly in its new organization.
+Follow the [post-move remediation](./pre-move-and-post-move-guide/#post-move-remediation) guide to verify and update any broken references, and ensure the project functions correctly in its new organization. This guide is not exhaustive; you might need additional steps based on your project setup.
 
