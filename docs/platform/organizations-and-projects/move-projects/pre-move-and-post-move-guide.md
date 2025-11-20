@@ -110,7 +110,6 @@ After a project is moved, you may follow these steps to identify and fix broken 
     - Review Terraform configuration (`.tf`) and state files for any hardcoded organization references.
     - Run `terraform plan` to identify any drift or inconsistencies.
     - Update organization references (e.g., org_id, organization_id) manually in both `.tf` and state files if necessary.
-    - Apply changes once the plan shows the expected alignment.
 
 Additionally, you may need to update bookmarks, saved URLs and runbooks to use the new organization path, that reference the old organization.
 
