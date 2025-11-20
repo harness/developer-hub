@@ -74,7 +74,7 @@ This document provides step-by-step guide to move a project across organizations
 While a project is being moved, all project-level access control components—including users, service accounts, user groups, role bindings, resource groups, and roles—are moved asynchronously in the background, which can take some time.
 :::
 
-Once the move completes, you'll be redirected to the project in its new organization. A banner appears with the message, "*This project was recently moved from another organization. Some entities may reference resources that no longer exist*" as shown in the image below.
+Once the move is complete, you'll be redirected to the project in its new organization. A banner will appear stating: _This project was recently moved from another organization. Some entities may reference resources that no longer exist._ and you can also view the new destination organization, as shown in the image below.
 
 <DocImage path={require('../static/move-complete.png')} width="80%" height="80%" title="Move project confirm" />
 
