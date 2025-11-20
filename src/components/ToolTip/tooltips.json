@@ -1,5 +1,6 @@
 {
     "iacm": {
+      "workspace": "A workspace is a one-to-one mapping of your infrastructure state. It is used to store and manage your infrastructure state in Harness IaCM.",  
       "provider-registry": {
         "custom-provider": "An OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.",
         "gpg-key": "A cryptographic key used to verify the authenticity and integrity of files. In this case, it ensures provider binaries have not been tampered with.",

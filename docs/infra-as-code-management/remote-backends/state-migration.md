@@ -4,156 +4,53 @@ description: Learn how to migrate and import infrastructure state in Harness IaC
 sidebar_position: 20
 ---
 
-Learn how to migrate your infrastructure state into Harness workspaces using the IaCM migration tool.
+When using Harness Infrastructure as Code Management (IaCM), one of its benefits is automatic state storage for your <Tooltip id="iacm.workspace">workspace</Tooltip>. Your state will automatically be used when no backend code block is configured in your OpenTofu/Terraform code. Additionally, you can leverage the Harness-stored state locally or in other workflows by using an HTTP backend block configured based on your workspace location and identifier.
 
-:::tip Prerequisites
-- Harness project with [configured connectors](/docs/infra-as-code-management/get-started/#add-connectors)
-- [OpenTofu backend configuration](https://opentofu.org/docs/language/settings/backends/configuration/)
+If you currently use a 3rd party state storage you can [continue to use this as configured](/docs/infra-as-code-management/remote-backends/use-backends) with Harness IaCM, but if you wish to migrate your state to Harness you can do so via one of the methods described below.
+
+## Local CLI
+Configure your OpenTofu codebase locally with authentication set for your existing backend configuration to manually migrate your state files to Harness IaCM. Validate this by running `tofu init` and validating it completes successfully.
+
+Migrate your state files to Harness IaCM by configuring your OpenTofu/Terraform codebase locally as follows:
+- Set authentication for your existing backend configuration (Link to auth options or include in code snippet example)
+
+:::info example backend block
+
+You will now need to make sure you have a workspace defined in Harness for the current Tofu project. If one has not been created, [do so now](/docs/infra-as-code-management/workspaces/create-workspace). When viewing the created workspace, navigate to the `CLI Integration` tab where you can view the HTTP backend block for leveraging the workspace state locally. Copy this backend block into your Tofu code and remove the existing backend.
+
+![Workspace Local Backend Config](./static/workspace-cli-integration.png)
+
+To authenticate to the IaCM backend you will need to set `TF_HTTP_PASSWORD` to a Harness API key with `State:Access` permissions on the workspace we are migrating to. 
+
+With the new backend configured, the old removed, and authentication set, you should be able to execute `tofu ini -migrate-state` which will execute automatic migration of your state from your existing backend to IaCM.
+
+You can validate the state in Harness has been populated by viewing the `State` tab in the workspace ui.
+
+At this point you should be able to completely remove the backend block from your codebase to prepare the code for execution in IaCM. You can also keep the IaCM HTTP backend block in a local file that is in your `.gitignore` file so you can use the IaCM state locally going forward.
+
+### Terraform Cloud
+
+For Terraform Cloud to Harness IaCM, migrate your state using the local CLI with the following steps:
+- Pull your existing state to a local file
+- Re-initialize your local environment to use your local file
+- Migrate to Harness IaCM using the `init` command
+
+Go to [plugin commands](/docs/infra-as-code-management/cli-commands/terraform-plugins) for more information about supported OpenTofu and Terraform commands.
+
+:::info tofu automatic migration
+OpenTofu does not currently support automatic migration with the `tofu-init -migration-state` command
 :::
 
-## Process Overview
-- **Local Setup** - Configure workspace settings
-- **Workspace Creation** - Create Harness workspaces
-- **State Import** - Import infrastructure state
+Start by defining (if not existing already) the backend block for your local environment to use the existing Terraform Cloud state. Once configured and initialized, pull the state locally by executing `tofu state pull > terraform.tfstate`. 
 
-## Phase 1: Local Setup
+You can now remove your Terraform Cloud backend block, and the local terraform configuration `rm -rf .terraform`. If you re-initialize the project the configuration should see the local state file and use it going forward. You can confirm this by running a `tofu plan` and checking the results.
 
-### Get the Migration Tool
-Clone the IaCM migration repository:
-```bash
-git clone git@github.com:harness/iacm-migration.git
-```
-Alternatively, you can [fork the repository](https://github.com/harness/iacm-migration/fork) if you prefer.
+If we now add the Harness backend block from the Workspace `Local CLI` tab, set authentication in your environment, we should be able to run the `tofu ini -migrate-state` command and your state will be pushed from the local file to Harness storage. 
 
-### Configure Your Variables
-Create a new `<filename>.tfvars` file in your local repository. This file will define:
-- Your Harness account details
-- Workspace configurations
-- Provider settings
+### Harness Pipeline
 
-:::info tfvar jexl support
-[JEXL expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) cannot be used to reference `tfvar` files.
-:::
+Another strategy for migrating state to Harness storage is to run a successful `tofu apply` in an IaCM pipeline, which takes a snapshot of your state into Harness (to enable the resources and state tab in the workspace) and then removing the existing backend block.
 
-See the example below for reference:
+To do this we must [configure our workspace](/docs/infra-as-code-management/workspaces/create-workspace) with all necessary configuration to do an Apply while also authenticating to the existing backend. You will need to execute a successful Apply in an IaCM stage. After the Apply you can validate the state has been copied to Harness by viewing the `State` tab in the target workspace. 
 
-<details>
-<summary>Sample tfvars file</summary>
-
-```hcl
-account_id = "<harness-account-id>"
-org = "<harness-org>"
-project = "<harness-project>"
-default_provisioner_type = "terraform"
-default_provisioner_version = "1.5.7"
-default_cost_estimation_enabled = true
-default_provider_connector = "<cloud-provider-connector-name>"
-default_repository_connector = "<git-repo-connector-name>"
-workspaces = [
-    {
-        identifier = "workspace_demo_1"
-        repository = "<repo-directory>"
-        repository_path = "migration-demo-1"
-        repository_branch = "<repo-branch>"
-        terraform_variables = [
-            {
-                key = "instance_type"
-                value = "t2.micro"
-                value_type = "string"
-            }
-        ],
-    },
-    {
-        identifier = "workspace_demo_2"
-        repository = "<repo-directory>"
-        repository_path = "migration-demo-2"
-        repository_branch = "<repo-branch>"
-        terraform_variables = [
-            {
-                key = "instance_type"
-                value = "t2.micro"
-                value_type = "string"
-            }
-        ],
-    },
-]
-```
-</details>
-
-### Apply Your Configuration
-Run the following command in your repository directory:
-```bash
-terraform apply -refresh=true -var-file=<filename>.tfvars
-```
-When prompted, review the proposed changes and type **yes** to proceed.
-
-:::info What Happens Next?
-This will generate an `out` folder containing:
-- Your new `main.tf` file listing your Harness workspaces
-- A migration pipeline configured to import your state
-:::
-
-## Phase 2: Create Workspaces
-
-Now that your configuration is ready:
-
-- **Set Up Authentication**
-    ```bash
-    cd out
-    export HARNESS_PLATFORM_API_KEY=<your-harness-api-key>
-    ```
-
-- **Create the Workspaces**
-    ```bash
-    terraform init && terraform apply
-    ```
-
-- **Verify Creation**: Check your Harness account to confirm the new workspaces are created.
-
-## Phase 3: Import Your State
-
-- **Run Migration Pipeline**
-    - Navigate to your new migration pipeline in Harness
-    - Select the target workspace for state import
-    - Start the pipeline
-
-- **Verify State Import**
-    - Go to your workspace
-    - Open the State tab
-    - Confirm your infrastructure state is imported correctly
-
-- **Complete Migration**
-    Repeat the import process for each workspace you created.
-
-<details>
-<summary>🔍 Example Infrastructure Configuration</summary>
-
-Here's a sample Terraform configuration that sets up an AWS S3 backend with a single AWS resource:
-
-```hcl
-terraform {
-    backend "s3" {
-        bucket = "migration-demo"
-        key = "terraform.tfstate"
-        region = "us-east-1"
-    }
-}
-
-provider "aws" {
-    region = "us-east-1"
-}
-
-resource "aws_instance" "app1" {
-    instance_type = var.instance.type
-    ami = "ami-0bb7d64eeag57c9a9"
-    tags = {
-        "team" = "app-team"
-        "costcentre" = "engineering"
-    }
-}
-```
-
-:::tip
-Make sure your AWS S3 bucket contains these resources before starting the migration to avoid errors.
-:::
-</details>
+Once you have validated the state exists in Harness, you can remove the existing backend block from the Tofu code. The next time the Tofu is executed by IaCM, Harness will see that no backend has been configured and automatically load the Harness-stored state.
