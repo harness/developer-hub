@@ -149,6 +149,16 @@ The following deprecated API endpoints are longer supported:
 
 ## November 2025 
 
+### Version 1.117.x <!--November 19, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where fetching connector details failed because `identifierRef` was incorrectly passed instead of `identifier`. [PL-66692]
+
+#### New features and enhancements
+
+- Updated Harness Manager health checks to use a ping-based sentinel check instead of lock acquisition. [PL-65815]
+
 ### Version 1.116.x <!--November 13, 2025-->
 
 #### Fixed issues
