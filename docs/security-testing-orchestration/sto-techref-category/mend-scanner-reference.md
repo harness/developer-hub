@@ -64,7 +64,11 @@ import StoSettingProductConfigName from './shared/step-palette/scan/config-name.
 
 - **SAST, SCA, Container**: Uses the newer Mend CLI with the V3 API. This configuration supports **SAST**, **SCA** for repositories, and **Container** for container image scanning.
 
+:::note
 
+The Mend CLI with the V3 API is behind the FF `STO_MEND_V3`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+:::
 ### Target
 
 
@@ -131,7 +135,7 @@ import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 #### Domain
 
-The fully-qualified URL to the scanner. The default is `https://saas.whitesourcesoftware.com/api`.
+The fully-qualified URL to the scanner. The default is `https://saas.whitesourcesoftware.com/`.
 
 <!-- ============================================================================= -->
 <a name="auth-enforce-ssl"></a>
@@ -293,6 +297,13 @@ import StoSettingSettings from './shared/step-palette/all/settings.md';
 import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
+
+:::note
+Mend requires higher compute resources for orchestration. Recommended minimum resource limits:
+
+- Memory: 16 GB
+- CPU: 2
+:::
 
 
 ### Advanced settings
