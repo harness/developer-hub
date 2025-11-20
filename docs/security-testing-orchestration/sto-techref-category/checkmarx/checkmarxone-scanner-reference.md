@@ -429,7 +429,11 @@ import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severit
 
 <StoSettingFailOnSeverity />
 
+### Exclude issues marked as Not Exploited
 
+You can configure the CheckmarxOne ingestion step to exclude issues detected by CheckmarxOne but flagged as Not Exploitable. To enable this setting, add the following key-value pair under **Settings**:
+
+`hide_not_exploitable` : `True`
 
 ### Additional Configuration
 
