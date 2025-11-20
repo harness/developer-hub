@@ -340,7 +340,7 @@ const config: Config = {
             },
             {
               label: 'Do not sell or share my personal information',
-              to: 'https://preferences.harness.io/form/opt_out?locationCode=NP-P3&privacyRequestPolicyId=2efa55cb-13a6-49c8-bab1-1a8f7efd00b7',
+              to: 'https://harness-privacy.relyance.ai/',
             },
           ],
         },
