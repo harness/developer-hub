@@ -55,6 +55,7 @@ This guide introduced you to the core functionalities and setup of Harness IaCM,
 - [**Workspace Templates:**](/docs/infra-as-code-management/workspaces/workspace-templates) Quickly create new workspaces using pre-defined, customizable templates.
 - [**Module Registry:**](/docs/category/module-registry) Share and reuse infrastructure modules across teams to standardize deployments.
 - [**Default Pipelines:**](/docs/infra-as-code-management/pipelines/default-pipelines) Start with ready-made pipeline templates to accelerate automation and best practices.
+- [**Queue Step:**](/docs/infra-as-code-management/pipelines/operations/iacm-queue-step) Serialize your pipeline execution to track concurrent executions and prevent state conflicts.
 
 Go to [Harness AI Chat use cases](/docs/platform/harness-aida/harness-ai-chat-guide/) for more use cases on Harness AI, and platform integration.
 
