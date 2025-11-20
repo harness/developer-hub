@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/tbh-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/tbh-certification-admin-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/tbh-certification-developer-exam-details.md";
-// import DeveloperCertificationReviewGuide from "./data/tbh-certification-developer-review-guide.md";
+ import DeveloperCertificationExamDetails from "./data/tbh-certification-developer-exam-details.md";
+ import DeveloperCertificationReviewGuide from "./data/tbh-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/tbh-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/tbh-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -269,7 +269,8 @@ export default function CertificationsTBH() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Traceable by Harness - Developer
+                      Traceable by Harness - Developer (BETA COMING
+                      SOON)
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_tbh_badge.svg`}
@@ -287,17 +288,17 @@ export default function CertificationsTBH() {
                       Assesses the fundamental skills to manage your
                       posture with Traceable by Harness projects.
                     </div>
-                    {/*
+                    
                     <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="https://university-registration.harness.io/traceable-by-harness-developer">
+                      <Link href="#">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
                       </Link>
                     </div> 
-                    */}
+                    
 
                   </div>
                 </div>
@@ -306,14 +307,14 @@ export default function CertificationsTBH() {
 
             {/* Developer Exam Details */}
 
-            {/*
+           
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
             
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="https://university-registration.harness.io/traceable-by-harness-developer">
+                  <Link href="#">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
@@ -322,7 +323,7 @@ export default function CertificationsTBH() {
 
               </div>
             </div>
-*/}
+
           </div>
 
           {/* Administrator Tab Content */}

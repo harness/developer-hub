@@ -390,9 +390,13 @@ export default function University() {
 
                   </div>
 
-                  {/* <h5>Coming Soon</h5> */}
-                  {/* <div className={styles.unAvailableCerts}>
-                </div> */}
+                  <h5>Coming Soon</h5>
+                  <div className={styles.unAvailableCerts}>
+                    <img
+                      src={`${baseUrl}img/cert_dev_tbh_badge.svg`}
+                      alt="Developer TBH Badge"
+                    />
+                  </div>
 
                 </div>
               </div>
