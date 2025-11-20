@@ -33,6 +33,29 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## November 2025
 
+### Version 1.108.0
+
+<!-- 2025-11-17-->
+
+#### New Features and Enhancements
+- Enhanced shell script steps to support pipeline annotations. (CI-19514)
+
+#### Fixed issues
+- Resolved an issue where the CI Run step did not allow multi-select when using `allowedValues` in the "Optional Configuration" section. (CI-19409)
+- Resolved an issue where deleting a CD or parent pipeline stage in the Pipeline Studio would unintentionally remove the pipeline’s codebase configuration. (CI-19698)
+- Fixed an issue where parallel CI plugin steps were overwriting each other's artifact metadata. The tag now includes the step identifier to ensure unique tags. (CI-19427)
+- Resolved an issue where pipelines using the GitLab connector with code cloning by commit SHA resulted in an empty `<+codebase.repoUrl>`. We now use the connector as fallback for this variable. (CI-19755)
+- Increased the limit for git status description to 255 characters in Gitlab and Bitbucket bringing it to parity with Github. (CI-18986)
+- Fixed a secret resolution issue where if a user passes an incorrect or non-existent reference, all secrets failed to resolve on self hosted VMs. (CI-18256)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/harness-cache-server` | Fixed required vulnerabilities | 1.7.7 | 1.7.8 |
+| `plugins/cache` | Fixed required vulnerabilities | 1.9.16| 1.9.17 |
+
+
 ### Version 1.107.0
 
 <!-- 2025-11-10-->
@@ -62,7 +85,7 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 <!-- 2025-11-03-->
 
 #### New Feature and Enhancements
-- Harness now supports **Native Annotations**, enabling pipelines to publish rich, markdown-based summaries directly to the Annotations tab of an execution. Using the hcli-annotate command, teams can surface structured insights such as test results, build metrics, or deployment summaries—right within the execution view. This capability is not limited to CI pipelines, it can be used across steps in different stages that support shell execution.
+- Harness now supports **Native Annotations**, enabling pipelines to publish rich, markdown-based summaries directly to the Annotations tab of an execution. Using the hcli-annotate command, teams can surface structured insights such as test results, build metrics, or deployment summaries—right within the execution view. This capability is not limited to CI pipelines, it can be used across steps in different stages that support shell execution. These features are currently behind feature flags `CI_ENABLE_HARNESS_ANNOTATIONS` & `PIPE_HARNESS_ANNOTATIONS`. Please reach out to your support team to enable these. For more information on this feature, please visit [Pipeline Annotations](/docs/platform/pipelines/harness-annotations)
 - Harness Cloud introduces new Save Cache and Restore Cache steps for advanced caching control. Cloud customers can now define exactly when and where caching happens in their pipelines. Unlike Cache Intelligence, which runs automatically at stage boundaries, these steps let you generate custom cache keys and control cache restore and save timing, delivering greater flexibility for complex and performance-sensitive builds. For more information, please visit [Caching with Harness](/docs/continuous-integration/use-ci/caching-ci-data/save-restore-cache-in-harness).
 - Harness CI supports macOS Sequoia (15.6.1) image pre-installed with the latest XCode versions (26.0, 16.4 and 16.3). This feature is currently behind feature flag `CI_ENABLE_MAC_HOSTED_BETA_IMAGES`.
 - Harness CI now supports passwordless Azure authentication using OpenID Connect (OIDC). Teams can securely build and push to Azure Container registry using temporary access tokens(CI-15268).
