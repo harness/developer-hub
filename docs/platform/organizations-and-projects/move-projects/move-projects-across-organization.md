@@ -41,7 +41,7 @@ This document provides a step-by-step guide to migrate projects from one organiz
 
   <DocImage path={require('../static/review-move-project.png')} width="50%" height="50%" title="Move project modal" />
 
-2. Select the destination organization from the dropdown. Only organizations where you have Create Project permission are available.
+2. Select the destination organization from the dropdown where you want to move the selected project. Only organizations where you have Create Project permission (`core_project_create`) are listed in the dropdown.
 
   <DocImage path={require('../static/select-destination-org.png')} width="50%" height="50%" title="Move project modal" />
 
