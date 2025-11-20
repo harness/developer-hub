@@ -602,10 +602,11 @@ Please, contact [Harness Support](mailto:support@harness.io) to enable this feat
 
 ![](./static//pipeline-notification-delegates-expressions.png) 
 
-If you choose to reference the delegates through **Expressions**, please note that either the entire list of delegate selectors can be an expression or elements of delegate selectors can be expressions.
-
-
 Selecting the **Delegate Selection Expression List** option allows you to have the list of Delegate Selectors as an **Expression**.
+
+:::info note
+When a delegate is referenced using an expression, it must resolve to a valid delegate in order to successfully send notifications. If the expression does not resolve to any matching delegate, no notification will be sent.
+:::
 
 ![](./static/pipeline-notifications-delegate-expressions-selection-expression-list.png)
 
