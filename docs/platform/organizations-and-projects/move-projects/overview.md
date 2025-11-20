@@ -41,8 +41,8 @@ For detailed pre-move validation and post-move remediation steps, see the [Move 
 
 To move a project across organizations, you need the following permissions:
 
-- Move permission for the project that you want to move.
-- Create project permission in the destination organization.
+ - Move Project (`core_project_move`) permission on the source project.
+ - Create Project (`core_project_create`) permission in the destination organization.
 
 ## Supported modules
 

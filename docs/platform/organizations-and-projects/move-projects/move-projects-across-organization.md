@@ -54,7 +54,7 @@ This document provides step-by-step guide to move a project across organizations
     allowFullScreen
     ></iframe>
 
-3. Select the destination organization from the dropdown where you want to move the selected project. Note that only organizations where you have create project permission are listed in the dropdown.
+3. Select the destination organization from the dropdown where you want to move the selected project. 
 
     <DocImage path={require('../static/select-destination-org.png')} width="50%" height="50%" title="Move project modal" />
 
