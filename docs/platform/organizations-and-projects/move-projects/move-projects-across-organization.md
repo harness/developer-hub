@@ -30,7 +30,7 @@ This document provides a step-by-step guide to migrate projects from one organiz
 ### Step 1: Navigate and access the move option
 
 1. Navigate to **Projects** at account or organization level
-2. Click the **⋮** menu next to your project
+2. Click the **⋮** icon next to the project you want to move
 3. Select **Move Project**
 
     <DocImage path={require('../static/project-list-view.png')} width="80%" height="80%" title="Move project modal" />
