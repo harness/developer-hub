@@ -92,10 +92,29 @@ terragrunt --version
 
 In Harness, Terragrunt is fully supported up to version 0.66.9
 
-Starting from 0.67.0, Terragrunt introduced a breaking change that may cause some issues because of new logging format. See [Terragrunt 0.67.0 breaking change](https://github.com/gruntwork-io/terragrunt/releases/tag/v0.67.0)
+:::warning Breaking changes in Terragrunt 0.67.0 and later
 
-If you are using Terragrunt 0.67.0 or higher, you need to enable the environment variable TERRAGRUNT_FORWARD_TF_STDOUT to maintain the previous logging behavior.
-This ensures that Terragrunt preserves its standard logging format, preventing disruptions in Harness pipelines.
+**Terragrunt 0.67.0+**: Terragrunt introduced a breaking change in version 0.67.0 that affects logging format. See [Terragrunt 0.67.0 breaking change](https://github.com/gruntwork-io/terragrunt/releases/tag/v0.67.0).
+
+If you are using Terragrunt 0.67.0 or higher, you need to enable the environment variable `TERRAGRUNT_FORWARD_TF_STDOUT` to maintain the previous logging behavior. This ensures that Terragrunt preserves its standard logging format, preventing disruptions in Harness pipelines.
+
+**Terragrunt 0.78.0+**: Starting from version 0.78.0, Terragrunt introduced significant breaking changes in command formats. See [Release v0.78.0](https://github.com/gruntwork-io/terragrunt/releases/tag/v0.78.0) for details. 
+
+Key command format changes include:
+- `run-all` subcommand replaced with `--all` flag (e.g., `terragrunt run-all plan` → `terragrunt plan --all`)
+- `--terragrunt-non-interactive` flag replaced with `--non-interactive`
+- Workspace commands now use `terragrunt run` wrapper structure
+- `terragrunt terragrunt-info` changed to `terragrunt info print`
+
+Harness has implemented support for these changes via the `CDS_ENABLE_TERRAGRUNT_V1_SUPPORT` feature flag. When this flag is enabled, Harness automatically detects the Terragrunt version and uses the appropriate command format. The system falls back to legacy commands for versions below 0.78.0.
+
+**Upcoming Terragrunt 1.0**: Terragrunt is planning to release their first major 1.0 version, which will include additional breaking changes that may affect Harness integration. For more information on the deprecation schedule and planned breaking changes, refer to the [Road to 1.0 Deprecated Feature Removal Schedule](https://github.com/gruntwork-io/terragrunt/issues/3535).
+
+**Recommendation**: 
+- For Terragrunt versions up to 0.66.9: Fully supported without feature flags
+- For Terragrunt 0.78.0+: Contact Harness support to enable the `CDS_ENABLE_TERRAGRUNT_V1_SUPPORT` feature flag for your account
+
+:::
 
 Terragrunt maintains a Terraform version compatibility table to help ensure that you have the correct versions of Terragrunt and Terraform running together.
 
