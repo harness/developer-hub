@@ -73,13 +73,25 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 
    :::
 
-3. Enable execution permissions for the Runner, for example:
+3. (Optional) To run the Docker Runner as a non-root user, set the `WORKING_DIR` environment variable before starting the runner. This ensures all files are created inside the specified directory only:
+
+   ```
+   export WORKING_DIR="/path/to/working/directory"
+   ```
+
+   For example:
+
+   ```
+   export WORKING_DIR="/home/nonrootuser/harness-runner"
+   ```
+
+4. Enable execution permissions for the Runner, for example:
 
    ```
    sudo chmod +x harness-docker-runner-linux-arm64
    ```
 
-4. Start the runner binary, for example:
+5. Start the runner binary, for example:
 
    ```
    sudo -E ./harness-docker-runner-linux-arm64 server
@@ -128,19 +140,31 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 
    :::
 
-3. Enable execution permissions for the Runner, for example:
+3. (Optional) To run the Docker Runner with a custom working directory, set the `WORKING_DIR` environment variable before starting the runner. This ensures all files are created inside the specified directory only:
+
+   ```
+   export WORKING_DIR="/path/to/working/directory"
+   ```
+
+   For example:
+
+   ```
+   export WORKING_DIR="/Users/youruser/harness-runner"
+   ```
+
+4. Enable execution permissions for the Runner, for example:
 
    ```
    sudo chmod +x harness-docker-runner-darwin-amd64
    ```
 
-4. Start the runner binary, for example:
+5. Start the runner binary, for example:
 
    ```
    sudo -E ./harness-docker-runner-darwin-amd64 server
    ```
 
-5. If [macOS Gatekeeper](https://support.apple.com/en-us/HT202491) stops the installation because it can't check for malicious software, you need to modify **Security & Privacy** settings to allow this app to run.
+6. If [macOS Gatekeeper](https://support.apple.com/en-us/HT202491) stops the installation because it can't check for malicious software, you need to modify **Security & Privacy** settings to allow this app to run.
 
    ![macOS Gatekeeper error message.](./static/define-a-macos-build-infrastructure-10.png)
 
@@ -223,7 +247,19 @@ Install the Harness Docker Runner on the Windows machine that you specified in t
 
    :::
 
-4. Start the runner binary:
+4. (Optional) To run the Docker Runner with a custom working directory, set the `WORKING_DIR` environment variable before starting the runner. This ensures all files are created inside the specified directory only:
+
+   ```
+   $env:WORKING_DIR="C:\path\to\working\directory"
+   ```
+
+   For example:
+
+   ```
+   $env:WORKING_DIR="C:\Users\nonrootuser\harness-runner"
+   ```
+
+5. Start the runner binary:
 
    ```
    harness-docker-runner-windows-amd64.exe server
