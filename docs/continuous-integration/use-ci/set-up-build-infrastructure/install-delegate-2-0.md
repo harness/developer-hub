@@ -77,17 +77,17 @@ Download and install the correct binary for your OS.
 
 1. Download the binary for your system
 ```
-curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-darwin-arm64'
+curl --output delegate 'https://app.harness.io/public/shared/delegates/1.28.0/delegate-darwin-amd64'
 ```
 
 2. Give it permission to execute
 ```
-chmod +x harness-runner
+chmod +x delegate
 ```
 
 3. Install the delegate and create the `config.env` file
 ```
-./harness-runner install --account=[Account ID] \
+./delegate install --account=[Account ID] \
                        --token=[Delegate Token] \
                        --url=[Harness URL]  \
                        --tags="macos-arm64" \
@@ -96,7 +96,7 @@ chmod +x harness-runner
 
 4. Start the delegate as service.
 ```
-./harness-runner start
+./delegate start
 ```
 </TabItem>
 
@@ -104,17 +104,17 @@ chmod +x harness-runner
 
 1. Download the binary for your system
 ```
-curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-darwin-amd64'
+curl --output delegate 'https://app.harness.io/public/shared/delegates/1.28.0/delegate-darwin-amd64'
 ```
 
 2. Give it permission to execute
 ```
-chmod +x harness-runner
+chmod +x delegate
 ```
 
 3. Install the delegate and create the `config.env` file
 ```
-./harness-runner install --account=[Account ID] \
+./delegate install --account=[Account ID] \
                        --token=[Delegate Token] \
                        --url=[Harness URL]  \
                        --tags="macos-amd64" \
@@ -123,7 +123,7 @@ chmod +x harness-runner
 
 4. Start the delegate as service.
 ```
-./harness-runner start
+./delegate start
 ```
 </TabItem>
 
@@ -131,12 +131,12 @@ chmod +x harness-runner
 
 1. Download the binary for your system
 ```
-curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-linux-arm64'
+sudo curl --output delegate https://app.harness.io/public/shared/delegates/1.28.0/delegate-linux-arm64
 ```
 
 2. Give it permission to execute
 ```
-sudo chmod +x harness-runner
+sudo chmod +x delegate
 ```
 
 3. Create a config.env file in the local folder
@@ -152,7 +152,7 @@ EOF
 
 4. Start the delegate in the background
 ```
-nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
+nohup ./delegate server --env-file config.env > nohup-delegate.out 2>&1 &
 ```
 
 </TabItem>
@@ -162,12 +162,12 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 
 1. Download the binary for your system
 ```
-curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-linux-amd64'
+sudo curl --output delegate https://app.harness.io/public/shared/delegates/1.28.0/delegate-linux-amd64
 ```
 
 2. Give it permission to execute
 ```
-sudo chmod +x harness-runner
+sudo chmod +x delegate
 ```
 
 3. Create a config.env file in the local folder
@@ -183,7 +183,7 @@ EOF
 
 4. Start the delegate in the background
 ```
-nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
+nohup ./delegate server --env-file config.env > nohup-delegate.out 2>&1 &
 ```
 
 </TabItem>
@@ -193,7 +193,7 @@ Installation of the delegate on Windows is done using Powershell.
 
 1. Download the binary for your system
 ```powershell
-curl --output harness-runner.exe https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.27.2/runner-windows-amd64.exe
+curl --output delegate.exe https://app.harness.io/public/shared/delegates/1.28.0/delegate-windows-amd64.exe
 ```
 
 2. Create a config.env file from the following code block. Ensure you replace the fields below with the data you retrieved while [getting the relevant information](#get-relevant-information) above.
@@ -211,7 +211,7 @@ TAGS="windows-amd64"
 3. Start the delegate.
 
 ```powershell
-.\harness-runner.exe server --env-file config.env
+.\delegate.exe server --env-file config.env
 ```
 </TabItem>
 
@@ -222,7 +222,7 @@ Navigate to **Project Settings** > **Delegates**. You should see your new delega
 
 :::info
 
-If you don't set a name for your delegate, it will default to `harnessRunner`
+If you don't set a name for your delegate, it will default to `harness-delegate`
 
 :::
 
@@ -237,8 +237,8 @@ Most importantly, ensure that you have set `Local` as the **Infrastructure** and
 ## Delegate Configuration
 
 Here is where the `config.env` file is located for each operating system:
-- **MacOS**: The `config.env` file is located in `~/.harness-runner/config.env` (after you run the `./harness-runner` install command).
-- **Linux** and **Windows**: The `config.env` file is created by the user during the linux and windows [runner installation](#download-and-install-the-delegate). The file will be where you created it at that point in time.
+- **MacOS**: The `config.env` file is located in `~/.harness-delegate/config.env` (after you run the `./delegate` install command).
+- **Linux** and **Windows**: The `config.env` file is created by the user during the linux and windows [delegate installation](#download-and-install-the-delegate). The file will be where you created it at that point in time.
 
 ### Set Max Stage Capacity
 
@@ -287,12 +287,12 @@ CLEANUP_GRACE_PERIOD_SECONDS=30
 ### Logs
 
 You can find the delegate logs in the following files:
-- **MacOS**: `~/Library/Logs/harness.runner/stderr.log`
-- **Linux**: `nohup-runner.out`
+- **MacOS**: `${HOME}/.harness-delegate/logs/delegate.log`
+- **Linux**: `nohup-delegate.out`
 
 ### Metrics
 
-The unified runner exposes metrics on the `/metrics` endpoint for monitoring and observability. By default, the metrics endpoint is available at `http://localhost:3000/metrics`.
+Delegate 2.0 exposes metrics on the `/metrics` endpoint for monitoring and observability. By default, the metrics endpoint is available at `http://localhost:3000/metrics`.
 
 ## End to End Demo
 
