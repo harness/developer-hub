@@ -1,5 +1,7 @@
 ---
 title: Using S3 as a Backend for Front50 (Settings, Suggestions, and Considerations)
+redirect_from:
+  - /docs/continuous-delivery/armory/general/using-s3-as-a-backend-for-front50-settings,-suggestions,-and-considerations
 ---
 
 ## Introduction
