@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-11-11T08:09:25
+date: 2025-11-20T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,9 +26,19 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: November 11, 2025
+#### Last updated: November 20, 2025
 
 ## November 2025
+
+### Relay Proxy
+
+#### Version 2.0.17
+
+**Maintenance**:
+
+- Upgraded `golang` to 1.25.2.
+- Optimized how the Proxy retrieves Flag and Target Group config when changes are made.
+
 
 ### Node.js SDK
 
@@ -58,6 +68,20 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Version bump and related maintenance updates for Java 25 compatibility. (FFM-12612)
 
 ### Relay Proxy
+
+#### Version 2.0.16
+
+**Maintenance**:
+
+- Upgrade from golang 1.23.5 -> 1.23.12 to resolve vulnerability [CVE-2025-22871](https://nvd.nist.gov/vuln/detail/CVE-2025-22871). (FFM-12648)
+- Upgrade the Proxy's base image to use pushpin-1.41.0 to resolve vulnerabilities in the older base image. (FFM-12648)
+
+#### Version 1.0.8
+
+**Maintenance**:
+
+- Upgrade from golang 1.23.5 -> 1.23.12 to resolve vulnerability [CVE-2025-22871](https://nvd.nist.gov/vuln/detail/CVE-2025-22871). (FFM-12631)
+- Upgrade the Proxy's base image to use pushpin-1.41.0 to resolve vulnerabilities in the older base image. (FFM-12631)
 
 #### Version 2.0.15
 
