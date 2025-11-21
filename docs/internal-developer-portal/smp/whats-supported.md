@@ -73,7 +73,20 @@ postgres:
 ---
 
 ## Supported Infrastructure
-The Self-Managed Enterprise Edition runs within the customer’s environment alongside existing services. You must have a Kubernetes cluster with a configured load balancer. Harness IDP is supported on SMP only when the control plane is deployed on **Google Cloud Platform (GCP)** using **Google Kubernetes Engine (GKE)**. Deployments on AWS (EKS), Azure (AKS), on-prem, or OpenShift are **not supported**.
+:::warning GKE Cluster Required
+Harness IDP SMP Beta is **only supported on Google Kubernetes Engine (GKE)** clusters.
+:::
+
+The Self-Managed Enterprise Edition runs within the customer's environment alongside existing services. You must have a Kubernetes cluster with a configured load balancer. 
+
+**Supported Platform:**
+- **Google Cloud Platform (GCP)** using **Google Kubernetes Engine (GKE)** 
+
+**Not Supported:**
+- AWS (EKS) 
+- Azure (AKS) 
+- On-premises Kubernetes 
+- OpenShift 
 
 :::warning Network/Firewall Requirement
 If your setup integrates with third-party SaaS products (for example, PagerDuty, GitHub, or GitLab), you must whitelist their domains in your firewall policies.

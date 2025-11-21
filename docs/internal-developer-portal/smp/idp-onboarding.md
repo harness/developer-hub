@@ -17,6 +17,10 @@ This guide provides detailed instructions for deploying the Harness Internal Dev
 Harness IDP on SMP is available only for **IDP 2.0**. **IDP 1.0** is **not supported** on SMP.
 :::
 
+:::warning GKE Cluster Required
+Harness IDP SMP Beta is **only supported on Google Kubernetes Engine (GKE)** clusters. Deployments on AWS (EKS), Azure (AKS), on-premises, or OpenShift are **not supported** at this time.
+:::
+
 ---
 
 ## Overview

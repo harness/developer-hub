@@ -36,6 +36,14 @@ After enabling the integration, configure what to sync:
   * `kind: Component`
   * `type: Service`
 
+* **Entity ID mapping:**
+  - The IDP entity is created with the **same entity ID** as the CD service ID. 
+  - **Scope restrictions apply**: The CD service and IDP entity must be in the same scope (account, organization, or project). 
+  - If an IDP entity with the same CD service ID already exists (created manually), the system performs a **merge operation**:
+    - The CD service gets linked to the existing IDP entity
+    - Ingested metadata from the CD service is added
+    - Other existing details in the IDP entity remain unchanged
+
 * **Entity fields populated (read-only in IDP):**
   The following fields are fetched from the CD service and remain synced:
 
@@ -47,13 +55,13 @@ After enabling the integration, configure what to sync:
 | Service Tags | `metadata.tags` | ❌ No (synced from CD) |
 | Additional Metadata | Custom fields | ✅ Yes (IDP-specific) |
 
-  These fields **cannot be edited in IDP**. Update them in Harness CD.
-
-* **IDP-CD Service Sync:**
-  Sync is **uni-directional** from **CD service → IDP entity**. Changes made to the IDP entity are **not** propagated back to the CD service.
-
-* **RBAC:**
-  You can view and sync services from the same projects and organizations you have access to in Harness CD.
+  **Important notes:**
+  - **Description and Tags** from the CD service are synced to the IDP entity and cannot be edited in IDP. 
+  - Once the link is established, the IDP entity will reflect the CD service's **name**, **description**, and **tags**. 
+  - If an IDP entity already has description or tags before linking, the **CD service values take precedence** and overwrite them. 
+  - To update these fields, make changes in Harness CD; they will automatically sync to IDP. 
+  - **IDP-CD Service Sync:** Sync is **uni-directional** from **CD service → IDP entity**. Changes made to the IDP entity are **not** propagated back to the CD service.
+  - **RBAC:** You can view and sync services from the same projects and organizations you have access to in Harness CD.
 
 
 #### Configure the sync scope
@@ -67,6 +75,14 @@ After enabling the integration, configure what to sync:
    * **Particular Organizations & Projects** — Sync from selected organizations and/or projects using the dropdown.
    ![](./static/specific-scopes.png)
 3. Select **Save Changes** to begin syncing.
+
+:::info Changing Scope Filters
+If you remove a project or organization from the sync scope:
+- **Existing linked entities** from that project/org will remain in the IDP Catalog unchanged. 
+- These entities will **stop receiving updates** from their corresponding CD services. 
+- The link between the CD service and IDP entity remains, but sync is paused. 
+- To resume sync, add the project/org back to the scope filter.
+:::
 
 That’s it; your CD services will appear in the IDP Catalog.
 
@@ -90,6 +106,10 @@ Once synced, search for any CD service in **IDP Catalog**:
 ![](./static/cd-referenced-by.png)
 
 ### 4. Suspend Auto-Discovery
+**What happens when auto-discovery is suspended:**
+- **New CD services** will not be automatically created as IDP entities. 
+- **Existing IDP entities** that were created through auto-discovery will remain unchanged. 
+- The sync between existing CD services and their corresponding IDP entities will stop. 
 
 To stop auto-discovery:
 

@@ -611,6 +611,56 @@ properties:
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
 
+#### Handling Object Responses
+
+The `SelectFieldFromApi` field can handle API responses in **object form**, not just arrays. This allows you to use different selectors to extract values from object responses. When the API returns an object instead of an array, you can use `arraySelector` to navigate to nested arrays within the object, or directly use `valueSelector` and `labelSelector` on object properties.
+
+#### Example: Object Response Handling
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    required:
+      - uid
+    properties:
+       uid:
+         type: string
+         ui:field: SelectFieldFromApi
+         ui:options:
+           placeholder: Select titles
+           path: catalog/entities
+           valueSelector: metadata.uid
+           labelSelector: metadata.name
+           allowArbitraryValues: false
+  - title: Choose a location
+    required:
+      - username
+    properties:
+       username:
+         type: string
+         ui:field: SelectFieldFromApi
+         ui:options:
+           placeholder: Select titles
+           path: catalog/entities/by-uid/{{parameters.uid}}
+           valueSelector: metadata.uid
+           labelSelector: metadata.name
+           allowArbitraryValues: false
+       relations:
+         type: string
+         ui:field: SelectFieldFromApi
+         ui:options:
+           placeholder: Select titles
+           path: catalog/entities/by-uid/{{parameters.uid}}
+           arraySelector: relations
+           labelSelector: targetRef
+           valueSelector: type
+```
+
+In the example above:
+- The **`username`** field receives an object response from the API endpoint `catalog/entities/by-uid/{{parameters.uid}}`
+- The **`relations`** field also receives an object response, but uses `arraySelector: relations` to navigate to a nested array within that object
+- Both fields use `valueSelector` and `labelSelector` to extract the appropriate values from the object structure
+
 ### POST and PUT Method Support
 
 The **POST/PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
