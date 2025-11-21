@@ -133,6 +133,7 @@ export const university: CardItem[] = [
     description:
       "Capture, correlate and analyze all app and API-related activity over time, across your entire app and API ecosystem.",
     link: "/university/traceable-by-harness",
+    numberOfCerts: 1,
     SPT_available: true,
 
   },

@@ -387,16 +387,16 @@ export default function University() {
                       src={`${baseUrl}img/cert_dev_sei_badge.svg`}
                       alt="Developer SEI Badge"
                     />
-
-                  </div>
-
-                  <h5>Coming Soon</h5>
-                  <div className={styles.unAvailableCerts}>
                     <img
                       src={`${baseUrl}img/cert_dev_tbh_badge.svg`}
                       alt="Developer TBH Badge"
                     />
+
                   </div>
+
+                  {/* <h5>Coming Soon</h5> */}
+                  {/* <div className={styles.unAvailableCerts}>
+                </div> */}
 
                 </div>
               </div>

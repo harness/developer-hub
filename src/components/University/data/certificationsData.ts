@@ -193,5 +193,15 @@ export const university: CardItem[] = [
     link: "/university/sei?lvl=developer",
     // numberOfCerts: 1,
   },
+    {
+    title: "Traceable by Harness  - Developer",
+    module: MODULES.tbh,
+    type: certType.developer,
+    description:
+      "TBH Developer focuses on the fundamental skills to analyze and secure Application API related activity.",
+    version: "Traceable by Harness Paid Plans",
+    link: "/university/traceable-by-harness?lvl=developer",
+    // numberOfCerts: 1,
+  },
 
 ];

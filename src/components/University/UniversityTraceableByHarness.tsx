@@ -269,8 +269,7 @@ export default function CertificationsTBH() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Traceable by Harness - Developer (BETA COMING
-                      SOON)
+                      Traceable by Harness - Developer 
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_tbh_badge.svg`}
@@ -292,7 +291,7 @@ export default function CertificationsTBH() {
                     <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="#">
+                      <Link href="https://university-registration.harness.io/certification-exam-traceable-by-harness-developer-certification">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -314,7 +313,7 @@ export default function CertificationsTBH() {
             
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university-registration.harness.io/certification-exam-traceable-by-harness-developer-certification">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
