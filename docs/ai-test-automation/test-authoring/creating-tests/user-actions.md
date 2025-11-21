@@ -139,7 +139,7 @@ You can use the database types of MongoDb and Postgres.
 | **Scope** | App, Test Suite, or Runtime - Determines where the result parameter is stored and how widely it's accessible |
 | **Tunnel Name (optional)** | Name of the SSH tunnel configuration if connecting to a database through a secure tunnel |
 
-
+Go to the [DB Query guide](/docs/ai-test-automation/guides/db-query) for more information on the DB Query actions.
 <br/>
 
 ### Double Click
