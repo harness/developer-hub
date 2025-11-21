@@ -10,7 +10,6 @@ The **Mark as Failed** button in the pipeline execution details page is used to 
 
 - You must have `Execute` pipeline permission to be able to mark a pipeline as failed.
 - You must enable `Allow users to mark a running Step as failure` in your Harness account's [default settings](/docs/platform/settings/default-settings).
-- This feature is behind the feature flag `CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 ## Marking a pipeline as failed
 
