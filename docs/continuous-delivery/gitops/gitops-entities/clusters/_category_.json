@@ -1,6 +1,6 @@
 {
     "label": "Clusters",
-    "position": "400",
+    "position": "2",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
@@ -9,4 +9,4 @@
         "type": "generated-index",
         "title": "Clusters"
     }
-  }
+}

@@ -1,6 +1,6 @@
 {
     "label": "Agents",
-    "position": "200",
+    "position": "1",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
@@ -9,4 +9,4 @@
         "type": "generated-index",
         "title": "Agents"
     }
-  }
+}

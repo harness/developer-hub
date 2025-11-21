@@ -1,5 +1,5 @@
 ---
-title: Manage Environment Changes with Harness GitOps PR Pipelines
+title: PR Pipelines Basics
 description: Learn how to create and run PR pipelines in Harness GitOps to update environment-specific configuration files.
 sidebar_position: 2
 canonical_url: https://www.harness.io/blog/gitops-the-push-and-pull-approach
@@ -22,194 +22,41 @@ When you deploy a Harness PR pipeline, you indicate the target environment appli
 
 ![](static/harness-git-ops-application-set-tutorial-43.png)
 
-For the PR Pipeline, we'll create two Harness environments, dev and prod. These names are the same as the folder names in the repo:
+## Prerequisites
+
+Before creating a PR pipeline, ensure you have:
+
+1. **Harness Environments**: Create environments (e.g., `dev`, `prod`) that match your Git repository folder structure. See [Create GitOps Environments](/docs/continuous-delivery/gitops/gitops-entities/environment) for detailed instructions.
+
+2. **Environment Variables** (Optional): Configure environment variables for the key-value pairs you want to update in your configuration files. See [Configure Environment Variables](/docs/continuous-delivery/gitops/gitops-entities/environment#configure-environment-variables).
+
+3. **GitOps Clusters Linked to Environments**: Associate your GitOps clusters with the appropriate environments. See [Add GitOps Clusters](/docs/continuous-delivery/gitops/gitops-entities/environment#step-3-add-gitops-clusters).
+
+4. **Harness Service**: Create a service with Release Repo and Deployment Repo manifests configured. See [Create a GitOps Service](/docs/continuous-delivery/gitops/gitops-entities/service/).
+
+:::tip Environment Naming
+Name your Harness environments to match your Git directory structure. For example, if your Git paths are:
+- `cluster-config/engineering/dev/config.json`
+- `cluster-config/engineering/prod/config.json`
+
+Create environments named `dev` and `prod`. This allows the `<+env.name>` expression in your service manifest paths to resolve correctly at runtime.
+:::
 
 ![](static/harness-git-ops-application-set-tutorial-44.png)
 
-We use the same names so that when we select a Harness environment we can pass along the same name as the target folder. The path to your two `config.json` files would be the following-
+:::info Service Configuration Required
+Before proceeding, ensure you have created a GitOps service with the following manifests configured:
 
-- `examples/git-generator-files-discovery/cluster-config/engineering/dev/config.json`
-- `examples/git-generator-files-discovery/cluster-config/engineering/prod/config.json`
+1. **Release Repo Manifest**: Points to your `config.json` files using the `<+env.name>` expression
+   - Example path: `cluster-config/engineering/<+env.name>/config.json`
 
-Now, let's create Harness environments for each of the target environments - dev and prod.
+2. **Deployment Repo Manifest**: Points to your ApplicationSet template
+   - Example path: `git-generator-files.yaml`
 
-## Create Harness environments for each target environment
+For detailed instructions on creating and configuring a GitOps service, see [Create a GitOps Service](/docs/continuous-delivery/gitops/gitops-entities/service/).
 
-An environment logically corresponds to your `dev`, `staging`, or `production` environments. Ideally, your ApplicationSet configuration files would differ on the basis of the environments they would deploy to.
-
-To create a `dev` environment, do the following:
-
-1. In your Harness project, select **Environments**.
-2. Select **New Environment**.
-3. Do the following, and then select **Save**:
-	1. **Name** Enter `dev`.
-	2. **Environment Type**: Select **Pre-Production**.
-
-The new environment is created. Similarly, create another environment `prod` and select **Environment Type** as **Production**.
-
-### Create a variable for JSON key-value pair to be updated
-
-Next, we'll add a variable for the JSON key-value we will be updating.
-
-1. In **Advanced**, in **Variables**, click **New Variable Override**.
-2. In the variable **Name**, enter **asset\_id** and click **Save**.
-
-   The `asset_id` name is a key-value in the `config.json` files for both dev and prod:
-
-   ![](static/harness-git-ops-application-set-tutorial-45.png)
-
-3. For variable **Value**, select **Runtime Input**:
-
-   ![](static/harness-git-ops-application-set-tutorial-46.png)
-
-   Later, when you run the pipeline, you'll provide a new value for this variable, and that value will be used to update the `config.json` file.
-
-Repeat this process for the `prod` environment.
-
-## Linking GitOps clusters to the Harness environments
-
-Before updating your application's `config.json` values, Harness also resolves the GitOps clusters in which your application is deployed. The referenced cluster is the same cluster you created when you deployed your application. You do not need to create any new entities in Harness.
-
-Once you link GitOps clusters to an environment, whenever you select an environment in a pipeline, you can select the environment's linked GitOps clusters. This ensures that you can control where applications are to be updated even within the same environment.
-
-Link the **engineering-dev** GitOps cluster to the `dev` environment and **engineering-prod** GitOps cluster to the `prod` environment.
-
-To link the Harness GitOps clusters with the `dev` environment, do the following:
-
-1. Click **GitOps Clusters**.
-2. Click **Select Cluster(s)**.
-3. Select **engineering-dev**.
-4. Click **Add**.
-
-![](static/harness-git-ops-application-set-tutorial-47.png)
-
-The Harness GitOps cluster is now linked to the environment.
-
-![](static/harness-git-ops-application-set-tutorial-48.png)
-
-Similarly, link the **engineering-prod** GitOps cluster to the `prod` environment.
-
-You can link multiple clusters to a single environment.
-
-## Create a Harness service
-
-A Harness service logically corresponds to a microservice/application template in an ApplicationSet. Together with the environment and cluster entities, Harness resolves application `config.json` files in a Git repository to update manifest values through PR pipelines.
-
-The path to the `config.json` files will be specified in the service and will use the expression `<+env.name>`.
-```
-examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json
-```
-
-At runtime, this expression resolves to the Harness environment you selected. When you run the pipeline, you'll select which environment to use, `dev` or `prod`, and Harness will use the corresponding Git folder and update that application only.
-
-:::info
-
-Optionally, you can also specify the `config.json` path in your ApplicationSet and service to resolve based on clusters:
-
-```
-examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/<+cluster.name>/config.json 
-```
-
-Your actual directories in Git, say within your environment folder `dev`, would then need to look like this:
-
-```
-examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster1/config.json
-examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster2/config.json
-```
-
-Harness can then resolve which directory to traverse during runtime and update only those applications that are deployed in a particular cluster, for example  `cluster1`. This is similar to how environments are resolved using the `<+env.name>` expression.
-
+For information on using cluster-specific paths with `<+cluster.name>` expressions, see [Service Variables](/docs/continuous-delivery/gitops/gitops-entities/service#service-variables).
 :::
-
-Next, we'll create a Harness service that points to the `config.json` files in the Git directories.
-
-1. In your Harness project, select the **Services** tab.
-2. Select **New Service**.
-3. In **Name**, enter **PR Example**.
-4. In **Manifests**, select **Add Release Repo Manifest**.
-5. In **Release Repo Store**, select the Harness Git connector to the repository which contains your `config.json` files. If you do not already have this configured, you will need to create a connector to your repository.
-
-:::note
-    
-For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo.md).
-    
-:::
-
-### Specify Release Repo manifest details
-
-Now we'll define the manifest to use for the PR pipeline. We'll use the path to the `config.json` files. We'll use the expression `<+env.name>` in the path so that we can dynamically select the path based on the Harness environment we select: **dev** or **prod**.
-
-In **Manifest Details**, enter the following settings and then click **Submit**.
-1. **Manifest Name:** enter **config.json**.
-2. **Git Fetch Type:** select **Latest from Branch**.
-3. **Branch:** enter the name of the main branch (master, main, etc).
-4. **File Path:** enter `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`.
-
-    Note the use of `<+env.name>`.
-
-    ![](static/harness-git-ops-application-set-tutorial-53.png)
-
-5. Select **Submit**.
-6. In the top-right corner, select **Save**.
-
-### Specify Deployment Repo manifest details
-
-Follow these steps once the Release Repo manifests are correctly configured to specify the path to your ApplicationSet template.
-
-In **Manifest Details**, enter the following settings and then click **Submit**.
-1. **Manifest Name:** enter **Application Set**.
-2. **Git Fetch Type:** select **Latest from Branch**.
-3. **Branch:** enter the name of the main branch (master, main, etc).
-4. **File Path:** enter `examples/git-generator-files-discovery/git-generator-files.yaml`.
-5. Select **Submit**.
-6. In the top-right corner, select **Save**.
-
-You have now successfully configured a Harness service for your PR pipeline.
-
-### GitOps Services Dashboard
-
-:::note 
-
-This feature is behind the feature flag `GITOPS_APPSYNCS_ON_SERVICE_DASHBOARD`. Please contact [Harness Support](mailto:support@harness.io) to enable this flag.
-
-:::
-
-GitOps applications will appear on the [services dashboard](/docs/continuous-delivery/x-platform-cd-features/services/services-overview). 
-
-You can access the service list page by navigating to the **Continuous Delivery** module and selecting **Services**. You should see a list of all your services, including your GitOps services and the one you created in the previous step. 
-
-Selecting a GitOps Service will take you to the service's dashboard. In this dashboard you can see the pipelines that use the service. You can also switch the view using the sliding selector pictured below to see a list of applications associated with the service. 
-
-   ![](./static/pipeline-applications-selector.png)
-
-:::warning Limitation
-
-This application dashboard only shows aggregates, so it has a delay of one day as Harness aggregates the appsyncs at the end of each day.
-
-:::
-
-## Configure variables in a Harness service/environment (optional)
-
-:::note
-
-For updating the `config.json` or `config.yaml` values, Harness supports variables in the [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps.md#update-release-repo-step). If you want to enforce common values at the service or environment level of your ApplicationSet, you can use service or environment variables.
-
-Values from the **Update Release Repo** step have a higher priority than service or environment variables.
-
-For checking the override priority for these service and environment variables, go to [Override Priority](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides.md#override-priority).
-
-:::
-
-The following process is applicable to both services and environments. This example uses services:
-
-1. In your Harness project, select **Services**.
-2. Select your service, and then select **Configuration**.
-3. Under **Advanced**, select **New Variable**.
-4. Enter the name and value for your variable, and then select **Save**.
-
-   ![](static/pr-pipelines-1.png)
-
-These variables are now part of your PR pipeline and manifests will be updated accordingly.
 
 ## Create the PR pipeline
 

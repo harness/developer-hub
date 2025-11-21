@@ -1,6 +1,6 @@
 {
     "label": "Repositories",
-    "position": "300",
+    "position": "3",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
@@ -9,4 +9,4 @@
         "type": "generated-index",
         "title": "Repositories"
     }
-  }
+}

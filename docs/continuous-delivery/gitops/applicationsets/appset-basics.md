@@ -66,15 +66,76 @@ Each generator solves a different use case, but gives you the same end result: a
 
 For information on PR pipeline integration, review the execution steps in [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/#review-execution-steps).
 
-### Generator example
+### Supported Generator Types
 
-Here is an example for the Git generator.
+Harness supports all Argo CD ApplicationSet generators. Each generator reads from a different source and produces parameters for creating applications.
+
+| Generator | Description | Use Case |
+|-----------|-------------|----------|
+| **[List](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-List/)** | Static list of parameters | Deploy to known set of environments/clusters |
+| **[Cluster](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Cluster/)** | Generate from registered clusters | Deploy to all clusters matching labels |
+| **[Git - Directories](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Git/#git-generator-directories)** | Generate from Git directories | Monorepo with multiple apps in directories |
+| **[Git - Files](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Git/#git-generator-files)** | Generate from Git files | Config-driven deployments with JSON/YAML files |
+| **[Matrix](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Matrix/)** | Combine multiple generators | Deploy multiple apps to multiple clusters |
+| **[Merge](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Merge/)** | Merge parameters from generators | Override parameters from multiple sources |
+| **[SCM Provider](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-SCM-Provider/)** | Generate from SCM repos | Deploy from all repos in GitHub/GitLab org |
+| **[Pull Request](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Pull-Request/)** | Generate from pull requests | Preview environments for PRs |
+| **[Cluster Decision Resource](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Cluster-Decision-Resource/)** | Generate from custom resources | Dynamic cluster selection based on custom logic |
+| **[Plugin](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Plugin/)** | Custom generator plugins | Custom logic for parameter generation |
+
+### List Generator Example
+
+The List generator is ideal for initial setup and testing ApplicationSets. It uses a static list of parameters to generate applications.
+
+Here's an example using the List generator:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: addons
+  name: guestbook
+spec:
+  generators:
+  - list:
+      elements:
+      - ns: engineering-dev
+        url: https://kubernetes.default.svc
+      - ns: engineering-prod
+        url: https://kubernetes.default.svc
+  template:
+    metadata:
+      name: '{{ns}}-guestbook'
+      labels:
+        harness.io/serviceRef: guestbook
+        harness.io/envRef: '{{ns}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/argoproj/argo-cd.git
+        targetRevision: HEAD
+        path: applicationset/examples/list-generator/guestbook/{{ns}}
+      destination:
+        server: '{{url}}'
+        namespace: '{{ns}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+```
+
+This example creates two applications (one for dev, one for prod) from a static list of parameters.
+
+### Git Generator Example
+
+The Git generator is the most common pattern for production use cases. It follows the GitOps methodology by storing application configurations in Git, allowing you to track changes through Git history and leverage Git workflows for managing applications.
+
+Here's an example using the Git Directory generator:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-addons
 spec:
   generators:
   - git:
@@ -84,25 +145,97 @@ spec:
       - path: applicationset/examples/git-generator-directory/cluster-addons/*
   template:
     metadata:
-      name: '{{.path.basename}}'
+      name: '{{path.basename}}'
       labels: 
         harness.io/envRef: '{{envTag}}'
         harness.io/serviceRef: '{{serviceTag}}'
         harness.io/buildRef: '{{releaseTag}}'
     spec:
-      project: "1bcfghj"
+      project: "default"
       source:
         repoURL: https://github.com/argoproj/argo-cd.git
         targetRevision: HEAD
-        path: '{{.path.path}}'
+        path: '{{path.path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{.path.basename}}'
+        namespace: '{{path.basename}}'
       syncPolicy:
         syncOptions:
         - CreateNamespace=true
 ```
 
-After the generated parameters are substituted into the template, once for each set of parameters by the ApplicationSet controller, each rendered template is converted into an application resource, thus creating multiple applications from a unified manifest.
+This example:
+- Scans the specified Git repository path for directories
+- Creates one application per directory found
+- Uses the directory name as the application name and namespace
+- Includes Harness-specific labels for Service and Environment tracking
 
-For more information, refer to the [Argo CD ApplicationSet documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/).
+**When to use List vs Git generators:**
+- **List Generator**: Best for initial setup, testing, and scenarios with a small, fixed number of environments that rarely change
+- **Git Generator**: Recommended for production use as it stores application change logs in Git, follows GitOps principles, and scales better for managing multiple applications
+
+For more information and examples of Git generators (including Git Files generator), refer to the [Argo CD Git Generator documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Git/) and [Argo CD ApplicationSet examples](https://github.com/argoproj/applicationset/tree/master/examples).
+
+## Sync Policy Options
+
+When creating an ApplicationSet, you can configure sync policies that govern how the ApplicationSet manages its child applications. These policies are set during ApplicationSet creation and determine the lifecycle management of generated applications.
+
+### Sync Options
+
+#### Preserve Resource On Deletion
+
+When enabled, this option preserves Kubernetes resources even when the application is deleted from Argo CD. This is useful when you want to remove the application from Argo CD management but keep the deployed resources running in the cluster.
+
+### Applications Sync
+
+The Applications Sync policy controls how the ApplicationSet controller manages the lifecycle of its child applications. This policy is configured in the ApplicationSet manifest and determines whether the controller can create, update, or delete applications.
+
+:::info Harness Support Status
+In Harness, currently only the **Sync** policy is supported. Other policy options may appear in the UI but are not yet functional. Below is the complete list of available Argo CD policies for reference.
+:::
+
+You can select one of the following options:
+
+#### Create-Only (`applicationsSync: create-only`)
+
+- **Behavior**: Only creates new applications when they are generated by the ApplicationSet. Prevents the ApplicationSet controller from modifying or deleting applications.
+- **Updates**: Does not update existing applications automatically
+- **Deletions**: Does not delete applications when they are no longer generated
+- **Use Case**: When you want manual control over application updates and deletions after initial creation
+
+#### Create-Update (`applicationsSync: create-update`)
+
+- **Behavior**: Creates new applications and updates existing ones. Prevents the ApplicationSet controller from deleting applications but allows updates.
+- **Updates**: Automatically updates applications when generator parameters change
+- **Deletions**: Does not delete applications when they are no longer generated
+- **Use Case**: When you want automatic updates but manual control over deletions
+
+#### Create-Delete (`applicationsSync: create-delete`)
+
+- **Behavior**: Creates new applications and deletes removed ones. Prevents the ApplicationSet controller from modifying applications but allows deletion.
+- **Updates**: Does not update existing applications automatically
+- **Deletions**: Automatically deletes applications when they are no longer generated
+- **Use Case**: When you want automatic cleanup but manual control over updates
+
+#### Sync (default behavior)
+
+- **Behavior**: Fully automated lifecycle management. The ApplicationSet controller can create, update, and delete applications.
+- **Updates**: Automatically updates applications when generator parameters change
+- **Deletions**: Automatically deletes applications when they are no longer generated
+- **Use Case**: Recommended for most scenarios where you want full automation
+
+:::tip
+The **Sync** option is currently the only supported policy in Harness and is recommended as it provides full automation and keeps your applications in sync with the ApplicationSet configuration.
+:::
+
+:::note
+The sync policy for ApplicationSets is managed by the Argo CD ApplicationSet controller and is separate from the sync policy of individual applications. Application-level sync operations (manual or automated) are controlled by Argo CD's application controller based on each application's own `syncPolicy` configuration.
+:::
+
+
+## Additional Resources
+
+- [Create and manage ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial)
+- [Argo CD ApplicationSet Generators](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators/)
+- [Argo CD ApplicationSet Specification](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/applicationset-specification/)
+- [Harness GitOps PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/)
