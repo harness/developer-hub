@@ -1,3 +1,7 @@
+:::warning Custom CI/CD Integrations
+Custom CI/CD integrations require the `SEI_ENABLE_CUSTOM_CICD` feature flag to be enabled in your account. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+:::
+
 Harness SEI supports custom CI/CD integrations using the `/v1/custom-cicd` API. You can use this API to create integrations with CI/CD tools that don't have a dedicated SEI integration.
 
 :::info
@@ -15,8 +19,8 @@ Configure the API according to the following specifications provided below.
 * **Base URL (Environment: PROD1):** `https://app.harness.io/prod1/sei/api/v1/`
 * **Base URL (Environment: PROD3):** `https://app3.harness.io/sei/api/v1/`
 * **Base URL (Environment: EU):** `https://accounts.eu.harness.io/sei/api/v1/`
-* **Header:** Requires Harness SEI ApiKey authorization. The content type is ```application/json```
-* **Body:** Contains a data object with ```request_type``` and ```payload```.
+* **Header:** Requires Harness SEI ApiKey authorization. The content type is `application/json`.
+* **Body:** Contains a data object with `request_type` and `payload`.
 
 <details>
 <summary>Send CI/CD data to SEI</summary>
@@ -106,26 +110,25 @@ curl --location '<BASE_URL>/custom-cicd' \
 --header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "job_name": "<JOB_NAME>",
+  "pipeline": "<PIPELINE_NAME>",
+  "job_full_name": "<JOB_FULL_NAME>",
+  "qualified_name": "<QUALIFIED_JOB_NAME>",
   "instance_guid": "<INSTANCE_GUID>",
   "instance_name": "<INSTANCE_NAME>",
-  "job_full_name": "<env.JOB_FULL_NAME>",
-  "job_normalized_full_name": "<env.JOB_FULL_NAME>",
   "result": "<BUILD_RESULT>",
   "user_id": "<USER_ID>",
   "repo_url": "<REPO_URL>",
   "start_time": <EPOCH_START_TIME_IN_MS>,
-  "duration": <DURATION_IN_SECONDS>,
+  "duration": <DURATION_IN_MS>,
   "build_number": <BUILD_NUMBER>,
   "instance_url": "<CI_CD_INSTANCE_URL>",
   "branch_name": "<BRANCH_NAME>",
   "project_name": "<PROJECT_NAME>"
 }'
-
 ```
 
 :::info
-The base url is relative to the environment you are using. You will need to replace it with the actual URL that are specific to your environment.
+The base URL is relative to the environment you are using. You will need to replace it with the actual URL that is specific to your environment.
 :::
 
 ### Payload fields
@@ -140,10 +143,11 @@ The payload is an object with required and optional fields.
 | `job_full_name` | string | A human-readable identifier for the job, often the same as the pipeline name. |
 | `qualified_name` | string | A qualified name for the job, typically the same as the pipeline name. |
 | `instance_name` | string | The identifier for the CI/CD instance (not the UUID). |
-| `instance_guid` | string | UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration, you can use the API `https://app.harness.io/gateway/sei/api/v1/custom-cicd`. |
+| `instance_guid` | string | UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration, you can use the `https://app.harness.io/gateway/sei/api/v1/custom-cicd` API. |
 | `start_time` | integer | Job start time in epoch milliseconds. |
 | `duration` | integer | Job duration in milliseconds. |
 | `result` | string | The result of the job, either `SUCCESS` or `FAILURE`. |
+| `build_number` | integer | The build number associated with the job. |
 
 #### Optional Fields
 
@@ -151,9 +155,8 @@ The payload is an object with required and optional fields.
 | - | - | - |
 | `user_id` | string | User identifier in string.
 | `job_run_params` | array | An array of parameters associated with the job run. |
-| `scm_commit_ids` | array of strings | An array of commit IDs related to the deployment. |
+| `scm_commit_ids` | array of strings | An array of commit IDs related to the execution. |
 | `repo_url` | string | The URL of the repository related to the job. |
-| `build_number` | integer | The build number associated with the job. |
 | `instance_url` | string | URL of the CI/CD instance. |
 | `job_run` | object | Information about the job run, including stages, steps, and their results. |
 | `module_name` | integer |The name of the module related to the job. |
@@ -161,73 +164,62 @@ The payload is an object with required and optional fields.
 | `artifacts` | array of objects | An array of information about the job run, including input, output, type, location, name, qualifier, hash, and metadata. |
 | `trigger_chain` | array of objects | Information about the chain of triggers. |
 | `branch_name` | string | The name of the branch related to the job. |
-| `project_name` | string | The name of the Project related to the job. |
-| `execution_id` | string | Unique identifier for the specific job execution. |
-| `cfr_status` | boolean | Status of the CFR stage. |
-| `themes` | list of string | List of the theme names. |
+| `project_name` | string | The name of the project related to the job. |
 | `web_url` | URL | Contains the pipeline execution URL. |
 
 Here is an example payload:
 
 ```shell
 {
-    "instance_guid": "666ba79b-3f3d-4236-ac04-4686ce526705",
-    "job_full_name": "Pipeline-2",
-    "execution_id": "UNIQUE_EXECUTION_ID",
-    "pipeline": "Pipeline-2",
-    "project_name": "Project-A",
-    "user_id": "NISHITH",
-    "repo_url": "https://api.github.com/users/nishith.patel",
-    "start_time": 1711603545000,
-    "result": "success",
-    "duration": 780000,
-    "instance_name": "Jenkins-1",
-    "instance_url": "http://localhost:8800",
-    "job_run": null,
-    "qualified_name": "Pipeline-2",
-    "branch_name": "master",
-    "module_name": null,
-    "scm_commit_ids": [
-        "64be72b2c1f7d2a33082f98a40a848880fcdcd5e"
-    ],
-    "job_run_params": [
-        {
-            "type": "StringParameterValue",
-            "name": "version",
-            "value": 1
-        },
-        {
-            "type": "StringParameterValue",
-            "name": "revision",
-            "value": 1
-        }
-    ],
-    "ci": true,
-    "cd": false,
-    "artifacts": [
-        {
-            "input": false,
-            "output": true,
-            "type": "container",
-            "location": "http://generated/image/location",
-            "name": "image1",
-            "qualifier": "1"
-        }
-    ],
-    "trigger_chain": [
-        {
-            "id": "SCMTrigger",
-            "type": "SCMTriggerCause"
-        }
-    ],
-    "cfr_status": true
-    "themes":[
-        "themex",
-        "themey",
-        "themex/themey"
-    ],
-    "web_url": "http://somelink-updated.com"
-    
+  "instance_guid": "666ba79b-3f3d-4236-ac04-4686ce526705",
+  "job_full_name": "Pipeline-2",
+  "pipeline": "Pipeline-2",
+  "qualified_name": "Pipeline-2",
+  "project_name": "Project-A",
+  "user_id": "BENJAMIN",
+  "repo_url": "https://api.github.com/users/benjamin.franklin",
+  "start_time": 1711603545000,
+  "result": "SUCCESS",
+  "duration": 780000,
+  "build_number": 42,
+  "instance_name": "Jenkins-1",
+  "instance_url": "http://localhost:8800",
+  "branch_name": "master",
+  "module_name": null,
+  "scm_commit_ids": [
+    "64be72b2c1f7d2a33082f98a40a848880fcdcd5e"
+  ],
+  "job_run_params": [
+    {
+      "type": "StringParameterValue",
+      "name": "version",
+      "value": "1"
+    },
+    {
+      "type": "StringParameterValue",
+      "name": "revision",
+      "value": "1"
+    }
+  ],
+  "ci": true,
+  "cd": false,
+  "artifacts": [
+    {
+      "input": false,
+      "output": true,
+      "type": "container",
+      "location": "http://generated/image/location",
+      "name": "image1",
+      "qualifier": "1"
+    }
+  ],
+  "trigger_chain": [
+    {
+      "id": "SCMTrigger",
+      "type": "SCMTriggerCause"
+    }
+  ],
+  "web_url": "http://somelink-updated.com"
 }
 ```
 
