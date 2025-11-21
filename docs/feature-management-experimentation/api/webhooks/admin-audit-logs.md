@@ -3,6 +3,8 @@ title: Webhook for Admin Audit Logs
 description: Learn how to configure the webhook for admin audit logs in Harness FME.
 sidebar_position: 2
 sidebar_label: Admin Audit Logs
+redirect_from:
+  - /docs/feature-management-experimentation/api/webhook/admin-audit-logs
 ---
 
 ## Overview

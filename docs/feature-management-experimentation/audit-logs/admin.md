@@ -40,7 +40,7 @@ FME-specific audit logs are captured every time a user creates, changes, or dele
 - Outgoing webhook (admin audit logs) integrations
 
 :::tip
-Over time, these audit log entries will move to the Harness platform’s [Audit Trails](https://developer.harness.io/docs/platform/governance/audit-trail/) feature, but for now they are only accessible in the FME UI or by FME’s [Audit Log webhook](/docs/feature-management-experimentation/api/webhook/admin-audit-logs).
+Over time, these audit log entries will move to the Harness platform’s [Audit Trails](https://developer.harness.io/docs/platform/governance/audit-trail/) feature, but for now they are only accessible in the FME UI or by FME’s [Audit Log webhook](/docs/feature-management-experimentation/api/webhooks/admin-audit-logs).
 :::
 
 </TabItem>
@@ -104,4 +104,4 @@ When hovering over the row for an audit log, click on the object name for that c
 </TabItem>
 </Tabs>
 
-Monitor this data using the user interface to more easily audit every modification made to feature flags over time or to troubleshoot any issues that occur during rollout. You can also pull out this data via the [outgoing webhook](/docs/feature-management-experimentation/api/webhook/admin-audit-logs) for analysis within other tools.
+Monitor this data using the user interface to more easily audit every modification made to feature flags over time or to troubleshoot any issues that occur during rollout. You can also pull out this data via the [outgoing webhook](/docs/feature-management-experimentation/api/webhooks/admin-audit-logs) for analysis within other tools.

@@ -42,4 +42,4 @@ When you hover over the row for an audit log, click the comment for that change 
 
 ![](./static/change-summary-comment.png)
 
-You can monitor this data using the user interface to audit every modification made to feature flags over time or to troubleshoot any issues that occur during rollout. You can pull out this data using third-party integrations or the [outgoing webhook](/docs/feature-management-experimentation/api/webhook/audit-logs/) for analysis within other tools.
+You can monitor this data using the user interface to audit every modification made to feature flags over time or to troubleshoot any issues that occur during rollout. You can pull out this data using third-party integrations or the [outgoing webhook](/docs/feature-management-experimentation/api/webhooks/audit-logs/) for analysis within other tools.

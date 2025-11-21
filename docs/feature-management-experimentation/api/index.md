@@ -197,9 +197,10 @@ Working examples that call the Split Admin API to accomplish typical tasks are a
 
 Webhook integrations are available to send real-time event payloads to Split. Each integration allows you to automate workflows and capture important event data externally.
 
-- [Audit Logs](/docs/feature-management-experimentation/api/webhook/audit-logs) allow you to stream audit log events from your Split organization.
-- [Admin Audit Logs](/docs/feature-management-experimentation/api/webhook/admin-audit-logs) allow you to send admin-level audit log events to your endpoint.
-- [Impressions](/docs/feature-management-experimentation/api/webhook/impressions) allow you to send impression data for treatments served to users.
+- [Audit Logs](/docs/feature-management-experimentation/api/webhooks/audit-logs) allow you to stream audit log events from your Split organization.
+- [Admin Audit Logs](/docs/feature-management-experimentation/api/webhooks/admin-audit-logs) allow you to send admin-level audit log events to your endpoint.
+- [Impressions](/docs/feature-management-experimentation/api/webhooks/impressions) allow you to send impression data for treatments served to users.
+- [Metric Alerts](/docs/feature-management-experimentation/api/webhooks/metric-alerts) allow you to send metric alert and significance events to your endpoint.
 
 The standard webhook integration automatically compresses the POST body request using `gzip` when sending data to the target application server.
 

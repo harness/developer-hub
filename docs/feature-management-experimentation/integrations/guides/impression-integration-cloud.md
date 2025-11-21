@@ -22,7 +22,7 @@ We can then use a Python script to extract data from the PostgreSQL database wit
 
    ![](../static/s3-kinesis-firehose.png)
 
-1. Decide which template you like to use based on the expected amount of Impressions that will be flowing in your database, checkout the JSON structure for [each impression](/docs/feature-management-experimentation/api/webhook/impressions), and consult with a Database Administrator if needed. In our example, we selected the free tier as this is an example service.
+1. Decide which template you like to use based on the expected amount of Impressions that will be flowing in your database, checkout the JSON structure for [each impression](/docs/feature-management-experimentation/api/webhooks/impressions), and consult with a Database Administrator if needed. In our example, we selected the free tier as this is an example service.
 
    ![](../static/choose-destination.png)
 

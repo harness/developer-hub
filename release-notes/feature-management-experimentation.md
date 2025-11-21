@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-11-12T10:00:00
+date: 2025-11-20T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,13 +12,38 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: November 12, 2025
+#### Last updated: November 20, 2025
+
+## November 2025
+
+### [New Feature] Metric Alert Webhook Integration
+----
+#### 2025-11-20
+
+The Metric Alert Webhook enables teams to automatically forward metric alert notifications (including [alert policy degradations](/docs/feature-management-experimentation/release-monitoring/alerts/#determine-an-alert-mechanism), [key metric significance](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/?metric-alert-type=key), and [guardrail significance alerts](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/?metric-alert-type=guardrail)) to any external system through a configurable HTTP POST webhook. This webhook enables real-time automation and enables a tighter integration with your incident management, analytics, and CI/CD tools. 
+
+![](./static/fme/metric-alert-webhook.png)
+
+With this webhook, you can:
+
+- Automate operational workflows by triggering incidents, posting alerts in Slack, or creating Jira tickets
+- Integrate alert data with downstream systems for more in-depth analytics and monitoring
+- Filter alerts by environment and type, providing teams fine-grained control over what's sent
+- Use a consistent webhook payload schema shared across other Harness FME webhooks (impressions, audit logs, and admin audit logs)
+
+This integration enables product, experimentation, and DevOps teams to automate responses to experiment alerts and maintain greater visibility across systems.
+
+#### Related documentation
+
+- [Metric Alert Webhook](/docs/feature-management-experimentation/api/webhooks/metric-alerts)
+- [Automated Alerts and Notifications](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/)
+- [Harness FME Integrations](/docs/feature-management-experimentation/integrations/)
 
 ## November 2025
 
 ### [New Feature] Permissions Enforcement Controls for Transitioning from Split Legacy Permissions
 ----
-#### 2025-11-05
+#### 2025-11-14
 
 Harness FME now provides a streamlined way for administrators to manage the transition from Split legacy permissions to centralized RBAC governance. Migrated customers can now choose how Split legacy environment-level and object-level permissions interact with Harness RBAC on the **Permissions Enforcement** page in **FME Settings**.
 
@@ -49,7 +74,7 @@ This feature provides administrators with full control over their transition fro
 
 ### [New Feature] Environment-level RBAC Governance in FME
 ----
-#### 2025-11-05
+#### 2025-11-14
 
 Harness FME now supports granular access control at the environment level through Harness Role-Based Access Control (RBAC). Administrators can define [resource groups](/docs/platform/role-based-access-control/add-resource-groups/) that limit access to specific [FME environments](/docs/feature-management-experimentation/environments) by name, controlling who can view, edit, or manage FME resources such as feature flags and segment definitions within those environments. 
 
@@ -68,6 +93,8 @@ This feature enables Harness FME administrators to use resource groups to contro
 
 - [Harness RBAC for FME](/docs/feature-management-experimentation/permissions/rbac)
 - [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness)
+
+## October 2025
 
 ### [New Enhancement] Owners Are Metadata Only
 ----

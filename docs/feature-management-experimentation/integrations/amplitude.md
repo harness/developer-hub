@@ -114,7 +114,7 @@ function amplitudeIdentify(amplitudeApiKey, userId, splitName, treatment) {
 
 </ul>
 
-2. Running as an impression listener should only be used for calling the identify API with additional properties that are available from the frontend that you need. The next option we will go over is a more robust approach. The code below outlines the creation of a service that can utilize Harness FME's [impressions webhook](/docs/feature-management-experimentation/api/webhook/impressions/) using a Node.js script.
+2. Running as an impression listener should only be used for calling the identify API with additional properties that are available from the frontend that you need. The next option we will go over is a more robust approach. The code below outlines the creation of a service that can utilize Harness FME's [impressions webhook](/docs/feature-management-experimentation/api/webhooks/impressions/) using a Node.js script.
 
    The piece of Node.js code below requires the express and axios libraries.
 

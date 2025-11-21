@@ -242,4 +242,4 @@ Integration documentation is available for the following:
 - [Quantum-Metric](/docs/feature-management-experimentation/integrations/quantummetric)
 - [SmartBear Bugsnag](/docs/feature-management-experimentation/integrations/bugsnag)
 - [Segment](/docs/feature-management-experimentation/integrations/segment)
-- [Webhook (outgoing)](/docs/feature-management-experimentation/api/webhook/impressions/)
+- [Webhook (outgoing)](/docs/feature-management-experimentation/api/webhooks/impressions/)

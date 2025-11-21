@@ -25,6 +25,7 @@ export const supportedWorkflows = [
   { name: "Sumo Logic", img: "/provider-logos/fme-integrations/sumologic-logo.png", link: "/docs/feature-management-experimentation/integrations/sumologic" },
   { name: "Visual Studio Code", img: "/provider-logos/fme-integrations/vscode-logo.png", link: "/docs/feature-management-experimentation/integrations/visual-studio-code-extension" },
   { name: "Webhook (Audit Logs)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhook/audit-logs" },
+  { name: "Webhook (Metric Alerts)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhook/metric-alerts" },
 ];
 
 export const supportedDatasources = [

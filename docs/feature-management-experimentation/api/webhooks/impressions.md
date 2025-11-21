@@ -3,6 +3,8 @@ title: Webhook for Impressions
 description: Learn how to configure the webhook for impressions in Harness FME.
 sidebar_position: 3
 sidebar_label: Impressions
+redirect_from:
+  - /docs/feature-management-experimentation/api/webhook/impressions
 ---
 
 ## Overview
