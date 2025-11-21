@@ -26,7 +26,7 @@ This configuration layer adds precision to how metrics like Deployment Frequency
 
 ### Why team settings matters
 
-Out of the box, SEI builds teams from your organization’s hierarchy. However, each team needs to be contextualized with additional configuration to ensure data is mapped correctly and insights are accurate.
+Out of the box, Harness SEI builds teams from your organization’s hierarchy. However, each team needs to be contextualized with additional configuration to ensure data is mapped correctly and insights are accurate.
 
 This includes:
 
@@ -48,26 +48,27 @@ The choice of integrations in this page is powered by the profile definition. Fo
 
 ### Step 2: Review & update developer identifiers
 
-To measure productivity metrics accurately (e.g., coding days, PR activity), SEI needs to know which developer performed which action in each tool.
+To measure productivity metrics accurately (e.g., coding days, PR activity), Harness SEI needs to know which developer performed which action in each tool.
 
-The team managers must manually update their developer records and the respective system specific user identifiers in the developer settings:
+The following table lists each integration along with the type of cloud identifier used and sample values. This is used to map cloud identities to individual developers:
 
-* Jira: User Account ID
-* GitHub: Username
-* GitLab: Username
-* Bitbucket: Username
+| Integration          | Identifier Type | Example(s)                                            |
+| -------------------- | ------------ | -------------------------------------------------------- |
+| **Jira**             | Account ID   | `081de7ae-0631-4474-befe-40064cc640ff`, `JIRAUSER208441` |
+| **GitHub**           | Username     | `Aaron-Phillips_ver`, `dp1_mca`                          |
+| **Azure DevOps**     | Email        | `Anh.McFeely@gmfinancial.com`                            |
+| **Bitbucket Cloud**  | Account ID   | `0026fd8b-03fd-47ef-9eb9-13c11c27385f`                   |
+| **Bitbucket Server** | Email        | `steve.madden@crowdstrike.com`                           |
+| **Harness Code**     | Email        | `lebron.james@harness.io`                                |
+| **GitLab**           | Name         | `adithya r`, `aidevops`                                  |
 
-This step is mandatory for productivity metrics.
+This step is mandatory for productivity metrics, and mapping must be kept up-to-date in **Team Settings** to ensure metrics are accurate. You can automate this step using [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers/), which reduces manual mapping by correlating developer identities across supported integrations.
 
 ![](../static/team-2.png)
 
-:::note
-Developer identifier mapping is manual today, but will be automated in the future using email-based correlation to reduce setup time.
-:::
-
 ### Step 3: Tool or system specific settings
 
-Once you’ve selected your team’s integrations and mapped developer identities, the final step is to configure tool-specific settings. These configurations allow you to fine-tune how SEI interprets data from your tools—ensuring the metrics reflect your team’s actual workflows and tool usage.
+Once you’ve selected your team’s integrations and mapped developer identities, the final step is to configure tool-specific settings. These configurations allow you to fine-tune how Harness SEI interprets data from your tools—ensuring the metrics reflect your team’s actual workflows and tool usage.
 
 Only the tools associated with the team’s linked Efficiency or Business Alignment profile will require configuration. Each team can override global settings to use specific integrations that better reflect their actual tool usage.
 
@@ -97,7 +98,7 @@ Impacts the following metrics if the profile was configured to use Issue Managem
 
 #### How do you identify production failures or incidents?
 
-To calculate Change Failure Rate and MTTR, SEI needs to know which work items represent failures or incidents. Define this using:
+To calculate Change Failure Rate and MTTR, Harness SEI needs to know which work items represent failures or incidents. Define this using:
     
 * Issue Type (e.g., Bug, Incident)
 * Labels (e.g., production-incident, sev1)
@@ -116,7 +117,7 @@ Impacts the following metrics if the profile was configured to use Issue Managem
 
 If your Org Tree includes Business Alignment, use this section to define how work items map to each category.
 
-Business Alignment categories (e.g., Strategic Work, Tech Debt, Customer Commitments) are centrally defined by the SEI Admin in the profile and apply across the organization. Teams configure how to filter work items into these categories using their own logic.
+Business Alignment categories (e.g., Strategic Work, Tech Debt, Customer Commitments) are centrally defined by the Harness SEI Admin in the profile and apply across the organization. Teams configure how to filter work items into these categories using their own logic.
 
 ![](../static/team-4.png)
 
@@ -139,7 +140,7 @@ This flexible logic ensures accurate mapping of work items to the correct Busine
 
 <TabItem value="scm-settings" label="Source Code Management Settings">
 
-This section allows you to define how SEI tracks coding activity, repository scope, and production deployments using your SCM system.
+This section allows you to define how Harness SEI tracks coding activity, repository scope, and production deployments using your SCM system.
 
 #### Define / Add the repositories
 
@@ -177,9 +178,9 @@ Impacts the following metrics if the profile was configured to use Source Code M
     
 #### Define the signal to track deployments driven by the SCM system
 
-To calculate Deployment Frequency from SCM activity, SEI needs to understand what constitutes a deployment event.
+To calculate Deployment Frequency from SCM activity, Harness SEI needs to understand what constitutes a deployment event.
 
-By default, SEI considers:
+By default, Harness SEI considers:
 
 * Pull Requests merged to a production branch
 * With a specific label (e.g., deploy, release)
@@ -196,7 +197,7 @@ Impacts the Deployment Frequency metric if the profile was configured to use Sou
 
 <TabItem value="cicd-settings" label="Pipeline Settings">
 
-Use this section to define which services or pipelines are relevant to your team, and how SEI should identify successful and failed deployments.
+Use this section to define which services or pipelines are relevant to your team, and how Harness SEI should identify successful and failed deployments.
 
 #### Identify your services or CD pipelines
     
@@ -220,9 +221,9 @@ SEI uses this to calculate Deployment Frequency.
 
 #### How do you identify a failure in production?
 
-Specify how SEI should detect failed deployments or rollbacks, using conditions such as: `Pipeline status = Rollback or Failure`
+Specify how Harness SEI should detect failed deployments or rollbacks, using conditions such as: `Pipeline status = Rollback or Failure`
 
-This helps SEI compute the Change Failure Rate metric.
+This helps Harness SEI compute the Change Failure Rate metric.
 
 </TabItem>
 
@@ -230,7 +231,7 @@ This helps SEI compute the Change Failure Rate metric.
 
 ## What's next
 
-Once you complete and save your tool-specific settings, SEI will:
+Once you complete and save your tool-specific settings, Harness SEI will:
 
 * Attribute data to your team: Events and activity from integrated systems will be mapped to the configured team based on your filters and identifiers.
 * Start calculating metrics: All relevant Efficiency and Business Alignment metrics will be computed using your defined criteria.
