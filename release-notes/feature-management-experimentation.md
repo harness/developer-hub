@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-11-20T10:00:00
+date: 2025-11-21T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,13 +12,13 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: November 20, 2025
+#### Last updated: November 21, 2025
 
 ## November 2025
 
 ### [New Feature] Metric Alert Webhook Integration
 ----
-#### 2025-11-20
+#### 2025-11-21
 
 The Metric Alert Webhook enables teams to automatically forward metric alert notifications (including [alert policy degradations](/docs/feature-management-experimentation/release-monitoring/alerts/#determine-an-alert-mechanism), [key metric significance](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/?metric-alert-type=key), and [guardrail significance alerts](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/?metric-alert-type=guardrail)) to any external system through a configurable HTTP POST webhook. This webhook enables real-time automation and enables a tighter integration with your incident management, analytics, and CI/CD tools. 
 

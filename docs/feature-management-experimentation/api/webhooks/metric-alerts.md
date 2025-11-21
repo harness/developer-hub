@@ -18,7 +18,7 @@ You can use metric alert webhooks to automate the ingestion of [alerts](/docs/fe
 
 ### Prerequisites
 
-- You must have [FME Administrator access](/docs/feature-management-experimentation/permissions/rbac/#out-of-the-box-roles) to create webhooks 
+- [FME Administrator access](/docs/feature-management-experimentation/permissions/rbac/#out-of-the-box-roles) is required to create webhooks 
 - An HTTPS endpoint for receiving `POST` payloads
 - A standardized payload schema consistent with existing webhooks for [impressions](/docs/feature-management-experimentation/api/webhooks/impressions) and [audit logs](/docs/feature-management-experimentation/api/webhooks/audit-logs)
 
