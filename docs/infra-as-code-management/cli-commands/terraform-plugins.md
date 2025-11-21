@@ -45,11 +45,18 @@ The `plan` command creates an execution plan to preview the actions OpenTofu/Ter
 - **Configuration Comparison**: Analyzes current versus desired states to identify necessary changes.
 - **Change Proposal**: Lists the actions that `apply` will execute to reach the desired state.
 
-Harness IaCM supports resource targeting and replacement, allowing you to specify which resources to focus on during a plan operation. You can use environment variable prefixes to define these targets or replacements:
-- `PLUGIN_PLAN_TARGET_`
-- `PLUGIN_PLAN_REPLACE_`
+#### Optional configuration
+Harness IaCM supports resource targeting and replacement as part of the `plan` step with the following parameters:
+- `target`: Target specific resources to focus on during a `plan`, and subsequent `apply` or `destroy` operations.
+- `replace`: Replace specific resources during a `plan`, and subsequent `apply` or `destroy` operations.
 
-For example, set `PLUGIN_PLAN_TARGET_1=tfcode.bucket1` to target a specific resource.
+For example, set `target=tfcode.bucket1` to target a specific resource.
+
+:::info target use case
+Suppose you want to run multiple pipelines in sequence, each targeting a different resource. In this case, you can use the `target` parameter to specify which resource each pipeline should focus on.
+
+Therefore, when the `apply` or `destroy` step is executed, it will only apply the changes to the resources specified in the `target` parameter, without affecting other resources.
+:::
 
 ---
 
