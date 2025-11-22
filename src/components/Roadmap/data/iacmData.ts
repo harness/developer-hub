@@ -1,48 +1,110 @@
 import { Horizon } from "./roadmapData";
 
 export const IacmData: Horizon = {
-    Released: {
-    description: "What has been released recently",
+    
+
+  Now: {
+    description: "Q4 2025, November 2025-January 2026",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Module Registry Testing",
-        description: "Automate the validation and testing of modules in isolated environments before publishing, ensuring only high-quality, compliant modules are available in the private Module Registry.",
-        link: "/docs/infra-as-code-management/registry/module-registry/module-registry-testing",
-      },
-      {
-        tag: [{ value: "Simplify Onboarding" }],
-        title: "Workspace templates",
-        description: "Users will be able to create Workspaces that will inherit cost, OPA, and other configurations from templates, simplifying onboarding and enforcing best practices",
-        link: "/docs/infra-as-code-management/workspaces/workspace-templates",
-      },  
-      {
-        tag: [{ value: "Reports & Insights" }],
-        title: "BI Dashboard",
-        description: "Users can now create custom BI Dashboards to track their compliance, usage trends with alerting and reporting.",
-        link: "/docs/infra-as-code-management/reports-insights/dashboards",
+        title: "Module Registry 2.0",
+        description: "Enhanced Module Registry workflows with Auto Sync, Native module artifact at multiple hierarchical levels",
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Default Pipelines",
-        description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
-        link: "/docs/infra-as-code-management/pipelines/default-pipelines",
+        title: "Native Ephemeral + Drift detection",
+        description: "Users will be able to control the TTL configuration of each managed Workspace and manage drift schedules.",
       },
       {
-        tag: [{ value: "Simplify Onboarding" }],
-        title: "Customized pipeline",
-        description: "IaCM supports highly customized pipelines that allows you to create advanced workflow, add 3rd party plugins, run steps in parallel, and more.",
+        tag: [{ value: "Developer Experience" }],
+        title: "IDP plugin enhancements",
+        description: "Enhanced IaCM plugin for IDP with rich context on resources, drill downs and High level overview.",
       },
       {
-        tag: [{ value: "Security" }],
-        title: "OPA integration",
-        description: "IaCM natively integrates with OPA, allowing you to define rules that can be enforced at design and runtime, eliminating policy violations and reducing the risks of security and unplanned cost",
-        link: "/docs/infra-as-code-management/policies-governance/opa-workspace",
-      }
+        tag: [{ value: "Developer Experience" }],
+        title: "Native Vault Support",
+        description: "Native support for HashiCorp Vault connectors",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "MCP Server support",
+        description: "Native support for MCP Server",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Advanced Governance for Terragrunt",
+        description: "OPA, Cost Estimation, Native Approvals and Workspace templates",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Ansible Galaxy Support",
+        description: "Integration with Ansible Galaxy for discovering and leveraging community roles and collections.",
+      },
     ],
   },
-  Now: {
-    description: "Q3 2025, August 2025-October 2025",
+  Next: {
+    description: "Q1 2026, February-April 2026",
+    feature: [
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Ansible Execution Environments",
+        description: "Native support for Ansible Execution Environments",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Ansible Hosts Explorer",
+        description: "Ansible Hosts Explorer provides a unified view to browse, filter, and manage inventory hosts along with their recent execution context.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Native CCM Integration",
+        description: "Native Cloud Cost insights in IaCM Workspaces, Cost Recommendation insights in IaCM Approvals.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Advanced Reporting",
+        description: "Support for Resource level metadata in Custom Dashboards",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Cross Project JEXL support",
+        description: "Support sharing metadata across workspaces spanning across projects",
+      },
+    ],
+  },
+  Later: {
+    description: "Q2 2026, May-July 2026",
+    feature: [
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Native AWS CDK Integration",
+        description: "Seamless integration with AWS CDK for native IaC development and deployment.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Harness CD integration",
+        description: "Integration with CD allows IaCM users to link Resources with Services and Environments, giving end-to-end visibility",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "AWS CloudFormation support",
+        description: "Supporting AWS CloudFormation as an IaC provider",
+      },
+      {
+        tag: [{ value: "AI" }],
+        title: "AI Onboarding Agent",
+        description: "Automate infrastructure discovery and conversion to IaC with an intelligent onboarding agent.",
+      },
+      {
+        tag: [{ value: "AI" }],
+        title: "AI Remediation  Agent",
+        description: "Automatically detect and resolve cost, security, compliance, and drift issues using AI-driven remediation.",
+      },
+    ],
+  },
+  Released: {
+    description: "What has been released recently",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
@@ -63,57 +125,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Variable Sets",
         description: "Support for variable sets to streamline management and improve reusability",
-      },
-    ],
-  },
-  Next: {
-    description: "Q4 2025, November 2025-January 2026",
-    feature: [
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Ansible Support (GA)",
-        description: "Native Ansible approvals, Ansible galaxy support, BI Dashboards.",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Terragrunt Support (GA)",
-        description: "Native Terragrunt Approvals, OPA, Cost estimation.",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Ephemeral environments",
-        description: "Users will be able to control the TTL configuration of each managed Workspace.",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Harness CCM Integration",
-        description: "Integration with CCM allows IaCM users to have full visibility of costs associated with the resources being managed by IaCM",
-      },
-    ],
-  },
-  Later: {
-    description: "Q1 2026+ & beyond",
-    feature: [
-      {
-        tag: [{ value: "AI" }],
-        title: "AI Infrastructure Agent",
-        description: "An agentic AI experience that proactively accelerates and automates infrastructure management and optimization with minimal human intervention.",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Harness CD integration",
-        description: "Integration with CD allows IaCM users to link Resources with Services and Environments, giving end-to-end visibility",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "AWS CloudFormation support",
-        description: "Supporting AWS CloudFormation as an IaC provider",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "CDK Support",
-        description: "Supporting CDK as an IaC provider",
-      },
+      }
     ],
   },
 };

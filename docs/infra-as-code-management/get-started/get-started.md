@@ -11,7 +11,7 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 
 Welcome to the Harness IaCM onboarding guide. Discover how Harness streamlines and secures your infrastructure management with Infrastructure as Code Management (IaCM).
 
-## What is IaCM?
+## What is IaCM? {#iacm-what-is-iacm}
 IaC automates infrastructure management via code. IaCM enhances this by ensuring consistent, accountable, and repeatable deployments. Harness boosts IaCM with [**real-time cost estimation**](/docs/infra-as-code-management/workspaces/cost-estimation), [**automated policy enforcement**](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy), and [**drift detection**](/docs/infra-as-code-management/pipelines/operations/drift-detection), ensuring efficient provisioning and compliance with standards.
 
 :::tip Terraform to OpenTofu migration
@@ -46,6 +46,7 @@ Go to [What's Supported in IaCM](/docs/infra-as-code-management/whats-supported)
     }
   }}
   toc = {toc}
+  precedingHeadingID='iacm-what-is-iacm'
   nextHeadingID='iacm-next-steps'
 />
 
