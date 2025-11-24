@@ -224,7 +224,7 @@ With the Split Synchronizer v5.0.0, the only accepted values for boolean flags a
 | log-rotation-max-files | rotationMaxFiles | SPLIT_PROXY_LOG_ROTATION_MAX_FILES | `10` | Maximum number of files to keep when rotating logs. |
 | log-rotation-max-size-kb | rotationMaxSizeKb | SPLIT_PROXY_LOG_ROTATION_MAX_SIZE_KB | `1024` | Maximum log file size in KB before rotating. |
 | admin-host | host | SPLIT_PROXY_ADMIN_HOST | `0.0.0.0` | Host where the admin server will listen. |
-| admin-port | port | SPLIT_PROXY_ADMIN_PORT | `30101` | Admin port where incoming connections will be accepted. |
+| admin-port | port | SPLIT_PROXY_ADMIN_PORT | `3010` | Admin port where incoming connections will be accepted. |
 | admin-username | username | SPLIT_PROXY_ADMIN_USERNAME | `ADMIN_USERNAME` | HTTP basic auth username for admin endpoints. |
 | admin-password | password | SPLIT_PROXY_ADMIN_PASSWORD | `ADMIN_PASSWORD` | HTTP basic auth password for admin endpoints. |
 | admin-secure-hc | secureChecks | SPLIT_PROXY_ADMIN_SECURE_HC | `false` | Secures health check endpoints. |
