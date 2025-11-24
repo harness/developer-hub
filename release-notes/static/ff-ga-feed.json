@@ -946,5 +946,11 @@
     "description": "Enable proper severity mapping for Code Smells and Bug Smells from SonarQube instead of using info as the default severity",
     "gaStartDate": "2025-11-11",
     "module": "Security Test Orchestration"
+  },
+  {
+    "flagKey": "PL_CUSTOM_BANNERS",
+    "description": "Enable the Banners feature in Account Settings",
+    "gaStartDate": "2025-11-27",
+    "module": "Platform"
   }
 ]
