@@ -176,3 +176,22 @@ If the setting `Fetch files from Git using provider-specific APIs` is enabled, a
 ### Pipeline status updates aren't sent to PRs
 
 Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. Check the pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) to confirm that it has a default codebase configuration and that it is using the correct code repo connector.
+
+### Connection tests fail due to network restrictions
+
+If your connector connection tests (preflight checks) fail due to network restrictions, split DNS configurations, proxy setups, or restrictive firewall policies, but you know the connector will work at runtime, you can configure Harness to skip the connection validation.
+
+To skip connector preflight checks, you need both:
+
+1. **Account-level feature flag enabled**: Contact [Harness Support](mailto:support@harness.io) to enable the `CI_IGNORE_TEST_CONNECTION` feature flag for your account.
+2. **Connector YAML configuration**: Add `ignoreTestConnection: true` to your connector's YAML configuration.
+
+When both the feature flag and YAML property are enabled, connection tests will always return as "Successful" without performing actual connectivity validation.
+
+For more information and an example configuration, go to [Create a connector using YAML](/docs/platform/connectors/create-a-connector-using-yaml#optional-skip-connector-preflight-checks).
+
+:::warning
+
+Use this feature carefully. Skipping connection tests means Harness won't validate whether the connector credentials are correct or if the remote service is accessible. Only use this when you're certain the connector will work at runtime despite failing preflight checks.
+
+:::

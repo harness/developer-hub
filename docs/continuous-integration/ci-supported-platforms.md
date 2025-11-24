@@ -46,6 +46,7 @@ For more information about early access features, including early access feature
 | `CI_EXTRA_ADDON_RESOURCE` | Used to speed up CI builds by adding more resources for running 'addon`. | Beta |
 | `CI_OVERRIDE_SERVICE_URLS` | Using this flag overrides all Harness service URLs (e.g. TI Service, Log Service, etc.). These URLs will be derived from the [manager URL](/docs/platform/delegates/delegate-reference/delegate-environment-variables#manager_host_and_port) | Beta | 
 | `CI_POPULATE_CI_VARIABLE` | Enforces that the environment variable `CI` is always `true` for all builds. | Beta |
+| `CI_IGNORE_TEST_CONNECTION` | Skip connector preflight checks (CI-13806).<br/>When this account-level feature flag is enabled along with the `ignoreTestConnection: true` property in a connector's YAML configuration, connection tests will always return as successful, bypassing actual connectivity validation. This is useful when network restrictions, split DNS, or firewall policies prevent connection tests from succeeding even though the connector can function properly at runtime. For more information, go to [Create a connector using YAML](/docs/platform/connectors/create-a-connector-using-yaml). | Beta |
 
 <!-- In development: CI_YAML_VERSIONING, CI_ENABLE_TTY_LOGS, CIE_ENABLE_RUNTEST_V2, CI_ENABLE_INTELLIGENT_DEFAULTS  -->
 

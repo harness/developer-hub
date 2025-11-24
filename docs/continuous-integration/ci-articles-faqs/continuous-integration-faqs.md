@@ -339,6 +339,46 @@ To change the connector's connectivity settings:
 5. Select **Change** and select **Connect through Harness Platform**.
 6. Select **Save and Continue** and select **Finish**.
 
+### How can I skip connector preflight checks when they fail due to network restrictions?
+
+If your connector preflight checks (connection tests) fail due to network restrictions, split DNS configurations, proxy setups, or restrictive firewall policies, but you know the connector will work at runtime, you can configure Harness to skip the connection validation.
+
+To skip connector preflight checks, you need both:
+
+1. **Account-level feature flag enabled**: Contact [Harness Support](mailto:support@harness.io) to enable the `CI_IGNORE_TEST_CONNECTION` feature flag for your account.
+2. **Connector YAML configuration**: Add `ignoreTestConnection: true` to your connector's YAML configuration.
+
+When both the feature flag and YAML property are enabled, connection tests will always return as "Successful" without performing actual connectivity validation.
+
+Example connector YAML with `ignoreTestConnection` enabled:
+
+```yaml
+connector:
+  name: ExampleDockerConnector
+  identifier: ExampleDockerConnectorId
+  description: Example Docker Connector
+  orgIdentifier: Doc
+  projectIdentifier: Example
+  type: DockerRegistry
+  spec:
+    dockerRegistryUrl: https://registry.hub.docker.com/v2/
+    providerType: DockerHub
+    auth:
+      type: UsernamePassword
+      spec:
+        username: john.doe@example.com
+        passwordRef: docsdockerhubpassword
+    ignoreTestConnection: true
+```
+
+For more information about creating connectors using YAML, go to [Create a connector using YAML](/docs/platform/connectors/create-a-connector-using-yaml).
+
+:::warning
+
+Use this feature carefully. Skipping connection tests means Harness won't validate whether the connector credentials are correct or if the remote service is accessible. Only use this when you're certain the connector will work at runtime despite failing preflight checks.
+
+:::
+
 ### Can I change the CPU/memory allocation for steps running on Harness cloud?
 
 Unlike with other build infrastructures, you can't change the CPU/memory allocation for steps running on Harness Cloud. Step containers running on Harness Cloud build VMs automatically use as much as CPU/memory as required up to the available resource limit in the build VM.

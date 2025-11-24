@@ -99,8 +99,43 @@ connector:
         auth:  
             type: UsernamePassword  
             spec:  
-                username: john.doe@example.com  
+                username: john.doe@example.com
                 passwordRef: docsdockerhubpassword
 ```
 Click **Save**. The Connector is added and can be select in Pipeline stages.
+
+### Optional: Skip connector preflight checks
+
+By default, Harness performs a connection test (preflight check) when you create or update a connector to validate that the credentials are correct and the remote service is accessible. However, in some environments with network restrictions, split DNS, proxy configurations, or restrictive firewall policies, these connection tests may fail even though the connector will work properly at runtime.
+
+If you need to skip connector preflight checks, you can add the `ignoreTestConnection: true` property to your connector's YAML configuration. This requires the `CI_IGNORE_TEST_CONNECTION` feature flag to be enabled for your account. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+
+When both the feature flag and the `ignoreTestConnection` property are enabled, connection tests will always return as "Successful" without performing actual connectivity validation.
+
+Example with `ignoreTestConnection` enabled:
+
+```
+connector:
+    name: ExampleDockerConnector
+    identifier: ExampleDockerConnectorId
+    description: Example Docker Connector
+    orgIdentifier: Doc
+    projectIdentifier: Example
+    type: DockerRegistry
+    spec:
+        dockerRegistryUrl: https://registry.hub.docker.com/v2/
+        providerType: DockerHub
+        auth:
+            type: UsernamePassword
+            spec:
+                username: john.doe@example.com
+                passwordRef: docsdockerhubpassword
+        ignoreTestConnection: true
+```
+
+:::warning
+
+Use this feature carefully. Skipping connection tests means Harness won't validate whether the connector credentials are correct or if the remote service is accessible. Only use this when you're certain the connector will work at runtime despite failing preflight checks.
+
+:::
 
