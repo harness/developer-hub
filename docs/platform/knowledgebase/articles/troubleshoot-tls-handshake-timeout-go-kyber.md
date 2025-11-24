@@ -63,7 +63,7 @@ Add the environment variable directly to the **IACM Workspace** configuration.
 
 ### 2\. Harness GitOps (ArgoCD Agent)
 
-Add additional  GitOps agent deployment to include the `GODEBUG` key.
+Add below additional config to values.yaml in GitOps agent deployment to include the `GODEBUG` key.
 
 **Configuration:**
 
