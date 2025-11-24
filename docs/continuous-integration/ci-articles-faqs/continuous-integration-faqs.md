@@ -545,13 +545,27 @@ If you get `error checking push permissions` or similar, go to the [Build and Pu
 
 ### Why are build pods being evicted?
 
-Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes.
+Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, build pods can be evicted due to:
+
+* **Resource pressure**: CPU or memory constraints in the pod or on the node
+* **Spot instances**: Using spot/preemptible instances as worker nodes
+* **Node conditions**: DiskPressure, MemoryPressure, or other node-level issues
 
 If you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds), add the following [Annotation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#annotations) to your [Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#infrastructure):
 
 ```
 "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
 ```
+
+#### Monitor and debug pod evictions
+
+If you don't use monitoring products like CloudWatch, you can set up a DaemonSet-based monitoring solution to capture and persist CI pod events, logs, and descriptions. This helps with:
+
+* Debugging OOM kills and resource issues
+* Understanding why pods are being evicted
+* Maintaining logs for older executions
+
+For detailed instructions on implementing this monitoring solution, see [Monitor CI pod events without CloudWatch](/docs/continuous-integration/ci-articles-faqs/articles/monitor-ci-pod-events-without-cloudwatch).
 
 ### I can't use Kubernetes autoscaling to distribute the pipeline workload.
 
