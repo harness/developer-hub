@@ -18,31 +18,24 @@
 This feature requires the `PL_PROJECT_MOVEMENT_ENABLED` feature flag. Contact [Harness support](mailto:support@harness.io) to enable it.
 :::
 
-This feature allows you to transfer a project from one organization to another within your Harness account. It can be used when a project needs to be moved to a different organization, such as during ownership transfers.
+This feature allows you to move a project from one organization to another within your Harness account. It can be used when a project needs to be moved to a different organization, such as during ownership transfers between teams.
 
 ## What happens when you move a project 
 
-1. **Entities are moved**: [Supported entities](#supported-modules), such as pipelines, services, environments, and monitored services, are carried over with the project to the destination organization.
+1. **Entities are moved**: Entities from the [supported modules](#supported-modules), such as pipelines, services, and environments, are carried over with the project to the destination organization.
 
-2. **Organization-scoped resources need reconfiguration**: Resources scoped at the source organization level become inaccessible after the move. You might need to recreate connectors, secrets, templates, webhooks, and notifications in the destination organization, and then update any project references to point to these new resources.
+2. **Organization-scoped resources**: Resources scoped at the organization level referenced in the project become inaccessible after the move. You might need to recreate connectors, secrets, templates, webhooks, and notifications in the destination organization, and then update any project references to point to these new resources.
 
-3. **Access control requires reconfiguration**: Organization-level RBAC policies, governance rules, and security policies do not transfer and must be recreated in the destination organization. All Project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are moved asynchronously. While the move is in progress, users or service accounts that have access to the project might temporarily be unable to access it.
+3. **Access control components**: 
+    - Organization-level RBAC components such as [User groups](/docs/platform/role-based-access-control/add-user-groups/#create-groups-by-inheritance)/[Service accounts](/docs/platform/role-based-access-control/heirarchichal-support-for-service-accounts) inherited from the Organization into the project and their associated role bindings, do not move and must be recreated in the destination organization if required. Moreover, roles reused from the Organization into a project will not be moved as well.
+    - All Project-level access control components including users, service accounts, user groups, role bindings, resource groups, and roles are moved asynchronously. While the move is in progress, users or service accounts that have access to the project might temporarily be unable to access it.
 
-4. **Audit logs**: 
-    - Account-level audit logs: No impact - all logs remain accessible.
-    - Organization-level audit logs: 
-      - Logs belonging to the project from before the move stay in the source organization and are not transferred.
-      - Links in old audit logs pointing to the moved project in the older organization will break.
-      - New audit logs for the moved project will appear in the newer organization.
+4. **Audit logs**: For Organization-level audit logs: 
+    - Logs belonging to the project before the move stay in the source organization and are not transferred.
+    - Links in old audit logs pointing to the moved project in the older organization will break as they still contain the older organization.
+    - New audit logs for the moved project will appear in the newer organization.
 
-For detailed pre-move validation and post-move remediation steps, see the [Move a Project guide](./pre-move-and-post-move-guide.md).
-
-## Prerequisites
-
-To move a project across organizations, you need the following permissions:
-
- - Move Project (`core_project_move`) permission on the source project.
- - Create Project (`core_project_create`) permission in the destination organization.
+For detailed pre-move validation and post-move remediation steps, refer the [guide](./pre-move-and-post-move-guide.md).
 
 ## Supported modules
 

@@ -29,15 +29,15 @@ This document provides step-by-step guide to move a project across organizations
 
 ### Step 1: Navigate and access the move option
 
-1. Navigate to the source organization in your account and locate the project you want to move.
-2. Click the **⋮** icon next to the project you want to move
-3. Select **Move Project**
+1. Navigate to the project overview page (eg.`https://app.harness.io/ng/account/<ACCOUNT_ID>/all/orgs/<ORGANIZATION_ID>/projects/<PROJECT_ID>/overview`) of the project you wish to move. Alternatively, go to the Projects listing page (eg.`https://app.harness.io/ng/account/<ACCOUNT_ID>/all/orgs/<ORGANIZATION_ID>/projects`) in the organization.
+2. On the Project Overview page, click on the **⋮** icon on top right. Alternatively, on the Projects listing page, click the **⋮** icon next to the project you want to move.
+4. Select **Move Project**
 
     <DocImage path={require('../static/project-list-view.png')} width="80%" height="80%" title="Move project modal" />
 
 ### Step 2: Select destination organization
 
-1. In the Move Project modal, review the warning about potential impacts and the list of entities that may break after the move. This list is not exhaustive, so additional entities might also be affected.
+1. In the Move Project modal, review the warning about potential impacts and the list of entities that may break after the move. This list is not exhaustive, so manually checking the entities is recommended.
 
     <DocImage path={require('../static/review-move-project.png')} width="50%" height="50%" title="Move project modal" />
 
@@ -58,9 +58,7 @@ This document provides step-by-step guide to move a project across organizations
 
     <DocImage path={require('../static/select-destination-org.png')} width="50%" height="50%" title="Move project modal" />
 
-4. Click **Move Project** to proceed
-
-    <DocImage path={require('../static/move-project.png')} width="50%" height="50%" title="Move project modal" />
+4. Click **Move Project** to proceed.
 
 ### Step 3: Confirm Move
 
@@ -70,13 +68,13 @@ This document provides step-by-step guide to move a project across organizations
 
     <DocImage path={require('../static/move-confirm.png')} width="50%" height="50%" title="Move project confirm" />
 
-:::note
-While a project is being moved, all project-level access control components—including users, service accounts, user groups, role bindings, resource groups, and roles—are updated asynchronously in the background, which may take some time to complete.
+:::warning Access control components movement
+When a project is moved, all project-level access control components—including users, service accounts, user groups, role bindings, resource groups, and roles—are moved asynchronously in the background, which may take some time to complete.
 :::
 
-Once a project is moved, you'll be redirected to the project in its new organization. A banner will appear stating: _This project was recently moved from another organization. Some entities may reference resources that no longer exist._ and you can also view the new destination organization, as shown in the image below.
+Once a project is moved, you'll be redirected to the project overview page. You can notice that the project now appears within the new organization. A banner will appear stating: **This project was recently moved from another organization. Some entities may reference resources that no longer exist.**
 
-<DocImage path={require('../static/move-complete.png')} width="80%" height="80%" title="Move project confirm" />
+<DocImage path={require('../static/move-complete.png')} width="80%" height="80%" title="Move project confirm" /> 
 
 Follow the [post-move remediation](./pre-move-and-post-move-guide/#post-move-remediation) guide to verify and update any broken references, and ensure the project functions correctly in its new organization. This guide is not exhaustive; you might need additional steps based on your project setup.
 
