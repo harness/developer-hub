@@ -34,6 +34,10 @@ If your build runs as non-root (`runAsNonRoot: true`), and you want to run the *
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
+:::info Kaniko Root Requirements
+With Kubernetes infrastructure, Build and Push steps use Kaniko which requires root user access. Set `runAsUser: 0` on the step only when your Dockerfile performs privileged operations like installing system packages or modifying system files. For enhanced security, keep your stage running as non-root and elevate only the Build and Push step when necessary.
+:::
+
 ## Add a Build and Push to ECR step
 
 In your pipeline's **Build** stage, add a **Build and Push to ECR** step and configure the [settings](#build-and-push-to-ecr-step-settings) accordingly.

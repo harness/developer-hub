@@ -39,6 +39,28 @@ Harness automatically selects the builder to be used by the **Build and Push ste
 
 To enable the `CI_USE_BUILDX_ON_K8` feature flag, contact [Harness Support](mailto:support@harness.io)
 
+### Kaniko Root Mode Recommendations
+
+When using Kaniko on Kubernetes infrastructure, we recommend running Kaniko in **root mode only when required**. While Kaniko itself requires root user access inside the container (it doesn't support rootless mode), you can optimize security by:
+
+1. **Running the pipeline stage as non-root** (`runAsNonRoot: true`) to comply with cluster security policies
+2. **Running only the Kaniko Build and Push step in root mode** (`runAsUser: 0`) when your Dockerfile requires it
+
+#### When Root Mode is Required
+
+Kaniko needs root mode specifically when the Dockerfile performs privileged operations that a non-root user cannot execute:
+
+* Installing system packages using package managers (`apt`, `yum`, `apk`, etc.)
+* Modifying or writing to root-owned directories in the base image that have restrictive permissions
+* Performing UID/GID operations such as `useradd`, `groupadd`, or `chown`
+
+:::tip Security Best Practice
+To balance security and functionality:
+- Configure your stage with `runAsNonRoot: true` for overall security
+- Set `runAsUser: 0` only on the Build and Push step when needed
+- This ensures the pipeline runs safely while allowing Kaniko to perform necessary system-level operations
+:::
+
 ### Buildah
 
 You can also use Buildah via `plugins/buildah-docker`. 
