@@ -115,7 +115,25 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## November 2025
 
-### Version 25.11.87202 <!--November 13,2025-->
+### Version 25.10.86902 <!--November 24, 2025-->
+
+#### Fixed issues
+
+- Added fallback mechanism for Jenkins artifact fetching. When a connection timeout occurs, the system now automatically falls back to fetching the last build, improving reliability in Jenkins workflows.
+
+### Version 25.07.86406 <!--November 24, 2025-->
+
+#### Fixed issues
+
+- Resolved resource leaks in SCM operations that could cause connection issues during retry attempts. Connections are now properly cleaned up to prevent resource exhaustion.
+
+### Version 25.05.85810 <!--November 24, 2025-->
+
+#### Fixed issues
+
+- Resolved resource leaks in SCM operations that could cause connection issues during retry attempts. Connections are now properly cleaned up to prevent resource exhaustion.
+
+### Version 25.11.87202 <!--November 13, 2025-->
 
 #### Fixed issues
 
@@ -126,9 +144,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Added [NDJSON format](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) support for GCP GCS streaming destinations. [PL-65730]
 
-### Version 25.10.87102 <!--November 10,2025-->
+### Version 25.10.87102 <!--November 10, 2025-->
 
 #### Fixed issues
+
 - Resources annotated with harness.io/skipPruning: 'true' were being deleted during Kubernetes prune instead of being ignored. [CDS-115797]
 
 ## October 2025
