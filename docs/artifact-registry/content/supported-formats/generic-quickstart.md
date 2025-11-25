@@ -54,7 +54,28 @@ An upstream proxy allows your registry to fetch artifacts from external sources 
 4. Provide a **Registry Name**.
 5. Optionally, add a Description and Labels for better organization.
 6. Choose visibility between **Public** and **Private**.
-7. Click **Create Registry** to finalize.
+7. Provide the URL of the custom source for your **Remote registry**.
+
+:::note Custom URL Structure and Path Resolution
+When configuring a custom upstream URL, it's important to understand how the URL structure impacts artifact resolution and download paths. The custom URL you provide serves as the base path, and the registry automatically appends the artifact name and version to construct the complete download URL.
+
+
+Your custom URL should point to a publicly accessible location with a logical folder structure where artifacts are stored. 
+
+**Example:**
+If you configure your custom URL as:
+```
+https://www.nuget.org/api/v2/package/
+```
+
+When downloading artifact `Newtonsoft.Json` version `10.0.3`, the registry resolves to:
+```
+https://www.nuget.org/api/v2/package/Newtonsoft.Json/10.0.3
+```
+Include the complete API path and folder structure in your custom URL. This way, you only need to specify the artifact name and version during download operations, keeping your workflow clean and consistent.
+:::
+
+8. Click **Create Registry** to finalize.
 
 :::info registry name criteria
 Your registry name must start with a letter and can include `lowercase alphanumerics`, `_`, `.` and `-`.
