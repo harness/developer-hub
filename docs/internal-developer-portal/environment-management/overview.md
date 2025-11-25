@@ -76,4 +76,17 @@ With IaCM Workspace Templates, you can standardize workspace configurations acro
 
 ---
 
+### RBAC for Environment Management
 
+Harness IDP provides granular Role-Based Access Control (RBAC) for environment management, allowing you to control access to environment blueprints and environments. The RBAC model follows the Harness platform hierarchy with different scopes:
+
+| Resource Type | Scope | Available Permissions | Resource Group Options |
+|---------------|-------|----------------------|------------------------|
+| **[Environment Blueprint](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md)** | Account Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
+| **[Environment](/docs/internal-developer-portal/environment-management/environments.md)** | Project Level | <ul><li>**VIEW**: View environments</li><li>**CREATE/EDIT**: Create new environments or edit existing ones</li><li>**DELETE**: Delete environments</li></ul> | <ul><li>All Environments</li><li>Specific Environments</li></ul> |
+
+**Environment Blueprints** are created at the **account scope** and define reusable templates, while **Environments** are created at the **project scope** using these blueprints. This separation allows platform teams to maintain centralized control over standards while giving development teams autonomy to provision their own environments.
+
+For detailed instructions on configuring RBAC for environment management, refer to the [Environment Management RBAC section](/docs/internal-developer-portal/environment-management/env-blueprint-yaml#environment-management-rbac). 
+
+---

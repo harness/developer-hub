@@ -349,7 +349,46 @@ namespace: ${{dependencies.namespace.output.name}}
 ### Scope & Hierarchy
 Environment Blueprints live at the **account scope**, while environments can only be created at the **project scope**. 
 
-In an environment blueprint, all the entities, workspace templates, pipelines, etc. are also created at the **project scope**.  
+In an environment blueprint, all the entities, workspace templates, pipelines, etc. are also created at the **project scope**.
+
+#### Environment Management RBAC
+
+Harness IDP provides granular Role-Based Access Control (RBAC) for environment management, allowing you to control who can view, create, edit, or delete environment blueprints and environments. The RBAC model follows the Harness platform hierarchy with different scopes for blueprints and environments.
+
+##### Permissions Hierarchy
+
+The environment management RBAC is structured across two main resource types:
+
+| Resource Type | Scope | Available Permissions | Resource Group Options |
+|---------------|-------|----------------------|------------------------|
+| **Environment Blueprint** | Account Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
+| **Environment** | Project Level | <ul><li>**VIEW**: View environments</li><li>**CREATE/EDIT**: Create new environments or edit existing ones</li><li>**DELETE**: Delete environments</li></ul> | <ul><li>All Environments</li><li>Specific Environments</li></ul> |
+
+For a complete overview of all IDP resources and their permissions across different scopes, refer to the [Permissions & Resources table](/docs/internal-developer-portal/rbac/scopes#permissions--resources-idp-20) in the IDP RBAC documentation.
+
+##### Configuring RBAC for Environment Management
+
+To configure access control for environment management:
+
+1. **For Environment Blueprints (Account Level)**:
+   - Navigate to **Account Settings** > **Access Control** > **Roles**
+   - Create or edit a role and assign Environment Blueprint permissions (VIEW, CREATE/EDIT, DELETE)
+   - Create a **Resource Group** and select either:
+     - **All Environment Blueprints** - Grants access to all blueprints in the account
+     - **Specific Environment Blueprints** - Grants access to selected blueprints only
+   - Assign the role and resource group to users or user groups
+
+2. **For Environments (Project Level)**:
+   - Navigate to **Project Settings** > **Access Control** > **Roles**
+   - Create or edit a role and assign Environment permissions (VIEW, CREATE/EDIT, DELETE)
+   - Create a **Resource Group** and select either:
+     - **All Environments** - Grants access to all environments in the project
+     - **Specific Environments** - Grants access to selected environments only
+   - Assign the role and resource group to users or user groups
+
+:::tip
+For more information on configuring RBAC in Harness, refer to the [RBAC documentation](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness).
+:::  
 
 ---
 
