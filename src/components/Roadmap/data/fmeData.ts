@@ -11,18 +11,6 @@ export const FmeData: Horizon = {
           "Support for additional Harness environments, including Prod 3.",
       },
       {
-        tag: [{ value: "SDK" }],
-        title: "OpenFeature provider updates",
-        description:
-          "Ongoing support for OpenFeature providers in .NET, Python, React, and Angular.",
-      },
-      {
-        tag: [{ value: "Better Together" }],
-        title: "Granular permissions in RBAC",
-        description:
-          "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled, Split integration into Harness, Part 2.",
-      },
-      {
         tag: [{ value: "Better Together" }],
         title: "Automated release pipelines",
         description: "Leverage Harness pipelines for feature flags to automate release processes.",
@@ -31,11 +19,6 @@ export const FmeData: Horizon = {
         tag: [{ value: "Feature Management" }],
         title: "Flag archiving",
         description: "Archive feature flags to streamline flag management and console visualization.",
-      },
-      {
-        tag: [{ value: "Monitoring" }],
-        title: "Alert webhook",
-        description: "Automate downstream processes based on FME data with alert webhooks.",
       },
       {
         tag: [{ value: "Experimentation" }],
@@ -116,6 +99,23 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "SDK" }],
+        title: "OpenFeature provider updates",
+        description:
+          "Ongoing support for OpenFeature providers in .NET, Python, React, and Angular.",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Granular permissions in RBAC",
+        description:
+          "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled, Split integration into Harness, Part 2.",
+      },
+      {
+        tag: [{ value: "Monitoring" }],
+        title: "Alert webhook",
+        description: "Automate downstream processes based on FME data with alert webhooks.",
+      },
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
         title: "Flag impressions properties bag",
