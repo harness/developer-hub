@@ -1,6 +1,6 @@
-This step supports [Harness Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) if you're using Harness Cloud infrastructure. During the Secure Connect setup, the `HTTPS_PROXY` and `HTTP_PROXY` variables are automatically configured to route traffic through the secure tunnel. If there are specific addresses that you want to bypass the Secure Connect proxy, you can define those in the `NO_PROXY` variable. This can be configured in the **Settings** of your step.
+This step supports private network connectivity if you're using Harness Cloud infrastructure. For information on connectivity options, see [Private network connectivity options](/docs/platform/references/private-network-connectivity). When using proxy configurations, the `HTTPS_PROXY` and `HTTP_PROXY` variables are automatically set to route traffic through the secure tunnel. If there are specific addresses that you want to bypass the proxy, you can define those in the `NO_PROXY` variable. This can be configured in the **Settings** of your step.
 
-If you need to configure a different proxy (not using Secure Connect), you can manually set the `HTTPS_PROXY`, `HTTP_PROXY`, and `NO_PROXY` variables in the **Settings** of your step.
+If you need to configure a different proxy, you can manually set the `HTTPS_PROXY`, `HTTP_PROXY`, and `NO_PROXY` variables in the **Settings** of your step.
 
 #### Definitions of Proxy variables:
 

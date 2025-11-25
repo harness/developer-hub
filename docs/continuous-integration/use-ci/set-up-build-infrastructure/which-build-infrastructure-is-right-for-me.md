@@ -125,4 +125,3 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | Plugin output variables | ✅ Supported | ❌ Not supported | ✅ Supported | ✅ Supported |
 | [Build details - Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds#build-details) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [IP Allowlisting](/docs/platform/security/add-manage-ip-allowlist) | ✅ Supported for Mac, Linux, Windows | ✅ Supported | ✅ Supported | ✅ Supported |
-| [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) | ✅ Supported - Linux<br/>🔸 Planned - macOS/Windows (Use [IP allowlisting](/docs/platform/security/add-manage-ip-allowlist)) | ❌ Not supported | ❌ Not supported | ❌ Not supported |

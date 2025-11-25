@@ -14,6 +14,10 @@ redirect_from:
 
 Harness supports allowlisting of its SaaS infrastructure IPs to enable secure access to private networks. This is helpful when you want to connect Harness to internal systems such as Kubernetes clusters, artifact repositories, SCMs, or other internal services.
 
+:::info Private Network Connectivity Options
+For Harness Cloud users, see [Private network connectivity options](/docs/platform/references/private-network-connectivity) for a comprehensive guide to all available connectivity options including IP allowlisting and enterprise networking solutions.
+:::
+
 We recommend [contacting Harness Support](https://support.harness.io/) to receive the correct list of IPs and guidance based on your use case, region, and Harness modules in use.
 
 ## Outbound Access Requirements

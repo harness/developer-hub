@@ -8,25 +8,15 @@ sidebar_position: 3
 
 ### Can I trust Harness Cloud with my intellectual property (source code, artifacts, and so on)? 
 
-Yes. Harness Cloud **doesn't** retain your data after running a build. ([link to docs](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/))
+Yes. Harness Cloud **doesn't** retain your data after running a build.
 
-### Can Harness Cloud securely connect to my complex and private firewalled infrastructure? 
+### Can Harness Cloud securely connect to my complex and private firewalled infrastructure?
 
-Yes. You can use [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) for Harness Cloud to connect to your private assets through a secure tunnel.
+Yes. You can connect Harness Cloud to your private infrastructure using several approaches including IP allowlisting and enterprise networking solutions. For more information, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
 
-* Extension of your existing private infrastructure  
-* Dedicated infrastructure  
-* Encryption at rest and in transit  
-* Password-less access using OIDC  
-* No customer assets stored in Harness
+### Can I prove that Harness Cloud is secure so I can get it approved quickly by the required stakeholders (security team, DevOps platform team, infrastructure teams, and so on)?
 
-<!--   <DocImage path={require('static/harness-cloud-faqs-1-secure-connect.png')} width="60%" height="60%" title="Click to view full size image" />
--->
-![secure connect image](static/harness-cloud-faqs-1-secure-connect.png)
-
-### Can I prove that Harness Cloud is secure so I can get it approved quickly by the required stakeholders (security team, DevOps platform team, infrastructure teams, and so on)? 
-
-Yes. Harness Cloud has been penetration tested by external experts, and it is [ISO and SOC2](https://trust.harness.io/) certified. If you're already using Harness Cloud, additional approval isn't needed to enable Secure Connect to connect to your firewalled assets.
+Yes. Harness Cloud has been penetration tested by external experts, and it is [ISO and SOC2](https://trust.harness.io/) certified.
 
 ### What is SLSA, and why do I need it?
 

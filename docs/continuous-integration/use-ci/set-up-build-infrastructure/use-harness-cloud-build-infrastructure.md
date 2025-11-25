@@ -190,7 +190,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
 
 When running pipeline stages on Harness Cloud, you may need to connect to internal resources that are not publicly accessible — such as artifact repositories, source code management systems (SCMs), or internal APIs.
 
-To enable secure communication between Harness Cloud infrastructure and your private network, your networking or security team can allowlist the relevant IP ranges used by Harness Cloud. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your environment.
+To enable secure communication between Harness Cloud infrastructure and your private network, your networking or security team can allowlist the relevant IP ranges used by Harness Cloud. For more connectivity options, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
 
 To retrieve allowlisted IPs for Harness Cloud via API, [visit the docs](/docs/platform/references/allowlist-harness-domains-and-ips#retrieve-allowlisted-ips-for-hosted-ci-via-api). For more information about allowlisting, [contact Harness Support](https://support.harness.io/).
 
@@ -204,9 +204,9 @@ To retrieve allowlisted IPs for Harness Cloud via API, [visit the docs](/docs/pl
 - Know that you can add steps to your pipeline to [specify versions of tools](/docs/platform/references/harness-cloud-vm-images#specify-versions) and [lock versions, set up environments, or install additional tools](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools).
 - Run `apt-get update` before [installing additional software](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) that might not be in the image's packages list.
 
-## Secure connect (private networking)
+## Private network connectivity
 
-You can use Harness Cloud build infrastructure in firewalled environments. For more information, go to [Secure connector for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+You can use Harness Cloud build infrastructure with private or firewalled resources. For more information about connectivity options, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
 
 ## Queue Intelligence
 

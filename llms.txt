@@ -79,7 +79,7 @@ No-LLM-Training: /docs/continuous-integration/private/**
   - [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step.md): Use base64 encoding and decoding to avoid errors with GCP secrets in Run steps.
   - [Configure OIDC with GCP WIF for Harness Cloud](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted.md): Configure OIDC with GCP WIF for builds on Harness Cloud.
   - [Generate GCP access tokens from OIDC tokens](https://developer.harness.io/docs/continuous-integration/secure-ci/gcp-oidc-token-plugin.md): Use a plugin to publish Helm charts to Docker registries
-  - [Secure Connect for Harness Cloud](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect.md): Private networking with Harness-managed runners.
+  - [Private network connectivity options for Harness Cloud](https://developer.harness.io/docs/platform/references/private-network-connectivity.md): Connect Harness Cloud to private resources using IP allowlisting or enterprise networking solutions.
   - [Security hardening for Harness CI](https://developer.harness.io/docs/continuous-integration/secure-ci/security-hardening.md): Best practices and features to help you build securely with Harness CI.
 - Troubleshoot Ci
   - [Troubleshoot builds with AIDA](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida.md): AIDA is the Harness AI Development Assistant.

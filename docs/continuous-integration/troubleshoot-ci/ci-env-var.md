@@ -430,7 +430,6 @@ ID of the user that started the build.
 
 * `HARNESS_INFRA`/`DRONE_STAGE_TYPE`: The stage build infrastructure type, such as `HOSTED_VM`, `KUBERNETES_DIRECT`, or `docker`.
 * `PLATFORM`, `VERSION`, `DRONE_STAGE_OS`, and `DRONE_STAGE_MACHINE`: Build infrastructure platform and machine details.
-* `HARNESS_HTTP_PROXY`, `HARNESS_HTTPS_PROXY`: For [Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 * `DRONE_STAGE_ARCH`: Reports `Amd64` or `Arm64` for VM build infrastructures only.
 * `DRONE_SYSTEM_HOST` and `DRONE_SYSTEM_HOSTNAME`: Provides the hostname used by the build infrastructure, such as `localhost`. Combine with `DRONE_SYSTEM_PROTO` to construct the server URL.
 * `DRONE_SYSTEM_PROTO`: The protocol used by the build infrastructure, such as `https`. Combine with `DRONE_SYSTEM_HOST` to construct the server URL.

@@ -453,7 +453,7 @@ This section provides a consolidated view of all security issues affecting your 
 #### New features and enhancements
 
 - STO ingestion now works on [MacOS Harness hosted builds](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#operating-systems-and-architectures-supported-by-sto).
-- STO now supports [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) for Harness Hosted
+- STO now supports [private network connectivity](/docs/platform/references/private-network-connectivity) for Harness Hosted
 - The steps Snyk, Wiz, Prisma Cloud, Aqua Security, Aqua Trivy, and Grype can now run without Docker-in-Docker as a dependency.
 - Improved the performance of the STO graph "Issue distribution over time"
 
@@ -495,7 +495,7 @@ This section provides a consolidated view of all security issues affecting your 
 
 #### New features and enhancements
 - You can now override the image that runs the STO step directly in the scanner step UI. Expand **Additional Configuration** and then set **Container Registry** and **Image Tag**. (STO-7724)
-- The Bandit, Anchor, and Semgrep steps now support [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) within STO. (STO-7666)
+- The Bandit, Anchor, and Semgrep steps now support [private network connectivity](https://developer.harness.io/docs/platform/references/private-network-connectivity) within STO. (STO-7666)
 - The dark theme for AIDA is improved. Its appearance is now consistent with other UI components. (STO-7849)
 
 ### Version 1.103.3

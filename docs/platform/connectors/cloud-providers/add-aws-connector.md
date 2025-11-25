@@ -82,7 +82,7 @@ Harness uses AWS connectors during pipeline runs to authenticate and perform ope
 
 :::tip
 
-The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+For private network connectivity options with Harness Cloud, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
 
 :::
 

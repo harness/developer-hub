@@ -32,7 +32,7 @@ No. Your build infrastructure can be configured to use whichever tools you like.
 ### What's the difference between CI_MOUNT_VOLUMES, ADDITIONAL_CERTS_PATH, and DESTINATION_CA_PATH?
 
 `CI_MOUNT_VOLUMES` - An environment variable used for CI Build Stages. This variable should be set to a comma-separated list of `source:destination` mappings for certificates where source is the certificate path on the delegate, and destination is the path where you want to expose the certificates on the build containers. For example,
-
+ 
 ```
 - name: CI_MOUNT_VOLUMES
   value: "/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
@@ -495,7 +495,7 @@ No. Currently, you can't use Harness Cloud build infrastructure to run CD steps 
 
 ### Can I connect to services running in a private corporate network when using Harness Cloud?
 
-Yes. You can use [Secure Connect for Harness Cloud](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect).
+Yes. You can connect Harness Cloud to private corporate networks using IP allowlisting or enterprise networking solutions. For more information, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
 
 ### With Harness Cloud build infrastructure, do I need to run DinD in a Background step to run Docker builds in a Run step?
 

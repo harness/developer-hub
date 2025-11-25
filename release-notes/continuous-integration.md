@@ -481,7 +481,7 @@ This behavior is controlled by the feature flag **`CI_APPEND_CERTS`** and is cur
 
 #### New features and enhancements
 
-- Added [**Secure Connect**](/docs/continuous-integration/secure-ci/secure-connect/) support for the Vault connector in the UI. (CI-17710, ZD-84099)
+- Added [**Secure Connect**](/docs/platform/references/private-network-connectivity) support for the Vault connector in the UI. (CI-17710, ZD-84099)
 
 #### Harness images updates
 
@@ -669,7 +669,7 @@ This feature is behind the feature flag `PLUGIN_STRICT_KEY_MATCHING`. (CI-17216,
 
 #### New features and enhancements
 
-- [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect/) now supports the “Upload to GCS” and "Upload Artifacts to JFrog" out-of-the-box (OOTB) steps. (CI-17124)
+- [Secure Connect](/docs/platform/references/private-network-connectivity) now supports the "Upload to GCS" and "Upload Artifacts to JFrog" out-of-the-box (OOTB) steps. (CI-17124)
 
 #### Fixed issues
 
@@ -1781,7 +1781,7 @@ Modified CSS to address flickering UI elements. (CI-11038, ZD-56510)
 
 #### Early access features
 
-[Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners. (CI-8922)
+[Private network connectivity for Harness Cloud](/docs/platform/references/private-network-connectivity) facilitates private networking with Harness Cloud runners. (CI-8922)
 
 #### Fixed issues
 
