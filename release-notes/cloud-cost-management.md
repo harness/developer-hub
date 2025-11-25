@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-11-17T18:00
+date: 2025-11-25T18:00
 sidebar_position: 6
 ---
 
@@ -24,6 +24,17 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+
+## November 2025 - Version 1.71.3
+#### Deployment Date: November 25, 2025 (Prod-1)
+
+### Feature Improvements
+
+- Realized Savings from Governance Enforcements: We’ve added support for showing realized savings for enforcements. On both the enforcement list page and the enforcement details page, monthly savings will now be displayed for non–dry run enforcements. [CCM-27472]
+
+### Fixed Issues
+
+- **Anomaly Criticality Classification**: We've enhanced the anomaly detection system to correctly flag anomalies based on their actual cost impact. This update ensures that high-impact anomalies are properly classified as critical, providing more accurate severity indicators for better cost management decisions. Note that this fix applies to new anomalies only; previously detected anomalies will maintain their original classification. [CCM-26720]
 
 
 ## November 2025 - Version 1.70.0
