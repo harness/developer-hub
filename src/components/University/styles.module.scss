@@ -13,6 +13,7 @@
 .certificationsCR,
 .certificationsDBDO,
 .certificationsTBH,
+.certificationsFME,
 .certificationsPlatform {
   background: url(/img/cert_harness_bg.svg) no-repeat;
   background-position: right;
@@ -361,6 +362,10 @@
         border-color: var(--mod-sto-200);
       }
 
+      &.moduleFME {
+        border-color: var(--mod-fme-200);
+      }
+
       .certCardContainer {
         display: flex;
         width: 100%;
@@ -617,6 +622,7 @@
 .certificationsCR,
 .certificationsDBDO,
 .certificationsTBH,
+.certificationsFME,
 .certificationsPlatform {
   .certDesc {
     margin-top: 80px;
@@ -902,6 +908,12 @@
   background-size: 35%;
 }
 
+.certificationsFME {
+  background-image: url(/img/cert-fme-bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
+}
+
 // .certificationsPlatfrom {
 //     background-image: url(/img/cert_platform_bg.svg);
 // }
@@ -982,6 +994,7 @@
   .certificationsCR,
   .certificationsDBDO,
   .certificationsTBH,
+  .certificationsFME,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -1026,6 +1039,7 @@
   .certificationsCR,
   .certificationsDBDO,
   .certificationsTBH,
+  .certificationsFME,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -1109,6 +1123,7 @@
   .certificationsCR,
   .certificationsDBDO,
   .certificationsTBH,
+  .certificationsFME,
   .certificationsPlatform {
     padding-top: 36px;
 
@@ -1201,6 +1216,7 @@
   .certificationsCR,
   .certificationsDBDO,
   .certificationsTBH,
+  .certificationsFME,
   .certificationsPlatform {
     padding: 10px;
     background: none;
@@ -1369,6 +1385,14 @@
       }
     }
 
+    .certificationsFME {
+      .hero {
+        .right {
+          background-image: url(/img/cert-fme-bg.svg);
+        }
+      }
+    }
+
     .hero {
       .SelfPacedTrainingBg {
         background-image: none !important;
@@ -1398,6 +1422,7 @@
     .certificationsCR,
     .certificationsDBDO,
     .certificationsTBH,
+    .certificationsFME,
     .certificationsPlatform {
       background: none;
       padding: 10px;
@@ -1456,6 +1481,7 @@
     .certificationsCR,
     .certificationsDBDO,
     .certificationsTBH,
+    .certificationsFME,
     .certificationsPlatform {
       .certDesc {
         .certCard {
@@ -1582,6 +1608,14 @@
       .hero {
         .right {
           background-image: url(/img/cert_tbh_bg.svg);
+        }
+      }
+    }
+
+    .certificationsFME {
+      .hero {
+        .right {
+          background-image: url(/img/cert-fme-bg.svg);
         }
       }
     }

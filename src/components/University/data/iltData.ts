@@ -24,17 +24,7 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
-  {
-    title: "Continuous Integration",
-    module: MODULES.ci,
-    type: type.user,
-    description:
-      "Deep dive into advanced Continus Integration concepts focused on containerization.",
-    version: "Harness CI Paid Plans",
-    link: "https://university-registration.harness.io/ilt-continuous-integration",
-    tileType: tileType.normal,
-    cardType: cardType.ILT,
-  },
+
   {
     title: "Continuous Delivery & GitOps",
     module: MODULES.cd,
@@ -43,6 +33,17 @@ export const ilt: IltCardItem[] = [
       "Deep dive into advanced Continus Delivery concepts using Kubernetes as the deployment infrastructure.",
     version: "Harness CD & GitOps Paid Plans",
     link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
+  {
+    title: "Continuous Integration",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Deep dive into advanced Continus Integration concepts focused on containerization.",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/ilt-continuous-integration",
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
@@ -58,17 +59,27 @@ export const ilt: IltCardItem[] = [
     cardType: cardType.ILT,
   },
   {
-    title: "Cloud Cost Management",
-    module: MODULES.ccm,
+    title: "Internal Developer Portal",
+    module: MODULES.idp,
     type: type.user,
     description:
-      "Deep dive into advanced Cloud Cost Management concepts supporting FinOps.",
-    version: "Harness CCM Paid Plans",
-    link: "https://university-registration.harness.io/ilt-cloud-cost-management",
+      "Deep dive into advanced IDP and developer self-service concepts.",
+    version: "Harness IDP Paid Plans",
+    link: "https://university-registration.harness.io/ilt-internal-developer-portal",
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
-
+  {
+    title: "Chaos Engineering",
+    module: MODULES.ce,
+    type: type.user,
+    description:
+      "Deep dive into chaos engineering and concepts supporting testing.",
+    version: "Harness CE Paid Plans",
+    link: "https://university-registration.harness.io/instructor-led-training-for-harness-chaos-engineering",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
   {
     title: "Security Testing Orchestration",
     module: MODULES.sto,
@@ -91,25 +102,15 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+
   {
-    title: "Chaos Engineering",
-    module: MODULES.ce,
+    title: "Cloud Cost Management",
+    module: MODULES.ccm,
     type: type.user,
     description:
-      "Deep dive into chaos engineering and concepts supporting testing.",
-    version: "Harness CE Paid Plans",
-    link: "https://university-registration.harness.io/instructor-led-training-for-harness-chaos-engineering",
-    tileType: tileType.normal,
-    cardType: cardType.ILT,
-  },
-  {
-    title: "Internal Developer Portal",
-    module: MODULES.idp,
-    type: type.user,
-    description:
-      "Deep dive into advanced IDP and developer self-service concepts.",
-    version: "Harness IDP Paid Plans",
-    link: "https://university-registration.harness.io/ilt-internal-developer-portal",
+      "Deep dive into advanced Cloud Cost Management concepts supporting FinOps.",
+    version: "Harness CCM Paid Plans",
+    link: "https://university-registration.harness.io/ilt-cloud-cost-management",
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },

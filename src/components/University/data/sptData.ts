@@ -25,6 +25,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Continuous Delivery & GitOps",
+    module: MODULES.cd,
+    type: type.user,
+    description:
+      "Self-paced video course introducing Harness Continuous Delivery & GitOps.",
+    version: "Harness CD & GitOps Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-harness-continuous-delivery-gitops",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Continuous Integration",
     module: MODULES.ci,
     type: type.user,
@@ -36,13 +47,13 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
-    title: "Continuous Delivery & GitOps",
-    module: MODULES.cd,
+    title: "Internal Developer Portal",
+    module: MODULES.idp,
     type: type.user,
     description:
-      "Self-paced video course introducing Harness Continuous Delivery & GitOps.",
-    version: "Harness CD & GitOps Free Plans",
-    link: "https://university-registration.harness.io/self-paced-training-harness-continuous-delivery-gitops",
+      "Self-paced video course introducing Harness Internal Developer Portal.",
+    version: "Harness IDP Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-harness-internal-developer-portal",
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
@@ -58,16 +69,28 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
-    title: "Cloud Cost Management",
-    module: MODULES.ccm,
+    title: "Feature Management & Experimentation | Split Arcade",
+    module: MODULES.fme,
     type: type.user,
     description:
-      "Self-paced video course introducing Harness Cloud Cost Management.",
-    version: "Harness CCM Free Plans",
-    link: "https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management",
+      "Self-paced courses introducing Feature Management & Experimentation via Split Arcade.",
+    version: "FME Paid Plans",
+    link: "https://arcade.split.io",
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+  {
+    title: "Chaos Engineering",
+    module: MODULES.ce,
+    type: type.user,
+    description:
+      "Self-paced video course introducing Harness Chaos Engineering.",
+    version: "Harness CE Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-harness-chaos-engineering",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+
   {
     title: "Security Testing Orchestration",
     module: MODULES.sto,
@@ -90,25 +113,15 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+
   {
-    title: "Chaos Engineering",
-    module: MODULES.ce,
+    title: "Cloud Cost Management",
+    module: MODULES.ccm,
     type: type.user,
     description:
-      "Self-paced video course introducing Harness Chaos Engineering.",
-    version: "Harness CE Free Plans",
-    link: "https://university-registration.harness.io/self-paced-training-harness-chaos-engineering",
-    tileType: tileType.normal,
-    cardType: cardType.SPT,
-  },
-  {
-    title: "Internal Developer Portal",
-    module: MODULES.idp,
-    type: type.user,
-    description:
-      "Self-paced video course introducing Harness Internal Developer Portal.",
-    version: "Harness IDP Paid Plans",
-    link: "https://university-registration.harness.io/self-paced-training-harness-internal-developer-portal",
+      "Self-paced video course introducing Harness Cloud Cost Management.",
+    version: "Harness CCM Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management",
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
@@ -136,5 +149,6 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+
 
 ];

@@ -20,13 +20,6 @@ const sidebars: SidebarsConfig = {
           id: "cr",
           className: "sidebar-cr",
         },
-        // CI
-        {
-          type: "doc",
-          label: "Continuous Integration",
-          id: "continuous-integration",
-          className: "sidebar-ci",
-        },
         // CD
         {
           type: "doc",
@@ -34,61 +27,12 @@ const sidebars: SidebarsConfig = {
           id: "continuous-delivery",
           className: "sidebar-cd",
         },
-        // DB DevOps
+         // CI
         {
           type: "doc",
-          label: "Database DevOps",
-          id: "database-devops",
-          className: "sidebar-dbdevops",
-        },
-        //iacm
-        {
-          type: "doc",
-          label: "Infrastructure as Code Management",
-          id: "iacm",
-          className: "sidebar-iacm"
-        },
-        //ff
-        {
-          type: "doc",
-          label: "Feature Flags",
-          id: "feature-flags",
-          className: "sidebar-ff",
-        },
-        //fme
-        {
-          type: "link",
-          label: "Feature Management & Experimentation",
-          href: "https://arcade.split.io/",
-          className: "sidebar-fme",
-        },
-        //CCM
-        {
-          type: "doc",
-          label: "Cloud Cost Management",
-          id: "cloud-cost-management",
-          className: "sidebar-ccm"
-        },
-        //sto
-        {
-          type: "doc",
-          label: "Security Testing Orchestration",
-          id: "sto",
-          className: "sidebar-sto"
-        },
-        //SCS
-        {
-          type: "doc",
-          label: "Supply Chain Security",
-          id: "scs",
-          className: "sidebar-ssca"
-        },
-        //ce
-        {
-          type: "doc",
-          label: "Chaos Engineering",
-          id: "chaos-engineering",
-          className: "sidebar-ce"
+          label: "Continuous Integration",
+          id: "continuous-integration",
+          className: "sidebar-ci",
         },
         //idp
         {
@@ -97,6 +41,56 @@ const sidebars: SidebarsConfig = {
           id: "idp",
           className: "sidebar-idp"
         },
+        //iacm
+        {
+          type: "doc",
+          label: "Infrastructure as Code Management",
+          id: "iacm",
+          className: "sidebar-iacm"
+        },
+        // DB DevOps
+        {
+          type: "doc",
+          label: "Database DevOps",
+          id: "database-devops",
+          className: "sidebar-dbdevops",
+        },
+        //fme
+        {
+          type: "doc",
+          label: "Feature Management & Experimentation",
+          id: "feature-management-experimentation",
+          className: "sidebar-fme",
+        },
+        //ce
+        {
+          type: "doc",
+          label: "Chaos Engineering",
+          id: "chaos-engineering",
+          className: "sidebar-ce"
+        },
+        //sto
+        {
+          type: "doc",
+          label: "Security Testing Orchestration",
+          id: "sto",
+          className: "sidebar-sto"
+        },
+        //scs
+        {
+          type: "doc",
+          label: "Supply Chain Security",
+          id: "scs",
+          className: "sidebar-ssca"
+        },
+        //ccm
+        {
+          type: "doc",
+          label: "Cloud Cost Management",
+          id: "cloud-cost-management",
+          className: "sidebar-ccm"
+        },
+
         //sei
         {
           type: "doc",
