@@ -49,7 +49,7 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 ```
-Also see [variable usage](/docs/infra-as-code-management/manage-projects/connectors-variables) for more information.
+Also see [variable usage](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables) for more information.
 
 ---
 ### `outputs.tf` (Output Values)

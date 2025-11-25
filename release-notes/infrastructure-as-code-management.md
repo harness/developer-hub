@@ -41,7 +41,7 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
   - Added comprehensive support for Terragrunt workspaces including drift detection, cost estimation, and OPA policy integration
 - **Provider Registry Beta | [Docs](/docs/infra-as-code-management/registry/provider-registry)** 
   - Advanced provider registry capabilities with custom provider support
-- **Variable Sets | [Docs](/docs/infra-as-code-management/manage-projects/connectors-variables#variable-sets)** 
+- **Variable Sets | [Docs](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables#variable-sets)** 
   - Introduced variable sets functionality for better configuration management
 - **Custom Git Tags for Module Registry | [Docs](/docs/infra-as-code-management/registry/module-registry/module-registry-tabs?module-tabs=Step-by-step#module-versions)** 
   - Added support for custom Git tags and monorepo configurations

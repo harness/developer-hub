@@ -50,7 +50,7 @@ For general use cases to reduce unnecessary complexity and to optimize performan
 
 Some reusable options can be to:
 - Create reusable pipelines and set them as default pipelines to trigger quickly from any workspace within a project.
-- Use [pipeline variables](/docs/infra-as-code-management/manage-projects/connectors-variables) to ensure consistency.
+- Use [pipeline variables](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables) to ensure consistency.
 - Use built-in plugins such as [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) and [IaCM Approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step).
 - Utilize [built-in OPA policies](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy) to add protection and ensure your pipelines warn or fail if certain conditions are not met, e.g. if your total monthly infrastructure costs exceed a specified amount.
 <!-- placeholder for module registry -->

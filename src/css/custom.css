@@ -911,6 +911,30 @@ html[data-theme='dark'] .horizontal-bar {
   color: #baeeff;
 }
 
+.secondary-horizontal-bar {
+  color: #4B5563;
+  margin-top: 15px;
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Cal sans';
+  letter-spacing: 0.5px;
+}
+
+html[data-theme='light'] .secondary-horizontal-bar {
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  background-color: #fafbfc;
+  color: var(--gray-600);
+}
+
+html[data-theme='dark'] .secondary-horizontal-bar {
+  border-top: 1px solid #45494f;
+  border-right: 1px solid #45494f;
+  background-color: #111827;
+  color: #baeeff;
+}
+
 /* HDH-120: Change 2nd level numbered list style */
 ol ol,
 ul ol {
