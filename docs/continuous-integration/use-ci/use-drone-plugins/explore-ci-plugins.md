@@ -30,6 +30,12 @@ To run plugins in CI pipelines, [use Plugin steps](./run-a-drone-plugin-in-ci.md
 | AWS S3 Sync | Synchronize files and build artifacts in a source directory with a destination directory. Directories can be local or in S3. | [drone-s3-sync](https://github.com/drone-plugins/drone-s3-sync) | plugins/s3-sync |
 | AWS S3 Upload and Publish | [Upload artifacts to S3 and publish the artifact URL on the Artifacts tab.](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md#use-the-s3-upload-and-publish-plugin) | [drone-s3-upload-publish](https://github.com/harness-community/drone-s3-upload-publish) | harnesscommunity/drone-s3-upload-publish |
 
+## Plugins for Azure
+
+| Plugin | Use | Source | Image |
+| ------ | --- | ------ | ----- |
+| Azure OIDC Token | [Generate an Azure access token from your OIDC token](../../secure-ci/azure-oidc-token-plugin.md) | [drone-azure-oidc](https://github.com/harness-community/drone-azure-oidc) | plugins/azure-oidc |
+
 ## Plugins to build, upload, and deploy
 
 Harness CI has built-in support for [building and pushing artifacts and images](/docs/category/build-push-upload-download), in addition to [Harness CD](/docs/continuous-delivery) for deployments.
@@ -200,6 +206,7 @@ These plugins are useful for security-related tasks, such as authentication or s
 | Cloudflare Caching | Use Cloudflare's API to purge cache. | [drone-cloudflare-caching](https://github.com/jetrails/drone-cloudflare-caching) | jetrails/drone-cloudflare-caching |
 | Cloudflare DNS | Use Cloudflare's API to create/update/delete DNS records. | [drone-cloudflare-dns](https://github.com/jetrails/drone-cloudflare-dns) | jetrails/drone-cloudflare-dns |
 | DCO | Enforce Developer Certificate of Origin. | [drone-plugin-dco](https://git.madhouse-project.org/algernon/drone-plugin-dco) | algernon/drone-plugin-dco |
+| Azure OIDC Token | [Generate an Azure access token from your OIDC token](../../secure-ci/azure-oidc-token-plugin.md) | [drone-azure-oidc](https://github.com/harness-community/drone-azure-oidc) | plugins/azure-oidc |
 | GCP OIDC Token | [Generate a Google access token from your OIDC token](../../secure-ci/gcp-oidc-token-plugin.md) | [drone-gcp-oidc](https://github.com/harness-community/drone-gcp-oidc) | plugins/gcp-oidc |
 | GPG Sign | Sign your artifacts and build results with [GnuPG](https://www.gnupg.org/). | [drone-gpgsign](https://github.com/drone-plugins/drone-gpgsign) | plugins/gpgsign |
 | Maven Auth | Generate `settings.xml` with server authentication for a Maven repository. | [drone-mvn-auth](https://github.com/robertstettner/drone-mvn-auth) | robertstettner/drone-mvn-auth |

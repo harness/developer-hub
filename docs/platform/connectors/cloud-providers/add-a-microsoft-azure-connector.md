@@ -732,5 +732,6 @@ For Azure deployments, note the following:
 
 * [Azure ACR to AKS CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Azure OIDC Token Plugin for CI](/docs/continuous-integration/secure-ci/azure-oidc-token-plugin) - Use OIDC to authenticate with Azure services in CI pipelines
 * [Harness Key Concepts](/docs/platform/get-started/key-concepts.md)
 * [CD Pipeline Basics](/docs/continuous-delivery/get-started/key-concepts)

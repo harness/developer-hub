@@ -78,4 +78,6 @@ Example:
 
 [AWS OIDC plugin GitHub Repo](https://github.com/harness-community/drone-aws-oidc)
 
+[Azure OIDC Token Plugin](/docs/continuous-integration/secure-ci/azure-oidc-token-plugin)
+
 [GCP OIDC Token Plugin](/docs/continuous-integration/secure-ci/gcp-oidc-token-plugin)
