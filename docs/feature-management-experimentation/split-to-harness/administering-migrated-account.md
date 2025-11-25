@@ -528,7 +528,7 @@ To create an Admin API key with the same permissions as your legacy Split Admin 
 
 #### Using a new service account
 
-If you don’t have a service account with role bindings set up, you can create a service account and role binding for Admin API keys **scoped to all projects** or **scoped to a specific project**.
+If you don’t have a service account with role bindings set up, you can create a service account and role binding for Admin API keys scoped to **all projects**, **specific projects**, or **specific environments**.
 
 <Tabs queryString="create-apikey-new-sa">
 <TabItem value="account-org-scope" label="Admin API key scoped to all projects">
@@ -685,17 +685,82 @@ If created at the project level, the API key would not be sharable (by inheritin
 :::
 
 </TabItem>
-<TabItem value="environment-scope" label="⚠️ Admin API key scoped to specific environments">
+<TabItem value="environment-scope" label="Admin API key scoped to specific environments">
 
-Harness FME now supports granular access control for Admin API keys through Harness RBAC.  
-
-For more information, see:
-
-- [Harness RBAC in FME](/docs/feature-management-experimentation/permissions/rbac)
-- [FME Permissions Enforcement](/docs/feature-management-experimentation/permissions/enforcement?split-harness-users=split-migrated-existing)
+This section provides steps to create a service account and role bindings for an Admin API key scoped to specific FME environments in your Harness account.
 
 :::info
-Legacy Split Admin API keys (created before migration) scoped to specific environments continue to work but are no longer recommended.
+On the Enterprise plan, Harness FME supports granular access control for Admin API keys through [Harness RBAC](/docs/feature-management-experimentation/permissions/rbac), allowing you to grant access to specific FME environments.
+:::
+
+  <Tabs>
+  <TabItem value="interactive" label="Interactive Guide"> 
+
+    To create an Admin API key scoped to specific FME environment(s) in your Harness account, view the steps in the interactive guide:
+
+    <DocVideo src="https://app.tango.us/app/embed/8c3e62e4-362f-48ec-b052-1851c55e82ba?hideAuthorAndDetails=true" title="Create a new Service Account for a specific project and generate an API Key and Token" />
+
+  </TabItem>
+  <TabItem value="step" label="Step-by-step">
+
+  To create an Admin API key scoped to specific FME environment(s) in your Harness account:
+
+1. At the project level, create a custom resource group that specifies the FME environment(s):
+    1. In the left navigation panel, select the project.
+    1. Click **Project Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Resource Groups** tile.
+    1. Click the **+ New Resource Group** button.
+    1. Enter a **Name** for the new resource group. For example, you could name it "FME All Resources - Staging Only" to show that the resource group will include all of the FME resources, but only for the `Staging` FME Environment.
+    1. Click **Save**. The resource group is displayed.
+    1. On the **Resources** panel, select all **Feature Management & Experimentation** resources. The page will be populated with all of the FME resource types.
+    1. On the **FME Environments** tile, select **Specified** and click **+ Add**.
+    1. Select the environment(s) for which you want to add access (i.e. staging),  and click the **Add [number] FME Environments** button.
+    1. Click **Save** at the top left to save your resource group.
+
+
+1. At the account level, create the service account:
+    1. In the left navigation panel, click **Account Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click the **+ New Service Account** button.
+    1. Enter a **Name** for the new service account. The **Email** field will be automatically populated to match the service account name. The email is used as an ID, and allows the service account API key token to work with identity access management systems that require email identifiers.
+    1. Click **Save**. The service account is listed.
+
+1. At the project level, inherit the service account and assign roles:
+    1. In the left navigation panel, select the project.
+    1. Click **Project Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click the **Inherit Service Accounts & Assign Roles** button.
+    1. Select the service account created in Step 2. If this is created at the account level, the service account is listed on the **Account** tab.
+    1. Click **Apply Selected**.
+    1. Select the **Project Admin** role.
+    1. Select the custom resource group created in Step 1.
+    1. Click **Apply**. The service account and role binding are listed.
+
+1. Create the API key and token at the account level:
+    1. In the left navigation panel, click **Account Settings**.
+    1. Click the **Access Control** button at the top of the page.
+    1. Click the **Service Accounts** tile.
+    1. Click on the service account created in Step 2.
+    1. Click **+ API Key**.
+    1. Enter a name for the new API key and click **Save**.
+    1. Click **+ Token**.
+    1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
+    1. Copy the token value somewhere safe.
+
+  </TabItem>
+  </Tabs>
+
+:::tip Service accounts for <code>Admin API keys scoped to specific FME environments</code> can also be created at the organization/project level
+
+If you prefer, you can create the service account at the Harness organization or project level:
+
+- **Organization level**: Steps 2 and 4 would be done at the organization level.
+- **Project level**: Steps 2 and 4 would be done at the project level, and step 3 would be omitted. In step 2, you would apply the role binding: **Project Admin** role over the resource group created in step 1.
+
+If created at the project level, the API key would not be sharable (by inheriting) across multiple projects. You would only be able to use it in the project where it was created.
 :::
 
 </TabItem>
