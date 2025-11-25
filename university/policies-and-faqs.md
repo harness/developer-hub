@@ -172,7 +172,7 @@ For the Admin and Architect level exams, we allow for up to two free retakes on 
 
 * If you have purchased an exam via Harness University (university-registration.harness.io), please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can provide a retake coupon code.
 *  If you have accessed an exam via Harness Partner Portal (partnertraining.harness.io) please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can process your retake. 
-* If you have exceeded your two re-attempts, there will be a cool-off period of 30 days e.g one month before allowing to re-attepmt again. 
+* If you have exceeded your two re-attempts, there will be a cool-off period of 30 days e.g one month before allowing to re-attempt again. 
 
 ---
 
