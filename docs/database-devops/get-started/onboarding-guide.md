@@ -37,9 +37,9 @@ This guide introduces you to the robust capabilities of Harness DB DevOps, provi
 Before beginning the walkthroughs in this guide, ensure you have:
 | Item | Details / Link |
 | --- | --- |
-| Harness account | Database DevOps Feature flag enabled (see “[Enabling Feature Flags](https://developer.harness.io/docs/database-devops/dbdevops-supported-platforms/)”) |
+| Harness account | Database DevOps License (see “[Subscription Overview and Management](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#modules-with-no-direct-developer-tracking-consumption-entitlements)”) |
 | Kubernetes cluster | Kubernetes Cluster ≥ v1.18, Harness Delegate installed ([Delegate setup guide](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/)) |
-| Database credentials | JDBC‑compatible database; user with DDL/DML privileges |
+| Database credentials | JDBC‑compatible database; user with DDL/DML privileges. (see “[JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/)”) |
  
 <Tabs>
 <TabItem value="Interactive Guide" label="Interactive Guide" default>

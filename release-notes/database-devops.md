@@ -32,7 +32,7 @@ The `1.65.x` release introduces foundational improvements to ensure Flyway migra
 - All Flyway-supported commands now supported in DBOPS service, aligning the Flyway experience similar to Liquibase.
 - The Flyway container image has been upgraded to support these new data-sync capabilities, improving reliability and ensuring forward compatibility with upcoming Flyway features in Harness.
 
-* **Minimum Supported Versions:**
+**Minimum Supported Versions:**
 - `dbservice` – 1.65.x
 
 ### Release 1.64.x
@@ -42,7 +42,7 @@ The `1.64.x` release delivers expanded synchronization capabilities for Flyway u
 * **Feature Enhancements**
 - Added synchronization for Flyway migration state and command execution history, ensuring consistent tracking of applied, pending, and failed migrations across all stages.
 
-* **Minimum Supported Versions:**
+**Minimum Supported Versions:**
 - `dbservice` – 1.64.x
 
 ### Release 1.63.x
@@ -55,7 +55,7 @@ The `1.63.x` release expands Flyway coverage across core DB Ops workflows, enabl
  - Added support for defining migration and configuration (TOML) file paths, providing stronger flexibility for multi-directory and modular repository structures.
  - Introduced rollback execution support for Flyway within DB Ops, enabling controlled reversions in line with Flyway’s versioned migration model.
 
-* **Minimum Supported Versions:**
+**Minimum Supported Versions:**
 - `dbservice` – 1.63.x
 
 ## October 2025

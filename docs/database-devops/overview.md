@@ -45,6 +45,10 @@ Before you can access Harness Database DevOps, you must have Harness enable the 
 
  ![Harness DB DevOps architecture diagram](./concepts/static/database-devops-architecture.png)
 
+:::info note
+Harness now streams large, transient, runtime-only payloads (such as logs, test results, and database schema diffs) directly from short-lived plugin pods to the SaaS platform over outbound TLS. This enhancement avoids Delegate resource bottlenecks and improves scalability. All secrets and sensitive data continue to remain strictly within customer infrastructure, with the Delegate enforcing all orchestration and authentication.
+:::
+
 The Harness Database DevOps architecture is built around the Harness Delegate, which plays a crucial role in managing database change operations. This delegate operates within your environment—whether that's a local network, virtual private cloud, or Kubernetes cluster—ensuring seamless integration with your existing infrastructure. 
 
 The [Harness Delegate](../platform/delegates/delegate-concepts/delegate-overview.md) serves as the bridge between the Harness Manager in your SaaS instance and your database instances, code repositories, and cloud providers. It facilitates the orchestration of database changes by connecting to your version control systems and artifact repositories, allowing for efficient management of database migrations and updates.

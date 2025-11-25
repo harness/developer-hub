@@ -63,7 +63,7 @@ databaseChangeLog:
 ```
 This way, Liquibase can correctly resolve the paths to the included changelogs, and the error should be resolved.
 
-:::info Important Note
+:::info important note
 Liquibase uses the full path to the changelog file as part of the identifier of unique change ids. If your changelog has already been applied to an existing database, and your changelog path needs to change, you can add a change of type ''- logicalFilePath: example-changelog.yaml' to specify the path to the changelog that should be used for uniquely identifying change IDs.
 :::
 
