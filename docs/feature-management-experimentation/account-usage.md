@@ -1,56 +1,117 @@
 ---
-title: Usage data
+title: Usage Data
+description: Learn how to view and manage your usage, billing details, and account limits in Harness FME.
 sidebar_position: 20
 redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/account-usage
 ---
 
-The following describes your available billing details, limits, and usage data within Harness FME. 
+This page describes the usage reports, billing details, and service limits available in Harness Feature Management & Experimentation (FME). Navigate to the **Usage** and **Billing and limits** pages in **FME Settings** to access the following information:
 
-## Usage data
+* [Usage metrics](#view-usage-data) such as Monthly Tracked Keys (MTKs), impressions, and events
+* [SDK usage](#view-sdk-usage-data), displaying which SDKs are actively sending traffic
+* [Account-level billing information and service limits](#view-billing-and-service-limits)
 
-To access your usage data, do the following:
+:::danger Upcoming change to user-based billing
+Harness FME is transitioning away from seat-based pricing. **User seats** will be replaced with active users, defined as any user who accesses an FME capability (including view-only usage).
 
-1. From the left navigation pane, click the project switcher at the bottom, and then select **Admin settings**.
-2. Under Account settings, select **Usage**. 
+Until this update rolls out, the **Billing and limits** page will continue to show registered seats.
+:::
 
-The three types of usage data are:
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-### Monthly Tracked Keys
+<Tabs queryString="usage-and-billing">
+<TabItem value="usage" label="Usage">
 
-Monthly Tracked Key (MTKs) are the number of unique [traffic type](/docs/feature-management-experimentation/traffic-types) identifiers (e.g. users) evaluated by our SDKs in a calendar month.
+Harness FME provides three primary usage metrics on the **Usage** tab, and usage data (MTKs, impressions, and events) updates daily. 
 
-An MTK count is the number of unique keys that were evaluated for treatments over the entire month. Unique keys are deduplicated and only counted once across Projects, Environments, Traffic types, and Feature flags. A single key being used in getTreatment calls for multiple different feature flags (and possibly multiple different traffic types) is only one MTK. An MTK count is not the same as the number of impressions. An MTK count should however be roughly equivalent to the number of unique users expected on your site. For known user keys, it should map directly. 
+### Monthly Tracked Keys (MTKs)
+
+Monthly Tracked Key (MTKs) are the number of unique [traffic type identifiers](/docs/feature-management-experimentation/traffic-types) (e.g. users) evaluated by an SDK in a calendar month.
+
+* MTKs represent the number of unique keys evaluated for treatments.
+* Keys are de-duplicated across projects, environments, traffic types, and feature flags.
+* A key evaluated across multiple flags or traffic types counts once.
+* MTKs do not represent impressions.
+* MTKs typically approximate the number of unique end users interacting with your application.
 
 ### Impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/) are a unique event record generated every time a monthly tracked key calls the FME SDK to get a treatment evaluation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/) are unique event records generated each time an SDK evaluates a treatment for a tracked key.
 
 ### Events
 
-[Events](/docs/feature-management-experimentation/release-monitoring/events/) are records of user or system behavior. Events can be as simple as a page visited, a button clicked, or response time observed, and as complex as a transaction record with a detailed list of properties.
+[Events](/docs/feature-management-experimentation/release-monitoring/events/) capture user or system behavior. 
 
-MTK, impression, and event counts are updated daily. Data is reported by month, so you can understand trends over time:
+For example:
 
-![](./static/usage.png)
+* Page views
+* Button clicks
+* Transaction metadata
+* Performance metrics such as response time
 
-Each of these reports is available as an exportable CSV, which can be downloaded by selecting the "Download CSV" link below each chart. For additional usage data, contact our Support team at [support@split.io](mailto:support@split.io). 
+## View usage data
 
-## Billing and limits
+To access your usage data:
 
-To find data about your account's billing plan, limits, and currently enabled packs, do the following:
+1. From the FME navigation menu, click **FME Settings**.
+1. Under **Account Settings**, select **Usage**.
 
-1. From the left navigation pane, click the project switcher at the bottom, and select **Admin settings**.
-2. Under Account settings, select **Billing and limits**.
+![](./static/usage-1.png)
 
-### Billing plan and limits
+You can export each usage report as a CSV file by clicking the **Download CSV by environment and project** link under each chart. 
 
-Under the Billing section, you can find data about your current plan, the expiration date of your plan, your current support plan, as well as the limits that your billing plan gates you on.
+:::tip
+For additional usage data, contact [Harness Support](/docs/feature-management-experimentation/fme-support). 
+:::
 
-## Service limits
+</TabItem>
+<TabItem value="sdk-usage" label="SDK Usage">
 
-Under the Service limits section, you can find your current service limits. Harness FME maintains service limits for each account to help guarantee the availability of the Harness FME service, as well as to minimize billing risks to customers. Harness FME service limits require that you request limit increases manually.
+Harness FME displays which SDKs are actively sending traffic over the last seven days on the **SDKs** tab.
 
-![](./static/service-limit.png)
+This data helps you monitor:
 
-Request limit increases by emailing [support@split.io](mailto:support@split.io).
+* Which SDKs are integrated in your application
+* The environment each SDK is reporting from
+* The version that is currently detected vs. the latest available version
+
+If a newer version is available, update the SDK to ensure compatibility and access to the latest features. 
+
+## View SDK usage data
+
+To access your SDK usage and versioning data:
+
+1. From the FME navigation menu, click **FME Settings**.
+1. Under **Account Settings**, select **Usage** and click on the **SDKs** tab.
+
+![](./static/usage-2.png)
+
+</TabItem>
+<TabItem value="billing" label="Billing and Service Limits">
+
+On the **Billing and limits** page, you can view the following:
+
+* Your current billing plan
+* Plan expiration date
+* Support plan
+* Billing limits (for example, MTKs and user seats)
+
+The **Service limits** section includes a table that displays your usage toward FME object-level limits and any feature-gated consumption thresholds. These limits help ensure platform reliability and prevent unexpected usage spikes. 
+
+## View billing and service limits
+
+To access your billing and service limits data:
+
+1. From the FME navigation menu, click **FME Settings**. 
+1. Under **Account Settings**, select **Billing and limits**.
+
+![](./static/usage-3.png)
+
+:::tip
+Service limits do not affect billing. Harness FME service limits require that you request limit increases manually by contacting [Harness Support](/docs/feature-management-experimentation/fme-support).
+:::
+
+</TabItem>
+</Tabs>

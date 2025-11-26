@@ -27,6 +27,6 @@ This section highlights any experimental results that are ready for review. If t
 
 ## My feature flags, segments, and metrics
 
-If you own any feature flags, segments, or metrics, they appear on this section for quick navigation links to see the objects you own.
+If you own any feature flags, segments, or metrics, they appear in this section for quick navigation links to see the objects you own.
 
 ![](./static/my-section.png)
