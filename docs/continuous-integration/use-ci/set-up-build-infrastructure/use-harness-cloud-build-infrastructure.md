@@ -186,15 +186,35 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
           size: xlarge # optional
 ```
 
-### Allowlisting for accessing resources in your private network
+## Accessing privately hosted resources
 
-When running pipeline stages on Harness Cloud, you may need to connect to internal resources that are not publicly accessible — such as artifact repositories, source code management systems (SCMs), or internal APIs.
+When running builds on Harness Cloud, you may need to access internal resources that are not publicly accessible, such as:
 
-To enable secure communication between Harness Cloud infrastructure and your private network, your networking or security team can allowlist the relevant IP ranges used by Harness Cloud. For more connectivity options, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
+- Internal artifact repositories
+- Private source code management systems (SCMs)
+- Internal APIs and services
+- On-premises databases
 
-To retrieve allowlisted IPs for Harness Cloud via API, [visit the docs](/docs/platform/references/allowlist-harness-domains-and-ips#retrieve-allowlisted-ips-for-hosted-ci-via-api). For more information about allowlisting, [contact Harness Support](https://support.harness.io/).
+Harness supports multiple approaches to enable secure communication between Harness Cloud infrastructure and your private network:
 
-### Harness Cloud best practices
+1. **IP allowlisting** - Allow Harness Cloud IP ranges through your firewall
+2. **Private network connectivity** - Use cloud provider solutions like AWS PrivateLink or GCP Private Service Connect (Enterprise)
+
+### IP allowlisting
+
+Your networking or security team can allowlist the IP ranges used by Harness Cloud to permit traffic from Harness-managed build infrastructure to your private resources.
+
+To retrieve allowlisted IPs for Harness Cloud via API, see [Retrieve allowlisted IPs for Harness Cloud](/docs/platform/references/allowlist-harness-domains-and-ips#retrieve-allowlisted-ips-for-hosted-ci-via-api).
+
+For comprehensive information about IP allowlisting, see [Allowlist Harness domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips) or [contact Harness Support](https://support.harness.io/).
+
+### Private network connectivity (Enterprise)
+
+For enterprise customers with strict compliance and security requirements, you can use cloud provider private networking solutions for enhanced security without exposing traffic to the public internet.
+
+For detailed information about private network connectivity options, including AWS PrivateLink and GCP Private Service Connect, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
+
+## Harness Cloud best practices
 
 - Don't hardcode system environment variables. Instead, use references like `$HOME` or `$USER`.
 - Don't hardcode the number of processors/threads. Instead, use commands like `nproc` to specify threads/jobs in your build and test commands.
@@ -203,10 +223,6 @@ To retrieve allowlisted IPs for Harness Cloud via API, [visit the docs](/docs/pl
 - Know that Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 - Know that you can add steps to your pipeline to [specify versions of tools](/docs/platform/references/harness-cloud-vm-images#specify-versions) and [lock versions, set up environments, or install additional tools](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools).
 - Run `apt-get update` before [installing additional software](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) that might not be in the image's packages list.
-
-## Private network connectivity
-
-You can use Harness Cloud build infrastructure with private or firewalled resources. For more information about connectivity options, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
 
 ## Queue Intelligence
 
