@@ -22,7 +22,7 @@ tags:
 ---
 
 ## Pre-requisites
-* Liquibase command step is created. You can refer to the Harness documentation detailing how to [Add a Liquibase command step](/docs/database-devops/use-database-devops/liquibase-command-step/add-liquibase-command-step.md)
+* Liquibase command step is created. You can refer to the Harness documentation detailing how to [Add a Liquibase command step](/docs/database-devops/use-database-devops/liquibase-command-step/add-liquibase-command-step)
 
 :::info note
 **Minimum versions**

@@ -1,6 +1,7 @@
 ---
 title: Orchestrating Application and Database Changes
 description: Learn how to create pipelines that coordinate database and application changes, ensuring safe and reliable deployments.
+slug: /database-devops/use-database-devops/deploying-database-application-together
 tags:
   - harness database devops
   - ci/cd

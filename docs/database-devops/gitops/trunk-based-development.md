@@ -75,7 +75,7 @@ Before we can deploy our Database Schema, we need to connect a database instance
 <Tabs>
 <TabItem value="Visual Overview" alt="Visual Overview">
 
-![Multiple Environments](../static/dbops-multiple-enviornment.png)
+![Multiple Environments](./static/dbops-multiple-enviornment.png)
 </TabItem>
 <TabItem value="YAML Overview" alt="YAML Overview">
 

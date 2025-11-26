@@ -39,5 +39,5 @@ Here's how you can add the Liquibase command step to your pipeline:
  8. Run the pipeline and monitor the execution. 
 
 :::info
-To create a pipeline in Database DevOps, you can refer to the Harness documentation detailing how to [Create a pipeline](/docs/database-devops/use-database-devops/create-a-pipeline)
+To create a pipeline in Database DevOps, you can refer to the Harness documentation detailing how to [Create a pipeline](/docs/database-devops/gitops/create-a-pipeline)
 :::

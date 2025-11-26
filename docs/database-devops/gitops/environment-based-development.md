@@ -65,34 +65,34 @@ Create separate branches in your Git repo for each environment: `development`, `
 ### 2. Define Schema Configuration per Branch
 
 - Go to **Database DevOps** and Click on **Add DB Schema**.
-![Create a New Schema](../static/dbops-schema-create.png)
+![Create a New Schema](../get-started/static/dbops-schema-create.png)
 
 ### 3. Create a Database Instance
 
 1. Select the **Database Schema** and click on **Add DB Instances** in Harness.
 2. Create a new instance for each environment.
 3. Attach the appropriate JDBC connector and context labels.
-![Create a New Database Instance](../static/dbops-multienv-instance.png)
+![Create a New Database Instance](./static/dbops-multienv-instance.png)
 
 ### 4. Configure a Git Trigger
 
 1. Navigate to **Pipeline Studio > Triggers**.
-![Pipeline Triggers](../static/dbops-pipeline-trigger.png)
+![Pipeline Triggers](./static/dbops-pipeline-trigger.png)
 2. Add a new **Git trigger** that listens for changes on each environment branch.
   - For example, `dev` trigger watches `dev` branch merges.
 3. Select the **Git repository** and specify the **Event** type (e.g., `Push`).
-![Example Git Trigger Configuration](../static/dbops-trigger-1.png)
+![Example Git Trigger Configuration](./static/dbops-trigger-1.png)
 4. Click on Continue and Configure the conditions for the trigger:
    - **Branch Name**: Specify the branch to watch (e.g., `dev`, `staging`, `prod`).
    - **Changed Files**: Optionally, specify file patterns to filter changes (e.g., `schemas/*.sql`).
 
-    ![Example Trigger Conditions](../static/dbops-trigger-2.png)
+    ![Example Trigger Conditions](./static/dbops-trigger-2.png)
 5. Enter the Pipeline Inputs that the trigger will use:
    - **Trigger Branch**: This is the branch that the trigger will monitor.
    - **Rollback Tag (Optional)**: Optionally, specify a tag to use for rollbacks.
    - **Tag (Optional)**: Optionally, specify a tag to apply to the deployment.
 
-   ![Example Trigger Inputs](../static/dbops-trigger-3.png)
+   ![Example Trigger Inputs](./static/dbops-trigger-3.png)
 
 ::: note
 You can learn more about triggers in Harness Database DevOps [Learn how to configure Git triggers →](https://developer.harness.io/docs/platform/triggers/tutorial-cd-trigger/)
@@ -108,7 +108,7 @@ You can learn more about triggers in Harness Database DevOps [Learn how to confi
 <Tabs>
 <TabItem value="Visual Overview" alt="Visual Overview">
 
-![Pipeline Design](../static/dbops-multienv-pipeline-design.png)
+![Pipeline Design](./static/dbops-multienv-pipeline-design.png)
 </TabItem>
 <TabItem value="YAML Overview" alt="YAML Overview">
 
@@ -268,4 +268,4 @@ pipeline:
 
 Deploying by environment branches in Harness Database DevOps provides alignment with traditional application deployment strategies and gives teams clear separation of concerns. While it introduces more Git management overhead, it enables safer promotion paths and more isolated testing.
 
-Just ensure to manage drift carefully, use [contexts](../../concepts/glossary/context.md) to limit dev-only changes, and maintain strong PR discipline when promoting between branches.
+Just ensure to manage drift carefully, use [contexts](../concepts/glossary/context.md) to limit dev-only changes, and maintain strong PR discipline when promoting between branches.

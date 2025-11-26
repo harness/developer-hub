@@ -35,7 +35,7 @@ Rollback in Harness Database DevOps refers to reverting one or more [changesets]
 - **Rollback by Count** – Revert a specific number of the most recently applied changesets in sequential order.
 
 <Tabs>
-<TabItem value="rollback-tag" label="Rollback by Tag">
+<TabItem value="rollback-tag" label="Rollback by Tag" >
 Here is how you can rollback a database within Harness Database DevOps: 
 
  1. In Harness, go to the **Database DevOps** module and select your **Project**. 
