@@ -76,6 +76,11 @@ Select your artifact format below to get started:
       path: "/artifact-registry/content/supported-formats/hugging-face-quickstart.md",
       logo: "hugging-face-logo.svg",
       logoSize: 24
+    },
+    Conda: {
+      path: "/artifact-registry/content/supported-formats/conda-quickstart.md",
+      logo: "conda-logo.svg",
+      logoSize: 24
     }
   }}
   disableSort={true}
