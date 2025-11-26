@@ -2855,8 +2855,7 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
-- Users can manually trigger a status refresh for Jira, ServiceNow, and Custom Approval steps using the **Refresh** button in the UI. This enhancement allows on-demand evaluation of approval conditions, reducing the need to wait for scheduled polling intervals. This feature is currently behind the feature flag `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-81994, ZD-52261, ZD-54622]
-
+- Users can manually trigger a status refresh for Jira, ServiceNow, and Custom Approval steps using the **Refresh** button in the UI. This enhancement allows on-demand evaluation of approval conditions, reducing the need to wait for scheduled polling intervals. [CDS-81994, ZD-52261, ZD-54622]
 - Harness supports custom webhook trigger execution via the Queue Service, improving reliability and scalability. This ensures that webhook triggers are processed efficiently, even under high load, without one customer’s activity impacting others. This feature is currently behind the feature flag `PIPE_ENABLE_QUEUED_BASED_CUSTOM_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-21872]
 
 - Users can view **Pipeline Metadata settings** directly in Pipeline Studio when using a Pipeline Template. Only the Advanced Settings defined in the template YAML are shown, providing a clearer, read-only view of relevant configuration options. For more information, refer to [Pipeline template](/docs/platform/templates/create-pipeline-template/#advanced-options). [PIPE-25136]
