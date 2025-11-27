@@ -20,6 +20,40 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## November 2025
+### Version 1.68.5
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.68.1
+- harness/chaos-ddcr-faults:1.68.2
+- harness/chaos-log-watcher:1.68.0
+- harness/service-discovery-collector:0.48.1
+
+#### New Features and Enhancements
+
+- Added comprehensive infrastructure management UI with new wizards for creating Kubernetes and Machine chaos infras (Container, Linux, Windows, CloudFoundry), list pages with dedicated tabs for each infra type, and edit/detail views with modern designs (CHAOS-10154, CHAOS-10155, CHAOS-10156, CHAOS-10157, CHAOS-10158, CHAOS-10159)
+- Added Probe verification support for Linux and Windows infrastructure (CHAOS-10162, CHAOS-10173, CHAOS-10186)
+- Added support for advanced config when onboarding pipeline from CD Resilience Step (CHAOS-10393)
+-  Added support for k8s based services including node, pod, and workload, along with 'Other' Service option in custom services agent (CHAOS-10309, CHAOS-10380)
+- Added filter and sort functionality for both k8s v1 and v2 apis with support for multiple environmentIDs filter (CHAOS-10201, CHAOS-10184)
+- Added skeleton loader to timeline view for better loading experience (CHAOS-10231)
+- Added ability to use templates from Experiment Builder Page (CHAOS-9970)
+
+#### Fixed Issues
+
+- Fixed Chaos Guard not working as expected on Safari browsers where configuring freeze windows and time windows would fail. Time window and freeze window configurations now work correctly on Safari with proper date and time selections saved and displayed across all browsers (CHAOS-10322)
+- Fixed ChaosGuard UI issues including tags not being visible on hover (now shown in popover), UI breaking while selecting conditions in rules (improved pagination), and YAML view coming blank before saving (CHAOS-10316, CHAOS-10315, CHAOS-10312, CHAOS-10310)
+- Fixed Ask AIDA not working for questions about windows/linux chaos infrastructures by adding relevant examples in ChaosGuard AIDA (CHAOS-10314)
+- Fixed label issue for Harness infra on Chaos-guard-conditions form page (CHAOS-10503)
+- Fixed issue where REST APIs were returning data even when providing -1 as page/limit value by adding validation for page/limit parameters in all REST APIs (CHAOS-10325)
+- Fixed issue where deleting a fault from its details page would take users to a blank page (CHAOS-10437)
+- Fixed issue where setting only few of tunables under Authentication Tab when creating experiment with a fault would store others as `undefined` (CHAOS-10196)
+- Fixed issue where creating experiment template at org/account level with authentication variables would fail with missing identifier errors (CHAOS-10174)
+- Fixed Force parameter being interpreted as runtime argument (CHAOS-10059)
+- Fixed import enterprise fault not working properly (CHAOS-9748)
+
 ## October 2025
 ### Version 1.67.0
 
