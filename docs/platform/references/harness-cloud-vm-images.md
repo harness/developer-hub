@@ -24,7 +24,7 @@ Harness provides VM images for multiple operating systems and architectures:
 | [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | GA |
 | [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM | GA |
 | [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | GA |
-| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `macos-latest` or `macos-14` | Latest macOS | GA |
+| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `mac-latest` or `mac-sonoma` | Latest macOS | GA |
 | [macOS 14 (Sonoma) with Xcode 16.3](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macOS-14-xcode-16.3-Readme.md)| `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 16.3 | GA |
 | [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-Readme.md)| `macos_sequoia` | Latest macOS Sequoia Image with Xcode 16.3,16.4,26.0 | GA |
 | [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
@@ -32,6 +32,8 @@ Harness provides VM images for multiple operating systems and architectures:
 :::info
 **Currently, `ubuntu-latest` points to Ubuntu 22.04**.
 To switch latest to Ubuntu 24.04 ahead of the general rollout, contact Harness Support to enable the `CI_ENABLE_HOSTED_BETA_IMAGES` feature flag for your account.
+
+**Currently, `mac-latest` points to macOS 14 Sonoma (`mac-sonoma`)**.
 :::
 
 
