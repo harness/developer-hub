@@ -70,7 +70,7 @@ Upload Artifacts steps upload artifacts. These steps _don't_ include build comma
 
 :::tip Artifacts tab
 
-Regardless of how you upload artifacts, you can [publish any artifact URL to the Artifacts tab](./artifacts-tab).
+Regardless of how you upload artifacts, you can [publish any artifact URL to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 :::
 
