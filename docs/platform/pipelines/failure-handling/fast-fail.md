@@ -6,7 +6,10 @@ description: You can enable fail fast behavior in your pipelines.
 :::note
 Currently, this feature is behind the feature flag: `PIPE_FAIL_ALL_FAILURE_STRATEGY`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
-Currently, this is only supported for **Deploy** stages.
+Currently, this is only supported for **Deploy steps**. For example, Helm deploy step, ASG Deploy steps, Kubernetes deploy steps, etc. It is **not supported** for other step types including:
+- **Verify steps**
+- **Approval steps**
+- Other non-deployment steps
 :::
 
 In traditional deployments, Harness waits for all steps or stages to complete before determining pipeline status. This can be inefficient when an early failure is enough to trigger rollback.
