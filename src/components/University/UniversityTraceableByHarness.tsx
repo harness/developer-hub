@@ -17,17 +17,17 @@ import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_tbh_badge.svg`,
+    img: `${url}img/cert-dev-tbh-badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_tbh_badge.svg`,
+    img: `${url}img/cert-adm-tbh-badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_tbh_badge.svg`,
+    img: `${url}img/cert-arc-tbh-badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
@@ -272,7 +272,7 @@ export default function CertificationsTBH() {
                       Traceable by Harness - Developer 
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_tbh_badge.svg`}
+                      src={`${baseUrl}img/cert-dev-tbh-badge.svg`}
                       alt="Harness Certified Expert - Traceable by Harness Developer"
                       className={styles.badge}
                     />
@@ -351,7 +351,7 @@ export default function CertificationsTBH() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_tbh_badge.svg`}
+                      src={`${baseUrl}img/cert-adm-tbh-badge.svg`}
                       alt="Harness Certified Expert - Traceable by Harness Administrator"
                       className={styles.badge}
                     />
@@ -439,7 +439,7 @@ export default function CertificationsTBH() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_tbh_badge.svg`}
+                      src={`${baseUrl}img/cert-arc-tbh-badge.svg`}
                       alt="Harness Certified Expert - Traceable by Harness Architect"
                       className={styles.badge}
                     />
