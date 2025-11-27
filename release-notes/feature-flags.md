@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-11-20T08:09:25
+date: 2025-11-27T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,11 +26,67 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: November 20, 2025
+#### Last updated: November 27, 2025
 
 ## November 2025
 
+### Ruby SDK
+
+#### Version 1.4.8
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12573)
+
+#### Version 1.4.7
+
+**Bug fixes**: 
+
+- Limited the number of targets that can be included in a single payload to prevent oversized batches and improve request reliability. (FFM-12713)
+
+**Maintenance**: 
+
+- Added documentation for the `initialized` function.
+
+### Java SDK
+
+#### Version 1.9.1
+
+**Bug fixes**: 
+
+- Fixed a `NullPointerException` in the retry interceptor that caused `retrieveAll` to fail with a `CompletionException`. (FFM-12715)
+
+### Erlang SDK
+
+#### Version 3.0.3
+
+**Maintenance**: 
+
+- Updated `harness_ff_erlang_client_api` dependency to resolve parsing issues with lowercase `Content-Type` headers. (FFM-12712)
+
+### React Native SDK
+
+#### Version 3.3.1
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12572)
+
+### React SDK
+
+#### Version 2.3.1
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12571)
+
 ### Relay Proxy
+
+#### Version 2.0.18
+
+**Bug fixes**:
+
+- Fixed an issue introduced in version 2.0.17 where the Relay Proxy could drop newly created flags or segments before writing them to the Redis cache. (FFM-12750)
 
 #### Version 2.0.17
 
@@ -39,8 +95,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Upgraded `golang` to 1.25.2.
 - Optimized how the Proxy retrieves Flag and Target Group config when changes are made.
 
-
 ### Node.js SDK
+
+#### Version 1.8.11
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12568)
 
 #### Version 1.8.10
 
