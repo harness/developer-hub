@@ -58,4 +58,73 @@ During onboarding into IDP we mass onboard all the services using a `catalog-inf
 
 3. In some cases the entities get into the `hasError` state. You can know whether the entity is in orphaned state or `hasError` state, by checking for the **Processing Status** dropdown on the Catalog page
 
-4. Additionally, here is an example [script](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/identify-and-delete-orphan-entity.py) that finds and delete all the entities that has `NotFoundError`, because the `source-location` for these entities are no more valid (YAML files moved or renamed). 
+4. Additionally, here is an example [script](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/identify-and-delete-orphan-entity.py) that finds and delete all the entities that has `NotFoundError`, because the `source-location` for these entities are no more valid (YAML files moved or renamed).
+
+### What is the purpose of using backend proxies in IDP?
+
+Backend proxies in IDP allow you to fetch external data sources like JSON files directly from GitHub or Harness Code, without needing a dedicated backend API. This helps centralize input data and simplifies workflow management.
+
+### How does the GitHub raw proxy configuration work?
+
+The GitHub raw proxy redirects requests from
+/api/proxy/github-raw/ → https://raw.githubusercontent.com/,
+using the PROXY_GITHUB_TOKEN for authentication. It enables you to retrieve JSON files from GitHub repositories and use their contents dynamically in workflows.
+
+### How can I configure a backend proxy for Harness Code?
+
+You can define the following proxy in your plugin configuration:
+
+proxy:
+  endpoints:
+    /harness-code:
+      target: https://app.harness.io/gateway/code/api/v1/repos/<account_id>/
+      pathRewrite: 
+        /api/proxy/harness-code/?: /
+      headers:
+        x-api-key: ${PROXY_HARNESS_TOKEN}
+
+
+This setup uses a Harness API key stored in a secret (PROXY_HARNESS_TOKEN) to authenticate and fetch raw JSON files from Harness Code repositories.
+
+### What type of authentication is needed for these proxies?
+
+GitHub Proxy: Requires a GitHub PAT stored as a Harness secret (PROXY_GITHUB_TOKEN).
+
+Harness Code Proxy: Requires a Harness API key with read access to Code repositories (PROXY_HARNESS_TOKEN).
+Both tokens are securely referenced from Harness secrets.
+
+### How can I use the backend proxy in a workflow to populate dropdowns?
+
+Use the SelectFieldFromApi field in your workflow YAML:
+
+properties:
+  some-property:
+    type: string
+    ui:field: SelectFieldFromApi
+    ui:options:
+      title: Some Property
+      description: An input for users to select
+      path: "proxy/harness-code/<org>/<project>/<repo>/+/raw/<path to json>"
+
+
+The dropdown values will be fetched from the JSON file stored in your repository.
+
+### Can I simplify proxy paths by locking the configuration to a specific org or repo?
+
+Yes. You can define organization-, project-, or repository-specific targets in your proxy configuration. This reduces the amount of information you need to pass in the workflow path.
+
+### How can I bulk register multiple components in Harness IDP?
+
+You can use the Catalog API with a custom script that iterates over multiple catalog locations. The script uses account details, API keys, and bearer tokens to automate the registration process for multiple component URLs in one go.
+
+### What is the purpose of the token field in workflow YAMLs?
+
+The token field (with ui:widget: password and ui:field: HarnessAuthToken) securely fetches the user’s short-lived session token for API calls during workflow execution. It ensures authentication without exposing sensitive credentials on the UI.
+
+### Why is the token visible during the “Review” step in multi-page workflows?
+
+If the token field is placed on any page other than the first, its ui:widget: password property isn’t evaluated correctly, causing the token to appear as plain text during the Review step. This is a known issue after the Backstage upgrade to v1.28.
+
+### How can I prevent tokens from being exposed in multi-page workflows?
+
+To hide tokens properly, move the token field to the first page (spec.parameters[0]) of the workflow YAML. This ensures the token remains masked (*****) throughout execution and prevents exposure during the Review step.
