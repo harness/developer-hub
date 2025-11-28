@@ -72,7 +72,8 @@ Support dates are calculated from when the delegate image was published to [Harn
 
 | Image version | Release date      | EOS              | EOL              |
 |---------------|-------------------|------------------|------------------|
-| 25.11.87202   | November 13, 2025  | April 30, 2026   | June 30, 2026    |
+| 25.11.87301   | November 27, 2025  | April 30, 2026   | June 30, 2026   |
+| 25.11.87202   | November 13, 2025  | April 30, 2026   | June 30, 2026   |
 | 25.10.87102   | November 10, 2025  | March 31, 2026   | May 31, 2026    |
 | 25.10.87101   | October 30, 2025  | March 31, 2026   | May 31, 2026     |
 | 25.10.86901   | October 15, 2025  | March 31, 2026   | May 31, 2026     |

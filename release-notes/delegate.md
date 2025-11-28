@@ -115,6 +115,20 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## November 2025
 
+### Version 25.11.87301 <!--November 28, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where pipelines triggered from input sets without a specified branch would incorrectly default to `__default__` instead of using the correct branch. Pipelines now properly resolve the branch when triggered from input sets. [PIPE-30792, ZD-97661]
+- Added validation to prevent creating triggers with special characters in their names or identifiers. This prevents issues when managing or deleting triggers. Existing triggers with special characters continue to work normally. [PIPE-26374]
+- Fixed an issue where entities (File Store folders, Secrets, Services, and Environments) could be created with reserved identifiers (`orgs`, `organizations`, `project`, `projects`) that caused problems when editing or deleting them. New entities can no longer use these reserved identifiers. Existing entities with these identifiers continue to work but may encounter issues during updates or deletions. [PL-66764, ZD-97956]
+- Improved error messages when configuring SMTP settings to provide clearer information about connection failures, making it easier to troubleshoot email configuration issues. [PL-65589]
+
+#### New features and enhancements
+
+- Added support for configuring a custom shell environment for delegate script execution using the `DELEGATE_SHELL` environment variable. This allows you to use custom shell wrappers or alternative shell environments for running scripts and commands. [PL-66608]
+- You can now use custom managed encryption keys when creating or updating inline secrets stored in AWS Secrets Manager, providing greater control over encryption key management for your secrets. [PL-66263]
+
 ### Version 25.10.86902 <!--November 24, 2025-->
 
 #### Fixed issues
@@ -137,7 +151,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
-- Fixed an issue where multiple canary phases in the same pipeline created separate ReplicaSets; they now reuse the active release revision for seamless phased deployment. Enable the `CDS_K8S_CONTINUOUS_CANARY_DEPLOYMENT` feature flag and upgrade to delegate version 25.11.87202 or later. [CDS-115547]
+- Fixed an issue where multiple canary phases in the same pipeline created separate ReplicaSets; they now reuse the active release revision for seamless phased deployment. Enable the `CDS_K8S_CONTINUOUS_CANARY_DEPLOYMENT` feature flag and upgrade to delegate version 25.11.87202 or later. [CDS-115547, ZD-96024]
 - Resolved an issue where, during GitX-based service creation, the response from ng-manager was not properly read, causing silent failures visible only in logs. [CDS-112220]
 
 #### New features and enhancements
