@@ -69,6 +69,8 @@ Dimensions are key metrics and data visualizations that provide specific insight
 
 ## View Orphaned EBS Volumes and Snapshots Dashboard
 
+<DocImage path={require('../static/ebs-volumes.png')} width="100%" height="100%" title="Click to view full size image" />
+
 Perform the following steps to view Orphaned EBS Volumes and Snapshots Dashboard:
 
 1. In Harness, click **Dashboards**.
@@ -92,6 +94,7 @@ The **Orphaned EBS Volumes and Snapshots Dashboard** is displayed.
 
 <TabItem value="ec2-metrics" label="EC2 Instance Metrics">
 
+<DocImage path={require('../static/instance-metrics.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Perform the following steps to view AWS EC2 Instance Metrics Dashboard:
 
@@ -114,6 +117,7 @@ The **EC2 Instance Metrics Dashboard** is displayed.
 
 ## AWS EC2 Inventory Cost Dashboard
 
+<DocImage path={require('../static/invetory-cost.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Perform the following steps to view AWS Cost Dashboard:
 
@@ -139,13 +143,14 @@ The **AWS EC2 Inventory Cost Dashboard** is displayed.
 
 <TabItem value="resource-breakdown" label="Resource Breakdown">
 
-
 ## View AWS Resource Breakdown Dashboard
+
+<DocImage path={require('../static/resource-breakdown.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Perform the following steps to view AWS Resource Breakdown Dashboard:
 
-1. In Harness, click **Dashboards**.
-2. Select **By Harness** and click **AWS** **Resource Breakdown**.  
+1. In Harness, click**Dashboards**.
+2. Select**By Harness**and click**AWS** **Resource Breakdown**.  
   
 The **AWS Resource Breakdown Dashboard** is displayed:  
 

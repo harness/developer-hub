@@ -6,12 +6,12 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## View Azure Cost Dashboard
 
+<DocImage path={require('../static/azure.png')} width="100%" height="100%" title="Click to view full size image" />
+
 Perform the following steps to view Azure Cost Dashboard:
 
 1. In the **Harness** application, click **Dashboards**.
 2. Select **By Harness** and then, click **Azure Cost Dashboard**. The Azure Cost Dashboard is displayed. 
-   
-     
 
 | **Dimension** | **Description** |
 | --- | --- |

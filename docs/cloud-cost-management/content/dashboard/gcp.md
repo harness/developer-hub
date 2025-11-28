@@ -6,6 +6,8 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## View GCP Cost Dashboard
 
+<DocImage path={require('../static/gcp.png')} width="100%" height="100%" title="Click to view full size image" />
+
 Perform the following steps to view the GCP Cost Dashboard:
 
 1. In the **Harness** application, click **Dashboards**.

@@ -30,7 +30,11 @@ Harness BI Dashboards are available across all Harness modules as a platform-wid
 * [Create Conditional Alerts](/docs/platform/dashboards/create-conditional-alerts)
 * [Schedule and Share Dashboards](/docs/platform/dashboards/share-dashboards)
 
-## Access the CCM dashboards
+## How to Create Custom Dashboards and Add Tiles for CCM
+
+<DocVideo src="https://app.tango.us/app/embed/7365df2b-2dd2-4539-a1fd-5f2513c42af4?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="How to Create Custom Dashboards and Add Tiles for CCM" />
+
+## Access the in-built CCM Dashboards
 
 To access the dashboards from the CCM module, perform the following steps:
 
