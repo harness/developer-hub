@@ -1,10 +1,16 @@
 ---
-title: CCM Explore
-description: This topic describes how to view CCM Explore and get more information about that data.
+title: CCM Explore Available Data
+description: Learn how to explore available data.
 # sidebar_position: 2
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+## Before You Begin
+
+- Review the [Harness Dashboards documentation](/docs/category/harness-dashboards) for general dashboard functionality
+- Understand how to [Create Dashboards](/docs/platform/dashboards/create-dashboards) in the Harness platform
+
 
 ## CCM Explore
 
@@ -15,6 +21,10 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
 <TabItem value="aws" label="AWS">
+
+## AWS Billing & Transaction Field Reference
+
+Below is a comprehensive reference for AWS Bill fields.
 
 <details>
 <summary><strong>Bill</strong></summary>
@@ -250,6 +260,13 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 
 <TabItem value="azure" label="Azure">
+
+
+## Azure Billing & Transaction Field Reference
+
+Below is a concise, collapsible reference. Click a group to expand its table.
+
+## Billing & Transaction
 
 <details>
 <summary><strong>Account</strong></summary>
@@ -593,6 +610,11 @@ import TabItem from '@theme/TabItem';
 <TabItem value="gcp" label="GCP">
 
 
+## Billing & Transaction
+
+Below is a concise, collapsible reference. Click a group to expand its table.
+
+
 <details>
 <summary><strong>Account</strong></summary>
 
@@ -796,6 +818,7 @@ import TabItem from '@theme/TabItem';
 
 <TabItem value="unified" label="Unified">
 
+## Account
 
 <details>
 <summary><strong>Account</strong></summary>
@@ -810,6 +833,7 @@ import TabItem from '@theme/TabItem';
 </details>
 
 
+## Billing
 
 <details>
 <summary><strong>Billing</strong></summary>
@@ -836,6 +860,8 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
+## Capacity Reservation
+
 <details>
 <summary><strong>Capacity Reservation</strong></summary>
 
@@ -845,6 +871,8 @@ import TabItem from '@theme/TabItem';
 | Capacity Reservation Status | Current status of the capacity reservation (e.g., active, expired). |
 
 </details>
+
+## Charge
 
 <details>
 <summary><strong>Charge</strong></summary>
@@ -861,6 +889,8 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
+## Charge Origination
+
 <details>
 <summary><strong>Charge Origination</strong></summary>
 
@@ -869,6 +899,8 @@ import TabItem from '@theme/TabItem';
 | Invoice ID | Unique identifier for the invoice associated with the charge. |
 
 </details>
+
+## Cluster
 
 <details>
 <summary><strong>Cluster</strong></summary>
@@ -901,6 +933,7 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
+## Commitment Discount
 
 <details>
 <summary><strong>Commitment Discount</strong></summary>
@@ -914,6 +947,7 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
+## External Data
 
 <details>
 <summary><strong>External Data</strong></summary>
@@ -931,7 +965,7 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
-
+## Location
 
 <details>
 <summary><strong>Location</strong></summary>
@@ -944,6 +978,8 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
+## Pricing
+
 <details>
 <summary><strong>Pricing</strong></summary>
 
@@ -954,6 +990,8 @@ import TabItem from '@theme/TabItem';
 | Pricing Unit | Unit of measure for pricing (e.g., GB-month, hour). |
 
 </details>
+
+## Resource
 
 <details>
 <summary><strong>Resource</strong></summary>
@@ -966,6 +1004,8 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
+## Service
+
 <details>
 <summary><strong>Service</strong></summary>
 
@@ -977,6 +1017,8 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
+## SKU
+
 <details>
 <summary><strong>SKU</strong></summary>
 
@@ -987,6 +1029,8 @@ import TabItem from '@theme/TabItem';
 | SKU Price ID | Identifier for the price of the SKU. |
 
 </details>
+
+## Timeframe
 
 <details>
 <summary><strong>Timeframe</strong></summary>
@@ -1003,6 +1047,8 @@ import TabItem from '@theme/TabItem';
 | Year | Year for the cost data. |
 
 </details>
+
+## Charge Period
 
 <details>
 <summary><strong>Charge Period</strong></summary>
