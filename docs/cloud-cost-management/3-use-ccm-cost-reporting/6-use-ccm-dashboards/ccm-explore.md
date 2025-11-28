@@ -4,6 +4,8 @@ description: Learn how to explore available data.
 # sidebar_position: 2
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from: 
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/ccm-explore
 ---
 
 ## Before You Begin

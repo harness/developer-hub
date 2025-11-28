@@ -3,6 +3,18 @@ title: BI Dashboards
 description: Learn how to get started with CCM with your chosen cloud provider.
 sidebar_position: 20
 sidebar_label: Overview
+redirect_from: 
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-dashboard
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/azure-cost-dashboard
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/cluster-cost-dashboard
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/download-dashboard-data-api
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/gcp-dashboard
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/gcp-dashboard
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/use-multiple-tags-in-aws
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-instance-metrics
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-resource-breakdown-cost-dashboard
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/multi-cloud-cost-overview-dashboard
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
