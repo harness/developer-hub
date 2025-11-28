@@ -149,6 +149,16 @@ The following deprecated API endpoints are longer supported:
 
 ## November 2025 
 
+### Version 1.118.x <!--November 27, 2025-->
+
+#### Fixed issues
+
+- Fixed a bug where a principal having full view access on principals in parent scope and specified access on some principals in current scope saw 403 access denied error when they tried to view principals in current scope. Post this fix users should be able to view any principals they have access to in parent scopes and are inherited in current scope. [PL-64981]
+
+#### New features and enhancements
+
+- Added the project and org identifier in the access control check in the latest-supported-version. [PL-66887, ZD-98171]
+
 ### Version 1.117.x <!--November 19, 2025-->
 
 #### Fixed issues
