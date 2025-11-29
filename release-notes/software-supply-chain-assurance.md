@@ -17,6 +17,19 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+## November 2025
+
+### Version: 1.46.10 , Plugin Version: 0.50.0
+
+#### New Features and Enhancements
+
+- We have pinned our Harness SCS plugins to use Docker API version `1.41`, which is supported by Docker engine versions `20.10` – `28.0`. Docker engine versions 29 and above are not supported as it require a newer Docker API version `1.44` that the plugins do not support. As a result, SCS plugins will fail if Docker 29 or later is used.
+- Added extended [Java support in cdxgen](https://developer.harness.io/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories/#configure-cdxgen-with-extended-java-support) to properly handle `JAVA_HOME` error ([ZD-96323](https://harnesssupport.zendesk.com/agent/tickets/96323)), ([ZD-91015](https://harnesssupport.zendesk.com/agent/tickets/91015)).
+
+#### Fixed Issues
+
+- Fixed search bar responsiveness and image layer filter visibility.
+- Fixed inconsistent HAR artifact names across all SCS steps
 
 ## October 2025
 
