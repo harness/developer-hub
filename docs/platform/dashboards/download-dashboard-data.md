@@ -90,18 +90,6 @@ Perform the following steps to download the data from a dashboard tile:
 		* **Custom**: Custom number of rows
 4. Once you’ve selected your options, click the **Download** button to download a file to your computer, or click **Open in Browser** to view the file in the browser.
 
-### See also
-
-You can choose to download the following By Harness CCM Dashboards:
-
-* [View AWS Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/aws-dashboard.md)
-* [View Azure Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/azure-cost-dashboard.md)
-* [View GCP Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/gcp-dashboard.md)
-* [View Cluster Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/cluster-cost-dashboard.md)
-* [View Multi-cloud Cost Overview Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/multi-cloud-cost-overview-dashboard.md)
-* [Orphaned EBS Volumes and Snapshots Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md)
-* [View AWS EC2 Inventory Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md)
-* [View AWS EC2 Instance Metrics Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md)
 
 
 ### Downloading Dashboard data via Harness API
