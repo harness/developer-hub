@@ -32,7 +32,7 @@ The flow of an ALB auto stopping rule is as follows:
 6. When cloudwatch shows no activity, the lambda updates Harness
 7. Repeat from step 1
 
-![](../../static/aws-alb.png
+![](../../static/aws-alb.png)
 
 ### Proxy
 
