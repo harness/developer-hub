@@ -75,10 +75,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/codeRepositoryData.tsx nofar.bluestein@harness.io shivkumar.loka@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io 
 
 # STO Docs
-/docs/security-testing-orchestration/ teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
-/release-notes/security-testing-orchestration.md teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
-/src/components/Roadmap/data/stoData.ts teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
-/src/components/Docs/data/securityTestingOrchestrationData.ts teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
+/docs/security-testing-orchestration/ lavakush.biyani@harness.io pritesh.chandaliya@harness.io udit.jain@harness.io
+/release-notes/security-testing-orchestration.md lavakush.biyani@harness.io pritesh.chandaliya@harness.io udit.jain@harness.io
+/src/components/Roadmap/data/stoData.ts lavakush.biyani@harness.io pritesh.chandaliya@harness.io udit.jain@harness.io
+/src/components/Docs/data/securityTestingOrchestrationData.ts lavakush.biyani@harness.io pritesh.chandaliya@harness.io udit.jain@harness.io
 # STO FAQs
 
 # CCM Docs
