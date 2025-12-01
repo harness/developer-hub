@@ -8,11 +8,17 @@ sidebar_position: 3
 
 ## Overview
 
-If you see the following message when attempting to log in to Split, your account has been migrated to `app.harness.io`, and you need to access it from there going forward:
+If you see the following message when attempting to log in to Split, your account has been migrated to Harness, and you need to access it from there going forward:
 
 <img src={require('./static/account-migrated.png').default} alt="Account Migrated to Harness" width="500" />
 
-The migration has been designed to be as straightforward for you as possible. Day-to-day tasks for non-admin users are the same on `app.harness.io` as they were on Split. Admins have a few changes, but they also get some very handy new powers.
+The migration keeps your familiar workflows intact. Non-admin users will work as they did in Split, while administrators will notice a few changes as settings move into Harness platform features.
+
+:::warning Harness Base URL
+Most users will access their migrated account at `app.harness.io`. If your account is hosted in a different Harness cluster (for example, Prod 3), your base URL may differ (for example, `app3.harness.io`). 
+
+For a comprehensive list of Harness base URLs, see [Split and Harness](/docs/feature-management-experimentation/getting-started/split-and-harness#harness-clusters-and-base-urls).
+:::
 
 ## Next Steps
 

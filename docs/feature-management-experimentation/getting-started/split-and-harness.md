@@ -4,22 +4,44 @@ description: Learn about the Split acquisition.
 sidebar_position: 3
 ---
 
-In June 2024, Harness acquired Split, now called Harness Feature Management & Experimentation (FME). This page provides information to support you during the transition to Feature Management & Experimentation (FME) in the Harness platform.
+In June 2024, [Harness acquired Split](https://www.harness.io/blog/harness-to-acquire-split), now called Harness Feature Management & Experimentation (FME). This page provides information to support you during the transition to Feature Management & Experimentation (FME) in the Harness platform.
 
-If you are currently accessing Split via `app.split.io`, our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME on `app.harness.io`.
-
-For more information about the acquisition, go to the [Harness blog](https://www.harness.io/blog/harness-to-acquire-split).
+:::warning Split to Harness FME
+If you are currently accessing Split via `app.split.io`, our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME on `app.harness.io`. For more information, see [Split to Harness Migration](/docs/feature-management-experimentation/split-to-harness).
+:::
 
 ## Get started with Harness
 
 If you're new to Harness, go to [Get started with Harness](/docs/category/get-started) and learn about the Harness software delivery platform.
 
+## Accessing Harness FME
+
+When your account is [migrated from Split to Harness](/docs/feature-management-experimentation/split-to-harness/migrated-account), you will access Feature Management & Experimentation (FME) through the Harness platform. Most migrated accounts use `app.harness.io`, but some customers (depending on their cluster) will use a different base URL.
+
+### Harness clusters and base URLs
+
+To identify which Harness cluster your account is in, navigate to **Account Settings** and select **Account Details**. 
+
+![](./static/harness-cluster.png)
+
+Your Harness base URL depends on which cluster your account is hosted in. 
+
+| Cluster       | Base URL                 |
+| ------------- | ------------------------ |
+| Prod1         | `app.harness.io`         |
+| Prod2         | `app.harness.io`         |
+| Prod3         | `app3.harness.io`        |
+| Prod0 / Prod4 | `accounts.harness.io`    |
+| EU clusters   | `accounts.eu.harness.io` |
+
 ## Authentication, access, and user management
 
-Authentication, access, and user management are part of the Harness platform. Permissions granted to users and user groups depends on their associations with resources and resource groups, which are controlled at the account, organization, and project level in Harness. For more information about authentication, access, and user management, go to the following:
+Authentication, access, and user management are part of the Harness platform. [Permissions](/docs/feature-management-experimentation/permissions) granted to users and user groups depend on their associations with resources and resource groups, which are controlled at the account, organization, and project level in Harness. 
+
+For more information about authentication, access, and user management, see the following:
 
 * [Harness platform authentication (including 2FA and SSO)](/docs/category/authentication)
-* [Harness RBAC overview](/docs/platform/role-based-access-control/rbac-in-harness)
+* [Harness RBAC for FME](/docs/feature-management-experimentation/permissions/rbac)
 
 ## Administering a Migrated Split Account on Harness
 
@@ -29,8 +51,6 @@ Split administrators should read the [Before and After Guide: Administering a Mi
 
 We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, developer experience improvements, security features, and cloud optimizations, while continuing to enhance the core of what you've previously known as Split. 
 
-You can use Harness FME directly within the [Harness Internal Developer Portal (IDP)](/docs/internal-developer-portal). This integration allows you to view and manage your feature flags and experiments directly from your developer portal, alongside other Harness tools. 
+You can use Harness FME directly within the [Harness Internal Developer Portal (IDP)](/docs/internal-developer-portal). This integration allows you to view and manage your feature flags and experiments directly from your developer portal, alongside other Harness tools. For setup instructions and configuration details, see the [Harness IDP documentation](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme).
 
-For setup instructions and configuration details, see the [Harness IDP documentation](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme).
-
-Visit our [roadmap](https://developer.harness.io/roadmap/#fme) to learn more about upcoming integrations and planned enhancements.
+To learn more about upcoming integrations and planned enhancements, see the [FME Product Roadmap](https://developer.harness.io/roadmap/#fme).

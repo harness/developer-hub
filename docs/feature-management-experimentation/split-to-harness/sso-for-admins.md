@@ -18,6 +18,11 @@ The work in this guide (which is unrelated to RBAC) must be completed and tested
 
 If you are migrating into a new Harness account, you will create a new SSO configuration for Harness that is identical to your current Split configuration. If you use SCIM, there is one exception to this rule: your Split Administrators will be in a new, differently named group. In the end, your goal is to ensure that you grant access to the FME module in `app.harness.io` for the same users and groups that exist in `app.split.io` today.
 
+:::warning Harness Base URL
+Most users will access their migrated account at `app.harness.io`. If your account is hosted in a different Harness cluster (for example, Prod 3), your base URL may differ (for example, `app3.harness.io`). 
+For a comprehensive list of Harness base URLs, see [Split and Harness](/docs/feature-management-experimentation/getting-started/split-and-harness#harness-clusters-and-base-urls).
+:::
+
 ### For an Existing Harness Account
 
 If you are migrating into an existing Harness account, your tasks are limited to assigning current Split users access to the Harness application and (if using SCIM) assigning Split-related groups to Harness as well.
