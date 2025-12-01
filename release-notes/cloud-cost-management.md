@@ -58,11 +58,11 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 ### Feature Improvements
 - **Enhanced GCP Discount Preferences**: We've expanded the single GCP discount preference into five distinct options for more precise cost management
-    - **Subscription Credits**
-    - **Sustained Use Discounts**
-    - **Resource-based CUD Credits**
-    - **Legacy Spend-based CUD Credits**
-    - **Other Discounts**
+    - **Subscription Credits**: Corresponds to `SUBSCRIPTION_BENEFIT` which are credits earned by purchasing long-term subscriptions to services in exchange for discounts.
+    - **Sustained Use Discounts**: Corresponds to `SUSTAINED_USAGE_DISCOUNT`.The sustained use discounts credit type is an automatic discount that you receive for running eligible Compute Engine resources for a significant portion of the billing month, with no commitment required.
+    - **Resource-based CUD Credits**: Corresponds to `COMMITTED_USAGE_DISCOUNT`. Resource-based committed use contracts purchased for Compute Engine in return for deeply discounted prices for VM usage.
+    - **Legacy Spend-based CUD Credits**: Corresponds to `COMMITTED_USAGE_DISCOUNT_DOLLAR_BASE`. For legacy spend-based committed use discounts (CUDs) that aren't part of the new pricing model, this is the credit earned in exchange for your commitment to spend a minimum amount for a service in a particular region.
+    - **Other Discounts**: Corresponds to`DISCOUNT`. The discount credit type is used for credits earned after a contractual spending threshold is reached. Note that in the Cloud Billing reports available in the Google Cloud console, the discount credit type is listed as Spending-based discounts.
   For existing perspectives with the previous `Include Discounts` preference enabled, all five new preferences will be automatically enabled. You can adjust these individually according to your reporting needs.
 
 **Complete GCP Preferences Categories**:
