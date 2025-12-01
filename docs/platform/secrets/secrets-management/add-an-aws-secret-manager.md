@@ -68,6 +68,31 @@ The following policy list enables Harness to perform all the secrets operations 
 }
 ```
 
+:::info Additional Permissions for Custom Encryption Keys
+
+If you plan to use customer-managed KMS keys for encrypting secrets, ensure the IAM policy includes the following KMS permissions:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Action": [
+          "kms:GenerateDataKey",
+          "kms:Decrypt",
+          "kms:Encrypt"
+        ],
+        "Resource": "*"
+    }
+}
+```
+
+These permissions allow Harness to encrypt and decrypt secrets using customer-managed keys.
+
+For more information on KMS key permissions, refer to the AWS documentation on [Key policies in AWS KMS](https://docs.aws.amazon.com/secretsmanager/latest/userguide/security-encryption.html#security-encryption-authz).
+
+:::
+
 Refer to the AWS documentation on [Using Identity-based Policies (IAM Policies) for Secret Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_identity-based-policies.html).
 
 To test, use your AWS account and run the command [aws secretsmanager list-secrets](https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/list-secrets.html#examples) on the Harness Delegate host or any other host.
@@ -241,6 +266,71 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
 
   Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.
 
+## Inline Secret in AWS Secrets Manager
+
+Once you've configured your AWS Secrets Manager connector, you can create inline secrets directly in Harness. Inline secrets are secrets that Harness creates and manages in your AWS Secrets Manager.
+
+### Create a Text or file Secret
+
+To create an inline text secret in AWS Secrets Manager:
+1. In your Harness account, select **Account Settings**.
+2. Select **Account Resources** and then select **Secrets**. You can also create secrets at the organization and project scopes based on your requirements.
+3. Select **New Secret** and then select **Text**. The **Add new Encrypted Text** window appears.
+4. Select the AWS Secrets Manager connector you created.
+5. Enter a **Name** for your secret.
+6. You can choose to update the **ID** or keep it the same as your secret's name.
+7. Enter a **Description** and **Tags** for your secret (optional).
+8. Select **Inline Secret Value**.
+9. Enter the **Secret Value** in case of a text secret or upload the file secret.
+10. **Encryption Key** (optional): Select the encryption key to use for encrypting this secret.
+    
+    :::note
+    1. Selecting a **Customer managed Key (CMK)** for encryption is supported in Harness Delegate version 25.11.87300 or later and is behind the feature flag `PL_ENABLE_NON_DEFAULT_ENCRYPTION_KEY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+    2. This option would be unavailable if the AWS Secret Manager connector has the option **Use "put-secret-value" action to update secret value** enabled.
+    :::
+
+    - **Default**: `aws/secretsmanager` - If no encryption key is provided, the AWS-managed default encryption key for Secrets Manager is used.
+    - **Customer-Managed Key**: Add the customer-managed KMS key available in your AWS account for encrypting the secret. The following are considered as valid inputs:
+      - Alias: If alias is provided it should be in the following format `alias/<alias of the key>`, eg, `alias/aws/secretsmanager` uses the AWS-managed default Secret Manager key.
+      - Key ID
+      - ARN
+
+    Ensure your IAM role or user has the necessary KMS permissions as described in the [Permissions section](#permissions-test-aws-permissions).
+
+    :::tip
+    You can encrypt using the default KMS key that AWS Secrets Manager creates or a customer-managed KMS key. Customer-managed keys provide additional control over key rotation, access policies, and auditing. Refer [AWS documentation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html) for more details.
+    :::
+
+11. Select **Save**.
+
+The secret is now created in AWS Secrets Manager and encrypted with your selected encryption key.
+
+### Edit a Secret and change Encryption Key
+
+You can edit existing inline secrets stored in AWS Secrets Manager and change their encryption keys. When you change the encryption key, AWS Secrets Manager automatically re-encrypts the secret with the new key.
+
+To edit a secret and change its encryption key:
+1. Navigate to your secrets list in Harness (Account, Organization, or Project level).
+2. Locate the secret you want to edit.
+3. Select the **More Options** menu (⋮) and select **Edit**.
+4. In the edit dialog, you'll see the **Encryption Key** field displaying the currently selected encryption key.
+    :::note
+    1. Selecting a **Customer managed Key (CMK)** for encryption is supported in Harness Delegate version 25.11.87300 or later and is behind the feature flag `PL_ENABLE_NON_DEFAULT_ENCRYPTION_KEY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+    2. This option would be unavailable if the AWS Secret Manager connector has the option **Use "put-secret-value" action to update secret value** enabled.
+    :::
+5. To change the encryption key, add a different key from the dropdown. The following are considered as valid inputs:
+      - Alias: If alias is provided it should be in the following format `alias/<alias of the key>`, eg, `alias/aws/secretsmanager` uses the AWS-managed default Secret Manager key.
+      - Key ID
+      - ARN
+6. Select **Save**.
+
+:::info
+When you change the encryption key for an existing secret, AWS Secrets Manager re-encrypts the secret with the new key. This operation is performed automatically and does not affect the secret's value or accessibility. For more information, refer to the AWS documentation on [Update the KMS key for a secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_update-encryption-key.html).
+:::
+
+:::warning
+The encryption key selection is only available for inline secrets. For referenced secrets, the encryption key is managed directly in AWS Secrets Manager.
+:::
 
 ## Reference an AWS Secrets Manager Secret
 In order to reference your AWS Secrets Manager secret, customers have a few options to retrieve the secret 
