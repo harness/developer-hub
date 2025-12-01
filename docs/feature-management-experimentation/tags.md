@@ -1,58 +1,186 @@
 ---
 title: Tags
+description: Learn how to create, manage, and filter tags to organize feature flags, segments, metrics, and experiments across teams and releases in Harness FME. 
 sidebar_position: 30
 redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/tags
 ---
 
-Use tags to organize and manage feature flags, segments, metrics, and experiments across the FME user interface. Tags can isolate a particular team or feature release, for example, _reporting team_, _front end_, or _geo search release_.
+Use tags to organize and manage your [feature flags](/docs/feature-management-experimentation/getting-started/overview/create-a-feature-flag), [segments](/docs/feature-management-experimentation/feature-management/targeting/segments), [metrics](/docs/feature-management-experimentation/getting-started/overview/create-a-metric), and [experiments](/docs/feature-management-experimentation/getting-started/overview/create-an-experiment) in Harness FME. Tags can represent a particular team or feature release, e.g., _reporting team_, _front end_, or _geo search release_.
 
-We recommend creating tags that are specific to your workflow. Here are some ideas to get you started: 
+Harness recommends creating tags that are specific to your workflow. For example: 
 
-* **By team.** Identify the responsible team using tags such as _front end_, _infrastructure_, _web_, or _mobile_.
-* **By feature release.** Identify all of the feature flags associated with a particular release using tags such as _reporting_, _new permissioning_, or _contact database migration_.
-* **By feature flag type.** Identify all the feature flags associated with paywalls or those that are permanent versus temporary, using tags such as _paywall_, _permanent_, or _temporary_.
-* **By experiment purpose or scope.** Identify all of the experiments associated with onboarding flows, checkout optimizations, or other test initiatives using tags such as _onboarding_, _checkout_, or _retention-test_.
-
-:::info[note]
-Be aware of the following:
-* **Tag names of tags are case sensitive.**
-* **Tags are shared across projects, so avoid giving them sensitive names you don't want all users in all projects to see.**
-:::
+| Category                         | Description                                                                                     | Example tags                                   |
+|----------------------------------|-------------------------------------------------------------------------------------------------|------------------------------------------------|
+| By team                          | Identify the responsible team.                                                                  | `front end`, `infrastructure`, `web`, `mobile` |
+| By feature release               | Group flags associated with a specific release.                                                 | `reporting`, `new permissioning`, `contact database migration` |
+| By feature flag type             | Categorize flags related to paywalls or whether they're permanent or temporary.                | `paywall`, `permanent`, `temporary`            |
+| By experiment purpose or scope   | Group experiments related to onboarding, checkout flows, or other test initiatives.             | `onboarding`, `checkout`, `retention-test`     |
 
 ## Adding tags
  
-To tag feature flags, segments, metrics, or experiments: 
+You can add tags to feature flags, segments, metrics, and experiments. Tag names are case sensitive, and tags are shared across projects. The process is similar across all FME objects, but the UI controls differ slightly.
 
-1. Select the item you want to tag. 
-2. Click the Gear icon next to the feature flag title and select **Edit details**. The Details view appears.
+Allowed characters for tag names include the following:
+
+* Letters: `a-z`, `A-Z`
+* Numbers: `0-9`
+* Separators: `-`, `_`, `:`
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="fme-object-tags">
+<TabItem value="ff" label="Feature Flags">
+
+1. Navigate to the **Feature Flags** page in Harness FME and select a feature flag. 
+1. Click the **Gear** icon next to the feature flag title and select **Edit details**. 
    
-   ![](./static/edit-details.png)
+   ![](./static/tags-1.png)
 
-3. In the Tags field, either click in the field to display a list of tags or start entering to select an existing tag from the menu list. You can also create a new tag.
+1. In the **Tags** field of the side panel, select an existing tag or enter a tag name. 
 
-   ![](./static/details.png)
+   ![](./static/tags-2.png)
 
-4. Click the **Save** button.
+1. Click **Save**.
+
+</TabItem>
+<TabItem value="experiment" label="Experiments">
+
+1. Navigate to the **Experiments** page in Harness FME and select an experiment. 
+1. Click **Edit experiment** next to **Settings**. 
+   
+   ![](./static/tags-3.png)
+
+1. In the **Tags** field of the side panel, select an existing tag or enter a tag name. 
+
+   ![](./static/tags-4.png)
+
+1. Click **Update**.
+
+</TabItem>
+<TabItem value="segment" label="Segments">
+
+1. Navigate to the **Segments** page in Harness FME and select a segment. 
+1. Click the **Edit** icon next to the **Tags** field under the segment name. 
+1. Select an existing tag or enter a tag name. 
+
+   ![](./static/tags-5.png)
+
+1. Click **Apply**.
+
+</TabItem>
+<TabItem value="metric" label="Metrics">
+
+1. Navigate to the **Metrics** page in Harness FME and select a metric. 
+1. Click the **Edit** icon next to the **Tags** field under the metric name. 
+1. Select an existing tag or enter a tag name. 
+
+   ![](./static/tags-6.png)
+
+1. Click **Apply**.
+
+</TabItem>
+</Tabs>
 
 ## Removing tags
 
-To remove a tag, do the following:
+You can remove tags from any feature flag, segment, metric, or experiment. 
 
-1. Select the item you want to remove the tag from.
-2. Click the Gear icon next to the feature flag title and select **Edit details**. The Details view appears.
-3. In the Tags field, either delete the selected tag or click the X to delete all tags at once.
-4. Click the **Save** button.
+<Tabs queryString="fme-object-tags">
+<TabItem value="ff" label="Feature Flags">
 
-## Filter by
+1. Navigate to the **Feature Flags** page in Harness FME and select a feature flag. 
+1. Click the **Gear** icon next to the feature flag title and select **Edit details**. 
+   
+   ![](./static/tags-1.png)
+
+1. In the **Tags** field of the side panel, delete individual tags or click **X** to remove all. 
+
+   ![](./static/tags-2.png)
+
+1. Click **Save**.
+
+</TabItem>
+<TabItem value="experiment" label="Experiments">
+
+1. Navigate to the **Experiments** page in Harness FME and select an experiment. 
+1. Click **Edit experiment** next to **Settings**. 
+   
+   ![](./static/tags-3.png)
+
+1. In the **Tags** field of the side panel, delete individual tags or click **X** to remove all. 
+
+   ![](./static/tags-4.png)
+
+1. Click **Update**.
+
+</TabItem>
+<TabItem value="segment" label="Segments">
+
+1. Navigate to the **Segments** page in Harness FME and select a segment. 
+1. Click the **Edit** icon next to the **Tags** field under the segment name. 
+1. Delete individual tags. 
+
+   ![](./static/tags-5.png)
+
+1. Click **Apply**.
+
+</TabItem>
+<TabItem value="metric" label="Metrics">
+
+1. Navigate to the **Metrics** page in Harness FME and select a metric. 
+1. Click the **Edit** icon next to the **Tags** field under the metric name. 
+1. Delete individual tags. 
+
+   ![](./static/tags-6.png)
+
+1. Click **Apply**.
+
+</TabItem>
+</Tabs>
+
+## Filtering by tags
  
-Tags are most useful if they allow you to locate those items using a particular tag. When looking at lists in FME, whether of feature flags, segments, or metrics, you can use tags to filter the list to focus on just the items that have those tags.
+Use tags to narrow feature flags, segments, metrics, or experiments to only the objects that match one or more tags.
 
-1. Click **Filter** and hover over **Tag**. A list of tags appears.
-2. Use the list to select as many tags as you want to filter by.
+<Tabs queryString="fme-object-tags">
+<TabItem value="ff" label="Feature Flags">
 
-   ![](./static/filter-by-tag.png)
+1. Navigate to the **Feature Flags** page in Harness FME. 
+1. In the list view, click **Filter** under the **Search** tab and select **Tag**. 
+   
+   ![](./static/tags-7.png)
 
-:::info
-All tags are clickable within FME, making it easy to filter for the tag that you care about most. 
-:::
+1. Select one or more tags to filter the list. 
+
+</TabItem>
+<TabItem value="experiment" label="Experiments">
+
+1. Navigate to the **Experiments** page in Harness FME. 
+1. Click **Search by tags** and select one or more tags to filter the list.  
+   
+   ![](./static/tags-8.png)
+
+</TabItem>
+<TabItem value="segment" label="Segments">
+
+1. Navigate to the **Segments** page in Harness FME. 
+1. In the list view, click **Filter** under the **Search** tab and select **Tags**. 
+
+   ![](./static/tags-9.png)
+
+1. Select one ore more tags to filter the list. 
+
+</TabItem>
+<TabItem value="metric" label="Metrics">
+
+1. Navigate to the **Metrics** page in Harness FME. 
+1. In the list view, click **Filter** under the **Search** tab and select **Tags**. 
+
+   ![](./static/tags-10.png)
+
+1. Select one ore more tags to filter the list. 
+
+</TabItem>
+</Tabs>
