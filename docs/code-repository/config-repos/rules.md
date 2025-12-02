@@ -147,6 +147,47 @@ If you want to prevent unapproved users from creating or deleting tags like `v1.
   * Block tag update
 * Add your CI service account to the bypass list
 
+## Add Push Rules
+:::info
+
+This feature is only available in new UI and is behind feature flag `PL_UNIFIED_OPT_IN_ENABLED`.
+
+:::
+
+Harness Code Repository supports **Push Rules**, allowing you to enforce fine-grained control over Git push operations.
+
+To create a push rule:
+
+1. Navigate to **Code Repository** → your repo.
+2. In the topbar, select **Settings**.
+3. Go to the **Rules** tab.
+4. Click the **+ Create Rule** dropdown and select **+ Create Push Rule**.
+
+### Create a Push Rule
+
+After selecting **+ Create Push Rule**, the rule editor appears:
+
+#### Enable
+
+Enable the toggle to activate the rule.
+
+#### Name and Description
+
+* **Name**: A human-readable name for the rule.
+* **Description** (optional): Add context for this rule’s purpose.
+
+#### Rules: Select all that apply
+
+Choose which operations to restrict for references matching the pattern:
+
+* **Secret scanning enabled** – Restrict users from pushing secrets.
+* **Verify committer identity** – Restrict users from pushing commits that don't match their harness identity.
+* **File size limit** – Restrict users from pushing files larger than the specified size (in Bytes).
+
+#### Bypass List
+
+Allow specific users, user groups, or service accounts to bypass the rule. Only those listed will be able to perform restricted operations.
+
 ### Tips
 
 * Use tag rules in combination with **branch rules** for comprehensive Git policy enforcement.
