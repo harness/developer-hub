@@ -432,7 +432,8 @@ helm install harness-ccm-cluster-orchestrator --namespace kube-system \
 
 ## Troubleshooting
 
-### Missing OIDC Provider
+<details>
+<summary><b>Missing OIDC Provider</b></summary>
 
 If your cluster doesn't have an OIDC provider ARN configured, you can create one with the following command:
 
@@ -440,13 +441,37 @@ If your cluster doesn't have an OIDC provider ARN configured, you can create one
 eksctl utils associate-iam-oidc-provider --region <your_cluster_region> --cluster <your_cluster> --approve
 ```
 
-### Verifying Installation
+</details>
+
+<details>
+<summary><b>Verifying Installation</b></summary>
 
 Check if the Cluster Orchestrator pods are running correctly:
 
 ```bash
 kubectl get pods -n kube-system | grep cluster-orchestrator
 ```
+
+</details>
+
+<details>
+<summary><b>Why are instances with AL2023 AMIs not joining the cluster as nodes?</b></summary>
+
+Default configuration in the harness-default `ec2nodeclass` is set to use the AL2 AMI family. Updating it to AL2023 enables support for AL2023 AMIs, allowing new instances to successfully join the cluster.
+🛠️ Steps to fix:
+
+- Run the following command to edit the node class configuration:
+
+```bash
+kubectl edit ec2nodeclass harness-default
+```
+
+- In the spec section, locate the `amiFamily` field.
+- Replace `AL2` with `AL2023`.
+- Save and exit the editor.
+- After making this change, newly provisioned instances using AL2023 AMIs will properly join the cluster as nodes.
+
+</details>
 
 ## Next Steps
 
