@@ -952,5 +952,11 @@
     "description": "Enable the Banners feature in Account Settings",
     "gaStartDate": "2025-11-27",
     "module": "Platform"
+  },
+   {
+    "flagKey": "CDS_GITOPS_USE_BATCH_TASK_FOR_POD_LOGS",
+    "description": "Feature flag introduces a new faster mechanism for fetching pod logs for Gitops Application Pods in the resource view.",
+    "gaStartDate": "2025-12-02",
+    "module": "GitOps"
   }
 ]
