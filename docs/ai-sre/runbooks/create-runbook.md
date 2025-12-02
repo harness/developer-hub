@@ -203,17 +203,7 @@ For event-driven runbooks, you can configure Key Events directly:
 
 ## Advanced Configuration
 
-### Trigger Configuration with Key Events
-
-Once Key Events are configured in your action parameters (as covered in Step 8):
-
-1. **Set Trigger Condition**: In the Triggers section, set the condition to "Key Event Created"
-2. **Map Event to Input**: The input field that was configured with the Key Event text can now be automatically populated when the trigger fires
-3. **Dynamic Execution**: When the specified Key Event occurs, the runbook will execute with the event data automatically mapped to your configured inputs
-
-<DocImage path={require('./static/key-event-trigger.png')} width="90%" height="90%" title="Configuring Key Event Triggers" />
-
-This approach allows for seamless integration between event detection and automated response, without requiring manual configuration of input variables for each execution.
+For advanced trigger configuration including Key Events, conditional logic, and complex automation scenarios, refer to the comprehensive [Create a Runbook Trigger](./create-trigger.md) guide.
 
 ## Available Actions and Integrations
 
@@ -263,27 +253,20 @@ Execute remediation actions, deploy fixes, and trigger operational workflows.
 
 ## Configure Triggers
 
-Triggers determine when and how your runbooks execute automatically. Proper trigger configuration ensures your runbooks respond to the right conditions at the right time.
+Triggers determine when and how your runbooks execute automatically. For comprehensive trigger configuration including interactive guides and detailed setup instructions, see:
 
-### Setting Up Triggers
-1. **Access Trigger Configuration**: Click the **Triggers** tab in your runbook editor.
-2. **Add Trigger**: Click **+ New Trigger** to begin the trigger setup process.
-3. **Choose Trigger Template**: Select the type from available templates.
-4. **Define Conditions**: Set specific conditions for runbook activation based on the frequency of events or changes to specific resources.
-5. **Test Triggers**: Validate trigger logic before deployment.
+**[Create a Runbook Trigger](./create-trigger.md)** - Complete guide for configuring automated runbook execution based on incidents, alerts, and key events.
+
+### Quick Trigger Setup
+1. **Access Trigger Configuration**: Click the **Triggers** tab in your runbook editor
+2. **Add Trigger**: Click **+ New Trigger** to begin the trigger setup process
+3. **Choose Trigger Template**: Select the template from the incident types
+4. **Define Conditions**: Set specific conditions for runbook activation
+5. **Test and Deploy**: Validate trigger logic before production deployment
 
 :::info
-**Note**: A user can add more than one trigger to a runbook based on the use case.
+**Note**: Multiple triggers can be added to a single runbook based on your use case requirements.
 :::
-
-<DocImage path={require('./static/trigger-configuration.png')} width="95%" height="95%" title="Configuring Runbook Triggers" />
-
-
-### Trigger Configuration Best Practices
-- **Avoid Trigger Overlap**: Ensure multiple runbooks don't trigger simultaneously for the same event.
-- **Use Appropriate Delays**: Add delays between related triggers to prevent conflicts.
-- **Test Thoroughly**: Validate trigger conditions in non-production environments.
-- **Monitor Execution**: Track trigger effectiveness and adjust conditions as needed.
 
 ## Test Your Runbook
 
@@ -377,6 +360,7 @@ Once testing is complete, deploy your runbook to production and establish monito
 ## Next Steps
 
 ### Advanced Configuration
+- **[Create a Runbook Trigger](./create-trigger.md)**: Set up automated runbook execution based on incidents, alerts, and events.
 - **[Configure Authentication](./configure-authentication.md)**: Set up secure access to integrated tools and services.
 - **[Configure Incident Fields](./configure-incident-fields.md)**: Customize incident data collection and processing.
 - **[Return to Overview](./runbooks.md)**: Explore additional runbook capabilities and features.
