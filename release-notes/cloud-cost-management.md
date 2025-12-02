@@ -25,6 +25,33 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+
+## December 2025 - BI Dashboards Release
+
+### AWS Billing and Inventory Dashboard Updates:
+
+- **Optimized Tag Filtering**: We've introduced an improved approach for filtering data using resource tag values, simplifying queries and reducing load times.
+- **Optimized Filter Fields**: Users can filter AWS billing data by one or more key/value pairs using the "Resource Tags: All Values" fields, which have been optimized for better performance
+- **Efficient Cost Grouping**: For use cases requiring cost grouping by tags, queries can now group by one or more key/value combinations efficiently
+  - **Note**: It is recommended to limit dashboards to a maximum of 10 tiles to ensure optimal rendering and usability
+
+When you need to filter AWS billing data by one or multiple key/value pairs without grouping, use the new filter fields under Resource Tags: All Values. 
+
+<DocImage path={require('./static/ccm/caseone.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### AWS Explore Updates:
+- **Key Filters Migration**: Key filters have been relocated from `labels` to `labelsv2` for improved organization and performance. This migration includes naming convention changes for the keys - refer to the example image below for details. For more details regarding Label V2, see [Label V2](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#label-migration-label-vs-label-v2).
+- **Dimension Changes**: Keys/values have been moved from dimensions to filter-only fields
+  - **Note**: As a result of this change, grouping by keys/values in the results will no longer be possible
+
+<DocImage path={require('./static/ccm/labels.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### AWS RDS, AWS EBS, and AWS EC2 Inventory Explore Updates:
+- **Dimension Changes**: Keys/values have been moved from dimensions to filter-only fields
+  - **Note**: As with AWS Explore, grouping by keys/values in the results will no longer be possible
+
+<DocImage path={require('./static/ccm/dashboard-changes.png')} width="90%" height="90%" title="Click to view full size image" />
+
 ## November 2025 - Version 1.71.3
 #### Deployment Date: November 25, 2025 (Prod-1)
 
