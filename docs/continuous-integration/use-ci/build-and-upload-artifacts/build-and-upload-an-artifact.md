@@ -32,6 +32,7 @@ You can also:
 
 - [Build images without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md)
 - [Build multi-architecture images](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-multi-arch.md)
+- [Use Docker Buildx Bake for advanced multi-registry builds](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/docker-buildx-bake.md)
 
 :::
 

@@ -62,12 +62,13 @@ Here is a YAML example of a minimum **Build and Push an image to Docker Registry
 
 When you run a pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md). If the **Build and Push** step succeeds, you can find the uploaded image in your Docker repo.
 
-:::tip
+::::tip
 
 You can also:
 
 - [Build images without pushing](../build-without-push.md)
 - [Build multi-architecture images](../build-multi-arch.md)
+- [Use Docker Buildx Bake for advanced multi-registry builds](./docker-buildx-bake.md)
 
 :::
 
