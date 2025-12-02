@@ -76,11 +76,10 @@ Example:
       envVariables:
         AZURE_ACCESS_TOKEN: <+steps.generate_azure_token.output.outputVariables.AZURE_ACCESS_TOKEN>
       command: |
-        az login --service-principal \
-          -u <client_id> \
-          -t <tenant_id> \
-          --federated-token $AZURE_ACCESS_TOKEN
-        az group list
+        az rest --method get \
+          --url "https://management.azure.com/subscriptions?api-version=2020-01-01" \
+          --headers "Authorization=Bearer $AZURE_ACCESS_TOKEN" \
+          --output json
 ```
 
 ## Notes
