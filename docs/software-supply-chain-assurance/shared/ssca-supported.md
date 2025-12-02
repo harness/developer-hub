@@ -23,7 +23,7 @@ All features of '[SCS on Harness SaaS](#scs-on-harness-saas)' are available in a
 
 
 #### Air-gapped Environment
-All features of '[SCS on Harness SaaS](#scs-on-harness-saas)' are available in an air-gapped or offline environment, with the following exceptions:
+All features of [SCS on Harness SaaS](#scs-on-harness-saas) are available in an air-gapped or offline environment, with the following exceptions:
 
 - Repository Security Posture Management is not supported in air-gapped environments.
 - In the generated SBOMs, the license data for certain dependencies will be marked as "NOASSERTION", leading to a reduced SBOM quality score. However, this does not impact the SBOM generation or any other features of [SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
@@ -44,6 +44,10 @@ All features of '[SCS on Harness SaaS](#scs-on-harness-saas)' are available in a
 | Artifact Signing          | Yes         | Yes            | No           |
 | Artifact Verification     | Yes         | Yes            | Yes          |
 
+
+:::note
+Harness SCS currently only support the Kubernetes, Native Helm, and Amazon ECS deployment types in the Deploy stage.
+:::
 
 
 ### Build Infrastructure
