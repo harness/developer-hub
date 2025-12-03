@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-11-25T18:00
+date: 2025-12-03T18:00
 sidebar_position: 6
 ---
 
@@ -24,6 +24,15 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+'
+## December 2025 - - Version 1.71.3
+#### Deployment Date: December 3, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Enhanced Recommendation Management**: We’ve added support for temporarily ignoring recommendations. Users can now ignore a recommendation for 7, 15, or 30 days, or ignore it permanently. Once the selected duration expires, the recommendation will automatically move back to the Open tab on the Recommendations page. [CCM-27645]
+
+- **Improved UI Navigation**: Enhanced the user experience on Perspectives and Budgets pages with collapsible folder navigation, providing a cleaner interface and more screen real estate for data visualization and analysis. [CCM-26679]
 
 
 ## December 2025 - BI Dashboards Release
