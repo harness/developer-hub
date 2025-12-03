@@ -247,7 +247,7 @@ Harness IDP now supports the **[Access Token](https://support.atlassian.com/bitb
 * **Scorecards**: Runs automated checks and computations against repositories fetched from Bitbucket
 
 :::info Bitbucket Connector Limitation
-The Bitbucket connector with **Access Token** authentication does not work with the **[Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)** step in the [IDP stage](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1). This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens.
+The Bitbucket connector with **Access Token** authentication does not work with the **[Create Repo](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#3-create-repo)** step in the [IDP stage](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#idp-stage-1). This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens.
 
 **Workaround**: Use a separate Bitbucket connector with the **[API Token](https://support.atlassian.com/bitbucket-cloud/docs/api-tokens/)** authentication mode for repository creation through Harness Pipelines.
 :::
@@ -850,22 +850,22 @@ Also, stay tuned for more updates on our upcoming IDP 2.0 release.
 
 ### [New Feature] GitHub App Support
 
-**[IDP-4827] | [Docs](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1)**
+**[IDP-4827] | [Docs](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#idp-stage-1)**
 
 ---
 
-This release adds support for **GitHub App authentication** in IDP Stage steps. Previously, only **Username-Password** authentication was available. Now, you can authenticate the Harness GitHub connector using a **GitHub App**. To use this au thentication method, you need to create and install a GitHub App, fetch the app's installation ID and app ID, and create a private key for the app. Follow this [guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) for detailed steps.
+This release adds support for **GitHub App authentication** in IDP Stage steps. Previously, only **Username-Password** authentication was available. Now, you can authenticate the Harness GitHub connector using a **GitHub App**. To use this authentication method, you need to create and install a GitHub App, fetch the app's installation ID and app ID, and create a private key for the app. Follow this [guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) for detailed steps.
 
 ![](./static/github-app-1.png)
 
 This applies to the following IDP Stage steps:
 
-1. [Git Clone](/docs/internal-developer-portal/flows/harness-pipeline#1-git-clone)
-2. [Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)
-3. [Direct Push](/docs/internal-developer-portal/flows/harness-pipeline#5-direct-push)
-4. [Register Catalog](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog)
+1. [Git Clone](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#1-git-clone)
+2. [Create Repo](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#3-create-repo)
+3. [Direct Push](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#5-direct-push)
+4. [Register Catalog](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#6-register-catalog)
 
-👉 **Read more about this feature [here](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1).**
+👉 **Read more about this feature [here](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#idp-stage-1).**
 
 ### [New Feature] Jenkins Plugin Upgrade
 
@@ -923,7 +923,7 @@ The DX Plugin is built to enhance the overall developer experience by streamlini
 
 ### Feature Improvements
 
-- Harness IDP now supports the use of a **Harness API Key** in the [Register Catalog step](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog) (IDP Stage). With this feature, users can configure the API Key by selecting the "API Token" field in the Harness UI. Enabling this ensures that the API Key is utilized for catalog registration in IDP. By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger. **Learn more about the feature [here](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog)**. (Please note that this feature was a part of the NGUI release.)
+- Harness IDP now supports the use of a **Harness API Key** in the [Register Catalog step](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#6-register-catalog) (IDP Stage). With this feature, users can configure the API Key by selecting the "API Token" field in the Harness UI. Enabling this ensures that the API Key is utilized for catalog registration in IDP. By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger. **Learn more about the feature [here](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline#6-register-catalog)**. (Please note that this feature was a part of the NGUI release.)
 
 ### Bug Fixes
 
@@ -948,13 +948,13 @@ The DX Plugin is built to enhance the overall developer experience by streamlini
 <!-- February 26, 2025-->
 ### [New Feature] Updating Fields using Form Context
 
-**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
+**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
 
 ---
 
 With the introduction of Conditional API Requests in the last release, you can now create an interactive Workflow with dependent input fields. However, one of the challenges was requiring users to fill in too many text boxes, making it difficult for developers and platform engineers to fully utilize Workflows.
 
-#### 🚀 [Introducing Form Context](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context)
+#### 🚀 [Introducing Form Context](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context)
 
 With this new release, we introduce **Form Context**, a global context (active per Workflow session) that allows Workflows to **dynamically update data fields** in the frontend based on user input. Using Dynamic Pickers, you can now configure Workflows to **auto-fill relevant fields** with data from third-party sources based on user selections or inputs.
 
@@ -1016,13 +1016,13 @@ parameters:
 
 ![](./static/internal-developer-portal/reactive-form-context.png)
 
-👉 **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context).**
+👉 **Read more about this feature [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context).**
 
 ---
 
 ### [New Feature] Live User Validation using API Requests
 
-**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
+**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#live-user-validation-using-api-requests) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
 
 ---
 
@@ -1047,7 +1047,7 @@ To achieve this, you can add a button that, when clicked:
 
 This feature ensures users can validate their inputs dynamically while improving workflow accuracy and efficiency.
 
-👉 **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests).**
+👉 **Read more about this feature [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#live-user-validation-using-api-requests).**
 
 ---
 
@@ -1073,8 +1073,8 @@ This feature ensures users can validate their inputs dynamically while improving
 
 We have released new **reference documentation** covering the features introduced in this release. You can find detailed information at the following links:
 
-- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context)
-- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests)
+- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context)
+- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#live-user-validation-using-api-requests)
 
 #### Tutorial
 
@@ -1132,7 +1132,7 @@ parameters:
 
 This feature makes workflows more flexible, interactive, and user-friendly.
 
-👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests).
+👉 Read more about the feature [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#conditional-api-requests).
 
 ### [New Feature] API Key Secret based Pipeline Execution from IDP Workflows
 
@@ -1177,7 +1177,7 @@ customvalidate:
             - metadata.name
 ```
 
-👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support).
+👉 Read more about the feature [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#post-method-support).
 
 #### Upcoming Features
 
@@ -1459,7 +1459,7 @@ customPlugins:
 - Fixed the issue with [pull and run images from private artifactory storage in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#pull-images), for developer portal stages. [IDP-3258]
 - Fixed the issue regarding the use of templates in IDP Stage. [IDP-3121]
 - Fixed the issue with "no git integration added banner" showing even when git integration is in place. [IDP-3157]
-- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](/docs/internal-developer-portal/flows/flows-input#3-harnessprojectpicker) UI Picker [IDP-3331].
+- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](/docs/internal-developer-portal/flows/create-workflow/flows-input#3-harnessprojectpicker) UI Picker [IDP-3331].
 
 ### Version 0.29.0
 
@@ -1611,7 +1611,7 @@ Welcome to first release of April, and in this release we bring you features lik
 
 - We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
 
-- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](/docs/internal-developer-portal/flows/flows-input#1-entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
+- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](/docs/internal-developer-portal/flows/create-workflow/flows-input#1-entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
 
 - We have added a new plugin, to support [GitHub Codespaces](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-codespaces) integration in the software catalog.[IDP-2469]
 
@@ -1945,7 +1945,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 
 #### Early access features
 
-- Added a [new stage](/docs/internal-developer-portal/flows/harness-pipeline), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
+- Added a [new stage](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
 
 ![](./static/internal-developer-portal/idp-stage.png)
 

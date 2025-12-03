@@ -1,8 +1,10 @@
 ---
 title: Configuring Workflow Outputs
 description: Learn more about defining and generating outputs for your Workflows.
-sidebar_position: 6
+sidebar_position: 4
 sidebar_label: Configure Outputs
+redirect_from:
+  - /docs/internal-developer-portal/flows/outputs
 ---
 
 You can configure specific outputs for your workflows. Each step defined in your backend within ```workflow.yaml``` can generate output variables that are used in the frontend after task execution. These outputs can include direct links to newly created resources, such as Git repositories, documentation pages, or CI/CD pipelines, providing developers with immediate access to manage or monitor their onboarded resources.
@@ -38,7 +40,7 @@ Once `showOutputVariables` is set, output variables from the pipeline can be ref
      ```yaml
      <+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>
      ```  
-     ![](./static/output-variables.png)
+     ![](../static/output-variables.png)
   
   This approach ensures that pipeline outputs are correctly fetched and displayed. 
 
@@ -77,7 +79,7 @@ Please note that while **user-defined output variables** are allowed for the abo
 
 For example, if a system-generated output variable is **`jira_id`**, you can define it as a **user-defined output variable** under **Optional Configuration** by assigning it to a new variable, such as `test-var`. This newly defined variable (`test-var`) can then be displayed as output in the **IDP workflows**.
 
-![](./static/output-variable.png)
+![](../static/output-variable.png)
 :::
 
 ### Links to Generated Resources

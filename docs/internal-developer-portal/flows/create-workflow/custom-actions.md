@@ -1,8 +1,10 @@
 ---
 title: Configuring Workflow Actions
 description: Learn how to configure actions for your Workflow's backend. 
-sidebar_position: 5
+sidebar_position: 3
 sidebar_label: Configure Actions
+redirect_from: 
+  - /docs/internal-developer-portal/flows/custom-actions
 ---
 The backend of **Harness IDP workflows** consists of a library of steps and actions that define the workflow logic. 
 
@@ -50,9 +52,9 @@ This allows other steps to reference the generated `filePath`.
 
 You can find a list of all registered Workflow actions under:
 1. Click on the **three dots** in the top right corner of the **Workflows** page. Select **Installed Actions**.
-![](./static/supported-actions-1.png)
+![](../static/supported-actions-1.png)
 2. You'll be able to see all the supported actions here. 
-![](./static/installed-actions.png)
+![](../static/installed-actions.png)
 
 Let's dive deeper into each supported action.  
 
@@ -121,7 +123,7 @@ inputset:
 ```
 To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI. Please make sure to remove `<+` & `>` from the expression copied from UI. 
  
-![](./static/pipeline-variable.png)
+![](../static/pipeline-variable.png)
 
 #### Support for Stage Variables and Pipeline Templates
 
@@ -142,7 +144,7 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 
 > Note: **This is the only way to reference stage variables and pipelines using templates with variables under `inputset`. Without the fully qualified path, the input will not be valid.**
 
-![](./static/stage-variable.png)
+![](../static/stage-variable.png)
 
 | Variables under `inputset`                                                 | What's Supported                                                                |
 |----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
@@ -234,7 +236,7 @@ Here, ```secretId``` refers to the identifier of the secret which stores the **H
 
 Once you create the workflow with this Workflow action, you can see the pipeline URL running in the background and executing the flow. 
 
-![](./static/flow-ca-1.png)
+![](../static/flow-ca-1.png)
 
 You can now optionally remove the pipeline URL from the workflow execution logs, for this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`.
 
@@ -279,7 +281,7 @@ output:
 
 Only **user defined output variables** are allowed, but you can as well use the system generated variables by assigning them as a new variable under shell script step as displayed below. For e.g. we have mentioned the system generated output as `jira_id` and under **Optional Configuration** added a **test-var** which becomes a user defined output variable and could be displayed as output in the IDP workflows.
 
-![](./static/output-variable.png)
+![](../static/output-variable.png)
 
 :::
 
@@ -289,7 +291,7 @@ There are two ways in which you can add the output variable to the template synt
 
 2. You can copy the JEXL expression of the output variable and remove the JEXL constructs, `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`, here the part `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` comes from `<+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>` copied from execution logs. 
 
-![](./static/output-variables.png)
+![](../static/output-variables.png)
 
 #### Example
 
@@ -326,15 +328,15 @@ output:
 
 This Workflow action could be used to trigger a pipeline execution based on the **input-set identifier** and a webhook name. Usually a single deployment pipeline has different input-set as per the environment it's going to be deployed and developers can just specify the input-set ID aligning with the environment name to trigger the deployment pipeline. 
 
-![](static/input-set-list.png)
+![](../static/input-set-list.png)
 
 Developers need to mention the input set identifier instead of the name in the workflows input, usually identifier are names devoid of any special characters and spaces, e.g., `input set-test` name would have an identifier as `inputsettest`. It is suggested to provide all the available input-set as `enums` in the template to avoid any ambiguity by developers.  
 
-![](static/inputsetidentifier.png) 
+![](../static/inputsetidentifier.png) 
 
 Here's an example workflow based on this [source](https://github.com/harness-community/idp-samples/blob/main/workflows-ca-inputset.yaml). 
 
-![](static/input-form-ca.png)
+![](../static/input-form-ca.png)
 
 #### Inputs
 Here's a list on **inputs** used for this action:

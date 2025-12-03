@@ -1,11 +1,12 @@
 ---
 title: Setting Up the Backend with IDP Pipeline
 description: Get started with setting up your Workflow's backend with Harness Pipeline.
-sidebar_position: 6
+sidebar_position: 2
 sidebar_label: Setup Harness IDP Pipeline
 redirect_from: 
 - /docs/internal-developer-portal/flows/idp-stage
 - /docs/internal-developer-portal/flows/flows-output
+- /docs/internal-developer-portal/flows/harness-pipeline
 ---
 
 import Tabs from '@theme/Tabs';
@@ -41,20 +42,20 @@ Currently, Harness-specific workflow actions support:
 To create a Harness Pipeline using the IDP Stage, follow these steps:
 1. In your Harness IDP, go to **Admin -> Select Project**.
 2. Now start with **Create a Pipeline**.
-![](./static/navigate-pipeline.gif)
+![](../static/navigate-pipeline.gif)
 
 3. Add a **Name**, select the type as **Inline** and **Continue**.
-![](./static/name-pipeline.png)
+![](../static/name-pipeline.png)
 
 4. Now **Select Stage Type** as **Developer Portal** and add a [name for your stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#stage-names) to **Set Up Stage**.
-![](./static/dev-portal-stage-selection.png)
-![](./static/set-up-stage.png)
+![](../static/dev-portal-stage-selection.png)
+![](../static/set-up-stage.png)
 
 ### Infrastructure
 
 Under **Infrastructure** tab, Harness recommends [Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud), but you can also use a [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or [self-managed AWS/GCP/Azure VM](/docs/category/set-up-vm-build-infrastructures) build infrastructure.
 
-![](./static/infrastructure.png)
+![](../static/infrastructure.png)
 
 ### Pipeline Variables 
 Before adding the execution steps, we need to create some pipeline variables with runtime inputs, which will be used as expression inputs in various steps during execution.
@@ -63,9 +64,9 @@ To add pipeline variables:
 
 1. Navigate to the right-hand side of your page and click on the **Variables** icon.  
 2. Under **Custom Variables**, select **+Add Variable**.  
-![](./static/navigate-variable.png)
+![](../static/navigate-variable.png)
 3. Assign a name to the variable and set the input type to **Runtime**.
-![](./static/add-variable.png)
+![](../static/add-variable.png)
 
 ### Passing Inputs
 The ```spec.parameters``` field in ```workflow.yaml``` contains the inputs required for the configuration. The keys under ```properties``` represent unique IDs for various input fields. These keys correspond to the pipeline variables that must be set as runtime inputs when configuring the pipeline. These inputs are designed to prompt the developer to provide necessary details when creating a new application.
@@ -134,7 +135,7 @@ There are two ways to add output variables in the workflow syntax:
      ```yaml
      <+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>
      ```  
-     ![](./static/output-variables.png)
+     ![](../static/output-variables.png)
   
   This approach ensures that pipeline outputs are correctly fetched and displayed. 
 
@@ -170,14 +171,14 @@ Please note that while **user-defined output variables** are allowed for the abo
 
 For example, if a system-generated output variable is **`jira_id`**, you can define it as a **user-defined output variable** under **Optional Configuration** by assigning it to a new variable, such as `test-var`. This newly defined variable (`test-var`) can then be displayed as output in the **IDP workflows**.
 
-![](./static/output-variable.png)
+![](../static/output-variable.png)
 :::
 
 
 ### Execution Steps
 You can add various **execution steps** (pre-included with the **IDP stage**) under the **Execution** tab. Refer to the detailed guide below for step-by-step instructions on adding and implementing **IDP stage execution steps**. 
 
-![](./static/execution-pipeline.png)
+![](../static/execution-pipeline.png)
 
 ## IDP Stage 
 The self-service flow in IDP is powered by the Harness Pipelines. A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
@@ -192,7 +193,7 @@ This functionality is limited to the modules and settings that you have access t
 
 - The "Clone Codebase (Git Clone)" action is not supported at the stage level for the IDP stage.
 
-<DocImage path={require('./static/git-clone-not.png')} width="40%" height="40%" title="Click to view full size image" />
+<DocImage path={require('../static/git-clone-not.png')} width="40%" height="40%" title="Click to view full size image" />
 
 - [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) (Parallelism, Matrix, Repeat) are not supported for the IDP stage.
 
@@ -293,7 +294,7 @@ In the example provided for this step we have used pipeline variables as input f
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-![](./static/cookicutter.png)
+![](../static/cookicutter.png)
 
 #### Repository Type
 
@@ -358,7 +359,7 @@ In case of **Expression** provide the pipeline variable in JEXL format which tak
 
 Provide the input required the template in terms of key value pairs in this step. 
 
-![](./static/key-value-cookiecutter.png)
+![](../static/key-value-cookiecutter.png)
 
 
 </TabItem>
@@ -402,7 +403,7 @@ The git connector used under **[Connectors Page](https://developer.harness.io/do
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-![](./static/create-repo.png)
+![](../static/create-repo.png)
 
 #### Repository Type
 
@@ -421,7 +422,7 @@ Select the repository type you want to create, which could be public or private.
 **Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
 
-![](./static/github-app-1.png)
+![](../static/github-app-1.png)
 
 ::: 
 
@@ -440,7 +441,7 @@ The following topics provide more information about creating code repo connector
 
 For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well, in-case it's not a personal account
 
-![](./static/group-path-create-repo.png)
+![](../static/group-path-create-repo.png)
 
 :::
 
@@ -473,7 +474,7 @@ Following is the output variable of this step.
 1. **repositoryUrl** : The URL of the repository created eg; `https://github.com/org-name/repo-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<+pipeline.stages.idp.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>`
 
 These output variable could be viewed under the output tab in 
-![](./static/output-createrepo.png)
+![](../static/output-createrepo.png)
 
 
 ### 4. Create Catalog
@@ -495,7 +496,7 @@ The git connector used under **[Connectors Page](https://developer.harness.io/do
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-![](./static/create-catalog.png)
+![](../static/create-catalog.png)
 
 #### File Name, Path
 Name the `catalog-info.yaml` followed by providing a path if you don't want to register in the root of the repo created in the `Create Repo` step. 
@@ -554,7 +555,7 @@ Following is the output variable of this step.
 1. **registeredCatalogUrl** : The URL of the software component registered in the catalog of IDP eg; `https://app.harness.io/ng/account/**************/module/idp/catalog/default/component/component-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>>`
 
 These output variable could be viewed under the output tab in 
-![](./static/output-createcatalog.png)
+![](../static/output-createcatalog.png)
 
 ### 5. Direct Push
 
@@ -569,7 +570,7 @@ In the example provided for this step, we have used pipeline variables as input 
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-![](./static/direct-push.png)
+![](../static/direct-push.png)
 
 #### Connector
 
@@ -584,7 +585,7 @@ In the example provided for this step, we have used pipeline variables as input 
 **Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
 
-![](./static/github-app-1.png)
+![](../static/github-app-1.png)
 
 ::: 
 
@@ -646,7 +647,7 @@ In the example provided for this step we have used pipeline variables as input f
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-![](./static/register-catalog.png)
+![](../static/register-catalog.png)
 
 #### Connector
 
@@ -660,7 +661,7 @@ In the example provided for this step we have used pipeline variables as input f
 **Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
 
-![](./static/github-app-1.png)
+![](../static/github-app-1.png)
 ::: 
 
 Select a connector for the git provider where your `catalog-info.yaml` is stored. 
@@ -709,7 +710,7 @@ With this feature, users can configure the **API Key** by selecting the **"API T
 
 By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger.
 
-![](./static/api-key-ngui.png)
+![](../static/api-key-ngui.png)
 
 This step is optional. You can proceed with executing your pipeline without an API key. In that case, the user context will be used for catalog registration.
 
@@ -720,7 +721,7 @@ Following is the output variable of this step.
 1. **catalogInfoUrl** : The URL of the `catalog-info.yaml` stored in your git provider where you created the repo in the **CreateRepo step** eg; `https://github.com/org-name/repo-name/blob/code/catalog-info.yaml` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>>`
 
 These output variable could be viewed under the output tab in 
-![](./static/register-catalog.png)
+![](../static/register-catalog.png)
 
 
 ### 7. Slack Notify
@@ -757,7 +758,7 @@ The `token` is the [Bot-tokens](https://api.slack.com/authentication/token-types
 
 1. Add the **Name** of the Step
 
-![](./static/slack-notify-step.png)
+![](../static/slack-notify-step.png)
 
 The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL` format has been used to construct the `Message` for Slack notification. 
 
@@ -777,7 +778,7 @@ The Slack Secret Key are the [Bot-tokens](https://api.slack.com/authentication/t
 3. users:read.email
 4. users:read
 
-![](./static/slack-auth.png)
+![](../static/slack-auth.png)
 
 Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#scopes). 
 
@@ -845,11 +846,11 @@ The `xApiKey` is the [Harness PAT](https://developer.harness.io/docs/platform/au
 
 - You can select the step **Create Resource** from the **Step Library**. 
 
-![](./static/create-resourcesl.png)
+![](../static/create-resourcesl.png)
 
 - You can add a **Name** to the step followed by adding the **Resource Definition** and create a Harness Entity using Resources supported by our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs). Likewise, you'll find an already existing sample **Resource Definition** by default, that can create a Harness Pipeline with a **Run Step**.  
 
-![](./static/create-resource-step.png)
+![](../static/create-resource-step.png)
 
 </TabItem>
 </Tabs>
@@ -860,7 +861,7 @@ This step is used to update the catalog metadata for your entities. For example,
 
 - You can select the step **Update Catalog Property** from the **Step Library**. 
 
-![](./static/update-catalog-property.png)
+![](../static/update-catalog-property.png)
 
 - Now under the **Select the Catalog entity and the properties to be updated** you have two options
   - Update single Catalog Entity
@@ -873,7 +874,7 @@ This step is used to update the catalog metadata for your entities. For example,
 
 - To **update a single Catalog Entity**, select the Catalog Entity from the dropdown. You need to type at least the first three characters in the field for the entity options to appear.
 
-![](./static/ucp-demo.gif)
+![](../static/ucp-demo.gif)
 
 - Now add the **property**, you want to update/add and the **value** against it. e.g., `<+metadata.testCoverage>`, `<+metadata.additionalInfo.onShorelead>`. 
 
@@ -1071,7 +1072,7 @@ pipeline:
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
-![](./static/idp-stage.png)
+![](../static/idp-stage.png)
 
 
 </TabItem>

@@ -7,15 +7,15 @@ sidebar_label: Use Dynamic Pickers for a Pull Request Creator Workflow
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-[Dynamic Pickers](/docs/internal-developer-portal/flows/dynamic-picker.md) in **Harness IDP Self-Service Workflows** enable users to interact with input form fields and receive real-time options, ensuring validation for workflow creators. These dynamic pickers allow users to select input values dynamically, making workflows more interactive.
+[Dynamic Pickers](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker) in **Harness IDP Self-Service Workflows** enable users to interact with input form fields and receive real-time options, ensuring validation for workflow creators. These dynamic pickers allow users to select input values dynamically, making workflows more interactive.
 
 The primary goal of this tutorial is to help you understand the following concepts and features in detail: 
 
-✔ [**Conditional API requests**](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests)
+✔ [**Conditional API requests**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#conditional-api-requests)
 
-✔ [**Updating Fields using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context)
+✔ [**Updating Fields using Form Context**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context)
 
-✔ [**Live User Validation using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests)
+✔ [**Live User Validation using API Requests**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#live-user-validation-using-api-requests)
 
 These features allow users to dynamically filter results based on previous inputs and make customizable API requests with real-time validation. 
 
@@ -46,7 +46,7 @@ The workflow is built in the following steps:
 4. [**Add Live User Validation**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator#adding-live-user-validation): Allow users to enter additional details and validate auto-updated information before creating a pull request.
 
 ## Defining a Backend Proxy
-To enable the workflow frontend to make **authenticated API requests** to **GitHub**, a Backend Proxy is required. **Read more about configuring a Backend Proxy [here](/docs/internal-developer-portal/flows/dynamic-picker.md#creating-a-dynamic-workflow-picker).**
+To enable the workflow frontend to make **authenticated API requests** to **GitHub**, a Backend Proxy is required. **Read more about configuring a Backend Proxy [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#creating-a-dynamic-workflow-picker).**
 
 ### Adding the Backend Proxy Configuration
 1. Navigate to Harness IDP and click **"Configure"** from the main menu.
@@ -97,7 +97,7 @@ Once verified, the backend proxy is ready to authenticate API requests within th
 ## Creating a Repository Picker
 Now, let's define the [**Workflow Frontend**](/docs/internal-developer-portal/flows/worflowyaml.md#workflow-frontend) in the Workflow YAML configuration. A **Repository Picker** dynamically fetches GitHub repositories based on the provided GitHub username. This feature is based on conditional API requests in self service workflows. 
 
-**Read more about conditional API requests in Dynamic Pickers [here](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests).** 
+**Read more about conditional API requests in Dynamic Pickers [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#conditional-api-requests).** 
 
 ### Required Fields
 - **GitHub Username**: A text field that accepts a **GitHub username** as input.
@@ -159,7 +159,7 @@ This setup ensures that the repository list updates dynamically based on the ent
 ## Auto-updating Repository Details
 Once a repository is selected, the workflow should **automatically fetch and display repository details**. 
 
-**Read more about auto-updating input fields in Workflows [here](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context).**
+**Read more about auto-updating input fields in Workflows [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context).**
 
 ### Required Fields
 - **Repository Name**: Name of the repsoitory, Auto-fetched, read-only.
@@ -263,7 +263,7 @@ originBranchName:
 ## Adding Live User Validation
 Before creating a pull request, users should validate auto-updated details and provide additional inputs. 
 
-**Read more about adding live user validation in Workflows [here](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests).** 
+**Read more about adding live user validation in Workflows [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#live-user-validation-using-api-requests).** 
 
 ### Required Fields
 - **PR Title**: User input for the Pull Request title.
@@ -335,7 +335,7 @@ setContextData:
 - ``html_url``: The API response field containing the PR URL.
 
 #### Defining the API Request
-The **GitHub API request** is structured as a **POST request**, containing the necessary fields for PR creation. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support)
+The **GitHub API request** is structured as a **POST request**, containing the necessary fields for PR creation. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#post-method-support)
 ```YAML {2,5}
 request: 
   method: POST
@@ -364,7 +364,7 @@ formContext:
     getContextData: {{formContext}} 
 ```
 
-Read more about the syntax [here](/docs/internal-developer-portal/flows/dynamic-picker.md#4-show-form-context-live-in-the-workflow-frontend). 
+Read more about the syntax [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#4-show-form-context-live-in-the-workflow-frontend). 
 
 ## Workflow YAML
 #### Additional Notes

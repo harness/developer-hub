@@ -79,7 +79,7 @@ Harness IDP requires some secrets to be set for plugins and external integration
 
 ## 5. Harness IDP Workflow Backends
 
-**Harness Pipelines**: Self-service workflows in Harness IDP are powered by **Harness Pipelines**. Each Workflow’s backend is configured using Actions and Harness Pipelines. Go to [Setting up the Backend with Harness IDP Pipeline](/docs/internal-developer-portal/flows/harness-pipeline) for more information.
+**Harness Pipelines**: Self-service workflows in Harness IDP are powered by **Harness Pipelines**. Each Workflow's backend is configured using Actions and Harness Pipelines. Go to [Setting up the Backend with Harness IDP Pipeline](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline) for more information.
 
 You can also use other tools (such as GitHub Actions or Jenkins) as the backend for your Workflows by triggering them via Harness Pipelines. However, these tools are not natively supported by Harness IDP, so the experience is not as seamless as with Harness Pipelines. We recommend using Harness Pipelines as the backend for your Workflows.
 
@@ -87,7 +87,7 @@ You can also use other tools (such as GitHub Actions or Jenkins) as the backend 
 
 ## 6. Harness IDP Workflow Actions
 
-Harness IDP Workflows use custom actions to trigger and orchestrate Harness Pipelines. Go to [Supported Workflow Actions](/docs/internal-developer-portal/flows/custom-actions#supported-actions) for more information.
+Harness IDP Workflows use custom actions to trigger and orchestrate Harness Pipelines. Go to [Supported Workflow Actions](/docs/internal-developer-portal/flows/create-workflow/custom-actions#supported-actions) for more information.
 
 ---
 

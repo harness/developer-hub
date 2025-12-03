@@ -1,7 +1,7 @@
 ---
 title: Managing Workflows in Harness IDP
 description: Learn more about managing Workflows directly in Harness IDP. 
-sidebar_position: 3
+sidebar_position: 4
 sidebar_label: Manage Workflows
 redirect_from:
   - /docs/internal-developer-portal/flows/manage-workflows.md

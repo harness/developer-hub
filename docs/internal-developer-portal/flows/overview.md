@@ -43,9 +43,9 @@ Learn more about the [**Workflow YAML syntax**](/docs/internal-developer-portal/
 
 You can configure your workflow's **frontend** and **backend** by defining specific **inputs, actions**, and **orchestration pipelines**. Here’s how you can learn more about configuring your workflows:  
 
-- Learn how to [**configure and customize inputs**](docs/internal-developer-portal/flows/flows-input.md) for your workflow’s frontend.  
-- Learn how to [**define actions**](docs/internal-developer-portal/flows/custom-actions.md) for your workflow’s backend.  
-- Get started with [**setting up your workflow’s backend using Harness Pipelines**](docs/internal-developer-portal/flows/harness-pipeline.md).  
+- Learn how to [**configure and customize inputs**](/docs/internal-developer-portal/flows/create-workflow/flows-input) for your workflow's frontend.  
+- Learn how to [**define actions**](/docs/internal-developer-portal/flows/create-workflow/custom-actions) for your workflow's backend.  
+- Get started with [**setting up your workflow's backend using Harness Pipelines**](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline) for your workflow's backend.  
 
 
 ### [Registering Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o.md)

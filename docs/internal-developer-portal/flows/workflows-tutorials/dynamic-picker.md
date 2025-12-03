@@ -1,7 +1,7 @@
 ---
 title: Dynamic Workflow Picker based on API Response
 description: Learn to create a dynamic Workflow picker in IDP with API-based dropdown fields.
-sidebar_position: 20
+sidebar_position: 1
 sidebar_label: Understand Dynamic Workflow Picker
 ---
 
@@ -22,7 +22,7 @@ properties:
 
 will generate the following
 
-![](./static/repository-type-picker-static.png)
+![](../static/repository-type-picker-static.png)
 
 However, often times a static list does not provide much value to the user. Here are some of the use-cases -
 
@@ -36,7 +36,7 @@ As a creator of the workflow, you want to provide real-time options for these in
 
 This is where our Dynamic Workflow Picker comes into play. Let's see how it works.
 
-![](./static/dynamic-picker-architecture-diagram.png)
+![](../static/dynamic-picker-architecture-diagram.png)
 
 The Workflow UI makes a request to our [Backend Proxy](https://developer.harness.io/docs/internal-developer-portal/plugins/delegate-proxy/) which you can configure as a way to securely make requests to third party APIs and get a response. The UI Picker allows you to customize the response a bit and present it as a list in the dropdown.
 
@@ -53,7 +53,7 @@ The first step is to declare a new Backend Proxy so that the Workflow forms UI c
 
 Go to IDP Admin -> Plugins. Find the plugin called "Configure Backend Proxies".
 
-![](./static/config-backend-proxies-plugin.png)
+![](../static/config-backend-proxies-plugin.png)
 
 Inside the plugin, you get three options (like any other [IDP plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)).
 
@@ -82,7 +82,7 @@ The `pathRewrite` is field used by the system to ensure the API requests are cor
 
 In the `headers` you can add an Authorization header. Ensure you use a unique token name here as variables are `GITHUB_TOKEN` or `BITBUCKET_TOKEN` are system defined. The token name does not matter, as long as a secret is set up for the corresponding variable.
 
-![](./static/example-proxy-backend-config.png)
+![](../static/example-proxy-backend-config.png)
 
 Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy using Delegate. This is useful when we need to access private endpoints not publicly accessible.
 
@@ -90,7 +90,7 @@ Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy using Del
 Endpoints targeting the `harness.io` domain should **not** be configured behind a **Delegate HTTP Proxy**, as you are already in the Harness infrastructure. Using a Delegate HTTP Proxy in this case is unnecessary, as direct access is inherently available.
 :::
 
-![](./static/delegate-proxy.png)
+![](../static/delegate-proxy.png)
 
 Hit "Save Configuration" and now our backend proxy is ready to use!
 
@@ -121,7 +121,7 @@ parameters:
         valueSelector: full_name
 ```
 
-![](./static/picker-example.png)
+![](../static/picker-example.png)
 
 Let us understand these properties in detail -
 
@@ -132,7 +132,7 @@ Let us understand these properties in detail -
 
 And that's it! We now have a Workflow dropdown where results are coming from an external API response.
 
-![](./static/dynamic-picker-example.png)
+![](../static/dynamic-picker-example.png)
 
 ## Conditional API Requests
 
@@ -270,7 +270,7 @@ Below is the YAML configuration for this setup:
 **Example API Path**
 ``path: proxy/github-api/users/{{ parameters.gitusername }}/repos``
 
-![](./static/dynamic-picker-2.png)
+![](../static/dynamic-picker-2.png)
 
 
 ## Updating Fields using Form Context
@@ -281,13 +281,13 @@ Please note that this feature is not supported in your [Workflow Playground Edit
 
 With conditional API requests in **Dynamic Pickers**, you can create a **Workflow** with dependent input fields. This also allows you to configure a **Workflow** with a **Dynamic Picker** to automatically update other data fields in your **Workflow's frontend** based on previous input. All relevant information in your **Workflow's frontend** can be auto-filled from third-party sources based on your selection/input.
 
-This functionality is powered by a global [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker.md#understanding-form-context). This global Form Context is **active per Workflow session**.
+This functionality is powered by a global [**Form Context**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#understanding-form-context). This global Form Context is **active per Workflow session**.
 When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields—typically read-only—can subscribe to this context and automatically update based on the latest information.
 
 This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here: [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)
 
 #### Example
-If you are using a [**Repository Picker Workflow**](/docs/internal-developer-portal/flows/dynamic-picker.md#example-yaml-1) and enter your **GitHub Username**, the form dynamically fetches and displays all repositories linked to that username. Once entered, other dependent fields in the form can be auto-updated based on this selection.
+If you are using a [**Repository Picker Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#example-yaml-1) and enter your **GitHub Username**, the form dynamically fetches and displays all repositories linked to that username. Once entered, other dependent fields in the form can be auto-updated based on this selection.
 
 ### Understanding Form Context
 
@@ -434,7 +434,7 @@ parameters:
 </TabItem>
 <TabItem value="Workflow Frontend" label="Workflow Frontend">
 
-![](./static/final-yaml-1.png)
+![](../static/final-yaml-1.png)
 
 </TabItem>
 </Tabs>
@@ -450,7 +450,7 @@ You can configure Workflows to enable **user validation** for input form fields.
 
 This functionality allows users to:
 - Manually enter input field details for **live validation** (instead of selecting from a dynamic picker drop-down).
-- Provide **feedback and validate auto-updated** input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context).
+- Provide **feedback and validate auto-updated** input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context).
 
 This process triggers an API call in the background with the user-provided details, parses the response, and **updates the Form Context** with the validated information. It ensures that input form fields are dynamically updated while enabling real-time validation of user inputs.
 
@@ -493,8 +493,8 @@ customValidationName:
    You can configure various options under this field:
    - **`button`**: Defines and adds a button.
    - **`path`**: Specifies the API endpoint path that will be called when the button is clicked.
-   - **`request`**: Defines the API request details. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support)
-   - **`setContextData`**: Stores context data in **Form Context** while making the API call. [Learn more here](/docs/internal-developer-portal/flows/dynamic-picker#2-set-context-data-in-your-workflow-yaml)
+   - **`request`**: Defines the API request details. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#post-method-support)
+   - **`setContextData`**: Stores context data in **Form Context** while making the API call. [Learn more here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#2-set-context-data-in-your-workflow-yaml)
 
 ### Example YAML
 <Tabs>
@@ -564,7 +564,7 @@ parameters:
 </TabItem>
 <TabItem value="Workflow Frontend" label="Workflow Frontend">
 
-![](./static/pr-creator.png)
+![](../static/pr-creator.png)
 
 </TabItem>
 </Tabs>

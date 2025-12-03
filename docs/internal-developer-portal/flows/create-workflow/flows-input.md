@@ -1,10 +1,11 @@
 ---
 title: Configuring Workflow Inputs
 description: Learn how to configure and customize inputs for your Workflow's frontend.  
-sidebar_position: 4
+sidebar_position: 1
 sidebar_label: Configure Inputs
 redirect_from:
   - /docs/internal-developer-portal/flows/custom-extensions
+  - /docs/internal-developer-portal/flows/flows-input
 ---
 
 The frontend of **Harness IDP workflows** can be customized to accept different **input fields** based on specific requirements. It acts as the entry point where users provide details to run workflows using predefined input parameters.
@@ -72,12 +73,12 @@ Here are the different ways to design form inputs in IDP workflows:
 ### Dynamic Inputs
 **Dynamic inputs** are fields that automatically retrieve data from external sources or runtime context, eliminating the need for manual entry.
 
-1. **[Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)**
+1. **[Standard Workflow UI Picker](/docs/internal-developer-portal/flows/create-workflow/flows-input#workflow-ui-pickers)**
     - `Entity Picker` – Select an entity from the catalog
     - `Owner Picker` – Select a user or group
     - `Repository Picker` – Choose a repository from a version control provider
 
-2. **[API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)**
+2. **[API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker)**
 
     - `Dynamic API Picker` – Fetch options dynamically via an API request
     - `Autocomplete Fields` – Suggestions based on previous inputs or external data fetched using Dynamic API Picker. 
@@ -129,7 +130,7 @@ parameters:
 
 </details>
 
-![](./static/workflows-pattern.png)
+![](../static/workflows-pattern.png)
 
 #### Multi-line text input
 
@@ -174,7 +175,7 @@ parameters:
 
 </details>
 
-![](./static/workflows-multiline.png)
+![](../static/workflows-multiline.png)
 
 
 ### Array options
@@ -218,7 +219,7 @@ parameters:
 
 </details>
 
-![Arrays With Distinct Values](./static/arrays-distinct-values.png)
+![Arrays With Distinct Values](../static/arrays-distinct-values.png)
 
 #### Array with duplicate values
 
@@ -256,7 +257,7 @@ parameters:
 
 </details>
 
-![Arrays With Duplicate Values](./static/arrays-duplicate-values.png)
+![Arrays With Duplicate Values](../static/arrays-duplicate-values.png)
 
 #### A multiple choices list with checkboxes
 
@@ -291,7 +292,7 @@ parameters:
 
 </details>
 
-![](./static/multi-option-arrays.png)
+![](../static/multi-option-arrays.png)
 
 #### Array with Custom Objects
 
@@ -342,7 +343,7 @@ parameters:
 
 </details>
 
-![](./static/template-arrays-multipleobjects.png)
+![](../static/template-arrays-multipleobjects.png)
 
 
 ### Comparison Table of Array Input Types  
@@ -430,7 +431,7 @@ parameters:
         type: boolean
 ```
 
-![](./static/template-checkbox-boolean.png)
+![](../static/template-checkbox-boolean.png)
 
 #### Boolean Yes or No options (Radio Button)
 
@@ -446,7 +447,7 @@ parameters:
         ui:widget: radio
 ```
 
-![](./static/template-boolean-radio.png)
+![](../static/template-boolean-radio.png)
 
 #### Boolean multiple options
 
@@ -474,7 +475,7 @@ parameters:
 
 </details>
 
-![](./static/template-boolean-multiselect.png)
+![](../static/template-boolean-multiselect.png)
 
 #### When to Use Each Boolean Input Type
 
@@ -725,7 +726,7 @@ properties:
 
 `OwnerPicker` is used for developers to pick a User Group from the list of Groups that exist in the account.
 
-![](./static/owner-custompicker.png)
+![](../static/owner-custompicker.png)
 
 #### `allowArbitraryValues`
 
@@ -1229,7 +1230,7 @@ parameters:
 
 </details>
 
-![](./static/template-conditional.gif)
+![](../static/template-conditional.gif)
 
 
 
@@ -1257,7 +1258,7 @@ dependencies:
 
 </details>
 
-![](./static/template-one-of.png)
+![](../static/template-one-of.png)
 
 2. **`All Of`**: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
 
@@ -1284,7 +1285,7 @@ allOf:
 
 </details>
 
-![](./static/template-conditional-all-of.png)
+![](../static/template-conditional-all-of.png)
 
 3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once.
 
@@ -1346,7 +1347,7 @@ anyOf:
 
 </details>
 
-![](./static/template-conditional-anyof.png)
+![](../static/template-conditional-anyof.png)
 
 ### Advanced use-cases
 
@@ -1552,7 +1553,7 @@ properties:
 ```
 [Example workflow.yaml](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/uploaded-files.yaml)
 
-![](./static/file-upload-hide-content.png)
+![](../static/file-upload-hide-content.png)
 
 ### How to use the contents of the file uploaded
 
@@ -1567,7 +1568,7 @@ Files uploaded to workflows are automatically encoded in **base64** format. To u
 
 Here's an [example](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/parse-base64-file.yaml) harness pipeline that uses [PowerShell](https://github.com/harness-community/idp-samples/blob/32845bbeca9d5219c5a71622043a66652904ff7d/idp-pipelines/parse-base64-file.yaml#L27-L84) in run step to decode the content of the file uploaded to Workflows. 
 
-![](./static/demo-pwsh-process-json.png)
+![](../static/demo-pwsh-process-json.png)
 
 ### Using Secrets
 

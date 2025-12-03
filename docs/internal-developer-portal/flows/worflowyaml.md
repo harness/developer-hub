@@ -2,7 +2,7 @@
 title: Understanding Workflow YAML
 description: Get started with creating your Workflows using the Workflow YAML configuration.
 sidebar_position: 2
-sidebar_label: Understand YAML Syntax
+sidebar_label: Understand Workflow YAML
 ---
 
 import Tabs from '@theme/Tabs';
@@ -25,7 +25,7 @@ The ```workflow.yaml``` has three main components:
 
 These components work together to facilitate workflow execution. Let’s dive deeper into each.
 
-### [Workflow Frontend](/docs/internal-developer-portal/flows/flows-input.md)
+### [Workflow Frontend](/docs/internal-developer-portal/flows/create-workflow/flows-input)
 The frontend of Harness IDP workflows is customizable to accept different types of input fields based on custom requirements. This frontend serves as the entry point, where users fill in the necessary details to execute the workflow using the input parameters described.
 
 #### How to define the Workflow Frontend?
@@ -90,7 +90,7 @@ Input fields can be made dynamic using ``anyOf`` or ``allOf``, making certain fi
 - **Required Fields:**
 Workflows allow developers to enforce mandatory fields to ensure critical data is collected. For example, fields like age or owner can be marked as required to prevent missing essential information during onboarding.
 
-Learn more about configuring inputs and frontend for your workflow [here](/docs/internal-developer-portal/flows/flows-input.md).
+Learn more about configuring inputs and frontend for your workflow [here](/docs/internal-developer-portal/flows/create-workflow/flows-input).
 
 ### Workflow Backend
 The backend of Harness IDP workflows includes a library of steps and actions to define the workflow logic. These steps are core execution units used to trigger actions and orchestration pipelines. Input details from the frontend are passed to the backend for task execution.
@@ -121,7 +121,7 @@ steps:
       apikey: ${{ parameters.token }}
 ```
 
-#### [Supported Actions](/docs/internal-developer-portal/flows/custom-actions.md)
+#### [Supported Actions](/docs/internal-developer-portal/flows/create-workflow/custom-actions)
 
 Workflow Actions are integration points with third-party tools, designed to take inputs from the workflow's frontend and execute specific tasks based on user input. Workflows include several built-in actions for fetching content, registering in the catalog, and performing key operations such as creating and publishing a Git repository.
 
@@ -131,12 +131,12 @@ Here are some examples used in a workflow:
 - **Creating Repositories**: Using `trigger:harness-custom-pipeline` to execute a pipeline with a `create-repo` stage, generating a new repository based on the provided input.
 - **Logging Data**: Using `debug:log` to capture and display specific input details in the IDP Workflows Logs UI.
 
-#### [Harness Pipeline](/docs/internal-developer-portal/flows/harness-pipeline.md)
+#### [Harness Pipeline](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline)
 Self-service workflows in Harness IDP are powered by **Harness Pipeline**. Each workflow’s backend is configured using Actions and Harness Pipelines.
 
 When a workflow is executed, users provide input details required for pipeline execution. These inputs are passed into the pipeline through a workflow action, which triggers specific steps in the pipeline. These steps can perform tasks such as launching a CI/CD process, registering a service in the catalog, setting up infrastructure, etc.
 
-### [Workflow Outputs](/docs/internal-developer-portal/flows/outputs.md)
+### [Workflow Outputs](/docs/internal-developer-portal/flows/create-workflow/outputs)
 After backend execution, each step can produce output variables, which can be displayed in the frontend. These outputs can include links to newly created resources like Git repositories, documentation pages, or CI/CD pipelines.
 
 **Example Syntax**:
@@ -486,7 +486,7 @@ spec:
 :::caution
 The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**.
 
-Also, please note that the features [Updating Fields using Form Context](/docs/internal-developer-portal/flows/dynamic-picker.md#updating-fields-using-form-context) and [Live User Validation](/docs/internal-developer-portal/flows/dynamic-picker.md#live-user-validation-using-api-requests) are not supported in your **Workflow Playground Editor**. You won't be able to implement or test these features in the playground.
+Also, please note that the features [Updating Fields using Form Context](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context) and [Live User Validation](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#live-user-validation-using-api-requests) are not supported in your **Workflow Playground Editor**. You won't be able to implement or test these features in the playground.
 :::
 
 Harness IDP also provides a **built-in editor** to help you build your **Workflow's Frontend**. It offers a real-time preview of the corresponding UI based on the YAML definition. Here, you can create a new workflow or edit an existing one.  '
