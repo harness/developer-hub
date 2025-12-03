@@ -92,7 +92,7 @@ Before installation, obtain your Account ID, Delegate Token, and Harness URL:
 4. Choose **Docker** as your delegate type.
 5. Copy the values from the `docker run` command:
    - `ACCOUNT_ID` → Your Account ID
-   - `DELEGATE_TOKEN` → Your Delegate Token  
+   - `DELEGATE_TOKEN` → Your Delegate Token
    - `MANAGER_HOST_AND_PORT` → Your Harness URL
 
    ![](./static/ui-delegate-installer.png)
@@ -152,9 +152,9 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
    :::
 
    **Optional: Add tags for delegate selection**
-   
+
    Tags are optional but useful for routing specific pipelines to this delegate:
-   
+
    ```bash
    ./delegate install --account=[Your Account ID] \
                       --token=[Your Delegate Token] \
@@ -178,7 +178,7 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
    - `--tags` - Comma-separated tags for delegate selection (optional)
    - `--env-file` - Path to config file (default: `~/.harness-delegate/config.env`)
    - `--graceful-exit-timeout` - Shutdown timeout in seconds (default: 300)
-   - `--auto-restart-on-failure` - Auto-restart on failure (default: true) 
+   - `--auto-restart-on-failure` - Auto-restart on failure (default: true)
 
    </details>
 
@@ -301,9 +301,9 @@ To manually install a plugin:
    :::
 
    **Optional: Add tags**
-   
+
    Tags are optional but useful for routing specific pipelines:
-   
+
    ```bash
    cat > config.env <<EOF
    HARNESS_ACCOUNT_ID="[Your Account ID]"
@@ -401,9 +401,9 @@ The delegate runs under the LocalSystem account.
    :::
 
    **Optional: Add tags for delegate selection**
-   
+
    Tags are optional but useful for routing specific pipelines to this delegate:
-   
+
    ```powershell
    .\delegate install --account=[Your Account ID] `
                      --token=[Your Delegate Token] `
@@ -525,10 +525,16 @@ Most importantly, ensure that you have set `Local` as the **Infrastructure** and
 
 ## Delegate Configuration
 
-The `config.env` file location for each operating system:
-- **MacOS**: `~/.harness-delegate/config.env`
-- **Linux**: `./config.env` (in the directory where you created it)
-- **Windows**: `C:\HarnessDelegate\config.env`
+The `config.env` file location:
+- **macOS**:
+  - Default: `~/.harness-delegate/config.env`
+  - Custom workdir: `{workdir}/config.env`
+- **Linux**:
+  - Default: Location where you created it
+  - Custom workdir: `{workdir}/config.env`
+- **Windows**:
+  - Default: `C:\HarnessDelegate\config.env`
+  - Custom workdir: `{workdir}/config.env`
 
 ### Set Max Stage Capacity
 
@@ -572,14 +578,76 @@ NAME="<your delegate name>"
 CLEANUP_GRACE_PERIOD_SECONDS=30
 ```
 
+### Configure Custom Working Directory
+
+`HARNESS_WORKDIR` specifies where the delegate stores its configuration files, logs, cache, and other runtime data.
+
+**Default locations:**
+- **Windows**: `C:\HarnessDelegate`
+- **Linux/macOS**: `~/.harness-delegate`
+
+**Directory structure:**
+```
+{workdir}/
+├── config.env
+├── logs/
+│   └── delegate.log
+├── cache/
+│   └── [plugin binaries and caches]
+└── init.sh (or init.ps1 on Windows)
+```
+
+**How to configure:**
+
+<Tabs>
+<TabItem value="Service Installation">
+
+Use the `--workdir` flag during installation:
+```bash
+./delegate install --account=[Account ID] \
+                   --token=[Delegate Token] \
+                   --url=[Harness URL] \
+                   --name=[Your Delegate Name] \
+                   --workdir=/custom/path/to/workdir
+```
+
+</TabItem>
+<TabItem value="Direct Binary Execution">
+
+Set the `HARNESS_WORKDIR` environment variable before running the binary:
+
+**Linux/macOS:**
+```bash
+export HARNESS_WORKDIR=/custom/path/to/workdir
+./delegate server --env-file config.env
+```
+
+**Windows (PowerShell):**
+```powershell
+$env:HARNESS_WORKDIR="C:\custom\path\to\workdir"
+.\delegate.exe server --env-file config.env
+```
+
+</TabItem>
+</Tabs>
+
+**Notes:**
+- The delegate automatically creates the directory and subdirectories, make sure to have read/write permissions for the delegate process.
+
 ## Debugging
 
 ### Logs
 
 You can find the delegate logs in the following locations:
-- **MacOS**: `~/.harness-delegate/logs/delegate.log`
-- **Linux**: `./nohup-delegate.out` (in the directory where you started the delegate)
-- **Windows**: `C:\HarnessDelegate\logs\delegate.log`
+- **macOS**:
+  - Default: `~/.harness-delegate/logs/delegate.log`
+  - Custom workdir: `{workdir}/logs/delegate.log`
+- **Linux**:
+  - Default: `nohup-delegate.out`
+  - Custom workdir: `{workdir}/logs/delegate.log`
+- **Windows**:
+  - Default: `C:\HarnessDelegate\logs\delegate.log`
+  - Custom workdir: `{workdir}/logs/delegate.log`
 
 #### Log File Configuration
 
@@ -588,9 +656,6 @@ The delegate supports automatic log rotation and sanitization. Configure these u
 ```bash
 # Enable/disable file logging
 LOG_ENABLE_FILE_LOGGING=true
-
-# Custom log file path (optional)
-LOG_FILE_PATH=/custom/path/to/delegate.log
 
 # Log rotation settings
 LOG_MAX_SIZE_MB=100        # Rotate at 100MB
@@ -615,6 +680,7 @@ Windows:
 ```powershell
 Get-Content -Path "C:\HarnessDelegate\logs\delegate.log" -Tail 20 -Wait
 ```
+
 
 ### Metrics
 
