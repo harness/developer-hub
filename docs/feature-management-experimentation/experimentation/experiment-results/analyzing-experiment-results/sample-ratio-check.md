@@ -57,7 +57,7 @@ In general we recommend waiting until the end of the review period or intended r
 
 ### Potential causes of an SRM
 
-#### Excluded Users
+#### Excluded users
 
 In some cases, users may be [excluded](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion/) from the analysis due to seeing multiple treatments or rules, and because some treatments inherently exclude more users than others, this can cause a Sample Ratio Mismatch, introduce a bias into your samples, and invalidate the results.
 
@@ -65,13 +65,13 @@ For example, if you have different rules for users on each of your 3 plan types 
 
 To check whether this is the cause of your SRM, we suggest you look at the ‘excluded’ column under the sample population section of the [Metric Details and Trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/) view to see if your treatment has caused users to be removed from your analysis. 
 
-#### Data Loss
+#### Data loss
 
 An SRM may indicate that a treatment is introducing a bias into the data capture. If a treatment causes some data loss, for example by triggering an exception which kills the application or by navigating the user away from the page or app before the data is flushed, this is likely to cause an SRM. This may present as an extreme SRM if no data is received for a particular treatment, or it may be more of a subtle effect if not all users are affected or if the data capture bias is due to the treatment impacting the average time spent on the page for example. 
 
 Measuring guardrail metrics such as bounce rate, session length and page load time, as well as logging exceptions or errors, can be useful indicators of changes to user behavior and performance that might support data loss as an explanation for your SRM. 
 
-#### Interaction Effects 
+#### Interaction effects 
 
 The randomization of users happens on a feature flag level, rather than being per-rule. This means that if some users move between rules within the same feature flag, and if the likelihood of a user moving between rules is impacted by a treatment, this can cause imbalanced samples and an SRM. 
 
@@ -81,7 +81,7 @@ SRMs caused by these interaction effects can be seen by checking how many users 
 
 Additionally, if users were previously exposed to an older version of the same flag, their behavior or allocation in that version can bias their likelihood of returning or being reassigned in the current version.
 
-#### Bucketing and Matching Keys
+#### Bucketing and matching keys
 
 If you are using bucketing keys, an SRM may indicate a misconfiguration or be due to users receiving a fallback bucketing key. In this case we recommend you contact the FME support team at [support@split.io](mailto:support@split.io) who can look at the distribution of the buckets and check for outliers. 
 
@@ -96,15 +96,36 @@ Two of the most common reasons for sample ratio mismatches detected by this chec
 
 If you're concerned about a potential bias in your targeting setup, consider running an A/A test (i.e. a feature flag where both treatments are functionally identical) to validate the integrity of your randomization before launching an experiment.
 
-#### Random Chance 
+#### Random chance 
 
 Since we are dealing with randomness and probabilities, there is always a possibility, albeit very small, that you see an SRM warning due to random chance alone with no real underlying issue. We use a strict threshold in our SRM test to ensure this is a very rare situation, but there is still a 1 in 1000 chance that you see a false SRM warning. If you have exhausted other options and believe your SRM may be a false alert then we suggest rerunning the feature flag - there is an exceptionally small chance of seeing the same false alert twice.
 
-#### Dependencies Between Flags
+#### Dependencies between flags
 
 Dependencies can skew traffic by causing upstream flags to be evaluated more often than expected. For example, if `flagB` depends on `flagA`, then normally only `flagB` generates an impression. However, if `flagB` is used in a way that guarantees `flagA` is always evaluated, this can skew `flagA`'s distribution and lead to SRM.
 
 To check whether dependencies are contributing to SRM, review which flags are evaluated together and whether downstream flags might be increasing the evaluation frequency of upstream flags.
+
+#### Event-based exposure qualification
+
+Some experiments limit the analysis population to users who have triggered a specific qualifying [event](/docs/feature-management-experimentation/release-monitoring/events/), for example, users who have viewed a page, started a session, or performed an action required before [metrics](/docs/feature-management-experimentation/release-monitoring/metrics/) are calculated. This type of event-based exposure qualification ensures that your experiment only analyzes users who were truly exposed to the experience being tested.
+
+When this filter is applied, all experiment analysis uses the filtered population, including:
+
+- The SRM check
+- The exposure bar that shows counts per treatment
+- All metric calculations
+
+This filtered population represents the actual population your experiment is analyzing, even if more users technically received the flag evaluation. 
+
+If treatments influence whether users trigger the qualifying event, the filtered population may become imbalanced. For example: 
+
+- One treatment causes more users to reach the qualifying page or action
+- A treatment shortens or lengthens user sessions, affecting whether the event is logged
+- Event logging behaves differently across client platforms or treatments
+- Required events fail to fire consistently for one treatment (e.g., instrumentation gaps)
+
+In these cases, you may observe a balanced population at the targeting-rule level (e.g., 301k vs. 302k users assigned), but an unbalanced population in the filtered set used for SRM (e.g., 230k vs. 254k users). This explains how the SRM appears after the event filter is applied, even though exclusions look low overall.
 
 ## Sample ratio mismatch calculator
 
