@@ -37,7 +37,7 @@ You can use **SBOM Orchestration** step to generate an SBOM in either the **Buil
 
 :::info 
 
-**SBOM Orchestration** step in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
+**SBOM Orchestration** step in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md) and ensure you enable the `container based execution`.
 
 :::
 

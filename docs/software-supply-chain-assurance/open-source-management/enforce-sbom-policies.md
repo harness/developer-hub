@@ -60,7 +60,7 @@ You can add the **SBOM Policy Enforcement** step to either the **Build** or **De
 
 :::info
 
-SBOM Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
+SBOM Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md) and ensure you enable the `container based execution`.
 
 :::
 

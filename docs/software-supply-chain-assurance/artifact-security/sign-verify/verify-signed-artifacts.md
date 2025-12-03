@@ -33,9 +33,12 @@ The artifact verification step ensures the authenticity of the signed artifact b
 
 <DocImage path={require('./static/excali-verify.png')} width="80%" height="60%" />
 
+
 ## Artifact Verification step configuration
 
 The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you have chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database. This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
+
+When adding this step to a deploy stage, ensure it's placed within a [container step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) and you enable the `container based execution`.
 
 Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#container-images) and [non-container images](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#non-container-images).
 
