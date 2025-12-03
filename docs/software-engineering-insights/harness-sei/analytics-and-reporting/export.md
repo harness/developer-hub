@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 Exporting SEI 2.0 Insights allows you to download and share insights from the SEI 2.0 platform in both PDF and CSV formats. This feature is designed to facilitate the sharing of key performance metrics and insights across teams and stakeholders, enabling better decision-making and performance tracking.
 
 * **PDF Export**: Provides a snapshot of the dashboard view, including all widgets and the organizational hierarchy. This is ideal for presentations and sharing insights in a read-only format.
-* **CSV Export**: Offers a detailed data export, capturing metrics at various levels of the organizational hierarchy. This format is suitable for further data analysis and integration with other tools.
+* **CSV Export**: Allows you to download org-level or contributor-level data. You can select which metrics to include and whether to export team-level or individual-level productivity data. This format is suitable for further data analysis and integration with other tools.
 
 To programmatically export productivity and efficiency widgets, see [Add Export Productivity and Efficiency Metrics Using the Harness SEI API](/docs/software-engineering-insights/harness-sei/api/export-insights).
 
@@ -24,7 +24,7 @@ You can use the **Export** dropdown at the insight and widget level in Harness S
 <Tabs queryString="export-options">
 <TabItem value="insights" label="Insight Level">
 
-Export data for entire insight categories, such as Efficiency, Productivity, and Business Alignment. This includes all widget metrics like Lead Time for Changes, Deployment Frequency, Change Failure Rate, and Mean Time to Restore.
+Export data for entire insight categories such as **Efficiency** and **Productivity**. This includes all widget metrics like **Lead Time for Changes**, **Deployment Frequency**, **Change Failure Rate**, and **Mean Time to Restore**.
 
 ![](../static/export-insight.png)
 
@@ -32,16 +32,74 @@ Export data for entire insight categories, such as Efficiency, Productivity, and
 
 <TabItem value="widgets" label="Widget Level">
 
-Export data specific to individual widgets within an insight view, such as Deployment Frequency within the Efficiency view or PR Velocity within the Productivity view. This is useful for focused analysis on specific metrics.
+Export data specific to individual widgets within an insight view, such as **Deployment Frequency** within the **Efficiency** view or **PR Velocity** within the **Productivity** view. This is useful for focused analysis on specific metrics.
 
 ![](../static/export-widget.png)
 
 </TabItem>
 </Tabs>
 
+## Customize your CSV export
+
+After selecting **Export as CSV**, you can customize the data included in your export by insight type.
+
+* For Efficiency insights, you can select which rate-based metrics to include.
+* For Productivity insights, you can choose between **Team** or **Individual** metrics. Team metrics are aggregated per developer within each org node, while individual metrics export one row per developer.
+
 ## File name and column format
 
-When exporting insights from SEI 2.0, files follow a consistent naming and formatting structure to help you quickly identify their contents. The exported files are available in both PDF and CSV formats, with options for full dashboard or widget-specific reports.
+CSV files exported from SEI 2.0 follow a consistent structure, with one row per organizational node and one column per metric selected during export. The columns included in the CSV file depend on the insight type and the metric you selected in the **Export Dashboard Data** modal.
+
+<Tabs queryString="widget-options">
+<TabItem value="efficiency" label="Efficiency">
+
+When exporting Efficiency metrics, you can select which DORA metrics to include.
+
+![](../static/export-1.png)
+
+1. Select one (or all) of the following metrics:
+
+    * **Lead Time for Changes**
+    * **Deployment Frequency**
+    * **Change Failure Rate**
+    * **Mean Time to Restore**
+
+1. Click **Export CSV**.
+
+</TabItem>
+
+<TabItem value="productivity" label="Productivity">
+
+When exporting Productivity metrics, you can select which team-level or individual-level metrics to include.
+
+![](../static/export-2.png)
+
+At the team level, the following metrics are available:
+
+- **PR Velocity Per Dev**
+- **Work Type Completed Per Dev**
+- **Coding Days Per Dev**
+- **Time to First Comment**
+- **Number of Comments**
+- **Average Time to Complete**
+- **Mean Time to Restore**
+
+![](../static/export-3.png)
+
+At the individual level, the following metrics are available:
+
+- **PR Velocity**
+- **Work Type Completed**
+- **Coding Days**
+- **Time to First Comment**
+- **Number of Comments**
+- **Average Time to Complete**
+- **Number of Missing Tickets**
+
+Once you've selected a metric type and the metrics to be included in your report, click **Export CSV**.
+
+</TabItem>
+</Tabs>
 
 ### File naming conventions
 
@@ -65,8 +123,4 @@ When exporting a CSV for Efficiency Insights, the following columns are included
 - Change Failure Rate
 - Mean Time to Restore
 
-When exporting a CSV for Productivity Insights, the file provides flexibility to select only the columns needed for reporting, with options to view data at the Team Manager level or by individual contributor.
-
-## Customizable Productivity export options
-
-Many teams require CSV exports that support specific reporting needs across organizational structures. The Productivity Insights export allows users to select only the columns they need and include data from all child team nodes, ensuring flexible and comprehensive coverage for internal reports and dashboards.
+When exporting a CSV for Productivity Insights, the file provides flexibility to select only the columns needed for reporting, with options to view data at the team level or by individual contributor.

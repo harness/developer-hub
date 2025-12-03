@@ -7,27 +7,36 @@ sidebar_position: 3
 
 ## Overview
 
-This page explains how to export team productivity and efficiency metrics, provides guidance on configuring request parameters, and includes best practices for interpreting and using the CSV output.
+This page explains how to export team productivity and efficiency metrics, configure request parameters, and interpret the CSV output.
 
-The SEI Insights Export API enables you to export team productivity and efficiency metrics in CSV format. The CSV output contains one row per team and one column per metric, making it easy to analyze and compare performance across teams and time periods.
+The SEI Insights Export API enables you to export team-level reports and team-level (at the individual level) metrics by adjusting the request body. The CSV output contains one row per team or contributor (depending on the request) and one column per metric, making it easy to analyze and compare performance across teams, developers, and time periods.
 
 With this API, you can:
 
 - Export [Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity) metrics such as PR velocity, coding days, and completed work items per developer.
 - Export [Efficiency (DORA)](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency) metrics such as lead time for changes, deployment frequency, and mean time to restore.
 - Include all child teams under a specified team in a single CSV export.
+- Export team-level metrics for individual developers.
 
-## Export team reports
+## Export SEI 2.0 reports
 
-Use this endpoint to export data reports for teams. 
+Both team-level and individual-level exports use the same endpoint. The behavior depends on the parameters you include in the request body.  
 
 **Endpoint**: `POST /v2/insights/teams/reports`
 
 **Authentication**: Requires an `x-api-key` header with an API key generated from your Harness account. For more information about generating an API key, see [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys/).
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="export-type">
+<TabItem value="team" label="Team-Level Reports">
+
+Exports aggregate productivity and efficiency metrics per team.
+
 **Request Body:** `ExportRequestDTO` (see the [Request body structure section](#request-body-structure) below)
 
-**Response:** CSV file download with appropriate headers.
+**Response:** A CSV file containing one row per team and one column per metric.
 
 ## Request body structure
 
@@ -134,6 +143,16 @@ The following calculation types are available:
 | `P90` (90th Percentile) | 90% of metric values fall below this threshold. Highlights performance of top performers. <br /><br /> Useful for identifying best-case scenarios. Helps set aspirational targets. |
 | `P95` (95th Percentile) | 95% of metric values fall below this threshold. Focuses on exceptional performance. <br /><br /> Useful for capacity planning and SLA definitions. Helps identify peak performance patterns. |
 
+### Contributor ratings
+
+If you set `"includeRatings": true`, the CSV file includes rating columns for applicable metrics. Ratings appear only for metrics where performance tiers exist and reflect developer-specific data, not the team's aggregated value.
+
+For example: 
+
+| Collection Name     | Lead Time for Changes (mean) | Lead Time for Changes Rating | Deployment Frequency | Deployment Frequency Rating | Mean Time to Restore (mean) | Mean Time to Restore Rating |
+| ------------------- | ---------------------------- | ---------------------------- | -------------------- | --------------------------- | --------------------------- | --------------------------- |
+| Parent Team        | 15.53                        | Medium                       | 0                    | —                           | 45.97                       | Low                         |
+
 ## Response format
 
 ### Success Response (200 OK)
@@ -148,6 +167,116 @@ The CSV file structure contains:
 - One column per metric
 - First row: Column headers with metric names
 - Subsequent rows: Data rows with metric values for each team
+
+</TabItem>
+<TabItem value="individual" label="Team-level Metrics (Individual Developers)">
+
+Exports productivity metrics for individual developers within a team.
+
+**Request Body:** `ContributorExportRequestDTO` (see the [Request body structure section](#request-body-structure) below)
+
+**Response:** A CSV file containing one row per developer and one column per metric.
+
+## Request body structure
+
+For `ContributorExportRequestDTO`: 
+
+```json
+{
+  "collectionId": "1",
+  "dateStart": "2025-11-03",
+  "dateEnd": "2025-11-30",
+  "granularity": "WEEKLY",
+  "includeRatings": true,
+  "productivityContributors": {
+    "metrics": [
+      "PR_VELOCITY",
+      "WORK_TYPE_COMPLETED",
+      "CODING_DAYS",
+      "TIME_TO_FIRST_COMMENT",
+      "NUMBER_OF_COMMENTS_PER_PR",
+      "AVG_TIME_TO_COMPLETE",
+      "NO_OF_PRS_WITH_MISSING_TICKETS"
+    ]
+  }
+}
+```
+
+### Field descriptions
+
+| Field                      | Type                       | Required | Description                                            |
+| -------------------------- | -------------------------- | -------- | ------------------------------------------------------ |
+| `collectionId`             | `String`                   | Yes      | Identifier for the team of developers.                 |
+| `dateStart`                | `Date (yyyy-MM-dd)`        | Yes      | Start date for the report period.                      |
+| `dateEnd`                  | `Date (yyyy-MM-dd)`        | Yes      | End date for the report period.                        |
+| `granularity`              | `String`                   | No       | Time unit for rate-based metrics.                      |
+| `includeRatings`           | `Boolean`                  | No       | Whether to include developer rating summaries.         |
+| `productivityContributors` | `ContributorMetricsConfig` | Yes      | Metrics to include in the developer export.            |
+
+### Granularity
+
+The `granularity` field specifies the time unit used to normalize rate-based team metrics, which measure counts or activity over time. Granularity determines how these metrics are aggregated and represented in the CSV output.
+
+Team-level metrics affected by granularity include the following:
+
+- `CODING_DAYS`: For example, 3 coding days per week.
+- `WORKTYPE_COMPLETED`: For example, 1.22 work items completed per week.
+- `DEPLOYMENT_FREQUENCY`: For example, 20 deployments per week.
+
+Common granularity values include the following:
+
+- `daily`: Metrics calculated per day.
+- `weekly` (default): Metrics calculated per week.
+- `monthly`: Metrics calculated per month.
+
+### Nested objects
+
+To configure Productivity metrics with `ContributorExportRequestDTO`:
+
+```json
+{
+  "metrics": [
+    "PR_VELOCITY",
+    "WORK_TYPE_COMPLETED",
+    "CODING_DAYS",
+    "TIME_TO_FIRST_COMMENT",
+    "NUMBER_OF_COMMENTS_PER_PR",
+    "AVG_TIME_TO_COMPLETE",
+    "NO_OF_PRS_WITH_MISSING_TICKETS"
+  ]
+}
+```
+
+- `metrics` (required): List of metric names to include in the export.
+
+The following Productivity metrics are available:
+
+| Metric Name                      | Context                  | Unit                                                                    | Description                                                                                                                                                                                              |
+| -------------------------------- | ------------------------ | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PR_VELOCITY`                    | PR Velocity              | Lines of code per developer per time period (affected by `granularity`) | Measures average PR size (lines of code changed) per developer.<br /><br />Indicates code contribution throughput over time.<br /><br />Useful for understanding development volume across contributors. |
+| `WORK_TYPE_COMPLETED`            | Work Items Completed     | Count per developer per time period (affected by `granularity`)         | Number of prioritized work items completed by a contributor.<br /><br />Helps assess individual delivery output.<br /><br />Example: 2.1 means ~2.1 items/week if granularity is weekly.                 |
+| `CODING_DAYS`                    | Coding Days              | Days per time period (affected by `granularity`)                        | Number of days the contributor actively wrote code.<br /><br />Correlates with availability and engagement.                                                                                              |
+| `TIME_TO_FIRST_COMMENT`          | Time to First Comment    | Days (CSV contains numeric values without units)                        | Time between PR creation and the first review comment.<br /><br />Lower values reflect faster review responsiveness.                                                                                     |
+| `NUMBER_OF_COMMENTS_PER_PR`      | Review Intensity         | Count                                                                   | Average number of review comments per PR.<br /><br />Indicates review depth or PR complexity.                                                                                                            |
+| `AVG_TIME_TO_COMPLETE`           | Average Time to Complete | Days                                                                    | Time from work start to completion.<br /><br />Higher values may indicate delays or larger tasks.                                                                                                        |
+| `NO_OF_PRS_WITH_MISSING_TICKETS` | PR Hygiene               | Count                                                                   | Number of pull requests missing linked work items.<br /><br />Useful for tracking process adherence and hygiene issues.                                                                                  |
+
+## Response format
+
+### Success Response (200 OK)
+
+- **Content-Type:** `text/csv`
+- **Content-Disposition:** `attachment; filename="<report_name>.csv"`
+- **Body:** A CSV file with team-level report data.
+
+The CSV file structure contains:
+
+- One row per collection, including: the org tree, each manager, the manager's direct reports, and individual contributors
+- One column for the collection name
+- One column per metric included in the export (for example, `PR Velocity per Developer`)
+
+</TabItem>
+</Tabs>
 
 ## Usage examples
 
