@@ -220,7 +220,7 @@ This is a step-by-step guide for Platform Engineers to onboard IDP. Your mileage
 6. **First TechDocs**
    1. Enable TechDocs for one of those applications where documentation is available in markdown.
    2. You can also choose to onboard central documentation such as engineering handbooks if you have those written in Markdown (docs-like-code approach)
-   - *Docs and Tutorials for Reference:* [Enable documentation for your Component](https://developer.harness.io/docs/internal-developer-portal/techdocs/enable-docs)
+   - *Docs and Tutorials for Reference:* [Enable documentation for your Component](https://developer.harness.io/docs/internal-developer-portal/catalog/integrate-tools/techdocs/enable-docs)
 7. **First few Catalog Plugins**
    1. Look at the IDP Plugins Marketplace and enable up to 5 plugins which are the most commonly used tools in your organization.
    - *Docs and Tutorials for Reference:* [List of curated plugins supported in the Internal Developer Portal](https://developer.harness.io/docs/category/available-plugins)
@@ -231,7 +231,7 @@ This is a step-by-step guide for Platform Engineers to onboard IDP. Your mileage
    1. Send invites to 10-20 users that you have identified as early adopters. Collect feedback
 10. **Setup Metadata Ingestion**
     1. Use Catalog Ingestion API to auto-fill some of the details that your early users don’t want to provide manually
-    - *Docs and Tutorials for Reference:* [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api)
+    - *Docs and Tutorials for Reference:* [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api)
 11. **Your first Custom Plugin (Optional)**
     1. Create a small widget on the Catalog to show some application metadata which is hard to find today for your developers
     - *Docs and Tutorials for Reference:* [Overview of custom plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview)

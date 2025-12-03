@@ -34,7 +34,7 @@ export const docsCards: CardSections = [
         title: "Software catalog",
         module: MODULES.idp,
         description: "Understand how to manage and organize your services and service related entities with a software catalog.",
-        link: "/docs/internal-developer-portal/catalog/software-catalog",
+        link: "/docs/internal-developer-portal/catalog/overview",
       },
       {
         title: "Self Service Workflows",
@@ -82,7 +82,7 @@ export const docsCards: CardSections = [
         title: "Customize Catalog Entity Pages",
         module: MODULES.idp,
         description: "Learn how to customize the layout of catalog entity pages to fit your team's requirements.",
-        link: "/docs/internal-developer-portal/catalog/catalog-ui",
+        link: "/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--manage-catalog-ui",
       },
       {
         title: "IDP Sidebar Navigation Customization",

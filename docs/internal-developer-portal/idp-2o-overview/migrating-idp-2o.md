@@ -311,9 +311,9 @@ To explore these new features in detail, go to [IDP 2.0 Feature Highlights](/doc
 
 Here's how you can get hands-on with the new IDP 2.0 functionality:
 
-1. Get familiar with the **[Harness-native Data Model](/docs/internal-developer-portal/catalog/data-model.md)**
-2. Learn about the new **[Catalog YAML structure](/docs/internal-developer-portal/catalog/catalog-yaml.md)**
-3. **[Manage Catalog](/docs/internal-developer-portal/catalog/manage-catalog.md)**
+1. Get familiar with the **[Harness-native Data Model](/docs/internal-developer-portal/catalog/data-model)**
+2. Learn about the new **[Catalog YAML structure](/docs/internal-developer-portal/catalog/catalog-yaml)**
+3. **[Manage Catalog](/docs/internal-developer-portal/catalog/manage-catalog)**
    - Create entities directly from the Harness UI
    - Edit, share, and delete entities with ease
 4. **[Manage Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o.md)**

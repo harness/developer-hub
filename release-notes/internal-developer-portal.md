@@ -53,7 +53,7 @@ The redesigned execution view includes:
 ---
 
 ### [New Feature] Customizable Catalog Tables
-**[Docs](/docs/internal-developer-portal/catalog/catalog-ui#customize-catalog-table-ui)**
+**[Docs](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--customize-catalog-table-ui)**
 
 We're introducing **Customizable Catalog Tables**, giving you full control over how your Catalog information is displayed. This feature enables you to customize and manage the columns of the Catalog table to meet your team's specific requirements.
 
@@ -61,7 +61,7 @@ We're introducing **Customizable Catalog Tables**, giving you full control over 
 * **Add Custom Columns**: Define custom columns using entity metadata and custom Catalog properties.
 * **Entity Kind-Specific Views**: Each entity kind has its own unique customization view, allowing different column configurations for different entity types. 
 
-> Learn more about [Customizable Catalog Tables](/docs/internal-developer-portal/catalog/catalog-ui#customize-catalog-table-ui).
+> Learn more about [Customizable Catalog Tables](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--customize-catalog-table-ui).
 
 ![](./static/internal-developer-portal/customize-columns.png)
 
@@ -154,7 +154,7 @@ spec:
 ---
 
 ### [New Feature] Catalog Auto-Discovery for Harness CD Services
-**[IDP-4460]** | **[Docs](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd)**
+**[IDP-4460]** | **[Docs](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd)**
 
 We’re introducing the **Harness IDP Catalog Auto-Discovery** integration with Harness CD Services. Previously, Harness CD users had to **manually** create IDP Catalog services from their Harness CD setup, which often led to **duplicate data** and **inefficient syncs**.
 
@@ -162,7 +162,7 @@ With this release, you can **automatically discover and sync** your Harness CD s
 
 **Use this feature:** To use this integration, **enable the feature flag (`IDP_CATALOG_CD_AUTO_DISCOVERY`)** and ensure you’re using the **same account** as your Harness CD account.
 
-> Learn more about [Catalog Auto-Discovery for Harness CD Services](/docs/internal-developer-portal/catalog/catalog-discovery/harness-cd).
+> Learn more about [Catalog Auto-Discovery for Harness CD Services](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd).
 
 ![](./static/internal-developer-portal/open-in-harness-cd.png)
 
@@ -235,7 +235,7 @@ Take control of your organizational structure with IDP 2.0's powerful new Custom
 * **Intuitive hierarchical relationships** - Build parent-child connections between teams and departments with automatic bi-directional linking
 * **Complete UI and YAML support** - Create groups through the intuitive UI or via standard YAML definitions
 
-[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group#idp2.0)
+[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/data-model/user-group#idp2.0)
 
 ### [New Feature] Support for Bitbucket Access Token Authentication Mode
 
@@ -339,7 +339,7 @@ Harness Internal Developer Portal (IDP) now supports System as a high-level cata
 
 * Systems can be created at Account, Organization, or Project scope.
 * Define Systems using the IDP UI, YAML, or the Create Entity API (`kind: System`).
-* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided [YAML layout](/docs/internal-developer-portal/catalog/system-entity#the-configuration-is-defined-in-yaml-for-example) under **Admin → Layout → Catalog Entities → System**.
+* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided [YAML layout](/docs/internal-developer-portal/catalog/data-model/system-entity#the-configuration-is-defined-in-yaml-for-example) under **Admin → Layout → Catalog Entities → System**.
 ![](./static/system-layout.png)
 * The Entities tab offers a searchable, filterable, and sortable table of all Components, APIs, and Resources within the System.
 * Many-to-many relationships are supported — an entity can belong to multiple Systems.
@@ -385,7 +385,7 @@ metadata:
     - java
 ```
 
-Learn more about [System Entity](/docs/internal-developer-portal/catalog/system-entity)
+Learn more about [System Entity](/docs/internal-developer-portal/catalog/data-model/system-entity)
 
 ### [New Feature] Environment Management in Harness IDP
 
@@ -1211,7 +1211,7 @@ Here’s what these features do:
 
 ![](./static/internal-developer-portal/idp-hcr-card.png)
 
-2. Added a new step in the IDP stage to [update catalog properties](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#9-update-catalog-property), enabling native support for the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) within pipelines.[IDP-3603]
+2. Added a new step in the IDP stage to [update catalog properties](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#9-update-catalog-property), enabling native support for the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api) within pipelines.[IDP-3603]
 
 ![](./static/internal-developer-portal/update-catalog-property.png)
 
@@ -1319,7 +1319,7 @@ customPlugins:
 
 #### New features and enhancements
 
-- You can now use `mode: Append` in the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api#5-update-a-single-property-of-a-catalog-entity-without-replacing-existing-values). This feature allows for the ingestion and modification of complex data types in the catalog without overwriting existing values. [IDP-3799]
+- You can now use `mode: Append` in the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api#5-update-a-single-property-of-a-catalog-entity-without-replacing-existing-values). This feature allows for the ingestion and modification of complex data types in the catalog without overwriting existing values. [IDP-3799]
 
 - You can now [configure runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-input-usage/#configure-execution-inputs) in the [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), enabling users to specify inputs during pipeline execution. [IDP-3781]
 
@@ -1374,7 +1374,7 @@ customPlugins:
 #### New features and enhancements
 
 - We have upgraded our Backstage core version to v1.28. [IDP-2870]
-- [Catalog Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) received a huge update with lots of new endpoints and use-cases supported. [IDP-3565]
+- [Catalog Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api) received a huge update with lots of new endpoints and use-cases supported. [IDP-3565]
 - Add [mkdocstrings](https://mkdocstrings.github.io/) plugin in TechDocs to generate docs from comments in code blocks. [IDP-3570]
 - New plugins added to the marketplace.
 
@@ -2024,7 +2024,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Himanshu's(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
 - **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started), [Public API](/docs/internal-developer-portal/api-refernces/public-api)
-- **Tutorial:** [How to add Links in Software Components](/docs/internal-developer-portal/catalog/software-catalog)
+- **Tutorial:** [How to add Links in Software Components](/docs/internal-developer-portal/catalog/overview)
 
 #### New features and enhancements
 
@@ -2150,7 +2150,7 @@ contents:
 
 #### What's new
 
-- You can now access IDP catalog APIs by using the Harness X-API-Key. For more information, go to [API access](/docs/internal-developer-portal/catalog/software-catalog#api-access). (IDP-768)
+- You can now access IDP catalog APIs by using the Harness X-API-Key. For more information, go to [API access](/docs/internal-developer-portal/catalog/overview#api-access). (IDP-768)
 - A newer version of the Harness CI/CD plugin has been added with new annotations support. It's now possible to filter pipelines across projects and orgs. For more information, go to the [plugin's readme](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ci-cd). (IDP-758)
 - The Harness Feature Flags [plugin](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-feature-flags) is now available in IDP. (IDP-778)
 - The `trigger:harness-custom-pipeline` action on the software template `template.yaml` is now synchronous with pipeline execution. The action keeps running during pipeline execution, and it shows the current status of the pipeline.

@@ -41,7 +41,7 @@ You can inspect the Workflow YAML in two ways:
 ## Manage Workflows 
 
 ### Create Workflows 
-With IDP 2.0, we are moving towards a Harness-native Data Model designed for enterprise scale and access control. To learn more about the different changes in the schema, go to [Data Model](/docs/internal-developer-portal/catalog/data-model.md). 
+With IDP 2.0, we are moving towards a Harness-native Data Model designed for enterprise scale and access control. To learn more about the different changes in the schema, go to [Data Model](/docs/internal-developer-portal/catalog/data-model/data-model). 
 
 There are two ways for you to add and create a new Workflow in your IDP:
 - **Create a Workflow via the Harness IDP UI**: Use the Harness UI to create Workflows directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.

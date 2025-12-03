@@ -72,7 +72,7 @@ The choice ultimately comes down to build versus buy. While self-managed Backsta
 | Service Scorecards                            | Limited                    | Yes             |                                                                                                                              |
 | Custom checks                                 | No                         | Yes             | [Custom checks](https://developer.harness.io/docs/internal-developer-portal/scorecards/create-scorecards/checks) |
 | Parsing support for file-content based checks | No                         | Yes             |                                                                                                                              |
-| Custom Data Source                            | No                         | Yes             | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api-tutorial)        |
+| Custom Data Source                            | No                         | Yes             | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/tutorials/catalog-ingestion-api-tutorial)        |
 
 ### Plugins
 
@@ -184,7 +184,7 @@ With the [Entity Layout Editor](/docs/internal-developer-portal/layout-and-appea
 
 #### **Step 4: Custom Metadata Ingestion**
 
-If you have developed custom catalog processors in Backstage to enrich entity metadata, Harness IDP offers [Catalog Ingestion APIs](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) to programmatically push additional metadata. This enables you to maintain or enhance your metadata enrichment workflows without modifying entity YAML files.
+If you have developed custom catalog processors in Backstage to enrich entity metadata, Harness IDP offers [Catalog Ingestion APIs](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api) to programmatically push additional metadata. This enables you to maintain or enhance your metadata enrichment workflows without modifying entity YAML files.
 
 #### **Step 5: Custom Entity Providers**
 

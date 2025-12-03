@@ -1,7 +1,7 @@
 ---
 title: AI-powered Search
 description: Learn more about creating and managing your Catalog entities.
-sidebar_position: 5
+sidebar_position: 6
 redirect_from: /docs/internal-developer-portal/catalog/register-software-component
 ---
 

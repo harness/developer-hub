@@ -12,7 +12,7 @@ This RBAC guide is applicable **only to IDP 2.0 customers**, as the RBAC Harness
 * If you're using **IDP 1.0** and want to implement access control, please refer to the [Access Control Guide for IDP 1.0](#permissions--resource-scopes).
 :::
 
-With the release of **Granular RBAC in IDP 2.0**, you can now control access to your **Catalog entities**—i.e., you can restrict who can create and view these entities. Catalog entities can be created at all available scopes: **Account**, **Org**, or **Project**. To learn more about entities, permissions, and scopes, visit the [IDP 2.0 Data Model](/docs/internal-developer-portal/catalog/data-model.md).
+With the release of **Granular RBAC in IDP 2.0**, you can now control access to your **Catalog entities**—i.e., you can restrict who can create and view these entities. Catalog entities can be created at all available scopes: **Account**, **Org**, or **Project**. To learn more about entities, permissions, and scopes, visit the [IDP 2.0 Data Model](/docs/internal-developer-portal/catalog/data-model).
 
 :::tip For IDP 2.0 Customers
 If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.

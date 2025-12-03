@@ -8,6 +8,8 @@ If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Ov
 
 Harness IDP 2.0 marks a significant evolution of the Internal Developer Portal, introducing a Harness-native data model tailored for enterprise-scale environments and strong access control. As we transition to this new model, **legacy Backstage YAML** will no longer be supported. Going forward, only the **Harness-native data model** schema will be used and referenced. This guide walks you through the new **Harness-native YAML schema** and outlines the key changes from the previous schema.
 
+---
+
 ## Quick Reference: Entity YAML Examples
 
 <details>
@@ -140,6 +142,8 @@ metadata:
 Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table
 :::
 
+---
+
 ## What's new in IDP 2.0?
 IDP 2.0 implements a **Harness-native entity schema** featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
 
@@ -175,13 +179,15 @@ These fields define the entity's scope. For project-scoped entities, both fields
 - `metadata` continues to be flexible. You can define your own properties within metadata.
 - `annotations`, `description`, `tags`, `links`, `labels` etc. continue to be part of metadata.
 
-## Converting Existing Entity YAMLs
+---
+
+## Convert Existing Entity YAMLs
 
 If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can easily convert them to the new Harness-native data model schema. There are two ways to perform this conversion:
 
 1. **Using the Harness IDP UI:**
-   Navigate to the **[Harness IDP UI](/docs/internal-developer-portal/catalog/manage-catalog.md#harness-idp-ui)** and open the **YAML view** while creating an entity. Paste your legacy Backstage Catalog YAML, and the system will automatically generate the corresponding Harness-native Catalog YAML.
-   Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog.md#catalog-yaml)**.
+   Navigate to the **[Harness IDP UI](/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog#harness-idp-ui)** and open the **YAML view** while creating an entity. Paste your legacy Backstage Catalog YAML, and the system will automatically generate the corresponding Harness-native Catalog YAML.
+   Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog#catalog-yaml)**.
 
 2. **Using the YAML Conversion API:**
    To streamline migration, we've also introduced an API that converts Backstage Catalog YAML to the Harness-native format. [Read more in the IDP 2.0 migration guide.](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
@@ -190,6 +196,7 @@ All existing Catalog entities will be **automatically migrated** to IDP 2.0, and
 
 ![YAML Conversion Preview](../../static/yaml-conversion.png)
 
+---
 
 ## Common to All Kinds: The Envelope
 
@@ -357,6 +364,8 @@ Please refer to this guide to learn more about [``metadata``](https://backstage.
 ### `spec`
 
 Defines the actual specification data that describes the entity. This is the core configuration and varies depending on the `kind`. See individual entity kind sections for specific structure guidelines.
+
+---
 
 ## Entity Kinds 
 

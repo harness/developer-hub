@@ -10,7 +10,7 @@ This RBAC guide is applicable **only to IDP 2.0 customers**, as the RBAC Harness
 :::
 
 With the release of **Granular RBAC in IDP 2.0**, you can now control access to **Workflows** in your Harness IDP. This means you can restrict who can **create** and **execute** Workflows across your IDP setup. Workflows can be created at all available scopes: **Account**, **Organization**, or **Project**.
-To learn more about permissions and scopes, visit the [IDP 2.0 Data Model](/docs/internal-developer-portal/catalog/data-model.md).
+To learn more about permissions and scopes, visit the [IDP 2.0 Data Model](/docs/internal-developer-portal/catalog/data-model).
 
 :::tip For IDP 2.0 Customers
 If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.

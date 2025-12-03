@@ -1,0 +1,10 @@
+{
+  "label": "Populate Catalog",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Scripts and tools for populating and migrating entities into your catalog from various sources"
+  }
+}

@@ -22,4 +22,4 @@ The Platform API provides native Harness IDP APIs within the Harness Platform. F
 
 ### Catalog Ingestion API
 
-Software Catalog in Harness IDP supports modifying metadata for the services, libraries, websites and any other entities registered in the Catalog using the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api). 
+Software Catalog in Harness IDP supports modifying metadata for the services, libraries, websites and any other entities registered in the Catalog using the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api). 

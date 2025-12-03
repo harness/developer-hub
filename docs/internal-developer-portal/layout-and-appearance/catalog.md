@@ -21,7 +21,7 @@ Note that when you enable a plugin, we auto-update the default layouts, but you 
 
 ## Understand Catalog Entity Kinds and Types
 
-Every Catalog Layout is uniquely designed for a particular **Kind** and **Type** of application. For example, the most common catalog layout is for a microservice and is often represented as `Kind: Component` and `spec.type: service`. You can learn more about the [available kinds in the Catalog YAML docs](/docs/internal-developer-portal/catalog/catalog-yaml.md) and its [System Model](/docs/internal-developer-portal/catalog/data-model.md) to understand the different use-cases.
+Every Catalog Layout is uniquely designed for a particular **Kind** and **Type** of application. For example, the most common catalog layout is for a microservice and is often represented as `Kind: Component` and `spec.type: service`. You can learn more about the [available kinds in the Catalog YAML docs](/docs/internal-developer-portal/catalog/catalog-yaml.md) and its [System Model](/docs/internal-developer-portal/catalog/data-model) to understand the different use-cases.
 
 The `kind` of entities are fixed to those available out of the box (Component, API, Resource, etc.), however you can create any arbitrary `type` for these kinds of entities. Let's say you use the word "micro-frontends" to represent internal websites in your organization. In order to create this new type of Component, you can use `microfrontend` in the `spec.type` field of the Catalog Definition YAML and then create a unique layout for those types of applications.
 
@@ -249,7 +249,7 @@ In case you want to display the same information you have ingested on your Overv
 
 ![](./static/add-additional-info-card.png)
 
-3. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
+3. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--add-an-additional-info-card)
 
 ![](./static/additional-info-card-new.png)
 

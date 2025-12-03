@@ -57,7 +57,7 @@ The Software Catalog provides a **centralized registry** of all your services, A
 - Track service ownership and contact information. 
 - Auto-import and populate Catalog from Git and Harness CD. 
 
-[Learn more about Software Catalog →](/docs/internal-developer-portal/catalog/software-catalog)
+[Learn more about Software Catalog →](/docs/internal-developer-portal/catalog/overview)
 
 ![](./static/software-catalog-overview.png)
 
@@ -143,7 +143,7 @@ TechDocs enables a docs-as-code approach where documentation lives alongside you
 - Search across all documentation.
 - Version docs alongside code for consistency.
 
-[Learn more about TechDocs →](/docs/internal-developer-portal/techdocs/enable-docs)
+[Learn more about TechDocs →](/docs/internal-developer-portal/catalog/integrate-tools/techdocs/enable-docs)
 
 </TabItem>
 </Tabs>
