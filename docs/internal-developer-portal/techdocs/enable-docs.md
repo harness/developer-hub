@@ -9,7 +9,7 @@ redirect_from:
 
 ## Introduction
 
-Now that you have [added your software components](/docs/internal-developer-portal/get-started) to the catalog, [enabled plugins](/docs/internal-developer-portal/plugins/enable-a-new-plugin) and [created a scorecard](/docs/internal-developer-portal/scorecards/scorecard-quickstart) it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
+Now that you have [added your software components](/docs/internal-developer-portal/get-started) to the catalog, [enabled plugins](/docs/internal-developer-portal/plugins/enable-a-new-plugin) and [created a scorecard](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard) it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
 
 ![](static/docs-empty.png)
 

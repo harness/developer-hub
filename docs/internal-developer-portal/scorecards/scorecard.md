@@ -1,208 +1,110 @@
 ---
 title: Scorecards Overview
-description: Measure software maturity and enforce best practices
+description: Measure software maturity and enforce best practices with Scorecards
 sidebar_position: 1
 sidebar_label: Overview
 redirect_from:
   - /docs/internal-developer-portal/features/scorecard
+  - /docs/internal-developer-portal/scorecards/scorecard-quickstart
+  - /docs/internal-developer-portal/get-started/scorecard-quickstart
 ---
 
-### Overview
-
-Scorecards play a pivotal role in ensuring software components are developed and utilized while adhering to organizational and industry standards. They provide a quantifiable measure of software maturity and adherence to best practices, thereby aiding developers in enhancing quality and assisting teams in making informed decisions regarding software adoption.
+Scorecards help you measure and improve software quality by evaluating your services against organizational standards and best practices. They provide a clear, quantifiable view of software maturity, helping developers identify areas for improvement and teams make informed decisions about software adoption.
 
 ![](./static/scorecard-overview.png)
 
-<details>
-<summary>Purpose & Concept of Scorecards</summary>
+---
 
-- **Measure Software Maturity**: Evaluate the robustness and reliability of software components.
-- **Assess Best Practices**: Ensure software adheres to organizational and industry standards.
-- **Gamification**: Encourage developers to adhere to standards by providing scores.
-- **Confidence Estimation**: Help teams estimate the reliability of software based on its score.
+## What are Scorecards?
+
+Scorecards are evaluation frameworks that assess your software components against predefined criteria. They help you:
+
+- **Measure Software Maturity**: Evaluate the robustness and reliability of software components
+- **Assess Best Practices**: Ensure software adheres to organizational and industry standards
+- **Gamification**: Encourage developers to adhere to standards by providing scores
+- **Confidence Estimation**: Help teams estimate the reliability of software based on its score
+
+### Key Concepts
+
+- **[Check](/docs/internal-developer-portal/scorecards/create-scorecards/checks.md)**: A check is a query performed against a data point for a software component which results in either `Pass` or `Fail`
+- **[Data Source](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources.md)**: Data Sources are third-party providers which can provide a specific type of data for a software component. Example - GitHub, GitLab, Harness, PagerDuty, etc.
+- **[Data Points](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources.md)**: For each software component, every data source provides some data points. The data points could be a number, a string, or a boolean
 
 <DocImage path={require('./static/concept-scorecard.png')}/>
 
-- **Check**: A check is a query performed against a data point for a software component which results in either `Pass` or `Fail`.
-- **Data Source**: Data Sources are third-party providers which can provide a specific type of data for a software component. Example - GitHub, GitLab, Harness, PagerDuty, etc.
-- **Data Points**: For each software component, every data source provides some data points. The data points could be a number, a string or a boolean.
+Each scorecard contains multiple checks that evaluate specific aspects of your services, such as:
 
-</details>
+- **Code Quality**: Test coverage, code scanning alerts, and linting standards
+- **Security**: Vulnerability scanning, secret detection, and branch protection
+- **Documentation**: README files, API documentation, and TechDocs
+- **Operational Readiness**: Monitoring setup, incident management, and deployment frequency
+- **Compliance**: License compliance, policy adherence, and regulatory requirements
 
----
-
-## Enable Scorecards
-
-:::info
-
-If you have Scorecard UI components visible on your Catalog component pages, you can skip the following steps and proceed to "Create your first scorecard" section.
-
-:::
-
-### Scorecard Components in IDP
-
-Scorecard has two main UI components which are developer facing and lives in the Catalog - 1. A small **Card** for the Overview page with the scores and, 2. A **Tab** view with details of the checks and how the score got computed. This is illustrated below. The Tab view contains detailed comprehensive information as shown in the image under [overview](/docs/internal-developer-portal/scorecards/scorecard#overview)
-
-<DocImage path={require('./static/scorecard-overviewpage.png')}/>
-
-:::info GITX Enabled
-Scorecard calculations are based on entity data from the default branch of the associated Git repository.
-If you're using a remote Git repository to manage your Scorecard definitions, make sure that the YAML file is committed and pushed to the default branch. This behavior helps maintain a single source of truth and avoids confusion from incomplete or in-progress configurations.
-:::
-
-1. #### Add Scorecard Card and Tab Content for an Entity
-
-   - Go to the **Layout** section in IDP **Admin**, and select **Service** or any other kind of catalog entity for which you want to add Scorecards.
-
-2. #### Add Scorecard to the overview tab
-
-   - Find the **Overview** tab in the YAML and add the following in its component section -
-
-```yaml
-- component: EntityScoreCard
-    specs:
-    gridProps:
-        md: 6
-```
-
-3. #### Add Scorecard Tab component
-
-   - Under the **tabs** section add the following -
-
-```yaml
-- name: Scorecard
-  path: /scorecard
-  title: Scorecard
-  contents:
-    - component: EntityScorecardContent
-```
-
-<DocImage path={require('./static/entity.png')}/>
+Scorecards assign a score to each service based on how well it meets these criteria, making it easy to track progress and identify areas that need attention.
 
 ---
 
-## Create a Scorecard
-1. Go to **Configure** → **Scorecards**, and select **Create New Scorecard**.
-2. Enter values for the input fields:
+## Scorecard View 
 
-   * **Name**: Name of the scorecard.
-   * **Description**: Description of the scorecard’s action.
-3. (Optional) Add filters to choose which Catalog entities the scorecard evaluates:
+Scorecards are integrated directly into your service catalog, making it easy for developers to see their service scores at a glance.
 
-   * **Kind** (mandatory): Select the entity `kind`.
-   * **Type** (mandatory): Select the `type` for the chosen kind.
-   * **Owners** (optional): Select the entity owners to be evaluated.
-   * **Tags** (optional): Select the entity tags to be evaluated.
-   * **Lifecycle** (optional): Select the lifecycle stages of the entities.
-   * **Scope** (optional): Choose where to run the evaluation- **project**, **org**, or **account**. The scorecard evaluates **all entities** within the selected scope. If no scope is selected, it evaluates entities across **all scopes** (account, org, and project).
+#### Overview Card
 
-4. Add the **Checks**, then select **Publish Scorecard**.
+A compact scorecard card appears on each service's overview page, displaying:
+- Overall scorecard score as a percentage
+- Number of passed and failed checks
+- Quick visual indicator of service health
 
-![](./static/create-scorecard.png)
+#### Detailed Scorecard Tab
 
----
+Click on the Scorecard tab to view comprehensive information:
+- Individual check results (Pass/Fail)
+- AI-powered explanations for failed checks
+- Actionable recommendations to improve scores
+- Historical trends and score changes over time
 
-## Trends Dashboard of a Scorecard  
-After creating a Scorecard, you can track its aggregate trends and component-wise details in the **Trends Dashboard**. This dashboard displays the number of components the Scorecard applies to and provides detailed scores for each component.
-
-:::info  
-The Trends Dashboard updates every 24 hours. Newly created Scorecards (or Checks) will appear in the dashboard after the next update at **12:00 AM UTC**.  
-:::
-
-Follow these steps to navigate to the Trends Dashboard:  
-
-1. Click **"Configure"** in the side navigation bar to open the **admin view** of **Harness IDP**.  
-2. Click **"Scorecards"** to view all available Scorecards in your account.  
-3. Select the Scorecard you want to track.  
-![](./static/trends-scorecard-1.png)
-
-4. The dashboard will display all components where the Scorecard was executed along with their detailed scores. You can export the aggregate data by clicking **"Export CSV"** to download it in CSV format. 
-![](./static/trends-scorecard-2.png)
+![](./static/scorecard-view.png)
 
 ---
 
-## Trends Dashboard of a Check  
-Similarly, you can track trends for individual **Checks** to view component details and status updates.  
+## Checks
 
-:::info  
-The Scorecard Check jobs run twice a day, with a 12-hour interval between each run. If you run a check now, the next one will automatically run after 12 hours.  
-:::
+Checks are the building blocks of scorecards. Each check evaluates a specific criterion and returns either **Pass** or **Fail**. You can create custom checks using:
 
-Follow these steps to navigate to the Trends Dashboard:
+- **Basic Rules**: Simple evaluations with a single data point and operator (e.g., "README file exists")
+- **Advanced Rules**: Complex evaluations using JEXL expressions (e.g., "Test coverage > 80% AND no critical vulnerabilities")
+- **Custom Data**: Extract data from files using regex patterns or ingest custom data via the Catalog Ingestion API
 
-1. Click **"Configure"** in the side navigation bar and go to **Harness IDP's admin view**.  
-2. Click **"Scorecards"** and navigate to the **"Checks"** section.  
-3. Here, you'll find a list of all created Checks.  
-4. Locate the Check you want to analyze and click on the **"Check Stats"** field.  
-![](./static/trends-checks-1.png)
-
-5. The dashboard will open, displaying component-wise details and insights. You can export the aggregate data by clicking **"Export CSV"** to download it in CSV format. 
-![](./static/trends-check-2.png)
+Learn more in the [Checks documentation](/docs/internal-developer-portal/scorecards/create-scorecards/checks).
 
 ---
 
-## Refresh Scorecards
-You can manually refresh a component's Scorecard evaluation from the **Harness IDP UI**, triggering an on-demand evaluation and updating the component's score in real time.  
+## Data Sources
 
-Follow these steps to refresh Scorecards:  
+Data sources provide the information that checks evaluate. Harness IDP supports multiple data sources including:
 
-1. Navigate to the **component** in the catalog for which you want to refresh the Scorecard evaluation.  
-2. Click **"Scorecard - Overall Score"** from either the **overview page** or the navigation bar at the top.  
-![](./static/refresh-scorecards-1.png)
+- **Git Providers**: GitHub, GitLab, Bitbucket
+- **Development Tools**: Jira, PagerDuty
+- **Infrastructure**: Kubernetes, Harness CI/CD
+- **Catalog**: IDP entity metadata and annotations
+- **Custom Data**: Ingest data from any source using the Catalog Ingestion API
 
-3. On the **Scorecard page**, locate the specific Scorecard you want to refresh and click **"Rerun Checks"**.  
-![](./static/refresh-scorecards-2.png)
+Each data source provides specific data points (numbers, strings, or booleans) that you can use in your checks.
 
-This will **manually trigger a refresh**, updating the component's score immediately.
+Learn more in the [Data Sources documentation](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources).
 
 ---
 
-## View Check Details
+## Get Started with Scorecards
 
-You can view detailed information about each check's execution status directly from the entity's Scorecard view. This helps you understand why a check passed or failed and take appropriate action.
+Follow these steps to start using scorecards in your developer portal:
 
-#### Accessing Check Details
+1. **Enable Scorecard UI Components**: Add scorecard components to your catalog layout so developers can see scores on service pages. See [Enable Scorecard](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard#enable-scorecards) for detailed instructions.
 
-1. Navigate to the entity details view in the Catalog.
-2. Click on **Scorecard** from the navigation bar.
-3. Click on any **Check** to view its detailed execution results.
+2. **Create Checks**: Define the criteria you want to evaluate. Create custom checks using data from various sources. Learn more in [Scorecard Checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks).
 
-#### Passed Checks
+3. **Create Your First Scorecard**: Combine checks into a scorecard, add filters to target specific services, and publish. Follow the [Create a Scorecard](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard) guide.
 
-When a check passes, you'll see a "Passed" status with a confirmation message
-- **About the check**: Description of what the check validates. 
-- **Rule Expression**: Toggle between two views:
-  - **JQL View**: Shows the JEXL expression that was evaluated. 
-  ![](./static/passed-check-jql.png)
+4. **View and Track Results**: Check scores on service pages, view detailed check results, and monitor trends over time. See [Manage Scorecards](/docs/internal-developer-portal/scorecards/manage-scorecards) for more information.
 
-  - **Visual View**: Displays the rule in a basic format showing the data point, condition, and resulted value. 
-  ![](./static/passed-check-visual.png)
-
-#### Failed Checks
-
-When a check fails, you'll see a "Failed" status with an **AI-powered explanation** of why the check failed and what needs to be fixed. 
-- **About the check**: Description of what the check validates. 
-- **Rule Expression**: Toggle between two views:
-  - **JQL View**: Shows the JEXL expression that was evaluated. 
-  ![](./static/failed-check-jql.png)
   
-  - **Visual View**: Displays a table with all rules, their conditions, and the actual resulted values that caused the failure. 
-  ![](./static/failed-check-visual.png)
-
-The Visual view is particularly helpful for failed checks as it shows you exactly which data points didn't meet the expected criteria, making it easier to troubleshoot and resolve issues.
-
----
-
-## Disable Scorecards
-1. Comment out the Scorecard related lines added under **Layout** pages as mentioned above, to remove the Scorecard components from the Catalog pages.
-
-2. Additionally, you can also change the status of all the Scorecards you have to "draft". This will ensure that the computation will not run and will not be shown to the developer.
-
-<DocImage width="1750vw" path={require('./static/remove-scorecard.png')}/>
-
----
-
-## Schedule of a Scorecard
-The Trends Dashboard of a Scorecard updates **every 24 hours**. Newly created Scorecards (or Checks) will appear in the dashboard after the next update at **12:00 AM UTC**.
-
-The Scorecard Check jobs run **twice a day**, with a **12-hour interval between each run**. If you run a check now, the next one will automatically run after 12 hours.  

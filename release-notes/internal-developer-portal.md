@@ -81,11 +81,11 @@ This is useful for testing Workflow changes in feature branches before merging, 
 ---
 
 ### [New Feature] Advanced Checks in Scorecards
-**[Docs](/docs/internal-developer-portal/scorecards/checks-datasources#rules-configuration)**
+**[Docs](/docs/internal-developer-portal/scorecards/create-scorecards/checks#rules-configuration)**
 
 We're introducing **Advanced Rules Configuration** for Scorecard Checks, powered by **JEXL**. This feature provides two modes: **Basic** (user-friendly interface with Data Source, Data Point, Operator, and Value) and **Advanced** (JEXL-powered editor for complex expressions with nested operations, multi-source validations, and built-in validation).
 
-> Learn more about [Advanced Checks in Scorecards](/docs/internal-developer-portal/scorecards/checks-datasources#rules-configuration).
+> Learn more about [Advanced Checks in Scorecards](/docs/internal-developer-portal/scorecards/create-scorecards/checks#rules-configuration).
 
 ![](./static/internal-developer-portal/advanced-rule.png)
 
@@ -1939,9 +1939,9 @@ Jingle bells, jingle bells, jingle all the way to Harness IDP's End-of-Year Rele
 
 In this release, we're excited to unveil features like the HTTP actions support in the scaffolder-backend 🌐, the innovative Developer Portal stage for seamless self-service flows 🚀, and the integration of OPA/Governance policies to ensure streamlined and secure management 🛡️. Plus, we've squashed some pesky bugs 🐛 to make your experience smoother than ever!
 
-- **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [Supported OPA Policies in IDP](/docs/internal-developer-portal/scorecards/opa-implementation), [New IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
+- **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [Supported OPA Policies in IDP](/docs/internal-developer-portal/scorecards/tutorials/opa-implementation), [New IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
 
-- **Tutorial:** [Harness Policy As Code for Services using Scorecards](/docs/internal-developer-portal/scorecards/opa-implementation)
+- **Tutorial:** [Harness Policy As Code for Services using Scorecards](/docs/internal-developer-portal/scorecards/tutorials/opa-implementation)
 
 #### Early access features
 
@@ -1956,7 +1956,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 #### New features and enhancements
 
 - Added support for [http actions](https://roadie.io/backstage/plugins/scaffolder-http-requests/) in the scaffolder-backend. [IDP-1853].
-- Added [OPA/Governance policies](/docs/internal-developer-portal/scorecards/opa-implementation) for Backstage entities. [IDP-1514]
+- Added [OPA/Governance policies](/docs/internal-developer-portal/scorecards/tutorials/opa-implementation) for Backstage entities. [IDP-1514]
 
 #### Bug Fixes
 

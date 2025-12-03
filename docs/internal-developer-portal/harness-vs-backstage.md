@@ -70,7 +70,7 @@ The choice ultimately comes down to build versus buy. While self-managed Backsta
 | **Scorecards**                                | **Self Managed Backstage** | **Harness IDP** | **Notes**                                                                                                                    |
 | --------------------------------------------- | -------------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Service Scorecards                            | Limited                    | Yes             |                                                                                                                              |
-| Custom checks                                 | No                         | Yes             | [Custom checks](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#add-custom-checks) |
+| Custom checks                                 | No                         | Yes             | [Custom checks](https://developer.harness.io/docs/internal-developer-portal/scorecards/create-scorecards/checks) |
 | Parsing support for file-content based checks | No                         | Yes             |                                                                                                                              |
 | Custom Data Source                            | No                         | Yes             | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api-tutorial)        |
 

@@ -32,7 +32,7 @@ In this tutorial we will look into how you can create the policy and apply it to
 
 ![](./static/a-n-p.png)
 
-5. Now from the Library select **IDP Scorecard** and select **Use this Sample**. Presently we have two Policies available for IDP, read more about it in the [detailed docs](/docs/internal-developer-portal/scorecards/opa-implementation). 
+5. Now from the Library select **IDP Scorecard** and select **Use this Sample**. Presently we have two Policies available for IDP, read more about it in the [detailed docs](/docs/internal-developer-portal/scorecards/tutorials/opa-implementation). 
 
 ![](./static/s-p-e.png)
 

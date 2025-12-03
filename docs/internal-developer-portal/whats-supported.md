@@ -98,7 +98,7 @@ Additional features and capabilities supported in Harness IDP:
 | **Feature** | **Support Status** | **Details** |
 |------------|-------------------|-------------|
 | **Custom Plugins** | Supported | We support only [Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview) |
-| **Scorecard Data Sources** | Supported | Multiple data sources available for scorecards. [View all data sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources) |
+| **Scorecard Data Sources** | Supported | Multiple data sources available for scorecards. [View all data sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/create-scorecards/data-sources) |
 | **Backstage Plugins** | Supported | Curated collection of Backstage plugins. [View available plugins](/docs/category/available-plugins) |
 | **Custom Theming and Branding** | Not Supported | Custom theming is not currently available |
 | **Developer Homepage Customization** | Supported | You can customize the Homepage for a personalized developer experience |

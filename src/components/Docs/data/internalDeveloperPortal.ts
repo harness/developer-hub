@@ -103,10 +103,10 @@ export const docsCards: CardSections = [
     description: "",
     list: [
       {
-        title: "Scorecards Checks Overview",
+        title: "Scorecards Overview",
         module: MODULES.idp,
         description: "Learn how the checks overview page tracks components and time-sensitive datapoint for migrations and upgrades.",
-        link: "/docs/internal-developer-portal/scorecards/checks-datasources#checks-overview",
+        link: "/docs/internal-developer-portal/scorecards/scorecard",
       },
       {
         title: "Track Adoption using Dashboard",

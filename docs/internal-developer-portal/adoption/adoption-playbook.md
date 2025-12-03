@@ -226,7 +226,7 @@ This is a step-by-step guide for Platform Engineers to onboard IDP. Your mileage
    - *Docs and Tutorials for Reference:* [List of curated plugins supported in the Internal Developer Portal](https://developer.harness.io/docs/category/available-plugins)
 8. **Your First Scorecard**
    1. Create a “Catalog Readiness” Scorecard which can help you ensure that the Catalog entries are fully updated and all annotations required by the Plugins are set
-   - *Docs and Tutorials for Reference:* [Getting Started with Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/scorecard-quickstart)
+   - *Docs and Tutorials for Reference:* [Getting Started with Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard)
 9. **Invite your early users ✉️**
    1. Send invites to 10-20 users that you have identified as early adopters. Collect feedback
 10. **Setup Metadata Ingestion**

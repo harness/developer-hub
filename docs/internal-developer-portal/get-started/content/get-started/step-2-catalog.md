@@ -51,5 +51,5 @@ Once you have enabled the IDP module, there are three ways to populate your Soft
 Now that you've created your first entity, explore these next steps:
 * [Create Workflows](/docs/internal-developer-portal/get-started) to automate common development tasks.
 * [Configure Plugins](/docs/internal-developer-portal/plugins/overview) to enhance your entities with additional capabilities.
-* [Set up Scorecards](/docs/internal-developer-portal/scorecards/scorecard-quickstart) to track entity quality and compliance.
+* [Set up Scorecards](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard) to track entity quality and compliance.
 * [Enable TechDocs](/docs/internal-developer-portal/techdocs/enable-docs) to publish documentation alongside your entities. 
