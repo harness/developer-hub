@@ -1,0 +1,23 @@
+/* Text style for "Updated on ..." etc. */
+.docItemLastUpdatedUnderTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;              /* space between items */
+  margin-top: 0.125rem;      /* smaller space below title */
+  margin-bottom: 0.85rem;    /* 👈 adds blank line before content */
+  font-size: 0.875rem;       /* ~14px */
+  color: #6b7280;            /* gray-ish text */
+  font-weight: 400; 
+}
+
+/* Dot separator bullet */
+.docItemLastUpdatedSeparator::before {
+  content: "•";
+  margin: 0 0.4rem;
+}
+
+.docItemHeaderDivider {
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  margin: 0 0 0.75rem 0;  /* space below the line before content */
+}

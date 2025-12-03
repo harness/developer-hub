@@ -2078,3 +2078,7 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   background: linear-gradient(135deg, #c458ff, #ff66e8);
   box-shadow: 0 2px 6px rgba(255, 102, 232, 0.5);
 }
+
+.theme-doc-footer .theme-last-updated {
+  display: none;
+}
