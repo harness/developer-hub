@@ -2,22 +2,12 @@ import { Horizon } from "./roadmapData";
 
 export const StoData: Horizon = {
   Now: {
-    description: "Q3 2025, Aug 2025 - Oct 2025",
+    description: "Q4 2025, Nov 2025 - Jan 2026",
     feature: [  
       {
-        tag: [{ value: "Vulnerability" }, { value: "Governance" }],
-        title: "Base image vs App layer vulnerability",
-        description: "Ability to see base image vs. app layer vulnerabilities and govern pipelines.",
-      },
-      {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
-        title: "Open and Remediated Issues at Project Scope",
-        description: "Visibility into all active open and remediated issues across Targets and Pipelines at the project scope."
-      },
-      {
-        tag: [{ value: "Visibility" }, { value: "Platform" }],
-        title: "Vulnerability overview under pipeline execution page",
-        description: "Show vulnerability stats on the Pipeline execution at stage level."
+        title: "Open and Remediated Issues Trend",
+        description: "Visibility into active and remediated issues trend across Targets in a Project."
       },
       {
         tag: [{ value: "Vulnerability Prioritization" }, { value: "AppSec" }],
@@ -30,24 +20,39 @@ export const StoData: Horizon = {
         description: "Automatically create a Jira ticket on exemption request using a configured template."
       },
       {
-        tag: [{ value: "Visibility" }, { value: "Platform" }],
-        title: "Fix: Handle vulnerabilities for Aborted/Resume executions",
-        description: "Aggregate security scan results from all stages/executions including aborted, resumed pipeline executions."
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "ServiceNow" }],
-        title: "Exemption Management via ServiceNow",
-        description: "Native ServiceNow integration for exemption management.",
-      },
-      {
         tag: [{ value: "EPSS" }],
         title: "Exploit Protection Scoring System (EPSS)",
         description: "Provide EPSS score in addition to CVSS score for better vulnerability prioritization.",
+      },
+      {
+        tag: [{ value: "Override Severity" }],
+        title: "Manually override severity",
+        description: "Ability to manually override the severity of an issue across all the targets at Project scope.",
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "Qwiet.ai"}],
+        title: "Native Integration with Qwiet.ai",
+        description: "Native integration with Qwiet.ai scanners aka Harness Secruity Scanners for SAST/SCA/Secret.",
+      },
+      {
+        tag: [{ value: "Usability" }, { value: "Filtering"}],
+        title: "Filters on Exemption page",
+        description: "Provide filters for users to narrow down exemptions based on all the supported criteria.",
+      },
+      {
+        tag: [{ value: "External Policy Failures" }, { value: "Severity"}],
+        title: "Map External Policy Failures to severity",
+        description: "Map external policy failures ingested from 3rd party scanners to a severity instead of INFO level issues.",
+      },
+      {
+        tag: [{ value: "Reachability" }, { value: "Vulnerability Prioritization"}],
+        title: "Reachability based Vulnerability Prioritization",
+        description: "Prioritize vulnerabilities on Harness risk score - formualted on CVSS, EPSS, static and runtime Reacability, etc.",
       }
     ],
   },
   Next: {
-    description: "Q4 2025, Nov 2025 - Jan 2026",
+    description: "Q1 2026, Feb 2026 - April 2026",
     feature: [
       {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
@@ -55,9 +60,19 @@ export const StoData: Horizon = {
         description: "A centralized, prioritized vulnerability list for the AppSec persona at the Org/Account scope.",
       },
       {
-        tag: [{ value: "Platform" }],
-        title: "Target view",
-        description: "Provides insights on vulnerability, external policy failures, code coverage, etc. for a target, in addition to the current pipeline view.",
+        tag: [{ value: "AST" }],
+        title: "App/Teams view",
+        description: "Target view grouped by apps and teams.",
+      },
+      {
+        tag: [{ value: "Runtime" }, { value: "Visibility"}],
+        title: "Code to Runtime Visibility",
+        description: "End-to-end vulnerability traceability from code to runtime, powered by the Security Graph.",
+      },
+      {
+        tag: [{ value: "Agentic" }],
+        title: "Agentic Workflow",
+        description: "Unified Agentic Workflow across AppSec modules for Posture and Remediation use cases.",
       },
       {
         tag: [{ value: "Visibility" }, { value: "Dashboard"}],
@@ -69,25 +84,25 @@ export const StoData: Horizon = {
         title: "Dastardly Integration",
         description: "Support Dastardly with Orchestration, Extraction, and Ingestion modes, with Built-in scanner workflow step under DAST."
       },
-        {
+      {
         tag: [{ value: "AI" }, { value: "Remediation" }, { value: "SCA" }],
         title: "Auto PRs for SCA Remediation",
         description: "Create PRs for SCA issues using AI suggestions for direct dependency upgrades (JS/TS, Python, Java). Transitives excluded."
-      },
-        {
-        tag: [{ value: "Runtime" }, { value: "Visibility"}],
-        title: "Runtime Visibility",
-        description: "Ingest runtime vulnerabilities via Traceable's Protection agent.",
       }
     ],
   },
   Later: {
-    description: "Q1 2026, Feb 2026 & Beyond",
+    description: "Q2 2026, May 2026 & Beyond",
     feature: [
       {
         tag: [{ value: "Onboarding" }],
         title: "Get Started",
         description: "A new Get Started workflow to onboard third-party integrations - Github Actions, Jenkins, GitLab.",
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "ServiceNow" }],
+        title: "Exemption Management via ServiceNow",
+        description: "Native ServiceNow integration for exemption management.",
       },
       {
         tag: [{ value: "Data Handling" }],
@@ -98,11 +113,6 @@ export const StoData: Horizon = {
         tag: [{ value: "Integration" }, { value: "CrowdStrike"}],
         title: "CrowdStrike Integration",
         description: "Native integration with CrowdStrike.",
-      },
-              {
-        tag: [{ value: "Runtime" }, { value: "Vulnerability Prioritization"}],
-        title: "Runtime Vulnerability Prioritization",
-        description: "Correlate runtime vulnerabilities with SAST/SCA issue findings for better vulnerability prioritization.",
       }
     ],
   },
@@ -110,6 +120,24 @@ export const StoData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Vulnerability" }, { value: "Governance" }],
+        title: "Base image vs App layer vulnerability",
+        description: "Ability to see base image vs. app layer vulnerabilities and govern pipelines.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/set-up-scans/container-scanning/base-image-vulnerabilites/base-image-detection/"
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Fix: Handle vulnerabilities for Aborted/Resume executions",
+        description: "Aggregate security scan results from all stages/executions including aborted, resumed pipeline executions.",
+        link: "https://developer.harness.io/release-notes/security-testing-orchestration#fixed-issues-1"
+      },
+      {
+        tag: [{ value: "Reporting" }],
+        title: "Download Vulnerabilities",
+        description: "Download CSV with the vulnerabilities found in the pipeline execution.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/view-security-test-results/export-scan-results#export-as-csv-from-the-vulnerabilities-tab/"
+      },
       {
         tag: [{ value: "Notifications" }, { value: "Platform" }],
         title: "Exemption Notifications",
