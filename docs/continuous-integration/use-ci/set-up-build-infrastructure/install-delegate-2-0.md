@@ -7,6 +7,19 @@ sidebar_position: 51
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+<style>
+{`
+  .tabs--full-width {
+    width: 100%;
+  }
+  .tabs--full-width .tabs__item {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+`}
+</style>
+
 :::warning Closed Beta
 
 Delegate 2.0 is currently in closed beta, and is available for select customers only. Access is determined by the product team, and is based on current [supported use cases and steps](#whats-supported).
@@ -38,32 +51,55 @@ Harness Delegate 2.0 is under **Beta** and can only be used for Mac Build, Andro
 |------------|----------------------|
 | Git Clone  | Only for Github      |
 | Run        |                      |
-| Docker Build and Push |           |
 
 ## Delegate Installation Instructions
 
-### Get Relevant Information
+## Quick Reference
 
-In order to install the delegate, you will need:
-- `ACCOUNT_ID`
-- `DELEGATE_TOKEN`
-- `MANAGER_HOST_AND_PORT`
+| Command | Description |
+|---------|-------------|
+| `./delegate install` | Install and register the service |
+| `./delegate start` | Start the delegate service |
+| `./delegate stop` | Stop the service gracefully |
+| `./delegate status` | Show delegate status and details |
+| `./delegate uninstall` | Uninstall service (preserves config/logs) |
 
-To get this information, do the following:
+**Important file locations:**
 
-<Tabs>
+| OS | Config File | Logs | Service Definition |
+|----|-------------|------|-------------------|
+| **MacOS** | `~/.harness-delegate/config.env` | `~/.harness-delegate/logs/` | `~/Library/LaunchAgents/harness-delegate.plist` |
+| **Linux** | `./config.env` | `./nohup-delegate.out` | N/A (runs in foreground/background) |
+| **Windows** | `C:\HarnessDelegate\config.env` | `C:\HarnessDelegate\logs\` | Windows Service Control Manager |
+
+---
+
+### Get Harness Credentials
+
+Before installation, obtain your Account ID, Delegate Token, and Harness URL:
+
+<Tabs className="tabs--full-width">
 <TabItem value="Interactive Guide">
 
 <DocVideo src="https://app.tango.us/app/embed/Get-Delegate-2-0-Credentials-41d069778e3e421d8791dd4dcc8ab793" title="Get Credentials for Delegate 2.0" />
 
 </TabItem>
-<TabItem value="Step-by-Step">
+<TabItem value="Step-by-Step" default>
 
 1. In the left nav, click **Project Settings**.
 2. Under **Project-level Resources**, click **Delegates**.
 3. Click **+ New Delegate**.
 4. Choose **Docker** as your delegate type.
-5. Copy `ACCOUNT_ID`, `DELEGATE_TOKEN`, and `MANAGER_HOST_AND_PORT` which can be found in the `docker run` command. This will be under the heading **Run the following command to install**.
+5. Copy the values from the `docker run` command:
+   - `ACCOUNT_ID` → Your Account ID
+   - `DELEGATE_TOKEN` → Your Delegate Token  
+   - `MANAGER_HOST_AND_PORT` → Your Harness URL
+
+   ![](./static/ui-delegate-installer.png)
+
+:::tip
+Keep these values ready - you'll use them in the installation command.
+:::
 
 </TabItem>
 </Tabs>
@@ -72,147 +108,400 @@ To get this information, do the following:
 
 Download and install the correct binary for your OS.
 
-<Tabs>
-<TabItem value="MacOS - arm64">
+<Tabs className="tabs--full-width">
+<TabItem value="MacOS">
 
-1. Download the binary for your system
-```
-curl --output delegate 'https://app.harness.io/public/shared/delegates/1.28.0/delegate-darwin-amd64'
-```
+:::info
+The delegate runs as a user service (LaunchAgent), not a system service. It only runs when you're logged in. Enable auto-login (see step 5) to ensure it starts after system reboots.
+:::
 
-2. Give it permission to execute
-```
-chmod +x delegate
-```
+1. **Download the delegate binary**
 
-3. Install the delegate and create the `config.env` file
-```
-./delegate install --account=[Account ID] \
-                       --token=[Delegate Token] \
-                       --url=[Harness URL]  \
-                       --tags="macos-arm64" \
-                       --name=[Your Delegate Name]
-```
+   Replace `<VERSION>` with the latest version (e.g., `1.28.0`):
 
-4. Start the delegate as service.
-```
-./delegate start
-```
+   For **arm64** (Apple Silicon):
+   ```bash
+   curl -L "https://app.harness.io/public/shared/delegates/<VERSION>/delegate-darwin-arm64" -o delegate
+   chmod +x delegate
+   ```
+
+   For **amd64** (Intel):
+   ```bash
+   curl -L "https://app.harness.io/public/shared/delegates/<VERSION>/delegate-darwin-amd64" -o delegate
+   chmod +x delegate
+   ```
+
+   Example using version 1.28.0:
+   ```bash
+   curl -L "https://app.harness.io/public/shared/delegates/1.28.0/delegate-darwin-arm64" -o delegate
+   ```
+
+2. **Install the delegate with your credentials**
+
+   Run the install command with the credentials you obtained from the [previous step](#get-harness-credentials):
+
+   ```bash
+   ./delegate install --account=[Your Account ID] \
+                      --token=[Your Delegate Token] \
+                      --url=[Your Harness URL] \
+                      --name=[Your Delegate Name]
+   ```
+
+   :::info
+   If you don't specify a name, the delegate will default to `harness-delegate`.
+   :::
+
+   **Optional: Add tags for delegate selection**
+   
+   Tags are optional but useful for routing specific pipelines to this delegate:
+   
+   ```bash
+   ./delegate install --account=[Your Account ID] \
+                      --token=[Your Delegate Token] \
+                      --url=[Your Harness URL] \
+                      --name=[Your Delegate Name] \
+                      --tags="production,macos"
+   ```
+
+   <details>
+   <summary>View all available installation options</summary>
+
+   ```bash
+   ./delegate install --help
+   ```
+
+   Available options:
+   - `--account` - Your Harness account ID **(required)**
+   - `--token` - Delegate authentication token **(required)**
+   - `--url` - Harness server URL **(required)**
+   - `--name` - Custom delegate name (default: `harness-delegate`)
+   - `--tags` - Comma-separated tags for delegate selection (optional)
+   - `--env-file` - Path to config file (default: `~/.harness-delegate/config.env`)
+   - `--graceful-exit-timeout` - Shutdown timeout in seconds (default: 300)
+   - `--auto-restart-on-failure` - Auto-restart on failure (default: true) 
+
+   </details>
+
+   **What this command creates:**
+   - Workspace directory: `~/.harness-delegate`
+   - Configuration file: `~/.harness-delegate/config.env`
+   - LaunchAgent service: `~/Library/LaunchAgents/harness-delegate.plist`
+
+3. **Start the delegate service**
+
+   ```bash
+   ./delegate start
+   ```
+
+   You should see a success message with the config location and log file path.
+
+   ![](./static/mac-delegate-start.png)
+
+4. **Verify the delegate is running**
+
+   Check the status:
+
+   ```bash
+   ./delegate status
+   ```
+
+   ![](./static/mac-delegate-status.png)
+
+   View logs in real-time:
+
+   ```bash
+   tail -f ~/.harness-delegate/logs/delegate.log
+   ```
+
+   Navigate to **Project Settings** > **Delegates** in Harness UI. You should see your delegate with a **Connected** status.
+
+   ![](./static/delegate-listing.png)
+
+5. **Enable auto-login (Recommended)**
+
+   Since the delegate runs as a user service, enable auto-login to ensure it starts after system reboots:
+
+   1. Open **System Settings** (or **System Preferences** on older macOS)
+   2. Go to **Users & Groups**
+   3. Click the lock icon and authenticate
+   4. Select **Login Options**
+   5. Set **Automatic login** to your user account
+
+#### Additional Configuration
+
+**Update delegate settings:**
+
+1. Stop the service: `./delegate stop`
+2. Edit the config: `nano ~/.harness-delegate/config.env`
+3. Start the service: `./delegate start`
+
+**Proxy configuration:**
+
+If you need proxy settings, add them to `~/.harness-delegate/config.env`. See [Configure Delegate Proxy Settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings).
+
+**Manual plugin installation:**
+
+Some CI steps can run directly on the host. Harness automatically downloads required plugins, but manual installation is needed when your infrastructure lacks internet connectivity (e.g., behind a proxy or firewall).
+
+To manually install a plugin:
+
+1. Download the plugin from its source (e.g., [drone-git v1.7.6](https://github.com/wings-software/drone-git/releases/tag/v1.7.6))
+2. Decompress: `zstd -d plugin-darwin-arm64.zst` (or `plugin-darwin-amd64.zst` for Intel)
+3. Move to plugins directory:
+   ```bash
+   mkdir -p ~/.harness-delegate/default/plugin/drone-git/
+   mv plugin-darwin-* ~/.harness-delegate/default/plugin/drone-git/
+   chmod +x ~/.harness-delegate/default/plugin/drone-git/plugin-darwin-*
+   ```
+
+#### Manage the Delegate
+
+**Stop:** `./delegate stop` - Gracefully shuts down (waits up to 5 minutes for tasks to complete)
+
+**Uninstall:** `./delegate uninstall` - Removes service registration (preserves config, logs, and binary)
+
+**Upgrade:**
+1. Download new binary (replace existing `delegate` file)
+2. `./delegate stop`
+3. `./delegate start`
+
 </TabItem>
 
-<TabItem value="MacOS - amd64">
+<TabItem value="Linux">
 
-1. Download the binary for your system
-```
-curl --output delegate 'https://app.harness.io/public/shared/delegates/1.28.0/delegate-darwin-amd64'
-```
+1. **Download the delegate binary**
 
-2. Give it permission to execute
-```
-chmod +x delegate
-```
+   For **arm64**:
+   ```bash
+   curl -L "https://app.harness.io/public/shared/delegates/1.28.0/delegate-linux-arm64" -o delegate
+   chmod +x delegate
+   ```
 
-3. Install the delegate and create the `config.env` file
-```
-./delegate install --account=[Account ID] \
-                       --token=[Delegate Token] \
-                       --url=[Harness URL]  \
-                       --tags="macos-amd64" \
-                       --name=[Your Delegate Name]
-```
+   For **amd64**:
+   ```bash
+   curl -L "https://app.harness.io/public/shared/delegates/1.28.0/delegate-linux-amd64" -o delegate
+   chmod +x delegate
+   ```
 
-4. Start the delegate as service.
-```
-./delegate start
-```
+2. **Create configuration file**
+
+   Create a `config.env` file with the credentials you obtained from the [previous step](#get-harness-credentials):
+
+   ```bash
+   cat > config.env <<EOF
+   HARNESS_ACCOUNT_ID="[Your Account ID]"
+   HARNESS_TOKEN="[Your Delegate Token]"
+   HARNESS_URL="[Your Harness URL]"
+   HARNESS_NAME="[Your Delegate Name]"
+   EOF
+   ```
+
+   :::info
+   If you don't specify `HARNESS_NAME`, the delegate will default to `harness-delegate`.
+   :::
+
+   **Optional: Add tags**
+   
+   Tags are optional but useful for routing specific pipelines:
+   
+   ```bash
+   cat > config.env <<EOF
+   HARNESS_ACCOUNT_ID="[Your Account ID]"
+   HARNESS_TOKEN="[Your Delegate Token]"
+   HARNESS_URL="[Your Harness URL]"
+   HARNESS_NAME="[Your Delegate Name]"
+   HARNESS_TAGS="production,linux"
+   EOF
+   ```
+
+3. **Start the delegate**
+
+   Run in the background:
+
+   ```bash
+   nohup ./delegate server --env-file config.env > nohup-delegate.out 2>&1 &
+   ```
+
+4. **Verify the delegate is running**
+
+   Check the logs:
+
+   ```bash
+   tail -f nohup-delegate.out
+   ```
+
+   Navigate to **Project Settings** > **Delegates** in Harness UI. You should see your delegate with a **Connected** status.
+
+#### Additional Configuration
+
+**Proxy configuration:**
+
+If you need proxy settings, add them to `config.env`. See [Configure Delegate Proxy Settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings).
+
+**Manual plugin installation:**
+
+Some CI steps can run directly on the host. Harness automatically downloads required plugins, but manual installation is needed when your infrastructure lacks internet connectivity (e.g., behind a proxy or firewall).
+
+To manually install a plugin:
+
+1. Download the plugin from its source (e.g., [drone-git v1.7.6](https://github.com/wings-software/drone-git/releases/tag/v1.7.6))
+2. Decompress: `zstd -d plugin-linux-arm64.zst` (or `plugin-linux-amd64.zst`)
+3. Move to plugins directory:
+   ```bash
+   mkdir -p ./default/plugin/drone-git/
+   mv plugin-linux-* ./default/plugin/drone-git/
+   chmod +x ./default/plugin/drone-git/plugin-linux-*
+   ```
+
+#### Manage the Delegate
+
+**Stop:** Find and kill the process using `ps` and `kill` commands
+
+**Upgrade:**
+1. Download new binary (replace existing `delegate` file)
+2. Kill the existing process
+3. Start with the command from step 3
+
 </TabItem>
+<TabItem value="Windows">
 
-<TabItem value="Linux - arm64">
+:::info
+The delegate runs under the LocalSystem account.
+:::
 
-1. Download the binary for your system
-```
-sudo curl --output delegate https://app.harness.io/public/shared/delegates/1.28.0/delegate-linux-arm64
-```
+1. **Download the delegate binary**
 
-2. Give it permission to execute
-```
-sudo chmod +x delegate
-```
+   Open **PowerShell as Administrator**:
+   - Press **Windows Key + X**
+   - Select **"Windows PowerShell (Admin)"** or **"Terminal (Admin)"**
 
-3. Create a config.env file in the local folder
-```
-cat > config.env <<EOF
-NAME=[Name of the delegate]
-ACCOUNT_ID=[Your account ID]
-TOKEN=[Copy Delegate Token from Harness platform]
-URL=[MANAGER_HOST_AND_PORT]
-TAGS="linux-arm64"
-EOF
-```
+   Replace `<VERSION>` with the latest version (e.g., `1.28.0`):
 
-4. Start the delegate in the background
-```
-nohup ./delegate server --env-file config.env > nohup-delegate.out 2>&1 &
-```
+   ```powershell
+   Invoke-WebRequest -Uri "https://app.harness.io/public/shared/delegates/<VERSION>/delegate-windows-amd64.exe" -o delegate
+   ```
 
-</TabItem>
+   :::note
+   In Command Prompt, use: `curl -L "https://app.harness.io/public/shared/delegates/<VERSION>/delegate-windows-amd64.exe" -o delegate`
+   :::
 
-<TabItem value="Linux - amd64">
+2. **Install the delegate with your credentials**
 
+   Run the install command with the credentials you obtained from the [previous step](#get-harness-credentials):
 
-1. Download the binary for your system
-```
-sudo curl --output delegate https://app.harness.io/public/shared/delegates/1.28.0/delegate-linux-amd64
-```
+   ```powershell
+   .\delegate install --account=[Your Account ID] `
+                          --token=[Your Delegate Token] `
+                          --url=[Your Harness URL] `
+                          --name=[Your Delegate Name]
+   ```
 
-2. Give it permission to execute
-```
-sudo chmod +x delegate
-```
+   :::info
+   If you don't specify a name, the delegate will default to `harness-delegate`.
+   :::
 
-3. Create a config.env file in the local folder
-```
-cat > config.env <<EOF
-NAME=[Name of the delegate]
-ACCOUNT_ID=[Your account ID]
-TOKEN=[Copy Delegate Token from Harness platform]
-URL=[MANAGER_HOST_AND_PORT]
-TAGS="linux-amd64"
-EOF
-```
+   **Optional: Add tags for delegate selection**
+   
+   Tags are optional but useful for routing specific pipelines to this delegate:
+   
+   ```powershell
+   .\delegate install --account=[Your Account ID] `
+                     --token=[Your Delegate Token] `
+                     --url=[Your Harness URL] `
+                     --name=[Your Delegate Name] `
+                     --tags="production,windows"
+   ```
 
-4. Start the delegate in the background
-```
-nohup ./delegate server --env-file config.env > nohup-delegate.out 2>&1 &
-```
+   <details>
+   <summary>View all available installation options</summary>
 
-</TabItem>
-<TabItem value="Windows - amd64">
+   ```powershell
+   .\delegate install --help
+   ```
 
-Installation of the delegate on Windows is done using Powershell.
+   Available options:
+   - `--account` - Your Harness account ID **(required)**
+   - `--token` - Delegate authentication token **(required)**
+   - `--url` - Harness server URL **(required)**
+   - `--name` - Custom delegate name (default: `harness-delegate`)
+   - `--tags` - Comma-separated tags for delegate selection (optional)
+   - `--env-file` - Path to config file (default: `C:\HarnessDelegate\config.env`)
+   - `--auto-restart-on-failure` - Auto-restart on failure (default: true)
 
-1. Download the binary for your system
-```powershell
-curl --output delegate.exe https://app.harness.io/public/shared/delegates/1.28.0/delegate-windows-amd64.exe
-```
+   </details>
 
-2. Create a config.env file from the following code block. Ensure you replace the fields below with the data you retrieved while [getting the relevant information](#get-relevant-information) above.
+   **What this command creates:**
+   - Workspace directory: `C:\HarnessDelegate`
+   - Configuration file: `C:\HarnessDelegate\config.env`
+   - Windows service registered in Service Control Manager
 
-```
-@"
-NAME=[Name of the delegate]
-ACCOUNT_ID=[Your account ID]
-TOKEN=[Copy Delegate Token from Harness platform]
-URL=[MANAGER_HOST_AND_PORT]
-TAGS="windows-amd64"
-"@ | Set-Content -Path "config.env"
-```
+3. **Start the delegate service**
 
-3. Start the delegate.
+   ```powershell
+   .\delegate start
+   ```
 
-```powershell
-.\delegate.exe server --env-file config.env
-```
+   You should see a success message with the config location and log file path.
+
+4. **Verify the delegate is running**
+
+   Check the status:
+
+   ```powershell
+   .\delegate status
+   ```
+
+   Or use Windows native commands:
+
+   ```powershell
+   Get-Service "harness-delegate"
+   ```
+
+   View logs in real-time:
+
+   ```powershell
+   Get-Content -Path "C:\HarnessDelegate\logs\delegate.log" -Tail 10 -Wait
+   ```
+
+   Navigate to **Project Settings** > **Delegates** in Harness UI. You should see your delegate with a **Connected** status.
+
+#### Additional Configuration
+
+**Update delegate settings:**
+
+1. Stop the service: `.\delegate stop`
+2. Edit the config: `notepad C:\HarnessDelegate\config.env`
+3. Start the service: `.\delegate start`
+
+**Proxy configuration:**
+
+If you need proxy settings, add them to `C:\HarnessDelegate\config.env`. See [Configure Delegate Proxy Settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings).
+
+**Manual plugin installation:**
+
+Some CI steps can run directly on the host. Harness automatically downloads required plugins, but manual installation is needed when your infrastructure lacks internet connectivity (e.g., behind a proxy or firewall).
+
+To manually install a plugin:
+
+1. Download the plugin from its source (e.g., [drone-git v1.7.6](https://github.com/wings-software/drone-git/releases/tag/v1.7.6))
+2. Decompress: `zstd.exe -d plugin-windows-amd64.zst -o plugin-windows-amd64.exe`
+3. Move to plugins directory:
+   ```powershell
+   New-Item -ItemType Directory -Force -Path "C:\HarnessDelegate\default\plugin\drone-git\"
+   Move-Item plugin-windows-amd64.exe "C:\HarnessDelegate\default\plugin\drone-git\"
+   ```
+
+#### Manage the Delegate
+
+**Stop:** `.\delegate stop` - The service will auto-start on system reboot
+
+**Uninstall:** `.\delegate uninstall` - Removes service registration (preserves config, logs, and binary)
+
+**Upgrade:**
+1. Download new binary (replace existing `delegate` file)
+2. `.\delegate stop`
+3. `.\delegate start`
+
 </TabItem>
 
 </Tabs>
@@ -236,9 +525,10 @@ Most importantly, ensure that you have set `Local` as the **Infrastructure** and
 
 ## Delegate Configuration
 
-Here is where the `config.env` file is located for each operating system:
-- **MacOS**: The `config.env` file is located in `~/.harness-delegate/config.env` (after you run the `./delegate` install command).
-- **Linux** and **Windows**: The `config.env` file is created by the user during the linux and windows [delegate installation](#download-and-install-the-delegate). The file will be where you created it at that point in time.
+The `config.env` file location for each operating system:
+- **MacOS**: `~/.harness-delegate/config.env`
+- **Linux**: `./config.env` (in the directory where you created it)
+- **Windows**: `C:\HarnessDelegate\config.env`
 
 ### Set Max Stage Capacity
 
@@ -286,9 +576,45 @@ CLEANUP_GRACE_PERIOD_SECONDS=30
 
 ### Logs
 
-You can find the delegate logs in the following files:
-- **MacOS**: `${HOME}/.harness-delegate/logs/delegate.log`
-- **Linux**: `nohup-delegate.out`
+You can find the delegate logs in the following locations:
+- **MacOS**: `~/.harness-delegate/logs/delegate.log`
+- **Linux**: `./nohup-delegate.out` (in the directory where you started the delegate)
+- **Windows**: `C:\HarnessDelegate\logs\delegate.log`
+
+#### Log File Configuration
+
+The delegate supports automatic log rotation and sanitization. Configure these using environment variables in your `config.env`:
+
+```bash
+# Enable/disable file logging
+LOG_ENABLE_FILE_LOGGING=true
+
+# Custom log file path (optional)
+LOG_FILE_PATH=/custom/path/to/delegate.log
+
+# Log rotation settings
+LOG_MAX_SIZE_MB=100        # Rotate at 100MB
+LOG_MAX_BACKUPS=3          # Keep 3 old files
+LOG_MAX_AGE_DAYS=28        # Delete after 28 days
+LOG_COMPRESS=false         # Compress rotated logs
+```
+
+**View logs in real-time:**
+
+MacOS:
+```bash
+tail -f ~/.harness-delegate/logs/delegate.log
+```
+
+Linux:
+```bash
+tail -f nohup-delegate.out
+```
+
+Windows:
+```powershell
+Get-Content -Path "C:\HarnessDelegate\logs\delegate.log" -Tail 20 -Wait
+```
 
 ### Metrics
 
@@ -299,3 +625,4 @@ Delegate 2.0 exposes metrics on the `/metrics` endpoint for monitoring and obser
 This video walks through an end to end demo of the delegate installation, including usage and a pipeline execution.
 
 <DocVideo src="https://www.loom.com/share/1e292d0f51004882bfd5462ef0553222?sid=487e23cb-28fc-4d2e-ac66-07197fa7dafe" />
+
