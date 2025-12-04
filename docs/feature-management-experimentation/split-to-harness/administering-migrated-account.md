@@ -204,6 +204,20 @@ Role bindings are assigned at the scope where they apply. For example:
   * Project-scoped role bindings are assigned in Project Settings.
 :::
 
+:::tip[Enabling an Account Admin user to manage FME integrations]
+
+**If you were migrated to a pre-existing Harness account,** you will need to grant permissions to an Account Admin to add or edit integrations in **FME Settings**. Harness recommends [creating a user group](/docs/platform/role-based-access-control/add-user-groups/#create-user-groups-manually) at the account level (for example, named `Integration Editors`) and add the user (i.e. an Account Admin user) to the group. 
+
+Grant permissions to manage FME integrations by enabling the Harness RBAC `Create / Edit Connectors` permission:
+
+1. At the account level, [create a role](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/#create-a-role) (for example, named `Integration Editor Role`), and enable the **Shared Resources** > **Connectors** > **Create / Edit** permission.
+2. [Assign the role binding](/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) at the account level for the `Integration Editors` group: **Integration Editor Role** over the **All Account Level Resources** resource group.
+
+The user may need to logout, clear cookies, and login for the new permission to take effect.
+
+Alternatively, you can assign the role binding directly to an individual user or to **All FME Admins** at the account level in Step 2. 
+:::
+
 #### Role bindings at the project level
 
 To grant similar permissions to your legacy Split settings, the new Harness FME user groups were inherited by Harness projects and the following role bindings were assigned:
