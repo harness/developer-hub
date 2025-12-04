@@ -131,30 +131,32 @@ const config: Config = {
             { to: '/docs/cloud-cost-management', label: 'Cloud Cost Management' },
             { to: '/docs/software-engineering-insights', label: 'Software Engineering Insights' },
 
-            // === Unlisted ===
+            // === Resources & Support ===
+            { type: 'html', value: '<div class="dropdown__section-header">Resources & Support</div>' },
+            { to: '/university', label: 'Harness University' },
+            {
+              label: 'Harness Solutions Factory',
+              to: '/docs/harness-solutions-factory',
+            },
             {
               label: 'Self-Managed Enterprise Edition',
-              to: 'docs/self-managed-enterprise-edition',
+              to: '/docs/self-managed-enterprise-edition',
             },
             {
               label: 'Open Source',
-              to: 'docs/open-source',
-            },
-            {
-              label: 'Harness Solutions Factory',
-              to: 'docs/harness-solutions-factory',
+              to: '/docs/open-source',
             },
             {
               label: 'FAQs',
-              to: 'docs/faqs',
+              to: '/docs/faqs',
             },
             {
               label: 'Troubleshooting',
-              to: 'docs/troubleshooting',
+              to: '/docs/troubleshooting',
             },
             {
               label: 'Harness Cloud Operations',
-              to: 'docs/harness-cloud-operations',
+              to: '/docs/harness-cloud-operations',
             },
           ],
         },

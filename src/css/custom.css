@@ -1916,12 +1916,14 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 }
 
 /* Ensure docs dropdown links are aligned with icon */
-.navbar .dropdown__link[href^="/docs/"] {
+.navbar .dropdown__link[href^="/docs/"],
+.navbar .dropdown__link[href^="/university"] {
   display: flex;
   align-items: center;
 }
 
-.navbar .dropdown__link[href^="/docs/"]::before {
+.navbar .dropdown__link[href^="/docs/"]::before,
+.navbar .dropdown__link[href^="/university"]::before {
   content: "";
   width: 20px;
   height: 20px;
@@ -1964,9 +1966,10 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 .navbar .dropdown__link[href*="/docs/software-engineering-insights"]{ --nav-icon: url('/img/icon_sei.svg'); }
 
 /* Exceptions: links that should not display icons or spacing */
+.navbar .dropdown__link[href*="/university"]{ --nav-icon: url('/img/university_icon.svg'); }
+.navbar .dropdown__link[href*="/docs/harness-solutions-factory"]{ --nav-icon: url('/img/icon-hsf.svg'); }
 .navbar .dropdown__link[href*="/docs/open-source"]::before,
 .navbar .dropdown__link[href*="/docs/self-managed-enterprise-edition"]::before,
-.navbar .dropdown__link[href*="/docs/harness-solutions-factory"]::before,
 .navbar .dropdown__link[href*="/docs/faqs"]::before,
 .navbar .dropdown__link[href*="/docs/troubleshooting"]::before,
 .navbar .dropdown__link[href*="/docs/harness-cloud-operations"]::before
