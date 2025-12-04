@@ -204,6 +204,9 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/ai-test-automation/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
 /release-notes/ai-test-automation.md shibam.dhar@harness.io debaditya.chatterjee@harness.io
 /src/components/Docs/AiTestAutomation.tsx shibam.dhar@harness.io debaditya.chatterjee@harness.io
+/src/components/Roadmap/data/ataData.ts shibam.dhar@harness.io debaditya.chatterjee@harness.io
+/release-notes/static/ait/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
+
 
 # Artifact Registry Docs
 /docs/artifact-registry/ shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
