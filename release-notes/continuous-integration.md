@@ -31,6 +31,31 @@ Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
 
+## December 2025
+
+### Version 1.110.0
+<!-- 2025-12-01 -->
+
+#### New Features and Enhancements
+- Enhanced pipeline status reporting by preventing duplicate Git status updates when custom status reporting is enabled. When the PIPE_ENABLE_SEND_STATUS_TO_GIT feature flag is active, CI will no longer send redundant status updates to Git repositories. (CI-19614)
+
+#### Fixed Issues
+- Fixed an issue in Harness Cloud where bash code modifications were causing unexpected results with positional shell variables and special characters. (CI-19935)
+- Resolved an issue where branch listing in the manual run pipeline page was not populating correctly and caused typing difficulties. (CI-19932)
+- Fixed Admin APIs that were displaying null values for macExecutionLimits and windowsExecutionLimits while showing totalExecutionLimits correctly. (CI-19367)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| plugins/cache | Security vulnerability fixes (CVE-2025-22869) | 1.9.16 | 1.9.17 |
+| plugins/artifactory | Updated JFrog CLI to 2.82.0 + vulnerability fixes (replaces SDK dependency) | 1.8.0 | 1.8.1 |
+| plugins/kaniko-gcr | Security vulnerability fixes (CVE-2024-45337, CVE-2025-22869, CVE-2025-21613, CVE-2025-21614) | 1.13.0 | 1.13.2 |
+| plugins/kaniko-acr | Security vulnerability fixes (CVE-2025-30204) | 1.13.0 | 1.13.2 |
+| plugins/gcr | Security vulnerability fixes | 21.1.0 | 21.1.1 |
+| plugins/gar | Security vulnerability fixes | 21.1.0 | 21.1.1 |
+| plugins/buildx-gar | Security vulnerability fixes | 1.3.9 | 1.3.10 |
+
 ## November 2025
 
 ### Version 1.109.0
