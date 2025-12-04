@@ -193,10 +193,6 @@ Harness Chaos now supports select node-level chaos experiments on GKE Autopilot 
 - **[Node Network Loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss)**: Injects network packet loss at the node level
 - **[Node Network Latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-latency)**: Introduces network latency for node-level traffic
 
-#### **Node Service Management**
-- **[Kubelet Service Kill](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/kubelet-service-kill)**: Stops the kubelet service on target nodes
-- **[Node Restart](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-restart)**: Performs controlled restart of Kubernetes nodes
-
 ## Next Steps
 
 Now that you have Harness Chaos Engineering set up on your GKE Autopilot cluster:
