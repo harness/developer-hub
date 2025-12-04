@@ -84,9 +84,3 @@ To use an AKS cluster for deployments, the AKS cluster must have local accounts 
    :::
 
 6. Select **Save and Continue** to run the connection test. Harness tests the credentials you provided using the delegates you selected. If the test passes, select **Finish**.
-
-   During the connection test, Harness uses the provided credentials to list controllers in the **default** namespace in order to validate the credentials. If validation fails, Harness does not save the connector and the connection test fails.
-
-   If your cluster does not have a **default** namespace, or your credentials do not have permission in the **default** namespace, then you can check **Skip default namespace validation** to skip this check and save your connector's settings. You don't need to uncheck this setting later.
-
-   When you use this connector for a build or deployment, you'll specify a namespace. During a build or deployment, Harness uses this namespace rather than the **default** namespace. When you save a pipeline, Harness validates the namespace connection even if you selected **Skip default namespace validation** in the connector's settings.
