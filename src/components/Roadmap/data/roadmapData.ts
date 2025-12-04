@@ -17,7 +17,7 @@ import { CdeData } from "./cdeData";
 import { DbdevopsData } from "./dbdevopsData"; 
 import { AtaData } from "./ataData";
 import { arData } from "./arData"; 
-
+import { QwietaiData } from "./qwietaidata";
 
 export interface ModuleData {
   title: string;
@@ -107,6 +107,12 @@ const ModuleData: ModuleData[] = [
     description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.ssca,
     horizon: SscaData,
+  },
+  {
+    title: "Security Scanner",
+    description: "SaaS release status: GA, SMP release status: GA",
+    module: MODULES.qwietai,
+    horizon: QwietaiData,
   },
   {
     title: "Chaos Engineering",

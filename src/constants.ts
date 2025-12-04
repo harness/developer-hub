@@ -11,6 +11,7 @@ export enum MODULES {
   srm = 'srm',
   ce = 'ce',
   aisre = 'aisre',
+  qwietai = 'qwietai',
   sei = 'sei',
   cet = 'cet',
   ssca = 'ssca',

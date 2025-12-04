@@ -32,6 +32,11 @@ const Roadmap = () => {
       name: 'Feature Management & Experimentation',
       icon: 'icon_fme.svg',
     },
+    {
+      value: 'qwietai',
+      name: 'Security Scanner',
+      icon: 'icon-qwietai.svg',
+    },
     { value: 'ccm', name: 'Cloud Cost Management', icon: 'icon_ccm.svg' },
     {
       value: 'sto',
