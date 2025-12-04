@@ -800,8 +800,6 @@ rollbackSteps:
 ### Lambda Canary Deployment Strategy
 
 :::note
-Currently, the Canary Deployment Strategy is behind the feature flag `CDS_AWS_LAMBDA_CANARY_DEPLOY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 Harness Delegate version `86200` or later is required for this feature.
 :::
 
