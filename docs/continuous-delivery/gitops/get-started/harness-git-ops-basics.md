@@ -269,6 +269,22 @@ Compares the latest file in Git with the live state and shows what is different.
 
 If an Application is Healthy and Synced, then there is no App Diff.
 
+### Migrating Applications from Other Controllers to ArgoCD
+
+When migrating control over an application from another controller to ArgoCD, the application diff view may show fields in the Git window that don't actually exist in Git. 
+
+**Why This Happens:**
+
+Kubernetes sets managed fields for the initial controller used for deploying the application (such as Helm). When ArgoCD takes over control of the deployment, it cannot replace fields managed by other controllers. As a result:
+- The live state in the cluster retains values managed by the original controller
+- The diff view shows fields from the live cluster state that are managed by ArgoCD
+
+**Solution:**
+
+To completely transfer control of the application from other controllers to ArgoCD, perform a manual sync with the **Replace** option set to `true`.
+
+This is expected Kubernetes behavior related to [Server-Side Apply and managed fields](https://kubernetes.io/docs/reference/using-api/server-side-apply/).
+
 ### GnuPG Keys
 
 GnuPG Keys can be used to configure Harness GitOps to only sync against commits that are signed in Git using GnuPG.
