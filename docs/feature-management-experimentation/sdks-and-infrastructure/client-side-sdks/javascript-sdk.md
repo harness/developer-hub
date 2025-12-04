@@ -55,7 +55,7 @@ npm install --save @splitsoftware/splitio
 <TabItem value="CDN bundle">
 
 ```html
-<script src="//cdn.split.io/sdk/split-11.7.1.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.9.0.min.js"></script>
 
 ```
 
@@ -595,8 +595,8 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | --- | --- | --- |
 | core.labelsEnabled | Enable impression labels from being sent to Harness servers. Labels may contain sensitive information. | true |
 | startup.readyTimeout | Maximum amount of time in seconds to wait before firing the `SDK_READY_TIMED_OUT` event | 10 |
-| startup.requestTimeoutBeforeReady | The SDK has two main endpoints it uses /splitChanges and /mySegments that it hits to get ready. This config sets how long (in seconds) the SDK waits for each request it makes as part of getting ready. | 5 |
-| startup.retriesOnFailureBeforeReady | How many retries on /splitChanges and /mySegments we do while getting the SDK ready | 1 |
+| startup.requestTimeoutBeforeReady | The SDK has two main endpoints it uses /splitChanges and /memberships that it hits to get ready. This config sets how long (in seconds) the SDK waits for each request it makes as part of getting ready. | 5 |
+| startup.retriesOnFailureBeforeReady | How many retries on /splitChanges and /memberships we do while getting the SDK ready | 1 |
 | startup.eventsFirstPushWindow | Use to set a specific timer (expressed in seconds) for the first push of events, starting on SDK initialization. | 10 |
 | scheduler.featuresRefreshRate | The SDK polls Harness servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 |
 | scheduler.segmentsRefreshRate | The SDK polls Harness servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60 |
@@ -1721,13 +1721,13 @@ This configuration ensures the SDK does not have to fetch definitions on every p
 When using the JavaScript SDK, the following URL request generates a 404 error:
 
 ```perl
-GET https://sdk.split.io/api/mySegments/ 404
+GET https://sdk.split.io/api/memberships/ 404
 ```
 
 The URL is missing the required key ID (also known as customer ID). For example, if the key ID is 8879, the URL should be:
 
 ```perl
-GET https://sdk.split.io/api/mySegments/8879
+GET https://sdk.split.io/api/memberships/8879
 ```
 
 Ensure you specify the key or customer ID correctly in the SDK factory initialization and when fetching the client object, for example:

@@ -223,14 +223,14 @@ This ensures the user IDs are imported correctly into the segment.
 
 ## Checking if a user is in a segment
 
-The Admin API does not include an endpoint to check if a user ID (or key) exists in a specific segment. Instead, you can use the mobile and browser SDK's `mySegments` endpoint, which returns the list of segment names associated with a given user key.
+The Admin API does not include an endpoint to check if a user ID (or key) exists in a specific segment. Instead, you can use the mobile and browser SDK's `memberships` endpoint, which returns the list of segment names associated with a given user key.
 
 When calling this endpoint, use a Browser API key:
 
 ```bash
 curl -H "Authorization: Bearer [Browser API Key]" \
      -H "Accept: application/json" \
-     https://sdk.split.io/api/mySegments/[user_id]
+     https://sdk.split.io/api/memberships/[user_id]
 ```
 
 For example:
@@ -238,19 +238,26 @@ For example:
 ```bash
 curl -H "Authorization: Bearer ebj1kXXXXXXXXXXXXXXXXX" \
      -H "Accept: application/json" \
-     https://sdk.split.io/api/mySegments/testing4321
+     https://sdk.split.io/api/memberships/testing4321
 ```
 
 The example response returns the following:
 
-```bash
+```json
 {
-  "mySegments": [
-    {
+  // "ms" is short for "mySegments". 
+  // In this case, the user is only a member of the "First_Class_Users" regular segment.
+  "ms": {
+    "k": [{
       "id": "460f69f0-f426-11e8-92e6-0ed4073e2658",
-      "name": "First_Class_Users"
-    }
-  ]
+      "n": "First_Class_Users"
+    }]
+  },
+  // "ls" is short for "myLargeSegments". 
+  // In this case, the user is not a member of any large segments.
+  "ls": {
+    "k": []
+  }
 }
 ```
 

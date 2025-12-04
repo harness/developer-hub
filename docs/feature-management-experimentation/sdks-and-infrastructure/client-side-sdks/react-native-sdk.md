@@ -564,8 +564,8 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | --- | --- | --- | 
 | core.labelsEnabled | Enable impression labels from being sent to Harness FME's backend. Labels may contain sensitive information. | true |
 | startup.readyTimeout | Maximum amount of time in seconds to wait before firing the `SDK_READY_TIMED_OUT` event | 10 |
-| startup.requestTimeoutBeforeReady | The SDK has two main endpoints it uses /splitChanges and /mySegments that it hits to get ready. This config sets how long (in seconds) the SDK will wait for each request it makes as part of getting ready. | 5 |
-| startup.retriesOnFailureBeforeReady | How many retries on /splitChanges and /mySegments we will do while getting the SDK ready | 1 |
+| startup.requestTimeoutBeforeReady | The SDK has two main endpoints it uses /splitChanges and /memberships that it hits to get ready. This config sets how long (in seconds) the SDK will wait for each request it makes as part of getting ready. | 5 |
+| startup.retriesOnFailureBeforeReady | How many retries on /splitChanges and /memberships we will do while getting the SDK ready | 1 |
 | startup.eventsFirstPushWindow | Use to set a specific timer (expressed in seconds) for the first push of events, starting on SDK initialization. | 10 |
 | scheduler.featuresRefreshRate | The SDK polls Harness servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 |
 | scheduler.segmentsRefreshRate | The SDK polls Harness servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60 |
