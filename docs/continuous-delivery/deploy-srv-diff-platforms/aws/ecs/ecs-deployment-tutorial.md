@@ -1091,6 +1091,8 @@ The deployment follows this process:
 
 ECS Blue/Green deployments use old and new versions of your service running behind the load balancer. Your ELB uses two listeners, Prod and Stage, each forwarding to a different target group where ECS services are run.
 
+For a detailed comparison of ECS Blue-Green deployments with other platforms, see [Blue-Green Deployment Across Platforms](/docs/continuous-delivery/manage-deployments/blue-green-across-platforms).
+
 Blue/Green deployments are achieved by swapping listeners between the target groups, always pointing the Prod listener to the target group running the latest version.
 
 In Harness, you identify which listeners are the Prod and Stage listeners. When Harness deploys, it uses the target group for the Stage listener (for example, **target1**) to test the deployment, verifies the deployment, and then swaps the Prod listener to use that target group. Next, the Stage listener now uses the old target group (**target2**).

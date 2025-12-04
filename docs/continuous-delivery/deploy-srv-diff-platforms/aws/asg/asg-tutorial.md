@@ -1710,6 +1710,8 @@ Here's a sample ASG Rollback step YAML:
 
 An ASG Blue Green deployment uses two steps:
 
+For a detailed comparison of ASG Blue-Green deployments with other platforms, see [Blue-Green Deployment Across Platforms](/docs/continuous-delivery/manage-deployments/blue-green-across-platforms).
+
 1. **ASG Blue Green Deploy step:**
    1. You specify the production and stage listener ports and rules to use.
    2. The new ASG is deployed to the stage target group.
