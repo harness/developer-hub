@@ -12,7 +12,7 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
 
 ![Node Memory Hog](./static/images/node-memory-hog.png)
 
-## Use cases
+### Use cases
 
 Node memory hog fault:
 - Verifies application restarts on OOM kills.
@@ -62,6 +62,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The target nodes should be in the ready state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ❌ Not supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

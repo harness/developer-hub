@@ -17,7 +17,7 @@ This fault should be used as a sanity test for validating your application's fai
 [This](https://youtu.be/chk5K754J_4?si=df_2bEG6yXKtjGEl) video provides a step-by-step walkthrough of the execution process for the Pod IO Attribute Override experiment.
 
 
-## Use cases
+### Use cases
 Pod IO attribute override:
 - Tests whether your application is able to detect and respond to unexpected changes in file attributes, which can help you ensure that your system remains compliant and secure.
 - Tests whether your disaster recovery system is able to restore files and maintain file attributes correctly.
@@ -66,6 +66,36 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+- Nodes must use AMD64 (x86_64) architecture.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
   <table>

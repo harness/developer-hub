@@ -11,7 +11,7 @@ Node network loss is a Kubernetes node-level chaos fault that induces packet los
 
 ![Node Network Loss](./static/images/node-network-loss.png)
 
-## Use cases
+### Use cases
 Node network loss:
 - Checks how the application behaves when there is network loss on the nodes.
 - Simulates a degraded network at the node level, causing potential disruptions to all pods running on the affected node.
@@ -57,7 +57,37 @@ permissions:
 
 ### Prerequisites
 - Kubernetes > 1.16
+- The `netem` kernel module must be available on the nodes. This is typically provided by the `kernel-modules-extra` package.
 - Nodes should be in a healthy state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 <table>

@@ -18,7 +18,7 @@ Pod API status code is a Kubernetes pod-level chaos fault that change the API re
 
 [This](https://youtu.be/h_lnNCG-j2o) video provides a step-by-step walkthrough of the execution process for the Pod API Status Code experiment.
 
-## Use cases
+### Use cases
 Pod API status code:
 - It can be used to test the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
 - Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
@@ -64,6 +64,35 @@ permissions:
 ### Prerequisites
 - Kubernetes> 1.17
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

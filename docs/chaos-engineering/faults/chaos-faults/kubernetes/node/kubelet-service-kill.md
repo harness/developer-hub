@@ -14,7 +14,7 @@ Kubelet service kill makes the application unreachable on the account of the nod
 
 ![Kubelet Service Kill](./static/images/kubelet-service-kill.png)
 
-## Use cases
+### Use cases
 Kubelet service kill fault determines the resilience of an application when a node becomes unschedulable, that is, **NotReady** state.
 
 ### Permissions required
@@ -56,10 +56,40 @@ permissions:
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
+- Kubelet must be running as a systemd service on the target nodes.
 - Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it or subject to eviction. This is achieved using the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
    <table>

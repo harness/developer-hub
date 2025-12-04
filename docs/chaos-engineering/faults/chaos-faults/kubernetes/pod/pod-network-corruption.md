@@ -12,7 +12,7 @@ Pod network corruption is a Kubernetes pod-level chaos fault that injects corrup
 ![Pod Network Corruption](./static/images/pod-network-corruption.png)
 
 
-## Use cases
+### Use cases
 Pod network corruption:
 - Simulates degraded network with varied percentages of dropped packets between microservices (dropped at the destination).
 - Tests the application's resilience to lossy or flaky network.
@@ -57,6 +57,35 @@ permissions:
 ### Prerequisites
 - Kubernetes> 1.16
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 

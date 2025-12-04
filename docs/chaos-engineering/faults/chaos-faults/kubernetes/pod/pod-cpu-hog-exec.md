@@ -11,7 +11,7 @@ Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU 
 
 ![Pod CPU Hog Exec](./static/images/pod-cpu-hog-exec.png)
 
-## Use cases
+### Use cases
 
 CPU hog exec:
 - Simulates conditions where the application pods experience CPU spikes due to expected (or undesired) processes thereby testing the behaviour of application stack.
@@ -63,6 +63,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 

@@ -11,7 +11,7 @@ The Pod Application Function Error fault injects an error into a specified funct
 
 ![Pod Application Function Error](./static/images/pod-cpu-hog.png)
 
-## Use cases
+### Use cases
 
 - Simulate third-party API failure by injecting errors into wrapper functions.
 - Test application behavior when core business logic functions return unexpected errors.
@@ -59,6 +59,35 @@ permissions:
     resources: ["jobs"]
     verbs: ["create", "delete", "get", "list", "deletecollection"]
 ```
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

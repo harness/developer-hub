@@ -19,7 +19,7 @@ Pod API modify header is a Kubernetes pod-level chaos fault that overrides the h
 
 [This](https://youtu.be/sIkUxtnQY_o?si=LfwHi2rI559xyRr4) video provides a step-by-step walkthrough of the execution process for the Pod API Modify Header experiment.
 
-## Use cases
+### Use cases
 
 Pod API modify header:
 - Simulate different authentication states or test the behavior of your application when using invalid or expired credentials.
@@ -66,6 +66,35 @@ permissions:
 ### Prerequisites
 - Kubernetes> 1.17
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

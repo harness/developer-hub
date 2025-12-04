@@ -12,7 +12,7 @@ Node drain drains the node of all its resources running on it. Due to this, serv
 ![Node Drain](./static/images/node-drain.png)
 
 
-## Use cases
+### Use cases
 Node drain:
 - Determines how an application scales to handle traffic.
 - Determines the resilience of the application when the application replicas scheduled on a node are removed.
@@ -67,6 +67,35 @@ permissions:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ❌ Not supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

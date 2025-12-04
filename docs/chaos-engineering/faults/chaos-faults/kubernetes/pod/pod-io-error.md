@@ -16,7 +16,7 @@ When triggered, it causes the call to fail and return an error, potentially disr
 
 [This](https://youtu.be/_EyKwv5UupU) video provides a step-by-step walkthrough of the execution process for the Pod IO Error experiment.
 
-## Use cases
+### Use cases
 Pod IO error:
 - Simulates the error to test whether the application is able to recover gracefully from a failure in that service.
 - Simulates errors into file system calls during a load test to see how the application responds, and whether it is able to handle the increased traffic,
@@ -65,6 +65,36 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+- Nodes must use AMD64 (x86_64) architecture.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

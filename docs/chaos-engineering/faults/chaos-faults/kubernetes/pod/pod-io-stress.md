@@ -11,7 +11,7 @@ Pod I/O stress is a Kubernetes pod-level chaos fault that causes I/O stress on t
 ![Pod IO Stress](./static/images/pod-io-stress.png)
 
 
-## Use cases
+### Use cases
 Pod IO stress:
 - Aims to verify the resilience of applications that share the disk resource for ephemeral (or persistent) storage.
 - Simulates slower disk operations by the application.
@@ -60,6 +60,36 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+- Nodes must use AMD64 (x86_64) architecture.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 

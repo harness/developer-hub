@@ -13,7 +13,7 @@ Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on 
 
 ![Pod HTTP Reset Peer](./static/images/pod-http-reset-peer.png)
 
-## Use cases
+### Use cases
 Pod HTTP reset peer:
 - Tests the application's resilience to lossy or flaky HTTP connection.
 - Simulates premature connection loss that may occur due to firewall issues or other issues between microservices thereby verifying connection timeout.
@@ -63,6 +63,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

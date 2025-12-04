@@ -18,7 +18,7 @@ Pod API block is a Kubernetes pod-level chaos fault that blocks the API requests
 
 [This](https://youtu.be/Cg5gbfFrJQs?si=3CDCr5kZ1TweWuSo) video provides a step-by-step walkthrough of the execution process for the Pod API Block experiment.
 
-## Use cases
+### Use cases
 Pod API block:
 - Validates how well your system can handle disruptions in API services for a specific pod.
 - Ensures that your load balancer is effectively distributing traffic to healthy pods in the cluster.
@@ -65,6 +65,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.17
 - The application pods should be running before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

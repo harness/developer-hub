@@ -13,7 +13,7 @@ Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP respons
 ![Pod HTTP Latency](./static/images/pod-http-latency.png)
 
 
-## Use cases
+### Use cases
 Pod HTTP latency:
 - Evaluates the application's resilience to lossy or flaky HTTP responses.
 - Simulates latency to specific API services for (or from) a given microservice.
@@ -64,6 +64,35 @@ permissions:
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
 
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

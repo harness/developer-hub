@@ -11,7 +11,7 @@ Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss i
 
 ![Pod Network Loss](./static/images/pod-network-loss.png)
 
-## Use cases
+### Use cases
 Pod network loss:
 - Simulates a degraded network with varied percentages of dropped packets between microservices.
 - Simulates loss of access to specific third-party or dependent services (like message queues or databases) or components.
@@ -59,6 +59,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 

@@ -11,7 +11,7 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 
 ![Pod JVM Solace Exception](./static/images/pod-jvm-solace-exception.png)
 
-### Use cases
+#### Use cases
 Pod JVM Solace exception:
 - Simulates Solace messaging exceptions to evaluate how the application handles messaging failures, assess system resilience under error conditions, and identify potential vulnerabilities in message processing and fault tolerance.
 - Tests the impact of messaging exceptions on the end-user experience, ensuring the application behaves gracefully under Solace message delivery failures. This includes validating retries, fallback mechanisms, and error recovery strategies to maintain communication integrity.
@@ -46,6 +46,46 @@ permissions:
     resources: ["jobs"]
     verbs: ["create", "delete", "get", "list", "deletecollection"]
 ```
+
+
+
+:::info Java requirements
+This fault requires the following Java-specific prerequisites:
+- The Java process must allow agent attachment (Attach API must be available).
+- Utilities like `ps`, `pgrep`, and `bash` must be available in the target container.
+- File permissions must allow the JVM to read and execute agent files.
+- Agent attachment must not be restricted by user or security context configurations.
+- The target container image must not use a restricted/minimal Java runtime that removes attach-related modules.
+:::
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 <table>

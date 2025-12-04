@@ -13,7 +13,7 @@ Time chaos is a Kubernetes pod-level fault that introduces controlled time offse
 
 [This](https://youtu.be/9S_wnY1rLfs) video provides a step-by-step walkthrough of the execution process for the Time Chaos experiment.
 
-## Use cases
+### Use cases
 Time Chaos:
 - Simulate scenarios where TLS certificates expire while the system is in operation. This allows them to assess how their applications, services, or infrastructure handle expired certificates in real-time.
 - It is used to identify potential weaknesses in the system's ability to recover and handle time-related faults, leading to improvements in fault-tolerant designs and system resilience.
@@ -59,6 +59,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
   <table>

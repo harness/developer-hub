@@ -11,7 +11,7 @@ Node taint taints the node by applying the desired effect. Only the resources th
 
 ![Node Taint](./static/images/node-taint.png)
 
-## Use cases
+### Use cases
 - Node taint fault verifies the resilience of applications when a certain taint is added to a node.
 - It simulates loss of critical services (or node-crash).
 - It verifies resource budgeting on cluster nodes (whether request(or limit) settings are honored on the available nodes).
@@ -65,6 +65,34 @@ permissions:
   - Cordon the node using command `kubectl cordon NODENAME`.
 - The target nodes should be in the ready state before and after injecting chaos.
 
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ❌ Not supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

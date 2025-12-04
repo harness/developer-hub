@@ -16,7 +16,7 @@ This can help identify performance bottlenecks, test the system's ability to han
 
 [This](https://youtu.be/HI7sk7I13WU) video provides a step-by-step walkthrough of the execution process for the Pod IO Latency experiment.
 
-## Use cases
+### Use cases
 Pod IO latency:
 - Simulates the slow file system calls, which can be used to test the resilience of an application or system to slow I/O performance.
 - Simulates the system's behavior when dealing with increased I/O operations. This can help identify any issues that may arise when the system is under high load.
@@ -65,6 +65,36 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+- Nodes must use AMD64 (x86_64) architecture.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

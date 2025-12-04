@@ -13,7 +13,7 @@ Pod IO mistake simulates a scenario where the file system in the mounted volume 
 
 ![Pod IO Mistake](./static/images/pod-io-mistake.png)
 
-## Use cases
+### Use cases
 Pod IO mistake:
 - Verify the application's ability to detect and recover from data corruption caused by incorrect file read/write operations
 - Ensure the application can handle and log errors appropriately when encountering unexpected data values.
@@ -66,6 +66,36 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+- Nodes must use AMD64 (x86_64) architecture.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

@@ -11,7 +11,7 @@ Pod HTTP status code is a Kubernetes pod-level fault that injects chaos inside t
 
 ![Pod HTTP Status Code](./static/images/pod-http-status-code.png)
 
-## Use cases
+### Use cases
 Pod HTTP status code:
 - Tests the application's resilience to error code HTTP responses from the provided application server.
 - Simulates unavailability of specific API services (503, 404).
@@ -62,6 +62,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

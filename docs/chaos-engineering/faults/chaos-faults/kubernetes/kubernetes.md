@@ -18,6 +18,14 @@ import { experiments } from "./experiments"
 
 Kubernetes faults disrupt the resources running on a Kubernetes cluster. They can be categorized into pod-level faults and node-level faults.
 
+:::note EKS Fargate support
+On **Amazon EKS Fargate**, only the following pod-level faults are supported:
+- [Pod delete](#pod-delete)
+- [Pod autoscaler](#pod-autoscaler)
+
+All other Kubernetes faults require standard EC2-based worker nodes.
+:::
+
 <!-- Experiment List and Search Bar (every experiment added below, need to be added in this file also) -->
 
 <ExperimentListSection experiments={experiments} />

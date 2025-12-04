@@ -11,7 +11,7 @@ Node IO stress causes I/O stress on the Kubernetes node.
 
 ![Node CPU Hog](./static/images/node-stress.png)
 
-## Use cases
+### Use cases
 - Node IO stress fault verifies the resilience of applications that share the disk resource for ephemeral or persistent storage during high disk I/O usage.
 - It tests application resilience on replica evictions that occur due to I/O stress on the available disk space.
 - It simulates slower disk operations by the application and noisy neighbour problems by hogging the disk bandwidth.
@@ -58,6 +58,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The target nodes should be in the ready state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ❌ Not supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

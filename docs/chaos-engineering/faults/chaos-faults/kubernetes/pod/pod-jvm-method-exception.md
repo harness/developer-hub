@@ -13,7 +13,7 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 
 ![Pod JVM method exception](./static/images/pod-jvm-method-exception.png)
 
-## Use cases
+### Use cases
 Pod JVM method exception:
 - Determines the performance and resilience of an application (or service) on encountering exceptions.
 - Determines how efficiently an application recovers the services.
@@ -47,6 +47,46 @@ permissions:
     resources: ["jobs"]
     verbs: ["create", "delete", "get", "list", "deletecollection"]
 ```
+
+
+
+:::info Java requirements
+This fault requires the following Java-specific prerequisites:
+- The Java process must allow agent attachment (Attach API must be available).
+- Utilities like `ps`, `pgrep`, and `bash` must be available in the target container.
+- File permissions must allow the JVM to read and execute agent files.
+- Agent attachment must not be restricted by user or security context configurations.
+- The target container image must not use a restricted/minimal Java runtime that removes attach-related modules.
+:::
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 <table>

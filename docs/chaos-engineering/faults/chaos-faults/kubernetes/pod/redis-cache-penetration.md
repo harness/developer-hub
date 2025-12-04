@@ -9,7 +9,7 @@ Redis cache penetration fault continuously sends cache requests to the Redis dat
 
 ![Pod Redis cache penetration](./static/images/pod-redis-cache-penetration.png)
 
-## Use cases
+### Use cases
 - Slows down the database for responses to other requests.
 - Determines the resilience of Redis-dependant application when cache requests are continuously sent to a Redis database and they result in a cache miss.
 
@@ -44,6 +44,35 @@ permissions:
 ```
 
 <AuthenticationDetails />
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 

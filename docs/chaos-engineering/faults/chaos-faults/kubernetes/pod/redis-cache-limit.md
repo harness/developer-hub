@@ -9,7 +9,7 @@ Redis cache limit fault limits the amount of memory used by a Redis cache and re
 
 ![Pod Redis cache limit](./static/images/pod-redis-cache-limit.png)
 
-## Use cases
+### Use cases
 Redis cache limit determines the resilience of Redis-dependant applications on frequent cache misses that occur due to a low cache size.
 
 ### Permissions required
@@ -43,6 +43,35 @@ permissions:
 ```
 
 <AuthenticationDetails />
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 

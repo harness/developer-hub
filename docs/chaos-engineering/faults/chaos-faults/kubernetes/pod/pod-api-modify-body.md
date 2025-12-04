@@ -19,7 +19,7 @@ Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api 
 
 [This](https://youtu.be/Dbr_KwfTxps?si=6uWUShJuht7LoY5r) video provides a step-by-step walkthrough of the execution process for the Pod API Modify Body experiment.
 
-## Use cases
+### Use cases
 Pod API modify body:
 - It can be used for API testing, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
 - Simulate error conditions and test the error handling capabilities of API by replacing specific patterns in the response body with error messages or custom error codes to test error handling and reporting mechanisms are in place.
@@ -65,6 +65,35 @@ permissions:
 ### Prerequisites
 - Kubernetes> 1.17
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

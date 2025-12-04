@@ -12,7 +12,7 @@ Pod network duplication is a Kubernetes pod-level chaos fault that injects chaos
 ![Pod Network Duplication](./static/images/pod-network-duplication.png)
 
 
-## Use cases
+### Use cases
 Pod network duplication:
 - Determines the application's resilience to duplicate network.
 - Simulates a degraded network with varied percentages of dropped packets between microservices (dropped at the destination).
@@ -57,6 +57,35 @@ permissions:
     resources: ["jobs"]
     verbs: ["create", "delete", "get", "list", "deletecollection"]
 ```
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 

@@ -13,7 +13,7 @@ Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random
 
 ![Pod Delete](./static/images/pod-delete.png)
 
-## Use cases
+### Use cases
 
 Pod delete:
 - Helps check the application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
@@ -71,6 +71,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods are in the running state before and after chaos injection.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
    <table>

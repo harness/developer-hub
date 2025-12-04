@@ -13,7 +13,7 @@ Pod DNS spoof is a Kubernetes pod-level chaos fault that injects chaos into pods
 
 [This](https://youtu.be/YA97cvgbpTI) video provides a step-by-step walkthrough of the execution process for the Pod DNS Spoof experiment.
 
-## Use cases
+### Use cases
 
 Pod DNS spoof:
 - Determines the resilience of an application when host names are resolved incorrectly.
@@ -60,6 +60,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
    <table>

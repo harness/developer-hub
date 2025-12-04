@@ -16,7 +16,7 @@ Pod network latency is a Kubernetes pod-level chaos fault that introduces latenc
 
 ![Pod Network Latency](./static/images/pod-network-latency.png)
 
-## Use cases
+### Use cases
 Pod network latency:
 - Tests the application's resilience to lossy or flaky networks.
 - Determines how the application behaves when a delay occurs between your application and dependant services like message queue or database.
@@ -67,6 +67,35 @@ permissions:
 ### Prerequisites
 - Kubernetes> 1.16
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
    <table>

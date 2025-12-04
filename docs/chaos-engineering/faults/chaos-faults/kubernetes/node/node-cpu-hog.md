@@ -14,7 +14,7 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
 ![Node CPU Hog](./static/images/node-cpu-hog.png)
 
 
-## Use cases
+### Use cases
 Node CPU hog fault:
 - Verifies the resilience of applications whose replicas get evicted on the account of the nodes turning unschedulable (in **NotReady** state) or new replicas unable to be scheduled due to a lack of CPU resources.
 - Causes CPU stress on the target node(s).
@@ -64,6 +64,35 @@ permissions:
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - The target nodes should be in the ready state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ❌ Not supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

@@ -12,7 +12,7 @@ Node restart disrupts the state of the node by restarting it.
 ![Node Restart](./static/images/node-restart.png)
 
 
-## Use cases
+### Use cases
 Node restart fault:
 - Helps understand how an application behaves when a node is rebooted in a cluster.
 - Determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod in the event of an unexpected node restart.
@@ -78,6 +78,35 @@ permissions:
 
     Creating the RSA key pair for remote SSH access for those who are already familiar with an SSH client, has been summarized below.
 
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
+
     1. Create a new key pair and store the keys in a file named `my-id-rsa-key` and `my-id-rsa-key.pub` for the private and public keys respectively:
     ```
     ssh-keygen -f ~/my-id-rsa-key -t rsa -b 4096
@@ -90,6 +119,15 @@ permissions:
     For further details, refer to [this](https://www.ssh.com/ssh/keygen/) documentation. After copying the public key to all nodes and creating the secret, you are all set to execute the fault.
 
 - The target nodes should be in the ready state before and after injecting chaos.
+
+:::tip Recommended alternatives for managed Kubernetes
+For managed Kubernetes services, consider using cloud-specific VM stop faults instead of node-restart:
+- **EKS**: Use [ec2-stop-by-id](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-stop-by-id) or [ec2-stop-by-tag](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-stop-by-tag)
+- **GKE**: Use [gcp-vm-instance-stop](/docs/chaos-engineering/faults/chaos-faults/gcp/gcp-vm-instance-stop)
+- **AKS**: Use [azure-instance-stop](/docs/chaos-engineering/faults/chaos-faults/azure/azure-instance-stop)
+
+These alternatives don't require SSH access and work directly with the cloud provider APIs.
+:::
 
 
 ### Mandatory tunables

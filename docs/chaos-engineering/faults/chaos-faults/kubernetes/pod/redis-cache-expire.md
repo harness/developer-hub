@@ -9,7 +9,7 @@ Redis cache expire expires a given key (or all keys) for a specified duration. D
 
 ![Pod Redis cache expire](./static/images/pod-redis-cache-expire.png)
 
-## Use cases
+### Use cases
 
 Redis cache expire determines the resilience of Redis-dependant applications against frequent cache expiry.
 
@@ -44,6 +44,35 @@ permissions:
 ```
 
 <AuthenticationDetails />
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 

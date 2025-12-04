@@ -19,7 +19,7 @@ Pod API latency is a Kubernetes pod-level chaos fault that injects API request a
 [This](https://youtu.be/HI7sk7I13WU?si=JZMznTtzq2VRy4NC) video provides a step-by-step walkthrough of the execution process for the Pod API Latency experiment.
 
 
-## Use cases
+### Use cases
 Pod API latency:
 - Simulate high traffic scenarios and testing the resilience and performance of an application or API, where the API may experience delays due to heavy load.
 - Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error handling mechanisms.
@@ -66,6 +66,35 @@ permissions:
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
 
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

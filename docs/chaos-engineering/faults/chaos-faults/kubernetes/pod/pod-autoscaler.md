@@ -12,7 +12,7 @@ Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nod
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
 
 
-## Use cases
+### Use cases
 
 Pod autoscaler determines how an application accomodates multiple replicas of a given application pod at unexpected times.
 
@@ -52,7 +52,37 @@ permissions:
 
 ### Prerequisites
 - Kubernetes > 1.16
+- Horizontal Pod Autoscaler (HPA) must be disabled for the target resource during the fault execution.
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

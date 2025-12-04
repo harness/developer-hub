@@ -12,7 +12,7 @@ Pod API Modify Response Custom is a Kubernetes pod-level chaos fault that consol
 
 ![Pod API Modify Response Custom](./static/images/pod-api-modify-response-custom.png)
 
-## Use cases
+### Use cases
 Pod API modify response custom:
 - Enables simultaneous modification of headers, status codes, and response bodies to simulate real-world failure scenarios, allowing end-to-end testing of API behavior under different conditions.
 - Simulates unauthorized access attempts, expired authentication tokens, or altered security policies to evaluate the robustness of authentication and authorization mechanisms.
@@ -59,6 +59,35 @@ permissions:
 ### Prerequisites
 - Kubernetes> 1.17
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

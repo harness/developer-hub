@@ -11,7 +11,7 @@ Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by fill
 
 ![Disk Fill](./static/images/disk-fill.png)
 
-## Use cases
+### Use cases
 Disk fill:
 - Tests the ephemeral storage limits and ensures that the parameters are sufficient.
 - Determines the resilience of the application to unexpected storage exhaustion.
@@ -86,6 +86,35 @@ permissions:
           limits:
             ephemeral-storage: "4Gi"
 ```
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

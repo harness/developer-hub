@@ -13,7 +13,7 @@ Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traf
 
 [This](https://youtu.be/01efVOyFGl8?si=414-AX6yVn2GqfON) video provides a step-by-step walkthrough of the execution process for the Pod Network Rate Limit experiment.
 
-## Use cases
+### Use cases
 
 Pod network rate limit:
 - Assess how well applications and services perform under constrained network bandwidth, helping identify potential bottlenecks and weaknesses.
@@ -60,8 +60,37 @@ permissions:
 
 ### Prerequisites
 - Kubernetes > 1.16 
+- The `netem` kernel module must be available on the nodes. This is typically provided by the `kernel-modules-extra` package.
 - The application pods should be in the running state before and after injecting chaos.
 
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Mandatory tunables
 

@@ -11,7 +11,7 @@ Node network latency is a Kubernetes node-level chaos fault that induces packet 
 
 ![Node Network Latency](./static/images/node-network-latency.png)
 
-## Use cases
+### Use cases
 Node network latency:
 - Simulates a degraded network at the node level, causing potential disruptions to all pods running on the affected node.
 - Tests the node and inter-node communication resilience against packet latency.
@@ -56,7 +56,37 @@ permissions:
 
 ### Prerequisites
 - Kubernetes > 1.16
+- The `netem` kernel module must be available on the nodes. This is typically provided by the `kernel-modules-extra` package.
 - Nodes should be in a healthy state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 <table>

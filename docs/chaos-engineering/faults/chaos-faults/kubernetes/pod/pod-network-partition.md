@@ -11,7 +11,7 @@ Pod network partition is a Kubernetes pod-level fault that blocks 100 percent in
 
 ![Pod Network Partition](./static/images/pod-network-partition.png)
 
-## Use cases
+### Use cases
 
 Pod network partition tests the application's resilience to lossy or flaky network.
 
@@ -57,7 +57,39 @@ permissions:
 
 ### Prerequisites
 - Kubernetes > 1.16
+- The CNI plugin must support NetworkPolicy (for example, Flannel does not support NetworkPolicy).
+- NetworkPolicy enforcement must be enabled on the Kubernetes cluster (by default, it is disabled on GKE).
+- Target pods must have labels defined for the NetworkPolicy to select them.
 - The application pods should be in the running state before and after injecting chaos.
+
+### Supported environments
+
+<table>
+  <tr>
+    <th> Platform </th>
+    <th> Support Status </th>
+  </tr>
+  <tr>
+    <td> GKE (Google Kubernetes Engine) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> EKS (Amazon Elastic Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> AKS (Azure Kubernetes Service) </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> GKE Autopilot </td>
+    <td> ✅ Supported </td>
+  </tr>
+  <tr>
+    <td> Self-managed Kubernetes </td>
+    <td> ✅ Supported </td>
+  </tr>
+</table>
 
 ### Optional tunables
 
