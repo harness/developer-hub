@@ -82,6 +82,40 @@ Run all or specific workloads on spot instances to achieve significant cost savi
 
 - **Reverse Fallback Retry**: When spot instances are interrupted, Cluster Orchestrator automatically replaces them with on-demand instances (fallback). This setting controls how frequently the system attempts to replace those on-demand instances with spot instances once spot capacity becomes available again, helping you return to optimal cost efficiency.
 
+### Workload Distribution Rule
+
+Workload Distribution Rules enable you to distribute pods in a namespace across Spot and On-Demand instances. In addition to the UI configuration, we support Custom Resource Definition (CRD) at the cluster scope for specifying workload distribution. Please note it is required to have [Custom Resource Definition (CRD)](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/cluster-orchestrator-components/#custom-resource-definitions-crds) enabled in your cluster. This approach allows users to define their own resource types. Cloud Cost Management (CCM) controls the distribution at two levels
+
+- At the cluster level: We use a dedicated rule called `cluster-master` to specify the workload level rules. The `cluster-master` rule does not allow namespaces to be specified. The format is shown below: 
+
+```
+apiVersion: ccm.harness.io/v1
+kind: WorkloadDistributionRule
+metadata:
+  name: cluster-master
+spec:
+  distribution:
+    spot: 50
+    ondemand: 50
+  selector: SpotReady
+```
+
+- At the namespace level: We can create multiple `WorkloadDistributionRule` CRDs to control the distribution at a namespace level. If no configuration is found for a namespace, we will fall back to `cluster-master`. The format is shown below: 
+
+```
+apiVersion: ccm.harness.io/v1
+kind: WorkloadDistributionRule
+metadata:
+  name: default
+spec:
+  namespace: default
+  distribution:
+    spot: 50
+    ondemand: 50
+  selector: SpotReady
+```
+
+
 </TabItem>
 <TabItem value="replacement" label="Replacement Schedules">
 
