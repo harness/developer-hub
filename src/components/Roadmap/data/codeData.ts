@@ -3,12 +3,17 @@ import { Horizon } from "./roadmapData";
 export const codeData: Horizon = {
   
   Now: {
-    description: "Q3 2025, August-October 2025",
+    description: "Q4 2025, November 2025-January 2026",
     feature: [
       {
         tag: [{ value: "Code Quality" }],
         title: "Code Coverage",
         description: "Display a coverage overlay in the code view and show a PR status summary for overall and changed code coverage—helping teams track gaps, enforce thresholds, and improve test completeness.",
+      },
+      {
+        tag: [{value: "AI"}, { value: "Developer Experience" }],
+        title: "AI Code Assist",
+        description: "AI Code Assist adds Claude-powered support directly to Harness Code pull requests. Developers can request code reviews, summaries, and inline explanations through simple commands to accelerate and improve the review process."
       },
       {
         tag: [{ value: "AI" }, { value: "Developer Experience" }],
@@ -21,9 +26,14 @@ export const codeData: Horizon = {
         description: "Ensure that all repository commits are signed by a known developer.",
       },
       {
-        tag: [{ "value": "Secure" }],
-        title: "Committer Identity Verification for Code Repositories",
-        description: "Harness now supports automatic verification of commit metadata to ensure that the Git committer matches the authenticated user. This helps prevent impersonation and enforces stronger commit authenticity within managed repositories."
+        tag: [{ value: "Developer Experience" }],
+        title: "Language Breakdown",
+        description: "Developers will now be able to see a list of all the languages within the selected repository.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Linked Repositories",
+        description: "Interact directly with your external Git repositories from within the Harness platform — enabling native experiences like code coverage overlays, autonomous code maintenance, and in-context insights across builds and pull requests." 
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -39,32 +49,22 @@ export const codeData: Horizon = {
         tag: [{ value: "Integrations" }],
         title: "AutoLink References for External Issue Trackers",
         description: "Support for AutoLink references will allow Harness Code to automatically hyperlink commit messages and PR titles to external issue trackers like Jira, improving traceability across tools."
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "User Group Support",
-        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
-      },
-      {
-        tag: [{ value: "Governance" }],
-        title: "Push Rules",
-        description: "Introduce push protection rules to enforce compliance and security standards.",
-      },
+      }
     ],
   },
   Next: {
-    description: "Q4 2025, November 2025 - January 2026",
+    description: "Q1 2026, February 2026 - May 2026",
     feature: [
+      {
+        tag: [{value: "AI"}, { value: "Developer Experience" }],
+        title: "AI Code Assist",
+        description: "Support Google Gemini in Harness AI Code Assist."
+      },
       {
         tag: [{ value: "AI" }, { value: "Code Quality" }],
         title: "AI-Generated Tests",
         description: "Generate unit tests from repository code using AI, guided by coverage results to target untested areas and help improve overall code coverage.",
       },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Linked Repositories",
-        description: "Interact directly with your external Git repositories from within the Harness platform — enabling native experiences like code coverage overlays, autonomous code maintenance, and in-context insights across builds and pull requests." 
-      }, 
       {
         tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
         title: "Merge Queue for Pull Requests",
@@ -74,13 +74,12 @@ export const codeData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Code Templates",
         description: "Create templates of repositories to quickly generate a collection of repositories in a project.",
-      },
+      }
     ],
   },
   Later: {
-    description: "Q1 2026, February 2026 & beyond",
+    description: "Q2 2026, May 2026 & beyond",
     feature: [
-
       {
         tag: [{ value: "Developer Experience" }],
         title: "Repo Insights",
@@ -116,6 +115,21 @@ export const codeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "User Group Support",
+        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
+      },
+      {
+        tag: [{ value: "Governance" }],
+        title: "Push Rules",
+        description: "Introduce push protection rules to enforce compliance and security standards.",
+      },
+      {
+        tag: [{ "value": "Secure" }],
+        title: "Committer Identity Verification for Code Repositories",
+        description: "Harness now supports automatic verification of commit metadata to ensure that the Git committer matches the authenticated user. This helps prevent impersonation and enforces stronger commit authenticity within managed repositories."
+      },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Favorite Repositories Across the Account",
