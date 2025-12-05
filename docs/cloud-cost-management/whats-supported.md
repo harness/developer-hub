@@ -102,4 +102,12 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CCM_COST_CATEGORY_STAMPED_DATA</td>
         <td>Enables the use of stored cost categories in Perspectives</td>
     </tr>
+    <tr>
+        <td>CCM_COMMORCH_RDS</td>
+        <td>Enables RDS support in commitment orchestration</td>
+    </tr>
+    <tr>
+        <td>PL_ENABLE_USER_IMPERSONATION</td>
+        <td>Enables user impersonation for platform. By user impersonation, you can run stimulated the platform as another user.</td>
+    </tr>
 </table>

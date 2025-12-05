@@ -1,5 +1,5 @@
 {
-    "label":"AWS EC2",
+    "label":"AWS EC2 and RDS",
     "position": 4,
     "collapsible":"true",
     "collapsed":"true",
