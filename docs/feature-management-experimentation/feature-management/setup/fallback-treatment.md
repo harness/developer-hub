@@ -75,4 +75,8 @@ import { Section, fallbackSDKs } from '@site/src/components/Docs/data/fmeSDKSFal
 
 Select an SDK to configure fallback treatments for both client and server applications.
 
+| Android | iOS | Browser | JavaScript | React | React Native |  Java   | Python | Ruby | .NET   | Node.js   | Go    |
+| ------- | ----- | ----- | ----- | ----- | ------ | ------ | ------ | ------- | ------ | ----- | ----- |
+| 5.4.1 | 3.4.0 | 1.6.0 | 11.8.0 | 2.6.0 | 1.5.0 | 4.18.0 | 10.5.1 | 8.9.0 | 7.12.0 | 11.8.0  | 6.9.0 |
+
 <Section items={fallbackSDKs} />

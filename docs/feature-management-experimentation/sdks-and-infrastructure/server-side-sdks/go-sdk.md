@@ -29,7 +29,7 @@ The Go SDK can run in three different modes to fit in different infrastructure c
 Since version 6, the Go SDK uses modules to handle all dependencies including itself, and due to semantic import versioning, both `dep` and bare-bones `go-get` are deprecated. To start using our SDK with modules, update your `go.mod` file as follows:
 
 ```go title="go.mod"
-require "github.com/splitio/go-client/v6 v6.8.1"
+require "github.com/splitio/go-client/v6 v6.9.0"
 ```
 
 And update the import paths in your application to use the `v6` package suffix as follows:
@@ -39,7 +39,7 @@ import "github.com/splitio/go-client/v6/splitio/client
 ```
 
 ```go title="Go get"
-go get github.com/splitio/go-client/v6@v6.8.1
+go get github.com/splitio/go-client/v6@v6.9.0
 ```
 
 :::warning[If using Synchronizer with Redis - Synchronizer 2.x required after SDK Version 5.0.0]
@@ -50,7 +50,7 @@ Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to
 
 You can import the SDK into your project as shown below.
 
-```go title="go-client > v6.8.1"
+```go title="go-client > v6.9.0"
 import (
 	"github.com/splitio/go-client/v6/splitio/client"
 	"github.com/splitio/go-client/v6/splitio/conf"
@@ -248,6 +248,8 @@ TreatmentResults := splitClient.TreatmentsWithConfigByFlagSets("KEY", []string{"
 
 </TabItem>
 </Tabs>
+
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
 ### Shutdown
 
@@ -921,6 +923,52 @@ In this example, we use our logging library's FileRotateWriter for the **Error**
   factory, err := client.NewSplitFactory("YOUR_SDK_KEY", sdkConfg)
 	// ...
 ```
+
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally or for individual flags at the SDK level.
+
+This is useful when you want to:
+
+- Maintain a predictable user experience during outages or evaluation failures (avoid unexpected `control` in production)
+- Protect critical user flows by returning a safe, stable treatment (for example, forcing `off` during an incident)
+- Customize behavior per flag so each evaluation inherits appropriate safe defaults if something goes wrong
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated and no flag-level fallback treatment is defined.
+
+```go
+// Initialize SDK with global fallback treatment
+off := "off"
+
+sdkConf.Advanced.FallbackTreatment = &dtos.FallbackTreatmentConfig{
+    GlobalFallbackTreatment: &dtos.FallbackTreatment{
+        Treatment: &off,
+    },
+}
+```
+
+### Flag-level fallback treatment
+
+You can set a fallback treatment per flag in the SDK options. When a flag evaluation fails, the SDK returns the corresponding fallback treatment defined for that flag. This flag-level fallback always takes precedence over the global fallback treatment, so if both are defined, the SDK will return the flag-level value when that flag cannot be evaluated.
+
+```go
+   off := "off"
+   flag1Treatment := "flag1_treatment"
+   sdkConf.Advanced.FallbackTreatment = &dtos.FallbackTreatmentConfig{
+       GlobalFallbackTreatment: &dtos.FallbackTreatment{
+           Treatment: &off,
+       },
+       ByFlagFallbackTreatment: map[string]dtos.FallbackTreatment{
+           "flag1": {
+               Treatment: &flag1Treatment,
+           },
+       },
+   }
+```
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
 ## Proxy
  

@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-11-21T10:00:00
+date: 2025-12-04T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,7 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: November 21, 2025
+#### Last updated: December 4, 2025
 
 ## November 2025
 
@@ -236,6 +236,8 @@ By configuring fallback treatments, you can improve reliability, reduce surprise
 - [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#configure-fallback-treatments)
 - [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configure-fallback-treatments)
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#configure-fallback-treatments)
+- [Go SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk#configure-fallback-treatments)
+- [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#configure-fallback-treatments)
 
 ### [New Feature] Experiment Entry Event Filter
 ----

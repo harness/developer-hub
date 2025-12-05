@@ -362,7 +362,7 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 </TabItem>
 </Tabs>
 
-### Get Treatments with Configurations
+### Get treatments with configurations
 
 To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
@@ -470,6 +470,8 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 
 </TabItem>
 </Tabs>
+
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
 ### Append properties to impressions
 
@@ -617,6 +619,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | debug | Either a boolean flag or log level string ('ERROR', 'WARN', 'INFO', or 'DEBUG'). See [logging](#logging) for details. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK falls back to the polling mechanism. If false, the SDK polls for changes as usual without attempting to use streaming. | true |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
+| fallbackTreatments | Configure fallback treatments for the SDK. | undefined |
 
 To set each of the parameters defined above, use the following syntax:
 

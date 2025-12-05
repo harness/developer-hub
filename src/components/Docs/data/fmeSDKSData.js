@@ -155,7 +155,7 @@ export const optionalInfra = [
   },
   {
     name: 'Split JavaScript Synchronizer Tools',
-    img: '/provider-logos/java-logo.png',
+    img: '/provider-logos/js-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-javascript-synchronizer-tools',
   },
   {

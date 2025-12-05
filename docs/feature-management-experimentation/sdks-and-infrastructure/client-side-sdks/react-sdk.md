@@ -397,6 +397,8 @@ export default MyComponentToggle;
 </TabItem>
 </Tabs>
 
+If a flag cannot be evaluated, the SDK returns the fallback treatment value (default `"control"` unless overridden globally or per flag). For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
 ### Attribute syntax
 
 To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK needs to be passed an attribute map at runtime. In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the underlying `getTreatmentsWithConfig` or `getTreatmentsWithConfigByFlagSets` call, whether you are evaluating using the `names` or `flagSets` property respectively. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account. The SDK supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
@@ -1081,7 +1083,113 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 
 To enable SDK logging in the browser, see how the [SDK Logging](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#logging) works.
 
-This library own logger is not configurable yet, but will be very soon!
+## Configure fallback treatments
+
+Fallback treatments let you define a treatment value (and optional configuration) to be returned when a flag cannot be evaluated. By default, the SDK returns `control`, but you can override this globally or for individual flags at the SDK level.
+
+This is useful when you want to:
+
+- Maintain a predictable user experience during outages or evaluation failures (avoid unexpected `control` in production)
+- Protect critical user flows by returning a safe, stable treatment (for example, forcing `off` during an incident)
+- Customize behavior per flag so each evaluation inherits appropriate safe defaults if something goes wrong
+
+### Global fallback treatment
+
+Set a global fallback treatment when initializing the SDK factory. This value is returned whenever any flag cannot be evaluated and no flag-level fallback treatment is defined.
+
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript">
+
+```javascript
+// Create the config for the SDK factory.
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key'
+  },
+  fallbackTreatments: {
+    global: {
+      treatment: 'off'
+    }
+  }
+};
+```
+
+</TabItem>
+<TabItem value="TypeScript">
+
+```typescript
+// Create the config for the SDK factory.
+const sdkConfig: SplitIO.IBrowserSettings = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key'
+  },
+  fallbackTreatments: {
+    global: {
+      treatment: 'off'
+    }
+  }
+};
+```
+
+</TabItem>
+</Tabs>
+
+### Flag-level fallback treatment
+
+You can set a fallback treatment per flag in the SDK options. When a flag evaluation fails, the SDK returns the corresponding fallback treatment defined for that flag. This flag-level fallback always takes precedence over the global fallback treatment, so if both are defined, the SDK will return the flag-level value when that flag cannot be evaluated.
+
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript">
+
+```javascript
+// Create the config for the SDK factory.
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key'
+  },
+  fallbackTreatments: {
+    global: {
+      treatment: 'off'
+    },
+    byFlag: {
+      flag1: {
+        treatment: 'flag1_treatment'
+      }
+    }
+  }
+};
+```
+
+</TabItem>
+<TabItem value="TypeScript">
+
+```typescript
+// Create the config for the SDK factory.
+const sdkConfig: SplitIO.IBrowserSettings = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key'
+  },
+  fallbackTreatments: {
+    global: {
+      treatment: 'off'
+    },
+    byFlag: {
+      flag1: {
+        treatment: 'flag1_treatment'
+      }
+    }
+  }
+};
+```
+
+</TabItem>
+</Tabs>
+
+For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
 
 ## Advanced use cases
 

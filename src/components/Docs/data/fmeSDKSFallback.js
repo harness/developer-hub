@@ -22,6 +22,16 @@ export const fallbackSDKs = [
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configure-fallback-treatments',
   },
   {
+    name: 'React SDK',
+    img: '/provider-logos/react-native-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#configure-fallback-treatments',
+  },
+  {
+    name: 'React Native SDK',
+    img: '/provider-logos/react-native-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk#configure-fallback-treatments',
+  },
+  {
     name: 'Java SDK',
     img: '/provider-logos/java-logo.png',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#configure-fallback-treatments',
@@ -45,6 +55,11 @@ export const fallbackSDKs = [
     name: 'Node.js SDK',
     img: '/provider-logos/nodejs-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#configure-fallback-treatments',
+  },
+  {
+    name: 'Go SDK',
+    img: '/provider-logos/go-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk#configure-fallback-treatments',
   },
 ];
 
