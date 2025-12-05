@@ -1,5 +1,8 @@
 ---
-title: How to Switch Packer's Powershell provisioner
+title: How to Switch Packer's Powershell provisioner 
+description: How to Switch Packer's Powershell provisioner 
+redirect_from:
+   - docs/continuous-delivery/armory/how-tos/how-to-switch-packer's-powershell-provisioner
 ---
 
 ## Introduction

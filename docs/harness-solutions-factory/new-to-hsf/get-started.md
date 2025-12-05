@@ -15,75 +15,77 @@ Before beginning, ensure you have:
 - Access to a Harness Account
 - Ability to create an admin level token
 
-If you do not meet all these prerequisites but think your organization could benefit from HSF, please reach out to hsf@harness.io.
+If you do not meet all these prerequisites but think your organization could benefit from HSF, please reach out to your account team.
 
 ## Post Deployment of HSF
-There will be a lot of resources that are created into your account once HSF is deployed. Be sure to review this document to understand what was created and where it all lives. 
+Now that HSF has been deployed, what’s next? 
 
-### Created Resources
-**Service Account**
-A service ****account named `harness-platform-manager` is created at the account level. This service account has admin privileges and is responsible for provisioning and managing the resources necessary for running HSF workflows.
+### Create an Organization
+1. Go into IDP → Workflows → Execute `Harness Organization Setup` → Enter name and description → Next → Review → Create
+    <DocImage path={require('../static/getting-started1.png')} title="Click to view full size image" />
+    - **Why?** Assuming that HSF was the first thing that was deployed into your account it is important for you to have a place to learn and start development.
+    - In this example we are creating a `Lab` Organization
+    - By default this workflow requires an approval from someone in the HSF Admins group.
+        <DocImage path={require('../static/getting-started2.png')} title="Click to view full size image" />
+    - Approve to review even though there is nothing to be seen yet. Then you will wait for the second approval. Approve what is being added.
+    - Once completed click Access Harness Organization. You can also go into IDP → Catalog → Resources
 
-**Variables**
-To support IDP workflows, account-level variables are created. These variables store key configuration values, including the project name, organization name, connector information, and platform URL. They enable workflows to dynamically locate and interact with the correct components and environments within Harness. The variables created are:
+### Create Projects
+1. Go into IDP → Workflows → Execute `Harness Project Setup` → Select the organization we created, enter name and description → Next → Review → Create
+2. Just like creating an organization, click Approve to review even though there is nothing to be seen yet. Then wait for the second approval. Approve what is being added.
+    - Below are the resoures that are now currently in the account - one organization named Lab and two projects named infrastructure and workshop both in the Lab organization. 
+    <DocImage path={require('../static/getting-started3.png')} title="Click to view full size image" />
 
-| Variable | Description | Example Value |
-| --- | --- | --- |
-| solutions_factory_project | The project name of where Solutions Factory is deployed. | Solutions_Factory |
-| solutions_factory_endpoint | The endpoint of where Solutions Factory is Deployed | https://app.harness.io |
-| solutions_factory_org | The organization of where Solutions Factory is Deployed | Harness_Platform_Management |
-| solutions_factory_template_library_connector | Connector for Harness Template Library | org.Harness_Template_Library_Repo |
-| solutions_factory_template_library_repo | URL of where HTL lives | https://git.harness.io/[accountid]/Harness_Platform_Management/harness-template-library.git |
-| custom_template_library_connector | Connector for Custom Template Library | org.Custom_Harness_Template_Library_Repo |
-| custom_template_library_repo | URL of where Custom Template Library lives | https://git.harness.io/[accountid]/Harness_Platform_Management/custom-harness-template-library.git |
-| enable_hsf_mini_factory | Flag to indicate if IDP workflows will default to leveraging the mini-factory to distribute workloads | false |
+### Customize your Project configuration and apply it
+1. Clone `harness-template-library` and `custom-harness-template-library` locally
+2. Copy the `harness-project` directory from `harness-template-library` and into `custom-harness-template-library`
+    <DocImage path={require('../static/getting-started4.png')} title="Click to view full size image" />
+3. In the Harness Console go into Account Settings → Variables → Find and copy the Ids for `Custom Template Library Repo` and `Custom Template Library Connector`
+    <DocImage path={require('../static/getting-started5.png')} title="Click to view full size image" />
+4. In `custom-harness-template-library/harness-project/.harness` go into `catalog_template.yaml` and find the properties `template_library_connector` and `template_library_repo` and paste in the Ids from above after “variable.account.” It should look like this:
+    <DocImage path={require('../static/getting-started7.png')} title="Click to view full size image" />
+5. Change `properties: repo_source: default: ` to `custom`
+    <DocImage path={require('../static/getting-started8.png')} title="Click to view full size image" />
+6. Go into the `idp_registration_mgr.yaml` file
+     - add in:   
+                ``` 
+                  - org: Harness_Platform_Management
+                    project: Solutions Factory
+                    workflow: 
+                         - name: harness-project
+                ```
+    <DocImage path={require('../static/getting-started9.png')} title="Click to view full size image" />
+7. Commit and push these changes
+8. Go to Pipelines → Run `Register Custom IDP Templates`
+    <DocImage path={require('../static/getting-started10.png')} title="Click to view full size image" />
+        - After this runs, you can verify by going into the workflow → View Raw YAML and you will see that the source change to `custom-template-library`
+    <DocImage path={require('../static/getting-started11.png')} title="Click to view full size image" />
+9. Create a new project using the new custom workflow:
+    - Go into IDP → Workflows → Harness Project Setup
+10. Make a change in the custom workflow - let’s create a new security group called “Security Champions”
+    - Go back into `custom-harness-template-library` and create a new file called `Security_Champions.yaml` under `harness-project/templates/roles` that includes what privileges this group should have. Sample permission sets are included under the `permission_sets` directory. It should look something like this:
+        <DocImage path={require('../static/getting-started12.png')} title="Click to view full size image" />
+    - Create a new file under `harness-project/templates/groups` that tags the new group. For our example our group will have project viewer and all the privileges that we included in the role. It will look like this:
+        <DocImage path={require('../static/getting-started13.png')} title="Click to view full size image" />
+    - Commit and push these changes.
+    - Some sample permission sets are included in permission_sets
+6. Apply the new project custom template to all the projects that are in your account 
+    - Run a drift check on the project you crated in step 4. Workspaces → Lab_customized_project → Check for Drift
+    - After it runs you will see new resources that need to be created
+        <DocImage path={require('../static/getting-started14.png')} title="Click to view full size image" />
+    - You will see the workspace for the customized project to be apply needed
+        - **Why?** This is a new change in the source code not a modifications that exist on the system
+    - Click Provision and Run the pipeline to apply the change
+    - If you go into user groups for the customized project you will see the new Security_Champions group!
 
-**Organizations**
-All HSF-related resources are organized under a newly created organization named `harness-platform-management`. This organization serves as the central location for all projects, configurations, and access controls associated with the HSF deployment.
+### Bulk Update Workspaces to Use New Configurations
+1. For the projects you created before switching over to use the `custom-harness-template-library` — Go to Pipelines and run `Bulk Workspace Management`
+    <DocImage path={require('../static/getting-started16.png')} title="Click to view full size image" />
+    - The `workspace_type` will be type assigned to the workspace
+    <DocImage path={require('../static/getting-started15.png')} title="Click to view full size image" />
+    - `workspace_change_source` should be changed to “yes”
+    - Set the `workspace_action` to “apply”
+2. Approve the Provision pipelines that get started - this will change the tags and source to use the custom template library and apply the changes. For this example the Security Champions group will be added to all the projects.
+    - The approval was added for an extra layer of protection where you can check to make sure a breaking change won’t be added.
 
-**User Groups**
-Within the `harness-platform-management` organization, two user groups are created: `hsf-admin` and `hsf-user`. The `hsf-admin` group has organization admin privileges and is intended for platform administrators and users managing the implementation of HSF (usually the platform engineering team). This group of users will also be the ones who can approve changes and will get email notifications if this setting is set. The `hsf-user` group, by contrast, is granted organization viewer privileges and is designed for broader team access to view and use the workflows without elevated permissions.
-
-**Secrets**
-Secrets are also created at the organization level to securely manage authentication and access credentials. `HSF Platform API Key`, stores the secret value associated with the harness-platform-manager service account. This key is managed by a pipeline that automatically handles rotation to maintain security best practices.  `hsf_harness_stub_secret_key` and `hsf_harness_stub_access_key` are also created.
-
-**Projects**
-Several projects are initialized within the `harness-platform-management` organization.
-
-- The `Solutions Factory` project contains all the core pipelines and configurations required to manage HSF.
-- The `Image Factory` project is the target destination for the deployment of CI image factory. In the future it will house all of the HSF image specific factories.
-- The `Delegate Management` project is the target destination for the delegate image factory.
-
-**Pipelines**
-The Solutions Factory project includes sixteen pipelines, each designed to perform a specific role in the HSF lifecycle. 
-
-- The `Deploy Solutions Factory` pipeline handles additional configuration tasks related to setting up and managing the HSF deployment. It ensures that the target environment is properly initialized and ready to operate and is used during upgrades and configuration changes.
-- The `Manage Pilot Light` pipeline applies updates and changes to the core HSF framework. It is used to maintain and evolve the foundational infrastructure that supports the overall platform.
-- The `Mirror Harness Official Solutions Factory Repository` pipeline is responsible for cloning and copying data from the official HSF repository into your target Harness account. It also manages the synchronization of updates during future releases, effectively keeping your local copy aligned with the source of truth.
-- The `Unpack Solutions Factory` pipeline unpacks the Solutions Factory.
-- The `Register IDP Templates` pipeline automatically imports all available templates from the harness-template-library and registers them into your IDP instance. This ensures that your IDP has access to the full suite of templates required to power self-service workflows.
-- The `Register Custom IDP Templates` pipeline automatically imports all available templates from the custom-harness-template-library and registers them into your IDP instance.
-- The `Rotate HSF Token` pipeline handles secure token rotation for the harness-platform-manager service account.
-- The `Create and Manage IACM Workspaces` pipeline is invoked at the start of each workflow execution. It provisions and manages IACM workspaces, ensuring that the required infrastructure is in place before any resource provisioning begins. It also registers resources in IDP.
-- The `Provision Workspace` pipeline plans and applies workflows (with built-in approvals).
-- The `Plan and Validate IACM Workspace` pipeline verifies Terraform code.
-- The `Execute Drift Analysis` pipeline identifies configuration drift from source code.
-- The `Teardown IACM Workspace` pipeline removes workspaces (with built-in approvals).
-- The `Bulk Workspace Management` pipeline allows for bulk operations against IACM workspaces.
-- The `Bulk Workspace IDP Registration` pipeline allows for backwards compatibility from older version to bulk register resources into IDP.
-- The `Deploy HSF Factory Floor to Project` pipeline initializes HSF Factory Floor in a new or existing project.
-- The `Rotate Harness Service Account Token and Secret` pipeline rotates a Harness Service Account token and updates a Harness Secret with that value.
-
-**Workspaces**
-Two IACM workspaces are created as part of the HSF framework:
-
-- The `Harness Pilot Light` workspace manages and controls the core framework components.
-- The `Harness Solutions Factory` workspace manages the “engine” layer of HSF, including the logic for requests made via IDP and the execution and provisioning of associated resources. This is the workspace that handles the practical implementation of self-service requests.
-
-**Repositories**
-There are three repositories included in the deployment and exist under the organization level. You can find them under Harness Platform Management (organization) → Solutions Factory (account) → Code Repository (module) → Repositories:
-
-- The `harness-solutions-factory` repository houses all of the source code that is required to standup and run Harness Solutions Factory. A code branch rule called `harness_solutions_factory_codeowners` is created in this repository.
-- The `harness-template-library` repository houses all of the scaffold and templates for how to manage Harness resources. A code branch rule called `harness_solutions_factory_codeowners` is created in this repository.
-- The `harness-delegate-setup` repository serves as an example of how to build a custom Harness Delegate and automate the addition of tools into the delegate.
-- The `custom-harness-template-library` repository houses customized templates created to support Harness entity management and provisioning.
+There will be a lot of resources that are created into your account once HSF is deployed. Be sure to review [this document](../use-hsf/created-resources.md) to understand what was created and where it all lives. 

@@ -34,16 +34,6 @@ export default function Platform() {
               Harness Solutions Factory (HSF) is a scalable automation framework designed to help organizations rapidly deploy and manage Harness resources through self-service workflows, governance, and best practices, all out of the box. 
               Whether you're enabling new teams, setting up golden templates, or driving adoption of Harness at scale, HSF provides a repeatable, governed foundation to help you get started faster and stay standardized across your organization.
             </p>
-            <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode !== 'light'
-                    ? `${baseUrl}img/Platform_Landing_Page.svg`
-                    : `${baseUrl}img/Platform_Landing_Page_dark_mode.svg`
-                }
-              />
-            </div>
           </div>
         </div>
       </div>

@@ -1,18 +1,7 @@
----
-title: Harness Solutions Factory 2.3 Overview
-description: Comprehensive overview guide to HSF 2.3
-sidebar_label: HSF 2.3 Overview
-sidebar_position: 40
----
-
-Harness Solutions Factory 2.3 introduces major advancements, including seamless upgrades to new versions, ability for distributed workspace management, and new golden template options. Here’s what’s new: 
-
-- Automatically manage new updates that are released by Harness via a **PR process** that you can merge when ready.
-- Ability to have a **distributed yet governed setup** where each organization has its own Mini Factory but everything is still orchestrated and managed through the central Solutions Factory.
-- Deploy the **Factory Floor** to any project for easy automation onboarding and/or workflow orchestration.
-
-## Upgrade to 2.3
+## Manual Upgrades for Versions Older Than 2.2.5
 *If you have a version older than 2.2 go into IDP and remove all HSF workflows from IDP. You will need to do this because of IDP 2.0 changes we will need to reregister new workflows.*
+
+### To Update:
 
 1. Go into the `Solutions Factory` project → Pipelines and run `Mirror Harness Official Solutions Factory` 
 2. Go into `Solutions Factory` project → IaCM Workspaces → `Pilot Light` 

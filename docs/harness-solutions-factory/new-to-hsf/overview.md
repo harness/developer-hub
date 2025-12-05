@@ -42,11 +42,16 @@ This repository is stored in Harness Code Repository and is copied over locally 
 ### 4. Factory Floors
 A **Factory Floor** will apply the core resource pipelines into an existing project. This will allow running the HSF framework directly within the consumer project and allows for distributed architecture.
 
-Each floor deploys the following pipelines: `Execute Drift Analysis`, `Provision Workspace`, `Bulk Workspace Management`, `Create and Manage IACM Workspaces`, `Teardown IACM Workspaces`, and `Plan and Validate IACM Workspaces`.
+Each floor deploys the following pipelines: 
+- `Execute Drift Analysis`
+- `Provision Workspace`
+- `Bulk Workspace Management`
+- `Create and Manage IACM Workspaces`
+- `Teardown IACM Workspaces`
+-  `Plan and Validate IACM Workspaces`
 
 ### 5. Mini Factory
 A **Mini Factory** is an isolated project within the Platform Management organization and is intended to be a place to collect and manage the project workspaces. As part of this, a new project is created.
 
 ## Next Steps
 - [Get Started](get-started.md) with Harness Solutions Factory to learn how to deploy and manage your resources.
-- [HSF 2.2](hsf2-2.md[HSF 2.3](hsf2-3.md) overviews to learn about the new features and capabilities.
