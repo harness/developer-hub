@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-10-15T10:00:10
+date: 2025-12-05T10:00:10
 sidebar_position: 15
 ---
 
@@ -17,6 +17,38 @@ These release notes describe recent changes to Harness Software Engineering Insi
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
+
+## December 2025
+
+### [New Feature] Sprint Insights is in beta
+---
+#### 2025-12-05
+
+Sprint Insights is in beta for SEI 2.0, introducing sprint-based delivery analytics alongside existing DORA metrics.
+
+With Sprint Insights, you can configure DORA and sprint metrics in an [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile). Sprint configuration includes how sprint work is measured, which sprint metrics are enabled, delivery performance analysis, and sprint boundary grace periods.
+
+![](./static/sei/sprint-setup.png)
+
+Use the [Sprint Metrics dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency#sprint-metrics) on the **Efficiency** tab in the **Insights** page to analyze performance per sprint, including:
+
+* Sprint start and end dates
+* Committed vs. delivered work
+* Added scope and delivered creep
+* Delivery percentages across committed, creep, and total work
+
+![](./static/sei/sprint-metrics.png)
+
+Sprint Insights provide two levels of drilldown: a high-level sprint view showing aggregated metrics like Sprint Commit, Delivered Commit, Sprint Creep, and delivery percentages, and a sprint-specific view that lets you explore individual work items contributing to the sprint outcomes. 
+
+Work item drilldowns can be filtered by status, delivery, category, and estimation changes, allowing teams to see which committed or added items were delivered or missed. Additionally, the dashboard supports assignee-based analysis to evaluate workload distribution and individual contributions within each sprint.
+
+These insights help teams evaluate planning effectiveness, delivery consistency, and team predictability across the development lifecycle. To request access to the Sprint Insights beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Related documentation
+
+- [Efficiency Profile Setup](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)
+- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency)
 
 ## October 2025
 
