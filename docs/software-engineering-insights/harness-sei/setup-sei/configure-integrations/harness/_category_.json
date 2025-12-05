@@ -1,11 +1,11 @@
 {
-    "label":"Harness",
+    "label":"Harness CI/CD",
     "position": 5,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Harness"
+       "title":"Harness CI/CD"
     }
 }
