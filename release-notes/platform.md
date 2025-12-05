@@ -147,6 +147,19 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## December 2025
+
+### Version 1.119.x <!--December 03, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where deleting a user now also removes them from all child scopes. [PL-65635]
+
+#### New features and enhancements
+
+- Improved audit logging now captures failed login attempts across all authentication methods, offering improved visibility into security events. [PL-66585]
+- The **Renewal Interval (minutes)** field has been removed from the **App Role** authentication method in the HashiCorp Vault connector, as token caching now depends solely on the vault's native TTL. This change enhances clarity and eliminates an unnecessary setting. [PL-66935]
+
 ## November 2025 
 
 ### Version 1.118.x <!--November 27, 2025-->
