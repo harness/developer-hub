@@ -525,10 +525,16 @@ Most importantly, ensure that you have set `Local` as the **Infrastructure** and
 
 ## Delegate Configuration
 
-The `config.env` file location for each operating system:
-- **MacOS**: `~/.harness-delegate/config.env`
-- **Linux**: `./config.env` (in the directory where you created it)
-- **Windows**: `C:\HarnessDelegate\config.env`
+The `config.env` file location:
+- **macOS**:
+  - Default: `~/.harness-delegate/config.env`
+  - Custom workdir: `{workdir}/config.env`
+- **Linux**:
+  - Default: Location where you created it
+  - Custom workdir: `{workdir}/config.env`
+- **Windows**:
+  - Default: `C:\HarnessDelegate\config.env`
+  - Custom workdir: `{workdir}/config.env`
 
 ### Set Max Stage Capacity
 
@@ -572,14 +578,70 @@ NAME="<your delegate name>"
 CLEANUP_GRACE_PERIOD_SECONDS=30
 ```
 
+### Configure Custom Working Directory
+
+By default, the delegate stores its configuration files, logs, and cache in a standard location. You can customize this location using the `HARNESS_WORKDIR` variable.
+
+**Default locations:**
+
+- **Windows**: `C:\HarnessDelegate`
+- **Linux/macOS**: `~/.harness-delegate`
+
+**How to configure:**
+
+<Tabs className="tabs--full-width">
+<TabItem value="Service Installation">
+
+Use the `--workdir` flag during installation:
+
+```bash
+./delegate install --account=[Account ID] \
+                   --token=[Delegate Token] \
+                   --url=[Harness URL] \
+                   --name=[Your Delegate Name] \
+                   --workdir=/custom/path/to/workdir
+```
+
+</TabItem>
+<TabItem value="Direct Binary Execution">
+
+Set the `HARNESS_WORKDIR` environment variable before running the binary:
+
+Linux/macOS:
+```bash
+export HARNESS_WORKDIR=/custom/path/to/workdir
+./delegate server --env-file config.env
+```
+
+Windows (PowerShell):
+```powershell
+$env:HARNESS_WORKDIR="C:\custom\path\to\workdir"
+.\delegate server --env-file config.env
+```
+
+
+</TabItem>
+</Tabs>
+
+**Notes:**
+
+- The delegate automatically creates the directory and subdirectories. Ensure the delegate process has read/write permissions for this directory.
+
+
 ## Debugging
 
 ### Logs
 
 You can find the delegate logs in the following locations:
-- **MacOS**: `~/.harness-delegate/logs/delegate.log`
-- **Linux**: `./nohup-delegate.out` (in the directory where you started the delegate)
-- **Windows**: `C:\HarnessDelegate\logs\delegate.log`
+- **macOS**:
+  - Default: `~/.harness-delegate/logs/delegate.log`
+  - Custom workdir: `{workdir}/logs/delegate.log`
+- **Linux**:
+  - Default: `nohup-delegate.out`
+  - Custom workdir: `{workdir}/logs/delegate.log`
+- **Windows**:
+  - Default: `C:\HarnessDelegate\logs\delegate.log`
+  - Custom workdir: `{workdir}/logs/delegate.log`
 
 #### Log File Configuration
 
@@ -589,8 +651,6 @@ The delegate supports automatic log rotation and sanitization. Configure these u
 # Enable/disable file logging
 LOG_ENABLE_FILE_LOGGING=true
 
-# Custom log file path (optional)
-LOG_FILE_PATH=/custom/path/to/delegate.log
 
 # Log rotation settings
 LOG_MAX_SIZE_MB=100        # Rotate at 100MB
