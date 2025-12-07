@@ -6,12 +6,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
- The Banners feature is currently gated by the feature flag `PL_CUSTOM_BANNERS`, which must be enabled to access this functionality.
-
-:::
-
 ## Overview
 
 The banners, lets admins or users with the right permissions share important messages, like maintenance schedules or downtime, with everyone. These banners appear at the top of the Harness UI and are visible to all users across different areas when active.Account administrators, who have appropriate access can manage the banner type, message and optional call-to-action (CTA)s. 
