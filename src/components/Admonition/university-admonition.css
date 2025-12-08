@@ -29,3 +29,24 @@
     flex-shrink: 0;
     object-fit: contain;
   }
+
+  /* ================= Dark Mode ================= */
+html[data-theme='dark'] .university-admonition {
+  background: #1a2332;
+  border-color: #1e4976;
+  border-left-color: #3b9eff;
+}
+
+html[data-theme='dark'] .university-admonition__title {
+  color: #7cc4ff;
+}
+
+/* Ensure body text is readable in dark mode */
+html[data-theme='dark'] .university-admonition p,
+html[data-theme='dark'] .university-admonition a {
+  color: #e1e4e8;
+}
+
+html[data-theme='dark'] .university-admonition a {
+  color: #58a6ff;
+}
