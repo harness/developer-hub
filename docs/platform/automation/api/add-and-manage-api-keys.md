@@ -43,7 +43,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
    ![](./static/api-quickstart-03.png)
 
-7. To set an expiration date for the token, select Set Expiration Date and enter the date in mm/dd/yyyy format. For more information about [token expiration](#expire-tokens), see the section below.
+7. To set an expiration date for the token, select Set Expiration Date and enter the date in mm/dd/yyyy format. For more information about [token expiration](#token-expiry), see the section below.
 
 8. Select **Generate Token** and copy the token.
 
