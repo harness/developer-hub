@@ -2110,3 +2110,56 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 .theme-doc-footer .theme-last-updated {
   display: none;
 }
+
+/* Page-wide gradient background - unified navbar and content (light mode only) */
+html[data-theme='light'] {
+  background: linear-gradient(180deg, #cdecfc 0%, #e6f5fe 100px, #f5fbff 300px, #ffffff 600px);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+html[data-theme='light'] body {
+  background: transparent !important;
+}
+
+html[data-theme='light'] .main-wrapper {
+  background: linear-gradient(180deg, transparent 0%, transparent 200px, #ffffff 400px) !important;
+}
+
+/* Doc content and sidebar backgrounds */
+html[data-theme='light'] .theme-doc-sidebar-container,
+html[data-theme='light'] [class*="docMainContainer"],
+html[data-theme='light'] article,
+html[data-theme='light'] .table-of-contents {
+  background: transparent;
+}
+
+html[data-theme='light'] .theme-doc-toc-desktop {
+  background: linear-gradient(180deg, transparent 0%, transparent 150px, #f9fafb 400px, #f9fafb 100%);
+  background-attachment: fixed;
+  border: 1px solid #e5e7eb;
+}
+
+html[data-theme='dark'] .theme-doc-toc-desktop {
+  background: transparent;
+}
+
+/* Adjust TOC position for taller navbar with secondary row */
+.theme-doc-toc-desktop {
+  top: calc(var(--ifm-navbar-height) + 60px) !important;
+}
+
+/* Scroll offset for anchor links to account for taller navbar */
+html {
+  scroll-padding-top: calc(var(--ifm-navbar-height) + 10px);
+}
+
+/* Navbar inner elements transparent - container gradient set via JS */
+html[data-theme='light'] .navbar,
+html[data-theme='light'] [class*="secondaryNav"] {
+  background: transparent !important;
+}
+
+html[data-theme='light'] footer {
+  background: #ffffff;
+}

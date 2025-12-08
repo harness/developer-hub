@@ -89,100 +89,19 @@ const config: Config = {
         src: '/img/logo_dlp.svg',
       },
       items: [
-        {
-          position: 'right',
-          type: 'dropdown',
-          label: 'Documentation',
-          to: 'docs',
-          items: [
-            // --- Unlisted / keep at top ---
-            { to: '/docs/platform', label: 'Platform' },
-            { to: '/docs/code-repository', label: 'Code Repository' },
-
-            // === DevOps & Automation ===
-            { type: 'html', value: '<div class="dropdown__section-header">DevOps & Automation</div>' },
-            { to: '/docs/continuous-delivery', label: 'Continuous Delivery & GitOps' },
-            { to: '/docs/continuous-integration', label: 'Continuous Integration' },
-            { to: '/docs/internal-developer-portal', label: 'Internal Developer Portal' },
-            { to: '/docs/infrastructure-as-code-management', label: 'Infrastructure as Code Management' },
-            { to: '/docs/database-devops', label: 'Database DevOps' },
-            { to: '/docs/artifact-registry', label: 'Artifact Registry' },
-            { to: '/docs/cloud-development-environments', label: 'Cloud Development Environments' },
-
-            // === Testing & Resilience ===
-            { type: 'html', value: '<div class="dropdown__section-header">Testing & Resilience</div>' },
-            { to: '/docs/feature-management-experimentation', label: 'Feature Management & Experimentation' },
-            { to: '/docs/feature-flags', label: 'Feature Flags' },
-            { to: '/docs/chaos-engineering', label: 'Chaos Engineering' },
-            { to: '/docs/ai-test-automation', label: 'AI Test Automation' },
-            { to: '/docs/ai-sre', label: 'AI SRE' },
-            { to: '/docs/service-reliability-management', label: 'Service Reliability Management' },
-
-            // === Security & Compliance ===
-            { type: 'html', value: '<div class="dropdown__section-header">Security & Compliance</div>' },
-            { to: '/docs/appsec-security-posture', label: 'Application & API Security Posture' },
-            { to: '/docs/appsec-runtime-protection', label: 'Application & API Runtime Protection' },
-            { to: '/docs/appsec-security-testing', label: 'Application & API Security Testing' },
-            { to: '/docs/security-testing-orchestration', label: 'Security Testing Orchestration' },
-            { to: '/docs/software-supply-chain-assurance', label: 'Supply Chain Security' },
-
-            // === Cost & Optimization ===
-            { type: 'html', value: '<div class="dropdown__section-header">Cost & Optimization</div>' },
-            { to: '/docs/cloud-cost-management', label: 'Cloud Cost Management' },
-            { to: '/docs/software-engineering-insights', label: 'Software Engineering Insights' },
-
-            // === Resources & Support ===
-            { type: 'html', value: '<div class="dropdown__section-header">Resources & Support</div>' },
-            { to: '/university', label: 'Harness University' },
-            {
-              label: 'Harness Solutions Factory',
-              to: '/docs/harness-solutions-factory',
-            },
-            {
-              label: 'Self-Managed Enterprise Edition',
-              to: '/docs/self-managed-enterprise-edition',
-            },
-            {
-              label: 'Open Source',
-              to: '/docs/open-source',
-            },
-            {
-              label: 'FAQs',
-              to: '/docs/faqs',
-            },
-            {
-              label: 'Troubleshooting',
-              to: '/docs/troubleshooting',
-            },
-            {
-              label: 'Harness Cloud Operations',
-              to: '/docs/harness-cloud-operations',
-            },
-          ],
-        },
-        {
-          label: 'API Reference',
-          position: 'right',
-          href: 'https://apidocs.harness.io/',
-        },
-        {
-          label: 'Roadmap',
-          position: 'right',
-          href: '/roadmap',
-        },
-        {
-          label: 'Release Notes',
-          position: 'right',
-          href: '/release-notes',
-        },
+        // Top row: only search and action buttons
         {
           type: 'custom-coveo-search',
           position: 'right',
         },
-
+        {
+          label: 'Contact us',
+          position: 'right',
+          href: 'https://www.harness.io/company/contact-sales',
+        },
         {
           position: 'right',
-          html: '<span class="tool" hover-tooltip="Sign into the Harness Platform (app.harness.io)" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
+          html: '<span class="tool" hover-tooltip="Sign into the Harness Platform (app.harness.io)" tooltip-position="bottom"><button class="button button--nav">Sign in</button></span>',
           href: 'https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in',
         },
         {
