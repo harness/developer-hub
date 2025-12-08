@@ -5,9 +5,9 @@ pipeline:
   orgIdentifier: PROD
   description: This is for HDH checks and build previews pipeline
   tags:
-    Owner: DEVX
     TicketID: HDH-386
     BT-14506: ""
+    Owner: HDH
   stages:
     - stage:
         name: Build
