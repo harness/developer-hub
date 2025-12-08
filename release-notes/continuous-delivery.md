@@ -53,6 +53,19 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## December 2025
+
+### Version 1.119.4
+
+#### Fixed Issues
+
+- Fixed an issue where the GAR (Google Artifact Registry) artifact runtime package path was being returned in an encoded format, causing pipeline failures. The package value is now properly decoded to display correct values in the UI. (**CDS-116703**, **ZD-98357**)
+- Fixed an issue where Azure ARM Template deployments failed with NPE (Null Pointer Exception) and template parsing errors when no parameters file was provided. The parameters file field is now optional. (**CDS-116706**, **ZD-98571**)
+- Fixed an issue where pipelines were hard failing due to secrets referencing null expressions. This occurred when expressions evaluated to null, causing unexpected failures. The "Fail on missing secrets" functionality has been adjusted to restore the previous soft-fail behavior. (**CDS-116786**, **ZD-98673**)
+- Fixed an issue where the Wiz security scanning step was failing intermittently in containerized step groups. This occurred because the StageId was being generated as a UUID, which caused regex matching failures for the STO API calls. The StageId is now set to the stage name for consistent behavior. This fix is behind the feature flag `CDS_CONTAINER_STEP_USE_STAGE_IDENTIFIER`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-116801**, **ZD-98547**, **ZD-98911**)
+- Fixed an issue where pipeline executions were being auto-aborted unexpectedly, even when auto-abort was disabled on the trigger. This occurred because the auto-abort feature was terminating all executions with the same execution tag, regardless of which trigger initiated them. The feature now only aborts executions that were fired from the same trigger.
+This fix is behind the feature flag `PIPE_ABORT_ONLY_TRIGGERED_BY_SAME_TRIGGER`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**PIPE-30843**, **ZD-97860**, **ZD-98660**)
+
 ## November 2025
 
 ### Version 1.118.1
