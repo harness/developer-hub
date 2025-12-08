@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-11-27T08:09:25
+date: 2025-12-05T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,9 +26,36 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: November 27, 2025
+#### Last updated: December 5, 2025
+
+## December 2025
+
+### .NET SDK
+
+#### Version 1.7.5
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12559)
+
+### Android SDK
+
+#### Version 2.2.6
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12557)
+- Updated the Android Gradle Plugin to 8.13.0 to include the latest upstream bug fixes and maintain compatibility with newer Android platform and Android Studio releases. (FFM-12658)
 
 ## November 2025
+
+### JavaScript SDK
+
+#### Version 1.31.3
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12567)
 
 ### Ruby SDK
 
@@ -49,6 +76,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Added documentation for the `initialized` function.
 
 ### Java SDK
+
+#### Version 1.9.2
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12566)
 
 #### Version 1.9.1
 
