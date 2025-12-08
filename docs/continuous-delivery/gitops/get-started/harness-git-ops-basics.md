@@ -114,12 +114,12 @@ There are pros and cons to each of these scenarios:
   1. **Scenario 1: Single Cluster, Single Agent, In-Cluster Deployment of Resources**
 
   **Pros:**
-     * **Simplicity:** This pattern is straightforward to set up and maintain as it involves a single GitOps Agent and ArgoCD instance managing deployments within a single cluster.
+     * **Simplicity:** This pattern is straightforward to set up and maintain as it involves a single GitOps Agent and Argo CD instance managing deployments within a single cluster.
      * **Resource Efficiency:** With a single instance, resource usage is optimized as there is no need for additional instances or coordination between clusters.
 
   **Cons:** 
-     * **Limited Scalability:** Scaling beyond a single cluster can be challenging as the ArgoCD instance is tightly coupled to the specific cluster it is managing.
-     * **Single Point of Failure:** If the ArgoCD instance fails, all deployments within that cluster may be affected.
+     * **Limited Scalability:** Scaling beyond a single cluster can be challenging as the Argo CD instance is tightly coupled to the specific cluster it is managing.
+     * **Single Point of Failure:** If the Argo CD instance fails, all deployments within that cluster may be affected.
 
   1. **Scenario 2: Single Target Cluster for Deployment, Single Agent outside of Target Cluster**
 
@@ -130,19 +130,19 @@ There are pros and cons to each of these scenarios:
   **Cons:**
      * **Increased Management Overhead:** Configuration overhead like IP allow listing, permission for external cluster to connect and so on.
 
-  1. **Scenario 3: Multi-Cluster, Single ArgoCD Instance - hub and spoke** 
+  1. **Scenario 3: Multi-Cluster, Single Argo CD Instance - hub and spoke** 
 
   **Pros:**
-     * **Centralized Management:** A single GitOps Agent coupled with an ArgoCD instance can manage multiple Kubernetes clusters, enabling centralized deployment management.
+     * **Centralized Management:** A single GitOps Agent coupled with an Argo CD instance can manage multiple Kubernetes clusters, enabling centralized deployment management.
      * **Simplicity:** A single GitOps Agent to manage applications across multiple clusters.
 
   **Cons:**
-     * **Single Point of Failure:** If the ArgoCD instance fails, all deployments may be affected.
+     * **Single Point of Failure:** If the Argo CD instance fails, all deployments may be affected.
      * **Performance and Scalability Challenges:** As the number of clusters and deployments increase, the performance and scalability of a single Agent may become a limiting factor, in which case you can either switch to using multiple agents across multiple clusters.
 
-  **Multiple Target Clusters and Multiple Agents:** This is another scenario not described in the diagram. Harness GitOps manages the complexity of multiple ArgoCD instances and this way of using Harness GitOps provides high scalability and isolation, allowing teams to manage deployments independently across multiple clusters and if one ArgoCD instance fails, it does not impact deployments in other clusters. Although this will come with an overhead of higher **Resource Utilization** and **Management overhead**.
+  **Multiple Target Clusters and Multiple Agents:** This is another scenario not described in the diagram. Harness GitOps manages the complexity of multiple Argo CD instances and this way of using Harness GitOps provides high scalability and isolation, allowing teams to manage deployments independently across multiple clusters and if one Argo CD instance fails, it does not impact deployments in other clusters. Although this will come with an overhead of higher **Resource Utilization** and **Management overhead**.
     
-Installing an Agent involves setting up an Agent in Harness, downloading its YAML file, and applying the YAML file in a Kubernetes cluster (`kubectl apply`). Kubernetes then pulls the Harness and ArgoCD images from their respective public repositories.
+Installing an Agent involves setting up an Agent in Harness, downloading its YAML file, and applying the YAML file in a Kubernetes cluster (`kubectl apply`). Kubernetes then pulls the Harness and Argo CD images from their respective public repositories.
 
 ![fetch manifests from repo](static/gitops-archcitecture.png)
 

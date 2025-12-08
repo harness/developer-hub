@@ -1,38 +1,38 @@
 ---
-title: Secret Injection with Harness ArgoCD Plugin
-description: Learn how to use Harness expressions and secrets in ArgoCD manifests with the Config Management Plugin.
+title: Secret Injection with Harness Argo CD Plugin
+description: Learn how to use Harness expressions and secrets in Argo CD manifests with the Config Management Plugin.
 sidebar_position: 6
 ---
 
-This topic describes how to use the Harness ArgoCD Plugin to inject secrets and use Harness expressions directly within your ArgoCD manifests.
+This topic describes how to use the Harness Argo CD Plugin to inject secrets and use Harness expressions directly within your Argo CD manifests.
 
 ## Overview
 
-The Secret Injection feature enables you to use Harness expressions and secrets directly within your ArgoCD manifests through the Harness ArgoCD Config Management Plugin. This plugin integrates with ArgoCD's manifest rendering process, allowing you to reference Harness secrets without requiring a Harness Delegate.
+The Secret Injection feature enables you to use Harness expressions and secrets directly within your Argo CD manifests through the Harness Argo CD Config Management Plugin. This plugin integrates with Argo CD's manifest rendering process, allowing you to reference Harness secrets without requiring a Harness Delegate.
 
-Previously, secret decryption was handled by the Harness Delegate, and there was no way to use Harness expressions within ArgoCD manifests if you wanted to follow a pure GitOps pattern with only the ArgoCD stack. The Config Management Plugin solves this by delegating the manifest rendering process to Harness, giving you control over how manifests are generated before they are applied to the cluster.
+Previously, secret decryption was handled by the Harness Delegate, and there was no way to use Harness expressions within Argo CD manifests if you wanted to follow a pure GitOps pattern with only the Argo CD stack. The Config Management Plugin solves this by delegating the manifest rendering process to Harness, giving you control over how manifests are generated before they are applied to the cluster.
 
 ## How it works
 
-ArgoCD has a concept of rendering manifests before deploying them. When you have a GitOps application pointing to a directory containing Kubernetes manifests, the Harness Config Management Plugin processes these manifests during the rendering phase.
+Argo CD has a concept of rendering manifests before deploying them. When you have a GitOps application pointing to a directory containing Kubernetes manifests, the Harness Config Management Plugin processes these manifests during the rendering phase.
 
 ### Architecture
 
-- **ArgoCD Repo Server**: Previously, the ArgoCD repo server was completely responsible for generating manifests from Git before applying them to the cluster. You could not modify this generation process.
-- **Config Management Plugin**: With the plugin, ArgoCD delegates the manifest rendering process to Harness, allowing you to inject Harness expressions and secrets during manifest generation.
-- **No Delegate Required**: The GitOps agent does not use a Delegate for secret resolution, making it ideal for users who want to use only the ArgoCD stack and follow the GitOps pattern.
+- **Argo CD Repo Server**: Previously, the Argo CD repo server was completely responsible for generating manifests from Git before applying them to the cluster. You could not modify this generation process.
+- **Config Management Plugin**: With the plugin, Argo CD delegates the manifest rendering process to Harness, allowing you to inject Harness expressions and secrets during manifest generation.
+- **No Delegate Required**: The GitOps agent does not use a Delegate for secret resolution, making it ideal for users who want to use only the Argo CD stack and follow the GitOps pattern.
 
 The plugin:
 
-1. Intercepts the manifest rendering process in ArgoCD
+1. Intercepts the manifest rendering process in Argo CD
 2. Scans your manifests for Harness expressions
 3. Resolves the expressions using Harness's secret management system
 4. Replaces the expressions with their actual values
-5. Returns the rendered manifests to ArgoCD for deployment
+5. Returns the rendered manifests to Argo CD for deployment
 
 :::info Important
 
-Since secret resolution happens during the manifest rendering phase itself, you don't need to manually sync the application after adding Harness expressions to your manifests. The secrets are resolved automatically when ArgoCD renders the manifests.
+Since secret resolution happens during the manifest rendering phase itself, you don't need to manually sync the application after adding Harness expressions to your manifests. The secrets are resolved automatically when Argo CD renders the manifests.
 
 :::
 
@@ -52,12 +52,12 @@ Before using the Secret Injection feature, ensure you have:
 
 - A Harness GitOps application configured and pointing to a Git repository
 - Secrets configured in Harness (either in Harness Secret Manager or external secret managers like Vault)
-- The Harness ArgoCD Config Management Plugin installed and configured on your GitOps agent
+- The Harness Argo CD Config Management Plugin installed and configured on your GitOps agent
 - Kubernetes manifests in your Git repository
 
 ## Supported secret types
 
-The Harness ArgoCD Plugin supports the following secret sources:
+The Harness Argo CD Plugin supports the following secret sources:
 
 - **Harness Secret Manager**: Secrets stored in Harness's built-in secret manager
 - **HashiCorp Vault**: Secrets stored in Vault and referenced through Harness
@@ -175,7 +175,7 @@ Once you've added Harness expressions to your manifests:
    - Render the manifests
    - Resolve all Harness expressions
    - Inject the actual secret values
-   - Pass the rendered manifests to ArgoCD for deployment
+   - Pass the rendered manifests to Argo CD for deployment
 
 ### Viewing injected secrets
 
@@ -199,11 +199,11 @@ When auto-sync is enabled for your GitOps application:
 3. New Kubernetes objects (like uncommented secrets) are automatically created
 4. The application syncs to the desired state
 
-## Configuring the Harness ArgoCD Plugin
+## Configuring the Harness Argo CD Plugin
 
 :::note
 
-The Harness ArgoCD Config Management Plugin configuration is typically managed by your platform team. Contact your Harness administrator if you need assistance with plugin setup.
+The Harness Argo CD Config Management Plugin configuration is typically managed by your platform team. Contact your Harness administrator if you need assistance with plugin setup.
 
 :::
 
@@ -232,26 +232,26 @@ When using the Secret Injection feature, follow these best practices:
 
 :::warning Important
 
-ArgoCD caches the manifests generated by plugins, along with the injected secrets, in its Redis instance. These manifests are also available via the repo-server API (a gRPC service). This means that secrets are accessible to anyone who has access to the Redis instance or the repo-server.
+Argo CD caches the manifests generated by plugins, along with the injected secrets, in its Redis instance. These manifests are also available via the repo-server API (a gRPC service). This means that secrets are accessible to anyone who has access to the Redis instance or the repo-server.
 
 :::
 
 To mitigate the risks associated with secret injection plugins, implement the following security measures:
 
-1. **Network Policies**: Set up network policies to prevent direct access to ArgoCD components (Redis and the repo-server). Ensure your cluster supports these network policies and can actually enforce them.
+1. **Network Policies**: Set up network policies to prevent direct access to Argo CD components (Redis and the repo-server). Ensure your cluster supports these network policies and can actually enforce them.
 
-2. **Dedicated Cluster**: Consider running ArgoCD on its own dedicated cluster with no other applications running on it. This isolation reduces the attack surface and limits potential exposure.
+2. **Dedicated Cluster**: Consider running Argo CD on its own dedicated cluster with no other applications running on it. This isolation reduces the attack surface and limits potential exposure.
 
-3. **Access Controls**: Implement strict RBAC policies to limit who can access the ArgoCD components and the Kubernetes cluster where secrets are stored.
+3. **Access Controls**: Implement strict RBAC policies to limit who can access the Argo CD components and the Kubernetes cluster where secrets are stored.
 
-4. **Audit and Monitoring**: Regularly audit access to ArgoCD components and monitor for any unauthorized access attempts.
+4. **Audit and Monitoring**: Regularly audit access to Argo CD components and monitor for any unauthorized access attempts.
 
-For more detailed information on mitigating risks of secret injection plugins, refer to the [ArgoCD Secret Management documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/#mitigating-risks-of-secret-injection-plugins).
+For more detailed information on mitigating risks of secret injection plugins, refer to the [Argo CD Secret Management documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/#mitigating-risks-of-secret-injection-plugins).
 
 ## Limitations
 
 - Secrets must exist in Harness before they can be referenced in manifests
-- The plugin processes manifests during the ArgoCD rendering phase
+- The plugin processes manifests during the Argo CD rendering phase
 - Secret values are resolved at deployment time, not at sync time
 - The plugin requires network connectivity to Harness to resolve expressions
 
@@ -264,13 +264,12 @@ If you receive an error that a secret cannot be found:
 1. Verify the secret exists in Harness
 2. Check that the secret identifier in your expression matches the secret name in Harness
 3. Ensure you have permission to access the secret
-
 ### Expressions not being replaced
 
 If Harness expressions are not being replaced with actual values:
 
-1. Verify the Harness ArgoCD Plugin is installed and configured
-2. Check the ArgoCD application logs for plugin errors
+1. Verify the Harness Argo CD Plugin is installed and configured
+2. Check the Argo CD application logs for plugin errors
 3. Ensure the expression syntax is correct: `<+secrets.getValue("secret_name")>`
 
 ### Auto-sync not working

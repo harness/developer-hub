@@ -112,7 +112,7 @@ In **Namespace**, enter the namespace where you want to install the Harness GitO
 
 If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to not install Argo CD CRDs to avoid a collision if already installed. 
 
-Note that if you remove CRDs from cluster, you will loose your instances of ArgoCD objects like applications, projects and application sets.
+Note that if you remove CRDs from cluster, you will loose your instances of Argo CD objects like applications, projects and application sets.
 
 Select **Next**. The **Helm Chart** and **YAML** deployment options appear.
 
@@ -294,7 +294,7 @@ To enable proxy support for the Harness GitOps Agent in environments where traff
    ```
    localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
    ```
-3. **ArgoCD Repo Server:** Add the following environment variables and relevant proxy details, such as URL, port, and auth details in the `argocd-repo-server` deployment as well the second initcontainer under the `argocd-repo-server` deployment , namely the `sops-helm-secrets-tool` since it downloads resources from the internet using `wget`. 
+3. **Argo CD Repo Server:** Add the following environment variables and relevant proxy details, such as URL, port, and auth details in the `argocd-repo-server` deployment as well the second initcontainer under the `argocd-repo-server` deployment , namely the `sops-helm-secrets-tool` since it downloads resources from the internet using `wget`. 
 
 An example of how the repo-server yaml would look like:
 
@@ -615,7 +615,7 @@ If you installed the agent with an older or custom chart that doesn’t include 
 
 ## High Availability GitOps Agent
 
-The Harness GitOps agent is a worker process based on ArgoCD that is responsible for executing Harness GitOps tasks. It has the following components:
+The Harness GitOps agent is a worker process based on Argo CD that is responsible for executing Harness GitOps tasks. It has the following components:
 
 - `agent`
 - `redis`
@@ -634,47 +634,47 @@ The Normal install type installs exactly 1 replica of all components.
 
 ### High Availability (HA)
 
-Both ArgoCD and Harness have an HA install type. The Harness HA type installs different variations of the components with more than 1 replicas.
+Both Argo CD and Harness have an HA install type. The Harness HA type installs different variations of the components with more than 1 replicas.
 
 - `agent` has 2 replicas. In HA mode, the agent will utilize a Horizontal Pod Autoscaler for CPU and memory, with a minimum of 1 replica and a maximum of 5 replicas.
 - `redis` has 3 replicas/sentinels (`haproxy`).
-- `argocd-application-controller` has 1 replica (ArgoCD uses 2).
+- `argocd-application-controller` has 1 replica (Argo CD uses 2).
 - `argocd-repo-server` server has 2 replicas.
 - `argocd-applicationset-controller` has 1 replica.
 
 
-### ArgoCD use case
+### Argo CD use case
 
 #### Handling UI load
 
-Since ArgoCD has only 1 instance per UI, adding multiple replicas helps to manage load from the UI. 
+Since Argo CD has only 1 instance per UI, adding multiple replicas helps to manage load from the UI. 
 
 Adding multiple replicas helps scale the operations required by the UI, so more users can log in concurrently. For more information, go to [argocd-server](https://github.com/argoproj/argo-cd/blob/master/server/server.go#L160).
 
 #### Handling the application reconciliation and syncs
 
-ArgoCD performs application reconciliation and syncs using the `argocd-application-controller` and `argocd-repo-server`. 
+Argo CD performs application reconciliation and syncs using the `argocd-application-controller` and `argocd-repo-server`. 
 
 The `argocd-application-controller` has 2 queues that are used for processing of application reconciliation and application syncs. By default, `argocd-application-controller` has 20 processors for the application reconciliation queue and 10 processors for the application syncs. 
 
-For reference, the ArgoCD community recommends using 50 and 20 processors respectively for 1000 applications. 
+For reference, the Argo CD community recommends using 50 and 20 processors respectively for 1000 applications. 
 
 For more information, go to: 
 - [https://github.com/argoproj/argo-cd/blob/master/cmd/argocd-application-controller/commands/argocd_application_controller.go#L191](https://github.com/argoproj/argo-cd/blob/master/cmd/argocd-application-controller/commands/argocd_application_controller.go#L191) 
 - [https://github.com/argoproj/argo-cd/blob/master/cmd/argocd-application-controller/commands/argocd_application_controller.go#L192](https://github.com/argoproj/argo-cd/blob/master/cmd/argocd-application-controller/commands/argocd_application_controller.go#L192).
-- [High Availability from ArgoCD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
+- [High Availability from Argo CD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
 
 The `argocd-application-controller` also watches (at a fixed frequency of 10 seconds, by default) the clusters using the Kubernetes client on the current state and maintains a cache for faster retrieval.
 
 If the controller manages a lot of clusters and is facing memory issues, the clusters are sharded (`ARGOCD_CONTROLLER_SHARDING_ALGORITHM`) across multiple replicas of `argocd-application-controller`. 
 
-For more information, go to [High Availability from ArgoCD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
+For more information, go to [High Availability from Argo CD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
 
 #### Handling Monorepos
 
-The `argocd-repo-server` maintains one repository clone locally and uses it for application manifest generation. If the manifest generation must change a file in the local repository clone, then only one concurrent manifest generation per server instance is allowed. This limitation might significantly slowdown ArgoCD if you have a monorepo with multiple applications (50+). 
+The `argocd-repo-server` maintains one repository clone locally and uses it for application manifest generation. If the manifest generation must change a file in the local repository clone, then only one concurrent manifest generation per server instance is allowed. This limitation might significantly slowdown Argo CD if you have a monorepo with multiple applications (50+). 
 
-For more information, go to [High Availability from ArgoCD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
+For more information, go to [High Availability from Argo CD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
 
 ### Harness use cases
 
@@ -694,7 +694,7 @@ With Harness GitOps, multiple agents can run within a single Harness project. Ha
 
 #### Harness Agent reconciliation
 
-The GitOps agent has 2 types of reconciliation on top of the ArgoCD’s reconciliation. This ensures that the data the GitOps service has is in sync with what is present in the destination cluster.
+The GitOps agent has 2 types of reconciliation on top of the Argo CD's reconciliation. This ensures that the data the GitOps service has is in sync with what is present in the destination cluster.
 
 1. On CRUD events, reconciliation runs every 10 seconds.
 2. The bulk reconciliation (to check if anything was removed/added in the cluster directly) runs every 100 seconds.

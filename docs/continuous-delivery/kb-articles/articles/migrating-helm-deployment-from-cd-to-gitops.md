@@ -11,7 +11,7 @@ Migrating your Helm deployments from Harness CD Pipelines to Harness GitOps Pipe
 
 ## Why Migrate from Harness CD to Harness GitOps?
 
-Organizations are increasingly moving to GitOps ArgoCD pipeline to centralize their GitOps workflows. But why choose Harness GitOps ArgoCD over Harness CD? 
+Organizations are increasingly moving to GitOps Argo CD pipeline to centralize their GitOps workflows. But why choose Harness GitOps Argo CD over Harness CD? 
 
 Here are a few compelling reasons:
 
@@ -69,11 +69,11 @@ spec:
       selfHeal: true
 ```
 
-This YAML defines everything from the repository and path to the Helm values that ArgoCD will use to manage your deployment. Be sure to double-check paths and namespaces to avoid potential misconfigurations.
+This YAML defines everything from the repository and path to the Helm values that Argo CD will use to manage your deployment. Be sure to double-check paths and namespaces to avoid potential misconfigurations.
 
 **4. Apply the Manifest in GitOps**
 
-With your manifest ready, it’s time to apply it to GitOps. This command pushes the configuration into ArgoCD, and your deployment will be managed from here on.
+With your manifest ready, it’s time to apply it to GitOps. This command pushes the configuration into Argo CD, and your deployment will be managed from here on.
 
    `kubectl apply -f my-helm-app.yaml`
 
@@ -83,11 +83,11 @@ Now, verify that the deployment is working as expected. You can check the status
 
    `argocd app get my-helm-app`
 
-ArgoCD provides detailed insights into the state of your deployment, allowing you to catch any issues early.
+Argo CD provides detailed insights into the state of your deployment, allowing you to catch any issues early.
 
 **6. Compare Pipeline History and Cluster Values**
 
-It's important to make sure that everything in Harness ArgoCD aligns with the history and values of your Harness CD pipeline. Use the following command to compare and identify any discrepancies:
+It's important to make sure that everything in Harness Argo CD aligns with the history and values of your Harness CD pipeline. Use the following command to compare and identify any discrepancies:
 
 `argocd app history my-helm-app`
 
@@ -111,4 +111,4 @@ Now that your application is running on Harness GitOps pipeline, here are a few 
 
 ## Conclusion
 
-Migrating from the Harness CD pipeline to the Harness GitOps pipeline with ArgoCD might seem like a big leap, but with this guide, you can do it confidently. From retrieving Helm values to ensuring consistency post-migration, each step is designed to make the transition smooth and manageable.
+Migrating from the Harness CD pipeline to the Harness GitOps pipeline with Argo CD might seem like a big leap, but with this guide, you can do it confidently. From retrieving Helm values to ensuring consistency post-migration, each step is designed to make the transition smooth and manageable.

@@ -22,9 +22,9 @@ Yes. Pulling images from your private registry is possible and can be done by pu
 Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
 
 
-### What is the easiest way to determine the ArgoCD version using a GitOps agent?
+### What is the easiest way to determine the Argo CD version using a GitOps agent?
 
-An easy method to identify the ArgoCD version is by creating a GitOps agent and inspecting the associated manifest.
+An easy method to identify the Argo CD version is by creating a GitOps agent and inspecting the associated manifest.
 
 
 ### Does the Harness GitOps Agent support High Availability and scalability?
@@ -32,14 +32,14 @@ An easy method to identify the ArgoCD version is by creating a GitOps agent and 
 A: Yes, the Harness GitOps Agent supports High Availability and scalability by allowing you to deploy multiple agents across different clusters. This ensures redundancy and load distribution.
 
 
-### Which versions of ArgoCd that the latest version of the GitOps agent support? 
+### Which versions of Argo CD that the latest version of the GitOps agent support? 
 
-You can find the latest supported ArgoCD versions in the [GitOps Agent Documentation](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#what-version-of-gitops-agent-supports-what-version-of-repo-server-and-redis-cache).
+You can find the latest supported Argo CD versions in the [GitOps Agent Documentation](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#what-version-of-gitops-agent-supports-what-version-of-repo-server-and-redis-cache).
  
 
-### The GitOps agent updater, can you advise that this will update the Agent, ArgoCD and Redis? Is this also true if use the option to bring our own ArgoCD?
+### The GitOps agent updater, can you advise that this will update the Agent, Argo CD and Redis? Is this also true if use the option to bring our own Argo CD?
  
-It is used to update agents only whenever a new version is available. The ArgoCD components upgrade must be done manually.
+It is used to update agents only whenever a new version is available. The Argo CD components upgrade must be done manually.
 
  
 ### Is it possible to automate the provisioning of the GitOps agent using a Helm chart without having to register/create the agent in the UI first? At the moment it looks like you need to create the Agent in the UI which then generates the YAML or Helm chart for you.
@@ -70,16 +70,16 @@ We do not have a way to add certificates at different scope for project/org/acco
 Organizations can import the GitOps Image from the specified [Docker Hub repository](https://hub.docker.com/r/harness/gitops-agent/tags) into their JFrog Artifactory. However, utilizing the auto updater feature may not be feasible in this scenario. Nonetheless, manual copying of the image to the Artifactory and subsequent pulling from there remains an alternative approach. For more details, go to [Harness GitOps documentation](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/).
 
 
-### How does the requirement for all applications within an ArgoCD appset to be managed by the same agent, despite links being able to connect to multiple clusters, affect the usability of ArgoCD Application Sets?
+### How does the requirement for all applications within an Argo CD appset to be managed by the same agent, despite links being able to connect to multiple clusters, affect the usability of Argo CD Application Sets?
 
-The requirement that all applications within an ArgoCD appset must be managed by the same AGENT, despite the capability of links to connect to multiple clusters, is indeed recognized as a limitation of ArgoCD Application Sets.
-For more details, go to [ArgoCD ApplicationSet documentation](https://developer.harness.io/docs/continuous-delivery/gitops/applicationsets/appset-basics/).
+The requirement that all applications within an Argo CD appset must be managed by the same AGENT, despite the capability of links to connect to multiple clusters, is indeed recognized as a limitation of Argo CD Application Sets.
+For more details, go to [Argo CD ApplicationSet documentation](https://developer.harness.io/docs/continuous-delivery/gitops/applicationsets/appset-basics/).
 
 
-### What is the optimal number of ArgoCD instances required for bootstrapping environments and managing GitOps infrastructure?
+### What is the optimal number of Argo CD instances required for bootstrapping environments and managing GitOps infrastructure?
 
-The installation of the ArgoCD reconciler concurrently with environment creation streamlines the execution of GitOps practices at scale, thus mitigating the complexities associated with bootstrapping environments and managing GitOps infrastructure.
-For more details, go to ArgoCD, Terraform, and Harness [blog](https://www.harness.io/blog/argocd-terraform-and-harness).
+The installation of the Argo CD reconciler concurrently with environment creation streamlines the execution of GitOps practices at scale, thus mitigating the complexities associated with bootstrapping environments and managing GitOps infrastructure.
+For more details, go to Argo CD, Terraform, and Harness [blog](https://www.harness.io/blog/argocd-terraform-and-harness).
 
 
 ### Why is the GitOps Sync step failing with the following error? 
@@ -153,7 +153,7 @@ No, Microsoft Teams does not support GitOps.
 
 ### Which RBAC policies or permissions are required to use Harness GitOps?
 
-The minimum RBAC requirements depend on the applications and destination cluster setup. Thus, it is not straightforward to determine the minimum requirements for RBAC/permissions. For this reason, the ArgoCD application controller has wide RBAC permissions by default.
+The minimum RBAC requirements depend on the applications and destination cluster setup. Thus, it is not straightforward to determine the minimum requirements for RBAC/permissions. For this reason, the Argo CD application controller has wide RBAC permissions by default.
 
 ### How can I sync or delete an application or non-deployment resource?
 
@@ -194,9 +194,9 @@ Harness automatically generates names for Argo CD repositories during the import
 
 ### How can I declaratively create a  GitOps Applications using yaml manifest?
 
-In Harness GitOps, you can achieve a similar approach to ArgoCD by using YAML manifests to define the GitOps applications declaratively. In the GitOps model, Harness allows you to manage the infrastructure and applications as code, keeping the boundaries between Harness metadata and the ArgoCD application clear. 
+In Harness GitOps, you can achieve a similar approach to Argo CD by using YAML manifests to define the GitOps applications declaratively. In the GitOps model, Harness allows you to manage the infrastructure and applications as code, keeping the boundaries between Harness metadata and the Argo CD application clear. 
 
-The actual ArgoCD Application resource will reside in the repo that your Harness GitOps application points to. This keeps a clean separation between Harness’ metadata and the ArgoCD application logic.
+The actual Argo CD Application resource will reside in the repo that your Harness GitOps application points to. This keeps a clean separation between Harness’ metadata and the Argo CD application logic.
 
 **Argo Application YAML**
 ```
@@ -225,31 +225,31 @@ spec:
 
 **apiVersion & Kind**:
 - apiVersion: argoproj.io/v1alpha1
-- kind: Application These define the resource type as an ArgoCD Application, which ArgoCD uses to track and deploy Kubernetes resources from Git.
+- kind: Application These define the resource type as an Argo CD Application, which Argo CD uses to track and deploy Kubernetes resources from Git.
 
 **Metadata**:
-- name: my-argo-app - This gives your ArgoCD application a name 
+- name: my-argo-app - This gives your Argo CD application a name 
 - namespace: argocd - specifies the namespace in which the application is deployed.
 
 **Spec**:
-- Project: Points to the ArgoCD project (default is commonly used).
+- Project: Points to the Argo CD project (default is commonly used).
 
 **Source**:
 - repoURL: The URL of the Git repository where the app's Kubernetes resources live.
 - path: The directory in the repo that contains the Kubernetes manifests for your application.
-- targetRevision: The Git revision (branch or commit) you want ArgoCD to track.
+- targetRevision: The Git revision (branch or commit) you want Argo CD to track.
 
 **Destination**:
 - server: The Kubernetes API server URL.
 - namespace: The namespace in which to deploy the resources.
 
 **SyncPolicy**:
-- automated: Specifies that ArgoCD will automatically sync the app (prune resources and self-heal if necessary).
+- automated: Specifies that Argo CD will automatically sync the app (prune resources and self-heal if necessary).
 
 The project field must be set to an Argo project that is mapped to a Harness project for successful import functionality.
 
-### Where are repository and cluster details stored in ArgoCD or the agent?  
-Repository and cluster details are stored as secrets in the namespace where ArgoCD or the agent is installed. ConfigMaps and secrets are used to manage cluster information and repository details, and these are directly saved on the cluster where the agent is deployed.  
+### Where are repository and cluster details stored in Argo CD or the agent?  
+Repository and cluster details are stored as secrets in the namespace where Argo CD or the agent is installed. ConfigMaps and secrets are used to manage cluster information and repository details, and these are directly saved on the cluster where the agent is deployed.  
 
 ### What could cause a 403 Forbidden error when fetching an anonymous token for a repository?  
 A 403 Forbidden error typically occurs due to insufficient permissions or incorrect repository configuration. This might mean the credentials used lack the required access or the repository details are misconfigured.  
@@ -257,13 +257,13 @@ A 403 Forbidden error typically occurs due to insufficient permissions or incorr
 ### How can I verify if the credentials used for a repository are correct?  
 To verify credentials:
    - Ensure the correct username and token/SSH key are being used.
-   - Check the secret storing the repository credentials in the namespace where ArgoCD or the agent is deployed.
+   - Check the secret storing the repository credentials in the namespace where Argo CD or the agent is deployed.
    - Confirm that the repository permissions align with the required access levels.  
 
 ### What happens if repository or cluster credentials are incorrect?  
 If the credentials are incorrect, operations like fetching repository details, deploying to clusters, or synchronizing changes will fail, often resulting in errors such as 403 Forbidden or authentication failures.  
 
-### How can I fix a 403 Forbidden error for a repository in ArgoCD or the agent?  
+### How can I fix a 403 Forbidden error for a repository in Argo CD or the agent?  
 To resolve the error:
    - Verify that the repository credentials stored in the secret are correct.
    - Ensure the user or token has the appropriate access permissions for the repository.
@@ -316,11 +316,11 @@ Argo CD allows configuring Sync Windows to control when auto-sync occurs. This c
 Enhancement requests for GitOps RBAC improvements have been submitted, but currently, fine-grained GitOps RBAC controls are limited.
 
 ### How can a user manage Argo CD Application Sets using a single Argo CD Agent?
-ArgoCD ApplicationSets do not fully support project-scoped repositories. While you can create an ApplicationSet, the underlying applications may fail to fetch repository contents due to authentication issues.
+Argo CD ApplicationSets do not fully support project-scoped repositories. While you can create an ApplicationSet, the underlying applications may fail to fetch repository contents due to authentication issues.
 Workarounds:
 - Use an Organization-scoped or Account-scoped repository instead of a Project-scoped repository.
 - Configure repo-cred templates to manage authentication for project-level repositories.
-This is a known limitation in [ArgoCD](https://github.com/argoproj/argo-cd/issues/21016).
+This is a known limitation in [Argo CD](https://github.com/argoproj/argo-cd/issues/21016).
 
 ### How are App Project IDs generated?
 

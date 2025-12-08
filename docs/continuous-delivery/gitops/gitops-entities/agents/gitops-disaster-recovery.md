@@ -85,7 +85,7 @@ To switch between primary and secondary agents:
 
 ### Creating a Backup
 
-To back up entities from the GitOps agent namespace (including applications, applicationsets, repositories, clusters, configmaps, and secrets), use the ArgoCD binary from containers like application-controller, applicationset controller, or gitops-agent.
+To back up entities from the GitOps agent namespace (including applications, applicationsets, repositories, clusters, configmaps, and secrets), use the Argo CD binary from containers like application-controller, applicationset controller, or gitops-agent.
 
 Since the application-controller has higher memory resources assigned than the gitops-agent, it's recommended to use that container:
 
@@ -99,9 +99,9 @@ This command exports all GitOps resources, including:
 - Repositories
 - Clusters
 - ConfigMaps
-- Secrets (including ArgoCD CM but excluding gitops-agent and gitops-agent-upgrader CM)
+- Secrets (including Argo CD CM but excluding gitops-agent and gitops-agent-upgrader CM)
 
-The backup file will contain a full export of your configuration in YAML format, including application definitions, repositories, clusters, and other ArgoCD resources.
+The backup file will contain a full export of your configuration in YAML format, including application definitions, repositories, clusters, and other Argo CD resources.
 
 <details>
 <summary>Sample YAML</summary>
@@ -236,7 +236,7 @@ argoproj.io/Application app2 in namespace <NAMESPACE> created
 
 ## Sync Windows
 
-Sync windows can be used as a means of coordinating sync timing between multiple ArgoCD instances (primary and secondary agents). This is particularly useful for controlling which ArgoCD instance is performing syncs at any given time.
+Sync windows can be used as a means of coordinating sync timing between multiple Argo CD instances (primary and secondary agents). This is particularly useful for controlling which Argo CD instance is performing syncs at any given time.
 
 ## Conclusion
 

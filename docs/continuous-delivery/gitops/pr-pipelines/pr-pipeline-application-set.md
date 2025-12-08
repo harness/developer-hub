@@ -31,7 +31,7 @@ Learn more about each [Generator Type](https://argo-cd.readthedocs.io/en/stable/
 
 ## Git Generator
 
-At its core, ArgoCD's Git generator allows for dynamic creation of ArgoCD Application resources from templates using parameters sourced from a Git repository. This functionality enables applications to be defined once in a template and instantiated multiple times with different configurations. The Git generator ensures version control and traceability by pulling environment or application-specific configurations directly from a Git repository.
+At its core, Argo CD's Git generator allows for dynamic creation of Argo CD Application resources from templates using parameters sourced from a Git repository. This functionality enables applications to be defined once in a template and instantiated multiple times with different configurations. The Git generator ensures version control and traceability by pulling environment or application-specific configurations directly from a Git repository.
 
 While the Git generator supports various methods, one of its standout features is the file-oriented approach, specifically using `config.json` files.
 

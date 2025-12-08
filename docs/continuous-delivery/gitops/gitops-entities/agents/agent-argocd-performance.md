@@ -8,8 +8,8 @@ redirect_from:
 ---
 
 Argo CD is a powerful tool for managing continuous deployments in Kubernetes environments. However, as deployments scale, users may encounter performance challenges, particularly with the **Application Controller** and **Repository Server** components. Understanding these common issues is crucial for maintaining optimal performance. 
-Scaling issues can arise due to high resource consumption, slow application refresh rates, and challenges with monorepos. Many issues have been resolved with newer version of ArgoCD so it is recommended to keep the ArgoCD version up to date.
-Nature of issues is totally dependent on the environment and the use case and it not possible to give general solution for all the issues. However by monitoring the ArgoCD components and the environment, and going below common issues and solutions can be helpful.
+Scaling issues can arise due to high resource consumption, slow application refresh rates, and challenges with monorepos. Many issues have been resolved with newer version of Argo CD so it is recommended to keep the Argo CD version up to date.
+Nature of issues is totally dependent on the environment and the use case and it not possible to give general solution for all the issues. However by monitoring the Argo CD components and the environment, and going below common issues and solutions can be helpful.
 
 **Application Controller Performance Issues:**
 

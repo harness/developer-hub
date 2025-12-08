@@ -86,7 +86,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 4. Select **New GitOps Agent**. The Agent creation wizard appears.
 
    You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. 
-5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
+5. For this example, select **No** and select **Start**. If you already have an existing Argo CD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
 
    ![](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.
@@ -423,7 +423,7 @@ Note: When importing applications in BYOA, if the URL in the application matches
 
 :::note Support for Multiple Sources
 
-You can configure multiple sources for a single application in Harness GitOps. This feature is supported by ArgoCD starting from version 2.6 and is currently in beta.
+You can configure multiple sources for a single application in Harness GitOps. This feature is supported by Argo CD starting from version 2.6 and is currently in beta.
 
 Currently, Support for Multiple Sources is behind the feature flag `GITOPS_MULTI_SOURCE_ENABLED`. Contact Harness Support to enable the feature.
 

@@ -30,7 +30,7 @@ Below is a table that shows the current state of our integrations, demonstrating
 | Terragrunt  | NaN                  | 0.40.x            | 0.66.4         | Quarterly     |
 | Serverless  |[Serverless.com plugin](https://hub.docker.com/r/harness/serverless-plugin/tags)| 3.x               | 4.x            | Quarterly     |
 | Jenkins     | Jenkins Build Step   | 2.440             | 2.471          | Quarterly     |
-| NaN         | ArgoCD               | 2.8.x             | 2.12.x         | Quarterly     |
+| NaN         | Argo CD               | 2.8.x             | 2.12.x         | Quarterly     |
 | AWS         | [AWS SAM Plugin](https://hub.docker.com/r/harness/aws-sam-plugin/tags)| 1.84.0| 1.121.0        | Quarterly     |
 
 

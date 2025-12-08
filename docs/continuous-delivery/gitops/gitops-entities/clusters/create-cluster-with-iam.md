@@ -103,7 +103,7 @@ The AWS authenticator packaged with Harness GitOps Agent uses the OIDC provider 
    ```
 3. Create an inline policy that gives the IAM role the ability to assume other roles so that GitOps Agent can assume the Deployer role that you'll create later.
 
-   You could also use the ArgoCD role directly. However, having a separate role to deploy resources into the testing cluster is recommended as it is more flexible and secure.
+   You could also use the Argo CD role directly. However, having a separate role to deploy resources into the testing cluster is recommended as it is more flexible and secure.
 
    ```
    read -r -d '' POLICY <<EOF
@@ -159,7 +159,7 @@ Go to [Installing a GitOps Agent](/docs/continuous-delivery/gitops/gitops-entiti
 
 3. Patch the deployments to set the `securityContext/fsGroup` to `999` so that the Docker image user can use the IAM authenticator. 
      
-   The IAM authenticator tries to mount a secret on `/var/run/secrets/eks.amazonaws.com/serviceaccount/token`. If the correct `fsGroup` (999 corresponds to the ArgoCD user) isn't set, it will fail.
+   The IAM authenticator tries to mount a secret on `/var/run/secrets/eks.amazonaws.com/serviceaccount/token`. If the correct `fsGroup` (999 corresponds to the Argo CD user) isn't set, it will fail.
 
    ```
    kubectl -n iam patch deployment gitops-agent --type=json  \
@@ -187,11 +187,11 @@ You don't need an OIDC provider for the testing cluster. However, you need an IA
 
 ### Create an IAM Role to deploy applications
 
-1. Create a trust relationship for the ArgoCD role so that it can assume the Deployer role.
+1. Create a trust relationship for the Argo CD role so that it can assume the Deployer role.
    
    :::info
    
-   In a multi account setup, you can change the trust relationship to reference the ArgoCD role in the account that holds the management cluster, and place the Deployer role in the same account as the testing cluster.
+   In a multi account setup, you can change the trust relationship to reference the Argo CD role in the account that holds the management cluster, and place the Deployer role in the same account as the testing cluster.
    
    :::
 

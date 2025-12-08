@@ -41,11 +41,11 @@ With MongoDB 6 reaching end-of-life (EOL), it is recommended that customers usin
 1. **Helm Users:**
   - A job has been introduced to handle the FCV upgrade automatically. This job runs pre-upgrade checks and upgrades FCV to match the server version.
 
-2. **ArgoCD Users:**
-  - For ArgoCD users, run the FCV upgrade job manually before performing the main upgrade.
+2. **Argo CD Users:**
+  - For Argo CD users, run the FCV upgrade job manually before performing the main upgrade.
 
 #### MongoDB FCV Upgrade Job
-To run FCV upgrade manually (required for ArgoCD users), include this job definition: (mongo-preupgradejob)[https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/examples/mongo-fcv-upgrade/job.yaml]
+To run FCV upgrade manually (required for Argo CD users), include this job definition: (mongo-preupgradejob)[https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/examples/mongo-fcv-upgrade/job.yaml]
 This job runs as a pre-upgrade hook to ensure FCV is compatible with the MongoDB server version.
 
 #### Configuration
@@ -188,11 +188,11 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
-### Note for ArgoCD based installations
+### Note for Argo CD based installations
 
-:::warning important instructions for ArgoCD based deployments and upgrades
+:::warning important instructions for Argo CD based deployments and upgrades
 
-If you’re using ArgoCD to deploy Harness with Custom Dashboards (Looker) enabled, you might run into issues during upgrades with the encryption/decryption key. ArgoCD re-generates the Looker encryption key with every upgrade because it uses helm template to inflate resources. To avoid this, you need to ensure the key remains consistent across upgrades.
+If you’re using Argo CD to deploy Harness with Custom Dashboards (Looker) enabled, you might run into issues during upgrades with the encryption/decryption key. Argo CD re-generates the Looker encryption key with every upgrade because it uses helm template to inflate resources. To avoid this, you need to ensure the key remains consistent across upgrades.
 
 To fix this issue, follow these steps
 
@@ -212,7 +212,7 @@ To fix this issue, follow these steps
 
   3. Copy the decrypted secrets for the following attributes lookerClientId lookerClientSecret lookerEmbedSecret lookerSignupUrl in harness-looker-secrets.
 
-  4. After decoding, update your ArgoCD values override with the decoded key:
+  4. After decoding, update your Argo CD values override with the decoded key:
 
   ```yaml
   platform:
@@ -236,15 +236,15 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::danger Important
   
-  For customers using ArgoCD and upgrading to version 0.26.x for the first time, ensure that:
-      - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by ArgoCD, similar to other secrets.
-      - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent ArgoCD from overwriting the secret, which could lead to authentication issues. 
+  For customers using Argo CD and upgrading to version 0.26.x for the first time, ensure that:
+      - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by Argo CD, similar to other secrets.
+      - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent Argo CD from overwriting the secret, which could lead to authentication issues. 
 
     ### Upgrade Scenarios:
       
       1. First-time upgrade to 0.26.x:
           - Set `archive_minio_secret: true`
-          - Configure ArgoCD to ignore the `timescale-backup-minio` secret. This ensures proper secret creation
+          - Configure Argo CD to ignore the `timescale-backup-minio` secret. This ensures proper secret creation
 
             ```yaml
               platform:
@@ -259,7 +259,7 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
           ```yaml
           kubectl annotate secret timescaledb-backup-minio -n <namespace> argocd.argoproj.io/sync-options='Prune=false'
           ```
-          - Set `archive_minio_secret: false`, this prevents ArgoCD from overwriting the existing secret
+          - Set `archive_minio_secret: false`, this prevents Argo CD from overwriting the existing secret
           ```yaml
               platform:
                 bootstrap:
@@ -1071,7 +1071,7 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 - Fixed an issue where GitOps applications created through reconciler operations (such as those created by ApplicationSets) were not showing up in the "Referenced By" tab of linked services. These applications now properly appear in the service references, ensuring visibility of service-to-application relationships. [CDS-113560, ZD-91232]
 - Fixed an issue where GitOps sync was failing with "no space left on device" errors, and the App diff tab was not clickable for some applications. GitOps sync now properly handles storage resources and the App diff tab functionality has been restored. [CDS-113506, ZD-91129]
 - Fixed an issue where artifact and chart versions were not displayed in the GitOps Service Summary, showing as **artifact_version_unspecified** for artifacts and `-` for chart versions. Users can now see specific artifact and chart versions during deployment, improving tracking and visibility. 
-- Fixed an issue where ArgoCD failed to detect out-of-sync applications when the GitOps agent was managing more than 5,000 applications. This reconciliation bug was blocking deployments for customers relying on drift detection functionality. [CDS-112008, ZD-87810, ZD-88688]
+- Fixed an issue where Argo CD failed to detect out-of-sync applications when the GitOps agent was managing more than 5,000 applications. This reconciliation bug was blocking deployments for customers relying on drift detection functionality. [CDS-112008, ZD-87810, ZD-88688]
 
 #### Continuous Delivery
 
@@ -1220,7 +1220,7 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 
 - Harness has enhanced the GitOps Cluster Detail Page with improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. [CDS-108575]
 - Users can now benefit from enhanced performance when managing thousands of GitOps applications. Optimizations to ReconcileApplications improve scalability and reduce processing time for large-scale GitOps deployments. [CDS-112480]
-- Users can now select Git commit hashes directly in the GitOps sync options popup, app creation wizard, and app details screen. Commit information is displayed next to the ref field during sync operations, providing better visibility and control over deployment targets while aligning with ArgoCD's recommended tracking and deployment strategies. [CDS-109965]
+- Users can now select Git commit hashes directly in the GitOps sync options popup, app creation wizard, and app details screen. Commit information is displayed next to the ref field during sync operations, providing better visibility and control over deployment targets while aligning with Argo CD's recommended tracking and deployment strategies. [CDS-109965]
 - Users can now access an improved GitOps Cluster Detail Page with enhanced navigation and information display. The page now includes a dedicated pane listing all GitOps applications hosted on the cluster, clickable Agent name and ID links for quick navigation, detailed cluster credential information, and inline editing capabilities with save/update functionality that aligns with other Harness detail pages. [CDS-108575]
 
 #### Continuous Delivery
@@ -1715,7 +1715,7 @@ gsutil -m cp \
 
 #### GitOps
 
-- Fixed an issue where ArgoCD failed to detect out-of-sync applications when the GitOps agent was managing more than 5,000 applications. This reconciliation bug was blocking deployments for customers relying on drift detection functionality. [CDS-112008, ZD-87810, ZD-88688]
+- Fixed an issue where Argo CD failed to detect out-of-sync applications when the GitOps agent was managing more than 5,000 applications. This reconciliation bug was blocking deployments for customers relying on drift detection functionality. [CDS-112008, ZD-87810, ZD-88688]
 - Resolved a minor bug in the GitOps Agent that impacted reconciliation (drift detection) when managing more than 5,000 applications per agent. [CDS-112008] 
 - Fixed GitOps Agent panic when mapping Argo applications to Harness applications with multiple sources and a helm `valuesObject` in the spec. [CDS-112309]
 - Added a new `forceEnableInCluster` parameter under the `argocdSettings` query param when installing a namespaced GitOps Agent.
@@ -1839,7 +1839,7 @@ gsutil -m cp \
 #### GitOps
 
 - Users can now benefit from enhanced performance when managing thousands of GitOps applications. Optimizations to ReconcileApplications improve scalability and reduce processing time for large-scale GitOps deployments. [CDS-112480]
-- Users can now select Git commit hashes directly in the GitOps sync options popup, app creation wizard, and app details screen. Commit information is displayed next to the ref field during sync operations, providing better visibility and control over deployment targets while aligning with ArgoCD's recommended tracking and deployment strategies. [CDS-109965]
+- Users can now select Git commit hashes directly in the GitOps sync options popup, app creation wizard, and app details screen. Commit information is displayed next to the ref field during sync operations, providing better visibility and control over deployment targets while aligning with Argo CD's recommended tracking and deployment strategies. [CDS-109965]
 - Users can now access an improved GitOps Cluster Detail Page with enhanced navigation and information display. The page now includes a dedicated pane listing all GitOps applications hosted on the cluster, clickable Agent name and ID links for quick navigation, detailed cluster credential information, and inline editing capabilities with save/update functionality that aligns with other Harness detail pages. [CDS-108575]
 
 #### Continuous Delivery
@@ -2890,7 +2890,7 @@ gsutil -m cp \
 
 #### GitOps
 
-- Harness supports an Argo upgrade. The packaged ArgoCD version has been upgraded from v2.13.5 to v2.14.9.
+- Harness supports an Argo upgrade. The packaged Argo CD version has been upgraded from v2.13.5 to v2.14.9.
 - Harness addressed and fixed the following CVEs in GitOps images:
   - CVE-2025-22869
   - CVE-2024-45338
@@ -3579,7 +3579,7 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
-- GitOps applications now support the `valuesObject` field. However, Harness recommends using the [`values`](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#values) field since ArgoCD has some issues with `valueObject` when using AppSets. [CDS-106998]
+- GitOps applications now support the `valuesObject` field. However, Harness recommends using the [`values`](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#values) field since Argo CD has some issues with `valueObject` when using AppSets. [CDS-106998]
 
 :::danger
   Updating an application that contains a `valuesObject` while using an agent older than version 0.88 may result in the complete removal of the `valuesObject`. To prevent data loss, please upgrade the agent before proceeding. Additionally, attempting to access an application with a `valuesObject` will cause the task to fail and return a raw version of the `valuesObject`, which can not be modified in the UI.
@@ -4130,15 +4130,15 @@ s available in the account to execute the task` even when appropriate delegate s
     ```  
 :::warning Important
 
-  For customers using ArgoCD and upgrading to version 0.26.x for the first time, ensure that:
-      - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by ArgoCD, similar to other secrets.
-      - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent ArgoCD from overwriting the secret, which could lead to authentication issues. 
+  For customers using Argo CD and upgrading to version 0.26.x for the first time, ensure that:
+      - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by Argo CD, similar to other secrets.
+      - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent Argo CD from overwriting the secret, which could lead to authentication issues. 
 
     ### Upgrade Scenarios:
       
       1. First-time upgrade to 0.26.x:
           - Set `archive_minio_secret: true`
-          - Configure ArgoCD to ignore the `timescale-backup-minio` secret. This ensures proper secret creation
+          - Configure Argo CD to ignore the `timescale-backup-minio` secret. This ensures proper secret creation
 
             ```yaml
               platform:
@@ -4150,7 +4150,7 @@ s available in the account to execute the task` even when appropriate delegate s
 
       2.  Upgrading from 0.26.x to newer versions:
           - Set `archive_minio_secret: false`
-          - Prevents ArgoCD from overwriting the existing secret
+          - Prevents Argo CD from overwriting the existing secret
   
             ```yaml
               platform:
@@ -5547,7 +5547,7 @@ gsutil -m cp \
 
 - Previously, the application regex selector in the GitOps sync step would sync all applications instead of just those in the selected clusters. This issue is resolved. When matched applications no longer correspond to the clusters or environments in the pipeline, the skipped applications will be logged, and the sync operation will only be triggered for the applications matching the regex.(CDS-100130)
 
-- Previously, uninstalling a Helm release would remove CRDs, causing applications to lose their references to projects. This issue is resolved. When installing the agent using Helm, the option to keep ArgoCD CRDs on uninstall is now set to true by default. (CDS-97016)
+- Previously, uninstalling a Helm release would remove CRDs, causing applications to lose their references to projects. This issue is resolved. When installing the agent using Helm, the option to keep Argo CD CRDs on uninstall is now set to true by default. (CDS-97016)
 
 #### Continuous Integration
 - Resolved an issue where excessive logging of the "sanitizeStreamLogs: sanitizing lines" message was flooding the engine and add-on logs. Additionally, a monitoring log line that was previously removed, impacting customer monitoring, has been restored. (CI-14640, ZD-71067)
@@ -5840,15 +5840,15 @@ chaos-manager:
 
 - The Harness GitOps agent uses the **Horizontal Pod Autoscaler** for CPU and memory management, with a minimum of 1 replica and a maximum of 5 replicas in High Availability (HA) mode. For more information, go to [GitOps documentation](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent/#high-availability-ha). (CDS-100830)
 
-- Harness GitOps now supports Multi-Source applications with ArgoCD. This feature is available for the GitOps agent version 0.79. Currently, this feature is behind the feature flag  `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-85518)
+- Harness GitOps now supports Multi-Source applications with Argo CD. This feature is available for the GitOps agent version 0.79. Currently, this feature is behind the feature flag  `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-85518)
 
 - We have introduced a **Force Delete** Button for GitOps Applications, which can be used when a delete operation is stalled. Note that this option may leave some resources orphaned, so it is advised to use it only in critical scenarios. (CDS-97813)
 
-- While retrieving an application from ArgoCD, if the application is not found in the specified agent namespace, it will be removed from the database. (CDS-101006)
+- While retrieving an application from Argo CD, if the application is not found in the specified agent namespace, it will be removed from the database. (CDS-101006)
 
 - We have released a new image for **gitops-agent-installer-helper** (v0.0.2) that addresses several critical and high vulnerabilities through binary upgrades. (CDS-100665)
 
-- While updating Gitops repository fields, it is now required to include an **Update Mask** parameter in the update request to GitOps ArgoCD. The update mask specifies which fields have been changed, enhancing the clarity of the updates. (CDS-101077)
+- While updating Gitops repository fields, it is now required to include an **Update Mask** parameter in the update request to GitOps Argo CD. The update mask specifies which fields have been changed, enhancing the clarity of the updates. (CDS-101077)
 
 #### Continuous Integration
 
@@ -6564,7 +6564,7 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
-- We have resolved an issue where GitOps Applications were inconsistently appearing and disappearing in Harness projects. This was caused by mapping a single ArgoCD instance to multiple Harness organizations and projects. The issue has been fixed, ensuring that GitOps Applications now display correctly and consistently in your projects. (CDS-96409, ZD-62852)
+- We have resolved an issue where GitOps Applications were inconsistently appearing and disappearing in Harness projects. This was caused by mapping a single Argo CD instance to multiple Harness organizations and projects. The issue has been fixed, ensuring that GitOps Applications now display correctly and consistently in your projects. (CDS-96409, ZD-62852)
 
 ## August 21, 2024, patch version 0.19.1
 

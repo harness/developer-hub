@@ -121,7 +121,7 @@ This fix is behind the feature flag `PIPE_ABORT_ONLY_TRIGGERED_BY_SAME_TRIGGER`.
   
   This provides a scalable solution for multi-environment and multi-cluster deployments. Currently, this feature is controlled by Feature Flag `GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. For more information, go to [ApplicationSets](/docs/category/applicationsets). (**CDS-105825**)
 
-- **Harness Secret Expressions in Application Manifests**: You can now use Harness secret expressions directly in Kubernetes manifests using `<+secrets.getValue()>` syntax. Secrets are resolved and decrypted during manifest rendering for Kubernetes `Secret` objects. Supports account, org, and project-level secrets configured in HashiCorp Vault or Harness Secret Manager. This feature requires Feature Flag `CDS_GITOPS_SECRET_RESOLUTION_ENABLED` and enabling the ArgoCD Harness Plugin during agent installation. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. For more information, go to [Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications/#harness-secret-expressions-in-application-manifests).
+- **Harness Secret Expressions in Application Manifests**: You can now use Harness secret expressions directly in Kubernetes manifests using `<+secrets.getValue()>` syntax. Secrets are resolved and decrypted during manifest rendering for Kubernetes `Secret` objects. Supports account, org, and project-level secrets configured in HashiCorp Vault or Harness Secret Manager. This feature requires Feature Flag `CDS_GITOPS_SECRET_RESOLUTION_ENABLED` and enabling the Argo CD Harness Plugin during agent installation. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. For more information, go to [Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications/#harness-secret-expressions-in-application-manifests).
 
 - Added an **Allow Syncing** toggle switch to the Agent Details page for managing system-managed sync windows during disaster recovery (DR) switchover workflows. This enhancement provides better control over automated sync window management without affecting user-configured windows. (**CDS-115196**)
 
@@ -475,13 +475,13 @@ Wondering where version 1.104.XX is? That release was rolled into 1.105.XX and u
 
 - Users can now benefit from enhanced performance when managing thousands of GitOps applications. Optimizations to ReconcileApplications improve scalability and reduce processing time for large-scale GitOps deployments. (**CDS-112480**)
 
-- Users can now select Git commit hashes directly in the GitOps sync options popup, app creation wizard, and app details screen. Commit information is displayed next to the ref field during sync operations, providing better visibility and control over deployment targets while aligning with ArgoCD's recommended tracking and deployment strategies. (**CDS-109965**)
+- Users can now select Git commit hashes directly in the GitOps sync options popup, app creation wizard, and app details screen. Commit information is displayed next to the ref field during sync operations, providing better visibility and control over deployment targets while aligning with Argo CD's recommended tracking and deployment strategies. (**CDS-109965**)
 
 - Users can now access an improved GitOps Cluster Detail Page with enhanced navigation and information display. The page now includes a dedicated pane listing all GitOps applications hosted on the cluster, clickable Agent name and ID links for quick navigation, detailed cluster credential information, and inline editing capabilities with save/update functionality that aligns with other Harness detail pages. (**CDS-108575**)
 
 #### Fixed Issues
 
-- Fixed an issue where ArgoCD failed to detect out-of-sync applications when the GitOps agent was managing more than 5,000 applications. This reconciliation bug was blocking deployments for customers relying on drift detection functionality. (**CDS-112008, ZD-87810, ZD-88688**)
+- Fixed an issue where Argo CD failed to detect out-of-sync applications when the GitOps agent was managing more than 5,000 applications. This reconciliation bug was blocking deployments for customers relying on drift detection functionality. (**CDS-112008, ZD-87810, ZD-88688**)
 
 ### Version 1.101.0
 
@@ -846,7 +846,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 #### New Features and Enhancements
 
-- This agent release includes an Argo upgrade. The packaged ArgoCD version has been upgraded from v2.13.5 to v2.14.9.
+- This agent release includes an Argo upgrade. The packaged Argo CD version has been upgraded from v2.13.5 to v2.14.9.
 - The following CVE's were addressed and fixed for Harness GitOps images:
   - CVE-2025-22869
   - CVE-2024-45338
@@ -1006,7 +1006,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 #### Fixed Issues
 
-- Previously, users were unable to sync GitOps applications with zero resources from the Harness UI, encountering an error requiring at least one resource—even though such configurations are valid in ArgoCD. The issue is resolved. (**CDS-109108, ZD-82181**)
+- Previously, users were unable to sync GitOps applications with zero resources from the Harness UI, encountering an error requiring at least one resource—even though such configurations are valid in Argo CD. The issue is resolved. (**CDS-109108, ZD-82181**)
 - Previously, users observed that the TAS Rolling Deploy step ignored `readiness-health-check` properties defined in the manifest.yml, causing Harness to strip these valid configurations during deployment. The issue is resolved. (**CDS-109043, ZD-82190**)
 - Previously, users experienced issues copying files when the source path included a leading /, causing only a single file to be copied instead of the full directory. The issue is resolved. This fix is currently behind the feature flag `CDS_SCM_FIX_FOLDER_PATH`. Contact [Harness Support](mailto:support@harness.io) to enable it.  (**CDS-108947, ZD-82070**)
 - Previously, users experienced a broken page and error screen when attempting to edit environment overrides, preventing successful updates. The issue is resolved. (**CDS-107112, ZD-78749**)
@@ -1208,7 +1208,7 @@ This issue has been resolved. The Monitored Services page now supports opening v
 
 #### New Features and Enhancements
 
-- GitOps applications now support the `valuesObject` field. However, Harness recommends using the [`values`](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#values) field since ArgoCD has some issues with `valueObject` when using AppSets. (**CDS-106998**)
+- GitOps applications now support the `valuesObject` field. However, Harness recommends using the [`values`](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#values) field since Argo CD has some issues with `valueObject` when using AppSets. (**CDS-106998**)
 
 :::danger
 
@@ -1516,7 +1516,7 @@ For example, `account.agentId` for Account-level agents, `org.agentId` for Organ
 - The Resource Tree API calls were failing because the application name was missing from the query parameters. This issue is resolved. (CDS-104792)
 - Fixed security vulnerabilities found in the GitOps Agent. (CDS-104150, ZD-73983)
 - Previously, updating the GitOps Agent secret and re-applying or upgrading the deployment/Helm chart did not trigger new pod creation, causing the old token to be reused. This issue has been resolved—GitOps Agent pods now track the secret checksum, and any changes will initiate a new deployment revision. (CDS-103262)
-- When viewing the helm source for a multisource app, you could see sometimes see data such as a values file set that would not appear in the UI. This was due to the utilization of ArgoCD outside of control of GitOps. This issue has been fixed. (CDS-104910)
+- When viewing the helm source for a multisource app, you could see sometimes see data such as a values file set that would not appear in the UI. This was due to the utilization of Argo CD outside of control of GitOps. This issue has been fixed. (CDS-104910)
 - Previously, Resource Tree API calls were failing due to a missing application name in the query. This issue has now been fixed. (CDS-104792)
 
 ### Version 1.69.7
@@ -1640,7 +1640,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 - Previously, the terminate sync operation in the GitOps application required application edit permissions due to a misconfiguration. This issue is resolved, and the operation now correctly checks for application sync permissions. (CDS-101930)
 - Previously, the application regex selector in the GitOps sync step would sync all applications instead of just those in the selected clusters. This issue is resolved. When matched applications no longer correspond to the clusters or environments in the pipeline, the skipped applications will be logged, and the sync operation will only be triggered for the applications matching the regex.(CDS-100130)
-- Previously, uninstalling a Helm release would remove CRDs, causing applications to lose their references to projects. This issue is resolved. When installing the agent using Helm, the option to keep ArgoCD CRDs on uninstall is now set to true by default. (CDS-97016)
+- Previously, uninstalling a Helm release would remove CRDs, causing applications to lose their references to projects. This issue is resolved. When installing the agent using Helm, the option to keep Argo CD CRDs on uninstall is now set to true by default. (CDS-97016)
 
 ## October 2024
 
@@ -1702,15 +1702,15 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 - The Harness GitOps agent uses the **Horizontal Pod Autoscaler** for CPU and memory management, with a minimum of 1 replica and a maximum of 5 replicas in High Availability (HA) mode. For more information, go to [GitOps documentation](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent/#high-availability-ha). (CDS-100830)
 
-- Harness GitOps now supports Multi-Source applications with ArgoCD. This feature is available for the GitOps agent version 0.79. Currently, this feature is behind the feature flag  `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-85518)
+- Harness GitOps now supports Multi-Source applications with Argo CD. This feature is available for the GitOps agent version 0.79. Currently, this feature is behind the feature flag  `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-85518)
 
 - We now suport force deleting of GitOps Applications, which can be used when a delete operation is stalled. Note that this option may leave some resources orphaned, so it is advised to use it only in critical scenarios. (CDS-97813)
 
-- While retrieving an application from ArgoCD, if the application is not found in the specified agent namespace, it will be removed from the database. (CDS-101006)
+- While retrieving an application from Argo CD, if the application is not found in the specified agent namespace, it will be removed from the database. (CDS-101006)
 
 - We have released a new image for **gitops-agent-installer-helper** (v0.0.2) that addresses several critical and high vulnerabilities through binary upgrades. (CDS-100665)
 
-- While updating Gitops repository fields, it is now required to include an **Update Mask** parameter in the update request to GitOps ArgoCD. The update mask specifies which fields have been changed, enhancing the clarity of the updates. (CDS-101077)
+- While updating Gitops repository fields, it is now required to include an **Update Mask** parameter in the update request to GitOps Argo CD. The update mask specifies which fields have been changed, enhancing the clarity of the updates. (CDS-101077)
 
 #### Fixed issues
 
@@ -1912,7 +1912,7 @@ We have introduced a UI component to make the list of infrastructure searchable 
 
 - Enhanced High Availability (HA) pod synchronization on project mappings and integrated Redis to better manage synchronization. Added time-to-live (TTL) logic to improve session lifecycle handling. (CDS-96409)
 
-- ArgoCD has been upgraded to version 2.10.14, addressing a security vulnerability related to OpenSSH (CVE-2024-6387), which enhances system security. (CDS-98694)
+- Argo CD has been upgraded to version 2.10.14, addressing a security vulnerability related to OpenSSH (CVE-2024-6387), which enhances system security. (CDS-98694)
 
 #### Fixed issues
 
@@ -1962,7 +1962,7 @@ You can fetch a lite version of execution details along with input yaml that was
 
 - Go version has been updated to `1.22.3` for the GitOps Service and GitOps Agent. (CDS-97613)
 
-- ArgoCD version packaged with harness gitops agent has been upgraded to `v2.10.10`. (CDS-97420)
+- Argo CD version packaged with harness gitops agent has been upgraded to `v2.10.10`. (CDS-97420)
 
 
 #### Behavior changes

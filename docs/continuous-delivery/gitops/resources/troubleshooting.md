@@ -139,9 +139,9 @@ This error occurs when an agent is unable to connect to a repo:
 
 ### Error: "NOAUTH Authentication required" when the app controller is up before the redis-secret is created
 
-There is a known issue that is present in Argo when the app controller or other ArgoCD service pod is up before the redis-secret is created. Please see this Argo thread for more information: [Redis NOAUTH failures](https://github.com/argoproj/argo-helm/issues/2836#issuecomment-2636975946). This error is happening in particular when using a manifest deployment rather than a helm deployment since helm deployments have hooks to make sure that everything comes up in the right order. 
+There is a known issue that is present in Argo when the app controller or other Argo CD service pod is up before the redis-secret is created. Please see this Argo thread for more information: [Redis NOAUTH failures](https://github.com/argoproj/argo-helm/issues/2836#issuecomment-2636975946). This error is happening in particular when using a manifest deployment rather than a helm deployment since helm deployments have hooks to make sure that everything comes up in the right order. 
 
-The current workaround is to restart the appcontroller, agent, and any other ArgoCD service pod or agent that is failing with this error.
+The current workaround is to restart the appcontroller, agent, and any other Argo CD service pod or agent that is failing with this error.
 
 ## Error: GitOps agent pod stuck in CrashLoopBackoff
 
@@ -154,16 +154,16 @@ This problem typically surfaces after re-enabling authentication if the agent pr
 - Ensure the agent's YAML file is updated with the correct authentication token, matching the public key in the database. After updating the YAML file, redeploy the agent to authenticate it properly. 
 
 
-## Application Creation Fails Due to Missing "project" Field (ArgoCD 2.12 Change) (previously it was optional)
+## Application Creation Fails Due to Missing "project" Field (Argo CD 2.12 Change) (previously it was optional)
 
 This is a **backward incompatible change** with **Argo 2.12**. The project field is now mandatory for repository access.
 
-With the upgrade to **ArgoCD 2.12**, the project field has been made mandatory (previously optional) for checking access to repositories at the project-level scope.
+With the upgrade to **Argo CD 2.12**, the project field has been made mandatory (previously optional) for checking access to repositories at the project-level scope.
 As a result, Harness GitOps requests that did not explicitly include the project field began to fail (As it was optional field), leading to issues in the GitOps application creation flow.
 
-Additionally, ArgoCD 2.12 introduced stricter controls on the use of repository kubernetes secret.
+Additionally, Argo CD 2.12 introduced stricter controls on the use of repository kubernetes secret.
 Previously, an Application or ApplicationSet would use any cluster secret that matched the URL specified in the repoUrl field.
-However, starting from ArgoCD 2.12, the project field of an application must match the project field of the cluster secret for access to be granted.
+However, starting from Argo CD 2.12, the project field of an application must match the project field of the cluster secret for access to be granted.
 
 **Impact**
 
@@ -171,17 +171,15 @@ If a reposititory is scoped to `project-a`, an application associated with `proj
 To maintain access to the cluster secret across multiple projects, the project field on the repository kubernetes secret must be `unset` or explicitly scoped for multiple projects.
 
 **Action Items for Users**
-
-1. Update Application Configurations to Include the `project` Field
+1. Update Application Configurations to Include the `project`  Field
 - When creating new GitOps applications, ensure that the **project field** is explicitly included in the configuration.
-
 2. Update Cluster Secrets to Support Multiple Projects
-- If you have cluster secrets that need to be accessed by applications across multiple projects, you will need to `unset` the **project field** in the cluster secret configuration. This ensures that the cluster secret is accessible by applications in different ArgoCD projects.
+- If you have cluster secrets that need to be accessed by applications across multiple projects, you will need to `unset`  the **project field** in the cluster secret configuration. This ensures that the cluster secret is accessible by applications in different ArgoCD projects.
 
-## ArgoCD AppSet “Degraded” Status with Project-Scoped Repos
+## ArgoCD AppSet "Degraded" Status with Project-Scoped Repos
 
 **ArgoCD v2.x limitation**  
-This is a known, recurring issue (see GitHub issue [#21016](https://github.com/argoproj/argo-cd/issues/21016) and internal ticket **CDS-109542**). There’s no fix in ArgoCD v2.x—you’ll need to upgrade to v3.x later this quarter for the proper resolution.
+This is a known, recurring issue (see GitHub issue [#21016](https://github.com/argoproj/argo-cd/issues/21016) and internal ticket **CDS-109542**). There's no fix in ArgoCD v2.x—you'll need to upgrade to v3.x later this quarter for the proper resolution.
 
 **Issue**  
 Your ApplicationSet stays **Degraded** and you see errors like:  
@@ -193,18 +191,17 @@ Your ApplicationSet stays **Degraded** and you see errors like:
 - **Observed:** Sync fails with `ApplicationGenerationFromParamsError` and authentication errors.  
 - **Impact:** You cannot deploy via GitOps.  
 - **Reproducibility:** Not a regression—this happens any time you use a project-scoped repo secret with an AppSet.  
-- **Root cause:** ArgoCD v2.x’s AppSet controller cannot authenticate when the Secret has a `data.project` field (project-scoped credentials).
+- **Root cause:** Argo CD v2.x's AppSet controller cannot authenticate when the Secret has a `data.project` field (project-scoped credentials).
 
 **Workaround**
 1. In the `harness-gitops` namespace, edit your Git repository Secret.  
 2. Remove the `data.project` key so the repo becomes cluster-scoped.  
-3. Save and allow ArgoCD to reconcile; your ApplicationSet will recover.
+3. Save and allow Argo CD to reconcile; your ApplicationSet will recover.
 
 ## Applications Missing in GitOps for kube-system Namespace
 
 **Issue**  
 Apps deployed in the reserved `kube-system` namespace do not appear in GitOps reconciliation or UI.
-
 **Impact**  
 Non-system apps in `kube-system` won’t be visible or reconciled, causing deployment issues.
 

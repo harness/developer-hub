@@ -34,7 +34,7 @@ In addition to a Harness account, you need the following accounts for this tutor
 This tutorial uses the following Git repositories. Fork these repos, and then clone them to your local machine.
 
 - IaC [vanilla-gke](https://github.com/harness-apps/vanilla-gke): The Terraform source repository used with Terraform Cloud to provision GKE. Code samples in this tutorial reference this repo by `$TFC_GKE_REPO`.
-- Kubernetes manifests [bootstrap-argocd](https://github.com/harness-apps/bootstrap-argocd): This repository holds Kubernetes manifests to bootstrap ArgoCD on to the GKE cluster. Code samples in this tutorial reference this repo by `ARGOCD_BOOTSTRAP_REPO`.
+- Kubernetes manifests [bootstrap-argocd](https://github.com/harness-apps/bootstrap-argocd): This repository holds Kubernetes manifests to bootstrap Argo CD on to the GKE cluster. Code samples in this tutorial reference this repo by `ARGOCD_BOOTSTRAP_REPO`.
 - [tfc-notification-demo](https://github.com/harness-apps/tfc-notification-demo): Contains a sample pipeline for this tutorial. Code samples in this tutorial reference this repo by `$TFC_NOTIFICATION_DEMO`.
 
 <details>
@@ -299,7 +299,7 @@ For the pipeline to listen for Terraform Cloud events, you must [add a custom we
 9. Configure the notification as follows:
 
    * **Destination:** Select **Webhook**.
-   * **Name:** Enter `ArgoCD Bootstrap Notifier`.
+   * **Name:** Enter `Argo CD Bootstrap Notifier`.
    * **Webhook URL:** Enter your custom webhook trigger URL.
    * **Triggers:** Select **Only certain events**, and then select **Completed**. This ensures the pipeline only runs when events are successfully completed.
 

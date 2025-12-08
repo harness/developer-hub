@@ -32,16 +32,16 @@ ESO syncs secrets from external APIs into Kubernetes, ensuring secure and automa
 
 Before you begin, make sure that you have the following items installed.
 
-* Kubernetes cluster with ArgoCD.
+* Kubernetes cluster with Argo CD.
 * Helm for installing ESO.
 * Kubectl configured for your Kubernetes cluster.
 * Secrets Manager Access credentials for your secret management system of choice.
 
 ## Install ESO with Helm
 
-1. Create an ArgoCD Application for ESO:
+1. Create an Argo CD Application for ESO:
 
-   Define an ArgoCD Application to deploy the ESO using its Helm chart.  In Harness CD, go to GitOps, and create an application.
+   Define an Argo CD Application to deploy the ESO using its Helm chart.  In Harness CD, go to GitOps, and create an application.
 
    Here's a sample YAML:
 

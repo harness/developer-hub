@@ -263,7 +263,7 @@ To use AWS KMS to encrypt secrets, do the following:
 
     ```
     {
-                "Sid": "ArgoCDKMS",
+                "Sid": "Argo CDKMS",
                 "Effect": "Allow",
                 "Action": [
                     "kms:Decrypt*",
