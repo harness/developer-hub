@@ -1,27 +1,29 @@
 ---
 title: Developer Productivity
-description: Measure developer productivity by tracking the velocity & flow metrics across your organization.
+description: Measure developer productivity by tracking the velocity, flow, and code quality metrics across your organization.
 sidebar_label: Developer Productivity
 sidebar_position: 2
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/productivity
 ---
 
-Productivity in SEI 2.0 focuses on understanding the actual work being delivered by developers, the quality of that work, and how effectively teams collaborate to get it done. Rather than measuring activity for its own sake, we aim to surface signals that reflect meaningful engineering output and work that drives value.
+Productivity in SEI 2.0 focuses on understanding the actual work being delivered by developers, the quality of that work, and how effectively teams collaborate to get it done. Rather than measuring activity for its own sake, SEI surfaces signals that reflect meaningful engineering output, including work that drives value, improvements to existing code, and areas of potential rework.
 
-We’ve designed this experience to focus on the quality, velocity, and collaboration behind the code. Whether you're tracking individual contributions or team-wide trends, SEI 2.0 helps you see where work is flowing smoothly and where it might be getting stuck.
+We’ve designed this experience to focus on the quality, velocity, and collaboration behind the code. Whether you're tracking individual contributions or team-wide trends, SEI 2.0 helps you identify where work is flowing smoothly, where bottlenecks exist, and where additional effort may be spent refactoring or improving code.
 
 We break productivity down into three core dimensions:
 
-* **Volume:** How much work is getting done? think commits, pull requests, stories moved forward, and overall code activity.
-* **Output:** What that work actually delivers—whether it’s shipping to production, creating customer value, or leading to rework down the line.
+* **Volume:** How much work is getting done? This includes commits, pull requests, stories moved forward, and overall code activity.
+* **Output:** What that work actually delivers—whether it’s shipping to production, creating customer value, or identifying rework through metrics like Code Rework.
 * **Collaboration:** How effectively teams are working together? review quality, responsiveness, cross-functional interaction, and shared ownership.
 
 ## Productivity Insight widgets
 
 Our aim is to provide comprehensive, actionable insights into what drives our engineering output. By visualizing key aspects of the development lifecycle, we empower teams to understand their performance, identify areas for improvement, and celebrate successes.
 
-Below is a brief overview of each widget on the **Productivity** tab for SEI 2.0:
+You can analyze the data using a calendar-based date selection or a pre-set time range (weekly, monthly, or quarterly).
+
+Below is a brief overview of each widget in **Productivity** on the **Insights** page:
 
 ### PR Velocity Per Dev
 
@@ -103,3 +105,42 @@ This widget measures the responsiveness of the team by calculating the average t
 The following options are available for this widget:
 
 * **View Breakdown**: Provides a detailed breakdown of first comment times by team.
+
+### Code Rework
+
+:::tip
+Code Rework is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+:::
+
+Code Rework metrics provide insight into the portion of development effort spent rewriting or replacing existing code, and are configured in the [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile). These file-driven metrics show where rework is coming from, who is introducing it, and allow teams to balance delivering new work with maintaining code quality. 
+
+![](../static/productivity-3.png)
+
+The summary metric highlight trends in code rework and the bar chart displays rework percentages over time. You can hover over a bar for a specific week to see the split of **Recent Rework** versus **Legacy Rework**. 
+
+* **Recent Code**: Code introduced within the past 30 days (configured in the Productivity Profile).
+* **Legacy Code**: Code introduced before the recent-code window.
+* **New Work**: Optional, can be displayed by clicking **Show total distribution**.
+
+![](../static/productivity-4.png)
+
+For parent nodes (e.g., directors or managers above leaf teams), the bar chart shows aggregated metrics. To view team-level details, click **View Breakdown** to see metrics aggregated per team (typically by engineering manager), including legacy, recent, and new work (if **Show total distribution** is enabled).
+
+![](../static/productivity-5.png)
+
+You can explore team-level and individual developer metrics by clicking on a team or a leaf node in the Org Tree. At the leaf team level (e.g., an engineering manager's team), you can access the **Code Rework Drilldown**, which displays metrics for individual developers.
+
+![](../static/productivity-6.png)
+
+This drilldown provides analysis of who is contributing rework and where it is coming from using the following metrics:
+
+| Metric             | Description                                                                                     |
+|-------------------|-------------------------------------------------------------------------------------------------|
+| **% Rework**       | The percentage of work in the selected time window that involved rework (both recent and legacy). |
+| **% Legacy Rework**| The percentage of rework that was performed on legacy code (older than the recent-code window).   |
+| **% Recent Rework**| The percentage of rework performed on recent code (introduced within the recent-code window).     |
+| **Lines Added**    | The number of lines added in the code changes during the selected period.                         |
+| **Lines Deleted**  | The number of lines deleted in the code changes during the selected period.                       |
+| **Lines Modified** | The number of lines modified (changed but not added or deleted).                                  |
+| **Total Lines**    | The total lines affected (sum of added, deleted, and modified lines).                             |
+

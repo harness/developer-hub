@@ -7,16 +7,18 @@ sidebar_position: 2
 
 ## Overview
 
-A Productivity Profile helps you define how developer activity and contribution metrics are calculated in SEI 2.0. These profiles surface key insights such as coding frequency, pull request behavior, and work completed per developer without requiring any manual resource definitions.
+A Productivity Profile helps you define how developer activity and contribution metrics are calculated in SEI 2.0. These profiles surface key insights such as coding frequency, pull request behavior, work completed per developer, and code rework, without requiring any manual resource definitions.
 
-The SEI system automatically derives these metrics from your connected **Source Code Management (SCM)** and **Issue Management (IM)** systems data, based on where developer contributions are detected. To ensure attribution is accurate, make sure each developer has their SCM usernames and IM account IDs added on the **Developers** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams).
+The Harness SEI system automatically derives these metrics from your connected **Source Code Management (SCM)** and **Issue Management (IM)** systems data, based on where developer contributions are detected. For Code Rework, SEI 2.0 analyzes file changes within pull requests to identify where rework is coming from and which developers are introducing that rework, rather than relying solely on high-level SCM or IM activity signals.
+
+To ensure attribution is accurate, make sure each developer has their SCM usernames and IM account IDs added on the **Developers** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams).
 
 ## Prerequisites
 
 Before you begin:
 
 * The SEI 2.0 module is enabled for your Harness account.
-* You must have the SEI Admin role to create or manage Productivity Profiles.
+* You must have the **SEI Admin** role to create or manage Productivity Profiles.
 * At least one Source Code Manager or Issue Management type integration should be present in the account.
 
 ## Set up the profile
@@ -25,74 +27,59 @@ To create a productivity profile:
 
 1. In your **Harness project**, navigate to **Software Engineering Insights** and click **Account Management**.
 1. Under **Profiles**, select **Productivity**.
-   
+1. To create a profile, click **Create**. To edit an existing profile, click the **Edit Profile** icon in the profiles list.
+
    ![](../../static/productivity-profile.png)
 
-1. To create a profile, click **Create**. To edit an existing profile, click the **Edit Profile** icon in the profiles list.
 1. Enter a name and add an optional description for the profile.
-1. Enable the metrics you want to track and configure them using the sections below.
+1. Enable the metrics you want to track and customize your configuration.
 
-### Enable or disable metrics
-
-![](../../static/productivity-profile-1.png)
+## Set up Productivity metrics
 
 You can choose which metrics to enable in the profile and configure their thresholds or categorization logic where applicable.
+
+![](../../static/productivity-1.png)
 
 | Metric                                 | Description                                                                 |
 | -------------------------------------- | --------------------------------------------------------------------------- |
 | **Coding Days per Month**              | Tracks the average number of days developers actively push code.            |
 | **PR Velocity – PRs Merged per Month** | Counts the number of PRs merged per month across target branches.           |
-| **PR Cycle Time**                     | Measures the average time from PR creation to merge.                        |
-| **Lines of Code**                    | Calculates total lines of code added, modified, or deleted across branches. |
+| **PR Cycle Time**                      | Measures the average time from PR creation to merge.                        |
 | **Work Completed Per Dev**             | Tracks work items (features, bugs) completed by each developer.             |
-| **Comments per PR**                  | Averages the number of review comments on each PR.                          |
+| **Number of Comments per PR**          | Averages the number of review comments on each PR.                          |
 | **Time to First Comment**              | Measures the average time from PR creation to first review comment.         |
+| **Code Rework**                        | Measures the portion of development effort spent rewriting or replacing existing code instead of adding entirely new code. |
 
 ### PR Velocity
 
 ![](../../static/productivity-profile-5.png)
 
-These thresholds help categorize PRs for size based analysis in metrics like PR Velocity.
+These thresholds help categorize pull requests for size-based analysis in metrics like PR Velocity.
 
-* Small PR Threshold (default: 10 lines changed)
-* Medium PR Threshold (default: 100 lines changed)
-* PRs < Small threshold: Small
-* PRs between Small and Medium: Medium
-* PRs > Medium → Large
+* **Small Pull Request Threshold** (default: 10 lines changed)
+* **Medium Pull Request Threshold** (default: 100 lines changed)
 
-### Work Completed Per Developer
+Pull requests are classified as Small, Medium, and Large based on configured thresholds: PRs below the small threshold are `Small`, PRs between the small and medium thresholds are `Medium`, and PRs above the medium threshold are `Large`.
 
-This metric tracks completed work items (e.g., Features and Bugs) assigned to each developer.
+### Code Rework
 
-#### Define how you track features
+:::tip
+Code Rework is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+:::
 
-![](../../static/productivity-profile-2.png)
+Use Code Rework to measure how much development effort is spent rewriting or replacing existing code instead of introducing new code. Code Rework is file-driven, not lines-of-code driven, meaning the metric tracks the files being modified rather than raw line counts.
 
-1. Use the dropdown menu to select an issue type or multiple issue types (e.g. `Story` or `Task`).
-1. Define the complexity of a feature based on effort estimation (i.e. story points):
-   
-   * **Simple**: 1–2 points
-   * **Medium**: 3–4 points
-   * **Complex**: 5+ points
+You can customize how SEI 2.0 classifies recent and legacy code to analyze where rework is coming from and who is introducing it. Set the number of days to consider as recent code to define the time window. By default, this is set to 30 days.
 
-#### Define how you track bugs
+![](../../static/productivity-2.png)
 
-![](../../static/productivity-profile-3.png)
+* **Recent Code**: Code introduced within the past 30 days (by default)
+* **Legacy Code**: Code introduced before the recent-code window (older than 30 days)
 
-1. Use the dropdown menu to select an issue type or multiple issue types (e.g., `Bug`).
-1. Define the severity of a work item using work-item level priority filters:
-  
-   * **Minor**
-   * **Major**
-   * **Critical**
+For each merged pull request, SEI 2.0 computes reworked lines using the balance heuristic:
 
-#### Define the statuses that represent active work
+$$
+\text{Reworked Lines} = \min(\text{Lines Added}, \text{Lines Deleted})
+$$
 
-![](../../static/productivity-profile-4.png)
-
-Select statuses from your issue management system that represent development phases (e.g. `In Progress`, `Dev Testing`, `Ready for QA`). This is used to calculate `Work Completed Per Dev` and contextualize effort timelines in feature delivery for every developer.
-
-After configuring the desired metrics:
-
-* Click **Save** to finalize the profile. Metrics will automatically be computed based on SCM and IM data. 
-* Associate the profile with one or more [**Org Trees**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) to apply the logic across developers.
+Once you have completed the Productivity metrics configuration, click **Save** in the top right corner. Metrics will automatically be computed based on SCM and IM data, and you can associate the profile with one or more [Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree#set-up-an-org-tree) to apply the logic across developers.

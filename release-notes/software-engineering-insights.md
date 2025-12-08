@@ -20,6 +20,34 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## December 2025
 
+### [New Feature] Code Rework is in beta
+---
+#### 2025-12-05
+
+Code Rework is in beta for SEI 2.0, providing developer-level visibility into refactoring activity and how much effort is spent rewriting or replacing existing code instead of introducing new code.
+
+With Code Rework, you can configure how recent and legacy code is classified in a [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile#set-up-productivity-metrics), including the time window for recent code (set as 30 days, by default). This lets you analyze where rework is coming from and who is introducing it.
+
+![](./static/sei/code-rework-setup.png)
+
+Use the [Productivity dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity#code-rework) on the **Insights** page to explore developer contributions to code rework, including:
+
+* % Legacy Rework
+* % Recent Rework
+* % Total Rework
+* Lines Added, Deleted, Modified, and Total Lines
+
+![](./static/sei/code-rework.png)
+
+Code Rework provides two levels of drilldown: a high-level view showing aggregated metrics per team, and a per-developer view that lets you analyze detailed metrics and the split between recent and legacy rework.
+
+These insights help teams understand refactoring effort, identify sources of rework, and improve code quality and development efficiency. To request access to the Code Rework beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Related documentation
+
+- [Productivity Profile Setup](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)
+- [Developer Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity)
+
 ### [New Feature] Sprint Insights is in beta
 ---
 #### 2025-12-05
