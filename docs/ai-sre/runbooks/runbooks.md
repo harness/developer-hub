@@ -21,13 +21,13 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
 
 ### Integration Ecosystem
 - **Communication Tools**
-  - [Slack](./integrations/slack.md) - Channel management and notifications
-  - [Microsoft Teams](./integrations/teams.md) - Team collaboration
-  - [Zoom](./integrations/zoom.md) - Incident bridges
+  - [Slack](./runbook-action-integrations/slack.md) - Channel management and notifications
+  - [Microsoft Teams](./runbook-action-integrations/teams.md) - Team collaboration
+  - [Zoom](./runbook-action-integrations/zoom.md) - Incident bridges
 
 - **Ticketing Systems**
-  - [Jira](./integrations/jira.md) - Issue tracking and updates
-  - [ServiceNow](./integrations/servicenow.md) - Incident management
+  - [Jira](./runbook-action-integrations/jira.md) - Issue tracking and updates
+  - [ServiceNow](./runbook-action-integrations/servicenow.md) - Incident management
 
 ## Getting Started
 
@@ -160,9 +160,9 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
 
 ### Integration Guides
 - Communication Tools
-  - [Slack Integration](./integrations/slack.md)
-  - [Microsoft Teams Integration](./integrations/teams.md)
-  - [Zoom Integration](./integrations/zoom.md)
+  - [Slack Integration](./runbook-action-integrations/slack.md)
+  - [Microsoft Teams Integration](./runbook-action-integrations/teams.md)
+  - [Zoom Integration](./runbook-action-integrations/zoom.md)
 - Ticketing Systems
-  - [Jira Integration](./integrations/jira.md)
-  - [ServiceNow Integration](./integrations/servicenow.md)
+  - [Jira Integration](./runbook-action-integrations/jira.md)
+  - [ServiceNow Integration](./runbook-action-integrations/servicenow.md)

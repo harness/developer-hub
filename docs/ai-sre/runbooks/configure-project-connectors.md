@@ -105,4 +105,4 @@ Always test runbook actions in a non-production environment to verify proper aut
 
 * [Configure Authentication](./configure-authentication.md)
 * [Create a Runbook](./create-runbook.md)
-* [Integration Guides](./integrations/jira.md)
+* [Integration Guides](./runbook-action-integrations/jira.md)

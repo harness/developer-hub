@@ -9,6 +9,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
 
 # Create a Runbook
 
@@ -212,18 +213,18 @@ Harness AI SRE provides a comprehensive library of pre-built actions across mult
 ### Communication & Collaboration Tools
 Establish immediate communication channels and keep stakeholders informed throughout incident resolution.
 
-#### **[Slack Integration](./integrations/slack.md)**
+#### **[Slack Integration](./runbook-action-integrations/slack.md)**
 - **Send Notifications**: Broadcast alerts to channels or direct messages.
 - **Create Channels**: Automatically create incident-specific channels.
 - **Start Threads**: Organize discussions and updates.
 - **Add Members**: Add members to the channel.
 - **Archive Channels**: Clean up after incident resolution.
 
-#### **[Microsoft Teams Integration](./integrations/teams.md)**
+#### **[Microsoft Teams Integration](./runbook-action-integrations/teams.md)**
 - **Send Messages**: Send alerts to specific teams or channels.
 - **Create Meetings**: Automatically create Teams meeting, optionally attaching an AI transcription bot.
 
-#### **[Zoom Integration](./integrations/zoom.md)**
+#### **[Zoom Integration](./runbook-action-integrations/zoom.md)**
 - **Create Meetings**: Instantly set up incident response calls, optionally attaching an AI transcription bot.
 - **End Meetings**: End an active Zoom meeting.
 
@@ -231,12 +232,12 @@ Establish immediate communication channels and keep stakeholders informed throug
 ### Incident Response & Ticketing Systems
 Automate incident tracking, assignment, and resolution workflows across your preferred ticketing platforms.
 
-#### **[Jira Integration](./integrations/jira.md)**
+#### **[Jira Integration](./runbook-action-integrations/jira.md)**
 - **Issue Creation**: Automatically create tickets with relevant context.
 - **Status Updates**: Progress incidents through workflow states.
 - **Update Tickets**: Updates an existing Jira issue's summary, description, issue type, or adds a comment with relevant context.
 
-#### **[ServiceNow Integration](./integrations/servicenow.md)**
+#### **[ServiceNow Integration](./runbook-action-integrations/servicenow.md)**
 - **Incident Management**: Create and manage ServiceNow incidents.
 - **Change Requests**: Initiate emergency or standard changes.
 - **Update Incidents**: Updates an existing ServiceNow incident's summary, description, issue type, or adds a comment with relevant context.
@@ -245,7 +246,7 @@ Automate incident tracking, assignment, and resolution workflows across your pre
 ### Automation & Pipeline Execution
 Execute remediation actions, deploy fixes, and trigger operational workflows.
 
-#### **[Harness Pipelines Integration](./integrations/harness-pipelines.md)**
+#### **[Harness Pipelines Integration](./runbook-action-integrations/harness-pipelines.md)**
 - **Pipeline Execution**: Trigger deployment or remediation pipeline.
 - **Feature Flag Management**: Deploy specific versions or rollback changes.
 - **Environment Management**: Manage infrastructure scaling or configuration.
@@ -367,19 +368,17 @@ Once testing is complete, deploy your runbook to production and establish monito
 
 ### Integration Setup Guides
 #### Communication & Collaboration
-- **[Slack Integration](./integrations/slack.md)**: Complete setup guide for Slack automation.
-- **[Microsoft Teams Integration](./integrations/teams.md)**: Configure Teams notifications and collaboration.
-- **[Zoom Integration](./integrations/zoom.md)**: Set up automated meeting creation and management.
+- **[Slack Integration](./runbook-action-integrations/slack.md)**: Complete setup guide for Slack automation.
+- **[Microsoft Teams Integration](./runbook-action-integrations/teams.md)**: Configure Teams notifications and collaboration.
+- **[Zoom Integration](./runbook-action-integrations/zoom.md)**: Set up automated meeting creation and management.
 
 #### Incident Management
-- **[Jira Integration](./integrations/jira.md)**: Automate issue tracking and project management.
-- **[ServiceNow Integration](./integrations/servicenow.md)**: Integrate with enterprise service management.
+- **[Jira Integration](./runbook-action-integrations/jira.md)**: Automate issue tracking and project management.
+- **[ServiceNow Integration](./runbook-action-integrations/servicenow.md)**: Integrate with enterprise service management.
 
 #### Automation & Pipelines
-- **[Harness Pipelines Integration](./integrations/harness-pipelines.md)**: Execute deployment and remediation pipelines.
+- **[Harness Pipelines Integration](./runbook-action-integrations/harness-pipelines.md)**: Execute deployment and remediation pipelines.
 
 ---
 
-:::info
-**Need Help?** Contact our support team or visit the [Harness Documentation](https://docs.harness.io) for additional resources and troubleshooting guides.
-:::
+<NeedHelpFooter />

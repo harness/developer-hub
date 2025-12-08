@@ -365,4 +365,4 @@ Customize your alert experience:
 - [AI SRE Getting Started Guide](/docs/ai-sre/get-started/onboarding-guide)
 - [Runbook Automation](/docs/ai-sre/runbooks)
 - [Alert Management Best Practices](/docs/ai-sre/resources/ai-sre-best-practices)
-- [Integration Setup Guides](/docs/category/integration-guides)
+- [Integration Setup Guides](/docs/category/integrations)

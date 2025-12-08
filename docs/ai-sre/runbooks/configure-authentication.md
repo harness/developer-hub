@@ -17,21 +17,21 @@ Each integration type requires specific authentication setup to ensure secure co
 
 ## Communication Tools
 
-### [Slack](./integrations/slack.md)
+### [Slack](./runbook-action-integrations/slack.md)
 1. Navigate to **Settings** → **Connectors** → **Collaboration**
 2. Click **+ New Connector**
 3. Select **Slack**
 4. Follow the OAuth flow to authorize Harness
 5. Configure channel permissions
 
-### [Microsoft Teams](./integrations/teams.md)
+### [Microsoft Teams](./runbook-action-integrations/teams.md)
 1. Navigate to **Settings** → **Connectors** → **Collaboration**
 2. Click **+ New Connector**
 3. Select **Microsoft Teams**
 4. Enter your Azure AD credentials
 5. Grant necessary permissions
 
-### [Zoom](./integrations/zoom.md)
+### [Zoom](./runbook-action-integrations/zoom.md)
 1. Navigate to **Settings** → **Connectors** → **Collaboration**
 2. Click **+ New Connector**
 3. Select **Zoom**
@@ -40,14 +40,14 @@ Each integration type requires specific authentication setup to ensure secure co
 
 ## Ticketing Systems
 
-### [Jira](./integrations/jira.md)
+### [Jira](./runbook-action-integrations/jira.md)
 1. Navigate to **Settings** → **Connectors** → **AI SRE**
 2. Click **+ New Connector**
 3. Select **Jira**
 4. Enter your API key
 5. Configure project mapping
 
-### [ServiceNow](./integrations/servicenow.md)
+### [ServiceNow](./runbook-action-integrations/servicenow.md)
 1. Navigate to **Settings** → **Connectors** → **AI SRE**
 2. Click **+ New Connector**
 3. Select **ServiceNow**
@@ -97,9 +97,9 @@ Each integration type requires specific authentication setup to ensure secure co
 
 ### Integration Guides
 - Communication Tools
-  - [Slack Integration](./integrations/slack.md)
-  - [Microsoft Teams Integration](./integrations/teams.md)
-  - [Zoom Integration](./integrations/zoom.md)
+  - [Slack Integration](./runbook-action-integrations/slack.md)
+  - [Microsoft Teams Integration](./runbook-action-integrations/teams.md)
+  - [Zoom Integration](./runbook-action-integrations/zoom.md)
 - Ticketing Systems
-  - [Jira Integration](./integrations/jira.md)
-  - [ServiceNow Integration](./integrations/servicenow.md)
+  - [Jira Integration](./runbook-action-integrations/jira.md)
+  - [ServiceNow Integration](./runbook-action-integrations/servicenow.md)

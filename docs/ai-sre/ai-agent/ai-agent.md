@@ -135,9 +135,9 @@ The AI SRE Scribe Agent transforms raw communications into structured incident n
 ## Getting Started
 
 ### 🚀 Quick Setup
-- [Configure Slack Integration](/docs/ai-sre/runbooks/integrations/slack)
-- [Set Up Zoom Integration](/docs/ai-sre/runbooks/integrations/zoom)
-- [Connect Microsoft Teams](/docs/ai-sre/runbooks/integrations/teams)
+- [Configure Slack Integration](/docs/ai-sre/runbooks/runbook-action-integrations/slack)
+- [Set Up Zoom Integration](/docs/ai-sre/runbooks/runbook-action-integrations/zoom)
+- [Connect Microsoft Teams](/docs/ai-sre/runbooks/runbook-action-integrations/teams)
 
 ### 📚 Related Resources
 - [Incident Management Overview](/docs/ai-sre/incidents/)

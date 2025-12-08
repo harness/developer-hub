@@ -59,7 +59,7 @@ Use connectors to integrate with Teams, Slack, ServiceNow, and other monitoring 
 :::info Important Note
 AI SRE works best when integrated with your existing monitoring and collaboration tools. This enables real-time incident detection and seamless team coordination.
 
-For detailed integration guides, refer to [AI SRE Integrations documentation](/docs/category/integration-guides).
+Go to  [AI SRE Integrations documentation](/docs/category/integrations) for details integrations guides.
 :::
 
 1. Navigate to **Organization Settings** in the Left Panel.
@@ -219,5 +219,5 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
 This guide introduced you to the core functionalities and setup of Harness AI SRE, from integrating monitoring tools to creating automated runbooks. To enhance your incident response capabilities and team efficiency, get the most out of Harness AI SRE's advanced features, including:
 
 - **[Advanced Runbooks:](/docs/ai-sre/runbooks/create-runbook)** Build sophisticated automation workflows with multiple actions, triggers, and conditional logic.
-- **[Integration Library:](/docs/category/integration-guides)** Connect with ServiceNow, Jira, and other ITSM tools for seamless incident management workflows.
+- **[Integration Library:](/docs/category/integrations)** Connect with ServiceNow, Jira, and other ITSM tools for seamless incident management workflows.
 - **[AI Scribe Agent:](/docs/ai-sre/ai-agent)** Leverage AI-powered documentation and insights to capture incident communications automatically.

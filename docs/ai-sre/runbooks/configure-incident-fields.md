@@ -179,9 +179,9 @@ description: "[incident.severity] incident in [incident.environment]"
 
 ### Integration Guides
 - Communication Tools
-  - [Slack Integration](./integrations/slack.md)
-  - [Microsoft Teams Integration](./integrations/teams.md)
-  - [Zoom Integration](./integrations/zoom.md)
+  - [Slack Integration](./runbook-action-integrations/slack.md)
+  - [Microsoft Teams Integration](./runbook-action-integrations/teams.md)
+  - [Zoom Integration](./runbook-action-integrations/zoom.md)
 - Ticketing Systems
-  - [Jira Integration](./integrations/jira.md)
-  - [ServiceNow Integration](./integrations/servicenow.md)
+  - [Jira Integration](./runbook-action-integrations/jira.md)
+  - [ServiceNow Integration](./runbook-action-integrations/servicenow.md)

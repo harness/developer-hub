@@ -9,6 +9,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
 
 # Create a Runbook Trigger
 
@@ -200,6 +201,4 @@ This approach allows for seamless integration between event detection and automa
 
 ---
 
-:::info
-**Need Help?** Contact our support team or visit the [Harness Documentation](https://docs.harness.io) for additional resources and troubleshooting guides.
-:::
+<NeedHelpFooter />
