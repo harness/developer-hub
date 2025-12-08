@@ -64,11 +64,6 @@ import StoSettingProductConfigName from './shared/step-palette/scan/config-name.
 
 - **SAST, SCA, Container**: Uses the newer Mend CLI with the V3 API. This configuration supports **SAST**, **SCA** for repositories, and **Container** for container image scanning.
 
-:::note
-
-The Mend CLI with the V3 API is behind the FF `STO_MEND_V3`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
-:::
 ### Target
 
 
