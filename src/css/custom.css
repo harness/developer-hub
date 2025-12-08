@@ -2001,25 +2001,56 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
  * }
  */
 /* Target only the main category link, not nested sub-items */
-.sidebar-item-new > .menu__list-item-collapsible > .menu__link {
+/* Make both link types flex + vertically centered */
+.sidebar-item-new > .menu__list-item-collapsible > .menu__link,
+.sidebar-item-new > a.menu__link {
   position: relative;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
 }
 
+/* FOLDER (category) badge – sits left of caret */
 .sidebar-item-new > .menu__list-item-collapsible > .menu__link::after {
   content: 'NEW';
-  background: linear-gradient(135deg, #0278d5, #00ade4);
+  background: #0278d5;
+  border-radius: 4px;
   color: white;
   font-size: 8px;
   font-weight: 700;
   padding: 2px 6px;
-  border-radius: 10px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-left: auto;
-  box-shadow: 0 2px 4px rgba(2, 120, 213, 0.3);
+
+  position: absolute;
+  right: 0.75rem;
+  transform: translateY(-50%);
+
+  animation: newBadgePulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* SINGLE DOC badge – near right edge */
+.sidebar-item-new > a.menu__link::after {
+  content: 'NEW';
+  position: absolute;
+  right: 3.5rem;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+
+  background: #0278d5;
+  border-radius: 4px;
+
   animation: newBadgePulse 3s ease-in-out infinite;
   flex-shrink: 0;
 }
@@ -2037,12 +2068,6 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   }
 }
 
-/* Dark mode support */
-[data-theme='dark'] .sidebar-item-new > .menu__list-item-collapsible > .menu__link::after {
-  background: linear-gradient(135deg, #3dc7f6, #00ade4);
-  box-shadow: 0 2px 4px rgba(61, 199, 246, 0.4);
-}
-
 .sidebar-item-beta > .menu__list-item-collapsible > .menu__link {
   position: relative;
   display: flex !important;
@@ -2052,16 +2077,16 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 
 .sidebar-item-beta > .menu__list-item-collapsible > .menu__link::after {
   content: 'BETA';
-  background: linear-gradient(135deg, #5a00cc, #ff00cc);
+  /* background: linear-gradient(135deg, #5a00cc, #ff00cc); */
+  background: #5a00cc;
+  border-radius: 4px;
   color: white;
   font-size: 8px;
   font-weight: 700;
   padding: 2px 6px;
-  border-radius: 10px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-left: auto;
-  box-shadow: 0 2px 6px rgba(161, 0, 255, 0.4);
   animation: betaBadgePulse 3s ease-in-out infinite;
   flex-shrink: 0;
 }
