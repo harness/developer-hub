@@ -24,6 +24,36 @@ These release notes describe recent changes to Harness Platform.
 :::
 ## Important feature change notice
 
+:::danger BREAKING CHANGE: Reserved Identifier Enforcement for Platform Entities (Effective : Jan 19, 2025)
+
+We are enforcing restrictions on some keywords that can be used as identifiers for platform entities (organizations, projects, services, environments, secrets, file store folders, etc.).
+
+**Reserved Identifiers**: The following identifiers are now reserved and cannot be used when creating new entities:
+
+- orgs
+- organizations
+- project
+- projects
+
+**Reason**: These identifiers conflict with API path segments, causing GET, UPDATE, and DELETE operations to fail at the project and organization scope. This creates an inconsistent user experience and prevents proper entity management.
+
+**Impact**:
+
+- New Entities: Creation of any entity using these reserved identifiers will be blocked
+- Existing Entities: Entities already using these identifiers will continue to be supported, but may experience operational issues (edit/delete failures) and validation errors in certain contexts
+- Recommendation: If you have existing entities using these identifiers, we strongly recommend renaming them to avoid future issues
+
+**Action Required**:
+
+- Audit your existing organizations, projects, and other entities for use of reserved identifiers
+- Update any automation or scripts that may create entities with these identifiers
+
+For questions or assistance, please contact [Harness Support](mailto:support@harness.io).
+:::
+
+<details>
+<summary>Archived Highlights</summary>
+
 :::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
 We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
 
@@ -37,9 +67,6 @@ We have aligned the delete APIs for Notification Rules and Channels with Harness
 
 **Action Required**: Please review and update any automation, scripts, or integrations that depend on the old response codes before October 20, 2025.
 :::
-
-<details>
-<summary>Archived Highlights</summary>
 
 :::danger Breaking Changes 
    **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
