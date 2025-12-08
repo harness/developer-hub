@@ -11,6 +11,7 @@ redirect_from:
 Harness STO allows you to create individual Jira tickets for security issues detected during scans. This feature improves collaboration across teams and simplifies issue tracking. This document is organized into the following sections:
 
 - [Create Jira tickets for security issues](#create-jira-ticket-for-a-security-issue-in-sto)
+- [Auto Create Jira Tickets for Exemption Requests](#auto-create-jira-tickets-for-exemption-requests)
 - [Access Jira tickets from STO](#access-jira-tickets-from-sto)
 - [Set up Jira integration for STO](#configure-external-tickets-settings)
 
@@ -57,6 +58,33 @@ The fields shown in the **Create Ticket in Jira** dialog are dynamically populat
 
 ---
 
+## Auto Create Jira Tickets for Exemption Requests
+
+Whenever a developer or appsec person requests an exemption for a security issue, STO will automatically create a Jira ticket with the below pre-defined template. This helps teams track exemptions without relying on manual ticket creation.
+
+```
+
+Vulnerability: <Issue Title>
+Created via: Harness STO (Security Test Orchestration)
+Status: Exemption Requested
+
+Use the link below to track the vulnerability:
+<Direct link to the issue in pipeline execution UI>
+
+This ticket was auto-created to track a vulnerability for which an 
+exemption has been requested.
+
+```
+
+Once a ticket is created, you can access the corresponding Jira ticket from the issue details page where the request exemption was created.
+
+:::note
+
+Auto Jira ticket creation applies only to exemption requests made after the [feature](/docs/security-testing-orchestration/jira-integrations#create-a-ticket-when-an-exemption-is-created) is enabled in the External Tickets settings
+
+:::
+
+
 ## Access Jira tickets from STO
 
 Once a ticket is created, you can access the corresponding Jira ticket from the issue details page where the ticket was created. The **Create Ticket** button will be replaced with the Jira issue number. By clicking on this number, you will be directed to the Jira ticket.
@@ -94,7 +122,7 @@ Navigate to **Account Settings** > **External Tickets**, and configure the follo
 - **Default Project Name**: Choose the default Jira project for ticket creation. This field will present a list of all your Jira projects. You can select a different project while creating tickets.  
 - **Default Issue Type**: Choose the default Ticket type for ticket creation. This field will present a list of all your available ticket types. You can select a different ticket type while creating tickets.
 
-<DocImage path={require('./use-sto/static/jira-external-ticket.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./use-sto/static/jira-card.png')} width="70%" height="70%" title="Click to view full size image" />
 
 #### Proxy Jira API Calls Through Delegate  
 Enable this option if your Jira instance is self-hosted or behind a proxy. This allows STO to make API calls through the Harness Delegate.
@@ -126,4 +154,6 @@ Example comment for exemption expiration:
 ```
 
 
+#### Create a ticket when an Exemption is created
 
+This option will allow STO to auto create a new Jira ticket whenever a new exemption request is created, only if there is no Jira ticket already associated with the issue.
