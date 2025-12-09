@@ -4,6 +4,30 @@ export const DbdevopsData: Horizon = {
     description: "What has been released in the last ~2 Quarters",
     feature: [
       {
+        title: "AlloyDB Support",
+        description:
+          "Add Google AlloyDB as a supported database",
+        tag: [{ value: "Integrations" }, {value: "Q4"}],
+      },
+      {
+        title: "Log Size (Phase 2)",
+        description:
+          "Change how we transport preview SQL from the build pod back to harness to remove the SQL size limit",
+        tag: [{ value: "Orchestration" }, {value: "Q3"}],
+      },
+      {
+        title: "Licensing",
+        description:
+          "Implement a subscription UI for Harness Database DevOps",
+        tag: [{ value: "Visibility" }, {value: "Q3"}],
+      },
+      {
+        title: "Support Nesting Step Groups",
+        description:
+          "Allow DB DevOps steps to be used in step groups within other step groups",
+        tag: [{ value: "Orchestration" }, {value: "Q3"}],
+      },
+      {
         title: "Variable Branch Override",
         description:
           "Allow a DB Instance to read the branch it deploys to from a pipeline variable. This is useful for deploying feature branches.",
@@ -35,62 +59,12 @@ export const DbdevopsData: Horizon = {
           "support using DBDevOps against CockroachDB.",
         tag: [{ value: "Integrations" }, {value: "Q2"}],
         link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors"
-      }//,
-      /*
-      {
-        title: "Spanner for Google SQL",
-        description: "Added support for the Google SQL version of the Google Spanner database as a supported database type.",
-        tag: [{ value: "Integrations" }, {value: "Q1"}],
-        link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#setting-up-google-spanner"
-      },
-      {
-        tag: [{ value: "Visibility" }, {value: "Q1"}],
-        title: "DB in Execution List",
-        description:
-          "Visibility into schema name and db instance in the pipeline execution list. Must enable the feature flag: CDS_EXECUTION_LIST_CARD_VIEW",
-      },
-      {
-        tag: [{ value: "Integrations" }, {value: "Q1"}],
-        title: "Custom Script Source",
-        description: "It is now possible to read a changelog via a custom script in addition to from git or artifactory connectors.",
-      },
-      {
-        tag: [{ value: "Changelog" }, {value: "Q1"}],
-        title: "Support Property Overrides",
-        link:"https://developer.harness.io/docs/database-devops/concepts-and-features/subs-properties-in-changelogs",
-        description:
-          "ability to define changelog property overrides on database instances, and reference them within your changelog.",
-      },
-      {
-        title: "Finish Governance",
-        description:
-          "Various enhancement on our policy enforcement to support known customer-specific policies",
-        tag: [{ value: "Governance" }, {value: "Q1"}],
-      },
-      {
-        title: "Connector Secrets",
-        description:
-          "Add option to pass secrets to build pods without going through a Kubernetes secret object",
-        tag: [{ value: "Governance" }, {value: "Q1"}],
-        link: "https://developer.harness.io/docs/database-devops/use-database-devops/get-started/runtime-secrets/"
-      }*/
+      }
     ],
   },
   "Now": {
     description: "Currently under active development, ~ current quarter",
     feature: [
-      {
-        title: "Log Size (Phase 2)",
-        description:
-          "Change how we transport preview SQL from the build pod back to harness to remove the SQL size limit",
-        tag: [{ value: "Orchestration" }],
-      },
-      {
-        title: "Licensing",
-        description:
-          "Implement a subscription UI for Harness Database DevOps",
-        tag: [{ value: "Governance" }],
-      },
       {
         title: "Kerberos Auth",
         description:
@@ -98,17 +72,35 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Integrations" }],
       },
       {
-        title: "Variablized JDBC URL",
-        description:
-          "Allow referencing properties from a database instance inside the JDBC URL of a database connector.",
-        tag: [{ value: "Orchestration" }],
-      },
-      {
         title: "Native Flyway Support",
         description:
           "Add native support for using Flyway instead of liquibase",
         tag: [{ value: "Integrations" }],
-      },      
+      },  
+      {
+        title: "MongoDB Native Executor",
+        description:
+          "Allow directly running mongo .sh scripts from within a changeset",
+        tag: [{ value: "Integrations" }],
+      },  
+      {
+        title: "Support Snowflake",
+        description:
+          "Allow using Database DevOps against Snowflake",
+        tag: [{ value: "Integrations" }],
+      },     
+      {
+        title: "Support Percona",
+        description:
+          "Allow using Database DevOps with the percona online schema change plugin for mysql",
+        tag: [{ value: "Integrations" }],
+      },   
+      {
+        title: "Onboarding Wizard",
+        description:
+          "guided setup experience for new users",
+        tag: [{ value: "Integrations" }],
+      },    
       {
         title: "DynamoDB Support",
         description:
@@ -121,28 +113,51 @@ export const DbdevopsData: Horizon = {
     description: "What we'll build next, next ~2 quarters",
     feature: [
       {
+        title: "BigQuery Support",
+        description:
+          "Add Google BigQuery as a supported database",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Relationship Diagram",
+        description:
+          "visualize the state of database tables within a db instance",
+        tag: [{ value: "Core Features" }],
+      },
+      {
         title: "Drift Detection",
         description:
           "Detect and surface schema differences between a database and its expected state",
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "Support for Snowflake",
-        description: "Add support for Snowflake as a supported database type.",
-        tag: [{ value: "Integrations" }],
-        link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#setting-up-google-spanner"
+        title: "Impact Analysis",
+        description:
+          "a Pipeline step to analyze and surface possible unintended consequences of a cahgne before deploying it.",
+        tag: [{ value: "Core Features" }],
       },
       {
-        tag: [{ value: "Core Features" }],
-        title: "Query Console",
+        title: "Variablized JDBC URL",
         description:
-          "Allow developers to run ad-hoc read queries against DBs, with an ability to anonymize results",
+          "Allow referencing properties from a database instance inside the JDBC URL of a database connector.",
+        tag: [{ value: "Orchestration" }],
       },
     ]
   },
   "Future": {
     description: "typically > 6 months out",
     feature: [
+      {
+        tag: [{ value: "Core Features" }],
+        title: "Query Console",
+        description:
+          "Allow developers to run ad-hoc read queries against DBs, with an ability to anonymize results",
+      },
+      {
+        title: "Support for DB2",
+        description: "Add DB2 as a supported database.",
+        tag: [{ value: "Integrations" }],
+      },
       {
         title: "Support for Spanner for postgresql",
         description: "Add support for the postgres version of the Google spanner database as a supported database type.",
@@ -151,11 +166,6 @@ export const DbdevopsData: Horizon = {
       {
         title: "Support for AWS Redshift",
         description: "Add support for the AWS Redshift database as a supported database type.",
-        tag: [{ value: "Integrations" }],
-      },
-      {
-        title: "Support for Google BigQuery",
-        description: "Add support for the Google BigQuery database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
@@ -193,18 +203,8 @@ export const DbdevopsData: Horizon = {
       },
       {
         tag: [{ value: "Core Features" }],
-        title: "Linting",
-        description: "Automatically lint changelogs and sql before application",
-      },
-      {
-        tag: [{ value: "Core Features" }],
         title: "Changelog Generation",
         description: "Automatically generate a baseline changelog from an existing database config without authoring a custom pipeline",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Support Percona for Liquibase",
-        description: "Enable customers to leverage Percona operations for zero-downtime database migrations",
       }
     ],
   }, 
