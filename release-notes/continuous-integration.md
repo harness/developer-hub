@@ -152,7 +152,6 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 <!-- 2025-10-27-->
 #### Fixed issues
 - Fixed an issue where GitClone step in CI Stage did not work within an insert step(Flexible templates).(ZD-94965, CI-19316)
-- Fixed an issue where transient step failures displayed unclear or misleading error messages when the `CI_ADDON_RETRY_MARKER_FILE` feature flag was enabled. Error messages are now clearer and more actionable. (CI-19317)
 
 #### Harness images updates
 
@@ -1049,7 +1048,6 @@ This feature is behind the feature flag `PLUGIN_STRICT_KEY_MATCHING`. (CI-17216,
 
 #### Fixed issues
 
-- Resolved an issue where CI build steps could execute out of order or be duplicated in rare cases due to preexisting files in the workspace. Introduced a marker file mechanism to ensure sequential execution. This change is behind the feature flag `CI_ADDON_RETRY_MARKER_FILE`. (CI-14705, ZD-71193, ZD-71443, ZD-74544)
 - Addressed an issue where the "Allow Privilege Escalation" flag in the Infrastructure configuration was incorrectly included in the YAML, even when disabled. Enhanced error messaging now notifies users of incorrect Kubernetes flag settings during pipeline execution. (CI-14740, ZD-71175)
 - Resolved an issue in Kubernetes pipelines where large commit messages caused the pipeline to fail with the error: "Request entity too large: limit is 3145728." Commit message length is now properly limited to prevent this error. (CI-15276, ZD-73618)
 - Resolved an issue where blank optional fields in templates for ACR steps defaulted to a "null" string, causing failures. This issue was specific to accounts using the Kaniko plugin. The fields now correctly default to being skipped if left blank. (CI-15431, ZD-71473)

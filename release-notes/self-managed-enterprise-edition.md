@@ -4749,8 +4749,6 @@ gsutil -m cp \
 
 - Addressed an issue where the "Allow Privilege Escalation" flag in the Infrastructure configuration was incorrectly included in the YAML, even when disabled. Enhanced error messaging now notifies users of incorrect Kubernetes flag settings during pipeline execution. [CI-14740, ZD-71175]
 
-- Resolved an issue where CI build steps could execute out of order or be duplicated in rare cases due to preexisting files in the workspace. Introduced a marker file mechanism to ensure sequential execution. This change is behind the feature flag CI_ADDON_RETRY_MARKER_FILE. [CI-14705,ZD-71193, ZD-71443, ZD-74544]
-
 #### Continuous Delivery
 
 - Previously, webhook trigger events using the **CRON** trigger experienced delays, and the trigger activity page did not correctly report the last execution. This issue is now resolved. [**PIPE-24256, ZD-75384, ZD-75391**]
