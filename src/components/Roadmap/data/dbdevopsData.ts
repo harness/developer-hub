@@ -66,17 +66,23 @@ export const DbdevopsData: Horizon = {
     description: "Currently under active development, ~ current quarter",
     feature: [
       {
-        title: "Kerberos Auth",
+        title: "Author DB Change",
         description:
-          "Support Kerberos Auth for Oracle and MSSQL",
-        tag: [{ value: "Integrations" }],
-      },
+          "Author database change via natural language queries, powered by Harness AI.",
+        tag: [{ value: "Core Features" }],
+      },  
       {
         title: "Native Flyway Support",
         description:
           "Add native support for using Flyway instead of liquibase",
         tag: [{ value: "Integrations" }],
       },  
+      {
+        title: "Kerberos Auth",
+        description:
+          "Support Kerberos Auth for Oracle and MSSQL",
+        tag: [{ value: "Integrations" }],
+      },
       {
         title: "MongoDB Native Executor",
         description:
