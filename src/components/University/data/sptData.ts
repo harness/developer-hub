@@ -69,13 +69,13 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
-    title: "Feature Management & Experimentation | Split Arcade",
+    title: "Feature Management & Experimentation",
     module: MODULES.fme,
     type: type.user,
     description:
-      "Self-paced courses introducing Feature Management & Experimentation via Split Arcade.",
+      "Self-paced courses introducing Feature Management & Experimentation.",
     version: "FME Paid Plans",
-    link: "https://arcade.split.io",
+    link: "https://university-registration.harness.io/page/fme",
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
