@@ -1,7 +1,7 @@
 ---
 title: Artifact Registry Release Notes
 sidebar_label: Artifact Registry
-date: 2025-10-28T16:00
+date: 2025-11-26T16:00
 sidebar_position: 1
 # toc_max_heading_level: 4
 ---
@@ -24,6 +24,89 @@ The release notes describe recent changes to Harness Artifact Registry.
 ## 📌 Release Deployment Status by Cluster
 
 **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+
+## November 2025
+
+<!-- ### 2025.11.v2
+
+#### New Features -->
+
+
+<!-- 
+**Metadata Support for Artifacts and Registries**
+
+Now enhance your artifact management with custom metadata! You can now attach key-value pairs to registries, artifacts, and packages, enabling better organization, searchability, and governance across your artifact ecosystem.
+
+**Key capabilities:**
+- **Multi-level metadata**: Add metadata at registry, artifact, and package (version) levels
+- **Flexible filtering**: Search and filter artifacts using custom metadata attributes
+- **Custom attributes**: Track ownership, environment tags, build information, security classifications, and more
+- **Enhanced governance**: Maintain audit trails and compliance information with version-specific metadata
+
+
+:::note
+This feature is currently behind the feature flag `HAR_CUSTOM_METADATA_ENABLED`. Contact Harness Support to enable it.
+::: -->
+
+### 2025.11.v1
+
+#### New Features
+
+**Artifact Registry management via CLI**
+
+We're thrilled to introduce comprehensive CLI support for Artifact Registry management through the new Harness CLI v1.0.0 (`hc`)! This powerful addition brings the full capabilities of Artifact Registry directly to your terminal, enabling seamless automation and developer-friendly workflows.
+
+<DocImage
+  path={require('./static/artifact-registry/reg-list.png')}
+  alt="Registry List"
+  title="Click to view full size image"
+  width="80%"
+/>
+
+**What's new:**
+- **Registry Management**: List, view, and manage your registries with intuitive commands like `hc registry list` and `hc registry get`
+- **Artifact Operations**: Push, pull, and list artifacts across all your registries using `hc artifact` commands
+- **Developer-Friendly Aliases**: Save time with short commands - use `hc reg` instead of `hc registry` and `hc art` instead of `hc artifact`
+- **Flexible Output Formats**: Get results in JSON, YAML, or table format for easy parsing in scripts and automation pipelines
+- **Cross-Project Support**: Work seamlessly across multiple projects with global flags like `--project` and `--org`
+
+Install the new Harness CLI v1.0.0 (`hc`) and authenticate to your account to start managing your registries and artifacts from the command line. Check out our [CLI documentation](https://developer.harness.io/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries) for detailed examples and best practices.
+
+**Conda Registry Support**
+
+We have added a new registry type, Conda Registry support, for Python and R package management. 
+
+**Key capabilities:**
+- **Native Conda client support**: Works with `conda` and `mamba` out of the box
+- **Bioconda upstream proxy**: Automatically configured to fall back to Bioconda's public repository, giving you access to thousands of packages
+- **Hybrid package management**: Host your private packages while proxying public ones from Bioconda
+- **Channel organization**: Organize packages into channels for better version control and distribution
+
+Configure your Conda client to point to your Harness registry, and you're ready to go - private packages are served directly while public packages are fetched from Bioconda automatically (If some custom source is not configured).
+
+Do refer to [Conda Registry Quickstart](https://developer.harness.io/docs/artifact-registry/get-started/quickstart#conda) for more details.
+
+
+#### Enhancements & Fixes
+
+**Upstream Proxy to aggregate multiple Artifact Registries**
+
+We have enhanced our Artifact Registry experience by allowing it to be configured as an upstream proxy, enabling you to aggregate multiple registries into a single, unified access point. Use any Harness Artifact Registry as an upstream proxy for their respective registry.
+
+When adding an Artifact Registry as an upstream proxy, ensure that registry doesn't have its own upstream proxies configured to avoid circular dependencies.
+
+:::note
+This feature is currently behind the feature flag `HAR_SUPPORT_LOCAL_REGISTRY_AS_UPSTREAM_PROXY`. Contact Harness Support to enable it.
+:::
+
+To know more about [Set Proxy for Registry](/docs/artifact-registry/manage-registries/configure-registry#set-proxy-for-registry)
+
+
+
+
+
+
+
 
 ## October 2025
 
