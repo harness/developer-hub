@@ -12,10 +12,6 @@ The STO module is integrated with the [Harness Platform's notification system](/
 
 <DocVideo src="https://youtu.be/f5JyySFQG4E?si=5dx7B6IxwvuFNB6I" />
 
-:::info 
-This feature is behind a Feature Flag `PL_CENTRAL_NOTIFICATIONS`. This flag enables the central notification system on the Harness Platform. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
 ## How to Configure Notifications for Exemption Events
 
 To start receiving notifications for STO exemptions, you need to configure **[Notification Channels](#configure-notification-channels)** and **[Notification Rules](#configure-notification-rules)**. They can be set up at the **Project**, **Organization**, or **Account** level.
