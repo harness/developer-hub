@@ -129,3 +129,8 @@ For a list of supported scanners, see [Scanners supported by STO](/docs/security
 ## Try Harness STO
 
 Check out the [Get Started guide](/docs/security-testing-orchestration/get-started) and run your first scan today!
+
+
+<UniversityAdmonition title="Harness STO self-paced training">
+  For an interactive onboarding experience including further use cases and features like **Setting up Security Scans**, **Vulnerability Management**, and **Policy based Governance**, check out [**Harness STO self-paced training**](https://university-registration.harness.io/self-paced-training-harness-security-testing-orchestration).
+</UniversityAdmonition>
