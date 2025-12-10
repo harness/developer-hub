@@ -196,7 +196,7 @@ Master/Payer accounts
 
 :::
 
-To start getting your commitment coverage information you can provide read-only access in your payer account.
+To start getting insights into  your savings breakdown, spend breakdown, compute coverage, commitment utilization, and inventory of RIs and SPs, give these read-only permissions:
 
 ```json
 {
@@ -227,7 +227,7 @@ To start getting your commitment coverage information you can provide read-only 
 }
 ```
 
-Once you set up the orchestrator and are ready to approve recommendations, you can give access to make purchases.
+To get recommendations in the actions tab and to make purchases either automatically or manually, give these permissions:
 
 ```json
 {
