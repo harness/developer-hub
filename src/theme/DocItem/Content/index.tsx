@@ -1,12 +1,13 @@
-import React, { type ReactNode } from "react";
-import clsx from "clsx";
-import { ThemeClassNames } from "@docusaurus/theme-common";
-import { useDoc } from "@docusaurus/plugin-content-docs/client";
-import Heading from "@theme/Heading";
-import MDXContent from "@theme/MDXContent";
-import type { Props } from "@theme/DocItem/Content";
-import styles from "./styles.module.css";
-import LastUpdated from "@theme/LastUpdated";
+import React, { type ReactNode } from 'react';
+import clsx from 'clsx';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
+import Heading from '@theme/Heading';
+import MDXContent from '@theme/MDXContent';
+import type { Props } from '@theme/DocItem/Content';
+import styles from './styles.module.css';
+import LastUpdated from '@theme/LastUpdated';
+import DownloadAsPdf from '@site/src/components/DownloadAsPDF';
 
 /**
  Title can be declared inside md content or declared through
@@ -20,8 +21,7 @@ import LastUpdated from "@theme/LastUpdated";
 */
 function useSyntheticTitle(): string | null {
   const { metadata, frontMatter, contentTitle } = useDoc();
-  const shouldRender =
-    !frontMatter.hide_title && typeof contentTitle === "undefined";
+  const shouldRender = !frontMatter.hide_title && typeof contentTitle === 'undefined';
   if (!shouldRender) {
     return null;
   }
@@ -33,17 +33,18 @@ export default function DocItemContent({ children }: Props): ReactNode {
   const { metadata } = useDoc(); // ✅ bring metadata into scope
 
   return (
-    <div className={clsx(ThemeClassNames.docs.docMarkdown, "markdown")}>
+    <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
       {syntheticTitle && (
         <header>
           <Heading as="h1">{syntheticTitle}</Heading>
 
           {metadata?.lastUpdatedAt && (
-            <div className={styles.docItemLastUpdatedUnderTitle}>
+            <div className={styles.docItemLastUpdatedUnderTitle + ' docItemLastUpdatedUnderTitle'}>
               <LastUpdated
                 lastUpdatedAt={metadata.lastUpdatedAt}
                 lastUpdatedBy={metadata.lastUpdatedBy}
               />
+              <DownloadAsPdf />
             </div>
           )}
           <hr className={styles.docItemHeaderDivider} />
