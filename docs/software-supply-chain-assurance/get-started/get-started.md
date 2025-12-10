@@ -92,3 +92,8 @@ From the **Get started** page, click on **Harness** under available integrations
   sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
   allowFullScreen
 ></iframe>
+
+
+<UniversityAdmonition title="Harness SCS self-paced training">
+  For an interactive onboarding experience including further use cases and features like **Open Source Management**, **Artifact Security**, **Risk and Compliance** and **Remediation workflows**, check out [**Harness SCS self-paced training**](https://university-registration.harness.io/self-paced-training-harness-supply-chain-security).
+</UniversityAdmonition>
