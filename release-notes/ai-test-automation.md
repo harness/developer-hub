@@ -23,22 +23,45 @@ The release notes describe recent changes to Harness AI Test Automation.
 ## November 2025
 
 
+### 2025.11.v2
+
+#### New Features
+
+- **Task Duplication**  
+  You can now duplicate tasks directly from the UI, making it easier to create similar test scenarios without starting from scratch.
+
+- **Configurable Timeout for Copilot Task Execution**  
+  Timeout values for Copilot task execution can now be configured, giving you more control over AI-driven test authoring workflows.
+
+
+- **Grok LLM Support for Smart Selectors**  
+  Grok is now available as an alternative LLM for Smart Selectors, providing more flexibility in AI model selection.
+
+- **LLM Model Configuration for Smart Selectors and AI Commands**  
+  You can now configure which LLM model to use for smart selectors and AI commands, allowing you to optimise for performance, cost, or specific use cases.
+
+#### Enhancements and Bug Fixes
+
+
+
+- **Performance & Reliability** Enhanced system stability with improved health monitoring and automatic scaling
 ### 2025.11.v1
 
 #### New Features
 
-**Configurable Timeout for Test Execution Commands**
-Timeout values for test execution commands can now be configured. This allows teams to tune execution behaviour to match their environment and workload.
-
+- **Configurable Timeout for Test Execution Commands**  
+  Timeout values for test execution commands can now be configured. This allows teams to tune execution behaviour to match their environment and workload.
 
 #### Enhancements and Bug Fixes
 
-- **Ephemeral Storage Options for Test Executors**
-Test executors now support configuration of ephemeral storage, helping improve reliability during storage intensive test scenarios.
-- **End Epoch Timestamp on Test Run Completion**
-A new timestamp is now captured when a test run finishes. This enables more precise reporting and easier time based analysis.
-- **Progress JSON View Improvements**
-The Progress JSON interface has been updated to provide a clearer and more consistent visual experience.
+- **Ephemeral Storage Options for Test Executors**  
+  Test executors now support configuration of ephemeral storage, helping improve reliability during storage-intensive test scenarios.
+
+- **End Epoch Timestamp on Test Run Completion**  
+  A new timestamp is now captured when a test run finishes. This enables more precise reporting and easier time-based analysis.
+
+- **Progress JSON View Improvements**  
+  The Progress JSON interface has been updated to provide a clearer and more consistent visual experience.
 
 
 ## October 2025
