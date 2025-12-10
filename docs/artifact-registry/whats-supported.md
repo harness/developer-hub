@@ -23,6 +23,7 @@ These are the currently supported registry types.
 - **RPM:** Red Hat package management.
 - **Gradle:** Streamline your build automation.
 - **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
+- **Dart:** For all your Dart and Flutter packages.
 
 ### Beta
 - **Go:** Support for Go modules.

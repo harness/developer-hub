@@ -81,6 +81,11 @@ Select your artifact format below to get started:
       path: "/artifact-registry/content/supported-formats/conda-quickstart.md",
       logo: "conda-logo.svg",
       logoSize: 24
+    },
+    Dart: {
+      path: "/artifact-registry/content/supported-formats/dart-quickstart.md",
+      logo: "dart-logo.svg",
+      logoSize: 24
     }
   }}
   disableSort={true}
