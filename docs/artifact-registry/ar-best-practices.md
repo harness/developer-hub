@@ -109,4 +109,4 @@ By following these best practices, you'll ensure your artifact registry is secur
 - [Get Started with Artifact Registry](/docs/artifact-registry/get-started/quickstart.md)
 - [Integrate with your CD pipelines](/docs/artifact-registry/platform-integrations/cd-ar-integrations)
 - [Learn about security integrations](/docs/artifact-registry/platform-integrations/security-integrations/ssd-ar-integrations)
-- [Automate actions with Webhooks](/docs/artifact-registry/ar-webhooks)
+- [Automate actions with Webhooks](/docs/artifact-registry/manage-registries/ar-webhooks)

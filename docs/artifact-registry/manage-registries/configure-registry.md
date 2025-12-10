@@ -106,3 +106,15 @@ If you are adding an Artifact Registry to the Upstream Proxy list, ensure that t
 ### Cleanup Policies
 
 *Coming Soon*
+
+:::info
+
+### Registry Metadata
+
+Enhance your registry organization and searchability by adding custom metadata. Metadata allows you to attach key-value pairs to your registries, making it easier to categorize, filter, and manage them based on your organization's specific needs.
+
+You can add metadata such as owner information, environment tags, team assignments, or any custom attributes that help you organize your registries effectively.
+
+To learn more about adding and managing metadata at the registry, artifact, and package levels, see [Artifact Registry Metadata](/docs/artifact-registry/metadate-registry).
+
+:::

@@ -93,4 +93,4 @@ Now, you should see the artifact appear in your docker registry as well as the *
 
 - [Integrate with your CD pipelines](/docs/artifact-registry/platform-integrations/cd-ar-integrations)
 - [Learn about security integrations](/docs/artifact-registry/platform-integrations/security-integrations/ssd-ar-integrations)
-- [Automate actions with Webhooks](/docs/artifact-registry/ar-webhooks)
+- [Automate actions with Webhooks](/docs/artifact-registry/manage-registries/ar-webhooks)

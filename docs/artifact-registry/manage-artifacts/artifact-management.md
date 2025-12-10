@@ -9,7 +9,7 @@ import DocImage from '@site/src/components/DocImage';
 
 All artifact operations start with the **Setup Client** page found inside your registry at the top right. 
 
-![](./static/setup-client.png)
+<DocImage path={require('./static/setup-client.png')} />
 
 ## Login to your registry
 
@@ -19,7 +19,7 @@ All artifact operations start with the **Setup Client** page found inside your r
 4. When prompted, enter the login information given in the **Setup Client** tab.
 5. If prompted for a password, click **Generate Token** in the **Setup Client** tab. Use this token as your password.
 
-![](./static/generate-token.png)
+<DocImage path={require('./static/generate-token.png')} />
 
 ## Pull an artifact
 
@@ -69,3 +69,5 @@ you can remove a quarantined artifact by selecting the artifact and clicking **R
 ## See Also
 
 For a more in depth guide on how to pull and push docker artifacts, go to the [Quickstart Guide](/docs/artifact-registry/get-started/quickstart)
+
+

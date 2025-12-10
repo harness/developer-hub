@@ -1,6 +1,16 @@
 ---
 title: Webhooks
-sidebar_position: 20
+sidebar_position: 99
+description: Learn how to use webhooks to trigger actions based on events related to your artifacts.
+keywords:
+  - artifact registry webhook
+  - artifact registry triggers
+tags:
+  - artifact-registry
+  - triggers
+  - webhooks
+redirect_from:
+  - /docs/artifact-registry/ar-webhooks
 ---
 
 import Tabs from '@theme/Tabs';

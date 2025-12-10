@@ -49,6 +49,7 @@ You can also find your artifact in the **Artifacts** tab in the left navigation 
 
 Clicking an artifact brings it to its [Artifact Details](/docs/artifact-registry/manage-artifacts/artifact-details) page.
 
+
 ### Image Referencing
 
 
@@ -73,3 +74,11 @@ In the UI, untagged images are shown with an "N/A" label next to the digest. Exp
 Note:
 - The expanded view that lists multiple per-OS/ARCH digests beneath one entry applies to Docker/OCI images only (multi-arch manifest list/image index).
 - Other artifact types (for example, Helm, npm, Maven, Cargo) typically show one file/version per entry. They may expose checksums (SHA256/SHA1, etc.), and Helm charts stored in an OCI registry also get an OCI digest.
+
+
+## Filter Artifacts Using Metadata
+
+Beyond searching by name and filtering by registry or package type, you can use custom metadata to find artifacts more precisely. Metadata filtering allows you to search based on custom attributes like owner, environment, build information, security scan results, or any other key-value pairs you've attached to your artifacts.
+
+
+Metadata can be applied at the **registry, and package** levels along with the artifact level, giving you flexible options for organizing and discovering your artifacts. To learn more about adding metadata and using advanced filtering capabilities, see [Artifact Registry Metadata](/docs/artifact-registry/metadate-registry).

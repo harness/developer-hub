@@ -12,7 +12,7 @@ tags:
   - deployments
 keywords:
   - select artifact tag
-  - view docker digest
+  - view Docker digest
   - artifact details panel
   - sbom vulnerability insights
   - deployment details by tag
@@ -35,7 +35,7 @@ This information will change based on what type of artifact it is.
 
 This section includes an overview of the artifact, offering a glimpse at all it's relevant information needed to manage it. Use this page to copy relevant information like the registry path or the pull command required to download the artifact.
 
-![](./static/artifact-overview.png)
+<DocImage path={require('./static/artifact-overview.png')} />
 
 
 
@@ -50,11 +50,22 @@ All artifact types let you select a tag/version from the header selector. For Do
 
 The example below shows the tag/digest selector and how you can switch between them:
 
-![](./static/docker-tags.png)
+<DocImage path={require('./static/docker-tags.png')} />
 
 :::info Docker Image - Digest
 The Deployments tab shows data only when a tag is selected. Selecting a digest will not populate deployment details.
 :::
+
+#### Add Metadata to Packages
+
+You can attach custom metadata to specific package versions to track version-specific information such as build IDs, Git commits, test results, approval status, or deployment targets. This allows you to maintain detailed tracking and audit trails for individual releases.
+
+
+To add metadata, locate the **Metadata** section. You can add multiple key-value pairs to categorize and track your packages effectively.
+
+
+Please refer to [Managing Metadata](/docs/artifact-registry/metadate-registry#managing-metadata) for more information on adding metadata packages level.
+
 
 ## Artifact Details
 
