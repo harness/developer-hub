@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-12-04T10:00:00
+date: 2025-12-10T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,28 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: December 4, 2025
+#### Last updated: December 10, 2025
+
+## December 2025
+
+### [New Enhancement] Consolidate FME Large Segments into FME Segments Permission
+----
+#### 2025-12-10
+
+Harness FME has streamlined RBAC permissions by consolidating **FME Large Segments** into the existing **FME Segments** resource. This simplification makes it easier to manage segment access across your organization.
+
+![](./static/fme/rbac-segments.png)
+
+With this enhancement, you can:
+
+- Manage standard, large, and rule-based segments under a single **FME Segments** permission
+- Simplify access control in **Resource Groups** and **Roles**
+- Reduce confusion when assigning or auditing permissions for segments
+
+#### Related documentation
+
+- [Harness RBAC for Feature Management & Experimentation](/docs/feature-management-experimentation/permissions/rbac)
+- [Harness Resource Groups and Roles](/docs/platform/role-based-access-control/add-resource-groups/)
 
 ## November 2025
 

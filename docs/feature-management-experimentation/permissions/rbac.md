@@ -34,8 +34,7 @@ All FME resources are created and governed at the project scope.
 | Resource | Scope | Notes |
 |----------|-------|------|
 | Feature Flags | Project | Includes all flag definitions in the project. |
-| Segments | Project | Includes all standard and dynamic segments in the project. |
-| Large Segments | Project | Includes all large segments and environment-specific definitions. |
+| Segments | Project | Includes all segment types in the project (standard, large, and rule-based). |
 | Metrics | Project | Includes metric definitions and alerts. |
 | Environments | Project | Controls access to environment-scoped operations. |
 | Traffic Types | Project | All traffic types configured in the project. |
@@ -69,9 +68,14 @@ To define environment-level permissions in Harness FME:
 1. Click **+ Add Resource Group** to create a new Resource Group.
 1. Enter a name such as `Documentation Resources` and optionally, description and tags, then click **Save**.
 1. Select resources in the **Feature Management & Experimentation** section.
+   
+   ![](./static/resource-group-1.png)
+
 1. Choose either **All** or **Specified** access for each resource:
     - **All**: Grants access to all environments of that resource type.
     - **Specified**: Click **+ Add** to add individual environments by name.
+
+   ![](./static/resource-group-2.png)
 
 ## Assign a resource group to users
 
@@ -79,7 +83,11 @@ To enforce access defined in a Resource Group:
 
 1. Navigate to **Project Settings** > **Roles**.
 1. Edit an existing role or create a new role.
-1. Add the Resource Group to the role.
-1. Apply the role to users or user groups.
+1. Apply the role to users or user groups by clicking **Manage Role Bindings** on the **Users** or **User Groups** page in **Project Settings**.
+1. Click **+ Add** to add the resource group to the role.  
+1. Select a role from the dropdown menu (for example, the `FME Administrator Role`) and select **All Project Level Resources** or **FME All Resources**.
+1. Click **Apply** to save this role binding to a user or user group.
 
+   ![](./static/resource-group-3.png)
+   
 With roles and resource groups combined, you can ensure only authorized users can view or edit target environments.

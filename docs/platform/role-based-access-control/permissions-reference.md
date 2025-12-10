@@ -276,6 +276,5 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | FME Feature Flag | <ul><li>View (`fme_fmefeatureflag_view`)</li><li> Create/Edit (`fme_fmefeatureflag_edit`)</li></ul> | Active |
 | FME Experiment | <ul><li>View (`fme_fmeexperiment_view`)</li><li> Create/Edit (`fme_fmeexperiment_edit`)</li></ul> | Active |
 | FME Segment | <ul><li>View (`fme_fmesegment_view`)</li><li> Create/Edit (`fme_fmesegment_edit`)</li></ul> | Active |
-| FME Large Segment | <ul><li>View (`fme_fmelargesegment_view`)</li><li> Create/Edit (`fme_fmelargesegment_edit`)</li></ul> | Active |
 | FME Metric | <ul><li>View (`fme_fmemetric_view`)</li><li> Create/Edit (`fme_fmemetric_edit`)</li></ul> | Active |
 | FME Traffic Type | <ul><li>View (`fme_fmetraffictype_view`)</li><li> Create/Edit (`fme_fmetraffictype_edit`)</li></ul> | Active |
