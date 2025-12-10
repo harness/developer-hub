@@ -403,9 +403,19 @@ options = {
 
 ```python
 config = {}
-factory = get_factory('YOUR_API_KEY', config=config, sdk_api_base_url = 'http://ProxyServerName:Port/api', events_api_base_url = 'http://ProxyServerName:Port/api')
-GO SDK
+factory = get_factory(
+    'YOUR_API_KEY',
+    config=config,
+    sdk_api_base_url='http://ProxyServerName:Port/api',
+    events_api_base_url='http://ProxyServerName:Port/api'
+)
+```
 
+</TabItem>
+
+<TabItem value="go" label="Go SDK">
+
+```go
 cfg := conf.Default()
 cfg.Advanced.AuthServiceURL = "http://ProxyServerName:Port/api"
 cfg.Advanced.SdkURL = "http://ProxyServerName:Port/api"
