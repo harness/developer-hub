@@ -113,6 +113,15 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## December 2025 
+
+### Version 25.12.87402 <!--December 10, 2025 -->
+
+#### Fixed issues 
+
+- Resolved an issue where StageId generation in container step groups now uses stage names instead of UUIDs to improve regex matching reliability during STO API calls. [CDS-116801]
+- Added context to unresolved-expression errors from a custom secret manager. [CDS-112390]
+
 ## November 2025
 
 ### Version 25.11.87301 <!--November 28, 2025-->
