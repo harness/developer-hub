@@ -500,3 +500,47 @@ Multi-line secrets may not render correctly. Using Terraform’s `heredoc` synta
 
 ### How can I dynamically select infrastructure in my deployment?
 Users can use runtime expressions to dynamically select infrastructure based on environment conditions. This requires pre-defined mappings of environment-to-infrastructure variables.
+
+### Why should I bother signing container images before deployment?
+Unsigned images can be tampered with or come from untrusted sources. By signing images with Cosign, you ensure that the image was built by a trusted party and hasn’t been modified. It's a critical step in securing the software supply chain — especially in production environments.
+
+### What is the benefit of using Cosign’s keyless signing instead of key-based signing?
+Keyless signing through Cosign uses your identity from trusted providers like Google, GitHub, or Microsoft via OIDC. This removes the need to manage long-lived keys, reducing the attack surface and making it easier to rotate credentials or audit who signed what.
+
+### How does Harness use OPA to block bad images from being deployed?
+Harness integrates Open Policy Agent (OPA) to enforce policies before deployment. You can write Rego rules that, for example, only allow images with a specific digest and annotation (env=dev). If a pipeline tries to deploy anything else, it fails right at the policy check step.
+
+### I tagged and signed my image — why do I still need to use the digest in the policy?
+Tags can point to different images over time. Digests (sha256:...) are immutable, so signing with and verifying against the digest ensures you're referencing exactly the image you intended — not one that may have been retagged later.
+
+### Can I write my own rules for what images are allowed?
+Yes. You can create custom Rego policies in Harness to define what’s allowed. For example, you might want to ensure:
+Only images from a private registry are used
+Only images signed by a known issuer are deployed
+Images have a specific label or annotation
+OPA gives you full control over these rules.
+
+### What happens in Harness if a policy check fails?
+If any policy in your Policy Set fails, Harness stops the deployment right there. You’ll see the failure in the pipeline execution, and you can review why it failed under Project Setup → Policies → Evaluations.
+
+### Can I reuse this setup across environments (dev/stage/prod)?
+Yes. You can define different policies or annotations like env=dev, env=prod, etc., and sign images accordingly. Then you can enforce different policies per environment, ensuring that only the correct images are deployed to the right stage.
+
+### How does Autoscaler integration work in Harness?
+Harness automatically applies autoscaling rules during deployment if the Autoscaler service is already created and bound to the app. You just need to add a TAS Command step to create the Autoscaler service and reference it in your manifest.yaml under the services section.
+
+### How do I deploy my app using Harness once everything is set up?
+You create a pipeline with a Deploy stage, select Tanzu Application Services as the deployment type, and pick a strategy (like Basic or Rolling). Then, you link your manifest, artifacts, and target infrastructure, and finally click “Run Pipeline” to deploy.
+
+### What happens if I set existingVersionToKeep to 0 during a Blue-Green deployment?
+If you set existingVersionToKeep: 0, Harness will only keep two versions of your app: the active and the inactive. It won’t maintain any additional backup versions. Instead of creating a new app version, it reuses the old inactive app by detaching its old routes and redeploying to it with the new changes.
+
+### How does Harness use a CloudFormation template to create infrastructure during deployment?
+Harness uses the Create Stack step to provision infrastructure before deploying. You provide a CloudFormation template (inline, from Git, or S3), and Harness uses an AWS Connector to authenticate and deploy the stack. Then, it maps outputs from the template (like region or namespace) to use them in your deployment target infrastructure.
+
+### Can I use secrets and expressions inside my CloudFormation templates or parameter files?
+Yes, Harness supports secrets and expressions in both the template and parameter files. These are evaluated at runtime, so you can securely inject values like credentials, region names, or instance types dynamically during provisioning.
+
+### What happens if the CloudFormation stack creation fails during deployment?
+If the stack fails, Harness can automatically trigger a rollback using the CloudFormation Rollback Stack step. It uses the same Provisioner Identifier from the Create Stack step to figure out which stack to roll back, ensuring cleanup and consistency during failed deployments.
+
