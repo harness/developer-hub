@@ -87,3 +87,7 @@ In the status page, you will see the status for Split's various components:
 * **Integrations**: This component will reflect issues with any of Split's various [integrations](/docs/feature-management-experimentation/integrations). The integrations affected will be noted in the status page update and if the issue lies with an integration partner it will be noted and tracked.
 * **CDN**: Issues with our CDN may prevent new SDK instances from fetching rollout plans during initialization. For server-side SDKs, this will result in treatment evaluations returning control treatments. For client-side SDKs, evaluations will return treatments according to the rollout plans already cached in the device, if a cache is available.
 * **Streaming Authentication Service**: Issues in this component will prevent SDKs from receiving rollout plan updates via push notifications. In this scenario, all SDKs will fall back to polling to fetch updates with no impact to your end users.
+
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **release monitoring**, **events**, and **metrics**, check out the [**Harness Feature Management & Experimentation Feature Delivery Foundations for Admins & Product Managers certification**](https://university-registration.harness.io/fme-feature-delivery-foundations-for-admins-product-managers).
+</UniversityAdmonition>

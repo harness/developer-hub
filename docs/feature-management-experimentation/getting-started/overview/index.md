@@ -242,6 +242,10 @@ This list may change in the event of a failover, so we recommend subscribing to 
 
 Split uses a third-party provider, SendGrid, to send user invitations. If your spam blocker prevents these from being delivered, allow the following IP address: `168.245.9.60`.
 
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **feature management**, **release monitoring**, and **cloud experimentation**, check out the [**Harness Feature Management & Experimentation self-paced training**](https://university-registration.harness.io/page/fme).
+</UniversityAdmonition>
+
 ## Further Reading
 
 Additional documentation, blog blog links, and articles:

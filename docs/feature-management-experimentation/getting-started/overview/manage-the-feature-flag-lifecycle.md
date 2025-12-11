@@ -56,3 +56,7 @@ Before removing a feature flag from code, ensure that everyone in the population
 * There could also be a subtask within the ticket that states a mandatory feature flag review/kill date.
 * Schedule a recurring cadence for the team to review and retire eligible feature flags.
 * Adopt a process to add a retire tag on the feature flag once the rollout or experiment is complete.
+
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **release monitoring**, **events**, and **metrics**, check out the [**Harness Feature Management & Experimentation Feature Delivery Foundations for Admins & Product Managers certification**](https://university-registration.harness.io/fme-feature-delivery-foundations-for-admins-product-managers).
+</UniversityAdmonition>

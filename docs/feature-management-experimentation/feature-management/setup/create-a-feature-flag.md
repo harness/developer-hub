@@ -111,6 +111,10 @@ Rather than migrating flags, Harness recommends setting up workspaces in advance
 
 Existing feature flags should remain in the current (often “Default”) workspace until they are fully removed from code. This strategy avoids disruption and allows teams to incrementally adopt their own workspaces without impacting production traffic.
 
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **feature flagging**, check out the [**Harness Feature Management & Experimentation Feature Flagging Foundations for Engineers certification**](https://university-registration.harness.io/fme-level-1-feature-flagging-foundations-for-engineers) and [**Advanced Feature Flagging for Engineers certification**](https://university-registration.harness.io/fme-level-2-advanced-feature-flagging-for-engineers).
+</UniversityAdmonition>
+
 ## Further Reading
 
 Additional documentation, blog links, and articles:

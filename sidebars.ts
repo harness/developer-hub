@@ -2236,7 +2236,7 @@ const sidebars: SidebarsConfig = {
       type: "link",
       label: "Certifications & Training",
       className: "sidebar-university",
-      href: 'https://arcade.split.io/login',
+      href: '/university/feature-management-experimentation/',
       customProps: {
         description: 'Get certified and learn in Harness Feature Management and Experimentation from our training programs.',
       },

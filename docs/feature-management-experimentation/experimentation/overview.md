@@ -56,3 +56,7 @@ Since any change to the experiment will trigger a reset, one best practice is to
 ## Analyze experiment results
 
 For more information about analyzing experiment results, see [Analyzing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results).
+
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **cloud experimentation**, check out the [**Harness Feature Management & Experimentation Cloud Experimentation for Product Managers certification**](https://university-registration.harness.io/fme-level-1-cloud-experimentation-for-product-managers).
+</UniversityAdmonition>

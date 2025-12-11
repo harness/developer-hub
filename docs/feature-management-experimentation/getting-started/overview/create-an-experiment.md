@@ -75,3 +75,7 @@ You can assign the following metric categories to your experiment any time after
 * Supporting metrics, which offer additional context, even if they’re not directly related to the experiment’s success criteria.
 
 For more information, see the [Metrics documentation](/docs/feature-management-experimentation/experimentation/metrics/).
+
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **cloud experimentation**, check out the [**Harness Feature Management & Experimentation Cloud Experimentation for Product Managers certification**](https://university-registration.harness.io/fme-level-1-cloud-experimentation-for-product-managers).
+</UniversityAdmonition>

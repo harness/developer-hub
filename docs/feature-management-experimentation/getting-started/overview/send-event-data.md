@@ -32,3 +32,7 @@ To help verify that events are being received by Split, from the left navigation
 ![](../static/event-types.png)
 
 You can see event types and a stream of events per event type. For more information about events, see [Events](/docs/feature-management-experimentation/release-monitoring/events/).
+
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **events**, **metrics**, and **monitoring and alerting**, check out the [**Harness Feature Management & Experimentation Advanced Feature Flagging for Engineers certification**](https://university-registration.harness.io/fme-level-2-advanced-feature-flagging-for-engineers).
+</UniversityAdmonition>

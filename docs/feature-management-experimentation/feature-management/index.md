@@ -83,6 +83,10 @@ Cloaking refers to deliberately serving different content to search engines than
 
 Both Google and Microsoft have confirmed that A/B testing is safe for SEO when done correctly. If you want to provide a consistent experience for crawlers during experimentation, consider using a consistent key for bots during randomization. Just avoid explicitly targeting user agents for different content, which may raise concerns around cloaking.
 
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **feature flagging**, **feature management**, and **targeting**, check out the [**Harness Feature Management & Experimentation Feature Delivery Foundations for Admins & Product Managers certification**](https://university-registration.harness.io/fme-feature-delivery-foundations-for-admins-product-managers).
+</UniversityAdmonition>
+
 ## Further Reading
 
 Additional documentation, blog links, and articles:

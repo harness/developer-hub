@@ -54,3 +54,7 @@ We are moving rapidly to unlock integrations with Harness's innovative DevOps to
 You can use Harness FME directly within the [Harness Internal Developer Portal (IDP)](/docs/internal-developer-portal). This integration allows you to view and manage your feature flags and experiments directly from your developer portal, alongside other Harness tools. For setup instructions and configuration details, see the [Harness IDP documentation](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme).
 
 To learn more about upcoming integrations and planned enhancements, see the [FME Product Roadmap](https://developer.harness.io/roadmap/#fme).
+
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **feature management**, **release monitoring**, and **cloud experimentation**, check out the [**Harness Feature Management & Experimentation self-paced training**](https://university-registration.harness.io/page/fme).
+</UniversityAdmonition>

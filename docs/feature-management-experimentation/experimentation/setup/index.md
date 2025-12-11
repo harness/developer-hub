@@ -86,3 +86,7 @@ Then, in your test feature flag, you could have a rule that feature flags the tr
 In the above example, 10% of the users meet the criteria of being in the **on** treatment in the parent feature flag, and of those, 50% will get the new feature and 50% will not.  As you increase the percentage in the on treatment in the parent feature flag, `traffic_control`, you will increase the number of users in your test without resetting the metrics.
 
 Remember, there are very good reasons why you want to reset metrics if you change the profile of your test, so you should consider if doing the above will bias your results in any way.  But if the introduction of new traffic is purely random and from the same base population this may well be a technique worth investigating.
+
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **cloud experimentation**, check out the [**Harness Feature Management & Experimentation Cloud Experimentation for Product Managers certification**](https://university-registration.harness.io/fme-level-1-cloud-experimentation-for-product-managers).
+</UniversityAdmonition>

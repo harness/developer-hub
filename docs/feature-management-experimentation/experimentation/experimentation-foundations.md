@@ -10,7 +10,7 @@ When getting started with running experiments, the design phase serves as the fo
 
 This playbook will be an invaluable resource, as it guides your organization through each critical step of the experiment design process.  It assists in formulating well-defined hypotheses, prioritizing them based on strategic objectives, selecting appropriate metrics that align with business goals, and meticulously crafting the experimental setup.  
 
-Supporting each of these areas, you will find ‘Split resources’ throughout this playbook, which are downloadable frameworks or guides to help you as a starting point. By providing comprehensive guidance in these key areas, this playbook empowers you to conduct effective experiments that yield actionable insights, ultimately driving informed decision-making and optimizing outcomes.
+Supporting each of these areas, you will find ‘Harness FME resources’ throughout this playbook, which are downloadable frameworks or guides to help you as a starting point. By providing comprehensive guidance in these key areas, this playbook empowers you to conduct effective experiments that yield actionable insights, ultimately driving informed decision-making and optimizing outcomes.
 
 ## Experiment Process & Lifecycle  
 
@@ -31,7 +31,9 @@ Program leads and individual team owners should consider the following:
 - What learnings will you gather from this experiment?
 - Is your experiment aligned with the wider company goals? 
 
-Check out the Split Arcade for our [Experimentation Level 1 certification](https://arcade.split.io/certifications/4d7eacee-5031-11ed-93f5-067360dfb065).
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **cloud experimentation**, check out the [**Harness Feature Management & Experimentation Cloud Experimentation for Product Managers certification**](https://university-registration.harness.io/fme-level-1-cloud-experimentation-for-product-managers).
+</UniversityAdmonition>
 
 ## Experiment Workflow 
 
@@ -57,7 +59,7 @@ Having a workflow encourages organizations to define clear objectives and promot
 
 ### What is it? 
 
-Once you have your experiment hypothesis or features to measure, there are a few steps to complete in order to configure your experiment in the Split platform whilst building the code itself.  This is your development and rollout plan.  This could be a document or a series of Jira tickets which details the who, what, when and why for the experiment. 
+Once you have your experiment hypothesis or features to measure, there are a few steps to complete in order to configure your experiment in the Harness FME platform whilst building the code itself.  This is your development and rollout plan.  This could be a document or a series of Jira tickets which details the who, what, when and why for the experiment. 
 
 ### Why is it important? 
 
@@ -170,26 +172,28 @@ These might include:
 * Which stakeholders need to be responsible, accountable, supporting, consulted & informed when it comes to experiment results and other stages 
 * Action plan for all outcomes (what to do if it wins, loses or remains inconclusive) 
 * All detail for engineers who build the experiment(s)
-* Targeting, segments and metric details (knowing which events and properties need to be sent to Split)
+* Targeting, segments and metric details (knowing which events and properties need to be sent to Harness FME)
 
-## Split Arcade
+## Harness FME Self-Paced Training
 
-[📄 Check out Level 1: Experiment Foundations](https://arcade.split.io/certifications/4d7eacee-5031-11ed-93f5-067360dfb065) | 1.5 hours to complete
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **cloud experimentation**, check out the [**Harness Feature Management & Experimentation Cloud Experimentation for Product Managers certification**](https://university-registration.harness.io/fme-level-1-cloud-experimentation-for-product-managers).
+</UniversityAdmonition>
 
 ### What is it? 
 
-The Split Arcade is a self-serve, interactive learning platform to help onboard and level up your team at scale.  Our arcade provides persona-based, step-leveled learning certifications in key categories like Feature flagging, Experimentation, and Administration.
+[Harness University](https://developer.harness.io/university/feature-management-experimentation) is a self-serve, interactive learning platform to help onboard and level up your team at scale. Harness self-paced training provides persona-based, step-leveled learning certifications in key categories like feature flagging, cloud experimentation, and administration.
 
 ### Why is it important? 
 
-Our Experimentation learning path ensures a holistic understanding of experimentation fundamentals from planning, design, and best practices, and covers Split specifics as well. 
+Our [Cloud Experimentation](https://university-registration.harness.io/fme-level-1-cloud-experimentation-for-product-managers) certification ensures a holistic understanding of experimentation fundamentals from planning, design, and best practices, and covers Harness FME specifics as well. 
 
 ### What is involved? 
 
 #### Roadmap to Experimentation
 
 * Understand experimentation: what it is, and which experiments to run based on your needs
-* Understand the value of experimenting in Split
+* Understand the value of experimenting in Harness FME
 * Understand the lifecycle of an experiment 
 
 #### Experiment Design & Planning
@@ -202,18 +206,18 @@ Our Experimentation learning path ensures a holistic understanding of experiment
 #### Creating Metrics
 
 * Know how to select, add, and your organize metrics across experiments
-* Understand Split specific features that help level up your metrics
-* Know how to create metrics and alerts within Split using best practices
+* Understand Harness FME specific features that help level up your metrics
+* Know how to create metrics and alerts within Harness FME using best practices
 
 #### Engineering: Build & QA
 
 * Understand what an A/A test is, and how to run it
 * Understand how to navigate the results of an A/A test
-* Understand Split experiment settings and when you would change them
+* Understand Harness FME experiment settings and when you would change them
 * Know how to set up, QA, and launch an A/B test
 
 ### Who should complete it? 
 
 The certification has been designed for product and business-focused learners, though it is beneficial for anyone going through experiment ideation and execution while trying to align with business goals.
 
-Harness recommends completing this as a starting point to experimentation and using the Split platform. 
+Harness recommends completing this as a starting point to experimentation and using Feature Management & Experimentation. 

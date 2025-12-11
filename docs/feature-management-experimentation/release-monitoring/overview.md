@@ -111,3 +111,7 @@ This alert will fire if there is a 5% or more difference between the baseline tr
 :::info
 You do not explicitly need to use the FME SDK Suite (or RUM Agents) if you have your own way of sending performance metric data to Harness FME. However, it has been our experience that performance metric data on a user-by-user basis is difficult to extract from common APM monitoring tools.
 :::
+
+<UniversityAdmonition title="Harness FME self-paced training">
+  For an interactive onboarding experience including further use cases and features like **release monitoring**, **events**, and **metrics**, check out the [**Harness Feature Management & Experimentation Feature Delivery Foundations for Admins & Product Managers certification**](https://university-registration.harness.io/fme-feature-delivery-foundations-for-admins-product-managers).
+</UniversityAdmonition>
