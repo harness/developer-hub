@@ -176,6 +176,12 @@ The following deprecated API endpoints are longer supported:
 
 ## December 2025
 
+### Version 1.120.x <!--December 10, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue that now allows users to right-click and select "open link in new tab," or use Cmd+click or middle mouse click to open pages from the settings page in a new tab without leaving the current one. [PL-65502]
+
 ### Version 1.119.x <!--December 03, 2025-->
 
 #### Fixed issues
