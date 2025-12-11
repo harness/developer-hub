@@ -8,7 +8,7 @@ keywords:
   - Parameters
   - Custom scripts
 tags:
-  - tutorials
+  - ait-tutorials
   - navigation
   - parameters
 sidebar_position: 1

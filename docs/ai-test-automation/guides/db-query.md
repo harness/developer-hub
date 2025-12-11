@@ -7,7 +7,7 @@ keywords:
   - Data-Driven Intelligent testing
   - Database-Driven Intelligent testing
 tags:
-  - tutorials
+  - ait-tutorials
   - db-query
 sidebar_position: 1
 ---
