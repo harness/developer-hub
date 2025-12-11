@@ -33,11 +33,11 @@ The **Vulnerabilities** tab provides a detailed view of all issues identified du
 The **Active Issues** count shows the number of vulnerabilities that still require action. It excludes any issues marked as **Exempted** or **Remediated**.
 This count also reflects how well STO’s deduplication logic is working by showing the percentage reduction in issues compared to the raw scan results.
 
-:::info Behind Feature Flags
-The following features are currently behind the feature flag `STO_AGGREGATE_RETRY_EXECUTIONS`, `STO_AGGREGATE_CHAIN_EXECUTIONS`, Contact [Harness Support](mailto:support@harness.io) to enable them.
+:::info
 - If you run a pipeline from a specific stage instead of from the start, any security scans that were skipped in the current run but executed in a previous run will still have their results shown in the **Vulnerabilities** tab.
 - In chained pipelines, where a parent pipeline includes child pipelines as stages, the **Vulnerabilities** tab of the parent pipeline displays scan results from child pipelines only if they belong to the **same project**. If a child pipeline is part of a **different project**, its scan results will **not be shown** in the parent pipeline’s **Vulnerabilities** tab.
 :::
+
 
 ## Understanding issue categories
 
