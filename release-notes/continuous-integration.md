@@ -33,6 +33,21 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## December 2025
 
+### Version 1.111.0
+<!-- 2025-12-08 -->
+
+#### Fixed Issues
+- Fixed an issue in Harness CI where the concurrency queue displayed stale messages. (CI-20076)
+- Fixed an issue where shell type passed as a runtime input in a containerized step group template resulted in misconfigured YAML. (CI-20063)
+- Fixed an issue where some expressions were failing to resolve in CI stages. (CI-20105, ZD-99349, ZD-99460)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| harness/ci-addon | General version update | 1.9.16 | 1.9.17 |
+| harness/ci-lite-engine | General version update | 1.18.0 | 1.18.1 |
+
 ### Version 1.110.0
 <!-- 2025-12-01 -->
 
