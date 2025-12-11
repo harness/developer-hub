@@ -209,6 +209,291 @@ The following steps are common to all three entities (clusters, repositories, an
 
 When you have completed [setting up the cluster](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-3-add-a-harness-gitops-cluster), the cluster appears in the GitOps Cluster list.
 
+## Enable Harness Expression Resolution for BYOA
+
+With a BYOA setup, you can enable the Harness ArgoCD plugin to use Harness secret expressions directly in your application manifests. This feature allows you to reference secrets stored in Harness (such as database passwords, API keys, etc.) within your Kubernetes manifests, and the expressions are resolved and decrypted during manifest rendering.
+
+For examples of using Harness secret expressions in your manifests, go to [Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications#harness-secret-expressions-in-application-manifests).
+
+### Prerequisites
+
+- An existing GitOps agent installed with your Argo CD instance (BYOA setup)
+- Access to modify the Argo CD configuration in your cluster
+- The feature flag `CDS_GITOPS_SECRET_RESOLUTION_ENABLED` enabled (contact [Harness Support](mailto:support@harness.io))
+
+### For Helm Chart installations
+
+If your GitOps agent was installed using the Harness-provided Helm chart, follow these steps:
+
+1. **Upgrade to the latest chart** and make the following changes to your `values.yaml` file.
+
+2. **Enable the Harness ArgoCD plugin** by adding the following flag:
+
+   <details>
+   <summary>values.yaml: Enable plugin</summary>
+
+   ```yaml
+   harness:
+     argocdHarnessPlugin:
+       enabled: true
+   ```
+
+   </details>
+
+3. **Add the agent service configuration** under the `agent` section:
+
+   <details>
+   <summary>values.yaml: Agent service configuration</summary>
+
+   ```yaml
+   agent:
+     service:
+       enabled: true
+       type: ClusterIP
+       port: 7910
+       targetPort: 7910
+       labels: {}
+       annotations: {}
+   ```
+
+   </details>
+
+4. **Add the plugin container** to the Argo CD repo server by adding the following under `argo-cd.repoServer.extraContainers`:
+
+   <details>
+   <summary>values.yaml: Plugin sidecar container</summary>
+
+   ```yaml
+   argo-cd:
+     repoServer:
+       extraContainers:
+       - command: [ /var/run/argocd/argocd-cmp-server ]
+         image: harness/gitops-agent-installer-helper:v0.0.3
+         imagePullPolicy: IfNotPresent
+         name: argocd-harness-plugin
+         resources:
+           limits:
+             cpu: "0.5"
+             memory: 512Mi
+           requests:
+             cpu: "0.5"
+             memory: 512Mi
+         securityContext:
+           capabilities:
+             drop:
+             - NET_RAW
+           runAsGroup: 999
+           runAsUser: 999
+         terminationMessagePath: /dev/termination-log
+         terminationMessagePolicy: File
+         volumeMounts: 
+         - mountPath: /var/run/argocd
+           name: var-files
+         - mountPath: /home/argocd/cmp-server/plugins
+           name: plugins
+         - mountPath: /tmp
+           name: tmp
+         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+           name: argocd-harness-plugin
+           subPath: harness.yaml
+   ```
+
+   </details>
+
+5. **Add the ConfigMap volume** to the repo server by adding the following under `argo-cd.repoServer.volumes`:
+
+   <details>
+   <summary>values.yaml: ConfigMap volume</summary>
+
+   ```yaml
+   argo-cd:
+     repoServer:
+       volumes:
+       - name: argocd-harness-plugin
+         configMap:
+           name: argocd-harness-plugin
+   ```
+
+   </details>
+
+6. **Apply the changes** by running the Helm upgrade command:
+
+   ```bash
+   helm upgrade <release-name> gitops-agent/gitops-helm --values values.yaml --namespace <agent-namespace>
+   ```
+
+### For plain Kubernetes manifest installations
+
+If your GitOps agent was installed using plain Kubernetes manifests, follow these steps:
+
+1. **Create the agent service** (if it doesn't already exist):
+
+   <details>
+   <summary>Service manifest</summary>
+
+   ```yaml
+   apiVersion: v1
+   kind: Service
+   metadata:
+     name: gitops-agent
+     namespace: <agent-namespace>
+   spec:
+     type: ClusterIP
+     ports:
+       - name: http
+         protocol: TCP
+         port: 7910
+         targetPort: 7910
+     selector:
+       app.kubernetes.io/name: harness-gitops-agent
+       app.kubernetes.io/instance: <release-name>
+   ```
+
+   </details>
+
+   Apply this manifest:
+
+   ```bash
+   kubectl apply -f gitops-agent-service.yaml -n <agent-namespace>
+   ```
+
+2. **Create the plugin ConfigMap** in the same namespace as your GitOps agent/Argo CD:
+
+   <details>
+   <summary>Plugin ConfigMap</summary>
+
+   ```yaml
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+     name: argocd-harness-plugin
+     namespace: <agent-namespace>
+   data:
+     harness.yaml: |
+       ---
+       apiVersion: argoproj.io/v1alpha1
+       kind: ConfigManagementPlugin
+       metadata:
+         name: argocd-harness-plugin
+       spec:
+         version: v1.0
+         allowConcurrency: true
+         discover:
+           find:
+             command:
+               - /bin/sh
+               - -c
+               - |
+                 if [ -f "Chart.yaml" ] || [ -f "values.yaml" ]; then  
+                   echo "Harness Plugin discovered Helm Chart. Proceeding to generate manifests."
+                 elif find . -name '*.yaml' -o -name '*.yml' | grep -q .; then
+                   echo "Harness Plugin discovered Native Kubernetes Manifests. Proceeding to generate manifests."
+                 else
+                   exit 1
+                 fi
+         generate:
+           command:
+             - /bin/sh
+             - -c
+             - |
+               set -o pipefail 
+               if [ -f "Chart.yaml" ] || [ -f "values.yaml" ]; then
+                 helm template $ARGOCD_APP_NAME -n $ARGOCD_APP_NAMESPACE ${ARGOCD_ENV_HELM_ARGS} --include-crds . \
+                   | argocd-harness-plugin generate -
+               else
+                 argocd-harness-plugin generate .
+               fi
+         lockRepo: false
+   ```
+
+   </details>
+
+   Apply this ConfigMap:
+
+   ```bash
+   kubectl apply -f argocd-harness-plugin-configmap.yaml -n <agent-namespace>
+   ```
+
+3. **Add the plugin sidecar container** to the `argocd-repo-server` deployment:
+
+   Edit the `argocd-repo-server` deployment and add the following container under `spec.template.spec.containers`:
+
+   <details>
+   <summary>Deployment patch for argocd-repo-server</summary>
+
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: argocd-repo-server
+     namespace: <agent-namespace>
+   spec:
+     template:
+       spec: 
+         containers:
+         # ... existing containers ...
+         - command: [ /var/run/argocd/argocd-cmp-server ]
+           image: harness/gitops-agent-installer-helper:v0.0.3
+           imagePullPolicy: IfNotPresent
+           name: argocd-harness-plugin
+           resources:
+             limits:
+               cpu: "0.5"
+               memory: 512Mi
+             requests:
+               cpu: "0.5"
+               memory: 512Mi
+           securityContext:
+             capabilities:
+               drop:
+               - NET_RAW
+             runAsGroup: 999
+             runAsUser: 999
+           terminationMessagePath: /dev/termination-log
+           terminationMessagePolicy: File
+           volumeMounts: 
+           - mountPath: /var/run/argocd
+             name: var-files
+           - mountPath: /home/argocd/cmp-server/plugins
+             name: plugins
+           - mountPath: /tmp
+             name: tmp
+           - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+             name: argocd-harness-plugin
+             subPath: harness.yaml
+         volumes:
+         # ... existing volumes ...
+         - configMap:
+             defaultMode: 420
+             name: argocd-harness-plugin
+           name: argocd-harness-plugin
+   ```
+
+   </details>
+
+   Apply the updated deployment:
+
+   ```bash
+   kubectl apply -f argocd-repo-server-deployment.yaml -n <agent-namespace>
+   ```
+
+4. **Verify the installation** by checking that the plugin container is running:
+
+   ```bash
+   kubectl get pods -n <agent-namespace> -l app.kubernetes.io/name=argocd-repo-server
+   kubectl logs -n <agent-namespace> <argocd-repo-server-pod> -c argocd-harness-plugin
+   ```
+
+### Verification
+
+After completing the installation, verify that the Harness plugin is working correctly:
+
+1. Check that the `argocd-repo-server` pods are running with the new sidecar container
+2. Verify that the plugin ConfigMap exists in the namespace
+3. Test expression resolution by deploying an application with Harness secret expressions
+
+For usage examples and expression syntax, refer to [Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications#harness-secret-expressions-in-application-manifests).
+
 ## Notes
 
 * Harness honors Argo CD project permissions. If the project selected for the Harness application does not have permissions for the repository or cluster, then Harness returns a permissions-related error. You must go to Argo CD and adjust the project's scoped repositories and destinations.
