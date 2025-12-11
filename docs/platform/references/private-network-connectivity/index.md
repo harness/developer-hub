@@ -2,6 +2,8 @@
 title: Private network connectivity options for Harness Cloud
 description: Connect Harness Cloud to private resources using IP allowlisting or enterprise networking solutions.
 sidebar_position: 8
+id: index
+slug: /platform/references/private-network-connectivity
 redirect_from:
   - /docs/continuous-integration/secure-ci/secure-connect
   - /docs/continuous-integration/secure-ci/private-network-connectivity
@@ -62,16 +64,13 @@ For enterprise customers with strict compliance and security requirements, cloud
 **AWS PrivateLink**
 Provides private connectivity between VPCs, AWS services, and your on-premises networks without exposing traffic to the public internet.
 
-For detailed setup instructions, see the [AWS PrivateLink Documentation](https://docs.aws.amazon.com/vpc/latest/privatelink/).
-
 **GCP Private Service Connect**
 Allows you to privately connect your VPC networks to Google-managed services and services hosted in other VPC networks.
 
-For detailed setup instructions, see the [GCP Private Service Connect Documentation](https://cloud.google.com/vpc/docs/private-service-connect).
 
-:::note
-For questions about integrating these solutions with Harness, [contact Harness Support](https://support.harness.io/).
-:::
+**For detailed solution architecture and setup instructions, see** [**documentation**](docs/platform/references/private-network-connectivity/private-link-connect.md).
+
+
 
 
 ## Need help?
