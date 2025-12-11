@@ -33,7 +33,7 @@ Harness AI SRE's on-call management module provides a comprehensive platform for
 
 Configure your contact preferences to ensure you receive notifications through your preferred channels:
 
-<DocVideo src="https://app.tango.us/app/embed/98469de9-3122-45b8-aa96-e1252e5e16c5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Contact Methods in AI SRE On-Call" />
+<DocVideo src="https://app.tango.us/app/embed/98469de9-3122-45b8-aa96-e1252e5e16c5?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Contact Methods in AI SRE On-Call" />
 
 ### Schedule Management
 - Create and manage on-call schedules with flexible rotation patterns
@@ -50,13 +50,13 @@ Configure your contact preferences to ensure you receive notifications through y
 
 Follow this step-by-step guide to set up your on-call rotation schedule:
 
-<DocVideo src="https://app.tango.us/app/embed/bc9db76e-c622-457e-95b1-45aa0ff06906?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create On-Call Schedule" />
+<DocVideo src="https://app.tango.us/app/embed/bc9db76e-c622-457e-95b1-45aa0ff06906?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create On-Call Schedule" />
 
 #### Creating Schedule Overrides
 
 Learn how to create temporary schedule overrides for coverage changes:
 
-<DocVideo src="https://app.tango.us/app/embed/2fe2c6c2-d4ed-40ce-80da-369a005c9259?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create an Override Schedule" />
+<DocVideo src="https://app.tango.us/app/embed/2fe2c6c2-d4ed-40ce-80da-369a005c9259?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create an Override Schedule" />
 
 ### Escalation Policies
 - Multi-level escalation policy configuration
@@ -69,7 +69,7 @@ Learn how to create temporary schedule overrides for coverage changes:
 
 Learn how to create and configure escalation policies for your on-call teams:
 
-<DocVideo src="https://app.tango.us/app/embed/004cfc98-17f2-4947-84a3-75dfbb3aeeaf?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create Escalation Policy" />
+<DocVideo src="https://app.tango.us/app/embed/004cfc98-17f2-4947-84a3-75dfbb3aeeaf?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create Escalation Policy" />
 
 ### Alert Rules and Automatic Paging
 - Configurable alert rules that automatically page on-call personnel

@@ -38,7 +38,7 @@ Before diving into runbook creation, familiarize yourself with these core concep
 <Tabs groupId="runbook-creation" queryString>
   <TabItem value="interactive-guide" label="Interactive Guide" default>
 
-<DocVideo src="https://app.tango.us/app/embed/f23544ee-c6cb-4a81-85b2-51fd968eae9d?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create a Runbook" />
+<DocVideo src="https://app.tango.us/app/embed/f23544ee-c6cb-4a81-85b2-51fd968eae9d?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create a Runbook" />
 
 Follow this interactive guide to create automated runbooks with actions, workflows, and integrations.
 

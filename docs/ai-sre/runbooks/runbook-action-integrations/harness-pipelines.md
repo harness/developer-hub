@@ -7,7 +7,6 @@ redirect_from:
 - /docs/incident-response/runbooks/integrations/harness-pipelines
 ---
 
-# Harness Pipelines Integration for Runbooks
 
 Harness AI SRE provides native integration with Harness Pipelines, enabling automated remediation actions and deployment control directly from your incident response workflows.
 

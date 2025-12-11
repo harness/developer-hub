@@ -57,7 +57,7 @@ Incidents in Harness AI SRE help you:
 <Tabs groupId="incident-creation" queryString>
   <TabItem value="interactive-guide" label="Interactive Guide" default>
 
-<DocVideo src="https://app.tango.us/app/embed/500fd8d9-da9a-42b3-8006-94ecc9d5d8ff?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create an Incident" />
+<DocVideo src="https://app.tango.us/app/embed/500fd8d9-da9a-42b3-8006-94ecc9d5d8ff?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create an Incident" />
 
 Follow this interactive guide to create and manage incidents with AI-powered assistance and automated workflows.
 

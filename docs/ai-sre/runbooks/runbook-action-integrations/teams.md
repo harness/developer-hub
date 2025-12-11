@@ -7,7 +7,6 @@ redirect_from:
 - /docs/incident-response/runbooks/integrations/teams
 ---
 
-# Microsoft Teams Integration for Runbooks
 
 Harness AI SRE integrates with Microsoft Teams through a Connector-based approach, enabling automated incident communication and team collaboration.
 

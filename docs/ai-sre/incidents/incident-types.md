@@ -49,7 +49,7 @@ Incident Types help you:
 <Tabs groupId="incident-types-setup" queryString>
   <TabItem value="interactive-guide" label="Interactive Guide" default>
 
-<DocVideo src="https://app.tango.us/app/embed/f4e2db0e-38ba-4278-bb16-7fde8c9fa24e?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create and Configure Incident Types" />
+<DocVideo src="https://app.tango.us/app/embed/f4e2db0e-38ba-4278-bb16-7fde8c9fa24e?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create and Configure Incident Types" />
 
 Follow this interactive guide to create and configure incident types with custom fields and runbook associations.
 

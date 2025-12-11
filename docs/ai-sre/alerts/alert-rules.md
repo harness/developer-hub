@@ -30,7 +30,7 @@ Alert rules help you:
 <Tabs groupId="alert-rules-setup" queryString>
   <TabItem value="interactive-guide" label="Interactive Guide" default>
 
-<DocVideo src="https://app.tango.us/app/embed/a683fd0e-3783-4716-accb-304075677df1?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure Alert Rules in Harness AI SRE" />
+<DocVideo src="https://app.tango.us/app/embed/a683fd0e-3783-4716-accb-304075677df1?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure Alert Rules in Harness AI SRE" />
 
 Follow this interactive guide to configure alert rules that automatically create incidents and page on-call teams.
 

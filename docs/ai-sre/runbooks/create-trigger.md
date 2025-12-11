@@ -46,7 +46,7 @@ Consider these scenarios when creating runbook triggers:
 <Tabs groupId="trigger-creation" queryString>
   <TabItem value="interactive-guide" label="Interactive Guide" default>
 
-<DocVideo src="https://app.tango.us/app/embed/edd0479d-8602-4f86-89a8-57029af64efb?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure Triggers for Runbooks" />
+<DocVideo src="https://app.tango.us/app/embed/edd0479d-8602-4f86-89a8-57029af64efb?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure Triggers for Runbooks" />
 
 Follow this interactive guide to configure triggers that automatically execute your runbooks based on specific conditions and events.
 

@@ -7,7 +7,6 @@ redirect_from:
 - /docs/incident-response/runbooks/integrations/zoom
 ---
 
-# Zoom Integration for Runbooks
 
 Harness AI SRE integrates with Zoom through a Connector-based approach, enabling automated meeting management for incident response.
 

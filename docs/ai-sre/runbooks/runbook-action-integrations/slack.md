@@ -7,7 +7,6 @@ redirect_from:
 - /docs/incident-response/runbooks/integrations/slack
 ---
 
-# Slack Integration for Runbooks
 
 Harness AI SRE supports two methods of Slack integration: Organization-level and Connector-based. This guide covers both approaches and their use cases.
 

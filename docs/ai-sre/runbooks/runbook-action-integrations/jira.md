@@ -7,7 +7,6 @@ redirect_from:
 - /docs/incident-response/runbooks/integrations/jira
 ---
 
-# Jira Integration for Runbooks
 
 Harness AI SRE integrates with Jira through a Connector-based approach, enabling automated ticket management and incident tracking. While organization-level connectors are configured here, you'll also need to set up project-level connectors to ensure proper attribution of runbook actions.
 

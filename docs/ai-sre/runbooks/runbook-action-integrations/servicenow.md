@@ -11,7 +11,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CreateIntegration from './static/create-integration.png';
 
-# ServiceNow Integration for Runbooks
 
 Harness AI SRE offers comprehensive integration with ServiceNow, enabling both outbound (AI SRE to ServiceNow) and inbound (ServiceNow to AI SRE) incident management and tracking.
 
