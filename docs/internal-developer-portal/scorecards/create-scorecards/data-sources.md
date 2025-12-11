@@ -380,6 +380,24 @@ The following data points are available for the Bitbucket data source. All data 
 For Bitbucket data points that require a branch name, the same priority rules apply as mentioned in the [GitHub URL Priority section](#url-priority-for-branch-name-field) above.
 :::
 
+#### Prerequisites for Bitbucket Connector
+
+When setting up a Bitbucket connector, you'll need to configure the appropriate access token with the correct permissions based on your integration scope:
+
+##### Repository-Level Access Token
+If you're configuring access at the repository level, ensure your access token has below permissions:
+- `repository:admin`
+
+This permission is required as specified in the [Bitbucket API documentation for branch restrictions](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-branch-restrictions/#api-repositories-workspace-repo-slug-branch-restrictions-get).
+
+##### Project-Level Access Token
+If you're configuring access at the project level, ensure your access token has below permissions:
+- `project:read` 
+- `repository:admin` 
+- `repository:read` 
+
+These permissions are required as specified in the [Bitbucket API authentication documentation](https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication/#project).
+
 ---
 
 ### Harness
