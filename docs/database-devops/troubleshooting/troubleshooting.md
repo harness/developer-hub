@@ -195,3 +195,28 @@ This is by design—features like drift detection depend on resolving the databa
 :::note
 Use a fixed connector when defining your DB Instance in order to enable full DB DevOps capabilities.
 :::
+
+## 9. From which release version is extra memory required 
+
+Starting with using drone-liquibase version or latest image version i.e. 1.9.0, enhanced memory allocation was introduced increased memory utilization during changelog parsing and SQL generation.
+As a result, the recommended memory allocation for the Database DevOps service increased from 200 MB to 500 MB to ensure stable performance and avoid unexpected OOM (Out of Memory) events.
+
+:::note
+If you are upgrading from any version prior to 1.9.0, ensure your deployment configuration reflects the updated 500 MB memory requirement.
+:::
+
+## 10. Why am I seeing a lock even though the database team confirmed no database-level locks?
+In many scenarios, the “lock” you encounter is not a database engine–level lock but a Liquibase changelog lock. Liquibase uses an internal DATABASECHANGELOGLOCK table to coordinate concurrent change executions. If a pipeline fails, times out, or terminates unexpectedly, the lock may remain active—even when the underlying database shows no locks.
+
+This residual lock prevents subsequent runs from proceeding until the lock is manually released.
+
+**How to Identify Liquibase Locks:**
+Liquibase stores the lock state in the DATABASECHANGELOGLOCK table. If the LOCKED column is true, Liquibase considers the schema locked.
+
+**How to Solve:**
+Use the liquibase step to run the Liquibase command:
+```sh
+release-locks
+```
+
+This clears any stale Liquibase-level locks and restores normal pipeline execution.
