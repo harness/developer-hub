@@ -37,10 +37,7 @@
   .btnMini {
     padding: 12px 20px;
     height: 48px;
-    // Gray scale 100 F3F3FA
-    background: var(--gray-100);
-    background: #f3f3fa; // Light/Text/Disabled
-    // Grayscale 300
+    background: transparent;
     border: 1px solid var(--gray-300);
     border-radius: 4px;
     font-size: 16px;
@@ -49,18 +46,28 @@
     white-space: nowrap;
     display: flex;
     cursor: pointer;
-    // min-width: 180px;
-    filter: drop-shadow(0px 0px 1px rgba(40, 41, 61, 0.04))
-      drop-shadow(0px 2px 4px rgba(96, 97, 112, 0.16));
     &:hover {
-      // text-decoration: underline;
       color: var(--primary-8);
-      background: #fafbfc; // Light/Text/Disabled
+      border-color: var(--primary-5);
+      background: transparent;
     }
     img {
       margin-right: 4px;
       height: 24px;
       width: auto;
+    }
+    
+    // Dark mode styling
+    :global(html[data-theme='dark']) & {
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #ffffff;
+      img {
+        filter: brightness(0) invert(1);
+      }
+      &:hover {
+        border-color: #ffffff;
+        color: #ffffff;
+      }
     }
   }
   .btnMini {

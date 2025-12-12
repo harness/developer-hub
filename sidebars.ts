@@ -2422,8 +2422,8 @@ const sidebars: SidebarsConfig = {
         'cloud-cost-management/get-started/key-concepts',
         {
           type: 'html',
-          value: '<span style="color:#4B5563; font-weight:600;"> Cost Reporting </span>',
-          className: 'horizontal-bar',
+          value: 'Cost Reporting',
+          className: 'secondary-horizontal-bar',
         },
         {
           type: 'category',
@@ -2469,8 +2469,8 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'html',
-          value: '<span style="color:#4B5563; font-weight:600;">Cost Optimization </span>',
-          className: 'horizontal-bar',
+          value: 'Cost Optimization',
+          className: 'secondary-horizontal-bar',
         },
         {
           type: 'category',
@@ -2531,8 +2531,8 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'html',
-          value: '<span style="color:#4B5563; font-weight:600;"> Cost Governance </span>',
-          className: 'horizontal-bar',
+          value: 'Cost Governance',
+          className: 'secondary-horizontal-bar',
         },
         {
           type: 'category',
@@ -3332,8 +3332,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'html',
-          value:
-            '<span style="color:#4B5563; font-weight:600;"> Troubleshooting & Resources </span>',
+          value: 'Troubleshooting & Resources',
           className: 'horizontal-bar',
         },
         'chaos-engineering/resources/hce-vs-litmus',
@@ -3728,7 +3727,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'html',
-          value: '<span style="color:#6B7280; font-weight:1000;"> New to IDP? </span>',
+          value: 'New to IDP?',
           className: 'horizontal-bar',
         },
         'internal-developer-portal/overview',
@@ -3736,7 +3735,7 @@ const sidebars: SidebarsConfig = {
         'internal-developer-portal/get-started',
         {
           type: 'html',
-          value: '<span style="color:#6B7280; font-weight:1000;"> Use IDP </span>',
+          value: 'Use IDP',
           className: 'horizontal-bar',
         },
         {
@@ -3797,8 +3796,8 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'html',
-          value: '<span style="color:#6B7280; font-weight:1000;"> Admin & Customization </span>',
-          className: 'horizontal-bar',
+          value: 'Admin & Customization',
+          className: 'secondary-horizontal-bar',
         },
         {
           type: 'category',
@@ -3840,8 +3839,8 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'html',
-          value: '<span style="color:#6B7280; font-weight:1000;"> Working with APIs </span>',
-          className: 'horizontal-bar',
+          value: 'Working with APIs',
+          className: 'secondary-horizontal-bar',
         },
         {
           type: 'category',
@@ -3854,8 +3853,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'html',
-          value:
-            '<span style="font-weight:1000; color:#6B7280;"> Troubleshooting & Resources </span>',
+          value: 'Troubleshooting & Resources',
           className: 'horizontal-bar',
         },
         {
