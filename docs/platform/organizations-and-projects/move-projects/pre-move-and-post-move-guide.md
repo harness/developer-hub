@@ -31,6 +31,12 @@ This list covers common issues but is not exhaustive. Additional organization-le
     - [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining) will fail if the child pipeline’s project is moved.
     - Any pipelines running in the project will fail when the move operation begins. It’s recommended to complete all pipeline executions before initiating the project move.
 
+        :::warning Pipelines using Terraform will be impacted
+        The pipelines running between the Terraform Plan step and the Terraform Apply/Destroy step, the pipeline may not be able to access the files generated during the Plan step, such as the [inherited plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#review-terraform-plan-and-apply-steps), [exported JSON of plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#export-json-representation-of-terraform-plan), or [exported human-readable of plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#export-human-readable-representation-of-terraform-plan). This will cause the pipeline to fail.
+
+        To prevent issues, allow the pipeline to finish or rerun it after the project movement is complete.
+        :::
+
 2. Notifications:
     - If a notification rule uses a channel from the organization, the reference will break after the move.
     - Email notification channels using organization-level user groups will stop working.
