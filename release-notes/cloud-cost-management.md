@@ -24,8 +24,35 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
-'
-## December 2025 - - Version 1.71.3
+
+
+## December 2025 - Cluster Orchestrator Release - `0.7.0`
+#### Deployment Date: December 12, 2025 
+
+### Feature Improvements
+
+- **Karpenter 1.7.3 Support**: Cluster Orchestrator now supports Karpenter 1.7.3 features. Users must [re-run the enablement script or Terraform template](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/enablement-methods/setting-up-co-helm#step-1-set-up-required-infrastructure-with-terraform) and perform a Helm upgrade to add new permissions for Cluster Orchestrator related to Karpenter 1.7.3.
+
+- **Expanded Kubernetes Support**: Now supports Kubernetes (EKS) version 1.33; previously it supported only 1.32.
+
+- **Enhanced Karpenter Features**: New major Karpenter features (from 1.2.4 to 1.7.3) for non-Karpenter customers include:
+  - Support for ODCRs ([on-demand capacity reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html))
+  - SSM Parameter support for AMI selection
+  - Improved [IAM instance profile management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html))
+  - Bug fixes and performance improvements
+
+- **Auto-Discovery Support**: We have enhanced the Cluster Orchestrator with automatic discovery capabilities for AWS configuration parameters, eliminating the need to manually specify certain environment variables in the deployment.
+Environment Variables with Auto-Discovery Support:
+
+    - `AWS_DEFAULT_INSTANCE_PROFILE`
+    - `AWS_NODE_ROLE_ARN`
+
+    Previously, these environment variables were required to be explicitly defined in the deployment configuration. Now, the Cluster Orchestrator automatically discovers these values on startup.
+
+  While auto-discovery is enabled by default, users can still manually configure these environment variables if needed. When set explicitly, the manually configured values take precedence over auto-discovery.
+
+
+## December 2025 - Version 1.71.3
 #### Deployment Date: December 3, 2025 (Prod-1)
 
 ### Feature Improvements
@@ -33,7 +60,6 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 - **Enhanced Recommendation Management**: We’ve added support for temporarily ignoring recommendations. Users can now ignore a recommendation for 7, 15, or 30 days, or ignore it permanently. Once the selected duration expires, the recommendation will automatically move back to the Open tab on the Recommendations page. [CCM-27645]
 
 - **Improved UI Navigation**: Enhanced the user experience on Perspectives and Budgets pages with collapsible folder navigation, providing a cleaner interface and more screen real estate for data visualization and analysis. [CCM-26679]
-
 
 ## December 2025 - BI Dashboards Release
 

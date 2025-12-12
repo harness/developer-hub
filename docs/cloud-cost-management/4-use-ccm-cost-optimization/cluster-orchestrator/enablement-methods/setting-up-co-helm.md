@@ -10,6 +10,18 @@ redirect_from:
     - /docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co
 ---
 
+
+
+<div style={{background: 'linear-gradient(90deg, #eafaf4, #f7fbf0)', borderRadius: '8px', padding: '16px', margin: '20px 0', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.03)', color: '#000000'}}>
+  <div style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}>
+    <div style={{fontSize: '20px', marginRight: '10px'}}>🚀</div>
+    <h3 style={{margin: 0, fontSize: '18px', fontWeight: 600, color: '#000000'}}>What's New?</h3>
+  </div>
+  <p style={{margin: 0, fontSize: '15px'}}>
+    <strong>Cluster Orchestrator now supports Karpenter `1.7.3` features</strong> Users must [re-run the Terraform template](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/enablement-methods/setting-up-co-helm#step-1-set-up-required-infrastructure-with-terraform) and perform a Helm upgrade to add new permissions for Cluster Orchestrator related to Karpenter 1.7.3
+  </p>
+</div>
+
 ## Before You Begin
 
 ### Prerequisites
@@ -20,9 +32,12 @@ redirect_from:
 - **Harness Account** with CCM module enabled
 - **Kubernetes Connector** configured in your Harness account
 
-### Compatibility
-- Kubernetes: v1.16 through v1.32
-- Karpenter: v1.1.0 through v1.2.4
+### Compatibility Matrix
+
+|Cluster Orchestrator Version| Kubernetes | Karpenter |
+|---|---|---|
+|Till `0.6.0`| 1.32 | 1.2.4|
+|`0.7.0`| 1.33 | 1.7.3|
 
 ## Implementation Steps
 
@@ -33,6 +48,16 @@ First, we'll use Terraform to set up the required infrastructure components:
 - Resource tagging for subnets, security groups, and AMIs
 - Harness service accounts and API tokens
 
+:::note
+If you are re-running the enablement script or Terraform template Cluster Orchestrator related to Karpenter 1.7.3
+
+As part of onboarding script or Helm upgrade, CRDs for Nodepools, EC2NodeClass, and NodeClaims will be upgraded. If using GitOps, users have to manually upgrade the CRDs:
+
+- Nodepool → https://raw.githubusercontent.com/aws/karpenter-provider-aws/v1.7.3/pkg/apis/crds/karpenter.sh_nodepools.yaml
+- NodeClaim → https://raw.githubusercontent.com/aws/karpenter-provider-aws/v1.7.3/pkg/apis/crds/karpenter.sh_nodeclaims.yaml
+- EC2NodeClass → https://raw.githubusercontent.com/aws/karpenter-provider-aws/v1.7.3/pkg/apis/crds/karpenter.k8s.aws_ec2nodeclasses.yaml
+
+:::
 <details>
 <summary><b>Click to expand the Terraform template</b></summary>
 
@@ -190,7 +215,6 @@ resource "aws_iam_policy" "controller_role_policy" {
           "ec2:CreateFleet",
           "ec2:RunInstances",
           "ec2:CreateTags",
-          "iam:PassRole",
           "ec2:TerminateInstances",
           "ec2:DeleteLaunchTemplate",
           "ec2:DescribeLaunchTemplates",
@@ -200,11 +224,19 @@ resource "aws_iam_policy" "controller_role_policy" {
           "ec2:DescribeInstanceTypes",
           "ec2:DescribeInstanceTypeOfferings",
           "ec2:DescribeAvailabilityZones",
-          "ssm:GetParameter",
-          "pricing:GetProducts",
           "ec2:DescribeSpotPriceHistory",
           "ec2:DescribeImages",
           "ec2:GetSpotPlacementScores",
+          "iam:PassRole",
+          "iam:CreateInstanceProfile",
+          "iam:TagInstanceProfile",
+          "iam:AddRoleToInstanceProfile",
+          "iam:RemoveRoleFromInstanceProfile",
+          "iam:DeleteInstanceProfile",
+          "iam:GetInstanceProfile",
+          "iam:ListInstanceProfiles",
+          "ssm:GetParameter",
+          "pricing:GetProducts",
           "eks:DescribeCluster"
         ],
         "Resource" : "*",

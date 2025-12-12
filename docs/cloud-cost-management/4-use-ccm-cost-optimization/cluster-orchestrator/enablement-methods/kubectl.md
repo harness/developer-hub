@@ -7,16 +7,29 @@ helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+<div style={{background: 'linear-gradient(90deg, #eafaf4, #f7fbf0)', borderRadius: '8px', padding: '16px', margin: '20px 0', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.03)', color: '#000000'}}>
+  <div style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}>
+    <div style={{fontSize: '20px', marginRight: '10px'}}>🚀</div>
+    <h3 style={{margin: 0, fontSize: '18px', fontWeight: 600, color: '#000000'}}>What's New?</h3>
+  </div>
+  <p style={{margin: 0, fontSize: '15px'}}>
+    <strong>Cluster Orchestrator now supports Karpenter `1.7.3` features</strong> Users must re-run the enablement script to add new permissions for Cluster Orchestrator related to Karpenter 1.7.3 and upgrade CRDs.
+  </p>
+</div>
+
 ## Before You Begin
 
 ### Prerequisites
 - [Harness Kubernetes connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
 - AWS CLI: 2.15.0 or higher
 
-### Compatibility
-- Kubernetes: v1.16 through v1.32
-- Karpenter: v1.1.0 through v1.2.4
+### Compatibility Matrix
 
+|Cluster Orchestrator Version| Kubernetes | Karpenter |
+|---|---|---|
+|Till `0.6.0`| 1.32 | 1.2.4|
+|`0.7.0`| 1.33 | 1.7.3|
 
 ## Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
 
