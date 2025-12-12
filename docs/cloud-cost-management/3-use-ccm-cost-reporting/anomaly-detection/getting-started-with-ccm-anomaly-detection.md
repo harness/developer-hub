@@ -93,7 +93,15 @@ Once an anomaly is detected, for each of the anomaly detected, CCM provides insi
 When you select an anomaly, you'll see:
 
     - Cloud account/cluster details (ID, service)
-    - Anomaly severity: [Low, Medium, High, Critical](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#q---how-are-anomaly-severity-levels-determined-and-what-do-they-mean)
+    - Anomaly severity: Low, Medium, High, Critical. We calculate this based on the following calculation:
+            - Cost Impact = Actual Cost - Expected Cost
+            - Cost Impact Percentage = ((Actual Cost - Expected Cost) / Expected Cost) × 100. 
+
+        The anomaly severity is assigned as:  
+            - **CRITICAL** if Cost Impact ≥ 5000 OR Cost Impact Percentage ≥ 100
+            - **MEDIUM** if Cost Impact ≥ 1000 OR Cost Impact Percentage ≥ 50
+            - **LOW** otherwise
+
     - Details:
         - **Start Date**: When the anomaly was first detected
         - **End Date**: When the anomaly period concluded
