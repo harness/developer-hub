@@ -27,6 +27,17 @@ import TabItem from '@theme/TabItem';
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
+
+<div style={{background: 'linear-gradient(90deg, #eafaf4, #f7fbf0)', borderRadius: '8px', padding: '16px', margin: '20px 0', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.03)', color: '#000000'}}>
+  <div style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}>
+    <div style={{fontSize: '20px', marginRight: '10px'}}>🚀</div>
+    <h3 style={{margin: 0, fontSize: '18px', fontWeight: 600, color: '#000000'}}>What's New?</h3>
+  </div>
+  <p style={{margin: 0, fontSize: '15px'}}>
+    <strong>Tag-based Selection for EC2 VMs:</strong> Now you can choose EC2 VMs for setting up rules using tags! Simply define tag keys and values, and all matching resources including newly created ones will automatically be included in your AutoStopping Rule.
+  </p>
+</div>
+
 <DynamicMarkdownSelector
   options={{
     Kubernetes: {

@@ -340,13 +340,21 @@ echo ">>> Setup complete."
 <details>
 <summary>EC2 VMs</summary>
 
+<DocImage path={require('../static/aws-ec.png')} width="100%" height="100%" title="Click to view full size image" />
+
 - Select **EC2 VMs** as the resource type
 - Choose the idle behavior: **Shut Down** or **Hibernate**
-- Add specific EC2 instances by name (must be in the same AWS region) and select the mode how you would like the resource to be handled once idle for the specified idle time:
-- Choose to **Convert to Spot Instances** or keep as On-Demand
+- Select the mode how you would like the resource to be handled once idle for the specified idle time: either Shut Down or Hibernate
+    - **Shut Down**: Completely shuts down the resources until it is brought up by a request. Higher Savings.
+    - **Hibernate**: Resources go into hibernate until it receives a request. Quicker warmup time.
+
+- Select EC2 instances manually or by Tag-based inclusion. For manual selection, choose the region and optionally apply tags. For Tag-based selection, specify tag keys and values. Any new resources that match your selected criteria will automatically be affected by Tag-based selection and will be added to the Rule.
 
 
-<DocImage path={require('../static/aws-ec.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../static/tag-based-aws.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- Choose to **Convert to Spot Instances** or keep as **On-Demand**
+
 
 </details>
 
