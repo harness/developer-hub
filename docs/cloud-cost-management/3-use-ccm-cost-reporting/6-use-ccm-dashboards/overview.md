@@ -15,6 +15,7 @@ redirect_from:
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-resource-breakdown-cost-dashboard
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/multi-cloud-cost-overview-dashboard
+    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/access-ccm-dashboards
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
