@@ -209,17 +209,17 @@ The following steps are common to all three entities (clusters, repositories, an
 
 When you have completed [setting up the cluster](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-3-add-a-harness-gitops-cluster), the cluster appears in the GitOps Cluster list.
 
-## Enable Harness Expression Resolution for BYOA
+## Enable Harness Expression Resolution for Existing Installations
 
 With a BYOA setup, you can enable the Harness ArgoCD plugin to use Harness secret expressions directly in your application manifests. This feature allows you to reference secrets stored in Harness (such as database passwords, API keys, etc.) within your Kubernetes manifests, and the expressions are resolved and decrypted during manifest rendering.
 
-For examples of using Harness secret expressions in your manifests, go to [Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications#harness-secret-expressions-in-application-manifests).
+For feature requirements, supported secret managers, and usage examples, go to [Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications#harness-secret-expressions-in-application-manifests).
 
-### Prerequisites
+:::note
 
-- An existing GitOps agent installed with your Argo CD instance (BYOA setup)
-- Access to modify the Argo CD configuration in your cluster
-- The feature flag `CDS_GITOPS_SECRET_RESOLUTION_ENABLED` enabled (contact [Harness Support](mailto:support@harness.io))
+For existing Agent installations (BYOA or Harness-installed Argo), the **Enable ArgoCD Harness Plugin** checkbox cannot be changed after the initial installation. You must configure the Harness ArgoCD plugin by running a patch script on your existing Argo CD installation using the instructions below.
+
+:::
 
 ### For Helm Chart installations
 
