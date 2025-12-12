@@ -102,16 +102,6 @@ In your stage **Environment**, in **Specify Infrastructure**, you select an infr
 
 Within the same resource group, you can't mix Windows and Linux apps in the same region. See [Limitations](https://docs.microsoft.com/en-us/azure/app-service/overview#limitations) from Azure.
 
-:::info note
-In the deploy steps under Container Configuration, specify the appropriate image based on your container registry:
-
-1. [Docker Image for Azure Function Plugin](https://hub.docker.com/r/harness/azure-function-plugin/tags)
-2. [ECR Image for Azure Function Plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
-3. GAR Images for Azure Function Plugin:
-   - Europe region: [GAR Image Repository for Azure Function Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fazure-function-plugin?inv=1&invt=Ab5cNA)
-
-:::
-
 ## Azure function Deploy
 
 In the execution tab of the pipeline stage, select **Add Step** and select **Azure function Deploy**.
@@ -137,7 +127,18 @@ The Azure function Deploy step has the following settings:
  * **Name:** Enter a name for the step.
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
  * **Container Registry**: Specify the connector that connects to the azure infrastructure and container registry you wish to use.
- * **Image**: Specify the artifact image you want to run. 
+ * **Image**: Specify the artifact image you want to run. For example, use [`harness/azure-function-plugin:1.0.24-linux-amd64`](https://hub.docker.com/r/harness/azure-function-plugin/tags). You can refer to the latest available images from the linked registry.
+
+:::info note
+In the deploy steps under Container Configuration, specify the appropriate image based on your container registry:
+
+1. [Docker Image for Azure Function Plugin](https://hub.docker.com/r/harness/azure-function-plugin/tags)
+2. [ECR Image for Azure Function Plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
+3. GAR Images for Azure Function Plugin:
+   - Europe region: [GAR Image Repository for Azure Function Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fazure-function-plugin?inv=1&invt=Ab5cNA)
+
+::: 
+
  * **Function app**: Specify the Azure Container to be used.
  * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Azure Function version. Make sure the slot you enter is running.
 
@@ -163,7 +164,7 @@ The Azure Function Rollback step has the following settings:
  * **Name:** Enter a name for the step.
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
  * **Azure Connector**: Specify the connector that connects to the azure infrastructure.
- * **Image**: Specify the artifact image you want to deploy.
+ * **Image**: Specify the artifact image you want to deploy. For example, use [`harness/azure-function-plugin:1.0.24-linux-amd64`](https://hub.docker.com/r/harness/azure-function-plugin/tags). You can refer to the latest available images from the linked registry.
 
 Additionally you can have optional configurations such as 
 
