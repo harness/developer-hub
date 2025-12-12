@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-12-10T10:00:00
+date: 2025-12-11T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,7 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: December 10, 2025
+#### Last updated: December 11, 2025
 
 ## December 2025
 
@@ -41,9 +41,9 @@ With this enhancement, you can:
 ----
 #### 2025-11-21
 
-The Metric Alert Webhook enables teams to automatically forward metric alert notifications (including [alert policy degradations](/docs/feature-management-experimentation/release-monitoring/alerts/#determine-an-alert-mechanism), [key metric significance](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/?metric-alert-type=key), and [guardrail significance alerts](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/?metric-alert-type=guardrail)) to any external system through a configurable HTTP POST webhook. This webhook enables real-time automation and enables a tighter integration with your incident management, analytics, and CI/CD tools. 
+The Metric Alert Webhook enables teams to automatically forward metric alert notifications (including [alert policy degradations](/docs/feature-management-experimentation/release-monitoring/alerts/#determine-an-alert-mechanism), [key metric significance](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/?metric-alert-type=key), and [guardrail significance alerts](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/?metric-alert-type=guardrail)) to any external system through a configurable HTTP POST webhook. This webhook supports experiment and feature flag alerts, enabling real-time automation and integration with your incident management, analytics, and CI/CD tools. 
 
-![](./static/fme/metric-alert-webhook.png)
+![](./static/fme/metric-alert-webhook-1.png)
 
 With this webhook, you can:
 
@@ -52,7 +52,7 @@ With this webhook, you can:
 - Filter alerts by environment and type, providing teams fine-grained control over what's sent
 - Use a consistent webhook payload schema shared across other Harness FME webhooks (impressions, audit logs, and admin audit logs)
 
-This integration enables product, experimentation, and DevOps teams to automate responses to experiment alerts and maintain greater visibility across systems.
+This integration enables product, experimentation, and DevOps teams to automate responses to experiment and feature flag alerts and maintain greater visibility across systems.
 
 #### Related documentation
 

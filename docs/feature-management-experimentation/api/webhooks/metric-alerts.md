@@ -9,7 +9,7 @@ Use the Metric Alert webhook to automatically send Harness FME [metric significa
 
 Whenever a metric alert or significance event is triggered in Harness FME, a JSON payload is sent as an HTTP `POST` to the configured webhook URL. You can filter alerts by environment and alert type to control which notifications are delivered.
 
-You can use metric alert webhooks to automate the ingestion of [alerts](/docs/feature-management-experimentation/release-monitoring/alerts/) across your systems. For example:
+You can use metric alert webhooks to automate the ingestion of [experiment and feature flag alerts](/docs/feature-management-experimentation/release-monitoring/alerts/) across your systems. For example:
 
 - **PagerDuty**: automatically trigger an incident when a guardrail metric degrades.
 - **Slack**: Notify experiment owners when a key metric reaches statistical significance.
@@ -33,9 +33,10 @@ When a [metric alert](/docs/feature-management-experimentation/release-monitorin
   "firedAtMs": "number",        // Unix epoch date (ms) when the webhook was fired
   "integrationId": "string",    // ID of the metric alert webhook integration
   "source": {
-    "id": "string",
+    "id": "string", // Feature flag or experiment ID
+    "name": "string", // Feature flag or experiment name
     "type": "FEATURE_FLAG | EXPERIMENT",
-    "url": "string"
+    "url": "string" // Feature flag or experiment URL
   },
   "data": {
     "alertType": "ALERT_POLICY | SIGNIFICANCE",
@@ -87,14 +88,16 @@ To configure the metric alert webhook:
 
 1. Select one or more environments in Harness FME from which alerts should be sent from under **Environments**.
 
-   ![](../static/alert-webhook-2.png)
+   ![](../static/alert-webhook-3.png)
 
-1. Select the type of metric alert that should trigger webhook delivery:
+1. Select the type of [metric alert](/docs/feature-management-experimentation/release-monitoring/metrics/setup/metric-alert-policy/) that should trigger webhook delivery:
 
    * **All alert policies**
      * **Metric alert policies** 
      * **Key metric significance** 
      * **Guardrail metric significance**
+
+   These alert-type selections apply to experiment alerts and feature flag alerts.
 
 1. Enter the webhook URL where `POST` requests should be sent when an alert fires. You can click **Send Test Message** to verify the configuration.
 1. Click **Save** to create the webhook.
