@@ -55,6 +55,16 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## December 2025
 
+### Version 1.120.1
+
+
+#### Fixed Issues
+
+- Fixed an issue where the error message displayed during environment branch selection in service overrides was misleading when using InputSet triggers. The error message has been improved to provide clearer guidance on the actual issue. This feature is behind the feature flag `PIPE_USE_ENV_REF_BRANCH_IN_SERVICE_OVERRIDE_FOR_INPUTSET_TRIGGER`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-113820, ZD-89141**)
+- Fixed an issue where policy evaluation displayed *No Policy Set Description* even when the referenced PolicySet had a proper description, specifically when enforcement was applied at the service level. The description is now correctly included in the response for CD entities. (**CDS-116824, ZD-97171**)
+- Fixed an issue where the Microsoft Teams approval notification link was malformed due to improper special character handling. The notification URL generation has been corrected to ensure approval links work properly in MS Teams. (**CDS-116863, ZD-97579, ZD-98879**)
+- Fixed an issue where post-production rollback failed when selecting an environment from the pipeline execution page. The rollback workflow now correctly handles environment selection during the post-production rollback process. (**CDS-117023, ZD-98881**)
+
 ### Version 1.119.4
 
 #### Fixed Issues
