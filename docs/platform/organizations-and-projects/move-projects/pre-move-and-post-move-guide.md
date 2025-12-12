@@ -31,12 +31,6 @@ This list covers common issues but is not exhaustive. Additional organization-le
     - [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining) will fail if the child pipeline’s project is moved.
     - Any pipelines running in the project will fail when the move operation begins. It’s recommended to complete all pipeline executions before initiating the project move.
 
-        :::warning Pipelines using Terraform will be impacted
-        The pipelines running between the Terraform Plan step and the Terraform Apply/Destroy step, the pipeline may not be able to access the files generated during the Plan step, such as the [inherited plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#review-terraform-plan-and-apply-steps), [exported JSON of plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#export-json-representation-of-terraform-plan), or [exported human-readable of plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#export-human-readable-representation-of-terraform-plan). This will cause the pipeline to fail.
-
-        To prevent issues, allow the pipeline to finish or rerun it after the project movement is complete.
-        :::
-
 2. Notifications:
     - If a notification rule uses a channel from the organization, the reference will break after the move.
     - Email notification channels using organization-level user groups will stop working.
@@ -86,6 +80,12 @@ After a project is moved, ensure to review the following resources. Note that th
     - Recreate organization-level templates in the destination organization.
     - Update YAML entities with hardcoded `orgIdentifier` references to match the new organization.
     - Fix pipeline chaining references if child pipelines were also moved.
+
+        :::warning Pipelines using Terraform will be impacted
+        In case of pipeline failure, re-run it to ensure it works as expected. Failure can occur if the pipeline is running execution between the Terraform Plan step and the Terraform Apply/Destroy step and is unable to access files generated in the Terraform plan step. These files include the [inherited plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#review-terraform-plan-and-apply-steps), [exported JSON plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#export-json-representation-of-terraform-plan), or [exported human-readable plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#export-human-readable-representation-of-terraform-plan)
+
+        The same behavior applies to Terragrunt, but Terragrunt does not use the exported JSON plan or the exported human-readable plan.
+        :::
 
 2. Connectors and Secrets: Recreate organization-level connectors and secrets in the new organization if required.
 
