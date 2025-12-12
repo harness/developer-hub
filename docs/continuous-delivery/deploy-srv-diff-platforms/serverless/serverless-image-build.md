@@ -26,7 +26,7 @@ Common Serverless runtimes include:
 - **Node.js**: Versions like nodejs18.x, nodejs20.x, nodejs22.x
 - **Python**: Versions like python3.11, python3.12
 - **Java**: Versions like java8, java17, java21
-- **Ruby**: Version like ruby2.7, ruby3.2
+- **Ruby**: Versions like ruby2.7, ruby3.2
 
 When you build your image using the Harness pipeline, you combine the Harness Serverless plugin (which provides the integration with Harness CD) with a specific runtime image from AWS. This allows you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
 
@@ -114,7 +114,7 @@ Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gal
 - Only x86_64 architecture images are supported
 - Using different base images may cause library dependency issues
 - Non-standard base images may cause the plugin not to function as required
-- You must use the final image at the sep level of your serverless deployment. This plugin cannot be used in [Plugin info](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) at the service level, as this setting at the service level fetches only from the Harness official Dockerhub repository.
+- You must use the final image at the step level of your serverless deployment. This plugin cannot be used in [Plugin info](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) at the service level, as this setting at the service level fetches only from the Harness official Dockerhub repository.
 
 #### Image Configuration
 
@@ -124,13 +124,11 @@ The pipeline produces two types of images with the following naming patterns:
 
 `${RUNTIME_NAME}-${VERSION}-linux-amd64`
 
-text
 Example: `java21-1.1.0-beta-linux-amd64`
 
 2. **Serverless Image** (with Serverless Framework installed):
 `${RUNTIME_NAME}-${SERVERLESS_VERSION}-${VERSION}-linux-amd64`
 
-text
 Example: `java21-3.39.0-1.1.0-beta-linux-amd64`
 
 Where:  
@@ -179,7 +177,6 @@ First, pull both images locally:
 docker pull public.ecr.aws/sam/build-java21:1.140.0-20250605234711-x86_64
 docker pull public.ecr.aws/sam/build-nodejs22.x:1.140.0-20250605234713-x86_64
 ```
-text
 
 #### Step 2: Check C++ Library Compatibility
 
@@ -188,7 +185,6 @@ Check that both images have the same version of `libstdc++.so`:
 docker run --rm public.ecr.aws/sam/build-java21:1.140.0-20250605234711-x86_64 ls -l /lib64/libstdc++.so.6*
 docker run --rm public.ecr.aws/sam/build-nodejs22.x:1.140.0-20250605234713-x86_64 ls -l /lib64/libstdc++.so.6*
 ```
-text
 
 They are compatible if both images show the same version (e.g., `libstdc++.so.6.0.33`).
 
