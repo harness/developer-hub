@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-12-03T18:00
+date: 2025-12-12T18:00
 sidebar_position: 6
 ---
 
@@ -24,6 +24,21 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+
+## December 2025 - Version 1.73.5
+#### Deployment Date: December 12, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Enhanced Rule Management**: Improved rule update logic to prevent unnecessary exceptions when updating existing rules with the same name. The system now verifies if the rule being updated is the same as the existing one before throwing any exceptions. [CCM-27875]
+
+- **CSV Export for Anomalies**: Added comprehensive CSV export functionality for Anomalies, matching the existing Recommendations export capability. Users can now export detailed anomaly data including Anomaly Link, Start/End Dates, Duration, Criticality, Resource Information, Cloud Provider, Financial Metrics (Total/Expected/Anomalous Spend), Status Details, and Ongoing Anomaly indicators. [CCM-27889]
+
+- **Accurate Budget Reporting**: Refined budget spend calculations to show true costs-to-date by excluding future pre-allocated costs. This provides more accurate and actionable "Spend till date" values for better financial planning. [CCM-27253]
+
+- **Enhanced Governance Exports**: Extended CSV export functionality for Governance recommendations to include Action Type and Evaluated At columns, providing more comprehensive compliance reporting. [CCM-26912]
+
+- **Perspective Cloning**: Implemented perspective cloning capability, allowing users to create copies of existing perspectives with custom names and save them to their preferred destination folders. [CCM-25667]
 
 
 ## December 2025 - Cluster Orchestrator Release - `0.7.0`
