@@ -35,12 +35,12 @@ Review the notes below for details about recent changes to Harness Internal Deve
 ### [New Feature] Large File Upload Support in IDP Workflows
 **[Docs](/docs/internal-developer-portal/flows/create-workflow/flows-input#upload-a-file-using-workflows)**
 
-IDP Workflows now support uploading files up to **16MB** in size. This enhancement allows you to upload larger configuration files, datasets, or other resources that your workflows may need to process.
+IDP Workflows now support uploading files up to **3MB** in size. This enhancement allows you to upload larger configuration files, datasets, or other resources that your workflows may need to process.
 
 Key benefits:
-* Upload configuration files, JSON/YAML datasets, and scripts up to 16MB
+* Upload configuration files, JSON/YAML datasets, and scripts up to 3MB
 * Process larger files directly within your workflows
-* Files larger than 16MB will be rejected by the system with clear error messaging
+* Files larger than 3MB will be rejected by the system with clear error messaging
 
 > Learn more about [File Upload in Workflows](/docs/internal-developer-portal/flows/create-workflow/flows-input#upload-a-file-using-workflows).
 
