@@ -323,6 +323,110 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
       helm upgrade -i harness harness/harness -f override-prod.yaml -f bitnami-migration.yaml
       ```
 :::
+## December 15, 2025, Version 0.34.2 
+
+This release includes the following Harness module and component versions.
+
+| **Name**                     | **Version**                                                                                  |
+|------------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                   | [0.34.2](https://github.com/harness/helm-charts/releases/tag/harness-0.34.2)                 |
+| Air Gap Bundle               | [0.34.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.34.2) |
+| Access Control               | 1.124.0                                                                                      |
+| Anomaly Detection            | 1.15.0                                                                                       |
+| Audit Event Streaming        | 1.57.0                                                                                       |
+| Batch Processing             | 1.64.6                                                                                       |
+| Bootstrap                    | 1.55.1                                                                                       |
+| CE Nextgen                   | 1.67.7                                                                                       |
+| Change Data Capture          | 1.48.0                                                                                       |
+| Chaos CRD                    | 1.66.1                                                                                       |
+| Chaos K8s IFS                | 1.66.3                                                                                       |
+| Chaos Linux IFC              | 1.66.1                                                                                       |
+| Chaos Linux IFS              | 1.66.1                                                                                       |
+| Chaos Manager                | 1.66.13                                                                                      |
+| Chaos Machine IFS            | 1.66.0                                                                                       |
+| Chaos Machine IFC            | 1.66.0                                                                                       |
+| Chaos Web                    | 1.66.7                                                                                       |
+| CI Manager                   | 1.103.3                                                                                       |
+| Cloud Info                   | 1.12.0                                                                                       |
+| CV Nextgen                   | 1.48.2                                                                                       |
+| DB Devops Service            | 1.61.3                                                                                       |
+| Debezium Service             | 1.21.7                                                                                       |
+| Delegate Proxy               | 1.4.0                                                                                        |
+| Delegate Version (Immutable) | 25.10.86901                                                                                  |
+| Event Service                | 1.12.4                                                                                       |
+| Feature Flag Pushpin Service | 1.1125.0                                                                                     |
+| Feature Flag Service         | 1.1139.0                                                                                     |
+| Gateway Service              | 1.58.0                                                                                       |
+| GitOps Service               | 1.43.1                                                                                       |
+| Harness Manager              | 1.111.1                                                                                      |
+| LE Nextgen                   | 1.10.0                                                                                       |
+| Log Service                  | 1.29.5                                                                                       |
+| Looker                       | 1.8.6                                                                                      |
+| Next Gen UI                  | 1.98.1                                                                                       |
+| NG Auth UI                   | 1.36.2                                                                                       |
+| NG CE UI                     | 1.63.1                                                                                       |
+| NG Custom Dashboards         | 1.87.1                                                                                       |
+| NG Dashboard Aggregator      | 1.76.0                                                                                       |
+| NG Manager                   | 1.112.4                                                                                      |
+| Pipeline Service             | 1.152.4                                                                                      |
+| Platform Service             | 1.90.3                                                                                       |
+| Policy Management            | 1.28.1                                                                                       |
+| SCM Service                  | 1.40.2                                                                                       |
+| Service Discovery Manager    | 0.46.0                                                                                       |
+| SRM UI                       | 1.13.1                                                                                       |
+| SSCA Manager                 | 1.43.7                                                                                       |
+| SSCA UI                      | 0.34.1                                                                                       |
+| STO Core                     | 1.163.3                                                                                      |
+| STO Manager                  | 1.71.0                                                                                       |
+| Telescopes                   | 1.4.0                                                                                        |
+| Template Service             | 1.114.1                                                                                      |
+| Test Intelligence Service    | 1.49.0                                                                                       |
+| Queue Service                | 1.7.4                                                                                        |
+| Code API                     | 1.61.4                                                                                       |
+| Code GitRPC                  | 1.61.0                                                                                       |
+| Code GitHA                   | 1.61.0                                                                                       |
+| Code Search                  | 1.61.0                                                                                       |
+| IAC Server                   | 1.258.2                                                                                      |
+| IACM Manager                 | 1.109.0                                                                                      |
+| IDP Service                  | 1.32.11                                                                                      |
+| IDP Admin                    | 1.32.3                                                                                       |
+| IDP App UI                   | 1.31.9                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.34.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.34.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.34.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.34.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.34.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.34.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.34.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.34.2/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.34.2/iacm_images.tgz" \
+  .
+```
+
+### New Features and Enhancements
+
+#### Cloud Cost Management
+
+- Update logic to handle Discounts in AWS Clickhouse Explore in the same way they are done in Unified Clickhouse Explore to maintain consistency. [CCM-26772]
+- Added measure for Unified Cost. This measure will provide the total of Cluster Cost and AWS Amortized Cost. [CCM-27906]
+    <DocImage path={require('./static/ccm/unified-cost-measure.png')} width="90%" height="90%" title="Click to view full size image" />
+
+- Added new measures for unused RI distribution [CCM-26838]
+  - AWS Reservation ARN : Unique ID for an ARN purchase and consumption.
+  - AWS RI Chargeback Cost : This represents the proportional share of the unused recurring fee based on this row's consumption relative to total RI consumption.
+  - AWS Cost After RI Chargeback : The effective costs after adding the RI chargeback allocation.
+      <DocImage path={require('./static/ccm/unused-ri-measures.png')} width="90%" height="90%" title="Click to view full size image" />
+
+- We have added query optimisations on the ingestion pipeline to reduce the number of rows in the unifiedTable. This will provide us performance boost of upto 20x. This means faster Dashboard and perspective load times. [CCM-27923]
+- Fixed a bug where cost categories were not showing up in custom dashboards. [CCM-25742]
+- Implement changes to ingest new column reservationarn from the CUR report to the unifiedTable. This is necessary to support Unused RI feature in Custom Dashboards. [CCM-28142]
 
 ## November 17, 2025, Version 0.34.1 
 
