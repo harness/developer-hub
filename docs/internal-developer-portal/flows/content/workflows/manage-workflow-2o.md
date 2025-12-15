@@ -194,6 +194,23 @@ You can cancel a running Workflow at any time by clicking the **"Cancel Run"** b
 
 ---
 
+### Rerun Failed Workflows
+
+When a Workflow execution fails at a specific stage in the pipeline, you can retry the execution from the failed stage instead of starting from scratch. This saves time and resources by resuming the Workflow from where it failed.
+
+**How to rerun a failed Workflow:**
+
+1. Navigate to the **Workflow execution view** of the failed run.
+2. In the **Actions** tab, identify the failed pipeline stage.
+3. Click the **Retry** button from the side three dots menu to trigger the pipeline with a retry from the failed stage.
+4. The Workflow will resume execution from the point of failure, skipping any previously successful stages.
+
+![](../../static/rerun-workflow.png)
+
+This feature is particularly useful for workflows that encounter temporary issues (e.g., network failures, transient API errors) or when you need to make quick fixes and rerun without repeating the entire workflow process.
+
+---
+
 ### Edit Workflows
 1. Go to the **Workflows** page.  
 2. Click the three-dot menu on the Workflow you want to edit.  

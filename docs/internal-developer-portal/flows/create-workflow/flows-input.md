@@ -55,6 +55,30 @@ parameters:
     - **`enum`**: A list of predefined options the user can choose from, useful for fields like deployment environments (e.g., dev, staging, production).  
     - **`ui:widget`**: Specifies the UI element used for input (e.g., text field, dropdown).  
 
+## Customizing Workflow Header and Button Text
+
+You can customize the workflow's header title, subtitle, and the create button text to provide a more personalized and context-specific experience for users. This is done using the `spec.presentation` property in your `workflow.yaml`.
+
+### YAML Syntax
+
+```YAML
+spec:
+  presentation:
+    customTitle: Deploy Your Application
+    customSubTitle: Deploy Your Application to AWS/Azure/GCP
+    customCreateButtonText: Deploy Now
+```
+
+### Configuration Options
+
+- **`customTitle`**: Customizes the main title/header displayed at the top of the workflow form. This replaces the default workflow title.
+- **`customSubTitle`**: Adds a descriptive subtitle below the main title to provide additional context about the workflow's purpose.
+- **`customCreateButtonText`**: Changes the text on the workflow creation/execution button (e.g., from the default "Create" to "Deploy Now", "Launch", "Submit", etc.).
+
+These customizations help make your workflows more user-friendly and aligned with your specific use case terminology.
+
+![](../static/workflow-cta.png)
+
 ## Input Types
 Here are the different ways to design form inputs in IDP workflows:
 
@@ -1502,6 +1526,10 @@ There are 3 types of file upload.
 1. Single File: There are two formats available `data-url` and `file`. 
 2. Multiple Files: Multiple files selectors are supported by defining an `array` of strings having `data-url` as a format. 
 3. Single File with Accept Attribute: You can use the `accept` attribute to specify a filter for what file types the user can upload.
+
+#### Large File Upload Support
+
+IDP Workflows support uploading files up to **16MB** in size. This allows you to upload larger configuration files, datasets, or other resources that your workflow may need to process. Files larger than 16MB cannot be uploaded and will be rejected by the system.
 
 <details>
 <summary>Example YAML</summary>

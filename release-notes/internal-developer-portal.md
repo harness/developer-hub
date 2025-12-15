@@ -24,9 +24,89 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.11.v1](/release-notes/internal-developer-portal#october---202510v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
-| [2025.10.v1](/release-notes/internal-developer-portal#september---202509v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
-| [2025.09.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         | ✅         | ✅          | ✅            |
+| [2025.12.v1](/release-notes/internal-developer-portal#december---202512v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
+| [2025.11.v1](/release-notes/internal-developer-portal#november---202511v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
+| [2025.10.v1](/release-notes/internal-developer-portal#october---202510v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
+
+## December - [2025.12.v1]
+
+---
+
+### [New Feature] Large File Upload Support in IDP Workflows
+**[Docs](/docs/internal-developer-portal/flows/create-workflow/flows-input#upload-a-file-using-workflows)**
+
+IDP Workflows now support uploading files up to **16MB** in size. This enhancement allows you to upload larger configuration files, datasets, or other resources that your workflows may need to process.
+
+Key benefits:
+* Upload configuration files, JSON/YAML datasets, and scripts up to 16MB
+* Process larger files directly within your workflows
+* Files larger than 16MB will be rejected by the system with clear error messaging
+
+> Learn more about [File Upload in Workflows](/docs/internal-developer-portal/flows/create-workflow/flows-input#upload-a-file-using-workflows).
+
+---
+
+### [New Feature] Customizable Workflow Headers and Button Text
+**[Docs](/docs/internal-developer-portal/flows/create-workflow/flows-input#customizing-workflow-header-and-button-text)**
+
+You can now customize the workflow's header title, subtitle, and create button text to provide a more personalized and context-specific experience for users. This is achieved using the `spec.presentation` property in your workflow YAML.
+
+Customization options:
+* **customTitle**: Customize the main title/header displayed at the top of the workflow form
+* **customSubTitle**: Add a descriptive subtitle to provide additional context about the workflow's purpose
+* **customCreateButtonText**: Change the text on the workflow creation button (e.g., "Deploy Now", "Launch", "Submit")
+
+These customizations help make your workflows more user-friendly and aligned with your specific use case terminology.
+
+> Learn more about [Customizing Workflow Headers](/docs/internal-developer-portal/flows/create-workflow/flows-input#customizing-workflow-header-and-button-text).
+
+![](./static/internal-developer-portal/workflow-cta.png)
+
+---
+
+### [New Feature] Rerun Workflows from Failed Stages
+**[Docs](/docs/internal-developer-portal/flows/manage-workflow-2o#rerun-failed-workflows)**
+
+
+When a workflow execution fails at a specific stage in the pipeline, you can now retry the execution from the failed stage instead of starting from scratch. This saves time and resources by resuming the workflow from where it failed.
+
+Key capabilities:
+* **Resume from failure point**: Workflow resumes execution from the failed stage, skipping previously successful stages
+* **Easy retry action**: Simply click the Retry button from the three-dot menu in the Actions tab
+* **Time and resource savings**: Avoid repeating the entire workflow process
+
+This feature is particularly useful for workflows that encounter temporary issues (e.g., network failures, transient API errors) or when you need to make quick fixes and rerun without repeating the entire workflow process.
+
+![](./static/internal-developer-portal/rerun-workflow.png)
+
+> Learn more about [Rerunning Failed Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o#rerun-failed-workflows).
+
+---
+
+### [New Feature] RBAC for Environment Management
+**[Docs](/docs/internal-developer-portal/environment-management/overview#rbac-for-environment-management)**
+
+Harness IDP now provides granular Role-Based Access Control (RBAC) for environment management, allowing you to control access to environment blueprints and environments. The RBAC model follows the Harness platform hierarchy with different scopes.
+
+This separation allows platform teams to define reusable environment templates at the account level while giving development teams the flexibility to create and manage their own environments at the project level.
+
+> Learn more about [RBAC for Environment Management](/docs/internal-developer-portal/environment-management/overview#rbac-for-environment-management).
+
+---
+
+### [Enhancement] Advanced Object Response Handling in Dynamic Workflow Picker
+**[Docs](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#handling-object-responses)**
+
+The Dynamic Workflow Picker now supports enhanced parsing capabilities for complex API responses, making it easier to work with nested objects and arrays. You can now use advanced filters to extract and display data from various response formats.
+
+Use cases:
+* Display service names to users while storing service IDs for pipeline execution
+* Parse deeply nested API responses with multiple levels of object hierarchy
+* Create user-friendly dropdowns from complex data structures
+
+> Learn more about [Handling Object Responses in Dynamic Picker](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#handling-object-responses).
+
+---
 
 ## November - [2025.11.v1]
 
