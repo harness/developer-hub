@@ -44,6 +44,7 @@ For `ExportRequestDTO`:
 
 ```json
 {
+  "collectionId": "123",
   "dateStart": "2024-01-01",
   "dateEnd": "2024-12-31",
   "teamRefId": 123,
@@ -62,12 +63,19 @@ For `ExportRequestDTO`:
 
 | Field          | Type                   | Required | Description                                                                      |
 | -------------- | ---------------------- | -------- | -------------------------------------------------------------------------------- |
+| `collectionId` | `String`                 | Yes      | Identifier for the team of developers. If your in-app URL contains `?insightType=productivity&collectionId=6036`, then the `collectionId` is `6036`.                                           |
 | `dateStart`    | `Date (yyyy-MM-dd)`      | Yes      | Start date for the report period.                                                 |
 | `dateEnd`      | `Date (yyyy-MM-dd)`      | Yes      | End date for the report period.                                                   |
-| `teamRefId`    | `Number`                 | No       | Team identifier. CSV will include this team and all child teams under it.        |
-| `granularity`  | `String`                 | No       | Time unit for rate-based metrics (daily, weekly, monthly). Defaults to `weekly`. |
+| `granularity`  | `String`                 | Yes      | Time unit for rate-based metrics (daily, weekly, monthly).                       |
+| `teamRefId`    | `Number`                 | No       | Team identifier. CSV will include this team and all child teams under it.         |
 | `productivity` | `ProductivityRequestDto` | No       | Productivity metrics configuration.                                               |
 | `efficiency`   | `EfficiencyRequestDto`   | No       | Efficiency metrics configuration.                                                 |
+
+:::tip 
+`teamRefId` and `collectionId` refer to the same underlying team/collection identifier. Use the same value for both fields when exporting by team. 
+
+To find your collection ID in Harness SEI, navigate to any team in the Org Tree on the **Insights** page, look at the page URL, and copy the value after `collectionId=`.
+:::
 
 ### Granularity
 
@@ -82,7 +90,7 @@ Metrics affected by granularity include the following:
 Common granularity values include the following:
 
 - `daily`: Metrics calculated per day.
-- `weekly` (default): Metrics calculated per week.
+- `weekly`: Metrics calculated per week.
 - `monthly`: Metrics calculated per month.
 
 :::info
@@ -143,16 +151,6 @@ The following calculation types are available:
 | `P90` (90th Percentile) | 90% of metric values fall below this threshold. Highlights performance of top performers. <br /><br /> Useful for identifying best-case scenarios. Helps set aspirational targets. |
 | `P95` (95th Percentile) | 95% of metric values fall below this threshold. Focuses on exceptional performance. <br /><br /> Useful for capacity planning and SLA definitions. Helps identify peak performance patterns. |
 
-### Contributor ratings
-
-If you set `"includeRatings": true`, the CSV file includes rating columns for applicable metrics. Ratings appear only for metrics where performance tiers exist and reflect developer-specific data, not the team's aggregated value.
-
-For example: 
-
-| Collection Name     | Lead Time for Changes (mean) | Lead Time for Changes Rating | Deployment Frequency | Deployment Frequency Rating | Mean Time to Restore (mean) | Mean Time to Restore Rating |
-| ------------------- | ---------------------------- | ---------------------------- | -------------------- | --------------------------- | --------------------------- | --------------------------- |
-| Parent Team        | 15.53                        | Medium                       | 0                    | —                           | 45.97                       | Low                         |
-
 ## Response format
 
 ### Success Response (200 OK)
@@ -206,10 +204,10 @@ For `ContributorExportRequestDTO`:
 
 | Field                      | Type                       | Required | Description                                            |
 | -------------------------- | -------------------------- | -------- | ------------------------------------------------------ |
-| `collectionId`             | `String`                   | Yes      | Identifier for the team of developers.                 |
+| `collectionId`             | `String`                   | Yes      | Identifier for the team of developers. If your in-app URL contains `?insightType=productivity&collectionId=6036`, then the `collectionId` is `6036`.               |
 | `dateStart`                | `Date (yyyy-MM-dd)`        | Yes      | Start date for the report period.                      |
 | `dateEnd`                  | `Date (yyyy-MM-dd)`        | Yes      | End date for the report period.                        |
-| `granularity`              | `String`                   | No       | Time unit for rate-based metrics.                      |
+| `granularity`              | `String`                   | Yes      | Time unit for rate-based metrics.                      |
 | `includeRatings`           | `Boolean`                  | No       | Whether to include developer rating summaries.         |
 | `productivityContributors` | `ContributorMetricsConfig` | Yes      | Metrics to include in the developer export.            |
 
@@ -226,7 +224,7 @@ Team-level metrics affected by granularity include the following:
 Common granularity values include the following:
 
 - `daily`: Metrics calculated per day.
-- `weekly` (default): Metrics calculated per week.
+- `weekly`: Metrics calculated per week.
 - `monthly`: Metrics calculated per month.
 
 ### Nested objects
@@ -260,6 +258,16 @@ The following Productivity metrics are available:
 | `NUMBER_OF_COMMENTS_PER_PR`      | Review Intensity         | Count                                                                   | Average number of review comments per PR.<br /><br />Indicates review depth or PR complexity.                                                                                                            |
 | `AVG_TIME_TO_COMPLETE`           | Average Time to Complete | Days                                                                    | Time from work start to completion.<br /><br />Higher values may indicate delays or larger tasks.                                                                                                        |
 | `NO_OF_PRS_WITH_MISSING_TICKETS` | PR Hygiene               | Count                                                                   | Number of pull requests missing linked work items.<br /><br />Useful for tracking process adherence and hygiene issues.                                                                                  |
+
+### Contributor ratings
+
+If you set `"includeRatings": true`, the CSV file includes rating columns for applicable metrics. Ratings appear only for metrics where performance tiers exist and reflect developer-specific data, not the team's aggregated value.
+
+For example: 
+
+| Collection Name     | Lead Time for Changes (mean) | Lead Time for Changes Rating | Deployment Frequency | Deployment Frequency Rating | Mean Time to Restore (mean) | Mean Time to Restore Rating |
+| ------------------- | ---------------------------- | ---------------------------- | -------------------- | --------------------------- | --------------------------- | --------------------------- |
+| Parent Team        | 15.53                        | Medium                       | 0                    | —                           | 45.97                       | Low                         |
 
 ## Response format
 
@@ -345,3 +353,14 @@ When the `metrics` array is empty, all available metrics for that category will 
 - **Metric Names:** Metric names are case-insensitive (e.g., `lead_time_for_changes` or `LEAD_TIME_FOR_CHANGES` both work).
 - **Empty Metrics Array:** If the `metrics` array is empty or not provided, all available metrics for that category will be exported.
 - **Default Calculation Type:** If `calculationType` is not specified for Efficiency metrics, it defaults to `MEAN`.
+
+## Troubleshooting
+
+<details>
+<summary>Why does exporting Productivity metrics for the entire org sometimes time out?</summary>
+
+Exporting Productivity metrics for the entire org from the root node can time out due to the size of large org trees (same limitation as the UI). 
+
+To avoid timeouts when exporting, export at the team or group-level instead of requesting the entire org tree at once. Optionally, split large exports into multiple, smaller team-specific API calls.
+
+</details>
