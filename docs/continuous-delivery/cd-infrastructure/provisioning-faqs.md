@@ -11,9 +11,15 @@ This article addresses some frequently asked questions about Harness provisionin
 Harness has first-class support for Terraform, Terragrunt, AWS CloudFormation, Azure ARM, and Blueprint provisioners, but to support different provisioners, or your existing shell script implementations, Harness includes Shell Script provisioning.
 More details here [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning).
 
+### Does Harness support Database Orchestration?
+
+Yes, Harness supports Database Orchestration with Database DevOps. You can use Database DevOps to orchestrate database changes alongside your application deployments. With Database DevOps, you can create pipelines that include steps for deploying database changes which are similar Liquibase and Flyway, as well as custom SQL scripts. This allows you to manage database changes in a controlled and automated manner, ensuring that your database schema is always in sync with your application code.
+
+More details can be found here for our [Database DevOps](/docs/database-devops/overview) module.
+
 ### Does Harness support Cosmos DB?
 
-Harness doesn’t do database orchestration out of the box today. To orchestrate the SQL Changes to the database, you need to customize our functionality using the following:
+To orchestrate the SQL Changes to the database, you need to customize our functionality using the following:
 
 - [Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step)
 - [Container step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) 
