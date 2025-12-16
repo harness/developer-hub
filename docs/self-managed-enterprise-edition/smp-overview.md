@@ -7,6 +7,7 @@ sidebar_position: 1
 
 import SmpRefArc from './static/customer-reference-architecture.jpg'
 import SmpOverview from './static/smp-architecture-overview.jpg'
+import SmpOverviewll from './static/smp-architecture-overview-ll.jpg'
 
 ## Overview
 
@@ -20,9 +21,9 @@ The Self-Managed Enterprise Edition runs within the customer's environment along
 
 It also offers extensive customization through various configuration files, allowing users to extend its functionalities. For more details, refer to [What's Supported](./smp-supported-platforms).
 
-Below is a high-level architecture overview of how Harness Self-Managed Enterprise operates in an on-premises environment.
+The below diagram show the architecture of Harness Self-Managed Enterprise platform, detailing internal services, data stores, networking components, and their interactions within a Kubernetes environment.
 
-<img src={SmpOverview} style={{width: 850}} />
+<img src={SmpOverviewll} style={{width: 850}} />
 
 ### Reference Architecture
 
