@@ -43,70 +43,42 @@ Select the **Execution History** option on the top right corner of the page to v
 
 Each pipeline execution displays the following information.
 
-<Tabs>
-<TabItem value="Legacy Execution UI">
-
 * **Pipeline Name**
     - The name of the pipeline and execution ID.
     - When expanded, this column also shows the name of each stage in the pipeline. 
+
 * **Status**
     - Shows the status of the execution. The options are `SUCCESS`, `FAILED`, `ABORTED`, `EXPIRED`.
     - When expanded, this column shows the status of each stage as an emoji. You can hover over the emoji for more information.
-* **Service**
-    - Shows the services used in the pipeline. For pipelines with more than one service, a `+X` modifier will be displayed where `X` is the number of additional services. 
-    - When expanded, this column shows the services used in each individual stage of the pipeline.
-    - Hover over the service name to see the artifact attached to the service. 
-* **Environment**
-    - Shows the infrastructure used in the pipeline. For pipelines with more than one associated environment, a `+X` modifier will be displayed where `X` is the number of additional environments.
-    - When expanded, this column shows the environment for each individual stage of the pipeline.
-    - Hover over the environment name to see the infrastructure associated with the environment.
-* **Trigger** (This column is unlabeled)
+
+* **Trigger Summary**
     - This column shows the origin of each execution.
-* **Execution Start Time**
-    - Shows the user, method, and start time of the execution.
-* **More details** 
-    The more details icon for each pipeline offers additional execution actions:
-    - Add Execution Notes
-    - View Execution
-    - Edit Pipeline
-    - [Retry Pipeline](/docs/platform/pipelines/failure-handling/resume-pipeline-deployments)
-    - [Abort Pipeline](/docs/platform/pipelines/failure-handling/abort-pipeline)
-    - [View Compiled YAML](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions/#view-compiled-yaml)
-    - [Compare Pipeline](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions/#compare-executions)
-    - [Download Logs](/docs/platform/pipelines/executions-and-logs/download-logs)
+    - The origin of each execution is the trigger type which initiated the pipeline execution.
 
-</TabItem>
-<TabItem value="New Execution UI">
-
-:::note
-
-The new UI is behind the feature flag `CDS_EXECUTION_LIST_CARD_VIEW`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
-:::
-
-* **Pipeline Name**
-    - The name of the pipeline and execution ID.
-    - When expanded, this column also shows the name of each stage in the pipeline. 
-* **Status**
-    - Shows the status of the execution. The options are `SUCCESS`, `FAILED`, `ABORTED`, `EXPIRED`.
-    - When expanded, this column shows the status of each stage as an emoji. You can hover over the emoji for more information.
-* **Trigger Summary** 
-    - This column shows the origin of each execution.
 * **Update Summary**
-    - This column shows the module specific update information for the specific pipeline execution.
-    - For CD, it will show **Service** and **Environment** information.
-    * **Service**
-        - Shows the services used in the pipeline. For pipelines with more than one service, a `+X` modifier will be displayed where `X` is the number of additional services. 
-        - When expanded, this column shows the services used in each individual stage of the pipeline.
-        - Hover over the service name to see the artifact attached to the service. 
-    * **Environment**
-        - Shows the infrastructure used in the pipeline. For pipelines with more than one associated environment, a `+X` modifier will be displayed where `X` is the number of additional environments.
-        - When expanded, this column shows the environment for each individual stage of the pipeline.
-        - Hover over the environment name to see the infrastructure associated with the environment.
+    - This column shows **execution information** for CD and Database DevOps modules.  
+
+    - The Update Summary behaves differently based on the module(s) used in the pipeline:
+
+    | Module | Information Shown | Example | On-hover |
+    | --- | --- | --- | --- |
+    | CD | The update summary for CD shows **Service → Environment** mappings. | `service1 → environment1` | Hovering on the service name displays attached artifact version, tag, path and hovering on the environment name displays attached infrastructure. |
+    | Database DevOps | The update summary for Database DevOps shows **Schema Version → DB Instance** mappings. | `schema_v34 → orders-db-prod` | Hovering on the schema version displays schema, hovering on the DB instance displays the DB instance and tag (if any). |
+
+    - You can also visualize the mappings and view stage-wise execution details by simply expanding the card after clicking on the `chevron-right` icon as shown in the image below. 
+
+    ![](./static/execution-card-view.png)
+
+    - If there are more than three updates, let's say n updates, a `View all n updates` indicator appears, and clicking on it opens a popup which reveals the full list of stage-wise updates. The same popup can be opened by clicking on the `View Details` option which shows up when there are less than or equal to 3 updates. You can also navigate to the execution details using the `View Execution Details` option in this popup.
+
+    ![](./static/execution-updates.png)
+
 * **Execution Start Time**
     - Shows the user, method, and start time of the execution.
-* **More details** 
+
+* **More details**
     The more details icon for each pipeline offers additional execution actions:
+    - [Add Execution Notes](/docs/platform/pipelines/add-note-during-pipeline-execution)
     - Re-run from stage
     - View Execution
     - View Pipeline
@@ -115,8 +87,7 @@ The new UI is behind the feature flag `CDS_EXECUTION_LIST_CARD_VIEW`. Contact [H
     - [View Compiled YAML](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions/#view-compiled-yaml)
     - [Compare Pipeline Executions](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions/#compare-executions)
     - [Download Logs](/docs/platform/pipelines/executions-and-logs/download-logs)
-</TabItem>
-</Tabs>
+
 
 ## Filter executions
 
