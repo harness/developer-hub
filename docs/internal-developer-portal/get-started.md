@@ -37,3 +37,8 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
   defaultSelection="Step 1: Configure Git Integrations"
   disableSort={true}
 />
+
+<UniversityAdmonition title="Harness IDP self-paced training">
+  Explore **Harness IDP** through this self-paced course covering **service onboarding, self-service workflows, catalog management, scorecards, governance, and secrets management**. The course includes video tutorials and hands-on documentation to help you streamline developer workflows and infrastructure provisioning.
+Check out [**Harness IDP self-paced training**](https://university-registration.harness.io/self-paced-training-harness-internal-developer-portal) for guided lab exercises and infrastructure access.
+</UniversityAdmonition>

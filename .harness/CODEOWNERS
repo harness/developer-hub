@@ -147,11 +147,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/platform/harness-aida/ dewan.ahmed@harness.io prateek.mittal@harness.io rohan.gupta@harness.iovikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io
 
 # IDP Docs
-/docs/internal-developer-portal/ khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
-/release-notes/internal-developer-portal.md khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
-/release-notes/static/internal-developer-portal/ khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
-/src/components/Roadmap/data/idpData.ts khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
-/src/components/Docs/data/internalDeveloperPortal.ts khushi.sharma@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/docs/internal-developer-portal/ shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/release-notes/internal-developer-portal.md shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/release-notes/static/internal-developer-portal/ shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/src/components/Roadmap/data/idpData.ts shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
+/src/components/Docs/data/internalDeveloperPortal.ts shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io
 
 # SCS Docs
 /docs/software-supply-chain-assurance/  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io
