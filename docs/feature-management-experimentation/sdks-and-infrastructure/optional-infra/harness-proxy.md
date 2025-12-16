@@ -2,19 +2,22 @@
 title: Harness Proxy
 sidebar_label: Harness Proxy
 sidebar_position: 7
-description: Learn about the Harness Forward Proxy, which allows you to establish a single connection point from your FME SDKs to Harness FME services.
+description: Learn about the Harness Forward Proxy, which allows you to establish a single connection point from your FME SDKs to Harness FME services by using a forward or reverse proxy mode.
 ---
 
 ## Overview
 
 Enterprise customers often operate in environments with controlled egress points, where all outgoing network traffic must pass through approved gateways. Without a proxy, each new delegate or SDK instance may require individual firewall exceptions and cross-team approvals, creating operational friction at scale.
 
-Harness Proxy simplifies this by acting as a single, authorized egress point for all Harness-related traffic. This allows you to:
+Harness Proxy simplifies this by acting as a single, authorized egress point for all Harness-related traffic. The Harness Proxy also supports reverse proxy mode, which allows SDK traffic or other client requests to be routed from your infrastructure to Harness FME services through a centralized entry point. 
 
-- Centralize and control outbound traffic from your infrastructure
+This allows you to:
+
+- Centralize and control inbound and outbound traffic from your infrastructure
 - Maintain compliance with enterprise security policies
 - Enable advanced authentication and authorization, including mTLS and JWT validation
 - Support long-lived connections and encrypted payloads without additional proxy-side configuration
+- Expose Harness endpoints through a centralized reverse proxy for simplified client access
 
 The Harness Proxy is fully customer-deployed, giving you flexibility to run it in your preferred environment (Docker, Kubernetes, or custom deployments) while keeping sensitive configuration and certificates under your control.
 
@@ -24,9 +27,11 @@ The Harness Proxy runs on OpenResty, an NGINX-based platform chosen for its scal
 
 - TLS certificates and private keys for secure tunnels
 - JWKS files for JWT validation
-- Optional NGINX config files for performance tuning and customization
 
-Once deployed, SDKs establish opaque tunnels through the proxy to the Harness FME servers, and all traffic is securely forwarded without inspecting payloads.
+The proxy supports forward and reverse proxy modes:
+
+- **Forward Proxy**: SDKs establish opaque tunnels through the proxy to Harness FME servers. Once deployed, SDKs establish opaque tunnels through the proxy to the Harness FME servers, and all traffic is securely forwarded without inspecting payloads.
+- **Reverse Proxy**: Clients or SDKs can connect to pre-defined URLs exposed by the proxy, which forwards requests to the appropriate Harness backend services. Reverse proxy supports mTLS and location presets, including a built-in FME preset or custom location mappings. The proxy performs local TLS termination and re-establishes a secure upstream connection, handling routing while forwarding traffic without inspecting payloads.
 
 ### Security
 
@@ -49,8 +54,8 @@ The proxy supports HTTP and HTTPS tunnels, including long-lived connections such
 To get started with Docker:
 
 1. Pull the prebuilt image: `docker pull splitsoftware/fme-proxy`.
-1. Run the container with your desired configuration: `docker run --rm --name some-fme-proxy -e HFP_PROXIES=main -e HFP_main_PORT=3128 splitsoftware/fme-proxy`.
-1. Test connectivity by running a cURL command: `curl -v --proxy https://harness-fproxy:3128 -XGET https://sdk.split.io`. 
+1. Run the container with your desired configuration: `docker run --rm --name some-fme-proxy -e HP_PROXIES=main -e HP_main_PORT=3128 -p 3128:3128 splitsoftware/fme-proxy:ubuntu`.
+1. Test the connectivity by running a cURL command: `curl -v --proxy http://127.0.0.1:3128 -XGET https://sdk.split.io/api/version`. 
 
 This starts the proxy with a single server instance. The `HFP_PROXIES` environment variable allows multiple server instances with different TLS/auth settings.
 
@@ -73,36 +78,144 @@ These variables allow the proxy to scale efficiently based on deployment environ
 
 These variables allow you to tailor each proxy instance’s ports, TLS, authentication, and routing to meet your security and traffic requirements.
 
-| Variable | Context | Description | Default | Example |
-|---|---|---|---|---|
-| `HP__PORT` | Server | Port on which the server listens. | Required (no default) | `443` |
-| `HP__SSL` | Server | Enable TLS/mTLS for the server. | False | `true` |
-| `HP__SSL_CERTIFICATE` | Server | Server certificate for TLS. | None / required if SSL is enabled | `/my_volume/pki/server.crt` |
-| `HP__SSL_PRIVATE_KEY` | Server | Private key for the server certificate. | None / required if SSL is enabled | `/my_volume/pki/server.key` |
-| `HP__SSL_CLIENT_CERTIFICATE` | Server | CA certificate for client verification (mTLS). | None | `/my_volume/pki/client_ca.crt` |
-| `HP__AUTH` | Server | Enable authentication (`basic`, `digest`, `bearer`). | None | `bearer` |
-| `HP__AUTH_BASIC_PASSWD` | Server | Password file for basic auth. | None / required if `auth=basic` | `/my_volume/passwd/basic.passwd` |
-| `HP__AUTH_DIGEST_PASSWD` | Server | Password file for digest auth. | None / required if `auth=digest` | `/my_volume/passwd/digest.passwd` |
-| `HP__AUTH_BEARER_JWKS` | Server | JWKS file for validating bearer tokens. | None / required if `auth=bearer` | `/my_volume/keys/keys.jwks` |
-| `HP__PROXY_CHAIN` | Server | Upstream proxy to forward traffic. | None | `my-upstream-proxy:3128` |
-| `HP__PROXY_CHAIN_SSL` | Server | Use TLS when connecting to upstream proxy. | Disabled | true |
-| `HP__PROXY_CHAIN_CA_CERT` | Server | CA cert to verify upstream TLS connection. | None / required if `PROXY_CHAIN_SSL` enabled | `/my_volume/pki/ca.crt` |
-| `HP__RESOLVER` | Server | DNS server to resolve upstream hosts. | `8.8.8.8` | `127.0.0.53` |
-| `HP__ALLOWED_TARGETS` | Server | Comma-separated list of `host:port` pairs allowed for tunnels. | `sdk.split.io:443,auth.split.io:443,streaming.split.io:443,events.split.io:443,telemetry.split.io:443` | `api.mycompany.com:443` |
-| `HP__ALLOWED_TARGET_PORTS` | Server | Comma-separated list of ports allowed for tunnels. | `443` | `443,8443` |
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-Some best practices include the following:
+<Tabs queryString="forward-reverse-option">
+<TabItem value="forward" label="Forward Proxy Server Configuration">
 
-- **TLS/mTLS certificates:** Use `HP_<server_name>_SSL`, `HP_<server_name>_SSL_CERTIFICATE`, `HP_<server_name>_SSL_PRIVATE_KEY`, and `HP_<server_name>_SSL_CLIENT_CERTIFICATE` to configure secure traffic and client verification.
-- **Bearer authentication**: Use `HP_<server_name>_AUTH_BEARER_JWKS` for providing public keys to validate tokens.
-- **Outbound restrictions**: Limit which hosts and ports the proxy can forward traffic to using `HP_<server_name>_ALLOWED_TARGETS` and `HP_<server_name>_ALLOWED_TARGET_PORTS`.
-- **Custom NGINX configuration**: You can mount your own `nginx.conf` file to customize worker processes, buffers, timeouts, and other settings.
-- **Performance tuning**: Adjust `HP_WORKER_PROCESSES`, `HP_WORKER_CONNECTIONS`, and `HP_LOG_LEVEL` to scale the proxy efficiently based on traffic and environment.
-- **Multiple servers**: Each server instance can have unique TLS/authentication/port configurations.
+| Variable                                  | Description                                                                                   | Default                                                                                                | Example                           |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------- |
+| `HP_<SERVER_NAME>_TYPE`                   | Must be `FORWARD`.                                                                            | `FORWARD`                                                                                              | `FORWARD`                         |
+| `HP_<SERVER_NAME>_PORT`                   | Port on which this server listens.                                                            | Required                                                                                               | `3128`                            |
+| `HP_<SERVER_NAME>_SSL`                    | Enable TLS/mTLS.                                                                              | False                                                                                                  | `true`                            |
+| `HP_<SERVER_NAME>_SSL_CERTIFICATE`        | Server certificate for TLS.                                                                   | None / required if SSL enabled                                                                         | `/my_volume/pki/server.crt`       |
+| `HP_<SERVER_NAME>_SSL_PRIVATE_KEY`        | Private key for TLS certificate.                                                              | None / required if SSL enabled                                                                         | `/my_volume/pki/server.key`       |
+| `HP_<SERVER_NAME>_SSL_CLIENT_CERTIFICATE` | CA certificate to verify client certificates (mTLS).                                          | None                                                                                                   | `/my_volume/pki/client_ca.crt`    |
+| `HP_<SERVER_NAME>_AUTH`                   | Authentication scheme (`basic`, `digest`, `bearer`).                                          | None                                                                                                   | `bearer`                          |
+| `HP_<SERVER_NAME>_AUTH_BASIC_PASSWD`      | Password file for basic auth.                                                                 | None / required if `auth=basic`                                                                        | `/my_volume/passwd/basic.passwd`  |
+| `HP_<SERVER_NAME>_AUTH_DIGEST_PASSWD`     | Password file for digest auth.                                                                | None / required if `auth=digest`                                                                       | `/my_volume/passwd/digest.passwd` |
+| `HP_<SERVER_NAME>_AUTH_BEARER_JWKS`       | JWKS file to validate bearer tokens.                                                          | None / required if `auth=bearer`                                                                       | `/my_volume/keys/keys.jwks`       |
+| `HP_<SERVER_NAME>_PROXY_THRU`             | Upstream proxy to forward traffic.                                                            | None                                                                                                   | `my-upstream-proxy:3128`          |
+| `HP_<SERVER_NAME>_PROXY_THRU_SSL`         | Use TLS to connect to upstream proxy.                                                         | Disabled                                                                                               | `true`                            |
+| `HP_<SERVER_NAME>_PROXY_THRU_CA_CERT`     | CA cert to verify upstream proxy TLS.                                                         | None / required if `PROXY_THRU_SSL` enabled                                                            | `/my_volume/pki/ca.crt`           |
+| `HP_<SERVER_NAME>_RESOLVER`               | DNS server for upstream host resolution.                                                      | `8.8.8.8`                                                                                              | `127.0.0.53`                      |
+| `HP_<SERVER_NAME>_ALLOWED_TARGETS`        | Comma-separated list of allowed `host:port` pairs. Requests outside these hosts are rejected. | `sdk.split.io:443,auth.split.io:443,streaming.split.io:443,events.split.io:443,telemetry.split.io:443` | `api.mycompany.com:443`           |
+| `HP_<SERVER_NAME>_ALLOWED_TARGET_PORTS`   | Comma-separated list of allowed ports. Must include all ports in `ALLOWED_TARGETS`.           | `443`                                                                                                  | `443,8443`                        |
+
+</TabItem>
+
+<TabItem value="reverse" label="Reverse Proxy Server Configuration">
+
+| Variable                                           | Description                                                                                                           | Default                                     | Example                            |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ---------------------------------- |
+| `HP_<SERVER_NAME>_PORT`                            | Port on which this server listens.                                                                                    | Required                                    | `3129`                             |
+| `HP_<SERVER_NAME>_SSL`                             | Enable TLS/mTLS.                                                                                                      | False                                       | `true`                             |
+| `HP_<SERVER_NAME>_SSL_CERTIFICATE`                 | Server certificate for TLS.                                                                                           | None / required if SSL enabled              | `/my_volume/pki/server.crt`        |
+| `HP_<SERVER_NAME>_SSL_PRIVATE_KEY`                 | Private key for TLS certificate.                                                                                      | None / required if SSL enabled              | `/my_volume/pki/server.key`        |
+| `HP_<SERVER_NAME>_SSL_CLIENT_CERTIFICATE`          | CA certificate to verify client certificates (mTLS).                                                                  | None                                        | `/my_volume/pki/client_ca.crt`     |
+| `HP_<SERVER_NAME>_PROXY_THRU`                      | Upstream proxy to forward traffic.                                                                                    | None                                        | `my-upstream-proxy:3128`           |
+| `HP_<SERVER_NAME>_PROXY_THRU_SSL`                  | Use TLS to connect to upstream proxy.                                                                                 | Disabled                                    | `true`                             |
+| `HP_<SERVER_NAME>_PROXY_THRU_CA_CERT`              | CA cert to verify upstream proxy TLS.                                                                                 | None / required if `PROXY_THRU_SSL` enabled | `/my_volume/pki/ca.crt`            |
+| `HP_<SERVER_NAME>_RESOLVER`                        | DNS server for upstream host resolution.                                                                              | `8.8.8.8`                                   | `127.0.0.53`                       |
+| `HP_<SERVER_NAME>_LOCATIONS`                       | Comma-separated list of reverse proxy locations. Can reference built-in presets (`PRESET:fme`) or custom JSONL files. | Required                                        | `PRESET:fme,PRESET:custom_service` |
+| `HP_<SERVER_NAME>_LOCATIONS_SSL_VERIFICATION_CERT` | CA cert to validate SSL connections to upstream targets. Optional; TLS verification skipped if not provided.          | `443`                                        | `/my_volume/pki/ca.crt`            |
+
+### Reverse Proxy locations
+
+When using a reverse proxy server, you can define locations to map incoming paths to upstream services. Locations can reference built-in Harness module presets or be fully customized.
+
+Built-in presets allow you to configure common Harness services. For example, include `PRESET:fme` for FME in the `HP_<SERVER_NAME>_LOCATIONS` variable. This maps the following paths automatically:
+
+| Path             | Target                       |
+| ---------------- | ---------------------------- |
+| `/fme/sdk`       | `https://sdk.split.io`       |
+| `/fme/events`    | `https://events.split.io`    |
+| `/fme/auth`      | `https://auth.split.io`      |
+| `/fme/streaming` | `https://streaming.split.io` |
+| `/fme/telemetry` | `https://telemetry.split.io` |
+
+These paths correspond to the URLs your Harness FME SDKs use when connecting through the reverse proxy.
+
+### Custom locations
+
+For external services or non-standard routes, create a JSONL file with one location definition per line. Each object must include at least `path` and `target`. Additional optional parameters include `buffer` and `read_timeout`.
+
+| Property       | Description                                                      | Default   | Example                     |
+| -------------- | ---------------------------------------------------------------- | --------- | --------------------------- |
+| `path`         | Local path clients use to reference the proxied host.            | Required  | `/custom/api`               |
+| `target`       | URL of the upstream host where requests are forwarded.           | Required  | `https://api.myservice.com` |
+| `buffer`       | Whether responses should be buffered.                            | `true`    | `false`                     |
+| `read_timeout` | Socket read timeout in seconds (useful for streaming endpoints). | `30`      | `120`                       |
+
+The following code snippet demonstrates an example JSONL file for FME SDKs:
+
+```json
+{ "path": "/fme/sdk", "target": "https://sdk.split.io" }
+{ "path": "/fme/events", "target": "https://events.split.io" }
+{ "path": "/fme/auth", "target": "https://auth.split.io" }
+{ "path": "/fme/streaming", "target": "https://streaming.split.io", "read_timeout": 120, "buffer": false }
+{ "path": "/fme/telemetry", "target": "https://telemetry.split.io" }
+```
+
+</TabItem>
+</Tabs>
+
+Harness recommends following these best practices:
+
+<details>
+<summary>TLS and mTLS</summary>
+
+- TLS is recommended when using plain-text authentication schemes (Basic or Bearer/JWT). These mechanisms exchange credentials in clear text and rely on TLS for confidentiality.
+- If the proxy operates in forward mode behind a reverse proxy/ingress, enabling TLS helps avoid host header conflicts by relying on SNI instead of the `Host` header (common in ingress setups such as CITI).
+- mTLS can be used for strong client identity verification when the proxy is deployed inside a PKI. This approach requires issuing certificates to each client but provides higher security than password or token-based methods.
+
+</details>
+<details>
+<summary>Worker and Performance Settings</summary>
+
+- Set `HP_WORKER_PROCESSES` to the number of vCPUs available to the container. This should be a whole integer.
+- `HP_WORKER_CONNECTIONS` controls the number of simultaneous connections and has a large memory impact and a small CPU impact.
+
+  * `1024` is a reliable default for most deployments.
+  * Increase only when handling high concurrency, and monitor CPU and memory usage.
+
+</details>
+<details>
+<summary>Outbound Restrictions (Forward Proxy)</summary>
+
+- Use `HP_<server_name>_ALLOWED_TARGETS` and `HP_<server_name>_ALLOWED_TARGET_PORTS` to strictly limit what upstream services can be reached. This prevents tunnels from being abused for non-Harness traffic.
+
+</details>
+<details>
+<summary>Authentication (Forward Proxy)</summary>
+
+- Use `HP_<server_name>_AUTH_BEARER_JWKS` when enabling bearer authentication to validate JWTs using a trusted key set.
+
+</details>
+<details>
+<summary>Reverse Proxy Locations</summary>
+
+- Use `HP_<server_name>_LOCATIONS` to expose pre-defined Harness endpoints (e.g., using `PRESET:fme`) or to inject custom mappings.
+- To provide custom locations, create a JSONL file following the documented location schema, mount it into the container, and reference it using the `CUSTOM:` prefix, for example:
+
+  ```ruby
+  HP_<server_name>_LOCATIONS=CUSTOM:/path/to/file.jsonl
+  ```
+
+- Optionally, use `HP_<server_name>_LOCATIONS_SSL_VERIFICATION_CERT` to validate TLS connections to the upstream targets.
+
+</details>
+<details>
+<summary>Multiple Servers</summary>
+
+- Each configured server (forward or reverse) can have independent TLS, authentication, and port settings, allowing fine-grained traffic control.
+
+</details>
 
 ## Use FME SDKs with the Harness Proxy
 
-Harness Proxy works with multiple FME SDKs to securely forward traffic from your infrastructure to Harness services. Once configured, the SDKs establish `CONNECT` tunnels through the proxy. Traffic is opaque to the proxy, so encrypted payloads and long-lived connections (such as SSE) are fully supported without additional configuration.
+Harness Proxy works with multiple FME SDKs to securely forward traffic from your infrastructure to Harness services. SDKs can connect via forward proxy tunnels or through reverse proxy endpoints defined by the proxy server. Traffic is opaque to the proxy, so encrypted payloads and long-lived connections (such as SSE) are fully supported without additional configuration.
 
 import { Section, proxySDKs } from '@site/src/components/Docs/data/fmeSDKSProxy';
 

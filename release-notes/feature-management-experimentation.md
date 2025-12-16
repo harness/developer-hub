@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-12-11T10:00:00
+date: 2025-12-16T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,9 +12,31 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: December 11, 2025
+#### Last updated: December 16, 2025
 
 ## December 2025
+
+### [New Feature] Reverse Proxy Support for the Harness Proxy
+----
+#### 2025-12-16
+
+The Harness Proxy now supports reverse proxying and forward-proxy capabilities. You can route both outbound and inbound traffic through a centralized, customer-managed proxy while maintaining end-to-end encryption and strict control over how traffic reaches Harness FME services.
+
+This feature is valuable for organizations that want a single connection point for their SDKs or need to expose Harness endpoints inside tightly controlled networks.
+
+By enabling reverse proxy mode, you can:
+
+- Expose a unified entry point for SDK traffic to Harness FME services
+- Simplify client configuration by mapping Harness endpoints to internal URLs
+- Support secure connections with TLS and mTLS, including client certificate validation
+- Use built-in presets (such as FME) or custom location mappings to control routing
+- Maintain full control over how requests are authenticated, encrypted, and forwarded from your infrastructure to Harness
+
+Reverse proxy support gives enterprise customers greater flexibility in meeting network, compliance, and security requirements while reducing operational overhead for teams managing complex environments.
+
+#### Related documentation
+
+- [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy)
 
 ### [New Enhancement] Consolidate FME Large Segments into FME Segments Permission
 ----
