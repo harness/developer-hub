@@ -12,7 +12,21 @@ redirect_from:
 4. Navigate to the `Variables` tab and choose `OpenTofu Variables`
 5. Edit `kubernetes_connector` to provide an existing Kubernetes connector reference. 
 _**Note**: The connector will need to be scoped to the correct location where the connector exists. Prefix with `account.` or `org.` depending on its location._
-6. Optionally, edit `kubernetes_namespace` to modify the namespace into which the pods will be deployed.
+6. Optionally add the following variables based on your target build infrastructure
+    * `kubernetes_namespace` to modify the namespace into which the pods will be deployed
+    * `kubernetes_serviceaccount` to modify the service account which the pods will be assigned
+    * `kubernetes_node_selectors` to modify the node selector which the pods will user
+    * `kubernetes_override_image_connector` to modify the image connector used to pull step images
+
+:::note
+If you specify a custom default image connector via `kubernetes_override_image_connector` you will need to make the following images avalible in your registry:
+
+-   harnesssolutionfactory/harness-python-api-sdk:latest
+-   harnesssolutionfactory/harness-cr-mirror-repositories:latest
+-   harnesssolutionfactory/harness-token-rotation:latest
+-   harnesssolutionfactory/harness-manage-iacm-workspace:latest
+-   harnesssolutionfactory/harness-idp-resource-manager:latest
+:::
 
 _**Note**: Additional details around the various options and variables can be found in the `pilot-light` directory of the Harness Solutions Factory repository_
 
