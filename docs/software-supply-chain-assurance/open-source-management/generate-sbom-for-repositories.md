@@ -171,7 +171,7 @@ After you run the SBOM Orchestration step, you can download or publish SBOM thro
 - Via [Harness API](https://apidocs.harness.io/sbom/downloadsbomforartifact) 
 - Use the Download SBOM button available on the Code Repositories page.
 - Download the SBOM score for repository via [Harness API](https://apidocs.harness.io/sbom/getsbomscoreforartifact)
-- Access the SBOM file directly from the pipeline output at the specified path `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json`.
+- Access the SBOM file directly from the pipeline output, generated under the default `/harness` working directory and is available at `/harness/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json`.
 
 ## Next steps
 
