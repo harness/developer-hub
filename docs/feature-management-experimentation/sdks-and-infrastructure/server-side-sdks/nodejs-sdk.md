@@ -113,13 +113,13 @@ When the `SDK_READY` event fires, you can use the `getTreatment` method to retur
 
 Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
-<Tabs groupId="java-type-script">
-<TabItem value="JavaScript">
+<Tabs groupId="promise-method">
+<TabItem value="SDK_READY event">
 
 ```javascript
-client.on(client.Event.SDK_READY, function() {
+client.on(client.Event.SDK_READY, () => {
   // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
-  var treatment = client.getTreatment('key', 'FEATURE_FLAG_NAME');
+  const treatment = client.getTreatment('key', 'FEATURE_FLAG_NAME');
 
   if (treatment == 'on') {
       // insert code here to show on treatment
@@ -132,22 +132,28 @@ client.on(client.Event.SDK_READY, function() {
 ```
 
 </TabItem>
-<TabItem value="TypeScript">
+<TabItem value="whenReady() promise">
 
-```typescript
-client.on(client.Event.SDK_READY, () => {
-  // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
-  const treatment: SplitIO.Treatment =
-    client.getTreatment('key', 'FEATURE_FLAG_NAME');
+```javascript
+try {
+  await client.whenReady();
+  // SDK_READY event has been emitted
+} catch (e) {
+  // SDK_READY_TIMED_OUT event has been emitted. Evaluations will return the control treatment.
+  // Subsequent calls to `client.whenReady()` may return a new promise with a different settled state. 
+  // For instance, a resolved promise if the SDK is ready after the `SDK_READY_TIMED_OUT` event was emitted.
+}
 
-  if (treatment == 'on') {
-      // insert code here to show on treatment
-  } else if (treatment == 'off') {
-      // insert code here to show off treatment
-  } else {
-      // insert your control treatment code here
-  }
-});
+// The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
+const treatment = client.getTreatment('key', 'FEATURE_FLAG_NAME');
+
+if (treatment == 'on') {
+  // insert code here to show on treatment
+} else if (treatment == 'off') {
+  // insert code here to show off treatment
+} else {
+  // insert your control treatment code here
+}
 ```
 
 </TabItem>

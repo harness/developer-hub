@@ -1507,6 +1507,61 @@ client.once(client.Event.SDK_READY_FROM_CACHE, () => {
 </TabItem>
 </Tabs>
 
+#### Using readiness state and promises
+
+The `SDK_READY_FROM_CACHE`, `SDK_READY`, and `SDK_READY_TIMED_OUT` events fire only once. Therefore, if an event listener is attached after the event has already fired, it will never be triggered.
+
+For this reason, you can check the SDK readiness state using the `client.getStatus()` method to determine whether the SDK is ready to evaluate treatments, among other things:
+
+```javascript
+const { 
+  isReady, // true if the SDK_READY event was emitted
+  isReadyFromCache, // true if the SDK_READY_FROM_CACHE event was emitted
+  hasTimedout, // true if the SDK_READY_TIMED_OUT event was emitted
+  lastUpdate // timestamp of the most recent event
+} = client.getStatus();
+
+if (isReady) {
+  whenReadyCallback();
+} else {
+  client.on(client.Event.SDK_READY, whenReadyCallback);
+} 
+```
+
+As an alternative to event listeners, you can also use the client promise methods `whenReady` and `whenReadyFromCache` to wait for the SDK to become ready.
+
+- The `whenReadyFromCache()` promise resolves once the `SDK_READY_FROM_CACHE` event is emitted, or rejects if the `SDK_READY_TIMED_OUT` event is emitted first.
+- The `whenReady()` promise resolves when the `SDK_READY` event is emitted, or rejects if the `SDK_READY_TIMED_OUT` event is emitted first. Subsequent calls to `client.whenReady()` may return a new promise with a different settled state. For instance, a resolved promise if the SDK becomes ready after the `SDK_READY_TIMED_OUT` event was triggered first.
+
+<Tabs groupId="promise-method">
+<TabItem value="whenReadyFromCache()">
+
+```javascript
+client.whenReadyFromCache().then(() => {
+  // SDK_READY_FROM_CACHE event has been emitted
+  const treatment = client.getTreatment("FEATURE_FLAG_NAME");
+  console.log("Treatment = " + treatment);
+}).catch((e) => {
+  // SDK_READY_TIMED_OUT event has been emitted
+  console.error("SDK_READY_TIMED_OUT event emitted");
+});
+```
+</TabItem>
+<TabItem value="whenReady()">
+
+```javascript
+client.whenReady().then(() => {
+  // SDK_READY event has been emitted
+  const treatment = client.getTreatment("FEATURE_FLAG_NAME");
+  console.log("Treatment = " + treatment);
+}).catch((e) => {
+  // SDK_READY_TIMED_OUT event has been emitted
+  console.error("SDK_READY_TIMED_OUT event emitted");
+});
+```
+</TabItem>
+</Tabs>
+
 ### Sharing state with a pluggable storage
 
 By default, the SDK fetches the feature flags and segments it needs to compute treatments from Harness FME servers, and stores it in its cache. As a result, this makes it easy to get set up with Harness FME by instantiating the SDK, waiting for the `SDK_READY` event, and starting to use it. This default execution mode, called standalone mode, is appropriate for mobile and Web apps running on the client-side. However, in a stateless environment, like many serverless or edge computing solutions, this model could lead to some performance implications.
