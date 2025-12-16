@@ -89,8 +89,8 @@ A User is an individual who has been granted direct access to the Harness platfo
 
 Delete the user(s) from the platform. The user will be removed from the Developer license count immediately.
 
-:::note
-This applies to Developer oriented modules: Continuous Integration (CI), Code Repository (CR), Feature Flags (FF), and Internal Developer Portal (IDP). For more information, go to [View and manage subscriptions](/docs/platform/get-started/subscriptions-licenses/subscriptions).
+:::note Applies to developer focused modules
+This applies to Developer oriented modules: Continuous Integration (CI), Code Repository (CR), Feature Flags (FF), and Internal Developer Portal (IDP). For more information, go to [View and manage subscriptions](/docs/platform/subscriptions-licenses/subscriptions).
 :::
 
 ## Access Control/RBAC

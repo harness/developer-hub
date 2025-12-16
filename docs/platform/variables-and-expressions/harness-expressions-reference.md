@@ -17,7 +17,7 @@ This pages describe some [Harness expressions](./harness-variables.md) that you 
 
 ### Account, org, and project expressions
 
-* `<+account.identifier>`: The [identifier](../references/entity-identifier-reference.md) for your [Harness account](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts.md).
+* `<+account.identifier>`: The [identifier](../references/entity-identifier-reference.md) for your [Harness account](/docs/platform/subscriptions-licenses/view-account-info-and-subscribe-to-alerts.md).
 * `<+account.name>`: Your Harness account name.
 * `<+account.companyName>`: The company name associated with your Harness account.
 * `<+org.identifier>`: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization depends on the context where you use the expression.

@@ -139,7 +139,7 @@ To filter domain names in this way, go to the [Authentication overview](../authe
 
 ## Set the default experience
 
-Environment administrators can set the default Harness generation landing page, FirstGen or NextGen, for their users to ensure the correct Harness Experience is provided to each user. For more information, go to [Account details](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts#account-details).
+Environment administrators can set the default Harness generation landing page, FirstGen or NextGen, for their users to ensure the correct Harness Experience is provided to each user. For more information, go to [Account details](/docs/platform/subscriptions-licenses/view-account-info-and-subscribe-to-alerts#account-details).
 
 ## Next steps
 

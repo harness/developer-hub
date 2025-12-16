@@ -54,7 +54,7 @@ For more information, go to [What is an organization?](https://developer.harness
 
 Account level resources are available globally for all projects and organizations to access and leverage in their respective scopes.
 
-For more information, go to [View account info and subscribe to downtime alerts](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts).
+Go to [View account info and subscribe to downtime alerts](/docs/platform/subscriptions-licenses/view-account-info-and-subscribe-to-alerts) for more information.
 
 ## Configure the Harness connectors your teams needs to get started
 

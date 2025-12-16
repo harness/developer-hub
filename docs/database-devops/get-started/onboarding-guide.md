@@ -37,7 +37,7 @@ This onboarding guide accelerates your adoption journey by walking you through t
 Before beginning the walkthroughs in this guide, ensure you have:
 | Item | Details / Link |
 | --- | --- |
-| Harness account | Database DevOps License (see “[Subscription Overview and Management](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#modules-with-no-direct-developer-tracking-consumption-entitlements)”) |
+| Harness account | Database DevOps License (go to “[Subscription Overview and Management](/docs/platform/subscriptions-licenses/subscriptions/#modules-with-no-direct-developer-tracking-consumption-entitlements)”) |
 | Kubernetes cluster | Kubernetes Cluster ≥ v1.18, Harness Delegate installed ([Delegate setup guide](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/)) |
 | Database credentials | JDBC‑compatible database; user with DDL/DML privileges. (see “[JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/)”) |
  

@@ -6,6 +6,7 @@ sidebar_position: 1
 redirect_from:
   - /docs/platform/get-started/pl-subscription-mgmt
   - /docs/platform/get-started/subscriptions
+  - /docs/platform/get-started/subscriptions-licenses/subscriptions
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 

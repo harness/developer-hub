@@ -7,6 +7,7 @@ redirect_from:
   - /docs/platform/get-started/platform-concepts/view-account-info-and-subscribe-to-alerts
   - /docs/platform/Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts
   - /docs/platform/get-started/view-account-info-and-subscribe-to-alerts
+  - /docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts
 ---
 
 Harness provides a summary of your account information and enables you to subscribe to downtime alerts for the SaaS cluster hosting your Harness account.

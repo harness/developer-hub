@@ -5,6 +5,7 @@ sidebar_position: 1
 redirect_from:
   - /docs/platform/get-started/cloud-marketplace-integration/google-cloud-marketplace
   - /docs/platform/get-started/subscriptions-licenses/cloud-marketplace-integration/google-cloud-marketplace
+  - /docs/platform/get-started/subscriptions-licenses/cloud-marketplaces/google-cloud
 ---
 
 The [Google Cloud Marketplace](https://cloud.google.com/marketplace?hl=en) enables software vendors to offer their products and services to customers directly through Google Cloud Platform (GCP). It provides a convenient platform for users to discover, purchase, and deploy software solutions directly from the Google Cloud console or through APIs.
@@ -23,7 +24,7 @@ There are two ways you can purchase products via the Google Cloud Marketplace pr
 * If you have an existing relationship with Harness, then Harness can collect the required customer details, create an offer, and send you a private offer so that you pay a custom price for the software.
 * If don't have an existing relationship with Harness and you're interested in a Harness product, you can request a custom quote for it. To contact Harness' sales team, select **Contact Sales** in the Google Cloud Marketplace.
 
-   ![](./static/gcp_pvt_offer_contact_sales_form.png)
+   ![](./static/gcp-pvt-offer-contact-sales-form.png)
 
 ### Provide the required information
 
@@ -40,7 +41,7 @@ Harness requires the following details to create a private offer:
 
 Once the private offer is created and published, you'll get a notification email with your offer URL.
 
-![](./static/gcp_pvt_offer_customer_email.png)
+![](./static/gcp-pvt-offer-customer-email.png)
 
 To review and accept the offer:
 
@@ -49,20 +50,20 @@ To review and accept the offer:
 3. Select the checkbox to agree to the terms.
 4. Select **Accept**.
 
-   ![](./static/gcp_pvt_offer_customer_accept.png)
+   ![](./static/gcp-pvt-offer-customer-accept.png)
 
 
    As soon as the offer is accepted, you can view the order status on the product page and via the **Manage Orders** button.
 
-   ![](./static/gcp_pvt_offer_customer_accepted.png)
+   ![](./static/gcp-pvt-offer-customer-accepted.png)
 
 5. Navigate to **Marketplace** and go to the **Orders** section. Initially, your order is in a pending state while the Harness system approves and activates your account. The activation can take several minutes.
 
-   ![](./static/gcp_pvt_offer_pending_state.png)
+   ![](./static/gcp-pvt-offer-pending-state.png)
 
    Once the account is activated, you can view the updated order status.
 
-   ![](./static/gcp_pvt_offer_active.png)
+   ![](./static/gcp-pvt-offer-active.png)
 
 6.  Contact the Harness sales rep that assisted with the private offer to provision the product licensing.
 
@@ -86,7 +87,7 @@ To subscribe to a publicly-listed Harness product:
 
    If the product is listed publicly, you can view pricing, and the **Subscribe** option is available.
 
-   ![](./static/gcp_public_offer_subscribe.png)
+   ![](./static/gcp-public-offer-subscribe.png)
 
 4. Select **Subscribe** to view the terms and offered plans.
 
