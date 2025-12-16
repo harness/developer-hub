@@ -5,6 +5,19 @@ redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/account-settings/projects
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="fme-split">
+<TabItem value="fme" label="Harness FME">
+
+import Projects from '/docs/platform/organizations-and-projects/projects-and-organizations.md'
+
+<Projects />
+
+</TabItem>
+<TabItem value="split" label="Split Legacy">
+
 :::tip
 This page is about managing projects in Harness FME when accessing FME through `app.split.io`.
 
@@ -187,3 +200,6 @@ To delete a project, follow these steps:
 * Click the **Actions** button in the top right corner and choose the Delete project option, which will allow you to delete it.
 
   ![](./static/delete-project.png)
+
+</TabItem>
+</Tabs>

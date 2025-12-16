@@ -8,13 +8,24 @@ redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/authentication
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="fme-split">
+<TabItem value="fme" label="Harness FME">
+
+import Authentication from '/docs/platform/authentication/authentication-overview.md'
+
+<Authentication />
+
+</TabItem>
+<TabItem value="split" label="Split Legacy">
+
 :::warning Migrated from Split?
 This documentation describes the **Split legacy** Authentication experience.
 
 If your organization is using Harness FME, authentication practices and the UI may differ. For more information, see [SSO for Split Admins](/docs/feature-management-experimentation/split-to-harness/sso-for-admins) and [Account Migrated to Harness](/docs/feature-management-experimentation/split-to-harness/migrated-account#next-steps).
 :::
-
-## Overview
 
 Use the following topics to set up and manage authentication for your organization in Harness FME.
 
@@ -42,3 +53,6 @@ Use the following topics to set up and manage authentication for your organizati
 The Split console uses a single important cookie: **`split-token`**, which stores the user’s JSON Web Token (JWT) credentials after authentication.  
 
 This cookie is required to maintain the user’s session while they are logged in.
+
+</TabItem>
+</Tabs>

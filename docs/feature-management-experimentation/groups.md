@@ -5,6 +5,19 @@ redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/account-settings/groups
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="fme-split">
+<TabItem value="fme" label="Harness FME">
+
+import Groups from '/docs/platform/role-based-access-control/add-user-groups.md'
+
+<Groups />
+
+</TabItem>
+<TabItem value="split" label="Split Legacy">
+
 :::warning Migrated from Split?
 This documentation describes the **Split legacy** User group experience.
 
@@ -43,3 +56,6 @@ To edit a group's membership, do the following:
 1. From the left navigation pane, click the **profile button** at the bottom, select **Admin settings** and then **Groups**.
 2. Click the **Action** button and from the menu list, click **Edit** in the row for the group that you want to edit.
 3. Add or remove users as desired and click the **Save** button.
+
+</TabItem>
+</Tabs>

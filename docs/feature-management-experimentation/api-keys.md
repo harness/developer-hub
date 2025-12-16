@@ -5,6 +5,19 @@ redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/account-settings/api-keys
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="fme-split">
+<TabItem value="fme" label="Harness FME">
+
+import ApiKeys from '/docs/platform/automation/api/add-and-manage-api-keys.md'
+
+<ApiKeys />
+
+</TabItem>
+<TabItem value="split" label="Split Legacy">
+
 :::warning Migrated from Split?
 This documentation describes the **Split legacy** Admin API keys experience.
 
@@ -269,3 +282,6 @@ You can revoke and clone restricted Admin API keys using the FME UI as you would
 Each FME API endpoint has a list of accepted roles that the endpoint will look for on the bearer key that you used to [authorize your API request](https://docs.split.io/v2-dev/reference/authentication). You can see the list of accepted roles by navigating to a specific resource in our [API documentation](https://docs.split.io/v2/reference/create-an-api-key). 
 
 Additionally, [error codes](https://docs.split.io/v2/reference/error-codes) have been created for cases where requests do not have the appropriate role in the bearer token that was used.
+
+</TabItem>
+</Tabs>

@@ -7,6 +7,19 @@ redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/account-settings/users
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="fme-split">
+<TabItem value="fme" label="Harness FME">
+
+import Users from '/docs/platform/role-based-access-control/add-users.md'
+
+<Users />
+
+</TabItem>
+<TabItem value="split" label="Split Legacy">
+
 :::warning Migrated from Split?
 This documentation describes the **Split legacy** User experience.
 
@@ -239,3 +252,6 @@ If the user’s email already exists in another organization, consider one of th
    ![](./static/administrators.png)
 
 1. [Contact Harness Support](/docs/feature-management-experimentation/fme-support) or use this form to request deletion of the existing account, then reissue the invitation.
+
+</TabItem>
+</Tabs>
