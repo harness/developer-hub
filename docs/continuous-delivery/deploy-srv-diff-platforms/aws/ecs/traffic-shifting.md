@@ -68,23 +68,27 @@ In **Configure your Production Service**:
 
 - **Prod Listener**: Select the ELB listener you want to use for production.
 - **Prod Listener Rule ARN**: Select the listener rule that forwards traffic to the production and stage target groups.
-- **Stage Target Group ARN**: Select the target group where the new service version will be deployed.
+- **Stage Target Group ARN** (Optional): Select the target group where the new service version will be deployed.
 
   The specified listener rule must reference exactly two target groups: one for the existing (production) service and one for the new (stage) service. This field identifies the stage target group in that rule.
 
-:::info Stage Target Group Selection
+:::info Automated Stage Target Group Discovery
 
-The production listener rule must have exactly two target groups. **You must alternate the Stage Target Group ARN between deployments.**
+The production listener rule must have exactly two target groups. Harness now **automatically discovers** the correct stage target group when the **Stage Target Group ARN** is not provided.
 
-For each deployment:
-1. Select the target group that currently has **0% traffic** as the Stage Target Group ARN
-2. Deploy your new service to this target group
-3. After 100% traffic shift, this target group contains the active (BLUE) service
-4. In the next deployment, select the **other target group** (which now has 0% traffic)
+**Automatic Discovery (Recommended):**
+- Leave **Stage Target Group ARN** empty (or set to `<+input>` in YAML)
+- Harness automatically identifies the target group with **0% traffic weight** as the stage target group
+- The system validates that traffic distribution is either 100/0, 0/100, or 0/0 (NULL values are also supported)
+- Deployment fails fast if weights are ambiguous (e.g., 60/40)
+- The selected stage target group is displayed in the console logs for verification
 
-**Why alternation is required:** Harness deletes non-blue services from the stage target group at the start of each deployment. If you reuse the same stage target group containing your active blue service, it will be deleted, causing downtime.
+**Manual Selection (Backward Compatible):**
+- If you provide a specific **Stage Target Group ARN**, Harness uses your selection
+- You must manually alternate between target groups with each deployment
+- Select the target group with **0% traffic** to avoid deleting your active production service
 
-For automation scripts to eliminate manual selection, troubleshooting, and detailed examples, see [ECS Deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-blue-green-faqs).
+**Why automatic discovery prevents outages:** Harness deletes non-blue services from the stage target group at the start of each deployment. Manual selection errors (pointing to the active blue service) cause production downtime. Automatic discovery eliminates this risk by always selecting the target group with 0% traffic.
 
 :::
 
@@ -110,9 +114,50 @@ Yaml sample for the step
       updateGreenService: true
       prodListener: <+input>
       prodListenerRuleArn: <+input>
-      stageTargetGroupArn: <+runtime>
+      stageTargetGroupArn: <+input>  # Optional: Leave empty for automatic discovery
 ```
 </details>
+
+## Automated Stage Target Group Discovery
+
+Harness automatically detects the correct stage target group when `stageTargetGroupArn` is not provided, eliminating the risk of deployment failures caused by manual selection errors.
+
+### How Automatic Discovery Works
+
+When you leave the **Stage Target Group ARN** field empty:
+
+1. **Query AWS**: Harness retrieves the current traffic weights for all target groups in the specified listener rule
+2. **Validate Distribution**: The system verifies that the traffic distribution follows one of these patterns:
+   - **100/0**: One target group has 100% traffic (active BLUE), the other has 0% (empty STAGE)
+   - **0/100**: Inverse of above
+   - **0/0**: Both target groups have 0% traffic (initial state)
+   - **NULL values**: Target groups with no weight assigned are treated as 0%
+3. **Select Stage Target Group**: Harness automatically selects the target group with **0% traffic weight** as the stage target group
+4. **Fast-Fail on Ambiguity**: If weights don't match the expected patterns (e.g., 60/40, 70/30), the deployment fails immediately with a clear error message
+5. **Log Selection**: The chosen stage target group ARN is displayed in the deployment console logs for verification
+
+### Benefits of Automatic Discovery
+
+- **Prevents Production Outages**: Eliminates the risk of accidentally deploying to the active production target group
+- **No Manual Tracking Required**: No need to remember which target group was used in the previous deployment
+- **Safer Deployments**: System validates the traffic state before proceeding
+- **Backward Compatible**: Manual selection still works if you prefer explicit control
+
+### Example Scenario
+
+**Initial State:**
+- Target Group A: 100% traffic (active BLUE service)
+- Target Group B: 0% traffic (empty)
+
+**Deployment 1 (Automatic):**
+- Harness detects Target Group B has 0% → deploys new service to Target Group B
+- After traffic shift to 100%: Target Group B becomes active BLUE
+
+**Deployment 2 (Automatic):**
+- Harness detects Target Group A has 0% → deploys new service to Target Group A
+- After traffic shift to 100%: Target Group A becomes active BLUE
+
+No manual intervention required between deployments.
 
 ### Configure the ECS Blue-Green Traffic Shifting step
 
@@ -327,7 +372,7 @@ For customers who want to implement progressive traffic shifting (e.g., 10% → 
 - For supported target group weights and configuration options, refer to the [AWS ALB Listener Rules documentation](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html).
 - Maximum of 5 target groups per rule (AWS limitation).
 - **Swap** step and **Auto Scaling during swap** are not supported.
-- **Stage Target Group ARN must be manually alternated** between deployments or automated using scripts. Harness does not automatically infer the correct target group (enhancement request tracked in CDS-115275).
+- For automatic stage target group discovery, the listener rule must have a clear traffic distribution pattern (100/0, 0/100, or 0/0). Ambiguous weight distributions (e.g., 60/40) will cause the deployment to fail.
 
 ## Example Use Case: Controlled Traffic Shifting Across Environments
 
@@ -342,14 +387,14 @@ You can use ECS traffic shifting to gradually roll out and validate a new versio
 
 This example outlines the basic flow you can follow when implementing ECS Blue-Green deployments with traffic shifting:
 
-1. Add the **ECS Blue-Green Create Service** step with `isTrafficShift: true` and provide the `stageTargetGroupArn`.
+1. Add the **ECS Blue-Green Create Service** step with `isTrafficShift: true`. Optionally leave `stageTargetGroupArn` empty for automatic discovery (recommended), or provide a specific target group ARN for manual control.
 2. Add an **ECS Traffic Shift** step (inherit or standalone) to begin shifting traffic incrementally.
 3. **(Optional)** Add an **approval step** to control progression between shifts.
 4. Repeat the **ECS Traffic Shift** steps to gradually increase traffic to 100%.
 
 ## Sample pipeline YAML for Inherit traffic shifting step
 
-Below is a ready-to-use pipeline YAML that demonstrates how to configure the **Inherit traffic shifting mode** in an ECS Blue-Green deployment.
+Below is a ready-to-use pipeline YAML that demonstrates how to configure the **Inherit traffic shifting mode** in an ECS Blue-Green deployment with **automatic stage target group discovery**.
 
 <details>
 <summary>Sample pipeline YAML</summary>
@@ -395,7 +440,7 @@ pipeline:
                           prodListener: <+input>
                           prodListenerRuleArn: <+input>
                           isTrafficShift: true
-                          stageTargetGroupArn: <+input>
+                          stageTargetGroupArn: <+input>  # Leave empty at runtime for automatic discovery
                     - step:
                         name: ECS Blue Green Traffic Shift
                         identifier: EcsBlueGreenTrafficShift
