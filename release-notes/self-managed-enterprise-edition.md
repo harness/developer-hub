@@ -324,6 +324,132 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
       ```
 :::
 
+## December 16, 2025, Version 0.35.1
+
+This release includes the following Harness module and component versions.
+
+| **Name**                   | **Version**                                                                                  |
+|----------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                 | [0.35.1](https://github.com/harness/helm-charts/releases/tag/harness-0.35.1)                 |
+| Air Gap Bundle             | [0.35.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.35.1) |
+| access-control             | 1.153.2                                                                                      |
+| anomaly-detection          | 1.16.1                                                                                       |
+| audit-event-streaming      | 1.63.1                                                                                       |
+| batch-processing           | 1.68.10                                                                                      |
+| bootstrap                  | 1.58.0                                                                                       |
+| ce-nextgen                 | 1.71.6                                                                                       |
+| change-data-capture        | 1.49.1                                                                                       |
+| chaos-crd                  | 1.69.0                                                                                       |
+| chaos-k8s-ifs              | 1.69.1                                                                                       |
+| chaos-linux-ifc            | 1.69.0                                                                                       |
+| chaos-linux-ifs            | 1.69.0                                                                                       |
+| chaos-machine-ifc          | 1.69.0                                                                                       |
+| chaos-machine-ifs          | 1.69.0                                                                                       |
+| chaos-manager              | 1.69.6                                                                                       |
+| chaos-web                  | 1.69.1                                                                                       |
+| ci-manager                 | 1.109.9                                                                                      |
+| cloud-info                 | 1.13.1                                                                                       |
+| code-api                   | 1.67.2                                                                                       |
+| code-githa                 | 1.67.0                                                                                       |
+| code-gitrpc                | 1.67.0                                                                                       |
+| code-search                | 1.67.0                                                                                       |
+| cv-nextgen                 | 1.49.0                                                                                       |
+| db-devops-service          | 1.67.0                                                                                       |
+| debezium-service           | 1.25.0                                                                                       |
+| delegate-proxy             | 1.4.0                                                                                        |
+| event-service              | 1.13.0                                                                                       |
+| ff-pushpin-service         | 1.1128.0                                                                                     |
+| ff-service                 | 1.1143.0                                                                                     |
+| gateway                    | 1.58.2                                                                                       |
+| gitops                     | 1.45.5                                                                                       |
+| harness-manager            | 1.117.2                                                                                      |
+| iac-server                 | 1.272.1                                                                                      |
+| iacm-manager               | 1.119.0                                                                                      |
+| idp-admin                  | 1.33.3                                                                                       |
+| idp-app-ui                 | 1.33.18                                                                                      |
+| idp-service                | 1.33.18                                                                                      |
+| Immutable delegate version | 25.11.87301                                                                                  |
+| le-nextgen                 | 1.11.0                                                                                       |
+| log-service                | 1.36.2                                                                                       |
+| looker                     | 1.8.6                                                                                        |
+| next-gen-ui                | 1.104.6                                                                                      |
+| ng-auth-ui                 | 1.37.0                                                                                       |
+| ng-ce-ui                   | 1.67.0                                                                                       |
+| ng-custom-dashboards       | 1.94.1                                                                                       |
+| ng-dashboard-aggregator    | 1.82.0                                                                                       |
+| ng-manager                 | 1.118.5                                                                                      |
+| pipeline-service           | 1.158.2                                                                                      |
+| platform-service           | 1.96.0                                                                                       |
+| policy-mgmt                | 1.31.3                                                                                       |
+| queue-service              | 1.7.4                                                                                        |
+| scm-service                | 1.41.0                                                                                       |
+| service-discovery-manager  | 0.49.0                                                                                       |
+| srm-ui                     | 1.15.0                                                                                       |
+| ssca-manager               | 1.46.10                                                                                      |
+| ssca-ui                    | 0.36.2                                                                                       |
+| sto-core                   | 1.168.3                                                                                      |
+| template-service           | 1.120.0                                                                                      |
+| telescopes                 | 1.5.0                                                                                        |
+| ticket-service             | 1.2.2                                                                                        |
+| ti-service                 | 1.50.3                                                                                       |
+| ui                         | 1.32.0                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use either **`gsutil`** or **`curl`**.
+
+<details>
+  <summary>Option 1: Using `gsutil`</summary>
+    <p>
+      For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+      ```bash
+      gsutil -m cp \
+        "gs://smp-airgap-bundles/harness-0.35.1/ccm_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/cdng_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/ce_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/cet_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/ci_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/ff_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/platform_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/sto_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/iacm_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.35.1/idp_images.tgz" \
+        .
+      ```
+    </p>
+</details>
+
+<details>
+  <summary>Option 2: Using `curl`</summary>
+    <p>
+        You can also download the images directly using curl:
+
+        ```bash
+        curl -f -s -L -o smp-airgap-bundles/ccm_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/ccm_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/cdng_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/cdng_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/ce_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/ce_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/cet_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/cet_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/ci_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/ci_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/ff_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/ff_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/platform_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/platform_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/sto_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/sto_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/iacm_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/iacm_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/idp_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.1/idp_images.tgz
+        ```
+    </p>
+</details>  
+
+:::info Note
+Ensure that the `smp-airgap-bundles/` directory exists before running the command.
+:::
+
+### Fixed issues
+
+#### Harness Platform
+
+- Resolved an issue where ingress routes were updated as part of the change that moved Delegate APIs from ng-manager to harness-manager, but required Istio routes were missing, causing routing issues. The missing routes have now been added to ensure correct traffic routing. [PL-67487]
+
 ## December 16, 2025, Version 0.35.0
 
 This release includes the following Harness module and component versions.
