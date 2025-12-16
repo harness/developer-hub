@@ -11,6 +11,8 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="fme-split">
 <TabItem value="fme" label="Harness FME">
 
+For more information about SDK API keys in Harness FME, see [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account/#sdk-api-keys).
+
 import ApiKeys from '/docs/platform/automation/api/add-and-manage-api-keys.md'
 
 <ApiKeys />
