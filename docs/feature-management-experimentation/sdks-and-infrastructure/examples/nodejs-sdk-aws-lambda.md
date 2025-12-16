@@ -24,7 +24,7 @@ This page provides information on how to deploy Node.js SDK code in AWS Lambda s
    ```js
    const SplitFactory = require('@splitsoftware/splitio').SplitFactory;
 
-   const SplitObj = SplitFactory({
+   const factory = SplitFactory({
      core: {
        authorizationKey: 'SDK API KEY'
      },
@@ -39,14 +39,16 @@ This page provides information on how to deploy Node.js SDK code in AWS Lambda s
    });
 
    exports.handler = async (event) => {
-     const client = SplitObj.client();
-     await client.ready();
+     const client = factory.client();
+     try {
+       await client.whenReady();
+     } catch (error) {
+       console.log("SDK_READY_TIMED_OUT event emitted. Treatments will be control");
+     }
 
-     return new Promise(res => {
-       const treatment = client.getTreatment("USER ID", "SPLIT NAME");
-       console.log("\ntreatment: " + treatment);
-       res(treatment);
-     });
+     const treatment = client.getTreatment("USER ID", "SPLIT NAME");
+     console.log("\ntreatment: " + treatment);
+     return treatment;
    };
    ```
 

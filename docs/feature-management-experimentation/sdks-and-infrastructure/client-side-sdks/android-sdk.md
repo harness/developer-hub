@@ -1616,9 +1616,9 @@ While the SDK does not put any limitations on the number of instances that can b
 
 You can listen for four different events from the SDK.
 
-* `SDK_READY_FROM_CACHE`. This event fires once the SDK is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires once the SDK is ready to evaluate treatments. The SDK will use a locally cached version of your rollout plan from a previous session if available. In this case, the event fires almost immediately, since access to the cache is fast, but data might be stale. Otherwise, it fires together with the `SDK_READY` event when the SDK downloads the rollout plan from Harness servers.
 * `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT `. This event fires if there is no cached version of your rollout plan in disk cache, and the SDK could not fully download the data from Harness servers within the time specified by the `ready` setting of the `SplitClientConfig` object. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT `. This event fires if the SDK could not fully download the data from Harness servers (`SDK_READY` event), within the time specified by the `ready` setting of the `SplitClientConfig` object. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 An event is an extension of a SplitEventTask.
@@ -1953,4 +1953,3 @@ io.split.android.client.network.HttpException: HttpException: Error serializing 
 This error originates from the SSL handshake process during the SDK’s network call to https://sdk.split.io. A common cause is the device’s system time being incorrect or out of sync.
 
 Ensure the device’s Date and Time settings are synchronized with the current time. After correcting the time, restart the app to resolve the error.
-

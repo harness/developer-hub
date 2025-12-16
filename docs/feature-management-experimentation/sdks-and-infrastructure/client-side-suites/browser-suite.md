@@ -1180,9 +1180,9 @@ While the Suite does not put any limitations on the number of instances that can
 
 You can listen for four different events from the Suite.
 
-* `SDK_READY_FROM_CACHE`. This event fires if you are using the `InLocalStorage` module and the Suite is ready to evaluate treatments using a version of your rollout plan cached from a previous session, which may be stale. By default, the `localStorage` API is used to cache the rollout plan (see [Configure cache behavior](#configure-cache-behavior) for configuration options). If data is cached, this event fires almost immediately since access to `localStorage` is fast; otherwise, it doesn't fire.
+* `SDK_READY_FROM_CACHE`. This event fires when the Suite is ready to evaluate treatments. If the Suite is configured to use a persistent cache such as `localStorage` (see [Configure cache behavior](#configure-cache-behavior)), it will attempt to use a locally cached version of your rollout plan from a previous session. If data is cached, this event fires almost immediately, since access to the cache is fast, but data might be stale. Otherwise, it fires together with the `SDK_READY` event when the SDK downloads the rollout plan from Harness servers.
 * `SDK_READY`. This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
-* `SDK_READY_TIMED_OUT`. This event fires if the Suite could not download the data from Harness servers within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY_TIMED_OUT`. This event fires if the Suite could not download the data from Harness servers (`SDK_READY` event), within the time specified by the `startup.readyTimeout` configuration parameter. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below:
@@ -1192,45 +1192,7 @@ The syntax to listen for each event is shown below:
 
 ```javascript
 function whenReady() {
-  var treatment = client.getTreatment('YOUR_SPLIT');
-  if (treatment === 'on') {
-    // insert on code
-  } else if (treatment === 'off') {
-    // insert off code
-  } else {
-    // insert control code (usually the same as default treatment)
-  }
-}
-client.once(client.Event.SDK_READY, function () {
-  // the client is ready to evaluate treatments according to the latest feature flag definitions
-});
-
-client.once(client.Event.SDK_READY_TIMED_OUT, function () {
-  // this callback will be called after the set timeout period has elapsed if and only if the client
-  // is not ready for that time. You can still call getTreatment()
-  // but it could return CONTROL.
-});
-
-client.on(client.Event.SDK_UPDATE, function () {
-  // Fired each time the client state changes.
-  // For example, when a feature flag or a segment changes.
-  console.log('Feature flag or segment definitions have been updated!');
-});
-
-// This event fires only using the LocalStorage option and if there's Harness FME data stored in the browser.
-client.once(client.Event.SDK_READY_FROM_CACHE, function () {
-  // Fired after the Suite could confirm the presence of the Harness FME data.
-  // This event fires really quickly, since there's no actual fetching of information.
-  // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
-});
-```
-
-</TabItem>
-<TabItem value="TypeScript">
-
-```javascript
-function whenReady() {
-  const treatment: SplitIO.Treatment = client.getTreatment('YOUR_SPLIT');
+  const treatment = client.getTreatment('FEATURE_FLAG_NAME');
 
   if (treatment === 'on') {
     // insert on code
@@ -1241,8 +1203,10 @@ function whenReady() {
   }
 }
 
-// the client is ready for start making evaluations with your data
-client.once(client.Event.SDK_READY, whenReady);
+client.once(client.Event.SDK_READY, () => {
+  // The client is ready to evaluate treatments with the latest feature flag definitions synchronized from the server
+  whenReady();
+});
 
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
   // This callback will be called after `startup.readyTimeout` seconds (10 seconds by default)
@@ -1253,13 +1217,13 @@ client.once(client.Event.SDK_READY_TIMED_OUT, () => {
 client.on(client.Event.SDK_UPDATE, () => {
   // Fired each time the client state changes.
   // For example, when a feature flag or a segment changes.
-  console.log('Feature flag or segment definitions have been updated!');
 });
 
-// This event fires only using the LocalStorage option and if there's Harness FME data stored in the browser.
-client.once(client.Event.SDK_READY_FROM_CACHE, function () {
+client.once(client.Event.SDK_READY_FROM_CACHE, () => {
+  // The client is ready to evaluate treatments, but not necessarily with the latest feature flag definitions synchronized from the server.
+
   // Fired after the Suite could confirm the presence of the Harness FME data.
-  // This event fires really quickly, since there's no actual fetching of information.
+  // This event can fire really quickly, if data is cached from a previous session.
   // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
 });
 ```

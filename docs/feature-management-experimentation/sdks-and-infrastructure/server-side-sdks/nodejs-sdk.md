@@ -1704,7 +1704,7 @@ async function createSplitClient() {
     debug: true
   });
   const client = factory.client();
-  await client.ready();
+  await client.whenReady();
   console.log("SDK is ready");
   return client;
 }
