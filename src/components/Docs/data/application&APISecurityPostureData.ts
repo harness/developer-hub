@@ -13,10 +13,10 @@ export const docsCards: CardSections = [
       "",
     list: [
       {
-        title: "Security Posture Overview",
+        title: "Discovery Overview",
         module: MODULES.asp,
         description:
-          "Learn what Application and API Security Posture is.",
+          "Learn what API & Application Discovery is.",
         link: "https://docs.traceable.ai/docs/api-catalog",
       },
       /*
@@ -32,7 +32,7 @@ export const docsCards: CardSections = [
         title: "Dashboard",
         module: MODULES.asp,
         description:
-          "Get visibility into API security posture and activity trends.",
+          "Get visibility into API discovery and activity trends.",
         link: "https://docs.traceable.ai/docs/catalog-dashboard",
       },
 

@@ -1,7 +1,9 @@
 ---
 hide_table_of_contents: true
 hide_title: true
-title: Application and API Security Posture Documentation
+title: API and Application Discovery
+redirect_from:
+- /docs/appsec-security-posture
 # id: application-and-api-security-posture
 ---
 

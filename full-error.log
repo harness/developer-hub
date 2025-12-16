@@ -70,7 +70,7 @@ Available document ids are:
 - ai-test-automation/test-suite/setting-up-a-test-suite-with-setup-and-teardown
 - ai-test-automation/test-suite/test-suite
 - appsec-runtime-protection
-- appsec-security-posture
+- appsec-discovery
 - appsec-security-testing
 - artifact-registry
 - artifact-registry/ar-best-practices

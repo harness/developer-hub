@@ -15,7 +15,7 @@ export default function ASP() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon-api-security-posture.svg`} />
-            <h1>Application & API Security Posture</h1>
+            <h1>API & Application Discovery</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="https://docs.traceable.ai/docs/productrn25">
@@ -30,7 +30,7 @@ export default function ASP() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Application and API Security Posture provides a comprehensive view of all APIs within your organization. By discovering APIs through traffic monitoring and code analysis, it helps you understand their API ecosystem, track changes, and maintain visibility across environments. The platform organizes APIs by attributes such as authentication methods, data sensitivity, and exposure, while also highlighting security risks and policy violations. With insights into API usage, ownership, and conformance against specifications, you can prioritize issues, enforce security standards, while maintaining strong, proactive security posture across your application and APIs.
+              API & Application Discovery provides a comprehensive view of all APIs within your organization. By discovering APIs through traffic monitoring and code analysis, it helps you understand their API ecosystem, track changes, and maintain visibility across environments. The platform organizes APIs by attributes such as authentication methods, data sensitivity, and exposure, while also highlighting security risks and policy violations. With insights into API usage, ownership, and conformance against specifications, you can prioritize issues, enforce security standards, while maintaining strong, proactive security posture across your application and APIs.
             </p>
           </div>
         </div>

@@ -1,11 +1,11 @@
 {
-    "label": "Application & API Security Posture",
+    "label": "API & Application Discovery",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Application & API Security Posture"
+        "title": "API & Application Discovery"
     },
     "customProps": {
         "position": "To position the category, enter a number and move this to the root level.",

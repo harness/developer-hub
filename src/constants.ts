@@ -41,7 +41,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.ccm]: 'Cloud Cost Management',
     [MODULES.ff]: 'Feature Flags',
     [MODULES.sto]: 'Security Testing Orchestration',
-    [MODULES.asp]: 'Application & API Security Posture',
+    [MODULES.asp]: 'API & Application Discovery',
     [MODULES.arp]: 'Application & API Runtime Protection',
     [MODULES.ast]: 'Application & API Security Testing',
     [MODULES.srm]: 'Service Reliability Management',

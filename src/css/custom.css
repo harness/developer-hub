@@ -2326,9 +2326,9 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 .navbar .dropdown__link[href*="/docs/service-reliability-management"]{ --nav-icon: url('/img/icon_srm.svg'); }
 
 /* AI for Security & Compliance */
-.navbar .dropdown__link[href*="/docs/appsec-security-posture"]{ --nav-icon: url('/img/icon-arp.svg'); }
+.navbar .dropdown__link[href*="/docs/appsec-discovery"]{ --nav-icon: url('/img/icon-api-security-posture.svg'); }
 .navbar .dropdown__link[href*="/docs/appsec-runtime-protection"]{ --nav-icon: url('/img/icon-api-runtime-protection.svg'); }
-.navbar .dropdown__link[href*="/docs/appsec-security-testing"]{ --nav-icon: url('/img/icon-ast.svg'); }
+.navbar .dropdown__link[href*="/docs/appsec-security-testing"]{ --nav-icon: url('/img/icon-api-security-posture.svg'); }
 .navbar .dropdown__link[href*="/docs/security-testing-orchestration"]{ --nav-icon: url('/img/icon_sto.svg'); }
 .navbar .dropdown__link[href*="/docs/software-supply-chain-assurance"]{ --nav-icon: url('/img/icon_ssca.svg'); }
 

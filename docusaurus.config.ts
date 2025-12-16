@@ -150,6 +150,18 @@ const config: Config = {
               to: 'https://harness.io/products/cloud-cost',
             },
             {
+              label: 'API & Application Discovery',
+              to: 'https://developer.harness.io/docs/appsec-discovery',
+            },
+            {
+              label: 'Application & API Runtime Protection',
+              to: 'https://developer.harness.io/docs/appsec-runtime-protection',
+            },
+            {
+              label: 'Application & API Security Testing',
+              to: 'https://developer.harness.io/docs/appsec-security-testing',
+            },
+            {
               label: 'Security Testing Orchestration',
               to: 'https://harness.io/products/security-testing-orchestration',
             },

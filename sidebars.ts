@@ -130,15 +130,15 @@ const sidebars: SidebarsConfig = {
             description: 'Learn how to manage and optimize cloud costs.',
           },
         },
-        // Application and API Security Posture Page
+        // API and Application Discovery Page
         {
           type: "link",
-          href: "/docs/appsec-security-posture",
-          label: "Application & API Security Posture",
+          href: "/docs/appsec-discovery",
+          label: "API & Application Discovery",
           className: "sidebar-asp",
 
           customProps: {
-            description: "Learn how Application & API Security Posture gives you complete visibility into your API ecosystem.",
+            description: "Learn how API & Application Discovery gives you complete visibility into your API ecosystem.",
           },
         },
         // Application and API Runtime Protection Page

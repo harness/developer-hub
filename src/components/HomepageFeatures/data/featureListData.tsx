@@ -68,11 +68,11 @@ export const featureList: CardItem[] = [
     link: "docs/cloud-cost-management/get-started",
   },
   {
-    title: "API Security Posture",
+    title: "API & Application Discovery",
     module: MODULES.asp,
     icon: "img/icon-api-security-posture.svg",
     description: <>Discover App/APIs and assess risks.</>,
-    link: "/docs/appsec-security-posture",
+    link: "/docs/appsec-discovery",
   },
   {
     title: "API Runtime Protection",

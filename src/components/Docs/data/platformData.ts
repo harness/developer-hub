@@ -105,8 +105,8 @@ export const docsCards: CardSections = [
       {
         title: "AASP",
         module: MODULES.asp,
-        description: "Application and API Security Posture",
-        link: "/docs/appsec-security-posture",
+        description: "API & Application Discovery",
+        link: "/docs/appsec-discovery",
       },
       {
         title: "AARP",

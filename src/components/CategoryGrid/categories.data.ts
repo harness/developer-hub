@@ -105,8 +105,8 @@ export const categories: Category[] = [
     blurb: "Protect apps from design to runtime.",
     items: [
       {
-        name: "Application & API Security Posture",
-        href: "/docs/appsec-security-posture",
+        name: "API & Application Discovery",
+        href: "/docs/appsec-discovery",
         module: "asp",
         description: "Discover App/APIs and assess risks."
       },
