@@ -74,6 +74,7 @@ No-LLM-Training: /docs/continuous-integration/private/**
   - [Migrate from CircleCI to Harness CI](https://developer.harness.io/docs/continuous-integration/migration-guides/migrating-from-circleci.md): Learn how to migrate your existing CircleCI workflows to Harness CI.
   - [Migrate from GitHub Actions to Harness CI](https://developer.harness.io/docs/continuous-integration/migration-guides/migrating-from-githubactions.md): Learn how to migrate your existing GitHub Actions workflows to Harness CI.
   - [Migrate from GitLab CI to Harness CI](https://developer.harness.io/docs/continuous-integration/migration-guides/migrating-from-gitlab.md): Learn how to migrate your existing GitLab workflows to Harness CI.
+  - [Migrate from Jenkins to Harness CI](https://developer.harness.io/docs/continuous-integration/migration-guides/migrating-from-jenkins.md): Learn how to migrate your existing Jenkins jobss to Harness CI.
   - [Migration utility (experimental)](https://developer.harness.io/docs/continuous-integration/migration-guides/migration-utility.md): Facilitate pipeline migration into Harness CI.
 - Secure Ci
   - [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step.md): Use base64 encoding and decoding to avoid errors with GCP secrets in Run steps.
