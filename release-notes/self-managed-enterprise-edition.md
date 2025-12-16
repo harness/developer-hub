@@ -433,9 +433,9 @@ Some admins might not have Google account access to download air gap bundles. As
         curl -f -s -L -o smp-airgap-bundles/ci_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.0/ci_images.tgz
         curl -f -s -L -o smp-airgap-bundles/ff_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.0/ff_images.tgz
         curl -f -s -L -o smp-airgap-bundles/platform_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.0/platform_images.tgz
-        curl -f -s -L -o smp-airgap-bundles/sto_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.34.0/sto_images.tgz
-        curl -f -s -L -o smp-airgap-bundles/iacm_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.34.0/iacm_images.tgz
-        curl -f -s -L -o smp-airgap-bundles/idp_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.34.0/idp_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/sto_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.0/sto_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/iacm_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.0/iacm_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/idp_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.35.0/idp_images.tgz
         ```
     </p>
 </details>  
