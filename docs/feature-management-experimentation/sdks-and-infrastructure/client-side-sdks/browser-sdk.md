@@ -1567,12 +1567,12 @@ The difference between each mode is in how generated impressions and events are 
 
 To instantiate an SDK working as consumer, set two configs on the root of the configuration object, `mode` and `storage`. Set `mode` with the mode of choice, either `'consumer'` or `'consumer_partial'`. Then set `storage` to a valid **storage wrapper** which is the adapter used to connect to the data storage.
 
-The following shows how to configure and get treatments for a SDK instance in consumer or partial consumer mode:
+The following shows how to configure and get treatments for a SDK instance in consumer and partial consumer modes, where methods are async:
 
 ```javascript
 import { SplitFactory, PluggableStorage } from '@splitsoftware/splitio-browserjs';
 
-var config = {
+const config = {
   mode: 'consumer', // Changing the mode to 'consumer' or 'consumer_partial' here
   core: {
     authorizationKey: '<your-api-key>',
@@ -1590,14 +1590,14 @@ var config = {
   })
 };
 
-var factory = SplitFactory(config);
-var client = factory.client();
+const factory = SplitFactory(config);
+const client = factory.client();
 
-// Unlike standalone mode, since the storage can by async the SDK will execute its operations asynchronously and
+// Unlike standalone mode, since the storage is async the SDK will execute its operations asynchronously and
 // instead of just returning a treatment as string, it returns a Promise that will be resolved to the treatment value.
 
 // There are two main options to call getTreatments and extract the treatment. One is the async/await syntax:
-var treatment = await client.getTreatment('my-feature-comming-from-storage');
+const treatment = await client.getTreatment('my-feature-comming-from-storage');
 
 // and the other option is just using the returned promise
 client.getTreatment('my-feature-comming-from-storage')
@@ -1616,6 +1616,24 @@ client.once(client.Event.SDK_READY_TIMED_OUT, function () {
   // This callback will be called after the seconds set at the `startup.readyTimeout` config parameter,
   // if and only if the SDK_READY event was not emitted for that time.
 });
+
+// Manager methods are also async
+const manager = factory.manager();
+
+/**
+ * Returns a promise that resolves to the feature flag registered within the SDK that matches this name.
+ */
+const splitView = await manager.split('name-of-feature-flag');
+
+/**
+ * Returns a promise that resolves to a list of all the feature flags that are currently registered within the SDK.
+ */
+const splitViewsList = await manager.splits();
+
+/**
+ * Returns a promise that resolves to a list of the names of all feature flags registered within the SDK.
+ */
+const splitNamesList = await manager.names();
 ```
 
 You can write your own custom storage wrapper for the SDK factory client by extending the IPluggableStorageWrapper interface.
