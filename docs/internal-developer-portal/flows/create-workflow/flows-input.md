@@ -97,12 +97,19 @@ Here are the different ways to design form inputs in IDP workflows:
 ### Dynamic Inputs
 **Dynamic inputs** are fields that automatically retrieve data from external sources or runtime context, eliminating the need for manual entry.
 
-1. **[Standard Workflow UI Picker](/docs/internal-developer-portal/flows/create-workflow/flows-input#workflow-ui-pickers)**
+1. **[Harness-Specific UI Pickers](/docs/internal-developer-portal/flows/create-workflow/flows-input#harness-specific-ui-pickers)**
+    - `HarnessOrgPicker` – Select a Harness organization
+    - `HarnessProjectPicker` – Select a Harness project
+    - `HarnessAutoOrgPicker` – Auto-populate organization based on project selection
+    - `HarnessUserGroupPicker` – Select a Harness user group with filtering options
+    - `HarnessOwnerPicker` – Select an owner (Group or User) from the catalog
+
+2. **[Standard Workflow UI Picker](/docs/internal-developer-portal/flows/create-workflow/flows-input#workflow-ui-pickers)**
     - `Entity Picker` – Select an entity from the catalog
     - `Owner Picker` – Select a user or group
     - `Repository Picker` – Choose a repository from a version control provider
 
-2. **[API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker)**
+3. **[API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker)**
 
     - `Dynamic API Picker` – Fetch options dynamically via an API request
     - `Autocomplete Fields` – Suggestions based on previous inputs or external data fetched using Dynamic API Picker. 
@@ -742,6 +749,175 @@ properties:
         dependencies:
           projectPickerRef:
             - 'project_name'
+```
+
+### 5. `HarnessUserGroupPicker`
+
+The User Group Picker allows template users to select a Harness user group from a dropdown list. The list can be filtered based on organization, project, and the current user's memberships.
+
+```yaml
+parameters:
+  - title: Select User Group
+    properties:
+      userGroup:
+        type: string
+        title: User Group
+        description: Select a user group for this resource
+        ui:field: HarnessUserGroupPicker
+```
+
+#### `filterByUserMembership`
+
+When set to `true`, only shows user groups where the logged-in user is a member. Defaults to `false`.
+
+```yaml
+userGroup:
+  title: User Group
+  type: string
+  description: Select one of your user groups
+  ui:field: HarnessUserGroupPicker
+  ui:options:
+    filterByUserMembership: true
+```
+
+#### `includeChildScopes`
+
+When set to `true`, includes user groups from child scopes (e.g., project-level groups when viewing at org level). Defaults to `false`.
+
+```yaml
+userGroup:
+  title: User Group
+  type: string
+  description: Choose a user group (includes child scopes)
+  ui:field: HarnessUserGroupPicker
+  ui:options:
+    includeChildScopes: true
+```
+
+#### Dependencies with Organization and Project Pickers
+
+The user group list updates automatically when the user selects an organization or project using `dependencies`:
+
+```yaml
+parameters:
+  - title: Select Organization
+    properties:
+      orgId:
+        type: string
+        title: Organization
+        ui:field: HarnessOrgPicker
+
+  - title: Select Project
+    properties:
+      projectId:
+        type: string
+        title: Project
+        ui:field: HarnessProjectPicker
+
+  - title: Select User Group
+    properties:
+      userGroup:
+        type: string
+        title: User Group
+        description: Choose a user group from the selected org/project
+        ui:field: HarnessUserGroupPicker
+    dependencies:
+      orgPickerKey: orgId
+      projectPickerKey: projectId
+```
+
+#### `additionalScopes`
+
+Fetch user groups from the current scope plus additional organizations or projects. Each entry can specify `orgIdentifier`, `projectIdentifier`, and `includeChildScopes`.
+
+```yaml
+userGroup:
+  title: User Group
+  type: string
+  description: Choose a user group from multiple scopes
+  ui:field: HarnessUserGroupPicker
+  ui:options:
+    filterByUserMembership: true
+    additionalScopes:
+      - orgIdentifier: "sales_org"
+        includeChildScopes: false
+      - orgIdentifier: "engineering_org"
+        projectIdentifier: "backend_project"
+        includeChildScopes: true
+```
+
+### 6. `HarnessOwnerPicker`
+
+The Owner Picker allows template users to select an owner (typically a Group or User) from the Backstage catalog. It can filter by the current user's memberships and supports custom values.
+
+```yaml
+parameters:
+  - title: Select Owner
+    properties:
+      owner:
+        type: string
+        title: Owner
+        description: Select an owner for this resource
+        ui:field: HarnessOwnerPicker
+```
+
+#### `filterByUserMembership`
+
+When set to `true`, only shows groups/users where the logged-in user is a member. Defaults to `false`.
+
+```yaml
+owner:
+  title: Owner
+  type: string
+  description: Select one of your groups
+  ui:field: HarnessOwnerPicker
+  ui:options:
+    filterByUserMembership: true
+```
+
+#### `catalogFilter`
+
+`catalogFilter` supports filtering options by any field(s) of an entity.
+
+- Get all entities of kind `Group`
+
+```yaml
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: HarnessOwnerPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+```
+
+- Get entities of kind `Group` and spec.type `team`
+
+```yaml
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: HarnessOwnerPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+        spec.type: team
+```
+
+#### `defaultNamespace`
+
+Default namespace for entities. Entities in this namespace won't show namespace prefix.
+
+```yaml
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: HarnessOwnerPicker
+  ui:options:
+    defaultNamespace: default
 ```
 
 ### Other UI Pickers
