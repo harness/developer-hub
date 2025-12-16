@@ -1,0 +1,12 @@
+{
+    "label": "Flyway Command Step",
+    "collapsible": "true",
+    "collapsed": "true",
+    "link":{
+        "type":"generated-index",
+        "title":"Native Flyway Command Step"
+     },
+    "customProps": {
+      "description": "Native Flyway Command Step and use cases associated this step"
+    }
+  }

@@ -53,7 +53,7 @@ Examples include:
 
 **The configuration in the pipeline will look like below**
 
-![](./static/execute-sql-pipeline-config.png)
+![Execute SQL](./static/execute-sql-pipeline-config.png)
 
 **At the yaml level the configuration will look like below**
 

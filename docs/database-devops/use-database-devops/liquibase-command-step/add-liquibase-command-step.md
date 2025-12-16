@@ -30,7 +30,7 @@ Here's how you can add the Liquibase command step to your pipeline:
  3. Within the pipeline configuration, select **Add Step**. 
  4. Select the **Liquibase Command Step**. 
  5. Configure the Liquibase Command Step by either selecting: 
-    1. **Command**: Specify the command you want to execute (e.g. `update`, `rollback`, etc)
+    1. **Command**: Specify the command you want to execute (e.g.`diff-log`, `generate-changelog`)
     1. **Schema Name**: Enter the name of the database schema that the command will affect. 
     1. **Instance Name**: Specify the database instance where the command will be executed. 
     1. **Tag**: This is an optional step but you can create a tag that indicates the version or state you want to apply or rollback changes to. 
@@ -41,3 +41,29 @@ Here's how you can add the Liquibase command step to your pipeline:
 :::info
 To create a pipeline in Database DevOps, you can refer to the Harness documentation detailing how to [Create a pipeline](/docs/database-devops/gitops/create-a-pipeline)
 :::
+
+## Supported Liquibase Commands in Harness Database DevOps
+Harness executes Liquibase commands natively within the pipeline execution framework, applying governance, secret management, and auditing automatically.
+
+### Run Liquibase command for diff-log
+Generates a structured log of differences between two database states.
+In Harness, this is commonly used for:
+- Validating alignment before deployment
+- Feeding results into policy checks or PR workflows
+
+### Run Liquibase command for generate-changelog
+Creates a new changelog based on the current structure of a target database. Learn how to use for [Creating Changelogs](/docs/database-devops/get-started/get-started-with-changelogs)
+Harness surfaces the generated changelog as an artifact, supporting workflows such as:
+- Bootstrapping new schemas into version control
+- Reconstructing a missing or outdated changelog
+- Preparing a starting point before onboarding to DB DevOps
+
+### Run Liquibase command for release-locks
+Releases any locks held by Liquibase on the database, useful in scenarios where a previous operation was interrupted or failed. 
+Harness provides visibility into lock status and facilitates recovery workflows by:
+- Allowing automated recovery in CI/CD pipelines using failure strategies.
+- Enabling manual intervention with clear logging and audit trails.
+
+**Use cases:**
+- Resolving locks after failed deployments.
+- Ensuring database availability for subsequent operations.
