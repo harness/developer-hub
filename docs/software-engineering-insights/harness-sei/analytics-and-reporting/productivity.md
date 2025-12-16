@@ -27,6 +27,12 @@ Below is a brief overview of each widget in **Productivity** on the **Insights**
 
 ### PR Velocity Per Dev
 
+**PR Velocity per Dev** represents the average number of pull requests a developer merges in a given time period. It helps you understand how frequently developers are shipping code.
+
+$$
+\text{PR Velocity per Developer} = \frac{\text{Total PRs Merged by all Developers in the team}}{\text{Number of Developers}}
+$$
+
 ![PR Velocity per Dev](../static/pr-velocity.png)
 
 This widget provides insights into the productivity of individual developers and teams by visualizing the rate at which pull requests (PRs) are completed over time.
@@ -36,17 +42,23 @@ This widget provides insights into the productivity of individual developers and
 
 The following options are available for this widget:
 
-  * **Group by**: Allows switching the segmentation between "PR Size" and "Work Type."
+  * **Group by**: Allows switching the segmentation between **PR Size** and **Work Type**.
   * **View Breakdown**: Provides a detailed breakdown of PR velocity by teams or individual developers, and offers a drill down to specific PRs.
 
 ### PR Cycle Time
 
-![PR Velocity per Dev](../static/pr-cycle.png)
+**PR Cycle Time** measures how long it takes for a pull request to progress from the first commit included in the PR through PR creation and merge. This highlights delays across the development and review process and helps identify where workflow friction occurs.
 
-This widget visualizes the average time it takes for pull requests (PRs) to move through various stages from creation to merge. It helps identify bottlenecks in the PR review and merge process.
+$$
+\text{PR Cycle Time} = \frac{\text{Sum of time spent in each stage (Commit → PR Creation → PR Merge)}}{\text{Number of merged PRs}}
+$$
+
+![](../static/pr-cycle.png)
+
+This widget visualizes the average time it takes for pull requests (PRs) to move from the first commit through PR creation to merge. It helps identify bottlenecks in the PR review and merge process by capturing both coding delays (time between the first commit and PR creation) and review delays (time between PR creation and merge), including time spent in all tracked stages such as coding, review, and other workflow steps.
 
 * **Metrics Displayed**: Average time (e.g., 5d 11h) over the selected period.
-* **Visualization**: A bar chart showing PRs per week, segmented by time spent in stages: "PR Creation," "First Comment," "Approval," and "Merge."
+* **Visualization**: A bar chart showing PRs per week, segmented by time spent in stages: **PR Creation**, **First Comment**, **Approval**, and **Merge**.
 
 The following options are available for this widget:
 
@@ -55,21 +67,33 @@ The following options are available for this widget:
 
 ### Work Completed Per Developer
 
-![PR Velocity per Dev](../static/work-completed.png)
+**Work Completed per Developer** measures how much meaningful work (such as features, bugs, or uncategorized work) each developer completes in a given time period. It helps you understand output patterns and delivery consistency across teams.
+
+$$
+\text{Work Completed per Developer} = \frac{\text{Total Completed Work Items}}{\text{Number of Active Developers}}
+$$
+
+![](../static/work-completed.png)
 
 This widget tracks the amount of completed work (e.g., features, bugs) per developer over time, offering insights into the output generation.
 
 * **Metrics Displayed**: Average completed work units per developer per week (e.g., 0.23 per week).
-* **Visualization**: A bar chart showing work completed per developer per week, segmented by complexity: "Simple," "Medium," "Complex," and "Other."
+* **Visualization**: A bar chart showing work completed per developer per week, segmented by complexity: **Simple**, **Medium**, **Complex**, and **Other**.
 
 The following options are available for this widget:
 
-* **Group by**: Allows you to change the segmentation, for example, by "Features."
+* **Group by**: Allows you to change the segmentation, for example, by **Features**.
 * **View Breakdown**: Provides a more detailed view by team or individual developers, often with a table drill down of specific completed items.
 
 ### Coding Days Per Developer
 
-![PR Velocity per Dev](../static/coding-days.png)
+**Coding Days per Developer** represents the number of distinct days in which a developer made at least one meaningful code contribution (commit).
+
+$$
+\text{Coding Days per Developer} = \frac{\text{Sum of distinct commit days for all developers}}{\text{Number of Active Developers}}
+$$
+
+![](../static/coding-days.png)
 
 This widget measures the average number of days developers actively contribute code, indicating consistent engagement and direct contribution volume.
 
@@ -82,7 +106,13 @@ The following options are available for this widget:
 
 ### Number of Comments Per PR
 
-![PR Velocity per Dev](../static/comments.png)
+**Number of Comments per PR** tracks the average volume of review discussion (comments) on pull requests. SEI counts all review comments (including inline comments and general) on each PR, then averages this across all PRs merged in the selected time period.
+
+$$
+\text{Avg Comments per PR} = \frac{\text{Total Comments on PRs}}{\text{Number of PRs}}
+$$
+
+![](../static/comments.png)
 
 This widget gauges the level of collaboration and communication within PRs by tracking the average number of comments per pull request. More comments can indicate active discussion and thorough reviews.
 
@@ -95,7 +125,13 @@ The following options are available for this widget:
 
 ### Average Time to First Comment
 
-![PR Velocity per Dev](../static/average-time.png)
+**Average Time to First Comment** measures how quickly reviewers respond to new pull requests. It reflects team responsiveness and the overall efficiency of the review workflow.
+
+$$
+\text{Avg Time to First Comment} = \frac{\text{Sum of (Time to First Comment for each PR)}}{\text{Number of PRs}}
+$$
+
+![](../static/average-time.png)
 
 This widget measures the responsiveness of the team by calculating the average time it takes for a pull request to receive its first comment. Faster first comments can indicate efficient review processes.
 
