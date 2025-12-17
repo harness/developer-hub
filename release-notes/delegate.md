@@ -115,6 +115,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## December 2025 
 
+### Version 25.08.86602 <!--December 17, 2025-->
+
+#### Fixed issues
+
+-  Increased retry timeout for CI_EXECUTE_STEP in kubernetes builds. [CI-19955]
+
 ### Version 25.12.87402 <!--December 10, 2025 -->
 
 #### Fixed issues 
