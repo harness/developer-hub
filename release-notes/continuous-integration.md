@@ -33,6 +33,23 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## December 2025
 
+### Version 1.112.0
+<!-- 2025-12-15 -->
+
+#### Fixed Issues
+- Harness CI pipelines now support reporting Git status to Bitbucket using Bitbucket App Tokens (CI-20157, ZD-99679)
+- Improved Maven Build Intelligence configuration file handling for mixed container and containerless steps in VM-based CI stages.(CI-19687, ZD-97308)
+- Fixed an issue in the delegate and increased the retry timeout to 2 minutes from 5 seconds for execute task in Harness CI. This would ensure required health checks and ensure pod reachability before proceeding. This fix was deployed as a hotfix . (CI-19955, CI-20135, ZD-98299)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | General version update | 1.18.0 | 1.18.1 |
+| `harness/ci-lite-engine` | General version update | 1.18.0 | 1.18.1 |
+| `harness/drone-git` | General version update | 1.7.9 | 1.7.10 |
+
+
 ### Version 1.111.0
 <!-- 2025-12-08 -->
 
@@ -45,8 +62,8 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 | Image | Change | Previous Version | New Version |
 |-------|--------|------------------|-------------|
-| harness/ci-addon | General version update | 1.9.16 | 1.9.17 |
-| harness/ci-lite-engine | General version update | 1.18.0 | 1.18.1 |
+| `harness/ci-addon` | General version update | 1.17.9 | 1.18.0 |
+| `harness/ci-lite-engine` | General version update | 1.17.9 | 1.18.0 |
 
 ### Version 1.110.0
 <!-- 2025-12-01 -->
@@ -63,13 +80,13 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 | Image | Change | Previous Version | New Version |
 |-------|--------|------------------|-------------|
-| plugins/cache | Security vulnerability fixes (CVE-2025-22869) | 1.9.16 | 1.9.17 |
-| plugins/artifactory | Updated JFrog CLI to 2.82.0 + vulnerability fixes (replaces SDK dependency) | 1.8.0 | 1.8.1 |
-| plugins/kaniko-gcr | Security vulnerability fixes (CVE-2024-45337, CVE-2025-22869, CVE-2025-21613, CVE-2025-21614) | 1.13.0 | 1.13.2 |
-| plugins/kaniko-acr | Security vulnerability fixes (CVE-2025-30204) | 1.13.0 | 1.13.2 |
-| plugins/gcr | Security vulnerability fixes | 21.1.0 | 21.1.1 |
-| plugins/gar | Security vulnerability fixes | 21.1.0 | 21.1.1 |
-| plugins/buildx-gar | Security vulnerability fixes | 1.3.9 | 1.3.10 |
+| `plugins/cache` | Security vulnerability fixes (CVE-2025-22869) | 1.9.16 | 1.9.17 |
+| `plugins/artifactory` | Updated JFrog CLI to 2.82.0 + vulnerability fixes (replaces SDK dependency) | 1.8.0 | 1.8.1 |
+| `plugins/kaniko-gcr` | Security vulnerability fixes (CVE-2024-45337, CVE-2025-22869, CVE-2025-21613, CVE-2025-21614) | 1.13.0 | 1.13.2 |
+| `plugins/kaniko-acr` | Security vulnerability fixes (CVE-2025-30204) | 1.13.0 | 1.13.2 |
+| `plugins/gcr` | Security vulnerability fixes | 21.1.0 | 21.1.1 |
+| `plugins/gar` | Security vulnerability fixes | 21.1.0 | 21.1.1 |
+| `plugins/buildx-gar` | Security vulnerability fixes | 1.3.9 | 1.3.10 |
 
 ## November 2025
 
