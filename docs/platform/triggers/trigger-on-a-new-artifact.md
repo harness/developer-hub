@@ -68,6 +68,10 @@ You can use the following artifact providers to triggers pipelines:
 
   To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
 
+  When this setting is enabled, a separate deployment will be triggered for each artifact collected during the polling interval, which will not maintain the tag ordering.
+  
+  For example, if tags `v1.2.0` and `v1.1.0` are collected within the same polling window, you may see that `v1.2.0` is executed before `v1.1.0`.
+
   :::
 
 - **Trigger based on file name:** The trigger is executed based on *file names* and not metadata changes.
