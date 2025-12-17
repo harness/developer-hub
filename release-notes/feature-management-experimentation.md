@@ -20,7 +20,7 @@ These release notes describe recent changes to Harness Feature Management & Expe
 ----
 #### 2025-12-16
 
-The Harness Proxy now supports reverse proxying and forward-proxy capabilities. You can route both outbound and inbound traffic through a centralized, customer-managed proxy while maintaining end-to-end encryption and strict control over how traffic reaches Harness FME services.
+The Harness Proxy now supports reverse proxying and forward-proxy capabilities. You can route both outbound and inbound traffic through a centralized, customer-managed proxy while maintaining end-to-end encryption and strict control over how traffic reaches Harness services.
 
 This feature is valuable for organizations that want a single connection point for their SDKs or need to expose Harness endpoints inside tightly controlled networks.
 

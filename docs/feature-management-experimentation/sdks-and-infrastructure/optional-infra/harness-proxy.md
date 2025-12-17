@@ -2,14 +2,14 @@
 title: Harness Proxy
 sidebar_label: Harness Proxy
 sidebar_position: 7
-description: Learn about the Harness Forward Proxy, which allows you to establish a single connection point from your FME SDKs to Harness FME services by using a forward or reverse proxy mode.
+description: Learn about the Harness Forward Proxy, which allows you to establish a single connection point from your FME SDKs to Harness services by using a forward or reverse proxy mode.
 ---
 
 ## Overview
 
 Enterprise customers often operate in environments with controlled egress points, where all outgoing network traffic must pass through approved gateways. Without a proxy, each new delegate or SDK instance may require individual firewall exceptions and cross-team approvals, creating operational friction at scale.
 
-Harness Proxy simplifies this by acting as a single, authorized egress point for all Harness-related traffic. The Harness Proxy also supports reverse proxy mode, which allows SDK traffic or other client requests to be routed from your infrastructure to Harness FME services through a centralized entry point. 
+Harness Proxy simplifies this by acting as a single, authorized egress point for all Harness-related traffic. The Harness Proxy also supports reverse proxy mode, which allows SDK traffic or other client requests to be routed from your infrastructure to Harness services through a centralized entry point. 
 
 This allows you to:
 
