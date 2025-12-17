@@ -120,6 +120,43 @@ The **Skip Resource Versioning** option is disabled automatically.
    - Previous successful release Secret.
    - One more previous release Secret.
 
+## Imperative rollback
+
+Imperative rollback uses Kubernetes' internal rollout history mechanism to revert workloads to a previous state. When a rollback is triggered, Harness issues specific commands to Kubernetes, instructing it to roll back the Deployment to a previous ReplicaSet based on its rollout history.
+
+Harness executes the following command:
+
+```
+kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>
+```
+
+### How imperative rollback works
+
+- **Kubernetes undo mechanism**: Imperative rollback uses Kubernetes' native undo mechanism with internal revision tracking. The rollback rewinds the Deployment to a previous ReplicaSet without redefining the entire desired state.
+- **Helm 2-style rollback logic**: Harness uses Helm 2-style rollback logic for imperative rollback.
+- **Release history storage**: Release history is stored in a **single Kubernetes ConfigMap** if there are no custom resources in the manifest. If custom resources are present, release history is stored in a **Kubernetes Secret** instead. The release history contains metadata about each deployed revision, including manifests, resource sets, pruning metadata, and rollout information.
+
+### Difference from declarative rollback
+
+The key difference between imperative and declarative rollback is in their approach:
+
+- **Imperative rollback** issues step-by-step commands to revert to a previous state using Kubernetes' rollout history.
+- **Declarative rollback** reapplies the entire manifest set from a previous successful release, causing Kubernetes to reconcile the cluster to match the declared state. Each release is stored in separate Kubernetes Secrets.
+
+Because these underlying mechanisms differ, behaviors around pruning, resource recreation, and release history management also differ between the two approaches.
+
+:::warning Do not switch between imperative and declarative rollback
+
+Harness maintains **separate release histories** for imperative and declarative rollback types. 
+
+**Harness supports switching from imperative to declarative rollback only once.** This is a one-time migration. **Switching from declarative to imperative rollback is NOT supported.**
+
+If you switch between rollback types multiple times, rollback behavior will be unpredictable. When you switch between rollback types, Harness cannot reliably determine which release history to use as the source of truth, leading to ambiguity in selecting the target rollback release, which can cause rollback failures or unexpected behavior.
+
+**Recommendation:** Once you enable declarative rollback (`enableDeclarativeRollback: true`), do not switch back to imperative rollback for that service.
+
+:::
+
 ### Rollback Support for ConfigMap and Secret Changes
 
 By default, Kubernetes does not restart pods when only ConfigMap or Secret objects are updated. As a result, declarative rollbacks that involve changes to these objects may not take effect as expected.
