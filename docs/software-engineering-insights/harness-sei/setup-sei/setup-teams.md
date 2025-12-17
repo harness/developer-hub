@@ -24,8 +24,6 @@ Each Team represents a group of developers working together within the organizat
 
 This configuration layer adds precision to how metrics like Deployment Frequency, Lead Time, MTTR, and others are calculated, which ensures each metric reflects the real scope, velocity, and complexity of the team's delivery lifecycle.
 
-### Why team settings matters
-
 Out of the box, Harness SEI builds teams from your organization’s hierarchy. However, each team needs to be contextualized with additional configuration to ensure data is mapped correctly and insights are accurate.
 
 This includes:
@@ -36,7 +34,11 @@ This includes:
 
 ## Set up Teams
 
-Each team’s configuration includes the following:
+To configure teams in SEI 2.0:
+
+1. From the SEI navigation menu, click **Insights**. Your Org Tree is displayed on the left, allowing you to switch between organization-level and individual team-level insights.
+1. Select a leaf node (a **Team**) in the Org Tree.
+1. A **Team Settings** side panel opens, allowing you to configure integrations, developer identifiers, shared developers, tool settings, and developer records for that team.
 
 ### Step 1: Choose the integrations to power insights
 
@@ -48,9 +50,22 @@ The choice of integrations in this page is powered by the profile definition. Fo
 
 ### Step 2: Review & update developer identifiers
 
-To measure productivity metrics accurately (e.g., coding days, PR activity), Harness SEI needs to know which developer performed which action in each tool.
+To measure productivity metrics accurately (e.g., coding days, PR activity), Harness SEI needs to know which developer performed which action in each tool. This is done by mapping each developer's cloud identities across your integrated systems.
 
-The following table lists each integration along with the type of cloud identifier used and sample values. This is used to map cloud identities to individual developers:
+The **Developer Records** table on the **Developers** tab in **Team Settings** includes attributes that determine how a developer was added and whether they belong to the selected team: 
+
+* `Source`: Developers added through the [API](/docs/software-engineering-insights/harness-sei/api/cloud-ids) or CSV upload, appear with `Source: Developers`. Developers added in the UI appear with `Source: Manual`.
+* `Shared`: Developers inherited from the team's Org Tree leaf node appear with `Shared: No`. Developers who are not from this team (or Org Tree node) but are manually added because they contribute to the team's work appear with `Shared: Yes`. 
+
+![](../static/shared-1.png)
+
+However, some contributors, such as engineering managers or individual developers who regularly contribute across teams, may not belong to the selected team's leaf node in the Org Tree. For these cases, you can add them as shared developers, which appear with `Shared: Yes` and `Source: Manual`.
+
+Both automatically added developers and manually added shared developers must have correct identity mappings to ensure the accuracy of DORA, sprint, and productivity metrics.
+
+#### Cloud identifiers by integration
+
+The following table lists each integration along with the type of cloud identifier used and sample values. 
 
 | Integration          | Identifier Type | Example(s)                                            |
 | -------------------- | ------------ | -------------------------------------------------------- |
@@ -64,7 +79,41 @@ The following table lists each integration along with the type of cloud identifi
 
 This step is mandatory for productivity metrics, and mapping must be kept up-to-date in **Team Settings** to ensure metrics are accurate. You can automate this step using [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers/), which reduces manual mapping by correlating developer identities across supported integrations.
 
-![](../static/team-2.png)
+#### Managing shared developers
+
+In addition to identity mapping, the **Developers** tab in **Team Settings** allows you to add contributors who are not inherited from the Org Tree but still affects the selected team's metrics. While inherited developers appear with `Source: Developers` and `Shared: No`, shared developers appear with `Source: Manual` and `Shared: Yes`.
+
+Shared developers typically include engineering managers, individual contributors who regularly contribute across teams, and contributors whose commits, PRs, or Jira activity influence the team's insights.
+
+To add a shared developer in the **Developers** tab:
+
+1. Click **+ Shared Developer**.
+1. Search by name or email, and select one or more developers.
+1. Click **Continue**.
+
+   ![](../static/shared-2.png)
+
+1. After adding the shared developers, the **Developer Records** table updates with the following information:
+
+   | Column                   | Description                                                       |
+   | ------------------------ | ----------------------------------------------------------------- |
+   | **Name**                 | Developer’s full name                                             |
+   | **Email**                | Developer’s email                                                 |
+   | **Shared**               | `Yes` (until identities are matched, status may appear `PENDING`) |
+   | **Source**               | `Manual`                                                          |
+   | **Developer Identities** | `PENDING` until cloud IDs are mapped                              |
+
+1. To remove a shared developer, click the **-** icon in the **Actions** column.
+
+   ![](../static/shared-4.png)
+
+1. Click **Save**.
+
+When browsing the **Developer Records** table, you can search for developers by name or email, filter shared developers using the `Shared` dropdown menu, and use the `Developer Identities` dropdown menu to show only records with missing or present developer identities.
+
+![](../static/shared-3.png)
+
+Click the **+** icon next to the `Developer Identities` dropdown menu to add additional columns such as `Added By` (who created the record) and `Last Updated` (the most recent modification timestamp) to the **Developer Records** table.
 
 ### Step 3: Tool or system specific settings
 

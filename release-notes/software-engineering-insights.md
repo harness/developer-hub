@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-12-05T10:00:10
+date: 2025-12-16T10:00:10
 sidebar_position: 15
 ---
 
@@ -19,6 +19,27 @@ These release notes describe recent changes to Harness Software Engineering Insi
 :::
 
 ## December 2025
+
+### [New Feature] Shared Developers is now available
+---
+#### 2025-12-16
+
+Shared Developers is now available in SEI 2.0, offering clearer controls for managing developers who contribute across multiple teams but are not part of a team's inherited [Org Tree membership](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree). Shared Developers provide a more flexible way of maintaining developer records, whether they were added automatically through the API/CSV file upload or manually using the UI.
+
+You can add shared developers on the **Developers** tab in **Team Settings**, and include contributors such as engineering managers or individual contributors who regularly work across teams without modifying Org Tree membership. This streamlines team setup, improves identity management, and ensures accurate attribution for efficiency and productivity metrics.
+
+The **Developer Records** table displays shared developers and distinguish those inherited from the Org Tree (`Shared: No`) from developers that were manually added to a team (`Shared: Yes`). The table also includes each developer's source, whether they were discovered through API/CSV ingestion or added through the UI.
+
+![](./static/sei/shared-developers.png)
+
+You can search for developers by name or email, filter the list by the `Shared` status or developers that have `Developer Identities` or are missing them, and include additional data columns such as `Added By` and `Last Updated` in the developer records table.
+
+Shared Developers help teams accurately represent cross-team contributors, maintain clean developer identity mappings, and ensure efficiency and productivity metrics reflect how work is actually delivered.
+
+#### Related documentation
+
+- [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#managing-shared-developers)
+- [Set up Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree)
 
 ### [New Feature] Code Rework is in beta
 ---
