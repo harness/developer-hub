@@ -55,7 +55,67 @@ The stage failure strategy applies to all steps in the stage that do not have th
    - **On failure of type:** Select one or more of the error types to trigger the failure strategy.
    - **Perform Action:** Select the action that should occur when the specified failure event happens.
    - **Timeout** and **Post timeout action:** These are available if you selected **Manual Intervention** for the **Action**. The manual intervention action allows a user to intervene and choose an **Action** when the specified failure event occurs. You can enter a **Timeout** for the user to select an action, and a **Post Timeout Action** to fallback on if the user doesn't manually select an action in a certain amount of time.
-   - **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** for the **Action**. Enter the number of times to retry the step and the retry interval.
+   - **Retry Count**, **Retry Intervals**, and **Post retry failure action:** These are available if you selected **Retry** for the **Action**. Enter the number of times to retry the stage, the retry interval between attempts, and the **Post retry failure action** to specify what action to take when all retry attempts have been exhausted and failed. For example, you can configure the stage to rollback or abort after all retries fail.
+
+### Stage failure strategy YAML examples
+
+The following examples demonstrate how to configure stage-level failure strategies in YAML.
+
+<details>
+<summary>Stage rollback on all errors</summary>
+
+This example shows a deployment stage configured to automatically roll back when any error occurs during stage execution.
+
+```yaml
+- stage:
+    name: k8s
+    identifier: k8s
+    description: ""
+    type: Deployment
+    spec:
+      ...
+    tags: {}
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: StageRollback
+```
+
+</details>
+
+<details>
+<summary>Retry stage with rollback on retry failure</summary>
+
+This example demonstrates a deployment stage that retries up to 2 times with a 1-hour interval between retries. If all retry attempts fail, the stage performs a rollback.
+
+```yaml
+stages:
+  - stage:
+      name: k8s
+      identifier: k8s
+      description: ""
+      type: Deployment
+      spec:
+        ...
+      tags: {}
+      failureStrategies:
+        - onFailure:
+            errors:
+              - AllErrors
+            action:
+              type: Retry
+              spec:
+                onRetryFailure:
+                  action:
+                    type: StageRollback
+                retryCount: 2
+                retryIntervals:
+                  - 1h
+```
+
+</details>
 
 ### Add a step failure strategy
 
@@ -72,7 +132,95 @@ To add a step failure strategy:
    - **On failure of type:** Select one or more of the error types to trigger the failure strategy.
    - **Perform Action:** Select the action that should occur when the specified failure event happens.
    - **Timeout** and **Post timeout action:** These are available if you selected **Manual Intervention** for the **Action**. The manual intervention action allows a user to intervene and choose an **Action** when the specified failure event occurs. You can enter a **Timeout** for the user to select an action, and a **Post Timeout Action** to fallback on if the user doesn't manually select an action in a certain amount of time.
-   - **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** for the **Action**. Enter the number of times to retry the step and the retry interval.
+   - **Retry Count**, **Retry Intervals**, and **Post retry failure action:** These are available if you selected **Retry** for the **Action**. Enter the number of times to retry the step, the retry interval between attempts, and the **Post retry failure action** to specify what action to take when all retry attempts have been exhausted and failed. For example, you can configure the step to perform a stage rollback or abort after all retries fail.
+
+### Step failure strategy YAML examples
+
+The following examples demonstrate how to configure step-level failure strategies in YAML.
+
+<details>
+<summary>Manual intervention on failure</summary>
+
+This example shows a Kubernetes rolling deployment step with a failure strategy that triggers manual intervention when any error occurs. If no manual action is taken within 1 hour, the pipeline automatically aborts.
+
+```yaml
+- step:
+    name: Rollout Deployment
+    identifier: rolloutDeployment
+    type: K8sRollingDeploy
+    timeout: 10m
+    spec:
+      skipDryRun: false
+      pruningEnabled: false
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: ManualIntervention
+            spec:
+              onTimeout:
+                action:
+                  type: Abort
+              timeout: 1h
+```
+
+</details>
+
+<details>
+<summary>Ignore failure</summary>
+
+This example shows a deployment step configured to ignore all errors and continue pipeline execution. The step will be marked as failed, but the pipeline will proceed to the next step.
+
+```yaml
+- step:
+    name: Rollout Deployment
+    identifier: rolloutDeployment
+    type: K8sRollingDeploy
+    timeout: 10m
+    spec:
+      skipDryRun: false
+      pruningEnabled: false
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: Ignore
+```
+
+</details>
+
+<details>
+<summary>Retry with stage rollback on retry failure</summary>
+
+This example demonstrates a deployment step that retries up to 2 times with a 1-hour interval between retries. If all retry attempts fail, the stage performs a rollback.
+
+```yaml
+- step:
+    name: Rollout Deployment
+    identifier: rolloutDeployment
+    type: K8sRollingDeploy
+    timeout: 10m
+    spec:
+      skipDryRun: false
+      pruningEnabled: false
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: Retry
+            spec:
+              retryCount: 2
+              onRetryFailure:
+                action:
+                  type: StageRollback
+              retryIntervals:
+                - 1h
+```
+
+</details>
 
 ### Failure strategies as runtime input
 
@@ -130,8 +278,8 @@ These actions can be applied to the failure strategy as primary action and timeo
 | **Manual Intervention** | A Harness user can perform a manual intervention when the error type occurs. There are several options to select from:  **Mark as Success** **Ignore Failure** **Retry** **Abort** **Rollback Stage**Harness pauses the pipeline execution when waiting for manual intervention. The pipeline execution state appears as **Paused**. | Same as step.                                                                                                                                                     | Same as step, but applies to all steps.                                           |
 | **Mark as Success**     | The step is marked as **Successful** and the stage execution continues.                                                                                                                                                                                                                                                              | Same as step.                                                                                                                                                     | The failed step is marked as **Successful** and the pipeline execution continues. |
 | **Ignore Failure**      | The stage execution continues. The step is marked as **Failed**, but rollback is not triggered.                                                                                                                                                                                                                                      | Same as step.                                                                                                                                                     | Same as step.                                                                     |
-| **Retry Step**          | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. Additionally, you can **define a JEXL condition to retry the step only when a specific condition is met**.                                                                                                                                                                                                                 | Same as step.                                                                                                                                                     | Same as step.                                                                     |
-| **Retry Step Group**    | N/A                                                                                                                                                                                                                                                                                                                                  | Harness will retry the execution of the complete step group automatically, from the beginning. You can set **Retry Count** and **Retry Intervals**.               | N/A                                                                               |
+| **Retry Step**          | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. You can also configure a **Post retry failure action** to specify what happens when all retry attempts fail (for example, abort or rollback stage). Additionally, you can **define a JEXL condition to retry the step only when a specific condition is met**.                                                                                                                                                                                                                 | Same as step.                                                                                                                                                     | Same as step.                                                                     |
+| **Retry Step Group**    | N/A                                                                                                                                                                                                                                                                                                                                  | Harness will retry the execution of the complete step group automatically, from the beginning. You can set **Retry Count** and **Retry Intervals**. You can also configure a **Post retry failure action** to specify what happens when all retry attempts fail.               | N/A                                                                               |
 | **Abort**               | Pipeline execution is aborted. If you select this option, no timeout is needed.                                                                                                                                                                                                                                                      | Same as step.                                                                                                                                                     | Same as step.                                                                     |
 | **Rollback Stage**      | The stage rolls back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing.                                                                                                                                                                                   | Same as step.                                                                                                                                                     | Same as step.                                                                     |
 | **Rollback Step Group** | N/A                                                                                                                                                                                                                                                                                                                                  | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was performing. | N/A                                                                               |
