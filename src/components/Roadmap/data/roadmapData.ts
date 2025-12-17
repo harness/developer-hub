@@ -109,7 +109,7 @@ const ModuleData: ModuleData[] = [
     horizon: SscaData,
   },
   {
-    title: "Security Scanner",
+    title: "SAST & SCA",
     description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.qwietai,
     horizon: QwietaiData,
