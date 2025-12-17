@@ -20,6 +20,21 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 :::
 
+## December 2025
+
+### 2025.12.v1
+
+#### New Features
+
+- **SVG Anchor Tag Support**  
+ SVG anchor tags are now supported in test interactive authoring and test run replay. Images with SVG tags are now rendered in the session replayer during authoring and execution, improving visibility of icons and symbol references during test execution.
+
+#### Enhancements and Bug Fixes
+
+- **Test Suite Parallel Execution Control**  
+  Parallel execution of a test suite on the same environment is now prevented to avoid conflicts. Test suites can still run in parallel across different environments, improving reliability and preventing race conditions.
+
+
 ## November 2025
 
 
