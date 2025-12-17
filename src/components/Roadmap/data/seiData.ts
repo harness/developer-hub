@@ -6,28 +6,28 @@ export const SeiData: Horizon = {
     feature: [
       {
         tag: [{ value: "AI" }, { value: "Insights" }],
-        title: "AI Summaries and Recommendations",
-        description: "AI-first summarization of insights, including clear recommendations and summaries for managers and leaders to drive measurable change.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Insights" }],
         title: "AI Insights",
         description: "Track usage, cost, and impact of AI agent(s) across Productivity and Efficiency dashboards, reported across organization and teams.",
       },
       {
-        tag: [{ value: "Insights" }],
-        title: "Sprint Insights",
-        description: "Insights into the efficiency of your sprint process that enable you to track and optimize plan, creep, or delivery-related metrics.",
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Summaries and Recommendations",
+        description: "AI-first summarization of insights, including clear recommendations and summaries for managers and leaders to drive measurable change.",
+      },
+      {
+        tag: [{ value: "Dashboards" }],
+        title: "Canvas",
+        description: "Visualize and interact with your SEI data using custom dashboards.",
       },
       {
         tag: [{ value: "Insights" }],
-        title: "Flow Insights",
-        description: "Insights into the flow of work and overall team throughput.",
+        title: "Insights",
+        description: "Code Rework, Sprint Insights, Security Insights, and Test Insights.",
       },
       {
-        tag: [{ value: "Insights" }],
-        title: "Additional Insights",
-        description: "Security Insights, Test Insights, Quality Insights, and custom insights.",
+        tag: [{ value: "Integrations" }],
+        title: "ServiceNow Integration",
+        description: "Integrate ServiceNow incident data to compute and track MTTR and CFR.",
       },
     ],
   },
@@ -53,7 +53,7 @@ export const SeiData: Horizon = {
       {
         tag: [{ value: "Integrations" }],
         title: "Integrations",
-        description: "ServiceNow, GitLab CI/CD, and Jira Services Management.",
+        description: "Includes GitLab CI/CD, Jira Services Management, Harness IDP, and Harness STO.",
       },
      ],
   },
