@@ -538,10 +538,119 @@ The skipping mechanism operates for both **push** and **pull request** events in
 Currently, this feature is behind the feature flag `PIPE_ENABLE_SEND_STATUS_TO_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Leveraging the **Send status to Git** option for individual stages in the pipeline gives you enhanced control over the stage execution status updates.
+The **Send status to Git** option allows you to control how your CI pipeline reports build status to Git providers (GitHub, GitLab, Bitbucket) for Pull Request builds. You can find this option in your pipeline at **Pipeline > CI Stage > Advanced Tab > Send status to Git**.
 
-When a Git Pull Request event triggers a pipeline, Harness can send status updates for each pipeline stage back to the Git system (GitHub, GitLab, etc.) as it executes.
+With this feature, you can:
 
+- Control which stages appear as status checks on Pull Requests.
+- Use custom, business-friendly names for status checks instead of technical stage names.
+- Selectively configure which stages affect PR merge requirements.
+
+### How Status Updates Work
+
+When a Git Pull Request event triggers a pipeline, status updates can be sent by either CI or the Harness Pipeline service, depending on your configuration.
+
+| Configuration | PR Builds | Branch/Manual/Tag Builds | Status Check Name Format | Who Sends Status |
+|---------------|-----------|--------------------------|--------------------------|------------------|
+| **Not Configured** | Works | Works | `Pipeline Name - Stage Name` | CI |
+| **Enabled (Custom Name)** | Works | Works | `Pipeline Name - Custom Name` | Harness (PR) / CI (others) |
+| **Disabled** | No status sent | No status sent | N/A | No one |
+
+:::info
+Custom status check names only apply to PR-triggered builds. For branch, manual, or tag builds, the default `Pipeline Name - Stage Name` format is used.
+:::
+
+### Preventing Duplicate Status Checks
+
+When **Send status to Git** is configured with a custom name, Harness Pipeline service sends the status update for PR builds. To prevent duplicate status checks appearing on your PR, CI automatically skips sending its own status update when it detects that custom status reporting is enabled.
+
+**Without this behavior (previous):**
+- Both CI and Harness would send status updates for PR builds.
+- PRs showed duplicate status checks for the same stage (for example, both `MyApp-CI - Build` from CI and `MyApp-CI - Quality Gate` from Harness).
+
+**With this behavior (current):**
+- CI detects the custom configuration and skips sending status for PR builds.
+- Only Harness sends the status update with your custom name.
+- PRs show a single, clean status check.
+
+### Configuration Examples
+
+#### Default Behavior (No Configuration)
+
+When `sendGitStatus` is not configured in your stage YAML, CI automatically sends status updates for all build types.
+
+```yaml
+# No sendGitStatus configuration in stage
+stages:
+  - stage:
+      identifier: Build
+      type: CI
+      spec:
+        # ... stage configuration
+```
+
+**Result for all build types:**
+- CI sends status updates.
+- Status check appears as `Pipeline Name - Stage Name` (for example, `MyApp-CI - Build`).
+- Status transitions from `Pending` to `Success` or `Failure`.
+
+#### Custom Status Names (Enabled)
+
+When `sendGitStatus` is enabled with a custom name, Harness sends status updates for PR builds while CI handles other build types.
+
+```yaml
+stages:
+  - stage:
+      identifier: Build
+      type: CI
+      spec:
+        # ... stage configuration
+      advanced:
+        sendGitStatus:
+          enabled: true
+          name: "Quality Gate"
+```
+
+**Result for PR builds:**
+- Harness sends status updates.
+- CI skips sending status (no duplicates).
+- Status check appears as `Pipeline Name - Custom Name` (for example, `MyApp-CI - Quality Gate`).
+
+**Result for branch/manual/tag builds:**
+- CI sends status updates (custom config is ignored).
+- Status check appears as `Pipeline Name - Stage Name`.
+
+#### Disable Status Updates
+
+When `sendGitStatus` is explicitly disabled, no status updates are sent for that stage.
+
+```yaml
+stages:
+  - stage:
+      identifier: Build
+      type: CI
+      spec:
+        # ... stage configuration
+      advanced:
+        sendGitStatus:
+          enabled: false
+```
+
+**Result for all build types:**
+- No status updates are sent.
+- The stage does not appear as a status check on the PR.
+- Use this when a stage should not affect PR merge decisions.
+
+### Prerequisites
+
+To use custom status check names, ensure the following requirements are met:
+
+| Requirement | Details |
+|-------------|---------|
+| **Feature Flag** | `PIPE_ENABLE_SEND_STATUS_TO_GIT` must be enabled in your account. Contact [Harness Support](mailto:support@harness.io) to enable it. |
+| **Build Trigger** | The build must be triggered by a Pull Request event. |
+| **Git Connector Permissions** | Your Git connector must have write permissions for status checks. |
+| **YAML Configuration** | `sendGitStatus` must be present in the stage YAML with `enabled: true`. |
 
 ### Key Capabilities and Customization
 
@@ -550,20 +659,24 @@ With this feature, you gain the following capabilities:
 
 - **Customizable Status Check Names:** Set custom names for the status checks associated with pipeline stages using fixed values or Harness expressions like `<+pipeline.variables.varStage>`. This allows for dynamic and descriptive status names.
 
-  - In case the expression can not be resolved or evaluated, the Stage Identifier will represent the status check in the Git Pull Request. 
-
+  - If the expression cannot be resolved or evaluated, the stage identifier is used as the status check name.
 
 ![Expression Nomenclature for status check git](./static/send-status-to-git-expression.png)
 
-- **Visibility on Pull Request:** Receiving status updates as checks directly on the Git Pull Request makes it easier for developers to identify the execution status of each stage in the pipeline without having to navigate to the pipeline run on Harness. 
+- **Visibility on Pull Request:** Receiving status updates as checks directly on the Git Pull Request makes it easier for developers to identify the execution status of each stage in the pipeline without having to navigate to the pipeline run on Harness.
 
-- **Status Updates for Skipped Stages:** If a stage is skipped during a pipeline run, it will be represented with **Success** status in Git PR.
+- **Status Updates for Skipped Stages:** If a stage is skipped during a pipeline run, it is represented with a **Success** status in the Git PR.
 
 ![Expression Nomenclature for status check git](./static/send-status-to-git-checks.png)
 
-One key fact to note here is that the order in which the status checks are displayed on the Git PR will not necessarily follow the order of execution in which Harness Pipeline Stages are executed. Instead, they will be displayed in alphabetical order on the Git PR.
+The order in which status checks are displayed on the Git PR does not necessarily follow the execution order of Harness Pipeline stages. Instead, they are displayed in alphabetical order.
 
 ### Enabling Send Status to Git
 
-To configure Git status checks for your pipeline stages, navigate to the pipeline and select the stage for which you want to enable it. In the advanced settings, find the **Send status to Git** option, enable it, and enter the desired name or Harness expression.
+To configure Git status checks for your pipeline stages:
+
+1. Navigate to your pipeline and select the stage.
+2. Go to the **Advanced** tab.
+3. Find the **Send status to Git** option and enable it.
+4. Enter the desired name or Harness expression for the status check.
 

@@ -41,6 +41,10 @@ To get status updates in your PRs, you must:
    ![](./static/scmstatus-apiauth.png)
 3. Run PR builds. Branch and tag builds don't send PR status updates. You can use [webhook triggers](/docs/platform/triggers/triggering-pipelines) to automatically run builds when PRs are created or updated.
 
+:::tip Custom Status Check Names
+You can customize the status check names that appear on your PRs by configuring the **Send status to Git** option in your pipeline stages. This allows you to use business-friendly names (like `Quality Gate` or `Security Scan`) instead of technical stage names. For more information, go to [Send Stage Execution Status to Git on Pull Requests](/docs/platform/triggers/triggering-pipelines#send-stage-execution-status-to-git-on-pull-requests).
+:::
+
 ## Custom SCM status checks
 
 If you want to pull PR status check information into a Harness pipeline, you can use [Run steps](../run-step-settings.md) to query your SCM provider's API and include custom SCM status checks in your CI pipelines.
