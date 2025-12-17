@@ -99,6 +99,8 @@ This fix is behind the feature flag `PIPE_ABORT_ONLY_TRIGGERED_BY_SAME_TRIGGER`.
 
 #### New Features and Enhancements
 
+- [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/) is now fully supported for DevOps Essentials license tier. Previously, this feature was exclusive to Enterprise users. With this update, more users can take advantage of pipeline chaining capabilities. (**PIPE-30861**)
+
 - Harness now supports Terragrunt versions 0.78.0 and later. When enabled, Harness automatically detects the Terragrunt version and uses the appropriate command format (e.g., `--all` instead of `run-all`, `--non-interactive` instead of `--terragrunt-non-interactive`), with automatic fallback to legacy commands for older versions. This feature is controlled by Feature Flag `CDS_ENABLE_TERRAGRUNT_V1_SUPPORT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. For more information, go to [Terragrunt provisioning](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos#supported-terragrunt-and-terraform-versions).
 
 - AWS connectors now support configuring the AssumeRole session duration when using cross-account access (STS Role), with a configurable range from 15 minutes (900 seconds) to 12 hours (43200 seconds). For more information, go to [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#enable-cross-account-access-sts-role).
