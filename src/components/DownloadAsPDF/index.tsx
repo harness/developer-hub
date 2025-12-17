@@ -28,7 +28,16 @@ const DownloadAsPdf: React.FC = () => {
   const handleDownload = async () => {
     setIsLoading(true);
 
-    // 1. Create Overlay
+    const htmlElement = document.documentElement;
+    const bodyElement = document.body;
+
+    // Check if the user is currently in Dark Mode
+    const wasDark =
+      htmlElement.classList.contains('dark') ||
+      htmlElement.getAttribute('data-theme') === 'dark' ||
+      bodyElement.classList.contains('dark');
+
+    // 2. Create Overlay
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
@@ -36,6 +45,8 @@ const DownloadAsPdf: React.FC = () => {
     overlay.style.width = '100vw';
     overlay.style.height = '100vh';
     overlay.style.backgroundColor = 'white';
+    overlay.style.color = 'black';
+
     overlay.style.zIndex = '99999';
     overlay.style.display = 'flex';
     overlay.style.flexDirection = 'column';
@@ -44,10 +55,15 @@ const DownloadAsPdf: React.FC = () => {
     overlay.innerHTML = `<div style="font-size: 24px; font-weight: bold; margin-bottom: 20px;">Generating PDF</div><div>Please wait...</div>`;
     document.body.appendChild(overlay);
 
-    try {
-      // Recursive Harvesting ---
+    // 3. Force Light Mode for generation
+    if (wasDark) {
+      htmlElement.classList.remove('dark');
+      bodyElement.classList.remove('dark');
+      htmlElement.classList.add('light');
+      htmlElement.setAttribute('data-theme', 'light');
+    }
 
-      // Unique ID generator
+    try {
       let idCounter = 0;
       const getUniqueId = () => `pdf-dms-${idCounter++}`;
 
@@ -83,10 +99,11 @@ const DownloadAsPdf: React.FC = () => {
           const btn = buttons[j] as HTMLButtonElement;
           const label = btn.innerText || btn.textContent || `Option ${j}`;
 
-          // 1. Click and Wait for React render
+          // Click and Wait for React render
           btn.click();
-          //  timeout to ensure nested React components mount
+          // Timeout to ensure nested React components mount
           await new Promise((resolve) => setTimeout(resolve, 100));
+
           const liveNestedSelectors = contentArea.querySelectorAll('.dynamic-markdown-selector');
           liveNestedSelectors.forEach((el) => {
             if (!el.getAttribute('data-pdf-id')) {
@@ -96,7 +113,7 @@ const DownloadAsPdf: React.FC = () => {
 
           const currentContentClone = contentArea.cloneNode(true) as HTMLElement;
 
-          // 3. RECURSE: Process nested selectors
+          // Process nested selectors
           if (liveNestedSelectors.length > 0) {
             for (let k = 0; k < liveNestedSelectors.length; k++) {
               const nestedEl = liveNestedSelectors[k] as HTMLElement;
@@ -122,7 +139,6 @@ const DownloadAsPdf: React.FC = () => {
           const tabWrapper = document.createElement('div');
           tabWrapper.style.marginBottom = '30px';
 
-          // Header
           const heading = document.createElement('h3');
           heading.innerText = label;
           heading.style.marginTop = '24px';
@@ -131,6 +147,7 @@ const DownloadAsPdf: React.FC = () => {
           heading.style.paddingBottom = '8px';
           heading.style.backgroundColor = '#f9f9f9';
           heading.style.padding = '8px';
+          heading.style.color = '#000';
 
           tabWrapper.appendChild(heading);
           tabWrapper.innerHTML += currentContentClone.innerHTML;
@@ -171,15 +188,16 @@ const DownloadAsPdf: React.FC = () => {
       const originalElement = document.querySelector('.theme-doc-markdown');
       if (!originalElement) throw new Error('Content root not found');
 
+      // Create hidden container for PDF generation
       const container = document.createElement('div');
       container.style.position = 'absolute';
       container.style.left = '-9999px';
       container.style.top = '0';
       container.style.width = '1000px';
       container.style.backgroundColor = '#ffffff';
+      container.style.color = '#000000';
       container.style.zIndex = '-1000';
       container.className = document.body.className;
-
       const clonedElement = originalElement.cloneNode(true) as HTMLElement;
 
       const classesToRemove = ['.docItemLastUpdatedUnderTitle'];
@@ -187,7 +205,6 @@ const DownloadAsPdf: React.FC = () => {
         clonedElement.querySelectorAll(selector).forEach((el) => el.remove());
       });
 
-      // Replace the Root Selectors with the harvested strings
       harvestedRoots.forEach((html, id) => {
         const target = clonedElement.querySelector(`[data-pdf-id="${id}"]`);
         if (target) {
@@ -200,6 +217,11 @@ const DownloadAsPdf: React.FC = () => {
 
       const style = document.createElement('style');
       style.innerHTML = `
+        body, .theme-doc-markdown {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+        }
+
         pre, code, .theme-code-block, table, img, figure, .theme-admonition {
           page-break-inside: avoid !important;
           break-inside: avoid !important;
@@ -207,7 +229,28 @@ const DownloadAsPdf: React.FC = () => {
         h1, h2, h3, h4 {
           page-break-after: avoid !important;
           break-after: avoid !important;
+          color: #000000 !important;
         }
+
+        pre, code, .theme-code-block {
+            background-color: #f6f8fa !important;
+            border: 1px solid #d1d5db !important; 
+            border-radius: 4px !important;
+        }
+
+        code span, .token, .token.keyword, .token.string, .token.function {
+            color: #1a1a1a !important; /* Force all syntax tokens to near-black */
+            text-shadow: none !important;
+        }
+
+        p, li, div, strong, td, th {
+          color: #000000 !important;
+        }
+        
+        span {
+           color: inherit;
+        }
+        
         .pdf-flattened-selector {
             display: block !important;
         }
@@ -246,6 +289,7 @@ const DownloadAsPdf: React.FC = () => {
             el.style.padding = '15px';
             el.style.margin = '15px 0';
             el.style.backgroundColor = '#fafafa';
+            el.style.color = '#000';
 
             if (tabItems[index]) {
               const rawTitle = tabItems[index].textContent || `Tab ${index + 1}`;
@@ -279,14 +323,14 @@ const DownloadAsPdf: React.FC = () => {
         if (ytMatch && ytMatch[1]) displayUrl = `https://www.youtube.com/watch?v=${ytMatch[1]}`;
 
         const link = document.createElement('div');
-        link.innerHTML = `<div style="padding: 10px; border: 1px dashed #ccc; background: #f9f9f9; text-align: center; margin: 10px 0;"><a href="${displayUrl}" target="_blank">${displayUrl}</a></div>`;
+        link.innerHTML = `<div style="padding: 10px; border: 1px dashed #ccc; background: #f9f9f9; text-align: center; margin: 10px 0;"><a href="${displayUrl}" target="_blank" style="color:#000">${displayUrl}</a></div>`;
         media.replaceWith(link);
       });
 
       container.appendChild(clonedElement);
       document.body.appendChild(container);
 
-      // Wait for layout to settle
+      // Wait for layout to settle and CSS variables to swap
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       const html2pdfModule = await import('html2pdf.js');
@@ -315,6 +359,7 @@ const DownloadAsPdf: React.FC = () => {
             'h4',
             'span',
             'p',
+            'svg',
             '.theme-admonition',
             'li',
             '.pdf-flattened-selector',
@@ -329,7 +374,18 @@ const DownloadAsPdf: React.FC = () => {
     } catch (err) {
       console.error('PDF Generation failed:', err);
     } finally {
-      document.body.removeChild(overlay);
+      // --- RESTORE THEME ---
+
+      if (wasDark) {
+        htmlElement.classList.remove('light');
+        htmlElement.classList.add('dark');
+        bodyElement.classList.add('dark');
+        htmlElement.setAttribute('data-theme', 'dark');
+      }
+
+      if (document.body.contains(overlay)) {
+        document.body.removeChild(overlay);
+      }
       setIsLoading(false);
     }
   };
