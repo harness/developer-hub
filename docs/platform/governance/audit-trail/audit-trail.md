@@ -100,6 +100,10 @@ You can scope down the viewable audit events by adding filters and selecting:
    The Resource Identifier operates in conjunction with the Resource Type. It allows you to use the resource identifier to filter audit events related to a specific resource using that identifier.
    :::
 
+   :::tip Infrastructure Audit Trail
+   To retrieve the infrastructure audit trail, use the **Environment** resource type and provide your environment identifier as the **Resource Identifier**.
+   :::
+
 4. In **Filter Name**, enter a name for your filter.
 5. Under **Who can view and edit the filter?**, select **Only me** or **Everyone** based on the visibility you want to set for this filter.
 6. Select **Save**. Your filter is now created.
