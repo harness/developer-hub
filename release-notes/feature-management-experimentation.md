@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-12-16T10:00:00
+date: 2025-12-18T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,7 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: December 16, 2025
+#### Last updated: December 18, 2025
 
 ## December 2025
 
@@ -474,6 +474,7 @@ The following SDKs now allow you to append properties to impressions for each `g
 - [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#append-properties-to-impressions)
 - [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#append-properties-to-impressions)
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#append-properties-to-impressions)
+- [Go SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk#append-properties-to-impressions)
 
 ## March 2025
 ### [New Feature] Feature flag impression toggle

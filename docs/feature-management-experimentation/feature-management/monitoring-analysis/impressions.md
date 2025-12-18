@@ -167,10 +167,15 @@ Use the following tables to verify that your SDK or customer-deployed component 
   | Elixir Thin Client SDK     | See SplitD version               |
   | Go SDK                     | 6.7.0 and later                  |
   | Java SDK                   | 4.12.0 and later                 |
+  | JavaScript SDK             | 1.2.0 and later                  |
   | Node.js SDK                | 11.1.0 and later                 |
   | PHP Thin Client SDK        | See SplitD version               |
   | Python SDK                 | 10.2.0 and later                 |
   | Ruby SDK                   | 8.5.0 and later                  |
+  | Flutter plugin             | 1.0.0 and later                  |
+  | React SDK                   | 2.1.0 and later                 |
+  | Redux SDK                   | 2.1.0 and later                 |
+  | Go SDK                     | 6.10.0 and later                 |
   
   </TabItem>
 
