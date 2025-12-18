@@ -41,3 +41,7 @@ Select your cloud provider below to get started. You’ll connect your account, 
   }}
   toc = {toc}
 />
+
+<UniversityAdmonition title="Harness CCM self-paced training">
+  For an interactive onboarding experience including further use cases and features like **drift detection**, **remote backends**, and **policy enforcement**, check out [**Harness CCM self-paced training**](https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management).
+</UniversityAdmonition>
