@@ -26,7 +26,7 @@ Starting **October 7, 2025**, Harness SEI does not ingest or display the followi
 These commits do **not appear** in SEI analytics, dashboards, or derived metrics.
 
 :::tip Impact Scope
-Based on internal analysis, the scope of this impact is fairly small. The commit types listed above account for a small fraction of overall commit volume across customers (approximately 1.6%). While Harness is working on a fix, the limited number of missing PRs is expected to have minimal impact on metrics.
+Based on internal analysis, the scope of this impact is fairly small. The commit types listed above account for a small fraction of overall commit volume across customers (approximately 3.17%). While Harness is working on a fix, the limited number of missing PRs is expected to have minimal impact on metrics.
 :::
 
 ## Affected SEI metrics and widgets
@@ -61,7 +61,7 @@ No. Historical commit data prior to **October 7, 2025** remains unchanged and av
 <details>
 <summary>What impact can we expect to see on our metrics?</summary>
 
-Across our customer base, non-PR commits represent approximately 1.6% of total commit volume. Actual impact may vary depending on your team’s development workflow. 
+Across our customer base, non-PR commits represent approximately 3.17% of total commit volume. Actual impact may vary depending on your team’s development workflow. 
 
 Teams that frequently push commits directly to branches without PRs may see a higher relative impact.
 
