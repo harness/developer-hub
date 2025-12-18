@@ -83,7 +83,7 @@ export const QwietaiData: Horizon = {
       {
         tag: [{ value: "Platform" }, { value: "Governance"}],
         title: "Organization Configuration API Enhancements",
-        description: "Provide safer, granular update support for organization configuration APIs.",
+        description: "Provide granular update support for organization configuration APIs.",
       },
           {
         tag: [{ value: "Visibility" }, { value: "Multi-Language" }],
@@ -94,6 +94,11 @@ export const QwietaiData: Horizon = {
         tag: [{ value: "Visibility" }, { value: "SAST" }, { value: "SCA" }],
         title: "Scan Summary Enhancements",
         description: "Refine scan summaries to show only actionable findings."
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "GitHub" }],
+        title: "GitHub App Based Auto Repository Onboarding",
+        description: "Automatically onboard all or selected GitHub repositories via a single App installation."
       }
     ],
   },
