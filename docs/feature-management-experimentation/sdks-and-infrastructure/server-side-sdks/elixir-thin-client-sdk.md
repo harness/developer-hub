@@ -320,7 +320,23 @@ The `Split.SplitView` struct referenced above has the following structure:
 
 <!-- @TODO Add '## Listener' section when feature is implemented  -->
 
-<!-- @TODO Add '## Logging' section when feature is implemented  -->
+## Logging
+
+The SDK uses the Elixir [Logger](https://hexdocs.pm/logger/Logger.html) module for logging. Its default log level is `:debug`, but you can configure it, along with other logging behavior, by setting the appropriate options in your application.
+
+For example, you can adjust the following settings in your `config/runtime.exs` or similar environment-specific configuration file:
+
+
+```elixir
+import Config
+
+# Set global log level to info
+config :logger, level: :info
+
+# Silence Split thin client (log only errors and high-severity messages)
+Logger.put_application_level(:split, :error)
+```
+
 
 ## Example app
 
