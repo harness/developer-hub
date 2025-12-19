@@ -180,6 +180,22 @@ When you need to filter AWS billing data by one or multiple key/value pairs with
   - For Kubernetes Cluster: Connectivity Status, Features Enabled
   - For Cloud Accounts: Connectivity Status, Features Enabled, Cloud Provider, AWS Account ID(s), Azure Tenant ID, Azure Subscription ID, GCP Project ID [CCM-17003]
 
+- **Dashboard Changes**: To improve the performance and efficiency of AWS billing dashboards, we've introduced an optimized approach for filtering and grouping data using resource tag values. These changes simplify queries, reduce load times, and minimize slot consumption.
+
+Users can now filter AWS billing data by one or more key/value pairs using the new "Resource Tags: All Values" fields. For use cases requiring cost grouping by tags, queries can now group by one or more key/value combinations efficiently. Each dashboard is now limited to a maximum of 10 tiles to ensure optimal rendering and usability.
+
+**Use Cases**
+
+**Case 1: Filtering by One or More Keys/Values (No Grouping)**
+
+When you need to filter AWS billing data by one or multiple key/value pairs without grouping, use the new filter fields under Resource Tags: All Values.
+
+**Case 2: Grouping by One or More Keys/Values**
+
+When you want to group data by specific tag values (for example, cost centers or organizations), you can use grouping operations based on the optimized tag fields. Note that you should should use the key/value pairs together under Resource Tags
+
+**Note that the dimensions under Resource Tags: All Values are hidden. The older dashboard using it will still work but for newer dashboards, it will not be usable** [CCM-25843]
+
 ## October 2025 - Version 1.67.2
 #### Deployment Date: October 22, 2025 (Prod-1)
 
