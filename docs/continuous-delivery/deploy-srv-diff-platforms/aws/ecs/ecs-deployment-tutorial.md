@@ -80,6 +80,10 @@ The custom managed policy should have the following permissions:
         "ecs:DescribeTaskDefinition",
         "application-autoscaling:DescribeScalableTargets",
         "application-autoscaling:DescribeScalingPolicies",
+        "application-autoscaling:RegisterScalableTarget",
+        "application-autoscaling:PutScalingPolicy",
+        "application-autoscaling:DeregisterScalableTarget",
+        "application-autoscaling:DeleteScalingPolicy",
         "iam:ListRoles",
         "iam:PassRole"
       ],
@@ -109,6 +113,10 @@ The custom managed policy should have the following permissions:
 | `ecs:DescribeTaskDefinition`                      | Describes the Task Definition Harness deployed. Harness collects the revision data for rollback purposes. Harness also uses it to understand the current state of the ECS cluster.                                                                                      |
 | `application-autoscaling:DescribeScalableTargets` | Describes the scalable targets Harness deploys with the ECS service. This permission can be removed if the user doesn’t leverage scalable targets.                                                                                                                      |
 | `application-autoscaling:DescribeScalingPolicies` | Describes the scaling policies associated with the deployed ECS service. This permission can be removed if the user doesn’t leverage scaling policies.                                                                                                                  |
+| `application-autoscaling:RegisterScalableTarget`  | Registers the scalable targets Harness deploys with the ECS service. This permission can be removed if the user doesn’t leverage scalable targets.                                                                                                                      |
+| `application-autoscaling:PutScalingPolicy`        | Registers the scaling policies associated with the deployed ECS service. This permission can be removed if the user doesn’t leverage scaling policies.                                                                                                                  |
+| `application-autoscaling:DeregisterScalableTarget`| Removes the older scalable targets on an existing ECS service before a new ECS deployment. This permission can be removed if the user doesn’t leverage scalable targets.                                                                                                |
+| `application-autoscaling:DeleteScalingPolicy`     | Removes the older scaling policies on an existing ECS service before a new ECS deployment. This permission can be removed if the user doesn’t leverage scaling policies.                                                                                                |
 | `iam:ListRoles`                                   | Lists roles. Harness uses the role associated with the Harness connector for deployment.                                                                                                                                                                                |
 | `iam:PassRole`                                    | Harness passes the role with the ECS deployment.                                                                                                                                                                                                                        |
 
@@ -814,19 +822,19 @@ Harness performs the deployment and checks to make sure the ECS service reaches 
 
 ```
 Creating Task Definition with family fargate-task-definition
-Created Task Definition fargate-task-definition:6 with Arn arn:aws:ecs:us-west-2:123456789:task-definition/fargate-task-definition:6..
+Created Task Definition fargate-task-definition:6 with Arn arn:aws:ecs:us-west-2:xxx:task-definition/fargate-task-definition:6..
 
 Deleting Scaling Policies from service myapp..
 Didn't find any Scaling Policies attached to service myapp
 
 Deregistering Scalable Targets from service myapp..
 Didn't find any Scalable Targets on service myapp
-Updating Service myapp with task definition arn:aws:ecs:us-west-2:123456789:task-definition/fargate-task-definition:6 and desired count 1
+Updating Service myapp with task definition arn:aws:ecs:us-west-2:xxx:task-definition/fargate-task-definition:6 and desired count 1
 Waiting for pending tasks to finish. 1/1 running ...
 Waiting for Service myapp to reach steady state
 ...
 Service myapp reached steady state
-Updated Service myapp with Arn arn:aws:ecs:us-west-2:123456789:service/ecs-tutorial/myapp
+Updated Service myapp with Arn arn:aws:ecs:us-west-2:xxx:service/ecs-tutorial/myapp
 
  Deployment Successful.
 ```
@@ -1008,6 +1016,44 @@ For more information, see [describe-scaling-policies](https://docs.aws.amazon.co
 
 To create the Scalable Target and Scalable Policy resources, see the [register-scalable-target](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html) and [put-scaling-policy](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html) commands from AWS.
 
+During deployment, Harness removes auto scaling from the previous service in the **Rolling Deployment** step and deploys a fresh configuration at the end of the step.
+Pre-deployment logs with the scaling policy/target delete:
+```
+Creating Task Definition with family demo-2-ecs-svc-task-definition 
+Created Task Definition demo-2-ecs-svc-task-definition:14 with Arn arn:aws:ecs:us-west-2:xxx:task-definition/demo-2-ecs-svc-task-definition:14..
+Deleting Scaling Policies from service demo-2-ecs-svc..
+Deleted Scaling Policy TargetTrackingPolicyCPU from service demo-2-ecs-svc 
+..
+Deleted Scaling Policies from service demo-2-ecs-svc 
+
+Deregistering Scalable Targets from service demo-2-ecs-svc..
+Deregistered Scalable Target with Scalable Dimension ecs:service:DesiredCount from service demo-2-ecs-svc.. 
+Deregistered Scalable Targets from service demo-2-ecs-svc 
+
+Updating Service demo-2-ecs-svc with task definition arn:aws:ecs:us-west-2:xxx:task-definition/demo-2-ecs-svc-task-definition:14 and desired count 2 
+Waiting for Service demo-2-ecs-svc to reach steady state 
+```
+Post-deployment logs with the scaling policy/target deploy:
+```
+Current Deployment Status
+Service demo-2-ecs-svc Overall Status DesiredCount=2 PendingCount=0 RunningCount=2 
+Service Deployments Status
+Deployment Id=ecs-svc/5898046733595302350, Status=PRIMARY, TaskDefinition=arn:aws:ecs:us-west-2:xxx:task-definition/demo-2-ecs-svc-task-definition:14, DesiredCount=2, PendingCount=0, RunningCount=2, FailedTasks=0, RolloutState=COMPLETED
+# AWS Event: 2025-10-23 04:50:21.937 (service demo-2-ecs-svc) (deployment ecs-svc/5898046733595302350) deployment completed.
+# AWS Event: 2025-10-23 04:50:21.938 (service demo-2-ecs-svc) has reached a steady state.
+
+Service demo-2-ecs-svc reached steady state 
+Updated Service demo-2-ecs-svc with Arn arn:aws:ecs:us-west-2:xxx:service/loren-ecs-cluster/demo-2-ecs-svc 
+
+Registering Scalable Targets to service demo-2-ecs-svc..
+Registered Scalable Target with Scalable Dimension ecs:service:DesiredCount to service demo-2-ecs-svc 
+Registered Scalable Targets to service demo-2-ecs-svc 
+
+Attaching Scaling Policies to service demo-2-ecs-svc.. 
+Attached Scaling Policy TargetTrackingPolicyCPU to service demo-2-ecs-svc 
+Attached Scaling Policies to service demo-2-ecs-svc 
+```
+
 #### Enable Auto Scaling In Swap Step
 
 If you select **Enable Auto Scaling In Swap Step** in the **ECS Blue Green Create Service** step, then Harness will attach auto scaling policies to the new service it deploys in the **Configure Swap Target Groups** step. The policies are taken from the **Scalable Target** and **Scaling Policy settings** in the Harness service.
@@ -1061,8 +1107,8 @@ The deployment follows this process:
 
    ```
    Creating Task Definition with family fargate-task-definition
-   Created Task Definition fargate-task-definition:9 with Arn arn:aws:ecs:us-west-2:1234567890:task-definition/fargate-task-definition:9..
-   Creating Service myappCanary with task definition arn:aws:ecs:us-west-2:1234567890:task-definition/fargate-task-definition:9 and desired count 1
+   Created Task Definition fargate-task-definition:9 with Arn arn:aws:ecs:us-west-2:xxx:task-definition/fargate-task-definition:9..
+   Creating Service myappCanary with task definition arn:aws:ecs:us-west-2:xxx:task-definition/fargate-task-definition:9 and desired count 1
    Waiting for pending tasks to finish. 0/1 running ...
    Waiting for pending tasks to finish. 0/1 running ...
    # AWS Event: 2022-10-07 00:05:14.665 (service myappCanary) has started 1 tasks: (task ab694b189d204d15950b0466c0e5bd10).
@@ -1070,7 +1116,7 @@ The deployment follows this process:
    Waiting for pending tasks to finish. 1/1 running ...
    Waiting for Service myappCanary to reach steady state
    Service myappCanary reached steady state
-   Created Service myappCanary with Arn arn:aws:ecs:us-west-2:1234567890:service/ecs-canary/myappCanary
+   Created Service myappCanary with Arn arn:aws:ecs:us-west-2:xxx:service/ecs-canary/myappCanary
 
     Deployment Successful.
    ```
@@ -1318,21 +1364,21 @@ Here's an example of the output of the step:
 
 ```
 Creating Task Definition with family johndoe-fargate
-Created Task Definition johndoe-fargate:498 with Arn arn:aws:ecs:us-east-1:1234567890:task-definition/johndoe-fargate:498..
+Created Task Definition johndoe-fargate:498 with Arn arn:aws:ecs:us-east-1:xxx:task-definition/johndoe-fargate:498..
 
-Creating Stage Service abc__1 with task definition arn:aws:ecs:us-east-1:1234567890:task-definition/johndoe-fargate:498 and desired count 1
+Creating Stage Service abc__1 with task definition arn:aws:ecs:us-east-1:xxx:task-definition/johndoe-fargate:498 and desired count 1
 Waiting for pending tasks to finish. 0/1 running ...
 Waiting for pending tasks to finish. 0/1 running ...
 Waiting for pending tasks to finish. 0/1 running ...
 # AWS Event: 2022-10-11 02:50:59.657 (service abc__1) has started 1 tasks: (task e8ffa30be4a848d387ab8ed66ba31417).
 Waiting for pending tasks to finish. 0/1 running ...
 Waiting for pending tasks to finish. 1/1 running ...
-# AWS Event: 2022-10-11 02:51:27.667 (service abc__1) registered 1 targets in (target-group arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-2/34b77f72b13e45f4)
+# AWS Event: 2022-10-11 02:51:27.667 (service abc__1) registered 1 targets in (target-group arn:aws:elasticloadbalancing:us-east-1:xxx:targetgroup/example-tg-ip-2/34b77f72b13e45f4)
 Waiting for Service abc__1 to reach steady state
 Service abc__1 reached steady state
-Created Stage Service abc__1 with Arn arn:aws:ecs:us-east-1:1234567890:service/example-test/abc__1
+Created Stage Service abc__1 with Arn arn:aws:ecs:us-east-1:xxx:service/example-test/abc__1
 
-Target Group with Arn: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-2/34b77f72b13e45f4 is associated with Stage Service abc__1
+Target Group with Arn: arn:aws:elasticloadbalancing:us-east-1:xxx:targetgroup/example-tg-ip-2/34b77f72b13e45f4 is associated with Stage Service abc__1
 Tag: [BG_VERSION, GREEN] is associated with Stage Service abc__1
 ```
 
@@ -1350,17 +1396,17 @@ Here's an example of the output of the step:
 
 ```
 Modifying ELB Prod Listener to Forward requests to Target group associated with new Service
-,TargetGroup: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-2/34b77f72b13e45f4
-Modifying the default Listener: arn:aws:elasticloadbalancing:us-east-1:1234567890:listener/app/example-alb/8c164c70eb817f6a/83cbd24bc4f6d349
- with listener rule: arn:aws:elasticloadbalancing:us-east-1:1234567890:listener-rule/app/example-alb/8c164c70eb817f6a/83cbd24bc4f6d349/a249570503765d2d
- to forward traffic to TargetGroup: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-2/34b77f72b13e45f4
+,TargetGroup: arn:aws:elasticloadbalancing:us-east-1:xxx:targetgroup/example-tg-ip-2/34b77f72b13e45f4
+Modifying the default Listener: arn:aws:elasticloadbalancing:us-east-1:xxx:listener/app/example-alb/8c164c70eb817f6a/83cbd24bc4f6d349
+ with listener rule: arn:aws:elasticloadbalancing:us-east-1:xxx:listener-rule/app/example-alb/8c164c70eb817f6a/83cbd24bc4f6d349/a249570503765d2d
+ to forward traffic to TargetGroup: arn:aws:elasticloadbalancing:us-east-1:xxx:targetgroup/example-tg-ip-2/34b77f72b13e45f4
 Successfully updated Prod Listener
 
 Modifying ELB Stage Listener to Forward requests to Target group associated with old Service
-,TargetGroup: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-1/52b1f157d3240800
-Modifying the default Listener: arn:aws:elasticloadbalancing:us-east-1:1234567890:listener/app/example-alb/8c164c70eb817f6a/cfbb98e593af641b
- with listener rule: arn:aws:elasticloadbalancing:us-east-1:1234567890:listener-rule/app/example-alb/8c164c70eb817f6a/cfbb98e593af641b/30983f6b6338ce10
- to forward traffic to TargetGroup: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-1/52b1f157d3240800
+,TargetGroup: arn:aws:elasticloadbalancing:us-east-1:xxx:targetgroup/example-tg-ip-1/52b1f157d3240800
+Modifying the default Listener: arn:aws:elasticloadbalancing:us-east-1:xxx:listener/app/example-alb/8c164c70eb817f6a/cfbb98e593af641b
+ with listener rule: arn:aws:elasticloadbalancing:us-east-1:xxx:listener-rule/app/example-alb/8c164c70eb817f6a/cfbb98e593af641b/30983f6b6338ce10
+ to forward traffic to TargetGroup: arn:aws:elasticloadbalancing:us-east-1:xxx:targetgroup/example-tg-ip-1/52b1f157d3240800
 Successfully updated Stage Listener
 
 Updating tag of new service: abc__1
@@ -1555,7 +1601,7 @@ deploymentConfiguration:
   maximumPercent: 100
   minimumHealthyPercent: 0
 **serviceRegistries:**
-  ** - registryArn: arn:aws:servicediscovery:us-east-1:1234567890:service/srv-xeycgshb42ydmokf**
+  ** - registryArn: arn:aws:servicediscovery:us-east-1:xxx:service/srv-xeycgshb42ydmokf**
 ```
 
 With the above Service Registry ARN specified in the ECS service definition, deployed services are marked with Service Discovery.
@@ -1581,13 +1627,13 @@ See the `deployment-configuration` setting in the following example:
 
 ```json
 "service": {
-        "serviceArn": "arn:aws:ecs:us-east-1:1234567890:service/servicediscoverytest/ecs-service-discovery",
+        "serviceArn": "arn:aws:ecs:us-east-1:xxx:service/servicediscoverytest/ecs-service-discovery",
         "serviceName": "ecs-service-discovery",
-        "clusterArn": "arn:aws:ecs:us-east-1:1234567890:cluster/servicediscoverytest",
+        "clusterArn": "arn:aws:ecs:us-east-1:xxx:cluster/servicediscoverytest",
         "loadBalancers": [],
         "serviceRegistries": [
             {
-                "registryArn": "arn:aws:servicediscovery:us-east-1:1234567890:service/srv-xbnxncsqdovyuztm"
+                "registryArn": "arn:aws:servicediscovery:us-east-1:xxx:service/srv-xbnxncsqdovyuztm"
             }
         ],
         "status": "ACTIVE",
@@ -1597,7 +1643,7 @@ See the `deployment-configuration` setting in the following example:
         "launchType": "FARGATE",
         "platformVersion": "LATEST",
         "platformFamily": "Linux",
-        "taskDefinition": "arn:aws:ecs:us-east-1:1234567890:task-definition/tutorial-task-def:1",
+        "taskDefinition": "arn:aws:ecs:us-east-1:xxx:task-definition/tutorial-task-def:1",
         "deploymentConfiguration": {
             "deploymentCircuitBreaker": {
                 "enable": false,
@@ -1610,7 +1656,7 @@ See the `deployment-configuration` setting in the following example:
             {
                 "id": "ecs-svc/0410909316449095426",
                 "status": "PRIMARY",
-                "taskDefinition": "arn:aws:ecs:us-east-1:1234567890:task-definition/tutorial-task-def:1",
+                "taskDefinition": "arn:aws:ecs:us-east-1:xxx:task-definition/tutorial-task-def:1",
                 "desiredCount": 1,
                 "deployment-configuration": "deploymentCircuitBreaker={enable=true,rollback=true}" ,
                 "pendingCount": 0,
