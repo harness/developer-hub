@@ -181,7 +181,7 @@ You can now **view detailed check execution status** directly from the entity's 
 ---
 
 ### [New Feature] TTL (Time-To-Live) for Environments
-**[Docs](/docs/internal-developer-portal/environment-management/env-blueprint-yaml)**
+**[Docs](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml)**
 
 We've introduced **TTL (Time-To-Live)** support for environments in Harness IDP. This feature allows you to automatically manage environment lifecycles by setting a TTL duration for environments to automatically pause after a specified time period, helping teams optimize resource usage and reduce costs.
 
@@ -189,7 +189,7 @@ We've introduced **TTL (Time-To-Live)** support for environments in Harness IDP.
 * **Flexible Configuration**: Define TTL in the environment blueprint YAML using duration formats (e.g., `7d`, `24h`, `30m`)
 * **Cost Management**: Reduce cloud costs by ensuring short-lived environments don't persist longer than needed
 
-> Learn more about [Environment TTL Configuration](/docs/internal-developer-portal/environment-management/env-blueprint-yaml#configure-ttl-time-to-live).
+> Learn more about [Environment TTL Configuration](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#configure-ttl-time-to-live).
 
 ---
 

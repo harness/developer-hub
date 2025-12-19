@@ -2,7 +2,7 @@
 title: Environment Blueprints in Harness IDP
 description: Learn more about Environment Blueprints in Harness IDP. 
 sidebar_label: Environment Blueprints
-sidebar_position: 3
+sidebar_position: 1
 toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
@@ -55,7 +55,7 @@ Each entity in the blueprint is composed of **2 main parts**:
 
 **1. Backend** - Describes the lifecycle implementation of the entity
 - Defines **how** the entity is provisioned, deployed, or managed
-- Specifies the **backend type** (`HarnessIACM` for infrastructure, `Catalog` for services). Go to [Backend Types](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md#backend-types) to learn more.
+- Specifies the **backend type** (`HarnessIACM` for infrastructure, `Catalog` for services). Go to [Backend Types](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#backend-types) to learn more.
 - Contains configuration values and operational steps
 
 **2. Interface** - Defines how the entity relates to other entities specified in the blueprint
@@ -493,6 +493,6 @@ spec:
 ---
 
 ## Create Environment Blueprints
-In Harness IDP (Environments), navigate to the **Environments** section, and hit **“Create”** and then **“Environment Blueprint”**. Use the [YAML provided above](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md#example-blueprint-yaml) to create the environment blueprint.
+In Harness IDP (Environments), navigate to the **Environments** section, and hit **“Create”** and then **“Environment Blueprint”**. Use the [YAML provided above](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#example-blueprint-yaml) to create the environment blueprint.
 
-![](./static/create-env-blp.png)
+![](../static/create-env-blp.png)

@@ -60,7 +60,7 @@ Environment Management in Harness IDP brings together various features to make e
 ### Key Concepts
 
 #### Environment Blueprint
-An Environment Blueprint is a collection of infrastructure templates, services, their configurations and lifecycle management details of each. When a blueprint is instantiated, it generates running instances of Environments. Blueprints are typically owned and maintained by the Platform Engineering team. Go to [Environment Blueprints](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md) to learn more. 
+An Environment Blueprint is a collection of infrastructure templates, services, their configurations and lifecycle management details of each. When a blueprint is instantiated, it generates running instances of Environments. Blueprints are typically owned and maintained by the Platform Engineering team. Go to [Environment Blueprints](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml) to learn more. 
 
 #### Environment
 An Environment is instantiated using an Environment Blueprint and represents the deployed infrastructure and services, as defined in the blueprint. It is a collection of software services deployed using CD tools and executed on infrastructure provisioned through IaCM tools. Go to [Environments](/docs/internal-developer-portal/environment-management/environments.md) to learn more.
@@ -82,11 +82,11 @@ Harness IDP provides granular Role-Based Access Control (RBAC) for environment m
 
 | Resource Type | Scope | Available Permissions | Resource Group Options |
 |---------------|-------|----------------------|------------------------|
-| **[Environment Blueprint](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md)** | Account Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
+| **[Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml)** | Account Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
 | **[Environment](/docs/internal-developer-portal/environment-management/environments.md)** | Project Level | <ul><li>**VIEW**: View environments</li><li>**CREATE/EDIT**: Create new environments or edit existing ones</li><li>**DELETE**: Delete environments</li></ul> | <ul><li>All Environments</li><li>Specific Environments</li></ul> |
 
 **Environment Blueprints** are created at the **account scope** and define reusable templates, while **Environments** are created at the **project scope** using these blueprints. This separation allows platform teams to maintain centralized control over standards while giving development teams autonomy to provision their own environments.
 
-For detailed instructions on configuring RBAC for environment management, refer to the [Environment Management RBAC section](/docs/internal-developer-portal/environment-management/env-blueprint-yaml#environment-management-rbac). 
+For detailed instructions on configuring RBAC for environment management, refer to the [Environment Management RBAC section](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#environment-management-rbac). 
 
 ---

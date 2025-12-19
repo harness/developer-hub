@@ -18,14 +18,14 @@ Based on the time-to-live (TTL) duration, Harness IDP environment management sup
 * **Ephemeral environments**: Short-lived environments that are created and paused on demand. They run only for a specific time interval configured by the user.
 * **Long-lived environments**: Environments that run indefinitely and are not paused automatically. They are paused only when the user explicitly does so.
 
-Go to [Configure TTL](/docs/internal-developer-portal/environment-management/env-blueprint-yaml#configure-ttl-time-to-live) to learn more. 
+Go to [Configure TTL](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#configure-ttl-time-to-live) to learn more. 
 
 **Note:** When you update an environment’s configuration, the environment is **re-provisioned** and the TTL is **reset**. The new TTL countdown starts from the time of the update.
 
 ---
 
 ## Create Environments
-Using the [Environment Blueprint](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md) we can now create and spin up an ephemeral environment. 
+Using the [Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml) we can now create and spin up an ephemeral environment. 
 
 1. In Harness IDP (Environments), hit “Create” in the right corner, then “Environment, then select your new “Environment Blueprint”.
 ![](./static/env-use.png)
@@ -60,7 +60,7 @@ Environment management in Harness IDP enables integration with **[Harness Pipeli
 This feature allows you to add approvers in the CD service pipeline and control the environment creation process through pipeline approvals and rejections.
 
 1. Ensure that you have an **approval step/stage** added in your CD service pipeline. Refer to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) for more details.
-2. Use the same pipeline details in your environment blueprint steps `apply` and `destroy` for your [CD services](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md#2-catalog-backend-services).
+2. Use the same pipeline details in your environment blueprint steps `apply` and `destroy` for your [CD services](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#2-catalog-backend-services).
 3. Create a new environment using the same environment blueprint. You will be prompted to approve the pipeline deployment for your service instances.
 ![](./static/approval-prompt1.png)
 4. Approve the pipeline execution for your service instances.
