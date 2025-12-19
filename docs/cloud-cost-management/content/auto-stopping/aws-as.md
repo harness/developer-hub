@@ -4,8 +4,13 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
-## Prerequisite: Set Up Proxy and/or Load Balancer
+## Prerequisite
 
+- [Create an AWS Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/#aws)
+- Proxy and/or Load Balancer for Traffic-based AutoStopping Rules. For scheduled only AutoStopping Rules, this is not required.
+
+
+## Setup Proxy and/or Load Balancer (for Traffic-based AutoStopping Rules)
 AutoStopping is designed to integrate seamlessly with native load-balancing solutions like **AWS ALB**. However, for use cases that fall outside of these integrations such as SSH, RDP, or RDS connections, AutoStopping offers an advanced reverse proxy solution: **AutoStopping Proxy**.
 
 
@@ -435,7 +440,7 @@ echo ">>> Setup complete."
 
 ---------
 </TabItem>
-<TabItem value="setup-access" label="Step 2: Setup Access"> 
+<TabItem value="setup-access" label="Step 2: Setup Access [Traffic-based AutoStopping Rules]"> 
 
 <Tabs>
 <TabItem value="ec2-asg" label="EC2 & ASGs">
