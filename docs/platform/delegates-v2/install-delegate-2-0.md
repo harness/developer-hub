@@ -1,7 +1,10 @@
 ---
-title: Install Harness Delegate 2.0 (Closed Beta)
-description: Learn how to install Harness Delegate 2.0 for local machines
-sidebar_position: 51
+title: Install Harness Delegate
+description: Learn how to install a Delegate for local machines
+sidebar_position: 1
+redirect_from:
+  - /docs/continuous-integration/use-ci/set-up-build-infrastructure/install-delegate-2-0
+  - /docs/platform/delegates/delegate-v2/install-delegate-2-0
 ---
 
 import Tabs from '@theme/Tabs';
@@ -22,7 +25,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning Closed Beta
 
-Delegate 2.0 is currently in closed beta, and is available for select customers only. Access is determined by the product team, and is based on current [supported use cases and steps](#whats-supported).
+The new Harness Delegate is currently in closed beta and is available to select customers only. Access is determined by the product team, and is based on current [supported use cases and steps](#whats-supported).
 
 :::
 
@@ -30,7 +33,7 @@ This guide describes how to install the new Harness Delegate to local machines. 
 
 :::info Important
 
-Harness Delegate 2.0 is under **Beta** and can only be used for Mac Build, Android Build, and CI Stage Pipelines with limited sets of steps and connector support.
+The new Harness Delegate is under **Beta** and can only be used for Mac Build, Android Build, and CI Stage Pipelines with limited sets of steps and connector support.
 
 :::
 
@@ -538,7 +541,7 @@ The `config.env` file location:
 
 ### Set Max Stage Capacity
 
-With Harness Delegate 2.0, you can configure a limit for the maximum number of stages the delegate will be executing at a given time. When the delegate is handling tasks at full capacity, new tasks will be queued and picked up once the delegate's capacity is freed.
+With the new Harness Delegate, you can configure a limit for the maximum number of stages the delegate will be executing at a given time. When the delegate is handling tasks at full capacity, new tasks will be queued and picked up once the delegate's capacity is freed.
 
 In order to configure a max limit for number of stages executed by a delegate, you should add a `MAX_STAGES` variable in the delegate's `config.env` file. The value of the `MAX_STAGES` should be a positive integer.
 
@@ -558,7 +561,7 @@ MAX_STAGES=5
 
 ### Set Graceful Shutdown
 
-With Harness Delegate 2.0, you can configure a grace period to allow for a clean shutdown of running containers and processes when a pipeline execution is aborted. This ensures that any resources started by the pipeline are given time to terminate gracefully before being forcefully removed.
+With the new Harness Delegate, you can configure a grace period to allow for a clean shutdown of running containers and processes when a pipeline execution is aborted. This ensures that any resources started by the pipeline are given time to terminate gracefully before being forcefully removed.
 
 To configure this grace period, add the `CLEANUP_GRACE_PERIOD_SECONDS` variable to the delegate's config.env file. The value should be a non-negative integer representing the number of seconds to wait before forcefully terminating resources.
 
@@ -678,7 +681,7 @@ Get-Content -Path "C:\HarnessDelegate\logs\delegate.log" -Tail 20 -Wait
 
 ### Metrics
 
-Delegate 2.0 exposes metrics on the `/metrics` endpoint for monitoring and observability. By default, the metrics endpoint is available at `http://localhost:3000/metrics`.
+The New Delegate exposes metrics on the `/metrics` endpoint for monitoring and observability. By default, the metrics endpoint is available at `http://localhost:3000/metrics`.
 
 ## End to End Demo
 

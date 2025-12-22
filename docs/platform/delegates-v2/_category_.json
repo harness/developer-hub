@@ -1,0 +1,11 @@
+{
+  "label": "Delegate (Closed Beta)",
+  "position": 12,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "delegate-new-category",
+  "customProps": {
+    "description": "Next-generation light weight delegate"
+  }
+}
+

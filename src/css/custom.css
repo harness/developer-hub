@@ -2439,6 +2439,83 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   }
 }
 
+/* ============ Green NEW Badge for Sidebar (Beta/Preview features) ============ */
+/* Similar to sidebar-item-new but with green styling to match CategoryGrid badges */
+.sidebar-item-new-green > .menu__list-item-collapsible > .menu__link,
+.sidebar-item-new-green > a.menu__link {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* FOLDER (category) badge – green variant */
+.sidebar-item-new-green > .menu__list-item-collapsible > .menu__link::after {
+  content: 'NEW';
+  background: transparent;
+  border: 1px solid var(--ifm-color-success);
+  border-radius: 999px;
+  color: var(--ifm-color-success);
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  position: absolute;
+  right: 0.75rem;
+  transform: translateY(-50%);
+
+  animation: newBadgePulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* SINGLE DOC badge – green variant */
+.sidebar-item-new-green > a.menu__link::after {
+  content: 'NEW';
+  position: absolute;
+  right: 3.5rem;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ifm-color-success);
+
+  background: transparent;
+  border: 1px solid var(--ifm-color-success);
+  border-radius: 999px;
+
+  animation: newBadgePulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Category Card/Tile - Add NEW badge for delegate-closed-beta */
+/* Uses the same badge styling as sidebar-item-new-green for consistency */
+
+.delegate-closed-beta h2::after {
+  content: 'NEW';
+  background: transparent;
+  border: 1px solid var(--ifm-color-success);
+  border-radius: 999px;
+  color: var(--ifm-color-success);
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .sidebar-item-beta > .menu__list-item-collapsible > .menu__link {
   position: relative;
   display: flex !important;
