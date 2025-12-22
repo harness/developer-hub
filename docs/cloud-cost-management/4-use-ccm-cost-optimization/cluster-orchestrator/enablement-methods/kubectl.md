@@ -24,12 +24,6 @@ helpdocs_is_published: true
 - [Harness Kubernetes connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
 - AWS CLI: 2.15.0 or higher
 
-### Compatibility Matrix
-
-|Cluster Orchestrator Version| Kubernetes | Karpenter |
-|---|---|---|
-|Till `0.6.0`| 1.32 | 1.2.4|
-|`0.7.0`| 1.33 | 1.7.3|
 
 ## Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
 
@@ -47,6 +41,7 @@ For each cluster, you can see the following information:
 
 On this page, you can also see the total cost of the clusters and the spot savings.
 <DocImage path={require('./static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
+
 ------
 
 ## Step 2: Enable the Cluster Orchestrator for a Selected Cluster
@@ -55,9 +50,17 @@ For a given cluster, click on the enable option, which will take you to the enab
 
 ### Step A: Cluster Permissions
 
-You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure. Please make sure `CLUSTER_NAME` is set to the name of the EKS cluster you want to enable the Cluster Orchestrator for and `REGION` is set to the region of the EKS cluster.
+You will be asked to specify permissions to enable. Cost and utilisation, insights and workload orchestration are selected by default. This will allow you to gain visibility into port level, cost, utilisation and resource waste and workload. Orchestration will enable automated scaling, bin, packing, scheduling and resource optimisation. We also have an additional optional choice for vertical pod autoscaler, which will grant the Vertical Pod Autoscaler access to manage the pod resource requests.
 
-<DocImage path={require('./static/kubectl-enable.png')} width="80%" height="80%" title="Click to view full size image" />
+**What is VPA?**
+
+The **Vertical Pod Autoscaler (VPA)** is a Kubernetes component that **automatically adjusts the CPU and memory resource requests and limits** of containers in pods based on their historical usage. VPA helps optimize resource allocation by ensuring pods have the **right amount of resources** they need to run efficiently.
+
+By enabling VPA in Harness Cluster Orchestrator, you gain the ability to **automatically optimize resource allocation** for your workloads, leading to **better performance and cost efficiency** across your Kubernetes clusters.
+
+After your selections, you will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure. Please make sure `CLUSTER_NAME` is set to the name of the EKS cluster you want to enable the Cluster Orchestrator for and `REGION` is set to the region of the EKS cluster.
+
+<DocImage path={require('./static/kubectl-enable.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ### Step B: Orchestrator Configuration
 

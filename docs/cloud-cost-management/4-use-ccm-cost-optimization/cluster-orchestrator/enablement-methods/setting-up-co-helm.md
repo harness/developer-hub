@@ -32,12 +32,6 @@ redirect_from:
 - **Harness Account** with CCM module enabled
 - **Kubernetes Connector** configured in your Harness account
 
-### Compatibility Matrix
-
-|Cluster Orchestrator Version| Kubernetes | Karpenter |
-|---|---|---|
-|Till `0.6.0`| 1.32 | 1.2.4|
-|`0.7.0`| 1.33 | 1.7.3|
 
 ## Implementation Steps
 
