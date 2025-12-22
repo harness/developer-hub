@@ -68,8 +68,6 @@ Certain fields introduce additional joins in queries and can significantly slow 
 ### Read More
 
 #### Google/Looker Documentation
-- [Considerations when building performant Looker dashboards](https://cloud.google.com/looker/docs/best-practices/considerations-when-building-performant-looker-dashboards) - Google Cloud Documentation
-
-#### Harness Looker Resources
-- [Looker Platform Performance Recommendations](https://dashboards.harness.io/dashboards/system__activity::performance_recommendations) - Dashboard for monitoring and improving performance
-- [Looker Errors and Broken Content](https://dashboards.harness.io/dashboards/system__activity::errors_and_broken_content) - Dashboard for identifying and troubleshooting issues
+- [Considerations when building performant Looker dashboards](https://docs.cloud.google.com/looker/docs/best-practices/considerations-when-building-performant-dashboards) 
+- [Best Practices for Building Dashboards](https://developer.harness.io/docs/platform/dashboards/dashboard-best-practices/) 
+- [Create a Dashboard](https://developer.harness.io/docs/platform/dashboards/create-dashboards/)
