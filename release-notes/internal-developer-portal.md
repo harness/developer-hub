@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal Release Notes
 sidebar_label: Internal Developer Portal
-date: 2025-08-16T22:00
+date: 2025-12-22T22:00
 sidebar_position: 12
 ---
 
@@ -24,9 +24,46 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2025.12.v2](/release-notes/internal-developer-portal#december---202512v2) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
 | [2025.12.v1](/release-notes/internal-developer-portal#december---202512v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
 | [2025.11.v1](/release-notes/internal-developer-portal#november---202511v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
-| [2025.10.v1](/release-notes/internal-developer-portal#october---202510v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
+
+
+## December - [2025.12.v2]
+
+---
+
+### New Features
+
+#### Blueprint Versioning for Environment Management
+
+Platform engineering teams often need to roll out infrastructure template updates incrementally whilst maintaining stability for existing environments. Previously, updating environment blueprints required careful coordination to avoid disrupting active environments, making it difficult to introduce improvements safely.
+
+
+Harness IDP now supports comprehensive versioning for environment blueprints, enabling teams to:
+
+- **Create and manage multiple blueprint versions** with distinct version numbers and descriptions
+- **Mark versions as stable** to recommend them for new environment creation
+- **Deprecate outdated versions** whilst preserving them for reference and existing environments
+- **Compare versions side-by-side** to understand configuration changes before upgrading
+- **Select specific versions** when creating new environments, providing flexibility to use either the latest stable version or a specific earlier version
+
+**Learn more:** [Environment Blueprints Documentation](https://developer.harness.io/docs/internal-developer-portal/environment-management/blueprints/versioning)
+
+---
+
+### Enhancements
+
+#### Improved User Group and Owner Selection in Workflows
+
+Workflow forms previously required manual entry or complex configurations for selecting user groups and owners, leading to errors and inconsistent ownership assignments across IDP resources.
+
+
+- [**Harness User Group Picker:**](/docs/internal-developer-portal/flows/create-workflow/flows-input#5-harnessusergrouppicker) Dropdown selection of user groups with intelligent filtering, dynamic filtering based on organisation, project, and user memberships, automatic updates when organisation or project context changes, supports scope-aware selection for better access control
+
+- [**Harness Owner Picker:**](/docs/internal-developer-portal/flows/create-workflow/flows-input#6-harnessownerpicker) Select owners (groups or users) directly from the Backstage catalogue, filter by user membership for relevant results, support for arbitrary values when needed
+
+
 
 ## December - [2025.12.v1]
 
