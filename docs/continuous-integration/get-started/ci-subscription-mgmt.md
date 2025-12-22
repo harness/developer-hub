@@ -35,7 +35,7 @@ Harness Continuous Integration module is using the Developer 360 subscription mo
 
 [Learn more Developer license model](/docs/platform/subscriptions-licenses/subscriptions/).
 
-<DocImage path={require('/docs/continuous-integration/get-started/static/ci-user-license-overview.png')} />
+  <DocImage path={require('/docs/continuous-integration/get-started/static/ci-user-license-overview.png')} />
 
 ### Cloud Credits
 
@@ -64,39 +64,20 @@ Credits are deducted for each minute of execution on Harness Cloud, depending on
 **What is build execution time?** 
 The build execution time is the number of minutes that a build takes to complete, counted by the number of minutes used per machine type, and totaled across all machines and machine types used to complete the build.
 
-Users can choose between two models: **Flex** and **Custom**:
-
-* **Flex Model**: When using the Flex resource class, Harness provides the maximum available resources based on current capacity in Harness Cloud.
-
-* **Custom Model**: Users can select specific resource classes tailored to their needs, with defined cores allocations.
-
-:::note
-For Free plan users, builds always run on `flex` machines, which provide the maximum available resources based on current capacity in Harness Cloud.
-:::
 
 #### Rate Tables
-The following tables outline the minute multipliers for each model as of August 2023:
-
-##### <u>Flex Model</u>
-| **Operating system** | **Resource Class Name**  | **Cores** | **Minute Multiplier** |
-|------------|------------|-----------|-----------------------|
-| **Linux**   | flex | max per capacity    | 2                     |
-| **Windows** | flex | max per capacity    | 8                     |
-| **macOS**    |  flex | max per capacity    | 60                    |
-
-##### <u>Custom Model</u> 
+The following tables outline the minute multipliers for each model as of December 2025:
 
 
 | **Operating system** | **Resource Class Name** | **Cores** | **Minute Multiplier** |
 |-------------|-------------------------|-----------|-----------------------|
-| **Linux**   | small                   | 4         | 2                     |
-|             | medium                  | 8         | 5                     |
+| **Linux**   | medium (default)        | 8         | 2                     |
 |             | large                   | 16        | 10                    |
 |             | xlarge                  | 30        | 20                    |
-| **Windows** | small                   | 4         | 6                     |
+| **Windows** | small (default)         | 4         | 6                     |
 |             | medium                  | 8         | 12                    |
 |             | large                   | 16        | 24                    |
-| **macOS**   | small                   | 6         | 60                    |
+| **macOS**   | small (default)         | 6         | 60                    |
 
 
 Credits for Cloud minutes are calculated by multiplying the execution time (measured in minutes, rounded to the nearest minute) by the minute multiplier of the selected resource class.
@@ -105,7 +86,7 @@ Examples for credit consumption, based on the values in the table above:
 
 
 * 1,000 minutes on a Linux, 4-core (small) machine = 2,000 cloud credits (1,000 minutes × 2).
-* 1,000 minutes on a Windows, 4-core (small) machine = 8,000 cloud credits (1,000 minutes × 8).
+* 1,000 minutes on a Windows, 4-core (small) machine = 6,000 cloud credits (1,000 minutes × 6).
 * 1,000 minutes on a macOS, 6-core (small) machine = 60,000 cloud credits (1,000 minutes × 60).
 
 To learn how to select a resource class, please see [Using resource classes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#using-resource-classes)

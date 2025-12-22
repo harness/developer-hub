@@ -21,6 +21,35 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 :::note
+## Harness Cloud update – Removal of Flex Resource Class and Upgrade to 8-Core Linux Entry Machines
+
+The `Flex` resource class was designed to automatically assign the best available machine based on cloud capacity, with a minimum commitment of 4 cores for Linux and Windows workloads. To simplify pricing and provide a faster, more consistent experience, we are:
+*  **Removing the Flex resource class** and discontinuing the 4-core (`small`) Linux machine option. **Linux cloud workloads will now default to an 8-core machine (`medium`) as the new entry point, at no additional cost**.
+
+* As part of this update, **Windows `small` machine pricing has been reduced by 25%**, with the minute multiplier decreasing from 8 to 6.
+
+
+### Impact
+
+* Pipeline stages referencing the `Flex` machine size, or not explicitly specifying a resource class size, will automatically run on the default machine for the selected operating system (8-core for Linux, 4-core for Windows).
+
+* Linux pipelines using the `small` (4-core) machine will be upgraded to the default 8-core machine.
+
+* **No action is required from users**.
+
+* This update applies only to stages executed on Harness Cloud.
+
+We have already begun rolling out this change, and the transition will complete during December 2025.
+
+
+For additional information about Harness Cloud pricing, please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-cloud-credits).
+
+
+
+:::
+
+
+:::note
 **Harness Cloud – New VM Image Capabilities**:
 
 - **Select VM Image Version** – Choose a specific VM image version for your CI stages via UI or YAML.
