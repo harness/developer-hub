@@ -176,6 +176,13 @@ The following deprecated API endpoints are longer supported:
 
 ## December 2025
 
+### Version 1.121.x <!--December 18,2025-->
+
+#### Fixed issues 
+
+- Resolved an issue where User Group identifiers are now enforced to be unique within the same Account, Organization, or Project scope, preventing the creation of duplicate User Groups. [PL-65838]
+- Resolved an issue where deleting a dashboard from the UI did not remove it from the dashboard listing page. This has been fixed and now dashboards are now correctly removed from the list when deleted or moved to the trash. [PL-64817]
+
 ### Version 1.120.x <!--December 10, 2025-->
 
 #### Fixed issues
