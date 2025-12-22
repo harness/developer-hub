@@ -53,7 +53,7 @@ This tab lists pipeline-level inputs. Step-level inputs are reported in the step
 
 This tab provides links to artifacts, such as images or reports, produced during the build.
 
-Availability of artifact details depends on the upload location, build configuration, or build infrastructure. For an example and more information, go to [Publish to the Artifacts tab](./build-and-upload-artifacts/artifacts-tab).
+Availability of artifact details depends on the upload location, build configuration, or build infrastructure. For an example and more information, go to [Publish to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 ### Commits tab
 
