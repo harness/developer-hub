@@ -1,11 +1,9 @@
 ---
-title: Productivity profile
+title: Productivity Profiles in SEI 2.0
 description: Learn how to create a Productivity Profile in SEI 2.0 to track developer contribution and activity.
-sidebar_label: Productivity profile
+sidebar_label: Productivity
 sidebar_position: 2
 ---
-
-## Overview
 
 A Productivity Profile helps you define how developer activity and contribution metrics are calculated in SEI 2.0. These profiles surface key insights such as coding frequency, pull request behavior, work completed per developer, and code rework, without requiring any manual resource definitions.
 
@@ -83,3 +81,7 @@ $$
 $$
 
 Once you have completed the Productivity metrics configuration, click **Save** in the top right corner. Metrics will automatically be computed based on SCM and IM data, and you can associate the profile with one or more [Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree#set-up-an-org-tree) to apply the logic across developers.
+
+## Configure team-level settings
+
+Once you have created and configured an Productivity Profile, you can configure [team-level settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#configure-team-tool-settings) to calculate the Productivity metrics enabled in the profile. Productivity profiles define the organization-wide metric definitions, while **Team Settings** ensure that each team's tools and workflows are correctly connected to produce accurate metrics within that framework.

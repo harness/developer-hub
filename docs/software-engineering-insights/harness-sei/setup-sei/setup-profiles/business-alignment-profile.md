@@ -1,11 +1,9 @@
 ---
-title: Business Alignment profile
+title: Business Alignment Profiles in SEI 2.0
 description: Learn how to create an Business Alignment profile in SEI 2.0.
-sidebar_label: Business Alignment profile
+sidebar_label: Business Alignment
 sidebar_position: 3
 ---
-
-## Overview
 
 A Business Alignment profile defines the structure for tracking how engineering work aligns with business priorities. It establishes the investment categories to be used across the organization and specifies the scope and rules for fetching work items relevant to Business Alignment metrics.
 
@@ -120,3 +118,7 @@ The ranking of categories plays a significant role in determining how tickets ar
 Once you have completed the profile configuration, click **Save** to finalize your changes. The Business Alignment profile must be associated with one or more [Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree/) in your organization. This association determines which teams can access and use the profile.
 
 After association, engineering managers within those Org Trees can define category filters at the team level, using their own set of work-item filters based on metadata such as labels, components, or issue types. From here, you can define Business Alignment settings for a team or view the [Business Alignment dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment).
+
+## Configure team-level settings
+
+Once you have created and configured a Business Alignment Profile, you can configure [team-level settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#configure-team-tool-settings) to calculate Business Alignment metrics. Business Alignment profiles define the organization-wide investment categories, while **Team Settings** ensure that each team's work items are correctly mapped to produce accurate metrics within those categories.

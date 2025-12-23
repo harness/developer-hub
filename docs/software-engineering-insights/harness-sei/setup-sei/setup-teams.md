@@ -1,7 +1,7 @@
 ---
-title: Set up Teams
+title: Configure Teams
 description: Learn how to configure team settings in SEI 2.0.
-sidebar_label: Set up Teams
+sidebar_label: Configure Teams
 sidebar_position: 7
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/setup/teams
@@ -10,45 +10,58 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Overview
+Teams are the core unit of measurement in SEI 2.0. Each team represents a leaf node in your [Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) and serves as the foundation for calculating metrics and surfacing insights across Efficiency, Productivity, and Business Alignment dashboards.
 
-Teams are the core unit of measurement in SEI 2.0. Every leaf node in the Org Tree is treated as a Team, making it the fundamental grouping for surfacing insights, applying goals, and driving accountability.
+The **Teams** page provides a centralized view of all teams derived from your Org Tree and their configurations. You can search teams by selecting `By Name`, `By Manager Name`, or `By Org Tree Name` in the **Search Teams** dropdown menu.
 
-Each Team represents a group of developers working together within the organizational hierarchy and is automatically derived from the Org Tree structure.
+![](../static/teams-1.png)
 
-### Key concepts
+You can see the following details for each team in the **Teams** list:
 
-* **Auto-derived:** Every leaf node in the Org Tree is automatically considered a Team.
-* **Configurable:** Each Team has its own configuration to define how metrics are calculated and displayed.
-* **Contextualized and metric specific settings:** Teams include metadata such as associated integrations, relevant services, repositories, destination branches, pipelines, environments, etc.
+| Column              | Description                                       |
+| ------------------- | ------------------------------------------------- |
+| **Name**            | Team name                                         |
+| **Org Tree Name**   | Corresponding leaf node in the Org Tree           |
+| **Developers**      | Number of developers mapped to the team           |
+| **Team Managers**   | Assigned team managers                            |
+| **Integrations**    | Connected tools used by the team                  |
+| **Last Updated On** | Timestamp of the most recent configuration change |
+| **Last Updated By** | User who last modified the team                   |
 
-This configuration layer adds precision to how metrics like Deployment Frequency, Lead Time, MTTR, and others are calculated, which ensures each metric reflects the real scope, velocity, and complexity of the team's delivery lifecycle.
+While teams are automatically derived from your organization's hierarchy, they must be configured to ensure data is attributed correctly and metrics accurately reflect how each team delivers software in SEI 2.0. To access the **Team Settings** side panel, click on a team in the list.
 
-Out of the box, Harness SEI builds teams from your organization’s hierarchy. However, each team needs to be contextualized with additional configuration to ensure data is mapped correctly and insights are accurate.
+![](../static/teams-2.png)
 
-This includes:
+Optionally, you can access the **Team Settings** side panel by navigating to a leaf node (team) in the Org Tree and clicking the **Team Settings** icon on the **Insights** page. Each team has its own configuration that determines how DORA metrics are calculated. 
 
-* Identifying the right developers and matching them to their work.
-* Linking the team to the right integrations across issue management systems, source code managers, continuous delivery and incident monitoring/management systems.
-* Defining how metrics like incidents, bugs, and features are recognized in your software delivery workflow.
+You can also manage developer records, integrations, repositories, pipelines, and destination branches. Instead of relying on defaults or incomplete mapping, this configuration layer helps ensure metrics reflect the actual scope, ownership, and delivery workflow of each team.
 
-## Set up Teams
+## Configure integrations for a team
 
-To configure teams in SEI 2.0:
+Select the tools your team uses for issue management, source code management, and continuous deployment on the **Integrations** tab in **Team Settings**. These integrations power how SEI 2.0 attributes data and calculates metrics for the team.
 
-1. From the SEI navigation menu, click **Insights**. Your Org Tree is displayed on the left, allowing you to switch between organization-level and individual team-level insights.
-1. Select a leaf node (a **Team**) in the Org Tree.
-1. A **Team Settings** side panel opens, allowing you to configure integrations, developer identifiers, shared developers, tool settings, and developer records for that team.
+:::tip
+Selecting and saving integrations is required before completing the rest of the team configuration.
+:::
 
-### Step 1: Choose the integrations to power insights
+The integrations available are determined by the profile applied to the team. For example, an [Efficiency profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) that measures: 
 
-In this step, choose the integrations that is used by your team for issue management systems, source code managers & CI/CD systems. Note that it is mandatory to select and save the integrations to continue configuring the rest of the team settings.
+* **Lead Time to Change (LTTC)** and **Mean Time to Restore (MTTR)** requires an issue management tool.
+* **Deployment Frequency** and **Change Failure Rate** requires a continuous deployment integration.
 
-The choice of integrations in this page is powered by the profile definition. For example: An Efficiency profile that is configured for using issue management system to measure LTTC & MTTR, CD system to measure deployment frequency & change failure rate will require the team manager to define the issue management system integration & CD system integration.
+In this situation, a team manager must select and save both issue management and continuous deployment integrations to proceed.
 
-![](../static/team-1.png)
+![](../static/teams-3.png)
 
-### Step 2: Review & update developer identifiers
+To select and save integrations:
+
+1. Navigate to the **Integrations** tab in **Team Settings**.
+1. Select integrations from the following sections: **Issue Management**, **Source Code Management**, and **Continuous Deployment**.
+1. Click **Save Integrations**.
+
+Once saved, SEI 2.0 uses these integrations to scope data ingestion, developer activity, and metric calculations for the team.
+
+## Review & update developer identifiers
 
 To measure productivity metrics accurately (e.g., coding days, PR activity), Harness SEI needs to know which developer performed which action in each tool. This is done by mapping each developer's cloud identities across your integrated systems.
 
@@ -63,7 +76,7 @@ However, some contributors, such as engineering managers or individual developer
 
 Both automatically added developers and manually added shared developers must have correct identity mappings to ensure the accuracy of DORA, sprint, and productivity metrics.
 
-#### Cloud identifiers by integration
+### Cloud identifiers by integration
 
 The following table lists each integration along with the type of cloud identifier used and sample values. 
 
@@ -79,7 +92,7 @@ The following table lists each integration along with the type of cloud identifi
 
 This step is mandatory for productivity metrics, and mapping must be kept up-to-date in **Team Settings** to ensure metrics are accurate. You can automate this step using [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers/), which reduces manual mapping by correlating developer identities across supported integrations.
 
-#### Managing shared developers
+### Managing shared developers
 
 In addition to identity mapping, the **Developers** tab in **Team Settings** allows you to add contributors who are not inherited from the Org Tree but still affects the selected team's metrics. While inherited developers appear with `Source: Developers` and `Shared: No`, shared developers appear with `Source: Manual` and `Shared: Yes`.
 
@@ -115,186 +128,216 @@ When browsing the **Developer Records** table, you can search for developers by 
 
 Click the **+** icon next to the `Developer Identities` dropdown menu to add additional columns such as `Added By` (who created the record) and `Last Updated` (the most recent modification timestamp) to the **Developer Records** table.
 
-### Step 3: Tool or system specific settings
+## Configure team tool settings
 
-Once you’ve selected your team’s integrations and mapped developer identities, the final step is to configure tool-specific settings. These configurations allow you to fine-tune how Harness SEI interprets data from your tools—ensuring the metrics reflect your team’s actual workflows and tool usage.
+After selecting your team's integrations and mapping developer identities, configure tool-specific settings to control how SEI 2.0 interprets data from each system. Proper configuration ensures that metrics on the **Insights** page accurately reflect your team's workflows, tools, and operational context.
 
-Only the tools associated with the team’s linked Efficiency or Business Alignment profile will require configuration. Each team can override global settings to use specific integrations that better reflect their actual tool usage.
+SEI 2.0 uses a filter set model to determine which work items should be included and how they are classified. Each filter set consists of:
+
+- **Property**: The issue attribute to evaluate (for example, `Project`, `Issue Type`, or `Label`).
+- **Condition**: How the property is matched (for example, `Equals` or `Contains`).
+- **Value**: The value from your issue management system (for example, `Docs`, `Bug`, or `P1`).
+
+You can add multiple filter sets by clicking **+ Add Condition**. Each additional filter set is combined using `AND` logic, meaning all filter sets must match for a work item to be included. To remove a filter set, click the **Delete** icon next to it. Depending on the profile applied to the team, this configuration can impact delivery, reliability, productivity, and business alignment metrics. 
+
+To ensure accurate and meaningful metrics, align your filter conditions with your team's actual workflows, standardize labels and conventions for incidents, bugs, and deployments across tools, and regularly review your team settings whenever tools, processes, or team ownership changes. By keeping configurations current, you can ensure the dashboards in SEI 2.0 provide the most relevant and up-to-date insights.
 
 <Tabs queryString="team-settings">
-
 <TabItem value="im-settings" label="Issue Management Settings">
 
-Use this section to define which tickets or work items are relevant to your team.
+Use the **Issue Management** tab in **Team Settings** to define which work items are relevant to your team and how they should be interpreted for metrics calculation. These settings control how SEI 2.0 scopes work, identifies incidents, categorizes investment, and classifies different types of work.
 
-#### Configure Projects for your Team
+### Projects
 
-Define the scope of work items relevant to your team using a combination of filters (such as projects, code area etc)
+Define the scope of work items that belong to your team by including the projects or code areas where your team manages work.
 
-![](../static/team-3.png)
-    
-:::info
-Impacts the following metrics if the profile was configured to use Issue Management as the source system:
-     
-* Lead Time for Changes (LTTC)
-* Mean Time to Restore (MTTR)
-* Change Failure Rate (CFR)
-* Deployment Frequency
-* Business Alignment
+![](../static/teams-4.png)
 
+| Filter field   | Available options                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------------- |
+| **Properties** | Project, Labels, Sprint Name, Components, Parent, Custom Fields                                |
+| **Conditions** | Equals, Not Equals, Contains, Does Not Contain, Starts With, Ends With                         |
+| **Values**     | Values from your issue management system (for example, Jira projects such as `DOCS`, `PRODUCT`) |
+
+To include work items from a specific Jira project (like `DOCS`), use `Project Equals DOCS`. 
+
+:::tip
+Correct production incident classification ensures SEI 2.0 accurately calculates **Change Failure Rate** and [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment).
 :::
 
+### Production Incidents
 
-#### How do you identify production failures or incidents?
+Identify which work items represent production failures or incidents to help SEI 2.0 calculate Change Failure Rate.
 
-To calculate Change Failure Rate and MTTR, Harness SEI needs to know which work items represent failures or incidents. Define this using:
-    
-* Issue Type (e.g., Bug, Incident)
-* Labels (e.g., production-incident, sev1)
+![](../static/teams-5.png)
 
-![](../static/team-4.png)
+| Filter field   | Available options                                                                       |
+| -------------- | --------------------------------------------------------------------------------------- |
+| **Properties** | Labels, Issue Type, Priority                                                            |
+| **Conditions** | Equals, Not Equals, Contains, Does Not Contain, Starts With, Ends With                  |
+| **Values**     | Values from your issue management system (for example, `Incident`, `Bug`, `sev1`, `P0`) |
 
-:::info
-Impacts the following metrics if the profile was configured to use Issue Management as the source system:
+To identify incidents using labels, use `Labels Contains production-incident`, or by issue type, use `Issue Type Equals Incident`.
 
-* DORA MTTR
-* DORA Change Failure Rate
-
+:::tip
+Correct production incident classification ensures SEI 2.0 accurately calculates **Change Failure Rate**.
 :::
 
-#### Business Alignment
+### Business Alignment
 
-If your Org Tree includes Business Alignment, use this section to define how work items map to each category.
+Business Alignment maps work items to investment categories defined in your [Business Alignment profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/business-alignment-profile/) (for example, Epic, Story, and Task). These filters are configured per investment category.
 
-Business Alignment categories (e.g., Strategic Work, Tech Debt, Customer Commitments) are centrally defined by the Harness SEI Admin in the profile and apply across the organization. Teams configure how to filter work items into these categories using their own logic.
+![](../static/teams-6.png)
 
-![](../static/team-4.png)
+| Filter field   | Available options                                                      |
+| -------------- | ---------------------------------------------------------------------- |
+| **Properties** | Issue Type, Status, Labels, Priority, Components, Parent, Sprint Name  |
+| **Conditions** | Equals, Not Equals, Contains, Does Not Contain, Starts With, Ends With |
+| **Values**     | Values from your issue management system                               |
 
-To set up these filters:
+For the Epic category, use `Issue Type Equals Epic`. For the Story category, use `Issue Type Equals Story`. Each category is evaluated independently based on its own filter set.
 
-* Define Filter Sets for each category.
-  * Use up to three distinct Filter Sets per category.
-  * Each Filter Set can contain one or more filter conditions.
-* Configure each condition by:
-  * Selecting an attribute from the Properties dropdown (e.g., Label, Issue Type)
-  * Choosing a matching rule from the Conditions dropdown (e.g., Equals, Contains)
-  * Specifying the desired Value
-* Set the logical operator between Filter Sets:
-  * Use AND if all Filter Sets must match
-  * Use OR if any one Filter Set can match
+:::tip
+Correct investment category configuration ensures SEI 2.0 accurately calculates [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment).
+:::
 
-This flexible logic ensures accurate mapping of work items to the correct Business Alignment categories.
+### Work Type
+
+Define how SEI 2.0 classifies features, bugs, and work status for [Productivity metrics](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity#productivity-insight-widgets) by configuring filter sets, setting feature and bug category thresholds, and specifying which statuses represent active and terminated work.
+
+#### Features
+
+![](../static/teams-7.png)
+
+| Filter field   | Available options                                                              |
+| -------------- | ------------------------------------------------------------------------------ |
+| **Properties** | Issue Type                                                                     |
+| **Conditions** | Equals                                                                         |
+| **Values**     | Bug-related issue types from your issue management system (for example, `Story`) |
+
+To identify feature work, use `Issue Type Equals Story` or `Issue Type Equals Enhancement`. 
+
+In the **Feature Categories** section, you can further classify features by size using story points.
+
+- **Simple**: Set a minimum and maximum range (for example, 1–3).
+- **Medium**: Set a minimum and maximum range (for example, 4–6).
+- **Complex**: Set a minimum threshold only (for example, 7+).
+
+:::tip
+Correct feature classification ensures SEI 2.0 accurately calculates **Work Completed** and **PR Velocity**.
+:::
+
+#### Bugs and defects
+
+![](../static/teams-8.png)
+
+To identify bugs or defects, use `Issue Type Equals Bug`.
+
+In the **Bug Categories** section, you can further classify bugs by severity using values from your issue management system.
+
+- **Critical**: For example, `P0`, `P1`, `Highest`.
+- **Major**: For example, `P2` or `P3`.
+- **Minor**: For example, `P4`, `Low`, `Lowest`.
+
+:::tip
+Correct bug classification ensures SEI 2.0 accurately calculates **Work Completed** and **PR Velocity**.
+:::
+
+#### Active and terminated work
+
+Define which statuses represent **active work** (for example, `In Progress` or `QA Testing`) and **terminated work** (for example, `Invalid` or `Duplicate`) in the **Choose all statuses that represent work in your issue management system** sections.
+
+To classify active work, use `Statuses Equals To Do, In Progress, QA Testing`. For terminated work, use `Statuses Equal Invalid, Won't Do, Duplicate`.
+
+:::tip
+Correct status classification ensures SEI 2.0 accurately calculates **Work Completed**.
+:::
+
+After completing all Issue Management filters, click **Save IM Settings** to apply the configuration to the team.
 
 </TabItem>
-
 <TabItem value="scm-settings" label="Source Code Management Settings">
 
-This section allows you to define how Harness SEI tracks coding activity, repository scope, and production deployments using your SCM system.
+:::info Auto Identity Mapping
+You can either manually configure repositories and target branches, or if your team uses a supported integration with [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers/), this process is automatic.
 
-#### Define / Add the repositories
-
-Specify which repositories your team uses for development work. Use filters such as:
-
-* Repository Name: Equals, Starts With, Contains
-* GitHub Teams: To auto-include all repos a team contributes
-
-![](../static/team-5.png)
-
-
-:::info
-
-Impacts the following metrics if the profile was configured to use Source Code Manager as the source system:
-
-* DORA LTTC
-* Deployment Frequency
-
+![](../static/teams-10.png)
 :::
 
-#### Set the destination / target branches
+Use the **Source Code Management** tab in **Team Settings** to define which repositories, branches, and commit events are relevant for your team's coding activity and production deployments.
 
-Identify which branches are considered production or deployment targets. This is essential for accurately calculating Lead Time and Deployment Frequency.
+### Repositories
+
+| Filter field   | Available options                                                             |
+| -------------- | ----------------------------------------------------------------------------- |
+| **Properties** | Repository Name, GitHub Teams                                                 |
+| **Conditions** | Equals, Starts With, Contains                                                 |
+| **Values**     | Repository names from your SCM system (for example, `team-service`, `FMEPRD`) |
+
+To include a single repository, use `Repository Name Equals team-service`. To include repositories using GitHub Teams, use `GitHub Teams Equals frontend-devs`.
+
+### Destination and target branches
+
+Determine which branches are considered production or deployment targets.
 
 ![](../static/team-6.png)
 
-:::info
+| Filter field   | Available options                                                     |
+| -------------- | --------------------------------------------------------------------- |
+| **Properties** | Branch Name                                                           |
+| **Conditions** | Equals, Starts With, Contains                                         |
+| **Values**     | Branch names from your SCM system (for example, `main`, `production`) |
 
-Impacts the following metrics if the profile was configured to use Source Code Manager as the source system:
+To include the main branch, use `Branch Name Equals main`. To include release branches, use `Branch Name Starts With release/`.
 
-* DORA LTTC
-* Deployment Frequency
-
-:::
-    
-#### Define the signal to track deployments driven by the SCM system
-
-To calculate Deployment Frequency from SCM activity, Harness SEI needs to understand what constitutes a deployment event.
-
-By default, Harness SEI considers:
-
-* Pull Requests merged to a production branch
-* With a specific label (e.g., deploy, release)
-
-You can configure or customize these values as needed.
-    
-:::info
-
-Impacts the Deployment Frequency metric if the profile was configured to use Source Code Manager as the source system.
-
-:::
+After completing all Source Code Management filters, click **Save SCM Settings** to apply the configuration to the team.
 
 </TabItem>
-
 <TabItem value="cicd-settings" label="Pipeline Settings">
 
-Use this section to define which services or pipelines are relevant to your team, and how Harness SEI should identify successful and failed deployments.
+Use the **CD Pipelines** tab in **Team Settings** to define which CD pipelines belong to your team and how SEI 2.0 identifies successful and failed deployments when calculating deployment-related metrics.
 
-#### Identify your services or CD pipelines
-    
-Use filters (such as pipeline name or tags) to select the pipelines that should be included in SEI’s analysis.
+![](../static/teams-9.png)
 
+### Services or CD pipelines
 
-:::info
+Define the scope of CD pipelines by creating one or more filter sets. 
 
-Impacts the following metrics if the profile was configured to use Continuous Delivery Tool as the source system:
+| Filter field   | Available options                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| **Properties** | Service Name, Infrastructure ID, Environment ID, Tags, Pipeline Name, Project, Organization |
+| **Conditions** | Equals, Not Equals, Contains, Does Not Contain, Starts With, Ends With                      |
+| **Values**     | Values from your CD system (for example, service names, pipeline names, or tags)            |
 
-* Deployment Frequency
-* Change Failure Rate
+To include pipelines by name, use `Pipeline Name Contains deploy`. To scope services to a production environment, use `Environment ID Equals prod`.
 
+:::tip
+Only services and CD pipelines that match these filters are used to calculate **Change Failure Rate**.
 :::
 
-#### How do you identify a successful deployment?
+### Failed deployments or rollbacks
 
-Specify the criteria that indicate a successful deployment. For example: `Pipeline Status = Success`
+Define how SEI 2.0 detects failed deployments or rollbacks in your CD system. These filters determine when a deployment is classified as a failure. 
 
-SEI uses this to calculate Deployment Frequency.
+| Filter field   | Available options                                           |
+| -------------- | ----------------------------------------------------------- |
+| **Properties** | Pipeline Status, Rollback                                   |
+| **Conditions** | Equals, Not Equals                                          |
+| **Values**     | Values from your CD system (for example, `Failure`, `true`) |
 
-#### How do you identify a failure in production?
+To identify a rollback, use `Rollback Equals true`. To identify failed executions, use `Pipeline Status Equals Failure`.
 
-Specify how Harness SEI should detect failed deployments or rollbacks, using conditions such as: `Pipeline status = Rollback or Failure`
+:::tip
+Correct failure detection ensures SEI 2.0 accurately calculates **Change Failure Rate**.
+:::
 
-This helps Harness SEI compute the Change Failure Rate metric.
+After completing all CD Pipelines filters, click **Save CD Settings** to apply the configuration to the team.
 
 </TabItem>
-
 </Tabs>
 
-## What's next
+## Access insights
 
-Once you complete and save your tool-specific settings, Harness SEI will:
+After you save your tool-specific settings, SEI 2.0 automatically attributes data to your team, mapping events and activity from integrated systems based on your filters and developer identifiers. SEI 2.0 calculates all relevant Efficiency, Productivity, and Business Alignment metrics using your defined criteria, and all dashboards on the **Insights** page update reflect these data-driven insights in real time.
 
-* Attribute data to your team: Events and activity from integrated systems will be mapped to the configured team based on your filters and identifiers.
-* Start calculating metrics: All relevant Efficiency and Business Alignment metrics will be computed using your defined criteria.
-* Update dashboards automatically: Your team’s dashboards will begin reflecting data-driven insights based on the latest configuration.
-
-## Best practices
-
-* Align filters with real workflows: Define filter conditions that mirror how your team actually organizes and tracks work.
-* Standardize labels and conventions: Use consistent naming for incidents, bugs, and deployments across tools to improve metric reliability.
-* Review settings regularly: Revisit and update your team’s configurations whenever tools, processes, or team ownership changes.
-
-Keeping your configurations current ensures your dashboards always reflect the most meaningful, up-to-date insights.
-
-## Next steps
-
-* View team insights
-* View organization insights
+Once your settings are configured, you can explore team insights by reviewing metrics and trends for individual teams and organizational insights by analyzing aggregated data across your Org Tree.

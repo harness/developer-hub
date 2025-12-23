@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-12-16T10:00:10
+date: 2025-12-23T10:00:10
 sidebar_position: 15
 ---
 
@@ -19,6 +19,29 @@ These release notes describe recent changes to Harness Software Engineering Insi
 :::
 
 ## December 2025
+
+### [New Enhancement] Maturity Model for DORA Metrics
+---
+#### 2025-12-23
+
+You can now define and customize maturity thresholds for DORA metrics in SEI 2.0. Organization-wide maturity levels are defined when creating or editing an Efficiency Profile, and maturity thresholds are configured by level on the **DORA** tab in **Team Settings**.
+
+![](./static/sei/maturity.png)
+
+For Lead Time for Changes (LTTC), you can define maturity ranges at the global level and override these thresholds at the individual workflow stage level using the **Maturity Settings** tabs. 
+
+![](./static/sei/maturity-1.png)
+
+In addition, maturity thresholds for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR) can be configured directly within their respective sections on the **DORA** tab in **Team Settings**.
+
+![](./static/sei/maturity-2.png)
+
+This enhancement provides more granular control over how delivery performance is classified and reported across your organization.
+
+#### Related documentation
+
+- [Efficiency Profiles](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)
+- [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#configure-team-tool-settings)
 
 ### [New Feature] Shared Developers is now available
 ---
