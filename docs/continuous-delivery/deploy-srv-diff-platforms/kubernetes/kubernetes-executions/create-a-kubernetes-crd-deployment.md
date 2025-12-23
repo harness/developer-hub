@@ -274,7 +274,7 @@ Only the Kubernetes Rolling deployment method is supported for CRDs. See [Create
 
 There is nothing to configure in this pipeline unless you want to add additional steps. The default **Rollout Deployment** step will deploy your custom object.
 
-You might want to run a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step to display additional Kubernetes information. See [Harness Variables and Expressions](/docs/category/variables-and-expressions) for expressions you can use.
+You might want to run a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step to display additional Kubernetes information. See [Harness Variables and Expressions](/docs/category/variables--expressions) for expressions you can use.
 
 ### Step 5: Deploy custom resource
 

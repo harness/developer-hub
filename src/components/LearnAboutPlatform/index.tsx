@@ -97,7 +97,7 @@ export default function LearnAboutPlatform(): JSX.Element {
       {showMore && (
         <ul className={styles.platformListMore}>
           <li>
-            <a href="/docs/category/organizations-and-projects">
+            <a href="/docs/category/organizations--projects">
               <h4>Organizations &amp; Projects</h4>
               <p>Structure your development teams &amp; applications</p>
             </a>

@@ -1,5 +1,5 @@
 ---
-title: Platform resource Limits
+title: Platform Resource Limits
 description: Learn about the platform resource limits applied in the Harness Platform.
 sidebar_position: 31
 ---

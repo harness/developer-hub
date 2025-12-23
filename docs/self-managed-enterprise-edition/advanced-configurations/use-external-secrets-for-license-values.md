@@ -8,7 +8,7 @@ Kubernetes external secrets enable Kubernetes resources to use external data sto
 
 :::note
 
-Currently, this feature is in [beta](/docs/platform/get-started/release-status). Contact [Harness Support](mailto:support@harness.io) to get your Harness Self-Managed Enterprise Edition license files.
+Currently, this feature is in [beta](/docs/platform/get-started/key-concepts#beta-limited-ga-and-ga-definitions). Contact [Harness Support](mailto:support@harness.io) to get your Harness Self-Managed Enterprise Edition license files.
 
 :::
 

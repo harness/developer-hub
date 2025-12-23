@@ -1,11 +1,11 @@
 ---
 title: Overview of the Harness User Interface (UI)
 description: Explore the Harness User Interface (UI), highlighting its key components, navigation structure, and essential features to help you interact efficiently with the platform.
-sidebar_label: Harness User Interface (UI) 
-sidebar_position: 3
+sidebar_label: Platform UI Overview
 redirect_from:
   - /docs/getting-started/harness-ui-overview
   - /docs/get-started/harness-ui-overview
+  - /docs/platform/harness-ui-overview
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 

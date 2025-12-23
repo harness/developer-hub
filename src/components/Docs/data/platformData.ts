@@ -28,7 +28,7 @@ export const docsCards: CardSections = [
         module: MODULES.platform,
         description:
           "Learn about new features, beta features, and upcoming enhancements.",
-        link: "/docs/platform/get-started/release-status",
+        link: "/docs/platform/get-started/key-concepts#feature-lifecycle",
       },
       {
         title: "Terraform Provider",

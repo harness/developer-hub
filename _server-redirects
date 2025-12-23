@@ -89,7 +89,7 @@
 
 # Added by ivikramsahu on 08-01-2025 for renaming notifications to notification-and-banners
 
-/docs/category/notifications /docs/category/notifications-and-banners
+/docs/category/notifications /docs/category/notifications--banners
 
 # Added by ivikramsahu on 08-02-2025 fixing the missing url by redirecting to code-repositories
 
@@ -177,7 +177,7 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 
 # Redirects required for sidebar standardization (platform kb and reference-architecture)
 
-/kb/platform /docs/category/knowledgebase
+/kb/platform /docs/category/knowledge-base
 /kb/category/articles /docs/category/articles
 /kb/category/custom-implementations /docs/category/custom-implementations
 

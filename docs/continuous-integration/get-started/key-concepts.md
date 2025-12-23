@@ -113,7 +113,7 @@ For more information, go to the Harness Platform documentation on [Delegates](/d
 
 ### Variables
 
-You can add and reference [built-in and custom variables](/docs/category/variables-and-expressions) in pipelines and stages. They're available across the pipeline. You can propagate and override their values in later stages.
+You can add and reference [built-in and custom variables](/docs/category/variables--expressions) in pipelines and stages. They're available across the pipeline. You can propagate and override their values in later stages.
 
 ### Triggers
 

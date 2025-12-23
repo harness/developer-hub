@@ -164,4 +164,4 @@ For more information, go to the Harness Platform documentation on [delegates](/d
 
 ### Variables and expressions
 
-You can add and reference [built-in and custom variables and expressions](/docs/category/variables-and-expressions) in pipelines and stages. They're available across the pipeline. You can propagate and override their values in later stages.
+You can add and reference [built-in and custom variables and expressions](/docs/category/variables--expressions) in pipelines and stages. They're available across the pipeline. You can propagate and override their values in later stages.

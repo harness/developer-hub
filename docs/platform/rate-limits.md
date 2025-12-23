@@ -1,5 +1,5 @@
 ---
-title: Platform rate limits
+title: Platform Rate Limits
 description: Learn about rate limits that help maximize the stability of the Harness Platform.
 sidebar_position: 31
 ---

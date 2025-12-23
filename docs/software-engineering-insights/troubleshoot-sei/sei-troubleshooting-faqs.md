@@ -155,6 +155,6 @@ Once saved:
 
 Typically, dashboards update automatically within minutes after configurations are saved; however, large data syncs may take longer, depending on the system size.
 
-For troubleshooting guidance for the Harness Platform, secrets, or other modules go to the [Platform Knowledge Base](/docs/category/knowledgebase/) or [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
+For troubleshooting guidance for the Harness Platform, secrets, or other modules go to the [Platform Knowledge Base](/docs/category/knowledge-base/) or [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
 For additional support, you can contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community](https://developer.harness.io/community/).

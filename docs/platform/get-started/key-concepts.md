@@ -1,7 +1,6 @@
 ---
 title: Key Concepts
 description: Learn key concepts of the Harness Platform including accounts, organizations, projects, delegates, connectors, pipelines, and RBAC.
-sidebar_position: 1
 helpdocs_topic_id: hv2758ro4e
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
@@ -13,6 +12,9 @@ redirect_from:
   - /docs/getting-started/harness-platform-architecture
   - /docs/get-started/harness-platform-architecture
   - /docs/getting-started/learn-harness-key-concepts
+  - /docs/platform/key-concepts
+  - /docs/get-started/beta-preview-ga
+  - /docs/get-started/release-status
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
@@ -28,7 +30,7 @@ Your Harness account is the entity at the highest [scope](/docs/platform/role-ba
 
 Resources, such as [connectors](#connectors), can be added at all scopes (account, organization, or project), and they are available to all lower scopes.
 
-![](./static/learn-harness-key-concepts-04.png)
+![](../static/learn-harness-key-concepts-04.png)
 
 Creating a thoughtful hierarchy of organizations and projects in your account allows teams to  manage their organization-level and project-level resources without relying on account admins.
 
@@ -107,7 +109,7 @@ The delegate is key to enabling Harness to perform tasks on your behalf, but you
 
 <figure>
 
-![](./static/harness-platform-architecture-00.png)
+![](../static/harness-platform-architecture-00.png)
 
 <figcaption>Diagram of Harness Delegate architecture</figcaption>
 </figure>
@@ -206,3 +208,36 @@ Harness FirstGen and Harness NextGen are two versions of the Harness product sui
 
 * Harness FirstGen is the legacy or earlier version of Harness. It covers common platforms but didn't include all Harness modules.
 * Harness NextGen is Harness' new version with a redesigned experience and new Continuous Integration, Feature Flags, Security Testing Orchestration, Service Reliability Management, Cloud Cost Management, and Chaos Engineering modules.
+
+---
+
+## Feature Lifecycle
+
+Learn about recent and upcoming changes to the Harness Platform and modules.
+
+* [Release notes](/release-notes)
+* [Product roadmap](/roadmap)
+* [Early access features](/release-notes/early-access)
+
+### Beta, Limited GA, and GA definitions
+
+Harness releases features and modules that may be in various states of development, including **Beta**, **Limited GA**, and **GA**.
+
+A **Beta** feature or module:
+* Is released behind a feature flag.
+* May include bugs or have performance issues.
+* May include functionality that will not be included in the GA release.
+* May be unstable or cause instability with existing features.
+* May not include documentation.
+* May not be suitable for production environments.
+* May not include all functionality.
+
+A **Limited GA** feature or module:
+* Is released behind a feature flag.
+* Includes basic documentation.
+* May be suitable for specific production environments.
+
+A **GA** feature or module:
+* Is suitable for production environments.
+* Includes complete documentation.
+* Includes a stable UI.

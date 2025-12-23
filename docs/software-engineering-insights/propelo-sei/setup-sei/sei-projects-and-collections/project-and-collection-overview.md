@@ -7,7 +7,7 @@ redirect_from:
   - /docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview
 ---
 
-Collection hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations-and-projects). Under each project are Collection categories and one or more levels of Collections.
+Collection hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations--projects). Under each project are Collection categories and one or more levels of Collections.
 
 * **Harness project:** The umbrella for the SEI Collection hierarchy. Collection categories and Collections exist under their associated project; they don't span across projects. While multiple projects can have Collection categories and Collections with the same name, these are distinct groups under their designated project.
 * **Collection categories:** Broad classifications that serve as containers for Collections but are not, themselves, Collections. For example, **Teams** is a Collection category; whereas **Engineering Team** and **Docs Teams** are Collections under the **Teams** category.
@@ -24,7 +24,7 @@ Projects, Collection categories, and Collections provide a broad way of organizi
 
 ## Projects
 
-[Projects](/docs/category/organizations-and-projects), in addition to the roles they serve elsewhere in the Harness Platform, provide an umbrella for you to organize the Collection hierarchy and access Insights associated with specific Collections.
+[Projects](/docs/category/organizations--projects), in addition to the roles they serve elsewhere in the Harness Platform, provide an umbrella for you to organize the Collection hierarchy and access Insights associated with specific Collections.
 
 Collection categories and Collections exist under their associated project; they don't span across projects. While multiple projects can have Collection categories and Collections with the same name, these are distinct groups under their designated project.
 
@@ -34,7 +34,7 @@ Collection categories and Collections exist under their associated project; they
 
 On your [Insights](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights), widgets derive data from [integrations](/docs/category/configure-integrations) that are inherited from the Collection associated with the Insights. Collections inherit integrations from the [SEI integrations](/docs/category/configure-integrations) defined in the associated project.
 
-While you can create projects from within the SEI module, projects are part of the Harness Platform and can be associated with multiple modules. For information about configuring Harness projects, go to the Harness Platform documentation on [Organizations and Projects](/docs/category/organizations-and-projects).
+While you can create projects from within the SEI module, projects are part of the Harness Platform and can be associated with multiple modules. For information about configuring Harness projects, go to the Harness Platform documentation on [Organizations and Projects](/docs/category/organizations--projects).
 
 ## Collection categories
 

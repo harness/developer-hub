@@ -12,7 +12,7 @@ This topic explains how to use Helm to install the Harness Self-Managed Enterpri
 
 :::note
 
-This feature is currently in [beta](/docs/platform/get-started/release-status). Harness has tested and verified OpenShift version 4.13.x.
+This feature is currently in [beta](/docs/platform/get-started/key-concepts#beta-limited-ga-and-ga-definitions). Harness has tested and verified OpenShift version 4.13.x.
 
 :::
 

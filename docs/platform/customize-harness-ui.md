@@ -1,8 +1,10 @@
 ---
-title: Customize branding in Harness UI
-sidebar_label: Customize branding in Harness UI
+title: Customize Branding in Harness UI
+sidebar_label: Customize Branding
 description: Learn how to customize the Harness UI by personalizing its appearance through updating the favicon and logo.
 sidebar_position: 41
+redirect_from:
+  - /docs/platform/get-started/customize-harness-ui
 tags:
   - branding
   - UI

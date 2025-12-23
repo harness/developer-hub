@@ -239,7 +239,7 @@ No enhancements or fixes were released in this cycle.
 #### New features and enhancements
 
 - Added [NDJSON format](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) support for AWS S3 streaming destinations. This enhancement is available starting from delegate version 25.10.87100. [PL-65974]
-- Added support for [customizing the Harness UI](https://developer.harness.io/docs/platform/get-started/customize-harness-ui) with your own favicon and logo. [PL-42608]
+- Added support for [customizing the Harness UI](https://developer.harness.io/docs/platform/customize-harness-ui) with your own favicon and logo. [PL-42608]
 #### Fixed issues
 
 - Fixed access control enforcement for the delegate installation command API. Users with view-only permissions can no longer access the command. [PL-65912]

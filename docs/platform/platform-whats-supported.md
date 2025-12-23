@@ -230,7 +230,7 @@ Harness includes native TUF support via the following:
 
 ## Active Platform feature flags
 
-Some Harness Platform features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience. Feature development statuses are categorized as [Beta, GA, or Limited GA](/docs/platform/get-started/release-status).
+Some Harness Platform features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience. Feature development statuses are categorized as [Beta, GA, or Limited GA](/docs/platform/get-started/key-concepts#beta-limited-ga-and-ga-definitions).
 
 The following table describes active feature flags relevant to Harness Platform.
 

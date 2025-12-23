@@ -19,7 +19,7 @@ export default function Platform() {
             <h1>Harness Platform</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/docs/category/knowledgebase">
+            <Link href="/docs/category/knowledge-base">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />

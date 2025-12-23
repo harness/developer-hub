@@ -1,6 +1,7 @@
 ---
 title: Onboarding Guide
 description: A self-service onboarding guide for Harness Platform
+sidebar_label: Get Started
 sidebar_position: 2
 redirect_from:
   - /docs/platform/get-started/tutorials

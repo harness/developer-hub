@@ -39,8 +39,8 @@ In addition to a [default codebase](#codebases), you can configure the following
 
 * [Input sets and overlays](/docs/platform/pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
-* [Variables](/docs/category/variables-and-expressions)
-* [Notifications](/docs/category/notifications-and-banners)
+* [Variables](/docs/category/variables--expressions)
+* [Notifications](/docs/category/notifications--banners)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
 * [Policy Sets](/docs/platform/governance/policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline [Timeout Settings](/docs/platform/pipelines/failure-handling/timeout-settings.md), [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
@@ -179,7 +179,7 @@ You can optimize your CI pipelines to make them faster, more efficient, and more
 Expressions and runtime inputs make your pipelines more dynamic.
 
 * [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs)
-* [Variables and expressions](/docs/category/variables-and-expressions)
+* [Variables and expressions](/docs/category/variables--expressions)
 * [CI environment variables](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md)
 * [Input sets and overlays](/docs/platform/pipelines/input-sets)
 
@@ -199,7 +199,7 @@ There are many ways you can incorporate third party tools and services in your C
 
 * [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins.md)
 * [Secrets Managers](/docs/platform/get-started/tutorials/add-secrets-manager)
-* [Notifications](/docs/category/notifications-and-banners)
+* [Notifications](/docs/category/notifications--banners)
 * [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)
 
 ### Resource consumption
