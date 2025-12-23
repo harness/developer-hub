@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Software Engineering Insi
 ---
 #### 2025-12-23
 
-You can now define and customize maturity thresholds for DORA metrics in SEI 2.0. Organization-wide maturity levels are defined when creating or editing an Efficiency Profile, and maturity thresholds are configured by level on the **DORA** tab in **Team Settings**.
+You can now define and customize maturity thresholds for DORA metrics in SEI 2.0. Organization-wide maturity levels are defined when creating or editing an Efficiency Profile, and maturity thresholds are configured by level on the **DORA** tab in an Efficiency Profile.
 
 ![](./static/sei/maturity.png)
 
@@ -32,7 +32,7 @@ For Lead Time for Changes (LTTC), you can define maturity ranges at the global l
 
 ![](./static/sei/maturity-1.png)
 
-In addition, maturity thresholds for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR) can be configured directly within their respective sections on the **DORA** tab in **Team Settings**.
+In addition, maturity thresholds for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR) can be configured directly within their respective sections on the **DORA** tab in an Efficiency Profile.
 
 ![](./static/sei/maturity-2.png)
 
