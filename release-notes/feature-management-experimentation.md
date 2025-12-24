@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-12-18T10:00:00
+date: 2025-12-22T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,9 +12,28 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: December 18, 2025
+#### Last updated: December 22, 2025
 
 ## December 2025
+
+### [New Feature] Disable impressions per evaluation request in the Split Evaluator
+----
+#### 2025-12-22
+
+The Split Evaluator now supports disabling impression impression logging on a per-request basis for client evaluation endpoints using the `impressionsDisabled` evaluation option. By default, evaluations performed through the Split Evaluator generate [impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions). With this feature, you can selectively disable impression generation for individual evaluation requests without affecting treatment assignment or configuration payloads.
+
+This option is supported by all client evaluation endpoints, and is useful in situations where you want to:
+
+- Evaluate feature flags without affecting analytics
+- Perform background, preview, or speculative evaluations
+- Reduce impression volume for high-frequency evaluation requests
+
+Impressions can be disabled for both `GET` and `POST` requests by using a query parameter or the request body field. This behavior only applies to the current request and does not change global evaluator or SDK configuration.
+
+#### Related documentation
+
+- [Split Evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator#disabling-impressions-per-evaluation)
+- [Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions)
 
 ### [New Feature] Reverse Proxy Support for the Harness Proxy
 ----

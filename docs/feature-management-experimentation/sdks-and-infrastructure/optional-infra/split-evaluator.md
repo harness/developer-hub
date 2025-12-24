@@ -52,7 +52,7 @@ npm start
 
 ## Endpoints
 The following section will describe the APIs that evaluator can manage. There are grouped in four different resources depending on what they want to achieve.
-* **Client:** it corresponds to the APIs used to send impressions (get treatments) and track events.
+* **Client:** it corresponds to the APIs used to get treatments (which send impressions) and track events.
 * **Manager:** it corresponds to the APIs that will give you information of the available feature flags.
 * **Admin:** it corresponds to the APIs that will give you information of the Split Evaluator itself.
 * **api-docs:** it will contain the [Swagger](https://swagger.io/) specification of Split Evaluator.
@@ -64,7 +64,9 @@ Split Evaluator uses Swagger to document all API endpoints available in this ser
 If the port has been modified from the default(7548), make sure to set the environment variable SPLIT_EVALUATOR_SWAGGER_URL to match it.
 
 ### Client APIs
-Corresponds to the Client APIs that is generating impressions and tracking events.
+
+Corresponds to the Client APIs that is evaluating treatments, generating impressions and tracking events.
+
  * get-treatment
  * get-treatments
  * get-treatments-by-sets
@@ -75,9 +77,51 @@ Corresponds to the Client APIs that is generating impressions and tracking event
  * get-all-treatments-with-config
  * track
 
+All evaluation examples below show impressions disabled for demonstration purposes. 
+
 #### Attributes
 The evaluator runs on the JavaScript SDK, so it supports all [attributes](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk/#attribute-syntax) available in the SDK.
 
+#### Disabling impressions per evaluation
+
+:::info Version Support
+Disabling impressions per evaluation is supported in the Split Evaluator [version 2.9.0 and later](https://github.com/splitio/split-evaluator/tags).
+:::
+
+By default, all evaluation endpoints generate [impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) for each feature flag evaluation. 
+Apart from using the impressions mode in evaluator config or turning impressions off at the flag level, you can disable impression logging on a per-request basis using the `impressionsDisabled` evaluation option. Disabling impressions does not affect treatment assignment or configuration payloads; it only prevents impression events from being generated for that evaluation while still tracking flag related traffic.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="request-type">
+<TabItem value="get" label="GET">
+
+You can use the `impressions-disabled` query parameter in `GET` requests. 
+
+For example: 
+
+```bash
+curl "http://localhost:7548/client/get-treatment?key=my-customer-key&split-name=FEATURE_FLAG_NAME&impressions-disabled=true" \
+  -H "Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}"
+```
+
+</TabItem>
+<TabItem value="post" label="POST">
+
+You can set `impressionsDisabled` in the request body of `POST` requests. 
+
+For example:
+
+```bash
+curl -X POST "http://localhost:7548/client/get-treatment?key=my-customer-key&split-name=FEATURE_FLAG_NAME" \
+  -H "Authorization: TEST" \
+  -H "Content-Type: application/json" \
+  -d '{ "attributes": { "plan": "premium" }, "impressionsDisabled": true }'
+```
+
+</TabItem>
+</Tabs>
 
 #### /client/get-treatment
 Evaluates a single feature flag for a single key.
@@ -88,11 +132,13 @@ Evaluates a single feature flag for a single key.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatment` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatment` call of the SDK.
  *  **properties:** (*Optional*) A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-treatment?key=my-customer-key&split-name=FEATURE_FLAG_NAME_1&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatment?key=my-customer-key&split-name=FEATURE_FLAG_NAME_1&impressions-disabled=false&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' \
+  -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -113,11 +159,13 @@ Provides a way of doing multiple evaluations at once.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatments` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatments` call of the SDK.
  *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-treatments?key=my-customer-key&split-names=FEATURE_FLAG_NAME_1,FEATURE_FLAG_NAME_2&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatments?key=my-customer-key&split-names=FEATURE_FLAG_NAME_1,FEATURE_FLAG_NAME_2&impressions-disabled=false&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' \
+  -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -141,12 +189,14 @@ Evaluates all flags that are part of the provided set names and are cached on th
  *  **flag-sets:** The names of the flag sets you want to include in the `getTreatmentsBySets` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsBySets` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsBySets` call of the SDK.
-  *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-treatments-by-sets?key=my-customer-key&flag-sets=backend,server_side&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatments-by-sets?key=my-customer-key&flag-sets=backend,server_side&impressions-disabled=false&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' \
+  -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -171,13 +221,17 @@ Evaluates a single feature flag for a single key and adds config in the result.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentWithConfig` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentWithConfig` call of the SDK.
  *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
 
 Example:
 
-```curl 'http://localhost:7548/client/get-treatment-with-config?key=my-customer-key&split-name=FEATURE_FLAG_NAME_1&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+```bash
+curl 'http://localhost:7548/client/get-treatment-with-config?key=my-customer-key&split-name=FEATURE_FLAG_NAME_1&impressions-disabled=false&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' \
+  -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
+
 ```json
   {
     "splitName": "FEATURE_FLAG_NAME_1",
@@ -195,10 +249,13 @@ Provides a way of doing multiple evaluations at once and attaches configs for ea
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsWithConfig` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfig` call of the SDK.
  *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
 
 Example:
+
 ```bash
-curl 'http://localhost:7548/client/get-treatments-with-config?key=my-customer-key&split-names=FEATURE_FLAG_NAME_1,FEATURE_FLAG_NAME_2&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatments-with-config?key=my-customer-key&split-names=FEATURE_FLAG_NAME_1,FEATURE_FLAG_NAME_2&impressions-disabled=false&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' \
+  -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -225,11 +282,13 @@ Provides a way of doing multiple evaluations at once and attaches configs for ea
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsWithConfigBySets` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfigBySets` call of the SDK.
  *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-treatments-with-config-by-sets?key=my-customer-key&flag-sets=backend,server_side&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatments-with-config-by-sets?key=my-customer-key&flag-sets=backend,server_side&impressions-disabled=false&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' \
+  -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -254,11 +313,13 @@ Performs multiple evaluations at once. In this case it will match all the featur
  * **keys:** The array of keys to be used in the `getTreatments` call. Each key should specify `matchingKey` and `trafficType`. You can also specify `bucketingKey`.
  * **attributes:** (*optional*) A JSON string of the attributes to include in the `getTreatments` call of the SDK.
  *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-all-treatments?keys=\[\{"matchingKey":"my-first-key","trafficType":"account"\},\{"matchingKey":"my-second-key","bucketingKey":"my-bucketing-key","trafficType":"user"\}\]&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-all-treatments?impressions-disabled=false&keys=\[\{"matchingKey":"my-first-key","trafficType":"account"\},\{"matchingKey":"my-second-key","bucketingKey":"my-bucketing-key","trafficType":"user"\}\]&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' \
+  -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -287,12 +348,14 @@ Performs multiple evaluations at once. In this case it will match all the featur
 ##### Query params
  * **keys:** The array of keys to be used in the `getTreatmentsWithConfig` call. Each key should specify `matchingKey` and `trafficType`. You can also specify `bucketingKey`.
  * **attributes:** (*optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfig` call of the SDK.
- *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
+ * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-all-treatments-with-config?keys=\[\{"matchingKey":"my-first-key","trafficType":"account"\},\{"matchingKey":"my-second-key","bucketingKey":"my-bucketing-key","trafficType":"user"\}\]&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-all-treatments-with-config?impressions-disabled=false&keys=\[\{"matchingKey":"my-first-key","trafficType":"account"\},\{"matchingKey":"my-second-key","bucketingKey":"my-bucketing-key","trafficType":"user"\}\]&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' \
+  -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -322,12 +385,12 @@ Response:
 Records any actions your customers perform. Each action is known as an event and corresponds to an event type. Calling track allows you to measure the impact of your feature flags on your users' actions and metrics.
 
 ##### Query params
- *  **key:** The key used in the `track` call.
- *  **traffic-type:** The traffic type of the key that you want to include in the `track` call.
- *  **event-type:** The event type that this event should correspond to the `track` call of the SDK.
- *  **value:** (*Optional*) value to be used in creating the metric.
- *  **properties:** (*Optional*) A JSON string of the properties to include in the `track` call of the SDK for filtering your metrics.
-
+ * **key:** The key used in the `track` call.
+ * **traffic-type:** The traffic type of the key that you want to include in the `track` call.
+ * **event-type:** The event type that this event should correspond to the `track` call of the SDK.
+ * **value:** (*Optional*) value to be used in creating the metric.
+ * **properties:** (*Optional*) A JSON string of the properties to include in the `track` call of the SDK for filtering your metrics.
+ 
 Example:
 
 ```bash
