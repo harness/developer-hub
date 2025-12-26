@@ -128,6 +128,37 @@ When browsing the **Developer Records** table, you can search for developers by 
 
 Click the **+** icon next to the `Developer Identities` dropdown menu to add additional columns such as `Added By` (who created the record) and `Last Updated` (the most recent modification timestamp) to the **Developer Records** table.
 
+### Applying metric-level developer filters
+
+The **Advanced Settings** section on the **Developers** tab in **Team Settings** lets you control which Harness SEI metrics should honor developer filters for a team. This is useful when contributors such as managers or [shared developers](#managing-shared-developers) work across multiple teams but should only influence specific insights.
+
+![](../static/shared-5.png)
+
+Use this setting to specify which metrics should calculate results **only from activity attributed to the developers included in this team**, based on developer filters and identity mappings.
+
+- **Productivity** and **Lead Time for Changes** metrics always honor developer filters by default.
+- Only metrics that are enabled in the team’s active SEI profiles appear in **Advanced Settings**.
+
+To configure metric-level developer filtering:
+
+1. Navigate to **Team Settings → Developers → Advanced Settings**.
+1. Select the Harness SEI metrics that should honor developer filters for this team.
+
+   - **Productivity**: Measures individual and team-level development activity, such as code contributions and work item completion, based on data from your integrated SCM and Issue Management systems.
+   - **Business Alignment**: Evaluates how development effort is distributed across business priorities and investment categories, helping ensure engineering work aligns with organizational goals.
+   - **Lead Time for Changes**: Measures the time it takes for code changes to move from initial commit to deployment in production, helping teams assess delivery efficiency and flow.
+   - **Mean Time to Restore**: Measures how quickly teams recover from production incidents or failures, from detection to resolution, indicating operational resilience.
+
+   <br />
+
+   :::tip
+   When you select a metric, only work attributed to the developers included in this team based on developer filters and identity mappings is used in that metric’s calculation.
+
+   Metrics that are not selected continue to use their default attribution logic.
+   :::
+
+1. Click **Save** to apply your changes.
+
 ## Configure team tool settings
 
 After selecting your team's integrations and mapping developer identities, configure tool-specific settings to control how SEI 2.0 interprets data from each system. Proper configuration ensures that metrics on the **Insights** page accurately reflect your team's workflows, tools, and operational context.

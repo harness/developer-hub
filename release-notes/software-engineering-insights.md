@@ -20,6 +20,36 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## December 2025
 
+### [New Feature] Metric-level Developer Filtering in Team Settings
+---
+#### 2025-12-26
+
+Harness SEI now supports metric-level developer filtering, giving teams explicit control over which insights should honor developer filters at the team level. By default, developer filters are applied to **Productivity** and **Lead Time for Changes**.
+
+![](./static/sei/advanced-settings.png)
+
+You can apply developer filters to **Business Alignment** and **Mean Time to Restore** metrics for a team under **Advanced Settings** on the **Developers** tab in **Team Settings**. This is useful when contributors such as engineering managers or [shared developers](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#managing-shared-developers) work across multiple teams but should only impact specific metrics.
+
+You can apply developer-level filtering to the following metrics:
+
+- **Productivity**
+- **Business Alignment**
+- **Lead Time for Changes**
+- **Mean Time to Restore**
+
+Only metrics that are enabled in your selected SEI profiles appear in **Advanced Settings**. When a metric is selected, only work attributed to the developers included in the team based on developer filters and identity mappings is used in that metric’s calculation. Metrics that are not selected continue to use their default attribution behavior.
+
+:::info
+Accurate [developer identity mapping](/docs/software-engineering-insights/harness-sei/manage/automatch-developers) is required for developer filters to work correctly. Ensure each developer has the appropriate SCM usernames and Issue Management account IDs configured.
+:::
+
+This feature improves attribution accuracy for cross-team contributors, reduces noise in insights, and gives teams greater flexibility in how developer activity is reflected across SEI dashboards.
+
+#### Related documentation
+
+- [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#applying-metric-level-developer-filters)
+- [Automatch Developer Identities](/docs/software-engineering-insights/harness-sei/manage/automatch-developers)
+
 ### [New Enhancement] Maturity Model for DORA Metrics
 ---
 #### 2025-12-23
