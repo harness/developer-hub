@@ -42,8 +42,8 @@ metadata:
   name: harness-chaos-allowlist-synchronizer
 spec:
   allowlistPaths:
-  - Harness/allowlists/chaos/v1.62/*
-  - Harness/allowlists/service-discovery/v0.42/*
+  - Harness/chaos/v1.66/*
+  - Harness/service-discovery/v0.46/*
 EOF
 ```
 
@@ -54,7 +54,7 @@ kubectl wait --for=condition=Ready allowlistsynchronizer/harness-chaos-allowlist
 ```
 
 :::info Version Updates
-The allowlist paths include version numbers (e.g., `v1.62`, `v0.42`) that may change with Harness updates. If you encounter issues:
+The allowlist paths include version numbers (e.g., `v1.66`, `v0.46`) that may change with Harness updates. If you encounter issues:
 
 1. Check the [Harness release notes](/release-notes/chaos-engineering) for the latest supported versions
 2. Update the allowlist paths accordingly
