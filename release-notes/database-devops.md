@@ -22,6 +22,45 @@ These release notes describe recent changes to Harness Database DevOps.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
+## December 2025
+
+### Release 1.69.x
+The `1.69.x` release focuses on security hardening and reliability improvements for database change execution and AI-assisted pipeline authoring.
+
+#### Key Highlights
+* **Bug Fixes & Security**
+- Upgraded the DB DevOps container image to address OpenSSL-related security.
+- Fixed issues in LLM-authored pipeline YAML, improving correctness and execution reliability when using AI-assisted authoring.
+
+**Minimum Supported Versions:**
+- `dbservice` – 1.69.x
+
+### Release 1.68.x
+The `1.68.x` release improves AI-assisted authoring accuracy and enhances usability for Flyway users.
+
+#### Key Highlights
+* **Feature Enhancements**
+- LLM-generated pipelines can now correctly include a primary database instance, reducing manual corrections.
+- Flyway dashboards now display the most recently updated records first, making it easier to track recent changes.
+
+**Minimum Supported Versions:**
+- `dbservice` – 1.68.x
+
+### Release 1.67.x
+The `1.67.x` release strengthens policy enforcement, security, and visibility into database changes.
+
+#### Key Highlights
+* **Feature Enhancements**
+- Migration Script Access for Policies: OPA policies can now evaluate migration scripts directly, enabling stronger governance and pre-deployment validation.
+- SQL Script Visibility: Customers can view SQL scripts associated with migrations, improving transparency during reviews and audits.
+
+* **Bug Fixes & Security**
+- Resolved issues affecting AI-assisted chat interactions and accuracy.
+- To ensure compatibility with the latest version of DB DevOps Plugin Image, memory size needs to be increased to 500MB to avoid OOM issues during large migrations.
+
+**Minimum Supported Versions:**
+- `dbservice` – 1.67.x
+
 ## November 2025
 
 ### Release 1.65.x
