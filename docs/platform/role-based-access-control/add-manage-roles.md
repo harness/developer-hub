@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 Roles are an [RBAC component](./rbac-in-harness.md#rbac-components) that contain a set of [permissions](/docs/platform/role-based-access-control/permissions-reference). Roles define what actions, such as viewing, creating, editing, or deleting, can be taken on Harness resources. When you assign a role to a user, user group, or service account, the permissions defined in the role are granted to the target user, group, or service account.
 
 Harness includes some [built-in roles](#built-in-roles), and you can [create custom roles](#create-a-role), which are useful for limited and fine-grained access control.
@@ -217,3 +221,33 @@ This example walks through reusing a role across scopes. The role is created at 
 
 </details>
 
+## View principals assigned to a role
+
+:::note
+This feature is behind the feature flag `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+To view principals assigned to a [specified role](#platform-roles), navigate to the appropriate scope (account, organization, or project) and follow the steps below. 
+
+_Note: The steps below use the Account scope and Account Admin role as an example. You can follow the same steps for the Organization and Project scopes._
+
+<Tabs>
+  <TabItem value="Interactive" label="Interactive" default>
+    <iframe
+      src="https://app.tango.us/app/embed/50c1adef-4946-4bff-ab05-10a47e8d1d50"
+      style={{ minHeight: '640px', width: '100%' }}
+      sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+      title="View principals assigned to a role"
+      referrerPolicy="strict-origin-when-cross-origin"
+      frameBorder="0"
+      allowFullScreen
+    />
+  </TabItem>
+
+   <TabItem value="Manual" label="Manual" default>
+      1. Navigate to the scope’s Settings → Access Control → Roles.
+      2. Locate or search for the [specific role](#platform-roles).
+      3. Click on the role, switch to the **Assigned to** tab.
+      4. By default, the "Users" list appears for the assigned role. You can also switch to the "User Groups" or "Service Accounts" tabs to view principals for the specified role.
+   </TabItem>
+</Tabs>
