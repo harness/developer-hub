@@ -289,39 +289,39 @@ After completing all Issue Management filters, click **Save IM Settings** to app
 </TabItem>
 <TabItem value="scm-settings" label="Source Code Management Settings">
 
-:::info Auto Identity Mapping
-You can either manually configure repositories and target branches, or if your team uses a supported integration with [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers/), this process is automatic.
+:::info Productivity vs. SCM Configuration
+Source Code Management (SCM) settings are not required for Productivity metrics. Productivity in SEI 2.0 is measured holistically across a developer's total contributions spanning all repositories and all branches where those contributions exist. 
 
 ![](../static/teams-10.png)
+
+The only required configuration for Productivity metrics are the developer identifiers. Developer identifiers can be:
+
+- Automatically discovered when the source system supports [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers).
+- Manually configured if Auto Identity Discovery is not available.
+
 :::
 
-Use the **Source Code Management** tab in **Team Settings** to define which repositories, branches, and commit events are relevant for your team's coding activity and production deployments.
-
-### Repositories
-
-| Filter field   | Available options                                                             |
-| -------------- | ----------------------------------------------------------------------------- |
-| **Properties** | Repository Name, GitHub Teams                                                 |
-| **Conditions** | Equals, Starts With, Contains                                                 |
-| **Values**     | Repository names from your SCM system (for example, `team-service`, `FMEPRD`) |
-
-To include a single repository, use `Repository Name Equals team-service`. To include repositories using GitHub Teams, use `GitHub Teams Equals frontend-devs`.
+Use the **Source Code Management** tab in **Team Settings** to define which branches are relevant for your team's delivery metrics, such as production deployments and **Lead Time for Change**.
 
 ### Destination and target branches
 
 Determine which branches are considered production or deployment targets.
 
-![](../static/team-6.png)
+![](../static/teams-11.png)
 
 | Filter field   | Available options                                                     |
 | -------------- | --------------------------------------------------------------------- |
-| **Properties** | Branch Name                                                           |
-| **Conditions** | Equals, Starts With, Contains                                         |
+| **Properties** | Destination Branch                                                    |
+| **Conditions** | Equals, Not Equals, Contains, Does Not Contain, Starts With, Ends With                                          |
 | **Values**     | Branch names from your SCM system (for example, `main`, `production`) |
 
-To include the main branch, use `Branch Name Equals main`. To include release branches, use `Branch Name Starts With release/`.
+To include the main branch, use `Destination Branch Equals main`. To include release branches, use `Destination Branch Starts With release/`.
 
-After completing all Source Code Management filters, click **Save SCM Settings** to apply the configuration to the team.
+After defining the destination branch for your SCM integration, click **Save SCM Settings** to apply the configuration to the team.
+
+:::tip
+Correct destination branch definition ensures SEI 2.0 accurately calculates **Lead Time for Change**.
+:::
 
 </TabItem>
 <TabItem value="cicd-settings" label="Pipeline Settings">
