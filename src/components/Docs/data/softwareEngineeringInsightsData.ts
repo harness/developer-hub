@@ -17,7 +17,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.sei,
             description:
               "Learn about the benefits and features of Harness Software Engineering Insights, as well as how to get started with SEI.",
-            link: "/docs/category/sei-recommended",
+            link: "/docs/software-engineering-insights/harness-sei/sei-overview",
           },
           {
             title: "What's supported",

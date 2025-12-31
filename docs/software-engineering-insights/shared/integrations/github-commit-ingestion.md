@@ -34,7 +34,7 @@ Based on internal analysis, the scope of this impact is fairly small. The commit
 | SEI Version | Impacted Metrics and Widgets |
 |------------|-----------------------------|
 | [**SEI 1.0**](/docs/category/sei-current/) | - SCM Commits Report<br />- SCM Commits (Single Stat)<br />- SCM Rework Report<br />- Trellis (Individual Raw Stats)<br />- Trellis Scores<br />- SCM Coding Days Report<br />- SCM Coding Days (Single Stat)<br />- SCM Committers Report |
-| [**SEI 2.0**](/docs/category/sei-recommended/) | - DORA (Lead Time for Changes): commit-based correlations may be incomplete<br />- Coding Days metrics<br />- Code Rework |
+| [**SEI 2.0**](/docs/software-engineering-insights/harness-sei/sei-overview/) | - DORA (Lead Time for Changes): commit-based correlations may be incomplete<br />- Coding Days metrics<br />- Code Rework |
 
 ## FAQs
 

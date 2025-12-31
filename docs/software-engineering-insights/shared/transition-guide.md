@@ -1,6 +1,6 @@
 ## Overview
 
-SEI 2.0 is not a lift-and-shift or one-click upgrade from SEI 1.0. Instead, it represents a fresh, forward-looking setup that is purpose-built to deliver clarity, efficiency, and scalability for modern engineering organizations. This page outlines the experience and steps needed for [SEI 1.0](/docs/category/sei-current) users to transition successfully to [SEI 2.0](/docs/category/sei-recommended).
+SEI 2.0 is not a lift-and-shift or one-click upgrade from SEI 1.0. Instead, it represents a fresh, forward-looking setup that is purpose-built to deliver clarity, efficiency, and scalability for modern engineering organizations. This page outlines the experience and steps needed for [SEI 1.0](/docs/category/sei-current) users to transition successfully to [SEI 2.0](/docs/software-engineering-insights/harness-sei/sei-overview).
 
 SEI 2.0 is a re-imagined platform. It will live side-by-side with SEI 1.0 during your transition journey. You will continue to have full access to SEI 1.0 while setting up SEI 2.0 from the ground up.
 

@@ -91,7 +91,7 @@ export const SeiData: Horizon = {
         title: "SEI 2.0",
         description:
           "SEI 2.0 implementation optimized for low latency and near real-time access. Comes with out-of-the-box Efficiency, Productivity and Business Alignment insights, consistently reported across the entire organization.",
-        link:"https://developer.harness.io/docs/category/sei-recommended",
+        link:"https://developer.harness.io/docs/software-engineering-insights/harness-sei/sei-overview",
       },
       {
         tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
