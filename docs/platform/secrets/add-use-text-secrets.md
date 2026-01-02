@@ -63,7 +63,6 @@ To create a text secret:
    Inline secrets of text types deleted in Harness are also deleted from the external secrets manager. Harness recommends that you always back up these secrets.
    :::
    
-
 ### Secret scope
 
 You can add text secrets at the account, organization, or project scope.
@@ -83,6 +82,20 @@ Additionally, secret names can't contain these characters:
 ```
  ~ ! @ # $ % ^ & * ' " ? / < > , ;
 ```
+
+:::warning Secret value limitations
+
+Using the `$` character while storing secret values should be avoided. Anything following `$` may be interpreted as a variable and expanded by the shell, which can result in a `null` or unexpected value.
+
+If you need to include a `$` character, base64-encode the secret value before storing it in the secret manager. You can then decode and use the [secret at runtime](/docs/platform/variables-and-expressions/runtime-input-usage) as shown below:
+
+```shell
+mysecret=$(echo '<+secrets.getValue("secret_identifier")>' | base64 -d)
+
+echo $mysecret 
+```
+Then use `mysecret` as a parameter in your command.
+:::
 
 ## Use the secret in connectors
 
