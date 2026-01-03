@@ -228,6 +228,18 @@ import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 ## View Anchore policy failures
 Anchore policy failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Successfully passed policies will not be included in the scan results.  Additionally, you can apply an OPA policy to fail the pipeline based on the policy failures. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
 
+## Configure External Policy Failures
+
+You can configure Harness STO to treat external policy failures as vulnerabilities. To do this, navigate to Account Settings, go to the Default Settings page, select Security Test Orchestration, and click the External Policy Failures setting.
+
+Enable the external policy failures setting to map them to a selected severity level — `Critical`, `High`, `Medium`, or `Low` to treat them as vulnerabilities instead of `Info` level issues. This setting takes effect from the next pipeline execution.
+
+:::note
+
+This feature is behind the Feature flag `STO_EXTERNAL_POLICY_FAILURES_AS_VULNS`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+
+:::
+
 ## Proxy settings
 
 import ProxySettings from './shared/proxy-settings.md';

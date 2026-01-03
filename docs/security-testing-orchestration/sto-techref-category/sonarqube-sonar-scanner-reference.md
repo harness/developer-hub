@@ -372,6 +372,18 @@ SonarQube quality gate failures will appear in scan results as 'Info' severity i
 
 To retrieve quality gate failure data from SonarQube, ensure the access token used in the SonarQube step configuration has **Browse Project** or **Administer** [permissions](https://docs.sonarsource.com/sonarqube/latest/instance-administration/user-management/user-permissions/) for the project being scanned.
 
+## Configure External Policy Failures
+
+You can configure Harness STO to treat external policy failures as vulnerabilities. To do this, navigate to Account Settings, go to the Default Settings page, select Security Test Orchestration, and click the External Policy Failures setting.
+
+Enable the external policy failures setting to map them to a selected severity level — `Critical`, `High`, `Medium`, or `Low` to treat them as vulnerabilities instead of `Info` level issues. This setting takes effect from the next pipeline execution.
+
+:::note
+
+This feature is behind the Feature flag `STO_EXTERNAL_POLICY_FAILURES_AS_VULNS`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+
+:::
+
 ## View SonarQube code coverage results
 SonarQube code coverage data appears in the scan results as `Info` issues. To locate it, search for `Code Coverage` within the Info issues, the issue type will be labeled as Code Coverage. Additionally, you can apply an OPA policy to fail the pipeline based on the code coverage results. This can be achieved using the [Security Tests - Code Coverage](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-the-code-coverage-results) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
 
