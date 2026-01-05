@@ -73,7 +73,11 @@ To integrate Snowflake as a data warehouse for Warehouse Native Experimentation:
    <br />
    | Field | Type | Description |
    |---|---|---|
+   | `METRICID`   | `VARCHAR` | Unique identifier for the metric being calculated. |
+   | `METRICNAME` | `VARCHAR` | Human-readable name of the metric being calculated. |
    | `METRICRESULTID` | `VARCHAR` | Unique identifier representing a specific calculation per metric, per experiment, per analysis run. |
+   | `EXPID`      | `VARCHAR` | Unique identifier for the experiment associated with this metric calculation. |
+   | `EXPNAME`    | `VARCHAR` | Human-readable name of the experiment associated with this metric calculation. |
    | `TREATMENT` | `VARCHAR` | The experiment variant (e.g., Control or Treatment) associated with the metric results. |
    | `DIMENSIONNAME`  | `VARCHAR` | The name of the dimension being analyzed (e.g., country, platform). |
    | `DIMENSIONVALUE` | `VARCHAR` | The corresponding value of the analyzed dimension. |
@@ -111,7 +115,11 @@ To integrate Snowflake as a data warehouse for Warehouse Native Experimentation:
       P99 FLOAT,
       VARIANCE FLOAT,
       EXCLUDEDUSERCOUNT NUMBER(38,0),
-      ASOFTIMESTAMP TIMESTAMP_NTZ(9)
+      ASOFTIMESTAMP TIMESTAMP_NTZ(9),
+      METRICID VARCHAR(16777216),
+      METRICNAME VARCHAR(16777216),
+      EXPID VARCHAR(16777216),
+      EXPNAME VARCHAR(16777216)
    );
    ```
 

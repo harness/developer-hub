@@ -66,7 +66,11 @@ To integrate Amazon Redshift as a data warehouse for Warehouse Native Experiment
    <br />
    | Field | Type | Description |
    |---|---|---|
+   | `METRICID`   | `VARCHAR` | Unique identifier for the metric being calculated. |
+   | `METRICNAME` | `VARCHAR` | Human-readable name of the metric being calculated. |
    | `METRICRESULTID` | `VARCHAR` | Unique identifier representing a specific calculation per metric, per experiment, per analysis run. |
+   | `EXPID`      | `VARCHAR` | Unique identifier for the experiment associated with this metric calculation. |
+   | `EXPNAME`    | `VARCHAR` | Human-readable name of the experiment associated with this metric calculation. |
    | `TREATMENT` | `VARCHAR` | The experiment variant (e.g., Control or Treatment) associated with the metric results. |
    | `DIMENSIONNAME` | `VARCHAR` | The name of the dimension being analyzed (e.g., country, platform). |
    | `DIMENSIONVALUE` | `VARCHAR` | The corresponding value of the analyzed dimension. |
@@ -104,7 +108,11 @@ To integrate Amazon Redshift as a data warehouse for Warehouse Native Experiment
       P99 FLOAT8,
       VARIANCE FLOAT8,
       EXCLUDEDUSERCOUNT BIGINT,
-      ASOFTIMESTAMP TIMESTAMP
+      ASOFTIMESTAMP TIMESTAMP,
+      METRICID (VARCHAR 256),
+      METRICNAME (VARCHAR 256),
+      EXPID (VARCHAR 256),
+      EXPNAME (VARCHAR 256)
    );
    ```
 
