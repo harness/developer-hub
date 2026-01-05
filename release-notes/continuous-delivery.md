@@ -53,10 +53,24 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## January 
+
+### GitOps Service 1.46.2, GitOps Agent 0.105.0
+
+#### Fixed Issues
+
+- Fixed an issue where the GitOps UI incorrectly displayed deployment activities as *Running* even after they had completed. This occurred in multi-source applications with multiple revisions, where the sync history was showing incorrect status. The UI now accurately reflects the completed state of deployments. (**CDS-115737, ZD-96501**)
+- Fixed an issue where users were unable to delete a GitOps agent from the UI. This occurred when the agent had tags configured, causing the delete operation to fail due to a tags field decoding error. The agent would remain stuck in a *deleting* state. Agents with tags can now be deleted successfully. (**CDS-116263, ZD-97644**)
+- Fixed the following security vulnerabilities in GitOps components:
+  - Fixed a high-severity vulnerability in the gitops-agent-installer-helper component. The vulnerability **CVE-2025-22874** in the crypto/x509 package (Go 1.24.2) has been resolved by upgrading to Go 1.24.4. This fix is included in gitops-agent-installer-helper v0.0.7.
+  - Fixed multiple high-severity vulnerabilities in the Redis component. The vulnerabilities **CVE-2022-30632** (path/filepath), **CVE-2023-29403** (runtime), and **CVE-2022-30630** (io/fs) affecting Go 1.18.2 in Redis images 7.4.1-alpine and 6.2.14-alpine have been resolved. Harness has rebuilt a custom Redis image harness/redis:7.4.7-alpine with the latest fixes.
+  - Fixed a high-severity vulnerability in the gitops-service component. The vulnerability **CVE-2024-25621** in containerd v1.7.28 has been resolved by upgrading to containerd v1.7.29. This fix is included in gitops-service-signed:1.45.2.
+  - Fixed critical and high-severity vulnerabilities in the harness/argocd component. The vulnerabilities **CVE-2024-24790** (critical, net/netip) and **CVE-2024-45338** (high, golang.org/x/net/html) have been addressed in argocd v2.14.16. 
+  - Fixed multiple high-severity vulnerabilities in the gitops-agent component. The vulnerabilities **CVE-2025-59531**, **CVE-2025-59537**, and **CVE-2025-59538** affecting github.com/argoproj/argo-cd/v2 have been addressed in gitops-agent v0.102.0 with argo-cd v2.14.16. 
+
 ## December 2025
 
 ### Version 1.120.1
-
 
 #### Fixed Issues
 
@@ -64,6 +78,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where policy evaluation displayed *No Policy Set Description* even when the referenced PolicySet had a proper description, specifically when enforcement was applied at the service level. The description is now correctly included in the response for CD entities. (**CDS-116824, ZD-97171**)
 - Fixed an issue where the Microsoft Teams approval notification link was malformed due to improper special character handling. The notification URL generation has been corrected to ensure approval links work properly in MS Teams. (**CDS-116863, ZD-97579, ZD-98879**)
 - Fixed an issue where post-production rollback failed when selecting an environment from the pipeline execution page. The rollback workflow now correctly handles environment selection during the post-production rollback process. (**CDS-117023, ZD-98881**)
+
 
 ### Version 1.119.4
 
@@ -75,6 +90,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where the Wiz security scanning step was failing intermittently in containerized step groups. This occurred because the StageId was being generated as a UUID, which caused regex matching failures for the STO API calls. The StageId is now set to the stage name for consistent behavior. This fix is behind the feature flag `CDS_CONTAINER_STEP_USE_STAGE_IDENTIFIER`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-116801**, **ZD-98547**, **ZD-98911**)
 - Fixed an issue where pipeline executions were being auto-aborted unexpectedly, even when auto-abort was disabled on the trigger. This occurred because the auto-abort feature was terminating all executions with the same execution tag, regardless of which trigger initiated them. The feature now only aborts executions that were fired from the same trigger.
 This fix is behind the feature flag `PIPE_ABORT_ONLY_TRIGGERED_BY_SAME_TRIGGER`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**PIPE-30843**, **ZD-97860**, **ZD-98660**)
+
 
 ## November 2025
 
