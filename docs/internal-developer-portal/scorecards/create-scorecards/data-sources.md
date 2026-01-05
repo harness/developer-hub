@@ -368,7 +368,8 @@ If you mention the `branchName` field as a check config other than what's presen
 The following data points are available for the Bitbucket data source. All data points follow similar patterns to GitHub and GitLab, requiring the `backstage.io/source-location` annotation for repository identification.
 
 #### Available Data Points:
-1. [Branch Protection](#1-branch-protection) - See GitHub section for detailed description
+1. [Branch Protection](#1-branch-protection) - See GitHub section for detailed description.
+>This check works with repository-level branch restrictions. Bitbucket Cloud allows branch restrictions to be configured at both the repository and project levels. However, Bitbucket Cloud's REST API only exposes repository-level branch restrictions. Project-level restrictions, while enforced by Bitbucket across all repositories in a project, are not accessible via the API and therefore cannot be detected programmatically by any tool. To ensure this check works as expected, configure branch restrictions at the repository level. 
 2. [File Existence](#2-file-existence) - See GitHub section for detailed description
 3. [Mean Time to Merge Pull Request](#3-mean-time-to-merge-pull-request) - See GitHub section for detailed description
 4. [Extract String from a File](#12-extract-string-from-a-file) - See GitHub section for detailed description
