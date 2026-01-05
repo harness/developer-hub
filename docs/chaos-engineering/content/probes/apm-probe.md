@@ -360,7 +360,7 @@ To use the New Relic probe, you need:
      * `https://api.eu.newrelic.com/graphql` (EU region)
    
    :::info note
-   Only the NerdGraph API is supported for New Relic integration. The NerdGraph API endpoints are available under the feature flag `CV_NEWRELIC_NEW_API`.
+   Only the NerdGraph API is supported for New Relic integration.
    :::
 
    ![New Relic Connector](./static/apm-probe/new-relic-probe/nerdgraph-api.png)

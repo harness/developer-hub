@@ -79,8 +79,6 @@ You cannot use a Grafana URL.
 
 :::note
 New Relic supports multiple APIs. The harness connector leverages the NerdGraph API or the deprecated New Relic Insights API, which supports NRQL. See Step 8 for more details on connecting to either API.
-
-Currently, the NerdGraph API is behind the feature flag `CV_NEWRELIC_NEW_API`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
    ![](../static/connect-to-monitoring-and-logging-systems-16.png)
@@ -95,9 +93,6 @@ If you have trouble connecting to the API, follow the docs linked below, dependi
 <details>
 <summary> NerdGraph API </summary>
 
-   :::note
-   Currently, this feature is behind the feature flag `CV_NEWRELIC_NEW_API`. To enable it, contact [Harness Support](mailto:support@harness.io).
-   :::
 
    - For steps on connecting to the NerdGraph API, go to [NerdGraph API](https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph/) in the New Relic documentation.
    - To access this API, use a specific account's `user key`.
