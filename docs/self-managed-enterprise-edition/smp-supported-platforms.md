@@ -21,6 +21,7 @@ This section provides a clear overview of the Supported features, integrations, 
 * [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
 * [Code Repository](/docs/code-repository)
 * [Database DevOps](/docs/database-devops/dbdevops-supported-platforms.md)
+* [Internal Developer Portal (Beta)](/docs/internal-developer-portal/smp/idp-onboarding)
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
