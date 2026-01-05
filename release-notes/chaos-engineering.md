@@ -20,6 +20,36 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## December 2025
+### Version 1.69.6
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.69.0
+- harness/chaos-ddcr-faults:1.69.0
+- harness/chaos-log-watcher:1.69.0
+- harness/service-discovery-collector:0.49.0
+
+#### New Features and Enhancements
+
+- Added Datadog annotation action support for custom actions (CHAOS-10563)
+- Added bulk ignore support for chaos recommendations (CHAOS-10555)
+- Added Grafana Events support in custom actions (CHAOS-10550)
+- Implemented bulk operation functionality for chaos recommendations and resource tables (CHAOS-10548, CHAOS-10547)
+- Added tooltips to various categories of custom services (CHAOS-10545)
+- Addressed vulnerabilities in Linux source-probe (CHAOS-10346)
+- Added support for importing faults as reference (CHAOS-10226,CHAOS-9890)
+
+#### Fixed Issues
+
+- Fixed Type filter not working on get fault Templates API when trying to import a fault template (CHAOS-10568)
+- Fixed experiments getting stuck in Chaos-Manager in 1.68.x release. The change modifies the `name` parameter from being extracted as a path parameter to a query parameter in the `ExperimentExecutionNodeDetails` function. This adjustment is intended to fix issues with DDCI calls, ensuring that the parameters are correctly processed in the API handler (CHAOS-10544)
+- Fixed actions and probe update when no variables are sent. This fix addresses a bug related to the handling of nil cases in action variables within the UpdateAction function. The previous implementation included a conditional check for nil variables, which has been removed to ensure that the variables are always appended to the updatedAction regardless of their state (CHAOS-10537)
+- Fixed DDCI manifest-generation for older k8s version (CHAOS-10572)
+- Updated count of chaos recommendations to only reflect pending recommendations (CHAOS-10558)
+- Fixed issue where during CD onboarding, Infrastructure View Progress was not opening in new tab (CHAOS-10559)
+
 ## November 2025
 ### Version 1.68.5
 
