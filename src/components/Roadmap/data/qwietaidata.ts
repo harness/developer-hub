@@ -66,16 +66,6 @@ export const QwietaiData: Horizon = {
         description: "Integrate security for AI-generated code directly in IDEs and expand SAST coverage to detect more vulnerability types.",
       },
       {
-        tag: [{ value: "Governance" }, { value: "Compliance"}],
-        title: "SLA Management",
-        description: "improved SLA management for SAST/SCA.",
-      },
-      {
-        tag: [{ value: "Visibility" }, { value: "UX"}],
-        title: "Persona Dashboards",
-        description: "Deliver role-based dashboards with tailored security insights and actions for each stakeholder group.",
-      },
-      {
         tag: [{ value: "Governance" }, { value: "CLI"}],
         title: "CLI-Based Finding Exemption",
         description: "Enable suppression of findings via CLI when predefined comments are present.",
@@ -85,10 +75,10 @@ export const QwietaiData: Horizon = {
         title: "Organization Configuration API Enhancements",
         description: "Provide granular update support for organization configuration APIs.",
       },
-          {
+      {
         tag: [{ value: "Visibility" }, { value: "Multi-Language" }],
-        title: "Failed Language Visibility",
-        description: "Display failed languages and related errors in multi-language scans."
+        title: "Improved Error Handling",
+        description: "Enhanced error messages with error codes for faster triage"
       },
       {
         tag: [{ value: "Visibility" }, { value: "SAST" }, { value: "SCA" }],
