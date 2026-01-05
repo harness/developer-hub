@@ -321,9 +321,9 @@ Additionally, you can configure the following options:
 ## Cloud Run Permission Requirements
 
 <details>
-<summary>Cloud Functions Minimum Permissions</summary>
+<summary>Cloud Run Minimum Permissions</summary>
 
-The following are the minimum set of permissions required for deploying Google Cloud Run functions:
+The following are the minimum set of permissions required for deploying Google Cloud Run services:
 
 1. **List, Get, and Describe Services**:
    - `run.services.list`
@@ -357,6 +357,12 @@ The following are the minimum set of permissions required for deploying Google C
    - `iam.serviceAccounts.get`
    - `iam.serviceAccounts.signBlob`
 
+10. **Service Account Impersonation**:
+   - `iam.serviceAccounts.actAs`
+   - Required on the service identity used for Cloud Run (the `serviceAccountName` configured for the Cloud Run service).
+   - This permission is needed even if the deployer service account and Cloud Run service identity are the same account.
+   - If no custom service account is configured, this permission is required on the Compute Engine default service account.
+
 Alternatively, the following roles can also be used:
 
 1. **Cloud Run Admin (`roles/run.admin`)**:
@@ -365,7 +371,8 @@ Alternatively, the following roles can also be used:
 
 2. **Service Account User (`roles/iam.serviceAccountUser`)**:
    - Grants permission to use service accounts, which are required to run Cloud Run services.
-   - Necessary when deploying services that use specific service accounts for execution.
+   - This role must be assigned on the service identity used for Cloud Run (the `serviceAccountName` configured for the Cloud Run service, or the Compute Engine default service account if not specified).
+   - Required even when the deployer service account and Cloud Run service identity are the same account.
 
 3. **Logging Viewer (`roles/logging.viewer`)**:
    - Access to logs for debugging Cloud Run services.
