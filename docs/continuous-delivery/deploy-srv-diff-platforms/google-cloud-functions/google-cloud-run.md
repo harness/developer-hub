@@ -336,28 +336,34 @@ The following are the minimum set of permissions required for deploying Google C
 3. **Delete Services**:
    - `run.services.delete`
 
-4. **Invoke Cloud Run Services** (if needed for execution):
+4. **Manage Cloud Run Jobs**:
+   - `run.jobs.create`
+   - `run.jobs.update`
+   - `run.jobs.get`
+   - `run.jobs.run`
+
+5. **Invoke Cloud Run Services** (if needed for execution):
    - `run.routes.invoke`
 
-5. **Get Service Monitoring Data for Instance Sync**:
+6. **Get Service Monitoring Data for Instance Sync**:
    - `monitoring.timeSeries.list`
 
-6. **View Configuration and Permissions**:
+7. **View Configuration and Permissions**:
    - `run.configurations.list`
    - `run.configurations.get`
 
-7. **Manage IAM Policies for Services**:
+8. **Manage IAM Policies for Services**:
    - `resourcemanager.projects.getIamPolicy`
    - `resourcemanager.projects.setIamPolicy`
 
-8. **Authentication Using OIDC**:
+9. **Authentication Using OIDC**:
    - `iam.workloadIdentityPools.createCredentialConfig`
 
-9. **Authentication Using Service Account Key**:
+10. **Authentication Using Service Account Key**:
    - `iam.serviceAccounts.get`
    - `iam.serviceAccounts.signBlob`
 
-10. **Service Account Impersonation**:
+11. **Service Account Impersonation**:
    - `iam.serviceAccounts.actAs`
    - Required on the service identity used for Cloud Run (the `serviceAccountName` configured for the Cloud Run service).
    - This permission is needed even if the deployer service account and Cloud Run service identity are the same account.
