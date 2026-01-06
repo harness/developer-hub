@@ -13,17 +13,31 @@ redirect_from:
 
 ## Introduction
 
-GitOps is a modern approach to Continuous Delivery (CD) where Git acts as the single source of truth for deployments. It enables:
+GitOps is an operating model for Continuous Delivery (CD) where Git is the single source of truth for both application and infrastructure configuration. Instead of treating deployments as one‑off actions in a pipeline, GitOps treats them as state changes declared in Git and reconciled automatically to your clusters.
 
+In a **traditional CD** model, pipelines:
 
-✅ **Full Traceability** – Every change is version-controlled in Git.
+- Push changes directly to clusters on each run.
+- Can drift from reality if manual changes are made in the cluster.
+- Often require custom scripting to roll back or audit changes.
 
-✅ **Enforced Desired State** – Ensures your deployed state always matches the version in Git (without modifying Git from the cluster).
+With **GitOps**, you:
 
-Instead of manually deploying via pipelines, GitOps continuously syncs your Kubernetes cluster with your declarative manifests (YAML, Helm, Kustomize, etc.), ensuring consistency across environments.
+- Describe the desired state in Git (YAML manifests, Helm charts, Kustomize, etc.).
+- Use a controller such as [Argo CD](https://argo-cd.readthedocs.io/) to continuously compare the desired state in Git with the live state of the cluster.
+- Let the controller reconcile any differences by applying changes so the cluster converges back to the declared state.
 
-To learn more, see:
-- [ApplicationSet basics](/docs/continuous-delivery/gitops/applicationsets/appset-basics)
+This approach provides:
+
+- **Full traceability:** Every change is version-controlled in Git with history, reviews, and approvals.
+- **Enforced desired state:** The deployed state is continuously driven to match what is defined in Git, without modifying Git from the cluster.
+- **Safer rollbacks:** Reverting to a previous version is as simple as reverting a Git commit and allowing the controller to resync.
+
+Harness GitOps builds on these principles by integrating Argo CD into the Harness platform, so you can manage GitOps workflows, security, and visibility alongside the rest of your delivery pipelines.
+
+To learn more about related GitOps building blocks, see:
+- [Harness GitOps vs Argo CD](/docs/continuous-delivery/gitops/get-started/harness-gitops-vs-argocd) - Compare Harness GitOps with standalone Argo CD
+- [ApplicationSet basics](/docs/continuous-delivery/gitops/applicationsets/appset-basics) - Learn how to manage multiple applications across clusters and environments using a single template
 - [Create and manage ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial)
 
 ## How GitOps works in Harness
@@ -32,19 +46,19 @@ Harness GitOps ensures that your applications and infrastructure are always in s
 
 ### GitOps Workflow in Harness
 
-1️⃣ **Store Your Desired State in Git**
+**Store Your Desired State in Git**
 
 Define your application configurations using Kubernetes manifests, Helm charts, or Kustomize.
 
 These files act as the single source of truth for deployments.
 
-2️⃣ **Harness Continuously Monitors Git for Changes**
+**Harness Continuously Monitors Git for Changes**
 
 Whenever a change is made in Git, Harness detects it.
 
 No need to trigger deployments manually.
 
-3️⃣ **Sync the Changes to Your Kubernetes Cluster**
+**Sync the Changes to Your Kubernetes Cluster**
 
 The live state of the cluster is automatically updated to match Git.
 
@@ -224,7 +238,7 @@ You can apply a Repository certificate or known host key to a GitOps Agent.
 
 The GitOps Agent will use the certificate or key for all the connections it makes to repositories.
 
-## Operational Concept
+## Operational Concepts
 
 ### Desired state and Live State
 
@@ -293,7 +307,7 @@ GnuPG Keys can be used to configure Harness GitOps to only sync against commits 
 
 Want to jump right in? Try the [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md) to set up and deploy your first GitOps Application.
 
-Click the link to begin and experience GitOps automation with Harness! 🚀
+Click the link to begin and experience GitOps automation with Harness.
 
 ## FAQs
 
