@@ -26,7 +26,25 @@ d# Harness Developer Hub
 
 Welcome to the Harness Developer Hub (HDH)!
 
-Learn intelligent software delivery skills at your own pace and in one place. Guides, videos, certifications, training, and reference docs help you create and deliver software
+Learn intelligent software delivery skills at your own pace and in one place. Guides, videos, certifications, training, and reference docs help you create and deliver software  
+
+
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
+> 
+#### Tip
+> [!TIP]
+> Optional information to help a user be more successful.
+
+#### Caution
+> [!CAUTION]
+> Negative potential consequences of an action.
 
 ## Contributing
 
