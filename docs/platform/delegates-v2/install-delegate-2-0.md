@@ -581,6 +581,35 @@ NAME="<your delegate name>"
 CLEANUP_GRACE_PERIOD_SECONDS=30
 ```
 
+### Task Abort Configuration for Local Execution
+
+When a task runs directly on the delegate's host machine (such as a Run step without containers), subprocesses are started on the host to handle the task. When a stage is aborted or encounters an error, the delegate will clean up these subprocesses.
+
+:::note
+This feature is only available on Unix-based platforms (macOS and Linux). For Windows, the process is terminated by invoking `taskkill.exe /t /f` directly (forceful kill).
+:::
+
+You can control the cleanup behavior by configuring the following environment variables in the delegate's `config.env` file:
+
+- `HARNESS_SUBPROCESS_KILL_PROCESS_GROUP_MAX_SIGTERM_ATTEMPTS` (non-negative integer, default: `1`): Specifies the number of SIGTERM signals sent to subprocesses before sending a SIGKILL.
+
+- `HARNESS_SUBPROCESS_KILL_PROCESS_GROUP_RETRY_INTERVAL_SECS` (positive integer, default: `10`): Specifies the time (in seconds) between successive SIGTERM signals sent to the subprocesses.
+
+#### Example config.env
+
+To configure the delegate to send up to 3 SIGTERM attempts with a 15-second interval before forcefully killing subprocesses:
+
+```
+ACCOUNT_ID="<ACCOUNT_ID>"
+TOKEN="<DELEGATE_TOKEN>"
+TAGS="<your delegate tags>"
+URL="<MANAGER_HOST_AND_PORT>"
+NAME="<your delegate name>"
+...
+HARNESS_SUBPROCESS_KILL_PROCESS_GROUP_MAX_SIGTERM_ATTEMPTS=3
+HARNESS_SUBPROCESS_KILL_PROCESS_GROUP_RETRY_INTERVAL_SECS=15
+```
+
 ### Configure Custom Working Directory
 
 By default, the delegate stores its configuration files, logs, and cache in a standard location. You can customize this location using the `HARNESS_WORKDIR` variable.
