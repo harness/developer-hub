@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-12-05T08:09:25
+date: 2025-12-25T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,9 +26,29 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: December 5, 2025
+#### Last updated: December 25, 2025
 
 ## December 2025
+
+### Android SDK
+
+#### Version 2.2.7
+
+**Bug fixes**:
+
+- Improved retry backoff behavior to prevent rapid reconnect loops under transient failure conditions. (FFM-12760)
+
+**Maintenance**: 
+
+- Build and release pipeline has been migrated to Harness Code. (FFM-12557)
+
+### Python SDK
+
+#### Version 1.7.3
+
+**Fixed issues**:
+
+- Resolved security vulnerabilities `CVE-2025-8869` and `CVE-2024-47081` by updating core dependencies. (FFM-12653)
 
 ### .NET SDK
 
