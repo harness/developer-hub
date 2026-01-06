@@ -86,6 +86,11 @@ Select your artifact format below to get started:
       path: "/artifact-registry/content/supported-formats/dart-quickstart.md",
       logo: "dart-logo.svg",
       logoSize: 24
+    },
+    "PHP Composer": {
+      path: "/artifact-registry/content/supported-formats/php-composer-quickstart.md",
+      logo: "php-composer-logo.svg",
+      logoSize: 24
     }
   }}
   disableSort={true}
