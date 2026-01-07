@@ -24,7 +24,7 @@ You'll learn how to: 
 
 Review the following:
 
-* [Harness CD key concepts](/docs/continuous-delivery/get-started/key-concepts)
+* [Harness CD key concepts](/docs/continuous-delivery/overview#key-concepts)
 * [Templates overview](template.md).
 
 ### Permissions

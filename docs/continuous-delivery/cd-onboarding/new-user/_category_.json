@@ -1,11 +1,11 @@
 {
-  "label": "New users",
+  "label": "Learning Path",
   "position": "1",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "New users"
+      "title": "Learning Path"
   }
 }

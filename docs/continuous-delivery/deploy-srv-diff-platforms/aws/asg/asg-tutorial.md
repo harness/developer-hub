@@ -202,7 +202,7 @@ You can use remote files stored in a Git repo or the [Harness File Store](/docs/
 
 :::note
 
-You can create a service when you are building the pipeline or separately in **Services**. In this topic, we walk through building the service separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+You can create a service when you are building the pipeline or separately in **Services**. In this topic, we walk through building the service separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).
 
 :::
 
@@ -637,7 +637,7 @@ You also add a infrastructure definition to define the region where you want to 
 
 :::note
 
-You can create an environment when you are building the pipeline or separately in **Environments**. In this topic, we walk through building the environment separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+You can create an environment when you are building the pipeline or separately in **Environments**. In this topic, we walk through building the environment separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).
 
 :::
 
@@ -963,11 +963,11 @@ Once you have the service and environment created, you can create the pipeline.
 
 :::note
 
-You can create a service and environment when you are building the pipeline or separately in **Services** and **Environments**. In this topic, we walk through building these separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+You can create a service and environment when you are building the pipeline or separately in **Services** and **Environments**. In this topic, we walk through building these separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).
 
 :::
 
-The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).
 
 
 

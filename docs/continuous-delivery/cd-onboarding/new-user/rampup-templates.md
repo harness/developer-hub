@@ -1,7 +1,9 @@
 ---
 title: Template design guide
 description: Standardize patterns, streamline processes, eliminate duplication.
-sidebar_position: 5
+sidebar_position: 7
+redirect_from:
+  - /docs/continuous-delivery/cd-onboarding/new-user/rampup-templates
 ---
 
 

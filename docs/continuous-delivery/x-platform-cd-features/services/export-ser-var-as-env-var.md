@@ -41,4 +41,5 @@ When you run the pipeline, you can see the value of the service variables passed
 
 - [Using Shell Script steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
 - [Define variables](/docs/platform/variables-and-expressions/add-a-variable.md)
-- [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview)
+- [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview)
+- [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview)

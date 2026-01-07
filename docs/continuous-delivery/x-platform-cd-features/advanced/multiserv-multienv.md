@@ -29,7 +29,7 @@ With multiple Harness services and environments in the same CD stage, you can:
 
 You can create services, environments, and environment groups inline when creating your CD stage, or you can create them separately and select them in the stage.
 
-For more information on services and environments, go to [services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For more information on services and environments, go to [services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
 
 ## Deploy one service to multiple environments or infrastructures
 

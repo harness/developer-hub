@@ -68,7 +68,7 @@ Harness Artifact Registry combined with STO and SCS provides a single, trusted s
 #### Native Integration with Harness Platform
 
 :::info Platform Integrations
-Harness Artifact Registry is not a standalone tool. It is natively integrated into the Harness platform, providing seamless workflows across [CI/CD pipelines](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview), security scanning, policy enforcement, and governance.
+Harness Artifact Registry is not a standalone tool. It is natively integrated into the Harness platform, providing seamless workflows across [CI/CD pipelines](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview), security scanning, policy enforcement, and governance.
 :::
 
 Simple setup for CI/CD pipelines means you can automate artifact publishing, tagging, promotion, and deployment with zero friction. Leverage your existing security scanners and tools. Harness does not force you to replace what works. Instead, it integrates seamlessly with your current toolchain, providing a unified interface whilst respecting your existing investments.

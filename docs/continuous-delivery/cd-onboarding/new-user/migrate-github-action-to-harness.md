@@ -2,6 +2,8 @@
 title: Migrating from GitHub Actions to Harness Continuous Delivery
 description: A step-by-step tutorial on how you can migrate from GitHub Actions to Harness CD.
 sidebar_position: 9
+redirect_from:
+  - /docs/continuous-delivery/cd-onboarding/new-user/migrate-github-action-to-harness
 ---
 
 Migrating from GitHub Actions to Harness Continuous Delivery (CD) can be beneficial due to Harness’s powerful deployment strategies and streamlined CD pipelines. 

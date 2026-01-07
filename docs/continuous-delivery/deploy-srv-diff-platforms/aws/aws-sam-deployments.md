@@ -173,7 +173,7 @@ Harness supports standard SAM templates. You can add your SAM directory in the H
 
 :::note
 
-For information on general service settings, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For information on general service settings, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).
 
 :::
 
@@ -251,13 +251,13 @@ runtime: <+serviceVariables.runtime>
 
 You can only use service variable references in the values.yaml file.
 
-For information on how to override service variables at the environment level, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For information on how to override service variables at the environment level, go to [Service overrides](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides).
 
 ## AWS SAM environment
 
 :::note
 
-For information on general environment settings, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For information on general environment settings, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
 
 :::
 

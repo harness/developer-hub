@@ -26,7 +26,7 @@ Azure deployments are performed using a CD stage with the deployment type **Azur
 
 ![](static/azure-functions-1.png)
 
-For more information on stages, go to [Add a Stage](/docs/platform/pipelines/add-a-stage) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+For more information on stages, go to [Add a Stage](/docs/platform/pipelines/add-a-stage) and [CD Pipeline modeling overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).
 
 ## Azure Function Services
 

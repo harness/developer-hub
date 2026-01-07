@@ -1,7 +1,9 @@
 ---
 title: Convert a Jenkins pipeline to a Harness CD pipeline
 description: Ensure a smooth migration from Jenkins to Harness.
-sidebar_position: 9
+sidebar_position: 8
+redirect_from:
+  - /docs/continuous-delivery/cd-onboarding/new-user/convert-jenkins-pipeline-to-harness
 ---
 
 Many organizations start their CI/CD journey with Jenkins due to its open source nature and vast plugin ecosystem. However, as they scale, the need for a more streamlined, manageable, and automated solution becomes apparent. 
@@ -385,14 +387,13 @@ Infrastructure definitions represent an environment's infrastructures physically
 All Harness documentation can be found at [https://developer.harness.io](https://developer.harness.io). The Developer Hub is for all Harness developers to get content, training, and guidance on the platform and information on new features and releases.
 
 1. Orientation session
-   - [Harness CD Key Concepts](/docs/continuous-delivery/get-started/key-concepts) 
-   - [CD Pipeline Modeling Overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview)
+   - [Harness CD Overview](/docs/continuous-delivery/overview) 
+   - [CD Pipeline Modeling Overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview)
 2. Technical Training
-   - [Tutorials](/docs/category/cd-tutorials). Harness offers a wide variety of tutorials to help users get started.
+   - [Tutorials](/docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials. Harness offers a wide variety of tutorials to help users get started.
    - [University](https://developer.harness.io/university/continuous-delivery/). Harness has certifications to help train and certify your developers with Harness CD.
 3. Ramp Up Guides.
-   * [New users](https://developer.harness.io/docs/category/new-users)
-   * [Existing users](https://developer.harness.io/docs/category/existing-users)
+   * [Learning Path](https://developer.harness.io/docs/category/learning-path)
 
 
 

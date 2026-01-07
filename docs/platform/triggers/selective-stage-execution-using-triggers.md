@@ -13,7 +13,7 @@ import Variables from '/docs/platform/shared/variables-not-supported.md'
 ## Requirements
 
 Make sure that you have met the following requirements:
-* You have a Harness pipeline with a [CD stage](/docs/continuous-delivery/get-started/key-concepts).
+* You have a Harness pipeline with a [CD stage](/docs/continuous-delivery/overview#stage).
 * You have set the service and infrastructure as runtime inputs so that you can provide the value in **Trigger>** **Configuration** tab.
 
 ## Execute a specific pipeline stage using triggers

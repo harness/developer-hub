@@ -64,7 +64,7 @@ export const docsCards: CardSections = [
         title: "CD & GitOps",
         module: MODULES.cd,
         description: "Continuous Delivery onboarding guides",
-        link: "/docs/category/cd-onboarding",
+        link: "/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path",
       },
       {
         title: "CET",

@@ -295,7 +295,7 @@ environment:
 }
 ```
 
-[Read more about environments on our developer hub](/docs/continuous-delivery/get-started/services-and-environments-overview/)
+[Read more about environments on our developer hub](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview)
 
 ### [Infrastructures](https://github.com/harness-community/terraform-harness-delivery/tree/main/modules/environments)
 
@@ -384,7 +384,7 @@ service:
 }
 ```
 
-[Read more about services on our developer hub](/docs/continuous-delivery/get-started/services-and-environments-overview/)
+[Read more about services on our developer hub](/docs/continuous-delivery/x-platform-cd-features/services/services-overview)
 
 ## [Content](https://github.com/harness-community/terraform-harness-content)
 

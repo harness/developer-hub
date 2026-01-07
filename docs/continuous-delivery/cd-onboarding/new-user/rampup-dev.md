@@ -1,9 +1,10 @@
 ---
 title: Developer day to day guide
 description: Daily deployment tasks for devs.
-sidebar_position: 2
+sidebar_position: 3
 redirect_from:
   - /docs/continuous-delivery/ramp-up/developer-role/rampup-dev
+  - /docs/continuous-delivery/cd-onboarding/new-user/rampup-dev
 ---
 
 This guide is intended to get users in the **Developer role** started with Harness CD.
@@ -12,7 +13,7 @@ For this guide, we assume you have set up the necessary Harness integrations (Ha
 
 For onboarding your team, go to the [Onboarding path](/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path).
 
-For CD tutorials, go to [CD and GitOps tutorials](/docs/category/cd-tutorials).
+For CD tutorials, go to [CD and GitOps tutorials](/docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials.
 
 If you have any additional questions, [reach out to us](mailto:support@harness.io) and our team will be happy to help!
 
@@ -36,7 +37,7 @@ These entities are summarized below.
 
 ### Services
 
-You can define a Harness service in your Harness project. The service defines the application, microservice, serverless function, or other workloads you are deploying. For more information, go to [Create services](/docs/continuous-delivery/x-platform-cd-features/services/create-services), [Deploy services on different platforms](/docs/category/deploy-services-on-different-platforms), and [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
+You can define a Harness service in your Harness project. The service defines the application, microservice, serverless function, or other workloads you are deploying. For more information, go to [Create services](/docs/continuous-delivery/x-platform-cd-features/services/create-services), [Deploy services on different platforms](/docs/category/deploy-services-on-different-platforms), and [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).
 
 ### Environments
 
@@ -48,7 +49,7 @@ A common pattern is three environments:
 - QA
 - Prod
 
-For more information, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) and [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For more information, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
 
 ### Pipelines
 
@@ -155,7 +156,7 @@ allowStageExecutions: true
 
 Depending on the project you have access to and the pipeline you have permissions to, a Harness user can log in and deploy a service using the Harness Manager UI.
 
-To learn more, go to the [Harness CD tutorials](/docs/category/cd-tutorials) for various deployment types, or you can review [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
+To learn more, go to the [Harness CD tutorials](/docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials for various deployment types, or you can review [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 Video overview:
 

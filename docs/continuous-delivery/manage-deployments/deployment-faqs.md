@@ -281,7 +281,7 @@ You cannot edit enabled deployment freeze windows. If the deployment freeze wind
 
 ### Service showing as active but hasn't been part of a deployment in over 30 days.
 
-Harness shows the Active instances is say you had a deployment and the VM got deployed from a Harness deployment. No matter if we deploy anything else on the VM , until the VM is up and running as it is linked with the service. It will show as active instance. The 30 days mentioned [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#active-services) , is for service based licence calculation and usage for CD. 
+Harness shows the Active instances is say you had a deployment and the VM got deployed from a Harness deployment. No matter if we deploy anything else on the VM , until the VM is up and running as it is linked with the service. It will show as active instance. The 30 days mentioned [here](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd/#active-services) , is for service based licence calculation and usage for CD. 
 
 
 ### Can we use multiple condition check in conditional execution for stages and steps?
@@ -475,7 +475,7 @@ Harness uses a Service-based license model to charge Harness customers using its
 
 The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
 
-For more information, go to [Service-based licensing and usage for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd).
+For more information, go to [Service-based licensing and usage for CD](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd).
 
 
 ### How to pass the Environment and Infrastructure Definition as a string as a runtime parameter?

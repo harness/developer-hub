@@ -95,7 +95,7 @@ Here's a summary of the process:
 
 ### Configuring Helm charts managed by Harness
 
-1. Create a [Harness service](/docs/continuous-delivery/get-started/services-and-environments-overview#services) in your Harness project.
+1. Create a [Harness service](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) in your Harness project.
 2. In service **Configuration**, under **Service Definition** > **Deployment Type**, select **Kubernetes**.
 3. In **Manifests**, select **Add Manifest**, navigate to **Manifest Source** in your service, and configure Git, OCI Helm, or HTTP Helm.
 4. Ensure that you have selected **Kubernetes** deployment type in your environment **Infrastructure Definition** as well.
@@ -142,7 +142,7 @@ For detailed steps on Native Helm deployment, go to [Native Helm deployment](/do
 
 ### Configuring Native Helm 
 
-1. Create a [Harness service](/docs/continuous-delivery/get-started/services-and-environments-overview#services) in your Harness project.
+1. Create a [Harness service](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) in your Harness project.
 2. In service **Configuration**, under **Service Definition** > **Deployment Type**, select **Native Helm**.
 3. In **Manifests**, select **Add Manifest**, navigate to **Manifest Source** in your service, and configure Git, OCI Helm, or HTTP Helm.
 4. Ensure that you have selected **Native Helm** deployment type in your environment **Infrastructure Definition** as well.
@@ -177,8 +177,8 @@ For details on supported Helm versions, tooling, limitations, and repositories, 
 
 ## See also
 
-* [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts)
-* [Deploy using Helm Chart](/docs/continuous-delivery/get-started/cd-tutorials/helm-chart)
+* [CD pipeline basics](/docs/continuous-delivery/overview#pipeline)
+* [Deploy using Helm Chart](/docs/continuous-delivery/get-started/tutorials/helm-chart)
 * [Helm and Native Helm Deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
   
 

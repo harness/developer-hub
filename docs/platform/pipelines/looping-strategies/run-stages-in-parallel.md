@@ -9,7 +9,7 @@ redirect_from:
 You can run stages in parallel when you want to perform parallel operations. For example:
 
 - In [CI stages](/docs/continuous-integration/use-ci/prep-ci-pipeline-components#stages), parallel execution of builds and tests can speed up the integration process, reduce test time, and provide faster feedback to developers.
-- In [CD stages](/docs/continuous-delivery/get-started/key-concepts#stage), parallel execution of deployments can help reduce deployment times and increase the efficiency of the process.
+- In [CD stages](/docs/continuous-delivery/overview#stage), parallel execution of deployments can help reduce deployment times and increase the efficiency of the process.
 - in [Infrastructure as Code (IaC)](https://www.harness.io/products/infrastructure-as-code-management), parallel execution of IaC scripts can speed up the creation of resources and improve the scalability of infrastructure.
 
 To run stages in parallel, [add stages](../add-a-stage.md) to your pipeline, and then arrange the stages to run in parallel.

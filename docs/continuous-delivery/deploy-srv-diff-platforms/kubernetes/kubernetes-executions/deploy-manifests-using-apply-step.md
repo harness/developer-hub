@@ -206,8 +206,8 @@ You can override some or all of the values in the values YAML file or the Kuztom
 
 Values YAML files can be specified at several places in Harness:
 
-* Environment service overrides (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview))
-* Environment configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview))
+* Environment service overrides (if you are using [Services v2](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments v2](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview))
+* Environment configuration (if you are using [Services v2](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments v2](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview))
 * Service definition manifests
 
 You can also add values YAML values and/or files or Kustomize Patch files in the Apply step **Override Value**.
@@ -263,8 +263,8 @@ Harness merges all of the values YAML values/files into one file.
 If two or more sources have the same `name:value` pairs (for example, `replicas: 2`), that is a conflict that Harness resolves using the following priority order (from highest to lowest):
 
 1. Kubernetes Apply Step **Override Value**.
-2. Environment Service Overrides (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview)).
-3. Environment Configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview)).
+2. Environment Service Overrides (if you are using [Services v2](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments v2](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview)).
+3. Environment Configuration (if you are using [Services v2](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments v2](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview)).
 4. Service Definition Manifests.
 
 ![](./static/deploy-manifests-using-apply-step-26.png)

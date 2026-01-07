@@ -345,7 +345,7 @@ After installation is complete, you should create the initial Harness account, a
 To get started with the modules, review the following topics:
 
 * For Harness Continuous Integration, go to the [CI key concepts](../../continuous-integration/get-started/key-concepts.md).
-* For Harness Continuous Delivery & GitOps, go to the [CD key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
+* For Harness Continuous Delivery & GitOps, go to the [CD key concepts](/docs/continuous-delivery/overview#key-concepts).
 * For Harness Security Testing Orchestration, go to the [STO overview](/docs/security-testing-orchestration/overview).
 * For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/chaos-engineering/key-concepts).
 * For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition).

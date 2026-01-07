@@ -82,7 +82,7 @@ You can [define custom variables](./add-a-variable.md) in your environment and s
 
 <DocImage path={require('./static/harness-variables-44.png')} width="50%" height="50%" title="Click to view full size image" />
 
-Currently, there are two versions of [services and environments](/docs/continuous-delivery/get-started/services-and-environments-overview), v1 and v2. Services and environments v1 are being replaced by services and environments v2.
+Currently, there are two versions of services and environments, v1 and v2. Services and environments v1 are being replaced by services and environments v2. For more information, go to [services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
 
 <!-- "The way you reference these custom variables can be different between v1 and v2." It is not clear that there is any difference or if this change is complete. -->
 
@@ -97,7 +97,7 @@ These expressions refer to deployment infrastructure configurations. Infrastruct
    <DocImage path={require('./static/harness-variables-46.png')} width="60%" height="60%" title="Click to view full size image" />
 
 * `<+infra.infraIdentifier>`: The ID of the infrastructure definition used in a pipeline stage.
-* `<+infra.tags>`: The [tags on a CD stage's infrastructure definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-tags). To reference a specific tag use `<+infra.tags.TAG_KEY>`.
+* `<+infra.tags>`: The [tags on a CD stage's infrastructure definition](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview#infrastructure-tags). To reference a specific tag use `<+infra.tags.TAG_KEY>`.
 * `<+infra.connectorRef>`: The ID of the Harness connector used in the Deploy stage's infrastructure definition.
 * `<+infra.connector.name>`: The name of the Harness connector used in the infrastructure definition.
 * `<+infra.namespace>`: The namespace used in the infrastructure definition.
@@ -293,7 +293,7 @@ The following expressions reference information about a pipeline run, such as th
 
       ![](./static/harness-variables-26.png)
 
-   You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For more information and examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
+   You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For more information and examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/cd-onboarding/integrating-cd-other-modules).
 
 * `<+pipeline.executionUrl>`: The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
@@ -351,7 +351,7 @@ You can [define custom variables](./add-a-variable.md) in your environment and s
 
 <DocImage path={require('./static/harness-variables-32.png')} width="60%" height="60%" title="Click to view full size image" />
 
-Currently, there are two versions of [services and environments](/docs/continuous-delivery/get-started/services-and-environments-overview), v1 and v2. Services and environments v1 are being replaced by services and environments v2.
+Currently, there are two versions of services and environments, v1 and v2. Services and environments v1 are being replaced by services and environments v2. For more information, go to [services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
 
 To reference custom v2 service-level variables, use the expression syntax `<+serviceVariables.VARIABLE_NAME>`.
 

@@ -164,7 +164,7 @@ Installing an Agent involves setting up an Agent in Harness, downloading its YAM
 
 A Harness GitOps service is the same as any other Harness service. A service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
 
-For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For more information, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
 
 ### Service instance
 
@@ -178,7 +178,7 @@ A single service can have multiple service instances. For example, one for Dev, 
 
 Harness environments represent your live environment logically (QA, Prod, etc). In Harness GitOps, an environment is the live state of the infrastructure.
 
-For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For more information, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
 
 ### Application
 

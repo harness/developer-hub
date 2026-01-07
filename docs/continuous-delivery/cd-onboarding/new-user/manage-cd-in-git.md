@@ -1,7 +1,9 @@
 ---
 title: Managing Harness CD resources in Git
 description: Provide version control and collaboration among teams using Git.
-sidebar_position: 8
+sidebar_position: 11
+redirect_from:
+  - /docs/continuous-delivery/cd-onboarding/new-user/manage-cd-in-git
 ---
 
 Harness Continuous Delivery (CD) is a powerful platform to manage and automate deployments. Storing Harness CD resources in Git not only provides version control but also facilitates collaboration among teams, enabling Infrastructure as Code (IaC) practices. This guide will take you through the steps to onboard and operationalize the management of Harness CD resources in Git.

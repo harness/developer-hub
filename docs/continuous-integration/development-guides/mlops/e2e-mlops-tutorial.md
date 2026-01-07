@@ -505,7 +505,7 @@ In Harness, you can specify the location of a function definition, artifact, and
 
 1. Edit your MLOPs pipeline, and add a **Deploy** stage named `lambdadeployment`.
 2. **Deployment Type**, select **AWS Lambda**, and then select **Continue**.
-3. Create a [service definition](/docs/continuous-delivery/get-started/key-concepts.md#service) for the Lambda deployment.
+3. Create a [service definition](/docs/continuous-delivery/overview#service) for the Lambda deployment.
 
    * Select **Add Service**.
    * For **Name**, enter `creditcardapproval-lambda-service`.

@@ -46,7 +46,7 @@ The harness supports various deployment strategies, including Blue/Green, Canary
 
 ### How can I use Harness CD with Google Cloud Functions?
 
-Harness CD pipelines help you to orchestrate and automate your [Google Cloud Function deployments](https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/gcp-cloud-func) and push updated functions to Google Cloud.
+Harness CD pipelines help you to orchestrate and automate your [Google Cloud Function deployments](https://developer.harness.io/docs/continuous-delivery/get-started/tutorials/gcp-cloud-func) and push updated functions to Google Cloud.
 
 
 ### Which storage options does Harness support for Google Cloud Functions 1st gen?

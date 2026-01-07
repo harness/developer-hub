@@ -414,7 +414,7 @@ Next we need to create a CD environment where the CD pipelines will execute. Go 
 5. Under “Infrastructure Type” choose GKE/EKS depending upon your cloud provider. Choose your connector. Choose your Cluster. Provide a namespace where the CD pipelines will execute. Finally set the “Release Name” to `<+service.name>`.
 
 #### 3. Create CD Pipelines
-Create a Deployment pipeline with a single deploy stage of type **Native Helm**. For both service and environment choose `<+input>`. For the execution strategy choose rolling. Go to [CD Pipeline Modelling Overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/) to learn more. 
+Create a Deployment pipeline with a single deploy stage of type **Native Helm**. For both service and environment choose `<+input>`. For the execution strategy choose rolling. Go to [CD Pipeline Modelling Overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview) to learn more. 
 
 In order to demonstrate EM’s lifecycle management, we will create an additional Uninstall pipeline of similar configuration, but after choosing the execution strategy, remove the Helm Deploy step. Instead, add a `helm delete` step, where you should set `Release name` to `<+service.name>`. 
 

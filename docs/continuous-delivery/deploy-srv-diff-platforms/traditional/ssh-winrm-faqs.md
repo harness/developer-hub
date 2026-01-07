@@ -25,7 +25,7 @@ You can take advantage of our ssh deployment and include a step to download the 
 
 ### How do we detect service licenses for SSH deployments?
 
-Please consider the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#ssh-and-winrm).
+Please consider the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd/#ssh-and-winrm).
 Feel free to reach out to us in case of issues.
 
 ### Does Harness support SSH deployments using the GCP connector like AWS and Azure?

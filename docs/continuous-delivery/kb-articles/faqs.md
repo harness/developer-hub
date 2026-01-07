@@ -30,7 +30,7 @@ Yes, Harness supports the migration of entities such as overrides, pipelines, te
 
 #### How does Harness calculate pricing for CD?
 
-See [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/)
+See [Service-based licensing and usage for CD](/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd/)
 
 #### My definition of a service differs from the above standard definition. How will pricing work in my case?
 
@@ -759,7 +759,7 @@ No, the calculation method remains the same for both CG (Current Generation) and
 
 #### Can you provide an example of how service licenses are calculated based on service instances?
 
-Sure! An example of the calculation can be found in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example). This example illustrates how the number of service instances corresponds to the consumed service licenses.
+Sure! An example of the calculation can be found in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd/#example). This example illustrates how the number of service instances corresponds to the consumed service licenses.
 
 #### Is on-demand token generation valid for both Vault's Kubernetes auth type and app role-based auth?
 
@@ -792,7 +792,7 @@ You will have to loop across all the stages to check its infra spec.
 
 #### Do we support services and environments at the org level ?
 
-Yes, we do. For more please refer this in following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview/#creating-services-at-an-account-or-organization-level).
+Yes, we do. For more please refer this in following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview#creating-services-at-an-account-or-organization-level).
 
 #### How can Harness detect if the sub-tickets in Jira are closed before the approval process runs?
 
@@ -1073,7 +1073,7 @@ Always execute step runs regardless of success or failure. But, to trigger this 
 
 #### Do we support services and envs at the org level?
 
-Yes, we do. For more please refer this in following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview/#creating-services-at-an-account-or-organization-level).
+Yes, we do. For more please refer this in following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview#creating-services-at-an-account-or-organization-level).
 
 #### Can Expressions operate within Harness Variables for configurations at the account level in the Next-Gen version?
 
@@ -1162,7 +1162,7 @@ The pipelines will run just fine, as you used the template and specified differe
 
 #### Service showing as active but hasn't been part of a deployment in over 30 days.
 
-Harness shows the Active instances is say you had a deployment and the VM got deployed from a Harness deployment. No matter if we deploy anything else on the VM , until the VM is up and running as it is linked with the service. It will show as active instance. The 30 days mentioned [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#active-services) , is for service based licence calculation and usage for CD.
+Harness shows the Active instances is say you had a deployment and the VM got deployed from a Harness deployment. No matter if we deploy anything else on the VM , until the VM is up and running as it is linked with the service. It will show as active instance. The 30 days mentioned [here](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd/#active-services) , is for service based licence calculation and usage for CD.
 
 #### Why can't I access dashboards? It says "Requires Upgrade to Enterprise Plan to set up Dashboards"?
 
@@ -1520,7 +1520,7 @@ We can look forward to add this in future. Please refer more on this in followin
 
 #### Does Harness have documentation for specific user roles?
 
-You can follow the [CD new user onboarding guides](/docs/category/new-users), which include guides for developers, admins, pipeline designers, and platform engineers.
+You can follow the [CD new user onboarding guides](/docs/category/learning-path), which include guides for developers, admins, pipeline designers, and platform engineers.
 
 #### Is it anticipated that the harness pipeline will initiate the verification of 'access' permissions to an environment at the outset of an execution, as opposed to conducting such verification progressively as the pipeline advances?
 

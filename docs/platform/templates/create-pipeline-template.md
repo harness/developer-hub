@@ -63,7 +63,7 @@ Harness templates allow you to design reusable content, logic, and parameters, e
 
 This tutorial focuses on how to use templates with Harness CD pipelines. We will guide you through saving a sample deployment pipeline as a template, and then using it to get started with a new pipeline at project level.
 
-1. Make sure you have followed the [get started with CD tutorial](/docs/continuous-delivery/get-started/cd-tutorials/manifest) and have the `guestbook` deployment pipeline up and running.
+1. Make sure you have followed the [get started with CD tutorial](/docs/continuous-delivery/get-started/tutorials/manifest) and have the `guestbook` deployment pipeline up and running.
 2. In the **Pipeline Studio** of the `guestbook` pipeline, select the dropdown menu next to **Save**, and select **Save as Template**.
 3. Enter the **Name** `harness-deployment-template` and the **Version Label** `0.0.1`.
 4. For this tutorial, select **Save To** `Project`.  There are three **Save To** options that declare the [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the template is created.

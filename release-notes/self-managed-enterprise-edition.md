@@ -14285,7 +14285,7 @@ gsutil -m cp \
 
 - CD license utilization data was not reported for some accounts. (CDS-69101)
 
-  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+  [License usage](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
 
   This issue has been resolved. The license usage now retrieves the required information in batches to avoid read timeout.
 
@@ -14869,7 +14869,7 @@ This release includes the following Harness module and component versions.
 - Missing task type support resulted in com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 873575 error. (CDS-57912)
   Harness has added the unsupported task type.
 
-- Users were unable to delete a [V1 environments](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2). (CDS-57943, ZD-41828)
+- Users were unable to delete a [V1 environments](/docs/continuous-delivery/cd-onboarding/upgrade-cd-v2). (CDS-57943, ZD-41828)
 
   User can now delete V2 and V1 environments.
 
@@ -15866,7 +15866,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 - The environment's **Service Overrides** were not operating additively. (CDS-53373)
 
-  You can override specific service options using the [Service Overrides settings](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
+  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
 
   ![Service Overrides settings](static/88805f0c3a1feca13b5437edbd6c7574e8f540a6e9ffe07f760a450546c93c41.png)
 
@@ -16832,7 +16832,7 @@ This release introduces the following features and enhancements.
 
   While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
 
-- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/get-started/services-and-environments-overview). (CDS-39989)
+- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview). (CDS-39989)
 
   You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
 
@@ -17141,7 +17141,7 @@ This release includes the following fixed issues.
 
 - Unable to select a Primary Artifact in the pipeline input form. (CDS-48065)
 
-  Multiple Artifact Source is only available with [service V2](/docs/continuous-delivery/get-started/services-and-environments-overview). With this fix, the UI only allows the multiple artifact option with service V2. As this UI check was not present earlier, some users had multiple artifact sources with service V1. Users with existing configurations must fix this.
+  Multiple Artifact Source is only available with [service V2](/docs/continuous-delivery/x-platform-cd-features/services/services-overview). With this fix, the UI only allows the multiple artifact option with service V2. As this UI check was not present earlier, some users had multiple artifact sources with service V1. Users with existing configurations must fix this.
 
 - Google Artifact Registry Artifacts: Better error message when the connector does not have access to a project. (CDS-48102)
 

@@ -16,7 +16,7 @@ Everything you can do in the Visual editor, you can also represent in YAML.
 
 ## Use the YAML editor
 
-1. Edit or create a pipeline. For guidance on creating pipelines, go to [CD onboarding guide](/docs/continuous-delivery/cd-onboarding/certification/onboarding-guide) or [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
+1. Edit or create a pipeline. For guidance on creating pipelines, go to [CD onboarding guide](/docs/continuous-delivery/cd-onboarding/onboarding-guide) or [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 2. In the Pipeline Studio, select **YAML** to switch to the YAML editor.
 
    ![](./static/harness-yaml-quickstart-21.png)
@@ -179,7 +179,7 @@ For details on each stage type and configuration, go to:
 
 * **Approval:** [Using Manual Harness Approval Stages](../approvals/adding-harness-approval-stages.md) and [Adding Jira Approval Stages and Steps](../approvals/adding-jira-approval-stages.md)
 * **Build:** [CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings)
-* **Deployment:** [CD tutorials](/docs/category/cd-tutorials)
+* **Deployment:** [CD tutorials](/docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials
 * **Custom:** [Add a custom stage](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage)
 
 ![](./static/harness-yaml-quickstart-23.png)
@@ -318,7 +318,7 @@ A Harness [environment](/docs/continuous-delivery/x-platform-cd-features/environ
 Harness environment schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/environment-yaml-v2.yaml).
 
 ### Infrastructure definition entity schema
-A Harness [Infrastructure Definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-definitions) includes specific infrastructure details for the deployment, such as the Harness connector that provides credentials for the cluster and the cluster namespace.
+A Harness [Infrastructure Definition](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview#infrastructure-definitions) includes specific infrastructure details for the deployment, such as the Harness connector that provides credentials for the cluster and the cluster namespace.
 
 Harness environment schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/infra-structure-definition-yaml.yaml).
 

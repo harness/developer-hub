@@ -46,7 +46,7 @@ deny[msg] {
 }
 ```
 
-In the REGO script, we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service ID](/docs/continuous-delivery/get-started/key-concepts.md#service) from the `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>` annotation. If you followed the onboarding guide, this annotation is automatically ingested into your `catalog-info.yaml`. Otherwise, you need to add it manually. 
+In the REGO script, we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service ID](/docs/continuous-delivery/overview#service) from the `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>` annotation. If you followed the onboarding guide, this annotation is automatically ingested into your `catalog-info.yaml`. Otherwise, you need to add it manually. 
 
 **Policy Outcomes:**
 

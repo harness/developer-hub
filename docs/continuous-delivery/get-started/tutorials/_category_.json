@@ -1,0 +1,11 @@
+{
+  "label": "CD Tutorials",
+  "position": "3",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "CD Tutorials"
+  }
+}

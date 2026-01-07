@@ -47,7 +47,7 @@ To use an AWS connector, your spot account must first be connected to the AWS cl
 
 You can create a service and environment either when you are building the pipeline or separately in **Services** and **Environments**. This topic walks you through building these within a pipeline. 
 
-The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).
 
 
 import Tabs3 from '@theme/Tabs';
@@ -70,7 +70,7 @@ The new stage is created. Next, we'll add a Harness service to represent the app
 
 ### Add a Harness service
 
-Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
+Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).
 
 
 import Tabs1 from '@theme/Tabs';

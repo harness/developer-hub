@@ -1028,7 +1028,7 @@ Harness FME environments and Harness platform environments are different resourc
 
 ##### Harness environments
 
-On the **Harness platform** you can create [environments](/docs/continuous-delivery/get-started/services-and-environments-overview#environments) (to define infrastructure) to be used in Harness CD [pipelines](/docs/continuous-delivery/get-started/key-concepts#pipeline). These environments are shown in Harness **Project Settings** (shown below), **Organization Settings**, and **Account Settings**, as well as on the Harness project **Overview** page (shown below in Harness unified view).
+On the **Harness platform** you can create [environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) (to define infrastructure) to be used in Harness CD [pipelines](/docs/continuous-delivery/overview#pipeline). These environments are shown in Harness **Project Settings** (shown below), **Organization Settings**, and **Account Settings**, as well as on the Harness project **Overview** page (shown below in Harness unified view).
 
 ![](./static/harness-envs.png)
 

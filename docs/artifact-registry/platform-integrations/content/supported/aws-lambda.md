@@ -34,7 +34,7 @@ For detailed instructions on configuring and deploying AWS Lambda functions with
 
 - [AWS Lambda Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments) - Complete guide to AWS Lambda deployment configuration
 - [Serverless Lambda CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart) - Step-by-step quickstart tutorial
-- [AWS Lambda Tutorial](/docs/continuous-delivery/get-started/cd-tutorials/aws-lambda) - End-to-end tutorial for AWS Lambda deployments
+- [AWS Lambda Tutorial](/docs/continuous-delivery/get-started/tutorials/aws-lambda) - End-to-end tutorial for AWS Lambda deployments
 
 These guides cover pipeline creation, execution strategies, and deployment verification.
 

@@ -22,7 +22,7 @@ The Harness Platform provides a common framework underlying the Harness modules 
 
 This page describes key concepts related to Harness Platform features and functionality, such as your Harness account, organizations, projects, delegates, RBAC, global settings, and more.
 
-Harness modules include Harness Continuous Integration (CI), Harness Continuous Delivery (CD), Harness Security Testing Orchestration (STO), and so on. In addition to each module's unique features, some modules share common or similar features, such as pipelines. To learn more about module features, functionality, and key concepts, go to the [documentation](https://developer.harness.io/) for the module you're interested in. For example, for information about deploying services, go to [Continuous Delivery key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
+Harness modules include Harness Continuous Integration (CI), Harness Continuous Delivery (CD), Harness Security Testing Orchestration (STO), and so on. In addition to each module's unique features, some modules share common or similar features, such as pipelines. To learn more about module features, functionality, and key concepts, go to the [documentation](https://developer.harness.io/) for the module you're interested in. For example, for information about deploying services, go to [Continuous Delivery key concepts](/docs/continuous-delivery/overview#key-concepts).
 
 ## Account
 

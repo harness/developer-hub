@@ -130,7 +130,7 @@ On the **Advanced** tab, you can configure:
 
 :::warning
 
-Custom stage executions will count towards service license consumption. Harness CD will consume 1 Service license for every 2000 custom stage executions. To learn more, go to [licensing for pipelines with no service](/docs/continuous-delivery/get-started/service-licensing-for-cd#pipelines-with-no-service)
+Custom stage executions will count towards service license consumption. Harness CD will consume 1 Service license for every 2000 custom stage executions. To learn more, go to [licensing for pipelines with no service](/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd#pipelines-with-no-service)
 
 :::
 

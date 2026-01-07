@@ -1,7 +1,9 @@
 ---
 title: Automation with the Terraform Provider
 description: Build automation using the Harness Terraform Provider.
-sidebar_position: 6
+sidebar_position: 15
+redirect_from:
+  - /docs/continuous-delivery/cd-onboarding/new-user/rampup-terraform-provider
 ---
 
 You can integrate Harness CD and Terraform to manage Harness resources and enable automation and version control for your deployment infrastructure.

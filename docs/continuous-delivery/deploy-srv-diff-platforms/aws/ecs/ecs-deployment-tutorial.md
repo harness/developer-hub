@@ -260,7 +260,7 @@ The new stage is created. Next, you add a Harness service to represent the app y
 
 A Harness service represents the app you are deploying. It contains any supporting files and the artifact image.
 
-For more information about services, see [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For more information about services, see [Services Overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).
 
 1. In **Service**, click **New Service**.
 2. In **Name**, enter a name.

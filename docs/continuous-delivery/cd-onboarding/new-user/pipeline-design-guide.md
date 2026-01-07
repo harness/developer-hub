@@ -1,9 +1,10 @@
 ---
 title: Pipeline design guide
 description: Reliably automate your CD release process.
-sidebar_position: 4
+sidebar_position: 6
 redirect_from:
   - /docs/continuous-delivery/ramp-up/pipeline-designer-role/pipeline-design-guide
+  - /docs/continuous-delivery/cd-onboarding/new-user/pipeline-design-guide
 ---
 
 When designing a Harness Continuous Delivery (CD) pipeline, the objective is to provide an automated and consistent process for taking code from version control to end users reliably.  
@@ -210,4 +211,4 @@ For more information, go to:
 
 Remember, the best practices for one organization might not be the same for another. The key is to understand the principles, adapt them according to the specific needs of the organization, and always focus on delivering value to your developers efficiently and safely. 
 
-For more information on modeling, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).  
+For more information on modeling, go to [CD pipeline modeling overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).  

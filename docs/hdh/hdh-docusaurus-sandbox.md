@@ -130,7 +130,7 @@ e.g deeper linking:
 
 - https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox?tab-number=1#some-heading-in-tab-one
 - https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox?tab-number=2#some-heading-in-tab-two
-- https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/helm-chart?pipeline=uicdpipe&gitops-cli-os=windowsgitops&deploymentcli=helmrollingcli#run-the-pipeline
+- https://developer.harness.io/docs/continuous-delivery/get-started/tutorials/helm-chart?pipeline=uicdpipe&gitops-cli-os=windowsgitops&deploymentcli=helmrollingcli#run-the-pipeline
 
 Can see what the tab value ='s then the anchor tab there in combination and for nested tabs can continue.
 `?pipeline=uicdpipe&gitops-cli-os=windowsgitops&deploymentcli=helmrollingcli#run-the-pipeline`

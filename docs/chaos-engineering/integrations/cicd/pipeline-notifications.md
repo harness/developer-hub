@@ -38,7 +38,7 @@ To execute an experiment in a pipeline, you need to have the appropriate permiss
 
 You can create a chaos experiment (on **Kubernetes dedicated infrastructure**, **Harness Delegate**, **Linux**, or **Windows infrastructure**) as a pipeline and integrate it to receive notifications about the status of the experiment. Go to [create experiment](/docs/chaos-engineering/guides/chaos-experiments/create-experiments) to create a chaos experiment as a pipeline.
 
-For more information, go to [Pipeline concepts](/docs/continuous-integration/get-started/key-concepts) and [Pipeline Modeling Overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+For more information, go to [Pipeline concepts](/docs/continuous-integration/get-started/key-concepts) and [Pipeline Modeling Overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).
 
 To integrate the pipeline to receive notifications, follow the steps below:
 Go to **Pipelines** and select the pipeline that you want to receive notifications about.

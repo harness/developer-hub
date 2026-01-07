@@ -17,7 +17,7 @@ Triggers in a Harness Continuous Delivery (CD) pipeline are used to automaticall
 
 You need the following for this tutorial:
 
-- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, try the [get started with CD tutorial](/docs/continuous-delivery/get-started/cd-tutorials/manifest).
+- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, try the [get started with CD tutorial](/docs/continuous-delivery/get-started/tutorials/manifest).
 - **Existing Docker connector with Credential Type `Username and Password`**. Create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) if you don't have one yet.
 
 ## Implement a trigger using Docker Hub Artifact

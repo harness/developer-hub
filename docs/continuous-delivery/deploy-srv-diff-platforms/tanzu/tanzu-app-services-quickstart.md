@@ -206,7 +206,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
 
 ## Create Harness TAS service
 
-Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
+Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).
 
 ### Create a new service
 
@@ -816,7 +816,7 @@ This streamlines your workflow by eliminating the need for manual service bindin
 
 ## Next steps
 
-See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
+See [CD tutorials](/docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials for other deployment features.
 
 ## FAQs
 

@@ -18,8 +18,8 @@ import Variables from '/docs/platform/shared/variables-not-supported.md'
 ## Requirements
 
 Make sure you have:
-* A Harness pipeline with a [CD stage](/docs/continuous-delivery/get-started/key-concepts).
-* A [Harness service with an artifact source](/docs/continuous-delivery/get-started/services-and-environments-overview).
+* A Harness pipeline with a [CD stage](/docs/continuous-delivery/overview#stage).
+* A [Harness service with an artifact source](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).
 
 ## Configure the artifact image path and tag as runtime inputs
 

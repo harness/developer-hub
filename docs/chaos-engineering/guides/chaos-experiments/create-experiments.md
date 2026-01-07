@@ -151,7 +151,7 @@ After constructing the chaos experiment using one of the three options, save the
 	![](./static/create-experiments/overview-10.png)
 
 
-For more information, go to [Pipeline concepts](/docs/continuous-integration/get-started/key-concepts) and [Pipeline Modeling Overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+For more information, go to [Pipeline concepts](/docs/continuous-integration/get-started/key-concepts) and [Pipeline Modeling Overview](/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview).
 
 ## Next Steps
 

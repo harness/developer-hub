@@ -1,6 +1,8 @@
 ---
 title: CD onboarding path
 description: Ramp up on Harness CD
+redirect_from:
+  - /docs/continuous-delivery/cd-onboarding/new-user/onboarding-path
 tags:
   - cd-onboarding
   - continuous-delivery
@@ -30,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 This topic describes the different phases and steps involved in onboarding with Harness CD. Follow these steps to ensure that you have all the settings and resources required for moving forward with your own deployments.
 
-If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](/docs/category/cd-tutorials).
+If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](/docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials.
 
 ## Overview
 
@@ -57,7 +59,7 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 | <a href="#services">Service Definition and Variables</a> \*          | Runtime Inputs or expressions                                     | [Create services](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/)             | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
 | <a href="#environments">Environments</a> \*                          | Service Override                                                  | [Create environments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/) | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
 | <a href="#step-2-adding-artifact-source">Adding artifact sources</a> | Docker Registry, GCR, GCS, ACR, Azure DevOps Artifacts, ECR, etc. | [CD artifact sources](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/)        |                                                                 |
-| <a href="#step-3-simple-pipeline">Simple pipelines</a> \*            | Stage, service, environment, infrastructure                       | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/)     | [Watch Video](https://youtu.be/k-f1nbgGkww?si=_EW6Lcr1qxzrQNVM) |
+| <a href="#step-3-simple-pipeline">Simple pipelines</a> \*            | Stage, service, environment, infrastructure                       | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview)     | [Watch Video](https://youtu.be/k-f1nbgGkww?si=_EW6Lcr1qxzrQNVM) |
 
 ### <a href="#phase-3-deploy-to-staging"> Phase 3: Deploy to staging </a>
 

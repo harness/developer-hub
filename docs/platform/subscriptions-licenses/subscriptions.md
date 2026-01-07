@@ -63,7 +63,7 @@ CD deploys software services onto infrastructure platforms spanning traditional 
 - A VM in the traditional VM-based apps.
 - Five serverless functions in serverless environments.
 
-CD tracks **Service** license consumption instead of **Developers**. All **Service** licenses are tracked over a *last 30 days* active window. For more information about CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
+CD tracks **Service** license consumption instead of **Developers**. All **Service** licenses are tracked over a *last 30 days* active window. For more information about CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd/).
 
 </details>
 <details>
@@ -222,7 +222,7 @@ This is an honor system, where customers report licensed user groups and service
 For more information about specific module subscriptions and licenses, go to:
 
 - [CI Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt/)
-- [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
+- [CD Service-based licensing and usage](/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd)
 - [FME usage and billing](/docs/feature-management-experimentation/account-usage)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
 - [CE license consumption](/docs/chaos-engineering/guides/license-consumption)

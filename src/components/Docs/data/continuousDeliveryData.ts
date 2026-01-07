@@ -13,18 +13,18 @@ import { MODULES } from "@site/src/constants";
         "",
       list: [
         {
-          title: "Onboarding guide",
-          module: MODULES.cd,
-          description:
-            "A self-service onboarding guide for Harness CD & GitOps.",
-          link: "/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path",
-        },
-        {
-          title: "Key concepts",
+          title: "Overview",
           module: MODULES.cd,
           description:
             "Learn the key concepts needed to automate service deployments on your infrastructure.",
-          link: "/docs/continuous-delivery/get-started/key-concepts",
+          link: "/docs/continuous-delivery/overview",
+        },
+        {
+          title: "Getting Started",
+          module: MODULES.cd,
+          description:
+            "Learn how to create your first deployment pipeline in Harness CD.",
+          link: "/docs/continuous-delivery/getting-started",
         },
         {
           title: "Supported CD features and integrations",
