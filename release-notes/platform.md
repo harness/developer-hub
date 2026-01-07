@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Platform.
 :::
 ## Important feature change notice
 
-:::danger BREAKING CHANGE: Reserved Identifier Enforcement for Platform Entities (Effective : Feb 13, 2026)
+:::danger BREAKING CHANGE: Reserved Identifier Enforcement for Platform Entities (Effective : Feb 18, 2026)
 
 We are enforcing restrictions on some keywords that can be used as identifiers for platform entities (organizations, projects, services, environments, secrets, file store folders, etc.).
 
@@ -41,7 +41,6 @@ We are enforcing restrictions on some keywords that can be used as identifiers f
 
 - New Entities: Creation of any entity using these reserved identifiers will be blocked
 - Existing Entities: Entities already using these identifiers will continue to be supported, but may experience operational issues (edit/delete failures) and validation errors in certain contexts
-- Recommendation: If you have existing entities using these identifiers, we strongly recommend renaming them to avoid future issues
 
 **Action Required**:
 
