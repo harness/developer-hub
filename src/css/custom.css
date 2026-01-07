@@ -2150,6 +2150,18 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   background-repeat: no-repeat;
 }
 
+.sidebar-rm > div > a::before,
+.sidebar-rm > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-rm.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 /*******************sidebar logo css end*******************/
 
 /*** /docs  cards css arranged in alphabetical  order ****/
