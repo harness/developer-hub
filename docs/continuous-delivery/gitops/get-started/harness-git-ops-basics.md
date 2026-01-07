@@ -321,9 +321,18 @@ Sync Status identifies if the target state is Synched, Out of Sync, or Unknown.
 
 Applications react to variations in state between the source manifest and the target cluster using a Sync Policy.
 
-With Automatic sync enabled, changes to the source manifest initiate sync automatically.
+With Automatic sync enabled, changes to the source manifest initiate sync automatically, while manual sync requires an operator to trigger it.
 
-Sync Options tune the synchronization.
+**Automatic sync (pros, risks, tips)**
+- Pros: hands-free drift correction and fast rollout when Git changes.
+- Risks: unwanted rollouts if bad commits land in the tracked branch; automatic prune can delete still-needed resources; rapid churn if external controllers keep modifying live state.
+- Tips: use deployment gates (branch protections, PR checks, signed commits); enable selective auto-prune only when manifests are stable; pair with health checks to block sync when targets are unhealthy; scope Argo CD RBAC so only trusted apps use auto sync.
+
+**Manual sync (pros, risks, tips)**
+- Pros: change control before rollout, safer for shared clusters or critical workloads.
+- Risks: longer drift window and possible configuration skew if operators forget to sync.
+- Tips: require approvals in Harness before manual sync, set notifications on Out of Sync, and schedule periodic audits to avoid lingering drift.
+Common Sync Options help tune both modes: `Prune` to remove orphaned resources, `Self Heal` to overwrite in-cluster drift, and `Apply Out of Sync Only` to skip unchanged objects.
 
 ### Prune Policy
 
