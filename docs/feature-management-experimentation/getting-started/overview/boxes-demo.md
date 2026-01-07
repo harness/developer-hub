@@ -7,63 +7,57 @@ redirect_from:
   - /docs/feature-management-experimentation/feature-management/best-practices/split-boxes-demo/
 ---
 
-## Overview
+:::info
+This demo is a learning exercise designed to help you visualize how feature flag targeting rules behave under different conditions. It uses a simplified application and configuration to make targeting logic easy to observe and reason about.
 
-The Split Boxes demo is a tool to help users understand the interaction between rules and the impact of various features. It’s a simple visualization that allows you to see the impact of individually targeting, custom attribution, limit exposure, and dynamic configuration.
+It is not required for setting up [Feature Management](/docs/feature-management-experimentation/feature-management) in a production environment, and does not reflect a typical production implementation.
+:::
 
-## Using the Boxes Demo
+The Split Boxes demo is a visualization tool that helps you understand how feature flag rules interact with user targeting. Each box represents a unique user, allowing you to explore how individual targeting, custom attribution, traffic limits, and dynamic configurations affect flag evaluation.
 
-Each box represents a user ID.
+You can target users individually or in groups by defining targeting rules based on their attributes. For example, you might target a specific user by referencing a single cell (such as `b8` or `j5`), or define a segment that includes multiple values.
 
 ![](.././static/split-boxes-demo.png)
 
-* You can individually target using the cell location, such as b8 or j5.
-* You can also create a segment that includes any of the available values.
-* You can create targeting rules using the attributes **row**, **col**, or **account**;
+Each box represents a unique user ID in a grid-based layout, and the following targeting attributes are supported: **row**, **col**, or **account**.
   
-  * _row_ and _col_ use letters and numbers respectively, usually with "is in list" as the matcher.
-  * Valid account names include: Nike, Apple, LinkedIn, Best Buy, Google, Microsoft, Pinterest, Dell, Slack, Zoom, Samsung, and Disney.
+| Attribute | Description |
+|---------|-------------|
+| `row` | Alphabetical row identifier (typically matched using **is in list**). |
+| `col` | Numeric column identifier (typically matched using **is in list**). |
+| `account` | Simulated account name associated with the user. Valid account names include: Nike, Apple, LinkedIn, Best Buy, Google, Microsoft, Pinterest, Dell, Slack, Zoom, Samsung, and Disney. |
 
-* You can modify the configuration of the treatments by updating any of the values. The `font_size` expects standard HTML sizes such as medium, large, x-large, etc.
+You can also modify treatment configurations dynamically in the HTML file. For example, the `font_size` configuration expects standard HTML size values such as `medium`, `large`, or `x-large`.
 
-## Setting up the Boxes Demo
+## Setup
 
-There are three files attached:
+The Boxes demo consists of three files that work together to create and evaluate a feature flag locally.
 
-* The HTML contains the SDK and can be run locally or on a server.
-* You need to provide the browser API key for the Split environment where you will update the rollout plan.
-* You also need to provide the feature flag name. These are entered as variables in the HTML:
+- [**CreateBoxSplit.sh.zip**](.././static/create-box-split.sh.zip): A script for creating the feature flag using the Admin REST API.
+- [**Boxes\_split.txt**](.././static/boxes-split.txt): A text file that contains baseline definition of the feature flag.
+- [**Boxes.htm**](.././static/boxes.htm): An HTML file that includes the SDK and can be run locally or hosted on a server.
 
-   ```html
-   <script>
-   var splitAPIKey = "";
-   var splitName = "";
-   </script>
-   ```
+In the HTML file, provide the browser API key and the feature flag name as variables for the environment you want to use:
 
-   * The Boxes_split.txt file contains an example baseline definition of the feature flag.
-   * The feature flag can be created automatically using the `CreateBoxSplit.sh` script, which uses the Split Admin REST API and the `jq` tool. Run the script with this command line to create the feature flag and add definitions:
-   
-   ```css
-   CreateBoxSplit [Project Name] [Environment Name] [Traffic Type] [Split Name] [Admin API_KEY]
-   ```
+```html
+<script>
+var splitAPIKey = "";
+var splitName = "";
+</script>
+```
 
-   Example:
+You can create the feature flag and apply the baseline configuration using the provided script. The script requires the Admin API, `jq`, and the following parameters:
 
-   ```sql
-   CreateBoxSplit Default Production user front_end_choose_boxes 9enxxxxxxxxxxxxxxxxxxxxxx
-   ```
+```bash
+CreateBoxSplit [Project Name] [Environment Name] [Traffic Type] [Split Name] [Admin API_KEY]
+```
 
-In Chrome, to see feature flag changes immediately, disable cache in the Network tab of the Developer Tools.
+For example: 
+
+```bash
+CreateBoxSplit Default Production user front_end_choose_boxes 9enxxxxxxxxxxxxxxxxxxxxxx
+```
+
+To see feature flag changes immediately in Chrome, disable caching on the **Network** tab in Chrome Developer Tools.
 
 ![](.././static/split-boxes-chrome.png)
-
-## Downloads
-
-| File                                                      | Size      | Notes                             |
-| --------------------------------------------------------- | --------- | --------------------------------- |
-| [CreateBoxSplit.sh.zip](.././static/create-box-split.sh.zip) | 1 KB      |                                   |
-| [Boxes\_split.txt](.././static/boxes-split.txt)              | 658 Bytes | *Right-click > Save Link As...* |
-| [Boxes.htm](.././static/boxes.htm)                           | 8 KB      | *Right-click > Save Link As...* |
-
-

@@ -11,34 +11,16 @@
                 color: white;
             }
         </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
-        <script src="https://malsup.github.com/jquery.form.js"></script>
-        <script src="https://cdn.split.io/sdk/split-10.8.4.min.js"></script>
+        <script src="https://cdn.split.io/sdk/split-11.9.1.min.js"></script>
 
         <script>
             var splitAPIKey=""
             var splitName=""
 
             var factory = splitio({
-                startup: {
-                    requestTimeoutBeforeReady:   0.8, // 800ms
-                    retriesOnFailureBeforeReady:   1, // 1 sec
-                    readyTimeout:                1.5, // 1.5 sec
-                    eventsFirstPushWindow:        10  // 10 sec
-                },
                 core: {
                     authorizationKey: splitAPIKey,
                     key: 'david',
-                    trafficType: 'user',
-                    labelsEnabled: true
-                },
-                scheduler: {
-                    featuresRefreshRate:    1, // 30 sec 
-                    segmentsRefreshRate:    60, // 60 sec 
-                    metricsRefreshRate:     60, // 60 sec
-                    impressionsRefreshRate: 60, // 60 sec
-                    eventsPushRate:         60, // 60 sec
-                    eventsQueueSize:       500  // 500 items
                 },
                 debug: false
             });
@@ -47,18 +29,16 @@
             function createSDKListeners() {
                 client.on(client.Event.SDK_READY, function() {
                     console.log('The SDK is ready!');
-                    drawTable(client);
+                    drawTable(client, 'ready');
                 });
 
                 client.on(client.Event.SDK_UPDATE, function () {
                     console.log('The SDK has been updated!');
-                    drawTable(client);
+                    drawTable(client, 'update');
                 });
             }
 
-            $(document).ready(function() { 
-                createSDKListeners();
-            });
+            document.addEventListener('DOMContentLoaded', createSDKListeners);
             var users = [              
                 [ "a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9" ],
                 [ "b0", "b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9" ],
@@ -77,9 +57,9 @@
                 [ "Nike", "Nike", "Nike", "Apple", "Apple", "Apple", "LinkedIn", "Best Buy", "Best Buy", "Best Buy" ],
                 [ "Nike", "Nike", "Nike", "Apple", "Apple", "Apple", "LinkedIn", "Best Buy", "Best Buy", "Best Buy" ],
                 [ "Google", "Google", "Google", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Best Buy", "Best Buy", "Best Buy" ],
-                [ "Google", "Google", "Google", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pintrest", "Pintrest", "Pintrest" ],
-                [ "Google", "Google", "Google", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pintrest", "Pintrest", "Pintrest" ],
-                [ "Dell", "Dell", "Dell", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pintrest", "Pintrest", "Pintrest" ],
+                [ "Google", "Google", "Google", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pinterest", "Pinterest", "Pinterest" ],
+                [ "Google", "Google", "Google", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pinterest", "Pinterest", "Pinterest" ],
+                [ "Dell", "Dell", "Dell", "Microsoft", "Microsoft", "Microsoft", "Microsoft", "Pinterest", "Pinterest", "Pinterest" ],
                 [ "Zoom", "Zoom", "Zoom", "Slack", "Slack", "Slack", "Samsung", "Disney", "Disney", "Disney" ],
                 [ "Zoom", "Zoom", "Zoom", "Slack", "Slack", "Slack", "Samsung", "Disney", "Disney", "Disney" ],
                 [ "Zoom", "Zoom", "Zoom", "Slack", "Slack", "Slack", "Samsung", "Disney", "Disney", "Disney" ]
@@ -93,7 +73,40 @@
                 };
             }
 
-            function drawTable(client, truncate) {
+            function renderCell(client, cell, i, j, event) {
+                client.on(event == 'ready' ? client.Event.SDK_READY : client.Event.SDK_UPDATE, function() {
+                    var attributes = {
+                        row: users[i][j].charAt(0),
+                        col: users[i][j].charAt(1),
+                        userid: users[i][j],
+                        account: account[i][j]
+                    };
+                    var splitResult = client.getTreatmentWithConfig(splitName, attributes);
+
+                    // Do we have any dynamic config?
+                    if (splitResult.config != null) {
+                        var configs = JSON.parse(splitResult.config);
+                        cell.style.fontSize = configs.font_size;
+                        cell.onclick = createPopup(configs.popup_message, configs.popup_value);
+                    } else {
+                        cell.style.fontSize = "medium";
+                        cell.onclick = createPopup("coming ", "soon!");
+                    }
+
+                    if (splitResult.treatment === 'premium') {
+                        cell.style.backgroundColor = "rgb(28, 170, 214)";
+                    } else if (splitResult.treatment === 'standard') {
+                        cell.style.backgroundColor = "rgb(199, 38, 162)";
+                    } else if (splitResult.treatment === 'current') {
+                        cell.style.backgroundColor = "rgb(245, 165, 23)";
+                    } else {
+                        console.log("unexpected treatment: " + splitResult.treatment);
+                        cell.style.backgroundColor = "rgb(255, 70, 82)";
+                    }
+                });
+            }
+
+            function drawTable(client, event) {
                 console.log("drawTable!");
                 var tbl = document.getElementById("myTable"); // Get the table
 
@@ -118,37 +131,12 @@
                         } catch (e) {
                             console.log(e);
                         }
-                        var attributes = {
-                            row : users[i][j].charAt(0),
-                            col : users[i][j].charAt(1),
-                            userid : users[i][j],
-                            account : account[i][j]
-                        }
-                        var splitResult = client.getTreatmentWithConfig(splitName, attributes);
-
-                        // Do we have any dynamic config?
-                        if(splitResult.config != null) {
-                            var configs = JSON.parse(splitResult.config);
-                            cells[j].style.fontSize = configs.font_size;
-                            cells[j].onclick = createPopup( configs.popup_message, configs.popup_value);
-                        } else {
-                            cells[j].style.fontSize = "medium";
-                            cells[j].onclick = createPopup("coming ", "soon!");
-                        }
-
-                        if (splitResult.treatment === 'premium') {
-                            cells[j].style.backgroundColor = "rgb(0, 156, 235)";
-                        } else if (splitResult.treatment === 'standard') {
-                            cells[j].style.backgroundColor = "rgb(239, 104, 32)";
-                        } else if (splitResult.treatment === 'current') {
-                            cells[j].style.backgroundColor = "rgb(21, 183, 158)";
-                        }   else {
-                            console.log("unexpected treatment: " + splitResult.treatment);
-                            cells[j].style.backgroundColor = "rgb(255, 70, 82)";
-                        }
+                        
+                        renderCell(client, cells[j], i, j, event);
                     }
                 }
             }
+
         </script>
     </head>
 
@@ -156,6 +144,6 @@
         <table id="myTable">
             <tbody/>
         </table>
-    </body>
+    
+<script async id="netlify-rum-container" src="/.netlify/scripts/rum" data-netlify-rum-site-id="2dc01b76-a219-41c6-8333-d2a7067c34d9" data-netlify-deploy-branch="" data-netlify-deploy-context="production" data-netlify-cwv-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaXRlX2lkIjoiMmRjMDFiNzYtYTIxOS00MWM2LTgzMzMtZDJhNzA2N2MzNGQ5IiwiYWNjb3VudF9pZCI6IjYxYjkzZGNkYWQxYzcxMGRiNzI5ZTNhNyIsImRlcGxveV9pZCI6IjY5NWMwZmEzOTQ4YmY0ODFmZjQ0OWFkMiIsImlzc3VlciI6Im5mc2VydmVyIn0.E3pxxFrxvh7X3piZRXWe05NivH_o5ZfibthR-ZkIsM4"></script>
 </html>
-
