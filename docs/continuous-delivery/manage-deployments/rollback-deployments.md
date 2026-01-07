@@ -113,6 +113,85 @@ To perform a Post-Deployment Rollback, the user must have the following permissi
 
 A user will only be allowed to execute rollbacks on any instance if they possess these two permissions for the pipeline and environment through which the deployment occurred. Otherwise, they will see the following message when attempting to click Rollback.
 
+## Pipeline-Level Service Rollback
+
+:::note
+This feature is behind the feature flag `CDS_ROLLBACK_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+The Service Rollback feature provides a simplified and more intuitive way to initiate rollbacks directly from pipeline execution pages. Instead of navigating through instance details to find the rollback option, you can now start the rollback process with a clear, dedicated **Rollback** button.
+
+This streamlined experience is available across multiple execution views:
+
+#### Pipeline Execution Listing Page
+View all pipeline executions in a consolidated list format. The Rollback option is available for each successful deployment execution. Click the three dots menu to the left of the execution to access the rollback option.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/executions-listing-page.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+#### Pipeline Execution Summary Page
+Detailed view of a specific pipeline execution with all its stages and steps. Access rollback directly from the execution summary by clicking on the Rollback button provided at the top right corner of the page.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/pipeline-execution.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+#### Execution History Page
+Comprehensive history of all executions with filtering and search capabilities. Quickly identify and rollback any deployment. Click the three dots menu to the left of the execution to access the rollback option.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/execution-history-page.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+### How to perform Service Rollback
+
+1. Navigate to any of the execution views described above and locate your deployment.
+
+2. Initiate the rollback:
+   - From Pipeline Execution Listing or History Page: Click the three dots menu next to the execution
+   - From Pipeline Execution Summary: Click the **Rollback** button in the top right corner
+   
+   Select **Service Rollback** from the menu options. A step wizard opens to guide you through the process.
+
+3. **Select Service**: In the first step of the wizard, select the service you want to roll back using the radio button option, then click **Next**.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/service-rollback-1.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+4. **Select Environment**: In the second step, you'll see a table showing deployment instances grouped by environment, along with details like group, type, infrastructure, artifact, and chart version. Each row represents a specific deployment state. Select the instance you want to roll back to, then click **Next**.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/service-rollback-2.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+The blue highlighted box shows pipeline executions where this service was deployed. Select the execution you want to roll back to. On the right side, you'll see the instances that were deployed in that execution - there can be one or multiple instances depending on how the service was deployed in that particular execution. In this example, the selected execution deployed one instance, but other executions might have deployed multiple instances.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/service-rollback-3.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+5. **Confirm Rollback**: In the final step, review your selections:
+   - Service name
+   - Environment name
+   - Infrastructure identifier
+   
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/service-rollback-4.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+   Click **Confirm** to initiate the rollback.
+
+6. Once confirmed, Harness starts the rollback execution. The wizard closes and you're redirected to the execution page where you can monitor the rollback progress.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/rollback-initiated.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+The rollback execution will begin immediately, and you can track its progress in real-time through the pipeline execution view.
+
+
 ## Rollback Using API
 
 You can roll back deployments programmatically using Harness APIs. For more information, go to [Harness API Documentation](https://apidocs.harness.io/tag/Rollback).
