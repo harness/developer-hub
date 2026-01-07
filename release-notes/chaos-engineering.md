@@ -20,6 +20,54 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## January 2026
+### Version 1.71.3
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.71.0
+- harness/chaos-ddcr-faults:1.71.0
+- harness/chaos-log-watcher:1.71.0
+- harness/service-discovery-collector:0.51.0
+
+#### New Features and Enhancements
+
+- Added support for download of experiment manifest via get APIs instead of list APIs (CHAOS-10666)
+- Removed usage of token and other keys from localStorage for CHAOS mfe (CHAOS-10540)
+- Upgraded crictl in ddcr-faults image to fix CVE-GO-2025-3749 (CHAOS-10510)
+- Added support for Container Action & Container Probes allowing users to get complete flexibility to provide all pod specific configurations for the required operations in a cluster (CHAOS-10453, CHAOS-10452, CHAOS-10451)
+- Improved handling of pod statuses during container probe execution. The logic now correctly checks for various pod states (e.g., running, succeeded, failed) and provides detailed error messages when failures occur (CHAOS-10676)
+
+#### Fixed Issues
+
+- Fixed probe details drawer breaking when probe is having huge details in Resilience Tab under pipelines (CHAOS-10678)
+
+### Version 1.70.4
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.70.0
+- harness/chaos-ddcr-faults:1.70.1
+- harness/chaos-log-watcher:1.70.0
+- harness/service-discovery-collector:0.50.0
+
+#### New Features and Enhancements
+
+- Added Kafka exception and latency faults in JVM faults (CHAOS-10637)
+- Added changes to Chaos Experiment Selection Drawer in Pipeline to support chaos templates (CHAOS-10617)
+- Added support for importing experiment as reference (CHAOS-10526, CHAOS-10485, CHAOS-10484)
+- Added new statuses for Chaos manager notification triggers (CHAOS-10438)
+- Removed the "Enabled" text on the probe resource in Probes page. The probes status on the side of each row has been removed, you can find it beside the name as separate column (CHAOS-9765)
+
+#### Fixed Issues
+
+- Fixed issue with the target application validation for application chaos (CHAOS-10609)
+- Fixed issue where there's no resilience score, but in the graph it shows 100, and resilience score shows -1% (CHAOS-10598)
+- Fixed "Please select chaos infra" warning showing even after we have selected the infra (CHAOS-10590)
+- Fixed issue when clicking on any radio button while configuring onboarding screen, it always scrolls screen to top by adding `contain: layout` to `.bp3-form-group` (CHAOS-9448)
+
 ## December 2025
 ### Version 1.69.6
 
