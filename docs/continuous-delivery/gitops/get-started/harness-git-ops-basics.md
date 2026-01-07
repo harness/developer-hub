@@ -106,59 +106,117 @@ While the GitOps Agent runs in your environment, all other GitOps functionalitie
 
 ### Harness GitOps Agent
 
-A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
+A Harness GitOps Agent is a lightweight worker process that runs in your Kubernetes environment and serves as the bridge between Harness SaaS and your clusters. The Agent makes secure, outbound connections to Harness SaaS and performs all GitOps operations you configure in the Harness platform.
+
+**Key responsibilities:**
+
+- Connects to your Git repositories to fetch desired state configurations
+- Monitors Git for changes and triggers synchronization when updates are detected
+- Applies manifests to target Kubernetes clusters to reconcile desired and live states
+- Reports deployment status and health back to Harness SaaS
+
+The Agent uses Repository and Cluster configurations to connect to source repos and target environments. When you create a Harness GitOps Application, you select the Agent you want to use for these connections and GitOps operations.
 
 Here's an image that illustrates how the Agent interacts with Harness:
 
 ![Agent and Harness interaction](static/agent.png)
 
-The Agent uses the Repository and Cluster to connect to source repos and target environments. When you create a Harness GitOps Application, you select the Agent you want to use for these connections and GitOps operations.
+#### Agent deployment patterns
 
-#### Ways to Use the GitOps Agent
+You can deploy a GitOps Agent in different configurations depending on your infrastructure and requirements. The Agent can run in your target cluster or in a separate cluster that has network access to your target clusters.
 
-You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
-
-Agents can deploy to all clusters or you can isolate an Agent in a single cluster. For example, you might have one Agent deploy to Dev and QA environments and another Agent deploy to the production environment.
-
-Here's an image that illustrates a Kubernetes deployment on the same cluster as the Agent, a deployment on different clusters, and deployments on two different clusters using one Agent:
+Here's an image that illustrates different deployment patterns:
 
 ![deployment on clusters](static/deploy-cluster.png)
 
-There are pros and cons to each of these scenarios:
-  1. **Scenario 1: Single Cluster, Single Agent, In-Cluster Deployment of Resources**
+**Quick comparison:**
 
-  **Pros:**
-     * **Simplicity:** This pattern is straightforward to set up and maintain as it involves a single GitOps Agent and Argo CD instance managing deployments within a single cluster.
-     * **Resource Efficiency:** With a single instance, resource usage is optimized as there is no need for additional instances or coordination between clusters.
+| Pattern | Clusters | Agents | Best For | Tradeoffs |
+|---------|----------|--------|----------|-----------|
+| **In-cluster** | 1 | 1 | Single cluster deployments, development environments | Simple but limited scalability, single point of failure |
+| **External agent** | 1 | 1 | Better isolation, single production cluster | Requires network configuration, more management overhead |
+| **Hub and spoke** | Multiple | 1 | Centralized multi-cluster management | Single point of failure, performance limits at scale |
+| **Multi-agent** | Multiple | Multiple | Enterprise scale, high availability | Higher resource usage, more complex management |
 
-  **Cons:** 
-     * **Limited Scalability:** Scaling beyond a single cluster can be challenging as the Argo CD instance is tightly coupled to the specific cluster it is managing.
-     * **Single Point of Failure:** If the Argo CD instance fails, all deployments within that cluster may be affected.
+#### Detailed scenarios
 
-  1. **Scenario 2: Single Target Cluster for Deployment, Single Agent outside of Target Cluster**
+**Scenario 1: Single cluster with in-cluster agent**
 
-  **Pros:**
-     * **Simplicity:** A single GitOps Agent to manage as well as a single target cluster.
-     * **Better Isolation** as compared to in-cluster set-up in Scenario 1.
+The Agent runs in the same cluster where applications are deployed.
 
-  **Cons:**
-     * **Increased Management Overhead:** Configuration overhead like IP allow listing, permission for external cluster to connect and so on.
+**When to use:** Development environments, single-cluster setups, or when simplicity is prioritized over high availability.
 
-  1. **Scenario 3: Multi-Cluster, Single Argo CD Instance - hub and spoke** 
+**Advantages:**
+- Simplest setup and maintenance
+- Optimal resource usage with a single instance
+- No network configuration required between clusters
 
-  **Pros:**
-     * **Centralized Management:** A single GitOps Agent coupled with an Argo CD instance can manage multiple Kubernetes clusters, enabling centralized deployment management.
-     * **Simplicity:** A single GitOps Agent to manage applications across multiple clusters.
+**Limitations:**
+- Cannot scale to multiple clusters without adding more agents
+- Single point of failure for that cluster
+- Agent failure affects all deployments in the cluster
 
-  **Cons:**
-     * **Single Point of Failure:** If the Argo CD instance fails, all deployments may be affected.
-     * **Performance and Scalability Challenges:** As the number of clusters and deployments increase, the performance and scalability of a single Agent may become a limiting factor, in which case you can either switch to using multiple agents across multiple clusters.
+**Scenario 2: External agent for single cluster**
 
-  **Multiple Target Clusters and Multiple Agents:** This is another scenario not described in the diagram. Harness GitOps manages the complexity of multiple Argo CD instances and this way of using Harness GitOps provides high scalability and isolation, allowing teams to manage deployments independently across multiple clusters and if one Argo CD instance fails, it does not impact deployments in other clusters. Although this will come with an overhead of higher **Resource Utilization** and **Management overhead**.
-    
-Installing an Agent involves setting up an Agent in Harness, downloading its YAML file, and applying the YAML file in a Kubernetes cluster (`kubectl apply`). Kubernetes then pulls the Harness and Argo CD images from their respective public repositories.
+The Agent runs in a separate cluster but manages deployments in one target cluster.
 
-![fetch manifests from repo](static/gitops-archcitecture.png)
+**When to use:** Production environments requiring better isolation, or when you want to separate GitOps infrastructure from application workloads.
+
+**Advantages:**
+- Better isolation between GitOps infrastructure and applications
+- Single agent and cluster to manage
+- Reduced risk of agent issues affecting application workloads
+
+**Limitations:**
+- Requires network configuration (IP allowlisting, cluster access permissions)
+- More complex initial setup
+- Additional overhead for managing cross-cluster connectivity
+
+**Scenario 3: Hub and spoke (multi-cluster, single agent)**
+
+One Agent manages multiple target clusters from a central location.
+
+**When to use:** Organizations managing multiple clusters with centralized operations, or when you need consistent deployments across environments.
+
+**Advantages:**
+- Centralized management of multiple clusters
+- Single agent to maintain
+- Consistent deployment patterns across clusters
+
+**Limitations:**
+- Single point of failure affects all managed clusters
+- Performance may degrade as clusters and applications scale
+- May require transitioning to multiple agents as you grow
+
+**Scenario 4: Multi-cluster with multiple agents**
+
+Multiple Agents, each managing one or more clusters independently.
+
+**When to use:** Enterprise environments requiring high availability, team isolation, or when managing many clusters at scale.
+
+**Advantages:**
+- High scalability and fault tolerance
+- Team isolation and independent operations
+- Failure of one agent doesn't affect others
+
+**Limitations:**
+- Higher resource utilization
+- More complex management and coordination
+- Requires planning for agent distribution and cluster assignment
+
+#### Installing a GitOps Agent
+
+Installing an Agent involves:
+
+1. Creating an Agent configuration in Harness
+2. Downloading the Agent YAML manifest
+3. Applying the manifest to your Kubernetes cluster using `kubectl apply`
+
+Kubernetes then pulls the Harness and Argo CD images from their respective public repositories. The Agent establishes outbound connections to Harness SaaS and begins monitoring for GitOps operations.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/gitops-archcitecture.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 ### Service
 
