@@ -1,7 +1,7 @@
 ---
 title: Install Harness Delegate
 description: Learn how to install a Delegate for local machines
-sidebar_position: 1
+sidebar_position: 2
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-build-infrastructure/install-delegate-2-0
   - /docs/platform/delegates/delegate-v2/install-delegate-2-0
@@ -30,6 +30,12 @@ The new Harness Delegate is currently in closed beta and is available to select 
 :::
 
 This guide describes how to install the new Harness Delegate to local machines. Skip to the [End to End Demo](#end-to-end-demo) if you want to watch video instructions for the new delegate installation.
+
+:::info
+To learn more about the new delegate, including architecture, capabilities, and how it compares to the legacy delegate, go to:
+- [New Delegate Overview](./delegate-overview) - Complete guide to the new delegate
+- [Feature Parity](./feature-parity) - Detailed feature comparison
+:::
 
 :::info Important
 
@@ -84,7 +90,7 @@ Before installation, obtain your Account ID, Delegate Token, and Harness URL:
 <Tabs className="tabs--full-width">
 <TabItem value="Interactive Guide">
 
-<DocVideo src="https://app.tango.us/app/embed/Get-Delegate-2-0-Credentials-41d069778e3e421d8791dd4dcc8ab793" title="Get Credentials for Delegate 2.0" />
+<DocVideo src="https://app.tango.us/app/embed/Get-Delegate-2-0-Credentials-41d069778e3e421d8791dd4dcc8ab793" title="Get credentials for the new delegate" />
 
 </TabItem>
 <TabItem value="Step-by-Step" default>
