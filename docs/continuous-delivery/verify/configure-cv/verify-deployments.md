@@ -131,6 +131,155 @@ You can use an expression to set the start time based on the deployment start ti
 
 We don't support adding a future date and time as a fixed value/runtime to set the start time of the verification process. If you specify a future time that hasn't been reached yet, the verification will fail. However, if the specified future time has already been reached when the verification runs, it will work as described above.
 
+## Sub-Task Notifications
+
+:::note
+This feature is optional and currently behind the feature flag `CDS_CV_SUB_TASK_CUSTOM_WEBHOOK_NOTIFICATIONS_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
+:::
+
+Harness can send detailed webhook notifications for verification sub-tasks, allowing you to track the progress and results of individual verification operations such as data collection, log analysis, and time series analysis. This enables fine-grained monitoring and integration with external systems.
+
+### Enable Sub-Task Notifications
+
+To configure custom webhook notifications for verification sub-tasks:
+
+1. In the Verify step configuration, expand the **Optional** section.
+2. Select the **Enable custom webhook notification** checkbox.
+3. Enter the **URL to be called** for the webhook endpoint.
+4. (Optional) Add custom headers by clicking **+ Add Headers** and providing name-value pairs.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/sub-task-notification.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
+
+**YAML configuration example:**
+
+```yaml
+isCustomWebhookNotificationEnabled: true
+customWebhookNotification:
+  notificationDeliveryMode: PLATFORM
+  webhookUrl: https://your-webhook-endpoint.com/path
+  headers:
+    - key: X-Custom-Header
+      value: your-header-value
+```
+
+### Notification Delivery Options
+
+You can choose how notifications are delivered:
+
+- **Platform** (default): Notifications are sent through the Harness platform.
+- **Delegate**: Notifications are sent through a Harness Delegate.
+  - When using delegate delivery, you can optionally specify delegate selectors to control which delegates handle the webhook calls.
+
+### Notification Event Types
+
+When enabled, Harness sends webhook notifications for the following verification sub-task events:
+
+#### Data Collection Task
+
+Sent for data collection tasks status for a verification window.
+
+<details>
+<summary>Sample payload</summary>
+
+```json
+{
+  "eventData": {
+    "verificationJobInstanceId": "your_verification_job_instance_id",
+    "lastPickedAt": "2026-01-05T08:34:19.108Z",
+    "verificationTaskId": "your_verification_task_id",
+    "lastUpdatedAt": "1767602059813",
+    "retryCount": "1",
+    "eventType": "DataCollectionTask",
+    "analysisEndTime": "2026-01-05T08:32:00Z",
+    "notificationTimestamp": "1767602059827",
+    "createdAt": "1767601849955",
+    "startTime": "2026-01-05T08:31:00Z",
+    "endTime": "2026-01-05T08:32:00Z",
+    "firstPickedAt": "2026-01-05T08:34:19.108Z",
+    "planExecutionId": "your_plan_execution_id",
+    "status": "SUCCESS",
+    "analysisStartTime": "2026-01-05T08:31:00Z"
+  }
+}
+```
+
+</details>
+
+#### Deployment Time Series Analysis
+
+Sent when time series (metric) analysis completes for a verification window.
+
+<details>
+<summary>Sample payload</summary>
+
+```json
+{
+  "eventData": {
+    "verificationJobInstanceId": "your_verification_job_instance_id",
+    "createdAt": "1767602082711",
+    "verificationTaskId": "your_verification_task_id",
+    "lastUpdatedAt": "1767602082711",
+    "startTime": "2026-01-05T08:31:00Z",
+    "endTime": "2026-01-05T08:32:00Z",
+    "eventType": "DeploymentTimeSeriesAnalysis",
+    "planExecutionId": "your_plan_execution_id",
+    "notificationTimestamp": "1767602082723"
+  }
+}
+```
+
+</details>
+
+#### Verification Terminal State
+
+Sent when the verification step reaches a terminal state.
+
+<details>
+<summary>Sample payload</summary>
+
+```json
+{
+  "eventData": {
+    "verificationJobInstanceId": "your_verification_job_instance_id",
+    "isFinal": "true",
+    "eventType": "VerificationTerminalState",
+    "planExecutionId": "your_plan_execution_id",
+    "status": "VERIFICATION_PASSED",
+    "actualRunDuration": "489",
+    "notificationTimestamp": "1767602326817"
+  }
+}
+```
+
+</details>
+
+### Payload Field Descriptions
+
+**Key correlation fields:**
+- `verificationJobInstanceId`: Unique identifier for the verification job instance
+- `planExecutionId`: Pipeline execution identifier
+- `verificationTaskId`: Unique identifier for the verification task
+
+:::note
+There could be multiple `verificationTaskId` values correlated with a single `verificationJobInstanceId`.
+:::
+
+Use these fields to correlate and group related notifications for a single verification execution.
+
+**Event types:**
+- `DataCollectionTask`: Data collection completed
+- `DeploymentLogAnalysis`: Logs analysis completed
+- `DeploymentTimeSeriesAnalysis`: Metric analysis completed
+- `VerificationTerminalState`: Final verification result
+
+For a typical 5-minute verification step, you can expect to receive multiple webhook notifications as sub-tasks progress with analysis notifications followed by data collection notifications and then a terminal notification with final status.
+
+### Testing Webhook Configuration
+
+After configuring your webhook URL and headers, you can click the **Test** button to send a sample notification to your webhook endpoint. This helps verify that your endpoint is properly configured to receive and process the notifications.
+
 ## Step 8: Specify Artifact Tag
 
 In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables).
