@@ -113,6 +113,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## January 2026 
+
+### Version 26.01.88200 <!--January 05, 2026-->
+
+#### Fixed issues
+
+- Resolved an issue where the **K8sApply** step failed for numeric-only Kubernetes namespaces due to incorrect namespace serialization in the kubeconfig. The namespace is now always treated as a string, preventing kubectl errors and ensuring related steps work as expected. [CDS-116921]
+- Resolved an issue where account-level templates could have multiple stable versions with the same identifier during concurrent requests, causing conflicts and unexpected behavior. Identifiers are now enforced as unique, ensuring only one stable version exists per template. [PIPE-30923]
+- Updated IAM permission handling to remove dependency on iam:GetRole, making it no longer a required policy. [CCM-28022]
+
 ## December 2025 
 
 ### Version 25.08.86602 <!--December 17, 2025-->
