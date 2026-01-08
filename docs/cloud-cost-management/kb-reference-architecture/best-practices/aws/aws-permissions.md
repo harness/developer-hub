@@ -216,6 +216,7 @@ To start getting insights into  your savings breakdown, spend breakdown, compute
                 "organizations:DescribeOrganization",
                 "ce:GetCostAndUsage",
                 "rds:DescribeReservedDBInstancesOfferings",
+                "rds:DescribeReservedDBInstances",
                 "pricing:GetProducts"
             ],
             "Effect": "Allow",
