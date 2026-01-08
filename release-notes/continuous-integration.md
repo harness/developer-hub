@@ -60,6 +60,34 @@ Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
 
+## January 2026
+
+### Version 1.116.0
+<!-- 2026-01-05 -->
+- Pod failure logs are now visible in the console UI when running builds on Kubernetes infrastructure, improving troubleshooting. (CI-19573)
+
+#### Fixed Issues
+- Improved reliability of Plugin step execution for local runners by ensuring required plugin binaries are available during runtime. (CI-20100)
+- Fixed an issue where Run steps could time out unexpectedly due to connection resets. (CI-20192)
+- Improved Go and Gradle Cache Intelligence compatibility on macOS and Windows by configuring cache directories per OS and infrastructure. (CI-17571)
+- Improved Buildx Docker Layer Caching (DLC) reliability by validating cached layers before use, preventing build failures caused by stale cache entries. (CI-19953)
+- Improved error messages for secret decryption failures to include connector context information, making it easier to troubleshoot authentication issues. (CI-19193)
+- Fixed an issue where certain YAML-only configurations in Build and Push steps could be removed when editing the step via UI. (CI-20204)
+- Fixed the missing "All Steps" filter option in the Tests tab when changing stage selection. (CI-20099)
+- Fixed duplicate git status updates when using custom status name configuration. (CI-19762)
+#### Harness Images Updates
+
+ Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/harness-cache-server` | Added check descriptor for DLC 404 failure handling (CI-19953) | 1.7.8 | 1.7.9 |
+| `plugins/buildx` | DLC 404 error handling improvements (CI-19953) | 1.3.11 | 1.3.12 |
+| `plugins/buildx-ecr` | DLC 404 error handling improvements (CI-19953) | 1.3.9 | 1.4.2 |
+| `plugins/buildx-acr` | DLC 404 error handling improvements (CI-19953) | 1.4.1 | 1.4.2 |
+| `plugins/buildx-gcr` | DLC 404 error handling improvements (CI-19953) | 1.3.9 | 1.4.2 |
+| `plugins/buildx-gar` | DLC 404 error handling improvements (CI-19953) | 1.3.10 | 1.4.2 |
+| `harness/ci-addon` | Regular release with bug fixes | 1.18.2 | 1.18.3 |
+| `harness/ci-lite-engine` | Regular release with bug fixes | 1.18.2 | 1.18.3 |
+
 ## December 2025
 
 ### Version 1.112.0
