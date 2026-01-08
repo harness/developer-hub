@@ -16,7 +16,7 @@ Question Type: Multiple choice
 | Creating and Managing Service Onboarding Pipelines       | 21.05          |
 | Integrating with Third-Party Providers                   | 15.79          |
 | Using and Managing Plugins                               | 15.79          |
-| Template Actions and IDP Templates                       | 21.05          |
+| IDP Software Catalog                     | 21.05          |
 | Basic Use of Scorecards                                  | 10.53          |
 
 
@@ -48,11 +48,11 @@ The following is a detailed list of exam objectives:
 | 4.1 | List and describe the plugins supported by Harness IDP                     |
 | 4.2 | Configure and use Harness Delegate for accessing private URLs in plugins   |
 | 4.3 | Register and manage software components using the Catalog Ingestion API    |
-| 5   | **Template Actions and IDP Templates**                                    |
-| 5.1 | Write and configure IDP templates                                          |
-| 5.2 | Understand and use various input types and conditional inputs in templates |
-| 5.3 | Fetch outputs from Harness Pipeline onto IDP                               |
-| 5.4 | Register, delete, and manage IDP templates                                 |
+| 5   | **IDP Software Catalog**                                    |
+| 5.1 | Software Catalog Overview                                          |
+| 5.2 | Understand the Data Model |
+| 5.3 | Understand Catalog YAML                               |
+| 5.4 | Manage the Catalog                                 |
 | 6   | **Basic Use of Scorecards**                                               |
 | 6.1 | Create and configure scorecards for migration tracking                     |
 | 6.2 | Utilize scorecards to track versions of libraries and tools                |
