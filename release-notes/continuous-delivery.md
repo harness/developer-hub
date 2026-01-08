@@ -55,6 +55,22 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## January 
 
+### Version 1.125.2
+
+#### New Features and Enhancements
+
+- Continuous Verification now supports custom webhook notifications for verification sub-tasks, enabling real-time monitoring of data collection, analysis, and verification results. Notifications include correlation IDs for tracking related events and can be delivered via Platform or Delegate with custom headers support. This feature is behind the feature flag `CDS_CV_SUB_TASK_CUSTOM_WEBHOOK_NOTIFICATIONS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable it. For more information, go to [Sub-Task Notifications](/docs/continuous-delivery/verify/configure-cv/verify-deployments#sub-task-notifications).
+
+#### Fixed issues
+
+- Fixed an issue where the *Deploy to All* setting appeared as an unsaved change in the UI, even after being initially set. (**CDS-116815**, **ZD-72196**, **ZD-98671**)
+- Fixed an issue where the *Services* page for some customers loaded very slowly on the first visit. The initial loading time has been significantly improved, even with a large number of services. (**CDS-116985**, **ZD-99097**)
+- Fixed an issue where the Fetch Linked App step didn't provide details about why applications were filtered out, making it difficult to troubleshoot linked service configurations with agent identifier mismatches. Logs now include information about applications filtered out due to agent identifier mismatches, improving troubleshooting. (**CDS-117383**, **ZD-100157**)
+- Fixed an issue where artifact paths were not being listed for artifacts configured with the production Artifactory instance, preventing users from selecting the correct artifact during runtime. (**CDS-116713**, **ZD-98601**)
+- Fixed an issue where the *Create Github Repo* step failed with an error when used within an insert step in a templated pipeline, preventing users from templating approval flows. (**CDS-117231**, **ZD-99763**)
+- Fixed an issue where pipeline execution status was not being sent to Git, preventing users from monitoring pipeline progress within their Git repository. This was due to a Git connector configuration issue, which has now been resolved. (**PIPE-30761**, **ZD-97158**, **ZD-99034**)
+- Fixed an issue where the repository list failed to populate when creating a new remote pipeline, requiring users to manually enter the repository name. (**PIPE-31217**, **ZD-98885**, **ZD-99375**, **ZD-99394**, **ZD-99657**, **ZD-99963**, **ZD-100020**)
+
 ### GitOps Service 1.46.2, GitOps Agent 0.105.0
 
 #### Fixed Issues
@@ -69,6 +85,23 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
   - Fixed multiple high-severity vulnerabilities in the gitops-agent component. The vulnerabilities **CVE-2025-59531**, **CVE-2025-59537**, and **CVE-2025-59538** affecting github.com/argoproj/argo-cd/v2 have been addressed in gitops-agent v0.102.0 with argo-cd v2.14.16. 
 
 ## December 2025
+
+### Version 1.121.1
+
+#### New Features and Enhancements
+
+- ECS Blue-Green deployments now automatically discover the correct stage target group when not explicitly provided, preventing production outages caused by manual selection errors. Harness identifies the target group with 0% traffic and validates distribution patterns before deployment. For more information, go to [ECS Blue-Green Traffic Shifting](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/traffic-shifting).
+
+- New Docker images are now available for AWS SAM and Serverless Framework deployments. These updated plugin images provide improved performance and stability. For more information, see the [AWS SAM plugin](https://hub.docker.com/r/harness/aws-sam-plugin/tags) and [Serverless plugin](https://hub.docker.com/r/harness/serverless-plugin/tags) images on Docker Hub.
+
+#### Fixed Issues
+
+- Fixed an issue where Air Canada's Serverless Deployments were failing in the production environment. The issue was isolated to one production cluster and has been resolved. (**CDS-117323**, **ZD-100051**)
+- Fixed an issue where account-level templates could have duplicate identifiers and multiple stable versions, leading to conflicts and unexpected behavior. This has been resolved to ensure template identifiers are unique and only one stable version exists per template. (**PIPE-30923**, **ZD-97931**, **ZD-98071**, **ZD-99525**)
+- Fixed an issue where dynamic stages failed to parse Base64 encoded YAML configurations when the encoded string contained multiline formatting. This prevented users from deploying pipelines using dynamically generated configurations in certain formats. (**PIPE-31041**, **ZD-98187**)
+- Fixed an issue where environment details were truncated in the Harness UI, preventing users from seeing the complete information. (**PIPE-31194**, **ZD-99027**)
+- Fixed an issue where the repository list failed to populate when creating a new remote pipeline, requiring users to manually enter the repository name. (**PIPE-31217**, **ZD-98885**, **ZD-99375**, **ZD-99394**, **ZD-99657**, **ZD-99963**, **ZD-100020**)
+- Fixed an issue where rerunning a pipeline from the last failed stage or a specific stage failed when the pipeline YAML was stored in a non-default branch. The rerun now correctly uses the original branch for pipeline execution. (**PIPE-31293**, **ZD-98968**, **ZD-99377**, **ZD-99465**, **ZD-99565**, **ZD-99595**, **ZD-99596**, **ZD-99652**, **ZD-99935**)
 
 ### Version 1.120.1
 
