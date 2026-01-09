@@ -58,6 +58,16 @@ No. Your build infrastructure can be configured to use whichever tools you like.
 
 For more information and instructions on how to mount certificates, please visit the [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) documentation.
 
+### Why do I get the error "mac arm64 platform is not enabled on your account" while running a MAC build on Harness cloud using a Harness Enterprise account?
+
+You could reach out to Harness Support to get the MAC build enabled on your account.
+
+### Does Harness support Ant commands for building Java code?
+
+
+Yes, you can run Ant build commands in a Run step, as Harness does not restrict which commands can be executed in your script. Ensure the Ant binaries are installed in the image used for the step.
+
+
 ## Local runner build infrastructure
 
 ### Can I run builds locally? Can I run builds directly on my computer?
@@ -158,6 +168,18 @@ This error could occur when there's a mismatch between the OS type of the local 
 ### Is there an auto-upgrade feature for the Harness Docker runner?
 
 No. You must upgrade the Harness Docker runner manually.
+
+### Does the runner create Docker networks for each build execution?
+
+Yes. The runner creates dedicated Docker network specifically for each CI stage execution. This will be automatically deleted immediately after the stage execution is completed.
+
+### Is the host machine automatically cleaned up after executing a CI stage on local build infrastructure, similar to VM infrastructure?
+
+No. Unlike VM-based infrastructure, the host machine does not undergo automatic cleanup when running a build on local build infrastructure.
+
+### Does the runner start automatically after a system restart?
+
+No, by default, it doesn't. You will need to configure a system startup script like a systemd service to ensure the runner begins running automatically when the system boots up.
 
 ## Self-managed VM build infrastructure
 
@@ -264,6 +286,19 @@ Here is an example of using an OpenVPN server, but you can apply the same approa
 ![Run as background step](static/vpndocs-run-ovpn-background-step.png)    
  
 6. Continue with the rest of the pipeline steps. 
+
+### Why aren't changes to pool.yml being applied by the runner?
+
+This could happen when the runner was not restarted after updating pool.yml. You must restart the runner service for any updates in pool.yml to take effect.
+
+### Can we use DinD to pull a Windows image?
+
+No, DinD is alpine-based and only supports Linux images. Windows images cannot be pulled or run inside a DinD container.
+
+### We increased the memory and CPU of a Run step to improve image pull time, but it remains the same. Why?
+
+Image pulling happens on the node where the build pod is scheduled, not within the step container itself. The compute resources configured for the step don’t affect image pull time. To improve performance, consider increasing the node’s resources or caching the images.
+
 ## Harness Cloud
 
 ### What is Harness Cloud?
@@ -512,6 +547,14 @@ By default, a built-in step runs inside a container within the build VM.
 ### How to fix the docker rate limiting errors while pulling the Harness internal images when the build is running on Harness cloud?
 
 You could update the deafult docker connector `harnessImage` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
+
+### Can we configure a custom docker network where the step containers will be attached in cloud VM?
+
+Currently, we can not configure a custom docker network where the step container will be attached.
+
+### When we start a container from a run step in Harness cloud build, how can the run step container connect to the application running in the new container?
+
+You could add the flag ```--network drone``` to your command that start the custom container so that it connects the container to the existing network in the cloud VM named ```drone``` where the step containers are already connected. Once the custom container is started, you can access the application at ```<container_name>:<port>``` from the run step.
 
 ## Kubernetes clusters
 
@@ -819,6 +862,78 @@ Yes, we need to have one stage running on ARM and another stage running on AMD t
 ### Does Harness CI support AKS 1.28.3 version?
 
 Yes
+
+### Does Harness clean up the PVC after stage execution if a PVC is mounted in the stage?
+
+No, Harness does not delete or clean up the contents of the PVC after the stage completes.
+
+### Why didn’t the step container in the Background step execute its default entry point and only run the custom commands defined in the command section?
+
+When you specify custom commands in the command section of a Background step, they override the container’s default entry point. As a result, only the custom commands are executed at runtime.
+
+### Can we configure multiple entry points in a Background step?
+
+No, only a single entry point can be defined in a Background step. Any additional values specified after the entry point are treated as arguments passed to that entry point.
+
+### Does CI have a concept of resource constraints similar to a CD stage when running builds in a Kubernetes cluster?
+
+No, CI does not use resource constraints. When a CI stage starts, it sends a request to create a build pod in the Kubernetes cluster. The cluster then schedules the pod on any available node based on the resources available in the cluster.
+
+### When multiple CI stages run concurrently on the same Kubernetes cluster, will the corresponding build pods execute simultaneously or be queued?
+
+If the Kubernetes cluster has enough available compute resources, all build pods will run in parallel. Otherwise, they will be scheduled based on resource availability.
+
+### Can we pin a specific version of the LE/addon images for an individual pipeline instead of setting it at the account level?
+
+No, this is not currently supported. The CI image version can only be configured and pinned at the account level, not for individual pipelines.
+
+### Can we use docker compose in a run step to start the containers when the build is running in k8s cluster?
+
+Yes, we can use docker compose to start the container from a run step. Make sure that the dind is configured as detailed in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/).
+
+### Which Kubernetes service account is used by the build stage pod?
+
+By default, the build pod uses the namespace’s default service account. To use a different service account, you can specify it in the CI stage’s advanced infrastructure configuration.
+
+### Can we configure a specific service account to be used for all build stages across every pipeline?
+
+No, a custom service account must be configured for each individual stage. There is currently no option to set it globally for all pipelines.
+
+### Can we change the default workspace “harness” when running a script in a Run step?
+
+Currently, the UI does not provide an option to modify the default workspace. However, you can change the directory by adding the necessary command as the first step in your Run step script.
+
+### Can we execute the default entry point of an image in a Run step?
+
+Yes, you can run the image’s default entry point by explicitly specifying it in the Run step’s command section.
+
+### Will the task of updating the status check on a PR run on the build pod or the delegate?
+
+The task for updating the PR status check is executed on the delegate, not on the build pod.
+
+### Why does the CI stage fail in the init step with the error "etcdserver: request is too large"?
+
+This error occurs when the build pod’s YAML exceeds the Kubernetes cluster’s etcd request size limit. To resolve it, either increase the etcd size limit from the default 1.5 MB or divide the steps of the CI stage across multiple stages.
+
+### Can we use an existing Kubernetes secret to pull the image in a Run step instead of the credentials from the Harness connector?
+
+No, currently it is not possible to use an existing Kubernetes secret as the image pull secret for a step container.
+
+### Why does all the run step is executing the command "git config --global --add safe.directory '*' || true " automatically?
+
+This was implimented to add all the directories as safe directory after there was a change in the git side to enforce the stricter repository ownership checks. More details about the same can be reffered [here](https://github.blog/open-source/git/highlights-from-git-2-36/#stricter-repository-ownership-checks).
+
+### How can we enforce commit message formatting requirements when a build is triggered via a PR?
+
+You can access the commit message using the Harness expression ```<+codebase.commitMessage>``` and add a Run step to validate or lint the message according to your formatting rules.
+
+### Why is the Docker daemon not accessible when using the dind image in a run step and attempting to connect to the daemon from the same step?
+
+When we use the dind image in a run step, it will not be executing its default entry point ```dockerd-entrypoint.sh``` responsible for startig the docker daemon. You would need to explicilty call this script in the run step to get the docker daemon started.
+
+### Why do background steps ignore entrypoint failures and mark themselves as successful?
+
+This is by design. A background step's status reflects whether the container was successfully launched in detached mode, not the health of the service inside. Failures during the entrypoint execution are ignored and you must add a subsequent step to explicitly verify the service's accessibility before proceeding.
 
 ## Self-signed certificates
 
@@ -2634,6 +2749,10 @@ As a result, a cache may not be restored if the system determines it is outdated
 A 404 response for cache blobs usually means the requested blob was not found in the cache store — often because it hasn’t been generated yet.
 
 This does not necessarily indicate a problem with the cache store or your setup.
+
+### Why is Cache Intelligence ignoring my custom Maven cache location?
+
+Cache Intelligence defaults to checking standard cache locations and you could add a custom cache path in Harness cache config if you are using a non-default cache location.
 
 ## Background steps and service dependencies
 
