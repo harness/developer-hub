@@ -5,7 +5,11 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 
-## Prerequisite: Set Up Proxy and/or Load Balancer
+## Prerequisite
+- [Create an Azure Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/#azure)
+- Proxy and/or Load Balancer for Traffic-based AutoStopping Rules. For scheduled only AutoStopping Rules, this is not required.
+
+## Set Up Proxy and/or Load Balancer
 
 Set up a proxy or load balancer that will intercept and manage traffic to your resources. This component is what enables the seamless start/stop functionality.
 
@@ -275,7 +279,7 @@ To create a fixed schedule for your rule, do the following:
 
 </TabItem>
 
-<TabItem value="setup-access" label="Step 2: Setup Access"> 
+<TabItem value="setup-access" label="Step 2: Setup Access [Traffic-based AutoStopping Rules]"> 
 
 Now that you have the AutoStopping rule configured, define how you would want to access the underlying application running on the resources managed by this Rule. You can use either of the following or both the methods depending on your requirement.
 
