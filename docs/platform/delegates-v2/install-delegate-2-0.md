@@ -58,8 +58,18 @@ The new Harness Delegate is under **Beta** and can only be used for Mac Build, A
 
 | Step Name  | Caveats              |
 |------------|----------------------|
-| Git Clone  | Only for Github      |
+| Git Clone  | Github and Bitbucket |
 | Run        |                      |
+| Background |                      |
+| Run Tests  |                      |
+| Upload to Artifactory | Requires `jfrog` CLI on host |
+| Upload to GCS |                   |
+| Upload to S3 |                    |
+| Upload Artifacts to Harness Artifact Registry|     |
+| Save Cache to S3 |                |
+| Save Cache to GCS |               |
+| Restore Cache from S3 |           |
+| Restore Cache from GCS |          |
 
 ## Delegate Installation Instructions
 
@@ -601,6 +611,7 @@ You can control the cleanup behavior by configuring the following environment va
 
 - `HARNESS_SUBPROCESS_KILL_PROCESS_GROUP_RETRY_INTERVAL_SECS` (positive integer, default: `10`): Specifies the time (in seconds) between successive SIGTERM signals sent to the subprocesses.
 
+
 #### Example config.env
 
 To configure the delegate to send up to 3 SIGTERM attempts with a 15-second interval before forcefully killing subprocesses:
@@ -612,9 +623,29 @@ TAGS="<your delegate tags>"
 URL="<MANAGER_HOST_AND_PORT>"
 NAME="<your delegate name>"
 ...
+
 HARNESS_SUBPROCESS_KILL_PROCESS_GROUP_MAX_SIGTERM_ATTEMPTS=3
 HARNESS_SUBPROCESS_KILL_PROCESS_GROUP_RETRY_INTERVAL_SECS=15
 ```
+
+### Containerless Steps Support
+
+By default, most CI steps (except Run, Run Tests, Background, GitHub Action, and Bitrise Plugin) run inside containers. With containerless mode enabled, plugin-compatible steps can execute directly on the delegate's host machine without container dependencies. This provides better performance and simplifies infrastructure requirements.
+
+Plugin-compatible steps are steps that can run both in containers and directly on the host. This capability is already available on Harness-hosted infrastructure and is now supported with the new delegate.
+
+To enable containerless execution, add the `HARNESS_CI_INTERNAL_CONTAINERLESS` stage variable to your pipeline:
+
+1. In your pipeline, navigate to the CI stage where you want to enable containerless execution
+2. Go to **Advanced** > **Stage Variables**
+3. Add a new variable:
+   - **Name**: `HARNESS_CI_INTERNAL_CONTAINERLESS`
+   - **Type**: String
+   - **Value**: `true`
+
+:::info
+Containerless mode is currently in beta and supports a limited set of CI steps.
+:::
 
 ### Configure Custom Working Directory
 
