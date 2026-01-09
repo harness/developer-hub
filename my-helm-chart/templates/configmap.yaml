@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rac-config-files
+data:
+  config.json: |-
+    {{ toYaml .Values.myconfig | indent 2 }}
