@@ -904,6 +904,21 @@ This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_I
 - Time-To-Live (TTL) Support for Karpenter Nodes in Cluster Orchestrator: We have introduced Time-To-Live (TTL) support for Karpenter nodes in the Cluster Orchestrator configuration. This feature allows users to automatically terminate idle or underutilized Karpenter nodes after a specified period, optimizing resource usage and reducing costs. [CCM-20051]
 - Role-Based Access Control (RBAC) for CCM Side Navigation: Now, the side navigation dynamically adjusts based on a user's permissions. Features such as Overview, AutoStopping, and Governance will only be visible if the user has the necessary RBAC permissions. This ensures a cleaner interface and prevents access to unauthorized sections. [CCM-20789]
 
+### Version 1.41.0
+
+#### New features and enhancements
+
+- Resource-Breakdown Tab for Evaluations: We are now displaying the Resource Breakdown tab for non-recommendation evaluations as well like we did for recommendation evaluations earlier. [CCM-20841]
+ <DocImage path={require('./static/resource-breakdown.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  Expandable Resource ID with Details in Asset Governance: We’ve added support in the Resource Breakdown where the resource ID appears with a “+” icon. When expanded, the resource details are displayed in the same column and row. [CCM-20839]
+
+- Improved Input Behavior for Target Account and Region Selection : Now, while selecting a Target Account or Region, the text input field will automatically be cleared. [CCM-20625]
+
+- Bin Packing in Cluster Orchestrator: We have introduced Bin Packing in the Cluster Orchestrator to optimize resource allocation and performance. You can now define your cluster preferences to fine-tune settings for Pod Eviction by Harness and Node Disruption by Karpenter. Customize node deletion criteria, set eviction delays, and configure disruption budgets to enhance efficiency and ensure optimal resource utilization. [CCM-20468]
+
+ <DocImage path={require('./static/bin-packing.png')} width="90%" height="90%" title="Click to view full-size image" />
+ 
 ## January 2025
 
 ### Version 1.38.3
