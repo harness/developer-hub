@@ -6,6 +6,8 @@ sidebar_position: 1
 
 After HSF is deployed you will have the following resources in your account:
 
+<DocImage path={require('../static/architecture1.png')} title="Click to view full size image" />
+
 **Service Account**
 
 A service account named `harness-platform-manager` is created at the account level. This service account has admin privileges and is responsible for provisioning and managing the resources necessary for running HSF workflows.

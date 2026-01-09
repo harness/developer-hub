@@ -140,3 +140,9 @@ For this example, we are going to create a new project managed by HSF.
 To see the logs, navigate to the running instance of the pipeline and monitor it.
 
    <DocImage path={require('../static/hsf-execute-workflow-6.png')} title="Click to view full size image" />
+
+## Execution Flow
+
+The below diagram shows how the different components of the HSF work together when provisioning patterns through workflows:
+
+<DocImage path={require('../static/hsf-execute-workflow-7.png')} title="Click to view full size image" />
