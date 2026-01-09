@@ -396,6 +396,9 @@ terraform {
 See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+Here is the example for AWS Backend Config
+<img width="546" height="382" alt="image" src="https://github.com/user-attachments/assets/30ef7de1-cd00-45d9-9eb9-d7a136a3b3a7" />
+
 
 ## Targets
 
