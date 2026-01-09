@@ -260,9 +260,17 @@ All cloud available versions of Linux, Windows & Mac are supported.
 
 | **Language** | **Minimum Version** |
 | ------------ | ------------------- |
-| Java         | 6+                  |
+| Java         | 8+                  |
 | Kotlin       | 1.5+                |
 | Scala        | 2.13+               |
+
+<summary><b>Supported Build Tools</b></summary>
+
+| **Build Tool** | **Minimum Version** | **Maximum Version** | **Comments** |
+| -------------- | ------------------- | ------------------- | ------------ |
+| Gradle         | 7.x+                | 9.0.2               |              |
+| Maven          | 3.6.x+              | 3.9.x               |              |
+| Bazel          | 7.x+                | 8.x                 |              |
 
 </TabItem>
 <TabItem value="Ruby" label="Ruby">
@@ -277,6 +285,12 @@ All cloud available versions of Linux, Windows & Mac are supported.
 | ------------ | ------------------- |
 | Ruby         | 2.7+                |
 
+<summary><b>Supported Test Frameworks</b></summary>
+
+| **Test Framework** | **Minimum Version** | **Maximum Version** | **Comments** |
+| ------------------ | ------------------- | ------------------- | ------------ |
+| RSpec              | 7.x+                | 8.x                 |              |
+
 </TabItem>
 <TabItem value="Python" label="Python">
 
@@ -288,7 +302,17 @@ All cloud available versions of Linux, Windows & Mac are supported.
 
 | **Language** | **Minimum Version** |
 | ------------ | ------------------- |
-| Python       | 3+                  |
+| Python       | 3.8+                |
+
+<summary><b>Supported Test Frameworks</b></summary>
+
+| **Test Framework** | **Minimum Version** | **Maximum Version** | **Comments**                                   |
+| ------------------ | ------------------- | ------------------- | ---------------------------------------------- |
+| Pytest             | 8.0+                | 9.0.2               | Supports pytest-xdist 3.6.1+ and pytest-cov 7+ |
+
+:::info
+Care needs to be taken when using virtual environments. Test Intelligence does support virtual environments through the use of environment variables such as `PYTEST_PLUGINS` and `PYTHON_PATH` so make sure **not** to override them. There might be cases where this integration would not work smoothly and test selection might not work, so please contact [Harness Support](https://support.harness.io) or your account representative.
+:::
 
 </TabItem>
 <TabItem value="C#" label="C#">
@@ -307,10 +331,44 @@ All cloud available versions of Linux, Windows & Mac are supported.
 
 <summary><b>Supported Implementations</b></summary>
 
-| **Language**   | **Minimum Version** |
-| -------------- | ------------------- |
-| .Net Core      | 6-8                 |
-| .Net Framework | TBD                 |
+| **Implementation** | **Minimum Version** |
+| ------------------ | ------------------- |
+| .Net Core          | 6+                  |
+| .Net Framework     | TBD                 |
+
+</TabItem>
+<TabItem value="JavaScript (Beta)" label="JavaScript (Beta)">
+
+:::tip Test Intelligence Beta
+Test Intelligence for **JavaScript (Jest)** is available in **beta**. If you're interested in joining the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
+:::
+
+#### Supported Operating Systems
+
+All cloud available versions of Linux & Windows are supported.
+
+<summary><b>Supported languages</b></summary>
+
+| **Language** | **Minimum Version** | **Maximum Version** |
+| ------------ | ------------------- | ------------------- |
+| JavaScript   | ES2017              | ES2024              |
+| Typescript   | v4.x+               | v5.x                |
+
+<summary><b>Supported Engine</b></summary>
+
+| **Engine** | **Minimum Version** | **Maximum Version** |
+| ---------- | ------------------- | ------------------- |
+| Node.JS    | v18.x+              | v24.x               |
+
+<summary><b>Supported Test Frameworks</b></summary>
+
+| **Test Framework** | **Minimum Version** | **Maximum Version** | **Comments** |
+| ------------------ | ------------------- | ------------------- | ------------ |
+| Jest               | 26.x+               | 30.x                |              |
+
+:::info
+Care needs to be taken when using **_Babel.JS_** or **_Jest transformers_** as they might interfere with the way Test Intelligence is working.
+:::
 
 </TabItem>
 </Tabs>
