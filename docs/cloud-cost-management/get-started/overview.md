@@ -52,3 +52,74 @@ Teams lack visibility into the cost drivers. CCM can help you gain visibility in
 | **Need Context and  Visibility** | <li>Applications</li><li>Microservices</li><li>Clusters/Nodes</li>                                                                                                                                | <li>Applications</li><li>Environment</li><li>Clusters</li><li>Nodes</li><li>Namespaces</li><li>Workloads</li><li>Labels</li> | <li>Cloud Provider</li><li>Applications</li><li>Teams</li> | <li>Cloud Provider</li><li>Cloud Account</li><li>Cost per Customer</li> |
 | **Pain Points**                  | <li>Lack of context or visibility</li><li>Reactive troubleshooting</li>                                                                                                                           | <li>Lack of context or visibility</li><li>Tagging cloud resource</li><li>Reactive troubleshooting</li>                       | Increasing cloud spend                                     | Increasing cloud spend                                                  |
 | **Why Harness?**                 | <li>Complete visibility</li><li>Root cost analysis</li><li>Cost optimization opportunities</li><li>Identify cost triggers, for example, CPU and memory spikes</li><li>Manage multiple clouds</li> | <li>Complete visibility</li><li>Embed cost into pipeline</li><li>No Tagging</li><li>Manage multiple clouds efficiently</li>  | Shift cloud cost management to Dev teams                   | Shift cloud cost management to Dev teams                                |
+
+### CCM Coverage
+
+The following section lists where you can use CCM:
+
+- Cloud Platforms
+  - AWS
+  - GCP
+  - Azure
+- Container Orchestration
+  - Kubernetes: EKS (AWS), GKE (GCP), AKS (Azure)
+  - ECS Clusters
+- Harness SaaS
+
+### Supported Kubernetes Management Platform
+
+The following section lists the support for Kubernetes management platform for CCM:
+
+| **Technology**               | **Supported Platform** | **Pricing**      |
+| ---------------------------- | ---------------------- | ---------------- |
+| OpenShift 3.11               | GCP                    | GCP              |
+| OpenShift 4.3                | AWSOn-Prem             | AWSCustom-rate\* |
+| Rancher                      | AWS                    | Custom-rate\*\*  |
+| Kops (Kubernetes Operations) | AWS                    | AWS              |
+
+\*Cost data is supported for On-Prem OpenShift 4.3. This uses a custom rate.
+
+\*\*Cost data is supported for K8s workloads on AWS managed by Rancher, but the cost falls back to the custom rate.
+
+### Blog Post
+
+The following blog post walks you through Optimizing Kubernetes Cluster Costs:
+
+[Cost Management Strategies for Kubernetes](https://harness.io/learn/ebooks/ebook-cost-management-kubernetes/)
+
+### Harness CCM FAQs
+
+Here is the list of frequently asked questions for Harness CCM.
+
+**Cost is** **my CFO’s problem.**
+
+If your CFO is managing your cost, you’re being reactive to cloud changes. Your team can be proactive and mitigate any cost spikes.
+
+**My cloud platform already gives me visibility into the cost.**
+
+Cloud platforms don’t let you see the cost at a granular level, for example, application, clusters, nodes, workloads, namespaces.
+
+**I have already tagged everything, why would I need Cloud Cost Management?**
+
+You will have to re-tag everything if you:
+
+- Create a new application
+- Deploy a new microservice
+- Or your company, team, or project is re-organized
+
+**After I reduce my costs, I won’t need** **Cloud Cost Management.**
+
+Reducing cost isn’t a one-time event. Engineering and finance need constant feedback to innovate and change. Hence **Cloud Cost Management**.
+
+**After we’ve identified our costs, will Harness CCM help us reduce them?**
+
+Budgeting and alert thresholds are built into CCM, with more features on the way.
+
+**Can your tool create custom reports and alerts?**
+
+Yes. CCM provides alerts, reports, and forecasts you can fine-tune.
+
+**I know my cloud platform is accurate, how do I know your tool is accurate?**
+
+CCM uses the same cost and usage report as your cloud platform.
+
