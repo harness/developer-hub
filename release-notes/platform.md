@@ -173,6 +173,32 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## January 2026
+
+### Version 1.125.x <!--January 06,2026-->
+
+#### Fixed issues 
+- Resolved an issue where user search on the **Access Control > Users** page did not work correctly for emails containing special characters. The search query is now parsed correctly and matches user emails and names as expected. [PL-67083]
+- Improved secret handling by correcting metadata mismatches between secrets and their encrypted records. [PL-67321]
+- Resolved a virtual service conflict impacting delegate resources. [PL-67525]
+- Resolved an issue where ingress routes were updated as part of the change that moved Delegate APIs from ng-manager to harness-manager, but required Istio routes were missing, causing routing issues. The missing routes have now been added to ensure correct traffic routing. [PL-67487]
+
+#### New features and enhancements
+- Upgraded the Java OpenJDK to version 17.0.17 to improve stability, security, and performance. [PL-67529]
+- OPA policies are now enforced during token rotation, ensuring rotated tokens follow policy limits and do not use long expiration times. [PL-65141]
+
+### Version 1.124.x <!--January 06,2026-->
+
+No enhancements or fixes were released in this cycle.
+
+### Version 1.123.x <!--January 06,2026-->
+
+No enhancements or fixes were released in this cycle.
+
+### Version 1.122.x <!--January 06,2026-->
+
+No enhancements or fixes were released in this cycle.
+
 ## December 2025
 
 ### Version 1.121.x <!--December 18,2025-->
