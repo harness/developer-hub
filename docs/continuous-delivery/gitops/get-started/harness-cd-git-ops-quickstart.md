@@ -23,7 +23,7 @@ GitOps automates Kubernetes-based deployments by syncing declarative specificati
 
 You set up Harness GitOps by installing a GitOps Agent in your environment. Next, you define how to manage the desired and target state in a GitOps Application in Harness. The GitOps Agent performs the sync operations defined in the Application and reacts to events in the source and target states.
 
-![Harness GitOps architecture](static/572d35be32e656cea58795c7aefde6d91f50270201ac7f1906d8875ef3c1408a.png)  
+![Diagram showing Harness SaaS, Git repos, and a GitOps Agent reconciling desired state to a target cluster](static/572d35be32e656cea58795c7aefde6d91f50270201ac7f1906d8875ef3c1408a.png)  
 
 This example shows you how to set up Harness GitOps using one of your Kubernetes clusters.
 
@@ -70,25 +70,25 @@ Typically, you install the Agent in the target cluster, but you can install it a
 
 Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
-![](./static/harness-cd-git-ops-quickstart-01.png)
+![Screenshot showing the Harness project settings with Continuous Delivery module enabled](./static/harness-cd-git-ops-quickstart-01.png)
 
 1. In your Harness project, select **GitOps**.
 
    The Harness GitOps **Overview**, **Applications**, and **Settings** appear. If this is the first time GitOps has been set up in the Project, the **Applications** section and the dashboards in the **Overview** section will be empty.
 
-   ![](./static/harness-cd-git-ops-quickstart-02.png)
+   ![Screenshot of the Harness GitOps Overview page showing empty Applications and Settings sections](./static/harness-cd-git-ops-quickstart-02.png)
 
    All entities other than Applications are in **Settings**.
 2. Select **Settings**. 
 
-   ![](./static/harness-cd-git-ops-quickstart-03.png)
+   ![Screenshot showing the GitOps Settings page with options for Agents, Repositories, Clusters, and other entities](./static/harness-cd-git-ops-quickstart-03.png)
 3. Select **GitOps Agents**.
 4. Select **New GitOps Agent**. The Agent creation wizard appears.
 
    You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. 
 5. For this example, select **No** and select **Start**. If you already have an existing Argo CD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
 
-   ![](./static/harness-cd-git-ops-quickstart-04.png)
+   ![Screenshot of the GitOps Agent creation wizard asking whether you have an existing Argo CD instance](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.
 7. Set **GitOps Operator** to **Argo**.
 
@@ -175,16 +175,16 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 14. Back in Harness, select **Continue**.
 15. Harness indicates that the Harness GitOps Agents is registered.
    
-   ![](./static/harness-cd-git-ops-quickstart-05.png)
+   ![Screenshot showing the GitOps Agent registration success message](./static/harness-cd-git-ops-quickstart-05.png)
 16. Select **Finish**.
 
 The **Agents** list shows the new Agent as **Healthy** and **Connected**.
 
-![](./static/harness-cd-git-ops-quickstart-06.png)
+![Screenshot of the GitOps Agents list showing the newly created agent with Healthy and Connected status](./static/harness-cd-git-ops-quickstart-06.png)
 
 In your cloud platform Kubernetes cluster you can see the agent workload:
 
-![](./static/harness-cd-git-ops-quickstart-07.png)
+![Screenshot showing the GitOps Agent workload running in the Kubernetes cluster](./static/harness-cd-git-ops-quickstart-07.png)
 
 Now that you have the Harness GitOps Agent installed, running, and registered, you can configure the remaining components.
 
@@ -248,7 +248,7 @@ We will use a publicly available GitHub repo and manifests located at [https://g
 2. Select **Repositories**.
 3. Select **New Repository**.
    
-   ![](./static/harness-cd-git-ops-quickstart-08.png)
+   ![Screenshot showing the New Repository button in the GitOps Repositories page](./static/harness-cd-git-ops-quickstart-08.png)
 
 4. In **Specify Repository Type**, select **Git**.
 5. Enter the following:
@@ -261,12 +261,12 @@ We will use a publicly available GitHub repo and manifests located at [https://g
 8.  In **Authentication**, select **Anonymous**.
 9.  Select **Save & Continue**. Harness validates the connection.
     
-    ![](./static/harness-cd-git-ops-quickstart-09.png)
+    ![Screenshot showing the repository connection validation success message](./static/harness-cd-git-ops-quickstart-09.png)
 
     If you encounter errors, check that you have the correct repo URL and selected **HTTPS**.
 10. Select **Finish**. You now have a Harness GitOps Repository added.
 
-![](./static/harness-cd-git-ops-quickstart-10.png)
+![Screenshot of the GitOps Repositories list showing the newly created guestbook repository](./static/harness-cd-git-ops-quickstart-10.png)
 
 
 </TabItem>
@@ -285,7 +285,7 @@ In this example, we'll connect using the cluster master URL and a Service Accoun
 3. In **Name**, enter **example**.
 4. In **GitOps Agent**, select the Agent you added earlier in this example, and then select **Continue**.
    
-   ![](./static/harness-cd-git-ops-quickstart-11.png)
+   ![Screenshot showing the GitOps Cluster creation wizard with Agent selection](./static/harness-cd-git-ops-quickstart-11.png)
 
 5. In **Details**, select **Use the credentials of a specific Harness GitOps Agent**. This Cluster will use the Agent's Kubernetes role permissions for connections.
 6. If you want to use **Specify Kubernetes Cluster URL and credentials**, do the following:
@@ -342,7 +342,7 @@ The token output is decoded and ready to be pasted into Harness.
 
 Harness validates the connection to the cluster from the Harness GitOps Agent.
 
-![](./static/harness-cd-git-ops-quickstart-12.png)
+![Screenshot showing the cluster connection validation success message](./static/harness-cd-git-ops-quickstart-12.png)
 
 In this example, the Agent is running inside the target cluster, but you might use an Agent outside a target cluster in your own scenarios. So long as the Agent you select can connect to the target cluster's master URL, you can add the cluster in Harness GitOps.
 
@@ -377,7 +377,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 
 1. In your Harness Project, select **GitOps**, and then select **New Application**.
    
-   ![](./static/harness-cd-git-ops-quickstart-13.png)
+   ![Screenshot showing the New Application button in the GitOps Applications page](./static/harness-cd-git-ops-quickstart-13.png)
 
 2. In **Application Name**, enter **example**.
 3. In **GitOps Operator**, select **Argo**.
@@ -419,7 +419,7 @@ Note: When importing applications in BYOA, if the URL in the application matches
   Do not change the parameters for this example.
 20.  When you're done, **Source** will look like this:
    
-   ![](./static/harness-cd-git-ops-quickstart-15.png)
+   ![Screenshot showing the completed GitOps Application Source configuration with repository URL, branch, path, and Helm values file](./static/harness-cd-git-ops-quickstart-15.png)
 
 :::note Support for Multiple Sources
 
@@ -437,7 +437,7 @@ Select the checkbox **Reference** to designate this source as a reference source
 
 Click on **+ Add Source** to add the details of your next source.
 
-![](./static/gitops-multiple-sources.png)
+![Screenshot showing the GitOps Application multiple sources configuration interface with options to add additional sources](./static/gitops-multiple-sources.png)
 :::
 
 21.  Select **Continue**.
@@ -446,12 +446,12 @@ Click on **+ Add Source** to add the details of your next source.
    Since a Harness GitOps Cluster contains the authentication settings needed to access the cluster, your Harness GitOps Application can select any Cluster.
 23.  In **Namespace**, enter **default**.
    
-   ![](./static/harness-cd-git-ops-quickstart-16.png)
+   ![Screenshot showing the GitOps Application Destination configuration with cluster selection and namespace field](./static/harness-cd-git-ops-quickstart-16.png)
 
 24. Select **Finish**.
 25.  The new Application is created. At first, the current sync status will be **UNKNOWN**.
    
-    ![](./static/harness-cd-git-ops-quickstart-17.png)
+    ![Screenshot showing the newly created GitOps Application with UNKNOWN sync status](./static/harness-cd-git-ops-quickstart-17.png)
 
 </TabItem>
 </Tabs>
@@ -465,11 +465,11 @@ Now that you have everything set up, you can sync the source state with the desi
 
 1. In your Application, select **SYNC**.
 
-   ![](./static/harness-cd-git-ops-quickstart-18.png)
+   ![Screenshot showing the SYNC button in the GitOps Application interface](./static/harness-cd-git-ops-quickstart-18.png)
 
 2. In the Synchronize settings wizard, you can change any of the **Sync Policy** options you set in the Application.
 
-   ![](./static/harness-cd-git-ops-quickstart-19.png)
+   ![Screenshot showing the Synchronize settings wizard with sync policy options like Skip Schema Validation, Auto Create Namespace, and Prune Last](./static/harness-cd-git-ops-quickstart-19.png)
 
    Sync option details:
 
@@ -482,7 +482,7 @@ Now that you have everything set up, you can sync the source state with the desi
 3. Select **Synchronize**.
 4. You will see the status **Progressing** and then **HEALTHY**.
 
-![](./static/harness-cd-git-ops-quickstart-20.png)
+![Screenshot showing the GitOps Application sync status progressing from Progressing to HEALTHY](./static/harness-cd-git-ops-quickstart-20.png)
 
 Congratulations! You've performed GitOps with Harness!
 
@@ -502,13 +502,13 @@ example-helm-guestbook-74b6547d8c-74ckv   1/1     Running   0          5m22s
 ```
 Here's what the deployment looks like in GCP.
 
-![](./static/harness-cd-git-ops-quickstart-21.png)
+![Screenshot showing the deployed application pods running in Google Cloud Platform Kubernetes cluster](./static/harness-cd-git-ops-quickstart-21.png)
 
 ## Step 6: Using the application
 
 Back in your Harness Application, you can view details on sync status, desired and live states, and perform GitOps.
 
-![](./static/harness-cd-git-ops-quickstart-22.png)
+![Screenshot showing the GitOps Application details page with tabs for Git details, Deployment, Resource View, App Details, Sync Status, Manifest, and App Diff](./static/harness-cd-git-ops-quickstart-22.png)
 
 * **Git details:** you can see the Git commit used as the source for the sync. Clicking the commit Ids opens the commit in the source provider.
 * **Deployment:** the deployments dashboard shows when the Application was deployed (synced).
@@ -526,11 +526,11 @@ You can edit the manifest in **Manifest** and the changes are synced in the targ
 
 Here's an example:
 
-  ![](./static/harness-cd-git-ops-quickstart-23.png)
+  ![Screenshot showing the App Diff view comparing the desired state in Git with the live state in the cluster](./static/harness-cd-git-ops-quickstart-23.png)
 
 You can also initiate a Sync or Refresh from the main GitOps page.
 
-![](./static/harness-cd-git-ops-quickstart-24.png)
+![Screenshot showing the GitOps Applications list with Sync and Refresh action buttons for each application](./static/harness-cd-git-ops-quickstart-24.png)
 
 - **Refresh** will pull the latest commit from Git and display whether the current Sync State is **Synced** or **Out of Sync**. It does not sync with the live cluster state. You can Refresh, then use App Diff to view the diff between the desired Git state with the live cluster state.
 - **Sync** will sync the desired Git state with the live cluster state.
@@ -551,7 +551,7 @@ You can filter applications based on the following criteria:
 
 Additionally, you can apply further filters for **Cluster**, **App Set** and **Labels** by clicking on **Additional Filters**.
 
-![](./static/gitops-app-filter.png)
+![Screenshot showing the GitOps Application filters interface with options for Health Status, Sync Status, Agents, Namespace, Repository, and Additional Filters](./static/gitops-app-filter.png)
 
 ## Cleaning up
 
@@ -597,8 +597,8 @@ You can view audit events for GitOps in the Audit Trail page. These events inclu
 
 To view audit events specifically for a GitOps Application, apply the filter **Resource Type: GitOps Application**.
 
-![](./static/gitops-filter-audit.png)
+![Screenshot showing the Audit Trail filter interface with Resource Type filter set to GitOps Application](./static/gitops-filter-audit.png)
 
 You can view the status of GitOps Application in the Audit Trail Page.
 
-![](./static/audit-trail-gitops.png)
+![Screenshot showing the Audit Trail page with GitOps Application events displaying sync, create, update, and delete actions](./static/audit-trail-gitops.png)

@@ -80,7 +80,7 @@ Harness does not push changes from the cluster back to Git. Your Git repository 
 
 Here's a very simple diagram of the GitOps architecture:
 
-![Harness GitOps architecture](static/572d35be32e656cea58795c7aefde6d91f50270201ac7f1906d8875ef3c1408a.png)  
+![Diagram showing Harness SaaS, Git repos, and a GitOps Agent reconciling desired state to a target cluster](static/572d35be32e656cea58795c7aefde6d91f50270201ac7f1906d8875ef3c1408a.png)  
 
 Harness offers multiple Git-based features to enhance deployment and configuration management. To understand the differences between GitOps, Config-as-Code, and the Harness Git Experience, see [Difference between Harness Gitops, Config as Code and Harness Git Experience](./gitops-vs-gitex-vs-config).
 
@@ -119,7 +119,7 @@ The Agent uses Repository and Cluster configurations to connect to source repos 
 
 Here's an image that illustrates how the Agent interacts with Harness:
 
-![Agent and Harness interaction](static/agent.png)
+![Diagram showing the GitOps Agent bridging Harness SaaS to repositories and target clusters](static/agent.png)
 
 #### Agent deployment patterns
 
@@ -127,7 +127,7 @@ You can deploy a GitOps Agent in different configurations depending on your infr
 
 Here's an image that illustrates different deployment patterns:
 
-![deployment on clusters](static/deploy-cluster.png)
+![Diagram comparing in-cluster, cross-cluster, and multi-cluster GitOps Agent deployment patterns](static/deploy-cluster.png)
 
 **Quick comparison:**
 
@@ -284,7 +284,7 @@ You can deploy both the **GitOps Agent** and the Harness Delegate in the same cl
 
 The Delegate is not required for RBAC functionality in Harness GitOps.
 
-![cluster with agent and delegate](static/cluster-agent-delegate.png)
+![Diagram showing a cluster running both a GitOps Agent and a Harness Delegate for combined GitOps and CD operations](static/cluster-agent-delegate.png)
 
 ### Repository
 
