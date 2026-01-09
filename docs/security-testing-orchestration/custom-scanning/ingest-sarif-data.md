@@ -60,7 +60,7 @@ Here's an example of how to configure a Gitleaks step to ingest a SARIF data fil
          variant: dev
       advanced:
          log:
-         level: debug
+           level: debug
       ingestion:
          file: /shared/scan_results/gitleaks.sarif
    description: gitleaks step
