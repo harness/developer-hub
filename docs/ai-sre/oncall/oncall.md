@@ -87,11 +87,22 @@ Learn how to create and configure escalation policies for your on-call teams:
 - Real-time acknowledgment and escalation options
 
 ### Mobile Applications
-- Native mobile apps available on Google Play Store and iOS App Store
-- Search for "Harness on-call" (with dash) to find both apps
+
+<div style={{display: 'flex', gap: '20px', alignItems: 'center', margin: '20px 0'}}>
+    <a href="https://play.google.com/store/apps/details?id=com.harness.aisre" aria-label="Get it on Google Play">
+        <img src={require('./static/google-play-badge.png').default} alt="Get it on Google Play" style={{height: '60px'}} />
+    </a>
+    <a href="https://apps.apple.com/us/app/harness-on-call/id6753579217?itscg=30200&itsct=apps_box_badge&mttnsubad=6753579217" aria-label="Download on the App Store">
+        <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1762214400" alt="Download on the App Store" style={{height: '60px'}} />
+    </a>
+</div>
+
 - Automatic notifications when signed into mobile apps
 - Real-time incident acknowledgment and escalation from mobile devices
 - Cross-platform synchronization with web interface
+- Platform-specific notification setup guides:
+  - [Android notification setup](/docs/ai-sre/oncall/notifications-android) - Configure Do Not Disturb, device-specific settings
+  - [iOS notification setup](/docs/ai-sre/oncall/notifications-ios) - Configure Emergency Bypass, Focus modes
 
 ### Notification Management
 - Multi-channel notifications (email, SMS, phone calls, Slack)
@@ -174,6 +185,9 @@ The on-call module is now available and ready for use. To get started:
 3. **Create Schedules**: Set up your on-call rotation schedules with appropriate time zones and patterns
 4. **Define Escalation Policies**: Configure multi-level escalation with timeout periods and retry logic
 5. **Set Up Alert Rules**: Create automatic paging rules based on service and alert conditions
+6. **Configure Mobile Notifications**: Ensure you receive critical alerts during Do Not Disturb
+   - [Android notification setup guide](/docs/ai-sre/oncall/notifications-android)
+   - [iOS notification setup guide](/docs/ai-sre/oncall/notifications-ios)
 
 ### Advanced Configuration
 - **Service Directory**: Leverage automatic Harness CD integration for service mapping

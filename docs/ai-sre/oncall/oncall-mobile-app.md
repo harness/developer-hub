@@ -11,20 +11,13 @@ The Harness AI SRE mobile app extends your incident response capabilities to mob
 
 ## Download the App
 
-| Platform | Download Link |
-|----------|---------------|
-| **Android** | [Google Play Store](https://play.google.com/store/apps/details?id=com.harness.aisre) |
-| **iOS** | [Apple App Store](https://apps.apple.com/in/app/harness-on-call/id6753579217) |
-
-<div align="center">
-<DocImage path={require('./static/play-store.png')} width="80%" height="80%" title="Google Play Store" />
-</div>
-
-<br />
-<br />
-
-<div align="center">
-<DocImage path={require('./static/apple-app-store.png')} width="80%" height="80%" title="Apple App Store" />
+<div style={{display: 'flex', gap: '20px', alignItems: 'center', margin: '20px 0'}}>
+    <a href="https://play.google.com/store/apps/details?id=com.harness.aisre" aria-label="Get it on Google Play">
+        <img src={require('./static/google-play-badge.png').default} alt="Get it on Google Play" style={{height: '60px'}} />
+    </a>
+    <a href="https://apps.apple.com/us/app/harness-on-call/id6753579217?itscg=30200&itsct=apps_box_badge&mttnsubad=6753579217" aria-label="Download on the App Store">
+        <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1762214400" alt="Download on the App Store" style={{height: '60px'}} />
+    </a>
 </div>
 
 ## Overview
@@ -122,8 +115,14 @@ Your Organization and Project selection directly impacts your incident response 
 ### Step 4: Notification Permissions
 Grant the necessary permissions for optimal incident response:
 - **Push Notifications**: Essential for real-time alerts
-- **Critical Alerts Override**: Allows urgent incidents to bypass Do Not Disturb 
+- **Critical Alerts Override**: Allows urgent incidents to bypass Do Not Disturb
 - **Background App Refresh**: Ensures continuous sync with AI SRE platform
+
+:::tip Platform-Specific Setup Guides
+For detailed instructions on configuring notifications to work during Do Not Disturb mode:
+- **Android users**: See the [Android notification setup guide](/docs/ai-sre/oncall/notifications-android)
+- **iOS users**: See the [iOS notification setup guide](/docs/ai-sre/oncall/notifications-ios)
+:::
 
 ## Dashboard Overview
 
@@ -182,6 +181,10 @@ Configure notifications to match your response preferences:
 - **Quiet Hours**: Define periods for non-critical alert suppression
 - **Team Overrides**: Allow team members to send urgent notifications
 - **Integration Filters**: Customize which monitoring tools trigger mobile alerts
+
+For comprehensive notification setup including Do Not Disturb configuration, see:
+- [Android notification setup guide](/docs/ai-sre/oncall/notifications-android)
+- [iOS notification setup guide](/docs/ai-sre/oncall/notifications-ios)
 
 ## Alert Management
 

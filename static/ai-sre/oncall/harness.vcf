@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//macOS 26.1//EN
+N:;;;;
+FN:Harness On-Call
+ORG:Harness On-Call;
+TEL;type=pref:+18778462107
+TEL;type=CELL;type=VOICE:(877) 846-0811
+X-ABShowAs:COMPANY
+END:VCARD
