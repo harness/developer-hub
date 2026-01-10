@@ -31,7 +31,7 @@ The Harness SCS module provides comprehensive capabilities for generating, manag
     * [Ingest SBOM](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data)
 * **SBOM Quality Score**: The step will generate a quality score for the SBOM which helps in assessing the completeness and quality of your SBOM.
 * **Attestation**: The step will sign the SBOM and securely store it in the artifact’s repository for added trust and verification.
-* **SBOM Drift Tracking**: You can use [SBOM Drfit](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#configure-sbom-drift) feature to monitor changes in your software composition over time and identify potential security risks or licensing issues.
+* **SBOM Drift Tracking**: You can use [SBOM Drift](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#configure-sbom-drift) feature to monitor changes in your software composition over time and identify potential security risks or licensing issues.
 
 
 ## Integration with SBOM tools
