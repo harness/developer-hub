@@ -4,6 +4,7 @@ description: Learn about the v2 enhanced experience
 sidebar_position: 4
 redirect_from:
   - /docs/continuous-delivery/cd-onboarding/upgrading/upgrade-cd-v2
+  - /docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2
 
 ---
 

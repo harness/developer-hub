@@ -4,6 +4,7 @@ description: Learn how the CD module works with other Harness modules.
 sidebar_position: 5
 redirect_from:
   - /docs/continuous-delivery/cd-onboarding/integrating-cd-other-modules
+  - /docs/continuous-delivery/get-started/integrating-cd-other-modules
 ---
 
 This topic describes a few of the cross-module use cases in the Harness platform.

@@ -7,6 +7,7 @@ redirect_from:
   - /docs/continuous-delivery/get-started/create-first-pipeline
   - /tutorials/cd-pipelines/kubernetes/helm-chart
   - /docs/continuous-delivery/get-started/tutorials/manifest
+  - /docs/continuous-delivery/get-started/cd-tutorials/helm-chart
 ---
 
 <CTABanner

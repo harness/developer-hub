@@ -4,6 +4,7 @@ description: Deploy artifacts to VMs or bare-metal hosts in a physical data cent
 hide_table_of_contents: true
 redirect_from:
   - /tutorials/cd-pipelines/vm/pdc
+  - /docs/continuous-delivery/get-started/cd-tutorials/pdc
 ---
 
 <CTABanner

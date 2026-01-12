@@ -5,6 +5,7 @@ description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
 redirect_from:
   - /tutorials/cd-pipelines/amazon-ecs
   - /docs/continuous-delivery/get-started/tutorials/amazon-ecs
+  - /docs/continuous-delivery/get-started/cd-tutorials/amazon-ecs
 ---
 
 <CTABanner

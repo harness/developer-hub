@@ -6,6 +6,7 @@ redirect_from:
   - /tutorials/cd-pipelines/unified-cicd
   - /tutorials/cd-pipelines/e2e-pipeline
   - /tutorials/cd-pipelines/unified-cicd/e2e-pipeline
+  - /docs/continuous-delivery/get-started/cd-tutorials/e2e-pipeline
 ---
 
 <CTABanner

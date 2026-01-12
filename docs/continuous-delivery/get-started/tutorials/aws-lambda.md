@@ -5,6 +5,8 @@ description: Deploy a Serverless app on AWS Lambda.
 redirect_from:
   - /tutorials/cd-pipelines/serverless/aws-lambda
   - /docs/continuous-delivery/get-started/tutorials/aws-lambda
+  - /docs/continuous-delivery/get-started/cd-tutorials/aws-lambda
+  - /docs/continuous-delivery/get-started/cd-tutorials/aws
 ---
 
 <CTABanner

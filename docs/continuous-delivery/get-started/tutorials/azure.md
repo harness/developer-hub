@@ -5,6 +5,8 @@ hide_table_of_contents: true
 redirect_from:
   - /tutorials/cd-pipelines/vm/azure
   - /docs/continuous-delivery/get-started/tutorials/azure
+  - /docs/continuous-delivery/get-started/cd-tutorials/azure
+  - /docs/continuous-delivery/get-started/cd-tutorials/cloudformation
 ---
 
 <CTABanner

@@ -9,6 +9,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/cd-onboarding/cd-pipeline-modeling-overview
   - /docs/continuous-delivery/cd-onboarding/new-user/cd-pipeline-modeling-overview
+  - /docs/continuous-delivery/get-started/cd-pipeline-modeling-overview
 ---
 
 This topic describes how you use the Harness Continuous Delivery Abstraction Model.

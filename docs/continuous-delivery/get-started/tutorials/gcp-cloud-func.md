@@ -4,6 +4,7 @@ title: Google Cloud Functions serverless deployments
 description: Google Cloud Functions serverless deployments
 redirect_from:
   - /tutorials/cd-pipelines/serverless/gcp-cloud-func
+  - /docs/continuous-delivery/get-started/cd-tutorials/gcp-cloud-func
 ---
 
 <CTABanner

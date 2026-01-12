@@ -4,6 +4,7 @@ title: Unified CI/CD GAR GKE pipeline
 description: Unified CI/CD GAR GKE pipeline
 redirect_from:
   - /tutorials/cd-pipelines/unified-cicd/gar-gke-pipeline
+  - /docs/continuous-delivery/get-started/cd-tutorials/gar-gke-pipeline
 ---
 
 In this tutorial, you'll explore how to build a streamlined CI/CD pipeline using the Harness Platform, integrating the robust services of Google Artifact Registry (GAR) and Google Kubernetes Engine (GKE). GAR excels in managing and storing container images securely, while GKE offers a scalable environment for container deployment. The Harness Platform serves as a powerful orchestrator, simplifying the build and push process to GAR and managing complex deployments in GKE. You'll also cover implementing crucial approval steps for enhanced security and setting up Slack notifications for real-time updates, showcasing how these tools together facilitate a robust, streamlined CI/CD process.

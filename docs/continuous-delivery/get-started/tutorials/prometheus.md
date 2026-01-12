@@ -4,6 +4,7 @@ description: Verify Kubernetes Deployments with Prometheus
 redirect_from:
   - /tutorials/cd-pipelines/continuous-verification/prometheus
   - /tutorials/cd-pipelines/continuous-verification
+  - /docs/continuous-delivery/get-started/cd-tutorials/prometheus
 ---
 
 <CTABanner
