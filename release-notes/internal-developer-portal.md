@@ -3,11 +3,17 @@ title: Internal Developer Portal Release Notes
 sidebar_label: Internal Developer Portal
 date: 2025-12-22T22:00
 sidebar_position: 12
+# toc_min_heading_level: 2
+# toc_max_heading_level: 2
 ---
+
+import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/internal-developer-portal/rss.xml" />
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
+
+<ReleaseNotesSearch />
 
 :::info About Harness Release Notes
 
