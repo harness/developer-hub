@@ -52,7 +52,7 @@ Specify where the exemption should apply:
 :::info
 - While requests can only be created with the scopes mentioned above, reviewers can approve and apply them at the requested scope or at a higher scope - **Organization** or **Account**.
 - As you create exemption request at the issue level, all the future occurrences part of this issues will be automatically exempted. For exemptions at occurrences level, refer to [Create Exemption Request for Occurrences within Issue](#create-exemption-request-for-occurrences-within-issue)
-- **Behind Feature Flag**: If your pipeline includes Pipeline stages with child pipelines, an exemption request with the **Pipeline** scope will apply **only to the child pipeline**, not the parent pipeline. The feature is currently behind the feature flag `STO_AGGREGATE_CHAIN_EXECUTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+- **Behind Feature Flag**: If your pipeline includes Pipeline stages with child pipelines, an exemption request with the **Pipeline** scope will apply **only to the child pipeline**, not the parent pipeline.
 
 :::
 #### For how long?
