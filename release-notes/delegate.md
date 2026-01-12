@@ -123,6 +123,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - Resolved an issue where account-level templates could have multiple stable versions with the same identifier during concurrent requests, causing conflicts and unexpected behavior. Identifiers are now enforced as unique, ensuring only one stable version exists per template. [PIPE-30923]
 - Updated IAM permission handling to remove dependency on iam:GetRole, making it no longer a required policy. [CCM-28022]
 
+#### New features and enhancements
+
+- Added support for dynamic port configuration using the `{{DELEGATE_HTTP_PORT}}` environment variable, allowing each delegate to use a unique port while maintaining backward compatibility with the default port **3460**. [PL-67304]
+
 ## December 2025 
 
 ### Version 25.08.86602 <!--December 17, 2025-->
