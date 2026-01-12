@@ -80,6 +80,38 @@ Renames a table. When rolled back, renames it back.
 Renaming a table directly typically necessitates downtime because it means the database schema is not backwards compatible. For this reason, Harness recommends adding a new table using the new name, and setting up a trigger to sync the two versions. Once the old application version no longer exists in any environment, an additional changeset can be released that removes the trigger and deletes the old table.
 :::
 
+7. **Create Index**
+Creates an index to improve query performance.
+```yaml
+- changeType: createIndex
+  tableName: users
+  indexName: idx_users_email
+  columns:
+    - name: email
+```
+
+8. **Drop Index**
+Removes an existing index.
+```yaml
+- changeType: dropIndex
+  tableName: users
+  indexName: idx_users_email
+```
+
+9. **Modify Data Type**
+Changes the data type of an existing column.
+```yaml
+- changeType: modifyDataType
+  tableName: users
+  columnName: age
+  newDataType: bigint
+```
+
+::: info warning
+Depending on the database engine and table size, modifying a column’s data type may acquire locks or trigger a table rewrite.
+Consider phased rollouts for large production tables.
+:::
+
 </TabItem>
 <TabItem value="constraint" label="Constraint Change Types">
 
@@ -115,6 +147,7 @@ Removes a foreign key.
   baseTableName: orders
   constraintName: fk_orders_users
 ```
+
 5. **Add Unique Constraint**
 Enforces uniqueness on a column. 
 ```yaml
@@ -122,6 +155,7 @@ Enforces uniqueness on a column.
   tableName: users
   columnNames: email
 ```
+
 6. **Drop Unique Constraint**
 Removes a uniqueness constraint.
 ```yaml
@@ -129,6 +163,7 @@ Removes a uniqueness constraint.
   tableName: users
   constraintName: uq_users_email
 ```
+
 7. **Add Not Null Constraint**
 Marks a column as NOT NULL.
 ```yaml
@@ -136,6 +171,7 @@ Marks a column as NOT NULL.
   tableName: users
   columnName: email
 ```
+
 8. **Drop Not Null Constraint**
 Removes a NOT NULL constraint.
 ```yaml
@@ -143,6 +179,41 @@ Removes a NOT NULL constraint.
   tableName: users
   columnName: email
 ```
+
+9. **Add Check Constraint**
+Adds a constraint to validate data at the database level.
+```yaml
+- changeType: addCheckConstraint
+  tableName: users
+  constraintName: chk_users_age
+  checkConstraint: age >= 18
+```
+
+10. **Drop Check Constraint**
+Removes an existing CHECK constraint.
+```yaml
+- changeType: dropCheckConstraint
+  tableName: users
+  constraintName: chk_users_age
+```
+
+11. **Add Default Value**
+Sets a default value for a column.
+```yaml
+- changeType: addDefaultValue
+  tableName: users
+  columnName: status
+  defaultValue: active
+```
+
+12. **Drop Default Value**
+Removes a column’s default value.
+```yaml
+- changeType: dropDefaultValue
+  tableName: users
+  columnName: status
+```
+
 </TabItem>
 <TabItem value="data" label="Data Change Types">
 
@@ -171,6 +242,7 @@ To rollback:
 ```
 This same pattern is also recommended for createProcedure changes.
 :::
+
 2. **Insert**
 Inserts rows into a table. The operation does not provide default rollback behavior.
 ```yaml
@@ -182,6 +254,7 @@ Inserts rows into a table. The operation does not provide default rollback behav
     - name: name
       value: Alice
 ```
+
 3. **Update**
 Updates rows in a table.
 ```yaml
@@ -192,6 +265,7 @@ Updates rows in a table.
     - name: name
       value: Alicia
 ```
+
 4. **Delete**
 Deletes rows from a table.
 ```yaml
@@ -199,6 +273,23 @@ Deletes rows from a table.
   tableName: users
   where: id=1
 ```
+
+5. **Load Update Data**
+Updates or inserts reference data from a file in a controlled, repeatable way.
+```yaml
+- changeType: loadUpdateData
+  tableName: users
+  file: data/users-v2.csv
+```
+
+6. **Execute SQL**
+Executes database-specific SQL when a declarative change type is not available.
+```yaml
+- changeType: sql
+  sql: |
+    ALTER SYSTEM SET max_connections = 500;
+```
+
 </TabItem>
 </Tabs>
 
