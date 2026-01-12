@@ -5,7 +5,7 @@ The Supply Chain Security (SCS) module is available on the following platforms:
 - [Harness Self-Managed Enterprise Edition in Air-gapped/Offline Environments](#air-gapped-environment)
 
 ### SCS on Harness SaaS
-- Repository Security Posture Management - [RSPM](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm)
+- Repository Security Posture Management - [RSPM](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm).
 - [Generate](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) or [ingest](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data) SBOM, followed by SBOM drift detection and scoring.
 - [Enforce OSS usage with SBOM governance policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies).
 - Generate [SLSA](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa) provenance and achieve Build [Levels 1](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-1), [2](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-2), and [3](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-3).
@@ -46,7 +46,9 @@ All features of [SCS on Harness SaaS](#scs-on-harness-saas) are available in an 
 
 
 :::note
-Harness SCS currently only support the Kubernetes, Native Helm, and Amazon ECS deployment types in the Deploy stage.
+
+You can view deployments in the Remediation Tracker and the Chain of Custody only for Kubernetes, Amazon ECS, and Helm deployment types. Support for other CD deployment types will be added in the future.
+
 :::
 
 
