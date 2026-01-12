@@ -79,7 +79,7 @@ The following 1min video provides a quick summary of STO:
 
 ## STO features
 
-Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You don't need any other Harness modules to use STO. 
+Harness STO aggregates and normalizes findings from all your scanners and deduplicates vulnerabilities within each scanner to help you identify security issues. You don't need any other Harness modules to use STO. 
 
 You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the pipeline automatically if any "show-stopper" vulnerabilities are detected.
 
