@@ -25,6 +25,12 @@ Alternatively, you can leverage built-in tools in SCS for SBOM generation or ing
 - [Generate SBOM using Harness SCS](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
 - [Ingest SBOM from any SBOM tool](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data).
 
+:::note
+
+In the SBOM, dependency names may differ from their original source names, as SBOM tools sometimes list dependencies under a product or bundle name rather than the actual dependency name.
+
+:::
+
 ## Generate the keys for SBOM Attestation - optional
 import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-consign-keys-prerequisite.md';
 

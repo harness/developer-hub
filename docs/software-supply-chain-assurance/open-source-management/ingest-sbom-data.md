@@ -21,6 +21,12 @@ Configure the SBOM Orchestration step in SCS to seamlessly ingest SBOM. In this 
 
 You can ingest SBOM for both [container](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#container-images) and [non-container](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images) images.
 
+:::note
+
+In the SBOM, dependency names may differ from their original source names, as SBOM tools sometimes list dependencies under a product or bundle name rather than the actual dependency name.
+
+:::
+
 <!-- :::info
 
 If you are utilizing STO Steps to generate the SBOM and wish to ingest it, please refer:

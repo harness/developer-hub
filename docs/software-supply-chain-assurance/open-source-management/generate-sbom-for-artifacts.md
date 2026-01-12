@@ -24,6 +24,12 @@ A Software Bill of Materials (SBOM) is an exhaustive list of all components, lib
 
 If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
 
+:::note
+
+In the SBOM, dependency names may differ from their original source names, as SBOM tools sometimes list dependencies under a product or bundle name rather than the actual dependency name.
+
+:::
+
 <DocVideo src="https://youtu.be/k5TAO1RLJvY?si=y_mC2cq5YD8MziK-" />
 
 ## SBOM Orchestration step configuration
