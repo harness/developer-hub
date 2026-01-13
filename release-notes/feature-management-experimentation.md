@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-12-22T10:00:00
+date: 2026-01-12T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,62 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: December 22, 2025
+#### Last updated: January 12, 2026
+
+## January 2026
+
+### [New Enhancement] Streamline Project Configuration in FME Settings
+----
+#### 2026-01-12
+
+Harness FME has improved project configuration by moving **Create Environment**, **Create Traffic Type**, and **Create SDK API Key** buttons out of the **Actions** dropdown menu into their respective tabs on the **Projects** page in **FME Settings**. 
+
+![](./static/fme/projects.png)
+
+With this enhancement, you can:
+
+- Create environments, traffic types, and SDK API keys from their respective tabs
+- Reduce accidental configuration changes from the previous dropdown menu
+- Simplify onboarding for new team members by making creation points more discoverable
+
+#### Related documentation
+
+- [FME Projects](/docs/feature-management-experimentation/projects)
+- [FME Environments](/docs/feature-management-experimentation/environments)
+- [Traffic Types](/docs/feature-management-experimentation/traffic-types)
+- [SDK API Keys](/docs/feature-management-experimentation/api-keys)
+
+### [New Feature] Environment Type-based Access Control in Harness FME
+----
+#### 2026-01-12
+
+Harness FME now supports environment type-based access control in [Harness resource groups](/docs/platform/role-based-access-control/add-resource-groups/), allowing administrators to grant permissions by [FME environment type](/docs/feature-management-experimentation/environments#create-environments) in addition to granting access to all FME environments or specific FME environments by name. 
+
+When creating a resource group, you can select from the following access types for the **FME Environments** resource:
+
+* **All**: Grants access to all FME environments.
+* **By Type**: Grants access to FME environments based on type (`Production` or `Pre-Production`).
+* **Specified**: Grants access only to selected FME environments by name.
+
+![](./static/fme/environments-type.png)
+
+Once you've configured a resource group, you can assign that resource group to a role by clicking **Manage Role Bindings** on the **Users** or **User Groups** page.
+
+![](./static/fme/role-binding.png)
+
+With environment type-based access control, teams can:
+
+- Restrict write access to production environments while enabling broader access in pre-production environments
+- Simplify RBAC configuration for teams that share environment standards
+- Reduce administrative overhead as FME environments are added or renamed
+- Enforce safer default permissions for sensitive environments
+
+This feature extends [Harness RBAC for FME](/docs/feature-management-experimentation/permissions/rbac), and improves the security, scalability, and maintainability of environment-level governance.
+
+#### Related documentation
+
+- [Harness RBAC for FME](/docs/feature-management-experimentation/permissions/rbac)
+- [FME Environments](/docs/feature-management-experimentation/environments)
 
 ## December 2025
 

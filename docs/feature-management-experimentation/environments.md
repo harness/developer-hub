@@ -1,12 +1,38 @@
 ---
 title: Environments
-sidebar_position: 20
+sidebar_position: 4
 redirect_from: 
   - /docs/feature-management-experimentation/team-and-project-settings/
   - /docs/feature-management-experimentation/management-and-administration/fme-settings/
 ---
 
-Environments allow you to [manage your feature flags](/docs/category/manage-feature-flags) throughout your development lifecycle, from local development to staging and production. When you create an account in Harness FME, your default project is provided with two environments named `Staging` and `Production` by default. Each environment is set up with its own API keys. These API keys are used to connect the FME SDK to a specific environment.
+Depending on your use case, environments are surfaced in two places in Harness FME. 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="environments-option">
+<TabItem value="env" label="Environments Page">
+
+The **Environments** page in the FME navigation menu helps you view and analyze feature flags by environment. You can use the **Environments** dropdown menu to switch between environments.
+
+![](./static/environments-page.png)
+
+</TabItem>
+<TabItem value="project" label="Projects Page">
+
+The **Projects** page in **FME Settings** allows you to create and edit environments. Click **View** on the project you want to create an environment in, then click **Create environment**.
+
+![](./static/projects-6.png)
+
+</TabItem>
+</Tabs>
+
+When you create an account in Harness FME, your default project provides you with two environments: `Stg-<PROJECT_NAME>` for pre-production and `Prod-<PROJECT_NAME>` for production. 
+
+![](./static/environments-4.png)
+
+Each environment is set up with its own API keys that are used to connect the FME SDK to a specific environment. Environments allow you to [manage your feature flags](/docs/category/manage-feature-flags) throughout your development lifecycle, from local development to staging and production. 
 
 Each feature flag that you create has its own set of [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#targeting-rules) in each environment, allowing you to define different targeting rules in your staging and production environments. For example, you can change the targeting rules for a specific feature flag for quality testing on your staging environment with confidence that the feature flag is not enabled for users on your production environment.
 
@@ -18,13 +44,17 @@ To configure your SDK for this mode, see the `Localhost mode` section in the [Ha
 
 ## Manage environments
 
-To manage your environments for a project, navigate to **FME Settings** and select **View** for the specified project.
+To manage your environments in Harness FME:
 
-![](./static/env-list.png)
+1. Navigate to the **Projects** page in **FME Settings** and select **View** for a specific project.
 
-Use the **Actions** dropdown menu to add environments or click **Edit** on an environment to edit an existing one. Every project in Harness FME has its own environments. 
+   ![](./static/environments-1.png)
 
-:::info
+1. Click **Create environment** to add environments or click **Edit** on an environment to edit an existing one. 
+
+   ![](./static/environments-2.png)
+
+:::tip Every project in Harness FME has its own environments
 Environments typically represent the software delivery lifecycle: **Dev**, **Test**, **Staging**, and **Production**. There's usually no reason to have more than one Harness FME environment per software delivery lifecycle environment unless multiple projects use the same environments. However, there are cases where you might have multiple staging, dev, or even production environments in Harness FME. 
 
 Harness recommends following these best practices:
@@ -33,9 +63,84 @@ Harness recommends following these best practices:
 * It's common, and often critical, to have [environment-level permission controls](/docs/feature-management-experimentation/permissions) enabled for production environment(s). New, inexperienced teammates may accidentally edit a feature flag or make a rollout change they did not have the authority to make. For any pre-production environments, permission controls are not as important given the lack of customer impact and the robust auditing capability.
 * For any pre-production environments, our guidance is to keep it simple; focus on simple on/off instead of creating complex targeting plans. For most organizations, pre-production environments often have dummy data and just a few hundred customers, and is most often used for testing.
 * You don't necessarily need to see metrics in pre-production environments unless, say for example, you're conducting a performance test.
-
-We're cognizant that many organizations have their own unique requirements and Harness is always happy to help define an approach that will work best for you.
 :::
+
+## Create environments
+
+<Tabs>
+<TabItem value="Harness FME">
+
+To create an environment in Harness FME:
+
+1. From the FME navigation menu, click **FME Settings** and select **Projects**. 
+1. Click **View** under the **Actions** column for the project you want to create an environment in.
+
+   ![](./static/environments-1.png)
+
+1. Click **Create environment** on the **Environments** tab.
+1. Configure the following settings:
+   
+   | Field | Description | Options / Notes |
+   |---|---|---|
+   | Name | Enter a descriptive name for the environment. | For example: `Docs-Staging` |
+   | Environment type | Define how this environment is classified for feature delivery and governance. | - **Production** <br />- **Pre-production** |
+   | Approvals | Configure whether approval is required before feature flag or segment changes are applied in this environment. | Toggle **Require approvals for changes** on or off. |
+
+1. Click **Create** to apply the changes.
+
+### Configure approvals
+
+If **Require approvals for changes** is enabled, configure how approvals are handled:
+
+![](./static/env-approvals.png)
+
+1. Choose one of the following approval modes:
+
+   - **Let submitters choose their approver(s)**: Submitters select approvers when making a change.
+   - **Restrict who can approve**: Define a fixed set of approvers for this environment.
+
+1. If you select **Restrict who can approve**, configure the following:
+   
+   - **Approvers**: Select one or more user groups (for example, `prod_approvers`). To add additional approver groups, click **+ Add approver type**.
+   - **Allow kills without approval**: Allows emergency flag kills to bypass approval.
+   - **Allow users in the selected group to skip approval flows**: Allows approvers to make changes without approval.
+   
+   <br />
+   <details> 
+   <summary>Additional Permissions Options</summary>
+
+   Some organizations may see additional edit or export permission options (such as **Anyone can edit** or **Restrict who can export**) during environment creation.
+   
+   ![](./static/environments-3.png)
+    
+   These options appear only when legacy permissions are enabled in Harness FME through [Permissions Enforcement](/docs/feature-management-experimentation/permissions/enforcement?split-harness-users=split-migrated-existing).
+
+   </details>
+
+1. Click **Save**.
+
+To edit an environment in Harness FME:
+
+1. Click **Edit** under the **Actions** column for a specific environment on the **Environments** tab.
+1. Update the environment configuration.
+1. Click **Save**.
+
+:::info
+Edit and export permissions are enforced through [RBAC Resource Groups and Roles](/docs/feature-management-experimentation/permissions/rbac). Approval requirements are configured at the environment level.
+:::
+
+</TabItem>
+<TabItem value="Legacy Split">
+
+When you first create your account, you are provided with two environments. To manage your environments, go to the **Projects** tab in your **Admin settings** page. Select the project that you want to edit environments for. You can: 
+
+* Rename environments to match your deployment process as well update their permissions by clicking **Edit**.
+* Add additional environments by clicking **Create environment**.
+
+![](./static/create-env.png)
+
+</TabItem>
+</Tabs>
 
 ## Navigate environments
 
@@ -67,60 +172,3 @@ Click on an individual audit log entry to open a change summary, which provides 
 * **Effective time**: Indicates when the change will take effect (immediately or at a scheduled time).
 
 Feature flag audit logs make it easy to track modifications, audit team activity, and review the history of feature flag changes.
-
-## Create environments
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-<TabItem value="Harness FME">
-
-When creating or editing an environment, the following fields are available:
-
-| Field | Description | Options / Notes |
-|:---:|:---:|:---:|
-| Name | Enter a descriptive environment name. | e.g., `FME-Documentation-Staging` |
-| Environment type | Select the type of environment. | - **Production**<br />- **Pre-production** |
-| Approvals | Configure approval workflows for feature flags and segments. | **Required approvals for changes**: Toggle on/off to enforce approvals.<br /><br />**Approval type**: Choose one of the following radio buttons.<br /><br />- **Let submitters choose their approver(s)**<br />- **Restrict who can approve (select users or groups)** |
-
-All edit/export permissions are enforced through [RBAC Resource Groups and Roles](/docs/feature-management-experimentation/permissions/rbac). This ensures consistent governance across projects and environments.
-
-To create or update an environment:
-
-1. From the FME navigation menu, click **FME Settings** and click **Projects** under **Project settings**.
-1. Click **View** under the **Actions** column for the project you want to create an environment in.
-
-   ![](./static/projects-list.png)
-
-1. Click on the **Actions** dropdown menu on the **Environments** tab and select **Create environment** or **Edit** for an existing environment.
-
-   ![](./static/create-environment.png)
-
-1. In the **Edit environment** section, configure the following settings:
-   
-   - Enter a name for the environment, such as `Staging`.
-   - Select an environment type: **Production** or **Pre-production**.
-   - Control who can modify feature flags and segments in the environment:
-      - **Anyone can edit**
-      - **Anyone can edit**
-      - **Require approvals for changes**
-   - Control export rights on the Data Hub:
-      - **Anyone can export**
-      - **Restrict who can export**
-1. Click **Save** to apply the changes.
-   
-   ![](./static/edit-env.png)
-
-</TabItem>
-<TabItem value="Legacy Split">
-
-When you first create your account, you are provided with two environments. To manage your environments, go to the **Projects** tab in your **Admin settings** page. Select the project that you want to edit environments for. You can: 
-
-* Rename environments to match your deployment process as well update their permissions by clicking **Edit**.
-* Add additional environments by clicking **Create environment**.
-
-![](./static/create-env.png)
-
-</TabItem>
-</Tabs>

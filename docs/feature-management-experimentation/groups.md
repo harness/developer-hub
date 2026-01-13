@@ -11,6 +11,10 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="fme-split">
 <TabItem value="fme" label="Harness FME">
 
+:::info
+The following sections provides general information about Harness user groups, roles, and resource groups. This content applies across the Harness platform and is included here for reference. 
+:::
+
 import Groups from '/docs/platform/role-based-access-control/add-user-groups.md'
 
 <Groups />

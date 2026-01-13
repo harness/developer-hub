@@ -1,13 +1,11 @@
 ---
-title: Traffic types
+title: Traffic Types
 description: Learn about traffic types and creating feature flags with traffic types in Harness FME.
-sidebar_position: 10
+sidebar_position: 12
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/can-a-feature-flags-traffic-type-be-modified
 - /docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types
 ---
-
-## Overview
 
 When you create a feature flag, you must specify a traffic type. The traffic type denotes the nature of the keys that are passed to `getTreatment` for that feature flag. 
 
@@ -51,22 +49,22 @@ FME allows you to have up to 10 traffic types per project. All environments with
 
 ## Create a traffic type
 
-To create traffic types, do the following:
+To create a traffic type in Harness FME:
 
 1. From the FME navigation menu, click **FME Settings** and select **Projects**. 
-2. Select **View** from the **Actions** column on the project that you want to edit traffic types for. 
-3. To add more traffic types to the selected project, navigate to the **Traffic types** tab. 
-4. Click the **Actions** dropdown menu and select **Create traffic types**. 
-5. Enter a name and click **Save**. A new traffic type is created.
+1. Select **View** from the **Actions** column on the project that you want to edit traffic types for. 
+1. To add more traffic types to the selected project, navigate to the **Traffic types** tab and click **Create traffic type**. 
+   
+   ![](./static/traffic-type.png)
 
-:::note
-Once a feature flag is created with a specific traffic type, it cannot be edited. This is intentional to prevent your experiment data from being mixed across different traffic types, which could skew your results.
+1. Enter a name and click **Save**. A new traffic type is created.
 
-To change a traffic type, create a feature flag with the appropriate traffic type.
+:::warning
+Once a feature flag is created, its traffic type cannot be changed. This restriction is intentional to prevent experiment and rollout data from being mixed across different traffic types, which could invalidate your results.
+
+If you need a different traffic type, [create another feature flag](/docs/feature-management-experimentation/getting-started/overview/create-a-feature-flag)) with the appropriate traffic type.
 :::
 
 ## Delete a traffic type
 
-You can delete a traffic type from this same location in the user interface with the **Delete** link in the **Actions** column but only if it is no longer in use by any feature flags or metrics.
-
-If you need assistance with traffic types, contact support at [support@split.io](mailto:support@split.io).
+You can delete a traffic type by clicking on the **Delete** icon in the **Actions** column, but only if it is no longer in use by any feature flags or metrics.

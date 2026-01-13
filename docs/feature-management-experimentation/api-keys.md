@@ -1,9 +1,13 @@
 ---
-title: API keys
-sidebar_position: 40
+title: API Keys
+sidebar_position: 1
 redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/account-settings/api-keys
 ---
+
+The Harness platform supports multiple types of API keys and tokens, including personal access tokens (PATs), service account API keys, and SDK API keys. The following section focuses on creating and using SDK API keys.
+
+You typically create one client-side and one server-side SDK API key per environment in Harness FME. While multiple keys of the same type are supported, [Harness FME SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) must use the matching key type; client-side for frontend and mobile SDKs, and server-side for backend SDKs.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -11,7 +15,25 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="fme-split">
 <TabItem value="fme" label="Harness FME">
 
-For more information about SDK API keys in Harness FME, see [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account/#sdk-api-keys).
+To create an SDK API key in Harness FME: 
+
+1. From the FME navigation menu, click **FME Settings** and select **Projects**. 
+1. Click **View** under the **Actions** column for the project you want to create an SDK API key in.
+
+   ![](./static/projects-list.png)
+
+1. Click **Create SDK API Key** on the **SDK API Keys** tab.
+   
+   ![](./static/api-keys-1.png)
+
+1. Enter a name for the SDK API key.
+1. Select the type of SDK API key: **Client-side** or **Server-side**.
+1. Select an environment from the dropdown menu in the `Environments` section.
+1. Click **Create API key**.
+
+:::info
+The following sections provides general information about Harness API keys, personal access tokens (PATs), and service accounts. This content applies across the Harness platform and is included here for reference. 
+:::
 
 import ApiKeys from '/docs/platform/automation/api/add-and-manage-api-keys.md'
 
@@ -25,8 +47,6 @@ This documentation describes the **Split legacy** Admin API keys experience.
 
 If your organization is using Harness FME, API key behavior and the UI may differ. For more information, see [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account/#admin-api-keys).
 :::
-
-## Overview
 
 FME [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) and [Admin API](https://docs.split.io/reference) both require API keys for authentication.
 

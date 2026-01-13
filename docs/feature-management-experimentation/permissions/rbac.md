@@ -51,12 +51,20 @@ If you are a Harness FME administrator, you can use Resource Groups to control a
 
 ## Resource groups
 
-Resource Groups define which FME resources users can access within a project. Each resource type supports two access controls:
+Resource Groups define which FME resources and environments users can access within a project. Each resource type supports two access controls:
 
 | Access Type | Description |
 |---|---|
-| **All** | Grants access to all environments for that resource type. |
-| **Specified** | Grants access only in selected environments by name. |
+| **All** | Grants access to all resources for all Harness product modules. |
+| **Specified** | Grants access to selected resources and Harness product modules. |
+
+When you click on the **FME Environments** resource, you can set environment-level access with the following:
+
+| Access Type | Description |
+|---|---|
+| **All** | Grants access to all FME environments. |
+| **By type** | Grants access to a specific FME environment type (`Production` or `Pre-Production`). |
+| **Specified** | Grants access only to specific FME environments added by name. |
 
 This allows organizations to grant edit permissions only in intended environments, ensuring tighter control over sensitive environments, such as production.
 
@@ -67,15 +75,32 @@ To define environment-level permissions in Harness FME:
 1. Navigate to **Project Settings** > **Resource Groups**.
 1. Click **+ Add Resource Group** to create a new Resource Group.
 1. Enter a name such as `Documentation Resources` and optionally, description and tags, then click **Save**.
-1. Select resources in the **Feature Management & Experimentation** section.
+1. Choose either **All**, which grants access to all resources in all of your available Harness modules, or **Specified** to grant access for each resource and product module next to **Resources**.
+1. Select **Feature Management & Experimentation** to enable all FME resources or click the checkbox next to each resource in the **Feature Management & Experimentation** section.
    
    ![](./static/resource-group-1.png)
 
-1. Choose either **All** or **Specified** access for each resource:
-    - **All**: Grants access to all environments of that resource type.
-    - **Specified**: Click **+ Add** to add individual environments by name.
+1. For the **FME Environments** resource, you can select **All**, **By type**, or **Specified** to manage environment-level access.
 
-   ![](./static/resource-group-2.png)
+    - **All**: Grants access to all FME environments.
+
+      ![](./static/resource-group-6.png)
+
+    - **By Type**: Click **+ Add** to grant access to FME environments by type. 
+
+      ![](./static/resource-group-5.png)
+
+      Select **Production** or **Pre-Production**, and click **Add FME Environment Type**.
+
+    - **Specified**: Click **+ Add** to grant access to specific FME environments by name.
+
+      ![](./static/resource-group-4.png)
+
+      Once you've selected the environments you want to grant access for, click **Add FME Environments**.
+
+      ![](./static/resource-group-2.png)
+
+1. Click **Save**.
 
 ## Assign a resource group to users
 
@@ -85,9 +110,10 @@ To enforce access defined in a Resource Group:
 1. Edit an existing role or create a new role.
 1. Apply the role to users or user groups by clicking **Manage Role Bindings** on the **Users** or **User Groups** page in **Project Settings**.
 1. Click **+ Add** to add the resource group to the role.  
-1. Select a role from the dropdown menu (for example, the `FME Administrator Role`) and select **All Project Level Resources** or **FME All Resources**.
-1. Click **Apply** to save this role binding to a user or user group.
+1. Select a role from the dropdown menu (for example, the `FME Administrator Role`) and select the resource group you created above.
 
    ![](./static/resource-group-3.png)
+
+1. Click **Apply** to save this role binding to a user or user group.
    
 With roles and resource groups combined, you can ensure only authorized users can view or edit target environments.

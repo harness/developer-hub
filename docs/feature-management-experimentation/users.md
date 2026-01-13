@@ -13,6 +13,10 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="fme-split">
 <TabItem value="fme" label="Harness FME">
 
+:::info
+The following sections provides general information about Harness users, roles, and resource groups. This content applies across the Harness platform and is included here for reference. 
+:::
+
 import Users from '/docs/platform/role-based-access-control/add-users.md'
 
 <Users />
@@ -25,8 +29,6 @@ This documentation describes the **Split legacy** User experience.
 
 If your organization is using Harness FME, user roles and the UI may differ. For more information, see [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account/#users) and [Inviting an IT Colleague to Your New Harness Account](/docs/feature-management-experimentation/split-to-harness/invitation).
 :::
-
-## Overview
 
 Split supports three roles to give users different permission levels in the Split UI:
 

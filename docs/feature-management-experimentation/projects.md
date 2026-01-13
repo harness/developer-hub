@@ -5,35 +5,25 @@ redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/account-settings/projects
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs queryString="fme-split">
-<TabItem value="fme" label="Harness FME">
-
-import Projects from '/docs/platform/organizations-and-projects/projects-and-organizations.md'
-
-<Projects />
-
-</TabItem>
-<TabItem value="split" label="Split Legacy">
-
-:::tip
-This page is about managing projects in Harness FME when accessing FME through `app.split.io`.
-
-After migration to `app.harness.io`, most project-related functions are performed in the standard Harness platform Role Based Access Control (RBAC) screens instead of in the screens seen below. 
-To ease the transition to the Harness platform experience, FME Settings will direct you to the appropriate screen in Harness to create or delete projects. 
-
-The only setting below which is retained within the Edit Project screen in FME Settings is the **Require comments** toggle to enforce titles and comments for changes to feature flags, segments, and metrics.
-:::
-
-## Overview
-
 Projects allow you to separately manage your feature flags and experiments across your different business units, product lines, and applications. When you first create your account, you're provided with one project named `Default`. 
 
-This project has two [environments](/docs/feature-management-experimentation/environments) and one [traffic type](/docs/feature-management-experimentation/traffic-types) created underneath it. You can rename and edit these environments and traffic types and add more to the Default project. 
+```mermaid
+flowchart TB
+    Account --> Organization --> Projects
 
-The following objects are also located in a project: 
+    Projects --> Environments
+    Projects --> Feature_Flags[Feature Flags]
+    Projects --> Segments
+    Projects --> Metrics
+    Projects --> Event_Types[Event Types]
+    Projects --> Traffic_Types[Traffic Types]
+
+    Environments --> SDK_API_Keys[SDK API Keys]
+```
+
+<br />
+
+This project has two [environments](/docs/feature-management-experimentation/environments) and one [traffic type](/docs/feature-management-experimentation/traffic-types) created underneath it. You can rename and edit these environments and traffic types and add more to the `Default` project. The following objects are also located in a project: 
 
 * [Feature flags](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag/)
 * [Segments](/docs/feature-management-experimentation/feature-management/targeting/segments)
@@ -41,32 +31,63 @@ The following objects are also located in a project:
 * [Event types](/docs/feature-management-experimentation/release-monitoring/events/)
 * [API keys](/docs/feature-management-experimentation/api-keys)  
 
-See the object model map below for reference:
+When onboarding different business units to Harness FME, you can add multiple projects within your account to allow each team to have a separated space to manage their feature flags and experiments. 
 
-![](./static/projects.png)
+## Creating a project
 
-When you onboard different business units to Harness FME, you can add up to 20 projects within your account to allow each team to have a separated space to manage their experiments and feature flags. 
-
-## Creating projects
+Project creation in Harness FME uses the Harness platform [project workflow](/docs/platform/organizations-and-projects/create-an-organization/#create-a-project). After creating a project, return to **FME Settings** to configure FME-specific options.
 
 To create a project: 
 
-1. Navigate to **Admin settings** > **Projects**. 
-3. To create a project, click **Create project** at the top right. 
+1. From the FME navigation menu, click **FME Settings** and select **Projects**. 
+1. Click **Create project** at the top right. 
    
-   ![](./static/create-project.png)
- 
-4. Enter a name for the project.
-5. Select the **Required comments** toggle to enable requiring titles and comments for feature flags, segments, and metric changes.
+   ![](./static/projects-1.png)
+
+   This opens the **Projects** page under **FME Settings** in the FME navigation menu.
+   
+    ![](./static/projects-2.png)
+
+1. Click **+ New Project**.
+1. Complete the following details:
+
+   - Enter a name for the project.
+   - Select a color option for the project.
+   - Optionally, enter a description and add tags.
+   
+   ![](./static/projects-3.png)
+
+1. Click **Save and Continue**.
+1. Optionally, invite people to collaborate in the project by selecting a role from the dropdown menu (like `FME Manager`) and adding collaborators in your organization by email address.
+   
+   ![](./static/projects-4.png)
+
+1. Click **Save and Continue**. 
+   
+   ![](./static/projects-5.png)
+
+1. Next, click **FME Settings**.
+   
+   ![](./static/projects-6.png)
+
+1. Click **View** under **Actions** on the project you created (for example, `Documentation`).
+   
+   ![](./static/projects-7.png)
+
+1. Click on the **Actions** dropdown menu and select **Edit project**.
+
+   ![](./static/projects-8.png)
+
+1. Select the **Required title and comments comments** toggle to enable requiring titles and comments for feature flags, segments, and metric changes.
 
    :::info
    You can update this setting at any time by clicking **Actions** > **Edit project** on the top right corner in **Project Settings**.
    :::
 
-6. In the project permissions area, select the desired control access by doing the following:
-   * **Anyone has access**. Allows anyone to have access to this particular project.
-   * **Restrict who can access**. Allows you to select which users, groups, and Admin API keys have access to a particular project.
-7. Click **Create** to create a new project.
+1. Click **Save**.
+
+<details>
+<summary>Still using `app.split.io`?</summary>
 
 ## Setting project permissions
 
@@ -92,15 +113,11 @@ To manage project-level settings:
 1. Click **Actions** > **Edit project** in the top right corner of the **Projects** page. 
 1. In the **Edit project** pane, enable the **Require comments** toggle to enforce titles and comments for changes to feature flags, segments, and metrics.
 
-   ![](./static/require-comments.png)
-
+   ![](./static/projects-9.png)
+1. In the **Project permissions** section, optionally select the desired control access from the following options:
+   * **Anyone has access**. Allows anyone to have access to this particular project.
+   * **Restrict who can access**. Allows you to select which users, groups, and admin API keys have access to a particular project.
 1. Click **Save**.
-
-### Data export restrictions
-
-An administrator may restrict the export of data from Split to a subset of users or user groups at the environment level. For more information, see [Permissions](/docs/feature-management-experimentation/permissions#setting-environment-level-permissions).
-
-A list of all environments in a workspace, showing at a glance whether data export restrictions are in place for each environment, is available to admins. See [Viewing projects](#viewing-projects).
 
 ## Editing a project
 
@@ -200,6 +217,4 @@ To delete a project, follow these steps:
 * Click the **Actions** button in the top right corner and choose the Delete project option, which will allow you to delete it.
 
   ![](./static/delete-project.png)
-
-</TabItem>
-</Tabs>
+</details>

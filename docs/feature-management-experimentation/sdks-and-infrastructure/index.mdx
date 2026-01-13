@@ -139,13 +139,12 @@ A client-side SDK (like JavaScript, iOS, or Android) should be initialized with 
 
 The client-side SDKs hit the endpoint `/memberships`, which only returns the segments containing the ID used to initialize the SDK. The server-side SDKs call `/segmentChanges`, which downloads the entire contents of every segment in the environment. This way, the server-side SDKs can compute treatments for any possible ID, while the client-side SDKs minimize space overhead for browsers and mobile devices by downloading only the segment information needed to process `getTreatment` calls for the ID specified during initialization.
 
-Within Harness FME, the following three types of keys each provide different levels of access to Harness FME's API: 
+Within Harness FME, these [API keys](/docs/feature-management-experimentation/api-keys) provide different levels of access to Harness FME's API: 
  
 | **Type** | **Overview** |
 | --- | --- | 
-| Server-side | <ul><li> Configure server-side SDKs to use a server-side api key </li><li>Grants access to fetch feature flags and segments associated within the provided API key's environment </li><li>Never expose server-side keys in untrusted contexts </li><li>Do not put your server-side API keys in client-side SDKs </li><li>If you accidentally expose your server-side API key, you can revoke it in the API keys tab in Admin settings </li></ul>| 
-| Client-side | <ul><li> Configure client-side SDKs to use the client-side api key </li><li>Grants access to fetch feature flags and segments for the provided key within the provided API key's environment </li></ul>|
-| Admin | <ul><li> Use for access to Harness FME's developer admin API </li><li>This key provides broader access to multiple environments unlike the other API keys that are scoped to a specific environment </li><li>Do not share this API key with your customers </li><li>If you accidentally expose your admin API key, you can revoke it in the API keys tab in Admin settings </li></ul>|
+| Server-side | <ul><li> Configure server-side SDKs to use a server-side API key </li><li>Grants access to fetch feature flags and segments associated within the provided API key's environment </li><li>Never expose server-side keys in untrusted contexts </li><li>Do not put your server-side API keys in client-side SDKs </li><li>If you accidentally expose your server-side API key, you can revoke it in the **SDK API Keys** tab in Admin settings </li></ul>| 
+| Client-side | <ul><li> Configure client-side SDKs to use a client-side API key </li><li>Grants access to fetch feature flags and segments for the provided key within the provided API key's environment </li></ul>|
 
 ## RUM Agents
 
