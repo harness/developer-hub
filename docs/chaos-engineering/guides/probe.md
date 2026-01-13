@@ -72,6 +72,9 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
     },
     "APM Probe": {
       path: "/chaos-engineering/content/probes/apm-probe.md"
+    },
+    "Container Probe": {
+      path: "/chaos-engineering/content/probes/container-probe.md"
     }
   }}
   toc={toc}

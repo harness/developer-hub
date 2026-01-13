@@ -48,6 +48,20 @@ The **Custom Script Action** allows you to execute custom scripts during the exp
 - Can be used for complex validation scenarios
 - Enables integration with external tools and systems
 
+### 3. Container Action
+
+The **Container Action** allows you to execute commands inside a container during the experiment. This provides capabilities to:
+- Execute commands in containerized environments
+- Perform application-specific operations
+- Run validation or diagnostic commands
+- Implement custom setup or cleanup operations
+
+**Key Features:**
+- Execute commands inside containers
+- Support for custom container images
+- Flexible command and argument configuration
+- Advanced configuration options for Kubernetes environments
+
 ## Action Configuration
 
 ### Infrastructure Type Support
@@ -63,9 +77,23 @@ Actions are executed as part of the experiment workflow and can be:
 - **Parallel** - Multiple actions can run simultaneously if configured
 
 
+## Built-in Action Templates
+
+Harness provides pre-built action templates to help you quickly integrate common operations into your chaos experiments. These templates are ready to use and can be customized to fit your specific requirements.
+
+:::note
+Currently, built-in templates are available for **Custom Script Actions** targeting **Kubernetes** infrastructure. Templates for other action types and platforms will be added in future releases.
+:::
+
+import ChaosFaults from '@site/src/components/ChaosEngineering/ChaosFaults';
+import { actionTemplateCategories } from '../../content/actions/action-templates';
+
+<ChaosFaults categories={actionTemplateCategories} />
+
 ## Next Steps
 
 - [Create your first experiment with actions](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
 - [Learn about Delay Actions](./delay-action)
 - [Learn about Custom Script Actions](./custom-script-action)
+- [Learn about Container Actions](./container-action)
 - [Explore experiment timeline view](/docs/chaos-engineering/guides/chaos-experiments/timeline-view-experiments)

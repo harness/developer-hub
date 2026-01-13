@@ -272,6 +272,18 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM Kafka Exception",
+    description:"Pod JVM Kafka Exception injects exception in Kafka operations for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "kafka", "exception"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM Kafka Latency",
+    description:"Pod JVM Kafka Latency injects latency in Kafka operations for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "kafka", "latency"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod memory hog exec",
     description:"Pod memory hog exec consumes memory resources on the application container in megabytes.",
     tags: ["pod"],

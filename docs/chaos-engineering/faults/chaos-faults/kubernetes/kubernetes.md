@@ -729,6 +729,40 @@ Pod JVM mongo exception injects chaos into a Java application executing in a Kub
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM Kafka Exception
+
+Pod JVM Kafka Exception injects chaos into a Java application executing in a Kubernetes pod by invoking Kafka producer/consumer exceptions.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulates Kafka exceptions to ensure the application can recover gracefully
+- Assess if the monitoring systems and alerting mechanisms can accurately detect and report Kafka exceptions in real-time.
+- Tests circuit breaker patterns and fallback mechanisms when Kafka operations fail.
+- Determines the performance and resilience of the dependent application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM Kafka Latency
+
+Pod JVM Kafka Latency injects chaos into a Java application executing in a Kubernetes pod by introducing latency in Kafka operations.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulate Kafka latency to evaluate how the application handles slower message processing
+- Test the impact of Kafka operation latency on the end-user experience, ensuring the application behaves gracefully under slower response times.
+- Validates timeout configurations and retry mechanisms when Kafka operations are slow.
+- Determines the performance and resilience of the dependent application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod JVM sql latency
 
 Pod JVM sql latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in sql queries.

@@ -74,6 +74,10 @@ const getCategoryDetails = (category: string): Record<string, string> => {
       details.icon = `${path}/kubernetes.svg`;
       details.link = `/docs/chaos-engineering/guides/probes/probe-templates/kubernetes`;
       break;
+    case "custom-script-actions":
+      details.icon = `${path}/kubernetes.svg`;
+      details.link = `/docs/chaos-engineering/guides/actions/action-templates/custom-script`;
+      break;
     default:
       details.icon = `${path}/default.svg`;
       details.link = `#`;
@@ -111,6 +115,18 @@ const getFaultDetails = (
     else if (category === "gcp") categoryPath = "gcp";
     else if (category === "kubernetes") categoryPath = "kubernetes";
     details.link = `/docs/chaos-engineering/guides/probes/probe-templates/${categoryPath}/${normaliseForURL(faultName)}/`;
+    details.anchorLink = `${normaliseForURL(faultName)}`;
+    return details;
+  }
+  
+  // Handle action templates - link to individual template pages
+  if (faultName && (
+    faultName.includes("Grafana Chaos Annotation") || 
+    faultName.includes("Datadog Chaos Event")
+  )) {
+    details.icon = `${path}/kubernetes.svg`;
+    // Use the category directly for action templates
+    details.link = `/docs/chaos-engineering/guides/actions/action-templates/${category}/${normaliseForURL(faultName)}/`;
     details.anchorLink = `${normaliseForURL(faultName)}`;
     return details;
   }
