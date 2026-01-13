@@ -20,6 +20,42 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 :::
 
+## January 2026
+
+### 2026.01.v1
+
+#### New Features
+
+- **AI-Powered Prompt Enhancement**  
+  Get more from your test prompts! The system now automatically evaluates the quality of your natural language prompts for assertions, commands, and tasks. When ambiguity is detected, the AI suggests improved versions that are clearer and more precise, ensuring consistent and repeatable test results. This intelligent prompt optimization reduces variability across test runs, improves reliability, and helps you create more effective tests with less effort.  
+  
+  Simply enter your prompt—if improvements are recommended, you can accept the suggestion or make further modifications before execution.
+  
+  To use this feature, enable `enablePromptSuggestion` in your settings.
+
+  <DocImage path={require('./static/ait/promptsugeestion.png')} alt="Promptsuggestion" title="Promptsuggestion" width='70%' />
+
+- **Updated Default LLM Model to GPT-5.2**  
+  The default Large Language Model has been upgraded to GPT-5.2, providing improved AI-driven test generation and smarter element detection for more reliable test automation.
+
+
+#### Enhancements & Bug Fixes
+
+- **Optimized Test Suite Parallel Execution**  
+  Test suites now utilize all available parallel workers simultaneously instead of running in batches. This improvement significantly reduces overall test execution time and maximizes resource utilization.
+
+- **Enhanced Calendar Date Range Selection**  
+  The calendar agent has been improved to correctly handle date range selections without prematurely closing the date picker modal. This ensures more reliable testing of applications with date range functionality.
+
+- **Improved Session Storage Compatibility**  
+  Variables stored in session storage are now JSON parsable, preventing errors when your application attempts to parse session storage values. This enhancement improves compatibility with applications that rely on structured session data.
+
+- **Streamlined Slack Notifications**  
+  Slack notifications have been optimized to report only test failures instead of all test suite executions, reducing notification noise and helping teams focus on issues that require attention.
+
+- **Fixed Calendar Modal Interaction**  
+  Resolved an issue where the calendar agent would incorrectly click the OK button and close the modal when selecting date ranges, ensuring proper date selection behavior.
+
 ## December 2025
 
 ### 2025.12.v1
