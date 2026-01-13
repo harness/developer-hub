@@ -455,6 +455,17 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 #### GitOps
 - Resolved an issue in GitOps instance deletion where simultaneous deletion of all pods for a service, project, or organization was not reflected in the instance summaries for services and environments. [CDS-114318]
 
+#### Important Update - GitOps MongoDB User Permissions
+
+To prevent deployment failures during MongoDB migration, the GitOps MongoDB user now requires extended permissions:
+
+- **For standard MongoDB deployments**: The GitOps user must have the `dbAdminAnyDatabase` role
+- **For MongoDB Atlas deployments**: The GitOps user must have the `atlasAdmin` role
+
+This is required because MongoDB migration executes `collMod` operations on the applications collection. Without these extended permissions, the gitops-service will fail to deploy.
+
+**Action Required**: Update your GitOps MongoDB user permissions before upgrading to ensure successful deployment.
+
 #### Continuous Delivery
 - Fixed an issue where account-level templates could have duplicate identifiers and multiple stable versions, leading to conflicts and unexpected behavior. This has been resolved to ensure template identifiers are unique and only one stable version exists per template. [PIPE-30923, ZD-97931, ZD-98071, ZD-99525]
 - Fixed an issue where post-production rollback failed when selecting an environment from the pipeline execution page. The rollback workflow now correctly handles environment selection during the post-production rollback process. [CDS-117023, ZD-98881]
