@@ -12,10 +12,9 @@ const doYourCustomStuff = () => {
   }
   if (document.getElementById('search-button')) return;
 
-  const searchButton = document.createElement('i');
+  const searchButton = document.createElement('button');
   searchButton.setAttribute('id', 'search-button');
-  searchButton.setAttribute('class', 'fa-solid fa-magnifying-glass');
-
+  searchButton.innerHTML = '<span>Search</span><i class="fa-solid fa-magnifying-glass"</i>';
   if (navbar__items) {
     navbar__items.appendChild(searchButton);
     if (window.location.pathname !== '/') {

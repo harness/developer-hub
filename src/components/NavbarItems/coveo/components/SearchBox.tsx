@@ -90,7 +90,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
     <div className={styles.searchBoxMain} id="coveo-search-main">
       <div className={styles.searchBox}>
         <input
-          placeholder="search ..."
+          placeholder="Search ..."
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={(e) => {
@@ -108,7 +108,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
             const isHighlighted = index === highlightedIndex;
             return (
               <li
-                role="menuitem"
+                role="menu-item"
                 aria-haspopup="true"
                 aria-expanded={isHighlighted}
                 tabIndex={0}

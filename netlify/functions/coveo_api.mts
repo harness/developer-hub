@@ -1,10 +1,7 @@
 import type { Context } from '@netlify/functions';
 
 export default async (req: Request, context: Context): Promise<Response> => {
-  const allowedOrigins = [
-    'https://www.harness.io',
-    'https://staging.marketing.harness.io',
-  ];
+  const allowedOrigins = ['https://www.harness.io', 'https://staging-marketing.harness.io'];
 
   let header: {
     [key: string]: string;
@@ -35,7 +32,7 @@ export default async (req: Request, context: Context): Promise<Response> => {
   }
 
   const postData = {
-    validFor: 12*60*60*1000, //valid for 12hrs
+    validFor: 12 * 60 * 60 * 1000, //valid for 12hrs
     userIds: [
       {
         name: 'guest',
@@ -46,18 +43,15 @@ export default async (req: Request, context: Context): Promise<Response> => {
     searchHub: 'WebsiteSearch',
   };
   try {
-    const response = await fetch(
-      'https://platform.cloud.coveo.com/rest/search/v2/token',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: 'Bearer ' + process.env.COVEO_API_KEY,
-        },
-        body: JSON.stringify(postData),
-      }
-    );
+    const response = await fetch('https://platform.cloud.coveo.com/rest/search/v2/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + process.env.COVEO_API_KEY,
+      },
+      body: JSON.stringify(postData),
+    });
     if (!response.ok) {
       return new Response('Failed to fetch token', {
         status: response.status,
@@ -77,7 +71,7 @@ export default async (req: Request, context: Context): Promise<Response> => {
       {
         status: 200,
         headers: header,
-      }
+      },
     );
   } catch (error) {
     return new Response(JSON.stringify(error), {

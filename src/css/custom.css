@@ -691,7 +691,7 @@ details summary::before {
   background-color: #f9fafb;
   padding: 1rem;
   border-radius: 0.05rem;
-  font-size: 0.80rem;
+  font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
 
@@ -742,7 +742,7 @@ details summary::before {
 }
 
 .theme-doc-toc-desktop:before {
-  content: "On this page";
+  content: 'On this page';
   font-weight: 600;
   display: block;
   color: #1f2937; /* gray-900 */
@@ -952,18 +952,18 @@ aside.theme-doc-sidebar-container > div {
 /* ========== Balanced Doc Page Layout (Desktop) ========== */
 @media (min-width: 997px) {
   /* Main doc page wrapper - use CSS Grid for balanced layout */
-  [class*="docPage"],
+  [class*='docPage'],
   .docPage_gN6j {
     display: grid !important;
-    grid-template-columns: 
-      calc(var(--doc-sidebar-width) + var(--doc-layout-outer-spacing)) 
-      1fr 
+    grid-template-columns:
+      calc(var(--doc-sidebar-width) + var(--doc-layout-outer-spacing))
+      1fr
       calc(var(--doc-toc-width) + var(--doc-layout-outer-spacing));
     gap: 0;
     max-width: 100%;
     padding: 0;
   }
-  
+
   /* Left sidebar - outer margin from viewport */
   .theme-doc-sidebar-container {
     width: 100% !important;
@@ -971,27 +971,29 @@ aside.theme-doc-sidebar-container > div {
     padding-left: var(--doc-layout-outer-spacing);
     padding-right: var(--doc-layout-inner-gap);
   }
-  
+
   .theme-doc-sidebar-container nav.menu {
     width: 100%;
     max-width: var(--doc-sidebar-width);
   }
-  
+
   /* Main content area */
-  [class*="docMainContainer"],
+  [class*='docMainContainer'],
   .docMainContainer_gN2j {
     padding: 0 var(--doc-layout-inner-gap);
     max-width: 100%;
     width: 100%;
   }
-  
+
   /* Right TOC - outer margin from viewport */
   .theme-doc-toc-desktop {
     padding-right: var(--doc-layout-outer-spacing);
     padding-left: var(--doc-layout-inner-gap);
-    width: calc(var(--doc-toc-width) + var(--doc-layout-outer-spacing) + var(--doc-layout-inner-gap));
+    width: calc(
+      var(--doc-toc-width) + var(--doc-layout-outer-spacing) + var(--doc-layout-inner-gap)
+    );
   }
-  
+
   /* Ensure TOC content doesn't overflow */
   .theme-doc-toc-desktop > ul {
     max-width: var(--doc-toc-width);
@@ -1010,27 +1012,27 @@ aside.theme-doc-sidebar-container > div {
 
 /* When TOC is not present, adjust grid */
 @media (min-width: 997px) {
-  [class*="docPage"]:not(:has(.theme-doc-toc-desktop)),
+  [class*='docPage']:not(:has(.theme-doc-toc-desktop)),
   .docPage_gN6j:not(:has(.theme-doc-toc-desktop)) {
-    grid-template-columns: 
-      calc(var(--doc-sidebar-width) + var(--doc-layout-outer-spacing)) 
+    grid-template-columns:
+      calc(var(--doc-sidebar-width) + var(--doc-layout-outer-spacing))
       1fr;
   }
-  
+
   /* Fallback for browsers without :has() - main content padding */
-  [class*="docMainContainer"]:last-child,
+  [class*='docMainContainer']:last-child,
   .docMainContainer_gN2j:last-child {
     padding-right: var(--doc-layout-outer-spacing);
   }
 }
 
 /* Hide ALL collapsible sidebar elements */
-.theme-doc-sidebar-container button[title="Collapse sidebar"],
-[class*="collapseSidebarButton"],
-[class*="CollapseSidebar"],
-[class*="collapseButton"],
-[class*="expandButton"],
-[class*="sidebarFooter"],
+.theme-doc-sidebar-container button[title='Collapse sidebar'],
+[class*='collapseSidebarButton'],
+[class*='CollapseSidebar'],
+[class*='collapseButton'],
+[class*='expandButton'],
+[class*='sidebarFooter'],
 .collapseSidebarButton_PEFL,
 .theme-doc-sidebar-container nav + div,
 .theme-doc-sidebar-container .menu + div,
@@ -1046,14 +1048,14 @@ aside.theme-doc-sidebar-container > div {
 }
 
 /* Remove the resize handle */
-.theme-doc-sidebar-container [class*="sidebarViewport"]::after,
-[class*="sidebarViewport"]::before {
+.theme-doc-sidebar-container [class*='sidebarViewport']::after,
+[class*='sidebarViewport']::before {
   display: none !important;
 }
 
 /* Remove any borders from sidebar viewport */
-[class*="sidebarViewport"],
-[class*="sidebarViewport"] > div {
+[class*='sidebarViewport'],
+[class*='sidebarViewport'] > div {
   border: none !important;
 }
 
@@ -1083,8 +1085,8 @@ aside.theme-doc-sidebar-container > div {
 /* Active menu item - light cyan border matching page gradient */
 .menu__link--active {
   background: linear-gradient(90deg, rgba(205, 236, 252, 0.3) 0%, transparent 100%);
-  border-left: 3px solid #90D0FF;
-  color: #39ABE4;
+  border-left: 3px solid #90d0ff;
+  color: #39abe4;
   font-weight: 600;
 }
 
@@ -1107,8 +1109,8 @@ aside.theme-doc-sidebar-container > div {
 .menu__link--sublist.menu__link--active,
 .menu__list-item-collapsible .menu__link--active {
   background: linear-gradient(90deg, rgba(205, 236, 252, 0.3) 0%, transparent 100%) !important;
-  border-left: 3px solid #90D0FF !important;
-  color: #39ABE4 !important;
+  border-left: 3px solid #90d0ff !important;
+  color: #39abe4 !important;
   font-weight: 600;
 }
 
@@ -1411,14 +1413,28 @@ figure p {
 }
 
 #search-button {
-  color: var(--ifm-heading-color);
-  font-size: 16px;
   position: absolute;
   right: 0;
   margin-right: 20px;
   cursor: pointer;
 
   display: none;
+  background: #fff9;
+  border: 1px solid #0000001a;
+  border-radius: 8px;
+  height: 30px;
+  padding: 0 12px;
+  transition: all 0.2s;
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+}
+[data-theme='dark'] #search-button {
+  background-color: #ffffff1f;
+  border-color: #fff3;
+  color: #9ca3af;
 }
 
 .main-nav-coveo {
@@ -1497,13 +1513,15 @@ figure p {
 /*== end of code for tooltips ==*/
 
 @media screen and (max-width: 996px) {
-  .main-nav-coveo {
+  /* Hide in navbar but show in sidebar */
+  .navbar__inner .main-nav-coveo {
+    display: none;
+  }
+  .navbar__inner .navbar__search_kapa {
     display: none;
   }
   #search-button {
-    display: block;
-    color: black;
-    font-weight: bold;
+    display: flex;
   }
   [hover-tooltip]:hover::before {
     transform: translate(-30%);
@@ -2036,7 +2054,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 
 .sidebar-hsf > div > a::before,
 .sidebar-hsf > a::before {
-  content: ' ';                                                     
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
@@ -2265,7 +2283,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   font-size: 12px;
   font-weight: 700;
   color: var(--ifm-color-emphasis-700);
-  background-color: #EEFBFF;
+  background-color: #eefbff;
   padding: 8px 12px;
   margin: 8px 0;
   border-top: 1px solid var(--ifm-color-emphasis-200);
@@ -2275,8 +2293,8 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 
 /* Dark mode header appearance */
 html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
-  color: var(--ifm-color-content);                       /* light text */
-  background-color: rgba(61, 199, 246, 0.12);            /* tint of primary-4 (#3dc7f6) */
+  color: var(--ifm-color-content); /* light text */
+  background-color: rgba(61, 199, 246, 0.12); /* tint of primary-4 (#3dc7f6) */
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -2289,7 +2307,7 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 
 /* Optional: Remove hover feedback since headers are static text */
 .navbar .dropdown__menu .dropdown__section-header:hover {
-  background-color: #EEFBFF;
+  background-color: #eefbff;
   cursor: default;
 }
 
@@ -2299,15 +2317,15 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 }
 
 /* Ensure docs dropdown links are aligned with icon */
-.navbar .dropdown__link[href^="/docs/"],
-.navbar .dropdown__link[href^="/university"] {
+.navbar .dropdown__link[href^='/docs/'],
+.navbar .dropdown__link[href^='/university'] {
   display: flex;
   align-items: center;
 }
 
-.navbar .dropdown__link[href^="/docs/"]::before,
-.navbar .dropdown__link[href^="/university"]::before {
-  content: "";
+.navbar .dropdown__link[href^='/docs/']::before,
+.navbar .dropdown__link[href^='/university']::before {
+  content: '';
   width: 20px;
   height: 20px;
   margin-right: 8px;
@@ -2317,46 +2335,95 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 
 /* === Navbar Documentation dropdown icons (initial set) === */
 /* Not categorized */
-.navbar .dropdown__link[href*="/docs/platform"]{ --nav-icon: url('/img/icon_platform.svg'); }
-.navbar .dropdown__link[href*="/docs/code-repository"]{ --nav-icon: url('/img/icon_code.svg'); }
-.navbar .dropdown__link[href*="/docs/continuous-error-tracking"]{ --nav-icon: url('/img/icon_cet.svg'); }
+.navbar .dropdown__link[href*='/docs/platform'] {
+  --nav-icon: url('/img/icon_platform.svg');
+}
+.navbar .dropdown__link[href*='/docs/code-repository'] {
+  --nav-icon: url('/img/icon_code.svg');
+}
+.navbar .dropdown__link[href*='/docs/continuous-error-tracking'] {
+  --nav-icon: url('/img/icon_cet.svg');
+}
 /* AI for DevOps & Automation */
-.navbar .dropdown__link[href*="/docs/continuous-delivery"]{ --nav-icon: url('/img/icon_cd.svg'); }
-.navbar .dropdown__link[href*="/docs/continuous-integration"]{ --nav-icon: url('/img/icon_ci.svg'); }
-.navbar .dropdown__link[href*="/docs/internal-developer-portal"]{ --nav-icon: url('/img/icon_idp.svg'); }
-.navbar .dropdown__link[href*="/docs/infrastructure-as-code-management"]{ --nav-icon: url('/img/icon_iacm.svg'); }
-.navbar .dropdown__link[href*="/docs/database-devops"]{ --nav-icon: url('/img/icon_dbdevops.svg'); }
-.navbar .dropdown__link[href*="/docs/artifact-registry"]{ --nav-icon: url('/img/icon-ar.svg'); }
-.navbar .dropdown__link[href*="/docs/cloud-development-environments"]{ --nav-icon: url('/img/icon-cde.svg'); }
+.navbar .dropdown__link[href*='/docs/continuous-delivery'] {
+  --nav-icon: url('/img/icon_cd.svg');
+}
+.navbar .dropdown__link[href*='/docs/continuous-integration'] {
+  --nav-icon: url('/img/icon_ci.svg');
+}
+.navbar .dropdown__link[href*='/docs/internal-developer-portal'] {
+  --nav-icon: url('/img/icon_idp.svg');
+}
+.navbar .dropdown__link[href*='/docs/infrastructure-as-code-management'] {
+  --nav-icon: url('/img/icon_iacm.svg');
+}
+.navbar .dropdown__link[href*='/docs/database-devops'] {
+  --nav-icon: url('/img/icon_dbdevops.svg');
+}
+.navbar .dropdown__link[href*='/docs/artifact-registry'] {
+  --nav-icon: url('/img/icon-ar.svg');
+}
+.navbar .dropdown__link[href*='/docs/cloud-development-environments'] {
+  --nav-icon: url('/img/icon-cde.svg');
+}
 
 /* AI for Testing & Resilience */
-.navbar .dropdown__link[href*="/docs/feature-management-experimentation"]{ --nav-icon: url('/img/icon_fme.svg'); }
-.navbar .dropdown__link[href*="/docs/feature-flags"]{ --nav-icon: url('/img/icon_ff.svg'); }
-.navbar .dropdown__link[href*="/docs/chaos-engineering"]{ --nav-icon: url('/img/icon_ce.svg'); }
-.navbar .dropdown__link[href*="/docs/ai-test-automation"]{ --nav-icon: url('/img/logo-ata.svg'); }
-.navbar .dropdown__link[href*="/docs/ai-sre"]{ --nav-icon: url('/img/icon-ir.svg'); }
-.navbar .dropdown__link[href*="/docs/service-reliability-management"]{ --nav-icon: url('/img/icon_srm.svg'); }
+.navbar .dropdown__link[href*='/docs/feature-management-experimentation'] {
+  --nav-icon: url('/img/icon_fme.svg');
+}
+.navbar .dropdown__link[href*='/docs/feature-flags'] {
+  --nav-icon: url('/img/icon_ff.svg');
+}
+.navbar .dropdown__link[href*='/docs/chaos-engineering'] {
+  --nav-icon: url('/img/icon_ce.svg');
+}
+.navbar .dropdown__link[href*='/docs/ai-test-automation'] {
+  --nav-icon: url('/img/logo-ata.svg');
+}
+.navbar .dropdown__link[href*='/docs/ai-sre'] {
+  --nav-icon: url('/img/icon-ir.svg');
+}
+.navbar .dropdown__link[href*='/docs/service-reliability-management'] {
+  --nav-icon: url('/img/icon_srm.svg');
+}
 
 /* AI for Security & Compliance */
-.navbar .dropdown__link[href*="/docs/appsec-discovery"]{ --nav-icon: url('/img/icon-api-security-posture.svg'); }
-.navbar .dropdown__link[href*="/docs/appsec-runtime-protection"]{ --nav-icon: url('/img/icon-api-runtime-protection.svg'); }
-.navbar .dropdown__link[href*="/docs/appsec-security-testing"]{ --nav-icon: url('/img/icon-api-security-posture.svg'); }
-.navbar .dropdown__link[href*="/docs/security-testing-orchestration"]{ --nav-icon: url('/img/icon_sto.svg'); }
-.navbar .dropdown__link[href*="/docs/software-supply-chain-assurance"]{ --nav-icon: url('/img/icon_ssca.svg'); }
+.navbar .dropdown__link[href*='/docs/appsec-discovery'] {
+  --nav-icon: url('/img/icon-api-security-posture.svg');
+}
+.navbar .dropdown__link[href*='/docs/appsec-runtime-protection'] {
+  --nav-icon: url('/img/icon-api-runtime-protection.svg');
+}
+.navbar .dropdown__link[href*='/docs/appsec-security-testing'] {
+  --nav-icon: url('/img/icon-api-security-posture.svg');
+}
+.navbar .dropdown__link[href*='/docs/security-testing-orchestration'] {
+  --nav-icon: url('/img/icon_sto.svg');
+}
+.navbar .dropdown__link[href*='/docs/software-supply-chain-assurance'] {
+  --nav-icon: url('/img/icon_ssca.svg');
+}
 
 /* AI for Cost & Optimization */
-.navbar .dropdown__link[href*="/docs/cloud-cost-management"]{ --nav-icon: url('/img/icon_ccm.svg'); }
-.navbar .dropdown__link[href*="/docs/software-engineering-insights"]{ --nav-icon: url('/img/icon_sei.svg'); }
+.navbar .dropdown__link[href*='/docs/cloud-cost-management'] {
+  --nav-icon: url('/img/icon_ccm.svg');
+}
+.navbar .dropdown__link[href*='/docs/software-engineering-insights'] {
+  --nav-icon: url('/img/icon_sei.svg');
+}
 
 /* Exceptions: links that should not display icons or spacing */
-.navbar .dropdown__link[href*="/university"]{ --nav-icon: url('/img/university_icon.svg'); }
-.navbar .dropdown__link[href*="/docs/harness-solutions-factory"]{ --nav-icon: url('/img/icon-hsf.svg'); }
-.navbar .dropdown__link[href*="/docs/open-source"]::before,
-.navbar .dropdown__link[href*="/docs/self-managed-enterprise-edition"]::before,
-.navbar .dropdown__link[href*="/docs/faqs"]::before,
-.navbar .dropdown__link[href*="/docs/troubleshooting"]::before,
-.navbar .dropdown__link[href*="/docs/harness-cloud-operations"]::before
-{
+.navbar .dropdown__link[href*='/university'] {
+  --nav-icon: url('/img/university_icon.svg');
+}
+.navbar .dropdown__link[href*='/docs/harness-solutions-factory'] {
+  --nav-icon: url('/img/icon-hsf.svg');
+}
+.navbar .dropdown__link[href*='/docs/open-source']::before,
+.navbar .dropdown__link[href*='/docs/self-managed-enterprise-edition']::before,
+.navbar .dropdown__link[href*='/docs/faqs']::before,
+.navbar .dropdown__link[href*='/docs/troubleshooting']::before,
+.navbar .dropdown__link[href*='/docs/harness-cloud-operations']::before {
   content: none !important;
   width: 0 !important;
   height: 0 !important;
@@ -2552,7 +2619,8 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 }
 
 @keyframes betaBadgePulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -2588,7 +2656,7 @@ html[data-theme='light'] .main-wrapper {
 
 /* Doc content and sidebar backgrounds */
 html[data-theme='light'] .theme-doc-sidebar-container,
-html[data-theme='light'] [class*="docMainContainer"],
+html[data-theme='light'] [class*='docMainContainer'],
 html[data-theme='light'] article,
 html[data-theme='light'] .table-of-contents {
   background: transparent;
@@ -2615,7 +2683,7 @@ html {
 
 /* Navbar inner elements transparent - container gradient set via JS */
 html[data-theme='light'] .navbar,
-html[data-theme='light'] [class*="secondaryNav"] {
+html[data-theme='light'] [class*='secondaryNav'] {
   background: transparent !important;
 }
 

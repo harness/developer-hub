@@ -20,17 +20,38 @@ const config: Config = {
   url: 'https://developer.harness.io',
   baseUrl: BASE_URL,
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   onBrokenAnchors: 'ignore',
   favicon: 'img/hdh_fav_icon_grey.ico',
   customFields: {
     SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
     HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
   },
-
-  //Mermaid Diagram Functionality
+  scripts: [
+    {
+      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+      async: true,
+      'data-website-id': 'db287d54-3525-4674-9d83-a0cbe35024d2',
+      'data-project-name': 'Harness',
+      'data-project-color': '#1D1D1B',
+      'data-search-mode-enabled': 'false',
+      'data-search-mode-default': 'false',
+      'data-modal-open-on-command-k': 'true',
+      'data-modal-override-open-selector-ask-ai': '.navbar__search_kapa',
+      'data-button-hide': 'true',
+      'data-project-logo': 'https://developer.harness.io/img/icon_harness.svg',
+      'data-modal-disclaimer':
+        'This AI assistant answers Harness questions using your [documentation](https://developer.harness.io/docs/), [API reference](https://apidocs.harness.io/) and [YouTube playlist](https://www.youtube.com/@harnesscommunity/playlists).',
+      'data-modal-example-questions':
+        'How do I update Harness delegate?,Can I save my filter settings?',
+    },
+  ],
   markdown: {
+    //Mermaid Diagram Functionality
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownImages: 'warn',
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 
@@ -92,6 +113,10 @@ const config: Config = {
         // Top row: only search and action buttons
         {
           type: 'custom-coveo-search',
+          position: 'right',
+        },
+        {
+          type: 'custom-kapa-search',
           position: 'right',
         },
         {
