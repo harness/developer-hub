@@ -494,7 +494,100 @@ The delegate runs under the LocalSystem account.
 
 **Proxy configuration:**
 
-If you need proxy settings, add them to `C:\HarnessDelegate\config.env`. See [Configure Delegate Proxy Settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings).
+The delegate inherits system-level proxies by default, but you can set a custom proxy configuration through the delegate config.
+
+There are different ways to set up a proxy:
+
+1. **Delegate Config (Recommended)**
+
+   Edit `C:\HarnessDelegate\config.env` and add:
+
+   ```bash
+   PROXY_HOST=3.139.239.136
+   PROXY_PORT=3128
+   PROXY_SCHEME=http
+   PROXY_USER=proxy_user
+   PROXY_PASSWORD=password
+   NO_PROXY="localhost,127.0.0.1,.corp.local,10.0.0.0/8"
+   ```
+
+2. **Per-session (current PowerShell only):**
+
+   ```powershell
+   $env:HTTP_PROXY  = "http://USER:PASSWORD@PROXY_HOST:PORT"
+   $env:HTTPS_PROXY = "http://USER:PASSWORD@PROXY_HOST:PORT"
+   $env:NO_PROXY    = "localhost,127.0.0.1,.corp.local,10.0.0.0/8"
+   ```
+
+3. **Persistent (system-wide) for all processes:**
+
+   Run in elevated PowerShell:
+
+   ```powershell
+   setx /M HTTP_PROXY  "http://USER:PASSWORD@PROXY_HOST:PORT"
+   setx /M HTTPS_PROXY "http://USER:PASSWORD@PROXY_HOST:PORT"
+   setx /M NO_PROXY    "localhost,127.0.0.1,.corp.local,10.0.0.0/8"
+   ```
+
+4. **Optional (WinHTTP stack for some Windows services):**
+
+   ```powershell
+   netsh winhttp set proxy proxy-server="http=PROXY_HOST:PORT;https=PROXY_HOST:PORT" bypass-list="localhost;127.0.0.1;*.corp.local"
+   ```
+
+:::warning PowerShell Version Compatibility
+
+PowerShell versions below 7 do not support environment proxy configurations like `http_proxy`, which the delegate sets up, and they only work with WinHTTP proxy configurations. Windows 2019 and 2022 ship with PowerShell 5.1, which means the Run step will not work until the WinHTTP proxy is manually configured or Powershell is upgraded to >7
+
+:::
+
+For more information, see [Configure Delegate Proxy Settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings).
+
+**Certificate configuration:**
+
+The delegate and containerless steps use the system-level trust store for HTTPS connectivity. In Windows, import the CA to the system store using this command:
+
+```powershell
+Import-Certificate -FilePath "C:\path\corp-root.cer" -CertStoreLocation Cert:\LocalMachine\Root
+```
+
+**Git operations with custom certificates:**
+
+For Git operations, two different SSL channels can be used, with varying configurations:
+
+1. **SChannel (Recommended):**
+
+   The native Windows provider integrates with the Windows Certificate Store. Windows performs a revocation check on certificates, so it will fail if the cert lacks a CRL/OSCP URL. However, the check is best-effort; even if the URL is not working, it may still succeed, but a missing URL will always throw an error.
+
+   To use SChannel:
+
+   ```powershell
+   git config --global http.sslBackend schannel
+   ```
+
+   Import your corporate CA into Windows "Trusted Root Certification Authorities":
+
+   ```powershell
+   Import-Certificate -FilePath "C:\path\corp-root.cer" -CertStoreLocation Cert:\LocalMachine\Root
+   ```
+
+   Or use `certmgr.msc` or `certlm.msc` to manage certificates manually. Git will trust what Windows trusts; no file path is needed.
+
+2. **OpenSSL:**
+
+   This is the standard Git used everywhere. It employs its own CA bundle for validation, stored at `C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt`.
+
+   To use OpenSSL:
+
+   ```powershell
+   git config --global http.sslBackend openssl
+   ```
+
+   If using the OpenSSL channel, append your CA certificate to `C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt`.
+
+   :::note
+   This configuration only affects Git clone operations. Other steps or tasks will not utilize this certificate, and Git API requests will not use it.
+   :::
 
 **Manual plugin installation:**
 
