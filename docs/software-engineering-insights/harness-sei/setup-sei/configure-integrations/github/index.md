@@ -7,10 +7,12 @@ sidebar_label: GitHub Cloud
 
 import Github from '@site/docs/software-engineering-insights/shared/integrations/github.mdx';
 
-:::warning Breaking Change (Effective October 7, 2025)
-Due to a change in the GitHub Events API, Harness SEI can no longer ingest commits that are not associated with a pull request (PR). Only PR-linked commits are currently ingested and displayed in Harness SEI.
+:::info GitHub Commit Ingestion Update (Resolved)
+A GitHub Events API change temporarily impacted ingestion of non-PR commits in Harness SEI.
 
-For more information about impacted metrics and widgets, see [GitHub Commit Ingestion Breaking Change](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/github/commit-ingestion).
+The issue has been resolved, and missing commits have been backfilled for all healthy, non-satellite integrations. Some integrations may require token updates before backfill can complete.
+
+For details, see [GitHub Commit Ingestion Update](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/github/commit-ingestion).
 :::
 
 <Github />
