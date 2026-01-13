@@ -42,17 +42,20 @@ To ensure your integration can work correctly, refer to the list of [Harness Pla
    <img src={bitbucketAuth} alt="Authentication Type" width="800" />
 
 <Tabs>
-  <TabItem value="oauth" label="Using OAuth" default>
+<TabItem value="oauth" label="Using OAuth" default>
 
-6. Choose **Using OAuth** as the authentication medium. OAuth simplifies the process by allowing you to log in directly to Bitbucket and grant access permissions without sharing tokens or passwords.
-
-   * You’ll be redirected to Bitbucket, where you can grant permissions for the integration. Bitbucket will confirm authorization, returning you to the integration setup page.
+6. Click **Using OAuth** to log in directly to Bitbucket and grant access permissions without sharing tokens or passwords. Bitbucket will confirm authorization, returning you to the integration setup page.
+   
    * Enter a **Name** for the integration.
-   * The **Description** and **Tags** are optional.
-   * Click on **Save** to save the integration.
+   * Optionally, add a **Description** and **Tags**.
+   * Click **Save** to save the integration.
 
 </TabItem>
-  <TabItem value="app-password" label="Using App Password">
+<TabItem value="app-password" label="Using App Password">
+
+:::info App Passwords
+For organizations that have [deprecated App Passwords](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-enters-phase-2-of-app-password-deprecation), see the **Using OAuth** tab to connect Bitbucket Cloud.
+:::
 
 If your Bitbucket account is tied to a Google login or uses two-factor authentication, you'll need to set up an App Password instead of OAuth.
 
