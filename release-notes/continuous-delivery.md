@@ -53,9 +53,42 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
-## January 
 
-### Version 1.125.2
+## January 2026
+
+### GitOps Service 1.47.3, GitOps Agent 0.106.0
+
+#### New Features and Enhancements
+
+- **ArgoCD Upgraded to 3.1.8**  
+  Harness GitOps has upgraded to ArgoCD 3.1.8 (from 2.x), bringing significant security improvements, enhanced functionality, and updated tooling. This major version upgrade includes:
+  
+  **Security Enhancements:**
+  - **Symlink Protection:** The API server's `--staticassets` directory is now protected against out-of-bounds symlinks to prevent symlink attacks
+  - **Sanitized Project API Response:** Project API responses have been sanitized to remove sensitive information (addresses GHSA-786q-9hcg-v9ff)
+  - **Enhanced OpenID Connect Flow:** The authorization code flow with PKCE is now handled server-side instead of in the UI, improving security and consistency
+  
+  **Tool Updates:**
+  - **Helm:** Upgraded to version 3.18.4 (from previous version)
+  - **Kustomize:** Upgraded to version 5.7.0 (from previous version)
+  
+  **API Changes:**
+  - The `/api/v1/applications/{name}/resource/actions` endpoint is deprecated in favor of `/api/v1/applications/{name}/resource/actions/v2`. Users should migrate to the new v2 endpoint
+  
+  For complete details on the ArgoCD upgrade, refer to the official ArgoCD upgrade documentation:
+  - [Upgrading from v2.14 to v3.0](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.14-3.0/)
+  - [Upgrading from v3.0 to v3.1](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/3.0-3.1/)
+
+- **ArgoCD Helm Chart Upgraded to 9.0.0**  
+  The GitOps Helm chart has been upgraded from version 7.x to 9.0.0 to align with the ArgoCD 3.1.8 release. This update incorporates necessary configuration changes and improvements for the new ArgoCD version. For detailed information on the Helm chart changes, see the [argo-cd Helm chart release notes](https://github.com/argoproj/argo-helm/releases). 
+
+For more information about this major ArgoCD upgrade, including breaking changes and compatibility considerations, see [ArgoCD 3.1.8 upgrade](/docs/continuous-delivery/gitops/gitops-entities/agents/argocd-3-upgrade).
+
+#### Fixed issues
+
+- Fixed an issue where application parameters were not appearing in the GitOps UI for organization-level agents. This occurred because the system was incorrectly prefixing *org.* to the agent ID when fetching agent details, resulting in a 404 error and preventing subsequent API calls from completing. The parameters existed in the manifest and sync operations worked correctly, but the UI failed to render them. The agent ID handling has been corrected to work properly for organization-level scopes. (**CDS-117296, ZD-99840**)
+
+### Version 1.125.4
 
 #### New Features and Enhancements
 
@@ -70,6 +103,10 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where the *Create Github Repo* step failed with an error when used within an insert step in a templated pipeline, preventing users from templating approval flows. (**CDS-117231**, **ZD-99763**)
 - Fixed an issue where pipeline execution status was not being sent to Git, preventing users from monitoring pipeline progress within their Git repository. This was due to a Git connector configuration issue, which has now been resolved. (**PIPE-30761**, **ZD-97158**, **ZD-99034**)
 - Fixed an issue where the repository list failed to populate when creating a new remote pipeline, requiring users to manually enter the repository name. (**PIPE-31217**, **ZD-98885**, **ZD-99375**, **ZD-99394**, **ZD-99657**, **ZD-99963**, **ZD-100020**)
+
+:::info
+Wondering where version 1.122.xx, 1.123.xx and 1.124.xx are? Those releases was rolled into 1.125.xx and upgrades will skip directly from 1.121.xx to 1.125.xx. Don't worry, you're not missing a thing!
+:::
 
 ### GitOps Service 1.46.2, GitOps Agent 0.105.0
 
