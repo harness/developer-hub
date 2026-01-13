@@ -129,7 +129,7 @@ After migration, Split Admin API keys are no longer valid for the following [Spl
 :::tip
 Split Admin API keys continue to work for all Split APIs, including feature flag-related endpoints (such as flags, segments, and traffic types).
 
-After migration, Split Admin API keys are no longer valid only for the administrative endpoints that have moved into Harness FME (such as users, user groups, projects, permissions, and Admin API keys). Existing Split API keys, and Harness API keys, can continue to authenticate Split Admin API endpoints.
+After migration, Split Admin API keys are no longer valid only for the administrative endpoints that have moved into Harness FME (such as users, user groups, projects, permissions, and Admin API keys) and deprecated endpoints. Existing Split API keys, and Harness API keys, can continue to authenticate Split Admin API endpoints, including the [Get Projects endpoint](https://docs.split.io/reference/get-workspaces).
 :::
 
 </TabItem>
