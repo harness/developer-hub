@@ -80,7 +80,9 @@ Once a ticket is created, you can access the corresponding Jira ticket from the 
 
 :::note
 
-Auto Jira ticket creation applies only to exemption requests made after the [feature](/docs/security-testing-orchestration/jira-integrations#create-a-ticket-when-an-exemption-is-created) is enabled in the External Tickets settings
+- This feature is behind the feature flag `STO_EXEMPTION_TICKET`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+
+- Auto Jira ticket creation applies only to exemption requests made after the [feature](/docs/security-testing-orchestration/jira-integrations#create-a-ticket-when-an-exemption-is-created) is enabled in the External Tickets settings
 
 :::
 
