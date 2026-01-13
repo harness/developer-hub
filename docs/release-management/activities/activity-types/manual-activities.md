@@ -5,66 +5,49 @@ description: Learn about manual activities and how to configure them for human i
 sidebar_position: 2
 ---
 
-Manual activities require human intervention and provide checkpoints where team members must perform actions, provide approvals, or complete tasks.
+Manual activities require human intervention and provide checkpoints where team members must perform actions, provide approvals, or complete tasks. These activities pause the release execution and wait for designated users to take action before proceeding.
 
 ## What are Manual Activities?
 
 A manual activity is an activity where users can create tasks, record their inputs, and finalize their inputs in a manual fashion. Manual activities require human intervention and provide checkpoints where team members must perform actions, provide approvals, or complete tasks.
 
-Manual activities enable:
-- **Human Oversight**: Critical decision points
-- **Manual Tasks**: Actions that can't be automated
-- **Approvals**: Required sign-offs
-- **Reviews**: Code or configuration reviews
-- **Input Recording**: Users can record their inputs and finalize them manually
-- **Sign-offs**: Users can provide sign-offs with QA inputs or other documentation
+Manual activities enable human oversight at critical decision points where automated execution isn't appropriate. They support manual tasks that can't be automated, such as complex validations or decisions that require human judgment.
+
+These activities also handle required sign-offs and approvals, code or configuration reviews, and allow users to record their inputs and finalize them manually. Users can provide sign-offs with QA inputs or other documentation, creating an audit trail of decisions and validations.
 
 ## Manual Activity Workflow
 
-When a manual activity is encountered during release execution:
+When a manual activity is encountered during release execution, the workflow follows a structured process. The activity enters a "waiting for input" or "on hold" state, pausing the release at that point. Notifications are sent to the activity owner or assigned users, alerting them that their action is required.
 
-1. **Activity Goes On Hold**: The activity enters a "waiting for input" or "on hold" state
-2. **Notification Sent**: Notifications are sent to the activity owner or assigned users
-3. **User Action Required**: Users need to:
-   - Review the activity requirements
-   - Create tasks if needed
-   - Record their inputs
-   - Finalize their inputs manually
-4. **Sign-off**: Users can provide sign-offs, such as:
-   - "I'm signing off this release with the QA inputs"
-   - Record QA inputs and test results
-   - Provide approval comments
-5. **Completion**: Once inputs are finalized and sign-off is provided, the activity completes and the release continues
+Users need to review the activity requirements, create tasks if needed, record their inputs, and finalize their inputs manually. Users can provide sign-offs, such as stating "I'm signing off this release with the QA inputs," recording QA inputs and test results, or providing approval comments that explain their decision.
+
+Once inputs are finalized and sign-off is provided, the activity completes and the release continues to the next step.
 
 ## Types of Manual Activities
 
 ### Manual Tasks
-Tasks requiring user action:
-- **Data Entry**: Manual data input
-- **Configuration**: Manual configuration changes
-- **Verification**: Manual verification steps
-- **Documentation**: Manual documentation tasks
+
+Manual tasks require user action that can't be automated. These include manual data entry where users must input information, manual configuration changes that need human verification, and manual verification steps that require visual inspection or judgment.
+
+Manual documentation tasks that need human review and completion are also part of this category.
 
 ### Approval Activities
-Activities requiring approval:
-- **Deployment Approval**: Approve deployments
-- **Release Approval**: Approve releases
-- **Change Approval**: Approve changes
-- **Go/No-Go Decisions**: Release go/no-go
+
+Approval activities require explicit sign-off from designated approvers. These include deployment approvals where stakeholders must approve before deployments proceed, and release approvals for overall release go-ahead.
+
+Change approvals for configuration or process changes, and go/no-go decisions where teams jointly decide whether to proceed with a release, are also common approval activity types.
 
 ### Review Activities
-Activities requiring review:
-- **Code Review**: Code review checkpoints
-- **Configuration Review**: Configuration validation
-- **Security Review**: Security assessment
-- **Compliance Review**: Compliance validation
+
+Review activities require human review and validation. These include code review checkpoints where developers must review code changes, and configuration review where settings must be validated.
+
+Security review where security teams assess risks, and compliance review where compliance teams verify regulatory requirements are met, are also important review activity types.
 
 ### Testing Activities
-Manual testing tasks:
-- **User Acceptance Testing**: UAT execution
-- **Exploratory Testing**: Manual exploration
-- **Performance Testing**: Manual performance validation
-- **Integration Testing**: Manual integration checks
+
+Manual testing tasks require human testers to perform validation. These include user acceptance testing where end users validate functionality, and exploratory testing where testers manually explore the system.
+
+Manual performance validation where teams verify performance characteristics, and manual integration checks where teams verify system integration points, are also common testing activities.
 
 ## Configuration
 
@@ -151,32 +134,28 @@ activity:
 ## Best Practices
 
 ### Clear Instructions
-Provide detailed instructions:
-- What needs to be done
-- Why it's needed
-- What to check
-- How to complete
+
+Provide detailed instructions that explain what needs to be done, why it's needed, what to check, and how to complete the activity.
+
+Clear instructions reduce confusion and ensure users can complete manual activities efficiently without needing to ask questions or make assumptions about what's required.
 
 ### Appropriate Timeouts
-Set reasonable timeouts:
-- Not too short: Rushed decisions
-- Not too long: Blocking releases
-- Consider time zones
-- Account for weekends
+
+Set reasonable timeouts that balance urgency with practicality. Timeouts shouldn't be too short, which forces rushed decisions, or too long, which blocks releases unnecessarily.
+
+Consider time zones when setting deadlines, and account for weekends and holidays when releases might span non-business days.
 
 ### Owner Assignment
-Assign appropriate owners:
-- Right person for the task
-- Available during release window
-- Has necessary permissions
-- Backup assignees
+
+Assign appropriate owners who are the right person for the task, available during the release window, and have the necessary permissions to complete the activity.
+
+It's also important to designate backup assignees who can step in if the primary owner is unavailable, preventing releases from stalling due to a single person's absence.
 
 ### Documentation
-Document manual activities:
-- Purpose and context
-- Expected outcomes
-- Common issues
-- Escalation procedures
+
+Document manual activities thoroughly, including their purpose and context, expected outcomes, common issues that arise, and escalation procedures for when things go wrong.
+
+Good documentation helps users understand what they're approving or validating and provides guidance for handling edge cases or problems.
 
 ## Related Topics
 
