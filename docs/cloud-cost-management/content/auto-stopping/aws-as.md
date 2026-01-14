@@ -396,42 +396,56 @@ echo ">>> Setup complete."
 
 ------------
 
-**Advanced Configuration (Optional)**:
+#### **Alerts and other Advanced Configuration (Optional)**:
 
-    - **Hide Progress Page**: Toggle this to disable the display of a progress page during instance warm-up. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
+    Get instant notifications when resources managed by the rule experience problems starting up or shutting down properly.
+    <DocImage path={require('../static/advanced.png')} width="70%" height="70%" title="Click to view full size image" />
 
-    - **Dry-Run**: Toggle this button if you wish to evaluate the feature without terminating your cloud resources.
-    <Tabs>
-    <TabItem value="dependencies" label="Dependencies">
-    Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependent on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependent on the Rule managing the database server.
-    Link your rule to other AutoStopping rules if resources depend on each other.
-      - Click **Add Dependency** and select a rule from the **RULES** drop-down list.
-      - In **DELAY IN SECS**, enter the number of seconds the dependent rule should wait after warming up before warming up this rule.
-      <DocImage path={require('../static/aws-dependencies.png')} width="100%" height="100%" title="Click to view full size image" />
-    </TabItem>
-    <TabItem value="fixed-schedules" label="Fixed Schedules">
+    **AutoStopping Alerts**: Configure notifications for critical events related to your AutoStopping rules. Click on **+Add Alert** to add an alert.
+      - **Rule create**: Receive notifications when new AutoStopping rules are created in your environment. This helps track who is creating rules and when, providing better governance.
+      - **Rule update**: Get alerts when existing rules are modified. This helps maintain awareness of configuration changes that might affect resource availability or cost savings.
+      - **Rule delete**: Be notified when rules are removed. This ensures you're aware of any changes that might affect resource management or cost optimization strategies.
+      - **Rule warm up failures**: Receive alerts when resources fail to start properly. This is critical for addressing availability issues quickly and preventing application downtime.
+      - **Rule cool down failures**: Get notifications when resources fail to stop as expected. This helps identify potential issues that could prevent cost savings or indicate resource problems.
+      - **Notification Channels**: Receive real-time notifications directly in Slack or e-mail. Configure specific channels for different types of alerts to streamline your team's response workflow.
 
-    Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
+    <DocImage path={require('../static/create-alert.png')} width="70%" height="70%" title="Click to view full size image" />
 
-    In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
+    **Run Options:**
+      - **Hide Progress Page**: Toggle this to disable the display of a progress page during instance warm-up. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
+      
+      - **Dry-Run**: Toggle this button if you wish to evaluate the feature without terminating your cloud resources.
+      <Tabs>
+      <TabItem value="dependencies" label="Dependencies">
+      Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependent on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependent on the Rule managing the database server.
+      Link your rule to other AutoStopping rules if resources depend on each other.
+        - Click **Add Dependency** and select a rule from the **RULES** drop-down list.
+        - In **DELAY IN SECS**, enter the number of seconds the dependent rule should wait after warming up before warming up this rule.
+       
+      </TabItem>
+      <TabItem value="fixed-schedules" label="Fixed Schedules">
 
-    :::note
-    The fixed schedule takes precedence over the defined AutoStopping Rule.
-    :::
+      Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
 
-    :::note
-    Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
-    ::: 
+      In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
 
-      - Click **Add Fixed Schedule**.
-      - Give the schedule a **Name**.
-      - Select the **Type** of schedule (**Uptime** or **Downtime**).
-      - Select the **Time Zone**.
-      - Set the schedule period with **Begins on** and **Ends on** dates and times. You can also select the **Never ends** checkbox.
-      - To set a recurring schedule, select the repeat frequency and the days of the week, and set the **Start** and **End** times. You can also select **All Day**.
-      <DocImage path={require('../static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
-    </TabItem>
-    </Tabs>
+      :::note
+      The fixed schedule takes precedence over the defined AutoStopping Rule.
+      :::
+
+      :::note
+      Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
+     ::: 
+
+        - Click **Add Fixed Schedule**.
+        - Give the schedule a **Name**.
+        - Select the **Type** of schedule (**Uptime** or **Downtime**).
+        - Select the **Time Zone**.
+        - Set the schedule period with **Begins on** and **Ends on** dates and times. You can also select the **Never ends** checkbox.
+        - To set a recurring schedule, select the repeat frequency and the days of the week, and set the **Start** and **End** times. You can also select **All Day**.
+        <DocImage path={require('../static/aws-fixed-schedules.png')} width="80%" height="80%" title="Click to view full size image" />
+      </TabItem>
+      </Tabs>
 
 ---------
 </TabItem>
