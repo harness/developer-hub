@@ -35,6 +35,7 @@ You need an understanding of:
 	+ When you delete a secret present in Google Cloud Secret Manager from Harness, the entire secret is deleted and not just a version.
 * You cannot update the name of an inline or referenced secret stored in the Google Cloud Secret Manager using the Harness Secret Manager.
 * Harness does not support changing an inline secret to a reference secret or vice versa in Harness.
+* **Cross-project access:** A single connector can access secrets across multiple GCP projects. The connector is configured with a default project, but you can optionally specify a different project when creating or referencing secrets. The service account associated with the connector must have appropriate permissions across all target projects. For more information, go to [Enable Cross-Project Access](#enable-cross-project-access).
 
 ## Google Cloud secret manager permission requirements
 
@@ -112,7 +113,7 @@ Click **Continue**.
 
 ### OIDC - OpenID Connect
 
-This option uses OpenID Connect (OIDC) to authenticate and authorize users. This option is commonly used for secure identity federation across different applications or cloud platforms, enabling seamless authentication and access management.
+This option uses OpenID Connect (OIDC) to authenticate. This option is commonly used for secure identity federation across different applications or cloud platforms, enabling seamless authentication and access management.
 
 ![oidc-connect](../../secrets/static/oidc-gcp-sm.png)
 
@@ -143,11 +144,15 @@ Let us add an inline text secret to the GCP Secrets Manager we just created.
 5. Enter a **Name** for your secret.
 6. The default selection is **Inline Secret Value**.
 7. Enter the **Secret Value**.
-8. Select **Configure Region** to add the region(s) for your secret.
+8. (Optional) In **Project**, select the GCP project where this secret should be created.
+     - The dropdown lists all GCP projects that the connector's service account has access to.
+     - If left blank, the secret is created in the default project associated with the connector.
+     - For more information about cross-project access, go to [Enable Cross-Project Access](#enable-cross-project-access).
+9. Select **Configure Region** to add the region(s) for your secret.
 
    ![](../static/add-a-google-cloud-secret-manager-41.png)
 
-9. Select **Save**.
+10. Select **Save**.
 
 ## Add a secret reference to the GCP Secrets Manager
 
@@ -164,9 +169,13 @@ The **Add new Encrypted Text** settings appear.
    ![](../static/add-a-google-cloud-secret-manager-42.png)
 
 7. Enter your secret identifier in **Reference Secret Identifier**.
-8. In **Version**, enter the version of your secret that you want to reference.
+8. (Optional) In **Project**, select the GCP project that contains the referenced secret.
+     - The dropdown lists all GCP projects that the connector's service account has access to.
+     - If left blank, Harness retrieves the secret from the default project associated with the connector.
+     - For more information about cross-project access, go to [Enable Cross-Project Access](#enable-cross-project-access).
+9. In **Version**, enter the version of your secret that you want to reference.
 You can either enter a version number like `1`, `2`, or enter `latest` to reference the latest version.
-9. Click **Save**.
+10. Click **Save**.
 
 ## Add an encrypted file secret to the GCP Secrets Manager
 
@@ -179,11 +188,86 @@ The **Add new Encrypted File** settings appear.
 4. Select the GCP Secrets Manager you just created.
 5. Enter a **Name** for your secret.
 6. In **Select File**, browse, and select your file.
-7. Select **Configure Region** to add the region(s) for your secret.
+7. (Optional) In **Project**, select the GCP project where this encrypted file should be stored.
+     - The dropdown lists all GCP projects that the connector's service account has access to.
+     - If left blank, the file is stored in the default project associated with the connector.
+     - For more information about cross-project access, go to [Enable Cross-Project Access](#enable-cross-project-access).
+8. Select **Configure Region** to add the region(s) for your secret.
 
    ![](../../secrets/static/add-a-google-cloud-secret-manager-43.png)
 
-8. Click **Save**.
+9. Click **Save**.
+
+## Enable Cross-Project Access
+
+  :::note
+  Cross-project access is supported in Harness Delegate version **26.01.88200** or later and is behind the feature flag `PL_GCPSM_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. Contact [Harness
+  Support](mailto:support@harness.io) to enable the feature.
+  :::
+
+  You can use one Google Secret Manager connector to access secrets across multiple GCP projects, eliminating the need to create separate connectors for each project. This feature works with all authentication methods: service account credentials, Harness Delegate credentials, and OIDC.
+
+  ### How it works
+
+  **Connector Configuration:**
+  - Every Google Secret Manager connector is associated with a default GCP project.
+  - This project is determined either directly from user input or indirectly from the authentication credentials provided (service account key, delegate IAM role, or OIDC configuration).
+  - The connector configuration itself does not change with this feature.
+
+  **Secret-Level Project Selection:**
+  - When creating or referencing secrets (inline text, reference, or encrypted file), you can optionally specify a **Project** field.
+  - If you specify a project, Harness creates or retrieves the secret from that GCP project.
+  - If you leave the project field blank, Harness uses the connector's default project.
+
+  **Project Selection Dropdown:**
+  
+  :::note
+   To get the list of projects in the secret create/edit flow, [Cloud Resource Manager API](https://docs.cloud.google.com/resource-manager/reference/rest) should be enabled for the project where the service account is located.
+  :::
+
+  - The project dropdown is dynamically populated with only the GCP projects that the connector's service account has access to.
+  - Only projects where the service account has the required Secret Manager permissions are displayed in the dropdown.
+
+  ### Prerequisites
+
+  The GCP service account associated with your connector must have the required IAM permissions across all projects you want to access:
+  - `roles/secretmanager.admin` or
+  - `roles/secretmanager.secretAccessor` and `roles/secretmanager.secretVersionManager`
+
+  Ensure these permissions are granted in each target GCP project.
+
+  ### Managing secrets across projects
+
+  **Creating new secrets:**
+  1. When creating an inline secret, reference secret, or encrypted file secret, you'll see an optional **Project** field.
+  2. Select a project from the dropdown to create the secret in that specific GCP project.
+  3. If no project is selected, the secret is created in the connector's default project.
+
+  **Editing existing secrets:**
+
+  - **Secrets created before cross-project access was available:** When you edit these secrets, the **Project** dropdown appears with no project selected. The secret continues to use the connector's default project unless you explicitly select a different project.
+
+  - **Secrets created with a project specified:** When you edit these secrets, the currently selected project is displayed. You can change the project if needed.
+
+  **Changing a secret's project:**
+  If you change a secret's project from Project A to Project B and save:
+  - Harness tries to create a new secret in Project B's Google Secret Manager with the given name.
+  - The original secret in Project A remains unchanged and is not deleted.
+  - This is the same behavior as changing the connector itself.
+
+  ### Example use case
+
+  A large organization with multiple GCP projects (e.g., `dev-project-123`, `staging-project-456`, `prod-project-789`) can:
+
+  1. Create a single Google Secret Manager connector with OIDC authentication.
+  2. Ensure the OIDC service account has Secret Manager permissions across all three projects.
+  3. When creating secrets in Harness:
+     - Select `dev-project-123` for development secrets.
+     - Select `staging-project-456` for staging secrets.
+     - Select `prod-project-789` for production secrets.
+  4. All secrets are managed through one connector instead of maintaining three separate connectors.
+
+  This approach significantly reduces connector sprawl and simplifies secret management for organizations with many GCP projects.
 
 ## Reference JSON secrets
 
@@ -198,4 +282,3 @@ import Refj from '/docs/platform/shared/reference-via-json.md';
 * [Add an AWS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
 * [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
 * [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
-
