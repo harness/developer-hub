@@ -115,6 +115,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2026 
 
+### Version 25.08.85811 <!--January 14, 2026-->
+
+#### Fixed issues
+
+-  Fixed the health check process for polling mode delegate. [PL-67811]
+
 ### Version 26.01.88200 <!--January 05, 2026-->
 
 #### Fixed issues
