@@ -30,7 +30,7 @@ Harness AI SRE is a comprehensive incident management system that enables teams 
 - Incidents can be created in three ways:
   1. **From Alerts** – when an alert meets predefined criteria.
   2. **Manually from the Web UI** – allowing direct user intervention.
-  3. **Via Slack Command (`/ir new`)** – enabling quick incident creation from Slack.
+  3. **Via Slack Command (`/harness new`)** – enabling quick incident creation from Slack. See [Slack Commands](../incidents/slack-commands.md) for all available commands.
 - Incidents link to **Services**, **Runbooks**, **Fire Drills**, and **Change Events**.
 
 ### Actions

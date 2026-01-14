@@ -218,6 +218,7 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
 
 This guide introduced you to the core functionalities and setup of Harness AI SRE, from integrating monitoring tools to creating automated runbooks. To enhance your incident response capabilities and team efficiency, get the most out of Harness AI SRE's advanced features, including:
 
+- **[Managing Incidents in Slack:](/docs/ai-sre/incidents/slack-commands)** Use Slack slash commands to create, manage, and resolve incidents directly from your workspace.
 - **[Advanced Runbooks:](/docs/ai-sre/runbooks/create-runbook)** Build sophisticated automation workflows with multiple actions, triggers, and conditional logic.
 - **[Integration Library:](/docs/category/integrations)** Connect with ServiceNow, Jira, and other ITSM tools for seamless incident management workflows.
 - **[AI Scribe Agent:](/docs/ai-sre/ai-agent)** Leverage AI-powered documentation and insights to capture incident communications automatically.

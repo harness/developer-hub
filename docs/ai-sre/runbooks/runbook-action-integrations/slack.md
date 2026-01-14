@@ -153,6 +153,7 @@ Slack integration enables your runbooks to:
 
 ## Next Steps
 
+- [Slack Commands](../../incidents/slack-commands.md)
 - [Configure Microsoft Teams Integration](./teams.md)
 - [Configure Zoom Integration](./zoom.md)
 - [Return to Runbook Overview](../runbooks.md)

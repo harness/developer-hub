@@ -80,7 +80,7 @@ Learn how to create and configure escalation policies for your on-call teams:
 
 ### Manual Paging Capabilities
 - Manual paging of incidents and alerts from the web interface
-- Slack-based paging functionality
+- Slack-based paging using the `/harness page` command ([learn more](../incidents/slack-commands.md#on-call-paging))
 - Individual user paging (reliable)
 - Service-based paging with attached user groups
 - Direct paging from incident management interface
