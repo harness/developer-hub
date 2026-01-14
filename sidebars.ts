@@ -1233,6 +1233,7 @@ const sidebars: SidebarsConfig = {
         },
         'ai-test-automation/get-started/overview',
         'ai-test-automation/get-started/quickstart',
+        'ai-test-automation/get-started/intent-driven',
         {
           type: 'html',
           value: 'Use AI Test Automation',
