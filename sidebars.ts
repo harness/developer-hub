@@ -187,6 +187,16 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
+          href: '/docs/sast-and-sca',
+          label: 'SAST and SCA',
+          className: 'sidebar-qwietai',
+
+          customProps: {
+            description: 'Secure code and dependencies with AI-powered static analysis.',
+          },
+        },
+        {
+          type: 'link',
           href: '/docs/chaos-engineering',
           label: 'Chaos Engineering',
           className: 'sidebar-ce-new',

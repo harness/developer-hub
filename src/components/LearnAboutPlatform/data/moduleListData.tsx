@@ -95,6 +95,13 @@ export const moduleList: CardItem[] = [
     link: 'docs/software-supply-chain-assurance',
   },
   {
+    title: 'SAST and SCA',
+    module: MODULES.qwietai,
+    icon: "img/qwiet-icon.svg",
+    description: 'Secure code and dependencies with AI-powered static analysis.',
+    link: 'docs/sast-and-sca',
+  },
+  {
     title: 'Chaos Engineering',
     module: MODULES.ce,
     icon: "img/icon_ce.svg",

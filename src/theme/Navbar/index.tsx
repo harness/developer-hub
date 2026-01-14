@@ -109,6 +109,11 @@ const docDropdownItems = [
     label: "Supply Chain Security",
     icon: "/img/icon_ssca.svg",
   },
+  {
+    to: "/docs/sast-and-sca",
+    label: "SAST and SCA",
+    icon: "/img/icon-qwietai.svg",
+  },
   // Cost & Optimization
   { type: "header", label: "Cost & Optimization" },
   {

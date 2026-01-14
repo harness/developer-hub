@@ -66,7 +66,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.ata]: 'AI Test Automation',
     [MODULES.tbh]: 'Traceable by Harness',
     [MODULES.hsf]: 'Harness Solutions Factory',
-    [MODULES.rm]: 'Release Orchestration'
+    [MODULES.qwietai]: "SAST and SCA"
 }
 
 export const MODULE_ICON = {
@@ -99,5 +99,5 @@ export const MODULE_ICON = {
     [MODULES.ata]: 'img/logo-ata.svg',
     [MODULES.tbh]: 'img/icon_tbh.svg',
     [MODULES.hsf]: 'img/icon-hsf.svg',
-    [MODULES.rm]: 'img/icon-rm.svg',
+    [MODULES.qwietai]: 'img/qwiet-icon.svg'
 }

@@ -195,6 +195,10 @@ const config: Config = {
               to: 'https://www.harness.io/products/software-supply-chain-assurance',
             },
             {
+              label: 'SAST and SCA',
+              to: 'https://www.harness.io/products/software-supply-chain-assurance',
+            },
+            {
               label: 'Chaos Engineering',
               to: 'https://harness.io/products/chaos-engineering',
             },

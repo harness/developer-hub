@@ -134,6 +134,12 @@ export const categories: Category[] = [
         module: "ssca",
         description: "Secure dependencies and build integrity."
       },
+      {
+        name: "SAST and SCA",
+        href: "/docs/sast-and-sca",
+        module: "qwietai",
+        description: "Secure code and dependencies with AI-powered static analysis."
+      }
     ],
   },
   {
