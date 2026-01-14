@@ -39,6 +39,15 @@ seccompProfile:
   type: RuntimeDefault
 ```
 
+### Operator-based manifest support
+
+Before installing the Harness GitOps Agent, be aware of the following limitations regarding operator-based manifests:
+
+- **OpenShift clusters:** Have Operator Lifecycle Manager (OLM) already built-in, so operator-based manifests are supported out of the box
+- **Vanilla Kubernetes clusters:** Require manual setup of OLM, kubectl-operator plugin, and other CRDs before using operator-based manifests
+
+**Recommendation:** For vanilla Kubernetes clusters, we recommend using the **Helm Chart** or **Kubernetes YAML** manifest options instead of operator-based manifests.
+
 ## Operational Errors
 
 ### Error: "Finalizer detected"
