@@ -175,6 +175,13 @@ The following deprecated API endpoints are longer supported:
 
 ## January 2026
 
+### Version 1.126.x <!--January 14,2026-->
+
+#### New features and enhancements
+- Upgraded yq to version 4.50.1 in the base image to address CVE-2025-61729. [PL-67706]
+- Updated the Bouncy Castle (BC) libraries to version 1.80 in the Docker configuration and associated scripts. [PL-67468]
+- Enhanced the Google Secrets Manager connector to support [cross-project secret](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager/#enable-cross-project-access) access using a single connector. [PL-63806]
+
 ### Version 1.125.x <!--January 06,2026-->
 
 #### Fixed issues 
