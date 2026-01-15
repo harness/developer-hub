@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-01-12T10:00:00
+date: 2026-01-15T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,9 +12,31 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: January 12, 2026
+#### Last updated: January 15, 2026
 
 ## January 2026
+
+### [New Enhancement] Certificate pinning status handler for iOS SDK and iOS Suite
+---
+#### 2026-01-15
+
+The iOS SDK and iOS Suite now support a certificate pinning status handler, allowing you to observe the full outcome of the certificate pinning process. 
+Certificate pinning is supported across multiple mobile platforms (including [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#certificate-pinning), [iOS Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#certificate-pinning), [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#certificate-pinning), [Android Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite#certificate-pinning), and [Flutter](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin#certificate-pinning)) for securing network communication by constraining trusted certificates. Previously on iOS, applications could only register a failure handler, which was invoked when pinning validation failed. 
+
+Starting in the iOS SDK version 3.5.0 and iOS Suite version 2.4.0, you can register a status handler that is called for all pinning outcomes, including successful validation and cases where the SDK falls back to default OS handling. 
+
+Use the status handler if you need to:
+
+- Audit certificate pinning behavior across hosts
+- Detect unintended fallback to default OS handling
+- Log and track all pinning outcomes for security or compliance reviews
+
+This enhancement enables better observability, auditing, and compliance monitoring for certificate pinning behavior in production environments.
+
+#### Related documentation
+
+- [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#certificate-pinning)
+- [iOS Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#certificate-pinning)
 
 ### [New Enhancement] Streamline Project Configuration in FME Settings
 ----

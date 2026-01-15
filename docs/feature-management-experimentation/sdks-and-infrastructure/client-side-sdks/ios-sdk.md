@@ -988,9 +988,14 @@ certBuilder.addPin(host: "www.example1.com", hashKey: "sha256/7HIpactkIAq2Y49orF
 // Provide a certificate file name. This file has to be added to the bundle.
 certBuilder.addPin(host: "www.example2.com", certificateName: "certificate.der")
 
-// Set a failure handler
+// Set a failure handler (only called on failure)
 certBuilder.failureHandler { host in
   print("Pinning failed for host \(host)")
+}
+
+// Set a status handler (called for all outcomes)
+certBuilder.statusHandler { host, status, reason in
+  print("Pinning result for \(host): \(status) - \(reason)")
 }
 
 // Set the CertificatePinningConfig property for the SDK factory client configuration
@@ -1000,6 +1005,39 @@ config.certificatePinningConfig = certBuilder.build()
 
 ...
 ```
+
+In iOS SDK version 3.5.0 or later, you can observe the full outcome of the certificate pinning process, in addition to failures, by adding a status handler that reports:
+
+- Whether certificate pinning succeeded
+- Whether pinning failed (and why)
+- Whether the SDK fell back to default OS handling
+
+The status handler returns two values: 
+
+- `status`: The high-level outcome of certificate pinning (`success`, `failed`, or `defaultHandling`)
+  
+  | Status | Meaning |
+  |------|--------|
+  | `success` | Certificate pinning succeeded |
+  | `failed` | Pinning failed and the connection was rejected |
+  | `defaultHandling` | Pinning was not applied and default OS handling was used |
+
+- `reason`: A string describing the underlying result
+
+  | Status Category     | Status Value              | Description                                           |
+  |---------------------|---------------------------|-------------------------------------------------------|
+  | **Success**         | `success`                 | Certificate successfully matched a pinned credential |
+  | **Failed**          | `error`                   | Error validating credentials                          |
+  | **Failed**          | `invalidChain`            | Certificate chain is invalid                          |
+  | **Failed**          | `credentialNotPinned`     | Certificate does not match any pinned credential      |
+  | **Failed**          | `spkiError`               | Unable to extract SPKI from the public key            |
+  | **Failed**          | `invalidCredential`       | Invalid certificate credentials                       |
+  | **Failed**          | `invalidParameter`        | Incorrect credential type or parameter                |
+  | **Failed**          | `unavailableServerTrust`  | Server trust information unavailable                  |
+  | **Default handling**| `noPinsForDomain`         | No pins configured for the requested host             |
+  | **Default handling**| `noServerTrustMethod`     | Validation method is not Server Trust                 |
+
+Applications should rely on the `status` value for control flow and use the `reason` value for logging and diagnostics. This allows you to log, audit, and monitor all pinning outcomes, including cases where no pins are configured for a domain.
 
 ## Troubleshooting
 
