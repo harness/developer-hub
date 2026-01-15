@@ -135,6 +135,59 @@ Once encrypted, SOPS decrypts the data during deployment using the keys stored a
 ### How to disable pushing logs from the GitOps Agent to Stackdriver?
 To disable logging to Stackdriver in GitOps, set `GITOPS_AGENT_ENABLE_STACK_DRIVER_LOGGER` to False in the the agent ConfigMap.
 
+### How to configure EnvRef and ServiceRef annotations for a GitOps service and environment in an application through Helm?
+
+To associate your GitOps application with a Harness service and environment, you need to add `harness.io/envRef` and `harness.io/serviceRef` as **labels**, not annotations, in your GitOps application manifest.
+
+<details>
+  <summary>Click to view the correct GitOps application manifest configuration</summary>
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: refi-vehicles-service-dev
+  namespace: harness-gitops
+  labels:
+    harness.io/envRef: test
+    harness.io/serviceRef: vehiclesservice
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  project: product-engineering
+  destination:
+    name: gkedev
+    namespace: refi-vehicles
+  source:
+    path: cluster-services/vehicles-service
+    repoURL: "https://github.com/motorefi/cluster-manifests"
+    targetRevision: "cluster-dev"
+    helm:
+      releaseName: refi-vehicles-service
+      parameters:
+        - name: image.tag
+          value: 22ad6d6cd44d1cdfbd95751841c860eb3133306c
+      valueFiles:
+        - values.yaml
+        - values.dev.yaml
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+</details>
+
+**Key points:**
+- `harness.io/envRef` and `harness.io/serviceRef` must be placed under the `labels` section, not `annotations`
+- `envRef` should reference your Harness environment identifier
+- `serviceRef` should reference your Harness service identifier
+- This configuration properly associates your GitOps application with the specified Harness service and environment
+
 ### What specific role does the "Add Deployment Repo Manifest" serve within the manifests for a Kubernetes service enabled with GitOps functionality?
 
 The `Add Deployment Repo Manifest` primarily serves as a means to access additional repositories within the PR Pipeline. While the Release Repo is utilized directly by the pipeline, the Deployment Repo facilitates the retrieval of information from another repository, enhancing the pipeline's functionality and flexibility.
