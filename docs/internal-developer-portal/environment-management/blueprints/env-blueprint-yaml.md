@@ -177,6 +177,20 @@ steps:
   delete: {}
 ```
 
+**Referencing Resources Across Scopes**
+
+When referencing Harness resources (such as IaCM workspace templates or catalog entities) in your blueprint, you can reference resources from different organizational scopes using scope prefixes:
+
+- **Project scope** (default): Use just the identifier - `MyResource`
+- **Organization scope**: Prefix with `org.` - `org.MyResource`
+- **Account scope**: Prefix with `account.` - `account.MyResource`
+
+This enables you to reference shared resources across your Harness hierarchy while maintaining proper access control. For example, environments created at the project level can reference IaCM workspace templates or catalog entities defined at the organization or account level.
+
+:::info Scope Hierarchy
+Resources must respect the Harness organizational hierarchy. A project-level environment can reference resources from its parent organization or account, but resources maintain their defined scope boundaries and access permissions.
+:::
+
 ---
 
 #### 2. Catalog Backend (Services)
