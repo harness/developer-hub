@@ -123,16 +123,16 @@ Actions:
 
 ## Advanced Features
 
-### Bidirectional Sync (Coming Soon)
-:::note Future Capability
-The following features are planned for future releases:
+### Bidirectional Sync
+:::note
+Bidirectional sync is available by leveraging Harness Pipelines:
 - Real-time incident synchronization
 - Work notes mirroring
 - CMDB integration
 - Workflow state mapping
 :::
 
-#### Planned Capabilities
+#### Capabilities
 1. **Incident Sync**
    - ServiceNow → Harness AI SRE status mapping
    - Automatic state transitions

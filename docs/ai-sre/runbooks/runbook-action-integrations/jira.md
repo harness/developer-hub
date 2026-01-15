@@ -122,16 +122,16 @@ Actions:
 
 ## Advanced Features
 
-### Bidirectional Sync (Coming Soon)
-:::note Future Capability
-The following features are planned for future releases:
+### Bidirectional Sync
+:::note
+Bidirectional sync is available by leveraging Harness Pipelines:
 - Real-time status synchronization
 - Comment mirroring
 - Field value propagation
 - Workflow state mapping
 :::
 
-#### Planned Capabilities
+#### Capabilities
 1. **Status Sync**
    - Jira → Harness AI SRE status mapping
    - Automatic state transitions

@@ -70,7 +70,7 @@ Harness AI SRE is a comprehensive incident management system that enables teams 
 - Enables users to manage and monitor services as a single entity.
 - Supports testing, monitoring, deployment, and response workflows.
 
-### Change Events (Coming Soon)
+### Change Events
 - Captures **system modifications** that could impact reliability.
 - Examples of Change Events:
   - **Code Changes** (Git commits, pull requests, merges).
@@ -79,7 +79,7 @@ Harness AI SRE is a comprehensive incident management system that enables teams 
   - **Service Modifications** (API changes, new dependencies).
   - **Third-Party Changes** (Datadog alerts, ServiceNow updates).
 
-### On-Call (Coming Soon)
+### On-Call
 - Ensures availability of personnel for incident response.
 - Includes:
   - **Schedules** – Define rotations.
