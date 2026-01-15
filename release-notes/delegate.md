@@ -2506,6 +2506,14 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## Delegate Helm Chart release notes
 
+## January 2026
+
+### Version 1.0.31 <!--January 15, 2026-->   
+
+#### Fixed issues
+
+- Added support to configure delegate security context and fixed roleRef.apiGroup in upgrader's role binding . [PL-67826]
+
 ## July 2025
 
 ### Version 1.0.27 <!--July 31, 2025-->   
