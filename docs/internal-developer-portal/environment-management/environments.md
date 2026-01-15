@@ -49,6 +49,30 @@ You can update an environment’s configuration after it’s created by opening 
 
 ---
 
+## Drift Detection
+
+Drift detection helps you identify when your environment's actual infrastructure state has diverged from its intended configuration. This feature is essential for maintaining infrastructure consistency, improving security by identifying unauthorized changes, and enabling compliance tracking across your environments.
+
+To detect drift, navigate to your environment in Harness IDP and click the **Check for Drift** button under the Drift Detection tab. 
+![](./static/drift.png)
+
+The system chains and dynamically executes drift detection pipelines for each workspace (environment resource) in your environment. Each pipeline checks its corresponding infrastructure resource against its expected state and highlights any discrepancies. You can view drift details resource-by-resource to see which attributes have changed, making it easy to understand what has drifted and take corrective action.
+
+:::note Prerequisites
+Each workspace that you want to detect drift on must have an available drift detection pipeline. These pipelines can be specified at different levels:
+- **Workspace level**: Configure a drift detection pipeline directly on the workspace
+- **Workspace template level**: Define a drift detection pipeline in the workspace template
+- **Project level**: Set a default drift detection pipeline at the project level
+
+Learn how to [create a drift detection pipeline in IaCM](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection/#detect-drift).
+:::
+
+**Resolving drift:** When drift is detected, you can resolve it by:
+- Following the drift resolution workflows in IaCM (see [IaCM Drift Detection documentation](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection/))
+- Triggering an environment update, which will re-provision all workspaces and bring them back in sync with the desired configuration
+
+---
+
 ## Delete Environments
 When are are ready to delete the environment, go to the Environment page and from the Options menu at the top right, hit “Delete”. It will destroy the namespace and delete the environment.
 
