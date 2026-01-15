@@ -62,6 +62,23 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## January 2026
 
+### Version 1.117.0
+
+<!-- January 12, 2026 -->
+
+#### Fixed Issues
+
+- Resolved an issue where Kaniko builds failed when using the same Docker connector for both base image and push operations. (CI-19389, ZD-98077)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Regular release | 1.18.0 | 1.18.1 |
+| `harness/ci-lite-engine` | Regular release | 1.18.0 | 1.18.1 |
+| `plugins/artifactory` | Security vulnerability fixes (CI-20217) | 1.8.2 | 1.8.3 |
+| `plugins/s3` | Security vulnerability fixes (CI-20217) | 1.5.5 | 1.5.6 |
+
 ### Version 1.116.0
 <!-- 2026-01-05 -->
 - Pod failure logs are now visible in the console UI when running builds on Kubernetes infrastructure, improving troubleshooting. (CI-19573)
