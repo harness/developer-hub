@@ -92,6 +92,15 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 6. In **Name**, enter the name **example**.
 7. Set **GitOps Operator** to **Argo**.
 
+   :::important
+   **Operator-based manifest support varies by cluster type:**
+   
+   - **OpenShift clusters:** Have Operator Lifecycle Manager (OLM) already built-in, so operator-based manifests are supported out of the box
+   - **Vanilla Kubernetes clusters:** Require manual setup of OLM, kubectl-operator plugin, and other CRDs before using operator-based manifests
+   
+   **Recommendation:** For vanilla Kubernetes clusters, we recommend using the **Helm Chart** or **Kubernetes YAML** manifest options instead of operator-based manifests.
+   :::
+
 8. Set **Namespace** to the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this example, we use **default**.
 9. Select **Continue**. The **Review YAML** settings appear.
     
