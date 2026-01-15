@@ -440,6 +440,219 @@ parameters:
 </Tabs>
 
 
+## Passing User Information to Dynamic Pickers
+
+When working with dynamic pickers that call APIs, you may need to pass information about the **currently logged-in user** to the API endpoint. This is useful for scenarios where you want to:
+
+- Filter API responses based on the current user's permissions or context
+- Personalize data returned from the API
+- Implement user-specific workflows
+- Track which user is making the API request
+
+Harness IDP allows you to automatically append user information (such as email, name, and user ID) to API requests made by dynamic pickers. This information can be sent either as **query parameters** or **headers**.
+
+![](./static/dynamic-userinfo.png)
+
+### Configuring User Field Mapping
+
+First, you need to define which user fields should be made available for your workflow. This is done using the `userFieldMapping` specification at the workflow level.
+
+```YAML
+spec:
+  userFieldMapping:
+    userEmail: email
+    name: name
+```
+
+**Configuration Options**
+
+- **`userEmail`**: Maps the user's email address to a field named `email`
+- **`name`**: Maps the user's display name to a field named `name`
+- The system also provides `uid` (user ID) by default
+
+### Appending User Data to API Requests
+
+Once you've configured the user field mapping, you can use the `appendUser` option in your dynamic picker configuration to send this information to your API endpoint.
+
+```YAML
+properties:
+  getAPIData:
+    title: Select a User (with user context in headers)
+    type: string
+    description: This field will send userEmail and name as headers to the API
+    ui:field: SelectFieldFromApi
+    ui:options:
+      title: Select User
+      description: Choose a user from JSONPlaceholder
+      path: /catalog/entities
+      valueSelector: metadata.uid
+      labelSelector: metadata.name
+      appendUser:
+        data:
+          - userEmail
+          - name
+        location:
+          - query
+```
+
+**Configuration Breakdown**
+
+- **`appendUser`**: Configuration object for passing user information
+  - **`data`**: Array of user fields to send (e.g., `userEmail`, `name`)
+  - **`location`**: Array specifying where to send the data
+    - `query` - Sends data as URL query parameters
+    - `header` - Sends data as HTTP headers
+    - `body` - Sends data in the request body (for POST API requests)
+
+### Location Options
+
+#### Sending User Data as Query Parameters
+
+When you specify `location: query`, the user information is appended to the API URL as query parameters.
+
+```YAML
+appendUser:
+  data:
+    - userEmail
+    - name
+  location:
+    - query
+```
+
+**Example API Call:**
+```
+/catalog/entities?userEmail=john.doe@example.com&name=John%20Doe
+```
+
+#### Sending User Data as Headers
+
+When you specify `location: header`, the user information is sent as HTTP headers in the API request.
+
+```YAML
+appendUser:
+  data:
+    - userEmail
+    - name
+  location:
+    - header
+```
+
+**Example Headers:**
+```
+userEmail: john.doe@example.com
+name: John Doe
+```
+
+#### Sending User Data in Request Body
+
+When you specify `location: body`, the user information is sent in the request body. This is useful for POST API requests.
+
+```YAML
+appendUser:
+  data:
+    - userEmail
+    - name
+  location:
+    - body
+```
+
+**Example Request Body:**
+```json
+{
+  "userEmail": "john.doe@example.com",
+  "name": "John Doe"
+}
+```
+
+:::info
+You can specify multiple locations simultaneously. For example, using `location: [query, header]` will send user data as both query parameters and headers in the same request.
+:::
+
+### Example YAML
+
+Here's a complete workflow example that demonstrates passing user context to a dynamic picker:
+
+```YAML {11,38,39,40,41,42,43,44}
+apiVersion: harness.io/v1
+kind: Workflow
+name: User Context Workflow
+identifier: User_Context_Workflow
+type: workflow
+owner: user:account/owner@company.com
+metadata:
+  tags:
+    - workflows
+spec:
+  userFieldMapping:
+    owner: email  # Maps logged-in user's email to 'owner' field
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+  lifecycle: experimental
+  parameters:
+    - title: Service Details
+      required:
+        - service_name
+      properties:
+        debugdata:
+          title: User Email
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: ${{formContext}}
+        email:
+          title: Owner
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: ${{ formContext.user.owner }}
+        entitiesList:
+          title: GitHub Repos
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi  # Dynamic API picker
+          ui:options:
+            path: proxy/harness-api-endpoint/gateway/v1/entities
+            valueSelector: entity_ref
+            appendUser:  # Pass user information to API
+              data:
+                - owner  # Send user's email (mapped from 'owner' field)
+              location:
+                - query    # Send as URL query parameters
+                - headers  # Also send as HTTP headers
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your application
+      action: trigger:harness-custom-pipeline
+      input:
+        url: Harness Pipeline URL
+        inputset:
+          service_name: ${{ parameters.service_name }}
+        apikey: ${{ parameters.token }}
+```
+
+
+:::info
+- User information is automatically retrieved from the logged-in user's session
+- The `userFieldMapping` must be defined at the `spec` level of your workflow
+- You can send user data as both query parameters and headers simultaneously by specifying both in the `location` array
+- Ensure your backend API is configured to accept and process the user information appropriately
+:::
+
+:::warning Security Considerations
+- User information is passed from the frontend to your backend proxy
+- Ensure your backend proxy validates and sanitizes user data before forwarding to external APIs
+- Use headers for sensitive user information when possible, as they are less likely to be logged in access logs
+- Always implement proper authentication and authorization checks on your backend
+:::
+
+
 ## Live User Validation using API Requests
 
 :::info
