@@ -30,9 +30,82 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.12.v2](/release-notes/internal-developer-portal#december---202512v2) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
-| [2025.12.v1](/release-notes/internal-developer-portal#december---202512v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
-| [2025.11.v1](/release-notes/internal-developer-portal#november---202511v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅     |
+| [2026.1.v1](/release-notes/internal-developer-portal#january---20261v1) | ✅        | ✅         | ✅           |  ✅        |     ✅     |     ✅      |
+| [2025.12.v2](/release-notes/internal-developer-portal#december---202512v2) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
+| [2025.12.v1](/release-notes/internal-developer-portal#december---202512v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
+
+## January - [2026.1.v1]
+
+---
+
+### New Features
+
+#### User Context in Dynamic Workflow Pickers
+
+Building user-aware workflows previously required complex workarounds to pass user information to APIs and display user context within forms.
+
+Harness IDP now enables automatic user context injection in workflows. Configure `userFieldMapping` at the workflow spec level to define available user fields (email, name, user ID), then:
+
+- **Pass user information to APIs** using the `appendUser` option in dynamic pickers—send data as query parameters, HTTP headers, or request body
+- **Filter API responses** based on the current user's permissions for personalized experiences
+- **Track and audit** workflow executions with automatic user identification
+
+**Learn more:** [Passing User Information to Dynamic Pickers](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#passing-user-information-to-dynamic-pickers)
+
+#### User Information Reference in Workflow Forms
+
+User information is now accessible through the Workflows form context, enabling you to:
+
+- **Display user information** in workflow forms using the `ContextViewer` field type
+- **Reference user data** anywhere in workflows with `formContext.user` expressions
+- **Pre-populate fields** automatically with user-specific data for streamlined execution
+
+This makes workflows more transparent and enables user-aware automation that adapts based on who is executing them.
+
+**Learn more:** [Passing User Information to Dynamic Pickers](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#passing-user-information-to-dynamic-pickers)
+
+#### Drift Detection for Environment Infrastructure
+
+Environment Management now supports drift detection for infrastructure resources, helping you identify when your environment's actual infrastructure state has diverged from its intended configuration. 
+
+The system chains and dynamically executes drift detection pipelines for each workspace in your environment, checking infrastructure resources against their expected state and highlighting discrepancies. Each workspace can have its drift detection pipeline configured at the workspace, workspace template, or project level. This enables you to maintain infrastructure consistency, improve security by identifying unauthorized changes, and ensure compliance across your environments.
+
+**Learn more:** [Drift Detection for Environment Infrastructure](/docs/internal-developer-portal/environment-management/environments#drift-detection)
+---
+
+### Enhancements & Bug Fixes
+
+#### Cross-Scope Resource References in Environment Management
+
+Environment blueprints can now reference Harness resources across different organizational scopes, enabling greater flexibility in resource sharing and reuse.
+
+When defining environment blueprints, you can now reference IaCM workspace templates and catalog entities from different scopes using scope prefixes:
+
+- **Project scope** (default): Reference resources in the same project using just the identifier
+- **Organization scope**: Reference organization-level resources using `org.identifier`
+- **Account scope**: Reference account-level resources using `account.identifier`
+
+This enhancement enables platform teams to create shared infrastructure templates at the organization or account level, while allowing project teams to reference and use them in their environment blueprints.
+
+
+
+#### Array Element Rendering in Workflow Input Tab
+
+The Input Tab in the new workflow execution view was displaying array elements containing nested objects as `[object Object]` instead of properly rendering their contents. The array structure is now properly parsed instead of being stringified, ensuring that nested objects and arrays are correctly processed and displayed as expected.
+
+#### Workflow Performance with Large Number of Workflows
+
+Users experienced significant slowness when loading and searching workflows in IDP, particularly when dealing with a large number of workflows on the workflows page. Enhanced the UX by implementing "load more" functionality and pagination capabilities, significantly improving performance when displaying large numbers of workflows.
+
+#### Jenkins Build Details Display
+
+Users were unable to view Jenkins build status or projects within the Harness IDP UI. The IDP Jenkins Plugin was not working when Jenkins plugin secrets were stored in non-Harness secret managers, resulting in 401 Unauthorized errors. Fixed the issue by adding appropriate implementation at both the IDP service and delegate levels. The IDP Jenkins Plugin now supports storing Jenkins plugin secrets in non-Harness secret managers.
+
+#### Intermittent Delegate Selectors Cache Lock Error
+
+Users encountered intermittent "Unable to acquire lock for delegate selectors cache operation" errors when accessing IDP workflows, typically occurring once per day on the first attempt. Identified and resolved the root cause related to concurrent requests from workflows. When multiple pickers (e.g., owner picker and org picker) triggered simultaneous proxy requests, both attempted to access the cache concurrently, causing lock acquisition failures. The cache access mechanism has been improved to handle concurrent requests properly.
+
+---
 
 
 ## December - [2025.12.v2]
@@ -136,6 +209,7 @@ This separation allows platform teams to define reusable environment templates a
 > Learn more about [RBAC for Environment Management](/docs/internal-developer-portal/environment-management/overview#rbac-for-environment-management).
 
 ---
+###
 
 ### [Enhancement] Advanced Object Response Handling in Dynamic Workflow Picker
 **[Docs](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#handling-object-responses)**
