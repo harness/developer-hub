@@ -34,6 +34,7 @@ We are enforcing restrictions on some keywords that can be used as identifiers f
 - organizations
 - project
 - projects
+- static
 
 **Reason**: These identifiers conflict with API path segments, causing GET, UPDATE, and DELETE operations to fail at the project and organization scope. This creates an inconsistent user experience and prevents proper entity management.
 
