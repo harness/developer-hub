@@ -21,6 +21,34 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## January 2026
+### Version 1.72.7
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.72.0
+- harness/chaos-ddcr-faults:1.72.0
+- harness/chaos-log-watcher:1.72.0
+- harness/service-discovery-collector:0.52.0
+
+#### New Features and Enhancements
+
+- Added the windows command probe support to v1beta1 experiment type (CHAOS-10789)
+- Added runtime input support for metrics queries in APM probes (CHAOS-10733)
+- Added support for chaos template in step template creation (CHAOS-10754, CHAOS-10753)
+- Added the harness as event source for the datadog annotation event action (CHAOS-10677)
+- Added the HSM secret support to environment variables of Probe and Action (CHAOS-10667)
+- Added Whitelist ssh filter for the aws-ec2-network-chaos (CHAOS-10566)
+
+#### Fixed Issues
+
+- Fixed Node Network faults not affecting the network connectivity of the nodes, it was only affecting the helper pod where the tc command is executed (CHAOS-10652)
+- Fixed issue with Prometheus APM Probe not adding TLS Configuration during experiment execution (CHAOS-10720)
+- Fixed Chaos step checks api returning 500 error when pipeline stage has parallel steps or string type res score (CHAOS-10721)
+- Fixed New Relic Connector ID derivation while execution (CHAOS-10735)
+- Fixed issue with template preview for org and account scoped template in project scope template (CHAOS-10785)
+- Fixed the raise condition of datadog metric calculation where Datadog Probe succeeds when it shouldn't (CHAOS-8960)
+
 ### Version 1.71.3
 
 #### Images required
@@ -42,6 +70,9 @@ Listed below are the images to download to use [image registry with Harness Dele
 #### Fixed Issues
 
 - Fixed probe details drawer breaking when probe is having huge details in Resilience Tab under pipelines (CHAOS-10678)
+
+
+## December 2025
 
 ### Version 1.70.4
 
@@ -68,7 +99,6 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Fixed "Please select chaos infra" warning showing even after we have selected the infra (CHAOS-10590)
 - Fixed issue when clicking on any radio button while configuring onboarding screen, it always scrolls screen to top by adding `contain: layout` to `.bp3-form-group` (CHAOS-9448)
 
-## December 2025
 ### Version 1.69.6
 
 #### Images required
