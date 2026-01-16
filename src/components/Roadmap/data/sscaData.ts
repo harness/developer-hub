@@ -62,6 +62,11 @@ export const SscaData: Horizon = {
         title: "Support for Gitlab & Bitbucket",
         description: "Complete support for GitLab and Bitbucket, allowing users to onboard repositories and perform configuration checks, SBOM generation, and security scans.",
       },
+       {
+        tag: [{value: "Dependency Management"},{value: "Repo Security"}],
+        title: "Typosquatting Detection",
+        description: " Identify and flag dependency names that closely resemble popular packages to prevent accidental inclusion of typosquatted or impersonated components.",
+      },
       {
         tag: [{value : "Governance"}, {value: "Audit Trail"}],
         title: "Artifact Chain of Custody v2",
@@ -113,6 +118,11 @@ export const SscaData: Horizon = {
         tag: [{value : "AIBOM"}],
         title: "AIBOM",
         description: "Gain visibility into all AI models and datasets used across your systems, enabling governance, risk assessment, and secure AI adoption.",
+      },
+      {
+        tag: [{value: "Repo Security"}],
+        title: "Malicious Package Detection",
+        description: " Detect malicious open-source packages using behavioral analysis and malware scanning to identify backdoors, droppers, and other harmful payloads before deployment.",
       },
       {
         tag: [{value : "SBOM"}, {value : "SLSA"}, {value: "CI/CD Security"}],
