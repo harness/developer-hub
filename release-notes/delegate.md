@@ -115,6 +115,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2026 
 
+### Version 26.01.88201 <!--January 16, 2026-->
+
+#### New features and enhancements
+
+- Added support for Bitbucket Cloud API tokens in connector authentication, enabling token-based access and easing the transition away from deprecated app passwords.[PIPE-30175]
+
 ### Version 25.05.85811 <!--January 14, 2026-->
 
 #### Fixed issues
