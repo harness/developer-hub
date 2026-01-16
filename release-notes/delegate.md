@@ -115,6 +115,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2026 
 
+### Version 26.01.88202 <!--January 16, 2026-->
+
+#### New features and enhancements
+- Added a check to store the release history of Kubernetes deployments in Secrets instead of ConfigMaps when pruning is enabled. This fix is currently guarded behind the feature flag CDS_STORE_PRUNING_RELEASE_HISTORY_IN_SECRET [CDS-117631].
+
 ### Version 26.01.88201 <!--January 16, 2026-->
 
 #### New features and enhancements
