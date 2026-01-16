@@ -100,9 +100,7 @@ To apply a recommendation, select the row. The recommendation opens on the **Rec
 
 You can see a list of all recommendations offered by Harness for each Cloud provider here:
 
-- [Asset Governance recommendations for AWS](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/aws/AWS-recommendations)
-- [Asset Governance recommendations for Azure](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/azure/azure-recommendations)
-- [Asset Governance recommendations for GCP](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gcp/gcp-recommendations)
+- [Asset Governance recommendations](http://localhost:3000/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations)
 
 </TabItem>
 </Tabs>

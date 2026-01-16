@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2025-12-12T18:00
+date: 2026-01-16T18:00
 sidebar_position: 6
 ---
 
@@ -25,6 +25,17 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+
+## January 2025 - Hotfix: Changes to AutoStopping Rules
+#### **Deployment Date:** January 12, 2025 
+
+We have rolled out a hotfix that includes the following major changes:
+
+- We've refined our savings calculation timeframe. Savings will now be computed with data up to two days prior to the current date (T-2), rather than the previous approach of using data up to the previous day (T-1) so that complete data is received.
+
+- AutoStopping rules cannot be created in a disabled state. This option was not available in the UI but could be done through the API to create disabled rules. Moving forward, any attempt to **create or edit a disabled rule will result in a validation error**. AutoStopping rules can now only be disabled after creation.
+
+- Savings will be calculated for rules that are **created** and resources are being utilized. Rules created with valid resources will display savings numbers as long as the resource is valid and cost data is available in the Cloud Usage Report (CUR). Resources that are onboarded in "Down" state and not used after rule creation will not show any savings, as the details of such resources will be completely missing in the CUR.
 
 ## January 2025 - Version 1.75.1
 #### Deployment Date: January 8, 2025 (Prod-1)
