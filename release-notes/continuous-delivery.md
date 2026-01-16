@@ -56,6 +56,18 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## January 2026
 
+### Version 1.126.2
+
+#### Fixed issues
+
+- Fixed an issue where the service dashboard displayed an incorrect instance count in the final detail view compared to the summary rows when GitOps was enabled. (**CDS-117222**, **ZD-99969**)
+- Fixed an issue where child pipelines were incorrectly marked as failed and triggered failure notifications when the parent pipeline failed, even if the child pipeline completed successfully. This was due to the failure strategy propagating the parent pipeline's user-initiated failure status to the child pipeline. (**PIPE-30821**, **ZD-97666**, **ZD-99055**)
+- Fixed an issue where pipelines were not correctly identified as CI or CD pipelines in the API and SDK, causing filtering and other operations based on module type to be inaccurate. (**PIPE-30921**, **ZD-98003**)
+- Fixed an issue where interrupting a pipeline execution (for example, marking it as failed or expiring it) sometimes failed to stop all running tasks, leading to resource locking and potential pipeline stalls. The system now correctly handles these interruptions, ensuring all tasks are stopped and resources are released. (**PIPE-31334**, **ZD-99055**)
+- Fixed an issue where pipelines failed to start with a generic error message when the pipeline YAML exceeded the size limit. A clear error message is now displayed indicating the size limit and suggesting mitigation steps. (**PIPE-31336**, **ZD-99604**, **ZD-100342**)
+- Fixed an issue where pipelines were unexpectedly stuck and failing to proceed, preventing deployments from completing for some customers. (**PIPE-31510**, **ZD-100762**, **ZD-100766**, **ZD-100767**, **ZD-100768**, **ZD-100777**, **ZD-100778**, **ZD-100785**)
+
+
 ### GitOps Service 1.47.3, GitOps Agent 0.106.0
 
 #### New Features and Enhancements
