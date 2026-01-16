@@ -25,6 +25,17 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+
+## January 2025 - Version 1.75.1
+#### Deployment Date: January 8, 2025 (Prod-1)
+
+### [New Feature] AutoStopping Alerts
+
+We have introduced alerts for AutoStopping rules. Configure notifications for critical events related to your AutoStopping rules. You can set alerts for **Rule create**, **Rule update**, **Rule delete**, **Rule warm up failures** and **Rule cool down failures** and receive real-time notifications directly in Slack or e-mail. 
+
+<DocImage path={require('./static/ccm/autostopping-alerts.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
 ## December 2025 - Version 1.73.5
 #### Deployment Date: December 12, 2025 (Prod-1)
 
@@ -32,7 +43,7 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 - **Enhanced Rule Management**: Improved rule update logic to prevent unnecessary exceptions when updating existing rules with the same name. The system now verifies if the rule being updated is the same as the existing one before throwing any exceptions. [CCM-27875]
 
-- **CSV Export for Anomalies**: Added comprehensive CSV export functionality for Anomalies, matching the existing Recommendations export capability. Users can now export detailed anomaly data including Anomaly Link, Start/End Dates, Duration, Criticality, Resource Information, Cloud Provider, Financial Metrics (Total/Expected/Anomalous Spend), Status Details, and Ongoing Anomaly indicators. [CCM-27889]
+- **CSV Export for Anomalies**: We’ve added support for CSV export in Anomalies, similar to Recommendations. Users can now export detailed anomaly data including Anomaly Link, Start Date, End Date, Duration (Days), Criticality, Resource Name, Resource Info, Cloud Provider, Total Spend, Expected Amount, Anomalous Spend, Anomalous Spend Percentage, Status, Status Updated At, Status Updated By, and Ongoing Anomaly. [CCM-27889]
 
 - **Accurate Budget Reporting**: Refined budget spend calculations to show true costs-to-date by excluding future pre-allocated costs. This provides more accurate and actionable "Spend till date" values for better financial planning. [CCM-27253]
 
