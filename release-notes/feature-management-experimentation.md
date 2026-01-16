@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-01-15T10:00:00
+date: 2026-01-16T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,26 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: January 15, 2026
+#### Last updated: January 16, 2026
+
+## January 2026
+
+### [New Feature] Web support in the Flutter Plugin
+----
+#### 2026-01-16
+
+[Flutter](https://flutter.dev/) is a framework for building cross-platform applications. The Flutter plugin already supports Android and iOS, and Harness FME now includes Web support, allowing your applications to target mobile and web. With this feature, the [**Configuration** section](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin#configuration) of the documentation includes a `Supported Platforms` column, indicating which parameters are supported on Android, iOS, Web, or all.
+
+For Web capabilities:
+
+- Dart SDK v3.3.0 or later and Flutter v3.19.0 or later are required.
+- Compatible with [WebAssembly (WASM) compilation](https://dart.dev/web/wasm).
+
+This feature enables you to integrate the plugin into multi-platform Flutter applications while keeping configuration consistent across all targets.
+
+#### Related documentation
+
+- [Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin)
 
 ## January 2026
 

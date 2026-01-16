@@ -6,17 +6,16 @@ sidebar_label: Flutter plugin
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about our Flutter plugin which is built on top of our [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk) and [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) mobile SDKs. The plugin provides you a way to interact with the native SDKs.
+This guide provides detailed information about our Flutter plugin which is built on top of our [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk), [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) and [Browser](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk) SDKs. The plugin provides you a way to interact with the native SDKs.
 
 All of our SDKs are open source. Go to our [Flutter GitHub repository](https://github.com/splitio/flutter-sdk-plugin) to see the source code.
 
 ## Language support
 
-Dart SDK v2.16.2 and greater, and Flutter v2.5.0 and greater.
+This plugin supports Android, iOS, and Web platforms.
 
-:::warning[Platform support]
-This plugin currently supports the Android and iOS platforms.
-:::
+- For Android and iOS, Dart SDK v2.16.2 or later and Flutter v2.5.0 or later are required.
+- For Web, Dart SDK v3.3.0 or later and Flutter v3.19.0 or later are required. The package is compatible with [WebAssembly (WASM) compilation](https://dart.dev/web/wasm).
 
 :::tip[Rule-based segments support]
 Rule-based segments are supported in plugin versions 1.0.0 and above. No changes are required to your implementation, but updating to a supported version is required to ensure compatibility.
@@ -26,13 +25,13 @@ Older SDK versions will return the control treatment for flags using rule-based 
 
 ## Initialization
 
-Set up FME in your code base with the following two steps:
+Set up Harness FME in your code base with the following steps:
 
 ### 1. Add the package in your pubspec.yaml file
 
 ```yaml title="pubspec.yaml" 
 dependencies:
-  splitio: 1.0.0
+  splitio: 1.1.0
 ```
 
 ### 2. Instantiate the plugin
@@ -294,7 +293,7 @@ You can append properties to an impression by passing an object of key-value pai
 
 Three types of properties are supported: strings, numbers, and booleans.
 
-```dart
+```dart title="Flutter"
 _split.client(onReady: (client) async {
   final treatment = await client.getTreatment(
     'FEATURE_FLAG_NAME',
@@ -372,30 +371,30 @@ final Splitio _split =
 
 The parameters available for configuration are shown below.
 
-| **Configuration** | **Description** | **Default value** |
-| --- | --- | --- |
-| featuresRefreshRate | The SDK polls Harness servers for changes to feature flags at this rate (in seconds). | 3600 seconds |
-| segmentsRefreshRate | The SDK polls Harness servers for changes to segments at this rate (in seconds). | 1800 seconds |
-| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds |
-| telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600 seconds (1 hour) |
-| eventsQueueSize | When using `.track`, the number of **events** to be kept in memory. | 10000 |
-| eventFlushInterval | When using `.track`, how often is the events queue flushed to Harness servers. | 1800 seconds |
-| eventsPerPush | Maximum size of the batch to push events. | 2000 |
-| trafficType | When using `.track`, the default traffic type to be used. | not set |
-| impressionsQueueSize | Default queue size for impressions. | 30K |
-| enableDebug | Enabled verbose mode. | false |
-| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism when in foreground. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
-| persistentAttributesEnabled | Enables saving attributes on persistent cache which is loaded as part of the SDK_READY_FROM_CACHE flow. All functions that mutate the stored attributes map affect the persistent cache. | false |
-| impressionListener | Enables impression listener. If true, generated impressions stream in the impressionsStream() method of Splitio. | false |
-| syncConfig | Use it to filter specific feature flags to be synced and evaluated by the SDK. It can be created with the `SyncConfig.flagSets('sets')` method (recommended, flag sets aree available in all tiers) or `SyncConfig(names: ["feature-flag-1", "feature-flag-2"])` for individual names. If not set, all flags are downloaded. | not set |
-| syncEnabled | Controls the SDK continuous synchronization flags.  When `true`, a running SDK processes the rollout plan updates which is performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
-| userConsent | User consent status controls the tracking of events and impressions. Possible values are `UserConsent.granted`, `UserConsent.decline`, and `UserConsent.unknown`. See [User consent](#user-consent) for details. | `UserConsent.granted` |
-| encryptionEnabled | Enables or disables encryption for cached data. | `false` |
-| logLevel | Enables logging according to the level specified. Options are `SplitLogLevel.none`, `SplitLogLevel.verbose`, `SplitLogLevel.debug`, `SplitLogLevel.info`, `SplitLogLevel.warning`, and `SplitLogLevel.error`. | `SplitLogLevel.none` |
-| impressionsMode | This configuration defines how impressions (decisioning events) are queued. Supported modes are `ImpressionsMode.optimized`, `ImpressionsMode.none`, and `ImpressionsMode.debug`. In `ImpressionsMode.optimized` mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In `ImpressionsMode.none` mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use `ImpressionsMode.none` when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In `ImpressionsMode.debug` mode, ALL impressions are queued and sent to Harness. This is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `ImpressionsMode.optimized` |
-| readyTimeout | Maximum amount of time (in seconds) to wait until the `onTimeout` callback is fired or `whenTimeout` future is completed. A negative value means no timeout. | 10 seconds |
-| certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
-| rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
+| **Configuration** | **Description** | **Default value** | **Supported platforms** |
+| --- | --- | --- | --- |
+| featuresRefreshRate | The SDK polls Harness servers for changes to feature flags at this rate (in seconds). | 3600 seconds | All |
+| segmentsRefreshRate | The SDK polls Harness servers for changes to segments at this rate (in seconds). | 1800 seconds | All |
+| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds | All |
+| telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600 seconds (1 hour) | All |
+| eventsQueueSize | When using `.track`, the number of **events** to be kept in memory. | 10000 | All |
+| eventFlushInterval | When using `.track`, how often is the events queue flushed to Harness servers. | 1800 seconds | All |
+| eventsPerPush | Maximum size of the batch to push events. | 2000 | Android & iOS |
+| trafficType | When using `.track`, the default traffic type to be used. | not set | All |
+| impressionsQueueSize | Default queue size for impressions. | 30K | All |
+| enableDebug | Enabled verbose mode. | false | All |
+| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism when in foreground. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true | All |
+| persistentAttributesEnabled | Enables saving attributes on persistent cache which is loaded as part of the SDK_READY_FROM_CACHE flow. All functions that mutate the stored attributes map affect the persistent cache. | false | Android & iOS |
+| impressionListener | Enables impression listener. If true, generated impressions stream in the impressionsStream() method of Splitio. | false | All |
+| syncConfig | Use it to filter specific feature flags to be synced and evaluated by the SDK. It can be created with the `SyncConfig.flagSets('sets')` method (recommended, flag sets aree available in all tiers) or `SyncConfig(names: ["feature-flag-1", "feature-flag-2"])` for individual names. If not set, all flags are downloaded. | not set | All |
+| syncEnabled | Controls the SDK continuous synchronization flags.  When `true`, a running SDK processes the rollout plan updates which is performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true | All |
+| userConsent | User consent status controls the tracking of events and impressions. Possible values are `UserConsent.granted`, `UserConsent.decline`, and `UserConsent.unknown`. See [User consent](#user-consent) for details. | `UserConsent.granted` | All |
+| encryptionEnabled | Enables or disables encryption for cached data. | `false` | Android & iOS |
+| logLevel | Enables logging according to the level specified. Options are `SplitLogLevel.none`, `SplitLogLevel.verbose`, `SplitLogLevel.debug`, `SplitLogLevel.info`, `SplitLogLevel.warning`, and `SplitLogLevel.error`. | `SplitLogLevel.none` | All |
+| impressionsMode | This configuration defines how impressions (decisioning events) are queued. Supported modes are `ImpressionsMode.optimized`, `ImpressionsMode.none`, and `ImpressionsMode.debug`. In `ImpressionsMode.optimized` mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In `ImpressionsMode.none` mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use `ImpressionsMode.none` when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In `ImpressionsMode.debug` mode, ALL impressions are queued and sent to Harness. This is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `ImpressionsMode.optimized` | All |
+| readyTimeout | Maximum amount of time (in seconds) to wait until the `onTimeout` callback is fired or `whenTimeout` future is completed. A negative value means no timeout. | 10 seconds | All |
+| certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null | Android & iOS |
+| rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null | All |
 
 ## Manager
 
@@ -610,6 +609,10 @@ The following are the three possible initial states:
 
 ### Certificate pinning
 
+:::warning[Platform support]
+This feature is only supported on Android and iOS platforms.
+:::
+
 The plugin allows you to constrain the certificates that it trusts, by pinning a certificate's `SubjectPublicKeyInfo` providing the public key as a ___base64 SHA-256___ hash or a ___base64 SHA-1___ hash.
 
 Each pin corresponds to a host. For subdomains, you can optionally use wildcards, where `*` will match one subdomain (e.g. `*.example.com`), and `**` will match any number of subdomains (e.g `**.example.com`).
@@ -631,7 +634,7 @@ To set the plugin to require pinned certificates for specific hosts, add the `Ce
 
 ### Link with native factory
 
-A native SplitFactory instance can be shared with the plugin to save resources when evaluations need to be performed on native platform logic. To do so, do the following:
+A native `SplitFactory` instance can be shared with the plugin to save resources when evaluations need to be performed on native platform logic. To do so, do the following:
 
 #### Android
 
