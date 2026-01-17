@@ -190,6 +190,7 @@ Use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/docu
 * `-LocationFilesExclude` — Exclude one or more paths from the scan.
 * `-OsaPathExclude` — Exclude matching paths from the scan.
 * `-OsaFilesExclude` — Exclude matching files from the scan.
+* `-C or -Comment`— Add a comment to the scan. This is useful for attaching metadata. When specified, the value is added under Issue Raw Details in the Issue Details view as a `CLI Comment`. 
 
 <!-- https://harness.atlassian.net/browse/STO-7006  -->
 

@@ -44,7 +44,7 @@ The available filters include:
 - **Organization**: Filters data based on the selected Harness Organization.
 - **Project**: Filters results within a specific Project under the selected Organization.
 - **Date**: Allows filtering by predefined presets (e.g., last 7 days) or a custom date range.
-- **Reference Identifier**: Filters issues based on a specific reference identifier.
+- **Reference Identifier**: Filters issues based on a specific reference identifier (e.g., CVE ID, GHSA, BDSA).
 - **Target**: Filters data by the selected STO scan target.
 - **Target Type**: Filters data based on the type of target, such as container, repository, instance, or configuration.
 - **Scanner**: Filters results by the scanner used to detect issues.
