@@ -89,6 +89,9 @@ These concurrency limits are *account wide* and NOT per pipeline.
 
 :::
 
+:::note If you need limits beyond the maximum values specified above, please contact [Harness Support](mailto:support@harness.io) . :::
+
+
 This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum. 
 
 ### Project-Level Pipeline Execution Concurrency
