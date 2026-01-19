@@ -8,11 +8,21 @@ redirect_from:
 
 This topic describes how you can install Harness Delegate and enable chaos on it. You can follow the interactive demo or the steps to install Harness Delegate.
 
-## Prerequisites
+:::info Delegate Image Options
+Harness provides two delegate image types:
+- **Standard Delegate Image** (Recommended) - Includes all required binaries for chaos experimentation and discovery. Follow the standard installation steps below.
+- **Delegate-Minimal Image** - Lightweight image that requires additional configuration. See [Using Delegate-Minimal Image](#using-delegate-minimal-image) if you specifically need to use the minimal image.
+:::
+
+## Standard Delegate Installation
+
+This section covers the installation of the standard delegate image.
+
+### Prerequisites
 
 - [Create an Environment](/docs/chaos-engineering/on-premise-vs-saas)
 
-## Interactive Demo
+### Interactive Demo
 Navigate through the demo below to see how to create an environment, a new infrastructure, a new connector and a Delegate. 
 
 If you have created a connector and a Harness Delegate earlier, you can find their names in the list that is displayed while selecting the connector and Delegate, respectively. Select it instead of creating a new one.
@@ -30,7 +40,7 @@ If you have created a connector and a Harness Delegate earlier, you can find the
   allowfullscreen="allowfullscreen"></iframe>
 
 
-## Step-by-Step Installation
+### Step-by-Step Installation
 
 1. Select the **Environment** you created, and choose the **Infrastructure type**. In this example, select **Kubernetes** and click **+ New Infrastructure**.
 
@@ -65,6 +75,173 @@ If you have created a connector and a Harness Delegate earlier, you can find the
 - To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/guides/infrastructures/types/ddcr/mtls-support).
 - To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support).
 :::
+
+---
+
+## Using Delegate-Minimal Image
+
+:::warning Important
+The **standard delegate image** includes all required binaries for chaos experimentation and discovery out-of-the-box. Use the steps above for standard delegate installation.
+
+If you are using the **delegate-minimal image**, additional setup is required as described below.
+:::
+
+By default, chaos experimentation and discovery are **not supported** with the `delegate-minimal` image. The delegate-minimal image does not include `kubectl` and `go-template` binaries, which are required for discovery and chaos experimentation.
+
+### Prerequisites for Delegate-Minimal
+
+If you are using a `delegate-minimal` image, you must install `kubectl` and `go-template` binaries using one of the following methods:
+
+### Option 1: Create a Custom Delegate Image
+
+Create your own custom version of the `delegate-minimal` image with `kubectl` and `go-template` binaries pre-installed.
+
+### Option 2: Use INIT_SCRIPT Environment Variable (Recommended)
+
+Provide an installation script in the `INIT_SCRIPT` environment variable of the delegate deployment:
+
+```yaml
+- env:
+  - name: INIT_SCRIPT
+    value: |
+      ##kubectl
+      curl -L0 https://app.harness.io/public/shared/tools/kubectl/release/v1.28.7/bin/linux/amd64/kubectl -o kubectl
+      chmod +x ./kubectl
+      mv kubectl /usr/local/bin/
+      ## go-template
+      curl -L0 https://app.harness.io/public/shared/tools/go-template/release/v0.4.1/bin/linux/amd64/go-template -o go-template
+      chmod +x ./go-template
+      mv go-template /usr/local/bin/
+```
+
+<details>
+<summary>View Complete Deployment Example</summary>
+
+Below is a complete example of a delegate deployment using the minimal image with the `INIT_SCRIPT` configuration:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "12"
+    meta.helm.sh/release-name: minimal-delegate
+    meta.helm.sh/release-namespace: harness-delegate-ng
+  creationTimestamp: "2025-12-24T14:59:12Z"
+  generation: 14
+  labels:
+    app.kubernetes.io/instance: minimal-delegate
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: minimal-delegate
+    harness.io/name: minimal-delegate
+    helm.sh/chart: harness-delegate-ng-1.0.30
+  name: minimal-delegate
+  namespace: harness-delegate-ng
+  resourceVersion: "1766592671187615000"
+  uid: e722c89a-b32a-4967-b0d1-18b30875ec5a
+spec:
+  minReadySeconds: 120
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: minimal-delegate
+      app.kubernetes.io/name: minimal-delegate
+      harness.io/name: minimal-delegate
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        checksum/configmap: 7035b94e3fa40ca0d141e84bae671bb39a14c87607df12e987c795c13ff0a88
+        checksum/secret: 9e0e62b1a5d981d355a1098af3828757de0c4a287fb6657566da29bea504dc0
+        prometheus.io/path: /api/metrics
+        prometheus.io/port: "3460"
+        prometheus.io/scrape: "true"
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: minimal-delegate
+        app.kubernetes.io/name: minimal-delegate
+        harness.io/name: minimal-delegate
+    spec:
+      containers:
+      - env:
+        - name: INIT_SCRIPT
+          value: |
+            ##kubectl
+            curl -L0 https://app.harness.io/public/shared/tools/kubectl/release/v1.28.7/bin/linux/amd64/kubectl -o kubectl
+            chmod +x ./kubectl
+            mv kubectl /usr/local/bin/
+            ## go-template
+            curl -L0 https://app.harness.io/public/shared/tools/go-template/release/v0.4.1/bin/linux/amd64/go-template -o go-template
+            chmod +x ./go-template
+            mv go-template /usr/local/bin/
+        envFrom:
+        - configMapRef:
+            name: minimal-delegate
+        - secretRef:
+            name: minimal-delegate
+        - configMapRef:
+            name: minimal-delegate-proxy
+            optional: true
+        - secretRef:
+            name: minimal-delegate-proxy
+            optional: true
+        - configMapRef:
+            name: minimal-delegate-shared-certificates
+            optional: true
+        image: us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate:25.08.86602.minimal
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /api/health
+            port: 3460
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 20
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: delegate
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 3460
+          name: api
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        startupProbe:
+          failureThreshold: 40
+          httpGet:
+            path: /api/health
+            port: 3460
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 1001
+      serviceAccount: minimal-delegate
+      serviceAccountName: minimal-delegate
+      terminationGracePeriodSeconds: 600
+```
+
+</details>
+
+---
 
 ## Harness Terraform Provider
 
