@@ -36,6 +36,7 @@ Cluster Orchestrator is designed for quick implementation with minimal configura
 |---|---|---|
 |Till `0.6.0`| 1.32 | 1.2.4|
 |`0.7.0`| 1.33 | 1.7.3|
+|`beta-0.7.0`| 1.34 | 1.8.0|
 
 
 ## Prerequisites
