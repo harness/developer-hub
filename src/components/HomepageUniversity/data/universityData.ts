@@ -66,6 +66,7 @@ export const university: CardItem[] = [
     description:
       "Manage feature releases, monitor performance, and run experiments for data-driven development.",
     link: "/university/feature-management-experimentation",
+    numberOfCerts: 1,
     SPT_available: true,
   },
   {

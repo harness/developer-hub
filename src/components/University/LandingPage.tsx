@@ -364,6 +364,10 @@ export default function University() {
                       alt="Developer IaCM Badge"
                     />
                     <img
+                      src={`${baseUrl}img/cert-dev-fme-badge.svg`}
+                      alt="Developer FME Badge"
+                    />
+                    <img
                       src={`${baseUrl}img/cert_dev_ce_badge.svg`}
                       alt="Developer Chaos Badge"
                     />

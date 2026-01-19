@@ -92,6 +92,16 @@ export const university: CardItem[] = [
     link: "/university/iacm?lvl=developer",
     // numberOfCerts: 1,
   },
+    {
+    title: "Feature Management & Experimentation  - Developer",
+    module: MODULES.fme,
+    type: certType.developer,
+    description:
+      "FME Developer focuses on the fundamental skills to manage feature releases and experiments.",
+    version: "Harness FME Paid Plans",
+    link: "/university/feature-management-experimentation?lvl=developer",
+    // numberOfCerts: 1,
+  },
   {
     title: "Chaos Engineering  - Developer",
     module: MODULES.ce,
