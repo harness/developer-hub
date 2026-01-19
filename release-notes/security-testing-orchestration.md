@@ -21,6 +21,38 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## December 2025
+
+
+### Version 1.171.1
+
+<!-- 2025-12-18 -->
+
+#### New Features and Enhancements
+
+##### Auto Create Jira Ticket Creation
+
+- Harness STO can automatically create a Jira ticket with the pre-defined template, when you request an exemption for a security issue. This helps teams track exemptions without relying on manual ticket creation. Refer to the [Auto Create Jira Ticket Creation documentation](/docs/security-testing-orchestration/jira-integrations#auto-create-jira-tickets-for-exemption-requests) to learn how to configure and use this feature (STO-9487). This feature is behind the `STO_EXEMPTION_TICKET` feature flag.
+- Security results for STO are now aggregated across all pipeline stages and executions, providing a single, complete view even when pipelines are resumed after a failure. This includes reruns of failed stages and chained pipelines. Previously, results from rerun failed stages or chained pipelines were not combined in the vulnerabilities tab (STO-10231 , [ZD-84194](https://harnesssupport.zendesk.com/agent/tickets/84194), [ZD-89153](
+https://harnesssupport.zendesk.com/agent/tickets/89153)). This feature was behind Feature Flags `STO_AGGREGATE_RETRY_EXECUTIONS` and `STO_AGGREGATE_CHAIN_EXECUTIONS` now it is generally available (GA). 
+
+   - Additional details and scenarios explaining the behavior in the [Vulnerabilities tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results) have been added to the docs as the info, along with a table outlining the expected behavior for the [Download CSV](/docs/security-testing-orchestration/view-security-test-results/export-scan-results#export-as-csv-from-the-vulnerabilities-tab).
+- Added support to accept [**Expression**](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) in scan configuration for all STO scanners which has the configuration field (STO-10071,[ZD-95979](https://harnesssupport.zendesk.com/agent/tickets/95979), [ZD-97076](https://harnesssupport.zendesk.com/agent/tickets/97076)).
+<DocImage path={require('./static/config-expression.png')} width="40%" height="40%" title="Click to view full size image" />
+
+- Scanner compatibility issues may occur with newer [Docker Engine version 29](https://developer.harness.io/docs/platform/knowledgebase/articles/docker-29-version-compatibility/). As a workaround, pin the Docker Engine version to 28.
+
+#### Fixed Issues
+
+- Added support to display the suggested code diff snippet for the GitHub Advanced Security (GHAS) vulnerability findings. (STO-10151).
+<DocImage path={require('./static/ghas-code-snippet.png')} width="40%" height="40%" title="Click to view full size image" />
+- Fixed an issue where GitHub Advanced Security (GHAS) - Dependabot orchestration always displayed results from the main branch. Results are now correctly shown for the branch selected by the user (STO-10063).
+- Fixed an issue in GitHub Advanced Security (GHAS) where CodeQL extraction could fail and return the error “The scan with `scan-id` has failed.” CodeQL scans now complete successfully as expected (STO-10065).
+
+
+
+
 ## November 2025
 
 ### Version 1.165.0
