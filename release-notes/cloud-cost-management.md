@@ -26,6 +26,21 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
 
+## January 2025 - Version 1.75.1
+#### Deployment Date: January 16, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **“Others” cost preference now supports negative values:** Previously, when Show Others (not in top 12) was enabled, negative costs in the “Others” category were shown as zero. We’ve fixed this—negative values will now display correctly in Perspectives. [CCM-28678]
+
+- **Perspective chart x-axis now shows only valid dates**: Fixed an issue where extra dates appeared at the beginning and end of the chart timeline. The x-axis now reflects only the dates present in the dataset. [CCM-28640]
+
+- **Security Groups dropdown now loads correctly for Azure AutoStopping Proxy**: Resolved an issue where the Security Groups list wasn’t populating during proxy creation. [CCM-28559]
+
+- **Improved navigation from Anomaly Details when no contributing resources exist**: If an anomaly has no contributing resources, we now display the root resource details and automatically redirect you to the relevant Perspective view. [CCM-28219]
+
+- **New SP roll-down policy option in Commitment Orchestrator renewals** You can now configure a roll-down percentage to control how much of an expiring Savings Plan commitment is renewed during setup. [CCM-27577]
+
 ## January 2025 - Hotfix: Changes to AutoStopping Rules
 #### **Deployment Date:** January 12, 2025 
 
