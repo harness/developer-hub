@@ -138,10 +138,6 @@ metadata:
 ```
 </details>
 
-:::info
-Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table
-:::
-
 ---
 
 ## What's new in IDP 2.0?
