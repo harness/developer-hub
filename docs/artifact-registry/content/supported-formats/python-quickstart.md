@@ -65,6 +65,14 @@ An upstream proxy allows your registry to fetch Python packages from external so
 If a Python package isn’t found in your Harness registry, the upstream proxy fetches it from an external registry like PyPI, reducing duplication and improving package resolution.
 :::
 
+### Configuring Python PyPI Upstream Proxy with Custom Registry Suffix
+
+Harness supports configuring Python PyPI upstream proxies for registries that use non-standard endpoint paths. In addition to specifying the remote registry URL, you can define an optional custom registry suffix when the PyPI repository is not available under the default `/simple/` endpoint.
+
+![](./static/python-custom-registry-suffix.png)
+
+This is commonly required when integrating with enterprise artifact repositories such as Artifactory, Nexus, or private PyPI mirrors. Authentication can be configured using anonymous access or username and password credentials. Once configured, Harness handles package resolution and authentication automatically when proxying Python dependencies from the upstream registry.
+
 ---
 ## Publish & Install Python packages
 ### Authenticate the Python CLI
