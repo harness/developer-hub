@@ -306,6 +306,15 @@ For more information, go to [Optimize STO pipelines](/docs/security-testing-orch
 
 Go to [Troubleshoot "vulnerability database build date exceeds max allowed age" exception](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference#troubleshoot-vulnerability-database-build-date-exceeds-max-allowed-age-exception) in the Grype scanner reference.
 
+## Snyk scans
+
+### Snyk Open Source scan fails with exit code 2 or signal: killed
+
+This issue can occur when the Snyk Open Source scan runs out of memory during execution. Scans for larger repositories or repositories with complex dependency graphs can be memory-intensive, and if insufficient memory is allocated, the runner may terminate the process.
+
+Start with **1.5 GB** of memory allocated to the scan step and adjust as needed based on repository size and number of dependencies until the scan completes successfully.
+
+
 ## OWASP scans
 
 ### OWASP step generates exception when initializing Yarn Audit Analyzer 

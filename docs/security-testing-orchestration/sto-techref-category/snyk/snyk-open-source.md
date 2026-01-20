@@ -48,6 +48,15 @@ Refer to the table below to determine whether your project requires a build for 
 ## Snyk Open Source scan - Orchestration mode
 The Snyk Open Source scan may require your project to be built beforehand. Check the [Build requirements for Snyk Open Source scan](#build-requirements-for-snyk-open-source-scanning) to see if a build is necessary. If your project doesn’t need a build, you can skip the [Build your project using the Run step](#build-your-project-using-run-step) section.
 
+:::note
+Snyk Open Source scans can be memory-intensive for medium to large repositories or repositories with many dependencies. If insufficient memory is allocated, the scan process may be terminated unexpectedly (with, exit code `2` due to `signal: killed`).
+
+**Recommended memory:** Start with **1.5 GB** allocated to the step in the Additional Configuration, and adjust as needed based on repository size and number of dependencies.
+
+
+:::
+
+
 ### Build your project using Run step
 Depending on your project type, you can use a Run step to build your project. Refer to the [table](#build-requirements-for-snyk-open-source-scanning) for more details. Ensure this is configured before the Snyk step in your pipeline.
 
