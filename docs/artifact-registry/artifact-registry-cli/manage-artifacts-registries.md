@@ -84,79 +84,19 @@ hc registry get [?name] [flags]
 Go to the [Artifact Registry documentation](https://developer.harness.io/docs/artifact-registryget-started/quickstart#docker) for a comprehensive list of supported package types.
 
 You can also use global flags to override the org and project, to know more about global flags, refer to the [Global Flags](/docs/platform/automation/cli/reference#v1-hc--global-flags) section.
-
-### Manage Registry Metadata
-
-Attach custom key-value pairs to registries for better organization and tracking.
-
-#### Set Metadata
-
-```bash
-hc registry metadata set [flags]
-```
-
-**Required flags:**
-- `--registry string`: Registry identifier
-- `--metadata string`: Metadata in `key:value,key:value` format
-
-**Example:**
-
-```bash
-hc registry metadata set --registry my-docker-reg --metadata "env:prod,region:us"
-```
-
-#### Get Metadata
-
-```bash
-hc registry metadata get [flags]
-```
-
-**Required flags:**
-- `--registry string`: Registry identifier
-
-**Example:**
-
-```bash
-hc registry metadata get --registry my-docker-reg
-```
-
-#### Delete Metadata
-
-```bash
-hc registry metadata delete [flags]
-```
-
-**Required flags:**
-- `--registry string`: Registry identifier
-- `--metadata string`: Metadata in `key:value,key:value` format
-
-**Example:**
-
-```bash
-hc registry metadata delete --registry my-docker-reg --metadata "env:prod"
-```
-
----
-
+<!-- 
 ### Delete a Registry
 
 Remove a registry from your project:
 
 ```bash
-hc registry delete [name] [flags]
+hc registry delete <identifier>
 ```
 
-**Example:**
-
-```bash
-hc registry delete my-docker-registry
-```
 
 :::warning Permanent Action
 Deleting a registry will remove all artifacts stored within it. This action cannot be undone. Make sure to back up any important artifacts before deletion.
-:::
-
----
+::: -->
 
 ## Artifact Management
 
@@ -241,14 +181,8 @@ hc artifact push [command]
 
 - `generic`
 - `go`
+- `maven`
 - `conda`
-- `cargo`
-- `composer`
-- `dart`
-- `nuget`
-- `python`
-- `rpm`
-- `npm`
 
 Pick the appropriate command based on your package type. Use the `-h` flag to get help and understand the necessary flags for each command.
 
@@ -290,155 +224,37 @@ hc artifact pull generic image cli-arti/latest/package.json ./dummy --pkg-url ht
 <DocImage path={require('./static/pull-arti-general.png')} width="80%" title="Pull Generic Artifact" alt="Pull Generic Artifact" width="100%"/>
 
 This downloads the specified artifact to the destination path on your local machine.
-
----
-
-### Manage Artifact Metadata
-
-Attach custom key-value pairs to packages or specific versions for better organization, tracking, and automation workflows.
-
-:::info Package vs Version Level Metadata
-Metadata can be applied at two levels:
-- **Package-level**: Applies to the entire package (omit `--version` flag)
-- **Version-level**: Applies to a specific version (include `--version` flag)
-:::
-
-#### Set Metadata
-
-```bash
-hc artifact metadata set [flags]
-```
-
-**Required flags:**
-- `--registry string`: Registry identifier
-- `--package string`: Package name
-- `--metadata string`: Metadata in `key:value,key:value` format
-
-**Optional flags:**
-- `--version string`: Version (for version-level metadata)
-
-**Example - Package-level metadata:**
-
-```bash
-hc artifact metadata set --registry r1 --package nginx --metadata "owner:team-a"
-```
-
-**Example - Version-level metadata:**
-
-```bash
-hc artifact metadata set --registry r1 --package nginx --version 1.2.3 --metadata "approved:true"
-```
-
-#### Get Metadata
-
-```bash
-hc artifact metadata get [flags]
-```
-
-**Required flags:**
-- `--registry string`: Registry identifier
-- `--package string`: Package name
-
-**Optional flags:**
-- `--version string`: Version (for version-level metadata)
-
-**Example - Package-level:**
-
-```bash
-hc artifact metadata get --registry r1 --package nginx
-```
-
-**Example - Version-level:**
-
-```bash
-hc artifact metadata get --registry r1 --package nginx --version 1.2.3
-```
-
-#### Delete Metadata
-
-```bash
-hc artifact metadata delete [flags]
-```
-
-**Required flags:**
-- `--registry string`: Registry identifier
-- `--package string`: Package name
-- `--metadata string`: Metadata in `key:value,key:value` format
-
-**Optional flags:**
-- `--version string`: Version (for version-level metadata)
-
-**Example - Package-level:**
-
-```bash
-hc artifact metadata delete --registry r1 --package nginx --metadata "owner:team-a"
-```
-
-**Example - Version-level:**
-
-```bash
-hc artifact metadata delete --registry r1 --package nginx --version 1.2.3 --metadata "approved:true"
-```
-
----
-
+<!-- 
 ### Delete Artifacts
 
-Delete a specific version of an artifact or all versions of an artifact from the Harness Artifact Registry.
+Deletes a specific artifact and all its versions from the Harness Artifact Registry
+
+**General syntax:**
 
 ```bash
-hc artifact delete [artifact-name] [flags]
+hc artifact delete [registry] [name] [version] [flags]
 ```
 
-**Required flags:**
-- `--registry string`: Name of the registry
+**Flag:**
+- `--registry`: Name of the registry (alternative to positional argument)
 
-**Optional flags:**
-- `--version string`: Specific version to delete (if not provided, deletes all versions)
-
-**Example - Delete a specific version:**
+**Delete a specific version:**
 
 ```bash
-hc artifact delete my-app --registry my-docker-registry --version 1.0.0
+hc artifact delete my-docker-registry my-app v1.0.0
 ```
 
-**Example - Delete all versions:**
+**Delete all versions of an artifact:**
 
-Omit the `--version` flag to delete the entire artifact and all its versions:
+Omit the version parameter to delete the entire artifact:
 
 ```bash
-hc artifact delete my-app --registry my-docker-registry
+hc artifact delete my-docker-registry my-app
 ```
 
 :::warning Permanent Deletion
 Deleting artifacts is permanent and cannot be undone. Ensure you have backups or are certain about the deletion before proceeding.
-:::
-
----
-
-### Copy Artifacts
-
-Copy a specific version of an artifact package from one registry to another within your Harness Artifact Registry.
-
-```bash
-hc artifact copy <SRC_REGISTRY>/<PACKAGE_NAME>/<VERSION> <DEST_REGISTRY> [flags]
-```
-
-**Optional flags:**
-- `--artifact-type string`: Artifact type (e.g., `model` or `dataset`)
-
-**Example:**
-
-```bash
-hc artifact copy source-registry/nginx/1.2.3 destination-registry
-```
-
-**Example with artifact type:**
-
-```bash
-hc artifact copy ml-registry/my-model/v2.0 prod-registry --artifact-type model
-```
-
+::: -->
 
 <!-- 
 ## Output Formats
