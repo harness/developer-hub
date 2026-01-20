@@ -44,7 +44,8 @@ Optionally, to filter for tag creation vs deletion, add another condition that c
 <TabItem value="Bitbucket">
 
 4. Add a new condition, under **Conditions** -> **Payload Conditions** for your webhook trigger. 
-5. Set the payload's **Attribute** to `<+trigger.payload.push.changes[0].new.type>`.
+5. Set the payload's **Attribute** to `<+trigger.payload.push.changes[0]['new']['type']>`.
+   - *Note:* We recommend bracket notation here because `new` can be interpreted as a reserved keyword by the JEXL expression engine used to resolve these values.
 6. Select **Equals** as your **Operator**.
 7. For **Matches Value**, write `tag`.
 
