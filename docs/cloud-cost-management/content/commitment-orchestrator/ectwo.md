@@ -100,7 +100,20 @@ The purchases will happen only at master account level and thus will be in turn 
 
     - **Manual**: All commitment purchases require explicit manual approval before execution, giving you complete control over the process. All the recommendations are visible in the **Actions** tab on the dashboard.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/stepsix.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/stepsix.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **(Optional) Notifications:** Configure alerts to stay informed about commitment-related activities. You can set up the following notification types:
+
+    - **Purchase Notifications:** Receive alerts when Harness successfully executes RI/SP purchases on your behalf. These notifications include details such as commitment type, term length, upfront cost, and estimated savings.
+
+    - **Pending Approval Notifications:** Get alerted when manual approval is required for RI/SP recommendations. This is particularly useful when using the Manual orchestration mode, ensuring you never miss an opportunity to approve cost-saving commitments.
+
+    - **Savings Plans Expiry Notifications:** Set a timeframe (up to 7 days before expiry) to receive alerts about your existing Savings Plans that will soon expire. This gives you adequate time to plan for renewals or replacement commitments.
+
+    - **Email Recipients:** Specify the email addresses that should receive these notifications. You can add multiple recipients by separating email addresses with commas. Notifications can also be configured to be sent to specific teams or distribution lists.
+
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/notifications.png')} width="100%" height="100%" title="Click to view full size image" />
+
 
 </TabItem>
 <TabItem value="step4" label="Review & Complete">
