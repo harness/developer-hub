@@ -66,6 +66,25 @@ You will be prompted to provide a reason for quarantining the artifact. Enter yo
 
 you can remove a quarantined artifact by selecting the artifact and clicking **Remove from Quarantine**.
 
+## Download an artifact
+
+You can download artifacts directly from the Harness Artifact Registry UI. Navigate to the desired level (registry, artifact, or version), click the options menu (**⋮**), and select **Download**. 
+<DocImage path={require('./static/download.png')} />
+
+The system prepares your download and displays a status indicator at the bottom center of the page. Once ready, a green checkmark appears with a **Download** button to save the compressed archive locally.
+
+**Download levels:**
+
+- **Package level** - Downloads all versions of a specific package (non-OCI packages only)
+- **Version level** - Downloads a specific version only
+- **Individual files** - In the **Artifact Details** tab under **Files**, click any file to download it directly (no preparation needed)
+
+:::info Important Notes
+- **Package type support**: Download is available for non-OCI package types only (Maven, npm, PyPI, Generic, etc.). OCI images (Docker) should be pulled using standard container tools.
+- **Stay on the page**: Do not navigate to another tab or close the browser while the download is being prepared, as this will interrupt the process.
+- **Download availability**: Once ready, downloads remain available for **24 hours** or until you close the notification.
+:::
+
 ## See Also
 
 For a more in depth guide on how to pull and push docker artifacts, go to the [Quickstart Guide](/docs/artifact-registry/get-started/quickstart)
