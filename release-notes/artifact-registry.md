@@ -27,14 +27,91 @@ The release notes describe recent changes to Harness Artifact Registry.
 
 **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 
+## January 2026
+
+### 2026.1.v1
+
+#### New Features
+
+**Artifact Download from UI**
+
+Harness Artifact Registry now supports downloading artifacts directly from the UI. You can download all versions of an artifact, specific versions, or individual files. The system prepares your download as a compressed archive and displays a status indicator at the bottom center of the page. Once ready, downloads remain available for 24 hours.
+
+![](./static/artifact-registry/download.png)
+
+This feature works seamlessly with Docker digests and all supported artifact types, making it easy to retrieve artifacts for offline use, backup, or distribution.
+
+Learn more about [downloading artifacts from the UI](/docs/artifact-registry/manage-artifacts/artifact-management#download-an-artifact).
+
+**Native CI Integration for Artifact Upload**
+
+We've introduced a new **native Upload Artifact to Harness Artifact Registry step** in Harness CI pipelines, making it easier than ever to publish build artifacts directly to Harness Artifact Registry without custom scripts or third-party plugins.
+
+**What's new:**
+- **Built-in CI step**: New "Upload Artifacts to Harness Artifact Registry" step available in all CI pipelines
+- **Multi-format (non-OCI) support**: Upload artifacts in formats such as Maven JARs, npm packages, Python wheels, Conda packages, Generic artifacts, and more
+
+This native integration streamlines your CI/CD workflows by eliminating the need for custom scripts and manual authentication setup. Simply add the step to your pipeline, configure your target registry, and let Harness handle the rest.
+
+Learn more about the [native CI integration for Artifact Registry](/docs/artifact-registry/platform-integrations/ci-ar-integrations).
+
+#### Enhancements & Fixes
+
+**Enhanced CLI Capabilities for Artifact Registry**
+
+The Harness CLI (`hc`) now includes expanded functionality for managing artifacts and registries:
+
+- **Metadata Management**: Set, get, and delete custom metadata on registries, packages, and specific versions. Use metadata for tagging environments, tracking ownership, managing approval workflows, and maintaining compliance information.
+
+- **Artifact Copy**: Copy specific versions of artifacts between registries within your Harness Artifact Registry, with support for artifact type specification (e.g., model, dataset).
+
+- **Artifact Version Delete**: Delete specific versions of artifacts or all versions of an artifact. This provides granular control over artifact lifecycle management.
+
+- **Registry Delete**: Remove entire registries from your projects through the CLI.
+
+- **Python and NuGet Support**: Manage Python (PyPI) and NuGet packages directly from the command line.
+
+These enhancements provide a consistent CLI experience across all supported registry types, making it easier for development teams to integrate Harness Artifact Registry into their existing workflows and automation pipelines.
+
+Learn more about [managing artifacts and registries with the CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries).
+
+## December 2025
+
+### 2025.12.v1
+
+#### New Features
+
+**PHP Composer Registry Support**
+
+Harness Artifact Registry now supports PHP Composer packages, providing a secure, private registry for your PHP dependencies. You can store, manage, and distribute Composer packages directly within Harness with full compatibility with the Composer package manager.
+
+**Key benefits:**
+- **Private package hosting**: Host your proprietary PHP libraries and internal packages securely
+- **Upstream proxy support**: Cache packages from Packagist and other public repositories to accelerate builds and reduce external dependencies
+- **Version management**: Full support for semantic versioning and package constraints
+
+
+To learn more about how to use Harness Artifact Registry with PHP Composer, check out our [Composer Registry documentation](/docs/artifact-registry/get-started/quickstart/#composer).
+
+
+
+#### Enhancements & Fixes
+
+**Python PyPI Upstream Proxy Enhancements**
+
+Python PyPI upstream proxy configuration now supports specifying a custom registry suffix for non-standard PyPI endpoints. This allows platform teams to integrate private PyPI repositories and enterprise artifact managers such as Artifactory, Nexus, or self-hosted PyPI mirrors that do not expose packages under the default `/simple/` path.
+
+You can configure a remote registry URL, optionally define a custom registry suffix, and choose the appropriate authentication method. Harness transparently proxies Python packages from these upstream registries while handling authentication and package resolution.
+
+
 ## November 2025
 
-<!-- ### 2025.11.v2
+### 2025.11.v2
 
-#### New Features -->
+#### New Features 
 
 
-<!-- 
+
 **Metadata Support for Artifacts and Registries**
 
 Now enhance your artifact management with custom metadata! You can now attach key-value pairs to registries, artifacts, and packages, enabling better organization, searchability, and governance across your artifact ecosystem.
@@ -48,7 +125,30 @@ Now enhance your artifact management with custom metadata! You can now attach ke
 
 :::note
 This feature is currently behind the feature flag `HAR_CUSTOM_METADATA_ENABLED`. Contact Harness Support to enable it.
-::: -->
+::: 
+
+To learn more about how to use Harness Artifact Registry to store and manage artifacts with custom metadata, check out our [Metadata Support for Artifacts and Registries](https://developer.harness.io/docs/artifact-registry/metadate-registry)
+
+**Dart Registry Support**
+
+Harness Artifact Registry now supports Dart packages with full pub.dev compatibility. You can store, manage, and distribute Dart packages directly within Harness, with complete support for versions, metadata, and immutable release behaviour.
+
+**Key benefits:**
+
+- **Secure, private Dart registry**: Provides a dedicated, secure registry for all your teams' Dart packages
+- **Immutable versions**: Ensures immutable package versions matching pub.dev behaviour for safe, predictable builds
+- **Accelerated CI/CD**: Speeds up builds by caching remote dependencies via upstream proxy, reducing external dependencies and improving reliability
+
+To learn more about how to use Harness Artifact Registry to store and manage Dart packages, check out our [Dart Registry Quickstart guide](https://developer.harness.io/docs/artifact-registry/get-started/quickstart/#dart).
+
+#### Enhancements & Fixes
+
+**Download Button for Non-OCI Artifacts**
+
+You can now directly download any non-OCI artifact (Maven, npm, PyPI, Generic, Conda, Helm charts, etc.) from the Artifact Registry UI with a single click.
+Until now, retrieving individual files or packages required using CLI commands or configuring a package manager client. For many workflows: debugging, validation, quick inspections, and offline analysis, users simply want to grab the file instantly.
+
+
 
 ### 2025.11.v1
 
