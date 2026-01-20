@@ -603,7 +603,6 @@ const sidebars: SidebarsConfig = {
           value: 'New to Harness Platform?',
           className: 'horizontal-bar',
         },
-        'platform/platform-whats-supported',
         'platform/get-started/key-concepts',
         'platform/get-started/harness-ui-overview',
         'platform/get-started/onboarding-guide',
@@ -865,6 +864,7 @@ const sidebars: SidebarsConfig = {
           value: 'Troubleshooting & Resources',
           className: 'horizontal-bar',
         },
+        'platform/platform-whats-supported',
         {
           type: 'category',
           label: 'Tutorials',

@@ -1,4 +1,4 @@
-[Harness Git Experience](/docs/platform/git-experience/git-experience-overview) allows you to store your resource configurations, such as pipelines and input sets, in Git.
+[Harness Git Experience](/docs/platform/git-experience/git-experience-overview) allows you to store your resource configurations, such as pipelines and input sets, in Git. You can use Git as the single source of truth and modify your configurations using your Git credentials.
 
 Supported Git providers for Harness Git Sync include:
 
@@ -8,7 +8,7 @@ Supported Git providers for Harness Git Sync include:
 - Azure Repos
 - GitLab
 
-You can save the following Harness resources (entities) in Git using Harness Git Experience:
+Supported Harness resources (entities) in Git using Harness Git Experience:
 
 - Pipelines
 - Input sets
@@ -18,7 +18,5 @@ You can save the following Harness resources (entities) in Git using Harness Git
 - Infrastructure Definitions
 
 :::info
-
 Artifact Source templates are not supported with Git Experience.
-
 :::
