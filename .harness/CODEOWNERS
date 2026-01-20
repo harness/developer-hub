@@ -13,7 +13,7 @@
 *.tsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Changes to Lock File
-*.lock  wei.guo@harness.io
+*.lock  wei.guo@harness.io richard.black@harness.io
 
 # Changes to Config Files
 *.ini  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
@@ -39,12 +39,12 @@ README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness
 /community/ ompragash.viswanathan@harness.io dewan.ahmed@harness.io
 
 # Redirect Archives
-/archive/  prateek.mittal@harness.io wei.guo@harness.io
+/archive/  prateek.mittal@harness.io wei.guo@harness.io richard.black@harness.io
 
 # Documentation ###
 
 # All Static files (images etc.)
-static/  rohan.maharjan@harness.io wei.guo@harness.io
+static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io
 
 # All Data files - Please add global reviewers who are familiar with js/ts
 # data/*.ts @global-data-file-owners
@@ -160,10 +160,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io
 
 # IACM Docs
-/docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
-/release-notes/infrastructure-as-code-management.md richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
-/src/components/Roadmap/data/iacmData.ts richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
-/src/components/Docs/data/iacmData.ts richard.black@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
+/docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
+/release-notes/infrastructure-as-code-management.md richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
+/src/components/Roadmap/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
+/src/components/Docs/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
 
 # FF Classic Docs
 /docs/feature-flags/ austin.lai@harness.io david.karow@harness.io deepak.puthraya@harness.io rohit.pal@harness.io
