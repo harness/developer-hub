@@ -29,10 +29,12 @@ Harness publishes `plugins/drone-liquibase` with `x.y.z-{liquibaseVersion}`, whe
 Here are some examples of Harness DB Devops images and their purposes:
 
 * `plugins/download-artifactory`: Used for downloading artifacts from Artifactory.
-* `plugins/drone-liquibase:1.1.0-4.27`: Default Liquibase plugin for database operations.
+* `plugins/drone-liquibase:x.y.z-{liquibaseVersion}`: Default Liquibase plugin for database operations.
 * `harness/drone-git`: Used to clone Git repositories.
-* `plugins/drone-liquibase:1.1.0-4.27-mongo`: Liquibase plugin for MongoDB.
-* `plugins/drone-liquibase:1.1.0-4.27-spanner`: Liquibase plugin for Google Spanner.
+* `plugins/drone-liquibase:x.y.z-{liquibaseVersion}-mongo`: Liquibase plugin for MongoDB.
+* `plugins/drone-liquibase:x.y.z-{liquibaseVersion}-spanner`: Liquibase plugin for Google Spanner.
+
+For complete and latest list of images and their tags, refer to the [Release Notes](http://developer.harness.io/release-notes/database-devops).
 
 ## Configure Harness DB Devops Image Versions
 
@@ -54,10 +56,10 @@ Response:
 ```json
 {
   "artifactoryTag": "plugins/download-artifactory:1.0.0",
-  "defaultTag": "plugins/drone-liquibase:1.15.1-4.33",
+  "defaultTag": "plugins/drone-liquibase:1.18.0-4.33",
   "gitCloneTag": "harness/drone-git:1.6.4-rootless",
-  "mongoTag": "plugins/drone-liquibase:1.15.1-4.33-mongo",
-  "spannerTag": "plugins/drone-liquibase:1.15.1-4.33-spanner"
+  "mongoTag": "plugins/drone-liquibase:1.18.0-4.33-mongo",
+  "spannerTag": "plugins/drone-liquibase:1.18.0-4.33-spanner"
 }
 ```
 
@@ -83,10 +85,18 @@ https://app.harness.io/v1/dbops/execution-config/update-config \
 --header "X-API-KEY: $API_KEY" \
 --header 'Content-Type: application/json' \
 --data-raw '[
-    {
-        "field": "gitCloneTag",
-        "value": "harness/drone-git:1.5.6-rootless"
-    }
+  {
+    "field": "gitCloneTag",
+    "value": "harness/drone-git:1.5.6-rootless"
+  },
+  {
+    "field": "mongoTag",
+    "value": "plugins/drone-liquibase:1.18.0-4.33-mongo"
+  },
+  {
+    "field": "spannerTag",
+    "value": "plugins/drone-liquibase:1.18.0-4.33-spanner"
+  }
 ]'
 ```
 
@@ -102,7 +112,7 @@ https://app.harness.io/v1/dbops/execution-config/reset-config \
 --header 'Content-Type: application/json' \
 --data-raw '[
     {
-    ""artifactoryTag",
+    "artifactoryTag",
     "defaultTag",
     "gitCloneTag",
     "mongoTag",
