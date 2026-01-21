@@ -24,42 +24,80 @@ These release notes describe recent changes to Harness Database DevOps.
 
 ## December 2025
 
+### Release 1.72.x
+No customer-facing updates were introduced in this release.
+
+#### Image Upgrades
+
+| **Image Name**                  |  **Current Version** | **Past Version**             |
+| ------------------------------- | -------------------- | ---------------------------- | 
+| plugins/download-artifactory    | 1.0.0                | 1.0.0                        |
+| plugins/drone-liquibase         | 1.16.0-4.33          | 1.15.0-4.33                  |
+| plugins/drone-liquibase-mongo   | 1.16.0-4.27-mongo    | 1.15.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner | 1.16.0-4.27-spanner  | 1.15.0-4.33-spanner          |
+
+
+### Release 1.71.x
+The `1.71.x` release delivers targeted fixes that improve reliability and correctness when working with connectors and Flyway dashboards.
+
+#### Key Highlights
+* **Bug Fixes**
+  - Fixed an issue where Kubernetes connectors were not returned correctly for scopes higher than the project level, improving pipeline configuration reliability.
+  - Resolved issues in the Flyway dashboard API to ensure accurate data is displayed for Flyway-managed databases.
+
+#### Image Upgrades
+
+| **Image Name**                  |  **Current Version** | **Past Version**             |
+| ------------------------------- | -------------------- | ---------------------------- | 
+| plugins/download-artifactory    | 1.0.0                | 1.0.0                        |
+| plugins/drone-liquibase         | 1.15.0-4.33          | 1.14.0-4.33                  |
+| plugins/drone-liquibase-mongo   | 1.15.0-4.27-mongo    | 1.14.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner | 1.15.0-4.27-spanner  | 1.14.0-4.33-spanner          |
+
+### Release 1.70.x
+The `1.70.x` release focuses on improving migration correctness and security across supported database workflows.
+
+#### Key Highlights
+* **Bug Fixes & Security**
+  - Upgraded the Flyway image to correctly reflect rollback status, ensuring accurate migration state reporting.
+  - Upgraded the Liquibase image to address OpenSSL-related security vulnerabilities.
+
+#### Image Upgrades
+
+| **Image Name**                  |  **Current Version** | **Past Version**           |
+| ------------------------------- | -------------------- | -------------------------- |
+| plugins/download-artifactory    | 1.0.0                | 1.0.0                      |
+| plugins/drone-liquibase         | 1.14.0-4.33          | 1.13.1-4.33                |
+| plugins/drone-liquibase-mongo   | 1.14.0-4.33-mongo    | 1.13.0-4.33-mongo          |
+| plugins/drone-liquibase-spanner | 1.14.0-4.33-spanner  | 1.13.0-4.33-spanner        |
+
 ### Release 1.69.x
 The `1.69.x` release focuses on security hardening and reliability improvements for database change execution and AI-assisted pipeline authoring.
 
 #### Key Highlights
 * **Bug Fixes & Security**
-- Upgraded the DB DevOps container image to address OpenSSL-related security.
-- Fixed issues in LLM-authored pipeline YAML, improving correctness and execution reliability when using AI-assisted authoring.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.69.x
+  - Upgraded the DB DevOps container image to address OpenSSL-related security.
+  - Fixed issues in LLM-authored pipeline YAML, improving correctness and execution reliability when using AI-assisted authoring.
 
 ### Release 1.68.x
 The `1.68.x` release improves AI-assisted authoring accuracy and enhances usability for Flyway users.
 
 #### Key Highlights
 * **Feature Enhancements**
-- LLM-generated pipelines can now correctly include a primary database instance, reducing manual corrections.
-- Flyway dashboards now display the most recently updated records first, making it easier to track recent changes.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.68.x
+  - LLM-generated pipelines can now correctly include a primary database instance, reducing manual corrections.
+  - Flyway dashboards now display the most recently updated records first, making it easier to track recent changes.
 
 ### Release 1.67.x
 The `1.67.x` release strengthens policy enforcement, security, and visibility into database changes.
 
 #### Key Highlights
 * **Feature Enhancements**
-- Migration Script Access for Policies: OPA policies can now evaluate migration scripts directly, enabling stronger governance and pre-deployment validation.
-- SQL Script Visibility: Customers can view SQL scripts associated with migrations, improving transparency during reviews and audits.
+  - Migration Script Access for Policies: OPA policies can now evaluate migration scripts directly, enabling stronger governance and pre-deployment validation.
+  - SQL Script Visibility: Customers can view SQL scripts associated with migrations, improving transparency during reviews and audits.
 
 * **Bug Fixes & Security**
-- Resolved issues affecting AI-assisted chat interactions and accuracy.
-- To ensure compatibility with the latest version of DB DevOps Plugin Image, memory size needs to be increased to 500MB to avoid OOM issues during large migrations.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.67.x
+  - Resolved issues affecting AI-assisted chat interactions and accuracy.
+  - To ensure compatibility with the latest version of DB DevOps Plugin Image, memory size needs to be increased to 500MB to avoid OOM issues during large migrations.
 
 ## November 2025
 
@@ -68,21 +106,15 @@ The `1.65.x` release introduces foundational improvements to ensure Flyway migra
 
 #### Key Highlights:
 * **Feature Enhancements**
-- All Flyway-supported commands now supported in DBOPS service, aligning the Flyway experience similar to Liquibase.
-- The Flyway container image has been upgraded to support these new data-sync capabilities, improving reliability and ensuring forward compatibility with upcoming Flyway features in Harness.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.65.x
+  - All Flyway-supported commands now supported in DBOPS service, aligning the Flyway experience similar to Liquibase.
+  - The Flyway container image has been upgraded to support these new data-sync capabilities, improving reliability and ensuring forward compatibility with upcoming Flyway features in Harness.
 
 ### Release 1.64.x
 The `1.64.x` release delivers expanded synchronization capabilities for Flyway users, improving traceability and visibility across environments.
 
 #### Key Highlights:
 * **Feature Enhancements**
-- Added synchronization for Flyway migration state and command execution history, ensuring consistent tracking of applied, pending, and failed migrations across all stages.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.64.x
+  - Added synchronization for Flyway migration state and command execution history, ensuring consistent tracking of applied, pending, and failed migrations across all stages.
 
 ### Release 1.63.x
 The `1.63.x` release expands Flyway coverage across core DB Ops workflows, enabling teams to operationalize Flyway migrations with the same consistency and governance as Liquibase.
@@ -93,9 +125,6 @@ The `1.63.x` release expands Flyway coverage across core DB Ops workflows, enabl
  - Teams can now execute Flyway-based schema changes through DBApplySchema, ensuring alignment with existing deployment pipelines.
  - Added support for defining migration and configuration (TOML) file paths, providing stronger flexibility for multi-directory and modular repository structures.
  - Introduced rollback execution support for Flyway within DB Ops, enabling controlled reversions in line with Flyway’s versioned migration model.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.63.x
 
 ## October 2025
 
@@ -113,7 +142,6 @@ The `1.60.x` release introduces enhanced logging capabilities, empowering teams 
   - Harness Database DevOps can now log additional execution details to a file by configuring the log-level and log-file Liquibase global parameters under Global Settings in pipeline steps. This enhancement enables customers to capture raw SQL statements and server responses, providing richer context for debugging and compliance audits.
 
 **Minimum Supported Versions:**
-  - `dbservice` – 1.60.x
   - `ng-manager` – 1.110.x (required)
 
 ## September 2025
@@ -125,9 +153,6 @@ The `1.59.x` release enhances migration flexibility, allowing teams to select th
 * **Feature Enhancements**
   - Updated Instance Structure which aligns with new schema types, improving consistency and forward compatibility.
 
-**Minimum Supported Versions:**
-  - `dbservice` – 1.59.x
-
 ### Release 1.58.x
 The `1.58.x` release expands schema type management, enabling full CRUD operations and better validation while simplifying the UI for database administration.
 
@@ -135,9 +160,6 @@ The `1.58.x` release expands schema type management, enabling full CRUD operatio
 * **Feature Enhancements**
   - All CRUD operations supported for the new schema type.
   - Validation Checks ensures consistency for new and default schema types.
-
-**Minimum Supported Versions:**
-  - `dbservice` – 1.58.x
 
 ### Release 1.57.x
 The `1.57.x` release delivers key reliability improvements and backend optimizations, strengthening pipeline execution in concurrent and multi-schema scenarios. It also includes version upgrades for enhanced stability and validation consistency.
@@ -150,9 +172,6 @@ The `1.57.x` release delivers key reliability improvements and backend optimizat
   - Fixed an issue where validation commands occasionally returned nil responses in plugin handlers.
   - Resolved an issue where concurrent executions using matrix or list-based looping could fail due to shared clone directories. Each iteration now clones into a distinct directory to ensure successful parallel runs.
 
-**Minimum Supported Versions:**
-- `dbservice` – 1.57.x
-
 ### Release 1.56.x
 The `1.56.x` release focuses on improving pipeline reliability, secure credential management, and change tracking for safer database operations.
 
@@ -162,18 +181,12 @@ The `1.56.x` release focuses on improving pipeline reliability, secure credentia
   - Comma-Separated Secrets to simplify secure credential rotation.
   - ChangeSetMetadata API Enhancements now include executed SQL commands for better visibility.
 
-**Minimum Supported Versions:**
-- `dbservice` – 1.56.x
-
 ### Release 1.55.x
 The `1.55.x` release enhances visibility in the Migration State view, making it easier for teams to track deployments and understand which changes were tagged.
 
 #### Key Highlights:
 * **Feature Enhancements**
   - "Deployed with Tag" label is added to Migration State view for improved release traceability.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.55.x
 
 ## August 2025
 
@@ -183,9 +196,6 @@ The `1.54.x` release focuses on improving usability in the schema overview exper
 #### Key Highlights:
 **Bug Fixes**
   - Added a searchable schema dropdown on the Overview page, resolving limitations with subset display and missing pagination/infinite scroll.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.54.x
 
 ### Release 1.53.x
 The `1.53.x` release focuses on improving database schema management workflows and stabilizing the Liquibase integration. Customers editing schemas can now select a primary instance directly from the UI. Customers editing schemas can now select a primary instance directly from the UI. Certain upcoming features will use this instance for development and validation use cases.
@@ -197,8 +207,6 @@ The `1.53.x` release focuses on improving database schema management workflows a
 * **Bug Fixes:**
   - DB Test and Preview steps now return detailed messages that appear in the chat UI, improving debugging visibility.
 
-**Minimum Supported Versions:**
-- `dbservice` – 1.53.x
 
 ### Release 1.52.x
 The `1.52.x` release expands the platform’s authoring and validation capabilities. Teams can now author database changesets directly from the UI with a built-in YAML renderer and execution status visibility. This reduces reliance on external editors and brings change management closer to the deployment workflow. At the same time, we’ve added support for the Liquibase validate command, helping teams catch invalid changes early in the pipeline.
@@ -216,9 +224,6 @@ Please contact [Harness Product Manager](https://support.harness.io) if you woul
 * **Bug Fixes:**
   - Fixed execution URL display and added PR link support in the UI.
 
-**Minimum Supported Versions:**
-- `dbservice` – 1.52.x
-
 ### Release 1.51.x
 The `1.51.x` release strengthens rollback flexibility and control. For scenarios where teams need to customize how rollbacks are applied, this release introduces support for Custom Rollback SQL. Customers can now define custom rollback logic for complex cases where auto-generated SQL may not suffice. This includes onboarding and storing step outputs for UpdateSQL and RollbackSQL, along with a dedicated CustomUpdateSQL step for better pipeline integration.
 
@@ -226,9 +231,6 @@ The `1.51.x` release strengthens rollback flexibility and control. For scenarios
 
 * **Feature Enhancements:**
   - Custom Rollback SQL: Teams can now onboard and store step outputs for UpdateSQL and RollbackSQL, with a dedicated CustomUpdateSQL step in dbops-service.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.51.x
 
 ## July 2025
 
@@ -240,9 +242,6 @@ The `1.49.x` release introduces key improvements across schema discovery, rollba
 * **Feature Enhancements:**
   - Rollbacks now generate detailed metadata entries, helping teams understand when and why a rollback occurred, especially when using `rollback-by-count`.
   - The platform now supports optional Primary DB instanceId, streamlining deployments across multi-instance environments.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.49.x
 
 ### Release 1.48.x
 
@@ -258,6 +257,3 @@ This release brings several critical feature enhancements and extended support a
 * OPA and OPA rollback support across key Databases.
 * Private Registry support verified for MySQL.
 * Metadata fields such as comments, labels, and authors now visible.
-
-**Minimum Supported Versions:**
-- `dbservice` – 1.48.0

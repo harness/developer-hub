@@ -4,10 +4,25 @@ export const DbdevopsData: Horizon = {
     description: "What has been released in the last ~2 Quarters",
     feature: [
       {
+        title: "Author DB Change",
+        description:
+          "Author database change via natural language queries, powered by Harness AI.",
+        tag: [{ value: "Core Features" }, {value: "Q4"}],
+        link:"https://developer.harness.io/docs/database-devops/use-database-devops/configure-llm-for-database-devops"
+      },  
+      {
+        title: "Native Flyway Support",
+        description:
+          "Add native support for using Flyway instead of liquibase",
+        tag: [{ value: "Integrations" }, {value: "Q4"}],
+        link:"https://developer.harness.io/docs/database-devops/use-database-devops/get-started/onboarding-guide/"
+      },
+      {
         title: "AlloyDB Support",
         description:
           "Add Google AlloyDB as a supported database",
         tag: [{ value: "Integrations" }, {value: "Q4"}],
+        link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors#setting-up-alloydb"
       },
       {
         title: "Log Size (Phase 2)",
@@ -64,19 +79,7 @@ export const DbdevopsData: Horizon = {
   },
   "Now": {
     description: "Currently under active development, ~ current quarter",
-    feature: [
-      {
-        title: "Author DB Change",
-        description:
-          "Author database change via natural language queries, powered by Harness AI.",
-        tag: [{ value: "Core Features" }],
-      },  
-      {
-        title: "Native Flyway Support",
-        description:
-          "Add native support for using Flyway instead of liquibase",
-        tag: [{ value: "Integrations" }],
-      },  
+    feature: [  
       {
         title: "Kerberos Auth",
         description:
