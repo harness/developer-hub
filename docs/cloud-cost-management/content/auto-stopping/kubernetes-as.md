@@ -13,6 +13,30 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
     + Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](/docs/cloud-cost-management/get-started/#aws--step-2-select-or-create-a-cost-and-usage-report)
     + Permissions to create a cross-account role. See [AWS Access Permissions](/docs/cloud-cost-management/feature-permissions)
 
+## Installation via Helm
+
+The Autostopping controller can also be installed using Helm. CCM has a comprehensive Helm chart for deploying Harness Cloud Cost Management (CCM) AutoStopping components on Kubernetes clusters.
+
+[Link to Helm](https://app.harness.io/ng/account/6NTMT--yR7ORXKPqwLDioA/module/code/repos/Helm/files/main/~/autostopping/helm)
+
+The Harness CCM AutoStopping Helm Chart provides an automated cost-optimization layer for Kubernetes workloads.
+It deploys a controller and supporting agents that integrate with Harness Cloud Cost Management to dynamically manage workloads based on usage patterns and traffic activity.
+
+**Components**
+
+- AutoStopping Controller: Manages the lifecycle of AutoStopping rules and reconciles them against cluster workloads.
+- Progress Agent: Communicates status and progress updates to the Harness platform.
+- Discovery DaemonSet: Monitors workload and network activity, forwarding traffic metrics to the controller.
+
+**Prerequisites**
+
+- Kubernetes: v1.20 or later
+- Helm: v3 or later
+- Harness Delegate: connected to your cluster
+- Harness CCM Kubernetes Connector configured in your Harness account
+- Appropriate permissions to create CRDs, ClusterRoles, and Namespaces
+
+
 ##  Create AutoStopping Rule for Kubernetes
 
 - In Harness, navigate to **Cloud Costs** > **AutoStopping Rules** and click **New AutoStopping Rule**. Choose the cloud provider from either AWS (EKS) or GCP (GKE) or Azure (AKS).
