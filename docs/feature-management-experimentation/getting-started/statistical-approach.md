@@ -1,6 +1,6 @@
 ---
-title: Split's approach to statistics
-description: Learn about Split's approach to statistics.
+title: Harness FME's approach to statistics
+description: Learn about Harness FME's approach to statistics.
 sidebar_position: 4
 ---
 
@@ -8,13 +8,13 @@ sidebar_position: 4
 
 Harness FME's experimentation platform is designed to help you make confident, data-driven decisions. Our statistical framework is grounded in industry best practices and supports both flexibility and rigor. 
 
-This page provides a high-level overview of Harness FME's approach to statistical concepts like hypothesis testing, metric confidence, and guardrail checks. 
+This page provides a high-level overview of Harness FME's approach to statistical concepts, including hypothesis testing, metric confidence, and guardrail checks. 
 
 ## Statistical methods
 
-Harness FME supports both [frequentist and Bayesian approaches](/docs/feature-management-experimentation/experimentation/key-concepts/frequentist-vs-bayesian) to hypothesis testing, depending on your team's preferences and use case.
+Harness FME uses [frequentist statistical methods](/docs/feature-management-experimentation/experimentation/key-concepts/frequentist-vs-bayesian) for hypothesis testing to evaluate experiment results in a consistent framework.
 
-Harness FME also offers support for [sequential and fixed horizon testing](/docs/feature-management-experimentation/experimentation/key-concepts/fixed-horizon), which gives you the ability to choose the right evaluation method based on your experimentation cadence and business needs.
+Harness FME also supports [sequential and fixed horizon testing](/docs/feature-management-experimentation/experimentation/key-concepts/fixed-horizon), allowing you to choose the evaluation method that best fits your experimentation cadence and business needs.
 
 ## Experiment sensitivity and confidence
 
@@ -43,16 +43,16 @@ These guardrails help you trust that your experiment results are reliable and no
 
 ## Attribution and exclusion
 
-Split utilizes a well-documented and tested [attribution and exclusion](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion/) algorithm. 
+Harness FME utilizes a well-documented and tested [attribution and exclusion](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion/) algorithm. 
 
 This has the following benefits:
 
 * You can ingest data from any data source for evaluation. By using your data, you can always be confident in its integrity and accuracy.
 
-* You can send in data to Split after an experiment is already running. Oftentimes, you might have already tracked some type of user action (e.g. clicks on a navigation bar) but might not have fed that data into Split ahead of running an experiment.  
+* You can send in data to Harness FME after an experiment is already running. Oftentimes, you might have already tracked some type of user action (e.g. clicks on a navigation bar) but might not have fed that data into Harness FME ahead of running an experiment.  
 
   You don't need to set attribution based on the time an event is sent to us, the timestamp of the events you send is when the data was logged. This allows you to send data after events have already occurred and attribute them to experiments by matching the timeframes using the time field for when your application logged that data.
 
-* You can define a metric in Split after an experiment is already running. Similar to the scenario above, you might also have data that you tracked during an experiment, but haven't yet defined a metric for in Split. 
+* You can define a metric in Harness FME after an experiment is already running. Similar to the scenario above, you might also have data that you tracked during an experiment, but haven't yet defined a metric for in Harness FME. 
 
-  As long as Split has the events tied to a metric in our system, our system allows you to define a metric at any time during the experiment, even after you've started running the test. On the next run of the calculation job, the system will calculate the impact of your experiment on that new metric from when the experiment began regardless of when you defined the metric.
+  As long as Harness FME has the events tied to a metric in our system, our system allows you to define a metric at any time during the experiment, even after you've started running the test. On the next run of the calculation job, the system will calculate the impact of your experiment on that new metric from when the experiment began regardless of when you defined the metric.
