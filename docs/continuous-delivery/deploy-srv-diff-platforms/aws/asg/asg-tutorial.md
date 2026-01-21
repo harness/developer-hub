@@ -618,7 +618,7 @@ Next, in your ASG configuration file, you could reference the variable like this
 
 ```json
 {
-  "autoScalingGroupName": "lovish2-asg",
+  "autoScalingGroupName": "test2-asg",
   "minSize": 1,
   "maxSize": 3,
   "desiredCapacity": <+serviceVariables.desiredCapacity>,

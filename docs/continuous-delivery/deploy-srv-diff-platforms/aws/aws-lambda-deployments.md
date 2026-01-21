@@ -173,6 +173,7 @@ The service contains the function artifact in **Artifacts** and the function def
 
 You can deploy **Lambda functions** packaged as **ZIP files** in **Amazon S3 Buckets** or as **containers** in **AWS ECR**. Artifacts can be stored in the following repositories:
 
+- [**Harness Artifact Registry**](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#harness-artifact-registry)
 - **Amazon S3**
 - **ECR**
 - **Nexus2**

@@ -920,6 +920,80 @@ When you hardcode the artifact in your manifests, any artifacts added to your Ha
 
 </details>
 
+### Harness Artifact Registry
+
+<details>
+<summary>Use artifacts from Harness Artifact Registry</summary>
+
+Harness Artifact Registry (HAR) is a fully managed artifact repository that lets you store and manage artifacts directly in your Harness account. HAR supports both container images (Docker) and packaged artifacts (Maven, npm, NuGet, generic formats), providing secure, scalable storage that integrates seamlessly with Harness CD pipelines.
+
+:::info
+HAR is natively integrated with Harness CD and does not require a separate connector. However, you need a valid HAR license to use this feature. Contact [Harness Support](mailto:support@harness.io) for licensing information.
+:::
+
+import Tabs4 from '@theme/Tabs';
+import TabItem4 from '@theme/TabItem';
+
+<Tabs4>
+  <TabItem4 value="YAML" label="YAML" default>
+
+<details>
+<summary>Service using HAR artifact YAML</summary>
+
+```yaml
+service:
+  name: k8s_service
+  identifier: k8s_service
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: myapp
+            type: K8sManifest
+            spec:
+              store:
+                type: Harness
+                spec:
+                  files:
+                    - /Templates/deployment.yaml
+              valuesPaths:
+                - /values.yaml
+              skipResourceVersioning: false
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: myartifact
+              type: Har
+              spec:
+                registryRef: dev
+                type: docker
+                spec:
+                  imagePath: my-app
+                  tag: <+input>
+                  digest: ""
+```
+
+</details>
+
+  </TabItem4>
+  <TabItem4 value="API" label="API">
+
+Create a service with an artifact source that uses HAR using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+  </TabItem4>
+  <TabItem4 value="Harness Manager" label="Harness Manager">
+
+For step-by-step instructions on adding a Harness Artifact Registry artifact source in the Harness Manager UI, go to [Harness Artifact Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#harness-artifact-registry) in the artifact sources documentation.
+
+  </TabItem4>
+</Tabs4>
+
+For more information on HAR, go to [Harness Artifact Registry documentation](/docs/artifact-registry).
+
+</details>
+
 ### Docker
 
 <details>

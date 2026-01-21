@@ -5,6 +5,7 @@ sidebar_position: 4
 tags:
   - artifact-sources
   - docker
+  - harness-artifact-registry
   - google-container-registry
   - google-cloud-storage
   - google-artifact-registry
@@ -98,6 +99,101 @@ Additionally, this logic applies when the same service is propagated to subseque
 
 If the **Disable artifact in this stage** checkbox is enabled, any steps in the stage that require an artifact are likely to fail. Ensure that no steps in the stage depend on an artifact
 :::
+
+## Harness Artifact Registry
+
+### Use artifacts from Harness Artifact Registry
+
+Harness Artifact Registry (HAR) is a fully managed artifact repository that allows you to store and manage artifacts directly within your Harness account. HAR supports both container images (Docker) and packaged artifacts (Maven, npm, NuGet, generic formats), providing secure, scalable storage that integrates seamlessly with Harness CD pipelines.
+
+
+:::info
+HAR is natively integrated with Harness CD and does not require a separate connector. However, you need a valid HAR license to use this feature. 
+
+To get started with HAR:
+- Learn how to [set up Harness Artifact Registry](/docs/artifact-registry/get-started/overview)
+- Follow the [quickstart guide to create and store Docker images](/docs/artifact-registry/get-started/quickstart#docker)
+- Contact [Harness Support](mailto:support@harness.io) for licensing information
+
+
+:::
+
+#### YAML
+
+**Service using HAR artifact YAML**
+
+```yaml
+service:
+  name: k8s_service
+  identifier: k8s_service
+  orgIdentifier: default
+  projectIdentifier: Krishika_CD_Samples
+  serviceDefinition:
+    spec:
+      artifacts:
+        primary:
+          sources:
+            - identifier: demo_artifact
+              type: Har
+              spec:
+                registryRef: dev
+                type: docker
+                spec:
+                  imagePath: function-plugin
+                  tag: <+input>
+                  digest: ""
+          primaryArtifactRef: demo_artifact
+    type: Kubernetes
+```
+
+#### Harness Manager
+
+To add an artifact from Harness Artifact Registry, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes** or another supported deployment type.
+6. In **Artifacts**, select **Add Artifact Source**.
+7. In **Specify Artifact Repository Type**, select **Artifact Registry**, and then click **Continue**.
+   
+   <!-- ![Select Artifact Registry](static/har-select-registry.png) -->
+
+8. The **Artifact Registry** option appears in the left navigation.
+   
+   <!-- ![Artifact Registry selected](static/har-registry-selected.png) -->
+
+9. In **Artifact Details**, specify the following:
+   1. **Artifact Source Identifier**: Enter a name that identifies your artifact source.
+   2. **Repository Format**: Select the artifact format (for example, `docker`).
+   3. **Registry**: Select the HAR registry where your images are stored (for example, `dev`).
+   4. **Repository Type**: Select `docker` for container images.
+   5. **Image Path**: Enter the name of the image you want to deploy.
+   6. **Tag**: Enter or select the Docker image tag for the image, or use a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/) to select at deployment time.
+
+   <!-- ![Artifacts configuration](static/har-artifacts-config.png) -->
+   
+   If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+
+10. (Optional) To specify an image digest, use **Digest** and enter the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service.
+
+    :::note
+    
+    If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+    
+    :::
+
+11. Select **Submit**. The Artifact is added to the Service Definition.
+
+#### Permissions
+
+To use Harness Artifact Registry as an artifact source:
+
+- You need a valid **HAR license**
+- Users must have appropriate **RBAC permissions** to access the HAR registry within your Harness account
+
+For more information on HAR, go to [Harness Artifact Registry documentation](/docs/artifact-registry).
 
 ## Docker
 
@@ -288,7 +384,7 @@ resource "harness_platform_service" "example" {
 To add an artifact from a Docker registry, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Kubernetes**.
@@ -492,7 +588,7 @@ You connect to GCR using a Harness GCP Connector. For details on all the GCR req
 To add an artifact from GCR, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Kubernetes**.
@@ -718,7 +814,7 @@ You connect to GCS using a Harness GCP Connector. For details on all the GCS req
 To add an artifact from GCS, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Google Cloud Functions**.
@@ -910,7 +1006,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Kubernetes**.
@@ -1415,7 +1511,7 @@ To add an artifact from ACR, do the following:
 
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Kubernetes**.
@@ -2005,7 +2101,7 @@ You connect to AWS using a Harness AWS Connector. For details on all the AWS req
 To add an artifact from an S3 bucket, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Secure Shell**.
@@ -2242,7 +2338,7 @@ You connect to AWS using a Harness AWS Connector. For details on all the AWS req
 To add an artifact from an S3 bucket, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **AWS Auto Scaling Group**.
@@ -2410,7 +2506,7 @@ You connect to Nexus using a Harness Nexus Connector. For details on all the req
 To add an artifact from Nexus, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Kubernetes**.
@@ -2649,7 +2745,7 @@ You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For de
 To add an artifact from Artifactory, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select the deployment type.
@@ -2875,7 +2971,7 @@ The Terraform Provider Bamboo connector resource is coming soon.
 To add a plan from Bamboo, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Secure Shell** or one of the other deployment types that support Bamboo.
@@ -3114,7 +3210,7 @@ You connect to Github using a Harness Github Connector, username, and Personal A
 To add an artifact from Github Packages, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
 5. In **Service Definition**, select **Kubernetes**.
@@ -3225,6 +3321,7 @@ The following table lists how many artifact versions Harness displays in its UI 
 
 | **Artifact Source Type**         | **Limit**     | **Order**                                                                                              |
 |----------------------------------|---------------|--------------------------------------------------------------------------------------------------------|
+| Harness Artifact Registry        | No Limit      | Descending order of last modified                                                                      |
 | DockerRegistry                   | 10000         | Lexical (descending)                                                                                   |
 | Google Container Registry        | No Limit      | Lexical (descending)                                                                                   |
 | AWS ECR                          | No Limit      | Lexical (descending)                                                                                   |
@@ -3352,6 +3449,7 @@ For more information, go to:
 
 Harness provides expressions you can use to output the SHA values and labels of the Docker images for the following artifact providers:
 
+- Harness Artifact Registry
 - Docker Registry (platform agnostic)
 - Artifactory
 - ECR
@@ -3386,6 +3484,7 @@ You can fetch and use the latest successfully deployed tag for a service in the 
 
 - When the artifact tag is configured as an expression with `<+lastSuccessfulDeployed.tag>`, the pipeline will deploy the most recent successful artifact tag associated with the service.
 - This functionality is supported for the following container artifact types:
+  - Harness Artifact Registry
   - Docker Registry
   - GCR (Google Container Registry)
   - ECR (Elastic Container Registry)

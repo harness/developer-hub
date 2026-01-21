@@ -19,6 +19,7 @@ You'll learn how to:
 ## Important notes
 
 * For TAS deployments, Harness supports the following [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). You connect Harness to these registries by using your registry account credentials.
+   * [Harness Artifact Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#harness-artifact-registry)
    * Artifactory
    * Nexus
    * Docker Registry 

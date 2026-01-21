@@ -472,6 +472,7 @@ Next, add your Serverless artifact. For this quickstart, we will add a publicly 
 ### Artifact Sources
 
 Here is a full list of artifact sources available to you for Serverless deployments:
+- [**Harness Artifact Registry**](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#harness-artifact-registry). Harness supports docker images stored in Harness Artifact Registry as your Serverless deployment artifacts.
 - [**Artifactory**](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo#add-an-artifactory-repository). Harness supports ZIP files stored in Artifactory as your Serverless deployment artifacts.
 - [**AWS S3**](/docs/platform/connectors/cloud-providers/add-aws-connector). Harness supports ZIP files stored in an S3 bucket for your Serverless deployment artifacts.
 - [**ECR**](/docs/platform/connectors/cloud-providers/add-aws-connector). Harness supports docker images stored in ECR as your Serverless deployment artifacts.

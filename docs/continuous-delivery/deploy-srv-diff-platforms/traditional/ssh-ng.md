@@ -55,7 +55,7 @@ In the stage **Service** tab, you add the artifact metadata and the related conf
 ### Add the artifact connector
 
 For Secure Shell, you can access artifacts from the following sources:
-- Harness Artifact Registry (Docker artifact type only)
+- [Harness Artifact Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#harness-artifact-registry) (Docker artifact type only)
 - Jenkins
 - Artifactory
 - Bamboo 
