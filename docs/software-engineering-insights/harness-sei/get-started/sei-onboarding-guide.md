@@ -47,7 +47,7 @@ If you're switching over to Harness SEI 2.0 from the SEI 1.0 experience, review 
 
 | **Profile Type** | **Purpose** | **Documentation** |
 |------------------|-------------|--------------------|
-| [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) | Define how you track DORA and Sprint insights (Coming soon) | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) |
+| [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) | Define how you track DORA and Sprint insights | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) |
 | [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile) | Track developer activity and collaboration, including PR throughput, cycle time, and PR activity | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile) |
 | [Business Alignment Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/business-alignment-profile) | Define how engineering efforts align to product goals and delivery of business value. | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/business-alignment-profile) |
 

@@ -21,7 +21,7 @@ Get started instantly with pre-built dashboards designed around industry-proven 
 
 * Delivery Efficiency
   * DORA
-  * Sprint Insights (Coming soon)
+  * Sprint Insights
 * Developer Productivity
 * Business Alignment
 

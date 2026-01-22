@@ -7,39 +7,33 @@ redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/efficiency
 ---
 
-Efficiency in the context of SEI 2.0 refers to the measurement and analysis of how effectively an organization or team runs its software development processes. It focuses on operational performance across deployment-based ([DORA](https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report)) and sprint-based delivery metrics.
-
-The Efficiency tab on the **Insights** page in SEI 2.0 includes two out-of-the-box dashboards:
-
-* **DORA Metrics** – Measure software delivery speed, stability, and recovery.
-* **Sprint Metrics** – Measure sprint planning effectiveness, delivery consistency, and team predictability.
-
-## Setup
-
-Setting up an Efficiency Profile in SEI 2.0 involves the following steps to ensure that the right metrics are being tracked and analyzed:
-
-1. Select the right profile: Choose from default profiles based on your integration setup. For example, if you have Issue Management and Source Code Management integrations configured, you can select the "Default IM, SCM Efficiency Profile."
-1. Instantiate the profile: Customize the selected profile to fit your organization's specific needs. This involves defining the stages of the software development lifecycle you want to measure, such as Planning, Coding, Review, Build, and Deploy.
-1. Assign the profile to an org tree: Map the instantiated profile to your organization's tree structure. This ensures that all teams within your organization adhere to the same efficiency metrics.
-1. Configure team node definitions: Define the specific data scope for each team, including relevant projects, repositories, and issue types.
-1. Activate insights: Once the profile is configured and mapped, activate the insights to start tracking and analyzing efficiency metrics.
-
-### Configure an Efficiency Profile
-
-Configuring an Efficiency Profile involves setting up the specific parameters and conditions under which metrics are tracked.
-
-1. Define stages: Configure the start and end events for each stage of the software development lifecycle. 
-For example, the Planning stage might start when a ticket is created and end when the first code commit is made.
-1. Set up integrations: Ensure that all necessary integrations (e.g., Issue Management, SCM, and CI/CD) are configured to provide the data needed for each stage.
-1. Apply team-specific configurations: Allow team managers to apply specific filters and settings relevant to their team's context, such as specific branches or issue types to track.
-
-By following these steps, organizations can effectively set up and configure Efficiency Profile to gain valuable insights into their software delivery processes and drive continuous improvement.
+Efficiency in SEI 2.0 refers to the measurement and analysis of how effectively an organization or team runs its software development processes. It focuses on operational performance across deployment-based ([DORA](https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report)) and sprint-based delivery metrics.
 
 ## Efficiency Insights
 
-Our aim is to provide comprehensive, actionable insights into the efficiency of software delivery processes. By surfacing key DORA metrics, we help teams understand how effectively they ship code, identify opportunities to reduce bottlenecks, and drive continuous improvement. 
+The **Efficiency** tab on the **Insights** page in SEI 2.0 helps you understand how effectively your organization delivers software. If your account has multiple Org Trees configured in SEI 2.0, the Org Trees are displayed as tiles at the top of the dashboard. 
 
-You can analyze the data using a calendar-based date selection or a pre-set time range (weekly, monthly, or quarterly). Use the `Showing` dropdown menu to change the calculation method applied to all widgets. Available options include `mean`, `median`, `p90`, and `p95`.
+Selecting an Org Tree tile updates the dashboard to reflect data for that org tree and filters all **DORA** or **Sprint** metrics to only include the teams and repositories within the selected Org Tree. This allows you to compare delivery performance across different organizations and teams.
+
+* **DORA Metrics**: Measure software delivery speed, stability, and recovery.
+* **Sprint Metrics**: Measure sprint planning effectiveness, delivery consistency, and team predictability.
+
+By surfacing key DORA metrics, the **Efficiency Insights** dashboard helps teams:
+
+- Understand how quickly and reliably they ship code
+- Identify delivery bottlenecks across the development lifecycle
+- Track improvements or regressions over time
+- Support data-driven conversations around continuous improvement 
+
+You can switch between the **DORA** or **Sprint Metrics** tabs to access delivery performance and reliability metrics or sprint planning and execution metrics, and analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts. 
+
+Use the `Showing` dropdown menu to control how values are calculated across all widgets. Available options include `mean`, `median`, `p90`, and `p95`. Click the **Show trendline** checkbox to overlay trendlines across all DORA and Sprint Metrics visualizations. Trendlines help you assess whether performance is improving, regressing, or remaining stable over time. 
+
+:::info
+Trendlines use the Ordinary Least Squares (OLS) regression method to identify patterns and direction in your data over the selected time range.
+:::
+
+To export the Efficiency Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export).
 
 Below is a brief overview of each widget on the **DORA** tab in **Efficiency** on the **Insights** page:
 
@@ -119,7 +113,7 @@ This dashboard highlights:
 * Delivery efficiency (Total Work Delivered %, Committed Work Delivered %, Creep Work Delivered %)
 * Team stability and predictability (Churn Rate, Predictability)
 
-You can analyze the data using a calendar-based date selection or a pre-set time range (weekly, monthly, or quarterly). Additional sprint-specific grouping is available to view performance at the individual sprint level. By default, the data is aggregated by month, with bar charts displaying columns for work and delivery.
+You can analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts. Additional sprint-specific grouping is available to view performance at the individual sprint level. By default, the data is aggregated by month, with bar charts displaying columns for work and delivery.
 
 ![](../static/sprint-3.png)
 

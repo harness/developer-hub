@@ -18,7 +18,6 @@ To start using SEI 2.0, you can [configure integrations](./configure-integration
 * Source Control Management Systems (e.g., GitHub, GitLab, Bitbucket)
 * CI/CD Tools (e.g., Harness, GitHub Actions, Jenkins)
 * Ticketing Systems (e.g., Jira, Azure Boards)
-* ITSM Tools (e.g., ServiceNow etc)
 
 These integrations power the insights you’ll see in SEI.
 
@@ -36,7 +35,7 @@ SEI 2.0 supports three main types of Profiles, each optimized for different meas
 
 | Type of profile      | Purpose                                  | Metrics                                                  |
 |---------------------|---------------------------------------------|-----------------------------------------------------------------|
-| [Efficiency](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)      | Delivery performance (DORA metrics) & sprint insights (coming soon) | Deployment Frequency, Lead Time for Changes, Change Failure Rate, MTTR |
+| [Efficiency](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)      | Delivery performance (DORA metrics) & sprint insights | Deployment Frequency, Lead Time for Changes, Change Failure Rate, MTTR |
 | [Productivity](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)    | Developer productivity and collaboration     | PR Velocity per Dev, PR Cycle Time,  Work Completed Per Dev, Coding Days Per Dev, Number of Comments Per PR, Average Time to First Comment  |
 | [Business Alignment](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/business-alignment-profile) | Alignment of engineering output to business goals | Business Alignment  |
 

@@ -1,7 +1,7 @@
 ---
-title: Set up Org Tree
-description: Learn how to create organization trees for your team in SEI 2.0.
-sidebar_label: Set up Org Tree
+title: Create Org Trees
+description: Learn how to create organizational trees for your team in SEI 2.0.
+sidebar_label: Create Org Trees
 sidebar_position: 6
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/setup/organizations
@@ -10,76 +10,84 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Overview
+Org Trees define the organizational structure that SEI 2.0 uses to group developers, derive teams, and calculate metrics across Efficiency, Productivity, and Business Alignment insights. Each Org Tree represents a complete reporting hierarchy built from your developer records, and serves as the source of truth for how [teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) are created and measured in SEI 2.0. Teams are automatically derived as leaf nodes within an Org Tree. 
 
-The Org Tree in SEI 2.0 mirrors your organization’s internal reporting structure, serving as the backbone for grouping developers and analyzing performance in the context of real-world teams and reporting lines.
+You can model complex organizational structures by defining multiple hierarchy levels and applying data filters using attributes such as `Role`, `Site`, and `Team`. Levels determine how teams are grouped in the hierarchy, while data filters limit which developer records are included in the Org Tree.
 
-SEI 2.0 supports multiple Org Trees per account, enabling you to model different business units, geographies, or alternative reporting structures. You can also create multi-level groupings based on custom attributes such as `Role`, `Site`, and `Team`, giving you more flexibility to model complex organizational structures.
+![](../static/multi-level-org-1.png)
 
-By replicating your org hierarchy within SEI, the Org Tree enables team-based insights for engineering leaders, allowing them to assess productivity, efficiency, and delivery performance across various levels of the organization, from individual contributors to entire departments.
+The **Org Tree** page provides a centralized view of all Org Trees configured in your account and their associated profiles and metadata. To create an Org Tree, click **+ Create Org Tree**.
+
+![](../static/org-tree-1.png)
+
+Use the **Search Org Trees** dropdown menu and search bar to search for Org Trees by associated profile or by name. The following information is available for each Org Tree: 
+
+| Column                         | Description                               |
+| ------------------------------ | ----------------------------------------- |
+| **Org Tree Name**              | Name of the Org Tree                      |
+| **Teams**                      | Number of teams derived from the Org Tree |
+| **Efficiency Profile**         | Associated Efficiency Profile             |
+| **Productivity Profile**       | Associated Productivity Profile           |
+| **Business Alignment Profile** | Associated Business Alignment Profile     |
+| **Last Modified**              | Timestamp of the most recent update       |
+| **Created By**                 | User who created the Org Tree             |
+| **Last Updated By**            | User who last modified the Org Tree       |
+| **Actions**                    | Edit or delete the Org Tree               |
+
+Click on an Org Tree in the list to review or update its configuration in the **Org Tree Settings** side panel. If you update any profiles, click **Save Changes** to apply the update.
+
+![](../static/org-tree-2.png)
+
+:::info
+Changing a profile impacts all teams within the Org Tree. Teams inherit these profiles by default, so switching profiles can affect how metrics are calculated and how existing team data is interpreted across the entire hierarchy. 
+:::
+
+While Org Trees are constructed automatically from your developer records, they must be configured correctly to ensure teams are derived accurately and metrics reflect real reporting lines, ownership, and delivery scope across your organization. 
 
 ### Prerequisites
 
 Before setting up your Org Tree, ensure the following:
 
-* You have uploaded your developer records via a CSV driven export from your HRIS system. 
-
+* You have [uploaded your developer records via a CSV driven export from your HRIS system](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers#add-developer-records-via-csv-upload). 
   The CSV file must follow the required structure:
   * Each row represents a developer.
   * Must include at least `Name`, `Email`, and `Manager Email`. Optionally, include `Site`, `Role`, or `Team`.
-* You have created the relevant [Efficiency](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) and [Productivity Profiles](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile).
-* You have connected your integrations for:
-  * Issue Management (e.g. Jira, Azure Boards)
-  * Source Code Management (e.g. GitHub, GitLab)
-  * CI/CD (e.g. Harness) (if applicable)
+* You have created the relevant [Profiles](/docs/category/set-up-profiles).
+* You have configured Issue Management (e.g. Jira, Azure Boards), Source Code Management (e.g. GitHub, GitLab), and CI/CD (e.g. Harness) integrations, if applicable
 
-### How Org Trees work in SEI 2.0
+<details>
+<summary>How Org Trees Work in SEI 2.0</summary>
 
-The Org Tree in SEI 2.0 is automatically constructed using your organization's developer records (typically managed as a CSV driven export from your HRIS system like Workday or BambooHR)
+Org Trees are automatically generated from your organization's developer records, which are typically sourced from an HRIS system such as Workday or BambooHR and uploaded as a CSV file.
 
-To build the Org Tree, SEI reads two key fields from the uploaded developer records:
+To construct the Org Tree, SEI 2.0 uses two primary fields from the developer records:
 
-* **Developer Identifier:** Usually the developer’s email address
-* **Reporting Field:** A reference to their manager (e.g., Manager Email)
+* **Developer identifier:** A unique identifier for each developer, most commonly their email address.
+* **Reporting field:** A reference to the developer's manager (for example, `Manager Email`).
 
-Using this data, SEI automatically builds your organizational hierarchy:
+Using these fields, SEI 2.0 builds a hierarchical structure that reflects your organization's reporting relationships where:
 
-* Each manager is represented as a node.
-* Their direct reports are placed underneath them.
-* This hierarchy continues recursively up to the root of the organization.
+* Each manager is represented as a node in the Org Tree.
+* Direct reports are grouped beneath their manager.
+* This process continues recursively until the top-level manager (the root node) is reached.
 
-The result is a complete manager-reportee tree that mirrors your real-world structure.
+The result is a complete manager-reportee tree that mirrors your real-world organizational structure.
 
 ![](../static/org-tree-step1.png)
 
-#### What this enables
+Org Trees are kept in sync with your organization through ongoing developer record uploads. When you upload an updated CSV from your HRIS system, SEI 2.0 automatically detects changes such as new hires, reporting line updates, or team changes and rebuilds the Org Tree accordingly.
 
-The Org Tree powers many key capabilities in SEI:
+If new teams are introduced or developers move between teams, you may need to review and update [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) to ensure insights and metrics are attributed correctly.
 
-* Groups developers into actual teams without manual setup
-* Assigns metrics, insights, and goals at every team or manager level
-* Supports reporting by team, department, manager, or business unit
+</details>
 
-#### Ways to view your Org Tree
+Org Trees form the foundation for team-based analysis in SEI 2.0, allowing you to:
 
-You can explore your Org Tree in two formats:
+* Automatically group developers into teams based on real reporting structures
+* Calculate metrics and surface insights at the team, manager, or organizational level
+* Analyze performance across departments, business units, or leadership
 
-<Tabs queryString="org-tree-views">
-<TabItem value="tree-view" label="Tree View">
-
-Interact with the preview and navigate relationships and reporting lines in the **Tree View**.
-
-![](../static/multi-level-org-1.png)
-
-</TabItem>
-<TabItem value="table-view" label="Table View">
-
-See summaries of total teams, team size, and any missing or unmapped data in the **Table View**.
-
-![](../static/multi-level-org-2.png)
-
-</TabItem>
-</Tabs>
+By grounding insights in your actual organizational structure, SEI 2.0 ensures that metrics reflect how work is owned, delivered, and managed across your organization.
 
 ## Multi-level hierarchies
 
@@ -93,16 +101,16 @@ This flexibility allows you to:
 
 ![](../static/multi-level-org.png)
 
-## Set up an Org Tree
+## Create an Org Tree
 
-1. In your Harness Account, go the SEI project and click **Org Tree**.  
-1. Click the **+ Create Org Tree** button.  
+1. From the Harness SEI navigation menu, click **Org Trees**.  
+1. Click **+ Create Org Tree**.  
 1. Enter a name for your Org Tree and click **Next**.  
 
    ![](../static/org-tree-step1.png)
 
 1. Define team structure by selecting levels. The Org Tree preview updates as you add levels and filters.
-   
+
    * Choose one or more fields to group your developers. Available options include `Email`, `Manager Email`, `Full Name`, `Role`, `Site`, and `Team`.
      
      ![](../static/multi-level-org-4.png)
@@ -121,7 +129,25 @@ This flexibility allows you to:
      - **Condition**: Select `Equals` or `Not equals`.
      - **Value(s)**: Values are populated dynamically based on the selected column.  
 
-1. Review the **Developer Records** preview to confirm that the data matches your expectations. To switch to a detailed summary, click the **Table** tab. Here, you can see stats like total teams, root teams, total developers, and any missing or unmatched records.
+1. Review the **Developer Records** preview to confirm that the data matches your expectations. To switch to a detailed summary, click the **Table** view. 
+
+   <Tabs queryString="org-tree-views">
+   <TabItem value="tree-view" label="Tree View">
+
+   Interact with the preview and navigate relationships and reporting lines in the **Tree View**.
+
+   ![](../static/multi-level-org-1.png)
+
+   </TabItem>
+   <TabItem value="table-view" label="Table View">
+
+   See summaries of total teams, team size, and any missing or unmapped data in the **Table View**.
+
+   ![](../static/multi-level-org-2.png)
+
+   </TabItem>
+   </Tabs>
+
 1. Click **Next** to proceed to profile selection.  
 1. Select the relevant profiles that will power your insights:
 
@@ -142,29 +168,10 @@ This flexibility allows you to:
 
 1. Click **Save Org Tree** to complete setup. You will see a confirmation message: `Org tree created successfully`.
 
-## What happens next?
+After you save an Org Tree, it becomes active across SEI 2.0 and available for analysis. Engineering leaders and managers can start exploring insights at different levels of the organization: by team, manager, or business unit, based on the structure you defined.
 
-Once saved, your Org Tree will be available for use across SEI 2.0. Engineering Managers can begin analyzing metrics per team, manager, or function based on the tree structure.
+Each team in the Org Tree automatically inherits the selected profiles and default integrations. These inherited settings provide a baseline configuration that ensures metrics are calculated consistently across the organization, while still allowing teams to override specific settings when needed.
 
-Each team inherits the assigned profiles and integrations unless overridden at the team level. The tree becomes a foundational layer to:
+The Org Tree serves as a foundational layer in SEI 2.0, enabling dashboards on the **Insights** page to be organized around real teams, improving visibility into developer performance, and supporting meaningful comparisons across teams and business units.
 
-* Power dashboards and insights per team
-* Group developers for performance visibility
-* Drive organizational benchmarking
-
-## FAQs
-
-### Can I create multiple Org Trees?
-
-Yes. SEI 2.0 supports multiple Org Trees per account, allowing you to model different business units, geographies, or experimental reporting structures. Each Org Tree has its own profiles, integrations, and hierarchy definitions, but all use the same underlying developer records.
-
-### Can I update the Org Tree later?
-
-Yes. Org Tree updates are tied to your regular developer records upload. When you upload a new CSV (exported from your HRIS system), SEI will automatically detect changes and restructure the Org Tree accordingly.
-
-For newly added teams or existing teams with new developers, you’ll need to update the team settings to view insights correctly.
-
-## Next steps
-
-* [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams)
-* [Manage developers](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams)
+Once your Org Tree(s) are in place, you can configure [team-specific settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) and review [developer records](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers).

@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-12-23T10:00:10
+date: 2026-01-15T10:00:10
 sidebar_position: 15
 ---
 
@@ -11,6 +11,8 @@ import TabItem from '@theme/TabItem';
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/software-engineering-insights/rss.xml" />
 
 These release notes describe recent changes to Harness Software Engineering Insights.
+
+#### Last updated: January 15, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
@@ -192,6 +194,29 @@ This feature is valuable for organizations that want to:
 
 - [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers)
 - [Upload Developer Cloud IDs](/docs/software-engineering-insights/harness-sei/api/cloud-ids)
+
+## September 2025
+
+### [New Feature] Trendlines across Efficiency and Productivity Insights in SEI 2.0
+---
+#### 2025-09-15
+
+SEI 2.0 now includes trendlines across **Efficiency** and **Productivity Insights**, making it easier to understand how key metrics change over time. 
+
+![](./static/sei/trendline.png)
+
+Trendlines help teams look beyond point-in-time values to focus on directional performance and answer questions like:
+
+- Are delivery and productivity metrics improving or regressing?
+- Are recent changes producing sustained impact or short-term noise?
+- How do trends compare across teams, metrics, and time ranges?
+
+When **Show trendline** is enabled in a dashboard, trendlines are overlaid across all applicable widgets in the [Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency) and [Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity) dashboards on the **Insights** page. Trendlines use the Ordinary Least Squares (OLS) regression method to identify overall patterns and direction in the selected time range.
+
+#### Related documentation
+
+- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency)
+- [Developer Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity)
 
 ## August 2025
 

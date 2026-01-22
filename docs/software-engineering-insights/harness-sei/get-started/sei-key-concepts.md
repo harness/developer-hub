@@ -117,7 +117,7 @@ SEI 2.0 supports three main types of Profiles, each optimized for different meas
 
 | Type of profile      | Purpose                                  | Metrics                                                  |
 |---------------------|---------------------------------------------|-----------------------------------------------------------------|
-| Efficiency      | Delivery performance (DORA metrics) & sprint insights (coming soon) | Deployment Frequency, Lead Time for Changes, Change Failure Rate, MTTR |
+| Efficiency      | Delivery performance (DORA metrics) & sprint insights | Deployment Frequency, Lead Time for Changes, Change Failure Rate, MTTR |
 | Productivity    | Developer productivity and collaboration     | PR Velocity per Dev, PR Cycle Time,  Work Completed Per Dev, Coding Days Per Dev, Number of Comments Per PR, Average Time to First Comment  |
 | Business Alignment | Alignment of engineering output to business goals | Business Alignment  |
 

@@ -7,21 +7,30 @@ redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/productivity
 ---
 
-Productivity in SEI 2.0 focuses on understanding the actual work being delivered by developers, the quality of that work, and how effectively teams collaborate to get it done. Rather than measuring activity for its own sake, SEI surfaces signals that reflect meaningful engineering output, including work that drives value, improvements to existing code, and areas of potential rework.
+Productivity in SEI 2.0 focuses on understanding the actual work being delivered by developers, the quality of that work, and how effectively teams collaborate to get it done. Rather than measuring activity for its own sake, SEI 2.0 surfaces signals that reflect meaningful engineering output, including work that drives value, improvements to existing code, and areas of potential rework.
 
-We’ve designed this experience to focus on the quality, velocity, and collaboration behind the code. Whether you're tracking individual contributions or team-wide trends, SEI 2.0 helps you identify where work is flowing smoothly, where bottlenecks exist, and where additional effort may be spent refactoring or improving code.
+## Productivity Insights
 
-We break productivity down into three core dimensions:
+The **Productivity** tab on the **Insights** page in SEI 2.0 helps you understand how work flows through your engineering organization, focusing on the quality, velocity, and collaboration behind the code. If your account has multiple Org Trees configured in SEI 2.0, the Org Trees are displayed as tiles at the top of the dashboard.
 
-* **Volume:** How much work is getting done? This includes commits, pull requests, stories moved forward, and overall code activity.
-* **Output:** What that work actually delivers—whether it’s shipping to production, creating customer value, or identifying rework through metrics like Code Rework.
-* **Collaboration:** How effectively teams are working together? review quality, responsiveness, cross-functional interaction, and shared ownership.
+Selecting an Org Tree tile updates the dashboard to reflect data for that org tree and filters all productivity metrics to only include the teams and repositories within the selected Org Tree. This allows you to analyze productivity trends across different organizations and teams.
 
-## Productivity Insight widgets
+By surfacing key aspects of the development lifecycle, the **Productivity Insights** dashboard helps teams:
 
-Our aim is to provide comprehensive, actionable insights into what drives our engineering output. By visualizing key aspects of the development lifecycle, we empower teams to understand their performance, identify areas for improvement, and celebrate successes.
+- Understand how engineering effort translates into delivered outcomes
+- Identify bottlenecks, rework, or inefficient collaboration patterns
+- Track productivity trends at the individual, team, or organizational level
+- Focus improvement efforts on the areas with the highest impact
 
-You can analyze the data using a calendar-based date selection or a pre-set time range (weekly, monthly, or quarterly).
+You can analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts.
+
+Use the `Showing` dropdown menu to control how values are calculated across all widgets. Available options include `mean`, `median`, `p90`, and `p95`. Click the **Show trendline** checkbox to overlay trendlines across all Productivity visualizations. Trendlines help you assess whether productivity metrics are improving, regressing, or remaining stable over time. 
+
+:::info
+Trendlines use the Ordinary Least Squares (OLS) regression method to identify patterns and direction in your data over the selected time range.
+:::
+
+To export the Productivity Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export).
 
 Below is a brief overview of each widget in **Productivity** on the **Insights** page:
 
@@ -87,7 +96,7 @@ The following options are available for this widget:
 
 ### Coding Days Per Developer
 
-**Coding Days per Developer** represents the number of distinct days in which a developer made at least one meaningful code contribution (commit).
+**Coding Days per Developer** represents the number of distinct days in which a developer made at least one meaningful code contribution (a commit).
 
 $$
 \text{Coding Days per Developer} = \frac{\text{Sum of distinct commit days for all developers}}{\text{Number of Active Developers}}

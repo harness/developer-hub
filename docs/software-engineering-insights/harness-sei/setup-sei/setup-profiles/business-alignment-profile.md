@@ -12,7 +12,13 @@ At the profile level, you can:
 * Define the set of Investment Categories (e.g., Features, Tech Debt, Customer Commitments).
 * Configure the fetch scope to determine which work items should be considered for each category (e.g., by project, integration, or work type).
 
-Investment Categories represent the different strategic areas where engineering effort is invested. These categories are defined at the profile level and shared across all teams. However, each team can define its own logic for classifying work items into these categories using metadata-based filters (Filter Sets) like labels, issue types, and components in **Team Settings**.
+Investment Categories represent the different strategic areas where engineering effort is invested. These categories are defined at the profile level and shared across all teams. 
+
+![](../../static/ba-profile-1.png)
+
+However, each team can define its own logic for classifying work items into these categories using metadata-based filters (also known as filter sets) like labels, issue types, and components in the **Business Alignment Configuration** section on the **Issue Management** tab in **Team Settings**.
+
+![](../../static/teams-6.png)
 
 Common examples include:
 
@@ -37,11 +43,12 @@ To create a business alignment profile:
 
    ![](../../static/ba-profile-1.png)
 
-1. Define and rank investment categories your organization wants to track.
+1. Define and rank the investment categories your organization wants to track.
 
    ![](../../static/ba-profile-2.png)
 
    * In the **Scope of fetching tickets** section, select the relevant scope type and apply filters to narrow the computation scope. For advanced configuration, see [Scoping of fetching tickets](#scope-of-fetching-tickets).
+   * To add an investment category, click **+ New Category**.
    * To edit an investment category, click the **Edit Category** icon. 
    * To delete an investment category, click the **Delete** icon.
 
@@ -53,10 +60,8 @@ Each Investment Category in the Business Alignment profile defines how tickets s
 
 You have two options:
 
-* **Fetch tickets that match the specified conditions:** Only tickets that directly match the conditions are included.
+* **Fetch tickets that match the specified conditions:** Only includes tickets that match the conditions.
 * **Fetch tickets based on the specified conditions and also sub-tickets:** Includes tickets that match the conditions *and* their related sub-tickets.
-
-#### Advanced selection options
 
 If you select **Fetch tickets based on the specified conditions and also sub-tickets** (hierarchical fetching), you can select from the following options:
 
@@ -115,10 +120,8 @@ The ranking of categories plays a significant role in determining how tickets ar
 6. **Business Alignment Calculations:** Once Allocation goals are set, Harness SEI calculates the Business Alignment metric value based on the actual allocation of tickets to categories and the progress made in each category.
 </details>
 
-Once you have completed the profile configuration, click **Save** to finalize your changes. The Business Alignment profile must be associated with one or more [Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree/) in your organization. This association determines which teams can access and use the profile.
-
-After association, engineering managers within those Org Trees can define category filters at the team level, using their own set of work-item filters based on metadata such as labels, components, or issue types. From here, you can define Business Alignment settings for a team or view the [Business Alignment dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment).
+Once you have completed the profile configuration, click **Save** to finalize your changes. The Business Alignment profile must be associated with one or more [Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree#set-up-an-org-tree) in your organization. This association determines which teams can access and use the profile.
 
 ## Configure team-level settings
 
-Once you have created and configured a Business Alignment Profile, you can configure [team-level settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#configure-team-tool-settings) to calculate Business Alignment metrics. Business Alignment profiles define the organization-wide investment categories, while **Team Settings** ensure that each team's work items are correctly mapped to produce accurate metrics within those categories.
+Once you have created and configured a Business Alignment Profile, you can configure [team-level settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#configure-team-tool-settings) to calculate Business Alignment metrics. Business Alignment profiles define the organization-wide investment categories, while the **Business Alignment Configuration** section on the **Issue Management** tab in **Team Settings** ensure that each team's work items are correctly mapped to produce accurate metrics within those categories.
