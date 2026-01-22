@@ -115,6 +115,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2026 
 
+### Version 26.01.88300 <!--January 21, 2026-->
+
+#### Fixed issues
+- Improved release history handling for pruning-enabled deployments by dynamically choosing the storage backend. When pruning is enabled, release history is now stored in Secrets instead of ConfigMaps. [CDS-117631]
+
 ### Version 25.09.86705 <!--January 20, 2026-->
 
 #### Fixed issues
