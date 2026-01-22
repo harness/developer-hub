@@ -62,6 +62,20 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## January 2026
 
+### Version 1.118.0
+
+<!-- 19 January 2025 -->
+
+#### Fixed Issues
+
+- Improved error logging for intermittent failures caused by Bitbucket rate-limiting. (CI-20370, ZD-101031)
+
+#### Harness Images Updates
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Security vulnerability fixes | 1.18.3 | 1.18.5 |
+| `harness/ci-lite-engine` | Regular release | 1.18.3 | 1.18.5 |
+
 ### Version 1.117.0
 
 <!-- January 12, 2026 -->
