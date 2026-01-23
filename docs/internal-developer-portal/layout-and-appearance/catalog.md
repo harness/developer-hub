@@ -317,6 +317,110 @@ spec:
           title: "Docs"
 ```
 
+## Hierarchy Entity Layouts
+
+Hierarchy entities (created by [Platform Integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/platform-cd)) use specialized layouts to display organizational structure and aggregated metrics. You can customize layouts for each hierarchy type: **account**, **organization**, and **project**.
+
+![Hierarchy entities](./static/hirar.png)
+
+
+Hierarchy entity layouts support these additional components beyond standard catalog components:
+
+#### HierarchicalEntitiesTable
+
+Displays the direct child entities in the hierarchy (e.g., organizations under an account, projects under an organization).
+
+```yaml
+- component: HierarchicalEntitiesTable
+```
+
+#### EntitiesByScopeTable
+
+Shows all entities that belong to the current scope level, with search and pagination support.
+
+```yaml
+- component: EntitiesByScopeTable
+```
+
+#### StatsCard
+
+Displays aggregated metrics from child entities. The `value` field references a metadata property created by an aggregation rule.
+
+```yaml {4}
+- component: StatsCard
+  specs:
+    props:
+      title: Max Failure Rate
+      subtitle: Percentage
+      value: <+metadata.Max Change Failure Rate>
+```
+
+The `value` uses `<+metadata.propertyName>` syntax where property names come from your aggregation rules.
+
+#### AggregatedTable
+
+Shows a breakdown table with individual values from child entities, useful for drill-down analysis. You can add any number of columns to display different metrics from the child entities.
+
+**Use cases:**
+- Display component metrics in a table on project entities
+- Display project-level aggregated metrics in a table on organization entities
+- Display organization-level aggregated metrics in a table on account entities
+
+```yaml {8-15}
+- component: AggregatedTable
+  specs:
+    props:
+      tableTitle: Unit Test Coverage for Projects
+      tableProps:
+        columns:
+          - NAME_COLUMN
+          - name: Unit Test Coverage Percentage
+            accessorKey: metadata.unitTestCoveragePct
+            type: text
+          - name: Deployment Frequency
+            accessorKey: metadata.deploymentFrequency
+            type: text
+          - name: Change Failure Rate
+            accessorKey: metadata.changeFailureRate
+            type: text
+```
+
+**Column configuration:**
+- **NAME_COLUMN** - A predefined column that automatically displays the entity name (always include this as the first column)
+- **name** - The display name for the column header
+- **accessorKey** - The property path to read the value from child entities (e.g., `metadata.propertyName`)
+- **type** - Currently only `text` is supported
+
+**Displaying aggregated values in tables:**
+
+When viewing an organization entity, you can display a table of child projects with their aggregated metric values. The `accessorKey` can reference aggregated properties that were created by [aggregation rules](/docs/internal-developer-portal/catalog/aggregation-rules).
+
+For example, if you have an aggregation rule that creates `metadata.Avg Deployment Frequency` on project entities, you can display this in a table on the organization entity:
+
+```yaml {8-11}
+- component: AggregatedTable
+  specs:
+    props:
+      tableTitle: Unit Test Coverage for Projects
+      tableProps:
+        columns:
+          - NAME_COLUMN
+          - name: Unit Test Coverage Percentage
+            accessorKey: metadata.unitTestCoveragePct
+            type: text
+          - name: Avg Deployment Frequency
+            accessorKey: metadata.Avg Deployment Frequency
+            type: text
+```
+
+![Aggregated Table with Hierarchy Metrics](./static/aggregated-table-hierarchy.png)
+
+
+**Key points:**
+- Property names in `value` fields must match those defined in your [aggregation rules](/docs/internal-developer-portal/catalog/aggregation-rules)
+- Use `NAME_COLUMN` for the entity name column in aggregated tables
+- `accessorKey` references the original property from child entities
+
 ## Troubleshooting
 
 - Component Not Rendering: Check for correct `props`.

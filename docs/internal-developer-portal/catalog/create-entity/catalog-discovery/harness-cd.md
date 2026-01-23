@@ -1,6 +1,6 @@
 ---
 title: Catalog Auto-Discovery with Harness CD Services
-description: Steps to use Catalog Ingestion API to ingest metadata and use the information on catalog overview and workflows
+description: Steps to use Catalog Ingestion API to ingest metadata and use the information on the catalog overview and workflows
 sidebar_position: 1
 sidebar_label: Harness CD
 ---
@@ -14,6 +14,7 @@ Make sure the following prerequisites are met:
 
 1. The feature flag **`IDP_CATALOG_CD_AUTO_DISCOVERY`** is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
 2. **Harness CD** is enabled for your account. This must be the **same account** you use for Harness IDP.
+3. You have the required **RBAC permissions** to manage integrations. All operations for CD and Platform integrations require the **IDP Integration Edit** permission (`IDP_INTEGRATION_EDIT`) on the **IDP Integration** resource type (`IDP_INTEGRATION`).
 
 ---
 
