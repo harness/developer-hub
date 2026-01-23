@@ -906,6 +906,8 @@ This sample shows the execution steps with approval between traffic shifts.
 Rollback support for artifacts larger than 50 MB stored in S3 is currently behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 This features requires delegate version `857xx` or later.
+
+Invalid request: Request must be smaller than 70167211 bytes for the UpdateFunctionCode operation (Service: Lambda, Status Code: 413
 :::
 
 #### Prerequisites
