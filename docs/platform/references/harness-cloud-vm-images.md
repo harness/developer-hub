@@ -18,17 +18,17 @@ To see what’s included in each image, visit the [Harness Cloud VM image reposi
 
 Harness provides VM images for multiple operating systems and architectures:
 
-| Virtual machine image | Image label | Notes | Rollout Status|
-|----------------------|-------------|-------|-----|
-| [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux AMD | GA |
-| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | GA |
-| [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM | GA |
-| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | GA |
-| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `mac-latest` or `mac-sonoma` | Latest macOS | GA |
-| [macOS 14 (Sonoma) with Xcode 16.3](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macOS-14-xcode-16.3-Readme.md)| `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 16.3 | GA |
-| [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-Readme.md)| `macos_sequoia` | macOS Sequoia with Xcode 16.3 (default) and iOS runtimes for Xcode 16.3, 16.4 | GA |
-| [macOS 15 (Sequoia) with Xcode 16.4](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-16.4-Readme.md)| `macos_sequoia_xcode_16.4` | macOS Sequoia with Xcode 16.4 (default) and iOS runtimes for Xcode 16.4, 26.0 | GA |
-| [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
+| Virtual machine image | Image label | Notes                                                                                     | Rollout Status|
+|----------------------|-------------|-------------------------------------------------------------------------------------------|-----|
+| [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux AMD                                                         | GA |
+| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD                                                         | GA |
+| [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM                                                         | GA |
+| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM                                                         | GA |
+| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `mac-latest` or `mac-sonoma` | Latest macOS                                                                              | GA |
+| [macOS 14 (Sonoma) with Xcode 16.3](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macOS-14-xcode-16.3-Readme.md)| `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 16.3                                                         | GA |
+| [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-Readme.md)| `macos_sequoia` | macOS Sequoia with Xcode 16.3 (default), 16.4, 26.0 and iOS runtimes for Xcode 16.3, 16.4 | GA |
+| [macOS 15 (Sequoia) with Xcode 16.4](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-16.4-Readme.md)| `macos_sequoia_xcode_16.4` | macOS Sequoia with Xcode 16.4 (default), 16.3, 26.0 and iOS runtimes for Xcode 16.4, 26.0 | GA |
+| [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image                                                          |GA |
 
 :::info
 **Currently, `ubuntu-latest` points to Ubuntu 22.04**.
