@@ -115,7 +115,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2026 
 
-### Version 25.07.86407 <!--January 23, 2026-->
+### Version 25.07.86408 <!--January 23, 2026-->
+
+#### Fixed issues
+- Added env variable MAX_BUILD_NEXUS_TRIGGERS to specify maximum tags fetched in a Nexus3 trigger polling task. [CDS-118107]
+- Added env variable DISABLE_NEXUS_DOCKER_V2_CATALOG to disable validation of artifact path in the specified repository using `v2/_catalog` in Nexus3. [CDS-118107]
+
+### Version 26.01.88302 <!--January 23, 2026-->
 
 #### Fixed issues
 - Added env variable MAX_BUILD_NEXUS_TRIGGERS to specify maximum tags fetched in a Nexus3 trigger polling task. [CDS-118107]
