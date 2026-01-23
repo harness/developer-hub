@@ -7,6 +7,15 @@ redirect_from:
   - /docs/continuous-delivery/get-started/integrating-cd-other-modules
 ---
 
+<CTABanner
+  buttonText="Request Access"
+  title="FME Steps in Pipelines is in beta!"
+  tagline="Add Harness Management & Experimentation steps to your Harness CD pipelines at the stage level. Available now in beta!"
+  link="https://developer.harness.io/docs/feature-management-experimentation/fme-support"
+  closable={true}
+  target="_self"
+/>
+
 This topic describes a few of the cross-module use cases in the Harness platform.
 
 ## Harness Continuous Integration
@@ -154,3 +163,18 @@ For a longer tutorial of Harness CI and CD integration, go to [End-To-End CI/CD 
 ## Harness Chaos Engineering
 
 The [Harness Chaos Engineering (HCE) integration with Harness CD](/docs/chaos-engineering/integrations/cicd/harness-cd) allows chaos experiments to be executed as part of a Harness CD pipeline.
+
+## Harness Feature Management & Experimentation
+
+You can integrate [Harness Feature Management & Experimentation](/docs/feature-management-experimentation/) into your [Harness CD pipelines](/docs/feature-management-experimentation/pipelines) to manage feature flags as part of your deployment workflow.
+
+By adding FME steps to CD stages, you can create, update, target, and disable feature flags during a pipeline execution. This allows feature flag operations to be versioned, reviewed, and executed alongside application deployments, reducing manual steps and improving release coordination.
+
+You can integrate Harness FME with CD pipelines in the following ways:
+
+- Creating or updating feature flags as part of a release
+- Managing individual targeting lists during staged rollouts
+- Adjusting default traffic allocations when deploying a new version
+- Killing a feature flag immediately in response to deployment issues
+
+For more information, see the [Pipelines documentation](/docs/feature-management-experimentation/pipelines/).

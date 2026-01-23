@@ -10,6 +10,7 @@ function chunkArray(array, size) {
 
 export const supportedModules = [
   { name: "Harness IDP", img: "/img/icon_idp.svg", link: "/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme" },
+  { name: "Harness CD", img: "/img/icon_cd.svg", link: "/docs/feature-management-experimentation/pipelines" },
 ];
 
 export const supportedWorkflows = [

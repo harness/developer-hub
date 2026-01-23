@@ -113,6 +113,12 @@ import { MODULES } from "@site/src/constants"
           description: "Access Harness FME programmatically with API references and examples.",
           link: "/docs/feature-management-experimentation/api",
         },
+        {
+          title: "Pipelines",
+          module: MODULES.fme,
+          description: "Define and manage your deployment pipelines using Harness FME steps.",
+          link: "/docs/feature-management-experimentation/pipelines",
+        },
       ],
     },
     {

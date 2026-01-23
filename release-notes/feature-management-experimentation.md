@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-01-16T10:00:00
+date: 2026-01-23T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,9 +12,32 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: January 16, 2026
+#### Last updated: January 23, 2026
 
 ## January 2026
+
+### [New Feature] FME Steps in Harness Pipelines is in Beta
+----
+#### 2026-01-23
+
+Harness FME steps in pipelines is now in beta, allowing you to manage feature flags directly within your deployment workflows. You can add FME steps to [custom stages](/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and perform feature flag operations as part of a single, auditable pipeline. 
+
+![](./static/fme/pipelines.png)
+
+You can add FME steps in Harness pipelines to automate and standardize the following operations, for example:
+
+- Create and update feature flags as part of a deployment
+- Manage individual targets deterministically, including setting or modifying explicit target lists during a rollout
+- Control default traffic allocation for staged or percentage-based rollouts
+- Disable a feature flag using a kill step
+- Coordinate deployments and feature flag changes in a single workflow, reducing manual configuration and operational risk
+
+These steps run alongside standard pipeline steps and logic such as approvals, failure strategies, waits, and notifications. To request access to the FME steps in Harness pipelines beta experience, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
+
+#### Related documentation
+
+- [FME Steps in Harness Pipelines](/docs/feature-management-experimentation/pipelines)
+- [Integrating CD with other Harness modules](/docs/continuous-delivery/cd-onboarding/integrating-cd-other-modules/)
 
 ### [New Feature] Web support in the Flutter Plugin
 ----

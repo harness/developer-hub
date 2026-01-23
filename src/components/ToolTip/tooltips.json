@@ -31,6 +31,13 @@
         "data-warehouse": "A centralized repository for storing and managing large volumes of structured and semi-structured data. Examples include Snowflake, BigQuery, Redshift, and Databricks.",
         "warehouse-native": "A method of running feature management experiments directly within your data warehouse, leveraging its processing power and existing data infrastructure.",
         "cloud-experimentation": "A method of running feature management experiments using a cloud-based service provided by Harness FME, which handles data collection, analysis, and reporting."
+      },
+      "pipelines": {
+        "feature-flag": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without requiring a code deployment. Feature flags support controlled rollouts, experimentation, and quick rollbacks if issues arise.",
+        "pipeline": "A pipeline is a sequence of stages that define how services are deployed to an environment. Pipelines can include approvals, barriers, notifications, and other execution logic.",
+        "stage": "A stage represents a discrete phase of a pipeline, such as testing, experimentation, or production rollout. You can add FME steps to any Custom stage, whether newly created or existing.",
+        "step": "A step is an individual action within a stage. FME steps include operations such as creating or updating a feature flag, modifying rollout behavior, or killing a flag.",
+        "custom-stage": "A custom stage is a user-defined stage in a pipeline that allows you to run custom logic or actions as part of a pipeline. FME steps are only supported in Custom stages."
       }
     }
   }
