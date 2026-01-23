@@ -13,7 +13,7 @@ Each folder includes an overview section with detailed guidance tailored for bot
 
 ## Authorization moves from Bearer Token to `x-api-key`
 
-Historically, you have presented the API token as a bearer token with Split. With the Harness platform, API tokens must be in an x-api-key header instead. The Postman collection below was updated to reflect that on April 18th, 2025. 
+Historically, you have presented the API token as a bearer token with Split. With the Harness platform, API tokens must be in an `x-api-key` header instead. The Postman collection below was updated to reflect that on April 18th, 2025. 
 
 If you downloaded the Postman collection before April 18th, download an updated copy.
 
@@ -33,9 +33,27 @@ You can view the interactive collection experience [Before and After: APIs for S
 
 ### Are the Harness Project identifier and Split Project Id (wsId) equivalent? Can I use either in the Split Admin API endpoints after migration?
 
-No. Once you know the Harness Project `identifier`, you must obtain the Harness Project `name` and use that to look up the Split Project ID (`wsId`) by calling the `GET /workspaces` with the **filter (by name)** option to obtain the `wsId`. Once you have the `wsId`, you proceed as usual with the Split Admin API endpoints.  
+No. The Harness Project `identifier` and the Split Project ID (`wsId`) are not equivalent and cannot be used interchangeably in Split Admin API endpoints.
 
-See the discussion of **Retrieving wsId Using the Harness Project Name** in the [Projects > Harness (AFTER)](https://www.postman.com/harness-fme-enablement/harness-fme/documentation/hyphfpd/before-and-after-apis-for-split-admins?entity=folder-39aa2120-1aa4-4c0d-afc6-8679da5dd010) section of the Postman collection for more details.
+After migration, you need the Split project ID (`wsId`) to call Split Admin API endpoints that require a project (workspace) identifier. However, you no longer need to rely on the Harness project name to retrieve the `wsId`.
+
+To retrieve the `wsId` for a Harness project:
+
+1. Call the [Get Projects (Workspaces) endpoint](https://docs.split.io/reference/get-workspaces).
+1. Filter the results using one of the following options:
+
+   * Recommended: Use the `organizationIdentifier` and `projectIdentifier` query parameters.
+   * Alternatively, use the `name` query parameter with the Harness project name (not the Harness project ID).
+
+1. Extract the `id` field from the response and use it as the `wsId` in subsequent Split Admin API calls.
+
+:::tip Notes
+- Harness project names are not read-only and can be changed.
+- Filtering by `organizationIdentifier` and `projectIdentifier` provides a more stable way to retrieve the correct `wsId`.
+- The Harness platform project ID cannot be used directly in Split Admin API endpoints.
+:::
+
+For more information, see the **Retrieving a Project (Workspace) ID Using Harness Identifiers** section of the [Postman collection](https://www.postman.com/harness-fme-enablement/harness-fme/folder/qqutu4c/harness-after).
 
 ### Will this collection be published on GitHub as well?
 

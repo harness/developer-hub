@@ -16,6 +16,20 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 ## January 2026
 
+### [New Enhancement] Identifier-based Filtering for Harness FME Projects
+----
+#### 2026-01-23
+
+The Split [Get Projects (Workspaces) Admin API](https://docs.split.io/reference/get-workspaces) now provides Harness identifiers and supports identifier-based filtering, making it easier and more reliable to retrieve project (workspace) IDs, or `wsId`, after migration to Harness.
+
+Previously, workspace ID retrieval relied on filtering by [Harness project name](https://www.postman.com/harness-fme-enablement/harness-fme/folder/qqutu4c/harness-after). With this enhancement, you can now filter by `organizationIdentifier` and `projectIdentifier`, providing a more stable way to programmatically retrieve workspace IDs for Split Admin API calls.
+
+#### Related documentation
+
+- [Get Projects (Workspaces) API](https://docs.split.io/reference/get-workspaces)
+- [API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins#are-the-harness-project-identifier-and-split-project-id-wsid-equivalent-can-i-use-either-in-the-split-admin-api-endpoints-after-migration)
+- [Postman Collection](https://www.postman.com/harness-fme-enablement/harness-fme/folder/qqutu4c/harness-after)
+
 ### [New Feature] FME Steps in Harness Pipelines is in Beta
 ----
 #### 2026-01-23
@@ -55,8 +69,6 @@ This feature enables you to integrate the plugin into multi-platform Flutter app
 #### Related documentation
 
 - [Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin)
-
-## January 2026
 
 ### [New Enhancement] Certificate pinning status handler for iOS SDK and iOS Suite
 ---
