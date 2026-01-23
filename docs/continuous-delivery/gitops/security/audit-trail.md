@@ -9,10 +9,6 @@ Harness captures key GitOps events in the [Audit Trail](https://developer.harnes
 
 This page lists all GitOps-specific audit events currently supported in Harness.
 
-:::note
-Currently, GitOps audit events are behind the feature flag `GITOPS_AUDIT_TRAIL_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the logs.
-:::
-
 ## Supported GitOps Audit Events
 
 GitOps audit events are recorded for changes made via the Harness API as well as background changes triggered by the GitOps reconciler (for example, when resources are deleted directly from the cluster instead of through the Harness UI).
