@@ -53,3 +53,6 @@ Any expression in harness pipeline will be evaluated and hence currently it is n
 
 ### Does Harness support to configure a repository for Python packages in Nexus Artifact Source?
 Nexus Artifact Source does not support Python (PyPi) package types. It only supports deployment of Zip, Tar, or container-based packages. For Python packages, consider using a different repository type or configuring a custom artifact source.
+
+### Can I import a Custom Deployment template from Git in Harness?
+No (currently). Custom Deployment templates can’t be imported from Git today; they must be created inline in Harness.
