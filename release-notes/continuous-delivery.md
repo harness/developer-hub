@@ -384,6 +384,14 @@ Wondering where version 1.113.xx is? That release was rolled into 1.114.xx and u
 - Harness now provides an option to provide GitHub as a config file source in custom deployment templates, enabling users to utilize GitHub as a configuration file source in addition to YAML support. (**CDS-114277, ZD-92857**)
 - Harness now provides pipeline rollback action in verify step failure strategies so users can choose rollback directly in advanced options. (**CDS-114478, ZD-92214**)
 
+#### Behavior Changes:
+
+- We have improved the behavior of the pipeline execution process when triggered via a custom webhook. Previously, if users attempted to fetch webhook execution details using the endpoint `fetchWebhookExecutionDetailsV2`, during the brief interval before the pipeline actually started, an error was returned. 
+
+  - With this update, we have **introduced an intermediate queued state**. Now, if the API is called before execution has begun, it will return a success response indicating the pipeline is **queued**, but without execution details (as execution hasn't started yet). Once the execution commences, the status is updated to reflect success with the appropriate execution information. This change prevents premature errors and provides smoother, clearer feedback during the initial trigger-to-execution transition. This change is currently controlled by the feature flag `CDS_TRIGGER_EXECUTION_DETAILS_V2` and will be generally available very soon. 
+
+
+
 #### Breaking Changes:
 
 - Users can now provide runtime input values for ApplicationSet configuration (as part of the GitOps service), as it now accepts runtime input values besides the fixed ones. (**CDS-114186**)
