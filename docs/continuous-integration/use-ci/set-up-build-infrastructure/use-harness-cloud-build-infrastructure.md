@@ -40,13 +40,25 @@ Free plans require credit card validation to use Harness Cloud. If you don't wan
 
 ## Platforms and image specifications
 
-Harness Cloud offers Linux, macOS, and Windows platforms. For more information about image components and preinstalled software, see [Harness Cloud VM Images](/docs/platform/references/harness-cloud-vm-images).
+Harness Cloud supports **Linux**, **macOS**, and **Windows** platforms. Each CI stage that runs on Harness Cloud is executed on a **Harness-managed VM image**.
+
+The VM image defines:
+1. The **operating system** (for example, Ubuntu 22.04, Ubuntu 24.04, macOS, or Windows)
+2. A **curated set of pre-installed tools** maintained and updated by Harness
+
+For more information about image components and preinstalled software, see [Harness Cloud VM Images](/docs/platform/references/harness-cloud-vm-images).
+
+After selecting a base VM image, you can **customize the build environment at pipeline execution time** by:
+
+1. Locking specific tool versions
+2. Installing additional tools that are not pre-installed
+3. Running steps directly on the host VM or inside Docker containers
+
+These customizations are applied **on top of the selected VM image**, are re-applied on each run, and **do not modify the underlying image**. [Learn more](/docs/platform/references/harness-cloud-vm-images#pre-installed-software-version-management)
 
 :::tip
 To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
 :::
-
-**You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](/docs/platform/references/harness-cloud-vm-images#specify-versions), ensure that a step [uses a specific version every time](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools), or [install additional tools and versions](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
 ## Requirements for connectors and secrets
 

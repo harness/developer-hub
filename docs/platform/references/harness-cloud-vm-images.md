@@ -5,46 +5,51 @@ sidebar_position: 4
 ---
 
 
-Harness provides preconfigured virtual machine (VM) images to run your CI jobs in Harness Cloud. These images come with common build tools and dependencies preinstalled, so you can focus on building and testing your code without worrying about setup.
+Harness provides preconfigured virtual machine (VM) images to run your pipeline stages in Harness Cloud. These images come with common build tools and dependencies preinstalled, so you can focus on building and testing your code without worrying about setup.
 
-Every CI job runs on a fresh VM, ensuring clean, isolated builds.
+Every stage runs on a fresh VM, ensuring clean, isolated executions.
 
-To see what’s included in each image, visit the [Harness Cloud VM image repository](https://github.com/wings-software/harness-docs/tree/main/harness-cloud).
+For a full list of the tools included in each image, visit the [Harness Cloud VM image repository](https://github.com/wings-software/harness-docs/tree/main/harness-cloud).
 
 ## Cloud VM Images
 
 ### Available VM Images Image Tags
 
+Below is a list of the images used by Harness Cloud. 
+You can either:
+1. Use a **moving image tag** (for example, `ubuntu-latest`) to automatically receive updates, or
+2. **Pin to a specific image version** to maximize build reproducibility.
 
-Harness provides VM images for multiple operating systems and architectures:
+**VM Images**: 
 
-| Virtual machine image | Image label | Notes                                                                                     | Rollout Status|
-|----------------------|-------------|-------------------------------------------------------------------------------------------|-----|
-| [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux AMD                                                         | GA |
-| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD                                                         | GA |
-| [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM                                                         | GA |
-| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM                                                         | GA |
-| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `mac-latest` or `mac-sonoma` | Latest macOS                                                                              | GA |
-| [macOS 14 (Sonoma) with Xcode 16.3](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macOS-14-xcode-16.3-Readme.md)| `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 16.3                                                         | GA |
-| [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-Readme.md)| `macos_sequoia` | macOS Sequoia with Xcode 16.3 (default), 16.4, 26.0 and iOS runtimes for Xcode 16.3, 16.4 | GA |
-| [macOS 15 (Sequoia) with Xcode 16.4](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-16.4-Readme.md)| `macos_sequoia_xcode_16.4` | macOS Sequoia with Xcode 16.4 (default), 16.3, 26.0 and iOS runtimes for Xcode 16.4, 26.0 | GA |
-| [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image                                                          |GA |
+| Virtual machine image | Image label | Notes | Rollout Status|
+|----------------------|-------------|-------|-----|
+| [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux AMD | GA |
+| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | Beta |
+| [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM | GA |
+| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | GA |
+| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `mac-latest` or `mac-sonoma` | Latest macOS | GA |
+| [macOS 14 (Sonoma) with Xcode 16.3](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macOS-14-xcode-16.3-Readme.md)| `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 16.3 | GA |
+| [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-16.4-Readme.md)| `macos_sequoia` | macOS Sequoia with Xcode 16.4 (default) and iOS runtimes for Xcode 16.4, 26.0 | Beta |
+| [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
 
-:::info
-**Currently, `ubuntu-latest` points to Ubuntu 22.04**.
-To switch latest to Ubuntu 24.04 ahead of the general rollout, contact Harness Support to enable the `CI_ENABLE_HOSTED_BETA_IMAGES` feature flag for your account.
+:::info 
 
-**Currently, `mac-latest` points to macOS 14 Sonoma (`mac-sonoma`)**.
+**Beta vs GA Images:**
+- **Beta images** are preview releases for testing before general availability. They are not covered by production SLA and require a feature flag to access (`CI_ENABLE_HOSTED_BETA_IMAGES` for Linux, `CI_ENABLE_MAC_HOSTED_BETA_IMAGES` for macOS).
+- **GA (General Availability) images** are production-ready and covered by your Harness SLA. Harness supports the latest 2 major versions of each operating system.
+
+**Feature Flag Behavior:**
+- When `CI_ENABLE_HOSTED_BETA_IMAGES` is enabled, `ubuntu-latest` points to the Beta version instead of the GA version.
+- When `CI_ENABLE_MAC_HOSTED_BETA_IMAGES` is enabled, `mac-latest` points to the Beta macOS version.
+
+**Note:** Minor OS upgrades for GA images also go through the beta image process before being promoted to GA.
 :::
 
 
 ### Choosing an image version 
 
 Harness VM images use a versioning system to help you balance between getting the latest updates and maintaining build stability.
-
-You can:
-- Pin to a specific version — e.g., `ubuntu-22.04`, to ensure a consistent environment across builds.
-- Use the latest tag — e.g., `ubuntu-latest`, to automatically get the newest tool versions and updates.
 
 To select an the image tag to use, simply provide it in the `imageName` property of the cloud infrastructure `runtime` section.
 
@@ -53,11 +58,11 @@ To select an the image tag to use, simply provide it in the `imageName` property
       type: Cloud
       spec:
         size: xxlarge
-        imageName: latest # specify image tag
+        imageName: ubuntu-latest # specify image tag
 ```
 
 
-### Best Practice: Pin Image Versions in Production
+#### Best Practice: Pin Image Versions in Production
 
 Since using the `latest` tag may contain breaking changes or updated tool versions that could affect your build. Always test thoroughly before updating production pipelines.
 
@@ -83,16 +88,66 @@ Harness regularly updates VM images to include:
 - Runtime updates (Node.js, Python, Java, etc.).
 - New tools and utilities based on community feedback.
 
-#### Using Your Own Images (BYOI)
+## Image Lifecycle
 
-If you bring your own custom Docker image, note the following:
+This section outlines Harness's policy for managing VM image releases, versioning, and deprecation in Harness Cloud. 
 
-:::note BYOI image pull policy
-Harness Cloud currently does not support setting an image pull policy.
-By default, the image is never pulled if it already exists on the VM.
+### Deprecation Policy
 
-Best Practice: Always retag your custom image with a new version whenever changes are made. This ensures Harness Cloud picks up the updated image during your build.
+#### N-1 Support Model
+
+Harness supports the **latest 2 major versions of each operating system** at any given time. When a new GA version is released, deprecation of the oldest supported GA version begins.
+
+Harness provides Ubuntu LTS (Long Term Support) images for both AMD64 and ARM64 architectures.
+
+**Example:**
+When a new Ubuntu major version becomes LTS → Harness publishes a new image → Ubuntu 24.04 (N-1) remains available → Ubuntu 22.04 (the N-2 maintained LTS image) deprecation process begins.
+
+#### Deprecation Process
+
+When an image is deprecated, we follow this timeline to minimize disruption:
+
+- **Announcement** — Public notice via RSS feed with the target deprecation date. Minimum notice: 60 days for Linux, 30 days for macOS.
+- **Migration period** — Time to update your pipelines to use supported images.
+- **Removal** — Image is no longer available after the deprecation date.
+
+:::info
+macOS has a shorter deprecation notice period (30 days) due to Apple's support policies, which require faster transitions when a macOS version reaches end-of-life.
 :::
+
+### Xcode Versions Availability  
+
+Harness provides three Xcode versions pre-installed on each macOS image:
+
+1. **Base version** - The Xcode version that ships with the macOS release (e.g., Xcode 16.0 comes with macOS 15). This only updates when we upgrade to a new major macOS version.
+2. **Latest stable version** - The newest production Xcode release (e.g., Xcode 16.4). This updates regularly as Apple releases new stable versions.
+3. **Latest beta version** — The current Xcode beta or preview release (e.g., Xcode 17.0 beta). If Apple promotes the beta to GA and no new beta is available, this slot contains the newly released stable version, resulting in two stable versions on the image (e.g., Xcode 16.4 and 17.0).
+
+:::note
+We aim to make new Xcode beta versions available within approximately three business days of Apple’s release.
+:::
+
+:::tip Switching Xcode Versions
+
+The latest stable version is the default. To list all available versions:
+
+```bash
+ls /Applications | grep Xcode
+```
+
+To switch versions, run this before your build commands:
+
+```bash
+sudo xcode-select -s /Applications/Xcode_<VERSION>.app
+```
+
+Replace `<VERSION>` with your desired version (e.g., `16.0`, `16.4`).
+
+:::
+
+
+
+
 
 ## Pre-installed Software Version Management
 
@@ -383,6 +438,35 @@ Installing software during pipeline execution increases build time. Consider the
 - Use specific tool versions that are already preinstalled
 
 
+
+
+## Bring Your Own Image (BYOI)
+
+Harness supports **Bring Your Own Image**, allowing you to user Harness Cloud with your own **custom images**. 
+
+
+:::note Note:
+* Support it currently available only for **macOS**. support for linux is coming soon.
+* Setting an image pull policy is currently not supported. However, by default, an image is never pulled if it already exists on the VM.
+* BYOI support is currently behind a feature flag. Please reach out to support to enabled this feature.
+:::
+
+**Best Practice**: Always retag your custom image with a new version whenever changes are made. This ensures Harness Cloud picks up the updated image during your build.
+
+
+### Staying Informed
+
+Subscribe to the **Harness CI RSS feed** to receive notifications about:
+- Image deprecation announcements
+- New image releases
+
+**RSS Feed URL**: [https://developer.harness.io/release-notes/continuous-integration/rss.xml](https://developer.harness.io/release-notes/continuous-integration/rss.xml)
+
 ## Support and Feedback
 
 For questions, issues, or feature requests related to Harness VM images, contact [Harness Support](https://support.harness.io).
+
+## Related Resources
+
+- [Use Harness Cloud Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure)
+- [Harness Cloud VM Image Repository](https://github.com/harness/harness-cloud-images)
