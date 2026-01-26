@@ -56,6 +56,18 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## January 2026
 
+### Version 1.127.0
+
+#### New Features and Enhancements
+
+- **Harness Artifact Registry now supported as an artifact source** for all CD deployment types (except Helm). HAR provides native integration for both container images and packaged artifacts (Maven, npm, NuGet, generic). For more information, go to [Harness Artifact Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#harness-artifact-registry).
+
+#### Fixed issues
+
+- Fixed an issue where sensitive information was being stored in ConfigMaps within Kubernetes clusters, making it potentially accessible to unauthorized users with cluster view access. To resolve this, the release history storage logic has been updated to store release history in Secrets when pruning is enabled, providing a more secure storage mechanism. Currently, this fix is governed by the feature flag `CDS_STORE_PRUNING_RELEASE_HISTORY_IN_SECRET`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-117631**)
+- Fixed an issue where navigating between search results in pipeline execution logs would scroll to the log row but not to the precise location of the highlighted match. For log lines with content extending beyond the visible area, users had to manually scroll to locate the highlighted text; the search now automatically scrolls the highlighted match into view, ensuring visibility regardless of its position within long log lines. (**CDS-117728**, **ZD-101156**)
+- Fixed an issue where the environment service override API displayed a misleading error when Environment YAML was stored on a non-default Git branch. The error incorrectly stated the file was missing from the master branch, even though it existed on the selected branch. (**CDS-117803**, **ZD-101368**)
+
 ### Version 1.126.2
 
 #### Fixed issues
