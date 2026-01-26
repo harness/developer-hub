@@ -60,7 +60,7 @@ In addition, DevOps and security teams need to act on the information provided f
 Harness STO enables DevOps and security teams to shift-left security testing:
 
 * **Test:** Test code, OSS libraries, containers, and live apps with popular security scanners as part of the CI/CD Pipeline. Harness orchestrates the scanners to ensure that scanning is timely and easy to apply.
-* **Remediate:** Repair security vulnerabilities by empowering developers with a prioritized list that is intelligently deduplicated across all scanners. Harness provides dashboards with clear security vulnerabilities identified.
+* **Remediate:** Repair security vulnerabilities by empowering developers with an intelligently deduplicated, prioritized list of vulnerabilities within each scanner. Harness provides dashboards that clearly highlight identified security vulnerabilities.
 * **Govern:** Use governance policies and real-time security dashboards for ensuring critical security issues never make it to production. You can apply [Harness existing OPA policy governance](/docs/platform/governance/policy-as-code/harness-governance-overview) to enforce your security testing practices.
 
 With Harness STO, you are scanning at any stage in the CI/CD Pipeline, and providing developers with deduplicated and prioritized vulnerabilities.

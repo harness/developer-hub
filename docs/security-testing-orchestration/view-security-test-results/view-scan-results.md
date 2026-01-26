@@ -65,7 +65,23 @@ You can filter issues using multiple criteria in the **Vulnerabilities** tab:
 - **Stage**: Filter by pipeline stages.
 - **Step**: Filter by pipeline steps.
 - **Scanner**: Filter issues by specific scanners.
-- **Issue Type**: Filter by issue types (e.g., SAST, DAST, SCA, IaC, Secret etc.).
+- **Issue Type**: Filter by issue types (e.g., SAST, DAST, SCA, IaC, Secret, [External Policy Failure](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#external-policy-failure), etc.).
+
+
+### External Policy Failures
+
+External Policy Failures indicate that a policy or compliance rule defined in the security scanner did not pass during the scan. These issues reflect  policies defined by organization, such as assurance policies, quality gates, or compliance rules, and are not security vulnerabilities.
+
+External policy failures are surfaced in Harness STO as a distinct **Issue Type** so that you can view External Policy Failures alongside other scan results.
+
+Scanners that currently support External Policy Failures:
+
+1. [Aqua Security](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference#configure-external-policy-failures)
+2. [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz#configure-external-policy-failures)
+3. [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#configure-external-policy-failures)
+4. [Prisma Cloud](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference#configure-external-policy-failures)
+5. [Anchore](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#configure-external-policy-failures)
+6. [Veracode](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference#configure-external-policy-failures)
 
 ### Severity-based filtering
 
