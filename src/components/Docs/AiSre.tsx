@@ -14,7 +14,7 @@ export default function AISRE() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon-ir.svg`} />
+            <img src={`${baseUrl}img/icon-ai-sre.svg`} />
             <h1>AI SRE</h1>
           </div>
           <div className={styles.btnContainer}>
@@ -40,8 +40,8 @@ export default function AISRE() {
                 className={styles.illustration}
                 src={
                   colorMode === 'light'
-                    ? `${baseUrl}img/ir-landing-page.svg`
-                    : `${baseUrl}img/ir-landing-page-dark.svg`
+                    ? `${baseUrl}img/ai-sre-landing-page.svg`
+                    : `${baseUrl}img/ai-sre-landing-page-dark.svg`
                 }
               />
             </div>

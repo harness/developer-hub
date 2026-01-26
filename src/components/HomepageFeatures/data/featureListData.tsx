@@ -126,7 +126,7 @@ export const featureList: CardItem[] = [
   {
     title: "Revolutionize Incident Management",
     module: MODULES.aisre,
-    icon: "img/icon-ir.svg",
+    icon: "img/icon-ai-sre.svg",
     description: <>Focus on proactive issue prevention and accelerated resolution.</>,
     link: "docs/ai-sre",
   },

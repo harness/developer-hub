@@ -5,7 +5,7 @@
 ![CD](static/img/icon_cd_s.svg)
 ![IACM](static/img/icon_iacm_s.svg)
 ![CE](static/img/icon_ce_s.svg)
-![AI SRE](static/img/icon-ir-s.svg)
+![AI SRE](static/img/icon-ai-sre-s.svg)
 ![SRM](static/img/icon_srm_s.svg)
 ![FME](static/img/icon-fme-s.svg)
 ![CCM](static/img/icon_ccm_s.svg)

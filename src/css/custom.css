@@ -1834,7 +1834,7 @@ figure p {
   height: 24px;
   min-width: 24px;
   margin-right: 8px;
-  background-image: url('/img/icon-ir.svg');
+  background-image: url('/img/icon-ai-sre.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -2392,7 +2392,7 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   --nav-icon: url('/img/logo-ata.svg');
 }
 .navbar .dropdown__link[href*='/docs/ai-sre'] {
-  --nav-icon: url('/img/icon-ir.svg');
+  --nav-icon: url('/img/icon-ai-sre.svg');
 }
 .navbar .dropdown__link[href*='/docs/service-reliability-management'] {
   --nav-icon: url('/img/icon_srm.svg');

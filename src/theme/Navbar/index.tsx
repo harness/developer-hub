@@ -76,7 +76,7 @@ const docDropdownItems = [
     label: "AI Test Automation",
     icon: "/img/logo-ata.svg",
   },
-  { to: "/docs/ai-sre", label: "AI SRE", icon: "/img/icon-ir.svg" },
+  { to: "/docs/ai-sre", label: "AI SRE", icon: "/img/icon-ai-sre.svg" },
   {
     to: "/docs/service-reliability-management",
     label: "Service Reliability Management",

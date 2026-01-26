@@ -111,7 +111,7 @@ export const moduleList: CardItem[] = [
   {
     title: 'AI SRE',
     module: MODULES.aisre,
-    icon: 'img/icon-ir.svg',
+    icon: 'img/icon-ai-sre.svg',
     description: (
       <>
         Revolutionize incident management by focusing on proactive issue prevention and accelerated

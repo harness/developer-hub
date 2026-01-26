@@ -80,7 +80,7 @@ export const MODULE_ICON = {
     [MODULES.ast]: 'img/icon-api-security-testing.svg',
     [MODULES.srm]: 'img/icon_srm.svg',
     [MODULES.ce]: 'img/icon_ce.svg',
-    [MODULES.aisre]: 'img/icon-ir.svg',
+    [MODULES.aisre]: 'img/icon-ai-sre.svg',
     [MODULES.sei]: 'img/icon_sei.svg',
     [MODULES.cet]: 'img/icon_cet.svg',
     [MODULES.ssca]: 'img/icon_ssca.svg',
