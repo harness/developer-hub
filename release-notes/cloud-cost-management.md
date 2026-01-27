@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2026-01-16T18:00
+date: 2026-01-24T18:00
 sidebar_position: 6
 ---
 
@@ -24,6 +24,27 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+
+## January 2025 - Version 1.75.1
+#### Deployment Date: January 24, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Multi-Container Workload Downloads:** Since multi-container workload recommendations are split into individual line items during download, the total count increases even though the actual recommendation count remains the same. We’ve added a message in the product during download to surface this behavior. [CCM-25080]
+
+- **Default Folder Visibility:** Perspectives moved to Default folder after a folder deletion will now show up during the creation of a new folder [CCM-26370]
+
+- **Recommendations Breakdown:** We’ve added realized savings from Recommendations to the Recommendations Breakdown widget on the CCM Overview page. [CCM-26915]
+
+- **Cost Tooltips for Cluster Orchestrator:** We’ve added tooltips across Cluster Orchestrator to clarify that in Cluster Schedules savings, on-demand instances use netamortizedcost and spot instances use unblendedcost. In Cluster Savings, on-demand instances use publicondemandcost and spot instances use unblendedcost. [CCM-27616]
+
+- **Cluster Orchestrator Pagination:** We’ve added support for search and pagination on the Cluster Orchestrator list page. [CCM-27805]
+
+### Fixed Issues
+
+- **Governance Evaluation CSV Export:** We fixed an issue where exporting a Governance evaluation with Keep Filters Applied selected, but no filters actually applied, resulted in an empty resource file being downloaded. [CCM-25498]
+
+- **Bug Fix for Cost Category mapped Jira Ticket:** We fixed an issue where, when the Jira project came from a Cost Category mapping, the issue type wasn’t being fetched automatically on the initial load of the Create Jira Ticket form. [CCM-29166]
 
 
 ## January 2025 - Version 1.75.1
