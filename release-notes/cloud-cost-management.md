@@ -369,7 +369,7 @@ CCM has added new columns in CSV of recommendations when you export CSV, these n
 
 <DocImage path={require('./static/ccm/release-tooltip.png')} width="80%" height="80%" title="Click to view full size image" />
 
-- **Consolidated CSV Export** — Consolidated CSV export functionality on the Perspective Details page. Users now have access to a single, comprehensive CSV format that includes all relevant data in a well-structured format. If you wish to use the older CSV format, please do so using Perspective API. [CCM-24475]
+- **Consolidated CSV Export** — Consolidated CSV export functionality on the Perspective Details page. Users now have access to a single, comprehensive CSV format that includes all relevant data in a well-structured format. If you wish to use the older CSV format, please do so using Perspective API. [CCM-24775]
 
 <DocImage path={require('./static/ccm/release-report.png')} width="50%" height="50%" title="Click to view full size image" />
 
