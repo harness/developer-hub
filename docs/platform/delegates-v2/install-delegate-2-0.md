@@ -670,15 +670,36 @@ MAX_STAGES=5
 
 ### Set Graceful Shutdown
 
-With the new Harness Delegate, you can configure a grace period to allow for a clean shutdown of running containers and processes when a pipeline execution is aborted. This ensures that any resources started by the pipeline are given time to terminate gracefully before being forcefully removed.
+:::info Available in version 1.25.2+
 
-To configure this grace period, add the `CLEANUP_GRACE_PERIOD_SECONDS` variable to the delegate's config.env file. The value should be a non-negative integer representing the number of seconds to wait before forcefully terminating resources.
+The new Harness Delegate supports transaction-aware graceful shutdown. This feature allows the delegate to complete active transactions before shutting down when it receives a termination signal.
 
-If the grace period is set to 0 (default), the delegate will immediately send a SIGKILL signal to stop containers and processes. If a positive value is configured, the delegate will first send a SIGTERM signal. After the grace period expires, any resources that are still running will be terminated with a SIGKILL.
+:::
+
+With the new Harness Delegate, you can configure graceful shutdown behavior in two ways:
+
+1. **Container and process cleanup** - Configure a grace period to allow for a clean shutdown of running containers and processes when a pipeline execution is aborted. This ensures that any resources started by the pipeline are given time to terminate gracefully before being forcefully removed.
+
+   To configure this grace period, add the `CLEANUP_GRACE_PERIOD_SECONDS` variable to the delegate's config.env file. The value should be a non-negative integer representing the number of seconds to wait before forcefully terminating resources.
+
+   If the grace period is set to 0 (default), the delegate will immediately send a SIGKILL signal to stop containers and processes. If a positive value is configured, the delegate will first send a SIGTERM signal. After the grace period expires, any resources that are still running will be terminated with a SIGKILL.
+
+2. **Delegate shutdown behavior** - Configure how the delegate itself shuts down when it receives a SIGTERM signal using the `IDLE_WAIT_SECS_BEFORE_STOP` option. When the delegate receives a SIGTERM signal, it immediately stops accepting new transactions and continues executing active transactions. Once all transactions complete and the delegate becomes idle (no active tasks), it waits for the configured idle period before shutting down.
+
+   Add `IDLE_WAIT_SECS_BEFORE_STOP` to your delegate's `config.env` file. The value should be a non-negative integer representing the number of seconds to wait in an idle state before shutting down.
+   
+   - **Default value:** `0` (immediate shutdown after SIGTERM, no idle wait period)
+   - **Recommended value:** `60` seconds
+
+:::important Configuration changes require restart
+
+All configuration options, including `CLEANUP_GRACE_PERIOD_SECONDS` and `IDLE_WAIT_SECS_BEFORE_STOP`, are only read on startup. You must restart the delegate service after modifying these settings for the changes to take effect.
+
+:::
 
 #### Example config.env
 
-If you want the delegate to wait up to 30 seconds before forcefully stopping any running containers or processes, set `CLEANUP_GRACE_PERIOD_SECONDS=30`. For example:
+If you want the delegate to wait up to 30 seconds before forcefully stopping any running containers or processes, and wait 60 seconds in an idle state before shutting down, configure both options:
 
 ```
 ACCOUNT_ID="<ACCOUNT_ID>"
@@ -688,6 +709,7 @@ URL="<MANAGER_HOST_AND_PORT>"
 NAME="<your delegate name>"
 ...
 CLEANUP_GRACE_PERIOD_SECONDS=30
+IDLE_WAIT_SECS_BEFORE_STOP=60
 ```
 
 ### Task Abort Configuration for Local Execution
