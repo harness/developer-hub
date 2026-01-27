@@ -194,4 +194,7 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # Preserve all subpaths and send them to the new content
 /kb/armory/* /docs/continuous-delivery/armory/:splat
 
+# Added by animesh on 22-01-2026 for db devops images to overview
+/docs/database-devops/use-database-devops/database-devops-images/ /docs/database-devops/overview
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
