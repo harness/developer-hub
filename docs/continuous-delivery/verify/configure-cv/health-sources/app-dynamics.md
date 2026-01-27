@@ -59,3 +59,46 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 ![](./static/verify-deployments-with-app-dynamics-69.png)
 
 You can add one or more Health Sources for each APM or logging provider.
+
+## Understanding OOTB metric paths
+
+When you select a metric pack like **Errors** or **Performance**, Harness automatically monitors a set of out-of-the-box (OOTB) metrics from AppDynamics. Each OOTB metric is defined with specific metric paths that determine how Harness queries your AppDynamics controller.
+
+### Metric path structure
+
+Each OOTB metric includes two path configurations:
+
+- **path**: The primary metric path used in Harness DSL queries to fetch data during continuous verification
+- **validationPath**: An alternative path used for validation purposes, typically representing an aggregated view at the tier level
+
+For example, the `calls_per_minute` metric is defined as follows:
+
+```json
+{
+  "identifier": "calls_per_minute",
+  "type": "THROUGHPUT",
+  "path": "Business Transaction Performance|Business Transactions|__tier_name__|__metric_filter__|Calls per Minute",
+  "validationPath": "Overall Application Performance|__tier_name__|Calls per Minute",
+  "included": true,
+  "name": "Calls per Minute"
+}
+```
+
+The placeholders like `__tier_name__` and `__metric_filter__` are dynamically replaced with the actual values from your health source configuration during execution.
+
+### Verifying metrics in AppDynamics
+
+To verify the metric paths and validate the data being collected:
+
+1. Navigate to the **Metric Browser** in your AppDynamics controller.
+2. Browse through the metric hierarchy following either the `path` or `validationPath` structure.
+3. For the `calls_per_minute` example above, you would navigate to:
+   - `Business Transaction Performance` → `Business Transactions` → `[Your Tier Name]` → `[Transaction Name]` → `Calls per Minute`
+
+Alternatively, you can verify which metrics Harness is querying by examining the execution logs:
+
+1. Run a Verify step that uses your AppDynamics health source.
+2. Check the execution logs for external API calls.
+3. Review the API call details to see the exact metric paths being queried and the responses received from AppDynamics.
+
+This approach helps you troubleshoot any data discrepancies and ensures that Harness is collecting the correct metrics from your AppDynamics environment.

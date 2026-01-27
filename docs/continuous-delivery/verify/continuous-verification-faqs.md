@@ -102,6 +102,18 @@ So once you select the metric pack (performance and error), we do have some defi
 
 You can configure a custom query under the health source and need to pass completeMetricPath.
 
+### What is the difference between 'path' and 'validationPath' in AppDynamics OOTB metric definitions?
+
+When configuring AppDynamics health sources with metric packs, each out-of-the-box (OOTB) metric has two distinct path attributes that serve different purposes.
+
+The **path** field represents the complete hierarchical metric path that Harness uses in its DSL queries to fetch metric data. This is the primary path used during continuous verification analysis. For example, the `calls_per_minute` metric uses the path: `Business Transaction Performance|Business Transactions|__tier_name__|__metric_filter__|Calls per Minute`. The placeholders like `__tier_name__` and `__metric_filter__` are dynamically replaced with actual values during execution.
+
+The **validationPath** field provides an alternative, simpler metric path used for validation and verification purposes. This path typically represents a more aggregated view of the same metric at the tier level. For the same `calls_per_minute` metric, the validation path is: `Overall Application Performance|__tier_name__|Calls per Minute`.
+
+To verify these metric paths in your AppDynamics environment, navigate to the AppDynamics Metric Browser. You can access it from your AppDynamics controller under the metrics section. Browse through the hierarchy to locate metrics under either path structure. You can also verify which path is being used by examining the external API calls in your Verify step execution logs.
+
+If you need to troubleshoot data discrepancies, check the API calls made during the verification process. These calls will show the exact metric paths being queried and the responses received from AppDynamics.
+
 ### In this custom verification of logs, I see it shows known, unknown, and unexpected frequencies. However, I want to define what is known, as some logs are expected, and I want to ignore them. 
 
 You can change the log preference and mark (not a risk) once you select Update event preference.
