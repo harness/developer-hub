@@ -254,6 +254,24 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
 2. Edit the config: `nano ~/.harness-delegate/config.env`
 3. Start the service: `./delegate start`
 
+**Docker configuration for container-based steps:**
+
+If you plan to use Docker with container-based CI steps on macOS, you need to configure your Docker Desktop or Rancher Desktop settings to avoid permission-related issues. The delegate requires proper filesystem access between your local machine and the Docker VM.
+
+For optimal compatibility, configure the following settings in your Docker runtime preferences:
+
+1. **Filesystem Mount Type**: Select **reverse-sshfs** as your mount type
+   - In Rancher Desktop: Go to **Preferences** > **Virtual Machine** > **Volumes** tab  
+   - Choose reverse-sshfs instead of 9p or virtiofs
+
+2. **Virtual Machine Type**: Select **QEMU** as your emulation type
+   - In Rancher Desktop: Go to **Preferences** > **Virtual Machine** > **Emulation** tab
+   - Choose the QEMU option instead of VZ (Apple Virtualization framework)
+
+![Rancher Desktop Preferences Configuration](./static/rancher-desktop-preferences.png)
+
+These settings ensure proper permission mapping between your local filesystem and the Docker VM. Without them, you may encounter "Permission denied" errors when running containerized steps, as the default mount configurations don't always map filesystem permissions correctly.
+
 **Proxy configuration:**
 
 If you need proxy settings, add them to `~/.harness-delegate/config.env`. See [Configure Delegate Proxy Settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings).
