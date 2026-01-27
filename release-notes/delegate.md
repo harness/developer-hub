@@ -2579,6 +2579,13 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## Delegate Upgrader release notes
 
+## January 2026
+
+### Version 1.10.0 <!--Jan 23, 2025-->
+
+#### New features and enhancements
+- Upgraded the Delegate Upgrader image with Go v1.25 and Kubernetes Go client v1.35. [PL-67803]
+
 ## August 2025
 
 ### Version 1.8.0 <!--Aug 26, 2025-->
