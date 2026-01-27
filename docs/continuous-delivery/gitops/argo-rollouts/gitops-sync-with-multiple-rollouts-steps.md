@@ -21,6 +21,10 @@ Harness provides a powerful expression system to access outputs from previous st
 
 Here's a visual representation of the pipeline:
 
+:::important
+To use Argo Rollouts with Harness GitOps pipelines, ensure the `CDS_GITOPS_ENABLE_ROLLOUTS_PIPELINE_UX` feature flag is enabled in your Harness account.
+:::
+
 ![GitOps Pipeline with multiple Rollout steps](static/rollout-13.png)
 
 This pipeline consists of the following key steps:

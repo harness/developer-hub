@@ -220,6 +220,10 @@ If you want to sync new changes from Git before managing the rollout:
 
 #### 3.5 Add GitOps Rollout Step
 
+:::important
+To use Argo Rollouts with Harness GitOps pipelines, ensure the `CDS_GITOPS_ENABLE_ROLLOUTS_PIPELINE_UX` feature flag is enabled in your Harness account.
+:::
+
 Now add the GitOps Rollout step:
 
 1. Click **Add Step**
