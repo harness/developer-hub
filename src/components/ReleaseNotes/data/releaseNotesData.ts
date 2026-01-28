@@ -174,6 +174,13 @@ import { MODULES } from "@site/src/constants";
               "",
             link: "/release-notes/software-engineering-insights",
           },
+          {
+            title: "SAST and SCA release notes",
+            module: MODULES.qwietai,
+            description:
+              "",
+            link: "https://docs.shiftleft.io/software-updates/",
+          }
         ],
       },
       {

@@ -42,6 +42,7 @@ const sidebars: SidebarsConfig = {
     }, 
     "security-testing-orchestration",
     "software-supply-chain-assurance",
+    "sast-and-sca",
      {
           type: "html",
           value: "AI for Cost & Optimization",
