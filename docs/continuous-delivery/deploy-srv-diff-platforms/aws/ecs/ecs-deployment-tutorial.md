@@ -1305,14 +1305,14 @@ Configure the following settings:
 
 - **Prod Listener Rule ARN** and **Stage Listener Rule ARN**: If you are using [Listener Rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules) in your target groups, you can select them in **Production Listener Rule ARN** and **Stage Listener Rule ARN**.
   - You must select a listener rule.
-  - Ensure the traffic that will use the rules matches the conditions you have set in the rules. For example, if you have a path condition on a rule to enable [path-based routing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/tutorial-load-balancer-routing.html), ensure that traffic uses that path.
+  - Ensure the traffic that will use the rules matches the conditions you have set in the regulations. For example, if you have a path condition on a rule to enable [path-based routing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/tutorial-load-balancer-routing.html), ensure that traffic uses that path.
 
 * **Same as already running instances:** Use the number of running instances as the desired count. Essentially, it ignores the desired count in the Service Definition of the new deployment.
 * **Enable Auto Scaling In Swap Step:**
 
-  If you select **Enable Auto Scaling In Swap Step**, then Harness will attach auto scaling policies to the new service it deploys in the **Configure Swap Target Groups** step. The policies are taken from the **Scalable Target** and **Scaling Policy settings** in the Harness service.
+  If you select **Enable Auto Scaling In Swap Step**, Harness will attach auto-scaling policies to the new service it deploys during the **Configure Swap Target Groups** step. The policies are sourced from the **Scalable Target** and **Scaling Policy ** settings in the Harness service.
 
-  If you do not select **Enable Auto Scaling In Swap Step**, then Harness will attach auto scaling policies to the new service deployed in the **Configure Blue Green Deployment** step.
+  If you do not select **Enable Auto Scaling In Swap Step**, Harness will attach auto-scaling policies to the new service deployed during the **Configure Blue Green Deployment** step.
 
 Here's an example of the output of the step:
 
@@ -1336,7 +1336,7 @@ Target Group with Arn: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetg
 Tag: [BG_VERSION, GREEN] is associated with Stage Service abc__1
 ```
 
-You can see the target is registered in the Target Groups associated with the Stage Listener selected, the new ECS service is deployed as the Stage Service, associated with the Target Group, and the Service is tagged with `BG_VERSION`, `GREEN`.
+You can see that the target is registered in the Target Groups associated with the selected Stage Listener; the new ECS service is deployed as the Stage Service for the Target Group, and the Service is tagged with `BG_VERSION` and `GREEN`.
 
 #### ECS Blue Green Swap Target step
 
@@ -1344,19 +1344,19 @@ The **ECS Blue Green Swap Target** step performs the Blue/Green route swap onc
 
 Typically, you will want to add one or more steps between the **ECS Blue Green Create Service** step and **ECS Blue Green Swap Target** step for verification.
 
-When you deploy, Harness will use the target group for the **Stage Listener** from the **ECS Blue Green Create Service** step for deployment. After verifying the success of the deployment, the **ECS Blue Green Swap Target** step simply swaps the target groups between the listeners. Now, the target group with the latest version receives production traffic. The target group with the old version receives the stage traffic.
+When you deploy, Harness will use the target group for the **Stage Listener** from the **ECS Blue Green Create Service** step. After verifying the deployment succeeded, the **ECS Blue Green Swap Target** step swaps the target groups between the listeners. Now, the target group with the latest version receives production traffic. The target group with the old version gets the stage traffic.
 
 Here's an example of the output of the step:
 
 ```
-Modifying ELB Prod Listener to Forward requests to Target group associated with new Service
+Modifying the ELB Prod Listener to forward requests to the Target group associated with the new Service
 ,TargetGroup: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-2/34b77f72b13e45f4
 Modifying the default Listener: arn:aws:elasticloadbalancing:us-east-1:1234567890:listener/app/example-alb/8c164c70eb817f6a/83cbd24bc4f6d349
  with listener rule: arn:aws:elasticloadbalancing:us-east-1:1234567890:listener-rule/app/example-alb/8c164c70eb817f6a/83cbd24bc4f6d349/a249570503765d2d
  to forward traffic to TargetGroup: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-2/34b77f72b13e45f4
 Successfully updated Prod Listener
 
-Modifying ELB Stage Listener to Forward requests to Target group associated with old Service
+Modifying the ELB Stage Listener to forward requests to the Target group associated with the old Service
 ,TargetGroup: arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/example-tg-ip-1/52b1f157d3240800
 Modifying the default Listener: arn:aws:elasticloadbalancing:us-east-1:1234567890:listener/app/example-alb/8c164c70eb817f6a/cfbb98e593af641b
  with listener rule: arn:aws:elasticloadbalancing:us-east-1:1234567890:listener-rule/app/example-alb/8c164c70eb817f6a/cfbb98e593af641b/30983f6b6338ce10
@@ -1370,7 +1370,7 @@ Successfully updated tag
 Swapping Successful.
 ```
 
-You can see the ELB **Prod Listener** is now forwarding requests to the Target Group used with the new service version deployed in the previous step (ECS Blue Green Create Service).
+You can see that the ELB **Prod Listener** is now forwarding requests to the Target Group used with the new service version deployed in the previous step (ECS Blue/Green Create Service).
 
 Also, the ELB **Stage** Listener is forwarding to the Target Group for the previous service version.
 
@@ -1393,15 +1393,15 @@ Harness performs some validations before the deployment. Before the deployment, 
 
 - **Scenario 2:** When the prod target group and stage target group are the same.
 
-  - **Blue service**. Service version that is attached to the prod target group and has running tasks: tag as blue.
-  - **Green service**. Service version that is attached to the prod target group and has zero or fewer running tasks: tag as green.
+  - **Blue service**. Service version attached to the prod target group and running tasks: tag as blue.
+  - **Green service**. Service version attached to the prod target group and with zero or fewer running tasks: tag as green.
 
 - If the validations for the Blue and Green ECS services fail, Harness aborts the deployment. You must fix the issue by resetting the service in the AWS Management Console.
 
 - If you abort the deployment, the execution remains incomplete. During the next deployment, you must fix the configuration by resetting the ECS service in the AWS Management Console.
 
 :::note
-Harness is introducing a new feature flag: `CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS`. When enabled, the validation described above will only be performed if the target groups attached to the services match those attached to the Load Balancer specified in the deployment step. That will be available with the delegate version: `851xx`.
+Harness is introducing a new feature flag: `CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS`. When enabled, the validation described above will only be performed if the target groups attached to the services match those connected to the Load Balancer specified in the deployment step. That will be available with the delegate version: `851xx`.
 
 This ensures that Harness leverages the configuration defined in the step, enhancing accuracy and consistency during deployment.
 
@@ -1422,9 +1422,42 @@ For multi-phase deployments (Canary), not all phases are rolled back at once.
 
 ![](./static/ecs-deployment-tutorial-63.png)
 
-Phases are rolled back in the standard, reverse order. For example, in a 2 phase deployment with 2 rollback phases, the order is P1 → P2 → R2 → R1.
+Phases are rolled back in the standard, reverse order. For example, in a 2-phase deployment with 2 rollback phases, the order is P1 → P2 → R2 → R1.
 
 Phases are rolled back in this order regardless of whether ECS Service Auto Scaling is used.
+
+#### How rollback data works with retry strategies
+
+Harness captures rollback data at the beginning of each deployment attempt. This design assumes the production environment is in a stable state from either a successful deployment or a completed rollback.
+
+When you configure retry strategies on ECS deployment steps, each retry attempt captures new rollback data. If a deployment fails and retries without first executing a rollback, the retry captures the state from the failed attempt rather than the last successful deployment.
+
+**Example scenario:**
+
+| Deployment | Rollback Data Captured | Task Definition Created | Result |
+|------------|------------------------|-------------------------|--------|
+| Deployment 1 | Empty (first deploy) | 63396 | Success |
+| Deployment 2 | 63396 | 63397 | Success |
+| Deployment 3 (Retry 1) | 63397 | 63398 | Failed |
+| Deployment 3 (Retry 2) | 63398 | 63399 | Failed |
+| Rollback | Uses 63398 | — | Rolls back to 63398 instead of 63397 |
+
+In this scenario, the rollback uses task definition 63398 (from the first failed retry) instead of 63397 (the last successful deployment).
+
+**Retry behavior by step type:**
+
+Idempotent steps handle retries without affecting rollback state:
+- **Upgrade Container** scales containers up and down. Retries do not modify stored rollback data.
+
+Set up steps to capture rollback data, and use stage-level rollback instead of step-level retries:
+- **ECS Service Setup** prepares rollback data at the start of deployment.
+- **ECS Blue Green Create Service** captures the current service state for rollback.
+
+**Recommended failure strategy configuration:**
+
+For setup steps, configure **StageRollback** as the failure action instead of step-level retries. This ensures the rollback uses the correct pre-deployment state.
+
+If your pipeline requires retries for transient failures, configure **StageRollback** as the `onRetryFailure` action. This way, if all retries are exhausted, the pipeline rolls back from the original stable state rather than a failed retry state.
 
 ### ECS Run Task step
 
