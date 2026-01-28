@@ -176,6 +176,14 @@ The following deprecated API endpoints are longer supported:
 
 ## January 2026
 
+### Version 1.127.x <!--January 21,2026-->
+
+#### Fixed issues
+- Enhanced delegate existence checks by including Delegate Group Name along with hostname and IP address, enabling the creation of delegates with identical hostnames and IPs in different infrastructures. [PL-67497]
+
+#### New features and enhancements
+- Implemented reference creation between user groups and notification channels at the project scope, ensuring user groups cannot be deleted while they are referenced by one or more notification channels. [PL-66281]
+
 ### Version 1.126.x <!--January 14,2026-->
 
 #### New features and enhancements
