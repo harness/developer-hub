@@ -402,6 +402,22 @@ If you selected **Dynatrace Grail**, configure the following:
 
 4. In the **Secret Value** field, enter the platform token generated in Dynatrace for Grail Logs access.
 
+   The platform token must have the following permissions in Dynatrace:
+
+   **For connector setup:**
+   ```
+   ALLOW automation:workflows:read
+   ```
+
+   **For verifying and running log-based queries:**
+   ```
+   ALLOW storage:buckets:read WHERE storage:table-name = "logs"
+   ALLOW storage:logs:read
+   ALLOW automation:workflows:read
+   ```
+
+   For more information on creating platform tokens and configuring permissions, go to [Dynatrace Platform Token documentation](https://docs.dynatrace.com/docs/manage/identity-access-management/access-tokens-and-oauth-clients).
+
 5. Select **Save**.
 
 6. In the Create or Select an Existing Secret dialog, select the Dynatrace secret that you added, and then select **Apply Selected**.
