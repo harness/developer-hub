@@ -692,3 +692,58 @@ For a smooth transition between deployment types:
 2. **Test the switch** in non-production environments first.
 3. **Document your current configuration** before making changes.
 4. **Consider using different services** for different deployment types if you need both approaches.
+
+### Why does Helm deployment fail with "validation: chart.metadata.version is invalid" but succeed on rerun?
+
+During Helm deployment, Harness fetches the Helm repository and reads the `index.yaml` file to resolve the requested chart and version. Helm performs strict validation on all chart entries in the repository index. If any chart entry contains an invalid version that does not follow [Semantic Versioning (SemVer)](https://semver.org/) format, Helm skips that entry while loading the index.
+
+**Example error:**
+
+```
+Failed to fetch chart "win-helm-chart" from repo "scl-helm". Exit code: [1].
+index.go:370: skipping loading invalid entry for chart "dgs-tracing-reactapp-test-ci" 
+"-alpha.01FMQMCB8M" from .../index.yaml: validation: chart.metadata.version 
+"-alpha.01FMQMCB8M" is invalid
+```
+
+When Helm encounters invalid entries, the repository index loads only partially. The requested chart or version may not be available to Helm, causing the deployment to fail.
+
+**Why deployments succeed on rerun:**
+
+Reruns can succeed due to Helm and Harness caching behavior:
+
+- The Helm chart or repository metadata may already exist in the delegate's local cache.
+- Helm may not need to fully re-parse the repository index.
+- Previously downloaded chart artifacts can be reused.
+
+This makes the behavior non-deterministic. Deployments may pass on rerun but fail again at any time, especially on a new or restarted delegate.
+
+**Reliability impact:**
+
+Although reruns may succeed intermittently, an inconsistent Helm repository can cause:
+
+- Random deployment failures across pipelines
+- Failures after delegate restarts or on new delegates
+- Issues during scaling or disaster recovery scenarios
+
+**Resolution:**
+
+To permanently resolve this issue:
+
+1. Update all Helm charts to use valid Semantic Versioning. Valid examples include `27.3.26`, `27.3.26-alpha.1`, and `1.0.0-rc.2`. Invalid versions include those starting with `-alpha`, `-beta`, or `-rc` without a base version number.
+
+2. Remove chart packages with invalid versions from the Helm repository.
+
+3. Regenerate the repository index:
+
+   ```bash
+   helm repo index . --url <helm-repo-url>
+   ```
+
+4. Refresh the Harness delegate Helm cache by restarting the delegate or clearing the cache.
+
+5. Verify chart availability before deployment:
+
+   ```bash
+   helm search repo <repo-name>/<chart-name> --versions
+   ```
