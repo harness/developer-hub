@@ -2589,6 +2589,13 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 #### New features and enhancements
 - Upgraded the Delegate Upgrader image with Go v1.25 and Kubernetes Go client v1.35. [PL-67803]
 
+## November 2025
+
+### Version 1.9.0 <!-- Nov 10, 2025-->
+
+#### New features and enhancements
+- Upgraded the JWT library from `v3` to `v4` for improved security and stability. [PL-66578]
+
 ## August 2025
 
 ### Version 1.8.0 <!--Aug 26, 2025-->
