@@ -10,10 +10,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import delete_project from './static/delete-project.png'
+import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/platform/rss.xml" />
 
 These release notes describe recent changes to Harness Platform.
+
+<ReleaseNotesSearch />
 
 :::info About Harness Release Notes
 

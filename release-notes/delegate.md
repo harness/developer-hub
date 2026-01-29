@@ -8,10 +8,13 @@ sidebar_position: 4
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate/rss.xml" />
 
 These release notes describe recent changes to Harness Delegate.
+
+<ReleaseNotesSearch />
 
 :::info About Harness Release Notes
 
