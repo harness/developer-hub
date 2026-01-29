@@ -693,6 +693,69 @@ For a smooth transition between deployment types:
 3. **Document your current configuration** before making changes.
 4. **Consider using different services** for different deployment types if you need both approaches.
 
+### How does Harness store and manage Helm configuration files on the delegate?
+
+When you run a Helm deployment, Harness handles different file types with distinct storage and lifecycle behaviors:
+
+**Manifest files**
+
+Stored in temporary directories during deployment execution and automatically cleaned up after the task completes.
+
+**Override files (values and secrets)**
+
+Stored persistently at `/repository/helm/overrides/${CONTENT_HASH}.yaml`, where `${CONTENT_HASH}` is an MD5 hash of the file content. Key characteristics:
+
+- Files use content-based naming, so identical configurations produce the same file path and overwrite previous versions
+- Different configurations generate different hashes, creating separate files
+- Files are **not automatically deleted** after deployment completion and persist on the delegate until manually removed
+- Harness does not provide built-in automatic cleanup (no cron jobs, post-hooks, or disk-based sweeps)
+
+**Impact on deployments**
+
+Persistent override files do not affect deployment correctness. Each deployment fetches fresh copies from source repositories or secrets managers, regenerates content hashes, and overwrites files as needed. Stale files from previous deployments cannot interfere with new executions.
+
+### How should I handle cleanup of Helm override files?
+
+**Do you need to clean up?**
+
+Manual cleanup is not required for functional deployments, but consider it if:
+- You have compliance or security requirements for sensitive file storage
+- Delegate disk space is limited
+- You deploy frequently with many unique configurations
+
+**Cleanup approaches**
+
+If cleanup is needed for your environment:
+
+- **OS-level scripts**: Create cron jobs or scripts to periodically remove files from `/repository/helm/overrides/` on the delegate
+- **Maintenance windows**: Schedule regular delegate maintenance to clear accumulated files
+- **Monitoring**: Set up disk usage alerts to prompt cleanup when thresholds are reached
+- **Built-in cleanup**: Contact Harness Support if you need an automated cleanup feature (tracked as a product enhancement)
+
+**Monitoring recommendations**
+
+Regularly monitor delegate disk space, especially in high-frequency deployment environments. Track the growth of `/repository/helm/overrides/` to identify when cleanup is necessary.
+
+### What security measures should I implement for Helm configuration files?
+
+**Built-in security**
+
+Harness provides baseline security for configuration files:
+
+- **Content-hash naming**: Files use MD5 hashes, making paths non-predictable
+- **Restricted permissions**: Files created with `600` permissions on Unix-like systems (owner read/write only)
+- **Fresh fetch**: Each deployment retrieves current data from sources, preventing use of outdated credentials
+
+**Enhanced security for compliance**
+
+If you have strict security or compliance requirements:
+
+- **Encrypted filesystems**: Run delegates on hosts with encrypted filesystems to protect data at rest
+- **Access controls**: Restrict filesystem access to delegate processes only
+- **Secrets managers**: Store sensitive values in integrated secrets managers (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault) instead of values files to minimize persistent sensitive data
+- **Regular cleanup**: Implement cleanup procedures for `/repository/helm/overrides/` to limit exposure window for sensitive files
+- **Audit logging**: Enable delegate logging and monitor file access patterns
+
 ### Why does Helm deployment fail with "validation: chart.metadata.version is invalid" but succeed on rerun?
 
 During Helm deployment, Harness fetches the Helm repository and reads the `index.yaml` file to resolve the requested chart and version. Helm performs strict validation on all chart entries in the repository index. If any chart entry contains an invalid version that does not follow [Semantic Versioning (SemVer)](https://semver.org/) format, Helm skips that entry while loading the index.

@@ -216,7 +216,7 @@ Configure the application:
 - **Service (optional):** Create or select a service to track this deployment
 - **Environment (optional):** Create or select an environment
 
-![](./static/gitops_app_creation.png)
+![](./static/gitops-app-creation.png)
 
 ### Step 3: Configure the application source
 
@@ -231,7 +231,7 @@ The repository uses Kustomize for configuration. You can leave the Kustomize opt
 
 Click Continue.
 
-![](./static/gitops_app_source_selection.png)
+![](./static/gitops-app-source-selection.png)
 
 ### Step 4: Configure the destination
 
@@ -240,7 +240,7 @@ Click Continue.
 
 Click Create.
 
-![](./static/gitops_app_destination_selection.png)
+![](./static/gitops-app-destination-selection.png)
 
 ### Step 5: Monitor the initial deployment
 
@@ -254,7 +254,7 @@ In the **Resources** tab, you'll see:
 - Two Service resources (stable and canary)
 - A ReplicaSet created by the Rollout
 
-![](./static/gitops_resource_view.png)
+![](./static/gitops-resource-view.png)
 
 ### Step 6: Understand the canary configuration
 
@@ -291,7 +291,7 @@ Commit and push this change. Harness GitOps will detect the change and sync it t
 2. Watch as the Rollout progresses through the canary stages
 3. You'll see the rollout pause at each stage, waiting for manual promotion
 
-![](./static/gitops_canary_demo.png)
+![](./static/gitops-canary-demo.png)
 
 To manually promote the rollout using kubectl:
 

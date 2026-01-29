@@ -538,6 +538,10 @@ Helm charts can be deployed using any of the execution steps and deployment stra
 
 Each Helm chart deployment is treated as a release. During deployment, when Harness detects that there is a previous release for the chart, it upgrades the chart to the new release.
 
+:::info Configuration file handling
+During deployment, Harness downloads your Helm chart manifests and override files (values and secrets) to the delegate. Override files are stored persistently in `/repository/helm/overrides/` and are not automatically deleted after deployment. For details about file storage, cleanup options, and security considerations, go to [Helm Deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs#how-does-harness-handle-configuration-files-for-helm-deployments-on-the-delegate).
+:::
+
 In your pipeline, click **Run**.
 
 The Helm chart deployment runs.
