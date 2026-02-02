@@ -150,6 +150,60 @@ Use case: Enables IRSA-based AWS authentication via Harness delegate.
 Produce an AWS connector using IRSA with role ARN and delegate selectors.
 ```
 
+### Create IACM Pipelines
+
+The Harness AI DevOps Agent can create Infrastructure as Code Management (IACM) pipelines for provisioning and managing infrastructure using Terraform and other IaC tools.
+
+#### Prompts
+
+Use case: Provision cloud infrastructure with Terraform via an IACM pipeline.
+
+```text
+Create an IACM Pipeline that provisions AWS Infrastructure with the IACM Steps.
+```
+
+Use case: Manage a Terraform workspace through a pipeline.
+
+```text
+Build a pipeline with an IACM stage to manage my Terraform workspace.
+```
+
+Use case: Terraform plan and apply workflow.
+
+```text
+Create a pipeline that runs Terraform plan and apply for my cloud infrastructure.
+```
+
+### Create Multi-Module Pipelines
+
+Harness AI supports creating pipelines with stages from multiple Harness modules, including CI, CD, IACM, IDP, SCS, STO, DB DevOps, and Chaos Engineering.
+
+#### Prompts
+
+Use case: End-to-end pipeline with security scanning.
+
+```text
+Create a pipeline with a CI stage to build my app, an STO stage to scan for vulnerabilities, and a CD stage to deploy to production.
+```
+
+Use case: Pipeline with chaos engineering validation.
+
+```text
+Build a pipeline that deploys to staging, runs a Chaos Engineering experiment to validate resilience, then promotes to production with an approval gate.
+```
+
+Use case: Database migration pipeline.
+
+```text
+Create a pipeline with a DB DevOps stage to run database migrations before deploying the application with a CD stage.
+```
+
+Use case: Supply chain security pipeline.
+
+```text
+Create a pipeline with an SCS stage to generate SBOM and attestation, followed by a CD stage to deploy to production.
+```
+
 ### Reference Pipeline Templates
 
 Templates allow you to standardize steps and stages across multiple pipelines. Harness AI can reference existing templates by name.
@@ -167,13 +221,13 @@ Referencing a Pipeline Template:
 ```text
 Create a Pipeline with the Golden K8s Pipeline Template
 ```
-### What’s Not Supported 
+
+### What's Not Supported
 
 ##### In DevOps Use Cases
 
 Currently, Harness AI does not support generating:
 
-- Infrastructure Definition Creation
 - Template Creation and Update
 - GitOps Application Creation and Update
 

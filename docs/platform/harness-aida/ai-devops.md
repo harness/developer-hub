@@ -40,8 +40,12 @@ Once authenticated, you can leverage the agent’s capabilities to manage your D
 |----------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | **Step Management**                    | Create, edit, and organize individual steps within your pipelines.                                                   |
 | **Stage Configuration**                | Modify and configure your stages.                                              |
-| **Pipeline Orchestration**             | Build and update your pipelines.                                 |
+| **Pipeline Orchestration**             | Build and update your pipelines across all Harness modules.                                 |
+| **Multi-Module Pipeline Creation**     | Create pipelines for CI, CD, IACM, IDP, SCS, STO, DB DevOps, and Chaos Engineering modules.                          |
+| **Resource Creation**                  | Create and update Services, Environments, Connectors, and Secrets through conversational prompts.                     |
 | **Policy Generation and Integration**  | Generate and integrate Open Policy Agent (OPA) Rego policies to meet your compliance standards.                        |
+| **Error Analyzer**                     | AI-powered root cause analysis for pipeline failures with automated fix recommendations.                              |
+| **Pipeline Summarizer**               | Generate natural language summaries of pipelines, executions, and dependent resources.                                |
 
 ### Step Management
 
@@ -68,9 +72,45 @@ Manage your complete pipelines with features including:
 
 #### Pipeline Generation Demo
 
-For a demo of the Harness DevOps Agent generating pipelines, see the following: 
+For a demo of the Harness DevOps Agent generating pipelines, see the following:
 
 <DocVideo src="https://www.loom.com/share/b07b9609119f4168b948739154d9a863?sid=d5fd1172-569f-4e59-b2dc-867b551ba108" title="AI DevOps Agent Demo" />
+
+### Multi-Module Pipeline Creation
+
+The Harness AI DevOps Agent supports creating pipelines and stages across all Harness modules, enabling teams to build end-to-end workflows that span the entire software delivery lifecycle.
+
+**Supported modules and stage types:**
+
+| **Module** | **Description** |
+|------------|-----------------|
+| **CI (Continuous Integration)** | Build, test, and scan stages for continuous integration workflows. |
+| **CD (Continuous Delivery)** | Deployment stages with rollout strategies, approvals, and environment targeting. |
+| **IACM (Infrastructure as Code Management)** | Infrastructure provisioning pipelines using Terraform and other IaC tools. |
+| **IDP (Internal Developer Portal)** | Pipelines for developer self-service workflows and automation. |
+| **SCS (Software Supply Chain Security)** | Supply chain security scanning and attestation stages. |
+| **STO (Security Testing Orchestration)** | Security testing stages including SAST, DAST, and SCA scans. |
+| **DB DevOps** | Database schema migration and change management stages. |
+| **Chaos Engineering** | Chaos experiment stages for resilience testing. |
+| **Custom** | Custom stages and steps for specialized workflows. |
+
+#### IACM Pipeline Creation
+
+The DevOps Agent can create Infrastructure as Code Management (IACM) pipelines that provision and manage infrastructure using Terraform and other IaC tools. This enables teams to automate infrastructure provisioning directly through conversational prompts.
+
+**Example prompts:**
+
+- "Create an IACM Pipeline that provisions AWS Infrastructure with the IACM Steps."
+- "Build a pipeline with an IACM stage to manage my Terraform workspace."
+- "Create a pipeline that runs Terraform plan and apply for my cloud infrastructure."
+
+#### Cross-Module Pipeline Examples
+
+You can combine stages from multiple modules in a single pipeline:
+
+- "Create a pipeline with a CI stage to build my app, an STO stage to scan for vulnerabilities, and a CD stage to deploy to production."
+- "Build a pipeline with a Chaos Engineering stage after deployment to validate resilience."
+- "Create a pipeline with an IDP workflow stage to provision a new environment, then deploy my service to it."
 
 ### Policy Generation and Integration
 

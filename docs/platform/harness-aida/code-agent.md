@@ -89,6 +89,37 @@ Examples include:
 
 To explore all available context providers, type `@` in the **Harness extension → Open Chat** window.
 
+## API Spec Generation
+
+Harness AI Code Agent can generate API specifications from your codebase, helping you create and maintain accurate API documentation. Using the chat feature or inline prompts, you can generate OpenAPI (Swagger) specifications based on your existing code.
+
+### Generate API Specs
+
+1. Open the Harness AI Code Agent chat in your IDE.
+2. Reference your API code using `@File` or `@Codebase` context providers.
+3. Prompt the agent to generate an API specification. For example:
+   - "Generate an OpenAPI spec for the API endpoints in this file."
+   - "Create a Swagger specification based on my REST API routes."
+   - "Document all API endpoints in this project as an OpenAPI 3.0 spec."
+4. Review the generated specification and save it to your project.
+
+### Capabilities
+
+- **Endpoint discovery** — Analyzes your codebase to identify API routes, methods, and parameters.
+- **Schema generation** — Creates request/response schemas based on your data models and types.
+- **Documentation extraction** — Pulls descriptions from code comments, docstrings, and type annotations.
+- **Format support** — Generates specifications in OpenAPI 3.0 (YAML or JSON) and Swagger 2.0 formats.
+
+### Example
+
+Using the chat feature with the `@Codebase` context provider:
+
+```text
+@Codebase Generate an OpenAPI 3.0 specification for all REST endpoints in this project, including request/response schemas and authentication requirements.
+```
+
+The Code Agent analyzes your route definitions, controllers, and data models to produce a complete API specification that you can use for documentation, client generation, or API testing.
+
 ## Troubleshooting
 
 ### Networking Issues
