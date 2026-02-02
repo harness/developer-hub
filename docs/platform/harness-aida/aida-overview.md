@@ -42,7 +42,7 @@ For more information about navigation 2.0, go to [Harness navigation 2.0](https:
 | Platform | [Dashboard Intelligence](/docs/platform/dashboards/use-dashboard-intelligence-by-aida) | Craft customized dashboards with widget-level control through interactive AI prompts. | Generally available |
 | Platform | [MCP Server](/docs/platform/harness-aida/harness-mcp-server) | Model Context Protocol server enabling integration with external AI tools like Cursor, Windsurf, Claude Desktop, and VS Code. | Beta |
 | **Code Repository** | [PR Summaries & Code Review](/docs/platform/harness-aida/aida-code-pr) | AI-generated pull request descriptions with code change analysis, file-level summaries, and impact assessment to facilitate code review. | Generally available |
-| Code Repository | [Semantic Code Search](/docs/code-repository/work-in-repos/semantic-search) | Natural language code search that understands semantic meaning across your entire codebase. | Generally available |
+| Code Repository | Semantic Code Search | Natural language code search that understands semantic meaning across your entire codebase. | Generally available |
 | **Code Agent** | [AI Code Agent](/docs/platform/harness-aida/code-agent) | IDE extension for intelligent code generation, real-time suggestions, automated test generation, contextual code explanations, and interactive chat. | Beta |
 | Code Agent | [API Spec Generation](/docs/platform/harness-aida/code-agent#api-spec-generation) | Generate OpenAPI and Swagger API specifications from your codebase using AI. | Beta |
 | **CI** | [Troubleshoot CI builds](/docs/continuous-integration/troubleshoot-ci/aida) | Resolve build failures with Harness AI DevOps Agent's root cause analysis. | Generally available |
@@ -54,7 +54,7 @@ For more information about navigation 2.0, go to [Harness navigation 2.0](https:
 | **CE** | [ChaosGuard](/docs/chaos-engineering/guides/governance/governance-in-execution/) | Generate conditions for chaos experiments with ChaosGuard. | Generally available |
 | **FME** | [Release Agent](/docs/platform/harness-aida/release-agent) | AI-powered release intelligence with documentation summarization and experiment result analysis. | Generally available |
 | **SEI** | [AI Productivity Insights](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/aipi-overview) | AI-powered analysis of developer productivity, AI tool adoption impact, and engineering metrics including DORA and SPACE frameworks. | Generally available |
-| **AI SRE** | [AI Scribe Agent](/docs/ai-sre/ai-agent/ai-agent) | Automated incident documentation with real-time communication monitoring across Slack, Zoom, and Microsoft Teams. | Generally available |
+| **AI SRE** | AI Scribe Agent | Automated incident documentation with real-time communication monitoring across Slack, Zoom, and Microsoft Teams. | Generally available |
 | **AI Test** | [AI Test Copilot](/docs/ai-test-automation/test-authoring/harness-ai-copilot/natural-language-tests) | Natural language test generation with intent-driven testing, automated step decomposition, and AI assertions. | Generally available |
 
 ## Harness AI terms and data privacy information
