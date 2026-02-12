@@ -395,3 +395,127 @@ Harness uses the following procedure to calculate the app project id:
 
   app project id: `abcdefgh`
   ```
+
+## Harness GitOps Agent BYOA Configuration
+
+### How do I configure ArgoCD component names for a BYOA (Bring Your Own Argo CD) GitOps Agent?
+
+When configuring a Harness GitOps Agent with an existing Argo CD installation, you need to specify the component names in the `argocd` section of your configuration. These values are matched against the `app.kubernetes.io/name` label (or `app` label for some components), NOT the full pod or service names.
+
+### Configuration Example
+
+```yaml
+harness:
+  configMap:
+    argocd:
+      repoServer: "argocd-repo-server"              # Label value
+      controller: "argocd-application-controller"   # Label value  
+      applicationSet: "argocd-applicationset-controller" # Label value
+      redis: "argocd-redis"                         # Label value
+      redisHa: "redis-ha"                           # Label value
+      redisHaProxy: "redis-ha-haproxy"              # Label value
+      redisHaProxySvc: "argo-cd-redis-ha-haproxy"  # Service name (note the "Svc" suffix)
+```
+
+## How do I find the correct label values for my ArgoCD components?
+
+Use kubectl to query pods by their labels. Here are the commands for each component:
+
+**Repo Server:**
+```bash
+kubectl get pod -n argocd -l app.kubernetes.io/name=argocd-repo-server
+```
+
+**Application Controller:**
+```bash
+kubectl get pod -n argocd -l app.kubernetes.io/name=argocd-application-controller
+```
+
+**ApplicationSet Controller:**
+```bash
+kubectl get pod -n argocd -l app.kubernetes.io/name=argocd-applicationset-controller
+```
+
+If no pods are found, check the actual labels on your pods:
+```bash
+kubectl get pod <pod-name> -n argocd -o jsonpath='{.metadata.labels}' | jq
+```
+
+**Redis HA:**
+```bash
+kubectl get pod -n argocd -l app=redis-ha
+```
+
+## What's the difference between fields with "Svc" suffix and those without?
+
+Fields **without** the "Svc" suffix use **label values** from `app.kubernetes.io/name` or `app` labels:
+- `repoServer`
+- `controller`
+- `applicationSet`
+- `redis`
+- `redisHa`
+- `redisHaProxy`
+
+Fields **with** the "Svc" suffix use **actual Kubernetes service names**:
+- `repoServerSvc`
+- `redisSvc`
+- `redisHaProxySvc`
+
+To find service names:
+```bash
+kubectl get svc -n argocd | grep redis
+```
+
+## Why am I getting connection errors for my BYOA GitOps Agent?
+
+The most common issue is using full pod or service names instead of label values. 
+
+**Wrong:**
+```yaml
+redisHa: "argo-cd-example-redis-ha"  # This is the service name
+```
+
+**Correct:**
+```yaml
+redisHa: "redis-ha"  # This is the label value
+```
+
+To verify your configuration, check the agent logs:
+```bash
+kubectl logs -n argocd -l app.kubernetes.io/name=gitops-agent --tail=100
+```
+
+## How do I configure Redis secrets for BYOA?
+
+Use the `externalRedis.existingSecret` field to reference your existing Redis secret:
+
+```yaml
+externalRedis:
+  existingSecret: "argocd-redis"
+```
+
+Find your Redis secret with:
+```bash
+kubectl get secret -n argocd | grep redis
+```
+
+The agent will automatically read Redis credentials from this secret using the keys `auth` or `redis-password`.
+
+## My ApplicationSet controller has a custom label. How do I configure it?
+
+If your ApplicationSet controller uses a custom label (e.g., `argocd-appset-ctrl` instead of the standard `argocd-applicationset-controller`), you need to use that custom value:
+
+```bash
+# Find the actual label
+kubectl get pods -n argocd -o=jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.app\.kubernetes\.io/name}{"\n"}' | grep appset
+```
+
+Then use the custom label in your configuration:
+```yaml
+applicationSet: "argocd-appset-ctrl"  # Custom label for your setup
+```
+
+## References
+
+- [Harness GitOps Helm Chart](https://github.com/harness/gitops-helm-byoa)
+- [Install a Harness GitOps Agent](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/)
