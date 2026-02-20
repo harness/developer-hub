@@ -5,7 +5,7 @@ description: Learn how to use Access Policy Analyzer to audit permissions, roles
 tags:
   - access-control
   - policy
-  - analyzer
+  - analyzer 
 keywords:
   - access policy analyzer
   - access management
