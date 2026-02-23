@@ -151,6 +151,188 @@ If your bucket's ACL is set to something other than `private` (such as blank, `b
 
 The default value for `PLUGIN_ACL` is `private`, so if your bucket's ACL is something other than `private`, you must set this environment variable accordingly.
 
+## Self-Hosted Cache with MinIO
+
+For self-hosted environments without S3-compatible storage (such as those with only NFS storage), you can use MinIO as an S3-compatible gateway. This is particularly useful for air-gapped environments or when you need to maintain cache data on-premises.
+
+### MinIO Setup
+
+MinIO provides an S3-compatible API that can be deployed on top of NFS or local storage. Here's how to set it up:
+
+#### Deploy MinIO
+
+Deploy MinIO in your infrastructure with NFS backing:
+
+```bash
+# Deploy MinIO using Docker
+docker run -d \
+  -p 9000:9000 -p 9001:9001 \
+  -v /mnt/nfs/cache:/data \
+  -e MINIO_ROOT_USER=admin \
+  -e MINIO_ROOT_PASSWORD=your-secure-password \
+  --name minio \
+  minio/minio server /data --console-address ":9001"
+```
+
+For Kubernetes deployments:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+      - name: minio
+        image: minio/minio:latest
+        args:
+        - server
+        - /data
+        - --console-address
+        - ":9001"
+        env:
+        - name: MINIO_ROOT_USER
+          value: "admin"
+        - name: MINIO_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: password
+        ports:
+        - containerPort: 9000
+          name: api
+        - containerPort: 9001
+          name: console
+        volumeMounts:
+        - name: storage
+          mountPath: /data
+      volumes:
+      - name: storage
+        nfs:
+          server: nfs-server.example.com
+          path: /mnt/nfs/cache
+```
+
+#### Create Cache Bucket
+
+After deploying MinIO, create a bucket for cache storage:
+
+```bash
+# Install MinIO Client
+wget https://dl.min.io/client/mc/release/linux-amd64/mc
+chmod +x mc
+
+# Configure MinIO alias
+mc alias set myminio http://minio-endpoint:9000 admin your-secure-password
+
+# Create cache bucket
+mc mb myminio/harness-cache-bucket
+
+# Set lifecycle policy (optional - auto-delete old cache after 30 days)
+cat > lifecycle.json <<EOF
+{
+  "Rules": [
+    {
+      "Expiration": {
+        "Days": 30
+      },
+      "ID": "cache-expiration",
+      "Status": "Enabled"
+    }
+  ]
+}
+EOF
+mc ilm import myminio/harness-cache-bucket < lifecycle.json
+```
+
+### Configure Harness to Use MinIO
+
+#### Create AWS Connector for MinIO
+
+In Harness, create an AWS connector configured to use your MinIO endpoint:
+
+1. Go to **Project Settings** > **Connectors** > **New Connector** > **AWS**
+2. Configure the connector:
+   - **Name**: `MinIO Cache Storage`
+   - **Credentials**: Select **AWS Access Key**
+   - **Access Key**: `admin` (or your MinIO access key)
+   - **Secret Key**: Create a Harness secret with your MinIO password
+   - In **Advanced** settings (or delegate configuration), you'll specify the endpoint URL
+
+:::note
+The AWS connector doesn't have a built-in field for custom endpoints. The endpoint will be specified in the cache step configuration.
+:::
+
+#### Configure Cache Steps with MinIO
+
+When using MinIO, you must enable **Path Style** and specify the **Endpoint URL** in your cache steps:
+
+```yaml
+- step:
+    type: SaveCacheS3
+    name: Save Cache to MinIO
+    identifier: Save_Cache_to_MinIO
+    spec:
+      connectorRef: org.minio_cache_storage
+      region: us-east-1  # MinIO requires a region value; use any valid region
+      bucket: harness-cache-bucket
+      key: cache-{{ checksum "package-lock.json" }}
+      sourcePaths:
+        - node_modules/
+      endpoint: http://minio.internal:9000  # Your MinIO endpoint
+      pathStyle: true  # Required for MinIO
+      archiveFormat: Tar
+```
+
+**Restore Cache from MinIO:**
+
+```yaml
+- step:
+    type: RestoreCacheS3
+    name: Restore Cache from MinIO
+    identifier: Restore_Cache_from_MinIO
+    spec:
+      connectorRef: org.minio_cache_storage
+      region: us-east-1
+      bucket: harness-cache-bucket
+      key: cache-{{ checksum "package-lock.json" }}
+      endpoint: http://minio.internal:9000
+      pathStyle: true  # Required for MinIO
+      archiveFormat: Tar
+```
+
+### MinIO Best Practices
+
+- **Use HTTPS**: In production, configure MinIO with TLS certificates and use `https://` endpoints
+- **Set Up High Availability**: Deploy MinIO in distributed mode for production workloads
+- **Configure Access Policies**: Create dedicated access keys with restricted permissions for cache operations
+- **Monitor Storage Usage**: Set up alerts for NFS/storage capacity
+- **Enable Lifecycle Policies**: Automatically clean up old cache entries to prevent storage exhaustion
+
+### Network Requirements for MinIO
+
+Ensure build agents can reach the MinIO endpoint:
+
+- **Outbound connectivity** from build agents to MinIO endpoint (port 9000 or custom port)
+- **DNS resolution** for the MinIO endpoint hostname
+- **Firewall rules** allowing HTTP/HTTPS traffic to MinIO
+
+Example firewall rule:
+
+```bash
+# Allow build agents to access MinIO
+iptables -A OUTPUT -p tcp --dport 9000 -d minio.internal.local -j ACCEPT
+```
+
 ## Add the Save Cache to S3 step
 
 Add the **Save Cache to S3** step after steps that build and test your code, as shown in this diagram:
