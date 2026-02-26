@@ -209,12 +209,12 @@ Secrets are not supported for the `functionName` field in `function.json`. This 
 **Harness Support for Tag Management**
 
 :::note
-Tag management for AWS Lambda deployments is controlled by the feature flag CDS_AWS_LAMBDA_ECS_TAG_SUPPORT. Availability can vary by account. Contact [Harness Support](mailto:support@harness.io) if you need this feature enabled or disabled.
+Tag management for AWS Lambda deployments is controlled by the feature flag `CDS_AWS_LAMBDA_ECS_TAG_SUPPORT`. Availability can vary by account. Contact [Harness Support](mailto:support@harness.io) if you need this feature enabled or disabled.
 :::
 
 Harness supports managing AWS Lambda function tags, allowing users to create, update, and delete tags as part of their function definition. Tags help with resource organization, cost allocation, and security policies.
 
-:::
+:::info
 Tag reconciliation behavior (when tag management is enabled):
 - If tags are provided in the function definition, Harness applies them as part of the deployment.
 - If tags are omitted from the function definition, Harness may treat this as no desired tags and can remove/clear existing tags on the target Lambda function.
