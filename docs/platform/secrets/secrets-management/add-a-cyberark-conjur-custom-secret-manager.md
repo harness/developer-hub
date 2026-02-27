@@ -82,7 +82,7 @@ This topic shows you how to create a Secret Manager Template at the Project scop
       - **Value**: `<+input>`
    - `API_KEY_SECRET_ID`
       - **Type**: String
-      - **Value**: `conjur_api_key`
+      - **Value**: `<+input>`
    - `AUTHENTICATOR`
       - **Type**: String
       - **Value**: `<+input>`
@@ -192,7 +192,7 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
 
    - Select **Fixed** for the `CONJUR_APPLIANCE_URL`, `HOST_ID`, `AUTHENTICATOR`, `API_KEY_SECRET_ID`, and `ACCOUNT`.
 
-   - The `API_KEY_SECRET_ID` should be an identifier for a Harness Secret, to be used for authenticating with Conjur. Create the secret using any secret manager other than Conjur. Based on where you create the secret, this can be in the format of `account.secretid`, `org.secretid`, or just `secretid`.
+   - The `API_KEY_SECRET_ID` should be an identifier for a Harness Secret, to be used for authenticating with Conjur. Create the secret using any secret manager other than Conjur. Based on where you create the secret, this can be in the format of `account.secretid`, `org.secretid`, or just `secretid`. Note that if you're creating the Custom Secret Manager at an org or account scope, the secret must exist at either the same scope or higher - i.e. an org level Custom Secret Manager cannot use a project level secret, only an org or account secret, whereas a project level Custom Secret Manager can use a secret from any of the 3 levels.
 
    - The following values are used to authenticate with Conjur using this API URL format:
 
