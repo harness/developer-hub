@@ -121,6 +121,17 @@ The purchases will happen only at master account level and thus will be in turn 
 
     You can select the Atom purchase frequency and select the Atom purchase terms and you can also see the cost implications of Atomization. By default, CCM sets it for one year, but you can also set it for three years.
 
+- **(Optional) Savings Plan Renewal Reduction % (Roll-Down Policy)**: Set a percentage to decide how much of an expiring commitment will be renewed. This feature gives you strategic control over how your expiring AWS Savings Plans are renewed and optimizes your commitment mix over time.
+
+    **How it works**: When a Savings Plan expires, the Roll-Down Policy automatically renews a specified percentage as another Savings Plan, while converting the remaining portion to Reserved Instances. For example, if set to 80% and you have a \$10/hr SP expiring, we'll renew \$8/hr as SP and shift the remaining \$2/hr to RIs.
+    
+    **Benefits**:
+    - **Gradual portfolio adjustment**: Allows you to shift your commitment strategy as your workload patterns evolve
+    - **Risk management**: Minimizes commitment risk through monthly expiring Atom RIs, allowing for better adaptation to changing usage patterns.
+    - **Balanced flexibility**: Maintains cost savings while introducing more flexibility into your commitment portfolio through a mix of SPs and RIs
+
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/sp-rolldown.png')} width="100%" height="100%" title="Click to view full size image" />
+
 - **Orchestration Mode:** Select how the orchestrator executes recommended commitment purchases:
 
     - **Fully Automated**: Commitment purchases are executed automatically without requiring manual approval.
