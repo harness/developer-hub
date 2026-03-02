@@ -1030,6 +1030,12 @@
     "description": "Enables EPSS scoring for CVE-associated security issues, allowing prioritization based on the likelihood of exploitation.",
     "gaStartDate": "2026-02-25",
     "module": "Security Test Orchestration"
+  },
+  {
+    "flagKey": "FME_ENABLE_PIPELINES",
+    "description": "Enable FME steps such as Flag create, update, Flag treatment updates etc.",
+    "gaStartDate": "2026-03-02",
+    "module": "FME"
   }
   
 ]
