@@ -23,6 +23,41 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 :::
 
+## February 2026
+
+### 2026.02.v1
+
+#### New Features
+
+- **Jira Integration**  
+  Full Jira integration is now available, including a new **Comments & Issues** tab in the test run view. You can manage comments, link Jira tickets directly to test runs, and view failure reasons—all within the Harness UI. This streamlines issue tracking and improves collaboration between testing and development teams.
+
+- **Nested Tasks Support**  
+  Added support for nested tasks, allowing validation tasks to contain sub-tasks. This enhancement includes schema changes (stepIndexes array in ValidationReport) and IR-level logic for inserting nested steps correctly, enabling more complex and modular test workflows.
+
+- **Link to Test Run in Jira Ticket**  
+  Jira tickets created from test reports now include a direct link back to the associated test run. This provides quick navigation and traceability, making it easier to investigate failures and track issues across systems.
+
+- **Environment Name Filter in Test Run Page**  
+  You can now filter test runs by environment name on the test run page. This makes it easier to narrow down results in multi-environment setups and quickly find the test runs you're looking for.
+
+- **Drag-and-Drop Command for Slider Interactions**  
+  Implemented a drag-and-drop command to support slider interactions, enabling automation for slider UI components. This enhancement improves test coverage for applications with interactive slider elements.
+
+- **Parameter Support for Prompt Enhancer**  
+  Added parameter support for the prompt enhancer and replaced the deprecated LLM model method with the default LLMModel. This improves flexibility and future-proofs the integration for enhanced AI-driven test generation.
+
+#### Enhancements & Bug Fixes
+
+- **Fixed Duplicate Copilot Task Display**  
+  Resolved an issue where copilot tasks were appearing as duplicates in both the Intelligent Analysis (IA) view and the test run page. Users will now see a single, accurate entry per task.
+
+- **Renamed "Validate Test" to "Run Test"**  
+  Updated the UI label from "Validate test" to "Run test" to better reflect the action being performed and reduce user confusion.
+
+- **Added Busy Tag and Renamed API**  
+  Introduced a "Busy" tag to improve status visibility and renamed the associated API for consistency and clarity across the platform.
+
 ## January 2026
 
 ### 2026.01.v1
