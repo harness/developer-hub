@@ -1,11 +1,11 @@
 {
-    "label":"Internal Developer Portal (IDP)",
-    "position": 2,
+    "label":"Platform",
+    "position": 1,
     "collapsible": true,
     "collapsed": true,
     "link":{
        "type":"generated-index",
-       "title":"Internal Developer Portal (IDP)"
+       "title":"Platform"
     },
     "customProps":{
     }

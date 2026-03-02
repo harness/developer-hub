@@ -11,6 +11,12 @@ This page describes supported platforms and technologies for Harness IaCM specif
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](https://developer.harness.io/docs/platform/platform-whats-supported/).
 
+## Deployment models
+Harness IaCM is supported on the following deployment models:
+- **Harness SaaS:** Fully managed; all IaCM features are available. No infrastructure to run or maintain.
+- **Self-Managed Enterprise Edition (SMP):** On-premises or private cloud with full control. See [IaCM SMP](/docs/infra-as-code-management/manage-projects/iacm-smp) for setup and any SMP-specific feature flags or image overrides.
+
+
 ## Prerequisites
 To configure an IaCM workspace and create pipelines, you must have the following:
 - An active cloud provider account
@@ -40,6 +46,10 @@ Harness IaCM currently supports integration with all **OpenTofu** versions <Harn
 
 Go to [OpenTofu migration](https://opentofu.org/docs/intro/migration/) to migrate from Terraform to OpenTofu.
 :::
+
+### Limitations
+- **Terraform:** Only MPL-licensed versions up to 1.5.x are supported. Terraform 1.6+ (BSL) is not supported; use [OpenTofu](https://opentofu.org/docs/intro/migration/) for a drop-in replacement.
+- **Terragrunt:** Supported at the workspace level. Go to [Get started with Terragrunt](/docs/infra-as-code-management/get-started/#terragrunt) to learn more.
 
 ## Supported Workspace Connectors
 ### Configuration management
@@ -71,18 +81,18 @@ Harness IaCM supports the following source providers for seamless code managemen
 Git options include `Latest from Branch` (specifying a branch) and `Git Tag` fetch types. Users can set a configuration file path, such as a terraform (.tf) file.
 
 ## IaCM Feature Flags
-Some Harness IaCM features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
-The following table describes each of the feature flags relevant to Harness IaCM.
-
-:::note
-To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
-:::
+Beta and feature-flagged capabilities are marked as such in the docs; contact [Harness Support](mailto:support@harness.io) to request access.
 
 ## Supported integrations
-Support for SMP (Service Management Platform) is available in IaCM. See [IACM SMP](/docs/infra-as-code-management/manage-projects/iacm-smp) for details.
+- **[SMP (Service Management Platform)](/docs/infra-as-code-management/manage-projects/iacm-smp):** Run IaCM on Self-Managed Enterprise Edition.
+- **[Variable Sets](/docs/infra-as-code-management/configuration/connectors-and-variables/variable-sets):** Reusable variables and connector references across workspaces.
+- **[Module Registry](/docs/infra-as-code-management/registry/module-registry):** Store and manage private OpenTofu/Terraform modules.
+- **[Private Provider Registry](/docs/infra-as-code-management/registry/provider-registry):** Store and manage private OpenTofu/Terraform providers.
+- **[MCP (Model Context Protocol)](/docs/platform/harness-ai/harness-mcp-server):** Use IaCM context with AI assistants and tools that support MCP.
+
 
 ## Supported plugins
-IaCM supports external plugins to enhance its usability and security.
+- **[IDP (Internal Developer Portal)](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-iacm):** Use the IaCM plugin in IDP for resource visibility, drill-downs, and workspace context.
 
 ### Security Scanners
 IaCM integrates with multiple security scanning tools to check your infrastructure code for security vulnerabilities, compliance issues, and misconfigurations:
@@ -96,3 +106,8 @@ IaCM integrates with multiple security scanning tools to check your infrastructu
 :::note
 Security scanning features are part of the [Harness STO module](https://developer.harness.io/docs/security-testing-orchestration) and require an STO license.
 :::
+
+## Next steps
+- **[Get started with IaCM](/docs/infra-as-code-management/get-started):** Set up your first workspace and run Plan/Apply.
+- **[Connectors and variables](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables):** Configure cloud, Git, and secrets connectors.
+- **[IaCM pipelines](/docs/infra-as-code-management/pipelines/default-pipelines):** Create pipelines with Plan, Apply, Destroy, and approval steps.

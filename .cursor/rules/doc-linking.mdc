@@ -1,0 +1,40 @@
+---
+description: Docusaurus doc linking — use site-relative paths (/docs/...), avoid full URLs and duplicate URI segments
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Doc linking (Docusaurus)
+
+When adding or editing links in documentation, follow Docusaurus URL behavior so links resolve correctly and the build does not report broken links.
+
+## Use site-relative paths only
+
+- **Do:** Use **site-relative paths** — e.g. `/docs/infra-as-code-management/get-started` — so links work in any environment (local, staging, production).
+- **Do not:** Use **full production URLs** — e.g. `https://developer.harness.io/docs/infra-as-code-management/get-started/` — which break local/staging builds and tie links to a single host.
+
+## Duplicate URI segments: folder + same-named file
+
+If a page lives in a **folder that has the same name as the document** (e.g. `get-started/get-started.md`), Docusaurus serves it at the **folder path only**. The file name is not repeated in the URL.
+
+- **Correct URL:** `/docs/infra-as-code-management/get-started`  
+  (resolves to `get-started/get-started.md`)
+- **Incorrect URL:** `/docs/infra-as-code-management/get-started/get-started`  
+  (duplicate segment; treated as a broken link in the build)
+
+## Rule
+
+When linking to a doc that is an index/default page in a same-named folder (e.g. `get-started/get-started.md`, `overview/overview.md`):
+
+- **Do:** Use the path **up to and including the folder** — e.g. `/docs/.../get-started`.
+- **Do not:** Use the path that includes the file name again — e.g. `/docs/.../get-started/get-started`.
+
+Apply the path format (site-relative only, no full `https://developer.harness.io/...` URLs) and the folder-path rule above so the link checker and build succeed.
+
+## Examples
+
+| File on disk | Use in links |
+|--------------|--------------|
+| `docs/infra-as-code-management/get-started/get-started.md` | `/docs/infra-as-code-management/get-started` |
+| `docs/some-module/overview/overview.md` | `/docs/some-module/overview` |
+| `docs/other/guide/quickstart.md` | `/docs/other/guide/quickstart` (file name differs; include it) |
