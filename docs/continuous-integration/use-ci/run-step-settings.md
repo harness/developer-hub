@@ -218,8 +218,8 @@ The SSH private key must be stored in Harness as a **File-type Secret** to be us
             echo "Flaky tests have been quarantined." > extra-notes.md
             hcli annotate --context "build-validation" --summary-file "extra-notes.md" --mode "append"
 ```
-:::Note
-To learn about how you could summarize critical pipeline metrics go to: [Pipeline Annotations](/docs/platform/pipelines/harness-annotations) 
+:::note
+Go to [Pipeline Annotations](/docs/platform/pipelines/harness-annotations) to learn more about how you could summarize critical pipeline metrics. 
 :::
 
 </TabItem>

@@ -21,11 +21,11 @@ This guide will take you through the journey of creating, configuring and execut
 ## Prerequisites
 
 Before getting started with **Workflows** in IDP 2.0, ensure you have the following prerequisites: 
-* You have reviewed the **[IDP 2.0 Overview](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** and **[Upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)** guide. 
+* You have reviewed the **[IDP 2.0 Overview](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path)** and **[Upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o)** guide. 
 * **IDP 2.0** is enabled behind the `IDP_2_0` Feature Flag. Contact **[Harness Support](https://support.harness.io)** to enable it on your account.
-* You should have a clear understanding of **[Managing Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o.md)** and **[Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml.md)** to effectively configure and use the components of a Workflow.
+* You should have a clear understanding of **[Managing Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o)** and **[Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml)** to effectively configure and use the components of a Workflow.
 * It's recommended to have a **Harness Pipeline** in place, which acts as the orchestrator for Self-Service Workflows.
-  Learn more about **[setting up Harness IDP Pipelines here](/docs/internal-developer-portal/flows/harness-pipeline.md)**.
+  Learn more about **[setting up Harness IDP Pipelines here](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline)**.
 
 ---
 
@@ -42,7 +42,7 @@ This example showcases the fundamental workflow pattern: **Input → Process →
 
 ### Step 1: Understanding Workflow Components
 
-Before creating your workflow, it's important to understand the key components that make up a Self-Service Workflow. A Workflow is defined through a **YAML configuration file** that contains all the Workflow's metadata and logic. Go to [Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml.md) to learn more.
+Before creating your workflow, it's important to understand the key components that make up a Self-Service Workflow. A Workflow is defined through a **YAML configuration file** that contains all the Workflow's metadata and logic. Go to [Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml) to learn more.
 
 This YAML has **three main components** that work together to facilitate Workflow automation:
 
@@ -384,7 +384,7 @@ Once created, execute your workflow to ensure it works correctly.
 ## Next Steps
 
 Now that you've learned how to create and manage a Workflow, here's what to explore next:
-1. Deep dive into the [Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml.md)
-2. Learn how to configure [Inputs](/docs/internal-developer-portal/flows/flows-input.md), [Actions](/docs/internal-developer-portal/flows/custom-actions.md) and [Outputs](/docs/internal-developer-portal/flows/outputs.md) in a Workflow. 
-3. Explore how to [setup a Harness IDP Pipeline](/docs/internal-developer-portal/flows/harness-pipeline.md).
-4. Learn how to [configure RBAC](/docs/internal-developer-portal/rbac/workflow-rbac.md) for Workflows.
+1. Deep dive into the [Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml)
+2. Learn how to configure [Inputs](/docs/internal-developer-portal/flows/create-workflow/flows-input), [Actions](/docs/internal-developer-portal/flows/create-workflow/custom-actions) and [Outputs](/docs/internal-developer-portal/flows/create-workflow/outputs) in a Workflow. 
+3. Explore how to [setup a Harness IDP Pipeline](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline).
+4. Learn how to [configure RBAC](/docs/internal-developer-portal/rbac/workflow-rbac) for Workflows.

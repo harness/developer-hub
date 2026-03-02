@@ -275,7 +275,7 @@ Before proceeding, manually add the following secrets to your Vault instance und
     | `<engine>/<basePath>/log-service/env-secrets/LOG_SERVICE_S3_ACCESS_KEY_ID`     | Access key for S3-compatible storage        |
     | `<engine>/<basePath>/log-service/env-secrets/LOG_SERVICE_S3_SECRET_ACCESS_KEY` | Secret access key for S3-compatible storage |
 
-    ::note
+    :::note
     These credentials apply to both AWS S3 and external S3-compatible storage such as **MinIO**.
     :::
 
