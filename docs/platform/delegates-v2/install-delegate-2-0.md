@@ -88,7 +88,8 @@ The new Harness Delegate is in **Beta** and can only be used for Mac Build, Andr
 
 | OS | Config File | Logs | Service Definition |
 |----|-------------|------|-------------------|
-| **MacOS** | `~/.harness-delegate/config.env` | `~/.harness-delegate/logs/` | `~/Library/LaunchAgents/harness-delegate.plist` |
+| **macOS (LaunchAgent)** | `~/.harness-delegate/config.env` | `~/.harness-delegate/logs/` | `~/Library/LaunchAgents/harness-delegate.plist` |
+| **macOS (LaunchDaemon)** | `/opt/harness-delegate/config.env` | `/opt/harness-delegate/logs/` | `/Library/LaunchDaemons/harness-delegate.plist` |
 | **Linux** | `./config.env` | `./nohup-delegate.out` | N/A (runs in foreground/background) |
 | **Windows** | `C:\HarnessDelegate\config.env` | `C:\HarnessDelegate\logs\` | Windows Service Control Manager |
 
@@ -131,13 +132,15 @@ Download and install the correct binary for your OS.
 <Tabs className="tabs--full-width">
 <TabItem value="MacOS">
 
-:::info
-The delegate runs as a user service (LaunchAgent), not a system service. It only runs when you're logged in. Enable auto-login (see step 5) to ensure it starts after system reboots.
+:::info Service Modes
+The macOS delegate supports two installation modes:
+- **LaunchAgent (User Service):** Default mode. Runs when you're logged in. Enable auto-login (see step 5) to ensure it starts after reboots.
+- **LaunchDaemon (System Service):** Available in version 1.34.0+. Runs at system boot without a GUI session. Recommended for EC2 macOS instances or environments where auto-login is prohibited by security policies.
 :::
 
 1. **Download the delegate binary**
 
-   Replace `<VERSION>` with the latest version (e.g., `1.28.0`):
+   Replace `<VERSION>` with the latest version (e.g., `1.34.0`):
 
    For **arm64** (Apple Silicon):
    ```bash
@@ -151,20 +154,39 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
    chmod +x delegate
    ```
 
-   Example using version 1.28.0:
+   Example using version 1.34.0:
    ```bash
-   curl -L "https://app.harness.io/public/shared/delegates/1.28.0/delegate-darwin-arm64" -o delegate
+   curl -L "https://app.harness.io/public/shared/delegates/1.34.0/delegate-darwin-arm64" -o delegate
    ```
 
 2. **Install the delegate with your credentials**
 
-   Run the install command with the credentials you obtained from the [previous step](#get-harness-credentials):
+   Run the install command with the credentials you obtained from the [previous step](#get-harness-credentials). Choose the service mode that matches your environment.
+
+   #### Option A: LaunchAgent (User Service) — Default
+
+   The delegate runs as a user-level service. It starts when you log in and stops when you log out.
 
    ```bash
    ./delegate install --account=[Your Account ID] \
                       --token=[Your Delegate Token] \
                       --url=[Your Harness URL] \
                       --name=[Your Delegate Name]
+   ```
+
+   #### Option B: LaunchDaemon (System Service) — Version 1.34.0+
+
+   The delegate runs as a system-level service that starts at boot without requiring a GUI session. This mode is recommended for EC2 macOS instances and environments where auto-login is prohibited by security policies.
+
+   All LaunchDaemon operations require `sudo` because the delegate interacts with the system domain (`/Library/LaunchDaemons/`) instead of the user domain. The `--user` flag specifies the macOS user account the delegate process runs as.
+
+   ```bash
+   sudo ./delegate install --account=[Your Account ID] \
+                           --token=[Your Delegate Token] \
+                           --url=[Your Harness URL] \
+                           --name=[Your Delegate Name] \
+                           --mode=system \
+                           --user=[Your macOS Username]
    ```
 
    :::info
@@ -183,6 +205,18 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
                       --tags="production,macos"
    ```
 
+   For LaunchDaemon mode, add `sudo`, `--mode=system`, and `--user`:
+
+   ```bash
+   sudo ./delegate install --account=[Your Account ID] \
+                           --token=[Your Delegate Token] \
+                           --url=[Your Harness URL] \
+                           --name=[Your Delegate Name] \
+                           --mode=system \
+                           --user=[Your macOS Username] \
+                           --tags="production,macos"
+   ```
+
    <details>
    <summary>View all available installation options</summary>
 
@@ -196,6 +230,8 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
    - `--url` - Harness server URL **(required)**
    - `--name` - Custom delegate name (default: `harness-delegate`)
    - `--tags` - Comma-separated tags for delegate selection (optional)
+   - `--mode` - Service mode: `system` for LaunchDaemon, omit for default LaunchAgent (optional, version 1.34.0+)
+   - `--user` - macOS user account the delegate process runs as (required when `--mode=system`)
    - `--env-file` - Path to config file (default: `~/.harness-delegate/config.env`)
    - `--graceful-exit-timeout` - Shutdown timeout in seconds (default: 300)
    - `--auto-restart-on-failure` - Auto-restart on failure (default: true) 
@@ -203,14 +239,29 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
    </details>
 
    **What this command creates:**
-   - Workspace directory: `~/.harness-delegate`
-   - Configuration file: `~/.harness-delegate/config.env`
-   - LaunchAgent service: `~/Library/LaunchAgents/harness-delegate.plist`
+
+   LaunchAgent mode:
+   - **Workspace directory:** `~/.harness-delegate`
+   - **Configuration file:** `~/.harness-delegate/config.env`
+   - **Service definition:** `~/Library/LaunchAgents/harness-delegate.plist`
+
+   LaunchDaemon mode:
+   - **Workspace directory:** `/opt/harness-delegate`
+   - **Configuration file:** `/opt/harness-delegate/config.env`
+   - **Service definition:** `/Library/LaunchDaemons/harness-delegate.plist`
 
 3. **Start the delegate service**
 
+   For LaunchAgent mode:
+
    ```bash
    ./delegate start
+   ```
+
+   For LaunchDaemon mode:
+
+   ```bash
+   sudo ./delegate start
    ```
 
    You should see a success message with the config location and log file path.
@@ -233,13 +284,23 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
    tail -f ~/.harness-delegate/logs/delegate.log
    ```
 
+   For LaunchDaemon mode:
+
+   ```bash
+   tail -f /opt/harness-delegate/logs/delegate.log
+   ```
+
    Navigate to **Project Settings** > **Delegates** in Harness UI. You should see your delegate with a **Connected** status.
 
    ![](./static/delegate-listing.png)
 
-5. **Enable auto-login (Recommended)**
+5. **Enable auto-login (LaunchAgent mode only)**
 
-   Since the delegate runs as a user service, enable auto-login to ensure it starts after system reboots:
+   :::tip Skip for LaunchDaemon
+   If you installed the delegate as a LaunchDaemon (system service), skip this step. The daemon starts automatically at boot without requiring a user session.
+   :::
+
+   Since the LaunchAgent delegate runs as a user service, enable auto-login to ensure it starts after system reboots:
 
    1. Open **System Settings** (or **System Preferences** on older macOS)
    2. Go to **Users & Groups**
@@ -251,9 +312,15 @@ The delegate runs as a user service (LaunchAgent), not a system service. It only
 
 **Update delegate settings:**
 
+For LaunchAgent mode:
 1. Stop the service: `./delegate stop`
 2. Edit the config: `nano ~/.harness-delegate/config.env`
 3. Start the service: `./delegate start`
+
+For LaunchDaemon mode:
+1. Stop the service: `sudo ./delegate stop`
+2. Edit the config: `sudo nano /opt/harness-delegate/config.env`
+3. Start the service: `sudo ./delegate start`
 
 **Docker configuration for container-based steps:**
 
@@ -305,7 +372,7 @@ colima ssh -- sudo mkdir -p /private/tmp/engine
 
 The delegate inherits system-level proxies by default, but you can set a custom proxy configuration through the delegate config.
 
-Edit `~/.harness-delegate/config.env` and add:
+Edit the delegate's `config.env` file (see [file locations](#quick-reference) for the path based on your service mode) and add:
 
 ```bash
 PROXY_HOST=3.139.239.136
@@ -342,14 +409,14 @@ To manually install a plugin:
 
 #### Manage the Delegate
 
-**Stop:** `./delegate stop` - Gracefully shuts down (waits up to 5 minutes for tasks to complete)
+**Stop:** `./delegate stop` — Gracefully shuts down (waits up to 5 minutes for tasks to complete).
 
-**Uninstall:** `./delegate uninstall` - Removes service registration (preserves config, logs, and binary)
+**Uninstall:** `./delegate uninstall` — Removes service registration (preserves config, logs, and binary).
 
 **Upgrade:**
-1. Download new binary (replace existing `delegate` file)
-2. `./delegate stop`
-3. `./delegate start`
+1. **Download new binary:** Replace the existing `delegate` file.
+2. **Stop the delegate:** `./delegate stop`
+3. **Start the delegate:** `./delegate start`
 
 </TabItem>
 
@@ -725,8 +792,11 @@ Most importantly, ensure that you have set `Local` as the **Infrastructure** and
 ## Delegate Configuration
 
 The `config.env` file location:
-- **macOS**:
+- **macOS (LaunchAgent)**:
   - Default: `~/.harness-delegate/config.env`
+  - Custom workdir: `{workdir}/config.env`
+- **macOS (LaunchDaemon)**:
+  - Default: `/opt/harness-delegate/config.env`
   - Custom workdir: `{workdir}/config.env`
 - **Linux**:
   - Default: Location where you created it
@@ -857,7 +927,8 @@ By default, the delegate stores its configuration files, logs, and cache in a st
 **Default locations:**
 
 - **Windows**: `C:\HarnessDelegate`
-- **Linux/macOS**: `~/.harness-delegate`
+- **Linux/macOS (LaunchAgent)**: `~/.harness-delegate`
+- **macOS (LaunchDaemon)**: `/opt/harness-delegate`
 
 **How to configure:**
 
@@ -910,8 +981,11 @@ For complete documentation on configuring and using init scripts, including comm
 ### Logs
 
 You can find the delegate logs in the following locations:
-- **macOS**:
+- **macOS (LaunchAgent)**:
   - Default: `~/.harness-delegate/logs/delegate.log`
+  - Custom workdir: `{workdir}/logs/delegate.log`
+- **macOS (LaunchDaemon)**:
+  - Default: `/opt/harness-delegate/logs/delegate.log`
   - Custom workdir: `{workdir}/logs/delegate.log`
 - **Linux**:
   - Default: `nohup-delegate.out`
@@ -938,9 +1012,14 @@ LOG_COMPRESS=false         # Compress rotated logs
 
 **View logs in real-time:**
 
-MacOS:
+macOS (LaunchAgent):
 ```bash
 tail -f ~/.harness-delegate/logs/delegate.log
+```
+
+macOS (LaunchDaemon):
+```bash
+tail -f /opt/harness-delegate/logs/delegate.log
 ```
 
 Linux:

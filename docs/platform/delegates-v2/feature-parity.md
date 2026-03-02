@@ -66,10 +66,6 @@ The transition from legacy delegates to the new delegate is controlled through a
 
 **Core routing flags:**
 
-- **`PL_ENABLE_UNIFIED_TASKS`**: Controls dual task submission behavior. When enabled, the submit API sends tasks to both legacy delegates and the new delegate (Runner). When disabled, tasks are sent only to the new delegate. This flag enables safe testing and rollback during migration. Status: GA'd in QA and Prod0.
-
-- **`PL_USE_UNIFIED_TASK_FLOW`**: Enables the unified task submission flow for all tasks. When enabled, functions that can be handled by the new delegate (such as plugins, init, and cleanup) are included in the request for both `RunnerTask` and `DelegateTaskSpec`. Tasks that the new delegate cannot handle include only `DelegateTaskSpec` and are managed by the Runner with delegate-sidecar integration. This flag is the primary switch for adopting the new task execution framework.
-
 - **`PL_USE_RUNNER`**: Routes connector validation and connection tests to the new delegate. This flag is waiting on Git-sync tests and automations to pass before general availability.
 
 **CI infrastructure routing flags:**
@@ -87,8 +83,6 @@ The transition from legacy delegates to the new delegate is controlled through a
 - **`CI_RUNNER_FRAMEWORK_SECRET_EVAL`**: Controls secret evaluation in the new delegate's execution framework. Acts as a rollback protection mechanism for `CI_INVALID_SECRET_ERROR`.
 
 - **`CI_UNIFIED_RUNNER_REPLACE_STEP_ID_BY_TASK_ID_IN_V0_PIPELINES`**: Changes field population in the new delegate's ExecuteRequest to use task IDs instead of step IDs. This affects v0 pipelines only (v1 pipelines always use task IDs with an empty string passed in the Runner Task API). When disabled, v0 pipelines use step ID (legacy behavior). When enabled, v0 pipelines use the task ID.
-
-- **`CI_ADD_CONNECTOR_REF_TO_IMPLICIT_GIT_CLONE_STEP`**: Enables implicit git clone to work with the unified task workflow. Without this flag, an implicit git clone does not work correctly with the new delegate.
 
 Feature flags are managed at the account level by Harness and are enabled as part of the closed beta program. Contact your Harness representative to discuss which flags are appropriate for your use case and testing requirements.
 
