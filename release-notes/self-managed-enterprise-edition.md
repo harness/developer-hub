@@ -474,6 +474,25 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 - Fixed AZ Blackhole target selection to cause chaos on all the derived subnets. [CHAOS-10982]
 - Fixed Experiment Inputs Not Visible in the Chaos Step. [CHAOS-11001]
 
+#### Cloud Cost Management
+
+- **ClickHouse Upgrade Notice:** This release includes an upgraded ClickHouse version (from 24.12.4 to 25.12.5) that addresses critical CVE vulnerabilities. Due to a breaking change in ClickHouse's default compression behavior, a configuration update is required during installation.
+
+**Required Action**
+When installing this release, you must add the following configuration to your ClickHouse server settings:
+
+```yaml
+<enable_http_compression>0</enable_http_compression>
+```
+
+This should be added to the ClickHouse server's default profile in the clickhouse-users-config ConfigMap via your Helm values.
+
+**Technical Background:** ClickHouse 25.12 changed the default value of enable_http_compression from 0 to 1. Without this setting, the Perspective Grid API and other ClickHouse-dependent features will fail with deserialization errors [CCM-30208]
+
+- **Standardized Operator Naming:** Reverted the ! IN and ! NULL operators back to the more widely recognized NOT IN and NOT NULL syntax in the Perspective and Cost Category builder for better clarity and consistency. [CCM-25286]
+
+- **Unallocated Cost Label:** Earlier, when the Hidden strategy was selected for Unallocated Cost in cost categories, we stamped a default label (“Cost categories default”) in the data used by the dashboard. Now, we stamp the Unallocated Cost label irrespective of what strategy is selected. This ensures that the dashboard data remains consistent even if the strategy is changed later. [CCM-29236]
+
 ### New Features and Enhancements
 
 #### GitOps
