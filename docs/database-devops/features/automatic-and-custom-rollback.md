@@ -21,7 +21,6 @@ SQL changelogs, do not support auto rollback, regardless of the Change Type. You
 
 ![rollback-error-sql](./static/rollback-error-sql.png)
 
-
 ## Automatic rollback statements
 For many Change Types, such as `createTable`, `addColumn`, and `renameColumn`, Liquibase **automatically generates** the SQL statements necessary to complete the rollback, so you can simply run a command like rollback on your desired changeset(s) and be done.
 

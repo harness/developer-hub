@@ -47,7 +47,7 @@ Before beginning the walkthroughs in this guide, ensure you have:
 Harness supports both Liquibase Compatible and Flyway Compatible configurations, but the setup varies based on your preferred workflow. Before configuring your DB Schema, ensure your repository follows the correct structure and that your migration files adhere to the chosen framework’s conventions.
 
 :::info note
-If you already use liquibase or flyway, you can skip to the section [Configuring Your DB Schema](#2-configure-your-database-schema).
+If you already use Liquibase or Flyway, you can skip to the section [Configuring Your DB Schema](#2-configure-your-database-schema).
 :::
 
 ### 1. Prepare Your Migration Framework (Flyway or Liquibase)
@@ -91,7 +91,7 @@ This structure enables Flyway and Harness to consistently detect, version, and a
 
 The database schema defines a set of SQL changes that can be deployed to one or more database instances. Here is how we will configure it:
 
-1. On the module picker, choose `DB DevOps` in your harness account.
+1. On the module picker, choose `DB DevOps` in your Harness account.
 ![dbops-module-picker](./static/dbops-module-picker.png)
 2. In the left hand nav, choose `DB Schemas` and Click `Add New DB Schema`.
 ![dbops-schema-create](./static/dbops-schema-create-liquibase.png)
@@ -99,19 +99,19 @@ The database schema defines a set of SQL changes that can be deployed to one or 
    - **Migration Type** -  Liquibase Compatible or Flyway Compatible.
    - **Connector** - Code Repositories hosted on either GitHub, Azure, GitLab, BitBucket or etc.
    - **Path to Schema File** - The path within the repository where your Liquibase changelog file is located.
-   - **Primary DB Instance** - The primary database instance where the Liquibase changelog will be initially applied. (In case of using [LLM Authoring Change](https://developer.harness.io/docs/database-devops/use-database-devops/configure-llm-for-database-devops/), this field is mandatory to set up the schema correctly.)
+   - **Primary DB Instance** - The primary database instance where the Liquibase changelog will be initially applied. (In case of using [Author DB Change](https://developer.harness.io/docs/database-devops/use-database-devops/configure-llm-for-database-devops/), this field is mandatory to set up the schema correctly.)
 
 :::info
 To learn more about Git connectors settings, reference this [Harness Git connector settings](../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
 :::
 
-### 3.Connect with Database Instance 
+### 3. Connect with Database Instance 
 
 Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here’s how:
 
 1. Under "DB Instances", click  “Add New DB Instance".
 2. Select main (or your environment branch).
-3. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the harness [delegate](../../platform/delegates/delegate-concepts/delegate-overview.md), then Save and Finish.
+3. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the Harness [delegate](../../platform/delegates/delegate-concepts/delegate-overview.md), then Save and Finish.
    - **Name** - A name to identify the database instance.
    - **JDBC URL** - The JDBC connection string for your database instance. Learn More about [JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/).
    - **Username** - The username to connect to the database.
@@ -135,7 +135,7 @@ A deployment pipeline deploys your database changes when it runs. In addition to
    - **Migration Type**: Liquibase Compatible or Flyway Compatible.
    - **Select DB Schema**: The DB Schema we created on Step 2.
    - **Select DB Instance**: The Instance we created on Step 3.
-   - **Tag (Optional)**: You can add custom tags to each deployment. In case it is left empty, harness will add the tag during the deployment.
+   - **Tag (Optional)**: You can add custom tags to each deployment. In case it is left empty, Harness will add the tag during the deployment.
 7. Click `Apply Changes` and Save the Pipeline.
 8. Now, click on "Run" and wait for your pipeline to complete.
 
