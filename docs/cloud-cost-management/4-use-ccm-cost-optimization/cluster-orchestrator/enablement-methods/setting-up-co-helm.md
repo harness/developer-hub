@@ -31,6 +31,14 @@ redirect_from:
 - **Terraform 1.2.0 or later** installed on your local machine
 - **Harness Account** with CCM module enabled
 - **Kubernetes Connector** configured in your Harness account
+- **AWS Spot Instance Service-Linked Role**: Required for provisioning spot instances. Create this role in your AWS account before enabling Cluster Orchestrator:
+  ```bash
+  aws iam create-service-linked-role --aws-service-name spot.amazonaws.com
+  ```
+  :::note
+  This is an AWS account-level role, not specific to individual EKS clusters. Without this role, new nodes will fall back to on-demand instances instead of spot instances. For more information, see [AWS Spot Instance Service-Linked Roles](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/service-linked-roles-spot-instance-requests.html).
+  :::
+
 
 
 ## Implementation Steps

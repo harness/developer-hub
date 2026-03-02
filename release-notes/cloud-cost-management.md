@@ -25,6 +25,7 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+
 ## February 2026 - Important Updates to Dashboard
 
 We are officially deprecating `reporting_timeframe` field and replacing it with a much more intuitive and powerful workflow.
@@ -56,6 +57,20 @@ Below is a high-level diagram detailing what the script will do:
 Once the migration is complete on 03/01/26, the `reporting_timeframe` field will no longer be a viable filter for standard time filtering.
 
 However, we are not deleting it entirely. It will remain as a hidden field. This ensures that any highly specific legacy period-over-period reporting that relied on it will not suddenly break.
+
+## Cluster Orchestrator Release - February 23, 2026
+#### Version 0.8.1 (Operator) & 0.4.1 (Helm Chart)
+
+**What's New**
+
+- **In-Place Pod Resizing with VPA 1.5.1**: The highlight of this release is the upgrade to VPA 1.5.1, which introduces in-place pod resizing. This feature allows the Vertical Pod Autoscaler to adjust CPU and memory resource requests for running pods without requiring pod restarts, significantly reducing disruption to your workloads.
+
+
+- **Enhanced Security**: 
+  - AWS IMDSv2 Support: Full compatibility with AWS Instance Metadata Service Version 2, providing improved security for EC2 instance metadata access
+  - Rapidfort Hardened Container Images: All container images are now hardened using Rapidfort's security scanning and optimization, reducing attack surface and improving security posture
+
+If you're using VPA features, ensure that the feature flag is enabled for your account. Contact support@harness.io if you need assistance enabling VPA capabilities.
 
 ## February 2026 - Version 1.80.3
 #### Deployment Date: February 19, 2026 (Prod-1)
