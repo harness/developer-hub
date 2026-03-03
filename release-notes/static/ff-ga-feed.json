@@ -1025,11 +1025,17 @@
     "gaStartDate": "2026-02-24",
     "module": "Security Test Orchestration"
   },
-   {
+  {
     "flagKey": "STO_ISSUE_EPSS",
     "description": "Enables EPSS scoring for CVE-associated security issues, allowing prioritization based on the likelihood of exploitation.",
     "gaStartDate": "2026-02-25",
     "module": "Security Test Orchestration"
+  },
+  {
+    "flagKey": "CODE_ENABLE_MFE_V2",
+    "description": "Enables new revamped UI for harness code.",
+    "gaStartDate": "2026-02-25",
+    "module": "Harness Code"
   },
   {
     "flagKey": "FME_ENABLE_PIPELINES",
@@ -1037,5 +1043,5 @@
     "gaStartDate": "2026-03-02",
     "module": "FME"
   }
-  
+
 ]
