@@ -14,6 +14,11 @@ const sidebars: SidebarsConfig = {
          "all-modules",
     "platform",
     "delegate",
+    {
+      type: 'doc',
+      id: 'delegate-v2',
+      className: 'sidebar-item-new-green',
+    },
     "code-repository",
     "harness-solutions-factory",
     "self-managed-enterprise-edition",      
