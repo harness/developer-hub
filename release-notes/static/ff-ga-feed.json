@@ -1042,6 +1042,12 @@
     "description": "Enable FME steps such as Flag create, update, Flag treatment updates etc.",
     "gaStartDate": "2026-03-02",
     "module": "FME"
+  },
+  {
+    "flagKey": "CDS_GITOPS_RETURN_NOT_FOUND_FOR_MISSING_AGENT",
+    "description": "GitOps APIs return HTTP 404(Not Found) in case of missing agent",
+    "gaStartDate": "2026-03-02",
+    "module": "GitOps"
   }
 
 ]
