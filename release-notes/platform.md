@@ -210,6 +210,16 @@ The following deprecated API endpoints are longer supported:
 
 ## February 2026
 
+### Version 1.132.x <!--February 20,2026-->
+
+#### Fixed issues
+
+- Improved authentication security by resolving an exception that could expose valid usernames in error responses. [PL-65508]
+
+### Version 1.131.x <!--February 20,2026-->
+
+No enhancements or fixes were released in this cycle.
+
 ### Version 1.130.x <!--February 12,2026-->
 
 #### Fixed issues
