@@ -16,7 +16,7 @@ Go to [Authentication Overview](/docs/platform/authentication/authentication-ove
 
 The chaos module leverages [Harness access control](/docs/platform/role-based-access-control/rbac-in-harness) capabilities to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.
 
-The foundational elements of the chaos engineering process, chaos infrastructure, chaos hubs, chaos experiments, and chaos GameDays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
+The foundational elements of the chaos engineering process, chaos infrastructure, chaos hubs, and chaos experiments are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
 
 If you (as a user) have administrative privileges on a project, you can create predefined role(s) pertaining to chaos resource access.
 
@@ -34,7 +34,7 @@ Harness allows users to exercise fine-grained control, which is sufficient for e
 
 3. View/Add (by selecting fault templates and providing app data)/Edit (fault tunables, validation/probe constraints, execution properties)/Execute (run saved experiments)/Delete the chaos experiments ([Chaos Experiment](../experiments)).
 
-4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](../gamedays).
+4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete chaos gamedays.
 
     ![fine-grain control](./static/rbac/fine-grain-control.png)
 

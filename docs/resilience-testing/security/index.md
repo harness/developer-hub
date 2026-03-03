@@ -93,14 +93,13 @@ The experiment artifact that is stored in a chaos hub or supplied when you creat
 
 You can fine-tune permissions to suit specific infrastructures and experiments if you want to reduce the blast radius and impact from a security perspective. This applies to both Kubernetes-based and non-Kubernetes chaos.
 
-In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](./namespace-considerations) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.
+In the case of the Kubernetes chaos, a lower blast radius is achieved through service accounts mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.
 
 Every fault in the Enterprise chaos hub publishes the permissions that you need to execute the fault. You can tune your roles. Common permission templates that work as subsets or supersets for a specific category of experiments are also available. For example, [AWS resource faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults).
 
 
 ## Next steps
 
-* [Namespace considerations](./namespace-considerations)
 * [Openshift security policies](./security-templates/openshift-scc)
 * [Pod security policy](./security-templates/psp)
 * [Kyverno policy](./security-templates/kyverno-policies)

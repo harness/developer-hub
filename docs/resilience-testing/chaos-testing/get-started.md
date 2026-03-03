@@ -163,5 +163,4 @@ Congratulations! You've successfully run your first chaos experiment. Here's wha
 
 * [Explore more chaos faults](/docs/chaos-engineering/faults/chaos-faults) for different failure scenarios.
 * Set up [advanced probes](./probes) for comprehensive monitoring.
-* Organize [GameDays](./gamedays) for team chaos engineering events.
 * [Integrate with CI/CD](./integrations/cicd/jenkins) to automate chaos testing in your pipelines.

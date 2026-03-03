@@ -459,7 +459,7 @@ Harness CE platform provides [native integration for chaos experiments with the 
 
 ### GameDay Support
 
-Harness CE currently offers [GameDay](../chaos-testing/gamedays) support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. However, GameDay support for Windows chaos experiments is not yet available.
+Harness CE currently offers GameDay support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. However, GameDay support for Windows chaos experiments is not yet available.
 
 ### Inclusion in ChaosGuard Policies
 

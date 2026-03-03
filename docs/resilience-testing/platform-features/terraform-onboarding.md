@@ -12,7 +12,6 @@ Harness simplifies chaos engineering with Terraform integration that enables you
 - **Discover Services** - Automatically detect services for chaos experiments. See [Service Discovery documentation](/docs/resilience-testing/chaos-testing/service-discovery).
 - **Setup custom Image Registry** - Configure custom image registries for Harness Chaos Engineering workloads. See [Image Registry documentation](/docs/resilience-testing/chaos-testing/image-registry).
 - **Enforce Security** - Implement granular access controls and governance policies via Chaos Guard. See [Chaos Guard documentation](/docs/resilience-testing/chaos-testing/governance/governance-in-execution).
-- **Manage ChaosHubs** - Manage custom ChaosHubs to provide organization, account or project level fault, probes and action templates. See [ChaosHub documentation](/docs/resilience-testing/chaos-testing/chaoshub).
 
 :::info
 This Terraform provider for chaos engineering is currently supported for **Kubernetes infrastructures**.
@@ -159,31 +158,6 @@ resource "harness_chaos_security_governance_rule" "this" {
   user_group_ids = ["your_user_group_id"]
 }
 ```
-
-### ChaosHub Management
-
-Manage custom ChaosHubs to provide organization, account or project level fault, probes and action templates.
-
-**ChaosHub**: Connect Git repositories containing custom chaos experiments  
-**Resource**: `harness_chaos_hub`  
-**Documentation**: [harness_chaos_hub](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/chaos_hub)
-
-```hcl
-resource "harness_chaos_hub" "this" {
-  // Required fields
-  org_id      = "your_org_id"
-  project_id  = "your_project_id"
-  name        = "custom-chaos-hub"
-  description = "Custom ChaosHub for organization experiments"
-  connector_id = "your_git_connector_id"
-  repo_branch  = "main"
-  repo_name    = "chaos-experiments"
-}
-```
-
-**ChaosHub Sync**: Trigger synchronization of ChaosHub content  
-**Resource**: `harness_chaos_hub_sync`  
-**Documentation**: [harness_chaos_hub_sync](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/chaos_hub_sync)
 
 
 ## After Infrastructure Setup

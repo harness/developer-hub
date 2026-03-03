@@ -73,7 +73,7 @@ If you have created a connector and a Harness Delegate earlier, you can find the
 - Currently, DDCR (or Harness Delegate) can only be installed to execute Kubernetes-based faults. This means you can only create Kubernetes connectors.
 - To execute faults on Linux and Windows, install Linux and Windows agents respectively.
 - To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](./mtls-support).
-- To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](./proxy-support).
+- To configure mTLS with DDCR and Discovery Agent proxy settings, go to [proxy Support](./proxy-support).
 :::
 
 ---

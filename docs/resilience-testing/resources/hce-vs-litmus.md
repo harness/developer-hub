@@ -45,13 +45,12 @@ sidebar_position: 1
 | | Windows native agent | ❌ | ✅ |
 | | Scope-based isolation | ✅ | ✅ |
 | **Advanced Management** | UI CRUD operations | ✅ | ✅ |
-| | Multi-cluster experiments | ❌ | ✅ (GameDays/pipelines) |
-| | Parallel experiments | ❌ | ✅ (GameDays/pipelines) |
+| | Multi-cluster experiments | ❌ | ✅ (pipelines) |
+| | Parallel experiments | ❌ | ✅ (pipelines) |
 | | Out-of-box experiments | ❌ | ✅ |
 | | Chaos experiment templates | ✅ | ✅ |
 | | Experiment scheduling | ✅ | ✅ |
 | | Advanced scheduling (cron) | ✅ | ✅ |
-| | GameDays | ❌ | ✅ |
 | | Pipelines | ❌ | ✅ |
 | | Resilience score | ✅ | ✅ |
 | | Experiment analytics | ✅ | ✅ |
@@ -59,7 +58,6 @@ sidebar_position: 1
 | | Chaos experiment comparison | ❌ | ✅ |
 | | ChaosHub export | ❌ | ✅ |
 | | Direct hub scheduling | ❌ | ✅ |
-| | GameDay portal | ❌ | ✅ |
 | | ChaosGuard governance | ❌ | ✅ |
 | **Authentication & Authorization** | Username authentication | ✅ | ✅ |
 | | LDAP provider | ❌ | ✅ |

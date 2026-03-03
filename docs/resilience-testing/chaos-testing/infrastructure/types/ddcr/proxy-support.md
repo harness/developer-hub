@@ -25,8 +25,7 @@ The diagram above describes the following:
 - All the inbound connections go through the Delegate.
 - If your cluster has connectivity with the Harness portal (Harness Control Plane in the diagram), you won't need any proxy.
 - If your cluster does not have connectivity with the Harness portal (Harness Control Plane in the diagram), then such requests goes through the proxy.
-    - In case you already have a proxy set up, you can [provide the URL of the proxy in the UI](#delegate-driven-chaos-runner-ddcr).
-    - In case you don't have a proxy set up, you can [install](#installation) HNP.
+    - In case you already have a proxy set up, you can [provide the URL of the proxy in the UI](#hnp-configuration-for-delegate-driven-chaos-runner-ddcr).
     - In case you don't have a proxy set up, you can [install](#installation) HNP.
 
 :::tip
@@ -35,17 +34,6 @@ Chaos runner supports token-based authentication with the Harness Platform. If y
 
 ## Installation
 
-To install HNP, execute the below Helm command.
-
-```bash
-helm repo add harness-chaos https://harness.github.io/chaos-infra-helm-chart
-```
-
-```bash
-helm upgrade --install chaos-agent-proxy harness-chaos/chaos-infra -n hce -f override.yaml
-```
-
-You can install HNP with or without using mTLS. Described below are sample configurations for both of them.
 To install HNP, execute the below Helm command.
 
 ```bash

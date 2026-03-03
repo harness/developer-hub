@@ -27,15 +27,10 @@ If you don't want to create Kubernetes secrets in multiple clusters, you can [in
 
     ![](./static/delegate/proxy-2.png)
 
-
 ## Discovery Agent
 
 To configure mTLS in the Discovery Agent, create a Kubernetes secret with the certificate and key in the target cluster and provide the following details.
 
     ![](./static/delegate/mtls-1.png)
-
-If you don't want to create Kubernetes secrets in multiple clusters, you can install the Chaos Runner agent proxy with mTLS key and certificate and provide the proxy URL in proxy setting.
-
-    ![](./static/delegate/proxy-2.png)
 
 

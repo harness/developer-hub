@@ -3376,7 +3376,6 @@ const sidebars: SidebarsConfig = {
         },
         "resilience-testing/chaos-testing/application-maps",
         "resilience-testing/chaos-testing/service-discovery",
-        "resilience-testing/chaos-testing/gamedays",
         "resilience-testing/chaos-testing/image-registry",
         {
           type: 'category',
@@ -3449,7 +3448,6 @@ const sidebars: SidebarsConfig = {
           },
           collapsed: true,
           items: [
-            'resilience-testing/chaos-testing/on-premises-smp/connect-enterprise-chaoshub',
             'resilience-testing/chaos-testing/on-premises-smp/connect-infrastructure',
           ],
         },
@@ -3459,7 +3457,6 @@ const sidebars: SidebarsConfig = {
           className: 'horizontal-bar',
         },
         'resilience-testing/security/index',
-        'resilience-testing/security/namespace-considerations',
         {
           type: 'category',
           label: 'Security Templates',

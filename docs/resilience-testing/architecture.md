@@ -129,9 +129,6 @@ Once the chaos experiments are created using a chaos studio, they are available 
 
   HCE-CLI, a command line interface is provided for seamless execution of chaos experiments from automation scripts or from pipeline.
 
-- **Orchestrate Via GameDays**
-
-  The chaos control place provides a native [Gameday feature](./chaos-testing/gamedays) using which chaos experiments can be planned and executed.
 
 ---
 

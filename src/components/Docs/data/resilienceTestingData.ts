@@ -112,13 +112,6 @@ import { MODULES } from "@site/src/constants";
         "",
       list: [
         {
-          title: "GameDays",
-          module: MODULES.rt,
-          description:
-            "Conduct controlled production testing exercises to validate incident response.",
-          link: "/docs/resilience-testing/chaos-testing/gamedays",
-        },
-        {
           title: "Governance & ChaosGuard",
           module: MODULES.rt,
           description:

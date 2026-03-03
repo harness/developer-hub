@@ -185,14 +185,6 @@ Fine-grained permissions for who can:
 - Control what faults can be injected (fault restrictions)
 - Set approval requirements for high-risk tests
 
-### GameDays
-
-[GameDays](./chaos-testing/gamedays) are coordinated resilience testing exercises:
-- Plan and schedule multiple tests together
-- Simulate real incident scenarios
-- Practice team response procedures
-- Validate runbooks and recovery processes
-
 ### Risks
 
 Automated identification and tracking of system weaknesses:

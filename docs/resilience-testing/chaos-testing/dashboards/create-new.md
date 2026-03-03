@@ -38,7 +38,7 @@ This section will guide you through creating a new chaos dashboard, and creating
 
 	![edit-5](./static/create-new/add-5.png)
 
-6. Select a table whose fields you wish to visualize. Harness CE currently supports **Application Maps**, **Chaos Experiments**, **Chaos GameDays**, **Chaos Guard**, **Chaos Hub**, and ** **Chaos Probes**. In this example, select **Chaos Experiments**.
+6. Select a table whose fields you wish to visualize. Harness CE currently supports **Application Maps**, **Chaos Experiments**, **Chaos Guard**, **Chaos Hub**, and **Chaos Probes**. In this example, select **Chaos Experiments**.
 
     ![select-fields](./static/create-new/select-fields-6.png)
 
