@@ -167,3 +167,33 @@ Yes, you can assign multiple contexts to a changeset by separating them with com
 context: test,dev
 ``` 
 This means the changeset will run in both test and development environments. 
+
+### Why are some Liquibase changeSets with no context being deployed in one execution, but skipped in another when using Harness DB Ops?
+
+This behavior occurs due to how Liquibase evaluates contexts at runtime in conjunction with the context configured in the Harness DB Schema Instance.
+
+```yaml
+databaseChangeLog:
+- changeSet:
+    id: 1
+    context: "@v1"
+    ...
+
+- changeSet:
+    id: 2
+    ...
+
+- changeSet:
+    id: 3
+    ...
+```
+
+If a context (for example, `v1`) is defined at the DB Instance level, Harness passes that value to Liquibase during execution. In this scenario:
+- Only changeSets explicitly matching that context (e.g., context: "@v1") will execute.
+- changeSets without any context defined will be skipped.
+
+However, if no context is defined at the DB Instance level:
+- Liquibase applies no context filter.
+- All changeSets execute, regardless of whether they define a context.
+
+Therefore, the inconsistency is not a defect but a result of differing runtime configurations. When a context filter is applied, Liquibase strictly executes only matching changeSets. When no filter is applied, it executes all changeSets.
