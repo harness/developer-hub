@@ -341,6 +341,132 @@ upgrades:
 </details>  
 :::
 
+## March 03, 2026, Version 0.36.3
+
+:::note Important
+The migration from TimescaleDB to PostgreSQL is automatically triggered as part of the Harness SMP upgrade to version 0.36.x. Before you upgrade to SMP 0.36.x, you must be running version 0.35.x. Learn more about the migration in the [migration guide](/docs/self-managed-enterprise-edition/advanced-configurations/tsdb-to-postgresql-migration).
+:::
+
+This release includes the following Harness module and component versions.
+
+| **Name**                     | **Version**                                                                                  |
+|------------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                   | [0.36.3](https://github.com/harness/helm-charts/releases/tag/harness-0.36.3)                 |
+| Air Gap Bundle               | [0.36.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.36.3) |
+| Access Control               | 1.184.0                                                                                      |
+| Anomaly Detection            | 1.20.0                                                                                       |
+| Audit Event Streaming        | 1.73.0                                                                                       |
+| Batch Processing             | 1.75.18                                                                                      |
+| Bootstrap                    | 1.64.0                                                                                       |
+| CE Nextgen                   | 1.77.11                                                                                      |
+| Change Data Capture          | 1.49.4                                                                                       |
+| Chaos CRD                    | 1.72.0                                                                                       |
+| Chaos K8s IFS                | 1.72.5                                                                                       |
+| Chaos Linux IFC              | 1.72.2                                                                                       |
+| Chaos Linux IFS              | 1.72.2                                                                                       |
+| Chaos Manager                | 1.72.18                                                                                      |
+| Chaos Machine IFS            | 1.72.3                                                                                       |
+| Chaos Machine IFC            | 1.72.2                                                                                       |
+| Chaos Web                    | 1.72.10                                                                                      |
+| CI Manager                   | 1.119.8                                                                                      |
+| Cloud Info                   | 1.13.2                                                                                       |
+| CV Nextgen                   | 1.53.1                                                                                       |
+| DB Devops Service            | 1.76.2                                                                                       |
+| Debezium Service             | 1.25.0                                                                                       |
+| Delegate Proxy               | 1.6.0                                                                                        |
+| Delegate Version (Immutable) | 26.01.88201                                                                                  |
+| Event Service                | 1.14.0                                                                                       |
+| Feature Flag Pushpin Service | 1.1132.0                                                                                     |
+| Feature Flag Service         | 1.1148.0                                                                                     |
+| Gateway Service              | 1.59.2                                                                                       |
+| GitOps Service               | 1.49.1                                                                                       |
+| Harness Manager              | 1.127.0                                                                                      |
+| LE Nextgen                   | 1.12.2                                                                                       |
+| Log Service                  | 1.38.8                                                                                       |
+| Looker                       | 1.8.9                                                                                        |
+| Next Gen UI                  | 1.114.2                                                                                      |
+| NG Auth UI                   | 1.37.4                                                                                       |
+| NG CE UI                     | 1.73.7                                                                                       |
+| NG Custom Dashboards         | 1.98.0                                                                                       |
+| NG Dashboard Aggregator      | 1.92.0                                                                                       |
+| NG Manager                   | 1.128.4                                                                                      |
+| Pipeline Service             | 1.168.5                                                                                      |
+| Platform Service             | 1.106.3                                                                                      |
+| Policy Management            | 1.35.6                                                                                       |
+| SCM Service                  | 1.43.0                                                                                       |
+| Service Discovery Manager    | 0.52.3                                                                                       |
+| SRM UI                       | 1.16.0                                                                                       |
+| SSCA Manager                 | 1.48.32                                                                                      |
+| SSCA UI                      | 0.37.9                                                                                       |
+| STO Core                     | 1.175.7                                                                                      |
+| Telescopes                   | 1.6.0                                                                                        |
+| Template Service             | 1.130.0                                                                                      |
+| Test Intelligence Service    | 1.60.4                                                                                       |
+| Queue Service                | 1.8.0                                                                                        |
+| Code API                     | 1.73.2                                                                                       |
+| Code GitRPC                  | 1.73.1                                                                                       |
+| Code GitHA                   | 1.73.1                                                                                       |
+| Code Search                  | 1.73.1                                                                                       |
+| IAC Server                   | 1.296.0                                                                                      |
+| IACM Manager                 | 1.125.0                                                                                      |
+| IDP Service                  | 1.36.9                                                                                       |
+| IDP Admin                    | 1.36.2                                                                                       |
+| IDP App UI                   | 1.36.8                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use either **`gsutil`** or **`curl`**.
+
+<details>
+  <summary>Option 1: Using `gsutil`</summary>
+    <p>
+      For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+      ```bash
+      gsutil -m cp \
+        "gs://smp-airgap-bundles/harness-0.36.3/ccm_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/cdng_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/ce_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/cet_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/ci_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/ff_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/platform_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/sto_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/iacm_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.36.3/idp_images.tgz" \
+        .
+      ```
+    </p>
+</details>
+
+<details>
+  <summary>Option 2: Using `curl`</summary>
+    <p>
+        You can also download the images directly using curl:
+        ```bash
+        curl -f -s -L -o smp-airgap-bundles/ccm_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/ccm_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/cdng_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/cdng_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/ce_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/ce_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/cet_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/cet_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/ci_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/ci_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/ff_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/ff_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/platform_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/platform_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/sto_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/sto_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/iacm_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/iacm_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/idp_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.36.3/idp_images.tgz
+      ```
+    </p>
+</details>  
+
+:::info Note
+Ensure that the `smp-airgap-bundles/` directory exists before running the command.
+:::
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue where the storageClassName for the tsdb-to-psql-migrator PVC could not be customized. Users can now configure the storage class for the migrator PVC using `global.storageClass` or `platform.tsdb-to-psql-migrator.persistence.storageClass`. [PL-69435]
+
 ## February 23, 2026, Version 0.37.0
 
 This release includes the following Harness module and component versions.
