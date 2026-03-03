@@ -454,13 +454,25 @@ Installing software during pipeline execution increases build time. Consider the
 
 ## Bring Your Own Image (BYOI)
 
-Harness supports **Bring Your Own Image**, allowing you to user Harness Cloud with your own **custom images**. 
+Harness supports **Bring Your Own Image (BYOI)**, allowing you to use Harness Cloud with your own **custom images**. Create VM images with your tools and dependencies pre-installed for faster, more consistent CI builds.
 
+### Linux BYOI
 
-:::note Note:
-* Support it currently available only for **macOS**. support for linux is coming soon.
+For Linux builds, you can create custom images using Packer with the BYOI builder plugin. This allows you to:
+
+- Pre-install development tools, SDKs, and dependencies
+- Configure environment settings and files
+- Build on top of Ubuntu base images or your existing BYOI images
+
+For detailed instructions on creating and using custom Linux images, see [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi).
+
+### macOS BYOI
+
+macOS BYOI support is also available for custom macOS build environments. Unlike Linux BYOI, which uses Packer to build custom VM images, macOS BYOI uses an OCI registry pull model — you push a pre-configured image layer to an OCI-compatible registry, and Harness pulls it onto the macOS VM at build time.
+
+:::note
 * Setting an image pull policy is currently not supported. However, by default, an image is never pulled if it already exists on the VM.
-* BYOI support is currently behind a feature flag. Please reach out to support to enabled this feature.
+* BYOI support requires the `CI_ENABLE_BYOI_HOSTED` feature flag. Contact Harness support to enable this feature.
 :::
 
 **Best Practice**: Always retag your custom image with a new version whenever changes are made. This ensures Harness Cloud picks up the updated image during your build.
@@ -481,4 +493,5 @@ For questions, issues, or feature requests related to Harness VM images, contact
 ## Related Resources
 
 - [Use Harness Cloud Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure)
-- [Harness Cloud VM Image Repository](https://github.com/harness/harness-cloud-images)
+- [Harness Cloud BYOI (Bring Your Own Image)](/docs/platform/references/harness-cloud-byoi)
+- [Harness Cloud VM Image Repository](https://github.com/wings-software/harness-docs)

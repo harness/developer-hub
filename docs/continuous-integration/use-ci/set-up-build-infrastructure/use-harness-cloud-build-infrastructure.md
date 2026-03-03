@@ -56,6 +56,8 @@ After selecting a base VM image, you can **customize the build environment at pi
 
 These customizations are applied **on top of the selected VM image**, are re-applied on each run, and **do not modify the underlying image**. [Learn more](/docs/platform/references/harness-cloud-vm-images#pre-installed-software-version-management)
 
+You can also use **Bring Your Own Image (BYOI)** to create fully custom VM images with your tools and dependencies pre-installed, eliminating the need to install them at pipeline runtime. For details, see [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi) and [BYOI on Harness Cloud VM Images](/docs/platform/references/harness-cloud-vm-images#bring-your-own-image-byoi).
+
 :::tip
 To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
 :::

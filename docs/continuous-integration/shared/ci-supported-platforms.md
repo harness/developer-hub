@@ -16,7 +16,7 @@ In addition to [built-in codebase cloning](/docs/continuous-integration/use-ci/c
 
 Harness CI offers [Harness-managed and self-managed build infrastructure options](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) for a variety of operating systems and architectures, including:
 
-* Harness CI Cloud (built in, Harness-managed, Linux/Windows/macOS)
+* Harness CI Cloud (built in, Harness-managed, Linux/Windows/macOS) — supports [Bring Your Own Image (BYOI)](/docs/platform/references/harness-cloud-byoi) for custom VM images
 * Local runners (Linux/Windows/macOS)
 * [Kubernetes clusters](/docs/category/set-up-kubernetes-cluster-build-infrastructures):
    * Amazon Elastic Kubernetes Service (Amazon EKS)
