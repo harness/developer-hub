@@ -16,7 +16,7 @@ function hideIndexFromSidebarItems(items) {
 const config: Config = {
   title: 'Harness Developer Hub',
   tagline:
-    'Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.',
+    'Learn intelligent software delivery skills at your own pace and in one place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.',
   url: 'https://developer.harness.io',
   baseUrl: BASE_URL,
   onBrokenLinks: 'throw',

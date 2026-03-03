@@ -1587,6 +1587,12 @@ figure p {
   --dropdown-bg: #ede8fb;
 }
 
+/* Kapa landing bar: ⌘K pill transparent with light border in dark mode */
+html[data-theme='dark'] .navbar__search_kapa kbd {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
 [data-theme='light'] {
   --main-background-color: #faf8ff;
   --chatbot-input-background-color: #ede8fb;

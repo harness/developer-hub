@@ -86,8 +86,20 @@
   max-width: 56rem;
   line-height: 1.6;
 
-  /* 64px below to separate from next content. */
-  margin-bottom: 64px;
+  /* Space before Kapa bar. */
+  margin-bottom: 24px;
+}
+
+/* Wider Kapa Ask AI bar on landing page only. Reuses same component; standalone CSS. */
+.heroKapaWrapper {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto 64px;
+
+  :global(.navbar__search_kapa) {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 /* Keep image/animation rules intact. */
@@ -150,6 +162,11 @@
     .heroSubTitle {
       width: 100%;
       font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .heroKapaWrapper {
+      max-width: 90vw;
       margin-bottom: 56px;
     }
 
@@ -177,6 +194,11 @@
 
   .heroSubTitle {
     font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .heroKapaWrapper {
+    max-width: 100%;
     margin-bottom: 48px;
   }
 

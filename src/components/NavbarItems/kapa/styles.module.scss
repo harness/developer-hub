@@ -1,6 +1,6 @@
 .navbar__search_kapa {
   background: #fff9;
-  border: 1px solid #0000001a;
+  border: 1px solid #00000033;
   border-radius: 8px;
   height: 40px;
   padding: 0 12px;
@@ -59,10 +59,87 @@
   }
 }
 
-[data-theme='dark'] {
+/* Landing page variant: typing animation + ⌘K shortcut */
+.navbar__search_kapa_landing {
+  .landing_inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .landing_typing {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray-500);
+    font-size: 14px;
+    font-weight: 400;
+    min-height: 1.25em;
+    min-width: 0;
+  }
+
+  .landing_typing_text_wrapper {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  .landing_icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .landing_typing_text {
+    color: inherit;
+  }
+
+  .landing_typing_cursor {
+    color: var(--primary-7);
+    animation: blink 1s step-end infinite;
+    margin-left: 1px;
+  }
+
+  .landing_shortcut {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-500);
+    background: #ffffffb3;
+    border: 1px solid #00000026;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+
+  /* When prefers-reduced-motion: no blinking cursor */
+  &.reducedMotion .landing_typing_cursor {
+    display: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+:global(html[data-theme='dark']) {
   .navbar__search_kapa {
     background-color: #ffffff1f;
-    border-color: #fff3;
+    border-color: rgba(255, 255, 255, 0.25);
     color: #9ca3af;
 
     .search_text p {
@@ -73,6 +150,17 @@
       background-color: #ffffff1f;
       border-color: #fff3;
       color: #9ca3af;
+    }
+
+    .navbar__search_kapa_landing {
+      .landing_typing {
+        color: #9ca3af;
+      }
+      .landing_shortcut {
+        background: transparent !important;
+        border-color: rgba(255, 255, 255, 0.3);
+        color: #e5e7eb;
+      }
     }
   }
 }

@@ -16,6 +16,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 import CategoryGrid from "@site/src/components/CategoryGrid/CategoryGrid";
 import { categories } from "@site/src/components/CategoryGrid/categories.data";
 import CommunityLandingPage from "@site/src/components/Community/CommunityLandingPage";
+import Kapa from "@site/src/components/NavbarItems/kapa";
 
 function HomePageAnimation() {
   const { colorMode } = useColorMode();
@@ -44,6 +45,9 @@ function HomepageHeader() {
       <div className={styles.heroInner}>
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <p className={styles.heroSubTitle}>{siteConfig.tagline}</p>
+        <div className={styles.heroKapaWrapper}>
+          <Kapa variant="landing" />
+        </div>
       </div>
     </header>
   );
