@@ -9,7 +9,7 @@ redirect_from:
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta and available only to select customers. The product team determines access based on current [supported use cases and steps](./install-delegate-2-0#whats-supported).
+The new Harness Delegate is currently in closed beta and available only to select customers. The product team determines access based on current [supported use cases and steps](/docs/platform/delegates-v2/install-delegate-2-0#whats-supported).
 
 :::
 
@@ -113,12 +113,12 @@ Several capabilities are planned for future releases:
 
 ## Installation and configuration
 
-For detailed installation instructions and configuration options, go to [Install Harness Delegate](./install-delegate-2-0).
+For detailed installation instructions and configuration options, go to [Install Harness Delegate](/docs/platform/delegates-v2/install-delegate-2-0).
 
 ## Feature comparison
 
 Because the new delegate is in closed beta, feature coverage is still expanding. Support varies across connectors, secret managers, infrastructure drivers, and CI step types.
 
-For a detailed comparison with the legacy delegate and information about the development roadmap, go to [Feature Parity](./feature-parity).
+For a detailed comparison with the legacy delegate and information about the development roadmap, go to [Feature Parity](/docs/platform/delegates-v2/feature-parity).
 
 For information about the legacy delegate, go to [Legacy delegate documentation](/docs/platform/delegates/delegate-concepts/delegate-overview).
