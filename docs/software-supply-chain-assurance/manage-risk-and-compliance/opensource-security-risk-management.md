@@ -8,6 +8,7 @@ tags:
   - risk-and-compliance
   - top-10-oss-risks
   - owasp
+  - vulnerability-management
 ---
 
 

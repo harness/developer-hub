@@ -7,7 +7,10 @@ sidebar_position: 2
 tags:
   - harness-scs 
   - key-concepts
-  - scs-terminologies
+  - sbom
+  - slsa
+  - artifact-attestation
+  - artifact-signing
 ---
 
 This topic covers basic terminology and concepts related to the Harness Supply Chain Security (SCS) module.

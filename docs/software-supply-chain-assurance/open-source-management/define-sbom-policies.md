@@ -10,8 +10,9 @@ tags:
   - harness-scs 
   - sbom-policies
   - open-source-management
-  - sbom
-    
+  - allow-list-policies
+  - opa-policies
+  - supply-chain-visibility
 ---
 
 When you [create SBOM policies](./create-sbom-policies.md), you define rules for open-source component usage based on criteria such as component name, version, license, PURL, and supplier.

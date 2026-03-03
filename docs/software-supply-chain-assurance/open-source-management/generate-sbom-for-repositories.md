@@ -10,8 +10,9 @@ redirect_from:
 tags:
   - harness-scs 
   - generate-sbom
+  - generate-sbom-for-repositories
   - open-source-management
-  - sbom 
+  - supply-chain-visibility
 
 ---
 

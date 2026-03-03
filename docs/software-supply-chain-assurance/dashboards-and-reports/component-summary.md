@@ -9,6 +9,8 @@ tags:
   - component-summary
   - open-source-management
   - dashboards
+  - supply-chain-visibility
+  - vulnerability-management
 
 ---
 

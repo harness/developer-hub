@@ -10,8 +10,10 @@ redirect_from:
 
 tags:
   - harness-scs 
-  - get-started
-  - on-boarding  
+  - get-started-with-rspm
+  - on-boarding
+  - connect-github-with-scs
+  - setup-ci-cd-spm-on-harness-pipelines  
 ---
 
 This guide will help you onboard to the Harness SCS features, allowing you to set up RSPM, CI/CD SPM, and Artifact Security with integrations. Refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section to see the full list of supported integrations for each feature.

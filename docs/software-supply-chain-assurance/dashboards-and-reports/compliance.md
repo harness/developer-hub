@@ -11,6 +11,8 @@ tags:
   - compliance-report
   - open-source-management
   - dashboards
+  - standards-compliance
+  - regulatory-compliance
 ---
 
 

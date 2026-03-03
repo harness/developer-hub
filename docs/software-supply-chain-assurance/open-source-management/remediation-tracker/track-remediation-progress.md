@@ -11,6 +11,8 @@ tags:
   - harness-scs 
   - track-remediation
   - open-source-management
+  - vulnerability-management
+  - supply-chain-visibility
 ---
 
 # Track Remediation Progress

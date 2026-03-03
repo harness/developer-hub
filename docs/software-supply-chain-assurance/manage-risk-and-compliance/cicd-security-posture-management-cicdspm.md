@@ -10,6 +10,7 @@ tags:
   - harness-scs 
   - risk-and-compliance
   - ci-cd-spm
+  - vulnerability-management
 ---
 
 # CI/CD Security Posture Management with Harness SCS

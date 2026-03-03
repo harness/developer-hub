@@ -9,6 +9,8 @@ tags:
   - harness-scs 
   - remediation-tracker
   - open-source-management
+  - vulnerability-management
+  - supply-chain-visibility
 ---
 
 # Remediation Tracker

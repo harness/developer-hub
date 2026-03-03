@@ -12,7 +12,8 @@ tags:
   - harness-scs 
   - enforce-sbom-policies
   - open-source-management
-  - sbom   
+  - policy-enforcement
+  - supply-chain-visibility   
 ---
 
 import Tabs from '@theme/Tabs';

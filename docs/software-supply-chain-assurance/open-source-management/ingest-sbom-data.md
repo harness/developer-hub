@@ -11,7 +11,8 @@ tags:
   - harness-scs 
   - ingest-sbom
   - open-source-management
-  - sbom 
+  - sbom-management
+  - supply-chain-visibility 
 ---
 
 

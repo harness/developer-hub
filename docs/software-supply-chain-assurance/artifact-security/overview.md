@@ -6,6 +6,12 @@ sidebar_position: 1
 redirect_from:
 
 - /docs/software-supply-chain-assurance/artifact-view
+
+tags:
+  - software-artifacts
+  - supply-chain-visibility
+  - traceability
+  - artifact-provenance
 ---
 
 The **Artifacts** section in the SCS module is a centralized hub for viewing all your container images and their details, providing deeper visibility into your artifacts from multiple perspectives within the software supply chain. Here are the key features this section offers:

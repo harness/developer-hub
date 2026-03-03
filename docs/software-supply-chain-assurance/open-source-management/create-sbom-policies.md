@@ -10,7 +10,8 @@ tags:
   - harness-scs 
   - create-sbom-policies
   - open-source-management
-  - sbom 
+  - sbom
+  - supply-chain-visibility 
 ---
 
 This document provides a step-by-step guide on how to create SBOM Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](/docs/software-supply-chain-assurance/open-source-management/define-sbom-policies). To learn about implementing SBOM policies, follow the instructions in the section on [enforcing SBOM policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies).

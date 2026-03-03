@@ -12,6 +12,7 @@ tags:
   - license-reports
   - open-source-management
   - dashboards
+  - supply-chain-visibility
 ---
 
 Software licenses generally fall into different categories or families, each with its own set of rules and obligations. Harness groups the licenses into four different categories which are called License Families.

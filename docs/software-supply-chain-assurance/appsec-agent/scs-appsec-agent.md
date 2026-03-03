@@ -3,6 +3,11 @@ title: SCS AppSec Agent
 description: Learn about the SCS Appsec Agent
 sidebar_label: SCS AppSec Agent
 sidebar_position: 116
+
+tags:
+  - scs-appsec-agent
+  - ai-agent
+  - harness-ai
 ---
 
 

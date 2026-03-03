@@ -9,7 +9,10 @@ redirect_from:
 tags:
   - harness-scs 
   - artifact-security
-  - slsa  
+  - slsa
+  - supply-chain-levels-for-software-artifacts-(slsa)
+  - slsa-compliance
+  - slsa-provenance  
 ---
 
 Software supply chains, made up of all the code, people, systems, and processes that contribute to development and delivery of software artifacts,  are increasingly vulnerable to breaches and compromises, presenting significant security challenges for organizations. To protect against such breaches, The [Supply Chain Levels for Software Artifacts](https://slsa.dev) (SLSA, pronounced "salsa") provides an end-to-end framework for ensuring the integrity of software artifacts throughout software delivery. By adopting SLSA, organizations can proactively strengthen their software build and deployment processes and secure against critical tampering attacks. 

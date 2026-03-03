@@ -11,9 +11,10 @@ redirect_from:
 
 tags:
   - harness-scs 
-  - ingest-sbom-from-scanners
+  - ingest-sbom-from-sto-scanners
   - open-source-management
-  - sbom 
+  - sbom-management
+  - supply-chain-visibility 
 ---
 
 

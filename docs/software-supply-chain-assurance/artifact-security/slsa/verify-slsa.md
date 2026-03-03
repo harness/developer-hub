@@ -8,10 +8,13 @@ redirect_from:
 
 
 tags:
-  -  artifact-security
-  -  slsa
+  - artifact-security
+  - slsa
   - harness-scs
-  - verify-slsa 
+  - verify-slsa
+  - slsa-verification
+  - slsa-provenance-verification
+  - slsa-attestation-verification
 ---
 
 import Tabs from '@theme/Tabs';

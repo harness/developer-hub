@@ -8,10 +8,12 @@ redirect_from:
   -  /docs/category/comply-with-slsa
 
 tags:
-  -  artifact-security
-  -  slsa
+  - artifact-security
+  - generate-slsa
   - harness-scs
-  - generate-slsa  
+  - slsa-provenance-generation
+  - provenance-attestation
+  - slsa-level-3-provenance
 ---
 
 import Tabs from '@theme/Tabs';

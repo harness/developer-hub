@@ -7,7 +7,9 @@ tags:
   - harness-scs 
   - create-slsa-policies
   - artifact-security
-  - slsa 
+  - slsa-policies
+  - slsa-provenance-policies
+  - opa-policies-for-slsa
 ---
 
 

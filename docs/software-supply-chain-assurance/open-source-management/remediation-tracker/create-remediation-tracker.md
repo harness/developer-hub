@@ -10,6 +10,8 @@ tags:
   - harness-scs 
   - create-remediation-tracker
   - open-source-management
+  - vulnerability-management
+  - supply-chain-visibility
 ---
 
 The instructions provided in this document will guide you through the process of creating a remediation tracker in the SCS Module. Please follow these steps to set up your tracker.

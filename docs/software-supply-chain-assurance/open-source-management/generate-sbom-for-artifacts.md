@@ -12,8 +12,9 @@ redirect_from:
 tags:
   - harness-scs 
   - generate-sbom
+  - generate-sbom-for-artifacts
   - open-source-management
-  - sbom   
+  - supply-chain-visibility  
 ---
 
 import Tabs from '@theme/Tabs';

@@ -7,8 +7,10 @@ sidebar_position: 4
 tags:
   - harness-scs 
   - component-violations
-  - open-source-management
   - dashboards
+  - supply-chain-visibility
+  - vulnerability-management
+  - policy-enforcement
 ---
 
 The Component Violations Dashboard for Artifacts and Repositories displays pipelines flagged for SBOM policy violations. It provides a centralized view across organizations and projects.

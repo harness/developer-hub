@@ -10,8 +10,9 @@ redirect_from:
 tags:
   - harness-scs 
   - sbom-overview
-  - open-source-management
-  - sbom 
+  - open-source-management 
+  - supply-chain-visibility
+  - open-source-software
 ---
 
 import Tabs from '@theme/Tabs';

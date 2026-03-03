@@ -12,7 +12,10 @@ redirect_from:
 tags:
   -  artifact-security
   -  verify-signed-artifacts
-  -  harness-scs   
+  -  harness-scs
+  -  artifact-integrity-verification
+  -  artifact-authenticity
+  -  signed-artifact-verification
 
 ---
 

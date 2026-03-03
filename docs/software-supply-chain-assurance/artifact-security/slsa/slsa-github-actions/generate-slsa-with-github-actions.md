@@ -9,7 +9,9 @@ tags:
   - harness-scs 
   - generate-slsa-with-github-actions
   - artifact-security
-  - slsa 
+  - slsa
+  - provenance
+  - attestation 
 ---
 
 [Harness GitHub Actions](https://github.com/marketplace/actions/harness-github-actions) provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks. 

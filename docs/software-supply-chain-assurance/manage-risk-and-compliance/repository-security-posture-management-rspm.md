@@ -9,6 +9,9 @@ tags:
   - harness-scs 
   - rspm
   - risk-and-compliance
+  - direct-indirect-dependencies
+  - open-source-software
+  - vulnerability-management
 ---
 
 # Repository Security Posture Management - RSPM with Harness SCS

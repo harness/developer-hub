@@ -11,6 +11,7 @@ tags:
   - harness-scs 
   - guides
   - tutorials
+  - detect-base-images-in-sbom
 ---
 
 The SBOM orchestration process extends beyond generating the SBOM. It also analyzes the artifact's metadata to determine the origin of each component within the image. These components are then labeled in the artifact view with tags such as **app**, **base**, and **distro**. This clear labeling pinpoints the origin of each component, offering deeper visibility into your software's composition, ultimately empowering you to effectively mitigate security risks.
