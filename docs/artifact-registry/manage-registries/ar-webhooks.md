@@ -18,6 +18,19 @@ import TabItem from '@theme/TabItem';
 
 In the Artifact Registry in Harness, **Triggers** automate actions based on events related to your artifacts, and allow you to streamline workflows by responding dynamically to changes in your artifact repositories.
 
+## Package Type Support
+
+Webhook support varies by package type. The following table shows which package types currently support webhooks:
+
+| Webhook Support Status | Package Types |
+|------------------------|---------------|
+| Supported | Docker, Maven, Cargo, Go, Conda, Dart, Composer (PHP) |
+| Coming Soon | Generic, Python (PyPI), NPM, NuGet, RPM, Hugging Face (HF) |
+
+:::info
+Webhook support for additional package types is being actively developed.
+:::
+
 ## Types of triggers
 1. **Artifact Creation**
     - Executes when a new artifact is pushed to the registry.
