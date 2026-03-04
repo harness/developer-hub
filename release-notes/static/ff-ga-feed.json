@@ -1048,6 +1048,11 @@
     "description": "GitOps APIs return HTTP 404(Not Found) in case of missing agent",
     "gaStartDate": "2026-03-02",
     "module": "GitOps"
+  },
+  {
+    "flagKey": "CI_GLOBAL_QUEUEING_ENABLED",
+    "description": "Enables global queueing for hosted build stages, allowing them to be automatically queued and executed once infrastructure resources become available.",
+    "gaStartDate": "2026-03-04",
+    "module": "Continuous Integration"
   }
-
 ]
