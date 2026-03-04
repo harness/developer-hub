@@ -9,9 +9,16 @@ import TabItem from '@theme/TabItem';
 
 
 
-An **Artifact Registry** is a central location for storing and managing software artifacts, such as container images or helm charts used throughout the software development lifecycle. To create one, follow these steps:
+An **Artifact Registry** is a central location for storing and managing software artifacts, such as container images or helm charts used throughout the software development lifecycle.
 
-1. First, select **+ New Artifact Registry** under the **Registries** tab. 
+:::info Registry Scope Levels
+Artifact registries can be created at **Account**, **Organization**, or **Project** level. Navigate to the desired scope level in Harness before creating the registry to control its accessibility across your organizational structure.
+:::
+
+To create an artifact registry, follow these steps:
+
+1. Navigate to the desired scope level (Account, Organization, or Project) where you want to create the registry.
+1. Select **+ New Artifact Registry** under the **Registries** tab. 
 1. Select a [registry type](/docs/artifact-registry/whats-supported#supported-registry-types). 
 1. Enter a **Registry Name** and optional **Description** and **Labels**.
     :::tip
