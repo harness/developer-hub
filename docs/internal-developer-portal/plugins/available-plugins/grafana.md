@@ -92,11 +92,11 @@ If you place height under specs.props.style, it may be ignored/overridden by the
 
 ❌ Not recommended (may be ignored)
 ```yaml
-    - component: EntityOverviewDashboardViewer
-      specs:
-        props:
-          style:
-            height: calc(100vh - 200px)
+- component: EntityOverviewDashboardViewer
+  specs:
+    props:
+      style:
+        height: calc(100vh - 200px)
 ```
 Why: the IDP Layout system applies sizing through the grid container, so height overrides should be provided via gridProps for consistent rendering.
 So, if you notice the dashboard suddenly rendering shorter after previously working, validate that the height is still defined in gridProps (layout-level), not props.style (component-level).
