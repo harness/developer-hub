@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2026-02-25T18:00
+date: 2026-03-03T18:00
 sidebar_position: 6
 ---
 
@@ -24,6 +24,37 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 We've migrated to LabelsV2, which preserves your original label keys while dramatically improving perspective load times—from 1 minute down to under 2 seconds. **Action required**: Please update your automated scripts to ensure compatibility with the new system.
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
+
+## March 2026 - Version 1.80.3
+#### Deployment Date: March 03, 2026 (Prod-1)
+
+### Feature Improvements
+- **Disable Atomization in Commitment Orchestrator:** We've added a new **Disable Atomization** option in Commitment Orchestration setup, giving you greater control over your commitment purchase strategy. This is useful for:
+  - Extremely stable, predictable workloads with no expected changes for 3+ years
+  - Organizations prioritizing absolute lowest per-hour costs over flexibility
+  - Environments with regulatory requirements for fixed, long-term capacity commitments
+  - Teams preferring simplified "set and forget" commitment management 
+
+Turning off Atomization will revert RI expirations to an annual schedule instead of monthly. This will affect your RI optimization strategy due to:
+- Reduced flexibility
+- One renewal opportunity per year or 3 years instead one per month
+- Higher lock-in risk
+- Full-year commitments with fewer exit opportunities
+- Lower potential savings
+- Limited ability to optimize based on usage changes
+
+[CCM-29445]
+
+
+- **Folder Name Validation:** Leading and trailing spaces are no longer allowed in folder names. [CCM-29248]
+
+- **Cost Category–JIRA Mapping Cleanup:** Empty rows will no longer be added when users attempt to create multiple mappings without saving them. [CCM-29161]
+
+### Fixed Issues
+
+- **Perspective Rule Reset Issue:** Fixed an issue on the Perspective page where editing rules in the rule builder and then changing the name or folder caused the rules to reset to the originally saved configuration. [CCM-29971]
+- **Applied Recommendations Chart Aggregation:** Improved the Recommendations vs. Savings chart to prevent clutter when large time ranges are selected. Aggregation now switches to monthly when the range exceeds three months and to yearly when it exceeds one year. [CCM-25390]
+- **Recommendation createdAt Field Population:** Fixed an issue where the createdAt field was not populated when generating recommendations. The field is now correctly populated upon recommendation generation. [CCM-29613]
 
 
 ## February 2026 - Important Updates to Dashboard
