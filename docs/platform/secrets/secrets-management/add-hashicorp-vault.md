@@ -18,7 +18,7 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
 <Storeauth />
 
-### Before you begin
+## Before you begin
 
 * [Harness' key concepts](/docs/platform/get-started/key-concepts.md)
 - [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
@@ -26,221 +26,244 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 - Make sure that the Harness Delegate can connect to the Vault URL.
 - Make sure you have View and Create/Edit permissions for secrets.
 
-### Step 1: Add a Secret Manager
+---
 
-This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+## Add a Secret Manager
 
-You can add a Connector at Project/Organization/Account scope. To do this, go to Project setup, Organization, or Account Resources.
+This topic assumes that you already have a Harness Project set up. If you don’t have one yet, see **[Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md)** for step-by-step instructions.
 
-In **Connectors**, select **Connector**.
+You can create a Connector at the **Project**, **Organization**, or **Account** scope, depending on your access and sharing requirements.
 
-In **Secret Managers**, select **HashiCorp Vault**. The HashiCorp Vault Secret Manager settings appear.
+To add a Connector:
 
-![](../../secrets/static/add-hashicorp-vault-19.png)
+1. Navigate to the appropriate scope:
 
-### Step 2: Overview
+   * **Project Setup** (for project-level connectors)
+   * **Organization Resources** (for organization-level connectors)
+   * **Account Resources** (for account-level connectors)
 
-Enter a **Name** for your secret manager.
+2. Select **Connectors**. Click **New Connector** (or **Connector**, depending on the UI version).
 
-You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../references/entity-identifier-reference.md).
+3. From the list of connector types, choose **Secret Managers**.
 
-Enter **Description** for your secret manager.
+4. Select **HashiCorp Vault**. 
 
-Enter **Tags** for your secret manager.
+   The **HashiCorp Vault Secret Manager** configuration page opens, where you can enter the required connection and authentication details.
 
-Select **Save and Continue.**
+      <DocImage path={require('../../secrets/static/add-hashicorp-vault-19.png')} width="70%" height="70%" title="Click to view full size image" />
 
-Enter **Vault URL**.
+---
 
-Enter **Base Secret Path**. The Base Secret Path is used for writing secrets. When Harness reads secrets, it uses the full path.
+## Overview
 
-For more information, go to [Vault documentation](https://www.vaultproject.io/docs/index.html).
+1. Enter a **Name** for the secret manager.
 
-Select the **Authentication** Type.
+2. (Optional) Modify the **ID**, or leave it the same as the name.
+   For more information, see [Entity Identifier Reference](../../references/entity-identifier-reference.md).
 
-![](../../secrets/static/add-hashicorp-vault-20.png)
+3. Enter a **Description** for the secret manager.
 
-### Option: App Role
+4. Add **Tags**, if required.
 
-The App Role option enables the Harness Vault Secret Manager to authenticate with Vault-defined roles.
+5. Select **Save and Continue**.
 
-The Vault AppRole method allows you to define multiple roles corresponding to different applications, each with different levels of access. The application's **App Role ID** and **Secret ID** are used for authentication with Vault. You need these to log in and fetch a Vault token.
+---
 
-To assign a **Secret ID**, you can create a new [**Secret**](/docs/platform/secrets/add-use-text-secrets) or choose an existing one.
+## Configure the Authentication type
 
-The SecretId should not expire and it should be valid until it is manually revoked. Harness uses the App Role ID and Secret ID you supply to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this vault. For example, when creating a secret in this vault, Harness internally uses this App Role Id and Secret ID and makes a call to vault via the delegate to generate a token. 
+1. On the **Vault Details** page, Enter the **Vault URL**.
 
-#### Enable Cache for App Role Token
-Now, this token is used to make the actual secret creation call to vault. This token is never received on the Harness side. It resides in the delegate and is cached for the duration that is one percent less than the time-to-live (TTL) of the token to prevent the generation of a new token for each request for improved performance. If you don't want to cache the token, you can disable the caching and token will be destroyed after the operation is successfully completed.
+2. Enter the **Base Secret Path**. The Base Secret Path is used when writing secrets to Vault. When reading secrets, Harness uses the complete secret path.
 
-#### Example of Token Caching Refresh
-To understand how the number of delegates and caching schedule works, here is an example that we have put together.
+   For more information about Vault configuration, see the official [Vault documentation](https://www.vaultproject.io/docs/index.html).
 
-Let’s assume we have set a 15 min TTL. The token is cached for one pipeline during those 15 minutes (minus 1 percent), but it is determined by the **delegate** which is being used with the connector.  If the delegate has been used previously with the connector within the 15 min, then a cached version of the Vault token will exist on the delegate.  
+3. Select the **Authentication Type**.
+      
+      <DocImage path={require('../../secrets/static/add-hashicorp-vault-20.png')} width="70%" height="70%" title="Click to view full size image" />
 
-If we have three pipeline, and two delgates involved, the assignment in our example is:
-- `Pipeline A` and `Pipeine C` use the delegate, `delegate-mumbai`
-- `Pipeline B` uses the delegate, `delegate-sanfran`
+      ### Option: App Role
 
-We will see the following behavior for the Vault connector occur in the executions, along with the **unique refresh timer** for each delegate
-```
-Pipeline A executed at time 0 (Token initial new fetch using role ID and Secret ID, stored on delegate-mumbai)
-Pipeline B executed at time +2min (Token initial new fetch using role ID and Secret ID, because this is a different delegate delegate-sanfran)
-Pipeline A executed at time +5min
-Pipeline C executed at time +10 min
-Pipeline B executed at time +11 min
-Pipeline A executed at time +16 min (Token expired on delegate-mumbai, Token new fetch performed using role ID and Secret ID,)
-Pipeline C executed at time +17 min
-Pipeline B executed at time +20 min (Token expired on delegate-sanfran, Token new fetch performed using role ID and Secret ID,)
-```
+         The App Role option enables the Harness Vault Secret Manager to authenticate with Vault-defined roles.
 
-Each delegate being utilized with the connector has a local cache of the token which refreshes according to the TTL rule of 15 minutes (minus 1 percent).
+         The Vault AppRole method allows you to define multiple roles corresponding to different applications, each with different levels of access. The application's **App Role ID** and **Secret ID** are used for authentication with Vault. You need these to log in and fetch a Vault token.
 
-#### Additional Information
+         To assign a **Secret ID**, you can create a new [**Secret**](/docs/platform/secrets/add-use-text-secrets) or choose an existing one.
 
-For more information, go to [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) in the HashiCorp documentation.
+         The SecretId should not expire and it should be valid until it is manually revoked. Harness uses the App Role ID and Secret ID you supply to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this vault. For example, when creating a secret in this vault, Harness internally uses this App Role Id and Secret ID and makes a call to vault via the delegate to generate a token. 
 
-If you encounter errors, setting [token_num_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
+      #### Enable Cache for App Role Token
 
-#### Permissions
+            Now, this token is used to make the actual secret creation call to vault. This token is never received on the Harness side. It resides in the delegate and is cached for the duration that is one percent less than the time-to-live (TTL) of the token to prevent the generation of a new token for each request for improved performance. If you don't want to cache the token, you can disable the caching and token will be destroyed after the operation is successfully completed.
 
-The Vault AppRole ID or the Periodic Token used in either of the authentication options must have an ACL policy attached so that Harness can use it. Typically, you create the policy first, then create the AppRole or Periodic Token and attach the policy.
+      #### Example of Token Caching Refresh
 
-:::note important
-The AppRole option only works with the default authentication path `approle`. If you change the authentication path to a non-default value like `approle-test`, the AppRole authentication will fail.
+            To understand how the number of delegates and caching schedule works, here is an example that we have put together.
 
-:::
+            Let’s assume we have set a 15 min TTL. The token is cached for one pipeline during those 15 minutes (minus 1 percent), but it is determined by the **delegate** which is being used with the connector.  If the delegate has been used previously with the connector within the 15 min, then a cached version of the Vault token will exist on the delegate.  
 
-In the policy examples below: if you've created a Read-only Vault Secret Manager, this secret manager needs only read, and list permissions on Vault. It does not need — and cannot assume — create, update, or delete permissions. If the secrets are in the Secret Engine named “secret”, the policy must have the following permissions.
+            If we have three pipeline, and two delgates involved, the assignment in our example is:
+            - `Pipeline A` and `Pipeine C` use the delegate, `delegate-mumbai`
+            - `Pipeline B` uses the delegate, `delegate-sanfran`
 
-```
-path "secret/*" {
-  capabilities = ["create", "update", "list", "read", "delete"]
-}
-```
+            We will see the following behavior for the Vault connector occur in the executions, along with the **unique refresh timer** for each delegate
+            ```
+            Pipeline A executed at time 0 (Token initial new fetch using role ID and Secret ID, stored on delegate-mumbai)
+            Pipeline B executed at time +2min (Token initial new fetch using role ID and Secret ID, because this is a different delegate delegate-sanfran)
+            Pipeline A executed at time +5min
+            Pipeline C executed at time +10 min
+            Pipeline B executed at time +11 min
+            Pipeline A executed at time +16 min (Token expired on delegate-mumbai, Token new fetch performed using role ID and Secret ID,)
+            Pipeline C executed at time +17 min
+            Pipeline B executed at time +20 min (Token expired on delegate-sanfran, Token new fetch performed using role ID and Secret ID,)
+            ```
 
-If the secrets are in a subfolder, such as secrets/harness, the policy will look like this:
+            Each delegate being utilized with the connector has a local cache of the token which refreshes according to the TTL rule of 15 minutes (minus 1 percent).
 
-```
-path "secret/harness/*" {
-  capabilities = ["create", "list", "read", "update", "delete"]
-}
-path "secret/harness" {
-  capabilities = ["list", "read"]
-}
-```
+      #### Additional Information
 
-These examples apply only to a **v1** secret engine. If you are planning to use a secret engine with version 2 (versioned secret engine), then the policies are different as explained [here](https://www.vaultproject.io/docs/secrets/kv/kv-v2). Go through this link to understand the correct permissions required for your use case. If the Vault Secret Manager needs to renew tokens, the following permissions are needed:
+         For more information, go to [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) in the HashiCorp documentation.
 
-```
-path "auth/token/renew-self" {
- capabilities = ["read", "update"]
-}
-```
+         If you encounter errors, setting [token_num_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
 
-#### Custom Authentication Path for AppRole Login
+      #### Permissions
 
-:::note
-This feature is supported on delegate version `837xx` and above.
-:::
+         The Vault AppRole ID or the Periodic Token used in either of the authentication options must have an ACL policy attached so that Harness can use it. Typically, you create the policy first, then create the AppRole or Periodic Token and attach the policy.
 
-The `appRoleLogin` method now supports a custom authentication path, utilizing it if provided, or defaulting to the standard `approle` endpoint if not specified.
+         :::note Important
+         The AppRole option only works with the default authentication path `approle`. If you change the authentication path to a non-default value like `approle-test`, the AppRole authentication will fail.
+         :::
 
-![](../../secrets/static/add-hashicorp-vault-31.png)
+         In the policy examples below: if you've created a Read-only Vault Secret Manager, this secret manager needs only read, and list permissions on Vault. It does not need — and cannot assume — create, update, or delete permissions. If the secrets are in the Secret Engine named “secret”, the policy must have the following permissions.
 
-For example, the custom AppRole path can be set as `<customPath>`, providing greater flexibility in configuring the authentication mechanism. This feature is particularly useful in scenarios where the default authentication path requires customization.
+            ```
+            path "secret/*" {
+            capabilities = ["create", "update", "list", "read", "delete"]
+            }
+            ```
 
-Ensure that the custom AppRole path you configure exists in your HashiCorp Vault. This step is necessary for the authentication to succeed using the custom path.
+         If the secrets are in a subfolder, such as secrets/harness, the policy will look like this:
 
-### Option: Token
+            ```
+            path "secret/harness/*" {
+            capabilities = ["create", "list", "read", "update", "delete"]
+            }
+            path "secret/harness" {
+            capabilities = ["list", "read"]
+            }
+            ```
 
-For Harness, the **Token** option requires [periodic tokens](https://www.vaultproject.io/docs/concepts/tokens#periodic-tokens) (tokens that have renewal options).
+         These examples apply only to a **v1** secret engine. If you are planning to use a secret engine with version 2 (versioned secret engine), then the policies are different as explained [here](https://www.vaultproject.io/docs/secrets/kv/kv-v2). Go through this link to understand the correct permissions required for your use case. If the Vault Secret Manager needs to renew tokens, the following permissions are needed:
 
-To create a periodic token, make sure to specify a period in the token creation command:
+            ```
+            path "auth/token/renew-self" {
+            capabilities = ["read", "update"]
+            }
+            ```
 
-```
-vault token create -policy=harness -period=768h
-```
+      #### Custom Authentication Path for AppRole Login
 
-Next, use the new token with Harness. To do this, perform the below steps:
+         :::note Feature Availablity
+         This feature is supported on delegate version `837xx` and above.
+         :::
 
-* Select **Create or Select a Secret**.![](../../secrets/static/add-hashicorp-vault-21.png)
-* The secret settings page appears. Here you can either **Create a new** [**Secret**](/docs/platform/secrets/add-use-text-secrets) or **Select an existing secret**. If creating a new Secret, enter the token which you created in the **Secret Value** field.
-  ![](../../secrets/static/add-hashicorp-vault-22.png)
+         The `appRoleLogin` method now supports a custom authentication path, utilizing it if provided, or defaulting to the standard `approle` endpoint if not specified.
 
-For detailed steps on creating a secret, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
+         <DocImage path={require('../../secrets/static/add-hashicorp-vault-31.png')} width="70%" height="70%" title="Click to view full size image" />
 
-If you have already added a Secret with your token, you can choose the same as shown below:
+         For example, the custom AppRole path can be set as `<customPath>`, providing greater flexibility in configuring the authentication mechanism. This feature is particularly useful in scenarios where the default authentication path requires customization.
 
-![](../../secrets/static/add-hashicorp-vault-23.png)
+         Ensure that the custom AppRole path you configure exists in your HashiCorp Vault. This step is necessary for the authentication to succeed using the custom path.
 
-* Select **Apply**.
+   ### Option: Token
 
-If you want to verify the renewal manually, use the command:
+      For Harness, the **Token** option requires [periodic tokens](https://www.vaultproject.io/docs/concepts/tokens#periodic-tokens) (tokens that have renewal options). To create a periodic token, make sure to specify a period in the token creation command:
 
-```
-vault token lookup <token_id>
-```
+         ```
+         vault token create -policy=harness -period=768h
+         ```
 
-### Option: Vault Agent
+      Next, use the newly generated token in Harness. To do this, complete the following steps:
 
-This option enables the Harness Vault Secret Manager to authenticate with the Auto-Auth functionality of the [Vault Agent](https://www.vaultproject.io/docs/agent/autoauth).
+      * Select **Create or Select a Secret**.
+         
+         <DocImage path={require('../../secrets/static/add-hashicorp-vault-21.png')} width="90%" height="90%" title="Click to view full size image" />
+         
+      * On the **Secret Settings** page, either **create a new** [**Secret**](/docs/platform/secrets/add-use-text-secrets) or **select an existing secret**; if creating a new secret, enter the generated token in the **Secret Value** field.
+      
+         <DocImage path={require('../../secrets/static/add-hashicorp-vault-22.png')} width="70%" height="70%" title="Click to view full size image" />
 
-To authenticate with Vault Agent, make sure you have configured it on the required environment, with entries for **method** and **sinks**. For more information, go to [Vault Agent](https://www.vaultproject.io/docs/agent).
+         For detailed steps on creating a secret, see [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets). If you have already created a secret containing the token, select it from the list as shown below.
 
-In the **Sink Path** field, enter any sink path you have in your Vault Agent Configuration. This is the path of the encrypted file with tokens. The specified delegate reads this file through file protocol (file://).
+         <DocImage path={require('../../secrets/static/add-hashicorp-vault-23.png')} width="70%" height="70%" title="Click to view full size image" />
 
-![](../../secrets/static/add-hashicorp-vault-24.png)
+      * Select **Apply**. If you want to verify the renewal manually, use the command:
+         
+         ```
+         vault token lookup <token_id>
+         ```
 
-### Option: AWS Auth
+   ### Option: Vault Agent
 
-This option provides an automated mechanism to retrieve a Vault token for IAM principals and AWS EC2 instances. With this method, you do not need to manually install or supply security-sensitive credentials such as tokens, usernames, or passwords.
+      This option enables the Harness Vault Secret Manager to authenticate with the Auto-Auth functionality of the [Vault Agent](https://www.vaultproject.io/docs/agent/autoauth).
 
-In the AWS Auth method, there are two authentication types:
+      To authenticate with Vault Agent, make sure you have configured it on the required environment, with entries for **method** and **sinks**. For more information, go to [Vault Agent](https://www.vaultproject.io/docs/agent).
 
-* IAM
-* EC2
+      In the **Sink Path** field, enter any sink path you have in your Vault Agent Configuration. This is the path of the encrypted file with tokens. The specified delegate reads this file through file protocol (file://).
 
-Harness recommends using the IAM technique for authentication since it is more versatile and complies with standard practices.
+      <DocImage path={require('../../secrets/static/add-hashicorp-vault-24.png')} width="80%" height="80%" title="Click to view full size image" />
 
-To authenticate with AWS Auth, make sure you have configured the vault with entries for **Header**, **Role**, and **Region**. For more information, go to [AWS Auth Method](https://www.vaultproject.io/docs/auth/aws#iam-auth-method) in the Vault documentation.
+   ### Option: AWS Auth
 
-You must add the **Server ID Header** from Vault as a [Harness Encrypted Text Secret](/docs/platform/secrets/add-use-text-secrets) and select it for **Server Id Header** in Harness.
+      This option provides an automated mechanism to retrieve a Vault token for IAM principals and AWS EC2 instances. With this method, you do not need to manually install or supply security-sensitive credentials such as tokens, usernames, or passwords.
 
-![](../../secrets/static/add-hashicorp-vault-25.png)
+      In the AWS Auth method, there are two authentication types:
 
-In **Role**, enter the role you have configured in the Vault.
+      * IAM
+      * EC2
 
-![](../../secrets/static/add-hashicorp-vault-26.png)
+      Harness recommends using the IAM technique for authentication since it is more versatile and complies with standard practices.
 
-In **Region**, enter the AWS Region for the Secret Manager.
+      To authenticate with AWS Auth, make sure you have configured the vault with entries for **Header**, **Role**, and **Region**. For more information, go to [AWS Auth Method](https://www.vaultproject.io/docs/auth/aws#iam-auth-method) in the Vault documentation.
 
-### Option: Kubernetes Auth
+      You must add the **Server ID Header** from Vault as a [Harness Encrypted Text Secret](/docs/platform/secrets/add-use-text-secrets) and select it for **Server Id Header** in Harness.
 
-This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes pod.
+      <DocImage path={require('../../secrets/static/add-hashicorp-vault-25.png')} width="80%" height="80%" title="Click to view full size image" />
 
-To authenticate with Kubernetes Auth, make sure you have created a role in the vault inside `auth/kubernetes/role`. This role authorizes the "vault-auth" service account in the default namespace and it gives it the default policy. This is also where you'll find the **service account name** and **namespace** that will be used to access the vault endpoint.
+      In **Role**, enter the role you have configured in the Vault.
 
-![](../../secrets/static/add-hashicorp-vault-27.png)
+      <DocImage path={require('../../secrets/static/add-hashicorp-vault-26.png')} width="80%" height="80%" title="Click to view full size image" />
 
-For more information, go to [Kubernetes Auth Configuration](https://www.vaultproject.io/docs/auth/kubernetes#configuration) in the Vault documentation.
+      In **Region**, enter the AWS Region for the Secret Manager.
 
-In **Role Name**, enter the role you have configured in the Vault.
+   ### Option: Kubernetes Auth
 
-![](../../secrets/static/add-hashicorp-vault-28.png)
-In **Service Account Token Path** enter the JSON Web Token (JWT) path. This is the path where the JWT token is mounted. The default path of this token is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
+      This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes pod.
 
-For more information, go to [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens) in the Kubernetes documentation.
+      To authenticate with Kubernetes Auth, make sure you have created a role in the vault inside `auth/kubernetes/role`. This role authorizes the "vault-auth" service account in the default namespace and it gives it the default policy. This is also where you'll find the **service account name** and **namespace** that will be used to access the vault endpoint.
 
-### Option: JWT/OIDC Auth
+      <DocImage path={require('../../secrets/static/add-hashicorp-vault-27.png')} width="80%" height="80%" title="Click to view full size image" />
 
-:::note
-   This feature is supported with [Delegate version](/release-notes/delegate): 25.02.85100 and above.
-:::
+      *For more information, go to [Kubernetes Auth Configuration](https://www.vaultproject.io/docs/auth/kubernetes#configuration) in the Vault documentation.*
 
-JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JWT token in just a few steps.
+      In **Role Name**, enter the role you have configured in the Vault.
 
-#### Steps to enable Vault authentication:  
+      <DocImage path={require('../../secrets/static/add-hashicorp-vault-28.png')} width="80%" height="80%" title="Click to view full size image" />
+
+      In **Service Account Token Path** enter the JSON Web Token (JWT) path. This is the path where the JWT token is mounted. The default path of this token is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
+
+      *For more information, go to [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens) in the Kubernetes documentation.*
+
+   ### Option: JWT/OIDC Auth
+
+      :::note Feature Availablity
+      This feature is supported with [Delegate version](/release-notes/delegate): 25.02.85100 and above.
+      :::
+
+      JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JWT token in just a few steps.
+
+---
+
+## Steps to enable Vault authentication  
 
 1. **Enable the JWT authentication method** on custom path:  
    
@@ -254,65 +277,107 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
    
    - Set the OIDC discovery URL or manually specify the JWT issuer with `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID/>`. Harness exposes endpoints with discovery url for publishing the OpenID configuration and RSA public key.  
 
-
       ```  
       vault write auth/harness/jwt/config   
          oidc_discovery_url="<OIDC_DISCOVERY>"   
          bound_issuer="<BOUND_ISSUER>"     
       ```  
+      
       :::note
-           `bound_issuer` is same as `oidc_discovery_url` i.e., `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID/>`   
+      `bound_issuer` is same as `oidc_discovery_url` i.e., `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID/>`   
       :::
 
-      ![jwt-conf](../static/jwt-configure.png)
+      <DocImage path={require('../static/jwt-configure.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 3. **Verify JWT Configuration**:  
    
    After setting the OIDC discovery URL or manually specifying the JWT issuer, you can verify the configuration by running the following command:
-   ```  
+   
+   ```bash 
    curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/config
    ```  
+   
    This will return the current configuration, showing details like `bound_issuer`, `oidc_discovery_url`, and other settings.
 
 4. **Create a Role for JWT Authentication**:  
    
    Create a role that maps JWT claims to Vault policies. Define this role in a file, such as `role-config.json`. Here's an example of how to configure it:
 
-   - **bound_audiences**: Set this to the audience (`aud`) in the JWT claims, matching the JWT authentication mount path (`harness/jwt`).
-   - **bound_claims**: Specify the claims you want to validate (e.g., `sub`, `iss`, `account_id`).
-   - **policies**: Define the policies associated with the client token.
-   - **ttl**: Set the time-to-live for the generated token.
-   - **role_type**: Roles allow you to group configuration settings together to simplify plugin management. Set this to `jwt`.
+      - **bound_audiences**: Set this to the audience (`aud`) in the JWT claims, matching the JWT authentication mount path (`harness/jwt`).
+      - **bound_claims**: Specify the claims you want to validate (e.g., `sub`, `iss`, `account_id`).
+      - **policies**: Define the policies associated with the client token.
+      - **ttl**: Set the time-to-live for the generated token.
+      - **role_type**: Roles allow you to group configuration settings together to simplify plugin management. Set this to `jwt`.
 
    Example `role-config.json`:
 
-   :::note
-      The **sub** field can have the following format, depending on the scope of the authentication method configured in Harness:
+      :::note
+         The **sub** field can have the following format, depending on the scope of the authentication method configured in Harness:
 
-         - For account scope only: `<ACCOUNT_ID>`
+            - For account scope only: `<ACCOUNT_ID>`
+            - With the `PL_OIDC_ENHANCED_SUBJECT_FIELD` feature flag enabled: `account/{account_id}:org/{organization_id}:project/{project_id}`
+            - Leave org and/or project blank for an account level or org level connector.  For example, account level would be `account/{account_id}:org/:project/`
+      :::
 
-         - With the `PL_OIDC_ENHANCED_SUBJECT_FIELD` feature flag enabled: `account/{account_id}:org/{organization_id}:project/{project_id}`
-           - Leave org and/or project blank for an account level or org level connector.  For example, account level would be `account/{account_id}:org/:project/`
+      ```json
+      {
+      "bound_audiences": ["<CUSTOM_MOUNT_PATH>"],
+      "user_claim": "sub",
+      "bound_claims": {
+         "sub": "<YOUR_ACCOUNT_ID>",
+         "iss": "<SAME_AS_OIDC_DISCOVERY_URL>",
+         "account_id": "<YOUR_ACCOUNT_ID>"
+      },
+      "policies": ["<YOUR_POLICIES>"],
+      "ttl": "1h",
+      "max_ttl": "4h",
+      "role_type": "jwt"
+      }
+      ```      
+
+---
+
+## Set JWT auth role(s) and associated context 
+   
+   :::note 
+   These feature is behind the `PL_ENABLE_GRANULAR_CLAIMS_FOR_VAULT` feature flag. please contact [Harness Support](mailto:support@harness.io) to enable the feature.
    :::
 
-   ```json
-   {
-     "bound_audiences": ["<CUSTOM_MOUNT_PATH>"],
-     "user_claim": "sub",
-     "bound_claims": {
-       "sub": "<YOUR_ACCOUNT_ID>",
-       "iss": "<SAME_AS_OIDC_DISCOVERY_URL>",
-       "account_id": "<YOUR_ACCOUNT_ID>"
-     },
-     "policies": ["<YOUR_POLICIES>"],
-     "ttl": "1h",
-     "max_ttl": "4h",
-     "role_type": "jwt"
-   }
-   ```
+   To configure JWT authentication with Vault, you can add one or more roles. Each role specifies how incoming JWTs are validated and which claims must be present.
 
-#### OIDC claims supported in Harness for HashiCorp Vault
+   Roles can be used in different contexts based on your configuration, as shown below:
+   
+   1. **General Context** – This Vault role is used to validate JWTs in non-pipeline scenarios, such as testing the connector or manually creating secrets.
+   2. **Pipeline Context** – This role is used when the JWT contains pipeline-related claims (for example, `pipeline_id`, `execution_id`, or `environment_id`). It applies only during pipeline executions.
+
+      <DocImage path={require('../static/jwt-auth-role-context.png')} width="90%" height="90%" title="Click to view full size image" />
+
+   You can also customize the claims to suit your specific use case. For example, you might want to validate a JWT based on a [custom claim](#custom-parameters) that is specific to your organization. In this case, you can add the custom claim to the `bound_claims` object as shown below.
+
+      ```json
+      {
+      "bound_audiences": ["<CUSTOM_MOUNT_PATH>"],
+      "user_claim": "sub",
+      "bound_claims": {
+         "sub": "<YOUR_ACCOUNT_ID>",
+         "iss": "<SAME_AS_OIDC_DISCOVERY_URL>",
+         "account_id": "<YOUR_ACCOUNT_ID>",
+         "pipeline_id": "<PIPELINE_ID>",
+         "execution_id": "<EXECUTION_ID>",
+         "environment_id": "<ENVIRONMENT_ID>"
+      },
+      },
+      "policies": ["<YOUR_POLICIES>"],
+      "ttl": "1h",
+      "max_ttl": "4h",
+      "role_type": "jwt"
+      }
+      ```
+
+---
+
+## OIDC claims supported in Harness for HashiCorp Vault
 
 **Trusted Claims:**
 
@@ -320,33 +385,62 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
     * `account_id`
     * `organization_id`
     * `project_id`
+    * `pipeline_id`
 
-### Custom Parameters 
+  - The following claims are validated for existence in Harness, but do not include an access check:
+    * `environment_id`
+    * `connector_id`
+    * `service_id`
+
+**Non-Trusted Claims**
+
+  - The following claims are considered non-trusted. They are not validated for existence or access control and are used for informational context only:
+
+    * `environment_type`
+    * `connector_name`
+    * `service_name`
+    * `triggered_by_name`
+    * `trigger_by_email`
+    * `stage_type`
+    * `step_type`
+
+#### Custom Parameters 
 
 Here are the custom parameters for the Hashicorp Vault (OIDC JWT):
 
-- **account_id**: The account id of your Harness account.
-- **organization_id**: The organization id of your Harness organization.
-- **project_id**: The project id of your Harness project. 
+   * **account_id**: The account id of your Harness account.
+   * **account_name**: The name of your Harness account.
+   * **organization_id**: The organization id of your Harness organization.
+   * **project_id**: The project id of your Harness project.
+   * **pipeline_id**: The pipeline identifier.
+   * **environment_id**: The environment identifier.
+   * **environment_type**: The type of the environment (for example, Production, Pre-Production).
+   * **triggered_by_name**: The name of the user who triggered the pipeline.
+   * **trigger_by_email**: The email address of the user who triggered the pipeline.
+   * **stage_type**: The type of stage being executed in the pipeline.
+   * **step_type**: The type of step being executed within the stage.
+   * **connector_id**: The identifier of the connector used in the execution.
+   * **connector_name**: The name of the connector used in the execution.
+   * **service_id**: The service identifier associated with the pipeline execution.
+   * **service_name**: The name of the service associated with the pipeline execution.
 
-
-6. **Apply the Role Configuration**:  
+#### Apply and verify the Role Configuration:
    
    Use the following command to create the role in Vault:
-   ```  
+
+   ```bash  
    curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" --request POST --data @role-config.json http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
    ```  
-
-7. **Verify the Role**:  
    
    To ensure that the role was created successfully, run the following command:
-   ```  
+
+   ```bash  
    curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
    ```  
 
-8. **Configure in HashiCorp Vault in Harness**
+#### Configure in HashiCorp Vault in Harness
 
-     ![hashicorp](../static/harshicorp.gif)
+     <DocImage path={require('../static/harshicorp.gif')} width="90%" height="90%" title="Click to view full size image" /> 
 
    - **Configure directly through Harness, without using a delegate**:
 
@@ -358,7 +452,7 @@ Here are the custom parameters for the Hashicorp Vault (OIDC JWT):
       
       Next, set up the engine by either auto-fetching or manually configuring it. Finally, the system will check the connection. Click "Finish" to complete the setup.
 
-      ![hashicorp-without-delegate](../static/harshicorp-without-delegate.gif)
+      <DocImage path={require('../static/harshicorp-without-delegate.gif')} width="90%" height="90%" title="Click to view full size image" />
    
    - **Configure directly through Harness Delegate**:
 
@@ -366,9 +460,11 @@ Here are the custom parameters for the Hashicorp Vault (OIDC JWT):
 
       Next, set up the engine (auto-fetch or manual). Once the connection is verified, click "Finish" to complete the setup.  
 
-      ![hashicorp-without-delegate](../static/harshicorp-with-delegate.gif)
+      <DocImage path={require('../static/harshicorp-with-delegate.gif')} width="90%" height="90%" title="Click to view full size image" />
 
-### Step 2: Select Secret Engine and Version
+---
+
+## Select Secret Engine and Version
 
 Once you have entered the required fields, you can choose to **Fetch Engines** or **Manually Configure Engine**.
 
@@ -376,15 +472,13 @@ Once you have entered the required fields, you can choose to **Fetch Engines** o
 
 If you want Harness to automatically fetch secret engines, include this read permission for **sys/mounts** in the ACL policy.
 
-```
-path "sys/mounts"{
- capabilities = ["read"]
-}
-```
+      ```json
+      path "sys/mounts"{
+      capabilities = ["read"]
+      }
+      ```
 
-Select **Fetch Engines**.
-
-Harness will populate the Secret Engine drop-down with the list of engines and their versions.
+Select **Fetch Engines**. Harness will populate the Secret Engine drop-down with the list of engines and their versions.
 
 Select the engine you want to use.
 
@@ -392,57 +486,56 @@ Select the engine you want to use.
 
 If you don't want to or cannot add the ACL policy (with read permission for sys/mounts) in the Secret Manager, perform the following steps:
 
-1. Identify the engine version of the Secret Manager in Vault.
-2. In **Secret Engine Name**, enter the name of the Secret Engine.
-3. In **Secret Engine Version**, enter the engine version.
+      1. Identify the engine version of the Secret Manager in Vault.
+      2. In **Secret Engine Name**, enter the name of the Secret Engine.
+      3. In **Secret Engine Version**, enter the engine version.
 
-   You cannot change the Secret Engine later. Harness blocks editing this setting later since there might be secrets that are created/referenced under this secret engine. Changing the secret engine might break references to those secrets.
+         You cannot change the Secret Engine later. Harness blocks editing this setting later since there might be secrets that are created/referenced under this secret engine. Changing the secret engine might break references to those secrets.
 
-4. In **Kubernetes Auth Endpoint**, enter the authentication endpoint, if configured. The default value is `Kubernetes`.
+      4. In **Kubernetes Auth Endpoint**, enter the authentication endpoint, if configured. The default value is `Kubernetes`.
 
-### Step 3: Renewal Interval (minutes)
+---
+
+## Renewal Interval (minutes)
 
 In **Renew Interval**, you can (optionally) enter how often the Harness Delegate reloads the Vault access token.
 
-![](../../secrets/static/add-hashicorp-vault-29.png)
+<DocImage path={require('../../secrets/static/add-hashicorp-vault-29.png')} width="70%" height="70%" title="Click to view full size image" />
+
 You can expect a delay during the Vault renewal. A periodic job runs to check if there has to be a renewal, resulting in a delay of no more than two minutes.
 
 ### Review: Validating Non-Read Only Vault Secret Managers
 
-To validate a non-read-only Vault Secret Manager, Harness creates a dummy secret in the secret engine.
+To validate a non-read-only Vault Secret Manager, Harness creates a dummy secret in the secret engine. The path of the secret is as follows:
 
-The path of the secret is as follows:
-
-v2 Secret Engine:
-
-`<SECRET_ENGINE_NAME>/data/\<BASE_PATH>/harness_vault_validation#value`
-
-v1 Secret Engine:
-
-`<SECRET_ENGINE_NAME>/\<BASE_PATH>/harness_vault_validation#value`
+   - v2 Secret Engine: `<SECRET_ENGINE_NAME>/data/\<BASE_PATH>/harness_vault_validation#value`
+   - v1 Secret Engine: `<SECRET_ENGINE_NAME>/\<BASE_PATH>/harness_vault_validation#value`
 
 The secret can fail because of various reasons.
 
-1. Using the Token/App Role, the **Vault** authentication is not successful.
-2. The following **permission** is not available in any of the policies attached to the Token/App Role. If this permission is not available, the user will not be able to fetch the list of secret engines from the customer vault and Harness will show a single option of Secret Engine named **"secret"**with version 2, which might be incorrect for the customer. Make sure to add the permission to a policy attached to the Token/App Role as follows:
+   1. Using the Token/App Role, the **Vault** authentication is not successful.
+   2. The following **permission** is not available in any of the policies attached to the Token/App Role. If this permission is not available, the user will not be able to fetch the list of secret engines from the customer vault and Harness will show a single option of Secret Engine named **"secret"**with version 2, which might be incorrect for the customer. 
+   
+      Make sure to add the permission to a policy attached to the Token/App Role as follows:
+         ```json
+         path "sys/mounts"{
+         capabilities = ["read"]
+         }
+         ```
 
-   ```
-            path "sys/mounts"{
-               capabilities = ["read"]
-               }
-   ```
+   3. The policy attached to the Token/AppRole does not provide the **write** permission in the specified path. Make sure you update the policies and permissions.
 
-3. The policy attached to the Token/AppRole does not provide the **write** permission in the specified path. Make sure you update the policies and permissions.
+---
 
-### Step 4: Read-only Vault
+## Read-only Vault
 
 If required by your organization's security practices, select the **Read-only Vault** option. This selection authorizes Harness to read secrets from Vault, but not to create or manage secrets within Vault.
 
-![](../../secrets/static/add-hashicorp-vault-30.png)
+<DocImage path={require('../static/add-hashicorp-vault-30.png')} width="70%" height="70%" title="Click to view full size image" />
 
 Once you have filled out the required fields, select **Finish**.
 
-##### Read-only Limitations
+#### Read-only Limitations
 
 If you select **Read-only Vault**, there are several limitations on the resulting Harness Vault Secret Manager.
 
@@ -451,7 +544,9 @@ Also a read-only Harness Vault Secret Manager:
 - Cannot be used in the **Add Encrypted File** dialog.
 - Cannot create inline secrets in the **Add Encrypted Text** modal.
 
-### Step 5: Test Connection
+---
+
+## Test Connection
 
 Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.
 
@@ -459,10 +554,11 @@ Once the Test Connection succeeds, select **Finish**. You can now see the connec
 ​Harness tests connections by creating a dummy secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have Create permission for secrets.
 
 The Test Connection fails if you do not have Create permission. However, Harness still creates the connector for you. You may use this connector to read secrets, if you have View permissions.
-
 :::
 
-### Reference JSON secrets
+---
+
+## Reference JSON secrets
 
 import Refj from '/docs/platform/shared/reference-via-json.md';
 

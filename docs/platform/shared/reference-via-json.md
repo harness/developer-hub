@@ -15,7 +15,6 @@ For example, you can store a secret in vault with the following JSON.
     }
   }
 }
-
 ```
 
 Here are sample outputs for the respective JSONPath from the above JSON file:
@@ -35,7 +34,6 @@ Here are sample outputs for the respective JSONPath from the above JSON file:
      }
    }
  }
-
  ```
 
 `test-secret#key1`
@@ -46,7 +44,7 @@ Here are sample outputs for the respective JSONPath from the above JSON file:
 
 `test-secret#key2`
 
- ```
+```json
 {
    "key21": "value21",
    "key22": "value22"
@@ -55,30 +53,29 @@ Here are sample outputs for the respective JSONPath from the above JSON file:
 
 `test-secret#key3`
 
- ```
+```json
 {
    "key31": {
      "key311": "value311"
   }
 }
- ```
+```
 
 `test-secret#key3.key31`
 
- ```
+```json
 {
-   "key311": "value311"
+ "key311": "value311"
 }
 ```
 
 `test-secret#key3.key31.key311`
- 
- ```
+
+```
   "value311"
- ```
+```
 
 :::info
-
 You cannot use a JSON XPath for nested keys in expressions. For example, `<+secrets.getValue("account.YOUR_SECRET_MANAGER://myVault/harness/testpath/example")>`.
 
 Harness provides limited support for keys that include dots. Keys with dots only work when the key is present at first level in the JSON. For example:
@@ -105,11 +102,8 @@ Here are sample outputs for the respective JSONPath from the above JSON file:
 - `/path/to/secret#key.pqr` returns `{"nestedKey": "some-value"}`.
 - `/path/to/secret#key.nested.key1` and `key.pqr.nestedKey` are not supported.
 - `/path/to/secret#pqr.xyz` returns `some-nested-value` and not `some-value`. (Hierarchical paths take precedence over keys with dots.)
-
 :::
 
 :::warning
-
 Harness does not recommend using keys that include dots and might deprecate support in future releases.
-
 :::
