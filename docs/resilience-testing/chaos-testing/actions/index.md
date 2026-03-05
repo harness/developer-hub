@@ -65,6 +65,19 @@ The **Container Action** allows you to execute commands inside a container durin
 - Flexible command and argument configuration
 - Advanced configuration options for Kubernetes environments
 
+## Action Properties
+
+When configuring actions in the Chaos Studio, all configuration fields are available in the **Action Properties** tab. This unified interface provides a streamlined experience by consolidating all action settings in a single location.
+
+The **Action Properties** tab includes:
+- **Action-specific settings**: Duration (for Delay actions), Command, Arguments, Environment variables, Custom parameters, and other action type-specific configurations
+
+:::info UI Update (Version 1.77.3+)
+All action configuration has been consolidated into the **Action Properties** tab. Previously, some inputs were managed in a separate "Variables" tab. This change simplifies the configuration experience by keeping all action settings together in one place, making it easier to configure and review your action setup.
+
+![Action Properties](./static/action-properties.png)
+:::
+
 ## Action Configuration
 
 ### Infrastructure Type Support

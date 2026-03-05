@@ -43,6 +43,20 @@ Once marked as verified, the probe will display a green checkmark (✓) in the *
 Combine probe verification with ChaosGuard policies to create a robust governance framework that ensures only approved, tested probes are used in your chaos experiments.
 :::
 
+## Probe Properties
+
+When configuring probes in the Chaos Studio, all configuration fields are available in the **Probe Properties** tab. This unified interface provides a streamlined experience by consolidating all probe settings in a single location.
+
+The **Probe Properties** tab includes:
+- **Probe-specific settings**: Application Name, Duration, Metric paths, Timeout values, Polling intervals, Criteria, and other probe type-specific configurations
+- **Run Properties**: Attempt, Interval, Initial Delay, Polling Interval, Timeout, Stop On Failure
+
+:::info UI Update (Version 1.77.3+)
+All probe configuration has been consolidated into the **Probe Properties** tab. Previously, some inputs were managed in a separate "Variables" tab. This change simplifies the configuration experience by keeping all probe settings together in one place, making it easier to configure and review your probe setup.
+
+![Probe Properties](../content/probes/static/probe-properties.png)
+:::
+
 ## Probe Types
 
 Select the probe type you want to learn more about:

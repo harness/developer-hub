@@ -20,6 +20,31 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## March 2026
+
+### Version 1.77.3
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.77.0
+- harness/chaos-ddcr-faults:1.77.0
+- harness/chaos-log-watcher:1.77.0
+- harness/service-discovery-collector:0.57.0
+
+#### New Features and Enhancements
+
+- Migrated Action and Probe Variables to Inputs under Chaos Studio (CHAOS-11103, CHAOS-11102)
+- Added egress rules support for ecs network restrict fault for specific rule (CHAOS-11101)
+- Added linux chaos faults (network, API, JVM, process, service, DNS, disk fill) in machine chaos and its templates in hub (CHAOS-11081, CHAOS-11079, CHAOS-11078, CHAOS-11038)
+- Updated ECS Fargate CPU/Memory Sidecar to Use Multi-Arch DDCR Image (CHAOS-10978)
+- Added Disaster Recovery (DR) component support with new entity, APIs (DRTest run, getVariables, DRComponentNodes CRUD), and DDCR execution enhancements (CHAOS-10893, CHAOS-10887, CHAOS-10885, CHAOS-10884)
+- Added permission to mitmdump in the install script (CHAOS-11125)
+
+#### Fixed Issues
+
+- Fixes the issue with the load task stuck in the Pending state, and the infrastructure not receiving the load task request (CHAOS-11121)
+
 ## February 2026
 
 ### Version 1.76.0
