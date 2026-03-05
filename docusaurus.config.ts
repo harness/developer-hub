@@ -39,6 +39,8 @@ const config: Config = {
       'data-modal-override-open-selector-ask-ai': '.navbar__search_kapa',
       'data-button-hide': 'true',
       'data-project-logo': 'https://developer.harness.io/img/icon_harness.svg',
+      'data-mcp-enabled': 'true',
+      'data-mcp-server-url': 'https://hdh.mcp.kapa.ai',
       'data-modal-disclaimer':
         'This AI assistant answers Harness questions using your [documentation](https://developer.harness.io/docs/), [API reference](https://apidocs.harness.io/) and [YouTube playlist](https://www.youtube.com/@harnesscommunity/playlists).',
       'data-modal-example-questions':
