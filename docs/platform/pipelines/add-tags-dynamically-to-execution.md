@@ -32,8 +32,8 @@ The following expressions enable Harness to add tags dynamically to an execution
 
 | Expression | Description |
 | --- | --- |
-| `<+addTag(name, value)>` | attaches a single key-value tag to the execution at the moment the expression is evaluated. |
-| `<+addTagsList(listOfPairs)>` | attaches a list of tags to the execution at the moment the expression is evaluated. |
+| `<+executionTags.addTag(name, value)>` | attaches a single key-value tag to the execution at the moment the expression is evaluated. |
+| `<+executionTags.addTagsList(listOfPairs)>` | attaches a list of tags to the execution at the moment the expression is evaluated. |
 
 Tags are not added to the pipeline definition. It exists only on the specific execution.
 
@@ -117,7 +117,7 @@ If your workflow requires generating multiple tags in a script, use the followin
 ```
 </details>
 
-- Use `<+addTagsList(listOfPairs)>` in the next step to attach them.
+- Use `<+executionTags.addTagsList(listOfPairs)>` in the next step to attach them.
 
 <details>
 <summary> Sample yaml for Add Tags List Shell Script Step </summary>
@@ -147,7 +147,7 @@ If your workflow requires generating multiple tags in a script, use the followin
 
 ### Adding tags dynamically with Matrix Looping Strategy
 
-You can use the expression `<+addTag(name, value)>` with matrix looping strategy to add tags iteratively to an execution.
+You can use the expression `<+executionTags.addTag(name, value)>` with matrix looping strategy to add tags iteratively to an execution.
 
 <DocImage path={require('./static/add-tags-with-matrix.png')} title="Click to view full size image" /> 
 
