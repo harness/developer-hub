@@ -3,6 +3,11 @@
           Reset='\033[0m'
 echo "Running pre-commit scripts..."
 
+bash .husky/file-count-check.sh
+if [ $? -ne 0 ]; then
+  echo "${Red}File count check failed. Aborting commit.${Reset}"
+  exit 1
+fi
 
 bash .husky/kebab-case-checker.sh
 if [ $? -ne 0 ]; then
@@ -10,7 +15,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-yarn test
+npm_config_loglevel=error yarn --silent test
 if [ $? -ne 0 ]; then
   echo "${Red}Tests failed. Aborting commit.${Reset}"
   exit 1
