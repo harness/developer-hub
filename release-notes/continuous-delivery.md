@@ -56,6 +56,54 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## February 2026
 
+### GitOps Service 1.51.2, GitOps Agent 0.110.0
+
+#### Breaking changes and upgrade considerations
+
+This release includes an Argo CD version bump with the following breaking changes. Review these carefully before upgrading:
+
+- **ApplicationSet CRD size limitation:** The ApplicationSet CRD layout now exceeds the Kubernetes client-side apply size limit. You must perform upgrades using Server-Side Apply (SSA) (for example, `kubectl apply --server-side --force-conflicts`) or via a self-managed Argo CD Application with `ServerSideApply=true`. Custom field modifications in manifests may be overwritten when using SSA.
+- **Hydrator behavior change:** The source hydrator now tracks hydrated state using git notes rather than hydrated commits, improving repository cleanliness and reducing unnecessary commits.
+- **Settings API change:** Anonymous calls to the Settings API return fewer fields (for example, sensitive data like `resourceOverrides` is hidden).
+- **New environment variable:** `ARGOCD_K8S_SERVER_SIDE_TIMEOUT` has been introduced to control Kubernetes server-side API request timeouts separately from TCP timeouts.
+- **Deprecated flags:** The `--self-heal-backoff-cooldown-seconds` flag in the application controller has been deprecated and will be removed in a future release.
+
+<details>
+<summary>Upgrade instructions</summary>
+
+Follow the official upgrade guide when applying this version bump.
+
+For non-HA environments:
+
+```bash
+kubectl apply -n argocd --server-side --force-conflicts \
+  -f https://raw.githubusercontent.com/argoproj/argo-cd/v3.3.0/manifests/install.yaml
+```
+
+For HA environments:
+
+```bash
+kubectl apply -n argocd --server-side --force-conflicts \
+  -f https://raw.githubusercontent.com/argoproj/argo-cd/v3.3.0/manifests/ha/install.yaml
+```
+
+If you have an Argo CD Application that manages Argo CD itself, ensure it includes Server-Side Apply in the sync options:
+
+```yaml
+syncPolicy:
+  syncOptions:
+  - ServerSideApply=true
+```
+
+For the full upgrade guide, go to [Upgrading from v3.2 to v3.3](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/3.2-3.3/).
+
+</details>
+
+#### Fixed Issues
+
+- Fixed an issue where deleting an ApplicationSet from the resource tree context menu incorrectly called the delete application API instead of the delete ApplicationSet API, causing the deletion to fail. (**CDS-115910**)
+- Fixed an issue where ApplicationSets could not be deleted if the associated agent no longer existed, returning a "Permission denied: agent identifier incorrect or agent does not exist" error. Cleanup of ApplicationSets now works correctly when deleting account-level agents. (**CDS-118171**)
+
 ### Version 1.132.4
 
 #### Fixed issues
