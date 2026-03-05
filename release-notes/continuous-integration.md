@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-10-06T10:00
+date: 2026-03-05T10:00
 sidebar_position: 10
 ---
 
@@ -59,6 +59,36 @@ For additional information about Harness Cloud pricing, please visit [Subscripti
 Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
+
+## March 2026
+
+### Version 1.124.0
+
+<!-- March 2026 -->
+
+#### New Features and Enhancements
+
+- Harness Cloud builds now display CPU and memory usage metrics in pipeline execution logs, providing better visibility into resource consumption. (CI-19781)
+
+- Introduced branch-based version counters, allowing build numbering to track independently per branch. (CI-20577)
+
+- Container-based step groups now support real-time step status updates during execution. (CI-21113)
+
+- Harness Cloud build logs now display the actual machine size name (e.g., `medium`) instead of the previous `flex` label, reflecting the updated resource class naming. (CI-20695)
+
+#### Fixed Issues
+
+- Resolved an issue where double quotes within secrets were not handled correctly in CI Run steps. (CI-20256)
+
+- Improved error logging when the Initialize step fails due to secret fetch errors, providing more actionable details in the logs. (CI-20761)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.10 | 1.18.11 |
+| `harness/ci-lite-engine` | Version update | 1.18.10 | 1.18.11 |
+| `plugins/cache` | Azure identity provider support | 1.9.18 | 1.9.24 |
 
 ## February 2026
 
