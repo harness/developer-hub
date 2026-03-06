@@ -21,7 +21,7 @@ You can either:
 2. **Pin to a specific image version** to maximize build reproducibility.
 
 :::warning[Deprecation Notice]
-The following macOS images will be deprecated on **March 3, 2026**:
+The following macOS images will be deprecated on **March 17, 2026**:
 - `macos_sonoma_xcode_16.3`
 - macOS 15 (Sequoia)
 
