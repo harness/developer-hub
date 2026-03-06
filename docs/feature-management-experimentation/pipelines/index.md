@@ -6,15 +6,6 @@ sidebar_label: Overview
 description: Learn how to use Harness Feature Management & Experimentation (FME) steps in your Harness pipelines.
 ---
 
-<CTABanner
-  buttonText="Request Access"
-  title="FME Steps in Pipelines is in beta!"
-  tagline="Add Harness Management & Experimentation steps to your Harness pipelines. Available now in beta!"
-  link="https://developer.harness.io/docs/feature-management-experimentation/fme-support"
-  closable={true}
-  target="_self"
-/>
-
 Harness Feature Management & Experimentation (FME) integrates with <Tooltip id="fme.pipelines.pipeline">Harness pipelines</Tooltip>, allowing you to include <Tooltip id="fme.pipelines.feature-flag">feature flag logic</Tooltip> directly within your deployment or automation workflows. The **Pipelines** page in Harness FME displays a list of [Harness pipelines](/docs/platform/get-started/key-concepts#pipelines) created in your [project](/docs/feature-management-experimentation/projects). 
 
 ![](./static/pipeline-list.png)
@@ -45,7 +36,7 @@ The **YAML** tab displays the full pipeline definition as YAML. Click **Edit YAM
 
 Both views stay in sync; changes made in the **Visual** editor are reflected in the YAML, and changes made in YAML are reflected back in the **Visual** editor.
 
-When you configure a pipeline, you set it up like any standard pipeline, with the addition of <Tooltip id="fme.pipelines.step">FME steps</Tooltip> at the <Tooltip id="fme.pipelines.stage">stage level</Tooltip>. These steps let you integrate feature flag operations directly into your deployment workflow.
+When you configure a pipeline, you set it up like any standard pipeline, with the addition of <Tooltip id="fme.pipelines.step">FME steps</Tooltip> at the <Tooltip id="fme.pipelines.stage">stage level</Tooltip>. These steps let you integrate feature flag operations directly into your deployment or automation workflow.
 
 ## Permissions
 
@@ -70,7 +61,7 @@ When using FME steps in pipelines, these Harness approvals control the execution
 
 ```mermaid
 flowchart LR
-    A[Custom Stage: Deploy Application] --> B[**Flag Create**<br/>or<br/>**Flag Update**]
+    A[Custom Stage: Deploy Application] --> B[**Create Feature Flag**<br/>or<br/>**Update Feature Flag**]
     B --> C[**Set Individual Targets**<br/>or<br/>**Set Default Allocations**]
     C --> D{Issue Detected?}
     D -- Yes --> E[**Kill Feature Flag**]
@@ -81,12 +72,12 @@ flowchart LR
 
 This approach lets teams coordinate automated workflows and feature flag changes within a single, auditable pipeline. By adding FME steps to your pipeline stages, you can: 
 
-- Create and manage feature flags as part of your deployment or promote workflows using **Flag Create** and **Flag Update**, including defining flags across all environments and updating metadata such as status, owners, and tags
+- Create and manage feature flags as part of your deployment or promote workflows using **Create Feature Flag** and **Update Feature Flag**, including defining flags across all environments and updating metadata such as status, owners, and tags
 - Manage individual targeting lists deterministically with **Set Individual Targets** and **Add/Remove Individual Targets**, allowing you to define or modify explicit target membership during a pipeline run
 - Control default rollout behavior using **Set Default Allocations**, configuring how traffic is allocated when no targeting rules apply
 - Immediately disable a feature flag with **Kill Feature Flag** as part of an incident runbook
 
-FME steps in Harness pipelines allow feature flag operations to be predictable, reusable, and executed alongside application deployments, helping teams coordinate releases while reducing manual configuration and operational risk.
+FME steps in Harness pipelines allow feature flag operations to be predictable, reusable, and executed alongside application deployments and other automated workflows, helping teams coordinate releases while reducing manual configuration and operational risk.
 
 ## Add FME steps to a pipeline stage
 
@@ -105,12 +96,20 @@ To add FME steps to a pipeline:
 
    | FME step                                   | Primary use case                          | When to use it                                                                                                                                                      |
    | ------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | [**Flag Create**](#fme-flag-create)                        | Create a new feature flag                 | Use when introducing a new feature flag as part of deployment or feature development. This step instantiates the flag across all environments with default rollout plans.                    |
-   | [**Flag Update**](#fme-flag-update)                        | Update flag metadata                      | Use when you need to edit flag properties such as the description, rollout status, owners, or tags without changing targeting or traffic allocation.       |
-   | [**Set Individual Targets**](#fme-set-targets)                   | Define the full set of individual targets | Use when you want to deterministically set the complete list of individual targets for a flag in an environment, replacing any existing list.        |
-   | [**Add/Remove Individual Targets**](#fme-add-remove-individual-targets) | Incrementally modify targeting            | Use when you need to add or remove specific users or segments without overwriting existing individual target lists. Useful for gradual rollouts or hand-picked targets. |
-   | [**Set Default Allocations**](#fme-set-default-allocations)           | Control default rollout percentages       | Use when you want to define how traffic is split across treatments for users who do not match any targeting rules (for example, 50/50, 75/25, or 100% on).              |
-   | [**Kill Feature Flag**](#fme-kill-feature-flag)                  | Immediately disable a feature             | Use to kill the flag in the specified environment, serving the [default treatment](/docs/feature-management-experimentation/feature-management/setup/default-treatment).                                                |
+   | [**Create Feature Flag**](#create-feature-flag)                        | Create a new feature flag                 | Use when introducing a new feature flag as part of deployment or feature development. This step instantiates the flag across all environments with default rollout plans.                    |
+   | [**Update Feature Flag**](#update-feature-flag)                        | Update flag metadata                      | Use when you need to edit flag properties such as the description, rollout status, owners, or tags without changing targeting or traffic allocation.       |
+   | [**Delete Feature Flag**](#delete-feature-flag)                              | Permanently delete a feature flag         | Use when a feature flag is no longer needed and should be removed entirely. Optionally deletes all flag definitions across environments before deletion.             |
+   | [**Set Default Allocations**](#set-default-allocations)           | Control default rollout percentages       | Use when you want to define how traffic is split across treatments for users who do not match any targeting rules (for example, 50/50, 75/25, or 100% on).              |
+   | [**Set Individual Targets**](#set-individual-targets)                   | Define the full set of individual targets | Use when you want to deterministically set the complete list of individual targets for a flag in an environment, replacing any existing list.        |
+   | [**Add/Remove Individual Targets**](#addremove-individual-targets) | Incrementally modify targeting            | Use when you need to add or remove specific users or segments without overwriting existing individual target lists. Useful for gradual rollouts or hand-picked targets. |
+   | [**Kill Feature Flag**](#kill-feature-flag)                  | Immediately disable a feature             | Use to kill the flag in the specified environment, serving the [default treatment](/docs/feature-management-experimentation/feature-management/setup/default-treatment).                                                |
+   | [**Restore Feature Flag**](#restore-feature-flag)                            | Restore a killed feature flag             | Use to restore a feature flag that was previously killed in a specific environment, returning it to its prior serving state.                                         |
+   | [**Set Treatments**](#set-treatments)                       | Define treatments for a feature flag      | Use when you want to define or replace the set of treatments for a feature flag in a specific environment, including setting the default treatment.                  |
+   | [**Set Dynamic Configurations**](#set-dynamic-configurations) | Set dynamic configurations for treatments | Use when you want to attach or update dynamic configuration values for each treatment of a feature flag in a specific environment.                                   |
+   | [**Set Targeting Rules**](#set-targeting-rules)              | Define targeting rules for a feature flag | Use when you want to define or replace the targeting rules that determine which treatment is served based on conditions such as segment membership, attributes, or other flag states. |
+   | [**Limit Exposure**](#limit-exposure)                        | Control exposure to targeting rules       | Use when you want to set the percentage of users exposed to targeting rules in a specific environment, with everyone else going to the default treatment.            |
+   | [**Reallocate Traffic**](#reallocate-traffic)                | Reassign users across treatments          | Use to reassign users across treatments for a feature flag in a specific environment without changing the targeting rules. This regenerates the seed value used for randomizing assignment in percentage distributions. |
+   | [**Patch Definition**](#patch-definition)                    | Apply patch operations to a flag definition | Use when you want to apply granular patch operations to a feature flag definition in a specific environment.                                                       |
 
 1. Configure the step in the **Step Parameters** tab.
 1. Optionally, add additional configuration in the **Advanced** tab.
@@ -151,7 +150,6 @@ pipeline:
                     name: <+pipeline.variables.flagName>
                     trafficType: user
                     description: live demo flag
-                    addDefaultRolloutPlans: true
               - step:
                   type: FmeFlagSetIndividualTargets
                   name: add testers to on
@@ -165,6 +163,20 @@ pipeline:
                           - user1
                           - user2
                         segments: []
+              - step:
+                  type: FmeFlagAddRemoveIndividualTargets
+                  name: add beta user
+                  identifier: add_beta_user
+                  spec:
+                    flagName: <+pipeline.variables.flagName>
+                    environment: Prod-Default
+                    treatments:
+                      - treatment: "on"
+                        addKeys:
+                          - beta_user1
+                        removeKeys: []
+                        addSegments: []
+                        removeSegments: []
               - step:
                   type: Wait
                   name: Wait_1
@@ -192,7 +204,6 @@ pipeline:
                     tags:
                       - demo
                     rolloutStatus: Ramping
-                    addDefaultRolloutPlans: true
               - step:
                   type: HarnessApproval
                   name: Harness Manual Approval
@@ -220,6 +231,13 @@ pipeline:
                         amount: 100
                       - treatment: "off"
                         amount: 0
+              - step:
+                  type: FmeFlagKill
+                  name: Kill flag on incident
+                  identifier: kill_flag_on_incident
+                  spec:
+                    flagName: <+pipeline.variables.flagName>
+                    environment: Prod-Default
         tags: {}
 ```
 
@@ -227,16 +245,16 @@ pipeline:
 
 ## Configure FME steps
 
-Each FME step is configured at the <Tooltip id="fme.pipelines.stage">stage level</Tooltip> of a CD pipeline. After adding an FME step from the Step Library, you can configure its behavior using the **Step Parameters** tab, and optionally refine execution behavior using the **Advanced** tab.
+Each FME step is configured at the <Tooltip id="fme.pipelines.stage">stage level</Tooltip> of a pipeline. After adding an FME step from the Step Library, you can configure its behavior using the **Step Parameters** tab, and optionally refine execution behavior using the **Advanced** tab.
 
 The following section walks through how to configure each FME step.
 
-### Flag Create
+### Create Feature Flag
 
 Use this step to create a feature flag and define it across all environments with default rollout plans.
 
 1. In your pipeline stage, click **+ Add Step**.
-1. Select **Flag Create** under **Feature Management & Experimentation** in the Step Library.
+1. Select **Create Feature Flag** under **Feature Management & Experimentation** in the Step Library.
 1. In the **Step Parameters** tab, configure the following:
 
    - **Name**: Add a step name (such as `Create Feature Flag`).
@@ -248,20 +266,55 @@ Use this step to create a feature flag and define it across all environments wit
 
 1. Click **Apply Changes** to add the step to the pipeline.
 
-### Flag Update
+### Update Feature Flag
 
 Use this step to update feature flag metadata without changing rollout behavior or targeting.
 
 1. In your pipeline stage, click **+ Add Step**.
-1. Select **Flag Update** under **Feature Management & Experimentation** in the Step Library.
+1. Select **Update Feature Flag** under **Feature Management & Experimentation** in the Step Library.
 1. In the **Step Parameters** tab, configure the following:
 
    - **Name**: Add a step name (such as `Update Feature Flag`).
    - **Feature Flag Name**: Add a name of the existing feature flag.
    - **Description**: Optionally, update the feature flag description.
    - **Owners**: Optionally, update feature flag ownership.
+   - **Rollout Status**: Optionally, update the feature flag rollout status.
    - **Tags**: Optionally, add or modify tags.
 
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Delete Feature Flag
+
+Use this step to permanently delete a feature flag.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Delete Feature Flag** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name (such as `Delete Feature Flag`).
+   - **Feature Flag Name**: Add the name of the feature flag to delete.
+   - **Delete All Definitions**: Optionally, enable this option to delete all feature flag definitions across environments before deleting the flag.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Set Default Allocations
+
+Use this step to control how traffic is allocated across treatments for users who do not match any targeting rules.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Set Default Allocations** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+
+1. Under the **Flag Change** section, define one or more allocations by clicking **+ Add Allocation**:
+
+   - **Treatment**: Select a treatment to apply.
+   - **Allocation Percentage**: Enter the percentage of traffic for this treatment (0–100).
+
+1. Ensure the total allocation across all treatments equals 100%.
 1. Click **Apply Changes** to add the step to the pipeline.
 
 ### Set Individual Targets
@@ -276,10 +329,10 @@ Use this step to define the complete set of individual targets for a feature fla
    - **Environment**: Specify the environment where targeting should be applied.
    - **Feature Flag**: Add the feature flag name.
 
-1. Under the **Set Individual Targets** section, for the specific configure one or more treatments where you want to override the current individual targets list by clicking **+ Add Treatment**:
+1. Under the **Set Individual Targets** section, configure one or more treatments where you want to override the current individual targets list by clicking **+ Add Treatment**:
 
    - **For Treatment**: Select a treatment to apply.
-   - **Keys**: Optionally, enter individual target keys desired list.
+   - **Keys**: Optionally, enter the individual target keys to include.
    - **Segments**: Optionally, enter individual segments to include.
 
 1. Click **Apply Changes** to add the step to the pipeline.
@@ -306,26 +359,6 @@ Use this step to incrementally add or remove individual targets without replacin
 
 1. Click **Apply Changes** to add the step to the pipeline.
 
-### Set Default Allocations
-
-Use this step to control how traffic is allocated across treatments for users who do not match any targeting rules.
-
-1. In your pipeline stage, click **+ Add Step**.
-1. Select **Set Default Allocations** under **Feature Management & Experimentation** in the Step Library.
-1. In the **Step Parameters** tab, configure the following:
-
-   - **Name**: Add a step name.
-   - **Environment**: Specify the environment.
-   - **Feature Flag**: Add the feature flag name.
-
-1. Under the **Flag Change** section, define one or more allocations by clicking **+ Add Allocation**:
-
-   - **Treatment**: Select a treatment to apply.
-   - **Allocation Percentage**: Enter the percentage of traffic.
-
-1. Ensure the total allocation equals 100%.
-1. Click **Apply Changes** to add the step to the pipeline.
-
 ### Kill Feature Flag
 
 Use this step to immediately disable a feature flag in a specific environment.
@@ -340,7 +373,125 @@ Use this step to immediately disable a feature flag in a specific environment.
 
 1. Click **Apply Changes** to add the step to the pipeline.
 
-Once you have added FME steps to a Custom stage and designed your pipeline, click **Save** and execute the pipeline by clicking **Run**. 
+### Restore Feature Flag
+
+Use this step to restore a feature flag that was previously killed in a specific environment.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Restore Feature Flag** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Set Treatments
+
+Use this step to define or replace the set of treatments for a feature flag in a specific environment.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Set Treatments** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+   - **Default Treatment**: Select the treatment to serve by default.
+
+1. Under the **Treatments** section, define two or more treatments by clicking **+ Add Treatment**:
+
+   - **Treatment**: Enter the treatment name.
+   - **Description**: Enter a description for the treatment.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Set Dynamic Configurations
+
+Use this step to attach or update dynamic configuration values for each treatment of a feature flag in a specific environment.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Set Dynamic Configurations** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+
+1. Under the **Treatments** section, configure one or more treatments by clicking **+ Add Treatment**:
+
+   - **Treatment**: Select a treatment.
+   - **Configuration**: Enter the dynamic configuration value for the treatment.
+
+1. Optionally, define [input variables](/docs/platform/variables-and-expressions/harness-variables#input-and-output-variables) that can be referenced within this step and others in the pipeline.
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Set Targeting Rules
+
+Use this step to define or replace the targeting rules for a feature flag in a specific environment. Targeting rules determine which treatment is served based on conditions such as segment membership, user attributes, or other feature flag states.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Set Targeting Rules** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+
+1. Under the **Targeting Rules** section, define one or more rules by clicking **+ Add Rule**. Each rule consists of a condition and an allocation:
+
+   - **Condition**: Define one or more condition rules. Each rule specifies a matcher type (such as `IN_SEGMENT`, `BOOLEAN`, `EQUAL_NUMBER`, `CONTAINS_STRING`, or `BETWEEN_DATE`), an optional attribute, a value, and an optional negate flag.
+   - **Allocation**: For each condition, define how traffic is split across treatments. Each allocation entry specifies a treatment and a size (0–100).
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Limit Exposure
+
+Use this step to set the percentage of users exposed to targeting rules in a specific environment, with everyone else going to the default treatment.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Limit Exposure** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+   - **Exposure Limit**: Enter the maximum percentage of traffic to expose (0–100).
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Reallocate Traffic
+
+Use this step to reassign users across treatments for a feature flag in a specific environment without changing the targeting rules. This regenerates the seed value used for randomizing assignment in percentage distributions, so users may receive different treatments than before.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Reallocate Traffic** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Patch Definition
+
+Use this step to apply patch operations to a feature flag definition in a specific environment. This step supports bundling multiple changes into a single operation and can be used for advanced configurations not yet available as a dedicated step. For available operations, refer to the [FME Admin API partial update endpoint](https://docs.split.io/reference/partial-update-feature-flag-definition-in-environment).
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Patch Definition** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+   - **Operations**: Enter the patch operations to apply to the flag definition.
+
+1. Optionally, define [input variables](/docs/platform/variables-and-expressions/harness-variables#input-and-output-variables) that can be referenced within this step and others in the pipeline.
+1. Click **Apply Changes** to add the step to the pipeline.
+
+Once you have added FME steps to a Custom stage and designed your pipeline, click **Save** and execute the pipeline by clicking **Run**.
 
 <details>
 <summary>Advanced Pipeline Configuration</summary>
