@@ -1054,5 +1054,23 @@
     "description": "Enables global queueing for hosted build stages, allowing them to be automatically queued and executed once infrastructure resources become available.",
     "gaStartDate": "2026-03-04",
     "module": "Continuous Integration"
+  },
+  {
+    "flagKey": "FME_FLAG_SET_TARGETING_RULES",
+    "description": "Enables a FME step to configure flag targeting rules.",
+    "gaStartDate": "2026-03-06",
+    "module": "FME"
+  },
+  {
+    "flagKey": "FME_FLAG_ARCHIVE",
+    "description": "Enables a FME step to support archival of a feature flag.",
+    "gaStartDate": "2026-03-06",
+    "module": "FME"
+  },
+  {
+    "flagKey": "FME_OPA_POLICY",
+    "description": "Support for policies with FME feature flags and feature flag definitions",
+    "gaStartDate": "2026-03-06",
+    "module": "FME"
   }
 ]
