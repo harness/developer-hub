@@ -76,6 +76,31 @@ This plugin exports three UI cards that you can show on the **Overview** tab of 
 
 ![](./static/dashboards_card.png)
 
+#### Full-height Grafana dashboard (important)
+If you want the embedded Grafana dashboard viewer to render taller (for example “full screen height”), set the height inside specs.gridProps.
+If you place height under specs.props.style, it may be ignored/overridden by the layout grid.
+
+✅ Supported example (recommended)
+```yaml
+- component: EntityOverviewDashboardViewer
+  specs:
+    gridProps:
+      md: 12
+      xs: 12
+      height: calc(100vh - 200px)
+```
+
+❌ Not recommended (may be ignored)
+```yaml
+- component: EntityOverviewDashboardViewer
+  specs:
+    props:
+      style:
+        height: calc(100vh - 200px)
+```
+Why: the IDP Layout system applies sizing through the grid container, so height overrides should be provided via gridProps for consistent rendering.
+So, if you notice the dashboard suddenly rendering shorter after previously working, validate that the height is still defined in gridProps (layout-level), not props.style (component-level).
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set the following annotations in its `catalog-info.yaml` definition file.
