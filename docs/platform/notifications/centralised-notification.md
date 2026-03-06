@@ -21,7 +21,10 @@ You can configure centralised notifications for:
 ## Pipeline Notifications
 
 :::info Prerequisites
-Before you begin, ensure you have the **`PIPE_CENTRALISED_NOTIFICATION`** feature flag enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+Before you begin, ensure you have the following feature flags enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
+
+- **`PIPE_CENTRALISED_NOTIFICATION`**: Required for centralized pipeline notifications.
+- **`PIPE_PIPELINE_RESUME_NOTIFICATION`**: Required for the Pipeline Resumed event.
 :::
 
 Centralised Notifications for pipelines allow you to configure notifications for multiple pipelines at once instead of setting them up individually. You can create rules at different scopes—Account, Organisation, or Project—with each scope providing appropriate targeting options for the pipelines within its hierarchy.

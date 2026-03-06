@@ -51,8 +51,10 @@ Select **Next**.
 In **Pipeline Events**, select the events that will trigger the notification.
 
 :::info note
-Currently, the Trigger Failed event is behind the feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. 
-Please, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+Currently, the following events are behind feature flags. Contact [Harness Support](mailto:support@harness.io) to enable them.
+
+- **Trigger Failed:** Feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`
+- **Pipeline Resumed:** Feature flag `PIPE_PIPELINE_RESUME_NOTIFICATION`
 :::
 
 ![](./static/notification-strategy-list-of-all-events.png)
@@ -499,8 +501,7 @@ The above JSON is for a specific stage, If you choose all stages three times the
 <TabItem value="Trigger Failed">
 
 :::info note
-Currently, the Trigger Failed event is behind the feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. 
-Please, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The Trigger Failed event is behind the feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 ```json
