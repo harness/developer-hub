@@ -5,58 +5,8 @@ export const qwietaiModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "qwietai
 
 export const QwietaiData: Horizon = {
   Now: {
-    description: "Q4 2025, Nov 2025 - Jan 2026",
+    description: "Q1 2026, February 2026 - April 2026",
     feature: [  
-      {
-        tag: [{ value: "Integration" }, { value: "Platform" }],
-        title: "Integration with STO",
-        description: "Native integration with STO, enabling Qwiet\'s SAST/SCA/Secrets engines to run as first-class Harness Security Scanners."
-      },
-      {
-        tag: [{ value: "Notifications" }, { value: "Platform" }],
-        title: "Improved Webhook Notifications",
-        description: "Failed webhook deliveries now retry with exponential backoff and queue on persistent failure."
-      }, 
-      {
-        tag: [{ value: "SAST" }, { value: "Language Support"}],
-        title: "Realtime SCA & Secrets in IDE",
-        description: "Automatically detect hardcoded secrets and OSS vulnerabilities on code save directly within IDEs.",
-      },
-      {
-        tag: [{ value: "SAST" }, { value: "Language Support"}],
-        title: "Swift Language Support",
-        description: "Introduce native SAST scanning support for Swift.",
-      },
-      {
-        tag: [{ value: "Visibility" }, { value: "CPG"}, { value: "SAST"}],
-        title: "Code Snippets in Data Flow",
-        description: "Display full code snippets in data-flow views to enhance CPG analysis and issue clarity.",
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "IDE"}],
-        title: "Cursor & Windsurf IDE Support",
-        description: "Enable SAST/SCA scanning within AI-native IDEs like Cursor and Windsurf.",
-      },
-      {
-        tag: [{ value: "IDE" }, { value: "Performance"}, { value: "Multi-Language"}],
-        title: "IDE Plugin Enhancements",
-        description: "Improve plugin performance and expand multi-language scanning support.",
-      },
-      {
-        tag: [{ value: "Remediation" }, { value: "Automation"}],
-        title: "Automated PR Fixes for HCR",
-        description: "Enable automated fix-based pull requests within the Harness Code Repository.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Remediation"}, { value: "GitHub"}],
-        title: "GitHub AI Autofix Enhancements",
-        description: "Enhance GitHub Autofix with PR tracking, user actions, interactive comments, and bot responses."
-      },
-    ],
-  },
-  Next: {
-    description: "Q1 2026, Feb 2026 - April 2026",
-    feature: [
       {
         tag: [{ value: "Platform" }, { value: "Performance" }],
         title: "Single-Tenant Database Support",
@@ -104,24 +54,10 @@ export const QwietaiData: Horizon = {
       }
     ],
   },
-  Later: {
-    description: "Q2 2026, May 2026 & Beyond",
+  Next: {
+    description: "Q2 2026, May 2026 - July 2026",
     feature: [
-      {
-        tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
-        title: "Vercel Integration",
-        description: "Serve as the native security integration for Vercel to ship secure code by default.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
-        title: "Replit Integration",
-        description: "Serve as the native security integration for Replit to ship secure code by default.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
-        title: "Lovable Integration",
-        description: "Serve as the native security integration for Lovable to ship secure code by default.",
-      },
+      
       {
         tag: [{ value: "AI" }, { value: "Automation"}],
         title: "Advanced AI Capabilities",
@@ -149,10 +85,75 @@ export const QwietaiData: Horizon = {
       }
     ],
   },
+  Later: {
+    description: "Q3 2026+, August 2026 & beyond",
+    feature: [
+   {
+        tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
+        title: "Vercel Integration",
+        description: "Serve as the native security integration for Vercel to ship secure code by default.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
+        title: "Replit Integration",
+        description: "Serve as the native security integration for Replit to ship secure code by default.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
+        title: "Lovable Integration",
+        description: "Serve as the native security integration for Lovable to ship secure code by default.",
+      },
+    ],
+  },
 
   Released: {
     description: "What has been released",
     feature: [
+         {
+        tag: [{ value: "Integration" }, { value: "Platform" }],
+        title: "Integration with STO",
+        description: "Native integration with STO, enabling Qwiet\'s SAST/SCA/Secrets engines to run as first-class Harness Security Scanners."
+      },
+      {
+        tag: [{ value: "Notifications" }, { value: "Platform" }],
+        title: "Improved Webhook Notifications",
+        description: "Failed webhook deliveries now retry with exponential backoff and queue on persistent failure."
+      }, 
+      {
+        tag: [{ value: "SAST" }, { value: "Language Support"}],
+        title: "Realtime SCA & Secrets in IDE",
+        description: "Automatically detect hardcoded secrets and OSS vulnerabilities on code save directly within IDEs.",
+      },
+      {
+        tag: [{ value: "SAST" }, { value: "Language Support"}],
+        title: "Swift Language Support",
+        description: "Introduce native SAST scanning support for Swift.",
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "CPG"}, { value: "SAST"}],
+        title: "Code Snippets in Data Flow",
+        description: "Display full code snippets in data-flow views to enhance CPG analysis and issue clarity.",
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "IDE"}],
+        title: "Cursor & Windsurf IDE Support",
+        description: "Enable SAST/SCA scanning within AI-native IDEs like Cursor and Windsurf.",
+      },
+      {
+        tag: [{ value: "IDE" }, { value: "Performance"}, { value: "Multi-Language"}],
+        title: "IDE Plugin Enhancements",
+        description: "Improve plugin performance and expand multi-language scanning support.",
+      },
+      {
+        tag: [{ value: "Remediation" }, { value: "Automation"}],
+        title: "Automated PR Fixes for HCR",
+        description: "Enable automated fix-based pull requests within the Harness Code Repository.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Remediation"}, { value: "GitHub"}],
+        title: "GitHub AI Autofix Enhancements",
+        description: "Enhance GitHub Autofix with PR tracking, user actions, interactive comments, and bot responses."
+      },
       {
         tag: [{ value: "Integration" }, {value: "Cloud Security"}, { value: "Visibility" }],
         title: "Wiz Integration",
