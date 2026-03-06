@@ -25,6 +25,29 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## February 2026
 
+
+### Version 1.183.0
+
+#### New features and Enhancements
+
+[**Manual Severity override:**](/docs/security-testing-orchestration/severity-override/manual-override) Added support for manually overriding the severity of security issues when the severity assigned by Harness STO does not align with internal risk assessments. This enables more accurate prioritization based on issue criticality, exploit exposure, compensating controls, and production impact. This feature is behind the feature flag `STO_ISSUE_OVERRIDE`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+<DocImage path={require('./static/severity-override.png')} width="70%" height="50%" />
+
+[**EPSS scoring:**](/docs/security-testing-orchestration/risk-and-priortization/epss-score) Introduced EPSS scoring for CVE-associated security issues on the Issues and Vulnerabilities page. This supports a risk-based approach, helps you focus on vulnerabilities based on real-world exploitation signals rather than theoretical impact alone. This feature is behind the feature flag `STO_ISSUE_EPSS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+<DocImage path={require('./static/epss-score.png')} width="70%" height="50%" />
+
+[**Exemptions page filters:**](/docs/security-testing-orchestration/exemptions/exemption-workflows#filters-in-exemption-section) Added filters to the Exemptions page to narrow down issues based on Issue Type, Target, Target Type, Severity, and many more. This feature is behind the feature flag `STO_EXEMPTION_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+**Delegate 2.0**: Delegate 2.0 is now supported for all STO steps running in **Ingestion mode** on **Linux and MacOS** operating systems, across supported infrastructure types (Harness Cloud, Local (Docker), and Kubernetes). This feature is behind the feature flag `STO_CONTAINERLESS_INGESTION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+#### Fixed Issues
+
+- Fixed an issue where creating pull requests for the Harness Code Repository resulted in an error. Pull requests can now be created successfully (STO-10804).
+- Fixed an issue where the STO Exemptions page displayed an incorrect approval time. The correct approval timestamp is now shown (STO-10726 , [ZD-102826](https://harnesssupport.zendesk.com/agent/tickets/102826)).
+- Fixed an issue in the Mend scanner where the File Name field displayed incorrectly in SCA issues. The File Name now appears correctly on the Issue Overview page (STO-10192).
+
 ### Version 1.179.4
 
 #### New Features and Enhancements
