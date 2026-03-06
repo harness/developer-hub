@@ -127,14 +127,8 @@ const config: Config = {
           href: 'https://www.harness.io/company/contact-sales',
         },
         {
+          type: 'custom-auth-buttons',
           position: 'right',
-          html: '<span class="tool" hover-tooltip="Sign into the Harness Platform (app.harness.io)" tooltip-position="bottom"><button class="button button--nav">Sign in</button></span>',
-          href: 'https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in',
-        },
-        {
-          position: 'right',
-          html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform (app.harness.io)" tooltip-position="bottom"><button class=" button button--cta">Sign up</button></span>',
-          href: 'https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started',
         },
       ],
     },
