@@ -346,16 +346,23 @@ Shows all entities that belong to the current scope level, with search and pagin
 
 Displays aggregated metrics from child entities. The `value` field references a metadata property created by an aggregation rule.
 
-```yaml {4}
+```yaml
 - component: StatsCard
   specs:
     props:
-      title: Max Failure Rate
-      subtitle: Percentage
-      value: <+metadata.Max Change Failure Rate>
+      title: Code Coverage
+      subtitle: Code Coverage of our codebase
+      value: <+metadata.codeCoverage>%
 ```
 
-The `value` uses `<+metadata.propertyName>` syntax where property names come from your aggregation rules.
+**Props:**
+- **title** - The main heading displayed on the card
+- **subtitle** - A description or additional context for the metric
+- **value** - The metric value to display, supports basic interpolation using `<+metadata.propertyName>` syntax
+
+:::note
+The `value` field supports basic interpolation using `<+metadata.propertyName>` syntax, where property names come from your aggregation rules. You can also append static text to the interpolated value (e.g., `/month`, `%`, etc.).
+:::
 
 #### AggregatedTable
 
