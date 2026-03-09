@@ -9,6 +9,50 @@ redirect_from:
 
 The Harness Model Context Protocol (MCP) Server enables integration with Harness tools, providing endpoints for pipelines, pull requests, and more. This guide outlines the installation, configuration, and usage of the MCP server.
 
+## Harness MCP V2 Server (Early Preview)
+
+:::info Early Preview — Open Source
+The Harness MCP V2 Server is available as an **Early Preview** release. It is fully open source and community feedback is encouraged. If you encounter issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/thisrohangupta/harness-mcp-v2).
+
+- **NPM Package:** [harness-mcp-v2 on npm](https://www.npmjs.com/package/harness-mcp-v2)
+- **Source Code:** [github.com/thisrohangupta/harness-mcp-v2](https://github.com/thisrohangupta/harness-mcp-v2)
+:::
+
+The Harness MCP V2 Server is a ground-up redesign of the Harness MCP Server, built in TypeScript and distributed as an npm package. It takes a fundamentally different approach to how AI agents interact with the Harness platform.
+
+### What changed from V1 to V2
+
+| Area | MCP V1 (Current) | MCP V2 (Early Preview) |
+|------|-------------------|------------------------|
+| **Architecture** | One tool per API endpoint — the tool count grows with every new Harness API | 10 consolidated tools (`harness_list`, `harness_get`, `harness_create`, etc.) with a registry-based dispatch system routing to 119+ resource types |
+| **LLM efficiency** | Large tool schemas can fill context windows and degrade tool-selection accuracy as tool count increases | Fewer tools means smaller schemas, less context usage, and more reliable tool selection by the LLM |
+| **Platform coverage** | Covers core modules (CI/CD, CCM, STO, Chaos, IDP, etc.) across 20+ toolsets | 25 toolsets covering CI/CD, GitOps, Feature Flags, Cloud Cost Management, Security Testing, Chaos Engineering, IDP, Software Supply Chain, and more |
+| **Multi-project support** | Requires `HARNESS_DEFAULT_ORG_ID` and `HARNESS_DEFAULT_PROJECT_ID` environment variables | Agents discover organizations and projects dynamically — no hardcoded env vars needed. Cross-project queries work out of the box |
+| **Prompt templates** | N/A | 26 pre-built prompt templates for common workflows: debug failed pipelines, review DORA metrics, triage vulnerabilities, optimize cloud costs, audit access control, and more |
+| **Installation** | Go binary (build from source) or Docker image | `npx harness-mcp-v2` — zero-install, single command. Also available via npm global install, Docker, and Kubernetes manifests |
+| **Runtime** | Go | TypeScript / Node.js |
+| **Transport** | stdio and HTTP server modes | stdio (default) and Streamable HTTP with session management, SSE support, and health checks |
+| **Extensibility** | Adding a new resource requires new tool code, schema, and registration | Adding a new Harness resource means adding a declarative data file — no new tool registration or schema changes |
+| **Safety** | `--read-only` flag | `HARNESS_READ_ONLY` mode plus user confirmation prompts (elicitation) before any mutating operation (create, update, delete, execute) |
+| **Diagnostics** | Download execution logs | `harness_diagnose` tool provides structured failure analysis with stage/step breakdown, timing, bottlenecks, and automatic chained pipeline failure tracking |
+| **Gateway support** | Standard MCP protocol | Tested with Docker MCP Gateway, Portkey, LiteLLM, Envoy AI Gateway, Kong, and other MCP-compliant gateways |
+
+### Quick start with V2
+
+No install required — run directly with npx:
+
+```bash
+npx harness-mcp-v2
+```
+
+Configure with your AI client by providing your Harness API key. Account ID is auto-extracted from PAT tokens, so only `HARNESS_API_KEY` is required:
+
+```bash
+HARNESS_API_KEY=pat.xxx npx harness-mcp-v2
+```
+
+For full V2 configuration details, client setup guides, and tool reference, see the [Harness MCP V2 README](https://github.com/thisrohangupta/harness-mcp-v2#readme).
+
 ## Introduction
 
 ### What is MCP?
@@ -738,4 +782,6 @@ The Inspector will display a URL that you can access in your browser to begin de
 ## References
 
 * [Harness MCP Server Repo](https://github.com/harness/mcp-server)
+* [Harness MCP V2 Server Repo (Early Preview)](https://github.com/thisrohangupta/harness-mcp-v2)
+* [Harness MCP V2 on npm](https://www.npmjs.com/package/harness-mcp-v2)
 * [Model Context Protocol Overview](https://modelcontextprotocol.io/introduction)
