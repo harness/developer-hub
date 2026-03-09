@@ -1,6 +1,6 @@
 ---
-title: Branch build sequence ID
-description: Use the branch build sequence ID expression to track incremental build numbers per branch and repository.
+title: Branch-scoped build numbers
+description: Track incremental build numbers per branch using the branchSeqId expression.
 sidebar_position: 25
 ---
 
