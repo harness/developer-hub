@@ -47,16 +47,18 @@ When you set up an account, two environments are automatically created. For more
 
 ## Delete a feature flag
 
-To delete a feature flag, you first need to delete all targeting rules for that flag within all environments. 
+To delete a feature flag, you first need to delete all targeting rules for that flag within all environments.
 
 To delete a feature flag, do the following:
 
 1. Select the feature flag you want to delete.
 1. Access the desired environment and click the **Ellipses** icon next to the **KILL** button and click **Delete targeting rules**. The Delete rules page appears.
-1. Type `DELETE` in the warning page field and then, in the **Add approvers** fields, optionally start typing users or groups. If you don’t add approvers, the feature flag is deleted immediately. 
+1. Type `DELETE` in the warning page field and then, in the **Add approvers** fields, optionally start typing users or groups. If you don’t add approvers, the feature flag is deleted immediately.
 1. Click the **Delete** button. If you haven’t selected approvers, the targeting rules are deleted.
-1. Repeat the same action for all environments that the feature flag is added to. 
+1. Repeat the same action for all environments that the feature flag is added to.
 1. Once you delete definitions, delete the feature flag by clicking the **Gear** icon adjacent to the flag name.
+
+If you need to retain historical configurations, audit logs, or data associated with a feature flag, you can [archive the feature flag](/docs/feature-management-experimentation/feature-management/manage-flags/archive-a-feature-flag) instead of deleting it.
 
 ## Troubleshooting
 

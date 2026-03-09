@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-03-05T10:00:00
+date: 2026-03-09T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,9 +14,31 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: March 5, 2026
+#### Last updated: March 9, 2026
 
 ## March 2026
+
+### [New Feature] Archive feature flags
+----
+#### 2026-03-09
+
+Harness Feature Management & Experimentation (FME) now supports feature flag archiving, giving teams a way to retire feature flags without permanently deleting them. Archiving removes a feature flag from default views and stops its definition from being sent to SDKs, while preserving all historical data for compliance, auditing, and analysis.
+
+![Archived feature flag state](./static/fme/archived-flag.png)
+
+With flag archiving, feature flags have three states — Active, Archived, and Deleted — giving you more control over the flag lifecycle. When you archive a feature flag, you can:
+
+- Remove the feature flag from default views and SDKs while preserving all historical data
+- Reduce clutter in workspaces with high flag counts by hiding retired flags from the Feature Flags list, Environments page, and Rollout board
+- Enforce governance on the archive action using Harness Policy as Code (OPA)
+- Unarchive a feature flag in break-glass situations, restoring it to the active state
+
+Archiving is governed by two new RBAC permissions — **FME Feature Flag: Archive** and **FME Feature Flag: Unarchive** — included by default in the FME Administrator role. Before archiving, Harness FME checks for dependencies that block the operation and warns about active experiments, recent traffic, and outstanding change requests.
+
+#### Related documentation
+
+- [Archive a feature flag](/docs/feature-management-experimentation/feature-management/manage-flags/archive-a-feature-flag)
+- [FME permissions](/docs/feature-management-experimentation/permissions)
 
 ### [New Feature] FME Steps in Harness Pipelines is Now Generally Available
 ----

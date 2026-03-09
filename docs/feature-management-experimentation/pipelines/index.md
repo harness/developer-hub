@@ -99,6 +99,7 @@ To add FME steps to a pipeline:
    | [**Create Feature Flag**](#create-feature-flag)                        | Create a new feature flag                 | Use when introducing a new feature flag as part of deployment or feature development. This step instantiates the flag across all environments with default rollout plans.                    |
    | [**Update Feature Flag**](#update-feature-flag)                        | Update flag metadata                      | Use when you need to edit flag properties such as the description, rollout status, owners, or tags without changing targeting or traffic allocation.       |
    | [**Delete Feature Flag**](#delete-feature-flag)                              | Permanently delete a feature flag         | Use when a feature flag is no longer needed and should be removed entirely. Optionally deletes all flag definitions across environments before deletion.             |
+   | [**Archive Feature Flag**](#archive-feature-flag)                            | Archive a feature flag                    | Use when a feature flag is no longer active but should be preserved for historical reference rather than permanently deleted.                                        |
    | [**Set Default Allocations**](#set-default-allocations)           | Control default rollout percentages       | Use when you want to define how traffic is split across treatments for users who do not match any targeting rules (for example, 50/50, 75/25, or 100% on).              |
    | [**Set Individual Targets**](#set-individual-targets)                   | Define the full set of individual targets | Use when you want to deterministically set the complete list of individual targets for a flag in an environment, replacing any existing list.        |
    | [**Add/Remove Individual Targets**](#addremove-individual-targets) | Incrementally modify targeting            | Use when you need to add or remove specific users or segments without overwriting existing individual target lists. Useful for gradual rollouts or hand-picked targets. |
@@ -294,6 +295,19 @@ Use this step to permanently delete a feature flag.
    - **Name**: Add a step name (such as `Delete Feature Flag`).
    - **Feature Flag Name**: Add the name of the feature flag to delete.
    - **Delete All Definitions**: Optionally, enable this option to delete all feature flag definitions across environments before deleting the flag.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Archive Feature Flag
+
+Use this step to archive a feature flag, preserving it for historical reference without permanently deleting it.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Archive Feature Flag** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name (such as `Archive Feature Flag`).
+   - **Feature Flag Name**: Add the name of the feature flag to archive.
 
 1. Click **Apply Changes** to add the step to the pipeline.
 

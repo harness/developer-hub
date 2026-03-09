@@ -2034,6 +2034,11 @@ const sidebars: SidebarsConfig = {
                 'feature-management-experimentation/feature-management/manage-flags/targeting-an-account',
                 'feature-management-experimentation/feature-management/manage-flags/viewing-user-treatments',
                 'feature-management-experimentation/feature-management/manage-flags/maintaining-consistent-treatments',
+                {
+                  type: 'doc',
+                  id: 'feature-management-experimentation/feature-management/manage-flags/archive-a-feature-flag',
+                  className: 'sidebar-item-new',
+                },
               ],
             },
             {

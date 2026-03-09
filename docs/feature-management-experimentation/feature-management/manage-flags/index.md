@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Overview
 
-This section covers managing feature flags in Harness FME. Learn to schedule rollouts, set alert baselines, use kill switches, reallocate traffic, and leverage flag sets for improved SDK performance. 
+This section covers managing feature flags in Harness FME. Learn to schedule rollouts, set alert baselines, archive flags, use kill switches, reallocate traffic, and leverage flag sets for improved SDK performance. 
 
 Also, explore account-level targeting and how to view and maintain consistent user treatments.
 
@@ -18,3 +18,4 @@ Also, explore account-level targeting and how to view and maintain consistent us
 - [Targeting an Account or Organization](/docs/feature-management-experimentation/feature-management/manage-flags/targeting-an-account)
 - [Viewing User Treatments](/docs/feature-management-experimentation/feature-management/manage-flags/viewing-user-treatments)
 - [Maintaining Consistent Treatments](/docs/feature-management-experimentation/feature-management/manage-flags/maintaining-consistent-treatments)
+- [Archive a feature flag](/docs/feature-management-experimentation/feature-management/manage-flags/archive-a-feature-flag)
