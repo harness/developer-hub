@@ -18,6 +18,32 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 ## March 2026
 
+### [New Feature] Harness Policy As Code for FME Feature Flags
+----
+#### 2026-03-09
+
+Harness Feature Management & Experimentation (FME) now supports [Harness Policy As Code (OPA)](/docs/platform/governance/policy-as-code/harness-governance-overview), enabling teams to define and enforce governance rules for feature flags at save time.
+
+![Policy evaluations dashboard](./static/fme/policy-evaluations.png)
+
+You can create and manage policies for **FeatureFlag** and **FeatureFlagDefinition** entities in the Harness Policy As Code Editor. These policies are automatically evaluated on **On Save** events whenever a feature flag is created, updated, deleted, or archived.
+
+Policies are authored in [Rego](https://www.openpolicyagent.org/docs/policy-language) and applied through policy sets, giving administrators fine-grained control over how feature flags are validated and enforced. With Policy As Code for Harness FME, teams can:
+
+- Prevent misconfigured feature flags before they reach production (for example, missing descriptions, owners, or invalid naming)
+- Validate targeting rules, rollout percentages, and treatment configurations at save time
+- Enforce organizational standards consistently across projects
+- Choose enforcement behavior per policy, using **Warn and Continue** or **Error and Exit** to balance safety and developer velocity
+- Audit policy evaluations with a full history of successful, warning, and failed save attempts
+
+This integration helps teams shift feature flag governance left, catching issues earlier while maintaining clear visibility into policy enforcement outcomes.
+
+#### Related documentation
+
+- [Policy As Code for FME Feature Flags](/docs/feature-management-experimentation/policies)
+- [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
+- [Harness Policy Samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-policies)
+
 ### [New Feature] Archive feature flags
 ----
 #### 2026-03-09

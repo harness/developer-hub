@@ -42,6 +42,14 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 		- [Enforce the flag types that are configured for Feature Flags](#enforce-the-flag-types-that-are-configured-for-feature-flags)
 		- [Deny the creation of Feature Flags that serve true by default](#deny-the-creation-of-feature-flags-that-serve-true-by-default)
 		- [Users want to enforce naming conventions for their Feature flags](#users-want-to-enforce-naming-conventions-for-their-feature-flags)
+	- [FME Feature Flag policies](#fme-feature-flag-policies)
+		- [Require a description when creating or updating a feature flag](#require-a-description-when-creating-or-updating-a-feature-flag)
+		- [Prevent saving active feature flags without a defined owner](#prevent-saving-active-feature-flags-without-a-defined-owner)
+		- [Enforce naming conventions for FME feature flags](#enforce-naming-conventions-for-fme-feature-flags)
+		- [Prevent archiving a feature flag with recent traffic](#prevent-archiving-a-feature-flag-with-recent-traffic)
+	- [FME Feature Flag Definition policies](#fme-feature-flag-definition-policies)
+		- [Require default treatment to be off](#require-default-treatment-to-be-off)
+		- [Require flag sets for production definitions](#require-flag-sets-for-production-definitions)
 	- [Template policy samples](#template-policy-samples)
 		- [Enforce the use of stable templates in a pipeline](#enforce-the-use-of-stable-templates-in-a-pipeline)
 		- [Enforce an Approval step in a stage template](#enforce-an-approval-step-in-a-stage-template)
@@ -489,6 +497,156 @@ package feature_flags
 deny[msg] {
 	not regex.match("[FFM|OPA|CI|CD]+[-][1-9][0-9]?", input.flag.name)
 	msg := sprintf("Flag name '%s' doesn't contain a Jira ticket number", [input.flag.name])
+}
+```
+
+### FME Feature Flag policies
+
+* [Require a description when creating or updating a feature flag](#require-a-description-when-creating-or-updating-a-feature-flag)
+* [Prevent saving active feature flags without a defined owner](#prevent-saving-active-feature-flags-without-a-defined-owner)
+* [Enforce naming conventions for FME feature flags](#enforce-naming-conventions-for-fme-feature-flags)
+* [Prevent archiving a feature flag with recent traffic](#prevent-archiving-a-feature-flag-with-recent-traffic)
+
+#### Require a description when creating or updating a feature flag
+
+Ensure that every feature flag in Harness FME includes a meaningful description so teams understand the purpose and impact of the flag.
+
+This policy denies creating or updating a feature flag if the description is missing or empty. It skips validation on delete so that flags with missing descriptions can still be cleaned up.
+
+```rego
+package fme_feature_flags
+
+# Deny creating or updating a feature flag if no description field is present
+# NOTE: Try removing the description to see the policy fail
+deny[msg] {
+  input.entityMetadata.changeTrigger != "delete"
+  not input.featureFlag.description
+  msg := sprintf(
+    "Feature flag '%s' must include a description before it can be saved",
+    [input.featureFlag.name]
+  )
+}
+
+# Deny creating or updating a feature flag if the description is an empty string
+# NOTE: Try setting the description to an empty value ("") to see the policy fail
+deny[msg] {
+  input.entityMetadata.changeTrigger != "delete"
+  input.featureFlag.description == ""
+  msg := sprintf(
+    "Feature flag '%s' must include a non-empty description",
+    [input.featureFlag.name]
+  )
+}
+```
+
+#### Prevent saving active feature flags without a defined owner
+
+Require active feature flags to have an owner assigned, ensuring team accountability and easier follow-up.
+
+```rego
+package fme_feature_flags
+
+# Deny saving an active feature flag when no owner is defined
+# NOTE: Try removing all owners to see the policy fail
+deny[msg] {
+  input.featureFlag.status == "ACTIVE"
+  count(input.entityMetadata.owners) == 0
+  msg := sprintf(
+    "Feature flag '%s' cannot be active without an assigned owner",
+    [input.featureFlag.name]
+  )
+}
+```
+
+#### Enforce naming conventions for FME feature flags
+
+Ensure feature flag names follow an organizational naming convention at creation time, for example, including a Jira ticket reference. This policy only runs on `create` so that existing flags with non-conforming names can still be updated or deleted.
+
+This policy enforces a pattern like `FME-1234-feature-name`.
+
+```rego
+package fme_feature_flags
+
+# Deny feature flags whose names do not follow the required Jira-based format
+# Only enforced on creation so existing flags can still be updated or deleted
+# Example: "FME-1234-new-checkout-flow" is allowed, "test-flag" is not
+# NOTE: Try renaming the flag to "TestFlag" to see the policy fail
+deny[msg] {
+  input.entityMetadata.changeTrigger == "create"
+  not regex.match("^FME-[0-9]+-.*", input.featureFlag.name)
+  msg := sprintf(
+    "Feature flag name '%s' must start with a valid Jira ticket (for example, FME-1234-*)",
+    [input.featureFlag.name]
+  )
+}
+```
+
+#### Prevent archiving a feature flag with recent traffic
+
+Prevent archiving a feature flag that has received traffic within the last 24 hours. This ensures teams don't accidentally retire flags that are still actively evaluated in production.
+
+This policy only runs on the `archive` change trigger and uses OPA's built-in time functions to compare the flag's `lastTrafficDate` against the current time.
+
+```rego
+package fme_feature_flags
+
+# Deny archiving a feature flag that received traffic in the last 24 hours
+# NOTE: Try setting lastTrafficDate to today's date to see the policy fail
+deny[msg] {
+  input.entityMetadata.changeTrigger == "archive"
+  last_traffic_ns := time.parse_rfc3339_ns(input.featureFlag.lastTrafficDate)
+  now_ns := time.now_ns()
+  one_day_ns := 24 * 60 * 60 * 1000000000
+  now_ns - last_traffic_ns < one_day_ns
+  msg := sprintf(
+    "Feature flag '%s' cannot be archived because it received traffic within the last 24 hours (last traffic: %s)",
+    [input.featureFlag.name, input.featureFlag.lastTrafficDate]
+  )
+}
+```
+
+### FME Feature Flag Definition policies
+
+* [Require default treatment to be off](#require-default-treatment-to-be-off)
+* [Require flag sets for production definitions](#require-flag-sets-for-production-definitions)
+
+#### Require default treatment to be off
+
+Ensure that the default treatment for any feature flag definition is set to `off` when creating or updating. This prevents new or modified flags from accidentally serving an active treatment before the rollout is intentionally configured. This policy skips validation on delete.
+
+```rego
+package fme_feature_flag_definitions
+
+# Deny creating or updating a definition where the default treatment is not "off"
+# NOTE: Try setting a different treatment as the default to see the policy fail
+deny[msg] {
+  input.entityMetadata.changeTrigger != "delete"
+  some i
+  input.featureFlagDefinition.treatments[i].defaultTreatment == true
+  input.featureFlagDefinition.treatments[i].name != "off"
+  msg := sprintf(
+    "Feature flag '%s' in '%s' must have 'off' as the default treatment",
+    [input.featureFlagDefinition.name, input.featureFlagDefinition.environmentName]
+  )
+}
+```
+
+#### Require flag sets for production definitions
+
+Ensure that every feature flag definition saved in a production environment belongs to at least one flag set. Flag sets help organize flags and control which SDKs receive specific definitions, making them essential for production governance.
+
+```rego
+package fme_feature_flag_definitions
+
+# Deny saving a definition in production without at least one flag set
+# NOTE: Try removing all flag sets to see the policy fail
+deny[msg] {
+  input.featureFlagDefinition.environmentName == "Production"
+  count(input.featureFlagDefinition.flagSets) == 0
+  msg := sprintf(
+    "Feature flag '%s' in Production must belong to at least one flag set",
+    [input.featureFlagDefinition.name]
+  )
 }
 ```
 

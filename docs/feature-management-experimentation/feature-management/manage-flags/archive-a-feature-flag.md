@@ -86,7 +86,7 @@ You can write Harness Policy as Code (OPA) policies to enforce organization-spec
 - Do not allow archive if the flag has received traffic in the last 7 days
 - Do not allow archive if the flag status is "Ramping"
 
-Policy rules do not need to match the built-in warnings.
+Policy rules do not need to match the built-in warnings. For setup steps and examples, see [Using Harness Policy As Code with FME](/docs/feature-management-experimentation/policies). For an example policy that prevents archiving flags with recent traffic, see [Prevent archiving a feature flag with recent traffic](/docs/platform/governance/policy-as-code/sample-policy-use-case#prevent-archiving-a-feature-flag-with-recent-traffic).
 
 You can also archive feature flags as part of an automated pipeline using the [Archive Feature Flag pipeline step](/docs/feature-management-experimentation/pipelines#archive-feature-flag).
 
