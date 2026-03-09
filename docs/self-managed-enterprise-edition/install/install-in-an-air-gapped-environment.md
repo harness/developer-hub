@@ -104,11 +104,25 @@ To save Docker images, do the following:
   </TabItem>
   <TabItem value="0.38" label="Version 0.38.x and later">
 
-This guide outlines the workflow for downloading Harness Self-Managed Platform (SMP) airgap bundles and pushing them to your private container registry. This process is essential for installing Harness in environments without direct internet access.
+This guide walks you through downloading Harness Self-Managed Enterprise Edition airgap bundles and pushing them to your private container registry. You'll need to do this if your installation environment lacks direct internet access.
+
+## Download the scripts
+
+Before starting the installation workflow, download the required scripts:
+
+```bash
+# Download the download-airgap-bundles.sh and harness-airgap-images.sh scripts
+curl -f -s -L -o download-airgap-bundles.sh https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/src/airgap/download-airgap-bundles.sh
+curl -f -s -L -o harness-airgap-images.sh https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/src/airgap/harness-airgap-images.sh
+
+# Make the scripts executable
+chmod +x download-airgap-bundles.sh
+chmod +x harness-airgap-images.sh
+```
 
 ## Installation workflow
 
-The flowchart below shows the updated air-gapped environment installation workflow steps for version 0.38.x and later.
+The flowchart below shows the air-gapped environment installation workflow for version 0.38.x and later.
 
 ```mermaid
 flowchart TD
@@ -132,154 +146,174 @@ flowchart TD
     class H dashed;
 ```
 
-## 1. Airgap Bundle Structure
+## Step 1: Download the airgap bundles
 
-The Harness airgap bundles have been restructured to provide more flexibility and granular control over downloads. The components are categorized into **Control Plane** (Modules) and **Execution Plane** (Plugins/Agents).
+Harness groups airgap components into core modules (like the platform itself) and execution components (like delegates and plugins). This lets you download exactly what you need.
 
-### Modules (Control Plane)
-Modules contain the core services required to run the Harness platform.
-*   **Description**: All images for a module are packaged in a single `.tgz` file.
-*   **Examples**: `platform`, `ci`, `sto`, `cdng`.
-*   **Dependency**: Some modules depend on others (e.g., `ci` requires `platform`). The download tool automatically resolves these dependencies.
+*   **Modules:** Core platform services (like `platform`, `ci`, `sto`). Packaged as single `.tgz` files. The download tool automatically resolves dependencies between them.
+*   **Plugins:** Optional add-ons for specific tasks (like `ci-plugins`).
+*   **Agents:** Standalone execution components (like `delegate` or `upgrader`).
+*   **Scanners:** Security scanners for the STO module (like `grype-job-runner`).
 
-### Plugins (Execution Plane)
-These are optional add-ons required for specific execution capabilities.
-*   **Description**: All images for a module's plugin set are packaged in a single `.tgz` file.
-*   **Examples**: `ci-plugins` (contains all CI plugins like drone-git, kaniko).
-*   **Usage**: You must explicitly select these if you need the functionality they provide.
+Use the `download-airgap-bundles.sh` script to fetch these components. You can run it interactively, pass flags for automation, or download files manually.
 
-### Agents (Execution Plane)
-Standalone components that run in your infrastructure to execute tasks.
-*   **Description**: Each agent image is packaged in its own `.tgz` file.
-*   **Examples**: `delegate`, `upgrader`.
-*   **Note**: CD Agents are packaged in the `cdng-agents` in a single `.tgz` file.
-*   **Variants**: Agents often have variants like `delegate-fips` or `delegate.minimal`. You can select exactly the variant you need.
+### Interactive mode (Recommended)
 
-### STO Scanners (Execution Plane)
-Security scanners used by the STO module.
-*   **Description**: Each scanner image is packaged in its own `.tgz` file.
-*   **Examples**: `grype-job-runner`, `trivy-job-runner`.
-*   **Usage**: Select only the scanners you intend to use.
-
----
-
-## 2. The `images.txt` File
-
-The `images.txt` file (found in the release) is now structured with Markdown-style headers to help you identify which images belong to which module.
-
-**Example Format:**
-```text
-## Core Platform Services
-docker.io/harness/platform-service-signed:1.107.0
-...
-
-### Platform Agents
-docker.io/harness/delegate:26.02.88404
-...
-
-## Continuous Integration
-docker.io/harness/ci-manager-signed:1.120.5
-...
-
-### CI Build Plugins
-plugins/kaniko:1.13.3
-...
-```
-This structure mirrors the bundle organization, making it easy to verify the contents of each module.
-
----
-
-## 3. Downloading Bundles
-
-Use the `download-airgap-bundles.sh` utility to download the required components.
-
-### Available Flags
-
-*   `-v, --version`: Specify the Harness version (e.g., `0.38.0`).
-*   `-o, --output`: Directory to save the downloaded bundles.
-*   `-b, --bundles`: Comma-separated list of specific bundles to download.
-*   `-l, --list`: List all available modules, plugins, agents, and scanners for a specific version.
-*   `-g, --generate`: Generate a configuration file with your selections.
-*   `-s, --selection`: Use a previously generated configuration file.
-*   `-n, --non-interactive`: Run in non-interactive mode without prompts.
-
-### Usage Modes
-
-#### List Available Bundles
-You can list all available modules, plugins, agents, scanners for a specific version:
-
-```bash
-./download-airgap-bundles.sh -v <VERSION> --list
-```
-
-#### Interactive Mode (Recommended for first time)
-Run the script without the `-b` / `--bundles` flag to enter the interactive menu.
+If this is your first time, run the script without specifying any bundles to use the interactive menu.
 
 ```bash
 ./download-airgap-bundles.sh -v 0.38.0 -o ./airgap-bundles
 ```
 
-**Workflow:**
-1.  **Select Modules**: Choose the core modules (e.g., `platform`, `ci`). Dependencies are auto-selected.
-2.  **Select Plugins/Agents/Scanners**: Choose optional components (e.g., `ci-plugins`, `delegate`, `grype-job-runner`).
+1.  **Select modules:** Choose the modules you need (such as `cd` or `ci`). The script automatically selects any required dependencies.
+2.  **Select plugins, agents, and scanners:** Choose the optional components you want to include. The menu only shows options relevant to the modules you selected in the previous step.
 
-:::note
-In interactive mode, the menus for Plugins/Agents are filtered based on the Modules you selected in Step 1. You cannot interactively download *only* a plugin or agent without selecting its parent module. Use Non-Interactive mode for that.
+:::tip
+Want to save your selections for later or use them in automated workflows? Run the script with the `-g` flag to generate a configuration file:
+`./download-airgap-bundles.sh -v 0.38.0 -g my-selection.conf`
+
+You can then use this file in the future (or in your automation scripts) with the `-s` flag:
+`./download-airgap-bundles.sh -v 0.38.0 -o ./bundles -s my-selection.conf`
 :::
 
-#### Non-Interactive Mode (Automation)
-Use the `-b` / `--bundles` flag to specify a comma-separated list of any components you want.
+### Non-interactive mode (Automation)
 
-:::info Key Benefit
-You can download *any* component directly, including just agents or plugins, without downloading the full platform module.
+For automated setups, use the `-b` (or `--bundles`) flag to pass a comma-separated list of the exact components you want. This is useful if you only need to update a specific agent or plugin without downloading the entire platform.
+
+**Example: Download the CI module, CI plugins, and delegate**
+```bash
+./download-airgap-bundles.sh -v 0.38.0 -o ./bundles -b ci,ci-plugins,delegate -n
+```
+
+**Example: Download only the delegate**
+```bash
+./download-airgap-bundles.sh -v 0.38.0 -o ./bundles -b delegate -n
+```
+
+### Manual download
+
+If you can't use the download script, you can manually download the bundles using `gsutil` or `curl`. You can explore the bundles directly in the [Harness airgap bundle directory](https://console.cloud.google.com/storage/browser/smp-airgap-bundles).
+
+**Bundle URL Structure**: `https://app.harness.io/public/harness-airgap-bundle/harness-<VERSION>/<PATH>/<MODULE>/[<PLUGIN>|<AGENT>|<SCANNERS>]/<bundle-name>_images.tgz`
+
+*   **Modules:** `<MODULE>/<bundle-name>_images.tgz`
+    *   Example: `https://app.harness.io/public/harness-airgap-bundle/harness-0.38.0/platform/platform_images.tgz`
+*   **Plugins:** `<module>/plugins/<plugin-bundle>_images.tgz`
+    *   Example: `https://app.harness.io/public/harness-airgap-bundle/harness-0.38.0/ci/plugins/ci-plugins_images.tgz`
+*   **Agents:** `<module>/agents/<agent>.tgz`
+    *   Example: `https://app.harness.io/public/harness-airgap-bundle/harness-0.38.0/platform/agents/delegate.tgz`
+*   **Scanners:** `sto/scanners/<scanner>.tgz`
+    *   Example: `https://app.harness.io/public/harness-airgap-bundle/harness-0.38.0/sto/scanners/grype-job-runner.tgz`
+
+<details>
+  <summary>Option 1: Using `gsutil`</summary>
+    <p>
+      For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+      ```bash
+      gsutil -m cp \
+        "gs://smp-airgap-bundles/harness-0.38.0/platform/platform_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.38.0/ci/plugins/ci-plugins_images.tgz" \
+        "gs://smp-airgap-bundles/harness-0.38.0/platform/agents/delegate.tgz" \
+        "gs://smp-airgap-bundles/harness-0.38.0/sto/scanners/grype-job-runner.tgz" \
+        .
+      ```
+    </p>
+</details>
+
+<details>
+  <summary>Option 2: Using `curl`</summary>
+    <p>
+        You can also download the images directly using curl:
+        ```bash
+        curl -f -s -L -o smp-airgap-bundles/platform_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.38.0/platform/platform_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/ci-plugins_images.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.38.0/ci/plugins/ci-plugins_images.tgz
+        curl -f -s -L -o smp-airgap-bundles/delegate.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.38.0/platform/agents/delegate.tgz
+        curl -f -s -L -o smp-airgap-bundles/grype-job-runner.tgz https://app.harness.io/public/harness-airgap-bundle/harness-0.38.0/sto/scanners/grype-job-runner.tgz
+      ```
+    </p>
+</details>
+
+### Available bundles reference
+
+Below is a reference list of the available bundle paths (`bucket_path`) for the different modules and components. When constructing your manual download URLs, replace `<bundle-name>` with the bundle key (e.g. `platform`, `cdng`).
+
+| Bundle | Type | Full Path |
+| :--- | :--- | :--- |
+| **Platform** | Module | `harness-<VERSION>/platform/platform_images.tgz` |
+| **Platform Agents** | Agent | `harness-<VERSION>/platform/agents/`[`<agent>.tgz`](#available-single-bundles) |
+| **Dashboard** | Module | `harness-<VERSION>/dashboard/dashboard_images.tgz` |
+| **Continuous Deployment (cdng)** | Module | `harness-<VERSION>/cdng/cdng_images.tgz` |
+| **CD Agents** | Agent | `harness-<VERSION>/cdng/agents/cdng-agents_images.tgz` |
+| **Continuous Integration (ci)** | Module | `harness-<VERSION>/ci/ci_images.tgz` |
+| **CI Plugins** | Plugin | `harness-<VERSION>/ci/plugins/ci-plugins_images.tgz` |
+| **Security Testing Orchestration (sto)** | Module | `harness-<VERSION>/sto/sto_images.tgz` |
+| **STO Scanners** | Scanner | `harness-<VERSION>/sto/scanners/`[`<scanner>.tgz`](#available-single-bundles) |
+| **Feature Flags (ff)** | Module | `harness-<VERSION>/ff/ff_images.tgz` |
+| **Cloud Cost Management (ccm)** | Module | `harness-<VERSION>/ccm/ccm_images.tgz` |
+| **Chaos Engineering (ce)** | Module | `harness-<VERSION>/ce/ce_images.tgz` |
+| **Chaos Plugins** | Plugin | `harness-<VERSION>/ce/plugins/ce-plugins_images.tgz` |
+| **Supply Chain Security (ssca)** | Module | `harness-<VERSION>/ssca/ssca_images.tgz` |
+| **SCS Plugins** | Plugin | `harness-<VERSION>/ssca/plugins/ssca-plugins_images.tgz` |
+| **Database DevOps (dbdevops)** | Module | `harness-<VERSION>/dbdevops/dbdevops_images.tgz` |
+| **Code Repository (code)** | Module | `harness-<VERSION>/code/code_images.tgz` |
+| **Infrastructure as Code Management (iacm)** | Module | `harness-<VERSION>/iacm/iacm_images.tgz` |
+| **IACM Plugins** | Plugin | `harness-<VERSION>/iacm/plugins/iacm-plugins_images.tgz` |
+| **Internal Developer Portal (idp)** | Module | `harness-<VERSION>/idp/idp_images.tgz` |
+| **IDP Plugins** | Plugin | `harness-<VERSION>/idp/plugins/idp-plugins_images.tgz` |
+
+#### Available single bundles
+
+The following components are packaged as individual single bundles (`.tgz`), rather than a combined bundle:
+
+**Platform Agents:**
+*   `delegate.tgz`
+*   `upgrader.tgz`
+
+**STO Scanners:**
+*   `anchore-job-runner.tgz`
+*   `aqua-security-job-runner.tgz`
+*   `aqua-trivy-job-runner.tgz`
+*   `aws-ecr-job-runner.tgz`
+*   `aws-security-hub-job-runner.tgz`
+*   `bandit-job-runner.tgz`
+*   `blackduckhub-job-runner.tgz`
+*   `brakeman-job-runner.tgz`
+*   `burp-job-runner.tgz`
+*   `checkmarx-job-runner.tgz`
+*   `checkov-job-runner.tgz`
+*   `docker-content-trust-job-runner.tgz`
+*   `fossa-job-runner.tgz`
+*   `github-advanced-security-job-runner.tgz`
+*   `gitleaks-job-runner.tgz`
+*   `grype-job-runner.tgz`
+*   `modelscan-job-runner.tgz`
+*   `nexusiq-job-runner.tgz`
+*   `nikto-job-runner.tgz`
+*   `nmap-job-runner.tgz`
+*   `osv-job-runner.tgz`
+*   `owasp-dependency-check-job-runner.tgz`
+*   `prowler-job-runner.tgz`
+*   `semgrep-job-runner.tgz`
+*   `shiftleft-job-runner.tgz`
+*   `snyk-job-runner.tgz`
+*   `sonarqube-agent-job-runner.tgz`
+*   `sysdig-job-runner.tgz`
+*   `traceable-job-runner.tgz`
+*   `twistlock-job-runner.tgz`
+*   `veracode-agent-job-runner.tgz`
+*   `whitesource-agent-job-runner.tgz`
+*   `wiz-job-runner.tgz`
+*   `zap-job-runner.tgz`
+
+:::info Note
+Ensure that the `smp-airgap-bundles/` directory exists before running the command.
 :::
 
-**Examples:**
+## Step 2: Verify your downloads (Optional)
 
-*   **Download CI module, CI plugins, and Delegate:**
-    ```bash
-    ./download-airgap-bundles.sh -v 0.38.0 -o ./bundles -b ci,ci-plugins,delegate -n
-    ```
+The download script automatically organizes your files into a clear folder hierarchy based on the module structure.
 
-*   **Download ONLY the Delegate (Standalone):**
-    ```bash
-    ./download-airgap-bundles.sh -v 0.38.0 -o ./bundles -b delegate -n
-    ```
-
-#### Selection File
-You can generate a configuration file to save your selection for future use.
-
-1.  **Generate**: Run the interactive UI but save to a file instead of downloading.
-    ```bash
-    ./download-airgap-bundles.sh -v 0.38.0 -g my-selection.conf
-    ```
-2.  **Use**: Feed the file back to the script.
-    ```bash
-    ./download-airgap-bundles.sh -v 0.38.0 -o ./bundles -s my-selection.conf
-    ```
-
-#### Manual Download (Advanced)
-
-If you cannot use the download script, you can manually download the bundles from the GCS bucket.
-
-**Bucket URL**: `https://storage.googleapis.com/smp-airgap-bundles/harness-<VERSION>/<PATH>`
-
-*   **Modules**: `<module>/<module>_images.tgz`
-    *   Example: `https://storage.googleapis.com/smp-airgap-bundles/harness-0.38.0/platform/platform_images.tgz`
-*   **Plugins**: `<module>/plugins/<plugin-bundle>_images.tgz`
-    *   Example: `https://storage.googleapis.com/smp-airgap-bundles/harness-0.38.0/ci/plugins/ci-plugins_images.tgz`
-*   **Agents**: `<module>/agents/<agent>.tgz`
-    *   Example: `https://storage.googleapis.com/smp-airgap-bundles/harness-0.38.0/platform/agents/delegate.tgz`
-*   **Scanners**: `sto/scanners/<scanner>.tgz`
-    *   Example: `https://storage.googleapis.com/smp-airgap-bundles/harness-0.38.0/sto/scanners/grype-job-runner.tgz`
-
----
-
-## 4. Directory Structure
-
-The download script organizes files hierarchically based on the module structure. This makes manual navigation intuitive.
-
-**Example Structure:**
+**Example directory structure:**
 ```text
 airgap-bundles/
 ├── platform/
@@ -299,53 +333,69 @@ airgap-bundles/
 └── ...
 ```
 
----
+If you need to verify the exact images contained within each module, refer to the `images.txt` file included in the Harness release notes. It uses headers to group images by their corresponding module, matching the bundle structure above.
 
-## 5. Pushing Images to Registry
+## Step 3: Push images to your registry
 
-Use the `harness-airgap-images.sh` script to push the downloaded bundles to your private registry.
+Now that you have the bundles locally, use the `harness-airgap-images.sh` script to push them to your private container registry.
 
-### New Feature: Skopeo Support (Faster Pushes)
-The script now supports `skopeo`, a tool that copies images between registries without requiring a Docker daemon.
+We highly recommend using the script's Skopeo mode for this step. Skopeo copies images directly between registries without requiring a Docker daemon, which can reduce push times by up to 50%%.
 
-:::info Benefit
-We have observed up to a **40% reduction** in push time compared to `docker load` + `docker push`.
-:::
+### Push using Skopeo mode (Recommended)
 
-*   **Requirements**: `skopeo` and `jq` must be installed on your machine.
-*   **Usage**: Add the `-s` flag.
+**Prerequisites:** You must have `skopeo` and `jq` installed on your machine.
 
-### Usage
-```bash
-./harness-airgap-images.sh -r <REGISTRY_URL> [-f <FILE> | -d <DIRECTORY>] [OPTIONS]
-```
+Add the `-s` flag to enable Skopeo mode. Point the script to your target registry and the directory containing your downloaded bundles.
 
-*   `-r`: Target registry (e.g., `my-registry.com/harness`).
-*   `-d`: Directory to process recursively (recommended).
-*   `-s`: **Use Skopeo mode** (falls back to Docker if unavailable).
-*   `-c`: Cleanup local docker images after pushing (Docker mode only).
-*   `-n`: Non-interactive mode (skips optional prompts like Looker).
-
-### Examples
-
-**Push all bundles using Skopeo (Recommended):**
 ```bash
 ./harness-airgap-images.sh -r my-registry.com/harness -d ./airgap-bundles -s
 ```
 
-**Push using Docker (Legacy/Fallback):**
+### Push using Docker (Fallback)
+
+If Skopeo isn't an option for your environment, you can run the script without the `-s` flag. It will default to using standard Docker commands (`docker load` and `docker push`). We recommend adding the `-c` flag to automatically clean up local Docker images after they are pushed, which helps save disk space.
+
 ```bash
 ./harness-airgap-images.sh -r my-registry.com/harness -d ./airgap-bundles -c
 ```
 
-### Optional: Looker (ng-dashboard)
-The script may prompt you to download the `ng-dashboard` (Looker) image. This image is **not** in the bundles and is pulled directly from DockerHub.
-*   **Interactive**: You will be prompted for DockerHub credentials.
-*   **Non-Interactive (`-n`)**: This step is skipped automatically.
+### Handling the Looker image
+
+During the push process, the script might prompt you to download the `ng-dashboard` (Looker) image. This specific image isn't included in the standard airgap bundles and must be pulled directly from DockerHub.
+
+*   **Interactive mode:** The script pauses and asks for your DockerHub credentials.
+*   **Non-interactive mode:** If you run the script with the `-n` flag, it automatically skips this step.
 
 :::note
-Contact Harness Support if you need DockerHub credentials for the Looker image.
+If you need DockerHub credentials for the Looker image, please contact Harness Support.
 :::
+
+## Script reference
+
+### download-airgap-bundles.sh
+
+Use this script to fetch airgap bundles.
+
+| Flag | Description |
+| :--- | :--- |
+| `-v` | Harness version to download (e.g., `0.38.0`). |
+| `-o` | Output directory for the downloaded bundles. |
+| `-b` / `--bundles` | Comma-separated list of bundles to download (e.g., `ci,delegate`). |
+| `-g` | Generate a configuration file with your interactive selections. |
+| `-s` | Use a previously generated configuration file. |
+| `-n` | Run in non-interactive mode. |
+
+### harness-airgap-images.sh
+
+Use this script to push downloaded bundles to your private container registry.
+
+| Flag | Description |
+| :--- | :--- |
+| `-r` | Target private container registry URL. |
+| `-d` | Directory containing the downloaded bundles. |
+| `-s` | Enable Skopeo mode for faster transfers without a Docker daemon. |
+| `-c` | Automatically clean up local Docker images after pushing (used when Skopeo is not enabled). |
+| `-n` | Run in non-interactive mode. |
 
   </TabItem>
 </Tabs>
