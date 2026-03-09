@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2025-11-10T10:00
+date: 2026-03-04T10:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
@@ -35,9 +35,99 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 </HarnessApiData>
 ::: -->
 
+<!-- ## March 2026
+### New Features & Enhancements:
+- **Vault Integration** - Enables users to correlate a Vault connector directly with an IaCM workspace, allowing secrets to be natively pulled from Vault at runtime to support Terraform and OpenTofu workflows. Customers needed a seamless way to manage sensitive credentials within their infrastructure automation pipelines without manual intervention, reducing security risk and simplifying the operational overhead of secret management across environments.
+- **Terragrunt Advanced Use Cases** - Expands Terragrunt support with a suite of advanced capabilities, including JEXL expression support, STO integration, resource sanitization for sensitive values, and support within the Harness Terraform provider. Additionally, the GitOps native flow now supports automated PR comments for Terragrunt executions. Customers required deeper Terragrunt compatibility to bring their existing workflows into Harness without compromise, enabling teams to maintain governance standards while operating at scale.
+- **AWS CDK Support | [Docs](/docs/infra-as-code-management/cdk)** - Added native AWS CDK support for workspace creation and pipeline execution, enabling teams to define infrastructure using AWS CDK alongside existing Terraform and OpenTofu options- **Product Analytics & Telemetry Implementation | [Docs](/docs/infra-as-code-management/analytics)** - Implemented comprehensive product telemetry tracking via Segment to Mixpanel for entity inventory, orchestration metrics, user engagement, and onboarding funnel conversion to enable data-driven product decisions- **Enhanced Terraform Import Experience | [Docs](/docs/infra-as-code-management/terraform-import)** - Improved UI support for Terraform import operations with better exposure of required inputs including resource address and resource ID fields to align UI and documentation with existing YAML functionality
+- **Module Registry Template Retrospective Assignment | [Docs](/docs/infra-as-code-management/module-registry)** - Introduced the ability to retrospectively add templates to existing workspaces through API endpoints, enabling better workspace organization and standardization
+- **Ansible Inventory Plugin UI** - Introduced UI support for creating Ansible inventory plugins with the IACM_ANSIBLE_INVENTORY_PLUGIN feature flag
+- **Workspace Templates for Harness 3.0** - Redesigned workspace creation interface for Harness 3.0 with improved user experience and standardized workspace configurations
+
+### Bug Fixes & Improvements:
+- Fixed Module Registry old edit workflow that was failing with 400 error codes
+- Resolved module testing issues when enforce git experience was enabled, ensuring test pipelines can be created successfully
+- Fixed onboarding module "View details" link returning 404 errors, improving navigation between pipeline executions and module details
+- Resolved "y is not a function" error when updating module registry entries, ensuring smooth module management operations
+- Improved OIDC Enhanced Subject Field compatibility for IaCM services to ensure proper authentication in enterprise environments
+- Fixed IaCM Provider Registry bugs including incorrect service discovery path and double HTTPS protocol in download URLs
+- Resolved intermittent Terraform state upload errors when uploading state data to Harness IaCM server
+- Fixed cost estimation spinner that would not stop for non-IaCM stages
+- Improved service account token authentication for IACM API endpoints
+- Added empty state for cost estimation when user is not on an IACM stage
+- Enhanced policy evaluation display by fixing white color rendering issue that made evaluations unreadable 
+- Fixed an issue where the UI did not support the YAML structure for `resource_id` and `resource_address` when using the Import command in the Terraform/OpenTofu plugin step
+
+--- -->
+
+## February 2026
+### New Features & Enhancements:
+- **MCP Server | [Docs](/docs/infra-as-code-management/platform-integrations/platform/iacm-mcp)** - Introduced native MCP Server support within Harness, enabling agents and assistants to connect directly to Harness resources and workflows through the MCP standard. This integration allows MCP-based tools to programmatically query, reason over, and automate actions across delivery and infrastructure operations (e.g., validating deployments, inspecting environments, or enforcing governance policies). It lays the foundation for AI-assisted automation directly from the IDE.
+- **IDP Integration | [Docs](/docs/infra-as-code-management/platform-integrations/idp/idp-plugin)** - Provides an improved developer experience by improving the IaCM plugin within IDP with richer context on infrastructure resources, detailed drill-down views, and high-level overviews. Customers wanted better visibility into managed resources directly from the portal, making it easier to understand infrastructure changes, troubleshoot faster, and operate more efficiently without leaving existing IDP workflows.
+- **Terragrunt (Beta):** Added a Terragrunt resources sidebar in the Resources tab during pipeline execution and added OPA policy filtering per Terragrunt environment
+- **Event-Based Log Output** - Refactored Ansible Plugin for real-time event-based log output
+- **Enhanced Ansible Inventory Management** - Added createdAt and lastSyncedAt timestamps to dynamic inventory hosts; dynamic inventory structure now matches static inventory for consistency
+- **Python Requirements Support** - Added support for Ansible Plugin requirements.txt for Python dependencies
+- **Preflight Validation** - Implemented preflight playbook validation to catch errors early; added preflight inventory validation for better error prevention
+- **Windows Remote Management Support** - Added WinRM support to Ansible Plugin for Windows server management
+
+### Bug Fixes & Improvements:
+- Improved the empty state UI for the Cost Estimation and Resources tabs when a Terragrunt workspace pipeline is running outside an IaCM stage
+- Automatically select the Workspace Identifier when navigating to Runtime Inputs from Workspace default pipelines
+- Fixed an issue where Terragrunt resources were incorrectly marked as "Drifted"
+- Enhanced key file sanitization to only sanitize necessary files
+- Fixed dynamic inventory host detection issues in Ansible IACM
+- Resolved dynamic Ansible inventory variable UUID key issues for proper secret resolution
+- Multiple high-severity vulnerability fixes across core components: fixed net/url vulnerabilities in iac-server, terraform plugins, and iacm-manager; resolved OpenTelemetry SDK vulnerabilities in terraform plugins; additional security patches for Docker images
+
+---
+
+## January 2026
+### New Features & Enhancements:
+- **Ansible Plugin Verbosity Control** - Added verbosity option to IACM Ansible Plugin for better debugging control
+- **Enhanced Variable Management | [Docs](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables)** - Dynamic group static secret variables now resolve secret values properly; Ansible variables are now properly deleted and updated for static groups
+- **Workspace Templates | [Docs](/docs/infra-as-code-management/workspaces/workspace-templates)** Added the ability to override repository values in workspaces created from templates
+- **Terragrunt (Beta):** Display drifted resources in Terragrunt workspaces
+- Display the list of Terragrunt environments in the Approval side drawer during pipeline approval stages
+
+### Bug Fixes & Improvements:
+- Fixed an issue where Terragrunt values appeared in Workspace Template YAML even when the Terragrunt workspace feature flag was disabled
+- Fixed an issue where the Cost Estimation checkbox in the Workspace Configuration tab became disabled after being toggled
+- Fixed an issue where the Cost Estimation component was missing from the Workspace Template creation screen
+- Improved Ansible step debug logic for better troubleshooting
+- Fixed Ansible Plugin panic when empty body is sent to prevent crashes
+
+---
+
+## December 2025
+### New Features & Enhancements:
+- **OpenTofu 1.11.0 Support | [Supported IaC frameworks](/docs/infra-as-code-management/whats-supported#supported-iac-frameworks)** - Added support for OpenTofu version 1.11.0 with latest features and improvements
+- **Terragrunt (Beta):** Added Terragrunt support in Workspace Templates
+- **Workspace Templates:** Enabled Git Sync for Workspace Templates
+
+### Bug Fixes & Improvements:
+- Added a Cost Estimation column in the Activity History tab for Terragrunt workspaces
+- Updated the Terragrunt icon in the UI
+- Fixed an issue where IaCM workspaces in pipelines were always displayed as Terraform, instead of reflecting the correct workspace type
+- Enhanced SSH key sanitization for Ansible Plugin to improve security
+- Fixed JSON parsing issues with non-standard JSON in Ansible runs
+
+---
+
+## November 2025
+### New Features & Enhancements:
+- **Ansible Plugin Refactor | [Docs](/docs/infra-as-code-management/configuration/ansible)** - Complete refactor of Ansible Plugin architecture for improved stability and performance
+
+### Bug Fixes & Improvements:
+- Fixed an issue where OPA policy violation pop-ups did not appear on the Variables and Connector pages
+- Added Terragrunt plugin steps to the Pipeline creation workflow
+- General performance improvements and architectural enhancements
+
+---
+
 ## October 2025
 ### New Features & Enhancements:
-- **Terragrunt Support | [Docs](/docs/infra-as-code-management/get-started/#terragrunt)** 
+- **Terragrunt (Beta) | [Docs](/docs/infra-as-code-management/get-started/#terragrunt)** 
   - Added comprehensive support for Terragrunt workspaces including drift detection, cost estimation, and OPA policy integration
 - **Provider Registry Beta | [Docs](/docs/infra-as-code-management/registry/provider-registry)** 
   - Advanced provider registry capabilities with custom provider support
@@ -119,7 +209,7 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 <!-- Released on 4 April 2025 -->
 
 ### [New Feature] Workspace Wizard UI
-**[IAC-3428] | [Docs](/docs/infra-as-code-management/workspaces/create-workspace#create-a-new-workspace)**
+**[Docs](/docs/infra-as-code-management/workspaces/create-workspace#create-a-new-workspace)**
 
 The Workspace Wizard UI has been updated to improve usability and streamline the workspace creation process.
 <DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a IaCM Workspace in Harness" />
