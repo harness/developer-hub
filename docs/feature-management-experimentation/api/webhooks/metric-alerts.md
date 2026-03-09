@@ -19,6 +19,7 @@ You can use metric alert webhooks to automate the ingestion of [experiment and f
 ### Prerequisites
 
 - [FME Administrator access](/docs/feature-management-experimentation/permissions/rbac/#out-of-the-box-roles) is required to create webhooks 
+- Permission to create or edit [Harness connectors](/docs/platform/role-based-access-control/permissions-reference/#shared-resources) (`core_connector_edit`) at the account level. Metric alert webhooks are implemented as Harness connectors, which require account-level connector permissions
 - An HTTPS endpoint for receiving `POST` payloads
 - A standardized payload schema consistent with existing webhooks for [impressions](/docs/feature-management-experimentation/api/webhooks/impressions) and [audit logs](/docs/feature-management-experimentation/api/webhooks/audit-logs)
 
