@@ -295,6 +295,8 @@ The following expressions reference information about a pipeline run, such as th
 
    You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For more information and examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/cd-onboarding/integrating-cd-other-modules).
 
+* `<+pipeline.branchSeqId>`: The incremental sequence ID scoped to the current branch and repository combination. Unlike `sequenceId` which increments globally, this counter increments independently for each unique pipeline + branch + repository combination. Returns `null` for tag builds or when branch context is unavailable. Requires the `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag. For more information, go to [Branch build sequence ID](./branch-build-sequence-id.md).
+
 * `<+pipeline.executionUrl>`: The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
    :::warning
