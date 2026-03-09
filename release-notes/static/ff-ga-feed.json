@@ -1041,7 +1041,7 @@
     "flagKey": "FME_ENABLE_PIPELINES",
     "description": "Enable FME steps such as Flag create, update, Flag treatment updates etc.",
     "gaStartDate": "2026-03-02",
-    "module": "FME"
+    "module": "Feature Management & Experimentation"
   },
   {
     "flagKey": "CDS_GITOPS_RETURN_NOT_FOUND_FOR_MISSING_AGENT",
@@ -1059,18 +1059,24 @@
     "flagKey": "FME_FLAG_SET_TARGETING_RULES",
     "description": "Enables a FME step to configure flag targeting rules.",
     "gaStartDate": "2026-03-06",
-    "module": "FME"
+    "module": "Feature Management & Experimentation"
   },
   {
     "flagKey": "FME_FLAG_ARCHIVE",
     "description": "Enables a FME step to support archival of a feature flag.",
     "gaStartDate": "2026-03-06",
-    "module": "FME"
+    "module": "Feature Management & Experimentation"
   },
   {
     "flagKey": "FME_OPA_POLICY",
     "description": "Support for policies with FME feature flags and feature flag definitions",
     "gaStartDate": "2026-03-06",
-    "module": "FME"
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_RBAC_ARCHIVE_FF",
+    "description": "Enables granular role-based access control for FME Feature Flag archive and unarchive actions.",
+    "gaStartDate": "2026-03-09",
+    "module": "Feature Management & Experimentation"
   }
 ]
