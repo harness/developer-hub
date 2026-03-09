@@ -27,15 +27,16 @@ Refer to the table below to determine whether your project requires a build for 
 | JavaScript | npm | No* | Build only required if no `package-lock.json` file present; run `npm install` to generate. |
 | JavaScript | Yarn | No* | Build only required if no `yarn.lock` file present; run `yarn install` to generate. |
 | Java | Maven | Yes | Run `mvn install` before testing. |
-| Java | Gradle | No |  |
-| .NET | NuGet | Yes | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead. |
+| Java | Gradle | No | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead. |
+| .NET | NuGet | No* | Build required only if no `packages.config` file is present |
+| .NET | Paket | Yes | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead.
 | Python | Pip | Yes | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead. |
 | Python | Setup.py | Yes | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead. |
 | Python | Poetry | No* | Build only required if no `poetry.lock` file present; run `poetry lock` to generate. |
 | Ruby | Bundler | No* | Build only required if no `Gemfile.lock` file present; run `bundle install` to generate. |
 | PHP | Composer | No* | Build only required if no `composer.lock` file present; run `composer install` to generate. |
-| Scala | SBT | Yes | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead. |
-| Go | Go Modules | Yes | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead. |
+| Scala | SBT | No | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead. |
+| Go | Go Modules | No | [Orchestration mode](#snyk-open-source-scan---orchestration-mode) is not supported at the moment. Please use [Ingestion mode](#snyk-open-source-scan---ingestion-mode) instead. |
 | Swift/Objective-C | CocoaPods | No* | Build only required if no `Podfile.lock` file present; run `pod install` to generate.|
 
  **Notes:**
