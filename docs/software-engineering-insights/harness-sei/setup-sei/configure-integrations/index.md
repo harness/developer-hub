@@ -4,6 +4,8 @@ description: Learn how to configure integrations with various SDLC tools in Harn
 id: index
 slug: /software-engineering-insights/harness-sei/setup-sei/configure-integrations
 sidebar_position: 2
+redirect_from:
+  - /docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/pagerduty/
 ---
 
 You can configure integrations in Harness SEI 2.0 with your issue management systems, codebase, CI/CD, and collaboration and monitoring tools. In order to calculate metrics, you must integrate your software delivery lifecycle (SDLC) tools with SEI 2.0.
