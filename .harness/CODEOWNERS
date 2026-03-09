@@ -4,7 +4,7 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       prateek.mittal@harness.io wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
+*       prateek.mittal@harness.io wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Configuration Files in DS are JS.
 *.js    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
