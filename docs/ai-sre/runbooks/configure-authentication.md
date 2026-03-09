@@ -9,7 +9,9 @@ redirect_from:
 
 # Configure Authentication
 
-This guide explains how to configure authentication for your Harness AI SRE integrations. For information about setting up project-level connectors for runbook actions, see [Configure Project Connectors](./configure-project-connectors.md).
+This guide explains how to configure authentication for your Harness AI SRE integrations. 
+
+For information about setting up project-level connectors for runbook actions, see [Configure Project Connectors](./configure-project-connectors.md).
 
 ## Overview
 

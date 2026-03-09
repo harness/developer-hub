@@ -1,7 +1,7 @@
 ---
-title: Setting up notifications on iOS
+title: Handle On-Call on iOS
 description: Configure iOS devices to receive Harness On-Call notifications during Do Not Disturb
-sidebar_label: iOS Notifications
+sidebar_label: Handle On-Call on iOS
 sidebar_position: 4
 ---
 
@@ -9,7 +9,7 @@ sidebar_position: 4
 
 If you'd like the best possible experience as a responder, [download our mobile app here](https://apps.apple.com/us/app/harness-on-call/id6753579217).
 
-When you are paged, we'll try and contact you according to your [notification rules](oncall.md#setting-up-contact-methods). By default, assuming you've enabled them, this will include:
+When you are paged, we'll try and contact you according to your notification rules. By default, assuming you've enabled them, this will include:
 
 - Email
 - Slack

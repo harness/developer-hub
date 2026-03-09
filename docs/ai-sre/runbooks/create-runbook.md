@@ -1,6 +1,6 @@
 ---
-title: Create a Runbook
-sidebar_label: Create a Runbook
+title: Create Runbooks
+sidebar_label: Create Runbooks
 sidebar_position: 2
 description: Comprehensive guide on creating, configuring, and deploying automated runbooks in Harness AI SRE for incident response and operational workflows.
 redirect_from:
@@ -11,9 +11,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
 
-# Create a Runbook
+# Create Runbooks
 
-Runbooks in Harness AI SRE enable you to automate incident response workflows, operational procedures, and remediation actions. This comprehensive guide walks you through creating, configuring, and deploying effective runbooks that can significantly reduce mean time to resolution (MTTR) and improve your team's operational efficiency.
+Runbooks in Harness AI SRE enable you to automate incident response workflows, operational procedures, and remediation actions. 
+
+This comprehensive guide walks you through creating, configuring, and deploying effective runbooks that can significantly reduce mean time to resolution (MTTR) and improve your team's operational efficiency.
 
 ## Before You Begin
 

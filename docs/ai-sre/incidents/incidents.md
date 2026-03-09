@@ -217,4 +217,4 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 ### Best Practices Resources
 - [AI SRE Best Practices Guide](../resources/ai-sre-best-practices.md)
 - [Incident Response Playbooks](../runbooks/create-runbook.md)
-- [Team Training and Onboarding](../get-started/onboarding-guide.md)
+- [Team Training and Onboarding](../get-started/onboarding-guide-admins.md)

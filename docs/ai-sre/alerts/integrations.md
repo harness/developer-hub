@@ -1,13 +1,13 @@
 ---
-title: Alert Integrations
+title: Configure Alert Integrations
 description: Learn how to configure native alert integrations in Harness AI SRE for popular monitoring and observability tools.
-sidebar_label: Integrations
+sidebar_label: Configure Alert Integrations
 sidebar_position: 3
 redirect_from:
 - /docs/incident-response/alerts/integrations
 ---
 
-# Alert Integrations
+# Configure Alert Integrations
 
 Learn how to configure native alert integrations in Harness AI SRE.
 
@@ -485,9 +485,7 @@ For detailed information on configuring field mapping and correlation using the 
 
 Alert rules determine when to create incidents based on incoming alerts. Using the visual condition builder, you can create rules that evaluate alert fields and trigger appropriate actions.
 
-:::note
-The Harness AI SRE on-call module will be available in Q2. This will enable native on-call management within Harness AI SRE.
-:::
+<!-- CHANGED (comment #10): Removed the :::note callout that said "The Harness AI SRE on-call module will be available in Q2." On-call is fully shipped — schedules, escalation policies, paging, and mobile apps are all live. The note was stale and contradicted the rest of the documentation that treats on-call as a current feature. -->
 
 For detailed information on configuring alert rules using the visual interface, refer to the [Alert Rules documentation](./alert-rules.md).
 

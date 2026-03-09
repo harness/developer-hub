@@ -1,7 +1,7 @@
 ---
-title: AI SRE onboarding guide
+title: AI SRE Onboarding Guide for Administrators
 description: A self-service onboarding guide for Harness AI SRE.
-slug: /ai-sre/get-started/onboarding-guide/
+slug: /ai-sre/get-started/onboarding-guide-admins/
 sidebar_position: 4
 sidebar_label: Get Started
 keywords:
@@ -26,7 +26,9 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide introduces you to the powerful capabilities of Harness AI SRE, providing a comprehensive approach to proactively managing and resolving incidents with real-time insights, alerts, and seamless integration. When you configure AI SRE in Harness, we orchestrate intelligent incident detection, automated response workflows, and collaborative resolution processes across your monitoring and communication tools.
+This guide introduces you to the powerful capabilities of Harness AI SRE, providing a comprehensive approach to proactively managing and resolving incidents with real-time insights, alerts, and seamless integration. 
+
+When you configure AI SRE in Harness, we orchestrate intelligent incident detection, automated response workflows, and collaborative resolution processes across your monitoring and communication tools.
 
 ## Prerequisites
 
@@ -218,7 +220,7 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
 
 This guide introduced you to the core functionalities and setup of Harness AI SRE, from integrating monitoring tools to creating automated runbooks. To enhance your incident response capabilities and team efficiency, get the most out of Harness AI SRE's advanced features, including:
 
-- **[Managing Incidents in Slack:](/docs/ai-sre/incidents/slack-commands)** Use Slack slash commands to create, manage, and resolve incidents directly from your workspace.
+- **[Managing Incidents in Slack:](/docs/ai-sre/get-started/slack-commands)** Use Slack slash commands to create, manage, and resolve incidents directly from your workspace.
 - **[Advanced Runbooks:](/docs/ai-sre/runbooks/create-runbook)** Build sophisticated automation workflows with multiple actions, triggers, and conditional logic.
 - **[Integration Library:](/docs/category/integrations)** Connect with ServiceNow, Jira, and other ITSM tools for seamless incident management workflows.
 - **[AI Scribe Agent:](/docs/ai-sre/ai-agent)** Leverage AI-powered documentation and insights to capture incident communications automatically.

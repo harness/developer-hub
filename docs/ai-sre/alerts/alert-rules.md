@@ -1,7 +1,7 @@
 ---
 title: Configure Alert Rules
 description: Learn how to configure alert rules in Harness AI SRE to route, filter, and enrich incoming alerts.
-sidebar_label: Alert Rules
+sidebar_label: Configure Alert Rules
 sidebar_position: 4
 redirect_from:
 - /docs/incident-response/alerts/alert-rules
@@ -10,7 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Alert Rules
+# Configure Alert Rules
 
 Alert Rules define how incoming alerts are processed and when incidents should be created. This guide walks you through configuring alert rules in Harness AI SRE.
 

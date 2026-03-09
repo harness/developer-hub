@@ -123,13 +123,12 @@ Actions:
 
 ## Advanced Features
 
-### Bidirectional Sync
+### Sync Architecture
+<!-- CHANGED (comment #11): The previous :::note said "Bidirectional sync is available by leveraging Harness Pipelines" and listed capabilities as if this were a built-in feature. This was misleading — outbound sync (AI SRE → ServiceNow) is native via runbook actions, but inbound sync (ServiceNow → AI SRE) is not built-in. It requires the customer to configure a ServiceNow Business Rule that fires a webhook into a Harness Pipeline, which then updates AI SRE. The detailed setup instructions for this pattern appear in the sections below. Rewritten to make the distinction explicit upfront. -->
 :::note
-Bidirectional sync is available by leveraging Harness Pipelines:
-- Real-time incident synchronization
-- Work notes mirroring
-- CMDB integration
-- Workflow state mapping
+**Outbound sync (AI SRE → ServiceNow) is native** and handled via runbook actions as described above.
+
+**Inbound sync (ServiceNow → AI SRE)** is not a built-in feature. It can be configured using Harness Pipelines as the integration mechanism — you create a ServiceNow Business Rule that sends a webhook to a Harness Pipeline, which then updates the corresponding AI SRE incident. See the [Creating Webhooks in ServiceNow](#creating-webhooks-in-servicenow) section below for setup instructions.
 :::
 
 #### Capabilities

@@ -1,7 +1,7 @@
 ---
-title: Incident Types
+title: Configure Incident Types
 description: Learn how to create and configure incident types in Harness AI SRE to standardize incident classification and response procedures.
-sidebar_label: Incident Types
+sidebar_label: Configure Incident Types
 sidebar_position: 2
 redirect_from:
 - /docs/incident-response/incidents/incident-types
@@ -10,7 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Incident Types
+# Configure Incident Types
 
 Incident Types in Harness AI SRE provide a standardized framework for classifying and managing different categories of incidents. By defining incident types, teams can ensure consistent response procedures, appropriate field configurations, and automated workflows tailored to specific incident scenarios.
 

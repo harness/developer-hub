@@ -1,7 +1,7 @@
 ---
 title: Configure Incident Fields
 description: Learn how to configure and customize incident fields in Harness AI SRE.
-sidebar_label: Incident Fields
+sidebar_label: Configure Incident Fields
 sidebar_position: 2
 redirect_from:
 - /docs/incident-response/incidents/incident-fields

@@ -122,13 +122,12 @@ Actions:
 
 ## Advanced Features
 
-### Bidirectional Sync
+### Sync Architecture
+<!-- CHANGED (comment #11): The previous :::note said "Bidirectional sync is available by leveraging Harness Pipelines" and listed capabilities as if they were a built-in feature. This framing was misleading — outbound sync (AI SRE → Jira) is native via runbook actions, but inbound sync (Jira → AI SRE) requires the customer to configure a Harness Pipeline with webhooks from Jira. Rewritten to make that distinction explicit. -->
 :::note
-Bidirectional sync is available by leveraging Harness Pipelines:
-- Real-time status synchronization
-- Comment mirroring
-- Field value propagation
-- Workflow state mapping
+**Outbound sync (AI SRE → Jira) is native** and handled via runbook actions as described above.
+
+**Inbound sync (Jira → AI SRE)** is not a built-in feature. It can be configured using Harness Pipelines as the integration mechanism — you set up a webhook from Jira that triggers a Pipeline, which then updates the corresponding AI SRE incident. This requires customer-side configuration.
 :::
 
 #### Capabilities

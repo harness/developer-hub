@@ -1,6 +1,7 @@
 ---
 title: Configure Project Connectors for Runbook Actions
 description: Set up project-level connectors for Zoom, GitHub, and Jira to ensure proper attribution of runbook actions in Harness AI SRE
+sidebar_label: Configure Project Connectors
 sidebar_position: 4
 redirect_from:
 - /docs/incident-response/runbooks/configure-project-connectors
@@ -8,7 +9,9 @@ redirect_from:
 
 # Configure Project Connectors for Runbook Actions
 
-This guide explains how to set up project-level connectors for Zoom, GitHub, and Jira in Harness AI SRE. These connectors ensure that actions performed by your runbooks are properly attributed to specific service accounts.
+This guide explains how to set up project-level connectors for Zoom, GitHub, and Jira in Harness AI SRE. 
+
+These connectors ensure that actions performed by your runbooks are properly attributed to specific service accounts.
 
 :::note
 Project-level connectors provide better accountability and access control compared to organization-level connectors.

@@ -7,7 +7,7 @@ redirect_from:
 - /docs/incident-response/alerts/alerts
 ---
 
-# Alert Management in Harness AI SRE
+# Alert Management
 
 Learn how to effectively manage and configure alerts in Harness AI SRE.
 

@@ -1,18 +1,20 @@
 ---
-title: Harness AI SRE Overview and Key Concepts
+title: Harness AI SRE Overview and Key Features
 sidebar_position: 1
 redirect_from:
 - /docs/incident-response/getting-started/
-sidebar_label: Overview and Key Concepts
-description: Harness AI SRE Overview and Key Concepts
+sidebar_label: Overview and Key Features
+description: Harness AI SRE Overview and Key Features
 ---
 
 # Harness AI SRE Module
 
 ## Overview
-Harness AI SRE is a comprehensive incident management system that enables teams to detect, respond to, and resolve incidents efficiently. It integrates with various monitoring, alerting, and collaboration tools to provide a seamless incident resolution workflow.
+Harness AI SRE is a comprehensive incident management system that enables teams to detect, respond to, and resolve incidents efficiently.
 
-## Core Objects
+It integrates with various monitoring, alerting, and collaboration tools to provide a seamless incident resolution workflow.
+
+## Key Features
 
 ### AI Scribe Agent
 - AI-driven agent for detecting, analyzing, and responding to incidents.
@@ -30,7 +32,7 @@ Harness AI SRE is a comprehensive incident management system that enables teams 
 - Incidents can be created in three ways:
   1. **From Alerts** – when an alert meets predefined criteria.
   2. **Manually from the Web UI** – allowing direct user intervention.
-  3. **Via Slack Command (`/harness new`)** – enabling quick incident creation from Slack. See [Slack Commands](../incidents/slack-commands.md) for all available commands.
+  3. **Via Slack Command (`/harness new`)** – enabling quick incident creation from Slack. See [Slack Commands](../get-started/slack-commands.md) for all available commands.
 - Incidents link to **Services**, **Runbooks**, **Fire Drills**, and **Change Events**.
 
 ### Actions
@@ -86,7 +88,7 @@ Harness AI SRE is a comprehensive incident management system that enables teams 
   - **Policies** – Establish escalation rules.
   - **Notifications** – Alert the right responders.
 
-## Relationships Between Objects
+## Relationships Between Features
 - **Alerts → Incidents** – Alerts can escalate into incidents.
 - **Changes → Incidents** – Change Events can be root causes of incidents.
 - **Fire Drills → Incidents** – Fire drills simulate or trigger incidents.

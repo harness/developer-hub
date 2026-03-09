@@ -1,11 +1,12 @@
 ---
-title: Managing Incidents in Slack
+title: Use Slack Commands
 description: Manage incidents directly from your Slack workspace with slash commands
-sidebar_label: Slack Commands
-sidebar_position: 6
+sidebar_position: 8
 ---
 
-Harness AI SRE provides a set of Slack slash commands that enable you to manage incidents directly from your workspace. These commands work within incident channels and provide quick access to common incident management actions.
+Harness AI SRE provides a set of Slack slash commands that enable you to manage incidents directly from your workspace. 
+
+These commands work within incident channels and provide quick access to common incident management actions.
 
 ## Prerequisites
 

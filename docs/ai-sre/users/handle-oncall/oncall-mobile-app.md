@@ -1,13 +1,15 @@
 ---
-title: Harness AI SRE Mobile App
+title: Set Up the Mobile App
 description: Complete guide to using the Harness AI SRE mobile app for on-call incident response and alert management.
-sidebar_label: Mobile App Guide
+sidebar_label: Set Up the Mobile App
 sidebar_position: 2
 ---
 
-# Harness AI SRE Mobile App
+# Set Up the Harness AI SRE Mobile App
 
-The Harness AI SRE mobile app extends your incident response capabilities to mobile devices, ensuring you never miss critical alerts or incidents while on-call. Built as part of the comprehensive AI SRE platform, the mobile app integrates seamlessly with your existing incident management workflows, runbook automation, and team collaboration tools.
+The Harness AI SRE mobile app extends your incident response capabilities to mobile devices, ensuring you never miss critical alerts or incidents while on-call. 
+
+Built as part of the comprehensive AI SRE platform, the mobile app integrates seamlessly with your existing incident management workflows, runbook automation, and team collaboration tools.
 
 ## Download the App
 
@@ -120,8 +122,8 @@ Grant the necessary permissions for optimal incident response:
 
 :::tip Platform-Specific Setup Guides
 For detailed instructions on configuring notifications to work during Do Not Disturb mode:
-- **Android users**: See the [Android notification setup guide](/docs/ai-sre/oncall/notifications-android)
-- **iOS users**: See the [iOS notification setup guide](/docs/ai-sre/oncall/notifications-ios)
+- **Android users**: See the [Android notification setup guide](notifications-android)
+- **iOS users**: See the [iOS notification setup guide](notifications-ios)
 :::
 
 ## Dashboard Overview
@@ -173,7 +175,6 @@ Each notification includes:
 - **Severity Indicators**: Color-coded priority levels
 - **Quick Actions**: Acknowledge, escalate, or view details
 - **Context Links**: Direct access to runbooks, dashboards, or communication channels
-- **AI Insights**: Suggested next steps based on historical data
 
 ### **Customization Options**
 Configure notifications to match your response preferences:
@@ -183,8 +184,8 @@ Configure notifications to match your response preferences:
 - **Integration Filters**: Customize which monitoring tools trigger mobile alerts
 
 For comprehensive notification setup including Do Not Disturb configuration, see:
-- [Android notification setup guide](/docs/ai-sre/oncall/notifications-android)
-- [iOS notification setup guide](/docs/ai-sre/oncall/notifications-ios)
+- [Android notification setup guide](notifications-android)
+- [iOS notification setup guide](notifications-ios)
 
 ## Alert Management
 
@@ -232,7 +233,6 @@ Filter alerts using multiple criteria:
 - **Purpose**: Mark issue as fixed and close the alert
 - **Validation**: May require confirmation or resolution notes
 - **Integration**: Updates monitoring systems and closes related tickets
-- **Learning**: Contributes to AI pattern recognition for future incidents
 
 #### **Escalate Alert**
 - **Manual Escalation**: Pass to next responder or specialist team
@@ -275,9 +275,7 @@ View and manage incidents with comprehensive details:
 - **Progress Tracking**: Log actions and decisions for post-incident review
 
 #### **Escalate When Needed**
-- **Smart Escalation**: AI-suggested escalation paths based on incident type
 - **Context Transfer**: Complete handoff with full incident history
-- **Expertise Matching**: Route to team members with relevant experience
 - **Automatic Triggers**: Time-based or condition-based escalation rules
 
 <div align="center">
@@ -288,18 +286,10 @@ View and manage incidents with comprehensive details:
 - **Resolution Workflow**: Mark incidents as resolved with detailed notes
 - **Impact Assessment**: Document the scope and duration of the incident
 - **Post-Incident Actions**: Trigger follow-up tasks and reviews
-- **Learning Integration**: Contribute to AI pattern recognition for future incidents
 
 <div align="center">
 <DocImage path={require('./static/incident-resolve.png')} width="30%" height="30%" title="Incident Resolution" />
 </div>
-
-### **AI-Enhanced Incident Response**
-The mobile app leverages AI SRE's intelligent capabilities:
-- **Similar Incident Detection**: Shows related past incidents and resolutions
-- **Automated Runbook Suggestions**: Recommends response procedures
-- **Impact Prediction**: Estimates potential user and business impact
-- **Resolution Recommendations**: Suggests actions based on successful past responses
 
 ## Common Workflows
 
@@ -365,7 +355,7 @@ Customize your alert experience:
 - **Train Your Team**: Ensure all team members understand mobile response procedures
 
 ### **Learn More**
-- [AI SRE Getting Started Guide](/docs/ai-sre/get-started/onboarding-guide)
+- [AI SRE Getting Started Guide](/docs/ai-sre/get-started/onboarding-guide-admins)
 - [Runbook Automation](/docs/ai-sre/runbooks)
 - [Alert Management Best Practices](/docs/ai-sre/resources/ai-sre-best-practices)
 - [Integration Setup Guides](/docs/category/integrations)

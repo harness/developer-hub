@@ -1,7 +1,7 @@
 ---
 title: Configure Webhooks
 description: Learn how to configure webhooks in Harness AI SRE to receive alerts from any monitoring system or custom application.
-sidebar_label: Webhooks
+sidebar_label: Configure Webhooks
 sidebar_position: 2
 redirect_from:
 - /docs/incident-response/alerts/webhooks

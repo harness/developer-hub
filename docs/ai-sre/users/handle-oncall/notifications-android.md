@@ -1,7 +1,7 @@
 ---
-title: Setting up notifications on Android
+title: Handle On-Call on Android
 description: Configure Android devices to receive Harness On-Call notifications during Do Not Disturb
-sidebar_label: Android Notifications
+sidebar_label: Handle On-Call on Android
 sidebar_position: 3
 ---
 
@@ -9,7 +9,7 @@ sidebar_position: 3
 
 If you'd like the best possible experience as a responder, [download our mobile app here](https://play.google.com/store/apps/details?id=com.harness.oncall).
 
-When you are paged, we'll try and contact you according to your [notification rules](oncall.md#setting-up-contact-methods). By default, assuming you've enabled them, this will include:
+When you are paged, we'll try and contact you according to your notification rules. By default, assuming you've enabled them, this will include:
 
 - Email
 - Slack
