@@ -42,7 +42,7 @@ The aggregated values are stored as metadata properties on hierarchy entities an
 
 ## Accessing Aggregation Rules
 
-Navigate to **Configure** → **Integrations** → **Aggregation Rules** to view and manage your aggregation rules.
+Navigate to **Configure** → **Aggregation Rules** to view and manage your aggregation rules.
 
 ![Aggregation Rules](./static/agg-rule.png)
 
