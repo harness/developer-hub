@@ -12,7 +12,7 @@ Harness Feature Management & Experimentation (FME) integrates with <Tooltip id="
 
 ## Create a Harness pipeline 
 
-To create a pipeline, click **+ Create a Pipeline**. You can create a pipeline manually in the UI or import one from a Git repository. Clicking on a pipeline opens the Pipeline Studio, where you can design and manage the pipeline using either the **Visual** or **YAML** editor. 
+To create a pipeline, click **+ Create a Pipeline**. You can create a pipeline manually in the UI or import one from a Git repository. Clicking on a pipeline opens the Pipeline Studio, where you can design and manage the pipeline using either the **Visual** or **YAML** editor.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -88,7 +88,7 @@ To add FME steps to a pipeline:
 1. Navigate to the **Pipelines** page from the FME navigation menu.
 1. Click **+ Create a Pipeline** or click **+Import From Git** to import a pipeline from an existing Git repository.
 1. Enter a name for the pipeline. Optionally, add a description and include tags for this pipeline.
-1. Click **Inline** to store the pipeline in Harness or **Remote** to store the pipeline in a Git repository. 
+1. Click **Inline** to store the pipeline in Harness or **Remote** to store the pipeline in a Git repository.
 1. Click **Start**.
 1. Click **Add Stage** and select **Custom Stage**.
 1. Click **+ Add Step**. The **Step Library** panel opens on the right.
@@ -113,7 +113,7 @@ To add FME steps to a pipeline:
 
 1. Configure the step in the **Step Parameters** tab.
 1. Optionally, add additional configuration in the **Advanced** tab.
-1. Click **Save** to add the step to the stage. 
+1. Click **Save** to add the step to the stage.
 
 <details>
 <summary>Example Pipeline YAML Configuration</summary>
@@ -404,6 +404,8 @@ Use this step to define or replace the set of treatments for a feature flag in a
 
    - **Treatment**: Enter the treatment name.
    - **Description**: Enter a description for the treatment.
+
+   You can add new treatments or remove existing ones by passing an updated list. However, a treatment that has traffic allocated to it (through default allocations or targeting rules) cannot be omitted. The step will fail if a treatment with assigned traffic is missing from the list.
 
 1. Click **Apply Changes** to add the step to the pipeline.
 

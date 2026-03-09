@@ -2215,7 +2215,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Pipelines',
-          className: 'sidebar-item-beta',
+          className: 'sidebar-item-new',
           link: {
             type: 'doc',
             id: 'feature-management-experimentation/pipelines/index',
