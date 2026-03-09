@@ -120,9 +120,9 @@ import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity
 
 ### Settings
 
-You can use this to add environment variables to your scan environment. To enable session-based authentication with AWS, for example, you can pass `AWS_SESSION_TOKEN` with a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) of your token.
+To enable session-based authentication with AWS, for example, you can pass AWS session token using the key `CONTAINER_SESSION_TOKEN` with a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) of your token.
 
- <DocImage path={require('./static/aws-security-hub-session-token.png')} width="70%" height="70%" title="Add AWS_SESSION_TOKEN to enable session-based authentication" />  
+<DocImage path={require('./static/settings-token.png')} width="70%" height="70%" title="Add shared path for scan results" /> 
 
 ## Proxy settings
 

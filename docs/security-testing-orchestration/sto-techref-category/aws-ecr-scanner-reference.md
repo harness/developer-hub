@@ -136,9 +136,9 @@ import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.m
 
 #### Session Token
 
-If you need to specify a session token, add it using the key `AWS_SESSION_TOKEN` under **Settings**.
+To enable session-based authentication with AWS, for example, you can pass AWS session token using the key `CONTAINER_SESSION_TOKEN` with a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) of your token.
 
-![](./static/aws-ecr-session-token-setting.png)
+<DocImage path={require('./static/settings-token.png')} width="70%" height="70%" title="Add shared path for scan results" /> 
 
 
 #### Access Region
