@@ -22,6 +22,29 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## March 2026
 
+### Version 1.78.1
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.78.0
+- harness/chaos-ddcr-faults:1.78.0
+- harness/chaos-log-watcher:1.78.0
+- harness/service-discovery-collector:0.58.0
+
+#### New Features and Enhancements
+
+- Updated chaos module banner to reflect module name change (CHAOS-11181)
+- Added support for Secret, Connector, and `<+input>` field renderers in details for action and probes (CHAOS-11169)
+- Added the native windows network chaos faults in machine chaos (CHAOS-11105)
+- User can clone a load test using the three dot menu (CHAOS-11134)
+
+#### Fixed Issues
+
+- Fixed update for variables in probes/actions/templates not working (CHAOS-11168)
+- Fixed UI Infra Creation - Unable to use Environment at Org or Account scope for Chaos Infra (CHAOS-11164)
+- Fixed Variables to Input migration issues (CHAOS-11155)
+
 ### Version 1.77.3
 
 #### Images required
