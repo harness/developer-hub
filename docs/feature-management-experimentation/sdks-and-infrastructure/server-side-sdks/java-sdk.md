@@ -43,7 +43,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.18.2</version>
+    <version>4.18.3</version>
 </dependency>
 ```
 
@@ -51,7 +51,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.18.2'
+compile 'io.split.client:java-client:4.18.3'
 ```
 
 </TabItem>
@@ -73,6 +73,39 @@ If you cannot find the dependency, it may be due to the lag in the sync time bet
 
 </TabItem>
 </Tabs>
+
+#### Non-shaded version (Alternative)
+
+If you need to manage transitive dependencies manually to resolve conflicts (e.g., with OkHttp or Guava), use the **non-shaded** classifier:
+
+<Tabs groupId="non-shaded-choice">
+<TabItem value="Maven" label="Maven">
+
+```xml
+<dependency>
+    <groupId>io.split.client</groupId>
+    <artifactId>java-client</artifactId>
+    <version>4.18.3</version>
+    <classifier>non-shaded</classifier>
+</dependency>
+```
+</TabItem>
+<TabItem value="Gradle" label="Gradle">
+
+```java
+// Gradle (build.gradle)
+implementation 'io.split.client:java-client:4.18.3:non-shaded'
+
+
+// Kotlin DSL (build.gradle.kts)
+implementation("io.split.client:java-client:4.18.3:non-shaded")
+```
+</TabItem>
+</Tabs>
+
+:::warning[Transitive Dependencies]
+When using the non-shaded version, you are responsible for providing all required libraries (like OkHttp and Gson) in your project's classpath.
+:::
 
 ### 2. Instantiate the SDK and create a new SDK factory client
 
