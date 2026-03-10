@@ -7,7 +7,6 @@ sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate/rss.xml" />
@@ -115,6 +114,17 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 4. [Delegate Terraform release notes](#delegate-terraform-release-notes)
 
 ## Delegate image release notes
+
+## March 2026
+
+### Version 26.02.88602 <!-- March 10, 2026 -->
+
+#### Fixed issues
+
+- Use direct SCM API to commit files in the "Update Release Repo" GitOps step 
+    - Earlier implementation cloned full repository before commiting
+    - This implementation allows for direct committing of files using the API of the SCM provider
+    - This functionality can be enabled with the feature flag `CDS_GITOPS_DELEGATE_USE_SCM_FOR_COMMIT` 
 
 ## February 2026
 
