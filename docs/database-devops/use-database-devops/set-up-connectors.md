@@ -116,12 +116,11 @@ AlloyDB connections in Harness DB DevOps require a **Host**, **Port**, and **Dat
 ---
 
 ## Setting Up Snowflake
-Snowflake connections in Harness DB DevOps require a specific JDBC URL format that includes the account identifier, warehouse, database, schema, and role. If the role is not specified, the default role for the user will be used. Either username/password or PKI authentication can be used to authenticate to Snowflake.
+Snowflake connections in Harness DB DevOps require a specific JDBC URL format that includes the account identifier, warehouse, database, schema, and role. If the role is not specified, the default role for the user will be used. In addition, PKI authentication is required to authenticate to Snowflake.
 
 ### Prerequisites for Snowflake
 To connect to Snowflake, you need to provide the following information:
-1. **Username and Password**: Provide the Snowflake username and password as secrets in the JDBC connector configuration.
-2. **PKI Authentication**: Use Public Key Infrastructure (PKI) authentication by providing the username, private key file reference, and an optional private key passphrase reference while configuring the JDBC connector. 
+ - **PKI Authentication**: Use Public Key Infrastructure (PKI) authentication by providing the username, private key file reference, and an optional private key passphrase reference while configuring the JDBC connector. 
 
 The private key file reference is a secret file, and the passphrase reference is a secret text. If your private key is encrypted, you can provide the passphrase to decrypt it. For example:
 
@@ -130,6 +129,10 @@ The private key file reference is a secret file, and the passphrase reference is
          "privateKeyFileRef": "snowflake-trial-private-key",
          "privateKeyPassphraseRef": "snowflake-trial-passphrase"
 ```
+
+:::info note
+Username and Password authentication method for the snowflake is deprecated, and The preferred method for service accounts using public/private key cryptography.
+:::
 
 ---
 

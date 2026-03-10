@@ -38,14 +38,14 @@ Go to DB Governance section and create a new policy
 package db_sql
 policies := [
 {
-        “error_message”: “Dropping of table is not allowed.“,
-        “rules”: [
+        "error_message": "Dropping of table is not allowed.",
+        "rules": [
             {
-                “types”: [
-                    “jdbc:sqlserver”,“jdbc:mysql”,“jdbc:postgresql”,“jdbc:oracle:thin”
+                "types": [
+                    "jdbc:sqlserver","jdbc:mysql","jdbc:postgresql","jdbc:oracle:thin"
                 ],
-                “regex”: [
-                    “drop”
+                "regex": [
+                    "drop"
                 ]
             }
         ]
@@ -57,8 +57,8 @@ deny[msg] {
     type := input.dbInstance.type;
     rule := policy.rules[j];
     type = rule.types[_];
-    regex.match(lower(concat(“”,[“.*“,rule.regex[k],“.*“])),lower(input.sqlStatements[l]));
-    msg := concat(“”,[“Policy violation:\n The following sql statement:\n”,input.sqlStatements[l],“\n\n Matches the following regex: \n”,rule.regex[k]])
+    regex.match(lower(concat("",[".*",rule.regex[k],".*"])),lower(input.sqlStatements[l]));
+    msg := concat("",["Policy violation:\n The following sql statement:\n",input.sqlStatements[l],"\n\n Matches the following regex: \n",rule.regex[k]])
 }
 ```
 

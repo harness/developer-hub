@@ -68,7 +68,9 @@ Here are some examples of Harness DB Devops images and their purposes:
 * `harness/drone-git`: Used to clone Git repositories.
 * `plugins/drone-liquibase:x.y.z-{liquibaseVersion}-mongo`: Liquibase plugin for MongoDB.
 * `plugins/drone-liquibase:x.y.z-{liquibaseVersion}-spanner`: Liquibase plugin for Google Spanner.
-
+* `plugins/drone-flyway:x.y.z-{flywayVersion}`: Flyway plugin for database operations.
+* `plugins/drone-flyway-mongo:x.y.z-{flywayVersion}-mongo`: Flyway plugin for MongoDB.
+* `plugins/drone-flyway-spanner:x.y.z-{flywayVersion}-spanner`: Flyway plugin for Google Spanner.
 For complete and latest list of images and their tags, refer to the [Release Notes](http://developer.harness.io/release-notes/database-devops).
 
 ## Configure Harness DB Devops Image Versions
