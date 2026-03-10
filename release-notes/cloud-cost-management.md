@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2026-03-03T18:00
+date: 2026-03-10T18:00
 sidebar_position: 6
 ---
 
@@ -25,7 +25,16 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
-## March 2026 - Version 1.80.3
+## March 2026 - Version 1.82.5
+
+### Fixed Issues
+
+- **AWS Perspectives Anomaly Data Returning Empty Results:** Anomaly data for AWS perspectives was returning empty results due to a field ID case-sensitivity mismatch. This has been resolved. [CCM-30345].
+- **Cost Category Rule Validation Error on Save:** When creating a cost category with a cost bucket rule referencing another Cost Category as "not null", saving the configuration would produce an error on the Cost Category field within the Cost Bucket rule. This has been fixed.[CCM-30294].
+- **Memory Cluster Capacity Limits Missing Default Unit:** When setting Memory Cluster Capacity Limits, a unit was required despite the UI implying GiB as the default. The system will now automatically append "Gi" to Cluster Capacity Limits Memory values when a numeric-only value is entered.[CCM-30217]
+- **Perspective and Budget API Fixes:** The API now correctly handles perspective and budget operations that previously failed or went untracked. Specifically: folder validation has been tightened to reject empty inputs on update and move; duplicate perspective names are now permitted as designed; and perspective moves are fully logged in the audit trail. Budget management reflects the same improvements.[CCM-29269]
+
+## March 2026 - Version 1.81.2
 #### Deployment Date: March 03, 2026 (Prod-1)
 
 ### Feature Improvements
