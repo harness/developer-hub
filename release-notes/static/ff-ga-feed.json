@@ -1078,5 +1078,17 @@
     "description": "Enables granular role-based access control for FME Feature Flag archive and unarchive actions.",
     "gaStartDate": "2026-03-09",
     "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "STO_CONTAINERLESS_INGESTION",
+    "description": "Support for Delegate 2.0 for all STO steps running in Ingestion mode on Linux and MacOS.",
+    "gaStartDate": "2026-03-10",
+    "module": "Security Test Orchestration"
+  },
+  {
+    "flagKey": "STO_ISSUE_OVERRIDE",
+    "description": "Enables manual override of security issue severity for more accurate prioritization based on issue criticality, exploit exposure, compensating controls, and production impact.",
+    "gaStartDate": "2026-03-10",
+    "module": "Security Test Orchestration"
   }
 ]
