@@ -193,7 +193,7 @@ accountID="<REPLACE_YOUR_ACCOUNID_HERE>"' > /var/lw_proxy/config.toml
 wget -O /var/lw_proxy/envoy.zip "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/autostopping-custom-lb-3.1.0.zip"
 unzip -o /var/lw_proxy/envoy.zip -d /var/lw_proxy
 chmod +x /var/lw_proxy/envoyproxymanager
-wget -O /var/lw_proxy/tcp_proxy.zip "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/autostopping-tcp-proxy-3.3.zip"
+wget -O /var/lw_proxy/tcp_proxy.zip "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/autostopping-tcp-proxy-3.4.zip"
 unzip -o /var/lw_proxy/tcp_proxy.zip -d /var/lw_proxy
 chmod +x /var/lw_proxy/tcpproxymanager
 cp /var/lw_proxy/envoy.service /etc/systemd/system/envoy.service
@@ -267,7 +267,7 @@ wget -O /var/lw_proxy/envoy.zip "https://lightwing-downloads-temp.s3.ap-south-1.
 unzip -o /var/lw_proxy/envoy.zip -d /var/lw_proxy
 chmod +x /var/lw_proxy/envoyproxymanager
 
-wget -O /var/lw_proxy/tcp_proxy.zip "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/autostopping-tcp-proxy-3.3.zip"
+wget -O /var/lw_proxy/tcp_proxy.zip "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/autostopping-tcp-proxy-3.4.zip"
 unzip -o /var/lw_proxy/tcp_proxy.zip -d /var/lw_proxy
 chmod +x /var/lw_proxy/tcpproxymanager
 
