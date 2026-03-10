@@ -54,6 +54,21 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 :::
 
 
+## March 2026
+
+#### Version 1.133.5
+
+#### Fixed issues
+
+- Fixed an issue where output variables captured from PowerShell Shell Script steps did not preserve newline characters (`\r\n` / `\n`). Multi-line strings set via `$env:varName` in PowerShell were flattened to a single line when referenced downstream (for example, in Approval step messages), while the equivalent Bash step using `export` preserved newlines correctly. The delegate's output variable capture mechanism for PowerShell now retains newline characters, bringing behavior in line with Bash Shell Script steps. (**CDS-118883**, **ZD-104328**)
+- Fixed an issue where the Azure Create ARM Resource provisioning step failed with an `IllegalStateException: Unexpected token to begin object deserialization: STRING` error during JSON deserialization. The step could not process valid ARM templates that deployed successfully through the Azure CLI. The deserialization logic now correctly handles the ARM template and parameter formats returned by the Azure API. (**CDS-118917**, **ZD-104638**)
+- Fixed an issue where creating a service override for a specific environment failed with an "Oops, something went wrong on our end" error in the UI and timed out via the Terraform provider. This occurred when a project was deleted and recreated — orphaned records from the original project caused a `DuplicateKeyException` in MongoDB during the upsert operation. The service override upsert logic now correctly handles pre-existing records from previously deleted projects. (**CDS-119084**, **ZD-104999**)
+- Fixed an issue where the OCI Helm connector with anonymous authentication failed to fetch charts with an `invalid_reference: invalid repository` error. The internal URL construction added an extra trailing slash to the repository URL, producing a malformed OCI reference (for example, `oci://ghcr.io:443//chartpath` instead of `oci://ghcr.io:443/chartpath`). The connector now correctly constructs repository URLs without the extra slash. Update your delegate to pick up this fix. (**CDS-119172**, **ZD-105268**)
+- Fixed an issue where pipeline executions failed with a `CIStageExecutionException: Unable to get secret information` error that displayed an obfuscated secret identifier, making it impossible to determine which secret was missing or misconfigured. The error message now includes the original secret name and scope, enabling users to quickly identify and resolve the issue. This fix is behind the feature flag `PIPE_DISABLE_THROWING_ENGINE_EXPRESSION_EVALUATION_EXCEPTION`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**PIPE-31311**, **ZD-90976**)
+- Fixed an issue where the execution URL in Git status checks from Custom stages always pointed to a CI module path, causing a blank page for accounts without a CI license. The status check URL is now module-agnostic and resolves to the correct pipeline execution page regardless of the licensed modules on the account. This fix is behind the feature flag `PIPE_USE_DYNAMIC_MODULE_TYPE_IN_BUILD_DETAILS_URL`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**PIPE-31593**, **ZD-100070**)
+- Fixed an issue where the `notification.errormessage` expression in notification templates caused the template engine to fall back to the default template, and using `default()` returned the literal string `"null"` instead of the specified fallback value. Special characters in the error message were breaking the YAML parser during expression evaluation. The error message is now parsed with a dedicated object mapper that handles special characters correctly. (**PIPE-32051**, **ZD-101534**, **ZD-104538**)
+- Fixed an issue where the **Referencing Entities** button for organization-level step templates showed "no references found" even when references existed, and the **Compare Versions** feature failed to load the comparison side with a "template does not exist or has been deleted" error despite the version being valid. Both features now correctly resolve template references and version metadata across scopes. (**PIPE-32351**, **PIPE-32353**, **ZD-104288**)
+
 ## February 2026
 
 ### GitOps Service 1.51.2, GitOps Agent 0.110.0
