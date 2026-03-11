@@ -180,10 +180,12 @@ In **Advanced**, you can use the following options:
 
 You can send emails using your own SMTP Server. For more information, go to [add SMTP configuration](/docs/platform/notifications/add-smtp-configuration).
 
-## Email delivery failures
+## Limitations
 
-Currently, Harness is unable to check whether the emails sent using the Email step are delivered successfully.
+The Email step supports up to **2100 recipients** per execution. Exceeding this limit may cause the step to time out or fail. To notify larger audiences, use a distribution list (DL) instead of individual addresses.
 
-If you are encountering issues with email delivery, please open a Harness support ticket.
+Because the Email step processes emails asynchronously, the pipeline may report a failure even when the SMTP server is still delivering the emails. Check your SMTP server logs before re-running the pipeline to avoid sending duplicate messages.
 
-If you are using a custom email provider (as described in [Add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/)) Harness will not have access to your emails. Please check your email provider and server log to determine the cause of the error.
+:::note
+Harness does not control or document the limits imposed by your SMTP server. Consult your email provider's documentation for rate limits and bulk-sending policies. If you are using a custom email provider (as described in [Add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/)), check your provider's logs directly to verify delivery.
+:::
