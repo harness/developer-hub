@@ -24,7 +24,7 @@ A banking application requires coordinated releases of:
 
 Model the release as one process, add pipeline activities for each service deployment, and use dependencies to control order.
 
-![](../static/bank-plan-applications.png)
+![Harness AI generating a coordinated release process for a banking application, with phases for each service deployment and owner assignments](../static/bank-plan-applications.png)
 
 ## Scheduled Releases
 
@@ -37,7 +37,7 @@ Use **release groups** and the **Release Calendar** to model business cadence (f
 ### Example
 A SaaS product releases new features every two weeks. Create a release group with a recurring cadence, link it to the process, and open a release from the calendar to pre-execute it and provide inputs.
 
-![](../static/saas-bi-weekly-plan.png)
+![Harness AI generating a bi-weekly SaaS feature release process with four sequential phases: Planning, Development, Testing, and Deployment](../static/saas-bi-weekly-plan.png)
 
 ## Compliance and Audit Requirements
 
@@ -161,7 +161,7 @@ Plan the release starting from infrastructure provisioning, building the artifac
 
 ## Related Topics
 
-- [What is Release Orchestration](./what-is-release-orchestration.md)
+- [What is Release Orchestration](./getting-started.md)
 - [Key Concepts](./key-concepts.md)
 - [Multi-Service Release Example](../examples-and-walkthroughs/multi-service-release-example.md)
 

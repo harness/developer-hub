@@ -5343,7 +5343,6 @@ const sidebars: SidebarsConfig = {
           className: 'horizontal-bar',
         },
         'release-management/overview/getting-started',
-        'release-management/overview/what-is-release-orchestration',
         'release-management/overview/key-concepts',
         'release-management/overview/use-cases',
         {

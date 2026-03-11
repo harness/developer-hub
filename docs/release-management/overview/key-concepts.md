@@ -13,7 +13,10 @@ This topic covers the fundamental concepts and terminology used in Harness Relea
 
 A **release** represents a software delivery comprising different functions across teams, tools, and environments. Releases are modeled using processes that define the phases, activities, and dependencies required to complete the release.
 
+<figure>
 <DocImage path={require('../static/release-sample.png')} title="Click to view full size image" />
+<figcaption>A release execution graph showing phases connected by dependencies. Each phase displays its activity count, dependency links, and assigned owner.</figcaption>
+</figure>
 
 Learn more: [Releases Overview](/docs/release-orchestration/releases/overview) | [Modeling Releases](/docs/release-orchestration/releases/modeling-releases)
 
@@ -21,9 +24,15 @@ Learn more: [Releases Overview](/docs/release-orchestration/releases/overview) |
 
 A **process** is a reusable blueprint that defines the structure of a release. It consists of phases, activities, dependencies, inputs, and variables. Processes can be created manually or using AI-based process creation.
 
+<figure>
 <DocImage path={require('../static/processes.png')} title="Click to view full size image" />
+<figcaption>The Processes list view showing saved release processes with their descriptions, associated releases, and last updated timestamps.</figcaption>
+</figure>
 
+<figure>
 <DocImage path={require('../static/process-closeup.png')} title="Click to view full size image" />
+<figcaption>The visual canvas for a process, displaying phases (Build, Test, Deploy to Staging, UAT) laid out with dependency arrows. Each phase card shows its activity count and assigned owner.</figcaption>
+</figure>
 
 Learn more: [Processes Overview](/docs/release-orchestration/processes/overview) | [Process Modeling](/docs/release-orchestration/processes/process-modeling) | [AI-Based Process Creation](/docs/release-orchestration/processes/ai-based-process-creation)
 
@@ -33,7 +42,10 @@ A **phase** is a collection of activities which represents one logical group of 
 
 An **activity** is a single unit of work within a phase. Activities can be of three types:
 
+<figure>
 <DocImage path={require('../static/activities-and-phases.png')} title="Click to view full size image" />
+<figcaption>A process canvas with the Build Phase expanded, showing its individual activities (pipeline activities, a manual activity, and their types) alongside other phases in the process.</figcaption>
+</figure>
 
 - **Automated Activity**: An activity that encapsulates a pipeline. Th activity contains or references a Harness pipeline that executes automatically.
 
@@ -47,7 +59,10 @@ Learn more: [Phases Overview](/docs/release-orchestration/phases/phases-overview
 
 The **activity store** contains a collection of reusable activities with inputs and outputs encapsulating the pipelines. Harness Release Orchestration provides activity stores where all the reusable activities pertaining to different processes can be modeled and selected. Activities can be reused across different processes, promoting consistency and reducing duplication.
 
+<figure>
 <DocImage path={require('../static/activities-type-store.png')} title="Click to view full size image" />
+<figcaption>The Activity Store listing reusable activities with their names, descriptions, activity types (Pipeline, Manual, Subprocess), and last updated timestamps.</figcaption>
+</figure>
 
 Learn more: [Activity Store](/docs/release-orchestration/activities/activity-store) | [Reusable Activities](/docs/release-orchestration/activities/reusable-activities)
 
@@ -65,7 +80,10 @@ Process Input Set: A collection of activity input sets that apply across the ent
 
 Activity Input Set: Defines the inputs needed for a specific activity within a phase of the process. Each activity must be linked to one input set for the process to run successfully.
 
+<figure>
 <DocImage path={require('../static/inputstore-view.png')} title="Click to view full size image" />
+<figcaption>The Input Store for a process, showing a saved process input set with its name, description, completion status, and last updated timestamp.</figcaption>
+</figure>
 
 Learn more: [Inputs and Variables Overview](/docs/release-orchestration/inputs-and-variables/overview)
 
@@ -75,7 +93,10 @@ A **release group** is a collection of releases created and executed in a certai
 
 The **release calendar** provides a visual representation of all planned and scheduled releases. It helps teams coordinate releases and avoid conflicts.
 
+<figure>
 <DocImage path={require('../static/calendar.png')} title="Click to view full size image" />
+<figcaption>The Release Calendar showing a monthly view of scheduled releases across multiple release groups, with each release color-coded by type.</figcaption>
+</figure>
 
 Learn more: [Modeling Releases](/docs/release-orchestration/releases/modeling-releases)
 
@@ -86,7 +107,10 @@ Learn more: [Modeling Releases](/docs/release-orchestration/releases/modeling-re
 - **Phase variables**: Available within a specific phase
 - **Activity variables**: Available within a specific activity
 
+<figure>
 <DocImage path={require('../static/inputstore-variables.png')} title="Click to view full size image" />
+<figcaption>The Process Input Set Definition view, showing global variables and phase-level variables (with their types and default values) that can be configured for a process execution.</figcaption>
+</figure>
 
 Learn more: [Inputs and Variables Overview](/docs/release-orchestration/inputs-and-variables/overview) | [Global Variables](/docs/release-orchestration/inputs-and-variables/variable-types/global-variables) | [Phase Variables](/docs/release-orchestration/inputs-and-variables/variable-types/phase-variables) | [Activity Variables](/docs/release-orchestration/inputs-and-variables/variable-types/activity-variables)
 

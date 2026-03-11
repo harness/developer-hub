@@ -12,7 +12,7 @@ export const docsCards: CardSections = [
         module: MODULES.rm,
         description:
           "Learn about release orchestration and how it helps manage complex software releases.",
-        link: "/docs/release-orchestration/overview/what-is-release-orchestration",
+        link: "/docs/release-orchestration/overview/getting-started",
       },
       {
         title: "Key concepts",
