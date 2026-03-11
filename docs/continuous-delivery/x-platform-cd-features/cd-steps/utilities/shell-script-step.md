@@ -640,6 +640,14 @@ To prevent variable name conflicts, you can use **Publish Variable Names (Alias)
 2. In **Publish Variable Names (Alias)**, enter an alias to use to reference the exported output variables.
 3. In **Scope**, select the scope for the exported output variable.
 
+The following screenshot shows the output alias configured with **Stage** scope:
+
+![Stage-scoped output alias configuration](./static/stage-output-vars.png)
+
+The following screenshot shows the output alias configured with **Pipeline** scope:
+
+![Pipeline-scoped output alias configuration](./static/pipeline-output-vars.png)
+
 You can scope output variables to the following entities:
 
 - **Step group**: 

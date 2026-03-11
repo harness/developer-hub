@@ -291,6 +291,124 @@ To reference an output variable in a stage other than the one where the output v
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
+### Scoping output variables using aliases
+
+To prevent variable name conflicts, you can use **Publish Variable Names (Alias)** to scope output variables to different entities.
+
+1. **Export the variables:** Use **Output Variables** to export the variables.
+2. **Define an alias:** In **Publish Variable Names (Alias)**, enter an alias to use to reference the exported output variables.
+3. **Select a scope:** In **Scope**, select the scope for the exported output variable.
+
+The following screenshot shows the output alias configured with **Stage** scope:
+
+![Stage-scoped output alias configuration](./static/stage-output-vars.png)
+
+The following screenshot shows the output alias configured with **Pipeline** scope:
+
+![Pipeline-scoped output alias configuration](./static/pipeline-output-vars.png)
+
+You can scope output variables to the following entities:
+
+- **Step group:**
+  - The output variable must be used in the same step group, including nested child step groups.
+  - The format for referencing an exported step group output variable using its alias is:
+
+    ```
+    <+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
+    ```
+
+- **Stage:**
+  - The output variable can be used anywhere in the same stage, including step groups in the same stage. It cannot be used outside of the same stage.
+  - The format for referencing an exported stage output variable using its alias is:
+
+    ```
+    <+exportedVariables.getValue("stage.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
+    ```
+
+- **Pipeline:**
+  - The output variable can be used anywhere in the same pipeline but not in a [chained pipeline](/docs/platform/pipelines/pipeline-chaining).
+  - The format for referencing an exported pipeline output variable using its alias is:
+
+    ```
+    <+exportedVariables.getValue("pipeline.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
+    ```
+
+To reference a map of exported output variables, reference the alias in the format `<+exportedVariables.getValue("SCOPE.ALIAS_NAME")>`, like `<+exportedVariables.getValue("stepGroup.info")>`.
+
+:::info Important notes
+
+- Exported variables are immutable.
+- Variables cannot be exported in looping strategies.
+- Exported variables are not supported in pipeline chaining.
+- All output variables are exported. You cannot select a subset.
+
+:::
+
+<details>
+<summary>Step group scope pipeline example</summary>
+
+```yaml
+pipeline:
+  projectIdentifier: myproject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        identifier: testSimple
+        type: Custom
+        name: testSimple
+        description: ""
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  identifier: stepGroup1
+                  name: stepGroup1
+                  steps:
+                    - step:
+                        identifier: Run_1
+                        type: Run
+                        name: Run_1
+                        spec:
+                          shell: Bash
+                          command: |-
+                            export var1="val1"
+                            export var2="val2"
+                          outputVariables:
+                            - name: var1
+                            - name: var2
+                          outputAlias:
+                            key: info
+                            scope: StepGroup
+                        timeout: 10m
+                    - step:
+                        type: Run
+                        name: outputs
+                        identifier: outputs
+                        spec:
+                          shell: Bash
+                          command: |-
+                            echo "reference using aliases:"
+
+                            echo "var1:" <+exportedVariables.getValue("stepGroup.info.var1")>
+                            echo "var2:" <+exportedVariables.getValue("stepGroup.info.var2")>
+                            echo "var map:" <+exportedVariables.getValue("stepGroup.info")>
+
+                            echo "reference using standard output exp:"
+
+                            echo "var1:" <+pipeline.stages.testSimple.spec.execution.steps.stepGroup1.steps.Run_1.output.outputVariables.var1>
+                            echo "var2:" <+pipeline.stages.testSimple.spec.execution.steps.stepGroup1.steps.Run_1.output.outputVariables.var2>
+                          outputVariables: []
+                        timeout: 10m
+        tags: {}
+  identifier: StepGroupExport
+  name: StepGroupExport
+```
+
+</details>
+
+For more information, go to [Scoping output variables using aliases](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step#scoping-output-variables-using-aliases) in the Shell Script step documentation.
+
 ## Image Pull Policy
 
 Select an option to set the pull policy for the image.
