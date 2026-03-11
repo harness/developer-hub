@@ -9,9 +9,8 @@
 9. [**Nexus**](/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference)
 10. [**OpenVAS**](/docs/security-testing-orchestration/sto-techref-category/openvas-scanner-reference)  *- open-source*
 11. [**Qualys Web Application Scanning**](/docs/security-testing-orchestration/sto-techref-category/qualys-web-app-scanner-reference)
-12. [**Qwiet AI (formerly ShiftLeft)**](/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference)
-13. [**Reapsaw**](/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference) - *open-source*
-14. [**ScoutSuite**](/docs/security-testing-orchestration/sto-techref-category/scoutsuite-scanner-reference) - *open-source*
-15. [**Tenable**](/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference)
-16. [**Veracode**](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference)
-17. [**JFrog Xray**](/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference)
+12. [**Reapsaw**](/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference) - *open-source*
+13. [**ScoutSuite**](/docs/security-testing-orchestration/sto-techref-category/scoutsuite-scanner-reference) - *open-source*
+14. [**Tenable**](/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference)
+15. [**Veracode**](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference)
+16. [**JFrog Xray**](/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference)

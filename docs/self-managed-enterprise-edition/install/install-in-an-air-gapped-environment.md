@@ -294,7 +294,6 @@ The following components are packaged as individual single bundles (`.tgz`), rat
 *   `owasp-dependency-check-job-runner.tgz`
 *   `prowler-job-runner.tgz`
 *   `semgrep-job-runner.tgz`
-*   `shiftleft-job-runner.tgz`
 *   `snyk-job-runner.tgz`
 *   `sonarqube-agent-job-runner.tgz`
 *   `sysdig-job-runner.tgz`

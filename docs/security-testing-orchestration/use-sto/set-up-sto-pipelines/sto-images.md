@@ -45,7 +45,6 @@ Here are are a list of Harness STO images in the [Harness GAR project](https://c
 - [owasp-dependency-check-job-runner](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fowasp-dependency-check-job-runner)  
 - [prowler-job-runner](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fprowler-job-runner)  
 - [semgrep-job-runner](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fsemgrep-job-runner)  
-- [shiftleft-job-runner](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fshiftleft-job-runner)  
 - [snyk-job-runner](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fsnyk-job-runner)  
 - [sonarqube-agent-job-runner](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fsonarqube-agent-job-runner)  
 - [sto-plugin](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fsto-plugin)  

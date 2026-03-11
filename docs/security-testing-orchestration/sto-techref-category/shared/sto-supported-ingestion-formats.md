@@ -39,7 +39,6 @@ Harness recommends that you publish and ingest using the scanner-specific JSON f
 - **Prisma Cloud** — JSON  
 - **Prowler** — JSON
 - **Qualys** — XML
-- **Qwiet** — JSON
 - **Reapsaw** — JSON    <!-- - **Scoutsuite** — JSON -->
 - **Semgrep** — SARIF
 - **Snyk** — JSON _(recommended)_, SARIF

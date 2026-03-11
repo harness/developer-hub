@@ -22,7 +22,6 @@ You can configure secret detection in Harness STO using the supported scanners:
     - **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference)** 
     - **[Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference)**  
     - **[Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep)**  
-    - **[Qwiet AI (formerly ShiftLeft)](/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference)**  
     - **[Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference)**  
     - **[SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference)**  
     - **[Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz)**  

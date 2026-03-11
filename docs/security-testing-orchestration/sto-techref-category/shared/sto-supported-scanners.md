@@ -56,7 +56,6 @@ A code scanner can detect one or more of the following issue types in your sourc
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/github-advanced-security">GitHub Advanced Security</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Nexus IQ</a> Orchestration, Extraction, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code (<i>paid option</i>) </a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning">Snyk Code</a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-iac-scanning">Snyk Infrastructure as Code</a> Orchestration, Ingestion</li>
