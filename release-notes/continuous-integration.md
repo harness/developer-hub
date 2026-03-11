@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-03-05T10:00
+date: 2026-03-11T10:00
 sidebar_position: 10
 ---
 
@@ -62,6 +62,36 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## March 2026
 
+### Version 1.125.0
+
+<!-- March 2026 -->
+
+#### New Features and Enhancements
+
+- The Docker Build and Push plugins now automatically detect and use Harness proxy environment variables (`HARNESS_HTTP_PROXY`, `HARNESS_HTTPS_PROXY`, `HARNESS_NO_PROXY`) as build arguments when standard proxy variables are not set. Users no longer need to manually configure proxy settings for Docker builds behind a proxy. (CI-20651)
+
+- Cache Intelligence now supports Azure Blob Storage with principal authentication and OIDC-based access. (CI-21176)
+
+- Cache Intelligence now supports Go builds on Linux, enabling automatic dependency caching for Go projects. (CI-20988)
+
+- Branch-based version counters now work with pipelines that have codebase disabled, using trigger event data to determine the branch. This feature requires the `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag. (CI-21208)
+
+#### Fixed Issues
+
+- Fixed a marker file permission issue in the cache proxy that caused "Failed to record build cache usage" errors with a "permission denied" message. (CI-21173)
+
+- Fixed an issue where tag event expressions returned an empty string instead of null when no value was available, which could cause unexpected behavior in pipeline conditions. This fix applies when the `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag is enabled. (CI-21207)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `plugins/buildx` | Proxy build args support | 1.3.13 | 1.3.14 |
+| `plugins/buildx-ecr` | AWS SDK v2 migration | 1.4.3 | 1.4.4 |
+| `plugins/buildx-gar` | AWS SDK v2 migration | 1.4.3 | 1.4.4 |
+| `plugins/buildx-acr` | AWS SDK v2 migration | 1.4.4 | 1.4.5 |
+| `harness/harness-cache-server` | Permission fix | 1.7.13 | 1.7.14 |
+
 ### Version 1.124.0
 
 <!-- March 2026 -->
@@ -70,7 +100,7 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 - Harness Cloud builds now display CPU and memory usage metrics in pipeline execution logs, providing better visibility into resource consumption. (CI-19781)
 
-- Introduced branch-based version counters, allowing build numbering to track independently per branch. (CI-20577)
+- Introduced branch-based version counters, allowing build numbering to track independently per branch. This feature requires the `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag. (CI-20577)
 
 - Container-based step groups now support real-time step status updates during execution. (CI-21113)
 
