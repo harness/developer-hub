@@ -1,7 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-date: 2025-08-21T10:00
+date: 2026-03-05T10:00
 sidebar_position: 7
 ---
 
@@ -19,6 +19,24 @@ These release notes describe recent changes to Harness Code Repository.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## March 2026
+
+<!-- March 4, 2026 -->
+
+### Version 1.77.x
+
+#### New features and enhancements
+
+- The fork-sync API now returns HTTP 409 status code when sync encounters merge conflicts, replacing the previous 200 response. This provides clearer conflict detection for API consumers. (CODE-5104)
+
+- Improved Git LFS upload performance by streaming file content during OID calculation, reducing memory usage for large file uploads. (CODE-4993)
+
+#### Bug Fixes and Improvements
+
+- Fixed an issue where listing repositories in a forked repo's space would fail if the upstream (source) repository had been deleted. (CODE-5090)
+
+- Fixed fork-related API endpoint definitions in the OpenAPI specification to return correct status codes. (CODE-4616)
 
 ## February 2026
   
