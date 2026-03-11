@@ -119,9 +119,9 @@ ccm:
       - volumeMountPath: "/opt/harness/svc"
         keys:
         - key: ce-gcp-home-project-creds
-          path: "ce-gcp-home-project-creds.json"
+          path: "ce_gcp_home_project_creds.json"
         - key: ce-batch-gcp-credentials
-          path: "ce-batch-gcp-credentials.json"
+          path: "ce_batch_gcp_credentials.json"
       default:
         ce-gcp-home-project-creds: ""
         ce-batch-gcp-credentials: ""
@@ -148,17 +148,11 @@ Following are the secrets specific to CCM services:
     ```
     HMAC_ACCESS_KEY: <hmacAccessKey>
     HMAC_SECRET_KEY: <hmacSecretKey>
-    ```
-
-**2. batch-processing-secret-mount**
-    ```kubectl edit secret batch-processing-secret-mount -n <namespace>```
-
-    ```
     ce-gcp-home-project-creds: <gcpServiceAccountCredentials>
     ce-batch-gcp-credentials: <gcpServiceAccountCredentials>
     ```
     
-**3. cloud-info-secret-mount [config-file]**
+**2. cloud-info-secret-mount [config-file]**
     ```
     kubectl edit secret cloud-info-secret-mount -n <namespace>
     ```
@@ -332,13 +326,13 @@ project = "<gcpServiceAccountProjectId>"
 ```
 
 
-**4. ceng-secret-mount**
+**3. ceng-secret-mount**
 
     ```kubectl edit secret ceng-secret-mount -n <namespace>```
 
     ```ceng-gcp-credentials: <gcpServiceAccountCredentials>```
 
-**5. nextgen-ce configmap**
+**4. nextgen-ce configmap**
 
     ```kubectl edit configmap nextgen-ce -n harness```
     
@@ -401,18 +395,19 @@ Body:
 
 ### Step 2: Update GCP Sync Replay yaml file
 
-Use the mapping table to update `<placeHolder>` value in the yaml with the info got in the first step.
+Replace each `<placeHolder>` in the YAML below with the corresponding value from the connector response retrieved in Step 1.
 
-| S. No. | GCP Connector Fields (connector object) | GCP Sync Replay Fields |
-|--------|----------------------------------------|------------------------|
-| 1 | | `image`: Path to GCP Sync K8s Job. Example: docker.io/harness/ccm-gcp-smp-signed:10053 |
-| 2 | `accountIdentifier` | `accountId` |
-| 3 | `spec.projectId` | `sourceGcpProjectId` |
-| 4 | `spec.billingExportSpec.datasetId` | `sourceDataSetId` |
-| 5 | | `sourceDataSetRegion`: Retrieve this information by checking the details section of the billing export table's dataset. |
-| 6 | `identifier` | `connectorId` |
-| 7 | `spec.billingExportSpec.tableId` | `sourceGcpTableName` |
-| 8 | | `replayIntervalInDays`: Specify number of days for which you want to replay. |
+| YAML Field | Where to get the value |
+|------------|------------------------|
+| `image` | Path to the GCP Sync K8s Job image. Example: `docker.io/harness/ccm-gcp-smp-signed:100079` |
+| `accountId` | `accountIdentifier` from the connector |
+| `sourceGcpProjectId` | `spec.projectId` from the connector |
+| `sourceDataSetId` | `spec.billingExportSpec.datasetId` from the connector |
+| `sourceDataSetRegion` | Check the **Details** section of the billing export table's dataset in GCP |
+| `connectorId` | `identifier` from the connector |
+| `sourceGcpTableName` | `spec.billingExportSpec.tableId` from the connector |
+| `replayIntervalInDays` | Number of days for which you want to replay billing data |
+| `http_proxy` / `https_proxy` | Your environment's proxy URL (e.g. `https://proxy.example.com:3128`) |
 
 ```yaml
 apiVersion: batch/v1
@@ -427,76 +422,83 @@ spec:
   template:
     spec:
       containers:
-      - image: <placeHolder>
-        imagePullPolicy: IfNotPresent
-        name: python-gcp-sync-container
-        command: ["python", "/data-pipeline/gcp_billing_bq_main.py"]
-        args: ['{
-"accountId": "<placeHolder>", 
-"sourceGcpProjectId": "<placeHolder>", 
-"sourceDataSetId": "<placeHolder>", 
-"sourceDataSetRegion": "<placeHolder>", 
-"connectorId": "<placeHolder>", 
-"sourceGcpTableName": "<placeHolder>", 
-"replayIntervalInDays": "<placeHolder>"
-}']
-        env:
-        - name: CLICKHOUSE_ENABLED
-          valueFrom:
-            configMapKeyRef:
-              name: batch-processing
-              key: CLICKHOUSE_ENABLED
-        - name: CLICKHOUSE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: batch-processing
-              key: CLICKHOUSE_URL_PYTHON
-        - name: CLICKHOUSE_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: batch-processing
-              key: CLICKHOUSE_PORT_PYTHON
-        - name: CLICKHOUSE_USERNAME
-          value: default
-        - name: CLICKHOUSE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: clickhouse
-              key: admin-password
-        - name: CLICKHOUSE_SEND_RECEIVE_TIMEOUT
-          value: "86400"
-        - name: CLICKHOUSE_QUERY_RETRIES
-          value: "3"
-        - name: HMAC_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: batch-processing
-              key: HMAC_ACCESS_KEY
-        - name: HMAC_SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: batch-processing
-              key: HMAC_SECRET_KEY
-        - name: SERVICE_ACCOUNT_CREDENTIALS
-          valueFrom:
-            secretKeyRef:
-              name: batch-processing-secret-mount
-              key: ce-batch-gcp-credentials
-        resources:
-          limits:
-            cpu: "1"
-            memory: 2Gi
-          requests:
-            cpu: "1"
-            memory: 2Gi
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
+        - image: "<placeHolder>"
+          imagePullPolicy: IfNotPresent
+          name: python-gcp-sync-container
+          command: ["python3.11", "/data-pipeline/gcp_billing_bq_main.py"]
+          args: [
+              '{
+              "accountId": "<placeHolder>",
+              "sourceGcpProjectId": "<placeHolder>",
+              "sourceDataSetId": "<placeHolder>",
+              "sourceDataSetRegion": "<placeHolder>",
+              "connectorId": "<placeHolder>",
+              "sourceGcpTableName": "<placeHolder>",
+              "replayIntervalInDays": "<placeHolder>"
+              }',
+            ]
+          env:
+            - name: CLICKHOUSE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: batch-processing
+                  key: CLICKHOUSE_ENABLED
+            - name: CLICKHOUSE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: batch-processing
+                  key: CLICKHOUSE_URL_PYTHON
+            - name: CLICKHOUSE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: batch-processing
+                  key: CLICKHOUSE_PORT_PYTHON
+            - name: CLICKHOUSE_USERNAME
+              value: default
+            - name: CLICKHOUSE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: clickhouse
+                  key: admin-password
+            - name: CLICKHOUSE_SEND_RECEIVE_TIMEOUT
+              value: "86400"
+            - name: CLICKHOUSE_QUERY_RETRIES
+              value: "3"
+            - name: HMAC_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: batch-processing
+                  key: HMAC_ACCESS_KEY
+            - name: HMAC_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: batch-processing
+                  key: HMAC_SECRET_KEY
+            - name: SERVICE_ACCOUNT_CREDENTIALS
+              valueFrom:
+                secretKeyRef:
+                  name: batch-processing
+                  key: ce-batch-gcp-credentials
+            - name: http_proxy
+              value: "<placeHolder>"
+            - name: https_proxy
+              value: "<placeHolder>"
+          resources:
+            limits:
+              cpu: "1"
+              memory: 2Gi
+            requests:
+              cpu: "1"
+              memory: 2Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: OnFailure
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
   backoffLimit: 3
+
 ```
 
 ### Step 3: Apply/Delete GCP Sync Replay yaml file
