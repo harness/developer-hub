@@ -1090,5 +1090,17 @@
     "description": "Enables manual override of security issue severity for more accurate prioritization based on issue criticality, exploit exposure, compensating controls, and production impact.",
     "gaStartDate": "2026-03-10",
     "module": "Security Test Orchestration"
+  },
+  {
+    "flagKey": "CDS_K8S_TRAFFIC_ROUTING_ON_CANARY_DELETE",
+    "description": "Traffic will be automatically shifted back to the stable version when a canary deployment is deleted.",
+    "gaStartDate": "2026-03-12",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_K8S_NOT_ADD_TRAFFIC_ROUTING_TO_CANARY_WORKLOAD",
+    "description": "Removing the traffic configuration from the canary workload to prevent virtual services from being deleted during rollback.",
+    "gaStartDate": "2026-03-12",
+    "module": "Continuous Delivery"
   }
 ]
