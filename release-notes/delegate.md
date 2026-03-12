@@ -117,6 +117,24 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2026
 
+### Version 26.03.88700 <!-- March 11, 2026 -->
+
+#### Fixed issues
+- Added support for the delegate environment variable `MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE`, which allows you to control the maximum number of Docker tags fetched per image. The default value is 10,000 tags. [CDS-117808]
+You can override the default by setting the environment variable on your delegate:
+  ```
+  env:
+    - name: MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE
+      value: "20000"
+  ```
+  
+    :::note
+    Setting a higher value may impact performance depending on your Docker registry response times.
+    :::
+
+- Added `tree` query parameters to Jenkins API calls to unblock API requests in the latest CloudBees Jenkins integration. [CDS-117294]
+
+
 ### Version 26.02.88602 <!-- March 10, 2026 -->
 
 #### Fixed issues
