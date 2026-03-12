@@ -16,7 +16,7 @@ This guide provides detailed information about our .NET SDK. All of our SDKs are
 This SDK supports the following .NET platform versions:
   - .NET Framework 4.5 and later
   - .NET Core 2.x and 3.x
-  - .NET 8, .NET 7, .NET 6 and .NET 5
+  - .NET 9 and .NET 8
 
 :::tip[Rule-based segments support]
 Rule-based segments are supported in SDK versions 7.11.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
@@ -136,7 +136,7 @@ The `GetTreatment` method supports five types of attributes: strings, numbers, d
 
 * **Strings:** Use type String.
 * **Numbers:** Use type `long` or `int`.
-* **Dates: ** Express the value for these attributes in `milliseconds since epoch` and as objects of class `DateTime`.
+* **Dates:** Express the value for these attributes in `milliseconds since epoch` and as objects of class `DateTime`.
 * **Booleans:** Use type `bool`.
 * **Sets:** Use type `List<string>`.
 
@@ -1073,7 +1073,7 @@ public interface ISplitLogger
 The following is an example of how config the customer logger in the SDK:
 
 :::info[Note]
-It's the developer's responsibility to ensure that the following logger methods don't crash, and can handle logging levels if a custom logger is user.
+It's the developer's responsibility to ensure that the following logger methods don't crash, and can handle logging levels if a custom logger is used.
 :::
 
 ```csharp title="C#"
