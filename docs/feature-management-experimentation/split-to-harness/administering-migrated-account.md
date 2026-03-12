@@ -98,7 +98,7 @@ This section shows you how to add new Harness users and set up RBAC permissions 
 
 When you add a user at the account level, you can also add the user to an [FME user group](#fme-user-groups). Once a user is added to the Harness platform, it is easy to add the same user to any organization or project.
 
-<Tabs>
+<Tabs queryString="tab-number">
 <TabItem value="interactive" label="Interactive Guide">
 
 To add a user to Harness that will have access to your (unrestricted) migrated FME projects, view the steps in the interactive guide:
@@ -515,7 +515,7 @@ To view service accounts in your Harness project settings, click **Project Setti
 
 You can use a service account linked with a legacy Split Admin API key to create a new Harness FME Admin API key. The new Harness FME API key will have privileges equivalent to the legacy Split Admin API key (except that service accounts with environment-scoped Admin API keys will not be available until the “Granular permissions in RBAC” [roadmap item](/roadmap/#fme) is delivered).
 
-<Tabs>
+<Tabs queryString="tango-or-manual">
 <TabItem value="interactive" label="Interactive Guide">
 
 To create an Admin API key with the same permissions as your legacy Split Admin API key in your Harness account, view the steps in the interactive guide:
@@ -549,7 +549,7 @@ If you don’t have a service account with role bindings set up, you can create 
 
 This section provides steps to create a service account and role bindings for an Admin API key scoped to all existing projects in your Harness account or organization.
 
-  <Tabs>
+  <Tabs queryString="tango-or-manual">
   <TabItem value="interactive" label="Interactive Guide">
 
 To create an Admin API key scoped to all projects in your Harness account, view the steps in the interactive guide:
@@ -593,7 +593,14 @@ To create an Admin API key scoped to all projects in your Harness account, view 
     1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
     1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
     1. Click **Apply Selected**.
-    1. Select the **Project Admin** role.
+    1. Select the **Project Admin** role. 
+ 
+       :::info Projects View Permissions
+       To allow API requests made with the service account token to access FME resources in the project, the service account must have the [**Projects View** permission](/docs/platform/role-based-access-control/permissions-reference/#administrative-functions) (`core_project_view`).
+
+       The **Project Viewer** role includes this permission. If you create a custom role instead of using the default roles, ensure that it includes the `core_project_view` permission. 
+       :::
+ 
     1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
     1. Click **Save** or **Apply**. The service account and role binding are listed.
   
@@ -640,7 +647,7 @@ For example, you may choose to omit adding permissions for modules other than FM
 
 This section provides steps to create a service account and role bindings for an Admin API key scoped to specific projects in your Harness account.
 
-  <Tabs>
+  <Tabs queryString="tango-or-manual">
   <TabItem value="interactive" label="Interactive Guide">
 
 To create an Admin API key scoped to a specific project in your Harness account, view the steps in the interactive guide:
@@ -668,7 +675,14 @@ To create an Admin API key scoped to a specific project in your Harness account,
     1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
     1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
     1. Click **Apply Selected**.
-    1. Select the **Project Admin** role.
+    1. Select the **Project Admin** role. 
+     
+       :::info Projects View Permissions
+       To allow API requests made with the service account token to access FME resources in the project, the service account must have the [**Projects View** permission](/docs/platform/role-based-access-control/permissions-reference/#administrative-functions) (`core_project_view`).
+
+       The **Project Viewer** role includes this permission. If you create a custom role instead of using the default roles, ensure that it includes the `core_project_view` permission. 
+       :::
+ 
     1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
     1. Click **Save** or **Apply**. The service account and role binding are listed.
 
@@ -707,7 +721,7 @@ This section provides steps to create a service account and role bindings for an
 On the Enterprise plan, Harness FME supports granular access control for Admin API keys through [Harness RBAC](/docs/feature-management-experimentation/permissions/rbac), allowing you to grant access to specific FME environments.
 :::
 
-  <Tabs>
+  <Tabs queryString="tango-or-manual">
   <TabItem value="interactive" label="Interactive Guide"> 
 
     To create an Admin API key scoped to specific FME environment(s) in your Harness account, view the steps in the interactive guide:
@@ -749,7 +763,14 @@ On the Enterprise plan, Harness FME supports granular access control for Admin A
     1. Click the **Inherit Service Accounts & Assign Roles** button.
     1. Select the service account created in Step 2. If this is created at the account level, the service account is listed on the **Account** tab.
     1. Click **Apply Selected**.
-    1. Select the **Project Admin** role.
+    1. Select the **Project Admin** role. 
+    
+       :::info Projects View Permissions
+       To allow API requests made with the service account token to access FME resources in the project, the service account must have the [**Projects View** permission](/docs/platform/role-based-access-control/permissions-reference/#administrative-functions) (`core_project_view`).
+
+       The **Project Viewer** role includes this permission. If you create a custom role instead of using the default roles, ensure that it includes the `core_project_view` permission. 
+       :::
+ 
     1. Select the custom resource group created in Step 1.
     1. Click **Apply**. The service account and role binding are listed.
 
@@ -852,7 +873,7 @@ If your Split account is migrated to a Harness account on the Enterprise plan, a
 
 ### Create a project
 
-<Tabs>
+<Tabs queryString="tango-or-manual">
 <TabItem value="interactive" label="Interactive Guide">
 
 <DocVideo src="https://app.tango.us/app/embed/4c5d12d9-a82c-4a54-a54e-c0684ddc3475?hideAuthorAndDetails=true" title="Create a New Project" />
@@ -883,7 +904,7 @@ Until you grant access to your project using **Access Control** in your **Projec
 
 To grant access to your project, you can choose to follow the permission pattern of a legacy Split restricted project or unrestricted project. Initially, we recommend following one of these patterns. After some time, you may prefer to implement RBAC strategies aligned to your company policies and practices.
 
-<Tabs>
+<Tabs queryString="project-type">
 <TabItem value="unrestricted" label="Unrestricted project">
 
 To implement permissions similar to the legacy Split unrestricted project:
@@ -935,7 +956,7 @@ If you do not delete the resources from within your project before deleting the 
 
 If you accidentally delete a project before deleting its resources, see the [Troubleshooting - FME project deletion](#fme-project-deletion) section.
 
-<Tabs>
+<Tabs queryString="tango-or-manual">
 <TabItem value="interactive" label="Interactive Guide">
 
 To cleanly delete a project in your Harness account:
@@ -1213,7 +1234,14 @@ At the project level, grant access to the service account by assigning roles:
 1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
 1. Under the  **Account** or **Organization** tab\*, click on the Harness service account corresponding to the legacy Split Admin API key (the name will match the name of the legacy key, shown in FME Settings, but without spaces).
 1. Click **Apply Selected**.
-1. Select the **Project Admin** role.
+1. Select the **Project Admin** role. 
+  
+   :::info Projects View Permissions
+   To allow API requests made with the service account token to access FME resources in the project, the service account must have the [**Projects View** permission](/docs/platform/role-based-access-control/permissions-reference/#administrative-functions) (`core_project_view`).
+
+   The **Project Viewer** role includes this permission. If you create a custom role instead of using the default roles, ensure that it includes the `core_project_view` permission. 
+   :::
+
 1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*\*).
 1. Click **Save** or **Apply**. The service account and role binding are listed.
 
