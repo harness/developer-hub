@@ -204,6 +204,10 @@ If you enabled the **Enables automatic creation of service environments** toggle
 
 You can add new mappings to an existing Agent in the Agent's **Mapped Harness Project** settings.
 
+:::warning Redis cache timeout when re-adding a project mapping
+If you remove a project mapping and immediately re-add or re-import it, the autocreate flow for services and environments may not trigger. This is because the Reconcile Application process has a 29-second Redis cache timeout. Wait at least 30 seconds after removing a project mapping before adding it back to ensure the autocreate flow works as expected.
+:::
+
 1. In Harness, open an existing Agent.
 2. Select **Edit**. In this example, the Argo CD project **alpha** is mapped to the Harness project **GitOps**.
    
