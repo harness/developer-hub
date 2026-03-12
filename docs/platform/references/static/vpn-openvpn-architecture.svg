@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0278D5"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22863a"/>
+    </marker>
+    <linearGradient id="harnessBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f4fd"/>
+      <stop offset="100%" style="stop-color:#d0e8f7"/>
+    </linearGradient>
+    <linearGradient id="privateBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e6f9e6"/>
+      <stop offset="100%" style="stop-color:#ccf0cc"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="420" rx="12" fill="#fafbfc"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#24292e">OpenVPN Architecture for Harness Cloud</text>
+
+  <!-- Harness Cloud Zone -->
+  <rect x="30" y="50" width="370" height="340" rx="10" fill="url(#harnessBg)" stroke="#0278D5" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="215" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#0278D5">Harness Cloud</text>
+
+  <!-- Build VM -->
+  <rect x="60" y="95" width="310" height="110" rx="8" fill="white" stroke="#0278D5" stroke-width="1.5"/>
+  <text x="215" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#24292e">Ephemeral Build VM</text>
+
+  <!-- Pipeline Steps -->
+  <rect x="80" y="130" width="120" height="30" rx="5" fill="#0278D5" opacity="0.1" stroke="#0278D5" stroke-width="1"/>
+  <text x="140" y="150" text-anchor="middle" font-size="10" fill="#0278D5">Pipeline Steps</text>
+
+  <!-- OpenVPN Client -->
+  <rect x="230" y="130" width="120" height="30" rx="5" fill="#0278D5" opacity="0.2" stroke="#0278D5" stroke-width="1.5"/>
+  <text x="290" y="150" text-anchor="middle" font-size="10" font-weight="600" fill="#0278D5">OpenVPN Client</text>
+
+  <!-- tun0 interface -->
+  <rect x="230" y="170" width="120" height="22" rx="4" fill="#fff3cd" stroke="#e6a817" stroke-width="1"/>
+  <text x="290" y="185" text-anchor="middle" font-size="9" fill="#856404">tun0 (10.8.0.2)</text>
+
+  <!-- Harness Secret -->
+  <rect x="80" y="230" width="130" height="45" rx="6" fill="white" stroke="#6f42c1" stroke-width="1.5"/>
+  <text x="145" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#6f42c1">Harness Secret</text>
+  <text x="145" y="264" text-anchor="middle" font-size="9" fill="#6f42c1">Base64 .ovpn config</text>
+
+  <!-- Arrow from secret to client -->
+  <line x1="210" y1="252" x2="280" y2="195" stroke="#6f42c1" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#arrowhead)"/>
+
+  <!-- Internet Zone -->
+  <rect x="420" y="140" width="60" height="140" rx="8" fill="#fff" stroke="#d1d5da" stroke-width="1"/>
+  <text x="450" y="195" text-anchor="middle" font-size="10" fill="#586069" transform="rotate(-90, 450, 195)">Internet</text>
+
+  <!-- Encrypted Tunnel -->
+  <line x1="400" y1="180" x2="420" y2="180" stroke="#0278D5" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+  <line x1="480" y1="180" x2="500" y2="180" stroke="#0278D5" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Tunnel label -->
+  <rect x="405" y="230" width="90" height="22" rx="4" fill="#0278D5" opacity="0.1"/>
+  <text x="450" y="244" text-anchor="middle" font-size="8" fill="#0278D5">TLS Encrypted</text>
+  <text x="450" y="256" text-anchor="middle" font-size="8" fill="#0278D5">UDP :1194</text>
+
+  <!-- Private Network Zone -->
+  <rect x="500" y="50" width="370" height="340" rx="10" fill="url(#privateBg)" stroke="#22863a" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="685" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#22863a">Your Private Network</text>
+
+  <!-- OpenVPN Server -->
+  <rect x="520" y="130" width="150" height="70" rx="8" fill="white" stroke="#22863a" stroke-width="1.5"/>
+  <text x="595" y="155" text-anchor="middle" font-size="12" font-weight="600" fill="#24292e">OpenVPN Server</text>
+  <text x="595" y="172" text-anchor="middle" font-size="9" fill="#586069">Port 1194/UDP</text>
+  <text x="595" y="186" text-anchor="middle" font-size="9" fill="#586069">tun0 (10.8.0.1)</text>
+
+  <!-- NAT/Routing -->
+  <rect x="545" y="220" width="100" height="28" rx="5" fill="#fff3cd" stroke="#e6a817" stroke-width="1"/>
+  <text x="595" y="239" text-anchor="middle" font-size="9" fill="#856404">NAT / Routing</text>
+
+  <!-- Arrow from server to NAT -->
+  <line x1="595" y1="200" x2="595" y2="220" stroke="#22863a" stroke-width="1.5" marker-end="url(#arrowhead-green)"/>
+
+  <!-- Private Resources -->
+  <rect x="530" y="270" width="110" height="40" rx="6" fill="white" stroke="#22863a" stroke-width="1"/>
+  <text x="585" y="286" text-anchor="middle" font-size="9" fill="#24292e">Internal APIs</text>
+  <text x="585" y="298" text-anchor="middle" font-size="8" fill="#586069">10.128.0.x</text>
+
+  <rect x="660" y="270" width="110" height="40" rx="6" fill="white" stroke="#22863a" stroke-width="1"/>
+  <text x="715" y="286" text-anchor="middle" font-size="9" fill="#24292e">Databases</text>
+  <text x="715" y="298" text-anchor="middle" font-size="8" fill="#586069">10.128.0.x</text>
+
+  <rect x="530" y="325" width="110" height="40" rx="6" fill="white" stroke="#22863a" stroke-width="1"/>
+  <text x="585" y="341" text-anchor="middle" font-size="9" fill="#24292e">Artifact Repos</text>
+  <text x="585" y="353" text-anchor="middle" font-size="8" fill="#586069">10.128.0.x</text>
+
+  <rect x="660" y="325" width="110" height="40" rx="6" fill="white" stroke="#22863a" stroke-width="1"/>
+  <text x="715" y="341" text-anchor="middle" font-size="9" fill="#24292e">Source Control</text>
+  <text x="715" y="353" text-anchor="middle" font-size="8" fill="#586069">10.128.0.x</text>
+
+  <!-- Arrows from NAT to resources -->
+  <line x1="580" y1="248" x2="575" y2="270" stroke="#22863a" stroke-width="1.2" marker-end="url(#arrowhead-green)"/>
+  <line x1="610" y1="248" x2="700" y2="270" stroke="#22863a" stroke-width="1.2" marker-end="url(#arrowhead-green)"/>
+  <line x1="575" y1="248" x2="570" y2="325" stroke="#22863a" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arrowhead-green)"/>
+  <line x1="620" y1="248" x2="710" y2="325" stroke="#22863a" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arrowhead-green)"/>
+
+  <!-- Flow labels -->
+  <text x="450" y="135" text-anchor="middle" font-size="9" font-weight="600" fill="#0278D5">Encrypted Tunnel</text>
+
+  <!-- Legend -->
+  <rect x="60" y="380" width="8" height="8" fill="#0278D5" opacity="0.3"/>
+  <text x="74" y="388" font-size="9" fill="#586069">Harness-managed</text>
+  <rect x="180" y="380" width="8" height="8" fill="#22863a" opacity="0.3"/>
+  <text x="194" y="388" font-size="9" fill="#586069">Customer-managed</text>
+  <line x1="310" y1="384" x2="340" y2="384" stroke="#0278D5" stroke-width="2"/>
+  <text x="346" y="388" font-size="9" fill="#586069">Encrypted traffic</text>
+</svg>

@@ -9,7 +9,7 @@ redirect_from:
   - /docs/continuous-integration/secure-ci/private-network-connectivity
 ---
 
-When running builds on Harness Cloud, you may need to access internal resources that are not publicly accessible, such as:
+When running builds or other workloads on Harness Cloud, you may need to access internal resources that are not publicly accessible, such as:
 
 - Internal artifact repositories
 - Private source code management systems (SCMs)
@@ -21,10 +21,11 @@ When running builds on Harness Cloud, you may need to access internal resources 
 Harness supports multiple approaches to enable communication between Harness Cloud infrastructure and your private network:
 1. IP allowlisting
 2. Private network connectivity through supported cloud provider solutions: AWS PrivateLink or GCP Private Service Connect.
+3. VPN connectivity using OpenVPN or WireGuard.
 
 ## IP allowlisting
 
-Your networking or security team can allowlist the IP ranges used by Harness Cloud to permit traffic from Harness-managed build infrastructure to your private resources.
+Your networking or security team can allowlist the IP ranges used by Harness Cloud to permit traffic from Harness-managed Cloud VMs to your private resources.
 
 ### How it works
 
@@ -70,8 +71,19 @@ Allows you to privately connect your VPC networks to Google-managed services and
 
 **For detailed solution architecture and setup instructions, see** [**documentation**](docs/platform/references/private-network-connectivity/private-link-connect.md).
 
+## VPN connectivity
 
+For teams that need to connect Harness Cloud VMs to on-premises or private cloud resources through a traditional VPN tunnel, Harness supports two VPN solutions:
 
+**OpenVPN**
+Establishes a TLS-encrypted tunnel from the Cloud VM to your OpenVPN server. Supports both UDP and TCP, certificate-based and username/password authentication, and enterprise PKI integration.
+
+**WireGuard**
+A modern, high-performance VPN that creates an encrypted tunnel using the Noise protocol. Offers faster connection times, higher throughput, and a simpler configuration compared to OpenVPN.
+
+Both solutions run a VPN client directly on the ephemeral Harness Cloud VM, creating a secure tunnel to your VPN server. You store the VPN configuration as a base64-encoded Harness secret and decode it at runtime.
+
+**For setup instructions and pipeline YAML examples, see** [**VPN for Harness Cloud**](/docs/platform/references/private-network-connectivity/vpn-harness-cloud).
 
 ## Need help?
 
