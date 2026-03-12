@@ -262,6 +262,12 @@ Specify a Kubernetes service account that you want step containers to use when c
 - Your Build stage has steps that communicate with any external services using a service account other than the default. For more information, go to the Kubernetes documentation on [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
 - Your Kubernetes cluster connector inherits authentication credentials from the Delegate.
 
+:::warning IRSA with S3 caching on EKS
+
+If you use an AWS connector with IRSA for S3 caching (Save/Restore Cache to S3, Cache Intelligence, or Build Intelligence with S3 storage), you **must** set the **Service Account Name** to the IRSA-annotated ServiceAccount _and_ enable **Automount Service Account Token**. Cache operations run inside the build pod, not on the delegate, so the build pod itself needs to assume the IAM role. Without this configuration, cache steps fall back to the node's IAM role and fail with `AccessDenied`. For more details, go to [S3 cache AccessDenied with IRSA on EKS](/docs/continuous-integration/ci-articles-faqs/articles/s3-cache-irsa-access-denied).
+
+:::
+
 ### Automount Service Account Token
 
 By default, this option is selected and Kubernetes mounts a token for the Service Account when it creates a pod, which enables the pod to communicate with the Kubernetes API server. When this option is not selected, the service account token is not mounted.

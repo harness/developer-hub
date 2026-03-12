@@ -590,4 +590,5 @@ Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/cont
 * [How can I use an artifact in a different stage from where it was created?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
 * [How can I check if the cache was restored?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-check-if-the-cache-was-restored)
 * [Save Cache to S3 doesn't work with Windows platforms with cross-account roles.](/docs/continuous-integration/ci-articles-faqs/articles/s3-cache-windows-cross-account)
+* [S3 cache AccessDenied with IRSA on EKS.](/docs/continuous-integration/ci-articles-faqs/articles/s3-cache-irsa-access-denied)
 * [How can I share cache between different OS types (Linux/macOS)?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#how-can-i-share-cache-between-different-os-types-linuxmacos)
