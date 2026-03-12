@@ -35,7 +35,7 @@ We unified the source code for Splitio and Splitio-net-core packages in one repo
 Use NuGet in the command line or the Package Manager UI in Visual Studio.
 
 ```csharp title="NuGet"
-Install-Package Splitio -Version 7.12.0
+Install-Package Splitio -Version 7.13.0
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -595,7 +595,7 @@ First, import Splitio.Redis NuGet package into your project.
 Use NuGet in the command line or the Package Manager UI in Visual Studio.
 
 ```csharp title="NuGet"
-Install-Package Splitio.Redis -Version 7.12.0
+Install-Package Splitio.Redis -Version 7.13.0
 ```
 
 To initiate an SDK with support for Redis as consumer mode, use the following code snippet:
@@ -1143,8 +1143,59 @@ var splitFactory = new SplitFactory("apikey", configurations);
 var sdk = factory.Client();
 var treatment = sdk.GetTreatment("KEY","feature");
 ```
-
 For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
+## Advanced use cases
+
+This section describes advanced use cases and features provided by the SDK. 
+
+### Subscribe to events
+
+:::info Supported SDK Versions
+SDK events and event metadata are supported in the .NET SDK version 7.13.0 or later.
+:::
+
+You can listen for four different events from the SDK.
+
+* `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
+* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
+
+These events provide hooks to run custom logic whenever the SDK state changes.
+
+```net
+using Splitio.Domain;
+using Splitio.Services.Client.Classes;
+using Splitio.Services.Client.Interfaces;
+
+SplitFactory factory = new SplitFactory(apiKey, config);
+ISplitClient client = (SplitClient)factory.Client();
+
+client.SdkReady += SdkReadyCallback;
+client.SdkUpdate += SdkUpdateCallback;
+
+private static void SdkUpdateCallback(object sender, EventMetadata e)
+{
+    Console.WriteLine("SDK UPDATE EVENT: " + e.GetEventType());
+    foreach(var flag in e.GetNames())
+    {
+        Console.WriteLine(flag);
+    }
+}
+
+private static void SdkReadyCallback(object sender, EventMetadata e)
+{
+    Console.WriteLine("SDK READY EVENT");
+}
+
+```
+
+#### Include metadata
+
+`metadata` provides additional context for events:
+
+- `SDK_READY`: No metadata is included.
+- `SDK_UPDATE`: Includes the type (SdkEventType.FlagsUpdate or SdkEventType.SegmentsUpdate) and names (list of impacted flags; empty for segment-only updates).
+
 
 ## Troubleshooting 
 
