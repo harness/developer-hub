@@ -1178,6 +1178,12 @@ aside.theme-doc-sidebar-container > div {
   border-left: none;
 }
 
+/* Hide only the single "API Reference" list item (not a parent category). Direct child selector
+   so we don't hide the whole IaCM category when the link is nested inside it. */
+.theme-doc-sidebar-container .menu__list li:has(> .menu__link[href^="/api-reference?module="]) {
+  display: none;
+}
+
 /* ========== Dark Mode Sidebar ========== */
 html[data-theme='dark'] .theme-doc-sidebar-container {
   border-right: none;
@@ -1726,6 +1732,123 @@ html[data-theme='dark'] .navbar__search_kapa kbd {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+/* API Reference page - align with docs height from navbar */
+main:has([class*='apiRefPageWrapper']) {
+  margin-top: 0 !important;
+  padding-top: 0.5rem !important;
+}
+main:has([class*='apiRefPageWrapper']) > [class*='apiRefPageWrapper'] {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* API Reference sidebar - items transparent like Documentation sidebar (no boxes/borders) */
+[data-api-ref-sidebar] .menu__link,
+[data-api-ref-sidebar] .menu__list-item,
+[data-api-ref-sidebar] .menu__list-item-collapsible {
+  background: transparent;
+  border: none;
+}
+
+[data-api-ref-sidebar] .menu__list-item-collapsible:hover {
+  background: var(--gray-100);
+}
+
+/* Category rows - match .horizontal-bar: spacing, 14px, 700, and colors */
+[data-api-ref-sidebar] .menu__list-item:has(> .menu__list-item-collapsible) {
+  margin-top: 15px;
+}
+
+[data-api-ref-sidebar] .menu__list-item:has(> .menu__list-item-collapsible):first-child {
+  margin-top: 0;
+}
+
+[data-api-ref-sidebar] button.menu__link.menu__link--sublist {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  border-left: 3px solid transparent;
+  color: var(--gray-900);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: var(--harness-font-family) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: normal;
+  line-height: 1.4;
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+  text-align: left;
+  width: 100%;
+}
+
+[data-api-ref-sidebar] button.menu__link.menu__link--sublist:hover {
+  background: var(--gray-100);
+}
+
+/* Toggle arrow on the right */
+[data-api-ref-sidebar] .menu__link--sublist-caret::after {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+html[data-theme='dark'] [data-api-ref-sidebar] button.menu__link.menu__link--sublist {
+  color: #ffffff;
+  font-weight: 700;
+  opacity: 1;
+}
+
+html[data-theme='dark'] [data-api-ref-sidebar] button.menu__link.menu__link--sublist:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* API Reference sidebar module name block - same icons as docs */
+[data-api-ref-sidebar] .moduleNameBlock.sidebar-cr::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_code.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+[data-api-ref-sidebar] .moduleNameBlock.sidebar-platform::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_platform.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+[data-api-ref-sidebar] .moduleNameBlock.sidebar-ci::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon_ci.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+[data-api-ref-sidebar] .moduleNameBlock.sidebar-iacm::before {
+  content: ' ';
+  display: inline-block;
+  flex-shrink: 0;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/iacm-icon.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .sidebar-ff > div > a::before,
 .sidebar-ff > a::before {
   content: ' ';
@@ -2397,7 +2520,11 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   --nav-icon: url('/img/icon_idp.svg');
 }
 .navbar .dropdown__link[href*='/docs/infrastructure-as-code-management'] {
-  --nav-icon: url('/img/icon_iacm.svg');
+  --nav-icon: url('/img/iacm-icon.svg');
+}
+/* API Reference dropdown item (same icon as docs) */
+.navbar .dropdown__link[href*='api-reference'][href*='infra-as-code-management'] {
+  --nav-icon: url('/img/iacm-icon.svg');
 }
 .navbar .dropdown__link[href*='/docs/database-devops'] {
   --nav-icon: url('/img/icon_dbdevops.svg');

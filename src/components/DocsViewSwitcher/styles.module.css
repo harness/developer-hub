@@ -1,0 +1,77 @@
+/* Same as API Reference viewSwitcher - animated pill switch (thumb on left when Documentation active) */
+.viewSwitcher {
+  position: relative;
+  display: flex;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 4px;
+  background: var(--gray-100);
+  border-radius: 8px;
+  gap: 0;
+}
+
+.viewSwitcherThumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 6px);
+  height: calc(100% - 8px);
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  pointer-events: none;
+  /* On Documentation page the thumb is on the left (first option) */
+  transform: translateX(0);
+}
+
+.viewSwitcherLink,
+.viewSwitcherActive {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  padding: 8px 12px;
+  font-family: var(--harness-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.viewSwitcherLink {
+  color: var(--gray-700);
+}
+
+.viewSwitcherLink:hover {
+  color: var(--gray-800);
+}
+
+.viewSwitcherActive {
+  font-weight: 600;
+  color: #39abe4;
+}
+
+/* Dark mode */
+html[data-theme='dark'] .viewSwitcher {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme='dark'] .viewSwitcherThumb {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme='dark'] .viewSwitcherLink {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme='dark'] .viewSwitcherLink:hover {
+  color: #ffffff;
+}
+
+html[data-theme='dark'] .viewSwitcherActive {
+  color: #b8e3f5;
+}

@@ -455,6 +455,12 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         {
+          type: "link",
+          label: "API Reference",
+          href: "/api-reference?module=code-repository",
+          className: "horizontal-bar",
+        },
+        {
           type: "html",
           value: "New to Harness Code?",
           className: "horizontal-bar",
@@ -1552,6 +1558,12 @@ const sidebars: SidebarsConfig = {
       },
       collapsed: true,
       items: [
+        {
+          type: 'link',
+          label: 'API Reference',
+          href: '/api-reference?module=infra-as-code-management',
+          className: 'horizontal-bar',
+        },
         {
           type: 'html',
           value: 'New to IaCM?',

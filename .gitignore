@@ -10,6 +10,7 @@
 .docusaurus
 .cache-loader
 /release-notes/generated/
+/static/api-specs/
 
 # Misc
 .DS_Store
