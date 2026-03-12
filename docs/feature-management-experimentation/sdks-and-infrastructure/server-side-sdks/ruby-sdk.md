@@ -26,14 +26,14 @@ Older SDK versions will return the control treatment for flags using rule-based 
 <TabItem value="Ruby">
 
 ```ruby
-gem install splitclient-rb -v '~> 8.10.1'
+gem install splitclient-rb -v '~> 8.11.0'
 ```
 
 </TabItem>
 <TabItem value="JRuby">
 
 ```ruby
-gem install splitclient-rb -v '~> 8.10.1'
+gem install splitclient-rb -v '~> 8.11.0'
 ```
 
 </TabItem>
@@ -678,6 +678,50 @@ treatment = split_client.get_treatment_with_config("ruby", "flag_1")
 ```
 
 For more information, see [Fallback treatments](/docs/feature-management-experimentation/feature-management/setup/fallback-treatment/).
+
+# Advanced use cases
+
+This section describes advanced use cases and features provided by the SDK. 
+
+### Subscribe to events
+
+:::info Supported SDK Versions
+SDK events and event metadata are supported in the Ruby SDK version 8.11.0 or later. 
+:::
+
+You can listen for four different events from the SDK.
+
+* `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
+* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
+
+These events provide hooks to run custom logic whenever the SDK state changes.
+
+```ruby
+require 'splitclient-rb'
+
+def ready_callback(metadata)
+    puts "SDK is ready."
+end
+
+def update_callback(metadata)
+    puts "UPDATE CALLBACK"
+    puts metadata.type
+    puts metadata.names
+end
+
+split_factory = SplitIoClient::SplitFactoryBuilder.build('API KEY', {block_until_ready: 100})
+
+split_client = split_factory.client
+split_client.register(SplitIoClient::Engine::Models::SdkEvent::SDK_READY, method(:ready_callback))
+split_client.register(SplitIoClient::Engine::Models::SdkEvent::SDK_UPDATE, method(:update_callback))
+```
+
+#### Include metadata
+
+`metadata` provides additional context for events:
+
+- `SDK_READY`: No metadata is included.
+- `SDK_UPDATE`: Includes the type (SdkEventType.FLAG_UPDATE or SdkEventType.SEGMENTS_UPDATE) and names (list of impacted flags; empty for segment-only updates).
 
 ## Troubleshooting
 
