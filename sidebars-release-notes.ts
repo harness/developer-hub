@@ -42,6 +42,7 @@ const sidebars: SidebarsConfig = {
     "feature-flags",
     "chaos-engineering",
     "ai-test-automation",
+    "ai-sre",
      {
           type: "html",
           value: "AI for Security & Compliance",
