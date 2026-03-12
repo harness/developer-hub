@@ -9,7 +9,7 @@ export interface OpenApiOperation {
   summary?: string;
   description?: string;
   parameters?: OpenApiParameter[];
-  requestBody?: { content?: Record<string, { schema?: unknown }> };
+  requestBody?: { content?: Record<string, { schema?: unknown }>; description?: string };
   responses?: Record<string, { description?: string; content?: Record<string, { schema?: unknown }> }>;
   tags?: string[];
 }
@@ -40,6 +40,10 @@ export interface OpenApiSpec {
   servers?: Array<{ url: string; description?: string }>;
   tags?: Array<{ name?: string; description?: string }>;
   components?: {
+    parameters?: Record<string, OpenApiParameter>;
+    requestBodies?: Record<string, { content?: Record<string, { schema?: unknown }>; description?: string }>;
+    responses?: Record<string, { description?: string; content?: Record<string, unknown> }>;
+    schemas?: Record<string, unknown>;
     securitySchemes?: Record<string, unknown>;
   };
   security?: Array<Record<string, string[]>>;

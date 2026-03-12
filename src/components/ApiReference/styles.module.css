@@ -5,12 +5,12 @@
   margin-bottom: 2rem;
 }
 
-/* API Reference page wrapper - same width/span as docs, smooth fade-in on view switch */
+/* API Reference page wrapper - same width/span as docs, smooth fade-in; tighter padding for wider body */
 .apiRefPageWrapper {
   width: 100%;
   max-width: 100%;
-  padding-left: var(--doc-layout-outer-spacing, 60px);
-  padding-right: var(--doc-layout-outer-spacing, 60px);
+  padding-left: var(--doc-layout-outer-spacing, 40px);
+  padding-right: var(--doc-layout-outer-spacing, 40px);
   animation: apiRefFadeIn 0.35s ease-out;
 }
 
@@ -38,6 +38,7 @@
   flex-shrink: 0;
   height: calc(100vh - var(--ifm-navbar-height, 60px));
   overflow-y: auto;
+  overflow-x: hidden;
   position: sticky;
   top: var(--ifm-navbar-height, 60px);
   border-right: none;
@@ -45,6 +46,11 @@
   display: flex;
   flex-direction: column;
   padding: 0 8px 12px 8px;
+  scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebarSticky {
@@ -343,12 +349,18 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   min-width: 0;
   height: calc(100vh - var(--ifm-navbar-height, 60px));
   overflow-y: auto;
+  overflow-x: hidden;
   scroll-padding-top: calc(var(--ifm-navbar-height, 60px) + 20px);
-  padding: 1.5rem var(--doc-layout-inner-gap, 32px);
+  padding: 1.5rem var(--doc-layout-inner-gap, 24px);
   max-width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0;
+  scrollbar-width: none;
+}
+
+.mainScroll::-webkit-scrollbar {
+  display: none;
 }
 
 /* Category heading - title/h1 style */
@@ -441,6 +453,183 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   margin: 0 0 0.5rem 0;
 }
 
+.specBodyParagraph {
+  margin: 0 0 0.5rem 0;
+}
+
+.specBodyParagraph:last-child {
+  margin-bottom: 0;
+}
+
+.specBodyList {
+  margin: 0.25rem 0 0.5rem 1.25rem;
+  padding-left: 0.25rem;
+}
+
+.specBodyList li {
+  margin-bottom: 0.25rem;
+}
+
+.inlineCode {
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  background: var(--ifm-code-background);
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Response list: keep code and description on the same line */
+.responseDescription {
+  display: inline;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.responseDescription p,
+.responseDescription ul,
+.responseDescription ol {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.responseDescription ul,
+.responseDescription ol {
+  list-style: none;
+}
+
+.responseDescription li {
+  display: inline;
+}
+
+.responseDescription li + li::before {
+  content: ', ';
+}
+
+/* Collapsible section in main content (e.g. Optional parameters, Request body schema) */
+.specSectionCollapse {
+  margin-top: 0.5rem;
+}
+
+.specSectionCollapseTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ifm-color-content);
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.specSectionCollapseTrigger:hover {
+  background: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-content);
+}
+
+.specSectionCollapseCaret {
+  font-size: 0.75rem;
+  opacity: 1;
+  margin-left: 0.5rem;
+}
+
+.specSectionCollapseContent {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+html[data-theme='dark'] .specSectionCollapseTrigger {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-theme='dark'] .specSectionCollapseTrigger:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Paragraph-style parameters: grouped by Path, Query, Header, Request body */
+.paramParagraphRoot {
+  font-size: 0.9375rem;
+}
+
+.paramGroup {
+  margin-bottom: 1.25rem;
+}
+
+.paramGroupTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.paramBlock {
+  margin-bottom: 1rem;
+}
+
+.paramBlock:last-child {
+  margin-bottom: 0;
+}
+
+.paramDefLine {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin: 0 0 0.35rem 0;
+}
+
+.paramName {
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 600;
+  padding: 0.1em 0.35em;
+  background: var(--ifm-code-background);
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.paramType {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  background: var(--ifm-code-background);
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  margin-left: 0.25rem;
+}
+
+.paramRequired {
+  color: var(--ifm-color-danger);
+  font-weight: 500;
+  margin-left: 0.35rem;
+}
+
+.paramOptional {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.9em;
+  margin-left: 0.35rem;
+}
+
+.paramDescription {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0 0 0 0.15rem;
+}
+
+.paramDescription p {
+  margin: 0 0 0.35rem 0;
+}
+
+.paramDescription p:last-child {
+  margin-bottom: 0;
+}
+
 .paramsTable {
   width: 100%;
   border-collapse: collapse;
@@ -458,10 +647,10 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   font-weight: 600;
 }
 
-/* Try It panel wrapper - fixed width in each endpoint row, top-aligned */
+/* Try It panel wrapper - fixed width in each endpoint row, top-aligned; narrower to give main body more space */
 .tryItPanelWrapper {
-  width: 440px;
-  min-width: 440px;
+  width: 380px;
+  min-width: 380px;
   flex-shrink: 0;
 }
 
@@ -524,8 +713,14 @@ html[data-theme='dark'] .endpointButtonActive:hover {
 
 .tryItCodeContent {
   overflow: auto;
+  overflow-x: hidden;
   width: 100%;
   min-width: 0;
+  scrollbar-width: none;
+}
+
+.tryItCodeContent::-webkit-scrollbar {
+  display: none;
 }
 
 .tryItCodePre {
@@ -541,6 +736,11 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   border-radius: var(--ifm-global-radius);
   max-height: 180px;
   overflow: auto;
+  scrollbar-width: none;
+}
+
+.tryItCodePre::-webkit-scrollbar {
+  display: none;
 }
 
 .tryItForm {
@@ -549,6 +749,12 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   flex-direction: column;
   gap: 1rem;
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.tryItForm::-webkit-scrollbar {
+  display: none;
 }
 
 .tryItField {
@@ -608,6 +814,14 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   margin-top: 0.5rem;
 }
 
+.tryItOptionalSectionLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  margin-bottom: -0.25rem;
+  color: var(--ifm-color-content-secondary);
+}
+
 .tryItRequestBody {
   margin-top: 0.25rem;
   padding: 0.5rem 0.75rem;
@@ -640,7 +854,13 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   flex: 1;
   padding: 1rem;
   overflow: auto;
+  overflow-x: hidden;
   border-top: 1px solid var(--ifm-color-emphasis-200);
+  scrollbar-width: none;
+}
+
+.tryItResponse::-webkit-scrollbar {
+  display: none;
 }
 
 .tryItResponseTitle {
@@ -662,6 +882,11 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   border-radius: var(--ifm-global-radius);
   max-height: 200px;
   overflow: auto;
+  scrollbar-width: none;
+}
+
+.tryItResponsePre::-webkit-scrollbar {
+  display: none;
 }
 
 .tryItResponsePreSample {

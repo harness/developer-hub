@@ -1,7 +1,292 @@
-import type { OpenApiSpec, OpenApiPathItem, HttpMethod } from './types';
+import type { OpenApiSpec, OpenApiPathItem, OpenApiParameter, HttpMethod } from './types';
 import type { EndpointEntry } from './types';
 
+/** Resolve a $ref like "#/components/parameters/X" against the spec. Returns undefined if ref is invalid. */
+export function resolveRef(spec: OpenApiSpec, ref: string): unknown {
+  if (!ref || typeof ref !== 'string' || !ref.startsWith('#/')) return undefined;
+  const parts = ref.slice(2).split('/').filter(Boolean);
+  let current: unknown = spec;
+  for (const part of parts) {
+    if (current == null || typeof current !== 'object') return undefined;
+    current = (current as Record<string, unknown>)[part];
+  }
+  return current;
+}
+
+/** Resolve parameters array: replace any { $ref } item with the resolved component. */
+export function resolveParameters(spec: OpenApiSpec, parameters: OpenApiParameter[] | undefined): OpenApiParameter[] {
+  if (!parameters?.length) return [];
+  return parameters.map((p) => {
+    const ref = (p as { $ref?: string }).$ref;
+    if (ref) {
+      const resolved = resolveRef(spec, ref) as OpenApiParameter | undefined;
+      return resolved ?? p;
+    }
+    return p;
+  });
+}
+
+/** Resolve requestBody if it is a $ref; return the resolved body object (content, description). */
+export function resolveRequestBody(
+  spec: OpenApiSpec,
+  requestBody: { $ref?: string; content?: Record<string, { schema?: unknown }>; description?: string } | undefined
+): { content?: Record<string, { schema?: unknown }>; description?: string } | undefined {
+  if (!requestBody) return undefined;
+  const ref = requestBody.$ref;
+  if (ref) {
+    const resolved = resolveRef(spec, ref) as { content?: Record<string, { schema?: unknown }>; description?: string } | undefined;
+    return resolved;
+  }
+  return requestBody;
+}
+
+/** Resolve a response object if it is a $ref (e.g. #/components/responses/X). */
+export function resolveResponse(
+  spec: OpenApiSpec,
+  response: { $ref?: string; description?: string; content?: Record<string, unknown> } | undefined
+): { description?: string; content?: Record<string, unknown> } | undefined {
+  if (!response) return undefined;
+  const ref = response.$ref;
+  if (ref) {
+    const resolved = resolveRef(spec, ref) as { description?: string; content?: Record<string, unknown> } | undefined;
+    return resolved;
+  }
+  return response;
+}
+
+type SchemaLike = Record<string, unknown> & {
+  $ref?: string;
+  type?: string;
+  properties?: Record<string, SchemaLike>;
+  items?: SchemaLike;
+  enum?: unknown[];
+  example?: unknown;
+  default?: unknown;
+};
+
+/** Resolve a schema (follow $ref). Returns the same object if no $ref. */
+function resolveSchema(spec: OpenApiSpec, schema: SchemaLike | undefined, seen = new Set<string>()): SchemaLike | undefined {
+  if (!schema || typeof schema !== 'object') return schema;
+  const ref = schema.$ref;
+  if (ref) {
+    if (seen.has(ref)) return undefined;
+    seen.add(ref);
+    const resolved = resolveRef(spec, ref) as SchemaLike | undefined;
+    const out = resolved ? resolveSchema(spec, resolved, seen) : undefined;
+    seen.delete(ref);
+    return out;
+  }
+  return schema;
+}
+
+/** Resolve a schema for display (e.g. request body schema). Public wrapper around resolveSchema. */
+export function getResolvedSchema(
+  spec: OpenApiSpec,
+  schema: Record<string, unknown> | undefined
+): Record<string, unknown> | undefined {
+  return resolveSchema(spec, schema as SchemaLike) as Record<string, unknown> | undefined;
+}
+
+/** Human-readable type string for a resolved schema (for request/response body docs). */
+export function getSchemaTypeDisplay(schema: Record<string, unknown> | undefined): string {
+  if (!schema || typeof schema !== 'object') return '—';
+  const ref = schema.$ref as string | undefined;
+  if (ref) return ref.split('/').pop() ?? 'object';
+  const type = schema.type as string | undefined;
+  if (type === 'array') {
+    const items = schema.items as Record<string, unknown> | undefined;
+    const itemRef = items?.$ref as string | undefined;
+    if (itemRef) return `array of ${itemRef.split('/').pop() ?? 'object'}`;
+    return (items?.type as string) ? `array of ${items.type}` : 'array';
+  }
+  if (type === 'object') return 'object';
+  return type ?? '—';
+}
+
+/** Build a sample JSON value from an OpenAPI schema (for sample responses). Avoids null; uses empty object/string/array so responses are always populated. */
+function sampleFromSchema(spec: OpenApiSpec, schema: SchemaLike | undefined, seen = new Set<string>()): unknown {
+  if (!schema || typeof schema !== 'object') return {};
+  const ref = schema.$ref;
+  if (ref) {
+    if (seen.has(ref)) return {};
+    seen.add(ref);
+    const resolved = resolveRef(spec, ref) as SchemaLike | undefined;
+    const out = resolved ? sampleFromSchema(spec, resolved, seen) : {};
+    seen.delete(ref);
+    return out;
+  }
+  if (schema.example !== undefined) return schema.example;
+  if (schema.default !== undefined) return schema.default;
+  if (Array.isArray(schema.enum) && schema.enum.length > 0) return schema.enum[0];
+  const type = schema.type as string | undefined;
+  if (type === 'object' && schema.properties) {
+    const obj: Record<string, unknown> = {};
+    for (const [key, propSchema] of Object.entries(schema.properties as Record<string, SchemaLike>)) {
+      const value = sampleFromSchema(spec, propSchema, seen);
+      obj[key] = value === null ? {} : value;
+    }
+    return obj;
+  }
+  if (type === 'object') return {};
+  if (type === 'array') {
+    const items = schema.items as SchemaLike | undefined;
+    if (items && typeof items === 'object') {
+      const resolvedItems = resolveSchema(spec, items, seen) ?? items;
+      const itemType = (resolvedItems as SchemaLike).type;
+      const hasProperties = !!(resolvedItems as SchemaLike).properties;
+      if (itemType === 'object' || hasProperties) {
+        const item = sampleFromSchema(spec, resolvedItems as SchemaLike, seen);
+        return [item === null ? {} : item];
+      }
+    }
+    return ['string'];
+  }
+  switch (type) {
+    case 'string':
+      return '';
+    case 'number':
+    case 'integer':
+      return 0;
+    case 'boolean':
+      return false;
+    case 'null':
+      return null;
+    default:
+      return {};
+  }
+}
+
+/**
+ * Get a sample response string from an operation's response body only.
+ * Uses operation.responses (e.g. 200/201/204): response example if present,
+ * otherwise builds a sample from the response schema (resolving $refs).
+ * Never uses request body.
+ */
+export function getSampleResponseFromOperation(
+  spec: OpenApiSpec,
+  operation: { responses?: Record<string, { $ref?: string; content?: Record<string, { schema?: unknown; example?: unknown; examples?: Record<string, { value?: unknown }> }> }> } | undefined
+): string {
+  if (!operation?.responses) return '{}';
+  const statuses = ['200', '201', '204'];
+  for (const status of statuses) {
+    const res = operation.responses[status];
+    if (!res) continue;
+    const resolved = resolveResponse(spec, res as { $ref?: string; description?: string; content?: Record<string, unknown> }) as {
+      content?: Record<string, { schema?: SchemaLike; example?: unknown; examples?: Record<string, { value?: unknown }> }>;
+    } | undefined;
+    if (!resolved?.content) continue;
+    const json = resolved.content['application/json'];
+    if (!json) continue;
+    if (json.example != null) {
+      return typeof json.example === 'string'
+        ? json.example
+        : JSON.stringify(json.example, null, 2);
+    }
+    if (json.examples && typeof json.examples === 'object') {
+      const first = Object.values(json.examples)[0] as { value?: unknown } | undefined;
+      if (first?.value != null) {
+        return typeof first.value === 'string'
+          ? first.value
+          : JSON.stringify(first.value, null, 2);
+      }
+    }
+    const rawSchema = json.schema as SchemaLike | undefined;
+    if (rawSchema) {
+      const schema = resolveSchema(spec, rawSchema);
+      const sample = sampleFromSchema(spec, schema ?? rawSchema);
+      const cleaned = sample === null ? {} : sample;
+      return JSON.stringify(cleaned, null, 2);
+    }
+  }
+  return '{}';
+}
+
+/**
+ * Get a sample request body string from an operation: builds from requestBody schema
+ * (resolving $refs). Uses same conventions as sample response (e.g. ["string"] for arrays of primitives).
+ */
+export function getSampleRequestBodyFromOperation(
+  spec: OpenApiSpec,
+  operation: { requestBody?: { $ref?: string; content?: Record<string, { schema?: unknown }> } } | undefined
+): string {
+  if (!operation?.requestBody) return '{}';
+  const resolved = resolveRequestBody(spec, operation.requestBody);
+  if (!resolved?.content) return '{}';
+  const json = resolved.content['application/json'];
+  const rawSchema = json?.schema as SchemaLike | undefined;
+  if (!rawSchema) return '{}';
+  const schema = resolveSchema(spec, rawSchema);
+  const sample = sampleFromSchema(spec, schema ?? rawSchema);
+  return JSON.stringify(sample, null, 2);
+}
+
+/** Flatten schema properties for request body param list (name, type, required, description, depth). */
+function flattenSchemaProperties(
+  spec: OpenApiSpec,
+  schema: Record<string, unknown> | undefined,
+  requiredList: string[],
+  depth: number
+): Array<{ name: string; typeDisplay: string; required: boolean; description: string; depth: number }> {
+  const resolved = getResolvedSchema(spec, schema);
+  if (!resolved) return [];
+  const properties = resolved.properties as Record<string, Record<string, unknown>> | undefined;
+  const required = (resolved.required as string[] | undefined) ?? requiredList;
+  if (!properties) return [];
+  const rows: Array<{ name: string; typeDisplay: string; required: boolean; description: string; depth: number }> = [];
+  for (const [name, propSchema] of Object.entries(properties)) {
+    const resolvedProp = getResolvedSchema(spec, propSchema);
+    const typeDisplay = getSchemaTypeDisplay(resolvedProp ?? propSchema);
+    const isRequired = Array.isArray(required) && required.includes(name);
+    const description = (resolvedProp?.description ?? propSchema?.description ?? '') as string;
+    rows.push({ name, typeDisplay, required: isRequired, description, depth });
+    const nestedProps = resolvedProp?.properties;
+    if (nestedProps && typeof nestedProps === 'object' && Object.keys(nestedProps).length > 0) {
+      const nestedRequired = (resolvedProp?.required as string[] | undefined) ?? [];
+      rows.push(...flattenSchemaProperties(spec, resolvedProp as Record<string, unknown>, nestedRequired, depth + 1));
+    }
+  }
+  return rows;
+}
+
+/** Request body param row for Try It panel (optional params). */
+export interface RequestBodyParamRow {
+  name: string;
+  required: boolean;
+  description?: string;
+  type?: string;
+  depth?: number;
+}
+
+/**
+ * Get all request body parameters from an operation (flattened from schema).
+ * Used by Try It panel to show optional request body fields.
+ */
+export function getRequestBodyParamRows(
+  spec: OpenApiSpec,
+  operation: { requestBody?: { $ref?: string; content?: Record<string, { schema?: unknown }> } } | undefined
+): RequestBodyParamRow[] {
+  if (!spec || !operation?.requestBody) return [];
+  const resolved = resolveRequestBody(spec, operation.requestBody);
+  if (!resolved?.content) return [];
+  const bodySchema = resolved.content['application/json']?.schema as Record<string, unknown> | undefined;
+  if (!bodySchema) return [];
+  const resolvedSchema = getResolvedSchema(spec, bodySchema) ?? bodySchema;
+  const requiredList = (resolvedSchema.required as string[] | undefined) ?? [];
+  return flattenSchemaProperties(spec, resolvedSchema as Record<string, unknown>, requiredList, 0).map((r) => ({
+    name: r.name,
+    required: r.required,
+    description: r.description,
+    type: r.typeDisplay,
+    depth: r.depth,
+  }));
+}
+
 const METHODS: HttpMethod[] = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options'];
+
+/** Skip operations marked as internal (x-internal: true) so they are not shown on the public site. */
+function isInternalOperation(op: unknown): boolean {
+  return (op as Record<string, unknown>)?.['x-internal'] === true;
+}
 
 export function getEndpointsFromSpec(spec: OpenApiSpec): EndpointEntry[] {
   const paths = spec.paths ?? {};
@@ -12,7 +297,7 @@ export function getEndpointsFromSpec(spec: OpenApiSpec): EndpointEntry[] {
     const item = pathItem as OpenApiPathItem;
     for (const method of METHODS) {
       const op = item[method];
-      if (op) {
+      if (op && !isInternalOperation(op)) {
         entries.push({
           path,
           method,
@@ -85,10 +370,24 @@ export function getEndpointByFragment(
   return null;
 }
 
+/**
+ * Normalize endpoint/sidebar labels: insert space before capitals (ListWebhooks → List Webhooks),
+ * collapse multiple spaces, trim.
+ */
+export function normalizeEndpointLabel(label: string): string {
+  if (!label || !label.trim()) return label;
+  return label
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1 $2') // HTTPResponse → HTTP Response
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export function endpointLabel(entry: EndpointEntry): string {
   const summary = entry.operation?.summary;
-  if (summary) return summary;
-  return `${entry.method.toUpperCase()} ${entry.path}`;
+  const raw = summary ? summary : `${entry.method.toUpperCase()} ${entry.path}`;
+  return normalizeEndpointLabel(raw);
 }
 
 const METHOD_STYLE_KEYS: Record<string, string> = {

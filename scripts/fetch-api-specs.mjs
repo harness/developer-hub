@@ -3,7 +3,8 @@
  * static/api-specs/<moduleId>.json so the app can load specs at runtime without
  * hitting remote URLs. Run on yarn start and production build.
  *
- * Keep module list in sync with src/components/ApiReference/modulesConfig.ts
+ * Keep MODULES in sync with src/components/ApiReference/modules/<module-id>/config.ts
+ * (each module’s specUrl and id).
  */
 import fs from 'fs-extra';
 import path from 'path';
@@ -19,16 +20,13 @@ const OUT_DIR = path.join(ROOT, 'static', 'api-specs');
 const MODULES = [
   { id: 'code-repository', specUrl: 'https://app.harness.io/prod1/code/openapi.yaml' },
   { id: 'infra-as-code-management', specUrl: 'https://app.harness.io/prod1/iacm/openapi3.yaml' },
+  { id: 'artifact-registry', specUrl: 'https://app.harness.io/prod1/har/swagger.json' },
 ];
 
 async function fetchSpec(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
-  const contentType = res.headers.get('content-type') ?? '';
   const text = await res.text();
-  if (contentType.includes('application/json')) {
-    return JSON.parse(text);
-  }
   try {
     return JSON.parse(text);
   } catch {

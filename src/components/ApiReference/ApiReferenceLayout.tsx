@@ -54,8 +54,8 @@ export default function ApiReferenceLayout({
     );
   }, [spec, byCategory, endpoints, allEndpoints]);
 
-  const specBaseUrl = getSpecBaseUrl(spec);
   const moduleConfig = getApiReferenceModule(moduleId);
+  const specBaseUrl = moduleConfig?.baseUrl ?? getSpecBaseUrl(spec);
   const pathPrefix = moduleConfig?.pathPrefix ?? '';
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
@@ -221,10 +221,11 @@ export default function ApiReferenceLayout({
                         endpoint={entry}
                         baseUrl={specBaseUrl}
                         pathPrefix={pathPrefix}
+                        spec={spec}
                       />
                     </div>
                     <div className={styles.tryItPanelWrapper}>
-                      <TryItPanel endpoint={entry} specBaseUrl={specBaseUrl} pathPrefix={pathPrefix} />
+                      <TryItPanel endpoint={entry} spec={spec} specBaseUrl={specBaseUrl} pathPrefix={pathPrefix} />
                     </div>
                   </div>
                 ))}

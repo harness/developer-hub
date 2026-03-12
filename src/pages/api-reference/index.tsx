@@ -1,15 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import { useLocation } from 'react-router-dom';
-import yaml from 'js-yaml';
 import {
   getApiReferenceModule,
   getApiReferenceModuleIds,
   getDocsBasePathForModule,
+  getSpecParser,
 } from '@site/src/components/ApiReference/modulesConfig';
-import ApiReferenceLayout from '@site/src/components/ApiReference/ApiReferenceLayout';
+import { parseSpecByFormat } from '@site/src/components/ApiReference/parsers';
+import { parseJsonInWorker } from '@site/src/components/ApiReference/parsers/parseJsonInWorker';
 import type { OpenApiSpec } from '@site/src/components/ApiReference/types';
 import styles from '@site/src/components/ApiReference/styles.module.css';
+
+const ApiReferenceLayout = React.lazy(
+  () => import('@site/src/components/ApiReference/ApiReferenceLayout')
+);
+
+/** In-memory cache: moduleId -> parsed spec. Avoids re-fetch/re-parse when switching back to a module. */
+const specCache = new Map<string, OpenApiSpec>();
 
 const DOCS_BASE = '/docs';
 
@@ -42,38 +51,39 @@ export default function ApiReferencePage(): React.ReactElement {
       setError(null);
       return;
     }
+
+    const cached = specCache.get(moduleId);
+    if (cached) {
+      setSpec(cached);
+      setError(null);
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
     const savedSpecUrl = `/api-specs/${moduleId}.json`;
-
-    function parseResponse(res: Response, text: string): OpenApiSpec {
-      const contentType = res.headers.get('content-type') ?? '';
-      if (contentType.includes('application/json')) {
-        return JSON.parse(text) as OpenApiSpec;
-      }
-      try {
-        return JSON.parse(text) as OpenApiSpec;
-      } catch {
-        return yaml.load(text) as OpenApiSpec;
-      }
-    }
+    const formatFromConfig = moduleConfig.specFormat ?? 'json';
 
     fetch(savedSpecUrl)
       .then((res) => {
-        if (res.ok) return res.text().then((text) => parseResponse(res, text));
-        if (res.status === 404) return fetch(moduleConfig.specUrl);
+        if (res.ok) {
+          return res.text().then((text) => parseJsonInWorker(text));
+        }
+        if (res.status === 404) {
+          return fetch(moduleConfig.specUrl).then((remoteRes) => {
+            if (!remoteRes.ok) throw new Error(`Failed to load spec: ${remoteRes.status}`);
+            return remoteRes.text().then((text) => parseSpecByFormat(text, formatFromConfig));
+          });
+        }
         throw new Error(`Failed to load spec: ${res.status}`);
       })
-      .then((dataOrRes) => {
-        if (dataOrRes instanceof Response) {
-          if (!dataOrRes.ok) throw new Error(`Failed to load spec: ${dataOrRes.status}`);
-          return dataOrRes.text().then((text) => parseResponse(dataOrRes, text));
-        }
-        return dataOrRes as OpenApiSpec;
-      })
       .then((data) => {
-        setSpec(data);
+        const moduleParser = moduleId ? getSpecParser(moduleId) : null;
+        const normalized = moduleParser ? moduleParser(data) : data;
+        specCache.set(moduleId, normalized);
+        setSpec(normalized);
         setError(null);
       })
       .catch((err) => {
@@ -90,8 +100,16 @@ export default function ApiReferencePage(): React.ReactElement {
     ? `API reference for ${moduleConfig.name}, powered by the module's OpenAPI spec.`
     : 'Select a module to view its API reference.';
 
+  const preloadModuleId = moduleConfig ? moduleId : moduleIds[0] ?? null;
+  const preloadHref = preloadModuleId ? `/api-specs/${preloadModuleId}.json` : null;
+
   return (
     <Layout title={title} description={description}>
+      {preloadHref && (
+        <Head>
+          <link rel="preload" href={preloadHref} as="fetch" crossOrigin="anonymous" />
+        </Head>
+      )}
       <main className={spec ? styles.apiRefMain : 'container margin-vert--lg'}>
         {!moduleId ? (
           <div className={styles.emptyState}>
@@ -126,12 +144,14 @@ export default function ApiReferencePage(): React.ReactElement {
           </div>
         ) : spec ? (
           <div className={styles.apiRefPageWrapper}>
-            <ApiReferenceLayout
-              spec={spec}
-              moduleName={moduleConfig.name}
-              moduleId={moduleId}
-              docsBasePath={getDocsBasePath(moduleId)}
-            />
+            <Suspense fallback={<div className={styles.loadingState}>Loading…</div>}>
+              <ApiReferenceLayout
+                spec={spec}
+                moduleName={moduleConfig.name}
+                moduleId={moduleId}
+                docsBasePath={getDocsBasePath(moduleId)}
+              />
+            </Suspense>
           </div>
         ) : null}
       </main>

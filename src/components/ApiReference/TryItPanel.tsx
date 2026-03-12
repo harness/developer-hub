@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import type { EndpointEntry, OpenApiParameter } from './types';
-import { endpointLabel, endpointSlug } from './utils';
+import React, { useState, useMemo, useEffect } from 'react';
+import type { EndpointEntry, OpenApiParameter, OpenApiSpec } from './types';
+import { endpointLabel, endpointSlug, resolveParameters, getSampleResponseFromOperation, getRequestBodyParamRows } from './utils';
 import styles from './styles.module.css';
 
 interface TryItPanelProps {
@@ -9,12 +9,15 @@ interface TryItPanelProps {
   specBaseUrl: string;
   /** Optional path prefix (e.g. /iacm) inserted between base URL and spec path */
   pathPrefix?: string;
+  /** Full spec for resolving $ref (e.g. parameters) */
+  spec?: OpenApiSpec | null;
 }
 
-export default function TryItPanel({ endpoint, specBaseUrl, pathPrefix = '' }: TryItPanelProps): React.ReactElement {
+export default function TryItPanel({ endpoint, specBaseUrl, pathPrefix = '', spec }: TryItPanelProps): React.ReactElement {
   const [apiKey, setApiKey] = useState('');
   const [paramValues, setParamValues] = useState<Record<string, string>>({});
   const [requestBody, setRequestBody] = useState('{}');
+  const [optionalBodyParamValues, setOptionalBodyParamValues] = useState<Record<string, string>>({});
   const [response, setResponse] = useState<{ status?: number; body?: string; error?: string } | null>(null);
   const [requestBodyOpen, setRequestBodyOpen] = useState(false);
   const [optionalParamsOpen, setOptionalParamsOpen] = useState(false);
@@ -45,18 +48,46 @@ export default function TryItPanel({ endpoint, specBaseUrl, pathPrefix = '' }: T
   const slug = endpointSlug(endpoint);
 
   const { path, method, operation, pathItem } = endpoint;
-  const mergedParams = [
+  const rawParams = [
     ...(pathItem?.parameters ?? []),
     ...(operation?.parameters ?? []),
   ] as OpenApiParameter[];
+  const mergedParams = spec ? resolveParameters(spec, rawParams) : rawParams;
   const pathParams = mergedParams.filter((p) => p.in === 'path');
   const queryParams = mergedParams.filter((p) => p.in === 'query');
   const headerParams = mergedParams.filter((p) => p.in === 'header');
   const requiredParams = [...pathParams, ...queryParams, ...headerParams].filter((p) => p.required);
   const optionalParams = [...pathParams, ...queryParams, ...headerParams].filter((p) => !p.required);
+  const optionalBodyParams = useMemo(
+    () => (spec ? getRequestBodyParamRows(spec, operation).filter((r) => !r.required) : []),
+    [spec, operation]
+  );
+  const hasOptionalParams = optionalParams.length > 0 || optionalBodyParams.length > 0;
+
+  useEffect(() => {
+    setOptionalBodyParamValues({});
+  }, [path, method]);
 
   const handleParamChange = (name: string, value: string) => {
     setParamValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleOptionalBodyParamChange = (name: string, value: string) => {
+    setOptionalBodyParamValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const buildRequestBodyForRequest = (): string => {
+    let obj: Record<string, unknown> = {};
+    try {
+      const trimmed = requestBody.trim();
+      if (trimmed && trimmed !== '{}') obj = JSON.parse(trimmed) as Record<string, unknown>;
+    } catch {
+      obj = {};
+    }
+    Object.entries(optionalBodyParamValues).forEach(([key, value]) => {
+      if (value !== undefined && value !== '') obj[key] = value;
+    });
+    return JSON.stringify(obj);
   };
 
   const buildUrl = (): string => {
@@ -97,28 +128,20 @@ export default function TryItPanel({ endpoint, specBaseUrl, pathPrefix = '' }: T
       .join(' \\\n');
     let curl = `curl -X ${method.toUpperCase()} '${url}' \\\n${headerLines}`;
     if (['post', 'put', 'patch'].includes(method)) {
-      const escaped = requestBody.replace(/'/g, "'\\''");
-      curl += ` \\\n  -d '${escaped}'`;
+      const bodyStr = buildRequestBodyForRequest();
+      if (bodyStr && bodyStr !== '{}') {
+        const escaped = bodyStr.replace(/'/g, "'\\''");
+        curl += ` \\\n  -d '${escaped}'`;
+      }
     }
     return curl;
   };
 
-  const sampleResponse = useMemo((): string => {
-    const responses = operation?.responses;
-    if (!responses) return '{\n  "data": null\n}';
-    const statuses = ['200', '201', '204'];
-    for (const status of statuses) {
-      const res = responses[status];
-      if (!res?.content) continue;
-      const json = res.content['application/json'] as { example?: unknown } | undefined;
-      if (json?.example != null) {
-        return typeof json.example === 'string'
-          ? json.example
-          : JSON.stringify(json.example, null, 2);
-      }
-    }
-    return '{\n  "data": null\n}';
-  }, [operation?.responses]);
+  // Sample response is from the operation's response body (responses schema/example), not request body
+  const sampleResponse = useMemo(
+    (): string => (spec ? getSampleResponseFromOperation(spec, operation) : '{}'),
+    [spec, operation]
+  );
 
   return (
     <aside className={styles.tryItPanel}>
@@ -148,7 +171,7 @@ export default function TryItPanel({ endpoint, specBaseUrl, pathPrefix = '' }: T
           </div>
         ))}
 
-        {optionalParams.length > 0 && (
+        {hasOptionalParams && (
           <div className={styles.tryItField}>
             <button
               type="button"
@@ -164,7 +187,7 @@ export default function TryItPanel({ endpoint, specBaseUrl, pathPrefix = '' }: T
             {optionalParamsOpen && (
               <div className={styles.tryItOptionalFields}>
                 {optionalParams.map((p) => (
-                  <div key={p.name} className={styles.tryItField}>
+                  <div key={`param-${p.name}`} className={styles.tryItField}>
                     <label htmlFor={`param-${p.name}-${slug}`}>{p.name}</label>
                     <input
                       id={`param-${p.name}-${slug}`}
@@ -175,6 +198,25 @@ export default function TryItPanel({ endpoint, specBaseUrl, pathPrefix = '' }: T
                     />
                   </div>
                 ))}
+                {optionalBodyParams.length > 0 && (
+                  <>
+                    {optionalParams.length > 0 && (
+                      <div className={styles.tryItOptionalSectionLabel}>Request body</div>
+                    )}
+                    {optionalBodyParams.map((p) => (
+                      <div key={`body-${p.name}`} className={styles.tryItField}>
+                        <label htmlFor={`body-param-${p.name}-${slug}`}>{p.name}</label>
+                        <input
+                          id={`body-param-${p.name}-${slug}`}
+                          type="text"
+                          placeholder={p.description ?? p.name}
+                          value={optionalBodyParamValues[p.name] ?? ''}
+                          onChange={(e) => handleOptionalBodyParamChange(p.name, e.target.value)}
+                        />
+                      </div>
+                    ))}
+                  </>
+                )}
               </div>
             )}
           </div>
