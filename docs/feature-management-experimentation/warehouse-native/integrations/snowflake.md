@@ -26,7 +26,6 @@ Ensure that you have the following before getting started:
 
 - Access to your organization's Snowflake instance
 - A Snowflake role with appropriate read access to the database and schema containing experiment data, and write access to a results table
-- A private key and associated user configured for key-pair authentication
 - A designated results table where experiment results are stored in Snowflake
 
 ## Setup
@@ -40,7 +39,17 @@ Harness recommends the following best practices:
 
 To integrate Snowflake as a data warehouse for Warehouse Native Experimentation:
 
+1. From the Harness FME navigation menu, click **FME Settings** and click **View** on a project on the **Projects** page. Then, navigate to the **Data Source** tab.
 1. Select Snowflake as your data warehouse. In the **Data Sources** tab of your Harness FME project, select **Snowflake** from the list of supported data warehouses.
+
+   :::info Project experimentation type
+   A project uses a single experimentation type based on the metric source used.
+
+   When you add a data source to a project, the project’s experimentation type is set to `Warehouse Native`. All metrics in the project must then use Warehouse Native metric sources.
+
+   If a project instead uses metrics created from an [ingested event source](/docs/feature-management-experimentation/getting-started/overview/send-event-data/), the project’s experimentation type is set to `Cloud`.
+   :::
+
 1. Enter the following connection details:
 
    | Field | Description | Example |
@@ -57,15 +66,19 @@ To integrate Snowflake as a data warehouse for Warehouse Native Experimentation:
    Harness FME respects Snowflake's built-in [role-based access controls](https://docs.snowflake.com/en/user-guide/security-access-control-privileges). The data source connection only has access to objects allowed for the specified role.
    :::
   
-1. Provide authentication credentials. Harness FME supports [key pair authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) for secure, password-less access. 
+1. Select an authentication method. Harness FME supports two authentication methods for connecting to Snowflake:
 
-   * Option 1: Paste your private key directly into the text field.
-   * Option 2: Upload a private key file.
+   * [Private key](https://docs.snowflake.com/en/user-guide/key-pair-auth) for secure, password-less access. You can either upload a private key file or paste a private key directly into the text field. Ensure the key corresponds to the username provided and is not encrypted with a passphrase.
+   * Password authentication: Provide a Snowflake password with read access to the required databases and schemas. Ensure the user has permission to query the tables required for experiment metrics.
 
-   Ensure the key corresponds to the username provided and is not encrypted with a passphrase.
+1. Test the connection by clicking **Test Connection**. Harness FME confirms the following:
+
+   * The credentials and key pair are valid.
+   * The warehouse and role are accessible.
+   * The specified database and schema exist and are accessible.
 
 1. Select a database and a schema. After authentication, you can browser available databases, schemas, and tables based on your role permissions. Select the database and schema that contain your <Tooltip id="fme.warehouse-native.assignment-source">assignment</Tooltip> and <Tooltip id="fme.warehouse-native.metric-source">metric source</Tooltip> tables.
-1. Specify a results table. Designate a results table where Harness FME will write experiment analysis results. Ensure the following:
+1. Specify a results table. Create a results table where Harness FME will write experiment analysis results. Ensure the following:
 
    * The table exists in your database.
    * The schema matches the expected format for experiment results below.
@@ -122,12 +135,6 @@ To integrate Snowflake as a data warehouse for Warehouse Native Experimentation:
       EXPNAME VARCHAR(16777216)
    );
    ```
-
-1. Test the connection by clicking **Test Connection**. Harness FME confirms the following:
-
-   * The credentials and key pair are valid.
-   * The warehouse and role are accessible.
-   * The specified database and schema exist and are accessible.
 
 1. Save and activate. Once the test passes, click **Save** to create the connection. 
 

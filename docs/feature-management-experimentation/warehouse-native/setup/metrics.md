@@ -59,6 +59,13 @@ Once configured, metric definitions form a trusted, reusable library of success 
    | **Average of event values per user**                | Averages a numeric property from events per user.                                    | `Average purchase amount`, `Average session time`   |
    | **Sum of event values per user**                    | Sums a numeric property from events per user.                                        | `Total spend per user`, `Total minutes streamed`    |
 
+1. Select an event type in the **Events** dropdown menu. The dropdown lists event names captured in your metric source from the last 90 days to improve performance. You can also type a custom event name if it is not listed.
+1. Optionally, click **+ Add new filter** to narrow the events included in the metric. Select a custom field you defined in your metric source from the dropdown menu, choose an operator (such as `equals`, `not equal to`, `greater than`, `less than`, or `between`), and set the value for the filter. 
+
+   Filters can help you focus metrics on a specific subset of events or users. For example, `purchase_amount less than 500` includes only events where the numeric value is less than 500, which can help cap outlier values when analyzing purchasing behavior. 
+
+1. Click **Create** to save the metric.
+
 ## Manage metrics
 
 Once created, metrics become shared, reusable definitions that teams can reference across experiments. Managing metrics effectively ensures consistent measurement and a reliable source of truth for your organization.
@@ -87,7 +94,7 @@ Ensure you’ve clicked **Create** and that the metric includes a valid source a
 <details>
 <summary>Incorrect Aggregation</summary>
 
-Double-check your **Measure As** setting (for example, `Count`, `Average`, `Sum`, or `Percentage`).
+Double-check your **Measure As** setting (for example, `Count`, `Average`, or `Sum`).
 
 </details>
 

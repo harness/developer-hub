@@ -36,7 +36,7 @@ Use [detailed metric breakdowns](/docs/feature-management-experimentation/wareho
 
 ## Share results
 
-Download experiment metrics, statistical summaries, and warehouse query outputs in CSV or JSON format for further analysis or collaboration with your team.
+Download experiment metrics and statistical summaries in CSV or JSON format for further analysis or collaboration with your team.
 
 ![](../static/share-results.png)
 

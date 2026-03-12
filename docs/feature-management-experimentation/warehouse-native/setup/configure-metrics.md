@@ -19,7 +19,15 @@ sidebar_position: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-When creating or editing a Metric Source, navigate to your project's settings: **Admin Settings** > **Project Settings** > **View Project** (for non-migrated orgs) or **FME Settings** > **Project Settings** > **View Project** (for migrated orgs). From there, you can define the metric source table using either a **Table name** or a **SQL query**. 
+A Metric Source defines where Harness FME reads metric and outcome data used to evaluate experiment results from your data warehouse.
+
+When creating or editing a <Tooltip id="fme.warehouse-native.metric-source">Metric Source</Tooltip>, navigate to the **Metrics** page from the FME navigation menu and click the **Metric Sources** tab. Then, click **+ Create metric source**.
+
+* **Name**: Enter a name for the metric source.
+* **Owners**: Assign one or more owners to make clear who is responsible for maintaining the metric source.
+* **Description**: Enter a description for the metric source.
+
+To define the metric source table, select **Table name** or **SQL query** in the `Source table` section. 
 
 <Tabs>
 <TabItem value="table" label="Table Name">
@@ -53,7 +61,7 @@ You must have permissions to access all tables referenced in your query, based o
 
 After setting up Metric Sources, you can create metric definitions to aggregate event data by type (i.e., count, sum, or average). With Metric Sources configured, your metrics remain consistent, standardized, and reusable across experiments and analyses.
 
-Harness FME will show a data preview so you can confirm the expected fields are returned.
+Harness shows a preview of the data returned from your table so you can validate that the expected rows and columns are present.
 
 ### Configure your environments
 
@@ -118,11 +126,26 @@ This is recommended if the source is meant to be tightly scoped to a single even
 </TabItem>
 </Tabs>
 
-### Additional configuration options
+For each Metric Source, the following fields are required:
 
-* **Preview data**: Harness shows a preview of the data returned from your table so you can validate that the expected rows and columns are present.
-* **Owners**: Assign one or more owners to make clear who is responsible for maintaining the Metric Source.
-* **Tags**: Add tags (e.g., by team, environment, or use case) to make sources easier to discover and organize.
+| Field | Description |
+|---|---|
+| Key | A unique identifier that matches the key in the associated Assignment Source. This allows Harness FME to join exposures and metrics correctly. |
+| Timestamp | The timestamp when the event occurred. This is used to calculate metric values over time. |
+
+:::info Event Value (optional)
+If you plan to create **Sum** or **Average** metrics from this metric source, map an **Event Value** column that contains numeric data (for example, `page_load_time_seconds` or `order_value`). The **Event Value** field is optional and is only used for sum or average metrics.
+:::
+
+### Add custom fields
+
+Click **+ Add new custom field** to map any additional columns from your metric source that are not included in the required fields section.  
+
+1. Select a column from the dropdown menu.  
+2. Enter a label for the field.  
+3. Click **Save**.
+
+Custom fields can later be used to [filter data when creating metrics](/docs/feature-management-experimentation/warehouse-native/setup/metrics#calculation-logic). Common examples include `PLAN_TIER`, `DEVICE`, and `COUNTRY`.
 
 ## Manage metric sources
 
@@ -163,9 +186,9 @@ Verify that the required fields exist and are returned by your query.
 <details>
 <summary>Timestamp Format Issues</summary>
 
-Ensure event timestamps are in a supported `TIMESTAMP` or `DATETIME` format.
+Event timestamps can be provided in **epoch milliseconds** (numeric) or in a **timestamp/datetime** format.  
 
-If you are using epoch values (e.g., `EVENT_TIMESTAMP_MS`), convert them in your SQL query.
+If you are using epoch values (e.g., `EVENT_TIMESTAMP_MS`), there is no need to convert them in your SQL query; Harness FME can handle both formats directly.
 </details>
 
 <details>

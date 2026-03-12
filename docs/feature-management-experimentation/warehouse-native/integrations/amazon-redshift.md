@@ -25,7 +25,6 @@ To begin, connect your Amazon Redshift instance as a data source through a direc
 Ensure that you have the following before getting started:
 
 - Access to your organization's Redshift cluster endpoint and database
-- An IAM role with appropriate read access to the database and schema containing experiment data, and write access to a results table
 - A designated results table where experiment results are stored in Amazon Redshift
 
 ## Setup
@@ -39,26 +38,57 @@ Harness recommends the following best practices:
 
 To integrate Amazon Redshift as a data warehouse for Warehouse Native Experimentation:
 
+1. From the Harness FME navigation menu, click **FME Settings** and click **View** on a project on the **Projects** page. Then, navigate to the **Data Source** tab.
 1. Select Redshift as your data warehouse. In the **Data Sources** tab of your Harness FME project, select **Redshift** from the list of supported data warehouses.
+
+   :::info Project experimentation type
+   A project uses a single experimentation type based on the metric source used.
+
+   When you add a data source to a project, the project’s experimentation type is set to `Warehouse Native`. All metrics in the project must then use Warehouse Native metric sources.
+
+   If a project instead uses metrics created from an [ingested event source](/docs/feature-management-experimentation/getting-started/overview/send-event-data/), the project’s experimentation type is set to `Cloud`.
+   :::
+
 1. Enter the following connection details:
 
    | Field | Description | Example |
    |---|---|---|
-   | Cluster Endpoint (Host) | The endpoint of your Redshift cluster. | `redshift-cluster.analytics.us-east-1.redshift.amazonaws.com` |
+   | Server (Host URL) | The endpoint of your Redshift cluster. | `redshift-cluster.analytics.us-east-1.redshift.amazonaws.com` |
    | Port | The port number used by your Redshift instance (by default, set to `5439`). | `5439` |
    | Database | The database containing your experimentation data. | `experiments` |
+   | Username | The database user that Harness FME uses to authenticate with your Redshift cluster. Ensure this user has read access to the required schemas and tables. | `fme_user` |
    | Schema | The schema within your database containing your experiment or metric tables. | `analytics` |
    | IAM Role ARN | The IAM role with permissions to access your Redshift cluster. | `arn:aws:iam::123456789012:role/FMEAccessRole` |
+   | External ID | A unique identifier used in the IAM role trust policy to ensure that only Harness FME can assume the role. Ths is commonly used for secure cross-account or third-party access and is required if the IAM role trust policy specifies an External ID. | `AbcDeFg-hYjkClm7nop-sKViFlWo5REVqatyHp3zbrZvmd3QuJxCBhkYDVKEhWwjHbWBYFdKQKbKlmi7Hf2DRgc-6NduSqZ5Q` |
    | Results Table Name | The name of the table where experiment results are stored. | `FME_RESULTS` |
   
-1. Configure authentication. Harness FME supports [IAM role-based authentication](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-authentication-access-control.html) for secure, temporary access to Redshift. 
+1. Select an authentication method. Harness FME supports two authentication methods for connecting to Amazon Redshift: 
 
-   * Create or use an existing IAM role with permissions to access the cluster.
-   * Attach a policy granting Redshift read access to relevant databases and schemas.
-   * Provide the IAM Role ARN in Harness FME.
+   * [IAM role-based authentication](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-authentication-access-control.html) (recommended): Harness FME can assume an IAM role to obtain temporary credentials for accessing your Redshift cluster.  
 
+     * Create or use an existing IAM role with permissions to access the cluster.
+     * Attach a policy granting Redshift read access to relevant databases and schemas.
+     * Provide the IAM Role ARN in Harness FME.
+   
+   * Username and password authentication: Provide a Redshift database username and password with read access to the required databases and schemas. Ensure the user has permission to query the tables required for experiment metrics.
+
+1. Configure network access for private VPC deployments. If your Amazon Redshift cluster is deployed in a private VPC, Harness must be allowed network access to run experiment calculations against your warehouse. 
+
+   To enable connectivity:
+
+   * Update your Redshift cluster's security group inbound rules to allow connections from the Harness outbound IP addresses.
+   * Allow traffic on the Redshift port (default: `5439`) or your custom port if configured.
+
+   Harness FME maintains a list of [static outbound IP addresses](https://our-ips.split.io/) used for warehouse connections. You must allow these addresses in your security group rules.
+
+1. Test the connection by clicking **Test Connection**. If the test fails, verify the following:
+
+   * The IAM Role has the correct trust policy and permissions.
+   * The Redshift cluster is publicly accessible (or within a connected VPC).
+   * The correct database, schema, and port are entered.
+   
 1. Select a database and a schema. After authentication, Harness FME retrieves the list of accessible databases and schemas based on your IAM Role permissions. Select the one containing your experiment exposure and event/metric data.
-1. Specify a results table. Designate a results table where Harness FME will write experiment analysis results. Ensure the following:
+1. Specify a results table. Create a results table where Harness FME will write experiment analysis results. Ensure the following:
 
    * The table exists in your database.
    * The schema matches the expected format for experiment results below.
@@ -109,20 +139,12 @@ To integrate Amazon Redshift as a data warehouse for Warehouse Native Experiment
       VARIANCE FLOAT8,
       EXCLUDEDUSERCOUNT BIGINT,
       ASOFTIMESTAMP TIMESTAMP,
-      METRICID (VARCHAR 256),
-      METRICNAME (VARCHAR 256),
-      EXPID (VARCHAR 256),
-      EXPNAME (VARCHAR 256)
+      METRICID VARCHAR(256),
+      METRICNAME VARCHAR(256),
+      EXPID VARCHAR(256),
+      EXPNAME VARCHAR(256)
    );
    ```
-
-
-
-1. Test the connection by clicking **Test Connection**. If the test fails, verify the following:
-
-   * The IAM Role has the correct trust policy and permissions.
-   * The Redshift cluster is publicly accessible (or within a connected VPC).
-   * The correct database, schema, and port are entered.
 
 1. Save and activate. Once the test passes, click **Save** to create the connection. 
 

@@ -16,7 +16,17 @@ sidebar_position: 3
 
 ## Overview
 
-When creating or editing an Assignment Source, navigate to your project's settings: **Admin Settings** > **Project Settings** > **View Project** (for non-migrated orgs) or **FME Settings** > **Project Settings** > **View Project** (for migrated orgs). From there, you can define the assignment source table using either a **Table name** or a **SQL query**. 
+An Assignment Source defines where Harness FME reads experiment exposure (or impression) data from your data warehouse.
+
+When creating or editing an <Tooltip id="fme.warehouse-native.assignment-source">Assignment Source</Tooltip>, navigate to the **Experiments** page from the FME navigation menu and click the **Assignment Sources** tab. Then, click **+ Create assignment source**.
+
+* **Name**: Enter a name for the assignment source.
+* **Owners**: Assign one or more owners to make clear who is responsible for maintaining the assignment source.
+* **Description**: Enter a description for the assignment source.
+
+If you are using feature flags in Harness FME, you can export impression data from Harness FME to your warehouse and use that table as the assignment source for Warehouse Native Experimentation. See [Sending FME impressions to your warehouse](https://developer.harness.io/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/#integrations-for-impression-data) for supported integrations and setup instructions.
+
+To define the assignment source table, select **Table name** or **SQL query** in the `Source table` section. 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -52,7 +62,7 @@ You must have permissions to access all tables referenced in your query, based o
 </TabItem>
 </Tabs>
 
-Harness FME will preview the query output so you can confirm the correct fields are returned.
+Harness shows a preview of the data returned from your table or query so you can validate that the expected rows and columns are present.
 
 ## Add field mappings
 
@@ -104,11 +114,11 @@ This is recommended if the entire source table is scoped to one population type.
 </TabItem>
 </Tabs>
 
-### Additional configuration options
+### Add custom fields
 
-* **Preview data**: Harness shows a preview of the data returned from your table or query so you can validate that the expected rows and columns are present.
-* **Owners**: Assign one or more owners to make clear who is responsible for maintaining the Assignment Source.
-* **Tags**: Add tags (e.g., by team, environment, or use case) to make sources easier to discover and organize.
+Click **+ Add new custom field** to map any additional columns from your assignment source that are not included in the required field mappings. Select a column from the dropdown menu and enter a label for the field. Then, click **Save**.
+
+Custom fields can be used to [filter data when creating or analyzing experiments](/docs/feature-management-experimentation/warehouse-native/setup/experiments#create-an-experiment), for example, using the `experiment_id` or `targeting_rule`.
 
 ## Manage assignment sources
 
@@ -128,6 +138,12 @@ Once you've set up the assignment sources that best fit your workflow, you can m
 
 * **Edit**: You can update the table reference, query, or mappings as your data model evolves. Changes to an existing Assignment Source may disrupt any experiments that are actively using it.
 * **Delete**: Remove outdated or misconfigured sources to reduce clutter and prevent accidental use.
+
+:::warning Deleting an Assignment Source
+Deleting an Assignment Source that is currently used by an experiment will stop all calculations for that experiment. Historical results remain available, but the experiment will no longer update with new data.
+
+If you want to continue the experiment, recreate the Assignment Source with the same configuration (pointing to the same table in your warehouse), then create a new experiment using that source. Assignment Sources cannot be replaced for an existing experiment.
+:::
 
 ## Troubleshooting
 
