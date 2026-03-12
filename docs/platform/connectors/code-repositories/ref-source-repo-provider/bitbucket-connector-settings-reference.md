@@ -211,7 +211,7 @@ You must enable API access to use Git-based triggers, manage webhooks, or update
 <Tabs>
 <TabItem value="email-api-token" label="Email and API Token (Bitbucket Cloud only)" default>
 
-This authentication method is available only for Bitbucket Cloud. It requires Harness Delegate version 26.01.88201 or later.
+This authentication method is available only for Bitbucket Cloud. It requires Harness Delegate version 26.02.88600 or later.
 
 In the **Email** field, enter the email address associated with your Bitbucket account.
 
@@ -221,7 +221,7 @@ In the **API Token** field, provide a Bitbucket account-level API token stored a
 
 :::warning Delegate version requirement
 
-The Email and API Token authentication method requires Harness Delegate version **26.01.88201** or later. If you're using an older delegate version, use one of the other authentication methods.
+The Email and API Token authentication method requires Harness Delegate version **26.02.88600** or later. If you're using an older delegate version, use one of the other authentication methods.
 
 :::
 
