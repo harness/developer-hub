@@ -68,6 +68,17 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+    {
+    title: "Database DevOps",
+    module: MODULES.dbdevops,
+    type: type.user,
+    description:
+      "Self-paced video course introducing Harness Database DevOps.",
+    version: "Harness DB DevOps Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-harness-database-devops",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
   {
     title: "Feature Management & Experimentation",
     module: MODULES.fme,

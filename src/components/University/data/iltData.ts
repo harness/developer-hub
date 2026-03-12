@@ -58,6 +58,17 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+   {
+    title: "Database DevOps",
+    module: MODULES.dbdevops,
+    type: type.user,
+    description:
+      "Deep dive into advanced Database DevOps concepts.",
+    version: "Harness DB DevOps Paid Plans",
+    link: "https://university-registration.harness.io/ilt-harness-database-devops",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
   {
     title: "Internal Developer Portal",
     module: MODULES.idp,

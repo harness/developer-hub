@@ -67,6 +67,8 @@ export const university: CardItem[] = [
       "Integrate database changes into your CI/CD pipeline.",
     link: "/university/database-devops",
     numberOfCerts: 1,
+    SPT_available: true,
+    ILT_available: true,
   },
 
   {
