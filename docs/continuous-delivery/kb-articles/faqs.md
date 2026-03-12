@@ -1454,6 +1454,12 @@ You can always create dashboards to help you gain insights into your data. Howev
 
 It doesn't override the service infrastructure. Instead, it only changes which delegate will execute the necessary operations of your pipeline.
 
+#### Why do I get a "no eligible delegates" error even though my delegate selectors look correct?
+
+By default, Harness **merges (ANDs)** delegate selectors from all levels — step, stage, pipeline, and connector. This means a single delegate must carry every tag from every level. If the step-level selector is `delegate-a` and the connector selector is `delegate-b`, Harness looks for one delegate that has both tags. When no delegate matches the full combined set, the task fails with `NoEligibleDelegatesInAccountException`.
+
+To switch to priority-based behavior — where a step-level selector overrides the connector-level selector instead of merging with it — enable the `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` feature flag on your account by contacting [Harness Support](mailto:support@harness.io). For more details, see [Delegate selector priority](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-selector-priority).
+
 #### Can we trigger a pipeline with a git push on bitbucket?
 
 Yes, you can trigger the pipeline with a git event through bitbucket. You can refer to our [doc](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) and [video](https://www.youtube.com/watch?v=y8s351IJLXw&t=113s&ab_channel=harness) tutorial.

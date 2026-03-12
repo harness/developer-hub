@@ -88,6 +88,12 @@ You can also find the difference in the output of the step:
   <DocImage path={require('./static/k8s-diff-4.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
+## Troubleshooting delegate selector errors
+
+The K8s Diff step first fetches manifests from your Git or Helm connector before running the diff. If the delegate selector configured at the step or pipeline level differs from the one on the manifest connector, Harness merges (ANDs) all selectors by default. This means a single delegate must carry **every** tag — and the task fails with a `NoEligibleDelegatesInAccountException` if no delegate matches all of them.
+
+To enable priority-based selector behavior — where the step-level selector overrides the connector-level selector instead of merging — ask [Harness Support](mailto:support@harness.io) to enable the `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` feature flag on your account. For more details, see [Delegate selector priority](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-selector-priority).
+
 ## Limitations
 
 - The `kubectl diff` command requires **server-side Apply**, which is available in Kubernetes version 1.18 and above.
