@@ -17,6 +17,19 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+## February 2026
+
+### Version: 1.52.0 , Plugin Version: 0.53.0
+
+#### New Features and Enhancements
+
+- Filtering SBOM components by [Dependency Type](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm#sbomsoftware-bill-of-materials-tab) (Direct, Indirect, No Relationship) for code repositories is now **Generally Available (GA)**. This feature was behind the feature flag `SCS_DEPENDENCY_SEGREGATION`.
+
+#### Fixed Issues
+
+- Fixed an issue where the SLSA generation step could fail when a container image was provided without a tag. The step now correctly defaults to `latest` when no tag is specified ([ZD-106153](https://harnesssupport.zendesk.com/agent/tickets/106153)).
+
+
 ## January 2026
 
 ### Version: 1.50.0 , Plugin Version: 0.52.0
