@@ -7,7 +7,17 @@ export type SpecFormat = 'yaml' | 'json';
 
 export interface ApiReferenceModuleConfig {
   name: string;
-  specUrl: string;
+  /**
+   * Preferred: URL to fetch the OpenAPI spec. The fetch-api-specs script uses this (or localPath when present)
+   * to produce static/api-specs/<moduleId>.json. At runtime the app loads from static first, then falls back to this URL.
+   */
+  specUrl?: string;
+  /**
+   * Optional alternative: repo-relative path to a local spec file. When set, the fetch script uses it
+   * instead of specUrl when the file exists; otherwise it falls back to specUrl. Use for specs that
+   * aren’t available at a public URL (e.g. internal or vendored).
+   */
+  localPath?: string;
   /**
    * Spec format for parsing when loading from remote URL. Static files are always JSON.
    * Used by the dedicated YAML vs JSON format parsers.

@@ -66,8 +66,13 @@ export default function ApiReferenceLayout({
       );
       if (!cat || !mainScrollRef.current) return;
       const categoryId = `category-${cat.category.toLowerCase().replace(/\s+/g, '-')}`;
-      const headingEl = mainScrollRef.current.querySelector(`#${CSS.escape(categoryId)}`);
-      headingEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const headingEl = mainScrollRef.current.querySelector(`#${CSS.escape(categoryId)}`) as HTMLElement | null;
+      if (!headingEl) return;
+      const container = mainScrollRef.current;
+      const padding = 20;
+      const headingTop =
+        headingEl.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop;
+      container.scrollTo({ top: Math.max(0, headingTop - padding), behavior: 'smooth' });
     },
     [byCategory]
   );
@@ -107,21 +112,41 @@ export default function ApiReferenceLayout({
       byCategory[0].endpoints.length > 0 &&
       endpointId(byCategory[0].endpoints[0]) === endpointId(selectedEndpoint);
 
-    if (isVeryFirstEndpoint) {
-      mainScrollRef.current.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-      if (typeof window !== 'undefined') window.scrollTo(0, 0);
-    } else if (isFirstInCategory) {
-      scrollToCategoryTop(selectedEndpoint);
-    } else {
-      const rowEl = mainScrollRef.current.querySelector(`[data-endpoint-slug="${slug}"]`);
-      rowEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const container = mainScrollRef.current;
+    const scrollPadding = 20;
+
+    const performScroll = () => {
+      if (!container) return;
+      if (isVeryFirstEndpoint) {
+        container.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        if (typeof window !== 'undefined') window.scrollTo(0, 0);
+      } else if (isFirstInCategory) {
+        scrollToCategoryTop(selectedEndpoint);
+      } else {
+        // Find row by attribute to avoid selector escaping issues with special chars in slug
+        const candidates = container.querySelectorAll<HTMLElement>('[data-endpoint-slug]');
+        const rowEl = Array.from(candidates).find((el) => el.getAttribute('data-endpoint-slug') === slug);
+        if (rowEl) {
+          const rowTop = rowEl.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop;
+          container.scrollTo({ top: Math.max(0, rowTop - scrollPadding), behavior: 'smooth' });
+        }
+      }
+    };
+
+    // Defer scroll until after layout (double rAF so React commit + paint are done)
+    let rafId = requestAnimationFrame(() => {
+      rafId = requestAnimationFrame(performScroll);
+    });
+
     if (typeof window !== 'undefined') {
       const fragment = endpointFragment(selectedEndpoint, currentCategory.category);
       const url = `${window.location.pathname}${window.location.search}#${fragment}`;
       window.history.replaceState(null, '', url);
     }
-    return () => clearTimeout(t);
+    return () => {
+      clearTimeout(t);
+      cancelAnimationFrame(rafId);
+    };
   }, [selectedEndpoint, currentCategory, byCategory, scrollToCategoryTop]);
 
   useEffect(() => {

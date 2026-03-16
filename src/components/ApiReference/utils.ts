@@ -319,23 +319,95 @@ export function endpointId(entry: EndpointEntry): string {
   return `${entry.method.toUpperCase()} ${entry.path}`;
 }
 
-/** Stable slug for scroll anchor / id (e.g. get-api-usage-check-licence). Keeps param names so e.g. .../approvals and .../approvals/{id} stay distinct. */
+/** Slug from operationId (e.g. listModulesById → list-modules-by-id) for unique scroll/section id. */
+function slugifyOperationId(operationId: string): string {
+  return operationId
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+    || 'op';
+}
+
+/**
+ * Stable slug for scroll anchor and section id. Uses operationId when present so each operation
+ * is uniquely identified. When no operationId, uses method + path + label slug so "List modules"
+ * and "List module by id" always get different slugs (avoids collisions when paths normalize
+ * the same or spec has no operationIds).
+ */
 export function endpointSlug(entry: EndpointEntry): string {
+  const opId = entry.operation?.operationId?.trim();
+  if (opId) return slugifyOperationId(opId);
   const path = entry.path
     .replace(/^\/+/, '')
     .replace(/\//g, '-')
-    .replace(/\{([^}]*)\}/g, '$1'); // keep param name so /approvals and /approvals/{id} differ
-  return `${entry.method.toLowerCase()}-${path}`.replace(/-+/g, '-').replace(/^-|-$/g, '') || 'endpoint';
+    .replace(/\{([^}]*)\}/g, '$1');
+  const methodPath =
+    `${entry.method.toLowerCase()}-${path}`.replace(/-+/g, '-').replace(/^-|-$/g, '') || 'endpoint';
+  const labelSlug = slugifyForFragment(endpointLabel(entry));
+  return labelSlug ? `${methodPath}-${labelSlug}` : methodPath;
 }
 
-/** Human-readable category label (e.g. "Provisioner Activities") */
+/**
+ * Terms that must keep their capitalization in endpoint and category labels
+ * (e.g. "CI/CD" not "Ci/cd"). Only whole terms like "API" or "CI/CD" — do NOT add
+ * "ID" or "CD" alone, as they would incorrectly change words like "provider" → "proviDer".
+ */
+const CAPITALIZATION_EXCEPTIONS = [
+  'CI/CD',
+  'API',
+  'SCM',
+  'SDLC',
+  'SSO',
+  'OAuth',
+  'REST',
+  'JSON',
+  'YAML',
+  'HTTP',
+  'URL',
+  'URI',
+  'HTML',
+  'XML',
+];
+
+/**
+ * Word-for-word display replacements (e.g. spec says "Cicd" but we show "CI/CD").
+ * Applied before capitalization exceptions so "Cicd workflows" → "CI/CD Workflows".
+ */
+const DISPLAY_REPLACEMENTS: [string, string][] = [
+  ['Cicd', 'CI/CD'],
+  ['cicd', 'CI/CD'],
+];
+
+function escapeForRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/** Apply DISPLAY_REPLACEMENTS then CAPITALIZATION_EXCEPTIONS. */
+function applyCapitalizationExceptions(text: string): string {
+  if (!text) return text;
+  let result = text;
+  for (const [from, to] of DISPLAY_REPLACEMENTS) {
+    result = result.replace(new RegExp(`\\b${escapeForRegExp(from)}\\b`, 'g'), to);
+  }
+  for (const term of CAPITALIZATION_EXCEPTIONS) {
+    result = result.replace(new RegExp(escapeForRegExp(term), 'gi'), term);
+  }
+  return result;
+}
+
+/** Human-readable category label: title case on every word (e.g. "License Usage Resource", "Orchestration"). */
 export function categoryLabel(category: string): string {
-  return category
+  const titleCased = category
     .replace(/_/g, ' ')
     .split(/\s+|-/)
     .filter(Boolean)
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
     .join(' ');
+  return applyCapitalizationExceptions(titleCased);
 }
 
 /** Slug for URL fragment: lowercase, spaces/special to single hyphen (e.g. "List approvals" → "list-approvals") */
@@ -384,10 +456,28 @@ export function normalizeEndpointLabel(label: string): string {
     .trim();
 }
 
+/**
+ * Standardize operation summary for display: sentence case (first word capitalized, rest lowercase)
+ * and remove trailing period. Applied to all API reference modules.
+ * CAPITALIZATION_EXCEPTIONS (e.g. CI/CD, API) are restored after sentence case.
+ */
+export function normalizeOperationSummary(summary: string): string {
+  if (!summary || !summary.trim()) return summary;
+  const trimmed = summary.trim().replace(/\.+$/, '');
+  if (!trimmed) return trimmed;
+  const parts = trimmed.split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return trimmed;
+  const sentence = parts
+    .map((word, i) => (i === 0 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word.toLowerCase()))
+    .join(' ');
+  return applyCapitalizationExceptions(sentence);
+}
+
 export function endpointLabel(entry: EndpointEntry): string {
   const summary = entry.operation?.summary;
   const raw = summary ? summary : `${entry.method.toUpperCase()} ${entry.path}`;
-  return normalizeEndpointLabel(raw);
+  const withSpaces = normalizeEndpointLabel(raw);
+  return summary ? normalizeOperationSummary(withSpaces) : withSpaces;
 }
 
 const METHOD_STYLE_KEYS: Record<string, string> = {

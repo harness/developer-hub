@@ -3,8 +3,8 @@
  * static/api-specs/<moduleId>.json so the app can load specs at runtime without
  * hitting remote URLs. Run on yarn start and production build.
  *
- * Keep MODULES in sync with src/components/ApiReference/modules/<module-id>/config.ts
- * (each module’s specUrl and id).
+ * Keep MODULES in sync with src/components/ApiReference/modules/<module-id>/config.ts.
+ * Prefer specUrl; use localPath only when the spec is not available at a URL.
  */
 import fs from 'fs-extra';
 import path from 'path';
@@ -21,6 +21,11 @@ const MODULES = [
   { id: 'code-repository', specUrl: 'https://app.harness.io/prod1/code/openapi.yaml' },
   { id: 'infra-as-code-management', specUrl: 'https://app.harness.io/prod1/iacm/openapi3.yaml' },
   { id: 'artifact-registry', specUrl: 'https://app.harness.io/prod1/har/swagger.json' },
+  { id: 'security-test-orchestration', specUrl: 'https://app.harness.io/prod1/sto/openapi3.yaml' },
+  {
+    id: 'software-supply-chain-assurance',
+    localPath: 'src/components/ApiReference/modules/software-supply-chain-assurance/openapi.yaml',
+  },
 ];
 
 async function fetchSpec(url) {
@@ -36,12 +41,24 @@ async function fetchSpec(url) {
 
 async function main() {
   await fs.ensureDir(OUT_DIR);
-  for (const { id, specUrl } of MODULES) {
+  for (const mod of MODULES) {
+    const { id } = mod;
     try {
-      const spec = await fetchSpec(specUrl);
+      let spec;
+      const localFull = mod.localPath ? path.join(ROOT, mod.localPath) : null;
+      const useLocal = localFull && (await fs.pathExists(localFull));
+      if (useLocal) {
+        const text = await fs.readFile(localFull, 'utf8');
+        spec = yaml.load(text);
+        console.log(`[fetch-api-specs] ${id} (local) -> ${path.join(OUT_DIR, `${id}.json`)}`);
+      } else if (mod.specUrl) {
+        spec = await fetchSpec(mod.specUrl);
+        console.log(`[fetch-api-specs] ${id} -> ${path.join(OUT_DIR, `${id}.json`)}`);
+      } else {
+        throw new Error('Neither localPath (file present) nor specUrl');
+      }
       const outPath = path.join(OUT_DIR, `${id}.json`);
       await fs.writeJson(outPath, spec, { spaces: 0 });
-      console.log(`[fetch-api-specs] ${id} -> ${outPath}`);
     } catch (err) {
       console.error(`[fetch-api-specs] ${id} failed:`, err.message);
       process.exitCode = 1;

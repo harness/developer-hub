@@ -8,17 +8,22 @@ import type { OpenApiSpec } from '../types';
 import codeRepository from './code-repository/config';
 import infraAsCodeManagement from './infra-as-code-management/config';
 import artifactRegistry from './artifact-registry/config';
+import securitySupplyChain from './software-supply-chain-assurance/config';
+import { parseSpec as softwareSupplyChainParseSpec } from './software-supply-chain-assurance/parser';
 
 const MODULE_CONFIGS: Record<string, ApiReferenceModuleConfig> = {
   'code-repository': codeRepository,
   'infra-as-code-management': infraAsCodeManagement,
   'artifact-registry': artifactRegistry,
+  'software-supply-chain-assurance': securitySupplyChain,
 };
 
 /** Optional per-module spec parser. Receives raw parsed spec; returns normalized OpenApiSpec for the UI. */
 type SpecParser = (spec: unknown) => OpenApiSpec;
 
-const MODULE_PARSERS: Partial<Record<string, SpecParser>> = {};
+const MODULE_PARSERS: Partial<Record<string, SpecParser>> = {
+  'software-supply-chain-assurance': softwareSupplyChainParseSpec,
+};
 
 export type { ApiReferenceModuleConfig };
 

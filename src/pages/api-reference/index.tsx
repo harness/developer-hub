@@ -71,11 +71,14 @@ export default function ApiReferencePage(): React.ReactElement {
         if (res.ok) {
           return res.text().then((text) => parseJsonInWorker(text));
         }
-        if (res.status === 404) {
+        if (res.status === 404 && moduleConfig.specUrl) {
           return fetch(moduleConfig.specUrl).then((remoteRes) => {
             if (!remoteRes.ok) throw new Error(`Failed to load spec: ${remoteRes.status}`);
             return remoteRes.text().then((text) => parseSpecByFormat(text, formatFromConfig));
           });
+        }
+        if (res.status === 404) {
+          throw new Error('API spec not found. Run the build so static/api-specs is populated.');
         }
         throw new Error(`Failed to load spec: ${res.status}`);
       })
@@ -91,7 +94,7 @@ export default function ApiReferencePage(): React.ReactElement {
         setSpec(null);
       })
       .finally(() => setLoading(false));
-  }, [moduleId, moduleConfig?.specUrl]);
+  }, [moduleId, moduleConfig]);
 
   const title = moduleConfig
     ? `${moduleConfig.name} API Reference`
