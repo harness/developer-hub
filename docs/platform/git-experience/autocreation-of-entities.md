@@ -469,8 +469,40 @@ For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_produc
 
 ## Creation of Entities
 
-:::info note
-During the autocreation of entities, if a user commits more than 300 files in a single commit, the autocreation of entities for those files will fail. Files received as a response from GitHub (fewer than 300) will be processed correctly. However, commits with more than 300 files will not be handled, potentially leading to discrepancies where users may not see the expected results.
+:::info Large commit handling for GitHub repositories
+
+GitHub's API returns at most 300 modified files in a webhook event. For commits that modify **300 or more files**, Harness automatically switches to extracting file paths directly from the webhook payload instead of relying on GitHub's API. This ensures that all modified files are detected and processed for autocreation, regardless of commit size.
+
+This behavior is controlled by the feature flag `PIPE_GITX_DISABLE_WEBHOOK_PAYLOAD_PROCESSING`. By default, webhook payload processing is **enabled** for large commits. If you need to disable it, contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+
+:::
+
+### Entity creation limit
+
+To protect system performance and avoid hitting Git provider rate limits, Harness enforces a limit of **500 entities** that can be created from a single webhook event.
+
+When a commit contains more than 500 entity files:
+
+- **The first 500 entities are created** normally.
+- **Remaining files are skipped** and tracked as unprocessed.
+- **The webhook event status is set to WARNING** with a message listing the unprocessed files.
+
+**Example warning message:**
+
+> Maximum entity creation limit of 500 exceeded. X files were not processed: [file list]
+
+**Example hint:**
+
+> Please avoid creating too many files in a single commit. Break them into smaller commits for a seamless experience.
+
+:::note
+
+The entity creation limit is controlled by the feature flag `PIPE_GITX_DISABLE_AUTO_CREATION_LIMIT`. By default, the 500-entity limit is **active**. If you need to disable this limit, contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+
+:::
+
+:::tip Best practice
+Break large commits into batches of fewer than 500 entity files to ensure all entities are created successfully. You can track the status of webhook events — including any warnings about unprocessed files — on the **Webhooks > Events** page in your project or account settings.
 :::
 
 Since we have discussed the file path conventions for each entities let's see how to create entities with help of autocreation. We are going to discuss creation of Pipeline and Input set in these examples, similar approach can be followed for creating other entities like Services, Environments, Templates and Infrastructure.

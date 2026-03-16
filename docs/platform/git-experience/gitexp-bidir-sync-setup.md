@@ -99,12 +99,26 @@ To register a webhook:
 
 ![](./static/webhook_register_pipelinestudio.png)
 
-:::info Note: 300 File Limit
-When using Git Experience with GitHub in bidirectional sync mode, **merging a commit with 300 or more files may cause some files to not sync properly in the GitEx cache**. This is due to GitHub API limitations, which parse up to 300 files between two commits. Customers may see that the webhook payload lists a full list of files, but only 300 will be processed.  
+:::info Large commit handling for GitHub repositories
 
-Additionally, such large merges has the potential to increase the possibility of hitting the GitHub API rate limit. This is due to the fact that each commit has three API calls correlated to each file transfer, and if multiple files across multiple pipelines are being committed at the same time, it can increase the possibility of a rate-limit situation.
+GitHub's API returns at most 300 modified files in a webhook event. For commits that modify fewer than 300 files, Harness uses GitHub's API response to determine which files changed and updates the GitEx cache accordingly.
 
-It is recommended to keep the number of files in a single commit below 300 to ensure consistency and avoid potential rate limit issues.
+For commits that modify **300 or more files**, Harness automatically switches to extracting file paths directly from the webhook payload instead of relying on GitHub's API. This ensures that all modified files are detected and synced, regardless of commit size.
+
+**How it works:**
+
+| Commit size | Processing method |
+| --- | --- |
+| Fewer than 300 files | Standard GitHub API response |
+| 300 or more files | Direct webhook payload extraction |
+
+This behavior is controlled by the feature flag `PIPE_GITX_DISABLE_WEBHOOK_PAYLOAD_PROCESSING`. By default, webhook payload processing is **enabled** for large commits. If you need to disable it (reverting to the previous behavior that only processes up to 300 files), contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+
+**Recommendations:**
+
+- **Entity creation limit:** When processing large commits, a maximum of **500 entities** can be created from a single webhook event. If a commit modifies more than 500 entity files, only the first 500 are processed. The remaining files are listed in a warning message. Break large commits into smaller batches for best results. For more details, see [Entity creation limit](/docs/platform/git-experience/autocreation-of-entities#entity-creation-limit).
+- **Rate limits:** Large commits increase the likelihood of hitting GitHub API rate limits. Consider using a [GitHub App connector](/docs/platform/connectors/code-repositories/git-hub-app-support) for higher rate limits (15,000 requests/hour vs. 5,000 for PATs). See [Git rate limit best practices](/docs/platform/git-experience/git-ratelimit-bestpractice) for more guidance.
+
 :::
 
 :::info note
