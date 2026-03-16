@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2026-02-05T10:00:00
+date: 2026-03-16T10:00:00
 sidebar_position: 8
 ---
 
@@ -55,6 +55,29 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 
 ## March 2026
+
+#### Version 1.134.3
+
+#### New Features and Enhancements
+
+- Harness now supports a dedicated **ECS Scale** step that lets you scale ECS services up or down without running a full deployment stage. You can specify the target instance count or percentage, and optionally provide AWS connector, region, and cluster details at the step level or inherit them from the environment configuration. This feature requires delegate version `26.02.88503` or later and is behind the feature flag `CDS_ECS_SCALE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-118048**)
+
+- Harness now supports **Host Groups** for Physical Data Center (PDC) WinRM deployments, letting you assign independent WinRM credentials to different groups of hosts within a single infrastructure definition. This removes the previous limitation of a single shared credential and enables environments using Just Enough Administration (JEA) with distinct endpoint configurations per server group. (**CDS-115563**)
+
+- Harness now support integration with **Dynatrace Site Reliability Guardian (SRG)** for automated release validation during Kubernetes canary deployments. Using HTTP steps, Harness triggers a Dynatrace SRG workflow after deploying a canary pod, polls for the validation verdict, and automatically promotes the deployment on `PASS` or rolls it back on `FAIL`. This requires a Dynatrace API token stored in Harness Secret Manager and the SRG workflow ID. (CDS-117109)
+
+- Google Managed Instance Group (MIG) deployments now support **Google Cloud Storage** as a manifest source for storing MIG manifests and templates. 
+
+#### Fixed issues
+
+- Fixed an issue where Jenkins build logs were not visible due to incorrect job URL construction. For multi-branch pipelines, branch names in the job URL were not encoded correctly, causing log retrieval to fail. The logic for constructing job URLs now directly uses the URL returned by Jenkins, which preserves the correct encoding for branch names. Update your delegate to pick up this fix. (**CDS-118936**,**ZD-104616**, **ZD-106159**)
+- Fixed an issue where Artifactory connectors could not be used as a plugin connector reference. Users who needed to route plugin images through Artifactory instead of public Docker Hub had to work around this limitation by using a variable reference to define the connector, which prevented the UI from displaying it and broke connector dependency tracking. Artifactory connectors are now accepted as valid plugin connector references. (**CDS-118978**)
+- Fixed an issue where the Update Release Repo and Merge PR steps took significantly longer than expected, impacting deployment times. For large repositories, these steps were slow even after the delegate received the task. The performance of these steps has been optimized to reduce execution time. This fix is behind the feature flag `CDS_GITOPS_DELEGATE_USE_SCM_FOR_COMMIT`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-119144**, **ZD-104872**)
+- Fixed an issue where a failure to retrieve the execution graph from PostgreSQL caused unexpectedly long queue times for pipeline stages. During reruns, the system could fail to fetch the complete execution graph from the database, causing subsequent stages (such as a canary deployment stage) to stall in a queued state without an explicit queue step. Graph retrieval from PostgreSQL is now more resilient, preventing stages from stalling due to incomplete data. (**PIPE-32347**, **ZD-105168**)
+- Fixed an issue where `json.select()` JEXL expressions did not resolve correctly inside pipeline notification templates, even though the same expressions worked in Shell Script steps. Expressions that used `json.select` with output variable references failed to evaluate in notification context. The expression evaluation logic in notification templates now correctly resolves `json.select()` expressions. (**PIPE-32372**, **ZD-104817**)
+- Fixed an issue where pipeline executions triggered via Git triggers did not display Git details (codebase details) on the execution list page. Manually triggered executions showed the details correctly, but Git-triggered executions appeared without any codebase information. The execution metadata now correctly captures and displays Git details for trigger-based executions. (**PIPE-32483**, **ZD-105715**, **ZD-105993**, **ZD-106003**, **ZD-106057**, **ZD-106080**, **ZD-106101**)
+- Fixed an issue where selective stage execution failed with a `NullPointerException` when the pipeline contained Insert Block (injected stage templates). Running a subset of stages produced an `INVALID_REQUEST` error with the message `Cannot invoke "YamlField.getNode()" because the return value of "YamlNode.getField(String)" is null`, giving no indication of the root cause. Selective stage execution now correctly handles pipelines that use Insert Block stages. (**PIPE-32512**, **ZD-105316**)
+- Fixed an issue where Pipeline Studio displayed random strings in the UI, making the editor unusable. The stray text rendered over pipeline components and blocked normal interaction with the studio. The rendering logic has been corrected to prevent unintended strings from appearing in the Pipeline Studio. (**PIPE-32540**, **ZD-105914**)
 
 #### Version 1.133.5
 
