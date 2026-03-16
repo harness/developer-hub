@@ -60,7 +60,9 @@ Pipelines are collections of stages. In this tutorial, we will create a new Pipe
 6. For **Stage Name**, enter: **winrm****-stage.**
 7. For **Deployment Type**, select **WinRM** and click **Set Up Stage**.
 
-![](./static/win-rm-tutorial-128.png)
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/win-rm-tutorial-128.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 ## Create a Harness WinRM Service
 
@@ -84,7 +86,9 @@ Harness includes Connectors for all the major artifact repositories. In this tut
 5. In **Details**, enter the following URL path for **Artifactory Repository URL** or click the tooltip and copy the URL: `https://harness.jfrog.io/artifactory`. In this tutorial, we will use the artifacts stored in that repository.
 6. For **Authentication**, click the down-drop arrow for **Username and Password**. Then, select **Anonymous (no credentials required)**. Click **Continue**.
    	
-	![](static/win-rm-tutorial-129.png)
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/win-rm-tutorial-129.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 7. Click **Continue** to connect with Artifactory by using a Harness Delegate.
 8. In **Delegates Setup**, retain the default selection: **Use any available delegate**.
@@ -105,36 +109,48 @@ For this tutorial, we'll use a **ToDo List** app artifact, **todolist.zip**, ava
 The artifact [expression](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources.md) may vary based on the chosen artifact type.
 :::
 
-## Define the target infrastructure
+## Configure the Environment and Infrastructure
 
-You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
+You configure the environment and infrastructure for your deployment in the **Environment** settings of the pipeline stage.
 
-There are two methods of specifying the deployment target infrastructure:
+To set up the environment, select **New Environment**, provide a name for the environment (for example, **winrm-env**), choose the environment type (Production or Pre-Production), and click **Save**. This step is common across all infrastructure types.
+
+Next, configure the infrastructure definition. There are two methods of specifying the deployment target infrastructure:
 
 - **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
 - **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
 
 For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
-### Selecting hosts
+WinRM deployments support three infrastructure types:
 
-When you set up the Infrastructure Definition for the stage, there are three options for selecting the target hosts:
+- **Physical Data Center (PDC):** Deploy to on-premise or cloud-hosted Windows servers managed outside of Azure or AWS.
+- **Azure:** Deploy to Windows VMs in Microsoft Azure subscriptions.
+- **AWS:** Deploy to Windows EC2 instances in Amazon Web Services.
 
-- **Specify hosts**
-- **Select preconfigured hosts from Physical Data Center**
-- **Map Dynamically Provisioned Infrastructure**
+### Physical Data Center
 
-The **Specify hosts** or **Select preconfigured hosts from Physical Data Center** options are used when you are deploying to a pre-existing infrastructure.
+The Physical Data Center (PDC) infrastructure type targets Windows servers that are not managed through Azure or AWS connectors. When you select PDC as the infrastructure type, Harness presents two host configuration modes: **Single Host** and **Host Groups**.
 
-The **Map Dynamically Provisioned Infrastructure** option is used when your are deploying to a dynamically provisioned infrastructure.
+#### Single Host
+
+The **Single Host** tab is the default configuration mode where all hosts share a single WinRM credential.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/pdc-single-host.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
+
+When setting up the Infrastructure Definition, there are three options for selecting target hosts:
+
+- **Specify hosts:** Manually enter a comma-separated list of host names.
+- **Select preconfigured hosts from Physical Data Center:** Use a PDC connector to pull registered hosts, with optional filtering by host name or host attributes.
+- **Map Dynamically Provisioned Infrastructure:** Map outputs from a provisioner (Terraform, CloudFormation, etc.) to resolve hosts at runtime. For details, see [Dynamically provisioned infrastructure](#dynamically-provisioned-infrastructure).
 
 :::note
-
-Write down hosts as a comma separated list. 
-
+When specifying hosts inline, enter them as a comma-separated list.
 :::
 
-### Filtering Hosts by Attributes
+##### Filtering hosts by attributes
 
 This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
 
@@ -146,8 +162,8 @@ You can control whether multiple host‑attribute filters are combined with **OR
 
 Specific Attribute: This is where you specify the condition on which the match criteria is checked with. You can specify attributes like region, type, name, etc.
 
-<div align="center">
-  <DocImage path={require('./static/pdc-specify-host.png')} width="60%" height="60%" title="Click to view full size image" />
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/pdc-specify-host.png')} width="50%" height="50%" title="Click to view full size image" />
 </div>
 
 <details>
@@ -275,41 +291,43 @@ Key Takeaways:
 
 </details>
 
-### Pre-existing infrastructure
+##### Setting up a pre-existing PDC infrastructure
 
-Let's look at an example of setting up an Infrastructure Definition for a pre-existing infrastructure.
+Here is an example of setting up an Infrastructure Definition for a pre-existing PDC infrastructure. After creating your environment, continue with the infrastructure setup.
 
-1. In **Specify Environment**, click **New Environment** enter **winrm-env** for **Name.** This is the name that you will use when you select this Infrastructure Definition.
-2. For **Environment Type**, select **Pre-Production**, and click **Save**.
-3. For **Specify Infrastructure**, click **New infrastructure**.
-4. Enter a name for the new infrastructure: **winrm-infra**.
-5. For **Select Infrastructure Type**, select **Physical Data Center**.
-6. Scroll down to view Infrastructure definition.
-7. Keep the default selection: **Select preconfigured hosts from Physical Data Center**.
+1. For **Specify Infrastructure**, click **New infrastructure**.
+2. Enter a name for the new infrastructure: **winrm-infra**.
+3. For **Select Infrastructure Type**, select **Physical Data Center**.
+4. Scroll down to view the Infrastructure definition.
+5. Keep the default selection: **Select preconfigured hosts from Physical Data Center**.
 
-#### Create the PDC Connector for the Host
+**Create the PDC Connector for the Host**
 
 1. In **Infrastructure Definition**, for **Connector**, click **Select Connector** to create the Connector for PDC.
 2. In **Create or Select an Existing Connector**, select **New Connector**.
 3. For **Name**, enter **pdc-connector** and click **Continue**.
 
-   ![](static/win-rm-tutorial-130.png)
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/win-rm-tutorial-130.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 4. In **Details**, keep the default selection for **Manually enter host names**. In **Hosts**, enter the host name for your EC2 instance and click **Continue**.
    
-   ![](static/win-rm-tutorial-131.png)
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/win-rm-tutorial-131.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 5. In **Delegates Setup**, keep the default for **Use any available Delegate**. Click **Save** and **Continue**.
 6. In **Test Connection**, Harness validates the connectivity for the PDC host. Click **Finish**.
    
-   ![](static/win-rm-tutorial-132.png)
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/win-rm-tutorial-132.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
-#### Use WinRM Credentials with NTLM to Authenticate
-
-We will now create the credentials for the secret that is used by Harness to connect to the target host.
+**Use WinRM Credentials with NTLM to Authenticate**
 
 1. For **Specify Credentials**, click **Create or Select a Secret**.
-2. in **Create or Select an Existing Secret**, click **New WinRm Credential**.
+2. In **Create or Select an Existing Secret**, click **New WinRm Credential**.
 3. In **WinRm Details**, enter a name for this credential.
 4. For **Select an Auth Scheme**, keep the default **NTLM**.
 5. For **Domain**, enter the domain name for your EC2 instance.
@@ -322,7 +340,137 @@ We will now create the credentials for the secret that is used by Harness to con
 12. For **WinRM Port**, keep the default port number **5986**. Click **Save and Continue**.
 13. For **Add a Host Name to start Verification**, enter the hostname for your EC2 instance and click **Test Connection**. Harness checks for Delegates and verifies the connection to the target host.
 14. In **Create New Infrastructure**, click **Preview Hosts**.
-15. Click the checkbox for the host and click **Test Connection.** The WinRM connection to the EC2 instance is tested. Click **Finish**. Click **Continue**.
+15. Click the checkbox for the host and click **Test Connection**. The WinRM connection to the EC2 instance is tested. Click **Finish**. Click **Continue**.
+
+#### Host Groups
+
+By default, all hosts in a PDC infrastructure share a single WinRM credential. Host Groups remove this limitation by letting you organize hosts into named groups, each with its own credential. This is particularly useful for environments that use Just Enough Administration (JEA), where different server groups require distinct credential and endpoint configurations.
+
+With Host Groups, a single infrastructure definition can target multiple Windows servers using different credentials in the same pipeline execution. For example, your web servers might use one JEA endpoint while your application servers use another — Host Groups let you model this without creating separate infrastructures.
+
+:::info
+Host Groups are supported only for the **Physical Data Center (PDC)** infrastructure type.
+:::
+
+##### Configuring Host Groups
+
+To configure Host Groups, select the **Host Groups** tab in the Infrastructure Definition dialog. This tab appears alongside the existing **Single Host** tab when your infrastructure type is set to Physical Data Center.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/pdc-host-groups.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
+
+Select **+ Add Host Group** to create a new group. You can add multiple host groups to the same infrastructure. Each host group expands into a configuration panel with the following fields:
+
+- **Host Group Key:** A unique identifier for the group. This key is required and distinguishes host groups within the infrastructure definition.
+- **Host selection method:** Choose between **Specify hosts** (provide host names inline) or **Select preconfigured hosts from Physical Data Center** (use a PDC connector to pull hosts).
+- **Specify Credentials:** Each host group requires exactly one WinRM credential. All hosts within the group share this credential during deployment.
+
+##### Specifying hosts inline
+
+Select the **Specify hosts** radio button to manually enter host names. Provide a comma-separated list of host names in the **Hosts** field. This approach works well when you have a known, static set of target servers.
+
+##### Using preconfigured hosts from a PDC connector
+
+Select **Select preconfigured hosts from Physical Data Center** to pull hosts from an existing PDC connector. After selecting a connector, choose one of the following filtering options:
+
+- **Include all hosts:** Deploys to every host registered in the PDC connector.
+- **Filter by host name:** Specify a comma-separated list of host names to target a subset of hosts from the connector.
+- **Filter by host attributes:** Filter hosts based on key-value attribute pairs (for example, `hostType:DB, region:west`). Set the **Match Criteria** to **Any** (match at least one attribute) or **All** (match every attribute).
+
+After configuring your host group, select **Preview Hosts** to verify which hosts are resolved based on your configuration.
+
+##### Host Groups YAML reference
+
+<details>
+<summary>Host Groups YAML example</summary>
+
+Below is an example infrastructure definition using Host Groups. The first group specifies inline hosts, the second targets a single host, and the third uses a PDC connector with an "all hosts" filter.
+
+```yaml
+infrastructureDefinition:
+  name: infra_name
+  identifier: infra_id
+  orgIdentifier: default
+  projectIdentifier: project_name
+  environmentRef: env_name
+  deploymentType: WinRm
+  type: Pdc
+  spec:
+    hostGroups:
+      - identifier: hostGroup_1
+        hosts:
+          - host1
+          - host2
+          - host3
+        credentialRef: credential-1
+      - identifier: hostGroup_2
+        hosts:
+          - host4
+        credentialRef: credential-2
+      - identifier: hostGroup_3
+        pdcConnectorRef: pdcRef-1
+        credentialRef: credential-3
+        hostFilter:
+          type: All
+          spec: {}
+    delegateSelectors: []
+  allowSimultaneousDeployments: false
+```
+
+Each entry in `hostGroups` supports:
+
+- **`identifier`:** Unique key for the host group (maps to the **Host Group Key** field in the UI).
+- **`hosts`:** A list of host names when specifying hosts inline.
+- **`pdcConnectorRef`:** Reference to a PDC connector when using preconfigured hosts.
+- **`credentialRef`:** The WinRM credential used for all hosts in this group.
+- **`hostFilter`:** Filtering configuration when using a PDC connector. Supported types are `All`, `HostNames`, and `HostAttributes`.
+
+</details>
+
+##### Using Host Groups with looping strategies
+
+When your pipeline uses a looping strategy with the `<+stage.output.hosts>` expression, the stage repeats for each resolved host across all host groups. Harness resolves hosts from every group, pairs each host with its group's credential, and executes the deployment step for each host individually.
+
+```yaml
+repeat:
+  items: <+stage.output.hosts>
+```
+
+This means you don't need to change your execution logic — the host-to-credential mapping is handled automatically at the infrastructure level.
+
+### Azure
+
+To deploy to Windows VMs hosted in Microsoft Azure, select **Azure** as the infrastructure type in your Infrastructure Definition. Harness connects to your Azure subscription and discovers target VMs based on the criteria you configure.
+
+You need the following settings for an Azure WinRM infrastructure:
+
+- **Connector:** Select or create an Azure Cloud Provider connector that has access to your target subscription.
+- **Subscription Id:** The Azure subscription containing the target VMs.
+- **Resource Group:** The resource group where the VMs reside.
+- **Tags (optional):** Filter VMs by Azure resource tags to target a specific subset of instances.
+- **WinRM Credentials:** A WinRM secret (NTLM or Kerberos) that Harness uses to connect to the target VMs.
+
+:::info
+For Azure WinRM deployments, hostname-based expressions are supported if the hostname is available from the VM metadata. You can also use `<+instance.host.privateIp>` and `<+instance.host.publicIp>`.
+:::
+
+### AWS
+
+To deploy to Windows EC2 instances in Amazon Web Services, select **AWS** as the infrastructure type. Harness uses an AWS connector to discover EC2 instances and WinRM credentials to connect to them.
+
+You need the following settings for an AWS WinRM infrastructure:
+
+- **Connector:** Select or create an AWS Cloud Provider connector. Harness supports OIDC-enabled AWS connectors (requires Delegate version `854xx` or later).
+- **Region:** The AWS region containing the target EC2 instances.
+- **Tags (optional):** Filter instances by AWS resource tags.
+- **WinRM Credentials:** A WinRM secret (NTLM or Kerberos) that Harness uses to connect to the target instances.
+
+Harness calls the [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html) API to retrieve instances both at runtime during the infrastructure step and during instance sync. Your AWS connector's IAM role must have the `ec2:DescribeInstances` permission. For more details on required IAM policies, see [Example policies for working with the AWS CLI or an AWS SDK](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExamplePolicies_EC2.html).
+
+:::info
+For AWS WinRM deployments, hostname-based expressions like `<+instance.hostName>` and `<+instance.host.hostName>` are **not supported**. Use `<+instance.host.privateIp>` or `<+instance.host.publicIp>` instead.
+:::
 
 ### Dynamically provisioned infrastructure
 
@@ -429,7 +577,9 @@ For the subsequent **Host Data Mapping** key-value pairs, you use the expression
 
 Here's an example:
 
-![picture 1](static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png)  
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 
 #### Example
@@ -500,12 +650,9 @@ output "hostInstances" {
 
 In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.region>`.
 
-<figure>
-
-<DocImage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
-
-<figcaption>Figure: Mapped outputs</figcaption>
-</figure>
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 #### Reference mapped instance properties
 
@@ -547,19 +694,6 @@ You can do a **selective rerun** for traditional deployments. These improvements
 - **Expressions for failed hosts**: Retrieve failed hosts dynamically for debugging and retry logic.
 
 For more information, goto [Selective Rerun and Skipping Hosts with Same Artifact](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#selective-rerun-and-skipping-hosts-with-same-artifact)
-
-## Permission to perform WinRM Deployments in AWS
-
-We use the WinRM Credentials to connect to hosts to perform deployment.
-
-We use the AWS Connector to retrieve instances from the AWS Account. The specific calls we make:
-
-- Retrieve the instances at runtime during the infrastructure step - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
-- Retrieve the instances during instance sync to show service instances in the service - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
-
-To use describe instance API, the action is `ec2:DescribeInstances`
-
-Per AWS documentation: Example policies for working with the AWS CLI or an AWS SDK - [Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExamplePolicies_EC2.html)
 
 ## Notes
 
