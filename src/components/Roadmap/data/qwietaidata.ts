@@ -186,22 +186,26 @@ export const QwietaiData: Horizon = {
          {
         tag: [{ value: "Integration" }, { value: "Platform" }],
         title: "Integration with STO",
-        description: "Native integration with STO, enabling Qwiet\'s SAST/SCA/Secrets engines to run as first-class Harness Security Scanners."
+        description: "Native integration with STO, enabling Qwiet\'s SAST/SCA/Secrets engines to run as first-class Harness Security Scanners.",
+        link: "https://developer.harness.io/docs/category/harness-security-scanners"
       },
       {
         tag: [{ value: "Notifications" }, { value: "Platform" }],
         title: "Improved Webhook Notifications",
-        description: "Failed webhook deliveries now retry with exponential backoff and queue on persistent failure."
+        description: "Failed webhook deliveries now retry with exponential backoff and queue on persistent failure.",
+        link: "https://docs.shiftleft.io/sast/integrations/webhooks?_highlight=webhook#delivery-failure-and-notifications"
       }, 
       {
         tag: [{ value: "SAST" }, { value: "Language Support"}],
         title: "Realtime SCA & Secrets in IDE",
         description: "Automatically detect hardcoded secrets and OSS vulnerabilities on code save directly within IDEs.",
+        link: "https://docs.shiftleft.io/sast/integrations/cursor#real-time-sca-and-secrets-detection"
       },
       {
         tag: [{ value: "SAST" }, { value: "Language Support"}],
         title: "Swift Language Support",
         description: "Introduce native SAST scanning support for Swift.",
+        link: "https://docs.shiftleft.io/sast/analyzing-applications/swift"
       },
       {
         tag: [{ value: "Visibility" }, { value: "CPG"}, { value: "SAST"}],
@@ -212,6 +216,7 @@ export const QwietaiData: Horizon = {
         tag: [{ value: "Integration" }, { value: "IDE"}],
         title: "Cursor & Windsurf IDE Support",
         description: "Enable SAST/SCA scanning within AI-native IDEs like Cursor and Windsurf.",
+        link: "https://docs.shiftleft.io/sast/integrations/windsurf"
       },
       {
         tag: [{ value: "IDE" }, { value: "Performance"}, { value: "Multi-Language"}],
@@ -222,6 +227,7 @@ export const QwietaiData: Horizon = {
         tag: [{ value: "Remediation" }, { value: "Automation"}],
         title: "Automated PR Fixes for HCR",
         description: "Enable automated fix-based pull requests within the Harness Code Repository.",
+        link: "https://docs.shiftleft.io/sast/autofix?_highlight=aut#harness-code-repos"
       },
       {
         tag: [{ value: "AI" }, { value: "Remediation"}, { value: "GitHub"}],
@@ -238,25 +244,25 @@ export const QwietaiData: Horizon = {
         tag: [{ value: "Remediation" }, {value: "Automation"}, { value: "SCM" }],
         title: "AutoFix Pull Requests for Bitbucket",
         description: "Create automated fix-based pull requests in Bitbucket with parity to existing SCM integrations.",
-        link:"https://docs.shiftleft.io/software-updates/2025-updates" 
+        link:"https://docs.shiftleft.io/sast/autofix?_highlight=aut#bitbucket-repositories" 
       },
       {
         tag: [{ value: "Reporting" }, {value: "Data Export"}, { value: "Platform" }],
         title: "Nightly Data Export",
         description: "Export findings and related data nightly with rolling retention for 30 days.",
-        link:"https://docs.shiftleft.io/software-updates/2025-updates" 
+        link:"https://docs.shiftleft.io/sast/ui-v2/organizations?_highlight=orga#daily-export" 
       },
       {
         tag: [{ value: "Governance" }, {value: "Policy"}, { value: "CLI" }],
         title: "Build Rules v2 Enhancements",
         description: "Extend build rules with negative rules and additional filters to refine enforcement based on exploitability, AI assistance, and fix availability.",
-        link:"https://docs.shiftleft.io/software-updates/2025-updates" 
+       
       },
       {
         tag: [{ value: "Governance" }, {value: "Policy"}, { value: "CLI" }],
         title: "Webhook Notifications",
         description: "Send authenticated webhook notifications for scan completion and failure events.",
-        link:"https://docs.shiftleft.io/software-updates/2025-updates" 
+        link:"https://docs.shiftleft.io/sast/integrations/webhooks?_highlight=webhook#delivery-failure-and-notifications" 
       },
       {
         tag: [{ value: "SAST" }, {value: "Language Support"}],
