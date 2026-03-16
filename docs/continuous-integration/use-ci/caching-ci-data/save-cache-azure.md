@@ -1,42 +1,271 @@
 ---
-title: Save and Restore Cache from Azure
+title: Save and Restore Cache from Azure Blob Storage
 description: Caching improves build times and enables you to share data across stages.
 sidebar_position: 41
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import PreserveMetadata from '/docs/continuous-integration/shared/preserve-metadata.md';
 
-You can use the [Cache plugin](https://github.com/drone-plugins/drone-meltwater-cache) in your CI pipelines to save and retrieve cached data from Azure storage.
+You can use caching to share data across stages or run pipelines faster by reusing data from previous builds.
 
-:::warning
-
-You can't share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
-
+:::tip
+Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically cache and restore software dependencies.
 :::
 
-## Requirements
+You can cache data to an Azure Blob Storage container in one stage using the **Save Cache to Azure** step, and restore it in the same stage or a following stage using the **Restore Cache from Azure** step. You can't share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
+
+This topic explains how to configure the **Save Cache to Azure** and **Restore Cache from Azure** steps in Harness CI.
+
+## Azure Blob Storage and connector requirements
 
 You need:
 
-* Access to Azure storage.
-* A [CI pipeline](../prep-ci-pipeline-components.md) where you want to use Azure caching.
+* A dedicated Azure Storage account for your Harness CI cache operations.
+* A dedicated Azure Blob container for CI cache data.
 
-## Add save and restore cache steps
+   :::warning
 
-To use the Cache plugin for Azure caching, you use [Plugin steps](../use-drone-plugins/plugin-step-settings-reference.md).
+   Use a dedicated container for cache data only. Do not save files to the container manually. The Restore Cache operation fails if the container includes files that do not have a Harness cache key.
+
+   :::
+
+* An [Azure connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector) with read/write access to your target storage account and container.
+
+## Add the Save Cache to Azure step
+
+Add the **Save Cache to Azure** step after steps that build and test your code.
+
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+
+1. Go to the pipeline and stage where you want to add the **Save Cache to Azure** step.
+2. Select **Add Step**, select **Add Step** again, and then select **Save Cache to Azure** in the Step Library.
+3. Configure the [Save Cache to Azure step settings](#save-cache-to-azure-step-settings).
+4. Select **Apply changes** to save the step.
+
+</TabItem>
+  <TabItem value="YAML" label="YAML" default>
+
+To add a **Save Cache to Azure** step in the YAML editor, add a `type: SaveCacheAzure` step, then define the [Save Cache to Azure step settings](#save-cache-to-azure-step-settings). The following are required:
+
+* `connectorRef`: The Azure connector ID.
+* `storageAccount`: The Azure Storage account name.
+* `containerName`: The Azure Blob container name.
+* `key`: The cache key to identify the cache.
+* `sourcePaths`: Files and folders to cache. Specify each file or folder separately.
+* `archiveFormat`: The archive format. The default format is `Tar`.
+
+Here is a YAML example of a **Save Cache to Azure** step.
+
+```yaml
+              - step:
+                  type: SaveCacheAzure
+                  name: Save Cache to Azure
+                  identifier: Save_Cache_to_Azure
+                  spec:
+                    connectorRef: account.azure_connector
+                    containerName: ci-cache
+                    storageAccount: yourstorageaccount
+                    key: cache-{{ checksum "pom.xml" }}
+                    sourcePaths:
+                      - /shared
+                    archiveFormat: Tar
+...
+```
+
+</TabItem>
+</Tabs>
+
+### Save Cache to Azure step settings
+
+The **Save Cache to Azure** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+
+#### Name
+
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+
+#### Azure Connector
+
+The Harness Azure connector to use when saving the cache to Azure Blob Storage.
+
+#### Key
+
+The key to identify the cache.
+
+You can use the checksum macro to create a key based on a file's checksum, for example: `myApp-{{ checksum filePath1 }}`
+
+With this macro, Harness checks if the key exists and compares the checksum. If the checksum matches, Harness does not save the cache. If the checksum is different, Harness saves the cache.
+
+The backslash character is not allowed as part of the checksum value here. This is a limitation of the Go language (golang) template. You must use a forward slash instead.
+
+* Incorrect format: `cache-{{ checksum ".\src\common\myproj.csproj" }`
+* Correct format: `cache-{{ checksum "./src/common/myproj.csproj" }}`
+
+#### Storage Account
+
+The Azure Storage account where you want to save the cache.
+
+#### Container Name
+
+The Azure Blob container where the cache is stored.
+
+#### Source Paths
+
+A list of the files/folders to cache. Add each file/folder separately.
+
+#### Archive Format
+
+Select the archive format. The default archive format is Tar.
+
+#### Override Cache
+
+Select this option if you want to override the cache when a cache with a matching **Key** already exists.
+
+By default, the **Override Cache** option is set to false (unselected).
+
+#### Run as User
+
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+
+#### Set Container Resources
+
+Maximum resources limits for the resources used by the container at runtime:
+
+* **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+
+#### Timeout
+
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
+
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+
+<PreserveMetadata/>
+
+## Add the Restore Cache from Azure step
+
+Add the **Restore Cache from Azure** step before steps that build and test your code.
+
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+
+1. Go to the pipeline and stage where you want to add the **Restore Cache from Azure** step.
+2. Select **Add Step**, select **Add Step** again, and then select **Restore Cache from Azure** in the Step Library.
+3. Configure the [Restore Cache from Azure step settings](#restore-cache-from-azure-step-settings). The storage account, container, and key must correspond with the settings in the **Save Cache to Azure** step.
+4. Select **Apply changes** to save the step, and then select **Save** to save the pipeline.
+
+</TabItem>
+  <TabItem value="YAML" label="YAML" default>
+
+To add a **Restore Cache from Azure** step in the YAML editor, add a `type: RestoreCacheAzure` step, and then define the [Restore Cache from Azure step settings](#restore-cache-from-azure-step-settings). The following settings are required:
+
+* `connectorRef`: The Azure connector ID.
+* `storageAccount`: The Azure Storage account name. This must correspond with the Save Cache to Azure `storageAccount`.
+* `containerName`: The Azure Blob container name. This must correspond with the Save Cache to Azure `containerName`.
+* `key`: The cache key. This must correspond with the Save Cache to Azure `key`.
+* `archiveFormat`: The archive format, corresponding with the Save Cache to Azure `archiveFormat`.
+
+Here is a YAML example of a **Restore Cache from Azure** step.
+
+```yaml
+              - step:
+                  type: RestoreCacheAzure
+                  name: Restore Cache from Azure
+                  identifier: Restore_Cache_from_Azure
+                  spec:
+                    connectorRef: account.azure_connector
+                    containerName: ci-cache
+                    storageAccount: yourstorageaccount
+                    key: cache-{{ checksum "pom.xml" }}
+                    archiveFormat: Tar
+...
+```
+
+</TabItem>
+</Tabs>
+
+### Restore Cache from Azure step settings
+
+The **Restore Cache from Azure** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+
+#### Name
+
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+
+#### Azure Connector
+
+The Harness connector to use when restoring the cache from Azure Blob Storage. If your pipeline also has a **Save Cache to Azure** step, these steps typically use the same connector.
+
+#### Key
+
+The key identifying the cache that you want to retrieve. If your pipeline also has a **Save Cache to Azure** step, the key value must be the same to restore the previously-saved cache.
+
+The backslash character is not allowed as part of the checksum value here. This is a limitation of the Go language (golang) template. You must use a forward slash instead.
+
+* Incorrect format: `cache-{{ checksum ".\src\common\myproj.csproj" }`
+* Correct format: `cache-{{ checksum "./src/common/myproj.csproj" }}`
+
+#### Storage Account
+
+The Azure Storage account where the target cache is saved.
+
+#### Container Name
+
+The Azure Blob container where the target cache is saved.
+
+#### Archive Format
+
+Select the archive format. The default archive format is Tar.
+
+#### Fail if Key Doesn't Exist
+
+Select this option to fail the step if the specified **Key** does not exist.
+
+By default, this option is set to false (unselected).
+
+#### Run as User
+
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+
+#### Set Container Resources
+
+Maximum resources limits for the resources used by the container at runtime:
+
+* **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+
+#### Timeout
+
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
+
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+
+## Set shared paths for cache locations outside the stage workspace
+
+Steps in the same stage share the same [workspace](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#workspace), which is `/harness`. If your steps need to use data in locations outside the stage workspace, you must specify these as [shared paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage). This is required if you want to cache directories outside `/harness`. For example:
+
+```yaml
+  stages:
+    - stage:
+        spec:
+          sharedPaths:
+            - /example/path # directory outside workspace to share between steps
+```
+
+## Use the Cache Plugin step
+
+You can also save and restore Azure caches using the [Cache Plugin](https://github.com/drone-plugins/drone-meltwater-cache) in a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md). Harness recommends the native **Save Cache to Azure** and **Restore Cache from Azure** steps described above.
+
+<details>
+<summary>Save and restore Azure cache with the Cache Plugin step</summary>
 
 You must use separate Plugin steps to save and restore the cache.
 
-### Determine cache step placement
-
-Where you place the save and restore steps depends on how you [use caching in your pipeline](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages):
-
-* Caching in one stage: Place the restore cache step *before* the save cache step.
-* Caching across multiple stages: Place the save cache step in the stage where you create the data you want to cache, and then place the restore cache step in the stage where you want to load the previously-cached data.
-
-### Restore Azure cache
-
-To restore a cache from Azure, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `cache` plugin, for example:
+#### Restore cache with the Cache Plugin step
 
 ```yaml
               - step:
@@ -44,42 +273,21 @@ To restore a cache from Azure, add a [Plugin step](../use-drone-plugins/plugin-s
                   name: restore cache from Azure
                   identifier: restore_cache_from_Azure
                   spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR ## Specify a Docker connector to pull the plugin image.
-                    image: plugins/cache ## Must be 'plugins/cache'. This is the Cache plugin image.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+                    image: plugins/cache
                     settings:
-                      restore: true ## You must include 'restore: true' to use the Cache plugin to restore a cache.
-                      cache_key: <+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }} ## Specify the Azure container and the identifier of the cache to restore. Review notes about this setting below.
-                      archive_format: gzip ## Specify the archive format.
-                      mount: ## Provide paths to directories to restore.
+                      restore: true
+                      cache_key: <+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }}
+                      archive_format: gzip
+                      mount:
                         - <+pipeline.variables.GRADLE_HOME>/caches/
-                      region: <+pipeline.variables.REGION> ## The Azure bucket region
-                      account_key: <+pipeline.variables.AZURE_KEY> ## Azure token to access the bucket
-                      account_name: <+pipeline.variables.AZURE_BLOB_ACCOUNT> ## Azure bucket name
-                      backend: azure ## Hardcoded backend type
+                      region: <+pipeline.variables.REGION>
+                      account_key: <+pipeline.variables.AZURE_KEY>
+                      account_name: <+pipeline.variables.AZURE_BLOB_ACCOUNT>
+                      backend: azure
 ```
 
-:::tip
-
-Harness recommends storing sensitive values, such as tokens, as [Harness secrets](/docs/platform/secrets/add-use-text-secrets). You can then use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) to reference these secrets, such as `<+secrets.getValue("azure_key")>`.
-
-:::
-
-#### cache_key
-
-When using the `cache` plugin to restore an Azure cache, the `cache_key` is the Azure container and the identifier of the cache to restore. Note the following additional information about this setting:
-
-* The cache plugin can accept a `blob_container_name` value; however, this is not needed because the Azure container name is referenced in the `cache_key`.
-* For pipelines stored in Git repos, the cache plugin attempts to find an Azure container named after your Git repo.
-* For the cache identifier, you can use a checksum for a build tool or a static identifier. Usually the identifier is some form of a variable value based on the build number or a checksum.
-* This example [uses stage variables](#use-stage-variables) to populate parts of the cache key:
-
-```
-<+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }}
-```
-
-### Save Azure cache
-
-To save a cache to Azure, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `cache` plugin, for example:
+#### Save cache with the Cache Plugin step
 
 ```yaml
               - step:
@@ -87,204 +295,53 @@ To save a cache to Azure, add a [Plugin step](../use-drone-plugins/plugin-step-s
                   name: save cache to Azure
                   identifier: save_cache_to_Azure
                   spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR ## Specify a Docker connector to pull the plugin image.
-                    image: plugins/cache ## Must be 'plugins/cache'. This is the Cache plugin image.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+                    image: plugins/cache
                     settings:
-                      rebuild: true ## You must include 'rebuild: true' to use the Cache plugin to save a cache.
-                      cache_key: <+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }} ## Specify the Azure container and the identifier of the cache to save. Review notes about this setting below.
-                      archive_format: gzip ## Specify the archive format.
-                      mount: ## Provide paths to directories to cache relative to the workspace root '/harness'. You must add 'sharedPaths' for cache locations outside the stage workspace.
+                      rebuild: true
+                      cache_key: <+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }}
+                      archive_format: gzip
+                      mount:
                         - <+pipeline.variables.GRADLE_HOME>/caches/
-                      region: <+pipeline.variables.REGION> ## The Azure bucket region
-                      account_key: <+pipeline.variables.AZURE_KEY> ## Azure token to access the bucket
-                      account_name: <+pipeline.variables.AZURE_BLOB_ACCOUNT> ## Azure bucket name
-                      backend: azure ## Hardcoded backend type
+                      region: <+pipeline.variables.REGION>
+                      account_key: <+pipeline.variables.AZURE_KEY>
+                      account_name: <+pipeline.variables.AZURE_BLOB_ACCOUNT>
+                      backend: azure
 ```
 
-:::tip
+#### Configure stage variables for the Cache Plugin step
 
-Harness recommends storing sensitive values, such as tokens, as [Harness secrets](/docs/platform/secrets/add-use-text-secrets). You can then use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) to reference these secrets, such as `<+secrets.getValue("azure_key")>`.
-
-:::
-
-#### cache_key
-
-When using the `cache` plugin to save an Azure cache, the `cache_key` is the Azure container and the identifier of the cache to save. Note the following additional information about this setting:
-
-* The cache plugin can accept a `blob_container_name` value; however, this is not needed because the Azure container name is referenced in the `cache_key`.
-* For pipelines stored in Git repos, the cache plugin attempts to find an Azure container named after your Git repo.
-* For the cache identifier, you can use a checksum for a build tool or a static identifier. Usually the identifier is some form of a variable value based on the build number or a checksum.
-* This example [uses stage variables](#use-stage-variables) to populate parts of the cache key:
-
-```
-<+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }}
-```
-
-<PreserveMetadata/>
-
-### Set shared paths for cache locations outside the stage workspace
-
-In a Harness pipeline, all steps in a given stage share the same [workspace](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#workspace), which is `/harness`.
-
-If your steps need to use data in locations outside the root workspace, you must add these as [shared paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
-
-:::warning
-
-Shared paths are required if you want to cache directories outside `/harness`.
-
-:::
-
-For example:
-
-```yaml
-  stages:
-    - stage:
-        spec:
-          sharedPaths:
-            - /example/path # Directory outside workspace to share between stages
-```
-
-### Use stage variables (optional)
-
-The cache plugin requires several settings, including secrets and other sensitive values. You might find it useful to provide these values through [stage variables](../set-up-build-infrastructure/ci-stage-settings.md#advanced-stage-variables), rather than placing the literal values directly in the Plugin steps.
-
-These examples use Gradle. Your variables and values might differ depending on your build tool, caching needs, and where you choose to use variables.
+These stage variables help you avoid hardcoding values in Plugin step YAML:
 
 ```yaml
   variables:
     - name: AZURE_CONTAINER
       type: String
-      description: "Used in the cache key. Specifies the container within the bucket."
       value: somecontainer
     - name: AZURE_BLOB_ACCOUNT
       type: String
-      description: "Azure account name."
       value: someaccount
     - name: REGION
       type: String
-      description: "Azure bucket location."
-      value: us-west-2
+      value: westus2
     - name: AZURE_KEY
       type: String
-      description: "Reference a Harness text secret containing your Azure account key."
       value: <+secrets.getValue("azureblobkey")>
     - name: GRADLE_HOME
       type: String
-      description: "Used in mount path. Build-specific Gradle home location and the child cache folder beneath."
       value: /harness/gradle
     - name: BUILD_PATH
       type: String
-      description: "Used in the cache key checksum. Optional path to build.gradle within a Git repo."
       value: gradle-examples/some-gradle-examples
 ```
 
-## Pipeline YAML example
+:::tip
 
-Here's an example of a pipeline that builds and tests a Go app. It includes steps to restore and save a cache to Azure storage.
+Store sensitive values, such as tokens, as [Harness secrets](/docs/platform/secrets/add-use-text-secrets). You can then use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) to reference these secrets, such as `<+secrets.getValue("azure_key")>`.
 
-```yaml
-  stages:
-    - stage:
-        identifier: testgo
-        type: CI
-        name: testGo
-        description: ""
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  identifier: go_env
-                  type: Run
-                  name: go env
-                  spec:
-                    shell: Sh
-                    command: go env
-              - step:
-                  identifier: setupgo
-                  type: Action
-                  name: Setup Go
-                  spec:
-                    uses: actions/setup-go@v4
-                    with:
-                      go-version: 1.21.x
-                  timeout: ""
-              - step:
-                  identifier: Azure_restore_cache
-                  type: Plugin
-                  name: Azure restore cache
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    image: plugins/cache
-                    settings:
-                      backend: azure
-                      restore: true
-                      account_key: <+secrets.getValue("azureblobkey")>
-                      account_name: azureAccountName
-                      archive_format: gzip
-                      region: westus2
-                      mount:
-                        - /home/harness/.cache/go-build
-                        - /home/harness/go/pkg/mod
-                      cache_key: "<+pipeline.identifier>/cache-{{ .Commit.Branch }}-{{\
-                        \ checksum \"go.mod\" }}-{{ checksum \"go.sum\" }}"
-              - step:
-                  identifier: rununittests
-                  type: Run
-                  name: Run unit tests
-                  spec:
-                    command: |-
-                      export PATH=$(go env GOPATH)/bin:$PATH
-                      go install github.com/jstemmer/go-junit-report/v2@latest
-                      go test -v ./... -coverprofile cover.out | tee report.out
-                      cat report.out | go-junit-report -set-exit-code > report.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-              - step:
-                  identifier: debug
-                  type: Run
-                  name: debug
-                  spec:
-                    shell: Sh
-                    command: |-
-                      go env
-                      ls /home/harness/.cache/go-build
-                      ls /home/harness/go/pkg/mod
-              - step:
-                  identifier: Azure_write_cache
-                  type: Plugin
-                  name: Azure write cache
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    image: plugins/cache
-                    settings:
-                      rebuild: true
-                      cache_key: "<+pipeline.identifier>/cache-{{ .Commit.Branch }}-{{\
-                        \ checksum \"go.mod\" }}-{{ checksum \"go.sum\" }}"
-                      archive_format: gzip
-                      mount:
-                        - /home/harness/.cache/go-build
-                        - /home/harness/go/pkg/mod
-                      region: westus2
-                      account_key: <+secrets.getValue("azureblobkey")>
-                      account_name: azureAccountName
-                      backend: azure
-          sharedPaths:
-            - /home/harness
-```
+:::
 
-## Cache step logs
-
-When you run a pipeline with caching steps, you can observe and review build logs on the [Build details page](../viewing-builds.md).
+</details>
 
 ## Troubleshoot caching
 
