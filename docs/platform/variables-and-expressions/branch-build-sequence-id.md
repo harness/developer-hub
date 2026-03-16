@@ -55,6 +55,16 @@ The expression returns `null` when:
 - Build targets a **specific commit SHA** without branch context
 - The feature flag is not enabled
 
+### Pipelines with codebase disabled
+
+The branch sequence ID works even when **Clone Codebase** is disabled in your pipeline's codebase configuration. When a webhook trigger fires, Harness extracts the branch and repository information directly from the trigger event payload, so the sequence counter increments correctly regardless of whether the pipeline clones the repository.
+
+This is useful for pipelines that:
+
+- Use a custom clone step instead of the built-in Clone Codebase
+- Only need metadata from the trigger (branch name, PR number) without cloning
+- Clone repositories conditionally based on pipeline logic
+
 ## Expression reference
 
 | Expression | Description |
