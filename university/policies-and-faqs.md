@@ -167,13 +167,6 @@ Use the navigation within the Skilljar dashboard to find your desired course. If
 
 Enter your coupon code in the designated box during the checkout process. If the code doesn't work, please email [certifications@harness.io](mailto:certifications@harness.io).
 
-### How do I retake a paid exam?
-For the Admin and Architect level exams, we allow for up to two free retakes on paid exams back to back. 
-
-* If you have purchased an exam via Harness University (university-registration.harness.io), please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can provide a retake coupon code.
-*  If you have accessed an exam via Harness Partner Portal (partnertraining.harness.io) please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can process your retake. 
-* If you have exceeded your two re-attempts, there will be a cool-off period of 30 days e.g one month before allowing to re-attempt again. 
-
 ---
 
 ## Requesting Accommodations for Exams
@@ -200,9 +193,9 @@ Certain Harness Partner Tiers have access to Admin/Architect exams.
 
 - Please e-mail [certifications@harness.io](mailto:certifications@harness.io) to process a retake. 
 - Partners are allowed up to two retakes. If two retakes have been applied, there is a cool off period of 30 days before any additional attempts. 
+  - Each subsequent retake after 30 days will be treated as a cool off period of 30 days per attempt. 
 
 ---
-
 
 
 ## Inquiries about Instructor-Led Training
