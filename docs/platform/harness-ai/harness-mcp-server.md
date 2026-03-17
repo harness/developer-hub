@@ -12,7 +12,7 @@ The Harness Model Context Protocol (MCP) Server enables integration with Harness
 ## Harness MCP V2 Server (Early Preview)
 
 :::info Early Preview — Open Source
-The Harness MCP V2 Server is available as an **Early Preview** release. It is fully open source and community feedback is encouraged. If you encounter issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/thisrohangupta/harness-mcp-v2).
+The Harness MCP V2 Server is available as an **Early Preview** release. It is fully open source and community feedback is encouraged. If you encounter issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/harness/mcp-server).
 
 - **NPM Package:** [harness-mcp-v2 on npm](https://www.npmjs.com/package/harness-mcp-v2)
 - **Source Code:** [https://github.com/harness/mcp-server](https://github.com/harness/mcp-server)
