@@ -59,6 +59,7 @@ For enterprise customers with strict compliance and security requirements, cloud
 - **Granular access control** - Restrict access to specific VPCs, subnets, or security principals
 - **Simplified compliance** - Meets internal-only networking requirements for regulated industries
 - **Easy to configure** - No VPNs or complex firewall rules required
+- **Access non-public services** - Reach internal APIs, services with no public IPs, resources behind internal load balancers, and workloads in isolated VPCs, all through private networking paths
 
 ### Available solutions
 

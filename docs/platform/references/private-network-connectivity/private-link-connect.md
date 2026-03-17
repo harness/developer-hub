@@ -39,6 +39,8 @@ Use AWS PrivateLink / Google Private Service Connect if your Harness Cloud pipel
 * Internal dev/test APIs  
 * Anything reachable only inside your VPC/VNet
 
+This includes services that are **not publicly addressable**, for example, resources with no public IP, services behind internal-only load balancers, endpoints reachable only via internal DNS, or workloads running in isolated VPCs or accounts. As long as you can expose the service via an AWS PrivateLink Endpoint Service or GCP Private Service Connect service attachment on your side, Harness Cloud can reach it through the private connection.
+
 ---
 
 ## **How it works (high level)**
