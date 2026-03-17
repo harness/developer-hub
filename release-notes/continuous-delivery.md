@@ -64,8 +64,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness now supports **Host Groups** for Physical Data Center (PDC) WinRM deployments, letting you assign independent WinRM credentials to different groups of hosts within a single infrastructure definition. This removes the previous limitation of a single shared credential and enables environments using Just Enough Administration (JEA) with distinct endpoint configurations per server group. (**CDS-115563**)
 
-- Harness now support integration with **Dynatrace Site Reliability Guardian (SRG)** for automated release validation during Kubernetes canary deployments. Using HTTP steps, Harness triggers a Dynatrace SRG workflow after deploying a canary pod, polls for the validation verdict, and automatically promotes the deployment on `PASS` or rolls it back on `FAIL`. This requires a Dynatrace API token stored in Harness Secret Manager and the SRG workflow ID. (CDS-117109)
-
 - Google Managed Instance Group (MIG) deployments now support **Google Cloud Storage** as a manifest source for storing MIG manifests and templates. 
 
 #### Fixed issues
