@@ -118,6 +118,15 @@ import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 Use this field to run the OWASP [`dependency-check`](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scan with additional CLI flags, for example: 
 
 `--disableYarnAudit --log /shared/scan_logs/owasp.txt`
+ Use these flags to authenticate with the Sonatype OSS Index vulnerability database. Providing authentication helps avoid rate limits and improves the reliability of vulnerability lookups.
+
+`--ossIndexUsername` and `--ossIndexPassword`  
+Use these flags to authenticate with the OSS Index database to retrieve vulnerability information.
+
+`--disableOssIndex`  
+Use this flag to disable the OSS Index vulnerability database and to rely only on the NVD for vulnerability information.
+
+
       
 With these flags, the scanner skips the yarn Audit Analyzer and outputs the log to a shared folder, where it can be accessed by a later step. 
 
