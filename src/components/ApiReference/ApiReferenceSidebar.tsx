@@ -113,6 +113,7 @@ export default function ApiReferenceSidebar({
                 >
                   {endpoints.map((entry) => {
                       const id = endpointId(entry);
+                      const label = endpointLabel(entry);
                       const isSelected =
                         selectedEndpoint &&
                         endpointId(selectedEndpoint) === id;
@@ -130,8 +131,9 @@ export default function ApiReferenceSidebar({
                               onEndpointClick?.(entry);
                             }}
                             aria-current={isSelected ? 'true' : undefined}
+                            title={label}
                           >
-                            <span className={styles.endpointLabel}>{endpointLabel(entry)}</span>
+                            <span className={styles.endpointLabel}>{label}</span>
                             <span className={`${styles.endpointMethod} ${getMethodClass(styles, entry.method)}`}>{entry.method.toUpperCase()}</span>
                           </button>
                         </li>

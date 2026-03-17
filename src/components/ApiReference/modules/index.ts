@@ -10,12 +10,14 @@ import infraAsCodeManagement from './infra-as-code-management/config';
 import artifactRegistry from './artifact-registry/config';
 import securitySupplyChain from './software-supply-chain-assurance/config';
 import { parseSpec as softwareSupplyChainParseSpec } from './software-supply-chain-assurance/parser';
+import softwareEngineeringInsights from './software-engineering-insights/config';
 
 const MODULE_CONFIGS: Record<string, ApiReferenceModuleConfig> = {
   'code-repository': codeRepository,
   'infra-as-code-management': infraAsCodeManagement,
   'artifact-registry': artifactRegistry,
   'software-supply-chain-assurance': securitySupplyChain,
+  'software-engineering-insights': softwareEngineeringInsights,
 };
 
 /** Optional per-module spec parser. Receives raw parsed spec; returns normalized OpenApiSpec for the UI. */

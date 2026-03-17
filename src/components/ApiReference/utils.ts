@@ -104,43 +104,78 @@ export function getSchemaTypeDisplay(schema: Record<string, unknown> | undefined
 }
 
 /** Build a sample JSON value from an OpenAPI schema (for sample responses). Avoids null; uses empty object/string/array so responses are always populated. */
-function sampleFromSchema(spec: OpenApiSpec, schema: SchemaLike | undefined, seen = new Set<string>()): unknown {
+function sampleFromSchema(
+  spec: OpenApiSpec,
+  schema: SchemaLike | undefined,
+  seen = new Set<string>(),
+  depth = 0
+): unknown {
+
+  const MAX_DEPTH = 6;
+
   if (!schema || typeof schema !== 'object') return {};
+  if (depth > MAX_DEPTH) return {};
+
   const ref = schema.$ref;
+
   if (ref) {
     if (seen.has(ref)) return {};
+
     seen.add(ref);
     const resolved = resolveRef(spec, ref) as SchemaLike | undefined;
-    const out = resolved ? sampleFromSchema(spec, resolved, seen) : {};
+
+    const out = resolved
+      ? sampleFromSchema(spec, resolved, seen, depth + 1)
+      : {};
+
     seen.delete(ref);
     return out;
   }
+
   if (schema.example !== undefined) return schema.example;
   if (schema.default !== undefined) return schema.default;
   if (Array.isArray(schema.enum) && schema.enum.length > 0) return schema.enum[0];
+
   const type = schema.type as string | undefined;
+
   if (type === 'object' && schema.properties) {
     const obj: Record<string, unknown> = {};
-    for (const [key, propSchema] of Object.entries(schema.properties as Record<string, SchemaLike>)) {
-      const value = sampleFromSchema(spec, propSchema, seen);
+
+    for (const [key, propSchema] of Object.entries(
+      schema.properties as Record<string, SchemaLike>
+    )) {
+      const value = sampleFromSchema(spec, propSchema, seen, depth + 1);
       obj[key] = value === null ? {} : value;
     }
+
     return obj;
   }
+
   if (type === 'object') return {};
+
   if (type === 'array') {
     const items = schema.items as SchemaLike | undefined;
+
     if (items && typeof items === 'object') {
       const resolvedItems = resolveSchema(spec, items, seen) ?? items;
       const itemType = (resolvedItems as SchemaLike).type;
       const hasProperties = !!(resolvedItems as SchemaLike).properties;
+
       if (itemType === 'object' || hasProperties) {
-        const item = sampleFromSchema(spec, resolvedItems as SchemaLike, seen);
+        const item = sampleFromSchema(
+          spec,
+          resolvedItems as SchemaLike,
+          seen,
+          depth + 1
+        );
+
         return [item === null ? {} : item];
       }
     }
+
     return ['string'];
   }
+
   switch (type) {
     case 'string':
       return '';
@@ -371,6 +406,8 @@ const CAPITALIZATION_EXCEPTIONS = [
   'URI',
   'HTML',
   'XML',
+  'SCS',
+  'SEI',
 ];
 
 /**
