@@ -15,6 +15,26 @@ export const DbdevopsData: Horizon = {
     description: "What has been released in the last ~2 Quarters",
     feature: [
       {
+        title: "Snowflake Support",
+        description:
+          "support using DBDevOps against Snowflake.",
+        tag: [{ value: "Integrations" }, {value: "Q1"}],
+        link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#prerequisites-for-snowflake"
+      },
+      {
+        title: "IAM Auth for GCP & Liquibase",
+        description:
+          "support using DBDevOps to connect with IAM Auth for GCP and Liquibase.",
+        tag: [{ value: "Integrations" }, {value: "Q1"}]
+      },
+      {
+        title: "Kerberos Auth",
+        description:
+          "support using DBDevOps to connect with Kerberos Auth for Oracle and MSSQL.",
+        tag: [{ value: "Integrations" }, {value: "Q1"}],
+        link: "https://developer.harness.io/docs/database-devops/features/kerberos-authentication/"
+      },
+      {
         title: "Author DB Change",
         description:
           "Author database change via natural language queries, powered by Harness AI.",
@@ -24,7 +44,7 @@ export const DbdevopsData: Horizon = {
       {
         title: "Native Flyway Support",
         description:
-          "Add native support for using Flyway instead of liquibase",
+          "Add native support for using Flyway instead of Liquibase",
         tag: [{ value: "Integrations" }, {value: "Q4"}],
         link:"https://developer.harness.io/docs/database-devops/use-database-devops/get-started/onboarding-guide/"
       },
@@ -36,79 +56,17 @@ export const DbdevopsData: Horizon = {
         link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors#setting-up-alloydb"
       },
       {
-        title: "Log Size (Phase 2)",
+        title: "MongoDB Native Executor",
         description:
-          "Change how we transport preview SQL from the build pod back to harness to remove the SQL size limit",
-        tag: [{ value: "Orchestration" }, {value: "Q3"}],
-      },
-      {
-        title: "Licensing",
-        description:
-          "Implement a subscription UI for Harness Database DevOps",
-        tag: [{ value: "Visibility" }, {value: "Q3"}],
-      },
-      {
-        title: "Support Nesting Step Groups",
-        description:
-          "Allow DB DevOps steps to be used in step groups within other step groups",
-        tag: [{ value: "Orchestration" }, {value: "Q3"}],
-      },
-      {
-        title: "Variable Branch Override",
-        description:
-          "Allow a DB Instance to read the branch it deploys to from a pipeline variable. This is useful for deploying feature branches.",
-        tag: [{ value: "Orchestration" }, {value: "Q2"}],
-      },
-      {
-        title: "Log Size (Phase 1)",
-        description:
-          "Add compression to preview step logs to increase maximum supported SQL size beyond 64kb by approximately 5x.",
-        tag: [{ value: "Orchestration" }, {value: "Q2"}],
-      },
-      {
-        title: "Change Audits",
-        description:
-          "Visibility into database changes and the history of applying them across numerous Database DevOps screens",
-        tag: [{ value: "Visibility" }, {value: "Q2"}],
-        link:"https://developer.harness.io/docs/database-devops/concepts-and-features/unified-environment-overview/#viewing-changesets-in-the-harness-database-devops-ui"
-      },
-      {
-        title: "ChangeID Output",
-        description:
-          "Add an output on the apply step that outputs the list of change IDs that were applied.",
-        tag: [{ value: "Orchestration" }, {value: "Q2"}],
-        link:"https://developer.harness.io/docs/database-devops/concepts-and-features/access-applied-changesets"
-      },
-      {
-        title: "CockroachDB Support",
-        description:
-          "support using DBDevOps against CockroachDB.",
-        tag: [{ value: "Integrations" }, {value: "Q2"}],
-        link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors"
+          "Allow directly running mongo.sh scripts from within a changeset",
+        tag: [{ value: "Integrations" }, {value: "Q4"}],
+        link: "https://developer.harness.io/docs/database-devops/concepts/database-devops/concepts/mongodb-command/#what-is-native-execution-for-mongodb"
       }
     ],
   },
   "Now": {
     description: "Currently under active development, ~ current quarter",
-    feature: [  
-      {
-        title: "Kerberos Auth",
-        description:
-          "Support Kerberos Auth for Oracle and MSSQL",
-        tag: [{ value: "Integrations" }],
-      },
-      {
-        title: "MongoDB Native Executor",
-        description:
-          "Allow directly running mongo .sh scripts from within a changeset",
-        tag: [{ value: "Integrations" }],
-      },  
-      {
-        title: "Support Snowflake",
-        description:
-          "Allow using Database DevOps against Snowflake",
-        tag: [{ value: "Integrations" }],
-      },     
+    feature: [       
       {
         title: "Support Percona",
         description:
@@ -119,12 +77,30 @@ export const DbdevopsData: Horizon = {
         title: "Onboarding Wizard",
         description:
           "guided setup experience for new users",
-        tag: [{ value: "Integrations" }],
+        tag: [{ value: "Core Features" }],
       },    
       {
-        title: "DynamoDB Support",
+        title: "DynamoDB support",
         description:
-          "Support applying database changes to DynamoDB",
+          "support applying database changes to DynamoDB",
+        tag: [{ value: "Integrations" }],
+      },
+      {
+        title: "ECS Runner Support",
+        description:
+          "support using DB DevOps with an ECS runner instead of requiring a Kubernetes delegate.",
+        tag: [{ value: "Integrations" }],
+      },
+      {
+        title: "AI Author DB Change - v2",
+        description:
+          "simplify setup of AI Authorings ability to open a PR for the generated change.",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Support for DB2",
+        description: 
+          "Add DB2 as a supported database.",
         tag: [{ value: "Integrations" }],
       },
     ],
@@ -139,28 +115,46 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "Relationship Diagram",
+        title: "Teradata Support",
         description:
-          "visualize the state of database tables within a db instance",
-        tag: [{ value: "Core Features" }],
-      },
-      {
-        title: "Drift Detection",
-        description:
-          "Detect and surface schema differences between a database and its expected state",
+          "Add Teradata as a supported database",
         tag: [{ value: "Core Features" }],
       },
       {
         title: "Impact Analysis",
-        description:
-          "a Pipeline step to analyze and surface possible unintended consequences of a cahgne before deploying it.",
+        description: 
+          "Automatically analyze changes against db metadata before applying to surface possible unintended consequences.",
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "Variablized JDBC URL",
+        title: "BigTable Support",
         description:
-          "Allow referencing properties from a database instance inside the JDBC URL of a database connector.",
-        tag: [{ value: "Orchestration" }],
+          "Add Google BigTable as a supported database",
+        tag: [{ value: "Integrations" }],
+      },
+      {
+        title: "Oracle Native Executor",
+        description: 
+          "Allow directly running oracle SQL Scripts using Oracle's sqlplus command line utility, instead of Oracle's JDBC driver, which does not support certain proprietary Oracle features natively.",
+        tag: [{ value: "Integrations"}],
+      },
+      {
+        title: "MSSQL Native Executor",
+        description: 
+          "Allow directly running SQL Scripts using Microsoft's sqlcmd command line utility, instead of MSSQL's JDBC driver, which does not support certain proprietary MSSQL features natively.",
+        tag: [{ value: "Integrations"}],
+      },
+      {
+        title: "Governance for MongoDB",
+        description: 
+          "Ability to write rego policies when deploying to MongoDB",
+        tag: [{ value: "Governance" }],
+      },
+      {
+        title: "Relationship Diagram",
+        description:
+          "visualize the state of database tables within a db instance",
+        tag: [{ value: "Core Features" }],
       },
     ]
   },
@@ -168,46 +162,34 @@ export const DbdevopsData: Horizon = {
     description: "typically > 6 months out",
     feature: [
       {
-        tag: [{ value: "Core Features" }],
-        title: "Query Console",
-        description:
-          "Allow developers to run ad-hoc read queries against DBs, with an ability to anonymize results",
-      },
-      {
-        title: "Support for DB2",
-        description: "Add DB2 as a supported database.",
-        tag: [{ value: "Integrations" }],
-      },
-      {
         title: "Support for Spanner for postgresql",
-        description: "Add support for the postgres version of the Google spanner database as a supported database type.",
+        description: 
+          "Add support for the postgres version of the Google spanner database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
         title: "Support for AWS Redshift",
-        description: "Add support for the AWS Redshift database as a supported database type.",
+        description: 
+          "Add support for the AWS Redshift database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
         title: "Support for Couchbase",
-        description: "Add support for the Couchbase database as a supported database type.",
+        description: 
+          "Add support for the Couchbase database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
         title: "Support for Teradata",
-        description: "Add support for the Teradata database as a supported database type.",
+        description: 
+          "Add support for the Teradata database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
         title: "Support for YugabyteDB",
-        description: "Add support for the YugabyteDB database as a supported database type.",
+        description: 
+          "Add support for the YugabyteDB database as a supported database type.",
         tag: [{ value: "Integrations" }],
-      },
-      {
-        tag: [{ value: "Governance" }],
-        title: "Governance for MongoDB",
-        description:
-          "Ability to write rego policies when deploying to MongoDB",
       },
       {
         title: "DB Provisioning",
@@ -216,16 +198,29 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "Impact Analysis",
+        tag: [{ value: "Core Features" }],
+        title: "Changelog Generation",
+        description: 
+          "Automatically generate a baseline changelog from an existing database config without authoring a custom pipeline",
+      },
+      {
+        title: "Query Console",
+        tag: [{ value: "Core Features" }],
+        description: 
+          "Allow developers to run ad-hoc read queries against DBs, with an ability to anonymize results",
+      },
+      {
+        title: "Drift Detection",
         description:
-          "Automatically analyze changes against db metadata before applying to surface possible unintended consequences.",
+          "Detect and surface schema differences between a database and its expected state",
         tag: [{ value: "Core Features" }],
       },
       {
-        tag: [{ value: "Core Features" }],
-        title: "Changelog Generation",
-        description: "Automatically generate a baseline changelog from an existing database config without authoring a custom pipeline",
-      }
+        title: "Variablized JDBC URL",
+        description:
+          "Allow referencing properties from a database instance inside the JDBC URL of a database connector.",
+        tag: [{ value: "Orchestration" }],
+      },
     ],
   }, 
 };
