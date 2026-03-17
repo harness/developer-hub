@@ -75,6 +75,8 @@ Task cancellation is supported for local (Docker) infrastructure, allowing runni
 
 ![Queuing](./static/queuing.png)
 
+For details on configuring capacity limits, use cases, and how stages are distributed across delegates, go to [Capacity-Based Stage Queuing](/docs/platform/delegates-v2/capacity-based-stage-queuing).
+
 ## Standalone tasks
 
 Not all delegate tasks fit the transactional model. The new delegate supports standalone tasks through the CGI (Common Gateway Interface) driver. CGI is a protocol for executing binaries through an HTTP interface, suitable for lightweight synchronous operations that don't require the full transaction lifecycle.

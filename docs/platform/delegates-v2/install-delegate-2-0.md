@@ -825,6 +825,8 @@ NAME="<your delegate name>"
 MAX_STAGES=5
 ```
 
+For a deeper look at queuing behavior, use cases, and how stages are distributed across delegates, go to [Capacity-Based Stage Queuing](/docs/platform/delegates-v2/capacity-based-stage-queuing).
+
 ### Set Graceful Shutdown
 
 :::info Available in version 1.25.2+
