@@ -344,6 +344,16 @@ If you want to restrict a user or user group to deploy using a specific service 
 
 ![](./static/services-and-environments-overview-22.png)
 
+## Metadata sync with bidirectional sync
+
+When you store a service remotely in Git with [bidirectional sync](/docs/platform/git-experience/gitexp-bidir-sync-setup) enabled, Harness automatically syncs entity metadata — **name**, **description**, and **tags** — back to Harness when those fields are updated on the Git side for the default branch.
+
+Previously, modifying service metadata directly in the Git repository did not propagate those changes to Harness, requiring a separate update from the Harness UI. With metadata sync, any change committed to the default branch in Git is reflected in Harness automatically. This sync applies only to the default branch; metadata changes on other branches are not synced.
+
+:::info note
+This feature is behind the feature flag `CDS_GITX_WEBHOOK_SYNC_ENTITY_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
 ## Deleting a Service in Harness
 
 For information on deleting services in Harness, go to **Deleting a Service in Harness** in [Service-based licensing and usage for CD](/docs/continuous-delivery/cd-onboarding/service-licensing-for-cd/).
