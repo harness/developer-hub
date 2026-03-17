@@ -1,43 +1,110 @@
 ---
 title: Database DevOps (DB DevOps) FAQs
-description: This article addresses some frequently asked questions about Harness Database DevOps (DB DevOps).
+description: Frequently asked questions about Harness Database DevOps (DB DevOps), including supported migration tools, rollback capabilities, and deployment workflows.
 sidebar_position: 2
 ---
 
-This article addresses some frequently asked questions about Harness Database DevOps (DB DevOps).
+This page answers common questions about **Harness Database DevOps (DB DevOps)** and how it integrates database changes into modern CI/CD workflows.
 
-### What is DB DevOps?
+## What is Harness DB DevOps?
 
-Harness Database DevOps (DB DevOps) is a new module that integrates database changes into your deployment pipeline and provides greater visibility into database changes. It will allow you to manage database code like application code.
+Harness Database DevOps (DB DevOps) is a module that enables teams to manage database changes using the same CI/CD practices used for application code.
 
-### Does DB DevOps support rollbacks?
+It integrates database schema changes into deployment pipelines, providing visibility, governance, and automation for database deployments across environments.
 
-Yes, rollbacks are supported within the DB DevOps framework. The system includes built-in rollback capabilities that can be customized as needed. For many operations, there is a default rollback behavior that can be overridden if desired. When using raw SQL scripts, a corresponding rollback script can be associated with the change to facilitate the rollback process.
+Key capabilities include:
 
-The rollback mechanism serves as an "undo" feature for database changes. Each change is recorded as a changeset, which includes both the change itself and the associated rollback instructions.
+- Pipeline-driven database deployments  
+- Version-controlled database changes  
+- Integration with application CI/CD workflows  
+- Governance and approval workflows  
+- Auditability and deployment visibility  
 
-When initiating a rollback, the system processes the changesets in reverse order, executing each one to revert the database to a previous state. Changesets can be rolled back individually or in groups, and the system utilizes tags and contexts to manage sets of changes, allowing for targeted rollbacks.
+This approach allows teams to manage **database code alongside application code**, improving reliability and consistency across environments.
 
-Customers may inquire about this functionality, particularly in scenarios where changes could be destructive, such as deleting a column. While the system can recreate the column structure during a rollback, it cannot automatically restore lost data. To mitigate this risk, it is advisable to use changesets to back up data before deletion, include rollback instructions to recreate the column, and clean up any backup tables afterward.
 
-Implementing these best practices will support effective schema evolution. Additionally, we are exploring governance guardrails to enforce such practices within the DB DevOps process.
+## Which database migration tools are supported?
 
-Yes, rollbacks are supported, leveraging Liquibase's rollback capabilities. For many liquibase native operations there is a default rollback behavior that can be overriden if desired. When passing raw sql scripts, a rollback script can be associated to the change to allow for rollback.
+Harness DB DevOps supports popular database migration frameworks including:
 
-Liquibase rollback or "roll-forward" is an "undo" mechanism for database changes.
+- **Liquibase**
+- **Flyway**
 
-Each change is recorded as a changeset in a changelog file. Changesets include both the change itself and rollback instructions.
+Organizations can continue using their preferred migration tool while leveraging Harness pipelines to orchestrate and manage database deployments.
 
-When initiating a rollback, Liquibase reads the changelog backwards, executing each changeset. This process can revert the database to any previous state.
+The migration framework executes the schema changes, while Harness provides:
 
-Changesets can be rolled back individually or in groups. Liquibase uses "tags and contexts to manage sets of changes", allowing for targeted rollbacks.
+- pipeline orchestration
+- deployment visibility
+- governance and approvals
+- integration with CI/CD workflows
 
-The reason customers may have asked how this works is if they felt the changes may potentially be destructive, like a column deletion. Once a column is dropped, its data is typically lost. Liquibase can recreate the column structure during rollback, but cannot automatically restore the lost data. 
+## Does DB DevOps support rollbacks?
 
-The way to mitigate this is to again use changesets to back up the data before deletion have rollback instructions to recreate the column and restore the data and cleans up the backup table.
+Yes. Harness DB DevOps supports rollbacks through a dedicated pipeline step that safely reverts previously applied database changes. The **Apply Rollback** step allows teams to revert database changes executed during earlier deployments while maintaining visibility and control within the pipeline workflow. 
 
-This should be there as a best practice and then executed to allow for any schema evolution. We are also exploring governance guard-rails to enforce such practices.
+Learn more about rollbacks in the [DB DevOps documentation](https://developer.harness.io/docs/database-devops/use-database-devops/rollback-for-database-schemas).
 
-### How does DB DevOps manage database changes in relation to application deployments?
 
-Customers can only deploy application changes if they are also licensed for Harness CD however, both change types can be included in the same pipeline to ensure that the database and schema are deployed together.
+## How does DB DevOps manage database changes with application deployments?
+
+Database and application changes can be orchestrated within the **same Harness pipeline** to ensure coordinated deployments. This allows teams to:
+
+- deploy database schema changes before application releases
+- validate database updates during pipeline execution
+- maintain consistency across environments
+
+Application deployments require a **Harness Continuous Delivery (CD)** license. However, database deployments can still be managed independently within Harness pipelines.
+
+## Can DB DevOps be used independently of Harness CD?
+
+Yes. Database deployments can be executed through Harness pipelines without deploying application services. However, if you want to deploy **applications and databases together in the same pipeline**, a **Harness CD license** is required.
+
+## How are database changes tracked and audited?
+
+Database changes are tracked through both the migration framework and Harness platform capabilities.
+
+Typically:
+
+- migration scripts or changelogs are stored in **source control**
+- migration tools track applied changes using metadata tables
+- Harness pipelines record **deployment history and execution logs**
+
+This provides a complete audit trail of:
+
+- what changes were deployed?
+- when deployments occurred?
+- which environments were affected?
+
+## What databases are supported?
+
+Harness DB DevOps supports databases that are compatible with the underlying migration frameworks (Liquibase or Flyway).
+
+Commonly used databases include:
+
+- PostgreSQL  
+- MySQL  
+- Oracle  
+- SQL Server  
+- CockroachDB  
+- MongoDB
+- Amazon RDS
+- MSSQL Azure
+- Google Cloud SQL
+- Snowflake
+- AlloyDB
+
+Support ultimately depends on the compatibility of the migration framework being used.
+
+## How does DB DevOps help prevent unsafe database changes?
+
+Harness DB DevOps helps teams reduce deployment risk through governance and pipeline controls.
+
+Examples include:
+
+- Approval gates before production deployments  
+- Pipeline validation steps  
+- Environment-based deployment controls  
+- Audit logging and deployment visibility  
+
+These capabilities help teams introduce **controlled, repeatable database deployment processes** across environments.

@@ -33,6 +33,7 @@ Rollback in Harness Database DevOps refers to reverting one or more [changesets]
 
 - **Rollback to a Tag** – Revert the database to a specific snapshot marked by a previously created Liquibase tag.
 - **Rollback by Count** – Revert a specific number of the most recently applied changesets in sequential order.
+- **Rollback to target** – Revert flyway migrations to a specific target version.
 
 <Tabs>
 <TabItem value="rollback-tag" label="Rollback by Tag" >
@@ -63,6 +64,21 @@ To rollback a database schema by count in Harness Database DevOps, follow these 
     - **Rollback Count**: Enter the number of changesets you want to roll back.
 4. Run the pipeline with the configured rollback step.
 5. After the rollback is complete, verify that the database schema has been reverted to the desired state. This may involve checking the schema structure and ensuring that the specified number of changesets have been undone.
+
+</TabItem>
+<TabItem value="rollback-target" label="Rollback to Target">
+To rollback a database schema to a specific target version in Harness Database DevOps, follow these steps:
+
+1. In Harness, go to the **Database DevOps** module and select your **Project**.
+2. Select the **Pipelines** tab on the side menu, and open the pipeline in your Harness Database DevOps interface where the rollback will be executed.
+3. In the configuration for the rollback step, you will need to provide the following details:
+![Rollback to Target](./static/db-devops-rollback-target.png)
+    - **DB Schema**: Specify the name of the database schema that you want to roll back.
+    - **DB Instance**: The name of the DB Instance. This is the Instance that will be used in the pipeline where the rollback will take place.
+    - **Rollback Target**: Enter the target version to which you want to roll back the schema.
+4. Run the pipeline with the configured rollback step.
+5. After the rollback is complete, verify that the database schema has been reverted to the desired state. This may involve checking the schema structure and ensuring that the specified number of changesets have been undone.
+![Rollback to Target](./static/db-devops-rollback-target-verify.png)
 
 </TabItem>
 </Tabs>
@@ -136,8 +152,6 @@ In some cases, you might need to roll back changes that were successfully applie
 </TabItem>
 </Tabs>
 
----
-
 For these scenarios, Harness DB DevOps provides a 'Rollback Schema' pipeline step. This step can be configured in your pipeline to roll back to a particular tag or number of changeset, allowing you to revert your database schema to a known good state.
 
 :::info
@@ -157,6 +171,9 @@ Tags can be created manually or automatically as part of the `Apply Schema` step
 
 ### Is this compatible with Liquibase?
 Absolutely. Harness Database DevOps uses Liquibase under the hood and supports native Liquibase rollback workflows and tagging.
+
+### Is Rollback compatible with Flyway?
+Yes. Harness Database DevOps also supports Flyway, and you can configure rollbacks to target specific Flyway versions as needed.
 
 ### How do I verify a rollback was successful?
 You can monitor the pipeline execution logs and inspect the schema to confirm that changes have been reverted to the desired tag.

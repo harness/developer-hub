@@ -42,7 +42,7 @@ Here's the YAML for the example:
 databaseChangeLog:
   - changeSet:
       id: 1
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 1: Environment-Specific Configuration
         # Use ${db-schema} to dynamically pick the schema based on the environment (dev, prod, etc.)
@@ -61,7 +61,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 2
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 2: Reusability
         # Use ${roles.table.name} to insert some default roles into a roles table, but the actual table name may differ across projects.
@@ -77,7 +77,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 3
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 3: Separation of Concerns
         # Use ${catalog+name} and ${db-schema} to stay clean and abstract out database details (like schema or catalog name).
@@ -93,7 +93,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 4
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 4: Consistency Across Environments (Create Table)
         # use ${db-schema} to define a default schema and default username for multiple operations (create tables, grants, inserts). Instead of copying the same values again and again, you just use properties
@@ -109,7 +109,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 5
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 4: Consistency Across Environments (Insert)
         - insert:
@@ -124,7 +124,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 6
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 5: Dynamic Configuration (partition year)
         # Use ${partition_year} to pass the partition_year dynamically.
@@ -153,7 +153,7 @@ The tokens of above example will get replaced by the property values, once you r
 databaseChangeLog:
   - changeSet:
       id: 1
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 1: Environment-Specific Configuration
         - createTable:
@@ -171,7 +171,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 2
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 2: Reusability
         - insert:
@@ -186,7 +186,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 3
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 3: Separation of Concerns
         - createTable:
@@ -201,7 +201,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 4
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 4: Consistency Across Environments (Create Table)
         - createTable:
@@ -216,7 +216,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 5
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 4: Consistency Across Environments (Insert)
         - insert:
@@ -231,7 +231,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 6
-      author: stephen-atwell
+      author: john-doe
       changes:
         # Example 5: Dynamic Configuration (partition year)
         - createTable:
@@ -256,7 +256,7 @@ Let's look at the below changeset:
 ```yaml
   - changeSet:
      id: 123
-     author: stephen-atwell
+     author: john-doe
      changes:
       - addColumn:
          tableName: person

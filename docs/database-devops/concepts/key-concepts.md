@@ -223,13 +223,13 @@ The format of your changeset depends on the file type of your changelog, which c
 ``` SQL Example
 --liquibase formatted sql
 
---changeset stephen-atwell:1
+--changeset john-doe:1
 CREATE TABLE products (
       id INT PRIMARY KEY,
       name VARCHAR(255)
 );
 
---changeset stephen-atwell:2
+--changeset john-doe:2
 CREATE INDEX idx_products_name ON products(name);
 ```
 
@@ -239,7 +239,7 @@ CREATE INDEX idx_products_name ON products(name);
 databaseChangeLog:
   -  changeSet:  
       id:  1
-      author: stephen-atwell
+      author: john-doe
       changes:
         -  createTable:
             tableName: company
@@ -250,7 +250,7 @@ databaseChangeLog:
 
 #### XML Example
 ``` XML Example
-<changeSet  id="1"  author="stephen-atwell">
+<changeSet  id="1"  author="john-doe">
     <createTable  tableName="company">
         <column  name="address"  type="varchar(255)"/>
     </createTable>
@@ -262,7 +262,7 @@ databaseChangeLog:
 {
   "changeSet": {
     "id": "1",
-    "author": "stephen-atwell",
+    "author": "john-doe",
     "changes": [
       {
         "createTable": {

@@ -168,7 +168,7 @@ context: test,dev
 ``` 
 This means the changeset will run in both test and development environments. 
 
-### Why are some Liquibase changeSets with no context being deployed in one execution, but skipped in another when using Harness DB Ops?
+### 4. Why are some Liquibase changeSets with no context being deployed in one execution, but skipped in another when using Harness DB Ops?
 
 This behavior occurs due to how Liquibase evaluates contexts at runtime in conjunction with the context configured in the Harness DB Schema Instance.
 

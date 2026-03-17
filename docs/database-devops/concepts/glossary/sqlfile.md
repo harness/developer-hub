@@ -131,23 +131,23 @@ The sqlFile tag enables teams to execute and manage raw SQL in a structured, con
 
 ## FAQ
 
-### 1. **What is the `sqlFile` tag used for in Harness Database DevOps?**
+### 1. What is the `sqlFile` tag used for in Harness Database DevOps?
 
 The `sqlFile` tag lets you execute raw SQL stored in external files as part of a Liquibase changeset. In Harness Database DevOps, it is used to version and run large SQL scripts—like data imports or vendor-specific DDL—within a CI/CD pipeline, while retaining auditability and rollback options.
 
-### 2. **Can I preview the SQL inside a `sqlFile` before deployment?**
+### 2. Can I preview the SQL inside a `sqlFile` before deployment?
 
 Yes. Harness automatically previews the contents of `sqlFile` executions during pull requests and pipeline runs. This visibility ensures DBAs and reviewers can validate the exact SQL that will be executed, reducing risk and improving governance.
 
-### 3. **How does rollback work with `sqlFile` in Harness?**
+### 3. How does rollback work with `sqlFile` in Harness?
 
 To enable rollback, you can define a companion `sqlFile` under the `rollback` section of the changeset. Harness will automatically trigger this rollback SQL if the deployment fails or is manually rolled back, ensuring consistent and safe recovery.
 
-### 4. **Where should I store `.sql` files used by `sqlFile`?**
+### 4. Where should I store `.sql` files used by `sqlFile`?
 
 Store your `.sql` files in version control alongside your changelogs. This ensures traceability, supports GitOps workflows, and allows Harness to track file changes, validate checksums, and enforce pipeline approvals.
 
-### 5. **Is `sqlFile` better than inline SQL in Liquibase changesets?**
+### 5. Is `sqlFile` better than inline SQL in Liquibase changesets?
 
 Use `sqlFile` when:
 
@@ -157,10 +157,10 @@ Use `sqlFile` when:
 
 For smaller, portable, or declarative changes, inline YAML or XML is preferred.
 
-### 6. **When should I use the inline `sql` tag instead of `sqlFile`?**
+### 6. When should I use the inline `sql` tag instead of `sqlFile`?
 
 Use the inline `sql` tag when your SQL statement is simple, small, and does not require reuse across multiple environments. It’s ideal for one-off DDL or DML operations that are easily readable and maintainable directly within the changelog. Inline SQL is also useful when you want to minimize file dependencies or when working in early-stage development environments. For larger, reusable, or vendor-specific scripts, `sqlFile` is recommended.
 
-### 7. **Does Harness support approvals for `sqlFile` execution?**
+### 7. Does Harness support approvals for `sqlFile` execution?
 
 Absolutely. Harness integrates approval gates into your database pipeline. Any changeset using `sqlFile` can be subjected to review and approval workflows—ensuring that all SQL changes are vetted before execution in sensitive environments like staging or production.

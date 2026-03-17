@@ -104,7 +104,7 @@ databaseChangeLog:
 databaseChangeLog:
   - changeSet:
       id: 1
-      author: stephen-atwell
+      author: john-doe
       changes:
         - createTable:
             tableName: accounts
@@ -128,7 +128,7 @@ databaseChangeLog:
 databaseChangeLog:
   - changeSet:
       id: 003
-      author: stephen-atwell
+      author: john-doe
       changes:
         - createIndex:
             indexName: idx_on_id
@@ -190,7 +190,7 @@ A simplified structure with one main changelog (recommended for small projects):
 databaseChangeLog:
   - changeSet:
       id: "001"
-      author: stephen-atwell
+      author: john-doe
       changes:
         - createTable:
             tableName: users
@@ -207,7 +207,7 @@ databaseChangeLog:
   
   - changeSet:
       id: "002"
-      author: stephen-atwell
+      author: john-doe
       changes:
         - addColumn:
             tableName: users

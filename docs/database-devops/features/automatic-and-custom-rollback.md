@@ -54,11 +54,11 @@ For more information and example:
 <TabItem value="SQL" label="SQL" default>
 
 ``` sql
---changeset stephen-atwell:1
+--changeset john-doe:1
 create table testTable ( id int primary key, name varchar(255) );
 --rollback drop table testTable;
 
---changeset stephen-atwell:2
+--changeset john-doe:2
 insert into testTable values ('1','The First', 'Country')
 insert into testTable values ('2','The Second', 'Country2')
 --rollback delete from testTable where id='1'
@@ -72,7 +72,7 @@ insert into testTable values ('2','The Second', 'Country2')
 databaseChangeLog:
 - changeSet:
     id: 2
-    author: stephen-atwell
+    author: john-doe
     changes:
     - dropTable:
         tableName: person
@@ -103,7 +103,7 @@ databaseChangeLog:
         http://www.liquibase.org/xml/ns/pro
         http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <changeSet author="stephen-atwell" id="2">
+    <changeSet author="john-doe" id="2">
         <dropTable tableName="person"/>
 
         <rollback>
@@ -126,7 +126,7 @@ databaseChangeLog:
     {
       "changeSet": {
         "id": "2",
-        "author": "stephen-atwell",
+        "author": "john-doe",
         "changes": [
           {
             "dropTable": {
@@ -174,7 +174,7 @@ You can also specify multiple Change Types within a single `rollback` statement 
 ``` yaml
 - changeSet:
     id: multiRollbackTest
-    author: stephen-atwell
+    author: john-doe
     changes:
       - createTable:
           tableName: multiRollback1
@@ -210,7 +210,7 @@ If you do not want to revert a change in a rollback mode, use either the keyword
 <TabItem value="SQL" label="SQL" default>
 
 ``` sql
---changeset stephen-atwell:1
+--changeset john-doe:1
 create table testTable ( id int primary key, name varchar(255) );
 --rollback empty
 ```
@@ -220,7 +220,7 @@ create table testTable ( id int primary key, name varchar(255) );
 ``` yaml
 - changeSet:
     id: 1
-    author: stephen-atwell
+    author: john-doe
     changes:
       - createTable:
           tableName: testTable
@@ -234,7 +234,7 @@ create table testTable ( id int primary key, name varchar(255) );
 
 <TabItem value="XML" label="XML" default>
 ```xml
-<changeSet id="3" author="stephen-atwell">
+<changeSet id="3" author="john-doe">
     <createTable tableName="testTable">
         <column name="id" type="int"/>
     </createTable>
@@ -248,7 +248,7 @@ create table testTable ( id int primary key, name varchar(255) );
 {
   "changeSet": {
     "id": 1,
-    "author": "stephen-atwell",
+    "author": "john-doe",
     "changes": [
       {
         "createTable": {
