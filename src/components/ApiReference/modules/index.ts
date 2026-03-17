@@ -10,6 +10,7 @@ import infraAsCodeManagement from './infra-as-code-management/config';
 import artifactRegistry from './artifact-registry/config';
 import securitySupplyChain from './software-supply-chain-assurance/config';
 import { parseSpec as softwareSupplyChainParseSpec } from './software-supply-chain-assurance/parser';
+import releaseManagement from './release-management/config';
 import softwareEngineeringInsights from './software-engineering-insights/config';
 
 const MODULE_CONFIGS: Record<string, ApiReferenceModuleConfig> = {
@@ -17,6 +18,7 @@ const MODULE_CONFIGS: Record<string, ApiReferenceModuleConfig> = {
   'infra-as-code-management': infraAsCodeManagement,
   'artifact-registry': artifactRegistry,
   'software-supply-chain-assurance': securitySupplyChain,
+  'release-management': releaseManagement,
   'software-engineering-insights': softwareEngineeringInsights,
 };
 
