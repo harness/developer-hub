@@ -185,6 +185,10 @@ export default function NavbarWrapper(props: Props): ReactNode {
     return location.pathname.startsWith(path);
   };
 
+  /* Documentation stays active (underlined/bold) when viewing API Reference */
+  const isDocumentationActive =
+    location.pathname.startsWith("/docs") || location.pathname.startsWith("/api-reference");
+
   // Blend colors toward white based on scroll
   const blendToWhite = (r: number, g: number, b: number) => {
     return `rgb(${Math.round(r + (255 - r) * scrollProgress)}, ${Math.round(
@@ -220,7 +224,7 @@ export default function NavbarWrapper(props: Props): ReactNode {
                 <Link
                   to={item.to}
                   className={`${styles.secondaryNavItem} ${
-                    isActive(item.to) ? styles.active : ""
+                    item.to === "/docs" ? (isDocumentationActive ? styles.active : "") : isActive(item.to) ? styles.active : ""
                   }`}
                 >
                   {item.label}

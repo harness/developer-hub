@@ -162,13 +162,7 @@ function sampleFromSchema(
       const hasProperties = !!(resolvedItems as SchemaLike).properties;
 
       if (itemType === 'object' || hasProperties) {
-        const item = sampleFromSchema(
-          spec,
-          resolvedItems as SchemaLike,
-          seen,
-          depth + 1
-        );
-
+        const item = sampleFromSchema(spec, resolvedItems as SchemaLike, seen, depth + 1);
         return [item === null ? {} : item];
       }
     }
@@ -189,6 +183,57 @@ function sampleFromSchema(
     default:
       return {};
   }
+}
+
+const COMPACT_SAMPLE_MAX_DEPTH = 6;
+const COMPACT_SAMPLE_MAX_KEYS = 14;
+const COMPACT_SAMPLE_MAX_ARRAY = 2;
+const COMPACT_SAMPLE_MAX_STRING = 240;
+
+/** Shrink large example/sample payloads for display (nested depth, object keys, array length, long strings). */
+function compactSampleForDisplay(value: unknown, depth = 0): unknown {
+  if (value === null || value === undefined) return value;
+  if (typeof value === 'string') {
+    if (value.length <= COMPACT_SAMPLE_MAX_STRING) return value;
+    return `${value.slice(0, COMPACT_SAMPLE_MAX_STRING)}… (${value.length} chars)`;
+  }
+  if (typeof value !== 'object') return value;
+  if (depth > COMPACT_SAMPLE_MAX_DEPTH) return '…';
+  if (Array.isArray(value)) {
+    if (value.length <= COMPACT_SAMPLE_MAX_ARRAY) {
+      return value.map((v) => compactSampleForDisplay(v, depth + 1));
+    }
+    return [
+      ...value.slice(0, COMPACT_SAMPLE_MAX_ARRAY).map((v) => compactSampleForDisplay(v, depth + 1)),
+      `… ${value.length - COMPACT_SAMPLE_MAX_ARRAY} more items`,
+    ];
+  }
+  const entries = Object.entries(value as Record<string, unknown>);
+  if (entries.length <= COMPACT_SAMPLE_MAX_KEYS) {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of entries) out[k] = compactSampleForDisplay(v, depth + 1);
+    return out;
+  }
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of entries.slice(0, COMPACT_SAMPLE_MAX_KEYS)) {
+    out[k] = compactSampleForDisplay(v, depth + 1);
+  }
+  out['…'] = `${entries.length - COMPACT_SAMPLE_MAX_KEYS} more properties`;
+  return out;
+}
+
+const SAMPLE_JSON_MAX_CHARS = 12000;
+
+function formatSampleResponse(sample: unknown): string {
+  const compacted = compactSampleForDisplay(sample);
+  let s =
+    typeof compacted === 'string'
+      ? compacted
+      : JSON.stringify(compacted, null, 2);
+  if (s.length > SAMPLE_JSON_MAX_CHARS) {
+    s = `${s.slice(0, SAMPLE_JSON_MAX_CHARS)}\n// … truncated (${s.length} characters total)`;
+  }
+  return s;
 }
 
 /**
@@ -214,15 +259,15 @@ export function getSampleResponseFromOperation(
     if (!json) continue;
     if (json.example != null) {
       return typeof json.example === 'string'
-        ? json.example
-        : JSON.stringify(json.example, null, 2);
+        ? formatSampleResponse(json.example)
+        : formatSampleResponse(json.example);
     }
     if (json.examples && typeof json.examples === 'object') {
       const first = Object.values(json.examples)[0] as { value?: unknown } | undefined;
       if (first?.value != null) {
         return typeof first.value === 'string'
-          ? first.value
-          : JSON.stringify(first.value, null, 2);
+          ? formatSampleResponse(first.value)
+          : formatSampleResponse(first.value);
       }
     }
     const rawSchema = json.schema as SchemaLike | undefined;
@@ -230,10 +275,62 @@ export function getSampleResponseFromOperation(
       const schema = resolveSchema(spec, rawSchema);
       const sample = sampleFromSchema(spec, schema ?? rawSchema);
       const cleaned = sample === null ? {} : sample;
-      return JSON.stringify(cleaned, null, 2);
+      return formatSampleResponse(cleaned);
     }
   }
   return '{}';
+}
+
+/**
+ * Get the full sample response body for a single status code (e.g. 200, 400).
+ * Resolves $ref, then uses example/examples/schema to produce JSON string. Returns '' if no JSON content.
+ */
+export function getSampleResponseForStatus(
+  spec: OpenApiSpec,
+  responseEntry: { $ref?: string; content?: Record<string, { schema?: unknown; example?: unknown; examples?: Record<string, { value?: unknown }> }> } | undefined
+): string {
+  if (!responseEntry) return '';
+  const resolved = resolveResponse(spec, responseEntry as { $ref?: string; description?: string; content?: Record<string, unknown> }) as {
+    content?: Record<string, { schema?: SchemaLike; example?: unknown; examples?: Record<string, { value?: unknown }> }>;
+  } | undefined;
+  if (!resolved?.content) return '';
+  const json = resolved.content['application/json'];
+  if (!json) return '';
+  if (json.example != null) {
+    return typeof json.example === 'string'
+      ? formatSampleResponse(json.example)
+      : formatSampleResponse(json.example);
+  }
+  if (json.examples && typeof json.examples === 'object') {
+    const first = Object.values(json.examples)[0] as { value?: unknown } | undefined;
+    if (first?.value != null) {
+      return typeof first.value === 'string'
+        ? formatSampleResponse(first.value)
+        : formatSampleResponse(first.value);
+    }
+  }
+  const rawSchema = json.schema as SchemaLike | undefined;
+  if (rawSchema) {
+    const schema = resolveSchema(spec, rawSchema);
+    const sample = sampleFromSchema(spec, schema ?? rawSchema);
+    const cleaned = sample === null ? {} : sample;
+    return formatSampleResponse(cleaned);
+  }
+  return '';
+}
+
+/**
+ * Returns true if the response entry has JSON body content (for showing response pills / samples).
+ */
+export function responseHasJsonBody(
+  spec: OpenApiSpec,
+  responseEntry: { $ref?: string; content?: Record<string, unknown> } | undefined
+): boolean {
+  if (!responseEntry) return false;
+  const resolved = resolveResponse(spec, responseEntry as { $ref?: string; description?: string; content?: Record<string, unknown> }) as {
+    content?: Record<string, unknown>;
+  } | undefined;
+  return Boolean(resolved?.content?.['application/json']);
 }
 
 /**
@@ -290,6 +387,41 @@ export interface RequestBodyParamRow {
   description?: string;
   type?: string;
   depth?: number;
+}
+
+/** Response body schema row for Responses panel (name, type, required, description, depth). */
+export interface ResponseBodySchemaRow {
+  name: string;
+  typeDisplay: string;
+  required: boolean;
+  description: string;
+  depth: number;
+}
+
+/**
+ * Get flattened response body schema rows for a single response entry (e.g. 200, 401).
+ * Used by Responses panel to show body schema per status code.
+ */
+export function getResponseBodySchemaRows(
+  spec: OpenApiSpec,
+  responseEntry: { $ref?: string; content?: Record<string, { schema?: unknown }> } | undefined
+): ResponseBodySchemaRow[] {
+  if (!spec || !responseEntry) return [];
+  const resolved = resolveResponse(spec, responseEntry as { $ref?: string; description?: string; content?: Record<string, unknown> }) as {
+    content?: Record<string, { schema?: unknown }>;
+  } | undefined;
+  if (!resolved?.content) return [];
+  const bodySchema = resolved.content['application/json']?.schema as Record<string, unknown> | undefined;
+  if (!bodySchema) return [];
+  const resolvedSchema = getResolvedSchema(spec, bodySchema) ?? bodySchema;
+  const requiredList = (resolvedSchema.required as string[] | undefined) ?? [];
+  return flattenSchemaProperties(spec, resolvedSchema as Record<string, unknown>, requiredList, 0).map((r) => ({
+    name: r.name,
+    typeDisplay: r.typeDisplay,
+    required: r.required,
+    description: r.description,
+    depth: r.depth,
+  }));
 }
 
 /**

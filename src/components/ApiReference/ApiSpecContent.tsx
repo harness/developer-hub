@@ -4,6 +4,16 @@ import { endpointId, endpointLabel, getMethodClass, resolveParameters, resolveRe
 import MarkdownDescription from './MarkdownDescription';
 import styles from './styles.module.css';
 
+/** Status code to highlight class (synced with Try It panel selection). */
+function getResponseHighlightClass(code: string): string {
+  const n = parseInt(code, 10);
+  if (n >= 200 && n < 300) return styles.responseBulletSuccess;
+  if (n >= 300 && n < 400) return styles.responseBulletRedirect;
+  if (n >= 400 && n < 500) return styles.responseBulletClientError;
+  if (n >= 500) return styles.responseBulletServerError;
+  return '';
+}
+
 interface ApiSpecContentProps {
   endpoint: EndpointEntry;
   baseUrl: string;
@@ -11,6 +21,10 @@ interface ApiSpecContentProps {
   pathPrefix?: string;
   /** Full spec for resolving $ref (parameters, requestBody, etc.) */
   spec?: OpenApiSpec | null;
+  /** When set (from Try It pill selection), the matching response bullet is highlighted */
+  selectedResponseCode?: string | null;
+  /** When 'above' | 'responses', render only that part (for grid alignment with Try It panel). Default 'all'. */
+  part?: 'all' | 'above' | 'responses';
 }
 
 /** Single row for the consolidated parameters (path, query, header, and request body fields). */
@@ -102,7 +116,14 @@ function flattenSchemaProperties(
   return rows;
 }
 
-export default function ApiSpecContent({ endpoint, baseUrl, pathPrefix = '', spec }: ApiSpecContentProps): React.ReactElement {
+export default function ApiSpecContent({
+  endpoint,
+  baseUrl,
+  pathPrefix = '',
+  spec,
+  selectedResponseCode,
+  part = 'all',
+}: ApiSpecContentProps): React.ReactElement {
   const { path, method, operation, pathItem } = endpoint;
   const op = operation ?? (pathItem as Record<string, unknown>)?.[method] as typeof operation;
   const rawParams = [
@@ -134,8 +155,86 @@ export default function ApiSpecContent({ endpoint, baseUrl, pathPrefix = '', spe
   }));
   const allParamRows: ParamRow[] = [...paramRows, ...bodyRows];
   const hasParams = allParamRows.length > 0;
+  const hasResponses = op?.responses && Object.keys(op.responses).length > 0;
   const description = op?.description ?? op?.summary ?? '';
   const fullPath = pathPrefix ? `${pathPrefix.replace(/\/$/, '')}${path.startsWith('/') ? path : `/${path}`}` : path;
+
+  if (part === 'responses') {
+    if (!hasResponses) return <div className={styles.main} />;
+    return (
+      <div className={styles.main}>
+        <section className={styles.specSection}>
+          <h2 className={styles.specSectionTitle}>Responses</h2>
+          <ul className={styles.specBody}>
+            {Object.entries(op!.responses!).map(([code, res]) => {
+              const resolved = spec ? resolveResponse(spec, res as { $ref?: string; description?: string }) : res;
+              const desc = resolved?.description ?? '';
+              const isSelected = selectedResponseCode === code;
+              const highlightClass = isSelected ? getResponseHighlightClass(code) : '';
+              return (
+                <li
+                  key={code}
+                  className={highlightClass ? `${styles.responseBulletItem} ${highlightClass}` : undefined}
+                >
+                  <strong>{code}</strong>:{' '}
+                  <MarkdownDescription text={desc} className={styles.responseDescription} />
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      </div>
+    );
+  }
+
+  if (part === 'above') {
+    return (
+      <div className={styles.main}>
+        <header className={styles.mainHeader}>
+          <h1 className={styles.mainTitle}>{endpointLabel(endpoint)}</h1>
+          <p className={styles.mainPath}>
+            <span className={`${styles.endpointMethod} ${getMethodClass(styles, method)}`}>{method.toUpperCase()}</span> {baseUrl}{fullPath}
+          </p>
+        </header>
+        {description && (
+          <section className={styles.specSection}>
+            <h2 className={styles.specSectionTitle}>Description</h2>
+            <MarkdownDescription text={description} />
+          </section>
+        )}
+        {hasParams && (
+          <section className={styles.specSection}>
+            <h2 className={styles.specSectionTitle}>Parameters</h2>
+            {paramRows.length > 0 && <ParametersTable rows={paramRows} />}
+            {bodyRows.length > 0 && (
+              <div className={styles.paramGroup}>
+                <h3 className={styles.paramGroupTitle}>Request body</h3>
+                {requestBodyResolved?.description && (
+                  <div className={styles.specBody}>
+                    <MarkdownDescription text={requestBodyResolved.description} />
+                  </div>
+                )}
+                <RequestBodyParamsTable rows={bodyRows} />
+              </div>
+            )}
+          </section>
+        )}
+        {(requestBodyResolved ?? op?.requestBody) && bodyRows.length === 0 && (
+          <section className={styles.specSection}>
+            <h2 className={styles.specSectionTitle}>Request body</h2>
+            <div className={styles.specBody}>
+              {requestBodyResolved?.description && (
+                <MarkdownDescription text={requestBodyResolved.description} />
+              )}
+              {!requestBodyResolved?.content?.['application/json'] && !requestBodyResolved?.description && (
+                <p>See parameters table above for request body fields.</p>
+              )}
+            </div>
+          </section>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.main}>
@@ -185,15 +284,20 @@ export default function ApiSpecContent({ endpoint, baseUrl, pathPrefix = '', spe
         </section>
       )}
 
-      {op?.responses && Object.keys(op.responses).length > 0 && (
+      {hasResponses && (
         <section className={styles.specSection}>
           <h2 className={styles.specSectionTitle}>Responses</h2>
           <ul className={styles.specBody}>
-            {Object.entries(op.responses).map(([code, res]) => {
+            {Object.entries(op!.responses!).map(([code, res]) => {
               const resolved = spec ? resolveResponse(spec, res as { $ref?: string; description?: string }) : res;
               const desc = resolved?.description ?? '';
+              const isSelected = selectedResponseCode === code;
+              const highlightClass = isSelected ? getResponseHighlightClass(code) : '';
               return (
-                <li key={code}>
+                <li
+                  key={code}
+                  className={highlightClass ? `${styles.responseBulletItem} ${highlightClass}` : undefined}
+                >
                   <strong>{code}</strong>:{' '}
                   <MarkdownDescription text={desc} className={styles.responseDescription} />
                 </li>

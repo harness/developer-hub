@@ -64,7 +64,8 @@
 
 .secondaryNavItem.active {
   color: #111827;
-  border-bottom-color: #0ea5e9;
+  font-weight: 600;
+  border-bottom: 2px solid #0ea5e9;
 }
 
 .dropdownArrow {

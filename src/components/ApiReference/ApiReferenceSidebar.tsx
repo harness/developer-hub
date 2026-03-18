@@ -1,9 +1,9 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import Link from '@docusaurus/Link';
 import { getEndpointsByCategory, endpointId, endpointLabel, getMethodClass, categoryLabel } from './utils';
 import { getApiReferenceModule } from './modulesConfig';
 import type { OpenApiSpec } from './types';
 import type { EndpointEntry } from './types';
+import DocsViewSwitcher from '@site/src/components/DocsViewSwitcher';
 import styles from './styles.module.css';
 
 interface ApiReferenceSidebarProps {
@@ -75,15 +75,11 @@ export default function ApiReferenceSidebar({
             <span className={styles.moduleNameText}>{moduleName}</span>
           )}
         </div>
-        <nav className={styles.viewSwitcher} aria-label="Switch between Documentation and API Reference">
-          <span className={styles.viewSwitcherThumb} aria-hidden />
-          <Link to={docsBasePath} className={styles.viewSwitcherLink}>
-            Documentation
-          </Link>
-          <span className={styles.viewSwitcherActive} aria-current="page">
-            API Reference
-          </span>
-        </nav>
+        <DocsViewSwitcher
+          docsBasePath={docsBasePath}
+          apiRefHref={`/api-reference?module=${encodeURIComponent(moduleId)}`}
+          activeView="api"
+        />
         </div>
         <nav className={styles.sidebarNav} aria-label="API endpoints">
         <ul className={`menu__list ${styles.categoryList}`}>

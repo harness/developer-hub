@@ -17,6 +17,9 @@ const ApiReferenceLayout = React.lazy(
   () => import('@site/src/components/ApiReference/ApiReferenceLayout')
 );
 
+/** Delay before showing "Loading API spec…" (fallback for slow connections; in most cases load finishes first). */
+const LOADING_MESSAGE_DELAY_MS = 2000;
+
 /** In-memory cache: moduleId -> parsed spec. Avoids re-fetch/re-parse when switching back to a module. */
 const specCache = new Map<string, OpenApiSpec>();
 
@@ -32,7 +35,17 @@ export default function ApiReferencePage(): React.ReactElement {
   const moduleId = new URLSearchParams(search).get('module') ?? '';
   const [spec, setSpec] = useState<OpenApiSpec | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showLoadingMessage, setShowLoadingMessage] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!loading) {
+      setShowLoadingMessage(false);
+      return;
+    }
+    const t = setTimeout(() => setShowLoadingMessage(true), LOADING_MESSAGE_DELAY_MS);
+    return () => clearTimeout(t);
+  }, [loading]);
 
   const moduleConfig = moduleId ? getApiReferenceModule(moduleId) : null;
   const moduleIds = getApiReferenceModuleIds();
@@ -139,7 +152,9 @@ export default function ApiReferencePage(): React.ReactElement {
             </p>
           </div>
         ) : loading ? (
-          <div className={styles.loadingState}>Loading API spec…</div>
+          showLoadingMessage ? (
+            <div className={styles.loadingState}>Loading API spec…</div>
+          ) : null
         ) : error ? (
           <div className={styles.errorState}>
             <p>{error}</p>

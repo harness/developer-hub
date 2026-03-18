@@ -1,12 +1,74 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import ApiReferenceSidebar from './ApiReferenceSidebar';
-import ApiSpecContent from './ApiSpecContent';
-import TryItPanel from './TryItPanel';
+import EndpointRow from './EndpointRow';
 import { getEndpointsFromSpec, getEndpointsByCategory, endpointId, endpointSlug, endpointFragment, getEndpointByFragment, categoryLabel } from './utils';
 import { getApiReferenceModule } from './modulesConfig';
+import { HDH_DOCS_SECTION_BEFORE_API_REF } from '@site/src/components/DocsViewSwitcher';
 import type { OpenApiSpec } from './types';
 import type { EndpointEntry } from './types';
 import styles from './styles.module.css';
+
+const ROW_LAZY_ROOT_MARGIN = '400px';
+const ROW_PLACEHOLDER_MIN_HEIGHT = 120;
+
+/** Renders EndpointRow only when the placeholder is near the viewport to reduce initial mount cost. */
+function LazyEndpointRow({
+  entry,
+  spec,
+  specBaseUrl,
+  pathPrefix,
+}: {
+  entry: EndpointEntry;
+  spec: OpenApiSpec;
+  specBaseUrl: string;
+  pathPrefix: string;
+}): React.ReactElement {
+  const [inView, setInView] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) setInView(true);
+      },
+      { rootMargin: ROW_LAZY_ROOT_MARGIN, threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  if (inView) {
+    return (
+      <div className={styles.lazyRowReveal}>
+        <EndpointRow
+          entry={entry}
+          spec={spec}
+          specBaseUrl={specBaseUrl}
+          pathPrefix={pathPrefix}
+        />
+      </div>
+    );
+  }
+  return (
+    <div
+      ref={sentinelRef}
+      data-endpoint-slug={endpointSlug(entry)}
+      className={styles.endpointRow}
+      style={{ minHeight: ROW_PLACEHOLDER_MIN_HEIGHT }}
+    >
+      <div
+        className={styles.sectionAnchor}
+        data-section-id={endpointSlug(entry)}
+        aria-hidden="true"
+      />
+    </div>
+  );
+}
 
 interface ApiReferenceLayoutProps {
   spec: OpenApiSpec;
@@ -46,12 +108,31 @@ export default function ApiReferenceLayout({
   useEffect(() => {
     if (!byCategory.length) return;
     const hash = typeof window !== 'undefined' ? window.location.hash.slice(1) : '';
-    const fromHash = hash
-      ? (getEndpointByFragment(hash, byCategory) ?? allEndpoints.find((e) => endpointSlug(e) === hash) ?? null)
-      : null;
-    setSelectedEndpoint(
-      fromHash ?? byCategory[0]?.endpoints?.[0] ?? endpoints[0] ?? null
-    );
+    let target: EndpointEntry | null = null;
+
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = sessionStorage.getItem(HDH_DOCS_SECTION_BEFORE_API_REF);
+        if (stored) {
+          sessionStorage.removeItem(HDH_DOCS_SECTION_BEFORE_API_REF);
+          const segment = stored.replace(/^\/+/, '').split('/').filter(Boolean).pop() ?? '';
+          if (segment) {
+            const slug = segment.toLowerCase().replace(/\s+/g, '-');
+            const match = byCategory.find(({ category }) => {
+              const catSlug = category.toLowerCase().replace(/\s+/g, '-');
+              return catSlug === slug || slug.includes(catSlug) || catSlug.includes(slug);
+            });
+            if (match?.endpoints?.[0]) target = match.endpoints[0];
+          }
+        }
+      } catch (_) {}
+    }
+
+    if (!target && hash) {
+      target = getEndpointByFragment(hash, byCategory) ?? allEndpoints.find((e) => endpointSlug(e) === hash) ?? null;
+    }
+    if (!target) target = byCategory[0]?.endpoints?.[0] ?? endpoints[0] ?? null;
+    setSelectedEndpoint(target);
   }, [spec, byCategory, endpoints, allEndpoints]);
 
   const moduleConfig = getApiReferenceModule(moduleId);
@@ -231,28 +312,13 @@ export default function ApiReferenceLayout({
                   {categoryLabel(category)}
                 </h2>
                 {categoryEndpoints.map((entry) => (
-                  <div
+                  <LazyEndpointRow
                     key={endpointId(entry)}
-                    data-endpoint-slug={endpointSlug(entry)}
-                    className={styles.endpointRow}
-                  >
-                    <div
-                      className={styles.sectionAnchor}
-                      data-section-id={endpointSlug(entry)}
-                      aria-hidden="true"
-                    />
-                    <div className={styles.endpointRowContent}>
-                      <ApiSpecContent
-                        endpoint={entry}
-                        baseUrl={specBaseUrl}
-                        pathPrefix={pathPrefix}
-                        spec={spec}
-                      />
-                    </div>
-                    <div className={styles.tryItPanelWrapper}>
-                      <TryItPanel endpoint={entry} spec={spec} specBaseUrl={specBaseUrl} pathPrefix={pathPrefix} />
-                    </div>
-                  </div>
+                    entry={entry}
+                    spec={spec}
+                    specBaseUrl={specBaseUrl}
+                    pathPrefix={pathPrefix}
+                  />
                 ))}
               </React.Fragment>
             ))}

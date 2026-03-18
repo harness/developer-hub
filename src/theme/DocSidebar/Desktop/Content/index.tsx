@@ -140,6 +140,7 @@ export default function DocSidebarDesktopContent({
   return (
     <nav
       ref={navRef}
+      data-doc-sidebar-menu
       aria-label={translate({
         id: 'theme.docs.sidebar.navAriaLabel',
         message: 'Docs sidebar',
@@ -156,6 +157,7 @@ export default function DocSidebarDesktopContent({
           <DocsViewSwitcher
             docsBasePath={docsBasePath}
             apiRefHref={`/api-reference?module=${encodeURIComponent(apiRefModuleId!)}`}
+            activeView="docs"
           />,
           portalTarget
         )

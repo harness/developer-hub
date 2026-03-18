@@ -5,25 +5,15 @@
   margin-bottom: 2rem;
 }
 
-/* API Reference page wrapper - same width/span as docs, smooth fade-in; tighter padding for wider body */
+/* API Reference page wrapper - same width/span as docs */
 .apiRefPageWrapper {
   width: 100%;
   max-width: 100%;
   padding-left: var(--doc-layout-outer-spacing, 40px);
   padding-right: var(--doc-layout-outer-spacing, 40px);
-  animation: apiRefFadeIn 0.35s ease-out;
 }
 
-@keyframes apiRefFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* API Reference layout - flex container; mainScroll is the scroll container */
+/* Layout: title block + switcher stay static; only endpoint list and main content fade in */
 .layout {
   display: flex;
   flex: 1;
@@ -63,6 +53,8 @@
   padding: 0 4px 12px;
   margin-bottom: 8px;
   border-bottom: none;
+  flex-shrink: 0;
+  /* No fade - title block + switcher remain static on transition */
 }
 
 /* Module name block - matches reference: white container, generous padding, soft shadow */
@@ -93,7 +85,7 @@
   font-weight: 500;
 }
 
-/* Documentation | API Reference switcher - animated pill switch */
+/* Documentation | API Reference switcher (API Ref sidebar uses DocsViewSwitcher; these kept for dark overrides if needed) */
 .viewSwitcher {
   position: relative;
   display: flex;
@@ -114,11 +106,19 @@
   background: #ffffff;
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
   pointer-events: none;
-  /* On API Reference page the thumb is on the right (second option) */
-  transform: translateX(calc(100% + 4px));
+  /* Slide from left to right on mount (API Reference active) - no JS delay */
+  animation: apiRefSwitcherThumbSlide 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes apiRefSwitcherThumbSlide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100% + 4px));
+  }
 }
 
 .viewSwitcherLink,
@@ -161,6 +161,16 @@
   overflow-y: auto;
   padding: 0;
   min-height: 0;
+  animation: sidebarNavFadeIn 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes sidebarNavFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Category list uses docs .menu__list / .menu__list-item-collapsible folder style */
@@ -357,6 +367,16 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   flex-direction: column;
   gap: 0;
   scrollbar-width: none;
+  animation: mainScrollFadeIn 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes mainScrollFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .mainScroll::-webkit-scrollbar {
@@ -378,16 +398,69 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   margin-top: 0;
 }
 
-/* Endpoint row: left = endpoint content, right = Try It panel (top-aligned) */
+/* Soft reveal when lazy-loaded row mounts (reduces jumpiness) */
+.lazyRowReveal {
+  animation: lazyRowReveal 0.25s ease-out forwards;
+}
+
+@keyframes lazyRowReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Endpoint row: 2-row grid so Responses (body) and Response (Try It) headers align horizontally */
 .endpointRow {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
   scroll-margin-top: 1rem;
   padding-top: 1.5rem;
   margin-top: 0;
   border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.endpointRowGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.endpointRowBodyAbove {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.endpointRowBodyResponses {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+}
+
+.endpointRowTryItAbove {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  max-height: calc(100vh - var(--ifm-navbar-height, 60px) - 4rem);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.endpointRowTryItAbove::-webkit-scrollbar {
+  display: none;
+}
+
+.endpointRowTryItResponse {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Strip at top of each endpoint used only for scrollspy (viewport midpoint) */
@@ -468,6 +541,41 @@ html[data-theme='dark'] .endpointButtonActive:hover {
 
 .specBodyList li {
   margin-bottom: 0.25rem;
+}
+
+/* Body Responses list: highlight the bullet that matches Try It panel selection */
+.responseBulletItem {
+  padding: 0.25rem 0.5rem;
+  margin: 0 -0.5rem;
+  border-radius: var(--ifm-global-radius);
+}
+
+.responseBulletSuccess {
+  background: color-mix(in srgb, var(--ifm-color-success) 18%, transparent);
+  border-left: 3px solid var(--ifm-color-success);
+  margin-left: calc(-0.5rem - 3px);
+  padding-left: calc(0.5rem + 3px);
+}
+
+.responseBulletRedirect {
+  background: color-mix(in srgb, var(--ifm-color-info) 18%, transparent);
+  border-left: 3px solid var(--ifm-color-info);
+  margin-left: calc(-0.5rem - 3px);
+  padding-left: calc(0.5rem + 3px);
+}
+
+.responseBulletClientError {
+  background: color-mix(in srgb, var(--ifm-color-warning) 18%, transparent);
+  border-left: 3px solid var(--ifm-color-warning);
+  margin-left: calc(-0.5rem - 3px);
+  padding-left: calc(0.5rem + 3px);
+}
+
+.responseBulletServerError {
+  background: color-mix(in srgb, var(--ifm-color-danger) 18%, transparent);
+  border-left: 3px solid var(--ifm-color-danger);
+  margin-left: calc(-0.5rem - 3px);
+  padding-left: calc(0.5rem + 3px);
 }
 
 .inlineCode {
@@ -852,11 +960,14 @@ html[data-theme='dark'] .specSectionCollapseTrigger:hover {
 
 .tryItResponse {
   flex: 1;
+  min-height: 0;
   padding: 1rem;
   overflow: auto;
   overflow-x: hidden;
   border-top: 1px solid var(--ifm-color-emphasis-200);
   scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .tryItResponse::-webkit-scrollbar {
@@ -864,12 +975,64 @@ html[data-theme='dark'] .specSectionCollapseTrigger:hover {
 }
 
 .tryItResponseTitle {
+  flex-shrink: 0;
   font-size: 0.8125rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
 }
 
+/* Response code pills - same shape as endpoint method pills (.endpointMethod) */
+.tryItResponsePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.tryItResponsePill {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  font-family: var(--ifm-font-family-monospace);
+  box-sizing: border-box;
+  border: none;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-content);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tryItResponsePill:hover {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.tryItResponsePillActive {
+  background: var(--ifm-color-emphasis-400);
+  color: var(--ifm-color-content);
+}
+
+.tryItResponsePillSuccess.tryItResponsePillActive {
+  background: #009B51;
+  color: white;
+}
+
+.tryItResponsePillClientError.tryItResponsePillActive {
+  background: #CF7200;
+  color: white;
+}
+
+.tryItResponsePillServerError.tryItResponsePillActive {
+  background: #D22D34;
+  color: white;
+}
+
 .tryItResponsePre {
+  flex: 1;
+  min-height: 8rem;
   width: 100%;
   box-sizing: border-box;
   font-size: 0.75rem;
@@ -880,7 +1043,6 @@ html[data-theme='dark'] .specSectionCollapseTrigger:hover {
   padding: 0.75rem;
   background: var(--ifm-code-background);
   border-radius: var(--ifm-global-radius);
-  max-height: 200px;
   overflow: auto;
   scrollbar-width: none;
 }
