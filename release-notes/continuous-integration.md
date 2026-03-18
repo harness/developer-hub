@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-03-11T10:00
+date: 2026-03-18T10:00
 sidebar_position: 10
 ---
 
@@ -61,6 +61,22 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## March 2026
+
+### Version 1.126.0
+
+<!-- March 2026 -->
+
+#### Fixed Issues
+
+- Addressed a high severity security vulnerability (CVE-2026-24051) in the cache proxy by upgrading the OpenTelemetry SDK dependency in `harness-cache-server`. (CI-21042)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.11 | 1.18.12 |
+| `harness/ci-lite-engine` | Version update | 1.18.11 | 1.18.12 |
+| `harness/harness-cache-server` | Security fix (CVE-2026-24051) | 1.7.14 | 1.7.15 |
 
 ### Version 1.125.0
 
