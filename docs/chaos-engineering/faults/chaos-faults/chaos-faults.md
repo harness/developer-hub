@@ -73,3 +73,33 @@ import ChaosFaults from '@site/src/components/ChaosEngineering/ChaosFaults';
 import { categories } from './categories'
 
 <ChaosFaults categories={categories} />
+
+## Variables
+
+Variables allow you to define reusable, parameterized values that can be referenced in fault properties during fault configuration. This applies to all fault types.
+
+Variables are useful when you want to:
+- **Reuse values** across multiple fault configuration fields without repeating them
+- **Inject runtime values** into fault properties at experiment execution time
+- **Centralize configuration** - update a variable once and have it reflected wherever it is used
+
+### Adding a Variable
+
+When creating or editing a fault, navigate to the **Variables** step and click **+ Add Variable**. Each variable has the following fields:
+
+| Field | Description |
+|-------|-------------|
+| **Type** | Data type of the variable. Supported types: `String`, `Number` |
+| **Name** | Identifier used to reference the variable in fault properties |
+| **Value** | The value assigned to the variable - can be a fixed value or a runtime input |
+| **Set variable as required during runtime** | When checked, the variable must be supplied at experiment run time |
+| **Description** | Optional description for the variable |
+
+### Value Types
+
+- **Fixed value** - A static value set at fault creation time. The value remains constant across experiment runs.
+- **Runtime input** - The value is provided at experiment execution time (shown as `<+input>`). Use this when the value may differ between runs.
+
+### Using Variables in Chaos Studio
+
+When you add a fault to an experiment in the **Chaos Studio**, the fault panel shows a **Variables** tab. Any input variables defined on the fault appear here, allowing you to supply or override values for that specific experiment run before applying changes.

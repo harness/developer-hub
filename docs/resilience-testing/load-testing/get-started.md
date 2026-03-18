@@ -79,4 +79,4 @@ The load profile graph shows how users ramp up, maintain steady state, and compl
 
 - [Key Concepts](../key-concepts): Understand resilience testing terminology
 - [Chaos Testing](../chaos-testing/get-started): Combine load testing with chaos experiments
-- [Architecture](../architecture): Learn about the platform architecture
+- [Architecture](/docs/resilience-testing/architecture): Learn about the platform architecture

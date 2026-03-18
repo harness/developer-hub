@@ -43,6 +43,38 @@ Once marked as verified, the probe will display a green checkmark (✓) in the *
 Combine probe verification with ChaosGuard policies to create a robust governance framework that ensures only approved, tested probes are used in your chaos experiments.
 :::
 
+## Variables
+
+Variables allow you to define reusable, parameterized values that can be referenced in **Probe Properties** and **Run Properties** during probe configuration. This is the second step in the probe creation wizard and applies to all probe types.
+
+Variables are useful when you want to:
+- **Reuse values** across multiple probe configuration fields without repeating them
+- **Inject runtime values** into probe properties at experiment execution time
+- **Centralize configuration** - update a variable once and have it reflected wherever it is used
+
+![Probe variables step in creation wizard](../content/probes/static/probe-variables.png)
+
+### Adding a Variable
+
+When creating or editing a probe, navigate to the **Variables** step and click **+ Add Variable**. Each variable has the following fields:
+
+| Field | Description |
+|-------|-------------|
+| **Type** | Data type of the variable. Supported types: `String`, `Number` |
+| **Name** | Identifier used to reference the variable in probe/run properties |
+| **Value** | The value assigned to the variable - can be a fixed value or a runtime input |
+| **Set variable as required during runtime** | When checked, the variable must be supplied at experiment run time |
+| **Description** | Optional description for the variable |
+
+### Value Types
+
+- **Fixed value** - A static value set at probe creation time. The value remains constant across experiment runs.
+- **Runtime input** - The value is provided at experiment execution time (shown as `<+input>` in the variables list). Use this when the value may differ between runs.
+
+### Using Variables in Chaos Studio
+
+When you add a probe to an experiment in the **Chaos Studio**, the probe panel shows a **Variables** tab alongside **Probe Properties** and **Configuration**. Any input variables defined on the probe appear here, allowing you to supply or override values for that specific experiment run before applying changes.
+
 ## Probe Properties
 
 When configuring probes in the Chaos Studio, all configuration fields are available in the **Probe Properties** tab. This unified interface provides a streamlined experience by consolidating all probe settings in a single location.

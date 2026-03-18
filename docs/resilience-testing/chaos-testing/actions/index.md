@@ -65,6 +65,36 @@ The **Container Action** allows you to execute commands inside a container durin
 - Flexible command and argument configuration
 - Advanced configuration options for Kubernetes environments
 
+## Variables
+
+Variables allow you to define reusable, parameterized values that can be referenced in **Action Properties** during action configuration. This applies to all action types.
+
+Variables are useful when you want to:
+- **Reuse values** across multiple action configuration fields without repeating them
+- **Inject runtime values** into action properties at experiment execution time
+- **Centralize configuration** - update a variable once and have it reflected wherever it is used
+
+### Adding a Variable
+
+When creating or editing an action, navigate to the **Variables** step and click **+ Add Variable**. Each variable has the following fields:
+
+| Field | Description |
+|-------|-------------|
+| **Type** | Data type of the variable. Supported types: `String`, `Number` |
+| **Name** | Identifier used to reference the variable in action properties |
+| **Value** | The value assigned to the variable - can be a fixed value or a runtime input |
+| **Set variable as required during runtime** | When checked, the variable must be supplied at experiment run time |
+| **Description** | Optional description for the variable |
+
+### Value Types
+
+- **Fixed value** - A static value set at action creation time. The value remains constant across experiment runs.
+- **Runtime input** - The value is provided at experiment execution time (shown as `<+input>`). Use this when the value may differ between runs.
+
+### Using Variables in Chaos Studio
+
+When you add an action to an experiment in the **Chaos Studio**, the action panel shows a **Variables** tab. Any input variables defined on the action appear here, allowing you to supply or override values for that specific experiment run before applying changes.
+
 ## Action Properties
 
 When configuring actions in the Chaos Studio, all configuration fields are available in the **Action Properties** tab. This unified interface provides a streamlined experience by consolidating all action settings in a single location.

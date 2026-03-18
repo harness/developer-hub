@@ -22,6 +22,29 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## March 2026
 
+### Version 1.79.4
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.79.1
+- harness/chaos-ddcr-faults:1.79.0
+- harness/chaos-log-watcher:1.79.0
+- harness/service-discovery-collector:0.59.0
+
+#### New Features and Enhancements
+
+- Introduced user defined variables and utility functions with CRUD support for faults, templates, probes, and actions (CHAOS-11222, CHAOS-11221, CHAOS-11220)
+- Added the iterations runProperty support inside the chaos actions (CHAOS-11203, CHAOS-10557)
+- Added load test integration with machine infra and machine-chaos IFS integration with load test manager (CHAOS-11154, CHAOS-11152)
+- Migrated APIs from mux to gin (CHAOS-11127)
+- Added tooltips for APM Probes (APM Type, Connector in Overview, Type, Comparison Criteria, Value in Probe Properties) (CHAOS-11120)
+- Discovery Graph Enhancement: highlight connection of selected service (CHAOS-10695)
+
+#### Fixed Issues
+
+- Fixed a UI issue where PM times were incorrectly displayed as AM when saving cron schedules (CHAOS-10951)
+
 ### Version 1.78.1
 
 #### Images required
