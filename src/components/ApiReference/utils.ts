@@ -407,7 +407,7 @@ const CAPITALIZATION_EXCEPTIONS = [
   'HTML',
   'XML',
   'SCS',
-  'SEI',
+//  'SEI',
 ];
 
 /**
