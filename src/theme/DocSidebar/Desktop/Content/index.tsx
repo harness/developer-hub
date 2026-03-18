@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, {type ReactNode, useState, useRef, useEffect} from 'react';
+import React, {type ReactNode, useState, useEffect, useRef} from 'react';
+import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import {useLocation} from 'react-router-dom';
 import {ThemeClassNames} from '@docusaurus/theme-common';
@@ -77,33 +78,68 @@ export default function DocSidebarDesktopContent({
       ? `/docs/${docsPathSegment}`
       : '';
   const showViewSwitcher = Boolean(apiRefModule && (apiRefModuleIdFromSidebar || docsBasePath));
-  const switcherRef = useRef<HTMLDivElement>(null);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+  const navRef = useRef<HTMLElement>(null);
 
-  // Move switcher node below first category header (module name), above its sub-list (e.g. "New to <module>?")
+
   useEffect(() => {
-    if (!showViewSwitcher || !switcherRef.current) return;
-    const wrapper = switcherRef.current;
-    const nav = wrapper.closest('nav.menu');
-    if (!nav) return;
+    if (!showViewSwitcher) {
+      setPortalTarget(null);
+      return;
+    }
 
-    const move = () => {
-      // First top-level item is the category (li); its first child is the header div, second is ul.menu__list
+    let mounted = true;
+
+    const findTarget = () => {
+      if (!mounted || !navRef.current) return;
+
+      // Use the ref instead of document.querySelector
+      const nav = navRef.current;
+
       const firstCategory = nav.querySelector('.menu__list > .menu__list-item');
       const subList = firstCategory?.querySelector(':scope > ul.menu__list');
-      if (firstCategory && subList && wrapper.parentNode) {
-        firstCategory.insertBefore(wrapper, subList);
+
+      if (firstCategory && subList) {
+        let container = firstCategory.querySelector<HTMLDivElement>('.docs-view-switcher-portal-container');
+        if (!container) {
+          container = document.createElement('div');
+          container.className = 'docs-view-switcher-portal-container';
+          container.dataset.createdByReact = 'true'; // Track that we created this
+          container.style.marginTop = '8px';
+          container.style.marginBottom = '8px';
+          firstCategory.insertBefore(container, subList);
+        }
+        if (mounted) {
+          setPortalTarget(container);
+        }
+      } else {
+        if (mounted) {
+          setPortalTarget(null);
+        }
       }
     };
 
-    // Defer so DocSidebarItems have rendered the category structure
     const t = requestAnimationFrame(() => {
-      requestAnimationFrame(move);
+      requestAnimationFrame(findTarget);
     });
-    return () => cancelAnimationFrame(t);
+
+    return () => {
+      mounted = false;
+      cancelAnimationFrame(t);
+      // Clean up created container
+      if (navRef.current) {
+        const container = navRef.current.querySelector('.docs-view-switcher-portal-container[data-created-by-react="true"]');
+        if (container) {
+          container.remove();
+        }
+      }
+      setPortalTarget(null);
+    };
   }, [showViewSwitcher, sidebar]);
 
   return (
     <nav
+      ref={navRef}
       aria-label={translate({
         id: 'theme.docs.sidebar.navAriaLabel',
         message: 'Docs sidebar',
@@ -115,14 +151,15 @@ export default function DocSidebarDesktopContent({
         showAnnouncementBar && styles.menuWithAnnouncementBar,
         className,
       )}>
-      {showViewSwitcher && apiRefModule && (
-        <div ref={switcherRef} style={{ marginTop: '8px', marginBottom: '8px' }}>
+      {showViewSwitcher && apiRefModule && portalTarget &&
+        ReactDOM.createPortal(
           <DocsViewSwitcher
             docsBasePath={docsBasePath}
             apiRefHref={`/api-reference?module=${encodeURIComponent(apiRefModuleId!)}`}
-          />
-        </div>
-      )}
+          />,
+          portalTarget
+        )
+      }
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
         <DocSidebarItems items={sidebar} activePath={path} level={1} />
       </ul>
