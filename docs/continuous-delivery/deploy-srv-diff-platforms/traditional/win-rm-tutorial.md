@@ -344,6 +344,10 @@ Here is an example of setting up an Infrastructure Definition for a pre-existing
 
 #### Host Groups
 
+:::info note
+This feature is behind the feature flag `CDS_ENABLE_INFRA_HOST_GROUPS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
 By default, all hosts in a PDC infrastructure share a single WinRM credential. Host Groups remove this limitation by letting you organize hosts into named groups, each with its own credential. This is particularly useful for environments that use Just Enough Administration (JEA), where different server groups require distinct credential and endpoint configurations.
 
 With Host Groups, a single infrastructure definition can target multiple Windows servers using different credentials in the same pipeline execution. For example, your web servers might use one JEA endpoint while your application servers use another — Host Groups let you model this without creating separate infrastructures.
