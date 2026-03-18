@@ -66,7 +66,7 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 * [Azure DevOps Pipelines](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/azure-devops/)
 * [GitHub Actions](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github-actions/sei-github-actions)
 
-### Beta Integrations
+### Beta integrations
 
 * [ArmorCode](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/armorcode/)
 * [SonarQube](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube)
@@ -74,6 +74,7 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 * [ServiceNow](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/)
 * [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor/)
 * [Windsurf](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf/)
+* [Custom Ingestion](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/custom-ingestion/)
 * [qTest](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/qtest/)
 
 Use the [Ingestion Satellites](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) service within your local network or VPC to connect your artifacts, issue management, collaboration tools, source code managers, and other providers to Harness SEI.
@@ -84,7 +85,7 @@ Some SEI 2.0 integrations require whitelisting certain Harness IP addresses in o
 To ensure your integrations can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall depending on the specific integration.
 :::
 
-## Custom CI/CD integrations
+### Custom CI/CD integrations
 
 SEI 2.0 supports custom CI/CD integrations through webhooks. You can use this for CI/CD tools that don't have a dedicated SEI 2.0 integration. For information about custom CI/CD, go to [Custom CI/CD Integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration).
 

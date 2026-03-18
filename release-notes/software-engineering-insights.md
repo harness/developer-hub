@@ -22,6 +22,21 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## March 2026
 
+### [New Feature] Custom Ingestion Integration is in beta
+----
+#### 2026-03-17
+
+SEI 2.0 now includes a Custom Ingestion integration in beta. This integration allows teams to ingest data from external systems (such as Aternity, Datadog, or internal platforms) and use that data to power widgets and analytics.
+
+To configure the integration, upload a [JSON schema file](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/custom-ingestion/schema-design) that defines the structure of the records you want to ingest. SEI 2.0 then generates a data ingestion endpoint and a Canvas data source table that can be queried using HQL. This capability enables teams to extend SEI analytics with metrics from proprietary tools, operational systems, or other engineering platforms. 
+
+To request access to the Custom Ingestion integration beta, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Related documentation
+
+- [Custom Ingestion Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/custom-ingestion)
+- [Design Custom Data Schemas](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/custom-ingestion/schema-design)
+
 ### [New Feature] QTest Integration is in beta
 ----
 #### 2026-03-17
