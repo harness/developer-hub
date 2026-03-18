@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2026-02-13T10:00:10
+date: 2026-03-17T10:00:10
 sidebar_position: 15
 ---
 
@@ -12,13 +12,30 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Software Engineering Insights.
 
-#### Last updated: February 13, 2026
+#### Last updated: March 17, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
+
+## March 2026
+
+### [New Feature] QTest Integration is in beta
+----
+#### 2026-03-17
+
+SEI 2.0 now includes a qTest integration in beta. This integration allows teams to ingest test management data from qTest Cloud using an API key. 
+
+Once configured, SEI 2.0 synchronizes test execution and testing activity data to support engineering insights and reporting. You can monitor ingestion activity using ingestion logs, which provide visibility into synchronization status and help troubleshoot data ingestion issues.
+
+To request access to the qTest integration beta, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Related documentation
+
+- [QTest Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/qtest)
+- [Harness Support](/docs/software-engineering-insights/sei-support)
 
 ## February 2026
 

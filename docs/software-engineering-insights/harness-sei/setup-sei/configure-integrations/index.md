@@ -47,31 +47,34 @@ Integration mapping refers to the process of associating existing or new integra
 
 Harness SEI supports a variety of platforms, repos, tools, and related technologies. The following sections list entities or providers with first-class support in Harness SEI.
 
-### Issue Management Platform
+### Issue Management
 
-* [Azure Boards](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
-* [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration)
+* [Azure DevOps Boards](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/azure-devops/)
+* [Jira](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/jira/)
 
 ### Source Code Management (SCM)
 
-* [Azure Repos](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
-* [Bitbucket](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud)
-* [GitHub](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration)
-* [GitLab Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
-* [GitLab Enterprise](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
+* [Azure DevOps Repos](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/azure-devops/)
+* [Bitbucket](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/bitbucket/)
+* [GitHub](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/github/)
+* [GitLab](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/gitlab/)
 
 ### CI/CD
 
-* [Jenkins](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jenkins/jenkins-plugin)
-* [Harness Continuous Delivery & GitOps and Continuous Integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)
-* [Azure Pipelines](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
+* [Harness CI/CD](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/harness/)
+* [Jenkins](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/jenkins/)
+* [Azure DevOps Pipelines](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/azure-devops/)
 * [GitHub Actions](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github-actions/sei-github-actions)
 
-### BETA
+### Beta Integrations
 
+* [ArmorCode](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/armorcode/)
 * [SonarQube](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube)
 * [PagerDuty](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty)
-* [ServiceNow](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow)
+* [ServiceNow](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/)
+* [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor/)
+* [Windsurf](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf/)
+* [qTest](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/qtest/)
 
 Use the [Ingestion Satellites](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) service within your local network or VPC to connect your artifacts, issue management, collaboration tools, source code managers, and other providers to Harness SEI.
 
@@ -84,12 +87,6 @@ To ensure your integrations can work correctly, please refer to the list of [Har
 ## Custom CI/CD integrations
 
 SEI 2.0 supports custom CI/CD integrations through webhooks. You can use this for CI/CD tools that don't have a dedicated SEI 2.0 integration. For information about custom CI/CD, go to [Custom CI/CD Integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration).
-
-:::tip
-
-In addition to SEI 2.0 integrations, you can [import CSV files](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-propels-scripts/tables) and display the data in [Table reports](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-propels-scripts/table-reports).
-
-:::
 
 ## Integration Monitoring
 
