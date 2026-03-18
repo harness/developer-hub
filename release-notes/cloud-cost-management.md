@@ -25,6 +25,23 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## March 2026 - Version 1.83.1
+#### Deployment Date: March 18, 2026 (Prod-1)
+
+### Fixed Issues
+
+- **Anomalies Drilldown List Not Rendering Multiple Resources:** Fixed an issue where the anomalies drilldown list failed to render details correctly when multiple resources were present. The list now properly displays resource names (Cost Category/Cost Buckets) instead of showing empty results. [CCM-30735]
+
+- **Asset Governance Rules Not Generating Recommendations:** Resolved an issue where custom rules in Asset Governance stopped generating new recommendations, even though they appeared under "Rules Generating Recommendations." We have added a retry mechanism that automatically restarts BQ load jobs if they remain in progress for more than one day. [CCM-30639]
+
+- **Kubernetes Cluster Anomalies Reporting Incorrect Costs:** Fixed an issue where service-level anomalies within a Kubernetes cluster displayed the total cluster cost instead of the cost for the specific service, resulting in inflated anomaly amounts. Additionally, resolved a related issue where the anomaly drilldown view for cluster resources failed to load. [CCM-30591]
+
+- **Jira Ticket Comments Not Saving for CCM Recommendations:** Resolved an issue where adding a comment while creating a Jira ticket for a CCM recommendation was not working. [CCM-30525]
+
+- **Budget Amount Changing on Scroll:** Fixed unexpected behavior in the budget UI where scrolling while the cursor was in a budget textbox caused the amount to change, including going negative. Scroll events are now disabled for numeric input fields. [CCM-30434]
+
+- **AWS Passthrough Recommendations Not Showing Overridden Savings:** Fixed an issue where overridden savings for AWS passthrough recommendations were not displayed on the recommendation details page. Overridden savings now display correctly, consistent with other recommendation types. [CCM-30432]
+
 ## March 2026 - Version 1.82.5
 
 ### Fixed Issues
