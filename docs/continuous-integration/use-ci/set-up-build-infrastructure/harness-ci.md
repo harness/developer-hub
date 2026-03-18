@@ -14,22 +14,45 @@ When a Harness CI pipeline runs, an _initialize_ step runs automatically before 
 
 ## Harness CI images list
 
-You can find Harness CI images on Docker Hub, the [Harness project on GAR](http://us-docker.pkg.dev/gar-prod-setup/harness-public), or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
+You can find Harness CI images on Docker Hub, the [Harness project on GAR](http://us-docker.pkg.dev/gar-prod-setup/harness-public), the [Harness ECR public gallery](https://gallery.ecr.aws/harness), or the Harness EU-GAR registry.
 
-Here are some examples of Harness CI images and the purpose of each image. Build image tags change often.
+The following Harness CI images are available on Docker Hub, GAR, ECR, and EU-GAR. Build image tags change often.
 
 - `harness/ci-addon`: Used to execute steps on containers in Kubernetes pods.
 - `harness/ci-lite-engine`: Used to orchestrate execution of steps on Kubernetes pods.
 - `harness/drone-git`: Used to clone git repos.
+- `harness/harness-cache-server`: Used to cache dependencies and build artifacts.
 
-Drone is part of Harness CI, and Harness CI uses [Drone plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) to run some operations. Some examples include:
+Harness CI uses [Drone plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) to run some operations. The following plugin images are available across all supported registries:
 
+- `plugins/kaniko`: Used to build Docker images with kaniko and push to Docker registry for Kubernetes cluster build infrastructures.
+- `plugins/kaniko-ecr`: Used to build Docker images with kaniko and push to AWS ECR for Kubernetes cluster build infrastructures.
+- `plugins/kaniko-acr`: Used to build Docker images with kaniko and push to Azure ACR for Kubernetes cluster build infrastructures.
+- `plugins/kaniko-gar`: Used to build Docker images with kaniko and push to Google Artifact Registry for Kubernetes cluster build infrastructures.
+- `plugins/docker`: Used to build and push Docker images for Harness Cloud build infrastructures.
+- `plugins/ecr`: Used to build and push Docker images to AWS ECR for Harness Cloud build infrastructures.
+- `plugins/acr`: Used to build and push Docker images to Azure ACR for Harness Cloud build infrastructures.
+- `plugins/gar`: Used to build and push Docker images to Google Artifact Registry for Harness Cloud build infrastructures.
+- `plugins/buildx`: Used to build and push Docker images with Buildx.
+- `plugins/buildx-ecr`: Used to build and push Docker images to AWS ECR with Buildx.
+- `plugins/buildx-acr`: Used to build and push Docker images to Azure ACR with Buildx.
+- `plugins/buildx-gar`: Used to build and push Docker images to Google Artifact Registry with Buildx.
 - `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds.
-- `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box for Kubernetes cluster build infrastructures.
-- `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box for Kubernetes cluster build infrastructures.
-- `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box for Kubernetes cluster build infrastructures.
-- `plugins/s3`: Used to upload files to AWS S3 buckets out of the box.
-- `plugins/gcs`: Used to upload files to GCP GCS service out of the box.
+- `plugins/s3`: Used to upload files to AWS S3 buckets.
+- `plugins/gcs`: Used to upload files to GCP GCS service.
+- `plugins/artifactory`: Used to upload artifacts to JFrog Artifactory.
+- `plugins/download-artifactory`: Used to download artifacts from JFrog Artifactory.
+- `plugins/test-analysis`: Used for test intelligence and test report parsing.
+- `plugins/artifact-metadata-publisher`: Used to publish artifact metadata.
+- `plugins/aws-oidc`: Used for AWS OIDC-based authentication.
+- `plugins/gcp-oidc`: Used for GCP OIDC-based authentication.
+- `plugins/buildah-docker`: Used to build Docker images with Buildah.
+- `plugins/drone-liquibase`: Used for database DevOps with Liquibase.
+- `plugins/image-migration`: Used to migrate Docker images between registries.
+- `plugins/email`: Used to send email notifications.
+- `plugins/githubaction`: Used to run GitHub Actions in Harness CI.
+
+If an image you need is not listed here or is unavailable on your expected registry, contact [Harness Support](https://support.harness.io/).
 
 ## Harness CI image pulls
 
