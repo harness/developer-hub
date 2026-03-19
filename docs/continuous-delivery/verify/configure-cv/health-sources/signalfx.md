@@ -1,6 +1,7 @@
 ---
 title: Splunk Observability (SignalFx)
 description: Learn how to set up Splunk Observability (SignalFX) as a health source for CV
+sidebar_position: 14
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-signalfx
 ---

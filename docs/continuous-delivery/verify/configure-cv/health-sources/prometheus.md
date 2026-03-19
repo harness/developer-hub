@@ -1,6 +1,7 @@
 ---
 title: Prometheus
 description: Learn how to set up Prometheus as a health source for CV
+sidebar_position: 12
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus
 ---

@@ -1,6 +1,7 @@
 ---
 title: Sumologic
 description: Learn how to set up Sumologic as a health source for CV
+sidebar_position: 15
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-sumologic
 ---

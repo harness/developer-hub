@@ -1,6 +1,7 @@
 ---
 title: Cloudwatch
 description: Learn how to set up Cloudwatch as a health source for CV
+sidebar_position: 3
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-cloudwatch
 ---

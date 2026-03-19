@@ -1,8 +1,9 @@
 ---
 title: Dynatrace
 description: Learn how to set up Dynatrace as a health source for CV
+sidebar_position: 1
 redirect_from: 
-    - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace
+    - /docs/continuous-delivery/verify/configure-cv/health-sources/dynatrace
 ---
 
 import Tabs from '@theme/Tabs';
@@ -23,14 +24,14 @@ A Health Source is basically a mapping of a Harness Monitored Service to the Ser
 
 In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
 
-![](./static/verify-deployments-with-dynatrace-14.png)
+![](../static/verify-deployments-with-dynatrace-14.png)
 
 1. In **Select health source type**, select **Dynatrace**.
 2. In **Health Source Name**, enter a name for the Health Source. For example Quickstart.
 3. Under **Connect Health Source**, click **Select Connector**.
 4. In **Connector** settings, you can choose an existing connector or click **New Connector** to create a new **Connector.**
    
-   ![](./static/verify-deployments-with-dynatrace-15.png)
+   ![](../static/verify-deployments-with-dynatrace-15.png)
 
    :::info note
    When creating a new Dynatrace connector:
@@ -59,7 +60,7 @@ Depending on your feature choice, do the following configuration steps.
 
 7. Click **Next**. The **Configuration** settings appear.
       
-   ![](./static/verify-deployments-with-dynatrace-16.png)
+   ![](../static/verify-deployments-with-dynatrace-16.png)
 
 8. Next, you will have the choice between using **Metric Packs** or **Custom Metrics**. 
 
@@ -133,11 +134,11 @@ Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 11. After writing your fixed input query, click **Validate** to ensure your query is valid.
 12. Then click **Run Query**. The query must be validated first from the previous step. 
 
-    ![](./static/verify-deployment-dynatrace-grail-1.png)
+    ![](../static/verify-deployment-dynatrace-grail-1.png)
 
 13. Next, complete the field mapping for the **Timestamp Identifier**, **Service Instance Identifier**, and **Message Identifier**. To do so, hit the `+` button icon and select the relevant field from the log that appears. 
 
-    ![](./static/field-mapping.png)
+    ![](../static/field-mapping.png)
 
 14. Click **Submit**. The health source is displayed in the verify step!
 

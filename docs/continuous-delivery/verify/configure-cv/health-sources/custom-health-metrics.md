@@ -1,6 +1,7 @@
 ---
 title: Custom Health Source
 description: Learn how to set up a custom health source for CV
+sidebar_position: 4
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics
 ---

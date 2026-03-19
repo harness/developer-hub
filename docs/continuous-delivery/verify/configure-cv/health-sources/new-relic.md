@@ -1,6 +1,7 @@
 ---
 title: New Relic
 description: Learn how to set up New Relic as a health source for CV
+sidebar_position: 11
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic
 ---

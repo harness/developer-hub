@@ -1,6 +1,7 @@
 ---
 title: CloudWatch Logs
 description: Learn how to use CloudWatch Logs as a health source with AWS
+sidebar_position: 2
 ---
 
 With this article, you'll learn how to leverage CloudWatch Logs as a health source. You'll gain a clear understanding of the necessary prerequisites, configuration steps, and the specific IAM permissions required for seamless integration, including advanced setups for cross-account access and IRSA.

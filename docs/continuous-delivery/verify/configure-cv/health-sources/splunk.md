@@ -1,6 +1,7 @@
 ---
 title: Splunk
 description: Learn how to set up Splunk as a health source for CV
+sidebar_position: 13
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-splunk
 ---

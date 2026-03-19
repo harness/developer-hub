@@ -1,6 +1,7 @@
 ---
 title: Google Cloud Operations
 description: Learn how to set up Google Cloud Operations as a health source for CV
+sidebar_position: 9
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations
 ---

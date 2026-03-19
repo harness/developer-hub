@@ -1,6 +1,7 @@
 ---
 title: Elastic Search
 description: Learn how to set up Elastic Search as a health source for CV
+sidebar_position: 7
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-elastic-search
 ---
