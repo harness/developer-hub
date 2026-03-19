@@ -134,6 +134,11 @@ You can override the default by setting the environment variable on your delegat
 
 - Added `tree` query parameters to Jenkins API calls to unblock API requests in the latest CloudBees Jenkins integration. [CDS-117294]
 
+### Version 26.03.88703 <!-- March 18, 2026 -->
+
+#### Fixed issues
+
+- Fixed the NPE which was occuring while running the K8s Patch Step First time.
 
 ### Version 26.02.88602 <!-- March 10, 2026 -->
 
