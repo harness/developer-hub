@@ -128,6 +128,10 @@ Store images in the `docs` folder or a subdirectory (commonly `docs/static`):
 ```markdown
 ![Architecture Diagram](static/architecture-diagram.png)
 ```
+**Note:**
+    
+> Avoid using image reference-style links (e.g., `[![Image]][ref]`). These are primarily meant for linking images and may not be consistently handled, leading to broken rendering or unexpected link behavior.
+
 
 **Path guidelines:**
 - If image is at `/docs/static/architecture-diagram.png`, use: `static/architecture-diagram.png`
