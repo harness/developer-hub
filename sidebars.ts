@@ -696,7 +696,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Goverance',
+          label: 'Governance',
           link: {
             type: 'generated-index',
           },
