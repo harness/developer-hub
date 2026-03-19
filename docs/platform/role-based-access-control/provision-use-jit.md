@@ -41,3 +41,15 @@ Before you can enable JIT provisioning, you must configure SAML SSO authenticati
    When users log in to your Harness instance for the first time, and they use SAML SSO authentication, Harness automatically provisions any users that have the matching **JIT Validation Key** and **JIT Validation Value** in the SAML assertion.
 
    If you don't specify a **JIT Validation Key** and **JIT Validation Value**, Harness uses JIT provisioning to provision *all* new users logging in through SAML.
+
+## Validation of SSO for JIT
+1. The first login must come from the configured SAML provider:
+   - (e.g. If it is Identity Platform Initiated SSO, the user must go through the Harness SSO app).
+   - For Azure JIT:
+        - You will need to access it via "My Apps" (https://myapplications.microsoft.com/)
+   - For Google JIT:
+        - Access the Google Workspace dashboard first: https://workspace.google.com/dashboard
+        - Select the icon that matches the your Company/Organization's Google Workspace configured for Harness SAML access.
+   - For Okta JIT:
+        - Access with the following vanity URL: `https://YOUR_COMPANY_OKTA_URL/app/UserHome`
+2. After that first successful login, the new user can login to the url (https://app.harness.io/auth/#/sso)
