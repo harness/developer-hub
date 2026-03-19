@@ -1108,5 +1108,11 @@
     "description": "Feature to enable file update enhancements for GitOps Update release repo step",
     "gaStartDate": "2026-03-18",
     "module": "GitOps"
+  },
+  {
+    "flagKey": "CI_SIMPLIFY_POOL_YAML",
+    "description": "Simplifies pool YAML configuration in Harness-hosted builds, reducing configuration complexity for build infrastructure setup.",
+    "gaStartDate": "2026-03-19",
+    "module": "Continuous Integration"
   }
 ]
