@@ -91,6 +91,22 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where the **Referencing Entities** button for organization-level step templates showed "no references found" even when references existed, and the **Compare Versions** feature failed to load the comparison side with a "template does not exist or has been deleted" error despite the version being valid. Both features now correctly resolve template references and version metadata across scopes. (**PIPE-32351**, **PIPE-32353**, **ZD-104288**)
 - Fixed an issue where files uploaded via the File Upload step remained downloadable for up to 7 days after deletion through the API or UI, due to a soft-delete policy on the underlying GCS bucket. Deleting an uploaded file now removes it from storage immediately, so it is no longer accessible for download after a successful delete operation. Note that the GCS bucket has a 37-day lifecycle rule — files that are not explicitly deleted are automatically removed after 37 days. (**PIPE-32337**, **ZD-104827**)
 
+### GitOps Service 1.52.1, GitOps Agent 0.111.1
+
+#### New features and enhancements
+
+- Harness AIDA now supports GitOps entities and pipeline stages. When creating or troubleshooting GitOps Applications or ApplicationSets, AIDA can diagnose common setup errors and suggest remediations — including manifest syntax errors, incorrect service or environment types, missing GitOps clusters on linked environments, incomplete Application or ApplicationSet manifests, and connectivity issues with Git or infrastructure connectors. (**CDS-115902**)
+
+#### Fixed issues
+
+- Fixed an issue where Harness secret expressions resolved inside non-secret Kubernetes manifests (such as ConfigMaps) exposed secret values in plain text. When an environment or service variable was typed as a Secret and referenced via a Harness expression in a Helm values file, the resolved secret content appeared unmasked in the rendered manifest during GitOps app sync. Secret values are now masked in non-secret manifest types. (**CDS-119065**)
+- Fixed an issue where GitOps links in **Project Settings** returned a 404 error when accessed from **Admin Settings**. (**CDS-118353**)
+- Fixed an issue where the GitOps Rollout step failed to fetch rollout status when an Argo Rollout had more than two active ReplicaSets. (**CDS-118750**, **ZD-104383**)
+- Fixed an issue where the Argo CD application project was linked to a different organization than the one selected in the UI. (**CDS-118859**, **ZD-104476**)
+- Fixed an issue where the GitOps Rollout step failed with an unmarshalling error when processing Argo Rollouts that use custom traffic routing plugins. (**CDS-118893**, **ZD-104434**)
+- Fixed an issue where auto-created GitOps services defaulted to a GitHub connector regardless of the actual Git provider. GitOps auto-created services now detect and assign the correct Git provider type from the repository URL, ensuring proper connector selection in the Harness UI. Additionally, source repository details were incorrectly populated in the **Deployment Repo** fields instead of the **Release Repo** field; they are now correctly populated in the **Release Repo** field. (**CDS-119249**, **ZD-105458**)
+- Fixed an issue where Harness Support Group users authenticated via OKTA SSO received 403 Permission Denied errors when accessing GitOps resources. Support user tokens are now properly forwarded to the Access Control Service for elevated-access detection. (**CDS-116751**)
+
 ## February 2026
 
 ### GitOps Service 1.51.2, GitOps Agent 0.110.0
