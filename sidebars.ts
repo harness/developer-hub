@@ -74,6 +74,18 @@ const sidebars: SidebarsConfig = {
             description: 'Learn how to make your software releases more efficient and reliable.',
           },
         },
+        // Release Orchestration Landing Page
+        {
+          type: 'link',
+          href: '/docs/release-orchestration',
+          label: 'Release Orchestration',
+          className: 'sidebar-rm',
+
+          customProps: {
+            description:
+              'Learn how to orchestrate and manage complex software releases across multiple services and teams.',
+          },
+        },
         // Database DevOps Landing Page
         {
           type: 'link',
@@ -283,18 +295,6 @@ const sidebars: SidebarsConfig = {
               'Learn how data-led insights can remove bottlenecks and improve productivity.',
           },
         },
-        // Release Orchestration Landing Page (hidden from /docs for now)
-        // {
-        //   type: 'link',
-        //   href: '/docs/release-orchestration',
-        //   label: 'Release Orchestration',
-        //   className: 'sidebar-rm',
-        //
-        //   customProps: {
-        //     description:
-        //       'Learn how to orchestrate and manage complex software releases across multiple services and teams.',
-        //   },
-        // },
         // SMP landing page
         {
           type: 'link',

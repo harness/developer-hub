@@ -25,6 +25,11 @@ const docDropdownItems = [
     icon: "/img/icon_cd.svg",
   },
   {
+    to: "/docs/release-orchestration",
+    label: "Release Orchestration",
+    icon: "/img/icon-rm.svg",
+  },
+  {
     to: "/docs/continuous-integration",
     label: "Continuous Integration",
     icon: "/img/icon_ci.svg",
