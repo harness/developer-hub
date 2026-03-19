@@ -1110,6 +1110,12 @@
     "module": "GitOps"
   },
   {
+    "flagKey": "STO_EXEMPTION_FILTERS",
+    "description": " Added filters to the Exemptions page to narrow down issues based on Issue Type, Target, Target Type, Severity, and many more.",
+    "gaStartDate": "2026-03-19",
+    "module": "Security Test Orchestration"
+  },
+  {
     "flagKey": "CI_SIMPLIFY_POOL_YAML",
     "description": "Simplifies pool YAML configuration in Harness-hosted builds, reducing configuration complexity for build infrastructure setup.",
     "gaStartDate": "2026-03-19",
