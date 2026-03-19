@@ -8,6 +8,10 @@ To stay aligned and better serve customers, development teams need to understand
 
 To integrate Harness CI and Jira, install the **CI Enterprise by Harness** app in your Jira instance, generate an authentication token, and then add a **Plugin** step to your pipeline.
 
+:::info
+The native [Jira Update step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) manages standard Jira issue fields such as Status, Priority, and Environment. It does not update the **Deployment** or **Build** fields under the **Development** tab. Use the Plugin step described on this page to update those fields.
+:::
+
 ## Install the app
 
 The **CI Enterprise by Harness** app uses the [Jira Drone plugin](https://plugins.drone.io/plugins/jira). If you aren't able to install apps in your Jira instance, you can also use the [Jira Drone plugin directly in a Plugin step](./run-a-drone-plugin-in-ci.md).

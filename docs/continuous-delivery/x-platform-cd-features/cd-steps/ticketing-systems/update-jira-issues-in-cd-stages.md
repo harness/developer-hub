@@ -19,6 +19,7 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 * Harness supports only Jira fields of type `User`, `Option`, `Array`, `Any`, `Number`, `Date`, and `String`.  For example, [multi value](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/) fields to allow users to select multiple options from a drop-down list.
 * Harness does not integrate with Jira fields that manage issue links or attachments. 
+* The Jira Update step manages standard Jira issue fields. It does not update the **Deployment** or **Build** fields under the **Development** tab on Jira issues. To update those fields, use the [Jira Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin/#how-does-harness-determine-which-jira-field-to-update) in your pipeline.
 * You can add unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-cascading-fields-jira).
 
 
@@ -162,6 +163,23 @@ Harness supports updating the Jira Issue Type.
    ![](static/update-issue-type.png)
 
 The issue type for the selected Jira Issue is now updated with the issue type you selected.
+
+## Update Jira Deployment or Build fields
+
+The **Deployment** and **Build** fields under the **Development** tab on a Jira issue are managed through the Jira Development API. This is separate from the standard Jira issue fields API that the Jira Update step uses.
+
+If you select the **Environment** field in the Jira Update step's **Add Jira Fields** dialog, it updates the standard Jira **Environment** field on the issue. It does not update the **Deployment** or **Build** fields under the **Development** tab.
+
+To update the **Deployment** or **Build** fields, use the **Plugin** step with the `plugins/jira` image instead. The `ENVIRONMENT_NAME` setting in the Plugin step controls which field is updated:
+
+- **With `ENVIRONMENT_NAME`:** Harness updates the Jira **Deployment** field.
+- **Without `ENVIRONMENT_NAME`:** Harness updates the Jira **Build** field.
+
+For setup instructions, go to [Integrate Jira in a CI pipeline](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin/#how-does-harness-determine-which-jira-field-to-update).
+
+:::warning
+Do not confuse the standard Jira **Environment** field with the **Deployment** field under the **Development** tab. Setting the Environment field in the Jira Update step only updates the issue-level Environment field, not the Development tab's Deployment tracking.
+:::
 
 ## Advanced settings
 
