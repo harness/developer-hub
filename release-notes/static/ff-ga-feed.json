@@ -1102,5 +1102,11 @@
     "description": "Removing the traffic configuration from the canary workload to prevent virtual services from being deleted during rollback.",
     "gaStartDate": "2026-03-12",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_GITOPS_URR_FILE_UPDATE_ENHANCEMENT",
+    "description": "Feature to enable file update enhancements for GitOps Update release repo step",
+    "gaStartDate": "2026-03-18",
+    "module": "GitOps"
   }
 ]
