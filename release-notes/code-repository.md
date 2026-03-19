@@ -23,6 +23,23 @@ These release notes describe recent changes to Harness Code Repository.
 ## March 2026
 
 <!-- March 4, 2026 -->
+### Version 1.78.x
+
+#### New Repository Settings and Rules Interaction
+
+As part of ongoing improvements to repository restriction enforcement, we have a long-term project to refine the interactions among **Settings**, **Push Rules**, **Branch Rules**, and **Tag Rules**.
+
+Settings that overlap with push rules will be removed in a future release, as their functionality is being replaced by rules.
+
+During this transition, we have identified issues with how some settings were being enforced. Some were **not enforced as intended**, and changes will be deployed in the coming weeks to ensure they are applied correctly. This may result in **breaking behavior** for configurations that relied on the previous unintended evaluation. (CODE-5067)
+
+Customers are strongly encouraged to prefer **push rules** over **settings** for new configurations where equivalent rule-based conditions exist, as rules support overrides and will remain the supported mechanism going forward.
+
+Customers should review existing repository configurations and remove overlapping restrictions from **Settings** when equivalent **Push Rules** exist.
+
+After upgrading, repository behavior should be verified, since some settings that were previously not enforced may now be applied correctly and can affect push operations.
+
+The update will be part of the **1.78.x release** (tentatively week of March 30, 2026).
 
 ### Version 1.77.x
 
