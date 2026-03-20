@@ -41,6 +41,8 @@ After upgrading, repository behavior should be verified, since some settings tha
 
 The update will be part of the **1.78.x release** (tentatively week of March 30, 2026).
 
+For more information, go to [Repository Settings and Push Rules](/docs/code-repository/config-repos/rules#repository-settings-and-push-rules).
+
 ### Version 1.77.x
 
 #### New features and enhancements

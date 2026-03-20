@@ -194,6 +194,32 @@ Allow specific users, user groups, or service accounts to bypass the rule. Only 
 * You can view all active tag rules in the **Rules** tab of the repository, under the **Tag** filter.
 * Rules are enforced at the Git operation level — users pushing from Git CLI or through CI tools will see a rejection message if blocked.
 
+### Repository Settings and Push Rules
+
+**Rules should be preferred over repository settings**, as **rules support overrides** and **will remain the supported mechanism** going forward.
+
+However, if both settings and push rules are configured, the following behavior applies:
+
+**1. No settings and no push rules**
+
+If neither settings nor push rules are configured, default settings behavior applies.
+
+**2. Settings configured, push rules not configured**
+
+If settings are configured and push rules are not configured, settings are enforced.
+
+**3. Push rules configured, settings not configured**
+
+If push rules are configured and settings are not configured, push rules are enforced.
+
+**4. Both settings and push rules configured**
+
+If both settings and push rules define conditions, both must pass. All conditions defined in settings and all conditions defined in push rules must be satisfied.
+
+#### Override behavior
+
+If the same condition exists in both settings and push rules, and the push rule is overridden, the setting condition is still enforced. Therefore, the override may appear ineffective if the restriction also exists in settings.
+
 ## Toggle rules
 
 You can toggle rules on and off.
