@@ -9,12 +9,6 @@ The Harness platform supports multiple types of API keys and tokens, including p
 
 You typically create one client-side and one server-side SDK API key per environment in Harness FME. While multiple keys of the same type are supported, [Harness FME SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) must use the matching key type; client-side for frontend and mobile SDKs, and server-side for backend SDKs.
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs queryString="fme-split">
-<TabItem value="fme" label="Harness FME">
-
 To create an SDK API key in Harness FME: 
 
 1. From the FME navigation menu, click **FME Settings** and select **Projects**. 
@@ -39,8 +33,10 @@ import ApiKeys from '/docs/platform/automation/api/add-and-manage-api-keys.md'
 
 <ApiKeys />
 
-</TabItem>
-<TabItem value="split" label="Split Legacy">
+## Legacy Split (reference only)
+
+<details>
+<summary>View Legacy Split guidance</summary>
 
 :::warning Migrated from Split?
 This documentation describes the **Split legacy** Admin API keys experience.
@@ -65,7 +61,7 @@ If you accidentally expose your API key, revoke it in the **APIs** tab in **Acco
 Be sure to copy your API Key once it's generated. For security purposes, you won’t see the key again.
 :::
 
-## Managing your API keys
+**Managing your API keys**
 
 To manage your API keys, go to the **API keys** tab in your **Admin Settings** page. On this page you can:
 
@@ -74,7 +70,7 @@ To manage your API keys, go to the **API keys** tab in your **Admin Settings** p
 * Revoke existing API keys
 * Clone existing API keys
 
-### Adding server-side and client-side API keys
+**Adding server-side and client-side API keys**
 
 To add one of these API keys, do the following: 
 
@@ -96,7 +92,7 @@ To add one of these API keys, do the following:
 
 7. Click the **Create API key** button to create the key.
 
-### Adding Admin API keys
+**Adding Admin API keys**
 
 1. From the left navigation, click the **profile button** at the bottom and then select Admin settings.
 
@@ -114,7 +110,7 @@ To add one of these API keys, do the following:
    
    ![](./static/copy-access-token.png)
 
-### Cloning API keys
+**Cloning API keys**
 
 The Clone API keys action creates a new API key with access levels the same as the key being cloned. To clone an API key, do the following:
 
@@ -132,7 +128,7 @@ The Clone API keys action creates a new API key with access levels the same as t
 
 6. Click the **Clone API key** button to create the cloned key.
 
-### Endpoint restrictions for Admin API keys
+**Endpoint restrictions for Admin API keys**
 
 If you restrict an API Key to one or more environments, the following are the Admin API endpoints that are restricted:
 
@@ -146,7 +142,7 @@ If you restrict an API Key to one or more environments, the following are the Ad
 * [Change Requests](https://docs.split.io/reference#change-request-overview). All calls return a 401
 * [Tags](https://docs.split.io/reference#tags-overview). All calls return a 401
 
-## Managing Admin API key roles and scopes
+**Managing Admin API key roles and scopes**
 
 Harness FME enables you to restrict the access level of API keys in two ways:
 
@@ -155,7 +151,7 @@ Harness FME enables you to restrict the access level of API keys in two ways:
 
 While FME client-side and server-side SDK API keys are always scoped to a specific _environment_, Admin API keys can be tuned to granular access levels by creating them with a **role** and **scope** [using the Harness FME API](https://docs.split.io/reference/create-an-api-key). This page describes the roles and scopes that can be applied when creating **_Admin API keys_**.
 
-### Choose the right role
+**Choose the right role**
 
 The role given to an Admin API key aims to limit the access and operations a key can perform within FME within two functional areas: Administrative Permissions and Resource (Feature Flag & Segment) Permissions.
 
@@ -173,7 +169,7 @@ The role given to an Admin API key aims to limit the access and operations a key
 Note that roles can be combined together at the time an API key is created to provide the appropriate set of permissions needed to accomplish specific tasks.
 
 
-### Choose the right scope
+**Choose the right scope**
 
 An API key can be scoped to limit its reach to:
 
@@ -181,13 +177,11 @@ An API key can be scoped to limit its reach to:
 - A specific project: The API key will grant access to manage the resources (flags, segments, traffic types, etc.) within only a single project. Access is also granted to manage future environments created within that project.
 - The whole account: The API key will grant access to reach resources across the whole FME account. Granted access is effectively unscoped.
 
+**Create a restricted API key**
 
-## Create a restricted API key
+You can use the FME API to create an Admin API key that has a restricted role or that leverages project and environment scopes. You can also restrict scope of an Admin API key to specific environments in the FME UI. Both approaches are described below.
 
-You can use the ___FME API___ to create an Admin API key that has a restricted role or that leverages project and environment scopes. You can also restrict scope of an Admin API key to specific environments in the ___FME UI___. Both approaches are described below.
-
-
-#### Using the FME API to manage roles and scopes
+**Using the FME API to manage roles and scopes**
 
 Roles and scopes are assigned to an `Admin` API key (`"apiKeyType": "admin"`) at the moment of its creation via the FME API. Go to [Create an API key](https://docs.split.io/reference/create-an-api-key) to learn more.
 
@@ -201,7 +195,7 @@ Some important considerations:
 
 The POST API Key endpoint takes a JSON attribute, used to pass in the desired role. For an **_Admin key with full permissions_**, here’s a sample payload you can send to create the role and its expected response.
 
-```
+```json
 POST: /internal/api/v2/apiKeys
 {
   "name": "my_first_restricted_apikey",
@@ -211,7 +205,8 @@ POST: /internal/api/v2/apiKeys
   "roles": ["API_ALL_GRANTED"] 
 }
 ```
-```
+
+```json
 Response:
 {
   "organization": {
@@ -242,7 +237,7 @@ Be sure to copy your Admin API key (Line 34 in above example) once it's generate
 
 This is another example of a request to create an **_Admin API key that is scoped to a project_**. 
 
-```
+```json
 POST: /internal/api/v2/apiKeys`
 {
   "name": "my_project_admin_api_key",
@@ -255,7 +250,8 @@ POST: /internal/api/v2/apiKeys`
   "roles": ["API_WORKSPACE_ADMIN"]
 }
 ```
-```
+
+```json
 Response:
 {
   "organization": {
@@ -287,23 +283,22 @@ Response:
 }
 ```
 
-#### Using the FME UI to manage scopes
+**Using the FME UI to manage scopes**
 
 You can also use the Admin settings section in the Harness FME to create an Admin API key that is scoped to specific environment(s). At this time, you cannot use this UI to specify a specific role or project scope. Note that all SDK API keys are inherently scoped to a single environment.
 
 ![](./static/create-admin-api-key.png)
 
-### Manage a restricted API key
+**Manage a restricted API key**
 
 You can revoke and clone restricted Admin API keys using the FME UI as you would an unrestricted key.
 
 ![](./static/manage-api-keys.png)
 
-### Ensure your key has the appropriate role to use the API endpoints
+**Ensure your key has the appropriate role to use the API endpoints**
 
 Each FME API endpoint has a list of accepted roles that the endpoint will look for on the bearer key that you used to [authorize your API request](https://docs.split.io/v2-dev/reference/authentication). You can see the list of accepted roles by navigating to a specific resource in our [API documentation](https://docs.split.io/v2/reference/create-an-api-key). 
 
 Additionally, [error codes](https://docs.split.io/v2/reference/error-codes) have been created for cases where requests do not have the appropriate role in the bearer token that was used.
 
-</TabItem>
-</Tabs>
+</details>
