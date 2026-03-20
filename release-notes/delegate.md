@@ -134,6 +134,18 @@ You can override the default by setting the environment variable on your delegat
 
 - Added `tree` query parameters to Jenkins API calls to unblock API requests in the latest CloudBees Jenkins integration. [CDS-117294]
 
+### Version 26.03.88705 <!-- March 19, 2026 -->
+
+#### Fixed issues
+
+- Fixed the same `destination.port` data-loss issue in the Istio **Swap** step for Kubernetes Blue/Green deployments. The swap step rebuilt stable and stage destinations without carrying over port values from the cluster VirtualService, causing routing failures for multi-port services after swap. Port is now preserved from the existing VirtualService route destinations. (CDS-120027, ZD-105736)
+
+### Version 26.03.88704 <!-- March 19, 2026 -->
+
+#### Fixed issues
+
+- Fixed an issue where the Istio **Traffic Shift** step in Kubernetes Blue/Green deployments silently dropped `destination.port` values from the generated VirtualService patch. The INHERIT configuration path rebuilt route destinations using only `host` and `weight`, discarding any port defined in the step inputs or on the cluster's existing VirtualService. Port is now preserved using a combined lookup from the cluster resource and step configuration, with step input taking precedence. (CDS-120027, ZD-105736)
+
 ### Version 26.03.88703 <!-- March 18, 2026 -->
 
 #### Fixed issues
