@@ -74,10 +74,20 @@ To create an upstream proxy, follow these steps:
    - Select **Anonymous (No credentials required)** for public sources
    :::
 
+
+
 6. Select **Create Upstream Proxy**.
 
 </TabItem>
 </Tabs>
+
+   :::warning Harness Secret Manager Required
+   Upstream registry authentication details must be stored in [**Harness Secret Manager**](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+   
+   External secret managers are not supported for upstream authentication.
+   
+   This requirement ensures that Harness Artifact Registry can securely decrypt and validate credentials during authentication.
+   :::
 
 > **Next steps:**
 >After you've created your upstream proxy, you will need to set it in a registry. To learn how to do so, go to [Set an upstream proxy](/docs/artifact-registry/manage-registries/configure-registry#set-proxy-for-registry).
