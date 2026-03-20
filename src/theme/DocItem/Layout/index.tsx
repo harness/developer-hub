@@ -13,6 +13,7 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import ContentVisibility from '@theme/ContentVisibility';
 import type {Props} from '@theme/DocItem/Layout';
 import ChaosDocsBanner from '@site/src/components/ChaosDocsBanner';
+import FmeKapaAssistant from '@site/src/components/FmeKapaAssistant';
 
 import styles from './styles.module.css';
 
@@ -62,6 +63,7 @@ export default function DocItemLayout({children}: Props): ReactNode {
         </div>
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
+      <FmeKapaAssistant />
     </div>
   );
 }

@@ -147,6 +147,7 @@ pipeline:
                       HARNESS_GENERIC_ACCOUNT_IDENTIFIER: <+pipeline.variables.hdhPipelineAccountId>
                       COVEO_API_KEY: <+pipeline.variables.coveoApiKey>
                       GEMINI_API_KEY: <+pipeline.variables.GEMINI_API_KEY>
+                      KAPA_FME_WEBSITE_ID: <+pipeline.variables.KAPA_FME_WEBSITE_ID>
               - step:
                   type: Plugin
                   name: Publish-Netifly-Preview
@@ -257,3 +258,11 @@ pipeline:
       description: Gemini API Key for dynamically generated AI content, e.g. Release Notes landing page.
       required: true
       value: hdhGeminiApiKey
+    - name: KAPA_FME_WEBSITE_ID
+      type: Secret
+      description: >-
+        Kapa website ID for the FME Release Agent iframe (customFields.KAPA_FME_WEBSITE_ID).
+        Must be set for preview/prod builds; match the value you use locally (e.g. from .env).
+        Also add Netlify preview host patterns in Kapa (allowed domains) or the widget can load blank.
+      required: false
+      value: hdhKapaFmeWebsiteId

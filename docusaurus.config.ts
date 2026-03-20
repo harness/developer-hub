@@ -25,8 +25,11 @@ const config: Config = {
   customFields: {
     SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
     HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
+    /** Separate Kapa Website Widget integration: enable only FME doc sources in app.kapa.ai */
+    KAPA_FME_WEBSITE_ID: process.env.KAPA_FME_WEBSITE_ID ?? '',
   },
   scripts: [
+    /* Navbar Ask AI — keep in sync with `static/fme-kapa-embed.html` (FME iframe) except FME-only fields. */
     {
       src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
       async: true,

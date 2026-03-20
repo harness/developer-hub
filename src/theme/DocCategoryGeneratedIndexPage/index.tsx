@@ -23,6 +23,7 @@ import CanonocalLookup from './CanonicalLookup';
 
 import { useLocation } from '@docusaurus/router';
 import Head from '@docusaurus/Head';
+import FmeKapaAssistant from '@site/src/components/FmeKapaAssistant';
 function DocCategoryGeneratedIndexPageMetadata({
   categoryGeneratedIndex,
 }: Props): JSX.Element {
@@ -85,6 +86,7 @@ export default function DocCategoryGeneratedIndexPage(
     <>
       <DocCategoryGeneratedIndexPageMetadata {...props} />
       <DocCategoryGeneratedIndexPageContent {...props} />
+      <FmeKapaAssistant />
     </>
   );
 }

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FME Release Agent</title>
+    <style id="fme-kapa-embed-base">
+      html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        background: transparent;
+      }
+      body {
+        margin: 0;
+        width: 100%;
+        min-height: 100%;
+        height: 100%;
+        height: 100dvh;
+        overflow: hidden;
+        font-family: system-ui, sans-serif;
+        background: transparent;
+      }
+    </style>
+    <script>
+      (function () {
+        var k = window.Kapa;
+        if (!k) {
+          var i = function () {
+            i.c(arguments);
+          };
+          i.q = [];
+          i.c = function (args) {
+            i.q.push(args);
+          };
+          window.Kapa = i;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var websiteId = params.get('websiteId');
+        var basePath = (params.get('basePath') || '').replace(/\/$/, '');
+        var context = (params.get('context') || 'general').toLowerCase();
+        if (!websiteId) {
+          document.body.innerHTML =
+            '<p style="padding: 1rem; color: #333">FME assistant is not configured (missing website id).</p>';
+          return;
+        }
+
+        var HARNESS_DOCS_AI_FRAG = '#fme-open-harness-docs-ai';
+        var HARNESS_DOCS_AI_ID = 'fme-open-harness-docs-ai';
+
+        function isOpenHarnessDocsAiLink(href) {
+          if (!href) return false;
+          var h = href.trim();
+          if (h.indexOf('fme://open-harness-docs-ai') === 0) return true;
+          return h === HARNESS_DOCS_AI_FRAG || h.indexOf(HARNESS_DOCS_AI_ID) !== -1;
+        }
+
+        function patchHarnessDocsAiDisclaimerAnchors(root) {
+          if (!root || !root.querySelectorAll) return;
+          var list = root.querySelectorAll('a[href]');
+          var i;
+          for (i = 0; i < list.length; i++) {
+            var a = list[i];
+            var href = a.getAttribute('href') || '';
+            if (!isOpenHarnessDocsAiLink(href)) continue;
+            a.removeAttribute('target');
+            a.removeAttribute('rel');
+            a.setAttribute('href', HARNESS_DOCS_AI_FRAG);
+            a.setAttribute('data-fme-switch-to-ask-ai', '1');
+          }
+        }
+
+        function patchHarnessDocsAiAnchorsDeep(node) {
+          if (!node) return;
+          if (node.nodeType === 1) {
+            patchHarnessDocsAiDisclaimerAnchors(node);
+            if (node.shadowRoot) patchHarnessDocsAiAnchorsDeep(node.shadowRoot);
+            var ch = node.children;
+            var j;
+            for (j = 0; j < ch.length; j++) patchHarnessDocsAiAnchorsDeep(ch[j]);
+          }
+        }
+
+        function findAnchorFromEvent(e) {
+          var t = e.target;
+          if (t && typeof t.closest === 'function') {
+            var a = t.closest('a[href]');
+            if (a) return a;
+          }
+          var path = typeof e.composedPath === 'function' ? e.composedPath() : [];
+          var i;
+          for (i = 0; i < path.length; i++) {
+            var el = path[i];
+            if (el && el.nodeType === 1 && el.tagName === 'A' && el.getAttribute('href')) return el;
+          }
+          return null;
+        }
+
+        function postOpenHarnessDocsAiToParent() {
+          try {
+            if (window.parent !== window) {
+              window.parent.postMessage({ type: 'fme-kapa-open-harness-docs-ai' }, window.location.origin);
+            }
+          } catch (err) {}
+        }
+
+        function onHarnessDocsAiLinkActivate(e) {
+          var a = findAnchorFromEvent(e);
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          if (!isOpenHarnessDocsAiLink(href)) return;
+          e.preventDefault();
+          if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+          e.stopPropagation();
+          postOpenHarnessDocsAiToParent();
+        }
+
+        document.addEventListener('click', onHarnessDocsAiLinkActivate, true);
+        document.addEventListener('auxclick', function (e) {
+          if (e.button !== 1) return;
+          onHarnessDocsAiLinkActivate(e);
+        }, true);
+
+        var patchDisclaimerTimer = null;
+        function schedulePatchDisclaimerLinks() {
+          if (patchDisclaimerTimer) clearTimeout(patchDisclaimerTimer);
+          patchDisclaimerTimer = setTimeout(function () {
+            patchDisclaimerTimer = null;
+            patchHarnessDocsAiAnchorsDeep(document.body);
+          }, 50);
+        }
+        function patchDisclaimerLinksNow() {
+          if (patchDisclaimerTimer) clearTimeout(patchDisclaimerTimer);
+          patchDisclaimerTimer = null;
+          patchHarnessDocsAiAnchorsDeep(document.body);
+        }
+
+        /*
+         * Kapa uses col-span 6 (2×2 on a 12-col grid) only when each question is ≤40 chars;
+         * longer strings get span 12 (full width). Keep every chip ≤40 characters.
+         */
+        var EXAMPLE_BY_CONTEXT = {
+          general:
+            'How do I create a feature flag?,How do I run an A/B experiment?,Can I target user groups with segments?,What is progressive flag delivery?',
+          monitoring:
+            'How do I set up release monitoring?,How do I configure metrics and alerts?,What is Live Tail for flags?,How do I debug a bad rollout?',
+          experimentation:
+            'How do I read experiment results?,What is statistical significance?,How do I add experiment metrics?,How do I create an FME experiment?',
+          'release-agent':
+            'What can the Release Agent do?,Where is Release Agent documented?,How do I start with Release Agent?,What workflows does it support?',
+          migration:
+            'How do I migrate from Split to Harness?,What changes for API keys?,How are Split segments mapped?,What happens to Split environments?',
+          warehouse:
+            'What is warehouse-native FME?,Use Snowflake for experiment results?,How are warehouse metrics defined?,Warehouse vs standard experiments?',
+          flags:
+            'How do I target flags to segments?,How do flag sets help SDK performance?,How do I archive a feature flag?,How do flag prerequisites work?',
+        };
+
+        var exampleQuestions = EXAMPLE_BY_CONTEXT[context] || EXAMPLE_BY_CONTEXT.general;
+
+        var fmeLogoUrl = window.location.origin + (basePath ? basePath : '') + '/img/icon_fme.svg';
+
+        var disclaimerMd =
+          'ℹ️ **FME-only:** This assistant answers from FME documentation only. For all Harness docs, the API reference, and YouTube, open [Harness Docs AI](#fme-open-harness-docs-ai) or use **Ask AI** in the NavBar.';
+
+        /*
+         * Mostly mirrors `docusaurus.config.ts` Ask AI; diverges: website id, source group filter
+         * (`data-source-group-ids-include`), branding, disclaimer, example questions, no MCP, and
+         * `data-modal-open-on-command-k` false.
+         */
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://widget.kapa.ai/kapa-widget.bundle.js';
+        script.setAttribute('data-website-id', "3e16352c-0b7f-44de-ab24-151cfc9ec603");
+        script.setAttribute('data-source-group-ids-include', '8f7b2868-4ccb-4981-b3b9-69dfc8973126');
+        script.setAttribute('data-project-name', 'FME Release Agent');
+        script.setAttribute('data-modal-title', 'Ask FME Release Agent');
+        script.setAttribute('data-project-color', '#1D1D1B');
+        script.setAttribute('data-search-mode-enabled', 'false');
+        script.setAttribute('data-search-mode-default', 'false');
+        script.setAttribute('data-modal-open-on-command-k', 'false');
+        script.setAttribute('data-button-hide', 'true');
+        script.setAttribute('data-project-logo', fmeLogoUrl);
+        script.setAttribute('data-mcp-enabled', 'false');
+        script.setAttribute('data-modal-disclaimer', disclaimerMd);
+        script.setAttribute('data-modal-example-questions', exampleQuestions);
+        script.setAttribute('data-modal-example-questions-col-span', '6');
+        script.setAttribute('data-example-question-button-width', '100%');
+        script.setAttribute('data-render-on-load', 'false');
+
+        script.onload = function () {
+          var mo;
+          try {
+            mo = new MutationObserver(function () {
+              schedulePatchDisclaimerLinks();
+            });
+            mo.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['href', 'target'] });
+          } catch (e1) {}
+
+          window.Kapa('render', {
+            onRender: function () {
+              window.Kapa('onModalClose', function () {
+                try {
+                  if (window.parent !== window) {
+                    window.parent.postMessage({ type: 'fme-kapa-modal-close' }, window.location.origin);
+                  }
+                } catch (e) {}
+              });
+              window.Kapa('open');
+              patchDisclaimerLinksNow();
+              setTimeout(patchDisclaimerLinksNow, 50);
+              setTimeout(patchDisclaimerLinksNow, 300);
+              setTimeout(patchDisclaimerLinksNow, 1000);
+            },
+          });
+        };
+
+        script.onerror = function () {
+          document.body.innerHTML =
+            '<p style="padding: 1rem; color: #333">Could not load the FME assistant. Please try again later.</p>';
+        };
+
+        document.head.appendChild(script);
+      })();
+    </script>
+  </body>
+</html>
