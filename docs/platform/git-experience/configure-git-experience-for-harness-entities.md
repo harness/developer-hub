@@ -1,6 +1,6 @@
 ---
-title: Harness Git Experience quickstart
-description: This topic explains steps to configure Git Experience for Harness Entities.
+title: Harness Git Experience Quickstart
+description: This topic explains the steps to configure Git Experience for Harness Entities.
 sidebar_position: 3
 helpdocs_topic_id: grfeel98am
 helpdocs_category_id: rv2jo2hoiy
@@ -23,13 +23,13 @@ You'll learn how to:
 
 ## Before you begin
 
-Make sure you have the following set up Before you begin this quickstart:
+Make sure you have the following set up before you begin this quickstart:
 
 - Make sure you have a Git repo with at least one branch.
 - Make sure you have a Git connector with a Personal Access Token (PAT) for your Git account.​​
 - A Personal Access Token (PAT) for your Git account.
   - Harness needs the PAT to use the Git platform APIs.
-  - You add the PAT to Harness as a Text Secret and it is encrypted using a Harness Secret Manager.
+  - You add the PAT to Harness as a Text Secret, and it is encrypted using a Harness Secret Manager.
   - Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
 
    Make sure you configure SSO for your GitHub token when enabling Git provider access via SSO.
@@ -44,7 +44,7 @@ If you are using [Harness Code Repository](/docs/code-repository/) as your Git R
 :::
 
 :::note
-Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo, and the branch is created.
+Make sure your repo has at least one branch, such as main or master. For most Git providers, you add a README file to the repo, and the branch is created.
 :::
 
 ## Supported Git providers
@@ -74,7 +74,7 @@ If you are using [Harness Code Repository](/docs/code-repository/) as your Git R
 
 This topic explains how to create a remote pipeline and execute it using Harness Git Experience.
 
-You can also store your configurations in Harness, by selecting the **Inline** option while creating resources. For more information on creating an inline pipeline, see [Pipelines and Stages](/docs/category/pipelines).
+You can also store your configurations in Harness by selecting the **Inline** option while creating resources. For more information on creating an inline pipeline, see [Pipelines and Stages](/docs/category/pipelines).
 
 ![](./static/configure-git-experience-for-harness-entities-37.png)
 
@@ -112,13 +112,13 @@ To enforce Git experience in Harness:
 3. Enable **Enforce git experience**.
    After you enable this setting, it applies to all the scopes (account, organization, and project) in Harness.
 4. To override this setting in the child scopes, select **Allow Overrides** beside the settings.
-   This forces configurations at the account scope to be saved in Git repositories only. Users can, however, still create inline pipelines and templates at the organizational and project levels.
+   This forces configurations at the account scope to be saved only in Git repositories. Users can, however, still create inline pipelines and templates at the organizational and project levels.
 
    ![](./static/enforce-gitx.png)
 
 ## Add a remote pipeline
 
-This quickstart explains how to add a pipeline and sync it with your Git repo. This is called the Remote option. To add a remote pipeline, see **Remote** option. To add an inline pipeline, see [Create a Pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline).
+This quickstart explains how to add a pipeline and sync it with your Git repo. This is called the Remote option. To add a remote pipeline, see the **Remote** option. To add an inline pipeline, see [Create a Pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline).
 
 In your Project, click **Pipelines** and then click **Create a Pipeline**. The **Create New Pipeline** settings appear.
 
@@ -130,7 +130,7 @@ Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
 
-Here you can choose to use [**Harness Code Repository**](/docs/code-repository/) or a third-party provider. If you choose Harness Code Repository, you won't need to configure a **Git Connector** and can skip to selecting your **Repository** below.
+Here you can choose to use [**Harness Code Repository**](/docs/code-repository/) or a third-party provider. If you decide on Harness Code Repository, you won't need to configure a **Git Connector** and can skip to selecting your **Repository** below.
 
 Otherwise, in **Git Connector**, select or create a Git Connector for your project's repo. For steps, go to [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 
@@ -140,7 +140,7 @@ Otherwise, in **Git Connector**, select or create a Git Connector for your proje
 <summary> IMPORTANT </summary>
 
 Connector must use the Enable API access option and Token
-The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​
+The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your Git provider account and add it to Harness as a Secret. Next, use the token in the Git Connector credentials.​
 
 ![](./static/configure-git-experience-for-harness-entities-41.png)
 
@@ -154,7 +154,7 @@ Here's an example of a GitHub Connector with the correct settings:​
 
 ![](./static/configure-git-experience-for-harness-entities-43.png)
 
-In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here.
+In **Repository**, select your repository. If your repository isn't listed, enter its name, as only a select few repositories are listed here.
 
 ![](./static/configure-git-experience-for-harness-entities-44.png)
 
@@ -163,7 +163,7 @@ Create the repository in Git before entering it in **Select Repository**. Harnes
 
 :::
 
-In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here.
+In **Git Branch**, select your branch. If your branch isn't listed, enter its name, as only a select few branches are listed here.
 
 ![](./static/configure-git-experience-for-harness-entities-45.png)
 
@@ -190,7 +190,7 @@ Click **Add Stage**. The stage options appear.
 
 Select a stage type and follow its steps.
 
-The steps you see depend on the type of stage you selected.​
+The steps you see depend on the stage type you selected.​
 
 For more information, see [Add Stage](../pipelines/add-a-stage.md).
 
@@ -202,22 +202,22 @@ The **Save Pipelines to Git** settings appear.
 
 In **Select Branch to Commit**, commit to an existing or new branch.
 
-- **Commit to an existing branch**: you can start a pull request if you like.
+- **Commit to an existing branch**: You can start a pull request if you like.
 - **Commit to a new branch**: enter the new branch name. You can start a pull request if you like.
 
 Click **Save**.
 
 :::note
-If you are using Bitbucket on-prem and `feature.file.editor` is set to `false` in the `bitbucket.properties`, make sure you enable **Use Git client for commits** in the [default settings](../settings/default-settings.md) at the account scope. Harness will check out the code on the delegate and use the Git client to make the commits to your Git repository.
+If you are using Bitbucket on-prem and `feature.file.editor` is set to `false` in the `bitbucket.properties`, make sure you enable **Use Git client for commits** in the [default settings](../settings/default-settings.md) at the account scope. Harness will check out the code from the delegate and use the Git client to commit to your Git repository.
 :::
 
 Your pipeline is saved to the repo branch.
 
 ![](./static/configure-git-experience-for-harness-entities-48.png)
 
-Click the YAML file to see the YAML for the pipeline.
+Click the YAML file to view the pipeline's YAML.
 
-Edit the pipeline YAML. For example, change the name of a step.
+Edit the pipeline YAML. For example, rename a step.
 
 Commit your changes to Git.
 
@@ -231,7 +231,7 @@ The changes you made in Git are now applied to Harness.​
 
 ## Edit Git details for a pipeline
 
-The Harness manager allows you to edit the Git details after the pipeline is configured and saved. You can modify following Git settings:
+The Harness manager allows you to edit the Git details after the pipeline is configured and saved. You can modify the following Git settings:
 
 - Git connector
 - Repository
@@ -240,7 +240,7 @@ The Harness manager allows you to edit the Git details after the pipeline is con
 To modify these Git settings, do the following:
 
 1. In your Project, select **Pipelines**.
-2. Go to the pipeline where you want to edit the Git details, and select more options (⋮).
+2. Go to the pipeline where you want to edit the Git details, and select more options.
 
    ![](./static/harness-git-experience-quickstart-74.png)
 
@@ -360,30 +360,23 @@ To switch the referring child entity from a feature branch to a default branch, 
 
 ## Handling references for remote entities
 
-All entities have a **Referenced By** tab where you can view all other entities that use it.
+All entities have a **Referenced By** tab where you can view all other entities that use it. For all git-backed entities, Harness creates and maintains setup references only for the **default branch**.
 
-As part of remote entities, Harness only calculates references for the entities stored in the default branch.
+### How setup references work
 
-#### Let's take an example of a Connector
+Harness computes and maintains setup references for all git-backed entities that belong to the default branch. References are updated when you create, update, or fetch entities—whether through the Harness UI, API, or directly on the Git side. Any changes you make to entity YAML, including adding, updating, or deleting git-backed entities, are captured and reflected in the setup references.
 
-When you click on **Connectors** there is a **Referenced by** tab which shows the entities that are using that connector including remote entities as well. 
+### Why only the default branch?
+
+Managing references exclusively for the default branch ensures that only stable versions of entities are tracked. If Harness maintained references across all branches, it would create redundant and potentially conflicting entries that could block deletion operations or produce misleading usage data. The default branch (for example, `main` or `master`) serves as the single source of truth for entity relationships.
+
+### Example: Setup references
+
+Any git-backed entity—such as connectors, pipelines, services, environments, input sets, or templates—has a **Referenced By** tab that shows all other entities using it.
 
 ![](./static/referenced_by.png)
 
-For example, if you store your entities—such as Pipelines, Services, Environment, Input Set, or Templates—in the default branch (for example, main or master), they will appear in the **Referenced By** section. If a pipeline is using a connector, the connector will list the pipeline as a reference if the pipeline is stored remotely in the default branch or INLINE. However, if the pipeline is saved in a non-default branch, no reference will be created in the **Referenced By** section.
-
-The primary reason for this approach is to ensure we don't create stale references. We only manage references for stable versions of entities, and we assume that the default branch will always be the right choice for stable versions. Managing references for all branches would create redundant references, which could block deletion operations on the entities.
-
-Calculation of references isn't automatic; it occurs during specific user actions:
-
-- **Reload from Git**: When you perform a **reload from Git** on an entity present in the default branch.
-
-- **Create/Update Entity**: When you **create** or **update** an entity on the Harness UI or via API on the default branch. 
-Note that this scenario is unlikely for most users, as committing directly to the default branch is generally prohibited.
-
-:::info note
-The given option work for users who are not on Bidirectional Sync.
-:::
+If you store these entities in the default branch, they appear in the **Referenced By** section. For example, if a pipeline references a connector and that pipeline is stored remotely in the default branch (or inline), the connector's **Referenced By** tab lists the pipeline. Similarly, a template used by multiple pipelines on the default branch shows all of them as references. Entities saved in non-default branches do not create entries in the **Referenced By** section.
 
 ## Next steps
 
