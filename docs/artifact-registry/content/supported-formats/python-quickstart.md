@@ -74,24 +74,127 @@ Harness supports configuring Python PyPI upstream proxies for registries that us
 This is commonly required when integrating with enterprise artifact repositories such as Artifactory, Nexus, or private PyPI mirrors. Authentication can be configured using anonymous access or username and password credentials. Once configured, Harness handles package resolution and authentication automatically when proxying Python dependencies from the upstream registry.
 
 ---
-## Publish & Install Python packages
-### Authenticate the Python CLI
-1. In your Harness Python Artifact Registry, click **Setup Client**.
-2. Copy the provided pip install command.
-3. Execute the command in your terminal to authenticate your Python CLI with the Harness registry. ￼
 
-### Publish a Python package
-- Build and publish your package:
+## Publish & Install Python Packages
+
+<Tabs>
+<TabItem value="pip" label="pip">
+
+#### 1. Generate Identity Token
+
+An identity token will serve as the password for uploading and downloading artifacts.
+
+Generate an identity token from your Harness account settings.
+
+#### 2. Configure Authentication
+
+Create or update your `~/.pypirc` file with the following content:
+
+```ini
+[distutils]
+index-servers = harness
+
+[harness]
+repository = https://pkg.harness.io/pkg/<account-id>/<python-registry-name>/python
+username = <your-email@harness.io>
+password = <identity-token>
+```
+
+#### 3. Publish Package
+
+Build and publish your package:
 
 ```bash
 python -m build
+```
+
+```bash
 python -m twine upload --repository harness /path/to/files/*
 ```
 
-### Install a Python package
-- Install your package using pip:
+#### 4. Install Package
+
+Install a package using pip:
+
 ```bash
-pip install --index-url https://<address>:<identity-token>@pkg.harness.io/pkg/<account-id>/<python-registry-name>/python/simple --no-deps <ARTIFACT_NAME>==<VERSION>
+pip install --index-url https://<your-email@harness.io>:<TOKEN>@pkg.harness.io/pkg/<account-id>/<python-registry-name>/python/simple --no-deps <ARTIFACT_NAME>==<VERSION>
 ```
+
+</TabItem>
+<TabItem value="poetry" label="poetry">
+
+#### 1. Generate Identity Token
+
+An identity token will serve as the password for uploading and downloading artifacts.
+
+Generate an identity token from your Harness account settings.
+
+#### 2. Configure Repository
+
+Add the registry as a source and configure authentication:
+
+```bash
+poetry source add --priority=explicit harness https://<your-email@harness.io>:<TOKEN>@pkg.harness.io/pkg/<account-id>/<python-registry-name>/python/simple/
+```
+
+```bash
+poetry config http-basic.harness <your-email@harness.io> <identity-token>
+```
+
+#### 3. Publish Package
+
+Configure publish repository and publish your package:
+
+```bash
+poetry config repositories.harness https://pkg.harness.io/pkg/<account-id>/<python-registry-name>/python
+```
+
+```bash
+poetry build
+```
+
+```bash
+poetry publish --repository harness
+```
+
+#### 4. Install Package
+
+Install a package using poetry:
+
+```bash
+poetry add --source harness <ARTIFACT_NAME>==<VERSION>
+```
+
+</TabItem>
+<TabItem value="uv" label="uv">
+
+#### 1. Generate Identity Token
+
+An identity token will serve as the password for uploading and downloading artifacts.
+
+Generate an identity token from your Harness account settings.
+
+#### 2. Publish Package
+
+Build and publish your package:
+
+```bash
+uv build
+```
+
+```bash
+uv publish --publish-url https://pkg.harness.io/pkg/<account-id>/<python-registry-name>/python --username <your-email@harness.io> --password <identity-token>
+```
+
+#### 3. Install Package
+
+Install a package using uv:
+
+```bash
+uv pip install --index-url https://<your-email@harness.io>:<TOKEN>@pkg.harness.io/pkg/<account-id>/<python-registry-name>/python/simple --no-deps <ARTIFACT_NAME>==<VERSION>
+```
+
+</TabItem>
+</Tabs>
 
 ---
