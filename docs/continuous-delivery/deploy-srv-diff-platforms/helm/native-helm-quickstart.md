@@ -486,5 +486,7 @@ Delegate used for benchmarking: 2 vCPUs, 8 GB memory K8s delegate (1 replica, ve
 
 ## Next Steps
 
+- [SOPS and values overrides in Native Helm service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-sops-overrides-service-hooks): decrypt or add Helm values overrides in service hooks when using the `CDS_HELM_IMPROVED_SOPS_SUPPORT_FOR_SERVICE_HOOKS` feature flag.
+
 See [Kubernetes How-tos](/docs/category/kubernetes) for other deployment features.
 

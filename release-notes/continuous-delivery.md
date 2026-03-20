@@ -56,7 +56,11 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## March 2026
 
-#### Version 1.135.0
+### Version 1.135.2
+
+#### New Features and Enhancements
+
+- **Native Helm** deployments can now expose Harness values overrides to **service hooks** before Helm runs, so you can decrypt overrides (for example with SOPS) in a **Fetch files** post-hook. Overrides are written to a per-task directory; hooks can use `VALUES_OVERRIDE_DIRECTORY` or `$MANIFEST_FILES_DIRECTORY/values-overrides`, and optionally export `OVERRIDE_FILES` with comma-separated paths for additional YAML overrides. This requires delegate version `26.03.88700` or later and is behind the feature flag `CDS_HELM_IMPROVED_SOPS_SUPPORT_FOR_SERVICE_HOOKS`. For more information, go to [SOPS and values overrides in Native Helm service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-sops-overrides-service-hooks).
 
 #### Fixed issues
 
@@ -69,11 +73,14 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where the **Insert Step** in CD pipelines was incorrectly marked as failed (red) when no steps were injected. When the Insert Step injected zero steps, the execution logic did not handle empty executable responses and treated the step as failed even though there was no actual failure. The Insert Step now passes and displays green when no steps are injected. (**PIPE-32582**, **ZD-105701**)
 - Fixed an issue where **nested Harness expressions** failed to resolve on the first execution but succeeded on retry. When using expressions such as `<+execution.steps.StepGroup.steps.Step.spec.environmentVariables>` where the referenced values (for example, environment variables) are themselves Harness expressions, the inner expressions were left unresolved on the first run. Resolution could halt partway due to concurrent modification while traversing map structures, so steps received raw expression syntax (for example, `<+...>`) and failed—for example, when Bash interpreted it as redirection. On retry, resolution used partially saved values and succeeded. Nested expression resolution now completes correctly on the first execution. (**PIPE-32599**, **ZD-106076**)
 
-#### Version 1.134.3
+
+### Version 1.134.3
 
 #### New Features and Enhancements
 
 - Harness now supports a dedicated **ECS Scale** step that lets you scale ECS services up or down without running a full deployment stage. You can specify the target instance count or percentage, and optionally provide AWS connector, region, and cluster details at the step level or inherit them from the environment configuration. This feature requires delegate version `26.02.88503` or later and is behind the feature flag `CDS_ECS_SCALE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-118048**)
+
+- **Native Helm** deployments can now expose Harness values overrides to **service hooks** before Helm runs, so you can decrypt overrides (for example with SOPS) in a **Fetch files** post-hook. Overrides are written to a per-task directory; hooks can use `VALUES_OVERRIDE_DIRECTORY` or `$MANIFEST_FILES_DIRECTORY/values-overrides`, and optionally export `OVERRIDE_FILES` with comma-separated paths for additional YAML overrides. This requires delegate version `26.03.88700` or later and is behind the feature flag `CDS_HELM_IMPROVED_SOPS_SUPPORT_FOR_SERVICE_HOOKS`. For more information, go to [SOPS and values overrides in Native Helm service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-sops-overrides-service-hooks). (**CDS-114202**)
 
 - Harness now supports **Host Groups** for Physical Data Center (PDC) WinRM deployments, letting you assign independent WinRM credentials to different groups of hosts within a single infrastructure definition. This removes the previous limitation of a single shared credential and enables environments using Just Enough Administration (JEA) with distinct endpoint configurations per server group. This feature is behind the feature flag `CDS_ENABLE_INFRA_HOST_GROUPS`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-115563**)
 
@@ -90,7 +97,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where selective stage execution failed with a `NullPointerException` when the pipeline contained Insert Block (injected stage templates). Running a subset of stages produced an `INVALID_REQUEST` error with the message `Cannot invoke "YamlField.getNode()" because the return value of "YamlNode.getField(String)" is null`, giving no indication of the root cause. Selective stage execution now correctly handles pipelines that use Insert Block stages. (**PIPE-32512**, **ZD-105316**)
 - Fixed an issue where Pipeline Studio displayed random strings in the UI, making the editor unusable. The stray text rendered over pipeline components and blocked normal interaction with the studio. The rendering logic has been corrected to prevent unintended strings from appearing in the Pipeline Studio. (**PIPE-32540**, **ZD-105914**)
 
-#### Version 1.133.5
+### Version 1.133.5
 
 #### Fixed issues
 

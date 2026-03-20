@@ -14,6 +14,17 @@ Each service hook has its own context variable:
 | Manifest template  | `$MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. |
 | Steady state check | `$WORKLOADS_LIST`: The comma separated list of all workloads. <br />`$MANAGED_WORKLOADS`: The comma separated list of workloads managed by Harness. <br />`$CUSTOM_WORKLOADS`: The comma separated list of custom workloads. |
 
+### Native Helm: values overrides and SOPS
+
+For **Native Helm** services, when the feature flag `CDS_HELM_IMPROVED_SOPS_SUPPORT_FOR_SERVICE_HOOKS` is enabled, Harness exposes additional context for decrypting or generating Helm values overrides in **Fetch files** post-hooks:
+
+- **`VALUES_OVERRIDE_DIRECTORY`:** Directory where Harness writes Harness-defined override YAML files (`override-0.yaml`, `override-1.yaml`, …) before your post-hook runs.
+- **`OVERRIDE_FILES`:** Export this environment variable from your hook with a comma-separated list of extra override file paths for Helm to use after the hook completes.
+
+You can still use `$MANIFEST_FILES_DIRECTORY` for chart files; Harness-defined overrides are also available under `$MANIFEST_FILES_DIRECTORY/values-overrides` when that path applies to your deployment.
+
+For prerequisites, delegate version, and examples, go to [SOPS and values overrides in Native Helm service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-sops-overrides-service-hooks).
+
 You can use service hooks to run additional configurations when carrying out the actions above. For example, when you run a deployment, you must fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the context variables above during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
 
 Here are some sample service hook YAMLs:

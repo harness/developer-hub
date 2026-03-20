@@ -840,4 +840,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
         <td>There is a behavior change in how Harness tracks managed workloads for rollback. We are not using ConfigMap anymore to match the deployed resources' release name to track managed workloads for rollback. We use `helm get manifest` to retrieve the workloads from a Helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings. This is not enabled by default. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check is not skipped and won't need to configure it.</td>
     </tr>
+    <tr>
+        <td>CDS_HELM_IMPROVED_SOPS_SUPPORT_FOR_SERVICE_HOOKS</td>
+        <td>For <b>Native Helm</b>, writes values overrides to a per-task directory before <b>Fetch files</b> post-hooks run, and exposes <code>VALUES_OVERRIDE_DIRECTORY</code> and optional <code>OVERRIDE_FILES</code> so service hooks can decrypt (for example SOPS) or add overrides. Requires delegate <code>26.03.88700</code> or later. For more information, go to <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-sops-overrides-service-hooks">SOPS and values overrides in Native Helm service hooks</a>.</td>
+    </tr>
 </table>
