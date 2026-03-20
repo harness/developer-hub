@@ -12,9 +12,7 @@ helpdocs_is_published: true
 
 You can use Windows Remote Management (WinRM) to deploy your artifacts to Windows VM or bare-metal hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC). Harness connects to your target Windows instances using the WinRM protocol and executes PowerShell commands to deploy your artifact.
 
-In this topic, we will deploy a .zip file to an AWS EC2 Windows instance using Harness. We will pull a publicly-available .zip file from Artifactory and deploy it to an EC2 Windows instance in your AWS account by using the Basic execution strategy.
-
-Harness connects to your target Windows instances using the WinRM protocol and executes PowerShell commands to deploy your artifact.
+WinRM deployments support both generic artifact deployment and IIS-specific deployment types. When you select an execution strategy, you can choose from four artifact types: **IIS Application**, **IIS Virtual Directory**, **IIS Website**, or **Other** (generic). Each IIS artifact type comes with a built-in PowerShell command template that handles application pool configuration, site setup, and artifact deployment on the target host.
 
 For WinRM, you can access artifacts from [Harness Artifact Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#harness-artifact-registry) (Docker artifact type only), **Jenkins**, **Artifactory**, **Custom**, **Nexus** and **Amazon S3**.
 
@@ -45,7 +43,8 @@ You will learn how to:
 * Add credentials needed to connect to the target host
 * Define the target infrastructure for deployment (AWS hosts)
 * Select the Basic deployment strategy
-* Add the required commands for the execution
+* Deploy IIS Applications, Virtual Directories, and Websites using Rolling or Canary strategies
+* Configure IIS command script templates and their input variables
 * Run the Pipeline and review
 
 ## Create the Deploy Stage
@@ -684,14 +683,339 @@ You are now taken to **Execution Strategies** where you will use a deployment st
 3. Click **Use Strategy**. Harness adds the **Deploy** step for execution.
 4. In the **Deploy** step that is added to your pipeline, click **Deploy**.
 
+## IIS Deployments with WinRM
+
+Harness provides built-in support for deploying to Microsoft IIS (Internet Information Services) through WinRM. When you configure an execution strategy, the **Artifact Type** dropdown lets you select an IIS-specific deployment type. Each type ships with a pre-built PowerShell command template that automates application pool management, directory setup, and artifact deployment on the target Windows host.
+
+The Artifact Type dropdown in the execution strategy screen offers four options. Three are IIS-specific, and the fourth is a generic option:
+
+- **IIS Application:** Deploys an application under an existing IIS Website. This is the most common option for deploying ASP.NET web apps to an existing Default Web Site or custom site. Harness creates or updates the application pool and maps the application to the specified physical path.
+- **IIS Virtual Directory:** Deploys content to a virtual directory within an IIS Website. Use this when you need to serve static content or a sub-application from a specific URL path without creating a separate application pool.
+- **IIS Website:** Deploys a standalone IIS Website with its own bindings and application pool. Choose this when you are setting up a new site from scratch rather than adding to an existing one.
+- **Other:** A generic deployment type with no IIS-specific automation. Use this when deploying non-IIS artifacts or when you want full control over the deployment scripts.
+
+### Create the WinRM service
+
+Before configuring the execution strategy, set up a WinRM service with your IIS deployment artifact.
+
+1. In the pipeline stage, under **Service**, select **New Service**.
+2. Enter a name for the service (for example, **winrm-service**).
+3. For **Deployment Type**, select **WinRM**.
+4. Under **Artifacts**, click **+ Add Artifact Source** to configure the connector and artifact details for your IIS application package (`.zip` file). You can use Harness Artifact Registry (Generic format), Artifactory, S3, Nexus, Jenkins, or a Custom artifact source.
+5. Under **Config Files**, optionally add configuration files such as `web.config` that should be deployed alongside the artifact. If your `web.config` is already inside the artifact `.zip`, you can skip this.
+6. Under **Variables**, define any service-level variables your deployment scripts need.
+7. Click **Save**.
+
+:::tip Quick test artifact
+To test the pipeline without building a full application, create a minimal static HTML site. Create an `index.html` with a simple heading and a `web.config` that sets `index.html` as the default document. Zip both files and upload the `.zip` to your artifact registry (for example, Harness Artifact Registry with **Generic** format). IIS will serve this as a working website.
+:::
+
+<details>
+<summary>Service YAML example</summary>
+
+The following YAML shows a WinRM service definition using Harness Artifact Registry with a Generic format artifact. Replace the placeholder values with your own registry and artifact details.
+
+```yaml
+service:
+  name: winrm-service
+  identifier: winrmservice
+  serviceDefinition:
+    type: WinRm
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: winrm
+              type: Har
+              spec:
+                registryRef: YOUR_REGISTRY
+                type: generic
+                spec:
+                  artifact: iis-hello-app
+                  version: "1.0"
+                  fileName: iis-hello-app.zip
+  gitOpsEnabled: false
+```
+
+| Field | Description |
+| --- | --- |
+| `serviceDefinition.type` | Must be `WinRm` for WinRM deployments. |
+| `sources[].type` | `Har` for Harness Artifact Registry. Other supported values: `ArtifactoryRegistry`, `AmazonS3`, `Nexus3Registry`, `Jenkins`, `CustomArtifact`. |
+| `registryRef` | Reference to your Harness Artifact Registry. |
+| `type` | Repository format within the registry. Use `generic` for `.zip` artifacts. |
+| `artifact` | The artifact name as uploaded to the registry. |
+| `version` | The artifact version string. |
+| `fileName` | The file name of the artifact in the registry. |
+| `primaryArtifactRef` | Set to `<+input>` to select the artifact source at pipeline runtime. |
+
+</details>
+
+### Configure the infrastructure
+
+Set up the environment and infrastructure definition to target your Windows hosts. For a detailed walkthrough of each infrastructure type (PDC, Azure, AWS), refer to the [Configure the Environment and Infrastructure](#configure-the-environment-and-infrastructure) section above.
+
+Before configuring the infrastructure in Harness, make sure your target Windows host has IIS installed and WinRM enabled. Run these commands on the host as Administrator:
+
+:::warning
+The following WinRM configuration enables unencrypted traffic and Basic authentication, which transmit credentials in plaintext. Use this configuration for testing and development only. For production environments, configure WinRM over HTTPS (port 5986) with SSL enabled and avoid `AllowUnencrypted` and Basic auth.
+:::
+
+```powershell
+Install-WindowsFeature -name Web-Server -IncludeManagementTools
+Install-WindowsFeature -name Web-Asp-Net45
+winrm quickconfig -q
+winrm set winrm/config/service '@{AllowUnencrypted="true"}'
+winrm set winrm/config/service/auth '@{Basic="true"}'
+winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="1024"}'
+```
+
+If the host is an AWS EC2 instance, add an inbound rule to the security group allowing TCP port **5985** from the Delegate's IP or subnet.
+
+When using the PDC infrastructure type, select **Specify hosts** and enter the public IP (or private IP if the Delegate is in the same network) of your Windows Server. For **Specify Credentials**, create a new WinRM credential with these settings:
+
+| Field | Value |
+| --- | --- |
+| **Auth Scheme** | NTLM |
+| **Domain** | The machine name of the Windows host (for local accounts) or your Active Directory domain |
+| **Username** | `Administrator` (or a user with admin privileges) |
+| **Password** | Create a secret with the host's admin password |
+| **Use SSL** | Unchecked for HTTP (port 5985), checked for HTTPS (port 5986) |
+| **WinRM Port** | `5985` (HTTP) or `5986` (HTTPS) |
+
+Click **Save and Continue**, enter the host IP on the verification screen, and click **Test Connection**. After verification, click **Preview Hosts** to confirm the host resolves correctly.
+
+<details>
+<summary>Infrastructure definition YAML example</summary>
+
+The following YAML shows a PDC infrastructure definition for an IIS WinRM deployment. Replace the placeholder values with your own host IP and credential reference.
+
+```yaml
+infrastructureDefinition:
+  name: winrm
+  identifier: winrm
+  orgIdentifier: default
+  projectIdentifier: YOUR_PROJECT
+  environmentRef: YOUR_ENVIRONMENT
+  deploymentType: WinRm
+  type: Pdc
+  spec:
+    credentialsRef: YOUR_WINRM_CREDENTIAL
+    hostFilter:
+      type: All
+      spec: {}
+    hosts:
+      - YOUR_HOST_IP
+  allowSimultaneousDeployments: false
+```
+
+| Field | Description |
+| --- | --- |
+| `deploymentType` | Must be `WinRm`. |
+| `type` | Infrastructure type. `Pdc` for Physical Data Center. |
+| `credentialsRef` | Reference to the WinRM credential secret you created. |
+| `hosts` | List of target host IPs or hostnames. |
+| `hostFilter.type` | Set to `All` to deploy to all specified hosts. |
+| `allowSimultaneousDeployments` | Set to `true` if you want multiple pipelines to deploy to this infrastructure concurrently. |
+
+</details>
+
+### Select the execution strategy and artifact type
+
+The execution strategy screen is where you configure the IIS-specific deployment behavior.
+
+1. In **Execution Strategies**, select **Rolling**, **Canary**, or **Basic** depending on your rollout needs.
+2. In the **Artifact Type** dropdown, select the IIS deployment type that matches your use case (**IIS Application**, **IIS Virtual Directory**, **IIS Website**, or **Other**).
+3. For **Instances**, configure the instance count or percentage. With Rolling deployments, this controls how many hosts are updated simultaneously.
+4. Click **Use Strategy**. Harness adds the **Deploy** step to your execution with the appropriate IIS PowerShell command template.
+
+### IIS command script templates
+
+When you select an IIS artifact type, Harness automatically populates the Deploy step with a built-in PowerShell command template. For example, selecting **IIS Application** loads the **Default IIS Application PowerShell** template (referenced as `account.Default_IIS_Application_PowerShell`). This template handles downloading the artifact, configuring the IIS application pool, and deploying the application to the target directory.
+
+Click on the **Deploy** step and select the **Inputs** tab to view and customize the template variables. The following table describes each input variable:
+
+| Variable | Description | Default Value |
+| --- | --- | --- |
+| `ReleaseNo` | Version identifier for the release. Used to organize deployment directories. | `0.1` |
+| `AppPoolName` | Name of the IIS Application Pool. Harness creates the pool if it does not exist, or updates it if it does. | `DefaultAppPool` |
+| `AppPoolDotNetVersion` | The .NET CLR version assigned to the application pool (for example, `v4.0` or `v2.0`). Set to an empty string for "No Managed Code". | `v4.0` |
+| `DownloadDirectory` | Local path on the target host where the artifact is downloaded before extraction. | `$env:TEMP` |
+| `AppPhysicalDirectory` | Base path for the application's physical directory on the target host. | `$env:SYSTEMDRIVE` |
+| `DestinationDirectory` | Final directory where the application files are deployed. Supports Harness expressions for dynamic paths. | `%USERPROFILE%\<+service.name>\<+env.name>` |
+
+You can override any of these values with fixed strings or [Harness expressions](/docs/platform/variables-and-expressions/harness-variables). After making changes, click **Apply Changes** to save the updated configuration.
+
+:::tip
+Use Harness expressions like `<+service.name>` and `<+env.name>` in directory paths to keep deployments organized across services and environments without hardcoding values.
+:::
+
+<details>
+<summary>Pipeline YAML example (Rolling IIS Application)</summary>
+
+The following YAML shows a complete pipeline for a Rolling IIS Application deployment using WinRM. It includes both the deploy and rollback step groups. Replace the placeholder values with your own project, service, environment, and infrastructure references.
+
+```yaml
+pipeline:
+  name: iis-winrm
+  identifier: iiswinrm
+  projectIdentifier: YOUR_PROJECT
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: deploy-iis
+        identifier: deploy_iis
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: WinRm
+          service:
+            serviceRef: YOUR_SERVICE
+            serviceInputs:
+              serviceDefinition:
+                type: WinRm
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: YOUR_ENVIRONMENT
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: YOUR_INFRASTRUCTURE
+          execution:
+            steps:
+              - stepGroup:
+                  name: Phase
+                  identifier: Phase
+                  strategy:
+                    repeat:
+                      items: <+stage.output.hosts>
+                      maxConcurrency: 1
+                      partitionSize: 1
+                      unit: Count
+                  steps:
+                    - stepGroup:
+                        name: Phase Group
+                        identifier: phase_group
+                        strategy:
+                          repeat:
+                            items: <+repeat.partition>
+                        steps:
+                          - step:
+                              name: Deploy
+                              identifier: Deploy
+                              timeout: 10m
+                              template:
+                                templateRef: account.Default_IIS_Application_PowerShell
+                                templateInputs:
+                                  type: Command
+                                  spec:
+                                    environmentVariables:
+                                      - name: ReleaseNo
+                                        type: String
+                                        value: "0.1"
+                                      - name: AppPoolName
+                                        type: String
+                                        value: DefaultAppPool
+                                      - name: AppPoolDotNetVersion
+                                        type: String
+                                        value: v4.0
+                                      - name: DownloadDirectory
+                                        type: String
+                                        value: $env:TEMP
+                                      - name: AppPhysicalDirectory
+                                        type: String
+                                        value: $env:SYSTEMDRIVE
+                                      - name: DestinationDirectory
+                                        type: String
+                                        value: "%USERPROFILE%\\<+service.name>\\<+env.name>"
+            rollbackSteps:
+              - stepGroup:
+                  name: Phase
+                  identifier: Phase
+                  strategy:
+                    repeat:
+                      items: <+stage.output.hosts>
+                      maxConcurrency: 1
+                      partitionSize: 1
+                      unit: Count
+                  steps:
+                    - stepGroup:
+                        name: Phase Group Rollback
+                        identifier: phase_group
+                        strategy:
+                          repeat:
+                            items: <+repeat.partition>
+                        steps:
+                          - step:
+                              name: Rollback
+                              identifier: Deploy
+                              timeout: 10m
+                              template:
+                                templateRef: account.Default_IIS_Application_PowerShell
+                                templateInputs:
+                                  type: Command
+                                  spec:
+                                    environmentVariables:
+                                      - name: ReleaseNo
+                                        type: String
+                                        value: "0.1"
+                                      - name: AppPoolName
+                                        type: String
+                                        value: DefaultAppPool
+                                      - name: AppPoolDotNetVersion
+                                        type: String
+                                        value: v4.0
+                                      - name: DownloadDirectory
+                                        type: String
+                                        value: $env:TEMP
+                                      - name: AppPhysicalDirectory
+                                        type: String
+                                        value: $env:SYSTEMDRIVE
+                                      - name: DestinationDirectory
+                                        type: String
+                                        value: "%USERPROFILE%\\<+service.name>\\<+env.name>"
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+```
+
+Key things to note in this pipeline YAML:
+
+- **`templateRef: account.Default_IIS_Application_PowerShell`:** References the built-in IIS Application template at the account level. Harness provides this template out of the box.
+- **Rolling strategy:** The outer step group repeats over `<+stage.output.hosts>` with `maxConcurrency: 1` and `partitionSize: 1`, deploying to one host at a time.
+- **Rollback steps:** Mirror the deploy steps so that a failed deployment automatically rolls back using the same IIS template.
+- **Environment variables:** These map directly to the IIS command script template inputs described in the table above.
+
+</details>
+
+### IIS Virtual Directory and IIS Website templates
+
+The **IIS Virtual Directory** and **IIS Website** artifact types follow the same pattern as IIS Application but use different PowerShell templates tailored to their specific IIS resource types.
+
+**IIS Virtual Directory** creates or updates a virtual directory under an existing IIS Website. Its template variables are similar to IIS Application but focus on the virtual directory path and physical path mapping rather than application pool settings.
+
+**IIS Website** provisions a complete IIS Website with its own site bindings (protocol, port, hostname) and a dedicated application pool. The template variables include additional fields for configuring site bindings alongside the standard directory and application pool parameters.
+
+Select the appropriate artifact type based on your deployment target, and review the template inputs to confirm they match your IIS configuration.
+
 ## Run the Pipeline to Deploy and Review
 
 After selecting the Execution Strategy, we are now ready to run the pipeline.
 
 1. Click **Run** to run the pipeline.
 2. In **Run Pipeline**, for **Artifact Path**, click the down-drop arrow. Harness displays a list of available artifact packages.
-3. Select **todolist.zip** file.
+3. Select the artifact file (for example, **todolist.zip** for a generic deployment or your IIS application `.zip` for an IIS deployment).
 4. Click **Run Pipeline**. Harness runs the pipeline and the **Console View** displays the tasks executed for each step.
+
+For IIS deployments, the Deploy step executes the IIS PowerShell template which downloads the artifact, creates or updates the application pool, extracts the files to the destination directory, and configures the IIS Application, Virtual Directory, or Website depending on the artifact type you selected. You can verify the deployment by opening the IIS site URL in a browser on the target host.
 
 You have now successfully created and completed the steps for running a pipeline by using WinRM.
 
