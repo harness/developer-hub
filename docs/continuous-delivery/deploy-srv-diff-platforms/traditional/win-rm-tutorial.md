@@ -356,6 +356,10 @@ With Host Groups, a single infrastructure definition can target multiple Windows
 Host Groups are supported only for the **Physical Data Center (PDC)** infrastructure type.
 :::
 
+:::note
+Host Groups currently support only fixed values for host and credential configurations. Runtime inputs and expressions are not supported in Host Groups at this time, although they are available in the Single Host configuration.
+:::
+
 ##### Configuring Host Groups
 
 To configure Host Groups, select the **Host Groups** tab in the Infrastructure Definition dialog. This tab appears alongside the existing **Single Host** tab when your infrastructure type is set to Physical Data Center.
