@@ -34,6 +34,7 @@ const config: Config = {
       src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
       async: true,
       'data-website-id': 'db287d54-3525-4674-9d83-a0cbe35024d2',
+      'data-source-group-ids-include': '0ead6082-00af-41e8-959a-b003b116c599',
       'data-project-name': 'Harness',
       'data-project-color': '#1D1D1B',
       'data-search-mode-enabled': 'false',
