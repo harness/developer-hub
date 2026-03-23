@@ -80,12 +80,20 @@ const SPARKLES_SVG = (
   </svg>
 );
 
+function useSafeCurrentSidebarCategory(): { items?: unknown[] } | null {
+  try {
+    return useCurrentSidebarCategory();
+  } catch {
+    return null;
+  }
+}
+
 function FmeKapaAssistantInner(): JSX.Element | null {
   const location = useLocation();
   const {
     siteConfig: { baseUrl, customFields },
   } = useDocusaurusContext();
-  const category = useCurrentSidebarCategory();
+  const category = useSafeCurrentSidebarCategory();
   const websiteId = (customFields?.KAPA_FME_WEBSITE_ID as string | undefined)?.trim();
   const [open, setOpen] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
