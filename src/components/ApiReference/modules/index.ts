@@ -8,8 +8,8 @@ import type { OpenApiSpec } from '../types';
 import codeRepository from './code-repository/config';
 import infraAsCodeManagement from './infra-as-code-management/config';
 import artifactRegistry from './artifact-registry/config';
-import securitySupplyChain from './software-supply-chain-assurance/config';
-import { parseSpec as softwareSupplyChainParseSpec } from './software-supply-chain-assurance/parser';
+// import securitySupplyChain from './software-supply-chain-assurance/config';
+// import { parseSpec as softwareSupplyChainParseSpec } from './software-supply-chain-assurance/parser';
 import releaseManagement from './release-management/config';
 // import softwareEngineeringInsights from './software-engineering-insights/config';
 
@@ -17,7 +17,7 @@ const MODULE_CONFIGS: Record<string, ApiReferenceModuleConfig> = {
   'code-repository': codeRepository,
   'infra-as-code-management': infraAsCodeManagement,
   'artifact-registry': artifactRegistry,
-  'software-supply-chain-assurance': securitySupplyChain,
+  // 'software-supply-chain-assurance': securitySupplyChain,
   'release-management': releaseManagement,
 //  'software-engineering-insights': softwareEngineeringInsights,
 };
@@ -26,7 +26,7 @@ const MODULE_CONFIGS: Record<string, ApiReferenceModuleConfig> = {
 type SpecParser = (spec: unknown) => OpenApiSpec;
 
 const MODULE_PARSERS: Partial<Record<string, SpecParser>> = {
-  'software-supply-chain-assurance': softwareSupplyChainParseSpec,
+  // 'software-supply-chain-assurance': softwareSupplyChainParseSpec,
 };
 
 export type { ApiReferenceModuleConfig };
