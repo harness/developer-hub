@@ -167,6 +167,24 @@ Specifically:
 
 To enable mapping, ensure that the Jira issue ID is included in at least one of the locations described above.
 
+## Why does a Jira issue appear under a developer in SEI Panorama “Work Completed” even if the issue is currently unassigned?
+
+In SEI Panorama, the “Work Completed” view does not rely only on the issue’s current assignee.
+
+A work item can still appear under a developer if that developer was assigned to the issue during its lifecycle while the issue was in a status that the team configuration treats as an active development status.
+
+For example:
+- If a status like Inbox is configured as a development status
+- And a status like Closed is configured as a termination status
+- Then a user who was assigned to the issue while it was in Inbox may receive credit for that work item once the issue later reaches Closed
+
+This means that even if the issue is currently:
+- unassigned in Jira, or
+- assigned to someone else now,
+
+it may still appear under a previous assignee in Work Completed if that user contributed while the issue was in a counted development state.
+
+
 </TabItem>
 </Tabs>
 
