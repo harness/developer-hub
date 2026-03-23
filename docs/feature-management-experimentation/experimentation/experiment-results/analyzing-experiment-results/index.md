@@ -1,11 +1,10 @@
 ---
 title: Analyzing experiment results
 sidebar_position: 20
+description: Learn how to analyze experiment results, compare treatments to a baseline, and use charts to understand metric impact.
 ---
 
-## Analyzing your metric results
-
-After launching an experiment, you can view the results directly in the Experiments Dashboard. The metric results table summarizes key information for each treatment, providing a clear understanding of how the experiment impacts your key, guardrail, and supporting metrics.
+After launching an experiment, you can view the results directly in the Experiments dashboard. The metric results table summarizes key information for each treatment, providing a clear understanding of how the experiment impacts your key, guardrail, and supporting metrics.
 
 Above the metric table, the **Exposures** bar visualizes the number of users exposed to each treatment group. This helps confirm that traffic was evenly distributed across variants, which is important for maintaining the validity of your experiment results. Monitoring exposures ensures that your experiment collected enough data and that assignment was properly balanced across variants.
 
@@ -88,5 +87,7 @@ The Impact details chart provides metric impact results for data analysis. This 
 ### Current impact snapshot by treatment
 
 The Current impact snapshot chart visually represents how your metric is performing relative to the experiment’s baseline treatment. This chart summarizes the metric results, showing a bar for each treatment (compared with the baseline treatment) using a green, gray, or red bar for a desired, inconclusive, and undesired impact respectively.
+
+You can click the **Dimension** dropdown menu on this chart to break down results by specific dimensions for deeper analysis.
 
 ![](../../static/impact-snapshot.png)
