@@ -1104,6 +1104,36 @@
     "module": "Continuous Delivery"
   },
   {
+    "flagKey": "SEI_2_ENABLE_PRODUCTIVITY_DEFAULT_IN_TEAM_SETTINGS",
+    "description": "Enables default Productivity configuration on the Issue Management tab in Team Settings.",
+    "gaStartDate": "2026-03-18",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_2_SPRINT_INSIGHTS",
+    "description": "Enables Sprint Insights in SEI 2.0.",
+    "gaStartDate": "2026-03-18",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_ENABLE_SCM_MULTI_SELECT",
+    "description": "Enables support for selecting multiple source code management (SCM) integrations per team on the Integrations tab in Team Settings.",
+    "gaStartDate": "2026-03-18",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_ENABLE_SHARED_DEVELOPERS",
+    "description": "Enables shared developer identity mapping across multiple integrations on the Developers tab in Team Settings.",
+    "gaStartDate": "2026-03-18",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_2_ENABLE_CODE_REWORK",
+    "description": "Enables Code Rework Insights in SEI 2.0.",
+    "gaStartDate": "2026-03-18",
+    "module": "Software Engineering Insights"
+  },
+  {
     "flagKey": "CDS_GITOPS_URR_FILE_UPDATE_ENHANCEMENT",
     "description": "Feature to enable file update enhancements for GitOps Update release repo step",
     "gaStartDate": "2026-03-18",
