@@ -1,6 +1,6 @@
 ---
 title: GitOps Services
-description: Learn how to use GitOps services to track deployments and application state.
+description: Learn how to create and configure GitOps services for use in PR pipelines and GitOps sync workflows.
 sidebar_position: 10
 ---
 
@@ -8,260 +8,533 @@ import DocImage from '@site/src/components/DocImage';
 
 # GitOps Services
 
-This topic describes how to use Harness GitOps services to track your GitOps applications and their deployment state.
+This topic walks you through creating and configuring a Harness GitOps service, section by section, so you understand every field you see in the UI and why it matters.
 
-## What is a Service in GitOps?
+## What is a GitOps Service?
 
-In the GitOps context, a service represents an application or a group of related applications deployed through the GitOps methodology. GitOps services help you:
+A GitOps service in Harness is **not** the same as a [traditional CD service](/docs/continuous-delivery/x-platform-cd-features/services/services-overview). In traditional CD, a service defines the artifact and manifests that Harness deploys directly to your cluster. In GitOps, an ArgoCD agent handles the actual deployment by syncing your cluster to the desired state in Git.
 
-- Track the deployment state of your applications
-- Provide a central location to manage and observe all your GitOps PR pipelines and their service, and the environment details.
+A Harness GitOps service is a **tracking and templating entity**. It does three things:
 
-Unlike traditional CD services that define deployment artifacts and configurations, GitOps services focus on tracking, monitoring, and visualizing the state of applications synced automatically through GitOps agents.
+- **Points to your Git config:** It stores references to the files in Git that PR pipelines need to read and update - typically Kubernetes manifests, Kustomize overlays, or Helm values files, depending on how your ArgoCD applications are configured.
+- **Carries variables:** It defines variables (like `imageTag`) that get written into those Git config files when a PR pipeline runs.
+- **Maps to your applications:** Together with an environment and cluster, it resolves which ArgoCD applications are affected by a pipeline run.
 
-## How to Create a GitOps Service
+### How it fits into the deployment flow
 
-A Harness service in the GitOps context logically corresponds to a microservice/application template in an ApplicationSet. Together with the environment and cluster entities, Harness resolves application config.json files in a Git repository to update manifest values through PR pipelines.
+A GitOps service on its own does nothing. It comes to life when used in a [PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines) or GitOps sync pipeline.
 
-### Creating a GitOps Service
+Your ArgoCD Application already has a **source** - a Git repo, branch, and path containing your Kubernetes manifests, Kustomize overlays, or Helm values. The Harness GitOps service points to that same source. When a PR pipeline runs, Harness uses the service's manifest reference and variables to update a file in that repo, creates a pull request, and merges it. ArgoCD then detects the change and syncs your cluster.
 
-1. Navigate to **Deployments** > **Services** in your Harness project.
-2. Click **New Service**.
-3. Enter a name for your service.
-4. Select **Save**.
-5. In the service configuration tab, under the service definition, in the deployment type, select Kubernetes and toggle on **Enable GitOps**.
+In short: the service tells Harness **what to change** in Git, and ArgoCD takes care of **applying that change** to the cluster.
+
+For a detailed comparison, see [GitOps Services vs CD Services](/docs/continuous-delivery/gitops/gitops-entities/service/gitops-vs-cd-service).
+
+## Prerequisites
+
+Before creating a GitOps service, make sure you have the following in place:
+
+- **Harness GitOps Agent:** An agent installed and connected to your Kubernetes cluster. See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent).
+- **Harness Git Connector (for PR pipelines):** A connector configured in Harness that points to the same Git repository your ArgoCD Application uses as its source. This is only needed if you plan to use the Update Release Repo step in a PR pipeline to modify files in Git.
+
+How much you need to configure inside the service depends on your use case:
+
+- **Syncing an independent application:** If you only need to sync an existing ArgoCD Application (using the GitOps Sync or Update GitOps App steps), the service itself doesn't need any manifests or Git details - just link the application to the service and use it in a pipeline.
+- **Updating config via a PR pipeline:** If you want a PR pipeline to modify files in Git (using the Update Release Repo step), you need to configure a Release Repo Manifest in the service that points to the file to update.
+- **Working with ApplicationSets:** If your applications are generated by an ApplicationSet, you also need to configure a Deployment Repo Manifest or App Set Reference so Harness can discover the linked applications.
+
+## Create a GitOps Service
+
+This section walks through every part of the service configuration screen. The screenshot below shows what you see after creating a new service with GitOps enabled:
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/gitops-service-config-panel.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+### Step 1: Create and name the service
+
+1. Go to **Deployments** > **Services** in your Harness project.
+2. Click **+ New Service**.
+3. Fill in the **About the Service** fields:
+   - **Name:** A human-readable name for your service (for example, `icans-api`).
+   - **ID:** Auto-generated from the name. You can edit it before saving, but it cannot be changed later.
+   - **Description (optional):** A short description of what this service represents.
+   - **Tags (optional):** Key-value tags for filtering and organization.
+4. Click **Save**.
+
+### Step 2: Choose service storage
+
+After saving, you see two options for how the service configuration is stored:
+
+- **Inline:** The service definition is stored in Harness. This is the default and simplest option.
+- **Remote:** The service definition is stored in your Git repository. Use this if you want to version-control your service configuration alongside your application code.
+
+### Step 3: Configure the Service Definition
+
+The Service Definition panel contains everything that makes this service work with GitOps. Each section is explained below.
+
+#### Deployment Type
+
+Select **Kubernetes** and check the **GitOps** checkbox.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/enable-gitops-service.png')} width="50%" height="50%" title="Click to view full size image" />
 </div>
 
-6. Add the Manifests and Artifact details. You have two main options for manifests:
+Enabling GitOps changes what the rest of the service definition expects. Instead of traditional Kubernetes manifests and artifact sources that Harness deploys directly, you configure **manifest pointers** that tell PR pipelines where your config lives in Git.
 
-   #### a. Add a Release Repo Manifest
+#### Manifests
 
-   This manifest points to configuration files (like `config.json`) in your Git repository. It is used by the **Update Release Repo** step in PR pipelines to update configuration files and create pull requests.
+This is the most important section for GitOps services. Manifests tell Harness where your configuration files live in Git.
 
-   1. In **Manifests**, select **Add Release Repo Manifest**.
-   2. In **Release Repo Store**, select your Harness Git connector to the repository containing your config.json files.
-   3. In **Manifest Details**, configure:
-      - **Manifest Name**: Enter a name like `config.json`
-      - **Git Fetch Type**: Select **Latest from Branch**
-      - **Branch**: Enter your main branch name
-      - **File Path**: Enter the path to your config files, using expressions like:
-        `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`
+| Manifest Type | What it points to | What pipeline step uses it | Required? |
+|---|---|---|---|
+| **Release Repo Manifest** | The config file that the PR pipeline should update (Kubernetes manifest, `kustomization.yaml`, or `values.yaml`) | [Update Release Repo](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps) step | **Yes** - this is the primary manifest for GitOps services |
+| **Deployment Repo Manifest** | ApplicationSet template YAML in Git | [Fetch Linked Apps](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps) step | **No** - only needed if you use the [ApplicationSet (App of Apps) pattern](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) |
 
-   The `<+env.name>` expression resolves to the Harness environment you select when running the pipeline.
+For most GitOps workflows, you only need a **Release Repo Manifest**. This points to the per-environment config file that your PR pipeline updates. See [Release Repo Manifest](#release-repo-manifest) below for step-by-step instructions and examples.
 
-   :::info
-   You can also use cluster-specific paths with expressions:
+:::info Manifests are optional for independent applications
+If your ArgoCD applications are independent (not generated by an ApplicationSet) and you only need to sync or update them without modifying files in Git, the Manifests section is optional. You can link applications to the service using labels and use pipeline steps like [GitOps Sync or Update GitOps App](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps) directly, without configuring any manifests.
+:::
 
-   ```
-   examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/<+cluster.name>/config.json
-   ```
+The Deployment Repo Manifest is only relevant if you use ApplicationSets to generate multiple ArgoCD applications from a single template. If your applications are independent, you do not need a Deployment Repo Manifest - link your applications to services using labels instead (see [Linking Applications to a Service](#linking-applications-to-a-service)).
 
-   Your Git directories would then be structured as:
-   ```
-   examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster1/config.json
-   examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster2/config.json
-   ```
+#### Artifacts
 
-   This allows you to update only applications deployed in specific clusters.
-   :::
+The Artifacts section lets you specify container images or other artifacts. In a GitOps service, artifacts are **optional**. The ArgoCD agent pulls images based on the manifests in your Git repository, not from Harness artifact configuration.
 
-   #### b. Add a Deployment Repo Manifest
+However, you can still configure an artifact source if you want to:
 
-   This manifest specifies the path to your ApplicationSet template. It is used by the **Fetch Linked Apps** step in PR pipelines to retrieve information about the GitOps applications associated with your service.
+- Use the artifact tag as a service variable (for example, to write the image tag into your config file via a PR pipeline).
+- Track which artifact version is associated with a deployment for auditing purposes.
 
-   1. In **Manifests**, select **Add Deployment Repo Manifest**.
-   2. In **Manifest Details**, configure:
-      - **Manifest Name**: Enter a name like `Application Set`
-      - **Git Fetch Type**: Select **Latest from Branch**
-      - **Branch**: Enter your main branch name
-      - **File Path**: Enter the path to your ApplicationSet template, such as:
-        `examples/git-generator-files-discovery/git-generator-files.yaml`
+If you don't need either of these, you can leave this section empty.
 
-   When these manifests are configured in your service and the corresponding pipeline steps are added to your pipeline execution, they fetch the respective manifest YAML and perform the deployment.
+#### Config Files
 
-7. You can also reference an App Set by clicking on the **Reference App Set** option and configuring the Agent and the app set reference.
+Config Files let you attach plain-text or encrypted files to your service. In a GitOps context, this is **rarely used** because your configuration typically lives in your Git repository (as files referenced by the Release Repo Manifest).
 
-8. Click **Save** to complete the service configuration.
+Use Config Files only if you need to store additional configuration that isn't part of your Git-based workflow. See [Service Config Files](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files) for details.
 
-### Using App Set Reference
+#### Service Hooks
 
-Another way is to use the App Set Reference field, wherein you provide the agent and the app set reference. This is a more dynamic way to add the service to the pipeline, as the app set and agent are already created and installed.
+Service Hooks let you run scripts before or after specific service events. In a GitOps service, this section is typically left empty. If you need to run custom logic during your deployment, add it as a pipeline step in your PR pipeline instead.
 
-Currently, this is behind a feature flag `GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+#### App Set Reference (ApplicationSet workflows only)
+
+If you use ApplicationSets to generate multiple ArgoCD applications, App Set Reference lets you directly reference an existing ApplicationSet managed by a GitOps agent. This is an alternative to manually adding a manifest in the Deployment Repo Manifest field.
+
+If you use standard ArgoCD Application YAML (not ApplicationSets), skip this section.
+
+To configure:
+
+1. Select the **Agent** that manages the ApplicationSet.
+2. Select the **App Set** from the dropdown.
+3. Click **+ Add App Set Reference** if you need to reference multiple ApplicationSets.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/gitops-service-2.png')} width="50%" height="50%" title="Click to view full size image" />
 </div>
 
-### Linking Existing Applications to a Service
+:::note Feature flag
+This feature is behind the feature flag `GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
 
-Here's another way to create GitOps services by linking existing applications:
+#### Variables (under Advanced)
 
-1. Navigate to **Deployments** > **GitOps** > **Applications**.
-2. Select the application you want to map to a service.
-3. In the **App Details** tab, you can map the application to a service.
-4. Choose to either create a new service or map to an existing service.
-5. Complete the mapping configuration and click **Apply Changes**.
+Scroll to the **Advanced** section to find **Variables**. These are key-value pairs that flow into your Git config files when a PR pipeline runs. See [Service Variables](#service-variables) for a full explanation and examples.
 
-This approach is useful when you have already created GitOps applications via the GitOps UI or imported them from Argo CD.
+### Step 4: Save
+
+Click **Save** to complete the service configuration. Your service is now ready to be used in a PR pipeline.
+
+## Manifest Types in Detail
+
+### Release Repo Manifest
+
+A Release Repo manifest points to a file in your Git repository that the Update Release Repo step should modify during a PR pipeline run. The step reads the file, updates the specified key-value pairs, commits the change, and creates a pull request. After the PR is merged, ArgoCD detects the change and syncs your cluster.
+
+The file you point to depends on how your ArgoCD Application's source is configured:
+
+| ArgoCD Application source type | Release Repo points to | Example path |
+|---|---|---|
+| **Kubernetes manifests** | The manifest YAML file per environment | `manifests/dev/deployment.yaml` |
+| **Kustomize** | `kustomization.yaml` per environment | `overlays/dev/kustomization.yaml` |
+| **Helm** | `values.yaml` per environment | `environments/dev/values.yaml` |
+
+:::warning The Release Repo must match your Application's Source
+The Git connector, repository, and branch you configure in the Release Repo Manifest should point to the **same repository** that your ArgoCD Application uses as its source. The file path should resolve to a file within that source path. This is how the PR pipeline knows which file to update so that ArgoCD picks up the change on its next sync.
+:::
+
+**To add a Release Repo Manifest:**
+
+1. In the **Manifests** section, click **+ Add Release Repo Manifest**.
+2. In **Release Repo Store**, select the Harness Git connector that points to the same repository your ArgoCD Application uses as its source.
+3. Configure the manifest details:
+   - **Manifest Name:** A name for this manifest (for example, `release-config`).
+   - **Git Fetch Type:** Select **Latest from Branch**.
+   - **Branch:** The same branch your ArgoCD Application tracks (for example, `main`).
+   - **File Path:** The path to the file the pipeline should update. Use the `<+env.name>` expression to make the path resolve dynamically per environment.
+
+     For Kubernetes manifests:
+
+     ```
+     manifests/<+env.name>/deployment.yaml
+     ```
+
+     For Kustomize:
+
+     ```
+     overlays/<+env.name>/kustomization.yaml
+     ```
+
+     For Helm:
+
+     ```
+     environments/<+env.name>/values.yaml
+     ```
+
+     When you run the pipeline and select the `dev` environment, Harness resolves `<+env.name>` to `dev`.
+
+<details>
+<summary>Example: Kubernetes manifest</summary>
+
+This pattern is used when your ArgoCD Application source points to a directory of plain Kubernetes YAML manifests. Each environment has its own directory.
+
+**Directory structure:**
+
+```
+my-service/
+  └── manifests/
+      ├── dev/
+      │   └── deployment.yaml
+      └── prod/
+          └── deployment.yaml
+```
+
+**Sample manifests/dev/deployment.yaml:**
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-service
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: my-service
+          image: ghcr.io/your-org/my-service:v2.3.0
+          env:
+            - name: ENVIRONMENT
+              value: "dev"
+```
+
+When a PR pipeline runs with service variable `spec.template.spec.containers[0].image: ghcr.io/your-org/my-service:v2.4.1`, the Update Release Repo step updates the image value in this file. After the PR is merged, ArgoCD syncs the updated manifest to your cluster.
+
+</details>
+
+<details>
+<summary>Example: kustomization.yaml (Kustomize overlay)</summary>
+
+This pattern is used when your ArgoCD application sources are Kustomize overlays. Each environment has its own overlay directory with a `kustomization.yaml` that the PR pipeline updates.
+
+**Directory structure:**
+
+```
+my-service/
+  ├── base/
+  │   ├── deployment.yaml
+  │   ├── service.yaml
+  │   └── kustomization.yaml
+  └── overlays/
+      ├── dev/
+      │   └── kustomization.yaml
+      └── prod/
+          └── kustomization.yaml
+```
+
+**Sample overlays/dev/kustomization.yaml:**
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: my-service
+bases:
+  - ../../base
+replicas:
+  - name: my-service
+    count: 3
+patches:
+  - target:
+      kind: Deployment
+      name: my-service
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env
+        value:
+          - name: ENVIRONMENT
+            value: "dev"
+  - target:
+      kind: ConfigMap
+      name: my-service-config
+    patch: |-
+      - op: add
+        path: /data/ENVIRONMENT
+        value: "dev"
+```
+
+When a PR pipeline runs, the Update Release Repo step can update values in this YAML file using dot-notation variables. For example, a variable `replicas[0].count: 5` updates the replica count, or `patches[0].patch` can update the environment value. After the PR is merged, ArgoCD applies the Kustomize overlay and syncs your cluster.
+
+</details>
+
+<details>
+<summary>Example: values.yaml (Helm)</summary>
+
+This pattern is used when your ArgoCD application source is a Helm chart with per-environment values files.
+
+**Directory structure:**
+
+```
+my-service/
+  ├── charts/
+  │   └── my-service/
+  │       ├── Chart.yaml
+  │       └── templates/
+  └── environments/
+      ├── dev/
+      │   └── values.yaml
+      └── prod/
+          └── values.yaml
+```
+
+**Sample environments/dev/values.yaml:**
+
+```yaml
+image:
+  repository: ghcr.io/your-org/my-service
+  tag: v2.3.0
+replicas: 3
+environment: dev
+```
+
+When a PR pipeline runs with service variable `image.tag: v2.4.1`, the Update Release Repo step updates the nested `image.tag` value in the YAML file. After the PR is merged, ArgoCD re-renders the Helm chart with the new values and syncs your cluster.
+
+</details>
+
+:::info Cluster-specific paths
+You can scope config files per cluster as well as per environment by adding `<+cluster.name>` to the path:
+
+```
+overlays/<+env.name>/<+cluster.name>/kustomization.yaml
+```
+
+Your Git directories would look like:
+```
+overlays/dev/cluster1/kustomization.yaml
+overlays/dev/cluster2/kustomization.yaml
+```
+
+This allows you to update only applications deployed in specific clusters.
+:::
+
+### Deployment Repo Manifest (ApplicationSet workflows only)
+
+:::info Skip this if you use standard Application YAML
+The Deployment Repo Manifest is only needed if you use the [ApplicationSet (App of Apps) pattern](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) to generate multiple ArgoCD applications from a single template. If you have standard ArgoCD Application YAML, you do not need this manifest - link your applications to services using labels instead.
+:::
+
+A Deployment Repo manifest points to your ApplicationSet template YAML in Git. The **Fetch Linked Apps** pipeline step reads this template to discover which ArgoCD applications are generated from it and linked to your service.
+
+**To add a Deployment Repo Manifest:**
+
+1. In the **Manifests** section, click **+ Add Deployment Repo Manifest**.
+2. Select your Harness Git connector.
+3. Configure the manifest details:
+   - **Manifest Name:** A name for this manifest (for example, `appset-template`).
+   - **Git Fetch Type:** Select **Latest from Branch**.
+   - **Branch:** Your main branch name (for example, `main`).
+   - **File Path:** The path to your ApplicationSet YAML (for example, `applicationsets/my-service.yaml`).
+
+For a full ApplicationSet example, see the [ApplicationSet tutorial](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
+
+:::tip Next step
+Once your manifests are configured, learn how they are used in a PR pipeline. See [PR Pipeline Steps Reference](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps).
+:::
 
 ## Service Variables
 
-Service variables play a crucial role in managing configurations and deployments in GitOps. These variables help customize your deployments across different environments and clusters.
+Service variables are key-value pairs defined on your service that flow into your Git config files at pipeline runtime. You configure them under **Advanced** > **Variables** in the service configuration screen.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/gitops-service-3.png')} width="50%" height="50%" title="Click to view full size image" />
 </div>
 
-### How Service Variables Work
+### How variables flow from service to cluster
 
-In GitOps, service variables provide the following capabilities:
+1. **You define a variable** on the service (for example, `image.tag: latest`).
+2. **A PR pipeline runs.** The Update Release Repo step reads the variable value and writes it into the matching key in your config file (for example, `values.yaml` or `kustomization.yaml`) in Git, then creates a pull request.
+3. **The Merge PR step runs.** It takes the PR generated by the Update Release Repo step and merges it. Once merged, the manifests in Git are updated to the new version.
+4. **The cluster syncs.** You can trigger a sync using a subsequent Application Sync step in the same pipeline (recommended), or by configuring Auto Sync on the specific ArgoCD Applications.
 
-1. **Service Variables Definition**: 
-   - Define variables specific to your service, such as `imageTag`, `port`, and other service-specific settings
-   - These variables can be referenced in your manifests and configurations
+### Variable precedence
 
-2. **Environment and Cluster-Level Overrides**: 
-   - Variables can be overridden at different levels - environment, cluster, or service level
-   - This flexibility allows for proper configuration management across environments
+Variables can be overridden at multiple levels. The most specific override wins:
 
-3. **Runtime Inputs**: 
-   - Some service variables can be defined as runtime inputs
-   - This is useful for variables that change frequently or need to be specified at deployment time
+| Priority | Level | Where you set it |
+|---|---|---|
+| 1 (highest) | **Pipeline step variables** | In the Update Release Repo step configuration |
+| 2 | **Infrastructure / cluster-level overrides** | In the environment's infrastructure definition |
+| 3 | **Environment-level overrides** | In the environment configuration |
+| 4 (lowest) | **Service-level variables** | In the service configuration (Advanced > Variables) |
 
-4. **Precedence and Overrides**: 
-   - The order of precedence typically flows from infrastructure variables (highest priority) to service level variables (lowest priority)
-   - This ensures that the most specific configurations are applied
+### Example: image.tag variable from service to cluster
 
-### Using Cluster Name as a Service Variable
+**1. Define the variable on the service:**
 
-A specific use case is referencing cluster attributes stored in configuration files:
+| Variable | Value |
+|---|---|
+| `image.tag` | `latest` |
 
-1. Store the cluster name in a configuration file (like `config.json`)
-2. Reference this value as a service variable using expression syntax
-3. During deployment, the service can target the correct cluster based on this reference
+**2. Override it at the environment level (for `prod`):**
 
-By using service variables with expressions, you can create dynamic and configurable deployments that adapt to different environments and requirements.
+| Variable | Value |
+|---|---|
+| `image.tag` | `v2.4.1` |
+
+**3. values.yaml in Git before the pipeline runs:**
+
+```yaml
+image:
+  repository: ghcr.io/your-org/my-service
+  tag: v2.3.0
+replicas: 3
+```
+
+**4. values.yaml in Git after the Update Release Repo step:**
+
+```yaml
+image:
+  repository: ghcr.io/your-org/my-service
+  tag: v2.4.1
+replicas: 3
+```
+
+The environment override (`v2.4.1`) takes precedence over the service default (`latest`). The Update Release Repo step writes it into the config file via a pull request. After the PR is merged, ArgoCD syncs the cluster to the new image tag.
+
+### Runtime inputs
+
+You can set a variable value to `<+input>` to make it a runtime input. When someone runs the pipeline, they are prompted to enter the value. This is useful for values that change with every release, like a new image tag.
+
+## Linking Applications to a Service
+
+You can associate a Harness service with your GitOps applications at multiple points - when creating the application or after it already exists.
+
+### When creating an application
+
+**Via the Harness UI (recommended):** When creating an application in **Deployments** > **GitOps** > **Applications**, select the service and environment in the application configuration form. The application is automatically linked to the service.
+
+**Via Application labels:** Add the `harness.io/serviceRef` and `harness.io/envRef` labels to the Application resource metadata. When the agent syncs the application, Harness automatically maps it to the matching service and environment.
+
+```yaml
+metadata:
+  name: my-service-dev
+  labels:
+    harness.io/serviceRef: my-service
+    harness.io/envRef: dev
+```
+
+These labels can be set through the Harness UI, the ArgoCD UI, or `kubectl`. The label values must match the Harness service ID and environment ID.
+
+**Via ApplicationSet YAML (App of Apps pattern only):** If you use ApplicationSets, add the `harness.io/*` labels in the template metadata so every generated application is automatically mapped. See the [ApplicationSet tutorial](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) for details.
+
+### After an application already exists
+
+If an application was created without service labels (for example, imported from an existing Argo CD setup), you can link it to a service after the fact:
+
+1. **Open the application:** Go to **Deployments** > **GitOps** > **Applications** and select the application.
+2. **Map to a service:** In the **App Details** tab, choose to create a new service or map to an existing one.
+3. **Apply:** Complete the mapping and click **Apply Changes**.
 
 ## GitOps Service Dashboard
 
-The GitOps Service Dashboard provides visibility into your GitOps applications and services. It helps you monitor deployment activity, success rates, and service status across your entire environment. 
+The Service Dashboard gives you two levels of visibility: a **services list** showing all services in your project, and an **individual service detail** page showing deployment history and application status for a single service.
 
-Note that service instances will only appear on the dashboard if they are associated with a PR pipeline that uses the specific service and environment.
+:::note When do service instances appear?
+Service instances only appear on the dashboard after a PR pipeline has been executed with that specific service and environment. A newly created service with no pipeline runs shows zero instances.
+:::
 
-### Accessing the Service Dashboard
+### Services list
 
-1. Navigate to **Deployments** > **Services** in your Harness project.
-2. You'll see a list of all your services, including traditional CD and GitOps services.
+Navigate to **Deployments** > **Services** to see all services in your project. The list includes both traditional CD and GitOps services.
 
-### Dashboard Features
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/services-list.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
 
-The Services Dashboard displays comprehensive information about your services:
 
-#### Overview Statistics
+**Summary metrics** at the top of the page:
 
-At the top of the dashboard, you can see summary statistics including:
+| Metric | Description |
+|---|---|
+| **Total Services** | Total number of services in your project |
+| **Service Instances** | Number of active service instances across all services |
+| **Deployments** | Total deployments in the selected time period |
+| **Failure Rate** | Percentage of failed deployments |
+| **Frequency** | Average number of deployments per day |
 
-- **Total Services**: The total number of services in your project
-- **Service Instances**: The number of active service instances
-- **Deployments**: Number of deployments in the selected time period
-- **Failure Rate**: Percentage of deployments that have failed
-- **Frequency**: Average number of deployments per day
+You can filter by time range (last 7 days, 30 days, or custom).
 
-You can filter the view to see data for the last 7 days, 30 days, or a custom time range.
+Click a service name to open its detail page.
 
-#### Environment Distribution
+### Individual service detail
 
-The dashboard shows how your services are distributed across environments:
-- **Production** (Prod): Services deployed to production environments
-- **Non-Production** (Non Prod): Services deployed to testing, development, or staging environments
+When you click into a service, you land on the **Summary** tab. This page shows the full deployment history and application status for that service.
 
-#### Most Active Services
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/service-dashboard.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
 
-This section displays your most frequently deployed services, showing:
-- Service names
-- Number of deployments per service
-- Success/failure status
+The service detail page has four tabs:
 
-#### Services Table
+| Tab | What it shows |
+|---|---|
+| **Summary** | Deployment history, environment groups, linked applications, and instance counts |
+| **Metrics** | Deployment frequency, success rate, and trends over time |
+| **Configuration** | The service definition you configured (deployment type, manifests, variables, etc.) |
+| **Referenced by** | Pipelines and other entities that reference this service |
 
-The main services table provides detailed information about each service:
+#### Summary tab
 
-| Column | Description |
-|--------|-------------|
-| SERVICE | Name of the service and its unique ID |
-| Code Source | Source of the service configuration (Inline, Git, etc.) |
-| TYPE | Type of service |
-| ACTIVE INSTANCE COUNT | Number of active instances for each service |
-| DEPLOYMENTS | Count of deployments, broken down by environment |
-| FAILURE RATE | Percentage of failed deployments |
-| FREQUENCY | Average number of deployments per time period |
-| LAST PIPELINE EXECUTION | Most recent pipeline that deployed this service and its status |
+The Summary tab is divided into two parts:
 
-#### Service Actions
+**Environment and instance overview (top):**
 
-From the service dashboard, you can perform several actions:
-- Create a new service
-- Search for specific services
-- Sort services by various attributes
-- View service details by clicking on a service name
-- Access pipeline execution details by clicking on the last pipeline execution
+- **Environment groups and environments** where this service is deployed, shown as cards.
+- Each card displays the environment name, environment type badges (**Prod** / **Pre-Prod**), last deployment time, instance count, and the current artifact version (for example, `loans-api:v2`).
+- **View Instances and Rollback** button opens a detailed view of all active instances with the option to trigger a rollback.
+- Use the **View By** dropdown to group by **Environments** or other dimensions, and filter by **Prod, Pre-Prod**, or both.
 
-### Service-Centric Monitoring
+**Deployment history (bottom):**
 
-The Services dashboard provides a service-centric view of your deployments, enabling you to:
+- Toggle between **Pipeline** and **Application** views:
+  - **Pipeline view:** Shows PR pipeline executions that targeted this service.
+  - **Application view:** Shows individual ArgoCD application syncs associated with this service.
+- Filter by **Timeframe**, **Applications**, and **Status**.
 
-1. **Monitor deployment trends**: Track service deployment frequency and success rates over time
-2. **Identify problematic services**: Quickly spot services with high failure rates
-3. **Compare environments**: See how services perform across production and non-production environments
-
-By utilizing the Services dashboard, you gain visibility into all your services, including GitOps applications. This helps you maintain reliable deployments and quickly address issues as they arise.
+Click any row to view the full execution or sync details.
 
 ## Using GitOps Services with PR Pipelines
 
-Since GitOps services are closely integrated with PR pipelines, understanding how they work together is crucial. PR pipelines enable you to make environment-specific changes through pull requests that are automatically merged and applied to your deployments.
+GitOps services are the foundation for [PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines). A PR pipeline reads the manifest references and variables from your service, uses them to update configuration files in Git via pull requests, and then syncs the changes to your clusters through ArgoCD.
 
-### Dynamic Path Configuration with Variables
-
-When defining manifest paths in your GitOps service (as described in the [Creating a GitOps Service](#creating-a-gitops-service) section), you can use environment variables to dynamically select the correct configuration:
-
-- Use `<+env.name>` in your paths to dynamically reference environment-specific files.
-- Example path: `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`
-
-This approach allows a single service definition to work with multiple target environments.
-
-### Pipeline Steps for GitOps Services
-
-PR pipelines include several steps specifically designed for working with GitOps services:
-
-1. **Update Release Repo**: Updates configuration files and creates a PR.
-   - Uses the Release Repo Manifest configured in your service
-   - Supports hierarchical variables and list updates.
-   - Overrides service or environment variables with the same name.
-
-2. **Fetch Linked Apps**: Retrieves information about GitOps applications linked to your service.
-   - Uses the Deployment Repo Manifest configured in your service
-   - Displays app name, agent identifier, and URL to the Harness GitOps app.
-   - Requires a properly configured Deployment Repo manifest.
-
-3. **GitOps Sync**: Triggers synchronization of your GitOps applications.
-   - Filters applications by name, regex pattern, or labels.
-   - Updates the cluster with the latest state from Git.
-
-4. **Update GitOps App**: Modifies your GitOps application configuration.
-   - Updates values files or overrides specific parameters.
-   - Works with both single-source and multi-source applications.
-
-5. **GitOps Get App Details**: Fetches detailed information about your applications.
-   - Returns status data as JSON that can be used in subsequent steps.
-   - Supports hard refresh to get real-time status information.
-
-By combining these pipeline steps with GitOps services, you can build comprehensive workflows that manage your application configurations and deployments through Git.
+To learn how each pipeline step uses your service configuration, see the [PR Pipeline Steps Reference](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps).
 
 ## Next Steps
 
-- [Learn about PR Pipeline Basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics)
-- [Learn more about GitOps Applications](/docs/continuous-delivery/gitops/application/manage-gitops-applications)
+- [PR Pipeline Basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics)
+- [PR Pipeline Steps Reference](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps)
+- [Manage GitOps Applications](/docs/continuous-delivery/gitops/application/manage-gitops-applications)
+- [GitOps Services vs CD Services](/docs/continuous-delivery/gitops/gitops-entities/service/gitops-vs-cd-service)
