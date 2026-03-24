@@ -273,6 +273,12 @@ Click **Run**.
 
 Click **Run Pipeline**.
 
+:::info Default branch for input YAML in manual runs
+When you open a remote pipeline, Harness loads it from the repository's default branch (typically `main`). The input YAML and input sets are also fetched from this branch. If the pipeline and its input sets live on a different branch, you must switch to that branch using the **branch picker** in the Pipeline Studio toolbar *before* selecting **Run**. The **Run Pipeline** dialog itself does not offer a branch selector.
+
+There is no built-in option to configure a per-pipeline default branch for input YAML directly within the pipeline configuration. For trigger-based executions, you can use the `<+trigger.branch>` expression in the **Pipeline Reference Branch** field to dynamically resolve the branch from the webhook payload. For more details, go to [Manage input sets and triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md).
+:::
+
 ## Branch selection logic for fetching referenced entities in remote pipelines
 
 The configurations of the required resources and any referenced entities like input sets and templates are fetched from Git during pipeline fetch, creation, or execution.
