@@ -77,5 +77,5 @@ Once a project is moved, you'll be redirected to the project overview page. You 
 
 <DocImage path={require('../static/move-complete.png')} width="80%" height="80%" title="Move project confirm" /> 
 
-Follow the [post-move remediation](./pre-move-and-post-move-guide#post-move-remediation) guide to verify and update any broken references, and ensure the project functions correctly in its new organization. This guide is not exhaustive; you might need additional steps based on your project setup.
+Follow the [post-move remediation](/docs/platform/organizations-and-projects/move-projects/pre-move-and-post-move-guide#post-move-remediation) guide to verify and update any broken references, and ensure the project functions correctly in its new organization. This guide is not exhaustive; you might need additional steps based on your project setup.
 
