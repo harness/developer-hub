@@ -155,6 +155,6 @@ Review these logs to verify your init script executed successfully or to diagnos
 
 ## See Also
 
-- [Install Delegate 2.0](./install-delegate-2-0) - Complete installation guide
+- [Install Delegate on macOS](./install-a-delegate/install-delegate-macos) - Complete installation guide
 - [Delegate Overview](./delegate-overview) - Architecture and capabilities
-- [Configure Custom Working Directory](./install-delegate-2-0#configure-custom-working-directory) - Working directory configuration
+- [Configure Custom Working Directory](./install-a-delegate/install-delegate-macos#configure-custom-working-directory) - macOS working directory configuration

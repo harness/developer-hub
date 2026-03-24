@@ -1,0 +1,10 @@
+{
+  "label": "Install a Delegate",
+  "position": 2,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Choose your platform to install the Harness Delegate."
+  }
+}

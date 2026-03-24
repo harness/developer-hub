@@ -12,7 +12,7 @@ import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
 
 These release notes describe changes to the new Harness Delegate, currently in closed beta. The new delegate is a lightweight, binary-based runner optimized for CI workloads on local machines (macOS, Linux, and Windows).
 
-For installation and configuration details, go to [Install Harness Delegate on a Local Machine](/docs/platform/delegates-v2/install-delegate-2-0). For feature comparison with the legacy delegate, go to [Feature Parity](/docs/platform/delegates-v2/feature-parity).
+For installation and configuration details, go to [Install Harness Delegate on a Local Machine](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos). For feature comparison with the legacy delegate, go to [Feature Parity](/docs/platform/delegates-v2/feature-parity).
 
 :::info About the new delegate
 
@@ -57,4 +57,4 @@ sudo ./delegate install --account=[Your Account ID] \
 
 All LaunchDaemon operations require `sudo` because the delegate interacts with the system domain (`/Library/LaunchDaemons/`) instead of the user domain. The workspace directory for daemon mode is `/opt/harness-delegate/`.
 
-For complete installation instructions, go to [Install Harness Delegate on a Local Machine — LaunchDaemon mode](/docs/platform/delegates-v2/install-delegate-2-0#option-b-launchdaemon-system-service--version-1340).
+For complete installation instructions, go to [Install Harness Delegate on a Local Machine — LaunchDaemon mode](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos#option-b-launchdaemon-system-service--version-1340).

@@ -1,9 +1,10 @@
 ---
 title: Install a Delegate on Kubernetes
 description: Learn how to install the new Delegate in a Kubernetes cluster
-sidebar_position: 3
+sidebar_position: 4
 redirect_from:
   - /docs/platform/delegates/delegate-v2/install-kubernetes-delegate-2-0
+  - /docs/platform/delegates-v2/install-kubernetes-delegate-2-0
 ---
 
 :::warning Closed Beta
@@ -16,8 +17,8 @@ This guide describes how to install the new Harness Delegate in a Kubernetes clu
 
 :::info
 To learn more about the new delegate, including architecture, capabilities, and how it compares to the legacy delegate, go to:
-- [New Delegate Overview](./delegate-overview) - Complete guide to the new delegate
-- [Feature Parity](./feature-parity) - Detailed feature comparison
+- [New Delegate Overview](../delegate-overview) - Complete guide to the new delegate
+- [Feature Parity](../feature-parity) - Detailed feature comparison
 :::
 
 :::info Important
@@ -57,7 +58,7 @@ Before installing the delegate, you need to obtain your Harness account credenti
 
    Save these values for the next step. In the following sections, these will be referred to as your **Account ID**, **Delegate Token**, and **Harness URL**, respectively.
 
-   ![](./static/ui-delegate-installer.png)
+   ![](../static/ui-delegate-installer.png)
 
 ## Install the Delegate in Kubernetes
 
@@ -267,19 +268,19 @@ To use the new delegate for CI builds, configure your pipeline stage to use Kube
 1. In your Harness project, go to **Connectors** and create a new **Kubernetes Cluster** connector.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/k8s-1.png')} width="30%" height="30%" title="Click to view full size image" />
+  <DocImage path={require('../static/k8s-1.png')} width="30%" height="30%" title="Click to view full size image" />
 </div>
 
 2. In the **Overview** step, enter a name for your connector and click **Continue**.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/k8s-2.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('../static/k8s-2.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
 3. In the **Details** step, select **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/k8s-3.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('../static/k8s-3.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
 4. In the **Delegates Setup** step, configure delegate selection:
@@ -288,7 +289,7 @@ To use the new delegate for CI builds, configure your pipeline stage to use Kube
    - Verify that your delegate appears in the matching delegates list with a green checkmark
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/k8s-4.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('../static/k8s-4.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
 5. Save the connector. You may see a connector test error—this is expected, as connector tests are not yet fully supported for the new delegate. The connector will work correctly even if the test connection is not successful.
@@ -304,7 +305,7 @@ To use the new delegate for CI builds, configure your pipeline stage to use Kube
 4. Specify a namespace where the builds will run. This should be a pre-existing namespace in your cluster.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/k8s-5.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('../static/k8s-5.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
 #### Enable New Delegate Routing

@@ -9,7 +9,7 @@ redirect_from:
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta and available only to select customers. The product team determines access based on current [supported use cases and steps](/docs/platform/delegates-v2/install-delegate-2-0#whats-supported).
+The new Harness Delegate is currently in closed beta and available only to select customers. The product team determines access based on current [supported use cases and steps](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos#whats-supported).
 
 :::
 
@@ -115,7 +115,7 @@ Several capabilities are planned for future releases:
 
 ## Installation and configuration
 
-For detailed installation instructions and configuration options, go to [Install Harness Delegate](/docs/platform/delegates-v2/install-delegate-2-0).
+For detailed installation instructions and configuration options, go to [Install Harness Delegate](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos).
 
 ## Feature comparison
 

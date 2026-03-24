@@ -7,7 +7,7 @@ sidebar_label: Capacity-Based Stage Queuing
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta and available only to select customers. The product team determines access based on current [supported use cases and steps](/docs/platform/delegates-v2/install-delegate-2-0#whats-supported).
+The new Harness Delegate is currently in closed beta and available only to select customers. The product team determines access based on current [supported use cases and steps](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos#whats-supported).
 
 :::
 
@@ -36,7 +36,7 @@ This configuration allows the delegate to execute only one Local (Docker) Infra 
 
 If `MAX_STAGES` is not set, the number of concurrent stage executions is unbounded.
 
-For full installation and configuration details, go to [Install Harness Delegate](/docs/platform/delegates-v2/install-delegate-2-0#set-max-stage-capacity).
+For full installation and configuration details, go to [Delegate Configuration Reference](/docs/platform/delegates-v2/install-a-delegate/configure-delegate#set-max-stage-capacity).
 
 ### Queued stage visibility
 
@@ -96,6 +96,6 @@ When multiple stages are queued, they are assigned to delegates in the following
 
 ## Next steps
 
-- **[Install Harness Delegate](/docs/platform/delegates-v2/install-delegate-2-0):** Set up the new Harness Delegate and configure `MAX_STAGES`.
+- **[Install Harness Delegate](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos):** Set up the new Harness Delegate and configure `MAX_STAGES`.
 - **[Delegate overview](/docs/platform/delegates-v2/delegate-overview):** Learn about the transactional execution model and architecture.
 - **[Feature parity](/docs/platform/delegates-v2/feature-parity):** Compare supported features between the new and legacy delegates.
