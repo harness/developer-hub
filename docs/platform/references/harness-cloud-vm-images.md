@@ -20,15 +20,6 @@ You can either:
 1. Use a **moving image tag** (for example, `ubuntu-latest`) to automatically receive updates, or
 2. **Pin to a specific image version** to maximize build reproducibility.
 
-:::warning[Deprecation Notice]
-The following macOS images will be deprecated on **March 17, 2026**:
-- `macos_sonoma_xcode_16.3`
-- macOS 15 (Sequoia)
-
-After deprecation, `macos_sequoia` will point to `macos_sequoia_xcode_16.4`.
-
-Please migrate your pipelines to a supported image before the deprecation date.
-:::
 
 **VM Images**: 
 
@@ -38,11 +29,8 @@ Please migrate your pipelines to a supported image before the deprecation date.
 | [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | Beta |
 | [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM | GA |
 | [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | GA |
-| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `mac-latest` or `mac-sonoma` | Latest macOS | GA |
-| [macOS 14 (Sonoma) with Xcode 16.3](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macOS-14-xcode-16.3-Readme.md)| `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 16.3 | Deprecated |
-| [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-16.4-Readme.md)| `macos_sequoia` | macOS Sequoia with Xcode 16.3 (default) and iOS runtimes for Xcode 16.4, 26.0 | Deprecated |
-| [macOS 15 (Sequoia) with Xcode 16.4](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-16.4-Readme.md)| `macos_sequoia_xcode_16.4` | macOS Sequoia with Xcode 16.4 (default) and iOS runtimes for Xcode 16.3, 26.0.1 | Beta |
-| [macOS 15 (Sequoia) with Xcode 26.2](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-26.2-Readme.md)| `macos_sequoia_xcode_26.2` | macOS Sequoia with Xcode 16.4 (default) and iOS runtimes for Xcode 26.1.1, 26.2 | Beta |
+| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-sonoma-xcode-15.2-default-Readme.md) | `mac-latest`, `mac-sonoma`, or `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 15.2 (default), 16.3, 16.1, 15.1 | GA |
+| [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-sequoia-xcode-16.4-default-Readme.md)| `macos_sequoia`, `macos_sequoia_xcode_16.4`, or `macos-sequoia-xcode-26.2` | macOS 15 (Sequoia) with Xcode 16.4 (default), 16.3, 26.0, 26.1, 26.2, 26.3 | BETA |
 | [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
 
 :::info 
