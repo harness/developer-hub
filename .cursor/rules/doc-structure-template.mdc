@@ -74,13 +74,55 @@ More instructions.
 - Quick fixes that keep the user moving forward
 
 ### 5. Troubleshooting Section (Optional)
-Only include if there are general issues not tied to specific steps:
+Only include if there are general issues not tied to specific steps.
+
+Use the `<Troubleshoot>` component from `AdaptiveAIContent` — do **not** use static `### heading` + `**Solution:**` pairs. The component renders a collapsible entry sourced from live docs (Kapa) or pre-generated AI responses (Gemini), with a static fallback.
+
+Import at the top of the file (after frontmatter):
+
+```mdx
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+```
+
+Then in the body:
 
 ```markdown
 ## Troubleshooting
+```
 
-### Issue: [Description of problem]
-**Solution:** [How to fix it]
+```jsx
+<Troubleshoot
+  issue="[Concise description of the problem, including product/module context for Kapa]"
+  mode="docs"
+  fallback="[One-sentence static fix shown if AI is unavailable]"
+/>
+```
+
+**Choosing `mode`:**
+- `mode="docs"` — Harness-specific issues (error codes, pipeline behaviour, module config). Kapa answers at runtime from live docs. Use for most entries.
+- `mode="general"` — Infrastructure-adjacent issues (auth, networking, Terraform, Kubernetes). Gemini pre-generates a response at build time.
+- `mode="fallback-only"` — Deterministic fixes where the answer never changes. Always shows the `fallback`; no AI call is made.
+
+**Rules:**
+- Do **not** add `###` headings above each component — the `issue` prop serves as the collapsible heading.
+- The `fallback` prop is required on every entry.
+- Write `issue` with enough context for Kapa to match the right docs (include product name, module, or error message text).
+- Multiple entries sit directly adjacent with no headings between them.
+
+**Example:**
+
+```jsx
+<Troubleshoot
+  issue="Error acquiring the state lock in Harness IaCM pipeline with remote backend"
+  mode="docs"
+  fallback="Ensure no other process is holding a lock. Lock retries are handled automatically by OpenTofu/Terraform."
+/>
+
+<Troubleshoot
+  issue="Concurrent operations conflict on the same Terraform state file with remote backend"
+  mode="general"
+  fallback="Each backend handles locking independently — DynamoDB for S3, object metadata for GCS, leases for Azure Blob."
+/>
 ```
 
 ### 6. Next Steps

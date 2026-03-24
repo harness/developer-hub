@@ -1,0 +1,245 @@
+---
+description: Build guide for the AdaptiveAIContent component system — FAQ and Troubleshoot components with Kapa (docs-grounded) and Gemini (general, build-time) AI response modes
+globs: src/components/AdaptiveAIContent/**,scripts/generate-troubleshoot-responses.mjs,netlify/functions/kapa_proxy.mts
+alwaysApply: false
+---
+
+# AdaptiveAIContent — Build Guide
+
+These components reduce the maintenance burden of FAQ and Troubleshooting sections. When platform behaviour changes, Kapa retrieves updated context from live docs automatically at runtime. Gemini responses for general troubleshooting are pre-generated at build time — no runtime function, no latency, no loading spinner. The `fallback` prop ensures every entry degrades gracefully if AI is unavailable.
+
+## Response Generation by Mode
+
+| Mode            | When         | How |
+|-----------------|--------------|-----|
+| `docs`          | Runtime      | `window.Kapa` JS bridge with 8s timeout, falling back to `kapa_proxy.mts` if the JS bridge is unavailable |
+| `general`       | Build time   | Gemini via `generate-troubleshoot-responses.mjs`, stored in `generated-responses.json` |
+| `fallback-only` | Always       | Static `fallback` prop — no AI call made |
+
+---
+
+## File Structure
+
+```
+src/components/AdaptiveAIContent/
+├── index.ts
+├── FAQ.tsx                         # collapsible details/summary, runtime Kapa
+├── Troubleshoot.tsx                # collapsible details/summary, build-time JSON or runtime Kapa
+├── useAIResponse.ts                # sessionStorage cache + eager fetch hook
+├── api.ts                          # window.Kapa JS bridge (8s timeout) + kapa_proxy fallback
+├── generated-responses.json        # build-time Gemini output (gitignored; script seeds `{}` before build/start)
+└── styles.module.scss
+scripts/
+└── generate-troubleshoot-responses.mjs
+netlify/functions/
+└── kapa_proxy.mts
+```
+
+**Kapa approach:** `api.ts` exposes `fetchFromKapa` (JS bridge, 8s timeout) and `fetchFromKapaProxy` (REST proxy). `useAIResponse.ts` uses `fetchFromKapa` by default. If the bridge proves unsupported, swap the single call in `useAIResponse.ts` to `fetchFromKapaProxy` — no component changes needed.
+
+**Performance:** `useAIResponse` reads `sessionStorage` synchronously on first render — cached responses are instant with no loading state. On a cache miss it fetches eagerly on mount. `docusaurus.config.ts` has `preconnect`/`dns-prefetch` for both Kapa endpoints.
+
+---
+
+## Build Script — `generate-troubleshoot-responses.mjs`
+
+Reuse `scripts/utils/gemini-client.mjs` patterns. The script:
+1. Globs `docs/**/*.md` for `<Troubleshoot mode="general">` entries (both prop orderings)
+2. Loads existing `generated-responses.json`
+3. Calls Gemini for any missing/empty keys via `Promise.allSettled`
+4. Writes merged results back
+5. Always exits 0 so builds continue on failure
+
+Update `package.json` build script:
+```
+node scripts/generate-troubleshoot-responses.mjs && export NODE_OPTIONS=--max-old-space-size=10240 && DOCUSAURUS_IGNORE_SSG_WARNINGS=true docusaurus build
+```
+
+---
+
+## API Layer — `api.ts`
+
+```ts
+declare global {
+  interface Window {
+    Kapa?: (command: string, options?: Record<string, unknown>) => void;
+  }
+}
+
+const KAPA_TIMEOUT_MS = 8000;
+
+export function fetchFromKapa(query: string, formatBullets = false): Promise<string> {
+  return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined' || typeof window.Kapa !== 'function') {
+      reject(new Error('Kapa widget not available'));
+      return;
+    }
+    const fullQuery = formatBullets
+      ? `${query}\n\nFormat your response as a concise bulleted list of steps or checks.`
+      : query;
+    const timeout = setTimeout(() => reject(new Error('Kapa timeout')), KAPA_TIMEOUT_MS);
+    window.Kapa('answer', {
+      query: fullQuery,
+      onFinish: (answer: string) => { clearTimeout(timeout); resolve(answer); },
+      onError: (error: unknown) => { clearTimeout(timeout); reject(error); },
+    });
+  });
+}
+
+export async function fetchFromKapaProxy(query: string, formatBullets = false): Promise<string> {
+  const fullQuery = formatBullets
+    ? `${query}\n\nFormat your response as a concise bulleted list of steps or checks.`
+    : query;
+  const res = await fetch('/api/kapa_proxy', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: fullQuery }),
+  });
+  if (!res.ok) throw new Error(`Kapa proxy error: ${res.status}`);
+  const data = await res.json();
+  return data.answer ?? '';
+}
+```
+
+---
+
+## Netlify Function — `kapa_proxy.mts`
+
+Proxies to `https://api.kapa.ai/query/v1/projects/{KAPA_WEBSITE_ID}/chat/` using `X-API-KEY: process.env.KAPA_API_KEY`. Returns `{ answer: string }`. Handles OPTIONS, validates body, logs errors. Website ID: `db287d54-3525-4674-9d83-a0cbe35024d2`.
+
+---
+
+## Shared Hook — `useAIResponse.ts`
+
+**Key behaviours:**
+- Reads `sessionStorage` synchronously on first render (`CACHE_PREFIX = 'adaptive_ai_'`). Cache hit → instant response, `loading` starts `false`, no fetch.
+- Cache miss → `loading` starts `true`, fetches on mount via `useEffect`.
+- Writes to cache on successful fetch. All storage access wrapped in try/catch (private browsing safe).
+- Only fires for `mode === 'docs'`. `mode="general"` resolved synchronously in `Troubleshoot.tsx`.
+
+```ts
+import { useCallback, useEffect, useState } from 'react';
+import { fetchFromKapa } from './api';
+
+export type AIMode = 'docs' | 'general' | 'fallback-only';
+
+const CACHE_PREFIX = 'adaptive_ai_';
+
+function readCache(key: string): string | null {
+  try { return sessionStorage.getItem(CACHE_PREFIX + key); } catch { return null; }
+}
+function writeCache(key: string, value: string): void {
+  try { sessionStorage.setItem(CACHE_PREFIX + key, value); } catch {}
+}
+
+export function useAIResponse(query: string, mode: AIMode, requestBullets = false) {
+  const cached = mode === 'docs' && typeof window !== 'undefined' ? readCache(query) : null;
+  const [response, setResponse] = useState<string | null>(cached);
+  const [loading, setLoading] = useState(mode === 'docs' && !cached);
+  const [error, setError] = useState(false);
+
+  const doFetch = useCallback(async () => {
+    if (mode !== 'docs') return;
+    setLoading(true); setError(false);
+    try {
+      const result = await fetchFromKapa(query, requestBullets);
+      writeCache(query, result);
+      setResponse(result);
+    } catch { setError(true); } finally { setLoading(false); }
+  }, [query, mode, requestBullets]);
+
+  useEffect(() => { if (cached) return; void doFetch(); }, [doFetch, cached]);
+
+  return { response, loading, error, refetch: doFetch };
+}
+```
+
+---
+
+## Loading State — Progress Bar
+
+While `loading || completing`, render:
+```jsx
+<div className={styles.progressWrap}>
+  <div className={styles.progressTrack}>
+    <div className={`${styles.progressFill}${completing ? ` ${styles.progressComplete}` : ''}`} />
+  </div>
+  <span className={styles.progressLabel}>
+    Fetching the most relevant and up-to-date information from our docs…
+  </span>
+</div>
+```
+
+`completing` is a local state in each component — set `true` when `!loading && response && !error`, cleared after 260ms via `setTimeout`. This plays `kapa-finish` (88%→100%) before revealing content.
+
+SCSS keyframes: `kapa-progress` (9s, `cubic-bezier(0.12, 0.08, 0.02, 1)`, fills to 90%) and `kapa-finish` (0.25s, `from 88% to 100%`, override with `!important`).
+
+---
+
+## FAQ Component — `FAQ.tsx`
+
+- Default `mode="docs"`. `mode="general"` is not meaningful on FAQ — avoid it.
+- `useAIResponse` handles fetching. No toggle/lazy logic in the component.
+- Always wrap in `BrowserOnly`.
+
+---
+
+## Troubleshoot Component — `Troubleshoot.tsx`
+
+- Default `mode="general"`.
+- `mode="general"`: synchronous JSON lookup from `generated-responses.json` — instant.
+- `mode="docs"`: progress bar while fetching, content when done.
+- `mode="fallback-only"`: always static.
+- Do **not** add `###` headings above entries — `issue` prop is the collapsible heading.
+
+---
+
+## `index.ts`
+
+```ts
+export type { AIMode } from './useAIResponse';
+export { default as FAQ } from './FAQ';
+export { default as Troubleshoot } from './Troubleshoot';
+```
+
+---
+
+## Usage in MDX
+
+```mdx
+import { Troubleshoot, FAQ } from '@site/src/components/AdaptiveAIContent';
+```
+
+```jsx
+<Troubleshoot
+  issue="[Problem — include product/module/error text for Kapa]"
+  mode="docs"
+  fallback="[One-sentence static fix]"
+/>
+
+<FAQ
+  question="[Full question]"
+  mode="docs"
+  fallback="[Static answer]"
+/>
+```
+
+---
+
+## Environment Variables
+
+| Variable        | Used by                            | Required    |
+|-----------------|-----------------------------------|-------------|
+| `GEMINI_API_KEY`| `generate-troubleshoot-responses.mjs` | Build only (already set) |
+| `KAPA_API_KEY`  | `netlify/functions/kapa_proxy.mts` | Runtime (add to Netlify env vars) |
+
+---
+
+## Constraints
+
+- Always wrap in `BrowserOnly` — SSR will break without it.
+- `fallback` prop is required on every entry. Never omit it.
+- `generated-responses.json` is **gitignored**; `generate-troubleshoot-responses.mjs` creates `{}` when missing so imports resolve. CI/production builds with `GEMINI_API_KEY` populate it at build time.
+- Do not create `gemini_proxy.mts`. `kapa_proxy.mts` is intentional.
+- Do not expose `GEMINI_API_KEY` in client-side code.
+- Do not add toggle/lazy-fetch logic to components — `useAIResponse` handles eager fetching.

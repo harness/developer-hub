@@ -4,10 +4,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/generate-feature-flags-rss.js && node scripts/generate-release-notes-summaries.mjs && node scripts/fetch-api-specs.mjs",
+    "prebuild": "node scripts/generate-troubleshoot-responses.mjs && node scripts/generate-feature-flags-rss.js && node scripts/generate-release-notes-summaries.mjs && node scripts/fetch-api-specs.mjs",
     "docusaurus": "docusaurus",
-    "start": "node scripts/fetch-api-specs.mjs && node scripts/generate-release-notes-summaries.mjs --skip-if-exists && docusaurus start --host 0.0.0.0",
-    "build": "export NODE_OPTIONS=--max-old-space-size=10240 && DOCUSAURUS_IGNORE_SSG_WARNINGS=true  docusaurus build",
+    "start": "node scripts/generate-troubleshoot-responses.mjs && node scripts/fetch-api-specs.mjs && node scripts/generate-release-notes-summaries.mjs --skip-if-exists && docusaurus start --host 0.0.0.0",
+    "build": "node scripts/generate-troubleshoot-responses.mjs && export NODE_OPTIONS=--max-old-space-size=10240 && DOCUSAURUS_IGNORE_SSG_WARNINGS=true docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

@@ -11,6 +11,8 @@
 .cache-loader
 /release-notes/generated/
 /static/api-specs/
+# Build-time Gemini output for AdaptiveAIContent (created by scripts/generate-troubleshoot-responses.mjs)
+/src/components/AdaptiveAIContent/generated-responses.json
 
 # Misc
 .DS_Store

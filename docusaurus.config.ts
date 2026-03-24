@@ -425,6 +425,14 @@ const config: Config = {
     path.join(__dirname, '/client-modules/iframeEmbed'),
     // path.join(__dirname, '/client-modules/chatbot'),
   ],
+  headTags: [
+    // Pre-establish connections to Kapa endpoints so the TCP/TLS handshake is
+    // already done by the time AdaptiveAIContent components fire their fetches.
+    { tagName: 'link', attributes: { rel: 'preconnect', href: 'https://widget.kapa.ai' } },
+    { tagName: 'link', attributes: { rel: 'preconnect', href: 'https://api.kapa.ai' } },
+    { tagName: 'link', attributes: { rel: 'dns-prefetch', href: 'https://widget.kapa.ai' } },
+    { tagName: 'link', attributes: { rel: 'dns-prefetch', href: 'https://api.kapa.ai' } },
+  ],
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',

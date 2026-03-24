@@ -1,0 +1,97 @@
+.faqDetails {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.faqDetails[open] .faqSummary {
+  font-weight: 600;
+}
+
+.faqDetails[open] .faqSummary::before {
+  transform: rotate(90deg);
+}
+
+.faqSummary {
+  cursor: pointer;
+  padding: 0.65rem 1rem;
+  font-weight: 500;
+  list-style: none;
+  user-select: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::before {
+    content: '▸';
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+}
+
+.faqAnswer {
+  padding: 0.5rem 1rem 0.75rem 1.5rem;
+  color: var(--ifm-color-content-secondary);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.troubleshootList {
+  ul {
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 0.4rem;
+    line-height: 1.6;
+  }
+}
+
+@keyframes kapa-progress {
+  0%   { width: 0%; }
+  20%  { width: 52%; }
+  45%  { width: 72%; }
+  70%  { width: 82%; }
+  85%  { width: 87%; }
+  100% { width: 90%; }
+}
+
+@keyframes kapa-finish {
+  from { width: 88%; }
+  to   { width: 100%; }
+}
+
+.progressWrap {
+  padding: 0.35rem 0 0.6rem;
+}
+
+.progressTrack {
+  height: 3px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.55rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--ifm-color-primary);
+  border-radius: 2px;
+  animation: kapa-progress 9s cubic-bezier(0.12, 0.08, 0.02, 1) forwards;
+}
+
+.progressFill.progressComplete {
+  animation: kapa-finish 0.25s ease-out forwards !important;
+}
+
+.progressLabel {
+  font-size: 0.8rem;
+  color: var(--ifm-color-content-secondary);
+  font-style: italic;
+}

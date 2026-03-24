@@ -7,6 +7,7 @@ sidebar_label: Use Existing Remote State
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Harness IaCM lets you reuse existing remote state backends, such as **AWS S3**, **Google Cloud Storage (GCS)**, or **Azure Blob Storage**, without migrating to Harness-managed storage. Just point your `backends.tf` file to your existing backend, and Harness will use it directly with OpenTofu.
 
@@ -107,14 +108,41 @@ OpenTofu handles lock acquisition and release during pipeline execution. There i
 
 ## Troubleshooting & Best Practices
 
-| Issue or Question | Recommendation |
-| ------------------ | -------------- |
-| `Error acquiring the state lock.` | Ensure no other process (for example, a local OpenTofu/Terraform CLI run) is holding a lock. Lock retries, if any, are handled automatically by OpenTofu/Terraform. |
-| **Plan step fails with missing or unexpected state.** | Confirm that the `key` or `prefix` in your `backends.tf` file matches the correct path in your remote backend. If you recently migrated from Terraform Cloud, verify that no `cloud {}` block remains in your configuration. Harness uses direct backend integrations instead of cloud-based blocks. |
-| **Local CLI commands behave differently than Terraform Cloud.** | Harness IaCM runs plans and applies remotely through pipelines and the IaCM CLI, not via `cloud {}` blocks. Use the Harness CLI or pipeline executions to perform remote plan and apply operations. A dedicated CLI command for direct state inspection is under development. |
-| **Pipeline fails after local testing with a temporary backend.** | If you created a local `backend.tf` for inspection, add it to `.gitignore` or remove it before running your pipeline. A committed local backend configuration overrides the workspace-managed backend during remote execution. |
-| **Permission denied or backend authentication errors.** | Check that your Harness connector or environment variables grant full read/write access to the backend bucket, table, or storage account. Review your connector credentials and environment variables in Workspace settings. |
-| **Concurrent operations on the same state file.** | Each backend handles locking independently (for example, DynamoDB for S3, object metadata for GCS, leases for Azure Blob). Wait for existing locks to clear before retrying; Harness does not add an additional locking layer. |
+<Troubleshoot
+  mode="docs"
+  issue="Error acquiring the state lock"
+  fallback="Ensure no other process (for example, a local OpenTofu/Terraform CLI run) is holding a lock. Lock retries are handled automatically by OpenTofu/Terraform."
+/>
+
+<Troubleshoot
+  mode="docs"
+  issue="Plan step fails with missing or unexpected state"
+  fallback="Confirm that the `key` or `prefix` in your `backends.tf` file matches the correct path in your remote backend. If you recently migrated from Terraform Cloud, verify that no `cloud {}` block remains in your configuration."
+/>
+
+<Troubleshoot
+  mode="docs"
+  issue="Local CLI commands behave differently than Terraform Cloud"
+  fallback="Harness IaCM runs plans and applies remotely through pipelines and the IaCM CLI, not via `cloud {}` blocks. Use the Harness CLI or pipeline executions to perform remote plan and apply operations."
+/>
+
+<Troubleshoot
+  mode="docs"
+  issue="Pipeline fails after local testing with a temporary backend"
+  fallback="If you created a local `backend.tf` for inspection, add it to `.gitignore` or remove it before running your pipeline. A committed local backend configuration overrides the workspace-managed backend during remote execution."
+/>
+
+<Troubleshoot
+  mode="docs"
+  issue="Permission denied or backend authentication errors"
+  fallback="Check that your Harness connector or environment variables grant full read/write access to the backend bucket, table, or storage account. Review your connector credentials and environment variables in Workspace settings."
+/>
+
+<Troubleshoot
+  mode="general"
+  issue="Concurrent operations on the same state file causing corruption"
+  fallback="Each backend handles locking independently (DynamoDB for S3, object metadata for GCS, leases for Azure Blob). Wait for existing locks to clear before retrying; Harness does not add an additional locking layer."
+/>
 
 **Best Practices**
 
