@@ -431,10 +431,10 @@ For a comprehensive guide on installing Harness Self-Managed Enterprise Edition 
 
 - Fixed an issue where Harness secret expressions resolved inside non-secret Kubernetes manifests (such as ConfigMaps) exposed secret values in plain text. When an environment or service variable was typed as a Secret and referenced via a Harness expression in a Helm values file, the resolved secret content appeared unmasked in the rendered manifest during GitOps app sync. Secret values are now masked in non-secret manifest types. [CDS-119065]
 - Fixed an issue where GitOps links in **Project Settings** returned a 404 error when accessed from **Admin Settings**. [CDS-118353]
-- Fixed an issue where the GitOps Rollout step failed to fetch rollout status when an Argo Rollout had more than two active ReplicaSets. [CDS-118750**, ZD-104383]
-- Fixed an issue where the Argo CD application project was linked to a different organization than the one selected in the UI. [CDS-118859**, ZD-104476]
-- Fixed an issue where the GitOps Rollout step failed with an unmarshalling error when processing Argo Rollouts that use custom traffic routing plugins. [CDS-118893**, ZD-104434]
-- Fixed an issue where auto-created GitOps services defaulted to a GitHub connector regardless of the actual Git provider. GitOps auto-created services now detect and assign the correct Git provider type from the repository URL, ensuring proper connector selection in the Harness UI. Additionally, source repository details were incorrectly populated in the **Deployment Repo** fields instead of the **Release Repo** field; they are now correctly populated in the **Release Repo** field. [CDS-119249**, ZD-105458]
+- Fixed an issue where the GitOps Rollout step failed to fetch rollout status when an Argo Rollout had more than two active ReplicaSets. [CDS-118750, ZD-104383]
+- Fixed an issue where the Argo CD application project was linked to a different organization than the one selected in the UI. [CDS-118859, ZD-104476]
+- Fixed an issue where the GitOps Rollout step failed with an unmarshalling error when processing Argo Rollouts that use custom traffic routing plugins. [CDS-118893, ZD-104434]
+- Fixed an issue where auto-created GitOps services defaulted to a GitHub connector regardless of the actual Git provider. GitOps auto-created services now detect and assign the correct Git provider type from the repository URL, ensuring proper connector selection in the Harness UI. Additionally, source repository details were incorrectly populated in the **Deployment Repo** fields instead of the **Release Repo** field; they are now correctly populated in the **Release Repo** field. [CDS-119249, ZD-105458]
 - Fixed an issue where Harness Support Group users authenticated via OKTA SSO received 403 Permission Denied errors when accessing GitOps resources. Support user tokens are now properly forwarded to the Access Control Service for elevated-access detection. [CDS-116751]
 - Fixed an issue where deleting an ApplicationSet from the resource tree context menu incorrectly called the delete application API instead of the delete ApplicationSet API, causing the deletion to fail. [CDS-115910]
 - Fixed an issue where ApplicationSets could not be deleted if the associated agent no longer existed, returning a "Permission denied: agent identifier incorrect or agent does not exist" error. Cleanup of ApplicationSets now works correctly when deleting account-level agents. [CDS-118171]
@@ -464,6 +464,30 @@ For a comprehensive guide on installing Harness Self-Managed Enterprise Edition 
 #### GitOps
 
 - Harness AIDA now supports GitOps entities and pipeline stages. When creating or troubleshooting GitOps Applications or ApplicationSets, AIDA can diagnose common setup errors and suggest remediations — including manifest syntax errors, incorrect service or environment types, missing GitOps clusters on linked environments, incomplete Application or ApplicationSet manifests, and connectivity issues with Git or infrastructure connectors. [CDS-115902]
+
+#### Continuous Integration
+
+- The Docker Build and Push plugins now automatically detect and use Harness proxy environment variables (HARNESS_HTTP_PROXY, HARNESS_HTTPS_PROXY, HARNESS_NO_PROXY) as build arguments when standard proxy variables are not set [CI-20651] 
+- Introduced branch-based version counters, allowing build numbering to track independently per branch (requires CI_ENABLE_BRANCH_SEQUENCE_ID) [CI-20577] 
+- Branch-based version counters now work with pipelines that have codebase disabled, using trigger event data to determine the branch (requires CI_ENABLE_BRANCH_SEQUENCE_ID) [CI-21208] 
+- Cache Intelligence now supports Azure Blob Storage with principal authentication and OIDC-based access [CI-21176] 
+- Cache Intelligence now supports Go builds on Linux, enabling automatic dependency caching for Go projects [CI-20988] 
+- Container-based step groups now support real-time step status updates during execution [CI-21113] 
+- Fixed a marker file permission issue in the cache proxy that caused "Failed to record build cache usage" errors with a "permission denied" message [CI-21173] 
+- Fixed an issue where tag event expressions returned an empty string instead of null when no value was available (applies when CI_ENABLE_BRANCH_SEQUENCE_ID is enabled) [CI-21207] 
+- Improved error logging when the Initialize step fails due to secret fetch errors, providing more actionable details in the logs [CI-20761] 
+- Resolved an issue where double quotes within secrets were not handled correctly in CI Run steps [CI-20256] 
+- Addressed a high severity security vulnerability (CVE-2026-24051) in the cache proxy by upgrading the OpenTelemetry SDK dependency [CI-21042]
+
+#### Code Repository
+
+- Added a new API endpoint to retrieve repository language statistics, providing a breakdown of programming languages used in a repository. [CODE-5131]
+- Added backend support for updating PGP keys used for commit signature verification. [CODE-4914]
+- The fork-sync API now returns HTTP 409 status code when sync encounters merge conflicts, replacing the previous 200 response. [CODE-5104]
+- Improved Git LFS upload performance by streaming file content during OID calculation, reducing memory usage for large file uploads. [CODE-4993]
+- Fixed an issue where listing repositories in a forked repo's space would fail if the upstream (source) repository had been deleted. [CODE-5090]
+- Fixed fork-related API endpoint definitions in the OpenAPI specification to return correct status codes. [CODE-4616]
+- Fixed an issue where push rules based on repository settings incorrectly evaluated critical violation decisions. [CODE-5067]
 
 ### Breaking Changes
 
