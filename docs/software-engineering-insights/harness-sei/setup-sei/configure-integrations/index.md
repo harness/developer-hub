@@ -74,8 +74,6 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 * [ServiceNow](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/)
 * [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor/)
 * [Windsurf](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf/)
-* [Custom Ingestion](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/custom-ingestion/)
-* [qTest](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/qtest/)
 
 Use the [Ingestion Satellites](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) service within your local network or VPC to connect your artifacts, issue management, collaboration tools, source code managers, and other providers to Harness SEI.
 
