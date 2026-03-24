@@ -193,12 +193,13 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io yashaswini.raghavan@harness.io
 
 # DB DevOps Docs
-/docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
-/release-notes/database-devops.md stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
+/docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io sarthak.setia@harness.io 
+/release-notes/database-devops.md stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io 
 /src/components/Docs/data/databaseDevOpsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
-/src/components/Roadmap/data/dbdevopsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io matthew.schillerstrom@harness.io vikram.sahu@harness.io wei.guo@harness.io
+/src/components/Roadmap/data/dbdevopsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io vikram.sahu@harness.io wei.guo@harness.io
+
 # DB DevOps FAQs
-/docs/faqs/db-devops-faqs/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
+/docs/faqs/db-devops-faqs/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io richa.jain@harness.io nirmal.sarswat@harness.io
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
