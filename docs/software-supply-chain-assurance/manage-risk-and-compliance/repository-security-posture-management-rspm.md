@@ -96,30 +96,34 @@ By clicking on a specific evaluation status, you can access detailed information
 
 The SBOM section provides a comprehensive view of your repository’s dependencies. It includes a total dependency count and a detailed, searchable inventory. For each dependency, it surfaces key information such as name, version, OSS Risks, license, package manager, PURL (Package URL), supplier, and vulnerabilities.
 
-Use the following options to filter and refine the dependency list:
+* Use the following options to filter and refine the dependency list:
 
-* **Dependency**: Find specific dependencies based on the dependency name and values. Click Dependency to specify the condition for the `Dependency` Name. Optionally, you can specify the condition for the Dependency Version as well.
-* **License**: Find specific dependencies based on the type of license associated with them. Click `License` to specify the condition for the License associated with a dependency.
-* **OSS Risks**: Filter and refine all the dependencies related to particular OSS Risks. Click `OSS Risks` and then select the checkboxes next to the desired risks in the list to filter the dependencies accordingly. The available options are [Known vulnerabilities in dependencies](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#vulnerabilities-in-sbom-components-oss-risk---1), [Unmaintained Components Identified](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#unmaintained-components-oss-risk---4), [Outdated Components Identified](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#outdated-components-oss-risk---5), [End of Life](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#end-of-life-components), and [Close to End of Life](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#close-to-end-of-life-components).
-* **Dependency Type**: Filter dependencies based on the dependency relationship to your project. Click `Dependency Type` and then select the checkboxes next to the desired dependency type to filter the dependencies. The available options are `Direct`, `Indirect`, and `No relationship`.
-  * **Direct** - Dependencies explicitly declared in your project configuration.
-  * **Indirect** - Transitive dependencies brought in by other dependencies.
-  * **No relationship** - Dependencies present in the SBOM but not currently mapped to your project’s dependency graph.
-  :::note
+  * **Dependency**: Find specific dependencies based on the dependency name and values. Click `Dependency` to specify the condition for the Dependency Name. Optionally, you can specify the condition for the Dependency Version as well.
+  * **License**: Find specific dependencies based on the type of license associated with them. Click `License` to specify the condition for the License associated with a dependency.
+  * **OSS Risks**: Filter and refine all the dependencies related to particular OSS Risks. Click `OSS Risks` and then select the checkboxes next to the desired risks in the list to filter the dependencies accordingly. The available options are [Known vulnerabilities in dependencies](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#vulnerabilities-in-sbom-components-oss-risk---1), [Unmaintained Components Identified](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#unmaintained-components-oss-risk---4), [Outdated Components Identified](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#outdated-components-oss-risk---5), [End of Life](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#end-of-life-components), and [Close to End of Life](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#close-to-end-of-life-components).
+  * **Dependency Type**: Filter dependencies based on the dependency relationship to your project. Click `Dependency Type` and then select the checkboxes next to the desired dependency type to filter the dependencies. The available options are `Direct`, `Indirect`, and `No relationship`. For more information, check out [Direct/Indirect Dependency](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency#via-dependency-type).
 
-  * Filtering dependencies via dependency type is available only for code repositories.
+  * **Package Manager**: Filter dependencies by package manager. Enter a package manager name in the corresponding search box to view all matching dependencies.
 
-  * Currently, direct dependencies are identified only for a limited set of build tools and ecosystems, including `Maven`, `Gradle`, `npm`, `Yarn`, `pip`, `Conda`, and `Go modules`, based on supported manifest files.
-
-  :::
-
-* **Package Manager**: Filter dependencies by package manager. Enter a package manager name in the corresponding search box to view all matching dependencies.
-* **Supplier**: Filter dependencies by supplier. Enter a supplier name in the corresponding search box to view all matching dependencies.
-
-Additionally, click the `Download SBOM` button to download the dependency list in JSON format.
+* Click the `Download SBOM` button to download the dependency list in JSON format.
 
 <DocImage path={require('./static/rspm-sbom-view.png')} width="100%" height="100%" title="Click to view full size image" />
 
+* Click on any dependency to open the dependency side panel.
+  * The **Overview tab** of the dependency side panel opens by default. It has the following sections:
+    * **Details** - Review the dependency’s current and latest available versions, license, package manager, and associated Package URL (PURL).
+    * **Vulnerabilities** - Displays the number of vulnerabilities by severity (Critical, High, Medium, and Low) and their source.
+    * **Remediation** - Provides information related to the remediation of the dependency version.
+
+    <DocImage path={require('./static/dependency-view-overview.png')} width="100%" height="100%" title="Click to view full size image" />
+
+  * The **Dependencies tab** displays the total number of direct and indirect dependencies in the form of a detailed table, associated with the selected dependency. For more information, checkout [Direct/Indirect Dependency](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency#viewing-the-dependency-table).
+
+    <DocImage path={require('./static/dependency-list.png')} width="100%" height="100%" title="Click to view full size image" />
+  
+  * The **Vulnerabilities tab** displays the total number of vulnerabilities and a detailed list of vulnerability information. Each entry includes severity with a vulnerability severity score, upgrade version, and reference identifiers (CVE, GHSA, CWE, and many more).
+
+    <DocImage path={require('./static/vulnerability-tab-detail-rspm.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## Vulnerabilities Tab
 
