@@ -116,13 +116,13 @@ const config: Config = {
         src: '/img/logo_dlp.svg',
       },
       items: [
-        // Top row: only search and action buttons
+        // Top row: Ask AI left, then Search, then action buttons
         {
-          type: 'custom-coveo-search',
+          type: 'custom-kapa-search',
           position: 'right',
         },
         {
-          type: 'custom-kapa-search',
+          type: 'custom-coveo-search',
           position: 'right',
         },
         {

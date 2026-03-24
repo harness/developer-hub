@@ -1,0 +1,53 @@
+/* Static search bar – matches DocSearch/Search design (subdued, secondary to Ask AI) */
+.navbar__search_static {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 17px 0 25px;
+  gap: 13px;
+  height: 48px;
+  min-height: 48px;
+  min-width: 140px;
+  max-width: 219px;
+  background: #ffffff;
+  border: 1px solid var(--gray-200, #e5e7eb);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.search_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b6f79;
+  flex-shrink: 0;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.search_placeholder {
+  color: #848892;
+  font-family: Inter, var(--ifm-font-family-base);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+:global(html[data-theme='dark']) {
+  .navbar__search_static {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  .search_icon {
+    color: #9ca3af;
+  }
+
+  .search_placeholder {
+    color: #9ca3af;
+  }
+}

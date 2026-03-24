@@ -836,37 +836,39 @@ button[title='Copy'] {
   margin: 0;
 }
 
-/* Algolia DocSearch Button Styling */
+/* DocSearch Button Styling – secondary to Ask AI (narrower, lighter) */
 .navbar .DocSearch-Button,
 .searchBar .DocSearch-Button {
-  border-radius: 8px;
-  background: var(--gray-100);
+  border-radius: 12px;
+  background: #ffffff;
   border: 1px solid var(--gray-200);
-  padding: 0 12px;
-  height: 40px;
-  min-width: 200px;
+  padding: 0 17px 0 25px;
+  height: 48px;
+  min-height: 48px;
+  min-width: 140px;
+  max-width: 219px;
   transition: all 0.2s ease;
 }
 
 .navbar .DocSearch-Button:hover,
 .searchBar .DocSearch-Button:hover {
   background: var(--white);
-  border-color: var(--primary-5);
-  box-shadow: 0 2px 8px rgba(0, 146, 228, 0.15);
+  border-color: var(--gray-300);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .navbar .DocSearch-Button .DocSearch-Search-Icon,
 .searchBar .DocSearch-Button .DocSearch-Search-Icon {
-  color: var(--gray-500);
-  width: 16px;
-  height: 16px;
+  color: #6b6f79;
+  width: 18px;
+  height: 18px;
 }
 
 .navbar .DocSearch-Button .DocSearch-Button-Placeholder,
 .searchBar .DocSearch-Button .DocSearch-Button-Placeholder {
-  color: var(--gray-500);
+  color: #848892;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .navbar .DocSearch-Button .DocSearch-Button-Keys,
@@ -891,7 +893,7 @@ button[title='Copy'] {
   color: var(--gray-500);
 }
 
-/* Dark mode overrides */
+/* Dark mode overrides (Search stays subdued) */
 html[data-theme='dark'] .navbar .DocSearch-Button,
 html[data-theme='dark'] .searchBar .DocSearch-Button {
   background: #1f2937;
@@ -901,7 +903,7 @@ html[data-theme='dark'] .searchBar .DocSearch-Button {
 html[data-theme='dark'] .navbar .DocSearch-Button:hover,
 html[data-theme='dark'] .searchBar .DocSearch-Button:hover {
   background: #374151;
-  border-color: var(--primary-5);
+  border-color: #4b5563;
 }
 
 html[data-theme='dark'] .navbar .DocSearch-Button .DocSearch-Search-Icon,
@@ -912,6 +914,7 @@ html[data-theme='dark'] .searchBar .DocSearch-Button .DocSearch-Search-Icon {
 html[data-theme='dark'] .navbar .DocSearch-Button .DocSearch-Button-Placeholder,
 html[data-theme='dark'] .searchBar .DocSearch-Button .DocSearch-Button-Placeholder {
   color: #9ca3af;
+  font-weight: 300;
 }
 
 html[data-theme='dark'] .navbar .DocSearch-Button .DocSearch-Button-Key,
@@ -2667,6 +2670,17 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 }
 .navbar__item {
   padding: 0 8px;
+}
+
+/* Ask AI takes more space; Search stays fixed width */
+.navbar__item:has(.navbar__search_kapa) {
+  flex: 1;
+  min-width: 0;
+  max-width: 351px;
+  display: flex;
+}
+.navbar__item:has(.navbar__search_kapa) .navbar__search_kapa {
+  width: 100%;
 }
 
 @media screen and (max-width: 1299px) {

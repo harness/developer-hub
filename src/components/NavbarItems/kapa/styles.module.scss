@@ -1,34 +1,57 @@
+/* Gradient for Ask AI border and icon (design: 137.21deg #FF99C9 → #926EF7 → #6EEEF7) */
+$ask-ai-gradient: linear-gradient(137.21deg, #ff99c9 3.5%, #926ef7 50.71%, #6eeef7 97.92%);
+
 .navbar__search_kapa {
-  background: #fff9;
-  border: 1px solid #00000033;
-  border-radius: 8px;
-  height: 40px;
-  padding: 0 12px;
-  transition: all 0.2s;
+  box-sizing: border-box;
+  min-width: 220px;
+  flex: 1;
+  max-width: 351px;
+  height: 48px;
+  min-height: 48px;
+  padding: 0 17px 0 25px;
+  gap: 13px;
+  margin-right: 12px;
+  background: #ffffff;
+  border: 2px solid #926ef7;
+  border-radius: 12px;
+  transition: box-shadow 0.2s, opacity 0.2s;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  gap: 8px;
+
   &:hover {
-    border: 1px solid var(--primary-7);
-    color: var(--primary-7);
+    box-shadow: 0 2px 12px rgba(146, 110, 247, 0.35);
+    border-color: #7c5cd9;
+    color: inherit;
   }
 
   .search_text {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    gap: 8px;
-    svg {
-      width: 16px;
+    gap: 13px;
+    flex: 1;
+    min-width: 0;
+
+    svg,
+    .sparkle_icon {
+      display: block;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
     }
+
     p {
       margin: 0;
       padding: 0;
-      color: var(--gray-500);
-      font-size: 14px;
-      font-weight: 400;
+      color: #848892;
+      font-family: Inter, var(--ifm-font-family-base);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
     }
   }
   .button_keys {
@@ -52,15 +75,33 @@
     }
   }
 
-  @media (max-width: '996px') {
+  @media (max-width: 996px) {
     margin-top: 16px;
     margin-left: 12px;
     font-size: 10px;
   }
 }
 
-/* Landing page variant: typing animation + ⌘K shortcut */
+/* Landing page variant: typing animation + ⌘K shortcut – keep original bar style (do not use navbar prominent styling) */
 .navbar__search_kapa_landing {
+  min-width: unset;
+  max-width: none;
+  flex: none;
+  margin-right: 0;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 12px;
+  gap: 8px;
+  background: #fff9;
+  border: 1px solid #00000033;
+  border-radius: 8px;
+
+  &:hover {
+    box-shadow: none;
+    border-color: var(--primary-7);
+    color: var(--primary-7);
+  }
+
   .landing_inner {
     width: 100%;
     display: flex;
@@ -138,9 +179,9 @@
 
 :global(html[data-theme='dark']) {
   .navbar__search_kapa {
-    background-color: #ffffff1f;
-    border-color: rgba(255, 255, 255, 0.25);
-    color: #9ca3af;
+    background-color: #1f2937;
+    border-color: #926ef7;
+    color: #e5e7eb;
 
     .search_text p {
       color: #9ca3af;
@@ -153,8 +194,11 @@
     }
 
     .navbar__search_kapa_landing {
+      background-color: #ffffff1f;
+      border-color: rgba(255, 255, 255, 0.25);
+
       .landing_typing {
-        color: #9ca3af;
+        color: #e5e7eb;
       }
       .landing_shortcut {
         background: transparent !important;

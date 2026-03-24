@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import SearchBox from './components/SearchBox';
 import InitializeCoveo, { isTokenExpired } from './Engine';
 import SearchResultBox from './components/SearhResultBox';
+import StaticSearchPlaceholder from '@site/src/components/NavbarItems/StaticSearchPlaceholder';
+
 const CoveoSearch = () => {
   const searchBoxRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
@@ -56,7 +58,7 @@ const CoveoSearch = () => {
   };
 
   if (!engine || !searchBoxController) {
-    return null;
+    return <StaticSearchPlaceholder />;
   }
 
   return (
