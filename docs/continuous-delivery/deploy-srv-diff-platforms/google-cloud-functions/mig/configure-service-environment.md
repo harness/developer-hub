@@ -38,8 +38,11 @@ The service definition will contain all the manifests and artifacts Harness need
 
 Google Managed Instance Groups require specific manifest files that define your instance configuration. Harness supports up to four types of manifests for comprehensive MIG management. Two manifests—Instance Template and MIG Configuration—are required for every deployment, while Autoscaler Configuration and Health Check Configuration are optional but highly recommended for production workloads.
 
-<!-- TODO: Add image - MIG manifests configuration -->
-<!-- ![Google Managed Instance Group Configurations](./static/mig-manifests-config.png) -->
+MIG manifests can be stored in **Git providers (GitHub, GitLab, Bitbucket)**, the **Harness File Store**, or **Google Cloud Storage (GCS)**. GCS lets you pull manifest files directly from a storage bucket, which is useful when your team already manages infrastructure configuration in Cloud Storage. For step-by-step setup instructions, see [Google Cloud Storage as a Manifest Store](/docs/continuous-delivery/x-platform-cd-features/services/manifest-sources#google-cloud-storage-gcs).
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/mig-gcs-manifest-source-options.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 #### 1. Instance Template
 
@@ -503,3 +506,4 @@ To set up a basic MIG deployment with Blank Canvas:
 
 - [Create a GCP Connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
 - [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store)
+- [Google Cloud Storage as a Manifest Store](/docs/continuous-delivery/x-platform-cd-features/services/manifest-sources#google-cloud-storage-gcs)
