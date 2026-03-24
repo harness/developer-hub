@@ -114,7 +114,7 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 #### New Features and Enhancements
 
-- Harness Cloud builds now display CPU and memory usage metrics in pipeline execution logs, providing better visibility into resource consumption. (CI-19781)
+- Harness Cloud builds now display CPU and memory usage metrics in the execution view, providing better visibility into resource consumption during CI stages. This feature requires the `CI_CPU_MEMORY_INSIGHTS` feature flag. For more information, go to [View CPU and memory utilization metrics](/docs/continuous-integration/use-ci/set-up-build-infrastructure/view-resource-utilization-metrics). (CI-19781)
 
 - Introduced branch-based version counters, allowing build numbering to track independently per branch. This feature requires the `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag. (CI-20577)
 
