@@ -4,6 +4,8 @@ description: Learn about Harness Code Repository and essential concepts for sour
 sidebar_position: 11
 sidebar_label: Overview & Key Concepts
 canonical_url: https://www.harness.io/harness-devops-academy/what-is-a-code-repository
+redirect_from:
+  - /docs/code-repository/get-started/key-concepts
 ---
 
 The [Harness Code Repository module](/docs/code-repository/code-supported) (Code) is a source code management (SCM) tool that fosters developer collaboration and accelerates innovation while keeping security and compliance in mind. Harness Code seamlessly integrates Git-based repositories across your software delivery processes in Harness.
