@@ -457,9 +457,9 @@ If you want to run the entrypoint in addition to other commands, make sure the i
 
 ### Does Harness's Slack integration notify on JIRA events awaiting approval?
 
-No, the current Slack integration for Harness does not support notifications for JIRA approval events. It only works on specific pipeline events, which are available while configuring. None of these events are related to approval notifications.
+Harness now supports a **Waiting for User Action** pipeline event that sends notifications whenever a pipeline pauses for user input, including Approval steps, Manual Intervention, and runtime execution inputs. You can configure this event in your pipeline's notification rules or in [centralized notifications](/docs/platform/notifications/centralised-notification), and receive alerts through any supported channel (Slack, Email, Microsoft Teams, PagerDuty, Webhook, or Datadog). For setup instructions, see [Add a pipeline notification strategy](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events#select-events).
 
-Alternatively, you can set up a custom webhook trigger or configure a step group with two parallel stages (one with shell and one with approval). Once the process reaches the approval stage, the Shell step can contain the cURL call the webhook for notification.
+This event notifies whenever any step requires user action. It cannot be scoped to a specific approval type (for example, JIRA approvals only).
 
 ### The Git Clone step is only available within a containerized step group that requires Kubernetes clusters. Is this the only way to use the Git Clone step?
 

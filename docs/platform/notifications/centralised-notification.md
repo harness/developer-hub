@@ -31,6 +31,8 @@ Centralised Notifications for pipelines allow you to configure notifications for
 
 These notifications are beneficial for tracking pipeline start, success, and failure events, as well as stage-level events (start, success, failure). This helps you monitor pipeline health and quickly identify issues across your deployment processes.
 
+You can also configure the **Waiting for User Action** event in centralized notification rules. This event fires whenever a pipeline pauses for user input, such as an Approval step, Manual Intervention, or runtime execution input. When you add this event as a condition in a centralized notification rule, alerts are sent across all pipelines that match the rule's scope—without requiring per-pipeline configuration.
+
 ### Configuration Steps
 
 <Tabs>

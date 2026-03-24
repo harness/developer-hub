@@ -114,6 +114,8 @@ A new channel can be configured across all scopes. To set up a channel, go to Se
 
 ### Configure pipeline notifications
 
+When configuring pipeline notifications, you select the **Pipeline Events** that trigger the notification. Available pipeline-level events include start, end, success, failure, pause, and **Waiting for User Action**. The **Waiting for User Action** event fires whenever a pipeline pauses because it needs user input, such as an Approval step, Manual Intervention, or runtime execution input. For the full list of events and their behavior, see [Add a pipeline notification strategy](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events#select-events).
+
 <Tabs>
 <TabItem value="Email">
 

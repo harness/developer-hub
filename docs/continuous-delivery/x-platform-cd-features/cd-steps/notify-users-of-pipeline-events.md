@@ -73,6 +73,7 @@ The events are self-explanatory, but there are a few considerations:
 
 * If you select both **Pipeline End** and **Pipeline Success**, you'll get two notifications.
 * **Pipeline Pause** only applies to a manual pause of the pipeline execution. Pending approval steps don't trigger the pipeline pause event.
+* **Waiting for User Action** fires whenever the pipeline enters a waiting state because it needs user input. This includes Approval steps, Manual Intervention steps, and runtime execution inputs. The notification is sent at the pipeline level and cannot be scoped to a specific step type or stage. This event is different from **Pipeline Pause**, which only triggers on a manual pause of the execution.
 
 ## Email notifications
 
@@ -237,6 +238,7 @@ notificationRules:
         - type: StageStart
         - type: StepFailed
         - type: TriggerFailed
+        - type: WaitingForUserAction
       notificationMethod:
         type: Webhook
         spec:
