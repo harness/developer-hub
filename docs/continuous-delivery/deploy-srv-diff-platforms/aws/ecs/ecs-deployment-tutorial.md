@@ -30,6 +30,7 @@ tags:
   - ecs-target-groups
   - ecs-deployment-strategies
   - ecs-service-discovery
+  - ecs-scheduled-actions
 ---
 
 This topic shows you how to deploy images to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy in Harness.
@@ -80,6 +81,9 @@ The custom managed policy should have the following permissions:
         "ecs:DescribeTaskDefinition",
         "application-autoscaling:DescribeScalableTargets",
         "application-autoscaling:DescribeScalingPolicies",
+        "application-autoscaling:PutScheduledAction",
+        "application-autoscaling:DescribeScheduledActions",
+        "application-autoscaling:DeleteScheduledAction",
         "iam:ListRoles",
         "iam:PassRole"
       ],
@@ -109,6 +113,9 @@ The custom managed policy should have the following permissions:
 | `ecs:DescribeTaskDefinition`                      | Describes the Task Definition Harness deployed. Harness collects the revision data for rollback purposes. Harness also uses it to understand the current state of the ECS cluster.                                                                                      |
 | `application-autoscaling:DescribeScalableTargets` | Describes the scalable targets Harness deploys with the ECS service. This permission can be removed if the user doesn’t leverage scalable targets.                                                                                                                      |
 | `application-autoscaling:DescribeScalingPolicies` | Describes the scaling policies associated with the deployed ECS service. This permission can be removed if the user doesn’t leverage scaling policies.                                                                                                                  |
+| `application-autoscaling:PutScheduledAction`      | Creates or updates a scheduled action for the deployed ECS service. This permission can be removed if the user doesn't leverage scheduled actions.                                                                       |
+| `application-autoscaling:DescribeScheduledActions` | Describes the scheduled actions associated with the deployed ECS service. Used to capture rollback data. This permission can be removed if the user doesn't leverage scheduled actions.                                   |
+| `application-autoscaling:DeleteScheduledAction`   | Deletes scheduled actions from the deployed ECS service during redeployment or rollback. This permission can be removed if the user doesn't leverage scheduled actions.                                                   |
 | `iam:ListRoles`                                   | Lists roles. Harness uses the role associated with the Harness connector for deployment.                                                                                                                                                                                |
 | `iam:PassRole`                                    | Harness passes the role with the ECS deployment.                                                                                                                                                                                                                        |
 
@@ -271,6 +278,7 @@ You can see that an ECS service contains the following:
 - Service Definition
 - Scalable Target (Optional)
 - Scaling Policy (Optional)
+- Scheduled Action (Optional)
 - Artifacts
 
 For this example, we'll set up the Task Definition, Service Definition, and Artifacts.
@@ -846,7 +854,7 @@ You can see the same events in the AWS console for the ECS service:
 
 ### ECS Rolling Deploy step output
 
-1. In the ECS Rolling Deploy step, click **Output**. You can see the all of completed deployment details, such as version and Task Definition ARN (taskDefinitionArn).
+1. In the ECS Rolling Deploy step, click **Output**. You can see all completed deployment details, including the version and Task Definition ARN (taskDefinitionArn).
 
 You can copy any of these and use them in later steps in your pipeline.
 
@@ -886,7 +894,7 @@ See the following sections for information on other deployment strategies and st
 
 ### Harness supports JSON and YAML for all ECS manifests
 
-You can use both JSON and YAML for your task and service definitions. Note that fields are denoted in lower camel case rather than pascal case, i.e. `scalableDimension` vs `ScalableDimension`.
+You can use both JSON and YAML for your task and service definitions. Note that fields are denoted in lower camel case rather than Pascal case, i.e., `scalableDimension` vs `ScalableDimension`.
 
 ### ECS manifest examples
 
@@ -896,6 +904,7 @@ To ensure that your deployments are successful, please follow the AWS schema syn
 - [CreateService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html)
 - [RegisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
 - [PutScalingPolicy](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScalingPolicy.html)
+- [PutScheduledAction](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html)
 - [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html)
 
 ### Configure ECS task definition in service only
@@ -908,7 +917,7 @@ Harness will ignore any task definition configured in the ECS Service Definition
 
 ### Supported stores for ECS manifests
 
-Harness can fetch your task definitions, service definitions, scalable target and scaling policy configurations (in JSON or YAML) from the following stores:
+Harness can fetch your task definitions, service definitions, scalable targets, scaling policy, and scheduled action configurations (in JSON or YAML) from the following stores:
 
 - **Harness File Store**
 
@@ -924,9 +933,9 @@ Harness can fetch your task definitions, service definitions, scalable target an
 
 ### AWS Auto Scaling with ECS
 
-The ECS service(s) you deploy with Harness can be configured to use AWS Service Auto Scaling to adjust its desired ECS service count up or down in response to CloudWatch alarms. For more information on using Auto Scaling with ECS, see [Target Tracking Scaling Policies](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html) from AWS.
+The ECS service(s) you deploy with Harness can be configured to use AWS Service Auto Scaling to adjust their desired ECS service count up or down in response to CloudWatch alarms. For more information on using Auto Scaling with ECS, see [Target Tracking Scaling Policies](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html) from AWS.
 
-To configure Auto Scaling in Harness, you use **Scalable Target** and **Scaling Policy** settings in the Harness Service.
+To configure Auto Scaling in Harness, you use **Scalable Target**, **Scaling Policy**, and **Scheduled Action** settings in the Harness Service.
 
 #### Scalable Target
 
@@ -987,6 +996,211 @@ targetTrackingScalingPolicyConfiguration:
   scaleOutCooldown: 300
   scaleInCooldown: 300
 ```
+
+#### Scheduled Action
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ECS_SCHEDULED_ACTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Scheduled actions let you configure time-based auto-scaling for your ECS services. With scheduled scaling, you can proactively adjust the number of running tasks at specific times to match predictable load changes—for example, scaling up every weekday morning and down in the evening.
+
+This is useful when your application has known traffic patterns, and you want to optimize both cost and performance without relying solely on reactive metric-based policies. For more information, see [Scheduled Scaling for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-scheduledscaling.html) from AWS.
+
+To add a scheduled action, go to the **Scheduled Action** setting in your Harness ECS Service and provide a manifest that follows the [PutScheduledAction](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html) API schema.
+
+![](./static/ecs-scheduled-action-ui.png)
+
+##### Scheduled Action manifest
+
+When defining a scheduled action manifest, you supply the schedule expression and the capacity range. Harness automatically populates the `resourceId` field based on the cluster and service name at deployment time, so you do not need to specify it in your manifest.
+
+You can define multiple scheduled action manifests — for example, one to scale up during peak hours and another to scale down during off-peak hours.
+
+<details>
+<summary>Scale up example — <code>scale_up.yaml</code></summary>
+
+```yaml
+scheduledActionName: scale_up
+serviceNamespace: ecs
+schedule: "cron(30 6 * * ? *)"
+scalableDimension: "ecs:service:DesiredCount"
+scalableTargetAction:
+  minCapacity: 3
+  maxCapacity: 10
+```
+
+</details>
+
+<details>
+<summary>Scale down example — <code>scale_down.yaml</code></summary>
+
+```yaml
+scheduledActionName: scale_down
+serviceNamespace: ecs
+schedule: "cron(30 12 * * ? *)"
+scalableDimension: "ecs:service:DesiredCount"
+scalableTargetAction:
+  minCapacity: 1
+  maxCapacity: 1
+```
+
+</details>
+
+##### Specifying a timezone
+
+By default, schedule expressions are evaluated in UTC. To use a different timezone, add the `timezone` field to your manifest with a valid [IANA time zone](https://www.iana.org/time-zones) identifier. Harness expressions are supported for this field so that you can parameterize the timezone at runtime.
+
+```yaml
+scheduledActionName: scale_up_afternoon_ist
+serviceNamespace: ecs
+schedule: "cron(0 14 * * ? *)"
+timezone: "Asia/Kolkata"
+scalableDimension: "ecs:service:DesiredCount"
+scalableTargetAction:
+  minCapacity: 3
+  maxCapacity: 10
+```
+
+##### Supported schedule formats
+
+The `schedule` field accepts three expression types:
+
+| Type | Syntax | Recurring |
+|------|--------|-----------|
+| **Cron** | `cron(0 8 * * ? *)` | Yes |
+| **Rate** | `rate(1 day)` | Yes |
+| **At** | `at(2026-02-12T14:00:00)` | No |
+
+For full syntax details, see [Schedule expressions](https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-using-cron-expressions.html) in the AWS documentation.
+
+##### Start and end times
+
+You can optionally set `startTime` and `endTime` fields in the scheduled action manifest to define a window during which the scheduled action is active. AWS handles activation and deactivation automatically based on these times — no explicit attach/detach logic is needed.
+
+##### Auto-populated fields
+
+Harness auto-populates the `resourceId` field during deployment based on the target cluster and service name. You do not need to specify it in your manifest — Harness constructs the value as `service/{cluster}/{serviceName}` automatically. This is consistent with how Scalable Targets and Scaling Policies work.
+
+The `serviceNamespace` and `scalableDimension` fields are part of the AWS API schema and should be included in your manifest with the values shown in the examples above (`ecs` and `ecs:service:DesiredCount`, respectively).
+
+##### Service YAML reference
+
+When you add scheduled action manifests to your Harness service, they appear alongside existing manifests like Task Definition, Service Definition, Scalable Target, and Scaling Policy. Scheduled actions use the `EcsScheduledActionDefinition` manifest type and can be stored in Git providers, the Harness File Store, or AWS S3.
+
+<details>
+<summary>Sample Harness service YAML with scheduled actions</summary>
+
+```yaml
+service:
+  name: ecs_service_rolling
+  identifier: ecs_service_rolling
+  serviceDefinition:
+    type: ECS
+    spec:
+      manifests:
+        - manifest:
+            identifier: task_def
+            type: EcsTaskDefinition
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: <github_connector>
+                  gitFetchType: Branch
+                  paths:
+                    - ECS/sample/RegisterTaskDefinitionRequest.yaml
+                  repoName: <your_repo>
+                  branch: master
+        - manifest:
+            identifier: service_def
+            type: EcsServiceDefinition
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: <github_connector>
+                  gitFetchType: Branch
+                  paths:
+                    - ECS/sample/CreateServiceRequest.yaml
+                  repoName: <your_repo>
+                  branch: master
+        - manifest:
+            identifier: scaling_policy
+            type: EcsScalingPolicyDefinition
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: <github_connector>
+                  gitFetchType: Branch
+                  paths:
+                    - ECS/sample/PutScalingPolicyRequest.yaml
+                  repoName: <your_repo>
+                  branch: master
+        - manifest:
+            identifier: scalable_target
+            type: EcsScalableTargetDefinition
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: <github_connector>
+                  gitFetchType: Branch
+                  paths:
+                    - ECS/sample/RegisterScalableTargetRequest.yaml
+                  repoName: <your_repo>
+                  branch: master
+        - manifest:
+            identifier: scheduled_action
+            type: EcsScheduledActionDefinition
+            spec:
+              store:
+                type: Harness
+                spec:
+                  files:
+                    - /scheduled_action
+        - manifest:
+            identifier: scale_down
+            type: EcsScheduledActionDefinition
+            spec:
+              store:
+                type: Harness
+                spec:
+                  files:
+                    - /scale_down.yaml
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: <ecr_connector>
+                imagePath: <image_path>
+                tag: latest
+                region: us-east-1
+              identifier: ecr_artifact
+              type: Ecr
+```
+
+</details>
+
+You can attach up to 200 scheduled actions per scalable target.
+
+##### Scheduled actions in different deployment strategies
+
+Harness processes scheduled actions in all ECS deployment strategies — Rolling, Canary, Blue/Green, and Basic. The behavior mirrors how scaling policies are handled today.
+
+In Canary deployments, scheduled actions are applied alongside the main service deployment (not to the temporary canary service).
+
+##### Rollback behavior
+
+During deployment, Harness captures the existing scheduled actions for the service before applying any changes. If the deployment fails and a rollback is triggered, Harness deletes the newly created scheduled actions and restores the previously saved actions.
+
+The rollback sequence works as follows:
+
+1. **Before deployment:** Harness queries AWS for the current scheduled actions and saves them as rollback data.
+2. **During deployment:** Harness deletes the old scheduled actions and creates new ones from the manifests.
+3. **On failure:** Harness deletes the new scheduled actions and re-creates the previously saved actions from the rollback data.
 
 #### Collecting Auto Scaling resources
 
@@ -1667,6 +1881,7 @@ You can override the:
 - Service definition
 - Scaling policy
 - Scalable target
+- Scheduled action
 
 These overrides can be configured at the Harness environment's service-specific override level, as well as at the environment infrastructure definition level.
 
