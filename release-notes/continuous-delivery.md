@@ -1904,7 +1904,7 @@ For example, `account.agentId` for Account-level agents, `org.agentId` for Organ
 
 #### New Features and enhancements
 
-- You can now deploy your artifacts to Google Cloud Run. For more information, go to Harness [Google Cloud Run Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run/). This feature is behind a feature flag `CDS_GOOGLE_CLOUD_RUN`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-36357)
+- You can now deploy your artifacts to Google Cloud Run. For more information, go to Harness [Google Cloud Run Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run/). (CDS-36357)
 
 - You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. For more information, go to Harness [Azure Functions deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/). (CDS-51900)
 

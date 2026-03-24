@@ -474,7 +474,6 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - Google Cloud Run Jobs (task-based execution, batch processing, scheduled tasks)
 - **Limitations:**
   - Requires containerized execution environment for Cloud Run Jobs
-  - Feature currently behind feature flag `CDS_GOOGLE_CLOUD_RUN`
 
 </details>
 

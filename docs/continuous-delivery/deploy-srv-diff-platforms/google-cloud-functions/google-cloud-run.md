@@ -10,10 +10,6 @@ import TabItem from '@theme/TabItem';
 
 # Google Cloud Run Deployments
 
-:::note
-Currently, this feature is behind the feature flag `CDS_GOOGLE_CLOUD_RUN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 This guide explains how to deploy artifacts to Google Cloud Run using Harness.
 
 ## Overview
