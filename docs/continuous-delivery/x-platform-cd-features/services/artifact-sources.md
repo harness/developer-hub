@@ -35,6 +35,12 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+:::info Secrets are not supported in artifact source configuration
+Harness does not resolve secret references (such as `<+secrets.getValue("secret_name")>`) in artifact source configuration fields like **Region**, **Image Path**, or **Registry ID**. If you use a secret in these fields, the pipeline will fail because the raw secret manager expression is passed as-is instead of the resolved value.
+
+Use fixed values or non-secret variable expressions (for example, pipeline, stage, or service variables) for artifact source configuration fields instead.
+:::
+
 ## Using artifacts in manifests
 
 You have two options when referencing the artifacts you want to deploy:
