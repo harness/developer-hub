@@ -102,11 +102,21 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
    :::
 
 8. Set **Namespace** to the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this example, we use **default**.
-9. Select **Continue**. The **Review YAML** settings appear.
-    
-    This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster. 
-10. Switch the configuration type from **Helm Chart** to **YAML** and select **Download YAML**. You can also review the contents of the YAML by clicking the arrow next to **gitops-agent.yml**.
-11. Open a terminal and navigate to the folder where you downloaded the YAML file.
+9. Select **Continue**. The installation options appear. You can install the Agent using either **Helm Chart** (recommended) or **YAML**.
+
+   | Method | Best for | How it works |
+   |--------|----------|---------------|
+   | **Helm Chart** | Production deployments, upgrades, customization | Downloads an `override.yaml` values file that you pass to the [Harness GitOps Helm chart](https://github.com/harness/gitops-helm) |
+   | **YAML** | Quick setup, simple environments | Downloads a single Kubernetes manifest YAML you apply directly with `kubectl` |
+
+   For a more detailed comparison and advanced configuration options, see [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#install-the-agent).
+
+10. Download the installation file for your chosen method:
+
+    - **Helm Chart:** Select **Download Values Yaml** to download the `override.yaml` file. This file contains your Agent-specific configuration that you pass as values to the Helm chart.
+    - **YAML:** Switch the toggle to **YAML** and select **Download YAML** to download the full Kubernetes manifest.
+
+11. Open a terminal and navigate to the folder where you downloaded the file.
 12. In the same terminal, log into the Kubernetes cluster where you want to install the Agent.
 
    For example, here's a typical GKE login:
@@ -114,71 +124,25 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
    ```
    gcloud container clusters get-credentials <cluster_name> --zone us-central1-c --project <project_name>
    ```
-13. Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
 
+13. Install the Agent using the method you chose:
+
+   **Using Helm Chart (recommended):**
+
+   ```bash
+   helm repo add gitops-agent https://harness.github.io/gitops-helm/
+   helm repo update gitops-agent
+   helm install gitops-agent gitops-agent/gitops-helm --values override.yaml --namespace default
    ```
+
+   You can use `--set argo-cd.crds.install=false` to skip CRDs installation if they were already installed from a previous GitOps Agent or Argo CD installation.
+
+   For the full chart source and configuration options, see the [gitops-helm repository](https://github.com/harness/gitops-helm).
+
+   **Using YAML:**
+
+   ```bash
    kubectl apply -f gitops-agent.yaml -n default
-   ```
-   
-   In this output example you can see all of the Harness GitOps objects created in Kubernetes:
-
-   ```
-   % kubectl apply -f harness-gitops-agent.yaml -n default  
-    networkpolicy.networking.k8s.io/argocd-application-controller created
-    networkpolicy.networking.k8s.io/argocd-applicationset-controller created
-    networkpolicy.networking.k8s.io/argocd-repo-server created
-    networkpolicy.networking.k8s.io/argocd-redis created
-    serviceaccount/argocd-application-controller created
-    serviceaccount/argocd-applicationset-controller created
-    serviceaccount/argocd-repo-server created
-    serviceaccount/argocd-redis created
-    serviceaccount/gitops-agent created
-    serviceaccount/gitops-agent-upgrader created
-    secret/argocd-secret created
-    secret/gitops-agent created
-    configmap/argocd-cm created
-    configmap/argocd-cmd-params-cm created
-    configmap/argocd-gpg-keys-cm created
-    configmap/argocd-rbac-cm created
-    configmap/argocd-ssh-known-hosts-cm created
-    configmap/argocd-tls-certs-cm created
-    configmap/gitops-agent created
-    configmap/gitops-agent-upgrader created
-    customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io configured
-    customresourcedefinition.apiextensions.k8s.io/applicationsets.argoproj.io configured
-    customresourcedefinition.apiextensions.k8s.io/appprojects.argoproj.io configured
-    clusterrole.rbac.authorization.k8s.io/argocd-application-controller-default created
-    clusterrole.rbac.authorization.k8s.io/argocd-repo-server-default created
-    clusterrole.rbac.authorization.k8s.io/example-agent created
-    clusterrolebinding.rbac.authorization.k8s.io/argocd-application-controller-default created
-    clusterrolebinding.rbac.authorization.k8s.io/argocd-repo-server-default created
-    clusterrolebinding.rbac.authorization.k8s.io/example-agent created
-    role.rbac.authorization.k8s.io/argocd-application-controller created
-    role.rbac.authorization.k8s.io/argocd-applicationset-controller created
-    role.rbac.authorization.k8s.io/argocd-repo-server created
-    role.rbac.authorization.k8s.io/argocd-server created
-    role.rbac.authorization.k8s.io/gitops-agent created
-    role.rbac.authorization.k8s.io/gitops-agent-upgrader created
-    rolebinding.rbac.authorization.k8s.io/argocd-application-controller created
-    rolebinding.rbac.authorization.k8s.io/argocd-applicationset-controller created
-    rolebinding.rbac.authorization.k8s.io/argocd-repo-server created
-    rolebinding.rbac.authorization.k8s.io/argocd-server created
-    rolebinding.rbac.authorization.k8s.io/gitops-agent created
-    rolebinding.rbac.authorization.k8s.io/gitops-agent-upgrader created
-    service/argocd-applicationset-controller-metrics created
-    service/argocd-applicationset-controller created
-    service/argocd-repo-server-metrics created
-    service/argocd-repo-server created
-    service/argocd-server created
-    service/argocd-redis created
-    deployment.apps/argocd-applicationset-controller created
-    deployment.apps/argocd-repo-server created
-    deployment.apps/argocd-server created
-    deployment.apps/argocd-redis created
-    deployment.apps/gitops-agent created
-    statefulset.apps/argocd-application-controller created
-    cronjob.batch/gitops-agent-upgrader created
-    ingress.networking.k8s.io/argocd-applicationset-controller created
    ```
 
 14. Back in Harness, select **Continue**.
