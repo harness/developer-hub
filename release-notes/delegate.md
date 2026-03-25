@@ -134,6 +134,12 @@ You can override the default by setting the environment variable on your delegat
 
 - Added `tree` query parameters to Jenkins API calls to unblock API requests in the latest CloudBees Jenkins integration. [CDS-117294]
 
+### Version 26.03.88706 <!-- March 24, 2026 -->
+
+#### New features and enhancements
+
+- Upgraded Helm V3 binary from v3.13.3 to v3.15.4. This update includes security patches, bug fixes, and performance improvements. [CDS-120200]
+
 ### Version 26.03.88705 <!-- March 19, 2026 -->
 
 #### Fixed issues
