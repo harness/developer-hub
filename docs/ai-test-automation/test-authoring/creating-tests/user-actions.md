@@ -148,6 +148,28 @@ Executes a double-click action on a specific element. This action is particularl
 
 <br/>
 
+### Drag and Drop
+
+Performs a drag and drop operation by moving an element from one location to another. This action simulates the user clicking and holding an element, dragging it to a target location, and releasing it. It's useful for testing drag-and-drop interfaces, reordering lists, moving items between containers, or any UI that supports drag-and-drop interactions.
+
+<DocImage 
+  path={require('./static/drag-drop.png')}
+  alt="Drag and Drop"
+  title="Drag and Drop"
+  width="60%"
+/>
+
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| **Source Element** | The element to be dragged. Click on the element in your application that you want to drag |
+| **Destination** | Specifies how to determine the drop location. Options include `To Element` or `To Position` |
+| **To Element** | When Destination is set to `To Element`, select the target element where you want to drop the source element |
+| **To Position** | When Destination is set to `To Position`, specify the X and Y coordinates where the element should be dropped |
+
+<br/>
+
 ### File Upload
 
 Uploads a file to the selected input element on a webpage. Specify the absolute or relative path to the file you want to upload, and select the appropriate file input element in your application.
