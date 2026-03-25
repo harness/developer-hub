@@ -1,10 +1,5 @@
 To prevent lockouts or in the event of OAuth downtime, a user that has Account Admin assigned on All Account Level Resources or All Resources Including Child Scopes can use the Local login URL `https://app.harness.io/auth/#/local-login` to sign in and update the OAuth settings.
 
-:::important
-The user must have this access assigned directly on their Harness user, not via a group assignment.
-
-:::
-
 import Local from '/docs/platform/shared/local-login-note.md'
 
 <Local />
