@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-03-18T10:00
+date: 2026-03-25T10:00
 sidebar_position: 10
 ---
 
@@ -61,6 +61,33 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## March 2026
+
+### Version 1.127.0
+
+<!-- March 2026 -->
+
+#### Fixed Issues
+
+- Fixed an issue where the `readOnly` field on PVC volume mounts was not applied to the build pod on Kubernetes infrastructure, causing volumes to be mounted as read-write. (CI-21566)
+
+- Fixed an issue where the lite-engine was not honoring the configured health check timeout (`HEALTH_CHECK_WINDOWS_TIMEOUT`), causing pipelines to time out at the default 10 minutes instead of the configured value. (CI-21637)
+
+- Improved Artifactory plugin security by upgrading the underlying runtime to address known vulnerabilities. (CI-21057)
+
+- Improved Kaniko plugin security by upgrading the underlying runtime to address known vulnerabilities in `docker/cli`. (CI-21413)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.12 | 1.18.13 |
+| `harness/ci-lite-engine` | Version update | 1.18.12 | 1.18.13 |
+| `plugins/kaniko` | Security fix | 1.13.4 | 1.13.6 |
+| `plugins/kaniko-ecr` | Security fix | 1.13.4 | 1.13.6 |
+| `plugins/kaniko-gcr` | Security fix | 1.13.4 | 1.13.6 |
+| `plugins/kaniko-acr` | Security fix | 1.13.5 | 1.13.6 |
+| `plugins/kaniko-gar` | Security fix | 1.13.4 | 1.13.6 |
+| `plugins/artifactory` | Security fix | 1.8.4 | 1.8.5 |
 
 ### Version 1.126.0
 
