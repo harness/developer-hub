@@ -22,6 +22,28 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## March 2026
 
+### Version 1.80.3
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.80.0
+- harness/chaos-ddcr-faults:1.80.0
+- harness/chaos-log-watcher:1.80.0
+- harness/service-discovery-collector:0.60.0
+
+#### New Features and Enhancements
+
+- Added backend support for expressions in experiment and experiment template (CHAOS-11309)
+- Added UI support for Splunk observability probe in chaos (CHAOS-11297)
+- Merged CHAOS_LINUX_MIGRATION feature flag with CHAOS_NG_EXPERIENCE (CHAOS-11299, CHAOS-11298)
+- Updated linux legacy version to 1.72.2 from 1.72.0 (CHAOS-11287)
+
+#### Fixed Issues
+
+- Fixed subscription page not working by updating the authentication token to call the internal API to validate support user (CHAOS-11003)
+- Fixed fault template create, update, and fault import as local copy for variable support (CHAOS-11282)
+
 ### Version 1.79.4
 
 #### Images required
