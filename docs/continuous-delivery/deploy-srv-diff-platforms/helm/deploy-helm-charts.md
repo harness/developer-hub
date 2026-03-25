@@ -22,7 +22,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 ## Important notes
 
-- Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness Cloud Provider that uses this Delegate in A cannot assume the role for the B account.
+- Harness supports AWS cross-account access for S3-based Helm chart stores when the AWS connector is configured with [IRSA](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#use-irsa) and [cross-account access (STS Role)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#enable-cross-account-access-sts-role). The delegate obtains temporary credentials via IRSA, then assumes the cross-account role via STS. These credentials are passed through to ChartMuseum when fetching Helm charts from S3. Ensure the cross-account IAM role has the necessary S3 permissions (`s3:GetObject`, `s3:ListBucket`) for the Helm chart bucket.
 - Helm 2 was deprecated by the Helm community in November 2020 and is no longer supported by Helm. If you continue to maintain the Helm 2 binary on your delegate, it might introduce high and critical vulnerabilities and put your infrastructure at risk.
 
   To safeguard your operations and protect against potential security vulnerabilities, Harness will launch an update to deprecate the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`) on **July 30, 2023**. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
