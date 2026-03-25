@@ -273,7 +273,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | FME Environment | <ul><li>View (`fme_fmeenvironment_view`)</li><li> Create/Edit (`fme_fmeenvironment_edit`)</li><li> SDK API Key View (`fme_fmeenvironment_sdkApiKeyView`)</li><li> SDK API Key Edit (`fme_fmeenvironment_sdkApiKeyEdit`)</li><li> Data Export View (`fme_fmeenvironment_dataExportView`)</li><li> Data Export Edit (`fme_fmeenvironment_dataExportEdit`)</li></ul> | Active |
-| FME Feature Flag | <ul><li>View (`fme_fmefeatureflag_view`)</li><li> Create/Edit (`fme_fmefeatureflag_edit`)</li></ul> | Active |
+| FME Feature Flag | <ul><li>View (`fme_fmefeatureflag_view`)</li><li> Create/Edit (`fme_fmefeatureflag_edit`)</li><li> Archive (`fme_fmefeatureflag_archive`)</li><li> Unarchive (`fme_fmefeatureflag_unarchive`)</li></ul> | Active |
 | FME Experiment | <ul><li>View (`fme_fmeexperiment_view`)</li><li> Create/Edit (`fme_fmeexperiment_edit`)</li></ul> | Active |
 | FME Segment | <ul><li>View (`fme_fmesegment_view`)</li><li> Create/Edit (`fme_fmesegment_edit`)</li></ul> | Active |
 | FME Metric | <ul><li>View (`fme_fmemetric_view`)</li><li> Create/Edit (`fme_fmemetric_edit`)</li></ul> | Active |

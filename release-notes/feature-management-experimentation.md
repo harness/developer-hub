@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-03-09T10:00:00
+date: 2026-03-18T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: March 9, 2026
+#### Last updated: March 18, 2026
 
 ## March 2026
 
@@ -28,7 +28,9 @@ Harness Feature Management & Experimentation (FME) now supports [Harness Policy 
 
 You can create and manage policies for **FeatureFlag** and **FeatureFlagDefinition** entities in the Harness Policy As Code Editor. These policies are automatically evaluated on **On Save** events whenever a feature flag is created, updated, deleted, or archived.
 
-Policies are authored in [Rego](https://www.openpolicyagent.org/docs/policy-language) and applied through policy sets, giving administrators fine-grained control over how feature flags are validated and enforced. With Policy As Code for Harness FME, teams can:
+Policies are authored in [Rego](https://www.openpolicyagent.org/docs/policy-language) and define the rules that govern actions. These policies are applied through **policy sets**, which are what actually execute the rules whenever the action is triggered (either from the Harness UI or from a pipeline). In other words, policies describe the rules, while policy sets organize and enforce them, so you must create a policy first before assigning it to a policy set.
+
+With Policy As Code for Harness FME, teams can:
 
 - Prevent misconfigured feature flags before they reach production (for example, missing descriptions, owners, or invalid naming)
 - Validate targeting rules, rollout percentages, and treatment configurations at save time
@@ -44,45 +46,49 @@ This integration helps teams shift feature flag governance left, catching issues
 - [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
 - [Harness Policy Samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-policies)
 
-### [New Feature] Archive feature flags
+### [New Feature] Feature Flag Archiving 
 ----
 #### 2026-03-09
 
-Harness Feature Management & Experimentation (FME) now supports feature flag archiving, giving teams a way to retire feature flags without permanently deleting them. Archiving removes a feature flag from default views and stops its definition from being sent to SDKs, while preserving all historical data for compliance, auditing, and analysis.
+Harness FME now supports feature flag archiving, enabling teams to retire feature flags without permanently deleting them. Archiving a flag removes it from default views and stops its definition from being sent to SDKs, while preserving all historical data (including configurations, impressions, and audit logs) for compliance, auditing, and analysis. Archiving is governed by two RBAC permissions (**Archive FME Feature Flag** and **Unarchive FME Feature Flag**), which are included by default in the `FME Administrator` role. 
 
-![Archived feature flag state](./static/fme/archived-flag.png)
+Before a flag can be archived, Harness FME performs pre-archive checks and blocks archiving if the flag is used as a dependency and issues warnings for active experiments, recent traffic, or outstanding change requests. 
 
-With flag archiving, feature flags have three states — Active, Archived, and Deleted — giving you more control over the flag lifecycle. When you archive a feature flag, you can:
+![](./static/fme/archive-flag.png)
 
-- Remove the feature flag from default views and SDKs while preserving all historical data
-- Reduce clutter in workspaces with high flag counts by hiding retired flags from the Feature Flags list, Environments page, and Rollout board
+Feature flags in Harness FME have three states (`Active`, `Archived`, and `Deleted`). You can archive feature flags on the **Feature Flags** page, programmatically in Harness pipelines using the **Archive Feature Flag** step, or conditionally using Harness Policy as Code (OPA) to enforce governance rules.
+
+With flag archiving, teams can:
+
+- Reduce clutter in projects with high flag counts 
+- Hide retired flags from default views (such as the Feature Flags, Environments, and Rollout board pages)
 - Enforce governance on the archive action using Harness Policy as Code (OPA)
-- Unarchive a feature flag in break-glass situations, restoring it to the active state
-
-Archiving is governed by two new RBAC permissions — **FME Feature Flag: Archive** and **FME Feature Flag: Unarchive** — included by default in the FME Administrator role. Before archiving, Harness FME checks for dependencies that block the operation and warns about active experiments, recent traffic, and outstanding change requests.
+- Unarchive a feature flag, restoring it to the active state
 
 #### Related documentation
 
 - [Archive a feature flag](/docs/feature-management-experimentation/feature-management/manage-flags/archive-a-feature-flag)
-- [FME permissions](/docs/feature-management-experimentation/permissions)
+- [Harness RBAC for Feature Management & Experimentation (FME)](/docs/feature-management-experimentation/permissions/rbac/)
+- [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference/#feature-management-and-experimentation)
+- [Harness Sample Policies](/docs/platform/governance/policy-as-code/sample-policy-use-case#prevent-archiving-a-feature-flag-with-recent-traffic)
 
 ### [New Feature] FME Steps in Harness Pipelines is Now Generally Available
 ----
 #### 2026-03-05
 
-FME steps in Harness pipelines is now generally available, expanding on the [beta launch](/docs/feature-management-experimentation/pipelines) from January 2026 with a significantly broader set of pipeline steps. You can now manage the full feature flag lifecycle and configure flag definitions directly within your pipelines — whether as part of a deployment, a standalone release process, or any automated workflow.
+FME steps in Harness pipelines is now generally available, expanding on the [beta launch](/docs/feature-management-experimentation/pipelines). You can manage the full feature flag lifecycle and configure flag definitions directly within your pipelines, whether as part of a deployment, a standalone release process, or any automated workflow.
 
-The step library has grown from 6 steps to 14, covering full flag lifecycle management, targeting capabilities, traffic allocation, and advanced patch operations. The following steps are now available under **Feature Management & Experimentation** in the [Harness pipeline step library](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages):
+This release includes 14 steps, covering full flag lifecycle management, targeting capabilities, traffic allocation, and advanced patch operations, which are available under **Feature Management & Experimentation** in the [Harness pipeline step library](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages):
 
 - **Create Feature Flag**, **Update Feature Flag**, and **Delete Feature Flag** for managing the full feature flag lifecycle as part of a pipeline
-- **Set Default Allocations** for defining how traffic is split across treatments when no targeting rules match — the primary mechanism for percentage-based rollouts (for example, 50/50, 90/10, or 100% to a single treatment)
+- **Set Default Allocations** for defining how traffic is split across treatments when no targeting rules match is the primary mechanism for percentage-based rollouts (for example, 50/50, 90/10, or 100% to a single treatment)
 - **Set Individual Targets** and **Add/Remove Individual Targets** for deterministic targeting of specific users or segments
 - **Kill Feature Flag** and **Restore Feature Flag** for disabling and re-enabling flags in specific environments
 - **Set Treatments**, **Set Dynamic Configurations**, and **Set Targeting Rules** for configuring flag definitions, including treatment values, dynamic configurations, and attribute-based targeting
-- **Limit Exposure** and **Reallocate Traffic** for controlling experiment participation — Limit Exposure sets the percentage of users exposed to targeting rules, with everyone else going to the default treatment, while Reallocate Traffic reassigns users across treatments without changing the targeting rules
+- **Limit Exposure** and **Reallocate Traffic** for controlling experiment participation: Limit Exposure sets the percentage of users exposed to targeting rules, with everyone else going to the default treatment, while Reallocate Traffic reassigns users across treatments without changing the targeting rules
 - **Patch Definition** for applying advanced patch operations to a flag definition, based on the [FME Admin API partial update endpoint](https://docs.split.io/reference/partial-update-feature-flag-definition-in-environment)
 
-These steps run alongside standard pipeline capabilities such as [approvals](/docs/platform/approvals/approvals-tutorial), [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/), and [notifications](/docs/platform/notifications/notification-settings#configure-pipeline-notifications). Teams using Harness for deployments can coordinate feature flag changes alongside application releases, while teams using FME standalone can build reusable pipelines to standardize and automate their feature flag operations — no additional Harness modules required.
+These steps run alongside standard pipeline capabilities such as [approvals](/docs/platform/approvals/approvals-tutorial), [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/), and [notifications](/docs/platform/notifications/notification-settings#configure-pipeline-notifications). Teams using Harness for deployments can coordinate feature flag changes alongside application releases, while teams using FME can build reusable pipelines to standardize and automate their feature flag operations; no additional Harness modules required.
 
 #### Related documentation
 
@@ -93,7 +99,6 @@ These steps run alongside standard pipeline capabilities such as [approvals](/do
 ### [New Enhancement] Explore Feature Flag, Segment, and Metric Lists in Harness FME
 ----
 #### 2026-02-13
-
 
 Harness FME has improved the browsing experience for feature flags, segments, and metrics by replacing the browse panels with full-width list pages, consistent with other Harness modules.
 
