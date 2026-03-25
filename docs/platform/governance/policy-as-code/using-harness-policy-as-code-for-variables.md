@@ -1,7 +1,7 @@
 ---
 title: Using Harness Policy as Code for Variables
 description: Add a Policy step to your Variables.
-sidebar_position: 6
+sidebar_position: 4
 helpdocs_topic_id: ozw30qez44
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

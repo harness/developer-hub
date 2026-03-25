@@ -1,7 +1,7 @@
 ---
 title: Policy as Code for connectors
 description: Learn how to use policies for connectors.
-sidebar_position: 70
+sidebar_position: 13
 helpdocs_topic_id: 4kuokatvyw
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Build policies using Harness AI
 description: Build Policies using Harness AI
-sidebar_position: 120
+sidebar_position: 7
 canonical_url: https://www.harness.io/blog/elevating-aida-harness-unveils-7-new-innovative-capabilities
 redirect_from:
   - /docs/platform/governance/policy-as-code/aida-for-policies

@@ -1,7 +1,7 @@
 ---
 title: Policy as Code for service accounts
 description: Learn how to use policy as code for a service account.
-sidebar_position: 80
+sidebar_position: 21
 helpdocs_topic_id: 4kuokatvyw
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

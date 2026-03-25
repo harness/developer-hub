@@ -1,7 +1,7 @@
 ---
 title: Policy As Code for Feature Flags
 description: This topic gives steps to create, update, and view policies and policy sets for Feature Flags.
-sidebar_position: 90
+sidebar_position: 12
 helpdocs_topic_id: vb6ilyz194
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

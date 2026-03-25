@@ -1,7 +1,7 @@
 ---
 title: Run policies in your own environment
 description: Learn how to configure policy sets to run on your own infrastructure instead of Harness SaaS.
-sidebar_position: 50
+sidebar_position: 5
 ---
 
 By default, Harness evaluates OPA policies on Harness-managed infrastructure (SaaS). However, there are scenarios where evaluating policies on your own infrastructure is necessary or preferred:

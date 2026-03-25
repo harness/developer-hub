@@ -1,7 +1,7 @@
 ---
 title: Configure Git Experience for OPA
 description: Configure Git Experiemce for your policies.
-sidebar_position: 110
+sidebar_position: 6
 ---
 
 You can create policies and store them in your Git repository. These policies are called remote policies.
