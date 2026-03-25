@@ -38,6 +38,30 @@ Azure disk loss detaches the virtual disk from an Azure instance.
 
 </FaultDetailsCard>
 
+<FaultDetailsCard category="azure">
+
+### Azure AKS node down
+
+Azure AKS node down deallocates nodes in an Azure Kubernetes Service (AKS) cluster for a certain chaos duration.
+- It helps to check the resilience of your applications when AKS nodes become unavailable.
+- It targets VMSS (Virtual Machine Scale Set) instances in the AKS node pools and temporarily deallocates them.
+- You can filter target nodes by node pool name, availability zone, and percentage of nodes to affect.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Determines the resilience of applications when AKS cluster nodes become unavailable.
+- Validates that workloads are properly distributed across nodes and can handle node failures gracefully.
+- Tests the behavior of Kubernetes scheduling and auto-scaling when nodes are deallocated.
+- Simulates availability zone (AZ) failures by targeting nodes in specific zones.
+- Verifies that critical applications have proper pod disruption budgets and replica counts.
+- Validates monitoring and alerting systems properly detect node failures.
+- Ensures that stateful applications handle node loss without data corruption.
+
+</accordion>
+
+</FaultDetailsCard>
+
 
 <FaultDetailsCard category="azure">
 

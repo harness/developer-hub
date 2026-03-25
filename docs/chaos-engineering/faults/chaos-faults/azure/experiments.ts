@@ -9,6 +9,13 @@ export const experiments: ExperimentDetails[] = [
     category: "azure",
   },
   {
+    name: "Azure AKS node down",
+    description:
+      "Azure AKS node down deallocates nodes in an Azure Kubernetes Service (AKS) cluster for a certain chaos duration. It helps to check the resilience of your applications when AKS nodes become unavailable.",
+    tags: ["AKS", "node down", "kubernetes"],
+    category: "azure",
+  },
+  {
     name: "Azure instance CPU hog",
     description:
       "Azure instance CPU hog disrupts the state of infrastructure resources. It induces stress on the Azure instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault. It utilizes excess amounts of CPU on the Azure instance using the bash script for a specific duration.",

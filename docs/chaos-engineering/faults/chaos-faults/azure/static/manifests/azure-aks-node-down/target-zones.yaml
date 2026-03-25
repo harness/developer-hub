@@ -1,0 +1,28 @@
+# target nodes in specific availability zones
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-aks-node-down
+    spec:
+      components:
+        env:
+        # name of the AKS cluster
+        - name: AKS_CLUSTER_NAME
+          value: 'my-aks-cluster'
+        # resource group of the AKS cluster
+        - name: AKS_RESOURCE_GROUP
+          value: 'rg-aks-cluster'
+        # comma-separated list of availability zones to target
+        - name: TARGET_ZONES
+          value: '1,2'
+        # percentage of nodes to affect
+        - name: NODE_AFFECTED_PERCENTAGE
+          value: '50'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'

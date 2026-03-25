@@ -1,0 +1,28 @@
+# affect a specific percentage of nodes
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-aks-node-down
+    spec:
+      components:
+        env:
+        # name of the AKS cluster
+        - name: AKS_CLUSTER_NAME
+          value: 'my-aks-cluster'
+        # resource group of the AKS cluster
+        - name: AKS_RESOURCE_GROUP
+          value: 'rg-aks-cluster'
+        # percentage of nodes to affect (1-100)
+        - name: NODE_AFFECTED_PERCENTAGE
+          value: '30'
+        # sequence of chaos execution
+        - name: SEQUENCE
+          value: 'parallel'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'

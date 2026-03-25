@@ -16,36 +16,8 @@ Azure instance stop:
 
 ### Prerequisites
 - Kubernetes >= 1.17
-- Appropriate Azure access to start and stop an instance.
+- Azure authentication configured for chaos faults. Refer to [Azure authentication methods](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/azure-authentication-methods) for setup instructions.
 - Azure instance should be in a healthy state.
-- Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK in the experiment. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  azure.auth: |-
-    {
-      "clientId": "XXXXXXXXX",
-      "clientSecret": "XXXXXXXXX",
-      "subscriptionId": "XXXXXXXXX",
-      "tenantId": "XXXXXXXXX",
-      "activeDirectoryEndpointUrl": "XXXXXXXXX",
-      "resourceManagerEndpointUrl": "XXXXXXXXX",
-      "activeDirectoryGraphResourceId": "XXXXXXXXX",
-      "sqlManagementEndpointUrl": "XXXXXXXXX",
-      "galleryEndpointUrl": "XXXXXXXXX",
-      "managementEndpointUrl": "XXXXXXXXX"
-    }
-```
-
-:::tip
-If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name. `AZURE_AUTH_LOCATION` is variable that describes path to the authetication file which uses the default value in most cases.
-:::
 
 ### Mandatory tunables
    <table>

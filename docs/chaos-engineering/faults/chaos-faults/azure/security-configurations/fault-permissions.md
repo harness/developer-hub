@@ -1,4 +1,8 @@
-# Required Permissions and Custom Roles For Azure Chaos Faults
+---
+id: fault-permissions
+title: Required Permissions and Custom Roles For Azure Chaos Faults
+sidebar_position: 1
+---
 
 A reference guide for the minimum Azure role permissions required by each chaos faults and a superset role covering all.
 
