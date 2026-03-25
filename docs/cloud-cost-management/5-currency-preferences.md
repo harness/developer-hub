@@ -1,6 +1,9 @@
 ---
 title: Standardize your currency across CCM
-description: Currency Preference allows you to view your entire CCM application in your preferred currency for different cloud providers. 
+description: Currency Preference allows you to view your entire CCM application in your preferred currency for different cloud providers.
+redirect_from:
+  - /docs/cloud-cost-management/use-ccm-cost-governance/ccm-currency-preferences
+  - /docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences
 ---
 
 

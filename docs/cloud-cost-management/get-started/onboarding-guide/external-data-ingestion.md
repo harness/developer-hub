@@ -56,12 +56,20 @@ Step 2: Click on "+Create New".
  
 Step 3: Users will be asked to asked to fill in necessary details as shown below:
 
+:::warning File Size Limit
+**Maximum file size: 20MB per upload.** If your file exceeds this limit, split it into multiple CSV files before uploading.
+:::
+
 ![](./static/step-two-external.png)
 ![](./static/step-three-external.png)
 
 ## Report Format
 
-To ensure smooth and consistent ingestion of external data into our system, we require all incoming reports to follow the `FOCUSv1` specification for report formatting. Information about each column is available [here](https://focus.finops.org/wp-content/uploads/2024/11/FOCUS-spec-v1_1.pdf). For External Data Ingestion in Harness CCM,your report must include the following mandatory fields:
+To ensure smooth and consistent ingestion of external data into our system, we require all incoming reports to follow the `FOCUSv1` specification for report formatting. Information about each column is available [here](https://focus.finops.org/wp-content/uploads/2024/11/FOCUS-spec-v1_1.pdf). 
+
+For External Data Ingestion in Harness CCM, your report must include specific mandatory fields from the FOCUS specification. These fields ensure proper cost allocation, billing reconciliation, and data consistency.
+
+The following table details all mandatory fields required for External Data Ingestion:
 
 | **FOCUSv1 Field**     | Description                                                                                                                                                                                                 | Requirements                                                                 |
 |-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -85,16 +93,16 @@ To ensure smooth and consistent ingestion of external data into our system, we r
 
 
 :::note
-You can see more details here: [FOCUSv1](https://focus.finops.org/wp-content/uploads/2024/11/FOCUS-spec-v1_1.pdf)
+For complete FOCUS specification details, see: [FOCUSv1 Specification](https://focus.finops.org/wp-content/uploads/2024/11/FOCUS-spec-v1_1.pdf)
 :::
 ### FAQs:
 Q: Which FeatureFlag needs to be enabled ?
 
 A: `CCM_EXTERNAL_DATA_INGESTION``
 
-Q: When this is going GA ?
+Q: When will this feature be generally available?
 
-A: Dates are not confirmed yet. We expect mid Q3 / early Q4 as the GA date.
+A: This feature is currently in Beta. General availability timeline has not been confirmed yet.
 
 Q: Are there default perspectives for this ?
 
@@ -117,11 +125,11 @@ Q: What is the time to value ?
 
 A: The time to value reduces significantly with this feature. From once a day in case of Cloud to under 10 minutes to visualize and consume the data.
 
-Q: I uploaded the file, but data is not showing up its been more than 10 minutes. 
+Q: I uploaded the file, but data is not showing up after more than 10 minutes. 
 
-A: This needs to be looked into by backend team. Please cut a ticket.
+A: If your data hasn't appeared after 10 minutes, please contact [Harness Support](https://support.harness.io) for assistance.
 
-Q: My file sizes are more than 20MB. What should I do ?
+Q: My file sizes are more than 20MB. What should I do?
 
-A: Its advisable to keep the file sizes under 20MB. Tools to split into multiple CSVs can be used as well. In future, we might increase the limit. 
+A: The current file size limit is 20MB per upload. You can use CSV splitting tools to divide larger files into multiple smaller files. We may increase this limit in future releases. 
 

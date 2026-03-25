@@ -239,7 +239,7 @@ For linked accounts connectors in CCM, you can choose one or both of Optimizatio
 <details>
 <summary><strong>Does Harness provide currency standardization?</strong></summary>
 
-Yes, Harness CCM offers the flexibility to view your cloud spending data in the currency of your preference. For further information, please refer this [document](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences/).
+Yes, Harness CCM offers the flexibility to view your cloud spending data in the currency of your preference. For further information, please refer this [document](/docs/cloud-cost-management/currency-preferences).
 
 </details>
 

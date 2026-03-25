@@ -6,6 +6,13 @@ sidebar_position: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::tip 
+**Asset Governance requires writing YAML-based policies using Cloud Custodian syntax.** 
+If you are new to YAML or Cloud Custodian, we recommend reviewing the [Cloud Custodian documentation](https://cloudcustodian.io/docs/index.html) before getting started.
+:::
+
+-------
+
 - **[Configure CCM Connector](/docs/cloud-cost-management/get-started/#aws)**
   - Navigate to **Setup** > **Cloud Providers** > **Add a Connector**
   - Select your cloud provider (AWS, Azure, or GCP)
@@ -276,6 +283,10 @@ Cost Correlation in Harness CCM connects governance with their actual cost impac
 | GCP   | `gcp.instance`, `gcp.disk`, `gcp.snapshot`, `gcp.sql-instance`, `gcp.image`, `gcp.loadbalancer-address`, `gcp.loadbalancer-forwarding-rule`, `gcp.bucket`, `gcp.gke-cluster`, `gcp.bq-dataset`, `gcp.function`, `gcp.redis`, `gcp.cloud-run-service`, `gcp.dataflow-job` | No ❌                             | Yes ✅          | Yes ✅       | No ❌                          | Yes ✅                  |
 | Azure | Every Resource in Billing Report                                                                                                                                                                                                                                         | Yes ✅                            | Yes ✅          | Yes ✅       | No ❌                          | Yes ✅                  |
 
+:::note What "Not Supported" Means
+When a feature shows ❌ (not supported), Harness can still compute costs for filtered resources in that category. However, **savings cannot be predicted** without a supported terminal action (stop, delete, release, etc.). See the Savings Computation section below for details on which actions enable savings computation.
+:::
+
 ### Cost Impact/Cost Co-relation
 
 When you click on **Refresh** button on the screen, CCM refreshes or updates the cost of all resources in the evaluation. It is exposed to resolve cases where the cost for any resource is not yet part of CUR, Billing Report, or Billing Data (due to newly deployed resources, etc.). You can hit the refresh cost button only once every 30 minutes for any evaluation.
@@ -287,12 +298,16 @@ When you click on **Refresh** button on the screen, CCM refreshes or updates the
 - Azure Preferences set in Account Settings will now also be honored.
 :::
 
-:::important
-- The savings from the governance rule for a resource type would depend on the cost of the filtered resource and the savings percentage set on the governance rule, given one of the below action is applied on the corresponding resource.
-- For any "not supported" resource, we support cost computation on the filtered resources but not the savings computation as cloud-custodian do not provide any terminal action for that resource.
+:::important Savings Computation
+Harness computes savings for governance rules when a **terminal action** (stop, delete, release, etc.) is applied to resources. The savings depend on:
+- The cost of the filtered resource
+- The savings percentage set on the governance rule
+- A supported terminal action being applied
+
+For resources where terminal actions are not supported, Harness can still compute costs for filtered resources, but cannot predict savings.
 
 <details>
-<summary>List of Savings Supported Actionss</summary>
+<summary>View Savings Supported Actions by Resource Type</summary>
 
 | Resource Name | Savings Supported Actions |
 | --- | --- |

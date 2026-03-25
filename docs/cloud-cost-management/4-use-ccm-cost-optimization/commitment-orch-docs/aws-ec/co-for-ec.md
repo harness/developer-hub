@@ -14,7 +14,11 @@ helpdocs_is_published: true
 To enable Commitment Orchestrator please enable Commitment Orchestrator in the setup window for new connectors. For already established connectors, visit "Account Settings" and choose the connector and select Commitment Orchestrator in the edit window.
 :::
 
-# Introduction to Commitment Orchestrator 
+# Introduction to Commitment Orchestrator
+
+:::tip 
+Already familiar with Reserved Instances and Savings Plans? [Jump directly to setup instructions](#steps-to-configure).
+:::
 
 In recent years, organizations leveraging cloud services have witnessed a notable trend - the steady increase in cloud costs. As businesses increasingly migrate their operations to the cloud or expand their existing cloud infrastructure, the expenses associated with cloud infrastructure, storage, and data processing have become a significant portion of their overall expenditures.
 
@@ -75,11 +79,19 @@ Harness's Commitment Orchestrator is a specialized tool designed to assist organ
 4. **Optimize commitment utilization**:  The Commitment Orchestrator continuously monitors and analyzes commitment utilization. It identifies underutilized commitments or opportunities for optimization so you can reallocate resources or adjust commitments to maximize utilization and cost-effectiveness.
 5. **Compliance at scale with RBAC, audit trails, OPA**:  Harness's Commitment Orchestrator provides robust Role-Based Access Control (RBAC) mechanisms to define and enforce granular access controls and permissions within the platform. It maintains detailed audit trails of all activities and changes performed within the platform, ensuring compliance with policies and regulations.  Harness's Commitment Orchestrator also supports Open Policy Agent (OPA) integration, allowing organizations to define and enforce custom policies for commitment management.
 
+:::warning Critical: 24-Hour Approval Window
+**You have 24 hours to approve SP/RI purchase and exchange recommendations before they expire.** Check your Commitment Orchestrator dashboard daily to avoid missing recommendations. New recommendations will be automatically regenerated in 24 hours, but delays may result in missed savings opportunities.
+:::
+
 The Commitment Orchestrator facilitates the following:
+
 - **SP Purchase Plan**: We send out monthly recommendations for purchasing Compute SP (Savings Plans), provided there isn't an existing SP in place already. Upon receipt, you will have 24 hours to approve the request. If not approved within this timeframe, the recommendation will expire. However, rest assured that our systems will automatically regenerate the recommendation for your consideration.
   
-- **RI Purchase Plan**: Our system generates recommendations for purchasing Convertible Reserved Instances (RIs), multiple times throughout the month. Just like with Savings Plands (SP) recommendations, you'll have a 24-hour window to approve these recommendations. Should you miss the window, new recommendations will be automatically generated to accommodate any changes in the compute spend. 
-Additionally, if there are no existing AWS EC2 t3.nano RIs, a seed RI (t3.nano) will be purchased. If any other RI exists, we will leverage it to obtain a t3.nano to ensure that the t3.nano also expires along with the original RI.
+- **RI Purchase Plan**: Our system generates recommendations for purchasing Convertible Reserved Instances (RIs), multiple times throughout the month. Just like with Savings Plans (SP) recommendations, you'll have a 24-hour window to approve these recommendations. Should you miss the window, new recommendations will be automatically generated to accommodate any changes in the compute spend.
+
+:::note Automated Seed RI Purchase
+**Harness may automatically purchase a small t3.nano Reserved Instance to bootstrap the orchestration process.** This seed RI enables the system to perform RI exchanges and will appear in your AWS billing. If no existing AWS EC2 t3.nano RIs exist, a seed RI (t3.nano) will be purchased. If any other RI exists, we will leverage it to obtain a t3.nano to ensure that the t3.nano also expires along with the original RI.
+:::
 
 - **RI Exchange Plan**: If you're considering exchanging RI, our system provides recommendations that will be generated multiple times daily. Whether you choose to approve individual exchanges or group them, you have the flexibility to manage your resources efficiently. Just like with purchase plans, recommendations may change based on the compute spend variations, and if not acted upon within 24 hours, they will expire and be regenerated automatically.
 
@@ -106,6 +118,10 @@ Commitment Orchestrator does all of this with the help of its 2 engines: **Utili
 
 
 ## Steps to configure:
+
+:::info AWS Account Terminology
+**Master Account (Management Account)**: In AWS Organizations, the master account (also called the management account) is the AWS account that creates and manages the organization. It has full administrative control over all member accounts (also called linked accounts or child accounts) in the organization. Commitment Orchestrator must be set up on the master account to manage commitments across all accounts in your organization.
+:::
 
 ### Visibility
 To enable visibility, in the master account connector, you need to add the following permissions.
@@ -190,7 +206,7 @@ There are two major parts of savings as discussed earlier: Savings Plans (SPs) a
 
 7. Can orchestration be setup on any account?
 
--  No, only master account with correct permission listed above will be allowed and it can be done for multiple master accounts.
+-  No, only the master account (management account in AWS Organizations) with correct permissions listed above will be allowed. Orchestration can be set up for multiple master accounts if you manage multiple AWS Organizations.
 
 9. When does Harness make RI purchase?
 

@@ -126,7 +126,7 @@ Marking a recommendation as "Applied" assumes all resources are actioned and ful
       - **Show Recommendations on Resources Added to the Ignore List** - If enabled, recommendations will still be displayed for resources that have been manually marked as ignored. 
     - **Resource Specific Preferences:** Over here, users can select the presets for each resource type and also set the default time range. 
 
-    New Recommendation Preferences may take up to 24 hours to fully update across the platform. However, changes will be reflected immediately on the drill-down page, while the Overview page may take additional time to reflect updates.
+    New Recommendation Preferences may take up to 24 hours to fully update across the platform because preferences are applied during the next scheduled batch processing job. However, changes will be reflected immediately on the drill-down page, while the Overview page may take additional time to reflect updates.
 </TabItem>
 <TabItem value="manage-presets" label="Manage Presets">
   <DocImage path={require('./static/manage-presets.png')} width="80%" height="80%" title="Click to view full size image" />

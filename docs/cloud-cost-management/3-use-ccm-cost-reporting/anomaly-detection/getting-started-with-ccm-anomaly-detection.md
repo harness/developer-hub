@@ -5,6 +5,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from: 
 - /docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm
+- /docs/cloud-cost-management/use-ccm-cost-governance/ccm-anomaly-detection/detect-cloud-cost-anomalies-with-ccm
+
 ---
 
 import Tabs from '@theme/Tabs';
