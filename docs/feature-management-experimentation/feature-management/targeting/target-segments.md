@@ -1,25 +1,25 @@
 ---
 title: Target segments
 sidebar_label: Target segments
-description: ""
+description: Learn how to use segments to target feature flags, including Standard, Large, and Rule-based segments.
 sidebar_position: 7
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/target-segments
 ---
 
-Once you create a feature flag, you can [create feature flag targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#setting-up-targeting) that target individual user IDs (user keys), but you can also use segments.
+Once you create a feature flag, you can [create feature flag targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#setting-up-targeting) that target individual user IDs (or user keys), or use segments to target groups of users.
 
-[Segments](/docs/feature-management-experimentation/feature-management/targeting/segments) are lists of user IDs. On your feature flag Definition tab, you can create targeting rules that assign treatments to segments.
+[Segments](/docs/feature-management-experimentation/feature-management/targeting/segments) are lists of user IDs. In a feature flag definition, you can assign treatments to one or more segments in your targeting rules. If a segment does not appear in search, it may not be [defined](/docs/feature-management-experimentation/feature-management/targeting/segments#adding-user-ids-to-a-segment) in the selected FME environment.
 
-This article shows how to target Standard, Large, and Rule-based segments in your individual targeting rules and in attribute based targeting rules.
+![](../static/targeting-6.png)
 
-___Tip:___ If you don't see a segment appear when you type its name in the segment input field, it may be that the segment is not [defined](/docs/feature-management-experimentation/feature-management/targeting/segments#adding-user-ids-to-a-segment) for the given FME environment.
+:::danger Server-side SDK Support
+[Server-side SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/) do not support **Large segments**. Evaluations of feature flags targeting Large segments return `control`.
 
-:::warning[Server-side SDK support for Large segments]
-Server-side SDKs do not yet support Large segments, but will in the future. Until they are supported, evaluations of feature flags that target Large segments will return `control` on server-side SDKs. 
+If you need this capability, contact [Harness Support](/docs/feature-management-experimentation/fme-support) or open a [feature request](https://ideas.harness.io/feature-request).
 :::
 
-## Individual targeting rules
+## Target segments in individual targeting rules
 
 You can target segments in individual targeting rules. These rules assign a treatment to the segment. In the following example, the feature flag will serve **on** to all user IDs in the given segments.
 
@@ -29,7 +29,7 @@ After you select a segment, you can see the segment type indicated by the input 
 
 ![](../static/target-segments-to-segments-input.png)
 
-## Attribute based targeting rules
+## Target segments in attribute-based targeting rules
 
 You can also target Standard, Large, and Rule-based segments in attribute based targeting rules. The following example is equivalent to the individual targeting rule shown above.
 

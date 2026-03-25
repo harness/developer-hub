@@ -57,30 +57,26 @@ These examples demonstrate how segments help you safely and effectively target u
 
 ## Segment types
 
+Choose a segment type based on the number of users you need to target and how you manage segment membership.
+
 Harness FME supports the following segment types:
-  * **Standard segments** - can contain up to 100,000 user IDs
-  * **Large segments** - can contain up to 1,000,000 user IDs (may be increased upon request)
-  * **Rule-based segments** - dynamically include user IDs based on [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#targeting-rules) 
 
-:::info
-**Large segments** are available on the [Enterprise](https://www.split.io/pricing/) plan.
+  * **Standard segments**: Contain up to 100,000 user IDs. Standard segments are fully downloaded by server-side SDKs. Segments with a higher number of user IDs can increase SDK initialization time. 
+  * **Large segments**: Contain up to 1,000,000 user IDs (limit can be increased upon request). Designed for high-scale targeting use cases.
+  * **Rule-based segments**: Dynamically include user IDs based on [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#targeting-rules). 
+
+### Large segment behavior
+
+Large segments differ from standard segments in how they are created and accessed:
+
+- Updated externally (for example, by [uploading a full user list](https://docs.split.io/reference/update-large-segment-keys-in-environment-via-csv) using the Admin API).
+- Individual user IDs can be searched, but the full list is not accessible in the UI.
+
+:::danger Server-side SDK Support
+[Server-side SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/) do not support **Large segments**. Evaluations of feature flags targeting **Large segments** return `control`. 
+
+If you need this capability, contact [Harness Support](/docs/feature-management-experimentation/fme-support) or open a [feature request](https://ideas.harness.io/feature-request).
 :::
-
-:::warning[Server-side SDK support for Large segments]
-Server-side SDKs do not yet support Large segments, but soon will. Until they are supported, evaluations of feature flags that target Large segments will return `control` on server-side SDKs. 
-:::
-
-:::warning[Server-side SDK initialization time with Standard segments]
-When you add user IDs to a segment, note that these are lists that need to be fully downloaded to all of our ___server side___ SDKs. Too many IDs in a segment mean that your SDKs take longer to get ready.
-:::
-
-**Large segments** are created and managed differently than standard segments. A brief summary:
-  * Creating and updating Large segments is done in _two steps_, including using Split API to upload a CSV file containing the segment's _full list_ of user IDs.
-  * In Harness FME, you can search a Large segment for a given User ID, but the full list of user IDs in a Large segment cannot be displayed.
-
-The segment type is displayed at the top of each Segment page in Harness FME, as shown below.
-
-<div style={{maxWidth:600}}> ![](../static/create-a-segment-segment-type.png) </div>
 
 ## Creating a segment
 
