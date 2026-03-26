@@ -264,6 +264,10 @@ const config: Config = {
               to: '/release-notes/feature-flags-ga-timeline',
             },
             {
+              label: 'Glossary',
+              to: '/glossary',
+            },
+            {
               label: 'University',
               to: '/university',
             },

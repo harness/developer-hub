@@ -149,6 +149,11 @@ const docDropdownItems = [
     icon: "/img/icon-hsf.svg",
   },
   {
+    to: "/glossary",
+    label: "Harness Glossary",
+    icon: "/img/icon_release_notes.svg",
+  },
+  {
     to: "/docs/self-managed-enterprise-edition",
     label: "Self-Managed Enterprise Edition",
   },
@@ -165,6 +170,7 @@ const secondaryNavItems = [
   { to: "/roadmap", label: "Roadmap" },
   { to: "/release-notes", label: "Release Notes" },
   { to: "/university", label: "University" },
+  { to: "/glossary", label: "Glossary" },
 ];
 
 export default function NavbarWrapper(props: Props): ReactNode {

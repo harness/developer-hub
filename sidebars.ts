@@ -413,6 +413,16 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
+        // Glossary
+        {
+          type: 'link',
+          label: 'Glossary',
+          className: 'sidebar-API_Reference',
+          href: '/glossary',
+          customProps: {
+            description: 'Search and discover key vocabulary and terminology used in the Harness documentation.',
+          },
+        },
         // Release Notes
         {
           type: 'link',

@@ -1,0 +1,1264 @@
+{
+  "entries": [
+    {
+      "id": "fme.warehouse-native.assignment-source",
+      "term": "assignment source",
+      "definition": "A data source that defines how users are assigned to different variations in an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
+      "slug": "assignment-source",
+      "module": "fme",
+      "category": "warehouse-native",
+      "letter": "A",
+      "related": [
+        {
+          "term": "cloud experimentation",
+          "slug": "cloud-experimentation"
+        },
+        {
+          "term": "data warehouse",
+          "slug": "data-warehouse"
+        },
+        {
+          "term": "experiment",
+          "slug": "experiment"
+        }
+      ]
+    },
+    {
+      "id": "iacm.provider-registry.binary-files",
+      "term": "binary files",
+      "definition": "Executable program files produced after compiling source code (for example, Go or Java). OpenTofu or Terraform uses these binaries to interact with your infrastructure.",
+      "slug": "binary-files",
+      "module": "iacm",
+      "category": "provider-registry",
+      "letter": "B",
+      "related": [
+        {
+          "term": "checksum file",
+          "slug": "checksum-file"
+        },
+        {
+          "term": "custom provider",
+          "slug": "custom-provider"
+        },
+        {
+          "term": "gpg key",
+          "slug": "gpg-key"
+        }
+      ]
+    },
+    {
+      "id": "iacm.provider-registry.checksum-file",
+      "term": "checksum file",
+      "definition": "A file listing SHA-256 hashes for each binary you plan to publish. The registry uses this to verify file integrity.",
+      "slug": "checksum-file",
+      "module": "iacm",
+      "category": "provider-registry",
+      "letter": "C",
+      "related": [
+        {
+          "term": "binary files",
+          "slug": "binary-files"
+        },
+        {
+          "term": "custom provider",
+          "slug": "custom-provider"
+        },
+        {
+          "term": "gpg key",
+          "slug": "gpg-key"
+        }
+      ]
+    },
+    {
+      "id": "fme.warehouse-native.cloud-experimentation",
+      "term": "cloud experimentation",
+      "definition": "A method of running feature management experiments using a cloud-based service provided by Harness FME, which handles data collection, analysis, and reporting.",
+      "slug": "cloud-experimentation",
+      "module": "fme",
+      "category": "warehouse-native",
+      "letter": "C",
+      "related": [
+        {
+          "term": "assignment source",
+          "slug": "assignment-source"
+        },
+        {
+          "term": "data warehouse",
+          "slug": "data-warehouse"
+        },
+        {
+          "term": "experiment",
+          "slug": "experiment"
+        }
+      ]
+    },
+    {
+      "id": "iacm.provider-registry.custom-provider",
+      "term": "custom provider",
+      "definition": "An OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.",
+      "slug": "custom-provider",
+      "module": "iacm",
+      "category": "provider-registry",
+      "letter": "C",
+      "related": [
+        {
+          "term": "binary files",
+          "slug": "binary-files"
+        },
+        {
+          "term": "checksum file",
+          "slug": "checksum-file"
+        },
+        {
+          "term": "gpg key",
+          "slug": "gpg-key"
+        }
+      ]
+    },
+    {
+      "id": "fme.pipelines.custom-stage",
+      "term": "custom stage",
+      "definition": "A custom stage is a user-defined stage in a pipeline that allows you to run custom logic or actions as part of a pipeline. FME steps are only supported in Custom stages.",
+      "slug": "custom-stage",
+      "module": "fme",
+      "category": "pipelines",
+      "letter": "C",
+      "related": [
+        {
+          "term": "feature flag",
+          "slug": "feature-flag"
+        },
+        {
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
+        }
+      ]
+    },
+    {
+      "id": "fme.warehouse-native.data-warehouse",
+      "term": "data warehouse",
+      "definition": "A centralized repository for storing and managing large volumes of structured and semi-structured data. Examples include Snowflake, BigQuery, Redshift, and Databricks.",
+      "slug": "data-warehouse",
+      "module": "fme",
+      "category": "warehouse-native",
+      "letter": "D",
+      "related": [
+        {
+          "term": "assignment source",
+          "slug": "assignment-source"
+        },
+        {
+          "term": "cloud experimentation",
+          "slug": "cloud-experimentation"
+        },
+        {
+          "term": "experiment",
+          "slug": "experiment"
+        }
+      ]
+    },
+    {
+      "id": "fme.openfeature.evaluation-api",
+      "term": "evaluation api",
+      "definition": "The Evaluation API is the main interface developers use to interact with feature flags. It enables applications to evaluate feature flags and adapt behavior based on the results, while supporting customization and integration with additional tools.",
+      "slug": "evaluation-api",
+      "module": "fme",
+      "category": "openfeature",
+      "letter": "E",
+      "related": [
+        {
+          "term": "evaluation context",
+          "slug": "evaluation-context"
+        },
+        {
+          "term": "events",
+          "slug": "events"
+        },
+        {
+          "term": "feature flag",
+          "slug": "feature-flag"
+        }
+      ]
+    },
+    {
+      "id": "fme.openfeature.evaluation-context",
+      "term": "evaluation context",
+      "definition": "The Evaluation Context holds contextual information used during flag evaluation. It can include static data (like application or host identifiers) and dynamic data (such as a client IP address), which can be passed explicitly or propagated automatically. Static and dynamic values can be merged for richer, more targeted evaluations.",
+      "slug": "evaluation-context",
+      "module": "fme",
+      "category": "openfeature",
+      "letter": "E",
+      "related": [
+        {
+          "term": "evaluation api",
+          "slug": "evaluation-api"
+        },
+        {
+          "term": "events",
+          "slug": "events"
+        },
+        {
+          "term": "feature flag",
+          "slug": "feature-flag"
+        }
+      ]
+    },
+    {
+      "id": "fme.openfeature.events",
+      "term": "events",
+      "definition": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values.",
+      "slug": "events",
+      "module": "fme",
+      "category": "openfeature",
+      "letter": "E",
+      "related": [
+        {
+          "term": "evaluation api",
+          "slug": "evaluation-api"
+        },
+        {
+          "term": "evaluation context",
+          "slug": "evaluation-context"
+        },
+        {
+          "term": "feature flag",
+          "slug": "feature-flag"
+        }
+      ]
+    },
+    {
+      "id": "fme.warehouse-native.experiment",
+      "term": "experiment",
+      "definition": "A controlled test to evaluate the impact of different variations on user behavior or system performance. In Warehouse Native, experiments are defined in Harness FME.",
+      "slug": "experiment",
+      "module": "fme",
+      "category": "warehouse-native",
+      "letter": "E",
+      "related": [
+        {
+          "term": "assignment source",
+          "slug": "assignment-source"
+        },
+        {
+          "term": "cloud experimentation",
+          "slug": "cloud-experimentation"
+        },
+        {
+          "term": "data warehouse",
+          "slug": "data-warehouse"
+        }
+      ]
+    },
+    {
+      "id": "fme.openfeature.feature-flag",
+      "term": "feature flag",
+      "definition": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without deploying new code. It allows for controlled feature rollouts, A/B testing, and quick rollbacks if issues arise.",
+      "slug": "feature-flag",
+      "module": "fme",
+      "category": "openfeature",
+      "letter": "F",
+      "related": [
+        {
+          "term": "evaluation api",
+          "slug": "evaluation-api"
+        },
+        {
+          "term": "evaluation context",
+          "slug": "evaluation-context"
+        },
+        {
+          "term": "events",
+          "slug": "events"
+        }
+      ]
+    },
+    {
+      "id": "fme.pipelines.feature-flag",
+      "term": "feature flag",
+      "definition": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without requiring a code deployment. Feature flags support controlled rollouts, experimentation, and quick rollbacks if issues arise.",
+      "slug": "feature-flag",
+      "module": "fme",
+      "category": "pipelines",
+      "letter": "F",
+      "related": [
+        {
+          "term": "custom stage",
+          "slug": "custom-stage"
+        },
+        {
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
+        }
+      ]
+    },
+    {
+      "id": "iacm.provider-registry.gpg-key",
+      "term": "gpg key",
+      "definition": "A cryptographic key used to verify the authenticity and integrity of files. In this case, it ensures provider binaries have not been tampered with.",
+      "slug": "gpg-key",
+      "module": "iacm",
+      "category": "provider-registry",
+      "letter": "G",
+      "related": [
+        {
+          "term": "binary files",
+          "slug": "binary-files"
+        },
+        {
+          "term": "checksum file",
+          "slug": "checksum-file"
+        },
+        {
+          "term": "custom provider",
+          "slug": "custom-provider"
+        }
+      ]
+    },
+    {
+      "id": "fme.openfeature.hook",
+      "term": "hook",
+      "definition": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
+      "slug": "hook",
+      "module": "fme",
+      "category": "openfeature",
+      "letter": "H",
+      "related": [
+        {
+          "term": "evaluation api",
+          "slug": "evaluation-api"
+        },
+        {
+          "term": "evaluation context",
+          "slug": "evaluation-context"
+        },
+        {
+          "term": "events",
+          "slug": "events"
+        }
+      ]
+    },
+    {
+      "id": "iacm.tf-commands.init",
+      "term": "init",
+      "definition": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies.",
+      "slug": "init",
+      "module": "iacm",
+      "category": "tf-commands",
+      "letter": "I",
+      "related": []
+    },
+    {
+      "id": "fme.release-monitoring.metric",
+      "term": "metric",
+      "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
+      "slug": "metric",
+      "module": "fme",
+      "category": "release-monitoring",
+      "letter": "M",
+      "related": []
+    },
+    {
+      "id": "fme.warehouse-native.metric",
+      "term": "metric",
+      "definition": "A quantifiable measure used to track and assess the performance of a specific aspect of an experiment. In Warehouse Native, metrics are defined in Harness FME.",
+      "slug": "metric",
+      "module": "fme",
+      "category": "warehouse-native",
+      "letter": "M",
+      "related": [
+        {
+          "term": "assignment source",
+          "slug": "assignment-source"
+        },
+        {
+          "term": "cloud experimentation",
+          "slug": "cloud-experimentation"
+        },
+        {
+          "term": "data warehouse",
+          "slug": "data-warehouse"
+        }
+      ]
+    },
+    {
+      "id": "fme.warehouse-native.metric-source",
+      "term": "metric source",
+      "definition": "A data source that defines how metrics are collected and calculated for an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
+      "slug": "metric-source",
+      "module": "fme",
+      "category": "warehouse-native",
+      "letter": "M",
+      "related": [
+        {
+          "term": "assignment source",
+          "slug": "assignment-source"
+        },
+        {
+          "term": "cloud experimentation",
+          "slug": "cloud-experimentation"
+        },
+        {
+          "term": "data warehouse",
+          "slug": "data-warehouse"
+        }
+      ]
+    },
+    {
+      "id": "iacm.provider-registry.multiple-platforms",
+      "term": "multiple platforms",
+      "definition": "Supported platforms include Darwin/macOS (arm64, amd64), Linux (amd64), and Windows (amd64).",
+      "slug": "multiple-platforms",
+      "module": "iacm",
+      "category": "provider-registry",
+      "letter": "M",
+      "related": [
+        {
+          "term": "binary files",
+          "slug": "binary-files"
+        },
+        {
+          "term": "checksum file",
+          "slug": "checksum-file"
+        },
+        {
+          "term": "custom provider",
+          "slug": "custom-provider"
+        }
+      ]
+    },
+    {
+      "id": "fme.pipelines.pipeline",
+      "term": "pipeline",
+      "definition": "A pipeline is a sequence of stages that define how services are deployed to an environment. Pipelines can include approvals, barriers, notifications, and other execution logic.",
+      "slug": "pipeline",
+      "module": "fme",
+      "category": "pipelines",
+      "letter": "P",
+      "related": [
+        {
+          "term": "custom stage",
+          "slug": "custom-stage"
+        },
+        {
+          "term": "feature flag",
+          "slug": "feature-flag"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
+        }
+      ]
+    },
+    {
+      "id": "fme.openfeature.provider",
+      "term": "provider",
+      "definition": "An OpenFeature Provider wraps the Harness FME SDK, acting as a bridge between the OpenFeature SDK and the FME SDK. It translates OpenFeature function calls into operations handled by the FME SDK, which communicates with Harness services to evaluate flags and retrieve configuration updates.",
+      "slug": "provider",
+      "module": "fme",
+      "category": "openfeature",
+      "letter": "P",
+      "related": [
+        {
+          "term": "evaluation api",
+          "slug": "evaluation-api"
+        },
+        {
+          "term": "evaluation context",
+          "slug": "evaluation-context"
+        },
+        {
+          "term": "events",
+          "slug": "events"
+        }
+      ]
+    },
+    {
+      "id": "fme.feature-management.segment",
+      "term": "segment",
+      "definition": "Segments are groups of users defined by specific attributes or behaviors. They allow you to target feature flags and experiments to specific subsets of your user base.",
+      "slug": "segment",
+      "module": "fme",
+      "category": "feature-management",
+      "letter": "S",
+      "related": []
+    },
+    {
+      "id": "iacm.provider-registry.signature-file",
+      "term": "signature file",
+      "definition": "A detached signature produced by signing the checksum file with your GPG private key. The public key is used to verify authenticity.",
+      "slug": "signature-file",
+      "module": "iacm",
+      "category": "provider-registry",
+      "letter": "S",
+      "related": [
+        {
+          "term": "binary files",
+          "slug": "binary-files"
+        },
+        {
+          "term": "checksum file",
+          "slug": "checksum-file"
+        },
+        {
+          "term": "custom provider",
+          "slug": "custom-provider"
+        }
+      ]
+    },
+    {
+      "id": "fme.pipelines.stage",
+      "term": "stage",
+      "definition": "A stage represents a discrete phase of a pipeline, such as testing, experimentation, or production rollout. You can add FME steps to any Custom stage, whether newly created or existing.",
+      "slug": "stage",
+      "module": "fme",
+      "category": "pipelines",
+      "letter": "S",
+      "related": [
+        {
+          "term": "custom stage",
+          "slug": "custom-stage"
+        },
+        {
+          "term": "feature flag",
+          "slug": "feature-flag"
+        },
+        {
+          "term": "pipeline",
+          "slug": "pipeline"
+        }
+      ]
+    },
+    {
+      "id": "fme.pipelines.step",
+      "term": "step",
+      "definition": "A step is an individual action within a stage. FME steps include operations such as creating or updating a feature flag, modifying rollout behavior, or killing a flag.",
+      "slug": "step",
+      "module": "fme",
+      "category": "pipelines",
+      "letter": "S",
+      "related": [
+        {
+          "term": "custom stage",
+          "slug": "custom-stage"
+        },
+        {
+          "term": "feature flag",
+          "slug": "feature-flag"
+        },
+        {
+          "term": "pipeline",
+          "slug": "pipeline"
+        }
+      ]
+    },
+    {
+      "id": "fme.openfeature.targeting-key",
+      "term": "targeting key",
+      "definition": "A unique identifier used to target specific users or entities when evaluating feature flags. It helps determine which variation of a flag should be served based on predefined rules and conditions.",
+      "slug": "targeting-key",
+      "module": "fme",
+      "category": "openfeature",
+      "letter": "T",
+      "related": [
+        {
+          "term": "evaluation api",
+          "slug": "evaluation-api"
+        },
+        {
+          "term": "evaluation context",
+          "slug": "evaluation-context"
+        },
+        {
+          "term": "events",
+          "slug": "events"
+        }
+      ]
+    },
+    {
+      "id": "fme.warehouse-native.warehouse-native",
+      "term": "warehouse native",
+      "definition": "A method of running feature management experiments directly within your data warehouse, leveraging its processing power and existing data infrastructure.",
+      "slug": "warehouse-native",
+      "module": "fme",
+      "category": "warehouse-native",
+      "letter": "W",
+      "related": [
+        {
+          "term": "assignment source",
+          "slug": "assignment-source"
+        },
+        {
+          "term": "cloud experimentation",
+          "slug": "cloud-experimentation"
+        },
+        {
+          "term": "data warehouse",
+          "slug": "data-warehouse"
+        }
+      ]
+    },
+    {
+      "id": "iacm.workspace",
+      "term": "workspace",
+      "definition": "A workspace is a one-to-one mapping of your infrastructure state. It is used to store and manage your infrastructure state in Harness IaCM.",
+      "slug": "workspace",
+      "module": "iacm",
+      "category": "workspace",
+      "letter": "W",
+      "related": []
+    }
+  ],
+  "grouped": {
+    "A": [
+      {
+        "id": "fme.warehouse-native.assignment-source",
+        "term": "assignment source",
+        "definition": "A data source that defines how users are assigned to different variations in an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
+        "slug": "assignment-source",
+        "module": "fme",
+        "category": "warehouse-native",
+        "letter": "A",
+        "related": [
+          {
+            "term": "cloud experimentation",
+            "slug": "cloud-experimentation"
+          },
+          {
+            "term": "data warehouse",
+            "slug": "data-warehouse"
+          },
+          {
+            "term": "experiment",
+            "slug": "experiment"
+          }
+        ]
+      }
+    ],
+    "B": [
+      {
+        "id": "iacm.provider-registry.binary-files",
+        "term": "binary files",
+        "definition": "Executable program files produced after compiling source code (for example, Go or Java). OpenTofu or Terraform uses these binaries to interact with your infrastructure.",
+        "slug": "binary-files",
+        "module": "iacm",
+        "category": "provider-registry",
+        "letter": "B",
+        "related": [
+          {
+            "term": "checksum file",
+            "slug": "checksum-file"
+          },
+          {
+            "term": "custom provider",
+            "slug": "custom-provider"
+          },
+          {
+            "term": "gpg key",
+            "slug": "gpg-key"
+          }
+        ]
+      }
+    ],
+    "C": [
+      {
+        "id": "iacm.provider-registry.checksum-file",
+        "term": "checksum file",
+        "definition": "A file listing SHA-256 hashes for each binary you plan to publish. The registry uses this to verify file integrity.",
+        "slug": "checksum-file",
+        "module": "iacm",
+        "category": "provider-registry",
+        "letter": "C",
+        "related": [
+          {
+            "term": "binary files",
+            "slug": "binary-files"
+          },
+          {
+            "term": "custom provider",
+            "slug": "custom-provider"
+          },
+          {
+            "term": "gpg key",
+            "slug": "gpg-key"
+          }
+        ]
+      },
+      {
+        "id": "fme.warehouse-native.cloud-experimentation",
+        "term": "cloud experimentation",
+        "definition": "A method of running feature management experiments using a cloud-based service provided by Harness FME, which handles data collection, analysis, and reporting.",
+        "slug": "cloud-experimentation",
+        "module": "fme",
+        "category": "warehouse-native",
+        "letter": "C",
+        "related": [
+          {
+            "term": "assignment source",
+            "slug": "assignment-source"
+          },
+          {
+            "term": "data warehouse",
+            "slug": "data-warehouse"
+          },
+          {
+            "term": "experiment",
+            "slug": "experiment"
+          }
+        ]
+      },
+      {
+        "id": "iacm.provider-registry.custom-provider",
+        "term": "custom provider",
+        "definition": "An OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.",
+        "slug": "custom-provider",
+        "module": "iacm",
+        "category": "provider-registry",
+        "letter": "C",
+        "related": [
+          {
+            "term": "binary files",
+            "slug": "binary-files"
+          },
+          {
+            "term": "checksum file",
+            "slug": "checksum-file"
+          },
+          {
+            "term": "gpg key",
+            "slug": "gpg-key"
+          }
+        ]
+      },
+      {
+        "id": "fme.pipelines.custom-stage",
+        "term": "custom stage",
+        "definition": "A custom stage is a user-defined stage in a pipeline that allows you to run custom logic or actions as part of a pipeline. FME steps are only supported in Custom stages.",
+        "slug": "custom-stage",
+        "module": "fme",
+        "category": "pipelines",
+        "letter": "C",
+        "related": [
+          {
+            "term": "feature flag",
+            "slug": "feature-flag"
+          },
+          {
+            "term": "pipeline",
+            "slug": "pipeline"
+          },
+          {
+            "term": "stage",
+            "slug": "stage"
+          }
+        ]
+      }
+    ],
+    "D": [
+      {
+        "id": "fme.warehouse-native.data-warehouse",
+        "term": "data warehouse",
+        "definition": "A centralized repository for storing and managing large volumes of structured and semi-structured data. Examples include Snowflake, BigQuery, Redshift, and Databricks.",
+        "slug": "data-warehouse",
+        "module": "fme",
+        "category": "warehouse-native",
+        "letter": "D",
+        "related": [
+          {
+            "term": "assignment source",
+            "slug": "assignment-source"
+          },
+          {
+            "term": "cloud experimentation",
+            "slug": "cloud-experimentation"
+          },
+          {
+            "term": "experiment",
+            "slug": "experiment"
+          }
+        ]
+      }
+    ],
+    "E": [
+      {
+        "id": "fme.openfeature.evaluation-api",
+        "term": "evaluation api",
+        "definition": "The Evaluation API is the main interface developers use to interact with feature flags. It enables applications to evaluate feature flags and adapt behavior based on the results, while supporting customization and integration with additional tools.",
+        "slug": "evaluation-api",
+        "module": "fme",
+        "category": "openfeature",
+        "letter": "E",
+        "related": [
+          {
+            "term": "evaluation context",
+            "slug": "evaluation-context"
+          },
+          {
+            "term": "events",
+            "slug": "events"
+          },
+          {
+            "term": "feature flag",
+            "slug": "feature-flag"
+          }
+        ]
+      },
+      {
+        "id": "fme.openfeature.evaluation-context",
+        "term": "evaluation context",
+        "definition": "The Evaluation Context holds contextual information used during flag evaluation. It can include static data (like application or host identifiers) and dynamic data (such as a client IP address), which can be passed explicitly or propagated automatically. Static and dynamic values can be merged for richer, more targeted evaluations.",
+        "slug": "evaluation-context",
+        "module": "fme",
+        "category": "openfeature",
+        "letter": "E",
+        "related": [
+          {
+            "term": "evaluation api",
+            "slug": "evaluation-api"
+          },
+          {
+            "term": "events",
+            "slug": "events"
+          },
+          {
+            "term": "feature flag",
+            "slug": "feature-flag"
+          }
+        ]
+      },
+      {
+        "id": "fme.openfeature.events",
+        "term": "events",
+        "definition": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values.",
+        "slug": "events",
+        "module": "fme",
+        "category": "openfeature",
+        "letter": "E",
+        "related": [
+          {
+            "term": "evaluation api",
+            "slug": "evaluation-api"
+          },
+          {
+            "term": "evaluation context",
+            "slug": "evaluation-context"
+          },
+          {
+            "term": "feature flag",
+            "slug": "feature-flag"
+          }
+        ]
+      },
+      {
+        "id": "fme.warehouse-native.experiment",
+        "term": "experiment",
+        "definition": "A controlled test to evaluate the impact of different variations on user behavior or system performance. In Warehouse Native, experiments are defined in Harness FME.",
+        "slug": "experiment",
+        "module": "fme",
+        "category": "warehouse-native",
+        "letter": "E",
+        "related": [
+          {
+            "term": "assignment source",
+            "slug": "assignment-source"
+          },
+          {
+            "term": "cloud experimentation",
+            "slug": "cloud-experimentation"
+          },
+          {
+            "term": "data warehouse",
+            "slug": "data-warehouse"
+          }
+        ]
+      }
+    ],
+    "F": [
+      {
+        "id": "fme.openfeature.feature-flag",
+        "term": "feature flag",
+        "definition": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without deploying new code. It allows for controlled feature rollouts, A/B testing, and quick rollbacks if issues arise.",
+        "slug": "feature-flag",
+        "module": "fme",
+        "category": "openfeature",
+        "letter": "F",
+        "related": [
+          {
+            "term": "evaluation api",
+            "slug": "evaluation-api"
+          },
+          {
+            "term": "evaluation context",
+            "slug": "evaluation-context"
+          },
+          {
+            "term": "events",
+            "slug": "events"
+          }
+        ]
+      },
+      {
+        "id": "fme.pipelines.feature-flag",
+        "term": "feature flag",
+        "definition": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without requiring a code deployment. Feature flags support controlled rollouts, experimentation, and quick rollbacks if issues arise.",
+        "slug": "feature-flag",
+        "module": "fme",
+        "category": "pipelines",
+        "letter": "F",
+        "related": [
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "pipeline",
+            "slug": "pipeline"
+          },
+          {
+            "term": "stage",
+            "slug": "stage"
+          }
+        ]
+      }
+    ],
+    "G": [
+      {
+        "id": "iacm.provider-registry.gpg-key",
+        "term": "gpg key",
+        "definition": "A cryptographic key used to verify the authenticity and integrity of files. In this case, it ensures provider binaries have not been tampered with.",
+        "slug": "gpg-key",
+        "module": "iacm",
+        "category": "provider-registry",
+        "letter": "G",
+        "related": [
+          {
+            "term": "binary files",
+            "slug": "binary-files"
+          },
+          {
+            "term": "checksum file",
+            "slug": "checksum-file"
+          },
+          {
+            "term": "custom provider",
+            "slug": "custom-provider"
+          }
+        ]
+      }
+    ],
+    "H": [
+      {
+        "id": "fme.openfeature.hook",
+        "term": "hook",
+        "definition": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
+        "slug": "hook",
+        "module": "fme",
+        "category": "openfeature",
+        "letter": "H",
+        "related": [
+          {
+            "term": "evaluation api",
+            "slug": "evaluation-api"
+          },
+          {
+            "term": "evaluation context",
+            "slug": "evaluation-context"
+          },
+          {
+            "term": "events",
+            "slug": "events"
+          }
+        ]
+      }
+    ],
+    "I": [
+      {
+        "id": "iacm.tf-commands.init",
+        "term": "init",
+        "definition": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies.",
+        "slug": "init",
+        "module": "iacm",
+        "category": "tf-commands",
+        "letter": "I",
+        "related": []
+      }
+    ],
+    "M": [
+      {
+        "id": "fme.release-monitoring.metric",
+        "term": "metric",
+        "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
+        "slug": "metric",
+        "module": "fme",
+        "category": "release-monitoring",
+        "letter": "M",
+        "related": []
+      },
+      {
+        "id": "fme.warehouse-native.metric",
+        "term": "metric",
+        "definition": "A quantifiable measure used to track and assess the performance of a specific aspect of an experiment. In Warehouse Native, metrics are defined in Harness FME.",
+        "slug": "metric",
+        "module": "fme",
+        "category": "warehouse-native",
+        "letter": "M",
+        "related": [
+          {
+            "term": "assignment source",
+            "slug": "assignment-source"
+          },
+          {
+            "term": "cloud experimentation",
+            "slug": "cloud-experimentation"
+          },
+          {
+            "term": "data warehouse",
+            "slug": "data-warehouse"
+          }
+        ]
+      },
+      {
+        "id": "fme.warehouse-native.metric-source",
+        "term": "metric source",
+        "definition": "A data source that defines how metrics are collected and calculated for an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
+        "slug": "metric-source",
+        "module": "fme",
+        "category": "warehouse-native",
+        "letter": "M",
+        "related": [
+          {
+            "term": "assignment source",
+            "slug": "assignment-source"
+          },
+          {
+            "term": "cloud experimentation",
+            "slug": "cloud-experimentation"
+          },
+          {
+            "term": "data warehouse",
+            "slug": "data-warehouse"
+          }
+        ]
+      },
+      {
+        "id": "iacm.provider-registry.multiple-platforms",
+        "term": "multiple platforms",
+        "definition": "Supported platforms include Darwin/macOS (arm64, amd64), Linux (amd64), and Windows (amd64).",
+        "slug": "multiple-platforms",
+        "module": "iacm",
+        "category": "provider-registry",
+        "letter": "M",
+        "related": [
+          {
+            "term": "binary files",
+            "slug": "binary-files"
+          },
+          {
+            "term": "checksum file",
+            "slug": "checksum-file"
+          },
+          {
+            "term": "custom provider",
+            "slug": "custom-provider"
+          }
+        ]
+      }
+    ],
+    "P": [
+      {
+        "id": "fme.pipelines.pipeline",
+        "term": "pipeline",
+        "definition": "A pipeline is a sequence of stages that define how services are deployed to an environment. Pipelines can include approvals, barriers, notifications, and other execution logic.",
+        "slug": "pipeline",
+        "module": "fme",
+        "category": "pipelines",
+        "letter": "P",
+        "related": [
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "feature flag",
+            "slug": "feature-flag"
+          },
+          {
+            "term": "stage",
+            "slug": "stage"
+          }
+        ]
+      },
+      {
+        "id": "fme.openfeature.provider",
+        "term": "provider",
+        "definition": "An OpenFeature Provider wraps the Harness FME SDK, acting as a bridge between the OpenFeature SDK and the FME SDK. It translates OpenFeature function calls into operations handled by the FME SDK, which communicates with Harness services to evaluate flags and retrieve configuration updates.",
+        "slug": "provider",
+        "module": "fme",
+        "category": "openfeature",
+        "letter": "P",
+        "related": [
+          {
+            "term": "evaluation api",
+            "slug": "evaluation-api"
+          },
+          {
+            "term": "evaluation context",
+            "slug": "evaluation-context"
+          },
+          {
+            "term": "events",
+            "slug": "events"
+          }
+        ]
+      }
+    ],
+    "S": [
+      {
+        "id": "fme.feature-management.segment",
+        "term": "segment",
+        "definition": "Segments are groups of users defined by specific attributes or behaviors. They allow you to target feature flags and experiments to specific subsets of your user base.",
+        "slug": "segment",
+        "module": "fme",
+        "category": "feature-management",
+        "letter": "S",
+        "related": []
+      },
+      {
+        "id": "iacm.provider-registry.signature-file",
+        "term": "signature file",
+        "definition": "A detached signature produced by signing the checksum file with your GPG private key. The public key is used to verify authenticity.",
+        "slug": "signature-file",
+        "module": "iacm",
+        "category": "provider-registry",
+        "letter": "S",
+        "related": [
+          {
+            "term": "binary files",
+            "slug": "binary-files"
+          },
+          {
+            "term": "checksum file",
+            "slug": "checksum-file"
+          },
+          {
+            "term": "custom provider",
+            "slug": "custom-provider"
+          }
+        ]
+      },
+      {
+        "id": "fme.pipelines.stage",
+        "term": "stage",
+        "definition": "A stage represents a discrete phase of a pipeline, such as testing, experimentation, or production rollout. You can add FME steps to any Custom stage, whether newly created or existing.",
+        "slug": "stage",
+        "module": "fme",
+        "category": "pipelines",
+        "letter": "S",
+        "related": [
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "feature flag",
+            "slug": "feature-flag"
+          },
+          {
+            "term": "pipeline",
+            "slug": "pipeline"
+          }
+        ]
+      },
+      {
+        "id": "fme.pipelines.step",
+        "term": "step",
+        "definition": "A step is an individual action within a stage. FME steps include operations such as creating or updating a feature flag, modifying rollout behavior, or killing a flag.",
+        "slug": "step",
+        "module": "fme",
+        "category": "pipelines",
+        "letter": "S",
+        "related": [
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "feature flag",
+            "slug": "feature-flag"
+          },
+          {
+            "term": "pipeline",
+            "slug": "pipeline"
+          }
+        ]
+      }
+    ],
+    "T": [
+      {
+        "id": "fme.openfeature.targeting-key",
+        "term": "targeting key",
+        "definition": "A unique identifier used to target specific users or entities when evaluating feature flags. It helps determine which variation of a flag should be served based on predefined rules and conditions.",
+        "slug": "targeting-key",
+        "module": "fme",
+        "category": "openfeature",
+        "letter": "T",
+        "related": [
+          {
+            "term": "evaluation api",
+            "slug": "evaluation-api"
+          },
+          {
+            "term": "evaluation context",
+            "slug": "evaluation-context"
+          },
+          {
+            "term": "events",
+            "slug": "events"
+          }
+        ]
+      }
+    ],
+    "W": [
+      {
+        "id": "fme.warehouse-native.warehouse-native",
+        "term": "warehouse native",
+        "definition": "A method of running feature management experiments directly within your data warehouse, leveraging its processing power and existing data infrastructure.",
+        "slug": "warehouse-native",
+        "module": "fme",
+        "category": "warehouse-native",
+        "letter": "W",
+        "related": [
+          {
+            "term": "assignment source",
+            "slug": "assignment-source"
+          },
+          {
+            "term": "cloud experimentation",
+            "slug": "cloud-experimentation"
+          },
+          {
+            "term": "data warehouse",
+            "slug": "data-warehouse"
+          }
+        ]
+      },
+      {
+        "id": "iacm.workspace",
+        "term": "workspace",
+        "definition": "A workspace is a one-to-one mapping of your infrastructure state. It is used to store and manage your infrastructure state in Harness IaCM.",
+        "slug": "workspace",
+        "module": "iacm",
+        "category": "workspace",
+        "letter": "W",
+        "related": []
+      }
+    ]
+  }
+}

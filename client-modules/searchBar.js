@@ -5,8 +5,9 @@ const doYourCustomStuff = () => {
   const navbar__sidebar__close = document.querySelector('.navbar-sidebar__close');
   const navbar__inner = document.querySelector('.navbar__inner');
 
-  const searchBoxMain = navbar__inner.querySelector('#coveo-search-main');
+  if (!navbar__inner) return;
 
+  const searchBoxMain = navbar__inner.querySelector('#coveo-search-main');
   if (searchBoxMain) {
     searchBoxMain.classList.add('main-nav-coveo');
   }
