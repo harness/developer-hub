@@ -38,9 +38,6 @@ Getting started with CCM anomaly detection is straightforward and requires just 
 Harness CCM uses the **Prophet Model** for anomaly detection:
 
 * **Prophet Model (Default)** - Analyzes 42 days of historical data to establish baseline patterns and detect anomalies. This model is enabled by default for all customers and uses advanced time series forecasting to identify unusual spending patterns.
-
-* **BQML and Seasonal Prophet Models** - These advanced models utilize 16 months of historical data for enhanced pattern recognition and seasonal trend analysis. These models are behind feature flags and are available upon request through [Harness Support](mailto:support@harness.io).
-
 :::
 
 
@@ -99,6 +96,42 @@ When anomalies are detected, [alerts](/docs/cloud-cost-management/use-ccm-cost-r
 
     **Example**: If today is November 1st and a cost ingestion event is received, anomaly detection runs immediately for November 1st data for that specific cloud account. If complete data becomes available the next day, regular jobs will still process it to ensure accuracy.
 :::
+
+### Anomaly Lookback Support 
+
+[Released: Feb 2026]
+
+Anomaly Lookback Support in Harness Cloud Cost Management automatically keeps your anomaly data accurate and up-to-date with the latest cloud provider billing information.
+
+Cloud providers (AWS, GCP, Azure) frequently update their billing data days or even weeks after initial reporting. Previously, when Harness detected a cost anomaly, the cost value was stored at detection time and not updated when cloud providers corrected their billing data.
+
+With Anomaly Lookback Support we now have:
+
+- Automatic Cost Recalculation
+    - Anomaly costs are automatically recalculated daily based on the latest billing data
+    - Lookback window: Last 30 days of active anomalies are reprocessed
+    - Scheduled execution: Runs daily 
+    - Intelligent Auto-Archival: Anomalies that no longer meet threshold criteria are automatically archived. 
+
+- Multi-Cost Type Support
+    - AWS Cost Types:
+        - Unblended Cost
+        - Blended Cost
+        - Amortized Cost
+        - Net Amortized Cost
+        - Effective Cost
+
+    - Azure Cost Types:
+        - Actual Cost
+        - Amortized Cost
+    All cost types are recalculated and stored, respecting your preferred cost type settings.
+
+- Dynamic Criticality Updates
+    - Anomaly severity (Critical/High/Medium) is automatically recalculated
+    - Example: A "Critical" anomaly might be downgraded to "Medium" after billing corrections
+
+#### Feature Flags
+This feature is controlled by two feature flags: `CCM_ANOMALIES_COST_TYPES_CALCULATION`. Contact your Harness account team to enable this feature.
 
 ------
 
