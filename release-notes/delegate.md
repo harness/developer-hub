@@ -117,22 +117,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2026
 
-### Version 26.03.88700 <!-- March 11, 2026 -->
+### Version 26.03.88801 <!-- March 25, 2026 -->
 
 #### Fixed issues
-- Added support for the delegate environment variable `MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE`, which allows you to control the maximum number of Docker tags fetched per image. The default value is 10,000 tags. [CDS-117808]
-You can override the default by setting the environment variable on your delegate:
-  ```
-  env:
-    - name: MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE
-      value: "20000"
-  ```
-  
-    :::note
-    Setting a higher value may impact performance depending on your Docker registry response times.
-    :::
 
-- Added `tree` query parameters to Jenkins API calls to unblock API requests in the latest CloudBees Jenkins integration. [CDS-117294]
+- Fixed an issue in Kubernetes Blue/Green deployments where the Istio **Traffic Shift** step was dropping the `destination.port` value when generating the VirtualService patch. The port is now correctly preserved by combining values from the cluster configuration and step inputs, with step inputs taking priority. [CDS-120027]
+- Improved artifact handling by ensuring that locally cached artifacts are only used when their size matches the expected value. [CDS-119737]
+- Enhanced the stability and resilience of the GitOps Rollout Step, especially in handling transient errors. [CDS-119456]
+- Fixed an issue with the EKS cluster list API where a hardcoded region was used instead of the user-specified region for the STS AssumeRole endpoint in cross-account AWS connectors. [CDS-119087]
+- Resolved a cosmetic issue in console logs where PR links appeared malformed. This did not impact pipeline execution, PR operations, Git functionality, or downstream integrations. [CDS-117922]
+- Introduced a new feature flag `CDS_SECRET_MANAGER_DELEGATE_SELECTOR_PRECEDENCE`. When enabled, the secret manager’s delegate selector is prioritized over the connector’s selector during validation and Git operations, ensuring secrets can be decrypted before any Git actions are performed. [CDS-118093]
 
 ### Version 26.03.88706 <!-- March 24, 2026 -->
 
@@ -157,6 +151,24 @@ You can override the default by setting the environment variable on your delegat
 #### Fixed issues
 
 - Fixed the NPE which was occuring while running the K8s Patch Step First time.
+
+
+### Version 26.03.88700 <!-- March 11, 2026 -->
+
+#### Fixed issues
+- Added support for the delegate environment variable `MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE`, which allows you to control the maximum number of Docker tags fetched per image. The default value is 10,000 tags. [CDS-117808]
+You can override the default by setting the environment variable on your delegate:
+  ```
+  env:
+    - name: MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE
+      value: "20000"
+  ```
+  
+    :::note
+    Setting a higher value may impact performance depending on your Docker registry response times.
+    :::
+
+- Added `tree` query parameters to Jenkins API calls to unblock API requests in the latest CloudBees Jenkins integration. [CDS-117294]
 
 ### Version 26.02.88602 <!-- March 10, 2026 -->
 
