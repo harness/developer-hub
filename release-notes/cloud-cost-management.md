@@ -25,6 +25,30 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## March 2026 - Version 1.84.4
+#### Deployment Date: March 26, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **Cloud Billing Tags for Node Pool Recommendations:** Kubernetes node pool recommendations now support cloud billing tags (such as allocation and environment tags from AWS cost data) in addition to Kubernetes node labels. (CCM-31030)
+
+- **Tags for Node Pool and Workload Recommendations:** Node pool and workload recommendations now display tags, consistent with AWS EC2 recommendations. (CCM-30822)
+
+### Fixed Issues
+
+- **Node Pool Preset UI Breaking on AWS Region Addition:** Fixed an issue where editing a node pool preset and adding an AWS region caused the UI to break upon saving, preventing navigation back to the Presets page. (CCM-31303)
+
+- **JIRA Reporter Field Not Passing Correct Value:** Fixed an issue in the JIRA creation flow where selecting the reporter field did not pass the correct value in the payload. (CCM-31249)
+
+- **RDS Rules Showing Incorrect Traffic-Based Rule Type:** Fixed an issue where RDS rules displayed an incorrect traffic-based rule type selection. (CCM-31115)
+
+- **AutoStopping Rule Edit Button Disabled for Deleted Connectors:** The AutoStopping rule edit button is now disabled when the associated connector is deleted. (CCM-31107)
+
+- **Workload Anomalies Showing "undefined" for Service Label:** Fixed an issue where workload anomalies displayed "undefined" for the service field label. (CCM-30994)
+
+- **Recommendation Presets Screen Broken Due to EC2 Presets:** Fixed an issue where the recommendation presets screen was broken due to new EC2 presets. AWS EC2 passthrough support is hidden until fully implemented. (CCM-30983)
+
+
 ## March 2026 - Version 1.83.1
 #### Deployment Date: March 18, 2026 (Prod-1)
 
