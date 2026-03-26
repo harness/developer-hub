@@ -7,6 +7,36 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## AWS Recommendations
 
+### Enablement Steps for New AWS EC2 Passthrough Recommendations
+
+To use EC2 Passthrough Recommendations, ensure the following services are enabled in all AWS accounts where you want to view recommendations:
+
+- AWS Cost Optimization Hub
+https://docs.aws.amazon.com/cost-management/latest/userguide/coh-getting-started.html
+- AWS Compute Optimizer
+https://docs.aws.amazon.com/compute-optimizer/latest/ug/getting-started.html
+
+These services are free of cost and may take up to 24 hours after enablement to start generating recommendations.
+
+#### Additional IAM Permissions
+
+You will also need to update the connector IAM role in the customer's AWS account with the following permissions:
+
+```
+cost-optimization-hub:GetRecommendation
+cost-optimization-hub:ListRecommendations
+ec2:DescribeInstanceTypes
+compute-optimizer:GetEC2InstanceRecommendations
+cost-optimization-hub:GetPreferences
+compute-optimizer:GetRecommendationPreferences
+compute-optimizer:PutRecommendationPreferences
+compute-optimizer:GetEBSVolumeRecommendations
+compute-optimizer:GetRDSDatabaseRecommendations
+compute-optimizer:GetLambdaFunctionRecommendations
+lambda:GetFunction
+redshift:DescribeClusters
+```
+
 <Tabs>
 <TabItem value="ec2" label="EC2 Recommendations">
 
@@ -26,9 +56,132 @@ You can use the external metrics ingestion feature in AWS to configure the AWS C
 --------
 
 ## Types of EC2 Recommendations
-- **Instance Resizing:** CCM recommends resizing your instance within the same instance family or using a different instance family based on instance usage. For information about the different instance families in AWS, go to Available instance types.
 
-- **Decommissioning:** The instance is terminated or decommissioned if not in use for a long time.
+### 1. **Rightsize** 
+
+**Icon:** Full-screen-exit  
+**Purpose:** Optimize resource allocation by resizing to a more appropriate instance type or storage size
+
+**When to Expect:**
+- Your resource is over-provisioned (CPU/Memory utilization < 40%)
+- You're paying for capacity you don't use
+- A smaller instance type can handle your workload
+
+**Example Scenarios:**
+- EC2 instance running at 15% CPU utilization → Downsize from `m5.xlarge` to `m5.large`
+- EBS volume with 200GB allocated but only 50GB used → Resize to 100GB
+- RDS instance with excessive memory → Downsize to appropriate db instance class
+
+**What to Expect:**
+- **Monthly Savings:** Typically 30-50% cost reduction
+- **Implementation Effort:** Low to Medium
+- **Restart Needed:** Usually Yes (brief downtime)
+- **Rollback Possible:** Yes (can resize back)
+
+---
+
+### 2. **Stop** 
+
+**Icon:** Banned  
+**Purpose:** Stop or terminate idle or underutilized resources that are not actively being used
+
+**When to Expect:**
+- Resource has been idle for extended periods (7+ days)
+- Zero or minimal traffic/usage detected
+- Non-production environments running 24/7
+
+**Example Scenarios:**
+- Development EC2 instance running overnight and weekends with no activity
+- Test database that hasn't been accessed in 2 weeks
+- Staging environment left running after project completion
+
+**What to Expect:**
+- **Monthly Savings:** Up to 100% of resource cost
+- **Implementation Effort:** Low
+- **Restart Needed:** N/A (resource will be stopped)
+- **Rollback Possible:** Yes (can restart anytime)
+
+**Important:** This is a "terminated action" - the resource will be stopped. Ensure you don't need the resource before applying this recommendation.
+
+---
+
+### 3. **Upgrade**
+
+**Icon:** Upgrade-custom  
+**Purpose:** Upgrade to newer generation instances or storage types for better price-performance
+
+**When to Expect:**
+- You're using older generation instances (e.g., m4, t2)
+- Newer generations offer better performance at same or lower cost
+- Your workload can benefit from latest AWS features
+
+**Example Scenarios:**
+- Upgrade from `t2.medium` to `t3.medium` (same price, better performance)
+- Upgrade from `m4.large` to `m5.large` (20% better performance, 10% lower cost)
+- Migrate EBS from `gp2` to `gp3` volumes (20% cost savings with same performance)
+
+**What to Expect:**
+- **Monthly Savings:** 10-30% cost reduction
+- **Performance Improvement:** 10-40% better performance
+- **Implementation Effort:** Low to Medium
+- **Restart Needed:** Usually Yes
+- **Rollback Possible:** Yes
+
+---
+
+### 4. **MigrateToGraviton** 
+
+**Icon:** CPU  
+**Purpose:** Migrate to AWS Graviton-based ARM processors for superior price-performance
+
+**When to Expect:**
+- Your workload is compatible with ARM architecture
+- You're running general-purpose or compute-optimized workloads
+- Your application supports ARM64 architecture
+
+**Example Scenarios:**
+- Migrate from `m5.xlarge` (x86) to `m6g.xlarge` (Graviton2) - 20% cost savings
+- Move web servers to Graviton instances for better efficiency
+- Containerized workloads that can run on ARM
+
+**What to Expect:**
+- **Monthly Savings:** 20-40% cost reduction
+- **Performance:** Up to 40% better price-performance
+- **Implementation Effort:** Medium to High
+- **Restart Needed:** Yes
+- **Rollback Possible:** Yes (but requires architecture change)
+
+**Important Considerations:**
+- Requires ARM64-compatible applications and dependencies
+- May need code recompilation or Docker image updates
+- Test thoroughly before production migration
+
+---
+
+### 5. **Delete** 
+
+**Icon:** Code-delete  
+**Purpose:** Permanently delete unused or orphaned resources
+
+**When to Expect:**
+- Resource is completely unused and abandoned
+- Orphaned volumes not attached to any instance
+- Snapshots or backups no longer needed
+- Resources from deleted/terminated projects
+
+**Example Scenarios:**
+- Unattached EBS volumes from terminated EC2 instances
+- Old RDS snapshots beyond retention policy
+- Unused Elastic IPs
+- Abandoned test resources
+
+**What to Expect:**
+- **Monthly Savings:** 100% of resource cost
+- **Implementation Effort:** Low
+- **Restart Needed:** N/A
+- **Rollback Possible:** No (permanent deletion)
+
+**⚠️ Critical Warning:** This is a **permanent, destructive action**. Ensure you have backups and no longer need the resource before deleting.
 
 --------
 

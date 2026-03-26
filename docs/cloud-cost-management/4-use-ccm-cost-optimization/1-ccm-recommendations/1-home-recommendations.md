@@ -23,7 +23,8 @@ After you enable CCM, it may take up to 48 hours for the recommendations to appe
     <h3 style={{margin: 0, fontSize: '18px', fontWeight: 600, color: '#000000'}}>What's New?</h3>
   </div>
   <p style={{margin: 0, fontSize: '15px'}}>
-    <strong>Auto-Inferences for Recommendations:</strong> Harness CCM now automatically detects when recommendations have been implemented and tracks the actual savings achieved eliminating manual tracking and providing real-time ROI measurement. [See here](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#auto-inferences) for more details. 
+    We have recently introduced AWS Passthrough Recommendations as a major enhancement to Harness Cloud Cost Management that provides <strong>intelligent, action-oriented recommendations</strong> for your AWS resources. Instead of just suggesting instance type changes, the system now analyzes your resources and recommends specific actions to optimize costs and performance.
+    <strong>Please note, we have moved from Cost Explorer Hub to Cost Optimization Hub as a part of this change.</strong>
   </p>
 </div>
 
@@ -196,6 +197,15 @@ Marking a recommendation as "Applied" assumes all resources are actioned and ful
       By mapping cost categories to specific Jira projects, you ensure that recommendations reach the right stakeholders without manual routing, reducing response time and increasing the likelihood of implementation. This is especially valuable in large organizations where different teams are responsible for different resource types. 
       
       To configure this feature, click on **+Add mapping** to add a new mapping, then select the cost category, cost bucket, and Jira project.
+
+</TabItem>
+<TabItem value="cost-settings" label="Cost Settings">
+
+  Users can choose to see AWS costs as per their preferences.These settings inherit from your Account Settings defaults. You can override them to apply only to this feature. This setting is managed in your AWS Console. Changes made in AWS will be reflected in Harness CCM after the next scheduled sync.
+
+  AWS Docs: https://docs.aws.amazon.com/cost-management/latest/userguide/coh-preferences.html#coh-savings-estimation. 
+
+  <DocImage path={require('./static/cost-settings.png')} width="80%" height="80%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
