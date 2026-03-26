@@ -218,6 +218,18 @@ For more detailed information on mitigating risks of secret injection plugins, r
 - Secret values are resolved at deployment time, not at sync time
 - The plugin requires network connectivity to Harness to resolve expressions
 
+### Application source type detected as "Plugin"
+
+When the Harness Argo CD Config Management Plugin is enabled, Argo CD detects the application source type as **Plugin** instead of the actual type (such as Helm or Directory). This means that features relying on source type detection — such as listing Helm chart paths or auto-detecting the application type — do not work as expected.
+
+This is a known Argo CD limitation. When a Config Management Plugin (CMP) is configured, Argo CD treats the source as a plugin source and does not perform its standard source type detection. For more details, see the [Argo CD issue discussion](https://github.com/argoproj/argo-cd/issues/8949#issuecomment-1680739649).
+
+**Workaround:** Manually specify the application source path instead of relying on the path listing feature in the UI.
+
+### Kustomize is not supported with secret resolution
+
+Kustomize-based applications are currently not supported with the Harness Argo CD Config Management Plugin for secret resolution. If your application uses Kustomize as the manifest rendering tool, the plugin cannot inject Harness secrets into the rendered manifests. Use Helm or plain directory-based manifests for secret injection workflows.
+
 ## Troubleshooting
 
 ### Secret not found error
