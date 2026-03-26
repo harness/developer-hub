@@ -148,6 +148,8 @@ pipeline:
                       COVEO_API_KEY: <+pipeline.variables.coveoApiKey>
                       GEMINI_API_KEY: <+pipeline.variables.GEMINI_API_KEY>
                       KAPA_FME_WEBSITE_ID: <+pipeline.variables.KAPA_FME_WEBSITE_ID>
+                      KAPA_API_KEY: <+pipeline.variables.KAPA_API_KEY>
+                      KAPA_PROJECT_ID: <+pipeline.variables.KAPA_PROJECT_ID>
               - step:
                   type: Plugin
                   name: Publish-Netifly-Preview
@@ -260,9 +262,16 @@ pipeline:
       value: hdhGeminiApiKey
     - name: KAPA_FME_WEBSITE_ID
       type: Secret
-      description: >-
-        Kapa website ID for the FME Release Agent iframe (customFields.KAPA_FME_WEBSITE_ID).
-        Must be set for preview/prod builds; match the value you use locally (e.g. from .env).
-        Also add Netlify preview host patterns in Kapa (allowed domains) or the widget can load blank.
+      description: Kapa website ID for the FME Release Agent iframe (customFields.KAPA_FME_WEBSITE_ID). Must be set for preview/prod builds; match the value you use locally (e.g. from .env). Also add Netlify preview host patterns in Kapa (allowed domains) or the widget can load blank.
       required: false
       value: hdhKapaFmeWebsiteId
+    - name: KAPA_API_KEY
+      type: Secret
+      description: ""
+      required: true
+      value: kapaApiKey
+    - name: KAPA_PROJECT_ID
+      type: Secret
+      description: ""
+      required: true
+      value: kapaProject

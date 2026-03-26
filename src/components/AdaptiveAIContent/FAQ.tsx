@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import { useAIResponse } from './useAIResponse';
-import type { AIMode } from './useAIResponse';
+import type { AIMode } from './types';
 import styles from './styles.module.scss';
 
 interface FAQProps {

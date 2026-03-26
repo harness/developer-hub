@@ -1,47 +1,56 @@
-// window.Kapa is loaded globally via the script tag in docusaurus.config.ts
-declare global {
-  interface Window {
-    Kapa?: (command: string, options?: Record<string, unknown>) => void;
-  }
+const BULLET_HINT =
+  '\n\nFormat your response as a concise bulleted list of steps or checks.';
+
+/** Full prompt sent to Kapa Query API (must match cache keys). */
+export function buildKapaPrompt(rawQuery: string, formatBullets: boolean): string {
+  return formatBullets ? `${rawQuery}${BULLET_HINT}` : rawQuery;
 }
 
-const KAPA_TIMEOUT_MS = 8000;
+/**
+ * Kapa `POST .../chat/` returns markdown under `question_answer` / camelCase variants,
+ * not only top-level `answer`. Mirrors kapa-cli's `normalizeResponse`.
+ */
+function extractAnswerFromKapaChatPayload(payload: unknown): string {
+  if (!payload || typeof payload !== 'object') return '';
+  const p = payload as Record<string, unknown>;
+  const wrap = p.data;
+  const fromWrap =
+    wrap && typeof wrap === 'object'
+      ? ((wrap as Record<string, unknown>).question_answer as Record<string, unknown> | undefined) ??
+        ((wrap as Record<string, unknown>).questionAnswer as Record<string, unknown> | undefined)
+      : undefined;
+  const qa =
+    (p.question_answer as Record<string, unknown> | undefined) ??
+    (p.questionAnswer as Record<string, unknown> | undefined) ??
+    fromWrap;
 
-export function fetchFromKapa(query: string, formatBullets = false): Promise<string> {
-  return new Promise((resolve, reject) => {
-    if (typeof window === 'undefined' || typeof window.Kapa !== 'function') {
-      reject(new Error('Kapa widget not available'));
-      return;
-    }
+  const fromQa =
+    (qa && typeof qa.answer === 'string' && qa.answer) ||
+    (qa && typeof qa.answer_text === 'string' && qa.answer_text) ||
+    '';
+  if (fromQa.trim()) return fromQa.trim();
 
-    const fullQuery = formatBullets
-      ? `${query}\n\nFormat your response as a concise bulleted list of steps or checks.`
-      : query;
-
-    const timeout = setTimeout(
-      () => reject(new Error('Kapa timeout')),
-      KAPA_TIMEOUT_MS,
-    );
-
-    window.Kapa('answer', {
-      query: fullQuery,
-      onFinish: (answer: string) => { clearTimeout(timeout); resolve(answer); },
-      onError: (error: unknown) => { clearTimeout(timeout); reject(error); },
-    });
-  });
+  const direct =
+    (typeof p.answer === 'string' && p.answer) ||
+    (typeof p.message === 'string' && p.message) ||
+    (typeof p.content === 'string' && p.content) ||
+    '';
+  return direct.trim();
 }
 
-export async function fetchFromKapaProxy(query: string, formatBullets = false): Promise<string> {
-  const fullQuery = formatBullets
-    ? `${query}\n\nFormat your response as a concise bulleted list of steps or checks.`
-    : query;
-
+/**
+ * Headless answer from the same Kapa project as the Website Widget (via Netlify
+ * `kapa_proxy`). Requires `KAPA_API_KEY` and `KAPA_PROJECT_ID` in the hosting environment.
+ */
+export async function fetchKapaAnswer(prompt: string): Promise<string> {
   const res = await fetch('/api/kapa_proxy', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: fullQuery }),
+    body: JSON.stringify({ query: prompt }),
   });
   if (!res.ok) throw new Error(`Kapa proxy error: ${res.status}`);
-  const data = await res.json();
-  return data.answer ?? '';
+  const data: unknown = await res.json();
+  const answer = extractAnswerFromKapaChatPayload(data);
+  if (!answer) throw new Error('Empty Kapa answer');
+  return answer;
 }

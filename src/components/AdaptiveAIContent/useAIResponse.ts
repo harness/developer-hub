@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { fetchFromKapa } from './api';
-
-export type AIMode = 'docs' | 'general' | 'fallback-only';
+import { buildKapaPrompt, fetchKapaAnswer } from './api';
+import type { AIMode } from './types';
 
 interface UseAIResponseResult {
   response: string | null;
@@ -12,9 +11,13 @@ interface UseAIResponseResult {
 
 const CACHE_PREFIX = 'adaptive_ai_';
 
+function storageKey(query: string, requestBullets: boolean): string {
+  return CACHE_PREFIX + buildKapaPrompt(query, requestBullets);
+}
+
 function readCache(key: string): string | null {
   try {
-    return sessionStorage.getItem(CACHE_PREFIX + key);
+    return sessionStorage.getItem(key);
   } catch {
     return null;
   }
@@ -22,9 +25,9 @@ function readCache(key: string): string | null {
 
 function writeCache(key: string, value: string): void {
   try {
-    sessionStorage.setItem(CACHE_PREFIX + key, value);
+    sessionStorage.setItem(key, value);
   } catch {
-    // Fail silently — caching is an optimisation, not a requirement
+    // Caching is optional (e.g. private mode quota).
   }
 }
 
@@ -33,8 +36,9 @@ export function useAIResponse(
   mode: AIMode,
   requestBullets = false,
 ): UseAIResponseResult {
+  const key = storageKey(query, requestBullets);
   const cached =
-    mode === 'docs' && typeof window !== 'undefined' ? readCache(query) : null;
+    mode === 'docs' && typeof window !== 'undefined' ? readCache(key) : null;
 
   const [response, setResponse] = useState<string | null>(cached);
   const [loading, setLoading] = useState(() => mode === 'docs' && !cached);
@@ -42,18 +46,19 @@ export function useAIResponse(
 
   const doFetch = useCallback(async () => {
     if (mode !== 'docs') return;
+    const prompt = buildKapaPrompt(query, requestBullets);
     setLoading(true);
     setError(false);
     try {
-      const result = await fetchFromKapa(query, requestBullets);
-      writeCache(query, result);
+      const result = await fetchKapaAnswer(prompt);
+      writeCache(key, result);
       setResponse(result);
     } catch {
       setError(true);
     } finally {
       setLoading(false);
     }
-  }, [query, mode, requestBullets]);
+  }, [query, mode, requestBullets, key]);
 
   useEffect(() => {
     if (mode !== 'docs') {
@@ -63,7 +68,7 @@ export function useAIResponse(
       return;
     }
 
-    const newCached = typeof window !== 'undefined' ? readCache(query) : null;
+    const newCached = typeof window !== 'undefined' ? readCache(key) : null;
     if (newCached) {
       setResponse(newCached);
       setLoading(false);
@@ -75,7 +80,7 @@ export function useAIResponse(
     setError(false);
     setLoading(true);
     void doFetch();
-  }, [query, mode, doFetch]);
+  }, [query, mode, key, doFetch]);
 
   return { response, loading, error, refetch: doFetch };
 }

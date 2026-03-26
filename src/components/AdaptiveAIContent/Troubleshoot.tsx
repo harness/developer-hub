@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import { useAIResponse } from './useAIResponse';
-import type { AIMode } from './useAIResponse';
+import type { AIMode } from './types';
 import generatedResponses from './generated-responses.json';
 import styles from './styles.module.scss';
 
@@ -15,9 +15,12 @@ interface TroubleshootProps {
 function TroubleshootInner({ issue, mode = 'general', fallback }: TroubleshootProps) {
   const { response, loading, error } = useAIResponse(issue, mode, true);
   const [completing, setCompleting] = useState(false);
+  const prevLoadingRef = React.useRef(loading);
 
   useEffect(() => {
-    if (!loading && response && !error) {
+    const wasLoading = prevLoadingRef.current;
+    prevLoadingRef.current = loading;
+    if (wasLoading && !loading && response && !error) {
       setCompleting(true);
       const timer = setTimeout(() => setCompleting(false), 260);
       return () => clearTimeout(timer);
@@ -49,7 +52,7 @@ function TroubleshootInner({ issue, mode = 'general', fallback }: TroubleshootPr
       );
     }
 
-    // mode === 'docs'
+    // mode === 'docs' — inline Kapa answer (same project as Ask AI), cached per session
     if (loading || completing) {
       return (
         <div className={styles.progressWrap}>
@@ -90,7 +93,9 @@ export default function Troubleshoot(props: TroubleshootProps) {
       fallback={
         <details>
           <summary>{props.issue}</summary>
-          <ul><li>{props.fallback}</li></ul>
+          <ul>
+            <li>{props.fallback}</li>
+          </ul>
         </details>
       }
     >

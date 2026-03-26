@@ -426,8 +426,16 @@ const config: Config = {
     // path.join(__dirname, '/client-modules/chatbot'),
   ],
   headTags: [
+    // Queue `Kapa('open', …)` until `kapa-widget.bundle.js` finishes loading — same pattern as
+    // https://docs.kapa.ai/integrations/website-widget/javascript-api/preinitialize
+    {
+      tagName: 'script',
+      attributes: {},
+      innerHTML:
+        '(function(){var k=window.Kapa;if(!k){var i=function(){i.c(arguments);};i.q=[];i.c=function(a){i.q.push(a);};window.Kapa=i;}})();',
+    },
     // Pre-establish connections to Kapa endpoints so the TCP/TLS handshake is
-    // already done by the time AdaptiveAIContent components fire their fetches.
+    // already done by the time the widget loads.
     { tagName: 'link', attributes: { rel: 'preconnect', href: 'https://widget.kapa.ai' } },
     { tagName: 'link', attributes: { rel: 'preconnect', href: 'https://api.kapa.ai' } },
     { tagName: 'link', attributes: { rel: 'dns-prefetch', href: 'https://widget.kapa.ai' } },
