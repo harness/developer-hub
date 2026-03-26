@@ -18,9 +18,9 @@ If you are new to Harness ECS support, go to [ECS deployments](/docs/continuous-
 
 ## Key capabilities
 
-- **Scale any service in a cluster:** Target any existing ECS service, not just the service being deployed in the current pipeline.
-- **Flexible infrastructure configuration:** Optionally override the AWS connector, region, and cluster at the step level. If omitted, the step inherits these from the stage's environment configuration.
-- **Standalone utility step:** Works in CD stages alongside other ECS deployment steps.
+- **Scale any service in a cluster:** Scale up or down any ECS service running in a cluster, even if that service is not part of the current deployment.
+- **Flexible infrastructure configuration:** Optionally override the AWS connector, region, and cluster at the step level. If omitted, the step inherits these from the stage's infrastructure configuration.
+- **Works in Deploy and Custom stages:** Use this step in a CD Deploy stage alongside other ECS steps, or in a Custom stage as a standalone utility.
 
 ## Configure the ECS Scale step
 
@@ -39,22 +39,23 @@ If you are new to Harness ECS support, go to [ECS deployments](/docs/continuous-
 | --- | --- |
 | **Name** | A name for the step. |
 | **Timeout** | How long Harness should wait for the step to complete before failing. Default is `10m`. |
-| **Connector** | (Optional) Reference to an AWS connector. If not provided, the connector from the stage's environment infrastructure is used. |
-| **Region** | (Optional) The AWS region where the ECS cluster is running. Inherited from the environment if not specified. |
-| **Cluster** | (Optional) The ECS cluster name. Inherited from the environment if not specified. |
-| **Service** | The name of the ECS service to scale. You can select from the list of services running in the target cluster. |
+| **Connector** | Reference to an AWS connector. Required or optional depending on the stage type (see [below](#behavior-in-deploy-vs-custom-stages)). |
+| **Region** | The AWS region where the ECS cluster is running. Required or optional depending on the stage type (see [below](#behavior-in-deploy-vs-custom-stages)). |
+| **Cluster** | The ECS cluster name. Required or optional depending on the stage type (see [below](#behavior-in-deploy-vs-custom-stages)). |
+| **Service** | (Required) The name of the ECS service to scale. This value is always required and is not inherited from the stage's service or infrastructure configuration. You can select from the list of services running in the target cluster. |
 | **Instance Unit** | Choose **Count** (absolute number of tasks) or **Percentage** (percentage of the service's current desired count). |
 | **Instances** | The target number or percentage of instances to scale to. |
 | **Skip Steady State Check** | When enabled, Harness triggers the scale operation but does not wait for the service to reach a steady state. Default is `false`. |
 
-:::tip
+### Behavior in Deploy vs. Custom stages
 
-When **Connector**, **Region**, or **Cluster** are left empty, the step picks up these values from the environment's infrastructure definition configured in the stage. Provide explicit values only when you need to target a service in a different cluster or AWS account.
+The **Connector**, **Region**, and **Cluster** fields behave differently depending on the stage type:
 
-:::
+- **Deploy stage:** These fields are optional. If left empty, the step inherits the values from the stage's infrastructure configuration. If you provide values in the step, they take precedence over the infrastructure configuration. This lets you target a service in a different cluster, region, or AWS account within the same Deploy stage.
+- **Custom stage:** All fields are required. Since Custom stages do not have an infrastructure configuration to inherit from, you must explicitly provide the Connector, Region, and Cluster.
 
 ## YAML example
-
+  
 <details>
 <summary>ECS Scale step YAML</summary>
 
