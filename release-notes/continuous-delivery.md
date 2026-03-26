@@ -135,7 +135,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New features and enhancements
 
-- Harness AIDA now supports GitOps entities and pipeline stages. When creating or troubleshooting GitOps Applications or ApplicationSets, AIDA can diagnose common setup errors and suggest remediations — including manifest syntax errors, incorrect service or environment types, missing GitOps clusters on linked environments, incomplete Application or ApplicationSet manifests, and connectivity issues with Git or infrastructure connectors. (**CDS-115902**)
+- Harness AI now supports GitOps entities and pipeline stages. When creating or troubleshooting GitOps Applications or ApplicationSets, it can diagnose common setup errors and suggest remediations — including manifest syntax errors, incorrect service or environment types, missing GitOps clusters on linked environments, incomplete Application or ApplicationSet manifests, and connectivity issues with Git or infrastructure connectors. (**CDS-115902**)
 
 #### Fixed issues
 
