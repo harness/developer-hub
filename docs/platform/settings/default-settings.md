@@ -133,20 +133,26 @@ Learn more about [Build Intelligence](/docs/continuous-integration/use-ci/build-
 Learn more about [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/).
 
 
-#### S3-Compatible Object Store for Self-Managed Build Infrastructure
+#### Object Store for Self-Managed Build Infrastructure
 
-To use [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features (Build Intelligence, Docker layer caching, and Cache Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
+To use [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features (Build Intelligence, Docker layer caching, and Cache Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage) where Harness can store and manage your caches.
 
-Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** settings to connect your S3-compatible object store to your Harness account. If you want to define different object store for individual organizations or projects, you must [allow overrides](#allow-overrides) and then change these settings at the lower scopes.
+Use the **Object Store for Self-Managed Build Infrastructure** settings to connect your object store to your Harness account. If you want to define different object store for individual organizations or projects, you must [allow overrides](#allow-overrides) and then change these settings at the lower scopes.
 
   ![GCP Connector](./static/s3-connector-config-default-settings-01.png)
 
 
-* **Cloud Storage Connector:** Provide an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector/) or [GCP connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp) configured to authenticate with your object store. 
-* **Endpoint URL:** S3-compatible storage URL.
+* **Cloud Storage Connector:** Provide an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector/), [GCP connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp), or [Azure connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector) configured to authenticate with your object store.
+* **Endpoint URL:** Storage endpoint URL.
 * **Region:** Geographical region where your storage is hosted. This is optional for some providers.
-* **Bucket Name:** The name of the bucket to use for Harness-managed caches.
-* **Access Key** and **Secret Key:** Access key and secret key to access your S3-compatible storage. NOTE: If you're using 'Cloud Storage Connector' (recommended) then there is no need to enter values for access/secret key fields.
+* **Bucket Name:** The name of the bucket to use for Harness-managed caches. Applies to AWS S3, GCP Cloud Storage, and S3-compatible storage.
+* **Azure Storage Account Name:** The name of your Azure Storage account. Required when using Azure Blob Storage.
+* **Azure Container Name:** The name of your Azure Blob Storage container. Required when using Azure Blob Storage.
+* **Access Key** and **Secret Key:** Access credentials for S3-compatible storage. NOTE: If you're using 'Cloud Storage Connector' (recommended) then there is no need to enter values for access/secret key fields.
+
+:::note
+Azure Blob Storage is currently supported only for **Cache Intelligence**. Docker Layer Caching (DLC) and Build Intelligence require AWS S3, GCP Cloud Storage, or S3-compatible storage.
+:::
 
 
 #### Upload Logs Via Harness

@@ -73,7 +73,11 @@ For blobs larger than 5 GB, multi-part upload (enabled via FF `CI_ENABLE_MULTIPA
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
 
-When running builds in self-managed infrastructures, [configure S3-compatible default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+When running builds in self-managed infrastructures, [configure default object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage)](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+
+:::note
+Azure Blob Storage is currently supported only for Cache Intelligence. Docker Layer Caching (DLC) and Build Intelligence require AWS S3, GCP Cloud Storage, or S3-compatible storage.
+:::
 
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
@@ -83,7 +87,7 @@ We suggest that you consider setting bucket level retention policy for efficient
 
 ## Enable Cache Intelligence
 
-1. If you're *not* using Harness Cloud build infrastructure, you must [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
+1. If you're *not* using Harness Cloud build infrastructure, you must [configure global object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage)](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
 
    This is not required for Harness Cloud build infrastructure. For more information, go to [Cache storage](#cache-storage).
 

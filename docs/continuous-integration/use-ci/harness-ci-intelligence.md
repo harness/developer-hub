@@ -57,7 +57,11 @@ With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/ca
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-When you use Cache Intelligence with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+When you use Cache Intelligence with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds in self-managed infrastructures, [configure default object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage)](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+
+:::note
+Azure Blob Storage is currently supported only for Cache Intelligence. Docker Layer Caching (DLC) and Build Intelligence require AWS S3, GCP Cloud Storage, or S3-compatible storage.
+:::
 
 ## Docker Layer Caching (DLC)
 
@@ -74,7 +78,7 @@ When you use DLC with Harness CI Cloud, the cache is stored in the Harness-manag
 | Feature               | Description                                                                                                  | Purpose                                         | Context                      | Additional Details                                                                                     |
 |-----------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------------------------|
 | **Docker Layer Caching (DLC)**   | Reuses previously built Docker image layers, building only what’s necessary.                               | Speeds up Docker image build and push steps     | Docker images                | Can be used with any build infrastructure; cache stored in Harness cloud environment or S3-compatible storage. |
-| **Cache Intelligence**     | Caches software dependencies (e.g., plugins) downloaded at the start of the build in a specific directory. | Caches dependencies to save download time       | Software dependencies         | Automatically caches and restores dependencies; works with any build infrastructure; stored in Harness cloud or S3-compatible storage. |
+| **Cache Intelligence**     | Caches software dependencies (e.g., plugins) downloaded at the start of the build in a specific directory. | Caches dependencies to save download time       | Software dependencies         | Automatically caches and restores dependencies; works with any build infrastructure; stored in Harness cloud or object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or S3-compatible). |
 | **Build Intelligence**            | Caches outputs of cacheable build tasks as identified by the build tool (e.g., Gradle tasks).            | Speeds up overall build process by reusing task outputs | Build outputs                | Available in Harness Cloud and Kubernetes infrastructure, with support for local runner and VM runner coming soon. Available for Gradle and Bazel, with Maven support in Beta.   |
 
 ## Intelligence Savings 
