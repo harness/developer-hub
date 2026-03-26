@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting Guide
-description: Solutions to common pain points while using Harness Database DevOps.
+description: Solutions to common pain points while using Harness Database DevOps. From connection issues to rollback errors, find answers to frequently encountered problems in DB DevOps pipelines.
 sidebar_label: Troubleshooting guide
 sidebar_position: 1
 keywords:
@@ -27,7 +27,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 This guide outlines common issues encountered while using Harness Database DevOps and their corresponding solutions.
-
 
 ## 1. searchPath Parameter Issue
  
@@ -276,3 +275,22 @@ Either incorrect service name is specified in the JDBC URL or the Oracle listene
 
 ## 19. What encryption type does Oracle require when using addent to generate a Kerberos keytab entry?
 Oracle requires `aes256-cts-hmac-sha1-96` and `aes128-cts-hmac-sha1-96` as the encryption type for modern oracle versions. Older version of Oracle also support `rc4-hmac` encryption type, but Oracle has deprecated this encryption type in modern versions due to RC4's known cryptographic weaknesses. 
+
+## 20. Why is my Spanner connection failing or not establishing?
+- Ensure Workload Identity is enabled on your GKE cluster. 
+- Verify the Kubernetes Service Account (KSA) is correctly annotated with the GCP Service Account
+- Confirm the required IAM roles are assigned to the GCP Service Account (GSA)
+
+## 21. Why am I getting permission or access denied errors?
+Check that the roles/iam.workloadIdentityUser binding is correctly configured and then validate that the GSA has the required database IAM roles (e.g., `roles/spanner.databaseUser`, `roles/spanner.databaseAdmin`)
+
+## 22. Why are my pipeline executions intermittent or unreliable?
+- Scale up the Harness Delegate replicas to handle load
+- Increase CPU and memory resources allocated to the delegate
+- Ensure the delegate remains consistently connected and healthy
+
+## 23. Why is my connection failing?
+The connection will fail if Workload Identity not enabled or missing KSA annotation/IAM roles on GSA.
+
+## 24. Why am I getting permission errors?
+Either there's missing `roles/iam.workloadIdentityUser` or Incorrect database IAM roles

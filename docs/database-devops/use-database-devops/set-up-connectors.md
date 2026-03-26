@@ -90,15 +90,29 @@ MongoDB connections in Harness DB DevOps support both self-hosted and cloud-base
 
 ## Setting Up Google Spanner
 
-Google Spanner uses a unique JDBC URL format and does not require a password for authentication. Instead, authentication is handled via **Service Account (SA)** credentials.
+Google Spanner uses a unique JDBC URL format and does not require a traditional password for authentication. Instead, authentication is handled via Google Service Account (GSA) credentials or Keyless authentication.
 
 ### Prerequisites for Google Spanner
-
-1. **Authentication**:  
-   - **Google Service Account (GSA)** json key 
-   - The GSA must have the following roles:  
+Harness DB DevOps supports two authentication methods for Google Spanner:
+1. **Google Service Account (GSA)** json key file authentication.
+   - Provide a Google Service Account (GSA) JSON key
+   - The service account must have the following IAM roles:
      - `roles/spanner.databaseAdmin`  
      - `roles/spanner.databaseUser`
+
+2. **Keyless Authentication** using Workload Identity Federation (WIF) or other supported methods.
+   - Uses Workload Identity (GKE) or IAM-based authentication
+   - No JSON key is required
+   - The Harness Delegate inherits permissions via the mapped **Kubernetes Service Account (KSA)** mapped to a **Google Service Account (GSA)**.
+      
+   Requirements:
+   - Configure IAM binding between the KSA (used by the delegate) and the GSA with the same roles:
+     - `roles/spanner.databaseAdmin`
+     - `roles/spanner.databaseUser`
+
+:::info note
+**Why use keyless authentication?** This approach improves security by eliminating long-lived credentials and reducing operational overhead.
+:::
 
 ---
 ## Setting Up AlloyDB

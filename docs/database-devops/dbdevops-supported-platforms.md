@@ -29,21 +29,28 @@ For information about what's supported for other Harness modules and the Harness
 
 Harness Database DevOps currently supports several database platforms, including:
 
-1. **Oracle**
-2. **MongoDB**
-3. **Microsoft SQL Server**
-4. **PostgreSQL**
-5. **MySQL**
-6. **Google Cloud Spanner**
-7. **CockroachDB**
-8. **Google AlloyDB**
-9. **Snowflake**
+| **Database**         | **Migration Tool** | **Authentication Options**                 |
+| -------------------- | ------------------ | ------------------------------------------ |
+| Oracle               | Liquibase Community          | Basic Auth, Kerberos                       |
+| Oracle               | Flyway Community             | Basic Auth,SSL                             |
+| PostgreSQL           | Liquibase Community, Flyway Community  | Basic Auth,SSL                             |
+| MySQL                | Liquibase Community, Flyway Community  | Basic Auth,SSL                             |
+| Microsoft SQL Server | Liquibase Community          | Basic Auth, Kerberos, SSL                  |
+| Microsoft SQL Server | Flyway Community             | Basic Auth,SSL                             |  
+| MongoDB              | Native Executor,  Liquibase Community, Flyway Community    | Username/Password (SCRAM), SSL   |
+| Google Cloud Spanner | Liquibase Community          | Keyless Auth (Service Account), JSON Key Auth |
+| CockroachDB          | Liquibase Community          | Basic Auth, SSL                            |
+| Google AlloyDB       | Liquibase Community          | Basic Auth, SSL                            |
+| Snowflake            | Liquibase Community          | PKI (Key Pair Authentication)              |
 
 It's worth noting that **MongoDB** is a NoSQL database which brings some limitations to your experience of Harness DB DevOps if this is your database of choice. 
-
 One of the limitations being: 
 
  - You cannot enforce policy against SQL initially. 
+
+:::info Note
+You can learn more about setting up connectors for these databases in [Setting Up Connectors](/docs/database-devops/use-database-devops/set-up-connectors.md).
+:::
 
 Additionally, for sources to read the change log from, Harness Database DevOps supports:
 
