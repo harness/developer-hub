@@ -210,6 +210,12 @@ The following deprecated API endpoints are longer supported:
 
 ## March 2026
 
+### Version 1.136.x <!--March 25, 2026-->
+
+#### Fixed issues
+
+- Fixed an issue where editing a Custom Secrets Manager (linked to a template with all runtime variables removed or converted to fixed values) caused a blank error popup to appear. This issue has been resolved, and the blank popup no longer occurs. [PL-69874]
+
 ### Version 1.135.x <!--March 20,2026-->
 
 No enhancements or fixes were released in this cycle.
