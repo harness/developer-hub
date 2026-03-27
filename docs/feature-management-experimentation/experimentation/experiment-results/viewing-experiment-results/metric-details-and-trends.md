@@ -1,17 +1,41 @@
 ---
 title: Metric details and trends
-sidebar_position: 20
+sidebar_position: 2
+description: Understand how your metrics behave over time, how to interpret statistical outputs, and why results may differ between Experiment dashboards and Feature flag views.
 ---
 
 ## Overview
 
-Validate your metric by understanding its value and impact over time, its variability and sample size, and how it differs across dimensions using the Impact snapshot chart.
+Use metric dashboards to validate and interpret your results. Depending on where you analyze your metric, you will see different capabilities and data scopes:
 
-## Dimensional analysis for Experiment metrics
+- Use the **Experiment Metric details dashboard** for analyzing experiment results and making decisions  
+- Use the **Feature flag Metrics impact tab** for monitoring rollouts and exploring metric behavior  
 
-The **Impact snapshot** chart in the Experiment Metric details dashboard supports [dimensional analysis](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/) in the same way as it does for feature flags. 
+## Experiment metric details dashboard
 
-To view dimensional analysis on a metric in an Experiment:
+From the Harness FME navigation menu, click on the **Experiments** page, select an experiment, and click on a metric. You can use the Metric details dashboard to analyze experiment results in depth. 
+
+You can analyze the following results:
+
+- **Impact over time** to understand trends and stability
+- **Variability and dispersion** to assess data quality
+- **Sample size and population** to evaluate statistical confidence
+- **Dimensional breakdowns** to uncover deeper insights
+
+## Dimensional analysis for experiment metrics
+
+:::warning
+[Multiple comparison correction](/docs/feature-management-experimentation/experimentation/key-concepts/multiple-comparison-correction/) is not applied to dimensional analysis.
+:::
+
+The **Impact snapshot** chart in the Metric details dashboard supports [dimensional analysis](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/) for experiments in the same way it does for feature flags. 
+
+Before you begin, ensure you have the following requirements:
+
+* You must send [event properties](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#before-you-start) that match the dimension key.
+* An admin must [configure dimensions and values](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#configuring-dimensions-and-values) to enable them for analysis.
+
+To view dimensional analysis on a metric in an experiment:
 
 1. Go to **Experiments** and open the desired experiment.
 1. Click on a key metric to view the Metric details dashboard.
@@ -20,20 +44,21 @@ To view dimensional analysis on a metric in an Experiment:
 
    ![](../../static/impact-dimensions.png)
 
-Before using dimensional analysis in Experiments:
-
-* You must send [event properties](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#before-you-start) that match the dimension key.
-* An admin must [configure dimensions and values](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#configuring-dimensions-and-values) to enable them for analysis.
-
-[Multiple comparison correction](/docs/feature-management-experimentation/experimentation/key-concepts/multiple-comparison-correction/) is not applied to dimensional analysis.
-
 ## Feature flag Metric impact tab
+
+Use the **Metrics impact** tab in a feature flag's details page to monitor metric performance across treatments.
+
+You can analyze the following results:
+
+- Treatment vs baseline comparisons
+- Metric trends over time
+- Aggregated and average values
 
 You can click **View more** on a metric card on a Metrics impact tab to understand its trend over time and statistical information. In addition, you can:
 
-* Review the Impact snapshot chart for an up-to-date, aggregated view of the expected impact over baseline for each treatment and an estimated range for that impact
-* Select more treatments, to compare the impact against the baseline in the Impact over time chart
-* Review the aggregated metric value for all treatments in the Values over time chart
+* Review the **Impact snapshot chart** for an up-to-date, aggregated view of the expected impact over baseline for each treatment and an estimated range for that impact
+* Select more treatments, to compare the impact against the baseline in the **Impact over time** chart
+* Review the aggregated metric value for all treatments in the **Values over time** chart
 
 The charts and tables are reflective of what you preselect within the Metrics impact tab, such as the feature flag version, targeting rule, treatment, and baseline chosen for comparison. 
 
@@ -42,9 +67,9 @@ The charts and tables are reflective of what you preselect within the Metrics im
 To access metric line charts and tables:
 
 1. From the left navigation panel, select **Feature flags**.
-1. In the Feature flags panel, select your desired feature flag. 
-1. Click the Metrics impact tab in your feature flag.
-1. In the Key metrics area, click the metric you want to analyze.
+1. In the **Feature flags** panel, select your desired feature flag. 
+1. Click the **Metrics impact** tab in your feature flag.
+1. In the **Key metrics** area, click the metric you want to analyze.
 1. Select the desired chart to review.
 
 ### Metric metadata
@@ -160,3 +185,27 @@ In most cases, the _In treatment_ value equals the number of user keys that were
 * For a metric measured as **Ratio of two events**, user keys with a zero dominator (event count) are not included in the metric calculation. Thus, these user keys would not be counted in the **In treatment** value for this metric, even though they may have been served the treatment.
 
 * For a metric with a **Has done the following event** filter (in the metric definition Advanced section), the events that are filtered out are not included in the metric calculation. Thus, a user key that is filtered out is also not counted in the _In treatment_ value, even though the user key may have been served the treatment.
+
+## Troubleshooting
+
+<details>
+<summary>Why do experiment results differ from feature flag metrics?</summary>
+
+Even when analyzing the same metric, results may differ between the **Experiment Metric details** dashboard and the **Feature flag Metrics impact** tab. Changes in one view do not sync to the other.
+
+The experiment dashboard uses experiment start and end dates, and includes all feature flag versions within that timeframe. On the other hand, the feature flag view uses version filters and targeting rules, and may analyze a subset of traffic. 
+
+Differences in user counting (experiment vs. version scope), filtering (experiment configuration vs. targeting rules), and small sample size variations can contribute to differences, which can impact values, the statistical significance, and health checks such as [SRM](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/#what-to-do-if-you-see-a-sample-ratio-mismatch-warning) and [exclusions](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion#exclusions).
+
+When you notice discrepancies in experiment results, check the following:
+
+- Date ranges match
+- Same environment
+- Same targeting rules
+- Same baseline and treatments
+- Same metrics and metric groups
+- Similar “last calculation” times
+- Matching experiment settings
+
+Harness recommends using the **Experiment Metric details** dashboard for final experiment analysis, and using the **Feature flag** view for monitoring and exploratory analysis.
+</details>
