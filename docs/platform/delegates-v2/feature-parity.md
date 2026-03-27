@@ -90,15 +90,11 @@ Feature flags are managed at the account level by Harness and are enabled as par
 
 All CI steps are fully supported on the new delegate with full parity to the legacy delegate. This includes Git Clone, Run, Run Tests, Test Intelligence, Build Intelligence, Cache Intelligence, Docker Layer Caching, Background, Plugin, Upload to JFrog, and all Build and Push steps (Docker, GAR, GCS, ECR, S3).
 
-## Connector support
-
-Connector support is limited during the closed beta phase. The following connectors have been validated for use with the new delegate:
-
-### Source code management
+## Source code management
 
 All Git connectors are supported for the Git Clone step, including GitHub, GitLab, Bitbucket, Harness Code, and generic Git.
 
-### Secret managers
+## Secret managers
 
 All secret managers are supported with full parity to the legacy delegate, except custom secret managers which are planned for a future release. Supported secret managers include HashiCorp Vault, AWS Secrets Manager, AWS KMS, Google Secret Manager, GCP KMS, and Azure Key Vault.
 
@@ -106,13 +102,13 @@ All secret managers are supported with full parity to the legacy delegate, excep
 HashiCorp Vault support for all authentication methods requires the feature flag `PL_USE_CGI_FOR_VAULT_IN_RUNNER`. Contact your Harness representative to enable this flag.
 :::
 
-### Artifact repositories
+## Connector support
+
+The following connectors have been validated for use with the new delegate:
 
 - **Docker Registry (DockerHub)**: Supported for pulling images.
 - **JFrog Artifactory**: Supported for artifact uploads.
 - **Other registries** (ECR, GCR, ACR, GAR): Planned for future releases.
-
-### Cloud providers and other connectors
 
 Connectors for cloud providers (AWS, Azure, GCP), Kubernetes clusters, CI/CD tools (Jenkins), and ticketing systems (Jira, ServiceNow) are not supported. These connectors are primarily used by modules other than CI, which are not supported by the new delegate.
 
