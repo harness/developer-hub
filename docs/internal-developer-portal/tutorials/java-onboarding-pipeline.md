@@ -463,7 +463,7 @@ In this step, you are invoking the [Entities API](https://apidocs.harness.io/tag
 * Generates the component YAML (`kind: component`)
 * Pushes it into the GitHub repo at a defined path
 * Registers it directly into the catalog
-* Porvides GitX experience to the entity
+* Provides GitX experience to the entity
 
 ![](./static/java-onb/create-register-entity.png)
 
@@ -763,7 +763,7 @@ spec:
           ui:field: HarnessAutoOrgPicker
   steps:
     - id: trigger
-      name: Creating your appication
+      name: Creating your application
       action: trigger:harness-custom-pipeline
       input:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/sd2/pipelines/JavaOnboardSD_Clone_Clone/pipeline-studio/?storeType=REMOTE&connectorRef=account.ShibamDhar&repoName=pipeline8&branch=main

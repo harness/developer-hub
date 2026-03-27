@@ -284,7 +284,7 @@ pipeline:
 </details>
 
 #### 4. Set IaCM Default Pipelines
-We are going to use the **Provision** and **Destroy** pipelines as default pipelines for the workspaces that Environment Management will create from the template. This is done by navigating to project settings, where you will enter **IaCM Defaults**, and input the the two pipelines in their respective Terraform Default.
+We are going to use the **Provision** and **Destroy** pipelines as default pipelines for the workspaces that Environment Management will create from the template. This is done by navigating to project settings, where you will enter **IaCM Defaults**, and input the two pipelines in their respective Terraform Default.
 
 :::info
 Validate the pipelines and Workspace template, by creating a new workspace from the template, and provisioning and destroy. This can be repeated until namespace is fully provisioned. Cleanup the workspace when done.
@@ -298,7 +298,7 @@ This step is to create CD Services.Go to [Create Services](/docs/continuous-deli
 
 1. Switch to the Continuous Delivery module, and ensure you are in your sandbox project. Go to the “Services” tab and hit “Create Service”. Name one “frontend” and the other “backend” and choose “Inline” store for now. You can switch to Remote entity later for Git experience.
 2. In the service definition, choose “Native Helm” as deployment type. We will use [Native Helm](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/) as deployment type for this tutorial, but you should be able to use Kubernetes type as well.
-3. In the Manifests section below, click on “New Manifest” and select “Helm Chart”. In the next step, choose your Git provider where you have helm charts stored e.g. GitHub. (Take a look at this [public GitHub repository](https://github.com/Munklinde96/demo) where we have provided 2 toy ngnix helm charts which you can also use in this tutorial)
+3. In the Manifests section below, click on “New Manifest” and select “Helm Chart”. In the next step, choose your Git provider where you have helm charts stored e.g. GitHub. (Take a look at this [public GitHub repository](https://github.com/Munklinde96/demo) where we have provided 2 toy nginx helm charts which you can also use in this tutorial)
 4. After you have selected the Git Connector, we will now configure the Git repository details for the chart path. In the Manifest configuration screen,
     - use “backend” and “frontend” respectively for the “Manifest Identifier”.
     - In the “Repository Name”, depending upon the connector type you can provide a repository name or a complete HTTP/SSH URL to the repository.

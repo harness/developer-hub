@@ -846,7 +846,7 @@ GET /catalog/custom-properties/entity?property=metadata.releaseVersion
 
 ## Other Catalog Endpoints
 
-This page describes only the ingestion related Catalog endpoints. Please look at other [Catalog API endpoints](/docs/internal-developer-portal/api-refernces/public-api) which contains basic endpoints for fetching full entity, registering and unregistering entities.
+This page describes only the ingestion related Catalog endpoints. Please look at other [Catalog API endpoints](/docs/internal-developer-portal/api-references/public-api) which contains basic endpoints for fetching full entity, registering and unregistering entities.
 
 ## API takes priority over Catalog YAML file (in case of a conflict)
 

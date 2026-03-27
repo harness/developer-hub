@@ -87,7 +87,7 @@ For each discovered record:
 - **Register** — Creates a new catalog entity populated with the mapped CMDB fields.
 - **Merge** — Enriches an existing catalog entity with the mapped CMDB fields (for example, adding `lifecycle`, `owner`, and custom properties like `mttr`).
 
-You have the option fo turning on **Auto-import** for integrations. This will automatically import all discovered entities without needing the manual effort of reviewing discovered entities.
+You have the option of turning on **Auto-import** for integrations. This will automatically import all discovered entities without needing the manual effort of reviewing discovered entities.
 
 ### View ServiceNow Data on a Catalog Entity
 

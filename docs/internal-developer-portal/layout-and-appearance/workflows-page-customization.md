@@ -30,7 +30,7 @@ We can add a new **Group** by navigating to **IDP Admin -> Layout -> Workflows**
   - Frontend
   - Infrastructure
   - Day 1 Onboarding
-  - Cloud 2.0 Intiative
+  - Cloud 2.0 Initiative
 
 - Add a **Description** of the group. Ensure you mention the purpose, who is the owner of the group and where can users reach out if they need help. Examples
   - Reach out to #architecture-board if you have any questions.

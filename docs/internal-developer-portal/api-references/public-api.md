@@ -5,6 +5,7 @@ sidebar_label: Backstage API
 sidebar_position: 2
 redirect_from:
   - /docs/internal-developer-portal/public-api
+  - /docs/internal-developer-portal/api-refernces/public-api
 ---
 
 The following are the list of Backstage APIs supported by IDP. 

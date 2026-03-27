@@ -26,7 +26,7 @@ In IDP we allow addition of, backstage frontend plugins, created by you as a cus
 
 :::info
 
-As the feature is in beta we don't have proper error handling in place yet, so for all the steps below please make sure all your entires are correct for the plugin.
+As the feature is in beta we don't have proper error handling in place yet, so for all the steps below please make sure all your entries are correct for the plugin.
 
 :::
 

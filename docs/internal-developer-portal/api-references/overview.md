@@ -3,6 +3,8 @@ title: API Overview
 description: Lists all the types of API and their sources available in IDP.
 sidebar_label: Overview
 sidebar_position: 1
+redirect_from:
+  - /docs/internal-developer-portal/api-refernces/overview
 ---
 
 This document provides an overview of the different types of APIs available for Harness IDP. These APIs enable programmatic access and management of various entities within Harness IDP.
@@ -14,7 +16,7 @@ In Harness IDP there are two types of APIs that are being used
 
 ## Backstage API
 
-The Backstage API includes the Backstage endpoints exposed through the Harness Platform. This API lets you programmatically add/remove entities in the catalog. For detailed documentation on endpoints and other Backstage API reference information, go to the [Backstage API reference documentation](/docs/internal-developer-portal/api-refernces/public-api).
+The Backstage API includes the Backstage endpoints exposed through the Harness Platform. This API lets you programmatically add/remove entities in the catalog. For detailed documentation on endpoints and other Backstage API reference information, go to the [Backstage API reference documentation](/docs/internal-developer-portal/api-references/public-api).
 
 ## Platform API
 

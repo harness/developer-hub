@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 ### Using RUN Step
 
 1. Go to **Admin** in your IDP
-2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
+2. Now select the **project** where you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Developer Portal Stage** and give it a name. 
 5. Add a **RUN** step, name it as **create jira ticket** and select the **Shell** as `Bash`
@@ -176,7 +176,7 @@ HTTP Step is available under custom stage and it's part of CD License
 :::
 
 1. Go to **Admin** in your IDP
-2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
+2. Now select the **project** where you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Custom Stage** and give it a name. 
 5. Add a **HTTP** step and name it as **create jira ticket**
@@ -247,7 +247,7 @@ We have used few pipeline variables in the body, which will be used to take inpu
 
 15. Start by adding another `HTTP` step. 
 16. Add the **Timeout** as `30s`.
-17. Add this endpoint as as URL `https://app.harness.io/gateway/v1/catalog/custom-properties`, read more about [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties#catalog-metadata-ingestion-api)
+17. Add this endpoint as URL `https://app.harness.io/gateway/v1/catalog/custom-properties`, read more about [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties#catalog-metadata-ingestion-api)
 18. Select the **Method** as `POST`.
 19. And add the following json as **Request Body**
 
@@ -343,7 +343,7 @@ spec:
         jiracomponentname:
           type: string
           title: Add the component for this issue
-          desciption: Component for ticket tracing eg., Misc, Backstage Core, Platform etc. 
+          description: Component for ticket tracing eg., Misc, Backstage Core, Platform etc. 
         issuesummary:
           title: Give a title for your ticket
           type: string
@@ -459,7 +459,7 @@ In case you want to display the same information you have ingested on your Overv
 ### Using RUN Step
 
 1. Go to **Admin** in your IDP
-2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
+2. Now select the **project** where you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Developer Portal Stage** and give it a name. 
 5. Add a **RUN** step, name it as **create jira project** and select the **Shell** as `Bash`
@@ -572,7 +572,7 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 <TabItem value="using-http-step" label="Using HTTP Step">
 
 1. Go to **Admin** in your IDP
-2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
+2. Now select the **project** where you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Custom Stage** and give it a name. 
 5. Add a **HTTP** step and name it as **create jira project**
@@ -613,7 +613,7 @@ We have used few pipeline variables in the body, which will be used to take inpu
 
 15. Start by adding another `HTTP` step. 
 16. Add the **Timeout** as `30s`.
-17. Add this endpoint as as URL `https://app.harness.io/gateway/v1/catalog/custom-properties`, read more about [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties#catalog-metadata-ingestion-api)
+17. Add this endpoint as URL `https://app.harness.io/gateway/v1/catalog/custom-properties`, read more about [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties#catalog-metadata-ingestion-api)
 18. Select the **Method** as `POST`.
 19. And add the following json as **Request Body**
 

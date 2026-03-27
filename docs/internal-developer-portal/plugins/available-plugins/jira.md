@@ -148,7 +148,7 @@ metadata:
     jira/project-key: <example-jira-project-key>
     jira/component: <example-component> # optional, you might skip this value to fetch data for all components
     jira/label: tech-debt # optional, for filtering issues by label
-    jira/all-issues-jql: project = "IDP" AND assignee = currentUser() AND status IN ("In Progess", "In Progress") ORDER BY created DESC # for specifying JQL queries used by EntityJiraQueryCard
+    jira/all-issues-jql: project = "IDP" AND assignee = currentUser() AND status IN ("In Progress", "Under Review") ORDER BY created DESC # for specifying JQL queries used by EntityJiraQueryCard
 ```
 
 ## Support

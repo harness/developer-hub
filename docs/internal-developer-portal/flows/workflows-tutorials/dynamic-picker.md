@@ -100,7 +100,7 @@ You can verify this endpoint by making requests to the `proxy` endpoint at `http
 https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/user
 ```
 
-Here `https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
+Here `https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-references/public-api).
 
 ### Step 2: Create the Dropdown Picker in Workflows Form
 

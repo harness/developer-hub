@@ -283,7 +283,7 @@ function usage {
     echo "  -a      Harness Account Identifier"
     echo "  -x      Harness X-API-KEY for the given account"
     echo "  -u      Harness Bearer Authorization from the logged in session"
-    echo "  -l      Catalog locations to be registered in Harness IDP. Comma seperated list of locations"
+    echo "  -l      Catalog locations to be registered in Harness IDP. Comma separated list of locations"
     exit 1
 }
 

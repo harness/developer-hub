@@ -15,7 +15,7 @@ Every page that exists in the Software Catalog e.g. service, API, library, syste
 
 Once you enable a plugin or create a [custom plugin](/docs/internal-developer-portal/plugins/custom-plugins/overview), you can decide where to show the components exported the plugin by changing the Layout of the Catalog entity of the particular type. For example, if you enable the Grafana plugin, you might want to add a Tab called "Performance" and render the Grafana plugin in there.
 
-Note that when you enable a plugin, we auto-update the default layouts, but you can always make changes by looking at what UI components are exported by that particular plugin. You can find this information under each and every plugin's documentation. [See an example for Dynatrace](http://localhost:3000/docs/internal-developer-portal/plugins/available-plugins/dynatrace#layout).
+Note that when you enable a plugin, we auto-update the default layouts, but you can always make changes by looking at what UI components are exported by that particular plugin. You can find this information under each and every plugin's documentation. [See an example for Dynatrace](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dynatrace#layout).
 
 ![](./static/custom-card-and-tab.png)
 

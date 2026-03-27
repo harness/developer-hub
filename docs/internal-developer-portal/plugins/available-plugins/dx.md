@@ -114,7 +114,7 @@ This plugin exports:
               md: 6
 ```
 
-**Similary the following tabs can be added to your entity:**
+**Similarly the following tabs can be added to your entity:**
 
 ```YAML
     - name: EntityScorecardsPage
