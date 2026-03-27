@@ -76,22 +76,21 @@ Once saved:
 
 Typically, dashboards update automatically within minutes after configurations are saved; however, large data syncs may take longer, depending on the system size.
 
-## Why does a Jira issue appear under a developer in SEI Panorama “Work Completed” even if the issue is currently unassigned?
+## Why does a Jira issue appear under a developer in **Work Completed Per Developer** even if the issue is currently unassigned?
 
-In SEI Panorama, the “Work Completed” view does not rely only on the issue’s current assignee.
+In the Productivity Insights dashboard, the **Work Completed Per Developer** widget does not attribute work to the issue’s current Jira assignee; instead, it attributes work to historical assignments during configured development statuses from the **Issue Management** tab in Team Settings.
 
-A work item can still appear under a developer if that developer was assigned to the issue during its lifecycle while the issue was in a status that the team configuration treats as an active development status.
+A Jira issue may still appear under a developer even if it is currently unassigned (or assigned to someone else) because SEI attributes completed work using the person who owned the issue while it was in an active development state, not in its final state.
 
-For example:
-- If a status like Inbox is configured as a development status
-- And a status like Closed is configured as a termination status
-- Then a user who was assigned to the issue while it was in Inbox may receive credit for that work item once the issue later reaches Closed
+An issue is attributed to a developer if:
 
-This means that even if the issue is currently:
-- unassigned in Jira, or
-- assigned to someone else now,
+- The developer was assigned to the issue at any point during its lifecycle, and
+- The issue was in a status configured as a development status (for example, `In Progress` or `Inbox`), and
+- The issue eventually transitions into a terminal status (for example, `Done`, `Closed`, or `Merged`).
 
-it may still appear under a previous assignee in Work Completed if that user contributed while the issue was in a counted development state.
+For example, if `Inbox` is configured as a development status and `Closed` is configured as a terminal status, a developer is assigned to the issue while it is in `Inbox`, and the issue is unassigned or reassigned before it is moved to `Closed`.
+
+The original developer will still receive credit in **Work Completed Per Developer**, even if they are not the current assignee.
 
 </TabItem>
 <TabItem value="1" label="SEI 1.0">
