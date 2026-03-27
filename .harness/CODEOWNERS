@@ -171,10 +171,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io
 
 # IACM Docs
-/docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
-/release-notes/infrastructure-as-code-management.md richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
-/src/components/Roadmap/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
-/src/components/Docs/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io
+/docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io
+/release-notes/infrastructure-as-code-management.md richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io
+/src/components/Roadmap/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io
+/src/components/Docs/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io
 
 # FF Classic Docs
 /docs/feature-flags/ austin.lai@harness.io david.karow@harness.io deepak.puthraya@harness.io rohit.pal@harness.io

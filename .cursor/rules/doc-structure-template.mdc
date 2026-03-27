@@ -42,17 +42,29 @@ Optionally include a brief list of key outcomes or topics covered in this guide:
 ```
 
 ### 3. Prerequisites
-List required setup, permissions, or knowledge:
+List required setup, permissions, or knowledge. **For each prerequisite**, tell the reader how to satisfy it; don't assume they already have it.
+
+- **"Module or feature enabled" (e.g. IaCM enabled):** Link to the get-started or enable doc, or say to contact their account administrator or Harness Support if they don't see it.
+- **Permissions (e.g. "permission to create and run pipelines"):** Name the **specific permissions** (e.g. View, Create/Edit, Execute for Pipelines), link to the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference) (use the relevant anchor, e.g. `#pipelines`), and say **how to get them** (e.g. an administrator must assign a role that includes them) with a link to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and/or [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+- **Other items:** Link to how/where if a new user might not have it.
+
 ```markdown
 ## Prerequisites
 
-- Item 1
-- Item 2
-- Item 3
+- **Harness account with X enabled:** Ensure X is enabled. If you don't see it, see [Get started with X](/docs/...) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+- **Item 3**
 ```
 
 ### 4. Step-by-Step Instructions
-Use clear, numbered sections with imperative headers:
+Use clear, numbered sections with **imperative** headers (e.g. "Create a Pipeline", not "Creating a Pipeline").
+
+- **Step groups:** When several steps form a logical group (e.g. "module details"), add a **heading for that group** (e.g. "### Module Details") and nest the steps under it (e.g. "#### Step 1", "#### Step 2"). Add a **one-line summary** under the group heading so the reader knows what those steps accomplish (e.g. "The following steps (1–3) configure the module name, provider, connector, and storage type.").
+- **Intro before lists:** **Always add a short intro sentence before every numbered or bullet list** that states what the list is for or what the reader is about to do. Do not jump straight into "1. Select...". This helps readers and LLMs understand context (e.g. "On the Execution pipeline step of the wizard, do the following:" then "1. Select a pipeline...").
+- **UI elements:** **Bold all clickable or selectable UI elements** in steps: menu names, buttons, tabs, checkboxes, dropdowns, field labels. Use the same convention everywhere; do not mix bold and plain for the same type of element (e.g. every button like **Create**, **Sync**, **Next** should be bold).
+- **Unfamiliar actions:** When the doc tells the user to do something they might not know how to do (e.g. "run manual sync", "create the pipeline manually"):
+  - If it's explained **elsewhere in the same doc**, link to that section (e.g. "For how to run the manual sync, see [Step 6: Create and run the initial sync](#step-6-create-and-run-the-initial-sync).").
+  - If it's **"create X manually"**, give the UI path (e.g. "Go to **Infrastructure** > **Pipelines** > **Create a Pipeline** in your project") and link to the doc that describes it (e.g. "see [Harness Pipelines](/docs/category/pipelines)").
 
 ```markdown
 ## Step 1: [Action verb]
@@ -142,8 +154,9 @@ You've successfully [accomplished X]. You can now [key capability unlocked].
 
 ## Content Guidelines
 
-- Use imperative headers (Create, Configure, Set up)
-- Keep prerequisites minimal and relevant
-- Include code examples where helpful
-- Use callouts (:::tip, :::warning, :::info) strategically
-- Link to related concepts inline, not just at the end
+- **Headers:** Use instructive, imperative forms (Create, Configure, Set up), not gerunds (Creating, Configuring). Exception: gerunds are fine for concepts like "Understanding CI/CD" or the section title "Troubleshooting".
+- **Lists:** When each item has a concept/action and an explanation, use **Bold label:** description. For simple self-explanatory lists, plain formatting is fine. Always add a short intro sentence before a list that states what the list is for.
+- Keep prerequisites minimal and relevant; link to "how" for each.
+- Include code examples where helpful.
+- Use callouts (:::tip, :::warning, :::info) strategically.
+- Link to related concepts inline, not just at the end.

@@ -1,7 +1,7 @@
 ---
 title: Module Registry
 description: Learn how to register a module in Harness IaCM
-sidebar_position: 20
+sidebar_position: 10
 sidebar_label: Register Modules
 redirect_from: /docs/infra-as-code-management/iacm-features/module-registry/module-registry
 ---

@@ -1,16 +1,6 @@
----
-title: Module Governance
-description: Control usage of modules in IaCM with OPA
-redirect_from:
-  - /kb/reference-architectures/iacm/iacm-module-governance
----
+With Harness Infrastructure as Code and Harness OPA policies you can enforce governance on modules used in a workspace. You can create policies for different types of governance: allowed modules, module versions, or even resources provisioned outside of a module. Below are examples of implementing such governance.
 
-
-With Harness Infrastructure as Code and Harness OPA policies we can enforce governance on modules used in a workspace. We can create policies for different types of governance: allowed modules, module versions, or even resources provisioned outside of a module. Below are a few examples of implementing such governance.
-
-## Helper Functions
-
-Below are several functions that can help make your governance policies more clear and maintainable:
+### Helper Functions
 
 ```rego
 # Collect all module calls in a TF Plan
@@ -29,9 +19,9 @@ contains(arr, elem) {
 }
 ```
 
-## Allowed Modules
+### Allowed Modules
 
-Here we collect module calls and throw a failure if the module source doesn't match a given pattern:
+Collect module calls and throw a failure if the module source doesn't match a given pattern:
 
 ```rego
 deny[msg] {
@@ -49,9 +39,9 @@ deny[msg] {
 }
 ```
 
-## Require specific module versioning
+### Require specific module versioning
 
-If there are specific modules where you want to control the versions used you can make a policy per module to be able to account for custom logic in version matching.
+For modules where you want to control the versions used, you can make a policy per module to account for custom logic in version matching:
 
 ```rego
 deny[msg] {
@@ -70,9 +60,9 @@ deny[msg] {
 }
 ```
 
-## Require specific resource types be provisioned through a module
+### Require specific resource types be provisioned through a module
 
-If there are certain sensitive resource types which you want to deny use of outside approved modules we can list all resources included in the "root module" and check their type:
+For sensitive resource types that must only be used inside approved modules, list all resources included in the "root module" and check their type:
 
 ```rego
 deny[msg] {

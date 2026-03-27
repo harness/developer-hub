@@ -133,7 +133,7 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
   - Advanced provider registry capabilities with custom provider support
 - **Variable Sets | [Docs](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables#variable-sets)** 
   - Introduced variable sets functionality for better configuration management
-- **Custom Git Tags for Module Registry | [Docs](/docs/infra-as-code-management/registry/module-registry/module-registry-tabs?module-tabs=Step-by-step#module-versions)** 
+- **Custom Git Tags for Module Registry | [Docs](/docs/infra-as-code-management/registry/module-registry/module-registry-overview#registeredmodulesettings--top-level-overview)** 
   - Added support for custom Git tags and monorepo configurations
 
 ### Bug Fixes & Improvements:

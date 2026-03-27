@@ -1,7 +1,7 @@
 ---
 title: Test Module Versions
 description: Learn how to validate changes of modules to ensure the reliability and functionality of your modules.
-sidebar_position: 50
+sidebar_position: 30
 redirect_from: /docs/infra-as-code-management/iacm-features/module-registry/module-registry-testing
 ---
 

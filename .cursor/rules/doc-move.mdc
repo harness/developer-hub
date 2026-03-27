@@ -1,0 +1,49 @@
+---
+description: When moving or renaming docs, add redirect_from and update all in-repo links to the new path
+globs: "docs/**/*.md, release-notes/**/*.md, sidebars.ts"
+alwaysApply: false
+---
+
+# Doc Moves: Redirects and Link Updates
+
+When you **move**, **rename**, or **consolidate** a doc (or merge several docs into one), do both of the following so old URLs work and the link checker stays green.
+
+## 1. Add redirect_from on the destination
+
+In the **destination** file's YAML frontmatter, add (or append to) `redirect_from` with the previous path(s) under `/docs/` so the old URL continues to work.
+
+- **Path format:** Use the path as it would appear in the URL (this project's plugin expects paths from site root, e.g. with leading slash).
+  - Example: old file `docs/infra-as-code-management/get-started/onboarding-guide.md` → add `/docs/infra-as-code-management/get-started/onboarding-guide`
+- **Multiple old paths:** If the file had several previous locations or aliases, add each as a list item under `redirect_from`.
+
+**Example frontmatter after move:**
+```yaml
+---
+title: Get started with IaCM
+description: A self-service onboarding guide for Harness IaCM.
+sidebar_position: 20
+redirect_from:
+  - /docs/infra-as-code-management/get-started/onboarding-guide
+---
+```
+
+**Optional:** For important or cross-section moves, also add the same redirect in `_server-redirects` (Netlify format: `old_path new_path`).
+
+## 2. Update all in-repo links to the new path
+
+Update every link that pointed to the old path(s) so it points to the new path. Otherwise the link checker can report broken links even when `redirect_from` exists.
+
+1. **Identify old paths:** List every URL path that no longer exists (e.g. `/docs/.../old-slug`). Include paths from consolidated or deleted files.
+2. **Search the repo:** Search for links using those paths — in `docs/`, `release-notes/`, `sidebars.ts`, and any other content (e.g. `href="..."`, `](/docs/...`, `](/release-notes/...`).
+3. **Update each link:** Change the link to the **new path**. If the content lives on a different page or tab (e.g. DynamicMarkdownSelector overview), point to that page and use a hash if needed (e.g. `.../module-registry-overview#registeredmodulesettings--top-level-overview`).
+
+**What to search for:** Markdown links `](/docs/.../old-path)`, HTML/JSX `href="/docs/.../old-path"`, sidebars doc IDs or paths. Use the old path in multiple forms (with/without leading slash, with `.md` for relative links).
+
+**Example:** After consolidating four docs into `module-registry-overview.md`, search for all four old slugs, update each hit to `/docs/.../module-registry-overview` (plus hash when linking to a specific section), and ensure the destination has `redirect_from` for all four old paths.
+
+## When to apply
+
+- You move or rename a doc under `docs/` or `release-notes/`.
+- You consolidate several docs into one (e.g. an overview with DynamicMarkdownSelector).
+- You delete a doc that was linked from elsewhere.
+- The user reports broken links after a refactor.
