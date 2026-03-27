@@ -88,28 +88,7 @@ Feature flags are managed at the account level by Harness and are enabled as par
 
 ## CI step compatibility
 
-The following table shows which CI steps are supported on the new delegate across different infrastructure types. Support status is indicated as Supported (available now), Upcoming (scheduled for future release), N/A (not applicable), or No (not supported).
-
-| Step type | Local (container) | Local (containerless) | Kubernetes | Notes |
-|---|---|---|---|---|
-| Git Clone (GitHub) | Supported | Supported | Supported | Full support for GitHub repositories |
-| Git Clone (other providers) | Upcoming | Upcoming | Upcoming | GitLab, Bitbucket, Harness Code, and generic Git |
-| Run | Supported | Supported | Supported | Execute shell commands and scripts |
-| Run Tests | Upcoming | Upcoming | Upcoming | Test execution with reporting |
-| Test Intelligence | Upcoming | Upcoming | Upcoming | ML-powered test selection |
-| Build Intelligence | Supported | N/A | No | Supported for local infrastructure only |
-| Cache Intelligence | Supported | Supported | Supported | Intelligent dependency caching |
-| Docker Layer Caching | N/A | N/A | Upcoming | Layer caching for Docker builds |
-| Background | Supported | Upcoming | Supported | Long-running service containers |
-| Plugin | Supported | N/A | Supported | Extensibility through plugins |
-| Upload to JFrog | Supported | Supported | Supported | Artifact upload to JFrog Artifactory |
-| Build and push (Docker) | Upcoming | Upcoming | Upcoming | Docker image build and push |
-| Build and push (GAR) | Upcoming | Upcoming | Upcoming | Google Artifact Registry |
-| Build and push (GCS) | Supported | Supported | Supported | Google Cloud Storage |
-| Build and push (ECR) | Upcoming | Upcoming | Upcoming | Amazon Elastic Container Registry |
-| Build and push (S3) | Supported | Supported | Supported | Amazon S3 |
-
-Steps not listed in this table are not supported on the new delegate and require the legacy delegate.
+All CI steps are fully supported on the new delegate with full parity to the legacy delegate. This includes Git Clone, Run, Run Tests, Test Intelligence, Build Intelligence, Cache Intelligence, Docker Layer Caching, Background, Plugin, Upload to JFrog, and all Build and Push steps (Docker, GAR, GCS, ECR, S3).
 
 ## Connector support
 
@@ -117,16 +96,15 @@ Connector support is limited during the closed beta phase. The following connect
 
 ### Source code management
 
-- **GitHub**: Supported with Token and OAuth authentication. GitHub App authentication is not supported.
-- **GitLab, Bitbucket, Harness Code, Generic Git**: Planned for future releases.
+All Git connectors are supported for the Git Clone step, including GitHub, GitLab, Bitbucket, Harness Code, and generic Git.
 
 ### Secret managers
 
-- **HashiCorp Vault**: Supported with AppRole and Token authentication methods. The Renewal Interval must be set to 0.
-- **AWS Secrets Manager**: Supported with Access Key and IAM Role credential types.
-- **Google Secret Manager**: Supported.
-- **Azure Key Vault**: Supported.
-- **Custom secret managers**: Planned for future releases.
+All secret managers are supported with full parity to the legacy delegate, except custom secret managers which are planned for a future release. Supported secret managers include HashiCorp Vault, AWS Secrets Manager, AWS KMS, Google Secret Manager, GCP KMS, and Azure Key Vault.
+
+:::note HashiCorp Vault
+HashiCorp Vault support for all authentication methods requires the feature flag `PL_USE_CGI_FOR_VAULT_IN_RUNNER`. Contact your Harness representative to enable this flag.
+:::
 
 ### Artifact repositories
 
@@ -156,8 +134,7 @@ The development roadmap includes enhancements across several areas. Items are ca
 
 These items are currently in active development or scheduled for upcoming releases:
 
-- **Connector expansion**: Support for GitLab, Bitbucket, Harness Code, and generic Git repositories. Additional secret manager support including Google Secret Manager.
-- **CI step expansion**: Build and push support for Docker, ECR, and GAR registries. Run Tests step and Test Intelligence capabilities.
+- **Custom secret managers**: The only secret manager integration not yet supported on the new delegate.
 - **Platform features**: Complete proxy and custom certificate support. Perpetual task framework for artifact triggers and polling. Delegate sidecar integration for legacy task compatibility.
 - **Installation and deployment**: Improved installation experience and packaging for different operating systems.
 
