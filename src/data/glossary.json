@@ -125,16 +125,16 @@
       "letter": "C",
       "related": [
         {
-          "term": "feature flag",
-          "slug": "feature-flag"
-        },
-        {
           "term": "pipeline",
           "slug": "pipeline"
         },
         {
           "term": "stage",
           "slug": "stage"
+        },
+        {
+          "term": "step",
+          "slug": "step"
         }
       ]
     },
@@ -273,29 +273,6 @@
         {
           "term": "events",
           "slug": "events"
-        }
-      ]
-    },
-    {
-      "id": "fme.pipelines.feature-flag",
-      "term": "feature flag",
-      "definition": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without requiring a code deployment. Feature flags support controlled rollouts, experimentation, and quick rollbacks if issues arise.",
-      "slug": "feature-flag",
-      "module": "fme",
-      "category": "pipelines",
-      "letter": "F",
-      "related": [
-        {
-          "term": "custom stage",
-          "slug": "custom-stage"
-        },
-        {
-          "term": "pipeline",
-          "slug": "pipeline"
-        },
-        {
-          "term": "stage",
-          "slug": "stage"
         }
       ]
     },
@@ -448,12 +425,12 @@
           "slug": "custom-stage"
         },
         {
-          "term": "feature flag",
-          "slug": "feature-flag"
-        },
-        {
           "term": "stage",
           "slug": "stage"
+        },
+        {
+          "term": "step",
+          "slug": "step"
         }
       ]
     },
@@ -527,12 +504,12 @@
           "slug": "custom-stage"
         },
         {
-          "term": "feature flag",
-          "slug": "feature-flag"
-        },
-        {
           "term": "pipeline",
           "slug": "pipeline"
+        },
+        {
+          "term": "step",
+          "slug": "step"
         }
       ]
     },
@@ -550,12 +527,12 @@
           "slug": "custom-stage"
         },
         {
-          "term": "feature flag",
-          "slug": "feature-flag"
-        },
-        {
           "term": "pipeline",
           "slug": "pipeline"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
         }
       ]
     },
@@ -747,16 +724,16 @@
         "letter": "C",
         "related": [
           {
-            "term": "feature flag",
-            "slug": "feature-flag"
-          },
-          {
             "term": "pipeline",
             "slug": "pipeline"
           },
           {
             "term": "stage",
             "slug": "stage"
+          },
+          {
+            "term": "step",
+            "slug": "step"
           }
         ]
       }
@@ -901,29 +878,6 @@
           {
             "term": "events",
             "slug": "events"
-          }
-        ]
-      },
-      {
-        "id": "fme.pipelines.feature-flag",
-        "term": "feature flag",
-        "definition": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without requiring a code deployment. Feature flags support controlled rollouts, experimentation, and quick rollbacks if issues arise.",
-        "slug": "feature-flag",
-        "module": "fme",
-        "category": "pipelines",
-        "letter": "F",
-        "related": [
-          {
-            "term": "custom stage",
-            "slug": "custom-stage"
-          },
-          {
-            "term": "pipeline",
-            "slug": "pipeline"
-          },
-          {
-            "term": "stage",
-            "slug": "stage"
           }
         ]
       }
@@ -1086,12 +1040,12 @@
             "slug": "custom-stage"
           },
           {
-            "term": "feature flag",
-            "slug": "feature-flag"
-          },
-          {
             "term": "stage",
             "slug": "stage"
+          },
+          {
+            "term": "step",
+            "slug": "step"
           }
         ]
       },
@@ -1167,12 +1121,12 @@
             "slug": "custom-stage"
           },
           {
-            "term": "feature flag",
-            "slug": "feature-flag"
-          },
-          {
             "term": "pipeline",
             "slug": "pipeline"
+          },
+          {
+            "term": "step",
+            "slug": "step"
           }
         ]
       },
@@ -1190,12 +1144,12 @@
             "slug": "custom-stage"
           },
           {
-            "term": "feature flag",
-            "slug": "feature-flag"
-          },
-          {
             "term": "pipeline",
             "slug": "pipeline"
+          },
+          {
+            "term": "stage",
+            "slug": "stage"
           }
         ]
       }
