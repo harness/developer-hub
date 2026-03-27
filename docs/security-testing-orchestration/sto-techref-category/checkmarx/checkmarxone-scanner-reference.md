@@ -244,7 +244,7 @@ import StoSettingImageName from '/docs/security-testing-orchestration/sto-techre
 <!-- ============================================================================= -->
 <a name="container-tag"></a>
 
-#### Tag
+#### Tag/Digest
 
 import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/image/tag.md';
 

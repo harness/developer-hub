@@ -139,7 +139,7 @@ import StoSettingImageName from './shared/step-palette/image/name.md';
 <!-- ============================================================================= -->
 <a name="container-tag"></a>
 
-#### Tag
+#### Tag/Digest
 
 
 import StoSettingImageTag from './shared/step-palette/image/tag.md';

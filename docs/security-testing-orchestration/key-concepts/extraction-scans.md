@@ -97,7 +97,7 @@ Here's a simple extraction setup for Anchore Enterprise:
 
 1. [Target and variant detection](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#target-and-variant-detection) = **Manual**
 2. [Target name](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#name) should match the image **Name**
-3. [Target variant](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#variant) should match the image **Tag** 
+3. [Target variant](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#variant) should match the image **Tag/Digest** 
 
 #### Scan tool
 

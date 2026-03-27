@@ -1,1 +1,1 @@
-The image tag. Examples: `latest`, `1.2.3`
+The image tag or digest. Examples: `latest`, `1.2.3`, `@sha256:abc123...`

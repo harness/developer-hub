@@ -1,4 +1,4 @@
-You can specify a _baseline_ for each target. This is usually the "root" variant of the target, such as the `main` branch or the `latest` tag. When a scan finishes successfully, STO does the following:
+You can specify a **baseline** for each target. This is usually the "root" variant of the target, such as the `main` branch, the `latest` tag, or a digest (e.g., `@sha256:abc123...`). When a scan finishes successfully, STO does the following:
 
 * Compares each issue detected in the scanned variant against the target baseline.  
 * Places each issue into one of two buckets: 

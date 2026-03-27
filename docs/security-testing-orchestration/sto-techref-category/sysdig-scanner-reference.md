@@ -113,7 +113,7 @@ import StoSettingImageName from './shared/step-palette/image/name.md';
 <StoSettingImageName />
 
 
-#### Tag
+#### Tag/Digest
 
 import StoSettingImageTag from './shared/step-palette/image/tag.md';
 

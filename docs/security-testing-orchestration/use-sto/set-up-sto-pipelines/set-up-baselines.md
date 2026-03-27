@@ -5,7 +5,7 @@ sidebar_label: Set up Target baselines
 sidebar_position: 5
 ---
 
-Every scanned target should have a _baseline_, which represents the root variant such as the `main` branch of a Git repository or the `latest` tag of a container image.  Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
+Every scanned target should have a **baseline**, which represents the root variant, such as the `main` branch of a Git repository, the `latest` tag or a digest (e.g., `@sha256:abc123...`) of a container image. Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
 
 :::info key concepts: target baselines
 - [Every scanned target needs a baseline](#every_target_needs_a_baseline) to enable the full suite of STO features.

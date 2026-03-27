@@ -1,1 +1,1 @@
-Each scan operation has a specified _variant_ that specifies the branch, tag, or version to scan.  
+Each scan operation has a specified _variant_ that specifies the branch, tag, digest, or version to scan.  
