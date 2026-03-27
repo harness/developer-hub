@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Layout from "@theme/Layout";
 import { useHistory, useLocation } from "@docusaurus/router";
+import Feedback from "@site/src/components/Feedback";
 import glossaryData from "@site/src/data/glossary.json";
 import "@site/src/css/glossary.css";
 
@@ -252,6 +253,9 @@ export default function GlossaryPage() {
                 );
               }
             )}
+            
+            {/* Feedback widget */}
+              <Feedback />
 
             {/* Back to top */}
             {showBackToTop && (

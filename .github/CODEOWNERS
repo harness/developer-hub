@@ -36,7 +36,8 @@ README.md @pratmit @ivikramsahu
 /src/components/University/ @ravilach
 
 # Glossary
-/glossary/ @alai97 @richardblack-Harness
+/src/components/ToolTip/tooltips.json @alai97 @richardblack-Harness
+/src/pages/glossary.tsx @alai97 @richardblack-Harness
 
 # Community
 /community/ @Ompragash @dewan-ahmed

@@ -36,7 +36,8 @@ README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness
 /src/components/University/ ravi.lachhman@harness.io
 
 # Glossary
-/glossary/ austin.lai@harness.io richard.black@harness.io
+/src/components/ToolTip/tooltips.json austin.lai@harness.io richard.black@harness.io
+/src/pages/glossary.tsx austin.lai@harness.io richard.black@harness.io
 
 # Community
 /community/ ompragash.viswanathan@harness.io dewan.ahmed@harness.io
