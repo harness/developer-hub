@@ -530,7 +530,7 @@ Set `samlSettings` to `null` in the API call to update SAML-connected groups wit
 Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Harness supports multiple identity providers (IdPs) for user authentication using SAML. You can configure a mix of various SAML providers and enable or disable them for user authentication. For more information, go to [Multiple identity providers](/docs/platform/authentication/multiple-identity-providers/).
+Harness supports multiple identity providers (IdPs) for user authentication using SAML. You can configure a mix of various SAML providers and enable or disable them for user authentication. For more information, go to <a href="/docs/platform/authentication/authentication-overview#enable-multiple-identity-providers" target="_blank" >Multiple identity providers</a>.
 
 ### Why is Harness redirecting to a stage/dev account upon a successful Azure SAML login for a prod account?
 
@@ -2255,7 +2255,7 @@ This feature will be available in an upcoming release.
 
 ### Is the feature flag PL_ENABLE_MULTIPLE_IDP_SUPPORT available and enabled to use?
 
-Yes it is enabled. For more information, go to [Configure multiple SAML providers](https://developer.harness.io/docs/platform/authentication/multiple-identity-providers/#configure-multiple-saml-providers).
+Yes it is enabled. For more information, go to <a href="/docs/platform/authentication/authentication-overview#enable-multiple-identity-providers" target="_blank" >Configure multiple SAML providers</a>.
 
 ### Can we limit our account/org access only to our users and not to Harness users (even read-only access)?
 
