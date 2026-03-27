@@ -37,7 +37,7 @@ Program leads and individual team owners should consider the following:
 
 ## Experiment Workflow 
 
-[📄 Check out Experiment Workflow](./static/experimentation-workflow.pdf)
+[📄 Check out Experiment Workflow](./static/experimentation-workflow.pdf) 
 
 ### What is it? 
 
@@ -51,7 +51,9 @@ It helps teams follow a clear sequence of steps, reducing the likelihood of erro
 
 The purpose of an experimentation workflow is to facilitate data-driven decision-making, reduce bias, and improve efficiency by guiding teams through the experiment lifecycle. 
 
-Having a workflow encourages organizations to define clear objectives and promotes a culture of continuous learning and risk mitigation by allowing teams to iterate on experiments, document details for reproducibility, and allocate resources effectively.  Ultimately, it enhances collaboration among cross-functional teams and ensures that changes and innovations are rigorously tested before implementation, leading to more informed and efficient processes and outcomes.
+Having a workflow encourages organizations to define clear objectives and promotes a culture of continuous learning and risk mitigation by allowing teams to iterate on experiments, document details for reproducibility, and allocate resources effectively. Ultimately, it enhances collaboration among cross-functional teams and ensures that changes and innovations are rigorously tested before implementation, leading to more informed and efficient processes and outcomes.
+
+To understand how experimentation workflows connect with ideation, prioritization, design, and execution, see [Understanding Experimentation Platforms](https://www.harness.io/resources/understanding-experimentation-platforms). 
 
 ## Experiment Execution 
 
