@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2026-03-16T10:00:00
+date: 2026-03-25T10:00:00
 sidebar_position: 8
 ---
 
@@ -130,6 +130,17 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where the `notification.errormessage` expression in notification templates caused the template engine to fall back to the default template, and using `default()` returned the literal string `"null"` instead of the specified fallback value. Special characters in the error message were breaking the YAML parser during expression evaluation. The error message is now parsed with a dedicated object mapper that handles special characters correctly. (**PIPE-32051**, **ZD-101534**, **ZD-104538**)
 - Fixed an issue where the **Referencing Entities** button for organization-level step templates showed "no references found" even when references existed, and the **Compare Versions** feature failed to load the comparison side with a "template does not exist or has been deleted" error despite the version being valid. Both features now correctly resolve template references and version metadata across scopes. (**PIPE-32351**, **PIPE-32353**, **ZD-104288**)
 - Fixed an issue where files uploaded via the File Upload step remained downloadable for up to 7 days after deletion through the API or UI, due to a soft-delete policy on the underlying GCS bucket. Deleting an uploaded file now removes it from storage immediately, so it is no longer accessible for download after a successful delete operation. Note that the GCS bucket has a 37-day lifecycle rule — files that are not explicitly deleted are automatically removed after 37 days. (**PIPE-32337**, **ZD-104827**)
+
+### GitOps Service 1.53.2, GitOps Agent 0.112.0
+
+#### Fixed issues
+
+- Fixed an issue where the Helm wrapper mount in the GitOps Agent corrupted the Helm binary on curated/STIG ArgoCD images (for example, `harness/argocd:x.x.x-ubi9-curated`) due to a hard link at `/usr/local/sbin/helm`, causing an infinite loop during Helm deployments when using SOPS. Users on curated images using SOPS who are upgrading must apply manual migration steps to their `argocd-repo-server` deployment — refer to the SOPS documentation for details. Users not using SOPS or on standard ArgoCD images are unaffected and require no action. (**CDS-120154**)
+- Fixed an issue where AI-powered GitOps operations (AIDA/MCP) failed with permission errors. The GenAI service token was forwarded directly to the access control service, which could not validate it. Permission checks now use principal-based authorization, consistent with other Harness services. (**CDS-119578**)
+- Fixed a UI issue where GitOps cluster creation with TLS authentication did not validate the **Client Key** and **Client Certificate** input fields. Users could submit the form with blank values without receiving error messages. Additionally, the `insecure` flag was not included in the API payload, and the base64 encoding guidance for certificate fields was inconsistent. (**CDS-119558**)
+- Fixed an issue with incorrect redirection when accessing GitOps project mapping pages. (**CDS-119150**)
+- Fixed an issue where loading an account-scope repository triggered an incorrect `appprojectmapping` API request. (**CDS-118739**)
+- Fixed a UI issue where switching the source type of a GitOps application from Git to Helm did not behave correctly. (**CDS-116805**)
 
 ### GitOps Service 1.52.1, GitOps Agent 0.111.1
 
