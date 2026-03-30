@@ -1150,5 +1150,11 @@
     "description": "Simplifies pool YAML configuration in Harness-hosted builds, reducing configuration complexity for build infrastructure setup.",
     "gaStartDate": "2026-03-19",
     "module": "Continuous Integration"
+  },
+  {
+    "flagKey": "CDS_NG_SECRET_RUNTIME_USAGE_EVENT_GENERATION",
+    "description": "FF to enable secret runtime usage event generation for ng",
+    "gaStartDate": "2026-03-30",
+    "module": "Continuous Delivery"
   }
 ]
