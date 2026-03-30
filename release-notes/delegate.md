@@ -117,6 +117,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2026
 
+### Version 26.03.88802 <!-- March 30, 2026 -->
+#### Fixed issues
+- Added gated JSON stdout execution logging for delegates with HARNESS_LOG_STREAMING_STDOUT_ENABLED, preserving structured fields and MDC context. [PIPE-32819]
+
 ### Version 26.03.88801 <!-- March 25, 2026 -->
 
 #### Fixed issues
