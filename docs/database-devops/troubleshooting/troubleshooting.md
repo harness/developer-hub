@@ -15,6 +15,13 @@ keywords:
   - continuous integration
   - continuous delivery
   - ci cd
+  - liquibase
+  - percona toolkit
+  - mysql
+  - postgresql
+  - oracle
+  - kerberos authentication
+  - override resource limits
 tags:
   - troubleshooting
   - database-devops
@@ -195,17 +202,18 @@ This is by design—features like drift detection depend on resolving the databa
 Use a fixed connector when defining your DB Instance in order to enable full DB DevOps capabilities.
 :::
 
-## 9. From which release version is extra memory required 
+## 9. From which release version is extra memory required
 
-Starting with using drone-liquibase version or latest image version i.e. 1.9.0, enhanced memory allocation was introduced increased memory utilization during changelog parsing and SQL generation.
-As a result, the recommended memory allocation for the Database DevOps service increased from 200 MB to 500 MB to ensure stable performance and avoid unexpected OOM (Out of Memory) events.
+In latest versions, memory is allocated based on your changelog complexity. If your changesets are large in number or size, increase the memory allocation from the default 200 MB to 500 MB to avoid unexpected OOM (Out of Memory) events during changelog parsing and SQL generation.
 
-:::note
+You can update the memory allocation in step configuration, learn more about it [Override resource limits](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#override-resource-limits) 
+
+:::info note
 If you are upgrading from any version prior to 1.9.0, ensure your deployment configuration reflects the updated 500 MB memory requirement.
 :::
 
 ## 10. Why am I seeing a lock even though the database team confirmed no database-level locks?
-In many scenarios, the “lock” you encounter is not a database engine–level lock but a Liquibase changelog lock. Liquibase uses an internal DATABASECHANGELOGLOCK table to coordinate concurrent change executions. If a pipeline fails, times out, or terminates unexpectedly, the lock may remain active—even when the underlying database shows no locks.
+In many scenarios, the “lock” you encounter is not a database engine–level lock but a Liquibase changelog lock. Liquibase uses an internal DATABASECHANGELOGLOCK table to coordinate concurrent change executions. If a pipeline fails, times out, or terminates unexpectedly, the lock may remain active even when the underlying database shows no locks.
 
 This residual lock prevents subsequent runs from proceeding until the lock is manually released.
 
@@ -221,7 +229,7 @@ release-locks
 This clears any stale Liquibase-level locks and restores normal pipeline execution.
 
 ## 11. Why is kinit failing with “Client not found in Kerberos database”?
-The principal does not exist in the realm, or the realm name is incorrect (case-sensitive).
+The principal does not exist in the realm, or the realm name is incorrect (case sensitive).
 
 **How to Solve**:
 - Verify the principal exists in the KDC/Active Directory.
