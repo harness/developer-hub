@@ -18,6 +18,10 @@ By defaut you will see the event that were **FAILED**, **PROCESSING**, **SKIPPED
 
 In the event page, you can see a list of all changes made to the files in your repository, tracked by the webhook you have set up.
 
+:::info Webhook event retention
+Harness retains webhook event history for the **last 15 days** only. Events older than 15 days are automatically purged and cannot be retrieved. Plan any auditing or debugging activities within this retention window.
+:::
+
 When you click on the button as pointed in the screenshot above you will see **Event Details** i.e file changes as well as payload that was sent.
 
 ![](./static/event_details.png)
