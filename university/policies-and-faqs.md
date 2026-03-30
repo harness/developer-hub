@@ -20,9 +20,9 @@ This FAQ page is designed to assist customers who are experiencing common issues
 - [Running out of time in Hands-on Exam](#running-out-of-time-in-hands-on-exam)
 - [Issues with Course Registration](#issues-with-course-registration)
 - [Requesting Accommodations for Exams ](#requesting-accommodations-for-exams)
-- [Retakes for Exams ](#paid-exam-retakes)
-- [Inquires about Instructor-Led Training ](#inquiries-about-instructor-led-training)
-- [Partners ](#partners)
+- [Retakes for Exams](#paid-exam-retakes)
+- [Inquires about Instructor-Led Training](#inquiries-about-instructor-led-training)
+- [Partners](#partners)
 - [Contact Information](#contact-information)
 
 ---
@@ -114,6 +114,12 @@ All communication related to your certification status, exam scheduling, and upd
 
 ---
 
+### Obtaining a PDF of Your Certification
+
+Our credentialing vendor is Credly. If you do require a PDF to share vs a digital badge, you can log into your Credly Account to download and print one. Instructions to do so are [available via the Credly Help Center](https://support.credly.com/hc/en-us/articles/360026639872-Can-I-download-and-print-my-badge-certificate).
+
+---
+
 ## Exam gets "Stuck"
 
 ### What should I do if my exam gets stuck on the "loading" screen?
@@ -159,9 +165,13 @@ Two options are available:
 
 Follow the on-screen instructions to register for a course. If you encounter any problems, please email [certifications@harness.io](mailto:certifications@harness.io).
 
+---
+
 ### I can't find the course I'm looking for, what should I do?
 
 Use the navigation within the Skilljar dashboard to find your desired course. If you still can't locate it, email [certifications@harness.io](mailto:certifications@harness.io).
+
+---
 
 ### How do I use a coupon code during registration?
 
@@ -187,6 +197,8 @@ For the Admin and Architect level exams, we allow for up to two retakes on paid 
 - If you have purchased an exam [not via coupon code] and need to retake,  please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can provide a retake coupon code.
 - If you redeemed a coupon code, please re-apply the coupon code when retaking.
 
+---
+
 ### Partner Admin/Architect Retakes
 
 Certain Harness Partner Tiers have access to Admin/Architect exams. 
@@ -205,6 +217,8 @@ Instructor-Led Trainings [e.g ILTs] are available in the following formats:
 * Dedicated. Either virtual or on-site. 
 * Shared-Virtual [e.g vILT]. This is per a [shared virtual calendar](https://university-registration.harness.io/calendar). 
 
+---
+
 ### Minimum Enrollment Requirement
 To ensure a productive and engaging learning environment, we require a minimum number of five students to enroll in each shared vILT course. If the minimum enrollment is not met, the following steps will be taken:
 
@@ -212,10 +226,14 @@ To ensure a productive and engaging learning environment, we require a minimum n
 * Alternative Session Registration: Participants will be provided with options to register for another session that meets the minimum enrollment criteria.
 * Notification of Cancellation: If a course does not meet the minimum enrollment requirement you will be notified via email at least 5 business days before the scheduled start date of the course and the notification will include instructions on how to register for an alternative session.
 
+---
+
 ### vILT Rescheduling Options
 In the event of a course cancellation:
 * Alternative Sessions: You will have the option to register for any upcoming session of the same course- you can view the available sessions [here](https://university-registration.harness.io/calendar).
 * Priority Enrollment: Participants from a canceled session will receive priority enrollment for rescheduled sessions.
+
+---
   
 ### What is the cost for ILT
 Instructor-Led Training has tiers of costs depending on format. All ILTs has access to the 
