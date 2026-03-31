@@ -13,7 +13,7 @@ Harness Solutions Factory (HSF) is an automation framework that deploys and mana
 - **Self-service workflows:** Development teams can request Harness resources — projects, pipelines, environments — through IDP workflow. No direct platform or Terraform knowledge is required.
 - **IaC-backed governance:** Every resource HSF creates is backed by a Terraform workspace in IaCM. Changes go through plan-and-approve cycles, and drift is surfaced in the IDP catalog.
 - **Out-of-the-box templates:** HSF ships with pre-built templates for common platform operations: project setup, CI pipeline onboarding, security scanning, build farm configuration, and delegate management.
-- **Managed updates:** When Harness releases new versions of HSF, a scheduled pipeline creates a pull request in your custom template library. You review and merge on your timeline — nothing auto-applies.
+- **Managed updates:** When Harness releases new versions of HSF, a scheduled pipeline creates a pull request in the harness-solutions-factory and harness-template-library repos. You review and merge on your timeline — nothing auto-applies.
 
 ## Core Concepts
 ### 1. Self-Service Workflows

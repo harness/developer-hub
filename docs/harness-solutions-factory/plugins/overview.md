@@ -1,7 +1,7 @@
 ---
-title: HSF Plugins
+title: Plugins Overview
 description: Understand HSF Plugins
-sidebar_position: 5
+sidebar_position: 1
 ---
 
 Harness Solutions Factory (HSF) provides a small set of plugins that package common automation tasks into reusable, pipeline-friendly steps. Below describe each available plugin and the problem it is designed to solve.
@@ -19,13 +19,7 @@ Automates the rotation of service account tokens and updates corresponding secre
 ### Harness STO Configuration Manager Plugin
 Iterates over a repository to discover a hierarchical set of configuration files and arguments, then applies them to the selected Harness STO scanner. This plugin enables centralized, repository-driven management of STO scan configurations.
 
-### Manage IACM Plugin
-Manages IaCM workspace creation and lifecycle across pipelines. The plugin creates workspaces during a pre-stage, allowing subsequent stages in the same pipeline to execute against the same workspace. This approach reduces dependency on direct Terraform usage and follows a Drone-style plugin execution model.
-
-### Harness Python API SDK Plugin
-Provides a simplified, non-compiled Python SDK for interacting with Harness APIs. This SDK was created to eliminate repetitive Bash and curl scripting and to standardize how Python-based tools and automations are developed across HSF projects.
-
-### Harness IDP Resource Manager Plugin
+### [Manage IACM Plugin](/docs/harness-solutions-factory/plugins/harness-manage-iacm-workspace)
 Manages Harness IDP entities through Harness APIs. The solution also supports backward compatibility by registering and updating IDP 1.0-style configurations via Git sync.
 
 ### Harness IDP Service Manager Plugin
