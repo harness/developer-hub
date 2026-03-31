@@ -25,8 +25,9 @@ When Harness performs a deployment, it compiles all values YAML files and manife
 
 ## Limitations
 
-The Dry Run step's resolved manifests are stored in the Harness cloud. There is a storage limit of 5MB per Dry Run step execution.
-
+- The Dry Run step's resolved manifests are stored in the Harness cloud. There is a storage limit of 5MB per Dry Run step execution.
+- **Service hooks:** The Dry Run step only supports FetchFiles hooks (pre and post). Other hook types such as TemplateManifest and SteadyStateCheck do not execute during a Dry Run.
+- **Command flags:** The Dry Run step does not support the `commandFlags` field. Unlike other Kubernetes steps (Rolling Deploy, Canary, Blue Green, Apply), you cannot pass additional `kubectl` flags to the Dry Run step.
 
 ## Add the Dry Run step
 
