@@ -109,6 +109,24 @@ width="60%"
 
 <br/>
 
+### Copy and Paste
+
+Perform clipboard operations to copy and paste content between elements in your application.
+
+#### Copy to Clipboard
+
+Copies text or content from a selected element to the clipboard. This action simulates the user's copy operation (Ctrl+C or Cmd+C) and can be used to capture text, values, or other content from the application for later use in your test.
+
+#### Paste from Clipboard
+
+Pastes content from the clipboard into a selected element. This action simulates the user's paste operation (Ctrl+V or Cmd+V) and can be used to insert previously copied text, values, or content into input fields, text areas, or other editable elements.
+
+:::tip
+For both actions, simply select the target element. For Copy, select the element containing the content you want to copy. For Paste, select the editable element (such as an input field or text area) where you want to paste. No additional configuration is required.
+:::
+
+<br/>
+
 ### DB Query
 
 Executes a SQL query against a database and captures the results as parameters. This action allows you to integrate database interactions directly into your test flow, enabling data validation and dynamic test data generation.
@@ -258,7 +276,7 @@ Navigate to a specific URL or relative path, allowing you to direct your test to
   </TabItem>
 </Tabs>
 
-<br/>
+
 
 ### Reload
 
