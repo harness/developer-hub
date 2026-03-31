@@ -120,7 +120,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Integrations" }],
         title: "Ansible Support (Beta)",
         description: "Configuration management support with native playbooks, static and dynamic inventory",
-        link: "/docs/infra-as-code-management/configuration/ansible",
+        link: "/docs/infra-as-code-management/configuration-management/ansible/overview",
       },
       {
         tag: [{ value: "Developer Experience" }],

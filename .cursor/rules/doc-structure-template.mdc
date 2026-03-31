@@ -4,17 +4,20 @@ globs: **/*.md
 alwaysApply: false
 ---
 
-# Documentation Structure Template
+## Documentation structure template
 
 Follow this structure when creating new documentation pages. Adjust as needed based on content type.
 
-## Standard Structure
+### Standard structure
 
-### 1. Frontmatter
+#### 1. Frontmatter
+
 ```yaml
 ---
-title: [Clear, descriptive title]
-description: [One-sentence summary of what this guide covers]
+title: Clear, descriptive title
+# Optional: left navigation label (Title Case). Omit when it should match `title`.
+sidebar_label: Title Case Label For Sidebar
+description: One-sentence summary of what this guide covers
 keywords:
   - keyword1
   - keyword2
@@ -26,22 +29,29 @@ tags:
 ---
 ```
 
-### 2. Introduction (2-3 lines)
+- **`title`:** Official page title (browser, SEO, and default sidebar label). May use phrasing that fits the page better than the nav.
+- **`sidebar_label`:** Use when the **sidebar** label must differ from `title`. Sidebar labels use **Title Case** (capitalize major words). If omitted, Docusaurus derives the sidebar entry from `title`.
+
+#### 2. Introduction (2-3 lines)
+
 - **Paragraph 1**: What is this feature/capability?
 - **Paragraph 2**: Why use it? What problems does it solve?
 - **Paragraph 3**: Key benefits or use cases
 
-#### What will you learn?
+##### What will you learn?
+
 Optionally include a brief list of key outcomes or topics covered in this guide:
+
 ```markdown
-### What will you learn?
+## What will you learn?
 
 - **Topic 1:** Brief description of what they'll learn.
 - **Topic 2:** Another key outcome or skill.
 - **Topic 3:** Additional learning objective.
 ```
 
-### 3. Prerequisites
+#### 3. Prerequisites
+
 List required setup, permissions, or knowledge. **For each prerequisite**, tell the reader how to satisfy it; don't assume they already have it.
 
 - **"Module or feature enabled" (e.g. IaCM enabled):** Link to the get-started or enable doc, or say to contact their account administrator or Harness Support if they don't see it.
@@ -56,10 +66,11 @@ List required setup, permissions, or knowledge. **For each prerequisite**, tell 
 - **Item 3**
 ```
 
-### 4. Step-by-Step Instructions
-Use clear, numbered sections with **imperative** headers (e.g. "Create a Pipeline", not "Creating a Pipeline").
+#### 4. Step-by-step instructions
 
-- **Step groups:** When several steps form a logical group (e.g. "module details"), add a **heading for that group** (e.g. "### Module Details") and nest the steps under it (e.g. "#### Step 1", "#### Step 2"). Add a **one-line summary** under the group heading so the reader knows what those steps accomplish (e.g. "The following steps (1–3) configure the module name, provider, connector, and storage type.").
+Use clear, numbered sections with **imperative** headers in **sentence case** (e.g. `## Create an inventory`, not gerunds like "Creating an inventory"). Capitalize **proper nouns**: product and technology names (e.g. **Kubernetes**, **Terraform**, **OpenTofu**, **Harness**, **IaCM**, **AWS**) and official **Harness** UI feature names when they are branded or module names.
+
+- **Step groups:** When several steps form a logical group (e.g. module details), add a **heading for that group** (e.g. `### Module details`) and nest the steps under it (e.g. `#### Step 1`, `#### Step 2`). Add a **one-line summary** under the group heading so the reader knows what those steps accomplish (e.g. "The following steps (1–3) configure the module name, provider, connector, and storage type.").
 - **Intro before lists:** **Always add a short intro sentence before every numbered or bullet list** that states what the list is for or what the reader is about to do. Do not jump straight into "1. Select...". This helps readers and LLMs understand context (e.g. "On the Execution pipeline step of the wizard, do the following:" then "1. Select a pipeline...").
 - **UI elements:** **Bold all clickable or selectable UI elements** in steps: menu names, buttons, tabs, checkboxes, dropdowns, field labels. Use the same convention everywhere; do not mix bold and plain for the same type of element (e.g. every button like **Create**, **Sync**, **Next** should be bold).
 - **Unfamiliar actions:** When the doc tells the user to do something they might not know how to do (e.g. "run manual sync", "create the pipeline manually"):
@@ -67,7 +78,7 @@ Use clear, numbered sections with **imperative** headers (e.g. "Create a Pipelin
   - If it's **"create X manually"**, give the UI path (e.g. "Go to **Infrastructure** > **Pipelines** > **Create a Pipeline** in your project") and link to the doc that describes it (e.g. "see [Harness Pipelines](/docs/category/pipelines)").
 
 ```markdown
-## Step 1: [Action verb]
+## Step 1: Create an inventory
 
 Instructions here.
 
@@ -75,17 +86,19 @@ Instructions here.
 Add troubleshooting hints inline when they help anticipate common issues.
 :::
 
-## Step 2: [Action verb]
+## Step 2: Register a playbook
 
 More instructions.
 ```
 
 **When to include inline troubleshooting:**
+
 - Common errors that happen during this specific step
 - Configuration gotchas that prevent progress
 - Quick fixes that keep the user moving forward
 
-### 5. Troubleshooting Section (Optional)
+#### 5. Troubleshooting section (optional)
+
 Only include if there are general issues not tied to specific steps.
 
 Use the `<Troubleshoot>` component from `AdaptiveAIContent` — do **not** use static `### heading` + `**Solution:**` pairs. The component renders a collapsible entry sourced from live docs (Kapa) or pre-generated AI responses (Gemini), with a static fallback.
@@ -111,11 +124,13 @@ Then in the body:
 ```
 
 **Choosing `mode`:**
+
 - `mode="docs"` — Harness-specific issues (error codes, pipeline behaviour, module config). Kapa answers at runtime from live docs. Use for most entries.
 - `mode="general"` — Infrastructure-adjacent issues (auth, networking, Terraform, Kubernetes). Gemini pre-generates a response at build time.
 - `mode="fallback-only"` — Deterministic fixes where the answer never changes. Always shows the `fallback`; no AI call is made.
 
 **Rules:**
+
 - Do **not** add `###` headings above each component — the `issue` prop serves as the collapsible heading.
 - The `fallback` prop is required on every entry.
 - Write `issue` with enough context for Kapa to match the right docs (include product name, module, or error message text).
@@ -137,13 +152,15 @@ Then in the body:
 />
 ```
 
-### 6. Next Steps
+#### 6. Next steps
+
 Wrap up with:
+
 - **Brief conclusion** (1-2 sentences): Summarize what was accomplished
 - **2-3 related links**: Most logical next actions or related docs
 
 ```markdown
-## Next Steps
+## Next steps
 
 You've successfully [accomplished X]. You can now [key capability unlocked].
 
@@ -152,11 +169,17 @@ You've successfully [accomplished X]. You can now [key capability unlocked].
 - [Related doc 3]
 ```
 
-## Content Guidelines
+### Markdown headings and sidebar
 
-- **Headers:** Use instructive, imperative forms (Create, Configure, Set up), not gerunds (Creating, Configuring). Exception: gerunds are fine for concepts like "Understanding CI/CD" or the section title "Troubleshooting".
+- **No `#` (h1) in the file body.** Do not use a single-hash heading in Markdown. Start the document body at `##`. The page still has an official title via frontmatter `title` (and Docusaurus may render it per theme).
+- **Sentence case for in-doc headings (`##`, `###`, …):** Capitalize the **first word** only, except for **proper nouns**: technologies (e.g. **Docker**, **Kubernetes**, **GitHub**), **Harness** modules and products (e.g. **IaCM**, **STO**, **CD** when referring to the module), and other trademarked or official names. Examples: `## Create a pipeline`, `## Configure the IaCM plugin`, `## Install a Kubernetes delegate`.
+- **Sidebar labels (navigation):** Use **Title Case** — capitalize major words in the left nav. Set this with **`sidebar_label`** when it needs to read differently from `title`, or shape the **`title`** itself in Title Case if it doubles as the sidebar label and matches the nav wording you want.
+
+### Content guidelines
+
+- **Headers:** Imperative, sentence case; no gerunds in step titles (prefer `## Configure the connector` over `## Configuring the connector`). Exception: concept sections may use noun phrases (`## Troubleshooting`, `## Prerequisites`). Gerunds are fine for broad concepts like "Understanding CI/CD" when that fits the content.
 - **Lists:** When each item has a concept/action and an explanation, use **Bold label:** description. For simple self-explanatory lists, plain formatting is fine. Always add a short intro sentence before a list that states what the list is for.
 - Keep prerequisites minimal and relevant; link to "how" for each.
 - Include code examples where helpful.
-- Use callouts (:::tip, :::warning, :::info) strategically.
+- Use callouts (`:::tip`, `:::warning`, `:::info`) strategically.
 - Link to related concepts inline, not just at the end.

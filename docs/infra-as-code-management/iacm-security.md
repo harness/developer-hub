@@ -9,27 +9,37 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import InteractiveIaCMDiagram from "./components/interactive-svg";
 
-Harness IaCM integrates robust security measures to safeguard your infrastructure state. It leverages the Harness Platform's functionalities, including Authentication, Role-Based Access Control (RBAC), Resource Groups, Pipelines, Audit Trail, Connectors, Secrets, and Licensing. These measures adhere to the stringent security protocols [outlined in the Security section](https://www.harness.io/security). For Infrastructure as Code Management (IaCM), Harness IaCM ensures:
+Harness IaCM integrates security measures to safeguard your infrastructure state. It uses the Harness Platform’s **authentication**, **[RBAC](/docs/platform/role-based-access-control/rbac-in-harness)**, **resource groups**, **pipelines**, **[Audit Trail](/docs/platform/governance/audit-trail)**, **connectors**, **secrets**, and licensing, consistent with the practices summarized on **[Harness Trust & Security](https://www.harness.io/security)**. For Infrastructure as Code Management (IaCM), Harness provides the following:
 
 - Data encryption in transit using TLS 1.3.
 - Data encryption at rest with AES 256.
 - Regular security testing and vulnerability scanning.
 - Logical and physical data segmentation.
 
-### Address common security concerns
+## Addressing common security concerns
 
-Harness protects customer infrastructure and data through rigorous security measures. Access to systems is restricted to authorized employees using secure connections, with all activities logged and reviewed regularly. State files and sensitive information are safeguarded with strong encryption (TLS 1.3 and AES 256) and controlled access. Customers can further enhance security by integrating their identity provider and setting IP allowlists.
+Harness protects customer infrastructure and data through access controls, encryption (TLS 1.3 in transit and AES-256 at rest where applicable), and separation of customer data. You can integrate your identity provider, constrain access with RBAC, and use **[IP allowlisting and delegate networking](/docs/platform/references/allowlist-harness-domains-and-ips)** so outbound and inbound patterns match your enterprise standards. For broader connectivity options (including private access patterns), see **[Private network connectivity](/docs/platform/references/private-network-connectivity)**.
 
-During the planning and execution phases, Harness ensures compliance by checking changes against organizational policies and detecting any tampering with state files before execution. These measures maintain a secure and compliant environment for managing infrastructure changes.
+During planning and execution, Harness can enforce **policy** on infrastructure changes (for example via **[Open Policy Agent (OPA)](/docs/infra-as-code-management/policies-governance/opa-workspace)** and **[plan and cost policies](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy)**) and maintain copies of **plan** and **state** for visibility and controls as described below.
 
---- 
+For **cost estimation**, Harness can use **[Infracost](/docs/infra-as-code-management/workspaces/cost-estimation)** when the feature is enabled on the workspace; supported behavior and licensing follow that topic and **[What’s supported in IaCM](/docs/infra-as-code-management/whats-supported)**.
+
+**[Drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection)** and **[IaC security scanning (STO)](/docs/infra-as-code-management/whats-supported#security-scanners)** are complementary capabilities for ongoing posture and code review — they extend the core plan/apply flow rather than replacing it.
+
+Platform **[AI and automation](/docs/platform/harness-ai/harness-agents)** features evolve on their own roadmap; they use the same RBAC and pipeline audit patterns as other Harness execution. For current IaCM-specific integrations (for example **MCP**), see **[What’s supported in IaCM](/docs/infra-as-code-management/whats-supported)**.
+
+---
+
 ## Security components
-The operational model flow is comprised of three components:
+
+The operational model is comprised of three components:
+
 <Tabs>
 <TabItem value="Manage state storage">
 <div style={{ display: "none" }}>
 ### Manage state storage
 </div>
+
 All executed commands follow your defined backend, dictating where your infrastructure state is stored and managing [OpenTofu](https://opentofu.org/) or Terraform operations like `apply` and `destroy`.
 
 :::note default backend
@@ -39,45 +49,63 @@ If no plan file is specified, IaCM defaults to its own backend implicitly.
 </TabItem>
 <TabItem value="Secure Pipeline Execution">
 <div style={{ display: "none" }}>
-### Secure Pipeline Execution
+### Secure pipeline execution
 </div>
-IaCM operates OpenTofu or Terraform commands within a secure pipeline environment, handling setup, variable and secret management, execution preparation, and data management to protect sensitive configurations.
 
-	1. **Workspace and Configuration Setup:**
-            - Harness IaCM retrieves the workspace configuration and associated files, including dependent IaC modules specified in your settings.
-	2.  **Variable and Secret Integration:**
-	     - Variables and secret values defined in your workspace are collected and resolved, adhering to Harness Platform security protocols.
-	3. **Execution Preparation:**
-	    - All relevant configuration files and dependent modules are cloned into the pipeline environment. Secrets are integrated to facilitate interaction with your IaC-managed resources.
-	    - IaC applications are pulled to your environment just in time for execution, ensuring that the most up-to-date configurations are applied.
-	4. **Data Management:**
-	     - A read-only copy of essential files such as the plan and state files, is uploaded to Harness Cloud to enable IaCM functionalities.
+IaCM runs OpenTofu or Terraform commands within a pipeline environment, handling setup, variable and secret resolution, execution preparation, and data handling according to Harness Platform security protocols.
 
-:::tip External to Pipelines
-IaCM runs OpenTofu/Terraform commands exclusively within the pipeline environment. When using an external backend, IaCM accesses it solely with the credentials provided within the pipeline.
+1. **Workspace and configuration setup:** Harness IaCM retrieves the workspace configuration and associated files, including dependent IaC modules specified in your settings.
+2. **Variable and secret integration:** Variables and secrets defined in the workspace (and via **[connectors and secret managers](/docs/category/secrets-management)**) are collected and resolved before execution.
+3. **Execution preparation:** Configuration files and dependent modules are brought into the pipeline execution environment. Secrets are available only as needed for your IaC operations.
+4. **Data management:** Read-only copies of artifacts such as **plan** and **state** files are made available to Harness Cloud so IaCM features (history, UI, policy, and cost steps where enabled) can operate.
+
+:::tip External to pipelines
+IaCM runs OpenTofu/Terraform commands in the pipeline execution environment. When you use an **external** remote backend, IaCM accesses it with the credentials supplied for that run (for example connector or workspace configuration).
 :::
+
 </TabItem>
 <TabItem value="Cloud-Based Security Measures">
 <div style={{ display: "none" }}>
-### Cloud-Based Security Measures
+### Cloud-based security measures
 </div>
-IaCM/Harness Cloud upholds security standards, storing summary data for workspaces and executions in a secure database. All state and plan files are kept in Google Cloud Storage (GCS) and accessed securely for real-time processing.
 
-For data storage, summary information about workspaces and executions is aggregated in a secure database for easy access. State and plan files are kept in Google Cloud Storage (GCS) and are available for real-time processing, with a single bucket per customer account.
+Harness Cloud maintains summary data for workspaces and executions in a secure data store. **State** and **plan** files for IaCM are stored in **Google Cloud Storage (GCS)** with per-customer separation (for example **one bucket per customer account**) and are accessed over secure channels for product features that depend on them.
+
 </TabItem>
 </Tabs>
+
 ---
 
-## Operational Model
-In infrastructure management, security is paramount, as misconfigurations or unauthorized access can lead to significant vulnerabilities. Harness IaCM’s security model ensures that your infrastructure state, configurations, and sensitive data are protected at every stage of deployment. By encrypting data, controlling access, and integrating compliance checks, IaCM provides a secure and compliant environment that minimizes risks and maximizes operational confidence. This model is essential for organizations looking to protect their infrastructure while maintaining efficiency in managing and deploying IaC workflows.
+## Network egress and allowlisting
 
-The following diagram below illustrates the IaCM operational security flow and the key operations performed at each stage:
+IaCM execution typically runs on infrastructure you control (for example a **[Kubernetes delegate](/docs/platform/delegates/install-delegates/overview)**). Plan your network so that:
 
-1. **Run the `plan` Command:** The plan command executes in your pipeline environment, where it compares your defined backend state with proposed infrastructure changes.
-2. **Cost Estimation and Policy Checks:** During the plan step, a copy of the plan is sent to Harness Cloud for cost estimation and is checked against your OPA policies to enforce implicit policies on the Plan File entity. [Learn more about configuring OPA policies](https://developer.harness.io/docs/infra-as-code-management/policies-governance/opa-workspace).
-3. **Plan Storage:** A copy of the plan is stored in IaCM/Harness Cloud, providing pipeline and historical tracking of changes over time.
-4. **Confirm Apply/Destroy Parameters:** Before executing changes, IaCM verifies your proposed updates by comparing them against the defined backend state.
-5. **Apply/Destroy Execution:** When applying or destroying infrastructure changes, IaCM ensures adherence to defined policies. After verification, changes are applied, and a new state is stored securely in IaCM/Harness Cloud.
-6. **State Storage and Historical Tracking:** A copy of the state file is stored securely in IaCM/Harness Cloud, enabling historical tracking and visibility within the UI, including resource views and past states.
+- Delegates meet **[delegate network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements#network-requirements)** (outbound to Harness Manager, and paths to your Git providers, cloud APIs, and remote state endpoints as configured).
+- Any **[IP allowlisting](/docs/platform/references/allowlist-harness-domains-and-ips)** or **[private connectivity](/docs/platform/references/private-network-connectivity)** policies you use align with how those delegates reach Harness and your internal systems.
+
+Contact **[Harness Support](mailto:support@harness.io)** for region- and product-specific allowlist guidance if you are locking down egress or ingress.
+
+---
+
+## Audit trail, retention, and export
+
+Harness **[Audit Trail](/docs/platform/governance/audit-trail)** records many configuration and lifecycle actions (who did what, when, and on which resource). The UI supports filtered views and date ranges; audit data is retained **up to two years** in Harness. To keep logs longer or feed a SIEM, use **[audit log streaming](/docs/platform/governance/audit-trail/audit-streaming)**.
+
+Pipeline execution events are optional: enable **Pipeline Execution Audit Events** at account scope if you need start/end and stage events in the audit trail (see the Audit Trail overview). IaCM workspace and module changes appear under the **Infrastructure as Code Manager** category in audit documentation.
+
+---
+
+## Operational model
+
+In infrastructure management, security depends on controlling who can change state, what runs in the pipeline, and how plans and policies are evaluated before apply.
+
+The diagram below illustrates the high-level **operational security flow**. Harness continues to add capabilities (additional scanners, drift workflows, policies, and integrations); treat this as the **core** plan/apply path — refer to **[Get started with IaCM](/docs/infra-as-code-management/get-started)** and **[What’s supported](/docs/infra-as-code-management/whats-supported)** for the latest feature set.
+
+1. **Run the `plan` command:** The plan runs in your pipeline environment and compares proposed changes with state from your configured backend.
+2. **Cost estimation and policy checks:** When enabled, plan output can be used for **[cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation)** (Infracost-based) and evaluated against **[OPA policies](/docs/infra-as-code-management/policies-governance/opa-workspace)** and **[plan / cost policies](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy)** on the plan entity.
+3. **Plan storage:** A copy of the plan can be stored in Harness Cloud for pipeline history and tracking.
+4. **Confirm apply/destroy parameters:** Before mutating infrastructure, IaCM validates the proposed operation against the expected backend state.
+5. **Apply/destroy execution:** After checks pass, changes run in the pipeline environment; policies and approvals you configure still apply.
+6. **State storage and historical tracking:** State is maintained per your backend; Harness also retains copies as described in **Cloud-based security measures** for product features.
 
 ![IaCM Security Diagram: Flow from pipeline execution, through state storage, to Harness Cloud security](/img/iacm-security.svg)

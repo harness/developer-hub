@@ -11,8 +11,9 @@ When creating new documentation pages, follow this structure:
 ### Frontmatter
 ```yaml
 ---
-title: [Clear, descriptive title]
-description: [One-sentence summary]
+title: Clear, descriptive title
+sidebar_label: Title Case Nav Label
+description: One-sentence summary
 keywords:
   - keyword1
 tags:
@@ -20,13 +21,15 @@ tags:
 ---
 ```
 
+Use `sidebar_label` when the left-nav text (Title Case, capitalize major words) should differ from `title`. Omit if the sidebar should match `title`.
+
 ### Standard Sections
 
 1. **Introduction** (2–3 paragraphs): what it is, why use it, key benefits.
 2. **Prerequisites**: required setup, permissions, or knowledge.
-3. **Step-by-step instructions**: use imperative headers (`## Install Dependencies`, not `## Installing Dependencies`). Add inline `:::tip` callouts for common errors at the relevant step.
+3. **Step-by-step instructions**: use imperative headers in **sentence case** (`## Install dependencies`, not `## Installing dependencies`). Capitalize proper nouns (technologies, Harness modules such as **IaCM**). Do not use `#` in the Markdown body; start at `##`. Add inline `:::tip` callouts for common errors at the relevant step.
 4. **Troubleshooting** (optional): use the `<Troubleshoot>` component — see below.
-5. **Next Steps**: 1–2 sentence conclusion + 2–3 related links.
+5. **Next steps**: 1–2 sentence conclusion + 2–3 related links.
 
 ---
 
@@ -80,17 +83,21 @@ import { FAQ } from '@site/src/components/AdaptiveAIContent';
 
 ---
 
-## Markdown Headers
+## Markdown headers
+
+- **No `#` (h1) in doc Markdown bodies.** Use `##` as the first in-file heading; the page title comes from frontmatter `title`. Use `sidebar_label` (Title Case) when the nav label must differ from `title`.
+- **Sentence case** for `##` / `###` headings: capitalize the first word and **proper nouns** only (e.g. **Kubernetes**, **Terraform**, **IaCM**, **Harness**).
+- **Sidebar:** labels in the left nav use **Title Case** (set via `sidebar_label` or a Title Case `title`).
 
 Use imperative headers, not gerunds:
 
 | ❌ Avoid | ✅ Use |
 |---------|--------|
-| Installing Dependencies | Install Dependencies |
+| Installing dependencies | Install dependencies |
 | Configuring the API | Configure the API |
-| Running Tests | Run Tests |
+| Running tests | Run tests |
 
-Exception: "Troubleshooting" as a section name is acceptable.
+Exceptions: concept sections like **Troubleshooting** or **Prerequisites** are fine as noun phrases.
 
 ---
 

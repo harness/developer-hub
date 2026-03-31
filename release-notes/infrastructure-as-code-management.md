@@ -116,7 +116,7 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 
 ## November 2025
 ### New Features & Enhancements:
-- **Ansible Plugin Refactor | [Docs](/docs/infra-as-code-management/configuration/ansible)** - Complete refactor of Ansible Plugin architecture for improved stability and performance
+- **Ansible Plugin Refactor | [Docs](/docs/infra-as-code-management/configuration-management/ansible/overview)** - Complete refactor of Ansible Plugin architecture for improved stability and performance
 
 ### Bug Fixes & Improvements:
 - Fixed an issue where OPA policy violation pop-ups did not appear on the Variables and Connector pages

@@ -53,7 +53,7 @@ Go to [OpenTofu migration](https://opentofu.org/docs/intro/migration/) to migrat
 
 ## Supported Workspace Connectors
 ### Configuration management
-- **Ansible**: Harness IaCM integrates with Ansible so you can define your target machines (**inventories**) and apply automation tasks (**playbooks**) as part of your CI/CD pipelines. Go to [Ansible Support](/docs/infra-as-code-management/configuration/ansible).
+- **Ansible**: Harness IaCM integrates with Ansible so you can define your target machines (**inventories**) and apply automation tasks (**playbooks**) as part of your CI/CD pipelines. Go to [Ansible in IaCM](/docs/infra-as-code-management/configuration-management/ansible/overview).
 
 ### Cloud Providers
 - **AWS**: Connect via your AWS account to leverage extensive IaCM features.

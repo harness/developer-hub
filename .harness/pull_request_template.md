@@ -19,19 +19,5 @@ Please provide a comprehensive summary of the changes in this pull request, or u
 
 ---
 
-## Screenshots (if needed)
+## Screenshots / recordings
 [Attach screenshots here if required]
-
----
-
-## PR Lifecycle
-
-We aim to merge PRs within one week or less, but delays happen sometimes.
-
-If your PR is open longer than two weeks without any human activity, please tag a [code owner](https://github.com/harness/developer-hub/blob/main/.github/CODEOWNERS) in a comment.
-
-**PRs must meet these requirements to be merged:**
-- Successful preview build.
-- Code owner review.
-- No merge conflicts.
-- Release notes/new features docs: Feature/version released to at least one prod environment.

@@ -1,0 +1,14 @@
+{
+  "label": "Ansible",
+  "position": 10,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "default",
+  "link": {
+    "type": "doc",
+    "id": "infra-as-code-management/configuration-management/ansible/overview"
+  },
+  "customProps": {
+    "helpdocs_category_id": ""
+  }
+}
