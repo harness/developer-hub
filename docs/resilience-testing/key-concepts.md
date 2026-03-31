@@ -139,21 +139,61 @@ A [ChaosHub](./chaos-testing/chaoshub) is a centralized repository for reusable 
 
 Load Testing validates that your system can handle expected and peak traffic while maintaining performance and reliability.
 
-**Key Concepts** (Coming Soon):
-- Traffic patterns and virtual users
-- Performance metrics (response time, throughput, error rate)
-- Bottleneck identification
-- Auto-scaling validation
+### Virtual Users
+
+A **virtual user** (VU) simulates a real user executing your defined scenario: sending HTTP requests, waiting for responses, and looping continuously for the duration of the test. The **Number of Users** setting controls peak concurrency.
+
+### Load Profile
+
+The load profile defines how virtual users are introduced over time:
+
+- **Ramp-Up Phase**: Users increase linearly from 0 to the target count over the configured **Ramp-Up Duration**. This models realistic traffic growth and avoids an artificial cold-start spike.
+- **Steady-State Phase**: After ramp-up, the full user count runs for the remaining test duration (`Test Duration - Ramp-Up Duration`).
+
+### Scenario
+
+A scenario is the sequence of HTTP requests each virtual user executes. A scenario can be defined visually in the UI editor or through a custom [Locust](https://locust.io/) Python script.
+
+### Assertions
+
+Assertions define per-request success criteria. Two types are supported:
+
+- **Text**: Validates that the response body contains a specific string
+- **Response Time**: Validates that the response arrives within a specified latency threshold
+
+Requests that fail assertions are counted as errors in test results.
+
+### Load Test Infrastructure
+
+A Linux host with the Harness chaos agent installed with the `--load` flag. This is the same Linux Chaos Infrastructure used for chaos testing, with load testing support enabled. The agent receives execution commands, runs the Locust process locally, and streams metrics back to Harness. See [Load Test Infrastructure](./load-testing/infrastructure).
 
 ## Disaster Recovery Testing
 
-Disaster Recovery Testing validates that backup systems, failover mechanisms, and recovery procedures work during catastrophic scenarios.
+Disaster Recovery Testing validates that backup systems, failover mechanisms, and recovery procedures work during catastrophic scenarios. Each DR test is a Harness pipeline stage, giving you full orchestration of failover, validation, and notification steps.
 
-**Key Concepts** (Coming Soon):
-- Recovery Time Objective (RTO) and Recovery Point Objective (RPO)
-- Failover mechanisms and backup validation
-- Business continuity planning
-- Disaster recovery procedures
+### RTO and RPO
+
+- **Recovery Time Objective (RTO)**: The maximum acceptable time for a system to be restored to full operation after a failure. DR tests validate that your recovery procedures complete within this window.
+- **Recovery Point Objective (RPO)**: The maximum acceptable amount of data loss measured in time. DR tests validate backup recency and data consistency after a simulated recovery.
+
+### Pipeline-Based DR Tests
+
+DR tests are built using Harness Pipeline Studio. Each DR test is a stage with four tabs:
+
+- **Overview**: Stage name, objective, timeout, and stage variables
+- **Environment**: Target Harness environment, Chaos Infrastructure, and stage-level failure strategy
+- **Execution**: Step canvas where you compose the recovery workflow using DR-specific steps (Chaos Probe, Chaos Fault, Chaos Action) and standard Harness steps
+- **Advanced**: Delegate selector, conditional execution, looping strategy, and step-level failure strategy
+
+### Failure Strategy
+
+Defines what happens when a step or stage encounters an error. You can handle specific failure types (Authentication Errors, Connectivity Errors, Timeout Errors, etc.) with actions like Rollback Pipeline, Retry Step, Abort, Manual Intervention, or Mark As Failure.
+
+### Conditional Execution
+
+Controls whether a stage runs based on pipeline state: on success (default), on failure, always, or via a custom JEXL expression. Useful for running rollback stages only when a failover stage fails.
+
+See [DR Testing Concepts](./dr-testing/concepts) for a full breakdown of all concepts.
 
 ## Harness Resilience Testing Concepts
 

@@ -3437,12 +3437,17 @@ const sidebars: SidebarsConfig = {
           className: 'horizontal-bar sidebar-item-new',
         },
         "resilience-testing/load-testing/get-started",
+        "resilience-testing/load-testing/concepts",
+        "resilience-testing/load-testing/infrastructure",
+        "resilience-testing/load-testing/analyze-results",
         {
           type: 'html',
           value: 'Disaster Recovery Testing',
           className: 'horizontal-bar sidebar-item-new',
         },
         "resilience-testing/dr-testing/get-started",
+        "resilience-testing/dr-testing/concepts",
+        "resilience-testing/dr-testing/pipeline-stage-reference",
         {
           type: 'html',
           value: 'Shared Capabilities',

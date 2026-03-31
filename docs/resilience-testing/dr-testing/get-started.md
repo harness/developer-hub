@@ -1,11 +1,11 @@
 ---
-title: Get Started with Disaster Recovery Testing
+title: Get Started with DR Testing
 sidebar_label: Get Started
 sidebar_position: 1
-description: Learn how to get started with Harness Disaster Recovery Testing
+description: Learn how to create and run your first DR test in Harness Resilience Testing
 ---
 
-Disaster Recovery (DR) Testing validates that your systems can recover from catastrophic failures. DR tests are executed as pipeline stages, allowing you to orchestrate recovery scenarios with validation, failover, and notification steps.
+Disaster Recovery (DR) Testing validates that your systems can recover from catastrophic failures. Each DR test is a Harness pipeline stage, giving you the full power of Pipeline Studio to orchestrate failover, validation, and notification steps in a repeatable, auditable workflow.
 
 :::info Feature Flag
 DR Testing is currently behind a feature flag (`CHAOS_DR_TESTING_ENABLED`). Contact your Harness sales representative to get it enabled for your account.
@@ -13,94 +13,147 @@ DR Testing is currently behind a feature flag (`CHAOS_DR_TESTING_ENABLED`). Cont
 
 ## Prerequisites
 
-- Access to Harness Resilience Testing module
-- Harness environment and infrastructure configured
+- Access to the Harness Resilience Testing module
+- A Harness environment configured in your project
+- A **Kubernetes Chaos Infrastructure** connected to the cluster where your target application runs (required for Chaos Fault and Chaos Probe steps)
+- Appropriate permissions to create pipelines
 
-## Create a DR Test
-
-DR tests are created and then configured as pipeline stages.
-
-### Step 1: Create New DR Test
+## Create your first DR test
 
 1. Navigate to **Resilience Testing** > **DR Testing**
 2. Click **+ New DR Test**
 
-### Step 2: Configure DR Test Details
+The **DR Testing** list shows all DR tests in the project with their Recent Executions, Last Execution status, and Last Modified timestamp.
 
-In the **Create new DR Test** dialog:
+### Step 1: DR Test Details
 
-- **Name**: Enter a descriptive name for your DR test
-- **Description**: (Optional) Add details about the disaster scenario being tested
-- **Tags**: (Optional) Add tags to organize tests (e.g., `region-failover`, `backup-restore`)
-- **Objective**: (Optional) Define the objective for this DR test
+In the **Create new DR Test** dialog, fill in:
 
-![DR Test Details](./static/create-dr-test.png)
+| Field | Description |
+|---|---|
+| **Name** | A descriptive name for the DR test |
+| **Id** | Auto-generated from the name. Editable via the pencil icon. |
+| **Description** | (Optional) Details about the disaster scenario being tested |
+| **Tags** | (Optional) Labels to organize tests |
+| **Objective** | (Optional) The goal or success criteria for this DR test |
 
-Click **Continue in Pipeline Studio** to proceed.
+![Create new DR Test](./static/create-dr-test.png)
 
-### Step 3: Configure Pipeline Stage
+Click **Continue in Pipeline Studio** to open the pipeline stage editor.
 
-The DR test opens as a pipeline stage in Pipeline Studio.
+### Step 2: Configure the Pipeline Stage
+
+Each DR test is a stage in a Harness pipeline. Pipeline Studio has four tabs: **Overview**, **Environment**, **Execution**, and **Advanced**.
+
+![Pipeline Studio](./static/pipeline-studio.png)
 
 #### Overview Tab
 
-Configure the stage details:
+The stage overview is pre-populated from the DR test details you entered. You can edit:
 
-- **Name**: The DR test name (auto-populated)
-- **Description**: (Optional) Stage description
-- **Tags**: (Optional) Additional tags
-- **Objective**: (Optional) Stage objective
+- **Name** and **Id**
+- **Description**, **Tags**, and **Objective**
 
-![DR Test Overview](./static/pipeline-studio.png)
+The **Advanced** section within Overview lets you configure:
+
+- **Timeout**: Maximum time the stage is allowed to run (format: `w/d/h/m/s`)
+- **Stage Variables**: Key-value variables scoped to this stage, available in steps via expressions
+
+![Overview tab](./static/overview-tab.png)
+
+Click **Continue** to proceed to the Environment tab.
 
 #### Environment Tab
 
-Specify the environment and infrastructure where DR testing will occur:
+The Environment tab has a **Configuration** section:
 
-- Select an existing environment or create a new one
-- Select the infrastructure for executing the DR test
-- The infrastructure determines where DR steps will run
+- **Specify Environment**: Select an existing environment from the dropdown or click **+ New Environment** to create one
+- **Specify Infrastructure**: Select the Chaos Infrastructure that connects to your target cluster, or click **+ New Infrastructure** to create one. This is the Kubernetes infrastructure where Chaos Fault and Chaos Probe steps will execute.
 
-![DR Test Environment](./static/environment-tab.png)
+Below Configuration, the **Failure Strategy** section defines what happens when the stage encounters an error:
+
+- **On failure of type**: Select one or more failure types to handle:
+  - Authentication Errors, Connectivity Errors, Timeout Errors, Authorization Errors
+  - Verification Failures, Delegate Provisioning Errors, Unknown Errors
+  - Policy Evaluation Failures, Execution-time Inputs Timeout Errors
+  - Approval Rejection, Delegate Restart, User Marked Failure
+  - Or check **All Errors** to catch everything
+- **Perform Action**: Choose how to respond to the failure:
+  - **Rollback Pipeline**, **Retry Step**, **Abort**, **Mark As Failure**, **Rollback Stage**
+
+![Environment tab](./static/environment-tab.png)
+
+Click **Continue** to proceed to the Execution tab.
 
 #### Execution Tab
 
-Click the **Execution** tab to define your DR test workflow. Add pipeline steps:
+The Execution tab is where you build the actual DR workflow. The canvas starts empty with an **Add Step** (+) node.
 
-**For Example:**
+Click **+** to open the Step Library. Under the **Disaster Recovery** category, three step types are available:
 
-**Validation Steps**
-- Validate pre-disaster state
-- Check backup integrity
-- Verify transaction consistency
+| Step Type | Description |
+|---|---|
+| **Chaos Probe** | Validates the health of a Kubernetes workload (e.g., checks if pods are running). Use before and after a fault to verify baseline state and recovery. |
+| **Chaos Fault** | Injects a failure into the target system (e.g., pod-delete, network-loss, CPU stress). Simulates the disaster scenario. |
+| **Chaos Action** | Executes a predefined chaos action from your Resilience Testing module. |
 
-**Failover Steps**
-- Trigger regional failover
-- Switch to secondary data center
-- Activate backup systems
+##### Chaos Probe step fields
 
-**Verification Steps**
-- Validate application availability
-- Check data consistency
-- Verify service health
+| Field | Description |
+|---|---|
+| **Select Chaos Infrastructure** | The Kubernetes infrastructure to run the probe against |
+| **Chaos Probe** | Select a predefined probe (e.g., `default-pod-level-probe`) |
+| **Duration** | How long the probe runs (e.g., `1m`) |
 
-**Notification Steps**
-- Send alerts on completion
-- Notify stakeholders
+Runtime Inputs for `default-pod-level-probe`:
 
-Click **+** to add steps and configure each step's parameters.
+| Input | Description | Example |
+|---|---|---|
+| **TARGET_NAMES** | Name of the workload to validate | `frontend` |
+| **TARGET_NAMESPACE** | Kubernetes namespace of the target | `boutique` |
+| **TARGET_KIND** | Kubernetes resource kind | `Deployment` |
 
-![DR Test Pipeline](./static/execution-tab.png)
+##### Chaos Fault step fields
 
-### Step 4: Save and Run
+| Field | Description |
+|---|---|
+| **Select Chaos Infrastructure** | The Kubernetes infrastructure to inject the fault on |
+| **Chaos Fault** | Select a fault type (e.g., `pod-delete`, `pod-network-loss`) |
 
-1. Click **Save** to save the pipeline
-2. Click **Run** to execute the DR test
-3. Monitor execution progress in real-time
-4. View results in the Execution History
+Steps can be connected sequentially or in parallel depending on your recovery procedure. You can also add standard Harness steps (shell scripts, HTTP calls, approvals, notifications) alongside DR steps.
+
+![Execution tab](./static/execution-tab.png)
+
+#### Advanced Tab
+
+The Advanced tab provides stage-level controls:
+
+**Delegate Selector** (optional): Pin this stage to run on a specific Harness Delegate by adding selector tags.
+
+**Conditional Execution**: Control when the stage runs:
+- If the pipeline executes successfully up to this point (default)
+- If the previous pipeline or stage fails
+- Always
+- Or define a custom **JEXL condition** expression
+
+**Looping Strategy**: Run the stage multiple times using one of three strategies:
+- **Matrix**: Run across combinations of variables
+- **Repeat**: Run a fixed number of times
+- **Parallelism**: Run iterations in parallel
+
+**Failure Strategy** (step-level): Defines failure handling for steps within the stage. Supports the same failure types as the Environment tab. Available actions at this level:
+- Manual Intervention, Ignore Failure, Retry Step, Mark As Success, Abort
+- Proceed with Default Values, Mark As Failure, Rollback Pipeline
+
+### Step 3: Save and Run
+
+1. Click **Save** to persist the pipeline
+2. Click **Run** to execute the DR test immediately
+3. Monitor real-time execution progress in Pipeline Studio
+4. Review full execution history under **Execution History**
 
 ## Next Steps
 
-- [Key Concepts](../key-concepts): Understand resilience testing terminology
+- [Pipeline Stage Reference](./pipeline-stage-reference): Complete field reference for all pipeline stage options
+- [Concepts](./concepts): Understand RTO, RPO, environments, and failure strategies
 - [Chaos Testing](../chaos-testing/get-started): Combine DR testing with chaos experiments
-- [Pipelines](/docs/category/pipelines): Learn more about Harness pipelines
