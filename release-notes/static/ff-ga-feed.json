@@ -1156,5 +1156,17 @@
     "description": "FF to enable secret runtime usage event generation for ng",
     "gaStartDate": "2026-03-30",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_PRINT_K8S_RESOURCES_ONE_PER_LINE",
+    "description": "Prints each Kubernetes resource on a separate line in deployment logs for improved readability.",
+    "gaStartDate": "2026-03-30",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_GOOGLE_MIG",
+    "description": "Adds support for Google Cloud Managed Instance Groups in deployment workflows.",
+    "gaStartDate": "2026-03-30",
+    "module": "Continuous Delivery"
   }
 ]
