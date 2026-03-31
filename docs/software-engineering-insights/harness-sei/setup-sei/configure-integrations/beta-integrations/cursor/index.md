@@ -12,7 +12,7 @@ The Cursor integration enables SEI 2.0 to track adoption and usage metrics for C
 
 ### Prerequisites
 
-Before you get started, you must create an [API key in Cursor](https://cursor.com/docs/account/enterprise/service-accounts#managing-api-keys) with appropriate permissions to access usage metrics. The API key should have read access to organization or team usage data.
+Before you get started, you must create an [API key in Cursor](https://cursor.com/docs/api#creating-api-keys) with appropriate permissions to access usage metrics. The API key must be created as an Admin API & AI Code Tracking key, and should have read access to organization or team usage data.
 
 ## Setup
 
