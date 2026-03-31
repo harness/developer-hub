@@ -173,12 +173,24 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      COMMENT_ID=$(curl -s -X POST \
-                       -H "Authorization: Bearer $commentorToken" \
-                       -H "Content-Type: application/json" \
-                       -d '{"text": "Please check the Execution Link of the Pipeline for the Website Draft URL. This is located in the Preview Step behind the Harness VPN and also is available in #hdh_alerts. E.g Website Draft URL: https://unique-id--harness-developer.netlify.app. Current Draft URL is: <+execution.steps.Publish_Netlify_Preview.output.outputVariables.DRAFT_URL>"}' \
-                       "https://harness0.harness.io/gateway/code/api/v1/repos/l7B_kbSEQD2wjrM7PShm5w/PROD/Harness_Commons/developer-hub/+/pullreq/<+codebase.prNumber>/comments" \
-                       | jq -r '.id')
+                      echo "Posting PR comment with Netlify preview link"
+
+                      RESPONSE=$(curl -s -X POST \
+                      -H "Authorization: Bearer $commentorToken" \
+                      -H "Content-Type: application/json" \
+                      -d '{"text": "Please check the Execution Link of the Pipeline for the Website Draft URL. This is located in the Preview Step behind the Harness VPN and also is available in #hdh_alerts. E.g Website Draft URL: https://unique-id--harness-developer.netlify.app. Current Draft URL is: <+execution.steps.Publish_Netlify_Preview.output.outputVariables.DRAFT_URL>"}' \
+                      "https://harness0.harness.io/gateway/code/api/v1/repos/l7B_kbSEQD2wjrM7PShm5w/PROD/Harness_Commons/developer-hub/+/pullreq/<+codebase.prNumber>/comments")
+
+                      echo "Response: $RESPONSE"
+
+                      COMMENT_ID=$(echo "$RESPONSE" | jq -r '.data.id // .id')
+
+                      echo "Extracted COMMENT_ID: $COMMENT_ID"
+
+                      if [ -z "$COMMENT_ID" ] || [ "$COMMENT_ID" = "null" ]; then
+                        echo "❌ Failed to create comment"
+                        exit 1
+                      fi
 
                       curl -X PUT \
                        -H "Authorization: Bearer $commentorToken" \
@@ -229,7 +241,7 @@ pipeline:
       type: Secret
       description: ""
       required: false
-      value: harnessCodeHdhCommentorToken
+      value: hdhCommenterToken
     - name: hdhYarnBuild
       type: Secret
       description: ""
