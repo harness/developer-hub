@@ -35,7 +35,7 @@ In the SBOM, dependency names may differ from their original source names, as SB
 
 ## SBOM Orchestration step configuration
 
-<DocImage path={require('./static/sbomm-overvieww.png')} width="50%" height="50%" />
+<DocImage path={require('./static/sbom-orchestration-overview.png')} width="50%" height="50%" />
 
 You can use **SBOM Orchestration** step to generate an SBOM in either the **Build** or **Deploy** stage of a Harness pipeline.
 
