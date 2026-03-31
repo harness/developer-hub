@@ -3,6 +3,7 @@ import fs from 'fs-extra';
 const MODULE_NAMES = {
   platform: 'Platform',
   delegate: 'Delegate',
+  'delegate-v2': 'Delegate (Closed Beta)',
   'self-managed-enterprise-edition': 'Self-Managed Enterprise Edition',
   'harness-solutions-factory': 'Harness Solutions Factory',
   'continuous-delivery': 'Continuous Delivery & GitOps',
@@ -15,6 +16,7 @@ const MODULE_NAMES = {
   'feature-flags': 'Feature Flags',
   'chaos-engineering': 'Chaos Engineering',
   'ai-test-automation': 'AI Test Automation',
+  'ai-sre': 'AI SRE',
   'security-testing-orchestration': 'Security Testing Orchestration',
   'software-supply-chain-assurance': 'Supply Chain Security',
   'sast-and-sca': 'SAST and SCA',
@@ -61,7 +63,58 @@ function parseSidebarContent(content) {
   let i = 0;
 
   while (i < lines.length) {
-    const line = lines[i].trim();
+    const rawLine = lines[i];
+    const line = rawLine.trim();
+
+    /* Multi-line `{ type: 'doc' | "html", ... }` blocks (e.g. delegate-v2, section dividers) */
+    if (line === '{') {
+      let braceDepth =
+        (rawLine.match(/{/g) || []).length - (rawLine.match(/}/g) || []).length;
+      let j = i + 1;
+      const blockLines = [rawLine];
+      while (j < lines.length && braceDepth > 0) {
+        const l = lines[j];
+        braceDepth += (l.match(/{/g) || []).length - (l.match(/}/g) || []).length;
+        blockLines.push(l);
+        j++;
+      }
+      const block = blockLines.join('\n');
+
+      if (/type:\s*['"]html['"]/.test(block) && block.includes('horizontal-bar')) {
+        const valueMatch = block.match(/value:\s*["']([^"']+)["']/);
+        const categoryName = valueMatch?.[1];
+        if (categoryName) {
+          if (currentCategory.modules.length > 0) {
+            categories.push(currentCategory);
+          }
+          currentCategory = {
+            name: categoryName,
+            modules: [],
+          };
+        }
+        i = j;
+        continue;
+      }
+
+      if (/type:\s*['"]doc['"]/.test(block)) {
+        const idMatch = block.match(/id:\s*['"]([^'"]+)['"]/);
+        if (idMatch) {
+          const moduleId = idMatch[1];
+          if (moduleId !== 'index' && moduleId !== 'all-modules') {
+            currentCategory.modules.push({
+              id: moduleId,
+              title: MODULE_NAMES[moduleId] || moduleId,
+              link: `/release-notes/${moduleId}`,
+            });
+          }
+        }
+        i = j;
+        continue;
+      }
+
+      i = j;
+      continue;
+    }
 
     // Check if this is the start of an HTML divider object
     if (line.includes('type:') && line.includes('"html"')) {

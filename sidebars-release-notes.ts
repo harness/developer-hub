@@ -17,7 +17,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       id: 'delegate-v2',
-      className: 'sidebar-item-new-green',
+      className: 'sidebar-item-new',
     },
     "code-repository",
     "harness-solutions-factory",
