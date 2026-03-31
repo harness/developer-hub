@@ -557,7 +557,7 @@ kubectl create namespace {namespace}
 ## Next Steps
 
 * Next, try Harness GitOps using one of your own repos and target clusters.
-* Understand [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) and how you can use them with [Harness PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/) to streamline GitOps across multiple environments.
+* Understand [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) and how you can use them with [Harness PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics) to streamline GitOps across multiple environments.
 * Read about how Harness GitOps approaches [Managing Kubernetes secrets in Git using Mozilla SOPS](/docs/continuous-delivery/gitops/security/sops).
 * Checkout this [sample](https://github.com/harness-community/Gitops-Samples/tree/main/Fetch-App-Sync) for Fetching App Details and Syncing App using Harness Pipeline.
 * Checkout this [sample](https://github.com/harness-community/Gitops-Samples/tree/main/Syncing-multiple-apps) for Syncing Multiple GitOps Applications.

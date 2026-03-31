@@ -635,5 +635,5 @@ Consider enabling the `GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT` feature flag t
 ## Next Steps
 
 - Learn about [ApplicationSet basics](/docs/continuous-delivery/gitops/applicationsets/appset-basics)
-- Explore [PR Pipelines with ApplicationSets](/docs/continuous-delivery/gitops/pr-pipelines/)
+- Explore [PR Pipelines with ApplicationSets](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics)
 - Understand [GitOps Application management](/docs/continuous-delivery/gitops/application/manage-gitops-applications)

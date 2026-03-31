@@ -36,7 +36,7 @@ ApplicationSets offer the following capabilities:
 
 You can find more information about ApplicationSets in [Argo CD ApplicationSets documentation](https://argocd-applicationset.readthedocs.io/en/stable/).
 
-In Harness, ApplicationSets are often used with a [PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/). A Harness PR pipeline has the power to update the config and sync changes to the application in just one of the target environments.
+In Harness, ApplicationSets are often used with a [PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics). A Harness PR pipeline has the power to update the config and sync changes to the application in just one of the target environments.
 
 ## ApplicationSet resource
 
@@ -64,7 +64,7 @@ Each generator solves a different use case, but gives you the same end result: a
 
 * All generators can be used in Shell Script steps. For example, you could create a cluster generator YAML spec in a Shell Script step as a bash variable, and then use Git commands in the script to update the ApplicationSet in your repo with the spec in the step. The updated repo spec will be used in the next Application sync (manual or automatic).
 
-For information on PR pipeline integration, review the execution steps in [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/#review-execution-steps).
+For information on PR pipeline integration, review the execution steps in [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics).
 
 ### Supported Generator Types
 
@@ -238,4 +238,4 @@ The sync policy for ApplicationSets is managed by the Argo CD ApplicationSet con
 - [Create and manage ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial)
 - [Argo CD ApplicationSet Generators](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators/)
 - [Argo CD ApplicationSet Specification](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/applicationset-specification/)
-- [Harness GitOps PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/)
+- [Harness GitOps PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics)

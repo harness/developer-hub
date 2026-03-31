@@ -1893,7 +1893,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 - Harness now supports the `prefixed_identifier` field in the GitOps Agent Terraform resource. This field provides a scope-prefixed agent identifier, where the scope (account, org, or project) is constant, and the agentId varies based on the specific agent. 
 For example, `account.agentId` for Account-level agents, `org.agentId` for Organisation-level agents, `agentId` (without a prefix) for Project-level agents. (CDS-101503)
 - The GitOps Applications landing page is now automatically refreshed, allowing newly created applications to appear in real-time without requiring manual refresh. (CDS-68662)
-- We have introduced the `allowEmptyCommit` field in the **GitOps Update Release Repo step**, enabling users to push an empty commit if desired. Previously, the step failed if there were no changes in the commit. This enhancement is useful for setting up automated periodic PR pipelines. For more information, go to Harness [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps/#update-release-repo-step). (CDS-103191)
+- We have introduced the `allowEmptyCommit` field in the **GitOps Update Release Repo step**, enabling users to push an empty commit if desired. Previously, the step failed if there were no changes in the commit. This enhancement is useful for setting up automated periodic PR pipelines. For more information, go to Harness [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics#update-release-repo). (CDS-103191)
 - Addressed and resolved all known critical vulnerabilities related to the GitOps Agent and GitOps Service. (CDS-102606)
 - If the GitOps agent is at project scope in Harness it will now reconcile argo clusters and repos that don't have the "project" field as well ("project" in this context refers to the argoproject). (CDS-105211)
 - Timeouts have increased for the Stream APIs: Watch, Logs, and ResourceTree. (CDS-102770, ZDS-72211, ZDS-73868)
@@ -2007,7 +2007,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 - Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
 
-- You can now specify the environment using **Expressions** in the GitOps pipeline. For more information, go to Harness [GitOps documentation](/docs/continuous-delivery/gitops/pr-pipelines/#create-the-pr-pipeline). (CDS-97523)
+- You can now specify the environment using **Expressions** in the GitOps pipeline. For more information, go to Harness [GitOps documentation](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics). (CDS-97523)
 
 - Template name suggestions are now available as part of the **ServiceNow Creation** step. For more information, go to [Harness documentation](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#create-from-form-template) (CDS-97672, ZD-64772)
 

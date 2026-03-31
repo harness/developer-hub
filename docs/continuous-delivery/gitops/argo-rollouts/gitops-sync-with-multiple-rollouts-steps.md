@@ -311,6 +311,6 @@ You can also access outputs from other step types:
 ## Related Resources
 
 - [Managing Rollouts in Harness Pipeline](./managing-rollouts-in-harness-pipelines.md)
-- [GitOps Pipeline Steps](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps.md)
+- [GitOps PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics#gitops-pipeline-steps)
 - [Argo Rollouts Official Documentation](https://argoproj.github.io/argo-rollouts/)
 - [Argo Rollouts kubectl Plugin](https://argoproj.github.io/argo-rollouts/features/kubectl-plugin/)

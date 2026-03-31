@@ -664,6 +664,6 @@ For detailed advanced examples, see:
 ## Related Resources
 
 - [Getting Started with Argo Rollouts](./argo-rollouts-overview.md)
-- [GitOps Pipeline Steps](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps.md)
+- [GitOps PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics#gitops-pipeline-steps)
 - [Argo Rollouts Official Documentation](https://argoproj.github.io/argo-rollouts/)
 - [Argo Rollouts kubectl Plugin](https://argoproj.github.io/argo-rollouts/features/kubectl-plugin/)
