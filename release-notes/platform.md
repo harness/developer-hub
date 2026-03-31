@@ -29,6 +29,18 @@ These release notes describe recent changes to Harness Platform.
 ---
 ## Important feature change notice
 
+:::warning Breaking change: Bitbucket Cloud cross-workspace API deprecation (Delegate v26.02.88600 and SCM Service v1.45.1)
+
+Starting with **Delegate version 26.02.88600** and **SCM Service version 1.45.1**, Harness has migrated to the new Bitbucket Cloud APIs following Atlassian's [deprecation of cross-workspace APIs](https://community.atlassian.com/forums/Bitbucket-articles/Bitbucket-Cloud-Announcing-End-of-Life-for-Cross-Workspace-APIs/ba-p/3196105).
+
+**Impact:**
+- With repository-level access tokens, **Test Connection** and **repository listing** (for example, during remote entity creation in Git Experience) will fail because these operations require workspace-level access.
+- Other Git Experience operations such as branch listing and file sync continue to work with repository-level tokens.
+
+**Recommendation:** Switch to **workspace-level access tokens** for full Bitbucket Cloud connector functionality. For configuration guidance, see the [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings).
+
+:::
+
 :::danger BREAKING CHANGE: Page Size Validation for Role Assignment Filter APIs (Effective: April 3, 2026)
 
 We are introducing validation on the `pageSize` parameter for the following Role Assignment APIs:

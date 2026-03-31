@@ -25,6 +25,19 @@ These release notes describe recent changes to Harness Delegate.
 
 ## Important feature change notice
 
+:::warning Breaking change: Bitbucket Cloud cross-workspace API deprecation (Delegate v26.02.88600 and SCM Service v1.45.1)
+
+Starting with **Delegate version 26.02.88600** and **SCM Service version 1.45.1**, Harness has migrated to the new Bitbucket APIs to align with Atlassian's [deprecation of cross-workspace APIs in Bitbucket Cloud](https://community.atlassian.com/forums/Bitbucket-articles/Bitbucket-Cloud-Announcing-End-of-Life-for-Cross-Workspace-APIs/ba-p/3196105).
+
+**Impact:**
+
+- With repository-level access tokens, **Test Connection** and **repository listing** (for example, during remote entity creation in Git Experience) will fail because these operations require workspace-level access.
+- Other Git Experience operations such as branch listing and file sync continue to work with repository-level tokens.
+
+**Recommendation:** Switch to **workspace-level access tokens** for full Bitbucket Cloud connector functionality. For token configuration guidance, see the [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings).
+
+:::
+
 :::danger Delegate token revocation and deletion in Terraform  (Effective October 13, 2025 & Terraform version 0.38.7)
 
 We have introduced a new argument `token_status`, for managing Delegate tokens in Terraform:
@@ -186,6 +199,10 @@ You can override the default by setting the environment variable on your delegat
 ## February 2026
 
 ### Version 26.02.88600 <!-- February 26, 2026 -->
+
+#### Breaking changes
+
+- **Bitbucket Cloud API migration (SCM Service v1.45.1):** Harness has migrated to the new Bitbucket Cloud APIs following Atlassian's [deprecation of cross-workspace APIs](https://community.atlassian.com/forums/Bitbucket-articles/Bitbucket-Cloud-Announcing-End-of-Life-for-Cross-Workspace-APIs/ba-p/3196105). With repository-level access tokens, **Test Connection** and **repository listing** will fail because these operations require workspace-level access. Other Git Experience operations such as branch listing continue to work. Harness recommends switching to **workspace-level access tokens** for full connector functionality. For details, go to the [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference). [PIPE-32216]
 
 #### Fixed issues
 

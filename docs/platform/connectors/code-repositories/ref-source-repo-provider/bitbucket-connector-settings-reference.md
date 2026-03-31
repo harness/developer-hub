@@ -15,6 +15,14 @@ import TabItem from '@theme/TabItem';
 
 This topic describes the settings and permissions for the Bitbucket connector. Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to both versions.
 
+:::warning Bitbucket Cloud: Workspace-level tokens recommended (Delegate v26.02.88600+)
+
+Starting with **Delegate version 26.02.88600** and **SCM Service version 1.45.1**, Harness has migrated to the new Bitbucket Cloud APIs following Atlassian's [deprecation of cross-workspace APIs](https://community.atlassian.com/forums/Bitbucket-articles/Bitbucket-Cloud-Announcing-End-of-Life-for-Cross-Workspace-APIs/ba-p/3196105). With repository-level access tokens, **Test Connection** and **repository listing** (used during remote entity creation) will fail. Other Git Experience operations such as branch listing continue to work.
+
+Harness recommends switching to **workspace-level access tokens** for full connector functionality. See [Troubleshooting](#troubleshooting) for details.
+
+:::
+
 :::warning App Passwords Deprecated
 
 Bitbucket App Passwords are deprecated and will stop working after June 9, 2026. Migrate to API tokens or access tokens for authentication. For more information, see the [Bitbucket App Password deprecation announcement](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-enters-phase-2-of-app-password-deprecation).
@@ -179,7 +187,7 @@ The authentication options available depend on your Bitbucket account type:
 
 :::
 
-You must provide an account-level token. Repo-level tokens are not supported.
+You must provide an account-level or workspace-level token. Repo-level tokens are not supported.
 
 </TabItem>
   <TabItem value="ssh" label="SSH: SSH Key">
@@ -261,11 +269,17 @@ For On-Prem repos, if the repo URL has an extra segment before the project ID, s
 
 <TabItem value="access-token" label="Access Token">
 
-Access tokens are linked to your Bitbucket repository, project, or workspace. While creating the Bitbucket connector, you get an option to select the access token method for API Authentication.
+Access tokens can be scoped to a Bitbucket repository, project, or workspace. For Bitbucket Cloud connectors, Harness recommends using a **workspace-level** access token. With Delegate version 26.02.88600 and later, repository-level tokens cannot list workspaces, which causes **Test Connection** and **repository listing** to fail.
 
-When you select the access token method, you can provide the reference to a secret containing your Bitbucket access token (which can be stored as a [Harness Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets)) in the **Access Token** field.
+When you select the access token method, provide the reference to a secret containing your Bitbucket access token (stored as a [Harness Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets)) in the **Access Token** field.
 
 For information about the features and limitations of Bitbucket access tokens, see the [Bitbucket documentation](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/).
+
+:::warning
+
+With **Delegate version 26.02.88600** and later, repository-level access tokens can no longer list workspaces due to Atlassian's [deprecation of cross-workspace APIs](https://community.atlassian.com/forums/Bitbucket-articles/Bitbucket-Cloud-Announcing-End-of-Life-for-Cross-Workspace-APIs/ba-p/3196105). If you are using a repository-level access token, Harness recommends switching to a workspace-level access token for full connector functionality.
+
+:::
 
 </TabItem>
 </Tabs>
@@ -368,6 +382,23 @@ If the connection test returns a `not authorized` error, check the following:
 * **Token permissions**: The connection test may fail if the token doesn't have sufficient privileges. Make sure your API token or access token has all the required scopes. See [Create an API token](#create-an-api-token) for the list of required scopes.
 
 * **App Password deprecation**: If you're using an App Password and the connection test fails, the App Password may have expired or been revoked. Migrate to an API token. See [Migrate from App Passwords to API tokens](#migrate-from-app-passwords-to-api-tokens).
+
+### Test Connection or repository listing fails after delegate upgrade to 26.02.88600
+
+After upgrading to **Delegate version 26.02.88600** or later, the following operations may fail if you are using a repository-level access token for Bitbucket Cloud:
+
+* **Test Connection** fails because the test attempts to fetch repositories across the workspace.
+* **Repository listing** (for example, when creating remote entities in Git Experience) returns errors because workspace-level access is required to discover repositories.
+
+Both failures share the same root cause: Atlassian has [deprecated cross-workspace APIs](https://community.atlassian.com/forums/Bitbucket-articles/Bitbucket-Cloud-Announcing-End-of-Life-for-Cross-Workspace-APIs/ba-p/3196105) in Bitbucket Cloud, and repository-level tokens no longer have permission to list workspaces or repositories across the workspace.
+
+Other Git Experience operations — such as branch listing, file sync, and webhook operations — continue to work with repository-level tokens.
+
+To resolve this:
+
+* Switch to a **workspace-level access token**. See the [Bitbucket access tokens documentation](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/) for instructions on creating one, or switch to an [API token](#create-an-api-token) for workspace-level access.
+* If you are already using an **API token** (under Email and API Token authentication), ensure the token has the `read:workspace:bitbucket` scope.
+* Update the connector credentials in Harness and run **Test Connection** to verify.
 
 ### Status doesn't update in BitBucket Cloud PRs
 
