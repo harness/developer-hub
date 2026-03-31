@@ -17,6 +17,23 @@ const DAYS_BACK = parseInt(process.env.AI_SUMMARY_DAYS || '30', 10);
 
 const ROOT_DIR = path.join(__dirname, '..');
 
+/** If the file is recent but the parser found no bullets, still surface the module on /release-notes. */
+function stubEnhancementIfRecentFile(parsedData, daysBack) {
+  if (
+    (parsedData.enhancements && parsedData.enhancements.length > 0) ||
+    (parsedData.fixes && parsedData.fixes.length > 0)
+  ) {
+    return null;
+  }
+  if (!parsedData?.lastUpdated) return null;
+  const d = new Date(`${parsedData.lastUpdated}T12:00:00`);
+  if (Number.isNaN(d.getTime())) return null;
+  const threshold = new Date();
+  threshold.setDate(threshold.getDate() - daysBack * 2);
+  if (d < threshold) return null;
+  return `Updates for this period are documented on the ${parsedData.title} page.`;
+}
+
 // Check for --skip-if-exists flag
 const skipIfExists = process.argv.includes('--skip-if-exists');
 
@@ -113,7 +130,7 @@ async function main() {
         }
 
         console.log(`[rn-summaries]   - ${module.id}: parsing...`);
-        const parsedData = parseReleaseNotes(markdownPath, DAYS_BACK);
+        let parsedData = parseReleaseNotes(markdownPath, DAYS_BACK);
 
         if (!parsedData) {
           console.warn(`[rn-summaries]   - ${module.id}: parsing failed, skipping`);
@@ -124,8 +141,14 @@ async function main() {
           (!parsedData.enhancements || parsedData.enhancements.length === 0) &&
           (!parsedData.fixes || parsedData.fixes.length === 0)
         ) {
-          console.log(`[rn-summaries]   - ${module.id}: no recent content`);
-          continue;
+          const stub = stubEnhancementIfRecentFile(parsedData, DAYS_BACK);
+          if (stub) {
+            parsedData = { ...parsedData, enhancements: [stub] };
+            console.log(`[rn-summaries]   - ${module.id}: using frontmatter stub for landing list`);
+          } else {
+            console.log(`[rn-summaries]   - ${module.id}: no recent content`);
+            continue;
+          }
         }
 
         const entry = { categoryName: category.name, module, parsedData, markdownPath };

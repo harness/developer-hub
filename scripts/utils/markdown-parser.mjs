@@ -47,6 +47,36 @@ function parseReleaseNotes(filePath, daysBack = 30) {
   }
 }
 
+/**
+ * Map ### / #### headings under a month to enhancements vs fixes (landing-page summarizer).
+ * Keeps list-only extraction simple: bullet lines under these headings are collected.
+ */
+function classifySubsectionHeading(rawHeading) {
+  const heading = rawHeading.replace(/^[\s⚠️✅❗]+/u, '').trim();
+  const h = heading.toLowerCase();
+  if (!h) return null;
+
+  if (
+    h.includes('bug fix') ||
+    h.includes('fixed issues') ||
+    /^fixes(\s|$|&)/.test(h)
+  ) {
+    return 'fixes';
+  }
+
+  if (
+    h.includes('new feature') ||
+    h.includes('enhancement') ||
+    h.includes('feature improvement') ||
+    h.includes('deprecation') ||
+    h.includes('breaking')
+  ) {
+    return 'enhancements';
+  }
+
+  return null;
+}
+
 function extractSections(content, dateThreshold, fileIsRecent = true) {
   const enhancements = [];
   const fixes = [];
@@ -75,6 +105,7 @@ function extractSections(content, dateThreshold, fileIsRecent = true) {
         const month = getMonthNumber(monthStr);
         currentDateSection = new Date(year, month, 1);
         sectionCount++;
+        currentSubsection = null;
 
         if (fileIsRecent && sectionCount <= 2) {
           isInRecentSection = true;
@@ -86,21 +117,20 @@ function extractSections(content, dateThreshold, fileIsRecent = true) {
 
     if (!isInRecentSection) continue;
 
-    if (line.match(/^#{3,4}\s+(New Features?|Enhancements?|Fixes?|Fixed [Ii]ssues?)/i)) {
-      const subsectionText = line.replace(/^#{3,4}\s+/, '').toLowerCase();
-
-      if (subsectionText.includes('fix') || subsectionText.includes('issue')) {
-        currentSubsection = 'fixes';
-      } else if (subsectionText.includes('feature') || subsectionText.includes('enhancement')) {
-        currentSubsection = 'enhancements';
+    const headingMatch = line.match(/^#{3,4}\s+(.+)/);
+    if (headingMatch) {
+      const subsection = classifySubsectionHeading(headingMatch[1]);
+      if (subsection) {
+        currentSubsection = subsection;
       }
+      continue;
     }
 
     if (line.match(/^[-*]\s+/) && currentSubsection) {
-      const bullet = cleanBullet(line.replace(/^[-*]\s+/, ''));
+      const raw = line.replace(/^[-*]\s+/, '');
+      const bullet = cleanBullet(raw);
 
       if (bullet && bullet.length > 10) {
-        // Update most recent date when we actually extract content
         if (currentDateSection && (!mostRecentDate || currentDateSection > mostRecentDate)) {
           mostRecentDate = currentDateSection;
         }

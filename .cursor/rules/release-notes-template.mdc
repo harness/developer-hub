@@ -1,0 +1,238 @@
+---
+description: Structure and write release notes for software delivery products
+globs: ["**/release-notes/**", "**/changelog/**", "CHANGELOG.md", "RELEASE_NOTES.md", "**/releases/*.md"]
+alwaysApply: false
+---
+
+# Release Notes Structure & Style Guide
+
+## Core Philosophy
+
+Release notes are for users, not engineers. Every entry should answer:
+**"What changed, why does it matter to me, and do I need to do anything?"**
+
+Write for the person scanning on a Monday morning before a deployment — not the person who built the feature. Always link to existing documentation rather than re-explaining concepts inline.
+
+---
+
+## Document Structure
+
+Release notes are organized by **Month + Year**, newest first. Within each month, use these sections in order:
+
+```
+## Month YYYY               ← e.g. ## February 2026
+
+### New Features & Enhancements
+### Feature Improvements
+### Bug Fixes & Improvements
+### Fixed Issues
+### ⚠️ Breaking Changes      ← only if present
+### Deprecations             ← only if present
+```
+
+Omit sections that have no entries. Never include an empty section.
+
+---
+
+## Month Heading
+
+```markdown
+## February 2026
+```
+
+- **Month and year only** — no version numbers, no ISO dates
+- The heading becomes the anchor link: `#february-2026`
+- Write the month in full (`February`, not `Feb`)
+- Newest month at the top of the file
+
+If a specific component has a version worth calling out, it goes inside the section body as a sub-label, never in the top-level heading:
+
+```markdown
+### New Features & Enhancements
+
+- **IAC Server: Version 1.126:** One or more sentences about this specific version and what customers get.
+```
+
+---
+
+## Entry Format
+
+Put the **bold title**, a **colon**, and the **description on the same line** (one line per entry is typical; wrap in the editor if needed). Do not put a blank line between the title and the body.
+
+Prefix each entry with a **list marker** (`- `) under the month subsection. The [Harness Release Notes](/release-notes) landing page summarizer only collects bulleted lines; a recent `date` in frontmatter can still show a stub card if bullets are missing, but bullets are required for real summaries.
+
+**With documentation link (link in the title or opening clause):**
+```markdown
+- **Feature Name [Docs](/docs/path/to/relevant-page):** One or two sentences describing the user-facing change and its benefit.
+```
+
+**Without documentation link:**
+```markdown
+- **Feature Name:** One or two sentences describing the user-facing change and its benefit.
+```
+
+**Example (real pattern):**
+```markdown
+- **Custom Template Library as a full HTL mirror:** Custom Template Library can be configured as a one-time full mirror of the official Harness Template Library repository.
+```
+
+**With an issue ID (for bug fixes):** Prefer a single line. If there is no extra prose beyond the ticket, you can keep the summary and ID tight:
+
+```markdown
+**Short description of what was fixed (IssueCode-1234):** Optional extra sentence if needed.
+```
+
+Or when the entry is only a one-liner:
+
+```markdown
+**Short description of what was fixed.** (IssueCode-1234)
+```
+
+### Linking to docs
+
+Always prefer linking to an existing doc page over explaining a concept inline. Use the short internal path format:
+
+```markdown
+[Docs](/docs/infra-as-code-management/platform-integrations/platform/iacm-mcp)
+```
+
+- Link to the most specific relevant page (a specific feature page, not the product root)
+- If a new feature doesn't have a doc yet, don't fabricate a link — omit the `[Docs](…)` link and add one once the doc exists
+- For breaking changes or migrations, link to a dedicated migration guide if one exists
+
+---
+
+## Entry Writing Rules
+
+### Titles
+
+| ✅ Do | ❌ Don't |
+|---|---|
+| `MCP Server` | `INFRA-4421: Added MCP support` |
+| `Terragrunt (Beta)` | `Terragrunt support improvements` |
+| `Pipeline execution retry` | `Fixed bug in pipeline` |
+| `OPA policy filtering per environment` | `Policy improvements` |
+
+- Use the **product or feature name** as the bold title
+- Append a lifecycle label in the title when relevant: `Feature Name (Beta)`, `Feature Name (Early Access)`, `Feature Name (GA)`
+- No ticket numbers in titles — issue IDs belong in the body or parenthetically on bug fix lines
+
+### Body copy
+
+- Put the description on the **same line** as the bold title, immediately after the colon (no blank line between title and body)
+- Lead with the **user-facing outcome**, not the implementation
+- One to two sentences is the norm; go longer only if context is genuinely needed
+- If the change requires user action, start with **Action required:**
+- Avoid restating what's already in the title — add new information
+- Plain language — if you need a technical term, it should already be defined in the linked doc
+
+---
+
+## Category Definitions
+
+| Section | Use for |
+|---|---|
+| **New Features & Enhancements** | Capabilities that did not exist before |
+| **Feature Improvements** | Meaningful upgrades to existing features (performance, UX, expanded scope) |
+| **Bug Fixes & Improvements** | Resolved defects and minor behavioural corrections |
+| **Fixed Issues** | Specific tracked bugs with issue IDs |
+| **⚠️ Breaking Changes** | Changes that require user action to maintain existing behaviour |
+| **Deprecations** | Features being phased out, with timeline and migration path |
+
+---
+
+## Lifecycle Labels
+
+Append to the feature name in the bold title:
+
+| Label | Meaning |
+|---|---|
+| `(Early Access)` | Opt-in only, API/behaviour may change |
+| `(Beta)` | Broadly available, still gathering feedback |
+| `(GA)` | Generally Available — stable, fully supported |
+| `(Deprecated)` | Supported but scheduled for removal |
+
+Example:
+```markdown
+- **Terragrunt (Beta) [Docs](/docs/infra-as-code-management/iac-stages/use-iac-stage/terragrunt):** Added a Terragrunt resources sidebar in the Resources tab during pipeline execution and OPA policy filtering per Terragrunt environment.
+```
+
+---
+
+## Breaking Changes
+
+When present, always appears as its own section and includes a migration path. Open with one line in the form `**Summary title:** First sentence…`, then add **`**Who is affected:**`**, **`**Action required:**`**, and before/after blocks on following lines as needed.
+
+```markdown
+### ⚠️ Breaking Changes
+
+- **`trigger` field renamed to `triggerConfig` on the Pipeline Execution API [Migration Guide](/docs/path/to/migration):** The `trigger` field has been renamed to `triggerConfig` to align with the v2 configuration schema.
+
+- **Who is affected:** Anyone calling `POST /pipelines/{id}/execute` directly.
+
+**Before:** `{ "trigger": { "type": "manual" } }`
+**After:** `{ "triggerConfig": { "type": "manual" } }`
+
+The old field will continue to work until **April 2026**, then will be removed.
+```
+
+Always include:
+- Who is affected
+- Before/after examples when the change involves API shape or syntax
+- A removal timeline
+- A link to the migration guide or the most relevant doc
+
+---
+
+## Full Month Example
+
+```markdown
+## February 2026
+
+### New Features & Enhancements
+
+- **MCP Server [Docs](/docs/infra-as-code-management/platform-integrations/platform/iacm-mcp):** Introduced an MCP Server integration that allows AI assistants to interact with IACM resources directly, enabling natural language queries against infrastructure state.
+
+- **Drift Detection for Terraform modules (Beta) [Docs](/docs/infra-as-code-management/iac-stages/drift-detection):** Drift detection now supports nested Terraform modules, surfacing configuration drift at the module level rather than only at the root.
+
+---
+
+### Feature Improvements
+
+- **Terragrunt (Beta) [Docs](/docs/infra-as-code-management/iac-stages/use-iac-stage/terragrunt):** Added a Terragrunt resources sidebar in the Resources tab during pipeline execution and OPA policy filtering per Terragrunt environment.
+
+---
+
+### Fixed Issues
+
+- **Fixed an issue where workspace list pagination would reset on filter change.** (IAC-3476)
+
+- **Fixed incorrect status displayed during rollback when a prior run was still in progress.** (IAC-2281)
+```
+
+---
+
+## What to Exclude
+
+Never include:
+- Semantic version numbers in the month heading
+- Raw commit hashes or branch names
+- Internal ticket numbers as primary identifiers (parenthetical on bug fixes only)
+- Implementation details with no user-facing impact (refactors, test updates, CI changes)
+- Vague entries: "Various stability improvements", "Minor bug fixes"
+- Inline explanations of concepts that already have a doc page — link instead
+
+---
+
+## Quick Checklist
+
+Before publishing, verify:
+
+- [ ] Heading is `## Month YYYY` (e.g. `## February 2026`)
+- [ ] Each entry is a list item: `- **Title:** description` (or `- **Title [Docs](/docs/...):** …`) on one line
+- [ ] No ticket numbers in titles (only parenthetical on `Fixed Issues` lines)
+- [ ] Lifecycle label included where feature is Beta / Early Access / GA
+- [ ] Breaking changes section has who-is-affected, before/after, timeline, and migration link
+- [ ] Deprecated features include removal date and link to migration path
+- [ ] No vague entries or empty sections
+- [ ] Newest month is at the top of the file
