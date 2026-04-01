@@ -129,6 +129,8 @@ redirect_from:
   - /docs/old/path/to/page
 ```
 
+**Custom `slug`:** If the canonical URL is not the default path derived from the file (frontmatter `slug`), list every superseded URL under `redirect_from`. **`slug` must not include a `/docs/` prefix** (Docusaurus already applies `routeBasePath`). Full conventions: `.cursor/rules/doc-slugs-and-redirects.mdc`.
+
 ---
 
 ## AdaptiveAIContent Component System

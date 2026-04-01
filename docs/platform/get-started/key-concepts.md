@@ -5,7 +5,9 @@ helpdocs_topic_id: hv2758ro4e
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
 helpdocs_is_published: true
+slug: /platform/get-started/overview
 redirect_from:
+  - /docs/platform/get-started/key-concepts
   - /docs/platform/get-started/platform-overview
   - /docs/getting-started/key-concepts
   - /docs/get-started/key-concepts

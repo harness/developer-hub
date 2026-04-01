@@ -1,0 +1,58 @@
+---
+description: Doc slug frontmatter, redirect_from requirements, and URL behavior (Docusaurus + docsEnhanced plugin)
+globs: "docs/**/*.md"
+alwaysApply: false
+---
+
+# Doc slugs and `redirect_from`
+
+This site uses Docusaurus with `routeBasePath: docs` for the main docs plugin (and similar base paths for University and Roadmap). The **`docsEnhanced`** plugin mirrors `redirect_from` into Netlify `_redirects` at build time **and** registers client-side redirect routes so **`yarn start`** and hard reloads behave like production.
+
+## Intention
+
+- Authors can set a **canonical URL** that differs from the default path implied by the file name (via frontmatter `slug`).
+- **Old URLs** must keep working via **`redirect_from`**, which feeds both Netlify and the SPA router.
+
+## Slug format (required)
+
+- **`slug` is relative to the docs content root**, not the live site path. Do **not** prefix with `/docs/`.
+- **Correct:** `slug: /infra-as-code-management/get-started/overview`
+- **Wrong:** `slug: /docs/infra-as-code-management/get-started/overview` — Docusaurus prepends `routeBasePath`, which produces **`/docs/docs/...`**, broken direct navigation and inconsistent client routing.
+
+Use the same pattern as elsewhere in the repo (leading slash, path segments after the content root only).
+
+## When `redirect_from` is required
+
+Add **`redirect_from`** on **the destination page** (the file that owns the new canonical URL) whenever **any** prior public URL should still resolve:
+
+| Change | Action |
+|--------|--------|
+| Custom `slug` that replaces the URL the file used to have (e.g. default was `.../overview`, slug now `.../jibberish`) | List **every** old path readers or bookmarks may use under `redirect_from`. |
+| Move/rename file or consolidate docs | Same as [Doc moves](mdc:doc-move.mdc): list all previous URL paths. |
+
+**Rule of thumb:** If the URL no longer matches what the file name / old slug implied, **you must** add `redirect_from` entries for those old paths (or you break links, SEO, and shared bookmarks).
+
+## `redirect_from` path format
+
+- Site-relative paths with a **leading slash** (e.g. `/docs/platform/...`, `/certifications/...` for University).
+- Paths without a leading slash are normalized by the plugin; prefer including `/` for consistency with [doc linking](mdc:doc-linking.mdc).
+
+## YAML quality
+
+- Each list entry must be a **single string** path. Avoid typos such as **`  - - /path`** (nested list) or a **trailing empty list item** (`  - ` with no value), which break tooling and builds.
+
+## Conflicts and duplicates
+
+- Do not list a **`redirect_from`** path that is already another document’s **primary `permalink`** unless you intend that page to own the route; duplicate routes are skipped for SPA redirects and can behave non-deterministically.
+- Multiple docs listing the same `redirect_from` target: only one redirect registration wins; fix content so aliases are unambiguous.
+
+## Production vs local DevHub
+
+- **Production:** Netlify `_redirects` (generated from `redirect_from`) handles server-side redirects.
+- **Local `yarn start`:** Client routes generated from `redirect_from` perform the redirect; there is no Netlify in the dev server.
+
+## Related
+
+- **[Doc moves](mdc:doc-move.mdc):** full workflow for moves, link updates, and `redirect_from`.
+- **[Doc linking](mdc:doc-linking.mdc):** site-relative links and folder vs file URL rules.
+- **`DocPermalinkRedirect`:** `src/components/DocPermalinkRedirect.tsx` — implementation used for SPA redirects (`Redirect` from `@docusaurus/router`, not `Navigate` from root `react-router-dom`).

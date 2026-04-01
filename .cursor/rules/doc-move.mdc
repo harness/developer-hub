@@ -12,6 +12,8 @@ When you **move**, **rename**, or **consolidate** a doc (or merge several docs i
 
 In the **destination** file's YAML frontmatter, add (or append to) `redirect_from` with the previous path(s) under `/docs/` so the old URL continues to work.
 
+For **custom `slug`** (URL different from the default path), see **[Doc slugs and redirect_from](mdc:doc-slugs-and-redirects.mdc)** — you must still list every superseded URL under `redirect_from`.
+
 - **Path format:** Use the path as it would appear in the URL (this project's plugin expects paths from site root, e.g. with leading slash).
   - Example: old file `docs/infra-as-code-management/get-started/onboarding-guide.md` → add `/docs/infra-as-code-management/get-started/onboarding-guide`
 - **Multiple old paths:** If the file had several previous locations or aliases, add each as a list item under `redirect_from`.
