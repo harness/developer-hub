@@ -191,10 +191,10 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/static/fme/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
 
 # SEI Docs
-/docs/software-engineering-insights/ @alai97 @codewdhruv @batraprashant @santoshdodamani
-/release-notes/software-engineering-insights.md @alai97 @codewdhruv @batraprashant @santoshdodamani
-/src/components/Roadmap/data/seiData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
-/src/components/Docs/data/softwareEngineeringInsightsData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
+/docs/software-engineering-insights/ @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
+/release-notes/software-engineering-insights.md @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
+/src/components/Roadmap/data/seiData.ts @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
+/src/components/Docs/data/softwareEngineeringInsightsData.ts @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
 
 # DB DevOps Docs
 /docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
