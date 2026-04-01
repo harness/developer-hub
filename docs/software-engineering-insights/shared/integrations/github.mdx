@@ -141,9 +141,36 @@ Before you configure the SEI GitHub integration, you must generate a GitHub Pers
 </TabItem>
 </Tabs>
 
+## Re-authenticate the GitHub integration
+
+The re-authentication steps depend on the authentication method used for your GitHub integration.
+
+### GitHub App
+
+If you're using a GitHub App integration, re-authenticating as an [SEI Admin](/docs/software-engineering-insights/harness-sei/get-started/rbac#out-of-the-box-roles) reinstalls the app and refreshes organization-level permissions.
+
+1. In GitHub, go to **Settings** → **Applications** → **Installed GitHub Apps**.
+1. Locate the **SEI app**.
+1. Click the app and uninstall it.
+1. Return to Harness SEI.
+1. On the **My Integrations** tab in the **Integrations** page, select your GitHub integration.
+1. Click **Re-Authenticate** and reinstall the app.
+
+### Personal Access Token (PAT)
+
+If you're using a Personal Access Token, re-authentication updates the token used for API access.
+
+1. Generate a new PAT in GitHub with the required scopes.
+1. In Harness SEI, go to the **My Integrations** tab in the **Integrations** page.
+1. Select your GitHub integration.
+1. Click **Re-Authenticate**.
+1. Enter the new token and validate the connection.
+
+Re-authentication resolves issues caused by expired tokens or insufficient permissions.
+
 ### See also
 
-* [Connect with Github Enterprise](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-enterprise-server)
-* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Connect with Github Enterprise](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/github/enterprise-server)
+* [Reauthenticate](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/reauthenticate)
 * [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-datasheet)
 * [Recommendations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-recommendations)

@@ -119,3 +119,42 @@ Following reports are supported for the GitHub Actions integration:
 - Change Failure Rate - Dora widget
 
 </details>
+
+## Re-authenticate the GitHub Actions integration
+
+The re-authentication steps depend on how your GitHub Actions integration is configured.
+
+### OAuth (GitHub Cloud)
+
+If you're using OAuth, re-authenticating as an [SEI Admin](/docs/software-engineering-insights/harness-sei/get-started/rbac#out-of-the-box-roles) refreshes the access token.
+
+1. In GitHub, go to **Settings** → **Applications** → **Authorized OAuth Apps**.
+1. Locate the **SEI app**.
+1. Revoke access.
+1. Return to Harness SEI.
+1. Select your GitHub Actions integration.
+1. Click **Re-Authenticate** and complete the OAuth flow.
+
+### Personal Access Token (PAT)
+
+If you're using a PAT:
+
+1. Generate a new PAT with the required scopes.
+1. In Harness SEI, go to **Integrations**.
+1. Select your GitHub Actions integration.
+1. Click **Re-Authenticate**.
+1. Enter the new token and validate the connection.
+
+### On-Prem (Satellite)
+
+If your GitHub Actions data is ingested via Satellite:
+
+1. Generate a new PAT from your GitHub instance.
+1. Ensure the token includes required permissions.
+1. Update the credentials in your Satellite configuration if applicable.
+1. In Harness SEI, go to **Integrations**.
+1. Select your GitHub Actions integration.
+1. Click **Re-Authenticate**.
+1. Re-authenticate the integration using the updated token.
+
+Re-authentication ensures continued access and resolves issues caused by expired credentials or permission changes.
