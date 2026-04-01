@@ -4,6 +4,7 @@ description: This topic describes how to route traffic in pipelines using the tr
 sidebar_position: 6
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 This topic describes the Kubernetes Traffic Routing step parameters and use cases. These configuration options can also be found as part of the Blue Green (BG) Deployment step as well as the Canary Deployment step. 
 
@@ -175,6 +176,182 @@ Before you begin, make sure you have an understanding of Istio and how it works 
               If the total weights for all host destinations is not equal to 100, the weight values will be normalized into a percentage, and the pipeline will run with a warning.
               :::
 
+### Istio — Preserve Custom VirtualService Fields
+
+Harness preserves custom VirtualService configurations (such as `headers`, `fault`, `timeout`, `retries`, `corsPolicy`) during Canary and Blue-Green deployments when a VirtualService is provided in the manifest. Previously, these fields were overwritten when Harness applied traffic routing changes.
+
+This is useful for deployments that require VirtualService-level header manipulation, fault injection, or other advanced Istio configurations to remain intact throughout the deployment lifecycle.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ISTIO_VS_MERGE_IN_TRAFFIC_ROUTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. This feature requires minimum versions of ng-manager `1.136.0`, pipeline-service `1.176.0`, and Delegate `26.03.88800`.
+:::
+
+:::note
+This feature applies only to **Istio** traffic routing. SMI is not supported.
+:::
+
+#### How it works
+
+When Traffic Routing is configured in your Canary or Blue-Green deployment:
+
+1. **Match:** Harness looks for a VirtualService in your manifest that matches the **resource name** specified in your Traffic Routing configuration.
+2. **Merge:** If found, Harness merges only the traffic routing changes (weights, destinations) into your VirtualService while preserving all other fields.
+3. **Fallback:** If no matching VirtualService is found, Harness creates one from scratch (existing behavior).
+
+#### Requirements
+
+| Requirement | Description |
+|-------------|-------------|
+| **VirtualService name must match** | The `resourceName` in your Traffic Routing configuration must exactly match the `metadata.name` of your VirtualService in the manifest. |
+| **Istio only** | This feature only works with Istio VirtualServices. |
+
+#### Important behavior
+
+##### Single route matching
+
+If your VirtualService has **one HTTP route** and your step config also defines **one route**, they are merged automatically — no route naming required.
+
+##### Multiple routes
+
+If your VirtualService has **multiple HTTP routes**, Harness matches routes by the `name` field (`spec.http[].name`).
+
+:::warning
+If your routes don't have names and you have multiple routes, step-defined routes are **appended** instead of merged. This may cause unexpected behavior. Always use named routes when you have multiple HTTP routes.
+:::
+
+##### Hosts and gateways
+
+If your step config specifies `hosts` or `gateways`, they **overwrite** your manifest values. Leave these empty in your step config to preserve your manifest values.
+
+##### Rollback
+
+On rollback, Harness re-applies the last successful release's manifests, which includes your original VirtualService with all custom fields intact.
+
+#### Example
+
+<details>
+<summary>VirtualService manifest (before deployment)</summary>
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: my-service-vs
+  annotations:
+    harness.io/direct-apply: "true"
+spec:
+  gateways:
+    - my-service-gw
+  hosts:
+    - "*"
+  http:
+    - name: primary-route
+      headers:
+        request:
+          set:
+            X-Request-ID: trace-123
+        response:
+          set:
+            X-Response-Source: stable
+      fault:
+        delay:
+          percentage:
+            value: 0.1
+          fixedDelay: 5s
+      timeout: 30s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: gateway-error,connect-failure
+      corsPolicy:
+        allowOrigins:
+          - exact: https://example.com
+        allowMethods:
+          - GET
+          - POST
+        maxAge: 24h
+      match:
+        - uri:
+            prefix: /api/v1
+      route:
+        - destination:
+            host: my-service
+            port:
+              number: 8080
+            subset: stable
+          headers:
+            response:
+              remove:
+                - X-Server-Internal
+          weight: 100
+```
+
+</details>
+
+<details>
+<summary>VirtualService after Canary Deploy</summary>
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: my-service-vs
+  annotations:
+    harness.io/direct-apply: "true"       # Preserved
+spec:
+  gateways:
+    - my-service-gw
+  hosts:
+    - "*"
+  http:
+    - name: primary-route
+      headers:                             # Preserved
+        request:
+          set:
+            X-Request-ID: trace-123
+        response:
+          set:
+            X-Response-Source: stable
+      fault:                               # Preserved
+        delay:
+          percentage:
+            value: 0.1
+          fixedDelay: 5s
+      timeout: 30s                         # Preserved
+      retries:                             # Preserved
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: gateway-error,connect-failure
+      corsPolicy:                          # Preserved
+        allowOrigins:
+          - exact: https://example.com
+        allowMethods:
+          - GET
+          - POST
+        maxAge: 24h
+      match:
+        - uri:
+            prefix: /api/v1
+      route:
+        - destination:
+            host: my-service
+            port:
+              number: 8080
+            subset: stable                 # Preserved
+          headers:                         # Preserved
+            response:
+              remove:
+                - X-Server-Internal
+          weight: 80                       # Updated from step config
+        - destination:
+            host: my-service-canary
+            port:
+              number: 8080
+          weight: 20                       # Added from step config
+```
+
+</details>
+
 #### SMI and Istio - Inherit option
 This options provides a way to update an existing traffic routing configuration destination's weights. With this step configuration there are two logical parts.
 First one is to configure the `Route Name` and second one is to configure destination(s) which you want to update. Route name is an ID for us to know which traffic routing resource we need to update. The value of the route name should match one of the route names defined during the `New config` step configuration.
@@ -308,3 +485,33 @@ See the following topics for advanced settings:
 * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Headers are still being removed from my VirtualService during Canary or Blue-Green deployment with Istio traffic routing"
+  mode="docs"
+  fallback="Verify the resourceName in your Traffic Routing configuration exactly matches your VirtualService's metadata.name. Check deployment logs for 'Found existing VirtualService [name] in manifest. Merging with step-level traffic routing config.' — if this message is absent, the merge did not occur. Also confirm you are using Istio, not SMI."
+/>
+
+<Troubleshoot
+  issue="Unexpected route behavior with multiple HTTP routes in VirtualService during Istio traffic routing merge"
+  mode="docs"
+  fallback="Add a name field to each HTTP route in your VirtualService for predictable merging. Without names, step-defined routes are appended instead of merged."
+/>
+
+<details>
+<summary>Example VirtualService with named routes</summary>
+
+```yaml
+spec:
+  http:
+    - name: api-route
+      headers: { ... }
+      route: [ ... ]
+    - name: web-route
+      headers: { ... }
+      route: [ ... ]
+```
+
+</details>
