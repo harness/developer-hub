@@ -31,11 +31,11 @@ This page covers **_authentication_**. For information about **_authorization_**
 
 By the end of this topic, you will be able to understand:
 
-- How to configure authentication methods for your Harness account, including Harness login, OAuth, Security Assertion Markup Language (SAML), and Lightweight Directory Access Protocol (LDAP).
-- How to enforce password policies, including password strength requirements, expiration intervals, and lockout rules after failed login attempts.
-- How to set up session timeouts to automatically log you out after inactivity or after an absolute time limit.
-- How to restrict account access by whitelisting specific email domains and enabling two-factor authentication account-wide.
-- Audit logs for authentication events, including how to identify and troubleshoot failed login attempts across all supported auth methods.
+- How to [configure authentication](#configure-authentication) methods for your Harness account, including [Harness login, OAuth](#enable-public-oauth-providers), Security Assertion Markup Language (SAML), and Lightweight Directory Access Protocol (LDAP).
+- How to [enforce password policies](#enforce-password-policies), including [password strength requirements](#enforce-password-strength), [expiration intervals](#enforce-password-expiration), and [lockout rules](#enforce-lockout-after-failed-logins) after failed login attempts.
+- How to set up [session timeouts](#set-inactive-session-timeout) (inactive) and [absolute session timeout](#set-absolute-session-timeout) to automatically log you out after inactivity or after an absolute time limit.
+- How to restrict account access by [whitelisting specific email domains](#restrict-email-domains) and [enabling two-factor authentication](#enforce-two-factor-authentication) account-wide.
+- [Audit logs for authentication events](#audit-logs-for-authentication), including how to identify and troubleshoot failed login attempts across all supported auth methods.
 
 ---
 
