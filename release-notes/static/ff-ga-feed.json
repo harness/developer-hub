@@ -1174,5 +1174,17 @@
     "description": "FF to enable ECS scale step",
     "gaStartDate": "2026-03-30",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_INVALID_PT_TASK_INSTANCE_CLEAN_UP",
+    "description": "Enables cleanup of invalid perpetual task instances to improve system performance.",
+    "gaStartDate": "2026-04-01",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_SERVICE_DASHBOARD_SKIP_DEPLOYMENT_TYPE_FROM_TIMESCALE",
+    "description": "Optimizes service dashboard performance by skipping certain deployment types from database queries.",
+    "gaStartDate": "2026-04-01",
+    "module": "Continuous Delivery"
   }
 ]
