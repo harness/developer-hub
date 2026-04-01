@@ -54,6 +54,19 @@ The following options are available for this widget:
   * **Group by**: Allows switching the segmentation between **PR Size** and **Work Type**.
   * **View Breakdown**: Provides a detailed breakdown of PR velocity by teams or individual developers, and offers a drill down to specific PRs.
 
+<details>
+<summary><strong> Understanding PR Velocity</strong></summary>
+
+This visualization shows the rate at which pull requests (PRs) are merged over time. On the X-axis is the date (weekly, monthly, or quarterly); on the Y-axis is the number of PRs merged per developer.
+
+PRs are grouped by size (`Small`, `Medium`, and `Large`) based on lines of code changed as defined in your [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile#pr-velocity).
+
+High-performing teams typically average 1-5 PRs per developer per week. Focus on maintaining a steady, sustainable cadence rather than maximizing volume.
+
+To improve **PR Velocity**, Harness recommends breaking work into smaller changes, reducing pull request sizes, and encouraging consistent delivery. Setting strict PR quotas may lead to artificial or low-quality contributions.
+
+</details>
+
 ### PR Cycle Time
 
 **PR Cycle Time** measures how long it takes for a pull request to progress from the first commit included in the PR through PR creation and merge. This highlights delays across the development and review process and helps identify where workflow friction occurs.
@@ -73,6 +86,17 @@ The following options are available for this widget:
 
 * **Showing Mean**: Displays the average cycle time.
 * **View Breakdown**: Provides a more granular view, typically by team or individual, and includes a table drill down of individual PRs.
+
+<details>
+<summary><strong>Understanding PR Cycle Time</strong></summary>
+
+This visualization measures how long it takes for a pull request to move from initial commit to merge. It includes stages such as PR creation, first comment, approval, and final merge. On the X-axis is the average cycle time; on the Y-axis is the date (weekly, monthly, or quarterly).
+
+High-performing teams often average around two days, but trends matter more than exact values. Extremely low cycle times may indicate skipped steps such as missing code reviews.
+
+To improve **PR Cycle Time**, Harness recommends keeping PRs small and focused, prioritizing timely code reviews, and implementing automated checks to reduce back-and-forth with reviewers.
+
+</details>
 
 ### Work Completed Per Developer
 
@@ -94,6 +118,19 @@ The following options are available for this widget:
 * **Group by**: Allows you to change the segmentation, for example, by **Features**.
 * **View Breakdown**: Provides a more detailed view by team or individual developers, often with a table drill down of specific completed items.
 
+<details>
+<summary><strong>Understanding Work Completed per Developer</strong></summary>
+
+This visualization shows the average number of tickets completed per developer over time. On the X-axis is the date (weekly, monthly, or quarterly); on the Y-axis is the number of completed tickets per developer.
+
+Work is grouped by complexity (`Simple`, `Medium`, and `Complex`) based on story point definitions on the **Issue Management** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams/#work-type).
+
+Most teams typically complete 3-5 tickets per developer per week, though this varies based on work type and complexity. Focus on improving trends relative to your team’s baseline rather than comparing across teams.
+
+To improve **Work Completed Per Developer**, Harness recommends breaking down large tickets into smaller, manageable tasks and ensuring work is structured clearly (for example, by using epics with smaller child tickets).
+
+</details>
+
 ### Coding Days Per Developer
 
 **Coding Days per Developer** represents the number of distinct days in which a developer made at least one meaningful code contribution (a commit).
@@ -112,6 +149,17 @@ This widget measures the average number of days developers actively contribute c
 The following options are available for this widget:
 
 * **View Breakdown**: Provides a detailed breakdown of coding days by team.
+
+<details>
+<summary><strong>Understanding Coding Days per Developer</strong></summary>
+
+This visualization measures the number of distinct days per week that a developer makes at least one code contribution. On the X-axis is the date (weekly, monthly, or quarterly); on the Y-axis is the average coding days per developer.
+
+A typical benchmark is around 3-4 coding days per week. Lower values may indicate large, infrequent commits, while consistently high values (for example, 6-7 days) may signal overwork or burnout risk.
+
+To improve **Coding Days Per Developer**, Harness recommends encouraging smaller, more frequent commits and looking out for signs of excessive workload across the team.
+
+</details>
 
 ### Number of Comments Per PR
 
@@ -132,6 +180,17 @@ The following options are available for this widget:
 
 * **View Breakdown**: Provides a detailed breakdown of comment activity by team.
 
+<details>
+<summary><strong>Understanding Comments per PR</strong></summary>
+
+This visualization shows the average number of comments per pull request. On the X-axis is the date (weekly, monthly, or quarterly); on the Y-axis is the number of comments per PR.
+
+This metric reflects review engagement rather than code quality. Most PRs should include at least one review comment or approval note.
+
+To improve **Number of Comments Per PR**, Harness recommends encouraging teams to leave feedback directly on PRs to support knowledge sharing and maintaining a clear review history. PRs with no comments may indicate that reviews are happening outside the platform.
+
+</details>
+
 ### Average Time to First Comment
 
 **Average Time to First Comment** measures how quickly reviewers respond to new pull requests. It reflects team responsiveness and the overall efficiency of the review workflow.
@@ -150,6 +209,17 @@ This widget measures the responsiveness of the team by calculating the average t
 The following options are available for this widget:
 
 * **View Breakdown**: Provides a detailed breakdown of first comment times by team.
+
+<details>
+<summary><strong>Understanding Average Time to First Comment</strong></summary>
+
+This visualization measures how long it takes for a pull request to receive its first comment. On the X-axis is the date (weekly, monthly, or quarterly); on the Y-axis is the time to first comment.
+
+A common target is within one business day, which indicates that the review process has started promptly.
+
+To improve **Average Time to First Comment**, Harness recommends prioritizing code reviews in team workflows and establishing review SLAs to ensure timely feedback.
+
+</details>
 
 ### Code Rework
 

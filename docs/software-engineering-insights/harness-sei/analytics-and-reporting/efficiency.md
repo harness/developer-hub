@@ -50,6 +50,17 @@ The following options are available for this widget:
 
 * **View Breakdown**: Provides a detailed breakdown of lead time by team.
 
+<details>
+<summary><strong>Understanding Lead Time for Changes (LTTC)</strong></summary>
+
+This visualization displays the average time from ticket creation to production, broken down by stages (coding, review, deployment). On the X-axis is the time (weekly); on the Y-axis is the duration (days). Only completed tickets are included.
+
+Pay attention to trends, not exact numbers; a downward trend represents faster delivery. Additionally, look for stage-level bottlenecks.
+
+To improve **Lead Time for Changes**, Harness recommends reducing bottlenecks, especially in handoffs (e.g. from dev to QA), shipping smaller changes more frequently, and investing in automation workflows to reduce wait time and variability.
+
+</details>
+
 ### Deployment Frequency
 
 ![Deployment Frequency](../static/deployment-frequency.png)
@@ -62,6 +73,17 @@ This widget provides insights into how often software is successfully released t
 The following options are available for this widget:
 
   * **View Breakdown**: Provides a detailed breakdown of deployments by team.
+
+<details>
+<summary><strong>Understanding Deployment Frequency</strong></summary>
+
+This visualization displays how often code is deployed to production. On the X-axis is the time (weekly); on the Y-axis is the number of deployments.
+
+Ensure that there are no fixed targets; focus on improving over time. High-performing teams may deploy frequently (often daily or on demand) and know that frequency should increase without hurting stability.
+
+To improve **Deployment Frequency**, Harness recommends shipping smaller, independent changes, reducing work in progress and pull request sizes, and investing in automation workflows and self-service deployments to remove friction.
+
+</details>
 
 ### Change Failure Rate
 
@@ -76,6 +98,17 @@ The following options are available for this widget:
 
   * **View Breakdown**: Provides a detailed breakdown of the percentage of deployments that caused a failure in production by team.
 
+<details>
+<summary><strong>Understanding Change Failure Rate</strong></summary>
+
+This visualization displays the percentage of deployments that result in failure (a rollback, hotfix, or incident). On the X-axis is the date (weekly, monthly, or quarterly); on the Y-axis is the percentage of failures.
+
+High-performing teams typically fall between 0 to 15%. Focus on reducing failures over time, not perfection.
+
+To improve **Change Failure Rate**, Harness recommends shipping smaller changes, improving automated testing, using progressive delivery (such as feature flags and canary deployments), and improving feedback loops before and after deployment.
+
+</details>
+
 ### Mean Time to Restore
 
 ![MTTR](../static/mttr.png)
@@ -88,6 +121,17 @@ This widget provides insights into how long it takes to recover from a failure o
 The following options are available for this widget:
 
   * **View Breakdown**: Provides a detailed breakdown of restoration time by team.
+
+<details>
+<summary><strong>Understanding Mean Time to Restore (MTTR)</strong></summary>
+
+This visualization measures how quickly service is restored after an incident. On the X-axis is the date (weekly, monthly, or quarterly); on the Y-axis is the time to restoration.
+
+**Mean Time to Restore** should generally be faster than **Lead Time for Changes**. Trends matter more than exact values.
+
+To improve **Mean Time to Restore**, Harness recommends improving monitoring and alerting, defining clear incident ownership, leveraging automated rollbacks and remediation, and conducting blameless incident retrospectives to learn and improve.
+
+</details>
 
 ## Sprint Metrics
 
