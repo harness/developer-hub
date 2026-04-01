@@ -53,7 +53,7 @@ To sync applications using the **GitOpsSync** step:
    :::
 
 6. In **Advanced Configuration**, select the application you want to sync and configure the sync options.
-      You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
+      You can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter. The regex field uses **Go (Golang) regex syntax** — not JEXL. You can test your patterns at [regex101](https://regex101.com/) with the **Golang** flavor selected.
 
     ![](./static/gitopssync-step-regex.png)    
  

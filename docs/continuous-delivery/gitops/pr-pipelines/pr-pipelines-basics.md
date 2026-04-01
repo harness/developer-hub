@@ -162,7 +162,7 @@ Triggers a sync for one or more existing or updated GitOps applications. **This 
 If Fetch Linked Apps is not present (for example, when deploying standalone applications without ApplicationSets), use **Advanced Configuration** to choose how to select applications:
 
 - **Application name:** Select specific applications manually from the dropdown.
-- **Application regex:** Match up to 1000 applications using a regular expression.
+- **Application regex:** Match up to 1000 applications using a regular expression. This field uses **Go (Golang) regex syntax** — not JEXL. You can test your patterns at [regex101](https://regex101.com/) with the **Golang** flavor selected.
 - **Application labels:** Filter applications by their Kubernetes labels using exact match (`Key:Value`) or partial match (`Key` or `Value`). Partial searches also consider the Service name and Environment name associated with the application. This is especially useful when you want to sync a group of related applications — for example, all apps labeled `env:production`, or all apps belonging to a specific team or deployment group.
 
 <div align="center">
@@ -239,7 +239,7 @@ This step requires `GITOPS_GET_APP_DETAILS_STEP`. Contact [Harness Support](mail
 
 - **Hard Refresh:** When enabled, forces a fresh status check from the cluster.
 - **Application Names:** Select specific applications from the dropdown or use runtime input.
-- **Application Regex:** Match up to 1000 applications using a regex pattern (fixed value, runtime input, or expression).
+- **Application Regex:** Match up to 1000 applications using a regex pattern (fixed value, runtime input, or expression). Uses **Go (Golang) regex syntax** — not JEXL.
 
 ![GitOps Get App Details step](./static/gitops-get-app-details.png)
 
