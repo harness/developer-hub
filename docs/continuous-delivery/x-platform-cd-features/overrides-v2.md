@@ -40,6 +40,7 @@ Here are the override types and the permissions you require for each type:
   - Service and Infrastructure are unaffected and will behave as before the change.
 - If you continue to use Terraform scripts with Overrides V1 (without migrating to V2 scripts) but with Overrides V2 feature flag enabled, there will be changes in the Terraform plan and you may encounter errors while executing the V1 Terraform scripts.
 - When overrides as part of remote environments are migrated, the overrides are created as inline overrides with Overrides V2. Inline overrides can be moved as remote entities using [APIs](https://apidocs.harness.io/tag/ServiceOverrides/#operation/serviceOverrideMoveConfigs).
+- After migrating to Overrides V2, residual V1 override content may still be present in the environment YAML but not visible in the UI. This hidden V1 content can cause unexpected behavior in pipelines. To clean up, contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CDS_OVERRIDES_DISABLE_ENV_API_UPDATES` on your account. Once enabled, the V1 overrides will become visible in the YAML. Remove the V1 override content, and then request that the feature flag be disabled.
 
 
 ## Migration notice for existing Harness customers: Overrides V2
