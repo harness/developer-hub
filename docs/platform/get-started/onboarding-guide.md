@@ -3,7 +3,9 @@ title: Getting started with Harness Platform
 description: A self-service onboarding guide for Harness Platform
 sidebar_label: Get Started
 sidebar_position: 2
+slug: /platform/get-started
 redirect_from:
+  - /docs/platform/get-started/onboarding-guide
   - /docs/platform/get-started/tutorials
   - /docs/get-started/tutorials
   - /docs/getting-started/start-for-free
