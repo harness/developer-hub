@@ -613,6 +613,69 @@ Returns a JSON object describing whether the servers the proxy depends on are he
 
 Returns a binary snapshot file that can be used with the snapshot environment variable or command line argument when starting up the Split Proxy.
 
+### Observability
+
+The Split Proxy exposes an observability endpoint that provides insights into both cached data and incoming SDK requests. This includes request volume, latency distribution, and HTTP response status codes, allowing you to monitor how the Proxy is handling traffic in real time.
+
+You can use this endpoint in versions 5.0.3 or later to debug SDK traffic and Proxy performance. If HTTP Basic Authentication is enabled, include credentials (for example, using `--user` with `curl`).
+
+```http
+GET http://<SERVER_HOST>:<SERVER_PORT>/admin/observability
+```
+
+The following metrics are available:
+
+| Metric                     | Category                     | Description                                                  |
+|---------------------------|------------------------------|--------------------------------------------------------------|
+| Active segments           | Cache state                  | Map of segment names to key counts.                          |
+| Active splits             | Cache state                  | List of feature flags currently loaded.                      |
+| Request count per endpoint| SDK traffic and performance  | Total number of requests received per endpoint.              |
+| HTTP status codes         | SDK traffic and performance  | Count of responses grouped by HTTP status code.              |
+| Latency distribution      | SDK traffic and performance  | Distribution of request latencies across predefined buckets. |
+
+Metrics are aggregated into time slices within the `proxyEndpointStats` field. Each time slice represents a fixed time window and contains aggregated metrics for SDK requests handled during that period. 
+
+You can configure the number and duration of time slices using the following environment variables:
+
+- `SPLIT_PROXY_OBSERVABILITY_TIME_SLICE_MAX_COUNTS`
+- `SPLIT_PROXY_OBSERVABILITY_TIME_SLICE_WIDTH_SECS`
+
+#### Latency buckets
+
+Latency is reported using pre-defined buckets based on an increasing sequence of time ranges in milliseconds.
+
+These buckets follow a progressively increasing scale (similar to a [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)), allowing you to capture both low-latency and high-latency requests with appropriate granularity.
+
+Each bucket represents the number of requests completed within a specific time range (for example, 0–1 ms, 1–1.5 ms, and higher ranges). This helps you understand the distribution of request latency rather than relying on averages.
+
+#### Example response
+
+```json
+{
+  "activeSegments": {
+    "employees": 9984
+  },
+  "activeSplits": [
+    "admin_panel"
+  ],
+  "proxyEndpointStats": [
+    {
+      "timeslice": 1650388500,
+      "resources": {
+        "auth": {
+          "latencies": [5, 3, 2, 0, 0, 0],
+          "requestCount": 10,
+          "statusCodes": {
+            "200": 10
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+The `latencies` array contains counts for each [latency bucket](#latency-buckets), ordered from lowest to highest response time. Use this endpoint to validate that your Proxy is receiving traffic and serving feature flags correctly.
 
 ### Admin Dashboard
 

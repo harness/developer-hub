@@ -1176,6 +1176,41 @@ Returns a JSON object describing whether the servers the synchronizer depends on
 }
 ```
 
+### Observability
+
+The Split Synchronizer exposes an observability endpoint that provides visibility into cached data.
+
+You can use this endpoint in versions 5.0.3 or later. 
+
+```http
+GET http://<SERVER_HOST>:<SERVER_PORT>/admin/observability
+```
+
+The following metrics are available:
+
+| Metric                     | Category                     | Description                                                  |
+|---------------------------|------------------------------|--------------------------------------------------------------|
+| Active segments           | Cache state                  | Map of segment names to key counts.                          |
+| Active splits             | Cache state                  | List of feature flags currently loaded.                      |
+
+#### Example response
+
+```json
+{
+  "activeSegments": {
+    "employees": 9984,
+    "starred_customers": 10122
+  },
+  "activeSplits": [
+    "admin_panel",
+    "main_campaign",
+    "ab_test"
+  ]
+}
+```
+
+Use this endpoint to verify that feature flags and segments are synchronized and stored correctly.
+
 ### Admin Dashboard
 
 Split-sync has a web admin UI out of the box that exposes all available endpoints. Browse to `/admin/dashboard` to see it.
