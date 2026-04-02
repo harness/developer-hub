@@ -24,6 +24,100 @@ These release notes describe recent changes to Harness Database DevOps.
 
 ## March 2026
 
+### Release 1.86.x
+The `1.86.x` release focuses on improving security and execution reliability, ensuring safer and more stable pipeline operations.
+
+#### Key Highlights
+
+* **Bug Fixes & Security**
+  - Upgraded gRPC and execution images to address critical vulnerabilities, improving overall platform security.
+  - Fixed issues affecting retry behavior for in-progress executions during AI-assisted change authoring, ensuring more consistent pipeline runs.
+
+#### Image Upgrades
+
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.28.2-4.33            | 1.27.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.28.2-4.33-mongo      | 1.27.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.28.2-4.33-spanner    | 1.27.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.28.2-4.33-snowflake  | 1.27.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.28.2-4.33-percona    | 1.27.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.28.2-4.33-cloudsql   | 1.27.0-4.33-cloudsql         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+### Release 1.85.x
+The `1.85.x` release enhances execution stability and AI-assisted workflows, improving reliability across database operations.
+
+#### Key Highlights
+
+* **Bug Fixes**
+  - Resolved issues with Flyway image selection in execution configuration, ensuring correct runtime behavior.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.27.0-4.33            | 1.26.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.27.0-4.33-mongo      | 1.26.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.27.0-4.33-spanner    | 1.26.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.27.0-4.33-snowflake  | 1.26.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.27.0-4.33-percona    | 1.26.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.27.0-4.33-cloudsql   | 1.26.0-4.33-cloudsql         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.6.4-rootless               |
+
+### Release 1.84.x
+The `1.84.x` release improves database compatibility and pipeline validation, reducing execution failures and expanding supported environments.
+
+#### Key Highlights
+
+* **Feature Enhancements**
+ - Added support for CloudSQL execution images, enabling database operations in Cloud SQL environments.
+
+* **Bug Fixes**
+  - Added error handling for invalid pipeline configurations to prevent unexpected failures.
+  - Resolved issues caused by nil values in scheduled jobs, improving execution stability.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.26.0-4.33            | 1.25.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.26.0-4.33-mongo      | 1.25.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.26.0-4.33-spanner    | 1.25.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.26.0-4.33-snowflake  | 1.25.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.26.0-4.33-percona    | 1.25.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.26.0-4.33-cloudsql   | -                            |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.6.4-rootless               |
+
+
+### Release 1.83.x
+
+No customer-facing updates were introduced in this release.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.25.0-4.33            | 1.24.1-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.25.0-4.33-mongo      | 1.24.1-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.25.0-4.33-spanner    | 1.24.1-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.25.0-4.33-snowflake  | 1.24.1-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.25.0-4.33-percona    | 1.24.1-4.33-percona          |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.6.4-rootless               |
+
 ### Release 1.82.x
 
 No customer-facing updates were introduced in this release.
