@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-03-25T10:00
+date: 2026-03-30T10:00
 sidebar_position: 10
 ---
 
@@ -61,6 +61,32 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## March 2026
+
+### Version 1.128.0
+
+<!-- March 2026 -->
+
+#### New Features and Enhancements
+
+- Added a restriction to prevent secrets from being mounted through Kubernetes pod spec overlay YAML. This feature is behind the feature flag `CI_K8S_OVERLAY_YAML_SECRET_RESTRICTION`. (CI-21651)
+
+#### Fixed Issues
+
+- Fixed an issue where build status was not reported to Bitbucket when API access was configured with an email ID and API token. (CI-21668)
+
+- Fixed a cache plugin compatibility issue that caused Bazel 7 builds to fail with an unrecognized `--repo_contents_cache` option. (CI-21575)
+
+- Fixed an issue where Docker Layer Caching (DLC) was not working correctly with GAR, ACR, and ECR registries when using GCS as the cache backend. (CI-21747)
+
+- Improved addon and lite-engine security by upgrading the gRPC dependency to address a known vulnerability. (CI-21681)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.13 | 1.18.15 |
+| `harness/ci-lite-engine` | Version update | 1.18.13 | 1.18.15 |
+| `plugins/cache` | Bug fix | 1.10.1 | 1.10.2 |
 
 ### Version 1.127.0
 
