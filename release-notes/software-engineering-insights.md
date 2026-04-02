@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2026-03-19T10:00:10
+date: 2026-03-25T10:00:10
 sidebar_position: 15
 ---
 
@@ -12,13 +12,36 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Software Engineering Insights.
 
-#### Last updated: March 19, 2026
+#### Last updated: March 25, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
+
+## March 2026
+
+### [New Feature] ServiceNow Integration is in beta
+----
+#### 2026-03-25
+
+SEI 2.0 now includes a ServiceNow integration in beta, allowing teams to connect ServiceNow and ingest incident and change management data. This integration enables teams to select `Incident Management` as a data source and define which incident and change request statuses are used in DORA metric calculations on the **DORA** tab in an [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile#deployment-frequency). 
+
+![](./static/sei/itsm-source.png)
+
+After selecting a ServiceNow integration on the **Integrations** tab in [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings#configure-integrations-for-a-team), you can refine how ServiceNow data is mapped to **Deployment Frequency**, **Change Failure Rate**, and **Mean Time to Restore (MTTR)** by creating filter sets on the [**Incident Management** tab](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings#configure-team-tool-settings). Each metric supports drilldowns into individual ServiceNow change requests and incidents on the Efficiency Insights dashboard, providing visibility into the underlying records.
+
+![](./static/sei/itsm-teams.png)
+
+To request access to the ServiceNow integration beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Related documentation
+
+- [ServiceNow Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow)
+- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency#using-servicenow-data-in-dora-metrics)
+- [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)
+- [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings)
 
 ## February 2026
 

@@ -54,10 +54,11 @@ In this situation, a team manager must select and save both issue management and
 To select and save integrations:
 
 1. Navigate to the **Integrations** tab in **Team Settings**.
-1. Select integrations from the following sections: **Issue Management**, **Source Code Management**, **Continuous Deployment**, **Security**, and **Code Quality**. You can select multiple SCM integrations per team.
-1. Click **Save Integrations**.
+1. Select integrations from the following sections: **Issue Management**, **Source Code Management**, **Continuous Deployment**, **Security**, **Incident Management**, and **Code Quality**. You can select multiple SCM integrations per team.
 
    ![](../static/teams-13.png)
+
+1. Click **Save Integrations**.
 
 Once saved, SEI 2.0 aggregates developer activity across all connected SCMs for **Efficiency** and **Productivity** insights, providing a complete picture of team work.
 
@@ -426,6 +427,56 @@ Only ASPM data that matches these filters is used to calculate **Security** metr
 :::
 
 After adding Security filters, click **Save Security Filters** to apply the configuration to the team.
+
+</TabItem>
+<TabItem value="itsm-settings" label="Incident Management Settings">
+
+Use the **Incident Management** tab in **Team Settings** to define how SEI 2.0 maps incident and change request data from ServiceNow to your teams. Filters determine which records are included in metric calculations.
+
+![](../static/teams-18.png)
+
+Click **+ Add Condition** to define filter sets for incident identification and change request identification using fields such as `Assignment Group` or custom fields available in your [ServiceNow integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/). 
+
+Use the `AND/OR` toggle to control how conditions are evaluated: 
+
+* `AND`: All conditions must be true for data to be included.
+* `OR`: Any condition can be true for data to be included.
+
+For example, `Assignment Group Equals Platform AND Urgency Equals High` includes only high-urgency incidents owned by the Platform team, while `Urgency Equals High OR Urgency Equals Medium` includes all high and medium-priority records.
+
+### Incident identification
+
+Add filters to include relevant incident data from ServiceNow.
+
+| Filter field   | Available options |
+|----------------|------------------|
+| **Property**   | Assignment Group, Priority, Severity, Business Service, Urgency, and custom fields |
+| **Condition**  | Equals, Not equals, Contains, Does not contain, Starts with, Ends with |
+| **Value**      | Values from your ServiceNow data |
+
+For example, `Urgency Equals High` only includes high-priority incidents, `Urgency Equals High OR Urgency Equals Medium` includes both high and medium priority incidents, and `Assignment Group Equals Mobile` scopes incidents to a specific team.
+
+:::tip
+Correct incident identification ensures SEI 2.0 accurately calculates **Change Failure Rate** and **MTTR**.
+:::
+
+### Change request identification
+
+Add filters to include relevant change request data from ServiceNow.
+
+| Filter field   | Available options |
+|----------------|------------------|
+| **Property**   | Assignment Group, Priority, Severity, Business Service, Urgency, and custom fields |
+| **Condition**  | Equals, Not equals, Contains, Does not contain, Starts with, Ends with |
+| **Value**      | Values from your ServiceNow data |
+
+For example, `Urgency Equals High` only includes high-priority change requests, `Assignment Group Equals Platform` scopes changes to a specific team, and `Business Service Contains Payments` includes changes to a specific service.
+
+:::tip
+Correct change request identification ensures SEI 2.0 accurately calculates **Deployment Frequency**.
+:::
+
+After configuring filters, click **Save ITSM Settings** to apply the configuration.
 
 </TabItem>
 </Tabs>

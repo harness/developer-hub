@@ -133,6 +133,42 @@ To improve **Mean Time to Restore**, Harness recommends improving monitoring and
 
 </details>
 
+### Using ServiceNow data in DORA metrics
+
+:::tip
+The ServiceNow integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+:::
+
+Once you've configured a [ServiceNow integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/), SEI 2.0 uses ServiceNow change requests and incidents as the data source for DORA metrics on the Efficiency Insights dashboard. These records are mapped and filtered based on your configuration on the **Incident Management** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings), and are used to calculate deployment activity, failures, and recovery times.
+
+| Metric Name                 | ServiceNow data used        | Description                                                               |
+| --------------------------- | --------------------------- | ------------------------------------------------------------------------  |
+| [Deployment Frequency](#deployment-frequency)        | Change requests             | Each qualifying change request is treated as a deployment event.          |
+| [Change Failure Rate](#change-failure-rate)         | Incidents + change requests | Incidents are counted as failures and compared against total deployments. |
+| [Mean Time to Restore (MTTR)](#mean-time-to-restore) | Incidents                   | Calculated using incident lifecycle timestamps.                           |
+
+#### Computation logic
+
+DORA metrics are calculated based on how ServiceNow records are mapped to statuses and filtered within the selected time range on the dashboard.
+
+| Metric                      | Calculation details                                                                                        |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| [Deployment Frequency](#deployment-frequency)        | Counts change requests that match the configured “deployment” statuses (for example, completed or closed).  |
+| [Change Failure Rate](#change-failure-rate)         | `(Number of incidents / Number of deployments) × 100`, where incidents are filtered by configured statuses. |
+| [Mean Time to Restore (MTTR)](#mean-time-to-restore) | Average time between incident `Created At` and `Resolved At` or `Closed At` timestamps.                     |
+
+All calculations depend on status mappings defined on the **Incident Management** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings#configure-team-tool-settings), and the selected time range and granularity on the [Efficiency Insights dashboard](#efficiency-insights).
+
+#### Drilldowns
+
+Each DORA widget allows you to drill down into the underlying ServiceNow records used in the calculation. These drilldowns provide direct visibility into the data backing each metric and include links to the corresponding records in ServiceNow.
+
+| Metric                      | Drilldown data                                                                                                   |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [Deployment Frequency](#deployment-frequency)        | List of change requests, including fields such as Change Request Number, Owner, Priority, Status, and timestamps. |
+| [Change Failure Rate](#change-failure-rate)         | List of incidents associated with failures, including Incident Number, Owner, Priority, Status, and timestamps.   |
+| [Mean Time to Restore (MTTR)](#mean-time-to-restore) | List of incidents used to calculate recovery time, based on available resolution data.                            |
+
 ## Sprint Metrics
 
 :::tip

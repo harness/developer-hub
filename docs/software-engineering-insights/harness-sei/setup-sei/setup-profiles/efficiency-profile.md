@@ -267,6 +267,13 @@ Choose a tool type that provides deployment signals. SEI 2.0 supports the follow
 * **Continuous Deployment**: SEI detects all completed pipeline executions. No additional configuration is required.
 * **Issue Management**: SEI counts all work items in Issue Management systems such as Jira. Selecting this enables `Consider Issue Management Releases`.
 * **Source Code Management**: SEI counts only pull requests merged to your production branch with the labels defined in **Team Settings**. Selecting this enables `Pull Request Merged to Destination Branch`.
+* **Incident Management**: SEI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
+
+If you selected **Incident Management** as the deployment source, you can click which request statuses indicate a completed deployment: **Closed**, **Resolved**, **Updated**, or **Closed & Resolved**. 
+
+![](../../static/efficiency-25.png)
+
+Deployment Frequency is calculated based on change requests identified as completed production deployments.
 
 #### Configure the maturity model
 
@@ -286,6 +293,13 @@ Choose the system from which SEI will detect failure events related to deploymen
 
 * **Continuous Deployment**: SEI detects all pipeline executions that result in a failure, such as a rollback or job failure. No additional configuration is required.
 * **Issue Management** (e.g., Jira): SEI counts all work items in Issue Management systems (e.g., Jira) that are marked as incidents, bugs, or failures caused by a deployment. Selecting this enables consideration of issue-based failure events.
+* **Incident Management**: SEI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
+
+If you selected **Incident Management** as the production incident source, you can click which incident statuses indicate a failed deployment: **Created**, **Updated**, **Closed**, **Resolved**, or **Closed & Resolved**. 
+
+![](../../static/efficiency-26.png)
+
+Total deployments are based on the [Incident Management configuration](#select-a-deployment-source) selected in the **Deployment Frequency** tab.
 
 #### Configure the maturity model
 
@@ -306,6 +320,16 @@ Mean Time to Restore (MTTR) measures the average time it takes for your teams to
 Harness SEI supports MTTR measurement using:
 
 * **Issue Management** (e.g., Jira): SEI counts incidents or issues tracked in your Issue Management system that mark service downtime or failures. Selecting this enables Harness SEI to measure Mean Time to Restore based on issue resolution events.
+* **Incident Management**: SEI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
+
+If you selected **Incident Management** as the production incident source, you can define which incidents are included and how resolution time is calculated.
+
+![](../../static/efficiency-27.png)
+
+* Click **All incidents** or **Only incident created during selected time range** in the `Include incidents` section.
+* Click **Closed**, **Resolved**, or **Closed & Resolved** in the `Calculate the resolution time until the incident status is` section.
+
+Total deployments are based on the [Incident Management configuration](#select-a-deployment-source) selected in the **Deployment Frequency** tab.
 
 #### Configure the maturity model
 
