@@ -51,8 +51,8 @@ Benefits of effectively using tasks include:
 
 Current limitations in task lifecycle management 
 
-- **Tasks lack versioning functionality** \- exercise caution when modifying tasks used across multiple tests  
--  **Nested task execution (tasks calling other tasks)** \- is currently unsupported but planned for future implementation
+- **Task versioning** — See [Task versioning](/docs/ai-test-automation/test-authoring/creating-tests/tasks#task-versioning) when changing tasks that many tests depend on.  
+- **Nested task execution (tasks calling other tasks)** — is currently unsupported but planned for future implementation
 
 ### Add Assertions Liberally
 
