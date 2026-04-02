@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-03-18T10:00:00
+date: 2026-03-31T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: March 18, 2026
+#### Last updated: March 31, 2026
 
 ## March 2026
 
@@ -168,7 +168,7 @@ The event names may differ slightly depending on the SDK or suite. With this met
 ----
 #### 2026-01-30
 
-Server-side SDKs for [Python](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk) and [Node.js](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk) can now subscribe to SDK events, enabling your applications to respond programmatically to SDK changes.
+Server-side SDKs for [Python](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk), [.NET](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk), and [Node.js](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk) can now subscribe to SDK events, enabling your applications to respond programmatically to SDK changes.
 
 Previously, the [`Subscribe to events` feature](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#subscribe-to-events) was only available in client-side SDKs. With this update, server-side applications can listen for the following events:
 
@@ -182,6 +182,7 @@ The event names and available options may differ slightly depending on the SDK. 
 #### Related documentation
 
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#subscribe-to-events)
+- [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#subscribe-to-events)
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#subscribe-to-events)
 
 ### [New Enhancement] Improved Onboarding Flow for Harness FME
