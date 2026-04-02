@@ -65,7 +65,7 @@ Follow this interactive guide to create an incident with AI-powered assistance.
 
 ## Create Incidents from Slack
 
-You can also create incidents directly from Slack using the `/harness create` command. This is especially useful during on-call shifts when you want to stay in your communication tool.
+You can also create incidents directly from Slack using the `/harness new` command. This is especially useful during on-call shifts when you want to stay in your communication tool.
 
 See [Managing Incidents in Slack](/docs/ai-sre/get-started/slack-commands) for the full command reference.
 

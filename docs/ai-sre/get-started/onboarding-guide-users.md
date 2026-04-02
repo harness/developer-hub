@@ -135,7 +135,7 @@ Not every incident starts from an automated alert. If you notice a problem — c
 6. An incident channel will be automatically created in your communication tool, and relevant team members will be notified based on the incident type's configuration.
 
 :::tip From Slack
-You can also create incidents directly from Slack using the `/harness create` command. This is especially useful during on-call when you want to stay in your communication tool.
+You can also create incidents directly from Slack using the `/harness new` command. This is especially useful during on-call when you want to stay in your communication tool.
 :::
 
   </TabItem>

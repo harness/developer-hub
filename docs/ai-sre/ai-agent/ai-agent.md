@@ -140,9 +140,10 @@ These tips help the AI Scribe capture your intent more accurately. The Scribe us
 
 ### AI Scribe Capabilities vs. Human Scribes
 
+<!-- CHANGED (comment #6): Changed "Captures 100% of communications" to an accurate scoped claim. The Scribe does not capture DMs, threads the bot isn't in, side conversations, phone calls, or in-person discussions. "100%" is indefensible. -->
+
 | Aspect | AI Scribe Agent | Human Scribe |
 |--------|---------------------|---------------|
-<!-- CHANGED (comment #6): Changed "Captures 100% of communications" to an accurate scoped claim. The Scribe does not capture DMs, threads the bot isn't in, side conversations, phone calls, or in-person discussions. "100%" is indefensible. -->
 | Coverage | Captures all communications in monitored channels and transcribed meetings | May miss details during fast-paced incidents |
 | Availability | Always available, no scheduling needed | Requires staffing and scheduling |
 | Consistency | Uniform documentation format | Varies by individual |
