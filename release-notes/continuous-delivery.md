@@ -54,6 +54,20 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 :::
 
 
+## April 2026
+
+### Version 1.137.0
+
+#### Fixed issues
+
+- Fixed an issue where connector validation and pipeline Git operations failed in multi-account AWS setups when a Git connector and its secret manager used different delegate selectors pointing to delegates in separate AWS accounts. The secret manager's delegate selector now takes precedence over the connector's delegate selector, ensuring the chosen delegate can decrypt secrets before Git operations proceed. This fix is behind the feature flags `PIE_GITX_EVALUATE_ENCRYPTED_CAPABILITIES` and `CDS_SECRET_MANAGER_DELEGATE_SELECTOR_PRECEDENCE`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-118093**, **ZD-100682**)
+- Fixed an issue where a direct connector secret reference with an incorrect value caused all secrets to fail rendering in `values.yaml` during Native Helm deployments. (**CDS-119546**, **ZD-105341**)
+- Fixed an issue where Canary verification failed with "verification could not complete due to an unknown error." Prometheus queries were generated with `by (null)` during Canary verification because metrics lacking a `serviceInstanceFieldName` were silently included in the deployment data collection. A null guard has been added in `formGroupByQuery()` along with a filter in `PrometheusDataCollectionInfoMapper` to exclude metrics without a `serviceInstanceField`. (**CDS-119650**, **ZD-106048**)
+- Fixed an issue where environment group selection was broken. (**CDS-119736**, **ZD-109324**)
+- Fixed an issue where the "Get List of Executions" API documentation had undocumented or inconsistent request filters, including a missing required `filterType`, ambiguous branch fields, and a broken status enum/type. (**CDS-119814**, **ZD-104905**)
+- Fixed an issue where the Jenkins trigger stage intermittently failed because the Harness pipeline did not receive the Jenkins success status. (**CDS-119843**, **ZD-106159**)
+- Fixed an issue where non-default branches were not accessible for monitored service templates. (**CDS-119852**)
+
 ## March 2026
 
 ### Version 1.136.0
