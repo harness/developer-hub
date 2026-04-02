@@ -20,12 +20,32 @@ Terragrunt simplifies managing multiple OpenTofu/Terraform modules by orchestrat
 In Harness IaCM, Terragrunt extends rather than replaces OpenTofu or Terraform—it still runs their plan and apply commands under the hood. When creating a Terragrunt workspace, select your preferred binary (OpenTofu or Terraform) and version to execute infrastructure changes.
 :::
 
-### Prerequisites
-Before beginning the walkthroughs in this guide, ensure you have:
-- Access to a Harness account.
-- Access to a Git provider with your [Terragrunt](https://terragrunt.gruntwork.io/) project.
-- Access to a Cloud Provider such as AWS or Google Cloud Platform.
-- An [organization and project set up](/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
+Terragrunt in Harness Infrastructure as Code Management (IaCM) lets you run Terragrunt-driven workflows from a workspace backed by your Git repository and cloud connectors, with the same pipeline patterns (init, plan, apply) you use for standalone OpenTofu or Terraform.
+
+Use this guide when you want a repeatable path from connectors and workspace creation through a provision pipeline—including optional per-run **Folder Path Override** on each Terragrunt pipeline step (`init`, `plan`, and `apply`) for monorepos and multi-environment layouts.
+
+### What will you learn?
+
+- **Connectors and workspace:** Create cloud and Git connectors, then create a Terragrunt workspace wired to your repository and provisioner settings.
+- **Provision pipeline:** Generate or author a pipeline that runs Terragrunt init, plan, and apply (and optionally add an approval between plan and apply).
+- **Folder path override:** Use the workspace **Folder Path** as the default, and optionally set **Folder Path Override** per run on each Terragrunt step (`init`, `plan`, and `apply`).
+
+## Prerequisites
+
+Before you use this guide, ensure you have the following:
+
+- **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+
+    :::info Contact Harness support:
+
+    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+
+    :::
+
+- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). An administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+- **Git repository:** Access to a Git provider with your [Terragrunt](https://terragrunt.gruntwork.io/) project.
+- **Cloud provider:** Access to a cloud provider such as AWS or Google Cloud Platform for the infrastructure you manage.
+- **Harness organization and project:** An [organization and project set up](/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
 
 <details>
 <summary>Sample Terragrunt</summary>
@@ -59,14 +79,16 @@ Go to [Terragrunt Documentation](https://terragrunt.gruntwork.io/docs/) for more
 ---
 
 ## Set up your workspace
-A workspace is a named environment for storing your Terragrunt configurations and resources. Connect your Cloud Provider and Code Repository through **Connectors** to manage infrastructure changes and updates with Harness IaCM pipelines.
+
+A workspace is a named environment for storing your Terragrunt configurations and resources. You connect your cloud provider and code repository through **Connectors** so Harness IaCM pipelines can run against your repository and credentials.
 
 :::info
-Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](/docs/infra-as-code-management/get-started/#add-a-new-workspace).
+Harness recommends configuring your connector before creating your workspace; you can also add new connectors during the [Create Workspace flow](/docs/infra-as-code-management/get-started/#add-a-new-workspace).
 :::
 
-### Step 1: Add connectors
-Use **Harness AI** to create and configure your cloud provider and code repository connectors before you create a Workspace:
+### Step 1: Create a connector
+Use **Harness AI** to create and configure your cloud provider and code repository connectors before you create a workspace:
+
 <Tabs>
 <TabItem value="Create a connector">
 <DocVideo src="https://app.tango.us/app/embed/73d9628e-7093-4c6b-a9f7-dac8125c8441?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create Cloud Provider Connector with Harness AI" />
@@ -87,7 +109,7 @@ Harness will create a YAML file for you connector, once you select **Create**, H
 Edit your connector by updating the AI generated YAML file, or by selecting **Edit Details** in the connectors panel.
 :::
 
-Go to [Connect your Cloud Provider](https://developer.harness.io/docs/category/cloud-providers) and [Connect your Code Repository](/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your cloud provider and code repository.
+Go to [Connect your Cloud Provider](/docs/category/cloud-providers) and [Connect your Code Repository](/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your cloud provider and code repository.
 </TabItem>
 </Tabs>
 
@@ -98,7 +120,8 @@ For easier access and token management, use the **OIDC** (OpenID Connect) option
 ---
 
 ### Step 2: Create your workspace
-Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
+
+Once you have configured your connectors, create a workspace and select those connectors in the **New Workspace** wizard.
 
 :::tip migrate existing projects
 For first-time use, use our [migration tool](/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
@@ -116,11 +139,13 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
 4. Select **Create new Workspace**, then select **Start from scratch** and complete the following fields in the new workspace wizard:
 
 #### About Workspace
+
 - **Name** - Type a unique name to identify the Workspace.
 - **Description (optional)**: Type an optional description to help identify the Workspace.
 - **Tags (optional)**: Add a unique tag to identify the Workspace.
 
 #### Configure Repository Details
+
 - Select your Git provider, either **Harness Code Repository** or **Third-party Git provider** for other providers like GitHub or GitLab.
 - **Git Connector**: Select the Git connector you created in the previous step.
 - **Git Fetch Type**: Select the Git fetch type, either **Latest from branch**, **Git tag** or **Commit SHA**.
@@ -143,11 +168,16 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
    ```
   :::
 
-- **Folder Path**: Specify the folder path to the OpenTofu configuration files in the repository.
+- **Folder Path**: Specify the path from the root of the repository to the directory containing your Terragrunt configuration.
+
+:::note Optional override in pipeline
+The **Folder Path** you set here applies when a Terragrunt pipeline step does not set an override. For a specific run, you can override it with **Folder Path Override** on each Terragrunt step: **init**, **plan**, and **apply**. See [Configure Terragrunt folder path override](#configure-terragrunt-folder-path-override).
+:::
 
 **Advanced** options allow you to **include submodules** if your code repository includes modules and submodules. Go to [Module Registry](/docs/category/module-registry) for more information.
 
 #### Provisioner
+
 - **Connector**: Select the cloud provider connector you created in the previous step.
 - **Workspace Type**: Select **Terragrunt** as the workspace type you want to use for the workspace.
 - **Terragrunt Version**: Select the Terragrunt version you want to use for the workspace.
@@ -161,6 +191,7 @@ Disable this option if you prefer to only review Terragrunt modules at the root 
 :::
 
 #### Add Variable Set (Optional)
+
 If you have configured variable sets for reuse, select the variable set you want to use for the workspace.
 
 5. Select **Create**.
@@ -170,6 +201,7 @@ If you have configured variable sets for reuse, select the variable set you want
 ---
 
 ### Step 3: Add a provision pipeline
+
 A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](/docs/platform/pipelines/harness-yaml-quickstart).
 
 #### Harness AI pipeline generation
@@ -194,8 +226,25 @@ The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `
 
 ---
 
+### Configure Terragrunt folder path override
+
+Terragrunt provision pipelines use **init**, **plan**, and **apply** steps. **Each** of these steps exposes an optional **Folder Path Override** in the pipeline editor (or the equivalent in YAML) so Harness knows which repository directory to use for that step.
+
+- **Folder Path Override** (optional): Enter the path from the root of the repository to the directory containing your Terragrunt configuration for this step. When set, it overrides the workspace **Folder Path** for that step’s execution only.
+
+:::note Folder path precedence
+**Folder Path Override** on a Terragrunt step takes precedence over the **Folder Path** defined in the workspace configuration for that step. If **Folder Path Override** is left empty on a step, the workspace **Folder Path** is used.
+:::
+
+For a single run against one directory, use the **same** override value on **init**, **plan**, and **apply** so every step targets the same Terragrunt context.
+
+**Example (monorepo):** Set the workspace **Folder Path** to the repository root so one workspace represents the whole Terragrunt monorepo. For environment-specific runs—for example `environments/dev` versus `environments/prod`—set **Folder Path Override** to that subdirectory on **init**, **plan**, and **apply** for each pipeline execution instead of maintaining a separate workspace per environment.
+
+---
+
 ### Step 4: Add an Approval step (optional)
-You can add the Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
+
+You can add the **Approval** step to prompt a review of the previous pipeline stage before proceeding. The most common use case is to add the Approval step between the `plan` and `apply` steps so you can review infrastructure changes and estimated costs (if cost estimation is enabled on your workspace) before applying them.
 
 :::warning Approval steps hold resources
 When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources.
@@ -206,6 +255,7 @@ When using an Approval step, the underlying machine running the pipeline remains
 <DocVideo src="https://app.tango.us/app/embed/e84d97b6-413b-4e04-a4dc-fd4c802d0f05?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Approval step to your OpenTofu Pipeline in Harness IaCM" />
 </TabItem>
 <TabItem value="Step-by-step">
+
 1. From the Pipeline > **Execution** tab, click on **+** between `plan` and `apply`.
 
 ![Add Approval Step](./static/add-approval-step.png)

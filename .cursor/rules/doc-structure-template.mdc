@@ -54,22 +54,32 @@ Optionally include a brief list of key outcomes or topics covered in this guide:
 
 List required setup, permissions, or knowledge. **For each prerequisite**, tell the reader how to satisfy it; don't assume they already have it.
 
-- **"Module or feature enabled" (e.g. IaCM enabled):** Link to the get-started or enable doc, or say to contact their account administrator or Harness Support if they don't see it.
+- **"Module or feature enabled" (e.g. IaCM enabled):** State **where it appears in the UI** when available (e.g. **Infrastructure** > **Infrastructure as Code Management**). For **account access** (sign-up, SaaS vs self-managed, invitations), link to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide)—do **not** ask readers to identify their deployment model up front. Put **if the module does not appear** guidance in a `:::info Contact Harness support:` admonition **indented with four spaces** under that prerequisite bullet so it nests in the list; inside the admonition, link the module get-started page (e.g. [Get started with IaCM](/docs/infra-as-code-management/get-started)), then account administrator or [Harness Support](mailto:support@harness.io). Add **self-hosted enablement** or **what’s supported** links only when the doc’s audience is clearly administrators or advanced users, not first-time onboarding.
 - **Permissions (e.g. "permission to create and run pipelines"):** Name the **specific permissions** (e.g. View, Create/Edit, Execute for Pipelines), link to the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference) (use the relevant anchor, e.g. `#pipelines`), and say **how to get them** (e.g. an administrator must assign a role that includes them) with a link to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and/or [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 - **Other items:** Link to how/where if a new user might not have it.
 
 ```markdown
 ## Prerequisites
 
-- **Harness account with X enabled:** Ensure X is enabled. If you don't see it, see [Get started with X](/docs/...) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+- **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+
+    :::info Contact Harness support:
+
+    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+
+    :::
+
 - **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 - **Item 3**
 ```
+
+For modules other than IaCM, keep the same pattern: **UI location** when entitled, [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) for account access, then a `:::info Contact Harness support:` admonition (indented under that bullet with four spaces so it nests in the prerequisite list) with module **get started** plus administrator or [Harness Support](mailto:support@harness.io) if the module does not appear.
 
 #### 4. Step-by-step instructions
 
 Use clear, numbered sections with **imperative** headers in **sentence case** (e.g. `## Create an inventory`, not gerunds like "Creating an inventory"). Capitalize **proper nouns**: product and technology names (e.g. **Kubernetes**, **Terraform**, **OpenTofu**, **Harness**, **IaCM**, **AWS**) and official **Harness** UI feature names when they are branded or module names.
 
+- **Get started guides — `## Step 1`, `## Step 2`, etc.:** For **onboarding / get started** pages only, you may use numbered step headings (e.g. `## Step 1: Add connectors`) to emphasize a short, linear path. This is an **exception** to the usual imperative-phrase section titles. Use it **only for actionable procedure**—the body of the guide where the user does things in order. Do **not** use `## Step N` for **Prerequisites**, **Troubleshooting**, or **Next steps** (keep those sections titled as noun phrases or fixed labels like `## Prerequisites`, `## Troubleshooting`, `## Next steps`). Do not label introductory or conceptual blocks as steps.
 - **Step groups:** When several steps form a logical group (e.g. module details), add a **heading for that group** (e.g. `### Module details`) and nest the steps under it (e.g. `#### Step 1`, `#### Step 2`). Add a **one-line summary** under the group heading so the reader knows what those steps accomplish (e.g. "The following steps (1–3) configure the module name, provider, connector, and storage type.").
 - **Intro before lists:** **Always add a short intro sentence before every numbered or bullet list** that states what the list is for or what the reader is about to do. Do not jump straight into "1. Select...". This helps readers and LLMs understand context (e.g. "On the Execution pipeline step of the wizard, do the following:" then "1. Select a pipeline...").
 - **UI elements:** **Bold all clickable or selectable UI elements** in steps: menu names, buttons, tabs, checkboxes, dropdowns, field labels. Use the same convention everywhere; do not mix bold and plain for the same type of element (e.g. every button like **Create**, **Sync**, **Next** should be bold).
@@ -177,7 +187,7 @@ You've successfully [accomplished X]. You can now [key capability unlocked].
 
 ### Content guidelines
 
-- **Headers:** Imperative, sentence case; no gerunds in step titles (prefer `## Configure the connector` over `## Configuring the connector`). Exception: concept sections may use noun phrases (`## Troubleshooting`, `## Prerequisites`). Gerunds are fine for broad concepts like "Understanding CI/CD" when that fits the content.
+- **Headers:** Imperative, sentence case; no gerunds in step titles (prefer `## Configure the connector` over `## Configuring the connector`). Exception: concept sections may use noun phrases (`## Troubleshooting`, `## Prerequisites`). **Get started** guides may use `## Step 1`, `## Step 2`, … **only** for actionable onboarding steps—not for Prerequisites, Troubleshooting, or Next steps. Gerunds are fine for broad concepts like "Understanding CI/CD" when that fits the content.
 - **Lists:** When each item has a concept/action and an explanation, use **Bold label:** description. For simple self-explanatory lists, plain formatting is fine. Always add a short intro sentence before a list that states what the list is for.
 - Keep prerequisites minimal and relevant; link to "how" for each.
 - Include code examples where helpful.

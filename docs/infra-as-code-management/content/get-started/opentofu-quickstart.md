@@ -1,12 +1,32 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-### Prerequisites
-Before beginning the walkthroughs in this guide, ensure you have:
-- Access to a Harness account.
-- Access to a Git provider with your [OpenTofu](https://opentofu.org/) project.
-- Access to a Cloud Provider such as AWS or Google Cloud Platform.
-- An [organization and project set up](/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
+OpenTofu is an open-source infrastructure-as-code tool, and Harness Infrastructure as Code Management (IaCM) runs your OpenTofu workspaces and pipelines with Git-backed configuration, connectors, and optional cost estimation.
+
+This guide walks you from connectors and workspace creation through a standard provision pipeline (init, plan, apply) and an optional approval between plan and apply.
+
+### What will you learn?
+
+- **Connectors and workspace:** Create cloud and Git connectors, then create an OpenTofu workspace wired to your repository and OpenTofu version.
+- **Provision pipeline:** Generate or author a pipeline that runs init, plan, and apply for your workspace.
+- **Approvals:** Optionally gate apply behind an approval step.
+
+## Prerequisites
+
+Before you use this guide, ensure you have the following:
+
+- **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+
+    :::info Contact Harness support:
+
+    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+
+    :::
+
+- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). An administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+- **Git repository:** Access to a Git provider with your [OpenTofu](https://opentofu.org/) project.
+- **Cloud provider:** Access to a cloud provider such as AWS or Google Cloud Platform for the infrastructure you manage.
+- **Harness organization and project:** An [organization and project set up](/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
 
 <details>
 <summary>Sample OpenTofu</summary>
@@ -40,14 +60,16 @@ Go to [OpenTofu Documentation](https://opentofu.org/docs/) for more information 
 ---
 
 ## Set up your workspace
-A workspace is a named environment for storing your OpenTofu configurations and resources. Connect your Cloud Provider and Code Repository through **Connectors** to manage infrastructure changes and updates with Harness IaCM pipelines.
+
+A workspace is a named environment for storing your OpenTofu configurations and resources. Connect your cloud provider and code repository through **Connectors** to manage infrastructure changes and updates with Harness IaCM pipelines.
 
 :::info
 Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](/docs/infra-as-code-management/get-started/#add-a-new-workspace).
 :::
 
-### Step 1: Add connectors
+### Step 1: Create a connector
 Use **Harness AI** to create and configure your cloud provider and code repository connectors before you create a Workspace:
+
 <Tabs>
 <TabItem value="Create a connector">
 <DocVideo src="https://app.tango.us/app/embed/73d9628e-7093-4c6b-a9f7-dac8125c8441?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create Cloud Provider Connector with Harness AI" />
@@ -68,7 +90,7 @@ Harness will create a YAML file for you connector, once you select **Create**, H
 Edit your connector by updating the AI generated YAML file, or by selecting **Edit Details** in the connectors panel.
 :::
 
-Go to [Connect your Cloud Provider](https://developer.harness.io/docs/category/cloud-providers) and [Connect your Code Repository](/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your cloud provider and code repository.
+Go to [Connect your Cloud Provider](/docs/category/cloud-providers) and [Connect your Code Repository](/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your cloud provider and code repository.
 </TabItem>
 </Tabs>
 
@@ -79,6 +101,7 @@ For easier access and token management, use the **OIDC** (OpenID Connect) option
 ---
 
 ### Step 2: Create your workspace
+
 Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
 
 :::tip migrate existing projects
@@ -97,11 +120,13 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
 4. Select **Create new Workspace**, then select **Start from scratch** and complete the following fields in the new workspace wizard:
 
 #### About Workspace
+
 - **Name** - Type a unique name to identify the Workspace.
 - **Description (optional)**: Type an optional description to help identify the Workspace.
 - **Tags (optional)**: Add a unique tag to identify the Workspace.
 
 #### Configure Repository Details
+
 - Select your Git provider, either **Harness Code Repository** or **Third-party Git provider** for other providers like GitHub or GitLab.
 - **Git Connector**: Select the Git connector you created in the previous step.
 - **Git Fetch Type**: Select the Git fetch type, either **Latest from branch**, **Git tag** or **Commit SHA**.
@@ -129,6 +154,7 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
 **Advanced** options allow you to **include submodules** if your code repository includes modules and submodules. Go to [Module Registry](/docs/category/module-registry) for more information.
 
 #### Provisioner
+
 - **Connector**: Select the cloud provider connector you created in the previous step.
 - **Cloud Cost Estimation**: Toggle the **Enable Cost Estimation** switch to enable cloud cost estimation. This will allow you to estimate the cost of your infrastructure changes before you apply them.
 - **Workspace Type**: Select **OpenTofu** as the workspace type you want to use for the workspace.
@@ -139,6 +165,7 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
     parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>
 
 #### Add Variable Set (Optional)
+
 If you have configured variable sets for reuse, select the variable set you want to use for the workspace.
 
 5. Select **Create**.
@@ -148,6 +175,7 @@ If you have configured variable sets for reuse, select the variable set you want
 ---
 
 ### Step 3: Add a provision pipeline
+
 A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](/docs/platform/pipelines/harness-yaml-quickstart).
 
 #### Harness AI pipeline generation
@@ -173,6 +201,7 @@ The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `
 ---
 
 ### Step 4: Add an Approval step (optional)
+
 You can add the Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
 
 :::warning Approval steps hold resources
@@ -184,6 +213,7 @@ When using an Approval step, the underlying machine running the pipeline remains
 <DocVideo src="https://app.tango.us/app/embed/e84d97b6-413b-4e04-a4dc-fd4c802d0f05?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Approval step to your OpenTofu Pipeline in Harness IaCM" />
 </TabItem>
 <TabItem value="Step-by-step">
+
 1. From the Pipeline > **Execution** tab, click on **+** between `plan` and `apply`.
 
 ![Add Approval Step](./static/add-approval-step.png)

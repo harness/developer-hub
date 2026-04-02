@@ -2,9 +2,6 @@
 title: Get Started with Ansible
 description: Create inventories and playbooks, then run Ansible from an IaCM pipeline using the IACMAnsiblePlugin step.
 keywords:
-  - ansible
-  - configuration management
-  - inventory
   - playbook
   - IaCM
   - IACMAnsiblePlugin
@@ -36,7 +33,14 @@ For step-by-step patterns such as web fleet configuration or rolling patches, co
 
 Before you begin, make sure the following are in place:
 
-- **Harness account with IaCM enabled:** IaCM must be enabled on your account. If you don't see it in the navigation, see [Get started with IaCM](/docs/infra-as-code-management/get-started/) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+- **Harness account with IaCM enabled:** **Infrastructure as Code Management** must be available under **Infrastructure**. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+
+    :::info Contact Harness support:
+
+    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+
+    :::
+
 - **IaCM Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** permissions for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 - **Git connector configured (for playbooks):** Your playbooks must be stored in a Git repository (Harness Code Repository or a third-party provider such as GitHub or GitLab). Ensure you have a [Harness connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) with read access to that repository.
 - **Kubernetes delegate (for pipeline execution):** The `IACMAnsiblePlugin` step runs inside a Kubernetes-based pipeline infrastructure. Ensure a Harness Kubernetes Delegate is installed and accessible. See [Install a Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview/).

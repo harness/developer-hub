@@ -45,7 +45,14 @@ The wizard steps below (storage choice, onboarding pipeline, auto-sync) apply **
 
 ## Prerequisites
 
-- **Harness account with IaCM enabled:** Ensure the IaCM module is enabled in your account. If you don't see IaCM in the left navigation, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+- **Harness account with IaCM enabled:** Ensure **Infrastructure as Code Management** is available under **Infrastructure**. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+
+    :::info Contact Harness support:
+
+    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+
+    :::
+
 - **Git repository:** A repository containing your OpenTofu or Terraform module, accessible via a configured Harness connector.
 - **Pipeline permissions:** Permission to create and run pipelines in the target Harness project. You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these permissions, an administrator must assign you a role that includes them (for example, Project Admin or a custom role). See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 
