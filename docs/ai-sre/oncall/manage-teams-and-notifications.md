@@ -1,70 +1,249 @@
 ---
-title: Manage Teams and Notifications
-description: Define team structures, configure notification channels, and set up team-based routing in Harness AI SRE.
-sidebar_label: Manage Teams & Notifications
+title: Configure On-Call Teams and Routing
+description: Configure User Groups as on-call teams, assign service ownership, and set up personal notification preferences in Harness AI SRE.
+sidebar_label: Teams and Routing
 sidebar_position: 6
 ---
 
-# Manage Teams and Notifications
+# Configure On-Call Teams and Routing
 
-Teams are the organizational unit that ties schedules, escalation policies, and alert routing together. 
+Harness AI SRE uses **User Groups** from the Harness Platform as the organizational unit for on-call management. User Groups serve as "teams" in the on-call context — they own services, own escalation policies, and determine routing for alerts.
 
-As an administrator, you'll define team structures, configure notification channels, and set up team-based routing rules.
+This page covers both **administrator configuration** (User Groups, service ownership, routing) and **individual user configuration** (personal notification settings).
 
-## Define Team Structures
+---
 
-1. Navigate to **On-Call** → **Teams**.
-2. Click **Create Team**.
-3. Configure the team:
-   - **Name** — A clear team name (e.g., "Payments", "Platform Infrastructure").
-   - **Members** — Add team members who will participate in on-call rotations.
-   - **Responsibilities** — Assign the services this team owns.
-4. Click **Save**.
+## User Groups as On-Call Teams
 
-Once a team is created, you can attach on-call schedules, escalation policies, and alert rules to it.
+Harness AI SRE does not have a separate concept of "teams." Instead, it uses **Harness User Groups** defined at the platform level.
 
-## Configure Notification Channels
+### What are User Groups?
 
-AI SRE supports multi-channel notifications to ensure pages reach responders reliably. As an administrator, you configure which channels are available at the organization level:
+User Groups are collections of users managed in the Harness Platform. They're used for:
+- Role-based access control (RBAC)
+- Service ownership in AI SRE
+- Escalation policy ownership in AI SRE
+- Alert routing in on-call management
 
-- **Email** — Enabled by default for all users.
-- **Slack** — Available automatically when your organization's Slack workspace is connected via the AI SRE integration. See [Integrate Collaboration Tools](/docs/ai-sre/get-started/onboarding-guide-admins/#1-integrate-your-collaboration-and-monitoring-tools).
-- **SMS and Phone** — Currently supports US phone numbers. Per-organization customization for international numbers may be available — contact your Harness representative.
-- **Mobile push notifications** — Available when team members install the Harness On-Call app ([Google Play](https://play.google.com/store/apps/details?id=com.harness.aisre) | [App Store](https://apps.apple.com/us/app/harness-on-call/id6753579217)).
+For complete information on creating and managing User Groups, see [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups/) in the Harness Platform documentation.
 
-Individual team members configure their own contact preferences from the On-Call menu. As an administrator, your role is to ensure the organizational integrations (Slack, SMS/phone provider) are in place.
+### User Groups in AI SRE On-Call
 
-### Set Up Custom Notification Rules
+In the on-call context, User Groups determine:
+- **Who owns which services** — Each service in the Service Directory can be assigned an owning User Group
+- **Who owns escalation policies** — Each escalation policy is owned by a User Group
+- **How alerts are routed** — Alerts for a service route to the service's owning User Group's escalation policy
 
-You can configure notification behavior per team or per individual:
+---
 
-- **Notification delays** — Add a short delay before sending to allow for smart batching of related alerts.
-- **Channel preferences** — Define which channels are used for different severity levels (e.g., SMS + phone for critical, Slack + email for warning).
+## Configure Service Ownership
 
-## Set Up Team-Based Routing
+Services in the AI SRE Service Directory are assigned to User Groups. This determines which team is responsible for on-call coverage when alerts fire for that service.
 
-Team-based routing ensures that alerts for a given service reach the correct team's on-call responder:
+### Assign User Group to a Service
 
-1. **Map services to teams** in the [service directory](./integrate-service-directory.md).
-2. **Create alert rules** that route alerts for those services to the team's [escalation policy](./define-escalation-policies.md).
-3. **Attach schedules** to the escalation policy so the system knows who to page.
+1. Navigate to **Project Settings** → **Service Directory (AI SRE)**
+2. Find the service you want to configure
+3. Click the service name to open its details
+4. In the **Owning User Group** field, select the User Group responsible for this service
+5. (Optional) Set an **Escalation Policy Override** if this service should use a different policy than the User Group's default
+6. Click **Save**
 
-This creates a complete chain: alert → service → team → escalation policy → schedule → on-call responder.
+### How Service Ownership Works
 
-## Monitor On-Call Load
+- Each service has an **owning User Group** field
+- When an alert fires for a service, AI SRE looks up the service's owning User Group
+- The alert routes to that User Group's escalation policy
+- The escalation policy determines which schedule (and therefore which on-call responder) receives the page
 
-Use the on-call dashboard to track:
+---
 
-- **Coverage distribution** — How evenly on-call hours are spread across team members.
-- **Paging activity** — Timeline view of all pages, acknowledgments, and escalations.
-- **Burnout indicators** — Identify team members who are carrying a disproportionate on-call load.
+## Escalation Policy Ownership
 
-Review these metrics regularly and adjust schedules and team sizes to maintain sustainable on-call practices.
+Escalation policies are owned by User Groups. This ties the policy to a specific team.
+
+### Policy Owner Field
+
+When creating or editing an escalation policy:
+- The **Policy Owner** field specifies which User Group owns this policy
+- This typically represents the team that uses this escalation policy for their on-call rotation
+- A User Group can have one default escalation policy, but you can create additional policies for specific scenarios
+
+### Default Escalation Policy
+
+- Each User Group can have one **default escalation policy**
+- When a service's owning User Group matches an escalation policy's owner, that policy is used for routing (unless the service specifies an override)
+- If a User Group has no default escalation policy, alerts for services owned by that User Group cannot be automatically routed
+
+---
+
+## Alert Routing Flow
+
+Understanding how alerts route through User Groups, services, and escalation policies:
+
+1. **Alert arrives** with a service identifier in the payload
+2. **Service Directory lookup** — AI SRE finds the service in the Service Directory
+3. **User Group resolution** — AI SRE identifies the service's owning User Group
+4. **Escalation policy selection** — AI SRE uses:
+   - The service's escalation policy override (if configured), OR
+   - The User Group's default escalation policy
+5. **Schedule lookup** — The escalation policy references one or more schedules
+6. **On-call responder identification** — AI SRE determines who is on-call at that moment
+7. **Notification dispatch** — The on-call responder's personal notification rules are triggered
+
+This flow ensures alerts always reach the right person based on service ownership and team structure.
+
+---
+
+## User Notification Settings
+
+While administrators configure User Groups and service ownership, **each individual user** configures their own contact methods and notification rules. These personal settings determine how you're notified when you're on-call and an incident is assigned to you.
+
+### Contact Information
+
+Navigate to **On-Call** → **Contact Settings** to manage your notification channels.
+
+#### Available Contact Methods
+
+**Email**
+- Email address tied to your Harness account
+- Can add additional email addresses (work, home, other)
+- Test notifications to verify delivery
+
+**Phone**
+- Add phone numbers with country code selection
+- Supports voice calls
+- Currently supports US phone numbers
+- Test calls to verify delivery
+
+**SMS**
+- Add mobile numbers for text messaging
+- Supports US phone numbers
+- Test SMS to verify delivery
+
+**Slack**
+- Link your Slack account to receive direct messages
+- Requires Slack workspace integration to be configured by admin
+- One Slack account per user
+- Test messages to verify connection
+
+**Mobile App**
+- Install the Harness On-Call mobile app for push notifications
+- [Google Play](https://play.google.com/store/apps/details?id=com.harness.aisre&pcampaignid=web_share)
+- [App Store](https://apps.apple.com/in/app/harness-on-call/id6753579217)
+- App automatically registers your device when you log in
+- Test push notifications to verify setup
+
+#### Adding Contact Methods
+
+1. Navigate to **Contact Settings** in the On-Call menu
+2. Click **Add Email**, **Add Phone Number**, **Add SMS Number**, or **Add Slack**
+3. Enter the contact information
+4. For phone/SMS, select the appropriate country code
+5. Label the contact (Work, Home, Other)
+6. Click **Save**
+7. Use **Test** button to verify the contact method works
+
+### Notification Rules
+
+Notification rules define the sequence and timing of how you're notified when you're on-call.
+
+#### How Notification Rules Work
+
+When an incident is assigned to you:
+1. AI SRE starts at the first step in your notification rule
+2. Sends notification via the contact method(s) defined in that step
+3. If you don't acknowledge within the step's timeout, moves to the next step
+4. Continues through steps until you acknowledge or the rule completes
+
+#### Creating Notification Steps
+
+Each notification step includes:
+- **Contact Method**: Which channel(s) to use (email, phone, SMS, Slack, mobile app)
+- **Wait Duration**: How long to wait before moving to the next step if unacknowledged
+- **Multiple Channels**: You can select multiple contact methods per step
+
+Example notification rule:
+```
+Step 1: Slack + Mobile App (wait 5 minutes)
+Step 2: SMS (wait 5 minutes)
+Step 3: Phone Call (wait 5 minutes)
+Step 4: SMS + Phone Call
+```
+
+#### Configuring Your Notification Rule
+
+1. Navigate to **Contact Settings** → **Notification Rules**
+2. Click **Add Step**
+3. Select one or more contact methods for this step
+4. Set the wait duration before escalating to the next step
+5. Click **Save**
+6. Repeat to add additional escalation steps
+7. Drag steps to reorder them
+8. Click **Save Notification Rules** to apply changes
+
+#### Best Practices
+
+- **Use multiple channels**: Combine Slack/app with SMS/phone for redundancy
+- **Escalate urgency**: Start with less intrusive methods, escalate to calls
+- **Set reasonable timeouts**: 5-10 minutes per step allows time to respond
+- **Test your setup**: Use the test buttons to ensure each contact method works
+- **Keep contacts updated**: Verify phone numbers and email addresses are current
+
+---
+
+## Troubleshooting
+
+### Service Alerts Not Routing
+
+1. **Verify service has an owning User Group** in the Service Directory
+2. **Confirm the User Group has a default escalation policy** (or the service has an override policy configured)
+3. **Check the escalation policy has active schedules** with on-call responders
+4. **Verify alert payload includes correct service identifier** that matches Service Directory
+
+### User Not Receiving Notifications
+
+1. **Verify contact methods are configured** in Contact Settings
+2. **Test each contact method** using the Test button
+3. **Check notification rules** have at least one step configured
+4. **Verify user is actually on-call** in the schedule at the time the alert fired
+5. **Check mobile app** is logged in and has notification permissions
+
+### SMS/Phone Limitations
+
+- Currently only US phone numbers are supported
+- International number support may be available — contact your Harness representative
+- Verify country code is correctly selected
+
+### Slack Not Working
+
+- Ensure your organization's Slack workspace is connected to AI SRE
+- Verify you've linked your Slack account in Contact Settings
+- Test the Slack connection using the Test button
+- Only one Slack account can be linked per user
+
+---
 
 ## Best Practices
 
-- **Keep teams aligned with service ownership** — The team that builds and deploys a service should be the team on call for it.
-- **Ensure every team has a schedule and escalation policy** — A team without both is a gap in your on-call coverage.
-- **Verify Slack integration is active** — Slack is often the primary notification channel. Confirm the integration is healthy and that the bot is present in relevant channels.
-- **Communicate notification expectations** — Let team members know which channels are available and recommend they configure at least two contact methods for redundancy.
-- **Review load metrics monthly** — Uneven on-call distribution leads to burnout. Use the dashboard data to rebalance rotations proactively.
+### For Administrators
+
+- **Align User Groups with actual team structure** — User Groups should reflect real organizational teams
+- **Assign every production service to a User Group** — Unmapped services can't route alerts automatically
+- **Ensure every User Group has a default escalation policy** — Without one, alerts can't be routed
+- **Keep service ownership current** — Update the Service Directory when teams change ownership
+- **Document naming conventions** — Use consistent User Group names that clearly identify the team
+
+### For On-Call Responders
+
+- **Configure at least two contact methods** — Redundancy ensures you're reached even if one channel fails
+- **Test your notification setup regularly** — Use test buttons to verify delivery before your on-call shift
+- **Keep contact information current** — Update phone numbers and email addresses immediately when they change
+- **Review your notification rules** — Ensure escalation steps match your preferred notification sequence
+- **Install the mobile app** — Push notifications are the most reliable way to receive urgent alerts
+
+---
+
+## Summary
+
+Harness AI SRE uses Harness Platform User Groups as the organizational unit for on-call management. Administrators configure which User Groups own which services and escalation policies, establishing the routing flow for alerts. Individual users configure their own contact methods and notification rules to ensure they're reliably notified during their on-call shifts.

@@ -21,7 +21,7 @@ The directory is automatically populated by services defined in Harness CD, so y
 
 ## Set Up Service Mapping
 
-1. Navigate to **On-Call** → **Service Directory**.
+1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Verify that your Harness CD services appear in the list. If they don't, confirm that AI SRE is enabled for the same project where your CD services are defined.
 3. For each service, assign:
    - **Team** — The team responsible for this service.

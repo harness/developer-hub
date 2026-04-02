@@ -1,0 +1,8 @@
+{
+  "label": "Resources",
+  "position": 100,
+  "link": {
+    "type": "generated-index",
+    "description": "Additional resources for Harness AI SRE, including security information, frequently asked questions, best practices, and feature support."
+  }
+}

@@ -10,7 +10,7 @@ redirect_from:
 # Use AI Scribe Agent
 
 :::info What is the AI Scribe Agent?
-The AI Scribe Agent is a specialized autonomous component of the Harness AI SRE platform that acts as a virtual scribe during incidents. It automatically documents communications, decisions, and actions across multiple channels to create comprehensive incident records without manual effort.
+The AI Scribe Agent is a specialized autonomous component of the Harness AI SRE platform that acts as a virtual scribe during incidents. It automatically documents communications, decisions, and actions across multiple channels to create comprehensive incident records without manual effort. The AI Scribe Agent works in conjunction with the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) — the Scribe captures the incident narrative, and the RCA Change Agent uses that structured data to identify root causes and drive corrective action.
 :::
 
 The AI Scribe Agent serves as your dedicated incident management specialist, automatically capturing and organizing all incident response activities across communication platforms. By monitoring Slack channels, Zoom, and Microsoft Teams meetings, it ensures that no critical information is lost during high-pressure incident response situations.
@@ -20,10 +20,13 @@ The AI Scribe Agent serves as your dedicated incident management specialist, aut
 The AI Scribe Agent provides these specific autonomous functions:
 
 ### Automated Documentation
-<!-- CHANGED (comment #8): Removed "Intelligent Filtering: Identifies and highlights important information" as a standalone bullet. The underlying feature is real (key event detection via LLM), but "Intelligent Filtering" implied a comprehensive categorization system. Replaced with a concrete description of what actually happens: transcript chunks are processed by an LLM to detect key events, which become timeline entries. -->
 - **Continuous Recording**: Captures all communications without human intervention
-- **Key Event Detection**: Processes transcript chunks through an LLM to identify notable events (decisions, status changes, actions) and adds them as timeline entries
-<!-- CHANGED (comment #8): Removed "Structured Organization: Categorizes information by type (decisions, actions, updates)" for the same reason — the example taxonomy in the doc (STATUS_UPDATE, ROOT CAUSE IDENTIFIED, etc.) appeared illustrative rather than reflecting actual output labels from the code. -->
+- **Key Event Detection**: Processes transcript chunks through an LLM to identify significant events and adds them as timeline entries. The system focuses on executive-level updates including:
+  - Major discoveries about root cause or impact
+  - Significant changes in incident scope, severity, or customer impact
+  - Key mitigation actions like rollbacks or deployments
+  - Important timeline milestones (incident start, resolution, etc.)
+  - Deliberately excludes routine activities like creating tickets, standard investigation steps, team coordination, and minor configuration changes
 
 ### Communication Analysis
 <!-- CHANGED (comment #5): Rewrote "Context Preservation: Maintains the complete narrative of an incident" — this was presenting an implementation detail as a named feature. What actually happens is the agent persists state between invocations and processes messages incrementally. -->
@@ -35,10 +38,9 @@ The AI Scribe Agent provides these specific autonomous functions:
 ### Slack Integration
 The AI SRE Scribe Agent actively monitors dedicated incident channels to:
 - **Real-time Capture**: Records all conversations as they happen
-- **Decision Tracking**: Identifies and highlights key decisions with timestamps
-- **Action Item Detection**: Manually created via web UI and Slack commands
+- **Key Event Detection**: Automatically identifies significant events from conversations and adds them to the timeline (major discoveries, key decisions, mitigation actions)
 - **Timeline Construction**: Creates chronological event sequences
-<!-- CHANGED (comment #5): Removed "Context Preservation: Maintains the narrative thread throughout the incident" as a standalone bullet here, consistent with the rewrite in Key Capabilities above. The behavior is real but should not be presented as a discrete named feature. -->
+- **Manual Action Items**: Action items can be created manually via web UI and Slack commands
 
 ### Zoom Integration
 <!-- CHANGED (comment #12): Added a note that meeting transcription relies on third-party services (Recall.ai for bot deployment, AssemblyAI for transcription). Customers evaluating data handling and privacy need this information. -->
@@ -48,10 +50,10 @@ Zoom meeting transcription uses third-party services. Recall.ai deploys the meet
 
 The AI SRE Scribe Agent joins incident war room meetings to:
 - **Meeting Transcription**: Converts spoken discussions into searchable text
-- **Key Point Extraction**: Identifies and highlights critical information
-- **Summary Generation**: Creates concise meeting summaries
-- **Speaker Attribution**: Maintains record of who said what
-- **Decision Documentation**: Captures decisions made during calls
+- **Key Point Extraction**: Identifies and highlights critical information from transcripts using the same criteria as Slack messages (major discoveries, significant changes, key mitigation actions)
+- **Speaker Attribution**: Maintains record of who said what in the transcript
+- **Timeline Integration**: Adds significant discussion points to the incident timeline as key events
+- **Action Item Detection**: Automatically extracts action items from meeting transcripts where someone explicitly commits to a task, including assignee and due date if mentioned
 
 ### Microsoft Teams Integration
 <!-- CHANGED (comment #12): Same third-party transcription note applies to Teams. Added equivalent disclosure. -->
@@ -61,46 +63,61 @@ Microsoft Teams meeting transcription uses third-party services. Recall.ai deplo
 
 The AI SRE Scribe Agent participates in Teams meetings to:
 - **Conversation Monitoring**: Tracks all incident-related discussions
-- **Insight Extraction**: Identifies important technical details
-- **Meeting Minutes**: Creates structured records of discussions
-- **Follow-up Tracking**: Flags items requiring further action
-<!-- CHANGED (comment #5): Removed "Knowledge Preservation: Ensures critical information isn't lost" — this was a restatement of "Context Preservation" and similarly described an implementation detail as a named feature. -->
+- **Insight Extraction**: Identifies important technical details from transcripts using the same key event detection criteria
+- **Speaker Attribution**: Maintains record of who said what in the transcript
+- **Timeline Integration**: Adds significant discussion points to the incident timeline as key events
+- **Action Item Detection**: Automatically extracts action items from meeting transcripts where someone explicitly commits to a task, including assignee and due date if mentioned
 
 ## Automated Documentation Features
 
 ### Comprehensive Event Capture
-The AI SRE Scribe Agent automatically records and categorizes:
-- **Communication Data**: Messages, calls, and meetings across platforms
-- **Technical Details**: System states, error messages, and diagnostic information
-- **Team Coordination**: Assignments, handoffs, and escalations
-- **Resolution Steps**: Actions taken to mitigate and resolve issues
-- **Business Impact**: Customer-facing effects and service degradations
-- **Post-Incident Tasks**: Follow-up items and preventative measures
+The AI SRE Scribe Agent captures two levels of information:
+
+**Full Transcript** (stored for reference):
+- All messages, calls, and meeting transcripts across platforms
+- Complete conversation history with timestamps and speaker attribution
+
+**Key Events** (highlighted in timeline):
+- Major discoveries about root cause or technical issues
+- Significant changes in incident scope, severity, or customer impact
+- Key mitigation actions like rollbacks, deployments, or configuration changes
+- Important timeline milestones (incident start, resolution, etc.)
+
+The Scribe deliberately focuses key events on executive-level updates, excluding routine activities like ticket creation, standard investigation commands, team coordination logistics, and minor configuration changes. This keeps the timeline focused on what matters for incident understanding and post-incident review.
+
+**Action Items** (automatically detected from meeting transcripts):
+- Concrete tasks where someone explicitly committed to doing something
+- Assigned person's name (if mentioned in the transcript)
+- Due date or deadline (if mentioned)
+- Automatically deduplicated to avoid creating the same action item multiple times when mentioned repeatedly
+
+Action items can also be created manually via the web UI or Slack commands.
 
 ### Intelligent Timeline Generation
 
-<!-- CHANGED (comment #8): Softened the framing around the documentation examples. The category labels shown (RECOVERY ACTION, ROOT CAUSE IDENTIFIED) are illustrative of the kind of information the LLM extracts — the actual output format may vary. Added a clarifying note so users don't treat these as fixed output strings. -->
-The AI SRE Scribe Agent transforms raw communications into structured incident timelines. The following examples illustrate how the Scribe interprets messages — actual output labels may vary:
+The AI SRE Scribe Agent transforms raw communications into structured incident timelines. Key events are expressed as executive-level status updates. The following examples illustrate how the Scribe interprets messages:
 
 #### Examples of Automated Documentation:
 
-**Status Update Detection** (Slack)  
+**Recovery Action Detection** (Slack)
 ```
 [14:23 UTC] DevOps Engineer: Database failover completed successfully
 ```
-↓ *AI SRE Scribe processes this as:*
+↓ *AI SRE Scribe adds to timeline as key event:*
 ```
-14:23 UTC - RECOVERY ACTION: Database failover completed successfully
+Database failover completed successfully
 ```
 
-**Technical Decision Capture** (Zoom)  
+**Root Cause Discovery** (Zoom transcript)
 ```
 "After reviewing metrics, we've identified a memory leak in the payment service."
 ```
-↓ *AI SRE Scribe processes this as:*
+↓ *AI SRE Scribe adds to timeline as key event:*
 ```
-15:07 UTC - ROOT CAUSE IDENTIFIED: Memory leak detected in payment service
+Memory leak identified in payment service after metric review
 ```
+
+Note: Key events are concise, executive-level summaries. The complete messages and full context remain available in the conversation transcript.
 
 ## Post-Incident Review
 
@@ -112,6 +129,12 @@ Post-incident documentation is generated via the **Post-Incident Review runbook 
 3. **Trigger the runbook**: Run the runbook manually at incident close, or configure an on-close runbook trigger to invoke it automatically.
 
 The AI generates the report content — but the setup and trigger are human-configured.
+
+### RCA Change Agent Integration
+
+The timeline and event data produced by the AI Scribe Agent serves as a primary input to the [RCA (Root Cause Analysis) Change Agent](/docs/ai-sre/ai-agent/rca-change-agent). The RCA Change Agent runs in realtime as the incident collects new data, ingesting the Scribe's structured timeline alongside alert and telemetry data to identify causal chains and recommend likely root cause candidates so that engineers can focus on long term remediation.
+
+You can configure an on-close runbook trigger to invoke both the Post-Incident Review action which leverages data collected by the RCA Change Agent, giving you a complete close-of-incident workflow: the Scribe provides the timeline, the Post-Incident Review generates the human-readable report, and the RCA Change Agent produces actionable remediation recommendations.
 
 ## Maximizing the AI SRE Scribe Agent
 
@@ -160,6 +183,7 @@ These tips help the AI Scribe capture your intent more accurately. The Scribe us
 - [Incident Management Overview](/docs/ai-sre/incidents/)
 - [Runbook Automation](/docs/ai-sre/runbooks/)
 - [Alert Integration](/docs/ai-sre/alerts/integrations)
+- [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent)
 
 ## Summary
 

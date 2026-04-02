@@ -109,6 +109,23 @@ redirect_from:
     MFA is supported through authentication providers such as SAML and OAuth.
 </details>
 
+<details>
+    <summary>How does RBAC work in Harness AI SRE?</summary>
+
+    AI SRE uses the Harness Platform's RBAC system. AI SRE runs under its own dedicated Harness project, and roles should be applied at the Project level. Roles are configured under **Project Settings** → **Roles**.
+
+    The available AI SRE permissions are:
+
+    | Resource | Permissions |
+    |---|---|
+    | Escalation Policy | View, Create, Edit, Delete |
+    | Incident (AI SRE) | View, Edit, Incident Configure |
+    | SLOs | View, Create, Edit, Delete |
+    | Schedule | View, Create, Edit, Delete |
+
+    AI SRE uses the Harness Platform's RBAC system. Create custom roles by combining AI SRE permissions (View, Create, Edit, Delete) for resources like Escalation Policies, Incidents, SLOs, and Schedules. Common patterns include admin roles with full access, user roles for operational access, and viewer roles for read-only access. For full details, see [Role-Based Access Control](/docs/ai-sre/resources/ai-sre-security#role-based-access-control-rbac).
+</details>
+
 ---
 
 This **FAQ structure** covers **anticipated user concerns** while keeping it **aligned with the existing documentation format**.

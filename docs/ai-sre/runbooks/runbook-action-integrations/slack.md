@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 
-Harness AI SRE supports two methods of Slack integration: Organization-level and Connector-based. This guide covers both approaches and their use cases.
+Harness AI SRE integrates with Slack at the organization level, enabling automated incident communication and team collaboration across all projects.
 
 ## Overview
 
@@ -19,79 +19,61 @@ Slack integration enables your runbooks to:
 - Coordinate response teams
 - Track incident updates
 
-## Organization-Level Integration
+## Integration Setup
 
-### Setup
-1. Navigate to **Settings** → **Organization**
-2. Select **Slack Settings**
-3. Click **Connect Slack**
-4. Follow the OAuth flow to authorize Harness
+### Prerequisites
+- Slack Workspace Admin access
+- Harness Organization Admin role
+
+### Setup Steps
+1. Navigate to **Organization Settings** → **Third Party Integrations (AI SRE)**
+2. Click **Connect** for Slack
+3. Follow the OAuth flow to authorize Harness
+4. Configure workspace permissions
+
+### Required Slack Permissions
+The Harness Slack bot requires these permissions:
+- `channels:manage` - Create and manage channels
+- `chat:write` - Send messages
+- `groups:write` - Manage private channels
+- `im:write` - Send direct messages
 
 ### Features
-- Global Slack workspace access
+- Global Slack workspace access across all projects
 - Unified authentication
 - Centralized channel management
 - Cross-project notifications
 
-### Permissions Required
-- Slack Workspace Admin access
-- Harness Organization Admin role
-- Slack bot permissions:
-  * channels:manage
-  * chat:write
-  * groups:write
-  * im:write
+## Using Slack Actions in Runbooks
 
-## Connector-Based Integration
+When you add Slack actions to a runbook, you'll configure them through a form-based interface. The specific fields depend on the action type you select.
 
-### Setup
-1. Navigate to **Settings** → **Connectors**
-2. Click **+ New Connector**
-3. Select **Slack**
-4. Configure workspace access
-5. Set channel permissions
+### Send Slack Message Action
 
-### Features
-- Project-specific access
-- Custom bot settings
-- Granular permissions
-- Independent configurations
+Sends a message to a specified Slack channel.
 
-### Permissions Required
-- Slack Workspace Member
-- Harness Project Admin role
-- Selected channel access
+**Form Fields:**
+- **Channel**: Channel name or ID (e.g., `#incidents` or `{{Activity.slack_channel}}`)
+- **Message**: Message text to send
+  - Supports Mustache variables: `{{Activity.title}}`, `{{Activity.summary}}`
+  - Can include Slack formatting (bold, italics, links)
 
-## Using Slack in Runbooks
+### Create Slack Channel Action
 
-### Channel Creation
-```yaml
-- Action Type: Slack
-  Operation: Create Channel
-  Name: "incident-[incident.id]"
-  Description: "Channel for incident [incident.id]"
-  AddUsers: ["@oncall", "@sre-team"]
-```
+Creates a new Slack channel for incident coordination.
 
-### Notifications
-```yaml
-- Action Type: Slack
-  Operation: Send Message
-  Channel: "#[incident.channel]"
-  Message: "🚨 [incident.severity] incident detected in [incident.service]"
-  Blocks:
-    - Type: section
-      Text: "*Impact*: [incident.description]"
-```
+**Form Fields:**
+- **Channel Name**: Name for the new channel (must follow Slack naming rules)
+  - Example: `incident-{{Activity.id}}`
+- **Description**: Channel topic/description
+- **Is Private**: Whether to create a private channel
 
-### Thread Management
-```yaml
-- Action Type: Slack
-  Operation: Create Thread
-  Channel: "#[incident.channel]"
-  Message: "Updates for incident [incident.id]"
-  ThreadUpdates: true
-```
+**Available Mustache Variables:**
+- `{{Activity.title}}` - AI SRE incident title
+- `{{Activity.id}}` - AI SRE incident ID
+- `{{Activity.severity}}` - AI SRE incident severity
+- `{{Activity.status}}` - AI SRE incident status
+- Any custom incident fields configured in your incident template
 
 ## Best Practices
 

@@ -20,41 +20,36 @@ Each integration type requires specific authentication setup to ensure secure co
 ## Communication Tools
 
 ### [Slack](./runbook-action-integrations/slack.md)
-1. Navigate to **Settings** → **Connectors** → **Collaboration**
-2. Click **+ New Connector**
-3. Select **Slack**
-4. Follow the OAuth flow to authorize Harness
-5. Configure channel permissions
+1. Navigate to **Organization Settings** → **Third Party Integrations (AI SRE)**
+2. Click **Connect** for Slack
+3. Follow the OAuth flow to authorize Harness
+4. Configure workspace permissions
 
 ### [Microsoft Teams](./runbook-action-integrations/teams.md)
-1. Navigate to **Settings** → **Connectors** → **Collaboration**
-2. Click **+ New Connector**
-3. Select **Microsoft Teams**
-4. Enter your Azure AD credentials
-5. Grant necessary permissions
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+2. Select **Microsoft Teams** from the available integrations
+3. Enter your Azure AD credentials
+4. Grant necessary permissions
 
 ### [Zoom](./runbook-action-integrations/zoom.md)
-1. Navigate to **Settings** → **Connectors** → **Collaboration**
-2. Click **+ New Connector**
-3. Select **Zoom**
-4. Configure OAuth settings
-5. Set meeting defaults
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+2. Select **Zoom** from the available integrations
+3. Configure OAuth settings
+4. Set meeting defaults
 
 ## Ticketing Systems
 
 ### [Jira](./runbook-action-integrations/jira.md)
-1. Navigate to **Settings** → **Connectors** → **AI SRE**
-2. Click **+ New Connector**
-3. Select **Jira**
-4. Enter your API key
-5. Configure project mapping
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+2. Select **Jira** from the available integrations
+3. Enter your API key
+4. Configure project mapping
 
 ### [ServiceNow](./runbook-action-integrations/servicenow.md)
-1. Navigate to **Settings** → **Connectors** → **AI SRE**
-2. Click **+ New Connector**
-3. Select **ServiceNow**
-4. Enter your instance URL and credentials
-5. Set up incident mapping
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+2. Select **ServiceNow** from the available integrations
+3. Enter your instance URL and credentials
+4. Set up incident mapping
 
 ## Best Practices
 

@@ -10,7 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness AI SRE includes security measures to protect incident data, ensuring confidentiality, integrity, and availability. It integrates with the Harness Platform’s security features, including authentication, role-based access control (RBAC), audit trails, and secret management. 
+Harness AI SRE includes security measures to protect incident data, ensuring confidentiality, integrity, and availability. It integrates with the Harness Platform's security features, including authentication, role-based access control (RBAC), audit trails, and secret management. 
 
 Security measures include:
 
@@ -32,6 +32,44 @@ Harness AI SRE ensures incident security by restricting access, encrypting data,
 
 ---
 
+## Role-Based Access Control (RBAC)
+
+AI SRE uses the Harness Platform's RBAC system. Roles are configured under **Organization**, **Account**, or **Project** settings → **Roles**.
+
+:::note
+AI SRE runs under its own dedicated Harness project. Apply roles at the **Project** level unless your organization requires broader account- or org-level access.
+:::
+
+### AI SRE Permissions
+
+The following permissions are available for AI SRE resources:
+
+| Resource | Available Permissions |
+|---|---|
+| Escalation Policy | View, Create, Edit, Delete |
+| Incident (AI SRE) | View, Edit, Incident Configure |
+| SLOs | View, Create, Edit, Delete |
+| Schedule | View, Create, Edit, Delete |
+
+### Creating Custom Roles
+
+Custom roles can be created by combining the permissions above to match your organization's access requirements. Common role patterns include:
+
+- **Admin role** — Grants full access (View, Create, Edit, Delete) to all AI SRE resources
+- **User role** — Grants operational access (View, Create, Edit) without Delete permissions
+- **Viewer role** — Grants read-only access (View only) to AI SRE resources, including the Service Directory for service update subscriptions
+
+Create roles that match your organization's needs using the available AI SRE permissions.
+
+### Configure RBAC
+
+1. Navigate to **Project Settings** → **Access Control** → **Roles**.
+2. Select an existing role to edit, or click **New Role** to create one.
+3. Under the **AI SRE** resource group, enable the permissions required for the role.
+4. Assign the role to users or user groups under **Project Settings** → **Access Control** → **Users** or **User Groups**.
+
+---
+
 ## Security Components
 
 <Tabs>
@@ -46,7 +84,7 @@ Incident data, logs, and automation history are securely stored.
 - Access is controlled through RBAC.
 
 :::note Data Retention
-Harness AI SRE retains incident logs and history based on your organization’s settings.
+Harness AI SRE retains incident logs and history based on your organization's settings.
 :::
 
 </TabItem>
@@ -89,8 +127,8 @@ Harness AI SRE ensures security at every stage:
    - Data is encrypted before storage.
 
 2. **Access & Role Management**  
-   - RBAC controls who can access incidents.  
-   - Authentication via OAuth/SAML is required.
+   - RBAC controls who can access incidents, schedules, escalation policies, and SLOs.  
+   - Roles are applied at the Project level for AI SRE. Authentication via OAuth/SAML is required.
 
 3. **Automation Execution**  
    - Actions are logged for compliance.  
@@ -110,8 +148,8 @@ Harness AI SRE ensures security at every stage:
 
 To enhance security in Harness AI SRE:
 
-- Use RBAC policies to limit access.  
-- Enable OAuth/SAML authentication.  
-- Review audit logs regularly.  
-- Use API tokens with least privilege.  
-- Encrypt webhook notifications.  
+- Use RBAC policies to limit access. Apply roles at the Project level and create viewer roles for read-only users.
+- Enable OAuth/SAML authentication.
+- Review audit logs regularly.
+- Use API tokens with least privilege.
+- Encrypt webhook notifications.

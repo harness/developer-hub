@@ -24,8 +24,8 @@ Harness Pipelines integration enables your runbooks to:
 - **Pipeline exists in Harness**: Target pipeline is created and working in Harness (CD or other module)
 - **Pipeline inputs configured**: Pipeline defines inputs for incident data (service, environment, incidentId, changeId)
 - **Shared account structure**: AI SRE project is in the same Harness account/org/project as the target pipeline
-- **Proper permissions**: Users have permission to execute the target pipeline
-- **RBAC configured**: AI SRE uses existing Harness identity and RBAC (no additional API keys needed)
+- **Proper permissions**: Users have permission to execute the target pipeline. At minimum, users need the **Edit** permission on Incidents (AI SRE) and execute permission on the target pipeline. See [Role-Based Access Control](/docs/ai-sre/resources/ai-sre-security#role-based-access-control-rbac) for details.
+- **RBAC configured**: AI SRE uses existing Harness identity and RBAC (no additional API keys needed). Roles are applied at the Project level — confirm the AI SRE project has the correct role assignments before enabling automated pipeline execution.
 
 ## Runbook Configuration
 
@@ -190,6 +190,6 @@ This integration pattern supports various incident response scenarios:
 
 - **Start with manual execution** for critical production operations
 - **Use staging environments** for initial testing and validation
-- **Implement proper RBAC** to control pipeline execution permissions
+- **Implement proper RBAC** to control pipeline execution permissions — apply roles at the Project level and ensure users have the Incident Edit permission before granting runbook execution access
 - **Monitor pipeline performance** and adjust timeouts accordingly
 - **Document incident-to-pipeline mappings** for team reference

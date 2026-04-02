@@ -19,26 +19,22 @@ Zoom integration enables your runbooks to:
 - Share meeting recordings
 - Track attendance
 
-## Setting Up the Zoom Connector
+## Integration Setup
 
 ### Prerequisites
-Before configuring Zoom integration:
-1. [Configure a Zoom project connector](../configure-project-connectors.md#zoom-connector) for your project
-2. Ensure you have appropriate Zoom permissions
+- Zoom admin access
+- Harness Project Admin role
+- Appropriate Zoom API permissions
 
-### Step-by-Step Setup for Organization Connector
+### Setup Steps
 
-1. Navigate to **Account Settings** → **Connectors**
-2. Click **+ Add Connector**
-3. Select **Zoom**
-4. Enter a connector name in the format: `[Organization Name] - Zoom Connector`
-5. In the Authorization step:
-   - Choose between OAuth (recommended) or Account ID and Secret (default)
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+2. Select **Zoom** from the available integrations
+3. Configure authentication:
+   - Choose between OAuth (recommended) or Account ID and Secret
    - For OAuth: Click "Sign in with Zoom" and authorize access
-6. For Connectivity Mode:
-   - Verify "Connect through the Harness Platform" is selected
-   - Click Continue
-7. Complete the setup process
+4. Grant required API permissions (see below)
+5. Test the connection
 
 ### Required Permissions
 
@@ -116,34 +112,35 @@ For detailed information about Zoom API scopes, refer to the [official Zoom API 
 4. Click **Remove** or **Uninstall**
 5. Confirm the removal
 6. Verify in Harness:
-   - Navigate to **Account Settings** → **Connectors**
+   - Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
    - Confirm the Zoom connector is no longer listed
    - Check that related secrets have been automatically removed
 
-## Zoom Actions and Features
+## Using Zoom Actions in Runbooks
 
-### Create Incident Bridge
-When adding a Zoom action to your runbook, you can configure:
-- Meeting Topic (e.g., "P1 Incident - [service name]")
-- Meeting Agenda
-- Meeting Settings:
-  - Allow participants to join before host
-  - Enable/disable waiting room
-  - Set up automatic cloud recording
+When you add Zoom actions to a runbook, you'll configure them through a form-based interface. The specific fields depend on the action type you select.
 
-### Schedule Follow-up Meeting
-You can schedule follow-up meetings by configuring:
-- Meeting Topic
-- Start Time (can use incident resolution time + offset)
-- Duration
-- Participant List (can include incident owner and team members)
+### Create Zoom Meeting Action
 
-### Update Existing Meeting
-Modify meeting settings such as:
-- Enable/disable breakout rooms
-- Add or remove participants
-- Update meeting security settings
-- Modify recording settings
+Creates a new Zoom meeting for incident coordination.
+
+**Form Fields:**
+- **Topic**: Meeting title
+  - Example: `{{Activity.title}} - Incident Bridge`
+- **Agenda**: Meeting description (optional)
+- **Duration**: Meeting duration in minutes
+- **Start Time**: When to start the meeting (for scheduled meetings)
+- **Settings**:
+  - Join before host
+  - Waiting room enabled/disabled
+  - Auto-recording (cloud or local)
+
+**Available Mustache Variables:**
+- `{{Activity.title}}` - AI SRE incident title
+- `{{Activity.id}}` - AI SRE incident ID
+- `{{Activity.severity}}` - AI SRE incident severity
+- `{{Activity.summary}}` - AI SRE incident summary
+- Any custom incident fields configured in your incident template
 
 ## Best Practices
 

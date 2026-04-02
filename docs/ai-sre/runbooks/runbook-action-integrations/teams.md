@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 
-Harness AI SRE integrates with Microsoft Teams through a Connector-based approach, enabling automated incident communication and team collaboration.
+Harness AI SRE integrates with Microsoft Teams at the project level, enabling automated incident communication and team collaboration.
 
 ## Overview
 
@@ -19,7 +19,7 @@ Teams integration enables your runbooks to:
 - Share incident updates
 - Coordinate response teams
 
-## Connector-Based Integration
+## Integration Setup
 
 ### Prerequisites
 - Microsoft Teams admin access
@@ -27,18 +27,18 @@ Teams integration enables your runbooks to:
 - Harness Project Admin role
 
 ### Setup Steps
-1. Navigate to **Settings** → **Connectors**
-2. Click **+ New Connector**
-3. Select **Microsoft Teams**
-4. Configure Azure AD settings:
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+2. Select **Microsoft Teams** from the available integrations
+3. Configure Azure AD settings:
    - Application (client) ID
    - Directory (tenant) ID
    - Client secret
-5. Grant required permissions:
+4. Grant required permissions:
    - Channel.Create
    - ChannelMessage.Send
    - Team.ReadBasic.All
    - TeamMember.ReadWrite.All
+5. Test the connection
 
 ### Verification
 1. Test connector connectivity
@@ -46,37 +46,37 @@ Teams integration enables your runbooks to:
 3. Create test channel
 4. Verify permissions
 
-## Using Teams in Runbooks
+## Using Teams Actions in Runbooks
 
-### Channel Creation
-```yaml
-- Action Type: Teams
-  Operation: Create Channel
-  Team: "Incident Response"
-  Name: "incident-[incident.id]"
-  Description: "Channel for incident [incident.id]"
-  Members: ["@oncall", "@sre-team"]
-```
+When you add Microsoft Teams actions to a runbook, you'll configure them through a form-based interface. The specific fields depend on the action type you select.
 
-### Notifications
-```yaml
-- Action Type: Teams
-  Operation: Send Message
-  Channel: "incident-[incident.id]"
-  Message: "🚨 [incident.severity] incident detected"
-  Sections:
-    - Title: "Impact"
-      Content: "[incident.description]"
-```
+### Send Teams Message Action
 
-### Meeting Management
-```yaml
-- Action Type: Teams
-  Operation: Schedule Meeting
-  Title: "Incident [incident.id] Bridge"
-  Attendees: ["@oncall", "@sre-team"]
-  Duration: 60
-```
+Sends a message to a specified Teams channel.
+
+**Form Fields:**
+- **Team**: Team name or ID
+- **Channel**: Channel name within the team
+- **Message**: Message text to send
+  - Supports Mustache variables: `{{Activity.title}}`, `{{Activity.summary}}`
+  - Can include formatting and mentions
+
+### Create Teams Channel Action
+
+Creates a new Teams channel for incident coordination.
+
+**Form Fields:**
+- **Team**: Team where the channel will be created
+- **Channel Name**: Name for the new channel
+  - Example: `incident-{{Activity.id}}`
+- **Description**: Channel description
+
+**Available Mustache Variables:**
+- `{{Activity.title}}` - AI SRE incident title
+- `{{Activity.id}}` - AI SRE incident ID
+- `{{Activity.severity}}` - AI SRE incident severity
+- `{{Activity.status}}` - AI SRE incident status
+- Any custom incident fields configured in your incident template
 
 ## Best Practices
 

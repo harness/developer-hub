@@ -30,7 +30,7 @@ By setting up multi-level escalation chains, you ensure that incidents always re
 
 When a page is triggered:
 
-1. The **current on-call responder** (from the attached schedule) is notified on all configured channels.
+1. The **current on-call responder** (from the attached schedule) is notified via their configured notification channels. If the primary channel produces no acknowledgment, AI SRE automatically falls back through the responder's channel sequence (SMS → push → voice) before the escalation level times out. See [Notification Fallback Behavior](./manage-teams-and-notifications.md#notification-fallback-behavior) for details.
 2. If no acknowledgment is received within the **timeout period**, the system retries based on the retry count.
 3. If the first level is exhausted, the page **escalates to the next level** — typically a team lead, manager, or secondary on-call group.
 4. This continues through all configured levels until someone acknowledges.

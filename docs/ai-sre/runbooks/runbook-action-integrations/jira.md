@@ -19,24 +19,21 @@ Jira integration enables your runbooks to:
 - Automate workflow transitions
 - Sync incident updates bidirectionally
 
-## Organization-Level Connector Setup
-
-The following steps describe how to configure Jira at the organization level. For project-level connector configuration required for runbooks, see [Configure Project Connectors](../configure-project-connectors.md).
+## Integration Setup
 
 ### Prerequisites
 - Jira admin access
 - API token or OAuth credentials
 - Harness Project Admin role
 
-### Setup Steps
-1. Navigate to **Settings** → **Connectors**
-2. Click **+ New Connector**
-3. Select **Jira**
-4. Configure authentication:
+### Configure Jira Connector
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+2. Select **Jira** from the available integrations
+3. Configure authentication:
    - Server URL
    - Username
    - API token/OAuth credentials
-5. Test connection
+4. Test connection
 
 ### Required Permissions
 - Create issues
@@ -45,80 +42,43 @@ The following steps describe how to configure Jira at the organization level. Fo
 - Update fields
 - View projects
 
-## Using Jira in Runbooks
+## Using Jira Actions in Runbooks
 
-### Issue Creation
-```yaml
-- Action Type: Jira
-  Operation: Create Issue
-  Project: "IR"
-  IssueType: "Incident"
-  Summary: "[incident.severity] - [incident.service] Incident"
-  Description: |
-    Impact: [incident.description]
-    Service: [incident.service]
-    Environment: [incident.environment]
-```
+When you add a Jira action to a runbook, you'll configure it through a form-based interface. The specific fields depend on the action type you select.
 
-### Field Updates
-```yaml
-- Action Type: Jira
-  Operation: Update Fields
-  IssueKey: "[jira.key]"
-  Fields:
-    Priority: "[incident.severity]"
-    Environment: "[incident.environment]"
-    Components: ["[incident.service]"]
-```
+### Create Jira Issue Action
 
-### Status Transitions
-```yaml
-- Action Type: Jira
-  Operation: Transition
-  IssueKey: "[jira.key]"
-  Transition: "In Progress"
-  Comment: "Incident response initiated"
-```
+Creates a new Jira issue and can automatically update the AI SRE incident with the issue key.
 
-## Directional Synchronization with AI SRE
+**Common Form Fields:**
+- **Project**: Jira project key
+- **Issue Type**: Type of issue (Bug, Task, Story, etc.)
+- **Summary**: Brief title for the issue
+  - Example: `{{Activity.title}}`
+- **Description**: Detailed description
+  - Example: `{{Activity.summary}}`
+- **Priority**: Issue priority
+- **Labels**: Tags for categorization
+- **Assignee**: Jira username to assign the issue to
 
-Harness AI SRE uses runbook triggers to update Jira when incident fields change. When a field in AI SRE changes, a runbook can automatically update the corresponding Jira issue.
+**Available Mustache Variables:**
+- `{{Activity.title}}` - AI SRE incident title
+- `{{Activity.summary}}` - AI SRE incident summary
+- `{{Activity.severity}}` - AI SRE incident severity
+- `{{Activity.status}}` - AI SRE incident status
+- Any custom incident fields configured in your incident template
 
 ### Field Change Triggers
-Configure runbooks to trigger on field changes:
+
+You can configure runbooks to trigger when specific AI SRE incident fields change, enabling automatic updates to Jira:
+
+**Supported Trigger Types:**
 - State changes
 - Priority updates
 - Severity modifications
 - Assignment changes
 
-### Example: State Change Sync
-```yaml
-Trigger:
-  Type: Field Change
-  Field: state
-  
-Actions:
-  - Action Type: Jira
-    Operation: Transition
-    IssueKey: "[jira.key]"
-    Transition: "[incident.state]"
-    Comment: "State updated from AI SRE"
-```
-
-### Example: Priority Sync
-```yaml
-Trigger:
-  Type: Field Change
-  Field: priority
-  
-Actions:
-  - Action Type: Jira
-    Operation: Update Fields
-    IssueKey: "[jira.key]"
-    Fields:
-      Priority: "[incident.priority]"
-    Comment: "Priority updated from AI SRE"
-```
+When a field changes in AI SRE, the runbook can execute Jira actions to keep both systems synchronized.
 
 ## Advanced Features
 
@@ -142,23 +102,13 @@ Actions:
    - User mapping
 
 3. **Field Mapping**
-   ```yaml
-   # Issue Creation
-   fields:
-     summary: "{{incident.title}}"
-     description: "{{incident.description}}"
-     priority: "{{incident.severity}}"
-     assignee: "{{incident.owner}}"
-     labels: ["incident", "{{incident.service}}", "{{incident.environment}}"]
-     components: ["{{incident.component}}"]
-     customfield_10001: "{{incident.timeline}}"
-   ```
+   When creating Jira actions in runbooks, you can map AI SRE incident data to Jira fields using Mustache variables:
 
    Common mappings:
-   - **Basic Fields**: Title, description, priority
-   - **Team Fields**: Assignee, components, labels
-   - **Context Fields**: Service, environment
-   - **Custom Fields**: Timeline, metrics, impact
+   - **Basic Fields**: Summary (`{{Activity.title}}`), Description (`{{Activity.summary}}`), Priority
+   - **Team Fields**: Assignee, Components, Labels
+   - **Context Fields**: Service, Environment
+   - **Custom Fields**: Use custom incident field variables
 
 ## Best Practices
 

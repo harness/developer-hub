@@ -22,7 +22,7 @@ ServiceNow integration enables your runbooks to:
 - Automate workflow transitions
 - Sync incident updates bidirectionally
 
-## Connector-Based Integration
+## Integration Setup
 
 ### Prerequisites
 - ServiceNow admin access
@@ -30,15 +30,14 @@ ServiceNow integration enables your runbooks to:
 - Service account credentials
 - Harness Project Admin role
 
-### Setup Steps
-1. Navigate to **Settings** → **Connectors**
-2. Click **+ New Connector**
-3. Select **ServiceNow**
-4. Configure authentication:
+### Configure ServiceNow Connector
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+2. Select **ServiceNow** from the available integrations
+3. Configure authentication:
    - Instance URL
    - Username
    - Password/OAuth credentials
-5. Test connection
+4. Test connection
 
 ### Required Permissions
 - incident_manager role
@@ -46,80 +45,41 @@ ServiceNow integration enables your runbooks to:
 - rest_service role
 - web_service_admin role
 
-## Using ServiceNow in Runbooks
+## Using ServiceNow Actions in Runbooks
 
-### Incident Creation
-```yaml
-- Action Type: ServiceNow
-  Operation: Create Incident
-  Category: "Infrastructure"
-  Impact: "[incident.severity]"
-  ShortDescription: "[incident.service] Incident"
-  Description: |
-    Impact: [incident.description]
-    Service: [incident.service]
-    Environment: [incident.environment]
-```
+When you add a ServiceNow action to a runbook, you'll configure it through a form-based interface with the following fields:
 
-### Update Incident
-```yaml
-- Action Type: ServiceNow
-  Operation: Update Incident
-  Number: "[servicenow.number]"
-  Fields:
-    Priority: "[incident.severity]"
-    Assignment_group: "SRE Team"
-    Comments: "Automated response initiated"
-```
+### Create ServiceNow Incident Action
 
-### State Management
-```yaml
-- Action Type: ServiceNow
-  Operation: Update State
-  Number: "[servicenow.number]"
-  State: "In Progress"
-  WorkNotes: "Incident response team engaged"
-```
+The "Create ServiceNow Incident" action creates a new incident in ServiceNow and automatically updates the AI SRE incident's `service_now_ticket` field with the ServiceNow incident number.
 
-## Directional Synchronization with AI SRE
+**Form Fields:**
+- **Short Description**: Brief title for the ServiceNow incident
+  - Example: `{{Activity.title}}`
+- **Description**: Detailed description of the incident
+  - Example: `{{Activity.summary}}`
+- **Urgency**: Urgency level (High, Medium, Low)
+- **Impact**: Impact level (High, Medium, Low)
+- **Assigned To (optional)**: ServiceNow user sys_id or username to assign the incident to
 
-Harness AI SRE uses runbook triggers to update ServiceNow when incident fields change. When a field in AI SRE changes, a runbook can automatically update the corresponding ServiceNow incident.
+**Available Mustache Variables:**
+- `{{Activity.title}}` - AI SRE incident title
+- `{{Activity.summary}}` - AI SRE incident summary
+- `{{Activity.severity}}` - AI SRE incident severity
+- `{{Activity.status}}` - AI SRE incident status
+- Any custom incident fields configured in your incident template
 
 ### Field Change Triggers
-Configure runbooks to trigger on field changes:
+
+You can configure runbooks to trigger when specific AI SRE incident fields change, enabling automatic updates to ServiceNow:
+
+**Supported Trigger Types:**
 - State changes
 - Priority updates
 - Severity modifications
 - Assignment changes
 
-### Example: State Change Sync
-```yaml
-Trigger:
-  Type: Field Change
-  Field: state
-  
-Actions:
-  - Action Type: ServiceNow
-    Operation: Update State
-    Number: "[servicenow.number]"
-    State: "[incident.state]"
-    WorkNotes: "State updated from AI SRE"
-```
-
-### Example: Priority Sync
-```yaml
-Trigger:
-  Type: Field Change
-  Field: priority
-  
-Actions:
-  - Action Type: ServiceNow
-    Operation: Update Incident
-    Number: "[servicenow.number]"
-    Fields:
-      Priority: "[incident.priority]"
-      WorkNotes: "Priority updated from AI SRE"
-```
+When a field changes in AI SRE, the runbook can execute ServiceNow actions to keep both systems synchronized.
 
 ## Advanced Features
 
@@ -142,17 +102,11 @@ Actions:
    - Attachment synchronization
    - User mapping
 
-3. **CMDB Integration**
-   - CI relationship mapping
-   - Impact analysis
-   - Service dependency tracking
-
 ## Best Practices
 
 ### Incident Management
 - Use standard categorization
 - Include business impact
-- Link configuration items
 - Maintain SLA tracking
 
 ### Workflow Integration
@@ -174,12 +128,6 @@ Actions:
 2. Assign response teams
 3. Track resolution progress
 4. Update stakeholders
-
-### Change Management
-1. Create change requests
-2. Track approvals
-3. Document implementations
-4. Update CMDB
 
 ### SLA Compliance
 1. Monitor response times
