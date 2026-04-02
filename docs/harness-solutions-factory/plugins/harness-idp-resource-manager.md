@@ -54,6 +54,10 @@ Set `PLUGIN_ENTITY_TYPE` to target a specific kind of IDP catalog entity. Applie
 
 Add the plugin as a **Plugin** step in your stage. The examples below cover each operation mode.
 
+:::info
+Harness Plugin Steps [require that the scripts support environment variables](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins/#variables-in-plugin-scripts) with a prefix of `PLUGIN_`. However, when referring to these variables in the Harness pipeline plugin step, you must remove the prefix — e.g `PLUGIN_HARNESS_URI` becomes `HARNESS_URI`.  This accounts for the appearance of a discrepency between the actual environment variables and the settings on the plugin step.
+:::
+
 ### Register workflows
 
 Register workflows from the Harness Template Library using a registration file:
@@ -68,18 +72,18 @@ Register workflows from the Harness Template Library using a registration file:
       connectorRef: <+input>
       image: harnesssolutionsfactory/harness-idp-resource-manager:latest
       settings:
-        PLUGIN_HARNESS_URI: <+pipeline.variables.hsf_account_url>
-        PLUGIN_HARNESS_ACCT: <+account.identifier>
-        PLUGIN_HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
-        PLUGIN_SWITCH: register
-        PLUGIN_ENTITY_TYPE: workflow
-        PLUGIN_WORKING_DIR: <+stepGroup.steps.Clone_Repository.spec.cloneDirectory>
-        PLUGIN_REGISTRATION_FILE: idp_registration_mgr.yaml
-        PLUGIN_FILTER_TEMPLATE: <+pipeline.variables.filter_template>
-        PLUGIN_INCLUDE_CHILDREN: <+pipeline.variables.include_children>
-        PLUGIN_ORG_ID: <+pipeline.variables.org_id>
-        PLUGIN_PROJECT_ID: <+pipeline.variables.project_id>
-        PLUGIN_DEBUG_MODE: "false"
+        HARNESS_URI: <+pipeline.variables.hsf_account_url>
+        HARNESS_ACCT: <+account.identifier>
+        HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
+        SWITCH: register
+        ENTITY_TYPE: workflow
+        WORKING_DIR: <+stepGroup.steps.Clone_Repository.spec.cloneDirectory>
+        REGISTRATION_FILE: idp_registration_mgr.yaml
+        FILTER_TEMPLATE: <+pipeline.variables.filter_template>
+        INCLUDE_CHILDREN: <+pipeline.variables.include_children>
+        ORG_ID: <+pipeline.variables.org_id>
+        PROJECT_ID: <+pipeline.variables.project_id>
+        DEBUG_MODE: "false"
 ```
 
 ### Register resources from a Jinja2 template
@@ -96,17 +100,17 @@ Register IDP resources by rendering a Jinja2 template with a JSON payload:
       connectorRef: <+input>
       image: harnesssolutionsfactory/harness-idp-resource-manager:latest
       settings:
-        PLUGIN_HARNESS_URI: <+pipeline.variables.hsf_account_url>
-        PLUGIN_HARNESS_ACCT: <+account.identifier>
-        PLUGIN_HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
-        PLUGIN_SWITCH: register
-        PLUGIN_ENTITY_TYPE: resource
-        PLUGIN_WORKING_DIR: <+stepGroup.steps.Clone_Repository.spec.cloneDirectory>
-        PLUGIN_ENTITY_TEMPLATE: idp_resource_templates/default_hsf_workspace_resource.yaml.j2
-        PLUGIN_ENTITY_PAYLOAD: '{"resource_name":"Account Workspace","is_resource_drifted":"true","workspace_uri":"https://app.harness.io/ng/account/ABC123/module/iacm/orgs/my-org/projects/my-project/workspaces/my-workspace"}'
-        PLUGIN_ORG_ID: Harness_Platform_Management
-        PLUGIN_PROJECT_ID: Solutions_Factory
-        PLUGIN_DEBUG_MODE: "false"
+        HARNESS_URI: <+pipeline.variables.hsf_account_url>
+        HARNESS_ACCT: <+account.identifier>
+        HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
+        SWITCH: register
+        ENTITY_TYPE: resource
+        WORKING_DIR: <+stepGroup.steps.Clone_Repository.spec.cloneDirectory>
+        ENTITY_TEMPLATE: idp_resource_templates/default_hsf_workspace_resource.yaml.j2
+        ENTITY_PAYLOAD: '{"resource_name":"Account Workspace","is_resource_drifted":"true","workspace_uri":"https://app.harness.io/ng/account/ABC123/module/iacm/orgs/my-org/projects/my-project/workspaces/my-workspace"}'
+        ORG_ID: Harness_Platform_Management
+        PROJECT_ID: Solutions_Factory
+        DEBUG_MODE: "false"
 ```
 
 ### Register systems from a static entity file
@@ -123,16 +127,16 @@ Register IDP systems directly from a YAML entity file without template rendering
       connectorRef: <+input>
       image: harnesssolutionsfactory/harness-idp-resource-manager:latest
       settings:
-        PLUGIN_HARNESS_URI: <+pipeline.variables.hsf_account_url>
-        PLUGIN_HARNESS_ACCT: <+account.identifier>
-        PLUGIN_HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
-        PLUGIN_SWITCH: register
-        PLUGIN_ENTITY_TYPE: system
-        PLUGIN_WORKING_DIR: <+stepGroup.steps.Clone_Repository.spec.cloneDirectory>
-        PLUGIN_ENTITY_FILE: lob/core.yaml
-        PLUGIN_ORG_ID: Harness_Platform_Management
-        PLUGIN_PROJECT_ID: Solutions_Factory
-        PLUGIN_USE_TEMPLATE_MGR: "false"
+        HARNESS_URI: <+pipeline.variables.hsf_account_url>
+        HARNESS_ACCT: <+account.identifier>
+        HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
+        SWITCH: register
+        ENTITY_TYPE: system
+        WORKING_DIR: <+stepGroup.steps.Clone_Repository.spec.cloneDirectory>
+        ENTITY_FILE: lob/core.yaml
+        ORG_ID: Harness_Platform_Management
+        PROJECT_ID: Solutions_Factory
+        USE_TEMPLATE_MGR: "false"
 ```
 
 ### Register components
@@ -149,16 +153,16 @@ Register IDP components from a static entity file:
       connectorRef: <+input>
       image: harnesssolutionsfactory/harness-idp-resource-manager:latest
       settings:
-        PLUGIN_HARNESS_URI: <+pipeline.variables.hsf_account_url>
-        PLUGIN_HARNESS_ACCT: <+account.identifier>
-        PLUGIN_HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
-        PLUGIN_SWITCH: register
-        PLUGIN_ENTITY_TYPE: component
-        PLUGIN_WORKING_DIR: <+stepGroup.steps.Clone_Repository.spec.cloneDirectory>
-        PLUGIN_ENTITY_FILE: lob/core.yaml
-        PLUGIN_ORG_ID: Harness_Platform_Management
-        PLUGIN_PROJECT_ID: Solutions_Factory
-        PLUGIN_USE_TEMPLATE_MGR: "false"
+        HARNESS_URI: <+pipeline.variables.hsf_account_url>
+        HARNESS_ACCT: <+account.identifier>
+        HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
+        SWITCH: register
+        ENTITY_TYPE: component
+        WORKING_DIR: <+stepGroup.steps.Clone_Repository.spec.cloneDirectory>
+        ENTITY_FILE: lob/core.yaml
+        ORG_ID: Harness_Platform_Management
+        PROJECT_ID: Solutions_Factory
+        USE_TEMPLATE_MGR: "false"
 ```
 
 ### Query entities
@@ -175,11 +179,11 @@ List all existing entities of a given type:
       connectorRef: <+input>
       image: harnesssolutionsfactory/harness-idp-resource-manager:latest
       settings:
-        PLUGIN_HARNESS_URI: <+pipeline.variables.hsf_account_url>
-        PLUGIN_HARNESS_ACCT: <+account.identifier>
-        PLUGIN_HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
-        PLUGIN_SWITCH: view
-        PLUGIN_ENTITY_TYPE: workflow
+        HARNESS_URI: <+pipeline.variables.hsf_account_url>
+        HARNESS_ACCT: <+account.identifier>
+        HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
+        SWITCH: view
+        ENTITY_TYPE: workflow
 ```
 
 ### Check entity existence at scope
@@ -196,12 +200,12 @@ Verify IDP 2.0 compatibility and whether resources exist at a given scope:
       connectorRef: <+input>
       image: harnesssolutionsfactory/harness-idp-resource-manager:latest
       settings:
-        PLUGIN_HARNESS_URI: <+pipeline.variables.hsf_account_url>
-        PLUGIN_HARNESS_ACCT: <+account.identifier>
-        PLUGIN_HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
-        PLUGIN_SWITCH: check
-        PLUGIN_ORG_ID: CDK_Prod
-        PLUGIN_PROJECT_ID: Enterprise_IT_IOPS_Orchestration
+        HARNESS_URI: <+pipeline.variables.hsf_account_url>
+        HARNESS_ACCT: <+account.identifier>
+        HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
+        SWITCH: check
+        ORG_ID: CDK_Prod
+        PROJECT_ID: Enterprise_IT_IOPS_Orchestration
 ```
 
 ### Update a custom property
@@ -218,16 +222,16 @@ Update a dot-notation metadata property on an existing entity:
       connectorRef: <+input>
       image: harnesssolutionsfactory/harness-idp-resource-manager:latest
       settings:
-        PLUGIN_HARNESS_URI: <+pipeline.variables.hsf_account_url>
-        PLUGIN_HARNESS_ACCT: <+account.identifier>
-        PLUGIN_HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
-        PLUGIN_SWITCH: property
-        PLUGIN_ENTITY_TYPE: resource
-        PLUGIN_ENTITY_ID: account_workspace
-        PLUGIN_HSF_PROPERTY: metadata.hsf.is_drifted
-        PLUGIN_HSF_VALUE: "false"
-        PLUGIN_ORG_ID: Harness_Platform_Management
-        PLUGIN_PROJECT_ID: Solutions_Factory
+        HARNESS_URI: <+pipeline.variables.hsf_account_url>
+        HARNESS_ACCT: <+account.identifier>
+        HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
+        SWITCH: property
+        ENTITY_TYPE: resource
+        ENTITY_ID: account_workspace
+        HSF_PROPERTY: metadata.hsf.is_drifted
+        HSF_VALUE: "false"
+        ORG_ID: Harness_Platform_Management
+        PROJECT_ID: Solutions_Factory
 ```
 
 ### Remove entities at scope
@@ -246,12 +250,12 @@ This is a destructive, irreversible operation. All entities at the specified sco
       connectorRef: <+input>
       image: harnesssolutionsfactory/harness-idp-resource-manager:latest
       settings:
-        PLUGIN_HARNESS_URI: <+pipeline.variables.hsf_account_url>
-        PLUGIN_HARNESS_ACCT: <+account.identifier>
-        PLUGIN_HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
-        PLUGIN_SWITCH: remove
-        PLUGIN_ENTITY_TYPE: workflow
-        PLUGIN_SCOPES: account.Harness_Platform_Management
+        HARNESS_URI: <+pipeline.variables.hsf_account_url>
+        HARNESS_ACCT: <+account.identifier>
+        HARNESS_API_KEY: <+pipeline.variables.HARNESS_PLATFORM_KEY>
+        SWITCH: remove
+        ENTITY_TYPE: workflow
+        SCOPES: account.Harness_Platform_Management
 ```
 
 ---

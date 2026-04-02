@@ -37,6 +37,10 @@ Set the `PLUGIN_SWITCH` variable to control what the plugin does.
 
 Add the plugin as a **Plugin** step in your stage. The examples below cover each operation mode.
 
+:::info
+Harness Plugin Steps [require that the scripts support environment variables](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins/#variables-in-plugin-scripts) with a prefix of `PLUGIN_`. However, when referring to these variables in the Harness pipeline plugin step, you must remove the prefix — e.g `PLUGIN_HARNESS_URI` becomes `HARNESS_URI`.  This accounts for the appearance of a discrepency between the actual environment variables and the settings on the plugin step.
+:::
+
 ### Create or update a workspace
 
 ```yaml
@@ -49,28 +53,28 @@ Add the plugin as a **Plugin** step in your stage. The examples below cover each
       connectorRef: <+input>
       image: harnesssolutionfactory/harness-manage-iacm-workspace:latest
       settings:
-        PLUGIN_HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
-        PLUGIN_HARNESS_ACCOUNT_ID: <+account.identifier>
-        PLUGIN_API_KEY: <+secrets.getValue("harness_api_key")>
-        PLUGIN_SWITCH: main
-        PLUGIN_RESOURCE_NAME: my-workspace
-        PLUGIN_RESOURCE_OWNER: platform-team
-        PLUGIN_RESOURCE_VARS: '{"harness_platform_account":"<+account.identifier>","organization_name":"my-org"}'
-        PLUGIN_RESOURCE_VARS_SECRETS: '{"api_secret":"<+secrets.getValue(\"api_secret\")>"}'
-        PLUGIN_GIT_REPOSITORY_BRANCH: main
-        PLUGIN_GIT_REPOSITORY_CONNECTOR: org.harness_template_repo
-        PLUGIN_GIT_REPOSITORY_NAME: https://git.harness.io/account/org/repo.git
-        PLUGIN_GIT_REPOSITORY_PATH: workspaces/my-workspace
-        PLUGIN_HARNESS_PORTAL_RESOURCES: iacm/api/orgs/my-org/projects/my-project/workspaces
-        PLUGIN_HARNESS_PLATFORM_KEY: org.hsf_platform_api_key
-        PLUGIN_IAC_PROVISIONER_TYPE: opentofu
-        PLUGIN_IAC_PROVISIONER_VERSION: "1.10.0"
-        PLUGIN_WORKSPACE_ORG: my-organization
-        PLUGIN_WORKSPACE_PROJECT: my-project
-        PLUGIN_WORKSPACE_TAGS: '{"source":"official","type":"infrastructure"}'
-        PLUGIN_SHOULD_OVERWRITE_VARIABLES: "false"
-        PLUGIN_INCLUDE_HARNESS_ENVS: "false"
-        PLUGIN_DEBUG: "false"
+        HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
+        HARNESS_ACCOUNT_ID: <+account.identifier>
+        API_KEY: <+secrets.getValue("harness_api_key")>
+        SWITCH: main
+        RESOURCE_NAME: my-workspace
+        RESOURCE_OWNER: platform-team
+        RESOURCE_VARS: '{"harness_platform_account":"<+account.identifier>","organization_name":"my-org"}'
+        RESOURCE_VARS_SECRETS: '{"api_secret":"<+secrets.getValue(\"api_secret\")>"}'
+        GIT_REPOSITORY_BRANCH: main
+        GIT_REPOSITORY_CONNECTOR: org.harness_template_repo
+        GIT_REPOSITORY_NAME: https://git.harness.io/account/org/repo.git
+        GIT_REPOSITORY_PATH: workspaces/my-workspace
+        HARNESS_PORTAL_RESOURCES: iacm/api/orgs/my-org/projects/my-project/workspaces
+        HARNESS_PLATFORM_KEY: org.hsf_platform_api_key
+        IAC_PROVISIONER_TYPE: opentofu
+        IAC_PROVISIONER_VERSION: "1.10.0"
+        WORKSPACE_ORG: my-organization
+        WORKSPACE_PROJECT: my-project
+        WORKSPACE_TAGS: '{"source":"official","type":"infrastructure"}'
+        SHOULD_OVERWRITE_VARIABLES: "false"
+        INCLUDE_HARNESS_ENVS: "false"
+        DEBUG: "false"
 ```
 
 ### Create a workspace from a template
@@ -85,17 +89,17 @@ Add the plugin as a **Plugin** step in your stage. The examples below cover each
       connectorRef: <+input>
       image: harnesssolutionfactory/harness-manage-iacm-workspace:latest
       settings:
-        PLUGIN_HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
-        PLUGIN_HARNESS_ACCOUNT_ID: <+account.identifier>
-        PLUGIN_API_KEY: <+secrets.getValue("harness_api_key")>
-        PLUGIN_SWITCH: main
-        PLUGIN_RESOURCE_NAME: template-workspace
-        PLUGIN_RESOURCE_OWNER: platform-team
-        PLUGIN_WORKSPACE_ORG: my-organization
-        PLUGIN_WORKSPACE_PROJECT: my-project
-        PLUGIN_WORKSPACE_TEMPLATE_IDENTIFIER: base-infrastructure
-        PLUGIN_WORKSPACE_TEMPLATE_VERSION: "1.0"
-        PLUGIN_RESOURCE_VARS: '{"environment":"production"}'
+        HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
+        HARNESS_ACCOUNT_ID: <+account.identifier>
+        API_KEY: <+secrets.getValue("harness_api_key")>
+        SWITCH: main
+        RESOURCE_NAME: template-workspace
+        RESOURCE_OWNER: platform-team
+        WORKSPACE_ORG: my-organization
+        WORKSPACE_PROJECT: my-project
+        WORKSPACE_TEMPLATE_IDENTIFIER: base-infrastructure
+        WORKSPACE_TEMPLATE_VERSION: "1.0"
+        RESOURCE_VARS: '{"environment":"production"}'
 ```
 
 ### Query workspaces by tags
@@ -110,13 +114,13 @@ Add the plugin as a **Plugin** step in your stage. The examples below cover each
       connectorRef: <+input>
       image: harnesssolutionfactory/harness-manage-iacm-workspace:latest
       settings:
-        PLUGIN_HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
-        PLUGIN_HARNESS_ACCOUNT_ID: <+account.identifier>
-        PLUGIN_API_KEY: <+secrets.getValue("harness_api_key")>
-        PLUGIN_SWITCH: view
-        PLUGIN_WORKSPACE_TAGS: '{"source":"official","type":"infrastructure"}'
-        PLUGIN_RETURN_KEY: identifier
-        PLUGIN_IGNORE_HSF_SYSTEM: "true"
+        HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
+        HARNESS_ACCOUNT_ID: <+account.identifier>
+        API_KEY: <+secrets.getValue("harness_api_key")>
+        SWITCH: view
+        WORKSPACE_TAGS: '{"source":"official","type":"infrastructure"}'
+        RETURN_KEY: identifier
+        IGNORE_HSF_SYSTEM: "true"
 ```
 
 ### Filter workspaces by attribute
@@ -131,13 +135,13 @@ Add the plugin as a **Plugin** step in your stage. The examples below cover each
       connectorRef: <+input>
       image: harnesssolutionfactory/harness-manage-iacm-workspace:latest
       settings:
-        PLUGIN_HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
-        PLUGIN_HARNESS_ACCOUNT_ID: <+account.identifier>
-        PLUGIN_API_KEY: <+secrets.getValue("harness_api_key")>
-        PLUGIN_SWITCH: view
-        PLUGIN_FILTER_KEY: identifier
-        PLUGIN_FILTER_VALUE: my-workspace
-        PLUGIN_RETURN_KEY: identifier
+        HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
+        HARNESS_ACCOUNT_ID: <+account.identifier>
+        API_KEY: <+secrets.getValue("harness_api_key")>
+        SWITCH: view
+        FILTER_KEY: identifier
+        FILTER_VALUE: my-workspace
+        RETURN_KEY: identifier
 ```
 
 ### Find workspaces tagged for decommission
@@ -152,12 +156,12 @@ Add the plugin as a **Plugin** step in your stage. The examples below cover each
       connectorRef: <+input>
       image: harnesssolutionfactory/harness-manage-iacm-workspace:latest
       settings:
-        PLUGIN_HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
-        PLUGIN_HARNESS_ACCOUNT_ID: <+account.identifier>
-        PLUGIN_API_KEY: <+secrets.getValue("harness_api_key")>
-        PLUGIN_SWITCH: view
-        PLUGIN_WORKSPACE_TAGS: '{"decommission":"true"}'
-        PLUGIN_RETURN_KEY: identifier
+        HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
+        HARNESS_ACCOUNT_ID: <+account.identifier>
+        API_KEY: <+secrets.getValue("harness_api_key")>
+        SWITCH: view
+        WORKSPACE_TAGS: '{"decommission":"true"}'
+        RETURN_KEY: identifier
 ```
 
 ### Delete a workspace
@@ -176,11 +180,11 @@ This is a destructive, irreversible operation. Double-check `PLUGIN_RESOURCE_NAM
       connectorRef: <+input>
       image: harnesssolutionfactory/harness-manage-iacm-workspace:latest
       settings:
-        PLUGIN_HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
-        PLUGIN_HARNESS_ACCOUNT_ID: <+account.identifier>
-        PLUGIN_API_KEY: <+secrets.getValue("harness_api_key")>
-        PLUGIN_SWITCH: remove
-        PLUGIN_RESOURCE_NAME: workspace-to-delete
+        HARNESS_ENDPOINT: <+pipeline.variables.harness_endpoint>
+        HARNESS_ACCOUNT_ID: <+account.identifier>
+        API_KEY: <+secrets.getValue("harness_api_key")>
+        SWITCH: remove
+        RESOURCE_NAME: workspace-to-delete
 ```
 ## Settings reference
 
