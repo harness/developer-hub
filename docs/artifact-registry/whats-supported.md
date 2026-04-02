@@ -17,13 +17,14 @@ These are the currently supported registry types.
 - **Helm:** Perfect for managing Kubernetes applications.
 - **Generic:** Flexible for all your needs.
 - **Maven:** Essential for Java projects.
-- **Python:** For all your Python packages.
+- **Python:** For your Python packages using **pip**, **Poetry**, or **uv**.
 - **NPM:** JavaScript package management.
 - **NuGet:** .NET package manager.
 - **RPM:** Red Hat package management.
 - **Gradle:** Streamline your build automation.
 - **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
 - **Dart:** For all your Dart and Flutter packages.
+- **PHP Composer:** Private Composer packages with Packagist-compatible workflows.
 
 ### Beta
 - **Go:** Support for Go modules.
@@ -55,7 +56,19 @@ HAR provides native support for pushing images to Docker registries, eliminating
 
 Learn more about streamlining your CI process with our guide to [Build and Push to Docker](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry)
 
+### Dependency Firewall
+
+**Dependency Firewall** is how Harness Artifact Registry applies **supply chain guardrails** when you use **upstream proxy** registries. External packages are checked against your organization’s policies **before** they are cached in Harness, so you can enforce rules on things like vulnerabilities, licenses, and package age in one place instead of only relying on downstream scans. It is part of the same [Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) model used across the platform.
+
+For a full description of how it works, the dashboard, and how to configure policies, go to [Dependency Firewall](/docs/artifact-registry/dependency-firewall/overview).
+
+### Harness CLI
+
+The **Harness CLI** (`hc`) is the command-line way to work alongside Artifact Registry: you can inspect and manage **registries** and **artifacts**, handle **metadata** and lifecycle operations where supported, **evaluate dependencies** against your registry’s security rules, and **configure local package manager clients** (for example npm) to talk to Harness registries. It is intended for automation, scripts, and day-to-day tasks without opening the UI for every change.
+
+Install the CLI from [Install the Harness CLI](/docs/platform/automation/cli/install). For Artifact Registry–specific commands and examples, go to [Manage artifacts and registries with the CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries).
+
 ### Continuous Deployment (CD)
-Speed up your deployment process by using HAR as your [Artifact sources in CD](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources) without the for connectors.
+Speed up your deployment process by using HAR as your [Artifact sources in CD](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources) without the need for separate registry connectors.
 
 Learn more about [CD services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).

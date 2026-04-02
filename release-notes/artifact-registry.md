@@ -1,7 +1,7 @@
 ---
 title: Artifact Registry Release Notes
 sidebar_label: Artifact Registry
-date: 2025-11-26T16:00
+date: 2026-02-28T12:00
 sidebar_position: 1
 # toc_max_heading_level: 4
 ---
@@ -26,6 +26,48 @@ The release notes describe recent changes to Harness Artifact Registry.
 ## 📌 Release Deployment Status by Cluster
 
 **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+
+## February 2026
+
+### 2026.2.v1
+
+#### New Features
+
+**Dependency Firewall**
+
+We're excited to ship **Dependency Firewall** in Harness Artifact Registry—a major step forward for software supply chain security. Until now, risky or non-compliant packages could flow into your organization through upstream proxies with little gatekeeping at the registry boundary. Dependency Firewall changes that: it evaluates **every** artifact version pulled from an external source **before** it is cached in your upstream proxy registry, using the same [Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) and OPA-style policies you already trust elsewhere in Harness.
+
+- **Policy at the front door:** CVSS thresholds, license rules, package age, and custom Rego policies can allow, warn on, or block versions automatically—so violations are caught when dependencies are first fetched, not after they have spread across builds.
+- **Clear outcomes:** Each evaluation is **Passed**, **Warning**, or **Blocked**. In **Block** mode, non-compliant versions are never cached and cannot be downloaded or used; **Warn** mode helps you roll out policies safely while you refine rules.
+- **Built for operators:** Enable the firewall on your upstream proxy, attach policy sets, pick **Block** or **Warn**, and track everything from the **Dependency Firewall** tab—no separate toolchain required.
+
+![Dependency Firewall tab: dashboard summaries and evaluated package list](./static/artifact-registry/february-2026-dependency-firewall-dashboard.png)
+
+:::note Feature flag
+
+Dependency Firewall is behind the feature flag `HAR_DEPENDENCY_FIREWALL`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+:::
+
+Learn more in the [Dependency Firewall overview](/docs/artifact-registry/dependency-firewall/overview), [enable Dependency Firewall](/docs/artifact-registry/manage-registries/configure-registry#enable-dependency-firewall) in registry configuration, [configure policies and policy sets](/docs/artifact-registry/dependency-firewall/configure-policies), and the tutorial [Implement Dependency Firewall with OPA policies](/docs/artifact-registry/tutorials/dependency-firewall-opa-policies).
+
+**Python registry: Poetry and uv**
+
+Harness Python registries now document first-class workflows for **[Poetry](https://python-poetry.org/)** and **[uv](https://docs.astral.sh/uv/)**—including publishing, installing, and authenticating with identity tokens—alongside existing **pip** instructions. Use the same `pkg.harness.io` endpoints and tokens as for pip; Poetry and uv integrate through explicit sources, `pyproject.toml`, and lockfiles your teams may already use.
+
+Follow the **poetry** and **uv** tabs in the embedded guide on [Get started with Artifact Registry](/docs/artifact-registry/get-started/quickstart) (select **Python** in the format selector) for copy-ready commands.
+
+#### Enhancements & Fixes
+
+**Harness CLI: Dependency Firewall audit, explain, and npm client configuration**
+
+The Harness CLI (`hc`) streamlines Artifact Registry operations for security and local client setup:
+
+- **`hc registry fw audit`** (alias `hc registry firewall audit`): Parse lock and manifest files and evaluate dependencies in bulk against Dependency Firewall policies. Supported inputs include NPM, Java (Maven and Gradle), and **Python** files such as `requirements.txt`, `pyproject.toml`, `Pipfile.lock`, and **`poetry.lock`**.
+- **`hc registry fw explain`**: Return firewall scan status (**Passed**, **BLOCKED**, or **WARN**) and details for a specific package version already present in a registry.
+- **`hc registry configure npm`**: Write Harness registry URLs and authentication into `.npmrc` for default, scoped, global, or project-level npm configuration.
+
+Learn more in [Manage artifacts and registries with the CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries): [Audit dependencies from lock files](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#audit-dependencies-from-lock-files), [Get firewall status for an artifact version](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#get-firewall-status-for-an-artifact-version), and [Configure npm client](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#configure-npm-client).
 
 ## January 2026
 
