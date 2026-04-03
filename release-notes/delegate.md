@@ -130,6 +130,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2026
 
+### Version 26.03.88803 <!-- April 03, 2026 -->
+
+#### Fixed issues
+- Fixed an issue where S3 plugins failed when using an AWS connector with IAM role-based connectivity. [CI-21875]
+
 ### Version 26.03.88802 <!-- March 30, 2026 -->
 #### Fixed issues
 - Added gated JSON stdout execution logging for delegates with HARNESS_LOG_STREAMING_STDOUT_ENABLED, preserving structured fields and MDC context. [PIPE-32819]
