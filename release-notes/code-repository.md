@@ -22,6 +22,36 @@ These release notes describe recent changes to Harness Code Repository.
 
 ## March 2026
 
+<!-- March 25, 2026 -->
+
+### Version 1.80.x
+
+#### New features and enhancements
+
+- The repository **summary page** now displays a **language breakdown** showing the programming languages used in the repository. Languages are also computed automatically when importing a repository, so imported repos show language information immediately. (CODE-5093, CODE-5177)
+
+- **Forked repositories** are now restricted to private visibility. Forks of private repositories can no longer be changed to public, preventing accidental exposure of private source code through forks. (CODE-5094)
+
+- Improved **error messages for invalid branch names**. When creating a branch with invalid characters (for example, using a commit message containing spaces as a branch name), the error message now clearly indicates which characters are invalid and what naming rules apply. (CODE-4900)
+
+- Added **maximum length validation** for summary and link fields in status check reports, preventing oversized payloads from causing issues. (CODE-4786)
+
+- The new Code Repository UI now fully supports **public repositories**, including unauthenticated access to the repository summary page, file browsing, commits, branches, and pull requests. (CODE-4513)
+
+#### Bug fixes and improvements
+
+- Fixed an issue where the **compare branches** and **pull request commits** tabs only displayed approximately 15 commits, even when many more existed between the compared branches. Pagination is now available to navigate the full commit list. (CODE-5182)
+
+- Fixed an issue where **file attachments** added to a pull request description were lost after creating the PR, particularly when using AI-generated summaries or PR templates. (CODE-4677)
+
+- Fixed an issue where the **gitignore template** listing API incorrectly included non-template files (such as `README.md`) in the response. The API now also returns HTTP 400 instead of 500 for unsupported template requests. (CODE-5162)
+
+- Fixed an issue where **branch protection rules** were not properly enforced when the commit API used full branch references (`refs/heads/` prefix) instead of plain branch names. (CODE-4920)
+
+- Fixed an issue where the **repository listing API** returned HTTP 500 when paginating through repositories that contained forks whose source repository had been deleted. (CODE-5137)
+
+- Fixed an issue where the repository settings UI did not allow selecting a **validation pipeline** in branch rules until the pipeline had been triggered at least once. (CODE-5198)
+
 <!-- March 4, 2026 -->
 ### Version 1.78.x
 
