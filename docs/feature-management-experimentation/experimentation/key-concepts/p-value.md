@@ -7,4 +7,4 @@ The **p-value** is the probability of observing a result at least as extreme as 
 
 In practice, p-values are used to determine **statistical significance**. If your p-value is lower than your chosen significance threshold (commonly 0.05), the result is considered statistically significant.
 
-For more information about p-values, see [Statistical significance](./statistical-significance).
+For more information about p-values, see [Statistical significance](/docs/feature-management-experimentation/experimentation/key-concepts/statistical-significance).

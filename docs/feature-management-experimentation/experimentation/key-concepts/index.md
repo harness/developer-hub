@@ -11,10 +11,10 @@ Experimentation is a process of testing software variants among randomized user 
 
 | Term | Definition |
 |------|------------|
-| [Statistical significance](./statistical-significance) | A measure of whether observed differences in outcomes are likely due to chance or reflect a real effect. |
-| [P-value](./p-value) | The probability of observing results as extreme as the current data, assuming the null hypothesis is true. |
-| [Frequentist vs Bayesian](./frequentist-vs-bayesian) | Two statistical approaches: Frequentist relies on long-run frequencies, while Bayesian incorporates prior beliefs. |
-| [Fixed horizon](./fixed-horizon) | A testing approach where results are only analyzed after collecting a pre-specified amount of data. |
-| [Sequential testing](./fixed-horizon) | A method allowing results to be checked continuously without inflating false-positive rates. |
-| [Multiple comparison correction (MCC)](./multiple-comparison-correction) | Techniques used to reduce error rates when multiple hypotheses are tested simultaneously. |
-| [Sample size calculator](./sample-size-calculator) | A tool for estimating how many users are needed in a test to detect a meaningful effect with desired confidence. |
+| [Statistical significance](/docs/feature-management-experimentation/experimentation/key-concepts/statistical-significance) | A measure of whether observed differences in outcomes are likely due to chance or reflect a real effect. |
+| [P-value](/docs/feature-management-experimentation/experimentation/key-concepts/p-value) | The probability of observing results as extreme as the current data, assuming the null hypothesis is true. |
+| [Frequentist vs Bayesian](/docs/feature-management-experimentation/experimentation/key-concepts/frequentist-vs-bayesian) | Two statistical approaches: Frequentist relies on long-run frequencies, while Bayesian incorporates prior beliefs. |
+| [Fixed horizon](/docs/feature-management-experimentation/experimentation/key-concepts/fixed-horizon) | A testing approach where results are only analyzed after collecting a pre-specified amount of data. |
+| [Sequential testing](/docs/feature-management-experimentation/experimentation/key-concepts/fixed-horizon) | A method allowing results to be checked continuously without inflating false-positive rates. |
+| [Multiple comparison correction (MCC)](/docs/feature-management-experimentation/experimentation/key-concepts/multiple-comparison-correction) | Techniques used to reduce error rates when multiple hypotheses are tested simultaneously. |
+| [Sample size calculator](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator) | A tool for estimating how many users are needed in a test to detect a meaningful effect with desired confidence. |
