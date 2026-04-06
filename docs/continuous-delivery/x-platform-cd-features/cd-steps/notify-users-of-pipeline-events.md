@@ -65,6 +65,16 @@ If you select the stage events, you can select which stages to use.
 
 ![](./static/notify-users-of-pipeline-events-01.png)
 
+### Notify on specific step failures
+
+When you select the **Step Failed** event, you can scope the notification to specific steps rather than receiving notifications for every step failure in the pipeline. After selecting **Step Failed**, use the **Select Steps** dropdown to choose the individual steps you want to monitor.
+
+This is useful when you only care about failures in critical steps (for example, a deployment or approval step) and want to avoid noise from less important step failures.
+
+![Selecting specific steps for Step Failed notifications](./static/notify-step-failed-select-steps.png)
+
+If no specific steps are selected, the notification fires on any step failure in the pipeline (the default behavior).
+
 Select **Continue**.
 
 There are different communication and incident management platforms to use for the notification rule. Their settings are described below.
