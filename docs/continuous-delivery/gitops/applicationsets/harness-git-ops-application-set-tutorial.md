@@ -135,16 +135,11 @@ On the **Sync Policy** tab, define the sync policy that governs the relationship
 
 Select the sync policy for applications created by this ApplicationSet.
 
-:::info Currently Supported Option
-Currently, only the **Sync** policy is supported. While other options may appear in the UI, they are not yet functional. 
-:::
-
-**Sync** (Recommended): Fully automated sync with create, update, and delete operations. This is the current default and only supported option.
-
-**Future Options** (Coming Soon):
+**Application Sync Options**:
 - **Create-Only**: Only create applications; don't update or delete them automatically.
 - **Create-Update**: Create new applications and update existing ones.
 - **Create-Delete**: Create new applications and delete removed ones.
+- **Sync**: Fully automated sync with create, update, and delete operations.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/appset-3.png')} width="50%" height="50%" title="Click to view full size image" />
