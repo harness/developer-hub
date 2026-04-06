@@ -58,6 +58,10 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ### Version 1.137.0
 
+#### New features and enhancements
+
+- Terraform output fields marked as `sensitive = true` in your `main.tf` file are now automatically masked in the pipeline **Output** tab during a [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#mask-sensitive-terraform-outputs) step execution. Non-sensitive outputs continue to appear as plain text, and sensitive outputs remain accessible in downstream steps using standard Harness expressions. This is behind the feature flag `CDS_TERRAFORM_HIDE_SENSITIVE_OUTPUTS`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-83382**)
+
 #### Fixed issues
 
 - Fixed an issue where connector validation and pipeline Git operations failed in multi-account AWS setups when a Git connector and its secret manager used different delegate selectors pointing to delegates in separate AWS accounts. The secret manager's delegate selector now takes precedence over the connector's delegate selector, ensuring the chosen delegate can decrypt secrets before Git operations proceed. This fix is behind the feature flags `PIE_GITX_EVALUATE_ENCRYPTED_CAPABILITIES` and `CDS_SECRET_MANAGER_DELEGATE_SELECTOR_PRECEDENCE`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-118093**, **ZD-100682**)

@@ -703,7 +703,7 @@ Here's an example of decrypted Terraform JSON output:
 }
 ```
 
-**Handling Sensitive Terraform Outputs**
+**Handling sensitive Terraform outputs**
 
 To extract specific values from the encrypted Terraform output, users can use tools like jq to parse and retrieve individual values from the JSON output.
 
@@ -713,6 +713,32 @@ For example, use the following command to extract the value for `test-output-nam
 ```
 jq '.["test-output-name1"].value' file.json
 ```
+
+## Mask sensitive Terraform outputs
+
+:::note
+This feature is behind the feature flag `CDS_TERRAFORM_HIDE_SENSITIVE_OUTPUTS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+When a Terraform output is marked `sensitive = true` in your `main.tf` file, Harness automatically detects that flag and masks the value in the **Output** tab. Non-sensitive outputs continue to appear as plain text.
+
+Sensitive values are displayed as encrypted expressions in the output:
+
+```
+db_password = ${sweepingOutputSecrets.obtain("db_password","...")}
+```
+
+Sensitive outputs remain fully usable in downstream steps using the same expression syntax as non-sensitive outputs:
+
+```
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.OUTPUT_NAME>
+```
+
+When Harness resolves the expression in a downstream step, the value is decrypted and injected at runtime but stays masked in logs.
+
+:::note
+This feature applies when the **Encrypt json output** secret manager is **not** configured. If a secret manager is set, Harness encrypts the entire JSON output using that path instead.
+:::
 
 ## Skip state storage
 
