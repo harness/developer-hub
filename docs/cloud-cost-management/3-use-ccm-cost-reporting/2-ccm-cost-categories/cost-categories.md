@@ -425,6 +425,147 @@ To filter recommendations using cost categories:
 <DocImage path={require('./static/rec-filter.png')} width="100%" height="100%" title="Click to view full size image" /
 >
 
+## Stamped and Dynamic Cost Categories
+
+Cost Categories let you group and filter cloud spend using custom bucket rules. But when you filter a Perspective by a specific bucket, the results can differ significantly depending on whether your pipeline uses stamped or dynamic mode, even when the underlying cost data is identical.
+
+Stamped mode assigns each cost record to exactly one bucket at ingestion time, using a priority-ordered CASE WHEN evaluation. The bucket assignment is stored as a column on the row so when you filter later, you're filtering against a pre-computed value.
+
+Dynamic mode skips the pre-assignment. Instead, it evaluates the bucket's filter conditions directly at query time against the raw data. No priority logic is applied, it simply checks whether a row satisfies the bucket's rules.
+
+Refer to this to understand the Dynamic Toggle on Perspectives Page: [Dynamic Toggle](https://developer.harness.io/release-notes/cloud-cost-management/#september-2025---hotfix-dynamic-cost-categories-toggle-in-perspectives)
+
+#### Example Setup
+
+**Cost Category:** `CC1`
+
+**Buckets (in priority order):**
+1. `CB1`: `region = us-east-1`
+2. `CB2`: `awsAccountId = acc1`
+
+**Raw Cost Data:**
+
+| region | awsAccountId | cost |
+|--------|--------------|------|
+| us-east-1 | acc1 | $10 |
+| us-west-2 | acc1 | $20 |
+
+---
+
+### How Stamping Works
+
+At data ingestion, each cost record is assigned to exactly one bucket using a `CASE WHEN` statement that respects rule priority:
+
+```sql
+CASE
+  WHEN region = 'us-east-1' THEN 'CB1'
+  WHEN awsAccountId = 'acc1' THEN 'CB2'
+  ELSE 'Unattributed'
+END
+```
+
+**Result after stamping:**
+
+| region | awsAccountId | cost | costCategory |
+|--------|--------------|------|--------------|
+| us-east-1 | acc1 | $10 | CB1 |
+| us-west-2 | acc1 | $20 | CB2 |
+
+The first row matches both rules (`region = us-east-1` AND `awsAccountId = acc1`), but because `CB1` has higher priority, it wins. The row is stamped as `CB1` and never considered for `CB2`.
+
+---
+
+### Filtering Behavior: Stamped vs Dynamic
+
+#### Scenario: Perspective filtered by `CC1 = CB2`
+
+**Stamped Mode — Result:**
+| region | awsAccountId | cost |
+|--------|--------------|------|
+| us-west-2 | acc1 | $20 |
+
+> Note: The `us-east-1 | acc1` row ($10) is **not** in these results — it was stamped as `CB1`, not `CB2`. It doesn't appear as Unattributed either; it simply doesn't match the `CB2` filter and is excluded entirely.
+
+**Dynamic Mode — Result:**
+| region | awsAccountId | cost |
+|--------|--------------|------|
+| us-east-1 | acc1 | $10 |
+| us-west-2 | acc1 | $20 |
+
+---
+
+#### Why Are the Results Different?
+
+The difference comes down to **what question each mode is answering** when you filter by a bucket.
+
+#### Stamped Mode: "Which rows were assigned to this bucket?"
+
+Stamped mode stores the bucket assignment as a column on each row at ingestion time. When you filter by `CB2`, the query is:
+
+```sql
+WHERE costCategory = 'CB2'
+```
+
+This asks: *"Give me rows where the pre-computed bucket is CB2."*
+
+The `us-east-1 | acc1` row was stamped as `CB1` (because `CB1` had higher priority). When you filter for `CB2`, that row simply doesn't match — it is excluded from results. It does **not** fall into `Unattributed`; `Unattributed` only applies to rows that matched **no bucket** during stamping.
+
+#### Dynamic Mode: "Which rows match this bucket's filter conditions?"
+
+Dynamic mode doesn't use the stamped column. Instead, it evaluates the bucket's underlying filter at query time:
+
+```sql
+WHERE awsAccountId = 'acc1'
+```
+
+This asks: *"Give me rows that satisfy CB2's rule definition."*
+
+Both rows have `awsAccountId = acc1`, so both match — regardless of what bucket they would have been assigned to by priority.
+
+---
+
+#### The Root Cause: Priority is Lost in Dynamic Filtering
+
+When stamping occurs, the system evaluates **all bucket rules together** in priority order and assigns each row to exactly one bucket. The priority logic is baked into the stamped value.
+
+When dynamic filtering occurs, the system only evaluates **the single bucket's filter** you're querying. It has no awareness of other buckets or their priority. It simply checks: "Does this row match the filter conditions for CB2?"
+
+This is why:
+- **Stamped** respects priority → overlapping rows go to the highest-priority bucket only
+- **Dynamic** ignores priority → overlapping rows appear wherever their attributes match
+
+---
+
+### Grouping Behavior
+
+When grouping by `CC1`, we always use all buckets' `CASE WHEN` statement with priority order:
+
+```sql
+GROUP BY (CASE WHEN region = 'us-east-1' THEN 'CB1'
+               WHEN awsAccountId = 'acc1' THEN 'CB2'
+               ELSE 'Unattributed' END)
+```
+
+**Result (same for both modes):**
+
+| Bucket | Cost |
+|--------|------|
+| CB1 | $10 |
+| CB2 | $20 |
+
+Grouping reconstructs the full priority logic, so results are consistent.
+
+---
+
+#### Summary
+
+| Mode | Filter Question | Priority Awareness |
+|------|-----------------|-------------------|
+| **Stamped** | "Which rows were assigned to this bucket?" | Yes — priority is baked into the stamped value |
+| **Dynamic** | "Which rows match this bucket's conditions?" | No — only evaluates the bucket you are filtering by |
+
+> **Key clarification:** In Stamped Mode, the $10 row doesn't go to `Unattributed` — it goes to `CB1`. `Unattributed` only applies to rows that matched no bucket at all during stamping.
+
 ## Examples
 
 <details>
