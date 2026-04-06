@@ -30,9 +30,192 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2026.1.v1](/release-notes/internal-developer-portal#january---20261v1) | ✅        | ✅         | ✅           |  ✅        |     ✅     |     ✅      |
-| [2025.12.v2](/release-notes/internal-developer-portal#december---202512v2) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
-| [2025.12.v1](/release-notes/internal-developer-portal#december---202512v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
+| [2026.3.v2](/release-notes/internal-developer-portal#march---20263v2) | ✅        | ✅         | ❌           |  ❌        |     ❌     |     ❌      |
+| [2026.3.v1](/release-notes/internal-developer-portal#march---20263v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
+| [2026.2.v1](/release-notes/internal-developer-portal#february---20262v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
+
+## March - [2026.3.v2]
+
+---
+
+### New Features
+
+#### GitHub Integration with AI Asset Discovery
+
+Harness IDP now supports GitHub integration for the Software Catalog. You can connect your GitHub organization to automatically discover and import services, APIs, libraries, and other catalog entities defined in your repositories.
+
+As part of this integration, IDP also introduces **AI asset discovery for GitHub**. 
+
+- Scan your GitHub repositories and find AI-related assets 
+- Import discovered plugins, skills, agents, commands, and dependencies as catalog entities, giving platform engineers a unified view of both traditional and AI-driven software components.
+
+![GitHub Integration](./static/idp/github.png)
+
+---
+
+#### System-of-Systems: Aggregation Support
+ 
+Roll up metrics from lower-level entities (e.g. service components) to the system they belong to, or to nested systems, thus giving platform engineers an aggregated view of health and metadata across the full system hierarchy.
+
+---
+
+#### Custom Plugins V2
+
+The Custom Plugins experience has been redesigned to make plugin creation simpler and faster compared to V1.
+ 
+- Define your plugin with just a name, optional description, and icon.
+- Upload an HTML file directly to power your plugin UI. No npm package or `.tgz` required.
+- Preview the plugin live against a selected catalog entity using **Dev Mode** before confirming.
+
+![Custom Plugins V2 Integration](./static/idp/custom-pluginv2.png)
+
+---
+
+#### Environment Management: Dependent Environments
+
+Extend Environment Management so that environments can be composed, with one environment able to reference another environment's outputs.
+
+![Dependent Environments](./static/idp/dependent-env.png)
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Workflow Enhancements: Live Validation and CustomField Component
+
+Several targeted improvements have been made to the Workflows:
+
+- **Live Validation Support** - Form fields in Workflow templates now validate inputs in real time, surfacing errors before submission.
+- **CustomField Component** -  A new scaffolder component (`ui:field: CustomField`) with support for multiple field types: text, dropdown, button, and JSON/YAML.
+- **Native Workflow Form Components** - Workflow form inputs and UI elements now follow the Harness Design System for a consistent look and feel across the platform.
+
+![Workflow - CustomField](./static/idp/workflow-custom.png)
+
+#### Workflow Execution History Revamp
+
+The Workflow execution history page has been redesigned to give developers and platform engineers clearer visibility into all workflow runs.
+
+- Track execution status across Running, Success, Failed, and Waiting for Approval states.
+- See trigger source (Git with branch name, or Inline), scope level, executor, and workflow owner per run.
+- Filter by status, workflow, executor, and date range.
+
+![Workflow Execution History](./static/idp/workflow-execution-history.png)
+
+---
+
+## March - [2026.3.v1]
+
+---
+
+### New Features
+
+#### PagerDuty Integration
+
+Harness IDP now supports a **PagerDuty integration** that automatically discovers services and teams from your PagerDuty account and brings them into the IDP Catalog. Once discovered, entities can be registered as new catalog entries or merged into existing ones, enriching them with PagerDuty-sourced metadata such as on-call schedules, incident analytics, and team ownership.
+ 
+- Auto-discover PagerDuty services (imported as `Component` / `Service`) and teams (imported as `Group` / `Team`) from your PagerDuty account.
+- Choose per-entity whether to **Register** (create new), **Merge** (link to an existing catalog entity), or **Register & Merge** (do both).
+- Sync on-call names, incident analytics (mean time to acknowledge, mean time to resolve, total incidents), and team ownership data directly into catalog entity metadata.
+- Control sync frequency (10 min to 1 day) and the historical data start date.
+- Bulk import or enable Auto-import to automatically bring in all future discovered entities without manual review.
+
+![PagerDuty Integration](./static/idp/pagerduty.png)
+
+---
+
+#### Workflow Trigger via API
+
+Workflows can now be triggered programmatically via the **Harness IDP API**, in addition to the self-service UI. This enables platform teams to integrate Workflow execution into CI/CD pipelines, internal tooling, or event-driven automation.
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Homepage: Top Visited and Recently Visited
+
+The IDP homepage now includes two new panels to help developers quickly navigate back to pages they use most:
+
+- **Top Visited** — Lists your most-visited pages with a visit count, categorized by entity type (Component, Group, and others).
+- **Recently Visited** — Lists your most recently visited pages with a time-since indicator (e.g., 4 seconds ago, 1 day ago).
+
+Both panels are user-specific and update automatically based on your activity.
+
+![Homepage Page Visit](./static/idp/visited-pages.png)
+
+#### Fixes
+
+- TechDocs navigation failing for components with uppercase letters or spaces in their name due to URL being lowercased. [IDP-8001]
+- Entities table search returning no results when triggered from pages beyond page 1. [IDP-8269]
+- Environment creation form retaining stale blueprint context on back navigation, causing a version mismatch error when a different blueprint was selected. [IDP-8298]
+
+---
+
+## February - [2026.2.v1]
+
+---
+
+### New Features
+
+#### ServiceNow Integration
+ 
+Harness IDP now supports a **ServiceNow CMDB integration** that syncs records from any ServiceNow CMDB table into the IDP Catalog using configurable field mappings.
+ 
+- Map CMDB columns to standard catalog YAML fields or custom `spec.properties`.
+- Register new entities or merge into existing ones, with a configurable correlation field for automatic match suggestions.
+- Set a sync schedule and enable **Auto-import** for hands-free ingestion.
+- View ingested ServiceNow data on the catalog entity's Overview page via the ServiceNow integration card.
+
+![ServiceNow Integration](./static/idp/servicenow.png)
+ 
+**Learn more:** [ServiceNow CMDB Integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/servicenow-cmdb)
+
+ 
+---
+ 
+#### Kubernetes Integration
+ 
+Harness IDP now supports a **Kubernetes integration** that automatically discovers services running in your Kubernetes cluster and brings them into the IDP Catalog via a Self-hosted Discovery Agent (SDA).
+ 
+- Register discovered services as new catalog entities or merge into existing ones, with matching entities suggested automatically.
+- Bulk import or enable **Auto-import** for hands-free ingestion of future discovered services.
+- Inspect raw Kubernetes metadata (namespace, replicas, kind, etc.) via **View YAML → Ingested Properties** on any catalog entity.
+
+![Kubernetes Integration](./static/idp/kubernetes.png)
+
+---
+
+#### Validation in Environment Blueprints
+
+Environment blueprints now support multi-layer validation to catch errors early and prevent misconfigured environments from being created.
+ 
+- **Syntax validation** - Live validation for YAML correctness (indentation, duplicate keys, anchors, etc.) and required blueprint metadata fields.
+- **Schema validation** - Live validation for field types (string, object, array, boolean) and required fields in `spec` and its sections (e.g. `spec.dependencies` must be an array with an `identifier`).
+- **Semantic validation** - On-demand via **Validate YAML**, checks that referenced workspace templates, catalog components, and pipelines exist and are in the correct scope; validates that inputs match pipeline requirements and that outputs are defined as pipeline variables.
+ 
+Syntax and schema validation run live as you edit. Semantic validation, which requires async evaluation, is triggered manually via the **Validate YAML** action.
+
+![Environment Blueprints](./static/idp/blueprint-validation.png)
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Configurable Fields in CD Integration
+Fields surfaced from Harness CD in the catalog can now be configured per entity type, giving platform teams control over which deployment metadata is displayed.
+
+#### HarnessEntity Picker 
+A new picker component available in Workflow templates lets developers select Harness entities (pipelines, services, environments) from a searchable dropdown.
+
+#### New API Cards
+The Catalog API entity view now includes enriched API cards with endpoint summaries, authentication type, and owner information.
+
+#### Fixes
+- Scorecard checks failing for Bitbucket data points due to incorrect client being passed for remote entity evaluation. [IDP-7879]
+- Catalog dependency links failing to navigate when Org or Project identifiers contained uppercase characters. [IDP-7719]
+- Execution config API returning 500 errors, blocking pipeline image retrieval for new account onboarding. [IDP-7997]
+- Workflow **Create** button remaining clickable after first submission, causing duplicate job executions. [IDP-8224]
+- Catalog reverting to show all entities instead of scope-filtered results after navigating back from an entity page. [IDP-7990]
+
 
 ## January - [2026.1.v1]
 
