@@ -220,6 +220,20 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## April 2026
+
+### Version 1.137.x <!--April 02, 2026-->
+
+#### Fixed issues
+- Fixed an issue where the List Environments API could time out due to redundant permission checks. This has been optimized to improve response time and prevent timeouts. [PL-69931]
+- Resolved an issue where editing a Custom Secrets Manager could show a blank error popup if the referenced template had all runtime variables removed or converted to fixed values. [PL-69874]
+- Updated module name matching to be case-insensitive, improving consistency across configurations. [PL-69690]
+- Fixed an issue where OPA policy checks configured with Warn and Continue for Service Accounts and API keys did not display warnings correctly. Policy evaluation responses are now properly returned, ensuring that warnings and errors are shown as expected in the UI. [PL-69434]
+
+#### New features and enhancements
+
+- Introduced notifications for service account tokens, allowing you to configure alerts for events such as creation, rotation, updates, expiration, deletion, and upcoming expiration across your selected channels. [PL-41008] 
+
 ## March 2026
 
 ### Version 1.136.x <!--March 25, 2026-->
