@@ -141,9 +141,13 @@ To configure multiple SAML providers in Harness, follow the steps below:
 
 1. Select **Account Settings**, and then select **Authentication**.
 
-2. Add the SAML providers you need.
+2. Enable **Login via SAML** and add the SAML providers you need.
 
-    a. If no SAML providers are configured for the account, select an **SAML Provider** from the list of providers.
+    a. If no SAML providers are configured for the account, select **Add SAML Provider**.
+    The SAML Provider settings appear.
+      - In the **Name** field, enter a name for the SAML provider. Names can only contain alphanumeric characters, `_`, `-`, `.`, and spaces. Optionally, add a **Display Name (optional)**.
+      - Select **Continue**.
+      - **Select a SAML provider** from the list of providers and select **Continue**.
 
         <Tabs>
         <TabItem value="Microsoft Entra ID">
@@ -176,22 +180,15 @@ To configure multiple SAML providers in Harness, follow the steps below:
         </TabItem>
         </Tabs>
 
-
-    b. Select **Continue**.
-
-    c. Select **Submit**.
-
-          The SAML provider is now listed in **Login via SAML**.
+      - In the **URL and Identity Provider** screen, upload the Identity Provider metadata XML and select **Continue**. 
+      
+      The SAML provider is now listed under **Login via SAML**.
 
           <div style={{textAlign: 'center'}}>
           <DocImage path={require('./static/multiple-idp-list-saml.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 
-    d. If one or more SAML providers are configured, select **Add SAML Provider**.
-   The SAML Provider settings appear.
-3. In the **Name** field, enter a name for the SAML provider. Names can only contain alphanumeric characters, `_`, `-`, `.`, and spaces. Optionally, add a **Display Name (optional)**.
-4. Select **Continue**.
-5. Select **Select a SAML Provider** to enable an SAML provider. 
+    b. If one or more SAML providers are configured, enable them.
 
 Before enabling SAML, disable any configured public OAuth providers. For more information, go to <a href="/docs/platform/authentication/single-sign-on-saml" target="_blank" >Single Sign-On with SAML</a>.
 
