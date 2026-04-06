@@ -2,8 +2,9 @@
 title: Dynatrace
 description: Learn how to set up Dynatrace as a health source for CV
 sidebar_position: 1
-redirect_from: 
-    - /docs/continuous-delivery/verify/configure-cv/health-sources/dynatrace
+redirect_from:
+  - /docs/continuous-delivery/verify/configure-cv/health-sources/dynatrace/dynatrace
+  - /docs/continuous-delivery/verify/configure-cv/health-sources/dynatrace
 ---
 
 import Tabs from '@theme/Tabs';
