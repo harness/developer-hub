@@ -49,7 +49,9 @@ By the end of this topic, you will be able to understand:
 
 The Harness Platform is the shared foundation that powers all Harness modules. It provides a single, unified interface to onboard teams, manage projects, and configure platform-wide settings.
 
-This section focuses on the core capabilities you’ll use regardless of which module you’re working in; such as setting up organizations and projects, managing delegates, and configuring global security and access controls. For module-specific features and workflows (for example, deploying services using Continuous Delivery), refer to the documentation for the respective module on the [Harness Developer Hub](https://developer.harness.io).
+It helps developers and DevOps teams deliver software quickly, securely, and at lower cost- without compromising quality, reliability, and governance.
+
+This section focuses on describing the core capabilities you’ll use regardless of which module you’re working on. For module-specific features and workflows (for example, deploying services using Continuous Delivery), refer to the documentation for the respective module on the [Harness Developer Hub](https://developer.harness.io).
 
 ---
 
@@ -115,23 +117,39 @@ A Harness organization (or *org*) groups together projects that share a common p
   * Product lines
   * Departments
 
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/projects-and-organizations-05.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
+
 Each organization can contain multiple projects and provides a natural boundary for managing teams, access, and shared resources.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/projects-and-organizations-06.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 ### Projects
 
-A Harness project is where teams do their day-to-day work. Projects contain the pipelines, users, and resources needed to build, deploy, test, and operate applications. Projects typically represent:
+A Harness project is where teams do their day-to-day work. Projects contain the pipelines, users, and resources needed to build, deploy, test, and operate applications. For example, a project might have a Harness CI pipeline to build code and push an image to a repo and a Harness CD pipeline to pull and deploy that image to a cloud platform.
+
+Projects typically represent:
 
   * Application or service teams
   * Platform or infrastructure teams
   * Individual workloads within an organization
 
-Projects give teams a shared workspace while allowing them to operate independently. 
+Projects give teams a shared workspace while allowing them to operate independently. You can add an unlimited number of Harness projects to an org. All projects in the org can use the org's resources.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/projects-and-organizations-07.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
+
+Much like account-level roles, project members can be assigned Project Admin, Member, and Viewer roles.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/projects-and-organizations-08.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 ---
 
 ## Role-based access control (RBAC)
 
-Role-based access control (RBAC) in Harness lets you decide who can do what, and where-without slowing teams down or compromising security.
+Role-based access control (RBAC) in Harness lets you decide who can do what, and where- without slowing teams down or compromising security.
 
 With RBAC, you can delegate administrative responsibility at the organization and project levels instead of managing everything at the account level. For example, assigning the **Project Admin** role makes a user responsible for managing access, resources, and settings within a specific project.
 
@@ -378,6 +396,22 @@ A **GA** feature or module:
 * Is production-ready.
 * Has complete documentation.
 * Has a stable UI.
+
+---
+
+## Cross-module capabilities
+
+The Harness Platform provides several cross-module capabilities that help standardize configuration, improve governance, and optimize pipeline execution across modules, including:
+
+  * [Approvals](/docs/platform/approvals/approvals-tutorial)
+  * [Dashboards](/docs/platform/dashboards/dashboards-overview)
+  * [Global default settings](/docs/platform/settings/default-settings)
+  * [Governance](/docs/category/governance-1) and [monitored services](/docs/platform/monitored-service)
+  * [Harness AI](/docs/platform/harness-ai/overview)
+  * [Notifications](/docs/platform/notifications/notification-settings)
+  * [Templates](/docs/platform/templates/template)
+  * [Triggers](/docs/platform/triggers/triggers-overview)
+  * [Variables, expressions, and runtime input](/docs/platform/variables-and-expressions/runtime-inputs)
 
 ---
 

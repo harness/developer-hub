@@ -2431,7 +2431,7 @@ Harness offers Splunk streaming. Currently, this feature is behind the feature f
 
 Splunk audit log streaming is compatible with Splunk enterprise and SaaS. For more information, go to [Configure audit streaming](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector).
 
-## Organizations and Projects
+## Organizations
 
 ### Can I migrate projects from organizations and services from projects?
 
@@ -2554,6 +2554,20 @@ No, the project identifier can't be renamed because it is set when the project i
 ### Why don't I see data for a new user?
 
 Check the user group assigned to the user. If the user isn't assigned to any user group/role, they will not be able to view or access any relevant data.
+
+## Project
+
+### Can I move resources between projects?
+
+Harness does not support moving resources between projects or organizations at the moment.
+
+### What is the best way to decommission a project while retaining its history?
+
+Harness recommends removing RBAC access to the project and only allowing users to view it or hiding it from most users. Admins are the only ones who can view configurations and deployment history in a project. Deleting a project will also delete its deployment history. In order to keep your history, it is better to leave the project available but block access and usage.
+
+### Is there a limit on how many orgs or projects I can create in my account?
+
+There is no limitation on the number of orgs and projects that you can create in an account.
 
 ## Platform rate limits
 

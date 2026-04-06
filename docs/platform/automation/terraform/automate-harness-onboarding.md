@@ -662,12 +662,22 @@ pipeline:
 
 We recommend starting out in the Harness User Interface to get familiar with all the constructions. Once you understand the relationships and the hierarchy you can then begin to automate the creation and management of these resources.
 
-Please review these topics to get familiar with the Harness constructs:
+Review these topics to get familiar with the Harness constructs:
 
 - [Harness Key Concepts](/docs/platform/get-started/key-concepts.md)
 - [Projects, Orgs, Account](/docs/platform/organizations-and-projects/projects-and-organizations/)
 - [Services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview)
 
+For best results, follow Terraform and CI/CD best practices, including:
+  * **Source control:** Store Terraform configurations in a version control system such as Git to track changes and support collaboration.
+  * **Automated plan and apply:** Use CI/CD pipelines to automate `terraform plan` and `terraform apply`. For example, you can use Harness CD pipelines to automate onboarding and service configuration.
+  * **State management:** Use a remote backend, such as Terraform Cloud or AWS S3 with state locking, to maintain consistent state across teams and environments.
+  * **Notifications:** Configure notifications for Terraform actions so failures during `terraform apply` are reported through channels such as Slack or email.
+  * **Monitoring and logging:** Monitor infrastructure using tools like Grafana or Prometheus, and log changes and activities to support auditing and troubleshooting.
+  * **Secrets management:** Secure sensitive data, such as API keys, using a secrets manager like HashiCorp Vault or AWS Secrets Manager.
+  * **Backups:** Regularly back up Terraform state files to protect against data loss.
+  * **Documentation:** Maintain clear documentation for Terraform configurations and modules, including design decisions and usage instructions, to ensure maintainability and team alignment.
+  
 ### Create a project for resource automation
 
 We recommend two approaches:

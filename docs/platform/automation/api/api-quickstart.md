@@ -11,6 +11,8 @@ redirect_from:
   - /docs/platform/automation/api/api-quickstart
 ---
 
+The Harness REST API provides programmatic access to Harness resources, allowing you to automate configuration, and manage the platform at scale.
+
 Any resource you can create in Harness, you can also create with the Harness REST API.
 
 :::info API reference documentation

@@ -74,6 +74,9 @@ Harness Terraform Provider automates the process of provisioning infrastructure,
 
 Harness Terraform Provider makes it easy to scale infrastructure up and down as needed, improving the overall scalability of your infrastructure.
 
+Harness provides a [sample Terraform deployment repository](https://github.com/harness-community/solutions-architecture/tree/main/terraform-development-factory) for reference and reuse.
+
+
 ### Understand the infrastructure changes before being applied
 
 Complex resource configurations can make it difficult to understand the meaning and impact of infrastructure changes. The Terraform CLI lets you validate and preview infrastructure changes before applying them. Previewing infrastructure changes safely has several benefits:
