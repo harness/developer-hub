@@ -20,6 +20,30 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## April 2026
+
+### Version 1.81.0
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.81.0
+- harness/chaos-ddcr-faults:1.81.0
+- harness/chaos-log-watcher:1.81.0
+- harness/service-discovery-collector:0.61.0
+
+#### New Features and Enhancements
+
+- Added enforcement of the load-enabled flag from installation to execution, ensuring load tests run only when explicitly enabled. Execution is now blocked with a clear error if load support is not configured, improving reliability and validation (CHAOS-11321)
+- Added variables in the side nav items for experiments similar to pipeline variables (CHAOS-11280)
+- Fixed node spanning issues in Chaos Studio Graph (CHAOS-11332)
+- Added new infra_id index to chaosExperimentRuns and chaosExperiments to prevent execution context deadline exceeding (CHAOS-11313)
+- Migrated execution plane components to Rapidfort (CHAOS-11340)
+
+#### Fixed Issues
+
+- Fixed inputs not getting fetched when adding a custom fault under DR stage, where the API was failing (CHAOS-11272)
+
 ## March 2026
 
 ### Version 1.80.3

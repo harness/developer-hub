@@ -167,6 +167,42 @@ When setting up an experiment, in the **Target Application** and **Tune Fault** 
 - Variables specified as runtime inputs appear as editable fields in the UI, whereas static fields appear as display-only.
 :::
 
+---
+
+## Experiment Variables
+
+Experiment variables let you define reusable, parameterized values at the experiment level, similar to pipeline variables. These variables can be referenced across faults, probes, and actions within the experiment, providing a centralized way to manage shared configuration.
+
+### Add an Experiment Variable
+
+1. In the **Experiment Builder**, click the **Variables** icon in the right sidebar.
+
+    ![Variables icon](./static/experiment-variables.png)
+
+2. In the **Variables** panel, click **+ Add Variable**.
+
+3. In the **New Variable** dialog, configure the following:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Type** | Data type of the variable. Supported types: `String`, `Number` |
+    | **Name** | Identifier used to reference the variable in the experiment |
+    | **Value** | The value assigned to the variable. Use a fixed value or `<+input>` for runtime input |
+    | **Set variable as required during runtime** | When checked, the variable must be provided at experiment run time |
+    | **Description** | Optional description for the variable |
+
+    ![New Variable dialog](./static/new-variable.png)
+
+4. Click **Save**, then click **Apply Changes** in the Variables panel.
+
+### Provide Variable Values at Runtime
+
+When you run an experiment that has variables configured with runtime input (`<+input>`), the **Run Experiment** dialog prompts you to provide values for those variables before execution.
+
+You can also:
+- Toggle between **Visual** and **YAML** views to configure variables
+- Use an existing input set by enabling **Use an Existing Input Set**
+- Save the current variable values as a new input set by clicking **Save As New Input Set**
 
 
 
