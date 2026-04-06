@@ -6,7 +6,7 @@ redirect_from:
   - /docs/feature-management-experimentation/feature-management/best-practices/o-reilly-book
 ---
 
-Harness Feature Management & Experimentation (FME) combines capabilities for feature delivery and control with built-in tools for measurement and learning. FME connects insightful data to every feature release and supports modern practices like continuous delivery and progressive delivery.
+In June 2024, [Harness acquired Split](https://www.harness.io/blog/harness-to-acquire-split), now called Harness Feature Management & Experimentation (FME). FME combines capabilities for feature delivery and control with built-in tools for measurement and learning. FME connects insightful data to every feature release and supports modern practices like continuous delivery and progressive delivery.
 
 ![](../static/overview.png)
 

@@ -20,7 +20,6 @@ If you are migrating into a new Harness account, you will create a new SSO confi
 
 :::warning Harness Base URL
 Most users will access their migrated account at `app.harness.io`. If your account is hosted in a different Harness cluster (for example, Prod 3), your base URL may differ (for example, `app3.harness.io`). 
-For a comprehensive list of Harness base URLs, see [Split and Harness](/docs/feature-management-experimentation/getting-started/split-and-harness#harness-clusters-and-base-urls).
 :::
 
 ### For an Existing Harness Account

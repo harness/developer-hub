@@ -14,11 +14,45 @@ If you see the following message when attempting to log in to Split, your accoun
 
 The migration keeps your familiar workflows intact. Non-admin users will work as they did in Split, while administrators will notice a few changes as settings move into Harness platform features.
 
-:::warning Harness Base URL
-Most users will access their migrated account at `app.harness.io`. If your account is hosted in a different Harness cluster (for example, Prod 3), your base URL may differ (for example, `app3.harness.io`). 
+<details>
+<summary>Migrated Split Account?</summary>
 
-For a comprehensive list of Harness base URLs, see [Split and Harness](/docs/feature-management-experimentation/getting-started/split-and-harness#harness-clusters-and-base-urls).
-:::
+When a Split account is migrated to Harness FME, the structure of your [Harness organizations](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account#harness-organizations-and-environments), [projects](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account#projects), and [resource groups](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account#user-groups) depend on whether your account is on the **Free** or **Enterprise Plan** at the time of the migration.
+
+| Plan | Organization created | Project location | Resource group |
+|------|----------------------|------------------|----------------|
+| **Free** | Default Harness organization | Default organization | `All Project Level Resources` |
+| **Enterprise** | `<legacy Split account name> FME` | Dedicated FME organization | `FME All Resources` |
+
+- On the **Free plan**, legacy Split projects are recreated as Harness projects in the default Harness organization.
+- On the **Enterprise plan**, a Harness organization named **`<legacy Split account name> FME`** is created, and legacy Split projects are recreated as Harness projects within this organization.
+
+In both cases, each Harness project created by the migration script links to its corresponding legacy Split (FME) project.
+
+Access and permissions are controlled using [Harness RBAC](/docs/feature-management-experimentation/permissions/rbac) and authentication (such as SSO or 2FA) is configured at the [platform level](/docs/platform/authentication/authentication-overview#configure-authentication). [Permissions](/docs/feature-management-experimentation/permissions) granted to users and user groups depend on their associations with resources and resource groups, which are controlled at the account, organization, and project level in Harness.  
+
+</details>
+
+<details>
+<summary>Harness clusters and base URLs</summary>
+
+When your account is [migrated from Split to Harness](/docs/feature-management-experimentation/split-to-harness/migrated-account), you will access **Feature Management & Experimentation (FME)** through the Harness platform. Most migrated accounts use `app.harness.io`, but some customers (depending on their cluster) will use a different base URL.
+
+To identify which Harness cluster your account is in, navigate to **Account Settings** and select **Account Details**. 
+
+![](./static/harness-cluster.png)
+
+Your Harness base URL depends on which cluster your account is hosted in. 
+
+| Cluster       | Base URL                 |
+| ------------- | ------------------------ |
+| Prod1         | `app.harness.io`         |
+| Prod2         | `app.harness.io`         |
+| Prod3         | `app3.harness.io`        |
+| Prod0 / Prod4 | `accounts.harness.io`    |
+| EU clusters   | `accounts.eu.harness.io` |
+
+</details>
 
 ## Next Steps
 
