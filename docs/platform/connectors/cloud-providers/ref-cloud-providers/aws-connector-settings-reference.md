@@ -20,21 +20,19 @@ Consider the following user and access type requirements:
 
 - **User:** Harness requires that the IAM user can make API requests to AWS. For more information, go to [Creating an IAM User in Your AWS Account](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 - **User Access Type: Programmatic access:** This enables an access key ID and secret access key for the AWS API, CLI, SDK, and other development tools.
-- **DescribeRegions:** Required for all AWS Cloud Provider connections.
+- **DescribeRegions:** Required for all AWS Cloud Provider connections by default. This requirement can be removed by enabling the `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL` feature flag. For details, go to [DescribeRegions - Optional](#describeregions---optional).
 
 The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is useful for evaluating policies and access.
 
-### DescribeRegions always required
+### DescribeRegions and connector validation
 
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target or build infrastructure.
 
-Harness needs a policy with the `DescribeRegions` action so that it can list the available regions when you define your target architecture.
-
-To do this, create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies), add the `DescribeRegions` action to list those regions, and add that to any role used by the connector.
+Harness needs a policy with the `DescribeRegions` action so that it can list the available regions when you define your target architecture. To do this, create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies), add the `DescribeRegions` action to list those regions, and add that to any role used by the connector.
 
 For example:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -47,6 +45,16 @@ For example:
     ]
 }
 ```
+
+#### DescribeRegions - Optional
+
+:::info note
+
+This behavior is controlled by the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. Contact [Harness Support](mailto:support@harness.io) to enable it on your account. This feature requires Harness Delegate version `889xx` or later.
+
+:::
+
+When this feature flag is enabled, Harness uses `sts:GetCallerIdentity` instead of `ec2:DescribeRegions` to validate connector credentials. The STS `GetCallerIdentity` API requires no IAM permissions and always succeeds with valid credentials, regardless of which AWS services your account uses. This means no additional IAM policy is needed for connector validation, unblocking customers who only use non-EC2 services such as S3, ECR, ECS, or Lambda.
 
 ### AWS S3 permissions and policies
 
@@ -82,7 +90,7 @@ You can either use a single expression, like `"Resource": "*"`, or create separa
 There are two required policies to read from AWS S3:
 
 - `AmazonS3ReadOnlyAccess` managed policy
-- A [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) you create using `ec2:DescribeRegions`
+- A [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) you create using `ec2:DescribeRegions` (required unless the `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL` feature flag is enabled)
 
 <details>
 <summary>AmazonS3ReadOnlyAccess managed policy</summary>
@@ -135,7 +143,7 @@ There are two required policies to read from AWS S3:
 
 #### Write to AWS S3
 
-There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) required to write to AWS S3.
+There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) required to write to AWS S3. The `ec2:DescribeRegions` policy is only required if the `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL` feature flag is not enabled.
 
 <details>
 <summary>S3 write customer managed policy</summary>
@@ -903,7 +911,7 @@ Ensure that the AWS IAM roles applied to the credentials you use (the Harness De
 
 If the IAM role used by your AWS connector does not have the policies required by the AWS service you want to access, you can modify or switch the role. This entails changing the role assigned to the AWS account or Harness Delegate that your AWS connector is using. When you switch or modify the IAM role used by the connector, it might take up to 5 minutes to take effect.
 
-Additionally, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target infrastructure.
+By default, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target infrastructure. If the `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL` feature flag is enabled on your account, this requirement is removed and Harness uses `sts:GetCallerIdentity` for validation instead. For more details, go to [DescribeRegions and connector validation](#describeregions-and-connector-validation).
 
 The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
 

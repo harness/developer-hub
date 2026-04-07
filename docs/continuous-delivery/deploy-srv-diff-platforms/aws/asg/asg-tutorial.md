@@ -159,10 +159,9 @@ Policy JSON:
 
 Harness needs a policy with the `DescribeRegions` action so that it can list the available regions for you when you define your target architecture.
 
-
 :::note
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS IAM roles used in Harness AWS connectors regardless of what AWS service you are using.
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required by default for all AWS IAM roles used in Harness AWS connectors, regardless of what AWS service you are using. This requirement can be removed with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. For details, go to [DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional).
 
 :::
 

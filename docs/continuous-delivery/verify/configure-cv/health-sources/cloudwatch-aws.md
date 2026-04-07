@@ -25,7 +25,7 @@ With this article, you'll learn how to leverage CloudWatch Logs as a health sour
 
 ### Describe Regions
 
-The way AWS connector works is that it needs ec2:DescribeRegions permission mandatorily which could be added using the following permission policy:
+By default, the AWS connector requires the `ec2:DescribeRegions` permission for validation. You can add it using the following policy. This requirement can be removed with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. For details, go to [DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional).
 
 ```json
 {

@@ -22,7 +22,7 @@ AWS connectors can also inherit IAM roles from Harness Delegates running in AWS.
 
 :::warning
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target infrastructure.
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors by default, regardless of what AWS service you are using for your target infrastructure. This requirement can be removed by enabling the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. For details, go to [DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional).
 
 :::
 
@@ -94,7 +94,7 @@ Due to the limited scope of the initial connection test, credentials can pass th
 
 If you experience any errors with AWS connectors, verify that the IAM roles and policies are correct, and that the connector credentials are correct. For example:
 
-* The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
+* The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers by default, regardless of what AWS service you are using for your target infrastructure. This can be made optional with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. For details, go to [DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional).
 * If the Harness Delegate in your EKS cluster uses IAM roles for service accounts, make sure the [connector credentials](#configure-credentials) are set to **Use IRSA**, not **Assume IAM Role on Delegate**.
 
 For a list of roles and policies, go to the [AWS Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
