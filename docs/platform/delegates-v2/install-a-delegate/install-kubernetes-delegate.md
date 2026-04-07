@@ -9,22 +9,14 @@ redirect_from:
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta and available only to select customers. Access is determined by the product team and is based on current [supported use cases and steps](#connectors-and-steps-support).
+The new Harness Delegate is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
 
 :::
 
-This guide describes how to install the new Harness Delegate in a Kubernetes cluster. The Kubernetes delegate runs as a deployment in your cluster and can execute CI builds and other Harness tasks.
+This guide describes how to install the new Harness Delegate in a Kubernetes cluster. The Kubernetes delegate runs as a deployment in your cluster and can execute CI builds and other Harness tasks. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page — that's the single source of truth, kept up to date as support expands.
 
 :::info
-To learn more about the new delegate, including architecture, capabilities, and how it compares to the legacy delegate, go to:
-- [New Delegate Overview](../delegate-overview) - Complete guide to the new delegate
-- [Feature Parity](../feature-parity) - Detailed feature comparison
-:::
-
-:::info Important
-
-The new Harness Delegate is in **Beta** and can only be used for CI Stage Pipelines with limited step and connector support. The latest delegate does not yet support running builds in a remote cluster—your delegate must be installed in the same Kubernetes cluster where it will run CI builds.
-
+To learn more about the new delegate, including architecture and how it compares to the legacy delegate, see the [New Delegate Overview](../delegate-overview).
 :::
 
 ## Feature Flags
@@ -326,32 +318,8 @@ To use the new delegate for connector connectivity tests and secret manager oper
 3. The delegate will automatically be used for connector tests and secret manager operations when the tags match.
 
 :::info
-Not all connectors are supported by the new delegate. Check the [supported connectors list](#supported-connectors) before configuring your connectors.
+For the full list of connectors supported by the new delegate, see [Connector support](/docs/platform/delegates-v2/feature-parity#connector-support) on the Feature Parity page.
 :::
 
-## Connectors and Steps Support
-
-The new delegate currently supports a limited set of connectors and CI steps. The following sections detail what's currently supported and any known limitations.
-
-### Supported Connectors
-
-| Connector Type | Caveats |
-|----------------|---------|
-| **Docker Registry** | Only the DockerHub provider type is supported |
-| **GitHub** | Full support for GitHub connectors |
-| **HashiCorp Vault** | AppRole and Token Auth are supported; set Renewal Interval to 0 (zero) |
-| **AWS Secrets Manager** | Access Key and IAM Role Credential Type authentications are supported |
-
-### Supported CI Steps
-
-| Step Type | Caveats |
-|-----------|---------|
-| **Initialize** | Fully supported |
-| **Git Clone** | Supports only GitHub connectors |
-| **Run** | Fully supported |
-| **Background** | Fully supported |
-| **Plugin** | Fully supported |
-| **Upload to Artifactory, S3, and GCS** | Fully supported for artifact uploads |
-| **Cache Intelligence** | Fully supported for cache operations |
 
 

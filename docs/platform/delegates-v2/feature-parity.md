@@ -37,19 +37,27 @@ Both delegates support capacity limits, but at different levels of granularity. 
 
 ## Module support
 
-The new delegate currently supports only Continuous Integration (CI) pipelines, and CI support is limited to specific infrastructure types, connectors, and step types.
+Module support depends on how you deploy the new delegate — hosted (Harness Cloud) or self-hosted (local machine or Kubernetes).
 
-All other Harness modules require the legacy delegate:
+### Hosted cloud (Harness Cloud)
+
+When running on Harness Cloud, the new delegate has full parity across all Harness modules. This includes Continuous Delivery (CD), Cloud Cost Management (CCM), Security Testing Orchestration (STO), Chaos Engineering, Feature Management and Experimentation (FME), Service Reliability Management (SRM), Infrastructure as Code Management (IaCM), and Continuous Integration (CI).
+
+### Self-hosted (local or Kubernetes)
+
+When self-hosted on a local machine or Kubernetes cluster, the new delegate currently supports Continuous Integration (CI) pipelines only, with full CI step parity as described in the [CI step compatibility](#ci-step-compatibility) section below.
+
+The following modules require the legacy delegate when running self-hosted:
 
 - Continuous Delivery (CD)
 - Cloud Cost Management (CCM)
 - Security Testing Orchestration (STO)
 - Chaos Engineering
-- Feature Flags
+- Feature Management and Experimentation (FME)
 - Service Reliability Management (SRM)
-- Infrastructure as Code Management (IACM)
+- Infrastructure as Code Management (IaCM)
 
-Expanding support beyond CI is not currently planned. The new delegate is optimized for CI workloads, particularly those that benefit from local machine execution, such as mobile application development.
+The self-hosted new delegate is optimized for CI workloads that benefit from direct access to local hardware or licensed software on a specific machine, such as iOS builds requiring Xcode or Android builds requiring Android SDK.
 
 ## CI stage routing
 
@@ -74,7 +82,7 @@ The transition from legacy delegates to the new delegate is controlled through a
 
 - **`CI_V0_HOSTED_BUILDS_USE_RUNNER`**: Routes v0 hosted build pipeline operations to the new delegate.
 
-- **`CI_V0_FREE_HOSTED_BUILDS_USE_RUNNER`**: Routes hosted builds for non-credit customers to the new delegate.
+- **`CI_V0_FREE_HOSTED_BUILDS_USE_RUNNER`**: Routes hosted builds for non-credit users to the new delegate.
 
 **Optional behavior flags:**
 
@@ -110,21 +118,22 @@ The following connectors have been validated for use with the new delegate:
 - **JFrog Artifactory**: Supported for artifact uploads.
 - **Other registries** (ECR, GCR, ACR, GAR): Planned for future releases.
 
-Connectors for cloud providers (AWS, Azure, GCP), Kubernetes clusters, CI/CD tools (Jenkins), and ticketing systems (Jira, ServiceNow) are not supported. These connectors are primarily used by modules other than CI, which are not supported by the new delegate.
+Connectors for cloud providers (AWS, Azure, GCP), Kubernetes clusters, CI/CD tools (Jenkins), and ticketing systems (Jira, ServiceNow) are not yet supported for connector validation through the new delegate. Support for these connector types is planned for future releases.
 
 ## Infrastructure support
 
-The new delegate supports three infrastructure types for executing CI stages:
+The new delegate supports the following infrastructure types for executing CI stages:
 
-- **Local (Docker)**: Executes work on the machine where the delegate runs, using Docker for containerized steps. This is the primary use case for the new delegate.
+- **Harness Cloud (hosted)**: Fully supported across all modules. No local delegate installation required.
+- **Local (Docker)**: Executes work on the machine where the delegate runs, using Docker for containerized steps. This is the primary use case for the self-hosted new delegate.
 - **Kubernetes**: Executes work in a Kubernetes cluster. Support is more limited than for local infrastructure.
 - **VM pools**: Planned for future releases.
 
-Other infrastructure types including cloud VMs and Harness Cloud are not supported.
+Other infrastructure types including cloud VMs are not supported for self-hosted deployments.
 
 ## What's coming next
 
-The development roadmap includes enhancements across several areas. Items are categorized by priority based on customer demand and architectural dependencies.
+The development roadmap includes enhancements across several areas. Items are categorized by priority based on user demand and architectural dependencies.
 
 ### Near-term
 
@@ -150,22 +159,23 @@ These items are under consideration for future releases:
 - **Advanced build features**: Kaniko and Buildx support for container image building. HAR (HTTP Archive) integration for debugging.
 - **Platform enhancements**: Support for pipeline executions longer than 24 hours. Secret output variables. Enhanced debug mode. Additional proxy variable support.
 
-The roadmap is subject to change based on customer feedback and evolving requirements.
+The roadmap is subject to change based on user feedback and evolving requirements.
 
 ## Choosing between delegates
 
-When deciding which delegate to use, consider the following factors:
+When deciding which delegate to use, consider the following factors.
 
 **Use the new delegate when:**
 
+- Running workloads on Harness Cloud, where the new delegate provides full parity across all modules.
 - Running CI pipelines that benefit from local machine execution, such as iOS builds requiring Xcode or Android builds requiring Android SDK.
 - Direct access to specialized hardware or licensed software on specific machines is required.
-- The CI steps and connectors needed are supported according to the compatibility matrix above.
+- The CI steps and connectors needed are supported according to the compatibility sections above.
 
 **Use the legacy delegate when:**
 
-- Any Harness module other than CI is being used.
-- CI steps or connectors not yet supported by the new delegate are required.
+- Running self-hosted deployments that use any Harness module other than CI.
+- CI steps or connectors not yet supported by the new delegate are required (self-hosted only).
 - Capability-based routing is needed to ensure tasks are automatically sent to delegates with appropriate connectivity.
 - Deploying delegates in Kubernetes with standard orchestration and management tools.
 

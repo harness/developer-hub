@@ -7,7 +7,7 @@ sidebar_label: Capacity-Based Stage Queuing
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta and available only to select customers. The product team determines access based on current [supported use cases and steps](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos#whats-supported).
+The new Harness Delegate is currently in closed beta and available only to select users. The product team determines access based on current supported use cases. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for the latest details.
 
 :::
 

@@ -9,13 +9,13 @@ redirect_from:
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta and available only to select customers. The product team determines access based on current [supported use cases and steps](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos#whats-supported).
+The new Harness Delegate is currently in closed beta and available only to select users. The product team determines access based on current supported use cases. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for the latest details.
 
 :::
 
 The new Harness Delegate is a lightweight service that runs in your infrastructure to execute pipeline work. Unlike the legacy delegate, which is deployed as a container application in Kubernetes or Docker environments, the new delegate uses a transaction-based execution model, with stages executed as a sequence of initialization, execution, and cleanup tasks. This model provides consistent stage execution across different infrastructure types and ensures reliable cleanup of resources created during stage execution.
 
-The new delegate operates alongside the legacy delegate. The legacy delegate continues to support the full range of Harness modules and capabilities. In contrast, the new delegate focuses on CI pipelines with a unified task framework optimized for local machine execution.
+The new delegate operates alongside the legacy delegate. The legacy delegate continues to support the full range of Harness modules and capabilities. In contrast, the new delegate provides full parity across all modules on Harness Cloud (hosted) and focuses on CI pipelines when self-hosted on a local machine or Kubernetes cluster, using a unified task framework optimized for those workloads.
 
 ## Architecture overview
 
@@ -63,7 +63,7 @@ For more information about selector-based routing, go to [Use delegate selectors
 
 ## Secrets management
 
-The new delegate integrates with customer secret engines to fetch and inject secrets into the task execution process. Secret identifiers are provided as part of the task request, and secret expressions in the task payload are automatically replaced with decrypted values at runtime. Secrets are never persisted to disk or written to logs in plain text. The delegate automatically masks sensitive strings in all log output to prevent accidental disclosure.
+The new delegate integrates with your secret engines to fetch and inject secrets into the task execution process. Secret identifiers are provided as part of the task request, and secret expressions in the task payload are automatically replaced with decrypted values at runtime. Secrets are never persisted to disk or written to logs in plain text. The delegate automatically masks sensitive strings in all log output to prevent accidental disclosure.
 
 ## Capacity management and queuing
 
@@ -95,7 +95,7 @@ When integration with legacy delegate functionality is required, the new delegat
 
 ## System requirements
 
-The new delegate runs on infrastructure managed by customers. It requires outbound network access to Harness Manager and to any external systems referenced in pipelines, including source code repositories, artifact registries, secret managers, and deployment targets.
+The new delegate runs on infrastructure managed by you. It requires outbound network access to Harness Manager and to any external systems referenced in pipelines, including source code repositories, artifact registries, secret managers, and deployment targets.
 
 Because the delegate runs directly on the host machine rather than in a container with resource limits, capacity planning should account for the expected workload. Resource consumption depends on the number of concurrent stages configured through `MAX_STAGES` and the resource requirements of the steps being executed.
 
@@ -119,8 +119,6 @@ For detailed installation instructions and configuration options, go to [Install
 
 ## Feature comparison
 
-Because the new delegate is in closed beta, feature coverage is still expanding. Support varies across connectors, secret managers, infrastructure drivers, and CI step types.
-
-For a detailed comparison with the legacy delegate and information about the development roadmap, go to [Feature Parity](/docs/platform/delegates-v2/feature-parity).
+For a detailed comparison with the legacy delegate, current support status, and the development roadmap, go to [Feature Parity](/docs/platform/delegates-v2/feature-parity).
 
 For information about the legacy delegate, go to [Legacy delegate documentation](/docs/platform/delegates/delegate-concepts/delegate-overview).

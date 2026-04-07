@@ -5,45 +5,14 @@ sidebar_position: 2
 ---
 
 :::warning Closed Beta
-The new Harness Delegate is currently in closed beta and available only to select customers. Access is determined by the product team and is based on current [supported use cases and steps](#whats-supported).
+The new Harness Delegate is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
 :::
 
-This guide walks you through installing the Harness Delegate on a Linux machine. Skip to the [End-to-End Demo](#end-to-end-demo) to watch video instructions instead.
+This guide walks you through installing the Harness Delegate on a Linux machine. Skip to the [End-to-End Demo](#end-to-end-demo) to watch video instructions instead. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page — that's the single source of truth, kept up to date as support expands.
 
 :::info
-To learn more about the new delegate, including architecture, capabilities, and how it compares to the legacy delegate:
-- [New Delegate Overview](../delegate-overview) — Complete guide to the new delegate
-- [Feature Parity](../feature-parity) — Detailed feature comparison
+To learn more about the new delegate, including architecture and how it compares to the legacy delegate, see the [New Delegate Overview](../delegate-overview).
 :::
-
-## What's Supported
-
-### Supported Connectors
-
-| Connector          | Caveats                                                                 |
-|--------------------|-------------------------------------------------------------------------|
-| Docker Registry    | Only the DockerHub provider type                                        |
-| Github             | All authentication types are supported                                  |
-| Bitbucket          | All authentication types are supported                                  |
-| HashiCorp Vault    | Only AppRole and Token Auth; set Renewal Interval to 0 (zero)           |
-| AWS Secrets Manager| Only Access Key and IAM Role Credential Type                            |
-
-### Supported CI Steps
-
-| Step Name  | Caveats              |
-|------------|----------------------|
-| Git Clone  | Github and Bitbucket |
-| Run        |                      |
-| Background |                      |
-| Run Tests  |                      |
-| Upload to Artifactory | Requires `jfrog` CLI on host |
-| Upload to GCS |                   |
-| Upload to S3 |                    |
-| Upload Artifacts to Harness Artifact Registry|     |
-| Save Cache to S3 |                |
-| Save Cache to GCS |               |
-| Restore Cache from S3 |           |
-| Restore Cache from GCS |          |
 
 ## Quick Reference
 
