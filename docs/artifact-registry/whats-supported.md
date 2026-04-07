@@ -5,11 +5,11 @@ sidebar_label: What's Supported
 ---
 
 :::info 
-To enable Harness Artifact Registry in your account, contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:support@harness.io).
+To enable Harness Artifact Registry in your account, contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:ar-interest@harness.io).
 :::
 
 ## Registries
-Harness Artifact Registry support a variety of registry types, and new ones are often added. We currently support the registry types listed below. 
+Harness Artifact Registry supports a variety of registry types, and new ones are often added. We currently support the registry types listed below. 
 
 ### Supported registry types
 These are the currently supported registry types. 
@@ -25,20 +25,16 @@ These are the currently supported registry types.
 - **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
 - **Dart:** For all your Dart and Flutter packages.
 - **PHP Composer:** Private Composer packages with Packagist-compatible workflows.
-
-### Beta
 - **Go:** Support for Go modules.
 - **Cargo:** Rust package management.
 - **Hugging Face:** Machine learning models and datasets.
-- **Conda:** To support your python and R packages.
+- **Conda:** To support your Python and R packages.
 
 ### Coming Soon
-In addition to the registry types above, support for the following registries will be coming soon!
 
-- **Debian:** For Debian packages.
-- **Ruby:** RubyGems support.
-- **Conan:** C/C++ package manager.
-- **Alpine:** For Alpine Linux packages.
+- **Alpine:** Alpine Linux packages.
+- **RubyGems:** Ruby packages.
+- **Conan:** C/C++ packages.
 
 ## Platform Support
 Harness Artifact Registry (HAR) is seamlessly integrated with the Harness Platform, offering you robust features and capabilities.
@@ -48,7 +44,7 @@ HAR has [full RBAC support](/docs/platform/role-based-access-control/rbac-in-har
 
 This comes with 3 roles automatically created for you:
 - **Artifact Registry Viewer**: Bind to this role to allow a user to view registries and its contents.
-- **Artifact Registry Contributor**: Bind to this role to allow a user to push an pull from registries.
+- **Artifact Registry Contributor**: Bind to this role to allow a user to push and pull from registries.
 - **Artifact Registry Admin**: Bind to this role to allow a user full admin access to the AR module.
 
 ### Continuous Integration (CI)
