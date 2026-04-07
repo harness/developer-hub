@@ -1186,5 +1186,11 @@
     "description": "Optimizes service dashboard performance by skipping certain deployment types from database queries.",
     "gaStartDate": "2026-04-01",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "PIPE_DYNAMIC_PIPELINES_EXECUTION",
+    "description": "Enable the Dynamic executions for the Pipelines. This will allow running a pipeline-yaml without having to save it by passing the YAML as the payload in pipeline execute API.",
+    "gaStartDate": "2026-04-07",
+    "module": "Pipeline"
   }
 ]
