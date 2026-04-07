@@ -40,7 +40,7 @@ When your account is [migrated from Split to Harness](/docs/feature-management-e
 
 To identify which Harness cluster your account is in, navigate to **Account Settings** and select **Account Details**. 
 
-![](./static/harness-cluster.png)
+![](../../getting-started/static/harness-cluster.png)
 
 Your Harness base URL depends on which cluster your account is hosted in. 
 

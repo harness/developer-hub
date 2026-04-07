@@ -6,33 +6,31 @@ redirect_from:
   - /docs/feature-management-experimentation/feature-management/best-practices/o-reilly-book
 ---
 
-In June 2024, [Harness acquired Split](https://www.harness.io/blog/harness-to-acquire-split), now called Harness Feature Management & Experimentation (FME). FME combines capabilities for feature delivery and control with built-in tools for measurement and learning. FME connects insightful data to every feature release and supports modern practices like continuous delivery and progressive delivery.
+In June 2024, [Harness acquired Split](https://www.harness.io/blog/harness-to-acquire-split), now called Harness Feature Management & Experimentation (FME). FME combines capabilities for feature delivery and control with built-in tools for measurement and learning, connecting data to every feature release and supporting modern practices such as continuous and progressive delivery.
 
 ![](../static/overview.png)
 
-### Architected for performance, security, and resilience
+#### Architected for performance, security, and resilience
 
-Harness FME is built on a global feature flag and data processing architecture that serves 50 billion daily feature flags to over 2 billion end users around the globe.
+Harness FME is built on a global feature flag and data processing architecture that serves over 50 billion feature flags to more than 2 billion end users daily.
 
-* **Performance:** FME streaming architecture pushes changes to its SDKs in milliseconds.
-* **Security:** The SDKs evaluate feature flags locally, so customer data is never sent over the internet.
-* **Resilience:** Our SaaS app, data platform, and API span multiple data centers. Plus, our SDKs cache locally to handle any network interruptions.
+* **Performance:** A streaming architecture pushes changes to SDKs in milliseconds.
+* **Security:** SDKs evaluate feature flags locally, so customer data is never sent over the internet.
+* **Resilience:** The SaaS app, data platform, and API span multiple data centers, while SDKs cache data locally to handle network interruptions.
 
-Our stateless architecture scales to millions of users with no degradation in performance. FME SDKs reside in your frontend, backend, and mobile apps where they make feature flags and targeting decisions locally, without the need to send private user data outside your app for evaluation.
+The stateless architecture scales to millions of users without performance degradation. FME SDKs reside in your frontend, backend, and mobile apps, making feature flags and targeting decisions locally without sending private user data outside your environment.
 
-## Maturity curve
+### Maturity curve
 
-Let’s start with a bit of context. FME is a product decisions platform for engineering and product teams to rapidly and safely deliver valuable software to customers. FME provides a unified feature flags and experimentation solution that is built for teams of any size to make data-driven decisions.
-
-Feature flags form the basis of the platform, driving the risk out of continuous delivery and streamlining the development process. Flags allow you to assess application stability before customers are exposed to a feature, and a framework for Agile teams to release faster with less risk, including a kill switch to shut down a feature within seconds.  
-
-Functional and performance issues are mission critical concerns for any application.  Key engineering metrics such as API response and page load time can be impacted by each feature. Split correlates relevant engineering KPIs back to the feature changes that are impacting them. While granular user targeting supports robust phased rollout plans.
-
-So, you can release faster, but what does it matter if you are not releasing value? Experimentation provides development teams with a direct link to the customer for unprecedented feedback. Split’s real-time analytics engine measures the impact of feature changes on business outcomes.  
-
-As we move up the maturity curve, teams can quickly iterate and refine functionality to deliver innovation faster and increase time to value. 
+FME is a product decision platform that helps engineering and product teams deliver software quickly and safely. It provides a unified feature flags and experimentation solution for making data-driven decisions. As teams mature, they can iterate faster, refine functionality, and reduce time to value.
 
 ![](../static/maturity-curve.png)
+
+<Tooltip id="fme.openfeature.feature-flag">Feature flags</Tooltip> form the basis of the platform, reducing risk in continuous delivery and streamlining development. They allow you to assess application stability before exposing features to users and include safeguards like instant kill switches.  
+
+Functional and performance issues are critical concerns for any application. Engineering metrics such as API response time and page load time can be impacted by each feature. FME correlates these KPIs with feature changes, while granular targeting supports phased rollouts.
+
+Releasing faster is only valuable if you're delivering impact. [Experimentation](/docs/feature-management-experimentation/experimentation) connects development teams directly to user outcomes. FME’s analytics engine measures how feature changes affect business results.
 
 ## Architecture and data flow 
 
@@ -162,7 +160,7 @@ If you're new to Harness, review the [Harness platform onboarding guide](/docs/p
 
 ### Create an account or join an account
 
-We assume you’ve created an account already, but if not, [sign up](https://www.split.io/signup/). If your team has an account, an admin can invite you from the users page in admin settings.
+We assume you’ve created an account already, but if not, [sign up](https://app.harness.io/auth/#/signup?module=fme&utm_source=developer_hub&utm_medium=cta&utm_campaign=fme). If your team has an account, an admin can invite you from the users page in admin settings.
 
 ### Understand accounts and projects
 
