@@ -17,13 +17,26 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+## March 2026
+
+### Version: v1.57.0 , Plugin Version: v0.57.0
+
+#### New Features and Enhancements
+
+- Added support for a [dependency table](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency#viewing-the-dependency-table) to show direct and indirect dependencies for any dependency within a repository.
+  <DocImage path={require('./static/scs/dependency-graph-for-dependency.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- Removed the `Supplier` column and its filter from the SBOM overview tab. The `Supplier` field is now shown in the SBOM overview panel.
+
+- OWASP scans in the default RSPM pipeline may fail when OSS Index authentication is not configured. To prevent this issue, either configure OSS Index authentication using the `--ossIndexUsername` and `--ossIndexPassword` flags, or disable OSS Index using the `--disableOssIndex` flag and rely on NVD for vulnerability data ([ZD-110388](https://harnesssupport.zendesk.com/agent/tickets/110388)).
+
 ## February 2026
 
 ### Version: 1.52.0 , Plugin Version: 0.53.0
 
 #### New Features and Enhancements
 
-- Filtering SBOM components by [Dependency Type](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm#sbomsoftware-bill-of-materials-tab) (Direct, Indirect, No Relationship) for code repositories is now **Generally Available (GA)**. This feature was behind the feature flag `SCS_DEPENDENCY_SEGREGATION`.
+- Filtering SBOM components by [Dependency Type](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency#filtering-directindirect-dependencies) (Direct, Indirect, No Relationship) for code repositories is now **Generally Available (GA)**. This feature was behind the feature flag `SCS_DEPENDENCY_SEGREGATION`.
 
 #### Fixed Issues
 
@@ -37,13 +50,14 @@ These release notes describe recent changes to Harness Supply Chain Security.
 #### New Features and Enhancements
 
 - Added support to filter SBOM components by [Dependency Type](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm#sbomsoftware-bill-of-materials-tab) (Direct, Indirect, No Relationship) for code repositories, enabling classification based on how each component is related in the SBOM and improving component-level traceability across the project. This feature is behind the feature flag `SCS_DEPENDENCY_SEGREGATION`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-<DocImage path={require('./static/scs/dependency-graph-analysis.png')} width="70%" height="70%" title="Click to view full size image" />
+  <DocImage path={require('./static/scs/dependency-graph-analysis.png')} width="70%" height="70%" title="Click to view full size image" />
 
 - Extended SBOM vulnerability support to all STO scanners (previously limited to Snyk and Trivy). The SBOM page now displays vulnerabilities identified by any STO scanner.
 
   If the STO license is not enabled, dependency vulnerabilities are mapped from the Harness internal database. If you have an STO license and want to map the vulnerabilities from the Harness internal database, contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 - Added `Docker:Dind` base image support to ensure SCS plugin compatibility with Docker v29 and later versions ([ZD-103871](https://harnesssupport.zendesk.com/agent/tickets/103871)).
+
 #### Fixed Issues
 
 - Fixed an issue where the OSS Risks – `Known Vulnerabilities in dependencies` filter on the SBOM page was not working as expected.
@@ -116,7 +130,7 @@ curl --location 'https://app.harness.io/gateway/ssca-manager/v1/orgs/<ORG-NAME>/
 
 - Added support to manage the [OWASP Top 10 risks](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management), enables you to easily identify outdated, unmaintained, close to end of life, and end of life components, and create Jira ticket to update package version.
 
-<DocImage path={require('./static/scs/releasenotes.png')} width="90%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/scs/releasenotes.png')} width="90%" height="60%" title="Click to view full size image" />
 
 #### Fixed Issues
 

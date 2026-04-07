@@ -117,7 +117,7 @@ The SBOM section provides a comprehensive view of your repository’s dependenci
 
     <DocImage path={require('./static/dependency-view-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
-  * The **Dependencies tab** displays the total number of direct and indirect dependencies in the form of a detailed table, associated with the selected dependency. For more information, checkout [Direct/Indirect Dependency](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency#viewing-the-dependency-table).
+  * The **Dependencies tab** displays the total number of direct and indirect dependencies in the form of a detailed table, associated with the selected dependency. For more information, checkout [Direct/Indirect Dependency](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency#filtering-directindirect-dependencies).
 
     <DocImage path={require('./static/dependency-list.png')} width="100%" height="100%" title="Click to view full size image" />
   
