@@ -128,6 +128,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## April 2026
+
+### Version 25.11.87305 <!-- April 07, 2026 -->
+
+#### New features and enhancements
+- Introduce option to configure memory usage threshold (`DELEGATE_CGROUP_MEMORY_THRESHOLD`) which uses CGroup memory information for calculating memory usage. [DEL-3671]
+  
 ## March 2026
 
 ### Version 26.03.88803 <!-- April 03, 2026 -->
