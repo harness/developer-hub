@@ -9,8 +9,8 @@ description: Learn how to run experiments in your data warehouse using Harness F
 
 <CTABanner
   buttonText="Request Access"
-  title="Warehouse Native is in beta!"
-  tagline="Get early access to run Harness FME experiments directly in your data warehouse."
+  title="Warehouse Native Experimentation is GA!"
+  tagline="Run Harness FME experiments directly in your data warehouse. Contact Sales or your account manager to enable access."
   link="https://developer.harness.io/docs/feature-management-experimentation/fme-support"
   closable={true}
   target="_self"

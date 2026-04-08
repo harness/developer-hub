@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-03-31T10:00:00
+date: 2026-04-08T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,7 +14,28 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: March 31, 2026
+#### Last updated: April 8, 2026
+
+## April 2026
+
+### [New Feature] Warehouse Native Experimentation is GA
+----
+#### 2026-04-08
+
+Harness FME now fully supports Warehouse Native Experimentation, allowing you to run experiments directly in your data warehouse using your assignment and metric data without exporting or duplicating data outside of your source of truth for analytics. Warehouse Native Experimentation supports Snowflake and Amazon Redshift.
+
+With Warehouse Native Experimentation, teams can:
+
+- Run experiments on their warehouse data, using FME's statistical engine for accurate measurement and confidence intervals.
+- Maintain data privacy and security. All experiment queries run directly in your data warehouse. Harness FME only accesses the aggregated results needed for analysis and does not stor your raw event data.
+- Define custom filters in Harness FME to focus experiments and metrics on specific populations using custom fields defined in your assignment or metric sources.
+
+Warehouse Native Experimentation must be enabled for your account. To request access, contact your [sales representative or account manager](https://www.harness.io/company/contact-sales).
+
+#### Related documentation
+
+- [Warehouse Native Experimentation](/docs/feature-management-experimentation/warehouse-native/)
+- [Connect Your Data Warehouse](/docs/feature-management-experimentation/warehouse-native/integrations/)
 
 ## March 2026
 
