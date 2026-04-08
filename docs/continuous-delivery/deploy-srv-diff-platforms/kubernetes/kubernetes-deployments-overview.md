@@ -182,7 +182,7 @@ Harness supports OpenShift [DeploymentConfig](https://docs.openshift.com/contain
 
 All the steps necessary can be performed inline with creating your CD pipeline. You can also set up resources like connectors in your resources and then select them within your pipeline.
 
-The following list describes the major steps of a Harness Kubernetes deployment. We assume you have a [Harness project](/docs/platform/organizations-and-projects/projects-and-organizations) set up.
+The following list describes the major steps of a Harness Kubernetes deployment. We assume you have a [Harness project](/docs/platform/get-started/key-concepts#organizations-and-projects) set up.
 
 | **Step** | **Name** | **Description and Links** |
 | --- | --- | --- |

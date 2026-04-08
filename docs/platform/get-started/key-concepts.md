@@ -17,6 +17,7 @@ redirect_from:
   - /docs/platform/key-concepts
   - /docs/get-started/beta-preview-ga
   - /docs/get-started/release-status
+  - /docs/platform/organizations-and-projects/projects-and-organizations
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 

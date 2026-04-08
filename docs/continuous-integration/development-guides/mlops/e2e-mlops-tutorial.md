@@ -126,7 +126,7 @@ This tutorial uses a GitHub account for source control management.
 
 Store your GitHub and AWS credentials as secrets in Harness.
 
-1. In your Harness account, create or select a [project](/docs/platform/organizations-and-projects/projects-and-organizations) to use for this tutorial.
+1. In your Harness account, create or select a [project](/docs/platform/get-started/key-concepts#organizations-and-projects) to use for this tutorial.
 2. In your project settings, select **Secrets**, select **New Secret**, and then select **Text**.
 3. Create the following [Harness text secrets](/docs/platform/secrets/add-use-text-secrets):
 

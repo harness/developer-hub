@@ -157,7 +157,7 @@ Self-service deployments foster ownership by giving teams the autonomy to deploy
 
 By giving development teams their own project, you can allow teams to manage and own their own release pipelines. They can also manage and own their services and the integrations needed for deployment.
 
-For more information on projects, go to [Organizations and projects overview](/docs/platform/organizations-and-projects/projects-and-organizations). 
+For more information on projects, go to [Organizations and projects overview](/docs/platform/get-started/key-concepts#organizations-and-projects). 
 
 ### Automating or manually deploy any time
 

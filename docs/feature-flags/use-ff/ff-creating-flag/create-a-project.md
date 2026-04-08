@@ -47,7 +47,7 @@ Before you create a Feature Flag, you need to [create an Organization](/docs/pla
 	
 
 1. In **About the Project**, in **Name**, enter the name for your project and select a color for it.
-2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization#create-a-harness-org) and [Organizations and Projects](/docs/platform/organizations-and-projects/projects-and-organizations).
+2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization#create-a-harness-org) and [Organizations and Projects](/docs/platform/get-started/key-concepts#organizations-and-projects).
 3. Click **Save and Continue**.
 
 	

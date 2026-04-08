@@ -39,7 +39,7 @@ For example, imagine Customer A has 1 application that is comprised of numerous 
 
 In this scenario, the entire application can be managed in one project. Each of these microservices can be owned by different teams, however, as they all work on the same project.
 
-For more information, go to [What is a project?](https://developer.harness.io/docs/platform/organizations-and-projects/projects-and-organizations/#what-is-a-project).
+For more information, go to [What is a project?](https://developer.harness.io/docs/platform/get-started/key-concepts#projects).
 
 
 ### Organizations overview
@@ -50,7 +50,7 @@ Within an organization, users can create several projects using resources that a
 
 Users can invite people to an organization to gain membership and start leveraging resources based on specific roles and permissions. These roles and permissions are covered in the RBAC section later in this topic.
 
-For more information, go to [What is an organization?](https://developer.harness.io/docs/platform/organizations-and-projects/projects-and-organizations/#what-is-an-organization).
+For more information, go to [What is an organization?](https://developer.harness.io/docs/platform/get-started/key-concepts#organizations).
 
 ### Account overview
 

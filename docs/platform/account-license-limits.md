@@ -19,8 +19,8 @@ Harness account limits for different license types are specified below:
 
 | Resource                                                                                                      | Resource variable name      | Free | Essentials | Enterprise |
 |---------------------------------------------------------------------------------------------------------------|-----------------------------|------|------------|------------|
-| [Organizations](/docs/platform/organizations-and-projects/projects-and-organizations#what-is-an-organization) | MULTIPLE_ORGANIZATIONS      | 1    | 1          | 5,000      |
-| [Projects](/docs/platform/organizations-and-projects/projects-and-organizations#what-is-a-project)            | MULTIPLE_PROJECTS           | 100  | 12,500     | 12,500     |
+| [Organizations](/docs/platform/get-started/key-concepts#organizations) | MULTIPLE_ORGANIZATIONS      | 1    | 1          | 5,000      |
+| [Projects](/docs/platform/get-started/key-concepts#projects)            | MULTIPLE_PROJECTS           | 100  | 12,500     | 12,500     |
 | [Secrets](/docs/platform/secrets/add-use-text-secrets)                                                        | MULTIPLE_SECRETS            | 100  | 250,000    | 250,000    |
 | [User Groups](/docs/platform/role-based-access-control/add-user-groups)                                       | MULTIPLE_USER_GROUPS        | 100  | 50,000     | 50,000     |
 | [Users](/docs/platform/role-based-access-control/add-users)                                                   | MULTIPLE_USERS              | 100  | 500        | 90,000     |

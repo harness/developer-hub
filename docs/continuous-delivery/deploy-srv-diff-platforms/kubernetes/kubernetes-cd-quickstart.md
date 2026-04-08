@@ -33,7 +33,7 @@ Pipelines are collections of stages. For this topic, we'll create a new pipeline
 
 :::note
 
-**Create a project for your new CD pipeline:** if you don't already have a Harness project, create a project for your new CD pipeline. Ensure that you add the **Continuous Delivery** module to the project. Go to [create organizations and projects](/docs/platform/organizations-and-projects/projects-and-organizations) for more information.
+**Create a project for your new CD pipeline:** if you don't already have a Harness project, create a project for your new CD pipeline. Ensure that you add the **Continuous Delivery** module to the project. Go to [create organizations and projects](/docs/platform/get-started/key-concepts#organizations-and-projects) for more information.
 
 :::
 

@@ -83,7 +83,7 @@ Now you are ready to wire Harness to deploy on your behalf.
 
 ## Initial Harness Setup
 
-If you do not have a Harness Account, [sign up for a Harness Account](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started) for access to the Continuous Delivery Module. a default [Harness Project](https://docs.harness.io/article/7fibxie636-projects-and-organizations) will be created for you automatically. Projects are logical groupings of resources. The generated default project is perfect for the first time deployment.
+If you do not have a Harness Account, [sign up for a Harness Account](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started) for access to the Continuous Delivery Module. a default [Harness Project](/docs/platform/get-started/key-concepts#organizations-and-projects) will be created for you automatically. Projects are logical groupings of resources. The generated default project is perfect for the first time deployment.
 
 When navigating back to Deployments, can set the project context to the Default Project by clicking on the blue chevrons >> and selecting Default Project.
 

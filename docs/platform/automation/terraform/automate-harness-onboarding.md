@@ -665,7 +665,7 @@ We recommend starting out in the Harness User Interface to get familiar with all
 Review these topics to get familiar with the Harness constructs:
 
 - [Harness Key Concepts](/docs/platform/get-started/key-concepts.md)
-- [Projects, Orgs, Account](/docs/platform/organizations-and-projects/projects-and-organizations/)
+- [Projects, Orgs, Account](/docs/platform/get-started/key-concepts#organizations-and-projects)
 - [Services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview)
 
 For best results, follow Terraform and CI/CD best practices, including:

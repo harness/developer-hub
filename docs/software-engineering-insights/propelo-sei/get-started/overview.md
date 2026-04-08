@@ -90,7 +90,7 @@ To start using SEI, configure the following:
 * [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 * [Integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview)
 * [Contributors](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-contributors/manage-contributors)
-* [Projects](/docs/platform/organizations-and-projects/projects-and-organizations)
+* [Projects](/docs/platform/get-started/key-concepts#organizations-and-projects)
 * [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 * [Profiles](/docs/category/profiles)
 * [Insights](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights)

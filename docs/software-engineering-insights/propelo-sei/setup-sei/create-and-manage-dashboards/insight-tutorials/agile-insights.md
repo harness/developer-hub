@@ -28,7 +28,7 @@ It allows you to look at what was planned to do (committed), what was actually c
 Begin by creating a project and collection.
 
 1. In the sidebar of the Harness application, select the **SEI module** from the module selection.
-2. Select **Projects** and choose an existing project or create a new one. For information about creating a project, go to [Create organizations and projects](/docs/platform/organizations-and-projects/projects-and-organizations).
+2. Select **Projects** and choose an existing project or create a new one. For information about creating a project, go to [Create organizations and projects](/docs/platform/get-started/key-concepts#organizations-and-projects).
 
 :::info
 A user can create multiple projects and be part of multiple projects.

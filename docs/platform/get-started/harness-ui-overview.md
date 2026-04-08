@@ -192,7 +192,7 @@ Account settings include:
 * [Access Control](/docs/category/platform-access-control)
 * [Billing, Subscriptions, and Plans](/docs/platform/subscriptions-licenses/subscriptions)
 * [Audit Trail](/docs/category/audit-trail)
-* [Organizations](/docs/platform/organizations-and-projects/projects-and-organizations)
+* [Organizations](/docs/platform/get-started/key-concepts#organizations)
 
 Additional options may be present depending on your module usage and access.
 

@@ -8,7 +8,7 @@ sidebar_position: 4
 
 ## After migration
 
-When your account is migrated to Feature Management & Experimentation (FME), your [feature flags](/docs/feature-management-experimentation/getting-started/key-concepts#what-is-a-feature-flag) and [projects](/docs/platform/organizations-and-projects/projects-and-organizations/#what-is-a-project) are automatically moved into a new [organization](https://developer.harness.io/docs/platform/organizations-and-projects/projects-and-organizations/) named `<YOUR_ORG_NAME> FME`. When logging in or selecting a project, make sure you are in this organization.
+When your account is migrated to Feature Management & Experimentation (FME), your [feature flags](/docs/feature-management-experimentation/getting-started/key-concepts#what-is-a-feature-flag) and [projects](/docs/platform/get-started/key-concepts#projects) are automatically moved into a new [organization](/docs/platform/get-started/key-concepts#organizations-and-projects) named `<YOUR_ORG_NAME> FME`. When logging in or selecting a project, make sure you are in this organization.
 
 :::info
 If you aren't seeing your expected feature flags or projects, first confirm you are in your `<YOUR_ORG_NAME> FME` organization, and then verify you selected the migrated project. 

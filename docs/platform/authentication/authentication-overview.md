@@ -180,7 +180,8 @@ To configure multiple SAML providers in Harness, follow the steps below:
         </TabItem>
         </Tabs>
 
-      - In the **URL and Identity Provider** screen, upload the Identity Provider metadata XML and select **Continue**. 
+      - In the **URL and Identity Provider** screen, upload the Identity Provider metadata XML and select **Continue**.
+      - Click **Submit**.
       
       The SAML provider is now listed under **Login via SAML**.
 
