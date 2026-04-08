@@ -30,7 +30,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2026.3.v2](/release-notes/internal-developer-portal#march---20263v2) | ✅        | ✅         | ❌           |  ❌        |     ❌     |     ❌      |
+| [2026.3.v2](/release-notes/internal-developer-portal#march---20263v2) | ✅        | ✅         | ✅             |  ✅          |     ✅     |     ✅     |
 | [2026.3.v1](/release-notes/internal-developer-portal#march---20263v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
 | [2026.2.v1](/release-notes/internal-developer-portal#february---20262v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
 
@@ -126,6 +126,12 @@ Harness IDP now supports a **PagerDuty integration** that automatically discover
 #### Workflow Trigger via API
 
 Workflows can now be triggered programmatically via the **Harness IDP API**, in addition to the self-service UI. This enables platform teams to integrate Workflow execution into CI/CD pipelines, internal tooling, or event-driven automation.
+
+---
+
+#### TechDocs default experience improvements 
+
+Refined the TechDocs default experience with a cleaner navigation structure, improved content hierarchy and styling consistency, and enhanced header/footer for better discoverability and usability.
 
 ---
 
