@@ -130,6 +130,17 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2026
 
+### Version 26.04.88901 <!-- April 08, 2026 -->
+
+#### Fixed issues
+- Improved error visibility in JschClient. Previously, actual exception messages were not surfaced, resulting in unclear errors. The UI now displays the exact error message for better debugging. [CDS-104181]
+- Clarified documentation for service override variable identifiers. The docs now explicitly explain how these identifiers are auto-generated. [CDS-105657]
+- Enhanced the `updateViaYaml` API documentation by adding missing descriptions and examples. [CDS-106312]
+- Introduced a new feature flag `CDS_SECRET_MANAGER_DELEGATE_SELECTOR_PRECEDENCE`. When enabled, the secret manager’s delegate selector takes precedence over the connector’s during validation and Git file operations, ensuring the delegate can decrypt secrets before any Git operation is executed. [CDS-118093]
+- Fixed an issue where secret values were logged in plaintext in delegate logs during Custom Secret Manager test connections by marking the output variable as sensitive. [PL-70002]
+- Updated the execution order for Helm tests in canary and blue-green deployments. Previously, tests ran immediately after the steady state check. Now, the system waits for the steady state to fully complete before triggering Helm tests. [CDS-119743]
+- Fixed an issue with Git file fetching for large repositories when using provider-specific APIs. Earlier, large responses exceeded the 16KB gRPC limit, leading to failures and incomplete data retrieval. This has been resolved by introducing pagination, splitting requests into batches of up to 35 files to ensure reliable and complete fetching. [CDS-120124]
+
 ### Version 25.11.87305 <!-- April 07, 2026 -->
 
 #### New features and enhancements
