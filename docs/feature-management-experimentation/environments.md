@@ -156,11 +156,14 @@ Summary statistics and these sorting and filtering options make it easy to find 
 
 ## Manage audit logs
 
-The **Audit logs** tab on the **Environments** page provides a history of changes made to feature flags in the selected environment. Each entry in the audit log list includes information about the title, feature flag, change type, approvers, who edited the feature flag, version, change status, and the time. 
+The **Audit logs** tab on the **Environments** page provides a history of changes made to feature flags in the selected environment. Each entry in the audit log list includes details such as the title, feature flag, change type, approvers, editor, version, change status, and timestamp. 
 
 ![](./static/audit-logs.png)
 
-You can use the search bar to find changes made by specific editors. Addition filtering and customization is available, including the **Show/Hide** columns which allows you to select which columns to display in the list (including `Title`, `Feature flag`, `Change type`, `Approvers`, `Edited by`, `Version`, `Change status`, and `Time`) and the **Filter by** dropdown menu which applies filters to display only specific types of changes (such as `Created`, `Updated rules`, `Killed`, `Reallocated`, `Customized experiment settings`, `Updated tags`, `Updated owners`, or `Updated statuses`).
+Use the search bar to find changes made by specific editors. You can further refine and customize the audit log list using the following options:
+
+- **Show/Hide** columns: Select which columns to display in the list (including `Title`, `Feature flag`, `Change type`, `Approvers`, `Edited by`, `Version`, `Change status`, and `Time`).
+- **Filter by** dropdown menu: Display only specific types of changes (such as `Created`, `Updated rules`, `Killed`, `Reallocated`, `Customized experiment settings`, `Updated tags`, `Updated owners`, `Updated statuses`, and `Archived`).
 
 Click on an individual audit log entry to open a change summary, which provides additional details about the modification, including:
 
