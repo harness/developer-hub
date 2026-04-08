@@ -290,13 +290,13 @@ These settings ensure proper permission mapping between your local filesystem an
 If you are using [Colima](https://github.com/abiosoft/colima) as your Docker runtime on macOS, start it with the following recommended settings:
 
 ```bash
-colima start --vm-type qemu --mount-type sshfs --cpu 8 --memory 20 --mount ~:w --mount /private/tmp/engine:/private/tmp/engine:w
+colima start --vm-type qemu --mount-type sshfs --cpu 8 --memory 20 --mount ~:w --mount /private/tmp:/private/tmp:w
 ```
 
-This ensures the VM uses QEMU emulation and sshfs mounts, which provide the correct filesystem permission mapping needed by the delegate. The `--mount ~:w` flag grants write access to your home directory, and `--mount /private/tmp/engine:/private/tmp/engine:w` mounts the engine's temporary directory so the delegate can read output files written by containerized steps.
+This ensures the VM uses QEMU emulation and sshfs mounts, which provide the correct filesystem permission mapping needed by the delegate. The `--mount ~:w` flag grants write access to your home directory, and `--mount /private/tmp:/private/tmp:w` mounts the engine's temporary directory so the delegate can read output files written by containerized steps.
 
-:::warning Mounting /private/tmp/engine is required
-Unlike Rancher Desktop, which automatically maps system directories into the VM, Colima only mounts your home directory by default. The delegate uses `/tmp/engine/` (which resolves to `/private/tmp/engine` on macOS) to exchange output files between containerized steps and the host. Without this mount, pipelines that export output variables from container-based steps will fail with an error like:
+:::warning Mounting /private/tmp is required
+Unlike Rancher Desktop, which automatically maps system directories into the VM, Colima only mounts your home directory by default. The delegate uses `/tmp/` (which resolves to `/private/tmp/` on macOS) to exchange output files between containerized steps and the host. Without this mount, pipelines that export output variables from container-based steps will fail with an error like:
 
 ```
 stat /tmp/engine/<hash>-output.env: no such file or directory
