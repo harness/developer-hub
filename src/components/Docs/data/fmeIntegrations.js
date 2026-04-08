@@ -25,8 +25,8 @@ export const supportedWorkflows = [
   { name: "Slack", img: "/provider-logos/fme-integrations/slack-logo.png", link: "/docs/feature-management-experimentation/integrations/slack" },
   { name: "Sumo Logic", img: "/provider-logos/fme-integrations/sumologic-logo.png", link: "/docs/feature-management-experimentation/integrations/sumologic" },
   { name: "Visual Studio Code", img: "/provider-logos/fme-integrations/vscode-logo.png", link: "/docs/feature-management-experimentation/integrations/visual-studio-code-extension" },
-  { name: "Webhook (Audit Logs)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhook/audit-logs" },
-  { name: "Webhook (Metric Alerts)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhook/metric-alerts" },
+  { name: "Webhook (Audit Logs)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhooks/audit-logs" },
+  { name: "Webhook (Metric Alerts)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhooks/metric-alerts" },
 ];
 
 export const supportedDatasources = [
@@ -38,11 +38,11 @@ export const supportedDatasources = [
   { name: "mParticle", img: "/provider-logos/fme-integrations/mparticle-logo.png", link: "/docs/feature-management-experimentation/integrations/mparticle" },
   { name: "Segment", img: "/provider-logos/fme-integrations/segment-logo.png", link: "/docs/feature-management-experimentation/integrations/segment" },
   { name: "Sentry", img: "/provider-logos/fme-integrations/sentry-logo.png", link: "/docs/feature-management-experimentation/integrations/sentry" },
-  { name: "Webhook (Impressions)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhook/impressions" },
+  { name: "Webhook (Impressions)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhooks/impressions" },
 ];
 
 export const supportedAdminchanges = [
-  { name: "Webhook (Admin Audit Logs)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhook/admin-audit-logs" },
+  { name: "Webhook (Admin Audit Logs)", img: "/provider-logos/split-logo.png", link: "/docs/feature-management-experimentation/api/webhooks/admin-audit-logs" },
 ];
 
 export const supportedCommunity = [

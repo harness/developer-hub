@@ -8,12 +8,10 @@ redirect_from:
   - /docs/feature-management-experimentation/integrations/librato/
 ---
 
-## Overview
-
-Split integrates across several categories, including messaging, monitoring, issue management, customer data platforms, and analytics. In addition, the Split developer community has contributed numerous integrations that bring data from your feature delivery platform into the tools your team already uses, helping make all of your tools **feature-flag aware** and improving cross-team collaboration. 
+Harness FME integrates across several categories, including messaging, monitoring, issue management, customer data platforms, and analytics. In addition, the Harness FME developer community has contributed numerous integrations that bring data from your feature delivery platform into the tools your team already uses, helping make all of your tools feature-flag aware and improving cross-team collaboration. 
 
 :::tip
-If you're not seeing a tool you need to be connected to Split, you can use Split’s [API](https://docs.split.io/) and [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) to connect with the tools your team uses. For assistance with Split’s SDK or API, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
+If you're not seeing a tool you need to be connected to Harness FME, you can use FME's [API](https://docs.split.io/) and [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) to connect with the tools your team uses. For assistance with FME's API or SDKs, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
 :::
 
 import { Section, supportedModules, supportedWorkflows, supportedDatasources, supportedAdminchanges, supportedCommunity } from '/src/components/Docs/data/fmeIntegrations';
@@ -27,27 +25,27 @@ import { Section, supportedModules, supportedWorkflows, supportedDatasources, su
 />
 
 <Section 
-  title="Split-supported Workflow Integrations" 
+  title="FME-supported Workflow Integrations" 
   items={supportedWorkflows} 
   perRow={6} 
   rowSpacing="20px" 
-  description="Split-supported workflow integrations allow you to send feature flag changes directly to the tools your team relies on, helping your team act on flag updates in real time." 
+  description="FME-supported workflow integrations allow you to send feature flag changes directly to the tools your team relies on, helping your team act on flag updates in real time." 
 />
 
 <Section 
-  title="Split-supported Data Integrations" 
+  title="FME-supported Data Integrations" 
   items={supportedDatasources} 
   perRow={6} 
   rowSpacing="20px" 
-  description="Split-supported data source integrations send event data to Split to power experiments, helping you measure the impact of features on metrics derived from your customer data. Split-supported data export integrations allow you to send impression data to analytics platforms, data warehouses, or CRM tools to enrich your business intelligence and reporting." 
+  description="FME-supported data source integrations send event data to FME to power experiments, helping you measure the impact of features on metrics derived from your customer data. FME-supported data export integrations allow you to send impression data to analytics platforms, data warehouses, or CRM tools to enrich your business intelligence and reporting." 
 />
 
 <Section 
-  title="Split-supported Admin Integrations" 
+  title="FME-supported Admin Integrations" 
   items={supportedAdminchanges} 
   perRow={6} 
   rowSpacing="20px" 
-  description="Split-supported admin integrations let you propagate administrative changes (such as user or configuration updates) to the tools your team uses, keeping your workflows consistent and up-to-date." 
+  description="FME-supported admin integrations let you propagate administrative changes (such as user or configuration updates) to the tools your team uses, keeping your workflows consistent and up-to-date." 
 />
 
 <Section 
@@ -55,9 +53,9 @@ import { Section, supportedModules, supportedWorkflows, supportedDatasources, su
   items={supportedCommunity} 
   perRow={6} 
   rowSpacing="20px" 
-  description="In addition to native integrations, the Split community has contributed a wide variety of integrations, enabling you to bring feature flag data into additional tools not natively supported, from monitoring dashboards to analytics platforms." 
+  description="In addition to native integrations, the Harness FME community has contributed a wide variety of integrations, enabling you to bring feature flag data into additional tools not natively supported, from monitoring dashboards to analytics platforms." 
 />
 
-:::info
-Already built out your own integration or want to request an integration? Contact [Harness Support](/docs/feature-management-experimentation/fme-support). We’d like to feature your work to the entire Split developer community.
+:::info Request an Integration
+Already built out your own integration or want to request an integration? Contact [Harness Support](/docs/feature-management-experimentation/fme-support). We’d like to feature your work to the entire Harness FME developer community.
 :::

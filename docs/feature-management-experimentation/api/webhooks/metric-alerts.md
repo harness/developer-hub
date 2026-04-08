@@ -3,6 +3,8 @@ title: Webhook for Metric Alerts
 description: Learn how to configure the webhook for metric alerts in Harness FME.
 sidebar_position: 4
 sidebar_label: Metric Alerts
+redirect_from:
+  - /docs/feature-management-experimentation/api/webhook/metric-alerts
 ---
 
 Use the Metric Alert webhook to automatically send Harness FME [metric significance alerts](/docs/feature-management-experimentation/release-monitoring/alerts/#determine-an-alert-mechanism) and [alert policy degradations](/docs/feature-management-experimentation/release-monitoring/alerts/#determine-an-alert-mechanism) to your preferred tools, such as Jira, PagerDuty, Slack, or custom systems. This webhook helps experimentation, SRE, and product teams improve visibility and reduce manual monitoring.
