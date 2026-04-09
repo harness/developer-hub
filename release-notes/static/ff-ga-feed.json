@@ -1192,5 +1192,17 @@
     "description": "Enable the Dynamic executions for the Pipelines. This will allow running a pipeline-yaml without having to save it by passing the YAML as the payload in pipeline execute API.",
     "gaStartDate": "2026-04-07",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_REUSE_CHART_MUSEUM_SERVER",
+    "description": "Improves Helm chart deployment performance by reusing ChartMuseum server instances for S3-backed repositories.",
+    "gaStartDate": "2026-04-08",
+    "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "CDS_USE_CACHED_REPOSITORY_SUFFIX",
+    "description": "Enables automatic fallback to cached Artifactory repositories when no artifacts are found in the primary repository.",
+    "gaStartDate": "2026-04-08",
+    "module": "Continuous Delivery"
   }
 ]
