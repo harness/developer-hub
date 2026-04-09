@@ -130,6 +130,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2026
 
+### Version 26.04.88902 <!-- April 09, 2026 -->
+
+#### New features and enhancements
+- Added support for Google Cloud (GCP) OIDC authentication in the DBOPS module for JDBC connectors. Users can now securely connect to GCP databases such as Cloud SQL and Spanner using GCP OIDC, eliminating the need for traditional credential-based authentication. [DBOPS-2279]
+
 ### Version 26.04.88901 <!-- April 08, 2026 -->
 
 #### Fixed issues
