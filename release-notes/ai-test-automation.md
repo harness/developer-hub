@@ -23,6 +23,22 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 :::
 
+## March 2026
+
+### 2026.03.v1
+
+#### New Features
+
+- **Task versioning**  
+  Tasks now have full **version history** aligned with test versioning: each save of an edited task creates a new version instead of overwriting the only copy. Open the **Version History** tab on the task details page to review past versions, **show edits** between versions, **copy** a version to fork a new task, or **restore** an older version as current. Restoring affects every test that references that task; use **copy** when you need a separate line of work. Each test version remembers which task version was current when it was saved, so historical runs stay consistent while the latest test can follow the latest task. For details, see [Tasks](/docs/ai-test-automation/test-authoring/creating-tests/tasks).
+
+  <DocImage
+    path={require('./static/ait/task-version-history.png')}
+    alt="Task details with Version History tab listing task versions and actions"
+    title="Task version history"
+    width="70%"
+  />
+
 ## February 2026
 
 ### 2026.02.v1
