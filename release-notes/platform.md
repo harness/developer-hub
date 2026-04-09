@@ -222,6 +222,13 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2026
 
+### Version 1.138.x <!--April 08, 2026-->
+
+#### Fixed issues
+
+- Fixed an issue where deleting a user at the organization or project scope showed an incorrect "last admin" warning. Existing behavior for account scope and valid last-admin cases remains unchanged. [PL-68705]
+- Fixed an issue where user groups were not correctly sorted by "Newest" (creation date) in the UI. [PL-68244]
+
 ### Version 1.137.x <!--April 02, 2026-->
 
 #### Fixed issues
