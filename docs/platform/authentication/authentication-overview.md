@@ -141,13 +141,26 @@ To configure multiple SAML providers in Harness, follow the steps below:
 
 1. Select **Account Settings**, and then select **Authentication**.
 
-2. Enable **Login via SAML** and add the SAML providers you need.
+2. Select **Login via SAML** and add the SAML providers you need.
 
     a. If no SAML providers are configured for the account, select **Add SAML Provider**.
+
+    <div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/add-provider.png')} width="80%" height="40%" title="Click to view full size image" />
+    </div>
+
     The SAML Provider settings appear.
-      - In the **Name** field, enter a name for the SAML provider. Names can only contain alphanumeric characters, `_`, `-`, `.`, and spaces. Optionally, add a **Display Name (optional)**.
-      - Select **Continue**.
+      - In the **Name** field, enter a name for the SAML provider. Names can only contain alphanumeric characters, `_`, `-`, `.`, and spaces. Optionally, add a **Display Name (optional)**. Select **Continue**.
+
+    <div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/name-description.png')} width="80%" height="40%" title="Click to view full size image" />
+    </div>
+
       - **Select a SAML provider** from the list of providers and select **Continue**.
+
+    <div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/select-provider.png')} width="80%" height="40%" title="Click to view full size image" />
+    </div>
 
         <Tabs>
         <TabItem value="Microsoft Entra ID">
@@ -181,6 +194,10 @@ To configure multiple SAML providers in Harness, follow the steps below:
         </Tabs>
 
       - In the **URL and Identity Provider** screen, upload the Identity Provider metadata XML and select **Continue**.
+
+      <div style={{textAlign: 'center'}}>
+          <DocImage path={require('./static/url-id-provider.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
+
       - Click **Submit**.
       
       The SAML provider is now listed under **Login via SAML**.
