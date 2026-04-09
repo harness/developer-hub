@@ -22,6 +22,27 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## April 2026
 
+### Version 1.82.1
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.82.0
+- harness/chaos-ddcr-faults:1.82.0
+- harness/chaos-log-watcher:1.82.0
+- harness/service-discovery-collector:0.62.0
+
+#### New Features and Enhancements
+
+- Added support for viewing Harness Delegate logs and DDCI logs directly in the logs view, with a new LogsView integrated into the timeline view for improved observability during experiment runs (CHAOS-11344, CHAOS-11343, CHAOS-11342)
+- Added support for fault deprecation via Enterprise Hub Sync, allowing deprecated faults to be managed centrally through the enterprise ChaosHub (CHAOS-11324)
+- Refactored report generation to a unified data extraction pipeline and added an API to return report data as JSON (CHAOS-11266)
+- Added fallback mechanism to list Java PID for running JVM faults, improving reliability when the default discovery method is unavailable (CHAOS-11341)
+
+#### Fixed Issues
+
+- Fixed an issue where creating a fault with an org-level fault template as reference was failing when the feature flag was enabled (CHAOS-11358)
+
 ### Version 1.81.0
 
 #### Images required
