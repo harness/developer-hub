@@ -42,6 +42,19 @@ Ensure the following are in place:
 - A **GKE cluster with Workload Identity enabled**
 - A **Harness Delegate installed in the cluster**
 - Permissions to manage IAM roles and service accounts in GCP
+- The following **GCP APIs must be enabled** on the relevant GCP project(s):
+  - [Cloud Spanner API](https://console.cloud.google.com/apis/library/spanner.googleapis.com) (`spanner.googleapis.com`)
+  - [IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com) (`iamcredentials.googleapis.com`) — required for Workload Identity token exchange
+  - [IAM API](https://console.cloud.google.com/apis/library/iam.googleapis.com) (`iam.googleapis.com`)
+
+  You can enable these APIs using the `gcloud` CLI:
+
+  ```bash
+  gcloud services enable spanner.googleapis.com \
+    iamcredentials.googleapis.com \
+    iam.googleapis.com \
+    --project=<project-id>
+  ```
 
 
 ### Step 1: Create a Google Service Account (GSA)
