@@ -5,7 +5,7 @@ sidebar_position: 10
 sidebar_label: "View and manage baseline issues"
 ---
 
-The **[Issues](#navigate-to-issues-section)** section at the **Project** level provides a consolidated view of all security issues affecting your baseline targets, providing a comprehensive list of issues identified across scans in the selected **Project**. **Issues** section is currently available only at the **Project** level. Support for **Organization** and **Account** levels will be available soon. From the **Issues** section, you can:
+The **[Issues](/docs/security-testing-orchestration/view-security-test-results/issues#issues-overview)** section at the **Project** level provides a consolidated view of all security issues affecting your baseline targets, providing a comprehensive list of issues identified across scans in the selected **Project**. **Issues** section is currently available only at the **Project** level. Support for **Organization** and **Account** levels will be available soon. From the **Issues** section, you can:
 
 - [View all baseline issues](#navigate-to-issues-section)
 - [Review issue details](#issue-details)
@@ -22,11 +22,48 @@ The **[Issues](#navigate-to-issues-section)** section at the **Project** level p
 - To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 :::
 
-## Navigate to Issues section
+## Issues overview
 
-Access the **Issues** section from the left navigation in the STO module. You can apply filters to effectively navigate through the issues in your project. See [Filters in Issues section](#filters-in-issues-section) for details.
+Access the **Issues** section from the left navigation in the STO module. At the top of the page, you can view the summary of the **Total Issues** and **Total Occurrences** counts for your project's baseline issues. You can apply filters to narrow down the issues in your project. See [Filters in Issues section](#filters-in-issues-section) for details.
 
-<DocImage path={require('./static/issues-navigation.png')} width="100%" height="100%" title="Click to view full size image" />
+The Issues page displays three summary cards that provide a quick overview of your security posture:
+
+### Issue Severity
+
+Displays the distribution of issues by severity level (Critical, High, Medium, Low, Info). Each severity level shows the count of issues, allowing you to quickly assess the overall risk profile of your project. You can select a severity level to filter the issues list and view only issues with that severity.
+
+### Issue Types
+
+Displays the breakdown of issues by scan type (SAST, DAST, SCA, IaC, Secret, Misconfig, Bug Smells, Code Smells, Code Coverage, External Policy, Unknown). You can select an issue type to filter the issues list and view only issues of that type.
+
+### Active and Remediated Issues
+
+The chart displays the trend of active and remediated issues over time. Use the **Time Range** dropdown to adjust the view period (e.g., Last 30 days). The chart helps you track:
+- **Active:** Issues that are currently open and need attention
+- **Remediated:** Issues that have been resolved
+
+<DocImage path={require('./static/issues-overview.png')} width="100%" height="100%" title="Click to view full size image" />
+
+:::note
+The Active and Remediated issues trend chart only reflects changes when filtering by Issue Types, Severity, Scanner, Status, or Exemption Status.
+:::
+
+## Issues list
+
+The issues list displays all baseline issues with the following columns:
+
+| Column | Description |
+| --- | --- |
+| **Severity** | Issue severity level (Critical, High, Medium, Low, Info). |
+| **Issue Type** | Scan type that detected the issue (SCA, SAST, DAST, etc.). |
+| **Title** | CVE ID or issue identifier with a brief description. |
+| **Targets Impacted** | Number of targets affected by this issue. |
+| **Occurrences** | Total number of occurrences detected across all targets. |
+| **Last Detected** | Timestamp of when the issue was last detected. |
+| **Tickets** | Linked Jira tickets, if any. |
+| **Status** | Current issue status (Active, Remediated, Exempted). |
+
+Select any row in the table to open the [Issue Details](#issue-details) pane.
 
 ## Issue details
 
@@ -120,15 +157,25 @@ Filter issues by severity levels. Multiple selections are allowed.
 - Low
 - Info
 
+### Status
+
+Filter issues by status. Multiple selections are allowed.
+
+- Active
+- Remediated
+- Exempted
+
 ### Exemption Status
 
 Filter issues by exemption status. Multiple selections are allowed.
 
 - None
 - Pending
-- Approved
+- Partially Exempted
 - Rejected
 - Expired
+
+
 
 ### Severity Overridden 
 
@@ -140,3 +187,9 @@ Filter issues by EPSS percentile (eg., 90th).
 ### EPSS Probability
 
 Filter issues by EPSS probability (eg., 15%).
+
+### Reachable
+
+Filter issues by whether they are reachable or not.
+
+
