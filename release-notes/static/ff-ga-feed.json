@@ -1204,5 +1204,11 @@
     "description": "Enables automatic fallback to cached Artifactory repositories when no artifacts are found in the primary repository.",
     "gaStartDate": "2026-04-08",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "SCS_HAR_ARTIFACT_SIGNING_VERIFICATION",
+    "description": "Enables Harness Artifact Registry (HAR) integration for artifact signing and verification steps",
+    "gaStartDate": "2026-04-10",
+    "module": "Supply Chain Security"
   }
 ]
