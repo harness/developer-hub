@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-03-30T10:00
+date: 2026-04-06T10:00
 sidebar_position: 10
 ---
 
@@ -59,6 +59,23 @@ For additional information about Harness Cloud pricing, please visit [Subscripti
 Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
+
+## April 2026
+
+### Version 1.129.0
+
+<!-- April 2026 -->
+
+#### Fixed Issues
+
+- Fixed a regression where CI steps were not properly supporting EKS pod identity authentication for AWS. (CI-21034)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.15 | 1.18.16 |
+| `harness/ci-lite-engine` | Version update | 1.18.15 | 1.18.16 |
 
 ## March 2026
 
