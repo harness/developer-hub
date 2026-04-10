@@ -351,7 +351,7 @@ Set up alerts to receive notifications when anomalies are detected without havin
 
 <DocImage path={require('./static/alert.png')} width="100%" height="100%" title="Click to view full size image" />
 
-
+-----
 
 ### Anomaly Preferences
 
@@ -364,6 +364,113 @@ Configure system-wide anomaly detection settings to ensure only significant anom
 1. **Minimum Cost Impact (Amount)**: This setting allows you to set a threshold for the cost impact in USD, meaning that anomalies will only be shown if the financial impact exceeds the specified amount.
 2. **Minimum Cost Impact (Percentage)**: Similar to the above, this setting enables you to define a threshold based on the percentage of cost increase. Anomalies will only be flagged if the cost increase exceeds the specified percentage of the baseline cost.
 3. **Anomaly Persistence**: This setting allows the system to adjust the baseline cost of a resource if an anomaly persists beyond a specified number of days. If an anomaly is not resolved and continues to impact costs for the set duration, the resource's baseline cost is updated to reflect the higher cost. This helps maintain an accurate representation of the resource's true cost over time, ensuring that future anomalies are detected against the adjusted baseline.
+
+----
+
+### Anomaly Ignore List
+
+<DocImage path={require('./static/anomaly-ignore-list.png')} width="60%" height="60%" title="Click to view full size image" />
+
+The Anomaly Ignore List allows you to exclude expected cost patterns from anomaly detection. By creating ignore list rules, you can prevent false positives for known cost behaviors, ensuring your team focuses on genuine anomalies that require attention.
+
+Common use cases include:
+
+- **Development and test environments** – Exclude accounts or resources where cost fluctuations are expected
+- **Scheduled scaling events** – Prevent alerts for planned auto-scaling activities
+- **Reserved Instance or Savings Plan purchases** – Avoid false anomalies from one-time commitment purchases
+- **Seasonal workloads** – Exclude resources with known periodic cost variations
+- **Data processing jobs** – Filter out batch processing workloads with variable costs
+
+#### Creating an Ignore List Rule
+
+- From the Anomaly Ignore list tab, click **+ new Ignore List Rule**.
+- Rule Name:  Enter a descriptive name for your rule (e.g., "Dev Environment - US East", "Batch Processing Jobs").
+- Cloud Type: Select the cloud provider for this rule:
+  - **AWS**
+  - **GCP**
+  - **Azure**
+  - **Kubernetes Cluster**
+> **Note:** You cannot change the cloud type after creating a rule. To apply similar rules to multiple cloud providers, create separate rules for each.
+
+- Ignore List Level: Choose the granularity of the rule. Available levels vary by cloud provider:
+
+| Cloud Provider | Available Levels |
+|----------------|------------------|
+| AWS | Account, Service, Usage Type |
+| GCP | Project, Product, SKU Description |
+| Azure | Subscription, Meter Category |
+| Kubernetes | Cluster, Namespace, Workload |
+
+**Level descriptions:**
+    - **Account/Project/Subscription/Cluster** – Ignores all anomalies for the selected accounts
+    - **Service/Product/Meter Category/Namespace** – Ignores anomalies for specific services within accounts
+    - **Usage Type/SKU Description/Workload** – Ignores anomalies at the most granular level
+
+- Scope Selection: Depending on your selected level, choose the scope:
+    - **All Accounts/Projects/Subscriptions/Clusters** – Applies the rule across all resources of the selected cloud type
+    - **Specific Accounts/Projects/Subscriptions/Clusters** – Select individual resources to include in the rule
+    When selecting Service or Usage Type levels, you can further narrow the scope by selecting specific services and usage types.
+
+- Save the Rule: Click **Save** to create the rule. The rule takes effect immediately and applies to future anomaly detection.
+
+#### Managing Ignore List Rules
+
+<DocImage path={require('./static/manage.png')} width="50%" height="50%" title="Click to view full size image" />
+
+#### Viewing Rules
+
+The Ignore List tab displays all your rules as cards showing:
+- Rule name and cloud provider icon
+- Enabled/Disabled status
+- Scope (accounts covered)
+- Level (Account, Service, or Usage Type)
+- Services included (if applicable)
+- Last modified by and timestamp
+
+#### Filtering Rules
+
+Use the filters at the top of the list to find specific rules:
+- **Search** – Filter by rule name
+- **Account/Subscription/Project/Cluster** – Filter by cloud account (filters appear based on your existing rules)
+- **Status** – Show All, Enabled, or Disabled rules
+
+#### Enabling/Disabling Rules
+
+Toggle the switch on any rule card to enable or disable it. Disabled rules remain saved but do not affect anomaly detection.
+
+#### Editing Rules
+
+Click the **Edit** icon (pencil) on a rule card to modify:
+- Rule name
+- Account scope (All or Specific)
+- Selected accounts, services, or usage types
+
+> **Note:** You cannot change the cloud type of an existing rule.
+
+#### Deleting Rules
+
+Click the **Delete** icon (trash) on a rule card. Confirm the deletion in the dialog that appears.
+
+> **Warning:** Deleting a rule is permanent. Previously ignored anomalies will not be retroactively flagged.
+
+#### How Ignore List Rules Work
+
+When an ignore list rule is enabled:
+
+1. CCM's anomaly detection engine evaluates each potential anomaly against your active rules
+2. If an anomaly matches a rule's criteria (cloud provider, account, service, usage type), it is excluded from detection
+3. Excluded cost patterns do not appear in your Active anomalies list
+4. The rule applies to all future anomaly detection cycles
+
+#### Rule Matching Logic
+
+Rules match based on a hierarchical structure:
+
+- **Account-level rules** ignore all anomalies for the specified accounts
+- **Service-level rules** ignore anomalies only for the specified services within the specified accounts (or all accounts if "All" is selected)
+- **Usage Type-level rules** provide the most granular control, ignoring only specific usage types within specific services and accounts
+
+----
 
 ### Cost Settings
 
