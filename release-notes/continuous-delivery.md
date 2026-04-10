@@ -56,6 +56,19 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2026
 
+### Version 1.138.5
+
+#### Fixed issues
+
+- Fixed an issue where a direct connector secret reference with an incorrect value caused all secrets to fail rendering in `values.yaml` during Native Helm deployments. (**CDS-119546**, **ZD-105341**)
+- Fixed an issue where pipelines failed to pull Helm files after a delegate upgrade. When using the **Fetch files from Git using provider-specific APIs** setting, the system encountered failures for repositories with numerous files. Recent changes added additional context to gRPC responses, causing the total response size to exceed the 16KB gRPC call limit, resulting in failed file fetches and incomplete repository data retrieval. The Git file fetching feature now implements pagination, automatically splitting large file lists into batches of up to 35 files per request, ensuring each gRPC call stays within the 16KB limit while maintaining full repository access. (**CDS-120124**, **ZD-109714**)
+- Fixed an issue where GitOps steps (MergePR, RevertPR, UpdateReleaseRepo) failed with "no eligible delegates available" when delegate selectors were configured at both the connector and step/stage/pipeline levels. Delegate selector precedence now works correctly, prioritizing step-level selectors over connector-level selectors. (**CDS-120333**, **ZD-110105**)
+- Fixed an issue where runtime values for GitOps clusters and environment inputs were not being cleared correctly in GitOps stages. (**CDS-120345**, **ZD-109942**)
+- Fixed an issue where auto-synced ArgoCD applications hung at the GitOps Sync step. The Sync step now detects already-running syncs (manual or auto-syncs) and tracks those syncs accurately. (**CDS-120358**, **ZD-110163**)
+- Fixed an issue where barriers were stalling for 5 minutes. (**PIPE-32301**, **ZD-104566**, **ZD-104909**, **ZD-109528**)
+- Fixed an issue where barriers were not working correctly. A barrier step with a skipped status could cause the barrier to be bypassed. (**PIPE-32701**, **ZD-105759**, **ZD-109743**)
+- Fixed an issue where newly created version or template files in GitHub were not visible in the Harness UI, and auto-creation for templates was not working. (**PIPE-32938**, **ZD-109360**)
+
 ### Version 1.137.0
 
 #### New features and enhancements
