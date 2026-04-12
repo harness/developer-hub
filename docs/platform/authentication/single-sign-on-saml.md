@@ -134,7 +134,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 6. In **Default RelayState**, leave **blank**.  Harness uses this to exchange addtiional info between IdP SAML provider (OKTA) and Service Provider (Harness), by sending Custom RelayState information.
 7. In **Name ID format**, enter the username format you are sending in the SAML Response. The default format is **Unspecified**.
 8. In **Application username**, enter the default username.
-9.  In **Attribute Statements (optional)**, enter name in the **Name** field, select **Name Format** as **Basic**, and select the **Value** as **user.email**.
+9.  In **Attribute Statements (optional)**, enter name in the **Name** field, select **Name Format** as **Basic**, and select the **Value** as **user.mail**.
 
     When you create a new SAML integration or modify an existing one, you can define custom attribute statements. These statements are inserted into the SAML assertions shared with your app. For more information, go to the Okta documentation on [Defining Attribute Statements](https://help.okta.com/oie/en-us/Content/Topics/Apps/Apps_App_Integration_Wizard_SAML.htm#).
 
@@ -449,7 +449,7 @@ The Azure users that are added to your Azure app must have their email addresses
 To set this **User name** email address as the method for identifying users, in the Azure app **Single sign-on** section, the Azure app must use the **user.userprincipalname** as the **Unique User Identifier**, and **user.userprincipalname** must use **Email address** as the **name identifier format**.
 
 :::info note
-If **user.userprincipalname** can't use an email address as the **Name ID format**, then **user.email** should be used as the unique identifier in the **Identifier (Entity ID)** field.
+If **user.userprincipalname** can't use an email address as the **Name ID format**, then **user.mail** should be used as the unique identifier in the **Identifier (Entity ID)** field.
 :::
 
 To set this up in your Azure app, do the following:
