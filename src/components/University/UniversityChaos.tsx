@@ -13,6 +13,7 @@ import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
+import { MODULES } from "../../constants";
 
 const getCertBadges = (url: string) => [
   {
@@ -103,11 +104,11 @@ export default function CertificationsChaos() {
               <i className="fa-solid fa-arrow-left"></i> Back to University Home
             </Link>
           </div>
-          <h1>Chaos Engineering</h1>
+          <h1>Resilience Testing</h1>
           <div>
-            Discover how your applications stand up to real-world failure
-            scenarios. Gain insights to construct a resilient system that
-            minimizes downtime and saves on costs.
+            Validate how your applications withstand real-world failure
+            scenarios through chaos testing, load testing, and disaster recovery
+            testing. Build confidence in your system's reliability.
           </div>
         </div>
         <div
@@ -277,22 +278,22 @@ export default function CertificationsChaos() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Chaos Engineering - Developer</h2>
+                    <h2>Resilience Testing - Developer</h2>
                     <img
                       src={`${baseUrl}img/cert_dev_ce_badge.svg`}
-                      alt="Harness Certified Expert - Chaos Engineering Developer"
+                      alt="Harness Certified Expert - Resilience Testing Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Chaos
-                      Engineering Paid Plans
+                      <strong>Product version: </strong> Harness Resilience
+                      Testing Paid Plans
                     </span>
                   </div>
                   <div className={styles.right}>
                     <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to implement chaos in your
-                      applications.
+                      Assesses the fundamental skills to implement resilience
+                      testing in your applications.
                     </div>
                     <DeveloperCertificationReviewGuide />
                     <div className={styles.btnContainer}>
@@ -350,24 +351,24 @@ export default function CertificationsChaos() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Chaos Engineering - Administrator</h2>
+                    <h2>Resilience Testing - Administrator</h2>
                     <img
                       src={`${baseUrl}img/cert_adm_ce_badge.svg`}
-                      alt="Harness Certified Expert - CE Administrator"
+                      alt="Harness Certified Expert - Resilience Testing Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness CE
-                      Paid Plans
+                      <strong>Product version: </strong> Harness Resilience
+                      Testing Paid Plans
                     </span>
                   </div>
                   <div className={styles.right}>
                     <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain CE projects and the overall Harness Platform. This
+                      Assesses the fundamental skills to deploy and maintain Resilience Testing projects and the overall Harness Platform. This
                       exam builds upon the{" "}
                       <a href="/university/chaos-engineering?lvl=developer">
-                       Chaos Engineering Developer Certificate
+                       Resilience Testing Developer Certificate
                       </a>
                       .
                     </div>
@@ -428,15 +429,15 @@ export default function CertificationsChaos() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Chaos Engineering - Architect (BETA COMING SOON)</h2>
+                    <h2>Resilience Testing - Architect (BETA COMING SOON)</h2>
                     <img
                       src={`${baseUrl}img/cert_arc_ce_badge.svg`}
-                      alt="Harness Certified Expert - Chaos Engineering Architect"
+                      alt="Harness Certified Expert - Resilience Testing Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Chaos
-                      Engineering Paid Plans
+                      <strong>Product version: </strong> Harness Resilience
+                      Testing Paid Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -467,7 +468,7 @@ export default function CertificationsChaos() {
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assess key technical job functions and advanced skills in
-                      design, implementation and management of CE.
+                      design, implementation and management of Resilience Testing.
                     </div>
                   </div>
                 </div>
@@ -521,8 +522,8 @@ export default function CertificationsChaos() {
               {ilt
                 .filter((ilt) => {
                   return (
-                    ilt.module === "ce" ||
-                    (ilt.module === "ce" && ilt.tileType === "comming soon")
+                    ilt.module === MODULES.ce ||
+                    (ilt.module === MODULES.ce && ilt.tileType === "comming soon")
                   );
                 })
                 .map((ilt) => (
@@ -548,8 +549,8 @@ export default function CertificationsChaos() {
               {spt
                 .filter((spt) => {
                   return (
-                    (spt.module === "ce" && spt.cardType === "FREE") ||
-                    (spt.module === "ce" && spt.tileType === "comming soon")
+                    (spt.module === MODULES.ce && spt.cardType === "FREE") ||
+                    (spt.module === MODULES.ce && spt.tileType === "comming soon")
                   );
                 })
                 .map((spt) => (

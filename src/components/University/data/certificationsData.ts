@@ -113,21 +113,21 @@ export const university: CardItem[] = [
     // numberOfCerts: 1,
   },
   {
-    title: "Resilience Testing - CE - Developer",
+    title: "Resilience Testing - Developer",
     module: MODULES.ce,
     type: certType.developer,
     description:
-      "Chaos Developer focuses on the fundamental skills to inject failure into your applications to build resilience.",
+      "Resilience Testing Developer focuses on the fundamental skills to validate system reliability through chaos testing, load testing, and disaster recovery testing.",
     version: "Harness Resilience Testing Free Plans",
     link: "/university/chaos-engineering?lvl=developer",
     // numberOfCerts: 1,
   },
   {
-    title: "Resilience Testing - CE - Administrator",
+    title: "Resilience Testing - Administrator",
     module: MODULES.ce,
     type: certType.administrator,
     description:
-      "Chaos Administrator focuses focuses on the advanced skills in of injecting failure into your applications to build resilience.",
+      "Resilience Testing Administrator focuses on the advanced skills in deploying and managing resilience testing across your applications.",
     version: "Harness Resilience Testing Paid Plans",
     link: "/university/chaos-engineering?lvl=administrator",
     // numberOfCerts: 1,

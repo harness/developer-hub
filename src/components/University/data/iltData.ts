@@ -81,11 +81,11 @@ export const ilt: IltCardItem[] = [
     cardType: cardType.ILT,
   },
   {
-    title: "Resilience Testing - CE",
+    title: "Resilience Testing",
     module: MODULES.ce,
     type: type.user,
     description:
-      "Deep dive into chaos engineering and concepts supporting testing.",
+      "Deep dive into resilience testing concepts including chaos testing, load testing, and disaster recovery testing.",
     version: "Harness Resilience Testing Paid Plans",
     link: "https://university-registration.harness.io/instructor-led-training-for-harness-chaos-engineering",
     tileType: tileType.normal,

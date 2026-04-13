@@ -91,11 +91,11 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
-    title: "Resilience Testing - CE",
+    title: "Resilience Testing",
     module: MODULES.ce,
     type: type.user,
     description:
-      "Self-paced video course introducing Harness Resilience Testing focusing on CE.",
+      "Self-paced video course introducing Harness Resilience Testing including chaos testing, load testing, and disaster recovery testing.",
     version: "Harness Resilience Testing Free Plans",
     link: "https://university-registration.harness.io/self-paced-training-harness-chaos-engineering",
     tileType: tileType.normal,

@@ -1,4 +1,4 @@
-The Chaos Engineering Developer exam tests your knowledge and skills of the Harness Chaos Engineering module.
+The Resilience Testing Developer exam tests your knowledge and skills of the Harness Resilience Testing module.
 
 ## Prerequisites
 
@@ -11,10 +11,12 @@ Question Type: Multiple choice + Hands on Learning
 
 | Covered Domain                      | Percentage |
 | ----------------------------------- | ---------- |
-| Run chaos experiments               | 35%        |
-| Understand Harness CE Architecture. | 30%        |
-| Key features of Harness CE          | 25%        |
-| Basics of Harness chaos engineering | 10%        |
+| Run chaos experiments               | 25%        |
+| Understand Harness Resilience Testing Architecture | 20%        |
+| Key features of Harness Resilience Testing          | 20%        |
+| Basics of Harness Resilience Testing | 10%        |
+| Load Testing                         | 15%        |
+| Disaster Recovery (DR) Testing       | 10%        |
 
 <br />
 
@@ -27,21 +29,30 @@ The following is a detailed list of exam objectives:
 
 | #   | Objectives                                             |
 | --- | ------------------------------------------------------ |
-| 1   | **Understanding Harness Chaos Engineering (CE)**       |
+| 1   | **Understanding Harness Resilience Testing**           |
 | 1.1 | Introduction to Chaos Engineering and generic concepts |
 | 2   | Architecture                                           |
-| 2.1 | Anatomy of a Chaos Experiment in Harness CE            |
-| 2.2 | Harness CE Architecture                                |
-| 2.3 | Connecting to Harness CE using Chaos Infrastructures   |
-| 3   | **Key features of Harness CE**                         |
-| 3.1 | Harness CE Resilience Probes                           |
-| 3.2 | Chaos guard in Harness CE                              |
-| 3.3 | Chaos dashboards in Harness CE                         |
+| 2.1 | Anatomy of a Chaos Experiment in Harness Resilience Testing |
+| 2.2 | Harness Resilience Testing Architecture               |
+| 2.3 | Connecting to Harness Resilience Testing using Chaos Infrastructures |
+| 3   | **Key features of Harness Resilience Testing**         |
+| 3.1 | Harness Resilience Testing Probes                      |
+| 3.2 | ChaosGuard in Harness Resilience Testing               |
+| 3.3 | Chaos dashboards in Harness Resilience Testing         |
 | 4   | **Run chaos experiments on various platforms**         |
-| 4.1 | Kubernetes chaos faults in Harness CE                  |
-| 4.2 | AWS chaos faults in Harness CE                         |
-| 4.3 | Azure chaos faults in Harness CE                       |
-| 4.4 | GCP chaos faults in Harness CE                         |
+| 4.1 | Kubernetes chaos faults in Harness Resilience Testing  |
+| 4.2 | AWS chaos faults in Harness Resilience Testing         |
+| 4.3 | Azure chaos faults in Harness Resilience Testing       |
+| 4.4 | GCP chaos faults in Harness Resilience Testing         |
+| 5   | **Load Testing**                                       |
+| 5.1 | Load Testing concepts: virtual users, load profiles, and thresholds |
+| 5.2 | Setting up load test infrastructure                    |
+| 5.3 | Creating and running load tests                        |
+| 5.4 | Analyzing load test results and metrics                |
+| 6   | **Disaster Recovery (DR) Testing**                     |
+| 6.1 | DR Testing concepts: RTO, RPO, and pipeline-based DR tests |
+| 6.2 | Creating and configuring DR tests in Pipeline Studio   |
+| 6.3 | DR test pipeline stages, steps, and failure strategies |
 
 </details>
 
@@ -49,7 +60,7 @@ The following is a detailed list of exam objectives:
 
 ## Next Steps
 
-The Chaos Engineering Developer exam can start immediately after registering. Please allow up to 90 mins for the exam.
+The Resilience Testing Developer exam can start immediately after registering. Please allow up to 90 mins for the exam.
 
 1. Create an account in Harness University
 2. Register for the exam
