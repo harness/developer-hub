@@ -1,565 +1,78 @@
-Prometheus probe allows you to run Prometheus queries and match the resulting output against specific conditions. You can define metrics-based SLOs in a declarative way and determine the experiment verdict based on their success. The probe runs the query on a Prometheus server defined by the endpoint and checks whether the output satisfies the specified criteria. The outcome of a PromQL query (that is provided) is used for probe validation.
+import DocVideo from '@site/src/components/DocVideo';
 
-:::info YAML only feature
-In case of complex queries that span multiple lines, the `queryPath` attribute can be used to provide the link to a file consisting of the query. This file can be made available in the experiment pod via a ConfigMap resource, with the ConfigMap being passed in the [ChaosEngine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [ChaosExperiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#promprobe).
-:::
+Prometheus probe allows you to run Prometheus queries and match the resulting output against specific conditions. The probe runs the query on a Prometheus server and checks whether the output satisfies the specified criteria.
 
-#### Input
-Prometheus probe takes a PromQL query along with Prometheus service endpoints as input to check for specific criteria.
+## When to use
 
-## Schema
+- Track response latency or error rates via PromQL while injecting faults (e.g., verify p99 latency stays below a threshold during pod-delete)
+- Validate custom application metrics exposed to Prometheus as steady-state indicators
+- Define metrics-based SLOs declaratively and use them as experiment pass/fail criteria
 
-Listed below is the probe schema for the Prometheus probe, with properties shared across all the probes and properties unique to the Prometheus probe.
+## Prerequisites
 
-<table>
-  <tr>
-    <td><strong>Field</strong></td>
-    <td><strong>Description</strong></td>
-    <td><strong>Type</strong></td>
-    <td><strong>Range</strong></td>
-    <td><strong>Notes</strong></td>
-  </tr>
-  <tr>
-    <td>name</td>
-    <td>Flag to hold the name of the probe</td>
-    <td>Mandatory</td>
-    <td>N/A <code>type: string</code></td>
-    <td>The <code>name</code> holds the name of the probe. It can be set based on the use case</td>
-  </tr>
-  <tr>
-    <td>endpoint</td>
-    <td>Flag to hold the prometheus endpoints for the promProbe</td>
-    <td>Mandatory</td>
-    <td>N/A <code>type: string</code></td>
-    <td>The <code>endpoint</code> contains the prometheus endpoints</td>
-  </tr>
-  <tr>
-    <td>query</td>
-    <td>Flag to hold the promql query for the promProbe</td>
-    <td>Mandatory</td>
-    <td>N/A <code>type: string</code></td>
-    <td>The <code>query</code> contains the promql query to extract out the desired prometheus metrics via running it on the given prometheus endpoint</td>
-  </tr>
-  <tr>
-    <td>queryPath</td>
-    <td>Flag to hold the path of the promql query for the promProbe</td>
-    <td>Optional</td>
-    <td>N/A <code>type: string</code></td>
-    <td>The <code>queryPath</code> field is used in case of complex queries that spans multiple lines, the queryPath attribute can be used to provide the path to a file consisting of the same. This file can be made available to the experiment pod via a ConfigMap resource, with the ConfigMap name being defined in the ChaosEngine OR the ChaosExperiment CR.</td>
-  </tr>
-</table>
+* A running Prometheus server
+* Access to the Prometheus API endpoint from the kubernetes execution plane
+* Proper configuration of your application to expose metrics to Prometheus
 
-#### Comparator
+## Interactive Setup Guide
 
-<table>
-  <tr>
-    <td><strong>Field</strong></td>
-    <td><strong>Description</strong></td>
-    <td><strong>Type</strong></td>
-    <td><strong>Range</strong></td>
-    <td><strong>Notes</strong></td>
-  </tr>
-  <tr>
-    <td>type</td>
-    <td>Flag to hold type of the data used for comparison</td>
-    <td>Mandatory</td>
-    <td><code>float</code></td>
-    <td>The <code>type</code> contains type of data, which should be compared as part of comparison operation. Prometheus probe only compares with float data.</td>
-  </tr>
-  <tr>
-    <td>criteria</td>
-    <td>Flag to hold criteria for the comparison</td>
-    <td>Mandatory</td>
-    <td>It supports <code>{`<, >, <=, >=, !=, ==, oneOf, between`}</code> for int and float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type.</td>
-    <td>The <code>criteria</code> contains criteria of the comparison, as a part of comparison operation.</td>
-  </tr>
-  <tr>
-    <td>value</td>
-    <td>Flag to hold value for the comparison</td>
-    <td>Mandatory</td>
-    <td>N/A <code>type: string</code></td>
-    <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation.</td>
-  </tr>
-</table>
+Follow along with this interactive guide to learn how to configure Prometheus probe:
 
-#### Authentication
+<DocVideo src="https://app.tango.us/app/embed/87f20060-9449-4ac1-84ef-e69eefa35e87?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create Prometheus APM Probe" />
 
-This establishes a fundamental authentication mechanism for the Prometheus server. The "username:password", encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+## Steps to configure
 
-:::tip
-The `credentials` and `credentialsFile` are two options that can't be used simultaneously.
-:::
+1. Navigate to **Project Settings** > **Chaos Probes** and click **New Probe**
 
-<table>
-  <tr>
-   <td><strong>Field</strong> </td>
-   <td><strong>Description</strong> </td>
-   <td><strong>Type</strong> </td>
-   <td><strong>Range</strong> </td>
-   <td><strong>Notes</strong> </td>
-  </tr>
-  <tr>
-   <td>type </td>
-   <td>Flag to hold the authentication type </td>
-   <td>Optional </td>
-   <td><code>string</code> </td>
-   <td>The <code>type</code> encompasses the authentication method, which includes support for both `basic` and `bearer` authentication types. </td>
-  </tr>
-  <tr>
-   <td>credentials </td>
-   <td>Flag to hold the basic auth credentials in `base64` format or `bearer`. token </td>
-   <td>Optional </td>
-   <td><code>string</code> </td>
-   <td>The <code>credentials</code> consists of the basic authentication credentials, either as username:password encoded in `base64` format or as a `bearer` token, depending on the authentication type </td>
-  </tr>
-  <tr>
-   <td> credentialsFile </td>
-   <td>Flag to hold the basic auth credentials or bearer token file path </td>
-   <td>Optional </td>
-   <td><code>string</code> </td>
-   <td>The <code>credentials</code> consists of file path for basic authentication credentials or a bearer token, which are then attached to the experiment pod as volume secrets. These secret resources contain either the username:password encoded in `base64` format or a `bearer` token, depending on the authentication type </td>
-  </tr>
-</table>
+    ![Create Prometheus Probe](./static/prometheus-probe/create-prometheus-probe.png)
 
-#### TLS
+2. Select the **APM Probe**
+3. Provide the name of the probe and select **Prometheus** under APM Type
 
-It offers a mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key to perform the validation.
-Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
+    ![Select Prometheus Probe](./static/prometheus-probe/select-prometheus-probe.png)
 
-<table>
-  <tr>
-    <td><strong>Field</strong></td>
-    <td><strong>Description</strong></td>
-    <td><strong>Type</strong></td>
-    <td><strong>Range</strong></td>
-    <td><strong>Notes</strong></td>
-  </tr>
-  <tr>
-    <td>caFile</td>
-    <td>Flag to hold the ca file path</td>
-    <td>Optional</td>
-    <td><code>string</code></td>
-    <td>The <code>caFile</code> holds the file path of the CA certificates utilized for server TLS verification</td>
-  </tr>
-  <tr>
-    <td>certFile</td>
-    <td>Flag to hold the client cert file path</td>
-    <td>Optional</td>
-    <td><code>string</code></td>
-    <td>The <code>certFile</code> holds the file path of the client certificates utilized for TLS verification</td>
-  </tr>
-  <tr>
-    <td>keyFile</td>
-    <td>Flag to hold the client key file path</td>
-    <td>Optional</td>
-    <td><code>string</code></td>
-    <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification</td>
-  </tr>
-  <tr>
-    <td>insecureSkipVerify</td>
-    <td>Flag to skip the tls certificates checks</td>
-    <td>Optional</td>
-    <td><code>boolean</code></td>
-    <td>The <code>insecureSkipVerify</code> skip the tls certificates checks</td>
-  </tr>
-  <tr>
-    <td>serverName</td>
-    <td>Flag to hold the server name</td>
-    <td>Optional</td>
-    <td><code>string</code></td>
-    <td>The <code>serverName</code> name of the server</td>
-  </tr>
-</table>
+4. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
 
-#### Run properties
+5. Under Prometheus connector select connector
 
-<table>
-  <tr>
-   <td><strong>Field</strong> </td>
-   <td><strong>Description</strong> </td>
-   <td><strong>Type</strong> </td>
-   <td><strong>Range</strong> </td>
-   <td><strong>Notes</strong> </td>
-  </tr>
-  <tr>
-   <td>probeTimeout </td>
-   <td>Flag to hold the timeout of the probe </td>
-   <td>Mandatory </td>
-   <td>N/A <code>type: string</code> </td>
-   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data </td>
-  </tr>
-  <tr>
-   <td>attempt </td>
-   <td>Flag to hold the attempt of the probe </td>
-   <td>Mandatory </td>
-   <td>N/A <code>type: integer</code> </td>
-   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed. </td>
-  </tr>
-  <tr>
-   <td>interval </td>
-   <td>Flag to hold the interval of the probe </td>
-   <td>Mandatory </td>
-   <td>N/A <code>type: string</code> </td>
-   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries </td>
-  </tr>
-  <tr>
-   <td>probePollingInterval </td>
-   <td>Flag to hold the polling interval for the probes (applicable for all modes) </td>
-   <td>Optional </td>
-   <td>N/A <code>type: string</code> </td>
-   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration </td>
-  </tr>
-  <tr>
-   <td>initialDelaySeconds </td>
-   <td>Flag to hold the initial delay interval for the probes </td>
-   <td>Optional </td>
-   <td>N/A <code>type: integer</code> </td>
-   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes. </td>
-  </tr>
-  <tr>
-   <td>stopOnFailure </td>
-   <td>Flags to hold the stop or continue the experiment on probe failure </td>
-   <td>Optional </td>
-   <td>N/A <code>type: boolean</code> </td>
-   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails </td>
-  </tr>
-</table>
+6. In Connector settings, you can either choose an existing connector or click **New Connector**
 
-## Definition
+    ![Create Prometheus Connector](./static/prometheus-probe/prometheus-connector.png)
 
-```yaml
-probe:
-  - name: "check-probe-success"
-    type: "promProbe"
-    promProbe/inputs:
-      endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
-      query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
-      comparator:
-        criteria: ">" #supports >=,<=,>,<,==,!= comparison
-        value: "0"
-      auth:
-        credentials: "base64(<username:password>)"
-      tlsConfig:
-        insecureSkipVerify: true
-    mode: "Edge"
-    runProperties:
-      probeTimeout: 5s
-      interval: 2s
-      attempt: 1
-```
+7. Provide the credentials of the Prometheus
 
+    ![Prometheus Credentials](./static/prometheus-probe/prometheus-credentials.png)
 
-#### Prometheus query (simple query)
+8. Select the delegate and verify the connection and click on **Finish**
 
-This section holds the PromQL query used to extract the desired Prometheus metrics by executing it on the specified Prometheus endpoint. You can input the Prometheus query in the 'query' field, and this can be initiated by configuring the `.promProbe/inputs.query` field.
+    ![Delegate](./static/prometheus-probe/delegate.png)
 
-Use the following example to tune this:
+9. Now connector is created and selected, click on **Configure Details**
 
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-delete
-    spec:
-      probe:
-      - name: "check-probe-success"
-        type: "promProbe"
-        promProbe/inputs:
-          # endpoint for the promethus service
-          endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
-          # promql query, which should be executed
-          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
-          comparator:
-            # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
-            criteria: ">" 
-            # expected value, which should follow the specified criteria
-            value: "0"
-        mode: "Edge"
-        runProperties:
-          probeTimeout: 5s
-          interval: 2s
-          attempt: 1
-```
+    ![Configure Details](./static/prometheus-probe/configure-details.png)
 
-#### Prometheus query (complex query)
+10. Under Probe Properties pass the value of required parameters
+   * **TLS Config**:
+     * It offers a mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key to perform the validation. Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
+     * For more details, refer to [Prometheus TLS configuration documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config).
+     * **CA File**: The `caFile` holds the file path of the CA certificates utilized for server TLS verification
+     * **Cert File**: The `certFile` holds the file path of the client certificates utilized for TLS verification
+     * **Key File**: The `keyFile` holds the file path of the client key utilized for TLS verification
+     * **Insecure Skip Verify**: The `insecureSkipVerify` setting skips the TLS certificates checks
+   * **Query**:
+     * The query contains the PromQL query to extract out the desired Prometheus metrics via running it on the given Prometheus endpoint
+     * Please Note that all the double quotes need to be parsed in the provided query.
+     * **Example**: `avg_over_time(probe_duration_seconds{job=\"prometheus-blackbox-exporter\",instance=\"frontend.boutique.svc.cluster.local:80\"}[60s:1s])*1000`
+     * For more details, refer to [Prometheus PromQL documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/)
 
-For intricate queries that extend across multiple lines, you can use the 'queryPath' attribute to specify the path to a file containing the query. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `promProbe/inputs.queryPath` field.
+    ![Prometheus Query](./static/prometheus-probe/prometheus-query.png)
 
-:::tip
-The fields `queryPath` and `query` are mutually exclusive. If `query` is specified, it is used for the query; otherwise, `queryPath` is used.
-:::
+10. Provide the comparison criteria under Prometheus Data Comparison
 
-Use the following example to tune this:
+    ![Prometheus Data Comparison](./static/prometheus-probe/prometheus-data-comparison.png)
 
-```yaml
-# contains the prom probe which execute the query and match for the expected criteria
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-delete
-    spec:
-      probe:
-      - name: "check-probe-success"
-        type: "promProbe"
-        promProbe/inputs:
-          # endpoint for the promethus service
-          endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
-          # the configMap should be mounted to the experiment which contains promql query
-          # use the mounted path here
-          queryPath: "/etc/config/prometheus-query"
-          comparator:
-            # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
-            criteria: ">" 
-            # expected value, which should follow the specified criteria
-            value: "0"
-        mode: "Edge"
-        runProperties:
-          probeTimeout: 5s
-          interval: 2s
-          attempt: 1
-```
+11. Provide the Run Properties
 
-#### Authentication
+    ![Run Properties](./static/prometheus-probe/run-properties.png)
 
-This establishes a fundamental authentication mechanism for the Prometheus server. The "username:password" encoded in `base64` or `bearer` token, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
-
-:::tip
-The `credentials` and `credentialsFile` are mutually exclusive, that is, these fields can't be used simultaneously.
-:::
-
-Use the following example to tune this:
-
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-delete
-    spec:
-      probe:
-      - name: "check-probe-success"
-        type: "promProbe"
-        promProbe/inputs:
-          # endpoint for the promethus service
-          endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
-          # promql query, which should be executed
-          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
-          comparator:
-            # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparison
-            criteria: ">"
-            # expected value, which should follow the specified criteria
-            value: "0"
-          auth:
-            type: Basic
-            credentials: "base64(<username:password>)"
-        mode: "Edge"
-        runProperties:
-          probeTimeout: 5s
-          interval: 2s
-          attempt: 1
-```
-
-#### TLS with custom certificates
-
-It offers a mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key to perform the validation.
-
-:::tip
-The CA certificate file must be incorporated into the experiment pod either as a configMap or a secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
-:::
-
-Use the following example to tune this:
-
-```yaml
-# contains the prom probe which execute the query and match for the expected criteria
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-delete
-    spec:
-      components:
-        secrets:
-          - name: ca-cert
-            mountPath: /etc/config
-      probe:
-      - name: "check-probe-success"
-        type: "promProbe"
-        promProbe/inputs:
-          # endpoint for the promethus service
-          endpoint: "https://prometheus-server.harness.io"
-          # promql query, which should be executed
-          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
-          comparator:
-            # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
-            criteria: ">" 
-            # expected value, which should follow the specified criteria
-            value: "0"
-          tlsConfig:
-            caFile: "/etc/config/ca.crt"
-        mode: "Edge"
-        runProperties:
-          probeTimeout: 5s
-          interval: 2s
-          attempt: 1
-```
-
-#### TLS skip certificate verification
-
-You can bypass the TLS certificate checks by enabling the `insecureSkipVerify` option.
-
-Use the following example to tune this:
-
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-delete
-    spec:
-      probe:
-      - name: "check-probe-success"
-        type: "promProbe"
-        promProbe/inputs:
-          # endpoint for the promethus service
-          endpoint: "https://prometheus-server.harness.io"
-          # promql query, which should be executed
-          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
-          comparator:
-            # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
-            criteria: ">"
-            # expected value, which should follow the specified criteria
-            value: "0"
-          tlsConfig:
-            insecureSkipVerify: true
-        mode: "Edge"
-        runProperties:
-          probeTimeout: 5s
-          interval: 2s
-          attempt: 1
-```
-
----
-
-## Configuration
-
-1. Go to **Chaos Engineering** module and select **Resilience Probes**. Select **New Probe**.
-
-    ![navigate to module](./static/configure-prom-probe/navigate-1.png)
-
-2. Select infrastructure type as **Kubernetes** and chaos probe as **Prometheus**.
-
-    ![prometheus probe](./static/configure-prom-probe/select-prom.png)
-
-3. Provide the name, and click **Configure Details**.
-
-    ![configure details](./static/configure-prom-probe/name-1.png)
-
-4. Based on your application's requirements, provide values for the following parameters. 
-
-- **Prometheus Endpoint**: It is the target HTTP/HTTPS endpoint that the probe will send requests to.
-
-    ![](./static/configure-prom-probe/details-2.png)
-
-5. **Authorization** section has the following fields:
-
-    - **Type**: Type of HTTP request to be performed. Supports `GET` and `POST`.
-    - **Credentials**: Authentication credentials (username and password) required to access the target URL/endpoint. This field is mutually exclusive with **Credentials file** field.
-    - **Credentials file**: Path of the file that contains authentication credentials to access the HTTP endpoint. This field is mutually exclusive with **Credentials** field.
-
-    See the Authorization section below for more information.
-
-        **TLS Config** has the following fields:
-
-            - **CA file**: Path of the file to validate the custom certificates for TLS of the target URL.
-            - **Cert file**: Path of the file to the client certificate required for mTLS.
-            - **Key file**: Path of the file to the client key required for mTLS.
-            - **Insecure Skip Verify**: If enabled, the probe bypasses the SSL/TLS certificate verification, allowing requests to proceed even if the certificate is invalid or self-signed.
-        
-    See the TLS section below for more information.
-
-    ![](./static/configure-prom-probe/auth-3.png)
-    ![](./static/configure-prom-probe/auth-3-1.png)
-
-
-6. Provide the **Prometheus Query** (**Query** or **Query Path** depending on your usage).
-
-    - **Query**: The PromQL query used with the probe to fetch the desired Prometheus metrics. Ensure that the strings inside the query are enclosed within backslash ("/"). This field is mutually exclusive with **Query Path** field.
-    - **Query Path**: Path of the file where PromQL query is present. This field is mutually exclusive with **Query** field.
-
-    See the Schema section below for more information. 
-
-        ![](./static/configure-prom-probe/query-4.png)
-
-7. Specify the data comparison fields, and click **Configure Properties**.
-
-    The data returned using the PromQL **Query** or **Query Path** is compared to the following fields:
-
-        - **Type**: Type of data compared with result of Prometheus query. Accepts only `float` data type.
-        - **Comparison Criteria**: The criteria (`>=`, `<=`, `==`, `<`, `>`, `!=`, and so on) based on which the **value** and the result of Prometheus query are compared.
-        - **Value**: The value with which the result of Prometheus query is compared
-        
-        See the Comparator section below for more information.
-
-            ![](./static/configure-prom-probe/comparison-5.png)
-
-
-8. Specify general probe properties such as timeout, interval, and so on. Click **Create Probe**.
-
-- **Timeout**: Time limit for the probe to execute the check and return the expected output.
-- **Interval**: Duration for which the probe waits between subsequent attempts.
-- **Attempt**: Number of times a check is executed upon failure in the previous attempts before declaring the probe status as `FAILED`.
-- **Polling Interval**: Time interval for which `continuous` and `onchaos` probe modes should wait after each iteration.
-- **Intitial Delay**: Duration to wait before the probe begins execution.
-- **Verbosity**: Level of detail to include in the logs generated during the execution of the probe. Choose between `info` (essential logs, probe status are printed) and `debug` (in-depth logs, timestamps, and execution logs are printed) mode.
-- **Stop on Failure (Optional)**: Enable it to continue or disable it to stop the experiment execution after the probe fails. Disabled by default.
-
-See the Run Properties section below for more information.
-
-    ![](./static/configure-prom-probe/properties-6.png)
+12. Then click on **Create Probe**
