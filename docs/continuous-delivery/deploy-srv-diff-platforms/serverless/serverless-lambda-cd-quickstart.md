@@ -462,7 +462,9 @@ artifact:
 </details>
 
 :::note
-By default, the values will be resolved for the manifest in each serverless step. If you don't want it to get resolved in each step you can use the environment variable `PLUGIN_RESOLVE_WITH_VALUES_MANIFEST`  and set it to `false`.
+The `values.yaml` approach above applies to **containerized (V2) steps only**. For non-containerized (V1) steps, Harness resolves expressions directly in the manifest — a separate `values.yaml` file is not required.
+
+The `PLUGIN_RESOLVE_WITH_VALUES_MANIFEST` environment variable referenced in earlier versions of this documentation is no longer applicable for containerized steps. The V1/V2 step type determines how expressions are resolved, as described above.
 :::
 
 ## Add the artifact
@@ -1150,9 +1152,11 @@ Now that you're done the quickstart, here's some more information to help you ex
 
 ### Serverless manifest supports Harness secrets and expressions
 
-The `serverless.yaml` file you use with Harness can use Harness secret and built-in expressions.
+Harness supports injecting secrets and expressions into your `serverless.yaml`, but how this works depends on whether you are using **non-containerized (V1)** or **containerized (V2)** steps. Using the wrong approach is a common source of confusion.
 
-Expression support lets you take advantage of runtime inputs and input sets in your `serverless.yaml` files. For example, you could use a Stage variable as a runtime input to change plugins with each stage deployment:
+#### Non-containerized steps: expressions work directly in the manifest
+
+For non-containerized deployments, Harness resolves built-in expressions directly inside `serverless.yaml` on the manager side before passing the file to the Serverless CLI. Expressions like `<+artifact.path>`, `<+artifact.image>`, and `<+service.name>` all work as-is:
 
 ```yaml
 service: <+service.name>
@@ -1169,12 +1173,56 @@ functions:
           path: /tello
           method: get
 package:
-  artifact: <+artifact.path>          
+  artifact: <+artifact.path>
 plugins:
   - serverless-deployment-bucket@latest
 ```
 
-See:
+#### Containerized steps: expressions require a values file
+
+:::warning Harness expressions do not work directly in the manifest for containerized steps
+
+If you place Harness expressions such as `<+artifact.path>` directly inside a `serverless.yaml` used with containerized steps, **they will not be resolved**. The Serverless CLI receives the literal string (e.g. `<+artifact.path>`), attempts to locate a file at that path, and fails with a file-not-found error. Nothing in the error message indicates that an unresolved expression is the root cause.
+
+Containerized steps always use Go templating with a `values.yaml` file. Harness expressions placed directly in the manifest will not be resolved.
+
+:::
+
+For containerized deployments, use **Go template syntax** in `serverless.yaml` and supply a separate `values.yaml` file — the same pattern used by Kubernetes manifests in Harness. Harness resolves the `values.yaml` first (where Harness expressions work freely), then substitutes those values into the manifest before deployment.
+
+**Step 1:** In `serverless.yaml`, reference values using Go template syntax:
+
+```yaml
+service: {{.Values.serviceName}}
+frameworkVersion: "2 || 3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /tello
+          method: get
+package:
+  artifact: {{.Values.artifact.path}}
+plugins:
+  - serverless-deployment-bucket@latest
+```
+
+**Step 2:** Add a `values.yaml` file in the same manifest folder. Harness expressions work here:
+
+```yaml
+serviceName: <+service.name>
+artifact:
+  path: <+artifact.path>
+```
+
+To add the values file in Harness, follow the same steps used to add the manifest (see [Add the manifest](#add-the-manifest)), but at step 3 select **Values YAML** instead of **Serverless Lambda Manifest**.
+
+For more on Harness expressions and secrets, see:
 
 - [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
 - [Built-in Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables)
