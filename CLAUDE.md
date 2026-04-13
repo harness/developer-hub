@@ -112,6 +112,48 @@ Use bold labels followed by colons:
 
 ---
 
+## Voice and Tone
+
+- Write in **present tense**, **active voice**. Speak to the developer using "you", not "the user".
+- Do **not** use "please". Be authoritative but approachable.
+- Keep sentences short. **No gerunds** anywhere — use the imperative form instead (`Install X`, not `Installing X`). This applies to headings, body text, steps, and list items.
+- **No em dashes** (`—`). Use a comma, semicolon, or rewrite the sentence instead.
+
+---
+
+## Link Phrasing — "Go to X to do Y"
+
+Always use **"Go to [link] to [verb phrase]"**. Never use "see", "refer to", "to learn more about", "to find out more", or "for more information".
+
+- ❌ `See [RBAC in Harness](/docs/...) for the permissions hierarchy.`
+- ❌ `To find out more, refer to the [permissions reference](/docs/...).`
+- ✅ `Go to [RBAC in Harness](/docs/...) to understand the permissions hierarchy.`
+- ✅ `Go to the [permissions reference](/docs/...) to review required permissions.`
+
+Use meaningful link text. Never write `[here](url)` or `[this doc](url)`.
+
+---
+
+## Prerequisites Section Formatting
+
+Keep Prerequisites bullets short and scannable — no paragraph-length bullets.
+
+- Bold only the **label** (2–4 words), not the entire sentence.
+- Follow each label with a brief description and a relevant link using "Go to X to Y" phrasing.
+- Detailed logic or configuration steps belong in the page body, not in Prerequisites.
+
+❌ Too text-heavy:
+```
+- **Harness project access:** You need permission to open the failing pipeline execution and view logs. At minimum, **View** on [Pipelines](...) is required; **Execute** is needed if you will re-run the pipeline to verify a fix. An administrator assigns these via [RBAC in Harness](...) and [Manage roles](...).
+```
+
+✅ Concise:
+```
+- **Harness project access:** View or Execute permissions on the pipeline. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
+```
+
+---
+
 ## Doc Linking
 
 - Use **site-relative paths**: `/docs/infra-as-code-management/get-started`

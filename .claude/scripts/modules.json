@@ -1,0 +1,72 @@
+[
+  {
+    "code": "ci",
+    "base_url": "/docs/continuous-integration",
+    "folder": "docs/continuous-integration"
+  },
+  {
+    "code": "cd",
+    "base_url": "/docs/continuous-delivery",
+    "folder": "docs/continuous-delivery"
+  },
+  {
+    "code": "ccm",
+    "base_url": "/docs/cloud-cost-management",
+    "folder": "docs/cloud-cost-management"
+  },
+  {
+    "code": "iacm",
+    "base_url": "/docs/infrastructure-as-code-management",
+    "folder": "docs/infra-as-code-management"
+  },
+  {
+    "code": "rt",
+    "base_url": "/docs/resilience-testing",
+    "folder": "docs/resilience-testing"
+  },
+  {
+    "code": "sto",
+    "base_url": "/docs/security-testing-orchestration",
+    "folder": "docs/security-testing-orchestration"
+  },
+  {
+    "code": "platform",
+    "base_url": "/docs/platform",
+    "folder": "docs/platform"
+  },
+  {
+    "code": "sei",
+    "base_url": "/docs/software-engineering-insights",
+    "folder": "docs/software-engineering-insights"
+  },
+  {
+    "code": "idp",
+    "base_url": "/docs/internal-developer-portal",
+    "folder": "docs/internal-developer-portal"
+  },
+  {
+    "code": "scs",
+    "base_url": "/docs/software-supply-chain-assurance",
+    "folder": "docs/software-supply-chain-assurance"
+  }, 
+  {
+    "code": "fme",
+    "base_url": "/docs/feature-management-experimentation",
+    "folder": "docs/feature-management-experimentation"
+  },
+  {
+    "code": "hsf",
+    "base_url": "/docs/harness-solutions-factory",
+    "folder": "docs/harness-solutions-factory"
+  },
+  {
+    "code": "dbdevops",
+    "base_url": "/docs/database-devops",
+    "folder": "docs/database-devops"
+  },
+  {
+    "code": "ar",
+    "base_url": "/docs/artifact-registry",
+    "folder": "docs/artifact-registry"
+  }
+]

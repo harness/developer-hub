@@ -8,42 +8,52 @@ For a full audit that also crawls and assesses every sibling page in the section
 ## Usage
 
 ```
-/doc-audit [url | module-abbreviation]
+/doc-audit [file-path | url | module-abbreviation] [--verify pre | --verify post]
 ```
 
 **Examples:**
-- `/doc-audit iacm` — find the oldest page in the IACM module and audit it
-- `/doc-audit ccm` — find the oldest page in Cloud Cost Management and audit it
-- `/doc-audit https://developer.harness.io/docs/infrastructure-as-code-management/workspaces/cli-integration` — audit a specific page directly
+- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md` — audit a local file, no walkthrough
+- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md --verify` — rewrite then walk through (defaults to post)
+- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md --verify pre` — walk through as-is, self-correct if < 80
+- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md --verify post` — rewrite first, then walk through
+- `/doc-audit iacm` — score the oldest IACM page, no live walkthrough
+- `/doc-audit https://developer.harness.io/docs/infrastructure-as-code-management/workspaces/cli-integration --verify post`
 
 ## Arguments
 
 `$ARGUMENTS`
 
-If a **module abbreviation** is provided, find the oldest (least recently updated) `.md` file in
-that module's docs folder using `git log`, then audit it.
+Parse two things from the arguments:
 
-If a **direct URL** is provided (`https://developer.harness.io/docs/...`), audit that page directly.
+**Target** (required — one of):
+- A repo-relative file path (`docs/.../*.md`) → audit that file directly (primary approach; works for new and unpublished docs)
+- A `https://developer.harness.io/docs/...` URL → derive the local file path, then audit locally; use the URL for optional browser rendering
+- A module abbreviation (e.g. `iacm`, `ccm`) → find and audit the oldest page in that module
+- Nothing → ask the user before proceeding
 
-If **nothing** is provided, ask the user for a URL or module abbreviation before proceeding.
+**Verify flag** (optional):
+- `--verify pre` → after scoring, run the live qa.harness.io walkthrough on the current file; self-correct if score < 80
+- `--verify post` → rewrite the file to match the doc-structure-template first, then walk through and self-correct if score < 80
+- `--verify` (no mode) → default to `post`
+- Omitted → no live walkthrough; report and rewrite prompt only
+
+`--verify` is only valid when the target is a file path or URL. If the target is a module abbreviation, reject the combination and ask the user to specify a file path or URL instead.
+
+If `--verify` is present, **warn the user before starting:**
+> "The `--verify` flag runs a live walkthrough on qa.harness.io. It may pause and ask you to log in — stay at your desk during this step."
+
+Then read `.claude/scripts/verify-step.md` before executing the verification phase and follow its instructions exactly.
 
 ---
 
 ## Module map
 
-| Abbreviation | Live URL base | Repo folder |
-|---|---|---|
-| `ci` | /docs/continuous-integration | docs/continuous-integration |
-| `cd` | /docs/continuous-delivery | docs/continuous-delivery |
-| `ccm` | /docs/cloud-cost-management | docs/cloud-cost-management |
-| `iacm` | /docs/infrastructure-as-code-management | docs/infra-as-code-management |
-| `chaos` | /docs/resilience-testing | docs/resilience-testing |
-| `sto` | /docs/security-testing-orchestration | docs/security-testing-orchestration |
-| `platform` | /docs/platform | docs/platform |
-| `sei` | /docs/software-engineering-insights | docs/software-engineering-insights |
-| `ssca` | /docs/software-supply-chain-assurance | docs/software-supply-chain-assurance |
-| `idp` | /docs/internal-developer-portal | docs/internal-developer-portal |
-| `sca` | /docs/software-supply-chain-assurance | docs/software-supply-chain-assurance |
+The authoritative module list lives in `.claude/scripts/modules.json`. Read it when resolving a
+module abbreviation:
+
+```bash
+python .claude/scripts/find-oldest-docs.py --list-modules
+```
 
 **Excluded — never audit:**
 `ff` (feature-flags), `srm` (service-reliability-management), `cet` (continuous-error-tracking), release-notes.
@@ -52,18 +62,37 @@ If **nothing** is provided, ask the user for a URL or module abbreviation before
 
 ## Step 1 — Resolve the target page
 
-**Module abbreviation:**
+**A — Local file path** (`docs/.../*.md`) — primary approach:
+Read the file directly from the repo. Derive the live URL from the module map if the doc is
+published (strip `docs/<REPO-FOLDER>/` and `.md`, prepend the Base URL). If the doc is new and
+has no live URL yet, note "New/unpublished — no live URL" in the report and skip browser steps.
+
+Get the last git commit date:
+```bash
+python .claude/scripts/find-oldest-docs.py --git-date <file-path>
+```
+
+Tell the user: **"Auditing [FILE-PATH] — last updated [GIT-DATE]. Starting audit…"**
+
+**B — Direct URL** (`https://developer.harness.io/docs/...`):
+Derive the local file path by reversing the module map:
+- Match the URL prefix to a Base URL entry → get the Repo folder
+- Strip the Base URL prefix from the URL path, append `.md`, prepend `docs/<REPO-FOLDER>/`
+- Example: `https://developer.harness.io/docs/infrastructure-as-code-management/workspaces/cli-integration`
+  → `docs/infra-as-code-management/workspaces/cli-integration.md`
+
+Read the local file. Also use the URL for browser rendering where helpful.
+
+Tell the user: **"Auditing [FILE-PATH] (from URL). Starting audit…"**
+
+**C — Module abbreviation:**
 ```bash
 python .claude/scripts/find-oldest-docs.py docs/<MODULE-FOLDER> --top 1
 ```
-Take the single result. Convert the file path to a URL:
-- Strip `docs/<REPO-FOLDER>/` and `.md`
-- Prepend the module's Base URL from the table above
-- Example: `docs/infra-as-code-management/workspaces/cli-integration.md` → `https://developer.harness.io/docs/infrastructure-as-code-management/workspaces/cli-integration`
+Take the single result file path. Derive the live URL (strip `docs/<REPO-FOLDER>/` and `.md`,
+prepend the Base URL). Treat as Case A going forward.
 
-Tell the user: **"Oldest page in [MODULE]: [URL] — last updated [DATE]. Starting audit…"**
-
-**Direct URL:** use it as-is.
+Tell the user: **"Oldest page in [MODULE]: [FILE-PATH] — last updated [DATE]. Starting audit…"**
 
 ---
 
@@ -79,7 +108,13 @@ Use this as the structural benchmark for the Editorial score.
 
 ## Step 3 — Read and score the page
 
-Use Claude in Chrome to navigate to the URL and read the full page.
+Read the local file directly:
+```bash
+cat <file-path>
+```
+
+If a live URL exists, optionally use Claude in Chrome to view the rendered page for context —
+but base all scoring and edits on the local file, not the rendered version.
 
 Score across three dimensions (each starts at 100):
 
@@ -94,9 +129,70 @@ Score across three dimensions (each starts at 100):
 
 ---
 
-## Step 4 — Write the audit report
+## Step 4 — Information architecture review
 
-Save to `.claude/skills/doc-audit/audits/[slug]-audit.md`. The folder already exists.
+This step is **advisory only** — findings go into a separate IA section in the report and do
+not affect the Accuracy/Completion/Editorial score. Some suggestions may intentionally flex the
+standard template depending on doc type (tutorial vs. feature reference vs. conceptual). Flag
+opportunities; do not auto-apply them.
+
+### 4a — Page length
+
+Count the approximate word count or line count of the file.
+
+- If the page exceeds ~800 lines or feels like it requires multiple reads to understand end-to-end,
+  flag it as a candidate for splitting or restructuring.
+- Consider whether a long instructional page could be broken into a parent overview + child pages
+  surfaced via the **DynamicMarkdownSelector (DMS)** — see 4c below.
+- Reference: the ECS deployment tutorial is a known example of a page that is too long for a
+  single read; use it as a benchmark for "this needs restructuring".
+
+### 4b — Platform doc duplication
+
+Scan the page for content that restates or paraphrases Harness Platform documentation —
+particularly around RBAC, delegates, variables, expressions, secrets, pipelines, connectors,
+or service accounts.
+
+- If a section largely duplicates a platform doc, flag it: suggest replacing the section with
+  1–2 sentences of context + a "Go to [platform doc] to [do Y]" link.
+- If an entire page duplicates a platform topic (e.g. re-explaining RBAC from scratch), flag
+  it as a candidate for removal with a redirect.
+
+### 4c — Consolidation: DMS vs tabs vs synced tabs
+
+Assess whether the page, or its siblings (if visible from the section map), could benefit from
+consolidation using one of the following Docusaurus components:
+
+**DynamicMarkdownSelector (DMS)**
+- Use when multiple full-content child pages exist and a parent "hub" page would improve
+  discoverability and reduce navigation steps.
+- Not limited to 4–5 options — uses grid tiles, suited to full context pieces.
+- Reference pattern: `docs/artifact-registry/get-started/quickstart.md` pulls all child
+  get-started pages into one parent via DMS.
+- Only recommend DMS when the child pages are genuinely self-contained full guides, not when
+  they are short parallel sections.
+
+**Synced tabs**
+- Use when the same concept or procedure applies across multiple environments, platforms,
+  or providers and the user would likely only need one at a time.
+- Example: configuring a connector for AWS / GCP / Azure — the same steps but platform-specific
+  values. Syncing tabs means selecting "AWS" on one page auto-selects it elsewhere.
+- Reference: https://docusaurus.io/docs/markdown-features/tabs#syncing-tab-choices
+
+**Unsynced tabs**
+- Use when several related but independent concepts can be shown side-by-side on the same page
+  to reduce vertical scroll and improve scannability.
+- Best for shorter sections (2–5 options). If options are longer or more than ~5, prefer DMS.
+- Tabs increase engagement by encouraging interaction — a useful secondary benefit but not a
+  primary goal.
+
+If none of the above apply, note "No consolidation opportunity identified."
+
+---
+
+## Step 6 — Write the audit report
+
+Save to `.claude/skills/doc-audit/audits/[slug]-audit-YYYYMMDD.md` (e.g. `auth-403-errors-audit-20260410.md`). Use today's date. The folder already exists.
 
 ```markdown
 # Audit: [Page Title]
@@ -123,6 +219,24 @@ Save to `.claude/skills/doc-audit/audits/[slug]-audit.md`. The folder already ex
 
 ## Redirect changes required
 
+## Information architecture
+
+> These are advisory recommendations only. They do not affect the quality score.
+> Apply them only if they genuinely improve the user experience for this doc type.
+
+**Page length:** [short / medium / long — flag if >800 lines or clearly too long for one read]
+
+**Platform doc duplication:**
+- [Section or concept that duplicates a platform doc — suggest replace with link, or "None identified"]
+
+**Consolidation opportunities:**
+| Opportunity | Component | Rationale |
+|---|---|---|
+| [description] | DMS / Synced tabs / Unsynced tabs / None | [why] |
+
+**DMS candidate:** [Yes — child pages: X, Y, Z / No]
+**Tab candidate:** [Yes — options: X, Y, Z / No]
+
 ## JIRA ticket description
 **Summary:**
 **Description:** [HIGH/MEDIUM/LOW issues]
@@ -146,7 +260,7 @@ identified in an audit. Before making any changes, read these files in order:
 
 Page to rewrite: [repo-relative file path]
 Live URL: [full URL]
-Audit report: .claude/skills/doc-audit/audits/[slug]-audit.md
+Audit report: .claude/skills/doc-audit/audits/[slug]-audit-YYYYMMDD.md
 
 ---
 ACCURACY FIXES
@@ -184,11 +298,15 @@ The rewritten page must satisfy all of the following before you consider it done
 
 ---
 
-## Step 5 — Report back
+## Step 7 — Report back
 
 1. Score + PASS/FAIL
 2. Top 3 most impactful issues
-3. Link: `computer://[full path to audit file]`
-4. JIRA ticket description pasted inline, ready to copy
+3. If the file was rewritten, remind the user to review the diff before committing:
+   ```
+   git diff docs/path/to/file.md
+   ```
+4. Link: `computer://[full path to audit file]`
+5. JIRA ticket description pasted inline, ready to copy
 
 Do **not** write to any Google Sheet.

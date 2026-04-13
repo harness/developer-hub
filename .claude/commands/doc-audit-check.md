@@ -24,19 +24,12 @@ Expects a single module abbreviation. If none is provided, ask the user for one.
 
 ## Module map
 
-| Abbreviation | Live URL base | Repo folder |
-|---|---|---|
-| `ci` | /docs/continuous-integration | docs/continuous-integration |
-| `cd` | /docs/continuous-delivery | docs/continuous-delivery |
-| `ccm` | /docs/cloud-cost-management | docs/cloud-cost-management |
-| `iacm` | /docs/infrastructure-as-code-management | docs/infra-as-code-management |
-| `chaos` | /docs/resilience-testing | docs/resilience-testing |
-| `sto` | /docs/security-testing-orchestration | docs/security-testing-orchestration |
-| `platform` | /docs/platform | docs/platform |
-| `sei` | /docs/software-engineering-insights | docs/software-engineering-insights |
-| `ssca` | /docs/software-supply-chain-assurance | docs/software-supply-chain-assurance |
-| `idp` | /docs/internal-developer-portal | docs/internal-developer-portal |
-| `sca` | /docs/software-supply-chain-assurance | docs/software-supply-chain-assurance |
+The authoritative module list lives in `.claude/scripts/modules.json`. Read it when resolving a
+module abbreviation:
+
+```bash
+python .claude/scripts/find-oldest-docs.py --list-modules
+```
 
 **Excluded — refuse and ask for another:**
 `ff`, `srm`, `cet`, release-notes.
@@ -117,9 +110,14 @@ making the whole section a candidate for restructure."]
 
 ## Quick commands
 
-To act on these results:
-- `/doc-section-audit [url-of-#1]` — full audit of page #1 and its section
-- `/doc-audit [url-of-#1]` — page-only audit of #1
+To act on these results (use the repo-relative file path — works for new docs too):
+- `/doc-section-audit [file-path-of-#1]` — full audit of page #1 and its section
+- `/doc-audit [file-path-of-#1]` — page-only audit of #1
 ```
+
+Save the full output to `.claude/skills/doc-audit-check/audits/[MODULE]-check-YYYYMMDD.md`
+(e.g. `iacm-check-20260410.md`). The folder already exists.
+
+Then respond with a brief summary and a `computer://` link to the saved file.
 
 Keep the output concise — the goal is a quick read that makes it obvious where to start.

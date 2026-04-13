@@ -1,0 +1,163 @@
+---
+description: Writing style, voice, tone, and link conventions for Harness Developer Hub documentation. Apply these rules when writing or rewriting any doc page.
+globs:
+  - "docs/**/*.md"
+  - "docs/**/*.mdx"
+alwaysApply: false
+---
+
+# HDH Writing Style — Voice, Tone, and Conventions
+
+These rules apply to all documentation in the `docs/` directory. Follow them when writing new pages or rewriting existing ones.
+
+---
+
+## Voice and tone
+
+Write in a casual, conversational tone. Keep sentences short and in the present tense.
+
+Speak **to** the developer, not **at** them. Use "you", not "the user" or "users".
+
+- ❌ The user can run Docker-in-Docker in a Background step.
+- ✅ You can run Docker-in-Docker in a Background step.
+
+Do **not** use "please". Be authoritative but approachable.
+
+- ❌ Please try running the pipeline again.
+- ✅ Run the pipeline again.
+
+Write in **present tense**, **active voice**.
+
+- ❌ You will need to install a delegate in your Kubernetes cluster.
+- ✅ Install a delegate in your Kubernetes cluster.
+- ❌ The delegate will be added to the Delegates list.
+- ✅ The delegate is added to the Delegates list.
+
+---
+
+## Link phrasing — "Go to X to do Y"
+
+Always use **"Go to [link] to [verb phrase]"**. Never use "see", "refer to", "to learn more about", "to find out more", or "for more information".
+
+- ❌ See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for the permissions hierarchy.
+- ❌ Refer to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference) for details.
+- ❌ To learn more about delegates, see the [delegate documentation](/docs/platform/delegates/get-started/overview).
+- ✅ Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to understand the permissions hierarchy.
+- ✅ Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference) to review required permissions.
+- ✅ Go to [delegate overview](/docs/platform/delegates/get-started/overview) to install and configure a delegate.
+
+Use meaningful link text. Never write `[here](url)`, `[this doc](url)`, or `[click here](url)`.
+
+- ❌ Go to [here](/docs/platform/role-based-access-control/rbac-in-harness) for details.
+- ✅ Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to manage permissions.
+
+---
+
+## Prerequisites section
+
+The **Prerequisites** section lists what a user needs before following the page's instructions. Keep it scannable and not text-heavy.
+
+**Formatting rules:**
+- Each prerequisite should be a short bullet starting with a bold label, followed by a brief description and a link where relevant.
+- The bold label itself should be concise (2–4 words). Don't bold entire sentences.
+- Avoid nesting explanatory paragraphs inside prerequisite bullets — if more detail is needed, link to it.
+- Each prerequisite that has a dedicated doc page should link to that page using "Go to [link] to …" phrasing.
+
+**Example:**
+
+❌ Too text-heavy and over-bolded:
+```
+- **Harness project access:** You need permission to open the failing pipeline execution and view logs. At minimum, **View** on [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines) is required; **Execute** is needed if you will re-run the pipeline to verify a fix. An administrator assigns these via [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+```
+
+✅ Concise and scannable:
+```
+- **Harness project access:** View or Execute permissions on the pipeline. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
+- **Connector access:** Access on any connector the pipeline uses at runtime. Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference#shared-resources) for details.
+```
+
+**What belongs in Prerequisites vs. the body:**
+- Prerequisites = things the user must have or know **before starting**.
+- Detailed configuration steps or nuanced permission logic belong in the body of the page, not in the Prerequisites list.
+
+---
+
+## No em dashes
+
+Do not use em dashes (`—`) anywhere in documentation. They read as informal or rushed and make sentences harder to scan.
+
+Instead, rewrite the sentence, use a comma, or use a semicolon.
+
+- ❌ The connector must be configured — otherwise the pipeline will fail.
+- ✅ Configure the connector before running the pipeline.
+- ✅ The connector must be configured; otherwise, the pipeline fails.
+
+- ❌ Harness RBAC — which controls who can do what — is configured at account, org, or project scope.
+- ✅ Harness RBAC controls who can do what. Configure it at account, org, or project scope.
+
+---
+
+## Lists
+
+Start each list with an introductory sentence. Do not start a list directly after a heading with no prose between them (unless the heading is itself a clear enough introduction).
+
+Use **bold labels followed by a colon** when items have a label and description:
+```
+- **Label:** Description.
+```
+
+Don't bold entire sentences or descriptions — only the label word(s).
+
+Use Oxford commas in inline lists:
+- ❌ You need a Harness account, a GitHub account and an IDE.
+- ✅ You need a Harness account, a GitHub account, and an IDE.
+
+---
+
+## No gerunds
+
+Do not use gerunds (–ing verb forms) anywhere in documentation: headings, body text, button labels, or link text.
+
+Use the base imperative form instead.
+
+| ❌ Avoid | ✅ Use |
+|---|---|
+| Installing the delegate | Install the delegate |
+| Configuring your pipeline | Configure your pipeline |
+| Running the script | Run the script |
+| Adding a connector | Add a connector |
+| Troubleshooting errors | Troubleshoot errors |
+
+This applies in all contexts — headings, numbered steps, bulleted lists, and inline prose.
+
+- ❌ Start by installing the delegate and then configuring your environment.
+- ✅ Install the delegate, then configure your environment.
+
+Exceptions: noun-phrase section titles where a gerund is the natural name of a concept, such as **Troubleshooting** (as a section header) or **Prerequisites**.
+
+---
+
+## Headings
+
+Use sentence case: capitalize the first word and proper nouns only.
+
+Use imperative verb phrases, not gerunds (see **No gerunds** above):
+- ❌ Installing the delegate
+- ✅ Install the delegate
+
+Don't include "Step N:", "How to", "Introduction to", or "Review:" in headings.
+
+Don't start the page body with a heading (like `## Introduction`). Write an intro paragraph first.
+
+---
+
+## Admonitions
+
+Use `:::tip` for small helpful hints that are not required reading.
+Use `:::warning` sparingly — only when something bad could happen if the user ignores it.
+Use `:::info My Title` for useful guidance that needs to stand out. Always give it a short, descriptive title instead of the default "Information".
+Do **not** use `:::note` (poor visual contrast; use `:::info` instead).
+
+Give admonitions a short, lowercase title that describes the content:
+- ❌ `:::tip account level access`
+- ✅ `:::tip Check account-level flags`
