@@ -93,6 +93,29 @@
       ]
     },
     {
+      "id": "sei.canvas.custom-dashboard",
+      "term": "custom dashboard",
+      "definition": "A user-created dashboard built in Canvas and published to the Insights page for viewing and sharing. It can be tailored to display the most important data for your use case, providing insights and facilitating decision-making.",
+      "slug": "custom-dashboard",
+      "module": "sei",
+      "category": "canvas",
+      "letter": "C",
+      "related": [
+        {
+          "term": "custom variable",
+          "slug": "custom-variable"
+        },
+        {
+          "term": "data source",
+          "slug": "data-source"
+        },
+        {
+          "term": "query variable",
+          "slug": "query-variable"
+        }
+      ]
+    },
+    {
       "id": "iacm.provider-registry.custom-provider",
       "term": "custom provider",
       "definition": "An OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.",
@@ -135,6 +158,52 @@
         {
           "term": "step",
           "slug": "step"
+        }
+      ]
+    },
+    {
+      "id": "sei.canvas.custom-variable",
+      "term": "custom variable",
+      "definition": "A custom variable is a user-defined parameter that can be used in Canvas to store and manipulate data. It can be used in queries, calculations, or as part of the dashboard configuration to create more complex and tailored visualizations.",
+      "slug": "custom-variable",
+      "module": "sei",
+      "category": "canvas",
+      "letter": "C",
+      "related": [
+        {
+          "term": "custom dashboard",
+          "slug": "custom-dashboard"
+        },
+        {
+          "term": "data source",
+          "slug": "data-source"
+        },
+        {
+          "term": "query variable",
+          "slug": "query-variable"
+        }
+      ]
+    },
+    {
+      "id": "sei.canvas.data-source",
+      "term": "data source",
+      "definition": "A data source is a connection to an external system or database that provides data for use in Canvas. It allows you to pull in data from various sources to create visualizations and insights in your custom dashboards.",
+      "slug": "data-source",
+      "module": "sei",
+      "category": "canvas",
+      "letter": "D",
+      "related": [
+        {
+          "term": "custom dashboard",
+          "slug": "custom-dashboard"
+        },
+        {
+          "term": "custom variable",
+          "slug": "custom-variable"
+        },
+        {
+          "term": "query variable",
+          "slug": "query-variable"
         }
       ]
     },
@@ -458,6 +527,29 @@
       ]
     },
     {
+      "id": "sei.canvas.query-variable",
+      "term": "query variable",
+      "definition": "A query variable is a dynamic parameter that can be used in Canvas HQL queries to filter or modify the data being retrieved. It allows you to create more flexible and interactive dashboards by enabling users to input values that affect the displayed data.",
+      "slug": "query-variable",
+      "module": "sei",
+      "category": "canvas",
+      "letter": "Q",
+      "related": [
+        {
+          "term": "custom dashboard",
+          "slug": "custom-dashboard"
+        },
+        {
+          "term": "custom variable",
+          "slug": "custom-variable"
+        },
+        {
+          "term": "data source",
+          "slug": "data-source"
+        }
+      ]
+    },
+    {
       "id": "fme.feature-management.segment",
       "term": "segment",
       "definition": "Segments are groups of users defined by specific attributes or behaviors. They allow you to target feature flags and experiments to specific subsets of your user base.",
@@ -583,6 +675,29 @@
       ]
     },
     {
+      "id": "sei.canvas.widget",
+      "term": "widget",
+      "definition": "A widget is a visual component that displays specific data or information on a Canvas dashboard. Widgets can be customized to show different types of data, such as charts, tables, or metrics, and can be arranged to create a personalized dashboard layout.",
+      "slug": "widget",
+      "module": "sei",
+      "category": "canvas",
+      "letter": "W",
+      "related": [
+        {
+          "term": "custom dashboard",
+          "slug": "custom-dashboard"
+        },
+        {
+          "term": "custom variable",
+          "slug": "custom-variable"
+        },
+        {
+          "term": "data source",
+          "slug": "data-source"
+        }
+      ]
+    },
+    {
       "id": "iacm.workspace",
       "term": "workspace",
       "definition": "A workspace is a one-to-one mapping of your infrastructure state. It is used to store and manage your infrastructure state in Harness IaCM.",
@@ -692,6 +807,29 @@
         ]
       },
       {
+        "id": "sei.canvas.custom-dashboard",
+        "term": "custom dashboard",
+        "definition": "A user-created dashboard built in Canvas and published to the Insights page for viewing and sharing. It can be tailored to display the most important data for your use case, providing insights and facilitating decision-making.",
+        "slug": "custom-dashboard",
+        "module": "sei",
+        "category": "canvas",
+        "letter": "C",
+        "related": [
+          {
+            "term": "custom variable",
+            "slug": "custom-variable"
+          },
+          {
+            "term": "data source",
+            "slug": "data-source"
+          },
+          {
+            "term": "query variable",
+            "slug": "query-variable"
+          }
+        ]
+      },
+      {
         "id": "iacm.provider-registry.custom-provider",
         "term": "custom provider",
         "definition": "An OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.",
@@ -736,9 +874,55 @@
             "slug": "step"
           }
         ]
+      },
+      {
+        "id": "sei.canvas.custom-variable",
+        "term": "custom variable",
+        "definition": "A custom variable is a user-defined parameter that can be used in Canvas to store and manipulate data. It can be used in queries, calculations, or as part of the dashboard configuration to create more complex and tailored visualizations.",
+        "slug": "custom-variable",
+        "module": "sei",
+        "category": "canvas",
+        "letter": "C",
+        "related": [
+          {
+            "term": "custom dashboard",
+            "slug": "custom-dashboard"
+          },
+          {
+            "term": "data source",
+            "slug": "data-source"
+          },
+          {
+            "term": "query variable",
+            "slug": "query-variable"
+          }
+        ]
       }
     ],
     "D": [
+      {
+        "id": "sei.canvas.data-source",
+        "term": "data source",
+        "definition": "A data source is a connection to an external system or database that provides data for use in Canvas. It allows you to pull in data from various sources to create visualizations and insights in your custom dashboards.",
+        "slug": "data-source",
+        "module": "sei",
+        "category": "canvas",
+        "letter": "D",
+        "related": [
+          {
+            "term": "custom dashboard",
+            "slug": "custom-dashboard"
+          },
+          {
+            "term": "custom variable",
+            "slug": "custom-variable"
+          },
+          {
+            "term": "query variable",
+            "slug": "query-variable"
+          }
+        ]
+      },
       {
         "id": "fme.warehouse-native.data-warehouse",
         "term": "data warehouse",
@@ -1073,6 +1257,31 @@
         ]
       }
     ],
+    "Q": [
+      {
+        "id": "sei.canvas.query-variable",
+        "term": "query variable",
+        "definition": "A query variable is a dynamic parameter that can be used in Canvas HQL queries to filter or modify the data being retrieved. It allows you to create more flexible and interactive dashboards by enabling users to input values that affect the displayed data.",
+        "slug": "query-variable",
+        "module": "sei",
+        "category": "canvas",
+        "letter": "Q",
+        "related": [
+          {
+            "term": "custom dashboard",
+            "slug": "custom-dashboard"
+          },
+          {
+            "term": "custom variable",
+            "slug": "custom-variable"
+          },
+          {
+            "term": "data source",
+            "slug": "data-source"
+          }
+        ]
+      }
+    ],
     "S": [
       {
         "id": "fme.feature-management.segment",
@@ -1200,6 +1409,29 @@
           {
             "term": "data warehouse",
             "slug": "data-warehouse"
+          }
+        ]
+      },
+      {
+        "id": "sei.canvas.widget",
+        "term": "widget",
+        "definition": "A widget is a visual component that displays specific data or information on a Canvas dashboard. Widgets can be customized to show different types of data, such as charts, tables, or metrics, and can be arranged to create a personalized dashboard layout.",
+        "slug": "widget",
+        "module": "sei",
+        "category": "canvas",
+        "letter": "W",
+        "related": [
+          {
+            "term": "custom dashboard",
+            "slug": "custom-dashboard"
+          },
+          {
+            "term": "custom variable",
+            "slug": "custom-variable"
+          },
+          {
+            "term": "data source",
+            "slug": "data-source"
           }
         ]
       },

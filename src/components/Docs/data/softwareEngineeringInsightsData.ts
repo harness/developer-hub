@@ -80,7 +80,7 @@ import { MODULES } from "@site/src/constants";
       },
 
       {
-        name: "Analytics & reporting",
+        name: "Insights",
         description:
           "",
         list: [
@@ -88,22 +88,22 @@ import { MODULES } from "@site/src/constants";
             title: "Measure Engineering Efficiency",
             module: MODULES.sei,
             description:
-              "Use the efficiency dashboard to measure the key DORA metrics for your team.",
-            link: "/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency",
+              "Use the efficiency dashboard to measure key DORA and sprint-based metrics for your team.",
+            link: "/docs/software-engineering-insights/harness-sei/insights/efficiency",
           },
           {
             title: "Measure Developer Productivity",
             module: MODULES.sei,
             description:
               "Use the productivity dashboard to measure the key productivity metrics for your developers.",
-            link: "/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity",
+            link: "/docs/software-engineering-insights/harness-sei/insights/productivity",
           },
           {
             title: "Measure Business Alignment",
             module: MODULES.sei,
             description:
               "Track and analyze how engineering initiatives contribute to business outcomes.",
-            link: "/docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment",
+            link: "/docs/software-engineering-insights/harness-sei/insights/business-alignment",
           },
         ],
       },

@@ -206,7 +206,7 @@ Define the scope of work items that belong to your team by including the project
 To include work items from a specific Jira project (like `DOCS`), use `Project Equals DOCS`. 
 
 :::tip
-Correct production incident classification ensures SEI 2.0 accurately calculates **Change Failure Rate** and [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment).
+Correct production incident classification ensures SEI 2.0 accurately calculates **Change Failure Rate** and [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/insights/business-alignment).
 :::
 
 ### Production Incidents
@@ -242,12 +242,12 @@ Business Alignment maps work items to investment categories defined in your [Bus
 For the Epic category, use `Issue Type Equals Epic`. For the Story category, use `Issue Type Equals Story`. Each category is evaluated independently based on its own filter set.
 
 :::tip
-Correct investment category configuration ensures SEI 2.0 accurately calculates [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment).
+Correct investment category configuration ensures SEI 2.0 accurately calculates [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/insights/business-alignment).
 :::
 
 ### Work Type
 
-Define how SEI 2.0 classifies features, bugs, and work status for [Productivity metrics](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity#productivity-insight-widgets) by configuring filter sets, setting feature and bug category thresholds, and specifying which statuses represent active and terminated work.
+Define how SEI 2.0 classifies features, bugs, and work status for [Productivity metrics](/docs/software-engineering-insights/harness-sei/insights/productivity#productivity-insight-widgets) by configuring filter sets, setting feature and bug category thresholds, and specifying which statuses represent active and terminated work.
 
 #### Features
 
@@ -477,6 +477,35 @@ Correct change request identification ensures SEI 2.0 accurately calculates **De
 :::
 
 After configuring filters, click **Save ITSM Settings** to apply the configuration.
+
+</TabItem>
+<TabItem value="custom-variable" label="Custom Variables">
+
+:::tip
+Canvas is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+:::
+
+Use the **Custom Variables** tab in **Team Settings** to override default values for variables defined in Canvas metrics. Custom variables are created in the [**Query Variables** menu on the **Canvas** page](/docs/software-engineering-insights/harness-sei/canvas/?query-variables=custom#use-query-variables-in-dashboards) and automatically appear for each team. You can override the default value to tailor how metrics are computed for that specific team.
+
+![](../static/teams-19.png)
+
+Each variable includes the following fields:
+
+| Field | Description |
+|------|-------------|
+| Name | The variable identifier used in queries (for example, `${priority_issues}`). |
+| Description | A description of what the variable controls. |
+| Value | The team-specific value that overrides the default. |
+
+To override a variable:
+
+1. Click the **Edit** icon next to a variable value.
+1. Enter a new value.
+1. Click the **Checkmark** icon to save.
+
+:::info
+If no override is provided, the default value defined in Canvas is used. Overrides apply only to the selected team, and changes affect how metrics are calculated in Canvas dashboards.
+:::
 
 </TabItem>
 </Tabs>

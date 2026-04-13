@@ -10,6 +10,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const MODULE_LABELS: Record<string, string> = {
   fme: "Feature Management & Experimentation",
   iacm: "Infrastructure as Code Management",
+  "sei": "Software Engineering Insights",
 };
 
 export default function GlossaryPage() {

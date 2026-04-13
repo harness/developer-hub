@@ -3209,3 +3209,15 @@ html[data-theme='light'] footer {
 html[data-theme='dark'] footer {
   border-top: 1px solid #374151;
 }
+
+/* ===== Mermaid SVG Fix ===== */
+
+.mermaid {
+  overflow-x: auto;
+}
+
+.mermaid svg {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+}

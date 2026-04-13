@@ -44,5 +44,14 @@
         "step": "A step is an individual action within a stage. FME steps include operations such as creating or updating a feature flag, modifying rollout behavior, or killing a flag.",
         "custom-stage": "A custom stage is a user-defined stage in a pipeline that allows you to run custom logic or actions as part of a pipeline. FME steps are only supported in Custom stages."
       }
+    },
+    "sei": {
+      "canvas": {
+        "custom-dashboard": "A user-created dashboard built in Canvas and published to the Insights page for viewing and sharing. It can be tailored to display the most important data for your use case, providing insights and facilitating decision-making.",
+        "widget": "A widget is a visual component that displays specific data or information on a Canvas dashboard. Widgets can be customized to show different types of data, such as charts, tables, or metrics, and can be arranged to create a personalized dashboard layout.",
+        "data-source": "A data source is a connection to an external system or database that provides data for use in Canvas. It allows you to pull in data from various sources to create visualizations and insights in your custom dashboards.",
+        "query-variable": "A query variable is a dynamic parameter that can be used in Canvas HQL queries to filter or modify the data being retrieved. It allows you to create more flexible and interactive dashboards by enabling users to input values that affect the displayed data.",
+        "custom-variable": "A custom variable is a user-defined parameter that can be used in Canvas to store and manipulate data. It can be used in queries, calculations, or as part of the dashboard configuration to create more complex and tailored visualizations."
+      }
     }
   }

@@ -3,6 +3,8 @@ title: Business Alignment
 description: Measure how engineering effort aligns with business priorities across your organization.
 sidebar_label: Business Alignment
 sidebar_position: 3
+redirect_from:
+- /docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment
 ---
 
 Business Alignment in SEI 2.0 focuses on understanding how engineering effort maps to business priorities, helping teams evaluate whether day-to-day work supports strategic goals. Unlike Business Alignment in SEI 1.0, Business Alignment uses team-level category definitions instead of global allocation goals, allowing each team to define alignment rules that best match their context.

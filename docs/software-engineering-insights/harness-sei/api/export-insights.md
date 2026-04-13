@@ -13,8 +13,8 @@ The SEI Insights Export API enables you to export team-level reports and team-le
 
 With this API, you can:
 
-- Export [Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity) metrics such as PR velocity, coding days, and completed work items per developer.
-- Export [Efficiency (DORA)](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency) metrics such as lead time for changes, deployment frequency, and mean time to restore.
+- Export [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) metrics such as PR velocity, coding days, and completed work items per developer.
+- Export [Efficiency (DORA)](/docs/software-engineering-insights/harness-sei/insights/efficiency) metrics such as lead time for changes, deployment frequency, and mean time to restore.
 - Include all child teams under a specified team in a single CSV export.
 - Export team-level metrics for individual developers.
 

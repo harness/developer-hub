@@ -3,6 +3,8 @@ title: AI Insights
 description: Understand AI assistant adoption and correlate it with productivity and quality outcomes in SEI 2.0.
 sidebar_label: AI Insights
 sidebar_position: 4
+redirect_from:
+- /docs/software-engineering-insights/harness-sei/analytics-and-reporting/ai
 ---
 
 <CTABanner
@@ -59,7 +61,7 @@ By default, the AI Summary you see when you navigate to the AI Insights dashboar
 
 ![](../static/ai-5.png)
 
-Use the **All Assistants** dropdown menu to control which assistant's data is calculated across all widgets. Available options include `Cursor`, `Windsurf`, and `All Assistants`. Click the **Compare to** dropdown menu to overlay a second Y-axis across AI Insight visualizations. This lets you compare AI adoption and performance metrics against a [Productivity metric](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity#productivity-insights) (either `PR Velocity Per Developer` or `PR Cycle Time`). Trendlines for [Code Rework](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity#code-rework) are also added to each chart so you can assess whether the selected productivity metric is improving, regressing, or remaining stable over the selected time range.
+Use the **All Assistants** dropdown menu to control which assistant's data is calculated across all widgets. Available options include `Cursor`, `Windsurf`, and `All Assistants`. Click the **Compare to** dropdown menu to overlay a second Y-axis across AI Insight visualizations. This lets you compare AI adoption and performance metrics against a [Productivity metric](/docs/software-engineering-insights/harness-sei/insights/productivity#productivity-insights) (either `PR Velocity Per Developer` or `PR Cycle Time`). Trendlines for [Code Rework](/docs/software-engineering-insights/harness-sei/insights/productivity#code-rework) are also added to each chart so you can assess whether the selected productivity metric is improving, regressing, or remaining stable over the selected time range.
 
 ![](../static/ai-1.png)
 
@@ -84,7 +86,7 @@ This tile provides a high-level view of AI enablement across your organization, 
 The **PR Velocity** tile shows the average number of PRs merged per developer over the selected time period. The tile breaks down PR velocity by assistant type, including `Cursor`, `Windsurf`, `All`, and `Unassigned`. It also shows the percent of change for each assistant compared to the previous period, helping teams understand whether PR velocity is improving or declining.
 
 :::info
-[PR velocity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity#pr-velocity-per-dev) is calculated as the average number of merged pull requests per developer during the selected time period.
+[PR velocity](/docs/software-engineering-insights/harness-sei/insights/productivity#pr-velocity-per-dev) is calculated as the average number of merged pull requests per developer during the selected time period.
 
 PR velocity helps teams understand delivery throughput and whether AI-assisted development is contributing to faster or slower code delivery over time.
 :::
@@ -94,7 +96,7 @@ PR velocity helps teams understand delivery throughput and whether AI-assisted d
 The **Quality** tile measures the percentage of code being rewritten per developer in the selected time period, including values for `Cursor`, `Windsurf`, `All`, and `Unassigned`. It breaks the metric into `Recent Code Rework` and `Remaining Code Rework` percentages. The tile also shows the relative change compared to the previous time period, helping teams identify whether rework is increasing or decreasing for each assistant.
 
 :::info
-Quality is determined by the percentage of code being rewritten per developer, also referred to as [Code Rework](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity#code-rework), during the selected time period.
+Quality is determined by the percentage of code being rewritten per developer, also referred to as [Code Rework](/docs/software-engineering-insights/harness-sei/insights/productivity#code-rework), during the selected time period.
 
 Code Rework is a signal of maintainability and code stability. Monitoring changes in rework over time helps teams assess whether AI-assisted development is improving code quality or introducing additional churn.
 :::

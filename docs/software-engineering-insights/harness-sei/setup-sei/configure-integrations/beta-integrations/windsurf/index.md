@@ -8,7 +8,7 @@ sidebar_label: Windsurf
 The Windsurf integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-The Windsurf integration enables SEI 2.0 to track adoption and usage metrics for Windsurf coding assistants. This integration is required to enable to view the [AI Insights dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/ai).
+The Windsurf integration enables SEI 2.0 to track adoption and usage metrics for Windsurf coding assistants. This integration is required to enable to view the [AI Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/ai).
 
 ### Prerequisites
 
@@ -29,4 +29,4 @@ To configure the Windsurf integration:
 1. In the **Configure Windsurf Authentication** section, enter your Windsurf API service key and click **Validate Credentials**.
 1. Once validated, click **Validate and Create Integration**.
 
-Once the integration is configured and data is ingested, Windsurf activity becomes available in the AI Insights dashboard on the **Insights** page, where you can analyze adoption, productivity, and code quality metrics at the organization or team level. For more information, see [AI Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/ai).
+Once the integration is configured and data is ingested, Windsurf activity becomes available in the AI Insights dashboard on the **Insights** page, where you can analyze adoption, productivity, and code quality metrics at the organization or team level. For more information, see [AI Insights](/docs/software-engineering-insights/harness-sei/insights/ai).

@@ -10,7 +10,7 @@ redirect_from:
 
 ## Overview
 
-Once you've set up integrations, created profiles, uploaded your developer records, and created an [Org Tree](../setup-org-tree), you can view high-level insights such as [Efficiency](../../analytics-and-reporting/efficiency), [Productivity](../../analytics-and-reporting/productivity), and [Business Alignment](../../analytics-and-reporting/business-alignment) for the entire organization.
+Once you've set up integrations, created profiles, uploaded your developer records, and created an [Org Tree](../setup-org-tree), you can view high-level insights such as [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency), [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity), and [Business Alignment](/docs/software-engineering-insights/harness-sei/insights/business-alignment) for the entire organization.
 
 ## Viewing insights at the organization tree level
 
@@ -31,4 +31,4 @@ If your organization uses multiple Org Trees, you can switch between them to vie
 
 ![](../../static/insights-3.png)
 
-For more information on sharing insights surfaced by Harness SEI, see [Exporting SEI 2.0 Insights](../../analytics-and-reporting/export).
+For more information on sharing insights surfaced by Harness SEI, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).

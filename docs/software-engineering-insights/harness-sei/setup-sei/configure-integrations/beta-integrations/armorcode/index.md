@@ -11,7 +11,7 @@ Security Insights is in beta. To request access, contact [Harness Support](/docs
 
 [ArmorCode](https://www.armorcode.com/) is an Application Security Posture Management (ASPM) platform that aggregates and normalizes security findings from multiple scanners. This integration provides a unified view of security posture, remediation progress, and team-level ownership using data aggregated from all security tools connected to ArmorCode.
 
-On initial setup, Harness SEI backfills up to **6 months of historical security findings**, enabling immediate MTTR calculations and trend analysis. Once connected, the Open vulnerabilities by severity metric updates on the [Security Insights dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/security) in the **Security** tab of the **Insights** page. 
+On initial setup, Harness SEI backfills up to **6 months of historical security findings**, enabling immediate MTTR calculations and trend analysis. Once connected, the Open vulnerabilities by severity metric updates on the [Security Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/security) in the **Security** tab of the **Insights** page. 
 
 Security findings are mapped to teams, enabling visibility into open vulnerabilities owned by each engineering team, remediation velocity trends per team, and alignment with your existing Harness SEI [Org Tree structure](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree).
 
@@ -94,7 +94,7 @@ Once you've configured the ArmorCode integration, you can:
 
 - Select the ArmorCode integration from the `Security Tools` section on the **Integrations** tab in [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=security-settings#configure-integrations-for-a-team)
 - Map security data to teams and scope findings on the **Security** tab in [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=security-settings#configure-team-tool-settings)
-- Examine the [Security Insights dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/security) to analyze organization and team-level security posture
+- Examine the [Security Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/security) to analyze organization and team-level security posture
 
 ## Troubleshooting
 

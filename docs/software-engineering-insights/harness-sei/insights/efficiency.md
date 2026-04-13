@@ -5,6 +5,7 @@ sidebar_label: Engineering Efficiency
 sidebar_position: 1
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/efficiency
+- /docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency
 ---
 
 Efficiency in SEI 2.0 refers to the measurement and analysis of how effectively an organization or team runs its software development processes. It focuses on operational performance across deployment-based ([DORA](https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report)) and sprint-based delivery metrics.
@@ -33,7 +34,7 @@ Use the `Showing` dropdown menu to control how values are calculated across all 
 Trendlines use the Ordinary Least Squares (OLS) regression method to identify patterns and direction in your data over the selected time range.
 :::
 
-To export the Efficiency Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export).
+To export the Efficiency Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).
 
 Below is a brief overview of each widget on the **DORA** tab in **Efficiency** on the **Insights** page:
 
@@ -184,7 +185,7 @@ Click the **View By** dropdown menu to choose whether sprint metrics are display
 * **Story Points**: Metrics reflect the estimated effort of work items based on story point values.
 * **Work Item Count**: Metrics reflect the number of items regardless of point estimates.
 
-You can also click the **Show trendline** checkbox to toggle a trend line overlay to visualize performance changes over time. To export the Sprint Insights dashboard data, click the **Export** button. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export).
+You can also click the **Show trendline** checkbox to toggle a trend line overlay to visualize performance changes over time. To export the Sprint Insights dashboard data, click the **Export** button. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).
 
 This dashboard highlights:
 

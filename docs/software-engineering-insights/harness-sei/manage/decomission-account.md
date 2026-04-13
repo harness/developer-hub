@@ -68,7 +68,7 @@ No. Harness SEI retains data indefinitely unless a formal deletion or decommissi
 <details>
 <summary>Can I export my Harness SEI data before deletion?</summary>
 
-Yes. Customers can export available datasets using existing [Harness SEI export capabilities](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export) or [public APIs](/docs/software-engineering-insights/harness-sei/api/export-insights) before deletion.
+Yes. Customers can export available datasets using existing [Harness SEI export capabilities](/docs/software-engineering-insights/harness-sei/insights/export) or [public APIs](/docs/software-engineering-insights/harness-sei/api/export-insights) before deletion.
 
 </details>
 <details>

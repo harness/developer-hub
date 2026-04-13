@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-Once you've set up integrations, created profiles, uploaded your developer records, and created an Org Tree, you can view  high-level insights on [Efficiency](../../analytics-and-reporting/efficiency), [Productivity](../../analytics-and-reporting/productivity), and [Business Alignment](../../analytics-and-reporting/business-alignment). To get more granular insights, drill down into specific [teams](../setup-teams) within an [Org Tree](../setup-org-tree) and apply team-specific settings.
+Once you've set up integrations, created profiles, uploaded your developer records, and created an Org Tree, you can view  high-level insights on [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency), [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity), and [Business Alignment](/docs/software-engineering-insights/harness-sei/insights/business-alignment). To get more granular insights, drill down into specific [teams](../setup-teams) within an [Org Tree](../setup-org-tree) and apply team-specific settings.
 
 ## Viewing insights for a specific team after applying team settings
 
@@ -88,4 +88,4 @@ To view insights for a specific team after applying team settings:
 
 After applying team settings, the Insights page will refresh to show data for the selected team, reflecting your configurations. You can then explore that team's DORA metrics.
 
-For more information on sharing insights surfaced by Harness SEI, see [Exporting SEI 2.0 Insights](../../analytics-and-reporting/export).
+For more information on sharing insights surfaced by Harness SEI, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).

@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2026-03-25T10:00:10
+date: 2026-04-10T10:00:10
 sidebar_position: 15
 ---
 
@@ -12,13 +12,52 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Software Engineering Insights.
 
-#### Last updated: March 25, 2026
+#### Last updated: April 10, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
+
+## April 2026
+
+### [New Feature] Canvas for SEI 2.0 is in beta
+----
+#### 2026-04-10
+
+Harness SEI now supports custom dashboards in SEI 2.0, allowing teams to create dashboards and add widgets that visualize SEI data most relevant to their workflows. To create and manage custom dashboards, navigate to the **Canvas** page in the Harness SEI navigation menu.
+
+![](./static/sei/canvas-list.png)
+
+To use Canvas, first set up a data source by [setting up an integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/). Once configured, SEI 2.0 generates a data source that can be queried using HQL in Canvas widgets when [building dashboards](/docs/software-engineering-insights/harness-sei/canvas/?query-config=editor#create-a-custom-insights-dashboard). This enables teams to extend SEI analytics with metrics from proprietary tools, operational systems, or other engineering platforms.
+
+Teams can further customize how metrics are computed using **Query Variables** defined in the Canvas dashboard editor. These variables can be overridden per team in the **Custom Variables** tab in [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=custom-variable#configure-team-tool-settings), enabling team-specific values without modifying the underlying dashboard logic. This allows a single dashboard to be reused across teams with different values, without duplicating configuration or logic.
+
+Dashboards in Canvas support `Draft` and `Published` statuses, enabling teams to build and iterate safely before sharing with others. You can clone dashboards, publish them to specific [Org Trees](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#org-tree), or move them back to `Draft` for further editing. Published dashboards are read-only and must be moved back to `Draft` before making changes.
+
+![](./static/sei/canvas-dashboard.png)
+
+Access to Canvas is governed by [Harness RBAC](/docs/software-engineering-insights/harness-sei/get-started/rbac) and requires the [following permissions](/docs/software-engineering-insights/harness-sei/canvas/#prerequisites):
+
+- **View SEI Canvas** (`sei_seicanvas_view`)
+- **Create/Edit SEI Canvas** (`sei_sei_canvas_create` and `sei_seicanvas_edit`)
+- **Delete SEI Canvas** (`sei_seicanvas_delete`)
+
+![](./static/sei/canvas-rbac.png)
+
+Access is further scoped using resource groups, where you can control visibility by **Insights Categories** and **Teams**.
+
+![](./static/sei/canvas-rbac-1.png)
+
+To request access to the Canvas beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Related documentation
+
+- [Canvas](/docs/software-engineering-insights/harness-sei/canvas/)
+- [Configure Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=custom-variable#configure-team-tool-settings)
+- [Harness RBAC for SEI](/docs/software-engineering-insights/harness-sei/get-started/rbac)
+- [Platform Permissions Reference](/docs/platform/role-based-access-control/permissions-reference/#software-engineering-insights)
 
 ## March 2026
 
@@ -57,7 +96,7 @@ When multiple SCM integrations are configured, a single developer may have sever
 
 ![](./static/sei/multi-dev.png)
 
-You can specify all the repositories your team develops in, select the destination branches used to measure delivery metrics, and exclude non-deployment changes using labels or custom filters (for example, `chore` or `documentation`) on the **Source Code Management** tab. This ensures [Lead Time for Change](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency#lead-time-for-changes) and [Deployment Frequency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency#deployment-frequency) reflect only production-relevant work.
+You can specify all the repositories your team develops in, select the destination branches used to measure delivery metrics, and exclude non-deployment changes using labels or custom filters (for example, `chore` or `documentation`) on the **Source Code Management** tab. This ensures [Lead Time for Change](/docs/software-engineering-insights/harness-sei/insights/efficiency#lead-time-for-changes) and [Deployment Frequency](/docs/software-engineering-insights/harness-sei/insights/efficiency#deployment-frequency) reflect only production-relevant work.
 
 ![](./static/sei/multi-tab.png)
 
@@ -68,8 +107,8 @@ This feature provides a comprehensive view of team activity across multiple repo
 #### Related documentation
 
 - [Configure Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=scm-settings)
-- [Efficiency Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency)
-- [Productivity Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity)
+- [Efficiency Insights](/docs/software-engineering-insights/harness-sei/insights/efficiency)
+- [Productivity Insights](/docs/software-engineering-insights/harness-sei/insights/productivity)
 
 ## January 2026
 
@@ -77,7 +116,7 @@ This feature provides a comprehensive view of team activity across multiple repo
 ----
 #### 2026-01-30
 
-[AI Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/ai) now includes [AI-generated summaries and recommendations](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/ai#ai-summaries-and-recommendations), providing prescriptive interpretations of AI adoption, productivity, and code quality metrics in the **AI Insights** dashboard.
+[AI Insights](/docs/software-engineering-insights/harness-sei/insights/ai) now includes [AI-generated summaries and recommendations](/docs/software-engineering-insights/harness-sei/insights/ai#ai-summaries-and-recommendations), providing prescriptive interpretations of AI adoption, productivity, and code quality metrics in the **AI Insights** dashboard.
 
 ![](./static/sei/ai-summary-org.png)
 
@@ -97,7 +136,7 @@ To request access, contact [Harness Support](/docs/software-engineering-insights
 - [Cursor Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor/)
 - [Windsurf Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf/)
 - [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)
-- [AI Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/ai#ai-summaries-and-recommendations)
+- [AI Insights](/docs/software-engineering-insights/harness-sei/insights/ai#ai-summaries-and-recommendations)
 
 ### [New Feature] AI Insights is in beta
 ---
@@ -125,7 +164,7 @@ Set up the [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/co
 - [Cursor Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor/)
 - [Windsurf Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf/)
 - [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)
-- [AI Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/ai)
+- [AI Insights](/docs/software-engineering-insights/harness-sei/insights/ai)
 
 ### [New Feature] Security Insights is in beta
 ---
@@ -150,7 +189,7 @@ These insights help teams monitor overall security posture, prioritize remediati
 
 - [ArmorCode Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/armorcode)
 - [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=security-settings#configure-team-tool-settings)
-- [Security Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/security)
+- [Security Insights](/docs/software-engineering-insights/harness-sei/insights/security)
 
 ## December 2025
 
@@ -238,7 +277,7 @@ With Code Rework, you can configure how recent and legacy code is classified in 
 
 ![](./static/sei/code-rework-setup.png)
 
-Use the [Productivity dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity#code-rework) on the **Insights** page to explore developer contributions to code rework, including:
+Use the [Productivity dashboard](/docs/software-engineering-insights/harness-sei/insights/productivity#code-rework) on the **Insights** page to explore developer contributions to code rework, including:
 
 * % Legacy Rework
 * % Recent Rework
@@ -254,7 +293,7 @@ These insights help teams understand refactoring effort, identify sources of rew
 #### Related documentation
 
 - [Productivity Profile Setup](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)
-- [Developer Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity)
+- [Developer Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity)
 
 ### [New Feature] Sprint Insights is in beta
 ---
@@ -266,7 +305,7 @@ With Sprint Insights, you can configure DORA and sprint metrics in an [Efficienc
 
 ![](./static/sei/sprint-setup.png)
 
-Use the [Sprint Metrics dashboard](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency#sprint-metrics) on the **Efficiency** tab in the **Insights** page to analyze performance per sprint, including:
+Use the [Sprint Metrics dashboard](/docs/software-engineering-insights/harness-sei/insights/efficiency#sprint-metrics) on the **Efficiency** tab in the **Insights** page to analyze performance per sprint, including:
 
 * Sprint start and end dates
 * Committed vs. delivered work
@@ -284,7 +323,7 @@ These insights help teams evaluate planning effectiveness, delivery consistency,
 #### Related documentation
 
 - [Efficiency Profile Setup](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)
-- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency)
+- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency)
 
 ## October 2025
 
@@ -343,12 +382,12 @@ Trendlines help teams look beyond point-in-time values to focus on directional p
 - Are recent changes producing sustained impact or short-term noise?
 - How do trends compare across teams, metrics, and time ranges?
 
-When **Show trendline** is enabled in a dashboard, trendlines are overlaid across all applicable widgets in the [Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency) and [Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity) dashboards on the **Insights** page. Trendlines use the Ordinary Least Squares (OLS) regression method to identify overall patterns and direction in the selected time range.
+When **Show trendline** is enabled in a dashboard, trendlines are overlaid across all applicable widgets in the [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) and [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) dashboards on the **Insights** page. Trendlines use the Ordinary Least Squares (OLS) regression method to identify overall patterns and direction in the selected time range.
 
 #### Related documentation
 
-- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency)
-- [Developer Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity)
+- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency)
+- [Developer Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity)
 
 ## August 2025
 
@@ -423,7 +462,7 @@ This feature makes it easier to share key performance metrics across teams and s
 
 #### Related documentation
 
-- [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export/)
+- [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export/)
 
 ## April 2025
 

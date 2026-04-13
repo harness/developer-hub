@@ -5,6 +5,7 @@ sidebar_label: Developer Productivity
 sidebar_position: 2
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/productivity
+- /docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity
 ---
 
 Productivity in SEI 2.0 focuses on understanding the actual work being delivered by developers, the quality of that work, and how effectively teams collaborate to get it done. Rather than measuring activity for its own sake, SEI 2.0 surfaces signals that reflect meaningful engineering output, including work that drives value, improvements to existing code, and areas of potential rework.
@@ -30,7 +31,7 @@ Use the `Showing` dropdown menu to control how values are calculated across all 
 Trendlines use the Ordinary Least Squares (OLS) regression method to identify patterns and direction in your data over the selected time range.
 :::
 
-To export the Productivity Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export).
+To export the Productivity Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).
 
 Below is a brief overview of each widget in **Productivity** on the **Insights** page:
 

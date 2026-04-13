@@ -3,6 +3,8 @@ title: Export Insights in SEI 2.0
 description: Learn how to share dashboard widgets and export insights in Harness SEI.
 sidebar_label: Export SEI 2.0 Insights
 sidebar_position: 5
+redirect_from:
+- /docs/software-engineering-insights/harness-sei/analytics-and-reporting/export
 ---
 
 import Tabs from '@theme/Tabs';
@@ -15,7 +17,7 @@ SEI 2.0 supports exporting **org-level, team-level, individual-level, and sprint
 * **PDF Export** provides a snapshot of the dashboard view, including all widgets and the organizational hierarchy. This format is ideal for presentations and read-only sharing.
 * **CSV Export** allows you to download raw metric data for further analysis. You can choose the aggregation level (for example, org, team, individual, or sprint) and select which metrics to include. 
 
-You can click on the kebab menu (⋮) and select **Export as PDF/CSV** in the [Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency) and [Productivity](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity) dashboards, or click an **Export** button in the **Sprint Metrics** tab in the [Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency) dashboard to export data at the insight and widget level in SEI 2.0. 
+You can click on the kebab menu (⋮) and select **Export as PDF/CSV** in the [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) and [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) dashboards, or click an **Export** button in the **Sprint Metrics** tab in the [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) dashboard to export data at the insight and widget level in SEI 2.0. 
 
 <Tabs queryString="export-options">
 <TabItem value="insights" label="Insight Level">
