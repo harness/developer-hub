@@ -908,7 +908,6 @@ To configure the Serverless Prepare Rollback step, do the following:
 1. Open the Serverless Prepare Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
 3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, you can specify: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
-Alternatively, you can configure the **Image details** in [**Plugin Info**](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) within the **Service** configuration.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -923,7 +922,6 @@ To configure the Serverless Package step, do the following:
 1. Open the Serverless Package step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
 3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
-Alternatively, you can configure the **Image details** in [**Plugin Info**](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) within the **Service** configuration.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -977,7 +975,6 @@ To configure the Serverless Deploy step, do the following:
 1. Open the Serverless Deploy step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
 3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
-Alternatively, you can configure the **Image details** in [**Plugin Info**](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) within the **Service** configuration.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -1029,7 +1026,6 @@ To configure the Serverless Rollback step, do the following:
 1. Open the Serverless Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
 3. In **Image**, enter the path, image, and tag for the image you want to run in this step.  For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
-Alternatively, you can configure the **Image details** in [**Plugin Info**](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) within the **Service** configuration.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
