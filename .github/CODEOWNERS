@@ -16,19 +16,19 @@
 *.lock  @wei-harness
 
 # Changes to Config Files
-*.ini  @wei-harness @ivikramsahu @richardblack-Harness
-*.json  @wei-harness @ivikramsahu @richardblack-Harness
-*.toml  @wei-harness @ivikramsahu @richardblack-Harness
-*ignore @wei-harness @ivikramsahu @richardblack-Harness
-/_server-redirect @wei-harness @ivikramsahu @richardblack-Harness
+*.ini  @wei-harness @ivikramsahu @richardblack-Harness @alai97
+*.json  @wei-harness @ivikramsahu @richardblack-Harness @alai97
+*.toml  @wei-harness @ivikramsahu @richardblack-Harness @alai97
+*ignore @wei-harness @ivikramsahu @richardblack-Harness @alai97
+/_server-redirect @wei-harness @ivikramsahu @richardblack-Harness @alai97
 
 # Changes to Netlify Files
 /netlify/ @wei-harness
 
 # Contributing
-CONTRIBUTING.md @pratmit @ivikramsahu 
-README.md @pratmit @ivikramsahu 
-/docs/hdh/ @pratmit @ivikramsahu 
+CONTRIBUTING.md @pratmit @ivikramsahu @alai97
+README.md @pratmit @ivikramsahu @alai97
+/docs/hdh/ @pratmit @ivikramsahu @alai97
 
 # University
 /university/ @ravilach

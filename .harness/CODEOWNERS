@@ -16,19 +16,19 @@
 *.lock  wei.guo@harness.io richard.black@harness.io
 
 # Changes to Config Files
-*.ini  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
-*.json  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
-*.toml  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
-*ignore wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
-/_server-redirect wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io
+*.ini  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+*.json  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+*.toml  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+*ignore wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+/_server-redirect wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Changes to Netlify Files
 /netlify/ wei.guo@harness.io richard.black@harness.io
 
 # Contributing
-CONTRIBUTING.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io
-README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io
-/docs/hdh/ prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io
+CONTRIBUTING.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+/docs/hdh/ prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
 
 # University
 /university/ ravi.lachhman@harness.io
