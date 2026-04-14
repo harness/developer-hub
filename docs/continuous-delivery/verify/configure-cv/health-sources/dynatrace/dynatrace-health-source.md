@@ -43,13 +43,12 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
    :::
 
 5. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
-6. In **Select Feature** you can either choose **Full Stack Observability: APM** or **Dynatrace Grail Logs** (if the feature flag is enabled). Your choice here will change which configuration options you see next. 
+6. In **Select Feature**, choose one of the following options. Your choice determines which configuration options appear next.
 
    :::info note
-   - **Full Stack Observability: APM** requires a Dynatrace Classic connector (API URL + API Token)
-   - **Dynatrace Grail Logs** requires a Dynatrace Grail connector (Platform URL + Platform Token) and the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. This feature flag needs a minimum delegate version: `869xx`.
-   
-   Contact [Harness Support](mailto:support@harness.io) to enable the Dynatrace Grail Logs feature flag.
+   - **Full Stack Observability: APM** requires a Dynatrace Classic connector (API URL + API Token).
+   - **Dynatrace Grail Logs** requires a Dynatrace Grail connector (Platform URL + Platform Token) and the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. This feature flag requires a minimum delegate version of `869xx`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+   - **Dynatrace Grail Metrics** requires a Dynatrace Grail connector (Platform URL + Platform Token), the feature flag `CDS_CV_DYNATRACE_GRAIL_METRICS_ENABLED`, and a minimum delegate version of `88900`. Contact [Harness Support](mailto:support@harness.io) to enable it.
    :::
 
 ### Configuration
@@ -144,7 +143,160 @@ Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 14. Click **Submit**. The health source is displayed in the verify step!
 
 </TabItem>
+<TabItem value="Dynatrace Grail Metrics">
+
+:::info
+
+This feature is behind the feature flag `CDS_CV_DYNATRACE_GRAIL_METRICS_ENABLED` and requires a minimum delegate version of `88900`.
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+:::
+
+Dynatrace Grail Metrics uses [Dynatrace Query Language (DQL)](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language) to query timeseries metric data from the Dynatrace Grail data lakehouse. You write a `timeseries` DQL query, validate it, fetch sample records, and then map the metric value column and service instance dimension to Harness for continuous verification and live monitoring.
+
+<div style={{textAlign: 'center'}}>
+
+![Define Health Source — Dynatrace Grail Metrics selected](../static/dynatrace-grail-metrics-define-health-source.png)
+
+</div>
+
+#### Map metric to Harness services
+
+7. Click **Next**. The **Configuration** tab opens. Click **+ Add Metric**.
+8. In **Metric Name**, enter a name for the metric.
+9. In **Group Name**, select an existing group or type a new one to create it.
+
+    <div style={{textAlign: 'center'}}>
+
+    ![Map Metric(s) to Harness Services](../static/dynatrace-grail-metrics-map-metric.png)
+
+    </div>
+
+#### Write and validate the query
+
+10. Expand **Query Specifications and mapping** and enter your DQL `timeseries` query in the **DQL Query** field. The query must start with the `timeseries` command.
+
+    ```dql
+    timeseries avg(custom.app.response.time), filter: {deployment == "canary" and health=="unhealthy"}, by: {host}
+    ```
+
+    :::tip
+    The `by:` clause splits results per dimension (for example, `by: {host}`). Include it when you need per-instance data for continuous verification. You can omit it for aggregate SLI queries, but note that a **Service Instance Identifier** is required when **Continuous Verification** is enabled.
+    :::
+
+11. Click **Validate**. When the query is syntactically correct, a **Validation Passed** confirmation appears below the query field.
+12. Click **Fetch Records**. Harness runs the query against your Dynatrace environment and shows the raw JSON response inline.
+
+    <div style={{textAlign: 'center'}}>
+
+    ![DQL query, validation, and fetch records](../static/dynatrace-grail-metrics-dql-query.png)
+
+    </div>
+
+#### Configure metric values and charts
+
+13. Expand **Metric values and charts**. Harness auto-populates the fields based on the sample response. Review and confirm the following:
+
+    - **Metric Value JSON Path** — the JSONPath to the metric values array in the response (for example, `['avg(custom.app.response.time)'].[0]`).
+    - **Service Instance Identifier** — the JSONPath to the dimension that identifies each service instance (for example, `['host']`). Required when **Continuous Verification** is enabled.
+
+14. Click **Build Chart** to preview the timeseries chart from your live data. Verify the chart renders correctly before proceeding.
+
+    <div style={{textAlign: 'center'}}>
+
+    ![Metric values and charts with Build Chart](../static/dynatrace-grail-metrics-values-chart.png)
+
+    </div>
+
+    :::info
+    DQL `timeseries` responses return metric values as arrays where each element corresponds to one time slot. Harness reconstructs per-point timestamps using `timeframe.start` and `interval` from the response. Because `interval` is in nanoseconds, Harness converts it before applying the formula:
+
+    `timestamp[i] = timeframe.start + (i × (interval / 1,000,000))`
+    :::
+
+#### Assign and configure risk profile
+
+15. Expand **Assign** and select which services this metric applies to:
+
+    - **SLI** — uses the metric to track SLO compliance.
+    - **Service Health** — monitors the metric continuously outside of deployments.
+    - **Continuous Verification** — gates deployments based on this metric.
+
+    If you select **Continuous Verification** or **Service Health**, configure the **Risk Category** and **Deviation Compared to Baseline**:
+
+    - **Risk Category** — select one of **Errors**, **Infrastructure**, **Performance/Throughput**, **Performance/Other**, or **Performance/Response Time**.
+    - **Deviation Compared to Baseline** — select **Higher value is higher risk**, **Lower value is higher risk**, or both, depending on what the metric measures.
+
+    <div style={{textAlign: 'center'}}>
+
+    ![Assign section with risk category and deviation settings](../static/dynatrace-grail-metrics-assign.png)
+
+    </div>
+
+#### Configure advanced thresholds (optional)
+
+16. Expand **Advanced (Optional)** to configure metric thresholds. There are two threshold types:
+
+    - **Ignore Thresholds** — metrics matching these rules are excluded from anomaly flagging during continuous verification.
+    - **Fail-Fast Thresholds** — metrics matching these rules immediately fail the verification step.
+
+    Click **+ Add Threshold** to define rules by metric type, metric name, and criteria.
+
+17. Click **Submit**. The health source is displayed in the verify step.
+
+
+<details>
+<summary><b>Sample DQL timeseries queries</b></summary>
+
+The following queries illustrate common patterns for use with the Dynatrace Grail Metrics health source.
+
+**CPU usage grouped by host:**
+
+```dql
+timeseries usage=avg(dt.host.cpu.usage), by:{dt.entity.host}
+```
+
+**Service response time at the 90th percentile:**
+
+```dql
+timeseries p90=percentile(dt.service.request.response_time, 90),
+    filter:{startsWith(endpoint.name, "/api/accounts")}
+```
+
+**Failure rate per second:**
+
+```dql
+timeseries sum(dt.service.request.failure_count, rate:1s),
+    filter:{startsWith(endpoint.name, "/api/accounts")}
+```
+
+**Multiple disk metrics in one query:**
+
+```dql
+timeseries {
+    bytes_read=sum(dt.host.disk.bytes_read),
+    bytes_written=sum(dt.host.disk.bytes_written)
+}, by:{dt.entity.host}
+```
+
+**Week-over-week availability comparison:**
+
+```dql
+timeseries avail=avg(dt.host.disk.avail), by:{dt.entity.host}, from:-24h
+| append [
+    timeseries avail_7d=avg(dt.host.disk.avail), by:{dt.entity.host}, shift:-7d
+]
+```
+
+For the full DQL `timeseries` reference, see the [Dynatrace DQL timeseries documentation](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language/commands/data-retrieval/timeseries).
+
+</details>
+
+</TabItem>
 </Tabs>
+
+---
 
 ### Sample Dynatrace queries
 
