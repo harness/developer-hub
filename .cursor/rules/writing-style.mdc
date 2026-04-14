@@ -53,6 +53,16 @@ Use meaningful link text. Never write `[here](url)`, `[this doc](url)`, or `[cli
 
 ---
 
+## Buttons and exact UI labels
+
+When you refer to the **exact** text of a control in the Harness UI (button, menu command, account setting name, failure strategy option, or similar), wrap that string in **single straight quotes**: `'Mark as Failed'`, `'Save'`, `'Allow users to mark a running Step as failure'`.
+
+Use quotes for the literal label the user sees. Do not use quotes for generic references (for example "the execution details page" or "your pipeline").
+
+In steps, write `Select 'Mark as Failed'.` when the reader must click that control, not bold alone.
+
+---
+
 ## Prerequisites section
 
 The **Prerequisites** section lists what a user needs before following the page's instructions. Keep it scannable and not text-heavy.

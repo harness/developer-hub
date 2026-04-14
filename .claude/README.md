@@ -134,15 +134,35 @@ Instructions for the `--verify` flag. Defines the pre/post modes, page-type gate
 
 ---
 
+### `/doc-section-rewrite <audit-report-path>`
+Applies a `doc-section-audit` report directly in Claude Code, in three supervised phases.
+No copy-pasting required — Claude reads all affected files and makes the edits, pausing for a
+`git diff` review between each phase. File deletions are always listed as manual steps.
+```
+/doc-section-rewrite .claude/skills/doc-section-audit/audits/auth-403-errors-audit-20260413.md
+```
+**Phases:**
+| Phase | What happens |
+|---|---|
+| 1 — Structure | Create new pages, scaffold DMS/tabs, rename files (only if IA changes needed) |
+| 2 — Content | Rewrite all in-scope files per audit findings, oldest-first |
+| 3 — Cleanup | Add `redirect_from` entries, fix cross-references, list files to delete manually |
+Prefer Cursor? Each phase block is self-contained and can be pasted into a Cursor chat independently.
+
+---
+
 ## Typical workflow
 
 ```
 # 1. Find the worst pages in a module
 /doc-audit-check iacm
 
-# 2. Audit the top candidate (page only, quick)
+# 2. Audit the top candidate — single page, quick
 /doc-audit docs/infra-as-code-management/workspaces/some-page.md
-
-# 3. Full section audit with a post-rewrite verification pass
+# 3. Full section audit
+/doc-section-audit docs/infra-as-code-management/workspaces/some-page.md
+# 4. Apply the section findings across all affected files
+/doc-section-rewrite .claude/skills/doc-section-audit/audits/some-page-audit-20260413.md
+# Or, skip straight to a verified rewrite:
 /doc-section-audit docs/infra-as-code-management/workspaces/some-page.md --verify post
 ```

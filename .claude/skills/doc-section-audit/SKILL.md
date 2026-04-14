@@ -236,18 +236,23 @@ Produce a section verdict: **Healthy**, **Needs attention**, or **Restructure re
 Advisory only — findings go into the IA section of the report and do not affect the quality
 score. Flag opportunities; do not auto-apply them.
 
-**7a — Page length:**
+**7a — Section size:**
+A well-structured section has 3–5 pages maximum — an overview and 2–4 focused action pages.
+Flag the section if it has more than 5 pages as an IA issue independent of individual page
+quality. Assess whether pages can be consolidated (7c) or split into two sub-sections.
+
+**7b — Page length:**
 Flag the target page if it exceeds ~800 lines or is clearly too long for a single read.
 The ECS deployment tutorial (`ecs-deployment-tutorial`) is the benchmark for "too long."
 Consider whether the page should become a parent overview + DMS child pages.
 
-**7b — Platform doc duplication:**
+**7c — Platform doc duplication:**
 Scan the target page and each sibling for content that restates Harness Platform docs —
 RBAC, delegates, variables, expressions, secrets, connectors, service accounts.
 Suggest replacing duplicated sections with a brief context sentence + "Go to [platform doc]
 to [do Y]" link. Flag whole-page duplicates as removal candidates with redirects.
 
-**7c — Consolidation opportunities (section-level):**
+**7d — Consolidation opportunities (section-level):**
 
 *DynamicMarkdownSelector (DMS)*: recommend when multiple full-content child pages exist under
 a shared parent concept. Uses grid tiles, not limited to 4–5 options. Only recommend when
@@ -357,56 +362,20 @@ Use this exact structure:
 **Labels:** docs-quality, [module-abbreviation], [stale if applicable]
 **Effort:** Low / Medium / High
 
-## Rewrite prompt
+## Apply the rewrite
 
-Copy this prompt into Claude Code or Cursor to apply the suggested changes:
+Run this command in Claude Code to apply findings across the section in supervised phases:
 
 ```
-Rewrite the following Harness Developer Hub documentation page to address quality issues
-identified in an audit. Before making any changes, read these files in order:
-
-1. .cursor/rules/doc-structure-template.mdc  — required page structure and section order
-2. .cursor/rules/doc-linking.mdc             — link formatting (site-relative paths only)
-3. .cursor/rules/doc-slugs-and-redirects.mdc — slug and redirect_from conventions
-4. .cursor/rules/doc-move.mdc                — redirect requirements if restructuring
-5. CLAUDE.md                                 — project-wide conventions (headings, components, frontmatter)
-
-Page to rewrite: [repo-relative file path, e.g. docs/infra-as-code-management/workspaces/cli-integration.md]
-Live URL: [full URL]
-Audit report: .claude/skills/doc-section-audit/audits/[slug]-audit-YYYYMMDD.md
-
----
-ACCURACY FIXES
-[paste the full Accuracy issues section from the audit]
-
-COMPLETION GAPS TO ADDRESS
-[paste the full Completion issues section from the audit]
-
-EDITORIAL FIXES
-[paste the full Editorial issues section from the audit]
-
-STRUCTURAL REWRITE PLAN
-[paste the full Structural rewrite plan section from the audit]
-
-REDIRECTS REQUIRED
-[paste the Redirect changes required section from the audit]
-
----
-The rewritten page must satisfy all of the following before you consider it done:
-
-- Follows the doc-structure-template skeleton exactly (frontmatter → intro → prerequisites →
-  steps → Troubleshoot component → Next steps)
-- Frontmatter is complete: title, sidebar_label (Title Case), description, keywords, tags;
-  slug does not include a /docs/ prefix
-- All ## and ### headings use sentence case; imperative form for instructional sections
-- All internal links use site-relative paths (/docs/...), never full production URLs
-- redirect_from added to frontmatter for any URL being superseded
-- <Troubleshoot> component replaces any static troubleshooting headings (import from
-  @site/src/components/AdaptiveAIContent)
-- UI element names are consistently bolded
-- No intro is missing before the first list or step
-- Page scores ≥ 80 on a re-audit across Accuracy, Completion, and Editorial dimensions
+/doc-section-rewrite .claude/skills/doc-section-audit/audits/[slug]-audit-YYYYMMDD.md
 ```
+
+Claude Code reads all files first, then works through Phase 1 (structure), Phase 2 (content),
+and Phase 3 (cleanup), pausing for a `git diff` review between each phase. File deletions are
+always listed as manual steps, never executed automatically.
+
+**Prefer Cursor?** Each phase block produced by `/doc-section-rewrite` is self-contained and
+can be pasted into a Cursor chat independently.
 
 ---
 

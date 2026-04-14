@@ -160,33 +160,52 @@ or service accounts.
 
 ### 4c — Consolidation: DMS vs tabs vs synced tabs
 
-Assess whether the page, or its siblings (if visible from the section map), could benefit from
-consolidation using one of the following Docusaurus components:
+A single-page audit can flag consolidation candidates but cannot run the full cross-page heading
+similarity analysis — that requires reading every sibling, which `/doc-section-audit` does.
+If a consolidation opportunity looks likely from what is visible, note it and recommend the user
+run `/doc-section-audit` on the same file for a complete assessment.
+
+**What to flag from a single page:**
+
+- **Synced tabs signal** — Does this page appear to be one of several provider-, platform-,
+  format-, or environment-specific variants of the same concept? Look for: similar file names in
+  the same folder (e.g. `aws-setup.md`, `gcp-setup.md`, `azure-setup.md`), or headings that feel
+  like they belong to a shared template ("Create a connector", "Create your workspace",
+  "Add a provision pipeline"). These are get-started guide patterns — headings don't need exact
+  matches, just semantic equivalence across siblings. Flag as a synced tabs candidate.
+
+- **DMS signal** — Does this page already link to several full sibling guides, or does the section
+  clearly have multiple full-content child pages covering distinct topics under one parent concept?
+  Flag as a DMS candidate.
+
+- **Unsynced tabs signal** — Does this page have 2–5 parallel short sections (under ~100 lines
+  each) that could sit side-by-side? Flag as unsynced tabs candidate.
+
+**Decision guide (apply when siblings are visible):**
+
+| Signal | Best fit |
+|---|---|
+| 2–5 pages, short (≤150 lines each), same concept with provider/format/environment variants, shared heading structure | **Synced tabs** |
+| 3+ pages, medium–long (100+ lines each), distinct self-contained topics | **DMS** |
+| 2–5 pages, short–medium (≤100 lines each), related but independent concepts | **Unsynced tabs** |
+| Single long page (800+ lines), breakable into subtopics | **DMS parent + children** |
+| Siblings mostly manage or configure sub-features of one parent concept | **DMS with "Manage [X]" parent** |
 
 **DynamicMarkdownSelector (DMS)**
-- Use when multiple full-content child pages exist and a parent "hub" page would improve
-  discoverability and reduce navigation steps.
-- Not limited to 4–5 options — uses grid tiles, suited to full context pieces.
-- Reference pattern: `docs/artifact-registry/get-started/quickstart.md` pulls all child
-  get-started pages into one parent via DMS.
-- Only recommend DMS when the child pages are genuinely self-contained full guides, not when
-  they are short parallel sections.
+- Use when multiple full-content child pages exist under a shared parent concept.
+- Not limited to 4–5 options — grid tiles, suited to full self-contained guides.
+- Reference: `docs/artifact-registry/get-started/quickstart.md`.
 
 **Synced tabs**
-- Use when the same concept or procedure applies across multiple environments, platforms,
-  or providers and the user would likely only need one at a time.
-- Example: configuring a connector for AWS / GCP / Azure — the same steps but platform-specific
-  values. Syncing tabs means selecting "AWS" on one page auto-selects it elsewhere.
+- Use when the same procedure applies across providers/platforms/formats and the user needs only one variant.
+- Content differs in commands/values, not concepts.
 - Reference: https://docusaurus.io/docs/markdown-features/tabs#syncing-tab-choices
 
 **Unsynced tabs**
-- Use when several related but independent concepts can be shown side-by-side on the same page
-  to reduce vertical scroll and improve scannability.
-- Best for shorter sections (2–5 options). If options are longer or more than ~5, prefer DMS.
-- Tabs increase engagement by encouraging interaction — a useful secondary benefit but not a
-  primary goal.
+- Use for 2–5 short parallel sections on one page to reduce scroll.
+- If sections are longer or there are more than ~5 options, prefer DMS.
 
-If none of the above apply, note "No consolidation opportunity identified."
+If none apply, note "No consolidation opportunity identified."
 
 ---
 
@@ -281,10 +300,31 @@ REDIRECTS REQUIRED
 ---
 The rewritten page must satisfy all of the following before you consider it done:
 
-- Follows the doc-structure-template skeleton exactly (frontmatter → intro → prerequisites →
-  steps → Troubleshoot component → Next steps)
-- Frontmatter is complete: title, sidebar_label (Title Case), description, keywords, tags;
-  slug does not include a /docs/ prefix
+TEMPLATE STRUCTURE — verify this order is present:
+- Frontmatter (title, sidebar_label, description, keywords, tags)
+- Introduction paragraphs (no ## heading — plain prose)
+- ## What will you learn? — add for any tutorial, how-to, or overview page if absent; use a
+  short bold-label bullet list of key outcomes. Omit only for pure reference pages (permissions
+  tables, settings references, API references).
+- ## Prerequisites — concise bullets, bold label + link each, no paragraph-length bullets
+- Body content using ### (not ##) for procedural sections — this keeps the right-hand TOC
+  hierarchical. Reserve ## only for the structural anchors above.
+- ## Troubleshooting (if issues exist — use <Troubleshoot> components, never static headings)
+- ## Next steps — 1–2 sentence wrap-up + 2–4 links using "Go to X to Y" phrasing
+
+FRONTMATTER RULES:
+- sidebar_label is present and uses Title Case
+- Sidebar label deduplication — two rules, always check both:
+  1. No folder name in child labels. Child pages must not repeat the parent folder name in
+     their sidebar_label. The folder provides the context — the label should only name the
+     specific topic. For example, inside an "Access Control" folder:
+     ❌ Dashboard Access Control → ✅ Dashboards
+     ❌ Asset Governance RBAC → ✅ Asset Governance
+  2. No duplicate folder/page pair. If the folder label and a child page's sidebar_label are
+     identical, rename the page label to something more specific such as "Overview".
+- slug does not include a /docs/ prefix
+
+EDITORIAL RULES:
 - All ## and ### headings use sentence case; imperative form for instructional sections
 - All internal links use site-relative paths (/docs/...), never full production URLs
 - redirect_from added to frontmatter for any URL being superseded
@@ -292,6 +332,10 @@ The rewritten page must satisfy all of the following before you consider it done
   @site/src/components/AdaptiveAIContent)
 - UI element names are consistently bolded
 - No intro is missing before the first list or step
+- No em dashes — use a comma, semicolon, or rewrite the sentence
+- Link phrasing: "Go to [link] to [do Y]" — never "see", "refer to", "to learn more"
+- Bold label + colon for list items
+
 - Page scores ≥ 80 on a re-audit across Accuracy, Completion, and Editorial dimensions
 ```
 ```

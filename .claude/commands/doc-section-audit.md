@@ -162,14 +162,21 @@ This step is **advisory only** — findings go into a separate IA section in the
 not affect the score. Some suggestions may intentionally flex the standard template depending
 on doc type. Flag opportunities; do not auto-apply them.
 
-### 5a — Page length (target page)
+### 5a — Section size
+
+A well-structured section has **3–5 pages maximum** — typically an overview and 2–4 focused
+action pages. If the section has more than 5 pages, flag that as an IA issue in its own right,
+independent of individual page quality. Assess whether pages can be consolidated (5c) or whether
+the section should be split into two distinct sub-sections.
+
+### 5b — Page length (target page)
 
 - If the page exceeds ~800 lines or is clearly too long for a single read, flag it.
 - Reference benchmark: the ECS deployment tutorial (`ecs-deployment-tutorial`) is a known
   example of a page too long to understand in one read. Use it as a yardstick.
 - Consider whether the page could be restructured as a parent overview + DMS child pages.
 
-### 5b — Platform doc duplication (target page + siblings)
+### 5c — Platform doc duplication (target page + siblings)
 
 Scan the target page and each sibling for content that restates Harness Platform docs —
 particularly RBAC, delegates, variables, expressions, secrets, connectors, and service accounts.
@@ -177,26 +184,72 @@ particularly RBAC, delegates, variables, expressions, secrets, connectors, and s
 - Suggest replacing duplicated sections with 1–2 sentences + a "Go to [platform doc] to [do Y]" link.
 - If a sibling page entirely duplicates a platform topic, flag it as a candidate for removal with a redirect.
 
-### 5c — Consolidation opportunities (section-level)
+### 5d — Consolidation opportunities (section-level)
 
-With the full section map available, assess whether pages could be consolidated:
+With the full section map available, assess whether pages could be consolidated. Run the
+**heading similarity analysis** first, then apply the **decision guide** to choose a component.
+
+#### Heading similarity analysis
+
+Read every sibling page and extract all `##` and `###` headings. Then:
+
+1. **Normalize each heading** — lowercase, remove leading articles (a, an, the), strip punctuation.
+2. **Group near-matches across pages** — headings are "similar" if they share the same first
+   3 words, or one is a substring of the other, or they describe the same action with minor
+   rewording. Examples of matches:
+   - "Create a connector" ≈ "Add a connector" ≈ "Set up your connector"
+   - "Configure the pipeline" ≈ "Configure your pipeline"
+   - "Prerequisites" = "Prerequisites" (exact)
+3. **Count recurrence** — how many sibling pages contain each heading group?
+4. **Score the pattern** — if 3 or more heading groups each appear in 3+ sibling pages, those
+   pages share a structural pattern. This is the primary signal for synced tabs. Report the
+   top recurring headings in the Consolidation table so the rewrite author can verify before acting.
+
+**Get started guide pattern** — a common variant: a set of sibling pages (often provider-
+or format-specific) that each follow the same onboarding sequence with identical or near-
+identical headings ("Create a connector", "Create your workspace", "Add a provision pipeline",
+"Add an approval step") but with different commands, screenshots, or configuration values.
+The headings may not be exact matches — look for semantic equivalence. These are strong
+synced tabs candidates regardless of exact heading wording.
+
+#### Page profile check
+
+For each page or candidate group, note:
+- **Line count** — approximate (use `wc -l`)
+- **Topic scope** — distinct independent topic, or a provider/platform/format/environment
+  variant of the same concept?
+- **Differentiator** — does the content differ primarily in *commands/values* (synced tabs
+  candidate) or in *concepts and depth* (DMS candidate)?
+
+#### Decision guide
+
+| Signal | Best fit |
+|---|---|
+| 2–5 pages, short (≤150 lines each), same concept with provider/format/environment variants, 3+ shared heading groups | **Synced tabs** |
+| 3+ pages, medium–long (100+ lines each), distinct self-contained topics, few shared headings | **DMS** |
+| 2–5 pages, short–medium (≤100 lines each), related but independent concepts, not provider variants | **Unsynced tabs** |
+| Single long page (800+ lines) that can be broken into self-contained subtopics | **DMS parent + children** |
+| Most sibling pages manage or configure specific sub-features of one parent concept | **DMS with "Manage [X]" parent** — "Manage [X]" is a valid grouping label even when [X] matches the folder name, because the grouping describes management/configuration intent, not navigation duplication |
 
 **DynamicMarkdownSelector (DMS)**
-- Best when multiple full-content child pages exist under a shared parent concept.
-- Not limited to 4–5 options — uses grid tiles, suited to full-content guides.
+- Best when multiple full-content child pages exist under a shared parent concept and a hub
+  page improves discoverability and reduces navigation steps.
+- Not limited to 4–5 options — uses grid tiles, suited to full self-contained guides.
 - Reference pattern: `docs/artifact-registry/get-started/quickstart.md` surfaces all child
   get-started pages via DMS tiles on a single parent page.
 - Only recommend DMS when child pages are genuinely self-contained full guides, not short sections.
+- For DMS child file rules (image paths, RedirectIfStandalone props, no Troubleshooting/Next
+  steps in children), see Phase 1 and Phase 2 in `/doc-section-rewrite`.
 
 **Synced tabs**
-- Best when the same concept applies across multiple environments, platforms, or providers and
-  the user only needs one at a time (e.g. AWS / GCP / Azure variants of the same procedure).
+- Best when the same concept or procedure applies across multiple environments, platforms,
+  providers, or formats and the user only needs one variant at a time.
+- Content differs primarily in commands, values, or screenshots — not in concepts.
 - Selecting a tab on one page auto-selects it on other pages using the same `groupId`.
 - Reference: https://docusaurus.io/docs/markdown-features/tabs#syncing-tab-choices
 
 **Unsynced tabs**
-- Best for 2–5 shorter parallel sections that can sit side-by-side on one page.
-- Reduces vertical scroll and improves scannability for comparisons and options.
+- Best for 2–5 shorter parallel sections on one page to reduce vertical scroll.
 - If content is long or there are more than ~5 options, prefer DMS over tabs.
 
 For each sibling or group, note the best fit or "No consolidation opportunity."
@@ -270,57 +323,21 @@ Save to `.claude/skills/doc-section-audit/audits/[slug]-audit-YYYYMMDD.md` (e.g.
 **Labels:** docs-quality, [module], [stale if applicable]
 **Effort:** Low / Medium / High
 
-## Rewrite prompt
+## Apply the rewrite
 
-Copy this prompt into Claude Code or Cursor to apply the suggested changes:
+Run this command in Claude Code to apply findings across the section in supervised phases:
 
 ```
-Rewrite the following Harness Developer Hub documentation page to address quality issues
-identified in an audit. Before making any changes, read these files in order:
-
-1. .cursor/rules/doc-structure-template.mdc  — required page structure and section order
-2. .cursor/rules/doc-linking.mdc             — link formatting (site-relative paths only)
-3. .cursor/rules/doc-slugs-and-redirects.mdc — slug and redirect_from conventions
-4. .cursor/rules/doc-move.mdc                — redirect requirements if restructuring
-5. CLAUDE.md                                 — project-wide conventions (headings, components, frontmatter)
-
-Page to rewrite: [repo-relative file path]
-Live URL: [full URL]
-Audit report: .claude/skills/doc-section-audit/audits/[slug]-audit-YYYYMMDD.md
-
----
-ACCURACY FIXES
-[paste Accuracy issues from audit]
-
-COMPLETION GAPS TO ADDRESS
-[paste Completion issues from audit]
-
-EDITORIAL FIXES
-[paste Editorial issues from audit]
-
-STRUCTURAL REWRITE PLAN
-[paste Structural rewrite plan from audit]
-
-REDIRECTS REQUIRED
-[paste Redirect changes required from audit]
-
----
-The rewritten page must satisfy all of the following before you consider it done:
-
-- Follows the doc-structure-template skeleton exactly (frontmatter → intro → prerequisites →
-  steps → Troubleshoot component → Next steps)
-- Frontmatter is complete: title, sidebar_label (Title Case), description, keywords, tags;
-  slug does not include a /docs/ prefix
-- All ## and ### headings use sentence case; imperative form for instructional sections
-- All internal links use site-relative paths (/docs/...), never full production URLs
-- redirect_from added to frontmatter for any URL being superseded
-- <Troubleshoot> component replaces any static troubleshooting headings (import from
-  @site/src/components/AdaptiveAIContent)
-- UI element names are consistently bolded
-- No intro is missing before the first list or step
-- Page scores ≥ 80 on a re-audit across Accuracy, Completion, and Editorial dimensions
+/doc-section-rewrite .claude/skills/doc-section-audit/audits/[slug]-audit-YYYYMMDD.md
 ```
-```
+
+Claude Code will execute the changes directly — reading all files first, then working through
+Phase 1 (structure), Phase 2 (content), and Phase 3 (cleanup), pausing for a `git diff`
+review between each phase. File deletions are always listed as manual steps, never executed
+automatically.
+
+**Prefer Cursor instead?** Paste the phase blocks from `/doc-section-rewrite` output directly
+into a Cursor chat. Each phase is self-contained and can be run independently.
 
 ---
 

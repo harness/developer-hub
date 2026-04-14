@@ -1,12 +1,40 @@
 ---
 description: Standard structure template for new documentation pages
-globs: **/*.md
+globs: "**/*.{md,mdx}"
 alwaysApply: false
 ---
 
 ## Documentation structure template
 
 Follow this structure when creating new documentation pages. Adjust as needed based on content type.
+
+### Heading levels and the right-hand TOC
+
+Use heading levels so the **in-page table of contents** (Docusaurus right rail) shows a **hierarchy**, not a single flat list of `##` entries.
+
+**`##` (H2) — Major sections**
+
+Reserve `##` for the structural blocks that frame the page. Use these headings (omit any section that does not apply):
+
+- **`## What will you learn?`** (optional)
+- **`## Prerequisites`**
+- **`## Troubleshooting`**
+- **`## Next steps`**
+
+**`###` (H3) and deeper — Body content between those anchors**
+
+Use `###` (and `####` when needed) for procedural chunks, comparisons, grouped steps, and conceptual subsections **between** Prerequisites and Troubleshooting. Prefer **at least** `###` for those stages so the TOC **indents** under the major outline instead of listing many same-level `##` siblings.
+
+This is not a rigid rule for every page, but it should be the default when it keeps the outline intuitive.
+
+**Exceptions**
+
+- **Short, linear get started guides** may use `## Step 1`, `## Step 2`, … when the whole page is a tight sequence and there are few other `##` sections. If the guide grows, switch to `###` under a parent `##` or collapse steps under clearer `###` groupings.
+- **Deep nesting:** Use `####` for substeps inside a `###` group when it stays readable (see Step groups under Step-by-step instructions).
+
+**Introduction**
+
+Keep the opening **introduction as normal paragraphs** (no `## Introduction` heading) unless a doc type requires otherwise. The first `##` in the file is often **What will you learn?** or **Prerequisites**.
 
 ### Standard structure
 
@@ -38,9 +66,7 @@ tags:
 - **Paragraph 2**: Why use it? What problems does it solve?
 - **Paragraph 3**: Key benefits or use cases
 
-##### What will you learn?
-
-Optionally include a brief list of key outcomes or topics covered in this guide:
+Optionally include a brief list of key outcomes or topics covered in this guide. In the authored page, use an **`##`** heading so it matches the major-section pattern in [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc):
 
 ```markdown
 ## What will you learn?
@@ -77,18 +103,18 @@ For modules other than IaCM, keep the same pattern: **UI location** when entitle
 
 #### 4. Step-by-step instructions
 
-Use clear, numbered sections with **imperative** headers in **sentence case** (e.g. `## Create an inventory`, not gerunds like "Creating an inventory"). Capitalize **proper nouns**: product and technology names (e.g. **Kubernetes**, **Terraform**, **OpenTofu**, **Harness**, **IaCM**, **AWS**) and official **Harness** UI feature names when they are branded or module names.
+Use clear sections with **imperative** headers in **sentence case** (e.g. `### Create an inventory`, not gerunds like "Creating an inventory"). Default to **`###`** for procedural blocks so they sit **between** the `##` landmarks (Prerequisites, Troubleshooting, Next steps) and produce a nested TOC, per [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc). Capitalize **proper nouns**: product and technology names (e.g. **Kubernetes**, **Terraform**, **OpenTofu**, **Harness**, **IaCM**, **AWS**) and official **Harness** UI feature names when they are branded or module names.
 
-- **Get started guides — `## Step 1`, `## Step 2`, etc.:** For **onboarding / get started** pages only, you may use numbered step headings (e.g. `## Step 1: Add connectors`) to emphasize a short, linear path. This is an **exception** to the usual imperative-phrase section titles. Use it **only for actionable procedure**—the body of the guide where the user does things in order. Do **not** use `## Step N` for **Prerequisites**, **Troubleshooting**, or **Next steps** (keep those sections titled as noun phrases or fixed labels like `## Prerequisites`, `## Troubleshooting`, `## Next steps`). Do not label introductory or conceptual blocks as steps.
+- **Get started guides — `## Step 1`, `## Step 2`, or `### Step 1`, `### Step 2`:** For **onboarding / get started** pages, you may use numbered step headings to emphasize a short, linear path. Prefer **`### Step N`** when other `##` sections exist on the page; reserve **`## Step N`** for very short guides per the exception in [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc). Use numbered step headings **only** for actionable procedure. Do **not** use step headings for **Prerequisites**, **Troubleshooting**, or **Next steps** (keep those as `## Prerequisites`, `## Troubleshooting`, `## Next steps`). Do not label introductory or conceptual blocks as steps.
 - **Step groups:** When several steps form a logical group (e.g. module details), add a **heading for that group** (e.g. `### Module details`) and nest the steps under it (e.g. `#### Step 1`, `#### Step 2`). Add a **one-line summary** under the group heading so the reader knows what those steps accomplish (e.g. "The following steps (1–3) configure the module name, provider, connector, and storage type.").
 - **Intro before lists:** **Always add a short intro sentence before every numbered or bullet list** that states what the list is for or what the reader is about to do. Do not jump straight into "1. Select...". This helps readers and LLMs understand context (e.g. "On the Execution pipeline step of the wizard, do the following:" then "1. Select a pipeline...").
-- **UI elements:** **Bold all clickable or selectable UI elements** in steps: menu names, buttons, tabs, checkboxes, dropdowns, field labels. Use the same convention everywhere; do not mix bold and plain for the same type of element (e.g. every button like **Create**, **Sync**, **Next** should be bold).
+- **UI elements:** For **exact** labels as they appear in the product (buttons, menu commands, setting names, strategy options), use **single quotes** (`'Mark as Failed'`) per [writing-style — Buttons and exact UI labels](mdc:writing-style.mdc). **Bold** other clickable or selectable references in steps (tabs, generic field labels) when you are not quoting the literal string; keep the same convention for each type of element throughout the page.
 - **Unfamiliar actions:** When the doc tells the user to do something they might not know how to do (e.g. "run manual sync", "create the pipeline manually"):
   - If it's explained **elsewhere in the same doc**, link to that section (e.g. "For how to run the manual sync, see [Step 6: Create and run the initial sync](#step-6-create-and-run-the-initial-sync).").
   - If it's **"create X manually"**, give the UI path (e.g. "Go to **Infrastructure** > **Pipelines** > **Create a Pipeline** in your project") and link to the doc that describes it (e.g. "see [Harness Pipelines](/docs/category/pipelines)").
 
 ```markdown
-## Step 1: Create an inventory
+### Create an inventory
 
 Instructions here.
 
@@ -96,7 +122,7 @@ Instructions here.
 Add troubleshooting hints inline when they help anticipate common issues.
 :::
 
-## Step 2: Register a playbook
+### Register a playbook
 
 More instructions.
 ```
@@ -111,7 +137,9 @@ More instructions.
 
 Only include if there are general issues not tied to specific steps.
 
-Use the `<Troubleshoot>` component from `AdaptiveAIContent` — do **not** use static `### heading` + `**Solution:**` pairs. The component renders a collapsible entry sourced from live docs (Kapa) or pre-generated AI responses (Gemini), with a static fallback.
+The section title must be **`## Troubleshooting`** so it aligns with the other `##` landmarks in [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc).
+
+Use the `<Troubleshoot>` component from `AdaptiveAIContent` — do **not** use static `### heading` + `**Solution:**` pairs **for each issue** (the `issue` prop is the per-entry heading). The component renders a collapsible entry sourced from live docs (Kapa) or pre-generated AI responses (Gemini), with a static fallback.
 
 Import at the top of the file (after frontmatter):
 
@@ -169,6 +197,8 @@ Wrap up with:
 - **Brief conclusion** (1-2 sentences): Summarize what was accomplished
 - **2-3 related links**: Most logical next actions or related docs
 
+Use **`## Next steps`** as the heading so it stays a top-level TOC entry alongside Prerequisites and Troubleshooting.
+
 ```markdown
 ## Next steps
 
@@ -179,15 +209,84 @@ You've successfully [accomplished X]. You can now [key capability unlocked].
 - [Related doc 3]
 ```
 
+### Information architecture: DynamicMarkdownSelector (DMS) and tabs
+
+This section is advisory when choosing layout; it does not replace the standard section order above.
+The same criteria apply in Claude commands: `.claude/commands/doc-section-audit.md` (Step 5d).
+
+#### Choosing between DMS, synced tabs, and unsynced tabs
+
+Before choosing a component, scan sibling pages for a **structural pattern**:
+
+1. Extract all `##` and `###` headings from each sibling page.
+2. Normalize them (lowercase, drop leading articles, strip punctuation).
+3. Group near-matches across pages — headings are "similar" if they share the same first 3 words
+   or describe the same action with minor rewording (e.g. "Create a connector" ≈ "Add a connector").
+4. Count how many sibling pages contain each heading group.
+
+If **3+ heading groups each appear in 3+ sibling pages**, the pages share a structural pattern —
+strong signal for **synced tabs**.
+
+**Get started guide pattern** — a common variant: provider- or format-specific siblings that each
+follow the same onboarding sequence (e.g. "Create a connector", "Create your workspace",
+"Add a provision pipeline") but with different commands or screenshots. The headings may not be
+exact matches — look for semantic equivalence. These are synced tabs candidates.
+
+**Decision guide:**
+
+| Signal | Best fit |
+|---|---|
+| 2–5 pages, short (≤150 lines each), same concept with provider/format/environment variants, 3+ shared heading groups | **Synced tabs** |
+| 3+ pages, medium–long (100+ lines each), distinct self-contained topics, few shared headings | **DMS** |
+| 2–5 pages, short–medium (≤100 lines each), related but independent concepts, not provider variants | **Unsynced tabs** |
+| Single long page (800+ lines) that can be broken into self-contained subtopics | **DMS parent + children** |
+| Most siblings manage or configure sub-features of one parent concept | **DMS with "Manage [X]" parent** |
+
+Note: "Manage [X]" is a valid grouping label even when [X] matches the folder name — the
+grouping describes management intent, not navigation duplication.
+
+#### DynamicMarkdownSelector (DMS)
+
+- Use when **multiple full-content child pages** exist under a shared parent concept and a **hub** page improves discoverability.
+- The UI uses **grid tiles** — not limited to four or five options.
+- Use DMS only when each child is a **genuine, self-contained guide**. Do **not** use DMS for short parallel sections.
+- **Reference pattern:** repo file `docs/artifact-registry/get-started/quickstart.md` (parent pulls children via DMS).
+
+**Implementation (DMS):**
+
+- Import: `import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';`
+- Child Markdown files live under `docs/<module>/<section>/content/` and are referenced with site-style paths in `options`.
+- Pass **`toc`** from MDX and bracket the component with **`precedingHeadingID`** / **`nextHeadingID`**.
+- Child files may import `RedirectIfStandalone` — always pass both `label` and `targetPage` props.
+  A bare `<RedirectIfStandalone />` with no props crashes at runtime.
+- Child files must **not** contain `## Troubleshooting` or `## Next steps` — these belong on the parent only.
+- Image paths in child files use `../static/image.png` (not `./static/`) because child files sit one
+  level deeper than the parent's static folder.
+
+#### Synced tabs
+
+- Use when the **same concept or procedure** applies across environments, platforms, or providers and the reader needs **only one** variant at a time.
+- Content differs primarily in commands, values, or screenshots — not in concepts.
+- Synced tabs keep the tab choice aligned across pages sharing the same `groupId`.
+- Reference: [Docusaurus synced tabs](https://docusaurus.io/docs/markdown-features/tabs#syncing-tab-choices).
+
+#### Unsynced tabs
+
+- Use for **2–5 shorter** parallel sections on **one** page to reduce vertical scroll.
+- If sections are **long** or there are **more than ~5** options, prefer **DMS** instead.
+
+If none of these apply, a conventional single page or sidebar navigation is fine.
+
 ### Markdown headings and sidebar
 
 - **No `#` (h1) in the file body.** Do not use a single-hash heading in Markdown. Start the document body at `##`. The page still has an official title via frontmatter `title` (and Docusaurus may render it per theme).
-- **Sentence case for in-doc headings (`##`, `###`, …):** Capitalize the **first word** only, except for **proper nouns**: technologies (e.g. **Docker**, **Kubernetes**, **GitHub**), **Harness** modules and products (e.g. **IaCM**, **STO**, **CD** when referring to the module), and other trademarked or official names. Examples: `## Create a pipeline`, `## Configure the IaCM plugin`, `## Install a Kubernetes delegate`.
+- **H2 vs H3:** Follow [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc): use `##` for What will you learn?, Prerequisites, Troubleshooting, and Next steps; use `###` and deeper for instructional body content between those anchors so the right-hand TOC is hierarchical.
+- **Sentence case for in-doc headings (`##`, `###`, …):** Capitalize the **first word** only, except for **proper nouns**: technologies (e.g. **Docker**, **Kubernetes**, **GitHub**), **Harness** modules and products (e.g. **IaCM**, **STO**, **CD** when referring to the module), and other trademarked or official names. Examples: `### Create a pipeline`, `### Configure the IaCM plugin`, `### Install a Kubernetes delegate` (when those are procedural sections); `## Prerequisites` for major sections.
 - **Sidebar labels (navigation):** Use **Title Case** — capitalize major words in the left nav. Set this with **`sidebar_label`** when it needs to read differently from `title`, or shape the **`title`** itself in Title Case if it doubles as the sidebar label and matches the nav wording you want.
 
 ### Content guidelines
 
-- **Headers:** Imperative, sentence case; no gerunds in step titles (prefer `## Configure the connector` over `## Configuring the connector`). Exception: concept sections may use noun phrases (`## Troubleshooting`, `## Prerequisites`). **Get started** guides may use `## Step 1`, `## Step 2`, … **only** for actionable onboarding steps—not for Prerequisites, Troubleshooting, or Next steps. Gerunds are fine for broad concepts like "Understanding CI/CD" when that fits the content.
+- **Headers:** Imperative, sentence case; no gerunds in step titles (prefer `### Configure the connector` over `### Configuring the connector`). Exception: concept sections may use noun phrases (`## Troubleshooting`, `## Prerequisites`). **Get started** guides may use `## Step 1` / `### Step 1`, … per [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc)—only for actionable onboarding steps, not for Prerequisites, Troubleshooting, or Next steps. Gerunds are fine for broad concepts like "Understanding CI/CD" when that fits the content.
 - **Lists:** When each item has a concept/action and an explanation, use **Bold label:** description. For simple self-explanatory lists, plain formatting is fine. Always add a short intro sentence before a list that states what the list is for.
 - Keep prerequisites minimal and relevant; link to "how" for each.
 - Include code examples where helpful.
