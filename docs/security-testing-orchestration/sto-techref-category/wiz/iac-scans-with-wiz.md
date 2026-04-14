@@ -18,6 +18,15 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 
 You can easily set up a Wiz step to run automated scans in your Harness pipeline. This step scans the IaC repository you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into Harness. You can see your scan results in the [Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) tab of the pipeline execution.  
 
+:::info
+**Wiz CLI Upgrade Notice**
+
+The Wiz CLI will be upgraded from version `0.x` to `1.x`. Harness STO supports this upgrade transparently, and no pipeline changes are required.
+CLI version `0.x` will continue to work with existing credentials, while CLI version `1.x` requires new credentials. Credentials used with CLI `0.x` are not supported in CLI `v1.x`.
+
+:::
+
+
 ## Important notes for running Wiz scans in STO 
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
