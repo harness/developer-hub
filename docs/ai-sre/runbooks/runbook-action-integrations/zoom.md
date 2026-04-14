@@ -19,6 +19,25 @@ Zoom integration enables your runbooks to:
 - Share meeting recordings
 - Track attendance
 
+## Connector Requirements
+
+### When You Need the Zoom Connector
+
+The Zoom connector is required for **programmatic meeting creation** — creating meetings via runbook actions with the ability to:
+- Create new meetings on demand
+- Set meeting names, duration, and descriptions
+- Programmatically invite participants
+- Configure meeting settings (waiting room, passcode, auto-recording, etc.)
+
+### When You Don't Need the Zoom Connector
+
+You do **not** need a connector if you only want to:
+- Join existing Zoom meetings using static bridge links
+- Use pre-configured, recurring meeting rooms
+- Manually create meetings through the Zoom web interface
+
+If your incident response workflow uses static meeting bridges that responders join manually, the Zoom connector is not required.
+
 ## Integration Setup
 
 ### Prerequisites
@@ -30,11 +49,74 @@ Zoom integration enables your runbooks to:
 
 1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
 2. Select **Zoom** from the available integrations
-3. Configure authentication:
-   - Choose between OAuth (recommended) or Account ID and Secret
-   - For OAuth: Click "Sign in with Zoom" and authorize access
+3. Configure authentication (see [Authentication Methods](#authentication-methods) below)
 4. Grant required API permissions (see below)
 5. Test the connection
+
+### Authentication Methods
+
+Zoom integrations in Harness AI SRE support two authentication methods: **Server-to-Server OAuth** and **API Key/Secret** (Account ID and Secret). The authentication method you choose affects how the AI Scribe Agent joins incident meetings.
+
+#### Server-to-Server OAuth (Recommended)
+
+OAuth authentication enables the AI Scribe Agent to join Zoom meetings automatically without waiting room delays.
+
+**Capabilities:**
+- **Automatic meeting join**: Generates ZAK (Zoom Access Key) tokens that allow the bot to bypass waiting rooms
+- **No manual admission required**: The bot joins immediately when the meeting starts
+- **Full programmatic access**: Create, configure, and manage meetings via runbook actions
+- **Silent operation**: No error alerts related to meeting access
+
+**Use OAuth when:**
+- You want the AI Scribe Agent to join incident war rooms automatically
+- You need reliable meeting transcription without manual intervention
+- You're using runbook actions to create meetings programmatically
+
+**Setup:**
+1. In the Zoom integration configuration, select **OAuth**
+2. Click **Sign in with Zoom** and authorize access
+3. Grant the required API scopes listed below
+4. Test the connection
+
+#### API Key/Secret Authentication
+
+API Key authentication (Account ID and Secret) provides basic meeting management capabilities but limits automatic meeting participation.
+
+**Limitations:**
+- **No ZAK token support**: Cannot generate tokens that bypass waiting rooms
+- **Waiting room requirement**: The bot joins as a standard participant and requires manual admission
+- **Manual intervention needed**: Someone on the call must admit the bot from the waiting room
+- **Alert messages**: Generates error messages in Slack when attempting to request ZAK tokens
+
+**Behavior with API Key authentication:**
+
+When the AI Scribe Agent attempts to join a meeting with API Key authentication:
+
+1. Bot attempts to join meeting using ZAK token → request fails (ZAK not supported with API Key auth)
+2. Bot falls back to standard join → lands in waiting room
+3. Error alert appears in Slack: "ZAK token generation not supported"
+4. A meeting participant must manually admit the bot
+5. If no one admits the bot, it misses the meeting entirely and no transcript is captured
+
+**Use API Key when:**
+- You only need to create meetings programmatically (not join them for transcription)
+- Your team is comfortable manually admitting the bot to meetings
+- OAuth setup is not feasible for your organization
+
+:::warning Missing Meeting Transcripts
+If using API Key authentication, the AI Scribe Agent will miss meetings where no participant admits it from the waiting room. This results in incomplete incident documentation. For reliable transcription, use Server-to-Server OAuth.
+:::
+
+#### Switching from API Key to OAuth
+
+If you're currently using API Key authentication and experiencing issues with bot admission or seeing ZAK token error alerts:
+
+1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)** → **Zoom**
+2. Remove the existing API Key configuration
+3. Select **OAuth** and follow the setup instructions above
+4. Test by creating a meeting via runbook and verifying the bot joins automatically
+
+Alternatively, if OAuth is not feasible, you can suppress the ZAK token error alerts in your Slack notification settings.
 
 ### Required Permissions
 
@@ -178,12 +260,18 @@ Creates a new Zoom meeting for incident coordination.
    - Check permissions
    - Confirm account access
 
-2. **Meeting Creation Errors**
+2. **AI Scribe Bot Not Joining Meetings / ZAK Token Errors**
+   - **Symptom**: Bot lands in waiting room, requires manual admission, or you see "ZAK token generation not supported" errors in Slack
+   - **Cause**: Using API Key authentication instead of OAuth
+   - **Solution**: Switch to Server-to-Server OAuth (see [Switching from API Key to OAuth](#switching-from-api-key-to-oauth))
+   - **Workaround**: Manually admit the bot from the waiting room, or suppress ZAK token error alerts in Slack
+
+3. **Meeting Creation Errors**
    - Check scheduling conflicts
    - Verify user limits
    - Confirm host rights
 
-3. **Recording Issues**
+4. **Recording Issues**
    - Check storage space
    - Verify permissions
    - Confirm settings
