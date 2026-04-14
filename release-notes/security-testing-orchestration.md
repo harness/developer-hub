@@ -23,12 +23,53 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 
-## February 2026
+## March 2026
 
+### Version 1.187.2
+
+#### New Features and Enhancements
+
+##### Manual Severity Override - Now Generally Available
+
+[**Manual Severity Override**](/docs/security-testing-orchestration/severity-override/manual-override) is now **generally available (GA)**. This feature allows you to manually override the severity of security issues when the severity assigned by Harness STO does not align with your internal risk assessments. This enables more accurate prioritization based on issue criticality, exploit exposure, compensating controls, and production impact. Previously, this was behind the feature flag `STO_ISSUE_OVERRIDE`.
+
+<!-- <DocImage path={require('./static/severity-override.png')} width="70%" height="50%" /> -->
+
+##### EPSS Scoring - Now Generally Available
+
+[**EPSS Scoring**](/docs/security-testing-orchestration/risk-and-priortization/epss-score) is now **generally available (GA)**. EPSS (Exploit Prediction Scoring System) scoring for CVE-associated security issues is available on the Issues and Vulnerabilities page. This supports a risk-based approach, helping you focus on vulnerabilities based on real-world exploitation signals rather than theoretical impact alone. Previously, this was behind the feature flag `STO_ISSUE_EPSS`.
+<!-- 
+<DocImage path={require('./static/epss-score.png')} width="70%" height="50%" /> -->
+
+##### Exemptions Page Filters - Now Generally Available
+
+[**Exemptions Page Filters**](/docs/security-testing-orchestration/exemptions/exemption-workflows#filters-in-exemption-section) are now **generally available (GA)**. You can now filter exemptions based on Issue Type, Target, Target Type, Severity, and many more criteria to quickly narrow down and manage exemption requests. Previously, this was behind the feature flag `STO_EXEMPTION_FILTER`.
+
+##### Container Image Digest as Variant
+
+Container scan steps now support using an **image digest** (for example, `@sha256:…`) as the **target variant**. This will allow for pulling and scanning images by digest.
+
+##### Harness SAST and SCA Scanners - Now Generally Available
+
+[**Harness SAST**](/docs/security-testing-orchestration/harness-security-scanners/sast) and [**Harness SCA**](/docs/security-testing-orchestration/harness-security-scanners/sca) scanners are now **generally available (GA)** for all customers. These native scanners enable you to run security scans directly as part of your CI/CD pipelines with one-click configuration, with built-in data flow visualization, reachability analysis, and AI-powered remediation.
+
+##### Wiz CLI Upgrade Notice
+
+The Wiz CLI will be upgraded from version `0.x` to `1.x`. Harness STO supports this upgrade transparently, and no pipeline changes are required.
+CLI version `0.x` will continue to work with existing credentials, while CLI version `1.x` requires new credentials. Credentials used with CLI `0.x` are not supported in CLI `v1.x`.
+
+#### Fixed Issues
+
+- Fixed an issue where filters set on the **Issues** page were also applied to the **Exemptions** page. Filters for each page are now independent (STO-10722).
+- Fixed an issue where two or more issues with the same title in a pipeline execution opened the same issue detail. Selecting an issue now opens the correct finding for that scanner step (STO-9662, [ZD-91386](https://harnesssupport.zendesk.com/agent/tickets/91386)).
+- Fixed an issue where the **Approved By** filter on the **Exemptions** page showed a count of zero on the **Pending**, **Rejected**, and **Expired** tabs. Tab counts now match the filtered exemption list (STO-11020).
+
+
+## February 2026
 
 ### Version 1.183.0
 
-#### New features and Enhancements
+#### New Features and Enhancements
 
 [**Manual Severity override:**](/docs/security-testing-orchestration/severity-override/manual-override) Added support for manually overriding the severity of security issues when the severity assigned by Harness STO does not align with internal risk assessments. This enables more accurate prioritization based on issue criticality, exploit exposure, compensating controls, and production impact. This feature is behind the feature flag `STO_ISSUE_OVERRIDE`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
