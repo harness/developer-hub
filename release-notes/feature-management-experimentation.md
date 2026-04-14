@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-04-08T10:00:00
+date: 2026-04-14T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,9 +14,34 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: April 8, 2026
+#### Last updated: April 14, 2026
 
 ## April 2026
+
+### [New Enhancement] Reallocate Traffic (Reseed Bucketing) API
+----
+#### 2026-04-14
+
+The Harness FME API now includes a Reallocate Traffic endpoint, allowing you to reset the <Tooltip id="fme.feature-management.bucketing-seed">bucketing seed</Tooltip> for a feature flag in a specific [environment](/docs/feature-management-experimentation/environments). This operation reassigns all users to new buckets based on existing [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting), effectively resetting treatment assignments. 
+
+```json title="Example JSON Payload"
+{
+  "title": "Optional title for the change.",
+  "comment": "Optional comment explaining the reallocation."
+}
+```
+
+Previously only available in the FME UI, this endpoint enables reallocation as part of your deployment workflows.
+
+Use the [Reallocate Traffic API](https://docs.split.io/reference/reallocate-traffic-reseed-bucketing) when you need to:
+
+- Redistribute users across treatments without changing targeting rules
+- Collect unbiased feedback from a new set of users on a feature
+
+#### Related documentation
+
+- [Reallocate Traffic (Reseed Bucketing) API](https://docs.split.io/reference/reallocate-traffic-reseed-bucketing)
+- [How Bucketing Works](/docs/feature-management-experimentation/feature-management#ensuring-a-consistent-user-experience) 
 
 ### [New Feature] Warehouse Native Experimentation is GA
 ----

@@ -15,7 +15,8 @@
     },
     "fme": {
       "feature-management": {
-        "segment": "Segments are groups of users defined by specific attributes or behaviors. They allow you to target feature flags and experiments to specific subsets of your user base."
+        "segment": "Segments are groups of users defined by specific attributes or behaviors. They allow you to target feature flags and experiments to specific subsets of your user base.",
+        "bucketing-seed": "A value used to ensure consistent assignment of users to variations in an experiment. By using the same bucketing seed, you can ensure that users are consistently bucketed into the same variation across different evaluations."
         },
       "release-monitoring": {
         "metric":"A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance."

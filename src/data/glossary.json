@@ -47,6 +47,21 @@
       ]
     },
     {
+      "id": "fme.feature-management.bucketing-seed",
+      "term": "bucketing seed",
+      "definition": "A value used to ensure consistent assignment of users to variations in an experiment. By using the same bucketing seed, you can ensure that users are consistently bucketed into the same variation across different evaluations.",
+      "slug": "bucketing-seed",
+      "module": "fme",
+      "category": "feature-management",
+      "letter": "B",
+      "related": [
+        {
+          "term": "segment",
+          "slug": "segment"
+        }
+      ]
+    },
+    {
       "id": "iacm.provider-registry.checksum-file",
       "term": "checksum file",
       "definition": "A file listing SHA-256 hashes for each binary you plan to publish. The registry uses this to verify file integrity.",
@@ -557,7 +572,12 @@
       "module": "fme",
       "category": "feature-management",
       "letter": "S",
-      "related": []
+      "related": [
+        {
+          "term": "bucketing seed",
+          "slug": "bucketing-seed"
+        }
+      ]
     },
     {
       "id": "iacm.provider-registry.signature-file",
@@ -755,6 +775,21 @@
           {
             "term": "gpg key",
             "slug": "gpg-key"
+          }
+        ]
+      },
+      {
+        "id": "fme.feature-management.bucketing-seed",
+        "term": "bucketing seed",
+        "definition": "A value used to ensure consistent assignment of users to variations in an experiment. By using the same bucketing seed, you can ensure that users are consistently bucketed into the same variation across different evaluations.",
+        "slug": "bucketing-seed",
+        "module": "fme",
+        "category": "feature-management",
+        "letter": "B",
+        "related": [
+          {
+            "term": "segment",
+            "slug": "segment"
           }
         ]
       }
@@ -1291,7 +1326,12 @@
         "module": "fme",
         "category": "feature-management",
         "letter": "S",
-        "related": []
+        "related": [
+          {
+            "term": "bucketing seed",
+            "slug": "bucketing-seed"
+          }
+        ]
       },
       {
         "id": "iacm.provider-registry.signature-file",
