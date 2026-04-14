@@ -6,15 +6,11 @@ redirect_from:
   - /docs/platform/pipelines/download-logs
 ---
 
-:::note
-Currently, this feature is behind the feature flag `SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-You can download pipeline or step execution logs via the UI. You can download pipeline, stage, and step execution logs via the API.
+You can download pipeline, stage, and step execution logs either through the UI or via the API.
 
 The process of downloading logs is the same for all Harness modules. Your access to certain modules and settings limits the functionality available to you.
 
-After you download the execution log files, you can view the JSON logs.
+After downloading, logs are provided as a `.zip` file containing log files in **NDJSON (newline-delimited JSON)** format, where each line is a standalone JSON object.
 
 :::info
 The extracted files have many levels of nested directories. To locate specific log files, you might need to navigate through several levels.
@@ -22,9 +18,9 @@ The extracted files have many levels of nested directories. To locate specific l
 
 ## Important notes
 
-* You might encounter the error message `Prefix Key Exceeds Maximum Download Limit` if your execution exceeds the maximum number of log files.
-   * Log files are stored in chunks for optimization purposes.
-   * There is a hard limit of 2000 log files per execution. Contact [Harness Support](mailto:support@harness.io) if this limitation causes issues for you.
+* You might encounter the error message `Prefix Key Exceeds Maximum Download Limit` if your download exceeds the maximum number of log files.
+   * The download contains individual log files for each step and step sub-section in the execution.
+   * There is a limit of 500 log files per download request.
 * Windows users may encounter issues extracting `logs.zip` with the native extraction tool. To avoid this, we recommend using a third-party tool such as 7-Zip or similar.
 
 ## Download pipeline log files
@@ -62,21 +58,29 @@ You can download pipeline, stage, and step execution logs via the Log Service AP
 
 The response contains a link to download the requested log file.
 
-### Download logs with simplified log key
-
-:::note
-
-Currently, the simplified log key to download logs is behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-This feature requires delegate version 23.10.81010 or later.
-
-After enabling this feature flag, you must re-run your pipelines to apply the change.
-
+:::warning
+Ensure the pipeline execution has completed before attempting to download logs. Downloading logs from a running execution may result in incomplete or missing log files.
 :::
 
-The simplified log key makes it easier to call the Log Service API.
+:::note
+Delegates with versions lower than 23.10.81010 may have issues with log streaming.
+:::
 
-The log download endpoint is asynchronous; the downloadable log file is available after the endpoint returns a `success` status only.
+The log download endpoint is asynchronous. The initial response returns a `queued` status. You must poll the same endpoint until the `status` changes to `success`, at which point the `link` field contains the URL to download the `logs.zip` file.
+
+Example response:
+
+```json
+{
+  "link": "https://storage.googleapis.com/<STORAGE_PATH>/logs.zip?Expires=...",
+  "status": "queued",
+  "expires": "2026-04-13T18:24:23Z"
+}
+```
+
+* `link`: The URL to download the `logs.zip` file.
+* `status`: The current state of the download request (`queued`, `success`).
+* `expires`: When the download link expires.
 
 #### cURL command to download pipeline logs
 
