@@ -1,0 +1,11 @@
+{
+    "label": "Single sign-on with SAML",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "6",
+    "link": {
+        "type": "generated-index",
+        "title": "Single sign-on with SAML"
+    }
+}

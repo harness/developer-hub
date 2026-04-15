@@ -5,7 +5,7 @@ For additional details, refer to the [Authentication Overview](/docs/platform/au
 
 | SSO Type                                                                    | SSO Providers      | Authentication Supported | Authorization Supported (Group Linking) | SCIM Provisioning |
 |-----------------------------------------------------------------------------|--------------------|--------------------------|-----------------------------------------|-------------------|
-| [SAML 2.0](/docs/platform/authentication/single-sign-on-saml.md)            | Okta               | Yes                      | Yes                                     | Yes               |
+| [SAML 2.0](/docs/platform/authentication/single-sign-on-saml/overview)            | Okta               | Yes                      | Yes                                     | Yes               |
 |                                                                             | Microsoft Entra ID | Yes                      | Yes                                     | Yes               |
 |                                                                             | Others             | Yes                      | Yes                                     | No                |
 |                                                                             | OneLogin           | Yes                      | Yes                                     | Yes               |

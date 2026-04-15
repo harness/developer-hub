@@ -1,7 +1,7 @@
 ---
 title: Overview
 description: Configure authentication methods, password policies, session timeouts, and audit login events in Harness.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: gdob5gvyco
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
@@ -11,8 +11,6 @@ redirect_from:
   - /docs/platform/authentication/authentication-overview
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 Authentication in Harness controls who can access your account and how. The first layer of Harness access control includes:
 
@@ -28,7 +26,6 @@ This page covers **_authentication_**. For information about **_authorization_**
 ---
 
 ## What will you learn in this topic?
-
 By the end of this topic, you will be able to understand:
 
 - How to [configure authentication](#configure-authentication) methods for your Harness account, including [Harness login, OAuth](#enable-public-oauth-providers), Security Assertion Markup Language (SAML), and Lightweight Directory Access Protocol (LDAP).
@@ -140,7 +137,6 @@ Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPO
 To configure multiple SAML providers in Harness, follow the steps below:
 
 1. Select **Account Settings**, and then select **Authentication**.
-
 2. Select **Login via SAML** and add the SAML providers you need.
 
     a. If no SAML providers are configured for the account, select **Add SAML Provider**.
@@ -162,45 +158,17 @@ To configure multiple SAML providers in Harness, follow the steps below:
    <DocImage path={require('./static/select-provider.png')} width="80%" height="40%" title="Click to view full size image" />
     </div>
 
-        <Tabs>
-        <TabItem value="Microsoft Entra ID">
+    Based on the SAML provider you select, refer to one of the following:
+      - <a href="/docs/platform/authentication/single-sign-on-saml/okta"target="_blank" >SAML SSO with Okta</a>
+      - <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id"target="_blank" >SAML SSO with Microsoft Entra ID</a>
+      - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin"target="_blank" >SAML SSO with OneLogin</a> 
+      - <a href="/docs/platform/authentication/single-sign-on-saml/keycloak"target="_blank" >SAML SSO with Keycloak</a>
 
+    b. Select **Continue**.
 
-          For steps to configure, go to <a href="/docs/platform/authentication/single-sign-on-saml#saml-sso-with-azure" target="_blank" >SAML SSO with Microsoft Entra ID</a>.
+    c. Select **Submit**.
 
-
-        </TabItem>
-        <TabItem value="Okta">
-
-
-          For steps to configure, go to <a href="/docs/platform/authentication/single-sign-on-saml#saml-sso-with-okta" target="_blank" >SAML SSO with Okta</a>.
-
-
-        </TabItem>
-              <TabItem value="OneLogin">
-
-
-          For steps to configure, go to <a href="/docs/platform/authentication/single-sign-on-saml#saml-sso-with-onelogin" target="_blank" >SAML SSO with OneLogin</a>.
-
-
-        </TabItem>
-        <TabItem value="Others">
-
-
-          For steps to configure, go to <a href="/docs/platform/authentication/single-sign-on-saml#saml-sso-with-keycloak" target="_blank" >SAML SSO with Keycloak</a>.
-
-
-        </TabItem>
-        </Tabs>
-
-      - In the **URL and Identity Provider** screen, upload the Identity Provider metadata XML and select **Continue**.
-
-      <div style={{textAlign: 'center'}}>
-          <DocImage path={require('./static/url-id-provider.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
-
-      - Click **Submit**.
-      
-      The SAML provider is now listed under **Login via SAML**.
+          The SAML provider is now listed in **Login via SAML**.
 
           <div style={{textAlign: 'center'}}>
           <DocImage path={require('./static/multiple-idp-list-saml.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
@@ -208,7 +176,7 @@ To configure multiple SAML providers in Harness, follow the steps below:
 
     b. If one or more SAML providers are configured, enable them.
 
-Before enabling SAML, disable any configured public OAuth providers. For more information, go to <a href="/docs/platform/authentication/single-sign-on-saml" target="_blank" >Single Sign-On with SAML</a>.
+Before enabling SAML, disable any configured public OAuth providers. For more information, go to <a href="/docs/platform/authentication/single-sign-on-saml/overview" target="_blank" >Single Sign-On with SAML</a>.
 
 ### Enable login via SAML
 
@@ -447,5 +415,5 @@ The JSON response for username/password failures follows a different schema than
 ## Next steps
 
 - <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank" >RBAC in Harness</a> - learn how authorization and permissions work with authentication.
-- <a href="/docs/platform/authentication/single-sign-on-saml" target="_blank" >Single Sign-On with SAML</a> - configure SAML-based SSO for your organization.
+- <a href="/docs/platform/authentication/single-sign-on-saml/overview" target="_blank" >Single Sign-On with SAML</a> - configure SAML-based SSO for your organization.
 - <a href="/docs/platform/authentication/two-factor-authentication" target="_blank" >Two-factor authentication</a> - set up and enforce 2FA for your account.

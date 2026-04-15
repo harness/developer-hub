@@ -326,7 +326,7 @@ To enable the LDAP provider you just added, do the following:
 5. Click **Enable** once your test is successful.
 
 :::info note
-Users provisioned with LDAP are added to the Account scope and are sent an email invitation to log into Harness. If SAML is also set up with Harness, then can log in via SAML. Go to [Single Sign-On (SSO) with SAML](../authentication/single-sign-on-saml.md).
+Users provisioned with LDAP are added to the Account scope and are sent an email invitation to log into Harness. If SAML is also set up with Harness, then can log in via SAML. Go to [Single Sign-On (SSO) with SAML](/docs/platform/authentication/single-sign-on-saml/overview).
 
 :::
 

@@ -21,7 +21,7 @@ The set of security features that Harness provides includes the following featur
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 * [Password policies](../platform/authentication/authentication-overview.md#enforce-password-policies)
 * [Two-factor authentication](../platform/authentication/two-factor-authentication.md)
-* [Single sign-on (SSO)](../platform/authentication/single-sign-on-saml.md#saml-sso-with-harness-overview)
+* [Single sign-on (SSO)](/docs/platform/authentication/single-sign-on-saml/overview)
 * [Text encryption](/docs/platform/secrets/add-use-text-secrets)
 * [File encryption](/docs/platform/secrets/add-file-secrets)
 * [Auditing](/docs/platform/governance/audit-trail/audit-trail.md)
@@ -69,7 +69,7 @@ Yes, you can leverage your existing user management infrastructure by adding the
 
 For more information, go to:
 
-* [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md)
+* [Single sign-on (SSO) with SAML](/docs/platform/authentication/single-sign-on-saml/overview)
 * [Single sign-on (SSO) with OAuth](../platform/authentication/single-sign-on-sso-with-oauth.md)
 * [Provision users with Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim)
 * [Provision users with OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
@@ -87,12 +87,12 @@ The default method is email address and password.
 
 You can use several other methods, such as:
 
-* [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md)
+* [Single sign-on (SSO) with SAML](/docs/platform/authentication/single-sign-on-saml/overview)
 * [Single sign-on (SSO) with OAuth](../platform/authentication/single-sign-on-sso-with-oauth.md)
 
 ### How is SAML SSO supported?
 
-For information about SAML SSO, go to [SAML SSO with Harness overview](../platform/authentication/single-sign-on-saml.md#saml-sso-with-harness-overview).
+For information about SAML SSO, go to [SAML SSO with Harness overview](/docs/platform/authentication/single-sign-on-saml/overview).
 
 ### Can I adjust password policies?
 
@@ -110,7 +110,7 @@ Yes. You can enable Harness logins via a range of single sign-on mechanisms. In 
 
 For more information, go to:
 
-* [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md)
+* [Single sign-on (SSO) with SAML](/docs/platform/authentication/single-sign-on-saml/overview)
 * [Single sign-on (SSO) with OAuth](../platform/authentication/single-sign-on-sso-with-oauth.md)
 
 ### Do you support Two-Factor Authentication (2FA)?
