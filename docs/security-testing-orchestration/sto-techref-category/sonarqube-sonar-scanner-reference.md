@@ -282,6 +282,8 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
 
 * `-Dsonar.test.exclusions=**src/test/**/*.*`: The test files to exclude from the scan.
 
+* `-Dsonar.organization=<your-org-key>`: Your SonarCloud organization key. Required for **SonarCloud Orchestration scans only**. Not required for self-hosted SonarQube or SonarCloud Extraction scans.
+
 
 ##### YAML example
 
@@ -310,6 +312,16 @@ import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity
 ### Settings
 
 Use this field to add environment variables to your SonarQube scans. For example, you can add [proxy settings](#proxy-settings) if your SonarQube instance is behind a proxy.
+
+#### SonarCloud Organization ID
+
+If you're using **SonarCloud**, add the following key-value pair under **Settings**:
+
+| Key | Value |
+|-----|-------|
+| `product_organization_id` | Your SonarCloud organization key (e.g., `my-org-key`) |
+
+This setting is required for both **Extraction** and **Orchestration** scans with SonarCloud. It is not required for self-hosted SonarQube.
 
 <!--
 ### Settings
