@@ -25,18 +25,6 @@ export const ilt: IltCardItem[] = [
     cardType: cardType.ILT,
   },
   {
-    title: "Feature Management & Experimentation",
-    module: MODULES.fme,
-    type: type.user,
-    description:
-      "Deep dive into Feature Management & Experimentation use cases and concepts.",
-    version: "Harness Paid Plans",
-    link: "https://university-registration.harness.io/instructor-led-training-for-harness-feature-management-experimentation",
-    tileType: tileType.normal,
-    cardType: cardType.ILT,
-  },
-
-  {
     title: "Continuous Delivery & GitOps",
     module: MODULES.cd,
     type: type.user,
@@ -80,6 +68,18 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+   {
+    title: "Feature Management & Experimentation",
+    module: MODULES.fme,
+    type: type.user,
+    description:
+      "Deep dive into Feature Management & Experimentation use cases and concepts.",
+    version: "Harness Paid Plans",
+    link: "https://university-registration.harness.io/ilt-feature-management-experimentation",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
+
   {
     title: "Internal Developer Portal",
     module: MODULES.idp,
