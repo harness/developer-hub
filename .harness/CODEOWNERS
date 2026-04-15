@@ -4,7 +4,7 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       prateek.mittal@harness.io wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
+*       wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Configuration Files in DS are JS.
 *.js    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
@@ -13,7 +13,7 @@
 *.tsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Changes to Lock File
-*.lock  wei.guo@harness.io richard.black@harness.io
+*.lock  wei.guo@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Changes to Config Files
 *.ini  wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
@@ -23,7 +23,7 @@
 /_server-redirect wei.guo@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Changes to Netlify Files
-/netlify/ wei.guo@harness.io richard.black@harness.io
+/netlify/ wei.guo@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Contributing
 CONTRIBUTING.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness.io austin.lai@harness.io
@@ -43,7 +43,7 @@ README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness
 /community/ ompragash.viswanathan@harness.io dewan.ahmed@harness.io
 
 # Redirect Archives
-/archive/  prateek.mittal@harness.io wei.guo@harness.io richard.black@harness.io
+/archive/  prateek.mittal@harness.io wei.guo@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Documentation ###
 
