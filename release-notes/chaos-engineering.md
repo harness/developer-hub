@@ -22,6 +22,29 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## April 2026
 
+### Version 1.83.4
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.83.0
+- harness/chaos-ddcr-faults:1.83.0
+- harness/chaos-log-watcher:1.83.0
+- harness/service-discovery-collector:0.63.1
+
+#### New Features and Enhancements
+
+- Added experiment run report to UI (CHAOS-11384)
+- Added support to read from project, org and account scope variables in expression (CHAOS-11379)
+- Removed "Show Logs" option for Linux/Windows and K8s v1 infra (CHAOS-11394)
+- Added live logging and error handling for load execution in the backend (CHAOS-11322)
+- Tabbed structure for probe and action details pages (CHAOS-11170, CHAOS-10611)
+
+#### Fixed Issues
+
+- Fixed an issue where the total faults count in the experiment run report was not correct. Users will see the correct fault count now in their experiment run report (CHAOS-11446)
+- Fixed log in service discovery (CHAOS-11439)
+
 ### Version 1.82.1
 
 #### Images required
