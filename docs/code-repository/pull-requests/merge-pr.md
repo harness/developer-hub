@@ -19,6 +19,10 @@ After [reviewing a PR](./review-pr.md), you can merge it and commit the changes 
 
    **Squash and merge** is the default strategy. To select another strategy, select the dropdown next to **Squash and merge**, and then select your preferred strategy. Available strategies depend on your branch history and the repository's [branch rules](../config-repos/rules.md).
 
+:::tip
+If your PR is waiting on status checks or approvals, you can [enable auto-merge](./auto-merge-pr.md) to merge the PR automatically when all requirements are met.
+:::
+
 ### Rebase a PR
 
 If the base branch has diverged from the source branch, you may want to rebase the PR before merging to ensure a clean integration of changes. You can do this by selecting the **Rebase** option in the 'more actions' menu of the PR before proceeding with the merge. Rebase is optional for all merge strategies but may be required for Fast-forward merges when the base branch has diverged from the source branch. 
@@ -56,6 +60,7 @@ Merge requirements help prevent unapproved, inadequate, or erroneous code from b
    * Status checks can also be reported by [custom webhooks](../config-repos/webhooks.md).
    * Depending on the repository's [branch rules](../config-repos/rules.md), passing status checks might be required to merge the PR.
 * [**Branch rules**](../config-repos/rules.md)
+* [**Auto-merge**](./auto-merge-pr.md): If auto-merge is enabled and active on a PR, the PR merges automatically when all requirements above are satisfied.
 
 :::note
 Harness Code allows you to [revert a merged PR](/docs/code-repository/pull-requests/revert-pr).
