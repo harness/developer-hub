@@ -76,6 +76,6 @@ Start with Project-level ChaosHubs for team-specific experiments, then gradually
 
 Now that you have created your ChaosHub, you can start building your chaos engineering resources:
 
-- **Create Templates**: Add reusable fault and experiment templates to your ChaosHub. Learn how to [create and manage templates](../../templates).
+- **Create Templates**: Add reusable fault and experiment templates to your ChaosHub. Learn how to [create and manage templates](/docs/resilience-testing/chaos-testing/templates).
 
-- **Build Experiments**: Use the templates from your ChaosHub to create chaos experiments in the new Chaos Studio. Get started with [creating experiments](../../experiments).
+- **Build Experiments**: Use the templates from your ChaosHub to create chaos experiments in the new Chaos Studio. Get started with [creating experiments](/docs/resilience-testing/chaos-testing/experiments).

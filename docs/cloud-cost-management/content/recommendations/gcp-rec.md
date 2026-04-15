@@ -8,7 +8,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 CCM supports Governance recommendations for GCP.
 
-For a complete list of supported governance recommendations, see [Asset Governance for GCP](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gcp/gcp-recommendations).
+For a complete list of supported governance recommendations, see [Asset Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations).
 
 ### GCP Resource Coverage (Examples)
 

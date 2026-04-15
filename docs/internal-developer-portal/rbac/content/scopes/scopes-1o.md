@@ -135,7 +135,7 @@ View Scorecards, Checks and default Datasources
 
 #### 2. Create / Edit
 
-[Create or Edit scorecards](../scorecards/scorecard), as well as add custom checks using datasources.
+[Create or Edit scorecards](/docs/internal-developer-portal/scorecards/scorecard), as well as add custom checks using datasources.
 
 #### 3. Delete
 

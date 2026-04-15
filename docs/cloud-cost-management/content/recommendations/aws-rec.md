@@ -326,7 +326,7 @@ The tuning section provides configuration details and customization options:
 
 Governance recommendations help you implement best practices for managing your AWS resources according to your organization's policies and compliance requirements.
 
-To see all AWS Governance recommendations, [See here](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/aws/aws-recommendations)
+To see all AWS Governance recommendations, [See here](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations)
 
 
 ### AWS Resource Coverage (Examples)

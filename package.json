@@ -4,12 +4,12 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/generate-troubleshoot-responses.mjs && node scripts/generate-feature-flags-rss.js && node scripts/generate-release-notes-summaries.mjs && node scripts/fetch-api-specs.mjs && node scripts/build-glossary.js",
+    "prebuild": "node scripts/generate-troubleshoot-responses.mjs && node scripts/generate-feature-flags-rss.js && node scripts/generate-release-notes-summaries.mjs && node scripts/fetch-api-specs.mjs && node scripts/build-glossary.js && node scripts/generate-dms-redirect-map.mjs",
     "docusaurus": "docusaurus",
     "build-glossary": "node scripts/build-glossary.js",
     "build-glossary:watch": "nodemon --watch src/components/ToolTip/tooltips.json --exec 'node scripts/build-glossary.js'",
-    "start": "node scripts/build-glossary.js && node scripts/generate-troubleshoot-responses.mjs && node scripts/fetch-api-specs.mjs && node scripts/generate-release-notes-summaries.mjs --skip-if-exists && docusaurus start --host 0.0.0.0",
-    "build": "node scripts/build-glossary.js && node scripts/generate-troubleshoot-responses.mjs && export NODE_OPTIONS=--max-old-space-size=10240 && DOCUSAURUS_IGNORE_SSG_WARNINGS=true docusaurus build",
+    "start": "node scripts/build-glossary.js && node scripts/generate-troubleshoot-responses.mjs && node scripts/fetch-api-specs.mjs && node scripts/generate-release-notes-summaries.mjs --skip-if-exists && node scripts/generate-dms-redirect-map.mjs && docusaurus start --host 0.0.0.0",
+    "build": "node scripts/build-glossary.js && node scripts/generate-troubleshoot-responses.mjs && node scripts/generate-dms-redirect-map.mjs && export NODE_OPTIONS=--max-old-space-size=10240 && DOCUSAURUS_IGNORE_SSG_WARNINGS=true docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -20,6 +20,7 @@
     "lint:eslint": "eslint ./src/**/*.js*",
     "lint:ci": "export NODE_OPTIONS=--max-old-space-size=7296 && npm run lint:eslint",
     "test": "npm run lint:ci",
+    "test:dms-redirects": "node scripts/generate-dms-redirect-map.mjs && node scripts/test-dms-redirects.mjs",
     "prepare": "husky"
   },
   "dependencies": {

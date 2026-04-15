@@ -108,7 +108,7 @@ When you click on an individual recommendation, the following details are shown:
 </TabItem>
 <TabItem value="governance" label="Governance">
 
-To see all Azure Governance recommendations, [See here](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/azure/azure-recommendations)
+To see all Azure Governance recommendations, [See here](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations)
 
 ### Azure Resource Coverage (Examples)
 

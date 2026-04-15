@@ -11,6 +11,32 @@ import type { TOCItem } from "@docusaurus/mdx-loader";
 const DELIM = "--";
 const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
 
+/** Slug from option path (last segment, no .md). Enables hash to match either label (e.g. #aws) or content filename (e.g. #aws-as). */
+function slugFromPath(path: string): string {
+  if (!path) return "";
+  const segment = path.replace(/\.md$/i, "").split("/").filter(Boolean).pop() ?? "";
+  return segment;
+}
+
+/** For each option label, the normalized hash values that select it: normalized label + normalized slug from path. */
+function getHashAliasesForOptions(
+  options: Record<string, { path: string }>,
+  labels: string[]
+): Map<string, Set<string>> {
+  const map = new Map<string, Set<string>>();
+  labels.forEach((label) => {
+    const aliases = new Set<string>();
+    aliases.add(normalize(label));
+    const path = options[label]?.path;
+    if (path) {
+      const slug = slugFromPath(path);
+      if (slug) aliases.add(normalize(slug));
+    }
+    map.set(label, aliases);
+  });
+  return map;
+}
+
 declare var require: {
   context(
     directory: string,
@@ -26,6 +52,12 @@ mdxCtx.keys().forEach((key: string) => {
   const normalized = "/" + key.replace("./", "");
   mdxMap[normalized] = mdxCtx(key).default;
 });
+
+/** Paths in options may omit .md; require.context keys always have .md. Normalize for lookup. */
+function toContentModulePath(path: string): string {
+  if (!path) return path;
+  return path.endsWith(".md") ? path : path + ".md";
+}
 
 export interface DynamicMarkdownSelectorProps {
   options: Record<
@@ -64,7 +96,23 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
   disableSort = false,
   disableHash = false,
 }) => {
-  const labels = disableSort ? Object.keys(options) : Object.keys(options).sort((a, b) => a.localeCompare(b));
+  const labels = React.useMemo(
+    () =>
+      disableSort
+        ? Object.keys(options)
+        : Object.keys(options).slice().sort((a, b) => a.localeCompare(b)),
+    [options, disableSort]
+  );
+  const hashAliases = React.useMemo(
+    () => getHashAliasesForOptions(options, labels),
+    [options, labels]
+  );
+
+  /** Resolve hash (label or content-path slug) to option label. */
+  const findLabelByHash = (hashValue: string) => {
+    const normalized = normalize(hashValue);
+    return labels.find((label) => hashAliases.get(label)?.has(normalized)) ?? labels[0];
+  };
 
   const buildHash = (sel: string, sec?: string) =>
     `#${encodeURIComponent(normalize(sel))}${
@@ -81,20 +129,16 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
   const getInitialSelected = () => {
     const hash =
       typeof window !== "undefined"
-        ? window.location.hash.replace("#", "")
+        ? window.location.hash.replace("#", "").split(DELIM)[0]
         : "";
-    const match = labels.find((label) => normalize(label) === normalize(hash));
-    return match || labels[0];
+    return findLabelByHash(hash) || labels[0];
   };
 
   const getInitialFromHash = () => {
     const raw = typeof window !== "undefined" ? window.location.hash : "";
     const { sel, sec } = parseHash(raw);
-    // Back-compat: allow old single-part hashes like #python.
-    const matchSel =
-      labels.find((l) => normalize(l) === normalize(sel)) ||
-      labels.find((l) => normalize(l) === normalize(raw.replace(/^#/, ""))) ||
-      labels[0];
+    const hashPart = sel || raw.replace(/^#/, "").split(DELIM)[0] || "";
+    const matchSel = findLabelByHash(hashPart) || labels[0];
     return { initialSel: matchSel, initialSec: sec || "" };
   };
 
@@ -112,14 +156,13 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
     if (disableHash) return;
     const onHashChange = () => {
       const { sel, sec } = parseHash(window.location.hash);
-      const match =
-        labels.find((l) => normalize(l) === normalize(sel)) || labels[0];
+      const match = findLabelByHash(sel) || labels[0];
       setSelected(match);
       setSectionId(sec || "");
     };
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
-  }, [labels, disableHash]);
+  }, [labels, disableHash, hashAliases]);
 
   useEffect(() => {
     if (disableHash) return;
@@ -161,8 +204,9 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
   useEffect(() => {
     // If changing selected invalidates current sectionId, clear it.
     try {
-      const dms = mdxCtx("." + options[selected]?.path);
-      const ids = (dms?.toc || []).map((t: TOCItem) => t.id);
+      const dms = mdxCtx("." + toContentModulePath(options[selected]?.path ?? ""));
+      const tocList = (dms?.toc || []).filter((t): t is TOCItem => t != null && typeof t.id !== "undefined");
+      const ids = tocList.map((t) => t.id);
       if (sectionId && !ids.includes(sectionId)) setSectionId("");
     } catch {
       /* no-op */
@@ -173,7 +217,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
 
   useEffect(() => {
     const path = options[selected]?.path;
-    const entry = mdxMap[path];
+    const entry = mdxMap[toContentModulePath(path ?? "")];
     setContentComp(() =>
       entry
         ? entry
@@ -202,11 +246,24 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
   const displayLabels = showSearch ? filteredLabels : labels;
   const columns = getGridColumns(displayLabels.length);
 
+  let dmsTocRaw: unknown[] = [];
+  try {
+    dmsTocRaw =
+      mdxCtx("." + toContentModulePath(options[selected]?.path ?? ""))?.toc || [];
+  } catch {
+    dmsTocRaw = [];
+  }
+  const dmsTocSafe = Array.isArray(dmsTocRaw)
+    ? dmsTocRaw.filter(
+        (e: unknown): e is TOCItem =>
+          e != null && typeof e === "object" && typeof (e as TOCItem).id !== "undefined"
+      )
+    : [];
   spliceMDToc(
     toc,
     precedingHeadingID,
     nextHeadingID,
-    mdxCtx("." + options[selected]?.path)?.toc || [], //e.g. mdxCtx('./cloud-cost-management/content/get-started/aws-quickstart.md').toc
+    dmsTocSafe,
     selected,
     disableHash
   );
@@ -242,7 +299,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
                     }`}
                     onClick={() => {
                       setSelected(label);
-                      setSectionId("");   
+                      setSectionId("");
                     }}
                     type="button"
                   >
@@ -307,26 +364,21 @@ function spliceMDToc(
   selected: string,
   disableHash: boolean = false
 ) {
-  if (!mdToc) return;
+  if (!mdToc || !Array.isArray(mdToc)) return;
 
   removePlaceholder(mdToc);
 
   const mdTocSpliceStart =
-    mdToc.findIndex((e) => e.id === precedingHeadingID?.replace("#", "")) + 1;
+    mdToc.findIndex((e) => e && e.id === precedingHeadingID?.replace("#", "")) + 1;
 
   let mdTocSpliceEnd = mdToc.findIndex(
-    (e) => e.id === nextHeadingID?.replace("#", "")
+    (e) => e && e.id === nextHeadingID?.replace("#", "")
   );
   if (mdTocSpliceEnd === -1) mdTocSpliceEnd = mdToc.length;
   // remove DynamicMarkdownSelector (DMS) toc content (from previous component render)
   mdToc.splice(mdTocSpliceStart, mdTocSpliceEnd - mdTocSpliceStart);
 
-  /* console.log("DEBUG (after removing in DMS content) mdToc length", mdToc.length);
-  for (let i = 0; i < mdToc.length; i++) {
-    console.log("# mdToc" + i, mdToc[i].value);
-  } */
-
-  if (dmsToc) {
+  if (dmsToc && dmsToc.length > 0) {
     // (re-)add DMS toc content
     mdToc.splice(mdTocSpliceStart, 0, ...dmsToc);
     updateTocHTML(mdToc, selected, disableHash);
@@ -354,19 +406,25 @@ function updateTocHTML(mdToc: TOCItem[], selectedLabel: string, disableHash: boo
   const selHash = encodeURIComponent(normalize(selectedLabel));
 
   while (i < mdToc.length) {
+    const item = mdToc[i];
+    if (item == null || typeof item.id === "undefined") {
+      i++;
+      continue;
+    }
     const li = document.createElement("li");
-    const id2 = mdToc[i].id;
+    const id2 = item.id;
     const href2 = disableHash ? `#${encodeURIComponent(id2)}` : `#${selHash}${DELIM}${encodeURIComponent(id2)}`;
-    li.innerHTML = `<a href="${href2}" class="table-of-contents__link toc-highlight table-of-contents__link">${mdToc[i].value}</a>`;
+    li.innerHTML = `<a href="${href2}" class="table-of-contents__link toc-highlight table-of-contents__link">${item.value ?? ""}</a>`;
 
     i++;
 
     let l3 = "";
-    while (i < mdToc.length && mdToc[i].level >= 3) {
-      if (mdToc[i].level === 3) {
-        const id3 = mdToc[i].id;
+    while (i < mdToc.length && mdToc[i] != null && (mdToc[i] as TOCItem).level >= 3) {
+      const sub = mdToc[i] as TOCItem;
+      if (sub.level === 3 && typeof sub.id !== "undefined") {
+        const id3 = sub.id;
         const href3 = disableHash ? `#${encodeURIComponent(id3)}` : `#${selHash}${DELIM}${encodeURIComponent(id3)}`;
-        l3 += `<li><a href="${href3}" class="table-of-contents__link toc-highlight table-of-contents__link">${mdToc[i].value}</a></li>`;
+        l3 += `<li><a href="${href3}" class="table-of-contents__link toc-highlight table-of-contents__link">${sub.value ?? ""}</a></li>`;
       }
       i++;
     }

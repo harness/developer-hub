@@ -1,6 +1,8 @@
 // import React from "react";
 // Import the original mapper
 import MDXComponents from "@theme-original/MDXComponents";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 import DocVideo from "@site/src/components/DocVideo";
 import CTABanner from "@site/src/components/CTABanner";
 import DocImage from "@site/src/components/DocImage";
@@ -18,6 +20,8 @@ export default {
   ...MDXComponents,
   // Map the "highlight" tag to our <Highlight /> component!
   // `Highlight` will receive all props that were passed to `highlight` in MDX
+  Tabs,
+  TabItem,
   DocVideo: DocVideo,
   CTABanner: CTABanner,
   DocImage: DocImage,

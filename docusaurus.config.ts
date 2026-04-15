@@ -1,16 +1,153 @@
+import fs from 'fs';
 import path from 'path';
+import matter from 'gray-matter';
 import { themes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import { repoPathToCanonical } from './client-modules/repoPathToCanonical.js';
 
 const BASE_URL = process.env.BASE_URL || '/';
+
+const docsDir = path.join(__dirname, 'docs');
+
+/** Normalize redirect `from` paths so `/docs/foo/` and `/docs/foo` dedupe (same on-disk index.html). */
+function normalizeRedirectFromPath(u: string): string {
+  const pathOnly = (u.startsWith('/') ? u : `/${u}`).split('#')[0].split('?')[0];
+  const noTrail = pathOnly.replace(/\/+$/, '');
+  return noTrail || '/';
+}
+
+type RedirectFromAccumulator = { docPath: string; dedupedFrom: string[] };
+
+/**
+ * Single traversal: one read + matter parse per doc file. Collects all doc URL variants for
+ * `redirect_from` validation and defers redirect map assembly until the full existing-doc set is known.
+ */
+function scanDocsForPathsAndRedirects(): {
+  existingDocPaths: Set<string>;
+  redirectEntries: RedirectFromAccumulator[];
+} {
+  const existingDocPaths = new Set<string>();
+  const redirectEntries: RedirectFromAccumulator[] = [];
+
+  function walk(dir: string, relativePrefix: string) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const e of entries) {
+      const rel = relativePrefix ? `${relativePrefix}/${e.name}` : e.name;
+      if (e.isDirectory()) {
+        walk(path.join(dir, e.name), rel);
+      } else if (e.isFile() && /\.(md|mdx)$/i.test(e.name)) {
+        const filePath = path.join(dir, e.name);
+        const raw = fs.readFileSync(filePath, 'utf-8');
+        const { data } = matter(raw);
+        const docId = rel.replace(/\.(md|mdx)$/i, '');
+        const slug = data?.slug;
+        const pathId = typeof slug === 'string' ? slug.replace(/^\//, '') : docId;
+        const docPath = `/docs/${pathId}`;
+        existingDocPaths.add(docPath);
+        existingDocPaths.add(docPath.replace(/\/$/, '') || '/');
+        if (!docPath.endsWith('/')) existingDocPaths.add(docPath + '/');
+        if (/\/index$/i.test(docPath)) {
+          const withoutIndex = docPath.replace(/\/index$/i, '');
+          existingDocPaths.add(withoutIndex);
+          existingDocPaths.add(withoutIndex + '/');
+        }
+
+        const redirectFrom = data?.redirect_from;
+        if (redirectFrom) {
+          const list = Array.isArray(redirectFrom) ? redirectFrom : [redirectFrom];
+          const normalized = list
+            .filter((u): u is string => typeof u === 'string')
+            .map((u) => {
+              const pathOnly = (u.startsWith('/') ? u : `/${u}`).split('#')[0].split('?')[0];
+              return normalizeRedirectFromPath(pathOnly || '/');
+            });
+          const seenPath = new Set<string>();
+          const deduped = normalized.filter((p) => {
+            const key = (p || '/').replace(/\/$/, '') || '/';
+            if (seenPath.has(key)) return false;
+            seenPath.add(key);
+            return true;
+          });
+          redirectEntries.push({ docPath, dedupedFrom: deduped });
+        }
+      }
+    }
+  }
+  walk(docsDir, '');
+  return { existingDocPaths, redirectEntries };
+}
+
+function docPathIsExistingDoc(canonicalPath: string): boolean {
+  const n = normalizeRedirectFromPath(canonicalPath);
+  if (existingDocPathsSet.has(n)) return true;
+  if (n !== '/' && existingDocPathsSet.has(`${n}/`)) return true;
+  return false;
+}
+
+/** Build a map from doc path (/docs/...) to redirect_from pathnames so plugin-client-redirects creates redirect pages and the broken link checker sees those URLs as valid. Excludes any redirect_from that matches an existing doc path (avoids "redirect plugin is not supposed to override existing files"). */
+function buildRedirectFromMap(
+  existingDocPaths: Set<string>,
+  redirectEntries: RedirectFromAccumulator[],
+): Map<string, string[]> {
+  const rawMap = new Map<string, string[]>();
+  for (const { docPath, dedupedFrom: deduped } of redirectEntries) {
+    const fromPaths = deduped.filter(
+      (p) =>
+        p &&
+        p !== docPath &&
+        !existingDocPaths.has(p) &&
+        !existingDocPaths.has(p.replace(/\/$/, '') || '/') &&
+        !existingDocPaths.has(p.endsWith('/') ? p : p + '/'),
+    );
+    const existing = rawMap.get(docPath) ?? [];
+    rawMap.set(docPath, [...new Set([...existing, ...fromPaths])]);
+  }
+  // Dedupe "from" across docs: each pathname can only redirect to one destination (first doc wins).
+  const assignedFrom = new Map<string, string>();
+  for (const [docPath, fromList] of rawMap) {
+    for (const fromPath of fromList) {
+      if (!assignedFrom.has(fromPath)) assignedFrom.set(fromPath, docPath);
+    }
+  }
+  const map = new Map<string, string[]>();
+  for (const [docPath, fromList] of rawMap) {
+    const owned = fromList.filter((fromPath) => assignedFrom.get(fromPath) === docPath);
+    if (owned.length) map.set(docPath, owned);
+  }
+  return map;
+}
+
+const { existingDocPaths: existingDocPathsSet, redirectEntries } = scanDocsForPathsAndRedirects();
+const redirectFromMap = buildRedirectFromMap(existingDocPathsSet, redirectEntries);
+
 function hideIndexFromSidebarItems(items) {
   const result = items.filter((item) => {
     return !(item.type === 'doc' && item.id === 'index');
   });
   return result;
+}
+
+function hideContentDocsFromSidebarItems(items: unknown[]): unknown[] {
+  return items
+    .map((item: { type?: string; id?: string; items?: unknown[] }) => {
+      if (item.type === 'category' && Array.isArray(item.items)) {
+        return { ...item, items: hideContentDocsFromSidebarItems(item.items) };
+      }
+      return item;
+    })
+    .filter((item: { type?: string; id?: string; items?: unknown[] }) => {
+      if (item.type === 'doc' && typeof item.id === 'string' && item.id.includes('/content/')) {
+        return false;
+      }
+      // Remove categories that end up with no items (e.g. platform/automation/cli/content/example when content docs are hidden)
+      if (item.type === 'category' && Array.isArray(item.items) && item.items.length === 0) {
+        return false;
+      }
+      return true;
+    });
 }
 
 const config: Config = {
@@ -383,9 +520,14 @@ const config: Config = {
         sidebarPath: require.resolve('./sidebars.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
+        // content/ included so those docs are built and indexable by search; hidden from sidebar via sidebarItemsGenerator
+        exclude: ['**/shared/**', '**/static/**'],
         routeBasePath: 'docs', //CHANGE HERE
         showLastUpdateTime: true,
+        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          const sidebarItems = await defaultSidebarItemsGenerator(args);
+          return hideContentDocsFromSidebarItems(sidebarItems);
+        },
         remarkPlugins: [
           [
             remarkMath,
@@ -419,6 +561,53 @@ const config: Config = {
       },
     ],
 
+    // Redirect content/ doc URLs to their parent DMS page + hash (so links/search land on the right tab)
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/docs/infra-as-code-management/content/get-started/opentofu-quickstart',
+            to: '/docs/infra-as-code-management/get-started#opentofu',
+          },
+          {
+            from: '/docs/infra-as-code-management/content/get-started/terraform-quickstart',
+            to: '/docs/infra-as-code-management/get-started#terraform',
+          },
+          {
+            from: '/docs/infra-as-code-management/content/get-started/terragrunt-quickstart',
+            to: '/docs/infra-as-code-management/get-started#terragrunt',
+          },
+        ],
+        // Register redirect_from frontmatter URLs and canonical→repo redirects. Only return redirect_from when existingPath has no trailing slash so the plugin doesn't create duplicate "from" entries (same from → to vs to/).
+        createRedirects(existingPath) {
+          const pathNorm = existingPath.replace(/\/$/, '') || '/';
+          const fromContent =
+            !existingPath.endsWith('/')
+              ? (redirectFromMap.get(pathNorm) ?? redirectFromMap.get(existingPath))
+              : undefined;
+          const combined: string[] = [...(fromContent ?? [])];
+
+          const canonical = repoPathToCanonical(pathNorm);
+          if (canonical && canonical !== pathNorm && !docPathIsExistingDoc(canonical)) {
+            combined.push(canonical);
+          }
+
+          const seen = new Set<string>();
+          const out: string[] = [];
+          for (const rawFrom of combined) {
+            const n = normalizeRedirectFromPath(rawFrom);
+            if (n === pathNorm) continue;
+            if (docPathIsExistingDoc(n)) continue;
+            if (seen.has(n)) continue;
+            seen.add(n);
+            out.push(n);
+          }
+          return out.length ? out : undefined;
+        },
+      },
+    ],
+
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
@@ -427,6 +616,7 @@ const config: Config = {
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
+    path.join(__dirname, '/client-modules/dmsContentRedirect'),
     // path.join(__dirname, '/client-modules/chatbot'),
   ],
   headTags: [
