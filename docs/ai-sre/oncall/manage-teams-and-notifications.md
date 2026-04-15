@@ -113,12 +113,12 @@ Navigate to **On-Call** → **Contact Settings** to manage your notification cha
 **Phone**
 - Add phone numbers with country code selection
 - Supports voice calls
-- Currently supports US phone numbers
+- Supported countries: Argentina, Brazil, Canada, China, Costa Rica, Cyprus, Denmark, India, Israel, Mexico, Moldova, Netherlands, Romania, Serbia, Slovenia, United Kingdom, United States
 - Test calls to verify delivery
 
 **SMS**
 - Add mobile numbers for text messaging
-- Supports US phone numbers
+- Supported countries: Argentina, Brazil, Canada, China, Costa Rica, Cyprus, Denmark, India, Israel, Mexico, Moldova, Netherlands, Romania, Serbia, Slovenia, United Kingdom, United States
 - Test SMS to verify delivery
 
 **Slack**
@@ -209,11 +209,11 @@ Step 4: SMS + Phone Call
 4. **Verify user is actually on-call** in the schedule at the time the alert fired
 5. **Check mobile app** is logged in and has notification permissions
 
-### SMS/Phone Limitations
+### SMS/Phone Support
 
-- Currently only US phone numbers are supported
-- International number support may be available — contact your Harness representative
+- **Supported countries**: Argentina (+54), Brazil (+55), Canada (+1), China (+86), Costa Rica (+506), Cyprus (+357), Denmark (+45), India (+91), Israel (+972), Mexico (+52), Moldova (+373), Netherlands (+31), Romania (+40), Serbia (+381), Slovenia (+386), United Kingdom (+44), United States (+1)
 - Verify country code is correctly selected
+- For additional country support, contact your Harness representative
 
 ### Slack Not Working
 
