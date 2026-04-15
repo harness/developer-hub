@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can store encrypted files and reference them in your Harness resources, such as pipelines, steps, and connectors.
 
-This topic assumes you have [created a Harness project](../organizations-and-projects/create-an-organization.md).
+This topic assumes you have [created a Harness project](/docs/platform/get-started#create-an-organization).
 
 ## Create an encrypted file secret
 

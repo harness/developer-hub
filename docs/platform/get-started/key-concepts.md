@@ -23,90 +23,69 @@ canonical_url: https://www.harness.io/blog/general-availability-harness-develope
 
 import Link from '@docusaurus/Link';
 
+## Harness Platform overview
+
+The Harness Platform is the foundation that everything else in Harness is built on. Think of it as the common layer that handles all the shared capabilities your teams need- user management, access control, secrets, connectors, auditing, and notifications. You define these capabilities once and reuse them everywhere.
+
+On top of this foundation sit the Harness modules, such as Continuous Integration, Continuous Delivery and GitOps, Feature Flags, and more. Because these modules run on the platform, they automatically inherit all platform capabilities.
+
+<DocImage
+  path={require('./static/harness-platform-overview.png')}
+  alt="Harness Platform overview diagram"
+  title="Click to view full size image"
+  width={800}
+  height={450}
+/>
+
+For example, when you set up authentication, permissions, or notifications at the platform level, those settings apply consistently across all modules you use.
+
+Harness Platform is also referred to as **Harness Manager**. It is the web UI where you sign in, create projects, set up pipelines, and manage your configurations.
+
+---
+
 ## What will you learn in this topic? 
 
 By the end of this topic, you will be able to understand:
 
-- How Harness structures your work using the [Account](#account) → [Organization → Project](#organizations-and-projects) hierarchy.
+- How Harness Platform structures your work using the [Account](#account) → [Organization → Project](#organizations-and-projects) hierarchy.
 - How [RBAC](#role-based-access-control-rbac) uses roles, resource groups, and principals to control who can do what, and where.
-- What [Delegates](#delegates) are and how they securely execute tasks in your environment.
-- How [Connectors](#connectors) integrate Harness with third-party tools like GitHub and cloud providers.
-- How [pipelines, stages, and steps](#pipelines) compose into end-to-end automation workflows.
+- What [Delegates](#delegates) and [Connectors](#connectors) are.
 - How Harness stores and references sensitive data securely using [secrets management](#secrets-management).
-- How [policy-as-code (OPA)](#governance-using-policy-as-code) enforces governance guardrails automatically before you apply changes.
 
 ---
 
 ## Before you begin
 
 - **Know basic DevOps concepts:** What CI/CD means, what a pipeline is in general terms, and why access control matters in engineering teams.
-- **What an identity provider (IdP) is:** Helps understand the <a href="/docs/platform/authentication/authentication-overview" target="_blank" >authentication and RBAC sections</a>.
-- **Git basics:** The <a href="/docs/platform/get-started/key-concepts#git-experience" target="_blank" >Git Experience</a> section assumes familiarity with repos and YAML.
+- **What an identity provider (IdP) is (optional):** Helps understand the <a href="/docs/platform/authentication/authentication-overview" target="_blank" >authentication and RBAC sections</a>.
+- **Git basics (optional):** The <a href="/docs/platform/get-started/key-concepts#git-experience" target="_blank" >Git Experience</a> section assumes familiarity with repos and YAML.
 
-
----
-
-## What is Harness Platform?
-
-The Harness Platform is the shared foundation that powers all Harness modules. It provides a single, unified interface to onboard teams, manage projects, and configure platform-wide settings.
-
-It helps developers and DevOps teams deliver software quickly, securely, and at lower cost- without compromising quality, reliability, and governance.
-
-This section focuses on describing the core capabilities you’ll use regardless of which module you’re working on. For module-specific features and workflows (for example, deploying services using Continuous Delivery), refer to the documentation for the respective module on the [Harness Developer Hub](https://developer.harness.io).
+:::tip New to DevOps?
+Do not worry if you do not recognize a term. Check the <a href="/glossary" target="_blank" > Harness Glossary </a> as you read.
+:::
 
 ---
 
-## Platform Overview
+## Account
 
-The Harness Platform is the foundation that everything else in Harness is built on.
+A Harness account is the highest level for everything you do in Harness. It is where you define your organizational structure, manage global settings, and control access across all users and projects. Within an account, you create **organizations and projects**. This hierarchy helps teams work independently while still following shared security, governance, and access rules set at the account level.
+
+You can create resources such as **connectors** at different levels, such as **account, organization, or project**. Resources you define at a higher level are automatically available at lower levels, which reduces duplication and keeps configuration consistent.
+
+To set up your account and get started, see the <a href="/docs/platform/get-started/onboarding-guide" target="_blank" >Platform onboarding guide</a>. 
+
 
 <DocImage
-  path={require('./static/harness-platform-overview.jpg')}
+  path={require('./static/account-overview.png')}
   alt="Account Overview"
   title="Click to view full size image"
   width={800}
   height={450}
 />
 
-Think of it as the common layer that handles all the shared capabilities your teams need—things like user management, access control, secrets, connectors, auditing, and notifications. You define these platform services once and reuse them everywhere, so you don’t have to configure the same basics again and again for each product.
-
-On top of this foundation sit the Harness modules, such as Continuous Integration, Feature Flags, Security Testing, and GitOps. Because these modules run on the platform, they automatically inherit its capabilities. For example, when you set up authentication, permissions, or notifications at the platform level, those settings apply consistently across all modules you use.
-
-This page covers the core building blocks of Harness Platform such as Accounts, Organizations, Projects, and Delegates, and how they work together to support every module running on Harness.
-
----
-## Account
-
-A Harness account is the highest level for everything you do in Harness. It’s where you define your organizational structure, manage global settings, and control access across all users and projects. Within an account, you create **organizations and projects**. This hierarchy helps teams work independently while still following shared security, governance, and access rules set at the account level.
-
-You can create resources such as **connectors** at different levels—**account, organization, or project**. Resources you define at a higher level are automatically available at lower levels, which reduces duplication and keeps configuration consistent.
-
-
-<DocImage
-  path={require('./static/account-overview.jpg')}
-  alt="Account Overview"
-  title="Click to view full size image"
-  width={600}
-  height={600}
-/>
-
-
-Design a clear organization and project structure upfront so teams can manage their own resources and workflows without depending on account administrators for day-to-day tasks.
-
-### Account information
-
-To get started with your account, see the <a href="/docs/platform/get-started/onboarding-guide" target="_blank" >Platform onboarding guide</a>. You can view key account details on the **Account Overview** page, including:
-  * Account name and Account ID
-  * The Harness SaaS cluster hosting your account
-  * Module subscriptions and license information
-
-You’ll need this information when setting up delegates, configuring the Terraform provider, using the CLI, or integrating other automation and administration tools.
-
-If you’re using the **Self-Managed Enterprise Edition**, account information and setup differ from the SaaS experience. For details, see the <a href="/docs/self-managed-enterprise-edition" target="_blank" >Self-Managed Enterprise Edition documentation</a>.
-
 ---
 
-## Organizations and Projects
+## Organizations and projects
 
 Within a Harness account, you organize your work using organizations and projects. This structure helps teams collaborate effectively while keeping ownership, access, and configuration clearly defined.
 
@@ -118,17 +97,15 @@ A Harness organization (or *org*) groups together projects that share a common p
   * Product lines
   * Departments
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/projects-and-organizations-05.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 Each organization can contain multiple projects and provides a natural boundary for managing teams, access, and shared resources.
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/projects-and-organizations-06.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 ### Projects
 
-A Harness project is where teams do their day-to-day work. Projects contain the pipelines, users, and resources needed to build, deploy, test, and operate applications. For example, a project might have a Harness CI pipeline to build code and push an image to a repo and a Harness CD pipeline to pull and deploy that image to a cloud platform.
+A Harness project is where teams do their day-to-day work. Projects contain the users, pipelines, and the resources needed to build, deploy, test, and operate applications. 
+
+For example, a project might have a Harness CI pipeline to build code and push an image to a repo and a Harness CD pipeline to pull and deploy that image to a cloud platform.
 
 Projects typically represent:
 
@@ -138,77 +115,86 @@ Projects typically represent:
 
 Projects give teams a shared workspace while allowing them to operate independently. You can add an unlimited number of Harness projects to an org. All projects in the org can use the org's resources.
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/projects-and-organizations-07.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
-
 Much like account-level roles, project members can be assigned Project Admin, Member, and Viewer roles.
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/projects-and-organizations-08.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
+---
+
+## Harness SaaS versus SMP offerings
+
+Harness is offered as **Software as a Service (SaaS)** and **Self-Managed** (on-premises) editions. **This documentation covers the SaaS edition.** If you are using the Self-Managed Enterprise Edition (SMP), see the <a href="/docs/self-managed-enterprise-edition" target="_blank" >SMP documentation</a>.
+
+<details>
+
+<summary>SaaS versus SMP</summary>
+
+| | **SaaS** | **Self-Managed Enterprise Edition (SMP)** |
+|---|---|---|
+| **What it is** | Fully managed, cloud-hosted version of Harness. No infrastructure setup required. | Kubernetes-native deployment that runs on your own public or private cloud infrastructure. See [SMP overview](/docs/self-managed-enterprise-edition/smp-overview). |
+| **Plans / licensing** | Free, Team, and Enterprise. See [Subscriptions and licenses](/docs/platform/subscriptions-licenses/subscriptions). | Requires a valid SMP license key and access to download the Harness SMP software. |
+| **Get access** | [Sign up with the Free plan](https://app.harness.io/auth/#/signup/?module=cd&utm_medium=harness-developer-hub), then [sign in](https://app.harness.io/auth/#/signin). Team/Enterprise accounts are created by invitation from an Account Administrator. | Contact [Harness Support](mailto:support@harness.io) to obtain your license key and software download access. |
+| **Setup** | None. Harness manages the infrastructure. | Follow the [installation instructions](/docs/category/install), then sign in at `http://YOUR_DOMAIN_NAME/auth/#/signin`. |
+
+</details>
 
 ---
 
 ## Role-based access control (RBAC)
 
-Role-based access control (RBAC) in Harness lets you decide who can do what, and where- without slowing teams down or compromising security.
+Role-based access control (RBAC) describes **who** is allowed to perform **what** actions and **where**.
 
-With RBAC, you can delegate administrative responsibility at the organization and project levels instead of managing everything at the account level. For example, assigning the **Project Admin** role makes a user responsible for managing access, resources, and settings within a specific project.
+With RBAC, you can delegate administrative responsibility at the organization and project levels instead of managing everything at the account level. 
+
+For example, assigning the **Project Admin** role makes a user responsible for managing access, resources, and settings within a specific project.
 
 Once ownership is delegated:
-
-* Organization and project admins can invite and manage users
-* Teams can independently manage pipelines, modules, and platform resources
-* Changes made in one project or organization do not affect others
+* Organization and project admins can invite and manage users.
+* Teams can independently manage pipelines, modules, and platform resources.
+* Changes made in one project or organization do not affect others.
 
 This approach reduces dependency on account administrators and allows teams to move faster while maintaining strong governance and security boundaries.
 
 ### How RBAC works in Harness
 
-Harness RBAC applies across all scopes, from the account level down to individual resources such as projects, pipelines, or services. This gives you fine-grained control over access, whether you’re managing a large enterprise or a small team.
-
 Harness RBAC has three core components:
 
-* **Principals** – The identities that receive access, such as users, user groups, and service accounts
-* **Roles** – Collections of permissions that define what actions can be performed
-* **Resource groups** – Sets of resources that determine where those actions can be performed
+* **Principals**: The people or systems that need access; users, user groups, or service accounts.
+* **Roles**: What actions they can take; for example, create pipelines or view secrets.
+* **Resource groups**: Where they can do it; for example, only within a specific project.
 
-You grant access by assigning roles and resource groups to principals. Together, these components ensure that each user has exactly the access they need.
+You grant access by combining a **role** and a **resource group** and assigning them to a **principal**.
 
-For detailed configuration steps and advanced scenarios, see the <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank" >Harness RBAC documentation</a>.
+Harness RBAC applies across all scopes, from the account level to individual resources such as projects, pipelines, and services.
+
+For detailed setup, see the <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank" >Harness RBAC documentation</a>.
 
 ### User and group management
 
-Harness makes it easy to manage users and user groups at scale, whether you’re onboarding a small team or supporting a large organization.
-
-A Harness user is any individual registered in your Harness account with a unique email address. You can add or remove users manually, or automate user provisioning using integrations such as Okta SCIM, Microsoft Entra ID SCIM, OneLogin SCIM, or just-in-time (JIT) provisioning with SAML.
+A Harness user is anyone with an account, identified by their email address. You can add users manually or set up automatic provisioning using System for Cross-domain Identity Management (SCIM), which is a standard protocol for automating user provisioning. Some tools are:
+- Okta SCIM
+- Microsoft Entra ID SCIM
+- OneLogin SCIM
+- Just-In-Time (JIT) provisioning with Security Assertion Markup Language (SAML).
 
 Harness supports multiple <a href="/docs/platform/authentication/authentication-overview" target="_blank" >authentication methods</a>, allowing you to choose what best fits your organization’s security and compliance requirements:
 
 * Username and password
 * Public OAuth providers, including Google, GitHub, GitLab, LinkedIn, Azure, and Bitbucket
-* SAML providers such as Azure AD, Okta, and OneLogin
-* LDAP
-
-You can configure <a href="/docs/platform/authentication/multiple-identity-providers" target="_blank" >one or more authentication methods</a> depending on your setup.
+* Enterprise Single Sign-On (SSO) providers (Security Assertion Markup Language (SAML) providers such as Microsoft Entra ID, Okta, OneLogin) 
+* Lightweight Directory Access Protocol (LDAP)
 
 ### User groups
 
-To simplify access management, you can organize users into <a href="/docs/platform/role-based-access-control/add-user-groups" target="_blank" >user groups</a>. Instead of assigning permissions to individual users, you assign <a href="/docs/platform/role-based-access-control/add-manage-roles" target="_blank" >roles</a> and <a href="/docs/platform/role-based-access-control/add-resource-groups" target="_blank" >resource groups</a> to a user group, and those permissions automatically apply to all members of the group.
+Instead of setting permissions for each person individually, you can create <a href="/docs/platform/role-based-access-control/add-user-groups" target="_blank" >user groups</a> and assign <a href="/docs/platform/role-based-access-control/add-manage-roles" target="_blank" >roles</a> and <a href="/docs/platform/role-based-access-control/add-resource-groups" target="_blank" >resource groups</a> to a user group. Everyone in the group automatically gets those permissions.
 
-User groups also play a key role in notifications. You can configure notifications for a group using channels such as:
-
-* Email or email aliases
-* Slack webhooks
-* Microsoft Teams webhooks
-* PagerDuty
+User groups also control notifications, so you can send alerts to a group via email, Slack, Microsoft Teams, or PagerDuty.
 
 This approach helps you manage access and notifications consistently while reducing administrative overhead.
 
 ### Service accounts
 
-Service accounts are non-human identities used by external systems and automation tools to integrate with the Harness Platform. Unlike regular users, service accounts are not associated with an individual and are intended for CI/CD tools, scripts, and other automated workflows.
+Service accounts are like user accounts but for scripts and automated workflows. They are non-human identities. For example, a CI/CD pipeline might use a service account to deploy code without needing someone's personal login.
 
-You manage service accounts the same way you manage users:
+You give service accounts the same roles and resource groups as regular users to control what they can access.
   * Assign **roles** to define what actions the service account can perform
   * Assign **resource groups** to define where those actions can be performed
 
@@ -216,15 +202,14 @@ This allows you to apply the same RBAC controls and governance policies to autom
 
 ### API keys and tokens
 
-Use API keys and tokens to authenticate when you access Harness programmatically through APIs, CLIs, or automation tools.
+API keys and tokens allow external tools to authenticate with Harness without a browser login. They can only perform actions that the associated user or service account has permission to perform.
 
-* When you create an API key for a service account, the key inherits all permissions granted to that service account through its role bindings.
+* When you create an API key for a service account, the key inherits all permissions granted to that service account.
 * When you create an API key or personal access token (PAT) for a user, it inherits the permissions of that user.
 
-API keys and tokens can only perform actions that the associated user or service account has permission to perform.
-
 :::tip
-Use **service accounts and their API keys** for automation and integrations, and reserve **personal tokens** for individual use cases such as local development or testing.
+- Use **service accounts and their API keys** for automation and integrations.
+- Use **personal tokens** for your own local development or testing.
 :::
 
 ---
@@ -233,7 +218,9 @@ Use **service accounts and their API keys** for automation and integrations, and
 
 Harness lets you enforce governance and compliance using policy as code, powered by Open Policy Agent (OPA).
 
-Policies act as guardrails that automatically evaluate configurations and actions across the platform. You can use them to ensure standards are followed—for example, enforcing security requirements, limiting resource usage, or preventing misconfigurations—before you apply changes.
+Policies act as guardrails that automatically evaluate configurations and actions across the platform. You can use them to ensure teams follow standards. 
+
+For example, if you want to make sure nobody accidentally deploys to production, you can write a rule (a "policy") that Harness checks automatically before every deployment. If the rule fails, the deployment is blocked.
 
 You can start quickly by using built-in sample policies or create custom policies tailored to your organization’s needs. Learn more in the <a href="/docs/platform/governance/policy-as-code/harness-governance-overview" target="_blank" >Harness governance overview</a>.
 
@@ -251,11 +238,11 @@ For details, see the <a href="/docs/platform/secrets/secrets-management/harness-
 
 ## Delegates
 
-Harness Delegates are lightweight workers that you install in your environment—such as a Kubernetes cluster or virtual machine—to securely execute tasks on behalf of the Harness Platform.
+Harness Delegates are lightweight workers that you install in your environment, such as a Kubernetes cluster or virtual machine, to securely execute tasks on behalf of the Harness Platform.
 
-Delegates connect to the Harness Platform using **outbound-only HTTP/HTTPS**, so you don’t need any inbound network access. They interact with your systems—like container platforms, artifact repositories, and monitoring tools—while keeping credentials and secrets within your network.
+Delegates connect to Harness Manager using **outbound-only HTTP/HTTPS**, so you don’t need any inbound network access. When you run a pipeline, Harness Manager tells the Delegate what to do, and the Delegate performs the actual operations — such as deploying to a cluster or pulling an artifact — within your network.
 
-Delegates are essential for enabling Harness to perform actions in your infrastructure, but you don’t need to install one immediately. You can set up a delegate when configuring pipelines or connectors, and the platform guides you through the installation process.
+Delegates are essential for enabling Harness to perform actions in your infrastructure, but you don’t need to install one immediately. You can set up a Delegate when configuring pipelines or connectors, and the platform guides you through the installation process.
 
 <DocImage path={require('../static/harness-platform-architecture-00.png')} width="90%" height="90%" title="Harness Delegate architecture diagram" />
 
@@ -276,7 +263,7 @@ The following video provides an overview of the Harness Delegate and GitOps Agen
 
 ## Connectors
 
-<a href="/docs/category/connectors" target="_blank" >Harness connectors</a> contain the information necessary to integrate and work with 3rd party tools. For example, a GitHub connector authenticates with a GitHub account and repo and fetches files as part of a build or deploy stage in a pipeline.
+<a href="/docs/category/connectors" target="_blank" >Harness connectors</a> contain the information necessary to integrate and work with third-party tools. For example, a GitHub connector authenticates with a GitHub account and repo and fetches files as part of a build or deploy stage in a pipeline.
 
 Harness offers many types of connectors, including:
 
@@ -290,7 +277,7 @@ Harness offers many types of connectors, including:
 
 ## Pipelines
 
-Several Harness modules use pipelines. A pipeline represents a workflow and includes pipeline-level settings, [stages](#stages), and [steps](#steps-and-step-groups). Pipelines can cover integration, delivery, operations, testing, deployment, real-time changes, and monitoring.
+A pipeline represents a workflow and includes pipeline-level settings, [stages](#stages), and [steps](#steps-and-step-groups). Pipelines can cover integration, delivery, operations, testing, deployment, real-time changes, and monitoring.
 
 For example, a pipeline can use the CI module to build, test, and push code, and then a CD module to deploy the artifact to your production infrastructure.
 
@@ -300,7 +287,7 @@ You can trigger pipelines manually in the Harness Platform or automatically in r
 
 In Harness, you can write pipelines in YAML or build pipelines visually in the Pipeline Studio.
 
-* The **Visual editor** provides a GUI experience where you can easily configure settings, add and remove steps and stages, and drag-and-drop steps and stages to rearrange them, organize them in parallel, or add or remove them from step groups.
+* The **Visual editor** provides a GUI experience to easily configure settings, add and remove steps and stages, and drag-and-drop steps and stages to rearrange them. It also helps organize steps in parallel, or add or remove them from step groups.
 * The **YAML editor** provides a <a href="/docs/platform/pipelines/harness-yaml-quickstart" target="_blank" >text editor experience for creating pipelines</a>. You can also use the [Harness Git Experience](#git-experience) to manage your Harness YAML entities from your Git repos.
 
 You can freely switch between the two editors. When editing a pipeline in Harness, use the selector at the top of the Pipeline Studio to switch between the Visual and YAML editors.
@@ -323,51 +310,50 @@ For more information, go to <a href="/docs/continuous-delivery/x-platform-cd-fea
 
 ### Templates
 
-<a href="/docs/platform/templates/template" target="_blank" >Templates</a> enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. You can create templates for steps, step groups, stages, and pipelines.
+<a href="/docs/platform/templates/template" target="_blank" >Templates</a> let you define a step, stage, or pipeline once and reuse it across multiple projects, thereby saving setup time and keeping workflows consistent.
+
+This reduces onboarding time and enforces standardization across teams.
 
 ---
 
 ## Automation
 
+Imagine you want to onboard a new team. Without automation, you would need to manually create their user accounts, assign roles, create a project, and configure connectors, one click at a time in the UI.
+
 Harness offers several approaches for automating management of Harness entities in your account:
 
-- <a href="/docs/category/terraform-provider" target="_blank" >Terraform Provider</a>
-- <a href="/docs/category/cli" target="_blank" >Harness CLI</a>
-- <a href="/docs/category/api" target="_blank" >Harness API</a>
----
-
-## Harness Manager
-
-Harness Manager refers to the Harness Platform and it can refer to "inline" (within the platform) storage and management of configurations and pipelines. It can also refer to the orchestration and handling of internal Harness functions, for example, when you run a pipeline.
+- <a href="/docs/category/terraform-provider" target="_blank" >Terraform Provider</a>: Define projects, roles, and connectors in a `.tf` file and apply it in one command — reproducible and version-controlled.
+- <a href="/docs/category/api" target="_blank" >Harness API</a>: Invite users in bulk and assign them to projects programmatically.
+- <a href="/docs/category/cli" target="_blank" >Harness CLI</a>: Trigger pipelines or manage resources directly from your terminal or CI scripts.
 
 ---
 
 ## Git Experience
 
-With the <a href="/docs/platform/git-experience/git-experience-overview" target="_blank" >Harness Git Experience</a>, you can sync your Harness account, orgs, and projects with your Git repo to manage Harness entirely from Git.
+With the <a href="/docs/platform/git-experience/git-experience-overview" target="_blank" >Harness Git Experience</a>, you can store and manage your Harness configurations such as pipelines, templates, and input sets directly in your Git repository.
 
-Components that you can write in YAML can also be managed purely through Git with the Git Experience.
+Instead of making changes only in the UI, you can edit YAML files in Git and have those changes automatically reflected in Harness. This means your Harness configurations go through the same pull request reviews, version history, and branching workflows as your application code.
 
 ---
 
-## FirstGen vs NextGen
-
-:::warning
-
-Eventually all FirstGen accounts will be migrated to NextGen.
-
-FirstGen Harness CD reached EOL on December 30, 2023, and EOS on March 30, 2024.
-
-:::
+<details>
+<summary> FirstGen vs NextGen </summary>
 
 Harness FirstGen and Harness NextGen are two versions of the Harness product suite.
 
-* Harness FirstGen is the legacy or earlier version of Harness. It covers common platforms but didn't include all Harness modules.
+* Harness FirstGen is the legacy or earlier version of Harness. It covers common platforms but did not include all Harness modules.
 * Harness NextGen is Harness' new version with a redesigned experience and new Continuous Integration, Feature Flags, Security Testing Orchestration, Service Reliability Management, Cloud Cost Management, and Chaos Engineering modules.
+
+:::warning
+- Eventually all FirstGen accounts will be migrated to NextGen.
+- FirstGen Harness CD reached EOL on December 30, 2023, and EOS on March 30, 2024.
+:::
+
+</details>
 
 ---
 
-## Feature Lifecycle
+## Feature lifecycle
 
 Learn about recent and upcoming changes to the Harness Platform and modules.
 
@@ -375,7 +361,8 @@ Learn about recent and upcoming changes to the Harness Platform and modules.
 * <a href="/roadmap" target="_blank" >Product roadmap</a>
 * <a href="/release-notes/early-access" target="_blank" >Early access features</a>
 
-### Beta, Limited GA, and GA definitions
+<details>
+<summary> Beta, Limited GA, and GA definitions </summary>
 
 Harness releases features and modules that may be in various states of development, including **Beta**, **Limited GA**, and **GA**.
 
@@ -398,21 +385,23 @@ A **GA** feature or module:
 * Has complete documentation.
 * Has a stable UI.
 
+</details>
+
 ---
 
 ## Cross-module capabilities
 
-The Harness Platform provides several cross-module capabilities that help standardize configuration, improve governance, and optimize pipeline execution across modules, including:
+The Harness Platform provides several capabilities that work across all modules. You do not need to configure them separately for each module.
 
-  * [Approvals](/docs/platform/approvals/approvals-tutorial)
-  * [Dashboards](/docs/platform/dashboards/dashboards-overview)
-  * [Global default settings](/docs/platform/settings/default-settings)
-  * [Governance](/docs/category/governance-1) and [monitored services](/docs/platform/monitored-service)
-  * [Harness AI](/docs/platform/harness-ai/overview)
-  * [Notifications](/docs/platform/notifications/notification-settings)
-  * [Templates](/docs/platform/templates/template)
-  * [Triggers](/docs/platform/triggers/triggers-overview)
-  * [Variables, expressions, and runtime input](/docs/platform/variables-and-expressions/runtime-inputs)
+- <a href="/docs/platform/approvals/approvals-tutorial" target="_blank">Approvals</a>: Pause a pipeline at any stage and require a manual or automated sign-off before it continues.
+- <a href="/docs/platform/dashboards/dashboards-overview" target="_blank">Dashboards</a>: View real-time data on deployments, builds, and resource usage across your account.
+- <a href="/docs/platform/settings/default-settings" target="_blank">Global default settings</a>: Set account-wide defaults for timeouts, behaviors, and configurations so every team starts with a consistent baseline.
+- <a href="/docs/category/governance-1" target="_blank">Governance</a>: Enforce policies using Open Policy Agent (OPA) to block non-compliant configurations before they are applied.
+- <a href="/docs/platform/harness-ai/overview" target="_blank">Harness AI</a>: Use AI-assisted features to troubleshoot failures, generate pipelines, and get contextual recommendations directly in the platform.
+- <a href="/docs/platform/notifications/notification-settings" target="_blank">Notifications</a>: Send pipeline and approval alerts to Slack, Microsoft Teams, email, or PagerDuty.
+- <a href="/docs/platform/templates/template" target="_blank">Templates</a>: Define steps, stages, or pipelines once and reuse them across multiple projects.
+- <a href="/docs/platform/triggers/triggers-overview" target="_blank">Triggers</a>: Automatically start pipelines in response to Git events, schedules, or new artifact versions.
+- <a href="/docs/platform/variables-and-expressions/runtime-inputs" target="_blank">Variables, expressions, and runtime input</a>: Pass dynamic values into pipelines at runtime or reference shared values across steps and stages.
 
 ---
 

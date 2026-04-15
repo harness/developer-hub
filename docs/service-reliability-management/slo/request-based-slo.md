@@ -19,7 +19,7 @@ For example, if you had 100 search requests and 95 of them returned the expected
 
 - A Harness Delegate. Ensure that you have installed a Harness Delegate that can communicate with Harness, your health source, and change sources. For more information, go to [Get started with delegates](/docs/platform/delegates/install-delegates/overview.md).
   
-- An Organization in Harness. If you haven't already created one, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization.md).
+- An Organization in Harness. If you haven't already created one, go to [Create organizations and projects](/docs/platform/get-started#create-an-organization).
 
 - A project in Harness. If you haven't already created one, follow these steps.
 
@@ -33,7 +33,7 @@ To create a project in Harness, do the following:
 2. On the **About the Project** page, do the following, and then select **Save and Continue**: 
    - **Name**: Enter a name for the project.
    - **Color**: Select a color theme for the project.
-   - **Organization**: Select an organization for the project. If you don't yet have an organization in Harness, and want to learn how to create one, go to [Create a Harness Org](/docs/platform/organizations-and-projects/create-an-organization.md).
+   - **Organization**: Select an organization for the project. If you don't yet have an organization in Harness, and want to learn how to create one, go to [Create a Harness Org](/docs/platform/get-started#create-an-organization).
 3. On the **Invite Collaborators (Optional)** page, in the **Invite People to Collaborate** field, add team members to the project.
 4. In the **Role** field, assign a role to the collaborators.
 5. Select **Add**.

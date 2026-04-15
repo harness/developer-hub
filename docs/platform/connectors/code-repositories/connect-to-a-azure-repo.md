@@ -18,7 +18,7 @@ You must have:
 
 * An Azure Project and at least one repo.
 * Permission to create connectors in Harness.
-* A [Harness project](/docs/platform/organizations-and-projects/create-an-organization.md).
+* A [Harness project](/docs/platform/get-started#create-an-organization).
 
 ## Create the connector
 

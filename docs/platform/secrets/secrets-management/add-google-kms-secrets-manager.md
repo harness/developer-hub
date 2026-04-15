@@ -24,7 +24,7 @@ This topic describes how to add a Google KMS Secret Manager in Harness.
 
 ### Add a Secret Manager
 
-To add Google KMS as a secret manager, you’ll need to set up a Harness Project. If you haven't already, refer to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+To add Google KMS as a secret manager, you’ll need to set up a Harness Project. If you haven't already, refer to [Create Organizations and Projects](/docs/platform/get-started#create-an-organization).
 
 You can add connectors from any module in your Project under Project Setup, or in your Organization or Account Resources:
 

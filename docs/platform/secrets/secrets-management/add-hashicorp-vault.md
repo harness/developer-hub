@@ -30,7 +30,7 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
 ## Add a Secret Manager
 
-This topic assumes that you already have a Harness Project set up. If you don’t have one yet, see **[Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md)** for step-by-step instructions.
+This topic assumes that you already have a Harness Project set up. If you don’t have one yet, see **[Create Organizations and Projects](/docs/platform/get-started#create-an-organization)** for step-by-step instructions.
 
 You can create a Connector at the **Project**, **Organization**, or **Account** scope, depending on your access and sharing requirements.
 

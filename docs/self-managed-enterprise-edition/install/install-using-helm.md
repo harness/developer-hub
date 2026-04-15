@@ -340,7 +340,7 @@ There are additional steps for self-signed certificates:
 
 ## Next steps
 
-After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md).
+After installation is complete, you should create the initial Harness account, and then [create organizations and projects](/docs/platform/get-started#create-an-organization).
 
 To get started with the modules, review the following topics:
 

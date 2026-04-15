@@ -99,7 +99,7 @@ To test, use your AWS account and run the command [aws secretsmanager list-secre
 
 ### Step 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, refer to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, refer to [Create Organizations and Projects](/docs/platform/get-started#create-an-organization).
 
 You can add a connector from any module in your Project in Project SETUP, or in your Organization, or Account Resources.
 

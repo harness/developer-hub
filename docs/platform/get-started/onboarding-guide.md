@@ -10,27 +10,30 @@ redirect_from:
   - /docs/get-started/tutorials
   - /docs/getting-started/start-for-free
   - /docs/get-started/start-for-free
+  - /docs/platform/organizations-and-projects/create-an-organization
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Use this guide to set up Harness Platform so your teams can start using any Harness module.
+
 ## What will you learn in this topic?
 
-- How to [access a Harness account](#step-1-access-your-harness-account)?
-- How to [create organization](#create-an-organization), [projects](#create-a-project) and [invite collaborators](#invite-collaborators)?
-- How to [manage users](#step-3-manage-users) and [shared resources](#step-4-manage-shared-resources)?
-- How to become a [Harness certified expert](#become-a-harness-certified-expert)?
+- How to [access a Harness account](#step-1-access-your-harness-account).
+- How to [create organization](#create-an-organization), [projects](#create-a-project) and [invite collaborators](#invite-collaborators).
+- How to [manage users](#step-3-manage-users) and [shared resources](#step-4-manage-shared-resources).
+- How to become a [Harness certified expert](#become-a-harness-certified-expert).
 
 ---
 
 ## Before you begin
-- [Harness Platform overview](/docs/platform/get-started/overview)
-- [Harness UI overview](/docs/platform/get-started/harness-ui-overview)
+- <a href="/docs/platform/get-started/overview" target="_blank">Harness Platform overview</a>
+- <a href="/docs/platform/get-started/harness-ui-overview" target="_blank">Harness UI overview</a>
 
 ---
 
-## Setup Harness Platform
+## Set up the Harness Platform
 
 Follow the steps below to understand the platform and complete the initial setup so you can start using other Harness modules.
 
@@ -38,62 +41,59 @@ Follow the steps below to understand the platform and complete the initial setup
 
 [Sign up for a free account](https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started) or sign in to your existing Harness account to get started.
 
-Harness provides a free tier of the Platform to help you get started with software delivery.
+If you have signed up for a free account, go to <a href="/docs/platform/account-license-limits/" target="_blank"> Account license limits </a> to know the limitations on actions that you can perform.
 
-Harness is offered as **SaaS** and **Self-Managed** (on-premises) editions. These offerings are described below.
-
-| | **SaaS** | **Self-Managed Enterprise Edition (SMP)** |
-|---|---|---|
-| **What it is** | Fully managed, cloud-hosted version of Harness. No infrastructure setup required. | Kubernetes-native deployment that runs on your own public or private cloud infrastructure. See [SMP overview](/docs/self-managed-enterprise-edition/smp-overview). |
-| **Plans / licensing** | Free, Team, and Enterprise. See [Subscriptions and licenses](/docs/platform/subscriptions-licenses/subscriptions). | Requires a valid SMP license key and access to download the Harness SMP software. |
-| **Get access** | [Sign up with the Free plan](https://app.harness.io/auth/#/signup/?module=cd&utm_medium=harness-developer-hub), then [sign in](https://app.harness.io/auth/#/signin). Team/Enterprise accounts are created by invitation from an Account Administrator. | Contact [Harness Support](mailto:support@harness.io) to obtain your license key and software download access. |
-| **Setup** | None — Harness manages the infrastructure. | Follow the [installation instructions](/docs/category/install), then sign in at `http://YOUR_DOMAIN_NAME/auth/#/signin`. |
+After you log in to your account, select a module and you are redirected to the platform user interface.
 
 ---
 
-### Step 2: Create organization, project and invite collaborators
+### Step 2: Create organization, project, and invite collaborators
 
-Once you have created an account, contact your administrator to get permissions to create organizations and projects.
+Once you have created an account, you can begin creating organizations and projects. If you are part of a team account, contact your administrator to get the necessary permissions to create organizations and projects.
+
+:::important
+- With a free account, a default organization and project are already created for you. 
+- You **cannot** create another new organization. However, you can create multiple projects within the default organization, and invite collaborators into the default organization.
+:::
 
 #### Create an organization
 
-1. In Harness, select **Account Settings** to switch to account scope; the **Organizations** tab appears on top of **Account Settings**. Click **Organizations**. 
+1. In Harness, select **Account Settings** to switch to account scope.
+ 
+ The **Organizations** tab appears on top of **Account Settings**. Click **Organizations**. 
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/acc-settings.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/select-org.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
-
-
 **(OR)** 
 
 
-1. Click the **Account**, select **Organizations**, click **View All Orgs**, and click **Organizations**
+1. Click the **Account**, select **Organizations**, click **View All Orgs**, and click **Organizations**.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/acc-2.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 
-2. Click **+New Organization**. The new organization settings appear.
+2. Click **+New Organization**. 
+
+    The new organization settings appear.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/acc-3.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
+3. In **Name**, enter a name for your organization. Enter **Description**, and <a href="/docs/platform/references/tags-reference" target="_blank">tags</a> for your new org. Click **Save and Continue**.
+
+    The organization is created and you can now invite collaborators.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/create-an-organization-01.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
-   
-3. In **Name**, enter a name for your organization.
-4. Enter **Description**, and [Tags](../references/tags-reference.md) for your new org.
-5. Click **Save and Continue**.
 
 
 #### Invite collaborators
 
-The org and any projects added to it are used by their members only.
+You do not have to add the same members to an org and its projects. You can add org-level members, and then add project-level members later when you set up or edit a project.
 
-You don't have to add the same members to an org and its projects. You can add org-level members, and then add project-level members later when you set up or edit a project.
+The org and any projects added to the org are used by their members only.
 
 1. Click **Organizations**, and then select the three-dot menu (**⋮**) of the org you want to invite people to.
 
@@ -101,34 +101,43 @@ You don't have to add the same members to an org and its projects. You can add o
   <DocImage path={require('./static/invite-collab.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 2. Select **Invite People to Collaborate**, type a member's name and select it.
-2. In **Role**, select the role the member will have in this org, such as Organization Admin or Organization Member.
+3. In **Role**, select the role the member will have in this org, such as Organization Admin or Organization Member.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/create-an-organization-02.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
-3. Click **Add**.
+4. Click **Add**.
    
    Members receive invites via their email addresses.
 
-   You can invite more members from within the Org later.
+   You can invite more members from within the org later.
 
-4. Click **Finish**. The Org is added to the list in Account Settings Organizations.
+5. Click **Finish**. 
+
+    The org is added to the list under **Organizations**.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/projects-and-organizations-05.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
+
 
 #### Create a project
 
-You can create Projects in the Org from the projects section of Harness, or from within the org. You'll set up user permissions in the next step.
+You can create projects from the **Projects** section or from within the organization. You will set up user permissions in the next step.
 
-In this example, you will create projects in **Projects**.
+The following steps show you how to create a project from the **Projects** section.
 
 1. In Harness, go to **Home** and click **Projects**.
 2. Click **+Project**.
-3. Name the project, and select a color. The Id of the project is generated automatically. See [Harness Entity Reference](../references/harness-entity-reference.md).
+3. Name the project, and select a color. Harness automatically generates the project ID. See <a href="/docs/platform/references/harness-entity-reference" target="_blank">Harness Entity Reference</a>.
 4. In **Organization**, select the org you created.
-5. Add a description and tags, and then click **Save and Continue**.
-6. In **Invite Collaborators**, type a member's name and select it.
-7. Select a role for the member, and click **Add**.
-8. Click **Save and Continue** to create the project.
+5. Add a description and tags, and then click **Save and Continue** to create the project.
 
+To invite collaborators, follow the steps from [Invite Collaborators](#invite-collaborators).
+
+The project you created will be listed under **Projects**.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/projects-and-organizations-06.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 You can create additional organizations and projects to represent your business units and product development initiatives.
 
@@ -142,28 +151,28 @@ You can create additional organizations and projects to represent your business 
 
 ### Step 3: Manage users
 
-To facilitate fine-grained permissions, configure [authentication](/docs/platform/authentication/authentication-overview) and [role-based access control (RBAC)](/docs/platform/role-based-access-control/rbac-in-harness) for your Harness account. 
+To control user access at a granular level, configure <a href="/docs/platform/authentication/authentication-overview" target="_blank">authentication</a> and <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">role-based access control (RBAC)</a> for your Harness account. 
 
 You can also automate user provisioning from external sources, including user group memberships and role assignments. The following methods are supported:
 
-  - [Okta](/docs/platform/role-based-access-control/provision-users-with-okta-scim)
-  - [Microsoft Entra ID](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
-  - [OneLogin](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
-  - [Just-in-time user provisioning](/docs/platform/role-based-access-control/provision-use-jit)
+  - <a href="/docs/platform/role-based-access-control/provision-users-with-okta-scim" target="_blank">Okta</a>
+  - <a href="/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim" target="_blank">Microsoft Entra ID</a>
+  - <a href="/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim" target="_blank">OneLogin</a>
+  - <a href="/docs/platform/role-based-access-control/provision-use-jit" target="_blank">Just-in-time user provisioning</a>
 
-To add users manually, go to [add users manually](/docs/platform/role-based-access-control/add-users/#add-users-manually).
+To add users manually, go to <a href="/docs/platform/role-based-access-control/add-users/#add-users-manually" target="_blank">add users manually</a>.
 
 ---
 
 ### Step 4: Manage shared resources
 
-Shared resources are the connective layers between Harness and your infrastructure. Most modules require at least one delegate and a connector to function.
+Shared resources are the connections between Harness and your infrastructure. Most modules require at least one delegate and a connector to function.
 
-- **Delegate**: A lightweight worker you install in your environment (Kubernetes, Docker, VM) that executes tasks on behalf of Harness using outbound-only HTTPS. You don't need one immediately, but you'll need one when running pipelines. For more information, go to [Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview).
+- **Delegate**: A lightweight worker you install in your environment (Kubernetes, Docker, virtual machine (VM)). It executes tasks on behalf of Harness using outbound-only HTTPS. You do not need one immediately, but you will need one when running pipelines. For more information, go to <a href="/docs/platform/delegates/delegate-concepts/delegate-overview" target="_blank">Delegates</a>.
 
-- **Connector**: Stores credentials and connection information for third-party tools like GitHub, AWS, GCP, and DockerHub. For more information, go to [connectors](/docs/category/connectors).
+- **Connector**: Stores credentials and connection information for third-party tools like GitHub, AWS, GCP, and DockerHub. For more information, go to <a href="/docs/category/connectors" target="_blank">connectors</a>.
 
-- **Secret**: An encrypted storage for sensitive values like API keys and passwords. Harness has a built-in secret manager and integrates with Vault, AWS Secrets Manager, and others. For more information, go to [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+- **Secret**: An encrypted storage for sensitive values like API keys and passwords. Harness has a built-in secret manager and integrates with Vault, AWS Secrets Manager, and others. For more information, go to <a href="/docs/platform/secrets/secrets-management/harness-secret-manager-overview" target="_blank">secrets</a>.
 
 As an administrator, you can configure shared resources at the account, organization, or project scope, depending on how you want to facilitate their availability.
 
@@ -199,8 +208,8 @@ Once the platform is set up, you can start using Harness modules to automate you
 ---
 
 ## Next steps
-- [Authentication in Harness Platform](/docs/category/authentication)
-- [Platform Access Control](/docs/category/platform-access-control)
-- [Supported platform and technologies](/docs/platform/platform-whats-supported)
-- [Automate configuring shared resources using Terraform](/docs/platform/automation/terraform/harness-terraform-provider-overview)
-- [Automate configuring shared resources using REST API](/docs/platform/automation/api/api-quickstart)
+- <a href="/docs/category/authentication" target="_blank">Authentication in Harness Platform</a>
+- <a href="/docs/category/platform-access-control" target="_blank">Platform access control</a>
+- <a href="/docs/platform/platform-whats-supported" target="_blank">Supported platforms and technologies</a>
+- <a href="/docs/platform/automation/terraform/harness-terraform-provider-overview" target="_blank">Automate configuring shared resources using Terraform</a>
+- <a href="/docs/platform/automation/api/api-quickstart" target="_blank">Automate configuring shared resources using REST API</a>

@@ -41,7 +41,7 @@ Other configuration files for other integrations, such as Azure Web Apps, etc, a
 
 ## Start a pipeline
 
-This topic assumes that you have a Harness Project set up. Go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization.md) for more information.
+This topic assumes that you have a Harness Project set up. Go to [create organizations and projects](/docs/platform/get-started#create-an-organization) for more information.
 
 1. In Harness Manager, select **Pipelines** and select **New Pipeline**.
 2. Enter a name in **Create new Pipeline** and select **Start**.

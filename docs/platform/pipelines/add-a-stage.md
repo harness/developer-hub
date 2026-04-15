@@ -24,7 +24,7 @@ This functionality is limited to the modules and settings that you have access t
 
 ## Add a stage
 
-1. In any [Harness project](../organizations-and-projects/create-an-organization.md), create a pipeline in any module that supports pipelines.
+1. In any [Harness project](/docs/platform/get-started#create-an-organization), create a pipeline in any module that supports pipelines.
 2. In your pipeline, select **Add stage**, and then select the stage type:
 
    * **Build:** Build, test, and push artifacts to repositories.
@@ -41,7 +41,7 @@ This functionality is limited to the modules and settings that you have access t
 
    :::tip
 
-   If a specific module or stage type isn't shown, make sure the module is enabled in your project. For more information, go to [Create organizations and projects](../organizations-and-projects/create-an-organization.md).
+   If a specific module or stage type isn't shown, make sure the module is enabled in your project. For more information, go to [Create organizations and projects](/docs/platform/get-started#create-an-organization).
 
    :::
 

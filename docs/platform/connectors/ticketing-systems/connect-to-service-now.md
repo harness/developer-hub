@@ -30,7 +30,7 @@ This read-only configuration is ideal when you only need to monitor ticket statu
 
 ### Add a ServiceNow connector
 
-This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](/docs/platform/get-started#create-an-organization).
 
 You can add a connector from any module in your project in project setup, or in your organization, or account resources.
 

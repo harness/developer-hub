@@ -30,7 +30,7 @@ If you're not familiar with RBAC, check out this blog post on [User and Role Man
 Before configuring RBAC in Harness, you should have an understanding of:
 
 - [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
-- [Creating organizations and projects](../organizations-and-projects/create-an-organization.md).
+- [Creating organizations and projects](/docs/platform/get-started#create-an-organization).
 - The functionality of the modules in your Harness account.
 
 The video below gives an overview of RBAC in Harness.
@@ -61,7 +61,7 @@ flowchart TD
 
 The scope at which you create resources depends on the level of control and visibility you require. For example, if you create a connector at the account scope, it is available to all organizations and projects within the account. However, if you create a connector at the organization scope, it is only available to that organization and any projects under that organization. It is not available at the account scope or to other organizations. This lets you control access to your resources more effectively and prevent unauthorized access.
 
-To learn about organizations and projects, go to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
+To learn about organizations and projects, go to [Create Organizations and Projects](/docs/platform/get-started#create-an-organization).
 
 ## RBAC components
 
