@@ -38,12 +38,13 @@ export default function Platform() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Accelerate your onboarding using the Harness Platform. Harness
-              Platform is designed to assist developers and DevOps teams in
-              delivering software with maximum speed, quality, security,
-              reliability, and resilience at the lowest possible cost. It helps
-              you stay within the governance boundaries required to achieve
-              organizational objectives.
+              Harness Platform provides the shared foundation for all Harness modules. 
+              Manage user access, authentication, secrets, delegates, governance, 
+              and audit trails from a single control plane. 
+              With built-in role-based access control (RBAC), 
+              single sign-on (SSO), and policy enforcement, 
+              Harness Platform gives your organization the security and visibility
+              it needs to scale DevOps across teams and environments.
             </p>
             <div className={styles.illustrationContainer}>
               <img

@@ -5,6 +5,7 @@ sidebar_label: Get Started
 sidebar_position: 2
 slug: /platform/get-started
 redirect_from:
+  - /docs/platform/organizations-and-projects/create-an-organization
   - /docs/platform/get-started/onboarding-guide
   - /docs/platform/get-started/tutorials
   - /docs/get-started/tutorials
