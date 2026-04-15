@@ -48,7 +48,15 @@ You can use **SBOM Orchestration** step to generate an SBOM in either the **Buil
 
 :::
 
-Using SBOM Orchestration step you can generate the SBOM for both Container images and Repositories. Follow the steps to configure the fields for each supported type.
+The SBOM Orchestration step allows you to generate the SBOM for both Container images and Repositories.
+
+:::note
+
+SBOM generation is not supported for non-container artifacts. For artifact types such as JAR files, Helm charts, or YAML manifests, you must use the SBOM orchestration step in Ingestion mode and provide a pre-generated SBOM file. Go to [Ingest SBOM for Non-Container Images](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images) to understand SBOM orchestration via ingestion mode.
+
+:::
+
+Follow the steps to configure the fields for each supported type:
 
 * **Name:** Enter a name for the step.
 

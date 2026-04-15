@@ -88,9 +88,9 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
    <DocImage path={require('./static/sbom-ingestion-step.png')} width="50%" height="50%" />
 
 
-### Non-Container Images:
+### Non-Container Images
 
-Artifacts aren’t limited to container images. With the SBOM Orchestration step, you can also ingest SBOMs for non-container artifacts, with each artifact uniquely identified by its digest (SHA).
+Artifacts are not limited to container images. With the SBOM Orchestration step, you can also ingest SBOMs for non-container artifacts. When the artifact file path is provided, the artifact is uniquely identified using its digest (SHA). If the file path is not provided, the artifact is identified using its version.
 
 The following are the non-container artifact types are supported:
 
