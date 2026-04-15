@@ -14,6 +14,7 @@ helpdocs_is_published: true
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
 You can ingest custom issues from any scanning tool. STO supports a generic JSON format for ingesting data from unsupported scanners that cannot publish to SARIF.
 
@@ -44,36 +45,85 @@ You can ingest custom issues from any scanning tool. STO supports a generic JSON
 
 ###  JSON data format reference
 
-The following example illustrates the required format for your data:
+The following example illustrates the required format for your data. This comprehensive example shows all supported fields:
 
-```yaml
-{  
-   "meta":{  
-      "key":[  
-         "issueName"
-      ],  
-      "subproduct":"MyCustomScanner"  
-   },  
-   "issues":[  
-      {  
-         "subproduct":"MyCustomScanTool",  
-         "issueName":"Cross Site Scripting",  
-         "issueDescription":"Lorem ipsum...",  
-         "fileName":"homepage-jobs.php",  
-         "remediationSteps":"Fix me fast.",  
-         "risk":"high",  
-         "severity":8,  
-         "status":"open",  
-         "referenceIdentifiers":[  
-            {  
-               "type":"cwe",  
-               "id":"79"  
-            }  
-         ]  
-      }  
-   ]  
+```json
+{
+    "meta": {
+        "key": ["issueName"],
+        "subproduct": "MyCustomScanner"
+    },
+    "issues": [
+        {
+            "issueType": "SAST",
+            "issueName": "Complete Example Issue",
+            "issueDescription": "This is a comprehensive example showing every possible field in the RefinedIssue class.",
+            "subproduct": "MyCustomScanner",
+            "referenceIdentifiers": [
+                {
+                    "type": "cve",
+                    "id": "2023-12345"
+                },
+                {
+                    "type": "cwe",
+                    "id": "79"
+                },
+                {
+                    "type": "ghsa",
+                    "id": "xxxx-yyyy-zzzz"
+                }
+            ],
+            "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+            "cvssVersion": "CVSS v3.1",
+            "cvss": 6.1,
+            "baseScore": 6.1,
+            "exploitabilityScore": 2.8,
+            "impactScore": 2.7,
+            "epss": 0.45,
+            "confidence": "High",
+            "effort": "Medium",
+            "originalSeverity": "High",
+            "severity": 8.0,
+            "remediationSteps": "Fix me fast by applying the latest security patch.",
+            "referenceUrls": "https://example.com/advisory,https://nvd.nist.gov/vuln/detail/CVE-2023-12345",
+            "fileName": "homepage-jobs.php",
+            "lineNumber": 127,
+            "endLine": 130,
+            "startCol": 8,
+            "linesOfCodeImpacted": 4,
+            "codeSnippet": "```php\necho $_GET['input'];\n// More vulnerable code here\n```",
+            "libraryName": "vulnerable-lib",
+            "licenseName": "MIT",
+            "currentVersion": "1.2.3",
+            "upgradeVersion": "1.2.4",
+            "author": "Library Author",
+            "fixAvailable": true,
+            "imageRegistry": "docker.io/mycompany/webapp",
+            "imageTag": "v2.1.0",
+            "dockerManifestDigest": "sha256:abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+            "dockerIndexDigest": "sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+            "imageLayerId": "sha256:layer1234567890abcdef",
+            "host": "https://api.example.com",
+            "ip": "192.0.2.100",
+            "port": 8443,
+            "path": "/api/v1/users",
+            "method": "POST",
+            "project": "MyProjectName",
+            "_raw": {
+                "scannerVersion": "2.5.1",
+                "ruleId": "CUSTOM-001",
+                "customMetric": 42,
+                "tags": ["security", "injection", "web"],
+                "anyOtherField": "Scanners can include any additional custom data here"
+            }
+        }
+    ]
 }
 ```
+
+:::note
+- The `issueType` field can be one of: `SAST`, `DAST`, `SCA`, `IAC`, `SECRET`, `MISCONFIG`, `BUG_SMELLS`, `CODE_SMELLS`, `CODE_COVERAGE`, `EXTERNAL_POLICY`.
+:::
 
 The basic schema includes a `“meta”` section, which requires the following: 
 
@@ -85,7 +135,7 @@ The basic schema includes a `“meta”` section, which requires the following:
 
 * `“subproduct”` 
 
-   The scan tool name to apply to the overall issue. 
+   The scan tool name to apply to the overall issue. The product will be "Custom", so specifying a subproduct like "MyScanner" will display as "Custom - MyScanner" in the Harness UI (in scanner dropdowns, etc.). 
    
 The full JSON takes the form:
 
@@ -101,81 +151,117 @@ The full JSON takes the form:
 ```
 
 
-#### Required fields for Harness STO JSON schema
+#### Required fields
 
 |  |  |  |
 | --- | --- | --- |
 | **Name** | **Format** | **Description** |
 | `issueName` | String | Name of vulnerability, license issue, compliance issue, etc. |
-| `issueDescription` | String (long) | Description of vulnerability, license issue, compliance issue, etc. |
-| `subProduct` | String | The scan tool name to apply to the individual occurrence of the issue. |
-| `severity` | Float | CVSS 3.0 score (a number from 1.0-10.0) |
+| `issueDescription` | String (long) | Description of vulnerability, license issue, compliance issue, etc. Supports Markdown formatting, which will be rendered in the Harness UI. |
+| `subProduct` | String | The scan tool name to apply to the individual occurrence of the issue. Displays as "Custom - [subProduct]" in the Harness UI. |
+| `severity` | Float | CVSS 3.0 score (a number from 1.0-10.0). |
 
-#### Recommended fields for Harness STO JSON schema
+#### Other supported fields
 
 |  |  |  |
 | --- | --- | --- |
 | **Name** | **Format** | **Description** |
-| `confidence` | Float | Derived from the tool output. |
-| `cvss` | String (long) | Derived from the tool output. |
-| `fileName` | String | Recommended to assist in triaging errors (if present). |
-| `host` | String | Recommended to assist in triaging errors (if present). |
-| `ip` | String | Recommended to assist in triaging errors (if present). |
-| `issueType` | String | Type of issue (e.g. vulnerability, license issue, compliance issue, etc.) |
-| `lineNumber` | String | Recommended to assist in triaging errors (if present). |
-| `link` | String | Recommended to assist in triaging errors (if present). |
-| `port` | Integer | Recommended to assist in triaging errors (if present). |
-| `product` | String | Logical metadata field that can be used for tracking of product(s). |
-| `project` | String | Logical metadata field that can be used for tracking of project(s) |
+| `issueType` | String | Type of issue. Valid values: `SAST`, `DAST`, `SCA`, `IAC`, `SECRET`, `MISCONFIG`, `BUG_SMELLS`, `CODE_SMELLS`, `CODE_COVERAGE`, `EXTERNAL_POLICY`. |
+| `referenceIdentifiers` | Array | An array of vulnerability identifiers, such as `cve`, `cwe`, `ghsa`, etc. Note that the `type` value must be lowercase. Example: `"referenceIdentifiers": [{"type": "cve", "id": "2023-12345"}, {"type": "cwe", "id": "79"}]` |
 | `remediationSteps` | String (long) | Remediation instructions, often provided by the scan tool. |
+| `referenceUrls` | String | Comma-separated list of reference URLs for the vulnerability. |
+| `cvss` | Float | The CVSS score value. |
+| `cvssVector` | String | The full CVSS vector string. Example: `"CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"` |
+| `cvssVersion` | String | The CVSS version used. Example: `"CVSS v3.1"` |
+| `baseScore` | Float | The CVSS base score. |
+| `exploitabilityScore` | Float | The CVSS exploitability sub-score. |
+| `impactScore` | Float | The CVSS impact sub-score. |
+| `epss` | Float | The Exploit Prediction Scoring System (EPSS) score (0.0-1.0). |
+| `originalSeverity` | String | The original severity as reported by the scanner. Example: `High`, `Medium`, `Low`, `Critical`. |
+| `confidence` | String | Confidence level of the finding. Example: `High`, `Medium`, `Low`. |
+| `effort` | String | The estimated effort required to remediate. Example: `Low`, `Medium`, `High`. |
+| `fileName` | String | The file where the issue was found. |
+| `lineNumber` | Integer | The starting line number of the issue. |
+| `endLine` | Integer | The ending line number of the issue. |
+| `startCol` | Integer | The starting column number of the issue. |
+| `linesOfCodeImpacted` | Integer | The number of lines of code affected by the issue. |
+| `codeSnippet` | String | A code snippet showing the vulnerable code. Supports Markdown code blocks. |
+| `libraryName` | String | The name of the vulnerable library or dependency. |
+| `currentVersion` | String | The current version of the vulnerable library. |
+| `upgradeVersion` | String | The recommended version to upgrade to for remediation. |
+| `fixAvailable` | Boolean | Indicates whether a fix is available for the vulnerability. |
+| `licenseName` | String | The license of the library. Example: `MIT`, `Apache-2.0`. |
+| `author` | String | The author or maintainer of the library. |
+| `imageRegistry` | String | The container image registry and repository. Example: `docker.io/mycompany/webapp` |
+| `imageTag` | String | The container image tag. Example: `v2.1.0` |
+| `dockerManifestDigest` | String | The SHA256 digest of the Docker manifest. |
+| `dockerIndexDigest` | String | The SHA256 digest of the Docker index. |
+| `imageLayerId` | String | The ID of the image layer where the issue was found. |
+| `imageNamespace` | String | Logical metadata field for image namespace. |
+| `host` | String | The target host URL. Example: `https://api.example.com` |
+| `ip` | String | The target IP address. |
+| `port` | Integer | The target port number. |
+| `path` | String | The URL path where the issue was found. Example: `/api/v1/users` |
+| `method` | String | The HTTP method used. Example: `GET`, `POST`, `PUT`, `DELETE`. |
+| `url` | String | The full URL where the issue was found. |
+| `project` | String | Logical metadata field that can be used for tracking of project(s). |
+| `product` | String | Logical metadata field that can be used for tracking of product(s). |
 | `scanSeverity` | String | The severity as reported by the scan tool. |
 | `scanStatus` | String | Recommended for measuring scan duration and status. |
-| `tags` | String | Logical metadata tags, which can be leveraged to describe asset owners, teams, business units, etc. |
-| `url` | String | Recommended to assist in triaging errors (if present). |
+| `tags` | String | Logical metadata tags for describing asset owners, teams, business units, etc. |
+| `link` | String | A link to additional information about the issue. |
 
-#### Optional fields for Harness STO JSON schema
+#### Custom fields
 
-|  |  |  |
-| --- | --- | --- |
-| **Name** | **Format** | **Description** |
-| `author` | String | Logical metadata field designed to track the owner of the scan result. |
-| `effort` | String (long) | Logical metadata field designed to gauge the required effort to remediate a vulnerability. |
-| `exploitabilityScore` | Float | Derived from the tool output. |
-| `imageLayerId` | String | Metadata field to track image layer ID from containers. |
-| `imageNamespace` | String | Logical metadata field. |
-| `impactScore` | String | Derived from the tool output. |
-| `libraryName` | String | Derived from the tool output. |
-| `license` | String | Derived from the tool output. |
-| `linesOfCodeImpacted` | String | Recommended to assist in triaging errors (if present). |
-| `referenceIdentifiers` | Array | An array of Vulnerability identifiers, such as `cve`, `cwe`, etc. Here's an example. Note that the `type` value must be lowercase. &#13; `“referenceIdentifiers”: [     {“type” : “cve”,“id” : “79”},     {"type" : "cwe", "id" : "83"}]`  |
+You can add custom fields to an issue to include scanner specific data that isn't covered by the standard fields. There are two approaches:
 
+**Option 1: Use the `_raw` object**
 
-##### Custom fields for Harness STO JSON schema
+You can include a `_raw` object in your issue to store any additional custom data. This is the recommended approach for grouping related custom fields:
 
-You can add custom fields to an issue. The only restriction is that you cannot use any of the [reserved keywords](#reserved-keywords) listed above. To include raw, unrefined data, add the prefix "`_raw`" to the field name. For example, you can add the following "`_raw`" fields to an issue:
-
-
+```json
+{
+    "issueName": "Example Issue",
+    "issueDescription": "Description here...",
+    "_raw": {
+        "scannerVersion": "2.5.1",
+        "ruleId": "CUSTOM-001",
+        "customMetric": 42,
+        "tags": ["security", "injection", "web"],
+        "anyOtherField": "Scanners can include any additional custom data here"
+    }
+}
 ```
+
+**Option 2: Use `_raw` prefix for individual fields**
+
+Alternatively, you can add the prefix `_raw` to individual field names:
+
+```json
 {  
-   "testName":"hardcode_tmp_directory",  
-     ......  
-   "referenceIdentifiers":[  
+   "issueName": "hardcode_tmp_directory",  
+   "referenceIdentifiers": [  
       {  
-         "type":"cwe",  
-         "id":"79"  
+         "type": "cwe",  
+         "id": "79"  
       }  
     ],  
    "_rawIssueCwe": {  
-     "id" : 377,  
-     "link" : "https://cwe.mitre.org/data.definitions/377.html"  
+     "id": 377,  
+     "link": "https://cwe.mitre.org/data.definitions/377.html"  
    },  
-   "_rawMoreInfo" : "https://bandit.readthedocs.io/en/1.7.4/plugins/b108_hardcoded_tmp_directory.html",  
-   "_rawColOffset":31  
+   "_rawMoreInfo": "https://bandit.readthedocs.io/en/1.7.4/plugins/b108_hardcoded_tmp_directory.html",  
+   "_rawColOffset": 31  
 }
 ```
+
+:::note
+You cannot use any of the **Reserved keywords** for custom field names.
+:::
+
 The custom fields will get grouped together at the end of the issue details like this:
 
-![](./static/ingesting-issues-from-other-scanners-01.png)
+<DocImage path={require('./static/ingesting-issues-from-other-scanners-01.png')} width="50%" height="50%" />
 
 #### Reserved keywords for Harness STO JSON schema
 
