@@ -618,3 +618,59 @@ After pushing the changes, we will see that Input set named as **input_set** is 
 - Harness RBAC is not applicable in Autocreation. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations. If you are able to push to the default branch, you will be able to create the entity in Harness.
 - When files are deleted in Git, the corresponding entity is not removed; instead, it's just an automatic creation process, not a complete Git sync.
 :::
+
+## Control auto-creation with OPA policies
+
+Harness integrates OPA "on save" policy evaluation into the GitX auto-creation flow. You can use OPA policies to selectively allow or block specific entity types from being auto-created when a webhook event fires — for example, blocking Infrastructure definitions while still allowing Pipelines and Services.
+
+Because Harness exposes `principalType` in the policy evaluation context — `SERVICE` for webhook-triggered auto-creation and `USER` for manual UI or API actions — you can also write policies that block webhook-based creation for a repo while leaving manual creation unaffected.
+
+### How it works
+
+When a webhook event triggers auto-creation, Harness processes the pushed YAML files and determines which entities to create. Before creating each entity, Harness evaluates any applicable "On Save" OPA policy sets. If a policy denies the operation, entity creation is blocked and the webhook event is marked as warning. If no policy denies the operation, the entity is created normally.
+
+### Supported entities and feature flags
+
+Contact [Harness Support](mailto:support@harness.io) to enable the relevant feature flag for your account.
+
+| Feature flag | Applies to |
+|--------------|------------|
+| `PIPE_ENABLE_OPA_GOVERNANCE_FOR_AUTO_CREATION` | Pipelines, Templates |
+| `CDS_OPA_GOVERNANCE_FOR_WEBHOOK` | Services, Infrastructure definitions, Environments, Overrides |
+
+### Write a policy to block auto-creation
+
+The following fields are available during policy evaluation for auto-creation events:
+
+| Field | Description |
+|-------|-------------|
+| `input.metadata.principalType` | `SERVICE` for webhook-triggered auto-creation; `USER` for manual UI or API actions. |
+| `input.pipeline.gitConfig.repoName` | The repository name where the push originated. |
+
+<details>
+<summary>Example: Block auto-creation by repo and principal type</summary>
+
+This policy blocks pipeline auto-creation for a specific repository when triggered by a webhook. Manual creation through the Harness UI or API is unaffected because those actions carry `principalType == "USER"`.
+
+```rego
+package pipeline.policy
+
+deny[msg] {
+  repo := input.pipeline.gitConfig.repoName
+  principalType := input.metadata.principalType
+
+  repo == "my-repo"
+  principalType == "SERVICE"
+
+  msg := sprintf(
+    "Auto-creation via webhooks is blocked for repo '%s'.",
+    [repo]
+  )
+}
+```
+
+</details>
+
+### Configure a policy set for auto-creation
+
+After writing your policy, create a policy set and attach it to the **On Save** event for the target entity type. For step-by-step instructions, go to [OPA Policy for CD Entities](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/opa-policies-for-cd-entities).

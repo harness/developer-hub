@@ -156,6 +156,14 @@ For example, you have a policy that prevents the creation of a Kubernetes servic
 
 ![OPA Policy Set](./static/opa-policy-5.png)
 
+## Block GitX auto-creation with OPA policies
+
+OPA "On Save" policies are also evaluated during **GitX auto-creation** — when entities are created automatically via webhook events after pushing YAML files to your Git repository. This lets you control which entities can be auto-created based on the type of principal and repo.
+
+When a webhook fires, Harness evaluates the applicable policy sets before creating each entity. If a policy denies the operation, the entity is not created and the webhook event is marked as warning. Manual creation via the Harness UI or API is unaffected because those actions carry `principalType == "USER"`, while webhook-triggered auto-creation uses `principalType == "SERVICE"`.
+
+For details on writing policies for auto-creation, go to [Control auto-creation with OPA policies](/docs/platform/git-experience/autocreation-of-entities#control-auto-creation-with-opa-policies).
+
 ## Limitations
 
 - The policy is applicable on **On Save**. If the entity already exists, the policy will not be enforced during deployment.
