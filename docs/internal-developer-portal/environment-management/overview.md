@@ -78,10 +78,10 @@ Harness IDP provides granular Role-Based Access Control (RBAC) for environment m
 
 | Resource Type | Scope | Available Permissions | Resource Group Options |
 |---------------|-------|----------------------|------------------------|
-| **[Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml)** | Account Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
+| **[Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml)** | Account, Org, or Project Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
 | **[Environment](/docs/internal-developer-portal/environment-management/environments.md)** | Project Level | <ul><li>**VIEW**: View environments</li><li>**CREATE/EDIT**: Create new environments or edit existing ones</li><li>**DELETE**: Delete environments</li></ul> | <ul><li>All Environments</li><li>Specific Environments</li></ul> |
 
-**Environment Blueprints** are created at the **account scope** and define reusable templates, while **Environments** are created at the **project scope** using these blueprints. This separation allows platform teams to maintain centralized control over standards while giving development teams autonomy to provision their own environments.
+**Environment Blueprints** can be created at the **account**, **org**, or **project** scope and define reusable templates. **Environments** are currently created at the **project scope** and can reference blueprints from the same project scope, a parent org scope, or the account scope. This separation allows platform teams to maintain centralized control over standards while giving development teams autonomy to provision their own environments.
 
 For detailed instructions on configuring RBAC for environment management, refer to the [Environment Management RBAC section](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#environment-management-rbac). 
 

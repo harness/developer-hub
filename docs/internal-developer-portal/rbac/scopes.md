@@ -59,6 +59,7 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 | **Scorecards** | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                 | ✅                 | ❌             | ❌                 | Supported only at the Account scope currently. Org/Project support is planned.                     |
 | **Layouts**    | <ul><li>View</li><li>Create/Edit</li></ul>                                | ✅                 | ❌             | ❌                 | Supported only at the Account scope. Org/Project scope support is planned.                         |
 | **Plugins**    | <ul><li>View</li><li>Create/Edit</li><li>Toggle</li><li>Delete</li></ul>  | ✅                 | ❌             | ❌                 | Plugins can be created and configured only at the Account scope.                                   |
+| **Environment Blueprint** | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> | ✅ | ✅ | ✅ | Environment Blueprints can be created and managed at Account, Org, or Project scope. |
 
 You can configure RBAC for each resource with different permissions and create reusable resource groups to apply those permissions. Learn more about [Platform RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
 

@@ -361,7 +361,26 @@ namespace: ${{dependencies.namespace.output.name}}
 ---
 
 ### Scope & Hierarchy
-Environment Blueprints live at the **account scope**, while environments can only be created at the **project scope**. 
+Environment Blueprints can be created at the **account**, **organization**, or **project** scope. The scope is determined by the `orgIdentifier` and `projectIdentifier` fields in the blueprint YAML:
+
+- A blueprint with no `orgIdentifier` or `projectIdentifier` is created at the **account scope**.
+- A blueprint with only an `orgIdentifier` is created at the **org scope**.
+- A blueprint with both `orgIdentifier` and `projectIdentifier` is created at the **project scope**.
+
+Environments are currently created at the **project scope**. However, an environment can reference a blueprint from its own project scope, its parent org scope, or the account scope.
+
+
+#### Reference Blueprints from Environments
+
+When an environment references a blueprint, the blueprint identifier uses a scope prefix to indicate which scope the blueprint belongs to:
+
+* `account.my-blueprint`: references a blueprint at the account scope
+* `org.my-blueprint`: references a blueprint at the org scope
+* `my-blueprint` (no prefix): references a blueprint at the same scope as the environment (project level)
+
+:::info Migration
+Existing environments that referenced blueprints without a scope prefix have been automatically migrated to use the `account.` prefix, since all pre-existing blueprints were at account level. No action is required for existing account-level blueprints.
+:::
 
 In an environment blueprint, all the entities, workspace templates, pipelines, etc. are also created at the **project scope**.
 
@@ -375,7 +394,7 @@ The environment management RBAC is structured across two main resource types:
 
 | Resource Type | Scope | Available Permissions | Resource Group Options |
 |---------------|-------|----------------------|------------------------|
-| **Environment Blueprint** | Account Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
+| **Environment Blueprint** | Account, Org, or Project Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
 | **Environment** | Project Level | <ul><li>**VIEW**: View environments</li><li>**CREATE/EDIT**: Create new environments or edit existing ones</li><li>**DELETE**: Delete environments</li></ul> | <ul><li>All Environments</li><li>Specific Environments</li></ul> |
 
 For a complete overview of all IDP resources and their permissions across different scopes, refer to the [Permissions & Resources table](/docs/internal-developer-portal/rbac/scopes#permissions--resources-idp-20) in the IDP RBAC documentation.
@@ -384,7 +403,8 @@ For a complete overview of all IDP resources and their permissions across differ
 
 To configure access control for environment management:
 
-1. **For Environment Blueprints (Account Level)**:
+1. **For Environment Blueprints (Account, Org, or Project Level)**:
+   - Navigate to the settings for the relevant scope (Account Settings, Org Settings, or Project Settings) > **Access Control** > **Roles**
    - Navigate to **Account Settings** > **Access Control** > **Roles**
    - Create or edit a role and assign Environment Blueprint permissions (VIEW, CREATE/EDIT, DELETE)
    - Create a **Resource Group** and select either:
@@ -509,4 +529,4 @@ spec:
 ## Create Environment Blueprints
 In Harness IDP (Environments), navigate to the **Environments** section, and hit **“Create”** and then **“Environment Blueprint”**. Use the [YAML provided above](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#example-blueprint-yaml) to create the environment blueprint.
 
-![](../static/create-env-blp.png)
+![](../static/scope-blueprint-yaml.png)

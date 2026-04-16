@@ -29,12 +29,26 @@ Using the [Environment Blueprint](/docs/internal-developer-portal/environment-ma
 
 1. In Harness IDP (Environments), click **+ Create** in the right corner, then select **Environment**.
 ![](./static/env-create.png)
+
 2. A list of available environment blueprints will be visible. Select your new environment by clicking the **Use this Blueprint** option beneath it.
 ![](./static/env-use.png)
-3. Give your environment a Name, select owners, input lifecycle (add a new one if the dropdown list is empty), and choose your project as a scope and then Click “Configure Environment”.
-![](./static/config-env.png)
+
+3. Give your environment a Name, select owners, input lifecycle (add a new one if the dropdown list is empty), and select the project scope for your environment. Then click "Configure Environment".
+
+![](./static/config-env-v2.png)
+
+    :::info Blueprint Scope Prefixes
+    When an environment references a blueprint, the blueprint identifier includes a scope prefix to indicate where it lives:
+    * `account.my-blueprint`: references a blueprint at the account scope
+    * `org.my-blueprint`: references a blueprint at the org scope
+    * `my-blueprint` (no prefix): references a blueprint at the same scope as the environment (project level)
+
+    Existing environments that previously referenced blueprints without a prefix have been automatically migrated to use the `account.` prefix, since all pre-existing blueprints were at account level.
+    :::
+<!-- ![](./static/config-env.png) -->
 4. On the new screen, you can choose and configure your inputs to the environment, and when you are satisfied, click **Create Environment**. 
 ![](./static/config-inputs.png)
+
 5. Configure TTL (if enabled): If TTL is enabled for the environment blueprint, you can configure/use the TTL duration for the environment. 
 ![](./static/ttl-em.png)
 
