@@ -1,4 +1,4 @@
-1. **[Harness SAST](/docs/security-testing-orchestration/harness-security-scanners/sast)**
+1. **[Harness Code](/docs/security-testing-orchestration/harness-security-scanners/sast)**
 2. **[Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)** - *open-source*
 3. **[Black Duck](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference)** (by Synopsys)  
 4. **[Brakeman](/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference)** - *open-source*

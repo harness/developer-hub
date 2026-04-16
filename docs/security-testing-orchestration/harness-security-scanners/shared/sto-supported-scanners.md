@@ -44,7 +44,7 @@ A code scanner can detect one or more of the following issue types in your sourc
         </td>
         <td valign="top">
          <ul>
-            <li><a href="/docs/security-testing-orchestration/harness-native-scanners/sast">Harness SAST</a> Orchestration</li>
+            <li><a href="/docs/security-testing-orchestration/harness-security-scanners/sast">Harness Code</a> Orchestration</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference">Checkmarx One</a> Orchestration, Extraction, Ingestion</li>
@@ -91,7 +91,7 @@ An artifact scanner can detect one or more of the following issue types in your 
         </td>
         <td valign="top">
          <ul>
-              <li><a href="/docs/security-testing-orchestration/harness-security-scanners/sca">Harness SCA</a> Orchestration</li>
+              <li><a href="/docs/security-testing-orchestration/harness-security-scanners/sca">Harness Container</a> Orchestration</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference">Anchore Enterprise</a> Orchestration, Extraction, Ingestion </li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference">Aqua Security</a> Orchestration, Ingestion </li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference">AWS ECR</a> Extraction </li>

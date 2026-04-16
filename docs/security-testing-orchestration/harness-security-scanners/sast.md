@@ -1,7 +1,7 @@
 ---
-title: Harness SAST Scanner
-description: Scan code repositories with Harness SAST Scanner
-sidebar_label: SAST Scanner
+title: Harness Code Scanner
+description: Scan code repositories with Harness Code Scanner
+sidebar_label: Code Scanner
 sidebar_position: 8
 
 ---
@@ -15,24 +15,24 @@ sidebar_position: 8
 
 
 
-Harness native SAST scanner integrates directly into your CI/CD pipelines to scan source code for security vulnerabilities, secrets, and open-source dependencies - without requiring external scanners or connectors.
+Harness Code scanner integrates directly into your CI/CD pipelines to scan source code for security vulnerabilities, secrets, and open-source dependencies - without requiring external scanners or connectors.
 
-With one-click configuration, Harness automatically manages authentication and licensing, while providing built-in [data flow visualization](/docs/security-testing-orchestration/harness-security-scanners/sast#data-flow), [reachability analysis](/docs/security-testing-orchestration/harness-security-scanners/sast#reachability) to determine whether a vulnerability is exploitable, and [AI-powered remediation](/docs/security-testing-orchestration/harness-security-scanners/sast#view-ai-remediation-for-harness-sast-security-issues) to help developers quickly understand and fix issues.
+With one-click configuration, Harness automatically manages authentication and licensing, while providing built-in [data flow visualization](/docs/security-testing-orchestration/harness-security-scanners/sast#data-flow), [reachability analysis](/docs/security-testing-orchestration/harness-security-scanners/sast#reachability) to determine whether a vulnerability is exploitable, and [AI-powered remediation](/docs/security-testing-orchestration/harness-security-scanners/sast#ai-remediation-for-harness-code-security-issues) to help developers quickly understand and fix issues.
 
-The SAST step works natively within STO, with all findings unified and visible alongside results from other security scanners.
+The Harness Code step works natively within STO, with all findings unified and visible alongside results from other security scanners.
 
 :::info
 
 ### Licensing
 
-Running the Harness SAST step in STO pipelines requires a Harness SAST Enterprise license.
+Running the Harness Code step in STO pipelines requires a Harness SAST Enterprise license.
 
 
 For licensing details or to enable the Enterprise license, contact [Harness Sales](mailto:support@harness.io).
 
 ### Free Trial
 
-A 45-day free trial is available. If you are an existing Harness STO customer and want to access the Harness scanners, contact the [Harness sales](mailto:support@harness.io) representative to have them enabled for your account.
+A **45-day free trial** is available. If you are an existing Harness STO customer and want to access the Harness scanners, contact the [Harness sales](mailto:support@harness.io) representative to have them enabled for your account.
 
 :::
 
@@ -41,35 +41,38 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 <!-- :::note
-Harness SAST scanner is currently behind the feature flag `STO_STEP_PALETTE_SHIFTLEFT` Contact [Harness Support](mailto:support@harness.io) to enable the scanner.
+Harness Code scanner is currently behind the feature flag `STO_STEP_PALETTE_SHIFTLEFT` Contact [Harness Support](mailto:support@harness.io) to enable the scanner.
 ::: -->
 
 
-:::note
+<!-- :::note
 
-Harness SAST scanner is being gradually rolled out and is currently enabled for some customers. Full availability across all accounts is coming soon.
-:::
+Harness Code scanner is being gradually rolled out and is currently enabled for some customers. Full availability across all accounts is coming soon.
+::: -->
 
 
-## Harness SAST step settings for STO scans
+## Harness Code step settings for STO scans
 
-Setting up the Harness SAST scanner is the same as configuring any other [built-in scanner step](/docs/security-testing-orchestration/set-up-scans/built-in-scanners). The required configuration is handled automatically, making the setup process simple and straightforward. Here’s how to set it up:
+Setting up the Harness Code scanner is the same as configuring any other [built-in scanner step](/docs/security-testing-orchestration/set-up-scans/built-in-scanners). The required configuration is handled automatically, making the setup process simple and straightforward. Here’s how to set it up:
 
 - In your Build or Security stage, open the step palette by clicking the **Add Step** option in your pipeline.
 
 - Navigate to the Harness Security Scanners section under the Security Tests category.
 
- <DocImage path={require('./static/sast-and-sca.png')} width="30%" height="30%" title="Add shared path for scan results" /> 
-- By default, all the below fields are configured automatically by the Harness SAST scanner.
+ <DocImage path={require('./static/harness-code-container.png')} width="30%" height="30%" title="Add shared path for scan results" /> 
+- By default, all the below fields are configured automatically by the Harness Code scanner.
     
     - Set the **Scan Mode** to **Orchestration**.
-    - Set the **Scan Configuration** to **Default**
+    - Set the **Scan Configuration** to one of the following:
+      - **SAST** — Scan for code vulnerabilities and secrets. Requires a **Harness SAST** license.
+      - **SCA** — Scan for application layer dependency vulnerabilities. Requires both **Harness SAST** and **Harness SCA** licenses.
+      - **SAST + SCA** — Perform both SAST and SCA scans. Requires both **Harness SAST** and **Harness SCA** licenses.
     - Set the **Target Type** to **Repository**.
 
-To run the Harness SAST scan step in the pipeline, no further configuration is required; If you want to add additional scan settings, you can configure the following below fields in the step.
+To run the Harness Code scan step in the pipeline, no further configuration is required; If you want to add additional scan settings, you can configure the following below fields in the step.
 
 
- <DocImage path={require('./static/harness-sast-step.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+ <DocImage path={require('./static/harness-code.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
   <!-- ### Scan
 
@@ -127,9 +130,9 @@ import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md
 
 :::info
 
-- The Harness SAST scanner is not supported in SMP.
+- The Harness Code scanner is not supported in SMP.
 
-- With a Harness SAST Enterprise license, you also get access to the **Qwiet AI by Harness** platform. AppSec users can log in to the platform.
+- With a Harness Code Enterprise license, you also get access to the **Qwiet AI by Harness** platform. AppSec users can log in to the platform.
 
 - The Qwiet AI dashboard does not support [exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow), so any issues you mark as exempt in Harness STO will not appear as exempted in Qwiet AI. Exemptions must be managed in Harness STO only.
 
@@ -173,7 +176,7 @@ import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 Use this field to run the scanner binary with additional flags supported by the scanner.
 
 
-- Instead of running two separate Harness SAST and SCA scans, you can use the Harness SAST scanner to scan container images and determine [dependency reachability](https://docs.shiftleft.io/sast/analyzing-applications/containers#including-the-container-in-the-analysis) by adding the `--container` flag with the image name. Example: `--container docker.io/shiftleft/demoContainer:latest`. This requires an active [**Harness SCA**](/docs/security-testing-orchestration/harness-security-scanners/sca) license
+- Instead of running two separate Harness Code and Container scans, you can use the Harness Code scanner to scan container images and determine [dependency reachability](https://docs.shiftleft.io/sast/analyzing-applications/containers#including-the-container-in-the-analysis) by adding the `--container` flag with the image name. Example: `--container docker.io/shiftleft/demoContainer:latest`. This requires an active [**Harness Container**](/docs/security-testing-orchestration/harness-security-scanners/sca) license
 
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
@@ -200,15 +203,15 @@ import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
-### View Harness SAST Scanner results in the Vulnerabilities tab
+### View Harness Code Scanner results in the Vulnerabilities tab
 
-After running the Harness SAST scanner in your pipeline, navigate to the Vulnerabilities tab. Use the **Issue Type** filter to view all vulnerabilities detected by the scanner, including **SAST**, **SCA (Open Source dependencies)**, and **Secrets**.
+After running the Harness Code scanner in your pipeline, navigate to the Vulnerabilities tab. Use the **Issue Type** filter to view all vulnerabilities detected by the scanner, including **SAST**, **SCA (Open Source dependencies)**, and **Secrets**.
 
 <DocImage path={require('./static/sast-filters.png')} width="80%" height="80%" title="Add shared path for scan results" />
 
 ### Secret Detection
 
-Harness SAST detects hardcoded secrets in your code, such as API keys, tokens, and passwords, helps you prevent accidental credential leaks early in the development lifecycle. After the successful pipeline run, in the vulnerabilities tab, apply the **Issue Type** filter as **Secret** to view the Secrets identified by the Harness SAST scanner.
+Harness Code detects hardcoded secrets in your code, such as API keys, tokens, and passwords, helps you prevent accidental credential leaks early in the development lifecycle. After the successful pipeline run, in the vulnerabilities tab, apply the **Issue Type** filter as **Secret** to view the Secrets identified by the Harness Code scanner.
 
 
  <DocImage path={require('./static/secrets.png')} width="80%" height="80%" title="Add shared path for scan results" /> 
@@ -220,7 +223,7 @@ A vulnerability is considered as Reachable when an attacker can reach the affect
 After a successful pipeline run, the Vulnerabilities tab shows whether a vulnerability is marked as Reachable. On the Vulnerabilities page, use the Reachability filter to view findings by reachability. This helps reduce noise and focus on vulnerabilities that pose real risk. [Learn more](https://docs.shiftleft.io/sast/analyzing-applications/oss-vulnerabilities?_highlight=reac#reachable-and-exploitable-findings).
 
 
- <DocImage path={require('./static/reachability.png')} width="80%" height="80%" title="Add shared path for scan results" /> 
+ <DocImage path={require('./static/harness-code-reachable.png')} width="80%" height="80%" title="Add shared path for scan results" /> 
 
 
 ### Data Flow
@@ -242,7 +245,7 @@ Harness provides a code extension that helps you shift security even further lef
 
 Harness also provides a CLI to run SAST and SCA scans locally, to help you identify code vulnerabilities and dependency risks before pushing code to your repository. [Learn more](https://docs.shiftleft.io/cli/reference/overview) on how to install, authenticate, and use the CLI commands in the Harness CLI.
 
-### AI remediation for Harness SAST Security Issues
+### AI remediation for Harness Code Security Issues
 
 Harness AI analyzes security issues and provides AI remediation within the security details for each specific issue. This includes an analysis of the issue, remediation concepts, and step-by-step instructions to fix them, along with example code snippets. Additionally, AI remediation details can be found for each occurrence of an issue. You also have the option to make a Code Suggestion or create a **Pull Request** to apply the suggested remediation.
 
@@ -256,9 +259,11 @@ You can view the PR by clicking on the View Fix button. Make sure to read the [c
 Enforce OPA Policy to automatically [warn or block pipelines](/docs/security-testing-orchestration/policies/create-opa-policies#warn-or-block-reachable-or-exploitable-vulnerabilities-reported-by-the-harness-scanner) based on static reachability, exploitability, and license metadata, to help you prevent risky deployments and maintain security and compliance.
 
 
-### View Harness SAST Scan results in the Qwiet AI Dashboard
+### View Harness Code Scan results in the Qwiet AI Dashboard
 
-After running the Harness SAST scanner in your pipeline in the scan logs, you can click the provided `shiftleft`link, which redirects you to the [Qwiet AI dashboard](https://docs.shiftleft.io/sast/ui-v2/dashboard), where you can explore detailed scan results and analyze identified issues.
+After running the Harness Code scanner in your pipeline in the scan logs, you can click the provided `shiftleft`link, which redirects you to the [Qwiet AI dashboard](https://docs.shiftleft.io/sast/ui-v2/dashboard), where you can explore detailed scan results and analyze identified issues.
+
+You can also find the Qwiet AI dashboard URL in the pipeline **Output** tab. Look for the `SCANNER_CONSOLE_URL` output variable, which contains the direct link to your scan results in the Qwiet AI dashboard.
 
 Alternatively, you can manually log in to the [Qwiet AI dashboard](https://docs.shiftleft.io/sast/ui-v2/dashboard) and search for the application name that corresponds to the target name used in the scan.
 
@@ -273,7 +278,7 @@ You can view the [generated SBOM](https://docs.shiftleft.io/sast/ui-v2/applicati
 
 Usage is calculated based on Active Developers. An Active [Developer](https://docs.shiftleft.io/sast/getting-started/definitions#contributing-developer) is an individual who, within the last 90 days, has created or modified code, configurations, content, or artifacts that are scanned by STO. An individual is counted only once, even if they contribute to multiple scanned repositories.
 
-You can view your current usage and subscription details on the STO subscription page under the **Harness SAST and SCA** sub-tab.
+You can view your current usage and subscription details on the STO subscription page under the **Harness Code and Container** sub-tab.
 
- <DocImage path={require('./static/harness-scanner-trial.png')} width="80%" height="80%" title="Add shared path for scan results" /> 
+ <DocImage path={require('./static/harness-sast-trial.png')} width="80%" height="80%" title="Add shared path for scan results" /> 
 

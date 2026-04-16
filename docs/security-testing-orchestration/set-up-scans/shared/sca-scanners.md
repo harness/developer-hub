@@ -1,4 +1,4 @@
-1. **[Harness SCA](/docs/security-testing-orchestration/harness-security-scanners/sca)**
+1. **[Harness Container](/docs/security-testing-orchestration/harness-security-scanners/sca)**
 2. **[Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)** - *open-source*
 3. **[Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference)**
 4. **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference)**

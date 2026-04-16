@@ -1,7 +1,7 @@
 ---
-title: Harness SCA Scanner
-description: Scan container images with Harness SCA Scanner
-sidebar_label: SCA Scanner
+title: Harness Container Scanner
+description: Scan container images with Harness Container Scanner
+sidebar_label: Container Scanner
 sidebar_position: 8
 
 ---
@@ -16,25 +16,25 @@ import TabItem from '@theme/TabItem';
 <br/>
 <br/>
 
-Harness native  **Software Composition Analysis (SCA)** scanner integrates directly within your CI/CD pipelines to scan container images to find vulnerabilities in OS packages and libraries installed in the image - without requiring external scanners or connectors.  
+Harness Container scanner integrates directly within your CI/CD pipelines to scan container images to find vulnerabilities in OS packages and libraries installed in the image - without requiring external scanners or connectors.  
 
 With one-click configuration, Harness automatically manages authentication and licensing, while providing built-in data flow visualization, reachability analysis to determine whether a vulnerability is exploitable, and AI-powered remediation to help developers quickly understand and fix issues.
 
 
-The SCA step works natively within STO, with all findings unified and visible alongside results from other security scanners.
+The Harness Container step works natively within STO, with all findings unified and visible alongside results from other security scanners.
 
 :::info
 
 ### Licensing
 
-Running the Harness SCA step in STO pipelines requires a Harness SCA Enterprise license.
+Running the Harness Container step in STO pipelines requires both **Harness SAST** and **Harness SCA** licenses.
 
 
 For licensing details or to enable the Enterprise license, contact [Harness Sales](mailto:support@harness.io).
 
 ### Free Trial
 
-A 45-day free trial is available. If you are an existing Harness STO customer and want to access the Harness scanners, contact the [Harness sales](mailto:support@harness.io) representative to have them enabled for your account.
+A **45-day free trial** is available. If you are an existing Harness STO customer and want to access the Harness scanners, contact the [Harness sales](mailto:support@harness.io) representative to have them enabled for your account.
 
 :::
 
@@ -43,37 +43,37 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 
-:::note
+<!-- :::note
 
-Harness SCA scanner is being gradually rolled out and is currently enabled for some customers. Full availability across all accounts is coming soon.
-:::
+Harness Container scanner is being gradually rolled out and is currently enabled for some customers. Full availability across all accounts is coming soon.
+::: -->
 
-## Harness SCA step settings for STO scans
+## Harness Container step settings for STO scans
 
 :::info
-To view [Reachability](/docs/security-testing-orchestration/harness-security-scanners/sast#reachability) information in Harness SCA, you must run the Harness SAST scanner. The scanner uses SAST based data flow analysis to understand how data moves through your code and determine whether an issue is reachable.
+To view [Reachability](/docs/security-testing-orchestration/harness-security-scanners/sast#reachability) information in Harness Container, you must run the Harness Code scanner. The scanner uses SAST based data flow analysis to understand how data moves through your code and determine whether an issue is reachable.
 :::
 
 <!-- ### Container image -->
 
 
-Setting up the Harness SCA scanner is the same as configuring any other [built-in scanner step](/docs/security-testing-orchestration/set-up-scans/built-in-scanners). The required configuration for the scanner step is handled automatically, making the setup process simple and straightforward. Here’s how to set it up:
+Setting up the Harness Container scanner is the same as configuring any other [built-in scanner step](/docs/security-testing-orchestration/set-up-scans/built-in-scanners). The required configuration for the scanner step is handled automatically, making the setup process simple and straightforward. Here’s how to set it up:
 
 - In your **Build** or **Security** stage, open the step palette by clicking the **Add Step** option in your pipeline.
 
-- Navigate to the Harness Security Scanners section under the Security Tests category. Select the **Harness SCA** step.
+- Navigate to the Harness Security Scanners section under the Security Tests category. Select the **Harness Container** step.
 
- <DocImage path={require('./static/sast-and-sca.png')} width="30%" height="30%" title="Add shared path for scan results" /> 
+ <DocImage path={require('./static/harness-code-container.png')} width="30%" height="30%" title="Add shared path for scan results" /> 
 
 - Provide the container information from which you want to pull your container images.
 
-- By default, all the below fields are configured automatically by the Harness SCA scanner.
+- By default, all the below fields are configured automatically by the Harness Container scanner.
     
     - Set the **Scan Mode** to **Orchestration**.
     - Set the **Scan Configuration** to **Default**
     - Set the **Target Type** to **Container Image**.
 
-To run the Harness SCA scan step in the pipeline, no further configuration is required; If you want to add additional scan settings, you can configure the following below fields in the step.
+To run the Harness Container scan step in the pipeline, no further configuration is required; If you want to add additional scan settings, you can configure the following below fields in the step.
 
 
 
@@ -199,9 +199,9 @@ Use this field to specify an individual folder or file to scan. For example, if 
 
 :::info
 
-- The Harness SCA scanner is not supported in SMP.
+- The Harness Container scanner is not supported in SMP.
 
-- With a Harness SCA Enterprise license, you also get access to the **Qwiet AI by Harness** platform. AppSec users can log in to the platform.
+- With a Harness Container Enterprise license, you also get access to the **Qwiet AI by Harness** platform. AppSec users can log in to the platform.
 
 - The Qwiet AI dashboard does not support [exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow), so any issues you mark as exempt in Harness STO will not appear as exempted in Qwiet AI. Exemptions must be managed in Harness STO only.
 
@@ -255,9 +255,9 @@ import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 <ScannerRefAdvancedSettings />
 
 
-### View Harness SCA Scan results in the Vulnerabilities tab
+### View Harness Container Scan results in the Vulnerabilities tab
 
-After you complete the pipeline run with the Harness SCA scanner, in the vulnerabilities tab, apply the **Issue Type** filter as SCA to view the vulnerabilities identified by the Harness SCA scanner.
+After you complete the pipeline run with the Harness Container scanner, in the vulnerabilities tab, apply the **Issue Type** filter as SCA to view the vulnerabilities identified by the Harness Container scanner.
 
 <DocImage path={require('./static/view.png')} width="80%" height="80%" title="Add shared path for scan results" />
 
@@ -269,7 +269,7 @@ A vulnerability is considered as Reachable when an attacker can reach the affect
 After a successful pipeline run, the Vulnerabilities tab shows whether a vulnerability is marked as Reachable. On the Vulnerabilities page, use the Reachability filter to view findings by reachability. This helps reduce noise and focus on vulnerabilities that pose real risk. [Learn more](https://docs.shiftleft.io/sast/analyzing-applications/oss-vulnerabilities?_highlight=reac#reachable-and-exploitable-findings).
 
 
- <DocImage path={require('./static/sca-reachable.png')} width="80%" height="80%" title="Add shared path for scan results" />
+ <DocImage path={require('./static/static-reachable-container.png')} width="80%" height="80%" title="Add shared path for scan results" />
 
  ### IDE Integration
 
@@ -278,9 +278,9 @@ Harness provides a code extension that helps you shift security even further lef
 Harness also provides a CLI to run SAST and SCA scans locally, to help you identify code vulnerabilities and dependency risks before pushing code to your repository. [Learn more](https://docs.shiftleft.io/cli/reference/overview) on how to install, authenticate, and use the CLI commands in the Harness CLI.
 
 
-### AI remediation for Harness SCA Security Issues
+### AI remediation for Harness Container Security Issues
 
-Harness AI analyzes security issues and provides AI remediation within the security details for each specific issue. This includes an analysis of the issue, remediation concepts, and step-by-step instructions to fix them. Additionally, for SCA issues, Harness AI recommends safer package versions for upgrade, with remediation details available for each occurrence of an issue.
+Harness AI analyzes security issues and provides AI remediation within the security details for each specific issue. This includes an analysis of the issue, remediation concepts, and step-by-step instructions to fix them. Additionally, for Container issues, Harness AI recommends safer package versions for upgrade, with remediation details available for each occurrence of an issue.
 
 
  <DocImage path={require('./static/sca-remediation.png')} width="80%" height="80%" title="Add shared path for scan results" /> 
@@ -290,9 +290,11 @@ Harness AI analyzes security issues and provides AI remediation within the secur
 
 Enforce OPA Policy to automatically [warn or block pipelines](/docs/security-testing-orchestration/policies/create-opa-policies#warn-or-block-reachable-or-exploitable-vulnerabilities-reported-by-the-harness-scanner) based on static reachability, exploitability, and license metadata, to help you prevent risky deployments and maintain security and compliance. 
 
-### View Harness SCA Scan results in the Qwiet AI Dashboard
+### View Harness Container Scan results in the Qwiet AI Dashboard
 
-After you complete the pipeline run with the Harness SCA scanner, in the scan logs, you can click the provided `shiftleft`link, which redirects you to the [Qwiet AI dashboard](https://docs.shiftleft.io/sast/ui-v2/dashboard), where you can explore detailed scan results and analyze identified issues.
+After you complete the pipeline run with the Harness Container scanner, in the scan logs, you can click the provided `shiftleft`link, which redirects you to the [Qwiet AI dashboard](https://docs.shiftleft.io/sast/ui-v2/dashboard), where you can explore detailed scan results and analyze identified issues.
+
+You can also find the Qwiet AI dashboard URL in the pipeline **Output** tab. Look for the `SCANNER_CONSOLE_URL` output variable, which contains the direct link to your scan results in the Qwiet AI dashboard.
 
 Alternatively, you can manually log in to the Qwiet AI by Harness dashboard and search for the application name that corresponds to the target name used in the scan.
 
@@ -305,7 +307,7 @@ You can view the [generated SBOM](https://docs.shiftleft.io/sast/ui-v2/applicati
 Usage is calculated based on Active Developers. An Active [Developer](https://docs.shiftleft.io/sast/getting-started/definitions#contributing-developer) is an individual who, within the last 90 days, has created or modified code, configurations, content, or artifacts that are scanned by STO. An individual is counted only once, even if they contribute to multiple scanned repositories.
 
 
-You can view your current usage and subscription details on the STO subscription page under the **Harness SAST and SCA** sub-tab
+You can view your current usage and subscription details on the STO subscription page under the **Harness Code and Container** sub-tab
 
- <DocImage path={require('./static/harness-scanner-trial.png')} width="80%" height="80%" title="Add shared path for scan results" /> 
+  <DocImage path={require('./static/harness-sast-trial.png')} width="80%" height="80%" title="Add shared path for scan results" /> 
 

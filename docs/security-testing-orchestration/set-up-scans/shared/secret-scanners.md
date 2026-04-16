@@ -1,4 +1,4 @@
-1. **[Harness SAST](/docs/security-testing-orchestration/harness-security-scanners/sast)**
+1. **[Harness Code](/docs/security-testing-orchestration/harness-security-scanners/sast)**
 1. **[Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)** - *open-source*
 2. **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference)**
 3. **[Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)** - *open-source*

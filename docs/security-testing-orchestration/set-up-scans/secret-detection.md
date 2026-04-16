@@ -16,7 +16,7 @@ You can configure secret detection in Harness STO using the supported scanners:
 - **[Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)** – You can either set up Gitleaks manually or use the [Built-in Scanner](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) approach, which provides a pre-configured setup for running Gitleaks without additional configuration. Because Gitleaks is open source, running it within Harness STO does not require a paid license. If you choose the Built-in Scanner, STO automatically handles the setup, allowing you to run Secret Detection without manual configuration.
 
 - The following scanners automatically detect secrets in the code repository when used for **SAST** or **SCA**. These findings are categorized under the **Secret** issue type in the scan results. If your pipeline includes any of these scanners, they are already scanning for secrets in your code repository:
-    - **[Harness SAST](/docs/security-testing-orchestration/harness-security-scanners/sast)**
+    - **[Harness Code](/docs/security-testing-orchestration/harness-security-scanners/sast)**
     - **[Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)**  
     - **[Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference)** 
     - **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference)** 
