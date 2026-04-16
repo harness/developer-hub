@@ -634,7 +634,7 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
 :::warning
 
-Currently, the Azure OIDC connector is enables:
+Currently, the Azure OIDC connector enables:
 - Deployment to the Azure Container Registry (ACR)
 - Deployment to Azure Kubernetes Service (AKS)
 
