@@ -402,10 +402,10 @@ This feature will be available for users on delegate version 810xx. Please ensur
 
 Harness now supports deploying Helm charts that include Custom Resource Definitions (CRDs) which may already exist outside the target namespace. This enhancement enables the use of the `helm upgrade --install` command to avoid common CRD-related installation errors.
 
-:::note
-This feature is currently behind the feature flag `CDS_SKIP_HELM_INSTALL`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::info Delegate version requirement
 
 Requires delegate version `856xx` or later.
+
 :::
 
 <div align="center">

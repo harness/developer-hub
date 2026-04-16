@@ -14,14 +14,11 @@ The **Harness Helm Delete Step** allows users to **uninstall Helm releases** wit
 
 This step is useful in scenarios where Helm-based applications need to be removed as part of **cleanup processes**, **rollback strategies**, or **custom pipeline workflows**.
 
-:::note
+:::info Delegate version requirement
 
-Currently, this feature is behind the feature flag `CDS_HELM_DELETE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-Harness Delegate version `85400` or later is required for this feature.
+Harness Delegate version `85400` or later is required for this step.
 
 :::
-
 
 ## When to Use This Step
 

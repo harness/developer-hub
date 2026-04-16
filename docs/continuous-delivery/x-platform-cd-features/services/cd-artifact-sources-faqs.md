@@ -136,7 +136,7 @@ Yes, one can use custom webhook triggers with placeholders for services, artifac
 
 ### Why Does the Expression `<+artifacts.primary.identifier>` Return "primary" Instead of the Actual Identifier?
 
-To obtain the actual identifier instead, please open a support ticket to enable the feature flag `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
+The expression `<+artifacts.primary.identifier>` now returns the actual artifact identifier by default.
 
 ### Does Harness encrypt the image tag for the container during rollout deployment output?
 

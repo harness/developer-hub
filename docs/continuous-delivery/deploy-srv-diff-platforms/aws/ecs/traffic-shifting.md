@@ -6,10 +6,6 @@ sidebar_position: 5
 
 Harness now supports gradual traffic shifting during ECS Blue-Green deployments using [AWS Application Load Balancer (ALB)](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html) weighted target groups. This enhancement enables you to progressively direct live traffic to a new ECS service version.
 
-:::note
-Currently, this feature is behind the feature flag `CDS_ECS_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 ## Overview
 

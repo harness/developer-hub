@@ -81,7 +81,7 @@ For traffic shifting configuration details and step-by-step instructions, see th
 
 For third deployment and beyond, Harness follows the same pattern. In swap mode, it creates a new service (myapp__3) and deletes the old non-blue service from the stage Target Group. In traffic shifting mode, you must manually alternate which Target Group is specified as stage. Rollback in both modes is near-instant by re-swapping listener rules or reverting target group weights. The old service remains running until explicitly deleted.
 
-**Key characteristics:** ECS Blue-Green supports both atomic and progressive traffic shifting, requires manual Target Group alternation in traffic shifting mode, works only with Application Load Balancers (Network Load Balancers support only single listener pairs), and may require the `CDS_ECS_TRAFFIC_SHIFT` feature flag for traffic shifting mode.
+**Key characteristics:** ECS Blue-Green supports both atomic and progressive traffic shifting, requires manual Target Group alternation in traffic shifting mode, and works only with Application Load Balancers (Network Load Balancers support only single listener pairs).
 
 **Learn more:**
 - [ECS Blue-Green Traffic Shifting Guide](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/traffic-shifting)

@@ -373,12 +373,6 @@ When you select an environment in a stage, you can select the **Infrastructure D
 
 ## Propagating environments through multiple stages
 
-:::info note
-
-Currently, this feature is behind the feature flag `CDS_ENV_PROPAGATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 When modeling multiple Deploy stages in a pipeline, you can propagate the environment and infrastructure definition selected in one stage to one or more subsequent stages. 
 
 When you propagate an environment, you can either use the same infrastructure definition that was used in the parent stage or you can [select a different infrastructure definition](#select-a-different-infrastructure-when-propagating-environment-from-a-previous-stage).

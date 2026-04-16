@@ -115,11 +115,7 @@ Before you begin, make sure you have an understanding of Istio and how it works 
 
         * **Rewrite Rule**: A rewrite rule in a traffic shifting step refers to modifying the incoming request’s path or URL before it's forwarded to the backend service.
 
-        :::info note
-        Currently, the support for re-write rule feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-        :::
-
-        <div align="center">
+<div align="center">
           <DocImage path={require('./static/add-rewrite-rule.png')} width="50%" height="50%" title="Click to view full size image" />
         </div>
 

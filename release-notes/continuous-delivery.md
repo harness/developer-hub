@@ -1167,7 +1167,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 #### New Features and Enhancements
 
-- Harness now supports blocking users from approving steps via [Disallowed User Emails](/docs/platform/approvals/adding-harness-approval-stages#disallowed-user-emails). Currently, this feature is behind the feature flag `CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-106081**)
+- Harness now supports blocking users from approving steps via [Disallowed User Emails](/docs/platform/approvals/adding-harness-approval-stages#disallowed-user-emails). (**CDS-106081**)
 
 - Harness now supports selecting timezones for [Cron triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers) using IANA Time Zone convention. Currently, this feature is behind the feature flag `PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-24520, ZD-61218**)
 
@@ -1198,7 +1198,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
     | **Provisioners**                 | CloudFormation provisioner, CDK provisioner, Terraform Cloud provisioner, Terragrunt provisioner |
     | **Manifest & Artifact Sources**  | AMI Artifact, ECR Artifact, S3 Artifact, S3 Manifest                          |
 
-- Harness now supports [**hashing of config-map and secret manifests for Kubernetes workloads under declarative rollback**](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback#configmap-and-secret-object-rollback), ensuring that updates to consumed configmaps or secrets trigger a redeployment even when the deployment spec itself hasn’t changed. Currently, this feature is behind the feature flag `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-83583, ZD-73074,75453**)
+- Harness now supports [**hashing of config-map and secret manifests for Kubernetes workloads under declarative rollback**](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback#configmap-and-secret-object-rollback), ensuring that updates to consumed configmaps or secrets trigger a redeployment even when the deployment spec itself hasn’t changed. (**CDS-83583, ZD-73074,75453**)
 
 - Harness now supports **filtering pipeline executions by build ID**, enabling users to quickly locate a specific run without endless scrolling. Currently, this feature is behind the feature flag `PIPE_EXECUTION_ID_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-25317**)
 
@@ -1331,7 +1331,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 #### New Features and Enhancements
 
-- Harness now supports including the service name and environment in the subject line of EMAIL notifications, making them searchable and context-rich. Currently, this feature is behind the feature flag `PIPE_STAGE_NOTIFICATION_ENV_SVC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-83691**)
+- Harness now supports including the service name and environment in the subject line of EMAIL notifications, making them searchable and context-rich. (**CDS-83691**)
 
 - Harness now displays the Helm chart versions for both current and rollback artifacts during post-production rollbacks—replacing **N/A** with the actual version numbers in the UI. (**CDS-109098**)
 
@@ -1363,7 +1363,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 #### New Features and Enhancements
 
-- Harness now supports viewing full variable values in the Override tab. Users can see and edit entire override values without truncation. Currently, this feature is behind the feature flag `CDS_TEXTAREA_FOR_OVERRIDE_VARIABLES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-92714**)
+- Harness now supports viewing full variable values in the Override tab. Users can see and edit entire override values without truncation. (**CDS-92714**)
 
 - Harness now supports native binding of the Tanzu Application Service (TAS) Autoscaler service to your application during rolling deployments. For more information, refer to [TAS Autoscaler Integration](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart#tas-autoscaler-integration). (**CDS-101502**)
 
@@ -1463,13 +1463,13 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 - Harness now supports capturing **multiline output variables** from **Container steps** in CD pipelines, ensuring correct population and visibility in the Output tab. Currently, this feature is behind the feature flag `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-95235, ZD-44567,72745**) 
 
-- Harness is introducing the **ECS Blue Green Traffic Shift** step to support weighted traffic shifting for ECS deployments, enabling gradual rollout strategies for ECS services with low task counts. Currently, this feature is behind the feature flag `CDS_ECS_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-102609**) 
+- Harness is introducing the **ECS Blue Green Traffic Shift** step to support weighted traffic shifting for ECS deployments, enabling gradual rollout strategies for ECS services with low task counts. (**CDS-102609**) 
 
 - Harness now **enforces namespace consistency in Kubernetes and Helm deployments**, preventing users from overriding the infrastructure-defined namespace using custom CLI flags like `--namespace`. (**CDS-99904, ZD-67987,71082**) 
 
 - Harness now supports **mounting ConfigMaps and Kubernetes Secrets as volumes in CD Container steps**, enabling users to inject configuration and credentials without modifying container images. (**CDS-95429**) 
 
-- Harness now supports **Helm deployments with CRDs** by enforcing `helm upgrade --install` behavior, enabling seamless deployment of resources that already exist outside the target namespace. Currently, this feature is behind the feature flag `CDS_SKIP_HELM_INSTALL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-85790**)
+- Harness now supports **Helm deployments with CRDs** by enforcing `helm upgrade --install` behavior, enabling seamless deployment of resources that already exist outside the target namespace. (**CDS-85790**)
 
 - Harness now supports **re-running pipelines** with the original pipeline definition and inputs, enabling teams to accurately reproduce and debug historical executions. Currently, this feature is behind the feature flag `PIPE_USE_ORIGINAL_YAML_FOR_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-21837**)
 
@@ -1508,7 +1508,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 - We've upgraded our protocol buffer implementation from **protobuf-java** `3.15.5` to `4.28.3`. This significant version jump addresses known security vulnerabilities present in the older version while modernizing a critical component of our internal service communication infrastructure. This change operates entirely within Harness' internal architecture and requires no action from users. All functionality remains unchanged, with no modifications to user workflows or interfaces. (**CDS-104707**)
 
-- Users can now define and manage rewrite rules to control traffic routing in Kubernetes traffic routing configuration. Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-103501**)
+- Users can now define and manage rewrite rules to control traffic routing in Kubernetes traffic routing configuration. (**CDS-103501**)
 
 - ​Users can now trigger pipelines in GitLab upon the creation or pushing of tags. Currently, this feature is behind the feature flag `CDS_GITLAB_TRIGGER_TAG_EVENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99762**)
 
@@ -1657,7 +1657,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 
 - Users can now import OPA policies from Git. This feature behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-17046, ZD-52607, ZD-69875**)
 
-- Users can now **Uninstall Helm charts** using a native Helm Uninstall step in the Deploy stage. Currently, this setting is behind the Feature Flag `CDS_HELM_DELETE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-98454**)
+- Users can now **Uninstall Helm charts** using a native Helm Uninstall step in the Deploy stage. (**CDS-98454**)
 
 - Users can now trigger Harness pipelines natively when **pushing a tag to GitHub**, enabling seamless automation and enhanced integration for tag-based workflows. (**CDS-70773**)
 
@@ -1826,7 +1826,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 - Previously, deployment was timing out and was failing without any logs getting showed. The issue is fixed now. (**PIPE-24324, ZD-74851,75772,75937**)
 - Previously, CV phase failed intermittently due to an issue with handling incomplete responses from external API calls (e.g., New Relic). This issue was particularly observed when certain metric values (e.g., average values) were missing in the response from New Relic APIs, causing the entire verification phase to fail. The issue is fixed now. (**CDS-105226, ZD-74901,74902,75694**)
 - Previously, the artifact download step in pipelines was failing during the initialization stage due to improper sanitization of environment variables containing special characters like backslashes (`\`) and dollar signs (`$`). This caused XML parsing errors in the pywinrm library used for command execution over WinRM. The issue is fixed now. This fix is behind feature flag `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature. This feature flag disables ANSI C quoting for environment variables.(**CDS-105139, ZD-74886**)
-- Previously, the Helm Blue-Green deployment process encountered a failure during the second release due to incorrect resource formatting. The first deployment worked as expected, creating the service with the correct annotations and labels. The second deployment failed during the Swap stage with the error: `Found conflicting service in the cluster. Blue/Green strategy doesn't support migration of existing non blue/green release. Either helm manifest doesn't have service or service is not in blue/green format. Please check the manifest in the release and cluster.` Instead of deploying resources in `<resource>-green` format, the second deployment reverted to `<resource>` format, causing the Swap stage to fail due to missing annotations and labels. The issue is fixed now. This fix is behind FF `CDS_BLUE_GREEN_RESOURCE_FORMAT_FIX`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-105807, ZD-75909**)
+- Previously, the Helm Blue-Green deployment process encountered a failure during the second release due to incorrect resource formatting. The first deployment worked as expected, creating the service with the correct annotations and labels. The second deployment failed during the Swap stage with the error: `Found conflicting service in the cluster. Blue/Green strategy doesn't support migration of existing non blue/green release. Either helm manifest doesn't have service or service is not in blue/green format. Please check the manifest in the release and cluster.` Instead of deploying resources in `<resource>-green` format, the second deployment reverted to `<resource>` format, causing the Swap stage to fail due to missing annotations and labels. The issue is fixed now. (**CDS-105807, ZD-75909**)
 
 ### Version 1.72.3
 
@@ -2478,7 +2478,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 ![](./static/approval.png)
 
 #### Early access
-- Harness now lists all pipeline executions including retired and child executions in the Executions page. This feature is behind the feature flag, `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-18492, ZD-64066)
+- Harness now lists all pipeline executions including retired and child executions in the Executions page. (PIPE-18492, ZD-64066)
 
 #### Fixed issues
 - Updates made to stage variables did not reflect in the pipeline. When adding a new allowedValue in a template, the changes were not getting propagated to the pipeline as it was getting treated as subset. This issue was caused by a change made in the code to allow subsets of values in allowedValues in a nested pipeline/template. Harness is reverting this change, and will support exact allowedValues in pipeline/template during reconciliation. Some customers may face reconciliation errors if they are using subset allowedValues already. (PIPE-19102, ZD-62929)
@@ -5031,7 +5031,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 - Fixed an issue where deployment freeze notifications were not being sent when a freeze window was activated. (CDS-69455)
 - The expression, `<+artifacts.primary.identifier>` was not working properly for Google Cloud Storage deployments. (CDS-68993, ZD-44217)
 
-  This issue is fixed. You can now see the identifier of the source selected as primary when using the expression `<+artifacts.primary.identifier>`. This functionality is behind the feature flag, `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
+  This issue is fixed. You can now see the identifier of the source selected as primary when using the expression `<+artifacts.primary.identifier>`.
 
 - Fixed an issue where the SSH and WinRM rollback were not skipped even if there were no successful previous deployments. (CDS-68583)
 - Fixed an issue where optional fields in a JIRA Update step were saved as key-value pairs. (CDS-58174)
