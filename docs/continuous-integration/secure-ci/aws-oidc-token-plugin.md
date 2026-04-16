@@ -11,7 +11,12 @@ The [AWS OIDC plugin](https://github.com/harness-community/drone-aws-oidc) lets 
 - An AWS IAM Role configured with a federated identity provider using OIDC.
 - OIDC configured in your AWS account (e.g., via IAM Identity Provider).
 - The pipeline must be running in a context where Harness can issue an OIDC token (e.g., on a hosted delegate with OIDC enabled).
-- The feature flag `CI_ENABLE_OUTPUT_SECRETS` must be enabled on your account. This flag is required for the plugin to write temporary credentials as output secrets. If it is not enabled, credentials will not be available in subsequent steps. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+- The following feature flags must be enabled on your account. Contact [Harness Support](mailto:support@harness.io) to enable them.
+  - `CI_SKIP_NON_EXPRESSION_EVALUATION` (required)
+  - `CI_ENABLE_OUTPUT_SECRETS` (required)
+  - `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` (required only if you use [Harness Docker Runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure)
+
+  These flags are required for the plugin to write temporary credentials as output secrets. If they are not enabled, credentials will not be available in subsequent steps.
 - This setup is supported on both Harness Cloud and Self-managed Kubernetes Infrastructure.
 
 For more on configuring AWS for OIDC, refer to [AWS OIDC setup](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html).
@@ -71,6 +76,20 @@ Example:
         AWS_SESSION_TOKEN: <+steps.assume_role_with_oidc.output.outputVariables.AWS_SESSION_TOKEN>
       command: aws s3 ls
 ```
+
+## Troubleshooting
+
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
+The following feature flags must be enabled for output secrets to work:
+
+1. `CI_SKIP_NON_EXPRESSION_EVALUATION` (required)
+2. `CI_ENABLE_OUTPUT_SECRETS` (required)
+3. `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` (required only if you use [Harness Docker Runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure)
+
+:::tip
+If AWS credentials appear empty or null in downstream steps (for example, `AWS_ACCESS_KEY_ID` resolves to an empty string), this is almost always caused by missing feature flags. Verify that `CI_SKIP_NON_EXPRESSION_EVALUATION` and `CI_ENABLE_OUTPUT_SECRETS` are both enabled on your account. If you are using Docker Runner, also confirm `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` is enabled. Contact [Harness Support](mailto:support@harness.io) before debugging IAM roles or trust policies.
+:::
 
 ## Related Links
 
