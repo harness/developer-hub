@@ -546,6 +546,30 @@ Also a read-only Harness Vault Secret Manager:
 
 ---
 
+## Delegate selector considerations
+
+When configuring a HashiCorp Vault secret manager, consider how delegate selectors affect secret resolution for connectors that reference secrets stored in Vault.
+
+:::info delegate selector compatibility
+
+If you configure this Vault connector with a delegate selector, ensure that other connectors (such as GitHub connectors, Kubernetes cluster connectors, or cloud provider connectors) that reference secrets from this Vault use compatible delegate selectors.
+
+**How it works:**
+
+When a connector references a secret stored in Vault, the delegate executing the task must be able to access both the connector's endpoint and the Vault secret manager. If the connector and Vault use different, non-overlapping delegate selectors, secret resolution will fail.
+
+**Best practices:**
+
+- Use no delegate selector on your Vault connector to allow any delegate to access it, OR
+- Ensure that connectors referencing Vault secrets use the same delegate selector as the Vault connector
+- If using multiple delegate selectors, ensure delegates have overlapping tags between the connector and Vault
+
+For more information about delegate selector priority and secret resolution, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
+
+:::
+
+---
+
 ## Test Connection
 
 Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.

@@ -1475,7 +1475,25 @@ No, installations vary. Kubernetes delegates default to root with `securityConte
 
 ### Can I access a secret manager with a different delegate selector than my connector's delegate selector?
 
-Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline > Connector]. In this scenario, the user can override at the pipeline (or any higher level), but without that override, it will result in a failure.
+No, when a connector (such as a GitHub connector or cloud provider connector) uses secrets stored in a secret manager (such as HashiCorp Vault), the connector and the secret manager must use compatible delegate selectors. This is your responsibility to configure correctly.
+
+Delegate selector priorities are configured as follows: [Step > Step Group > Stage > Pipeline > Connector]. While you can override delegate selectors at the pipeline level or higher, if the connector's delegate selector and the secret manager's delegate selector don't match, secret resolution will fail.
+
+**How secret resolution works with delegate selectors:**
+
+When Harness executes a task that uses a connector with secrets, it follows this process:
+
+1. Harness identifies which delegate should execute the task based on the delegate selector hierarchy
+2. During task execution, if the connector references secrets from an external secret manager, the same delegate must be able to access both the connector's endpoint and the secret manager
+3. If the connector specifies one delegate selector and the secret manager specifies a different delegate selector, the task will fail because no single delegate can satisfy both requirements
+
+**Best practice:**
+
+Ensure that connectors and their associated secret managers use compatible delegate selectors. For example:
+
+- If your GitHub connector uses delegate selector `prod-delegates`, make sure your Vault secret manager connector also uses `prod-delegates` or uses no selector at all
+- Alternatively, use delegates without selectors for secret managers to allow any delegate to access them
+- Test your connector after configuration to verify that secret resolution works correctly with your delegate setup
 
 ### How do I upgrade a legacy Docker delegate to use a new image version?
 

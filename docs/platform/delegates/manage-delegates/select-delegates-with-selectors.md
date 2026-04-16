@@ -104,6 +104,12 @@ Here, the tag is **test1**, and you can see multiple delegates match it:
 
 ![](./static/select-delegates-with-selectors-22.png)
 
+:::info Delegate selectors and secret resolution
+
+When configuring connectors that use secrets from an external secret manager, the delegate selector on the connector and the secret manager must be compatible. For more information, go to [Can I access a secret manager with a different delegate selector than my connector's delegate selector?](/docs/platform/harness-platform-faqs#can-i-access-a-secret-manager-with-a-different-delegate-selector-than-my-connectors-delegate-selector)
+
+:::
+
 ### Pipeline delegate selector
 
 Delegates can be selected for an entire pipeline in the pipeline **Advanced Options** settings.
