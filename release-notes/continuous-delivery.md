@@ -56,6 +56,28 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2026
 
+### Version 1.139.3
+
+#### New features and enhancements
+
+- The pipeline execution listing page now displays an improved card-based layout. The **Service** and **Environment** columns have been replaced by an **Update Summary** column that shows service-to-environment mappings for CD stages and schema-to-instance mappings for Database DevOps stages. You can hover over entries to view artifact details and infrastructure information, and expand execution cards for stage-level breakdowns. This feature was previously behind the feature flag `CDS_EXECUTION_LIST_CARD_VIEW` and is now generally available. For more information, go to [Pipeline execution history](/docs/continuous-delivery/x-platform-cd-features/executions/execution-history/#execution-reference).
+
+#### Fixed issues
+
+- Fixed an issue where a dashboard query failed with a PostgreSQL error: "the postgresql 9.5+ database encountered an error while running this query." (**CDS-120074**, **ZD-109608**)
+- Fixed an issue where the WinRM credential **Verify Connection** displayed an incorrect default port in the error message, stating "if the port is not specified with the host, it will default to 22." (**CDS-120290**, **ZD-110062**)
+- Fixed an issue where runtime values for GitOps clusters and environment inputs were not being cleared correctly in GitOps stages. (**CDS-120345**, **ZD-109942**)
+- Fixed an issue with the context value sent in the artifact list for the Service step. (**CDS-120967**, **ZD-110383**)
+- Fixed an issue where the Helm chart version fetch did not correctly identify third-party authentication errors. When fetching Helm chart versions, if the upstream provider or connector returned a 401 (Unauthorized) or 403 (Forbidden) error, the exception was propagated as-is to the client. This caused the client to interpret the error as their own authentication failure with the Harness platform, rather than a credentials issue with the external Helm chart provider (for example, an OCI registry or HTTP Helm repo). The Helm chart version fetch now detects authentication-related errors from upstream providers and wraps them as an application-level invalid credentials exception, correctly signaling that the credentials issue is with the third-party connector. (**CDS-120992**, **ZD-110182**)
+- Fixed an issue where the overrides variable field went blank when editing it. (**CDS-121117**, **ZD-109880**)
+- Fixed an issue where the SCM service was unavailable for parsing webhook payloads. (**PIPE-32789**, **ZD-109306**)
+- Fixed an issue where newly created version or template files in GitHub were not visible in the Harness UI, and auto-creation for templates was not working. (**PIPE-32938**, **ZD-109360**)
+- Fixed an issue where GitX/GitSync did not handle a Git connector when the account-level Bitbucket URL was set to `https://bitbucket.org` without a workspace. As part of migrating `gitFileCache` to `repoURL`, the fallback has been removed since all records are now aligned with the new system. Cache upserts now use only `repoURL`. (**PIPE-33029**, **ZD-110158**)
+- Fixed an issue where pipelines were being aborted unexpectedly by a system admin user. (**PIPE-33226**, **ZD-110865**, **ZD-111008**, **ZD-111013**)
+- Fixed an issue where the compare pipeline executions view was hidden when unified UI styles loaded. (**PIPE-33237**)
+- Fixed an issue where a direct connector secret reference with an incorrect value caused all secrets to fail rendering in `values.yaml` during Native Helm deployments. (**PIPE-33325**, **ZD-105341**)
+- Fixed an issue where an active freeze window could be edited via API. The freeze API service did not check for active windows during edits, even though the UI does not permit it. Editing active freeze windows via API is now blocked by default. To restore the previous behavior, enable the feature flag `CDS_ALLOW_ACTIVE_FREEZE_EDIT`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-114114**)
+
 ### Version 1.138.5
 
 #### Fixed issues
