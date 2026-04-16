@@ -30,9 +30,91 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2026.3.v2](/release-notes/internal-developer-portal#march---20263v2) | ✅        | ✅         | ✅             |  ✅          |     ✅     |     ✅     |
-| [2026.3.v1](/release-notes/internal-developer-portal#march---20263v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
-| [2026.2.v1](/release-notes/internal-developer-portal#february---20262v1) | ✅        | ✅         | ✅           |     ✅     |     ✅     |     ✅      |
+| [2026.4.v1](/release-notes/internal-developer-portal#april---20264v1) | ✅        | ❌         | ❌           | ❌        | ❌         | ❌         |
+| [2026.3.v2](/release-notes/internal-developer-portal#march---20263v2) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
+| [2026.3.v1](/release-notes/internal-developer-portal#march---20263v1) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
+
+
+## April - [2026.4.v1]
+
+---
+
+### New Features
+
+#### Custom Entity Kinds
+Harness IDP now supports defining [custom entity kinds](/docs/internal-developer-portal/custom-kinds/overview) beyond the standard built-in kinds (`Component`, `API`, `Resource`, `Environment`, `System`, and others). Platform engineers can model domain-specific software components that don't fit existing kinds, complete with their own name, icon, and JSON Schema for structure and validation.
+
+- Custom kind entities appear in the catalog with full search and filter support, just like built-in kinds.
+- Each custom kind supports dedicated **Layouts**, **Scorecards**, and **Plugins**, scoped by kind and entity type.
+- Entities of custom kinds can be created and updated via the **Catalog Ingestion API** using the same payload structure as built-in kinds.
+
+![Custom Entity Kind](./static/idp/custom-kind-admin.png)
+
+---
+
+#### SonarQube Integration
+
+Harness IDP now supports a [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube) integration that connects to your SonarQube Server (self-hosted) or SonarQube Cloud instance and brings projects into the IDP Catalog as catalog entities enriched with:
+
+- Code quality measures
+- Security hotspots
+- Quality gate status
+- Issue analytics
+
+![SonarQube Integration](./static/idp/sonarqube-int.png)
+
+---
+
+#### Aggregation Support for Scorecards
+
+Scorecards data can now be aggregated across multiple catalog entities, enabling platform engineers to roll up compliance and health metrics from lower-level components to higher-level systems.
+
+- Define aggregation rules on Scorecards across component hierarchies.
+- Aggregations are supported in System-of-Systems hierarchies, rolling up metrics through nested system relationships.
+
+![Aggregation Support for Scorecards](./static/idp/scorecard-aggregation.png)
+
+---
+
+#### Separate Create and Edit Permissions for Environments and Blueprints
+
+Environment and Blueprint permissions have been split into distinct **Create** and **Edit** actions, giving platform administrators finer-grained control over who can provision new environments versus who can modify existing ones.
+
+- The `create` permission is now separate from `edit` for both environments and blueprints.
+- Updated managed roles include the new create permission out of the box.
+
+![Separated Permissions](./static/idp/separate-create-edit.png)
+
+---
+
+#### AI Asset Default Layout
+
+AI Asset catalog entities now include a default out-of-the-box layout that organizes card details, links, and relationships into a structured and consistent view.
+
+![AI Asset Default Layout](./static/idp/ai-asset.png)
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Sync and Delete for Integrations
+
+Instances of integrations (e.g., [ServiceNow](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/servicenow-cmdb), [Kubernetes](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/kubernetes), [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube), [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github)) now include sync and delete actions in the integration UI, giving platform teams direct control over the integration lifecycle.
+
+#### Custom Dashboard Data Retention: 12 Months
+
+The data retention period for custom dashboards has been extended from 3 months to 12 months, enabling platform teams to build more comprehensive visualizations with a longer historical window.
+
+#### Custom User Identifier in REGISTER Action
+
+When registering catalog entities via the `saveDiscoverEntities` API with `action=REGISTER`, callers can now pass an explicit `action_identifier` field to control the entity identifier. When omitted, the existing behavior of deriving the identifier from the entity name is preserved (fully backward compatible).
+
+#### Fixes
+
+- Scorecard check for `catalog.systemIsDefinedAndItExists` was incorrectly evaluating as `false` even when a system entity was correctly linked to a component. [IDP-6955]
+- Fix for entities, filters, scores, and recalibration APIs on new Flex priced accounts [IDP-8779]
+
+---
 
 ## March - [2026.3.v2]
 
