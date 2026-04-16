@@ -29,12 +29,12 @@ For information about what's supported for other Harness modules and the Harness
 
 Harness Database DevOps currently supports several database platforms, including:
 
-| **Database**         | **Migration Tool** | **Authentication Options**                 |
-| -------------------- | ------------------ | ------------------------------------------ |
+| **Database**         | **Migration Tool** | **Authentication Options**                 | **Additional Notes**                         |
+| -------------------- | ------------------ | ------------------------------------------ | ---------------------------------------------- |
 | Oracle               | Liquibase Community          | Basic Auth, Kerberos                       |
 | Oracle               | Flyway Community             | Basic Auth,SSL                             |
-| PostgreSQL           | Liquibase Community, Flyway Community  | Basic Auth,SSL                             |
-| MySQL                | Liquibase Community, Flyway Community  | Basic Auth,SSL                             |
+| PostgreSQL           | Liquibase Community, Flyway Community  | Basic Auth,SSL                   |
+| MySQL                | Liquibase Community (Percona Supported), Flyway Community  | Basic Auth,SSL                   | MySQL can be used with or without the percona toolkit |
 | Microsoft SQL Server | Liquibase Community          | Basic Auth, Kerberos, SSL                  |
 | Microsoft SQL Server | Flyway Community             | Basic Auth,SSL                             |  
 | MongoDB              | Native Executor,  Liquibase Community, Flyway Community    | Username/Password (SCRAM), SSL   |
@@ -43,8 +43,11 @@ Harness Database DevOps currently supports several database platforms, including
 | Google AlloyDB       | Liquibase Community          | Basic Auth, SSL                            |
 | Snowflake            | Liquibase Community          | PKI (Key Pair Authentication)              |
 
-It's worth noting that **MongoDB** is a NoSQL database which brings some limitations to your experience of Harness DB DevOps if this is your database of choice. 
-One of the limitations being: 
+:::info note
+Harness Database DevOps supports all database providers for Postgres and MySQL such as AWS RDS, Aurora DB, Azure Database for PostgreSQL, Azure Database for MySQL, and more. 
+:::
+
+It's worth noting that **MongoDB** is a NoSQL database which brings some limitations to your experience of Harness DB DevOps if this is your database of choice. One of the limitations being: 
 
  - You cannot enforce policy against SQL initially. 
 

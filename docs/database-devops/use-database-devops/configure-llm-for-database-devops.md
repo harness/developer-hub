@@ -44,7 +44,10 @@ Before configuring LLM change authoring, ensure you have the following prerequis
   Leave schema and instance set as runtime input, i.e., `<+input>`, as these will be provided by the LLM change authoring.
   :::
 6. Click on Add Step again and select the Run Step from the list of available steps.
-7. Configure the **Run step** to run the following script to create a Pull Request in your Git repository with the generated migration artifacts. First, add a **pipeline variable** (or step input) named **$REPO_TYPE** with allowed values: "github", "bitbucket", "harness". Then use the following unified script, replacing the common placeholders with your actual values:
+7. Configure the **Run step** to run the following script to create a Pull Request in your Git repository with the generated migration artifacts. 
+- First, add a **pipeline variable** (or step input) named **$REPO_TYPE** with allowed values: "github", "bitbucket", "harness". (This variable will determine the Git provider and API used for creating the Pull Request).
+- In the Run step configuration, set the image to `prontotools/alpine-git-curl:latest` which has git and curl installed, and set the shell to `Sh`.
+- Then use the following unified script, replacing the common placeholders with your actual values:
 
 ```bash
 #!/bin/bash
@@ -144,6 +147,10 @@ Setup the following environment variables in the Run step configuration, ensurin
 If the target Git provider is **Harness Code**, ensure that the `REPO_TYPE` is set to **harness**.
 :::
 
+You can also set USER_NAME and USER_EMAIL to the user who started the pipeline via expression: `<+pipeline.startingUser.email>` and `<+pipeline.startingUser.name>` to automatically attribute the commit and PR to the user who initiated the change authoring process.
+
+![Database DevOps Pipeline Trigger](./static/dbops-pipeline-trigger-image.png)
+
 ### Step 3: Author your first DB Change
 
 1. Select your Database DevOps project from the Harness dashboard.
@@ -207,7 +214,7 @@ pipeline:
                         identifier: Script_Verification
                         spec:
                           connectorRef: testDefault
-                          image: prontotools/alpine-git-curl
+                          image: prontotools/alpine-git-curl:latest
                           shell: Sh
                           command: |-
                             #!/bin/bash
