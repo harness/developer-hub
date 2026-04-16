@@ -1,6 +1,6 @@
 ---
 title: Harness MCP Server
-description: Give AI agents full access to the Harness platform through 10 consolidated tools and 137 resource types using the Model Context Protocol (MCP).
+description: Give AI agents full access to the Harness platform through 11 consolidated tools and 139 resource types using the Model Context Protocol (MCP).
 sidebar_label: MCP Server
 sidebar_position: 10
 redirect_from:
@@ -9,9 +9,9 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-The Harness MCP Server is an open-source [Model Context Protocol](https://modelcontextprotocol.io/introduction) server that gives AI agents full access to the Harness platform. It uses a registry-based dispatch system that routes 10 consolidated tools (`harness_list`, `harness_get`, `harness_create`, etc.) to 137 resource types across 29 toolsets — covering CI/CD, GitOps, Feature Flags, Cloud Cost Management, Security Testing, Chaos Engineering, Internal Developer Portal, Software Supply Chain, and more.
+The Harness MCP Server is an open-source [Model Context Protocol](https://modelcontextprotocol.io/introduction) server that gives AI agents full access to the Harness platform. It uses a registry-based dispatch system that routes 11 consolidated tools (`harness_list`, `harness_get`, `harness_create`, etc.) to 139 resource types across 30 toolsets, covering CI/CD, GitOps, Feature Management & Experimentation, Cloud Cost Management, Security Testing, Chaos Engineering, Internal Developer Portal, Software Supply Chain, and more.
 
-Unlike MCP servers that map one tool per API endpoint (which degrades LLM tool-selection accuracy as tool count grows), this server keeps the tool count small and the schema footprint minimal. Agents discover organizations and projects dynamically, so multi-project workflows work out of the box without hardcoded environment variables. Twenty-six pre-built prompt templates cover common workflows like debugging failed pipelines, reviewing DORA metrics, triaging vulnerabilities, and optimizing cloud costs.
+Unlike MCP servers that map one tool per API endpoint (which degrades LLM tool-selection accuracy as tool count grows), this server keeps the tool count small and the schema footprint minimal. Agents discover organizations and projects dynamically, so multi-project workflows work out of the box without hardcoded environment variables. Twenty-seven pre-built prompt templates cover common workflows like debugging failed pipelines, reviewing DORA metrics, triaging vulnerabilities, and optimizing cloud costs.
 
 - **Source code:** [github.com/harness/mcp-server](https://github.com/harness/mcp-server)
 - **npm package:** [harness-mcp-v2 on npm](https://www.npmjs.com/package/harness-mcp-v2)
@@ -77,7 +77,7 @@ harness-mcp-v2 [stdio|http] [--port <number>]
 ## Configure your AI client
 
 :::info
-`HARNESS_DEFAULT_ORG_ID` and `HARNESS_DEFAULT_PROJECT_ID` are optional. Agents can discover orgs and projects dynamically using `harness_list(resource_type="organization")` and `harness_list(resource_type="project")`. Set them only if you want to pin a default scope.
+`HARNESS_ORG` and `HARNESS_PROJECT` are optional. Agents can discover orgs and projects dynamically using `harness_list(resource_type="organization")` and `harness_list(resource_type="project")`. Set them only if you want to pin a default scope. The deprecated names `HARNESS_DEFAULT_ORG_ID` and `HARNESS_DEFAULT_PROJECT_ID` are still accepted for backward compatibility.
 :::
 
 :::tip Troubleshooting `npx ENOENT` or `node: No such file or directory`
@@ -274,8 +274,10 @@ Tested gateways include [Docker MCP Gateway](https://docs.docker.com/), [Portkey
 | `HARNESS_API_KEY` | Yes | -- | Harness personal access token or service account token |
 | `HARNESS_ACCOUNT_ID` | No | *(from PAT)* | Harness account identifier. Auto-extracted from PAT tokens; only needed for non-PAT API keys |
 | `HARNESS_BASE_URL` | No | `https://app.harness.io` | Base URL (override for self-managed Harness) |
-| `HARNESS_DEFAULT_ORG_ID` | No | `default` | Default organization identifier |
-| `HARNESS_DEFAULT_PROJECT_ID` | No | -- | Default project identifier |
+| `HARNESS_ORG` | No | `default` | Default organization identifier (preferred) |
+| `HARNESS_PROJECT` | No | -- | Default project identifier (preferred) |
+| `HARNESS_DEFAULT_ORG_ID` | No | `default` | Deprecated alias for `HARNESS_ORG` |
+| `HARNESS_DEFAULT_PROJECT_ID` | No | -- | Deprecated alias for `HARNESS_PROJECT` |
 | `HARNESS_API_TIMEOUT_MS` | No | `30000` | HTTP request timeout in milliseconds |
 | `HARNESS_MAX_RETRIES` | No | `3` | Retry count for transient failures (429, 5xx) |
 | `HARNESS_MAX_BODY_SIZE_MB` | No | `10` | Max HTTP request body size in MB for `http` transport |
@@ -285,6 +287,8 @@ Tested gateways include [Docker MCP Gateway](https://docs.docker.com/), [Portkey
 | `HARNESS_READ_ONLY` | No | `false` | Block all mutating operations (create, update, delete, execute) |
 | `HARNESS_SKIP_ELICITATION` | No | `false` | Skip confirmation prompts for write operations. Enables fully autonomous agent workflows |
 | `HARNESS_ALLOW_HTTP` | No | `false` | Allow non-HTTPS `HARNESS_BASE_URL`. Set to `true` only for local development |
+| `HARNESS_FME_BASE_URL` | No | `https://api.split.io` | Base URL for Feature Management & Experimentation (Split) API |
+| `HARNESS_PIPELINE_VERSION` | No | `0` | Default pipeline YAML version (`0` or `1`) |
 
 ## HTTP transport
 
@@ -302,7 +306,7 @@ The HTTP transport runs in session-based mode. A new MCP session is created on `
 
 ## Tools reference
 
-The server exposes 11 MCP tools. Most accept `org_id` and `project_id` as optional overrides — if omitted, they fall back to `HARNESS_DEFAULT_ORG_ID` and `HARNESS_DEFAULT_PROJECT_ID`. Most tools also accept a `url` parameter — paste a Harness UI URL and the server auto-extracts identifiers.
+The server exposes 11 MCP tools. Most accept `org_id` and `project_id` as optional overrides — if omitted, they fall back to `HARNESS_ORG` and `HARNESS_PROJECT` (or the deprecated `HARNESS_DEFAULT_ORG_ID` and `HARNESS_DEFAULT_PROJECT_ID`). Most tools also accept a `url` parameter — paste a Harness UI URL and the server auto-extracts identifiers.
 
 | Tool | Description |
 |------|-------------|
@@ -422,7 +426,7 @@ For remote pipelines, pass `store_type`, `connector_ref` (or `is_harness_code_re
 
 ## Resource types
 
-137 resource types organized across 29 toolsets. Each resource type supports a subset of CRUD operations and optional execute actions.
+139 resource types organized across 30 toolsets. Each resource type supports a subset of CRUD operations and optional execute actions.
 
 ### Platform
 
@@ -430,6 +434,13 @@ For remote pipelines, pass `store_type`, `connector_ref` (or `is_harness_code_re
 |---------------|:----:|:---:|:------:|:------:|:------:|-----------------|
 | `organization` | x | x | x | x | x | |
 | `project` | x | x | x | x | x | |
+
+### Agent Pipelines
+
+| Resource Type | List | Get | Create | Update | Delete | Execute Actions |
+|---------------|:----:|:---:|:------:|:------:|:------:|-----------------|
+| `agent` | x | x | x | x | x | |
+| `agent_run` | x | | | | | |
 
 ### Pipelines
 
@@ -711,7 +722,7 @@ Inline PNG chart visualizations rendered from Harness data. Use `include_visual=
 
 ## Toolset filtering
 
-By default, all 29 toolsets (and their 137 resource types) are enabled. Use `HARNESS_TOOLSETS` to expose only the toolsets you need, which reduces the resource types the LLM sees and improves tool-selection accuracy.
+By default, all 30 toolsets (and their 139 resource types) are enabled. Use `HARNESS_TOOLSETS` to expose only the toolsets you need, which reduces the resource types the LLM sees and improves tool-selection accuracy.
 
 ```bash
 # Only expose pipelines, services, and connectors
@@ -720,8 +731,9 @@ HARNESS_TOOLSETS=pipelines,services,connectors
 
 | Toolset | Resource Types |
 |---------|---------------|
+| `agent-pipelines` | agent, agent_run |
 | `platform` | organization, project |
-| `pipelines` | pipeline, execution, trigger, pipeline_summary, input_set, approval_instance |
+| `pipelines` | pipeline, execution, trigger, pipeline_summary, input_set, runtime_input_template, approval_instance |
 | `services` | service |
 | `environments` | environment |
 | `connectors` | connector, connector_catalogue |
@@ -752,7 +764,7 @@ HARNESS_TOOLSETS=pipelines,services,connectors
 
 ## Prompt templates
 
-The server includes 26 pre-built prompt templates for common workflows.
+The server includes 27 pre-built prompt templates for common workflows.
 
 ### DevOps
 
@@ -761,6 +773,7 @@ The server includes 26 pre-built prompt templates for common workflows.
 | `build-deploy-app` | End-to-end CI/CD: scan a repo, generate CI pipeline, create CD pipeline, deploy with auto-retry |
 | `debug-pipeline-failure` | Analyze a failed execution with stage/step breakdown, failure details, and root cause analysis |
 | `create-pipeline` | Generate a new pipeline YAML from natural language requirements |
+| `create-agent` | Create a custom AI agent definition with YAML spec, rules, skills, and MCP servers |
 | `onboard-service` | Walk through onboarding a new service with environments and a deployment pipeline |
 | `dora-metrics-review` | Review DORA metrics with Elite/High/Medium/Low classification and improvement recommendations |
 | `setup-gitops-application` | Guide through onboarding a GitOps application |
@@ -862,13 +875,13 @@ When enabled, **all** write and delete operations proceed without user confirmat
                       |  MCP (stdio or HTTP)
              +--------v---------+
              |    MCP Server     |
-             | 10 Generic Tools  |
+             | 11 Generic Tools  |
              +--------+---------+
                       |
              +--------v---------+
              |    Registry       |  <-- Declarative resource definitions
-             |  29 Toolsets      |
-             |  137 Resource Types|
+             |  30 Toolsets      |
+             |  139 Resource Types|
              +--------+---------+
                       |
              +--------v---------+

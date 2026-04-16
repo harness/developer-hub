@@ -290,13 +290,13 @@ Agentic automation introduces new attack surfaces — prompt injection, tool sid
 All dates below are tentative forecasts and subject to change.
 :::
 
-### February 2026 — Foundation release
+### February 2026 — Foundation release ✅
 
 Agent runtime, LLM Connectors (Anthropic, OpenAI, Gemini — SaaS and self-hosted), and System Agent templates including: Autofix, Code Coverage, Code Review, FF Cleanup, Manifest Remediator, Helm Chart Autofix, Onboarding, Library Upgrades (Java, React, Python), Vulnerability Remediation, and Unified Agent. Pipeline YAML integration, Step Templates, Agent RBAC, and Harness Auth for agent execution.
 
 ### April 2026 — Agent extensibility (MVP 1)
 
-Fork and customize agents. Reference agents across pipelines. Onboarding Agent for guided first-run experience. Agent Marketplace with curated community agents.
+Fork and customize agents. Reference agents across pipelines. Onboarding Agent for guided first-run experience. Agent Marketplace with curated community agents. Custom agent CRUD via MCP Server (`agent` and `agent_run` resource types).
 
 ### H2 2026 — Autonomous operations (Planned)
 

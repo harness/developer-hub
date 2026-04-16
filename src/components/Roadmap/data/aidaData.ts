@@ -5,12 +5,47 @@ export const aidaModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "aida", mod
 
 export const aidaData: Horizon = {
   Now: {
-    description: "Q3 2025, Aug-Oct 2025",
+    description: "Q2 2026, Apr-Jun 2026",
+    feature: [
+      {
+        tag: [],
+        title: "Slack Bot",
+        description: "Allows users to interact with the Unified Agent in Slack.",
+      },
+      {
+        tag: [],
+        title: "MS Teams Bot",
+        description: "Allows users to interact with the Unified Agent via an MS Teams Bot.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "AI Usage Insights",
+        description: "Enables users to get an analysis of their AI Usage, number of prompts, tokens consumed, and actions."
+      },
+    ],
+  },
+  Next: {
+    description: "Q3 2026, Jul-Sep 2026",
+    feature: [
+      {
+        tag: [],
+        title: "Knowledge Graph",
+        description: "Provide additional intelligence for Harness AI to execute various remediation and automated actions, and personalize the user's UI."
+      },
+    ],
+  },
+  Later: {
+    description: "Q4 2026+, Oct 2026 & beyond",
+    feature: [
+    ],
+  },
+  Released: {
+    description: "What has been released",
     feature: [
       {
         tag: [{value: "AI DevOps"}],
         title: "AI DevOps Architect Mode",
-        description: "Deep research capabilities for building robost pipeliens.",
+        description: "Deep research capabilities for building robust pipelines.",
       },
       {
         tag: [{value: "AI Platform"}],
@@ -20,27 +55,22 @@ export const aidaData: Horizon = {
       {
         tag: [{value: "AI Platform"}, {value: "MCP"}],
         title: "Hosted MCP",
-        description: "Harness MCP server will be hosted, and users can access it with Oauth",
+        description: "Harness MCP server hosted with OAuth access.",
       },
       {
         tag: [],
         title: "Pipeline Error Analyzer 2.0",
-        description: "Enables a more intelligent error analysis and remediation for pipelines. This includes drift detection, documentation support, and fix suggestions.",
+        description: "More intelligent error analysis and remediation for pipelines including drift detection, documentation support, and fix suggestions.",
       },
       {
         tag: [{value: "MCP"}],
         title: "MCP - Default Tools",
-        description: "Defines a default set of tools for users to get started.",
+        description: "Default set of tools for users to get started with the Harness MCP server.",
       },
-    ],
-  },
-  Next: {
-    description: "Q4 2025, Nov-Jan 2025-2026",
-    feature: [
       {
         tag: [{value: "AI Platform"}],
         title: "AI Platform - Memory Support",
-        description: "Establishes a working memory for the AI chat agent so that it can have context about chat history, account configurations, and account actions.",
+        description: "Working memory for the AI chat agent with context about chat history, account configurations, and account actions.",
       },
       {
         tag: [{value: "AI Platform"}],
@@ -50,48 +80,18 @@ export const aidaData: Horizon = {
       {
         tag: [{value: "AI DevOps"}],
         title: "Create and Edit Templates",
-        description: "Enables the DevOps Agent to create and edit pipeline, stage, step group, and step templates",
+        description: "Enables the DevOps Agent to create and edit pipeline, stage, step group, and step templates.",
       },
-    ],
-  },
-  Later: {
-    description: "Q1 2026+, Feb 2026 & beyond",
-    feature: [
       {
         tag: [{value: "AI DevOps"}],
         title: "Approvals",
-        description: "Enables AI-assisted approvals.",
+        description: "AI-assisted approvals for pipeline workflows.",
       },
       {
         tag: [{value: "MCP"}],
         title: "MCP - GitOps Tools",
-        description: "Adds GitOps tools to the Harness MCP. Users can create and update GitOps configurations via Harness Chat and the MCP server.",
+        description: "GitOps tools in the Harness MCP. Users can create and update GitOps configurations via Harness Chat and the MCP server.",
       },
-      {
-        tag: [],
-        title: "Slack Bot",
-        description: "Allows users to interact with the Unified Agent in Slack. ",
-      },
-      {
-        tag: [],
-        title: "MS Teams Bot",
-        description: "Allows users to interact with the Unified Agent in via an MS Teams Bot. ",
-      },
-      {
-        tag: [{value: "AI Platform"}],
-        title: "AI Usage Insights",
-        description: "Enables users to get an analysis of their AI Usage, number of prompts, tokens consumed, and actions."
-      },
-      {
-        tag: [],
-        title: "Knowledge Graph",
-        description: "Harness will build a knowledge graph with support of the data platform to provide increased intelligence to the AI to do various remediation and automated actions, and to personalize the user's UI."
-      },
-    ],
-  },
-  Released: {
-    description: "What has been released",
-    feature: [
       {
         tag: [{value: "MCP"}],
         title: "Harness MCP Server",

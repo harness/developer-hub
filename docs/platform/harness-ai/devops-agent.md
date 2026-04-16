@@ -410,7 +410,7 @@ Data discard behavior depends on the underlying AI provider:
 
 | **Provider**           | **Model**        | **Discard Mechanism**              | **Retention** | **Used for Training?** |
 | ---------------------- | ---------------- | ---------------------------------- | ------------- | ---------------------- |
-| Google Vertex AI       | Claude 3.7       | Immediately purged after inference | 0 days        | No                     |
+| Google Vertex AI       | Claude Opus 4.5  | Immediately purged after inference | 0 days        | No                     |
 | OpenAI (fallback only) | GPT-4o           | Retained for 30 days, then purged  | 30 days       | No (Harness opts out)  |
 
 ### Failover/Fallback Scenarios

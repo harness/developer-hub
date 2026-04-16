@@ -43,7 +43,7 @@ For more information about navigation 2.0, go to [Harness navigation 2.0](https:
 | **Platform** | [DevOps Agent (Resource Creation) ](/docs/platform/harness-ai/harness-create-with-ai) | Create Services, Environments, Connectors, and Secrets through conversational AI prompts. | Generally available |
 | **Platform** | [Support Agent](/docs/platform/harness-ai/support-agent) | AI-powered first line of support that answers product and documentation questions with contextual examples from the knowledge base. | Generally available |
 | **Platform** | [Dashboard Intelligence](/docs/platform/dashboards/use-dashboard-intelligence-by-ai) | Craft customized dashboards with widget-level control through interactive AI prompts. | Generally available |
-| **Platform** | [MCP Server](/docs/platform/harness-ai/harness-mcp-server) | Model Context Protocol server enabling integration with external AI tools like Cursor, Windsurf, Claude Desktop, and VS Code. | Generally available |
+| **Platform** | [MCP Server](/docs/platform/harness-ai/harness-mcp-server) | Model Context Protocol server with 11 tools and 139 resource types enabling integration with external AI tools like Cursor, Windsurf, Claude Desktop, and VS Code. | Generally available |
 | **Code Repository** | [PR Summaries & Code Review](/docs/platform/harness-ai/code-pr) | AI-generated pull request descriptions with code change analysis, file-level summaries, and impact assessment to facilitate code review. | Generally available |
 | **Code Repository** | [Semantic Code Search](/docs/platform/harness-ai/code-search) | Natural language code search that understands semantic meaning across your entire codebase. | Generally available |
 | **Code Agent** | [Code Agent](/docs/platform/harness-ai/code-agent) | IDE extension for intelligent code generation, real-time suggestions, automated test generation, contextual code explanations, and interactive chat. | Beta |
@@ -102,7 +102,7 @@ Currently supported languages and versions include:
 Yes. Harness AI uses powerful LLMs to generate and adapt code like the following:
     - OpenAI GPT-4o
     - Google Gemini Flash
-    - Claude 3.7 Sonnet
+    - Claude Opus 4.5
 
 ### Are domain-specific use cases supported?
 

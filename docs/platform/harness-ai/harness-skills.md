@@ -5,8 +5,6 @@ sidebar_label: Skills
 sidebar_position: 12
 ---
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
 Harness Skills are specialized prompt templates that teach AI coding assistants how to interact with the Harness platform. Each skill encapsulates the domain knowledge needed to accomplish a specific task — generating pipeline YAML, creating services, debugging executions, analyzing costs, and more — so you can work with Harness using natural language in your editor.
 
 The repository is designed as a workflow system, not just a folder of prompts. Top-level instructions (`CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md`) establish shared behavior, while individual skills specialize in creation, debugging, governance, and reporting tasks.
@@ -194,6 +192,7 @@ The best Harness skills follow the same control flow even when they target diffe
 | `/create-pipeline-v1` | Generate v1 simplified pipeline YAML — alpha: internal testing only |
 | `/create-template` | Create reusable step, stage, pipeline, or step group templates |
 | `/create-trigger` | Create webhook, scheduled, and artifact triggers |
+| `/create-agent` | Create and update Harness AI agent instances for automated code and infrastructure tasks |
 | `/create-agent-template` | Create AI-powered agent templates — alpha: internal testing only |
 
 ### Resource management
@@ -205,6 +204,11 @@ The best Harness skills follow the same control flow even when they target diffe
 | `/create-infrastructure` | Create infrastructure definitions |
 | `/create-connector` | Create connectors (Git, cloud, registries, clusters) |
 | `/create-secret` | Create secrets (text, file, SSH, WinRM) |
+| `/manage-artifacts` | Manage Harness Artifact Registry — Docker, Helm, Maven, and generic registries |
+| `/manage-iacm` | Manage IaCM Terraform workspaces, state files, and drift detection |
+| `/manage-idp` | Manage IDP service catalog templates, workflows, and scorecards |
+| `/manage-supply-chain` | Manage Software Supply Chain Assurance — SBOM generation, policy enforcement |
+| `/manage-cde` | Manage Cloud Development Environments (CDE) for on-demand dev workspaces |
 
 ### Access control and feature flags
 
@@ -220,7 +224,11 @@ The best Harness skills follow the same control flow even when they target diffe
 |-------|-------------|
 | `/run-pipeline` | Execute pipelines, monitor progress, handle approvals |
 | `/debug-pipeline` | Analyze execution failures, diagnose root causes |
+| `/optimize-pipeline` | Optimize CI/CD pipeline performance — parallel execution, caching, resource tuning |
 | `/migrate-pipeline` | Convert pipelines from v0 to v1 format |
+| `/deployment-readiness` | Pre-deployment readiness checks with go/no-go assessments |
+| `/incident-response` | Correlate incidents with recent deployments and analyze impact |
+| `/pr-analysis` | Analyze pull request impact on Harness pipelines |
 | `/template-usage` | Track template dependencies and adoption |
 | `/manage-delegates` | Monitor delegate health and manage tokens |
 
@@ -236,6 +244,9 @@ The best Harness skills follow the same control flow even when they target diffe
 | `/scorecard-review` | Service maturity scorecards (IDP) |
 | `/audit-report` | Audit trails and compliance reports |
 | `/create-policy` | Create OPA governance policies for supply chain security |
+| `/ai-operations` | Configure Harness AI-powered operations (AIDA) — predictive failure analysis and automation |
+| `/manage-slos` | Manage Service Reliability — SLOs, SLIs, and error budgets |
+| `/sei-analytics` | Advanced engineering analytics via Software Engineering Insights (SEI) |
 
 ## End-to-end workflows
 
@@ -298,7 +309,7 @@ Reference files in the `references/` subdirectory provide supplementary knowledg
 
 ## MCP tools
 
-Skills use the [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server), which provides 10 generic tools dispatched by `resource_type`:
+Skills use the [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server), which provides 11 generic tools dispatched by `resource_type`:
 
 | Tool | Purpose |
 |------|---------|
@@ -310,6 +321,7 @@ Skills use the [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server
 | `harness_execute` | Execute an action |
 | `harness_search` | Search across resources |
 | `harness_describe` | Get resource schema |
+| `harness_schema` | Fetch JSON Schema definitions |
 | `harness_diagnose` | Diagnose issues |
 | `harness_status` | Check system status |
 
