@@ -1210,5 +1210,11 @@
     "description": "Enables Harness Artifact Registry (HAR) integration for artifact signing and verification steps",
     "gaStartDate": "2026-04-10",
     "module": "Supply Chain Security"
+  },
+  {
+    "flagKey": "CDS_CV_DYNATRACE_CANARY_ENABLED",
+    "description": "Enable dimension filters and service instance selection to support Canary Verification in Dynatrace",
+    "gaStartDate": "2026-04-16",
+    "module": "Continuous Delivery"
   }
 ]
