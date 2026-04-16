@@ -224,10 +224,6 @@ To improve **Average Time to First Comment**, Harness recommends prioritizing co
 
 ### Code Rework
 
-:::tip
-Code Rework is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
-:::
-
 Code Rework metrics provide insight into the portion of development effort spent rewriting or replacing existing code, and are configured in the [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile). These file-driven metrics show where rework is coming from, who is introducing it, and allow teams to balance delivering new work with maintaining code quality. 
 
 ![](../static/productivity-3.png)

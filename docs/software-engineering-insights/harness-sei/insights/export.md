@@ -64,10 +64,6 @@ To customize the data included in your export, click **Export as CSV**.
 </TabItem>
 <TabItem value="efficiency-sprint" label="Efficiency (Sprint)">
 
-:::tip
-Sprint Metrics is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
-:::
-
 1. Navigate to the **Sprint Metrics** tab in the **Efficiency** dashboard.
 1. Click **Export**.
 1. Select the aggregation level: **Sprint** or **Team**.

@@ -61,10 +61,6 @@ Pull requests are classified as Small, Medium, and Large based on configured thr
 
 ### Code Rework
 
-:::tip
-Code Rework is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
-:::
-
 Use Code Rework to measure how much development effort is spent rewriting or replacing existing code instead of introducing new code. Code Rework is file-driven, not lines-of-code driven, meaning the metric tracks the files being modified rather than raw line counts.
 
 You can customize how SEI 2.0 classifies recent and legacy code to analyze where rework is coming from and who is introducing it. Set the number of days to consider as recent code to define the time window. By default, this is set to 30 days.

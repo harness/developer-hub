@@ -172,10 +172,6 @@ Each DORA widget allows you to drill down into the underlying ServiceNow records
 
 ## Sprint Metrics
 
-:::tip
-Sprint Metrics is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
-:::
-
 The Sprint Metrics dashboard provides sprint-based visibility into how well teams plan, execute, and deliver sprint work. While DORA focuses on deployment outcomes, sprint metrics focus on iteration-level execution and predictability. Sprint metrics are configured in the **Sprints** tab of the [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile#set-up-sprint-metrics).
 
 ![](../static/sprint-metrics.png)

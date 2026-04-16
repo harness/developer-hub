@@ -339,10 +339,6 @@ This unified setup ensures that MTTR is consistently classified while still refl
 
 ## Set up Sprint metrics
 
-:::tip
-Sprint Metrics is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
-:::
-
 The **Sprints** tab lets you configure how sprint-based work is measured, analyzed, and displayed across SEI 2.0. Sprint configuration includes computation mode, summary cards, delivery analysis, and sprint boundary grace periods.
 
 ### Computation Mode

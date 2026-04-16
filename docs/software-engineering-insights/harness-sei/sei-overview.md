@@ -5,7 +5,7 @@ sidebar_label: Overview
 sidebar_position: 1
 ---
 
-Welcome to SEI 2.0 — the next generation of engineering insights at Harness. We've reimagined how organizations understand developer productivity, delivery health, and business impact. Built from the ground up on a modern, high-performance architecture, SEI 2.0 brings flexibility, scale, and trust to your software engineering data.
+Welcome to SEI 2.0, the next generation of engineering insights at Harness. We've reimagined how organizations understand developer productivity, delivery health, and business impact. Built from the ground up on a modern, high-performance architecture, SEI 2.0 brings flexibility, scale, and trust to your software engineering data.
 
 Whether you're a 50-person startup or a global engineering org with 5,000+ developers, SEI 2.0 is built to meet you where you are and grow as you grow.
 
@@ -15,7 +15,7 @@ Whether you're a 50-person startup or a global engineering org with 5,000+ devel
 
 SEI 2.0 is architected to handle massive scale without compromising speed or reliability. From initial setup to generating insights, the new system is developed to scale and essentially give you insights you can trust.
 
-### Pre-Built Dashboards — Ready Out of the Box
+### Pre-Built Dashboards: Ready Out of the Box
 
 Get started instantly with pre-built dashboards designed around industry-proven metrics:
 
@@ -27,16 +27,11 @@ Get started instantly with pre-built dashboards designed around industry-proven 
 
 ### Org Trees & Team Structures That Reflect Reality
 
-SEI 2.0 introduces Org Trees—a flexible, scalable way to model your organization as it actually operates. You can build org structures that reflect reporting lines, business units, regions, or any combination of the above.
-Three ways to define your team structures:
-
-* **Upload via CSV:** Upload a simple CSV to define your organization structure.
-* **Integrate directly with your HRIS system (Coming Soon):** Automatically sync team structures from systems like Workday or BambooHR.
-* **Third-Party Imports (Coming Soon):** Bring in teams directly from tools you already use, like GitHub Teams or Jira Projects.
+SEI 2.0 introduces Org Trees: a flexible, scalable way to model your organization as it actually operates. You can build org structures that reflect reporting lines, business units, regions, or any combination of the above by uploading a CSV that defines your organization structure.
 
 ![](./static/org-tree-preview.png)
 
-### Integrations 2.0 — Easier. Smarter. More Resilient.
+### Integrations 2.0: Easier. Smarter. More Resilient.
 
 SEI 2.0 introduces a redesigned integrations framework focused on reliability, observability, and ease of maintenance.
 
