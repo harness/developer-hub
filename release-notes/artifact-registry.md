@@ -1,7 +1,7 @@
 ---
 title: Artifact Registry Release Notes
 sidebar_label: Artifact Registry
-date: 2026-02-28T12:00
+date: 2026-03-31T12:00
 sidebar_position: 1
 # toc_max_heading_level: 4
 ---
@@ -26,6 +26,30 @@ The release notes describe recent changes to Harness Artifact Registry.
 ## 📌 Release Deployment Status by Cluster
 
 **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+
+## March 2026
+
+### 2026.3.v1
+
+#### New Features
+
+**Maven plugin for Artifact Registry**
+
+The **Harness Maven plugin** (`io.harness.maven:harness-maven-plugin`) lets you publish JARs, WARs, POMs, and related artifacts from your Maven build—no one-off scripts or manual uploads. It fits the standard Maven lifecycle, supports **parallel-friendly deployments** for multi-module projects, and can **enforce dependency resolution through Harness upstream proxies** so builds pull through the registries you govern.
+
+- **Deploy from Maven**: Bind the `deploy` goal and push artifacts to Harness using the same coordinates and repositories your teams already use.
+- **Credentials via environment variables**: Keep tokens out of `pom.xml` by configuring Harness registry URL and identity token through environment variables in CI and local workflows.
+
+Learn more in the [Build plugins overview](/docs/artifact-registry/build-plugins/overview); open the **Maven Plugin** tab there for installation and configuration.
+
+**Gradle plugin for Artifact Registry**
+
+The **Harness Gradle plugin** (`io.harness.gradle`) hooks into `./gradlew publish`: Harness uploads artifacts to Artifact Registry in **parallel** for faster multi-module builds and reads **registry URL and credentials from environment variables** so secrets stay out of Gradle scripts and source control.
+
+- **Drop-in Gradle workflow**: Apply the plugin in the root or subprojects and keep using your existing publish tasks.
+- **Built for CI**: Matches how Gradle projects already inject registry configuration in pipelines.
+
+Learn more in the [Build plugins overview](/docs/artifact-registry/build-plugins/overview); open the **Gradle Plugin** tab there for installation and configuration.
 
 ## February 2026
 

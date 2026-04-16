@@ -231,11 +231,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 
 
 # Artifact Registry Docs
-/docs/artifact-registry/ shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
-/release-notes/artifact-registry.md shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
-/release-notes/static/artifact-registry/ shankar.hariharan@harness.io shivakumar.ningappa@harness.io shibam.dhar@harness.io
-/src/components/Docs/data/artifactRegistryData.ts shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
-/src/components/Roadmap/data/artifactRegistryData.ts shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
+/docs/artifact-registry/ ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
+/release-notes/artifact-registry.md ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
+/release-notes/static/artifact-registry/ ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io shibam.dhar@harness.io
+/src/components/Docs/data/artifactRegistryData.ts ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
+/src/components/Roadmap/data/artifactRegistryData.ts ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
 
 # Open Source Docs
 /docs/open-source/ nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io
