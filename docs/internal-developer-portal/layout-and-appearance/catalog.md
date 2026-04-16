@@ -317,6 +317,48 @@ spec:
           title: "Docs"
 ```
 
+## Entity Relations Components
+
+IDP provides two built-in components for visualizing entity relationships and exploring system graphs interactively.
+
+### HarnessEntityRelationsCard
+
+`HarnessEntityRelationsCard` displays an interactive graph of entity relations, including dependencies, ownership, and other relationships. Connected entities are shown as nodes with edges representing their relationships.
+
+Add it to the **Overview** tab as a card, typically full-width at the bottom.
+
+```yaml
+- component: HarnessEntityRelationsCard
+  specs:
+    gridProps:
+      md: 6
+```
+
+:::tip
+Use `md: 6` by default to render this card at full width, giving the graph enough space to display complex relationship networks clearly.
+:::
+
+### SystemExplorerTabContent
+
+`SystemExplorerTabContent` provides a full-page interactive graph explorer that works across all catalog entity types. It shows all related entities (components, APIs, resources, domains, users, and groups) along with the entire System Hierarchy, making it easy to traverse System Relations. It also includes filtering by kind/type, a group-by-type toggle, and zoom/pan controls.
+
+Add it as a separate top-level tab, not inside the `contents` of the Overview tab.
+
+```yaml
+page:
+  tabs:
+    - name: System Explorer
+      path: /system-explorer
+      title: System Explorer
+      contents:
+        - component: SystemExplorerTabContent
+```
+
+:::note
+`SystemExplorerTabContent` is designed to occupy a full tab by itself. Do not nest it inside the Overview tab's `contents` array. Use it as a standalone tab entry as shown above.
+:::
+
+
 ## Hierarchy Entity Layouts
 
 Hierarchy entities (created by [Platform Integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/platform-cd)) use specialized layouts to display organizational structure and aggregated metrics. You can customize layouts for each hierarchy type: **account**, **organization**, and **project**.
