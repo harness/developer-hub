@@ -36,8 +36,8 @@ Now that you have a sense of how this SDK is structured, follow the steps below 
 
 ### 1. Import the SDK into your project
 
-```php title="PHP 7.3+"
-composer require splitsoftware/split-sdk-php:7.3.0
+```php title="PHP 7.4+"
+composer require splitsoftware/split-sdk-php:7.4.0
 ```
 
 The public release is available at [packagist.org/packages/splitsoftware/split-sdk-php](https://packagist.org/packages/splitsoftware/split-sdk-php).
