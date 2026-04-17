@@ -14,6 +14,7 @@ STO includes the following dashboards:
 - **[Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard)**
 - **[STO Usage Dashboard](/docs/security-testing-orchestration/dashboards/sto-usage-dashboard)**
 - **[STO Pipeline Execution Summary](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary)**
+- **[STO All Occurrences Dashboard](/docs/security-testing-orchestration/dashboards/all-occurences-dashboard)**
 
 Each dashboard presents data based on its specific focus. For more information, see the documentation for each dashboard.
 
