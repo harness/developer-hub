@@ -7,7 +7,7 @@ sidebar_label: Get Started
 
 This guide walks you through the essential steps to start using the Harness Code Repository module. You'll learn how to set up repositories, configure access, work with your code, and integrate with pipelines.
 
-If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) before onboarding to Code. To understand core SCM concepts and how Harness Code integrates with the Harness Platform, see [Overview & Key Concepts](/docs/code-repository/get-started/overview).
+If you're new to Harness, review the [Get started with Harness Platform](/docs/platform/get-started/onboarding-guide) before onboarding to Code. To understand core SCM concepts and how Harness Code integrates with the Harness Platform, see [Overview & Key Concepts](/docs/code-repository/get-started/overview).
 
 ## Prerequisites
 

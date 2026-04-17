@@ -11,7 +11,6 @@ redirect_from:
   - /docs/platform/authentication/authentication-overview
 ---
 
-
 Authentication in Harness controls who can access your account and how. The first layer of Harness access control includes:
 
 - **Authentication:** Checks who you are.
@@ -26,6 +25,7 @@ This page covers **_authentication_**. For information about **_authorization_**
 ---
 
 ## What will you learn in this topic?
+
 By the end of this topic, you will be able to understand:
 
 - How to [configure authentication](#configure-authentication) methods for your Harness account, including [Harness login, OAuth](#enable-public-oauth-providers), Security Assertion Markup Language (SAML), and Lightweight Directory Access Protocol (LDAP).
@@ -134,47 +134,67 @@ You can configure a variety of SAML providers and enable or disable them for use
 Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
+:::tip Before you begin
+Before configuring your SAML provider in Harness, you must first set up the integration on the provider side and download the **Identity Provider metadata XML** file. You will upload this file into Harness in step 3c below.
+
+Follow the setup guide for your provider:
+- <a href="/docs/platform/authentication/single-sign-on-saml/okta" target="_blank">SAML SSO with Okta</a>
+- <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id" target="_blank">SAML SSO with Microsoft Entra ID</a>
+- <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin" target="_blank">SAML SSO with OneLogin</a>
+- <a href="/docs/platform/authentication/single-sign-on-saml/keycloak" target="_blank">SAML SSO with Keycloak</a>
+:::
+
 To configure multiple SAML providers in Harness, follow the steps below:
 
-1. Select **Account Settings**, and then select **Authentication**.
-2. Select **Login via SAML** and add the SAML providers you need.
+1. In Harness UI, select **Account Settings**, and then select **Authentication**.
 
-    a. If no SAML providers are configured for the account, select **Add SAML Provider**.
+2. If you are configuring SAML for the first time and no SAML providers are configured, your screen appears as shown below. Select **+SAML Provider** and jump to step 3b. If SAML provider is configured but not enabled, jump to step 3.
+
+  <div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/add-saml-screen.png')} width="80%" height="40%" title="Click to view full size image" />
+    </div>
+
+3. Select **Login via SAML** and add the SAML providers you need.
+
+    a. If SAML providers are configured but not enabled for the account, enable the one you want. If you want to create a new one, select **Add SAML Provider**.
 
     <div style={{textAlign: 'center'}}>
    <DocImage path={require('./static/add-provider.png')} width="80%" height="40%" title="Click to view full size image" />
     </div>
 
+    
     The SAML Provider settings appear.
-      - In the **Name** field, enter a name for the SAML provider. Names can only contain alphanumeric characters, `_`, `-`, `.`, and spaces. Optionally, add a **Display Name (optional)**. Select **Continue**.
+      
+      b. In the **Name** field, enter a name for the SAML provider. Names can only contain alphanumeric characters, `_`, `-`, `.`, and spaces. Select a SAML provider from the list. Select **Add**.
+
+      <div style={{textAlign: 'center'}}>
+      <DocImage path={require('./static/add-name-1.png')} width="80%" height="40%" title="Click to view full size image" />
+      </div>
+
+      c. Copy the SAML Endpoint URL. Upload the **Identity Provider metadata XML** file you downloaded from your SAML provider. Deselect **Enable Authorization** for now. You can enable this after completing the provider setup. Select **Add**.
 
     <div style={{textAlign: 'center'}}>
-   <DocImage path={require('./static/name-description.png')} width="80%" height="40%" title="Click to view full size image" />
+    <DocImage path={require('./static/name-description.png')} width="80%" height="40%" title="Click to view full size image" />
     </div>
 
-      - **Select a SAML provider** from the list of providers and select **Continue**.
-
-    <div style={{textAlign: 'center'}}>
-   <DocImage path={require('./static/select-provider.png')} width="80%" height="40%" title="Click to view full size image" />
-    </div>
-
-    Based on the SAML provider you select, refer to one of the following:
+    Harness supports the following SAML providers:
       - <a href="/docs/platform/authentication/single-sign-on-saml/okta"target="_blank" >SAML SSO with Okta</a>
       - <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id"target="_blank" >SAML SSO with Microsoft Entra ID</a>
       - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin"target="_blank" >SAML SSO with OneLogin</a> 
       - <a href="/docs/platform/authentication/single-sign-on-saml/keycloak"target="_blank" >SAML SSO with Keycloak</a>
 
-    b. Select **Continue**.
 
-    c. Select **Submit**.
+    Based on the SAML provider you select, refer to one of the following:
+      - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-okta"target="_blank" >SAML SSO with Okta</a>
+      - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-ms-entra-id"target="_blank" >SAML SSO with Microsoft Entra ID</a>
+      - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin"target="_blank" >SAML SSO with OneLogin</a>
+     - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-keycloak"target="_blank" >SAML SSO with Keycloak</a>
 
-          The SAML provider is now listed in **Login via SAML**.
+The SAML provider is now listed under **Login via SAML**.
 
-          <div style={{textAlign: 'center'}}>
-          <DocImage path={require('./static/multiple-idp-list-saml.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
+  <div style={{textAlign: 'center'}}>
+  <DocImage path={require('./static/multiple-idp-list-saml.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
-
-    b. If one or more SAML providers are configured, enable them.
 
 Before enabling SAML, disable any configured public OAuth providers. For more information, go to <a href="/docs/platform/authentication/single-sign-on-saml/overview" target="_blank" >Single Sign-On with SAML</a>.
 

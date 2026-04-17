@@ -296,7 +296,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
                     key={label}
                     className={`selector-card${
                       selected === label ? " selected" : ""
-                    }`}
+                    }${entry.iconOnly ? " selector-card--icon-only" : ""}`}
                     onClick={() => {
                       setSelected(label);
                       setSectionId("");
@@ -309,19 +309,43 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
                           src={`/provider-logos/${entry.logo}`}
                           alt={`${label} logo`}
                           className="selector-icon"
-                          {...(entry.logoWidth ||
-                          entry.logoHeight ||
-                          entry.logoSize
-                            ? {
+                          {...(() => {
+                            const { logoWidth, logoHeight, logoSize, iconOnly } =
+                              entry;
+                            if (logoWidth != null || logoHeight != null) {
+                              return {
                                 style: {
-                                  width: entry.logoWidth ?? entry.logoSize,
-                                  height: entry.logoHeight ?? entry.logoSize,
-                                  objectFit: "contain",
+                                  width: logoWidth ?? logoSize,
+                                  height: logoHeight ?? logoSize,
+                                  objectFit: "contain" as const,
                                   maxWidth: "100%",
                                   maxHeight: "100%",
                                 },
+                              };
+                            }
+                            if (logoSize != null) {
+                              if (iconOnly) {
+                                return {
+                                  style: {
+                                    height: logoSize,
+                                    width: "auto",
+                                    objectFit: "contain" as const,
+                                    maxWidth: "100%",
+                                  },
+                                };
                               }
-                            : {})}
+                              return {
+                                style: {
+                                  width: logoSize,
+                                  height: logoSize,
+                                  objectFit: "contain" as const,
+                                  maxWidth: "100%",
+                                  maxHeight: "100%",
+                                },
+                              };
+                            }
+                            return {};
+                          })()}
                         />
                         {!entry.iconOnly && <span>{label}</span>}
                       </div>

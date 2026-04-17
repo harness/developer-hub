@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Overview of Single Sign-On with SAML
 description: Overview of SAML-based single sign-on (SSO) in Harness, including key concepts, supported formats, and SCIM integration settings.
 sidebar_position: 1
 helpdocs_topic_id: mlpksc7s6c
@@ -8,7 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 redirect_from:
-    - /docs/platform/authentication/single-sign-on-saml
+    - /docs/platform/authentication/single-sign-on-saml/overview
+
 ---
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'
@@ -21,6 +22,7 @@ If you use <a href="/docs/self-managed-enterprise-edition/smp-overview"target="_
 :::
 
 ---
+
 
 ## What will you learn in this topic?
 

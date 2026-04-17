@@ -49,6 +49,13 @@
   transition: all 0.2s ease-in-out;
   font-weight: 600;
   min-height: 48px;
+  overflow: visible;
+}
+
+/* Icon-only tiles: wordmark logos use height + auto width — less padding, no fixed min-height */
+.selector-card--icon-only {
+  padding: 8px 12px;
+  min-height: 0;
 }
 
 .selector-card:hover {
@@ -68,6 +75,8 @@
   gap: 6px;
   font-size: 1rem;
   font-weight: 600;
+  min-width: 0;
+  justify-content: center;
 }
 
 .selector-entry.no-logo {
