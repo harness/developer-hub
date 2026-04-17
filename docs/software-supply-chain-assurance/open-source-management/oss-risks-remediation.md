@@ -1,7 +1,7 @@
 ---
 title: OSS Risks Remediation
 description: Remediate security risks in your open source components effectively.
-sidebar_position: 23
+sidebar_position: 24
 
 tags:
   - harness-scs
