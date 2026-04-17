@@ -707,7 +707,7 @@
     "gaStartDate": "2025-10-09",
     "module": "Continuous Delivery"
   },
-   {
+  {
     "flagKey": "CDS_SETTINGS_ACCORDION",
     "description": "This will add popover for settings in the Left navigation",
     "gaStartDate": "2025-10-13",
@@ -1156,7 +1156,7 @@
     "description": "FF to enable secret runtime usage event generation for ng",
     "gaStartDate": "2026-03-30",
     "module": "Continuous Delivery"
-  },  
+  },
   {
     "flagKey": "CDS_PRINT_K8S_RESOURCES_ONE_PER_LINE",
     "description": "Prints each Kubernetes resource on a separate line in deployment logs for improved readability.",
@@ -1217,10 +1217,64 @@
     "gaStartDate": "2026-04-16",
     "module": "Continuous Delivery"
   },
-    {
+  {
     "flagKey": "CDS_EXECUTION_LIST_CARD_VIEW",
     "description": "The Service and Environment columns have been replaced by an Update Summary column that shows service-to-environment mappings for CD stages and schema-to-instance mappings for Database DevOps stages.",
     "gaStartDate": "2026-04-17",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "FME_SEGMENT_CREATE",
+    "description": "Enables a FME pipeline step to create segments (standard and rule-based) with configurable traffic type, owners, and description.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_SEGMENT_UPDATE",
+    "description": "Enables a FME pipeline step to update segment metadata such as description and owners.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_SEGMENT_DELETE",
+    "description": "Enables a FME pipeline step to delete segments via Harness pipelines.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_FLAGSET_CREATE",
+    "description": "Enables a FME pipeline step to create flagsets for organizing feature flags.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_FLAGSET_DELETE",
+    "description": "Enables a FME pipeline step to delete flagsets via Harness pipelines.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_FLAG_ADD_REMOVE_FLAGSETS",
+    "description": "Enables a FME pipeline step to add or remove flags from flagsets.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_SEGMENT_ADD_REMOVE_TARGETS",
+    "description": "Enables a FME pipeline step to add or remove target keys from segments in a specific environment.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_SEGMENT_SET_TARGETING_RULES",
+    "description": "Enables a FME pipeline step to configure targeting rules on rule-based segments.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_FLAG_SET_IMPRESSION_TRACKING",
+    "description": "Enables a FME pipeline step to enable or disable impression tracking on feature flags.",
+    "gaStartDate": "2026-04-15",
+    "module": "Feature Management & Experimentation"
   }
 ]
