@@ -83,9 +83,9 @@ Retrieve the latest default Harness DB Devops image versions:
 
 ```sh
 curl -i -X GET \
-https://app.harness.io/v1/dbops/execution-config/get-default-config \ 
--H "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" \ 
--H "X-API-KEY: $API_KEY"
+  https://app.harness.io/v1/dbops/execution-config \
+  -H 'Harness-Account: $YOUR_HARNESS_ACCOUNT_ID' \
+  -H 'X-API-KEY: $API_KEY'
 ```
 
 Response:
@@ -105,9 +105,9 @@ Response:
 Send a get-customer-config request to get the build images that your DB DevOps pipelines currently use. When overridesOnly is true, which is the default value, this endpoint returns the non-default images that your pipeline uses.
 
 ```sh
-curl -i -X GET \                                                        
+curl -i -X GET \
 'https://app.harness.io/v1/dbops/execution-config/get-customer-config?overridesOnly=true' \
--H "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" 
+-H "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" \
 -H "X-API-KEY: $API_KEY"
 ```
 
@@ -164,8 +164,8 @@ Delete all custom overrides for your account:
 
 ```sh
 curl -i -X DELETE \
-https://app.harness.io/v1/dbops/execution-config \
---header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" 
+"https://app.harness.io/v1/dbops/execution-config" \
+--header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" \
 --header "X-API-KEY: $API_KEY"
 ```
 

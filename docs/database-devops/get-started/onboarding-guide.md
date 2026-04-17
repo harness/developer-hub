@@ -26,9 +26,6 @@ tags:
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import BetaIcon from '/img/icon_beta.svg';
-
-<BetaIcon />
 
 This onboarding guide accelerates your adoption journey by walking you through the essential setup steps from defining your database schemas to deploying versioned changes consistently across environments. Whether you use Liquibase or Flyway configurations, Harness orchestrates the full migration lifecycle within your Kubernetes infrastructure, ensuring predictable, auditable, and scalable database operations.
 
@@ -40,8 +37,6 @@ Before beginning the walkthroughs in this guide, ensure you have:
 | Harness account | Database DevOps License (go to “[Subscription Overview and Management](/docs/platform/subscriptions-licenses/subscriptions/#modules-with-no-direct-developer-tracking-consumption-entitlements)”) |
 | Kubernetes cluster | Kubernetes Cluster ≥ v1.18, Harness Delegate installed ([Delegate setup guide](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/)) |
 | Database credentials | JDBC‑compatible database; user with DDL/DML privileges. (see “[JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/)”) |
- 
-<DocVideo src="https://app.tango.us/app/embed/ba735b58-3767-43c3-940f-661cd09b01c9?skipCover=false&defaultListView=false&skipBranding=true&makeViewOnly=true&hideAuthorAndDetails=true" title="Create and Run DB Pipeline in Harness"/>
 
 ## Setting up Database DevOps with Liquibase and Flyway
 Harness supports both Liquibase Compatible and Flyway Compatible configurations, but the setup varies based on your preferred workflow. Before configuring your DB Schema, ensure your repository follows the correct structure and that your migration files adhere to the chosen framework’s conventions.
@@ -61,7 +56,7 @@ For more details on both options, refer to [How to Build a Changelog guide](http
 
 1. Create Git Repo to store your DB schema files.
 2. Under repo, create folder sql/ and add ordered `*.sql` files
-3. Add changelog.yml at root with:
+3. Add `changelog.yml` at root with:
 
 ```yml
 databaseChangeLog:
@@ -73,6 +68,8 @@ Use semantic versioning in file names (e.g., "`V1__init.sql`", "`V2__add_table.s
 Use semantic file names ("`V1__init.sql`", "`V2__add_table.sql`").
 :::
 
+<DocVideo src="https://app.tango.us/app/embed/6f6c9d9f-3791-44bd-bf4d-c91e96e61802?skipCover=false&defaultListView=false&skipBranding=true&makeViewOnly=true&hideAuthorAndDetails=true" title="Add New DB Liquibase Schema"/>
+
 </TabItem>
 <TabItem value="Flyway Compatible" label="Flyway Compatible">
 If you're new to Flyway, start by creating migration files that follow Flyway's naming conventions and folder structure. Learn more about [Flyway Migration Files](https://developer.harness.io/docs/database-devops/concepts/flyway-migrations-file-structure).
@@ -80,9 +77,11 @@ If you're new to Flyway, start by creating migration files that follow Flyway's 
 1. Create a Git repository containing your schema directory.
 2. All migrations are stored under a folder such as "sql/migrations".
 3. Files follow Flyway’s naming rules:
-    - Versioned: V1__init.sql, V2_add_table.sql
-    - Undo (optional): U2_remove_table.sql
+    - Versioned: "`V1__init.sql`", "`V2__add_table.sql`"
+    - Undo (optional): "`U2__remove_table.sql`"
 This structure enables Flyway and Harness to consistently detect, version, and apply schema changes.
+
+<DocVideo src="https://app.tango.us/app/embed/5edf9a7b-7b7a-43f0-85df-6e927cd69993?skipCover=false&defaultListView=false&skipBranding=true&makeViewOnly=true&hideAuthorAndDetails=true" title="Add New DB Flyway Schema"/>
 
 </TabItem>
 </Tabs>
@@ -92,14 +91,21 @@ This structure enables Flyway and Harness to consistently detect, version, and a
 The database schema defines a set of SQL changes that can be deployed to one or more database instances. Here is how we will configure it:
 
 1. On the module picker, choose `DB DevOps` in your Harness account.
-![dbops-module-picker](./static/dbops-module-picker.png)
-2. In the left hand nav, choose `DB Schemas` and Click `Add New DB Schema`.
-![dbops-schema-create](./static/dbops-schema-create-liquibase.png)
-   - **Name** - A Schema Name to identify the database configuration.
-   - **Migration Type** -  Liquibase Compatible or Flyway Compatible.
-   - **Connector** - Code Repositories hosted on either GitHub, Azure, GitLab, BitBucket or etc.
-   - **Path to Schema File** - The path within the repository where your Liquibase changelog file is located.
-   - **Primary DB Instance** - The primary database instance where the Liquibase changelog will be initially applied. (In case of using [Author DB Change](https://developer.harness.io/docs/database-devops/use-database-devops/configure-llm-for-database-devops/), this field is mandatory to set up the schema correctly.)
+2. Under "DB Schemas", click “Add New DB Schema".
+3. Select the Migration Type (Liquibase Compatible or Flyway Compatible).
+4. Enter the Git repository details where your schema files are stored:
+   - **Git Connector** - The Git connector that has access to the repository containing your database schema files.
+   - **Repository Name** - The name of the Git repository where your database schema files are stored.
+5. Click **Next** and then provide the path to the changelog file (for Liquibase) or the migrations folder (for Flyway) in the repository. For example:
+   - For Liquibase: `changelog.yml`
+   - For Flyway: `sql/migrations`
+6. Click `Add DB Schema`.
+
+:::tip
+The primary database instance where the Liquibase changelog will be initially applied. (Once the Instance is created, you can add the primary instance by going to the DB Schema settings.)
+
+(In case of using [Author DB Change](https://developer.harness.io/docs/database-devops/use-database-devops/configure-llm-for-database-devops/), this field is mandatory to set up the schema correctly.)
+:::
 
 :::info
 To learn more about Git connectors settings, reference this [Harness Git connector settings](../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
@@ -108,6 +114,9 @@ To learn more about Git connectors settings, reference this [Harness Git connect
 ### 3. Connect with Database Instance 
 
 Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here’s how:
+
+
+<DocVideo src="https://app.tango.us/app/embed/e1b78319-0170-40e2-935b-22eab05dcf3e?skipCover=false&defaultListView=false&skipBranding=true&makeViewOnly=true&hideAuthorAndDetails=true" title="Add New DB Instance"/>
 
 1. Under "DB Instances", click  “Add New DB Instance".
 2. Select main (or your environment branch).
