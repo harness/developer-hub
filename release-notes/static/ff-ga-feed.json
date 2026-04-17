@@ -1216,5 +1216,11 @@
     "description": "Enable dimension filters and service instance selection to support Canary Verification in Dynatrace",
     "gaStartDate": "2026-04-16",
     "module": "Continuous Delivery"
+  },
+    {
+    "flagKey": "CDS_EXECUTION_LIST_CARD_VIEW",
+    "description": "The Service and Environment columns have been replaced by an Update Summary column that shows service-to-environment mappings for CD stages and schema-to-instance mappings for Database DevOps stages.",
+    "gaStartDate": "2026-04-17",
+    "module": "Continuous Delivery"
   }
 ]
