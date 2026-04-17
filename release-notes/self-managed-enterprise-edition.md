@@ -4068,7 +4068,7 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 #### Continuous Delivery
 
  - Fixed issues that occurred while skipping health checks for ASG instance, when the Feature Flag `CDS_ASG_SKIP_INSTANCE_HEALTH_CHECK_BEFORE_INSTANCE_REFRESH` was turned on. [ZD-94985, CDS-114980]
- - Fixed an issue that caused log sanitization to fail when keys were split across multiple log entries. The fix is controlled by Feature Flag `CDS_PRINT_K8S_RESOURCES_ONE_PER_LINE`. [ZD-94043, CDS-114920]
+ - Fixed an issue that caused log sanitization to fail when keys were split across multiple log entries. [ZD-94043, CDS-114920]
  - Fixed an issue where pipelines with parallel stages and the feature flag `PIPE_ENABLE_BARRIER_STEPS_SETUP_OPTIMIZATION` enabled could hang if a stage was skipped, causing barrier steps to never complete. Skipped stages are now correctly handled, preventing pipeline hangs. [ZD-93659, PIPE-30068]
  - Fixed an issue where the `/v1/kubernetes/releases/service-mapping` API endpoint was inaccessible. The endpoint is now correctly routed and accessible. [ZD-94565, CDS-114854]
  - Fixed issues related to pipeline failures caused when the feature flag `CDS_DISABLE_FABRIC8_NG` was enabled.  [ZD-NA, CDS-114820]
