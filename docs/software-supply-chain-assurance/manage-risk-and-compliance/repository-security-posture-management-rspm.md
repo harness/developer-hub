@@ -113,7 +113,7 @@ The SBOM section provides a comprehensive view of your repository’s dependenci
   * The **Overview tab** of the dependency side panel opens by default. It has the following sections:
     * **Details** - Review the dependency’s current and latest available versions, license, package manager, and associated Package URL (PURL).
     * **Vulnerabilities** - Displays the number of vulnerabilities by severity (Critical, High, Medium, and Low) and their source.
-    * **Remediation** - Provides information related to the remediation of the dependency version.
+    * **Remediation** - Provides information related to the remediation of the dependency version. For more information, see [OSS Risks Remediation](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation).
 
     <DocImage path={require('./static/dependency-view-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
