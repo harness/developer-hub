@@ -155,7 +155,13 @@ The output tab displays app name, agent ID, and URLs. You can copy any output ex
 
 Triggers a sync for one or more existing or updated GitOps applications. **This is the GitOps equivalent of a deployment** — it is the step that actually applies changes to your cluster. Place approval gates, policy checks, or any other pre-deployment validations *before* this step. Place verification, notifications, or post-deployment scripts *after* it.
 
-- **Wait until healthy:** Enable this checkbox to hold the step until the application reaches a `Healthy` state.
+- **Wait until healthy:** Enable this checkbox to hold the step until the application reaches a `Healthy` state. When enabled, the step polls each application until it is healthy or the step timeout is reached.
+
+- **Degraded State Timeout (seconds):** *(Applies only when **Wait until healthy** is enabled.)* Maximum time (in seconds) an application can remain in a `Degraded` health state before being marked as failed. When an application enters a degraded state (for example, due to a bad deployment, resource issues, or failing health checks), the step starts a timer. If the application stays degraded longer than this timeout, the step marks it as failed without waiting for the full step timeout. Set to `0` (the default) to disable — the step will continue polling until the overall step timeout is reached, matching the existing behavior.
+
+  :::warning
+  Use this setting with care. A `Degraded` state can sometimes be transient — for example, during a rolling update where pods are briefly unavailable. Setting a very short timeout may cause the step to fail before such transient conditions resolve themselves.
+  :::
 
 **If a [Fetch Linked Apps](#fetch-linked-apps) step ran earlier in the stage**, the Sync step automatically uses the discovered applications — you do not need to select any applications in the step configuration.
 
