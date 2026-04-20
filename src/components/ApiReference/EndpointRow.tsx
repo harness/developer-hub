@@ -73,7 +73,6 @@ function EndpointRowInner({ entry, spec, specBaseUrl, pathPrefix = '' }: Endpoin
   return (
     <div
       key={endpointId(entry)}
-      data-endpoint-slug={endpointSlug(entry)}
       className={styles.endpointRow}
     >
       <div

@@ -218,3 +218,75 @@ netlify/functions/
 - **Gemini** (`gemini-flash-latest`, build-time AI via `@google/generative-ai`)
 - **TypeScript** throughout; SCSS modules for component styles
 - `/api/*` routes to `/.netlify/functions/*` via `netlify.toml`
+
+---
+
+## React / TypeScript Coding Patterns
+
+These rules come from real code review findings on this codebase. Follow them when writing or modifying any component.
+
+### Always cancel timers in useEffect cleanup
+
+Any `setTimeout` or `setInterval` created inside a `useEffect` must be declared at the effect's scope and cleared in the cleanup function — even if it is created inside a nested function or callback.
+
+```ts
+// ✅ Correct
+useEffect(() => {
+  let correctionTimer: ReturnType<typeof setTimeout> | undefined;
+
+  const doWork = () => {
+    correctionTimer = setTimeout(() => { /* ... */ }, 200);
+  };
+
+  doWork();
+
+  return () => {
+    clearTimeout(correctionTimer);
+  };
+}, [dep]);
+
+// ❌ Wrong — timer created inside a nested function, never cancelled
+useEffect(() => {
+  const doWork = () => {
+    setTimeout(() => { /* ... */ }, 200); // leaks on re-render
+  };
+  doWork();
+}, [dep]);
+```
+
+### Never suppress accessibility linting — fix the root cause
+
+Do not use `// eslint-disable-next-line jsx-a11y/...` to silence warnings. Find and remove the actual accessibility problem instead.
+
+The most common pattern: a `<span>` with an `onClick` handler that duplicates what a nearby `<button>` already does. Remove the `onClick` from the span (and the disable comment) rather than hiding the warning.
+
+```tsx
+// ✅ Correct — button handles interaction, span is display-only
+<button onClick={() => setOpen(true)}>▸</button>
+<span className={styles.summary}>[5 items]</span>
+
+// ❌ Wrong — span with click handler suppressed by eslint-disable
+// eslint-disable-next-line jsx-a11y/click-events-have-key-events
+<span onClick={() => setOpen(true)}>[5 items]</span>
+```
+
+### Use stable React keys — never bare array index alone
+
+`key={i}` is acceptable only when the list is truly static and items are never added, removed, or reordered. For any list that could change, combine the index with a content-derived value so React can track identity correctly.
+
+```tsx
+// ✅ For primitive-heavy arrays
+{value.map((v, i) => (
+  <div key={`${i}-${typeof v === 'object' ? i : String(v)}`}>
+    ...
+  </div>
+))}
+
+// ✅ For object arrays with a natural ID
+{items.map((item) => (
+  <div key={item.id}>...</div>
+))}
+
+// ❌ Bare index
+{value.map((v, i) => <div key={i}>...</div>)}
+```

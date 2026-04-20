@@ -9,8 +9,8 @@
 .apiRefPageWrapper {
   width: 100%;
   max-width: 100%;
-  padding-left: var(--doc-layout-outer-spacing, 40px);
-  padding-right: var(--doc-layout-outer-spacing, 40px);
+  padding-left: 0;
+  padding-right: var(--doc-layout-outer-spacing, 60px);
 }
 
 /* Layout: title block + switcher stay static; only endpoint list and main content fade in */
@@ -23,8 +23,13 @@
 }
 
 .sidebar {
-  width: var(--doc-sidebar-width, 280px);
-  min-width: var(--doc-sidebar-width, 280px);
+  /* Match the docs sidebar column exactly:
+     total width = doc-sidebar-width + outer-spacing (left margin baked in).
+     Left padding = outer-spacing + 8px to match the Docusaurus menu's built-in
+     8px left padding inside the docs sidebar. Right padding = 0 so the total
+     content area width (sidebar-width - 8px) matches the docs menu content area. */
+  width: calc(var(--doc-sidebar-width, 280px) + var(--doc-layout-outer-spacing, 60px));
+  min-width: calc(var(--doc-sidebar-width, 280px) + var(--doc-layout-outer-spacing, 60px));
   flex-shrink: 0;
   height: calc(100vh - var(--ifm-navbar-height, 60px));
   overflow-y: auto;
@@ -35,7 +40,7 @@
   background: transparent;
   display: flex;
   flex-direction: column;
-  padding: 0 8px 12px 8px;
+  padding: 0 0 12px calc(var(--doc-layout-outer-spacing, 60px) + 8px);
   scrollbar-width: none;
 }
 
@@ -52,18 +57,22 @@
 .sidebarHeader {
   padding: 0 4px 12px;
   margin-bottom: 8px;
-  border-bottom: none;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
   flex-shrink: 0;
-  /* No fade - title block + switcher remain static on transition */
+  /* Header is kept persistent during navigation via a DOM overlay clone in DocsViewSwitcher */
 }
 
-/* Module name block - matches reference: white container, generous padding, soft shadow */
+/* Module name block — fixed height so every module has the same presence in the sidebar */
 .moduleNameBlock {
   display: flex;
   align-items: center;
-  font-size: 15px;
+  height: 76px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 14px;
   font-weight: 500;
-  padding: 14px 16px;
+  line-height: 1.35;
+  padding: 12px 16px;
   margin-top: 0;
   margin-bottom: 8px;
   background: #ffffff;
@@ -83,6 +92,9 @@
 .moduleNameText {
   color: #0099ff;
   font-weight: 500;
+  /* Allow long names to wrap within the fixed-height block */
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Documentation | API Reference switcher (API Ref sidebar uses DocsViewSwitcher; these kept for dark overrides if needed) */
@@ -495,9 +507,60 @@ html[data-theme='dark'] .endpointButtonActive:hover {
   margin-bottom: 1.5rem;
 }
 
+.mainTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.25rem 0;
+}
+
 .mainTitle {
   font-size: 1.5rem;
-  margin: 0 0 0.25rem 0;
+  margin: 0;
+}
+
+/* ── Copy-link button ── */
+.copyLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.3rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ifm-color-content-secondary);
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.mainTitleRow:hover .copyLinkBtn,
+.copyLinkBtn:focus-visible {
+  opacity: 1;
+}
+
+.copyLinkBtn:hover {
+  color: var(--ifm-color-primary);
+}
+
+.copyLinkBtnLabel {
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.copyLinkBtnCopied {
+  opacity: 1 !important;
+  color: #155724;
+  background: #d4edda;
+  border-color: #28a745;
+}
+
+html[data-theme='dark'] .copyLinkBtnCopied {
+  color: #b7e4c7;
+  background: rgba(40, 167, 69, 0.15);
+  border-color: rgba(40, 167, 69, 0.4);
 }
 
 .mainPath {
@@ -1077,4 +1140,181 @@ html[data-theme='dark'] .specSectionCollapseTrigger:hover {
 .errorState {
   padding: 2rem;
   color: var(--ifm-color-danger);
+}
+
+/* ─── Copy button — "Copied!" state ─────────────────────────────────────── */
+.tryItCopyBtnCopied {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+html[data-theme='dark'] .tryItCopyBtnCopied {
+  background: rgba(40, 167, 69, 0.2);
+  border-color: #28a745;
+  color: #6fcf97;
+}
+
+/* ─── Instant sidebar tooltip ────────────────────────────────────────────── */
+/*
+ * Appears over the right edge of the sidebar button on hover.
+ * Uses position:fixed coordinates set via JS would be ideal but we do
+ * a simpler pure-CSS approach: absolute from the button, extending right.
+ * The sidebar is overflow:visible so it shows above sibling content.
+ */
+.endpointButton,
+.endpointButtonActive {
+  position: relative;
+}
+
+.endpointTooltip {
+  /* Hidden by default */
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+
+  /* Appearance */
+  background: #1a1a2e;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  /* Show/hide — no transition-delay (vs browser title which delays ~500ms) */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.08s ease;
+}
+
+html[data-theme='dark'] .endpointTooltip {
+  background: #2d2d44;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.endpointButton:hover .endpointTooltip,
+.endpointButtonActive:hover .endpointTooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ─── JSON tree viewer ───────────────────────────────────────────────────── */
+.jsonTree {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  padding: 0.75rem;
+  overflow: auto;
+  background: var(--ifm-code-background);
+  border-radius: var(--ifm-global-radius);
+  /* Match the existing sample response max-height */
+  max-height: 360px;
+  box-sizing: border-box;
+  color: var(--ifm-color-content);
+  scrollbar-width: thin;
+}
+
+.jsonTree::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.jsonTree::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 2px;
+}
+
+.jsonIndent {
+  padding-left: 1.25rem;
+  border-left: 1px dashed var(--ifm-color-emphasis-300);
+  margin-left: 0.25rem;
+}
+
+.jsonCollapsible {
+  display: inline;
+}
+
+.jsonToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin-right: 3px;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-content);
+  font-size: 9px;
+  line-height: 1;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background 0.1s ease;
+  flex-shrink: 0;
+}
+
+.jsonToggle:hover {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.jsonSummary {
+  cursor: pointer;
+  color: var(--ifm-color-content-secondary);
+  font-style: italic;
+}
+
+.jsonSummary:hover {
+  text-decoration: underline;
+  color: var(--ifm-color-primary);
+}
+
+.jsonKey {
+  color: #905;
+}
+
+html[data-theme='dark'] .jsonKey {
+  color: #f8acb8;
+}
+
+.jsonString {
+  color: #098658;
+}
+
+html[data-theme='dark'] .jsonString {
+  color: #6fcf97;
+}
+
+.jsonNumber {
+  color: #164;
+}
+
+html[data-theme='dark'] .jsonNumber {
+  color: #79c0ff;
+}
+
+.jsonBool {
+  color: #0070c1;
+  font-weight: 600;
+}
+
+html[data-theme='dark'] .jsonBool {
+  color: #56b6c2;
+  font-weight: 600;
+}
+
+.jsonNull {
+  color: #999;
+  font-style: italic;
+}
+
+.jsonColon {
+  color: var(--ifm-color-content-secondary);
 }

@@ -20,4 +20,17 @@
   .menuWithAnnouncementBar {
     margin-bottom: var(--docusaurus-announcement-bar-height);
   }
+
+  /**
+   * When our static module-name header is shown, suppress the first Docusaurus
+   * category's collapsible toggle (the module name is already displayed in the
+   * header block above) and keep its child list permanently expanded.
+   */
+  .menuWithModuleHeader :global(.menu__list > .menu__list-item:first-child > .menu__list-item-collapsible) {
+    display: none;
+  }
+
+  .menuWithModuleHeader :global(.menu__list > .menu__list-item:first-child > ul.menu__list) {
+    display: block !important;
+  }
 }

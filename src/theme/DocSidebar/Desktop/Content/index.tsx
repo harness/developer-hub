@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, {type ReactNode, useState, useEffect, useRef} from 'react';
-import ReactDOM from 'react-dom';
+import React, {type ReactNode, useState} from 'react';
 import clsx from 'clsx';
 import {useLocation} from 'react-router-dom';
 import {ThemeClassNames} from '@docusaurus/theme-common';
@@ -25,6 +24,7 @@ import {
   getDocsBasePathForModule,
 } from '@site/src/components/ApiReference/modulesConfig';
 import DocsViewSwitcher from '@site/src/components/DocsViewSwitcher';
+import apiRefStyles from '@site/src/components/ApiReference/styles.module.css';
 
 import styles from './styles.module.css';
 
@@ -78,68 +78,58 @@ export default function DocSidebarDesktopContent({
       ? `/docs/${docsPathSegment}`
       : '';
   const showViewSwitcher = Boolean(apiRefModule && (apiRefModuleIdFromSidebar || docsBasePath));
-  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
-  const navRef = useRef<HTMLElement>(null);
 
+  // Icon paths for docs-only modules (no API reference configured).
+  // Keyed by the sidebar category className (e.g. 'sidebar-ci').
+  const DOCS_ICON_MAP: Record<string, string> = {
+    'sidebar-ci':         '/img/icon_ci.svg',
+    'sidebar-cd':         '/img/icon_cd.svg',
+    'sidebar-ff':         '/img/icon_ff.svg',
+    'sidebar-fme':        '/img/icon_fme.svg',
+    'sidebar-ccm':        '/img/icon_ccm.svg',
+    'sidebar-sto':        '/img/icon_sto.svg',
+    'sidebar-sei':        '/img/icon_sei.svg',
+    'sidebar-idp':        '/img/icon_idp.svg',
+    'sidebar-cde':        '/img/icon_cloud_development_environments.svg',
+    'sidebar-platform':   '/img/icon_platform.svg',
+    'sidebar-dbdevops':   '/img/icon_dbdevops.svg',
+    'sidebar-rm':         '/img/icon-rm.svg',
+    'sidebar-srm':        '/img/icon_srm.svg',
+    'sidebar-ssca':       '/img/icon_ssca.svg',
+    'sidebar-cet':        '/img/icon_cet.svg',
+    'sidebar-cv':         '/img/icon_cv.svg',
+    'sidebar-harness':    '/img/icon_harness.svg',
+    'sidebar-ata':        '/img/icon-aita.svg',
+    'sidebar-aisre':      '/img/icon-ai-sre.svg',
+    'sidebar-rt':         '/img/icon_ce.svg',
+    'sidebar-adra':       '/img/icon-adra.svg',
+    'sidebar-arp':        '/img/icon-arp.svg',
+    'sidebar-ast':        '/img/icon-ast.svg',
+    'sidebar-hsf':        '/img/icon-hsf.svg',
+    'sidebar-qwietai':    '/img/icon-qwietai.svg',
+    'sidebar-opensource': '/img/icon_opensource.svg',
+    'sidebar-univ':       '/img/university_icon.svg',
+  };
 
-  useEffect(() => {
-    if (!showViewSwitcher) {
-      setPortalTarget(null);
-      return;
-    }
+  // For modules without an API reference, fall back to the first sidebar category label
+  // and className so the static header is shown consistently across all module sidebars.
+  const firstSidebarItem = sidebar[0] as { type?: string; label?: string; className?: string } | undefined;
+  const moduleName =
+    apiRefModule?.name ??
+    (firstSidebarItem?.type === 'category' ? firstSidebarItem.label : null);
+  const showModuleHeader = Boolean(moduleName);
 
-    let mounted = true;
-
-    const findTarget = () => {
-      if (!mounted || !navRef.current) return;
-
-      // Use the ref instead of document.querySelector
-      const nav = navRef.current;
-
-      const firstCategory = nav.querySelector('.menu__list > .menu__list-item');
-      const subList = firstCategory?.querySelector(':scope > ul.menu__list');
-
-      if (firstCategory && subList) {
-        let container = firstCategory.querySelector<HTMLDivElement>('.docs-view-switcher-portal-container');
-        if (!container) {
-          container = document.createElement('div');
-          container.className = 'docs-view-switcher-portal-container';
-          container.dataset.createdByReact = 'true'; // Track that we created this
-          container.style.marginTop = '8px';
-          container.style.marginBottom = '8px';
-          firstCategory.insertBefore(container, subList);
-        }
-        if (mounted) {
-          setPortalTarget(container);
-        }
-      } else {
-        if (mounted) {
-          setPortalTarget(null);
-        }
-      }
-    };
-
-    const t = requestAnimationFrame(() => {
-      requestAnimationFrame(findTarget);
-    });
-
-    return () => {
-      mounted = false;
-      cancelAnimationFrame(t);
-      // Clean up created container
-      if (navRef.current) {
-        const container = navRef.current.querySelector('.docs-view-switcher-portal-container[data-created-by-react="true"]');
-        if (container) {
-          container.remove();
-        }
-      }
-      setPortalTarget(null);
-    };
-  }, [showViewSwitcher, sidebar]);
+  // Resolve icon: API ref module config takes priority, then docs-only map by sidebar class.
+  const firstSidebarClass = firstSidebarItem?.className ?? '';
+  const iconPath =
+    apiRefModule?.iconPath ??
+    DOCS_ICON_MAP[firstSidebarClass] ??
+    null;
+  // Only pass sidebarIconClass (CSS class-based icon) when there's no image icon.
+  const sidebarIconClass = iconPath ? '' : (apiRefModule?.sidebarIconClass ?? '');
 
   return (
     <nav
-      ref={navRef}
       data-doc-sidebar-menu
       aria-label={translate({
         id: 'theme.docs.sidebar.navAriaLabel',
@@ -150,18 +140,30 @@ export default function DocSidebarDesktopContent({
         'menu thin-scrollbar',
         styles.menu,
         showAnnouncementBar && styles.menuWithAnnouncementBar,
+        showModuleHeader && styles.menuWithModuleHeader,
         className,
       )}>
-      {showViewSwitcher && apiRefModule && portalTarget &&
-        ReactDOM.createPortal(
-          <DocsViewSwitcher
-            docsBasePath={docsBasePath}
-            apiRefHref={`/api-reference?module=${encodeURIComponent(apiRefModuleId!)}`}
-            activeView="docs"
-          />,
-          portalTarget
-        )
-      }
+      {showModuleHeader && (
+        <div className={apiRefStyles.sidebarHeader} data-sidebar-header>
+          <div className={`${apiRefStyles.moduleNameBlock} ${sidebarIconClass}`.trim()}>
+            {iconPath ? (
+              <>
+                <img src={iconPath} alt="" className={apiRefStyles.moduleNameImg} />
+                <span className={apiRefStyles.moduleNameText}>{moduleName}</span>
+              </>
+            ) : (
+              <span className={apiRefStyles.moduleNameText}>{moduleName}</span>
+            )}
+          </div>
+          {showViewSwitcher && (
+            <DocsViewSwitcher
+              docsBasePath={docsBasePath}
+              apiRefHref={`/api-reference?module=${encodeURIComponent(apiRefModuleId!)}`}
+              activeView="docs"
+            />
+          )}
+        </div>
+      )}
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
         <DocSidebarItems items={sidebar} activePath={path} level={1} />
       </ul>

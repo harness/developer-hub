@@ -3221,3 +3221,18 @@ html[data-theme='dark'] footer {
   height: auto !important;
   max-width: 100%;
 }
+
+/* ===== Page transition — Documentation ↔ API Reference switcher ===== */
+
+/* Sidebar header persistence is handled via a DOM clone overlay in
+   DocsViewSwitcher (cloneHeaderOverlay). No view-transition-name is used on
+   those elements — the clone sits at z-index:9999 and is outside React.
+
+   The root crossfade is kept so the main content and sidebar nav items fade
+   smoothly rather than hard-cutting. Falls back gracefully in browsers that
+   don't support the View Transitions API. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+}

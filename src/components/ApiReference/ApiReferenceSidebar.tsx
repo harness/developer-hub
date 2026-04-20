@@ -64,7 +64,7 @@ export default function ApiReferenceSidebar({
   return (
     <aside ref={sidebarRef} className={styles.sidebar} data-api-ref-sidebar>
       <div className={styles.sidebarSticky}>
-        <div className={styles.sidebarHeader}>
+        <div className={styles.sidebarHeader} data-sidebar-header>
         <div className={`${styles.moduleNameBlock} ${sidebarIconClass}`.trim()}>
           {iconPath ? (
             <>
@@ -127,10 +127,11 @@ export default function ApiReferenceSidebar({
                               onEndpointClick?.(entry);
                             }}
                             aria-current={isSelected ? 'true' : undefined}
-                            title={label}
                           >
                             <span className={styles.endpointLabel}>{label}</span>
                             <span className={`${styles.endpointMethod} ${getMethodClass(styles, entry.method)}`}>{entry.method.toUpperCase()}</span>
+                            {/* Instant CSS tooltip — replaces the browser-native title (which delays ~1s) */}
+                            <span className={styles.endpointTooltip} aria-hidden="true">{label}</span>
                           </button>
                         </li>
                     );

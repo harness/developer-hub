@@ -1,8 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { EndpointEntry, OpenApiParameter, OpenApiSpec } from './types';
-import { endpointId, endpointLabel, getMethodClass, resolveParameters, resolveRequestBody, resolveResponse, getResolvedSchema, getSchemaTypeDisplay } from './utils';
+import { endpointId, endpointLabel, endpointSlug, getMethodClass, resolveParameters, resolveRequestBody, resolveResponse, getResolvedSchema, getSchemaTypeDisplay } from './utils';
 import MarkdownDescription from './MarkdownDescription';
 import styles from './styles.module.css';
+
+/** Link icon — inline SVG so no external dependency. */
+function LinkIcon(): React.ReactElement {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  );
+}
+
+/** Copies the direct link to this endpoint to the clipboard with brief visual feedback. */
+function CopyLinkButton({ endpoint }: { endpoint: EndpointEntry }): React.ReactElement {
+  const [copied, setCopied] = useState(false);
+
+  const handleClick = () => {
+    if (typeof window === 'undefined') return;
+    const fragment = endpointSlug(endpoint);
+    const url = `${window.location.origin}${window.location.pathname}${window.location.search}#${fragment}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <button
+      type="button"
+      className={`${styles.copyLinkBtn} ${copied ? styles.copyLinkBtnCopied : ''}`}
+      onClick={handleClick}
+      aria-label="Copy link to this endpoint"
+      title="Copy link"
+    >
+      <LinkIcon />
+      {copied && <span className={styles.copyLinkBtnLabel}>✓ Copied</span>}
+    </button>
+  );
+}
 
 /** Status code to highlight class (synced with Try It panel selection). */
 function getResponseHighlightClass(code: string): string {
@@ -191,7 +240,10 @@ export default function ApiSpecContent({
     return (
       <div className={styles.main}>
         <header className={styles.mainHeader}>
-          <h1 className={styles.mainTitle}>{endpointLabel(endpoint)}</h1>
+          <div className={styles.mainTitleRow}>
+            <h1 className={styles.mainTitle}>{endpointLabel(endpoint)}</h1>
+            <CopyLinkButton endpoint={endpoint} />
+          </div>
           <p className={styles.mainPath}>
             <span className={`${styles.endpointMethod} ${getMethodClass(styles, method)}`}>{method.toUpperCase()}</span> {baseUrl}{fullPath}
           </p>

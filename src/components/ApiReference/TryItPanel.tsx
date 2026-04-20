@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import type { EndpointEntry, OpenApiParameter, OpenApiSpec } from './types';
 import { endpointLabel, endpointSlug, resolveParameters, getSampleResponseFromOperation, getSampleResponseForStatus, getRequestBodyParamRows } from './utils';
+import JsonTree from './JsonTree';
 import styles from './styles.module.css';
 
 export interface ResponseCodeWithBody {
@@ -236,14 +237,21 @@ export default function TryItPanel({
               })}
             </div>
           )}
-          <pre
-            id={`try-it-response-body-${slug}`}
-            role="tabpanel"
-            aria-labelledby={selectedResponseCode ? `try-it-response-pill-${slug}-${selectedResponseCode}` : undefined}
-            className={`${styles.tryItResponsePre} ${!response ? styles.tryItResponsePreSample : ''} ${response?.error ? styles.error : ''}`}
-          >
-            {responseContent}
-          </pre>
+          {response ? (
+            <pre
+              id={`try-it-response-body-${slug}`}
+              role="tabpanel"
+              aria-labelledby={selectedResponseCode ? `try-it-response-pill-${slug}-${selectedResponseCode}` : undefined}
+              className={`${styles.tryItResponsePre} ${response?.error ? styles.error : ''}`}
+            >
+              {responseContent}
+            </pre>
+          ) : (
+            <JsonTree
+              raw={responseContent}
+              className={`${styles.tryItResponsePre} ${styles.tryItResponsePreSample}`}
+            />
+          )}
         </div>
       </aside>
     );
@@ -354,11 +362,12 @@ export default function TryItPanel({
               <span className={styles.tryItCodeTabLabel}>cURL</span>
               <button
                 type="button"
-                className={styles.tryItCopyBtn}
+                className={`${styles.tryItCopyBtn} ${copied ? styles.tryItCopyBtnCopied : ''}`}
                 onClick={handleCopyCurl}
                 title="Copy cURL command"
+                aria-live="polite"
               >
-                {copied ? 'Copied!' : 'Copy'}
+                {copied ? '✓ Copied' : 'Copy'}
               </button>
             </div>
             <div className={styles.tryItCodeContent} role="tabpanel">
@@ -480,11 +489,12 @@ export default function TryItPanel({
             <span className={styles.tryItCodeTabLabel}>cURL</span>
             <button
               type="button"
-              className={styles.tryItCopyBtn}
+              className={`${styles.tryItCopyBtn} ${copied ? styles.tryItCopyBtnCopied : ''}`}
               onClick={handleCopyCurl}
               title="Copy cURL command"
+              aria-live="polite"
             >
-              {copied ? 'Copied!' : 'Copy'}
+              {copied ? '✓ Copied' : 'Copy'}
             </button>
           </div>
           <div className={styles.tryItCodeContent} role="tabpanel">
@@ -529,14 +539,21 @@ export default function TryItPanel({
             })}
           </div>
         )}
-        <pre
-          id={`try-it-response-body-${slug}`}
-          role="tabpanel"
-          aria-labelledby={selectedResponseCode ? `try-it-response-pill-${slug}-${selectedResponseCode}` : undefined}
-          className={`${styles.tryItResponsePre} ${!response ? styles.tryItResponsePreSample : ''} ${response?.error ? styles.error : ''}`}
-        >
-          {responseContent}
-        </pre>
+        {response ? (
+          <pre
+            id={`try-it-response-body-${slug}`}
+            role="tabpanel"
+            aria-labelledby={selectedResponseCode ? `try-it-response-pill-${slug}-${selectedResponseCode}` : undefined}
+            className={`${styles.tryItResponsePre} ${response?.error ? styles.error : ''}`}
+          >
+            {responseContent}
+          </pre>
+        ) : (
+          <JsonTree
+            raw={responseContent}
+            className={`${styles.tryItResponsePre} ${styles.tryItResponsePreSample}`}
+          />
+        )}
       </div>
     </aside>
   );
