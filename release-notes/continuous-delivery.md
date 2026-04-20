@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2026-03-25T10:00:00
+date: 2026-04-05T10:00:00
 sidebar_position: 8
 ---
 
@@ -108,6 +108,15 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where the "Get List of Executions" API documentation had undocumented or inconsistent request filters, including a missing required `filterType`, ambiguous branch fields, and a broken status enum/type. (**CDS-119814**, **ZD-104905**)
 - Fixed an issue where the Jenkins trigger stage intermittently failed because the Harness pipeline did not receive the Jenkins success status. (**CDS-119843**, **ZD-106159**)
 - Fixed an issue where non-default branches were not accessible for monitored service templates. (**CDS-119852**)
+
+### GitOps Service 1.54.3, GitOps Agent 0.114.2
+
+#### Fixed issues
+
+- Fixed an issue where editing an ApplicationSet's Git generator or template in the UI caused the progressive sync configuration (`spec.strategy`) to be set to `null`, effectively removing it from the manifest. Users could set progressive sync settings on initial creation, but any subsequent edit through the UI would silently strip them. The ApplicationSet editor now preserves progressive sync configuration when editing other fields. (**CDS-119828**, **ZD-109107**)
+- Fixed an infinite loop during Helm deployments when using SOPS with curated ArgoCD images (for example, `harness/argocd:x.x.x-ubi9-curated`). The Helm wrapper mount corrupted the real Helm binary due to a hard link at `/usr/local/sbin/helm`. Users on curated images using SOPS who are upgrading must apply manual migration steps to their `argocd-repo-server` deployment — refer to the [SOPS documentation](https://github.com/getsops/sops) for details. Users not using SOPS or on standard ArgoCD images are unaffected and require no action. (**CDS-120154**)
+- Fixed a panic in the GitOps Agent that caused it to crash when a WebSocket connection was closed. This could lead to intermittent agent restarts and deployment stalls in environments with many concurrent connections or unstable network conditions. (**CDS-120157**, **ZD-109767**)
+- Fixed an issue where a panic-induced GitOps Agent restart during an application sync caused the sync status to remain stuck in `Progressing` indefinitely, even after all resources had synced successfully. This caused the GitOps Sync pipeline step to time out and fail. (**CDS-119949**, **ZD-109423**)
 
 ## March 2026
 
