@@ -1282,5 +1282,11 @@
     "description": "Enables configuration of automated pull request workflows in SCS, allowing teams to define and manage Auto PR behavior for remediation and policy-driven updates.",
     "gaStartDate": "2026-04-17",
     "module": "Supply Chain Security"
+  },
+  {
+    "flagKey": "SCS_AUTO_REMEDIATION",
+    "description": "Controls visibility of navigation options and enables manual pull request (PR) remediation workflows in Supply Chain Security.",
+    "gaStartDate": "2026-04-17",
+    "module": "Supply Chain Security"
   }
 ]
