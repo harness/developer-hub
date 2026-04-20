@@ -1,0 +1,11 @@
+{
+    "label": "Aggregation Rules",
+    "collapsible": true,
+    "collapsed": true,
+    "position": 60,
+    "link": {
+      "type": "generated-index",
+      "title": "Aggregation Rules"
+    },
+    "customProps": {}
+  }

@@ -1,0 +1,45 @@
+<svg width="680" height="410" viewBox="0 0 680 410" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Cyclic dependency in system-of-systems hierarchy</title>
+  <desc>Same tree as the correct diagram but node A has a dashed red back-edge pointing to G, creating the cycle G to C to A to G. Nodes A, C, and G are highlighted with red borders to indicate they are involved in the cycle.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .node-teal rect { fill:#E1F5EE; stroke:#0F6E56; }
+      .node-blue rect  { fill:#E6F1FB; stroke:#185FA5; }
+      .node-gray rect  { fill:#F1EFE8; stroke:#5F5E5A; }
+      .node-teal text  { fill:#085041; font-family: system-ui, sans-serif; font-size:14px; font-weight:500; }
+      .node-blue text  { fill:#0C447C; font-family: system-ui, sans-serif; font-size:14px; font-weight:500; }
+      .node-gray text  { fill:#444441; font-family: system-ui, sans-serif; font-size:14px; font-weight:500; }
+      .label { fill:#5F5E5A; font-family: system-ui, sans-serif; font-size:12px; }
+      .cycle-label { fill:#E24B4A; font-family: system-ui, sans-serif; font-size:12px; }
+      .swatch { stroke-width:0.5; }
+    </style>
+  </defs>
+  <line x1="40" y1="147" x2="558" y2="147" stroke="#D3D1C7" stroke-width="0.5" stroke-dasharray="4 4"/>
+  <line x1="40" y1="265" x2="558" y2="265" stroke="#D3D1C7" stroke-width="0.5" stroke-dasharray="4 4"/>
+  <line x1="80" y1="300" x2="159" y2="225" stroke="#B4B2A9" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.5"/>
+  <line x1="220" y1="300" x2="161" y2="225" stroke="#B4B2A9" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.5"/>
+  <line x1="160" y1="180" x2="313" y2="105" stroke="#B4B2A9" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.5"/>
+  <line x1="360" y1="300" x2="468" y2="225" stroke="#B4B2A9" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.5"/>
+  <line x1="500" y1="300" x2="472" y2="225" stroke="#B4B2A9" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.5"/>
+  <line x1="470" y1="180" x2="317" y2="105" stroke="#B4B2A9" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.5"/>
+  <path d="M 365 82 C 640 55 645 332 551 322" fill="none" stroke="#E24B4A" stroke-width="2" stroke-dasharray="7 4" marker-end="url(#arr)"/>
+  <g class="node-teal"><rect x="265" y="60" width="100" height="44" rx="8" class="swatch"/><text x="315" y="82" text-anchor="middle" dominant-baseline="central">A</text></g>
+  <g class="node-blue"><rect x="110" y="180" width="100" height="44" rx="8" class="swatch"/><text x="160" y="202" text-anchor="middle" dominant-baseline="central">B</text></g>
+  <g class="node-blue"><rect x="420" y="180" width="100" height="44" rx="8" class="swatch"/><text x="470" y="202" text-anchor="middle" dominant-baseline="central">C</text></g>
+  <g class="node-gray"><rect x="30" y="300" width="100" height="44" rx="8" class="swatch"/><text x="80" y="322" text-anchor="middle" dominant-baseline="central">D</text></g>
+  <g class="node-gray"><rect x="170" y="300" width="100" height="44" rx="8" class="swatch"/><text x="220" y="322" text-anchor="middle" dominant-baseline="central">E</text></g>
+  <g class="node-gray"><rect x="310" y="300" width="100" height="44" rx="8" class="swatch"/><text x="360" y="322" text-anchor="middle" dominant-baseline="central">F</text></g>
+  <g class="node-gray"><rect x="450" y="300" width="100" height="44" rx="8" class="swatch"/><text x="500" y="322" text-anchor="middle" dominant-baseline="central">G</text></g>
+  <rect x="265" y="60" width="100" height="44" rx="8" fill="none" stroke="#E24B4A" stroke-width="2.5" opacity="0.65"/>
+  <rect x="420" y="180" width="100" height="44" rx="8" fill="none" stroke="#E24B4A" stroke-width="2.5" opacity="0.65"/>
+  <rect x="450" y="300" width="100" height="44" rx="8" fill="none" stroke="#E24B4A" stroke-width="2.5" opacity="0.65"/>
+  <text class="cycle-label" x="636" y="160" text-anchor="end">back-edge</text>
+  <text class="cycle-label" x="636" y="176" text-anchor="end">A → G</text>
+  <text class="label" x="563" y="82" dominant-baseline="central">Root system</text>
+  <text class="label" x="563" y="202" dominant-baseline="central">Sub-systems</text>
+  <text class="label" x="563" y="322" dominant-baseline="central">Components</text>
+  <text class="cycle-label" x="315" y="372" text-anchor="middle">Cycle: G → C → A → G (and F → C → A → G → C → A)</text>
+</svg>
