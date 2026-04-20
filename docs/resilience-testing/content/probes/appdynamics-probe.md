@@ -1,5 +1,3 @@
-import DocVideo from '@site/src/components/DocVideo';
-
 The AppDynamics probe allows you to query AppDynamics metrics and compare the results against specified criteria.
 
 ## When to use
@@ -11,74 +9,48 @@ The AppDynamics probe allows you to query AppDynamics metrics and compare the re
 ## Prerequisites
 
 * An active AppDynamics account
-* Access to the AppDynamics API from the kubernetes execution plane
-* Authentication credentials (either basic auth or OAuth token)
-
-## Interactive Setup Guide
-
-Follow along with this interactive guide to learn how to configure AppDynamics probe:
-
-<DocVideo src="https://app.tango.us/app/embed/8a20f18d-a78a-4d2f-ac8c-5aef92a4243e?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create AppDynamics APM Probe" />
+* Access to the AppDynamics API from the Kubernetes execution plane
+* Authentication credentials (either basic auth or API client)
 
 ## Steps to configure
 
-1. Navigate to **Project Settings** > **Chaos Probes** and click **New Probe**
+1. Navigate to **Project Settings** > **Chaos Probes** and click **+ New Probe**
 
-    ![Create AppDynamics Probe](./static/appdynamics-probe/create-appdynamics-probe.png)
+2. Select **APM Probe**, provide a name, and select **AppDynamics** under APM Type
 
-2. Select the **APM Probe**
+3. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
 
-3. Provide the name of the probe and select **AppDynamics** under APM Type
-
-    ![Select AppDynamics Probe](./static/appdynamics-probe/select-appdynamics-probe.png)
-    
-4. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
-
-5. Under AppDynamics connector select connector
-
-6. In Connector settings, you can either choose an existing connector or click **New Connector**
-
-    ![AppDynamics Connector](./static/appdynamics-probe/appdynamics-connector.png)
-
-7. Provide the credentials of the appdynamics controller
-
-    ![AppDynamics Connector](./static/appdynamics-probe/controller-credentials.png)
+4. Under **AppDynamics Connector**, select an existing connector or click **+ New Connector** to create one. Provide the controller URL and credentials, configure the delegate, verify the connection, and click **Finish**.
 
    :::info note
    If you select **API Client** as the authentication type, ensure that the API client has at minimum the **Applications & Dashboards Viewer (Default)** role assigned.
    :::
 
-8. Select the delegate and verify the connection and click on **Finish**
+5. Under **Probe Properties**, configure:
 
-    ![Delegate](./static/appdynamics-probe/delegate.png)
+   | Field | Description |
+   |-------|-------------|
+   | **AppDynamics Metric Full Path** | The complete hierarchical string that uniquely identifies a metric. Find it in the Browse Metrics section of the AppDynamics controller. <br /> Example: `Application Infrastructure Performance\|Root\|Individual Nodes\|boutique/adservice-xxx\|Hardware Resources\|CPU\|%Busy`. See [AppDynamics Metric Browser docs](https://docs.appdynamics.com/appd/23.x/latest/en/appdynamics-essentials/metrics-and-graphs/metric-browser) |
+   | **Lookback Window (in minutes)** | Time range from the specified number of minutes ago to now, over which data is aggregated |
 
-9. Now connector is created and selected, click on **Configure Details**
+   Under **AppDynamics Data Comparison**, provide:
 
-    ![Configure Details](./static/appdynamics-probe/configure-details.png)
+   | Field | Description |
+   |-------|-------------|
+   | **Type** | Data type for comparison: `Float` or `Int` |
+   | **Comparison Criteria** | Comparison operator: `>=`, `<=`, `==`, `!=`, `>`, `<`, `oneOf`, `between` |
+   | **Value** | The expected value to compare against the metric result |
 
-10. Under Probe Properties, Pass the value of **AppDynamics Metric Full Path** and **Lookback Window**
+6. Provide the **Run Properties**:
 
-    ![AppDynamics Lookback Window](./static/appdynamics-probe/lookback-window.png)
+   | Field | Description |
+   |-------|-------------|
+   | **Timeout** | Maximum time for probe execution (e.g., `10s`) |
+   | **Interval** | Time between successive executions (e.g., `2s`) |
+   | **Attempt** | Number of retry attempts (e.g., `1`) |
+   | **Polling Interval** | Time between retries (e.g., `30s`) |
+   | **Initial Delay** | Delay before first execution (e.g., `5s`) |
+   | **Verbosity** | Log detail level |
+   | **Stop On Failure** (optional) | Stop the experiment if the probe fails |
 
-   * **AppDynamics Metric Full Path**:
-     * A metric full path in AppDynamics is the complete hierarchical string that uniquely identifies a specific metric within an application for use in dashboards, alerts, and API queries
-     * You can get the Metric Full Path from the Browse Metrics section in AppDynamics controller. For more details, refer to [AppDynamics docs](https://docs.appdynamics.com/appd/23.x/latest/en/appdynamics-essentials/metrics-and-graphs/metric-browser).
-     * **Examples**:
-       * `Application Infrastructure Performance|Root|Individual Nodes|boutique/adservice-54d59c5594-gggb9|Hardware Resources|CPU|%Busy`
-       * `Application Infrastructure Performance|Root|Individual Nodes|boutique/adservice-54d59c5594-gggb9|Hardware Resources|Memory|Used (MB)`
-
-      ![AppDynamics Metric Full Path](./static/appdynamics-probe/metric-full-path.png)
-
-   * **LookBack Window (In Minutes)**:
-     * The lookback window refers to the time range from a specified number of minutes ago up to the current moment, over which data is aggregated
-
-
-11. Provide the comparison criteria under AppDynamics Data Comparison
-
-    ![AppDynamics Data Comparison](./static/appdynamics-probe/data-comparison.png)
-
-12. Provide the Run Properties
-
-    ![Create probe](./static/appdynamics-probe/create-probe.png)
-
-13. Then click on **Create Probe**
+7. Click **Create Probe**

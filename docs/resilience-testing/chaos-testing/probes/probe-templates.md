@@ -1,5 +1,5 @@
 ---
-title: Probe Templates
+title: Built-in Probe Templates
 sidebar_position: 7
 description: Pre-built Command Probe templates for common validation scenarios
 ---

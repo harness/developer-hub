@@ -1,5 +1,3 @@
-import DocVideo from '@site/src/components/DocVideo';
-
 Prometheus probe allows you to run Prometheus queries and match the resulting output against specific conditions. The probe runs the query on a Prometheus server and checks whether the output satisfies the specified criteria.
 
 ## When to use
@@ -11,68 +9,48 @@ Prometheus probe allows you to run Prometheus queries and match the resulting ou
 ## Prerequisites
 
 * A running Prometheus server
-* Access to the Prometheus API endpoint from the kubernetes execution plane
+* Access to the Prometheus API endpoint from the Kubernetes execution plane
 * Proper configuration of your application to expose metrics to Prometheus
-
-## Interactive Setup Guide
-
-Follow along with this interactive guide to learn how to configure Prometheus probe:
-
-<DocVideo src="https://app.tango.us/app/embed/87f20060-9449-4ac1-84ef-e69eefa35e87?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create Prometheus APM Probe" />
 
 ## Steps to configure
 
-1. Navigate to **Project Settings** > **Chaos Probes** and click **New Probe**
+1. Navigate to **Project Settings** > **Chaos Probes** and click **+ New Probe**
 
-    ![Create Prometheus Probe](./static/prometheus-probe/create-prometheus-probe.png)
+2. Select **APM Probe**, provide a name, and select **Prometheus** under APM Type
 
-2. Select the **APM Probe**
-3. Provide the name of the probe and select **Prometheus** under APM Type
+3. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
 
-    ![Select Prometheus Probe](./static/prometheus-probe/select-prometheus-probe.png)
+4. Under **Prometheus Connector**, select an existing connector or click **+ New Connector** to create one. Provide the Prometheus server URL, configure the delegate, verify the connection, and click **Finish**.
 
-4. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
+5. Under **Probe Properties**, configure:
 
-5. Under Prometheus connector select connector
+   | Field | Description |
+   |-------|-------------|
+   | **Query** | PromQL query to retrieve the desired metrics. All double quotes must be escaped. <br /> Example: `avg_over_time(probe_duration_seconds{job=\"prometheus-blackbox-exporter\"}[60s:1s])*1000`. See [PromQL documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) |
+   | **TLS Config** (optional) | TLS certificate validation for the Prometheus server. See [Prometheus TLS configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config) |
+   | **CA File** (optional) | File path of the CA certificates for server TLS verification |
+   | **Cert File** (optional) | File path of the client certificates for TLS verification |
+   | **Key File** (optional) | File path of the client key for TLS verification |
+   | **Insecure Skip Verify** (optional) | Toggle to skip TLS certificate checks |
 
-6. In Connector settings, you can either choose an existing connector or click **New Connector**
+   Under **Prometheus Data Comparison**, provide:
 
-    ![Create Prometheus Connector](./static/prometheus-probe/prometheus-connector.png)
+   | Field | Description |
+   |-------|-------------|
+   | **Type** | Data type for comparison: `Float` or `Int` |
+   | **Comparison Criteria** | Comparison operator: `>=`, `<=`, `==`, `!=`, `>`, `<`, `oneOf`, `between` |
+   | **Value** | The expected value to compare against the query result |
 
-7. Provide the credentials of the Prometheus
+6. Provide the **Run Properties**:
 
-    ![Prometheus Credentials](./static/prometheus-probe/prometheus-credentials.png)
+   | Field | Description |
+   |-------|-------------|
+   | **Timeout** | Maximum time for probe execution (e.g., `10s`) |
+   | **Interval** | Time between successive executions (e.g., `2s`) |
+   | **Attempt** | Number of retry attempts (e.g., `1`) |
+   | **Polling Interval** | Time between retries (e.g., `30s`) |
+   | **Initial Delay** | Delay before first execution (e.g., `5s`) |
+   | **Verbosity** | Log detail level |
+   | **Stop On Failure** (optional) | Stop the experiment if the probe fails |
 
-8. Select the delegate and verify the connection and click on **Finish**
-
-    ![Delegate](./static/prometheus-probe/delegate.png)
-
-9. Now connector is created and selected, click on **Configure Details**
-
-    ![Configure Details](./static/prometheus-probe/configure-details.png)
-
-10. Under Probe Properties pass the value of required parameters
-   * **TLS Config**:
-     * It offers a mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key to perform the validation. Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
-     * For more details, refer to [Prometheus TLS configuration documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config).
-     * **CA File**: The `caFile` holds the file path of the CA certificates utilized for server TLS verification
-     * **Cert File**: The `certFile` holds the file path of the client certificates utilized for TLS verification
-     * **Key File**: The `keyFile` holds the file path of the client key utilized for TLS verification
-     * **Insecure Skip Verify**: The `insecureSkipVerify` setting skips the TLS certificates checks
-   * **Query**:
-     * The query contains the PromQL query to extract out the desired Prometheus metrics via running it on the given Prometheus endpoint
-     * Please Note that all the double quotes need to be parsed in the provided query.
-     * **Example**: `avg_over_time(probe_duration_seconds{job=\"prometheus-blackbox-exporter\",instance=\"frontend.boutique.svc.cluster.local:80\"}[60s:1s])*1000`
-     * For more details, refer to [Prometheus PromQL documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/)
-
-    ![Prometheus Query](./static/prometheus-probe/prometheus-query.png)
-
-10. Provide the comparison criteria under Prometheus Data Comparison
-
-    ![Prometheus Data Comparison](./static/prometheus-probe/prometheus-data-comparison.png)
-
-11. Provide the Run Properties
-
-    ![Run Properties](./static/prometheus-probe/run-properties.png)
-
-12. Then click on **Create Probe**
+7. Click **Create Probe**

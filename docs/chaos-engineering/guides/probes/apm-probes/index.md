@@ -21,7 +21,8 @@ APM probes are used when your application is being monitored by an APM system. T
 | [Prometheus](./prometheus-probe) | YES | NO | NO | NO |
 | [Datadog](../datadog-probe) | YES | NO | NO | NO |
 | [Dynatrace](../dynatrace-probe) | YES | NO | NO | NO |
-| [Splunk](./splunk-probe) | YES | NO | NO | NO |
+| [Splunk Observability](./splunk-probe) | YES | NO | NO | NO |
+| [Splunk Enterprise](./splunk-enterprise-probe) | YES | NO | NO | NO |
 
 :::info note
 Kubernetes HD means the Kubernetes infrastructure that is driven by Harness Delegate.

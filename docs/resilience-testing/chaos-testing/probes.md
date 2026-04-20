@@ -40,12 +40,12 @@ Not all probes are available on every infrastructure type. The following table s
 | [Kubernetes Probe](./probes/k8s-probe) | ✅ | - | - |
 | [Container Probe](./probes/container-probe) | ✅ | - | - |
 | [APM Probes](./probes/apm-probes) | ✅ | - | - |
-| [Datadog Probe](./probes/apm-probes) | - | ✅ | - |
-| [Dynatrace Probe](./probes/apm-probes) | - | ✅ | - |
+| [Datadog Probe](./probes/apm-probes) | ✅ | ✅ | - |
+| [Dynatrace Probe](./probes/apm-probes) | ✅ | ✅ | - |
 
 ## Built-in Probe Templates
 
-Harness provides pre-built [Probe Templates](./probes/probe-templates) to help you quickly set up probes for common validation scenarios. Currently, built-in templates are available for **Command Probes** targeting **Kubernetes** infrastructure, covering checks like pod status, node health, resource utilization, and cloud provider resource validation.
+Harness provides pre-built [Built-in Probe Templates](./probes/probe-templates) to help you quickly set up probes for common validation scenarios. Currently, built-in templates are available for **Command Probes** targeting **Kubernetes** infrastructure, covering checks like pod status, node health, resource utilization, and cloud provider resource validation.
 
 ## Probe Verification
 

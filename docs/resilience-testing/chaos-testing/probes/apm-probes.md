@@ -1,14 +1,12 @@
 ---
 title: APM Probes
 sidebar_position: 6
-description: Configure APM probes to validate metrics from Prometheus, Datadog, Dynatrace, New Relic, Splunk, AppDynamics, and GCP Cloud Monitoring
+description: Configure APM probes to validate metrics from Prometheus, Datadog, Dynatrace, New Relic, Splunk Observability, Splunk Enterprise, AppDynamics, and GCP Cloud Monitoring
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
 APM (Application Performance Monitoring) probes query metrics from your monitoring systems and compare them against expected values during chaos experiments. They use Harness Platform connectors to securely store credentials for the target APM system.
-
-![APM Probe](../../content/probes/static/apm-probe/apm-probe/apm-probe.png)
 
 ## When to use APM probes
 
@@ -28,6 +26,9 @@ Select the APM provider to view configuration details:
     },
     "Splunk Observability": {
       path: "/resilience-testing/content/probes/splunk-probe.md"
+    },
+    "Splunk Enterprise": {
+      path: "/resilience-testing/content/probes/splunk-enterprise-probe.md"
     },
     "Dynatrace": {
       path: "/resilience-testing/content/probes/dynatrace-probe.md"

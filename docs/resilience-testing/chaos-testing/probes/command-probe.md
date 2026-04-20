@@ -83,8 +83,30 @@ The Windows command probe extends the standard command probe to support Windows 
 
 3. Enter a name, and optionally a description and tags
 
-4. Enter the **Command**, **Type**, **Comparison Criteria**, and the **Value**
+4. Under **Probe Properties**, configure:
 
-5. Provide values for **Timeout**, **Interval**, **Attempt**, **Polling Interval**, and **Verbosity**. Click **Create Probe**
+   | Field | Description |
+   |-------|-------------|
+   | **Command** | The command to execute (cmd or PowerShell) |
 
-6. Your Windows command probe is now ready to be attached to chaos experiments
+   Under **Data Comparison**, provide:
+
+   | Field | Description |
+   |-------|-------------|
+   | **Type** | Data type of the output: `String`, `Int`, or `Float` |
+   | **Comparison Criteria** | For string: `contains`, `equal`, `notEqual`, `matches`, `notMatches`, `oneOf`. For int/float: `>=`, `<=`, `==`, `!=`, `>`, `<`, `oneOf`, `between` |
+   | **Value** | The expected value to compare against |
+
+5. Provide the **Run Properties**:
+
+   | Field | Description |
+   |-------|-------------|
+   | **Timeout** | Maximum time for probe execution (e.g., `10s`) |
+   | **Interval** | Time between successive executions (e.g., `2s`) |
+   | **Attempt** | Number of retry attempts (e.g., `1`) |
+   | **Polling Interval** | Time between retries (e.g., `30s`) |
+   | **Initial Delay** | Delay before first execution (e.g., `5s`) |
+   | **Verbosity** | Log detail level |
+   | **Stop On Failure** (optional) | Stop the experiment if the probe fails |
+
+6. Click **Create Probe**

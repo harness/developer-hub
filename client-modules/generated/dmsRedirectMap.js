@@ -433,41 +433,37 @@ const DMS_REDIRECT_MAP = {
     "parentRepoPath": "resilience-testing/chaos-testing/experiments",
     "hash": "newchaosstudio"
   },
-  "resilience-testing/content/probes/http-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "httpprobe"
-  },
-  "resilience-testing/content/probes/command-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "commandprobe"
-  },
   "resilience-testing/content/probes/prometheus-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "prometheusprobe"
+    "parentRepoPath": "resilience-testing/chaos-testing/probes/apm-probes",
+    "hash": "prometheus"
   },
-  "resilience-testing/content/probes/k8s-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "k8sprobe"
+  "resilience-testing/content/probes/appdynamics-probe": {
+    "parentRepoPath": "resilience-testing/chaos-testing/probes/apm-probes",
+    "hash": "appdynamics"
   },
-  "resilience-testing/content/probes/datadog-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "datadogprobe"
+  "resilience-testing/content/probes/splunk-probe": {
+    "parentRepoPath": "resilience-testing/chaos-testing/probes/apm-probes",
+    "hash": "splunkobservability"
+  },
+  "resilience-testing/content/probes/splunk-enterprise-probe": {
+    "parentRepoPath": "resilience-testing/chaos-testing/probes/apm-probes",
+    "hash": "splunkenterprise"
   },
   "resilience-testing/content/probes/dynatrace-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "dynatraceprobe"
+    "parentRepoPath": "resilience-testing/chaos-testing/probes/apm-probes",
+    "hash": "dynatrace"
   },
-  "resilience-testing/content/probes/slo-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "sloprobe"
+  "resilience-testing/content/probes/newrelic-probe": {
+    "parentRepoPath": "resilience-testing/chaos-testing/probes/apm-probes",
+    "hash": "newrelic"
   },
-  "resilience-testing/content/probes/apm-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "apmprobe"
+  "resilience-testing/content/probes/gcp-probe": {
+    "parentRepoPath": "resilience-testing/chaos-testing/probes/apm-probes",
+    "hash": "gcpcloudmonitoring"
   },
-  "resilience-testing/content/probes/container-probe": {
-    "parentRepoPath": "resilience-testing/chaos-testing/probes",
-    "hash": "containerprobe"
+  "resilience-testing/content/probes/datadog-probe": {
+    "parentRepoPath": "resilience-testing/chaos-testing/probes/apm-probes",
+    "hash": "datadog"
   },
   "resilience-testing/content/templates/fault-template": {
     "parentRepoPath": "resilience-testing/chaos-testing/templates",

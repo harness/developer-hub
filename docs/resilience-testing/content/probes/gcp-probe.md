@@ -9,55 +9,49 @@ GCP Cloud Monitoring probe allows you to query Google Cloud Platform monitoring 
 ## Prerequisites
 
 * An active GCP account with Cloud Monitoring enabled
-* Access to the GCP Cloud Monitoring API from the kubernetes execution plane
+* Access to the GCP Cloud Monitoring API from the Kubernetes execution plane
 * GCP service account credentials with appropriate permissions (either using Chaos Infra IAM or GCP Service Account Key)
 
 ## Steps to configure
 
-1. Navigate to **Project Settings** > **Chaos Probes** and click **New Probe**
+1. Navigate to **Project Settings** > **Chaos Probes** and click **+ New Probe**
 
-2. Select the **APM Probe**
+2. Select **APM Probe**, provide a name, and select **GCP Cloud Monitoring** under APM Type
 
-3. Provide the name of the probe and select **GCP Cloud Monitoring** under APM Type
+3. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
 
-    ![Select GCP Cloud Monitoring Probe](./static/apm-probe/gcp/choose-gcp.png)
+4. Choose your authentication method:
 
-4. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
+   | Method | Description |
+   |--------|-------------|
+   | **Use Chaos Infra IAM** | Uses the service account and workload identity already configured for your chaos infrastructure |
+   | **Use GCP Service Account Key** | Authenticates using a specific GCP service account key stored in Harness Secret Manager. The service account must have the `monitoring.timeSeries.list` permission. See [GCP Service Account Keys documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) |
 
-5. Choose your authentication method:
-   * **Use Chaos Infra IAM**: Uses the service account and workload identity already configured for your chaos infrastructure to authenticate with GCP Cloud Monitoring
-   * **Use GCP Service Account Key**: Authenticates using a specific GCP service account key stored in Harness Secret Manager\
+5. Under **Probe Properties**, configure:
 
-   ![Choose Authentication Method](./static/apm-probe/gcp/choose-auth-method.png)
+   | Field | Description |
+   |-------|-------------|
+   | **Project ID** | Your GCP project ID (e.g., `my-gcp-project-123456`) |
+   | **Query** | PromQL query to retrieve metrics from GCP Cloud Monitoring. <br /> Example: `avg_over_time(compute.googleapis.com/instance/cpu/utilization{instance_name="my-instance"}[5m])`. See [GCP Cloud Monitoring PromQL docs](https://cloud.google.com/monitoring/promql) |
 
-6. If you selected **Use GCP Service Account Key**:
-   * Click on **Create or Select a Secret** to provide your GCP Service Account Key
-   * The service account must have the `monitoring.timeSeries.list` permission
-   * For more details on creating service account keys, refer to [GCP Service Account Keys documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+   Under **GCP Cloud Monitoring Data Comparison**, provide:
 
-7. Click on **Configure Details**
+   | Field | Description |
+   |-------|-------------|
+   | **Type** | Data type for comparison: `Float` or `Int` |
+   | **Comparison Criteria** | Comparison operator: `>=`, `<=`, `==`, `!=`, `>`, `<`, `oneOf`, `between` |
+   | **Value** | The expected value to compare against the metric result |
 
-8. Under Probe Properties, provide the required parameters:
-   * **Project ID**: Enter your GCP project ID
-     * You can find your project ID in the GCP Console or in your project URL
-     * **Example**: `my-gcp-project-123456`
-   * **Query**: Enter your PromQL query to retrieve the desired metrics from GCP Cloud Monitoring
-     * GCP Cloud Monitoring supports PromQL for querying metrics
-     * **Example**: `avg_over_time(compute.googleapis.com/instance/cpu/utilization{instance_name="my-instance"}[5m])`
-     * For more details, refer to [GCP Cloud Monitoring PromQL documentation](https://cloud.google.com/monitoring/promql)
+6. Provide the **Run Properties**:
 
-9. Provide the comparison criteria under GCP Cloud Monitoring Data Comparison:
-   * **Type**: Select the data type for comparison (e.g., Float, Int)
-   * **Comparison Criteria**: Select the comparison operator (e.g., `>=`, `<=`, `==`, `!=`, `>`, `<`)
-   * **Value**: Enter the expected value to compare against the metric result
+   | Field | Description |
+   |-------|-------------|
+   | **Timeout** | Maximum time for probe execution (e.g., `10s`) |
+   | **Interval** | Time between successive executions (e.g., `2s`) |
+   | **Attempt** | Number of retry attempts (e.g., `1`) |
+   | **Polling Interval** | Time between retries (e.g., `30s`) |
+   | **Initial Delay** | Delay before first execution (e.g., `5s`) |
+   | **Verbosity** | Log detail level |
+   | **Stop On Failure** (optional) | Stop the experiment if the probe fails |
 
-10. Provide the Run Properties:
-   * **Timeout**: Set the timeout duration for the probe execution (e.g., 10s)
-   * **Interval**: Set the interval between probe executions (e.g., 2s)
-   * **Attempt**: Number of attempts for the probe (e.g., 1)
-   * **Polling Interval**: Time between successive probe polls (e.g., 30s)
-   * **Initial Delay**: Delay before the first probe execution (e.g., 5s)
-   * **Verbosity**: Set the verbosity level for probe logs
-   * **Stop On Failure** (Optional): Toggle to stop the experiment if the probe fails
-
-11. Then click on **Create Probe**
+7. Click **Create Probe**

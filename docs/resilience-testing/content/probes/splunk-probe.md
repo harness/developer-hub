@@ -1,5 +1,3 @@
-import DocVideo from '@site/src/components/DocVideo';
-
 The Splunk Observability probe allows you to query Splunk Observability (SignalFx) metrics and compare the results against specified criteria.
 
 ## When to use
@@ -11,61 +9,44 @@ The Splunk Observability probe allows you to query Splunk Observability (SignalF
 ## Prerequisites
 
 * An active Splunk Observability (SignalFx) account
-* Access to the Splunk Observability API from the kubernetes execution plane
+* Access to the Splunk Observability API from the Kubernetes execution plane
 * An API token for authentication
-
-## Interactive Setup Guide
-
-Follow along with this interactive guide to learn how to configure Splunk Observability probe:
-
-<DocVideo src="https://app.tango.us/app/embed/e1f8d801-e55a-4e1d-a831-75b1d1a48142?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create Splunk Observability APM Probe" />
 
 ## Steps to configure
 
-1. Navigate to **Project Settings** > **Chaos Probes** and click **New Probe**
+1. Navigate to **Project Settings** > **Chaos Probes** and click **+ New Probe**
 
-    ![Create Splunk Probe](./static/splunk-probe/create-splunk-probe.png)
+2. Select **APM Probe**, provide a name, and select **Splunk Observability** under APM Type
 
-2. Select the **APM Probe**
-3. Provide the name of the probe and select **Splunk Observability** under APM Type
+3. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
 
-    ![Select Splunk Observability Probe](./static/splunk-probe/select-splunk-probe.png)
+4. Under **Splunk Observability Connector**, select an existing connector or click **+ New Connector** to create one. Provide the Splunk Observability credentials and API token, configure the delegate, verify the connection, and click **Finish**.
 
-4. Under **Variables**, define any reusable values you want to reference in probe properties or run properties. For each variable, specify the type (`String` or `Number`), name, value (fixed or runtime input), and whether it's required at runtime.
+5. Under **Probe Properties**, configure:
 
-5. Under Splunk Observability connector select connector
-6. In Connector settings, you can either choose an existing connector or click **New Connector**
+   | Field | Description |
+   |-------|-------------|
+   | **Splunk Observability Query** | Search criteria for the metric time series (MTS) you want to retrieve. Supports metrics, dimensions, properties, and tags. <br /> Example: `sf_metric:cpu.utilization AND host.name:gke-default-pool-667be17c-t588.c.test.internal`. See [Splunk Observability API docs](https://dev.splunk.com/observability/reference/api/retrieve_timeserieswindow/latest) |
+   | **Lookback Window (in minutes)** | Time range from the specified number of minutes ago to now, over which data is aggregated |
 
-    ![Create Splunk Connector](./static/splunk-probe/create-splunk-connector.png)
+   Under **Splunk Observability Data Comparison**, provide:
 
-7. Provide the credentials of the Splunk Observability
+   | Field | Description |
+   |-------|-------------|
+   | **Type** | Data type for comparison: `Float` or `Int` |
+   | **Comparison Criteria** | Comparison operator: `>=`, `<=`, `==`, `!=`, `>`, `<`, `oneOf`, `between` |
+   | **Value** | The expected value to compare against the metric result |
 
-    ![Splunk Credentials](./static/splunk-probe/splunk-credentials.png)
+6. Provide the **Run Properties**:
 
-8. Select the delegate and verify the connection and click on Finish
+   | Field | Description |
+   |-------|-------------|
+   | **Timeout** | Maximum time for probe execution (e.g., `10s`) |
+   | **Interval** | Time between successive executions (e.g., `2s`) |
+   | **Attempt** | Number of retry attempts (e.g., `1`) |
+   | **Polling Interval** | Time between retries (e.g., `30s`) |
+   | **Initial Delay** | Delay before first execution (e.g., `5s`) |
+   | **Verbosity** | Log detail level |
+   | **Stop On Failure** (optional) | Stop the experiment if the probe fails |
 
-    ![Delegate](./static/splunk-probe/delegate.png)
-
-9. Now connector is created and selected, click on Configure Details
-
-    ![Configure Details](./static/splunk-probe/configure-details.png)
-
-10. Under Probe Properties, Pass the value of Splunk Observability Query and Lookback Window
-   * **Splunk Observability Query**:
-     * The Splunk Observability Query input is a string that specifies the search criteria for the metric time series (MTS) you want to retrieve. It follows a specific syntax that allows you to search for metrics, dimensions, properties, and tags
-     * **Example query**: `sf_metric:cpu.utilization AND host.name:gke-default-pool-667be17c-t588.c.test.internal`
-     * For more details refer to query section in [Splunk Observability doc](https://dev.splunk.com/observability/reference/api/retrieve_timeserieswindow/latest)
-   * **LookBack Window (In Minutes)**:
-     * The lookback window refers to the time range from a specified number of minutes ago up to the current moment, over which data is aggregated
-
-    ![Lookback Window](./static/splunk-probe/lookback-window.png)
-
-11. Provide the comparison criteria under Splunk Observability Data Comparison
-
-    ![Splunk Data Comparison](./static/splunk-probe/splunk-data-comparison.png)
-
-12. Provide the Run Properties
-
-    ![Run Properties](./static/splunk-probe/run-properties.png)
-
-13. Then click on **Create Probe**
+7. Click **Create Probe**
