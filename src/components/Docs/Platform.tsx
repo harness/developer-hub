@@ -51,8 +51,8 @@ export default function Platform() {
                 className={styles.illustration}
                 src={
                   colorMode !== 'light'
-                    ? `${baseUrl}img/Platform_Landing_Page.svg`
-                    : `${baseUrl}img/Platform_Landing_Page_dark_mode.svg`
+                    ? `${baseUrl}img/platform-landing-page.svg`
+                    : `${baseUrl}img/platform-landing-page-dark-mode.svg`
                 }
               />
             </div>
