@@ -38,9 +38,19 @@ function extractAnswerFromKapaChatPayload(payload: unknown): string {
   return direct.trim();
 }
 
+interface ProxyResponse {
+  answer?: string;
+  cached?: boolean;
+  stale?: boolean;
+  error?: string;
+}
+
 /**
  * Headless answer from the same Kapa project as the Website Widget (via Netlify
- * `kapa_proxy`). Requires `KAPA_API_KEY` and `KAPA_PROJECT_ID` in the hosting environment.
+ * `kapa_proxy`). The proxy handles server-side caching with a 30-day TTL, so
+ * Kapa is only called at most once per month per unique query across all users.
+ *
+ * Requires `KAPA_API_KEY` and `KAPA_PROJECT_ID` in the Netlify environment.
  */
 export async function fetchKapaAnswer(prompt: string): Promise<string> {
   const res = await fetch('/api/kapa_proxy', {
@@ -49,8 +59,14 @@ export async function fetchKapaAnswer(prompt: string): Promise<string> {
     body: JSON.stringify({ query: prompt }),
   });
   if (!res.ok) throw new Error(`Kapa proxy error: ${res.status}`);
-  const data: unknown = await res.json();
-  const answer = extractAnswerFromKapaChatPayload(data);
-  if (!answer) throw new Error('Empty Kapa answer');
-  return answer;
+  const data = (await res.json()) as ProxyResponse;
+
+  // Proxy now returns { answer, cached, stale } directly.
+  // Fall back to legacy extraction for backwards compatibility during rollout.
+  if (data.answer?.trim()) return data.answer.trim();
+
+  const legacy = extractAnswerFromKapaChatPayload(data);
+  if (legacy) return legacy;
+
+  throw new Error('Empty Kapa answer');
 }
