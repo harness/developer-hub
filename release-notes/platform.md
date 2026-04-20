@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2025-09-24T14:00
+date: 2026-04-15T14:00
 sidebar_position: 3
 ---
 
@@ -221,6 +221,10 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## April 2026
+
+### Version 1.139.x <!--April 15, 2026-->
+
+No enhancements or fixes were released in this cycle.
 
 ### Version 1.138.x <!--April 08, 2026-->
 
