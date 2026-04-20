@@ -21,30 +21,20 @@ Teams integration enables your runbooks to:
 
 ## Integration Setup
 
+Microsoft Teams integration uses OAuth 2.0 for secure authentication.
+
 ### Prerequisites
-- Microsoft Teams admin access
-- Azure AD application registration
-- Harness Project Admin role
+- **Microsoft Teams admin access** to authorize the Harness app
+- **Harness Project Admin role** to configure integrations
 
-### Setup Steps
+### Setup steps
+
 1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
-2. Select **Microsoft Teams** from the available integrations
-3. Configure Azure AD settings:
-   - Application (client) ID
-   - Directory (tenant) ID
-   - Client secret
-4. Grant required permissions:
-   - Channel.Create
-   - ChannelMessage.Send
-   - Team.ReadBasic.All
-   - TeamMember.ReadWrite.All
-5. Test the connection
+2. Click **Connect** for **Microsoft Teams**
+3. Complete the OAuth authorization in the popup window
+4. Grant the requested permissions when prompted
 
-### Verification
-1. Test connector connectivity
-2. Send test message
-3. Create test channel
-4. Verify permissions
+After authorization completes, the Teams integration status shows as **Connected**.
 
 ## Using Teams Actions in Runbooks
 
@@ -122,14 +112,14 @@ Creates a new Teams channel for incident coordination.
 
 ### Common Issues
 1. **Authentication Failures**
-   - Verify Azure AD settings
-   - Check permission scopes
-   - Confirm application registration
+   - Re-authorize the Teams connection in Project Settings
+   - Ensure you have Teams admin permissions
+   - Check that the OAuth consent was completed
 
 2. **Channel Creation Errors**
    - Check naming conventions
-   - Verify team access
-   - Confirm bot permissions
+   - Verify you have access to the target team
+   - Ensure the Harness app has been added to the team
 
 3. **Message Failures**
    - Validate channel existence

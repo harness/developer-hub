@@ -27,9 +27,9 @@ Each integration type requires specific authentication setup to ensure secure co
 
 ### [Microsoft Teams](./runbook-action-integrations/teams.md)
 1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
-2. Select **Microsoft Teams** from the available integrations
-3. Enter your Azure AD credentials
-4. Grant necessary permissions
+2. Click **Connect** for Microsoft Teams and complete OAuth authorization
+3. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
+4. Click **Connect** for Microsoft Teams and complete OAuth authorization
 
 ### [Zoom](./runbook-action-integrations/zoom.md)
 1. Navigate to **Project Settings** → **Third Party Integrations (AI SRE)**
