@@ -328,6 +328,10 @@ spec:
 
 **Note:** When you update an environment’s configuration, the environment is **re-provisioned** and the TTL is **reset**. The new TTL countdown starts from the time of the update.
 
+:::info Enforcing TTL with OPA Policies
+Platform engineers can use Harness OPA governance to enforce TTL requirements across all blueprints, e.g., blocking blueprints that use `ttl.kind: none` or that exceed a maximum TTL. These policies are evaluated automatically when a blueprint is created or updated. Go to [Centralized Policy Governance for IDP Catalog Entities](/docs/internal-developer-portal/environment-management/opa-governance) to enforce configuration standards on blueprints.
+:::
+
 ---
 
 
