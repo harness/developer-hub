@@ -51,6 +51,10 @@ To work with SemVer attributes, first create a new custom attribute within a fea
 
 ### Creating custom attributes in Admin settings
 
+:::info RBAC requirement
+To manage custom attributes in Admin Settings, you need the **FME Administrator** role. If you don't see custom attribute options in Admin Settings, check your role assignment with your account administrator. Go to [FME RBAC](/docs/feature-management-experimentation/permissions/rbac) to review role permissions.
+:::
+
 You can create a standard set of attributes for use in your feature flag definitions. The attributes that you define in Admin settings will be _associated with a project and traffic type_.
 
 You can create attributes individually or create multiple attributes using a CSV file.
