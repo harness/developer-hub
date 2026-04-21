@@ -130,6 +130,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2026
 
+### Version 26.04.88903 <!-- April 21, 2026 -->
+
+#### Fixed issues
+- Improved retry handling for Harness Secret Manager encryption and decryption operations on the delegate. The retry mechanism now uses exponential backoff with jitter, which improves resilience to transient network failures such as IO exceptions and connection resets during secret operations. [CDS-122091]
+
 ### Version 26.04.88902 <!-- April 09, 2026 -->
 
 #### New features and enhancements
