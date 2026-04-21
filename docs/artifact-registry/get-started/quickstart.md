@@ -35,6 +35,11 @@ Select your artifact format below to get started:
       logo: "generic-logo.svg",
       logoSize: 20
     },
+    "Raw File": {
+      path: "/artifact-registry/content/supported-formats/raw-file-quickstart.md",
+      logo: "generic-logo.svg",
+      logoSize: 20
+    },
     Maven: {
       path: "/artifact-registry/content/supported-formats/maven-quickstart.md",
       logo: "maven-logo.svg",

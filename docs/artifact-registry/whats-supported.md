@@ -16,6 +16,7 @@ These are the currently supported registry types.
 - **Docker:** Your go-to for container images.
 - **Helm:** Perfect for managing Kubernetes applications.
 - **Generic:** Flexible for all your needs.
+- **Raw File:** Store and manage arbitrary files by path with HTTP-based upload, download, and delete.
 - **Maven:** Essential for Java projects.
 - **Python:** For your Python packages using **pip**, **Poetry**, or **uv**.
 - **NPM:** JavaScript package management.
