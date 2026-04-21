@@ -60,15 +60,22 @@ tags:
 - **`title`:** Official page title (browser, SEO, and default sidebar label). May use phrasing that fits the page better than the nav.
 - **`sidebar_label`:** Use when the **sidebar** label must differ from `title`. Sidebar labels use **Title Case** (capitalize major words). If omitted, Docusaurus derives the sidebar entry from `title`.
 
-#### 2. Introduction (2-3 lines)
+#### 2. Introduction (1 short paragraph, 2-3 lines)
 
-- **Paragraph 1**: What is this feature/capability?
-- **Paragraph 2**: Why use it? What problems does it solve?
-- **Paragraph 3**: Key benefits or use cases
+A single concise paragraph that states what the user will accomplish and why it matters. Do not include "What will you learn?" content here—that goes in a separate section if needed.
+
+**Visual separation:** Add a horizontal rule (`---`) before each major `##` section heading to provide clear visual separation between sections.
+
+**Example:**
+```markdown
+This guide shows you how to create and configure your first IaCM workspace. Workspaces connect your Terraform configurations to infrastructure providers and manage state across your deployments.
+```
 
 Optionally include a brief list of key outcomes or topics covered in this guide. In the authored page, use an **`##`** heading so it matches the major-section pattern in [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc):
 
 ```markdown
+---
+
 ## What will you learn?
 
 - **Topic 1:** Brief description of what they'll learn.
@@ -85,6 +92,8 @@ List required setup, permissions, or knowledge. **For each prerequisite**, tell 
 - **Other items:** Link to how/where if a new user might not have it.
 
 ```markdown
+---
+
 ## Prerequisites
 
 - **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
@@ -114,6 +123,8 @@ Use clear sections with **imperative** headers in **sentence case** (e.g. `### C
   - If it's **"create X manually"**, give the UI path (e.g. "Go to **Infrastructure** > **Pipelines** > **Create a Pipeline** in your project") and link to the doc that describes it (e.g. "see [Harness Pipelines](/docs/category/pipelines)").
 
 ```markdown
+---
+
 ### Create an inventory
 
 Instructions here.
@@ -133,6 +144,42 @@ More instructions.
 - Configuration gotchas that prevent progress
 - Quick fixes that keep the user moving forward
 
+**Screenshots and images:**
+
+Always add descriptive captions to provide context. Use centered alignment only for narrow screenshots (mobile UI, dialogs, small widgets).
+
+Import the DocImage component at the top of the file (after frontmatter):
+
+```mdx
+import DocImage from '@site/src/components/DocImage';
+```
+
+**For full-width screenshots (desktop UI, dashboards, most product screenshots):**
+
+```jsx
+<DocImage path={require('./static/screenshot.png')} alt="Descriptive alt text explaining what the image shows" title="Click to view full size" />
+<p align="center"><em>Clear caption that explains what users should look for in the screenshot</em></p>
+```
+
+**For narrow screenshots (mobile UI, small dialogs, less than ~75% page width):**
+
+```jsx
+<div align="center">
+  <DocImage path={require('./static/mobile-screenshot.png')} alt="Descriptive alt text" title="Click to view full size" width="40%" />
+  <p align="center"><em>Caption explaining the narrow screenshot</em></p>
+</div>
+```
+
+**Best practices:**
+- Use `path={require('./static/image.png')}` syntax for local images
+- Add descriptive `alt` text for accessibility and SEO
+- Set `title="Click to view full size"` to indicate the click-to-zoom functionality
+- Write captions that explain the context or highlight key elements in the screenshot
+- **Always center captions** using `<p align="center"><em>...</em></p>` - captions should appear centered at the bottom of the screenshot for visual consistency
+- Only center screenshots that are genuinely narrow (mobile UI, small dialogs) - full-width screenshots look odd when centered
+- For narrow screenshots, specify `width` prop (e.g., `width="40%"`) to control size
+- Place screenshots immediately after the step or paragraph that references them
+
 #### 5. Troubleshooting section (optional)
 
 Only include if there are general issues not tied to specific steps.
@@ -150,6 +197,8 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 Then in the body:
 
 ```markdown
+---
+
 ## Troubleshooting
 ```
 
@@ -200,6 +249,8 @@ Wrap up with:
 Use **`## Next steps`** as the heading so it stays a top-level TOC entry alongside Prerequisites and Troubleshooting.
 
 ```markdown
+---
+
 ## Next steps
 
 You've successfully [accomplished X]. You can now [key capability unlocked].
@@ -288,6 +339,7 @@ If none of these apply, a conventional single page or sidebar navigation is fine
 
 - **Headers:** Imperative, sentence case; no gerunds in step titles (prefer `### Configure the connector` over `### Configuring the connector`). Exception: concept sections may use noun phrases (`## Troubleshooting`, `## Prerequisites`). **Get started** guides may use `## Step 1` / `### Step 1`, … per [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc)—only for actionable onboarding steps, not for Prerequisites, Troubleshooting, or Next steps. Gerunds are fine for broad concepts like "Understanding CI/CD" when that fits the content.
 - **Lists:** When each item has a concept/action and an explanation, use **Bold label:** description. For simple self-explanatory lists, plain formatting is fine. Always add a short intro sentence before a list that states what the list is for.
+- **No em dashes:** Never use em dashes (`—`) in documentation. Use commas, periods, semicolons, or rewrite sentences. In bullet points with links, use a colon after the link: `- [Link text](/path): Description here.`
 - Keep prerequisites minimal and relevant; link to "how" for each.
 - Include code examples where helpful.
 - Use callouts (`:::tip`, `:::warning`, `:::info`) strategically.

@@ -1,17 +1,44 @@
 ---
 title: OPA Policies
+sidebar_label: OPA Policies
 description: Learn how to use OPA to add security and governance to your IaCM pipeline
 sidebar_position: 50
+keywords:
+  - opa
+  - policy
+  - governance
+  - terraform
+  - iacm
+  - open policy agent
+  - rego
+tags:
+  - iacm
+  - governance
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Open Policy Agent (OPA) is an embedded policy engine within Harness that enforces governance rules across your infrastructure deployments. It evaluates policies written in Rego against your infrastructure configurations at different points in the deployment lifecycle, preventing misconfigurations before they reach production.
+
+In Harness IaCM, OPA policies can evaluate workspace configurations, Terraform plans, and Terraform state files. This automated enforcement prevents manual review bottlenecks and catches violations early. You can restrict instance sizes, require specific tags, limit costs, or ensure only approved connectors and repositories are used.
+
 :::info
-Open Policy Agent (OPA) serves as the embedded policy engine within the Harness platform. Go to [Harness governance overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/) for more information.
+Go to [Harness governance overview](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview) to learn about policy enforcement across the Harness platform.
 :::
 
-Using OPA in your Infrastructure as Code Management (IaCM) workspace gives you control over what infrastructure changes are made, for example, to add restrictions such as ensuring that a server instance is under a specified size, or that the estimated cost of a proposed change does not exceed a certain amount.
+## What you will learn
+
+- **Policy entity types:** The three types of entities (Workspace, Terraform Plan, Terraform State) that OPA can evaluate, and when each type is triggered during pipeline execution.
+- **Policy triggering behavior:** How Harness automatically evaluates policy sets based on entity type, and why some policies require no step-level configuration.
+- **Workspace schema structure:** The attributes available for writing policies against workspace configurations, including connectors, provisioners, and variables.
+- **Policy examples:** Common policy patterns for enforcing version requirements, connector restrictions, repository allowlists, resource tagging, and cost limits.
+
+:::info Prerequisites
+This guide assumes familiarity with OPA and Rego policy language basics. Go to [OPA documentation](https://www.openpolicyagent.org/docs/latest/) to learn about policy syntax and evaluation. You can create policies and policy sets at the account, organization, or project level. Go to **Account Settings**, **Organization Settings**, or **Project Settings**, then select **Policies**.
+:::
+
+## Policy entity types
 
 Harness IaCM allows you to use OPA on the entities that are described in the table below:
 
@@ -22,16 +49,43 @@ Harness IaCM allows you to use OPA on the entities that are described in the tab
 | Terraform State   | After Terraform Plan | This policy will be evaluated after a `Terraform plan` operation is performed in the IaCM stage, against the state file. You can use this event to validate policy on resources, **before** applying any changes.   |
 | Terraform State   | After Terraform Apply  | This policy will be evaluated after a `Terraform apply` operation is performed in the IaCM stage, against the state file. You can use this event to validate policy on resources, **after** applying any changes. |
 
+OPA policies work against the standard schema of the Terraform plan and state files, giving you access to all resource attributes, configurations, and metadata.
 
-Follow these steps to enforce governance using OPA:
-1. Create the policies you would like to enforce
-2. Create a policy set and configure it to work against the right entity and operation
+## How policy sets are triggered
 
-The OPA policies will work against the standard schema of the Terraform plan and state. 
+The entity type you select when creating a policy set determines both the input passed to the policy and how the policy set is triggered during pipeline execution.
 
-## Writing policies against Workspace
+**Workspace** policy sets are triggered when a workspace configuration is saved. You manage them through the workspace settings, not the pipeline step.
 
-The following attributes are available to access and write policies against
+**Terraform Plan and Terraform State** policy sets are triggered **automatically** when the corresponding IaCM pipeline operation runs. You do not attach them in the plan or apply step's policy configuration UI. After you create a policy set with entity type **Terraform Plan** or **Terraform State**, Harness evaluates it against every matching plan or apply operation in your IaCM pipelines without any additional step-level configuration.
+
+When a policy evaluation finds a violation (the `deny` rule is triggered), the outcome depends on the severity you assign to that policy in the policy set:
+
+- **Error and exit:** the pipeline step fails and shows the violation message. The step does not succeed until you fix the violation or update the policy.
+- **Warn & continue:** Harness shows a warning with the violation message and the pipeline continues.
+
+:::warning Use the correct entity type for plan enforcement
+
+If you attach a policy set to a plan step using the step's policy configuration UI and that policy set has an entity type other than **Terraform Plan** (for example, **Custom**), the plan step does not pass the Terraform plan JSON as input to the policy. The policy evaluates only the JSON supplied for that step's policy configuration, which is typically not the Terraform plan, so the policy can pass even when the plan violates the policy rules. Go to [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline#step-4-add-payload) to read how evaluation JSON is supplied through the **Payload** field on a **Policy** step.
+
+To enforce tag requirements, cost limits, or any plan-based conditions:
+
+1. Create a policy set with entity type **Terraform Plan**.
+2. Do not look for this policy set in the plan step's policy configuration dropdown. It will not appear there. This is expected behavior.
+3. Run the pipeline. Harness evaluates the policy set automatically against the Terraform plan JSON after the plan step completes.
+
+:::
+
+:::tip Verify policy evaluation input
+
+To confirm that your policy is receiving the correct input, go to **Account Settings**, **Organization Settings**, or **Project Settings**, then open **Policies > Policy Sets**, open the policy set, and select **Evaluations**. Each evaluation entry shows the exact input payload passed to the policy.
+
+:::
+
+
+## Workspace attribute reference
+
+The following attributes are available when writing policies against workspace configurations. Access these in your Rego policies via the `input.workspace` object (for example, `input.workspace.provisioner_version`).
 
 **Attributes:**
 
@@ -53,13 +107,13 @@ The following attributes are available to access and write policies against
 - **environment_variables**: A map of the environment variables.  
 - **terraform_variables**: A map of the terraform variables.  
 
-## OPA Policy examples
+## OPA policy examples
 
 ### Workspace policies
 
-To write policies against the Workspace, please use the following Workspace example:
+The following examples demonstrate common policy patterns for workspace governance. Each policy evaluates the workspace schema shown in the first tab and denies configurations that violate the specified rules.
 
-Some examples include the following:
+Common workspace policy use cases include:
 - Ensure Terraform version is greater than a specific version.
 - Ensure specific connectors are used.
 - Ensure specific repositories are used (only corporate ones and not public).
@@ -208,7 +262,11 @@ Some examples include the following:
 
 ### Terraform plan and state policies
 
-You can use OPA to enforce policies at the terraform plan or state level, for example:
+When you create a policy set with entity type **Terraform Plan** or **Terraform State**, Harness automatically evaluates it after each plan or apply operation. You do not need to reference the policy set anywhere in the pipeline step configuration.
+
+Terraform plan policies access the plan JSON via `input.planned_values` and `input.resource_changes`. State policies access the state file via `input.resources`. Go to [Terraform JSON format documentation](https://developer.hashicorp.com/terraform/internals/json-format) to understand the full schema structure.
+
+You can use OPA to enforce policies at the Terraform plan or state level, for example:
 - Define the list of allowed AMIs
 - Define the list of allowed instance types
 - Define tags that must be present in all instances
@@ -303,3 +361,12 @@ You can use OPA to enforce policies at the terraform plan or state level, for ex
     ```
   </TabItem>
 </Tabs>
+
+## Next steps
+
+Now that you understand OPA policy evaluation in IaCM, explore related governance and workspace management topics:
+
+- [Create policies and policy sets](/docs/platform/governance/policy-as-code/harness-governance-overview): Learn how to create policies and policy sets in the Harness UI
+- [Create and manage workspaces](/docs/infra-as-code-management/workspaces/create-workspace): Understand how workspace configuration changes trigger policy evaluation
+- [IaCM default pipelines](/docs/infra-as-code-management/pipelines/default-pipelines): Learn how policies integrate with IaCM plan and apply pipeline stages
+- [Terraform plan and state JSON structure](https://developer.hashicorp.com/terraform/internals/json-format): Reference for writing policies against Terraform plan and state schemas

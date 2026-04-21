@@ -6,7 +6,29 @@ This file provides project-wide conventions and rules for Claude (Claude Code an
 
 ## Documentation Structure
 
-When creating new documentation pages, follow this structure:
+We have **two documentation templates** depending on page type:
+
+**Instructional/Action pages** (`.cursor/rules/doc-structure-template.mdc`):
+- Step-by-step tutorials and quickstarts
+- "Create your first X" guides
+- Setup/installation guides
+- Configuration walkthroughs with UI navigation
+- Structure: Frontmatter → Introduction → Prerequisites → Step-by-step instructions → Troubleshooting → Next steps
+
+**Informative/Overview pages** (`.cursor/rules/doc-structure-overview-template.mdc`):
+- Architecture and concept explanations
+- "How X works" or "Understanding X" pages
+- Feature comparisons and reference docs
+- API/schema reference material
+- Structure: Frontmatter → Introduction → What you will learn → Optional lightweight prerequisites → Concept sections → Optional FAQs → Related concepts
+
+**When in doubt:** If the page title is action-oriented ("Create", "Configure", "Set up"), use the instructional template. If the title is a noun phrase ("OPA Policies", "Workspace Architecture"), use the overview template.
+
+---
+
+### Instructional pages (default structure)
+
+When creating instructional documentation pages, follow this structure:
 
 ### Frontmatter
 ```yaml
@@ -25,11 +47,13 @@ Use `sidebar_label` when the left-nav text (Title Case, capitalize major words) 
 
 ### Standard Sections
 
-1. **Introduction** (2–3 paragraphs): what it is, why use it, key benefits.
+1. **Introduction** (1 short paragraph, 2–3 lines): what the user will accomplish and why it matters.
 2. **Prerequisites**: required setup, permissions, or knowledge.
 3. **Step-by-step instructions**: use imperative headers in **sentence case** (`## Install dependencies`, not `## Installing dependencies`). Capitalize proper nouns (technologies, Harness modules such as **IaCM**). Do not use `#` in the Markdown body; start at `##`. Add inline `:::tip` callouts for common errors at the relevant step.
 4. **Troubleshooting** (optional): use the `<Troubleshoot>` component — see below.
 5. **Next steps**: 1–2 sentence conclusion + 2–3 related links.
+
+**Visual separation:** Add a horizontal rule (`---`) before each major `##` section heading to provide clear visual separation between sections.
 
 ---
 
@@ -89,7 +113,9 @@ import { FAQ } from '@site/src/components/AdaptiveAIContent';
 - **Sentence case** for `##` / `###` headings: capitalize the first word and **proper nouns** only (e.g. **Kubernetes**, **Terraform**, **IaCM**, **Harness**).
 - **Sidebar:** labels in the left nav use **Title Case** (set via `sidebar_label` or a Title Case `title`).
 
-Use imperative headers, not gerunds:
+### Heading style by page type
+
+**Instructional pages** — Use imperative headers, not gerunds:
 
 | ❌ Avoid | ✅ Use |
 |---------|--------|
@@ -98,6 +124,17 @@ Use imperative headers, not gerunds:
 | Running tests | Run tests |
 
 Exceptions: concept sections like **Troubleshooting** or **Prerequisites** are fine as noun phrases.
+
+**Overview pages** — Use descriptive noun phrases or "how it works" style:
+
+| ✅ Good for overview pages |
+|---------------------------|
+| Policy entity types |
+| How policy sets are triggered |
+| Workspace attribute reference |
+| Common policy patterns |
+
+Avoid imperative headings ("Create a policy set") in overview pages since they're conceptual, not action-oriented.
 
 ---
 
@@ -117,7 +154,7 @@ Use bold labels followed by colons:
 - Write in **present tense**, **active voice**. Speak to the developer using "you", not "the user".
 - Do **not** use "please". Be authoritative but approachable.
 - Keep sentences short. **No gerunds** anywhere — use the imperative form instead (`Install X`, not `Installing X`). This applies to headings, body text, steps, and list items.
-- **No em dashes** (`—`). Use a comma, semicolon, or rewrite the sentence instead.
+- **No em dashes** (`—`). Never use em dashes in any documentation — not in sentences, bullet points, or link descriptions. Use a comma, period, semicolon, or rewrite the sentence instead. For bullet points with links, use a colon after the link: `- [Link text](/path): Description here.`
 
 ---
 

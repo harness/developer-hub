@@ -1,0 +1,330 @@
+---
+description: Standard structure template for informative/overview documentation pages
+globs: **/*.md
+alwaysApply: false
+---
+
+## Documentation structure template — Informative/Overview pages
+
+This template is for **informative, conceptual, or reference pages** that explain what something is, how it works, or provide reference material. These pages teach concepts rather than walk through specific actions.
+
+**Use this template for:**
+- Architecture overviews
+- Concept explanations
+- Feature comparisons
+- Reference documentation (API schemas, attributes, configurations)
+- "How X works" pages
+- "Understanding X" pages
+
+**Do NOT use this template for:**
+- Step-by-step tutorials or quickstarts (use doc-structure-template.mdc instead)
+- Setup/installation guides
+- Configuration walkthroughs with UI navigation
+- "Create your first X" guides
+
+**Naming convention:** Overview/informative pages should have neutral titles that reflect the concept being explained (e.g., "OPA Policies", "Workspace Architecture", "Delegate Types"). Avoid action-oriented titles like "Create X" or "Configure Y" unless the page is instructional.
+
+---
+
+### Standard structure for overview pages
+
+#### 1. Frontmatter
+
+```yaml
+---
+title: Clear, descriptive concept title
+# Optional: left navigation label (Title Case). Omit when it should match `title`.
+sidebar_label: Title Case Label For Sidebar
+description: One-sentence summary of the concept or feature
+keywords:
+  - keyword1
+  - keyword2
+  - keyword3
+tags:
+  - tag1
+  - tag2
+---
+```
+
+- **`title`:** The concept or feature name (e.g., "Workspace Architecture", "Policy Evaluation")
+- **`sidebar_label`:** Title Case for navigation. Omit if it matches `title`.
+- **`description`:** Summarize what the reader will understand after reading
+
+#### 2. Introduction (2 paragraphs maximum)
+
+Keep overview introductions focused and concise. Two paragraphs is the maximum—avoid walls of text.
+
+- **Paragraph 1**: What is this? Define the concept or feature clearly (2-3 sentences).
+- **Paragraph 2**: Why does it matter and how does it work? (2-3 sentences).
+
+**Example:**
+```markdown
+Open Policy Agent (OPA) is an embedded policy engine within Harness that enforces governance rules across your infrastructure deployments. It evaluates policies written in Rego against your infrastructure configurations before they are applied.
+
+In Harness IaCM, OPA policies can evaluate workspace configurations, Terraform plans, and state files at different points in your pipeline. This prevents misconfigurations, enforces organizational standards, and ensures compliance with security and cost requirements without manual review.
+```
+
+**Keep it tight:** Each paragraph should be 2-3 sentences. If you need more space, the content likely belongs in a dedicated section later in the doc.
+
+**Visual separation:** Add a horizontal rule (`---`) before each major `##` section heading to provide clear visual separation between sections.
+
+#### 3. What you will learn (required for overview pages)
+
+Help readers understand what concepts they'll grasp by the end. Use bold labels with brief descriptions:
+
+```markdown
+---
+
+## What you will learn
+
+- **Policy entity types:** The three types of entities (Workspace, Terraform Plan, Terraform State) and when each is evaluated.
+- **Policy triggering behavior:** How and when Harness automatically evaluates policies during pipeline execution.
+- **Schema structure:** The attributes and data structure available for writing policies against workspaces and Terraform resources.
+- **Policy examples:** Common policy patterns for enforcing version requirements, connector restrictions, and resource tagging.
+```
+
+**Format:** 3-5 bullet points, each with a **bold concept label** and a brief description of what they'll understand.
+
+#### 4. Prerequisites (optional/light for overview pages)
+
+Overview pages typically don't need extensive prerequisites since they're not action-oriented. However, you may include:
+
+- **Knowledge prerequisites:** "Familiarity with [concept]" or "Basic understanding of [technology]"
+- **Context prerequisites:** "This guide assumes you understand [related concept]"
+
+**Do NOT include:**
+- Harness account access (not needed for learning concepts)
+- RBAC permissions (not needed unless the reader will perform actions)
+- Connector setup (not needed for conceptual understanding)
+
+If prerequisites are needed, keep them minimal and knowledge-focused:
+
+```markdown
+---
+
+## Before you begin
+
+This guide assumes:
+- Basic understanding of Terraform plan and state files
+- Familiarity with policy-as-code concepts
+- Knowledge of JSON schema structure
+
+For background on policy evaluation, go to [Harness governance overview](/docs/platform/governance/overview).
+```
+
+Alternatively, omit Prerequisites entirely if the page is purely conceptual.
+
+#### 5. Main content sections
+
+Organize content by concept, not by action. Use descriptive, informative headings:
+
+##### Heading style for overview pages
+
+- Use **sentence case** for all headings
+- Use noun phrases or descriptive phrases, not imperatives
+- Focus on "what" and "how it works", not "do this"
+
+**Good headings for overview pages:**
+- `## Policy entity types`
+- `## How policy sets are triggered`
+- `## Workspace attribute reference`
+- `## Policy evaluation lifecycle`
+- `## Common policy patterns`
+
+**Avoid action-oriented headings (use these in instructional docs):**
+- ❌ `## Create a policy set`
+- ❌ `## Configure entity types`
+- ❌ `## Set up workspace policies`
+
+##### Content patterns for overview sections
+
+**Concept explanations:**
+- Define the concept clearly
+- Explain how it works
+- Describe when and why to use it
+- Use diagrams, tables, or callouts for clarity
+
+**Reference material:**
+- Tables for structured data (attributes, parameters, options)
+- Code examples with explanatory comments
+- Schema definitions or data structure examples
+- Comparison tables (e.g., entity types and their behaviors)
+
+**Architecture/system behavior:**
+- Describe components and their relationships
+- Explain data flow or execution order
+- Highlight important behaviors or edge cases
+- Use warnings/info callouts for critical concepts
+
+**Writing style:**
+- **No em dashes:** Never use em dashes (`—`) in documentation. Use commas, periods, semicolons, or rewrite sentences. In bullet points with links, use a colon after the link: `- [Link text](/path): Description here.`
+- Use present tense and active voice
+- Keep sentences concise and scannable
+
+##### Code examples in overview pages
+
+Code examples in overview pages are **illustrative and reference material**, not step-by-step instructions:
+
+- Show example syntax and patterns
+- Include inline comments explaining what each section does
+- Use tabs to show variations or alternatives
+- Explain the example in prose before or after the code block
+
+```markdown
+## Policy examples
+
+The following policy denies workspaces using Terraform versions older than 1.5.4:
+
+\`\`\`rego
+package workspaces
+
+# Deny workspaces with Terraform < 1.5.4
+deny[msg] {
+  input.workspace.provisioner == "terraform"
+  semver.compare(input.workspace.provisioner_version, "1.5.4") == -1
+  msg := sprintf("Version %s is not allowed. Must be >= 1.5.4", [input.workspace.provisioner_version])
+}
+\`\`\`
+
+This policy evaluates the `provisioner_version` attribute and uses semantic versioning comparison to enforce a minimum version requirement.
+```
+
+**Screenshots and images:**
+
+Add descriptive captions to provide context. Use centered alignment only for narrow screenshots (mobile UI, diagrams, small widgets).
+
+Import the DocImage component at the top of the file (after frontmatter):
+
+```mdx
+import DocImage from '@site/src/components/DocImage';
+```
+
+**For full-width screenshots (architecture diagrams, dashboards, most product screenshots):**
+
+```jsx
+<DocImage path={require('./static/diagram.png')} alt="Descriptive alt text explaining what the image shows" title="Click to view full size" />
+<p align="center"><em>Clear caption that explains the key concepts illustrated</em></p>
+```
+
+**For narrow screenshots (mobile UI, small diagrams, less than ~75% page width):**
+
+```jsx
+<div align="center">
+  <DocImage path={require('./static/small-diagram.png')} alt="Descriptive alt text" title="Click to view full size" width="50%" />
+  <p align="center"><em>Caption explaining the narrow diagram or screenshot</em></p>
+</div>
+```
+
+**Best practices:**
+- Use `path={require('./static/image.png')}` syntax for local images
+- Add descriptive `alt` text for accessibility and SEO
+- Set `title="Click to view full size"` to indicate the click-to-zoom functionality
+- Write captions that explain concepts or relationships shown in the image
+- **Always center captions** using `<p align="center"><em>...</em></p>` - captions should appear centered at the bottom of the screenshot for visual consistency
+- Only center screenshots/diagrams that are genuinely narrow - full-width images look odd when centered
+- For narrow images, specify `width` prop (e.g., `width="50%"`) to control size
+
+#### 6. Troubleshooting or FAQs (optional)
+
+Overview pages typically don't need troubleshooting sections (since readers aren't performing actions). However, you may include:
+
+**Common misconceptions:**
+Address conceptual misunderstandings:
+
+```markdown
+---
+
+## Common misconceptions
+
+**"Policy sets must be attached to pipeline steps"**
+This is only true for Custom entity types. Terraform Plan and Terraform State policy sets are evaluated automatically—you do not attach them to steps.
+
+**"Workspace policies run during pipeline execution"**
+Workspace policies evaluate when you save workspace configuration, not during pipeline runs.
+```
+
+**FAQs:**
+Use the FAQ component for common questions about the concept:
+
+```jsx
+import { FAQ } from '@site/src/components/AdaptiveAIContent';
+
+## Frequently asked questions
+
+<FAQ
+  question="What's the difference between evaluating Terraform Plan vs Terraform State?"
+  mode="docs"
+  fallback="Plan evaluation happens before changes are applied; state evaluation happens after. Use plan policies to prevent unwanted changes; use state policies to verify the final infrastructure matches requirements."
+/>
+```
+
+#### 7. Related concepts (instead of "Next steps")
+
+Since overview pages don't guide through a task, "Next steps" may not make sense. Instead, use "Related concepts" or "Learn more":
+
+```markdown
+---
+
+## Related concepts
+
+Now that you understand OPA policy evaluation in IaCM, explore related governance topics:
+
+- [Create your first OPA policy](/docs/infra-as-code-management/policies/create-policy): Step-by-step guide to writing and testing policies
+- [Workspace management](/docs/infra-as-code-management/workspaces/manage-workspaces): Learn how workspace configuration triggers policy evaluation
+- [Cost governance with policies](/docs/infra-as-code-management/policies/cost-policies): Use OPA to enforce infrastructure cost limits
+- [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview): Platform-wide governance framework
+```
+
+OR use "Next steps" if there's a clear action to take after learning the concept:
+
+```markdown
+---
+
+## Next steps
+
+Now that you understand how OPA policies work in IaCM, you're ready to create and configure your first policy.
+
+- [Create an OPA policy for workspaces](/docs/infra-as-code-management/policies/create-workspace-policy)
+- [Configure policy sets](/docs/infra-as-code-management/policies/policy-sets)
+- [Test policy evaluation](/docs/infra-as-code-management/policies/test-policies)
+```
+
+---
+
+## Summary: Overview vs Instructional
+
+| Aspect | Overview/Informative | Instructional/Action |
+|--------|---------------------|---------------------|
+| **Purpose** | Explain concepts, architecture, how things work | Guide through specific tasks or setup |
+| **Title pattern** | Noun phrases: "OPA Policies", "Delegate Architecture" | Action phrases: "Create an OPA policy", "Install a delegate" |
+| **Prerequisites** | Light/optional: knowledge prerequisites only | Required: account access, permissions, setup |
+| **Main sections** | Conceptual headings: "How X works", "Entity types" | Imperative headings: "Create X", "Configure Y" |
+| **Code examples** | Illustrative reference, meant to be adapted | Step-by-step, meant to be followed exactly |
+| **Troubleshooting** | FAQs or misconceptions (if any) | Common errors during task execution |
+| **End section** | "Related concepts" or "Learn more" | "Next steps" with what to do next |
+| **Required section** | "What you will learn" (learning outcomes) | Prerequisites (what you need before starting) |
+| **User outcome** | Understands a concept or feature | Has completed a task or configuration |
+
+---
+
+## When to use which template
+
+**Use the overview template (.cursor/rules/doc-structure-overview-template.mdc) for:**
+- Architecture and system design explanations
+- "Understanding X" or "How X works" pages
+- Feature comparison and reference docs
+- Concept introductions (before quickstarts)
+- API/schema reference material
+
+**Use the instructional template (.cursor/rules/doc-structure-template.mdc) for:**
+- Quickstart guides and tutorials
+- "Create your first X" pages
+- Setup and installation guides
+- Configuration walkthroughs with UI steps
+- Task-based procedures
+
+**Hybrid pages:**
+Some pages blend both (e.g., explain a concept, then show how to use it). For these:
+1. Start with overview structure (intro, "What you will learn", concept explanation)
+2. Transition to instructional structure (Prerequisites, step-by-step instructions)
+3. Use both templates as reference and adapt section order as needed

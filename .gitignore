@@ -10,6 +10,7 @@
 .docusaurus
 .cache-loader
 /release-notes/generated/
+client-modules/generated/dmsRedirectMap.js
 /static/api-specs/
 # Build-time Gemini output for AdaptiveAIContent (created by scripts/generate-troubleshoot-responses.mjs)
 /src/components/AdaptiveAIContent/generated-responses.json

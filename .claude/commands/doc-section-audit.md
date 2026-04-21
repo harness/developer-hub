@@ -156,27 +156,92 @@ prioritised list of section-level issues:
 
 ---
 
-## Step 5 — Information architecture review
+## Step 5 — Section structure assessment
+
+**This step proposes a restructuring plan that `doc-section-rewrite` will execute.** Assess whether the section needs consolidation based on page count and natural content groupings.
+
+### 5a — Count pages and assess need for restructure
+
+**Target structure guideline:**
+- **If 1 page:** No collapsible folder needed
+- **If 2-4 pages:** Consider if 1 overview + remaining pages works (may already be optimal)
+- **If 5-7 pages:** Aim for 1 overview + 3-4 action pages (~25-40% reduction)
+- **If 8-12 pages:** Aim for 1 overview + ~6 action pages (~50% reduction)
+- **If 12+ pages:** Aim for 1 overview + 6-8 action pages (50-60% reduction)
+
+**Be intuitive, not rigid:** The goal is maintainability and clear user workflow, not hitting exact numbers. Natural content groupings trump arbitrary targets.
+
+### 5b — Assess current state
+
+- ❌ / ✅ **Overview page present?** Does an overview/hub page exist that orients users?
+- ❌ / ✅ **Logical progression?** Do pages follow a natural workflow (setup → configuration → advanced → troubleshooting)?
+- ❌ / ✅ **Clear grouping?** Are related pages grouped, or is content scattered?
+
+### 5c — Propose consolidation groups
+
+Identify natural pairings or groupings for merge based on:
+- **Topic similarity** — Pages covering related aspects of the same feature
+- **Workflow sequence** — Steps that naturally follow each other (e.g., "add artifact" + "configure artifact")
+- **Shared purpose** — Pages solving the same user goal (e.g., multiple troubleshooting pages → one troubleshooting guide)
+
+For each proposed merge:
+1. **List source pages** — which existing pages will be consolidated
+2. **Suggest new page title** — what the consolidated page will be called
+3. **Component recommendation** — DMS / Synced tabs / Unsynced tabs / Subsections
+4. **Rationale** — why these pages belong together
+
+**Example consolidation plan:**
+```
+**Action page 1: Configure Kubernetes manifests** (CONSOLIDATE)
+- Merge: `define-kubernetes-manifests.md` + `add-a-custom-remote-script-and-manifests.md`
+- Use synced tabs for different manifest sources (Git, Helm, Kustomize, remote scripts)
+- Rationale: Both pages cover how to add manifests to a service; different sources are variants of the same task
+- Total: 2 pages → 1
+```
+
+### 5d — Propose workflow order
+
+List the final structure with logical ordering:
+1. Overview (new if needed) — "What features are available?"
+2. Action page 1 — "How do I do X?" (setup/fundamental task)
+3. Action page 2 — "How do I configure Y?" (configuration)
+4. Action page 3+ — Additional features, advanced topics
+5. Last page — Troubleshooting (if separate from other pages)
+
+### 5e — List files to delete and rename
+
+**Files to delete after consolidation:**
+- List each file that will be merged into another page
+- Note: Content will be moved, not lost
+
+**Files to rename/keep:**
+- List files that will become the new consolidated pages (absorbing content from deleted files)
+
+**redirect_from required:**
+- Remind that each deleted page's URL must be added to `redirect_from` in the target page's frontmatter
+
+### 5f — Calculate reduction
+
+**Result:** [X pages] → [Y pages] ([Z%] reduction)
+
+Example: 12 pages → 7 pages (42% reduction)
+
+---
+
+## Step 6 — Information architecture review
 
 This step is **advisory only** — findings go into a separate IA section in the report and do
 not affect the score. Some suggestions may intentionally flex the standard template depending
 on doc type. Flag opportunities; do not auto-apply them.
 
-### 5a — Section size
+### 6a — Page length (target page)
 
-A well-structured section has **3–5 pages maximum** — typically an overview and 2–4 focused
-action pages. If the section has more than 5 pages, flag that as an IA issue in its own right,
-independent of individual page quality. Assess whether pages can be consolidated (5c) or whether
-the section should be split into two distinct sub-sections.
-
-### 5b — Page length (target page)
-
-- If the page exceeds ~800 lines or is clearly too long for a single read, flag it.
+- If the target page exceeds ~800 lines or is clearly too long for a single read, flag it.
 - Reference benchmark: the ECS deployment tutorial (`ecs-deployment-tutorial`) is a known
   example of a page too long to understand in one read. Use it as a yardstick.
 - Consider whether the page could be restructured as a parent overview + DMS child pages.
 
-### 5c — Platform doc duplication (target page + siblings)
+### 6b — Platform doc duplication (target page + siblings)
 
 Scan the target page and each sibling for content that restates Harness Platform docs —
 particularly RBAC, delegates, variables, expressions, secrets, connectors, and service accounts.
@@ -184,7 +249,7 @@ particularly RBAC, delegates, variables, expressions, secrets, connectors, and s
 - Suggest replacing duplicated sections with 1–2 sentences + a "Go to [platform doc] to [do Y]" link.
 - If a sibling page entirely duplicates a platform topic, flag it as a candidate for removal with a redirect.
 
-### 5d — Consolidation opportunities (section-level)
+### 6c — Consolidation opportunities (section-level)
 
 With the full section map available, assess whether pages could be consolidated. Run the
 **heading similarity analysis** first, then apply the **decision guide** to choose a component.
@@ -280,6 +345,53 @@ Save to `.claude/skills/doc-section-audit/audits/[slug]-audit-YYYYMMDD.md` (e.g.
 ### Accuracy
 ### Completion
 ### Editorial
+
+## Section structure assessment
+
+**Current state:** [N pages] in `[folder-name]`
+
+**Target structure:** [guideline based on page count — e.g., "1 overview page + ~6 action pages (aim for ~50% reduction)"]
+
+**Assessment:**
+- ❌ / ✅ **Overview page present?** [Yes / No — description]
+- ❌ / ✅ **Logical progression?** [Assessment of workflow order]
+- ❌ / ✅ **Clear grouping?** [Assessment of content organization]
+
+**Proposed restructure:**
+
+1. **NEW/KEEP: Overview page** — "[title]"
+   - [Description of purpose]
+   - [If using DMS, note it here]
+
+2. **Action page 1: [title]** (CONSOLIDATE / KEEP)
+   - [If consolidating] Merge: `file1.md` + `file2.md` + ...
+   - [Component recommendation: synced tabs / unsynced tabs / subsections]
+   - [Rationale for grouping]
+   - Total: [X pages → 1]
+
+3. **Action page 2:** [repeat pattern]
+
+[Continue for all action pages]
+
+**Result:** [X pages] → [Y pages] ([Z%] reduction)
+
+**Workflow order:**
+1. [Page 1] — "[User question it answers]"
+2. [Page 2] — "[User question it answers]"
+[Continue for all pages]
+
+**Files to delete after consolidation:**
+- `file1.md` (merged into Action page X)
+- `file2.md` (merged into Action page Y)
+[List all files that will be deleted]
+
+**Files to rename/keep:**
+- `existing-file.md` → becomes Action page 1 (absorbs content from deleted files)
+[List files that become consolidated pages]
+
+**redirect_from required:** Each deleted page's URL must be added to `redirect_from` in the target page's frontmatter.
+
+---
 
 ## Section assessment
 

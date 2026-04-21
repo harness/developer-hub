@@ -31,13 +31,20 @@ reports in `.claude/skills/doc-section-audit/audits/` and ask the user to choose
 Read the full audit report at the provided path. Extract:
 
 - **Target file** — the primary file that was audited
+- **Section structure assessment** — from the `## Section structure assessment` section:
+  - Current page count
+  - Target structure (overview + action pages)
+  - Proposed consolidation groups (which files merge into which)
+  - Workflow order (final page sequence)
+  - Files to delete list
+  - Files to rename/keep list
+  - Percentage reduction goal
 - **Section verdict** — Healthy / Needs attention / Restructure recommended
 - **Section files** — all `.md` files identified in the section map (from the Section assessment)
 - **Per-file issues** — Accuracy, Completion, and Editorial findings for each file
 - **IA recommendations** — DMS, tabs, consolidation, platform doc duplication, page length flags
 - **Structural rewrite plan** — from the `## Structural rewrite plan` section
 - **Redirect changes required** — from the `## Redirect changes required` section
-- **Files to delete** — any pages flagged for removal in the section assessment
 
 Also read the rules Claude must follow:
 ```bash
@@ -52,7 +59,7 @@ cat CLAUDE.md
 
 ## Step 2 — Determine rewrite scope and phases needed
 
-Based on the section verdict and IA recommendations, determine which phases are needed:
+Based on the **Section Structure Assessment** and section verdict, determine which phases are needed.
 
 **Scope by verdict:**
 
@@ -60,18 +67,24 @@ Based on the section verdict and IA recommendations, determine which phases are 
 |---|---|
 | Healthy | Target file only — suggest `/doc-audit <file>` instead and stop |
 | Needs attention | Target file + any siblings flagged as stale or failing in the section map |
-| Restructure recommended | All files in the section, plus any new files or structural changes from the IA review |
+| Restructure recommended | Follow the Section Structure Assessment consolidation plan — create overview if needed, merge pages per the proposed groups, delete listed files |
 
 **Phases needed:**
 
 | Phase | Trigger |
 |---|---|
-| Phase 1 — Structure | Only if IA recommends creating new pages (DMS parent, merged page) or renaming/moving files |
-| Phase 2 — Content | Always — rewrite files per audit findings |
-| Phase 3 — Cleanup | Always — redirects, cross-reference fixes, deletion list |
+| Phase 1 — Structure | If Section Structure Assessment proposes consolidation (new overview page, merged pages, files to delete) OR if IA recommends DMS/tabs |
+| Phase 2 — Content | Always — rewrite files per audit findings and merge content from deleted files into consolidated pages |
+| Phase 3 — Cleanup | Always — add `redirect_from` entries, fix cross-references, list files for manual deletion |
+
+**Key difference for Phase 1:**
+- If **Section Structure Assessment** exists, use its consolidation plan as the primary guide
+- The IA recommendations (Step 6) supplement this with implementation details (e.g., use synced tabs for variants, use DMS for parent page)
 
 Tell the user:
-> "Section verdict: [VERDICT]. Scope: [N] files. Phases: [1+2+3 / 2+3 / 2 only].
+> "Section structure: [X pages] → [Y pages] ([Z%] reduction)
+> Section verdict: [VERDICT]. Scope: [N] files to consolidate.
+> Phases: [1+2+3 / 2+3 / 2 only].
 > Starting Phase [N] — I'll pause for your review after each phase."
 
 If Phase 1 is not needed, skip directly to Phase 2.
@@ -80,7 +93,12 @@ If Phase 1 is not needed, skip directly to Phase 2.
 
 ## Phase 1 — Structural changes
 
-**Only run this phase if the IA review requires new files or file moves.**
+**Only run this phase if the Section Structure Assessment proposes consolidation OR if the IA review requires new files or file moves.**
+
+First, review the consolidation plan from the audit's Section Structure Assessment:
+- Which files are being merged into which consolidated pages?
+- What new overview page needs to be created (if any)?
+- Which component should be used for each consolidation (DMS, synced tabs, unsynced tabs, subsections)?
 
 Read all files in scope first — do not edit anything until you have read them all:
 ```bash
@@ -97,14 +115,16 @@ Then make structural changes in this order:
 
    **DMS child files:** Place child content files in a `content/` subfolder relative to the
    parent page (e.g. `docs/module/section/content/child-file.md`). The docusaurus config
-   excludes `**/content/**` from the sidebar automatically — no extra config needed. Child
-   files do **not** need frontmatter.
+   excludes `**/content/**` from the sidebar automatically — no extra config needed.
 
-   Child files must **not** contain `## Troubleshooting` or `## Next steps` sections. The DMS
-   injects each selected child file's TOC headings into the parent page's "On this page"
-   panel — including any "Next steps" heading — which causes it to appear repeatedly for every
-   child. Strip those sections from child files and consolidate them on the parent (see Phase 2
-   rules for how to merge and rewrite them).
+   **CRITICAL child file structure rules:**
+   - **No frontmatter.** Child files must not contain any `---` frontmatter blocks. Strip them completely.
+   - **No imports.** Child files must not import any components. The parent page handles all component imports.
+   - **No structural sections.** Child files must NOT contain `## Prerequisites`, `## Troubleshooting`, or `## Next steps` sections. These belong only on the parent page. The DMS injects each selected child file's TOC headings into the parent page's "On this page" panel — including any "Next steps" heading — which causes it to appear repeatedly for every child. Strip those sections from child files and consolidate them on the parent.
+   - **No embedded components.** Remove any `<Troubleshoot>`, `<FAQ>`, `<HelmMultiManifests>`, or other JSX components from child files. Replace with plain text explanations and links where needed.
+   - **Content only.** Child files contain pure instructional "how to" content — just the core steps and explanations specific to that topic.
+
+   **When NOT to use DMS:** If prerequisites differ significantly between child pages (e.g., different RBAC permissions, different setup steps), or if troubleshooting is vastly different per topic, this indicates the pages should remain separate action pages rather than being consolidated with DMS. More action pages is allowed when the content genuinely requires different context.
 
    **Image paths in child files:** Content files sit one level deeper than their parent page,
    so image paths must account for the extra folder level. Use `../static/image.png` (not
@@ -112,6 +132,28 @@ Then make structural changes in this order:
    adjust these paths causes a webpack `Module not found` build error. Check every
    `require('./static/` and `![](./static/` in the original file and update to `../static/`
    when moving content into a child file.
+
+   **DMS component syntax:**
+   ```jsx
+   <DynamicMarkdownSelector
+     toc={toc}
+     nextHeadingID="next-steps"
+     options={{
+       "Display Label": {
+         path: "/module/section/content/child-file.md",
+         description: "Brief description"
+       },
+       "Another Label": {
+         path: "/module/section/content/another-file.md",
+         description: "Brief description"
+       }
+     }}
+   />
+   ```
+   - Use `options={{...}}` (object literal), NOT `options={[...]}` (array)
+   - Use `path` property, NOT `docPath`
+   - Keys are display labels shown in grid tiles
+   - Paths are full from docs root: `/module/section/content/file.md` (no `/docs/` prefix, yes `.md` extension)
 
    **`RedirectIfStandalone` in child files:** If you add a `<RedirectIfStandalone>` component
    to a child content file (to redirect users who navigate directly to the child URL back to
@@ -221,6 +263,12 @@ Follow all rules from the cursor rules read in Step 1. In particular:
 
 **DMS child file rules — strictly enforced:**
 
+- **No frontmatter.** Strip all `---` frontmatter blocks from child files. Only parent pages have frontmatter.
+
+- **No imports.** Child files must not import any components (`Troubleshoot`, `FAQ`, `DocImage`, etc.). The parent page handles all imports. If a child file had component usage, remove the component and replace with plain text + links.
+
+- **No `## Prerequisites` in child files.** Prerequisites belong on the parent page only. Consolidate all prerequisite requirements from child files into a single Prerequisites section on the parent.
+
 - **No `## Troubleshooting` in child files.** Troubleshoot components belong on the parent
   page only. Collect all `<Troubleshoot>` entries from every child file and move them to a
   single `## Troubleshooting` section on the parent page (above `## Next steps`). Import
@@ -232,6 +280,10 @@ Follow all rules from the cursor rules read in Step 1. In particular:
   creates a repeated "Next steps" entry in that panel. Move all unique next-step links to the
   parent page's `## Next steps` section and consolidate: deduplicate links, group by topic,
   and rewrite the section so it is concise rather than a flat dump of all child next-steps.
+
+- **Image paths adjustment.** Change all `require('./static/image.png')` to `require('../static/image.png')` in child files (one level deeper than parent).
+
+- **Content only.** Child files contain pure instructional content — the "how to" steps and explanations. No structural scaffolding, no components, no frontmatter.
 
 - **Single-page folder sidebar fix.** If a DMS restructure results in a folder with only one
   visible page in the sidebar, update that folder's `_category_.json` so the category label

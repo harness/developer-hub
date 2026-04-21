@@ -96,13 +96,40 @@ Tell the user: **"Oldest page in [MODULE]: [FILE-PATH] — last updated [DATE]. 
 
 ---
 
-## Step 2 — Fetch the doc-structure-template
+## Step 2 — Determine page type and fetch appropriate template
 
+Read the page file first to assess its type:
+
+**Page type assessment:**
+- **Instructional/Action page** if:
+  - Title is action-oriented ("Create", "Configure", "Set up", "Install")
+  - Contains step-by-step UI navigation ("Select X, then click Y")
+  - Has sequential procedures users follow verbatim
+  - Prerequisites include account access and RBAC permissions
+  
+- **Informative/Overview page** if:
+  - Title is a noun phrase ("OPA Policies", "Workspace Architecture", "Delegate Types")
+  - Explains concepts, architecture, or "how it works"
+  - Code examples are illustrative/reference, not step-by-step
+  - No UI walkthrough or sequential procedures
+  - Content is "what/why/how" rather than "do this, then that"
+
+Once you determine the page type, fetch the appropriate template:
+
+**For instructional pages:**
 ```bash
 cat .cursor/rules/doc-structure-template.mdc
 ```
 
-Use this as the structural benchmark for the Editorial score.
+**For overview pages:**
+```bash
+cat .cursor/rules/doc-structure-overview-template.mdc
+```
+
+Use the selected template as the structural benchmark for the Editorial score.
+
+**Report the page type to the user:**
+Tell the user: **"Page type: [Instructional/Overview] — using [template name] for scoring."**
 
 ---
 
@@ -116,13 +143,30 @@ cat <file-path>
 If a live URL exists, optionally use Claude in Chrome to view the rendered page for context —
 but base all scoring and edits on the local file, not the rendered version.
 
-Score across three dimensions (each starts at 100):
+Score across three dimensions (each starts at 100). **Adjust criteria based on page type:**
+
+### Scoring for Instructional pages
 
 **Accuracy (40%):** –20 contradicts UI/behaviour, –15 steps would error, –15 outdated screenshots, –15 broken code, –10 wrong API, –10 stale versions, –10 wrong prerequisites, –5 broken links
 
-**Completion (30%):** –15 undocumented capabilities, –10 missing prerequisites, –10 missing troubleshooting, –10 missing config options, –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 no RBAC guidance, –10 missing limitations, –10 incomplete API params, –5 no Next Steps
+**Completion (30%):** –15 undocumented capabilities, –10 missing prerequisites (account/RBAC), –10 missing troubleshooting, –10 missing config options, –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 no RBAC guidance, –10 missing limitations, –10 incomplete API params, –5 no Next Steps
 
-**Editorial (30%):** –15 wrong structure (vs template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case), –10 non-site-relative links, –10 missing redirect_from, –10 style violations, –10 walls of text, –5 inconsistent UI bolding, –5 no intro before lists, –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
+**Editorial (30%):** –15 wrong structure (vs template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + imperative), –10 non-site-relative links, –10 missing redirect_from, –10 style violations, –10 walls of text, –5 inconsistent UI bolding, –5 no intro before lists, –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
+
+### Scoring for Overview pages
+
+**Accuracy (40%):** –20 contradicts behavior/concepts, –15 incorrect examples, –15 broken code, –10 wrong API/schema, –10 stale versions, –10 incorrect conceptual explanations, –5 broken links
+
+**Completion (30%):** –15 missing "What you will learn", –10 incomplete concept explanations, –10 missing reference material (attributes/params), –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 missing architectural context, –10 missing limitations/caveats, –5 no Related concepts/Next steps, –5 light/no prerequisites for knowledge context
+
+**Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative), –10 non-site-relative links, –10 missing redirect_from, –10 style violations, –10 walls of text, –5 inconsistent bolding, –5 no intro before lists, –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
+
+**Key differences for overview pages:**
+- Prerequisites are optional/lightweight (knowledge context only, NOT account/RBAC)
+- "What you will learn" section is required
+- Headings should be descriptive/noun phrases, NOT imperative verbs
+- Troubleshooting/FAQs are optional
+- End section is "Related concepts" or "Learn more" (not necessarily "Next steps")
 
 **Weighted score:** `(Accuracy × 0.4) + (Completion × 0.3) + (Editorial × 0.3)`
 **Pass: ≥ 80. Fail: < 80.**
@@ -160,52 +204,111 @@ or service accounts.
 
 ### 4c — Consolidation: DMS vs tabs vs synced tabs
 
-A single-page audit can flag consolidation candidates but cannot run the full cross-page heading
-similarity analysis — that requires reading every sibling, which `/doc-section-audit` does.
-If a consolidation opportunity looks likely from what is visible, note it and recommend the user
-run `/doc-section-audit` on the same file for a complete assessment.
-
-**What to flag from a single page:**
-
-- **Synced tabs signal** — Does this page appear to be one of several provider-, platform-,
-  format-, or environment-specific variants of the same concept? Look for: similar file names in
-  the same folder (e.g. `aws-setup.md`, `gcp-setup.md`, `azure-setup.md`), or headings that feel
-  like they belong to a shared template ("Create a connector", "Create your workspace",
-  "Add a provision pipeline"). These are get-started guide patterns — headings don't need exact
-  matches, just semantic equivalence across siblings. Flag as a synced tabs candidate.
-
-- **DMS signal** — Does this page already link to several full sibling guides, or does the section
-  clearly have multiple full-content child pages covering distinct topics under one parent concept?
-  Flag as a DMS candidate.
-
-- **Unsynced tabs signal** — Does this page have 2–5 parallel short sections (under ~100 lines
-  each) that could sit side-by-side? Flag as unsynced tabs candidate.
-
-**Decision guide (apply when siblings are visible):**
-
-| Signal | Best fit |
-|---|---|
-| 2–5 pages, short (≤150 lines each), same concept with provider/format/environment variants, shared heading structure | **Synced tabs** |
-| 3+ pages, medium–long (100+ lines each), distinct self-contained topics | **DMS** |
-| 2–5 pages, short–medium (≤100 lines each), related but independent concepts | **Unsynced tabs** |
-| Single long page (800+ lines), breakable into subtopics | **DMS parent + children** |
-| Siblings mostly manage or configure sub-features of one parent concept | **DMS with "Manage [X]" parent** |
+Assess whether the page, or its siblings (if visible from the section map), could benefit from
+consolidation using one of the following Docusaurus components:
 
 **DynamicMarkdownSelector (DMS)**
-- Use when multiple full-content child pages exist under a shared parent concept.
-- Not limited to 4–5 options — grid tiles, suited to full self-contained guides.
-- Reference: `docs/artifact-registry/get-started/quickstart.md`.
+- Use when multiple full-content child pages exist and a parent "hub" page would improve
+  discoverability and reduce navigation steps.
+- Not limited to 4–5 options — uses grid tiles, suited to full context pieces.
+- Reference pattern: `docs/artifact-registry/get-started/quickstart.md` pulls all child
+  get-started pages into one parent via DMS.
+- Only recommend DMS when the child pages are genuinely self-contained full guides, not when
+  they are short parallel sections.
 
 **Synced tabs**
-- Use when the same procedure applies across providers/platforms/formats and the user needs only one variant.
-- Content differs in commands/values, not concepts.
+- Use when the same concept or procedure applies across multiple environments, platforms,
+  or providers and the user would likely only need one at a time.
+- Example: configuring a connector for AWS / GCP / Azure — the same steps but platform-specific
+  values. Syncing tabs means selecting "AWS" on one page auto-selects it elsewhere.
 - Reference: https://docusaurus.io/docs/markdown-features/tabs#syncing-tab-choices
 
 **Unsynced tabs**
-- Use for 2–5 short parallel sections on one page to reduce scroll.
-- If sections are longer or there are more than ~5 options, prefer DMS.
+- Use when several related but independent concepts can be shown side-by-side on the same page
+  to reduce vertical scroll and improve scannability.
+- Best for shorter sections (2–5 options). If options are longer or more than ~5, prefer DMS.
+- Tabs increase engagement by encouraging interaction — a useful secondary benefit but not a
+  primary goal.
 
-If none apply, note "No consolidation opportunity identified."
+If none of the above apply, note "No consolidation opportunity identified."
+
+---
+
+## Step 5 — User confusion gap analysis
+
+This step identifies where readers might get stuck, confused, or lack context to proceed. This is **not** about accuracy (Step 3 covers that) — it's about usability and clarity.
+
+Read the page as if you're a user encountering this feature for the first time. Flag gaps in these categories:
+
+### 5a — Missing "how to access/use" context
+
+**For overview pages with reference material (attributes, schemas, API endpoints):**
+- Are there examples showing **how to use** the items in the reference list?
+- Do code examples include explanatory prose before/after?
+- Is the input/output structure explained (e.g., "Access these via `input.workspace.*` in Rego")?
+
+**For instructional pages:**
+- Is the UI path clear? (e.g., "Go to **Project Settings > Policies**")
+- Are prerequisite steps linked? (e.g., if you need a connector first, does it link to how to create one?)
+
+**Examples of gaps:**
+- Attribute list with no example showing `input.workspace.provisioner_version`
+- "Create a policy set" with no link to where/how to do that
+- "Use the Harness API" with no endpoint or authentication guidance
+
+### 5b — Unexplained behavior or outcomes
+
+**What happens when X fails or succeeds?**
+- Policy fails → What happens? (Pipeline stops? Warning? Error message shown?)
+- Deployment completes → Where do I see the results?
+- Configuration saved → When does it take effect?
+
+**Examples of gaps:**
+- "Policies are evaluated automatically" — but no mention that pipeline **fails** if policy denies
+- "Terraform state is updated" — but no mention of where to view it or what happens on conflict
+- Error messages mentioned but no guidance on how to debug them
+
+### 5c — Missing prerequisite knowledge or links
+
+Does the page assume knowledge the reader might not have?
+- OPA/Rego syntax → Should link to OPA documentation
+- Terraform plan JSON structure → Should link to Terraform docs or show example structure
+- Harness RBAC → Should link to Platform RBAC docs, not re-explain it
+
+**Flag when:**
+- Technical concepts (OPA, Rego, JSON schema) are used without definition or link
+- External tool knowledge is required (Terraform, Kubernetes) without reference links
+- Harness Platform concepts (connectors, delegates, secrets) are mentioned without linking to Platform docs
+
+### 5d — Broken or vague links
+
+Check all links in "Related concepts" or "Next steps":
+- Do they actually exist? (Run a quick check for broken paths if possible)
+- Are they actionable? Good: "Create your first policy" → Bad: "Policy documentation"
+- Do they help the user **do** something vs. just read more?
+
+**Examples of gaps:**
+- Link to `/docs/iacm/pipelines/iacm-pipelines` (broken — should be `/docs/iacm/pipelines/default-pipelines`)
+- "Learn more about policies" (vague) → "Create policies and policy sets" (actionable)
+- Link to generic Platform overview when a specific how-to guide exists
+
+### 5e — Jargon or abbreviations without explanation
+
+First use of specialized terms should include:
+- Brief inline definition, OR
+- Link to glossary/concept doc, OR
+- Expansion of abbreviation
+
+**Flag when:**
+- IaCM, OPA, RBAC used in intro without expansion (fine later in doc after first use)
+- Domain terms like "policy set", "entity type", "evaluation" used without brief definition
+- Product-specific jargon ("workspace", "connector") without context for new users
+
+### Scoring impact
+
+This step **does NOT affect the Accuracy/Completion/Editorial score**. However, gaps identified here should be included in the **Completion** section of the audit report as context-related issues, and in the **Structural rewrite plan** section with specific fixes.
+
+Think of this as a "usability layer" on top of the technical correctness audit.
 
 ---
 
@@ -221,6 +324,14 @@ Save to `.claude/skills/doc-audit/audits/[slug]-audit-YYYYMMDD.md` (e.g. `auth-4
 **Audit date:** [today]
 **Overall score:** [score]/100 — PASS / FAIL
 
+## Page type assessment
+
+**Type:** [Instructional | Overview]
+**Template used:** [.cursor/rules/doc-structure-template.mdc | .cursor/rules/doc-structure-overview-template.mdc]
+
+**Rationale:**
+[2-3 sentences explaining why this page is categorized as instructional or overview. Reference title pattern, content style, presence/absence of step-by-step procedures, etc.]
+
 ## Scores
 | Dimension | Raw | Weight | Weighted |
 |---|---|---|---|
@@ -233,6 +344,25 @@ Save to `.claude/skills/doc-audit/audits/[slug]-audit-YYYYMMDD.md` (e.g. `auth-4
 ### Accuracy
 ### Completion
 ### Editorial
+
+## User confusion gaps
+
+> Usability issues where readers might get stuck or lack context to proceed.
+
+### Missing "how to access/use" context
+[List gaps where the doc shows WHAT but not HOW to use it]
+
+### Unexplained behavior or outcomes
+[List gaps where the doc doesn't explain what happens when X succeeds/fails]
+
+### Missing prerequisite knowledge or links
+[List assumed knowledge that should be defined or linked]
+
+### Broken or vague links
+[List broken links, vague link text, or missing actionable links]
+
+### Jargon without explanation
+[List terms/abbreviations that need inline definition or links]
 
 ## Structural rewrite plan
 
@@ -271,7 +401,7 @@ Copy this prompt into Claude Code or Cursor to apply the suggested changes:
 Rewrite the following Harness Developer Hub documentation page to address quality issues
 identified in an audit. Before making any changes, read these files in order:
 
-1. .cursor/rules/doc-structure-template.mdc  — required page structure and section order
+1. [.cursor/rules/doc-structure-template.mdc OR .cursor/rules/doc-structure-overview-template.mdc — use the template that matches the page type from the audit]
 2. .cursor/rules/doc-linking.mdc             — link formatting (site-relative paths only)
 3. .cursor/rules/doc-slugs-and-redirects.mdc — slug and redirect_from conventions
 4. .cursor/rules/doc-move.mdc                — redirect requirements if restructuring
@@ -280,6 +410,8 @@ identified in an audit. Before making any changes, read these files in order:
 Page to rewrite: [repo-relative file path]
 Live URL: [full URL]
 Audit report: .claude/skills/doc-audit/audits/[slug]-audit-YYYYMMDD.md
+
+**Page type:** [Instructional | Overview] — see audit report for rationale
 
 ---
 ACCURACY FIXES
@@ -291,6 +423,9 @@ COMPLETION GAPS TO ADDRESS
 EDITORIAL FIXES
 [paste Editorial issues from audit]
 
+USER CONFUSION GAPS TO ADDRESS
+[paste User confusion gaps from audit — focus on adding missing context, explaining behavior, linking prerequisites, fixing vague links, and defining jargon]
+
 STRUCTURAL REWRITE PLAN
 [paste Structural rewrite plan from audit]
 
@@ -300,42 +435,28 @@ REDIRECTS REQUIRED
 ---
 The rewritten page must satisfy all of the following before you consider it done:
 
-TEMPLATE STRUCTURE — verify this order is present:
-- Frontmatter (title, sidebar_label, description, keywords, tags)
-- Introduction paragraphs (no ## heading — plain prose)
-- ## What will you learn? — add for any tutorial, how-to, or overview page if absent; use a
-  short bold-label bullet list of key outcomes. Omit only for pure reference pages (permissions
-  tables, settings references, API references).
-- ## Prerequisites — concise bullets, bold label + link each, no paragraph-length bullets
-- Body content using ### (not ##) for procedural sections — this keeps the right-hand TOC
-  hierarchical. Reserve ## only for the structural anchors above.
-- ## Troubleshooting (if issues exist — use <Troubleshoot> components, never static headings)
-- ## Next steps — 1–2 sentence wrap-up + 2–4 links using "Go to X to Y" phrasing
+**For Instructional pages:**
+- Follows doc-structure-template.mdc skeleton exactly (frontmatter → intro → prerequisites →
+  step-by-step instructions → Troubleshoot component → Next steps)
+- Prerequisites include account access, RBAC permissions with specific permission names and links
+- All ## and ### headings use sentence case with imperative form ("Create X", "Configure Y")
+- <Troubleshoot> component for common task errors
 
-FRONTMATTER RULES:
-- sidebar_label is present and uses Title Case
-- Sidebar label deduplication — two rules, always check both:
-  1. No folder name in child labels. Child pages must not repeat the parent folder name in
-     their sidebar_label. The folder provides the context — the label should only name the
-     specific topic. For example, inside an "Access Control" folder:
-     ❌ Dashboard Access Control → ✅ Dashboards
-     ❌ Asset Governance RBAC → ✅ Asset Governance
-  2. No duplicate folder/page pair. If the folder label and a child page's sidebar_label are
-     identical, rename the page label to something more specific such as "Overview".
-- slug does not include a /docs/ prefix
+**For Overview pages:**
+- Follows doc-structure-overview-template.mdc skeleton exactly (frontmatter → intro → What you will learn →
+  optional lightweight prerequisites → concept sections → optional FAQs → Related concepts)
+- "What you will learn" section with 3-5 learning outcomes
+- Prerequisites are optional/lightweight (knowledge context only, NOT account/RBAC)
+- All ## and ### headings use sentence case with descriptive noun phrases ("Policy entity types", "How X works")
+- Optional <FAQ> component for conceptual questions
 
-EDITORIAL RULES:
-- All ## and ### headings use sentence case; imperative form for instructional sections
+**For both page types:**
+- Frontmatter is complete: title, sidebar_label (Title Case), description, keywords, tags;
+  slug does not include a /docs/ prefix
 - All internal links use site-relative paths (/docs/...), never full production URLs
 - redirect_from added to frontmatter for any URL being superseded
-- <Troubleshoot> component replaces any static troubleshooting headings (import from
-  @site/src/components/AdaptiveAIContent)
 - UI element names are consistently bolded
-- No intro is missing before the first list or step
-- No em dashes — use a comma, semicolon, or rewrite the sentence
-- Link phrasing: "Go to [link] to [do Y]" — never "see", "refer to", "to learn more"
-- Bold label + colon for list items
-
+- No intro is missing before the first list
 - Page scores ≥ 80 on a re-audit across Accuracy, Completion, and Editorial dimensions
 ```
 ```
