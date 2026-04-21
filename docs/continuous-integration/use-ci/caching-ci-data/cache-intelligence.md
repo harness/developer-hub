@@ -375,6 +375,8 @@ To avoid this, explicitly exclude the following directories in your `pom.xml` fi
 - Build Intelligence: `/harness/.mvn`
 - Cache Intelligence: `/harness/.m2`, `/harness/.mvn`
 
+Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
+
 **Example: Apache RAT plugin in `pom.xml`**
 
 ```xml
@@ -383,7 +385,7 @@ To avoid this, explicitly exclude the following directories in your `pom.xml` fi
     <plugin>
       <groupId>org.apache.rat</groupId>
       <artifactId>apache-rat-plugin</artifactId>
-      <version>0.15</version>
+      <version>0.15</version> <!-- Or use the latest version -->
       <configuration>
         <excludes>
           <exclude>/harness/.mvn</exclude>
