@@ -234,24 +234,20 @@ This is currently supported with Gradle build tool only .
 
 Visit [Intelligence Savings](/docs/continuous-integration/use-ci/harness-ci-intelligence#intelligence-savings) for more information.
 
-### Troubleshooting
+## Troubleshooting
 
-#### Ignoring Build Intelligence Directories in Apache RAT Scans
+### License-checking plugins flagging Build Intelligence files
 
-If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Build Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
+Build Intelligence generates XML configuration files in the `.mvn/` directory of your build workspace. License-compliance plugins — such as [Apache RAT (Release Audit Tool)](https://creadur.apache.org/rat/), [License Maven Plugin](https://www.mojohaus.org/license-maven-plugin/), or similar source-auditing tools — may flag these generated files for missing license headers, causing build failures.
 
-To avoid this, explicitly exclude the following directories in your pom.xml file.
+#### Option 1: Exclude Harness-generated files from the scan
 
-**Directories to Ignore**
-- Build Intelligence:
-`/harness/.mvn`
+Add the Harness-generated directories to your plugin's exclusion list. The key directories to exclude are:
 
-- Cache Intelligence:
-`/harness/.m2`
-`/harness/.mvn` (also applies to cache-related scans)
+- **Build Intelligence:** `/harness/.mvn`
+- **Cache Intelligence:** `/harness/.m2`, `/harness/.mvn`
 
-**Example: Update to pom.xml**
-Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
+**Example: Apache RAT plugin in `pom.xml`**
 
 ```xml
 <build>
@@ -259,11 +255,11 @@ Add the following snippet under the `<build>` section to configure the apache-ra
     <plugin>
       <groupId>org.apache.rat</groupId>
       <artifactId>apache-rat-plugin</artifactId>
-      <version>0.15</version> <!-- Or use the latest version -->
+      <version>0.15</version>
       <configuration>
         <excludes>
           <exclude>/harness/.mvn</exclude>
-          <exclude>/harness/.m2</exclude> <!-- Optional, but recommended -->
+          <exclude>/harness/.m2</exclude>
         </excludes>
       </configuration>
       <executions>
@@ -278,3 +274,59 @@ Add the following snippet under the `<build>` section to configure the apache-ra
   </plugins>
 </build>
 ```
+
+**Example: `.rat-excludes` file**
+
+```
+.mvn/**
+```
+
+**Example: License Maven Plugin in `pom.xml`**
+
+```xml
+<excludes>
+  <exclude>.mvn/**</exclude>
+</excludes>
+```
+
+Refer to your specific plugin's documentation for the correct exclusion syntax.
+
+#### Option 2: Inject license headers into generated files
+
+If excluding files is not an option, add a **Run** step before your build step that injects the required license headers into the generated XML files. The example below uses an Apache Software Foundation header, but you should adapt it to the header your plugin expects:
+
+```shell
+#!/bin/bash
+LICENSE_HEADER='<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements. See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership. The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied. See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->'
+
+for file in .mvn/*.xml; do
+  [ -f "$file" ] || continue
+  grep -q "Licensed to the Apache Software Foundation" "$file" && continue
+  if head -1 "$file" | grep -q '<?xml'; then
+    XML_DECL=$(head -1 "$file")
+    REST=$(tail -n +2 "$file")
+    printf '%s\n%s\n%s\n' "$XML_DECL" "$LICENSE_HEADER" "$REST" > "$file"
+  else
+    printf '%s\n%s\n' "$LICENSE_HEADER" "$(cat "$file")" > "$file"
+  fi
+done
+```
+
+Place this **Run** step after the codebase clone and before your build/test steps so the headers are present when the scan runs.
