@@ -207,6 +207,50 @@ Your ApplicationSet stays **Degraded** and you see errors like:
 2. Remove the `data.project` key so the repo becomes cluster-scoped.  
 3. Save and allow Argo CD to reconcile; your ApplicationSet will recover.
 
+## YAML best practices for probe definitions
+
+If you use custom health checks or probes in your GitOps configuration (for example, Argo CD resource health checks with inline scripts), incorrect YAML formatting of multi-line values is a common source of sync failures.
+
+### Common error: "cannot unmarshal" in probe definitions
+
+An error like `cannot unmarshal !!str ... into ...` during sync typically points to a YAML syntax issue in a multi-line string value, not a problem with the command itself. This happens when a multi-line command is written inline without proper YAML scalar notation.
+
+### Use block scalars for multi-line commands
+
+YAML provides two block scalar styles for multi-line strings:
+
+- **Literal block scalar (`|`):** Preserves line breaks exactly as written. Use this for shell scripts and multi-line commands.
+- **Folded block scalar (`>`):** Folds line breaks into spaces. Use this for long text that should become a single line.
+
+**Before (broken):** Inline multi-line string causes unmarshaling errors.
+
+```yaml
+exec:
+  command:
+    - /bin/sh
+    - -c
+    - curl -s http://localhost:8080/health
+      && curl -s http://localhost:8080/ready
+      | grep -q '"status":"ok"'
+```
+
+**After (correct):** Using the `|` block scalar keeps each line intact.
+
+```yaml
+exec:
+  command:
+    - /bin/sh
+    - -c
+    - |
+      curl -s http://localhost:8080/health \
+        && curl -s http://localhost:8080/ready \
+        | grep -q '"status":"ok"'
+```
+
+:::tip check for YAML multi-line issues first
+When you see "cannot unmarshal" errors in GitOps sync operations, check your YAML for multi-line values first. The `|` block scalar is almost always what you want for inline shell commands in probe definitions.
+:::
+
 ## Applications Missing in GitOps for kube-system Namespace
 
 **Issue**  
