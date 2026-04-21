@@ -261,6 +261,14 @@ Single-value operators include:
 * **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/.*`.
 * **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/.*`.
 
+:::info In vs. Regex operator comparison
+
+| Operator | Matching behavior | Example | Matches |
+If you need wildcard-style branch matching (for example, `release/*`), use the **Regex** operator with a pattern like `release/.*`. While the **In** operator primarily matches exact literal values, for some **Conditions** (such as branch filters) it also accepts Regex patterns like `release/.*`. The dedicated **Regex** operator is recommended when pattern matching is the primary intent.
+If you need wildcard-style branch matching (for example, `release/*`), use the **Regex** operator with a pattern like `release/.*`. The **In** operator only supports exact literal values and does not interpret wildcards or patterns.
+
+:::
+
 ### Matches Value
 
 Matches values are the values for the trigger to match. Acceptable values and value formatting depend on the condition type, attribute, and operator.
