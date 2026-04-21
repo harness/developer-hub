@@ -1706,7 +1706,7 @@ public class SplitSD {
       SplitClientConfig config = SplitClientConfig.builder()
            .setBlockUntilReadyTimeout(10000)
            .endpoint("https://myproxy.com","https://myproxy.com")
-           .authServiceURL("https://myproxy.com" + "/api/auth")
+           .authServiceURL("https://myproxy.com" + "/api/v2/auth")
            .telemetryURL("https://myproxy.com" + "/api/v1")
            .build();
       SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config);
@@ -1741,7 +1741,7 @@ fun main (args: Array<String>){
     val config: SplitClientConfig = SplitClientConfig.builder()
                 .setBlockUntilReadyTimeout(10000)
                 .endpoint("https://myproxy.com","https://myproxy.com")
-                .authServiceURL("https://myproxy.com" + "/api/auth")
+                .authServiceURL("https://myproxy.com" + "/api/v2/auth")
                 .telemetryURL("https://myproxy.com" + "/api/v1")
                 .build()
     val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config)
@@ -1768,6 +1768,14 @@ fun main (args: Array<String>){
 
 </TabItem>
 </Tabs>
+
+To simplify maintenance and future updates, define your Proxy configuration using separate variables:
+
+- Base endpoint (for `.endpoint()`)
+- Auth path (`/api/v2/auth`)
+- Telemetry path (`/api/v1`)
+
+This makes it easier to update paths or environments without changing multiple hardcoded values.
 
 ### Integrate with the Harness Proxy
 
