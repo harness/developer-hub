@@ -70,14 +70,14 @@ Keep these values ready — you'll use them in the configuration file.
 For **arm64**:
 
 ```bash
-curl -L "https://app.harness.io/public/shared/delegates/1.28.0/delegate-linux-arm64" -o delegate
+curl -L "https://app.harness.io/public/shared/delegates/1.35.0/delegate-linux-arm64" -o delegate
 chmod +x delegate
 ```
 
 For **amd64**:
 
 ```bash
-curl -L "https://app.harness.io/public/shared/delegates/1.28.0/delegate-linux-amd64" -o delegate
+curl -L "https://app.harness.io/public/shared/delegates/1.35.0/delegate-linux-amd64" -o delegate
 chmod +x delegate
 ```
 

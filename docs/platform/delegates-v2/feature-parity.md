@@ -74,23 +74,25 @@ The transition from legacy delegates to the new delegate is controlled through a
 
 **Core routing flags:**
 
-- **`PL_USE_RUNNER`**: Routes connector validation and connection tests to the new delegate. This flag is waiting on Git-sync tests and automations to pass before general availability.
+- **`PL_USE_RUNNER`**: When enabled, routes connector validation and connection tests to the new delegate. This flag is waiting on Git-sync tests and automations to pass before general availability.
 
 **CI infrastructure routing flags:**
 
-- **`CI_V0_LOCAL_BUILDS_USE_RUNNER`**: Routes v0 local build pipeline operations (Docker infrastructure) to the new delegate. This flag enables the primary use case for the new delegate: local machine execution.
+- **`CI_V0_LOCAL_BUILDS_USE_RUNNER`**: When enabled, routes v0 local build pipeline operations (Docker infrastructure) to the new delegate. This flag enables the primary use case for the new delegate: local machine execution.
 
-- **`CI_V0_HOSTED_BUILDS_USE_RUNNER`**: Routes v0 hosted build pipeline operations to the new delegate.
+- **`CI_V0_HOSTED_BUILDS_USE_RUNNER`**: When enabled, routes v0 hosted build pipeline operations to the new delegate.
 
-- **`CI_V0_FREE_HOSTED_BUILDS_USE_RUNNER`**: Routes hosted builds for non-credit users to the new delegate.
+- **`CI_V0_FREE_HOSTED_BUILDS_USE_RUNNER`**: When enabled, routes hosted builds for non-credit users to the new delegate.
 
 **Optional behavior flags:**
 
-- **`CI_INVALID_SECRET_ERROR`**: When enabled, execution fails if the referred secret is invalid. Earlier in hosted builds, execution never failed for such scenarios, but this was not in line with Kubernetes behavior (which always fails the execution). This ensures consistent behavior across infrastructure types and helps catch secret configuration issues early. Protected by feature flag `CI_RUNNER_FRAMEWORK_SECRET_EVAL` for rollback.
+- **`CI_LOCAL_CONTAINERLESS_OOTB_STEP_ENABLED`**: When enabled, runs supported CI steps directly on the host without a container on local infrastructure. Supported steps: Git Clone, Upload to Artifactory, Upload to GCS, Restore Cache GCS, Save Cache GCS, Upload to S3, Restore Cache S3, and Save Cache S3.
 
-- **`CI_RUNNER_FRAMEWORK_SECRET_EVAL`**: Controls secret evaluation in the new delegate's execution framework. Acts as a rollback protection mechanism for `CI_INVALID_SECRET_ERROR`.
+- **`CI_INVALID_SECRET_ERROR`**: When enabled, fails execution if a referenced secret is invalid. This ensures consistent behavior across infrastructure types, matching Kubernetes behavior where invalid secrets always fail the execution. This flag is protected by `CI_RUNNER_FRAMEWORK_SECRET_EVAL` for rollback.
 
-- **`CI_UNIFIED_RUNNER_REPLACE_STEP_ID_BY_TASK_ID_IN_V0_PIPELINES`**: Changes field population in the new delegate's ExecuteRequest to use task IDs instead of step IDs. This affects v0 pipelines only (v1 pipelines always use task IDs with an empty string passed in the Runner Task API). When disabled, v0 pipelines use step ID (legacy behavior). When enabled, v0 pipelines use the task ID.
+- **`CI_RUNNER_FRAMEWORK_SECRET_EVAL`**: When enabled, controls secret evaluation in the new delegate's execution framework. This flag serves as a rollback protection mechanism for `CI_INVALID_SECRET_ERROR`.
+
+- **`CI_UNIFIED_RUNNER_REPLACE_STEP_ID_BY_TASK_ID_IN_V0_PIPELINES`**: When enabled, populates the ExecuteRequest with task IDs instead of step IDs for v0 pipelines. v1 pipelines always use task IDs regardless of this flag. When disabled, v0 pipelines use step IDs (legacy behavior).
 
 Feature flags are managed at the account level by Harness and are enabled as part of the closed beta program. Contact your Harness representative to discuss which flags are appropriate for your use case and testing requirements.
 

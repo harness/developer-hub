@@ -81,7 +81,7 @@ The macOS delegate supports two installation modes:
 
 ### Step 1: Download the Binary
 
-Replace `<VERSION>` with the latest version (e.g., `1.34.0`).
+Replace `<VERSION>` with the latest version (e.g., `1.35.0`).
 
 For **arm64** (Apple Silicon):
 
@@ -97,10 +97,10 @@ curl -L "https://app.harness.io/public/shared/delegates/<VERSION>/delegate-darwi
 chmod +x delegate
 ```
 
-Example using version 1.34.0:
+Example using version 1.35.0:
 
 ```bash
-curl -L "https://app.harness.io/public/shared/delegates/1.34.0/delegate-darwin-arm64" -o delegate
+curl -L "https://app.harness.io/public/shared/delegates/1.35.0/delegate-darwin-arm64" -o delegate
 ```
 
 ### Step 2: Install with Credentials

@@ -208,7 +208,7 @@ Open the downloaded YAML file and replace the following placeholders with your a
 | `PUT_YOUR_DELEGATE_NAMESPACE` | Kubernetes namespace for the delegate | `harness-delegate` |
 | `PUT_YOUR_DELEGATE_NAME` | Name for your delegate | `k8s-delegate` |
 | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token (obtained in previous step) | Base64 encoded token |
-| `PUT_YOUR_DELEGATE_IMAGE` | Delegate container image | `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate:1.30.1` |
+| `PUT_YOUR_DELEGATE_IMAGE` | Delegate container image | `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate:1.35.0` |
 | `PUT_YOUR_ACCOUNT_ID` | Account ID (obtained in previous step) | Your Harness account ID |
 | `PUT_YOUR_MANAGER_ENDPOINT` | Harness URL (obtained in previous step) | `https://app.harness.io` |
 | `PUT_YOUR_DELEGATE_TAGS` | Comma-separated delegate tags | `k8s,runner,production` |
