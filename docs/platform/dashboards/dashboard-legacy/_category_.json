@@ -1,0 +1,13 @@
+{
+    "label": "Dashboard (Legacy)",
+    "collapsible": true,
+    "collapsed": true,
+    "position": 1,
+    "link": {
+        "type": "generated-index",
+        "title": "Dashboards (Legacy)"
+    },
+    "customProps": {
+        "helpdocs_category_id": "id0hnxv6sg"
+    }
+}
