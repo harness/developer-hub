@@ -58,9 +58,11 @@ The JDBC connector is used for connecting to your database instance.
 | **SQLSERVER SSL**  | `jdbc:sqlserver://{host}:{port};databaseName={dbName};encrypt=true;trustServerCertificate=false;`                                |
 | **MYSQL SSL**      | `jdbc:mysql://{host}:{port}/{dbName}?useSSL=true`                                                                                |
 | **ORACLE SSL**     | `jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCPS)(HOST={host})(PORT={port}))(CONNECT_DATA=(SERVICE_NAME={servicename})))` |
-| **COCKROACHDB SSL**     | `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=require`                                                                  |
+| **COCKROACHDB SSL**| `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=require`                                                                       |
+| **DocumentDB**     | `mongodb://{host}:{port}/{dbName}?tls=true&tlsAllowInvalidHostnames=true&directConnection=true&retryWrites=false&authSource=admin` |
 
 ---
+
 ## Setting Up MongoDB
 
 MongoDB connections in Harness DB DevOps support both self-hosted and cloud-based MongoDB instances.
@@ -146,6 +148,36 @@ The private key file reference is a secret file, and the passphrase reference is
 
 :::info note
 Username and Password authentication method for the snowflake is deprecated, and The preferred method for service accounts using public/private key cryptography.
+:::
+
+---
+
+## Setting Up Amazon DocumentDB
+
+Amazon DocumentDB is supported via the **MongoDB Native Executor**. DocumentDB clusters run in private VPC subnets and require an SSH tunnel through an EC2 instance for external access.
+
+### Prerequisites for DocumentDB
+
+- **DocumentDB cluster**: Running cluster in AWS VPC
+- **EC2 instance**: Instance in the same VPC as your DocumentDB cluster with SSH access enabled (port 22)
+- **Amazon RDS CA certificate**: [Download the global bundle](https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem)
+- **Network access**: Delegate must have SSH connectivity to the EC2 instance
+
+### Set up the SSH tunnel
+
+Establish an SSH tunnel from your delegate to DocumentDB via the EC2 instance:
+
+```bash
+ssh -L 27017:YOUR-DOCDB-CLUSTER-ENDPOINT:27017 \
+    ec2-user@YOUR_EC2_PUBLIC_IP \
+    -i ~/path/to/your-key.pem \
+    -N
+```
+
+Replace `YOUR-DOCDB-CLUSTER-ENDPOINT` with your cluster endpoint and `YOUR_EC2_PUBLIC_IP` with the EC2 public IP.
+
+:::info note
+Add the Amazon RDS CA certificate to your trust store to enable SSL connections to DocumentDB. This is required for secure connectivity. Learn on how to add the Amazon RDS CA certificate to your delegate environment [here](https://developer.harness.io/docs/database-devops/use-database-devops/ssl/#5-enable-jdbc-ssl-truststore-support).
 :::
 
 ---

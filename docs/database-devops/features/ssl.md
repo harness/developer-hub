@@ -198,6 +198,25 @@ kubectl exec -it <delegate-pod> -n <namespace> -- ls -l /opt/harness-delegate/ca
 | PKIX error persists after mounting certs | Wrong certificate type or incomplete certificate chain | Confirm you are using the correct CA/root/intermediate certificate chain, not only the server certificate |
 | Changes not applied | Delegate not restarted | Restart delegate |
 
+## PostgreSQL SSL configuration
+
+PostgreSQL JDBC connections require `ssl=true` and use `sslmode` to control certificate verification:
+
+- `sslmode=require` — encrypts connection without verifying server certificate
+- `sslmode=verify-full` — verifies server certificate using CA bundle
+
+**When using `sslmode=verify-full`:**
+
+PostgreSQL JDBC driver defaults to `/root/.postgresql/root.crt` for certificate lookup, ignoring Java's truststore. Add `sslrootcert` to your JDBC URL to specify the mounted certificate location:
+
+```
+jdbc:postgresql://<host>:5432/<db>?ssl=true&sslmode=verify-full&sslrootcert=/etc/ssl/certs/dbops/root_ca.crt
+```
+
+:::info note
+The certificate file must be mounted at `/etc/ssl/certs/dbops/root_ca.crt` in the delegate using `CI_MOUNT_VOLUMES` as described in [step 4](#4-mount-certificates-into-the-delegate). This path is required and should not be changed.
+:::
+
 ## References
 * [Installing Delegates with Custom Certificates](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
 * [Delegate MTLS Support](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/)
