@@ -144,9 +144,7 @@ Yes, Harness GitOps supports Helm charts for defining and deploying Kubernetes a
 
 ### Can I download pipeline or step execution logs via the UI? 
 
-Yes, you can. First we will need to enable this Feature Flag on your account ```SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS```. After this Feature Flag is enabled, a Downloads logs selector will be available in the edit pipeline (3 dots on top right panel of pipeline execution screen). 
-
-For more details please see: [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/deploy-Helm-charts/#service-hooks).
+Yes. A **Download Logs** option is available from the pipeline execution screen (select the three-dot menu in the top-right panel). Go to [Download execution logs](/docs/platform/pipelines/executions-and-logs/download-logs) to review the steps.
 
 
 ### Service hooks for Kubernetes and Helm deployments to fetch Helm Chart dependencies. 

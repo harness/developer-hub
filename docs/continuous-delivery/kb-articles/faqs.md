@@ -1322,7 +1322,7 @@ The easiest way for this would be to copy the yaml for the service/environment o
 
 #### Can I download pipeline or step execution logs via the UI?
 
-Yes, you can. First we will need to enable this Feature Flag on your account `SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS`. After this Feature Flag is enabled, a Downloads logs selector will be available in the edit pipeline (3 dots on top right panel of pipeline execution screen).
+Yes. A **Download Logs** option is available from the pipeline execution screen (select the three-dot menu in the top-right panel). Go to [Download execution logs](/docs/platform/pipelines/executions-and-logs/download-logs) to review the steps.
 
 #### How to set up allowed value for entity reference?
 
@@ -2232,10 +2232,9 @@ To effectively employ this feature, it is imperative to fulfill the following pr
 
 #### How do I export deployments from the UI or the API?
 
-You can download pipeline or step execution logs via the UI. You can download the pipeline, stage, and step execution logs via the API.
-The process of downloading logs is the same for all Harness modules. Your access to certain modules and settings limits the functionality available to you.
-To effectively employ this feature, enable the Feature Flag `SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS` within your operational environment.
-For more information, go to [Download execution logs](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/download-logs/).
+You can download pipeline or step execution logs via the UI. You can also download pipeline, stage, and step execution logs via the API. The process is the same for all Harness modules; your access to certain modules and settings limits the functionality available to you.
+
+Go to [Download execution logs](/docs/platform/pipelines/executions-and-logs/download-logs) to review the steps.
 
 #### Are environment-level `<+input>` fields supported when running a pipeline?
 
