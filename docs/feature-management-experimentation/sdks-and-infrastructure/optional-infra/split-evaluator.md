@@ -127,7 +127,7 @@ curl -X POST "http://localhost:7548/client/get-treatment?key=my-customer-key&spl
 Evaluates a single feature flag for a single key.
 
 ##### Query params
- *  **key:** The key used in the `getTreatment` call.
+ *  **key:** The key used in the `getTreatment` call. Each key should specify `matchingKey`. You can also optionally specify `bucketingKey`.
  *  **split-name:** The name of the feature flag you want to include in the `getTreatment` call.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatment` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatment` call of the SDK.
@@ -154,7 +154,7 @@ Response:
 Provides a way of doing multiple evaluations at once.
 
 ##### Query params
- *  **key:** The key used in the `getTreatments` call.
+ *  **key:** The key used in the `getTreatments` call. Each key should specify `matchingKey`. You can also optionally specify `bucketingKey`.
  *  **split-names:** The names of the feature flags you want to include in the `getTreatments` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatments` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatments` call of the SDK.
@@ -185,7 +185,7 @@ Response:
 Evaluates all flags that are part of the provided set names and are cached on the SDK instance.
 
 ##### Query params
- *  **key:** The key used in the `getTreatmentsBySets` call.
+ *  **key:** The key used in the `getTreatmentsBySets` call. Each key should specify `matchingKey`. You can also optionally specify `bucketingKey`.
  *  **flag-sets:** The names of the flag sets you want to include in the `getTreatmentsBySets` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsBySets` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsBySets` call of the SDK.
@@ -216,7 +216,7 @@ Response:
 Evaluates a single feature flag for a single key and adds config in the result.
 
 ##### Query params
- *  **key:** The key used in the `getTreatmentWithConfig` call.
+ *  **key:** The key used in the `getTreatmentWithConfig` call. Each key should specify `matchingKey`. You can also optionally specify `bucketingKey`.
  *  **split-name:** The name of the feature flag you want to include in the `getTreatmentWithConfig` call.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentWithConfig` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentWithConfig` call of the SDK.
@@ -244,7 +244,7 @@ Response:
 Provides a way of doing multiple evaluations at once and attaches configs for each feature flag evaluated.
 
 ##### Query params
- *  **key:** The key used in the `getTreatmentsWithConfig` call.
+ *  **key:** The key used in the `getTreatmentsWithConfig` call. Each key should specify `matchingKey`. You can also optionally specify `bucketingKey`.
  *  **split-names:** The names of the feature flags you want to include in the `getTreatmentsWithConfig` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsWithConfig` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfig` call of the SDK.
@@ -277,7 +277,7 @@ Response:
 Provides a way of doing multiple evaluations at once and attaches configs for each feature flag that are part of the provided set names.
 
 ##### Query params
- *  **key:** The key used in the `getTreatmentsWithConfigBySets` call.
+ *  **key:** The key used in the `getTreatmentsWithConfigBySets` call. Each key should specify `matchingKey`. You can also optionally specify `bucketingKey`.
  *  **flag-sets:** The names of the flag sets you want to include in the `getTreatmentsWithConfigBySets` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsWithConfigBySets` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfigBySets` call of the SDK.
@@ -310,7 +310,7 @@ Response:
 Performs multiple evaluations at once. In this case it will match all the feature flags for a given traffic-type and will perform a `getTreatments` call with the key provided. You can send more than one `{matchingKey,bucketingKey,trafficType}` object.
 
 ##### Query params
- * **keys:** The array of keys to be used in the `getTreatments` call. Each key should specify `matchingKey` and `trafficType`. You can also specify `bucketingKey`.
+ * **keys:** The array of keys to be used in the `getTreatments` call. Each key should specify `matchingKey` and `trafficType`. You can also optionally specify `bucketingKey`.
  * **attributes:** (*optional*) A JSON string of the attributes to include in the `getTreatments` call of the SDK.
  *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
  * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
@@ -346,7 +346,7 @@ Response:
 Performs multiple evaluations at once. In this case it will match all the feature flags for a given traffic-type and will perform a `getTreatmentsWithConfig` call with the key provided. You can send more than one `{matchingKey,bucketingKey,trafficType}` object. This endpoint will also adds the configurations for particular feature flag.
 
 ##### Query params
- * **keys:** The array of keys to be used in the `getTreatmentsWithConfig` call. Each key should specify `matchingKey` and `trafficType`. You can also specify `bucketingKey`.
+ * **keys:** The array of keys to be used in the `getTreatmentsWithConfig` call. Each key should specify `matchingKey` and `trafficType`. You can also optionally specify `bucketingKey`.
  * **attributes:** (*optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfig` call of the SDK.
  * **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
  * **impressions-disabled:** (*Optional*) When set to `true`, disables impression logging for this evaluation request.
@@ -385,7 +385,7 @@ Response:
 Records any actions your customers perform. Each action is known as an event and corresponds to an event type. Calling track allows you to measure the impact of your feature flags on your users' actions and metrics.
 
 ##### Query params
- * **key:** The key used in the `track` call.
+ * **key:** The key used in the `track` call. Each key should specify `matchingKey`. You can also optionally specify `bucketingKey`.
  * **traffic-type:** The traffic type of the key that you want to include in the `track` call.
  * **event-type:** The event type that this event should correspond to the `track` call of the SDK.
  * **value:** (*Optional*) value to be used in creating the metric.

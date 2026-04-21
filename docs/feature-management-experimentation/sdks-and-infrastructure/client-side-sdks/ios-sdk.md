@@ -710,8 +710,8 @@ In regards with the data available here, refer to the `impression` objects inter
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- | 
-| keyName | String? | Key which is evaluated. |
-| bucketingKey | String? | Key which is used for bucketing, if provided. |
+| keyName | String? | Key used for targeting (matching). Also used for bucketing unless a specific `bucketingKey` was provided. |
+| bucketingKey | String? | Optional. Key used to control rollout assignment (bucketing) separately from the matching key. |
 | feature | String? | Feature flag which is evaluated. |
 | treatment | String? | Treatment that is returned. |
 | time/timestamp | Int64?/NSNumber? | Timestamp of when the impression is generated. |

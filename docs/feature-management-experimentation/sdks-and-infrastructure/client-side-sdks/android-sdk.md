@@ -887,8 +887,11 @@ SplitClientConfig config = SplitClientConfig.builder()
 String sdkKey = "YOUR_SDK_KEY";
 
 // Create a new user key to be evaluated
-String matching = "key";
+String matchingKey = "key";
+
+// Optional, only needed for advanced use cases
 String bucketingKey = null;
+
 Key k = new Key(matchingKey,bucketingKey);
 
 // Create factory
@@ -1394,8 +1397,8 @@ In regards with the data available here, refer to the `Impression` objects inter
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- | 
-| key | String | Key which is evaluated. |
-| bucketingKey | String | Key which is used for bucketing, if provided. |
+| key | String | Key used for targeting (matching). Also used for bucketing unless a specific `bucketingKey` was provided. |
+| bucketingKey | String | Optional. Key used to control rollout assignment (bucketing) separately from the matching key. |
 | split | String | Feature flag which is evaluated. |
 | treatment | String | Treatment that is returned. |
 | time | Long | Timestamp of when the impression is generated. |

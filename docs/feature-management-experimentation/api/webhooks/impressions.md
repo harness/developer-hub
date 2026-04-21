@@ -18,13 +18,13 @@ To reduce latency, each HTTP POST is be gzipped unless the URL represents a Slac
 ```json
 [
   {
-    "key": "string", // key evaluated
+    "key": "string", // A primary key used for both targeting (matching in rules or segments) and bucketing (treatment assignment), unless a separate bucketingKey was explicitly provided at the time of evaluation.
     "split": "string", // feature flag name
     "environmentId": "string", // environment id where we are evaluating the feature flag
     "environmentName": "string", // environment name
     "treatment": "string", // treatment we gave to this key
     "time": "long", // timestamp when the SDK made the evaluation
-    "bucketingKey": "string", // key used for hashing and to determine a bucket
+    "bucketingKey": "string", // Optional, a key used for hashing to determine the treatment bucket when provided. If not provided, defaults to the matching key.
     "label": "string", // the rule that was applied to return a treatment
     "machineName": "string", // the hostname of the SDK host (if available)
     "machineIp": "string", // the IP of the SDK host (if available)
