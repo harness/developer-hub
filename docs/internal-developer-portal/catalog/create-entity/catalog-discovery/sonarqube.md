@@ -17,7 +17,7 @@ The SonarQube integration connects to your SonarQube Server (self-hosted) or Son
 :::caution Prerequisites
 * The feature flag `IDP_CATALOG_CD_AUTO_DISCOVERY` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
-* A SonarQube user token with global-level and system admin privileges is available. Generate it via **My Account** → **Security** → **Generate Tokens** in SonarQube.
+* A SonarQube user token with global-level `Browse` privileges is available. Generate it via **My Account** → **Security** → **Generate Tokens** in SonarQube.
 :::
 
 ---
@@ -64,7 +64,7 @@ This section connects Harness IDP to your SonarQube instance.
 
 4. *(SonarQube Cloud only)* Enter the **Organization Key**. This is your SonarQube Cloud organization key (e.g., `my-org`).
 
-5. Under **User Token**, click **Create or Select a Secret** and provide your SonarQube User Token. This token must have global-level and admin system privileges.
+5. Under **User Token**, click **Create or Select a Secret** and provide your SonarQube User Token. This token must have global-level `Browse` privileges.
 
    :::info Recommended Secrets Manager
    For SonarQube Integration, we recommend you use the **Harness Built-in Secret Manager** for storing the SonarQube user token.
