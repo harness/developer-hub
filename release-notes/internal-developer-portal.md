@@ -30,7 +30,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2026.4.v1](/release-notes/internal-developer-portal#april---20264v1) | ✅        | ❌         | ❌           | ❌        | ❌         | ❌         |
+| [2026.4.v1](/release-notes/internal-developer-portal#april---20264v1) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.3.v2](/release-notes/internal-developer-portal#march---20263v2) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.3.v1](/release-notes/internal-developer-portal#march---20263v1) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 
@@ -41,8 +41,9 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ### New Features
 
-#### Custom Entity Kinds
-Harness IDP now supports defining [custom entity kinds](/docs/internal-developer-portal/custom-kinds/overview) beyond the standard built-in kinds (`Component`, `API`, `Resource`, `Environment`, `System`, and others). Platform engineers can model domain-specific software components that don't fit existing kinds, complete with their own name, icon, and JSON Schema for structure and validation.
+#### Custom Entity Kinds | [Read Doc](/docs/internal-developer-portal/custom-kinds/overview)
+
+Harness IDP now supports defining custom entity kinds beyond the standard built-in kinds (`Component`, `API`, `Resource`, `Environment`, `System`, and others). Platform engineers can model domain-specific software components that don't fit existing kinds, complete with their own name, icon, and JSON Schema for structure and validation.
 
 - Custom kind entities appear in the catalog with full search and filter support, just like built-in kinds.
 - Each custom kind supports dedicated **Layouts**, **Scorecards**, and **Plugins**, scoped by kind and entity type.
@@ -52,9 +53,9 @@ Harness IDP now supports defining [custom entity kinds](/docs/internal-developer
 
 ---
 
-#### SonarQube Integration
+#### SonarQube Integration | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube)
 
-Harness IDP now supports a [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube) integration that connects to your SonarQube Server (self-hosted) or SonarQube Cloud instance and brings projects into the IDP Catalog as catalog entities enriched with:
+Harness IDP now supports a SonarQube integration that connects to your SonarQube Server (self-hosted) or SonarQube Cloud instance and brings projects into the IDP Catalog as catalog entities enriched with:
 
 - Code quality measures
 - Security hotspots
@@ -65,7 +66,7 @@ Harness IDP now supports a [SonarQube](/docs/internal-developer-portal/catalog/c
 
 ---
 
-#### Aggregation Support for Scorecards
+#### Aggregation Support for Scorecards | [Read Doc](https://developer.harness.io/docs/internal-developer-portal/catalog/aggregation-rules/aggregation-rules-scorecard)
 
 Scorecards data can now be aggregated across multiple catalog entities, enabling platform engineers to roll up compliance and health metrics from lower-level components to higher-level systems.
 
