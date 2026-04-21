@@ -1288,5 +1288,11 @@
     "description": "Controls visibility of navigation options and enables manual pull request (PR) remediation workflows in Supply Chain Security.",
     "gaStartDate": "2026-04-17",
     "module": "Supply Chain Security"
+  },
+  {
+    "flagKey": "OPA_IMPORT_FROM_GIT",
+    "description": "Enables users to import OPA policies directly from Git.",
+    "gaStartDate": "2026-04-21",
+    "module": "Pipeline"
   }
 ]
