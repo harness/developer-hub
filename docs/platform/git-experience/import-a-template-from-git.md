@@ -1,7 +1,7 @@
 ---
 title: Import a template from Git
 description: This topic describes how to import various Templates from Git.
-sidebar_position: 6
+sidebar_position: 9
 helpdocs_topic_id: etz5whjn5x
 helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false

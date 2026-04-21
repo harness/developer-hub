@@ -51,6 +51,7 @@ You can save the following Harness resources in Git using Harness Git Experience
 * Services
 * Environment 
 * Infrastructure Definitions
+* Overrides
 * OPA Policies
 
 :::info note

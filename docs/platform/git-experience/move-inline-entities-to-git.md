@@ -1,7 +1,7 @@
 ---
 title: Move inline entities to Git
 description: Convert existing inline entities to remote and save them in Git
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 You can move your inline pipelines and input sets to Git. 

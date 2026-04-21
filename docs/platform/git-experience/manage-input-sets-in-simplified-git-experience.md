@@ -1,14 +1,18 @@
 ---
-title: Manage input sets and triggers in Git Experience
-description: Once you have saved your pipeline in your repo, you can set up your input sets and triggers.
-sidebar_position: 9
+title: Manage Git-backed input sets
+description: Create and manage input sets stored in Git, and configure triggers to use them with your Git-backed pipelines.
+sidebar_position: 8
 helpdocs_topic_id: 8tdwp6ntwz
 helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Once you have saved your pipeline in your repo, you can set up your input Sets and triggers. You can set up your input set definitions in your repo along with your pipeline. You can then set up your triggers to use specific input sets in your repo.
+This topic covers how to create and manage input sets that are stored in Git alongside your pipelines, and how to configure triggers that reference these Git-backed input sets.
+
+:::note
+Input sets can be stored in Git and managed using Git Experience. Triggers are configured in Harness (not stored in Git) and can reference Git-backed pipelines and input sets.
+:::
 
 This topic covers a simple workflow for setting up your input sets and triggers. It does not cover these topics in detail. For details on those, see:
 
