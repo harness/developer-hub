@@ -1,0 +1,8 @@
+{
+  "label": "Change Management",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Track and correlate code changes with incidents using the Deploy Change Investigator. Connect your CI/CD pipeline to understand what changed when incidents occur."
+  }
+}
