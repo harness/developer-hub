@@ -64,7 +64,7 @@ To quarantine an artifact:
 
 You will be prompted to provide a reason for quarantining the artifact. Enter your reason and click **Quarantine** to confirm.
 
-you can remove a quarantined artifact by selecting the artifact and clicking **Remove from Quarantine**.
+You can remove a quarantined artifact by selecting the artifact and clicking **Remove from Quarantine**.
 
 ## Re-evaluate artifact versions
 
@@ -102,6 +102,34 @@ The system prepares your download and displays a status indicator at the bottom 
 - **Stay on the page**: Do not navigate to another tab or close the browser while the download is being prepared, as this will interrupt the process.
 - **Download availability**: Once ready, downloads remain available for **24 hours** or until you close the notification.
 :::
+
+## Copy a version
+
+**Copy Version** copies one package version into another Harness registry. Use it when you want the same artifact in a different project or organization without pushing again from your machine.
+
+**Where to click first**
+
+- Open the package, then the **Versions** tab.
+- On the row for the version you want, open the menu (**⋮**) and select 'Copy Version'.
+
+The **Copy** link in the **Download command** column only copies that command text to your clipboard. **Copy Command** in the **⋮** menu copies the client command for this version. **Copy Version** is different: it opens the dialog where you pick another registry to receive this version.
+
+<DocImage
+  path={require('./static/copy-version-versions-tab-npm.png')}
+  alt="npm package Versions tab with row menu open showing Copy Version among other actions"
+  title="Versions tab: use the row menu and select Copy Version"
+  width="100%"
+/>
+
+**What you do in the dialog**
+
+- The top of the dialog shows the source registry, package, and version (read-only). For Docker and OCI, the version may show as a digest or a tag.
+- Under **Target**, choose organization, project, and registry. Pick organization and project first if the registry dropdown is empty.
+- Select 'Copy Version' to run the copy, or 'Cancel' to leave without changes.
+
+**Permissions:** You need read access on the source registry and write access on the target. Details can vary by registry type.
+
+Go to [Copy artifacts in the Harness CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#copy-artifacts) to copy versions from the command line or from automation.
 
 ## See Also
 
