@@ -244,6 +244,7 @@ No enhancements or fixes were released in this cycle.
 #### New features and enhancements
 
 - Introduced notifications for service account tokens, allowing you to configure alerts for events such as creation, rotation, updates, expiration, deletion, and upcoming expiration across your selected channels. [PL-41008] 
+- Introduced [**project movement across organizations**](/docs/platform/organizations-and-projects/move-projects/overview) (Closed Beta): Move projects between organizations seamlessly while preserving audit and execution history. [PL-41870]
 
 ## March 2026
 
@@ -303,6 +304,10 @@ No enhancements or fixes were released in this cycle.
 
 #### New features and enhancements
 - Implemented reference creation between user groups and notification channels at the project scope, ensuring user groups cannot be deleted while they are referenced by one or more notification channels. [PL-66281]
+- User group `Manage` permission is now split into granular permissions for improved access control, including `Create`, `Edit (Metadata)`, `Delete`, `Manage Notifications`, `Manage SSO`, `Manage SCIM`, `Manage Users`, and `Manage Role Assignments`. [PL-58021]
+  - **Feature Flags:**
+    - `PL_USER_GROUPS_MANAGE_PERMISSION_SPLIT_MIGRATION`: Migrates existing roles with `Manage` permission to include all new granular permissions by default
+    - `PL_USER_GROUPS_MANAGE_PERMISSION_SPLIT_ENFORCE`: Enforces the new granular permissions across all user group operations (enable after migration is complete)
 
 ### Version 1.126.x <!--January 14,2026-->
 

@@ -2283,6 +2283,10 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 - Improved audit logging now captures failed login attempts across all authentication methods, offering improved visibility into security events. [PL-66585]
 - Implemented reference creation between user groups and notification channels at the project scope, ensuring user groups cannot be deleted while they are referenced by one or more notification channels. [PL-66281]
 - OPA policies are now enforced during token rotation, ensuring rotated tokens follow policy limits and do not use long expiration times. [PL-65141]
+- User group `Manage` permission is now split into granular permissions for improved access control, including `Create`, `Edit (Metadata)`, `Delete`, `Manage Notifications`, `Manage SSO`, `Manage SCIM`, `Manage Users`, and `Manage Role Assignments`. [PL-58021]
+  - **Feature Flags:**
+    - `PL_USER_GROUPS_MANAGE_PERMISSION_SPLIT_MIGRATION`: Migrates existing roles with `Manage` permission to include all new granular permissions by default
+    - `PL_USER_GROUPS_MANAGE_PERMISSION_SPLIT_ENFORCE`: Enforces the new granular permissions across all user group operations (enable after migration is complete)
 
 #### GitOps 
 
