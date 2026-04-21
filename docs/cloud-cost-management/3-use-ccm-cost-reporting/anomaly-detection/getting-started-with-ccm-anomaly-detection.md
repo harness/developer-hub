@@ -316,6 +316,16 @@ When you select an anomaly, you'll see detailed information organized into the f
 - **Severity**: The severity level (Low, Medium, Critical) based on cost impact
 - **Date**: When the anomaly was detected
 - **Duration**: How long the anomalous spending pattern persisted
+- **Confidence Score**: When an anomaly is detected, the system assigns an Anomaly Score (0–100%) representing how confident the system is that the cost change is a true anomaly versus normal variance.
+The score is computed by analyzing how far the actual cost deviates from the expected range, based on historical spending patterns.
+    What the score means:
+    | Score | Confidence | What it tells you |
+    | --- | --- | --- |
+    | 1–25% | Low | Small deviation — could be normal day-to-day variance |
+    | 25–50% | Moderate | Noticeable deviation — likely a real anomaly |
+    | 50–75% | High | Clear deviation from historical pattern |
+    | 75–100% | Very High | Unmistakable anomaly — far beyond expected cost range |
+
 - **Spend Breakdown:**
     - **Expected Spend**: The predicted cost based on historical patterns (e.g., \$116.16)
     - **Actual Spend**: The actual amount spent during the anomaly period (e.g., \$280.52)
