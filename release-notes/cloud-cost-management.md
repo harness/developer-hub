@@ -25,6 +25,21 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## April 2026 - Version 1.86.15
+#### Deployment Date: April 17, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **Cost Settings now respects RBAC permissions:** Users with CCM Viewer (view-only) access will no longer see an enabled Save Preferences button in the Cost Settings tab. The Cost Settings preferences section in both the Recommendations and Anomalies pages now correctly reflects manage permissions — consistent with how all other preference sections behave. [CCM-31477]
+
+- **Rejected and Ignored lists moved to the main Recommendations view:** These lists have been relocated from the drawer into the Recommendations list itself, enabling users to export rejected and ignored recommendations directly without any extra steps. [CCM-30485]
+
+- **GCP invoice month filter in Perspectives shows correct months on month-end dates:** The invoice month filter in Perspective filters now accurately reflects the current month when viewed on the last day of the month. [CCM-31433]
+
+- **Chart tooltips and x-axis in Overview page now display time in UTC:** The overview page chart now consistently shows UTC time in both the tooltip and x-axis labels, removing ambiguity across time zones.
+
+- **Budget alerts section shows the correct label per budget type:** The alerts section on the budget details page now displays the appropriate label based on the budget type configured. [CCM-31190]
+
 ## March 2026 - Version 1.84.4
 #### Deployment Date: March 26, 2026 (Prod-1)
 
