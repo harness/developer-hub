@@ -24,8 +24,8 @@ Webhook support varies by package type. The following table shows which package 
 
 | Webhook Support Status | Package Types |
 |------------------------|---------------|
-| Supported | Docker, Maven, Cargo, Go, Conda, Dart, Composer (PHP) |
-| Coming Soon | Generic, Python (PyPI), NPM, NuGet, RPM, Hugging Face (HF) |
+| Supported | Docker, Maven, NPM, NuGet, Python (PyPI), Cargo, Go, Conda, Dart, Composer (PHP) |
+| Coming Soon | Generic, RPM, Hugging Face (HF) |
 
 :::info
 Webhook support for additional package types is being actively developed.
