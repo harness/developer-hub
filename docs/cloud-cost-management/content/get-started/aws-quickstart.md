@@ -15,16 +15,98 @@ To ensure a smooth and error-free setup experience, complete the following steps
 
 ---
 
-### Set Up the Cost and Usage Report
-1. Go to **AWS Billing → Cost & Usage Reports**.
-2. Click **Create report**.
-3. Enter a name for the report (e.g., `ccm-harness-report`).
-4. Check the following options:
-   - ✅ **Include resource IDs**
-   - 🕒 **Time granularity**: `Hourly`
-   - 🔄 **Report versioning**: `Overwrite existing report`
-5. Choose or create an **S3 bucket** as the report destination.
-6. Complete the setup.
+<details>
+<summary>Set Up the Cost and Usage Report</summary>
+
+Harness Cloud Cost Management (CCM) requires AWS Cost and Usage Reports (CUR) to be configured in **Legacy CUR format**. AWS CUR 2.0 (Data Exports) is **NOT supported**.
+
+> **Important**: When creating a new CUR in AWS, you must select the "Legacy CUR export" option. AWS now defaults to CUR 2.0 / Data Exports for new reports, which will not work with Harness.
+
+**Required CUR Settings**
+
+When creating a Legacy CUR report in AWS, configure the following settings:
+
+| Setting | Required Value | Notes |
+|---------|----------------|-------|
+| **Report Type** | Legacy CUR export | Not "CUR 2.0" or "Data Exports" |
+| **Include Resource IDs** | ✅ Enabled | Must be checked in "Additional report details" |
+| **Time Granularity** | Hourly | Required for accurate cost tracking |
+| **Compression** | GZIP | Required format |
+| **Data Refresh Settings** | Automatic | Enable "Automatically refresh" |
+| **File Format** | CSV | Parquet is not supported |
+
+**Connector Configuration**
+
+When setting up an AWS CCM connector in Harness, you need to provide:
+
+| Field | Description | Required |
+|-------|-------------|----------|
+| `reportName` | The exact name of your CUR report in AWS | Yes |
+| `s3BucketName` | The S3 bucket where CUR files are delivered | Yes |
+| `region` | AWS region of the S3 bucket | No (defaults to us-east-1) |
+| `s3Prefix` | S3 prefix path for the report | No |
+
+**Troubleshooting**
+
+**"CUR report setting is not found"**
+- The report name doesn't exist or the connector doesn't have permission to access it
+- Verify the report name matches exactly (case-sensitive)
+
+**"Compression is not GZIP"**
+- The CUR report is configured with a different compression type
+- Recreate the report with GZIP compression
+
+**"Time Granularity is not Hourly"**
+- The report is set to Daily or Monthly granularity
+- Recreate the report with Hourly granularity
+
+**"Include resource IDs is not enabled"**
+- The report was created without resource ID tracking
+- Recreate the report with "Include resource IDs" checked
+
+**"No CUR file found"**
+- Files haven't been delivered yet (can take up to 24 hours for new reports)
+- S3 path prefix mismatch between connector and actual report location
+
+**Step-by-Step Setup Guide**
+
+**Create Legacy CUR in AWS**
+
+1. Go to AWS Billing Console → Cost & Usage Reports
+2. Click "Create report"
+3. **Important**: Select "Legacy CUR export" (not the default CUR 2.0)
+4. Configure:
+   - Report name: Choose a descriptive name
+   - Include resource IDs: Check this box
+   - Time granularity: Select "Hourly"
+   - Report versioning: "Create new report version"
+5. Configure S3 delivery:
+   - S3 bucket: Select or create a bucket
+   - S3 path prefix: Optional, but note it if you set one
+   - Compression: Select "GZIP"
+6. Review and create
+
+**2. Wait for Report Delivery**
+
+- AWS delivers the first CUR file within 24 hours
+- Subsequent updates occur multiple times per day
+
+**3. Configure Harness Connector**
+
+1. In Harness, go to Connectors → New Connector → AWS Cloud Cost
+2. Enter the Cross-Account Role ARN and External ID
+3. In CUR settings:
+   - Report Name: Enter the exact report name from AWS
+   - S3 Bucket: Enter the bucket name
+   - S3 Prefix: Enter if you configured one in AWS
+   - Region: Enter the bucket's region
+
+#### Related Documentation
+
+- [AWS CUR User Guide](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Legacy CUR vs CUR 2.0](https://docs.aws.amazon.com/cur/latest/userguide/table-dictionary-cur2.html)
+
+</details>
 
 ---
 
