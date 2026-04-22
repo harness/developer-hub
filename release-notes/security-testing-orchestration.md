@@ -23,6 +23,36 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 
+
+## April 2026
+
+### Version 1.190.0
+
+### New Features and Enhancements
+
+##### All Occurrences Dashboard
+
+Introducing the new [All Occurrences Dashboard](https://developer.harness.io/docs/security-testing-orchestration/dashboards/all-occurences-dashboard), providing an account-level view of all raw vulnerability findings across pipelines. Analyze underlying scanner results, understand how issues are derived, export occurrence-level data, and access detailed context (file paths, line numbers, repos) for faster remediation. This dashboard is currently available to limited accounts and will be rolled out to all accounts soon. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+
+<DocImage path={require('./static/all-occurrences.png')} width="70%" height="70%" title="Click to view full size image" />
+
+
+##### Prisma Cloud scan result fields
+
+We've enhanced **Prisma Cloud** (formerly Twistlock) scan results by adding new fields (`File Name`, `Distro`, and `Distro Release`). The `File Name` field is derived from `packagePath` to improve vulnerability tracking and accuracy.
+
+If you have previously run Prisma Cloud scans in STO, note the following on the first pipeline re-run after this update:
+
+All occurrences that now include the `File Name` field may appear as remediated and reappear as new due to a change in how findings are identified and correlated. This is expected behavior; it reflects improved accuracy (not new vulnerabilities), and subsequent scans will behave normally.
+
+
+Go to [Prisma Cloud (formerly Twistlock) step configuration](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference) to read the same guidance in the product documentation.
+
+
+<DocImage path={require('./static/prisma-cloud.png')} width="70%" height="70%" title="Click to view full size image" />
+
+
 ## March 2026
 
 ### Version 1.187.2

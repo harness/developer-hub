@@ -24,6 +24,18 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 :::
 
+:::info New Prisma Cloud scan fields
+
+Harness STO enhances **Prisma Cloud** (formerly Twistlock) scan results by adding new fields (`File Name`, `Distro`, and `Distro Release`). The `File Name` field is derived from `packagePath` to improve vulnerability tracking and accuracy.
+
+If you have previously run Prisma Cloud scans in STO, note the following on the first pipeline re-run after this update:
+
+- All occurrences that now include the `File Name` field may appear as remediated and reappear as new due to a change in how findings are identified and correlated. This is expected behavior; it reflects improved accuracy (not new vulnerabilities), and subsequent scans will behave normally.
+
+<DocImage path={require('./static/prisma-cloud.png')} width="70%" height="70%" title="Click to view full size image" />
+
+:::
+
 ## Prisma Cloud step settings for STO
 
 The recommended workflow is to add a PrismaCloud step to a Security or Build stage and then configure it as described below.
