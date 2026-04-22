@@ -341,6 +341,94 @@ upgrades:
 </details>  
 :::
 
+
+## April 21, 2026, Version 0.40.1 <!-- April 21, 2026 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                     | **Version**                                                                                  |
+| ---------------------------- | -------------------------------------------------------------------------------------------- |
+| Helm Chart                   | [0.40.1](https://github.com/harness/helm-charts/releases/tag/harness-0.40.1)                 |
+| Air Gap Bundle               | [0.40.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.40.1) |
+| Access Control               | 1.225.2                                                                                      |
+| Anomaly Detection            | 1.26.1                                                                                       |
+| Audit Event Streaming        | 1.81.0                                                                                       |
+| Batch Processing             | 1.82.4                                                                                       |
+| Bootstrap                    | 1.71.1                                                                                       |
+| CE Nextgen                   | 1.84.5                                                                                       |
+| Change Data Capture          | 1.51.3                                                                                       |
+| Chaos CRD                    | 1.79.0                                                                                       |
+| Chaos K8s IFS                | 1.80.0                                                                                       |
+| Chaos Linux IFC              | 1.80.0                                                                                       |
+| Chaos Linux IFS              | 1.80.0                                                                                       |
+| Chaos Manager                | 1.80.3                                                                                       |
+| Chaos Machine IFS            | 1.80.0                                                                                       |
+| Chaos Machine IFC            | 1.80.0                                                                                       |
+| Chaos Web                    | 1.80.1                                                                                       |
+| CI Manager                   | 1.127.4                                                                                      |
+| Cloud Info                   | 1.14.4                                                                                       |
+| CV Nextgen                   | 1.57.2                                                                                       |
+| DB Devops Service            | 1.84.0                                                                                       |
+| Debezium Service             | 1.25.3                                                                                       |
+| Delegate Proxy               | 1.9.0                                                                                        |
+| Delegate Version (Immutable) | 26.03.88803                                                                                  |
+| Event Service                | 1.15.2                                                                                       |
+| Feature Flag Pushpin Service | 1.1138.0                                                                                     |
+| Feature Flag Service         | 1.1169.0                                                                                     |
+| Gateway Service              | 1.62.5                                                                                       |
+| GitOps Service               | 1.53.2                                                                                       |
+| Harness Manager              | 1.135.3                                                                                      |
+| LE Nextgen                   | 1.13.1                                                                                       |
+| Log Service                  | 1.45.0                                                                                       |
+| Looker                       | 1.10.1                                                                                       |
+| Next Gen UI                  | 1.125.9                                                                                      |
+| NG Auth UI                   | 1.39.0                                                                                       |
+| NG CE UI                     | 1.80.8                                                                                       |
+| NG Custom Dashboards         | 1.105.0                                                                                      |
+| NG Dashboard Aggregator      | 1.100.0                                                                                      |
+| NG Manager                   | 1.136.2                                                                                      |
+| Pipeline Service             | 1.176.7                                                                                      |
+| Platform Service             | 1.114.0                                                                                      |
+| Policy Management            | 1.43.7                                                                                       |
+| SCM Service                  | 1.45.1                                                                                       |
+| Service Discovery Manager    | 0.60.0                                                                                       |
+| SRM UI                       | 1.16.2                                                                                       |
+| SSCA Manager                 | 1.56.3                                                                                       |
+| SSCA UI                      | 0.43.1                                                                                       |
+| STO Core                     | 1.184.1                                                                                      |
+| Telescopes                   | 1.7.2                                                                                        |
+| Template Service             | 1.138.1                                                                                      |
+| Test Intelligence Service    | 1.65.1                                                                                       |
+| Queue Service                | 1.9.0                                                                                        |
+| Code API                     | 1.80.4                                                                                       |
+| Code GitRPC                  | 1.80.1                                                                                       |
+| Code GitHA                   | 1.80.0                                                                                       |
+| Code Search                  | 1.80.1                                                                                       |
+| IAC Server                   | 1.354.1                                                                                      |
+| IACM Manager                 | 1.138.0                                                                                      |
+| IDP Service                  | 1.38.6                                                                                       |
+| IDP Admin                    | 1.38.2                                                                                       |
+| IDP App UI                   | 1.38.8                                                                                       |
+| Ticket Service               | 1.8.0                                                                                        |
+| Component Service            | 1.10.0                                                                                       |
+| Component Analysis Service   | 1.5.2                                                                                        |
+| UI                           | 1.34.0                                                                                       |
+
+**Air-gap bundle download method**
+
+:::info Note on new airgap bundle structure
+Starting with version 0.38.x, the airgap bundle structure has been redesigned. Components are now grouped into core modules and execution components, allowing you to download exactly what you need using our new interactive scripts.
+:::
+
+For a comprehensive guide on installing Harness Self-Managed Enterprise Edition in an air-gapped environment, see the **Version 0.38.x and later** tab in the [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment) documentation. It covers downloading airgap bundles using interactive scripts (or alternative methods like `gsutil` and `curl`), organizing the core modules and execution components, and securely pushing them to your private container registry.
+
+### Fixed issues
+
+#### Harness Platform
+
+- Improved security in CG Manager by replacing hardcoded secret values with safe placeholder values, reducing the risk of unintended exposure of sensitive information. [PL-70698]
+- Added vault-secrets-loader support for pipeline-service and change-data-capture in SMP environments. [PL-70785]
+
 ## April 14, 2026, Version 0.40.0 <!-- April 14, 2026 -->
 
 This release includes the following Harness module and component versions.
