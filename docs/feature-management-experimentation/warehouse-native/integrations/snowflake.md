@@ -14,8 +14,6 @@ sidebar_position: 1
   target="_self"
 />
 
-## Overview
-
 <Tooltip id="fme.warehouse-native.warehouse-native">Warehouse Native Experimentation</Tooltip> allows you to run experiments on data that already lives in your <Tooltip id="fme.warehouse-native.data-warehouse">data warehouse</Tooltip>. By connecting Harness FME directly to your Snowflake instance, you can securely query and analyze experiment data from your source of truth. 
 
 To begin, connect your Snowflake instance as a data source.

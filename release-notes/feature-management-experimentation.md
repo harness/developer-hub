@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-04-14T10:00:00
+date: 2026-04-22T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,15 +14,28 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: April 14, 2026
+#### Last updated: April 22, 2026
 
 ## April 2026
+
+### [New Feature] Google BigQuery Support in Warehouse Native Experimentation
+----
+#### 2026-04-22
+
+Harness FME now supports [Google BigQuery](/docs/feature-management-experimentation/warehouse-native/integrations/bigquery) as a data warehouse for [Warehouse Native Experimentation](/docs/feature-management-experimentation/warehouse-native/). Teams can connect their BigQuery instance to run experiments directly on warehouse data, using existing datasets as the source of truth for assignment and metric analysis.
+
+Connect your BigQuery project and dataset using a service account in Harness FME and configure a results table in BigQuery for experiment results. Warehouse Native Experimentation must be enabled for your account. To request access, contact your [sales representative or account manager](https://www.harness.io/company/contact-sales).
+
+#### Related documentation
+
+- [Google BigQuery](/docs/feature-management-experimentation/warehouse-native/integrations/bigquery)
+- [Connect Your Data Warehouse](/docs/feature-management-experimentation/warehouse-native/integrations/)
 
 ### [New Enhancement] Reallocate Traffic (Reseed Bucketing) API
 ----
 #### 2026-04-14
 
-The Harness FME API now includes a Reallocate Traffic endpoint, allowing you to reset the <Tooltip id="fme.feature-management.bucketing-seed">bucketing seed</Tooltip> for a feature flag in a specific [environment](/docs/feature-management-experimentation/environments). This operation reassigns all users to new buckets based on existing [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting), effectively resetting treatment assignments. 
+The Harness FME API now includes a Reallocate Traffic endpoint, allowing you to reset the <Tooltip id="fme.feature-management.bucketing-seed">bucketing seed</Tooltip> for a feature flag in a specific [environment](/docs/feature-management-experimentation/environments). 
 
 ```json title="Example JSON Payload"
 {
@@ -31,7 +44,7 @@ The Harness FME API now includes a Reallocate Traffic endpoint, allowing you to 
 }
 ```
 
-Previously only available in the FME UI, this endpoint enables reallocation as part of your deployment workflows.
+This operation reassigns all users to new buckets based on existing [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting), effectively resetting treatment assignments. Previously only available in the FME UI, this endpoint enables reallocation as part of your deployment workflows.
 
 Use the [Reallocate Traffic API](https://docs.split.io/reference/reallocate-traffic-reseed-bucketing) when you need to:
 
