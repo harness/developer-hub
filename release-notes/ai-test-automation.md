@@ -23,6 +23,21 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 :::
 
+## April 2026
+
+### 2026.04.v1
+
+#### New Features
+
+- **Maximum nesting depth for tasks**  
+  Tasks can nest at most **two levels** deep, preventing runaway task hierarchies. A **feature flag** controls this behavior and applies consistently in both the **UI** and **backend**.
+
+#### Enhancements & Bug Fixes
+
+- **Fixed BASE_URL path duplication across environments**  
+  Resolved incorrect path duplication on `BASE_URL` when running tests across environments that share the same URL suffixes.
+
+
 ## March 2026
 
 ### 2026.03.v1
