@@ -56,6 +56,23 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2026
 
+### Version 1.142.0
+
+#### Fixed issues 
+
+- Fixed an issue where HashiCorp Vault secrets with blank values produced a misleading error message stating the secret key path was invalid. When Vault returned a valid response with an empty string value, the error incorrectly read "Secret key path '...' is invalid" instead of indicating the actual problem. The error message now distinguishes between a missing or unreachable path and a path that resolves to an empty value, guiding users to check the secret's value in Vault. (**PL-69984**, **ZD-106017**)
+- Improved error handling for a `NullPointerException` that could occur during pipeline execution. Under certain transient system conditions, an internal node failure surfaced as an unhandled NPE with no actionable details. The pipeline execution engine now catches this scenario and returns a meaningful error message. (**PIPE-32772**, **ZD-109378**)
+- Fixed an issue where large Terraform plans caused a `NullPointerException` or socket timeout when the manager attempted to decrypt the plan output. The decryption process now handles large payloads correctly, preventing timeouts and NPEs during Terraform plan retrieval. (**CDS-108748**, **ZD-110657**)
+- Fixed an intermittent `FLOW_CONTROL_ERROR` (`stream was reset: FLOW_CONTROL_ERROR`) that occurred during Terraform plan and apply steps. The error was triggered by an HTTP/2 flow-control issue in the delegate-to-manager communication when decrypting Terraform plan content via the Harness Secret Manager. The HTTP/2 stream handling has been stabilized to prevent these transient resets. (**CDS-122091**, **ZD-111505**)
+- Fixed an issue where AWS ECS deployments did not honor Service Connect configuration defined in the ECS service definition. The deployment completed without errors but Service Connect was not enabled on the deployed service. ECS deployments now correctly apply Service Connect settings from the service definition. (**CDS-121374**, **ZD-111056**)
+- Fixed an issue where creating a remote template with a Git connector did not register the template as a reference on the connector. The connector's **References** tab now correctly lists remote templates that use it. (**PIPE-33397**, **ZD-110735**)
+- Fixed an issue where a Barrier step inside an **Insert Step** (step template) in a child pipeline of a chained pipeline threw a `NullPointerException`. The barrier identifier was not resolved correctly in the chained pipeline execution context, causing `BarrierExecutionInstance` to be null. Barrier identifier resolution now propagates correctly through chained pipeline and step template contexts. (**PIPE-33169**, **ZD-110759**)
+- Fixed an issue where saving a remote pipeline that used a Git connector backed by an AWS Secret Manager connector threw a `ClassCastException` (`java.lang.String cannot be cast to io.harness.encryption.SecretRefData`). The error occurred during secret reference resolution and surfaced as an unclear Java error instead of a meaningful validation message. The pipeline save flow now handles this scenario correctly and returns a user-friendly error. (**PIPE-33212**, **ZD-109620**)
+
+:::info
+Wondering where versions 1.140.xx and 1.141.xx are? Those releases were rolled into 1.142.xx and upgrades will skip directly from 1.139.xx to 1.142.xx. Don't worry, you're not missing a thing!
+:::
+
 ### Version 1.139.3
 
 #### New features and enhancements
