@@ -309,6 +309,93 @@ echo ">>> Setup complete."
 6. Post this, connect to your instance and upon successful connection, the proxy will show on the home page of Load Balancer Manager in AutoStopping.
 
 </details>
+<details>
+<summary>Script to Setup Proxy on RedHat VM</summary>
+
+
+By default, Autostopping proxy is installed on a  Ubuntu VM. If you want to setup proxy on Redhat, the following script can be used.
+
+```
+Content-Type: multipart/mixed; boundary="//"
+MIME-Version: 1.0
+
+--//
+Content-Type: text/cloud-config; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="cloud-config.txt"
+
+#cloud-config
+cloud_final_modules:
+ - [scripts-user, always]
+--//
+Content-Type: text/x-shellscript; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="userdata.txt"
+
+#!/bin/bash
+set -e
+set -o nounset
+sudo su
+echo "Installing and configuring firewalld"
+dnf install -y firewalld
+systemctl start firewalld
+systemctl enable firewalld
+echo "Initiate exposing ports"
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=443/tcp
+firewall-cmd --reload
+echo "Upgrading packages"
+yum update -y
+echo "Install required packages"
+yum install -y gnupg2 curl zip wget
+echo "Installing envoy"
+rm -rf  /usr/share/keyrings/getenvoy-keyring.gpg
+mkdir -p /usr/share/keyrings
+curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | sudo gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
+echo a077cb587a1b622e03aa4bf2f3689de14658a9497a9af2c427bba5f4cc3c4723 /usr/share/keyrings/getenvoy-keyring.gpg | sha256sum --check 
+wget -O /usr/bin/envoy https://github.com/envoyproxy/envoy/releases/download/v1.31.0/envoy-1.31.0-linux-x86_64
+echo "Downloaded envoy"
+chmod +x /usr/bin/envoy
+
+mkdir -p /var/lw_proxy/
+echo 'accessPointID=""
+apiURL="<REPLACE_YOUR_HARNESS_URL_HERE(ex:https://app.harness.io/lw/api)>"
+proxyPort=8093
+usageTrackingPort=8094
+authToken="{REPLACE_WITH_ACCESS_TOKEN}"
+accountID="{REPLACE_WITH_ACCOUNT_ID}"' > /var/lw_proxy/config.toml
+echo "Generated config file"
+
+wget  -O  /var/lw_proxy/envoy.zip "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/autostopping-custom-lb-3.0.0.zip"
+unzip -o /var/lw_proxy/envoy.zip -d /var/lw_proxy
+sed -i 's|/var/lw_proxy/envoyproxymanager|/usr/bin/envoyproxymanager|g' /var/lw_proxy/lw_proxy.service
+cp /var/lw_proxy/envoyproxymanager /usr/bin/envoyproxymanager
+chmod +x /usr/bin/envoyproxymanager
+echo "Downloaded proxy manager components"
+
+wget  -O  /var/lw_proxy/tcp_proxy.zip "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/autostopping-tcp-proxy-3.4.zip"
+unzip -o /var/lw_proxy/tcp_proxy.zip -d /var/lw_proxy
+sed -i 's|/var/lw_proxy/tcpproxymanager|/usr/bin/tcpproxymanager|g' /var/lw_proxy/lw_tcp_proxy.service
+cp /var/lw_proxy/tcpproxymanager /usr/bin/tcpproxymanager
+chmod +x /usr/bin/tcpproxymanager
+echo "Setup proxy executables"
+
+
+cp /var/lw_proxy/envoy.service /etc/systemd/system/envoy.service
+cp /var/lw_proxy/lw_proxy.service /etc/systemd/system/lw_proxy.service
+cp /var/lw_proxy/lw_tcp_proxy.service /etc/systemd/system/lw_tcp_proxy.service
+echo "Starting proxy services"
+systemctl daemon-reload
+sudo systemctl enable envoy.service 
+sudo systemctl enable lw_proxy.service
+sudo systemctl enable lw_tcp_proxy.service
+systemctl start envoy.service 
+systemctl start lw_proxy.service
+systemctl start lw_tcp_proxy.service
+```
+</details>
 </TabItem>
 
 </Tabs>
