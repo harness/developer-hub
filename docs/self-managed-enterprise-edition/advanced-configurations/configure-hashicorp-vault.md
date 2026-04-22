@@ -36,7 +36,7 @@ The integration operates in two stages:
 
 Before you start, make sure you have the following in place:
 
-* A running HashiCorp Vault instance that can be accessed from within your Kubernetes cluster
+* A running HashiCorp Vault instance, either inside the Kubernetes cluster or on an external server with network access to the Kubernetes API
 * A Vault token with the necessary permissions to create and read secrets
 * The Harness Helm chart and its associated override values file
 
@@ -51,10 +51,10 @@ Before generating secrets, you need to configure HashiCorp Vault with the requir
 This setup also works with the KV v1 secrets engine. If KV v1 is already enabled at the desired path, no additional changes are required.
 :::
 
-Enable the KV v2 secrets engine at the `secret/` path by running the following command:
+Enable the KV v2 secrets engine at the `harness-engine/` path by running the following command:
 
 ```bash
-vault secrets enable -path=secret kv-v2
+vault secrets enable -path=harness-engine kv-v2
 ```
 
 ### Step 2. Create a generator policy and token
@@ -62,13 +62,25 @@ vault secrets enable -path=secret kv-v2
 The secrets generator requires a Vault token with permission to write secrets. Start by creating a policy file named `harness-generator-policy.hcl`:
 
 ```hcl
-path "secret/data/harness/*" {
+path "harness-engine/data/harness/*" {
   capabilities = ["create", "update", "read"]
 }
 
-path "secret/metadata/harness/*" {
+path "harness-engine/harness/*" {
+  capabilities = ["create", "update", "read"]
+}
+
+path "harness-engine/metadata/harness/*" {
   capabilities = ["list", "read"]
 }
+
+path "sys/mounts" {
+  capabilities = ["read"]
+}
+
+path "sys/mounts/harness-engine" {           
+  capabilities = ["create", "read", "update"]                                                                                                                                                   
+} 
 ```
 
 Apply the policy and generate a token:
@@ -92,24 +104,102 @@ vault auth enable kubernetes
 
 #### 3.2 Configure the Kubernetes auth method
 
+Choose the configuration based on where your Vault instance runs.
+
+**Option A: Vault runs inside the Kubernetes cluster**
+
+When Vault runs as a pod in the same cluster, it auto-discovers the Kubernetes CA certificate and service account token from the pod's filesystem.
+
 ```bash
 vault write auth/kubernetes/config \
-  kubernetes_host="https://kubernetes.default.svc:443" \
-  kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
-  token_reviewer_jwt=@/var/run/secrets/kubernetes.io/serviceaccount/token
+  kubernetes_host="https://kubernetes.default.svc:443"
 ```
+
+**Option B: Vault runs outside the Kubernetes cluster**
+
+When Vault runs on an external VM or server, set `disable_local_ca_jwt=true` so that Vault uses each client's service account token for TokenReview validation.
+
+```bash
+vault write auth/kubernetes/config \
+  kubernetes_host="https://<kubernetes-api-endpoint>:443" \
+  disable_local_ca_jwt=true
+```
+
+Replace `<kubernetes-api-endpoint>` with your cluster's API server address.
+
+:::note Network access required
+Ensure the Vault server can reach the Kubernetes API endpoint on port 443. For GKE clusters with authorized networks enabled, add the Vault server's IP to the authorized networks list. For EKS or AKS, verify that security groups or network security rules allow traffic from the Vault server to the API server on port 443.
+
+If your cluster API server does not have publicly trusted TLS certificates (for example, self-managed clusters using kubeadm, k3s, or RKE), provide the cluster CA certificate by setting `kubernetes_ca_cert` in the Vault Kubernetes auth config.
+:::
+
+Since `disable_local_ca_jwt=true` causes Vault to use each client's own service account token for TokenReview, all Harness service accounts that authenticate with Vault must have the `system:auth-delegator` ClusterRole:
+
+```yaml
+# vault-token-reviewer-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vault-token-reviewer-binding-harness
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: harness-default
+  namespace: <harness-namespace>
+- kind: ServiceAccount
+  name: harness-looker
+  namespace: <harness-namespace>
+- kind: ServiceAccount
+  name: harness-manager
+  namespace: <harness-namespace>
+- kind: ServiceAccount
+  name: harness-platform-service
+  namespace: <harness-namespace>
+- kind: ServiceAccount
+  name: harness-queue-service
+  namespace: <harness-namespace>
+- kind: ServiceAccount
+  name: harness-serviceaccount
+  namespace: <harness-namespace>
+- kind: ServiceAccount
+  name: ng-manager
+  namespace: <harness-namespace>
+- kind: ServiceAccount
+  name: template-service
+  namespace: <harness-namespace>
+```
+
+```bash
+kubectl apply -f vault-token-reviewer-binding.yaml
+```
+
+:::note
+Add service accounts for optional modules (such as Chaos) as listed in step 3.4.
+:::
 
 #### 3.3 Create a runtime policy
 
 Create a read-only policy file named `harness-runtime-policy.hcl`. This policy allows Harness pods to read secrets from Vault at runtime.
 
 ```hcl
-path "<engine>/data/<basePath>/*" {
+path "harness-engine/data/harness/*" {
   capabilities = ["read"]
 }
 
-path "<engine>/metadata/<basePath>/*" {
-  capabilities = ["list"]
+path "harness-engine/harness/*" {
+  capabilities = ["read"]
+}
+
+path "harness-engine/metadata/harness/*" {
+  capabilities = ["list", "read"]
+}
+
+# Database secrets engine (for DB dynamic credentials)
+path "database/creds/*" {
+  capabilities = ["read"]
 }
 ```
 
@@ -126,9 +216,9 @@ Create a Kubernetes auth role that allows Harness pods running in the `harness` 
 ```bash
 vault write auth/kubernetes/role/harness \
   bound_service_account_names=harness-default \
-  bound_service_account_namespaces=harness \
+  bound_service_account_namespaces=<harness-namespace> \
   policies=harness-runtime \
-  ttl=1h
+  ttl=12h
 ```
 
 :::note Important: Required Service Accounts
@@ -165,20 +255,36 @@ This section walks you through generating those secrets and updating your Harnes
 
 ### Step 1: Download the secrets generator tool
 
-Download the secrets generator binary that matches your operating system and architecture.
+First, fetch the latest version:
+
+```bash
+export VSM_VERSION=$(curl -s https://app.harness.io/public/shared/vault-secrets-generator/versions.txt | tail -1)
+echo "Latest version: $VSM_VERSION"
+```
+
+:::tip View all available versions
+To see all available versions:
+
+```bash
+curl -s https://app.harness.io/public/shared/vault-secrets-generator/versions.txt
+```
+:::
+
+Then download the binary that matches your operating system and architecture:
 
 **Linux (AMD64)**
 
 ```bash
 curl -L -o vaultSecretGenerator \
-  https://app.harness.io/public/shared/vault-secrets-generator/0.0.1/vaultSecretGenerator-linux-amd64
+  https://app.harness.io/public/shared/vault-secrets-generator/${VSM_VERSION}/vaultSecretGenerator-linux-amd64
 chmod +x vaultSecretGenerator
 ```
 
 **Linux (ARM64)**
 
 ```bash
-curl -L -o vaultSecretGenerator https://app.harness.io/public/shared/vault-secrets-generator/0.0.1/vaultSecretGenerator-linux-arm64
+curl -L -o vaultSecretGenerator \
+  https://app.harness.io/public/shared/vault-secrets-generator/${VSM_VERSION}/vaultSecretGenerator-linux-arm64
 chmod +x vaultSecretGenerator
 ```
 
@@ -186,7 +292,7 @@ chmod +x vaultSecretGenerator
 
 ```bash
 curl -L -o vaultSecretGenerator \
-  https://app.harness.io/public/shared/vault-secrets-generator/0.0.1/vaultSecretGenerator-darwin-amd64
+  https://app.harness.io/public/shared/vault-secrets-generator/${VSM_VERSION}/vaultSecretGenerator-darwin-amd64
 chmod +x vaultSecretGenerator
 ```
 
@@ -194,7 +300,7 @@ chmod +x vaultSecretGenerator
 
 ```bash
 curl -L -o vaultSecretGenerator \
-  https://app.harness.io/public/shared/vault-secrets-generator/0.0.1/vaultSecretGenerator-darwin-arm64
+  https://app.harness.io/public/shared/vault-secrets-generator/${VSM_VERSION}/vaultSecretGenerator-darwin-arm64
 chmod +x vaultSecretGenerator
 ```
 
@@ -202,13 +308,14 @@ chmod +x vaultSecretGenerator
 
 ```bash
 curl -L -o vaultSecretGenerator \
-  https://app.harness.io/public/shared/vault-secrets-generator/0.0.1/vaultSecretGenerator-windows-amd64
+  https://app.harness.io/public/shared/vault-secrets-generator/${VSM_VERSION}/vaultSecretGenerator-windows-amd64
 ```
 
 **Windows (ARM64)**
 
 ```bash
-curl -L -o vaultSecretGenerator https://app.harness.io/public/shared/vault-secrets-generator/0.0.1/vaultSecretGenerator-windows-arm64
+curl -L -o vaultSecretGenerator \
+  https://app.harness.io/public/shared/vault-secrets-generator/${VSM_VERSION}/vaultSecretGenerator-windows-arm64
 chmod +x vaultSecretGenerator
 ```
 
@@ -223,22 +330,15 @@ Before proceeding, verify that the following Vault configuration steps from the 
 
 ---
 
-### Step 3: Configure the Vault connection in your override file
+### Step 3: Configure the Vault connection for the generator
 
-The secrets generator reads Vault connection details from your Helm values file. Add the following configuration to your `override.yaml` file:
+The secrets generator reads Vault connection details from environment variables. Set the following environment variables:
 
-```yaml
-global:
-  externalSecretsLoader:
-    enabled: true
-    provider: vault
-    vault:
-      address: "https://your-vault-instance:8200"
-      engine: "secret"
-      basePath: "harness"
-      auth:
-        method: "token"
-        # The token is read from the VAULT_TOKEN environment variable
+```bash
+export VAULT_ADDR=https://<vault-address>:8200
+export VAULT_TOKEN=<vault-token-with-generator-policy>
+export VAULT_ENGINE=harness-engine
+export VAULT_BASE_PATH=harness
 ```
 
 ---
@@ -248,12 +348,10 @@ global:
 Export the generator token and run the secrets generator:
 
 ```bash
-export VAULT_TOKEN="hvs.your-token-here"
-
-./vaultSecretGenerator generate harness /path/to/harness-helm-chart -f override.yaml
+./vaultSecretGenerator generate harness /path/to/harness-helm-chart -f /path/to/override.yaml
 ```
 
-This command reads the configuration from `override.yaml`, scans the Harness Helm chart for required secrets (such as database credentials, API keys, and certificates), generates secure secret values, and uploads the secrets to Vault under the `secret/harness/*` path. 
+This command reads the configuration from `override.yaml`, scans the Harness Helm chart for required secrets (such as database credentials, API keys, and certificates), generates secure secret values, and uploads the secrets to Vault under the `harness-engine/harness/*` path. 
 
 ### Step 5: Add required secrets to Vault
 
@@ -284,7 +382,7 @@ Before proceeding, manually add the following secrets to your Vault instance und
     * Ensure all secret paths match the configured engine and base path.
     * Confirm Vault policies allow the Harness services to read these secrets.
 
-### Optional: 
+<!-- ### Optional: 
 
 1. Store generated secrets in a JSON file for backup. To save the generated secrets to a local JSON file, run:
 
@@ -305,7 +403,7 @@ Before proceeding, manually add the following secrets to your Vault instance und
       --input-json ./harness-secrets-backup.json \
       harness /path/to/harness-helm-chart \
       -f override.yaml
-    ```
+    ``` -->
 
 ---
 
@@ -321,13 +419,12 @@ Update `override.yaml` to match the authentication method to be used by the Harn
         enabled: true
         provider: vault
         vault:
-          address: "http://vault.vault.svc.cluster.local:8200"
-          engine: "secret"
+          address: "https://<vault-address>:8200"
+          engine: "harness-engine"
           basePath: "harness"
           auth:
             method: "kubernetes"
             role: "harness"           # role created in vault
-            serviceAccount: "<serviceaccount>"       # loader serviceaccount for auth
     ```
 
 2. Token authentication (not recommended for production)
@@ -343,7 +440,7 @@ This method stores your Vault token in plaintext in the ConfigMap resource. This
         provider: vault
         vault:
           address: "http://vault.vault.svc.cluster.local:8200"
-          engine: "secret"
+          engine: "harness-engine"
           basePath: "harness"
           auth:
             method: "token"
@@ -356,34 +453,47 @@ This method stores your Vault token in plaintext in the ConfigMap resource. This
 
 ### 1. Database Credentials
 
-Database credentials can be managed differently depending on whether you are using an external databas or an internal (Harness-managed) database.
+Databases (mongoDB, redis, postgres etc.) has to be managed externally or self-managed as harness SMP internal databases need to create DB secrets in kubernetes.
 
-**1.1 Static Credentials (External Databases Only)**
+**1.1 Static Credentials (Recommended for External Database Providers)**
 
     For external databases, customers can choose to use static credentials stored in Vault’s KV secrets engine.
 
     * **Setup:**
       Customers must manually create and manage the database credentials in their Vault instance.
+      
+      Example paths:
+
+      | Username Paths                          |     Password Paths                        |
+      | --------------------------------------- | ----------------------------------------- |
+      | `<engine>/<basePath>/mongo/username`    |  `<engine>/<basePath>/mongo/password`     |
+      | `<engine>/<basePath>/redis/username`    |  `<engine>/<basePath>/redis/password`     |
+      | `<engine>/<basePath>/postgres/username` |  `<engine>/<basePath>/postgres/password`  |
 
     * **Configuration:**
       Customers must explicitly override the Vault path in `values.yaml` to point to the location where the static credentials are stored.
 
+      Example configuration:
+      ```yaml
+      global:
+        externalSecretsLoader:
+          databases:
+            mongo:
+              useDatabaseSecretsEngine: false
+            redis:
+              useDatabaseSecretsEngine: false
+            postgres:
+              useDatabaseSecretsEngine: false
+            timescaledb:
+              useDatabaseSecretsEngine: false
+              overridePath: "harness/postgres"
+      ```
+    
     * **Behavior:**
       At runtime, the secrets loader fetches credentials from the user-provided Vault KV path.
 
-    Example configuration:
 
-    ```yaml
-    global:
-      externalSecretsLoader:
-        databases:
-          # MongoDB (external)
-          mongo:
-            engine: ""        # KV engine name for static credentials
-            overridePath: ""  # Vault path where static credentials are stored
-    ```
-
-**1.2 Dynamic Credentials (External Databases Only)**
+**1.2 Dynamic Credentials (Recommended for Self Hosted External Databases)**
 
       Harness also supports Vault’s Database Secrets Engine for external databases, which generates short-lived, dynamic credentials on demand. To enable dynamic credentials:
 
@@ -424,7 +534,7 @@ global:
 ```
 
 #### Certificate handling behavior
-- During secret generation, the tool checks `secret/harness/{dbType}` for the required certificate keys. If any are missing, it provides instructions for uploading the certificates to Vault.
+- During secret generation, the tool checks `harness-engine/harness/{dbType}` for the required certificate keys. If any are missing, it provides instructions for uploading the certificates to Vault.
 - At runtime, the loader retrieves the certificates from Vault and mounts them into the application container.
 
 ---
@@ -465,7 +575,7 @@ If you manually update a secret in Vault, for example, when rotating an API key 
 #### Step 1: Update the secret in Vault
 
 ```bash
-vault kv put secret/harness/platform-service/env-secrets API_KEY="new-value"
+vault kv put harness-engine/harness/platform-service/env-secrets API_KEY="new-value"
 ```
 
 #### Step 2: Restart the pods
@@ -556,13 +666,13 @@ The Harness secrets generator stores secrets in Vault using a predictable path s
 
 | Secret type               | Vault path                              | Example                                       | Description                                                          |
 | ------------------------- | --------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------- |
-| **Environment variables** | `secret/harness/{service}/env-secrets`  | `secret/harness/platform-service/env-secrets` | Key-value pairs injected into the container as environment variables |
-| **File-based secrets**    | `secret/harness/{service}/file-secrets` | `secret/harness/gateway/file-secrets`         | File-based secrets such as SSL certificates and JKS keystores        |
-| **Database credentials**  | `secret/harness/{db-name}`              | `secret/harness/timescaledb`                  | Static database credentials (when not using dynamic secrets)         |
+| **Environment variables** | `harness-engine/harness/{service}/env-secrets`  | `harness-engine/harness/platform-service/env-secrets` | Key-value pairs injected into the container as environment variables |
+| **File-based secrets**    | `harness-engine/harness/{service}/file-secrets` | `harness-engine/harness/gateway/file-secrets`         | File-based secrets such as SSL certificates and JKS keystores        |
+| **Database credentials**  | `harness-engine/harness/{db-name}`              | `harness-engine/harness/timescaledb`                  | Static database credentials (when not using dynamic secrets)         |
 
 ---
 
-## Backup and restore secrets
+<!-- ## Backup and restore secrets
 :::note
 The secrets generator does not create automatic backups. You must explicitly use the `--output-json` flag to save secrets to a file.
 :::
@@ -580,9 +690,9 @@ export VAULT_TOKEN="hvs.your-token-here"
   -f override.yaml
 ```
 
----
+--- -->
 
-### Configuration options
+## Configuration options
 
 The following example shows all supported configuration options for using Vault-backed secrets with Harness. This configuration is required to load secrets from Vault at runtime. 
 
@@ -628,8 +738,8 @@ global:
 When a pod starts, an init container is responsible for retrieving secrets from Vault and making them available to the application container. The process follows these steps:
 
 1. **Authenticate to Vault**: The init container authenticates to Vault using the configured authentication method.
-2. **Fetch environment variable secrets**: The init container fetches environment variable secrets from `secret/harness/{service}/env-secrets`.
-3. **Fetch file-based secrets**: The init container fetches file-based secrets from `secret/harness/{service}/file-secrets`.
+2. **Fetch environment variable secrets**: The init container fetches environment variable secrets from `harness-engine/harness/{service}/env-secrets`.
+3. **Fetch file-based secrets**: The init container fetches file-based secrets from `harness-engine/harness/{service}/file-secrets`.
 4. **Generate database credentials**: If the database secrets engine is enabled, the init container generates database credentials from `database/creds/{role}`.
 5. **Write secrets to a shared volume**: The init container writes secrets to a shared volume:
    * Environment variables are written to `/opt/harness/secrets/.env`.
@@ -652,7 +762,7 @@ This section covers common issues you may encounter when using Vault-backed secr
 
 | Error or symptom                           | Likely cause                           | Solution                                                                                                                                                                                                                          |
 | ------------------------------------------ | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Permission denied**                      | Vault policy or role misconfiguration  | Check the secrets loader logs. Verify that the Vault policy allows `read` access on `secret/data/...` and `list` access on `secret/metadata/...`. Also confirm the Kubernetes auth role and service account bindings are correct. |
+| **Permission denied**                      | Vault policy or role misconfiguration  | Check the secrets loader logs. Verify that the Vault policy allows `read` access on `harness-engine/data/...` and `list` access on `harness-engine/metadata/...`. Also confirm the Kubernetes auth role and service account bindings are correct. |
 | **Secret not found**                       | Secret missing or incorrect Vault path | Verify that the secret exists in Vault. Re-run the secrets generator if needed. Ensure the service name matches the expected Vault path.                                                                                          |
 | **Connection refused** or **no such host** | Network or configuration issue         | Confirm that the Vault service is running and reachable. Check the `vault.address` value in `override.yaml`. Test connectivity using `curl` from within the cluster if possible.                                                  |
 | **Pod stuck in `Init:0/1`**                | Any of the above issues                | Inspect the init container logs using `kubectl logs <pod> -c secrets-loader`. Review pod events with `kubectl describe pod <pod>`.                                                                                                |
@@ -674,7 +784,7 @@ This section covers common issues you may encounter when using Vault-backed secr
     Update the secret in Vault and restart the affected pods so they can retrieve the new values:
 
         ```bash
-        vault kv put secret/harness/platform-service/env-secrets API_KEY="new-value"
+        vault kv put harness-engine/harness/platform-service/env-secrets API_KEY="new-value"
         kubectl rollout restart deployment platform-service -n harness
         ```
 
