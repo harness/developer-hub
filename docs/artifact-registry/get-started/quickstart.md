@@ -96,6 +96,11 @@ Select your artifact format below to get started:
       path: "/artifact-registry/content/supported-formats/php-composer-quickstart.md",
       logo: "php-composer-logo.svg",
       logoSize: 24
+    },
+    Swift: {
+      path: "/artifact-registry/content/supported-formats/swift-quickstart.md",
+      logo: "swift-logo.svg",
+      logoSize: 24
     }
   }}
   disableSort={true}

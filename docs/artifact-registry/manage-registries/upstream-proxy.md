@@ -65,6 +65,11 @@ To create an upstream proxy, follow these steps:
     - Enter the Helm **Remote Registry URL**
     
     </TabItem>
+    <TabItem value="Swift" label="Swift">
+    
+    - Enter the **Remote Registry URL** for the upstream Swift Package Registry (use a **Custom** source when the UI offers it and your registry is not a built-in preset)
+    
+    </TabItem>
     </Tabs>
 
 5. Choose your **Authentication** method:

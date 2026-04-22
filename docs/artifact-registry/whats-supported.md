@@ -9,10 +9,10 @@ To enable Harness Artifact Registry in your account, contact your sales represen
 :::
 
 ## Registries
-Harness Artifact Registry supports a variety of registry types, and new ones are often added. We currently support the registry types listed below. 
+Harness Artifact Registry supports a variety of registry types, and new ones are often added. We currently support the registry types listed below.
 
 ### Supported registry types
-These are the currently supported registry types. 
+These are the currently supported registry types.
 - **Docker:** Your go-to for container images.
 - **Helm:** Perfect for managing Kubernetes applications.
 - **Generic:** Flexible for all your needs.
@@ -25,6 +25,7 @@ These are the currently supported registry types.
 - **Gradle:** Streamline your build automation.
 - **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
 - **Dart:** For all your Dart and Flutter packages.
+- **Swift:** Swift packages with Swift Package Manager (SwiftPM) registry workflows.
 - **PHP Composer:** Private Composer packages with Packagist-compatible workflows.
 - **Go:** Support for Go modules.
 - **Cargo:** Rust package management.
