@@ -42,7 +42,9 @@ The **SLSA Generation** step enables you to generate SLSA Provenance and optiona
 
 <DocImage path={require('./static/slsa-step.png')} width="50%" height="50%" />
 
-Follow the instructions below to configure the **SLSA Generation** step.
+### Container Images
+
+Follow the instructions below to configure the **SLSA Generation** step for container images.
 
 - Search and add the **SLSA Generation** step to your pipeline. It is important to place this step immediately after the steps that complete your image-building process, as it requires the artifact digest as input.
 - **Artifact Source**: Configure your artifact source by selecting from the options available in the dropdown menu. You can choose from **Docker Registry**, **ECR**, **ACR**, or **GAR**. Select the corresponding artifact source tab below for detailed instructions on configuration.
@@ -132,6 +134,35 @@ OIDC Auth type is not supported.
 
 
 </Tabs>
+
+### Non-Container Artifacts
+
+SLSA generation is not limited to container images. You can also generate SLSA provenance for non-container artifacts. Non-container artifacts are files or packages that are not packaged as container images, such as binaries, manifests, or archives. Each artifact is uniquely identified by its digest (SHA), which is used during verification. For non-container artifacts, ensure your pipeline includes a step (e.g., a <a href="/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step" target="_blank">Run step</a>) that generates the artifact and its digest before the SLSA Generation step.
+
+The following non-container artifact types are supported:
+
+* Helm charts (`.tgz`)
+* YAML manifests (`.yaml`)
+* Java archives (`.jar`)
+* Web application archives (`.war`)
+
+:::note
+
+Artifacts not listed above are treated as unknown types.
+
+:::
+
+To generate SLSA Provenance for Non-Container Artifacts:
+
+1. Enter a **Name** for the step under `Name`. Harness automatically generates a step ID from the name. Once the pipeline is created, you can't change the ID.
+2. Select **Harness Local Stage** as the **Source**.
+3. Provide the exact path to the artifact within the workspace under `Workspace Artifact Path`. Ensure that you run a custom step to pull the artifact into the workspace directory. The default workspace path is `/harness`.
+4. Click the radio buttons under `Target Detection` to set the artifact name and version. The available options are **Auto** and **Manual**.
+  * By default, the target detection is set to **Auto**. It automatically sets the artifact name from the provided path.
+  * Click the radio button beside **Manual** to manually specify the artifact name and version.
+    * Provide the name of the artifact under `Artifact Name`. Optionally, provide the artifact version under `Version`.
+
+<DocImage path={require('./static/generate-slsa-non-container-image.png')} width="100%" height="100%" title="Click to view full size image" />
 
 With this configuration, the step generates the SLSA Provenance and stores it in the [Artifact section](/docs/software-supply-chain-assurance/artifact-security/overview) of SCS. To attest to the generated provenance, follow the instructions in the section below.
 

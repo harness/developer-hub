@@ -32,7 +32,9 @@ In the Harness SCS, the SLSA verification step is responsible for verifying the 
 <DocImage path={require('./static/verify-slsa.png')} width="50%" height="50%" />
     
 
-The SLSA Verification step has the following fields:
+### Container Images
+
+Follow the instructions below to configure the **SLSA Verification** step for container images.
 
 * **Name**: Enter a name for the step.
 * **Registry Type**: Choose your registry from the list of supported items.
@@ -106,6 +108,20 @@ OIDC Auth type is not supported.
 
 </TabItem>
 </Tabs>
+
+### Non-Container Artifacts
+
+SLSA verification supports both container images and non-container artifacts. Non-container artifacts are files or packages that are not packaged as container images, such as binaries, manifests, or archives. They are identified using their digest (SHA). This digest is used to match the artifact with its corresponding provenance during verification.
+
+Ensure that the artifact and its digest are generated earlier in the pipeline, typically via a <a href="/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step" target="_blank">Run step</a>, and that SLSA provenance is already available. Use the same artifact reference in the SLSA Verification step.
+
+To verify SLSA Provenance for Non-Container Artifacts:
+
+1. Enter a **Name** for the step under `Name`. Harness automatically generates a step ID from the name. Once the pipeline is created, you can't change the ID.
+2. Select **Harness Local Stage** as the **Source**.
+3. Specify the same workspace artifact path that was used during the SLSA Generation step under `Workspace Artifact Path`. This path must point to the exact location of the artifact within the workspace so that it can be matched with its provenance during verification. The default workspace path is `/harness`.
+
+<DocImage path={require('./static/verify-slsa-non-container-image.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ### Verify SLSA Attestation
 
