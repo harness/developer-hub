@@ -25,6 +25,10 @@ const DMS_REDIRECT_MAP = {
     "parentRepoPath": "artifact-registry/get-started/quickstart",
     "hash": "generic"
   },
+  "artifact-registry/content/supported-formats/raw-file-quickstart": {
+    "parentRepoPath": "artifact-registry/get-started/quickstart",
+    "hash": "rawfile"
+  },
   "artifact-registry/content/supported-formats/maven-quickstart": {
     "parentRepoPath": "artifact-registry/get-started/quickstart",
     "hash": "maven"

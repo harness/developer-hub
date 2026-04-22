@@ -8,6 +8,7 @@ sidebar_position: 4
 
 import Tabs from '@theme/Tabs';
 import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
+import DocImage from '@site/src/components/DocImage';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate/rss.xml" />
 
@@ -55,6 +56,46 @@ We have introduced a new argument `token_status`, for managing Delegate tokens i
 
 Harness delegate now offers FIPS (Federal Information Processing Standard) compliant images compatible only with [FIPS Self-Managed Platform](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview). This is available starting Delegate version: [25.07.86300](/release-notes/delegate#version-250786300-).
 
+:::
+
+### STIG-compliant delegate images (SAAS - On Demand)
+
+:::info
+Harness provides STIG-compliant (Security Technical Implementation Guide) hardened delegate images for SAAS customers with compliance requirements. 
+
+These images are stored in a private registry and are available on-demand for organizations in regulated environments such as government agencies, financial institutions, and enterprises with stringent security policies.
+
+**How to access:**
+
+1. Login to you Harness account, submit a Zendesk support ticket requesting STIG-compliant delegate images.
+
+    <DocImage path={require('./static/support-ticket.png')} width="80%" height="80%" title="Click to view full size image" />
+
+2. The [Harness Customer Success team](mailto:support@harness.io) will review your request and provide a Docker Hub token for the private registry.
+3. Create a Kubernetes [imagePullSecret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) with the provided credentials:
+
+    ```bash
+    kubectl create secret docker-registry harness-stig-registry \
+      --docker-server=<REGISTRY_URL> \
+      --docker-username=<USERNAME> \
+      --docker-password=<DOCKER_HUB_TOKEN> \
+      --namespace=<your-delegate-namespace>
+    ```
+
+4. Update your delegate manifest to reference the STIG image and pull secret:
+
+    ```yaml
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: harness-stig-registry
+          containers:
+            - name: delegate
+              image: docker.io/harnesssecure/delegate:<DELEGATE_VERSION>
+    ```
+
+Go to [Install a delegate on Kubernetes](/docs/platform/delegates-v2/install-a-delegate/install-kubernetes-delegate) for general delegate installation steps.
 :::
 
 <details>
