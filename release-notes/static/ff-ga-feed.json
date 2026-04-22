@@ -1294,5 +1294,11 @@
     "description": "Enables users to import OPA policies directly from Git.",
     "gaStartDate": "2026-04-21",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "SCS_SLSA_NON_CONTAINER",
+    "description": "Enables SLSA provenance generation for non-containerized artifacts like Helm charts, manifest files, JARs, WARs, etc.",
+    "gaStartDate": "2026-04-22",
+    "module": "Supply Chain Security"
   }
 ]
