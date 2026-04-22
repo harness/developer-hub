@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/generate-troubleshoot-responses.mjs && node scripts/generate-feature-flags-rss.js && node scripts/generate-release-notes-summaries.mjs && node scripts/fetch-api-specs.mjs && node scripts/build-glossary.js && node scripts/generate-dms-redirect-map.mjs",
+    "prebuild": "node scripts/generate-troubleshoot-responses.mjs && node scripts/generate-feature-flags-rss.js && node scripts/generate-release-notes-summaries.mjs && node scripts/fetch-api-specs.mjs && node scripts/build-glossary.js",
     "docusaurus": "docusaurus",
     "build-glossary": "node scripts/build-glossary.js",
     "build-glossary:watch": "nodemon --watch src/components/ToolTip/tooltips.json --exec 'node scripts/build-glossary.js'",

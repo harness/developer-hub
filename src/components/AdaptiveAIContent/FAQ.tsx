@@ -28,7 +28,7 @@ function FAQInner({ question, mode = 'docs', fallback }: FAQProps) {
   }, [loading, response, error]);
 
   const content = (() => {
-    if (mode === 'fallback-only') return <p>{fallback}</p>;
+    if (mode === 'fallback-only') return <ReactMarkdown>{fallback}</ReactMarkdown>;
     if (loading || completing) {
       return (
         <div className={styles.progressWrap}>
@@ -42,7 +42,7 @@ function FAQInner({ question, mode = 'docs', fallback }: FAQProps) {
       );
     }
     if (response && response.trim() && !error) return <ReactMarkdown>{response}</ReactMarkdown>;
-    return <p>{fallback}</p>;
+    return <ReactMarkdown>{fallback}</ReactMarkdown>;
   })();
 
   return (
@@ -59,7 +59,7 @@ export default function FAQ(props: FAQProps) {
       fallback={
         <details>
           <summary>{props.question}</summary>
-          <p>{props.fallback}</p>
+          <ReactMarkdown>{props.fallback}</ReactMarkdown>
         </details>
       }
     >

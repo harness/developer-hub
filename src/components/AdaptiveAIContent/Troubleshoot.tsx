@@ -30,9 +30,9 @@ function TroubleshootInner({ issue, mode = 'general', fallback }: TroubleshootPr
   const content = (() => {
     if (mode === 'fallback-only') {
       return (
-        <ul className={styles.troubleshootList}>
-          <li>{fallback}</li>
-        </ul>
+        <div className={styles.troubleshootList}>
+          <ReactMarkdown>{fallback}</ReactMarkdown>
+        </div>
       );
     }
 
@@ -46,9 +46,9 @@ function TroubleshootInner({ issue, mode = 'general', fallback }: TroubleshootPr
         );
       }
       return (
-        <ul className={styles.troubleshootList}>
-          <li>{fallback}</li>
-        </ul>
+        <div className={styles.troubleshootList}>
+          <ReactMarkdown>{fallback}</ReactMarkdown>
+        </div>
       );
     }
 
@@ -73,9 +73,9 @@ function TroubleshootInner({ issue, mode = 'general', fallback }: TroubleshootPr
       );
     }
     return (
-      <ul className={styles.troubleshootList}>
-        <li>{fallback}</li>
-      </ul>
+      <div className={styles.troubleshootList}>
+        <ReactMarkdown>{fallback}</ReactMarkdown>
+      </div>
     );
   })();
 
@@ -93,9 +93,7 @@ export default function Troubleshoot(props: TroubleshootProps) {
       fallback={
         <details>
           <summary>{props.issue}</summary>
-          <ul>
-            <li>{props.fallback}</li>
-          </ul>
+          <ReactMarkdown>{props.fallback}</ReactMarkdown>
         </details>
       }
     >
