@@ -171,6 +171,19 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2026
 
+### Version 26.04.89002 <!-- April 22, 2026 -->
+
+#### Fixed issues
+- Added missing parameters (ServiceConnectConfiguration, ServiceVolumeConfiguration, VpcLatticeConfiguration, and AvailabilityZoneRebalancing) in service update requests. [CDS-121374]
+- Fixed an issue where authentication errors from external Helm providers were shown as Harness login failures. These are now correctly shown as third-party credential errors. [CDS-120992]
+- Editing a freeze now checks for active windows. This behavior is controlled by the CDS_ALLOW_ACTIVE_FREEZE_EDIT feature flag. [CDS-114114]
+- Fixed an issue where the isHarnessCodeRepo flag was not set correctly based on connectorRef. [CDS-104665]
+- Improved error messaging when a launch template is deleted during an ASG deployment. [CDS-103239]
+
+#### New features and enhancements
+
+- New users are now prompted to complete their profile right after signup, including details like company name, full name, job title, and phone number. [PL-70488]
+
 ### Version 26.04.88903 <!-- April 21, 2026 -->
 
 #### Fixed issues
