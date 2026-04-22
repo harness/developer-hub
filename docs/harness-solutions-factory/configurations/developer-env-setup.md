@@ -15,9 +15,11 @@ Once your development environment is ready, you can simply clone this repository
 
 To modify the DevContainer, simply edit the `devcontainer.json` at the root of this repository and reload.
 
+<!-- HDH-542: CDE section hidden from navigation. Section and link preserved below.
 ## Using Harness Cloud Development Environments (Gitspaces)
 
 Harness supports the use of Cloud Development Environments (Harness Gitspaces) which can launch an interactive environment using the Harness CDE module. For more information, see the details on [Harness Cloud Development Environments](https://developer.harness.io/docs/cloud-development-environments)
+-->
 
 ## Local Container Based development
 

@@ -139,13 +139,13 @@ import { MODULES } from "@site/src/constants";
               "",
             link: "/release-notes/internal-developer-portal",
           },
-          {
-            title: "Cloud Development Environments release notes",
-            module: MODULES.cde,
-            description:
-              "",
-            link: "/release-notes/cloud-development-environments",
-          },
+          // Cloud Development Environments hidden from navigation (HDH-542)
+          // {
+          //   title: "Cloud Development Environments release notes",
+          //   module: MODULES.cde,
+          //   description: "",
+          //   link: "/release-notes/cloud-development-environments",
+          // },
           {
             title: "Security Testing Orchestration release notes",
             module: MODULES.sto,

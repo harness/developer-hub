@@ -13,7 +13,8 @@ import { IacmData, iacmModuleTheme } from "./iacmData";
 import { platformData, platformModuleTheme } from "./platformData";
 import { aidaData, aidaModuleTheme } from "./aidaData";
 import { codeData, codeModuleTheme } from "./codeData";
-import { CdeData, cdeModuleTheme } from "./cdeData";
+// CDE hidden from navigation (HDH-542)
+// import { CdeData, cdeModuleTheme } from "./cdeData";
 import { DbdevopsData, dbdevopsModuleTheme } from "./dbdevopsData";
 import { AtaData, ataModuleTheme } from "./ataData";
 import { arData, arModuleTheme } from "./arData";
@@ -164,13 +165,14 @@ const ModuleData: ModuleData[] = [
     horizon: aidaData,
     moduleTheme: aidaModuleTheme,
   },
-  {
-    title: "Cloud Development Environments",
-    description: "SaaS release status: GA, SMP release status: On Roadmap",
-    module: MODULES.cde,
-    horizon: CdeData,
-    moduleTheme: cdeModuleTheme,
-  },
+  // Cloud Development Environments hidden from navigation (HDH-542)
+  // {
+  //   title: "Cloud Development Environments",
+  //   description: "SaaS release status: GA, SMP release status: On Roadmap",
+  //   module: MODULES.cde,
+  //   horizon: CdeData,
+  //   moduleTheme: cdeModuleTheme,
+  // },
   {
     title: "Artifact Registry",
     description: "SaaS release status: GA",

@@ -54,11 +54,12 @@ const docDropdownItems = [
     label: "Artifact Registry",
     icon: "/img/icon-ar.svg",
   },
-  {
-    to: "/docs/cloud-development-environments",
-    label: "Cloud Development Environments",
-    icon: "/img/icon-cde.svg",
-  },
+  // Cloud Development Environments hidden from navigation (HDH-542)
+  // {
+  //   to: "/docs/cloud-development-environments",
+  //   label: "Cloud Development Environments",
+  //   icon: "/img/icon-cde.svg",
+  // },
   // Testing & Resilience
   { type: "header", label: "Testing & Resilience" },
   {

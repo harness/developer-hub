@@ -81,8 +81,8 @@ Here’s how you can get started with **Harness GitSpaces**:
 
 1. [**Understand what’s supported**](/docs/cloud-development-environments/introduction/whats-supported.md) - Review the current capabilities of Harness Gitspaces to align with your needs.
 
-2. [**Follow the Get Started tutorial**](/docs/category/get-started-1) — Once you’ve assessed your requirements, try the tutorial for a quick hands-on introduction. 
+2. [**Follow the Get Started tutorial**](/docs/cloud-development-environments/introduction/quickstart-tutorial) — Once you’ve assessed your requirements, try the tutorial for a quick hands-on introduction. 
 
-3. [**Deep dive into architecture & configuration**](/docs/category/deep-dive-into-gitspaces) — Learn how Gitspaces work under the hood and how to configure them effectively. 
+3. [**Deep dive into architecture & configuration**](/docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration) — Learn how Gitspaces work under the hood and how to configure them effectively. 
 
-4. **Explore features** — Familiarize yourself with the key features and see how to develop efficiently within Gitspaces -> [**Features of Gitspaces**](/docs/category/features-of-gitspaces) & [**Developing in Gitspaces**](/docs/category/develop-in-gitspaces). 
+4. **Explore features** — Familiarize yourself with the key features and see how to develop efficiently within Gitspaces -> [**Features of Gitspaces**](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images) & [**Developing in Gitspaces**](/docs/cloud-development-environments/develop-using-cde/source-control). 

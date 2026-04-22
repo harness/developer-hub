@@ -15,7 +15,7 @@ import Tooltip from "../components/ToolTip/Tooltip";
 import DocTable from "../components/DocTable/DocTable";
 import UniversityAdmonition from "../components/Admonition/UniversityAdmonition";
 import DynamicMarkdownSelector from "@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector";
-import Troubleshoot from "@site/src/components/AdaptiveAIContent";
+import { Troubleshoot, FAQ } from "@site/src/components/AdaptiveAIContent";
 
 export default {
   // Re-use the default mapping
@@ -36,5 +36,6 @@ export default {
   DocTable: DocTable,
   UniversityAdmonition: UniversityAdmonition,
   DynamicMarkdownSelector: DynamicMarkdownSelector,
+  FAQ: FAQ,
   Troubleshoot: Troubleshoot,
 };

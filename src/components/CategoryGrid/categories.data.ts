@@ -59,13 +59,14 @@ export const categories: Category[] = [
         badge: "NEW",
         description: "Host, proxy, and distribute artifacts."
       },
-      {
-        name: "Cloud Development Environments",
-        href: "/docs/cloud-development-environments",
-        module: "cde",
-        badge: "NEW",
-        description: "Spin up ephemeral cloud dev spaces."
-      },
+      // Cloud Development Environments hidden from navigation (HDH-542)
+      // {
+      //   name: "Cloud Development Environments",
+      //   href: "/docs/cloud-development-environments",
+      //   module: "cde",
+      //   badge: "NEW",
+      //   description: "Spin up ephemeral cloud dev spaces."
+      // },
     ],
   },
   {

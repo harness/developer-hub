@@ -137,13 +137,14 @@ export const featureList: CardItem[] = [
     description: <>A home for developers to create, manage, and explore software.</>,
     link: "docs/internal-developer-portal/get-started",
   },
-  {
-    title: "Set up Cloud Development Environments",
-    module: MODULES.cde,
-    icon: "img/cde_icon.svg",
-    description: <>Accelerate developer experience with pre-configured, secure and scalable development environments.</>,
-    link: "docs/cloud-development-environments",
-  },
+  // Cloud Development Environments hidden from navigation (HDH-542)
+  // {
+  //   title: "Set up Cloud Development Environments",
+  //   module: MODULES.cde,
+  //   icon: "img/cde_icon.svg",
+  //   description: <>Accelerate developer experience with pre-configured, secure and scalable development environments.</>,
+  //   link: "docs/cloud-development-environments",
+  // },
   {
     title: "Measure Software Engineering Processes",
     module: MODULES.sei,

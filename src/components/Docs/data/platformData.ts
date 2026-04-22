@@ -84,12 +84,13 @@ export const docsCards: CardSections = [
         description: "Store, manage, and serve build artifacts and container images with built-in access control.",
         link: "/docs/artifact-registry/get-started/overview",
       },
-      {
-        title: "Cloud Development Environments",
-        module: MODULES.cde,
-        description: "Spin up pre-configured, cloud-hosted dev environments so developers can start coding in minutes.",
-        link: "/docs/cloud-development-environments/overview",
-      },
+      // Cloud Development Environments hidden from navigation (HDH-542)
+      // {
+      //   title: "Cloud Development Environments",
+      //   module: MODULES.cde,
+      //   description: "Spin up pre-configured, cloud-hosted dev environments so developers can start coding in minutes.",
+      //   link: "/docs/cloud-development-environments/overview",
+      // },
       {
         title: "Feature Management & Experimentation",
         module: MODULES.fme,
