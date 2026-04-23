@@ -438,10 +438,6 @@ const config: Config = {
               to: 'legal/accessibility',
             },
             {
-              html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
-              // href: "javascript: alert(33)",
-            },
-            {
               label: 'Do not sell or share my personal information',
               to: 'https://harness-privacy.relyance.ai/',
             },
