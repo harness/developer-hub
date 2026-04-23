@@ -22,6 +22,73 @@ These release notes describe recent changes to Harness Database DevOps.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
+## April 2026
+
+### Release 1.89.x
+The `1.89.x` release expands database support, enabling teams to manage schema changes and migrations for additional cloud-native data platforms.
+
+#### Key Highlights
+
+* **Feature Enhancements**
+ - Added support for BigQuery, allowing teams to integrate and manage BigQuery schemas within DB DevOps workflows.
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.30.0-4.33            | 1.29.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.30.0-4.33-mongo      | 1.29.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.30.0-4.33-spanner    | 1.29.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.30.0-4.33-snowflake  | 1.29.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.30.0-4.33-percona    | 1.29.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.30.0-4.33-cloudsql   | 1.29.0-4.33-cloudsql         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+### Release 1.88.x
+
+No customer-facing updates were introduced in this release.
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.29.0-4.33            | 1.28.3-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.29.0-4.33-mongo      | 1.28.3-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.29.0-4.33-spanner    | 1.28.3-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.29.0-4.33-snowflake  | 1.28.3-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.29.0-4.33-percona    | 1.28.3-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.29.0-4.33-cloudsql   | 1.28.3-4.33-cloudsql         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+### Release 1.87.x
+The `1.87.x` release expands database support and improves authentication reliability across DB DevOps workflows.
+
+#### Key Highlights
+
+* **Feature Enhancements**
+  - Added support for IBM DB2, enabling teams to manage schema changes and migrations for DB2 databases within DB DevOps.
+
+* **Bug Fixes**
+  - Resolved issues with session and local storage handling for auth tokens, improving stability of authenticated workflows.
+
+#### Image Upgrades
+
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.28.3-4.33            | 1.28.2-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.28.3-4.33-mongo      | 1.28.2-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.28.3-4.33-spanner    | 1.28.2-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.28.3-4.33-snowflake  | 1.28.2-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.28.3-4.33-percona    | 1.28.2-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.28.3-4.33-cloudsql   | 1.28.2-4.33-cloudsql         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
 ## March 2026
 
 ### Release 1.86.x
