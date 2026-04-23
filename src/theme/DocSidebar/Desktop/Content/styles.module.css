@@ -25,12 +25,15 @@
    * When our static module-name header is shown, suppress the first Docusaurus
    * category's collapsible toggle (the module name is already displayed in the
    * header block above) and keep its child list permanently expanded.
+   *
+   * Updated selector to only target the direct children of the root menu list,
+   * not nested categories (e.g., Automation > [CLI, API, Terraform]).
    */
-  .menuWithModuleHeader :global(.menu__list > .menu__list-item:first-child > .menu__list-item-collapsible) {
+  .menuWithModuleHeader > :global(ul.menu__list > .menu__list-item:first-child > .menu__list-item-collapsible) {
     display: none;
   }
 
-  .menuWithModuleHeader :global(.menu__list > .menu__list-item:first-child > ul.menu__list) {
+  .menuWithModuleHeader > :global(ul.menu__list > .menu__list-item:first-child > ul.menu__list) {
     display: block !important;
   }
 }
