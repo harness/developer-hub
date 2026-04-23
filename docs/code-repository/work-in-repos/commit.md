@@ -60,3 +60,7 @@ Select **Browse files** to inspect files in that commit.
 You can't directly revert commits in the Harness Code UI. Instead, you need to [create a commit](#create-a-commit) to overwrite the previous commit.
 
 Alternately, if you're working from a [local clone](./clone-repos.md), you can use more nuanced controls available through command line Git, your IDE, or another Git tool.
+
+## Next steps
+<a href="/docs/code-repository/work-in-repos/signing-commits" target="_blank">Sign commits</a>:
+Cryptographically sign commits to prove authorship and prevent tampering.
