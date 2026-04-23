@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-04-06T10:00
+date: 2026-04-13T10:00
 sidebar_position: 10
 ---
 
@@ -61,6 +61,38 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## April 2026
+
+### Version 1.130.0
+
+<!-- April 2026 -->
+
+#### New Features and Enhancements
+
+- Added support for a stage-level override in YAML for the connector used to access cache storage in self-hosted builds. If not specified, Harness uses the connector specified in Default Settings. (CI-21932)
+
+- Containerless CI steps now use `app.harness.io` as the default download path for step binaries, improving reliability and reducing egress dependencies. (CI-21851)
+
+#### Fixed Issues
+
+- Fixed an issue where a NullPointerException caused delays in the build intelligence step, leading to longer pipeline execution times. (CI-21795)
+
+- Fixed an issue where the Cache Intelligence step name was not displaying correctly for self-hosted infrastructure. (CI-13407)
+
+- Improved ci-addon and ci-lite-engine security by upgrading the Go version to address known vulnerabilities. (CI-21826)
+
+- Improved security of the Docker, ECR, ACR, GCR, and GAR build and push plugins by replacing an end-of-life component. (CI-21703)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `drone-git` | Version update | 1.7.16-rootless | 1.7.17-rootless |
+| `plugins/docker` | Security fix | 21.2.5 | 21.2.6 |
+| `plugins/ecr` | Security fix | 21.2.5 | 21.2.6 |
+| `plugins/acr` | Security fix | 21.2.5 | 21.2.6 |
+| `plugins/gcr` | Security fix | 21.2.5 | 21.2.6 |
+| `plugins/gar` | Security fix | 21.2.5 | 21.2.6 |
+| `plugins/cache` | Version update | 1.10.2 | 1.10.3 |
 
 ### Version 1.129.0
 
