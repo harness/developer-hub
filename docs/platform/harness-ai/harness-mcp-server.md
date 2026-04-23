@@ -232,6 +232,130 @@ Add to `~/.aws/amazonq/mcp.json`:
 }
 ```
 
+## Harness Hosted MCP (SaaS, OAuth) {#harness-hosted-mcp-saas-oauth}
+
+Harness provides a **hosted MCP** endpoint for **Harness SaaS** customers. You add the hosted URL to your MCP-compatible client; when you first connect, you complete **OAuth through Harness ID** (browser or embedded sign-in, depending on the client). After authentication, the server runs MCP **on your behalf** using your Harness user identity, including **RBAC** and permissions from the platform. You do **not** configure a Harness API key in the client for this flow.
+
+:::warning OAuth must be enabled on your account
+
+Hosted MCP requires **OAuth to be enabled** on your Harness account. Contact **[Harness Support](https://support.harness.io)** to enable OAuth before using Hosted MCP. Without OAuth enabled, you will receive authentication errors even if your Harness login credentials are valid.
+
+:::
+
+:::note SaaS only
+
+Hosted MCP with OAuth is available for **Harness SaaS** accounts. If you run the MCP server self-hosted or open source, use an API key as described earlier on this page. **OAuth for open source and self-hosted MCP is coming soon.**
+
+:::
+
+### Hosted endpoint
+
+For the primary Harness SaaS control plane, use:
+
+`https://mcp.harness.io/mcp`
+
+If your organization uses a dedicated SaaS cluster or a non-default region, confirm the MCP base URL with Harness support. The MCP path is typically `/mcp` on that host.
+
+### Authentication flow
+
+1. Save the hosted MCP configuration in your client using the URL above.
+2. When prompted, sign in with your **Harness email and password** through Harness ID.
+3. You may be asked to **confirm your password** on a second Harness ID screen.
+4. After a successful login, you return to your editor or terminal. The client loads MCP tools exposed for your account. **Which tools appear depends on your Harness licensing**, consistent with the capabilities of the open source MCP server.
+
+### OAuth client ID
+
+When a client asks for an OAuth **client ID** for Harness hosted MCP, use **`mcp-client`** (for example with Claude Code's `--client-id` flag or in Cursor's `auth` block).
+
+### Cursor (Hosted MCP)
+
+Add a hosted MCP entry in Cursor's MCP settings (for example **Settings → MCP**), using the HTTP URL and client ID:
+
+```json
+{
+  "mcpServers": {
+    "harness-hosted": {
+      "url": "https://mcp.harness.io/mcp",
+      "auth": {
+        "CLIENT_ID": "mcp-client"
+      }
+    }
+  }
+}
+```
+
+After you enable the server, Cursor prompts you to connect and complete Harness ID authentication. See the [Cursor MCP documentation](https://cursor.com/docs/context/mcp).
+
+### Claude Code (Hosted MCP)
+
+```bash
+claude mcp add --transport http \
+  --client-id mcp-client \
+  harness-hosted-mcp https://mcp.harness.io/mcp
+```
+
+See the [Claude Code MCP documentation](https://docs.claude.com/en/docs/claude-code/mcp).
+
+### Windsurf (Hosted MCP)
+
+In your Windsurf MCP configuration (for example `~/.codeium/windsurf/mcp_config.json` on macOS and Linux, or `%USERPROFILE%\.codeium\windsurf\mcp_config.json` on Windows), add a server entry that points at the hosted URL and supplies the client ID:
+
+```json
+{
+  "mcpServers": {
+    "harness-hosted": {
+      "url": "https://mcp.harness.io/mcp",
+      "auth": {
+        "CLIENT_ID": "mcp-client"
+      }
+    }
+  }
+}
+```
+
+See the [Windsurf MCP documentation](https://docs.windsurf.com/windsurf/cascade/mcp#model-context-protocol-mcp).
+
+### Visual Studio Code (Hosted MCP)
+
+Add an HTTP MCP server in `.vscode/mcp.json` (workspace) or your [user MCP configuration](https://code.visualstudio.com/docs/copilot/chat/mcp-servers). VS Code negotiates OAuth with the server when supported:
+
+```json
+{
+  "servers": {
+    "harness-hosted": {
+      "type": "http",
+      "url": "https://mcp.harness.io/mcp"
+    }
+  },
+  "inputs": []
+}
+```
+
+Accept any trust prompt for the server, then follow Copilot chat prompts to sign in with Harness when authentication is required. See the [VS Code MCP configuration reference](https://code.visualstudio.com/docs/copilot/reference/mcp-configuration).
+
+### Troubleshooting Hosted MCP
+
+#### Invalid credentials error
+
+If you receive an **invalid credentials** error when connecting via OAuth—even though you can log in to your Harness account with the same credentials—OAuth has **not been enabled** for your account. This is the most common issue when first setting up Hosted MCP.
+
+For example, a configuration like the following will fail with an authentication error if OAuth is not enabled on the account:
+
+```json
+{
+  "mcpServers": {
+    "harness-hosted": {
+      "url": "https://mcp.harness.io/mcp",
+      "auth": {
+        "CLIENT_ID": "mcp-client"
+      }
+    }
+  }
+}
+```
+
+**Resolution:** Contact **[Harness Support](https://support.harness.io)** to request OAuth enablement and account data migration for your Harness account. Once support confirms the migration is complete, retry the connection.
+
 ## Run with Docker
 
 ```bash
