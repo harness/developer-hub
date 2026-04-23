@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-04-13T10:00
+date: 2026-04-20T10:00
 sidebar_position: 10
 ---
 
@@ -61,6 +61,23 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## April 2026
+
+### Version 1.132.0
+
+<!-- April 2026 -->
+
+#### Fixed Issues
+
+- Fixed an issue where the `CI_REPO_LINK` environment variable was not being passed to the build pod. (CI-20769)
+
+- Fixed a parsing error that caused Save and Restore Cache steps to fail when using S3 directory buckets as the mount path. (CI-22058)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.18 | 1.18.19 |
+| `harness/ci-lite-engine` | Version update | 1.18.18 | 1.18.19 |
 
 ### Version 1.130.0
 
