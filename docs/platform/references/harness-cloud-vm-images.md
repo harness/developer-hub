@@ -30,7 +30,7 @@ You can either:
 | [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM | GA |
 | [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | GA |
 | [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-sonoma-xcode-15.2-default-Readme.md) | `mac-latest`, `mac-sonoma`, or `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 15.2 (default), 16.3, 16.1, 15.1 | GA |
-| [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-sequoia-xcode-16.4-default-Readme.md)| `macos_sequoia`, `macos_sequoia_xcode_16.4`, or `macos-sequoia-xcode-26.2` | macOS 15 (Sequoia) with Xcode 16.4 (default), 16.3, 26.0, 26.1, 26.2, 26.3 | BETA |
+| [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-26.4-Readme.md)| `macos_sequoia`, `macos_sequoia_xcode_16.4`, or `macos-sequoia-xcode-26.2` | macOS 15 (Sequoia) with Xcode 16.4 (default), 16.3, 26.0, 26.1, 26.2, 26.3, 26.4 | BETA |
 | [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
 
 :::info 
