@@ -22,6 +22,30 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## April 2026
 
+### Version 1.84.2
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.84.0
+- harness/chaos-ddcr-faults:1.84.0
+- harness/chaos-log-watcher:1.84.0
+- harness/service-discovery-collector:0.64.0
+
+#### New Features and Enhancements
+
+- Added namespace labels filters inside the ChaosGuard condition (CHAOS-11412)
+- Optimized LLM calls used for recommendations by processing requests in chunks instead of individual calls, improving overall performance and reducing latency (CHAOS-11408)
+- Updated the default sorting filter to "Last Updated (New to Old)" on all infrastructure list tables (CHAOS-11407)
+- Rendering improvements in probes and actions details page (CHAOS-11395)
+- Added support for Docker labels-based chaos injection on ECS in-vm SSM chaos (CHAOS-10177)
+
+#### Fixed Issues
+
+- Fixed CMD probes returning the complete source specification instead of a stringified version of the spec. Enhanced the `ConvertRevisionToProbeRequest` function to correctly handle copying of properties from `KubernetesCMDProperties` and `LinuxCMDProperties` to the command probe template (CHAOS-11490)
+- Fixed the Windows Chaos Infrastructure CLI install script not including user-configured values for log file max age. The install script now correctly appends the `-ExperimentLogFileMaxAgeDays` flag to the generated CLI command when users modify the value from its default in the setup wizard (CHAOS-11462)
+
+
 ### Version 1.83.4
 
 #### Images required
