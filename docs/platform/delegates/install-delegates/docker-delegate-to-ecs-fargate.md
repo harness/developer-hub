@@ -247,6 +247,23 @@ Use the following steps to create a task definition. For information about task 
    aws ecs create-service --cli-input-json file://service.json
    ```
 
+## Optional: Add an ECS health check to auto-restart the delegate task
+
+Harness does not currently manage ECS task health checks. To improve resiliency after network disruptions or outages, you can configure an ECS `healthCheck` on the delegate container so ECS can automatically restart the task if the delegate becomes unhealthy.
+Example:
+```json
+"healthCheck": {
+  "command": ["CMD-SHELL", "curl -f http://localhost:3460/api/health || exit 1"],
+  "interval": 30,
+  "timeout": 5,
+  "retries": 3,
+  "startPeriod": 60
+}
+```
+Notes:
+- The delegate exposes a health endpoint on http://localhost:3460/api/health inside the container.
+- Tune startPeriod if your delegate container takes longer to initialize in your environment.
+
 ## Deploy a delegate using Terraform
 
 The above steps to [deploy a delegate to ECS](#deploy-a-delegate-to-amazon-ecs) are also available in a Terraform module that you can reference directly or use as a starting point for your own automation. You can use an existing ECS cluster (EC2- or Fargate-based) or let the module create one for you.
