@@ -19,7 +19,7 @@ To create your first feature flag, from the left navigation, click **Feature fla
 
 Select the traffic type user to get started. Traffic types give you the ability to split on different levels of your customers (e.g., for B2B software, you could create the traffic type account or user). You can also create additional traffic types in settings. Learn more about [traffic types](/docs/feature-management-experimentation/traffic-types/). We are referring to the traffic type user throughout the rest of this document.
 
-Owners, tags, and the description make it easy to sort, filter, and locate the features your team is rolling out. By default, administrators and the creator of the feature flag are considered its owners. Utilize groups with this owner field to organize your flags across your team. Learn more about owners and tags.
+Owners, tags, and the description make it easy to sort, filter, and locate the features your team is rolling out. By default, administrators and the creator of the feature flag are considered its owners. Utilize groups with this owner field to organize your flags across your team. Learn more about [owners](/docs/feature-management-experimentation/owners) and [tags](/docs/feature-management-experimentation/tags).
 
 For more information about creating a feature flag, see [Create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag/).
 

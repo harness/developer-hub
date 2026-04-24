@@ -5,7 +5,11 @@ redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/admin-best-practices/organizing-teams
 ---
 
-## Overview
+:::warning Migrated from Split?
+This documentation describes the **Split legacy** roles and organizations experience.
+
+If your organization is using Harness FME, role behavior and the UI may differ. For more information, see [RBAC for Harness FME](/docs/feature-management-experimentation/permissions/rbac).
+:::
 
 When you and your team first come onboard to Split you'll likely wonder: 
 
