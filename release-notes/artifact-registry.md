@@ -1,7 +1,7 @@
 ---
 title: Artifact Registry Release Notes
 sidebar_label: Artifact Registry
-date: 2026-03-31T12:00
+date: 2026-04-30T12:00
 sidebar_position: 1
 # toc_max_heading_level: 4
 ---
@@ -26,6 +26,95 @@ The release notes describe recent changes to Harness Artifact Registry.
 ## 📌 Release Deployment Status by Cluster
 
 **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+
+## April 2026
+
+### 2026.4.v1
+
+#### New Features
+
+**Swift Registry Support**
+
+Harness Artifact Registry now supports **Swift packages** with full Swift Package Manager (SwiftPM) compatibility. Use the registry URL with `swift package-registry` for authentication, publishing, and dependency resolution. Your existing SwiftPM workflows keep working with Harness as the source of truth.
+
+**Key benefits:**
+- **Native SwiftPM workflow:** Compatible with `swift package-registry` commands (login, publish, resolve) on Swift 5.9 or later.
+- **Private package hosting:** Host proprietary Swift packages securely inside your Harness account.
+- **Upstream proxy support:** Cache packages from external Swift sources to accelerate builds and reduce external dependencies.
+
+Go to the [Swift Registry Quickstart](/docs/artifact-registry/get-started/quickstart#swift) to set up a Swift registry and publish your first package.
+
+**Raw File Registry Support**
+
+The new **Raw File registry** lets you store and retrieve arbitrary files by path: archives, reports, configuration files, or anything else that does not belong to a package manager ecosystem. You upload, download, inspect, and delete files using HTTP requests and `curl`, with no specialized client required.
+
+**Key benefits:**
+- **Path-based storage:** Address files directly by their path, ideal for build artifacts, reports, and shared configs.
+- **HTTP-native workflow:** Push and pull files with `curl` or any HTTP client; no custom CLI plugin required.
+- **Upstream proxy support:** Optionally cache files from an external HTTP source through Harness.
+
+Go to the [Raw File Registry Quickstart](/docs/artifact-registry/get-started/quickstart#raw-file) to create a Raw File registry and upload your first file.
+
+**Copy Version between Registries**
+
+You can now copy a specific package version from one Harness registry to another directly from the UI, with no need to re-push from your machine when promoting a version into another project or organization.
+
+<DocImage
+  path={require('./static/artifact-registry/april-2026-copy-version.png')}
+  alt="npm package Versions tab with the row menu open showing Copy Version among the actions"
+  title="Versions tab: use the row menu and select Copy Version"
+  width="80%"
+/>
+
+Open the package, switch to the **Versions** tab, open the row menu (**⋮**) on the version you want, and select **Copy Version**. Pick the target organization, project, and registry in the dialog, then run the copy. Permissions: read on the source registry, write on the target. The same operation is available from the CLI for automation.
+
+Go to [Copy a version](/docs/artifact-registry/manage-artifacts/artifact-management#copy-a-version) to use the UI flow, or [Copy artifacts in the Harness CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#copy-artifacts) to run the same operation from the command line.
+
+**Soft Delete for Artifacts and Versions**
+
+Deleting a package or a version is now **soft by default**. Deleted items move to a **Deleted** view where they remain recoverable until the retention window allows them to be purged. You can also opt in to a permanent delete from the same dialog when that is what you intend.
+
+<DocImage
+  path={require('./static/artifact-registry/april-2026-soft-delete-deleted-tab.png')}
+  alt="Artifacts page Deleted tab listing soft-deleted packages, versions, and related rows"
+  title="Artifacts → Deleted tab: soft-deleted items remain recoverable"
+  width="100%"
+/>
+
+**Key capabilities:**
+- **Recoverable deletes:** Restore a package or version from the **Deleted** tab or the row menu, including content from a soft-deleted registry.
+- **Cascade on registry delete:** Soft-deleting a registry soft-deletes all packages, images, and versions inside it; restoring a child can restore the parent registry.
+- **Configurable retention:** Account administrators set the retention window in **Default Settings → Artifact Registry**; the value applies across the account, organization, or project.
+- **Permanent delete still available:** Select **Permanently delete** in the confirmation dialog when you want immediate, non-recoverable removal.
+
+Go to [Delete Artifacts](/docs/artifact-registry/manage-artifacts/soft-delete) to learn the soft-delete and restore flow, and [Delete a Registry](/docs/artifact-registry/manage-registries/delete-registry) to understand the cascade behavior.
+
+**Artifact Registry Audit Dashboard**
+
+The new **Artifact Registry Audit Dashboard** is an out-of-the-box dashboard in Harness Dashboards that records every artifact **upload** and **download** across your Harness Artifact Registries. It is provisioned and maintained by Harness, so it appears automatically for accounts that have Artifact Registry enabled — no setup, no widgets to build.
+
+<DocImage
+  path={require('./static/artifact-registry/april-2026-audit-dashboard.png')}
+  alt="Artifact Registry Audit Dashboard with Time Range and identifier filters at the top, two event tables for downloads and uploads, an upload-and-download activity line chart, and an Upload/Download Aggregation donut"
+  title="Artifact Registry Audit Dashboard"
+  width="100%"
+/>
+
+**Key capabilities:**
+- **Built for security and compliance:** Identify which users or service accounts pulled a specific package version after a CVE or zero-day disclosure, and audit upload activity on a registry over a chosen time window.
+- **Filter by scope and artifact:** Narrow results by **Time Range**, **Organization Identifier**, **Project Identifier**, **Registry Name**, **Package Name**, and **Version Name**. Every widget on the page reacts to the filter set.
+- **Four widgets out of the box:** **Download Artifact Data** and **Upload Artifact Data** event tables (Action, Registry, Package, Version, Username, Client IP, Timestamp Hour), an **Upload And Download Activity** time series, and an **Upload/Download Aggregation** donut.
+- **Read-only and clone-friendly:** The original is owned by Harness and stays read-only so it keeps receiving updates. To customize widgets or filters, open the row menu and choose **Clone**; the clone belongs to your account and is fully editable.
+
+Go to [Artifact Registry audit dashboard](/docs/artifact-registry/manage-artifacts/audit-dashboard) to open the dashboard and walk through the upload-and-download workflows.
+
+#### Enhancements & Fixes
+
+**Webhook support extended to Python, Maven, and NuGet**
+
+Artifact Registry **webhooks** now cover additional package types so more teams can drive CI/CD, security, and notification workflows from artifact events. The supported list now includes **Maven, NuGet, and Python (PyPI)**.
+
+Go to [Webhooks](/docs/artifact-registry/manage-registries/ar-webhooks) to view the full support table and to wire webhooks to triggers.
 
 ## March 2026
 
