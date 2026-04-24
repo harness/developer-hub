@@ -16,7 +16,7 @@ tags:
 
 Scorecard aggregation rules let you roll up an existing scorecard's computed scores from source entities to higher levels in your hierarchy (account, org, project, or system) and display them on hierarchy entity pages.
 
-![Account entity page showing aggregated score as a StatsCard](./static/agg-account-statscard.png)
+![Account entity page showing aggregated score as a StatsCard](./static/scorecard-aggr-entity.png)
 
 :::caution Prerequisite
 You need an active [scorecard](/docs/internal-developer-portal/scorecards/scorecard) that is already configured and running on your entities before creating a scorecard aggregation rule.

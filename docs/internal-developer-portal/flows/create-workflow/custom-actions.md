@@ -153,7 +153,7 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 
 3. `apikey`: User Session Token
 
-Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml#authentication)**.
+Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/workflowyaml#authentication)**.
 
 - The **user's session token** is used to trigger the Harness Pipeline.  
 - The user must have **execute permissions** for the underlying pipeline(s) to ensure successful execution.  
@@ -207,7 +207,7 @@ apikey: ${{ parameters.token }}
 
 4. `apiKeySecret`: Harness API Key Secret
 
-Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml#authentication)**.
+Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/workflowyaml#authentication)**.
 
 - A pre-configured **Harness API Key** is used to trigger the Harness Pipeline.  
 - The user does **not** need direct access to the underlying pipeline(s); however, the API key must have the **execute permissions** for the underlying pipeline(s).

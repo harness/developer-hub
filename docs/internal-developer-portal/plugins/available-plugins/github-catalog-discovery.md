@@ -96,11 +96,11 @@ This plugin does not need any catalog-info.yaml annotations to work.
 
 - The GitHub Catalog Discovery plugin registers one location per repository. This might not be a good idea when there are many (3000+ in this case) as any error in fetching one `catalog-yaml` would mark the whole location as failed and create trouble with the entity sync.
 
-- To solve this we would recommend you to use the following scripts which would register separate locations for all the matching catalog-info.yaml files and hence would be synchronised separately.
+- To solve this we would recommend you to use the following scripts which would register separate locations for all the matching catalog-info.yaml files and hence would be synchronized separately.
 
 ### [Registered Locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/register_discovered_locations.py)
 
-- Discover `catalog-info.yaml` matching the regex filter and register under the catalog provided in `apiurl`. This would separate locations for all the matching catalog-info.yaml files and hence would be synchronised separately.
+- Discover `catalog-info.yaml` matching the regex filter and register under the catalog provided in `apiurl`. This would separate locations for all the matching catalog-info.yaml files and hence would be synchronized separately.
 
 ### [Create Services](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/create_services.py)
 

@@ -303,7 +303,7 @@ By default, you won't see any layout for the  Custom Group entities, but you can
 You can configure layouts from:
 `Admin → Layout → Group Entities`
 
-Then duplicate an existing laypuit of kind `Group` and you will be asked to providethe type for it. Make sure top provide the type same as for the user group entity you want the layout for. 
+Then duplicate an existing layout of kind `Group` and you will be asked to provide the type for it. Make sure to provide the type same as for the user group entity you want the layout for. 
 
 ![duplicate](./static/duplicate.gif)
 

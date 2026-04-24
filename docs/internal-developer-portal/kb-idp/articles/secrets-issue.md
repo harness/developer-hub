@@ -69,4 +69,4 @@ As part of the recent release we upgraded our Backstage version from `v1.22` to 
 
 ## Next steps for us
 
-We have already updated our docs to add a warning about this on all our Workflow tutorials and examples. While we do have a workaround for now, we are treating this as an open bug and figuring out how to address this properly so that no action will be required from our users. However, as of this moment, we do recommend you move the `token` field to the first page in the Workflow definition YAML if you have multiplate pages.
+We have already updated our docs to add a warning about this on all our Workflow tutorials and examples. While we do have a workaround for now, we are treating this as an open bug and figuring out how to address this properly so that no action will be required from our users. However, as of this moment, we do recommend you move the `token` field to the first page in the Workflow definition YAML if you have multiple pages.

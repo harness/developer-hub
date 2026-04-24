@@ -5,7 +5,7 @@ redirect_from:
 - /kb/internal-developer-portal/articles/backend-proxies/github-raw
 ---
 
-# Overview
+## Overview
 
 Instead of using an API to retrieve JSON data with a backend proxy, we can store JSON files in GitHub and use an HTTP call to get the raw file back as pure JSON.
 
@@ -130,6 +130,6 @@ properties:
       path: "proxy/github-raw/<path to JSON file>"
 ```
 
-# Conclusion
+## Conclusion
 
 With the above backend proxy, you can store raw JSON in GitHub and reference it across your IDP workflows. This is especially useful if you have common sets of inputs you need to use across many workflows and want to have a single source of truth.

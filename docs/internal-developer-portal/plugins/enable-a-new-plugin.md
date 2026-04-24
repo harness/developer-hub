@@ -69,7 +69,7 @@ The **Plugin details** page is displayed. The page provides information such as 
 
 :::info
 
-The [layout management](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/catalog) is handled by-default once you enable the plugin. In-case you want to modify the elements that are exported from the plugin according to your need you can **edit the layout** for **Service** by going to **Admin** -> **Layout** -> **Catalog Entities**. The elements might include cards, tabs, and pages.
+The [layout management](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/catalog) is handled by default once you enable the plugin. In case you want to modify the elements that are exported from the plugin according to your need you can **edit the layout** for **Service** by going to **Admin** -> **Layout** -> **Catalog Entities**. The elements might include cards, tabs, and pages.
 
 For instance, if the [PagerDuty](http://localhost:3001/docs/internal-developer-portal/plugins/available-plugins/pagerduty) plugin exports one tab, in order to be displayed in your catalog entity, the layout is updated with elements as displayed below.
 

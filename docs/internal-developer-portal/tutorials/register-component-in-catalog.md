@@ -34,7 +34,7 @@ Begin your YAML file with the basic entity information, this contains the `kind`
 
 and few others.
 
-Out of this `Component` is quite widely used for service, website, library, etc.. which needs to be specified as `spec.type` as discussed below.
+Out of this `Component` is quite widely used for service, website, library, etc. which needs to be specified as `spec.type` as discussed below.
 
 ```yaml
 apiVersion: backstage.io/v1alpha1

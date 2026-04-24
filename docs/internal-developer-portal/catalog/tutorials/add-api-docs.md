@@ -125,7 +125,7 @@ The above-mentioned `catalog-info.yaml` when registered in the catalog would dis
 
 ![](../integrate-tools/techdocs/static/openapi-json.png)
 
-### Import API spec for a single API defined in openapi spec in swaggger
+### Import API spec for a single API defined in openapi spec in swagger
 
 <Tabs queryString="version">
 <TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">

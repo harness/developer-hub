@@ -123,7 +123,7 @@ Harness IDP also provides a **built-in editor** to help you build your **Workflo
 
 **Note:** The editor is for **preview purposes** only; changes made here cannot be saved. Once you have tested the modifications, you must manually copy the updated YAML and add it to the Workflow definition YAML stored in your Git provider.  
 
-For more information on **accessing the Workflow Playground**, check out the details [here](/docs/internal-developer-portal/flows/worflowyaml.md).
+For more information on **accessing the Workflow Playground**, check out the details [here](/docs/internal-developer-portal/flows/workflowyaml).
 
 ## Input Examples
 
@@ -139,7 +139,7 @@ This example demonstrates a simple text input field with:
 
 - A `title` and `description` for clarity.
 - A **maximum length constraint** (`maxLength: 8`).
-- A r**egex pattern validation** (`pattern`) to enforce naming rules.
+- A **regex pattern validation** (`pattern`) to enforce naming rules.
 - **UI enhancements** like autofocus and helper text.
 
 <details>
@@ -1779,7 +1779,7 @@ Here's an [example](https://github.com/harness-community/idp-samples/blob/main/i
 You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built-in `ui:field: Secret` and `ui:widget: password`.
 
 :::info
-`ui:widget: password` needs to be mentioned under the first `page` in-case you have multiple pages.
+`ui:widget: password` needs to be mentioned under the first `page` in case you have multiple pages.
 
 ```YAML {14}
 # example workflow.yaml

@@ -439,7 +439,7 @@ The following topics provide more information about creating code repo connector
 
 :::info
 
-For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well, in-case it's not a personal account
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well, in case it's not a personal account
 
 ![](../static/group-path-create-repo.png)
 
@@ -901,7 +901,7 @@ This step is used to update the catalog metadata for your entities. For example,
 </Tabs>
 
 ### 10. Run Step
-You can use the **Run step** to to run commands or scripts in your Harness Pipeline. 
+You can use the **Run step** to run commands or scripts in your Harness Pipeline. 
 
 In order for the Run step to execute your commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, Run steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries.
 

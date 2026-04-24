@@ -5,7 +5,7 @@ sidebar_position: 2
 sidebar_label: Versioning
 ---
 
-Proper versioning of blueprints and templates is essential for systematically rolling out improvements across your development lifecycle. Version control enables you to track changes resulting from organisational policy updates, migrations, or patch fixes. Harness IDP Environment Management provides comprehensive versioning capabilities, allowing you to introduce new blueprint versions, deprecate outdated ones, and empower developers to select from active versions when creating environments.
+Proper versioning of blueprints and templates is essential for systematically rolling out improvements across your development lifecycle. Version control enables you to track changes resulting from organizational policy updates, migrations, or patch fixes. Harness IDP Environment Management provides comprehensive versioning capabilities, allowing you to introduce new blueprint versions, deprecate outdated ones, and empower developers to select from active versions when creating environments.
 
 ## Understanding blueprint versioning
 
@@ -46,7 +46,7 @@ You can modify any existing blueprint version by following the steps above (1-3)
 
 ## Viewing all blueprint versions
 
-All versions of a blueprint are accessible through the **Versions** tab within each blueprint view. This centralised location provides an overview of the version history, including version numbers, descriptions, stability status, and creation dates.
+All versions of a blueprint are accessible through the **Versions** tab within each blueprint view. This centralized location provides an overview of the version history, including version numbers, descriptions, stability status, and creation dates.
 
 ## Deprecating or deleting blueprint versions
 
@@ -92,6 +92,6 @@ To create an environment with a specific blueprint version:
 
 3. On the blueprint card, open the dropdown menu next to **Use this blueprint** and select your desired version
 4. You can also modify the version selection on the subsequent page whilst defining environment details
-5. Complete the remaining steps to finalise environment creation
+5. Complete the remaining steps to finalize environment creation
 
 This version selection capability ensures that teams can adopt new blueprint versions at their own pace, balancing innovation with stability requirements.

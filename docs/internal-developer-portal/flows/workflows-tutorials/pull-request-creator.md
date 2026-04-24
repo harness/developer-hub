@@ -95,7 +95,7 @@ mirrors the GitHub API base URL (https://api.github.com/), allowing you to use a
 Once verified, the backend proxy is ready to authenticate API requests within the workflow. 
 
 ## Creating a Repository Picker
-Now, let's define the [**Workflow Frontend**](/docs/internal-developer-portal/flows/worflowyaml.md#workflow-frontend) in the Workflow YAML configuration. A **Repository Picker** dynamically fetches GitHub repositories based on the provided GitHub username. This feature is based on conditional API requests in self service workflows. 
+Now, let's define the [**Workflow Frontend**](/docs/internal-developer-portal/flows/workflowyaml#workflow-frontend) in the Workflow YAML configuration. A **Repository Picker** dynamically fetches GitHub repositories based on the provided GitHub username. This feature is based on conditional API requests in self service workflows. 
 
 **Read more about conditional API requests in Dynamic Pickers [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#conditional-api-requests).** 
 

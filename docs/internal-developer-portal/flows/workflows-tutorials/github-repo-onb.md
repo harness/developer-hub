@@ -41,7 +41,7 @@ The following input details are required for the Workflow:
 
 - **GitHub PAT Token**: A Personal Access Token (PAT) with appropriate permissions (`repo`, `admin:repo_hook`, `admin:org_hook`) is needed for GitHub API operations. The pipeline uses this token in the `Run` steps to execute GitHub API calls for branch creation, branch protection setup, and webhook configuration. Go to [GitHub PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to learn more.
 
-- **Workflow YAML & Harness IDP Pipeline configuration**: Basic familiarity with Workflow YAML syntax and Harness pipeline configuration is recommended. Understanding YAML structure helps in configuring pipeline variables and step parameters correctly. Go to [Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml) and [Harness IDP Pipeline](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline) to learn more.
+- **Workflow YAML & Harness IDP Pipeline configuration**: Basic familiarity with Workflow YAML syntax and Harness pipeline configuration is recommended. Understanding YAML structure helps in configuring pipeline variables and step parameters correctly. Go to [Workflow YAML](/docs/internal-developer-portal/flows/workflowyaml) and [Harness IDP Pipeline](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline) to learn more.
 
 ## Create the GitHub Repository Onboarding Pipeline
 

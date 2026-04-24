@@ -81,7 +81,7 @@ The numbers displayed at the top, such as "15 Created," "1 Review Requests," and
 
 - **Value Addition**: It will display data across all repositories you have permissions for, making it easy to track your contributions, review requests, and assigned PRs in one place without switching contexts.
 
-- **Limitation**: The real-time data is fetched in-case of an event(e.g., updating the org filters, re-loading the homepage), and it doesn't periodically update the values. 
+- **Limitation**: The real-time data is fetched in case of an event(e.g., updating the org filters, re-loading the homepage), and it doesn't periodically update the values. 
 
 Currently, the "My PRs" card only supports GitHub as a data source. Support for Harness Code Repository is coming soon. Other platforms, such as GitLab, Azure, and Bitbucket, are not yet supported. Let us know if you’d like to see support for these platforms in the future!
 

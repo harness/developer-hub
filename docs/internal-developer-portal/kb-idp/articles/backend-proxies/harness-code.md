@@ -5,7 +5,7 @@ redirect_from:
 - /kb/internal-developer-portal/articles/backend-proxies/harness-code
 ---
 
-# Overview
+## Overview
 
 Instead of using an API to retrieve JSON data with a backend proxy, we can store JSON files in Harness Code and use an HTTP call to get the raw file back as pure JSON.
 
@@ -154,6 +154,6 @@ properties:
       path: "proxy/harness-code/<path to json>"
 ```
 
-# Conclusion
+## Conclusion
 
 With the above backend proxy, you can store raw JSON in Code and reference it across your IDP workflows. This is especially useful if you have common sets of inputs you need to use across many workflows and want to have a single source of truth.
