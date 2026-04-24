@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2026
 
+### Version 26.04.89003 <!-- April 24, 2026 -->
+
+#### Fixed issues
+- Fixed an issue where Dynatrace Grail health source data collection could fail during query polling or hang indefinitely [CDS-122542]
+
 ### Version 26.04.89002 <!-- April 22, 2026 -->
 
 #### Fixed issues
