@@ -88,11 +88,6 @@ Below is an example AWS policy to execute the fault.
         <th> Notes </th>
       </tr>
       <tr>
-        <td> AVAILABILITY_ZONES </td>
-        <td> Provide the availability zones to cause the network blackhole. </td>
-        <td> For example, <code>us-east-1a</code>. For more information, go to <a href="#availability-zones"> availability zones.</a></td>
-      </tr>
-      <tr>
         <td> REGION </td>
         <td> Region name for the target volumes. </td>
         <td> For example, <code>us-east-1</code>. </td>
@@ -112,9 +107,24 @@ Below is an example AWS policy to execute the fault.
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
+        <td> AVAILABILITY_ZONES </td>
+        <td> Provide the target availability zones to cause the network blackhole. </td>
+        <td> For example, <code>us-east-1a</code>. For more information, go to <a href="#availability-zones"> availability zones.</a></td>
+      </tr>
+      <tr>
         <td> VPC_IDS </td>
         <td> Provide the VPC IDs to limit the impact, ensuring the AZ blackhole targets only those specific networks. </td>
         <td> For example: "vpc-89765,vpc-78687". For more information, go to <a href="#vpc-ids"> vpc ids.</a></td>
+      </tr>
+      <tr>
+        <td> SUBNET_IDS </td>
+        <td> Provide the subnet IDs to further limit the blast radius to specific subnets within the target VPCs. </td>
+        <td> For example: "subnet-0a1b2c3d,subnet-9z8y7x6w". For more information, go to <a href="#subnet-ids"> subnet ids.</a></td>
+      </tr>
+      <tr>
+        <td> SUBNET_TAGS </td>
+        <td> Provide the subnet tags to target specific subnets by their tag key-value pairs. </td>
+        <td> For example: "env:production,team:backend". For more information, go to <a href="#subnet-tags"> subnet tags.</a></td>
       </tr>
       <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -137,6 +147,15 @@ Below is an example AWS policy to execute the fault.
         <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
+
+### Use Case Description
+
+1. If a user provides only the region parameter, then by default Harness selects all the VPCs in that region and the blast radius is maximum.
+2. If a user wants to control the blast radius, the options are:
+   - **Region with VPC ID**: Targets specific VPCs within the region.
+   - **Region with VPC ID and Availability Zone**: Targets specific availability zones within the specified VPCs.
+   - **Region with VPC ID, AZ, and Subnet Tag**: Targets subnets matching the specified tags within the given VPCs and availability zones.
+   - **Region with VPC ID, AZ, and Subnet ID**: Targets specific subnets by their IDs within the given VPCs and availability zones.
 
 ### Availability Zones
 
@@ -194,6 +213,76 @@ spec:
         # target availability zones for the chaos
         - name: AVAILABILITY_ZONES
           value: 'us-east-1a,us-east-1b'
+        # region for chaos
+        - name: REGION
+          value: 'us-east-1'
+```
+
+### Subnet IDs
+
+Comma-separated list of the subnet IDs to further limit the blast radius to specific subnets. Tune it by using the `SUBNET_IDS` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/az-blackhole/subnet-ids.yaml yaml)
+```yaml
+# contains subnet ids for given az
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: az-blackhole
+    spec:
+      components:
+        env:
+        # target subnet ids for the chaos
+        - name: SUBNET_IDS
+          value: 'subnet-0a1b2c3d4e5f,subnet-9z8y7x6w5v4u'
+        # target availability zones for the chaos
+        - name: AVAILABILITY_ZONES
+          value: 'us-east-1a,us-east-1b'
+        # target vpc ids for the chaos
+        - name: VPC_IDS
+          value: 'vpc-21312481928410'
+        # region for chaos
+        - name: REGION
+          value: 'us-east-1'
+```
+
+### Subnet Tags
+
+Comma-separated list of the subnet tags (in `key:value` format) to target specific subnets. Tune it by using the `SUBNET_TAGS` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/az-blackhole/subnet-tags.yaml yaml)
+```yaml
+# contains subnet tags for given az
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: az-blackhole
+    spec:
+      components:
+        env:
+        # target subnet tags for the chaos
+        - name: SUBNET_TAGS
+          value: 'env:production,team:backend'
+        # target availability zones for the chaos
+        - name: AVAILABILITY_ZONES
+          value: 'us-east-1a,us-east-1b'
+        # target vpc ids for the chaos
+        - name: VPC_IDS
+          value: 'vpc-21312481928410'
         # region for chaos
         - name: REGION
           value: 'us-east-1'

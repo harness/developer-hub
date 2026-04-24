@@ -1,0 +1,25 @@
+# contains subnet ids for given az
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: az-blackhole
+      spec:
+        components:
+          env:
+            # target subnet ids for the chaos
+            - name: SUBNET_IDS
+              value: 'subnet-0a1b2c3d4e5f,subnet-9z8y7x6w5v4u'
+            # target availability zones for the chaos
+            - name: AVAILABILITY_ZONES
+              value: 'us-east-1a,us-east-1b'
+            # target vpc ids for the chaos
+            - name: VPC_IDS
+              value: 'vpc-21312481928410'
+            # region for chaos
+            - name: REGION
+              value: 'us-east-1'
