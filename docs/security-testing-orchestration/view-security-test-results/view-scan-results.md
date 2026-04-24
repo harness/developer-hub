@@ -107,7 +107,7 @@ Below the filters and severity tiles, you'll find detailed information:
 
 ## View issue details
 
-Click an issue to open the **Issue Details** pane. This pane contains two tabs: **[Overview](#overview-tab)** and **[Occurrence](#occurrence-tab)**.
+Click an issue to open the **Issue Details** pane. This pane contains three tabs: **[Overview](#overview-tab)**, **[Remediation](#remediation-tab)**, and **[Occurrence](#occurrence-tab)**.
 
 <DocImage path={require('./static/issue-details-side-pane.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -124,12 +124,14 @@ From the **Issue Details** pane, you can create Jira tickets using the **Create 
 The **Overview** tab includes:
 
 - **Details**: Issue-related information varying by issue type (SAST, SCA, DAST, IaC, Secret).
-- **Remediation**: Remediation steps from **Harness AI** and **Scanner**. If scanning a repository, you can raise PRs or get code suggestions from Harness AI (see [Fix security issues using Harness AI](/docs/security-testing-orchestration/remediations/ai-based-remediations)).
-
-  <DocImage path={require('./static/remediation-section-issue-details-pane.png')} width="100%" height="100%" title="Click to view full size image" />
-
 - **Code Snippet**: Code snippet provided by the scanner. Enable **Allow Vulnerable Content Extraction** in **Default Settings** if the snippet isn't provided.
 - **Issue Raw Details**: Raw scanner details.
+
+### Remediation tab
+
+The **Remediation** tab provides remediation steps from **Harness AI** and **Scanner**. If scanning a repository, you can raise PRs or get code suggestions from Harness AI (see [Fix security issues using Harness AI](/docs/security-testing-orchestration/remediations/ai-based-remediations)).
+
+<DocImage path={require('./static/remediation-sub-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ### Occurrence tab
 
@@ -140,9 +142,10 @@ The **Occurrence** tab lists all issue occurrences with fields varying by issue 
 Clicking an occurrence opens the **Occurrence Details** pane, including:
 
 - **Details**: Information based on issue type.
-- **Remediation**: Steps from **Harness AI** and **Scanner** (see [Fix security issues using Harness AI](/docs/security-testing-orchestration/remediations/ai-based-remediations)).
 - **Code Snippet**: Provided by scanner or fetched by enabling **Allow Vulnerable Content Extraction**.
 - **Occurrence Raw Details**: Raw scanner details.
+
+The **Remediation** tab in the Occurrence Details pane provides steps from **Harness AI** and **Scanner** (see [Fix security issues using Harness AI](/docs/security-testing-orchestration/remediations/ai-based-remediations)).
 
 <DocImage path={require('./static/occurrence-details-pane.png')} width="100%" height="100%" title="Click to view full size image" />
 

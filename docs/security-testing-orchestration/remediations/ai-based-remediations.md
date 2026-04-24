@@ -33,11 +33,11 @@ Once you complete a security scan using the scanners in STO, you can access all 
 <Notes />
 
 ## View AI remediations for security issues
-Harness AI analyzes security issues and provides AI remediation within the security details for each specific issue. This includes an analysis of the issue, remediation concepts, and step-by-step instructions to fix them, along with example code snippets. Additionally, AI remediation details can be found for each occurrence of an issue. You also have the option to make a Code Suggestion or create a Pull Request to apply the suggested remediation.
+Harness AI analyzes security issues and provides AI remediation in the **Remediation** tab of the Issue Details pane. This includes an analysis of the issue, remediation concepts, and step-by-step instructions to fix them, along with example code snippets. Additionally, AI remediation details can be found for each occurrence of an issue. You also have the option to make a Code Suggestion or create a Pull Request to apply the suggested remediation.
 
 Moreover, you can [enhance the AI remediation](#edit-to-enhance-the-ai-remediations) by editing its content to better suit your needs.
 
-<DocImage path={require('./static/ai-remediation-for-a-issue.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/ai-remediation.png')} width="70%" height="70%" title="Click to view full size image" />
 
 ## Make Code Suggestion from STO
 
