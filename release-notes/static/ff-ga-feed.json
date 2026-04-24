@@ -1300,5 +1300,29 @@
     "description": "Enables SLSA provenance generation for non-containerized artifacts like Helm charts, manifest files, JARs, WARs, etc.",
     "gaStartDate": "2026-04-22",
     "module": "Supply Chain Security"
+  },
+  {
+    "flagKey": "CV_ENABLE_DATA_RETENTION_FROM_PIPELINE",
+    "description": "Pipeline-driven data retention",
+    "gaStartDate": "2026-04-21",
+    "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED",
+    "description": "Delegate compatibility for Dynatrace Grail logs health source",
+    "gaStartDate": "2026-04-21",
+    "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "CDS_CV_CLOUDWATCH_LOGS_ENABLED",
+    "description": "Delegate compatibility for CloudWatch Logs health source",
+    "gaStartDate": "2026-04-21",
+    "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "CDS_CV_INPUT_OUTPUT_VARIABLES_ENABLED",
+    "description": "Verify step I/O variables in CV config handling",
+    "gaStartDate": "2026-04-21",
+    "module": "Service Reliability Management"
   }
 ]
