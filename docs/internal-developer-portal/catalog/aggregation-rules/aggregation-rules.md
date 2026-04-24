@@ -31,7 +31,7 @@ This feature requires the **`IDP_AGGREGATION_RULES`** feature flag to be enabled
 
 You can aggregate two types of data, both resulting in a new metadata property on the target hierarchy entity.
 
-- **[Metric Aggregation](/docs/internal-developer-portal/catalog/aggregation-rules/aggregation-rules-metric)** - A raw numeric field from entity metadata, such as `metadata.avgDeploymentTime` or `metadata.changeFailureRatePercent`. Works with any entity kind including [custom kinds](/docs/internal-developer-portal/custom-kinds/overview).
+- **[Metric Aggregation](/docs/internal-developer-portal/catalog/aggregation-rules/aggregation-rules-metric)** - A raw numeric field from entity metadata, such as `metadata.avgDeploymentTime` or `metadata.integration_properties.HarnessCD.changeFailureRatePercent`. Works with any entity kind including [custom kinds](/docs/internal-developer-portal/custom-kinds/overview).
 - **[Scorecard Aggregation](/docs/internal-developer-portal/catalog/aggregation-rules/aggregation-rules-scorecard)** - The latest computed score of an existing scorecard. Use this to surface team-wide quality or maturity signals without defining separate rules for each individual check.
 
 If you are tracking a specific engineering measurement, use Metric. If a scorecard already condenses multiple checks into one score and you want that at a hierarchy level, use Scorecard. Many teams use both.

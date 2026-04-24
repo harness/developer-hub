@@ -157,6 +157,39 @@ In addition to scope selection, you can now configure **DORA metrics settings**:
 
 <DocImage path={require('./static/config.png')} alt="Configuration" title="Click to view full size image" />
 
+### Ingested Properties
+
+To inspect the raw data ingested from Harness CD, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
+
+<DocImage path={require('./static/harnesscd-ingested-properties.gif')} alt="Ingested Properties of HarnessCD" title="Click to view full size image" />
+
+Ingested properties are stored in two sections of the entity YAML:
+
+* **`metadata.integration`** - Tracks which integrations are linked to this entity, including the entity action (e.g., `MERGE`) and the linked entity UUID for each integration instance.
+* **`integration_properties.HarnessCD`** - Contains the DORA metrics synced from the CD service. Fields include `changeFailureRatePercent`, `deploymentFrequencyPerSprint`, etc.
+
+:::info Field Path Update for Old Users
+Prior to this change, these fields were available directly under `metadata` (e.g., `metadata.deploymentFrequencyPerSprint`). They have been moved to `metadata.integration_properties.HarnessCD`. Update any existing layout YAML to use the new paths.
+:::
+
+#### Surfacing DORA metrics (synced from a CD integration)
+
+To display DORA metrics on the catalog entity page, add a `StatsCardGroup` component to your [catalog layout](/docs/internal-developer-portal/layout-and-appearance/catalog) using the `metadata.integration_properties.HarnessCD` field paths:
+
+```yaml
+- component: StatsCardGroup
+  specs:
+    props:
+      title: CD Dora Metrics
+      cards:
+        - title: Deployment Frequency
+          value: <+metadata.integration_properties.HarnessCD.deploymentFrequencyPerSprint>
+        - title: Change Failure Rate
+          value: <+metadata.integration_properties.HarnessCD.changeFailureRatePercent>
+```
+
+---
+
 :::info Scope Filter Changes
 If you remove a project or organization from the sync scope, existing linked entities from that scope remain in your catalog unchanged but stop receiving updates. The link between the CD service and IDP entity remains active but sync is paused. To resume sync, add the scope back to the filter.
 :::

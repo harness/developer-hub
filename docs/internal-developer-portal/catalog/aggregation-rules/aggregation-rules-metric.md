@@ -20,7 +20,7 @@ Metric aggregation rules roll up a raw numeric field stored in entity metadata t
 
 **Common sources for metric fields:**
 - Properties ingested via the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api)
-- DORA metrics synced from a CD integration (e.g. `metadata.changeFailureRatePercent`, `metadata.avgDeploymentTime`)
+- DORA metrics synced from a CD integration (e.g. `metadata.integration_properties.HarnessCD.changeFailureRatePercent`, `metadata.integration_properties.HarnessCD.deploymentFrequencyPerSprint`)
 - Custom properties defined in entity YAML
 
 Metric aggregation works with any entity kind, including [custom kinds](/docs/internal-developer-portal/custom-kinds/overview).
@@ -151,7 +151,7 @@ Save the layout. The aggregated value now appears as a card on the hierarchy ent
 
 ```yaml
 Aggregation Type: Metric
-Field to Aggregate: metadata.changeFailureRatePercent
+Field to Aggregate: metadata.integration_properties.HarnessCD.changeFailureRatePercent
 Aggregation Property Name: max_change_failure_rate
 Formula: Maximum
 Roll-up Scope: Project, Organization, Account
