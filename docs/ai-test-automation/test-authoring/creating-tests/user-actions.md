@@ -134,7 +134,7 @@ Executes a SQL query against a database and captures the results as parameters. 
 > This action requires proper database credentials and connection information. Ensure your database is accessible from the test environment.
 
 :::note
-You can use the database types of MongoDb and Postgres.
+You can use the database types of MongoDB, PostgreSQL, Oracle, and MS SQL.
 :::
 <DocImage
   path={require('./static/db-query.png')}

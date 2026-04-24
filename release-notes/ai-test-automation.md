@@ -1,7 +1,7 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2025-10-29T16:00
+date: 2026-04-30T12:00
 sidebar_position: 1
 ---
 
@@ -33,6 +33,9 @@ The release notes describe recent changes to Harness AI Test Automation.
   Tasks can nest at most **two levels** deep, preventing runaway task hierarchies. A **feature flag** controls this behavior and applies consistently in both the **UI** and **backend**.
 
 #### Enhancements & Bug Fixes
+
+- **DB Query: Oracle and MS SQL support**  
+  The **DB Query** action now supports **Oracle** and **MS SQL (SQL Server)** as database targets, in addition to the existing **PostgreSQL** and **MongoDB** options. You can now point a DB Query at the database type your application already uses without standing up an intermediate data source. Go to the [DB Query guide](/docs/ai-test-automation/guides/db-query) to set up a DB Query action against any supported database.
 
 - **Fixed BASE_URL path duplication across environments**  
   Resolved incorrect path duplication on `BASE_URL` when running tests across environments that share the same URL suffixes.

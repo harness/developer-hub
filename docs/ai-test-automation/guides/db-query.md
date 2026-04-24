@@ -38,7 +38,7 @@ Ensure you have the database details you want to test or query from.
 
 You'll need:
 
-* Database type (PostgreSQL or MongoDB; support for Oracle, MS SQL, and MySQL coming soon) 
+* Database type (PostgreSQL, MongoDB, Oracle, or MS SQL; support for MySQL coming soon) 
 * Host and port
 * Database name
 * Username and password (preferably a read-only user)
@@ -63,8 +63,10 @@ Configure the following fields to set up your database query:
 Select the type of database you want to connect to. Currently supported options include:
 - **PostgreSQL**
 - **MongoDB**
+- **Oracle**
+- **MS SQL**
 
-Support for Oracle, MS SQL, and MySQL is coming soon.
+Support for MySQL is coming soon.
 
 **Connection String** : Provide the full connection string to your database. This typically includes the protocol, host, port, and database name. Follows the pattern: `protocol://host:port/database_name?options`
 
