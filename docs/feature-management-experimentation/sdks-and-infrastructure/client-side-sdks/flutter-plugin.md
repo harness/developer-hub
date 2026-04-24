@@ -377,7 +377,7 @@ The parameters available for configuration are shown below.
 | --- | --- | --- | --- |
 | featuresRefreshRate | The SDK polls Harness servers for changes to feature flags at this rate (in seconds). | 3600 seconds | All |
 | segmentsRefreshRate | The SDK polls Harness servers for changes to segments at this rate (in seconds). | 1800 seconds | All |
-| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds | All |
+| impressionsRefreshRate | Controls how frequently the impressions cache expires after a write (in seconds). The treatment log captures which customer saw which treatment (on, off, etc.) and is periodically flushed back to Harness servers. | 1800 seconds | All |
 | telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600 seconds (1 hour) | All |
 | eventsQueueSize | When using `.track`, the number of **events** to be kept in memory. | 10000 | All |
 | eventFlushInterval | When using `.track`, how often is the events queue flushed to Harness servers. | 1800 seconds | All |

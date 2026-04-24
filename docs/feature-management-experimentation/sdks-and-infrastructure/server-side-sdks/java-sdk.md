@@ -558,7 +558,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | --- | --- | --- |
 | featuresRefreshRate | The SDK polls Harness servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 seconds |
 | segmentsRefreshRate  | The SDK polls Harness servers for changes to segments at this rate (in seconds). | 60 seconds |
-| impressionsRefreshRate  | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 60 seconds |
+| impressionsRefreshRate  | Controls how frequently the impressions cache expires after a write (in seconds). The treatment log captures which customer saw which treatment (on, off, etc.) and is periodically flushed back to Harness servers. | 300 seconds |
 | telemetryRefreshRate  | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600 seconds |
 | eventsQueueSize  | When using `.track`, the number of events to be kept in memory. | 500 |
 | eventFlushIntervalInMillis  | When using `.track`, how often (in milliseconds) the events queue is flushed to Harness servers. | 30000 ms |

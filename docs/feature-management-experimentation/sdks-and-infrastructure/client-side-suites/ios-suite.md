@@ -367,7 +367,7 @@ Feature flagging parameters:
 | --- | --- | --- |
 | featuresRefreshRate | The Suite polls Harness servers for changes to feature flags at this rate (in seconds). | 3600 seconds (1 hour) |
 | segmentsRefreshRate | The Suite polls Harness servers for changes to segments at this rate (in seconds). | 1800 seconds (30 minutes) |
-| impressionRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds (30 minutes) |
+| impressionRefreshRate | Controls how frequently the impressions cache expires after a write (in seconds). The treatment log captures which customer saw which treatment (on, off, etc.) and is periodically flushed back to Harness servers. | 1800 seconds (30 minutes) |
 | impressionsQueueSize | Default queue size for impressions. | 30K |
 | eventsPushRate | When using `.track`, how often the events queue is flushed to Harness servers. | 1800 seconds|
 | eventsPerPush | Maximum size of the batch to push events. | 2000 |
