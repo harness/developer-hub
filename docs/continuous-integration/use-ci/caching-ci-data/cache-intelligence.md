@@ -369,18 +369,15 @@ curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?accoun
 
 If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Cache Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
 
-To avoid this, explicitly exclude the following directories in your pom.xml file.
+To avoid this, explicitly exclude the following directories in your `pom.xml` file or plugin configuration.
 
 **Directories to Ignore**
-- Build Intelligence:
-`/harness/.mvn`
+- Build Intelligence: `/harness/.mvn`
+- Cache Intelligence: `/harness/.m2`, `/harness/.mvn`
 
-- Cache Intelligence:
-`/harness/.m2`
-`/harness/.mvn` (also applies to cache-related scans)
-
-**Example: Update to pom.xml**
 Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
+
+**Example: Apache RAT plugin in `pom.xml`**
 
 ```xml
 <build>
@@ -392,7 +389,7 @@ Add the following snippet under the `<build>` section to configure the apache-ra
       <configuration>
         <excludes>
           <exclude>/harness/.mvn</exclude>
-          <exclude>/harness/.m2</exclude> <!-- Optional, but recommended -->
+          <exclude>/harness/.m2</exclude>
         </excludes>
       </configuration>
       <executions>
@@ -407,6 +404,30 @@ Add the following snippet under the `<build>` section to configure the apache-ra
   </plugins>
 </build>
 ```
+
+Refer to your specific plugin's documentation for the correct exclusion syntax. This issue applies to any license-compliance plugin (e.g., [Apache RAT](https://creadur.apache.org/rat/), [License Maven Plugin](https://www.mojohaus.org/license-maven-plugin/), or similar source-auditing tools).
+
+### License-checking plugins flagging files in the cache directory
+
+License-compliance plugins may also flag files stored under the default `/harness` cache directory, including Maven dependencies and other cached artifacts that lack expected license headers.
+
+**Workarounds:**
+
+- **Redirect Maven local repository**: Set `-Dmaven.repo.local=/tmp/.m2/repository` in your Maven command to store dependencies outside the `/harness` directory, so the plugin does not scan them. For example:
+
+  ```shell
+  mvn build -Dmaven.repo.local=/tmp/.m2/repository
+  ```
+
+- **Configure custom cache paths**: Use the [custom cache paths](#customize-cache-paths) option to store cached data in a directory excluded from license scans.
+
+- **Exclude the cache directory in your plugin configuration**: Add the `/harness` directory to your plugin's exclusion list. For example, in a `.rat-excludes` file:
+
+  ```
+  /harness/**
+  ```
+
+  Refer to your specific plugin's documentation for the correct exclusion syntax.
 
 ### Gradle cache location
 
