@@ -1324,5 +1324,71 @@
     "description": "Verify step I/O variables in CV config handling",
     "gaStartDate": "2026-04-21",
     "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "PIPE_FAIL_USER_MARKED_FAIL_ALL_INTERRUPT_WITHOUT_LEAF_NODES",
+    "description": "Allows users to mark a pipeline as failed even when no steps are actively running, useful for handling stuck or edge-case executions.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_PIPELINE_RESUME_NOTIFICATION",
+    "description": "Sends notifications when a pipeline resumes after user approval, manual input, or intervention actions.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_PROCESS_TRIGGER_SEQUENTIALLY_FOR_PR_EVENTS",
+    "description": "Ensures pipeline triggers execute in order after Git PR events, preventing race conditions with file sync operations.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_REMOVE_PROCESSED_NOTIFY_IDS_FROM_WAIT_INSTANCES",
+    "description": "Improves pipeline execution performance by optimizing how barrier and config-file steps handle completed callbacks.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_TRIGGER_FALLBACK_CHANGED_FILES_TO_HEAD_COMMIT_FOR_GITHUB_PUSH_EVENTS",
+    "description": "Fixes filepath-based trigger conditions for GitHub push events when the commits array is empty.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_QUEUED_BASED_CUSTOM_TRIGGERS",
+    "description": "Improves reliability of custom webhook triggers by processing them asynchronously through a queue.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION",
+    "description": "Improves API responsiveness by processing pipeline plan creation asynchronously.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_INPUT_SET_FILTER",
+    "description": "Allows users to filter pipeline executions by input set and validates input set references during pipeline runs.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_OPTIMISE_EXPANDED_JSON_FUNCTOR",
+    "description": "Prevents performance degradation from overly complex pipeline expressions by enforcing depth limits.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIE_SET_ADVISORS_PROCESSED",
+    "description": "Ensures accurate pipeline status reporting by waiting for all failure strategies and advisors to complete before updating parent status.",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_RESTRICTION_IN_TRIGGER_HEADERS",
+    "description": "Enforces security and size limits on custom headers in webhook notifications (max 25 headers, 256 chars each, no special characters).",
+    "gaStartDate": "2026-04-25",
+    "module": "Pipeline"
   }
 ]
