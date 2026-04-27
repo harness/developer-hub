@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2026
 
+### Version 26.04.89004 <!-- April 24, 2026 -->
+
+#### Fixed issues
+- Fixed CVE issues related to crypto libraries.
+
 ### Version 26.04.89003 <!-- April 24, 2026 -->
 
 #### Fixed issues
