@@ -132,7 +132,7 @@ Harness AI SRE ensures security at every stage:
 
 3. **Automation Execution**  
    - Actions are logged for compliance.  
-   - Only approved integrations execute via Harness Delegates.
+   - Only approved integrations execute via [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview).
 
 4. **Audit & Compliance Logging**  
    - Every action is recorded for compliance audits.  

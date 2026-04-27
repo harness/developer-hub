@@ -13,7 +13,11 @@ redirect_from:
 The AI Scribe Agent is a specialized autonomous component of the Harness AI SRE platform that acts as a virtual scribe during incidents. It automatically documents communications, decisions, and actions across multiple channels to create comprehensive incident records without manual effort. The AI Scribe Agent works in conjunction with the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) — the Scribe captures the incident narrative, and the RCA Change Agent uses that structured data to identify root causes and drive corrective action.
 :::
 
-The AI Scribe Agent serves as your dedicated incident management specialist, automatically capturing and organizing all incident response activities across communication platforms. By monitoring Slack channels, Zoom, and Microsoft Teams meetings, it ensures that no critical information is lost during high-pressure incident response situations.
+The AI Scribe Agent serves as your dedicated incident management specialist, automatically capturing and organizing all incident response activities across communication platforms. 
+
+By monitoring Slack channels, Zoom, and Microsoft Teams meetings, it ensures that no critical information is lost during high-pressure incident response situations.
+
+![AI Scribe Agent timeline](./static/ai-scribe-agent-timeline.png)
 
 ## Key Capabilities
 

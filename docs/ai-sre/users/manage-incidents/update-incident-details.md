@@ -32,6 +32,8 @@ Keep the status current as you work through the incident. Status changes are vis
 
 Change the status from the incident details page by clicking the status field and selecting the new value.
 
+![Incident status dropdown](../../get-started/static/incident-status-dropdown.png)
+
 ## Add Key Events
 
 Key events mark important milestones: root cause identified, mitigation applied, service restored, a decision to escalate, an external communication sent, etc.

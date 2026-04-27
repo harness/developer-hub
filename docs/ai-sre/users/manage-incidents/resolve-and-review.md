@@ -31,6 +31,8 @@ The [AI Scribe Agent](/docs/ai-sre/ai-agent) works alongside you during the inci
 
 Access these from the **AI Summary** and **Timeline** sections on the incident details page. Review them for accuracy and completeness — they're generated from what was captured during the incident, so the quality of your real-time documentation directly affects the quality of these outputs.
 
+![AI Summary timeline](../../get-started/static/incident-ai-summary-timeline.png)
+
 ## Contribute to Post-Incident Learning
 
 Resolving the incident is the end of the immediate response, but the beginning of the learning cycle:

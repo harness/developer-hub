@@ -135,7 +135,7 @@ Creates a new Slack channel for incident coordination.
 
 ## Next Steps
 
-- [Slack Commands](../../get-started/slack-commands.md)
+- [Slack Commands](/docs/ai-sre/get-started/slack-commands)
 - [Configure Microsoft Teams Integration](./teams.md)
 - [Configure Zoom Integration](./zoom.md)
 - [Return to Runbook Overview](../runbooks.md)

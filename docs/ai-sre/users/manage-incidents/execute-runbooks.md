@@ -19,7 +19,12 @@ Some runbooks are automatically attached to an incident based on the incident ty
 
 1. Open the **Incident Details** page.
 2. Click the **Runbooks** tab.
+
+   ![Runbooks tab](../../get-started/static/incident-detail-runbooks-tab-closed.png)
+
 3. Review any runbooks that are already attached.
+
+   ![Runbooks tab open](../../get-started/static/incident-detail-runbooks-tab-open.png)
 
 ## Execute a Runbook
 

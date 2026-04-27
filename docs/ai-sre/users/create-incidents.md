@@ -22,6 +22,9 @@ The AI-powered Quick Start feature analyzes your problem description and auto-po
 ### Step 1: Access Incident Creation
 
 1. Navigate to **Incidents** from the left panel.
+
+   ![Incident list](../get-started/static/incident-list.png)
+
 2. Choose your creation method:
    - Click **New Incident** for a blank incident.
    - Select an **Incident Type** from the dropdown next to "New Incident" to use a pre-configured template.
@@ -29,6 +32,9 @@ The AI-powered Quick Start feature analyzes your problem description and auto-po
 ### Step 2: Select Incident Type
 
 1. Choose the appropriate **Incident Type** from the available options.
+
+   <img src={require('../get-started/static/create-new-incident.png').default} alt="Create new incident form" width="450" style={{border: '1px solid black'}} />
+
 2. This will pre-populate relevant fields and associate appropriate runbooks.
 3. If you're unsure which type to pick, check with your team lead — incident types are configured by your administrator to match your organization's response processes.
 
@@ -66,6 +72,8 @@ Follow this interactive guide to create an incident with AI-powered assistance.
 ## Create Incidents from Slack
 
 You can also create incidents directly from Slack using the `/harness new` command. This is especially useful during on-call shifts when you want to stay in your communication tool.
+
+![Slack incident notification](../get-started/static/slack-incident-notification.png)
 
 See [Managing Incidents in Slack](/docs/ai-sre/get-started/slack-commands) for the full command reference.
 

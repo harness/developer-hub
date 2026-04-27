@@ -67,6 +67,9 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 ### Step 1: Access Incident Creation
 
 1. Navigate to **Incidents** from the left panel
+
+   ![Incident list](../get-started/static/incident-list.png)
+
 2. Choose your creation method:
    - Click **New Incident** for a blank incident
    - Select an **Incident Type** from the dropdown next to "New Incident" for pre-configured templates
@@ -74,6 +77,9 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 ### Step 2: Select Incident Type
 
 1. Choose the appropriate **Incident Type** from the available options
+
+   <img src={require('../get-started/static/create-new-incident.png').default} alt="Create new incident form" width="450" style={{border: '1px solid black'}} />
+
 2. This will pre-populate relevant fields and associate appropriate runbooks
 3. Incident types ensure consistent data collection and response procedures
 

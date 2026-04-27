@@ -15,7 +15,12 @@ This page walks you through opening the incident, understanding what's happening
 
 You'll receive an incident notification through one or more channels — Slack, Microsoft Teams, PagerDuty, OpsGenie, mobile push, email, SMS, or phone call, depending on your contact settings.
 
+![Slack incident notification](../../get-started/static/slack-incident-notification.png)
+
 1. Click the notification link to open the **Incident Details** page in Harness.
+
+   ![Incident detail page](../../get-started/static/incident-detail-page.png)
+
 2. If you're on mobile, you can also acknowledge directly from the Harness On-Call app.
 
 ## Review the Incident Summary

@@ -11,7 +11,11 @@ sidebar_position: 3
 The RCA (Root Cause Analysis) Change Agent is a specialized autonomous component of the Harness AI SRE platform that analyzes incidents to identify potential root causes. It automatically investigates deployments, pull requests, and change events, then generates theories with confidence scores to help engineers focus their investigation efforts.
 :::
 
-The RCA Change Agent operates continuously throughout an incident's lifecycle, automatically re-analyzing when new key events are added by the AI Scribe Agent. As new information becomes available, it updates theory confidence scores and can add new theories or rule out unlikely candidates, providing engineers with an evolving understanding of potential root causes.
+The RCA Change Agent operates continuously throughout an incident's lifecycle, automatically re-analyzing when new key events are added by the AI Scribe Agent. 
+
+As new information becomes available, it updates theory confidence scores and can add new theories or rule out unlikely candidates, providing engineers with an evolving understanding of potential root causes.
+
+![RCA Change Agent theories](./static/rca-change-agent-theories-panel.png)
 
 ## How It Works
 
@@ -22,6 +26,7 @@ The RCA Change Agent runs automatically as a background job whenever key events 
 - **Progressive refinement**: Confidence scores adjust as more data becomes available
 - **Theory evolution**: New theories can be added, and unlikely theories can be ruled out as the incident progresses
 
+<!-- 
 ## Investigation Tools
 
 The RCA Change Agent uses specialized tools to investigate incidents:
@@ -174,8 +179,10 @@ The RCA Change Agent automatically analyzes:
 ### Related Resources
 - [Incident Management Overview](/docs/ai-sre/incidents/)
 - [Post-Incident Review](/docs/ai-sre/ai-agent/#post-incident-review)
-- [Runbook Automation](/docs/ai-sre/runbooks/)
+- [Runbook Automation](/docs/ai-sre/runbooks/) -->
 
 ## Summary
 
-The RCA Change Agent enhances incident response by automatically investigating potential root causes whenever the AI Scribe Agent adds key events to an active incident. By analyzing deployments, code changes, and telemetry data, it generates theories with confidence scores that help engineers focus their investigation efforts on the most likely causes, accelerating time to resolution.
+The RCA Change Agent enhances incident response by automatically investigating potential root causes whenever the AI Scribe Agent adds key events to an active incident. 
+
+By analyzing deployments, code changes, and telemetry data, it generates theories with confidence scores that help engineers focus their investigation efforts on the most likely causes, accelerating time to resolution.

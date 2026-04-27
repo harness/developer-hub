@@ -49,14 +49,7 @@ Go to [What's supported with Harness AI SRE](/docs/ai-sre/resources/whats-suppor
 ## 1. Integrate your collaboration and monitoring tools
 
 <Tabs groupId="ai-sre-setup" queryString>
-  <TabItem value="Interactive Guide" label="Interactive Guide" default>
-
-<DocVideo src="https://app.tango.us/app/embed/c55a8b8f-bce1-487c-b8ea-5d178a844682?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Integrate Collaboration and Monitoring Tools in Harness AI SRE" />
-
-Use connectors to integrate with Teams, Slack, ServiceNow, and other monitoring tools for real-time incident alerts.
-
-  </TabItem>
-  <TabItem value="Step by Step" label="Step by Step">
+  <TabItem value="Step by Step" label="Step by Step" default>
 
 :::info Important Note
 AI SRE works best when integrated with your existing monitoring and collaboration tools. This enables real-time incident detection and seamless team coordination.
@@ -85,19 +78,19 @@ Start with your primary monitoring tool and main communication channel. You can 
 :::
 
   </TabItem>
+  <TabItem value="Interactive Guide" label="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/c55a8b8f-bce1-487c-b8ea-5d178a844682?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Integrate Collaboration and Monitoring Tools in Harness AI SRE" />
+
+Use connectors to integrate with Teams, Slack, ServiceNow, and other monitoring tools for real-time incident alerts.
+
+  </TabItem>
 </Tabs>
 
 ## 2. Set up your incident types
 
 <Tabs groupId="ai-sre-setup" queryString>
-  <TabItem value="Interactive Guide" label="Interactive Guide" default>
-
-<DocVideo src="https://app.tango.us/app/embed/50543ebc-97c8-4b92-86c2-bc19cd4fc230?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Set up your incident types" />
-
-Define incident types to standardize severity levels, responders, and escalation paths.
-
-  </TabItem>
-  <TabItem value="Step by Step" label="Step by Step">
+  <TabItem value="Step by Step" label="Step by Step" default>
 
 Define Incident Types for your teams to standardize your response process by defining severity levels, response teams, and escalation procedures.
 
@@ -129,19 +122,19 @@ Define Incident Types for your teams to standardize your response process by def
 10. Additionally, you can add **runbooks** to your incident type for automated response workflows.
 
   </TabItem>
+  <TabItem value="Interactive Guide" label="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/50543ebc-97c8-4b92-86c2-bc19cd4fc230?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Set up your incident types" />
+
+Define incident types to standardize severity levels, responders, and escalation paths.
+
+  </TabItem>
 </Tabs>
 
 ## 3. Configure your first webhook
 
 <Tabs groupId="ai-sre-setup" queryString>
-  <TabItem value="Interactive Guide" label="Interactive Guide" default>
-
-<DocVideo src="https://app.tango.us/app/embed/f14f004b-3405-4384-baae-48a035a8eb12?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure webhooks in Harness AI SRE" />
-
-Send events from external tools, like alerts, builds, deployments, and config changes. Categorize them to track and respond effectively.
-
-  </TabItem>
-  <TabItem value="Step by Step" label="Step by Step">
+  <TabItem value="Step by Step" label="Step by Step" default>
 
 Webhooks enable external tools to automatically create alerts and incidents in AI SRE.
 
@@ -173,19 +166,19 @@ Webhooks enable external tools to automatically create alerts and incidents in A
 9. Finally, click on **Save** on the top right, the integration is ready.
 
   </TabItem>
+  <TabItem value="Interactive Guide" label="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/f14f004b-3405-4384-baae-48a035a8eb12?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure webhooks in Harness AI SRE" />
+
+Send events from external tools, like alerts, builds, deployments, and config changes. Categorize them to track and respond effectively.
+
+  </TabItem>
 </Tabs>
 
 ## 4. Create your first runbook
 
 <Tabs groupId="ai-sre-setup" queryString>
-  <TabItem value="Interactive Guide" label="Interactive Guide" default>
-
-<DocVideo src="https://app.tango.us/app/embed/48a2f0ca-d07f-4395-aa7b-9b5c2c7b9018?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create  runbook in AI SRE" />
-
-Automate response actions and guide responders step-by-step during incidents.
-
-  </TabItem>
-  <TabItem value="Step by Step" label="Step by Step">
+  <TabItem value="Step by Step" label="Step by Step" default>
 
 Runbooks automate incident response actions and provide step-by-step guidance for responders.
 
@@ -212,6 +205,13 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
 12. Select the **Incident type** from the dropdown with which you want to attach the runbook.
 13. Define the **condition of the trigger**.
 14. Click on **Save** from the top right.
+
+  </TabItem>
+  <TabItem value="Interactive Guide" label="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/48a2f0ca-d07f-4395-aa7b-9b5c2c7b9018?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create  runbook in AI SRE" />
+
+Automate response actions and guide responders step-by-step during incidents.
 
   </TabItem>
 </Tabs>
