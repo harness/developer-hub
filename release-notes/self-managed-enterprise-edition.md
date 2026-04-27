@@ -384,7 +384,7 @@ This release includes the following Harness module and component versions.
 | LE Nextgen                   | 1.13.1                                                                                       |
 | Log Service                  | 1.45.0                                                                                       |
 | Looker                       | 1.10.1                                                                                       |
-| Next Gen UI                  | 1.125.9                                                                                      |
+| Next Gen UI                  | 1.123.9                                                                                      |
 | NG Auth UI                   | 1.39.0                                                                                       |
 | NG CE UI                     | 1.80.8                                                                                       |
 | NG Custom Dashboards         | 1.105.0                                                                                      |
@@ -429,7 +429,7 @@ For a comprehensive guide on installing Harness Self-Managed Enterprise Edition 
 
 #### Continuous Delivery
 
-<!-- Add CD fixed issues here -->
+- Fixed an NGUI version mismatch issue from [SMP 0.40.0](#april-14-2026-version-0400) by aligning it with dependent services, restoring full functionality of newly introduced features. [CDS-122629]
 
 
 ## April 21, 2026, Version 0.40.1 <!-- April 21, 2026 -->
