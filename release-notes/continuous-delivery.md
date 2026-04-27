@@ -73,6 +73,20 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 Wondering where versions 1.140.xx and 1.141.xx are? Those releases were rolled into 1.142.xx and upgrades will skip directly from 1.139.xx to 1.142.xx. Don't worry, you're not missing a thing!
 :::
 
+### GitOps Service 1.55.7, GitOps Agent 0.115.0
+
+#### New features and enhancements
+
+- ApplicationSet TemplatePatch is now supported in the Manifest Edit panel. Previously, TemplatePatch configuration disappeared from the UI after being set. (**CDS-120408**)
+
+#### Fixed issues
+
+- Fixed an issue where multi-source GitOps applications had incorrect repository identifier mapping. The reconciler filtered out empty strings when generating the repository list, causing the source-to-repository mapping to shift and link sources to the wrong metadata. A separate logic error allowed both single-source and multi-source identifier fields to be populated at the same time. The reconciler now preserves positional alignment by keeping empty placeholders and uses strict conditional logic so only the relevant identifier field is updated. (**CDS-120193**)
+- Fixed an issue where the App Details page displayed a `Failed loading charts` error for GitOps applications using OCI Helm repositories. The UI attempted to fetch `index.yaml` via HTTP, which OCI registries do not serve. The chart loading logic now correctly identifies OCI repositories and skips the index fetch. (**CDS-122214**, **ZD-111562**)
+- Fixed an issue where events in the application Events panel were listed oldest-first instead of newest-first, and the heading section scrolled out of view. Events are now sorted newest-first, and the tab header remains fixed while scrolling. (**CDS-113750**)
+- Fixed an issue where a JSONNET object was intermittently added during GitOps application creation, causing manifest errors. (**CDS-115693**)
+- Fixed an issue where the OutOfSync resource filter in the UI incorrectly mapped to SyncFailed, preventing OutOfSync resources from appearing in filtered results. (**CDS-121310**)
+
 ### Version 1.139.3
 
 #### New features and enhancements
