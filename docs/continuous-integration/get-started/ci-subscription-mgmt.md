@@ -57,6 +57,7 @@ Harness Cloud provides Harness-managed infrastructure that can be used for vario
 [Learn more about Harness Cloud](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 
+
 ### Credit consumption
 
 Credits are deducted for each minute of execution on Harness Cloud, depending on factors such as the operating system and allocated resources. Multiple Harness modules (e.g., CI, Security Testing Orchestration, Infrastructure as Code Management) allow customers to run pipeline stages on Harness Cloud infrastructure, and whenever a stage is executed on Harness Cloud, the corresponding credits are consumed.
@@ -104,7 +105,16 @@ Cloud credits can be consumed by all users within the account registered to run 
 
 ### Usage limits
 
-The following sections describe limits for concurrent stage execution on Harness Cloud, Storage used by [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) features, and network transfers. You can request request to increase concurrency, network transfer, or storage limits. For more information, contact Harness Sales or your account manager.
+The following sections describe limits for concurrent stage execution on Harness Cloud, Storage used by [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) features, and network transfers. 
+
+
+:::info
+
+Harness customers who need higher limits for their account can contact [Harness Support](https://support.harness.io) to request an increase.
+
+:::
+
+
 
 #### Concurrency
 
