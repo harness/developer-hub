@@ -1,4 +1,4 @@
-# contains subnet tags for given az
+# contains subnet tag for given az
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -11,9 +11,9 @@ spec:
       spec:
         components:
           env:
-            # target subnet tags for the chaos
-            - name: SUBNET_TAGS
-              value: 'env:production,team:backend'
+            # target subnet tag for the chaos
+            - name: SUBNET_TAG
+              value: 'env=production'
             # target availability zones for the chaos
             - name: AVAILABILITY_ZONES
               value: 'us-east-1a,us-east-1b'

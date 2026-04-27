@@ -88,6 +88,11 @@ Below is an example AWS policy to execute the fault.
         <th> Notes </th>
       </tr>
       <tr>
+        <td> AVAILABILITY_ZONES </td>
+        <td> Provide the target availability zones to cause the network blackhole. </td>
+        <td> For example, <code>us-east-1a</code>. For more information, go to <a href="#availability-zones"> availability zones.</a></td>
+      </tr>
+      <tr>
         <td> REGION </td>
         <td> Region name for the target volumes. </td>
         <td> For example, <code>us-east-1</code>. </td>
@@ -107,11 +112,6 @@ Below is an example AWS policy to execute the fault.
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
-        <td> AVAILABILITY_ZONES </td>
-        <td> Provide the target availability zones to cause the network blackhole. </td>
-        <td> For example, <code>us-east-1a</code>. For more information, go to <a href="#availability-zones"> availability zones.</a></td>
-      </tr>
-      <tr>
         <td> VPC_IDS </td>
         <td> Provide the VPC IDs to limit the impact, ensuring the AZ blackhole targets only those specific networks. </td>
         <td> For example: "vpc-89765,vpc-78687". For more information, go to <a href="#vpc-ids"> vpc ids.</a></td>
@@ -122,9 +122,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example: "subnet-0a1b2c3d,subnet-9z8y7x6w". For more information, go to <a href="#subnet-ids"> subnet ids.</a></td>
       </tr>
       <tr>
-        <td> SUBNET_TAGS </td>
-        <td> Provide the subnet tags to target specific subnets by their tag key-value pairs. </td>
-        <td> For example: "env:production,team:backend". For more information, go to <a href="#subnet-tags"> subnet tags.</a></td>
+        <td> SUBNET_TAG </td>
+        <td> Provide the subnet tag to target specific subnets by a tag key-value pair. </td>
+        <td> For example: "env=production". For more information, go to <a href="#subnet-tag"> subnet tag.</a></td>
       </tr>
       <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -150,12 +150,12 @@ Below is an example AWS policy to execute the fault.
 
 ### Use Case Description
 
-1. If a user provides only the region parameter, then by default Harness selects all the VPCs in that region and the blast radius is maximum.
-2. If a user wants to control the blast radius, the options are:
-   - **Region with VPC ID**: Targets specific VPCs within the region.
-   - **Region with VPC ID and Availability Zone**: Targets specific availability zones within the specified VPCs.
-   - **Region with VPC ID, AZ, and Subnet Tag**: Targets subnets matching the specified tags within the given VPCs and availability zones.
-   - **Region with VPC ID, AZ, and Subnet ID**: Targets specific subnets by their IDs within the given VPCs and availability zones.
+1. The minimum required inputs are Region and Availability Zone(s). When only these are provided, Harness selects all VPCs in that region and blackholes all subnets in the given AZs — this is the maximum blast radius.
+2. To control the blast radius, the options are:
+   - **Region + AZ + VPC ID(s)**: Targets only the specified VPCs within the given AZs.
+   - **Region + AZ + VPC ID(s) + Subnet Tag**: Targets subnets matching the tag (key=value) within the given VPCs and AZs.
+   - **Region + AZ + VPC ID(s) + Subnet ID(s)**: Targets specific subnets by ID within the given VPCs and AZs. (If both SubnetIDs and SubnetTag are set, SubnetIDs takes precedence.)
+3. ZoneAffectedPercentage (default 100) can further reduce blast radius by randomly selecting a percentage of the provided AZs each iteration.
 
 ### Availability Zones
 
@@ -253,15 +253,15 @@ spec:
           value: 'us-east-1'
 ```
 
-### Subnet Tags
+### Subnet Tag
 
-Comma-separated list of the subnet tags (in `key:value` format) to target specific subnets. Tune it by using the `SUBNET_TAGS` environment variable.
+A subnet tag in `key=value` format to target specific subnets. Tune it by using the `SUBNET_TAG` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/az-blackhole/subnet-tags.yaml yaml)
+[embedmd]:# (./static/manifests/az-blackhole/subnet-tag.yaml yaml)
 ```yaml
-# contains subnet tags for given az
+# contains subnet tag for given az
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -274,9 +274,9 @@ spec:
     spec:
       components:
         env:
-        # target subnet tags for the chaos
-        - name: SUBNET_TAGS
-          value: 'env:production,team:backend'
+        # target subnet tag for the chaos
+        - name: SUBNET_TAG
+          value: 'env=production'
         # target availability zones for the chaos
         - name: AVAILABILITY_ZONES
           value: 'us-east-1a,us-east-1b'
