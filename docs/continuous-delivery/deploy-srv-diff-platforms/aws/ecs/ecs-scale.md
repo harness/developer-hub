@@ -8,8 +8,10 @@ The ECS Scale step lets you scale any ECS service running in a cluster — indep
 
 This is useful when you need to scale services that are not part of the current deployment. For example, you might want to scale down a background worker service before deploying a new version of your primary application, or scale up a dependent service after deployment completes.
 
-:::note
-Currently, this feature is behind the feature flag `CDS_ECS_SCALE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. This step requires a minimum delegate version of `88503`.
+:::info Delegate version requirement
+
+This step requires a minimum delegate version of `88503`.
+
 :::
 
 :::note

@@ -195,7 +195,7 @@ Wondering where versions 1.140.xx and 1.141.xx are? Those releases were rolled i
 
 #### New Features and Enhancements
 
-- Harness now supports a dedicated **ECS Scale** step that lets you scale ECS services up or down without running a full deployment stage. You can specify the target instance count or percentage, and optionally provide AWS connector, region, and cluster details at the step level or inherit them from the environment configuration. This feature requires delegate version `26.02.88503` or later and is behind the feature flag `CDS_ECS_SCALE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-118048**)
+- Harness now supports a dedicated **ECS Scale** step that lets you scale ECS services up or down without running a full deployment stage. You can specify the target instance count or percentage, and optionally provide AWS connector, region, and cluster details at the step level or inherit them from the environment configuration. This feature requires delegate version `26.02.88503` or later. (**CDS-118048**)
 
 - Harness now supports **Host Groups** for Physical Data Center (PDC) WinRM deployments, letting you assign independent WinRM credentials to different groups of hosts within a single infrastructure definition. This removes the previous limitation of a single shared credential and enables environments using Just Enough Administration (JEA) with distinct endpoint configurations per server group. This feature is behind the feature flag `CDS_ENABLE_INFRA_HOST_GROUPS`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-115563**)
 
