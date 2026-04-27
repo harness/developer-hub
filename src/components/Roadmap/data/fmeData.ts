@@ -117,6 +117,12 @@ export const FmeData: Horizon = {
     description: "What has been released",
     feature: [
       {
+        tag: [{ value: "Experimentation" }],
+        title: "Warehouse Native Experimentation",
+        description: "Run experiments directly in your data warehouse with Warehouse Native Experimentation, now generally available.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/warehouse-native/",
+      },
+      {
         tag: [{ value: "Better Together" }],
         title: "Split integration into Harness",
         description:
