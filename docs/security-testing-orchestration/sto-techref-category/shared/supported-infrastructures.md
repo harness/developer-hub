@@ -12,18 +12,18 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     <tr>
         <td>Linux</td>
         <td>amd64</td>
-        <td align="left">✅ Supported</td>
-        <td align="left">✅ Supported</td>
-        <td align="left">✅ Supported</td>
-        <td align="left">✅ Supported</td>
+        <td align="center">✅ Supported</td>
+        <td align="center">✅ Supported</td>
+        <td align="center">✅ Supported</td>
+        <td align="center">✅ Supported</td>
     </tr>
     <tr>
         <td>Linux</td>
         <td>arm64*</td>
-        <td align="left">✅ Supported</td>
-        <td align="left">✅ Supported</td>
-        <td align="left">✅ Supported</td>
-        <td align="left">✅ Supported</td>
+        <td align="center">✅ Supported</td>
+        <td align="center">✅ Supported</td>
+        <td align="center">✅ Supported</td>
+        <td align="center">✅ Supported</td>
     </tr>
     <tr>
         <td>Windows</td>
