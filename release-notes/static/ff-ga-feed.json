@@ -1390,5 +1390,11 @@
     "description": "Enforces security and size limits on custom headers in webhook notifications (max 25 headers, 256 chars each, no special characters).",
     "gaStartDate": "2026-04-25",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_TERRAFORM_HIDE_SENSITIVE_OUTPUTS",
+    "description": "Mask Terraform sensitive step outputs",
+    "gaStartDate": "2026-04-27",
+    "module": "Continuous Delivery"
   }
 ]
