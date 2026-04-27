@@ -19,19 +19,19 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     </tr>
     <tr>
         <td>Linux</td>
-        <td>arm64</td>
-        <td align="center">✅ Ingestion mode only</td>
-        <td align="center">✅ Ingestion mode only</td>
-        <td align="center">✅ Ingestion mode only</td>
-        <td align="center">✅ Ingestion mode only</td>
+        <td>arm64*</td>
+        <td align="left">✅ Supported</td>
+        <td align="left">✅ Supported</td>
+        <td align="left">✅ Supported</td>
+        <td align="left">✅ Supported</td>
     </tr>
     <tr>
         <td>Windows</td>
         <td>amd64</td>
         <td align="center">✅ Ingestion mode only</td>
-        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not&nbsp;supported</td>
         <td align="center">Roadmap</td>
-        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not&nbsp;supported</td>
     </tr>
     <tr>
         <td>MacOS</td>
@@ -39,6 +39,10 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
         <td align="center">✅ Ingestion mode only</td>
         <td align="center">Roadmap</td>
         <td align="center">Roadmap</td>
-        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not&nbsp;supported</td>
     </tr>
 </table>
+
+:::info *arm64
+Aqua Security, GitHub Advanced Security, and Mend (formerly WhiteSource) scanners do not support Linux arm64.
+:::
