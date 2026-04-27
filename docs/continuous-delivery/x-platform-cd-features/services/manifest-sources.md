@@ -20,7 +20,7 @@ Google Cloud Storage can serve as a manifest store for [Google Managed Instance 
 GCS is a good fit when your team already manages infrastructure configuration in Cloud Storage, or when you want to keep GCP-specific manifests alongside other GCP resources without introducing a Git workflow.
 
 :::info Supported deployment types
-GCS as a manifest store is currently supported only for **Google Managed Instance Group (MIG)** deployments. The MIG deployment type is behind the feature flag `CDS_GOOGLE_MIG`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+GCS as a manifest store is currently supported only for **Google Managed Instance Group (MIG)** deployments.
 :::
 
 ### Prerequisites

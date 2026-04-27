@@ -510,7 +510,6 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - Zonal MIGs (single-zone deployment)
 - **Limitations:**
   - Requires containerized execution environment (Container Step Group)
-  - Feature currently behind feature flag `CDS_GOOGLE_MIG`
 
 </details>
 

@@ -6,10 +6,6 @@ sidebar_position: 1
 
 This guide explains how to deploy and manage Google Cloud Managed Instance Groups (MIGs) using Harness.
 
-:::note
-Currently, this feature is behind the feature flag `CDS_GOOGLE_MIG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 ## Overview
 

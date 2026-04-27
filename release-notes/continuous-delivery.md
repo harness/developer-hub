@@ -380,7 +380,7 @@ For the full upgrade guide, go to [Upgrading from v3.2 to v3.3](https://argo-cd.
 
 #### New Features and Enhancements
 
-- Harness now supports Blue-Green deployments to [**Google Cloud Platform Managed Instance Groups**](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/mig). Deploy GCP VM workloads with zero downtime, gradual traffic shifting using Cloud Service Mesh, and instant rollback.  Currently, this feature is governed by the `CDS_GOOGLE_MIG` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-114547**)
+- Harness now supports Blue-Green deployments to [**Google Cloud Platform Managed Instance Groups**](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/mig). Deploy GCP VM workloads with zero downtime, gradual traffic shifting using Cloud Service Mesh, and instant rollback. (**CDS-114547**)
 
 - Harness now supports **multi-account deployments for AWS CDK**, allowing you to deploy to different AWS accounts using a single connector by overriding the region and assuming a different IAM role at the step level. (**CDS-114915**)
 

@@ -2520,7 +2520,7 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 
 #### Continuous Delivery
 
-- Harness now supports Blue-Green deployments to [**Google Cloud Platform Managed Instance Groups**](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/mig). Deploy GCP VM workloads with zero downtime, gradual traffic shifting using Cloud Service Mesh, and instant rollback. Currently, this feature is governed by the `CDS_GOOGLE_MIG` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable it. [CDS-114547]
+- Harness now supports Blue-Green deployments to [**Google Cloud Platform Managed Instance Groups**](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/mig). Deploy GCP VM workloads with zero downtime, gradual traffic shifting using Cloud Service Mesh, and instant rollback. [CDS-114547]
 - Harness now supports **multi-account deployments for AWS CDK**, allowing you to deploy to different AWS accounts using a single connector by overriding the region and assuming a different IAM role at the step level. [CDS-114915]
 - Harness now supports **GCP connector credentials for Terraform steps**, enabling authentication with Google Cloud Platform using Manual Credentials, Inherit From Delegate, or OIDC Authentication methods. This feature requires delegate version 88303 or later. [CDS-115648]
 - Harness now supports **cross-project access for Google Cloud Operations health sources**. You can now specify a GCP Project ID to query metrics and logs from a different project than your connector's default, eliminating the need to create separate connectors for each GCP project. [CDS-114447]
