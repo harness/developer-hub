@@ -314,6 +314,15 @@ grouping describes management intent, not navigation duplication.
 - Image paths in child files use `../static/image.png` (not `./static/`) because child files sit one
   level deeper than the parent's static folder.
 
+**DMS child file structure (files in `/content/` subdirectories):**
+
+DMS child files have **different frontmatter requirements** than regular pages:
+- **Frontmatter is optional** — `title` and `description` are not required (they live on the parent page)
+- **H1 headings (`#`) are allowed** — the first heading in a DMS child acts as the section title within its tab
+- **No landmark sections** — `## Prerequisites`, `## Next steps`, and `## Troubleshooting` belong on the parent page only, not in DMS children
+
+DMS child files are accessed via the parent page URL + a fragment (e.g., `#docker`), not as standalone pages.
+
 #### Synced tabs
 
 - Use when the **same concept or procedure** applies across environments, platforms, or providers and the reader needs **only one** variant at a time.

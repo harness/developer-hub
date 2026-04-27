@@ -153,6 +153,7 @@ Use bold labels followed by colons:
 
 - Write in **present tense**, **active voice**. Speak to the developer using "you", not "the user".
 - Do **not** use "please". Be authoritative but approachable.
+- Do **not** use contractions. Write out all words in full (`do not` instead of `don't`, `will not` instead of `won't`, `it is` instead of `it's`).
 - Keep sentences short. **No gerunds** anywhere — use the imperative form instead (`Install X`, not `Installing X`). This applies to headings, body text, steps, and list items.
 - **No em dashes** (`—`). Never use em dashes in any documentation — not in sentences, bullet points, or link descriptions. Use a comma, period, semicolon, or rewrite the sentence instead. For bullet points with links, use a colon after the link: `- [Link text](/path): Description here.`
 

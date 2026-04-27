@@ -26,6 +26,17 @@ Do **not** use "please". Be authoritative but approachable.
 - ❌ Please try running the pipeline again.
 - ✅ Run the pipeline again.
 
+Do **not** use contractions. Write out all words in full for clarity and professionalism.
+
+- ❌ Don't use contractions in documentation.
+- ✅ Do not use contractions in documentation.
+- ❌ You'll need to configure the connector.
+- ✅ You will need to configure the connector.
+- ❌ It's important to save your work.
+- ✅ It is important to save your work.
+- ❌ The pipeline won't run if the connector isn't configured.
+- ✅ The pipeline will not run if the connector is not configured.
+
 Write in **present tense**, **active voice**.
 
 - ❌ You will need to install a delegate in your Kubernetes cluster.
@@ -171,3 +182,47 @@ Do **not** use `:::note` (poor visual contrast; use `:::info` instead).
 Give admonitions a short, lowercase title that describes the content:
 - ❌ `:::tip account level access`
 - ✅ `:::tip Check account-level flags`
+
+---
+
+## Code blocks
+
+Always specify a language tag for fenced code blocks. Never use bare triple backticks without a language identifier.
+
+**Required format:**
+````markdown
+```bash
+npm install
+```
+````
+
+**Common language tags:**
+- `bash` - Shell commands
+- `yaml` - YAML configuration
+- `json` - JSON data
+- `typescript` - TypeScript code
+- `javascript` - JavaScript code
+- `python` - Python code
+- `go` - Go code
+- `java` - Java code
+- `dockerfile` - Dockerfile content
+- `terraform` - Terraform configuration
+- `hcl` - HCL configuration
+
+❌ Never use bare code blocks:
+````markdown
+```
+npm install
+```
+````
+
+✅ Always include a language tag:
+````markdown
+```bash
+npm install
+```
+````
+
+This improves syntax highlighting and accessibility.
+
+---
