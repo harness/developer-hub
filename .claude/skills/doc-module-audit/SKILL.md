@@ -111,7 +111,7 @@ find ./internal/developer-hub/docs/<MODULE-FOLDER>[/<SUBFOLDER-IF-ANY>] -name "*
 ```
 
 Before running the find command, read the `exclude_folders` array for this module from
-`hdh/scripts/modules.json`. If the array is non-empty, add a `! -path "*/<folder>/*"` clause
+`.claude/scripts/modules.json`. If the array is non-empty, add a `! -path "*/<folder>/*"` clause
 for each entry and tell the user which folders are being excluded.
 
 Tell the user: **"Found N pages in [MODULE][/subfolder]. Running compliance scan…"**
@@ -162,7 +162,7 @@ component, fall back to noting the file as an **unlinked DMS child** in the repo
 
 For all other files, derive the live URL from the module map:
 
-1. Read `base_url` for this module from `hdh/scripts/modules.json`
+1. Read `base_url` for this module from `.claude/scripts/modules.json`
    (e.g. `iacm` → `/docs/infrastructure-as-code-management`)
 2. Strip the `docs/<MODULE-FOLDER>/` prefix from the file path to get the page path
    (e.g. `docs/infra-as-code-management/pipelines/operations/drift-detection.md`

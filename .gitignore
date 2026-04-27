@@ -41,3 +41,4 @@ yarn.lock
 .claude/skills/doc-section-audit/audits/
 .claude/skills/doc-audit/audits/
 .claude/skills/doc-audit-check/audits/
+.claude/skills/doc-module-audit/audits/
