@@ -6,6 +6,7 @@ redirect_from:
   - /docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines
   - /docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps
   - /docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps
+  - /docs/continuous-delivery/gitops/pr-pipelines/#update-release-repo-step
 keywords:
   - gitops
   - pr pipeline
