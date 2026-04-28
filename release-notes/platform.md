@@ -222,6 +222,18 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2026
 
+### Version 1.142.x <!--April 24, 2026-->
+
+No enhancements or fixes were released in this cycle.
+
+### Version 1.141.x <!--April 24, 2026-->
+
+No enhancements or fixes were released in this cycle.
+
+### Version 1.140.x <!--April 24, 2026-->
+
+No enhancements or fixes were released in this cycle.
+
 ### Version 1.139.x <!--April 15, 2026-->
 
 No enhancements or fixes were released in this cycle.
