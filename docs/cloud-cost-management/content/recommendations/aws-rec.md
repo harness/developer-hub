@@ -59,7 +59,6 @@ You can use the external metrics ingestion feature in AWS to configure the AWS C
 
 ### 1. **Rightsize** 
 
-**Icon:** Full-screen-exit  
 **Purpose:** Optimize resource allocation by resizing to a more appropriate instance type or storage size
 
 **When to Expect:**
@@ -82,7 +81,6 @@ You can use the external metrics ingestion feature in AWS to configure the AWS C
 
 ### 2. **Stop** 
 
-**Icon:** Banned  
 **Purpose:** Stop or terminate idle or underutilized resources that are not actively being used
 
 **When to Expect:**
@@ -106,8 +104,7 @@ You can use the external metrics ingestion feature in AWS to configure the AWS C
 ---
 
 ### 3. **Upgrade**
-
-**Icon:** Upgrade-custom  
+ 
 **Purpose:** Upgrade to newer generation instances or storage types for better price-performance
 
 **When to Expect:**
@@ -131,7 +128,6 @@ You can use the external metrics ingestion feature in AWS to configure the AWS C
 
 ### 4. **MigrateToGraviton** 
 
-**Icon:** CPU  
 **Purpose:** Migrate to AWS Graviton-based ARM processors for superior price-performance
 
 **When to Expect:**
@@ -160,7 +156,6 @@ You can use the external metrics ingestion feature in AWS to configure the AWS C
 
 ### 5. **Delete** 
 
-**Icon:** Code-delete  
 **Purpose:** Permanently delete unused or orphaned resources
 
 **When to Expect:**

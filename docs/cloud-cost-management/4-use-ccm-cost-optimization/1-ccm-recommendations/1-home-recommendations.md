@@ -29,7 +29,6 @@ After you enable CCM, it may take up to 48 hours for the recommendations to appe
 </div>
 
 
-
 ## What are Recommendations?
 
 Harness CCM Recommendations are data-driven insights that help you optimize your cloud resources for cost efficiency without compromising performance. By analyzing historical usage patterns, resource configurations, and cloud provider pricing models, CCM identifies opportunities to right-size resources, eliminate waste, and implement best practices.
