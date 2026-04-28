@@ -6,7 +6,7 @@ sidebar_label: Overview
 description: Learn how to use Harness Feature Management & Experimentation (FME) steps in your Harness pipelines.
 ---
 
-Harness Feature Management & Experimentation (FME) integrates with <Tooltip id="fme.pipelines.pipeline">Harness pipelines</Tooltip>, allowing you to include <Tooltip id="fme.pipelines.feature-flag">feature flag logic</Tooltip> directly within your deployment or automation workflows. The **Pipelines** page in Harness FME displays a list of [Harness pipelines](/docs/platform/get-started/key-concepts#pipelines) created in your [project](/docs/feature-management-experimentation/projects). 
+Harness Feature Management & Experimentation (FME) integrates with <Tooltip id="fme.pipelines.pipeline">Harness pipelines</Tooltip>, allowing you to include <Tooltip id="fme.openfeature.feature-flag">feature flag logic</Tooltip> directly within your deployment or automation workflows. The **Pipelines** page in Harness FME displays a list of [Harness pipelines](/docs/platform/get-started/key-concepts#pipelines) created in your [project](/docs/feature-management-experimentation/projects). 
 
 ![](./static/pipeline-list.png)
 

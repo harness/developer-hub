@@ -167,12 +167,12 @@
           "slug": "pipeline"
         },
         {
-          "term": "stage",
-          "slug": "stage"
+          "term": "pipeline template",
+          "slug": "pipeline-template"
         },
         {
-          "term": "step",
-          "slug": "step"
+          "term": "stage",
+          "slug": "stage"
         }
       ]
     },
@@ -509,12 +509,35 @@
           "slug": "custom-stage"
         },
         {
-          "term": "stage",
-          "slug": "stage"
+          "term": "pipeline template",
+          "slug": "pipeline-template"
         },
         {
-          "term": "step",
-          "slug": "step"
+          "term": "stage",
+          "slug": "stage"
+        }
+      ]
+    },
+    {
+      "id": "fme.pipelines.pipeline-template",
+      "term": "pipeline template",
+      "definition": "A reusable end-to-end workflow that discovers eligible feature flags, lets you select a cleanup candidate, and generates a pull request with the proposed code changes.",
+      "slug": "pipeline-template",
+      "module": "fme",
+      "category": "pipelines",
+      "letter": "P",
+      "related": [
+        {
+          "term": "custom stage",
+          "slug": "custom-stage"
+        },
+        {
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
         }
       ]
     },
@@ -620,8 +643,31 @@
           "slug": "pipeline"
         },
         {
-          "term": "step",
-          "slug": "step"
+          "term": "pipeline template",
+          "slug": "pipeline-template"
+        }
+      ]
+    },
+    {
+      "id": "fme.pipelines.stage-template",
+      "term": "stage template",
+      "definition": "A reusable cleanup stage that removes a specific feature flag and generates a pull request when the target flag and treatment are already known.",
+      "slug": "stage-template",
+      "module": "fme",
+      "category": "pipelines",
+      "letter": "S",
+      "related": [
+        {
+          "term": "custom stage",
+          "slug": "custom-stage"
+        },
+        {
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "pipeline template",
+          "slug": "pipeline-template"
         }
       ]
     },
@@ -643,8 +689,8 @@
           "slug": "pipeline"
         },
         {
-          "term": "stage",
-          "slug": "stage"
+          "term": "pipeline template",
+          "slug": "pipeline-template"
         }
       ]
     },
@@ -901,12 +947,12 @@
             "slug": "pipeline"
           },
           {
-            "term": "stage",
-            "slug": "stage"
+            "term": "pipeline template",
+            "slug": "pipeline-template"
           },
           {
-            "term": "step",
-            "slug": "step"
+            "term": "stage",
+            "slug": "stage"
           }
         ]
       },
@@ -1259,12 +1305,35 @@
             "slug": "custom-stage"
           },
           {
-            "term": "stage",
-            "slug": "stage"
+            "term": "pipeline template",
+            "slug": "pipeline-template"
           },
           {
-            "term": "step",
-            "slug": "step"
+            "term": "stage",
+            "slug": "stage"
+          }
+        ]
+      },
+      {
+        "id": "fme.pipelines.pipeline-template",
+        "term": "pipeline template",
+        "definition": "A reusable end-to-end workflow that discovers eligible feature flags, lets you select a cleanup candidate, and generates a pull request with the proposed code changes.",
+        "slug": "pipeline-template",
+        "module": "fme",
+        "category": "pipelines",
+        "letter": "P",
+        "related": [
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "pipeline",
+            "slug": "pipeline"
+          },
+          {
+            "term": "stage",
+            "slug": "stage"
           }
         ]
       },
@@ -1374,8 +1443,31 @@
             "slug": "pipeline"
           },
           {
-            "term": "step",
-            "slug": "step"
+            "term": "pipeline template",
+            "slug": "pipeline-template"
+          }
+        ]
+      },
+      {
+        "id": "fme.pipelines.stage-template",
+        "term": "stage template",
+        "definition": "A reusable cleanup stage that removes a specific feature flag and generates a pull request when the target flag and treatment are already known.",
+        "slug": "stage-template",
+        "module": "fme",
+        "category": "pipelines",
+        "letter": "S",
+        "related": [
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "pipeline",
+            "slug": "pipeline"
+          },
+          {
+            "term": "pipeline template",
+            "slug": "pipeline-template"
           }
         ]
       },
@@ -1397,8 +1489,8 @@
             "slug": "pipeline"
           },
           {
-            "term": "stage",
-            "slug": "stage"
+            "term": "pipeline template",
+            "slug": "pipeline-template"
           }
         ]
       }

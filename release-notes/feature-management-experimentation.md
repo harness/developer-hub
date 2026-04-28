@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-04-22T10:00:00
+date: 2026-04-27T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,9 +14,27 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: April 22, 2026
+#### Last updated: April 27, 2026
 
 ## April 2026
+
+### [New Feature] Remote Feature Flag Cleanup Templates for Harness FME is in beta
+----
+#### 2026-04-27
+
+Harness FME now supports Remote Feature Flag Cleanup Templates in beta. These [reusable pipeline and stage templates](https://github.com/harness-community/solutions-architecture/tree/main/fme) help teams identify stale feature flags, remove them from application codebases, and automatically generate pull requests with the proposed cleanup changes.
+
+- Use **Pipeline templates** to discover eligible feature flags, select cleanup candidates, and generate pull requests automatically.
+- Use **Stage templates** to clean up a known feature flag directly within an existing pipeline workflow.
+
+These templates are configured as [remote templates](/docs/platform/templates/template#save-a-template-to-a-different-repository) in Harness, where the template YAML is sourced from an external Git repository using a Git connector, and support Harness Code repositories and [GitHub repositories](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). 
+
+To request access to the Remote Feature Flag Cleanup Templates beta experience, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
+
+#### Related documentation
+
+- [Feature Flag Cleanup Templates](/docs/feature-management-experimentation/templates/)
+- [Harness Templates](/docs/platform/templates/template)
 
 ### [New Feature] Google BigQuery Support in Warehouse Native Experimentation
 ----
