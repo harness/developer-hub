@@ -49,7 +49,6 @@ You can filter direct and indirect dependencies via dependency type. To do this,
     :::note
 
     * Filtering dependencies via dependency type is available only for code repositories.
-    * When generating SBOMs through pipeline execution, direct and indirect dependency detection is supported only in [orchestration mode](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) and is not available in [ingestion mode](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data).
     * Currently, direct dependencies are identified only for a limited set of build tools and ecosystems, including `Maven`, `Gradle`, `npm`, `Yarn`, `pip`, `Conda`, and `Go modules`, based on supported manifest files.
     :::
 
