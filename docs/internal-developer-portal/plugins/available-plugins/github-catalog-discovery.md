@@ -1,7 +1,12 @@
 ---
 title: GitHub Catalog Discovery
 description: Automatically discover catalog-info.yaml files in your GitHub organizations and repositories.
+unlisted: true
 ---
+
+:::caution Deprecated Plugin
+This plugin was part of IDP 1.0. It is deprecated and no longer available in the current version of IDP (2.0).
+:::
 
 | Plugin details |                                                                   |
 | -------------- | ----------------------------------------------------------------- |

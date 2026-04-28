@@ -301,53 +301,59 @@ The GitHub Integration connector supports three credential types. The table belo
 
 | Credential Type | Minimum Permission |
 |---|---|
-| Classic Personal Access Token | `read:org` scope + SSO authorization (if applicable) |
+| Classic Personal Access Token | `repo` scope, `read:org` scope + SSO authorization (if applicable) |
 | Fine-Grained Personal Access Token | Repository: Metadata (Read-only), Organization: Members (Read-only) |
 | GitHub App | Repository: Metadata (Read-only), Organization: Members (Read-only) |
 
 ### Classic Personal Access Token
 
-`read:org` (under `admin:org`) grants read access to organization and team membership, and org projects. This is the minimum scope needed for IDP to perform org-level discovery of repositories and teams.
+The following scopes are required for IDP to perform org-level discovery of repositories and teams:
+   * `repo` - Required to read private repository information. Classic PATs on GitHub do not offer a read-only scope for private repositories, so this broader scope is necessary even though IDP only reads repository data.
+   * `read:org` (under admin:org) - Grants read access to organization and team membership, and org projects.
 
-![Classic PAT scope selection with read:org checked](./static/repo-perm1.png)
+![Classic PAT scope selection with repo and read:org checked](./static/repo-perm1-v2.png)
 
 
 If your GitHub organization enforces SAML SSO, the token must also be explicitly authorized for that organization after it is generated. Without SSO authorization, org-level queries will fail even if `read:org` is selected.
 
-To authorize: navigate to your token on the GitHub tokens page, click **Configure SSO**, and authorize the token for the relevant organization.
+To authorize, navigate to your token on the GitHub tokens page, click **Configure SSO**, and authorize the token for the relevant organization.
 
 ![Configure SSO dialog showing organizations available to authorize](./static/repo-perm2.png)
-
-
 
 ### Fine-Grained Personal Access Token
 
 * **Repository access** must be set to **All repositories** so that IDP can discover all repositories in the organization. 
 
-   ![](./static/repo-perm3a.png)
+   ![](./static/repo-perm3a-v2.png)
 
-* Under the **Repositories** permission tab, set **Metadata** to `Read-only`.
+* Under the **Repositories** permission tab, set the following options to `Read-only`:
+   * `Contents`
+   * `Metadata`
 
-   ![](./static/repo-perm3b.png)
+   ![](./static/repo-perm3b-v2.png)
 
-* Under the **Organizations** permission tab, set **Members** to `Read-only`.
+* Under the **Organizations** permission tab, set `Members` to `Read-only`.
 
-   ![](./static/repo-perm4.png)
+   ![](./static/repo-perm4-v2.png)
 
 
 The **Resource owner** must be set to the **organization**, not a personal account. Fine-grained tokens are scoped to a single resource owner, so one token covers one organization. If you need to connect multiple GitHub organizations, create a separate token and a separate Harness connector for each.
 
 ### GitHub App
 
-* When configuring the app, the **Permissions** section should show exactly 1 selected permission under both **Repository permissions** and **Organization permissions**.
+* When configuring the app, the **Permissions** section should have the required permissions configured under both **Repository permissions** and **Organization permissions**.
 
-   ![](./static/repo-perm5.png)
+   ![](./static/repo-perm5-v2.png)
 
-* Expanding each section, confirm that **Metadata** is set to `Read-only` under Repository permissions, and **Members** is set to `Read-only` under Organization permissions.
+* In **Repository permissions**, confirm that the following options are set to `Read-only`:
+   * `Contents`
+   * `Metadata`
 
-   ![](./static/repo-perm6a.png)
+   ![](./static/repo-perm6a-v2.png)
+   
+   Similarly, under **Organization permissions**, set `Members` to `Read-only`.
 
-   ![](./static/repo-perm6b.png)
+   ![](./static/repo-perm6b-v2.png)
 
 * The app must be installed on the organization for the permissions to take effect. Once installed, the app's permission summary on the org's installed apps page will confirm: `Read access to members and metadata`
 
