@@ -9,10 +9,18 @@ The PagerDuty integration automatically discovers services and teams from your P
 
 ---
 
-:::caution Prerequisites
+## Before you begin
+
+The following are needed to get the integration running:
+
 * The feature flag `IDP_CATALOG_CD_AUTO_DISCOVERY` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [PagerDuty connector](https://youtu.be/QE8dFDeK8Vs) is configured in Harness with the credentials needed to access your PagerDuty account. You can also add the connector during the setup of PagerDuty Integration.
+
+:::info Proxy Configuration
+If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+
+Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
 :::
 
 ---

@@ -10,6 +10,7 @@ import DocVideo from '@site/src/components/DocVideo';
 The Google Cloud integration connects to your GCP organization or folder and brings resources into the IDP Catalog, such as Compute Instances, GCS Buckets, Cloud Run services, BigQuery datasets, GKE clusters, and more. Once discovered, entities can be registered as new catalog entries, enriching them with GCP-sourced metadata such as asset type, location, state, and resource identifiers.
 
 ---
+
 ## Before you begin
 
 The following configurations are needed in Harness and GCP to get the integration running.
@@ -25,6 +26,12 @@ The following configurations are needed in Harness and GCP to get the integratio
 * **IAM role**: Grant `roles/cloudasset.viewer` to your service account at the **organization or folder level** (not project level) via [IAM & Admin](https://console.cloud.google.com/iam-admin/iam). For resource-specific access (e.g., Compute, BigQuery), also grant the relevant viewer roles such as `roles/compute.viewer` or `roles/bigquery.metadataViewer` at the same scope.
 * **Service account key**: [Generate a JSON key](https://cloud.google.com/iam/docs/keys-create-delete) for your service account (**Keys** tab → **Add key → Create new key → JSON**) and upload it when creating the GCP connector in Harness.
 * **Cloud Asset API**: [Enable `cloudasset.googleapis.com`](https://console.cloud.google.com/apis/library/cloudasset.googleapis.com) on the GCP project associated with the service account.
+
+:::info Proxy Configuration
+If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+
+Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
+:::
 
 ---
 

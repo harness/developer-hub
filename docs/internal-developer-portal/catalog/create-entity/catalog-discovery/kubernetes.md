@@ -9,11 +9,13 @@ The Kubernetes integration automatically discovers services running in your Kube
 
 ---
 
-:::caution Prerequisites
+## Before you begin
+
+The following are needed to get the integration running:
+
 * The feature flag `IDP_CATALOG_CD_AUTO_DISCOVERY` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [Self-hosted Discovery Agent (SDA)](/docs/platform/service-discovery/customize-agent/) is installed and running in your Kubernetes cluster with permissions to list and watch services and deployments in the target namespaces.
-:::
 
 ---
 

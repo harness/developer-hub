@@ -14,10 +14,18 @@ The SonarQube integration connects to your SonarQube Server (self-hosted) or Son
 
 ---
 
-:::caution Prerequisites
+## Before you begin
+
+The following are needed to get the integration running:
+
 * The feature flag `IDP_CATALOG_CD_AUTO_DISCOVERY` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A SonarQube user token with global-level `Browse` privileges is available. Generate it via **My Account** → **Security** → **Generate Tokens** in SonarQube.
+
+:::info Proxy Configuration
+If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+
+Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
 :::
 
 ---

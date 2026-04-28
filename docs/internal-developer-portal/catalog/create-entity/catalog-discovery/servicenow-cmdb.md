@@ -10,14 +10,24 @@ The ServiceNow CMDB integration syncs records from a ServiceNow CMDB table into 
 ---
 
 ## Before you begin
-Make sure the following prerequisites are met:
+
+The following are needed to get the integration running:
 
 1. The feature flag **`IDP_CATALOG_CD_AUTO_DISCOVERY`** is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
 2. **Harness CD** is enabled for your account. This must be the **same account** you use for Harness IDP.
 3. You have the required **RBAC permissions** to manage integrations. All operations for CD and Platform integrations require the **IDP Integration Edit** permission (`IDP_INTEGRATION_EDIT`) on the **IDP Integration** resource type (`IDP_INTEGRATION`).
 
 
-### Enable and Configure the ServiceNow CMDB Integration
+:::info Proxy Configuration
+If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+
+Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
+:::
+
+---
+
+
+## Enable and Configure the ServiceNow CMDB Integration
 
 1. In Harness IDP, go to **Configure** → **Integrations**.
 2. Click on **+New integration** and choose **ServiceNow**. This will take you to the **Configuration** page.
@@ -36,14 +46,14 @@ You will be prompted to provide some details the first time you create a Service
 :::
 
 
-#### Setup and Connectivity
+### Setup and Connectivity
 
    ![](./static/snow-setup-and-connectivity.png)
 
 1. Enter a friendly name for the integration. This will be shown in the **Integrations** list card.
 2. Select the Harness [ServiceNow connector](https://developer.harness.io/docs/platform/connectors/service-now-connector/) that is configured to access your ServiceNow instance. This connector is used to fetch table data from the CMDB. Please note that we support username/password and OAuth authentication for this connector.
 
-#### Field Mapping
+### Field Mapping
 
    ![](./static/snow-field-mapping.png)
 
@@ -76,7 +86,9 @@ Any CMDB field can be mapped to a standard catalog field or to a custom property
 
 6. **Sync Schedule** - Configure when and how often the integration runs to fetch updated data from ServiceNow.
 
-### Discover and Import CMDB Records
+---
+
+## Discover and Import CMDB Records
 
 After the integration runs, discovered CMDB records appear in the **Discovered** tab.
 
@@ -89,7 +101,9 @@ For each discovered record:
 
 You have the option of turning on **Auto-import** for integrations. This will automatically import all discovered entities without needing the manual effort of reviewing discovered entities.
 
-### View ServiceNow Data on a Catalog Entity
+---
+
+## View ServiceNow Data on a Catalog Entity
 
 After merging, the catalog entity's Overview page displays:
 
@@ -97,4 +111,3 @@ After merging, the catalog entity's Overview page displays:
 - Updated fields populated from the CMDB field mappings.
 - The **Integrations** status card showing **ServiceNow: Connected**.
 
----
