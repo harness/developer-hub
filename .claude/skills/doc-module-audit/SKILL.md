@@ -240,9 +240,10 @@ body `##` entries are step headings, suggesting body content is at the wrong hea
 FAIL for any line containing an em dash character (`—`). Em dashes are banned in HDH docs.
 
 **S-2 — Link phrasing**
-FAIL for any inline link preceded by `see `, `refer to `, or followed by ` to learn more`,
+WARN (–5) for any inline link preceded by `see `, `refer to `, or followed by ` to learn more`,
 ` for more information`, ` for details`. Patterns: `see \[`, `refer to \[`, `learn more`,
-`for more information`.
+`for more information`. Link phrasing is a style issue rather than a structural error — deducts
+more than a standard WARN but less than a FAIL.
 
 **S-3 — Meaningful link text**
 FAIL for any link whose text is exactly `here`, `click here`, `this page`, `this doc`,
@@ -303,7 +304,8 @@ After scanning all files, compute a **compliance score** per file:
 
 Start at 100. Apply deductions:
 - Each FAIL rule: –10 points
-- Each WARN rule: –3 points
+- Each WARN rule: –3 points (unless the rule specifies a different value)
+- S-2 (link phrasing): –5 points (WARN, elevated)
 - Minimum score: 0
 
 Thresholds: **Pass ≥ 85** · **Partial 70–84** · **Fail < 70**
@@ -370,7 +372,7 @@ Save to `.claude/skills/doc-module-audit/audits/[MODULE]-module-audit-YYYYMMDD.m
 | H-2 | Gerund headings | N | — |
 | H-3 | Body content at ## level | — | N |
 | S-1 | Em dashes | N | — |
-| S-2 | Link phrasing (see/refer to) | N | — |
+| S-2 | Link phrasing (see/refer to) | — | N (–5 each) |
 | S-3 | Bare link text (here/click here) | N | — |
 | S-4 | Hardcoded domain links | N | — |
 | S-5 | "please" in body | — | N |

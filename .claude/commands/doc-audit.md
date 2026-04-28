@@ -151,7 +151,7 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 
 **Completion (30%):** –15 undocumented capabilities, –10 missing prerequisites (account/RBAC), –10 missing troubleshooting, –10 missing config options, –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 no RBAC guidance, –10 missing limitations, –10 incomplete API params, –5 no Next Steps
 
-**Editorial (30%):** –15 wrong structure (vs template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + imperative), –10 non-site-relative links, –10 missing redirect_from, –10 style violations, –10 walls of text, –5 inconsistent UI bolding, –5 no intro before lists, –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
+**Editorial (30%):** –15 wrong structure (vs template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + imperative; gerund headings such as “Configuring X” are wrong), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent UI bolding, –5 no intro before lists (S-6), –5 “please” in body (S-5), –5 contractions — don’t, won’t, can’t etc. (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
 
 ### Scoring for Overview pages
 
@@ -159,7 +159,7 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 
 **Completion (30%):** –15 missing "What you will learn", –10 incomplete concept explanations, –10 missing reference material (attributes/params), –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 missing architectural context, –10 missing limitations/caveats, –5 no Related concepts/Next steps, –5 light/no prerequisites for knowledge context
 
-**Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative), –10 non-site-relative links, –10 missing redirect_from, –10 style violations, –10 walls of text, –5 inconsistent bolding, –5 no intro before lists, –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
+**Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent bolding, –5 no intro before lists (S-6), –5 “please” in body (S-5), –5 contractions — don’t, won’t, can’t etc. (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
 
 **Key differences for overview pages:**
 - Prerequisites are optional/lightweight (knowledge context only, NOT account/RBAC)
@@ -456,7 +456,13 @@ The rewritten page must satisfy all of the following before you consider it done
 - All internal links use site-relative paths (/docs/...), never full production URLs
 - redirect_from added to frontmatter for any URL being superseded
 - UI element names are consistently bolded
-- No intro is missing before the first list
+- No intro is missing before the first list (S-6)
+- No em dashes in body (S-1)
+- Links use "Go to X to Y" phrasing — no "see [link]", "refer to", "to learn more" (S-2, S-3)
+- No "please" anywhere in the body (S-5)
+- No contractions — use full forms (do not, cannot, it is, etc.) (S-7)
+- Troubleshooting entries use the `<Troubleshoot>` component, not static `### heading` pairs (T-1)
+- No `## Introduction` heading — intro is plain prose only (T-2)
 - Page scores ≥ 80 on a re-audit across Accuracy, Completion, and Editorial dimensions
 ```
 ```
