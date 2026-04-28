@@ -107,10 +107,17 @@ Harbor: `</your-project/test-image>:tag`
 
 :::
 
-### Attest the SBOM
-To configure attestation, in addition to the above configuration, you need to enable the SBOM Attestation checkbox in the SBOM Orchestration step. Enabling SBOM Attestation is optional and not required for SBOM generation. 
+### Attest the Generated SBOM
 
-Attestation process requires a key pair generated using Cosign. You can perform the attestation with **Cosign** or **Cosign with Secret Manager**
+SBOM signing is the process of cryptographically signing a generated SBOM to ensure its authenticity and integrity. It ensures that the SBOM has not been tampered with and can be trusted by downstream systems for analysis and compliance. To understand the signing and verification process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+
+You can perform attestation using Cosign with the following signing methods:
+
+* **Keyless** - Uses short-lived, automatically generated keys based on identity to sign generated SBOMs without storing private keys.
+* **Key-based** - Uses a user-managed private and public key pair to sign generated SBOMs, requiring secure key storage and handling.
+* **Secret Manager** - A secure service used to store, manage, and access sensitive data such as cryptographic keys without exposing them directly in pipelines.
+
+Based on the attestation type you select, click the tab below and specify the configurations for the SBOM Orchestration step to perform the attestation.
 
 import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shared/cosign-attestation-options.md';
 

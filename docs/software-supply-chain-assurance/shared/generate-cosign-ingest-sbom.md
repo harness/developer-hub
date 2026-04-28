@@ -6,29 +6,28 @@ import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/ge
 <Tabs>
 <TabItem value="Keyless" label="Keyless">
 
-Keyless signing using Cosign lets you sign generated SBOMs without managing long-lived signing keys. Instead, Cosign uses your workload identity (via OIDC) to obtain a short-lived signing certificate during pipeline execution, which is then used to sign the SBOM. The signing key is generated and used only in memory and is not persisted. This reduces the risk of key compromise while ensuring the SBOM remains verifiable and trusted. The signed attestation is pushed to the container registry and associated with the image digest, typically referenced using the digest with a `.att` extension.
+Keyless signing using Cosign lets you sign ingested SBOMs without managing long-lived signing keys. Instead, Cosign uses your workload identity (via OIDC) to obtain a short-lived signing certificate during pipeline execution, which is then used to sign the SBOM. The signing key is generated and used only in memory and is not persisted. This reduces the risk of key compromise while ensuring externally sourced SBOMs remain verifiable and trusted.
 
-To configure SBOM attestation for generated SBOMs with Keyless signing using cosign, complete the following steps:
+To configure SBOM attestation for ingested SBOMs with Keyless signing using cosign, complete the following steps:
 
 1. Click the checkbox beside `Attest SBOM` to enable SBOM attestation. The radio button beside `Keyless` will be selected by default.
-
 2. Select your preferred OIDC Provider from the dropdown under `OIDC Provider`. The available options are:
-    * [Harness](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts#harness-oidc)
-    * [Non-Harness](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts#non-harness-oidc)
+    * [Harness](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#harness-oidc)
+    * [Non-Harness](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-harness-oidc)
 
-  <DocImage path={require('./static/attest-sbom-keyless.png')} width="90%" height="90%" />
+  <DocImage path={require('./static/attest-ingestsbom-keyless.png')} width="90%" height="90%" />
 
 #### Harness OIDC
 
-Harness OIDC allows you to use the pipeline’s built-in identity for keyless signing of generated SBOMs. In this approach, Harness acts as the OIDC provider and automatically supplies the identity required during pipeline execution, eliminating the need for external identity configuration.
+Harness OIDC allows you to use the pipeline’s built-in identity for keyless signing of ingested SBOMs. In this approach, Harness acts as the OIDC provider and automatically supplies the identity required during pipeline execution, eliminating the need for external identity configuration.
 
 #### Non-Harness OIDC
 
-Non-Harness OIDC allows you to use an external identity provider for keyless signing of generated SBOMs. In this approach, the OIDC token is retrieved from a configured connector (such as AWS, Azure, or GCP) during pipeline execution and used to obtain a signing certificate. This option is useful when you want to integrate with your organization’s existing identity and access management system instead of using Harness as the OIDC provider.
+Non-Harness OIDC allows you to use an external identity provider for keyless signing of ingested SBOMs. In this approach, the OIDC token is retrieved from a configured connector (such as AWS, Azure, or GCP) during pipeline execution and used to obtain a signing certificate. This option is useful when you want to integrate with your organization’s existing identity and access management system instead of using Harness as the OIDC provider.
 
 To use a Non-Harness OIDC provider, you need to configure the Connector for Keyless Signing. To configure the Connector:
 
-1. Navigate to the **Configuration** page under the **Manage** section from the sidebar navigation of your SCS account. The **General** tab opens by default.
+1. Navigate to the **Configurations** page under the **Manage** section from the sidebar navigation of your SCS account. The **General** tab opens by default.
 2. Click `Select Connector` next to `Connector for Keyless Signing` to open the `Create or Select an Existing Connector` dialog.
 3. Select your required connector from the list of existing connectors. You can search for your created connector or filter connectors by **Project**, **Organization**, and **Account**.
 4. Alternatively, click `+ New Connector` to create a new OIDC connector for your preferred cloud provider. For more information, see [Connectors for Cloud Providers](/docs/category/cloud-providers/).

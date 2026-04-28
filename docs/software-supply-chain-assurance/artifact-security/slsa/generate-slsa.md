@@ -168,13 +168,19 @@ With this configuration, the step generates the SLSA Provenance and stores it in
 
 ### Attest SLSA Provenance
 
-To configure attestation, along with the [above configuration](#slsa-generation-step-configuration), you should enable the **SLSA Attestation** checkbox in the **SLSA Generation** step. This requires a key pair generated using **Cosign**. Attesting the provenance enhances pipeline security by ensuring its integrity and preventing tampering. To understand the attestation process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+Attestation is the process of cryptographically signing the generated provenance to ensure its authenticity and integrity. In SLSA generation, attestation ensures that the provenance has not been tampered with and can be trusted by downstream systems. To understand the attestation process, see [attestation and verification concepts](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification).
 
-You can perform the attestation with **Cosign** or **Cosign with Secret Manager**
+You can perform attestation using Cosign with the following signing methods:
 
-import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shared/cosign-attestation-options.md';
+* **Keyless** - Uses short-lived, automatically generated keys based on identity to sign SLSA provenance without storing private keys.
+* **Key-based** - Uses a user-managed private and public key pair to sign SLSA provenance, requiring secure key storage and handling.
+* **Secret Manager** - A secure service used to store, manage, and access sensitive data such as cryptographic keys without exposing them directly in pipelines.
 
-<CosignAttestationOptions />
+Based on the attestation type you select, click the tab below and specify the configurations for the SLSA Generation step to perform the attestation.
+
+import CosignAttestationSlsaOptions from '/docs/software-supply-chain-assurance/shared/cosign-attestation-slsa-options.md';
+
+<CosignAttestationSlsaOptions />
 
 
 

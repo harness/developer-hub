@@ -128,12 +128,6 @@ OIDC Auth type is not supported.
 
 </Tabs>
 
-You can verify the signed artifact with **Cosign** or **Cosign with Secret Manager**
-
-import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
-
-<CosignVerificationOptions />
-
 
 ### Non-Container Images
 
@@ -150,6 +144,20 @@ To configure Artifact Verification for non-container images, provide the followi
 Non-container images can be verified using **Cosign** or **Cosign with Secret Manager**, just like container images.
 
 <DocImage path={require('./static/non-container-signing.png')} width="50%" height="50%" />
+
+### Verifying the Artifacts
+
+You can perform artifact verification using Cosign with the following verification methods:
+
+* **Keyless** - Uses short-lived, automatically generated keys based on identity to verify artifacts without storing private keys.
+* **Key-based** - Uses a user-managed private and public key pair to verify artifacts, requiring secure key storage and handling.
+* **Secret Manager** - A secure service used to store, manage, and access sensitive data such as cryptographic keys without exposing them directly in pipelines.
+
+Based on the verification type you select, click the tab below and specify the configurations for the Artifact Verification step to perform the verification.
+
+import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/verify-cosign-artifact.md';
+
+<CosignVerificationOptions />
 
 
 ## View Verified Artifacts

@@ -1396,5 +1396,11 @@
     "description": "Mask Terraform sensitive step outputs",
     "gaStartDate": "2026-04-27",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "SCS_KEYLESS_SIGNING",
+    "description": "Enables keyless signing and verification for artifacts, SBOMs, and SLSA provenance using identity-based trust instead of long-lived signing keys.",
+    "gaStartDate": "2026-04-23",
+    "module": "Supply Chain Security"
   }
 ]

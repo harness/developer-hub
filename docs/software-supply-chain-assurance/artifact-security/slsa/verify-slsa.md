@@ -125,13 +125,19 @@ To verify SLSA Provenance for Non-Container Artifacts:
 
 ### Verify SLSA Attestation
 
-To verify the SLSA attestation, in addition to the above configuration, you need to enable the Verify SLSA Attestation checkbox in the SLSA Generation step.
+Verification is the process of validating a provenance attestation to ensure its authenticity and integrity. It confirms that the attestation was signed by a trusted source, has not been tampered with, and corresponds to the expected artifact. In the SLSA Verification step, SLSA attestation verification ensures that only trusted, compliant artifacts are allowed to proceed in the pipeline. To understand the verification process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
 
-The attestation verification process requires the corresponding **public key** of the private key used for SLSA attestation. You can perform the verification by providing the public key through the **Cosign** option or **Cosign with Secret Manager**.
+You can perform verification using Cosign with the following verification methods:
 
-import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
+* **Keyless** - Uses short-lived, automatically generated keys based on identity to verify SLSA provenance without storing private keys.
+* **Key-based** - Uses a user-managed private and public key pair to verify SLSA provenance, requiring secure key storage and handling.
+* **Secret Manager** - A secure service used to store, manage, and access sensitive data such as cryptographic keys without exposing them directly in pipelines.
 
-<CosignVerificationOptions />
+Based on the verification type you select, click the tab below and specify the configurations for the SLSA Verification step to perform the verification.
+
+import CosignVerificationSlsaOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-slsa-options.md';
+
+<CosignVerificationSlsaOptions />
 
 
 

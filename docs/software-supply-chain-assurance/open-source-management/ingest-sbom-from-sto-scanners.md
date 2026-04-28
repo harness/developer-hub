@@ -32,11 +32,6 @@ In the SBOM, dependency names may differ from their original source names, as SB
 
 :::
 
-## Generate the keys for SBOM Attestation - optional
-import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-consign-keys-prerequisite.md';
-
-<GenerateKeysPrerequisite />
-
 
 ## Configure the STO scan step to generate SBOM
 
@@ -79,16 +74,22 @@ Add an [SBOM Orchestration step](/docs/software-supply-chain-assurance/open-sour
 * **SBOM File Path:** enter the SBOM file path that uses the `JOB_ID` value, as detailed in [Get the SBOM file path](#get-the-sbom-file-path).
 * **Source:** Set the source, which can be DockerHub, ECR, GCR, ACR or Repository. Depending on your selection, a unique set of fields will appear, each specific to the source you've chosen. Address these fields as required, this is similar to configuring the source in SBOM Orchestration step. For more details of what each field entails, please refer to the [documentation on SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#sbom-orchestration-step-configuration). If you are using DockerHub, you can follow along.
 * **Image:**, Enter the name of your image with tag, such as `my-docker-org/repo-name:tag`.
-   <details>
-      <summary>Generate key pairs using Cosign for SBOM Attestation</summary>
 
-      <CosignKeyGeneration />
+<DocImage path={require('./static/ingest-sbom-sto-scanner.png')} width="90%" height="90%" title="Click to view full size image" />
 
-   </details>
+### Attest the Ingested SBOM - Optional
 
-* **Private Key (optional):** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+SBOM signing is the process of cryptographically signing an ingested SBOM to ensure its authenticity and integrity. It ensures that externally sourced SBOMs have not been tampered with and can be trusted by downstream systems for analysis and compliance. To understand the signing and verification process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
 
-* **Password (optional):** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+You can perform attestation using Cosign with the following signing methods:
 
-<DocImage path={require('./static/generate-sbom-blackduck-01.png')} width="50%" height="50%" title="Click to view full size image" />
+* **Keyless** - Uses short-lived, automatically generated keys based on identity to sign ingested SBOMs without storing private keys.
+* **Key-based** - Uses a user-managed private and public key pair to sign ingested SBOMs, requiring secure key storage and handling.
+* **Secret Manager** - A secure service used to store, manage, and access sensitive data such as cryptographic keys without exposing them directly in pipelines.
+
+Based on the attestation type you select, click the tab below and specify the configurations for the SBOM Orchestration step to perform the attestation.
+
+import GenerateCosignIngestSbom from '/docs/software-supply-chain-assurance/shared/generate-cosign-ingest-sbom.md';
+
+<GenerateCosignIngestSbom />
 

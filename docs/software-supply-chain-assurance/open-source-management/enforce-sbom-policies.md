@@ -76,9 +76,16 @@ import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifac
 <ArtifactSource />
 
 ### Verify the SBOM Attestation
-To verify the SBOM attestation, in addition to the above configuration, you need to enable the Verify SBOM Attestation checkbox in the SBOM Policy Enforcement step. Enabling this is optional and not required for SBOM policy enforcement.
 
-The attestation verification process requires the corresponding **public key** of the private key used for SBOM attestation. You can perform the verification by providing the public key through the **Cosign** option or **Cosign with Secret Manager**
+Verification is the process of validating an SBOM signature to ensure its authenticity and integrity. It confirms that the SBOM was signed by a trusted source, has not been tampered with, and corresponds to the expected artifact. In the SBOM Policy Enforcement step, this ensures that only trusted and compliant SBOMs are used for downstream analysis and decision-making. To understand the verification process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+
+You can perform verification using Cosign with the following verification methods:
+
+* **Keyless** - Uses short-lived, automatically generated keys based on identity to verify attested SBOM without storing private keys.
+* **Key-based** - Uses a user-managed private and public key pair to verify attested SBOM, requiring secure key storage and handling.
+* **Secret Manager** - A secure service used to store, manage, and access sensitive data such as cryptographic keys without exposing them directly in pipelines.
+
+Based on the verification type you select, click the tab below and specify the configurations for the SBOM Policy Enforcement step to perform the verification.
 
 import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
 

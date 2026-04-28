@@ -51,7 +51,7 @@ The Artifact Signing step allows you to sign your artifacts and optionally push 
 
 Artifact Signing step supports both [**container**](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts#container-images) as well as [**non-container images**](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts#non-container-images).
 
-<DocImage path={require('./static/signing-artifact.png')} width="50%" height="50%" />
+<DocImage path={require('./static/signing-artifact.png')} width="100%" height="100%" />
 
 ### Container Images
 
@@ -148,15 +148,6 @@ OIDC Auth type is not supported.
 
 </Tabs>
 
-You can securely sign the artifacts using **Cosign** or **Cosign with Secret Manager**
-
-import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-cosign-artifact.md';
-
-<GenerateKeysPrerequisite />
-
-
-**Attach Signature to Artifact Registry** (Optional): By default, this option is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a `.sig` file to the artifact registry.
-
 
 ### Non-Container Images
 
@@ -188,9 +179,25 @@ Follow the instructions below to configure the Artifact Signing step for non-con
 
 **Manual:** Allows you to manually specify the artifact name and version.
 
-Non-container images can be signed using **Cosign** or **Cosign with Secret Manager**, just like container images.
+<DocImage path={require('./static/non-container-verify.png')} width="100%" height="100%" />
 
-<DocImage path={require('./static/non-container-verify.png')} width="50%" height="50%" />
+You can sign artifacts using Cosign with the following signing methods:
+
+* **Keyless** - Uses short-lived, automatically generated keys based on identity to sign artifacts without storing private keys.
+* **Key-based** - Uses a user-managed private and public key pair to sign artifacts, requiring secure key storage and handling.
+* **Secret Manager** - A secure service used to store, manage, and access sensitive data such as cryptographic keys without exposing them directly in pipelines.
+
+import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-cosign-artifact.md';
+
+<GenerateKeysPrerequisite />
+
+
+**Attach Signature to Artifact Registry** (Optional): By default, this option is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a `.sig` file to the artifact registry.
+
+:::note
+
+This option is available only for signing comtainer images.
+:::
 
 ## View Signed Artifacts
 

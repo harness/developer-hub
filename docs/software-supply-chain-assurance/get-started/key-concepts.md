@@ -87,7 +87,19 @@ SLSA Provenance attestations are stored as `.att` files in the artifact reposito
 
 ## Attestation and Verification
 
-The attestation process in Harness SCS follows the [In-toto attestation framework](https://github.com/in-toto/attestation). This process involves a container image, an SBOM or SLSA provenance, a private key from a key pair and a password. SCS uses [Cosign](https://docs.sigstore.dev/cosign/verifying/attestation/) to perform the attestation and securely sign it. The signed attestation is then pushed to the container registry, where the digest of the image is set as the file name with a `.att` extension.
+The attestation process in Harness SCS follows the [In-toto attestation framework](https://github.com/in-toto/attestation) and supports two types:
+* [Keyless](/docs/software-supply-chain-assurance/get-started/key-concepts#keyless)
+* [Key-based](/docs/software-supply-chain-assurance/get-started/key-concepts#key-based)
+
+### Keyless
+
+Keyless attestation in Harness SCS eliminates the need for managing long-lived private keys by using workload identity for signing. Instead of a user-managed key pair, SCS uses [Cosign](https://docs.sigstore.dev/cosign/verifying/attestation/) with an OIDC-based identity to obtain a short-lived signing certificate during pipeline execution. Cosign generates an ephemeral key pair in memory, uses the private key to sign the SBOM or SLSA provenance, and immediately discards it after use. The resulting signed attestation, which includes the signature, certificate, and payload, is then pushed to the container registry and associated with the image digest, typically referenced using the digest with a `.att` extension.
+
+For verification, the signed attestation is retrieved from the container registry and validated using the certificate and signature embedded in it. Cosign verifies the certificate against trusted root authorities, checks that the certificate was valid at the time of signing, and uses the public key in the certificate to verify the signature. This ensures that the attestation was signed by a trusted identity, has not been tampered with, and corresponds to the expected artifact, without requiring access to any private key.
+
+### Key-based
+
+This process involves a container image, an SBOM or SLSA provenance, a private key from a key pair and a password. SCS uses [Cosign](https://docs.sigstore.dev/cosign/verifying/attestation/) to perform the attestation and securely sign it. The signed attestation is then pushed to the container registry, where the digest of the image is set as the file name with a `.att` extension.
 
 <DocImage path={require('./static/get-started-attestation-overview.png')} width="80%" height="80%" title="Click to view full size image" />
 
@@ -114,7 +126,19 @@ For verification, the signed attestation is retrieved from the container registr
 
 ## Artifact Signing and Verification
 
-The artifact signing process involves a container image or digest, or a non-container image, along with a private key from a key pair and a password. SCS uses Cosign to perform the signing and securely verify it. Once the signature is successfully generated, The signed artifact is then pushed to the container registry, where the digest of the image is set as the file name with a `.sig` extension.
+The artifact signing process in Harness SCS uses Cosign and leverages [OCI-compliant](https://github.com/opencontainers) registries to sign artifacts and associate their signatures with the artifact digest in the container registry. It supports the following signing methods:
+* [Keyless](/docs/software-supply-chain-assurance/get-started/key-concepts#keyless-1)
+* [Key-based](/docs/software-supply-chain-assurance/get-started/key-concepts#key-based-1)
+
+### Keyless
+
+The keyless artifact signing process eliminates the need for user-managed private keys by using workload identity. It involves a container image or digest, or a non-container artifact, along with an OIDC-based identity provided during pipeline execution. SCS uses [Cosign](https://docs.sigstore.dev/cosign/verifying/attestation/) to obtain a short-lived signing certificate based on this identity and generates an ephemeral key pair in memory to sign the artifact. The private key is used only during signing and is immediately discarded after use. Once the signature is generated, it is pushed to the container registry and associated with the artifact digest, typically referenced using the digest with a `.sig` extension.
+
+For verification, the signed artifact is retrieved from the container registry and verified using the certificate and signature associated with it. Cosign validates the certificate against trusted root authorities, checks that the certificate was valid at the time of signing, and uses the public key embedded in the certificate to verify the signature. This ensures that the artifact was signed by a trusted identity, has not been tampered with, and matches the expected artifact, without requiring access to any private key.
+
+### Key-based
+
+The key-based artifact signing process involves a container image or digest, or a non-container image, along with a private key from a key pair and a password. SCS uses [Cosign](https://docs.sigstore.dev/cosign/verifying/attestation/) to perform the signing and securely verify it. Once the signature is successfully generated, the signed artifact is then pushed to the container registry, where the digest of the image is set as the file name with a `.sig` extension.
 
 For verification, the signed artifact is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the artifact was signed using the private key.
 
