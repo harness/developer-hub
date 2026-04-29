@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2026-04-10T10:00:10
+date: 2026-04-24T10:00:10
 sidebar_position: 15
 ---
 
@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Software Engineering Insights.
 
-#### Last updated: April 10, 2026
+#### Last updated: April 24, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
@@ -21,6 +21,20 @@ These release notes describe recent changes to Harness Software Engineering Insi
 :::
 
 ## April 2026
+
+### [New Feature] GitHub Copilot Integration is in beta
+----
+#### 2026-04-24
+
+SEI 2.0 now includes a GitHub Copilot integration in beta, allowing teams to ingest GitHub Copilot usage and adoption data from GitHub organizations and enterprise accounts. 
+
+Administrators must enable the [Copilot usage metrics policy](https://docs.github.com/en/copilot/concepts/copilot-usage-metrics/copilot-metrics) in GitHub Enterprise settings and generate a [GitHub Copilot API key](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/use-your-own-api-keys) with `manage_billing:copilot`, `read:org`, and `read:enterprise` permissions.
+
+To request access to the GitHub Copilot integration beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Related documentation
+
+- [GitHub Copilot Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/copilot)
 
 ### [New Feature] Canvas for SEI 2.0 is in beta
 ----

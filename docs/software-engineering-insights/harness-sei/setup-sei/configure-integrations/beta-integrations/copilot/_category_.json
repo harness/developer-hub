@@ -1,10 +1,10 @@
 {
-    "label":"Windsurf",
-    "position": 5,
+    "label":"GitHub Copilot",
+    "position": 6,
     "collapsible":"true",
     "collapsed":"true",
     "link":{
        "type":"generated-index",
-       "title":"Windsurf"
+       "title":"GitHub Copilot"
     }
 }

@@ -8,7 +8,7 @@ sidebar_label: Cursor
 The Cursor integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-The Cursor integration enables SEI 2.0 to track adoption and usage metrics for Cursor coding assistants. This integration is required to enable to view the [AI Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/ai).
+The Cursor integration enables SEI 2.0 to track adoption and usage metrics for Cursor coding assistants. This integration is required to view the [AI Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/ai).
 
 ### Prerequisites
 
