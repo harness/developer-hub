@@ -1,7 +1,7 @@
 ---
 title: Harness AI x Gemini CLI Extension
 description: Leverage Gemini CLI with Harness AI MCP Server to unleash your developer workflows
-sidebar_position: 11
+sidebar_position: 12
 redirect_from:
   - /docs/platform/harness-aida/harness-gemini-extension
 ---

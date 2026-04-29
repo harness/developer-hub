@@ -1,7 +1,7 @@
 ---
 title: Harness AI Chat Use Cases
 description: Common Uses cases for Harness AI Chat
-sidebar_position: 14
+sidebar_position: 15
 redirect_from:
   - /docs/platform/harness-aida/harness-ai-chat-guide
 ---

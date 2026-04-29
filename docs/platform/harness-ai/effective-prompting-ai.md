@@ -1,7 +1,7 @@
 ---
 title: Effective Prompting
 description: How to write good prompts for Harness AI
-sidebar_position: 13
+sidebar_position: 14
 redirect_from:
   - /docs/platform/harness-aida/effective-prompting-ai
 ---

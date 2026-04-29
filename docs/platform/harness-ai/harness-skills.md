@@ -2,7 +2,7 @@
 title: Harness Skills
 description: Claude Code skills for the Harness CI/CD platform — generate pipeline YAML, manage resources, debug failures, analyze costs, and more from natural language.
 sidebar_label: Skills
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 Harness Skills are specialized prompt templates that teach AI coding assistants how to interact with the Harness platform. Each skill encapsulates the domain knowledge needed to accomplish a specific task — generating pipeline YAML, creating services, debugging executions, analyzing costs, and more — so you can work with Harness using natural language in your editor.
