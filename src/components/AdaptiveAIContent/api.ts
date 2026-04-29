@@ -47,8 +47,8 @@ interface ProxyResponse {
 
 /**
  * Headless answer from the same Kapa project as the Website Widget (via Netlify
- * `kapa_proxy`). The proxy handles server-side caching with a 30-day TTL, so
- * Kapa is only called at most once per month per unique query across all users.
+ * `kapa_proxy`). The proxy handles server-side caching with a 90-day TTL, so
+ * Kapa is only called at most once per quarter per unique query across all users.
  *
  * Requires `KAPA_API_KEY` and `KAPA_PROJECT_ID` in the Netlify environment.
  */

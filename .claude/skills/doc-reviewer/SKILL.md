@@ -5,7 +5,7 @@ description: >
   Use for: external repos, README reviews, blog posts, tutorial audits where asset validation matters.
   Adds: image path/alt-text/freshness checks, cross-reference validation, factual verification via
   web search, SEO/AEO analysis, What-Why-How framework evaluation. For Harness DevHub docs, use
-  /doc-section-audit instead (includes Harness-specific scoring and JIRA generation).
+  doc-section-audit instead (includes Harness-specific scoring and JIRA generation).
 argument-hint: "<file-path-or-url> | <folder-path> [--files <list>]"
 user-invocable: true
 ---
@@ -18,7 +18,7 @@ Extends documentation review with capabilities not in the Harness audit skills:
 - Factual verification via web search
 - SEO and AEO compliance analysis
 
-**For Harness DevHub docs:** use `/doc-section-audit` instead — it includes the Harness-specific
+**For Harness DevHub docs:** use `doc-section-audit` instead — it includes the Harness-specific
 doc-structure-template scoring, JIRA ticket generation, and section-level recommendations.
 
 **This skill is for:** external repos, blog posts, READMEs, tutorials outside the Harness ecosystem.
@@ -386,10 +386,10 @@ Use this structure (aligned with Harness audit format):
 ## Next Steps
 
 [If this is a Harness doc that needs deeper audit:]
-Run `/doc-section-audit <file-path>` for Harness-specific scoring and JIRA ticket generation.
+Run `doc-section-audit <file-path>` for Harness-specific scoring and JIRA ticket generation.
 
 [Otherwise:]
-Apply fixes above, re-run `/doc-reviewer <file-path>` to verify.
+Apply fixes above, re-run `doc-reviewer <file-path>` to verify.
 ```
 
 **For multi-file reviews (Repo Discovery mode):**
@@ -409,7 +409,7 @@ After saving the file(s), respond with:
 
 1. **Summary** (2-3 sentences): overall rating, top 3 issues
 2. **File link**: `computer://<repo-path>/.claude/skills/doc-reviewer/audits/<filename>-review-YYYYMMDD.md`
-3. **Quick command**: next action (apply fixes, re-run review, or escalate to `/doc-section-audit` if Harness doc)
+3. **Quick command**: next action (apply fixes, re-run review, or escalate to `doc-section-audit` if Harness doc)
 
 Keep the chat response brief — the detail is in the report file.
 
@@ -418,9 +418,9 @@ Keep the chat response brief — the detail is in the report file.
 ## Important Notes
 
 **When NOT to use this skill:**
-- Harness DevHub docs → use `/doc-section-audit` instead (includes Harness scoring + JIRA)
-- Module-wide compliance → use `/doc-module-audit`
-- Staleness triage → use `/doc-audit-check`
+- Harness DevHub docs → use `doc-section-audit` instead (includes Harness scoring + JIRA)
+- Module-wide compliance → use `doc-module-audit`
+- Staleness triage → use `doc-audit-check`
 
 **This skill is for:**
 - External repos, blog posts, READMEs

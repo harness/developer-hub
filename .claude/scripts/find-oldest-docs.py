@@ -194,7 +194,7 @@ def main():
 
         stale_count = sum(1 for _, d in entries if d != "new" and days_ago(d) > 180)
         recommendation = (
-            "/doc-section-audit" if stale_count >= 2 else "/doc-audit"
+            "doc-section-audit" if stale_count >= 2 else "doc-audit"
         )
 
         print(f"Section: {section_dir}  ({len(entries)} pages, {stale_count} stale >180d)")

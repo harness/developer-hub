@@ -1,10 +1,20 @@
-# Doc Rewrite — Single page
+---
+name: doc-rewrite
+description: >
+  Rewrite a single Harness Developer Hub documentation page based on an existing audit report.
+  Reads the audit findings and applies all suggested improvements to the page.
+  Triggers: "rewrite [file-path]", "apply the audit", "fix the doc", "doc rewrite [file]",
+  or any request to apply audit findings to a page. Requires a prior doc-audit report to exist.
+  For section-wide rewrites, use doc-section-rewrite instead.
+argument-hint: "<audit-report-path | file-path>"
+user-invocable: true
+---
 
 Rewrite a single Harness Developer Hub documentation page based on an audit report. This command reads an existing audit report and applies all suggested improvements to the page.
 
-**Use this when:** You have already run `/doc-audit` and want to apply the rewrite.
+**Use this when:** You have already run `doc-audit` and want to apply the rewrite.
 
-**For full section rewrites:** Use `/doc-section-rewrite` instead (not yet implemented).
+**For full section rewrites:** Use `doc-section-rewrite` instead (not yet implemented).
 
 ## Usage
 
@@ -18,7 +28,7 @@ Rewrite a single Harness Developer Hub documentation page based on an audit repo
 
 ## Arguments
 
-`$ARGUMENTS`
+Parse arguments from the user's message.
 
 Parse the target:
 
@@ -30,7 +40,7 @@ Parse the target:
 **File path** (`docs/.../*.md`):
 - Look for the most recent audit report for this file in `.claude/skills/doc-audit/audits/`
 - If multiple audits exist, use the most recent (by date in filename)
-- If no audit exists, tell the user to run `/doc-audit` first
+- If no audit exists, tell the user to run `doc-audit` first
 
 **Nothing:**
 - Ask the user to provide either an audit report path or a file path
@@ -51,7 +61,7 @@ ls -t .claude/skills/doc-audit/audits/${slug}-audit-*.md | head -1
 Read the audit report to extract:
 1. **Page type** (Instructional | Overview)
 2. **File path** to rewrite
-3. **Template to use** (.cursor/rules/doc-structure-template.mdc or doc-structure-overview-template.mdc)
+3. **Template to use** (.cursor/rules/faq-template.mdc, doc-structure-template.mdc, or doc-structure-overview-template.mdc)
 4. **All issues** (Accuracy, Completion, Editorial)
 5. **Structural rewrite plan**
 6. **Redirect changes required**
@@ -69,6 +79,7 @@ Tell the user:
 Before making changes, read these files in order:
 
 1. **The appropriate template** based on page type:
+   - FAQ: `.cursor/rules/faq-template.mdc`
    - Instructional: `.cursor/rules/doc-structure-template.mdc`
    - Overview: `.cursor/rules/doc-structure-overview-template.mdc`
 
@@ -84,6 +95,14 @@ Before making changes, read these files in order:
 ## Step 3 — Apply the rewrite
 
 Rewrite the page to address all issues identified in the audit. Follow the structural rewrite plan from the audit report.
+
+**For FAQ pages:**
+- Structure: Frontmatter → 1–2 sentence intro (plain prose, no heading) → `---` + `##` category headings → `<details>`/`<summary>` Q&A entries
+- Questions: Every `<summary>` must end with `?`. No `###` or deeper headings anywhere.
+- Answers: Every `<details>` body must contain at least one full sentence of content.
+- Components: Use static `<details>`/`<summary>` for all entries. Only use `<FAQ>` component if the page has fewer than 10 questions total. Never use `<Troubleshoot>`.
+- Banned sections: No `## Prerequisites`, `## Next steps`, `## Troubleshooting`, `## What will you learn?`, or `## Introduction`.
+- Frontmatter: `sidebar_label: FAQ`, `title: FAQ — [Feature Name]`, `faq` tag required.
 
 **For Instructional pages:**
 - Structure: Frontmatter → Introduction (2-3 paragraphs) → Prerequisites → Step-by-step instructions → Troubleshooting (with Troubleshoot component) → Next steps
@@ -109,7 +128,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
    - Expand to 2-3 full paragraphs (what, why, key benefits)
    - Keep existing :::info or :::warning callouts if they add value
 
-3. **Section additions:**
+3. **Section additions (Instructional and Overview pages only — do NOT apply to FAQ pages):**
    - Add "What you will learn" (Overview pages only)
    - Add Prerequisites (Instructional) or lightweight knowledge prerequisites (Overview, optional)
    - Add Troubleshooting with `<Troubleshoot>` component (Instructional)
@@ -180,6 +199,17 @@ After applying changes:
    - All headings follow the correct case and style for page type
    - Components are imported if used
 
+   **Additional checks for FAQ pages:**
+   - `sidebar_label: FAQ` present in frontmatter
+   - `title` follows `FAQ — [Feature Name]` format
+   - `faq` tag is first in tags list
+   - Every `<summary>` ends with `?`
+   - Every `<details>` body has at least one full sentence (not just a link)
+   - No `###` or deeper headings anywhere in the body
+   - No `## Prerequisites`, `## Next steps`, `## Troubleshooting`, or `## What will you learn?` sections
+   - `<FAQ>` component only used if total question count is fewer than 10
+   - No `<Troubleshoot>` component used
+
 4. **Calculate expected score improvement:**
    Based on the issues fixed, estimate the new audit score (should be ≥ 80)
 
@@ -217,8 +247,9 @@ Provide a summary:
 - **Preserve accurate content:** Never remove or change technically accurate information. Only add, restructure, or improve clarity.
 - **Maintain code examples:** Keep all working code examples. Improve comments or explanations, but don't change functional code.
 - **Don't over-edit:** Only make changes that address issues identified in the audit report. Don't add features or make stylistic changes beyond what's needed.
-- **Component imports:** When adding `<Troubleshoot>` or `<FAQ>` components, remember to add the import at the top:
+- **Component imports:** When adding `<Troubleshoot>` or `<FAQ>` components to Instructional/Overview pages, remember to add the import at the top:
   ```jsx
   import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
   ```
+  FAQ pages use static `<details>`/`<summary>` elements — no component import needed unless the `<FAQ>` component is used (permitted only when fewer than 10 questions on the page).
 - **Respect page type:** Don't convert an overview page into an instructional page or vice versa. The page type was determined in the audit and should be preserved.

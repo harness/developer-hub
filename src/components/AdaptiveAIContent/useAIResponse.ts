@@ -11,8 +11,8 @@ interface UseAIResponseResult {
 
 const CACHE_PREFIX = 'adaptive_ai_v2_';
 
-/** 30 days in milliseconds. */
-const CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+/** 90 days in milliseconds. */
+const CACHE_TTL_MS = 90 * 24 * 60 * 60 * 1000;
 
 interface CacheEntry {
   response: string;

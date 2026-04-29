@@ -1,4 +1,14 @@
-# Doc Section Rewrite — Apply audit findings across a section
+---
+name: doc-section-rewrite
+description: >
+  Apply a doc-section-audit report across an entire section in supervised phases. Reads the
+  audit findings and executes structural changes (Phase 1), content rewrites (Phase 2), and
+  redirect/cleanup work (Phase 3), pausing for a git diff review between each phase.
+  Triggers: "section rewrite [audit-report]", "apply the section audit", "execute the rewrite plan",
+  "doc section rewrite", or any request to apply a doc-section-audit report to files in the repo.
+argument-hint: "<audit-report-path>"
+user-invocable: true
+---
 
 Reads a `doc-section-audit` report and applies the recommended changes directly in Claude Code,
 in supervised phases. You review a `git diff` between each phase before continuing.
@@ -19,7 +29,7 @@ individually into Cursor if preferred — each phase is a self-contained block.
 
 ## Arguments
 
-`$ARGUMENTS`
+Parse arguments from the user's message.
 
 Expects a path to a `doc-section-audit` report. If no path is provided, list the most recent
 reports in `.claude/skills/doc-section-audit/audits/` and ask the user to choose one.

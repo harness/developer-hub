@@ -61,7 +61,7 @@ navigating to qa.harness.io.
 If skipping, add this note to the Accuracy section of the report:
 
 > ⚠ **Live walkthrough skipped** — page classified as [overview / key concepts / reference].
-> Accuracy assessed by content review only. Consider running `/doc-section-audit --verify post`
+> Accuracy assessed by content review only. Consider running `doc-section-audit --verify post`
 > after a rewrite if the page is refactored into an instructional format.
 
 ---

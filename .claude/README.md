@@ -1,30 +1,32 @@
 # Claude tooling for Harness Developer Hub
 
-This directory contains slash commands, Cowork skills, and scripts for auditing and improving HDH documentation using Claude Code and Cowork.
+This directory contains skills and scripts for auditing and improving HDH documentation using Claude Code and Cowork.
 
 ---
 
-## Slash commands (Claude Code)
+## Skills
 
-These run directly in Claude Code. Slash commands are available as soon as you open the repo.
+All doc tooling is implemented as skills in `.claude/skills/`. Invoke them by name in Claude Code or Cowork, or describe what you want in natural language — Claude will match the right skill automatically.
 
-### `/doc-audit-check <module>`
+---
 
-Triage a module to find the most overdue documentation. Run this first when you're not sure where to start.
+### `doc-audit-check`
+
+Triage a module to find the most overdue documentation. Run this first when you are not sure where to start.
 
 Finds the three oldest pages in a module, profiles each page's section folder, and recommends whether each candidate needs a full section audit or a single-page audit.
 
 ```
-/doc-audit-check iacm
-/doc-audit-check cd
-/doc-audit-check ccm
+doc-audit-check iacm
+doc-audit-check cd
+doc-audit-check ccm
 ```
 
-Output: a ranked list of candidates with last-updated dates and a suggested next command to run.
+Output: a ranked list of candidates with last-updated dates and a suggested next skill to run. Reports saved to `.claude/skills/doc-audit-check/audits/`.
 
 ---
 
-### `/doc-audit <target> [--verify pre | --verify post]`
+### `doc-audit`
 
 Audit a single documentation page. Scores it across accuracy, completion, and editorial quality, then produces a written report and a ready-to-use rewrite prompt.
 
@@ -47,28 +49,87 @@ Only valid when the target is a file path or URL — not a module abbreviation. 
 | `--verify post` | Rewrite the file to match the doc template first, then walk through and self-correct if score < 80. |
 
 ```
-/doc-audit docs/artifact-registry/troubleshooting/authorization/auth-403-errors.md
-/doc-audit docs/artifact-registry/troubleshooting/authorization/auth-403-errors.md --verify
-/doc-audit https://developer.harness.io/docs/cloud-cost-management/get-started/overview --verify pre
-/doc-audit iacm
+doc-audit docs/artifact-registry/troubleshooting/authorization/auth-403-errors.md
+doc-audit docs/artifact-registry/troubleshooting/authorization/auth-403-errors.md --verify
+doc-audit https://developer.harness.io/docs/cloud-cost-management/get-started/overview --verify pre
+doc-audit iacm
 ```
 
-Reports are saved to `.claude/skills/doc-audit/audits/`.
+Reports saved to `.claude/skills/doc-audit/audits/`.
 
 ---
 
-### `/doc-section-audit <target> [--verify pre | --verify post]`
+### `doc-rewrite`
 
-Full audit: scores a page and crawls every sibling page in its section folder. Produces a page-level score, a section-level verdict, and a JIRA ticket description.
-
-Uses the same target options and verify flag as `/doc-audit`.
+Apply a `doc-audit` report to the page. Reads all audit findings and rewrites the file to address every issue. Pass either the audit report path or the original file path (Claude finds the latest report automatically).
 
 ```
-/doc-section-audit docs/infra-as-code-management/workspaces/cli-integration.md
-/doc-section-audit iacm --verify post
+doc-rewrite .claude/skills/doc-audit/audits/opa-workspace-audit-20260414.md
+doc-rewrite docs/infra-as-code-management/policies-governance/opa-workspace.md
 ```
 
-Reports are saved to `.claude/skills/doc-section-audit/audits/`.
+---
+
+### `doc-section-audit`
+
+Full audit: scores a page and crawls every sibling page in its section folder. Produces a page-level score, a section-level verdict, a consolidation plan, and a JIRA ticket description.
+
+Uses the same target options and verify flag as `doc-audit`.
+
+```
+doc-section-audit docs/infra-as-code-management/workspaces/cli-integration.md
+doc-section-audit iacm --verify post
+```
+
+Reports saved to `.claude/skills/doc-section-audit/audits/`.
+
+---
+
+### `doc-section-rewrite`
+
+Apply a `doc-section-audit` report directly in Claude Code, in three supervised phases. No copy-pasting required — Claude reads all affected files and makes the edits, pausing for a `git diff` review between each phase. File deletions are always listed as manual steps.
+
+```
+doc-section-rewrite .claude/skills/doc-section-audit/audits/auth-403-errors-audit-20260413.md
+```
+
+**Phases:**
+
+| Phase | What happens |
+|---|---|
+| 1 — Structure | Create new pages, scaffold DMS/tabs, rename files (only if IA changes needed) |
+| 2 — Content | Rewrite all in-scope files per audit findings, oldest-first |
+| 3 — Cleanup | Add `redirect_from` entries, fix cross-references, list files to delete manually |
+
+Prefer Cursor? Each phase block is self-contained and can be pasted into a Cursor chat independently.
+
+---
+
+### `doc-module-audit`
+
+Score every page in a module for compliance with the HDH style guide, doc-structure template, and editorial rules. Produces a ranked module-level compliance report.
+
+```
+doc-module-audit iacm
+doc-module-audit ci --full
+```
+
+Reports saved to `.claude/skills/doc-module-audit/audits/`.
+
+---
+
+### `doc-reviewer`
+
+Extended review for non-Harness docs or when image/link/SEO validation is needed. Adds image path/alt-text validation, cross-reference checking, factual verification via web search, and SEO/AEO analysis. For Harness DevHub docs, use `doc-section-audit` instead — it includes Harness-specific scoring and JIRA generation.
+
+```
+doc-reviewer path/to/external-README.md
+doc-reviewer https://example.com/tutorial
+doc-reviewer path/to/docs/
+doc-reviewer path/to/docs/ --files README.md,tutorial.md
+```
+
+Reports saved to `.claude/skills/doc-reviewer/audits/`.
 
 ---
 
@@ -101,21 +162,11 @@ python .claude/scripts/find-oldest-docs.py --list-modules
 
 ---
 
-## Cowork skill
-
-The doc-section-audit workflow is also available as a Cowork skill for use outside Claude Code.
-
-**Skill location:** `.claude/skills/doc-section-audit/SKILL.md`
-
-Invoke it in a Cowork session by asking Claude to audit a doc page. It follows the same target resolution model — local file path, URL, or module abbreviation.
-
----
-
 ## Scripts
 
 ### `.claude/scripts/find-oldest-docs.py`
 
-The underlying script used by all three commands. Auto-detects the repo root.
+The underlying script used by all audit skills. Auto-detects the repo root.
 
 ```bash
 # Find the 3 oldest pages in a module
@@ -134,35 +185,21 @@ Instructions for the `--verify` flag. Defines the pre/post modes, page-type gate
 
 ---
 
-### `/doc-section-rewrite <audit-report-path>`
-Applies a `doc-section-audit` report directly in Claude Code, in three supervised phases.
-No copy-pasting required — Claude reads all affected files and makes the edits, pausing for a
-`git diff` review between each phase. File deletions are always listed as manual steps.
-```
-/doc-section-rewrite .claude/skills/doc-section-audit/audits/auth-403-errors-audit-20260413.md
-```
-**Phases:**
-| Phase | What happens |
-|---|---|
-| 1 — Structure | Create new pages, scaffold DMS/tabs, rename files (only if IA changes needed) |
-| 2 — Content | Rewrite all in-scope files per audit findings, oldest-first |
-| 3 — Cleanup | Add `redirect_from` entries, fix cross-references, list files to delete manually |
-Prefer Cursor? Each phase block is self-contained and can be pasted into a Cursor chat independently.
-
----
-
 ## Typical workflow
 
 ```
 # 1. Find the worst pages in a module
-/doc-audit-check iacm
+doc-audit-check iacm
 
-# 2. Audit the top candidate — single page, quick
-/doc-audit docs/infra-as-code-management/workspaces/some-page.md
-# 3. Full section audit
-/doc-section-audit docs/infra-as-code-management/workspaces/some-page.md
+# 2. Quick single-page audit
+doc-audit docs/infra-as-code-management/workspaces/some-page.md
+
+# 3. Full section audit (page + all siblings)
+doc-section-audit docs/infra-as-code-management/workspaces/some-page.md
+
 # 4. Apply the section findings across all affected files
-/doc-section-rewrite .claude/skills/doc-section-audit/audits/some-page-audit-20260413.md
-# Or, skip straight to a verified rewrite:
-/doc-section-audit docs/infra-as-code-management/workspaces/some-page.md --verify post
+doc-section-rewrite .claude/skills/doc-section-audit/audits/some-page-audit-20260413.md
+
+# Or jump straight to a verified rewrite:
+doc-section-audit docs/infra-as-code-management/workspaces/some-page.md --verify post
 ```

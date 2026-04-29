@@ -1,9 +1,21 @@
-# Doc Audit — Single page
+---
+name: doc-audit
+description: >
+  Audit a single Harness Developer Hub documentation page for accuracy, completeness, and
+  editorial quality. Produces a scored report (pass/fail) and a ready-to-use rewrite prompt.
+  Triggers: "audit [file-path]", "audit [url]", "doc audit", "check this doc", "score this page",
+  "audit the oldest page in [module]", or any request to evaluate a single documentation page
+  against the Harness quality rubric. Also triggers when the user provides a developer.harness.io
+  URL and asks for feedback or a JIRA ticket.
+  For a full audit that also crawls every sibling page in the section, use doc-section-audit instead.
+argument-hint: "<file-path | url | module-abbreviation> [--verify pre | --verify post]"
+user-invocable: true
+---
 
 Audit a single Harness Developer Hub documentation page for accuracy, completion, and editorial
 quality. Produces a scored report and a ready-to-use rewrite prompt.
 
-For a full audit that also crawls and assesses every sibling page in the section, use `/doc-section-audit` instead.
+For a full audit that also crawls and assesses every sibling page in the section, use `doc-section-audit` instead.
 
 ## Usage
 
@@ -21,7 +33,7 @@ For a full audit that also crawls and assesses every sibling page in the section
 
 ## Arguments
 
-`$ARGUMENTS`
+Parse arguments from the user's message.
 
 Parse two things from the arguments:
 
@@ -98,15 +110,21 @@ Tell the user: **"Oldest page in [MODULE]: [FILE-PATH] — last updated [DATE]. 
 
 ## Step 2 — Determine page type and fetch appropriate template
 
-Read the page file first to assess its type:
+Read the page file first to assess its type. Check for FAQ first — it is the most specific type.
 
-**Page type assessment:**
+**Page type assessment (check in this order):**
+
+- **FAQ page** if ANY of:
+  - `sidebar_label: FAQ` in frontmatter, OR `title` contains "FAQ" or "Frequently asked questions" (case-insensitive)
+  - Filename is `faq.md`, ends with `-faq.md`, or ends with `-faqs.md`
+  - More than 60% of H2 sections contain only `<details>`/`<summary>` blocks with no step-by-step prose (legacy detection)
+
 - **Instructional/Action page** if:
   - Title is action-oriented ("Create", "Configure", "Set up", "Install")
   - Contains step-by-step UI navigation ("Select X, then click Y")
   - Has sequential procedures users follow verbatim
   - Prerequisites include account access and RBAC permissions
-  
+
 - **Informative/Overview page** if:
   - Title is a noun phrase ("OPA Policies", "Workspace Architecture", "Delegate Types")
   - Explains concepts, architecture, or "how it works"
@@ -115,6 +133,11 @@ Read the page file first to assess its type:
   - Content is "what/why/how" rather than "do this, then that"
 
 Once you determine the page type, fetch the appropriate template:
+
+**For FAQ pages:**
+```bash
+cat .cursor/rules/faq-template.mdc
+```
 
 **For instructional pages:**
 ```bash
@@ -129,7 +152,7 @@ cat .cursor/rules/doc-structure-overview-template.mdc
 Use the selected template as the structural benchmark for the Editorial score.
 
 **Report the page type to the user:**
-Tell the user: **"Page type: [Instructional/Overview] — using [template name] for scoring."**
+Tell the user: **"Page type: [FAQ/Instructional/Overview] — using [template name] for scoring."**
 
 ---
 
@@ -144,6 +167,23 @@ If a live URL exists, optionally use Claude in Chrome to view the rendered page 
 but base all scoring and edits on the local file, not the rendered version.
 
 Score across three dimensions (each starts at 100). **Adjust criteria based on page type:**
+
+### Scoring for FAQ pages
+
+**Accuracy (40%):** –20 answer contradicts current product behaviour, –15 broken or incorrect code in answer, –10 stale version info in answer, –5 broken links in answers
+
+**Completion (30%):** –15 `<details>` body is empty or contains only a link with no context sentence, –10 a category heading has no `<details>` entries, –10 `<FAQ>` component used on a page with 10 or more questions, –5 answer is a verbatim copy of an existing doc section that Ask AI would already surface (should be shortened + linked)
+
+**Editorial (30%):** –15 page does not follow faq-template skeleton (H2 categories + `<details>`/`<summary>`), –10 missing/incorrect frontmatter (must include `sidebar_label: FAQ`, `title: FAQ — X`, `faq` tag, description), –10 non-site-relative links, –10 missing `redirect_from` on a moved page, –10 em dashes / bare link text (S-1, S-3), –5 `<summary>` text does not end with `?`, –5 `###` or deeper heading found in page body, –5 `## Prerequisites`, `## Next steps`, or `## Troubleshooting` section present, –5 link phrasing — see [link], refer to, to learn more (S-2), –5 contractions (S-7), –5 "please" in body (S-5), –5 spelling/grammar
+
+**Key differences for FAQ pages:**
+- No Prerequisites, Next steps, or "What will you learn?" sections required — their absence is not penalised
+- No Troubleshoot component expected — `<details>` is the correct pattern
+- C-1 (landmark sections) does not apply
+- H-2 (gerund headings) does not apply — FAQ categories are noun phrases by design
+- The `<FAQ>` component is allowed only when fewer than 10 questions appear on the page
+
+---
 
 ### Scoring for Instructional pages
 
@@ -434,6 +474,15 @@ REDIRECTS REQUIRED
 
 ---
 The rewritten page must satisfy all of the following before you consider it done:
+
+**For FAQ pages:**
+- Follows faq-template.mdc skeleton exactly (frontmatter → 1–2 sentence intro → `---` + `##` categories → `<details>`/`<summary>` Q&A)
+- `sidebar_label: FAQ`, title `FAQ — [Feature Name]`, `faq` tag present in frontmatter
+- Every `<summary>` ends with `?`
+- Every `<details>` body contains at least one full sentence (not just a link)
+- No `## Prerequisites`, `## Next steps`, `## Troubleshooting`, or `###` headings anywhere on the page
+- `<FAQ>` component only used if page has fewer than 10 questions total
+- No `<Troubleshoot>` component
 
 **For Instructional pages:**
 - Follows doc-structure-template.mdc skeleton exactly (frontmatter → intro → prerequisites →

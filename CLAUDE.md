@@ -223,7 +223,7 @@ src/components/AdaptiveAIContent/
 ├── index.ts
 ├── FAQ.tsx
 ├── Troubleshoot.tsx
-├── useAIResponse.ts                # sessionStorage cache + eager fetch on mount
+├── useAIResponse.ts                # localStorage cache (90-day TTL) + lazy fetch on first open
 ├── api.ts                          # window.Kapa JS bridge (8s timeout) + kapa_proxy fallback
 ├── generated-responses.json        # build-time Gemini output (gitignored; script seeds `{}`)
 └── styles.module.scss              # progress bar animation + shared styles

@@ -1,7 +1,17 @@
-# Doc Audit Check — Triage candidates for audit
+---
+name: doc-audit-check
+description: >
+  Identify the most overdue documentation in a module and recommend whether each candidate
+  warrants a single-page audit or a full section audit. Produces a ranked triage report.
+  Triggers: "audit check [module]", "what needs auditing in [module]", "find stale docs in [module]",
+  "doc audit check [module]", "where should I start with [module] docs", or any request to
+  prioritise which pages in a module to audit next.
+argument-hint: "<module-abbreviation>"
+user-invocable: true
+---
 
 Identifies the most overdue documentation in a module and recommends whether each candidate
-warrants a quick single-page audit (`/doc-audit`) or a full section audit (`/doc-section-audit`).
+warrants a quick single-page audit (`doc-audit`) or a full section audit (`doc-section-audit`).
 
 ## Usage
 
@@ -16,7 +26,7 @@ warrants a quick single-page audit (`/doc-audit`) or a full section audit (`/doc
 
 ## Arguments
 
-`$ARGUMENTS`
+Parse arguments from the user's message.
 
 Expects a single module abbreviation. If none is provided, ask the user for one.
 
@@ -55,7 +65,7 @@ python .claude/scripts/find-oldest-docs.py docs/<MODULE-FOLDER> --section <candi
 ```
 
 The script outputs the total page count, stale count (>180 days), and a recommendation of
-`/doc-section-audit` or `/doc-audit` based on whether 2 or more pages in the folder are stale.
+`doc-section-audit` or `doc-audit` based on whether 2 or more pages in the folder are stale.
 
 ---
 
@@ -69,8 +79,8 @@ Rank the three candidates by audit priority using this logic:
 3. Staleness ratio of the folder (higher ratio = more urgency)
 
 **Determine recommendation for each:**
-- If **2 or more pages** in the folder are >180 days old → recommend `/doc-section-audit`
-- If **fewer than 2 pages** in the folder are >180 days old → recommend `/doc-audit`
+- If **2 or more pages** in the folder are >180 days old → recommend `doc-section-audit`
+- If **fewer than 2 pages** in the folder are >180 days old → recommend `doc-audit`
 
 ---
 

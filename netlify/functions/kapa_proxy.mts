@@ -4,8 +4,18 @@ import type { Context } from "@netlify/functions";
 /** Public Website Widget id in `docusaurus.config.ts` — not the same as Query API `project_id`. */
 const HARNESS_WIDGET_WEBSITE_ID = "29510767-cc35-43bf-a0b4-f818f97a3a56";
 
-/** How long a cached Kapa response is considered fresh (30 days in ms). */
-const CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+/**
+ * Kapa integration ID for the Harness Developer Hub docs source.
+ * Scopes Query API responses to the HDH integration so answers are grounded
+ * in HDH docs rather than the full Kapa knowledge base.
+ * Found in app.kapa.ai → Integrations.
+ * Override at runtime via KAPA_INTEGRATION_ID env var (Netlify environment variables).
+ */
+const KAPA_INTEGRATION_ID =
+  process.env.KAPA_INTEGRATION_ID?.trim() ?? "ddbde6cc-4b3a-4740-ac5b-f3ab3151a82e";
+
+/** How long a cached Kapa response is considered fresh (90 days in ms). */
+const CACHE_TTL_MS = 90 * 24 * 60 * 60 * 1000;
 
 /**
  * Query API path uses **Project ID** (app.kapa.ai → Projects), not the Website Widget
@@ -100,8 +110,6 @@ async function fetchFromKapa(
   apiKey: string,
   kapaProjectId: string
 ): Promise<string> {
-  const integrationId = process.env.KAPA_API_INTEGRATION_ID?.trim();
-
   const kapaRes = await fetch(
     `https://api.kapa.ai/query/v1/projects/${kapaProjectId}/chat/`,
     {
@@ -112,7 +120,7 @@ async function fetchFromKapa(
       },
       body: JSON.stringify({
         query,
-        ...(integrationId ? { integration_id: integrationId } : {}),
+        integration_id: KAPA_INTEGRATION_ID,
       }),
     }
   );

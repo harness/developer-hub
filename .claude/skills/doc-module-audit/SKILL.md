@@ -174,6 +174,15 @@ For all other files, derive the live URL from the module map:
 5. Join: `https://developer.harness.io` + base_url + `/` + page path
    e.g. `https://developer.harness.io/docs/infrastructure-as-code-management/pipelines/operations/drift-detection`
 
+**Step D — Classify FAQ pages**
+
+A file is an **FAQ page** if ANY of:
+- `sidebar_label: FAQ` in its frontmatter, OR `title` contains "FAQ" or "Frequently asked questions" (case-insensitive)
+- Filename is `faq.md`, ends with `-faq.md`, or ends with `-faqs.md`
+- More than 60% of its H2 sections contain only `<details>`/`<summary>` blocks with no step-by-step prose
+
+Store `is_faq: true` alongside each file's metadata when detected. FAQ pages are exempt from several rules — see the per-rule notes below.
+
 **Step C — Fetch last-updated date**
 
 For each file, get the date of its most recent git commit:
@@ -229,12 +238,14 @@ word(s) that are wrongly capitalized.
 FAIL for any `##` or `###` heading that ends with a word matching `\w+ing` as the final token
 (e.g. "## Configuring the connector", "### Installing delegates").
 Exceptions: `## Troubleshooting`, `## Prerequisites` — these are standard section names.
+**Exempt:** FAQ pages (`is_faq: true`) — FAQ category headings are noun phrases by design, not imperatives.
 
 **H-3 — Body content at `##` level**
 WARN if the file uses `##` headings for body sections rather than only the standard landmarks
 (`## Prerequisites`, `## Troubleshooting`, `## Next steps`, `## What will you learn?`,
 `## Step N`). Specifically flag when more than 4 `##` headings are present and none of the
 body `##` entries are step headings, suggesting body content is at the wrong heading level.
+**Exempt:** FAQ pages (`is_faq: true`) — `##` is the correct and only heading level for FAQ category groupings.
 
 **S-1 — No em dashes in body**
 FAIL for any line containing an em dash character (`—`). Em dashes are banned in HDH docs.
@@ -274,6 +285,7 @@ WARN if the file body contains none of: `## Prerequisites`, `## Next steps`,
 stubs or uncategorized fragments.
 **Exempt:** DMS content files (path contains `/content/`) — landmark sections belong on the
 parent page only, not in DMS children. Skip this check for those files.
+**Exempt:** FAQ pages (`is_faq: true`) — FAQ pages intentionally omit all landmark sections.
 
 **C-2 — Code blocks have language tags**
 WARN for any fenced code block opening (` ``` ` on a line by itself with no language identifier
@@ -285,16 +297,28 @@ WARN if the file contains `## Troubleshooting` but does not contain `<Troublesho
 AdaptiveAIContent component). Static `### heading` + `**Solution:**` pairs are the old pattern
 and should be replaced with the `<Troubleshoot>` component.
 **Exempt:** DMS content files (path contains `/content/`).
+**Exempt:** FAQ pages (`is_faq: true`) — FAQ pages use `<details>`/`<summary>` or `<FAQ>` component, never `<Troubleshoot>`.
 
 **T-2 — No `## Introduction` heading**
 FAIL if the file body contains a line matching `^## Introduction`. The introduction must be
 plain prose paragraphs — a `## Introduction` heading is explicitly wrong per the doc template.
 **Exempt:** DMS content files (path contains `/content/`).
 
+**T-3 — FAQ structure integrity** *(FAQ pages only — `is_faq: true`)*
+Run these checks instead of (or in addition to) the standard rules above for FAQ pages:
+- FAIL if `sidebar_label` is not `FAQ` or `title` does not start with `FAQ —`
+- FAIL if `faq` tag is absent from frontmatter
+- FAIL if any `<summary>` line does not end with `?`
+- FAIL if any `<details>` block has an empty body (no content between opening and closing tags)
+- FAIL if `###` or deeper headings appear anywhere in the file body
+- WARN if `<FAQ>` component is present and the page contains 10 or more questions total
+- WARN if `## Prerequisites`, `## Next steps`, or `## Troubleshooting` sections are present
+
 **ST-1 — Section order**
 WARN if both `## Prerequisites` and `## Next steps` are present but `## Next steps` appears
 before `## Prerequisites` in the file (check line numbers). Prerequisites must come first.
 **Exempt:** DMS content files (path contains `/content/`).
+**Exempt:** FAQ pages (`is_faq: true`) — neither section is present in a correctly structured FAQ.
 
 ---
 
@@ -382,6 +406,7 @@ Save to `.claude/skills/doc-module-audit/audits/[MODULE]-module-audit-YYYYMMDD.m
 | C-2 | Code blocks without language tag | — | N |
 | T-1 | Troubleshoot component not used | — | N |
 | T-2 | ## Introduction heading in body | N | — |
+| T-3 | FAQ structure violations (summary ?, empty body, wrong headings) | N | N |
 | ST-1 | Section order (Next steps before Prerequisites) | — | N |
 
 **Top 3 most common issues across this module:**

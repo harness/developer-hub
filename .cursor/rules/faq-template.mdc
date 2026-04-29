@@ -1,0 +1,262 @@
+---
+description: Structure and write FAQ pages for Harness Developer Hub
+globs: ["**/faq.md", "**/*-faq.md", "**/*-faqs.md"]
+alwaysApply: false
+---
+
+# FAQ Page Structure & Style Guide
+
+## Core philosophy
+
+FAQ pages consolidate common questions in one place. Every question should be something a real user has asked, and every answer should be the most direct response possible. If a better answer lives in a dedicated doc page, the FAQ answer should be short and link there — do not duplicate the full doc inline.
+
+---
+
+## When to create an FAQ page
+
+Create a dedicated FAQ page when:
+- A feature or product area generates five or more recurring questions from users or support
+- Questions do not fit naturally into the main instructional or overview docs
+- You want a single page users can scan for quick answers without navigating multiple docs
+
+Do not create an FAQ page just to have one. If the questions are better addressed in an existing instructional or overview page, add them there (as a Troubleshooting section or a Common misconceptions section) and avoid fragmenting the user's navigation path.
+
+---
+
+## Identifying an FAQ page
+
+A page is an FAQ page when ANY of these signals are true:
+
+1. **Frontmatter signal** — `sidebar_label: FAQ` or `title` contains "FAQ" or "Frequently asked questions" (case-insensitive).
+2. **Filename signal** — filename is `faq.md`, ends with `-faq.md`, or ends with `-faqs.md`.
+3. **Structural signal (legacy pages only)** — more than 60% of H2 sections contain only `<details>`/`<summary>` blocks with no step-by-step prose.
+
+Do not apply standard instructional or overview doc checks to FAQ pages. Use the rules in this template instead.
+
+---
+
+## Document structure
+
+```
+---
+title: FAQ — [Feature Name]
+sidebar_label: FAQ
+description: Answers to common questions about [feature].
+tags:
+  - faq
+  - [module-tag]
+---
+
+[1–2 sentence intro]        ← plain prose, no heading; link to the main feature doc
+
+---
+
+## Category name            ← H2 only; sentence case noun phrase
+
+<details>
+<summary>Question text?</summary>
+
+Answer body.
+
+</details>
+
+<details>
+<summary>Another question?</summary>
+
+Answer body.
+
+</details>
+
+---
+
+## Next category
+
+[more <details> entries]
+```
+
+---
+
+## Frontmatter
+
+```yaml
+---
+title: FAQ — [Feature or Module Name]
+sidebar_label: FAQ
+description: Answers to common questions about [feature/module].
+tags:
+  - faq
+  - [module-tag]
+---
+```
+
+- **`title`:** Always `FAQ — [Feature Name]` format. The dash here is a display convention in titles only, not body prose.
+- **`sidebar_label`:** Always `FAQ`. This is both the left-nav label and the detection signal used by doc audits.
+- **`description`:** One sentence summarising what the FAQ covers.
+- **`tags`:** Always include `faq` as the first tag, plus the relevant module tag (e.g. `iacm`, `ci`, `cd`).
+
+---
+
+## Intro paragraph
+
+Write 1–2 sentences of plain prose immediately after the frontmatter. No `## Introduction` heading. State what the FAQ covers and link to the main feature documentation using "Go to X to Y" phrasing.
+
+```markdown
+This page answers common questions about IaCM workspaces.
+Go to the [workspace overview](/docs/infra-as-code-management/workspaces) to understand how workspaces work.
+```
+
+Keep it to one sentence where possible. Do not restate the page title.
+
+---
+
+## Category headings (H2)
+
+Use `##` for each logical grouping of questions.
+
+```markdown
+## Setup and configuration
+
+## Workspace behaviour
+
+## Pipelines and execution
+
+## Errors and troubleshooting
+```
+
+**Rules:**
+- Sentence case: capitalize the first word and proper nouns only.
+- Noun phrases, not imperatives: `## Setup and configuration`, not `## Configure setup`.
+- Add a `---` horizontal rule before each `##` category heading.
+- Order categories by user journey: Setup → Configuration → Usage → Troubleshooting → Billing/Licensing.
+- Each category must contain at least one `<details>` block. Do not create empty categories.
+- `##` is the only heading level allowed. Do not use `###` or deeper inside an FAQ page.
+
+---
+
+## Questions and answers
+
+### Static `<details>`/`<summary>` — the default
+
+Use native HTML `<details>`/`<summary>` elements for all questions. This renders as an expandable accordion in Docusaurus with zero AI cost.
+
+```html
+<details>
+<summary>Why does my workspace show a drift detected status even after I apply?</summary>
+
+Drift detection re-runs on a schedule, not immediately after an apply. The status refreshes on the next scheduled check, typically within 15 minutes.
+
+Go to [drift detection](/docs/infra-as-code-management/workspaces/drift-detection) to configure the check interval.
+
+</details>
+```
+
+**Rules:**
+- Every `<summary>` must end with `?`.
+- Every `<details>` body must contain at least one full sentence of content, not just a link.
+- Answers that are covered in depth by an existing doc: write 1–2 sentences of direct context, then link with "Go to [page] to [do Y]".
+- Answers longer than ~150 words that duplicate content in an existing doc are a signal to shorten and link instead.
+- Do not nest `<details>` inside `<details>`.
+
+### `<FAQ>` component — only for pages with fewer than 10 questions
+
+The `<FAQ>` component from `AdaptiveAIContent` fetches a Kapa-generated answer at runtime and caches it in `localStorage` for 90 days. On mount, every `<FAQ>` component on the page fires a request. Use it only when:
+
+- The page has **fewer than 10 questions total**.
+- The question genuinely benefits from AI grounding against live docs (complex multi-part questions, questions whose answers change frequently with product updates).
+- The static `fallback` alone is not sufficient for the reader.
+
+**Do not use `<FAQ>` on pages with 10 or more questions.** On high-question-count pages, the on-mount fetch burst is too aggressive regardless of caching.
+
+Import:
+```mdx
+import { FAQ } from '@site/src/components/AdaptiveAIContent';
+```
+
+Usage:
+```jsx
+<FAQ
+  question="What is the difference between a workspace and a pipeline in IaCM?"
+  mode="docs"
+  fallback="A workspace manages Terraform state and configuration. A pipeline defines the execution steps (plan, apply, destroy) that run against a workspace."
+/>
+```
+
+When mixing `<FAQ>` components with static `<details>` on the same page, do not alternate between them within the same category. Group them consistently.
+
+---
+
+## Answer writing rules
+
+### Be direct
+
+Answer the question in the first sentence. Do not start with background context.
+
+- ❌ "In Harness IaCM, workspaces are the core unit of infrastructure management. When a workspace shows drift, it means..."
+- ✅ "Drift means the live infrastructure no longer matches the last applied Terraform state."
+
+### Short answers beat long ones
+
+If the full answer exists in a dedicated doc, write the essential 1–2 sentences and link. Trust that users will follow the link if they need more detail. Ask AI (Kapa) will also surface the full answer from the source doc when a user searches.
+
+### No subheadings inside answers
+
+Answers are prose, not mini-documents. Do not add `###` or deeper headings inside a `<details>` block.
+
+### Code blocks are allowed
+
+Include code snippets where they make an answer clearer. Always include a language tag.
+
+```html
+<details>
+<summary>How do I pass a variable to a pipeline run?</summary>
+
+Use the `--var` flag when triggering the pipeline:
+
+```bash
+harness pipeline run --var key=value
+```
+
+Go to [pipeline variables](/docs/infra-as-code-management/pipelines/variables) to configure persistent overrides.
+
+</details>
+```
+
+### Ask AI coverage check
+
+Before writing a new FAQ answer, check whether the question is already well-answered in the docs. If Ask AI (Kapa) would return a thorough answer from an existing page, consider:
+- Is this FAQ item needed at all?
+- Can the answer be a 1-sentence summary + link instead of a full answer?
+
+Long verbatim rehashes of existing doc sections add maintenance burden and fragment the user's source of truth.
+
+---
+
+## What not to include
+
+Never include in an FAQ page:
+
+- `## Prerequisites` section
+- `## Next steps` section
+- `## What will you learn?` section
+- `<Troubleshoot>` component (use static `<details>` or `<FAQ>` instead)
+- H3 or deeper headings
+- Numbered step sequences — if a question requires steps, link to the instructional page
+
+---
+
+## Quick checklist
+
+Before publishing, verify:
+
+- [ ] `sidebar_label: FAQ` in frontmatter
+- [ ] Title is `FAQ — [Feature Name]` format
+- [ ] `faq` tag included
+- [ ] Intro paragraph present (1–2 sentences, no heading)
+- [ ] `---` horizontal rule before each `##` category
+- [ ] Every `<summary>` ends with `?`
+- [ ] Every `<details>` body has at least one full sentence of content
+- [ ] No answer is >150 words of content that already exists in another doc
+- [ ] `<FAQ>` component only used if page has fewer than 10 questions total
+- [ ] No empty categories
+- [ ] No `###` or deeper headings anywhere on the page
+- [ ] No `## Prerequisites`, `## Next steps`, or `## Troubleshooting` sections
