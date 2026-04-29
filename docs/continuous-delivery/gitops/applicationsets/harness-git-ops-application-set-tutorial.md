@@ -327,6 +327,21 @@ When importing Argo CD projects through a [Bring Your Own Argo CD (BYOA) setup](
 
 If a service or environment matching the label value already exists, the application is mapped to it. If it does not exist, Harness creates it automatically and maps it to the application.
 
+:::warning Identifier naming rules
+The `harness.io/serviceRef` and `harness.io/envRef` label values become Harness entity identifiers. They must follow these rules:
+
+- Must start with a letter or underscore (not a number or `$`).
+- Can only contain alphanumeric characters, underscores (`_`), and dollar signs (`$`).
+- Maximum length: 128 characters.
+- Cannot use reserved keywords: `or`, `and`, `eq`, `ne`, `lt`, `gt`, `le`, `ge`, `div`, `mod`, `not`, `null`, `true`, `false`, `new`, `var`, `return`, `step`, `parallel`, `stepGroup`, `org`, `account`, `class`, `shellScriptProvisioner`.
+
+**Valid examples:** `my_service`, `MyService123`, `_internal_service`, `service_v2$backup`
+
+**Invalid examples:** `123service` (starts with number), `$service` (starts with `$`), `my-service` (contains hyphen), `my.service` (contains dot), `org` (reserved keyword)
+
+If a label value does not follow these rules, the auto-creation fails silently for that application.
+:::
+
 To use this with ApplicationSets:
 
 1. **Define labels in your ApplicationSet template:** Add `harness.io/serviceRef` and `harness.io/envRef` labels to the `template.metadata.labels` section. You can templatize these values so each generated application gets its own service and environment reference.
