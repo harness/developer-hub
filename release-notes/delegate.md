@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2026
 
+### Version 25.11.87306 <!-- April 28, 2026 -->
+
+#### Thread Management Improvements
+- Resolved a thread leak issue that occurred when retrying requests to the SCM service while fetching files from remote repositories. [PIPE-33412]
+
 ### Version 26.04.89004 <!-- April 24, 2026 -->
 
 #### Fixed issues
