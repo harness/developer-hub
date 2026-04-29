@@ -331,6 +331,8 @@ For descriptions of these and other identifier variables, go to [Identifiers and
 * `HARNESS_STO_SERVICE_TOKEN`: Authentication for the STO service.
 * `HARNESS_TI_SERVICE_ENDPOINT`: The URL for Test Intelligence service.
 * `HARNESS_TI_SERVICE_TOKEN`: Authentication for the Test Intelligence service.
+* `HARNESS_SSCA_SERVICE_ENDPOINT`: The URL for SCS service.
+* `HARNESS_SSCA_SERVICE_TOKEN`: Authentication for the SCS service.
 
 ### Other lite-engine variables
 
