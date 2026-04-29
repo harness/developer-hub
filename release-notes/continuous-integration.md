@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-04-20T10:00
+date: 2026-04-27T10:00
 sidebar_position: 10
 ---
 
@@ -61,6 +61,33 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## April 2026
+
+### Version 1.133.0
+
+<!-- April 2026 -->
+
+#### New Features and Enhancements
+
+- Added support for caching NuGet dependencies based on the `NUGET_PACKAGES` environment variable in Cache Intelligence. (CI-22209)
+
+- Added support to override Azure-specific fields in Cache Intelligence settings, giving you more flexibility when configuring cache storage for Azure environments. (CI-22026)
+
+#### Fixed Issues
+
+- Fixed an issue where large pull requests caused codebase and SCM task timeouts during pipeline execution. (CI-22015)
+
+- Fixed an issue where CI pipelines experienced long initialization times on Kubernetes due to unnecessary command fields in the init step object. (CI-22213)
+
+- Improved drone-git image security by replacing an end-of-life component. (CI-21716)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.19 | 1.18.21 |
+| `harness/ci-lite-engine` | Version update | 1.18.19 | 1.18.21 |
+| `drone-git` | Security fix | 1.7.17-rootless | 1.7.18-rootless |
+| `plugins/cache` | Version update | 1.10.4 | 1.10.5 |
 
 ### Version 1.132.0
 
