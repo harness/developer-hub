@@ -45,7 +45,7 @@ When adding this step to a deploy stage, ensure it's placed within a [container 
 
 Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#container-images) and [non-container images](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#non-container-images).
 
-<DocImage path={require('./static/verify-artifact.png')} width="50%" height="50%" />
+<DocImage path={require('./static/verify-artifact.png')} width="100%" height="100%" />
 
 ### Container Images
 
@@ -143,7 +143,7 @@ To configure Artifact Verification for non-container images, provide the followi
 
 Non-container images can be verified using **Cosign** or **Cosign with Secret Manager**, just like container images.
 
-<DocImage path={require('./static/non-container-signing.png')} width="50%" height="50%" />
+<DocImage path={require('./static/non-container-signing.png')} width="100%" height="100%" />
 
 ### Verifying the Artifacts
 

@@ -52,7 +52,7 @@ For SBOM Policy Enforcement, an SBOM needs to be generated or ingested beforehan
 
 ## Add SBOM Policy Enforcement step
 
-<DocImage path={require('./static/sbom-policy-enforce.png')} width="50%" height="50%" />
+<DocImage path={require('./static/sbom-policy-enforce.png')} width="100%" height="100%" />
 
 You can add the **SBOM Policy Enforcement** step to either the **Build** or **Deploy** stage of a Harness pipeline.
 
