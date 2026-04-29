@@ -123,18 +123,14 @@ Much like account-level roles, project members can be assigned Project Admin, Me
 
 Harness is offered as **Software as a Service (SaaS)** and **Self-Managed** (on-premises) editions. **This documentation covers the SaaS edition.** If you are using the Self-Managed Enterprise Edition (SMP), see the <a href="/docs/self-managed-enterprise-edition" target="_blank" >SMP documentation</a>.
 
-<details>
-
-<summary>SaaS versus SMP</summary>
 
 | | **SaaS** | **Self-Managed Enterprise Edition (SMP)** |
 |---|---|---|
 | **What it is** | Fully managed, cloud-hosted version of Harness. No infrastructure setup required. | Kubernetes-native deployment that runs on your own public or private cloud infrastructure. See [SMP overview](/docs/self-managed-enterprise-edition/smp-overview). |
-| **Plans / licensing** | Free, Team, and Enterprise. See [Subscriptions and licenses](/docs/platform/subscriptions-licenses/subscriptions). | Requires a valid SMP license key and access to download the Harness SMP software. |
+| **Plans/licensing** | Free, Team, and Enterprise. See [Subscriptions and licenses](/docs/platform/subscriptions-licenses/subscriptions). | Requires a valid SMP license key and access to download the Harness SMP software. |
 | **Get access** | [Sign up with the Free plan](https://app.harness.io/auth/#/signup/?module=cd&utm_medium=harness-developer-hub), then [sign in](https://app.harness.io/auth/#/signin). Team/Enterprise accounts are created by invitation from an Account Administrator. | Contact [Harness Support](mailto:support@harness.io) to obtain your license key and software download access. |
 | **Setup** | None. Harness manages the infrastructure. | Follow the [installation instructions](/docs/category/install), then sign in at `http://YOUR_DOMAIN_NAME/auth/#/signin`. |
 
-</details>
 
 ---
 
@@ -202,15 +198,10 @@ This allows you to apply the same RBAC controls and governance policies to autom
 
 ### API keys and tokens
 
-API keys and tokens allow external tools to authenticate with Harness without a browser login. They can only perform actions that the associated user or service account has permission to perform.
+API keys and tokens let external tools authenticate with Harness without a browser login. These keys and tokens can only perform actions that the associated user or service account has permission to perform.
 
-* When you create an API key for a service account, the key inherits all permissions granted to that service account.
-* When you create an API key or personal access token (PAT) for a user, it inherits the permissions of that user.
-
-:::tip
-- Use **service accounts and their API keys** for automation and integrations.
-- Use **personal tokens** for your own local development or testing.
-:::
+- **API key for a service account**: Use this for automation and integrations. The key inherits all permissions granted to that service account.
+- **Personal access token (PAT) for a user**: Use this for your own local development or testing. The token inherits your user permissions.
 
 ---
 
@@ -246,8 +237,7 @@ Delegates are essential for enabling Harness to perform actions in your infrastr
 
 <DocImage path={require('../static/harness-platform-architecture-00.png')} width="90%" height="90%" title="Harness Delegate architecture diagram" />
 
-<details>
-<summary>Harness GitOps Agent</summary>
+### Harness GitOps Agent
 
 The Harness GitOps Agent is similar to the Harness Delegate, but it is purpose-built to support **GitOps-based workflows and management**.
 
@@ -256,8 +246,6 @@ GitOps is part of **Harness Continuous Delivery (CD)**. To get started, see <a h
 The following video provides an overview of the Harness Delegate and GitOps Agent strategy.
 
 <DocVideo src="https://www.youtube.com/watch?v=_4k4I8g-Fo0" />
-
-</details>
 
 ---
 
@@ -333,23 +321,6 @@ Harness offers several approaches for automating management of Harness entities 
 With the <a href="/docs/platform/git-experience/git-experience-overview" target="_blank" >Harness Git Experience</a>, you can store and manage your Harness configurations such as pipelines, templates, and input sets directly in your Git repository.
 
 Instead of making changes only in the UI, you can edit YAML files in Git and have those changes automatically reflected in Harness. This means your Harness configurations go through the same pull request reviews, version history, and branching workflows as your application code.
-
----
-
-<details>
-<summary> FirstGen vs NextGen </summary>
-
-Harness FirstGen and Harness NextGen are two versions of the Harness product suite.
-
-* Harness FirstGen is the legacy or earlier version of Harness. It covers common platforms but did not include all Harness modules.
-* Harness NextGen is Harness' new version with a redesigned experience and new Continuous Integration, Feature Flags, Security Testing Orchestration, Service Reliability Management, Cloud Cost Management, and Chaos Engineering modules.
-
-:::warning
-- Eventually all FirstGen accounts will be migrated to NextGen.
-- FirstGen Harness CD reached EOL on December 30, 2023, and EOS on March 30, 2024.
-:::
-
-</details>
 
 ---
 
