@@ -25,7 +25,7 @@ In this document, we'll explore how to verify SLSA Provenance attestation and en
 <DocImage path={require('./static/overview-slsa-ver.png')} width="90%" height="90%" />
 
 
-## Verify SLSA Attestation
+## Configure the SLSA verification step
 
 In the Harness SCS, the SLSA verification step is responsible for verifying the attested provenance and applying policies. To incorporate this, navigate to either the build or deploy stage of your pipeline and add the "SLSA Verification" step. When adding this to a deploy stage, ensure it's placed within a [container step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) and you enable the `container based execution`.
 

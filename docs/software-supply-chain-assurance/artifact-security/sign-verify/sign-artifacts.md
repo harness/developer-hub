@@ -181,6 +181,8 @@ Follow the instructions below to configure the Artifact Signing step for non-con
 
 <DocImage path={require('./static/non-container-verify.png')} width="100%" height="100%" />
 
+### Sign the Artifacts
+
 You can sign artifacts using Cosign with the following signing methods:
 
 * **Keyless** - Uses short-lived, automatically generated keys based on identity to sign artifacts without storing private keys.

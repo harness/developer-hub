@@ -145,7 +145,7 @@ Non-container images can be verified using **Cosign** or **Cosign with Secret Ma
 
 <DocImage path={require('./static/non-container-signing.png')} width="100%" height="100%" />
 
-### Verifying the Artifacts
+### Verify the Artifacts
 
 You can perform artifact verification using Cosign with the following verification methods:
 
