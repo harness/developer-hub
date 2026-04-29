@@ -1402,5 +1402,11 @@
     "description": "Enables keyless signing and verification for artifacts, SBOMs, and SLSA provenance using identity-based trust instead of long-lived signing keys.",
     "gaStartDate": "2026-04-23",
     "module": "Supply Chain Security"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_INPUT_SET_FILTER",
+    "description": "Enables Input Sets filter in execution listing page.",
+    "gaStartDate": "2026-04-30",
+    "module": "Pipeline"
   }
 ]
