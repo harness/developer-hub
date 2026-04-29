@@ -77,7 +77,7 @@ export const FmeData: Horizon = {
         tag: [{value: "Experimentation"}],
         title: "Additional data warehouse support",
         description:
-          "Extend Warehouse Native Experimentation to support Trino and BigQuery.",
+          "Extend Warehouse Native Experimentation to support Trino.",
       },
     ],
   },
@@ -120,30 +120,34 @@ export const FmeData: Horizon = {
         tag: [{ value: "Experimentation" }],
         title: "Warehouse Native Experimentation",
         description: "Run experiments directly in your data warehouse with Warehouse Native Experimentation, now generally available.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation/warehouse-native/",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-warehouse-native-experimentation-is-ga",
       },
       {
         tag: [{ value: "Better Together" }],
         title: "Split integration into Harness",
         description:
           "Support for additional Harness environments, including Prod 3.",
+        link: "https://developer.harness.io/docs/feature-management-experimentation/split-to-harness/migrated-account",
       },
       {
         tag: [{ value: "SDK" }],
         title: "OpenFeature provider updates",
         description:
           "Ongoing support for OpenFeature providers in .NET, Python, React, and Angular.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-openfeature-providers"
       },
       {
         tag: [{ value: "Better Together" }],
         title: "Granular permissions in RBAC",
         description:
           "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled, Split integration into Harness, Part 2.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-environment-level-rbac-governance-in-fme",
       },
       {
         tag: [{ value: "Monitoring" }],
         title: "Alert webhook",
         description: "Automate downstream processes based on FME data with alert webhooks.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-metric-alert-webhook-integration",
       },
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
@@ -243,54 +247,6 @@ export const FmeData: Horizon = {
         tag: [{ value: "Better Together" }],
         title: "Access Split from within Harness app",
         description: "Allow Harness customers to authenticate and access Split from the Harness application.",
-      },
-      {
-        tag: [{ value: "Targeting" }],
-        title: "SemVer attribute dictionary support",
-        description: "Support SemVer type attributes and suggested values in the attribute dictionary to streamline entry & reduce risk of errors.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-12-06",
-      },
-      {
-        tag: [{ value: "Monitoring" }],
-        title: "Feature flag alerts on Monitoring tab",
-        description: "Show guardrail and key metric alerts on the monitoring tab, in addition to the threshold-based alerts shown prev.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-11-27",
-      },
-      {
-        tag: [{ value: "Measurement" }],
-        title: "Monitoring tab: feature traffic insights",
-        description: "Analyze flag traffic in real time to understand trends and ensure proper targeting configuration.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-09-12",
-      },
-      {
-        tag: [{ value: "Alerting" }, {value: "Experimentation"}],
-        title: "Significance alerting for guardrail metrics",
-        description: "Automatically receive alerts on any guardrail metric without manual configuration.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-09-04",
-      },
-      {
-        tag: [{ value: "Targeting" }],
-        title: "Semantic version targeting",
-        description: "Easily define targeting rules for new features using the native semantic version matcher.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-06-06",
-      },
-      {
-        tag: [{ value: "Measurement" }, {value: "SDK"}],
-        title: "Split Suite for Browser, iOS, Android",
-        description: "Eliminate the need to connect the RUM agents to the SDK separately with a single unified SDK.",
-        link:"https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites",
-      },
-      {
-        tag: [{ value: "Measurement" }, {value: "Experimentation"}],
-        title: "Guardrail metrics",
-        description: "A new category of metrics that can be used to protect every release and improve metric organization.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-06-14",
-      },
-      {
-        tag: [{ value: "SDK" }, {value: "Security"}],
-        title: "SDK certificate pinning",
-        description: "Enhanced Mobile (iOS and Android) SDK support to ensure mobile apps connect only to trusted servers.",
-        link:"https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#certificate-pinning",
       },
     ],
   },
