@@ -1,7 +1,7 @@
 ---
 title: AI SRE release notes
 sidebar_label: AI SRE
-date: 2026-03-10T10:00
+date: 2026-04-29T10:00
 sidebar_position: 2
 ---
 
@@ -16,6 +16,12 @@ The release notes describe recent changes to Harness AI SRE.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## April 2026
+
+#### New Features and Enhancements
+
+- **AI-Native Post-Mortem Generation:** AI SRE now auto-generates a structured post-incident review when an incident is closed. The AI synthesizes incident metadata, timeline events, RCA theories, and notes into six sections (Summary, Impact, Root Cause, Resolution, Insights, Lessons Learned). View the generated post-mortem on the **Postmortem** tab of closed incidents. Manual regeneration is also available via the incident detail page. Go to [Resolve and Review Incidents](/docs/ai-sre/users/manage-incidents/resolve-and-review) to review the post-mortem workflow. (IR-2307, IR-2644)
 
 ## March 2026
 
