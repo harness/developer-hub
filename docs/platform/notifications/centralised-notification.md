@@ -1,6 +1,6 @@
 ---
 title: Centralised notification
-description: Configure notifications based on specific rules and conditions in pipelines, delegates, and other Harness components to keep teams informed of critical events.
+description: Configure notifications based on specific rules and conditions in pipelines, delegates, GitOps applications, and other Harness components to keep teams informed of critical events.
 sidebar_position: 3
 ---
 
@@ -11,12 +11,13 @@ import React from 'react';
 
 ## Overview
 
-Harness Centralised Notifications allow you to send notifications based on rules and conditions across pipelines and delegates. You can configure and manage alerts to stay informed about critical events in your Harness environment.
+Harness centralised notifications allow you to send notifications based on rules and conditions across pipelines, delegates, and GitOps applications. You can configure and manage alerts to stay informed about critical events in your Harness environment.
 
 You can configure centralised notifications for:
 
-- **Pipelines**: Get notified about pipeline events like success, failure, or stage completion
-- **Delegates**: Receive alerts when delegates disconnect, expire, or are about to expire
+- **Pipelines:** Get notified about pipeline events like success, failure, or stage completion.
+- **Delegates:** Receive alerts when delegates disconnect, expire, or are about to expire.
+- **GitOps Applications:** Get notified about application sync and health events, such as sync success/failure, out-of-sync drift, and health degradation.
 
 ## Pipeline Notifications
 
@@ -126,13 +127,47 @@ These notifications help track delegate disconnection, expiration, and expiring 
 </TabItem>
 </Tabs>
 
+## GitOps application notifications
 
+Centralised notifications for GitOps allow you to receive alerts for application sync and health events. This gives you visibility into your GitOps environment without configuring notifications on individual applications or pipelines. All five notification channels (Slack, Microsoft Teams, email, webhooks, and PagerDuty) are supported.
 
+### Supported events
 
+The following events are available for GitOps application notification rules:
 
+| Event | Description |
+|-------|-------------|
+| **Application Sync Succeeded** | Fires when a sync operation completes successfully. |
+| **Application Sync Failed** | Fires when a sync operation fails. |
+| **Application Out Of Sync** | Fires when an application's live cluster state drifts from the desired Git state. |
+| **Application Health Degraded** | Fires when an application's health status changes to degraded. |
 
+:::info Custom notification templates
+Custom notification templates are not supported for GitOps application notifications. Notifications use the default template.
+:::
 
+### Configure GitOps application notifications
 
+1. **Access Notification Management**
+   - Go to **Account Settings**, then **General**, then **Notifications Management**.
+   - Select **+ New Notification** to create a new rule.
+
+2. **Set up GitOps Notification Rule**
+   - Provide a **Notification Name** and select **Continue**.
+   - Select **GitOps Application** as the **Resource Type**.
+   - Choose your scope: **All Organizations** or **Specified Organizations**.
+   - Select **Continue**.
+
+3. **Set conditions**
+   - Select **+ Add Condition** to specify when notifications trigger.
+   - Enter a **Condition Name**.
+   - Select the relevant **GitOps Events** (Sync Succeeded, Sync Failed, Out Of Sync, Health Degraded).
+   - Select **Continue**.
+
+4. **Configure channels**
+   - Select notification channels (Slack, Microsoft Teams, email, webhooks, or PagerDuty).
+   - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification).
+   - Select **Submit** to save your configuration.
 
 
 

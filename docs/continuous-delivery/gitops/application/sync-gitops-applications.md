@@ -121,3 +121,7 @@ The recommended batch size is 100 applications. To sync more than 100 applicatio
 - Bulk Sync: User must have the `gitops app sync` permission.
 - Bulk Refresh: User must have the `gitops app view` permission.
 
+## Sync notifications
+
+You can receive notifications for sync success/failure, out-of-sync drift, and health degradation. Go to [Centralised notification](/docs/platform/notifications/centralised-notification#gitops-application-notifications) to configure alerts for GitOps application events.
+

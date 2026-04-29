@@ -331,7 +331,7 @@ With Automatic sync enabled, changes to the source manifest initiate sync automa
 **Manual sync (pros, risks, tips)**
 - Pros: change control before rollout, safer for shared clusters or critical workloads.
 - Risks: longer drift window and possible configuration skew if operators forget to sync.
-- Tips: require approvals in Harness before manual sync, set notifications on Out of Sync, and schedule periodic audits to avoid lingering drift.
+- Tips: require approvals in Harness before manual sync, [set notifications on Out of Sync](/docs/platform/notifications/centralised-notification#gitops-application-notifications), and schedule periodic audits to avoid lingering drift.
 Common Sync Options help tune both modes: `Prune` to remove orphaned resources, `Self Heal` to overwrite in-cluster drift, and `Apply Out of Sync Only` to skip unchanged objects.
 
 ### Prune Policy
