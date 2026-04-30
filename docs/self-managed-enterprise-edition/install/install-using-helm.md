@@ -194,6 +194,53 @@ The example command below executes the `configure-vanity-url.sh` script file for
 ./configure-vanity-url.sh mynamespace abc123 http://smp.harnessurl.com
 ```
 
+### Pull images from the Harness private registry
+
+:::info Helm chart 0.41.0 and later
+Starting with **Helm chart 0.41.0**, SMP images have moved from the public `harness` Docker Hub repository to the private `harnesssecure` repository. Configure an image pull secret for the Helm release, or Harness module pods stay in `ImagePullBackOff`.
+
+Installs on **Helm chart 0.40.x and earlier** pull from the public `harness` repository and do not need this step.
+:::
+
+#### Request private Docker Hub credentials
+
+Sign in to your Harness account and submit a [Zendesk support ticket](/docs/self-managed-enterprise-edition/advanced-configurations/zendesk-configuration) to receive private Docker Hub credentials for the `harnesssecure` repository.
+
+Treat the returned username and token as secrets. Do not commit them to source control.
+
+#### Create a Kubernetes image pull secret
+
+Create a [`docker-registry` secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the same namespace where you will install Harness:
+
+```bash
+kubectl create secret docker-registry harnesssecure-cred \
+  --docker-server=<REGISTRY_URL> \
+  --docker-username=<dockerhub-username> \
+  --docker-password=<dockerhub-token> \
+  --docker-email=<email> \
+  -n <namespace>
+```
+
+#### Reference the secret in `override.yaml`
+
+Add the secret name to `global.imagePullSecrets` in your `override.yaml`:
+
+```yaml
+global:
+  imagePullSecrets:
+    - harnesssecure-cred
+```
+
+The secret applies to every Harness module image in the chart. You do not need to set it per module.
+
+#### Update the Harness Docker Connector for plugin images
+
+Plugin images used by Harness pipelines also move to the private `harnesssecure` repository. Edit the Harness Docker Connector at the **account scope** and add the same Docker Hub credentials so Harness can pull plugin images at runtime. Go to the [Docker Registry connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to review the available fields.
+
+For questions or assistance with this transition, contact the [Harness Customer Success team](mailto:support@harness.io).
+
+---
+
 ### Deploy Harness modules
 
 Harness Helm chart includes Harness Platform components. You can add modules by editing the `override.yaml` file.
