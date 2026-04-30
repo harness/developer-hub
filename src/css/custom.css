@@ -2874,6 +2874,7 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   position: relative;
   display: flex !important;
   align-items: center !important;
+  overflow: visible !important;
 }
 
 /* FOLDER (category) badge – sits left of caret */
@@ -2888,13 +2889,10 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   line-height: 1.5;
-
-  position: absolute;
-  right: 0.75rem;
-  transform: translateY(-50%);
+  margin-left: 0.5rem;
+  flex-shrink: 0;
 
   animation: newBadgePulse 3s ease-in-out infinite;
-  flex-shrink: 0;
 }
 
 /* SINGLE DOC badge – near right edge */
@@ -2959,6 +2957,7 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   position: relative;
   display: flex !important;
   align-items: center !important;
+  overflow: visible !important;
 }
 
 /* FOLDER (category) badge – green variant */
@@ -2973,13 +2972,10 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
   padding: 2px 6px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-
-  position: absolute;
-  right: 0.75rem;
-  transform: translateY(-50%);
+  margin-left: 0.5rem;
+  flex-shrink: 0;
 
   animation: newBadgePulse 3s ease-in-out infinite;
-  flex-shrink: 0;
 }
 
 /* SINGLE DOC badge – green variant */
