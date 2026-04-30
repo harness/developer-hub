@@ -127,6 +127,70 @@ Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) fo
 
 ---
 
+## On-Demand Cost Export Triggering (Enterprise)
+
+Harness CCM can trigger Azure Cost Management exports on demand to provide fresher billing data. By default, Azure only updates cost exports once per day. With on-demand triggering enabled, Harness can request new export files multiple times per day, allowing more fresher billing data for current month.
+
+:::info Availability
+This feature requires **Enterprise** edition and the `CCM_TRIGGER_AZURE_COST_EXPORT` feature flag enabled for your account.
+:::
+
+### Prerequisites
+
+- **Harness CCM Enterprise plan**
+- Azure connector configured with billing export
+- `CCM_TRIGGER_AZURE_COST_EXPORT` feature flag enabled for your account
+
+### Assigning the Role via Azure CLI
+
+Run the following command in Azure Cloud Shell or Azure CLI:
+
+```bash
+az role assignment create \
+  --assignee <Harness-Service-Principal-App-ID> \
+  --role "Cost Management Contributor" \
+  --scope /subscriptions/<Your-Subscription-ID>
+```
+
+Replace:
+- `<Harness-Service-Principal-App-ID>` — The App ID shown in the Harness connector setup wizard
+- `<Your-Subscription-ID>` — Your Azure subscription ID
+
+### Assigning the Role via Azure Portal
+
+1. Navigate to **Subscriptions** → Select your subscription
+2. Go to **Access control (IAM)** → **Add** → **Add role assignment**
+3. Search for and select **Cost Management Contributor**
+4. Click **Next**, then **Select members**
+5. Search for the Harness service principal by its App ID
+6. Select it and click **Review + assign**
+
+### Connector Setup
+
+When creating or editing an Azure CCM connector with billing enabled, the setup wizard automatically displays the required CLI commands. For Enterprise accounts with the feature flag enabled, you'll see an additional command for the Cost Management Contributor role:
+
+```bash
+# Register the Harness app
+az ad sp create --id <app-id>
+
+# Role assignment for enabling Cost Visibility
+SCOPE=`az storage account show --name <storage-account-name> --query "id" | xargs`
+az role assignment create --assignee <app-id> --role 'Storage Blob Data Reader' --scope $SCOPE
+
+# Role assignment for enabling on-demand cost export triggering
+az role assignment create --assignee <app-id> --role 'Cost Management Contributor' --scope /subscriptions/<subscription-id>
+```
+
+<DocImage path={require('/docs/cloud-cost-management/get-started/onboarding-guide/static/rerun.png')} alt="Azure Connector Setup" />
+
+### Data Freshness Expectations
+
+| Scenario | Expected Data Latency |
+|----------|----------------------|
+| Without feature | Consumes exports available at source with default export frequency of once a day |
+| With feature | Consumes exports three times a day. Thus giving more fresher cost data for current month|
+---
+
 ## Next Steps
 Once your Azure billing data is flowing into Harness, explore these features to enhance your cloud cost management:
 
