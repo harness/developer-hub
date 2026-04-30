@@ -48,6 +48,7 @@ Once authenticated, you can leverage the agent’s capabilities to manage your D
 | **Policy Generation and Integration**  | Generate and integrate Open Policy Agent (OPA) Rego policies to meet your compliance standards.                        |
 | **Error Analyzer**                     | AI-powered root cause analysis for pipeline failures with automated fix recommendations.                              |
 | **Pipeline Summarizer**               | Generate natural language summaries of pipelines, executions, and dependent resources.                                |
+| **GitOps Operations**                 | Manage 13 GitOps resource types: query status, sync, create, update applications and ApplicationSets, inspect events, logs, and resource trees, and link clusters to environments. |
 
 ### Step Management
 
@@ -385,6 +386,118 @@ Use pipeline summaries to:
 - Document pipeline behavior for compliance
 - Quickly understand inherited or legacy pipelines
 - Review pipeline changes before approval
+
+### GitOps Operations
+
+The Harness AI DevOps Agent provides full operational control over your Harness GitOps environment through natural language. The toolset covers 13 resource types and approximately 25 operations spanning agents, applications, clusters, repositories, ApplicationSets, credentials, events, logs, managed resources, resource actions, dashboards, resource trees, and cluster-environment linking.
+
+Instead of navigating dashboards to check application health or manually initiating syncs, describe what you need in plain language. The DevOps Agent queries your GitOps data, triggers operations, and generates pipeline snippets for GitOps workflows.
+
+#### Supported resource types
+
+The following table lists all GitOps resource types you can interact with through the DevOps Agent:
+
+| Resource type | Description | Available operations |
+|---------------|-------------|----------------------|
+| **GitOps Agent** | An Argo CD agent installed in a Kubernetes cluster. Agents can be scoped at account, org, or project level. | List, Get |
+| **Application** | An Argo CD application managed by an agent. | List, Get, Create, Update, Sync, Bulk Sync, Refresh, Cancel Operation, Run Resource Action |
+| **Cluster** | A Kubernetes cluster registered with a GitOps agent. | List, Get |
+| **Repository** | A Git repository registered with a GitOps agent. | List, Get |
+| **ApplicationSet** | A template that auto-generates multiple applications from generators. Supports list, git, clusters, matrix, merge, pullRequest, scmProvider, and plugin generator types. | List, Get, Create, Update |
+| **Repository Credential** | Repository credentials (SSH keys, tokens) for GitOps agents. | List, Get |
+| **Application Events** | Kubernetes events emitted by a GitOps application (sync events, health changes). | List |
+| **Pod Logs** | Container logs from pods in a GitOps application's workloads. | Get |
+| **Managed Resources** | Kubernetes resources (Deployments, Services, ConfigMaps, and so on) tracked by a GitOps application. | List |
+| **Resource Actions** | Available actions (restart, pause, resume, and so on) for a specific Kubernetes resource within a GitOps application. | List |
+| **Dashboard** | High-level summary metrics: total apps, healthy/degraded counts, sync status breakdown. | Get |
+| **Resource Tree** | The full Kubernetes resource tree for an application, showing all resources and parent-child relationships. | Get |
+| **Cluster-Environment Link** | Links between GitOps clusters and Harness environments. | List, Create, Delete |
+
+#### Application operations
+
+Applications support the broadest set of operations:
+
+| Operation | Description |
+|-----------|-------------|
+| **List / Get** | List all applications in a project or get details of a specific application. |
+| **Create** | Create a new GitOps application with a source repo, target cluster, and sync policy. |
+| **Update** | Change an application's source repo, target branch, destination cluster, or other settings. Linking a service or environment to an application is also handled through update. |
+| **Sync** | Deploy the latest changes from Git to the cluster for a single application. |
+| **Bulk sync** | Sync multiple applications in parallel. |
+| **Refresh** | Force Argo CD to re-check Git and compare with the live cluster state. Supports normal and hard refresh. |
+| **Cancel operation** | Stop a currently running sync or rollback that is stuck or unwanted. |
+| **Run resource action** | Perform actions on Kubernetes resources managed by the application (see [Kubernetes resource actions](#kubernetes-resource-actions)). |
+
+#### ApplicationSet operations
+
+ApplicationSets use generators to automatically create multiple applications from a single template. The DevOps Agent supports 8 generator types: list, git, clusters, matrix, merge, pullRequest, scmProvider, and plugin.
+
+| Operation | Description |
+|-----------|-------------|
+| **List / Get** | List ApplicationSets or get details of a specific ApplicationSet by UUID. |
+| **Create** | Create an ApplicationSet with any supported generator type. |
+| **Update** | Modify an ApplicationSet's generators, template, or sync policy. |
+
+**Example prompts:**
+
+- "Create an ApplicationSet using a list generator with dev, staging, and prod environments."
+- "Create an ApplicationSet using a git directory generator scanning all folders in my repo."
+- "Create a matrix ApplicationSet combining environments (list) and directories (git)."
+- "Create a clusters ApplicationSet that deploys to all registered clusters."
+
+#### Kubernetes resource actions
+
+The DevOps Agent can perform actions directly on Kubernetes resources managed by your GitOps applications. You can first discover what actions are available for a specific resource, then execute them.
+
+- **Deployments:** restart, pause, resume, scale.
+- **Argo Rollouts:** restart, pause, resume, promote-full, abort, retry, skip-current-step.
+
+**Example prompts:**
+
+- "What actions can I run on the web Deployment in app my-app?"
+- "Restart the web Deployment in app my-app."
+
+#### Inspect and troubleshoot
+
+The DevOps Agent can retrieve detailed information for troubleshooting:
+
+- **Events:** View Kubernetes events for an application (sync events, health changes).
+- **Pod logs:** Stream logs from specific containers in an application's workloads.
+- **Managed resources:** List all Kubernetes resources tracked by an application.
+- **Resource tree:** View the full resource hierarchy (Deployment, ReplicaSet, Pod, Service, and so on) with parent-child relationships.
+- **Dashboard:** Get a high-level summary of your GitOps environment, including total app counts, health status, and sync status breakdown.
+
+**Example prompts:**
+
+- "Show recent events for app my-app."
+- "Get the last 100 lines of logs from pod web-abc123 in app my-app."
+- "What Kubernetes resources does app my-app manage?"
+- "Show the resource tree for app guestbook."
+- "How many GitOps apps are healthy vs degraded?"
+
+#### Query status and health
+
+Ask the DevOps Agent questions about your GitOps environment in natural language. The agent queries across agents, applications, ApplicationSets, clusters, repositories, and the dashboard to answer.
+
+**Example prompts:**
+
+- "What applications are out of sync? How long have they been out of sync? Which project are the out-of-sync applications in?"
+- "What syncs failed in the past 24 hours?"
+- "Which applications are unhealthy in the production environment?"
+- "List all healthy GitOps agents at account level."
+- "List all clusters registered at account level."
+- "What clusters are linked to environment prod?"
+
+#### Trigger operations from chat
+
+You can initiate GitOps operations directly from the AI chat:
+
+- "Sync the app my-app with pruning enabled."
+- "Bulk sync apps app1 and app2."
+- "Hard refresh all apps on my agent."
+- "Cancel the running sync on app my-app."
+- "Initiate a sync for all applications that manage non-prod services."
+- "Link cluster incluster to environment staging."
 
 ## Data Storage and Privacy Policies
 

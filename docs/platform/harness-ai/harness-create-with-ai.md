@@ -224,6 +224,78 @@ Referencing a Pipeline Template:
 Create a Pipeline with the Golden K8s Pipeline Template
 ```
 
+### GitOps operations
+
+Harness AI can manage 13 GitOps resource types, including agents, applications, clusters, repositories, ApplicationSets, and more. You can query status, trigger syncs, create and update resources, inspect events and logs, and generate pipeline snippets. Go to [GitOps Operations](/docs/platform/harness-ai/devops-agent#gitops-operations) to review all supported resource types and operations.
+
+#### Prompts
+
+Use case: List agents and check their health.
+
+```text
+List all healthy GitOps agents at account level
+```
+
+Use case: Check application sync status across your environment.
+
+```text
+What applications are out of sync? How long have they been out of sync? Which project are the out-of-sync applications in?
+```
+
+Use case: Create a new GitOps application.
+
+```text
+Create a new app called guestbook pointing at the argocd-example-apps repo on cluster incluster
+```
+
+Use case: Sync an application with pruning.
+
+```text
+Sync the app my-app with pruning enabled
+```
+
+Use case: Bulk sync multiple applications.
+
+```text
+Bulk sync apps app1 and app2 on agent account.myagent
+```
+
+Use case: Create an ApplicationSet with a list generator.
+
+```text
+Create an ApplicationSet using a list generator with dev, staging, and prod environments
+```
+
+Use case: Inspect events and troubleshoot.
+
+```text
+Show recent events for app my-app on agent account.myagent
+```
+
+Use case: View pod logs for a workload.
+
+```text
+Get the last 100 lines of logs from pod web-abc123 in app my-app
+```
+
+Use case: Discover and run Kubernetes resource actions.
+
+```text
+What actions can I run on the web Deployment in app my-app?
+```
+
+Use case: View the GitOps dashboard summary.
+
+```text
+How many GitOps apps are healthy vs degraded?
+```
+
+Use case: Link a cluster to an environment.
+
+```text
+Link cluster incluster to environment staging via agent myagent at account scope
+```
+
 ### What's Not Supported
 
 ##### In DevOps Use Cases
@@ -231,7 +303,6 @@ Create a Pipeline with the Golden K8s Pipeline Template
 Currently, Harness AI does not support generating:
 
 - Template Creation and Update
-- GitOps Application Creation and Update
 
 ## Example Prompts for Efficiency and Cost
 
