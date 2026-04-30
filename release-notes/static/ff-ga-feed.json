@@ -1360,5 +1360,23 @@
     "description": "Enables Input Sets filter in execution listing page.",
     "gaStartDate": "2026-04-30",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "CDS_CV_CUSTOM_DATACOLLECTION_DURATION",
+    "description": "Custom data collection duration for verify step",
+    "gaStartDate": "2026-04-29",
+    "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "PERSIST_MONITORED_SERVICE_TEMPLATE_STEP",
+    "description": "Persist MS created during template verify step",
+    "gaStartDate": "2026-04-29",
+    "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "CVNG_MONITORED_SERVICE_DEMO",
+    "description": "Marks CV configs as demo in template flows",
+    "gaStartDate": "2026-04-29",
+    "module": "Service Reliability Management"
   }
 ]
