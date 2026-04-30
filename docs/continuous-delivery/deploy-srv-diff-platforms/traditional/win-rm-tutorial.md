@@ -1019,6 +1019,122 @@ For IIS deployments, the Deploy step executes the IIS PowerShell template which 
 
 You have now successfully created and completed the steps for running a pipeline by using WinRM.
 
+## WinRM session reuse
+
+:::note
+This feature requires:
+- Feature flag `CDS_SHARED_SESSION_WINRM_NTLM_NG` enabled for your account
+- Minimum delegate version: 889xx
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+:::
+
+By default, Harness creates a new WinRM connection for every command step in a pipeline. In environments that use JEA (Just Enough Administration) or have high session initialization overhead, each new session can take 30 seconds to over a minute to establish. Pipelines with multiple steps accumulate this connection cost on every execution.
+
+With session reuse enabled, Harness maintains a session pool on the delegate. When a command step runs, Harness checks the pool for an existing idle session to the same host using the same WinRM credential. If one is available, it is reused, eliminating the connection setup cost entirely. The pipeline logs show `Reusing shared WinRM session` when a pooled session is used and `Creating new shared WinRM session` when a fresh one is established.
+
+### Supported authentication methods
+
+Session reuse is supported only for **NTLM authentication**. Kerberos authentication does not support session pooling because it relies on an external process-based authentication model that cannot be effectively pooled.
+
+### How sessions are pooled
+
+Sessions in the pool are organized into **session groups**. The WinRM credential (host + username) acts as the key for each group, ensuring that sessions are never shared across different credentials or hosts. Each group can hold multiple idle sessions, and any idle session within the group can be picked up by any command step that uses the same credential.
+
+When the pool reaches its maximum capacity, Harness automatically evicts the oldest idle session to make room for new connections. If all sessions in the pool are currently in use, the new session is created but not added to the pool. After the command completes, the session is closed immediately.
+
+A background cleanup thread runs periodically to remove stale or idle sessions that have exceeded the configured idle timeout. When the delegate shuts down, all pooled sessions are closed automatically through a shutdown hook. This cleanup happens without manual intervention.
+
+#### Error handling
+
+When a session encounters an error during command execution, Harness determines whether to keep or remove the session from the pool based on the error type:
+
+- **Connection errors** (network failures, SSL errors, connection resets, socket errors): The session is immediately removed from the pool and closed because the connection is no longer valid.
+- **Command execution errors** (PowerShell script failures, non-zero exit codes): The session remains in the pool for reuse because the underlying connection is still valid. Only the command failed, not the session itself.
+
+### Session sharing scope
+
+Sessions in the pool are shared delegate-wide based on credentials:
+
+- Sessions are reused across **all command steps** that use the same host and WinRM credential.
+- Sessions can be shared between **different pipeline executions** running concurrently on the same delegate.
+- Each command step acquires a session from the pool, executes its commands, and releases the session back to the pool for the next step to use.
+- Sessions are never shared **simultaneously**. Only one command executes per session at a time to ensure isolation.
+
+This delegate-wide pooling significantly reduces connection overhead in high-throughput scenarios where multiple pipelines deploy to the same Windows servers.
+
+### Configure the session pool
+
+You can tune the session pool behavior using the following delegate environment variables:
+
+| Environment variable | Default | Description |
+| --- | --- | --- |
+| `WINRM_SESSION_POOL_MAX_SESSIONS` | `100` | Maximum number of sessions held in the pool at one time. When the pool reaches capacity, the oldest idle session is evicted to make room for new connections. |
+| `WINRM_SESSION_POOL_IDLE_TIMEOUT_SECONDS` | `600` (10 min) | How long an idle session can remain in the pool before the cleanup thread removes it. Sessions that exceed this timeout are closed and removed during the next cleanup cycle. |
+| `WINRM_SESSION_POOL_CLEANUP_INTERVAL_SECONDS` | `300` (5 min) | How frequently the cleanup thread scans the pool and removes sessions that have exceeded the idle timeout. |
+
+Set these as environment variables on your Harness Delegate. Changes take effect after the delegate restarts.
+
+### Reading the session pool logs
+
+Each log line from a pooled session includes the group ID and session ID in the format:
+
+```
+[<host>:<port>/<user>#<groupId>-<sessionId>]
+```
+
+For example:
+
+```
+[ec2-54-225-189-86.compute-1.amazonaws.com:5985/Administrator#303541-d9566f]
+```
+
+In this example:
+- **Group ID** (`303541`): Identifies the session group. All sessions with the same group ID share the same host and credential.
+- **Session ID** (`d9566f`): Unique identifier for this specific session instance. Use this to track individual session lifecycle events across multiple command steps.
+
+These identifiers help you correlate log lines across steps and trace which session was used for each command execution.
+
+### Monitoring the session pool
+
+The delegate logs pool statistics during each cleanup cycle. Look for log lines like:
+
+```
+SharedWinRM session pool statistics: groups=3, totalSessions=12, inUse=4, idle=8, stale=0
+```
+
+These metrics help you:
+- **Verify sessions are being reused**: Check that `totalSessions` is greater than zero and `inUse` increases during deployments.
+- **Detect pool capacity issues**: If `totalSessions` consistently equals `WINRM_SESSION_POOL_MAX_SESSIONS`, consider increasing the pool size.
+- **Identify cleanup problems**: If `stale` sessions accumulate, review your idle timeout settings or check for connection issues preventing cleanup.
+
+### Troubleshooting
+
+#### Sessions are not being reused
+
+If you notice new sessions being created instead of reusing existing ones:
+
+1. **Verify the feature flag is enabled**: Confirm that `CDS_SHARED_SESSION_WINRM_NTLM_NG` is enabled for your Harness account.
+2. **Check authentication method**: Session pooling only works with NTLM authentication. If you're using Kerberos, sessions will not be pooled.
+3. **Confirm credential consistency**: Sessions are only reused when the host and credential are identical. Different usernames or hosts will result in separate session groups.
+4. **Review delegate logs**: Search for `POOL_HIT` (session reused) vs `POOL_MISS` (new session created) messages to understand pooling behavior. Note that these messages are only visible when debug logging is enabled on the delegate.
+
+#### Pool capacity warnings
+
+If you see warnings about the pool being full:
+
+1. **Increase pool size**: Set `WINRM_SESSION_POOL_MAX_SESSIONS` to a higher value based on your deployment concurrency needs.
+2. **Review idle timeout**: If sessions are held too long, reduce `WINRM_SESSION_POOL_IDLE_TIMEOUT_SECONDS` to free up capacity faster. Keep the idle timeout higher than the cleanup interval (`WINRM_SESSION_POOL_CLEANUP_INTERVAL_SECONDS`) to ensure sessions have time to be reused before cleanup.
+3. **Check for connection errors**: Persistent connection errors prevent sessions from being returned to the pool. Review error logs and fix underlying connectivity issues.
+
+#### Connection errors after pooling enabled
+
+If you experience increased connection errors after enabling session reuse:
+
+1. **Check WinRM connection limits**: Windows has default limits on concurrent WinRM connections. Increase the `MaxShellsPerUser` limit on target hosts if needed.
+2. **Review firewall settings**: Ensure your network firewall allows persistent WinRM connections and doesn't terminate idle connections prematurely.
+3. **Adjust timeout settings**: If your network has aggressive timeout policies, decrease `WINRM_SESSION_POOL_IDLE_TIMEOUT_SECONDS` to prevent idle sessions from being terminated by network infrastructure.
+
 ## Selective Rerun and Skipping Hosts with Same Artifact
 
 You can do a **selective rerun** for traditional deployments. These improvements ensure:
