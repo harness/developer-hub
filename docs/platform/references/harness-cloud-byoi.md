@@ -90,6 +90,10 @@ Reference it in your stage configuration:
                 command: node --version  # Pre-installed!
 ```
 
+:::note Linux and Windows BYOI images are stored and served by Harness
+Reference the image by `imageName:imageVersion` only. Linux and Windows BYOI do not support supplying a custom image connector (for example, the [Override Image Connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) stage infrastructure setting) to pull the VM image from your own registry. The image must be built with the Harness BYOI builder plugin and served from Harness-managed storage to be used with Linux or Windows BYOI.
+:::
+
 ---
 
 ## Plugin Settings
@@ -102,8 +106,8 @@ Reference it in your stage configuration:
 | `packerFilePath` | Yes | - | Path to your Packer file (relative to repo root) |
 | `imageName` | Yes | - | Image name (3-30 chars, lowercase letters, numbers, hyphens) |
 | `imageVersion` | Yes | - | Version tag (1-20 chars, alphanumeric and hyphens) |
-| `targetOs` | No | `linux` | Target operating system: `linux` |
-| `targetArch` | No | `amd64` | Target architecture: `amd64` or `arm64` |
+| `targetOs` | No | `linux` | Target operating system: `linux` or `windows` |
+| `targetArch` | No | `amd64` | Target architecture: `amd64` or `arm64`. Windows supports `amd64` only. |
 | `baseImage` | No | `ubuntu/22.04` | Base image to build from (see Supported Base Images) |
 | `dockerVersion` | No | `28` | Docker version to pre-install (e.g., `28`, `27`) |
 | `debug` | No | `false` | Enable verbose Packer logging |
@@ -118,7 +122,7 @@ To rebuild with the same version, delete the existing image first:
     name: Delete Image
     spec:
       connectorRef: account.dockerhub
-      image: harness/byoi-builder:1.0.0
+      image: harness/byoi-builder:1.0.1
       settings:
         mode: delete
         imageName: my-dev-image
@@ -135,6 +139,16 @@ To rebuild with the same version, delete the existing image first:
 |------------|---------------|
 | `ubuntu/24.04` | amd64, arm64 |
 | `ubuntu/22.04` | amd64, arm64 |
+
+### Windows
+
+| Base Image | Architectures |
+|------------|---------------|
+| `windows-server/2022` | amd64 |
+
+:::note
+The BYOI builder plugin also accepts `windows-server/2019` and `windows-server/2025`, but these versions are not yet qualified to run as CI VMs on Harness Cloud. Use `windows-server/2022` for Windows BYOI images intended to run on Harness Cloud.
+:::
 
 **Advanced options:**
 
@@ -224,9 +238,15 @@ If your Packer file contains `source` or `build` blocks, they will be ignored. H
 
 ### Platform
 - **Linux:** Ubuntu (amd64 and arm64)
-- **Windows:** Coming soon
+- **Windows:** Windows Server 2022 (amd64 only). The builder plugin also accepts `windows-server/2019` and `windows-server/2025`, but those versions are not yet qualified to run as CI VMs on Harness Cloud.
 - **macOS:** Coming soon
 - Harness Cloud only. Self-hosted runners are not supported.
+
+### Image storage and registry
+- Linux and Windows BYOI images must be built with the Harness BYOI builder plugin and are stored in Harness-managed storage.
+- Linux and Windows BYOI do not support supplying a custom image connector. The [Override Image Connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) stage infrastructure setting does not apply to the Linux or Windows BYOI VM image, so you cannot point Linux or Windows BYOI at an image hosted in your own registry.
+- Reference Linux and Windows BYOI images by `imageName:imageVersion` only. To build on top of an existing image, go to [Supported Base Images](#supported-base-images) to use the full Harness-managed image name as `baseImage`.
+- This restriction applies only to the BYOI VM image. Step-level `image:` fields inside your pipeline (for example, on a Run step) continue to honor their own `connectorRef` and can pull from any registry as usual.
 
 ### Build Process
 - Maximum build time: 3 hours (bounded by authentication token lifetime)
@@ -267,6 +287,9 @@ Yes, set `targetArch: arm64` in your plugin settings (Linux only).
 
 **Can I build on top of a previous BYOI image?**
 Yes. Use the full image name from your previous build output as `baseImage`. For example: `baseImage: byoi-abc123-my-base-v1` (not `my-base:v1`). Note that the account ID in the image name is sanitized (lowercase, `_` → `-`, special chars removed). You can only use your own account's BYOI images.
+
+**Can I host my Linux or Windows BYOI image in my own registry and pull it with an image connector?**
+No. Linux and Windows BYOI do not support supplying a custom image connector, and the [Override Image Connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) stage infrastructure setting does not apply to the Linux or Windows BYOI VM image. The image must be built with the Harness BYOI builder plugin and served from Harness-managed storage. Reference it by `imageName:imageVersion`.
 
 **Do I need to set mode to build?**
 No, `build` is the default mode. You only need to explicitly set `mode: delete` when deleting an image.

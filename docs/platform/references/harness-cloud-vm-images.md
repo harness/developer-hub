@@ -452,11 +452,27 @@ For Linux builds, you can create custom images using Packer with the BYOI builde
 - Configure environment settings and files
 - Build on top of Ubuntu base images or your existing BYOI images
 
-For detailed instructions on creating and using custom Linux images, see [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi).
+Linux BYOI images are built with the Harness BYOI builder plugin and stored in Harness-managed storage. Unlike macOS BYOI, Linux BYOI does not use an external registry pull model. Supplying a custom image connector (for example, the [Override Image Connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) stage infrastructure setting) is not supported for the Linux BYOI VM image, so you cannot host the Linux BYOI image in your own registry. Reference the image by `imageName:imageVersion`.
+
+Go to [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi) to review detailed instructions for creating and using custom Linux images.
+
+### Windows BYOI
+
+For Windows builds, you can create custom images using Packer with the BYOI builder plugin on Windows Server 2022 (amd64 only). The same authoring and delivery model as Linux BYOI applies:
+
+- Windows BYOI images are built with the Harness BYOI builder plugin and stored in Harness-managed storage.
+- Windows BYOI does not use an external registry pull model. Supplying a custom image connector (for example, the [Override Image Connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) stage infrastructure setting) is not supported for the Windows BYOI VM image, so you cannot host the Windows BYOI image in your own registry.
+- Reference the image by `imageName:imageVersion`.
+
+:::note
+The BYOI builder plugin accepts `windows-server/2019` and `windows-server/2025` as base images, but those versions are not yet qualified to run as CI VMs on Harness Cloud. Use `windows-server/2022` for Windows BYOI images intended to run on Harness Cloud.
+:::
+
+Go to [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi) to review detailed instructions for creating and using custom Windows images.
 
 ### macOS BYOI
 
-macOS BYOI support is also available for custom macOS build environments. Unlike Linux BYOI, which uses Packer to build custom VM images, macOS BYOI uses an OCI registry pull model — you push a pre-configured image layer to an OCI-compatible registry, and Harness pulls it onto the macOS VM at build time.
+macOS BYOI support is also available for custom macOS build environments. Unlike Linux and Windows BYOI, which use Packer to build custom VM images stored by Harness, macOS BYOI uses an OCI registry pull model — you push a pre-configured image layer to an OCI-compatible registry, and Harness pulls it onto the macOS VM at build time.
 
 :::note
 * Setting an image pull policy is currently not supported. However, by default, an image is never pulled if it already exists on the VM.
