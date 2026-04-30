@@ -23,6 +23,16 @@ The release notes describe recent changes to Harness AI SRE.
 
 - **AI-Native Post-Mortem Generation:** AI SRE now auto-generates a structured post-incident review when an incident is closed. The AI synthesizes incident metadata, timeline events, RCA theories, and notes into six sections (Summary, Impact, Root Cause, Resolution, Insights, Lessons Learned). View the generated post-mortem on the **Postmortem** tab of closed incidents. Manual regeneration is also available via the incident detail page. Go to [Resolve and Review Incidents](/docs/ai-sre/users/manage-incidents/resolve-and-review) to review the post-mortem workflow. (IR-2307, IR-2644)
 
+- **Real-Time Action Item Detection:** AI SRE now detects action items in real-time during active incidents from Slack chat messages, meeting transcriptions, and incident notes. Each detected item includes a description and the name of the person who committed to it. Detected items appear in the **Action Items** pane and are deduplicated against existing items. Go to [Create and Track Action Items](/docs/ai-sre/users/manage-incidents/create-and-track-action-items) to configure action item detection. (IR-2636)
+
+- **ServiceNow Change Correlation in AI Investigator:** The AI RCA Investigator now automatically polls ServiceNow change records and correlates them to active incidents with no additional configuration required beyond an existing Harness ServiceNow connector. Change data appears alongside deploy events and code changes in the Investigator panel. This is the first external change signal source in the AI Investigator. Go to [Use RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to configure change correlation. (IR-2082)
+
+- **Incident Status Updates:** Incident commanders can now send structured status updates to stakeholders subscribed to impacted services. Navigate to an active incident and click **Status Update** to compose a pre-populated email with incident context. Recipients are resolved dynamically from all impacted services' subscriber lists. Configure subscribers on the **Subscribers** tab of any service in the [Service Directory](/docs/ai-sre/oncall/integrate-service-directory). (IR-2091, IR-2094, IR-2098, IR-2099)
+
+- **Google Chat Integration:** AI SRE now supports Google Chat for incident collaboration. Teams using Google Workspace can create incident spaces, post updates, and collaborate in real-time. The integration uses GCP Pub/Sub for reliable message delivery. Configure under **Integrations** with a one-time GCP project and Pub/Sub topic setup. (IR-2377)
+
+- **Runbook Slug Commands in Slack:** On-call responders can now trigger runbook automations directly from Slack using short slug commands. Type `/harness run <slug>` in an incident channel to execute a runbook instantly. Configure a slug (3-15 characters) on any runbook under **Triggers**. Requires Slack authentication. Use `/harness run` without a slug to list available commands. Go to [Use Slack Commands](/docs/ai-sre/get-started/slack-commands) to set up slug commands. (IR-2518)
+
 ## March 2026
 
 #### New Features and Enhancements
