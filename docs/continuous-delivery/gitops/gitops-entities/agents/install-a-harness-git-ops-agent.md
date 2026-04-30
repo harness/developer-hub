@@ -552,6 +552,69 @@ After making changes to the values.yaml file, run a Helm upgrade to apply the co
 
 Make sure that the agent image is hosted in your private repository with the appropriate format as mentioned in your config file, such as `privateregistryhost.xyz/harness/gitops-agent:tag`:
 
+### STIG-compliant agent images (SAAS - On Demand)
+:::info
+Harness provides STIG-compliant (Security Technical Implementation Guide) hardened gitops agent images for SAAS customers with compliance requirements. 
+
+These images are stored in a private registry and are available on-demand for organizations in regulated environments such as government agencies, financial institutions, and enterprises with stringent security policies.
+
+**How to access:**
+
+1. Login to you Harness account, submit a Zendesk support ticket requesting STIG-compliant gitops agent images.
+
+    <DocImage path={require('./static/support-ticket.png')} width="80%" height="80%" title="Click to view full size image" />
+
+2. The [Harness Customer Success team](mailto:support@harness.io) will review your request and provide a Docker Hub token for the private registry.
+3. Create a Kubernetes [imagePullSecret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) with the provided credentials:
+
+    ```bash
+    kubectl create secret docker-registry harness-stig-registry \
+      --docker-server=<REGISTRY_URL> \
+      --docker-username=<USERNAME> \
+      --docker-password=<DOCKER_HUB_TOKEN> \
+      --namespace=<AGENT_NAMESPACE>
+    ```
+
+  This will generate a secret yaml file like (`harness-stig-registry-secret.yml`):
+
+    ```yaml
+    apiVersion: v1
+    data:
+      .dockerconfigjson: <BASE64_ENCODED_USERNAME+TOKEN>
+    kind: Secret
+    metadata:
+      creationTimestamp: null
+      name: harness-stig-registry
+      namespace: <AGENT_NAMESPACE>
+    type: kubernetes.io/dockerconfigjson
+    ```
+
+4. Apply the secret manifest
+  ```bash
+  kubectl apply -f harness-stig-registry-secret.yml
+  ```
+5. Update your gitops agent manifest to reference the STIG image and pull secret:
+
+    ```yaml
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: harness-stig-registry
+          containers:
+              image: docker.io/harnesssecure/gitops-agent:<GITOPS_AGENT_VERSION>
+    ```
+6. GitOps agent support STIG images starting with version `v0.113.0` upwards.
+7. Other STIG images
+
+| COMPONENT  | IMAGE                                             | VERSION           |
+| ---------- | ------------------------------------------------- | ----------------- |
+| HAPROXY    | docker.io/harnesssecure/haproxy:3.2.14-alpine3.23 | 3.2.14-alpine3.23 |
+| ArgoCD     | docker.io/harnesssecure/argocd:v3.3.0             | v3.3.0            |
+| Redis      | docker.io/harness/redis:7.4.8-jammy               | 7.4.8-jammy       |
+| ShellCheck | docker.io/harnesssecure/shellcheck:v0.11.0        | v0.11.0           | 
+:::
+
 ## GitOps Agent FAQs
 
 Here are some answers to commonly asked GitOps Agent questions.
