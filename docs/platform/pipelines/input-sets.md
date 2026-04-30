@@ -229,9 +229,27 @@ Here's an example of a resolved `<+inputSet>` expression:
 
 ## Define the input set branch for trigger-based executions
 
-When using [Harness Git Experience](/docs/platform/git-experience/git-experience-overview), Harness automatically determines which Git branch to fetch input sets from based on the relationship between the pipeline and input set repositories. You can override this default behavior by specifying the `inputSetBranchName` property in your trigger YAML to fetch input sets from a specific branch.
+When using [Harness Git Experience](/docs/platform/git-experience/git-experience-overview), Harness automatically determines which Git branch to fetch input sets from based on the relationship between the pipeline and input set repositories. You can override this default behavior by specifying the `inputSetBranchName` property in your trigger YAML to fetch input sets from a specific branch or tag.
 
 This is especially useful when your pipeline resides on a static branch (such as `main`) but your input sets are updated on feature or PR branches that change with each trigger event.
+
+### Git tag support for input set source
+
+:::note
+This feature requires delegate version **26.04.89002** or later.
+:::
+
+You can now reference Git tags when specifying the input set source location. This is useful when you want to use versioned input sets that are tagged in your repository.
+
+To reference a Git tag, use the `$tag:` format in the **Input Set Source** field:
+
+- **`$tag:<tag-name>`** - References a specific Git tag. For example, `$tag:v1.0.0` or `$tag:release-2024.01`
+- **`$tag:<expression>`** - References a Git tag using an expression that resolves at runtime to the tag name. For example, `$tag:(<+trigger.tag>)` resolves to the Git tag from the trigger payload
+
+**Example use cases:**
+
+- Use `$tag:v1.0.0` to always fetch an input set from a specific release tag
+- Use `$tag:(<+trigger.tag>)` in a webhook trigger to fetch input sets from the same tag that triggered the pipeline
 
 ### Default branch resolution
 
