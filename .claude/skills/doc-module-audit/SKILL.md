@@ -199,7 +199,7 @@ Assign a staleness indicator based on how long ago that date was (relative to to
 | 6–18 months | 🟡 |
 | > 18 months | 🔴 |
 
-Store each file’s `{path, url, is_dms_content, last_updated, staleness}` where `is_dms_content` is true when the path contains `/content/` as a segment, and `staleness` is one of 🟢 🟡 🔴.
+Store each file’s `{path, url, is_dms_content, is_faq, last_updated, staleness}` where `is_dms_content` is true when the path contains `/content/` as a segment, `is_faq` is true when the file matches the FAQ classification in Step D, and `staleness` is one of 🟢 🟡 🔴.
 
 ---
 
@@ -251,10 +251,10 @@ body `##` entries are step headings, suggesting body content is at the wrong hea
 FAIL for any line containing an em dash character (`—`). Em dashes are banned in HDH docs.
 
 **S-2 — Link phrasing**
-WARN (–5) for any inline link preceded by `see `, `refer to `, or followed by ` to learn more`,
+FAIL for any inline link preceded by `see `, `refer to `, or followed by ` to learn more`,
 ` for more information`, ` for details`. Patterns: `see \[`, `refer to \[`, `learn more`,
-`for more information`. Link phrasing is a style issue rather than a structural error — deducts
-more than a standard WARN but less than a FAIL.
+`for more information`. Lazy link phrasing degrades the page and is treated as a structural
+defect, not a stylistic preference.
 
 **S-3 — Meaningful link text**
 FAIL for any link whose text is exactly `here`, `click here`, `this page`, `this doc`,
@@ -305,12 +305,12 @@ plain prose paragraphs — a `## Introduction` heading is explicitly wrong per t
 **Exempt:** DMS content files (path contains `/content/`).
 
 **T-3 — FAQ structure integrity** *(FAQ pages only — `is_faq: true`)*
-Run these checks instead of (or in addition to) the standard rules above for FAQ pages:
-- FAIL if `sidebar_label` is not `FAQ` or `title` does not start with `FAQ —`
-- FAIL if `faq` tag is absent from frontmatter
-- FAIL if any `<summary>` line does not end with `?`
-- FAIL if any `<details>` block has an empty body (no content between opening and closing tags)
-- FAIL if `###` or deeper headings appear anywhere in the file body
+Run these checks for FAQ pages:
+- FAIL (-15 points) if `sidebar_label` is not `FAQ` or `title` does not start with `FAQ —`
+- FAIL (-15 points) if `faq` tag is absent from frontmatter
+- **FAIL (-50 points) if `###` headings are present AND no `<details>` or `<FAQ>` tags exist** — this indicates the old FAQ pattern (questions as headings) instead of proper collapsible elements
+- FAIL (-15 points) if both `###` headings AND `<details>`/`<FAQ>` tags are present — partial migration
+- FAIL (-15 points) if any `<summary>` line does not end with `?`
 - WARN if `<FAQ>` component is present and the page contains 10 or more questions total
 - WARN if `## Prerequisites`, `## Next steps`, or `## Troubleshooting` sections are present
 
@@ -324,15 +324,31 @@ before `## Prerequisites` in the file (check line numbers). Prerequisites must c
 
 ## Phase 1 output — Compliance scoring
 
-After scanning all files, compute a **compliance score** per file:
+After scanning all files, compute a **compliance score** per file using a two-category model:
 
-Start at 100. Apply deductions:
-- Each FAIL rule: –10 points
-- Each WARN rule: –3 points (unless the rule specifies a different value)
-- S-2 (link phrasing): –5 points (WARN, elevated)
-- Minimum score: 0
+**Quick mode scoring (out of 200 points, scaled to 100):**
 
-Thresholds: **Pass ≥ 85** · **Partial 70–84** · **Fail < 70**
+1. **Completion score** (starts at 100):
+   - FM-2: Missing description (-15)
+   - C-1: No landmark sections (-5)
+   - C-2: Code blocks without language tags (-5 each, cap at 5 violations)
+   - T-1: Troubleshoot component not used (-5)
+
+2. **Editorial score** (starts at 100):
+   - FM-1, FM-3: Frontmatter issues (-15 each, cap at 5 violations for FM-3)
+   - H-1, H-2, H-3: Heading issues (-5 for H-1, -15 for H-2, -5 for H-3, cap at 5 violations each)
+   - S-1 through S-7: Style violations (-15 for FAIL rules, -5 for WARN rules, cap at 5 violations each)
+   - T-2, T-3: Template compliance (-15 for T-2, variable for T-3 including -50 for old FAQ structure)
+   - ST-1: Section order (-5)
+
+3. **Final score calculation:**
+   - Raw total = Completion score + Editorial score (out of 200)
+   - Final score = (Raw total / 200) × 100
+   - Both category scores are floored at 0 before addition
+
+**Thresholds:** **Pass ≥ 90** · **Partial 80–89** · **Fail < 80**
+
+**Note:** Accuracy scoring (40% weight) requires `--full` mode with deep content analysis. Quick mode only scores Completion and Editorial (50% weight each).
 
 ---
 
@@ -377,11 +393,13 @@ Save to `.claude/skills/doc-module-audit/audits/[MODULE]-module-audit-YYYYMMDD.m
 
 | Status | Count | % of module |
 |---|---|---|
-| ✅ Pass (≥ 85) | N | % |
-| ⚠️ Partial (70–84) | N | % |
-| ❌ Fail (< 70) | N | % |
+| ✅ Pass (≥ 90) | N | % |
+| ⚠️ Partial (80–89) | N | % |
+| ❌ Fail (< 80) | N | % |
 
 **Overall module compliance:** [weighted average score]/100
+
+**Scoring model:** Quick mode scores out of 200 points (Completion 50% + Editorial 50%), scaled to 100. Accuracy scoring requires `--full` mode with deep content analysis.
 
 ## Rule breakdown
 
@@ -396,7 +414,7 @@ Save to `.claude/skills/doc-module-audit/audits/[MODULE]-module-audit-YYYYMMDD.m
 | H-2 | Gerund headings | N | — |
 | H-3 | Body content at ## level | — | N |
 | S-1 | Em dashes | N | — |
-| S-2 | Link phrasing (see/refer to) | — | N (–5 each) |
+| S-2 | Link phrasing (see/refer to) | N | — |
 | S-3 | Bare link text (here/click here) | N | — |
 | S-4 | Hardcoded domain links | N | — |
 | S-5 | "please" in body | — | N |
@@ -416,16 +434,20 @@ Save to `.claude/skills/doc-module-audit/audits/[MODULE]-module-audit-YYYYMMDD.m
 
 ## Files ranked by compliance score
 
-Sorted worst-first by Phase 1 compliance score. Partial and failing files only; passing files listed in the appendix.
+Sorted lowest-to-highest score (worst-first). Partial and failing files only; passing files listed in the appendix.
 
-### ❌ Failing (score < 70)
+**Important:** When generating this report, sort all results by score first, then filter into passing/partial/failing arrays to maintain score order within each category.
+
+### ❌ Failing (score < 80)
 
 | File | Score | Last updated | Top violations |
 |---|---|---|---|
-| [Page title](https://developer.harness.io/docs/.../page-slug) | NN | 🔴 2021-03-10 | H-2 (gerund headings), S-1 (em dashes), S-2 (link phrasing) |
+| [Page title](https://developer.harness.io/docs/.../page-slug) | NN | 🔴 2021-03-10 | H-2, S-1, S-2, C-1 |
 | [Page title](https://developer.harness.io/docs/.../#anchor) `[DMS]` | NN | 🟡 2023-08-22 | S-1, C-2 |
 
-### ⚠️ Partial (score 70–84)
+**Note:** The "Top violations" column shows unique rule codes only (no duplicates). For example, if a file has 5 H-1 violations, it appears once as "H-1" in the list.
+
+### ⚠️ Partial (score 80–89)
 
 | File | Score | Last updated | Top violations |
 |---|---|---|---|
@@ -438,8 +460,12 @@ For each failing or partial file, list the specific violations found:
 ### [Page title]
 **URL:** [full canonical URL]
 **Score:** NN/100 — FAIL / PARTIAL
+**Violations:**
+
 - **[RULE-ID]** Line N: `[exact text]`
 - **[RULE-ID]** Line N: `[exact text]`
+
+**Suggested action:** `/doc-audit [file-path]`
 
 [repeat for each failing/partial file]
 
