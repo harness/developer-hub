@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2026-04-05T10:00:00
+date: 2026-04-30T10:00:00
 sidebar_position: 8
 ---
 
@@ -55,6 +55,24 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 
 ## April 2026
+
+### Version 1.143.1
+
+#### New features and enhancements
+
+- You can now deploy to **Azure Container Apps** directly from Harness CD. Ship microservices and containerized applications to Azure's fully managed serverless platform without managing infrastructure. Run canary deployments with progressive traffic shifting (for example, 20% to 70% to 100%), roll back instantly with automatic pre-deployment state capture, and authenticate with OIDC (keyless) or Service Principal credentials across subscriptions. Harness supports both Azure Container Registry (ACR) and Docker Hub as artifact sources. This feature requires the feature flag `CDS_AZURE_CONTAINER_APPS`. Contact [Harness Support](mailto:support@harness.io) to enable. For more information, go to [Azure Container Apps deployments](/docs/category/azure-container-apps-deployments). (**CDS-106121**)
+
+- Input sets stored in Git can now be referenced using Git tags in addition to branch names. You can specify a tag in the **Input Set Source** field using the `$tag:<tag-name>` format (for example, `$tag:v1.0.0`) or use `$tag:<expression>` to dynamically resolve tag names from expressions like `$tag:(<+trigger.tag>)`. This enables version-controlled input set management through Git tagging, making it easier to maintain stable input set configurations alongside your release workflow. This feature requires delegate version **26.04.89002** or later. For more information, go to [Git tag support for input set source](/docs/platform/pipelines/input-sets#git-tag-support-for-input-set-source).
+
+- Harness now supports OIDC authentication for AWS GovCloud regions. The delegate automatically routes STS (Security Token Service) requests to the appropriate regional endpoint when using OIDC with AWS connectors in GovCloud. The STS region is resolved using the following priority: connector's default region, cluster/resource region, `AWS_DEFAULT_REGION` environment variable on the delegate host, or fallback to `us-east-1`. For GovCloud deployments, set the `AWS_DEFAULT_REGION` environment variable on your delegate to specify the GovCloud region (for example, `us-gov-west-1`). This feature requires delegate version **88904** or later. 
+
+- A new **Executions Management** page gives you account-level visibility into queued pipeline executions. View queue positions, filter by organization or project, and cancel individual or bulk executions from **Account Settings** > **Security and Governance** > **Executions Management**. This feature requires the feature flag `PIPE_QUEUED_PIPELINE_OBSERVABILITY`. Contact [Harness Support](mailto:support@harness.io) to enable.
+
+- WinRM session pooling is now available for traditional Windows deployments. Harness maintains a delegate-wide session pool grouped by host and username. Command steps reuse idle sessions with matching credentials instead of opening new connections, saving 30 seconds to over a minute per connection in environments with high session initialization costs. Session pooling supports NTLM authentication only. This feature requires the feature flag `CDS_SHARED_SESSION_WINRM_NTLM_NG` and delegate version 889xx or later. Contact [Harness Support](mailto:support@harness.io) to enable. For more information, go to [WinRM session reuse](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial#winrm-session-reuse). 
+
+#### Fixed issues 
+
+- Improved error messaging when a Bitbucket connector hits API rate limits. Previously, rate-limit responses from Bitbucket surfaced as a generic `SCM request failed with: UNKNOWN` error. The SCM service now detects Bitbucket rate-limit responses and returns a clear error message indicating the rate limit has been exceeded. (**PIPE-32774**, **ZD-109415**)
 
 ### Version 1.142.0
 
