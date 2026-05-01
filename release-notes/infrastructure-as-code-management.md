@@ -40,6 +40,26 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 </HarnessApiData>
 ::: -->
 
+## April 2026
+
+### New features and enhancements
+
+- **AWS CDK (Beta):** AWS Cloud Development Kit is now available in beta as a fully supported provisioner alongside Terraform, OpenTofu, and Terragrunt. Define infrastructure using familiar programming languages such as TypeScript, Python, Java, C#, and Go.
+- **[Terragrunt GA](/docs/infra-as-code-management/get-started/#terragrunt):** Terragrunt support has reached general availability with comprehensive feature parity including drift detection, STO integration for security scanning, OPA policy enforcement, and native approval workflows.
+- **[Module Registry 2.0](/docs/infra-as-code-management/registry/module-registry/module-registry-artifacts):** Enhanced Module Registry with native Harness Code webhook triggers for module testing pipelines, removing the dependency on external connectors. Improved UX includes transitional state handling during backend updates and better error messaging.
+- **Resource-level dashboard analytics:** Dashboard analytics now support resource-level data, providing deeper insights into infrastructure changes and resource lifecycle across workspaces.
+
+### Bug fixes and improvements
+
+- Fixed Terraform provider issue that was resetting `provider_connector` to null
+- Resolved large plan upload timeouts for workspaces with 177 MB+ plans
+- Fixed resource persistence issue affecting the workspace resource tab
+- Resolved SMP image pull failures
+- Patched go-git security vulnerability
+- Fixed cost estimation loading state issues for Terragrunt workspaces
+
+---
+
 ## March 2026
 ### New features and enhancements
 - **Vault integration** - Enables users to correlate a Vault connector directly with an IaCM workspace, allowing secrets to be natively pulled from Vault at runtime to support Terraform and OpenTofu workflows. Customers needed a seamless way to manage sensitive credentials within their infrastructure automation pipelines without manual intervention, reducing security risk and simplifying the operational overhead of secret management across environments.
