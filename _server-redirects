@@ -197,4 +197,7 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # Added by animesh on 22-01-2026 for db devops images to overview
 /docs/database-devops/use-database-devops/database-devops-images/ /docs/database-devops/overview
 
+# Redirect for llms.txt file
+/docs/llms.txt /llms.txt
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

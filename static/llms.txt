@@ -408,23 +408,24 @@ No-LLM-Training: /docs/continuous-integration/private/**
   - [Troubleshooting alerts](https://developer.harness.io/docs/feature-management-experimentation/release-monitoring/alerts/troubleshooting/): This topic provides detailed information about troubleshooting metric and feature flag alerts. 
 
 - Management & Admin
-  - [FME Settings](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/fme-settings/): This topic provides an overview of settings that you can customize in Harness FME.
-  - [Account usage data](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-usage/): This topic provides detailed information about your account usage data in Harness FME.
-  - [Permissions](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions/): This topic provides an overview of available permissions in Harness FME.
-  - [Approval flows](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/fme-settings/approval-flows/): This topic provides an overview of approval flows in Harness FME.
-  - [Environments](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/fme-settings/environments/): This topic provides an overview of environments in Harness FME.
-  - [Traffic types](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/): This topic provides an overview of traffic types and impressions in Harness FME.  
-  - [Tags](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/tags/): This topic provides an overview of tags.
-  - [Administration best practices](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/admin-best-practices/): This topic provides an overview of administrative best practices in Harness FME.
-  - [MTK efficiency](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/admin-best-practices/mtk-efficiency/): This topic provides best practices on monthly tracking keys (MTK).
-  - [Event efficiency](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/admin-best-practices/event-efficiency/): This topic provides detailed information on optimizing your events in Harness FME.
-  - [Managing technical debt](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/admin-best-practices/managing-technical-debt/): This topic provides best practices on managing technical debt.
-  - [Legacy Split Settings](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/): This topic provides an overview of settings that you can customize in Split (Legacy).
-  - [Audit logs](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/audit-logs/): This topic provides an overview of audit logs in Split Legacy.
-  - [API Keys](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys/): This topic provides an overview of API keys in Split SDKs and the Admin API.
-  - [Groups](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/groups/): This topic provides an overview of groups in Split Legacy.
-  - [Users](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/users/): This topic provides an overview of managing users in Split Legacy.
-  - [Projects](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/projects/): This topic provides an overview of managing projects in Split Legacy.
+  - [API Keys](https://developer.harness.io/docs/feature-management-experimentation/api-keys/): This topic provides an overview of API keys in FME SDKs and the Admin API.
+  - [Audit logs](https://developer.harness.io/docs/feature-management-experimentation/account-settings/audit-logs/): This topic provides an overview of the different types of audit logs collected in Harness FME.
+  - [Authentication](https://developer.harness.io/docs/feature-management-experimentation/authentication): This topic provides an overview of authentication methods in Harness FME.
+  - [Automated Feature Flag Cleanup](https://developer.harness.io/docs/feature-management-experimentation/templates): This topic provides an overview of remote pipeline and stage templates for automatic feature flag cleanup in Harness pipelines.
+  - [Environments](https://developer.harness.io/docs/feature-management-experimentation/environments/): This topic provides an overview of environments in Harness FME.
+  - [Groups](https://developer.harness.io/docs/feature-management-experimentation/groups/): This topic provides an overview of user groups in Harness FME.
+  - [My Work](https://developer.harness.io/docs/feature-management-experimentation/my-work): This topic provides an overview of the My Work page in Harness FME.
+  - [Owners](https://developer.harness.io/docs/feature-management-experimentation/owners): This topic provides an overview of owners in Harness FME.
+  - [Permissions](https://developer.harness.io/docs/feature-management-experimentation/permissions/): This topic provides an overview of permissions in Harness FME.
+  - [Pipelines](https://developer.harness.io/docs/feature-management-experimentation/pipelines/): This topic provides an overview of Harness pipelines in Harness FME.
+  - [Policies](https://developer.harness.io/docs/feature-management-experimentation/policies): This topic provides an overview of Harness policies in Harness FME.
+  - [Projects](https://developer.harness.io/docs/feature-management-experimentation/projects): This topic provides an overview of Harness projects in Harness FME.
+  - [Tags](https://developer.harness.io/docs/feature-management-experimentation/tags/): This topic provides an overview of tags.
+  - [Traffic Types](https://developer.harness.io/docs/feature-management-experimentation/traffic-types/): This topic provides an overview of traffic types and impressions in Harness FME.
+  - [Users](https://developer.harness.io/docs/feature-management-experimentation/users): This topic provides an overview of Harness users in Harness FME.
+  - [Usage Data](https://developer.harness.io/docs/feature-management-experimentation/account-usage/): This topic provides detailed information about your account usage data in Harness FME.
+  - [Administration Best Practices](https://developer.harness.io/docs/feature-management-experimentation/best-practices/): This topic provides an overview of administrative best practices in Harness FME.
+  - [API Best Practices](https://developer.harness.io/docs/feature-management-experimentation/api/): This topic provides an overview of the Harness FME Admin API.
 
 - Integrations
   - [Amazon S3](https://developer.harness.io/docs/feature-management-experimentation/integrations/amazon-s3): This topic provides detailed information about the FME Amazon S3 integration.
@@ -459,3 +460,8 @@ No-LLM-Training: /docs/continuous-integration/private/**
   - [Terraform provider](https://developer.harness.io/docs/feature-management-experimentation/integrations/terraform): This topic provides detailed information about the FME Terraform Provider integration.
   - [Vercel](https://developer.harness.io/docs/feature-management-experimentation/integrations/vercel): This topic provides detailed information about the FME Vercel integration.
   - [Visual Studio Code extension](https://developer.harness.io/docs/feature-management-experimentation/integrations/visual-studio-code-extension): This topic provides detailed information about the FME Visual Studio Code extension integration.
+
+## Harness API Reference 
+
+- [Harness API Docs](https://apidocs.harness.io/)
+- [Harness FME API Docs](https://docs.split.io/)
