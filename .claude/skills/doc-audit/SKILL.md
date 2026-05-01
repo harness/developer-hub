@@ -272,6 +272,61 @@ consolidation using one of the following Docusaurus components:
 
 If none of the above apply, note "No consolidation opportunity identified."
 
+### 4d — Tab TOC duplication
+
+**Check for duplicate major sections across tabs that create TOC confusion.**
+
+If the page uses `<Tabs>` / `<TabItem>` components, scan all tab contents for duplicate `##` headings — especially:
+- `## Prerequisites`
+- `## Troubleshooting`
+- `## Next steps`
+- Step headings (e.g., `## Step 1`, `## Step 2`)
+
+**Problem:** Docusaurus right-hand TOC shows headings from ALL tabs simultaneously, not just the active tab. When multiple tabs contain the same major sections, the TOC displays duplicates (e.g., Prerequisites ×2, Troubleshooting ×2), making it impossible to tell which tab each heading belongs to.
+
+**When to flag:**
+- Two or more tabs each contain `## Prerequisites`, `## Troubleshooting`, or `## Next steps`
+- Multiple tabs use the same step heading structure (e.g., both have `## Step 1: X`, `## Step 2: Y`)
+
+**Recommended fix — DMS restructuring:**
+
+When tabs represent different approaches to the same task (e.g., Terraform vs API provisioning), restructure using DMS:
+
+**Parent page** (with DMS component):
+- Introduction (shared — what the task accomplishes and why)
+- DMS component with tiles for each approach
+- Troubleshooting (shared — common issues apply to all approaches)
+- Next steps (shared — what to do after provisioning)
+
+**Child pages** (in `content/` subdirectory, flat structure):
+- File naming: `content/<parent-name>-<approach>.md` (e.g., `content/provision-terraform.md`, `content/provision-api.md`)
+- Keep content folder flat — do NOT nest as `content/<parent-name>/<approach>.md`
+- Prerequisites (approach-specific — Terraform needs Terraform CLI, API needs curl)
+- Step-by-step instructions (unique to each approach)
+- No Troubleshooting/Next steps sections (those live on parent only)
+- H1 heading allowed (serves as tab section title)
+
+**Benefits:**
+- TOC only shows ONE approach at a time (whichever tile is selected)
+- Shared sections aren't duplicated
+- Prerequisites can still differ by approach
+- URL structure: `parent-page#terraform` and `parent-page#api`
+
+**Example flagging:**
+
+```markdown
+**Tab TOC duplication detected:**
+- Both "Terraform" and "API" tabs contain `## Prerequisites`
+- Both tabs contain `## Troubleshooting`
+- Both tabs contain `## Next steps`
+
+**Impact:** Right-hand TOC shows 6 major sections (Prerequisites ×2, Troubleshooting ×2, Next steps ×2), making navigation confusing.
+
+**Recommendation:** Restructure with DMS — shared sections (Intro, Troubleshooting, Next steps) on parent page, approach-specific content (Prerequisites, Steps) in child pages at `content/provision-terraform.md` and `content/provision-api.md`.
+```
+
+If no duplicate sections are found across tabs, or the page doesn't use tabs, note: "No tab TOC duplication detected."
+
 ---
 
 ## Step 5 — User confusion gap analysis

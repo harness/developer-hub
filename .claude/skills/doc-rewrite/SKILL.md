@@ -178,6 +178,31 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
    - Reorganize sections if needed to match template order
    - Ensure all required sections are present
 
+9. **Tab TOC duplication fixes:**
+   - If the audit report flags "Tab TOC duplication" in the Information architecture section, consider restructuring with DMS
+   - **When tabs have duplicate major sections** (Prerequisites, Troubleshooting, Next steps):
+     - Create a parent page with: Introduction → DMS component → shared Troubleshooting → shared Next steps
+     - Create child files in `content/` (flat structure) with descriptive names: `content/<parent-name>-<approach>.md`
+       - Example: parent `provision-database-devops.md` → children `content/provision-terraform.md` and `content/provision-api.md`
+       - Do NOT nest as `content/provision-database-devops/terraform.md` — keep content folder flat
+     - **DMS child file heading hierarchy:**
+       - H1 heading for the section title: `# Provision via Terraform`
+       - `## Prerequisites` (H2 for landmark sections)
+       - `### Step 1`, `### Step 2`, etc. (H3 for body content/steps — indented in TOC)
+       - `#### Request`, `#### Example`, etc. (H4 for substeps under a step)
+       - This creates proper TOC indentation: Prerequisites/Next steps at top level, steps nested beneath
+       - Do NOT use `## Step 1`, `## Step 2` in child files — these should be `###` to create hierarchy
+     - **Horizontal rules in child files:**
+       - Add `---` before `## Prerequisites` (after intro)
+       - Add `---` before each `### Step N` heading
+       - Add `---` before any other major `###` sections (Example configuration, Things to note, etc.)
+       - This provides clear visual separation between sections, same as regular pages
+     - No duplicate shared sections in children (Troubleshooting, Next steps belong on parent only)
+     - DMS paths use site-relative format: `path: "/module-name/content/filename.md"`
+     - Update URLs: parent page + fragment (e.g., `provision-database-devops#terraform`)
+   - **Only restructure when the audit explicitly recommends it** — don't proactively convert working tabs to DMS
+   - If restructuring is recommended but you're uncertain, flag it for the user and ask whether to proceed
+
 ---
 
 ## Step 4 — Verify the rewrite

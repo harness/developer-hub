@@ -205,10 +205,20 @@ Store each file’s `{path, url, is_dms_content, is_faq, last_updated, staleness
 
 ## Phase 1 — Structural compliance scan (always runs)
 
-For **every file** in the list, check the following rules. These are detectable from the file
-content directly — no LLM reasoning needed. Read the files directly using their paths.
+Run the generic scanner script with the module code:
 
-For efficiency, read files in batches (10–15 at a time) and record results as you go.
+```bash
+python .claude/scripts/scan-module.py --module <module-code>
+```
+
+This will:
+- Read module configuration from `.claude/scripts/modules.json` (folder, base_url, exclude_folders)
+- Scan all markdown files in scope
+- Check compliance against all rules (FM-1/2/3, H-1/2/3, S-1/2/3/4/5/6/7, C-1/2, T-1/2/3, ST-1)
+- Calculate scores (Completion + Editorial, scaled to 100)
+- Write results to `.claude/skills/doc-module-audit/audits/<module>-phase1-results.json`
+
+For efficiency, the script batches file reads and processes them without LLM calls.
 
 ### Rule set
 
@@ -374,10 +384,24 @@ For each of the 3 pages, recommend the right follow-up command:
 
 ---
 
-## Step 2 — Write the compliance report
+## Step 2 — Generate the compliance report
 
-Save to `.claude/skills/doc-module-audit/audits/[MODULE]-module-audit-YYYYMMDD.md`
-(e.g. `.claude/skills/doc-module-audit/audits/iacm-module-audit-20260427.md`). Use today's date. Create the audits directory if needed.
+After Phase 1 completes, generate the markdown report using the generic report generator:
+
+```bash
+python .claude/scripts/generate-report.py \
+  --module <module-code> \
+  --results .claude/skills/doc-module-audit/audits/<module>-phase1-results.json
+```
+
+This will:
+- Load module configuration from `.claude/scripts/modules.json`
+- Parse the scan results JSON
+- Calculate summary statistics (pass/partial/fail counts, average score)
+- Count rule violations across all files
+- Generate the compliance report at `.claude/skills/doc-module-audit/audits/[MODULE]-module-audit-YYYYMMDD.md`
+
+The report file is saved with today's date. The audits directory is created if it does not exist.
 
 ```markdown
 # Module audit: [MODULE NAME]
