@@ -119,11 +119,7 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
-* **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
-
-:::note
-OIDC Auth type is not supported.
-:::
+* **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription.
 
 </TabItem>
 
@@ -137,11 +133,7 @@ OIDC Auth type is not supported.
 
 * **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
 
-* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
-
-:::note
-OIDC Auth type is not supported.
-:::
+* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. Example: `my-gcp-project`.
 
 </TabItem>
 
@@ -198,7 +190,7 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 :::note
 
-This option is available only for signing comtainer images.
+This option is available only for signing container images.
 :::
 
 ## View Signed Artifacts

@@ -93,6 +93,7 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 
 
 ### Policy Configuration
+
 You can configure the step to enforce policies on the SBOM by selecting the appropriate policy set.
 
 - **Policy Sets:** Choose the policy sets you want to use for enforcement. You can select multiple policy sets from the **Account**, **Org**, or **Project** levels. For more details, refer to [Creating SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#creating-an-sbom-policy) and [Writing SBOM Policy Definitions](/docs/software-supply-chain-assurance/open-source-management/define-sbom-policies).

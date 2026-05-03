@@ -69,7 +69,7 @@ When modifying the existing SLSA steps, you must manually remove the digest from
 
 * **Image:** Enter the name of your image, example `my-docker-repo/my-artifact` or `my-docker-repo/my-artifact@sha256:<digest>`.
 
-* **Region:** The geographical location of your ECR repository, example `us-east-1`
+* **Region:** The geographical location of your ECR repository, example `us-east-1`.
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
@@ -82,13 +82,9 @@ When modifying the existing SLSA steps, you must manually remove the digest from
 
 * **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
 
-* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
+* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. Example: `my-gcp-project`.
 
 * **Image Name:** Enter the name of your image with tag oe digest, example `repository-name/image:tag` or `repository-name@sha256:<digest>`.
-
-:::note
-OIDC Auth type is not supported.
-:::
 
 
 </TabItem>
@@ -99,11 +95,7 @@ OIDC Auth type is not supported.
 
 * **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
-* **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
-
-:::note
-OIDC Auth type is not supported.
-:::
+* **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription.
 
 
 </TabItem>
