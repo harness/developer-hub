@@ -39,6 +39,13 @@ input:
     github_repo: ${{ parameters.github_repo }}
 ```
 Here, `url` specifies the Harness pipeline, and `inputset` are the parameters provided by the user, to be used as an input for the pipeline mentioned in the URL. 
+
+:::important
+If the target pipeline **uses templates** (pipeline templates or stage templates), you must use **fully qualified variable paths** in `inputset` keys.  
+Example: use `pipeline.variables.project_name` instead of `project_name`.  
+If you don’t use the fully qualified path, the inputs may not resolve correctly for template-based pipelines.
+:::
+
 - `output` – Stores results from the action, which can be used in later steps.
 
 Example (for storing a generated file path):
