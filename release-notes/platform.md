@@ -255,7 +255,7 @@ No enhancements or fixes were released in this cycle.
 
 #### New features and enhancements
 
-- Introduced notifications for service account tokens, allowing you to configure alerts for events such as creation, rotation, updates, expiration, deletion, and upcoming expiration across your selected channels. [PL-41008] 
+- Introduced [**notifications for service account tokens**](/docs/platform/notifications/centralised-notification#service-account-sa-token-notifications), allowing you to configure notifications for SA token events such as creation, rotation, updates, expiration, deletion, and upcoming expiration across your selected channels. [PL-41008] 
 - Introduced [**project movement across organizations**](/docs/platform/organizations-and-projects/move-projects/overview) (Closed Beta): Move projects between organizations seamlessly while preserving audit and execution history. [PL-41870]
 
 ## March 2026

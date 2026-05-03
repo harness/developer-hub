@@ -169,6 +169,83 @@ Custom notification templates are not supported for GitOps application notificat
    - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification).
    - Select **Submit** to save your configuration.
 
+---
+
+## Service account (SA) token notifications
+
+Service account token notifications alert you when tokens are created, updated, rotated, deleted, or nearing expiration. Since expired tokens can lead to pipeline and automation failures, it is important to stay ahead of their lifecycle.
+
+SA token expiry notifications provide advance warnings, allowing you to rotate or renew tokens before they disrupt your workflows.
+
+:::note Feature availability
+This feature requires the `PL_SERVICE_ACCOUNT_NOTIFICATION` feature flag. Contact [Harness support](mailto:support@harness.io) to enable it.
+:::
+
+### Before you begin
+
+Make sure you have access to a Harness account with the following permissions:
+
+- View permission for Service accounts
+- View permission for Notification channels
+- View, Create/Edit permission for Notification rules
+
+### Configure service account token notifications
+
+:::note **Important**
+* When a service account is deleted, its notification rules are updated asynchronously. If the deleted service account was the only one in a rule, that rule is automatically removed.
+* All timestamps shown in notification messages are in UTC. 
+:::
+
+You can configure notifications for an existing service account or create a new one. To create a new service account, see the [Create a service account guide](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-service-account/#create-a-service-account).
+
+<Tabs>
+<TabItem value="Interactive">
+   <iframe
+   src="https://app.tango.us/app/embed/4061d644-39f7-4ab2-a4fe-54f84b978eb2"
+   title="Configure Harness Service Account Notifications"
+   style={{ width: "100%", minHeight: "640px", border: "0" }}
+   sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+   referrerPolicy="strict-origin-when-cross-origin"
+   allowFullScreen
+   />
+</TabItem>
+
+<TabItem value="Manual">
+
+1. Go to **Account Settings → Notifications** (or **Organization Settings / Project Settings**, depending on the desired scope).
+
+2. Select **+ New Notification Rule**.
+
+3. Enter a name for the rule (for example, *SA Token Expiration Alerts*).
+
+4. In **Resources**, choose **Service Accounts**.
+
+5. Choose which service accounts to monitor:
+
+   * **All service accounts** to monitor every account in the selected scope.
+   * **Specific service accounts** to select individual service accounts by name. You can only select service accounts at the present scope. 
+
+6. Select **Add Condition** to choose the events that will trigger notifications.
+
+7. Give the condition a clear name (for example, *Critical Expiration Warnings*). You can create multiple conditions for one rule.
+
+8. Select the events you want notifications for:
+
+   * **Token Created:** A new service account token is generated.
+   * **Token Edited:** An existing token or its settings are updated.
+   * **Token Deleted:** A token is permanently removed.
+   * **Token Expired:** A token has reached its expiration date and can no longer be used.
+   * **Token Rotated:** A token is replaced with a new one.
+   * **Token Expires in 1–4 weeks:** Choose a timeframe between 1 and 4 weeks before expiration. Notifications are sent daily during the selected week. For example, if you select _4 weeks_, you will receive a daily notification during the fourth week before the token expires.
+   * **Token Expires in 1 day:** A final reminder sent one day before expiration.
+
+9. Select an existing channel or [create a new channel](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification) to receive alerts.
+
+10. Turn on **Enable on Save** to activate the rule immediately after you click **Submit**.
+</TabItem>
+</Tabs>
+
+
 
 
 
