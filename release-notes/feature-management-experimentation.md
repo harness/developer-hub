@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-04-27T10:00:00
+date: 2026-04-30T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,9 +14,23 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: April 27, 2026
+#### Last updated: April 30, 2026
 
 ## April 2026
+
+### [New Enhancement] Additional FME Steps in Harness Pipelines
+----
+#### 2026-04-30
+
+Harness FME now supports additional steps for managing [segments](/docs/feature-management-experimentation/feature-management/targeting/segments), [flag sets](/docs/feature-management-experimentation/feature-management/manage-flags/using-flag-sets-to-boost-sdk-performance), and [impression tracking](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) directly through [Harness pipelines](/docs/feature-management-experimentation/pipelines). Teams can use these steps to automate segment management, organize feature flags into reusable flag sets, and configure observability-related settings as part of their deployment workflows or standalone feature management pipelines.
+
+This enhancement adds support for creating, updating, and deleting segments and flag sets, managing feature flag membership within flag sets, configuring rule-based segment targeting, updating segment targets, and enabling or disabling impression tracking on feature flags.
+
+These steps are available under **Feature Management & Experimentation** in the [Harness pipeline step library](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages) and can be combined with existing pipeline capabilities such as approvals, notifications, and failure strategies to standardize and automate feature management workflows.
+
+#### Related documentation
+
+- [Using Feature Management & Experimentation with Harness Pipelines](/docs/feature-management-experimentation/pipelines/)
 
 ### [New Feature] Remote Feature Flag Cleanup Templates for Harness FME is in beta
 ----
@@ -149,7 +163,7 @@ With flag archiving, teams can:
 - [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference/#feature-management-and-experimentation)
 - [Harness Sample Policies](/docs/platform/governance/policy-as-code/sample-policy-use-case#prevent-archiving-a-feature-flag-with-recent-traffic)
 
-### [New Feature] FME Steps in Harness Pipelines is Now Generally Available
+### [New Feature] FME Steps in Harness Pipelines
 ----
 #### 2026-03-05
 

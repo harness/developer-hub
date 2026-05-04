@@ -94,7 +94,7 @@ To add FME steps to a pipeline:
 1. Click **+ Add Step**. The **Step Library** panel opens on the right.
 1. Navigate to the **Feature Management & Experimentation (FME)** section and select a step. 
 
-   | FME step                                   | Primary use case                          | When to use it                                                                                                                                                      |
+   | FME step                                   | Use case                          | When to use it                                                                                                                                                      |
    | ------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | [**Create Feature Flag**](#create-feature-flag)                        | Create a new feature flag                 | Use when introducing a new feature flag as part of deployment or feature development. This step instantiates the flag across all environments with default rollout plans.                    |
    | [**Update Feature Flag**](#update-feature-flag)                        | Update flag metadata                      | Use when you need to edit flag properties such as the description, rollout status, owners, or tags without changing targeting or traffic allocation.       |
@@ -111,6 +111,15 @@ To add FME steps to a pipeline:
    | [**Limit Exposure**](#limit-exposure)                        | Control exposure to targeting rules       | Use when you want to set the percentage of users exposed to targeting rules in a specific environment, with everyone else going to the default treatment.            |
    | [**Reallocate Traffic**](#reallocate-traffic)                | Reassign users across treatments          | Use to reassign users across treatments for a feature flag in a specific environment without changing the targeting rules. This regenerates the seed value used for randomizing assignment in percentage distributions. |
    | [**Patch Definition**](#patch-definition)                    | Apply patch operations to a flag definition | Use when you want to apply granular patch operations to a feature flag definition in a specific environment.                                                       |
+   | [**Create Segment**](#create-segment) | Create standard or rule-based segments | Use when you want to create reusable audience segments for targeting feature flags based on user attributes, traffic type, or targeting rules. |
+   | [**Update Segment**](#update-segment) | Update segment metadata | Use when you need to modify segment metadata such as descriptions or owners without changing the segment targeting logic. |
+   | [**Delete Segment**](#delete-segment) | Permanently delete a segment | Use when a segment is no longer needed and should be removed from Harness FME. |
+   | [**Add/Remove Segment Targets**](#addremove-segment-targets) | Incrementally modify segment targets | Use when you need to add or remove specific target keys from a segment without replacing the entire target list. |
+   | [**Set Rule-Based Segment Targeting**](#set-rule-based-segment-targeting) | Define targeting rules for rule-based segments | Use when you want to define or replace the targeting rules used to dynamically populate a rule-based segment. |
+   | [**Create Flag set**](#create-flagset) | Create a flag set | Use when you want to organize related feature flags into a shared grouping for management and governance workflows. |
+   | [**Delete Flag set**](#delete-flagset) | Permanently delete a flag set | Use when a flag set is no longer needed and should be removed from Harness FME. |
+   | [**Add/Remove Flags from Flag sets**](#addremove-flags-from-flagsets) | Manage flag set membership | Use when you want to add or remove feature flags from existing flag sets without recreating the flag set. |
+   | [**Set Impression Tracking**](#set-impression-tracking) | Enable or disable impression tracking | Use when you want to control whether impression events are collected for a feature flag for observability or experimentation analysis. |
 
 1. Configure the step in the **Step Parameters** tab.
 1. Optionally, add additional configuration in the **Advanced** tab.
@@ -505,6 +514,147 @@ Use this step to apply patch operations to a feature flag definition in a specif
    - **Operations**: Enter the patch operations to apply to the flag definition.
 
 1. Optionally, define [input variables](/docs/platform/variables-and-expressions/harness-variables#input-and-output-variables) that can be referenced within this step and others in the pipeline.
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Create Segment
+
+Use this step to create a standard, large, or rule-based segment for feature flag targeting.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Create Segment** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name (such as `Create Segment`).
+   - **Segment Name**: Add a name for the segment.
+   - **Traffic Type**: Select the traffic type for the segment.
+   - **Description**: Optionally, enter a description for the segment.
+   - **Owners**: Optionally, select one or more owners for the segment.
+   - **Tags**: Optionally, select one or more tags for the segment.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Update Segment
+
+Use this step to update segment metadata without changing segment targeting behavior.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Update Segment** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name (such as `Update Segment`).
+   - **Segment Name**: Add the name of the existing segment.
+   - **Description**: Optionally, update the segment description.
+   - **Owners**: Optionally, update segment ownership.
+   - **Tags**: Optionally, select one or more tags for the segment.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Delete Segment
+
+Use this step to permanently delete a segment.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Delete Segment** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name (such as `Delete Segment`).
+   - **Segment Name**: Add the name of the segment to delete.
+
+1. **Delete all segment definitions** is selected by default. Click **Apply Changes** to add the step to the pipeline.
+
+### Add/Remove Segment Targets
+
+Use this step to incrementally add or remove target keys from a segment in a specific environment.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Add/Remove Segment Targets** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Segment Name**: Add the name of the segment.
+   - **Environment**: Specify the environment.
+   - **Add Keys**: Optionally, specify one or more targeting keys to add to the segment.
+   - **Remove Keys**: Optionally, specify one or more targeting keys to remove from the segment.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Set Rule-Based Segment Targeting
+
+Use this step to define or replace targeting rules for a rule-based segment.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Set Segment Targeting Rules** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Segment Name**: Add the name of the segment.
+   - **Environment**: Specify the environment.
+
+1. Under the **Targeting Rules** section, configure one or more targeting rules. To add a targeting rule, click **+ Add Rule**.
+   
+   - **Exclude Keys**: Optionally, specify one or more targeting keys to exclude.
+   - **Exclude Segments**: Optionally, specify one or more segments to exclude.
+   - **Comment**: Optionally, include a comment.
+   - **Title**: Optionally, enter a title for the targeting rule.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Create Flagset
+
+Use this step to create a flagset for organizing related feature flags.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Create Flagset** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name (such as `Create Flagset`).
+   - **Flagset Name**: Add a name for the flagset.
+   - **Description**: Optionally, enter a description for the flagset.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Delete Flagset
+
+Use this step to permanently delete a flagset.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Delete Flagset** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name (such as `Delete Flagset`).
+   - **Flagset Name**: Add the name of the flagset to delete.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Add/Remove Flags from Flagsets
+
+Use this step to add or remove feature flags from existing flagsets.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Add/Remove Flags from Flagsets** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Specify the feature flag.
+   - **Add Flag sets**: Specify one or more flag sets to add to the feature flag.
+   - **Remove Flag sets**: Specify one or more flag sets to be removed from the feature flag.
+
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Set Impression Tracking
+
+Use this step to enable or disable impression tracking for a feature flag.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Set Impression Tracking** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Specify the feature flag.
+   - **Impression Tracking**: Enable or disable impression tracking.
+
 1. Click **Apply Changes** to add the step to the pipeline.
 
 Once you have added FME steps to a Custom stage and designed your pipeline, click **Save** and execute the pipeline by clicking **Run**.
