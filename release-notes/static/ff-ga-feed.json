@@ -1438,5 +1438,11 @@
     "description": "Enables custom date range selection in SEI 2.0 dashboards, allowing users to analyze insights over flexible time windows beyond predefined ranges.",
     "gaStartDate": "2026-05-04",
     "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "CDS_ENABLE_INFRA_ENV_OPA_EVAL_ON_RUNTIME_CONTEXT",
+    "description": "Enable support for evaluating infrastructure and environment context on run",
+    "gaStartDate": "2026-05-04",
+    "module": "Continuous Delivery"
   }
 ]
