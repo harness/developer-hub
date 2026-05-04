@@ -165,7 +165,12 @@ Requests that fail assertions are counted as errors in test results.
 
 ### Load Test Infrastructure
 
-A Linux host with the Harness chaos agent installed with the `--load` flag. This is the same Linux Chaos Infrastructure used for chaos testing, with load testing support enabled. The agent receives execution commands, runs the Locust process locally, and streams metrics back to Harness. See [Load Test Infrastructure](./load-testing/infrastructure).
+The infrastructure where load tests execute. Two target types are supported:
+
+- **Linux VM**: A Linux host with the Harness chaos agent and load testing enabled. The agent runs the Locust process locally and streams metrics back to Harness.
+- **Kubernetes**: A Kubernetes cluster with the Harness chaos agent (v1.85.3 or later). Load testing is enabled by default. The agent orchestrates a master pod and optional worker pods for scalable, distributed load generation.
+
+See [Infrastructure Types](./chaos-testing/infrastructure/types) for setup instructions.
 
 ## Disaster Recovery Testing
 

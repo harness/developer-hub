@@ -22,6 +22,31 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## April 2026
 
+### Version 1.85.3
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.85.0
+- harness/chaos-ddcr-faults:1.85.0
+- harness/chaos-log-watcher:1.85.0
+- harness/service-discovery-collector:0.65.0
+
+#### New Features and Enhancements
+
+- Added support for output variables in timeline view
+- Updated DR Tests listing page columns and filters
+- Migrated embedding model from text-embedding-ada-002 to text-embedding-3-small
+- Probes and actions imported as reference are no longer editable and now redirect to the referenced template
+- Updated sorting filter for custom faults to "Last Modified (New to Old)"
+- Added support for hyphens inside probe conditions
+- Display the "Show Logs" button when an experiment is stuck in pending state
+- Added filters, search and sort to list DR Tests
+
+#### Fixed Issues
+
+- Fixed probes/actions templates filtering while constructing chaos experiment template for K8s v2
+
 ### Version 1.84.2
 
 #### Images required

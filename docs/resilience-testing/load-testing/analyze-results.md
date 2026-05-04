@@ -104,5 +104,5 @@ A high error rate does not automatically mark the test as Failed. The status ref
 ## Next Steps
 
 - [Get Started with Load Testing](./get-started): Create and run your first load test
-- [Concepts](./concepts): Understand virtual users, load profiles, and assertions
-- [Load Test Infrastructure](./infrastructure): Set up and manage Linux infrastructure for load tests
+- [Key Concepts](./get-started#key-concepts): Understand virtual users, load profiles, and assertions
+- [Infrastructure Types](../chaos-testing/infrastructure/types): Set up and manage infrastructure for load tests

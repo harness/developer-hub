@@ -7,6 +7,8 @@ description: Learn how to create and run your first DR test in Harness Resilienc
 
 Disaster Recovery (DR) Testing validates that your systems can recover from catastrophic failures. Each DR test is a Harness pipeline stage, giving you the full power of Pipeline Studio to orchestrate failover, validation, and notification steps in a repeatable, auditable workflow.
 
+<DocVideo src="https://youtu.be/hGOcf5t9KY0" />
+
 :::info Feature Flag
 DR Testing is currently behind a feature flag (`CHAOS_DR_TESTING_ENABLED`). Contact your Harness sales representative to get it enabled for your account.
 :::
