@@ -12,6 +12,7 @@ import artifactRegistry from './artifact-registry/config';
 // import { parseSpec as softwareSupplyChainParseSpec } from './software-supply-chain-assurance/parser';
 import releaseManagement from './release-management/config';
 // import softwareEngineeringInsights from './software-engineering-insights/config';
+import databaseDevOps from './database-devops/config';
 
 const MODULE_CONFIGS: Record<string, ApiReferenceModuleConfig> = {
   'code-repository': codeRepository,
@@ -20,6 +21,7 @@ const MODULE_CONFIGS: Record<string, ApiReferenceModuleConfig> = {
   // 'software-supply-chain-assurance': securitySupplyChain,
   'release-management': releaseManagement,
 //  'software-engineering-insights': softwareEngineeringInsights,
+  'database-devops': databaseDevOps,
 };
 
 /** Optional per-module spec parser. Receives raw parsed spec; returns normalized OpenApiSpec for the UI. */
