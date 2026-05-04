@@ -5436,6 +5436,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'release-management/releases/overview',
             'release-management/releases/modeling-releases',
+            'release-management/releases/adhoc-releases',
           ],
         },
         {
