@@ -1378,5 +1378,65 @@
     "description": "Marks CV configs as demo in template flows",
     "gaStartDate": "2026-04-29",
     "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "SEI_2_ENABLE_AI_SUMMARY",
+    "description": "Enables AI-generated summaries across insights in SEI 2.0, providing high-level, contextual explanations of metric trends and patterns.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_2_ENABLE_AI_SUMMARY_FOR_EFFICIENCY",
+    "description": "Activates AI summaries specifically for efficiency-related insights (DORA only) helping users quickly understand bottlenecks and optimization opportunities.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_2_ENABLE_AI_SUMMARY_FOR_PRODUCTIVITY",
+    "description": "Enables AI-driven summaries for productivity metrics, highlighting developer output trends and changes over time.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_2_ENABLE_AI_SUMMARY_FOR_BUSINESS_ALIGNMENT",
+    "description": "Provides AI summaries for Business Alignment insights, translating engineering metrics into business impact and R&D alignment.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_2_AGENTIC_AI_SUMMARY",
+    "description": "Enables agentic AI-generated summaries that go beyond static explanations by incorporating contextual reasoning and dynamic interpretation across multiple signals.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_ENABLE_SERVICENOW",
+    "description": "Enables ServiceNow integration in SEI, allowing ingestion and analysis of ITSM data.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_SERVICE_NOW_ADVANCE_CONFIGURATION_FIELD",
+    "description": "Unlocks advanced configuration options for ServiceNow integrations, supporting custom field mappings and extended data control.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_2_SNOW_ENABLED",
+    "description": "Enables ServiceNow as a supported ITSM provider within the SEI 2.0 experience.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_MERGE_TEAM_FILTERS",
+    "description": "Introduces optimized team filtering to improve performance when querying org-wide data across large org trees in SEI 2.0.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
+  },
+  {
+    "flagKey": "SEI_PANORAMA_CUSTOM_DATE_RANGE_PICKER",
+    "description": "Enables custom date range selection in SEI 2.0 dashboards, allowing users to analyze insights over flexible time windows beyond predefined ranges.",
+    "gaStartDate": "2026-05-04",
+    "module": "Software Engineering Insights"
   }
 ]
