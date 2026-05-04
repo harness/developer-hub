@@ -222,6 +222,19 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2026
 
+### Version 1.143.x <!--April 29, 2026-->
+
+#### Fixed issues
+
+- Improved the aggregate call to fetch user metadata, when the feature flag for account-level data flow  is enabled, ensuring more accurate and consistent data retrieval.[PL-69518]
+- Fixed an issue where deletion requests for users or user groups could incorrectly indicate they were the last admin due to permission limitations. [PL-68628]
+
+#### New features and enhancements
+
+- New users are now prompted to complete their profile immediately after signup, including details such as company name, full name, job title, phone number, and other required information. [PL-70488]
+
+
+
 ### Version 1.142.x <!--April 24, 2026-->
 
 No enhancements or fixes were released in this cycle.
