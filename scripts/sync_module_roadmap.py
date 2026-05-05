@@ -26,25 +26,32 @@ import base64
 import json
 import os
 import re
+import shlex
 import subprocess
 import sys
 import tempfile
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlparse
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[1]  # Repo root (one level above scripts/)
 
-GIT0_HOST = "https://git0.harness.io"
-TARGET_BRANCH = "main"
-DEVHUB_CLONE_DIR = "/tmp/developer-hub"
+# --- Configuration ---
+GIT0_HOST = "https://git0.harness.io"  # Harness Code git host
+TARGET_BRANCH = "main"  # PR target branch
+DEVHUB_CLONE_DIR = "/tmp/developer-hub"  # Temp clone location for creating branches
 
-_repo_ref_cache = None
+_repo_ref_cache = (
+    None  # Cached repo path (e.g. "l7B.../PROD/Harness_Commons/developer-hub")
+)
 
 
 def _detect_repo_ref():
-    """Detect repo path from git remote or REPO_REF env var (avoids hardcoding account ID)."""
+    """Detect the full repo path (account/org/project/repo) from git remote or REPO_REF env var.
+    This avoids hardcoding the account ID, making the script portable across Harness accounts.
+    """
     global _repo_ref_cache
     if _repo_ref_cache:
         return _repo_ref_cache
@@ -75,14 +82,19 @@ def _detect_repo_ref():
     sys.exit(1)
 
 
+# Emoji labels for each roadmap horizon (used in PR descriptions)
 HORIZON_EMOJIS = {
     "Now": "\U0001f6a7",
     "Next": "\U0001fa84",
     "Later": "\U0001f52e",
     "Released": "✅",
 }
+
+# Canonical ordering of horizons in generated TypeScript files
 HORIZON_ORDER = ["Now", "Next", "Later", "Released"]
 
+# Maps common shorthand/legacy module names to their actual data file prefix
+# e.g. "ait" maps to "ata" because the file is ataData.ts
 MODULE_ALIASES = {
     "ait": "ata",
     "ccm": "cloudCost",
@@ -91,10 +103,12 @@ MODULE_ALIASES = {
 
 
 def resolve_module_key(raw_key):
+    """Resolve a module alias to its canonical key (e.g. 'ait' -> 'ata')."""
     return MODULE_ALIASES.get(raw_key, raw_key)
 
 
 def validate_module(module_key, clone_dir):
+    """Check that a {module}Data.ts file exists in the clone. Lists available modules on failure."""
     filepath = os.path.join(
         clone_dir, f"src/components/Roadmap/data/{module_key}Data.ts"
     )
@@ -118,9 +132,12 @@ def validate_module(module_key, clone_dir):
 
 
 # --- Confluence ---
+# Fetches the roadmap page from Confluence using REST API.
+# Credentials come from env vars (CI) or config/atlassian.yaml (local dev).
 
 
 def load_atlassian_creds():
+    """Load Confluence email + API token from env vars or config/atlassian.yaml."""
     email = os.environ.get("CONFLUENCE_EMAIL", "")
     token = os.environ.get("CONFLUENCE_API_TOKEN", "")
     if email and token:
@@ -139,6 +156,7 @@ def load_atlassian_creds():
 
 
 def fetch_confluence_page(page_id, email, token):
+    """Fetch a Confluence page's title and storage-format HTML body via REST API."""
     url = f"https://harness.atlassian.net/wiki/rest/api/content/{page_id}?expand=body.storage,title"
     fd, netrc_path = tempfile.mkstemp(prefix="confluence_netrc_", suffix=".txt")
     with os.fdopen(fd, "w") as fh:
@@ -170,6 +188,11 @@ def fetch_confluence_page(page_id, email, token):
 
 
 def parse_roadmap_table(storage_xml):
+    """Parse the Confluence storage XML into structured horizon/feature data.
+
+    Expects a table with columns: Horizon | Title | Description | Tags | Quarter (optional).
+    Returns dict like {"Now": {"quarter": "Q2 2026", "features": [...]}, ...}
+    """
     import html as html_mod
 
     horizons = {}
@@ -220,6 +243,9 @@ def parse_roadmap_table(storage_xml):
 
 
 # --- TypeScript generation ---
+# Generates the {module}Data.ts file content.
+# If an existing file is found, only the data block (export const ... = {...};) is replaced,
+# preserving imports, comments, and any other code above/below the data.
 
 
 def detect_quoted_keys(file_content):
@@ -314,10 +340,14 @@ def generate_ts(horizons, module_key, existing_content=None):
     return "\n".join(lines)
 
 
-# --- Git ---
+# --- Git operations ---
+# Authentication uses GIT_ASKPASS: git calls a temp shell script that echoes the token.
+# This avoids embedding the token in the clone URL (which would leak it in process lists).
+# The token is passed safely using shlex.quote to handle special characters.
 
 
 def get_git0_token():
+    """Get git0 PAT from GIT0_TOKEN env var, falling back to git credential helper."""
     token = os.environ.get("GIT0_TOKEN", "")
     if token:
         return token
@@ -337,6 +367,29 @@ def get_git0_token():
     return ""
 
 
+_askpass_path = None
+
+
+def _setup_git_auth(token):
+    """Create a GIT_ASKPASS script for secure git authentication."""
+    global _askpass_path
+    fd, _askpass_path = tempfile.mkstemp(prefix="git_askpass_", suffix=".sh")
+    with os.fdopen(fd, "w") as fh:
+        fh.write(f"#!/bin/sh\necho {shlex.quote(token)}\n")
+    os.chmod(_askpass_path, 0o700)
+    os.environ["GIT_ASKPASS"] = _askpass_path
+    os.environ["GIT_TERMINAL_PROMPT"] = "0"
+
+
+def _cleanup_git_auth():
+    global _askpass_path
+    if _askpass_path and os.path.exists(_askpass_path):
+        os.unlink(_askpass_path)
+        _askpass_path = None
+    os.environ.pop("GIT_ASKPASS", None)
+    os.environ.pop("GIT_TERMINAL_PROMPT", None)
+
+
 def git_run(args, cwd=None):
     result = subprocess.run(
         ["git"] + args,
@@ -350,29 +403,9 @@ def git_run(args, cwd=None):
     return result.stdout.strip()
 
 
-_netrc_path = None
-
-
-def _setup_netrc(token):
-    """Create a temporary .netrc file for git auth (keeps token out of process args and .git/config)."""
-    global _netrc_path
-    fd, _netrc_path = tempfile.mkstemp(prefix="git_netrc_", suffix=".txt")
-    with os.fdopen(fd, "w") as fh:
-        fh.write(f"machine git0.harness.io\nlogin x-token\npassword {token}\n")
-    os.chmod(_netrc_path, 0o600)
-    os.environ["NETRC"] = _netrc_path
-
-
-def _cleanup_netrc():
-    global _netrc_path
-    if _netrc_path and os.path.exists(_netrc_path):
-        os.unlink(_netrc_path)
-        _netrc_path = None
-    os.environ.pop("NETRC", None)
-
-
 def clone_devhub(token):
-    repo_url = f"{GIT0_HOST}/{_detect_repo_ref()}.git"
+    """Shallow-clone developer-hub main branch into /tmp/developer-hub for branch creation."""
+    repo_url = f"{urlparse(GIT0_HOST).scheme}://x-token@{urlparse(GIT0_HOST).netloc}/{_detect_repo_ref()}.git"
     if os.path.exists(DEVHUB_CLONE_DIR):
         rm_result = subprocess.run(["rm", "-rf", DEVHUB_CLONE_DIR])
         if rm_result.returncode != 0:
@@ -381,7 +414,7 @@ def clone_devhub(token):
                 file=sys.stderr,
             )
             sys.exit(1)
-    _setup_netrc(token)
+    _setup_git_auth(token)
     result = subprocess.run(
         [
             "git",
@@ -398,7 +431,7 @@ def clone_devhub(token):
         text=True,
     )
     if result.returncode != 0:
-        _cleanup_netrc()
+        _cleanup_git_auth()
         print(
             f"[sync] ERROR: Failed to clone developer-hub. Check GIT0_TOKEN permissions.",
             file=sys.stderr,
@@ -408,6 +441,7 @@ def clone_devhub(token):
 
 
 def create_branch_commit_push(token, branch_name, output_file, new_content, commit_msg):
+    """Create a new branch, write the updated file, commit, and push to origin."""
     git_run(["checkout", "-b", branch_name], cwd=DEVHUB_CLONE_DIR)
 
     filepath = os.path.join(DEVHUB_CLONE_DIR, output_file)
@@ -421,6 +455,7 @@ def create_branch_commit_push(token, branch_name, output_file, new_content, comm
 
 
 def create_pr(token, title, source_branch, target_branch, description):
+    """Create a pull request on git0 via REST API. Returns the PR number on success."""
     url = f"{GIT0_HOST}/api/v1/repos/{_detect_repo_ref()}/pullreq"
     payload = json.dumps(
         {
@@ -462,10 +497,13 @@ def create_pr(token, title, source_branch, target_branch, description):
         return None
 
 
-# --- Diff ---
+# --- Diff & PR body ---
+# Compares old vs new TypeScript to identify added/removed features for the PR description.
 
 
 def diff_features(old_ts, new_ts):
+    """Compare feature titles between old and new TS content. Returns (added, removed) lists."""
+
     def extract_titles(ts):
         return set(re.findall(r'title: "([^"]+)"', ts))
 
@@ -475,6 +513,7 @@ def diff_features(old_ts, new_ts):
 
 
 def build_pr_body(horizons, added, removed, module_key, page_id, page_title):
+    """Generate a markdown PR description with a summary table and added/removed features."""
     lines = [
         "## Summary",
         "",
@@ -505,6 +544,7 @@ def build_pr_body(horizons, added, removed, module_key, page_id, page_title):
 
 
 # --- Main ---
+# Orchestrates the full flow: parse args -> fetch Confluence -> clone repo -> generate TS -> PR
 
 
 def main():
@@ -619,7 +659,7 @@ def main():
     else:
         print(f"\n[sync] Branch pushed. Check git0 for PR.")
 
-    _cleanup_netrc()
+    _cleanup_git_auth()
 
 
 if __name__ == "__main__":
