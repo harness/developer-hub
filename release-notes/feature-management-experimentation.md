@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-04-30T10:00:00
+date: 2026-05-04T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,7 +14,30 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: April 30, 2026
+#### Last updated: May 4, 2026
+
+## May 2026
+
+### [New Enhancement] Harness Policy As Code for FME Environments, Segments, and Segment Definitions
+----
+#### 2026-05-04
+
+Harness FME Policy as Code now includes support for environments, segments, and segment definitions. This allows teams to enforce consistent standards across Harness FME's configuration using the OPA-based policy framework.
+
+![FME policy support for environments, segments, and segment definitions](./static/fme/policies.png)
+
+With this enhancement, teams can now define and enforce policies for:
+
+- **FME Environments**: Enforce naming conventions for [environments](/docs/feature-management-experimentation/environments) to ensure consistent and predictable structure across projects.
+- **FME Segments**: Enforce naming conventions for [segments](/docs/feature-management-experimentation/feature-management/targeting/segments) to standardize how user groups are defined and referenced.
+- **FME Segment Definitions**: Validate [segment definitions](/docs/feature-management-experimentation/feature-management/targeting/segments), including rules and exclusions (for example, ensuring rule-based segments exclude high-priority users where required).
+
+These policies are evaluated automatically on **On Save** events, ensuring governance rules are applied at creation and update time before changes are persisted.
+
+#### Related documentation
+
+- [Using Harness Policy As Code with FME](/docs/feature-management-experimentation/policies/)
+- [Policy As Code for FME Feature Flags](/docs/platform/governance/policy-as-code/using-harness-policy-engine-for-fme)
 
 ## April 2026
 
@@ -117,7 +140,7 @@ Harness Feature Management & Experimentation (FME) now supports [Harness Policy 
 
 ![Policy evaluations dashboard](./static/fme/policy-evaluations.png)
 
-You can create and manage policies for **FeatureFlag** and **FeatureFlagDefinition** entities in the Harness Policy As Code Editor. These policies are automatically evaluated on **On Save** events whenever a feature flag is created, updated, deleted, or archived.
+You can create and manage policies for **Feature Flag** and **Feature Flag Definition** entities in the Harness Policy As Code Editor. These policies are automatically evaluated on **On Save** events whenever a feature flag is created, updated, deleted, or archived.
 
 Policies are authored in [Rego](https://www.openpolicyagent.org/docs/policy-language) and define the rules that govern actions. These policies are applied through **policy sets**, which are what actually execute the rules whenever the action is triggered (either from the Harness UI or from a pipeline). In other words, policies describe the rules, while policy sets organize and enforce them, so you must create a policy first before assigning it to a policy set.
 

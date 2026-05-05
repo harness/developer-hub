@@ -9,9 +9,19 @@ description: Learn how to create and enforce Harness Policy As Code (OPA) polici
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Policy As Code lets FME administrators define governance rules that are automatically evaluated whenever feature flags or feature flag definitions are created, updated, deleted, or archived.
+Harness Policy As Code lets FME administrators define governance rules that are automatically evaluated whenever feature flags or feature flag definitions are created, updated, deleted, or archived. Policies are authored in [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) and evaluated using [Open Policy Agent (OPA)](https://www.openpolicyagent.org/). 
 
-Policies are authored in [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) and evaluated using [Open Policy Agent (OPA)](https://www.openpolicyagent.org/). Harness Policy As Code supports the **FeatureFlag** and **FeatureFlagDefinition** entity types and evaluates policies on the **On Save** trigger.
+Harness provides out-of-the-box policies for Feature Management & Experimentation (FME). These policies cover common governance requirements across feature flags, environments, and segments.
+
+| FME Entity               | Out-of-the-box Policies                                   |
+| ------------------------ | --------------------------------------------------------- |
+| Feature Flags            | Naming Convention, Required Tags, Team Ownership Required |
+| Feature Flag Definitions | Validation Rules                                          |
+| Environments             | Naming Convention, Production Requires Approvals          |
+| Segments                 | Naming Convention                                         |
+| Segment Definitions      | Validation Rules, Exclude High Priority Users             |
+
+All policies are evaluated on **On Save** events across these entities. Policies apply across feature flag lifecycle, rollout configuration, targeting logic, and environment governance controls.
 
 ### Prerequisites
 
@@ -24,9 +34,9 @@ Policies are authored in [Rego](https://www.openpolicyagent.org/docs/latest/poli
 When a policy is evaluated, Harness sends an input payload to OPA containing the entity data and metadata. The payload structure depends on the entity type.
 
 <details>
-<summary>FeatureFlag payload</summary>
+<summary>Feature Flag</summary>
 
-```json
+```json title="Feature Flag Policy Evaluation Input Payload"
 {
   "featureFlag": {
     "name": "enable_dark_mode",
@@ -66,12 +76,36 @@ When a policy is evaluated, Harness sends an input payload to OPA containing the
 }
 ```
 
+The following policy denies creating or updating a feature flag if the description is missing or empty. It uses `changeTrigger` to skip validation on delete, so that flags with missing descriptions can still be cleaned up. For more examples, see [FME policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-policies).
+
+```rego title="Require a description for feature flags"
+package fme_feature_flags
+
+deny[msg] {
+  input.entityMetadata.changeTrigger != "delete"
+  not input.featureFlag.description
+  msg := sprintf(
+    "Feature flag '%s' must include a description before it can be saved",
+    [input.featureFlag.name]
+  )
+}
+
+deny[msg] {
+  input.entityMetadata.changeTrigger != "delete"
+  input.featureFlag.description == ""
+  msg := sprintf(
+    "Feature flag '%s' must include a non-empty description",
+    [input.featureFlag.name]
+  )
+}
+```
+
 </details>
 
 <details>
-<summary>FeatureFlagDefinition payload</summary>
+<summary>Feature Flag Definition</summary>
 
-```json
+```json title="Feature Flag Definition Policy Evaluation Input Payload"
 {
   "featureFlagDefinition": {
     "name": "enable_dark_mode",
@@ -142,43 +176,13 @@ When a policy is evaluated, Harness sends an input payload to OPA containing the
 }
 ```
 
-</details>
-
-### Example: Require a description for feature flags
-
-The following policy denies creating or updating a feature flag if the description is missing or empty. It uses `changeTrigger` to skip validation on delete, so that flags with missing descriptions can still be cleaned up. For more examples, see [FME policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-policies).
-
-```rego
-package fme_feature_flags
-
-deny[msg] {
-  input.entityMetadata.changeTrigger != "delete"
-  not input.featureFlag.description
-  msg := sprintf(
-    "Feature flag '%s' must include a description before it can be saved",
-    [input.featureFlag.name]
-  )
-}
-
-deny[msg] {
-  input.entityMetadata.changeTrigger != "delete"
-  input.featureFlag.description == ""
-  msg := sprintf(
-    "Feature flag '%s' must include a non-empty description",
-    [input.featureFlag.name]
-  )
-}
-```
-
-### Example: Require flag sets for production definitions
-
 The following policy ensures that every feature flag definition saved in a production environment belongs to at least one flag set. For additional examples, see [FME Feature Flag Definition policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-definition-policies).
 
-```rego
+```rego title="Require flag sets for production definitions"
 package fme_feature_flag_definitions
 
 deny[msg] {
-  input.featureFlagDefinition.environmentName == "Production"
+  lower(input.featureFlagDefinition.environmentName) == "production"
   count(input.featureFlagDefinition.flagSets) == 0
   msg := sprintf(
     "Feature flag '%s' in Production must belong to at least one flag set",
@@ -187,7 +191,140 @@ deny[msg] {
 }
 ```
 
-### The Policies page
+</details>
+
+<details>
+<summary>Environment</summary>
+
+```json title="FME Environment Policy Evaluation Input Payload"
+{
+  "fmeEnvironment": {
+    "name": "production"
+  },
+  "entityMetadata": {
+    "actor": {
+      "type": "user",
+      "name": "Jane Smith"
+    },
+    "account": {
+      "accountId": "abc123",
+      "organizationId": "org_456"
+    },
+    "project": {
+      "id": "mobile_shopping_app"
+    },
+    "changeTrigger": "update"
+  }
+}
+```
+
+The following policy enforces naming conventions for FME environments. 
+
+```rego title="Enforce naming conventions for FME environments"
+package fme_environments
+
+deny[msg] {
+  not regex.match("^[a-z][a-z0-9_]*$", input.fmeEnvironment.name)
+  msg := sprintf(
+    "FME Environment name '%s' must start with a lowercase letter and contain only lowercase letters, numbers, and underscores",
+    [input.fmeEnvironment.name]
+  )
+}
+```
+
+</details>
+<details>
+<summary>Segment</summary>
+
+```json title="FME Segment Policy Evaluation Input Payload"
+{
+  "fmeSegment": {
+    "name": "beta_users"
+  },
+  "entityMetadata": {
+    "actor": {
+      "type": "user",
+      "name": "Jane Smith"
+    },
+    "account": {
+      "accountId": "abc123",
+      "organizationId": "org_456"
+    },
+    "project": {
+      "id": "mobile_shopping_app"
+    },
+    "changeTrigger": "update"
+  }
+}
+```
+
+The following policy enforces naming conventions for FME segments. 
+
+```rego title="Enforce naming conventions for FME segments"
+package fme_segments
+
+deny[msg] {
+  not regex.match("^[a-z][a-z0-9_]*$", input.fmeSegment.name)
+  msg := sprintf(
+    "FME Segment name '%s' must follow naming conventions",
+    [input.fmeSegment.name]
+  )
+}
+```
+
+</details>
+<details>
+<summary>Segment Definition</summary>
+
+```json title="FME Segment Definition Policy Evaluation Input Payload"
+{
+  "fmeSegmentDefinition": {
+    "name": "beta_users",
+    "type": "rule_based",
+    "rules": [
+      {
+        "attribute": "country",
+        "operator": "equals",
+        "values": ["US"]
+      }
+    ],
+    "excludedSegments": ["high_priority_users"]
+  },
+  "entityMetadata": {
+    "actor": {
+      "type": "user",
+      "name": "Jane Smith"
+    },
+    "account": {
+      "accountId": "abc123",
+      "organizationId": "org_456"
+    },
+    "project": {
+      "id": "mobile_shopping_app"
+    },
+    "changeTrigger": "update"
+  }
+}
+```
+
+The following policy ensures that rule-based segment definitions exclude the high priority users segment. 
+
+```rego title="Require rule-based segments to exclude high priority users"
+package fme_segment_definitions
+
+deny[msg] {
+  input.fmeSegmentDefinition.type == "rule_based"
+  not "high_priority_users" in input.fmeSegmentDefinition.excludedSegments
+  msg := sprintf(
+    "Segment '%s' must exclude the high priority users segment",
+    [input.fmeSegmentDefinition.name]
+  )
+}
+```
+
+</details>
+
+### Access Harness policies
 
 When you navigate to the **Policies** page from **Project**, **Account**, or **Organization Settings**, you can manage policies, policy sets, and evaluations across the following tabs.
 
@@ -234,7 +371,7 @@ Each row represents a single policy set and includes the following information:
 | **Environment**  | Environment where the policy set applies (for FME, this is `Harness`)         |
 | **Action**       | Trigger event (for FME, this is **On Save**)     |
 | **Enforced**     | Whether enforcement is enabled                   |
-| **Entity Type**  | Type of entity (`FeatureFlag` or `FeatureFlagDefinition`)                                |
+| **Entity Type**  | Type of entity (`Feature Flag`, `Feature Flag Definition`, `Environment`, `Segment`, `Segment Definition` )                                |
 | **Created At**   | Creation timestamp                               |
 | **Last Modified** | Most recent update                               |
 
@@ -252,7 +389,7 @@ You can filter evaluations using the time range dropdown menu (for example, `Las
 | Column        | Description                                      |
 |---------------|--------------------------------------------------|
 | **Entity**        | Name of the evaluated entity                     |
-| **Entity Type**   | Type of entity (`FeatureFlag` or `FeatureFlagDefinition`)   |
+| **Entity Type**   | Type of entity (`Feature Flag`, `Feature Flag Definition`, `Environment`, `Segment`, `Segment Definition` )   |
 | **Execution**     | Internal execution identifier                    |
 | **Evaluated On**  | When the evaluation occurred                     |
 | **Action**        | Trigger event (for FME, this is **On Save**)     |
@@ -275,11 +412,13 @@ To create a policy:
    * **Inline** to author the policy in the Harness editor.
    * **Remote** to reference a Rego policy stored in a Git repository. Select a connector, repository, branch, and Rego path, then click **Apply**.
 
-1. This opens the Policy Editor view, where you can author your own policy or use an out-of-the-box sample. You can also select **Harness AIDA** to generate or assist with [writing Rego policy logic](/docs/platform/governance/policy-as-code/ai-for-policies).
+1. This opens the Policy Editor view, where you can author your own policy or use an out-of-the-box sample. 
 
    ![Policy editor view](../static/policies-6.png)
 
    The editor includes a code editor for writing or modifying Rego, a **Testing Terminal** tab to validate policy behavior, and a **Library** tab containing sample policies.
+
+   ![FME policy library tab with sample policies](../static/policies-15.png)
 
    <Tabs queryString="policy-editor">
    <TabItem value="rego" label="Write Your Rego Policy">
@@ -292,8 +431,21 @@ To create a policy:
    <TabItem value="library" label="Use the Harness Policy Library">
 
     * Open the **Library** tab.
-    * Search for the **FeatureFlag** or **FeatureFlagDefinition** entity type.
-    * Select a policy to populate the library editor.
+    * Type in `FME`.
+    * Select a policy to populate the library editor:
+
+      | FME Entity | Policy | Description |
+      |------------|--------|-------------|
+      | Feature Flag | Naming Convention | Ensures feature flag names follow organizational naming standards. |
+      | Feature Flag | Required Tags | Ensures feature flags include required tags for proper categorization and tracking. |
+      | Feature Flag | Team Ownership Required | Ensures feature flags have at least one owner and that all owners are teams, not individual users. |
+      | Feature Flag Definition | Validation Rules | Ensures feature flag definitions include at least two treatments (`ON` and `OFF`), each with descriptions, and that the default treatment is `OFF`. |
+      | Environment | Naming Convention | Ensures environment names follow organizational naming standards. |
+      | Environment | Production Requires Approvals | Ensures production environments require approvals and have at least one approver configured. |
+      | Segment | Naming Convention | Ensures segment names follow organizational naming standards. |
+      | Segment Definition | Validation | Ensures segment definitions meet required structure and validation rules across standard, rule-based, and large segments. |
+      | Segment Definition | Exclude High Priority Users | Ensures rule-based segment definitions exclude the high priority users segment. |
+
     * Click **Test** to validate the policy logic.
     * Click **Use This Sample** to copy the policy into your policy editor.
     * Click **Save**.
@@ -303,7 +455,7 @@ To create a policy:
 
 1. Test the policy by opening the **Testing Terminal** tab.
 1. Click **Select Input**.
-1. Choose the appropriate inputs, including the entity type (**FeatureFlag** or **FeatureFlagDefinition**), organization, project, and action (**On Save**). Then, select an entity from the list of results.
+1. Choose the appropriate inputs, including the entity type, organization, project, and action (**On Save**). Then, select an entity from the list of results.
 
    ![Select input for policy testing](../static/policies-7.png)
 
@@ -333,14 +485,14 @@ To add a policy set:
 1. Navigate to the **Policy Sets** tab.
 1. Click **+ New Policy Set**.
 1. In the **Overview** section, enter a name and optionally, include a description.
-1. Select the entity type that this policy set applies to: **FeatureFlag** or **FeatureFlagDefinition**.
+1. Select the entity type that this policy set applies to: **Feature Flag**, **Feature Flag Definition**, **FME Environment**, **FME Segment**, or **FME Segment Definition**.
 1. Select **On Save** as the trigger event.
 1. Click **Continue**.
 
    ![New policy set configuration](../static/policies-8.png)
 
 1. In the **Policy evaluation criteria** section, click **+ Add Policy**.
-1. Select a policy from a project, organization, or account.
+1. Select a policy applicable to the chosen entity type (feature flag, environment, or segment).
 
    ![Add policy to a policy set](../static/policies-9.png)
 
@@ -360,26 +512,53 @@ To add a policy set:
 
 ## How policies are evaluated
 
-Policies are evaluated whenever a **FeatureFlag** or **FeatureFlagDefinition** entity is created, updated, deleted, or archived. The input payload sent to OPA includes an `entityMetadata.changeTrigger` field (`create`, `update`, `delete`, or `archive`) so you can write policies that apply to specific change types.
+Policies are evaluated whenever a **Feature Flag**, **Feature Flag Definition**, **FME Environment**, **FME Segment**, or **FME Segment Definition** entity is created, updated, deleted, or archived. The input payload sent to OPA includes an `entityMetadata.changeTrigger` field (`create`, `update`, `delete`, or `archive`) so you can write policies that apply to specific change types.
 
 <Tabs queryString="evaluation-example">
-<TabItem value="feature-flag" label="FeatureFlag">
+<TabItem value="feature-flag" label="Feature Flag">
 
-A **FeatureFlag** policy is evaluated when you change a feature flag's metadata. Examples of changes that trigger evaluation:
+An **FME Feature Flag** policy is evaluated when you change a feature flag's metadata. Examples of changes that trigger evaluation:
 
 - Creating a new feature flag
 - Updating a flag's name, description, tags, or metrics
 - Archiving or deleting a feature flag
 
 </TabItem>
-<TabItem value="feature-flag-definition" label="FeatureFlagDefinition">
+<TabItem value="feature-flag-definition" label="Feature Flag Definition">
 
-A **FeatureFlagDefinition** policy is evaluated when you change a feature flag's targeting configuration in a specific environment. Examples of changes that trigger evaluation:
+An **FME Feature Flag Definition** policy is evaluated when you change a feature flag's targeting configuration in a specific environment. Examples of changes that trigger evaluation:
 
 - Adding or modifying targeting rules
 - Changing rollout percentages or traffic allocation
 - Updating the default treatment
 - Killing or restoring a flag in an environment
+
+</TabItem>
+<TabItem value="environment" label="Environment">
+
+An **FME Environment** policy is evaluated when you create or modify environments in **FME Settings**. Examples of changes that trigger evaluation:
+
+- Creating a new environment
+- Updating the environment type
+- Modifying approval requirements or approvers
+- Updating data export permission settings
+
+</TabItem>
+<TabItem value="segment" label="Segment">
+
+A **Segment** policy is evaluated when you create or update a segment. Examples of changes that trigger evaluation:
+
+- Creating a new segment
+- Updating the segment name
+- Modifying segment descriptions, tags, or owners
+
+</TabItem>
+<TabItem value="segment-definition" label="Segment Definition">
+
+A **Segment Definition** policy is evaluated when you change a segment's definition or targeting logic. Examples of changes that trigger evaluation:
+
+- Adding or removing users in a segment
+- Defining or modifying rule-based conditions
 
 </TabItem>
 </Tabs>
@@ -395,7 +574,7 @@ The `entityMetadata.changeTrigger` field in the input payload lets you target sp
 
 ## Manage policy evaluations
 
-Navigate to the **Evaluations** tab to view all successful, warning, and failed policy set evaluations. Use the **Type** dropdown menu to filter by **FeatureFlag** or **FeatureFlagDefinition** entities, and the **Action** dropdown menu to filter by **On Save** events.
+Navigate to the **Evaluations** tab to view all successful, warning, and failed policy set evaluations. Use the **Type** dropdown menu to filter by entities, and the **Action** dropdown menu to filter by **On Save** events.
 
 ![Evaluations filtered by entity type](../static/policies-5.png)
 
@@ -426,6 +605,6 @@ From here, you can review the Rego logic that was evaluated and update it if nee
 
 - [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
 - [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
-- [FME FeatureFlag policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-policies)
-- [FME FeatureFlagDefinition policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-definition-policies)
+- [FME Feature Flag policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-policies)
+- [FME Feature Flag Definition policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-definition-policies)
 - [Configure Git Experience for OPA](/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa)
