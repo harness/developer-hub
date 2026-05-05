@@ -1,7 +1,7 @@
 ---
 title: Via kubectl
 description: Learn how to set up and configure Harness Cluster Orchestrator for AWS EKS using kubectl
-sidebar_position: 1
+sidebar_position: 3
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
@@ -20,9 +20,13 @@ helpdocs_is_published: true
 
 ## Before You Begin
 
-### Prerequisites
+For complete prerequisites, required tools, environment variables, and AWS/Kubernetes permissions, see the [Installation Guide](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/enablement-methods/installation-guide).
+
+### Quick Prerequisites Checklist
 - [Harness Kubernetes connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
-- AWS CLI: 2.15.0 or higher
+- AWS CLI 2.15.0 or higher
+- kubectl with cluster-admin access
+- Environment variables set: `CLUSTER_NAME`, `REGION`, `CCM_K8S_CONNECTOR_ID`, `TOKEN`
 
 
 ## Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module

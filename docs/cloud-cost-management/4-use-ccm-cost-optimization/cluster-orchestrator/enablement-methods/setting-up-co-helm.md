@@ -1,13 +1,11 @@
 ---
 title: Via Terraform and Helm 
 description: Learn how to set up and configure Harness Cluster Orchestrator for AWS EKS using Terraform and Helm
-sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
-redirect_from: 
-    - /docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co
 ---
 
 
@@ -22,22 +20,31 @@ redirect_from:
   </p>
 </div>
 
+
 ## Before You Begin
 
-### Prerequisites
+For complete prerequisites, required tools, environment variables, and AWS/Kubernetes permissions, see the [Installation Guide](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/enablement-methods/installation-guide).
+
+### Quick Prerequisites Checklist
 - **AWS Account** with permissions to create IAM roles and policies
 - **EKS Cluster** running and accessible via kubectl
 - **Helm 3.x or later** installed on your local machine
 - **Terraform 1.2.0 or later** installed on your local machine
 - **Harness Account** with CCM module enabled
 - **Kubernetes Connector** configured in your Harness account
-- **AWS Spot Instance Service-Linked Role**: Required for provisioning spot instances. Create this role in your AWS account before enabling Cluster Orchestrator:
-  ```bash
-  aws iam create-service-linked-role --aws-service-name spot.amazonaws.com
-  ```
-  :::note
-  This is an AWS account-level role, not specific to individual EKS clusters. Without this role, new nodes will fall back to on-demand instances instead of spot instances. For more information, see [AWS Spot Instance Service-Linked Roles](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/service-linked-roles-spot-instance-requests.html).
-  :::
+- Environment variables set: `CLUSTER_NAME`, `REGION`, `CCM_K8S_CONNECTOR_ID`, `TOKEN`
+
+### AWS Spot Instance Service-Linked Role
+
+Required for provisioning spot instances. Create this role in your AWS account before enabling Cluster Orchestrator:
+
+```bash
+aws iam create-service-linked-role --aws-service-name spot.amazonaws.com
+```
+
+:::note
+This is an AWS account-level role, not specific to individual EKS clusters. Without this role, new nodes will fall back to on-demand instances instead of spot instances. For more information, see [AWS Spot Instance Service-Linked Roles](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/service-linked-roles-spot-instance-requests.html).
+:::
 
 
 
