@@ -26,6 +26,27 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## April 2026
 
+
+### Version 1.191.2
+
+
+#### New Features and Enhancements
+
+- [Linux ARM support for STO scanners](https://developer.harness.io/docs/security-testing-orchestration/whats-supported/infrastructure/): All STO supported scanners now include Linux ARM support.
+- **Redesigned STO Issues page:** The STO Issues page has been redesigned to provide a comprehensive security posture view across your project. It now includes graphs, trend analysis, and a summary to surface active and remediated issue trends across Targets within a project. This is behind the feature flag `STO_ISSUES_PAGE_V2`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+ <DocImage path={require('./static/issues-overview-v2.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- **Self-serve trial for Harness Code and Container scanners:** Account admins can now self-start a 45-day trial for the Harness Code and Container scanners directly from the product, without needing to contact sales or support. This is currently available to limited accounts and will be rolled out to all accounts soon.
+
+- Added FIPS support for the Nexus IQ and Prisma Cloud scanners.
+
+
+#### Fixed Issues
+
+- Fixed the issue where updating the status of an issue from the issue overview page was not reflecting in the issues page until a refresh (STO-11229).
+
+
 ### Version 1.190.0
 
 ### New Features and Enhancements
