@@ -498,6 +498,23 @@ For a comprehensive guide on installing Harness Self-Managed Enterprise Edition 
 
 - The ratio used to calculate CPU and memory costs from node cost has been updated from 50:50 to a 9:1 ratio (CPU:Memory). This change is controlled by the feature flag CCM_AWS_K8S_CPU_MEMORY_COST_RATIO. [CCM-32096]
 - Cloud Cost Management now supports routing traffic through an HTTP proxy, improving compatibility with network-restricted environments and we have resolved an issue where new GCP connectors incorrectly created malformed tables during the ingestion flow. New connectors will now provision the correct table structure automatically. [CCM-29558]
+- **Shared Cost Allocation:** You can now allocate shared or common costs across your cost categories. This enables accurate cost attribution where shared infrastructure or services (e.g., platform teams, shared clusters, central tooling) need to be distributed to the teams, projects, or business units consuming them. Define a sharing strategy by specifying:
+    -  Source — which cost category and bucket contains the shared cost pool
+    - Target — which cost category's buckets should receive the allocation
+    - Strategy — how the cost should be split
+    Strategy Behavior:
+    Proportional: Each recipient bucket receives a share based on its existing spend relative to the total target category spend. A bucket responsible for 30% of the target category's cost receives 30% of the shared pool.
+
+    Equal: The shared cost pool is divided evenly across all eligible buckets in the target category.
+
+    Up to 3 sharing strategies can run simultaneously, allowing multiple shared cost pools to be distributed independently.
+
+  You can choose which cost metric drives the allocation including total cost, amortized, net amortized, blended, and discounted variants. This ensures the shared pool and proportional weights are calculated on the cost perspective most relevant to your organization.
+
+  **Important Behavior**
+  - Zero-sum allocation — shared costs are moved, not duplicated. The source bucket's cost is replaced by its allocated portion, while recipient buckets gain their share. Your total spend remains unchanged.
+  - Excluded buckets — "Unattributed" and "Cost Categories Default" buckets do not receive allocations, keeping noise out of your reports.
+
 
 ### New features and enhancements
 
