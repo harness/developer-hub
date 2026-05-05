@@ -66,7 +66,9 @@ Follow the steps to configure the fields for each supported type:
 
 * **SBOM Format:** Select **SPDX** or **CycloneDX**.
 
-  If you're using **Syft** to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you'll need to set specific environment variables based on your project's programming language. Here are the relevant variables:
+### Use Syft
+
+If you're using **Syft** to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you'll need to set specific environment variables based on your project's programming language. Here are the relevant variables:
 
   <details>
     <summary>Set variables for enhanced SBOM</summary>
@@ -79,11 +81,45 @@ Follow the steps to configure the fields for each supported type:
 
       To add a new environment variable, go to **Overview** section of your Build stage, and expand the **Advanced** section.
 
-      <DocImage path={require('./static/syft-flags.png')} width="50%" height="50%" title="Click to view full size image" />
+      <DocImage path={require('./static/syft-flags.png')} width="80%" height="80%" title="Click to view full size image" />
 
       By setting these variables, Syft can more effectively fetch and populate the licensing data for the components in your SBOM. This not only enhances the quality of the SBOM but also improves its overall SBOM score. If your SBOM contains `NOASSERTIONS`, it indicates that Syft was unable to retrieve necessary data.
 
   </details>
+
+### Use cdxgen
+
+Generating SBOMs using cdxgen supports CLI flags that customize how the scan runs. These flags are passed directly to cdxgen and control how the repository is scanned, how dependencies are resolved, and how the final SBOM is generated. You can use them to tune performance, scope, and output based on your specific use case.
+
+| Why use the flags? | When to use? | How can you leverage it? |
+| ------------------- | ------------- | ------------------------ |
+| Customize SBOM generation across discovery, dependency resolution, and output phases to balance performance, scope, and accuracy. | When default scans are slow, overly broad, or require environment-specific adjustments (for example, large monorepos or restricted networks). | Add CLI flags to control what gets scanned and limit dependency resolution. Use them to adjust output or validation to improve performance and control SBOM coverage and depth. |
+
+To apply the cdxgen CLI flags within your scan configurations, complete the following steps:
+
+* Select **cdxgen** as the SBOM generation tool. The Additional CLI Flags field will appear as an optional step.
+* In the `Additional CLI Flags` field, enter the required cdxgen CLI flags to customize SBOM generation. All cdxgen CLI flags are supported in this step. For a complete list of available flags and their detailed descriptions, refer to the [official cdxgen documentation](https://cdxgen.github.io/cdxgen/#/CLI?id=getting-help).
+
+<DocImage path={require('./static/cli-flags-sbom.png')} width="100%" height="100%" />
+
+The following flags can help optimize SBOM generation for common use cases:
+
+| Flag | What it does? | When to use? | Trade-off |
+| ----- | ------------- | ------------ | ---------- |
+| `--no-install-deps` | Skips running build tools and uses manifest or lockfile data. | When you need faster scans for large repositories or frequent runs. | May miss dependencies resolved during build time. |  
+| `--exclude <pattern>` | Skips specified directories or files during scanning. | When large or irrelevant directories slow down scans. | Incorrect exclusions can omit valid components. |  
+| `--type <ecosystem>` | Limits scanning to a specific ecosystem. | When focusing on a single language or framework. | Other ecosystems are ignored. |  
+| `--no-validate` | Skips SBOM schema validation. | When faster execution is needed in non-critical runs. | Validation issues may surface later. |
+
+:::note
+
+* You can combine multiple CLI flags to optimize SBOM generation.
+* Depending on your repository and the flags used, execution time, SBOM size, and component count can change. Results may differ across setups.
+* Reducing scan scope or skipping dependency resolution can miss vulnerable dependencies, which may leave gaps in your security visibility.
+
+:::
+
+### Configure the Artifact Source
 
 - **Registry Type**: Select **Harness Artifact Registry** or **Third-Party Artifact Registry**, based on where your artifact is stored.
 - **Source**: Select the **Source** by choosing either a supported container registry from the list or Repository if you are generating the SBOM for source code.
