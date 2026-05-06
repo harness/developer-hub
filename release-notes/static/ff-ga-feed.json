@@ -1444,5 +1444,23 @@
     "description": "Enable support for evaluating infrastructure and environment context on run",
     "gaStartDate": "2026-05-04",
     "module": "Continuous Delivery"
+  },
+  {
+    "flagKey": "FME_OPA_POLICY_ENVIRONMENT",
+    "description": "Extends OPA policy support to FME environments, allowing authoring of policies that fire on environment create, update, and delete operations.",
+    "gaStartDate": "2026-05-05",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_OPA_POLICY_SEGMENT",
+    "description": "Extends OPA policy support to FME segments, allowing authoring of policies that fire on segment create, update, and delete operations.",
+    "gaStartDate": "2026-05-05",
+    "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "FME_OPA_POLICY_SEGMENT_DEFINITION",
+    "description": "Extends OPA policy support to FME segment definitions, allowing authoring of policies that fire on segment definition create, update, and delete operations, including targeting rules and target key removals.",
+    "gaStartDate": "2026-05-05",
+    "module": "Feature Management & Experimentation"
   }
 ]
