@@ -20,7 +20,7 @@ Harness Delegates can be deployed across multiple regions to ensure high availab
 
 ## Multi-region architecture overview
 
-A typical multi-region delegate architecture involves deploying delegates across geographically distributed regions such as US, EU, and Asia. The primary goal is to ensure that pipeline execution continues even when one or more regions become unavailable.
+A typical multi-region delegate architecture involves deploying delegates across geographically distributed regions such as North America, EMEA, and Asia-Pacific. The primary goal is to ensure that pipeline execution continues even when one or more regions become unavailable.
 
 ```mermaid
 graph TB
@@ -28,41 +28,41 @@ graph TB
         HM[Harness Manager]
     end
     
-    subgraph "US Region"
-        US1[Delegate Pod]
-        US2[Delegate Pod]
-        US3[Delegate Pod]
-        USTag[Tag: region:us]
+    subgraph "Region A (Primary)"
+        R1A[Delegate Pod]
+        R1B[Delegate Pod]
+        R1C[Delegate Pod]
+        R1Tag[Tag: prod-region-a]
     end
     
-    subgraph "EU Region"
-        EU1[Delegate Pod]
-        EU2[Delegate Pod]
-        EUTag[Tag: region:eu]
+    subgraph "Region B (Secondary)"
+        R2A[Delegate Pod]
+        R2B[Delegate Pod]
+        R2Tag[Tag: prod-region-b]
     end
     
-    subgraph "Asia Region"
-        AS1[Delegate Pod]
-        AS2[Delegate Pod]
-        ASTag[Tag: region:asia]
+    subgraph "Region C (Tertiary)"
+        R3A[Delegate Pod]
+        R3B[Delegate Pod]
+        R3Tag[Tag: prod-region-c]
     end
     
-    HM -->|Routes tasks| US1
-    HM -->|Routes tasks| US2
-    HM -->|Routes tasks| US3
-    HM -->|Routes tasks| EU1
-    HM -->|Routes tasks| EU2
-    HM -->|Routes tasks| AS1
-    HM -->|Routes tasks| AS2
+    HM -->|Routes tasks| R1A
+    HM -->|Routes tasks| R1B
+    HM -->|Routes tasks| R1C
+    HM -->|Routes tasks| R2A
+    HM -->|Routes tasks| R2B
+    HM -->|Routes tasks| R3A
+    HM -->|Routes tasks| R3B
     
     style HM fill:#0078D4
-    style US1 fill:#90EE90
-    style US2 fill:#90EE90
-    style US3 fill:#90EE90
-    style EU1 fill:#90EE90
-    style EU2 fill:#90EE90
-    style AS1 fill:#90EE90
-    style AS2 fill:#90EE90
+    style R1A fill:#90EE90
+    style R1B fill:#90EE90
+    style R1C fill:#90EE90
+    style R2A fill:#90EE90
+    style R2B fill:#90EE90
+    style R3A fill:#90EE90
+    style R3B fill:#90EE90
 ```
 
 Harness automatically handles delegate disconnections and routes tasks to available delegates based on their capabilities and selectors. When a delegate becomes unavailable, the platform marks it as disconnected within 5 minutes and stops routing tasks to it.
@@ -79,7 +79,7 @@ This approach uses infrastructure automation to provision delegates dynamically 
 
 **How it works:**
 
-The primary region runs delegates under normal conditions. When a DR event is detected, automation scripts provision new delegate instances in the secondary region using Harness APIs or Kubernetes scaling mechanisms. The key principle is that new delegates in the DR location are tagged with the original tag of their main location (e.g., `emz-prod-azure-cus`), ensuring pipelines continue to work without configuration changes.
+The primary region runs delegates under normal conditions. When a DR event is detected, automation scripts provision new delegate instances in the secondary region using Harness APIs or Kubernetes scaling mechanisms. The key principle is that new delegates in the DR location are tagged with the original tag of their main location (e.g., `prod-region-a`), ensuring pipelines continue to work without configuration changes.
 
 As delegates are provisioned in the DR region, the Kubernetes cluster automatically scales to accommodate the increased load, and Harness diverts new pipeline runs to the delegates in the DR location.
 
@@ -117,11 +117,11 @@ This approach uses delegate selectors and dynamic expressions to control which r
 
 **How it works:**
 
-Delegates are deployed in all regions (US, EU, Asia) with region-specific selectors (e.g., `region:us`, `region:eu`, `region:asia`). Pipeline configurations use dynamic selector expressions that reference Harness variables to determine the target region. When a DR event occurs, you update the variable value through the Harness API to switch task routing to a different region.
+Delegates are deployed in all regions with region-specific selectors (e.g., `prod-region-a`, `prod-region-b`, `prod-region-c`). Pipeline configurations use dynamic selector expressions that reference Harness variables to determine the target region. When a DR event occurs, you update the variable value through the Harness API to switch task routing to a different region.
 
 **Implementation considerations:**
 
-- Use dynamic selectors in pipeline configurations: `<+variable.account.EMZ_PROD_AZURE_CUS>`
+- Use dynamic selectors in pipeline configurations: `<+variable.account.ACTIVE_REGION>`
 - Create account-level or project-level variables that specify the active region's delegate selector
 - Update variable values through the [Harness Variables API](https://apidocs.harness.io/tag/Variables) when failover is needed
 - All regional delegates must have equivalent capabilities and access to required resources
@@ -130,17 +130,17 @@ Delegates are deployed in all regions (US, EU, Asia) with region-specific select
 
 ```yaml
 # Delegate tags in each region
-Azure Central US:     emz-prod-azure-cus
-Azure North EU:       emz-prod-azure-neu
-Azure Southeast Asia: emz-prod-azure-sea
+Region A (Primary):   prod-region-a
+Region B (Secondary): prod-region-b
+Region C (Tertiary):  prod-region-c
 
 # Pipeline delegate selector (uses variable)
 delegateSelectors:
-  - <+variable.account.EMZ_PROD_AZURE_CUS>
+  - <+variable.account.ACTIVE_REGION>
 
 # Account-level variable values
-EMZ_PROD_AZURE_CUS: emz-prod-azure-cus    # Normal operation
-EMZ_PROD_AZURE_CUS: emz-prod-azure-neu    # During DR (failover to EU)
+ACTIVE_REGION: prod-region-a    # Normal operation
+ACTIVE_REGION: prod-region-b    # During DR (failover to Region B)
 ```
 
 **Variable-based failover flow:**
@@ -150,25 +150,25 @@ sequenceDiagram
     participant Monitoring as External Monitoring
     participant API as Harness Variables API
     participant Manager as Harness Manager
-    participant US as US Delegates
-    participant EU as EU Delegates
+    participant RegionA as Region A Delegates
+    participant RegionB as Region B Delegates
     
-    Note over Monitoring: Detects US region failure
-    Monitoring->>API: Update variable<br/>EMZ_PROD_AZURE_CUS="emz-prod-azure-neu"
+    Note over Monitoring: Detects Region A failure
+    Monitoring->>API: Update variable<br/>ACTIVE_REGION="prod-region-b"
     API->>Manager: Variable updated
     
     Note over Manager: New pipeline execution starts
-    Manager->>Manager: Resolve selector<br/><+variable.account.EMZ_PROD_AZURE_CUS>
-    Manager->>Manager: Result: "emz-prod-azure-neu"
-    Manager->>EU: Route task to EU delegates
-    EU->>Manager: Task completed
+    Manager->>Manager: Resolve selector<br/><+variable.account.ACTIVE_REGION>
+    Manager->>Manager: Result: "prod-region-b"
+    Manager->>RegionB: Route task to Region B delegates
+    RegionB->>Manager: Task completed
     
     Note over Manager: Automatic failover complete
 ```
 
 **Failover process:**
 
-When a specific region fails, update the associated Harness account-level variable to point to the DR region's tag. For example, if Central US fails, update `EMZ_PROD_AZURE_CUS` from `emz-prod-azure-cus` to `emz-prod-azure-neu`.
+When a specific region fails, update the associated Harness account-level variable to point to the DR region's tag. For example, if Region A fails, update `ACTIVE_REGION` from `prod-region-a` to `prod-region-b`.
 
 **Important**: For any failed pipelines, use the **Re-Run** action (not the **Retry** action) to ensure the updated variable value is used rather than the cached value from the failed execution.
 
@@ -218,17 +218,17 @@ In both cases, ensure that:
 
 For organizations with three or more regions, implement a priority-based failover strategy. For example:
 
-1. **Primary region (US)**: All tasks route here under normal conditions
-2. **Secondary region (EU)**: Tasks route here if US region is unavailable
-3. **Tertiary region (Asia)**: Tasks route here if both US and EU regions are unavailable
+1. **Primary region (Region A)**: All tasks route here under normal conditions
+2. **Secondary region (Region B)**: Tasks route here if Region A is unavailable
+3. **Tertiary region (Region C)**: Tasks route here if both Region A and B are unavailable
 
 ```mermaid
 graph LR
-    A[Pipeline Execution] --> B{US Available?}
-    B -->|Yes| C[Route to US Delegates]
-    B -->|No| D{EU Available?}
-    D -->|Yes| E[Route to EU Delegates]
-    D -->|No| F[Route to Asia Delegates]
+    A[Pipeline Execution] --> B{Region A Available?}
+    B -->|Yes| C[Route to Region A Delegates]
+    B -->|No| D{Region B Available?}
+    D -->|Yes| E[Route to Region B Delegates]
+    D -->|No| F[Route to Region C Delegates]
     
     C --> G[Execute Task]
     E --> G
@@ -245,7 +245,7 @@ This can be implemented using conditional expressions in delegate selectors:
 
 ```yaml
 delegateSelectors:
-  - <+<+variable.us_available> == "true" ? "region:us" : <+variable.eu_available> == "true" ? "region:eu" : "region:asia">
+  - <+<+variable.region_a_available> == "true" ? "prod-region-a" : <+variable.region_b_available> == "true" ? "prod-region-b" : "prod-region-c">
 ```
 
 Or by using automation scripts that update the active region variable based on availability checks.
@@ -357,8 +357,8 @@ A resilient multi-region delegate architecture requires careful planning of fail
 
 Key implementation steps:
 
-1. Deploy delegates in multiple regions with region-specific selectors (e.g., `emz-prod-azure-cus`, `emz-prod-azure-neu`)
-2. Configure dynamic selectors using Harness account-level variables (e.g., `<+variable.account.EMZ_PROD_AZURE_CUS>`)
+1. Deploy delegates in multiple regions with region-specific selectors (e.g., `prod-region-a`, `prod-region-b`)
+2. Configure dynamic selectors using Harness account-level variables (e.g., `<+variable.account.ACTIVE_REGION>`)
 3. Set up monitoring and alerting for delegate health and capacity
 4. Test DR procedures regularly, including variable updates and pipeline re-runs
 5. Document failover procedures, variable mappings, and API endpoints for automation
