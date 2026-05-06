@@ -523,6 +523,7 @@ pipeline:
                   identifier: Approve_Git_Changes
                   spec:
                     deleteSourceBranch: true
+                    mergeStrategy: merge
                     variables: []
                   timeout: 10m
               - parallel:
@@ -665,6 +666,7 @@ pipeline:
                   identifier: Merge_PR
                   spec:
                     deleteSourceBranch: false
+                    mergeStrategy: merge
                     variables: []
                   timeout: 10m
               - parallel:
@@ -789,6 +791,7 @@ pipeline:
                   identifier: Merge_PR
                   spec:
                     deleteSourceBranch: false
+                    mergeStrategy: merge
                     variables: []
                   timeout: 10m
               - parallel:

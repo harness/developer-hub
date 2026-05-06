@@ -112,6 +112,31 @@ To prevent a specific service or environment override from being written to your
 
 Merges the pull request created by the Update Release Repo step.
 
+**Step parameters:**
+
+- **Merge Strategy Type:** Controls how the PR branch is incorporated into the target branch. Select one of:
+  - **Merge** (default): Creates a merge commit that preserves the full commit history from the PR branch.
+  - **Squash**: Combines all commits from the PR branch into a single commit on the target branch. Use squash when you want a cleaner, linear Git history in your release repo.
+- **Delete Source Branch:** When enabled, deletes the PR source branch after the merge completes.
+
+![Merge PR step configuration showing Merge Strategy Type dropdown](./static/merge-pr-strategy-type.png)
+
+**YAML example:**
+
+```yaml
+- step:
+    type: MergePR
+    name: MergePR_1
+    identifier: MergePR_1
+    spec:
+      deleteSourceBranch: false
+      mergeStrategy: squash
+      variables: []
+    timeout: 10m
+```
+
+Set `mergeStrategy` to `merge` or `squash`. If omitted, the step defaults to `merge`.
+
 :::info Limitation
 - You can add a maximum of two Merge PR steps in a single stage.
 - Git connectors authenticated through OAuth are not currently supported in this step.

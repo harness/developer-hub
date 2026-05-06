@@ -185,6 +185,10 @@ execution:
     - step:
         type: MergePR
         name: Merge Changes
+        spec:
+          mergeStrategy: squash
+        identifier: MergePR_1
+        timeout: 10m
     - step:
         type: FetchLinkedApps
         name: Get Applications
