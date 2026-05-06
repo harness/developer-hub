@@ -10,8 +10,6 @@ This guide explains how to deploy and manage Azure Container Apps using Harness.
 This feature is behind the feature flag `CDS_AZURE_CONTAINER_APPS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
-## Overview
-
 Harness supports deploying and managing **Azure Container Apps** with automated scaling, health monitoring, and zero-downtime deployments. [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/overview) is a fully managed serverless container platform that enables you to run microservices and containerized applications without managing complex infrastructure. The platform provides automatic scaling based on HTTP traffic or events, built-in service discovery, and integrated observability capabilities.
 
 Azure Container Apps is ideal for microservices, API endpoints, background processing applications, event-driven workloads, and any containerized application that requires automatic scaling and simplified operations. With Harness, you can leverage deployment strategies including Basic deployments for immediate cutover and Canary deployments for progressive traffic shifting to ensure safe, controlled rollouts with instant rollback capabilities. The platform handles all the complexity of managing container app revisions, environment configuration, and traffic distribution.

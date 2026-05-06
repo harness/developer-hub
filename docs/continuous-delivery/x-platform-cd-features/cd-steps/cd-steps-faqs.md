@@ -267,10 +267,6 @@ cat /tmp/id_rsa_base64 | base64 -di
 
 ```
 
-### How to reference a connector in shell script or Powershell script?
-
-Currently, you can't leverage a connector within a script step. However, you can manually integrate to an API referring to the same credentials as the connector.
-
 ### I need something that value I can change in the middle of pipeline (automatically using bash script for example).
 So define variable with default value and then in the middle of the pipeline change it's value
 
