@@ -1,3 +1,7 @@
+:::caution Deprecated
+This page is part of IDP 1.0 and is no longer maintained.
+:::
+
 import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 
 <RedirectIfStandalone label="IDP 1.0" targetPage="/docs/internal-developer-portal/catalog/manage-catalog/manage-catalog"/>

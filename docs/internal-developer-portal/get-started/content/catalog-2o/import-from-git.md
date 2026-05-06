@@ -25,8 +25,6 @@ Before you begin, ensure:
 
 ### Import an Entity from Git
 
-To use the Import from Git feature in IDP 2.0, **Backstage YAML is not supported directly**. Since IDP 2.0 uses a new data model, existing YAMLs from IDP 1.0 (Backstage-native) must be converted. To learn more about converting IDP 1.0 YAMLs to IDP 2.0 YAMLs, go to [Converting IDP 1.0 YAMLs](/docs/internal-developer-portal/catalog/catalog-yaml.md#converting-existing-entity-yamls-idp-20).
-
 To learn more about entity scope rules, connector constraints, and advanced import options, go to [Import Entity in Harness IDP](/docs/internal-developer-portal/catalog/create-entity/import-from-git).
 
 <Tabs>

@@ -19,18 +19,6 @@ redirects:
   - /internal-developer-portal/catalog/add-user-groups-in-catalog
 ---
 
-import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+import UserGroup2 from './../content/user-group/user-group-idp-2.md';
 
-<DynamicMarkdownSelector
-  options={{
-    "IDP 2.0": {
-      path: "/internal-developer-portal/catalog/content/user-group/user-group-idp-2.md"
-    },
-    "IDP 1.0": {
-      path: "/internal-developer-portal/catalog/content/user-group/user-group-idp-1.md"
-    }
-  }}
-  toc={toc}
-  defaultSelection="IDP 2.0"
-  disableSort={true}
-/>
+<UserGroup2 />

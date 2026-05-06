@@ -7,20 +7,6 @@ redirect_from:
   - /docs/internal-developer-portal/catalog/how-to-create-idp-yaml.md
 ---
 
-import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+import CatalogYaml2 from './content/catalog-yaml/catalog-yaml-2o.md';
 
-<DynamicMarkdownSelector
-  options={{
-    "IDP 2.0": {
-      path: "/internal-developer-portal/catalog/content/catalog-yaml/catalog-yaml-2o.md",
-      label: "IDP 2.0 (New)"
-    },
-    "IDP 1.0": {
-      path: "/internal-developer-portal/catalog/content/catalog-yaml/catalog-yaml-1o.md",
-      label: "IDP 1.0"
-    }
-  }}
-  toc={toc}
-  defaultSelection="IDP 2.0"
-  disableSort={true}
-/>
+<CatalogYaml2 />

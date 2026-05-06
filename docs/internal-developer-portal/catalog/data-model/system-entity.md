@@ -24,10 +24,6 @@ tags:
 
 # System Entity
 
-:::info IDP 2.0 Feature
-System Entities are specific to **IDP 2.0** only. This support is not available in IDP 1.0. 
-:::
-
 A **System** in Harness Internal Developer Portal (IDP) is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit—and enables teams to organize and manage complex software ecosystems more effectively.
 
 While Projects and Organizations help separate teams structurally, they often fall short in large environments where multiple teams share the same project. Systems provide an additional layer of organization by allowing you to group related entities based on ownership or functionality. You can define a System at the Project, Organization, or Account level, and assign catalog entities to one or more Systems for better clarity and governance.

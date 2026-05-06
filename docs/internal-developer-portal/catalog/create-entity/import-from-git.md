@@ -9,10 +9,6 @@ import DocVideo from '@site/src/components/DocVideo';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info IDP 2.0 Only
-This documentation is only relevant to **IDP 2.0**. This will not be valid for **IDP 1.0** since the experience there is different.
-:::
-
 In Harness IDP, users can also create new entities and Workflows by importing their YAML definitions stored in Git repositories directly into Harness IDP.
 This feature allows teams to reuse pre-defined configurations, onboard services faster, and migrate from automation workflows or existing repositories.
 
@@ -26,10 +22,6 @@ This feature allows teams to reuse pre-defined configurations, onboard services 
 ---
 
 ## Import an Entity YAML
-
-:::note Convert Existing YAMLs
-If you have existing entities defined using legacy Backstage YAML (from IDP 1.0), you can convert them to the new Harness-native data model schema. For detailed instructions on converting your existing entity YAMLs, refer to [Convert Existing Entity YAMLs](/docs/internal-developer-portal/catalog/catalog-yaml#convert-existing-entity-yamls).
-:::
 
 You can create a new entity or workflow in Harness IDP directly from your Git YAML by using this **Import** flow. Please refer to the following steps to import any entity from Git.
 <Tabs>
@@ -56,10 +48,6 @@ You can create a new entity or workflow in Harness IDP directly from your Git YA
 
 </TabItem>
 </Tabs>
-
-#### Harness native YAML vs Backstage YAML
-
-To use this feature, Backstage YAML is not supported directly. Since IDP 2.0 uses a new data model, existing YAMLs from IDP 1.0 (Backstage-native) must be converted using Harness CLI, UI editors, or migration scripts. To understand more about converting IDP 1.0 YAMLs to IDP 2.0 YAMLs, please refer to [Converting IDP 1.0 YAMLs](/docs/internal-developer-portal/catalog/catalog-yaml.md#converting-existing-entity-yamls-idp-20)
 
 ---
 

@@ -2,6 +2,7 @@
 title: Register Multiple Components Together
 redirect_from: 
 - /kb/internal-developer-portal/articles/register-multiple-components
+unlisted: true
 ---
 
 :::info

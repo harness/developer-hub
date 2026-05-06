@@ -10,10 +10,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DocVideo from '@site/src/components/DocVideo';
 
-:::info IDP 2.0 Only
-This documentation is only relevant to **IDP 2.0**. This will not be valid for **IDP 1.0** since the experience there is different.
-:::
-
 In IDP 2.0, entity creation is simplified with full UI support and optional YAML-based creation. Entities are now **"inline,"** which means their entire lifecycle can be managed through the UI or API, without Git integration.
 
 You can create entities directly via the **Harness IDP UI**; no YAML required for a streamlined, code-free experience. Alternatively, you can use your existing catalog YAML files, and Harness will **automatically convert legacy Backstage YAML** into the new Harness Catalog Entity Model.
@@ -120,15 +116,9 @@ While you can view and edit entity YAML across multiple Git branches, the entity
 ---
 
 ## Method 2: YAML View
-You can also use the [Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml) to create entities in Harness IDP. With IDP 2.0, you are required to follow the new Harness-native Data Model and structure when defining entities in Catalog YAML. If you have existing entities defined using **legacy Backstage YAML**, you can still use them—Harness will automatically convert them into the Harness-native Data Model format. Learn more about the new data model here. To create a new entity, navigate to the Harness IDP portal and click **"Create"** from the side-bar menu.
 
-  :::info
-  If you have a **legacy Backstage YAML**, you can still use it to create an entity. Harness will automatically convert it into the native **Catalog Entity Model** format.
-  :::
+You can also use the [Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml) to create entities in Harness IDP. With IDP 2.0, you are required to follow the new Harness-native Data Model and structure when defining entities in Catalog YAML. Learn more about the new data model here. To create a new entity, navigate to the Harness IDP portal and click **"Create"** from the side-bar menu.
 
-:::note Convert Existing YAMLs
-If you have existing entities defined using legacy Backstage YAML (from IDP 1.0), you can convert them to the new Harness-native data model schema. For detailed instructions on converting your existing entity YAMLs, refer to [Convert Existing Entity YAMLs](/docs/internal-developer-portal/catalog/catalog-yaml#convert-existing-entity-yamls).
-:::
 
 <Tabs>
 <TabItem value="Interactive Guide">

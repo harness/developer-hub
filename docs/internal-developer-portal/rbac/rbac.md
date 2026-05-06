@@ -8,11 +8,6 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info For IDP 1.0 Customers
-This RBAC guide is applicable **only to IDP 2.0 customers**, as the RBAC and project/org hierarchy is available exclusively in IDP 2.0.
-* To learn how to upgrade, refer to the [IDP 2.0 Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md).
-* If you're using **IDP 1.0** and want to implement access control, please refer to the [Access Control Guide for IDP 1.0](#permissions--resource-scopes).
-:::
 
 ## RBAC in IDP 2.0
 
@@ -22,9 +17,6 @@ Harness IDP leverages the **platform hierarchy** and applies the same access con
 
 ## Prerequisites
 
-:::tip For IDP 2.0 Customers
-If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.
-:::
 
 Before configuring RBAC in Harness IDP:
 

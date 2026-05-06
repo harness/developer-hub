@@ -1,6 +1,4 @@
-:::tip For IDP 2.0 Customers
-If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.
-:::
+
 
 **IDP 2.0** introduces granular RBAC across different IDP resources like Catalog, Workflows, etc., which means you can now control who can view or edit your IDP resources. **Role-based access control (RBAC)** lets you define who can access your resources and what actions they can perform on them. With this, Harness IDP introduces **scope-aware permissions** aligned with Harness Projects, Organizations, and Account.
 

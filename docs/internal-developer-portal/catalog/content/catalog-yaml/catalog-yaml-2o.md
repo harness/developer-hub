@@ -2,11 +2,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="IDP 2.0" targetPage="/docs/internal-developer-portal/catalog/catalog-yaml"/>
 
-:::tip For IDP 2.0 Customers
-If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.
-:::
-
-Harness IDP 2.0 marks a significant evolution of the Internal Developer Portal, introducing a Harness-native data model tailored for enterprise-scale environments and strong access control. As we transition to this new model, **legacy Backstage YAML** will no longer be supported. Going forward, only the **Harness-native data model** schema will be used and referenced. This guide walks you through the new **Harness-native YAML schema** and outlines the key changes from the previous schema.
+Harness IDP 2.0 marks a significant evolution of the Internal Developer Portal, introducing a Harness-native data model tailored for enterprise-scale environments and strong access control. Going forward, only the **Harness-native data model** schema will be used and referenced. This guide walks you through the new **Harness-native YAML schema** and outlines the key changes from the previous schema.
 
 ---
 
@@ -178,23 +174,6 @@ These fields define the entity's scope. For project-scoped entities, both fields
 
 - `metadata` continues to be flexible. You can define your own properties within metadata.
 - `annotations`, `description`, `tags`, `links`, `labels` etc. continue to be part of metadata.
-
----
-
-## Convert Existing Entity YAMLs
-
-If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can easily convert them to the new Harness-native data model schema. There are two ways to perform this conversion:
-
-1. **Harness IDP UI:**
-   Navigate to the **[Harness IDP UI](/docs/internal-developer-portal/catalog/manage-catalog#harness-idp-ui)** and open the **YAML view** while creating an entity. Paste your legacy Backstage Catalog YAML, and the system will automatically generate the corresponding Harness-native Catalog YAML.
-   Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog#catalog-yaml)**.
-
-2. **YAML Conversion API:**
-   To streamline migration, we've also introduced an API that converts Backstage Catalog YAML to the Harness-native format. [Read more in the IDP 2.0 migration guide.](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
-
-All existing Catalog entities will be **automatically migrated** to IDP 2.0, and their associated YAML files will be deprecated. Additionally, a new Git Experience tool will soon be available, allowing you to **commit the converted definitions directly to YAML files in your Git repository**.
-
-![YAML Conversion Preview](../../static/yaml-conversion.png)
 
 ---
 

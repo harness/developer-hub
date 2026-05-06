@@ -2,10 +2,6 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="IDP 2.0" targetPage="/docs/internal-developer-portal/flows/manage-workflow-2o" />
 
-:::tip For IDP 2.0 Customers
-If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.
-:::
-
 Workflows enable **developer self-service** by automating manual tasks and processes. Using Workflows, platform engineering teams can:
 
 - Automate new **service onboarding**.
@@ -87,13 +83,13 @@ Let's try creating a **Workflow** using both the methods:
 2. If you're using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the Workflow. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
 ![](../../static/workflow-yaml-conversion.png)
 
-4. You can configure your Workflow by editing the YAML directly—add inputs, backend actions, and outputs as needed. This allows you to fully customize the Workflow behavior. Learn more about the [components of a Workflow](/docs/internal-developer-portal/flows/workflowyaml#components-of-workflow-yaml) and its [YAML structure](/docs/internal-developer-portal/flows/workflowyaml#workflow-yaml-definition) here.  
+3. You can configure your Workflow by editing the YAML directly—add inputs, backend actions, and outputs as needed. This allows you to fully customize the Workflow behavior. Learn more about the [components of a Workflow](/docs/internal-developer-portal/flows/workflowyaml#components-of-workflow-yaml) and its [YAML structure](/docs/internal-developer-portal/flows/workflowyaml#workflow-yaml-definition) here.  
 ![](../../static/workflow-yaml.png)
 
-3. Define the **scope** of the Workflow in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
+4. Define the **scope** of the Workflow in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
 ![](../../static/workflow-scope.png)
 
-4. You now have two options for managing your Workflow configuration:
+5. You now have two options for managing your Workflow configuration:
     * **Inline (default):** Manage the Workflow YAML directly within Harness.
     * **Remote:** Choose to store your Workflow YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.

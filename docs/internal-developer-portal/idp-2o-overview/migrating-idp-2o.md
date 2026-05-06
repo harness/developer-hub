@@ -3,6 +3,7 @@ title: IDP 2.0 Upgrade Handbook
 description: Detailed step-by-step IDP 2.0 upgrade handbook.
 sidebar_position: 3
 sidebar_label: IDP 2.0 Upgrade Handbook
+unlisted: true
 ---
 
 If you’re using Harness IDP 1.0, this guide will walk you through everything you need to know before upgrading to IDP 2.0—what’s new, what to watch out for, and how to make the switch smoothly without disrupting your current setup.

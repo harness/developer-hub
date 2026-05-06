@@ -1,3 +1,6 @@
+:::caution Deprecated
+This page is part of IDP 1.0 and is no longer maintained.
+:::
 
 import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 

@@ -12,9 +12,6 @@ Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Please
 ## Harness IDP SMP Edition
 [Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-overview) is an on-premises solution that allows you to install and run Harness on your own infrastructure. It gives you full control over data, security, and compliance while leveraging Harness’s software delivery capabilities. **Harness IDP** is available for the **Self-Managed Enterprise Edition**. This means you can use Harness IDP with the SMP version on your own infrastructure.
 
-:::info Only for IDP 2.0
-Harness IDP on SMP is available only for **IDP 2.0**. **IDP 1.0** is **not supported** on SMP.
-:::
 
 ### Architecture 
 

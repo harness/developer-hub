@@ -4,6 +4,7 @@ description: Comprehensive overview guide to Harness IDP 2.0.
 sidebar_position: 1
 sidebar_label: IDP 2.0 Overview
 redirect_from: docs/internal-developer-portal/2-0-overview-and-upgrade-path
+unlisted: true
 ---
 
 import Tabs from '@theme/Tabs';
@@ -158,7 +159,7 @@ Identifiers must use only letters, numbers, and underscores. Hyphens and special
 IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
 
 :::info Note
-With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
+With the IDP Git experience feature, one entity can have only one YAML file. Storing multiple entities within a single YAML is not supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
 :::
 
 

@@ -57,9 +57,6 @@ Ensure your API spec host or path is included in this list for successful import
 
 ### OpenAPI Specifications
 
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
-
 ```YAML
 apiVersion: harness.io/v1
 kind: API
@@ -74,26 +71,6 @@ spec:
 metadata:
   description: The official CE NEXTGEN service REST APIs
 ```
-
-</TabItem>
-<TabItem value="IDP 1.0>" label="IDP 1.0">
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: ce-nextgen
-  description: The official CE NEXTGEN service REST APIs
-spec:
-  type: openapi
-  lifecycle: production
-  owner: johndoe
-  definition:
-    $text: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/api-with-examples.json
-```
-
-</TabItem>
-</Tabs>
 
 :::info
 In the above example we import all the API specs in `json` format as a `$text` embedding, and it's a suggested hack to import multiple APIs in openapi format. 
@@ -127,9 +104,6 @@ The above-mentioned `catalog-info.yaml` when registered in the catalog would dis
 
 ### Import API spec for a single API defined in openapi spec in swagger
 
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
-
 ```YAML
 apiVersion: harness.io/v1
 kind: API
@@ -154,43 +128,12 @@ metadata:
     - store
     - rest
 ```
-</TabItem>
-<TabItem value="IDP 1.0>" label="IDP 1.0">
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: petstore
-  description: The petstore API
-  tags:
-    - store
-    - rest
-  links:
-    - url: https://github.com/swagger-api/swagger-petstore
-      title: GitHub Repo
-      icon: github
-    - url: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
-      title: API Spec
-      icon: code
-spec:
-  type: openapi
-  lifecycle: dev
-  owner: Harness_Partners
-  definition:
-    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
-```
-</TabItem>
-</Tabs>
 
 The above-mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
 
 ![](../integrate-tools/techdocs/static/swagger-api.png)
 
 ### Define API spec for a single API openapi format and import the same
-
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 
 ```YAML
 apiVersion: harness.io/v1
@@ -219,47 +162,12 @@ metadata:
   description: Retrieve artist details
 
 ```
-</TabItem>
-<TabItem value="IDP 1.0>" label="IDP 1.0">
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: artist-api
-  description: Retrieve artist details
-spec:
-  type: openapi
-  lifecycle: production
-  owner: artist-relations-team
-  system: artist-engagement-portal
-  definition: |
-    openapi: "3.0.0"
-    info:
-      version: 1.0.0
-      title: Artist API
-      license:
-        name: MIT
-    servers:
-      - url: http://artist.spotify.net/v1
-    paths:
-      /artists:
-        get:
-          summary: List all artists
-    ...
-```
-
-</TabItem>
-</Tabs>
 
 The above-mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
 
 ![](../integrate-tools/techdocs/static/spotify-api.png)
 
 ## Creating an API entity 
-
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 
 There are two ways to add and create a new API entity in your catalog:
 
@@ -268,28 +176,8 @@ There are two ways to add and create a new API entity in your catalog:
 
 ![](../integrate-tools/techdocs/static/create-entity-1.png)
 
-</TabItem>
-<TabItem value="IDP 1.0" label="IDP 1.0">
-
-#### Steps to add an API entity
-1. Save the YAML, created following the steps above, in your git repository. 
-2. Follow the steps mentioned to [register a software component](https://developer.harness.io/docs/internal-developer-portal/get-started/register-a-new-software-component#register-the-software-component), to add your API docs to IDP.  
-
-#### Descriptor File Structure
-1. `File Naming`: 
-Typically named `catalog-info.yaml` or `idp.yaml`.
-2. `Format`: 
-YAML
-3. `Sections`: 
-Envelope, Metadata, API Specification, Relations, Status.
-
-</TabItem>
-</Tabs>
-
 ## Defining an API Entity
 
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 You can refer to the entity definition format [here](/docs/internal-developer-portal/catalog/catalog-yaml.md#common-to-all-kinds-the-envelope-idp-20). Here's the common envelope: 
 
 1. `apiVersion`: With IDP 2.0, we've introduced a Harness-native entity schema. As part of this change, all entities now use an apiVersion prefixed with `harness.io/`.
@@ -303,29 +191,8 @@ You can refer to the entity definition format [here](/docs/internal-developer-po
 9. `metadata`: A container for auxiliary data that is not part of the entity’s specification. Additional metadata helps enhance platform-level processing or categorization
 10. `spec`: Defines the actual specification data that describes the entity. This is the core configuration and varies depending on the kind.
 
-</TabItem>
-<TabItem value="IDP 1.0" label="IDP 1.0">
-
-1. `apiVersion`: 
-Specify the API version, e.g., `backstage.io/v1alpha1`.
-2. `kind`: 
-This should be API.
-3. `metadata`: 
-Includes name, description, labels, and annotations.
-4. `name`: 
-Unique identifier for the API.
-5. `description`: 
-Brief overview of the API.
-6. `labels/annotations`: 
-Key-value pairs for additional metadata.
-
-</TabItem>
-</Tabs>
 
 ## API Specification
-
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 
 ### Kind: API  
 An **API** describes an interface that can be exposed by a component. APIs can be defined using formats such as OpenAPI, AsyncAPI, GraphQL, gRPC, or others.
@@ -375,38 +242,11 @@ metadata:
     - rest
 ```
 
-</TabItem>
-<TabItem value="IDP 1.0" label="IDP 1.0">
-1. `spec`: 
-Contains the actual API specification details.
-2. `type`: 
-The type of API (e.g., openapi, grpc), the current set of well-known and supported values for this field is:
-
-**openapi** - An API definition in YAML or JSON format based on the [OpenAPI](https://swagger.io/specification/) version 2 or version 3 spec.
-
-**asyncapi** - An API definition based on the [AsyncAPI specification](https://www.asyncapi.com/docs/reference/specification/latest).
-
-**graphql** - An API definition based on [GraphQL schemas](https://spec.graphql.org/) for consuming [GraphQL](https://spec.graphql.org/) based APIs.
-
-**grpc** - An API definition based on [Protocol Buffers](https://spec.graphql.org/) to use with [gRPC](https://grpc.io/).
-
-3. `lifecycle`: 
-Stage of the API lifecycle (e.g., production, experimental).
-4. `owner`: 
-Team or individual responsible for the API.
-5. `definition`: 
-Location of the API definition file (e.g., a URL to a Swagger file).
-
-</TabItem>
-</Tabs>
-
 ## Substitutions in Descriptor
 1. Supports `$text`, `$json`, `$yaml` for embedding external content.
 2. Useful for loading API definitions from external sources.
 
 ### Example
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 
 ```YAML
 apiVersion: harness.io/v1
@@ -433,36 +273,6 @@ metadata:
     - rest
 ```
 
-</TabItem>
-<TabItem value="IDP 1.0>" label="IDP 1.0">
-
-```yaml
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: petstore
-  description: The petstore API
-  tags:
-    - store
-    - rest
-  links:
-    - url: https://github.com/swagger-api/swagger-petstore
-      title: GitHub Repo
-      icon: github
-    - url: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
-      title: API Spec
-      icon: code
-spec:
-  type: openapi
-  lifecycle: dev
-  owner: Harness_Partners
-  definition:
-    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
-
-```
-</TabItem>
-</Tabs>
-
 ## gRPC Docs
 
 You can render gRPC documentation by using the [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs)to enable Swagger UI for gRPC APIs. 
@@ -478,9 +288,6 @@ You can render gRPC documentation when the `type` is set to `grpc-doc` or `grpc`
 
 #### Type: `grpc`
 
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
-
 ```YAML
 ##Example
 apiVersion: harness.io/v1
@@ -495,24 +302,6 @@ spec:
     $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
 
 ```
-</TabItem>
-<TabItem value="IDP 1.0>" label="IDP 1.0">
-
-```YAML
-##Example
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: grpc-docs-test-1
-spec:
-  type: grpc
-  lifecycle: production
-  owner: group:engineering
-  definition:
-    $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
-```
-</TabItem>
-</Tabs>
 
 #### Rendered Output for JSON Format
 
@@ -522,8 +311,7 @@ spec:
 #### Type: `grpc-docs`
 
 [Example catalog-info.yaml](https://github.com/harness-community/idp-samples/blob/main/demo-prorto-api.yaml)
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
+
 
 ```YAML
 apiVersion: harness.io/v1
@@ -538,32 +326,11 @@ spec:
     $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
 ```
 
-</TabItem>
-<TabItem value="IDP 1.0>" label="IDP 1.0">
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: grpc-docs-test
-spec:
-  type: grpc-docs
-  lifecycle: production
-  owner: group:engineering
-  definition:
-    $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
-```
-
-</TabItem>
-</Tabs>
-
 #### Rendered Output for JSON Format
 
 ![](../integrate-tools/techdocs/static/grpc.gif)
 
 ### proto file Format
-<Tabs queryString="version">
-<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 
 ```YAML
 ## Example
@@ -588,36 +355,6 @@ spec:
 metadata:
   description: helloworld unary gRPC
 ```
-
-</TabItem>
-<TabItem value="IDP 1.0>" label="IDP 1.0">
-
-```YAML
-## Example
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: helloworld-unary-api
-  description: helloworld unary gRPC
-  
-spec:
-  type: grpc
-  lifecycle: production
-  owner: zalopay-oss
-  definition:
-    $text: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/unary/helloworld.proto
-  files:
-    - file_name: helloworld.proto
-      file_path: examples/unary/helloworld.proto
-      url: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/unary/helloworld.proto
-      
-  targets:
-    dev:
-      host: 0.0.0.0
-      port: 8084
-```
-</TabItem>
-</Tabs>
 
 #### Rendered Output for proto file
 

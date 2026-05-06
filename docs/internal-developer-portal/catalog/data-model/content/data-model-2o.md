@@ -3,10 +3,6 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="IDP 2.0" targetPage="/docs/internal-developer-portal/catalog/data-model/data-model" />
 
-:::tip For IDP 2.0 Customers
-If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.
-:::
-
 With IDP 2.0, we are moving towards a **Harness-native Data Model** designed for enterprise scale and access control. This data model in Harness IDP helps us manage dependencies by organizing different entities such as software components, services, and tools within our technical landscape. It illustrates how everything connects and functions together within the system.
 
 This data model focuses on the key aspects in the following manner:

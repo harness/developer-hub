@@ -25,10 +25,6 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info For IDP 1.0 Customers
-This Git Experience document is applicable **only to IDP 2.0 customers**, as the Harness IDP Git Experience is available exclusively in IDP 2.0. To learn how to upgrade, refer to the [IDP 2.0 Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md).
-:::
-
 
 ### Supported Features in Git Experience
 
@@ -45,7 +41,7 @@ Harness Internal Developer Portal (IDP) integrates with the Platform Git Experie
 
 
 :::info Note
-With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. 
+With the IDP Git experience feature, one entity can have only one YAML file. Storing multiple entities within a single YAML is not supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. 
 To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
 :::
 
@@ -214,9 +210,6 @@ You can create a new entity or workflow in Harness IDP directly from your Git YA
 </TabItem>
 </Tabs>
 
-#### Harness native YAML vs Backstage YAML
-
-To use this feature, Backstage YAML is not supported directly. Since IDP 2.0 uses a new data model, existing YAMLs from IDP 1.0 (Backstage-native) must be converted using Harness CLI, UI editors, or migration scripts. To understand more about converting IDP 1.0 YAMLs to IDP 2.0 YAMLs, please refer to [Converting IDP 1.0 YAMLs](/docs/internal-developer-portal/catalog/catalog-yaml.md#converting-existing-entity-yamls-idp-20)
 
 ### Entity Scope and Connector Rules
 

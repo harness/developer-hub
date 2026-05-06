@@ -133,7 +133,7 @@ This plugin exports:
 
 As of now you don't really need annotations to configure the plugin.
 
-Although make sure that the Entity identifier of DX should match with the `Identifier of IDP 2.0` or `metadata.name` of IDP 1.0.
+Although make sure that the Entity identifier of DX should match with the `Identifier` of IDP 2.0.
 
 ## Support
 The plugin is owned by **DX** and managed in this [repository](https://github.com/get-dx/backstage-plugin) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

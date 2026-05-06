@@ -1,6 +1,6 @@
 ---
 title:  Import from GitHub 
-description: Documentation for GitHub catalog population scripts for IDP 1.0 and 2.0
+description: Documentation for GitHub catalog population scripts for IDP 2.0
 sidebar_label: Import from GitHub
 sidebar_position: 11
 keywords:
@@ -22,18 +22,6 @@ redirects:
   - /internal-developer-portal/catalog/catalog-scripts
 ---
 
-import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+import GithubIdp2 from './content/populate-catalog/github-idp-2.md';
 
-<DynamicMarkdownSelector
-  options={{
-    "IDP 2.0": {
-      path: "/internal-developer-portal/catalog/tutorials/migrate-catalog-scripts/content/populate-catalog/github-idp-2.md"
-    },
-    "IDP 1.0": {
-      path: "/internal-developer-portal/catalog/tutorials/migrate-catalog-scripts/content/populate-catalog/github-idp-1.md"
-    }
-  }}
-  defaultSelection="IDP 2.0"
-  disableSort={true}
-  toc={toc}
-/>
+<GithubIdp2 />

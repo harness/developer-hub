@@ -7,20 +7,6 @@ redirect_from:
 - /docs/internal-developer-portal/catalog/manage-catalog/catalog-ui
 ---
 
-import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+import ManageCatalog2 from './manage-catalog/content/manage-catalog/manage-catalog-2o.md';
 
-<DynamicMarkdownSelector
-  options={{
-    "IDP 2.0": {
-      path: "/internal-developer-portal/catalog/manage-catalog/content/manage-catalog/manage-catalog-2o.md",
-      label: "IDP 2.0 (New)"
-    },
-    "IDP 1.0": {
-      path: "/internal-developer-portal/catalog/manage-catalog/content/manage-catalog/manage-catalog-1o.md",
-      label: "IDP 1.0"
-    }
-  }}
-  toc={toc}
-  defaultSelection="IDP 2.0"
-  disableSort={true}
-/>
+<ManageCatalog2 />

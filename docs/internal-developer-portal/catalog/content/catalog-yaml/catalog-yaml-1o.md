@@ -1,3 +1,7 @@
+:::caution Deprecated
+This page is part of IDP 1.0 and is no longer maintained.
+:::
+
 import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 
 <RedirectIfStandalone label="IDP 1.0" targetPage="/docs/internal-developer-portal/catalog/catalog-yaml" />
@@ -19,7 +23,7 @@ spec:
   type: <+account.identifier>
   lifecycle: <+variable.account.orgIdentifier> <+variable.account.projectIdentifier>
 ```
-## Entity Kinds [IDP 1.0]
+## Entity Kinds []
 ### Kind: Component
 
 The template given below is an example used for self-service onboarding using the [Harness Custom Field extensions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-actions)
@@ -276,7 +280,7 @@ spec:
     - http://github.com/myorg/myproject/org-data-dump/catalog-info-consultants.yaml
 ```
 
-## Create an IDP YAML or `catalog-info.yaml` [IDP 1.0]
+## Create an IDP YAML or `catalog-info.yaml` []
 
 The **IDP YAML or catalog-info.yaml** is a crucial descriptor file that provides metadata about the software components you register within our IDP. It serves as a blueprint, detailing essential information about each component, such as its name, description, owner, and other related metadata. This file ensures that our portal accurately represents and organizes the software components, making it easier for teams to discover and understand the tools and services available.
 
