@@ -9,6 +9,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocVideo from '@site/src/components/DocVideo';
 
 # Incident Management
 
@@ -48,6 +49,7 @@ Incidents in Harness AI SRE help you:
 
 ### Collaboration and Communication
 - Timeline-based messaging and updates
+- Structured status updates via email to service subscribers
 - Team notifications and stakeholder communication
 - Action item tracking and assignment
 - Post-incident analysis and documentation
@@ -218,6 +220,7 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 - [Customize Incident Fields](./incident-fields.md) for specialized data collection
 - [Set Up Incident Workflows](./incident-workflows.md) for advanced automation
 - [Configure Incident Templates](./incident-templates.md) for consistent incident creation
+- [Configure Status Updates](./status-updates.md) for stakeholder communication
 - [Integrate Monitoring Tools](../alerts/integrations.md) for automatic incident generation
 
 ### Best Practices Resources

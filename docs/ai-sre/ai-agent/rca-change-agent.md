@@ -8,7 +8,7 @@ sidebar_position: 3
 # Use RCA Change Agent
 
 :::info What is the RCA Change Agent?
-The RCA (Root Cause Analysis) Change Agent is a specialized autonomous component of the Harness AI SRE platform that analyzes incidents to identify potential root causes. It automatically investigates deployments, pull requests, and change events, then generates theories with confidence scores to help engineers focus their investigation efforts.
+The RCA (Root Cause Analysis) Change Agent is a specialized autonomous component of the Harness AI SRE platform that analyzes incidents to identify potential root causes. It automatically investigates deployments, pull requests, ServiceNow change records, and change events, then generates theories with confidence scores to help engineers focus their investigation efforts.
 :::
 
 The RCA Change Agent operates continuously throughout an incident's lifecycle, automatically re-analyzing when new key events are added by the AI Scribe Agent. 
@@ -25,6 +25,30 @@ The RCA Change Agent runs automatically as a background job whenever key events 
 - **Continuous updates**: Each time new key events are added, the agent re-evaluates its theories
 - **Progressive refinement**: Confidence scores adjust as more data becomes available
 - **Theory evolution**: New theories can be added, and unlikely theories can be ruled out as the incident progresses
+
+## ServiceNow Change Integration
+
+When a Harness ServiceNow connector exists in your organization, the RCA Change Agent automatically ingests ServiceNow change records and correlates them with active incidents. This zero-configuration integration requires no separate setup beyond your existing ServiceNow connector.
+
+### Prerequisites
+
+- **ServiceNow connector**: An existing Harness ServiceNow connector configured in your organization (typically set up for pipeline approvals or other ServiceNow workflows)
+- **Read access**: The connector must have read access to the `change_request` table in ServiceNow
+
+### How ServiceNow changes appear
+
+ServiceNow change records appear in the RCA Change Agent theories panel alongside deployments and pull requests as candidate root causes. The system automatically:
+
+- **Polls every 5 minutes**: The RCA Change Agent queries the ServiceNow Table API for change records every 5 minutes
+- **Historical lookback**: On first activation, the system retrieves change records from the past 90 days
+- **Correlates to incidents**: Change records are matched to incident timelines based on timing and affected services
+- **Generates theories**: ServiceNow changes appear as theories with confidence scores, just like deployment and code changes
+
+### Zero-configuration activation
+
+If your organization already uses a Harness ServiceNow connector (common for pipeline approval gates or ITSM workflows), ServiceNow change data automatically flows into RCA. No additional configuration, webhook setup, or ServiceNow admin involvement is required.
+
+When you save or update a ServiceNow connector in Harness, the system automatically creates an ingest job that polls the `change_request` table and makes those changes available to the RCA Change Agent.
 
 <!-- 
 ## Investigation Tools
@@ -148,6 +172,7 @@ The RCA Change Agent automatically analyzes:
 | **Incident timeline** | Key events and decisions from AI Scribe Agent |
 | **Deployment history** | Recent deployments to affected services |
 | **Pull request data** | Code changes between stable and broken deployments |
+| **ServiceNow change records** | Change requests from ServiceNow when connector exists |
 | **Change events** | Feature flags, infrastructure changes, configuration updates |
 | **Alert data** | Signals from connected observability platforms |
 | **System telemetry** | Metrics and traces from affected services |

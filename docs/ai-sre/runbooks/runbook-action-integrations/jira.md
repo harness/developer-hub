@@ -1,7 +1,7 @@
 ---
 title: Jira Actions for Runbooks
 sidebar_label: Jira
-sidebar_position: 4
+sidebar_position: 5
 description: Learn how to use Jira actions in Harness AI SRE Runbooks with dynamic field mapping for automated ticket creation and updates.
 redirect_from:
 - /docs/incident-response/runbooks/integrations/jira

@@ -13,7 +13,7 @@ This page walks you through opening the incident, understanding what's happening
 
 ## Respond to the Notification
 
-You'll receive an incident notification through one or more channels — Slack, Microsoft Teams, PagerDuty, OpsGenie, mobile push, email, SMS, or phone call, depending on your contact settings.
+You'll receive an incident notification through one or more channels — Slack, Microsoft Teams, Google Chat, PagerDuty, OpsGenie, mobile push, email, SMS, or phone call, depending on your contact settings.
 
 ![Slack incident notification](../../get-started/static/slack-incident-notification.png)
 

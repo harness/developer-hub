@@ -9,6 +9,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocVideo from '@site/src/components/DocVideo';
 
 # Configure Alert Rules
 
@@ -68,7 +69,7 @@ Follow this interactive guide to configure alert rules that automatically create
    - **Title**: Map alert summary or message
    - **Description**: Map detailed alert information
    - **Severity**: Map alert severity levels
-   - **Priority**: Set incident priority based on alert data
+   - **Priority**: Set incident priority based on alert data (see [Customize Priority Labels](../incidents/severities-priorities.md#customize-alert-priority-levels))
    - **Service**: Map affected service information
    - **Environment**: Map environment details
    - **Custom fields**: Map any additional alert data
@@ -118,3 +119,4 @@ Follow this interactive guide to configure alert rules that automatically create
 
 - [Configure Webhooks](./webhooks.md)
 - [Create Runbooks](../runbooks/create-runbook.md)
+- [Customize Severity & Priority Labels](../incidents/severities-priorities.md)

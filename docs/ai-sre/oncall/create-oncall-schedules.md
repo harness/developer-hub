@@ -1,11 +1,13 @@
 ---
-title: Create On-Call Schedules
+title: Configure On-Call Schedules
 description: Build and manage on-call rotation schedules in Harness AI SRE, including rotation patterns, overrides, and external imports.
-sidebar_label: Create On-Call Schedules
+sidebar_label: Configure On-Call Schedules
 sidebar_position: 3
 ---
 
-# Create On-Call Schedules
+import DocVideo from '@site/src/components/DocVideo';
+
+# Configure On-Call Schedules
 
 On-call schedules define who is responsible for responding to incidents at any given time. 
 

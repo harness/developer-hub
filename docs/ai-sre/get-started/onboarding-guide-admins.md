@@ -25,6 +25,8 @@ tags:
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
+import DocVideo from '@site/src/components/DocVideo';
 
 This guide introduces you to the powerful capabilities of Harness AI SRE, providing a comprehensive approach to proactively managing and resolving incidents with real-time insights, alerts, and seamless integration. 
 
@@ -73,8 +75,13 @@ Go to  [AI SRE Integrations documentation](/docs/category/integrations) for deta
    - **Microsoft Teams** - Configure the Teams connector
    - **Zoom** - Set up meeting automation for incident bridges
 
+9. For ServiceNow integration:
+   - Configure a ServiceNow connector with read access to the `change_request` table
+   - Once configured, ServiceNow change records automatically flow into RCA Change Agent with no additional setup
+   - Go to [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent#servicenow-change-integration) to learn how ServiceNow changes appear as root cause theories
+
 :::tip Integration Best Practice
-Start with your primary monitoring tool and main communication channel. You can add more integrations later as needed.
+Start with your primary monitoring tool and main communication channel. You can add more integrations later as needed. If your organization already uses a ServiceNow connector for pipeline approvals, change data automatically appears in RCA.
 :::
 
   </TabItem>

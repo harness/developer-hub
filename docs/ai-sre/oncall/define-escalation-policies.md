@@ -1,11 +1,13 @@
 ---
-title: Define Escalation Policies
+title: Configure Escalation Policies
 description: Create multi-level escalation policies in Harness AI SRE to ensure incidents always reach a responder.
-sidebar_label: Define Escalation Policies
+sidebar_label: Configure Escalation Policies
 sidebar_position: 4
 ---
 
-# Define Escalation Policies
+import DocVideo from '@site/src/components/DocVideo';
+
+# Configure Escalation Policies
 
 Escalation policies control what happens when an on-call responder doesn't acknowledge a page. 
 

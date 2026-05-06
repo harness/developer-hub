@@ -28,6 +28,8 @@ Some runbooks are automatically attached to an incident based on the incident ty
 
 ## Execute a Runbook
 
+### From the Harness UI
+
 1. On the **Runbooks** tab, click **Execute** on an attached runbook — or click **Execute Additional Runbook** to add and run a different one.
 2. If adding a new runbook, search for or browse available runbooks, select the appropriate one, and confirm.
 3. Work through the steps in order:
@@ -35,6 +37,41 @@ Some runbooks are automatically attached to an incident based on the incident ty
    - **Manual steps** provide instructions for you to follow. Mark each step complete as you go.
 4. Execution progress is logged in the incident timeline, giving full visibility to other responders and stakeholders.
 5. Click **Close** when execution is completed.
+
+### From Slack (Using Slugs)
+
+If your runbooks have been configured with slugs, you can execute them directly from Slack without navigating the Harness UI.
+
+**Prerequisites:**
+- **Slack authentication**: You must authenticate Slack with Harness AI SRE before using slug commands.
+- **Runbook slugs configured**: Administrators must assign slugs to runbooks. Go to [Create Runbooks](/docs/ai-sre/runbooks/create-runbook#configure-runbook-slugs) to learn how slugs are configured.
+
+**Execute a runbook by slug:**
+
+From an incident Slack channel, type:
+
+```
+/harness run <slug>
+```
+
+Replace `<slug>` with the runbook's short identifier (e.g., `/harness run restart-pods`).
+
+**List available slugs:**
+
+If you do not know which slugs are available, type:
+
+```
+/harness run
+```
+
+The system responds with a list of all runbook slugs available for the current project and incident.
+
+**Why use Slack slugs?**
+- **Faster response**: Execute runbooks instantly without switching tools during high-pressure incidents.
+- **Muscle memory**: Common slugs (e.g., `rollback`, `scale-up`) become second nature to on-call responders.
+- **Lower MTTR**: Reduce mean time to resolution by removing UI navigation from the response path.
+
+Go to [Use Slack Commands](/docs/ai-sre/get-started/slack-commands#running-runbooks-with-slugs) for complete documentation on runbook slug commands.
 
 ## Choose the Right Runbook
 

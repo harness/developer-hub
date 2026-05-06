@@ -1,7 +1,7 @@
 ---
 title: Configure On-Call Teams and Routing
 description: Configure User Groups as on-call teams, assign service ownership, and set up personal notification preferences in Harness AI SRE.
-sidebar_label: Teams and Routing
+sidebar_label: Configure On-Call Teams and Routing
 sidebar_position: 6
 ---
 
@@ -10,8 +10,6 @@ sidebar_position: 6
 Harness AI SRE uses **User Groups** from the Harness Platform as the organizational unit for on-call management. User Groups serve as "teams" in the on-call context — they own services, own escalation policies, and determine routing for alerts.
 
 This page covers both **administrator configuration** (User Groups, service ownership, routing) and **individual user configuration** (personal notification settings).
-
----
 
 ## User Groups as On-Call Teams
 
@@ -34,8 +32,6 @@ In the on-call context, User Groups determine:
 - **Who owns escalation policies** — Each escalation policy is owned by a User Group
 - **How alerts are routed** — Alerts for a service route to the service's owning User Group's escalation policy
 
----
-
 ## Configure Service Ownership
 
 Services in the AI SRE Service Directory are assigned to User Groups. This determines which team is responsible for on-call coverage when alerts fire for that service.
@@ -56,8 +52,6 @@ Services in the AI SRE Service Directory are assigned to User Groups. This deter
 - The alert routes to that User Group's escalation policy
 - The escalation policy determines which schedule (and therefore which on-call responder) receives the page
 
----
-
 ## Escalation Policy Ownership
 
 Escalation policies are owned by User Groups. This ties the policy to a specific team.
@@ -75,8 +69,6 @@ When creating or editing an escalation policy:
 - When a service's owning User Group matches an escalation policy's owner, that policy is used for routing (unless the service specifies an override)
 - If a User Group has no default escalation policy, alerts for services owned by that User Group cannot be automatically routed
 
----
-
 ## Alert Routing Flow
 
 Understanding how alerts route through User Groups, services, and escalation policies:
@@ -92,8 +84,6 @@ Understanding how alerts route through User Groups, services, and escalation pol
 7. **Notification dispatch** — The on-call responder's personal notification rules are triggered
 
 This flow ensures alerts always reach the right person based on service ownership and team structure.
-
----
 
 ## User Notification Settings
 
@@ -190,8 +180,6 @@ Step 4: SMS + Phone Call
 - **Test your setup**: Use the test buttons to ensure each contact method works
 - **Keep contacts updated**: Verify phone numbers and email addresses are current
 
----
-
 ## Troubleshooting
 
 ### Service Alerts Not Routing
@@ -222,8 +210,6 @@ Step 4: SMS + Phone Call
 - Test the Slack connection using the Test button
 - Only one Slack account can be linked per user
 
----
-
 ## Best Practices
 
 ### For Administrators
@@ -241,8 +227,6 @@ Step 4: SMS + Phone Call
 - **Keep contact information current** — Update phone numbers and email addresses immediately when they change
 - **Review your notification rules** — Ensure escalation steps match your preferred notification sequence
 - **Install the mobile app** — Push notifications are the most reliable way to receive urgent alerts
-
----
 
 ## Summary
 

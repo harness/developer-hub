@@ -90,6 +90,7 @@ Define automated actions when alerts are received:
 - [Configure Webhooks](./webhooks.md)
 - [Alert Integrations](./integrations.md)
 - [Configure Alert Rules](./alert-rules.md)
+- [Customize Priority Labels](../incidents/severities-priorities.md)
 
 ### Related Topics
 - [Create a Runbook](../runbooks/create-runbook.md)

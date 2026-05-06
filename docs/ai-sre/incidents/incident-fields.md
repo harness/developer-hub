@@ -41,6 +41,32 @@ field_definitions:
     required: true
 ```
 
+#### Severity Field Values
+
+The severity field uses numeric string values internally. When configuring runbook triggers or API integrations, use these exact values:
+
+| Value | Display Label | Severity Level |
+|-------|---------------|----------------|
+| `"0"` | SEV0:Critical | Highest severity |
+| `"1"` | SEV1:Major | High severity |
+| `"2"` | SEV2:Moderate | Moderate severity |
+| `"3"` | SEV3:Minor | Low severity |
+| `"4"` | SEV4:Cosmetic | Lowest severity |
+
+**Important:** Severity is stored as a string, not a number. When using severity in runbook triggers or API calls, always use the string format (for example, `"0"` not `0`).
+
+**Customize severity labels:** You can customize the display labels for severity levels to match your organization's terminology. Go to [Customize Severity and Priority Labels](./severities-priorities.md) to learn how to configure custom labels while maintaining compatibility with integrations and APIs.
+
+**Alternative severity names:** The system accepts alternative severity names from external integrations and maps them automatically:
+
+- **Maps to "0":** `SEV0`, `SECURITY0`, `CUSTOMER-P0`
+- **Maps to "1":** `SEV1`, `INTERNAL-PROD`, `SECURITY1`, `CUSTOMER-P1`
+- **Maps to "2":** `SEV2`, `DEPLOYMENT`, `SECURITY2`
+- **Maps to "3":** `SEV3`, `INTERNAL-NONPROD`, `MAINTENANCE`
+- **Maps to "4":** Any other value
+
+Go to [Configure Runbook Triggers](/docs/ai-sre/runbooks/create-trigger#severity-field) to learn how to use severity values in trigger conditions.
+
 #### Service Context
 ```yaml
 field_definitions:
@@ -247,6 +273,7 @@ resolve_incident:
 - [Incident Overview](./incidents.md)
 - [Incident Workflows](./incident-workflows.md)
 - [Incident Templates](./incident-templates.md)
+- [Severity & Priority Labels](./severities-priorities.md)
 
 ### Related Topics
 - [Configure Fields](../runbooks/configure-incident-fields.md)

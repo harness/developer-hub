@@ -123,22 +123,54 @@ Memory leak identified in payment service after metric review
 
 Note: Key events are concise, executive-level summaries. The complete messages and full context remain available in the conversation transcript.
 
-## Post-Incident Review
+## AI-Native Post-Mortem Generation
 
-<!-- CHANGED (comment #7): This section previously implied post-incident reports were generated automatically on incident close. The PostIncidentReview feature is actually a runbook action — it must be explicitly added to a runbook, configured with a template, and triggered (manually or via an on-close runbook trigger). Rewrote to reflect the actual setup required. -->
-Post-incident documentation is generated via the **Post-Incident Review runbook action** — it does not run automatically when an incident closes. To use it:
+:::info Note
 
-1. **Add the action to a runbook**: In your runbook configuration, add the Post-Incident Review action.
-2. **Configure a template**: Provide the template the action will use to structure the report. The action combines your template with key events and the incident timeline.
-3. **Trigger the runbook**: Run the runbook manually at incident close, or configure an on-close runbook trigger to invoke it automatically.
+Currently, this feature is behind the `IR_INCIDENT_POSTMORTEM` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-The AI generates the report content — but the setup and trigger are human-configured.
+:::
+
+AI SRE automatically generates a structured post-incident review when an incident is closed (status → **Closed**). This AI-native post-mortem synthesizes the complete incident record into a comprehensive retrospective document.
+
+![AI-Native Post-Mortem Generation](./static/post-mortem.png)
+
+### Post-Mortem Structure
+
+The generated post-mortem contains six fixed sections:
+
+1. **Summary**: High-level overview of what happened and when
+2. **Impact**: Affected services, users, and business impact
+3. **Root Cause**: Identified cause based on RCA theories and investigation findings
+4. **Resolution**: How the incident was mitigated and resolved
+5. **Insights**: Key observations and patterns discovered during the incident
+6. **Lessons Learned**: Actionable takeaways for preventing similar incidents
+
+:::note Template Customization
+The post-mortem structure is fixed and cannot be customized. All post-mortems follow the same six-section format to ensure consistency across incidents and facilitate pattern recognition during retrospective analysis.
+:::
+
+### Data Sources
+
+The AI pulls context from multiple sources:
+
+- **Incident metadata**: Title, severity, timestamps, impacted services, RCA theories
+- **Incident notes**: Up to 200,000 characters of notes (newest content preserved if truncated)
+- **Timeline events**: Nine event types including pages, escalations, runbook executions, key events, and status changes
+- **Action items**: Follow-up tasks captured during the incident (both AI-detected and manually created)
+
+### Generation Triggers
+
+Post-mortems can be generated in two ways:
+
+- **Automatic generation**: Triggered when an incident status changes to **Closed**
+- **Manual regeneration**: Available from the incident detail page if you update notes or add new information after closing
+
+If generation fails, any previously generated post-mortem is preserved. The error message appears alongside the previous content, allowing you to retry generation without losing prior work.
 
 ### RCA Change Agent Integration
 
 The timeline and event data produced by the AI Scribe Agent serves as a primary input to the [RCA (Root Cause Analysis) Change Agent](/docs/ai-sre/ai-agent/rca-change-agent). The RCA Change Agent runs in realtime as the incident collects new data, ingesting the Scribe's structured timeline alongside alert and telemetry data to identify causal chains and recommend likely root cause candidates so that engineers can focus on long term remediation.
-
-You can configure an on-close runbook trigger to invoke both the Post-Incident Review action which leverages data collected by the RCA Change Agent, giving you a complete close-of-incident workflow: the Scribe provides the timeline, the Post-Incident Review generates the human-readable report, and the RCA Change Agent produces actionable remediation recommendations.
 
 ## Maximizing the AI SRE Scribe Agent
 

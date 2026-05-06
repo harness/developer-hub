@@ -19,8 +19,6 @@ Security measures include:
 - Secure API authentication for third-party integrations
 - Audit logging for compliance tracking
 
----
-
 ## Security Measures
 
 Harness AI SRE ensures incident security by restricting access, encrypting data, and logging all activities.
@@ -29,8 +27,6 @@ Harness AI SRE ensures incident security by restricting access, encrypting data,
 - **Data Protection**: Encrypts incident metadata, logs, and communication history.
 - **Automation & Runbook Security**: Ensures that only authorized users execute automated actions.
 - **Audit & Compliance**: Logs every action for tracking and compliance reviews.
-
----
 
 ## Security Components
 
@@ -78,8 +74,6 @@ Harness IR integrates with communication tools and on-call platforms through sec
 </TabItem>
 </Tabs>
 
----
-
 ## Operational Security
 
 Harness IR ensures security at every stage:
@@ -103,8 +97,6 @@ Harness IR ensures security at every stage:
 5. **Third-Party Integration Security**  
    - OAuth tokens, API keys, and access scopes protect integrations.  
    - Secure connections use TLS 1.3 encryption.
-
----
 
 ## Best Practices
 

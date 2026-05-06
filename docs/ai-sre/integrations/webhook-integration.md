@@ -10,6 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
+import DocVideo from '@site/src/components/DocVideo';
 
 Webhook integrations in Harness AI SRE enable bidirectional communication with external monitoring tools, CI/CD systems, and other services. These integrations process incoming webhook payloads to create alerts and incidents in AI SRE, and can also send updates back to external systems when configured with proper authentication and connectors.
 
@@ -243,8 +244,6 @@ Follow this interactive guide to configure webhook integrations with payload map
 - **Rate Limiting**: Implement appropriate rate limiting for high-volume integrations
 - **Error Handling**: Ensure robust error handling for failed processing
 
-
-
 ## Next Steps
 
 ### Getting Started
@@ -259,7 +258,5 @@ Follow this interactive guide to configure webhook integrations with payload map
 ### Advanced Configuration
 - [Manage Incidents](../incidents/incidents.md) created from webhook integrations
 - [AI SRE Best Practices](../resources/ai-sre-best-practices.md) for webhook integration optimization
-
----
 
 <NeedHelpFooter />

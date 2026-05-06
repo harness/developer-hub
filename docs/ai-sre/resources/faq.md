@@ -21,8 +21,6 @@ redirect_from:
     Harness AI SRE provides AI-driven incident summaries, automated runbooks, and direct integrations with monitoring, communication, and ticketing platforms to reduce manual effort and improve response times.
 </details>
 
----
-
 ## Incident Handling
 
 <details>
@@ -42,8 +40,6 @@ redirect_from:
 
     Yes, incidents can be assigned different severity levels based on pre-defined criteria.
 </details>
-
----
 
 ## Automation & Runbooks
 
@@ -65,8 +61,6 @@ redirect_from:
     Yes, incidents can be configured to trigger runbooks based on alert conditions or webhook payloads.
 </details>
 
----
-
 ## Integrations
 
 <details>
@@ -86,8 +80,6 @@ redirect_from:
 
     It integrates with PagerDuty and Opsgenie to escalate incidents based on defined schedules.
 </details>
-
----
 
 ## Security & Compliance
 
@@ -125,7 +117,5 @@ redirect_from:
 
     AI SRE uses the Harness Platform's RBAC system. Create custom roles by combining AI SRE permissions (View, Create, Edit, Delete) for resources like Escalation Policies, Incidents, SLOs, and Schedules. Common patterns include admin roles with full access, user roles for operational access, and viewer roles for read-only access. For full details, see [Role-Based Access Control](/docs/ai-sre/resources/ai-sre-security#role-based-access-control-rbac).
 </details>
-
----
 
 This **FAQ structure** covers **anticipated user concerns** while keeping it **aligned with the existing documentation format**.

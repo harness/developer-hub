@@ -19,6 +19,10 @@ Harness AI SRE webhooks provide a flexible way to receive alerts from any system
 - Third-party services
 - Legacy systems
 
+:::tip Service Paging Webhooks
+For services that need dedicated on-call paging from external systems, use **Service Paging Webhooks** instead. Service paging webhooks automatically create alerts and page the on-call team via HTTP POST or email. Go to [Service Paging Webhook](/docs/ai-sre/oncall/service-paging-webhook) to learn more.
+:::
+
 ## Webhook Configuration
 
 ### Step 1: Create a Webhook

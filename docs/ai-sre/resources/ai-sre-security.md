@@ -19,8 +19,6 @@ Security measures include:
 - Secure API authentication for third-party integrations
 - Audit logging for compliance tracking
 
----
-
 ## Security Measures
 
 Harness AI SRE ensures incident security by restricting access, encrypting data, and logging all activities.
@@ -29,8 +27,6 @@ Harness AI SRE ensures incident security by restricting access, encrypting data,
 - **Data Protection**: Encrypts incident metadata, logs, and communication history.
 - **Automation & Runbook Security**: Ensures that only authorized users execute automated actions.
 - **Audit & Compliance**: Logs every action for tracking and compliance reviews.
-
----
 
 ## Role-Based Access Control (RBAC)
 
@@ -67,8 +63,6 @@ Create roles that match your organization's needs using the available AI SRE per
 2. Select an existing role to edit, or click **New Role** to create one.
 3. Under the **AI SRE** resource group, enable the permissions required for the role.
 4. Assign the role to users or user groups under **Project Settings** → **Access Control** → **Users** or **User Groups**.
-
----
 
 ## Security Components
 
@@ -116,8 +110,6 @@ Harness AI SRE integrates with communication tools and on-call platforms through
 </TabItem>
 </Tabs>
 
----
-
 ## Operational Security
 
 Harness AI SRE ensures security at every stage:
@@ -141,8 +133,6 @@ Harness AI SRE ensures security at every stage:
 5. **Third-Party Integration Security**  
    - OAuth tokens, API keys, and access scopes protect integrations.  
    - Secure connections use TLS 1.3 encryption.
-
----
 
 ## Best Practices
 

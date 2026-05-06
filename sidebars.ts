@@ -4018,6 +4018,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'ai-sre/ai-agent/ai-agent',
             'ai-sre/ai-agent/rca-change-agent',
+            'ai-sre/ai-agent/investigator-agent-pipelines',
           ],
         },
         'ai-sre/get-started/slack-commands',

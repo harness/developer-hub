@@ -26,6 +26,7 @@ tags:
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocVideo from '@site/src/components/DocVideo';
 
 This guide walks you through the essentials of using Harness AI SRE as a responder or engineer.
 
@@ -40,7 +41,7 @@ Before getting started, confirm the following with your administrator:
 | Item | Details |
 | --- | --- |
 | Harness account access | You have been added to your organization's Harness account with appropriate permissions |
-| Slack / Teams connected | The Harness AI SRE bot is installed in your team's Slack workspace or Microsoft Teams environment |
+| Collaboration tools connected | The Harness AI SRE bot is installed in your team's Slack workspace or Google Chat |
 | Monitoring tools configured | Your organization's monitoring tools (Datadog, New Relic, Grafana, etc.) are already integrated |
 | On-call schedule (if applicable) | You've been added to your team's on-call rotation in PagerDuty, OpsGenie, or a similar tool |
 
@@ -100,7 +101,7 @@ Get familiar with the dashboard layout, active incidents, alerts, and key metric
 
 When an incident is created — automatically from a monitoring alert or manually by a teammate — here's how to respond.
 
-1. You'll receive a notification via **[Harness On-Call](/docs/category/handle-on-call)**, **Slack**, **Microsoft Teams**, or your on-call tool.
+1. You'll receive a notification via **[Harness On-Call](/docs/category/handle-on-call)**, **Slack**, **Google Chat**, or your on-call tool.
 
    ![Slack incident notification](./static/slack-incident-notification.png)
    <!-- Screenshot: Slack message showing an incident notification with a link to the incident -->
@@ -125,7 +126,7 @@ When an incident is created — automatically from a monitoring alert or manuall
    ![Incident status dropdown](./static/incident-status-dropdown.png)
    <!-- Screenshot: Status dropdown open showing available status options -->
 
-6. Use the **incident channel** in Slack or Teams to collaborate with other responders in real time.
+6. Use the **incident channel** in Slack or Google Chat to collaborate with other responders in real time.
 7. Add **notes and updates** to the incident timeline to keep a clear record of actions taken.
 
    <!-- ![Adding a note to the incident timeline](./static/incident-add-note.png) -->

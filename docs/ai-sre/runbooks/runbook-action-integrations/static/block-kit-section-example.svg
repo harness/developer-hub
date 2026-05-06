@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+  <!-- Background -->
+  <rect width="800" height="200" fill="#f8f9fa"/>
+
+  <!-- Slack message container -->
+  <rect x="40" y="20" width="720" height="160" rx="8" fill="#ffffff" stroke="#e1e4e8" stroke-width="1"/>
+
+  <!-- Avatar circle -->
+  <circle cx="70" cy="50" r="20" fill="#611f69"/>
+  <text x="70" y="56" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">H</text>
+
+  <!-- Bot label -->
+  <rect x="100" y="36" width="35" height="16" rx="3" fill="#e1e4e8"/>
+  <text x="117.5" y="47" font-family="Arial, sans-serif" font-size="10" fill="#616061" text-anchor="middle">APP</text>
+
+  <!-- Message header -->
+  <text x="100" y="52" font-family="Arial, sans-serif" font-size="14" fill="#1d1c1d" font-weight="bold">Harness AI SRE</text>
+  <text x="215" y="52" font-family="Arial, sans-serif" font-size="12" fill="#616061">9:15 AM</text>
+
+  <!-- Section Block - Standard text size -->
+  <text x="100" y="85" font-family="Arial, sans-serif" font-size="15" fill="#1d1c1d" font-weight="bold">🚨 There is a new SEV1 incident</text>
+
+  <!-- Additional message details -->
+  <text x="100" y="110" font-family="Arial, sans-serif" font-size="15" fill="#1d1c1d" font-weight="bold">Title:</text>
+  <text x="145" y="110" font-family="Arial, sans-serif" font-size="15" fill="#1d1c1d">Database Connection Failure</text>
+
+  <text x="100" y="133" font-family="Arial, sans-serif" font-size="15" fill="#1d1c1d" font-weight="bold">Status:</text>
+  <text x="155" y="133" font-family="Arial, sans-serif" font-size="15" fill="#1d1c1d">Investigating</text>
+
+  <!-- Annotation -->
+  <text x="100" y="165" font-family="Arial, sans-serif" font-size="11" fill="#868686" font-style="italic">← Section Block uses standard text size (15px) in black</text>
+</svg>

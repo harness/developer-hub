@@ -10,6 +10,8 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
+import DocImage from '@site/src/components/DocImage';
+import DocVideo from '@site/src/components/DocVideo';
 
 # Create Runbooks
 
@@ -216,7 +218,7 @@ Harness AI SRE provides a comprehensive library of pre-built actions across mult
 Establish immediate communication channels and keep stakeholders informed throughout incident resolution.
 
 #### **[Slack Integration](./runbook-action-integrations/slack.md)**
-- **Send Notifications**: Broadcast alerts to channels or direct messages.
+- **Send Notifications**: Broadcast alerts to channels or direct messages (supports Block Kit JSON for rich formatting).
 - **Create Channels**: Automatically create incident-specific channels.
 - **Start Threads**: Organize discussions and updates.
 - **Add Members**: Add members to the channel.
@@ -229,7 +231,6 @@ Establish immediate communication channels and keep stakeholders informed throug
 #### **[Zoom Integration](./runbook-action-integrations/zoom.md)**
 - **Create Meetings**: Instantly set up incident response calls, optionally attaching an AI transcription bot.
 - **End Meetings**: End an active Zoom meeting.
-
 
 ### Incident Response & Ticketing Systems
 Automate incident tracking, assignment, and resolution workflows across your preferred ticketing platforms.
@@ -244,7 +245,6 @@ Automate incident tracking, assignment, and resolution workflows across your pre
 - **Change Requests**: Initiate emergency or standard changes.
 - **Update Incidents**: Updates an existing ServiceNow incident's summary, description, issue type, or adds a comment with relevant context.
 
-
 ### Automation & Pipeline Execution
 Execute remediation actions, deploy fixes, and trigger operational workflows.
 
@@ -252,7 +252,6 @@ Execute remediation actions, deploy fixes, and trigger operational workflows.
 - **Pipeline Execution**: Trigger deployment or remediation pipeline.
 - **Feature Flag Management**: Deploy specific versions or rollback changes.
 - **Environment Management**: Manage infrastructure scaling or configuration.
-
 
 ## Configure Triggers
 
@@ -270,6 +269,67 @@ Triggers determine when and how your runbooks execute automatically. For compreh
 :::info
 **Note**: Multiple triggers can be added to a single runbook based on your use case requirements.
 :::
+
+## Configure Runbook Slugs
+
+Runbook slugs enable on-call responders to execute runbooks directly from Slack using short commands like `/harness run restart-pods`. Slugs provide a faster path to runbook execution during high-pressure incidents by removing UI navigation from the response workflow.
+
+### How to Assign a Slug
+
+1. **Access Trigger Configuration**: Navigate to the **Triggers** tab in your runbook editor.
+2. **Locate Slug Field**: Find the **Slug** field in the trigger configuration section.
+3. **Enter a Slug**: Type a short, memorable identifier for the runbook (3–15 characters).
+4. **Save**: Click **Save** to apply the slug configuration.
+
+### Slug Naming Rules
+
+Slugs must follow these requirements:
+
+- **Length**: 3 to 15 characters
+- **Allowed characters**: Lowercase letters (`a-z`), numbers (`0-9`), and hyphens (`-`)
+- **Format**: `^[a-z0-9-]*$` (enforced by the UI)
+- **Uniqueness**: Slug must be unique within the organization
+- **Reserved names**: Cannot use native action names as slugs
+
+:::note Backend Validation
+While the UI enforces lowercase letters, numbers, and hyphens, the backend also accepts underscores (`_`) and uppercase letters (`^[-_\w]{3,15}$`). However, the UI-enforced format is recommended for consistency.
+:::
+
+### Slug Naming Best Practices
+
+- **Use short, descriptive names**: `restart-pods`, `scale-up`, `rollback`
+- **Team-specific conventions**: If multiple teams use AI SRE, prefix slugs with team identifiers (e.g., `platform-restart`, `data-scale`)
+- **Action-oriented names**: Use verbs that describe what the runbook does (`fix`, `deploy`, `reset`)
+- **Avoid abbreviations**: Use `restart` instead of `rst` for clarity
+- **Test before deployment**: Verify the slug is easy to type and remember
+
+### Example Slugs
+
+| Slug | Runbook Name | Use Case |
+|------|--------------|----------|
+| `restart-pods` | Restart Kubernetes Pods | Restart pods for a specific service |
+| `scale-up` | Scale Up Infrastructure | Increase capacity during traffic spikes |
+| `rollback` | Rollback Recent Deployment | Revert to previous stable version |
+| `clear-cache` | Clear Redis Cache | Flush cache to resolve stale data issues |
+| `restart-db` | Restart Database Connection Pool | Reset database connections |
+
+### Using Slugs in Slack
+
+Once configured, on-call responders can execute runbooks from Slack:
+
+**Execute by slug:**
+```
+/harness run <slug>
+```
+
+**List available slugs:**
+```
+/harness run
+```
+
+**Prerequisite**: Users must authenticate Slack with Harness AI SRE before using slug commands.
+
+Go to [Use Slack Commands](/docs/ai-sre/get-started/slack-commands#running-runbooks-with-slugs) for complete user documentation on slug commands.
 
 ## Test Your Runbook
 
@@ -328,7 +388,6 @@ Once testing is complete, deploy your runbook to production and establish monito
 3. **Production Deployment**: Activate the runbook in your production environment.
 4. **Documentation Update**: Update operational documentation with runbook details.
 
-
 ## Best Practices for Runbook Creation
 
 ### Design Principles
@@ -336,12 +395,10 @@ Once testing is complete, deploy your runbook to production and establish monito
 - **Modular Design**: Create reusable actions and workflows that can be combined for different scenarios.
 - **Clear Naming**: Use descriptive names for runbooks, actions, and variables that clearly indicate their purpose.
 
-
 ### Operational Excellence
 - **Regular Updates**: Review and update runbooks regularly to reflect changes in infrastructure and processes.
 - **Timeout Configuration**: Set appropriate timeouts to prevent runbooks from hanging indefinitely.
 - **Conditional Logic**: Use conditional statements to avoid unnecessary action execution.
-
 
 ## Troubleshooting Common Issues
 
@@ -358,7 +415,6 @@ Once testing is complete, deploy your runbook to production and establish monito
 #### Problem: Runbooks execute slowly
 - **Solution**: Optimize action sequences and enable parallel execution where possible.
 - **Prevention**: Regular performance testing and monitoring.
-
 
 ## Next Steps
 
@@ -380,7 +436,5 @@ Once testing is complete, deploy your runbook to production and establish monito
 
 #### Automation & Pipelines
 - **[Harness Pipelines Integration](./runbook-action-integrations/harness-pipelines.md)**: Execute deployment and remediation pipelines.
-
----
 
 <NeedHelpFooter />

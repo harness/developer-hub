@@ -10,6 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 # Configure Runbook Triggers
 
@@ -113,6 +114,88 @@ To add more specific conditions beyond the basic frequency setting:
   </TabItem>
 </Tabs>
 
+## Field-Specific Configuration
+
+### Severity Field
+
+The severity field requires special attention when configuring trigger conditions because severity values are stored as numeric strings, not numbers.
+
+#### Severity Field Values
+
+Harness AI SRE uses numeric string values for severity levels. When configuring trigger conditions, use these exact string values:
+
+| Value | Label | Severity Level |
+|-------|-------|----------------|
+| `"0"` | SEV0:Critical | Highest severity |
+| `"1"` | SEV1:Major | High severity |
+| `"2"` | SEV2:Moderate | Moderate severity |
+| `"3"` | SEV3:Minor | Low severity |
+| `"4"` | SEV4:Cosmetic | Lowest severity |
+
+**Example trigger condition:**
+
+To trigger on critical incidents, use:
+```
+severity = "0"
+```
+
+To trigger on major incidents, use:
+```
+severity = "1"
+```
+
+#### Supported Comparison Operators
+
+Because severity values are strings, only certain comparison operators work correctly.
+
+**Supported operators for severity (string field):**
+
+- **`=` (Equals)**: Match exact severity level
+- **`!=` (Does not equal)**: Match all except specified severity level
+- **`CONTAINS`**: Match if severity string contains specified text
+- **`DOES_NOT_CONTAIN`**: Match if severity string does not contain specified text
+
+**Unsupported operators for severity (string field):**
+
+- **`>` (Greater than)**: Does not work with string values
+- **`<` (Less than)**: Does not work with string values
+- **`>=` (Greater than or equal to)**: Does not work with string values
+- **`<=` (Less than or equal to)**: Does not work with string values
+
+You cannot use `severity > "2"` to match SEV0 and SEV1. This comparison will not work because severity is stored as a string, not a number.
+
+#### Match Multiple Severity Levels
+
+To trigger on multiple severity levels (for example, SEV0 OR SEV1), use one of these approaches:
+
+**Option 1: Multiple conditions with OR logic**
+
+Create separate conditions and set the condition match type to **Match Any** (OR):
+
+1. Add first condition: `severity = "0"`
+2. Add second condition: `severity = "1"`
+3. Set match type to **Match Any** (OR)
+
+The trigger will activate when the incident severity is either "0" or "1".
+
+**Option 2: Multiple triggers**
+
+Create separate triggers for each severity level within the same runbook assignment. Each trigger handles one severity level independently.
+
+#### Alternative Severity Naming Conventions
+
+The system accepts alternative severity names from integrations like FireHydrant and PagerDuty. These values are automatically mapped to numeric severity strings:
+
+| Alternative Names | Mapped Value |
+|-------------------|--------------|
+| `SEV0`, `SECURITY0`, `CUSTOMER-P0` | `"0"` |
+| `SEV1`, `INTERNAL-PROD`, `SECURITY1`, `CUSTOMER-P1` | `"1"` |
+| `SEV2`, `DEPLOYMENT`, `SECURITY2` | `"2"` |
+| `SEV3`, `INTERNAL-NONPROD`, `MAINTENANCE` | `"3"` |
+| Any other value | `"4"` |
+
+When incidents are created from external integrations, the severity value is normalized to the numeric string format automatically.
+
 ## Trigger Configuration Best Practices
 
 ### Design Principles
@@ -149,15 +232,29 @@ Implement smart trigger logic:
 
 ## Troubleshooting Triggers
 
-### Common Issues
+<Troubleshoot
+  issue="Trigger not activating for severity-based conditions"
+  mode="docs"
+  fallback="Verify you are using numeric string values for severity (for example, severity = '0' for SEV0:Critical, not severity = 0 or severity = 'SEV0'). Check that you are using supported comparison operators (=, !=, CONTAINS, DOES_NOT_CONTAIN) and not numeric operators (>, <, >=, <=) which do not work with string fields."
+/>
 
-#### Trigger Not Activating
-- **Solution**: Verify trigger conditions match actual event data
-- **Prevention**: Test triggers with realistic scenarios before deployment
+<Troubleshoot
+  issue="Trigger with severity greater than condition does not work"
+  mode="docs"
+  fallback="Severity values are stored as strings, not numbers. You cannot use > or < operators with severity. To trigger on multiple severity levels (for example, SEV0 or SEV1), create separate conditions with severity = '0' and severity = '1', then set the match type to Match Any (OR)."
+/>
 
-#### Performance Issues
-- **Solution**: Optimize trigger conditions and reduce evaluation frequency
-- **Prevention**: Regular performance monitoring and condition refinement
+<Troubleshoot
+  issue="Trigger not activating for any incidents despite correct configuration"
+  mode="docs"
+  fallback="Verify trigger conditions match actual event data. Check the incident type selected in the trigger matches the incidents you are creating. Test triggers with realistic scenarios before deployment. Review the trigger execution logs for error messages."
+/>
+
+<Troubleshoot
+  issue="Trigger activating too frequently or causing performance issues"
+  mode="docs"
+  fallback="Optimize trigger conditions and reduce evaluation frequency. Add more specific conditions to narrow the trigger scope. Consider using Activity Updated frequency only when necessary, as it evaluates on every field change. Review and refine conditions regularly based on trigger execution patterns."
+/>
 
 ## Integration with Key Events
 
@@ -200,7 +297,5 @@ This approach allows for seamless integration between event detection and automa
 - [AI SRE Best Practices Guide](../resources/ai-sre-best-practices.md)
 - [Incident Response Workflows](../incidents/incident-workflows.md)
 - [Alert Management Best Practices](../alerts/alert-rules.md)
-
----
 
 <NeedHelpFooter />

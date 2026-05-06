@@ -5,6 +5,8 @@ sidebar_label: Set Up the Mobile App
 sidebar_position: 2
 ---
 
+import DocImage from '@site/src/components/DocImage';
+
 # Set Up the Harness AI SRE Mobile App
 
 The Harness AI SRE mobile app extends your incident response capabilities to mobile devices, ensuring you never miss critical alerts or incidents while on-call. 
