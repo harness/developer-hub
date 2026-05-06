@@ -169,6 +169,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## May 2026
+
+### Version 26.05.89100 <!-- May 06, 2026 -->
+
+#### Fixed issues
+- Resolved an issue where Artifactory artifact fetching was failing for services using repository-level access tokens. The delegate now properly handles authentication and artifact retrieval for higher environment deployments. [CDS-121537]
+
 ## April 2026
 
 ### Version 25.11.87306 <!-- April 28, 2026 -->
