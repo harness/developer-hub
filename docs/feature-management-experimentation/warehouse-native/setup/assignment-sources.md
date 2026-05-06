@@ -14,25 +14,23 @@ sidebar_position: 1
   target="_self"
 />
 
-## Overview
-
-To prepare Assignment Sources for Warehouse Native Experimentation, transform your raw exposure or impression logs into a clean, standardized table that serves as the foundation for experimentation analyses.
+To prepare an [Assignment Source](/docs/feature-management-experimentation/warehouse-native/setup/configure-assignments) for Warehouse Native Experimentation, transform your raw exposure or impression logs into a clean, standardized table that serves as the foundation for experimentation analyses.
 
 This page describes the required fields, recommended fields, and best practices for preparing your assignment source tables.
 
 ## Required columns
+
+:::info
+These fields are mandatory. Without them, Harness FME cannot map exposures to experiment results.
+:::
 
 Every <Tooltip id="fme.warehouse-native.assignment-source">Assignment Source</Tooltip> table must include the following columns:
 
 | Column                        | Type                     | Description                                                                                                                                             |
 | ----------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Unique Key**                | `STRING`                 | Unique identifier for the unit of randomization (for example, `user_id`, `account_id`, or a custom key). Must be stable across the experiment duration. |
-| **Exposure Timestamp**        | `DATETIME` / `TIMESTAMP` | The precise time when the assignment occurred (for example, when an impression was logged, a flag evaluated, or `getTreatment` was called).             |
+| **Exposure Timestamp**        | `DATETIME` / `TIMESTAMP` | The time the assignment occurred (for example, when an impression was logged, a flag evaluated, or `getTreatment` was called). Must be provided in epoch milliseconds or UTC format (e.g. `1714953600000` or `2026-05-05T00:00:00Z`). <br /><br /> Timestamps must be in UTC (epoch milliseconds or UTC datetime) and align with the format used in [Metric Sources](/docs/feature-management-experimentation/warehouse-native/setup/metric-sources) for accurate joins and analysis.            |
 | **Treatment (Variant Group)** | `STRING`                 | The assigned experiment variant (for example, `control`, `treatment_a`, `variant_1`).                                                                   |
-
-:::info
-These fields are mandatory. Without them, Warehouse Native cannot map exposures to experiment results.
-:::
 
 ## Recommended columns
 
@@ -83,7 +81,9 @@ Follow these best practices for preparing your assignment table in your data war
 
 - **Consistent Variant Labels**: Standardize variant naming (`control`, `treatment`, `variant_1`) across experiments. Avoid null or empty strings; default to `control` if needed.
 
-- **Timestamps in UTC**: Store all exposure timestamps in UTC for consistent comparisons across regions.
+- **Timestamp Format**: All exposure timestamps must be in epoch milliseconds or UTC (ISO 8601).
+
+- **Use UTC Consistently**: Store all exposure and event timestamps in UTC to ensure consistent comparisons across regions.
 
 - **Stable Identifiers**: Use the same user or account key across <Tooltip id="fme.warehouse-native.assignment-source">Assignment Source</Tooltip> and <Tooltip id="fme.warehouse-native.metric-source">Metric Source</Tooltip> tables. If your system logs multiple IDs (for example, `cookie_id` and `user_id`), choose the most stable one.
 

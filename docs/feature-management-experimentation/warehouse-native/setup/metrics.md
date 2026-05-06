@@ -14,8 +14,6 @@ sidebar_position: 5
   target="_self"
 />
 
-## Overview
-
 This page explains how to create, manage, and troubleshoot metric definitions for Warehouse Native Experimentation in Harness FME. A <Tooltip id="fme.warehouse-native.metric">metric</Tooltip> specifies how success is measured in an <Tooltip id="fme.warehouse-native.experiment">experiment</Tooltip> by associating a metric source to business logic (i.e. an event type, aggregation method, or impact direction) so your team can consistently measure outcomes. 
 
 ## Setup

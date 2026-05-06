@@ -14,8 +14,6 @@ sidebar_position: 3
   target="_self"
 />
 
-## Overview
-
 An Assignment Source defines where Harness FME reads experiment exposure (or impression) data from your data warehouse.
 
 When creating or editing an <Tooltip id="fme.warehouse-native.assignment-source">Assignment Source</Tooltip>, navigate to the **Experiments** page from the FME navigation menu and click the **Assignment Sources** tab. Then, click **+ Create assignment source**.

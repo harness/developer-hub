@@ -17,8 +17,6 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-## Overview
-
 To start using Warehouse Native Experimentation:
 
 1. [Connect your data warehouse](/docs/feature-management-experimentation/warehouse-native/integrations) to Harness FME.

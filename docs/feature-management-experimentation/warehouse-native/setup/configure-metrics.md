@@ -14,8 +14,6 @@ sidebar_position: 4
   target="_self"
 />
 
-## Overview
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

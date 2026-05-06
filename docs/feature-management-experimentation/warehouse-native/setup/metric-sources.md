@@ -14,25 +14,23 @@ sidebar_position: 2
   target="_self"
 />
 
-## Overview
-
-To prepare Metric Sources for Warehouse Native Experimentation, transform your raw event logs into a clean, standardized table that serves as the foundation for calculating metrics. 
+To prepare a [Metric Source](/docs/feature-management-experimentation/warehouse-native/setup/configure-metrics) for Warehouse Native Experimentation, transform your raw event logs into a clean, standardized table that serves as the foundation for calculating metrics. 
 
 This page describes the required fields, recommended fields, and best practices for preparing your metric source tables.
 
 ## Required columns
+
+:::info
+These fields are mandatory. Without them, Harness FME cannot define and calculate metrics.
+:::
 
 Every <Tooltip id="fme.warehouse-native.metric-source">Metric Source</Tooltip> table must include the following columns:
 
 | **Column**          | **Type**             | **Description**                                                                                                                                   |
 | ------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Unique Key**      | `STRING`               | Unique identifier for the unit of randomization (e.g., `user_id`, `account_id`, or custom key). Must align with the key in the Assignment Source. |
-| **Event Timestamp** | `DATETIME` / `TIMESTAMP` | The precise time when the event occurred.                                                                                                         |
+| **Event Timestamp** | `DATETIME` / `TIMESTAMP` | The time the event occurred. Must be provided in epoch milliseconds or UTC format (e.g. `1714953600000` or `2026-05-05T00:00:00Z`). <br /><br /> Must align with the timestamp format used in the [Assignment Source](/docs/feature-management-experimentation/warehouse-native/setup/assignment-sources) for accurate joins and analysis.                                                                                                         |
 | **Event Name**      | `STRING`               | The type of event (e.g., `purchase`, `page_view`, `add_to_cart`).                                                                                 |
-
-:::info
-These fields are mandatory. Without them, Warehouse Native cannot define and calculate metrics.
-:::
 
 ## Recommended columns
 
@@ -67,9 +65,12 @@ While not required, these fields make debugging, filtering, and governance more 
 
 ## Prepare your metric table
 
+Follow these best practices for preparing your metric table in your data warehouse.
+
 - **Consistency with Assignment Source**: Use the same key (`user_id`, `account_id`) in both tables. This is critical for joining exposures to outcomes.
 - **De-duplication**: Remove duplicate event logs, which is common in streaming pipelines. Define uniqueness as (`user_id`, `event_name`, `event_timestamp`, `value`) when possible.
-- **Timestamps in UTC**: Always store `event_timestamp` in UTC.
+- **Timestamp Format**: `event_timestamp` must be in epoch milliseconds or UTC (ISO 8601).
+- **Use UTC Consistently**: Always store `event_timestamp` in UTC.
 - **Flatten Properties Early**: JSON blobs are flexible but slow in downstream queries. Extract only the fields needed for metrics (e.g., `amount`, `plan_tier`, `country`).
 - **Event Naming Conventions**: Standardize event names across products and teams. Avoid mixing singular and plural (for example: `purchase` vs `purchases`).
 - **Partitioning and Indexing**: Partition large tables by `DATE(event_timestamp)`. Cluster or index by `user_id` or `event_name` for efficient joins with Assignment Sources.
