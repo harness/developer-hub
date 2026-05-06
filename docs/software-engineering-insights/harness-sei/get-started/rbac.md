@@ -142,7 +142,7 @@ flowchart TD
 
 ### Prerequisites
 
-- A valid [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys/) with permissions to manage resource groups
+- A valid [Harness API key](/docs/software-engineering-insights/harness-sei/manage/api-keys#create-an-sei-api-key) with permissions to manage resource groups
 - Your Harness Account ID, Org ID, and Project ID
 - SEI 2.0 enabled in your project
 

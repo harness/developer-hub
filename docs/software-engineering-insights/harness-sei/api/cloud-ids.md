@@ -51,9 +51,10 @@ If you are using JSON:
 
 ```bash
 curl -X PATCH \
-  'https://app.harness.io/prod1/sei/api/v2/developers/identities' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers/identities" \
   -H "accept: application/json" \
-  -H "x-api-key: <YOUR_API_KEY>" \
+  -H "authorization: ApiKey <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '[
     {
@@ -68,8 +69,9 @@ If you are using a CSV file:
 
 ```bash
 curl -X PATCH \
-  'https://app.harness.io/prod1/sei/api/v2/developers/identities' \
-  -H "x-api-key: <YOUR_API_KEY>" \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers/identities" \
+  -H "authorization: ApiKey <YOUR_API_KEY>" \
   -F 'file=@"/PATH/Downloads/sample_developer.csv"'
 ```
 
@@ -178,8 +180,9 @@ Use `Content-Type: multipart/form-data` to upload a CSV file.
 
 ```bash
 curl -X PATCH \
-  'https://app.harness.io/prod1/sei/api/v2/developers/identities' \
-  -H "x-api-key: <YOUR_API_KEY>" \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)  
+  "${BASE_URL}/prod1/sei/api/v2/developers/identities" \
+  -H "authorization: ApiKey <YOUR_API_KEY>" \
   -F 'file=@"/PATH/Downloads/sample_developer.csv"'
 ```
 

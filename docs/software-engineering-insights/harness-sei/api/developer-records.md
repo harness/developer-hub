@@ -29,13 +29,14 @@ All Harness SEI APIs require authentication using a Harness API key.
 
 To authenticate:
 
-1. Create a [Harness API key](/docs/platform/automation/api/api-quickstart/).
+1. Create a [Harness API key](/docs/software-engineering-insights/harness-sei/manage/api-keys#create-an-sei-api-key).
 1. Include the API key in your request header:
 
-   ```json
+   ```bash
    curl -X GET \
-     "https://app.harness.io/gateway/sei/api/v2/developers/schema" \
-     -H "x-api-key: <YOUR_API_KEY>" \
+     # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+     "${BASE_URL}/gateway/sei/api/v2/developers/schema" \
+     -H "authorization: ApiKey <YOUR_API_KEY>" \
    ```
 
 ## Manage developer records
@@ -68,9 +69,10 @@ For example:
 
 ```bash
 curl -X POST \
-  'https://app.harness.io/prod1/sei/api/v2/developers' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers" \
   -H "accept: application/json" \
-  -H "x-api-key: <YOUR_API_KEY>" \
+  -H "authorization: ApiKey <YOUR_API_KEY>" \ 
   -F "file=@sample_file.csv;type=text/csv"
 ```
 
@@ -119,16 +121,18 @@ For example:
 ```bash
 # Re-upload
 curl -X PUT \
-  'https://app.harness.io/prod1/sei/api/v2/developers' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers" \
   -H "accept: application/json" \
-  -H "x-api-key: <YOUR_API_KEY>" \
+  -H "authorization: ApiKey <YOUR_API_KEY>" \
   -F "file=@Updated_Developers.csv;type=text/csv"
 
 # Approve
 curl -X PATCH \
-  'https://app.harness.io/prod1/sei/api/v2/developers/versions/<VERSION_ID>' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers/versions/<VERSION_ID>" \
   -H "accept: application/json" \
-  -H "x-api-key: <YOUR_API_KEY>" \
+  -H "authorization: ApiKey <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{"active": true}'
 ```
@@ -179,15 +183,17 @@ For example:
 ```bash
 # List JSON
 curl -X GET \
-  'https://app.harness.io/prod1/sei/api/v2/developers?searchKey=department&searchValue=Engineering&pageIndex=0&pageSize=50' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers?searchKey=department&searchValue=Engineering&pageIndex=0&pageSize=50" \
   -H "accept: application/json" \
-  -H "x-api-key: <YOUR_API_KEY>"
+  -H "authorization: ApiKey <YOUR_API_KEY>"
 
 # Download CSV
 curl -X GET \
-  'https://app.harness.io/prod1/sei/api/v2/developers' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers" \
   -H "accept: text/csv" \
-  -H "x-api-key: <YOUR_API_KEY>"
+  -H "authorization: ApiKey <YOUR_API_KEY>"
 ```
 
 </TabItem> 
@@ -231,9 +237,10 @@ curl -X GET \
 
 #### Reupload developer records (`POST /v2/developers/reupload`)
 
-```json
+```bash
 curl -X 'POST' \
-  'https://app.harness.io/prod1/sei/api/v2/developers/reupload?fileType=CSV' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers/reupload?fileType=CSV" \
   -H "accept: application/json" \
   -H "Content-Type: multipart/form-data" \
   -F "file=@Sample_CSV_for_Importing_Developers.csv;type=text/csv"
@@ -241,18 +248,20 @@ curl -X 'POST' \
 
 #### Approve developer records (`POST /v2/developers/uploads/{uploadId}/approve`)
 
-```json
+```bash
 curl -X 'POST' \
-  'https://app.harness.io/prod1/sei/api/v2/developers/uploads/<YOUR_UPLOAD_ID>/approve' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers/uploads/<YOUR_UPLOAD_ID>/approve" \
   -H 'accept: */*' \
   -d ''
 ```
 
 #### Upsert developers (`PATCH /v2/developers`)
 
-```json
+```bash
 curl -X 'PATCH' \
-  'https://app.harness.io/prod1/sei/api/v2/developers' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers" \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '[
@@ -265,9 +274,10 @@ curl -X 'PATCH' \
 
 #### Delete developers (`DELETE /v2/developers`)
 
-```json
+```bash
 curl -X 'DELETE' \
-  'https://app.harness.io/prod1/sei/api/v2/developers' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers" \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -279,10 +289,11 @@ curl -X 'DELETE' \
 
 #### Search/list developers (`POST /v2/developers/list`)
 
-```json
+```bash
 curl -X 'POST' \
-  'https://app.harness.io/prod1/sei/api/v2/developers/list
-pageIndex=<INTEGER>&pageSize=<INTEGER>' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers/list
+pageIndex=<INTEGER>&pageSize=<INTEGER>" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -297,17 +308,19 @@ pageIndex=<INTEGER>&pageSize=<INTEGER>' \
 
 #### Get developer schema (`GET /v2/developers/schema`)
 
-```json
+```bash
 curl -X 'GET' \
-  'https://app.harness.io/prod1/sei/api/v2/developers/schema' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers/schema" \
   -H 'accept: application/json' \
 ```
 
 #### Download developer data (`GET /v2/developers/download`)
 
-```json
+```bash
 curl -X 'GET' \
-  'https://app.harness.io/prod1/sei/api/v2/developers/download' \
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io) 
+  "${BASE_URL}/prod1/sei/api/v2/developers/download" \
   -H 'accept: text/csv' \
 ```
 

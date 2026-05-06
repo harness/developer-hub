@@ -35,8 +35,9 @@ For example:
 
 ```bash
 curl -X GET \
-  "https://app.harness.io/gateway/sei/api/v2/developers/schema" \
-  -H "x-api-key: <YOUR_API_KEY>"
+  # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)
+  "${BASE_URL}/gateway/sei/api/v2/developers/schema" \ 
+  -H "authorization: ApiKey <YOUR_API_KEY>" 
 ```
 
 ## Manage SEI API keys
