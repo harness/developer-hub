@@ -380,7 +380,7 @@ This release includes the following Harness module and component versions.
 | Harness Manager              | 1.138.4                                                                                      |
 | LE Nextgen                   | 1.18.0                                                                                       |
 | Log Service                  | 1.45.3                                                                                       |
-| Looker                       | 1.16.0                                                                                       |
+| Looker                       | 1.14.1                                                                                       |
 | Next Gen UI                  | 1.126.2                                                                                      |
 | NG Auth UI                   | 1.39.0                                                                                       |
 | NG CE UI                     | 1.83.7                                                                                       |
