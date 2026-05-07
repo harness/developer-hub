@@ -69,3 +69,42 @@ spec:
 ```
 
 This toleration only matches the Harness taint, so the DaemonSet will only schedule on nodes with this specific taint.
+
+
+**Option 3: Run DaemonSet on Specific Node Types**
+
+If you want your DaemonSet to run only on specific Harness-managed node types, use tolerations with explicit values:
+
+**Spot Nodes Only**
+
+```yaml
+tolerations:
+  - key: ccm.harness.io/spot-ready
+    operator: Equal
+    value: Ready
+    effect: NoSchedule
+```
+
+**On-Demand Nodes Only**
+
+```yaml
+tolerations:
+  - key: ccm.harness.io/spot-ready
+    operator: Equal
+    value: NotReady
+    effect: NoSchedule
+```
+
+**Both Spot and On-Demand (exclude Disabled)**
+
+```yaml
+tolerations:
+  - key: ccm.harness.io/spot-ready
+    operator: Equal
+    value: Ready
+    effect: NoSchedule
+  - key: ccm.harness.io/spot-ready
+    operator: Equal
+    value: NotReady
+    effect: NoSchedule
+```
