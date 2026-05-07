@@ -5,7 +5,7 @@ export const qwietaiModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "qwietai
 
 export const QwietaiData: Horizon = {
   Now: {
-    description: "Q1 2026, February 2026 - April 2026",
+    description: "Q2 2026, May 2026 - July 2026",
     feature: [  
       {
         tag: [{ value: "Platform" }, { value: "Performance" }],
@@ -18,34 +18,9 @@ export const QwietaiData: Horizon = {
         description: "Integrate with Harness MCP to support SAST/SCA scanning and actions directly from IDEs.",
       },
       {
-        tag: [{ value: "SCA" }, { value: "OSS" }, { value: "Risk" }],
-        title: "OSS Risk Detection",
-        description: "Identify OSS risks such as end-of-life, unmaintained, malicious, abandoned, hijackable, and typosquatted packages."
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "IDE"}, { value: "AI"}],
-        title: "Secure Vibe Coding",
-        description: "Use predefined hooks in AI-native IDEs and CLIs (Cursor, Windsurf, Gemini) to scan code as it's generated, securing code at the source.",
-      },
-      {
         tag: [{ value: "SAST" }, { value: "AI"}],
-        title: "AI-Enhanced SAST(Beta)",
+        title: "AI-Enhanced SAST",
         description: "Extend SAST coverage and reduce false positives through AI-enhanced vulnerability detection.",
-      },
-      {
-        tag: [{ value: "SAST" }, { value: "Language Support"}],
-        title: "Groovy Language Support",
-        description: "Add native SAST scanning support for Groovy.",
-      },
-      {
-        tag: [{ value: "Governance" }, { value: "CLI"}],
-        title: "CLI-Based Finding Exemption",
-        description: "Enable suppression of findings via CLI when predefined comments are present.",
-      },
-      {
-        tag: [{ value: "Platform" }, { value: "Governance"}],
-        title: "Organization Configuration API Enhancements",
-        description: "Provide granular update support for organization configuration APIs.",
       },
       {
         tag: [{ value: "Visibility" }, { value: "Platform" }],
@@ -58,21 +33,6 @@ export const QwietaiData: Horizon = {
         description: "Allow super admins to adjust application risk severity based on key contextual factors."
       },
       {
-        tag: [{ value: "Visibility" }, { value: "UX" }],
-        title: "Application Scan Listing",
-        description: "Provide a unified view of scans across all sources at the application level."
-      },
-      {
-        tag: [{ value: "SAST" }, { value: "Visibility" }],
-        title: "Data Flow Code Snippets",
-        description: "Display code snippets within data flow views to improve analysis clarity."
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "Jira" }],
-        title: "Jira Forge Support",
-        description: "Add compatibility with the Jira Forge framework."
-      },
-      {
         tag: [{ value: "Reporting" }, { value: "Visibility" }],
         title: "AppSec Metrics Dashboard",
         description: "Deliver dashboards to track findings, remediation progress, and security trends."
@@ -81,6 +41,11 @@ export const QwietaiData: Horizon = {
         tag: [{ value: "SCA" }, { value: "Visibility" }],
         title: "Improved Transitive Dependency Visibility",
         description: "Enhance visibility into transitive dependencies and associated vulnerabilities."
+      },
+      {
+        tag: [{ value: "Remediation" }, { value: "SCA" }],
+        title: "Autofix for OSS Vulnerabilities",
+        description: "Extend Autofix capabilities to address open-source vulnerabilities."
       },
       {
         tag: [{ value: "Standards" }, { value: "Compliance" }],
@@ -93,29 +58,39 @@ export const QwietaiData: Horizon = {
         description: "Add native SAST scanning support for T-SQL."
       },
       {
+        tag: [{ value: "SAST" }, { value: "Language Support" }],
+        title: "Perl Language Support",
+        description: "Add native SAST scanning support for Perl."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Language Support" }],
+        title: "Support for TOML config files",
+        description: "Scan TOML configuration files in SCA."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Language Support" }],
+        title: "Export SBOM via CLI",
+        description: "Export SBOM via CLI for SCA."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Language Support" }],
+        title: "CPE identifiers support",
+        description: "Expand SCA vulnerability detection to include CPE identifiers."
+      },
+      {
         tag: [{ value: "Visibility" }, { value: "SAST" }, { value: "SCA" }],
         title: "Scan Summary Enhancements",
         description: "Refine scan summaries to show only actionable findings."
       },
-      {
-        tag: [{ value: "Integration" }, { value: "GitHub" }],
-        title: "GitHub App Based Auto Repository Onboarding",
-        description: "Automatically onboard selected GitHub repositories and newly added repositories via a single App installation."
-      }
     ],
   },
   Next: {
-    description: "Q2 2026, May 2026 - July 2026",
+    description: "Q3 2026, Aug 2026 - Oct 2026",
     feature: [
       {
         tag: [{ value: "SAST" }, { value: "Language Support" }],
         title: "Rust Language Support",
         description: "Add native SAST scanning support for Rust."
-      },
-      {
-        tag: [{ value: "Remediation" }, { value: "SCA" }],
-        title: "Autofix for OSS Vulnerabilities",
-        description: "Extend Autofix capabilities to address open-source vulnerabilities."
       },
       {
         tag: [{ value: "Platform" }, { value: "IDE" }],
@@ -128,13 +103,8 @@ export const QwietaiData: Horizon = {
         description: "Provide Visual Studio extensions to run Harness SAST and SCA scans directly within the IDE."
       },
       {
-        tag: [{ value: "AI" }, { value: "Integration" }, { value: "IDE" }],
-        title: "Claude Plugin Support",
-        description: "Extend support for Claude plugins to enable security workflows through Skills and the Harness SAST and SCA MCP."
-      },
-      {
         tag: [{ value: "Platform" }, { value: "Deployment" }],
-        title: "SMP Support",
+        title: "SMP + FIPS Support",
         description: "Enable Harness SAST and SCA support for air-gapped deployments on the Self-Managed Platform."
       },
       {
@@ -143,21 +113,26 @@ export const QwietaiData: Horizon = {
         description: "Enhance AI-driven agentic workflows across IDEs, governance, remediation, and onboarding.",
       },
       {
-        tag: [{ value: "Code Quality" }, { value: "SAST" }],
-        title: "Code Quality Coverage Improvements",
-        description: "Increase detection and coverage of code quality issues.",
-      },
-      {
         tag: [{ value: "Visibility" }, { value: "Reporting"}],
         title: "Detailed Reporting",
         description: "Deliver richer, more granular reporting for insights across scans and projects.",
-      },  
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "GitHub" }],
+        title: "GitHub App Based Auto Repository Onboarding",
+        description: "Automatically onboard selected GitHub repositories and newly added repositories via a single App installation."
+    },  
     ],
   },
   Later: {
-    description: "Q3 2026+, August 2026 & beyond",
+    description: "Q4 2026+, November 2026 & beyond",
     feature: [
-   {
+      {
+        tag: [{ value: "SAST" }, { value: "Visibility" }],
+        title: "Data Flow Code Snippets",
+        description: "Display code snippets within data flow views to improve analysis clarity."
+      },
+      {
         tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
         title: "Vercel Integration",
         description: "Serve as the native security integration for Vercel to ship secure code by default.",
@@ -183,7 +158,52 @@ export const QwietaiData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
-         {
+      {
+        tag: [{ value: "Integration" }, { value: "IDE"}, { value: "AI"}],
+        title: "Secure Vibe Coding",
+        description: "Use predefined hooks in AI-native IDEs and CLIs (Cursor, Windsurf, Gemini) to scan code as it's generated, securing code at the source.",
+        link: "https://docs.shiftleft.io/sast/secure-ai-coding-ai-assisted-development"
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Integration" }, { value: "IDE" }],
+        title: "Claude Plugin Support",
+        description: "Extend support for Claude plugins to enable security workflows through Skills and the Harness SAST and SCA MCP.",
+        link: "https://docs.shiftleft.io/sast/integrations/claude"
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "OSS" }, { value: "Risk" }],
+        title: "OSS Risk Detection",
+        description: "Identify OSS risks such as end-of-life, unmaintained, malicious, abandoned, hijackable, and typosquatted packages.",
+        link: "https://docs.shiftleft.io/sast/analyzing-applications/oss-risks"
+      },
+       {
+        tag: [{ value: "SAST" }, { value: "Language Support"}],
+        title: "Groovy Language Support",
+        description: "Add native SAST scanning support for Groovy.",
+        link: "https://docs.shiftleft.io/sast/analyzing-applications/groovy"
+      },
+      {
+        tag: [{ value: "Governance" }, { value: "CLI"}],
+        title: "CLI-Based Finding Exemption",
+        description: "Enable suppression of findings via CLI when predefined comments are present.",
+        link: "https://docs.shiftleft.io/cli/reference/finding-status"
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "UX" }],
+        title: "Application Scan Listing",
+        description: "Provide a unified view of scans across all sources at the application level."
+      },
+      {
+        tag: [{ value: "Platform" }, { value: "Governance"}],
+        title: "Organization Configuration API Enhancements",
+        description: "Provide granular update support for organization configuration APIs.",
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "Jira" }],
+        title: "Jira Forge Support",
+        description: "Add compatibility with the Jira Forge framework."
+      },
+      {
         tag: [{ value: "Integration" }, { value: "Platform" }],
         title: "Integration with STO",
         description: "Native integration with STO, enabling Qwiet\'s SAST/SCA/Secrets engines to run as first-class Harness Security Scanners.",
@@ -208,11 +228,6 @@ export const QwietaiData: Horizon = {
         link: "https://docs.shiftleft.io/sast/analyzing-applications/swift"
       },
       {
-        tag: [{ value: "Visibility" }, { value: "CPG"}, { value: "SAST"}],
-        title: "Code Snippets in Data Flow",
-        description: "Display full code snippets in data-flow views to enhance CPG analysis and issue clarity.",
-      },
-      {
         tag: [{ value: "Integration" }, { value: "IDE"}],
         title: "Cursor & Windsurf IDE Support",
         description: "Enable SAST/SCA scanning within AI-native IDEs like Cursor and Windsurf.",
@@ -232,7 +247,8 @@ export const QwietaiData: Horizon = {
       {
         tag: [{ value: "AI" }, { value: "Remediation"}, { value: "GitHub"}],
         title: "GitHub AI Autofix Enhancements",
-        description: "Enhance GitHub Autofix with PR tracking, user actions, interactive comments, and bot responses."
+        description: "Enhance GitHub Autofix with PR tracking, user actions, interactive comments, and bot responses.",
+        link: "https://docs.shiftleft.io/sast/integrations/github-app-for-auto-fix"
       },
       {
         tag: [{ value: "Integration" }, {value: "Cloud Security"}, { value: "Visibility" }],
