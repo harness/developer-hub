@@ -3,6 +3,7 @@ title: Overview & What's Supported
 sidebar_position: 1
 sidebar_label: Overview & What's Supported
 description: Guide for configuring and deploying Harness IDP in Self Managed Platform environments
+unlisted: true
 ---
 
 :::info Harness IDP SMP Edition [BETA]
@@ -114,4 +115,4 @@ The following features are supported for Harness IDP SMP Edition:
 ---
 
 ## Next Steps
-Go to [Onboarding Guide](/docs/internal-developer-portal/smp/idp-onboarding.md) to learn how to deploy Harness IDP on SMP.
+Go to [Onboarding Guide](/docs/internal-developer-portal/smp-deprecated/idp-onboarding.md) to learn how to deploy Harness IDP on SMP.
