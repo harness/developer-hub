@@ -241,7 +241,7 @@ Also, please make sure that the setting `Fetch files from Git using provider-spe
 :::
 
 Now, lets deploy the service using filtered list in your CD pipeline.
-1. In your pipeline, create a **Deploy** stage with the **GitOps** option enabled.
+1. In your pipeline, create a **Deploy** stage and select a service that has the relevant GitOps fields populated (for example, a Release Repository or App Set Reference).
 2. In your CD stage, select **Service**.
 3. In **Select Services**, select the services you want to deploy.
 4. Select **Continue**.

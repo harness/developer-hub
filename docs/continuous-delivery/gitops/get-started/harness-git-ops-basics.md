@@ -220,9 +220,9 @@ Kubernetes then pulls the Harness and Argo CD images from their respective publi
 
 ### Service
 
-A Harness GitOps service is the same as any other Harness service. A service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
+A Harness GitOps service uses the same service entity as traditional CD. For GitOps workflows, you populate GitOps-specific fields in the service definition, such as a Release Repository (pointing to the config file that PR pipelines update) or a Deployment Repository (pointing to ApplicationSet YAML). When the feature flag `CDS_GITOPS_MERGE_K8S_SERVICES` is enabled, the GitOps checkbox is removed and the same service can be used in both CD stages and GitOps stages.
 
-For more information, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) and [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
+For more information, go to [GitOps Services](/docs/continuous-delivery/gitops/gitops-entities/service/) and [GitOps vs CD Services](/docs/continuous-delivery/gitops/gitops-entities/service/gitops-vs-cd-service).
 
 ### Service instance
 

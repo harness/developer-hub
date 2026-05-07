@@ -338,7 +338,7 @@ Services represent your microservices and other workloads. Each service contains
 
    <DocImage path={require('./static/harness-variables-36.png')} width="60%" height="60%" title="Click to view full size image" />
 
-* `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether [the GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`).
+* `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether the [GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`). When the feature flag `CDS_GITOPS_MERGE_K8S_SERVICES` is enabled, this expression is no longer relevant as the GitOps checkbox is removed and services use GitOps Repository Sources instead.
 
 #### Check expression isResolved isUnresolved null replacement
 Harness supports expressions to check if a value is resolved instead of relying on null checks. 

@@ -22,7 +22,6 @@ A GitOps environment in Harness represents a deployment target (such as dev, sta
 
 Before creating a GitOps environment, ensure you have:
 
-- A Harness project with GitOps enabled
 - At least one [GitOps cluster](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-3-add-a-harness-gitops-cluster) configured
 - Appropriate RBAC permissions to create environments
 

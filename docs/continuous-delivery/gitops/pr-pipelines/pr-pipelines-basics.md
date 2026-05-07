@@ -346,11 +346,11 @@ Follow these steps to create a basic image-promotion pipeline:
 
 1. **Create a pipeline:** In your Harness project, go to **Pipelines** > **Create Pipeline**. Name it and click **Start**.
 
-2. **Add a Deploy stage:** Click **Add Stage**, select **Deploy**, choose **Kubernetes** as the deployment type, and enable the **GitOps** toggle.
+2. **Add a Deploy stage:** Click **Add Stage**, select **Deploy**, and choose **Kubernetes** as the deployment type.
 
    ![Add Deploy stage](./static/harness-git-ops-application-set-tutorial-51.png)
 
-3. **Select your service:** Choose the GitOps service you configured with a Release Repo manifest.
+3. **Select your service:** Choose the service you configured with a Release Repository in its GitOps Repository Sources.
 
    ![Select service](./static/harness-git-ops-application-set-tutorial-54.png)
 

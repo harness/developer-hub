@@ -547,6 +547,10 @@ Verify that you have the following:
        gitOpsEnabled: true
      ```
 
+     :::info Feature flag: `CDS_GITOPS_MERGE_K8S_SERVICES`
+     When the feature flag `CDS_GITOPS_MERGE_K8S_SERVICES` is enabled, the same service can be used in both CD stages and GitOps stages. You are responsible for populating the relevant fields in the service definition for your use case (for example, a Release Repository for the Update Release Repo step, or an App Set Reference for Fetch Linked Apps). Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+     :::
+
      - Select **New Environment**, and the toggle to **YAML** to use the YAML editor.
      - Select **Edit YAML**, paste in the YAML below, and then select **Save**.
 

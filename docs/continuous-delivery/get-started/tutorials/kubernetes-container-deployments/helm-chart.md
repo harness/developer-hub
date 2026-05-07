@@ -1048,6 +1048,10 @@ A GitOps Application collects the Repository (**what you want to deploy**), Clus
      gitOpsEnabled: true
    ```
 
+   :::info Feature flag: `CDS_GITOPS_MERGE_K8S_SERVICES`
+   When the feature flag `CDS_GITOPS_MERGE_K8S_SERVICES` is enabled, the same service can be used in both CD stages and GitOps stages. You are responsible for populating the relevant fields in the service definition for your use case (for example, a Release Repository for the Update Release Repo step, or an App Set Reference for Fetch Linked Apps). Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+   :::
+
 7. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
 8. Select **Edit YAML**, and then paste the following, and select **Save**
 

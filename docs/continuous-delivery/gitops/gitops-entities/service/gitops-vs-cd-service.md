@@ -36,9 +36,13 @@ GitOps uses a pull-based workflow, where **your Git repository is the source of 
 - **Pulled automatically:** Agents fetch the desired state from Git and make sure your cluster matches.
 - **Continuously reconciled:** Any drift from the Git state gets auto-corrected by the agent.
 
-The **GitOps toggle** in your Kubernetes service setup switches between these models. Enabling it changes what you configure and how deployments run.
+Whether a service is used for GitOps or traditional CD depends on which fields you populate in the service definition and which pipeline stages you use it in.
 
-**This choice is permanent.** When you create a service, you choose between GitOps and traditional CD at creation time, and this cannot be changed afterwards. Plan carefully based on your deployment needs.
+:::info Feature flag: `CDS_GITOPS_MERGE_K8S_SERVICES`
+When this feature flag is enabled, the GitOps checkbox is removed and the `gitOpsEnabled` YAML field becomes redundant. The same service can be used in both CD stages and GitOps stages. You are responsible for populating the relevant fields for your use case (for example, a Release Repository for the Update Release Repo step, or an App Set Reference for Fetch Linked Apps). Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+Without the feature flag, the choice between GitOps and CD is permanent. You choose between them at service creation time and cannot change it afterwards.
 
 :::tip Learn More About GitOps
 
@@ -54,7 +58,7 @@ Want to go deeper? Check out these Harness blogs:
 
 Let’s walk through how each approach works with a real example—rolling out a new image version `v2.0.0`.
 
-### CD Service Workflow (GitOps Disabled)
+### CD Service Workflow (without GitOps)
 
 **Your service configuration:**
 
@@ -78,7 +82,7 @@ artifacts:
 
 **Key trait:** **Push-based** — Harness acts directly to update your cluster.
 
-### GitOps Service Workflow (GitOps Enabled)
+### GitOps Service Workflow (with GitOps Repository Sources)
 
 **Your service configuration:**
 
@@ -124,7 +128,7 @@ manifests:
 
 The pipeline steps you build differ depending on which model you use.
 
-### CD Service Steps (GitOps Disabled)
+### CD Service Steps (traditional CD)
 
 In traditional CD, pipeline steps interact directly with your cluster:
 
@@ -155,7 +159,7 @@ execution:
             - configmap.yaml
 ```
 
-### GitOps Service Steps (GitOps Enabled)
+### GitOps Service Steps (with GitOps Repository Sources)
 
 GitOps pipelines manage changes via Git and rely on the agent to apply those updates.
 
@@ -226,9 +230,9 @@ Managing microservices in dev, staging, and prod, each with distinct config file
 
 ## Summary: Core Differences
 
-The **GitOps toggle** fundamentally changes service behavior:
+With the feature flag enabled, the same service can serve both models. The fields you populate determine the behavior:
 
-| What Changes           | CD Service (GitOps Disabled)             | GitOps Service (GitOps Enabled)      |
+| What Changes           | CD workflow                              | GitOps workflow                      |
 |-----------------------|------------------------------------------|--------------------------------------|
 | **Manifest Options**  | Add K8sManifest, Add Override File       | Add Release Repo, Add Deployment Repo|
 | **Manifest Target**   | K8s resources (Deployment, Service, etc.)| Git paths, config files, AppSet templates|

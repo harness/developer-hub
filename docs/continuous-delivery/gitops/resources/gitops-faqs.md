@@ -188,9 +188,9 @@ spec:
 - `serviceRef` should reference your Harness service identifier
 - This configuration properly associates your GitOps application with the specified Harness service and environment
 
-### What specific role does the "Add Deployment Repo Manifest" serve within the manifests for a Kubernetes service enabled with GitOps functionality?
+### What is the role of a Deployment Repository in a GitOps service?
 
-The `Add Deployment Repo Manifest` primarily serves as a means to access additional repositories within the PR Pipeline. While the Release Repo is utilized directly by the pipeline, the Deployment Repo facilitates the retrieval of information from another repository, enhancing the pipeline's functionality and flexibility.
+In the **GitOps Repository Sources** section of a service definition, you can add both a **Release Repository** and a **Deployment Repository**. The Deployment Repository points to your ApplicationSet template YAML in Git. The Fetch Linked Apps pipeline step reads this template to discover which ArgoCD applications are generated from it and linked to your service. While the Release Repository is used directly by the Update Release Repo step, the Deployment Repository facilitates the retrieval of ApplicationSet information from another repository, enhancing the pipeline's functionality and flexibility.
 
 ### Can I use Harness GitOps images from a local registry?
 
