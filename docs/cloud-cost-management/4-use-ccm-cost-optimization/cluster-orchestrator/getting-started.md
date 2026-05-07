@@ -48,6 +48,10 @@ Cluster Orchestrator is designed for quick implementation with minimal configura
 
 ## Quick Start
 
+:::important
+Cluster Orchestrator does not automatically manage DaemonSet scheduling. You must add tolerations to your DaemonSets manually.Go to [DaemonSet troubleshooting](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/troubleshooting) to add tolerations manually.
+:::
+
 1. Log in to [Harness](https://app.harness.io) and go to **Cloud Costs** → **Cluster Orchestrator**
 2. If you don't have a Kubernetes connector, click on "Add New Cluster" else follow step 5.
 3. Click on "New Cluster/Cloud Account", then select "Kubernetes". You can create a Kubernetes Connector through two methods:
