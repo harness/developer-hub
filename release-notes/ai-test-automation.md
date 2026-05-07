@@ -23,6 +23,15 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 :::
 
+## May 2026
+
+### 2026.05.v1
+
+#### Enhancements & Bug Fixes
+
+- **General tasks now run as manual actions only**  
+  You can no longer add General tasks that fire automatically based on predefined conditions. Manual General tasks continue to work as expected.
+
 ## April 2026
 
 ### 2026.04.v1
