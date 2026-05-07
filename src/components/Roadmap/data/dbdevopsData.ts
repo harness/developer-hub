@@ -18,49 +18,56 @@ export const DbdevopsData: Horizon = {
         title: "Snowflake Support",
         description:
           "support using DBDevOps against Snowflake.",
-        tag: [{ value: "Integrations" }, {value: "Q1"}],
+        tag: [{ value: "Database Support" }, {value: "Q1"}],
         link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#prerequisites-for-snowflake"
       },
       {
-        title: "IAM Auth for GCP & Liquibase",
+        title: "DB2 Support",
         description:
-          "support using DBDevOps to connect with IAM Auth for GCP and Liquibase.",
-        tag: [{ value: "Integrations" }, {value: "Q1"}]
+          "support using DBDevOps against DB2 (LUW, iseries, or zOS).",
+        tag: [{ value: "Database Support" }, {value: "Q1"}],
+        link: "https://developer.harness.io/release-notes/database-devops/#release-187x"
+      },
+      {
+        title: "BigQuery Support",
+        description:
+          "support using DBDevOps against Google Bigquery.",
+        tag: [{ value: "Database Support" }, {value: "Q1"}],
+        link: "https://developer.harness.io/release-notes/database-devops#release-189x"
+      },
+      {
+        title: "GCP Keyless auth for Liquibase",
+        description:
+          "support using DBDevOps to connect with the delegate service account for GCP and Liquibase.",
+        tag: [{ value: "Authentication" }, {value: "Q1"}],
+        link: "https://developer.harness.io/docs/database-devops/features/keyless-authentication"
+      },
+      {
+        title: "GCP OIDC auth for Liquibase",
+        description:
+          "support using DBDevOps to connect with the OIDC for GCP and Liquibase.",
+        tag: [{ value: "Authentication" }, {value: "Q1"}],
+        link: "https://developer.harness.io/docs/database-devops/features/oidc-authentication"
       },
       {
         title: "Kerberos Auth",
         description:
           "support using DBDevOps to connect with Kerberos Auth for Oracle and MSSQL.",
-        tag: [{ value: "Integrations" }, {value: "Q1"}],
+        tag: [{ value: "Authentication" }, {value: "Q1"}],
         link: "https://developer.harness.io/docs/database-devops/features/kerberos-authentication/"
       },
       {
-        title: "Author DB Change",
+        title: "Support Percona Toolkit",
         description:
-          "Author database change via natural language queries, powered by Harness AI.",
-        tag: [{ value: "Core Features" }, {value: "Q4"}],
-        link:"https://developer.harness.io/docs/database-devops/use-database-devops/configure-llm-for-database-devops"
-      },  
-      {
-        title: "Native Flyway Support",
-        description:
-          "Add native support for using Flyway instead of Liquibase",
-        tag: [{ value: "Integrations" }, {value: "Q4"}],
-        link:"https://developer.harness.io/docs/database-devops/use-database-devops/get-started/onboarding-guide/"
+          "Allow using Database DevOps with the percona online schema change plugin for mysql",
+        tag: [{ value: "Integrations" }, {value: "Q1"}],
+        link: "https://developer.harness.io/docs/database-devops/features/using-percona-for-mysql/"
       },
       {
-        title: "AlloyDB Support",
+        title: "Execution Time Optimization Part 1",
         description:
-          "Add Google AlloyDB as a supported database",
-        tag: [{ value: "Integrations" }, {value: "Q4"}],
-        link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors#setting-up-alloydb"
-      },
-      {
-        title: "MongoDB Native Executor",
-        description:
-          "Allow directly running mongo.sh scripts from within a changeset",
-        tag: [{ value: "Integrations" }, {value: "Q4"}],
-        link: "https://developer.harness.io/docs/database-devops/concepts/database-devops/concepts/mongodb-command/#what-is-native-execution-for-mongodb"
+          "Decreases how many containers the apply step runs. This is behind a feature flag currently, contact Harness for access.",
+        tag: [{ value: "Core Features" }, {value: "Q1"}]
       }
     ],
   },
@@ -68,22 +75,34 @@ export const DbdevopsData: Horizon = {
     description: "Currently under active development, ~ current quarter",
     feature: [       
       {
-        title: "Support Percona",
-        description:
-          "Allow using Database DevOps with the percona online schema change plugin for mysql",
-        tag: [{ value: "Integrations" }],
-      },   
-      {
         title: "Onboarding Wizard",
         description:
           "guided setup experience for new users",
         tag: [{ value: "Core Features" }],
       },    
       {
+        title: "BigTable support",
+        description:
+          "support applying database changes to Google BigTable",
+        tag: [{ value: "Database Support" }],
+      },   
+      {
         title: "DynamoDB support",
         description:
-          "support applying database changes to DynamoDB",
-        tag: [{ value: "Integrations" }],
+          "support applying database changes to Google BigTable",
+        tag: [{ value: "Database Support" }],
+      },  
+      {
+        title: "Oracle Native Executor",
+        description:
+          "leverage native oracle cli to deploy your changes when using liquibase.",
+        tag: [{ value: "Database Support" }],
+      },  
+      {
+        title: "MS SQL Native Executor",
+        description:
+          "leverage native MS SQL cli to deploy your changes when using liquibase.",
+        tag: [{ value: "Database Support" }],
       },
       {
         title: "ECS Runner Support",
@@ -92,57 +111,75 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Integrations" }],
       },
       {
-        title: "AI Author DB Change - v2",
-        description:
-          "simplify setup of AI Authorings ability to open a PR for the generated change.",
-        tag: [{ value: "Core Features" }],
-      },
-      {
-        title: "Support for DB2",
-        description: 
-          "Add DB2 as a supported database.",
-        tag: [{ value: "Integrations" }],
-      },
-    ],
-  },
-  "Next": {
-    description: "What we'll build next, next ~2 quarters",
-    feature: [
-      {
-        title: "BigQuery Support",
-        description:
-          "Add Google BigQuery as a supported database",
-        tag: [{ value: "Core Features" }],
-      },
-      {
-        title: "Teradata Support",
-        description:
-          "Add Teradata as a supported database",
-        tag: [{ value: "Core Features" }],
-      },
-      {
         title: "Impact Analysis",
         description: 
           "Automatically analyze changes against db metadata before applying to surface possible unintended consequences.",
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "BigTable Support",
+        title: "Pin Image UI",
         description:
-          "Add Google BigTable as a supported database",
-        tag: [{ value: "Integrations" }],
+          "UI for managing drone image versions used by DB DevOps.",
+        tag: [{ value: "Core Features" }],
       },
       {
-        title: "Oracle Native Executor",
-        description: 
-          "Allow directly running oracle SQL Scripts using Oracle's sqlplus command line utility, instead of Oracle's JDBC driver, which does not support certain proprietary Oracle features natively.",
-        tag: [{ value: "Integrations"}],
+        title: "AI Author DB Change - v2",
+        description:
+          "simplify setup of AI Authorings ability to open a PR for the generated change.",
+        tag: [{ value: "Core Features" }],
       },
       {
-        title: "MSSQL Native Executor",
-        description: 
-          "Allow directly running SQL Scripts using Microsoft's sqlcmd command line utility, instead of MSSQL's JDBC driver, which does not support certain proprietary MSSQL features natively.",
-        tag: [{ value: "Integrations"}],
+        title: "Execution Time Optimization Part 2",
+        description:
+          "Decreases execution time for the new containers the apply step runs.",
+        tag: [{ value: "Core Features" }, {value: "Q1"}]
+      }
+    ],
+  },
+  "Next": {
+    description: "What we'll build next, next ~2 quarters",
+    feature: [
+      {
+        title: "Relationship Diagram",
+        description:
+          "visualize the state of database tables within a db instance",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Author DB Change Files Support",
+        description:
+          "Allow Providing files that author db change leverages during authoring (e.g. a CSV file)",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Entra Auth for Liquibase",
+        description:
+          "First class for authenticating using Entra authentication when deploying using liquibase",
+        tag: [{ value: "Authentication" }],
+      },
+      {
+        title: "Neo4j Support",
+        description:
+          "support applying database changes to Neo4j",
+        tag: [{ value: "Database Support" }],
+      },
+      {
+        title: "Databricks Support",
+        description:
+          "support applying database changes to Databricks",
+        tag: [{ value: "Database Support" }],
+      },
+      {
+        title: "Yugabyte Support",
+        description:
+          "support applying database changes to Yugabyte",
+        tag: [{ value: "Database Support" }],
+      },
+      {
+        title: "Entra Auth for Liquibase",
+        description:
+          "First class for authenticating using Entra authentication when deploying using liquibase",
+        tag: [{ value: "Authentication" }],
       },
       {
         title: "Governance for MongoDB",
@@ -151,10 +188,10 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Governance" }],
       },
       {
-        title: "Relationship Diagram",
-        description:
-          "visualize the state of database tables within a db instance",
-        tag: [{ value: "Core Features" }],
+        title: "OOTB Policy Library",
+        description: 
+          "a Library of example policies in product",
+        tag: [{ value: "Governance" }],
       },
     ]
   },
@@ -165,31 +202,25 @@ export const DbdevopsData: Horizon = {
         title: "Support for Spanner for postgresql",
         description: 
           "Add support for the postgres version of the Google spanner database as a supported database type.",
-        tag: [{ value: "Integrations" }],
+        tag: [{ value: "Database Support" }],
       },
       {
         title: "Support for AWS Redshift",
         description: 
           "Add support for the AWS Redshift database as a supported database type.",
-        tag: [{ value: "Integrations" }],
+        tag: [{ value: "Database Support" }],
       },
       {
         title: "Support for Couchbase",
         description: 
           "Add support for the Couchbase database as a supported database type.",
-        tag: [{ value: "Integrations" }],
+        tag: [{ value: "Database Support" }],
       },
       {
         title: "Support for Teradata",
         description: 
           "Add support for the Teradata database as a supported database type.",
-        tag: [{ value: "Integrations" }],
-      },
-      {
-        title: "Support for YugabyteDB",
-        description: 
-          "Add support for the YugabyteDB database as a supported database type.",
-        tag: [{ value: "Integrations" }],
+        tag: [{ value: "Database Support" }],
       },
       {
         title: "DB Provisioning",

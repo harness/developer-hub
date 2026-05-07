@@ -30,8 +30,11 @@ export const APPROVED_CATEGORY_PALETTE: Record<
   Platform: { light: ["#00ADE4", "transparent"], dark: ["#00ADE4", "transparent"] },
   Integrations: { light: ["#E2F5FF", "#0672B6"], dark: ["#1A3045", "#6BB3E8"] },
   Security: { light: ["#EBEFFF", "#2E1CF3"], dark: ["#363258", "#A89FF5"] },
+  Authentication: { light: ["#EBEFFF", "#2E1CF3"], dark: ["#363258", "#A89FF5"] },
   "Access Control": { light: ["#FFF1F7", "#9A0041"], dark: ["#4A2838", "#E8A8C4"] },
   "CI/CD": { light: ["#E2F5FF", "#0672B6"], dark: ["#1A3045", "#6BB3E8"] },
+  "Core Features": { light: ["#00ADE4", "transparent"], dark: ["#00ADE4", "transparent"] },
+  "Orchestration": { light: ["#E2F5FF", "#0672B6"], dark: ["#1A3045", "#6BB3E8"] },
   Pipelines: { light: ["#00ADE4", "transparent"], dark: ["#00ADE4", "transparent"] },
   Governance: { light: ["#EBEFFF", "#2E1CF3"], dark: ["#363258", "#A89FF5"] },
   "Insights & Reporting": { light: ["#01C9CC", "#ECFFFF"], dark: ["#0D3D3E", "#7ED9DB"] },
@@ -39,6 +42,7 @@ export const APPROVED_CATEGORY_PALETTE: Record<
   Infrastructure: { light: ["#F6FFF2", "#30841F"], dark: ["#1E3320", "#8ED982"] },
   "Developer Tools": { light: ["#EBEFFF", "#2E1CF3"], dark: ["#363258", "#A89FF5"] },
   "Data & Lifecycle": { light: ["#F6FFF2", "#30841F"], dark: ["#1E3320", "#8ED982"] },
+  "Database Support": { light: ["#F6FFF2", "#30841F"], dark: ["#1E3320", "#8ED982"] },
 };
 
 /** Default theme for modules not in Groups A–D. Dark = mid-spectrum blue. */
