@@ -53,6 +53,26 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## May 2026
+
+### Version 1.144.0
+
+#### New features and enhancements
+
+- A new dry run validation API endpoint lets you validate pipeline YAML changes while editing files in Git before committing them to your repository. The endpoint performs YAML schema validation, template expansion, and OPA policy evaluation without executing the pipeline. The endpoint is available at `POST /pipeline/api/v1/orgs/{org}/projects/{project}/dry-run`.
+
+
+#### Fixed issues 
+
+- Fixed an issue where account-level templates displayed duplicate cards in the template listing and incorrectly marked multiple versions as Stable on the deletion page. The API response was sending duplicate items for the same template, preventing users from deleting any version through the UI. This fix requires the feature flag `PIPE_DISABLE_TEMPLATE_STABLE_VERSION_RACE_CONDITION_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-32979**, **ZD-104816**, **ZD-109677**, **ZD-112187**)
+- Fixed an issue where input set overlays did not update when variable values in referenced input sets were changed. (**PIPE-32995**, **ZD-110073**)
+- Fixed an issue where users were unable to create overlay input sets due to an incorrect store type validation error. This fix requires the feature flag `PIPE_DISABLE_DEFAULT_STORE_TYPE_TO_INLINE_FOR_INPUT_SET_CREATE_CHECK`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-33489**, **ZD-112054**)
+- Fixed an issue where GitLab triggers failed with "HTTP Error Status (400 - Invalid Format) received. Unable to process JSON." When processing GitLab webhooks, Harness was fetching all enabled GitLab triggers across the entire account without repo-level filtering, causing scope resolution failures when any trigger had null or invalid org/project identifiers. (**PIPE-33612**, **ZD-112508**)
+- Fixed an issue where template resolution failed during pipeline retry when the template was stored in a non-default Git branch. The resolution logic was using deprecated checks from legacy flow. This fix requires the feature flag `PIE_USE_LEGACY_GIT_ENTITY_INFO` to be disabled (inverted flag). Contact [Harness Support](mailto:support@harness.io) to disable. (**PIPE-29964**)
+- Improved validation and UI behavior for the Azure Container Apps deployment step. Revision traffic details now validate minimum and maximum traffic values (0-100) and prevent multiple tags per traffic configuration. (**CDS-122522**)
+- Fixed an issue in the Continuous Verification (CV) AI Verify feature by removing the unnecessary requests field from the data collection infrastructure and wiring up backend APIs for Health Sources V2 and Config Agent flow for Datadog metrics and log health sources. This feature requires the feature flag `CDS_CV_HEALTH_SOURCES_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-122674**)
+- Improved performance for the Azure Container Apps managed environments API by optimizing it to be called only when its dependencies (resource group or subscription ID) change. The API now triggers on input focus during edit flows. (**CDS-122787**)
+
 
 ## April 2026
 
