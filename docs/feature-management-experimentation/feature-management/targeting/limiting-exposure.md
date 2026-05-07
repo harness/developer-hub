@@ -1,27 +1,45 @@
 ---
-title: Limiting exposure
-sidebar_label: Limiting exposure
-description: ""
-sidebar_position: 8
+title: Limit Feature Flag Exposure
+sidebar_label: Limit Exposure
+description: "Learn how to limit the percentage of traffic evaluated by a feature flag's targeting rules to safely roll out features or run experiments."
+sidebar_position: 3
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/limiting-exposure
 ---
 
-When you [create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag), you can limit the feature flag's exposure. Limiting exposure means limiting the percentage of traffic that is channeled through a feature flag, allowing the rest of the traffic _to be unaffected by_, or _to remain outside of_, the targeting rules. The users outside of the flag's targeting rules will be given the default treatment.
+When you [create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag), you can control how much traffic is evaluated by its targeting rules using the **Limit exposure** button in the `Targeting rules` section. 
 
-To use this feature, do the following:
+![](../static/limiting-exposure.png)
 
-1. In your selected feature flag, go to the Targeting rules area.
-2. Click the **Limit exposure** button.
+Limiting exposure means only a percentage of users are routed through the flag's targeting rules. The remaining users are excluded from evaluation and receive the [default treatment](/docs/feature-management-experimentation/feature-management/setup/default-treatment), bypassing all targeting logic. This is useful for gradually ramping experiments or safely rolling out features.
 
-    ![](../static/limiting-exposure.png)
+1. From the FME navigation menu, navigate to **Feature Flags** and click on a feature flag you want to configure.
+1. On the **Definition** tab, click **Initiate Environment** for an environment and go to the `Targeting` section.
+1. Click **Limit exposure**.
+1. Set the percentage of traffic that should be evaluated by the targeting rules.
 
-3. In the Limit exposure field, enter the percentage of traffic that you want to go through the targeting rules. 
+### Traffic allocation
 
-By gradually increasing the percentage in the Limit exposure box, you increase the percentage of users that are channeled through the feature flag, moving the "outside" users into an assigned treatment (according to the flag's rules). Decreasing the precentage in the Limit exposure box similarly removes users from the flag's targeting rules.
+Users within the exposure percentage are evaluated against targeting rules and assigned a treatment. Users outside the exposure percentage are not evaluated against targeting rules and receive the default treatment. They are labeled in [impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) as `not in Split`.
 
-The Limit exposure feature is particularly useful for experimentation, where you can allocate a limited percentage of your traffic to be in an experiment.
+Increasing or decreasing the exposure percentage adjusts how many users enter an experiment, but does not change assignment for users already evaluated.
 
-Note that the treatment assigned a user ID according to the feature flag's targeting rules will be "sticky", meaning that increasing the Limit exposure percentage will not reallocate an already assigned user to a different treatment.
+#### Sticky assignment
 
-A user that is outside the exposed traffic is assigned the default treatment and the feature flag's [impression](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) for that evaluation will include the _**targeting label**_ `not in split`.
+Once a user is assigned a treatment within the exposed population, that assignment is [sticky](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/randomization-and-stickiness). Increasing exposure does not reshuffle users between treatments.
+
+#### No re-bucketing on ramp
+
+Users are only added to or removed from the evaluated population. Treatment assignment only occurs within the exposed population and does not change when exposure is adjusted.
+
+## Ramp experiment traffic
+
+For multi-treatment experiments, keep treatment distribution stable while ramping exposure.
+
+:::tip
+Changing limit exposure or targeting rules creates a new feature version. For analysis, use the latest version once full ramp exposure is reached.
+:::
+
+For example, with three treatments, you set the limit exposure to 20%. Treatment distribution is A (control) 33%, B 34%, and C 33%. This results in ~6.6% of total traffic per treatment, with 20% participating in the experiment and 80% receiving the default treatment.
+
+This approach minimizes treatment crossover, prevents users from being reallocated between treatments during ramp-up, and preserves consistent statistical measurement over time. Unallocated traffic still triggers `getTreatment`, but is not part of any targeting rule and should not be used for metric comparisons.
