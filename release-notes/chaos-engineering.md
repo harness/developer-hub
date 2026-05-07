@@ -20,6 +20,70 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## May 2026
+
+### Version 1.86.0
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.86.0
+- harness/chaos-ddcr-faults:1.86.0
+- harness/chaos-log-watcher:1.86.0
+- harness/service-discovery-collector:0.66.0
+
+#### Deprecation notices
+
+:::warning Important deprecations in this release
+This release completes the transition to the new Chaos Engineering experience. The legacy experience is now permanently retired. Review the changes below and the recommended actions to ensure a smooth transition for your teams.
+
+**Git-based Chaos Hubs removed.** The Git-based Chaos Hubs feature has been fully removed. This includes the side navigation entry for Chaos Hubs, browsing or selecting faults from a hub, predefined experiments, and all "Push to Chaos Hub" actions from experiments and probes. To continue sharing and managing probes and faults across your organization, use **Templates** from new **Chaos Hubs** under settings instead.
+
+**Legacy infrastructure experiments are now read-only.** Experiments associated with any of the following legacy infrastructure types will now open in read-only mode in the Chaos Studio:
+- Kubernetes V1 (Dedicated Chaos Infrastructure)
+- Linux Chaos Infrastructure below version 1.72.2
+- Machine Chaos Infrastructure below version 1.66.0
+
+You can still execute these experiments, view run history, access reports, and download manifests. However, you can no longer edit the experiment configuration, modify probes or faults, or save YAML changes. A deprecation banner is displayed on the Overview, Builder, and Schedule tabs for affected experiments.
+
+**Creation of Kubernetes Dedicated Chaos Infrastructure (V1) disabled.** You can no longer create new Kubernetes (Dedicated Chaos Infrastructure) environments. Existing V1 infrastructures continue to operate normally. For all new Kubernetes onboarding, use the **Kubernetes (Harness Delegate)** infrastructure type.
+
+**SLO probe type removed for new Kubernetes probes.** SLO probe is no longer available as an option when creating a new resilience probe for Kubernetes. Any existing SLO probes remain unaffected.
+
+**Additional UI changes:**
+- The "Use legacy chaos infrastructure" toggle has been removed from the experiment infrastructure selector.
+- The legacy Visual Builder has been replaced by the V2 visual builder on the Builder tab.
+- The inline "Add new probes" prompt and "Change mode" action inside the fault configuration drawer have been removed.
+- Navigation breadcrumbs for Application Maps and Onboarding are now consolidated under **Resilience Management**.
+
+**What is not changing:**
+- All existing experiments, probes, infrastructures, application maps, reports, schedules, run history, input sets, DR tests, load tests, and pipeline integrations continue to work as expected.
+- Running, stopping, cloning, downloading, and reporting on experiments remains the same.
+- All RBAC permissions are unchanged.
+
+:::
+
+:::info Recommended actions
+1. **Migrate legacy infrastructure experiments.** Recreate any legacy experiment that you still need on a current infrastructure (Kubernetes V2, Linux, or Windows). Existing legacy experiments will continue to run but cannot be edited.
+2. **Transition from git-backed Chaos Hubs.** Move any custom probes or faults previously maintained in a Chaos Hub to the Resilience Probes and Experiment Templates workflow.
+3. **Use Kubernetes (Harness Delegate) for new infrastructure.** All new Kubernetes infrastructure must be created using the Harness Delegate (V2) path.
+:::
+
+#### New Features and Enhancements
+
+- Chaos NG experience features are now generally available (GA)
+- Added support for user-defined load args and extra Locust CLI args on K8s load tests, with the Harness Locust plugin now mounted via a dedicated ConfigMap at a fixed path outside the user directory
+- Added support for passing env variables for helper pods
+- Added support for errorResponse in timeline view when an experiment errors out
+- Added support for user-based filters in List Chaos Experiments API and search filter in input sets API
+- Added support for setting variables from account, org, and project scope as expressions for probe action and template runtime values
+- Added three-dot menu, audit events, and ACL permissions for DR Test resources
+- Added support for output variables in chaos resources
+
+#### Fixed Issues
+
+- Cleared unused feature flags from chaos components
+
 ## April 2026
 
 ### Version 1.85.3

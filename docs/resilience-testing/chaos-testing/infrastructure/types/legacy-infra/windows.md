@@ -5,6 +5,10 @@ redirect_from:
 - /docs/chaos-engineering/guides/infrastructures/enable-disable#on-linux-infrastructure
 ---
 
+:::warning Legacy infrastructure deprecated
+Legacy infrastructure experiments are now read-only. You can still execute existing experiments, but editing is disabled.
+:::
+
 This topic describes Windows Chaos Infrastructure, how you can enable and disable chaos on Windows Infrastructure.
 
 Chaos experiments executed on Windows infrastructure inject chaos into Windows OS-based VM. This deteriorates the performance of the application for the duration of the chaos experiment. Depending on the type of instance the fault targets, Windows faults are categorized into various types.

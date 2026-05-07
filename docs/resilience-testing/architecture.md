@@ -92,12 +92,11 @@ In summary, creation of chaos experiments is made easier by the UI based tooling
 
 ### ChaosHubs
 
-A [ChaosHub](./chaos-testing/chaoshub) stores various resources of the Chaos Engineering module. Currently, the supported resource are:
-- Chaos Faults
-- Chaos Experiment Templates
-- Resilience Probe Templates
+:::warning Git-based ChaosHubs deprecated
+Git-based ChaosHubs have been removed. Use [Templates](./chaos-testing/templates) and [Resilience Probes](./chaos-testing/probes) to manage reusable chaos artifacts instead.
+:::
 
-Harness provides a default ChaosHub called **Enterprise ChaosHub** which contains 200+ different types of faults across different types of targets. Custom ChaosHubs are created by users to store their own chaos experiment templates and resilience probe templates. The common practice is to select the chaos faults from the Enterprise ChaosHub, construct chaos experiments in the project workspace, test them and push them to your own custom ChaosHub as a template which can be used by other users or projects in the organisation.
+A [ChaosHub](./chaos-testing/chaoshub) stores various resources of the Chaos Engineering module, including chaos faults, experiment templates, and resilience probe templates. Harness provides a default **Enterprise ChaosHub** with 200+ different types of faults across different types of targets. Custom Git-based ChaosHubs are no longer supported.
 
 ### Orchestrate Chaos Experiments
 

@@ -8,12 +8,6 @@ description: Learn how to create custom chaos faults from scratch with complete 
 
 This approach allows you to build a custom fault from the ground up with complete control over its configuration and behavior.
 
-:::info Feature Availability
-This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
-
-If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
-:::
-
 ## Overview
 
 Creating custom faults from scratch gives you maximum flexibility to implement fault injection logic tailored to your specific infrastructure and application requirements. This method is ideal when existing fault types don't meet your needs or when you need precise control over fault behavior.

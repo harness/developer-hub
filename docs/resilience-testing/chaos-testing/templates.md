@@ -7,9 +7,6 @@ redirect_from:
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-:::info New Chaos Studio Feature
-**Templates** are part of the enhanced **New Chaos Studio** experience. If you're an existing customer and want access to new features, contact your Harness support representative. For more details, see [New Chaos Studio Features](/docs/chaos-engineering#new-chaos-studio-features).
-:::
 
 :::note Linux and Windows Infrastructure
 Experiment templates are now supported for Linux and Windows v2 infrastructure. You can create and manage experiment templates, create experiments from templates, and run those experiments. However, running Machine/Linux experiments from a pipeline and using step templates with machine experiment templates are currently not supported.
@@ -57,7 +54,6 @@ Templates can be managed at different organizational levels:
 ## Next Steps
 
 - [Create your first experiment](./experiments)
-- [Learn about ChaosHubs](./chaoshub)
 - [Explore Fault Templates](/docs/chaos-engineering/faults/custom-faults/custom-fault-templates)
 - [Understand Actions](./actions)
 

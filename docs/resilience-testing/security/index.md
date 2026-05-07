@@ -66,9 +66,13 @@ HCE leverages secrets for administrative or management purposes as well as at ru
 
 ### Secrets to access chaos artifact (Git) repositories
 
-HCE allows you to add one or more [ChaosHubs](../chaos-testing/chaoshub) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source, Git repository by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
+:::warning Git-based ChaosHubs deprecated
+Git-based ChaosHubs have been removed. The Git connector and PAT/SSH key setup described below is no longer required for new deployments. Use [Templates](/docs/resilience-testing/chaos-testing/templates) and [Resilience Probes](/docs/resilience-testing/chaos-testing/probes) to manage reusable chaos artifacts instead.
+:::
 
-The chaos module leverages the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leverages the Harness Secret Manager to store the PAT or SSH keys.
+HCE previously allowed you to add one or more [ChaosHubs](../chaos-testing/chaoshub) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involved connecting to a Git repository by using Personal Access Tokens (PAT) or SSH keys.
+
+The chaos module leveraged the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leveraged the Harness Secret Manager to store the PAT or SSH keys.
 
 ![Control plane secrets](./static/overview/control-plane-secrets.png)
 

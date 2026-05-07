@@ -5,11 +5,15 @@ redirect_from:
 ---
 This topic describes different types of infrastructure, that can be used to execute chaos experiments.
 
+:::warning Legacy infrastructure deprecated
+Legacy infrastructure experiments are now read-only and creating new Kubernetes (Dedicated Chaos Infrastructure) is no longer supported. Use [Delegate-Driven Chaos Infrastructure](./ddcr) for new setups.
+:::
+
 There are different types of chaos infrastructure such as:
-- [Legacy Infrastructure (Kubernetes)](./legacy-infra)
-- OpenShift
-- [Linux](./legacy-infra/linux)
-- [Windows](./legacy-infra/windows)
+- [Legacy Infrastructure (Kubernetes)](./legacy-infra) (deprecated, read-only)
+- OpenShift (deprecated, read-only)
+- [Linux](./legacy-infra/linux) (deprecated, read-only)
+- [Windows](./legacy-infra/windows) (deprecated, read-only)
 - [Delegate-Driven Chaos Infrastructure](./ddcr)
 
 

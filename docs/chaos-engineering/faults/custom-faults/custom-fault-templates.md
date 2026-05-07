@@ -8,12 +8,6 @@ description: Learn how to create custom chaos faults using pre-configured templa
 
 This approach provides pre-configured templates that you can customize for your specific needs, enabling faster development and ensuring best practices.
 
-:::info Feature Availability
-This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
-
-If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
-:::
-
 ## Overview
 
 Custom fault templates offer a streamlined way to create chaos faults by starting with proven patterns and configurations. Templates include industry-standard settings, safety measures, and common parameters that can be customized for your specific use case.

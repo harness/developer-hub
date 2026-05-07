@@ -1,20 +1,12 @@
-The **New Chaos Studio** offers an enhanced, streamlined approach to chaos experiment design.
+The **Chaos Studio** offers a streamlined approach to chaos experiment design.
 
 ## What is a Chaos Experiment?
 
-A **chaos experiment** is a testing methodology that validates system resilience by introducing controlled failures and observing system behavior. In the New Chaos Studio, experiments are composed of three core components:
+A **chaos experiment** is a testing methodology that validates system resilience by introducing controlled failures and observing system behavior. Experiments are composed of three core components:
 
 - **Faults**: Controlled disruptions injected into your system to simulate real-world failures
-- **Probes**: Enhanced validation mechanisms that continuously monitor system health and behavior
+- **Probes**: Validation mechanisms that continuously monitor system health and behavior
 - **Actions**: Automated responses and workflows that execute based on experiment conditions
-
-#### Advantages Over Old Chaos Studio
-
-The New Chaos Studio significantly expands experiment capabilities compared to the legacy version:
-
-- **New Studio**: Complete experiment lifecycle with faults, standalone probes, and actions
-- **Enhanced Validation**: Probes can now be defined independently and reused across experiments
-- **Actions**: New automated response workflows based on experiment conditions
 
 ---
 

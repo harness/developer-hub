@@ -7,6 +7,10 @@ redirect_from:
 - /docs/chaos-engineering/training/sandbox
 ---
 
+:::warning Sandbox deprecated
+The sandbox onboarding UI, certification banner, and related onboarding entry points have been removed from the Chaos Engineering module. This page is retained for reference only.
+:::
+
 This tutorial guides you through an interactive session where you'll use the sample application **Podtato head** to execute a chaos experiment and enhance the application's resilience.
 
 ## Prerequisites

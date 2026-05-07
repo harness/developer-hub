@@ -158,7 +158,7 @@ The following resource types are available under the `chaos` toolset. Each suppo
 
 | Resource Type | Description | List | Get | Create | Update | Delete |
 |---------------|-------------|:----:|:---:|:------:|:------:|:------:|
-| `chaos_hub` | Git-connected repositories of faults and experiments | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `chaos_hub` | Collection of reusable faults, probes, and action templates scoped at project, org, or account level | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `chaos_hub_fault` | Faults available within a ChaosHub | ✅ | - | - | - | - |
 
 ### ChaosGuard (governance)

@@ -54,4 +54,4 @@ To delete your environment, remove the environment references, that is, the infr
 
 Harness CE facilitates installing two types of chaos infrastructure:
 - [Delegate-Driven Chaos Infrastructure (DDCR)](./types/ddcr)
-- [Legacy Infrastructure (Kubernetes, Linux, Windows)](./types/legacy-infra) that uses a dedicated infrastructure (aka Legacy Kubernetes Infrastructure).
+- [Legacy Infrastructure (Kubernetes, Linux, Windows)](./types/legacy-infra) that uses a dedicated infrastructure (aka Legacy Kubernetes Infrastructure). **Legacy infrastructure is deprecated.** Experiments on legacy infrastructure are now read-only, and creating new Kubernetes (Dedicated Chaos Infrastructure) is no longer supported.

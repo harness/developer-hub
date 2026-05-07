@@ -4,23 +4,15 @@ sidebar_position: 1
 description: Advanced chaos experiments with dynamic content selection
 ---
 
-:::info Chaos Studio Versions
-This guide covers chaos experiments for both **Old Chaos Studio** and **New Chaos Studio**. Use the selector below to choose your version:
-- **Old Chaos Studio**: For existing customers using the current version
-- **New Chaos Studio**: Enhanced experience with new features and improved UI
-
-If you're an existing customer interested in accessing New Chaos Studio features, contact your Harness support representative. For more details, see [New Chaos Studio Features](/docs/chaos-engineering#new-chaos-studio-features).
-:::
-
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
 <DynamicMarkdownSelector
   options={{
-    "Old Chaos Studio": {
-      path: "/resilience-testing/content/experiments/old-chaos-studio.md"
-    },
-    "New Chaos Studio": {
+    "Chaos Studio": {
       path: "/resilience-testing/content/experiments/new-chaos-studio.md"
+    },
+    "Legacy Chaos Studio (deprecated)": {
+      path: "/resilience-testing/content/experiments/old-chaos-studio.md"
     }
   }}
   toc = {toc}

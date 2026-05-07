@@ -1,3 +1,5 @@
+
+
 **Fault Templates** allow you to create reusable custom fault templates that can be shared and used across multiple experiments.
 
 ![fault templates](./static/templates/fault-template.png)

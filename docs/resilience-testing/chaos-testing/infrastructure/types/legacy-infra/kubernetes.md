@@ -19,6 +19,10 @@ redirect_from:
 - /docs/chaos-engineering/guides/infrastructures/enable-disable#use-helm-template-to-install-chaos-infrastructure
 ---
 
+:::warning Legacy infrastructure deprecated
+Legacy infrastructure experiments are now read-only. You can still execute existing experiments, but editing is disabled. Creating new Kubernetes (Dedicated Chaos Infrastructure) is no longer supported. Existing dedicated infrastructure continues to work. Use Kubernetes (Harness Delegate) for new infrastructure. Go to [DDCR setup](/docs/resilience-testing/chaos-testing/infrastructure/types/ddcr) to get started.
+:::
+
 This topic describes the following:
   - [What is Dedicated Chaos Infrastructure?](#what-is-harness-chaos-infrastructure)
   - [Resource Requirements](#chaos-infrastructure-requirements)

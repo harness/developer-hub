@@ -5,6 +5,10 @@ redirect_from:
 - /docs/chaos-engineering/guides/infrastructures/enable-disable#on-linux-infrastructure
 ---
 
+:::warning Legacy infrastructure deprecated
+Legacy infrastructure experiments are now read-only. You can still execute existing experiments, but editing is disabled.
+:::
+
 This topic describes Linux Chaos Infrastructure (LCI), how to use flags to configure some characteristics of the infrastructure, how to enable, and disable chaos on LCI.
 
 ## Configure with Flags

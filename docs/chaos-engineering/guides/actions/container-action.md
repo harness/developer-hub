@@ -3,12 +3,6 @@ title: Container Action
 sidebar_position: 4
 ---
 
-:::info Feature Availability
-This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
-
-If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
-:::
-
 ## What is a Container Action?
 
 A **Container Action** allows you to execute commands inside a container during chaos experiment execution. This provides powerful capabilities to:

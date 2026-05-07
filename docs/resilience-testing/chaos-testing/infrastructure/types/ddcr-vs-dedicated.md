@@ -6,6 +6,10 @@ redirect_from:
 - /docs/chaos-engineering/guides/infrastructures/ddcr-vs-dedicated
 ---
 
+:::warning Dedicated chaos infrastructure deprecated
+Dedicated chaos infrastructure (Legacy Kubernetes infrastructure) is deprecated. Experiments on legacy infrastructure are now read-only, and creating new Kubernetes (Dedicated Chaos Infrastructure) is no longer supported. Use Delegate-Driven Chaos Infrastructure (DDCR) for all new setups.
+:::
+
 This section compares the characteristics of Delegate-Driven Chaos Infrastructure and Dedicated chaos infrastructure (Legacy Kubernetes infrastructure).
 
 <table>

@@ -26,13 +26,17 @@ Currently, parallel fault experiments aren't supported for Linux.
 <details>
 <summary><strong>How to add and manage a custom chaos hub?</strong></summary>
 
-You can navigate to chaos hubs in the chaos module and select `+ New ChaosHub`, and fill in the details regarding your public or private hub. Ensure that you have chaos hub read or write permission enabled and a GitHub connector configured for the repository you are about to connect.
+:::warning Git-based ChaosHubs deprecated
+Git-based ChaosHubs have been removed. Use [Templates](/docs/resilience-testing/chaos-testing/templates) and [Resilience Probes](/docs/resilience-testing/chaos-testing/probes) to manage reusable chaos artifacts instead.
+:::
 </details>
 
 <details>
 <summary><strong>How do I connect to a private chaos hub?</strong></summary>
 
-To connect to a private chaos hub repository, connect to a Harness GitHub connector through a Harness Delegate, or GitHub directly by providing your GitHub SSH key or Personal Access Token (PAT). Once this is done, you can select the connector when adding a chaos hub.
+:::warning Git-based ChaosHubs deprecated
+Git-based ChaosHubs have been removed. Connecting to private Git-based hubs is no longer supported. Use [Templates](/docs/resilience-testing/chaos-testing/templates) to manage reusable chaos artifacts instead.
+:::
 </details>
 
 <details>
@@ -261,7 +265,7 @@ Yes, you can start executing chaos engineering experiments in the following ways
 <details>
 <summary><strong>Do you provide a Sandbox environment for us to play with the tool?</strong></summary>
 
-Yes, you can execute experiments in a sandbox environment. Go to [sandbox environment](./training/sandbox) to play around with Harness CE.
+The sandbox onboarding UI has been removed. Go to [Get Started](/docs/resilience-testing/chaos-testing/get-started) to run your first chaos experiment.
 </details>
 
 <details>

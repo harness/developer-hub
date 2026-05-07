@@ -13,23 +13,21 @@ redirect_from:
 - /docs/chaos-engineering/guides/chaoshubs/chaoshub-scopes
 ---
 
-:::info Chaos Studio Versions
-This guide covers ChaosHub for both **Old Chaos Studio** and **New Chaos Studio**. Use the selector below to choose your version:
-- **Old Chaos Studio**: For existing customers using the current version
-- **New Chaos Studio**: Enhanced experience with new features and improved UI
+:::warning Git-based ChaosHubs deprecated
+Git-based ChaosHubs have been removed as part of the chaos NG experience GA. The ChaosHubs list page, hub detail pages, Connect/Edit/Sync hub wizards, and all "Add to ChaosHub" and "Push to ChaosHub" actions are no longer available.
 
-If you're an existing customer interested in accessing New Chaos Studio features, contact your Harness support representative. For more details, see [New Chaos Studio Features](/docs/chaos-engineering#new-chaos-studio-features).
+Use [Templates](/docs/resilience-testing/chaos-testing/templates) and the [Resilience Probes](/docs/resilience-testing/chaos-testing/probes) flow to manage reusable chaos artifacts instead.
 :::
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
 <DynamicMarkdownSelector
   options={{
-    "Old Chaos Studio": {
-      path: "/resilience-testing/content/chaoshub/old-chaos-studio.md"
-    },
-    "New Chaos Studio": {
+    "ChaosHub": {
       path: "/resilience-testing/content/chaoshub/new-chaos-studio.md"
+    },
+    "Git-based ChaosHub (deprecated)": {
+      path: "/resilience-testing/content/chaoshub/old-chaos-studio.md"
     }
   }}
   toc = {toc}

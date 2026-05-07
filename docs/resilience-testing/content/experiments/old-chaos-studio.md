@@ -1,3 +1,7 @@
+:::warning Legacy Chaos Studio deprecated
+The legacy Chaos Studio has been removed. This page is retained for reference only. All new experiments use the current Chaos Studio experience. Legacy infrastructure experiments are read-only and can no longer be edited.
+:::
+
 ## What is a Chaos Experiment?
 Harness Chaos Engineering gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications.
 

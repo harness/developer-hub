@@ -6,9 +6,6 @@ redirect_from:
   - /docs/chaos-engineering/guides/actions/
 ---
 
-:::info New Chaos Studio Feature
-**Actions** are part of the enhanced **New Chaos Studio** experience. If you're an existing customer and want access to new features, contact your Harness support representative. For more details, see [New Chaos Studio Features](/docs/chaos-engineering#new-chaos-studio-features).
-:::
 
 ## What are Actions?
 

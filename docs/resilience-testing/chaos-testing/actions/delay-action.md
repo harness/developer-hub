@@ -3,12 +3,6 @@ title: Delay Action
 sidebar_position: 2
 ---
 
-:::info Feature Availability
-This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
-
-If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
-:::
-
 ## What is a Delay Action?
 
 A **Delay Action** introduces a configurable time delay during chaos experiment execution. It pauses the experiment workflow for a specified duration, allowing you to:

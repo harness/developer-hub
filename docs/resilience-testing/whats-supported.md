@@ -78,7 +78,7 @@ The following table shows available fault types and where they are supported. Fo
 Chaos Engineering on Self-Managed Enterprise Edition has the following limitations compared to SaaS:
 - **Harness Enterprise ChaosHub** is not connected by default
   - Contact [Harness Support](mailto:support@harness.io) for access to the Enterprise ChaosHub
-  - Once you have access, you can add it as a [custom ChaosHub](./chaos-testing/chaoshub)
+  - Git-based custom ChaosHubs are no longer supported. Use [Templates](./chaos-testing/templates) to manage reusable chaos artifacts.
 - **Harness AI** for CE
 
 ### Supported Platforms
@@ -99,7 +99,7 @@ For more information about deployment, go to [Self-Managed Enterprise Edition an
 
 ### Requirements
 
-- **Custom ChaosHub** integration required for fault templates
+- **Templates** integration required for fault templates (Git-based custom ChaosHubs are no longer supported)
 - **Contact support** for Enterprise ChaosHub access in offline environments
 
 ### Supported Platforms
@@ -113,7 +113,6 @@ All CE features and platforms supported in [Self-Managed Enterprise Edition](#se
 1. **[Learn key concepts](./key-concepts)** - Understand chaos engineering fundamentals
 2. **[Start with chaos testing](./chaos-testing/get-started)** - Run your first chaos experiment
 3. **[Explore integrations](./chaos-testing/integrations/cicd/jenkins)** - Connect with your existing tools
-4. **[Try the sandbox](./resources/training/sandbox)** - Practice in a safe environment
 
 :::tip Ready to get started?
 Check out our **[Get Started Guide](./chaos-testing/get-started)** to begin your chaos engineering journey.

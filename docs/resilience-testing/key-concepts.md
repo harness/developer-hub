@@ -108,18 +108,11 @@ Harness provides 200+ ready-to-use chaos faults in the Enterprise ChaosHub.
 
 #### ChaosHub
 
-A [ChaosHub](./chaos-testing/chaoshub) is a centralized repository for reusable chaos engineering resources:
+:::warning Git-based ChaosHubs deprecated
+Git-based ChaosHubs have been removed. Use [Templates](./chaos-testing/templates) and [Resilience Probes](./chaos-testing/probes) to manage reusable chaos artifacts instead.
+:::
 
-#### Enterprise ChaosHub
-- Provided by Harness with 200+ chaos faults
-- Regularly updated with new faults and improvements
-- Available across all projects and organizations
-
-#### Custom ChaosHub
-- Create your own hub for organization-specific resources
-- Store custom experiment templates
-- Share probe templates across teams
-- Version control using Git integration
+A [ChaosHub](./chaos-testing/chaoshub) was a centralized repository for reusable chaos engineering resources. Harness provides a default **Enterprise ChaosHub** with 200+ chaos faults that remains available. Custom Git-based ChaosHubs are no longer supported.
 
 #### Chaos Infrastructure
 

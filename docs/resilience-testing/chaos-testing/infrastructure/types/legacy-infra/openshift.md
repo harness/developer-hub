@@ -3,6 +3,10 @@ title: OpenShift Chaos Infrastructure
 sidebar_position: 20
 ---
 
+:::warning Legacy infrastructure deprecated
+Legacy infrastructure experiments are now read-only. You can still execute existing experiments, but editing is disabled. Creating new Kubernetes (Dedicated Chaos Infrastructure) is no longer supported. Existing dedicated infrastructure continues to work. Use Kubernetes (Harness Delegate) for new infrastructure. Go to [DDCR setup](/docs/resilience-testing/chaos-testing/infrastructure/types/ddcr) to get started.
+:::
+
 This topic describes OpenShift Chaos Infrastructure and its installation.
 
 Harness CE supports the installation of OpenShift infrastructure to execute chaos experiments. 

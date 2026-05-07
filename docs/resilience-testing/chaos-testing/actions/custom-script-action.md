@@ -3,12 +3,6 @@ title: Custom Script Action
 sidebar_position: 3
 ---
 
-:::info Feature Availability
-This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
-
-If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
-:::
-
 ## What is a Custom Script Action?
 
 A **Custom Script Action** allows you to execute custom scripts or commands during chaos experiment execution. This provides powerful flexibility to:
