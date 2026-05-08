@@ -21,6 +21,12 @@ To configure SBOM verification with Keyless verification using cosign, complete 
 
   <DocImage path={require('./static/verify-sbom-keyless.png')} width="90%" height="90%" />
 
+:::note
+
+This verification method is not supported for SMP at the moment.
+
+:::
+
 #### Harness OIDC
 
 Harness OIDC allows you to use the pipeline’s built-in identity for keyless verification. In this approach, Harness acts as the OIDC provider and automatically generates an OIDC token during pipeline execution, which Cosign uses to verify the SBOM signature without requiring access to a private key.

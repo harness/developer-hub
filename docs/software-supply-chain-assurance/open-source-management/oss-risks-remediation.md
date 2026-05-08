@@ -24,6 +24,8 @@ Remediate risks and vulnerabilities for a direct dependency by using one of the 
 
 * Vulnerability remediation through pull requests is supported only for repositories and not for artifacts.
 
+* Both Manual and Auto PR Remediation will be available for SMP starting with the June release.
+
 :::
 
 ***
@@ -206,7 +208,7 @@ To set up the Auto PR configuration:
 
 :::note
 
-Dependency data is refreshed every 2 days to fetch newly available dependencies.
+* Dependency data is refreshed every 2 days to fetch newly available dependencies.
 :::
 
 Below is a pull request summary created through auto PR remediation, highlighting the recommended upgrade, security impact, and affected dependencies.

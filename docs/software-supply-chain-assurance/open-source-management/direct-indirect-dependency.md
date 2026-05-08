@@ -54,6 +54,12 @@ You can filter direct and indirect dependencies via dependency type. To do this,
 
 <DocImage path={require('./static/sbom-direct-indirect-dependency.png')} width="100%" height="100%" title="Click to view full size image" />
 
+:::note
+
+This feature will be available for SMP starting with the June release.
+
+:::
+
 ***
 
 ## Viewing the Dependency Table

@@ -17,6 +17,12 @@ To configure SBOM attestation for ingested SBOMs with Keyless signing using cosi
 
   <DocImage path={require('./static/attest-ingestsbom-keyless.png')} width="90%" height="90%" />
 
+:::note
+
+This attestation method is not supported for SMP at the moment.
+
+:::
+
 #### Harness OIDC
 
 Harness OIDC allows you to use the pipeline’s built-in identity for keyless signing of ingested SBOMs. In this approach, Harness acts as the OIDC provider and automatically supplies the identity required during pipeline execution, eliminating the need for external identity configuration.

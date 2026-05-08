@@ -17,6 +17,12 @@ To sign artifacts with Keyless signing using cosign, complete the following step
 
   <DocImage path={require('./static/artifact-sign-keyless.png')} width="90%" height="90%" />
 
+:::note
+
+This signing method is not supported for SMP at the moment.
+
+:::
+
 #### Harness OIDC
 
 Harness OIDC allows you to use the pipeline’s built-in identity for keyless signing. In this approach, Harness acts as the OIDC provider and automatically supplies the identity required during pipeline execution, eliminating the need for external identity configuration.
