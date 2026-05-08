@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-04-27T10:00
+date: 2026-05-04T10:00
 sidebar_position: 10
 ---
 
@@ -59,6 +59,35 @@ For additional information about Harness Cloud pricing, please visit [Subscripti
 Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
+
+## May 2026
+
+### Version 1.138.0
+
+<!-- May 2026 -->
+
+#### New Features and Enhancements
+
+- Improved test splitting accuracy by adding average-based timing support to the split_tests binary. Test Intelligence can now use historical average durations for more balanced parallelism. (CI-22062)
+
+#### Fixed Issues
+
+- Fixed an issue where the Git Clone step failed on FIPS-compliant environments due to missing SSH algorithm support in the drone-git image. (CI-19914)
+
+- Improved security of the Build and Push to Docker, ACR, GCR, GAR, and ECR plugins by replacing end-of-life components in the buildx images. (CI-21697, CI-21698, CI-21701)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.21 | 1.18.22 |
+| `harness/ci-lite-engine` | Version update | 1.18.21 | 1.18.22 |
+| `drone-git` | FIPS SSH fix | 1.7.18-rootless | 1.7.19-rootless |
+| `plugins/buildx` | Security fix | 1.3.16 | 1.3.17 |
+| `plugins/buildx-acr` | Security fix | 1.4.6 | 1.4.7 |
+| `plugins/buildx-ecr` | Security fix | 1.4.7 | 1.4.8 |
+| `plugins/buildx-gcr` | Security fix | 1.4.4 | 1.4.5 |
+| `plugins/buildx-gar` | Security fix | 1.4.6 | 1.4.7 |
 
 ## April 2026
 
