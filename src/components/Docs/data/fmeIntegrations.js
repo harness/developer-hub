@@ -61,32 +61,34 @@ export const supportedCommunity = [
 
 export const Section = ({ title, items, perRow = 6, rowSpacing = '32px', description }) => {
   const rows = chunkArray(items, perRow);
+  
+  // Create a URL-friendly ID (e.g., "Harness Integrations" -> "harness-integrations")
+  const id = (title || '').toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
 
   return (
-    <section style={{ marginBottom: '64px' /* extra space after section */ }}>
-      <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{title}</h2>
+    <section style={{ marginBottom: '64px' }}>
+      <h2 id={id} style={{ fontSize: '1.5rem', marginBottom: '1rem', scrollMarginTop: '50px'
+       }}>
+        {title}
+        <a className="hash-link" href={`#${id}`} title="Direct link to heading">​</a>
+      </h2>
       {description && <p style={{ marginBottom: '16px' }}>{description}</p>}
-
       {rows.map((row, rowIdx) => (
         <div key={rowIdx} style={{ display: 'flex', gap: '1rem', marginBottom: rowSpacing }}>
           {row.map(({ name, img, link }) => (
-            <a
-              key={name}
-              href={link}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                textDecoration: 'none',
-                color: 'inherit',
-                border: '1px solid #ddd',
-                borderRadius: '8px',
-                padding: '1rem',
-                width: '140px',
-                boxSizing: 'border-box',
-              }}
-            >
+            <a key={name} href={link} style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              alignItems: 'center', 
+              justifyContent: 'space-between', 
+              textDecoration: 'none', 
+              color: 'inherit', 
+              border: '1px solid #ddd', 
+              borderRadius: '8px', 
+              padding: '1rem', 
+              width: '140px', 
+              boxSizing: 'border-box' 
+            }}>
               <img src={img} alt={name} style={{ width: '80px', height: '60px', objectFit: 'contain', marginBottom: '8px' }} />
               <span style={{ textAlign: 'center', lineHeight: '1.2' }}>{name}</span>
             </a>
@@ -96,3 +98,4 @@ export const Section = ({ title, items, perRow = 6, rowSpacing = '32px', descrip
     </section>
   );
 };
+
