@@ -398,6 +398,29 @@
       ]
     },
     {
+      "id": "fme.release-monitoring.guardrail-metric",
+      "term": "guardrail metric",
+      "definition": "A guardrail metric is a specific type of metric used to monitor for negative impacts during a feature rollout or experiment. It serves as a safety check to ensure that the new feature does not cause significant issues or degrade user experience. If a guardrail metric indicates a problem, it can trigger alerts or rollbacks to mitigate potential harm.",
+      "slug": "guardrail-metric",
+      "module": "fme",
+      "category": "release-monitoring",
+      "letter": "G",
+      "related": [
+        {
+          "term": "key metric",
+          "slug": "key-metric"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
+        },
+        {
+          "term": "metric alert",
+          "slug": "metric-alert"
+        }
+      ]
+    },
+    {
       "id": "fme.openfeature.hook",
       "term": "hook",
       "definition": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
@@ -450,6 +473,29 @@
       "related": []
     },
     {
+      "id": "fme.release-monitoring.key-metric",
+      "term": "key metric",
+      "definition": "A key metric is a specific metric that is critical for evaluating the success of a feature flag or experiment. It is used to determine whether a feature rollout or experiment is achieving its intended goals and can influence decisions about further rollouts or adjustments.",
+      "slug": "key-metric",
+      "module": "fme",
+      "category": "release-monitoring",
+      "letter": "K",
+      "related": [
+        {
+          "term": "guardrail metric",
+          "slug": "guardrail-metric"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
+        },
+        {
+          "term": "metric alert",
+          "slug": "metric-alert"
+        }
+      ]
+    },
+    {
       "id": "fme.release-monitoring.metric",
       "term": "metric",
       "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
@@ -457,7 +503,20 @@
       "module": "fme",
       "category": "release-monitoring",
       "letter": "M",
-      "related": []
+      "related": [
+        {
+          "term": "guardrail metric",
+          "slug": "guardrail-metric"
+        },
+        {
+          "term": "key metric",
+          "slug": "key-metric"
+        },
+        {
+          "term": "metric alert",
+          "slug": "metric-alert"
+        }
+      ]
     },
     {
       "id": "fme.warehouse-native.metric",
@@ -479,6 +538,29 @@
         {
           "term": "data warehouse",
           "slug": "data-warehouse"
+        }
+      ]
+    },
+    {
+      "id": "fme.release-monitoring.metric-alert",
+      "term": "metric alert",
+      "definition": "A metric alert is a notification triggered when a specific metric reaches a predefined threshold. This can indicate potential issues or significant changes in user behavior, allowing teams to respond quickly to mitigate negative impacts or capitalize on positive trends.",
+      "slug": "metric-alert",
+      "module": "fme",
+      "category": "release-monitoring",
+      "letter": "M",
+      "related": [
+        {
+          "term": "guardrail metric",
+          "slug": "guardrail-metric"
+        },
+        {
+          "term": "key metric",
+          "slug": "key-metric"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
         }
       ]
     },
@@ -683,6 +765,29 @@
       ]
     },
     {
+      "id": "fme.release-monitoring.significance-alert",
+      "term": "significance alert",
+      "definition": "A significance alert is a notification triggered when the results of an experiment reach a predefined level of statistical significance. This indicates that the observed effects are unlikely to be due to chance, helping teams make informed decisions about feature rollouts or adjustments based on the experiment's outcomes.",
+      "slug": "significance-alert",
+      "module": "fme",
+      "category": "release-monitoring",
+      "letter": "S",
+      "related": [
+        {
+          "term": "guardrail metric",
+          "slug": "guardrail-metric"
+        },
+        {
+          "term": "key metric",
+          "slug": "key-metric"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
+        }
+      ]
+    },
+    {
       "id": "fme.pipelines.stage",
       "term": "stage",
       "definition": "A stage represents a discrete phase of a pipeline, such as testing, experimentation, or production rollout. You can add FME steps to any Custom stage, whether newly created or existing.",
@@ -725,6 +830,29 @@
         {
           "term": "pipeline template",
           "slug": "pipeline-template"
+        }
+      ]
+    },
+    {
+      "id": "fme.release-monitoring.statistical-significance",
+      "term": "statistical significance",
+      "definition": "Statistical significance is a measure of the likelihood that the observed results of an experiment are not due to random chance. It is typically determined by a p-value threshold (e.g., 0.05), indicating that there is a less than 5% probability that the results occurred by chance. Achieving statistical significance helps teams make informed decisions about feature rollouts or adjustments based on the experiment's outcomes.",
+      "slug": "statistical-significance",
+      "module": "fme",
+      "category": "release-monitoring",
+      "letter": "S",
+      "related": [
+        {
+          "term": "guardrail metric",
+          "slug": "guardrail-metric"
+        },
+        {
+          "term": "key metric",
+          "slug": "key-metric"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
         }
       ]
     },
@@ -1241,6 +1369,29 @@
             "slug": "custom-provider"
           }
         ]
+      },
+      {
+        "id": "fme.release-monitoring.guardrail-metric",
+        "term": "guardrail metric",
+        "definition": "A guardrail metric is a specific type of metric used to monitor for negative impacts during a feature rollout or experiment. It serves as a safety check to ensure that the new feature does not cause significant issues or degrade user experience. If a guardrail metric indicates a problem, it can trigger alerts or rollbacks to mitigate potential harm.",
+        "slug": "guardrail-metric",
+        "module": "fme",
+        "category": "release-monitoring",
+        "letter": "G",
+        "related": [
+          {
+            "term": "key metric",
+            "slug": "key-metric"
+          },
+          {
+            "term": "metric",
+            "slug": "metric"
+          },
+          {
+            "term": "metric alert",
+            "slug": "metric-alert"
+          }
+        ]
       }
     ],
     "H": [
@@ -1299,6 +1450,31 @@
         "related": []
       }
     ],
+    "K": [
+      {
+        "id": "fme.release-monitoring.key-metric",
+        "term": "key metric",
+        "definition": "A key metric is a specific metric that is critical for evaluating the success of a feature flag or experiment. It is used to determine whether a feature rollout or experiment is achieving its intended goals and can influence decisions about further rollouts or adjustments.",
+        "slug": "key-metric",
+        "module": "fme",
+        "category": "release-monitoring",
+        "letter": "K",
+        "related": [
+          {
+            "term": "guardrail metric",
+            "slug": "guardrail-metric"
+          },
+          {
+            "term": "metric",
+            "slug": "metric"
+          },
+          {
+            "term": "metric alert",
+            "slug": "metric-alert"
+          }
+        ]
+      }
+    ],
     "M": [
       {
         "id": "fme.release-monitoring.metric",
@@ -1308,7 +1484,20 @@
         "module": "fme",
         "category": "release-monitoring",
         "letter": "M",
-        "related": []
+        "related": [
+          {
+            "term": "guardrail metric",
+            "slug": "guardrail-metric"
+          },
+          {
+            "term": "key metric",
+            "slug": "key-metric"
+          },
+          {
+            "term": "metric alert",
+            "slug": "metric-alert"
+          }
+        ]
       },
       {
         "id": "fme.warehouse-native.metric",
@@ -1330,6 +1519,29 @@
           {
             "term": "data warehouse",
             "slug": "data-warehouse"
+          }
+        ]
+      },
+      {
+        "id": "fme.release-monitoring.metric-alert",
+        "term": "metric alert",
+        "definition": "A metric alert is a notification triggered when a specific metric reaches a predefined threshold. This can indicate potential issues or significant changes in user behavior, allowing teams to respond quickly to mitigate negative impacts or capitalize on positive trends.",
+        "slug": "metric-alert",
+        "module": "fme",
+        "category": "release-monitoring",
+        "letter": "M",
+        "related": [
+          {
+            "term": "guardrail metric",
+            "slug": "guardrail-metric"
+          },
+          {
+            "term": "key metric",
+            "slug": "key-metric"
+          },
+          {
+            "term": "metric",
+            "slug": "metric"
           }
         ]
       },
@@ -1542,6 +1754,29 @@
         ]
       },
       {
+        "id": "fme.release-monitoring.significance-alert",
+        "term": "significance alert",
+        "definition": "A significance alert is a notification triggered when the results of an experiment reach a predefined level of statistical significance. This indicates that the observed effects are unlikely to be due to chance, helping teams make informed decisions about feature rollouts or adjustments based on the experiment's outcomes.",
+        "slug": "significance-alert",
+        "module": "fme",
+        "category": "release-monitoring",
+        "letter": "S",
+        "related": [
+          {
+            "term": "guardrail metric",
+            "slug": "guardrail-metric"
+          },
+          {
+            "term": "key metric",
+            "slug": "key-metric"
+          },
+          {
+            "term": "metric",
+            "slug": "metric"
+          }
+        ]
+      },
+      {
         "id": "fme.pipelines.stage",
         "term": "stage",
         "definition": "A stage represents a discrete phase of a pipeline, such as testing, experimentation, or production rollout. You can add FME steps to any Custom stage, whether newly created or existing.",
@@ -1584,6 +1819,29 @@
           {
             "term": "pipeline template",
             "slug": "pipeline-template"
+          }
+        ]
+      },
+      {
+        "id": "fme.release-monitoring.statistical-significance",
+        "term": "statistical significance",
+        "definition": "Statistical significance is a measure of the likelihood that the observed results of an experiment are not due to random chance. It is typically determined by a p-value threshold (e.g., 0.05), indicating that there is a less than 5% probability that the results occurred by chance. Achieving statistical significance helps teams make informed decisions about feature rollouts or adjustments based on the experiment's outcomes.",
+        "slug": "statistical-significance",
+        "module": "fme",
+        "category": "release-monitoring",
+        "letter": "S",
+        "related": [
+          {
+            "term": "guardrail metric",
+            "slug": "guardrail-metric"
+          },
+          {
+            "term": "key metric",
+            "slug": "key-metric"
+          },
+          {
+            "term": "metric",
+            "slug": "metric"
           }
         ]
       },

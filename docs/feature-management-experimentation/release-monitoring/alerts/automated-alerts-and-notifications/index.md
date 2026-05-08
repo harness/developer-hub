@@ -41,21 +41,38 @@ Feature flag alerts provide immediate feedback about a feature flag’s key metr
 
 To check if you have feature flag alerting enabled for your account, in Harness FME click **My work** in the left navigation menu and click into a feature flag. Then click on the gear icon next to the flag name. If you see the **Alerts setup** menu item, you have feature flag alerting enabled for your account.
 
-## Setting up feature flag alerting
+## Significance alerts (feature flags)
 
-To enable or disable alert notifications for a specific feature flag, do the following:
+:::info Feature Flag Alerting
+Harness FME supports multiple types of alerts for monitoring feature flags and metrics. While alerts can be configured across environments, not all alert types are evaluated in every environment. 
 
-1. Click **Feature flags** in the left navigation menu, and click on a feature flag.
+* Significance alerts (key metrics and guardrail metrics) are only evaluated in production environments.
+* Metric policy alerts (threshold-based alerts) can be evaluated in any environment.
 
-1. Ensure the Alert baseline treatment is selected in the flag definition. _How this selection is used for alerting:_ Harness FME will compare the metric value of each treatment against the metric value of the alert baseline treatment selected. This comparison will determine the impact (_desired_, _undesired_, or _inconclusive_) that the feature flag has on that metric. For example, if you have two treatments “on” and “off”, and “off” is selected as your alert baseline treatment, Harness FME will monitor the impact of the “on” treatment against the “off” treatment and alert you if a statistically significant impact is observed. For more information, see [Understanding metric impact](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/), [Applying filters](/docs/feature-management-experimentation/release-monitoring/metrics/setup/filtering/), and [Set the alert baseline treatment](/docs/feature-management-experimentation/release-monitoring/alerts/set-the-alert-baseline-treatment).
+Keep this distinction in mind when configuring alerts.
+:::
 
-1. Next to the feature flag name, click on the gear icon, and select **Alerts setup**.
+To enable or disable alert notifications for a specific feature flag:
 
-1. Note that feature flag alerts can only be enabled for all production environments at this time. (You can change the Environment type to **Production** when you edit an environment in Admin settings, accessed via the top button in the left navigation panel.) For more information about environments, see the [Environments](/docs/feature-management-experimentation/environments/) documentation.
+1. From the FME navigation menu, go to the **Feature flags** page, then select a feature flag.
+1. Click **Initiate Environment** to access the feature flag definition for a selected environment.
+1. Ensure an [alert baseline treatment](/docs/feature-management-experimentation/release-monitoring/alerts/set-the-alert-baseline-treatment) is selected in the flag definition. Harness FME compares each treatment against this baseline to determine whether the [impact is _desired_, _undesired_, or _inconclusive_](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/). Alerts are triggered when a statistically significant difference is detected.
+   
+   ![](../../static/alerts-1.png)
 
-1. Under Alert conditions, check the box **When a key metric reaches significance** to turn the feature flag’s alerting on. This means that an alert will be immediately triggered whenever one of this feature flag’s key metrics reaches a desired or undesired impact. Unchecking the box will turn the feature flag’s alerting off.
+1. Next to the feature flag name, click on the Gear icon, and select **Alerts setup**.
 
-1. Review the Destinations and recipients that will be notified if a desired or undesired impact is detected for a key metric added to the feature flag. Feature flag owners are notified by default, and you are not able to add or remove specific recipients at this time.
+1. Identify the environment(s) where alerts are configured. You can configure [metric policy alerts](/docs/feature-management-experimentation/release-monitoring/metrics/setup/metric-alert-policy/) for multiple environments (for example, Production, Staging, or Preview). However, significance alerts are only evaluated in [production environments](/docs/feature-management-experimentation/environments/).
+  
+   ![](../../static/alerts-2.png)
+   
+   Alerts configured in non-production environments will not trigger for significance-based alerts, even if metric impact appears significant. 
+
+1. Under Alert conditions, check the box **When a key metric reaches significance** to turn the feature flag’s alerting on. This enables alerts when a key metric shows a statistically significant desired or undesired impact during a rollout. Unchecking the box will turn the feature flag’s alerting off.
+   
+   ![](../../static/alerts-3.png)
+
+1. Review the **Destinations and recipients** that will be notified if a desired or undesired impact is detected for a key metric added to the feature flag. Feature flag owners are notified by default, and you are not able to add or remove specific recipients at this time.
 
 1. Click **Save**. If enabled, monitoring for feature flag alerts will activate for the flag’s key metrics immediately or as soon as the percentage targeting rule is set for the feature flag. (The percentage targeting rule is set on the feature flag’s Definition tab, under the **Distribute treatments as follows** radio button.) 
 
