@@ -1,0 +1,90 @@
+.fme-docs-banner {
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  background-color: var(--ifm-alert-background-color-success);
+  border-left: 4px solid var(--ifm-color-success);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.fme-docs-banner-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+}
+
+.fme-docs-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.fme-docs-banner-text strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+}
+
+.fme-docs-banner-text span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ifm-font-color-base);
+}
+
+.fme-docs-banner-link {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: var(--ifm-color-primary);
+  color: white !important;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.fme-docs-banner-link:hover {
+  background-color: var(--ifm-color-primary-dark);
+  text-decoration: none;
+}
+
+.fme-docs-banner-close {
+  padding: 4px 8px;
+  border: none;
+  background: none;
+  color: var(--ifm-font-color-base);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.fme-docs-banner-close:hover {
+  opacity: 1;
+}
+
+@media (max-width: 996px) {
+  .fme-docs-banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 40px;
+  }
+
+  .fme-docs-banner-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .fme-docs-banner-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
