@@ -1,6 +1,16 @@
 {
   "entries": [
     {
+      "id": "platform.account",
+      "term": "account",
+      "definition": "An account is the highest-level container where you define organizational structure, manage global settings, and establish shared security and governance rules that cascade down to all organizations and projects in the Harness platform.",
+      "slug": "account",
+      "module": "platform",
+      "category": "account",
+      "letter": "A",
+      "related": []
+    },
+    {
       "id": "fme.warehouse-native.assignment-source",
       "term": "assignment source",
       "definition": "A data source that defines how users are assigned to different variations in an experiment. In Warehouse Native, this data is typically stored in your data warehouse.",
@@ -496,6 +506,16 @@
       ]
     },
     {
+      "id": "platform.organization",
+      "term": "organization",
+      "definition": "An organization groups projects sharing common goals or business units, providing a structured way for managing teams, access, and shared resources in the Harness platform.",
+      "slug": "organization",
+      "module": "platform",
+      "category": "organization",
+      "letter": "O",
+      "related": []
+    },
+    {
       "id": "fme.pipelines.pipeline",
       "term": "pipeline",
       "definition": "A pipeline is a sequence of stages that define how services are deployed to an environment. Pipelines can include approvals, barriers, notifications, and other execution logic.",
@@ -540,6 +560,16 @@
           "slug": "stage"
         }
       ]
+    },
+    {
+      "id": "platform.project",
+      "term": "project",
+      "definition": "A project is a shared workspace within an organization where teams manage their users, pipelines, and resources needed to build, deploy, and operate their applications in the Harness platform.",
+      "slug": "project",
+      "module": "platform",
+      "category": "project",
+      "letter": "P",
+      "related": []
     },
     {
       "id": "fme.openfeature.provider",
@@ -776,6 +806,16 @@
   ],
   "grouped": {
     "A": [
+      {
+        "id": "platform.account",
+        "term": "account",
+        "definition": "An account is the highest-level container where you define organizational structure, manage global settings, and establish shared security and governance rules that cascade down to all organizations and projects in the Harness platform.",
+        "slug": "account",
+        "module": "platform",
+        "category": "account",
+        "letter": "A",
+        "related": []
+      },
       {
         "id": "fme.warehouse-native.assignment-source",
         "term": "assignment source",
@@ -1290,6 +1330,18 @@
         ]
       }
     ],
+    "O": [
+      {
+        "id": "platform.organization",
+        "term": "organization",
+        "definition": "An organization groups projects sharing common goals or business units, providing a structured way for managing teams, access, and shared resources in the Harness platform.",
+        "slug": "organization",
+        "module": "platform",
+        "category": "organization",
+        "letter": "O",
+        "related": []
+      }
+    ],
     "P": [
       {
         "id": "fme.pipelines.pipeline",
@@ -1336,6 +1388,16 @@
             "slug": "stage"
           }
         ]
+      },
+      {
+        "id": "platform.project",
+        "term": "project",
+        "definition": "A project is a shared workspace within an organization where teams manage their users, pipelines, and resources needed to build, deploy, and operate their applications in the Harness platform.",
+        "slug": "project",
+        "module": "platform",
+        "category": "project",
+        "letter": "P",
+        "related": []
       },
       {
         "id": "fme.openfeature.provider",

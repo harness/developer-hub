@@ -5,7 +5,14 @@ redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/account-settings/projects
 ---
 
-Projects allow you to separately manage your feature flags and experiments across your different business units, product lines, and applications. When you first create your account, you're provided with one project named `Default`. 
+<Tooltip id="platform.project">Projects</Tooltip> let you organize and manage feature flags, experiments, metrics, and more for a specific team, business unit, or application in Harness FME. Harness recommends creating one [project](/docs/platform/get-started/overview#projects) per team, business unit, or independently managed application domain. 
+
+- Use a single project when teams need to share feature flags, metrics, environments, or visibility across services. 
+- Use separate projects when teams require isolated RBAC, independent release cadences, or strict separation of feature flag and experimentation data.
+
+Projects in Harness FME are hard partitions for <Tooltip id="fme.openfeature.feature-flag">feature flag</Tooltip> and <Tooltip id="fme.warehouse-native.experiment">experimentation</Tooltip> data. Related flags (such as parent-child or flag prerequisites) and metrics that rely on the same event streams must exist within the same project. If you only need lightweight organization within a shared domain, consider using naming conventions and tags instead of creating separate projects.
+
+When you first create your <Tooltip id="platform.account">account</Tooltip>, Harness FME provides a default project named `Default`. The `Default` project includes two [environments](/docs/feature-management-experimentation/environments) and one [traffic type](/docs/feature-management-experimentation/traffic-types). 
 
 ```mermaid
 flowchart TB
@@ -23,7 +30,7 @@ flowchart TB
 
 <br />
 
-This project has two [environments](/docs/feature-management-experimentation/environments) and one [traffic type](/docs/feature-management-experimentation/traffic-types) created underneath it. You can rename and edit these environments and traffic types and add more to the `Default` project. The following objects are also located in a project: 
+You can rename and edit the default environments and traffic type, and create additional resources as needed. Projects contain and scope the following resources: 
 
 * [Feature flags](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag/)
 * [Segments](/docs/feature-management-experimentation/feature-management/targeting/segments)
@@ -31,11 +38,9 @@ This project has two [environments](/docs/feature-management-experimentation/env
 * [Event types](/docs/feature-management-experimentation/release-monitoring/events/)
 * [API keys](/docs/feature-management-experimentation/api-keys)  
 
-When onboarding different business units to Harness FME, you can add multiple projects within your account to allow each team to have a separated space to manage their feature flags and experiments. 
+## Create a project
 
-## Creating a project
-
-Project creation in Harness FME uses the Harness platform [project workflow](/docs/platform/organizations-and-projects/create-an-organization/#create-a-project). After creating a project, return to **FME Settings** to configure FME-specific options.
+Project creation in Harness FME uses the Harness platform [project workflow](/docs/platform/get-started#create-a-project). After creating a project, return to **FME Settings** to configure FME-specific options.
 
 To create a project: 
 
@@ -58,7 +63,7 @@ To create a project:
    ![](./static/projects-3.png)
 
 1. Click **Save and Continue**.
-1. Optionally, invite people to collaborate in the project by selecting a role from the dropdown menu (like `FME Manager`) and adding collaborators in your organization by email address.
+1. Optionally, invite people to collaborate in the project by selecting a role from the dropdown menu (like `FME Manager`) and adding collaborators in your <Tooltip id="platform.organization">organization</Tooltip> by email address.
    
    ![](./static/projects-4.png)
 
@@ -86,10 +91,51 @@ To create a project:
 
 1. Click **Save**.
 
+## Manage projects
+
+You can manage projects in **FME Settings** and the **Projects** page. 
+
+### Configure project settings
+
+In **FME Settings**, you can configure whether project changes require [titles and comments](/docs/feature-management-experimentation/audit-logs#titles-and-comments-in-changes) for auditability and change tracking.
+
+![](./static/projects-11.png)
+
+To configure project settings in Harness FME:
+
+1. Navigate to **FME Settings** > **Projects**.
+1. Click **View** for the project you want to configure.
+1. Open the **Actions** dropdown menu and select **Edit project**.
+1. In the **Edit project** dialog, enable or disable **Require title and comments for feature flag, segment, and metric changes**.
+1. Click **Save**.
+
+When enabled, users must provide a title and comment when modifying feature flags, segments, or metrics within the project. This can help improve change tracking and audit visibility across teams.
+
+### Delete a project
+
+:::danger Delete FME resources before deleting the project
+Deleting a Harness project removes the associated Harness module resources within that project. However, Feature Management & Experimentation (FME) resources are not automatically deleted.
+
+Before deleting a project, manually remove associated FME resources such as feature flags, segments, metrics, environments, and traffic types.
+:::
+
+![](./static/projects-10.png)
+
+To delete a project:
+
+1. Navigate to **FME Settings** > **Projects**.
+1. Click **View** for the project you want to delete.
+1. Open the **Actions** dropdown menu and select **Delete project**.
+
+   This redirects you to the broader Harness **Projects** management page for your organization.
+
+1. Find the project, click the kebab menu (⋮), and select **Delete**.
+1. In the **Delete Project** dialog, select **Yes, I want to delete this project**.
+
 <details>
 <summary>Still using `app.split.io`?</summary>
 
-## Setting project permissions
+#### Setting project permissions
 
 You can set view permissions to your projects or projects you have administrator rights to and any objects within the project. This allows you more granular control over which users, groups, and API keys can access the objects in projects to support access requirements within an account. 
 
@@ -99,7 +145,7 @@ Each Split project has a project permissions setting which you can use to restri
 
 Project view restrictions can be used to protect sensitive (i.e., confidential) projects, or to improve user experience by showing a small number of relevant projects to each user.
 
-## Viewing or updating project permissions
+#### Viewing or updating project permissions
 
 An Admin can view or edit a project's permissions by following these steps:
 
@@ -119,7 +165,7 @@ To manage project-level settings:
    * **Restrict who can access**. Allows you to select which users, groups, and admin API keys have access to a particular project.
 1. Click **Save**.
 
-## Editing a project
+#### Editing a project
 
 When you are viewing a project, you can edit a project by doing the following:
 1. From the left navigation, click on the **profile button** at the bottom.
@@ -141,7 +187,7 @@ When you are viewing a project, you can edit a project by doing the following:
    * **Restrict who can access**. Allows you to select which users, groups, and admin API keys have access to a particular project.
 8. Click **Save** to save your changes. The changes appear in the admin audit logs.
 
-## Viewing projects
+#### Viewing projects
 
 To view projects, do the following:
 
@@ -151,25 +197,25 @@ To view projects, do the following:
 
    ![](./static/view-project.png)
 
-## Requesting access to projects
+#### Requesting access to projects
 
 If you have no access to a project, you need to request access from the administrator of that project. 
 
-## Navigating between projects
+#### Navigating between projects
 
 You can navigate between projects by doing the following:
 
 1. From the left navigation, click on the **profile button** at the top.
 2. **Search or select the project** you would like to switch to. You can see the environments, feature flags, segments, and metrics under that project.
 
-## Managing your projects
+#### Managing your projects
 
 To manage your projects, go to the **projects** tab in your **Admin Settings** page. On this page you can:
 
 * See a list of all your existing projects.
 * Manage the [environments](/docs/feature-management-experimentation/environments) and [traffic types](/docs/feature-management-experimentation/traffic-types) in a project by clicking **View** in the Actions column for selected projects.
 
-## Deleting a project
+#### Deleting a project
 
 To delete a project, follow these steps:
 

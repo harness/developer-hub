@@ -56,5 +56,10 @@
         "query-variable": "A query variable is a dynamic parameter that can be used in Canvas HQL queries to filter or modify the data being retrieved. It allows you to create more flexible and interactive dashboards by enabling users to input values that affect the displayed data.",
         "custom-variable": "A custom variable is a user-defined parameter that can be used in Canvas to store and manipulate data. It can be used in queries, calculations, or as part of the dashboard configuration to create more complex and tailored visualizations."
       }
+    },
+    "platform": {
+      "account": "An account is the highest-level container where you define organizational structure, manage global settings, and establish shared security and governance rules that cascade down to all organizations and projects in the Harness platform.",
+      "organization": "An organization groups projects sharing common goals or business units, providing a structured way for managing teams, access, and shared resources in the Harness platform.",
+      "project": "A project is a shared workspace within an organization where teams manage their users, pipelines, and resources needed to build, deploy, and operate their applications in the Harness platform."
     }
   }
