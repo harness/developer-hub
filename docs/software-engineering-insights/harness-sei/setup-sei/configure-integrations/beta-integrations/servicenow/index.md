@@ -12,25 +12,58 @@ import TabItem from '@theme/TabItem';
 The ServiceNow integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-The ServiceNow integration enables SEI 2.0 to ingest incident and change management (ITSM) data from ServiceNow. This data can be used to track operational performance and correlate incidents and changes with engineering metrics in SEI dashboards.
+The ServiceNow integration enables SEI 2.0 to ingest incident and change management (ITSM) data from ServiceNow. This integration allows engineering organizations to track, manage, and analyze incidents and change requests in real time, helping teams correlate operational performance with engineering performance metrics in SEI dashboards.
+
+SEI 2.0 supports the following authentication methods:
+
+* **API key authentication** using a ServiceNow API key with permissions to read ServiceNow data
+* **Username/password authentication** using ServiceNow account credentials
+* **OAuth authentication** using a ServiceNow client ID and client secret
 
 ### Prerequisites
 
-Before you get started, ensure you have the required credentials to connect to ServiceNow:
+Before you can configure the ServiceNow integration, ensure you have the following requirements:
 
 - A ServiceNow instance URL
 - Admin access to your ServiceNow account
+- A ServiceNow service account with the required permissions
 
-Depending on the authentication method you choose, ensure you have the following:
+Ensure the ServiceNow service account has the following roles:
 
-* For API key or Username/password authentication, a ServiceNow API key with permissions to read ServiceNow data or a ServiceNow username and password with sufficient access.
-* For OAuth authentication, a ServiceNow client ID and client secret.
+| Role | Description |
+| --- | --- |
+| `itil` | Provides access to IT Service Management (ITSM) data such as incidents, change requests, users, and CMDB records. |
+| `personalize_choices` | Allows SEI to retrieve choice field labels such as incident state and severity values. |
+| `personalize_dictionary` | Allows SEI to retrieve field metadata and custom field definitions. |
+| `oauth_admin` | Required only when configuring OAuth applications in ServiceNow. |
+| `user` | Required to ingest user-related metadata for all users in the ServiceNow instance. Assign together with `user_admin`. |
+| `user_admin` | Optional. Required only if you want to ingest extended user attributes. |
 
-To configure OAuth in ServiceNow:
+To ingest user-related metadata for all users in the ServiceNow instance, ensure that `user` and `user_admin` roles are also assigned.
 
-1. Create a new application in the Application Registry.
-1. Assign the required scopes (for example, `table_read`) to allow access to ITSM data.
-1. After creating the application, copy the Client ID and Client Secret for use during setup.
+:::info Harness IP Addresses
+If your ServiceNow instance uses IP allowlisting, ensure the required Harness IP addresses are added to the allowlist. 
+
+Go to [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) to add the required Harness IP addresses to your allowlist.
+:::
+
+#### Configure OAuth in ServiceNow
+
+To use OAuth authentication, create an OAuth application in ServiceNow.
+
+1. Log in to ServiceNow with an administrator account.
+1. Navigate to **System OAuth > Application Registry**.
+1. Click **New**.
+1. Select **Create an OAuth API endpoint for external clients**.
+1. Enter a name for the application.
+1. Add the redirect URL generated during the ServiceNow integration setup.
+1. In the **Auth Scopes** section, add the `table_read` scope.
+1. Save the application.
+1. Copy the generated **Client ID** and **Client Secret** for use during integration setup. 
+
+   :::danger 
+   The Client ID and Client Secret are sensitive credentials. Store them securely.
+   :::
 
 ## Setup
 
@@ -55,7 +88,9 @@ To configure the ServiceNow integration:
       - For **Username**, enter a username and password in the `Username` and `Password` fields.
 
    1. Enter a timezone in the `Timezone` field.
-   1. Click **Continue**.
+   1. Optionally, to limit the incidents and change requests ingested into SEI 2.0, create a filter query in ServiceNow.
+   1. In ServiceNow, create and copy the query string for the incidents or change requests you want to ingest, then paste the query into the appropriate filter fields in the **Advanced Configuration** section.
+   1. Click **Validate Connection**.
    1. Once validation succeeds, click **Validate and Create Integration**.
    
    If you are using **OAuth**:
@@ -65,6 +100,8 @@ To configure the ServiceNow integration:
    1. In ServiceNow, configure your [Application Registry](https://www.servicenow.com/docs/r/zurich/security-management/security-incident-response/configure-application-registry-splunk.html) to include the redirect URL.
    1. Enter a client ID and client secret.
    1. Enter a timezone in the `Timezone` field.
+   1. Optionally, to limit the incidents and change requests ingested into SEI 2.0, create a filter query in ServiceNow.
+   1. In ServiceNow, create and copy the query string for the incidents or change requests you want to ingest, then paste the query into the appropriate filter fields in the **Advanced Configuration** section.
    1. Click **Connect ServiceNow**.
    1. Once validation succeeds, click **Validate and Create Integration**.
 
@@ -76,7 +113,9 @@ To configure the ServiceNow integration:
    1. In the **Overview** section, enter a name for the integration. Optionally, add a description or tags.
    1. In the **Provide ServiceNow Details** section, enter your ServiceNow URL and provide a username and password.
    1. Enter a timezone in the `Timezone` field.
-   1. Click **Download YAML File**. This `satellite.yml` file contains the metadata and configurations for establishing the connection and data ingestions from ServiceNow.
+   1. Optionally, to limit the incidents and change requests ingested into SEI 2.0, create a filter query in ServiceNow.
+   1. In ServiceNow, create and copy the query string for the incidents or change requests you want to ingest, and add it to the appropriate fields in the **Advanced Configuration** section.
+   1. Click **Download YAML File**. This `satellite.yml` file contains the metadata and configurations for establishing the connection and data ingestion from ServiceNow.
    1. [Deploy the `satellite.yml` file](/docs/software-engineering-insights/harness-sei/setup-sei/ingestion-satellite/container) to your on-premises infrastructure. 
    1. Click **Done**.
 
