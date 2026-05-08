@@ -40,4 +40,10 @@ In Harness IDP we allow two ways in which you can add your custom plugins
 
 Follow the detailed steps mentioned on these [docs](/docs/internal-developer-portal/plugins/custom-plugins/add-a-custom-plugin) to add your custom plugins to the IDP. 
 
+## Custom Plugins V2
+
+Harness IDP also supports a newer Custom Plugins V2 framework. Unlike the original approach, V2 plugins are built using a dedicated React SDK (`@harnessio/idp-pluginssdk`) and deployed as a self-contained HTML file. This eliminates the need to package and upload a Backstage plugin archive.
+
+Custom Plugins V2 is currently in **BETA** behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS_V2`. Go to [Custom Plugins V2](/docs/internal-developer-portal/plugins/custom-plugins/custom-plugins-v2) to set up and use this framework.
+
 
