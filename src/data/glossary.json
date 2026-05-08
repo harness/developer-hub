@@ -34,6 +34,25 @@
       ]
     },
     {
+      "id": "fme.feature-management.attribute",
+      "term": "attribute",
+      "definition": "A key-value pair used to describe a user, account, or entity during feature flag evaluation. Attributes can be used in targeting rules to determine which treatment is served.",
+      "slug": "attribute",
+      "module": "fme",
+      "category": "feature-management",
+      "letter": "A",
+      "related": [
+        {
+          "term": "identity",
+          "slug": "identity"
+        },
+        {
+          "term": "segment",
+          "slug": "segment"
+        }
+      ]
+    },
+    {
       "id": "iacm.provider-registry.binary-files",
       "term": "binary files",
       "definition": "Executable program files produced after compiling source code (for example, Go or Java). OpenTofu or Terraform uses these binaries to interact with your infrastructure.",
@@ -53,21 +72,6 @@
         {
           "term": "gpg key",
           "slug": "gpg-key"
-        }
-      ]
-    },
-    {
-      "id": "fme.feature-management.bucketing-seed",
-      "term": "bucketing seed",
-      "definition": "A value used to ensure consistent assignment of users to variations in an experiment. By using the same bucketing seed, you can ensure that users are consistently bucketed into the same variation across different evaluations.",
-      "slug": "bucketing-seed",
-      "module": "fme",
-      "category": "feature-management",
-      "letter": "B",
-      "related": [
-        {
-          "term": "segment",
-          "slug": "segment"
         }
       ]
     },
@@ -417,6 +421,25 @@
       ]
     },
     {
+      "id": "fme.feature-management.identity",
+      "term": "identity",
+      "definition": "A unique key representing a user, account, device, or other entity in Harness FME. Identities can store associated attribute data used for targeting workflows, search, and analysis.",
+      "slug": "identity",
+      "module": "fme",
+      "category": "feature-management",
+      "letter": "I",
+      "related": [
+        {
+          "term": "attribute",
+          "slug": "attribute"
+        },
+        {
+          "term": "segment",
+          "slug": "segment"
+        }
+      ]
+    },
+    {
       "id": "iacm.tf-commands.init",
       "term": "init",
       "definition": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies.",
@@ -627,8 +650,12 @@
       "letter": "S",
       "related": [
         {
-          "term": "bucketing seed",
-          "slug": "bucketing-seed"
+          "term": "attribute",
+          "slug": "attribute"
+        },
+        {
+          "term": "identity",
+          "slug": "identity"
         }
       ]
     },
@@ -838,6 +865,25 @@
             "slug": "experiment"
           }
         ]
+      },
+      {
+        "id": "fme.feature-management.attribute",
+        "term": "attribute",
+        "definition": "A key-value pair used to describe a user, account, or entity during feature flag evaluation. Attributes can be used in targeting rules to determine which treatment is served.",
+        "slug": "attribute",
+        "module": "fme",
+        "category": "feature-management",
+        "letter": "A",
+        "related": [
+          {
+            "term": "identity",
+            "slug": "identity"
+          },
+          {
+            "term": "segment",
+            "slug": "segment"
+          }
+        ]
       }
     ],
     "B": [
@@ -861,21 +907,6 @@
           {
             "term": "gpg key",
             "slug": "gpg-key"
-          }
-        ]
-      },
-      {
-        "id": "fme.feature-management.bucketing-seed",
-        "term": "bucketing seed",
-        "definition": "A value used to ensure consistent assignment of users to variations in an experiment. By using the same bucketing seed, you can ensure that users are consistently bucketed into the same variation across different evaluations.",
-        "slug": "bucketing-seed",
-        "module": "fme",
-        "category": "feature-management",
-        "letter": "B",
-        "related": [
-          {
-            "term": "segment",
-            "slug": "segment"
           }
         ]
       }
@@ -1239,6 +1270,25 @@
     ],
     "I": [
       {
+        "id": "fme.feature-management.identity",
+        "term": "identity",
+        "definition": "A unique key representing a user, account, device, or other entity in Harness FME. Identities can store associated attribute data used for targeting workflows, search, and analysis.",
+        "slug": "identity",
+        "module": "fme",
+        "category": "feature-management",
+        "letter": "I",
+        "related": [
+          {
+            "term": "attribute",
+            "slug": "attribute"
+          },
+          {
+            "term": "segment",
+            "slug": "segment"
+          }
+        ]
+      },
+      {
         "id": "iacm.tf-commands.init",
         "term": "init",
         "definition": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies.",
@@ -1459,8 +1509,12 @@
         "letter": "S",
         "related": [
           {
-            "term": "bucketing seed",
-            "slug": "bucketing-seed"
+            "term": "attribute",
+            "slug": "attribute"
+          },
+          {
+            "term": "identity",
+            "slug": "identity"
           }
         ]
       },

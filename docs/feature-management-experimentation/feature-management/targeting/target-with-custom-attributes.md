@@ -1,7 +1,7 @@
 ---
-title: Target with custom attributes
-sidebar_label: Target with custom attributes
-description: "Learn how to add custom attributes to create dynamic targeted feature rollout plans in Harness FME."
+title: Targeting With Custom Attributes
+sidebar_label: Custom Attributes
+description: "Learn how to add custom attributes to create dynamic, targeted feature rollout plans in Harness FME."
 sidebar_position: 9
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/does-my-sdk-version-support-semver
@@ -12,370 +12,318 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-With custom attributes, you can create dynamic targeted feature rollout plans using any end-user criteria or dimension that is known at runtime. Custom attributes can be used to represent:
+<Tooltip id="fme.feature-management.attribute">Attributes</Tooltip> let you create dynamic targeting rules in Harness FME using runtime data passed during feature flag evaluation. You can use custom attributes to target users based on: 
 
-* Temporal or fast moving data (e.g., time since last login, customer creation date, browser type, or machine)
-* Sensitive information (e.g., customer purchase size or customer status)
+- Rapidly changing or contextual data (for example: time since last login, browser type, app version, or device type)
+- Business or customer metadata (for example: subscription tier, purchase amount, or customer status).
 
-:::tip
-Consider using [segments](/docs/feature-management-experimentation/feature-management/targeting/segments) (instead of attributes) if the users in a segment would not change multiple times in a day or the grouping of users needs to be standardized across your Harness account (e.g., key accounts, internal or outsourced QA teams, or company employees).
+Use [segments](/docs/feature-management-experimentation/feature-management/targeting/segments) instead of attributes when group membership changes infrequently or needs to be standardized across your organization (for example: internal users, QA teams, or strategic customer accounts).
+
+### Prerequisites
+
+To manage custom attributes in **FME Settings**, you need the [**FME Administrator** role](/docs/feature-management-experimentation/permissions/rbac).
+
+## Create custom attributes
+
+You can create custom attributes in three ways:
+
+- Directly [within a feature flag targeting rule](#create-custom-attributes-within-feature-flag-targeting-rules)
+- In [**FME Settings**](#create-custom-attributes-in-fme-settings) for reuse across a project and traffic type
+- [Using the Split API](#create-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints)
+
+Attributes created in [**FME Settings**](#create-custom-attributes-in-fme-settings) or through [the Harness FME API](#store-identity-attributes-for-targeting-workflows) are associated with a project and traffic type, and appear in your feature flag's attribute-based targeting rules as reusable **User Attributes**. On the other hand, attributes created [directly inside an attribute-based targeting rule](#create-custom-attributes-within-feature-flag-targeting-rules) only exist within that feature flag definition and are not reusable across projects or traffic types.
+
+:::info
+The labels shown in the **Targeting** section of a feature flag definition depend on the configured traffic type. For example, when creating an attribute-based targeting rule, if a feature flag uses the `account` traffic type, the labels display **Account** and **Account Attributes** instead of **User** and **User Attributes**.
 :::
 
-## Creating custom attributes
+Regardless of how a custom attribute is created, attribute values must still be passed in the SDK evaluation request (for example, `getTreatment`) for targeting rules to evaluate correctly. For implementation examples, refer to the relevant [SDK documentation](/docs/feature-management-experimentation/sdks-and-infrastructure).
 
-This section explains how to create attributes and how to use them to define feature flag targeting rules in Harness FME. You can choose to define custom attributes [within feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules), [in Admin Settings](#creating-custom-attributes-in-admin-settings), or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints).
+### Create custom attributes within feature flag targeting rules
 
-:::tip
- _The attributes you create [in Admin Settings](#creating-custom-attributes-in-admin-settings) or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints)_ will be shown in Harness FME as **User Attributes** in your attribute-based targeting rules (on a feature flag's Definition tab, in the **IF** dropdown menu). This _standardization_ of attributes can help reduce the number of mismatches between attribute keys in code and attribute keys in targeting rules. _Attributes created [within attribute-based feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules)_ will not be shown as User Attributes in Harness.
-:::
+You can create custom attributes directly within a feature flag's targeting rules on the **Definition** tab. Attributes created within a targeting rule become part of that feature flag definition only, and are not associated with a project or traffic type.
 
-:::note
-This article refers to the **IF** dropdown menu in a feature flag’s attribute based targeting rules as having the labels **User** and **User Attributes**, but these labels vary based on the traffic type chosen for the feature flag. For example, if a traffic type is exists in your project named ‘account’ and you select this traffic type when creating a new feature flag, then the **IF** dropdown menu in Harness would show **Account** and **Account Attributes** section labels.
-:::
+To create and use a custom attribute in an attribute-based targeting rule, see [Using custom attributes in feature flag targeting](#use-custom-attributes-in-feature-flag-targeting). You can also create custom attributes that use [SemVer matchers](https://docs.npmjs.com/about-semantic-versioning) for version-based targeting rules.
 
-:::tip[Tip for developers]
- No matter how attributes are created ([within attribute-based feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules), [in Admin Settings](#creating-custom-attributes-in-admin-settings), or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints)), for feature flags with targeting rules that use custom attributes, _the way attribute values are populated in your code and passed to the ‘getTreatment’ function call (to evaluate a feature flag) is the same_.
-:::
+### Create custom attributes in FME settings
 
-To see how to pass attributes with feature flag evaluation requests in your code, refer to the relevant [SDK documentation](/docs/feature-management-experimentation/sdks-and-infrastructure).
+You can define reusable custom attributes for a specific project and traffic type in **FME Settings**.
+Attributes created in **FME Settings** appear as reusable **User Attributes** in targeting rules for feature flags that use the same traffic type.
 
-### Creating custom attributes within feature flag targeting rules
+![](../static/target-with-custom-attributes-using-custom-attributes-7.png)
 
-You can freely create attributes within attribute-based targeting rules on the feature flag’s Definition tab. (The attributes that you define in directly within a feature flag’s targeting rules become part of the feature flag definition, but are _not associated with a project and traffic type_.)
+You can create attributes individually or bulk import them using a CSV file. If the CSV file contains attribute IDs that already exist for the selected project and traffic type, the existing attributes are overwritten.
 
-The steps to create a custom attribute in Harness FME within a feature flag attribute-based targeting rule, are described in the [Using custom attributes in feature flag targeting](#using-custom-attributes-in-feature-flag-targeting) section below.
+<Tabs queryString="attribute-creation">
+<TabItem value="individual" label="Create Individual Attributes">
 
-:::info[SemVer attributes]
-To work with SemVer attributes, first create a new custom attribute within a feature flag's attribute-based targeting rule, and select a SemVer matcher. See the _[Using custom attributes in feature flag targeting](#using-custom-attributes-in-feature-flag-targeting)_ section, step 2.
-:::
+To create a reusable custom attribute:
 
-### Creating custom attributes in Admin settings
+1. From the FME navigation menu, navigate to **FME Settings** > **Projects**.
+1. Click **View** on the project you want to configure and navigate to the **Traffic types** tab.
+1. Click **View/Edit attributes** for the traffic type you want to configure. 
+1. Click the **Actions** dropdown menu and select **Create an attribute**.
+1. Enter a unique attribute identifier/key (for example, `purchase_amount`) in the `ID` field. Attribute IDs cannot be changed after creation. If you reuse an existing attribute ID, the existing attribute is overwritten.
 
-:::info RBAC requirement
-To manage custom attributes in Admin Settings, you need the **FME Administrator** role. If you don't see custom attribute options in Admin Settings, check your role assignment with your account administrator. Go to [FME RBAC](/docs/feature-management-experimentation/permissions/rbac) to review role permissions.
-:::
-
-You can create a standard set of attributes for use in your feature flag definitions. The attributes that you define in Admin settings will be _associated with a project and traffic type_.
-
-You can create attributes individually or create multiple attributes using a CSV file.
-
-#### Creating individual custom attributes in Admin settings
-
-To create a custom attribute that will appear as a User Attribute in your feature flag targeting rules:
-
-1. In Harness FME, click the **profile button** at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
-2. Click to **View** the desired project and click the Traffic types tab.
-3. Click to **View/Edit attributes** for a traffic type. (Your feature flags defined with this same traffic type will show the custom attributes in their attribute-based targeting rules in Harness FME.) The Attributes page appears.
-4. Click the **Actions** button and select **Create an attribute**. The Create Attribute panel appears.
-5. In the ID field, enter a key identifier for the attribute (e.g., purchase_amt). This will be used in your feature flag targeting rules and in your source code as the attribute key.
-
-   :::important[Notes]
-   (1) An attribute’s ID cannot be changed later. <br />
-   (2) If you use an already existing attribute ID, the existing attribute will be overwritten.
+   :::tip Syntax requirements
+   Attribute IDs must start with a letter and can contain letters (`a-z`, `A-Z`), numbers (`0-9`), dashes (`-`), and underscores (`_`).
    :::
 
-   :::important[Syntax]
-   The attribute ID must start with a letter followed by a combination of dashes(-), underscores(_), letters(a-z A-Z), or numbers(0-9).
-   :::
-6. In the Name field, enter a descriptive name (e.g., Amount in customer’s cart at checkout).
-7. In the Description field, optionally enter a description of the attribute.
-8. In the Type dropdown, select an attribute value type (e.g., String to represent text values, Boolean to represent true or false values, etc.).
-
-   ![](../static/target-with-custom-attributes-ios-version.png)
-
-   :::tip
-   When you select the Semver or String attribute type, you can create a list of suggested values to match against. These suggested values will appear in Split UI when you are creating your feature flag attribute based targeting rules.
-   :::
-
+1. Enter a descriptive display name in the `Name` field (for example, `Checkout Customer Cart Amount`).
+1. Optionally, enter a description.
+1. Select an [attribute type](#custom-attribute-types-and-matchers): **String**, **Number**, **Set**, **Datetime**, **Boolean**, or **Semver**. If you select the **String** or **SemVer** attribute type, a **Suggested values** field appears.
+   
    ![](../static/target-with-custom-attributes-semver-suggested.png)
 
-9. Click the **Create** button. A new custom attribute is created and displayed on the Attributes page.
+   Suggested values provide predefined values that appear in the targeting rule builder when configuring attribute-based targeting rules. Enter values as a comma-separated list (for example, `enterprise, midmarket, smb`).
 
-#### Creating multiple custom attributes in Admin Settings
+1. Click **Create**.
 
-You can create multiple custom attributes by performing a bulk upload of custom attributes from a CSV file (a text file having the ".csv" file extension).
+The attribute is now available as a reusable **User Attribute** in attribute-based targeting rules for feature flags with matching traffic types.
 
-:::warning
- If you have any existing custom attributes (already associated with the given project and traffic type) with the same IDs that you have in your CSV file, then the existing attributes will be overwritten.
+</TabItem>
+<TabItem value="multiple" label="Create Multiple Attributes">
+
+To bulk import custom attributes:
+
+1. From the FME navigation menu, navigate to **FME Settings** > **Projects**.
+1. Click **View** on the project you want to configure and navigate to the **Traffic types** tab.
+1. Click **View/Edit attributes** for the traffic type you want to configure. 
+1. Click the **Actions** dropdown menu and select **Create multiple attributes**.
+1. Upload a CSV file containing comma-separated values. Click **Download CSV template** to access an example file that creates multiple attributes. 
+
+   The CSV file must use the following header row: 
+
+   ```csv title="CSV File"
+   ID,Name,Description,Type,SuggestedValues
+   ```
+
+   Each row defines a custom attribute using the following fields:
+
+   | Field               | Description                                                                                                                                                                           |
+   | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **ID**              | Unique attribute identifier used in targeting rules and SDK evaluation requests. The ID cannot be changed after creation.                                                             |
+   | **Name**            | Human-readable display name for the attribute.                                                                                                                                        |
+   | **Description**     | Optional description of the attribute.                                                                                                                                                |
+   | **Type**            | Data type of the attribute. Supported values: `String`, `Number`, `Boolean`, `DateTime`, `Set`.                                                                                       |
+   | **SuggestedValues** | Optional comma-separated list of suggested values. Only applies to `String` attributes. Suggested values appear in the targeting rule builder when configuring attribute-based rules. |
+
+1. Click **Save** after the upload completes. 
+
+</TabItem>
+</Tabs>
+
+## Store identity attributes for targeting workflows
+
+You can store identity data in Harness FME to improve targeting, debugging, and identity inspection workflows. Stored identity data enables key type-ahead suggestions, identity tooltips that display attribute values, and enriched impression analysis.
+
+![](../static/target-with-custom-attributes-using-custom-attributes-5.png)
+
+These identity-aware workflows are available in feature flag targeting rules, the **Live Tail** tab of a feature flag after pausing the event stream, and segment definitions when adding individual users.
+
+![](../static/target-with-custom-attributes-using-custom-attributes-8.png)
+
+When adding individual keys to targeting rules for a feature flag, you can type the leading characters of an attribute value to see matching <Tooltip id="fme.feature-management.identity">identities</Tooltip> from your uploaded identity data. 
+
+Type-ahead matching is case-sensitive and only matches leading characters.
+
+![](../static/target-with-custom-attributes-using-custom-attributes-6.png)
+
+Hover over a user key in the UI to view the attribute values associated with that identity.
+
+:::tip Stored identity attributes vs. runtime targeting attributes
+Attributes stored using the [Identities API](https://docs.split.io/reference#identities-overview) are not automatically used during feature flag evaluation or `getTreatment` calls. 
+
+To evaluate targeting rules based on attributes, you must still pass those attributes in the SDK evaluation request. For example, if a targeting rule checks whether `plan=enterprise`, the `plan` attribute must be included in the attributes object passed to `getTreatment`.
 :::
 
-To create multiple custom attributes that will appear as User Attributes in your feature flag targeting rules:
+### Create identity attributes
 
-1. In Harness FME, click the **profile button** at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
-2. Click to **View** the desired project and click the Traffic types tab.
-3. Click to **View/Edit attributes** for a traffic type. (Your feature flags defined with this same traffic type will show the custom attributes in their attribute-based targeting rules in Harness FME.) The Attributes page appears.
-4. Click the **Actions** button and select **Create multiple attributes**. The Create multiple attributes page appears.
-5. Import your CSV file by dragging and dropping into the Import CSV drop target field or by clicking the file upload link. The CSV file must consist of lines of comma-separated values. The first line should be the heading values `ID, Name, Description, Type, SuggestedValues`. Each following line provides values for a custom attribute, as follows:
-   * ID - A unique identifier for the attribute that will be displayed in targeting rules and used in code. The attribute ID cannot be changed after an attribute is created.
-   * Attribute name - A descriptive name for the attribute.
-   * Description - A description for the attribute.
-   * Type - Possible types are `String`, `Number`, `Boolean`, `DateTime`, or `Set`. SemVer is not currently supported.
-   * SuggestedValues (only used with String attributes) - Suggested values must be a double-quoted value or list of values. You can define up to 100 suggested values, each up to 50 characters long. (In Harness FME, attribute suggested values will appear in feature flag attribute-based targeting rules in the attribute value field.)
+Setting up identity attributes requires two steps: 
 
-   For example, a file named "attributes sample.csv" with the following content could be used for creating multiple custom attributes:
+1. [Define reusable attributes in **FME Settings**](#create-custom-attributes-in-fme-settings) for a project and traffic type.
+1. Use the [Identities API endpoints](https://docs.split.io/reference/identities-overview) to upload identity data and associated attribute values.
+   
+   | Endpoint | Description |
+   |---|---|
+   | [Save attribute](https://docs.split.io/reference/save-attribute) | Create or update a reusable attribute definition associated with a project and traffic type. |
+   | [Save identity](https://docs.split.io/reference/save-identity) | Create or update a single identity record while preserving unspecified attributes. |
+   | [Save identities](https://docs.split.io/reference/save-identities) | Bulk create or update multiple identity records and replace attributes for identities included in the request. |
+
+Identity data is stored per [environment](/docs/feature-management-experimentation/environments) in Harness FME. You can upload different identity datasets for development, staging, and production environments.
+
+| Environment | Recommendation |
+|---|---|
+| `Production` | Upload sanitized production identity data |
+| `Staging` | Upload realistic test data |
+| `Development` | Upload a smaller sample dataset for testing |
+
+<details>
+<summary>Bulk Upload Identity Data with the Helper Tool</summary>
+
+For large identity imports, Harness provides a helper tool (`fme_bulk_identities.py`) that converts CSV data into the required JSON payload format and uploads identities using the Identities API. The helper tool is included in [`fme_identities_upload_tool.zip`](../static/fme-identities-upload-tool.zip). 
+
+1. Create a CSV file.
+
+   ```csv title="FME Identities Example File"
+   key,company,short_code,account,region
+   00000000-0000-0000-0000-000000000000, Placeholder Name, PLCH, ACC-00000, region-0
+   11111111-1111-1111-1111-111111111111, Sample Entity LLC, SAMP, ACC-11111, region-1
+   22222222-2222-2222-2222-222222222222, Generic Corp, GENR, ACC-22222, region-2
    ```
-   ID, Name, Description, Type, SuggestedValues
-   plan_id,Plan type,"The subscription, plan the user is on",String,"enterprise,midmarket,smb"
-   zipcode_us,US zipcode,The zipcode (US format) to use for targeting,Number,
-   homeowner,Homeowner,Does the targeted user own a home?,String,"hello"
-   office_locations,Office locations,list of cities user has an office to go to,Set,
-   contract_date,Date contract was signed,This is the date the user signed the contract,DateTime,
-   attribute_without_optional_values,,,String,
+
+1. Create a configuration file that maps CSV columns to reusable attribute identifiers defined in **FME Settings**.
+
+   ```json title="FME Identities Config JSON File"
+   {
+   "api_base_url": "https://api.split.io/internal/api/v2",
+   "traffic_type_id": "user",
+   "environment_id": "<YOUR_ENVIRONMENT_ID>",
+   "admin_api_key": "<YOUR_API_KEY>",
+   "attribute_mapping": {
+      "company": "company_name",
+      "short_code": "company_short_code",
+      "account": "account_number",
+      "region": "region"
+   }
+   }
    ```
-6. When the file upload is complete, click **Save**. The new attributes are created and displayed on the Attributes page.
 
-### Difference Between Admin API Attributes and Targeting Rule Custom Attributes
+1. Run the utility.
 
-When using the [Admin API](https://docs.split.io/reference#identities-overview) to create attributes that assign values (identities) to client IDs, is this the same attribute used in the feature flag targeting rules from the user interface?
-  
-No, these are two distinct concepts:
+   ```bash
+   python3 fme_bulk_identities.py \
+     --csv identities.csv \
+     --config config.json \
+     [--batch-size 1000] \
+     [--dry-run] \
+     [--patch-mode] \
+   ```
+   
+   The following flags are available:
 
-- **Admin API Attributes:** These attributes are used to assign identities or additional information to user IDs in the Split Admin API. They appear in the Split UI (e.g., when hovering over a user ID in the Results tab) but do **not** influence feature flag targeting or treatment assignment.
+   | Flag           | Description                                                            |
+   | -------------- | ---------------------------------------------------------------------  |
+   | `--dry-run`    | Preview the generated API payload without uploading data.              |
+   | `--batch-size` | Configure the number of identities uploaded per batch.                 |
+   | `--patch-mode` | Preserve unspecified attributes by using the `Save identity` endpoint. |
+   
+By default, bulk uploads replace all attributes for identities included in the request. The `attribute_mapping` object maps CSV column names to the attribute identifiers configured in **FME Settings**.
 
-- **Targeting Rule Custom Attributes:** These are attributes defined and used specifically within feature flag targeting rules to determine treatment assignment. When the SDK calls `getTreatment`, you must pass the relevant custom attributes with their corresponding values for proper evaluation against the targeting rules.
+| CSV column   | FME attribute ID     |
+| ------------ | -------------------- |
+| `company`    | `company_name`       |
+| `short_code` | `company_short_code` |
+| `account`    | `account_number`     |
+| `region`     | `region`             |
 
-Understanding this distinction is important to avoid confusion when managing user data versus defining targeting logic.
+</details>
 
-### Creating custom attributes or writing custom attribute values using API endpoints
+Stored identity data becomes available throughout Harness FME for key type-ahead suggestions, identity tooltips, targeting workflows, impression analysis, and identity inspection.
 
-You can create custom attributes for use in feature flag targeting rules by using the following Split API endpoints:
+## Use custom attributes in feature flag targeting
 
-* __[Save attribute](https://docs.split.io/reference/save-attribute):__ Create or overwrite a custom attribute associated with a project and traffic type.
-* __[Save identity](https://docs.split.io/reference/save-identity):__ Create or overwrite a single user ID object (and its custom attribute values).
+After you [create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag), you can add and use custom attributes in [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting) to control treatment delivery. 
 
-As with attributes [created in Admin settings](#creating-custom-attributes-in-admin-settings), the attributes created using the Split API will will be associated with a project and traffic type and will appear as **User Attributes** in Harness FME.
+To add an attribute-based targeting rule:
 
-## Using custom attributes in feature flag targeting
-
-After you [create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag) you can **use** (and also **create**) custom attributes in your [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting). To add an attribute-based targeting rule to a feature flag:
-
-1. In Harness FME, on the Definition tab of a feature flag, in the Targeting rules area, click the **Add attribute based targeting rules** button. The **IF** field/dropdown menu appears.
+1. On the feature flag's **Definition** tab, click **Add attribute based targeting rules** in the `Targeting rules` section.
 
    ![](../static/target-with-custom-attributes-using-custom-attributes-01.png)
 
-2. Choose a **User Attribute** (custom attribute):
-  Choose a custom attribute from the **IF** dropdown menu’s **User Attributes** section.
-
-   ![](../static/target-with-custom-attributes-using-custom-attributes-02-new-attribute.png)
-    
-    Or **create a new custom attribute**:
-  You can also directly click within the **IF** field, type a new custom attribute ID, and click **New attribute “your new ID”** to create a new custom attribute.
+1. Select an existing **User Attribute** from the `IF` dropdown menu or create an attribute directly in the targeting rule by entering an attribute ID.
 
    ![](../static/target-with-custom-attributes-using-custom-attributes-02-user-attribute.png)
 
-3. Select a matcher to evaluate the attribute values passed in from your source code. For more information about matchers and how they evaluate values, see the [Custom attribute types and matchers](#custom-attribute-types-and-matchers) section below.
+1. Select a [matcher](#custom-attribute-types-and-matchers) to evaluate the attribute values passed in from your source code.
 
    ![](../static/target-with-custom-attributes-using-custom-attributes-03.png)
 
-You can also directly click within the IF field, type a new custom attribute ID, and click New attribute “your new ID” to create a new custom attribute.
-
-4. Complete the targeting rule by filling in the values to match against and choosing the treatment(s) to serve.
+1. Configure the values to match and select the treatment(s) to serve.
 
     ![](../static/target-with-custom-attributes-using-custom-attributes-04.png)
 
-   Additional examples:
+<details>
+<summary>Additional Targeting Rule Examples</summary>
 
-    Serve the `on` treatment for users with custom attribute `app_version` greater than or equal to 16.0.0:
+Serve the `on` treatment for users with custom attribute `app_version` greater than or equal to 16.0.0:
 
-    ![](../static/target-with-custom-attributes-using-custom-attributes-04-app-version.png)
+![](../static/target-with-custom-attributes-using-custom-attributes-04-app-version.png)
 
-    Serve the `on` treatment for users with custom attribute `age` greater than or equal to 20:
+Serve the `on` treatment for users with custom attribute `age` greater than or equal to 20:
 
-    ![](../static/target-with-custom-attributes-using-custom-attributes-04-age.png)
- 
-    Serve the `on` treatment for users with custom attribute `deal_size` between 500,000 and 10,000,000:
+![](../static/target-with-custom-attributes-using-custom-attributes-04-age.png)
 
-    ![](../static/target-with-custom-attributes-using-custom-attributes-04-deal-size.png)
-  
-    Serve the `on` treatment for users with custom attribute `registered_date` on or after a specified date:
+Serve the `on` treatment for users with custom attribute `deal_size` between 500,000 and 10,000,000:
 
-    ![](../static/target-with-custom-attributes-using-custom-attributes-04-date.png)
+![](../static/target-with-custom-attributes-using-custom-attributes-04-deal-size.png)
 
-## Using regex with custom attributes
+Serve the `on` treatment for users with custom attribute `registered_date` on or after a specified date:
 
-Split targeting rules support matching values using regular expressions (regex), which provides a powerful way to filter a wide range of users with a single targeting rule. 
+![](../static/target-with-custom-attributes-using-custom-attributes-04-date.png)
 
-If your versioning follows [semantic versioning](#semver-attributes), you can use SemVer-based targeting instead of regex for cleaner and more maintainable rules. Regex examples are mainly useful for legacy scenarios or non-SemVer attributes.
-
-:::tip
-Harness recommends testing your regex patterns on external tools like [regex101.com](https://regex101.com/) to ensure they work as expected before applying them in Split.
-:::
-
-Below are some useful regex examples for targeting specific user attributes:
-
-### Target specific app major version
-
-To target users with app version greater than or equal to 4.5 to get the on treatment, this regex could be used for matching the `appVersion` attribute:
-
-```
-(\[5-9\]\\.\[0-9\]|\[4\]\\.\[5-9\]).*
-```
-
-![](../static/targeting-1.png)
-
-You can use the `matches` operator in the targeting rule editor within the Split user interface to match the value of a passed attribute (such as an app version) to a regular expression and specify treatment assignments for any versions that match the expression.
-
-This approach also works when versions are formatted in `Major.Minor` and you want a specific treatment for versions below a certain threshold (for example, versions below `2.1.0`).
-
-Example of passing the `appVersion` attribute for the JavaScript SDK:
-
-```javascript
-var attributes = {appVersion: "4.567.33"};
-```
-
-### Target all population of specific domain of user emails
-
-For this example, to serve the `on` treatment for all employees of split.io, we can use the Regex below for `email` attribute:
-
-```
-@split.io$
-```
-
-![](../static/targeting-2.png)
-
-Example of passing the email attribute for the JavaScript SDK:
-
-```
-var attributes = {email: "bilal@split.io"};
-```
-
-### Target users on Chrome version 20 and later
-
-This example we are serving the on treatment to Chrome users only. However, we want to only use Chrome versions 20 and later for compatibility reasons. The attribute passed is userAgent:
-
-```
-Chrome\/[2-9][0-9]\.
-```
-
-![](../static/targeting-3.png)
-
-Example for the JavaScript SDK:
-
-```
-var attributes = {userAgent: "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"};
-```
-
-### Target English speaking users world wide
-
-An experiment is designed for English speaking users in any country by detecting the default language setting in the browser, the attribute passed is `navigatorLanguage en-`.
-
-![](../static/targeting-4.png)
-
-Example for the JavaScript SDK:
-
-```javascript
-var attributes = {navigatorLanguage: navigator.language};
-```
-
-### Target specific URL
-
-To target an experiment that applies only to users that land on a specific URL, the extracted URL can be passed as an attribute to the targeting rule:
-
-```
-http:\/\/mysite\.com\/my_url
-```
-
-![](../static/targeting-5.png)
-
-Example for the JavaScript SDK:
-
-```javascript
-var attributes = {url: window.location.href};
-```
-
-## How feature flag targeting rules with custom attributes are evaluated
-
-This section explains how a feature flag targeting rule with a custom attribute is evaluated in your source code, in the following cases:
-
-### The custom attribute value is not provided
-
-The feature flag targeting rule containing the custom attribute does not result in a match.
-
-For example, given the feature flag targeting rule:
-
-```
-if age <= 20 then 100% : on
-else 100% : off
-```
-
-If the value for the age attribute is not provided in code in the attributes map passed to the getTreatment call, the matcher in the first condition `age <= 20` evaluates to **false**. The `else` condition then evaluates to **true**, resulting in the `off` treatment.
-
-### The custom attribute value is not the correct type
-
-The feature flag targeting rule containing the custom attribute does not result in a match.
-
-For example, given the feature flag targeting rule:
-
-```
-if user.plan_type is "basic" then 100% : on
-else 100% : off
-```
-
-If the value provided for plan_type is an int instead of a string, then the matcher in the first condition `user.plan_type is "basic"` evaluates to **false**. The `else` condition then evaluates to **true**, resulting in the `off` treatment.
+</details>
 
 ## Custom attribute types and matchers
 
-This section describes attribute matchers (comparison operators) that are available in Harness FME when you are creating attribute-based feature flag targeting rules. You can use this information to help you plan your dynamic targeted feature rollout plans using custom attributes.
+Each <Tooltip id="fme.feature-management.attribute">custom attribute</Tooltip> type supports a specific of comparison operators, or matchers, that can be used in attribute-based targeting rules. 
 
-:::tip
- In Harness FME, on a feature flag's Definition tab, the **IF** dropdown menu is also an input field. In the **IF** dropdown field you can:
-* ___Enter a new attribute ID.___ When you enter a new custom attribute ID, the **Select matcher** dropdown menu will show **_all of the attribute matchers_**. 
+![](../static/target-with-custom-attributes-using-custom-attributes-02-new-attribute.png)
 
-* ___Select a User Attribute.___ When you select an existing User Attribute, the **Select matcher** dropdown menu will show **_a subset of matchers based on the selected attribute type_**. _Note that the '**User Attributes**' label contains the traffic type name (selected when the feature flag was created), so another traffic type name may be shown instead of '**User**'._
-:::
+When you select an existing attribute in the targeting rule builder, Harness FME only shows matchers compatible with that attribute type. You can also enter a new attribute ID directly in the `IF` field to create a custom attribute inline while building a targeting rule.
 
-### String literal attributes
+### String attributes
 
-**String** literal attributes store text. These attributes are used with the **String matchers** to set feature flag targeting rules based on standard string comparisons, regular expression matching, or comparisons against a list of strings.
+String attributes store text values. Use **String matchers** to create targeting rules based on string comparisons, regular expressions, or lists of string values.
 
-The following matchers can be used with String attributes:
+The following matchers are supported:
 
-* is in list
-* is not in list
-* starts with
-* does not start with
-* ends with
-* does not end with
-* contains
-* does not contain
-* matches (regular expression)
-* does not match (regular expression)
+- `is in list`
+- `is not in list`
+- `starts with`
+- `does not start with`
+- `ends with`
+- `does not end with`
+- `contains`
+- `does not contain`
+- `matches (regular expression)`
+- `does not match (regular expression)`
 
-For example, use an attribute 'subscription_plan' of type String to show accounts that are on the 'Business' or 'Enterprise' plan a given feature.
+:::tip Use cases for String Attributes
+String attributes work well for targeting based on categorical or label-based data, such as subscription tiers, regions, or customer segments.
 
-:::tip
- You can target your customers with any list or pick list dimension that you track.
+For example, use an `subscription_plan` String attribute to target customers on the `Business` or `Enterprise` plan.
 :::
 
 ### SemVer attributes
 
-SemVer attributes store version strings that follow the [Semantic Version](https://semver.org/) specification. These attributes are used with the **SemVer matchers** to set feature flag targeting rules based on version numbers.
+SemVer attributes store version strings that follow the [Semantic Version](https://semver.org/) specification. Use **SemVer matchers** to create targeting rules based on application or operating system versions.
 
-You can use the following comparisons:
+The following matchers are supported:
 
-* is =
-* is not =
-* is >=
-* is &lt;=
-* is in list
-* is between (inclusive)
-* is not between (inclusive)
+- `is =`
+- `is not =`
+- `is >=`
+- `is <=`
+- `is in list`
+- `is between (inclusive)`
+- `is not between (inclusive)`
 
-For example, use an attribute 'os_version' of type SemVer to give users that have a compatible OS version, e.g. `>= 2.2.0`, access to a new feature, while keeping the feature off for earlier OS versions.
+SemVer values must include a patch version number. For example, `2.2` is invalid, while `2.2.0` is valid. Pre-release identifiers and build metadata are also supported. 
 
-:::note
- The version numbers you provide must include the patch number (e.g. `2.2` is invalid, but `2.2.0` is valid) and can include pre-release identifiers and build metadata, as defined in the [Semantic Version](https://semver.org) specification. Comparisons also follow the Semantic Version specification.
+:::tip Use cases for SemVer attributes
+SemVer attributes work well for version-based targeting, such as rolling out features to specific app versions, operating systems, or SDK releases.
+
+For example, use an `os_version` SemVer attribute to enable a feature only for users running version `>= 2.2.0`.
 :::
 
 #### Supported SDKs and customer-deployed components for SemVer matcher
 
-The Semantic Version (SemVer) matcher is only supported in specific FME SDK and customer-deployed component versions. If you are using an older SDK version that does not support the SemVer matcher, feature flag evaluations will return the `control` treatment and a special impression will be created.
+SemVer matchers are only supported in specific SDK and customer-deployed component versions. If your SDK or customer-deployed component version does not support SemVer matchers, upgrade to a supported version to ensure targeting rules evaluate correctly. 
 
-:::info
-If you are using an older SDK or customer-deployed component version that does not support the SemVer matcher, Harness recommends upgrading to a supported version to ensure your target rules function as expected.
-:::
+If an unsupported SDK evaluates a feature flag containing a SemVer matcher, the SDK returns the `control` treatment and logs a corresponding impression event.
 
-Use the following tables to verify that your SDK or customer-deployed component version supports the SemVer matcher.
+The following versions support SemVer matchers:
 
 <Tabs queryString="semver-support">
   <TabItem value="sdk-suites" label="Client-side SDK Suites">
@@ -434,50 +382,194 @@ Use the following tables to verify that your SDK or customer-deployed component 
 
 ### Set attributes
 
-Set attributes store lists of strings. The following **Set matchers** can be used with Set attributes:
+Set attributes store lists of string values. Use **Set matchers** to create targeting rules based on membership in multiple values.
 
-* is equal to
-* is not equal to
-* has any of
-* does not have any of
-* has all of
-* does not have all of
-* is part of
-* is not part of
+The following matchers are supported:
 
-For example, use an attribute 'us_states_visited' of type Set to show a survey to users who have visited at least one state of the US West Coast. 
+- `is equal to`
+- `is not equal to`
+- `has any of`
+- `does not have any of`
+- `has all of`
+- `does not have all of`
+- `is part of`
+- `is not part of`
 
-### Numeric attributes
+:::tip Use cases for Set attributes
+Set attributes work well for targeting users based on membership in multiple values, such as visited regions, enabled products, permissions, or user interests.
 
-Numeric attributes store positive or negative whole numbers. (Decimal values are not supported.) The following **Numeric matchers** can be used with Numeric attributes:
+For example, use a `us_states_visited` Set attribute to target users who have visited one or more states on the US West Coast.
+:::
 
-* is =
-* is >=
-* is &lt;=
-* is between (inclusive)
-* is not between (inclusive)
+### Number attributes
 
-For example, use an attribute 'orders_last_quarter' of type Number to provide a new premium shopping feature to customers who had at least 20 orders in the last quarter.
+Number attributes store positive or negative whole numbers. Decimal values are not supported. Use **Number matchers** to create targeting rules based on thresholds or ranges.
+
+The following matchers are supported:
+
+- `is =`
+- `is >=`
+- `is <=`
+- `is between (inclusive)`
+- `is not between (inclusive)`
+
+:::tip Use cases for Number attributes
+Number attributes work well for targeting based on thresholds or ranges, such as purchase amounts, login counts, account age, or usage metrics.
+
+For example, use an `orders_last_quarter` Number attribute to target customers who placed at least 20 orders in the last quarter.
+:::
 
 ### DateTime attributes
 
-DateTime attributes store a date and optional time. In your source code, set the values of DateTime attributes in **_milliseconds since epoch_** or **_seconds since epoch_**, depending on the FME SDK you are using.
+Depending on the SDK you are using, DateTime values must be passed as either `milliseconds since epoch` or `seconds since epoch`. Use **DateTime matchers** to create targeting rules based on time windows.
 
-The following comparisons can be used with DateTime attributes:
+The following matchers are supported:
 
-* is on
-* is not on
-* is after
-* is before
-* is between (inclusive)
-* is not between (inclusive)
+- `is on`
+- `is not on`
+- `is after`
+- `is before`
+- `is between (inclusive)`
+- `is not between (inclusive)`
 
-For example, use an attribute 'contract_signed' of type DateTime to keep a legacy feature available for customers who signed up before 1/1/2015.
+:::tip Use cases for DateTime attributes
+DateTime attributes work well for time-based targeting, such as onboarding periods, contract dates, subscription expirations, or scheduled feature rollouts.
+
+For example, use a `contract_signed` DateTime attribute to keep a legacy feature enabled for customers who signed up before a specific date.
+:::
 
 ### Boolean attributes
 
-Boolean attributes store a value of `true` or `false`. Boolean attributes are used with the **Boolean matcher**:
+Boolean attributes store either `true` or `false`. Use **Boolean matchers** to create targeting rules based on conditions.
 
-* is
+The supported matcher is `is`.
 
-For example, use an attribute 'homeowner' of type Boolean to test the demand of a potential new feature among customers that don't own a home.
+:::tip Use cases for Boolean attributes
+Boolean attributes work well for simple yes-or-no targeting conditions, such as account verification status, beta program enrollment, or feature eligibility flags.
+
+For example, use a `homeowner` Boolean attribute to target customers based on home ownership status.
+:::
+
+## Use regex with custom attributes
+
+String attributes support [regex-based matching](https://regex101.com/) for advanced targeting scenarios. If your application versions follow semantic versioning, Harness recommends using [SemVer matchers](#semver-attributes) instead of regex whenever possible.
+
+<details>
+<summary>Regex Targeting Rule Examples</summary>
+
+#### Target specific app major version
+
+To target users with app version greater than or equal to 4.5 to get the on treatment, this regex could be used for matching the `appVersion` attribute:
+
+```
+(\[5-9\]\\.\[0-9\]|\[4\]\\.\[5-9\]).*
+```
+
+![](../static/targeting-1.png)
+
+You can use the `matches` operator in the targeting rule editor within the Split user interface to match the value of a passed attribute (such as an app version) to a regular expression and specify treatment assignments for any versions that match the expression.
+
+This approach also works when versions are formatted in `Major.Minor` and you want a specific treatment for versions below a certain threshold (for example, versions below `2.1.0`).
+
+Example of passing the `appVersion` attribute for the JavaScript SDK:
+
+```javascript
+var attributes = {appVersion: "4.567.33"};
+```
+
+#### Target all population of specific domain of user emails
+
+For this example, to serve the `on` treatment for all employees of split.io, we can use the Regex below for `email` attribute:
+
+```
+@split.io$
+```
+
+![](../static/targeting-2.png)
+
+Example of passing the email attribute for the JavaScript SDK:
+
+```
+var attributes = {email: "bilal@split.io"};
+```
+
+#### Target users on Chrome version 20 and later
+
+This example we are serving the on treatment to Chrome users only. However, we want to only use Chrome versions 20 and later for compatibility reasons. The attribute passed is userAgent:
+
+```
+Chrome\/[2-9][0-9]\.
+```
+
+![](../static/targeting-3.png)
+
+Example for the JavaScript SDK:
+
+```
+var attributes = {userAgent: "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"};
+```
+
+#### Target English speaking users world wide
+
+An experiment is designed for English speaking users in any country by detecting the default language setting in the browser, the attribute passed is `navigatorLanguage en-`.
+
+![](../static/targeting-4.png)
+
+Example for the JavaScript SDK:
+
+```javascript
+var attributes = {navigatorLanguage: navigator.language};
+```
+
+#### Target specific URL
+
+To target an experiment that applies only to users that land on a specific URL, the extracted URL can be passed as an attribute to the targeting rule:
+
+```
+http:\/\/mysite\.com\/my_url
+```
+
+![](../static/targeting-5.png)
+
+Example for the JavaScript SDK:
+
+```javascript
+var attributes = {url: window.location.href};
+```
+
+</details>
+
+## Troubleshooting
+
+<details>
+<summary>How targeting rules evaluate custom attributes</summary>
+
+Attribute-based targeting rules only evaluate against the attribute values passed during SDK evaluation requests (for example, `getTreatment`). If an attribute is missing or uses the wrong attribute type, the targeting rule does not match.
+
+#### Missing attribute values
+
+If a targeting rule references an attribute that is not included in the SDK evaluation request, the rule evaluates to `false`.
+
+For example:
+
+```text title="Attribute-based Targeting Rule"
+if age <= 20 then 100% : on
+else 100% : off
+```
+
+If the `age` attribute is not included in the attributes object passed to `getTreatment`, the condition `age <= 20` evaluates to `false`, and the `off` treatment is served.
+
+#### Incorrect attribute type
+
+If an attribute value does not match the expected attribute type, the targeting rule evaluates to `false`.
+
+For example:
+
+```text title="Attribute-based Targeting Rule"
+if user.plan_type is "basic" then 100% : on
+else 100% : off
+```
+
+If `plan_type` is passed as a number instead of a string, the condition `user.plan_type is "basic"` evaluates to `false`, and the `off` treatment is served.
+
+</details>

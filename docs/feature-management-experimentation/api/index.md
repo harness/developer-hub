@@ -26,11 +26,11 @@ You can use the [Identities REST API](https://docs.split.io/reference/identities
 
 Split offers both an Identities API and [client-specific API wrappers](/docs/feature-management-experimentation/api/wrappers/python-admin-api) to use when sending to Split attributes on your keys. As an administrator in Split, you can see the attributes that your team is sending to Split and the last time an update is received.
 
-To manage your accounts's attributes, do the following:
+To manage your accounts's attributes:
 
-1. From the left navigation, navigate to **Admin settings** and then **Projects**.
-1. Click **View** for the project you are working in and then the **Traffic types** tab.
-1. Click **View/edit attributes**.
+1. From the FME navigation menu, navigate to **FME Settings** > **Projects**.
+1. Click **View** on the project you want to configure and navigate to the **Traffic types** tab.
+1. Click **View/Edit attributes** for the traffic type you want to configure. 
    
    ![](./static/view-attributes.png)
 

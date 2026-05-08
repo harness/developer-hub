@@ -41,6 +41,31 @@ These policies are evaluated automatically on **On Save** events, ensuring gover
 
 ## April 2026
 
+### [New Enhancement] Identity-based Targeting Improvements
+----
+#### 2026-04-30
+
+Harness FME now supports identity-aware targeting workflows, improving how you select and inspect user attributes directly in feature flag targeting rules, the **Live Tail** tab of a feature flag after pausing the event stream, and segment definitions when adding individual keys or inspecting existing keys.
+
+![](./static/fme/identity-1.png)
+
+With identity data configured, you can:
+
+- Use key type-ahead when adding individual keys to targeting rules. Typing the lead characters of an attribute value returns matching identities from your uploaded identity data (case-sensitive, leading-character matching only).
+
+  ![](./static/fme/identity-2.png)
+
+- View identity tooltips by hovering over a key in targeting rules. Tooltips display the full set of attribute values associated with that identity, making it easier to validate targeting behavior and debug rule evaluation.
+
+  ![](./static/fme/identity-3.png)
+
+To enable key type-ahead and identity tooltip features, you must define attributes in [**FME Settings**](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes#create-custom-attributes-in-fme-settings) for a project and traffic type, then upload identity data (including user keys and attribute values) using the [Identities API](https://docs.split.io/reference/identities-overview).
+
+#### Related documentation
+
+- [Targeting With Custom Attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes)
+- [Identities API](https://docs.split.io/reference/identities-overview)
+
 ### [New Enhancement] Additional FME Steps in Harness Pipelines
 ----
 #### 2026-04-30
