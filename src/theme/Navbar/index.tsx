@@ -96,6 +96,11 @@ const docDropdownItems = [
   // Security & Compliance
   { type: "header", label: "Security & Compliance" },
   {
+    to: "/docs/ai-security",
+    label: "AI Security",
+    icon: "/img/icon-ai-security.svg",
+  },
+  {
     to: "/docs/appsec-discovery",
     label: "API & Application Discovery",
     icon: "/img/icon-api-security-posture.svg",

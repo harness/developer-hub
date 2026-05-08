@@ -5,17 +5,16 @@ import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
-import { docsCards } from './data/application&APISecurityPostureData';
-export default function ASP() {
-  const { colorMode } = useColorMode();
+import { docsCards } from './data/aiSecurity';
+export default function AISec() {
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon-api-security-posture.svg`} />
-            <h1>API & Application Discovery</h1>
+            <img src={`${baseUrl}img/icon-ai-security.svg`} alt="AI Security" />
+            <h1>AI Security</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="https://docs.traceable.ai/docs/productrn26">
@@ -30,7 +29,7 @@ export default function ASP() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              API & Application Discovery provides a comprehensive view of all APIs within your organization. By discovering APIs through traffic monitoring and code analysis, it helps you understand their API ecosystem, track changes, and maintain visibility across environments. The platform organizes APIs by attributes such as authentication methods, data sensitivity, and exposure, while also highlighting security risks and policy violations. With insights into API usage, ownership, and conformance against specifications, you can prioritize issues, enforce security standards, while maintaining strong, proactive security posture across your application and APIs.
+                AI Security provides you with visibility into AI APIs and MCP assets across environments and understand how they interact with your applications. You can monitor threats targeting AI endpoints, investigate related issues, and test AI endpoints for vulnerabilities such as prompt injection and sensitive data exposure. These capabilities help you manage AI risk using the same security workflows applied to your APIs.
             </p>
           </div>
         </div>

@@ -122,6 +122,12 @@ export const docsCards: CardSections = [
         link: "/docs/ai-sre/get-started/overview",
       },
       {
+        title: "AI Security",
+        module: MODULES.aisec,
+        description: "Learn how AI Security helps you discover AI assets, monitor threats, and test AI endpoints in your application.",
+        link: "/docs/ai-security",
+      },
+      {
         title: "API & Application Discovery",
         module: MODULES.asp,
         description: "Automatically discover and catalog APIs and applications across your environments.",

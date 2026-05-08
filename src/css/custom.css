@@ -2130,6 +2130,17 @@ html[data-theme='dark'] [data-api-ref-sidebar] button.menu__link.menu__link--sub
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-aisec > div > a::before,
+.sidebar-aisec > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-ai-security.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-asp > div > a::before,
 .sidebar-asp > a::before {
   content: ' ';

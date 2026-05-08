@@ -312,16 +312,20 @@ const config: Config = {
               to: 'https://harness.io/products/cloud-cost',
             },
             {
+              label: 'AI Security',
+              to: 'https://www.harness.io/products/ai-security',
+            },
+            {
               label: 'API & Application Discovery',
-              to: 'https://developer.harness.io/docs/appsec-discovery',
+              to: 'https://www.harness.io/products/web-application-and-api-protection/api-discovery',
             },
             {
               label: 'Application & API Runtime Protection',
-              to: 'https://developer.harness.io/docs/appsec-runtime-protection',
+              to: 'https://www.harness.io/products/web-application-and-api-protection/api-protection',
             },
             {
               label: 'Application & API Security Testing',
-              to: 'https://developer.harness.io/docs/appsec-security-testing',
+              to: 'https://www.harness.io/products/web-application-and-api-protection/api-testing',
             },
             {
               label: 'Security Testing Orchestration',

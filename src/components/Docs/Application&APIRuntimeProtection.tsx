@@ -18,7 +18,7 @@ export default function ARP() {
             <h1>Application & API Runtime Protection</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="https://docs.traceable.ai/docs/productrn25">
+            <Link href="https://docs.traceable.ai/docs/productrn26">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />

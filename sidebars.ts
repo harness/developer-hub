@@ -142,6 +142,17 @@ const sidebars: SidebarsConfig = {
             description: 'Learn how to manage and optimize cloud costs.',
           },
         },
+        // AI Security Page
+        {
+          type: "link",
+          href: "/docs/ai-security",
+          label: "AI Security",
+          className: "sidebar-aisec",
+
+          customProps: {
+            description: "Learn how AI Security helps you discover AI assets, monitor threats, and test AI endpoints in your application.",
+          },
+        },
         // API and Application Discovery Page
         {
           type: "link",

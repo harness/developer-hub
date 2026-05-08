@@ -60,6 +60,13 @@ export const moduleList: CardItem[] = [
     link: 'docs/cloud-cost-management',
   },
   {
+    title: 'AI Security',
+    module: MODULES.aisec,
+    icon: "img/icon-ai-security.svg",
+    description: <>Learn how AI Security helps you discover AI assets, monitor threats, and test AI endpoints in your application.</>,
+    link: 'docs/ai-security',
+  },
+  {
     title: 'API & Application Discovery',
     module: MODULES.asp,
     icon: "img/icon-api-security-posture.svg",
