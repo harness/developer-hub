@@ -5,13 +5,8 @@ export const stoModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "sto", modul
 
 export const StoData: Horizon = {
   Now: {
-    description: "Q1 2026, Feb 2026 - April 2026",
+    description: "Q2 2026, May 2026 - July 2026",
     feature: [  
-      {
-        tag: [{ value: "Visibility" }, { value: "AppSec" }],
-        title: "Open and Remediated Issues Trend",
-        description: "Visibility into active and remediated issues trend across Targets in a Project."
-      },
       {
         tag: [{ value: "Ticketing" }, { value: "Integration" }, { value: "Exemption" }],
         title: "Auto Create Jira Ticket on Exemption Request",
@@ -20,59 +15,45 @@ export const StoData: Horizon = {
     
       {
         tag: [{ value: "AST" }],
-        title: "App & Target Vuln View",
+        title: "App & Target Vuln View for Code Repository",
         description: "Target view grouped by apps and teams.",
       },
+       {
+        tag: [{ value: "Data Handling" }],
+        title: "Target Deletion",
+        description: "Allows deletion of unwanted targets/artifacts vulnerability data to reduce noise.",
+      },
+      
+       {
+        tag: [{ value: "AST" }],
+        title: "App & Target Vuln View for Artifacts",
+        description: "Target view grouped by apps and teams.",
+      },
+
       {
         tag: [{ value: "Integration" }, { value: "Cortex Cloud" }],
         title: "Cortex Cloud Integration",
         description: "Native Integration with Cortex Cloud.",
       },
-       {
-        tag: [{ value: "Delegate" }],
-        title: "Delegate 2.0 Support",
-        description: "Extend STO steps to execute on Delegate 2.0.",
-      },
-        {
+      {
         tag: [{ value: "Integration" }, { value: "Jenkins"}, { value: "GitHub Actions"}],
         title: "Non Harness CI (Jenkins & GHA Support)",
         description: "Native onboarding for Non Harness CI - Jenkins and GitHub Actions.",
       },
-    {
-          tag: [{ value: "Infrastructure" }],
-          title: "Linux ARM64 Support",
-          description: "Adds Linux ARM64 infrastructure support for all STO steps, enabling broader platform compatibility and flexibility",
-    },
-     {
-          tag: [{ value: "FedRAMP" }],
-          title: "Support Nexus scanner in FedRAMP",
-          description: "Add native ingestion-mode support for the Nexus scanner in FedRAMP environments.",
-     },
-    {
-          tag: [{ value: "FedRAMP" }],
-          title: "Support Prisma Cloud scanner in FedRAMP",
-          description: "Add native ingestion-mode support for the Nexus scanner in FedRAMP environments.",
-     },
-    {
-        tag: [{ value: "Visibility" }, { value: "Dashboard"}],
-        title: "Project level Security Dashboard",
-        description: "Redesigned STO overview page to get security posture across the Project via graphs, trends, summary.",
-      },
-
     ],
   },
   Next: {
-    description: "Q2 2026, May 2026 - July 2026",
+    description: "Q3 2026, Aug 2026 - Oct 2026",
     feature: [
        {
         tag: [{ value: "Onboarding" }],
         title: "Get Started",
         description: "A new Get Started workflow to onboard third-party integrations - Github Actions, Jenkins.",
       },
-      {
-        tag: [{ value: "Data Handling" }],
-        title: "Target Deletion",
-        description: "Allows deletion of unwanted targets/artifacts vulnerability data to reduce noise.",
+        {
+        tag: [{ value: "Runtime" }, { value: "Visibility"}],
+        title: "Code to Runtime Visibility",
+        description: "End-to-end vulnerability traceability from code to runtime, powered by the Security Graph.",
       },
            {
         tag: [{ value: "Integration" }, { value: "GitLab" }],
@@ -102,7 +83,7 @@ export const StoData: Horizon = {
       ],
   },
   Later: {
-    description: "Q3 2026, Aug 2026 & Beyond",
+    description: "Q4 2026, Nov 2026 & Beyond",
     feature: [
     {
         tag: [{ value: "Integration" }, { value: "ServiceNow" }],
@@ -113,11 +94,6 @@ export const StoData: Horizon = {
         tag: [{ value: "Reachability" }, { value: "Vulnerability Prioritization"}],
         title: "Reachability based Vulnerability Prioritization",
         description: "Prioritize vulnerabilities on Harness risk score - formualted on CVSS, EPSS, static and runtime Reacability, etc.",
-      },
-        {
-        tag: [{ value: "Runtime" }, { value: "Visibility"}],
-        title: "Code to Runtime Visibility",
-        description: "End-to-end vulnerability traceability from code to runtime, powered by the Security Graph.",
       },
         {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
@@ -145,7 +121,37 @@ export const StoData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
-       {
+      {
+        tag: [{ value: "Visibility" }, { value: "AppSec" }],
+        title: "Open and Remediated Issues Trend",
+        description: "Visibility into active and remediated issues trend across Targets in a Project."
+      },
+      {
+        tag: [{ value: "Infrastructure" }],
+        title: "Linux ARM64 Support",
+        description: "Adds Linux ARM64 infrastructure support for all STO steps, enabling broader platform compatibility and flexibility.",
+      },
+      {
+        tag: [{ value: "FedRAMP" }],
+        title: "Support Nexus scanner in FedRAMP",
+        description: "Add native ingestion-mode support for the Nexus scanner in FedRAMP environments.",
+      },
+      {
+        tag: [{ value: "FedRAMP" }],
+        title: "Support Prisma Cloud scanner in FedRAMP",
+        description: "Add native ingestion-mode support for the Prisma Cloud scanner in FedRAMP environments.",
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "Dashboard"}],
+        title: "Project level Security Dashboard",
+        description: "Redesigned STO overview page to get security posture across the Project via graphs, trends, summary.",
+      },
+      {
+        tag: [{ value: "Delegate" }],
+        title: "Delegate 2.0 Support",
+        description: "Extend STO steps to execute on Delegate 2.0.",
+      },
+      {
         tag: [{ value: "Override Severity" }],
         title: "Manually override severity",
         description: "Ability to manually override the severity of an issue across all the targets at Project scope.",
