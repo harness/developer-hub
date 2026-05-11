@@ -1318,12 +1318,6 @@ Starting with version 0.38.x, the airgap bundle structure has been redesigned. C
 
 For a comprehensive guide on installing Harness Self-Managed Enterprise Edition in an air-gapped environment, see the **Version 0.38.x and later** tab in the [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment) documentation. It covers downloading airgap bundles using interactive scripts (or alternative methods like `gsutil` and `curl`), organizing the core modules and execution components, and securely pushing them to your private container registry.
 
-### Fixed issues
-
-#### Security Testing Orchestration
-
-- Introduced the `STO_USER_INFO_CACHE` feature flag to enable caching of user information in STO pipelines. When enabled, this feature caches user details to improve performance and reduce redundant lookups during security scan operations. [STO-8871]
-
 ## March 24, 2026, Version 0.39.0 <!--March 20, 2026-->
 
 This release includes the following Harness module and component versions.
