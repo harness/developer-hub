@@ -64,8 +64,6 @@ For pull requests, the diff view shows line-by-line coverage:
         --provider=github \
         --owner="$HARNESS_ORG_ID" \
         --identifier="my-repo"
-    env:
-      CI_ENABLE_QUARANTINED_TEST_SKIP: "true"
 ```
 
   </TabItem>
@@ -113,8 +111,6 @@ For pull requests, the diff view shows line-by-line coverage:
         --provider=Harness \
         --owner="$HARNESS_ORG_ID" \
         --identifier="my-repo"
-    env:
-      CI_ENABLE_QUARANTINED_TEST_SKIP: "true"
 ```
 
   </TabItem>

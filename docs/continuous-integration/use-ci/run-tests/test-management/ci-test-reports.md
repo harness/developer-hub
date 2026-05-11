@@ -29,12 +29,10 @@ Uploading test results to Harness enables flaky test detection, test history tra
       pip install pytest
 
       # Run tests with JUnit output
-      pytest tests/ --junitxml=test-results.xml -v
+      hcli htx -- pytest tests/ --junitxml=test-results.xml -v
 
       # Upload to Harness
       hcli test-reports upload test-results.xml
-    env:
-      CI_ENABLE_QUARANTINED_TEST_SKIP: "true"
 ```
 
   </TabItem>
@@ -47,10 +45,8 @@ Uploading test results to Harness enables flaky test detection, test history tra
     spec:
       shell: Sh
       command: |
-        ./gradlew clean test
+        hcli htx -- ./gradlew clean test
         hcli test-reports upload "build/test-results/test/*.xml"
-      envVariables:
-        CI_ENABLE_QUARANTINED_TEST_SKIP: "true"
 ```
 
   </TabItem>
@@ -63,12 +59,10 @@ Uploading test results to Harness enables flaky test detection, test history tra
       go install github.com/jstemmer/go-junit-report/v2@latest
 
       # Run tests and convert output to JUnit XML
-      go test -v ./... 2>&1 | go-junit-report > report.xml
+      hcli htx -- go test -v ./... 2>&1 | go-junit-report > report.xml
 
       # Upload to Harness
       hcli test-reports upload report.xml
-    env:
-      CI_ENABLE_QUARANTINED_TEST_SKIP: "true"
 ```
 
   </TabItem>
