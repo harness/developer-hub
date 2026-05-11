@@ -2,40 +2,41 @@
 name: doc-audit
 description: >
   Audit a single Harness Developer Hub documentation page for accuracy, completeness, and
-  editorial quality. Produces a scored report (pass/fail) and a ready-to-use rewrite prompt.
+  editorial quality. Produces a scored report (pass/fail) and optionally rewrites the page.
   Triggers: "audit [file-path]", "audit [url]", "doc audit", "check this doc", "score this page",
   "audit the oldest page in [module]", or any request to evaluate a single documentation page
   against the Harness quality rubric. Also triggers when the user provides a developer.harness.io
   URL and asks for feedback or a JIRA ticket.
   For a full audit that also crawls every sibling page in the section, use doc-section-audit instead.
-argument-hint: "<file-path | url | module-abbreviation> [--verify pre | --verify post]"
+argument-hint: "<file-path | url | module-abbreviation> [--rewrite] [--verify pre | --verify post]"
 user-invocable: true
 ---
 
 Audit a single Harness Developer Hub documentation page for accuracy, completion, and editorial
-quality. Produces a scored report and a ready-to-use rewrite prompt.
+quality. Produces a scored report and optionally rewrites the page automatically.
 
 For a full audit that also crawls and assesses every sibling page in the section, use `doc-section-audit` instead.
 
 ## Usage
 
 ```
-/doc-audit [file-path | url | module-abbreviation] [--verify pre | --verify post]
+/doc-audit [file-path | url | module-abbreviation] [--rewrite] [--verify pre | --verify post]
 ```
 
 **Examples:**
-- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md` — audit a local file, no walkthrough
+- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md` — audit only, generate report
+- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md --rewrite` — audit then automatically rewrite if score < 80
+- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md --rewrite --verify post` — audit, rewrite, then verify on qa.harness.io
 - `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md --verify` — rewrite then walk through (defaults to post)
 - `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md --verify pre` — walk through as-is, self-correct if < 80
-- `/doc-audit docs/infra-as-code-management/workspaces/cli-integration.md --verify post` — rewrite first, then walk through
-- `/doc-audit iacm` — score the oldest IACM page, no live walkthrough
-- `/doc-audit https://developer.harness.io/docs/infrastructure-as-code-management/workspaces/cli-integration --verify post`
+- `/doc-audit iacm` — score the oldest IACM page, no rewrite or walkthrough
+- `/doc-audit https://developer.harness.io/docs/infrastructure-as-code-management/workspaces/cli-integration --rewrite`
 
 ## Arguments
 
 Parse arguments from the user's message.
 
-Parse two things from the arguments:
+Parse three things from the arguments:
 
 **Target** (required — one of):
 - A repo-relative file path (`docs/.../*.md`) → audit that file directly (primary approach; works for new and unpublished docs)
@@ -43,13 +44,24 @@ Parse two things from the arguments:
 - A module abbreviation (e.g. `iacm`, `ccm`) → find and audit the oldest page in that module
 - Nothing → ask the user before proceeding
 
+**Rewrite flag** (optional):
+- `--rewrite` → after audit, if score < 80, automatically invoke the doc-rewrite skill to apply all fixes
+- Omitted → generate audit report and rewrite prompt only, do not automatically rewrite
+
 **Verify flag** (optional):
-- `--verify pre` → after scoring, run the live qa.harness.io walkthrough on the current file; self-correct if score < 80
+- `--verify pre` → after scoring (before any rewrite), run the live qa.harness.io walkthrough on the original file; self-correct if score < 80
 - `--verify post` → rewrite the file to match the doc-structure-template first, then walk through and self-correct if score < 80
 - `--verify` (no mode) → default to `post`
-- Omitted → no live walkthrough; report and rewrite prompt only
+- Omitted → no live walkthrough
 
-`--verify` is only valid when the target is a file path or URL. If the target is a module abbreviation, reject the combination and ask the user to specify a file path or URL instead.
+**Flag combinations:**
+- `--rewrite` alone: audit → rewrite if fails → done
+- `--verify` alone: audit → verify (no automatic rewrite)
+- `--rewrite --verify`: audit → rewrite if fails → verify
+- Neither flag: audit only → report
+- Neither flag: audit only → report
+
+`--rewrite` and `--verify` are only valid when the target is a file path or URL. If the target is a module abbreviation, reject the combination and ask the user to specify a file path or URL instead.
 
 If `--verify` is present, **warn the user before starting:**
 > "The `--verify` flag runs a live walkthrough on qa.harness.io. It may pause and ask you to log in — stay at your desk during this step."
@@ -573,15 +585,27 @@ The rewritten page must satisfy all of the following before you consider it done
 
 ---
 
-## Step 7 — Report back
+## Step 7 — Automatic rewrite (if --rewrite flag present)
+
+**Only execute this step if the user provided the `--rewrite` flag AND the audit score < 80 AND `--verify post` is NOT also present.**
+
+If `--rewrite --verify post` is provided, skip this step — `--verify post` handles the rewrite as part of the walkthrough.
+
+If `--rewrite` was NOT provided:
+- Skip this step entirely
+- Proceed to Step 8
+
+---
+
+## Step 8 — Report back
 
 1. Score + PASS/FAIL
 2. Top 3 most impactful issues
-3. If the file was rewritten, remind the user to review the diff before committing:
+3. If the file was rewritten (via `--rewrite` flag in Step 7), remind the user to review the diff before committing:
    ```
    git diff docs/path/to/file.md
    ```
 4. Link: `computer://[full path to audit file]`
-5. JIRA ticket description pasted inline, ready to copy
+5. JIRA ticket description pasted inline, ready to copy (only if score < 80)
 
 Do **not** write to any Google Sheet.
