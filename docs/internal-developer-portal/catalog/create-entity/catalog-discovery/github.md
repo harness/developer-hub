@@ -100,16 +100,40 @@ The Repository Entity mapping imports GitHub repositories as catalog entities, w
 
 5. Optionally, click **Configure** next to **Configure fields (optional)** to customize which GitHub fields are synced to the catalog. By default, all available fields are selected.
 
-:::info Release Data Limit
-GitHub repository entities include release metadata for the latest 10 releases only (if they exist). Older releases are not ingested into the catalog.
-:::
+   :::info Release Data Limit
+   GitHub repository entities include release metadata for the latest 10 releases only (if they exist). Older releases are not ingested into the catalog.
+   :::
+
+6. Optionally, click **Configure** next to **Configure Secondary Kinds (optional)** to control which additional data streams are synced for each repository. By default, all secondary kinds are selected.
+
+   Secondary kinds enrich each repository entity with development activity data. By surfacing commits, pull requests, issues, and repository statistics, IDP gives teams an instant view of how actively an entity is being developed, how stable it is, and whether it is progressing or at risk, all without leaving the platform.
+
+   ![](./static/gh-secondary-kinds.png)
+   <center>Figure 5: Configure Secondary Kinds panel</center>
+
+   The following secondary kinds are available:
+
+   | Secondary Kind | Description |
+   |---|---|
+   | **Commits** | Commit history for each repository. The first sync ingests the last 100 commits per repository. |
+   | **Issues** | Open and closed issues for each repository. |
+   | **Pull Requests** | Pull request details for each repository. The first sync ingests pull requests from the last 30 days; subsequent syncs backfill all new pull requests incrementally. |
+   | **Repository Stats** | Summary counts for each repository, including open PRs, closed PRs, merged PRs, and open issues. |
+
+   :::caution Secondary kinds cannot be changed after setup
+   These selections are locked once the integration is created and cannot be modified later. Choose carefully before confirming.
+   :::
+
+   :::info Where does this data appear?
+   Secondary kinds data is surfaced on the [Entity Details](https://developer.harness.io/docs/internal-developer-portal/catalog/create-entity/entity-details) page for each repository. It does not appear in the **Ingested Properties** YAML in the Entity Inspector.
+   :::
 
 #### Team Entity
 
 The Team Entity mapping imports GitHub teams as catalog entities, with configurable `Kind` or `Type`.
 
 ![](./static/gh-team-entity.png)
-<center>Figure 5: Enable Team Entity</center>
+<center>Figure 6: Enable Team Entity</center>
 
 1. Ensure the **Team Entity** toggle is turned on.
 
@@ -136,7 +160,7 @@ The catalog only surfaces repositories for which the GitHub team has Admin permi
 The AI Assets Entity mapping discovers and imports AI/ML assets found in your GitHub repositories through manifest-level, API-based scanning. No repository cloning is required. 
 
 ![](./static/ai-assets-entity.png)
-<center>Figure 6: Enable AI Assets Entity</center>
+<center>Figure 7: Enable AI Assets Entity</center>
 
 You can discover two classes of assets:
 
@@ -173,7 +197,7 @@ Both asset classes are registered in the IDP Catalog under `AIAsset` kind with t
 The **Advanced Settings** section controls how frequently IDP syncs with GitHub and how far back historical data is pulled.
 
 ![](./static/gh-advanced-settings.png)
-<center>Figure 7: Advanced Settings</center>
+<center>Figure 8: Advanced Settings</center>
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls GitHub for new data.
 
@@ -198,7 +222,7 @@ This section covers how to view the GitHub entities discovered by the integratio
 After the integration runs, all GitHub entities detected appear in the **Discovered** tab. Use the **Repository**, **Team**, and **AI Assets** sub-tabs to switch between entity types. If entities do not appear, use the **Sync** button at the top right to manually refresh.
 
 ![](./static/discovered-tab-gh.png)
-<center>Figure 8: 'Discovered' tab showing GitHub Repositories, Teams, and AI Assets</center>
+<center>Figure 9: 'Discovered' tab showing GitHub Repositories, Teams, and AI Assets</center>
 
 For each discovered entity, you can see its name, the recommended catalog action, kind, and the date it was detected. You can choose how to bring entities into the catalog using one of the following actions:
 
@@ -215,7 +239,7 @@ For each discovered entity, you can see its name, the recommended catalog action
 The **Imported** tab displays all GitHub entities that have been brought into the catalog. Use the **Repository**, **Team**, and **AI Assets** sub-tabs to view each entity type separately.
 
 ![](./static/imported-tab-gh.png)
-<center>Figure 9: 'Imported' tab showing GitHub entities linked to catalog entities</center>
+<center>Figure 10: 'Imported' tab showing GitHub entities linked to catalog entities</center>
 
 It displays the following data:
 
@@ -245,7 +269,7 @@ Each imported GitHub repository is registered with:
 * **Scope:** The Harness account the integration belongs to
 
 ![](./static/catalog-entity-gh.png)
-<center>Figure 10: IDP Catalog Entity Page showing Service/Team/AI-Asset Relationship</center>
+<center>Figure 11: IDP Catalog Entity Page showing Service/Team/AI-Asset Relationship</center>
 
 Each imported GitHub team is registered with:
 
@@ -265,7 +289,7 @@ Open any entity to view its Overview, Relationships, Scorecards, and any other t
 To inspect the raw data ingested from GitHub, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
 ![](./static/catalog-yaml-gh.gif)
-<center>Figure 11: Entity Inspector Page showing Ingested Properties</center>
+<center>Figure 12: Entity Inspector Page showing Ingested Properties</center>
 
 Ingested properties are stored in two sections of the entity YAML:
 
@@ -328,13 +352,15 @@ To authorize, navigate to your token on the GitHub tokens page, click **Configur
 
 * Under the **Repositories** permission tab, set the following options to `Read-only`:
    * `Contents`
+   * `Issues`
    * `Metadata`
+   * `Pull Requests`
 
-   ![](./static/repo-perm3b-v2.png)
+   ![](./static/repo-perm3b-v3.png)
 
 * Under the **Organizations** permission tab, set `Members` to `Read-only`.
 
-   ![](./static/repo-perm4-v2.png)
+   ![](./static/repo-perm4-v3.png)
 
 
 The **Resource owner** must be set to the **organization**, not a personal account. Fine-grained tokens are scoped to a single resource owner, so one token covers one organization. If you need to connect multiple GitHub organizations, create a separate token and a separate Harness connector for each.
@@ -343,17 +369,19 @@ The **Resource owner** must be set to the **organization**, not a personal accou
 
 * When configuring the app, the **Permissions** section should have the required permissions configured under both **Repository permissions** and **Organization permissions**.
 
-   ![](./static/repo-perm5-v2.png)
+   ![](./static/repo-perm5-v3.png)
 
 * In **Repository permissions**, confirm that the following options are set to `Read-only`:
    * `Contents`
+   * `Issues`
    * `Metadata`
+   * `Pull Requests`
 
-   ![](./static/repo-perm6a-v2.png)
+   ![](./static/repo-perm6a-v3.png)
    
    Similarly, under **Organization permissions**, set `Members` to `Read-only`.
 
-   ![](./static/repo-perm6b-v2.png)
+   ![](./static/repo-perm6b-v3.png)
 
 * The app must be installed on the organization for the permissions to take effect. Once installed, the app's permission summary on the org's installed apps page will confirm: `Read access to members and metadata`
 
