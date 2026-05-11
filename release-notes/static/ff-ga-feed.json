@@ -1462,5 +1462,23 @@
     "description": "Extends OPA policy support to FME segment definitions, allowing authoring of policies that fire on segment definition create, update, and delete operations, including targeting rules and target key removals.",
     "gaStartDate": "2026-05-05",
     "module": "Feature Management & Experimentation"
+  },
+  {
+    "flagKey": "SRM_ENABLE_BASELINE_BASED_VERIFICATION",
+    "description": "Baseline-based path in deployment log analysis",
+    "gaStartDate": "2026-05-11",
+    "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "SRM_LOG_FEEDBACK_ENABLE_UI",
+    "description": "Log feedback behavior in deployment log analysis state flow",
+    "gaStartDate": "2026-05-11",
+    "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "SRM_MONITORED_SERVICE_VALIDATION",
+    "description": "Extra validation of service/env/connector refs on MS create/update",
+    "gaStartDate": "2026-05-11",
+    "module": "Service Reliability Management"
   }
 ]
