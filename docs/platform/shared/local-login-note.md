@@ -1,5 +1,3 @@
-:::info important
 
-Harness Local Login signs in to the default account for the user. If the user is assigned to multiple accounts, the user must ensure the default account is set correctly before attempting to use Harness Local Login. 
+If you belong to multiple accounts, confirm the default account is set before attempting to use Harness Local Login.
 
-:::
