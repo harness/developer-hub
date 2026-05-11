@@ -12,6 +12,18 @@ Policies automate test management. Configure rules once, and Harness evaluates w
 Policies are typically configured by **platform engineers or QA leads**—not individual developers. This separation ensures quality gates can't be bypassed. Administrators run policy commands locally or from a secure pipeline, while developers simply run their tests.
 :::
 
+---
+
+## Prerequisites
+
+Before using test policy commands, ensure you have:
+
+- **Harness account access:** Account, organization, and project IDs.
+- **Personal Access Token (PAT):** Required for API authentication. Go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys) to create a PAT.
+- **hcli installed:** Harness CLI tool must be available in your environment. Go to [Install and configure Harness CLI](/docs/platform/automation/cli/install) to download hcli for your operating system and architecture.
+
+---
+
 ## Quick Start
 
 Create a policy that auto-quarantines any failing test:
@@ -32,11 +44,21 @@ hcli test-management policy set \
   --account-id="$HARNESS_ACCOUNT_ID" \
   --org-id="$HARNESS_ORG_ID" \
   --project-id="$HARNESS_PROJECT_ID" \
-  --repo="https://github.com/your-org/your-repo.git" \
-  --api-key="$HARNESS_API_KEY" \
-  --endpoint="https://app.harness.io/gateway/ti-service" \
+  --repo="<URL_for_your_repo>" \
+  --endpoint="https://<your-instance>/gateway/ti-service/" \
+  --api-key="$HARNESS_PAT" \
   --file=policies.json
 ```
+
+:::tip Repository URL Format
+The `.git` suffix is optional. If omitted, it will be appended automatically.
+:::
+
+:::info Endpoint Varies by Instance
+The `--endpoint` value is based on your Harness instance domain: `https://<your-instance>/gateway/ti-service/`
+
+For example, if you access Harness at `https://your-instance.harness.io`, use `https://your-instance.harness.io/gateway/ti-service/`.
+:::
 
 ## Policy Format
 
@@ -131,12 +153,22 @@ Policies are evaluated in order. Place quarantine rules before flaky rules when 
 ```bash
 hcli test-management policy get \
   --account-id="$HARNESS_ACCOUNT_ID" \
-  --org-id="$HARNESS_ORG_ID" \
-  --project-id="$HARNESS_PROJECT_ID" \
-  --repo="https://github.com/your-org/your-repo.git" \
-  --api-key="$HARNESS_API_KEY" \
-  --endpoint="https://app.harness.io/gateway/ti-service"
+  --repo="<URL_for_your_repo>" \
+  --endpoint="https://<your-instance>/gateway/ti-service/" \
+  --api-key="$HARNESS_PAT"
 ```
+
+### Required Parameters
+
+- `--account-id`: Your Harness account ID
+- `--repo`: Repository URL (with or without `.git` suffix)
+- `--endpoint`: TI service endpoint URL
+- `--api-key`: Your Personal Access Token (PAT) starting with `pat.`
+
+### Optional Parameters
+
+- `--org-id`: Organization ID (filters policies to a specific organization)
+- `--project-id`: Project ID (filters policies to a specific project)
 
 Example output:
 ```
@@ -172,9 +204,9 @@ hcli test-management policy set \
   --account-id="$HARNESS_ACCOUNT_ID" \
   --org-id="$HARNESS_ORG_ID" \
   --project-id="$HARNESS_PROJECT_ID" \
-  --repo="https://github.com/your-org/your-repo.git" \
-  --api-key="$HARNESS_API_KEY" \
-  --endpoint="https://app.harness.io/gateway/ti-service" \
+  --repo="<URL_for_your_repo>" \
+  --endpoint="https://<your-instance>/gateway/ti-service/" \
+  --api-key="$HARNESS_PAT" \
   --file=policies.json
 ```
 
@@ -185,15 +217,15 @@ echo '[]' | hcli test-management policy set \
   --account-id="$HARNESS_ACCOUNT_ID" \
   --org-id="$HARNESS_ORG_ID" \
   --project-id="$HARNESS_PROJECT_ID" \
-  --repo="https://github.com/your-org/your-repo.git" \
-  --api-key="$HARNESS_API_KEY" \
-  --endpoint="https://app.harness.io/gateway/ti-service" \
+  --repo="<URL_for_your_repo>" \
+  --endpoint="https://<your-instance>/gateway/ti-service/" \
+  --api-key="$HARNESS_PAT" \
   --file=-
 ```
 
 ## Running hcli Locally vs In Pipelines
 
-### In Harness Cloud Pipelines
+### In Harness Pipelines
 
 Most environment variables are automatically available:
 
@@ -203,9 +235,17 @@ hcli test-management policy get \
   --org-id="$HARNESS_ORG_ID" \
   --project-id="$HARNESS_PROJECT_ID" \
   --repo="$DRONE_GIT_HTTP_URL" \
-  --api-key="<+secrets.getValue('harness_api_key')>" \
-  --endpoint="$HARNESS_TI_SERVICE_ENDPOINT"
+  --endpoint="$HARNESS_TI_SERVICE_ENDPOINT" \
+  --api-key="<+secrets.getValue('harness_pat')>"
 ```
+
+:::tip Endpoint Configuration
+The `HARNESS_TI_SERVICE_ENDPOINT` environment variable is automatically configured based on your cluster. For self-managed installations or custom endpoints, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs/#how-do-i-configure-oidc-with-gcp-wif-for-harness-cloud-builds) to understand endpoint configuration.
+:::
+
+:::info Store PAT as a Secret
+Store your Personal Access Token in Harness Secrets Manager and reference it using the expression syntax shown above. Never hardcode tokens in pipeline YAML.
+:::
 
 ### Running Locally (Administrators)
 
@@ -216,9 +256,9 @@ hcli test-management policy set \
   --account-id="px7xd_BFRCi-pfWPYXVjvw" \
   --org-id="default" \
   --project-id="my-project" \
-  --repo="https://github.com/my-org/my-repo.git" \
-  --api-key="your-api-key-here" \
-  --endpoint="https://app.harness.io/gateway/ti-service" \
+  --repo="https://github.com/my-org/my-repo" \
+  --endpoint="https://<your-instance>/gateway/ti-service/" \
+  --api-key="pat.ACCOUNT_ID.RANDOM_STRING.TOKEN_VALUE" \
   --file=policies.json
 ```
 
@@ -231,14 +271,21 @@ hcli test-management policy set \
 | `--account-id` | Yes | Harness account ID |
 | `--org-id` | Yes | Organization ID |
 | `--project-id` | Yes | Project ID |
-| `--repo` | Yes | Repository URL (include `.git` suffix) |
+| `--repo` | Yes | Repository URL (`.git` suffix optional, auto-appended) |
+| `--endpoint` | Yes | TI service endpoint URL |
+| `--api-key` | Yes | Personal Access Token (PAT) starting with `pat.` |
 | `--file` | Yes | Path to JSON file (use `-` for stdin) |
-| `--api-key` | Yes | Harness API key |
-| `--endpoint` | Yes | TI service endpoint |
 
 ### policy get
 
-Same parameters as `policy set`, except `--file`.
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `--account-id` | Yes | Harness account ID |
+| `--repo` | Yes | Repository URL (`.git` suffix optional, auto-appended) |
+| `--endpoint` | Yes | TI service endpoint URL |
+| `--api-key` | Yes | Personal Access Token (PAT) starting with `pat.` |
+| `--org-id` | No | Organization ID (filters results to specific org) |
+| `--project-id` | No | Project ID (filters results to specific project) |
 
 ## Best Practices
 
