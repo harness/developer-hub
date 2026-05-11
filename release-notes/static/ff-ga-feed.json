@@ -1480,5 +1480,11 @@
     "description": "Extra validation of service/env/connector refs on MS create/update",
     "gaStartDate": "2026-05-11",
     "module": "Service Reliability Management"
+  },
+  {
+    "flagKey": "SSCA_LICENSE_FAMILY_CLASSIFICATION",
+    "description": "Enables license family classification in SBOMs to classify open-source licenses by their family type for better license compliance management.",
+    "gaStartDate": "2026-05-11",
+    "module": "Supply Chain Security"
   }
 ]
