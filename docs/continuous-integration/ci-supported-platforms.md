@@ -31,9 +31,9 @@ For more information about early access features, including early access feature
 
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
-| `CI_ENABLE_OUTPUT_SECRETS`, `CI_SKIP_NON_EXPRESSION_EVALUATION` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
+| `CI_ENABLE_OUTPUT_SECRETS` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
 | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Allows empty environment variables in CI pipelines. | Beta |
-| `CI_ENABLE_OUTPUT_SECRETS`, `CI_SKIP_NON_EXPRESSION_EVALUATION` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
+| `CI_ENABLE_OUTPUT_SECRETS` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
 | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Allows empty environment variables in CI pipelines. | Beta |
 | `CI_ENABLE_VM_DELEGATE_SELECTOR` | Delegate selectors for self-managed VM build infrastructures (CI-11545).<br/>With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). | Beta |
 | `CI_CODEBASE_SELECTOR` | Delegate selectors for codebase tasks (CI-9980).<br/>Without this feature flag enabled, delegate selectors aren't applied to delegate-related CI codebase tasks.<br/>With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector). | Beta |

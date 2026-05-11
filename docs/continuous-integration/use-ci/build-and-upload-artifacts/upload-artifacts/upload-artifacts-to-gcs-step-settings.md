@@ -401,11 +401,10 @@ For example:
 
 #### Use a plugin step with OIDC
 
-To enable OIDC authentication and perform download operations, you need to enable the following feature flags:
-- `CI_SKIP_NON_EXPRESSION_EVALUATION`
+To enable OIDC authentication and perform download operations, you need to enable the following feature flag:
 - `CI_ENABLE_OUTPUT_SECRETS`
 
-Contact [Harness Support](mailto:support@harness.io) to enable these feature flags.
+Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 
 Then, create two plugin steps in your pipeline:
 

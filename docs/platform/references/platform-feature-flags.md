@@ -14,7 +14,7 @@ This page lists commonly requested feature flags across modules. It is not an ex
 
 | Flag | Module | Description | Prerequisites |
 |------|--------|-------------|---------------|
-| `CI_ENABLE_OUTPUT_SECRETS` | CI | Enables output secret support for plugin steps, required for OIDC plugin credential passthrough. | `CI_SKIP_NON_EXPRESSION_EVALUATION`, `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` |
+| `CI_ENABLE_OUTPUT_SECRETS` | CI | Enables output secret support for plugin steps, required for OIDC plugin credential passthrough. | `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` |
 | `PL_ENABLE_MULTIPLE_IDP_SUPPORT` | Platform | Enables multiple SAML identity provider support for SSO configurations. | None |
 | `PL_PROJECT_MOVEMENT_ENABLED` | Platform | Enables moving projects between organizations within an account. | None |
 | `OPA_IMPORT_FROM_GIT` | Platform | Enables importing OPA policies from Git repositories instead of inline-only definitions. | None |

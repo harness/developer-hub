@@ -131,8 +131,7 @@ At runtime, Harness automatically captures these values as secrets. They can be 
 <+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.SECRET_KEY>
 ```
 :::info Feature flags
-To use output secrets, the following feature flags must be enabled:
-- `CI_SKIP_NON_EXPRESSION_EVALUATION`
+To use output secrets, the following feature flag must be enabled:
 - `CI_ENABLE_OUTPUT_SECRETS`
 For Harness Docker Runner, also enable:
 - `CI_ENABLE_PLUGIN_OUTPUT_SECRETS`

@@ -12,7 +12,6 @@ The [AWS OIDC plugin](https://github.com/harness-community/drone-aws-oidc) lets 
 - OIDC configured in your AWS account (e.g., via IAM Identity Provider).
 - The pipeline must be running in a context where Harness can issue an OIDC token (e.g., on a hosted delegate with OIDC enabled).
 - The following feature flags must be enabled on your account. Contact [Harness Support](mailto:support@harness.io) to enable them.
-  - `CI_SKIP_NON_EXPRESSION_EVALUATION` (required)
   - `CI_ENABLE_OUTPUT_SECRETS` (required)
   - `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` (required only if you use [Harness Docker Runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure)
 
@@ -83,12 +82,11 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 The following feature flags must be enabled for output secrets to work:
 
-1. `CI_SKIP_NON_EXPRESSION_EVALUATION` (required)
-2. `CI_ENABLE_OUTPUT_SECRETS` (required)
-3. `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` (required only if you use [Harness Docker Runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure)
+1. `CI_ENABLE_OUTPUT_SECRETS` (required)
+2. `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` (required only if you use [Harness Docker Runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure)
 
 :::tip
-If AWS credentials appear empty or null in downstream steps (for example, `AWS_ACCESS_KEY_ID` resolves to an empty string), this is almost always caused by missing feature flags. Verify that `CI_SKIP_NON_EXPRESSION_EVALUATION` and `CI_ENABLE_OUTPUT_SECRETS` are both enabled on your account. If you are using Docker Runner, also confirm `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` is enabled. Contact [Harness Support](mailto:support@harness.io) before debugging IAM roles or trust policies.
+If AWS credentials appear empty or null in downstream steps (for example, `AWS_ACCESS_KEY_ID` resolves to an empty string), this is almost always caused by missing feature flags. Verify that `CI_ENABLE_OUTPUT_SECRETS` is enabled on your account. If you are using Docker Runner, also confirm `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` is enabled. Contact [Harness Support](mailto:support@harness.io) before debugging IAM roles or trust policies.
 :::
 
 ## Related Links
