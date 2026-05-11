@@ -1,7 +1,7 @@
 ---
 title: Single Sign-On (SSO) with OAuth
 description: This document explains single sign-on with various OAuth providers.
-# sidebar_position: 2
+sidebar_position: 11
 helpdocs_topic_id: rb33l4x893
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

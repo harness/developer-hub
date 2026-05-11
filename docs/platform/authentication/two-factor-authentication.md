@@ -1,85 +1,117 @@
 ---
 title: Two-factor authentication
-description: This document explains Two-Factor Authentication.
-# sidebar_position: 2
+description: Set up and enforce two-factor authentication (2FA) for your Harness account or for all users in the account.
+sidebar_position: 15
 helpdocs_topic_id: ipsux8n7gm
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can add an extra layer of security by using a 2-step-verification, also known as Two-Factor Authentication (2FA).
+Two-factor authentication (2FA) adds a second verification step when you log in to Harness. After you enter your password, Harness prompts you for a time-based code from an authenticator app on your phone. This protects your account even if your password is compromised.
 
-This document explains the basic steps to set up 2FA in Harness.
+You can enable 2FA for your own profile without impacting other user accounts, or an account administrator can enforce it for all users in the account.
 
-### Before you begin
+---
 
-* Make sure you have permissions to **Create/Edit, Delete** Authentication Settings.
+## What will you learn in this topic?
 
-### Set up two-factor authentication
+By the end of this topic, you will know how to:
 
-You can manage 2FA in two ways:
+- Set up 2FA for your user profile.
+- Enforce 2FA for all users in the account if you are an account administrator.
+- Reset 2FA for a user who has lost access to their authenticator app.
 
-* **Individual user:** you can set up 2FA for your own **User Profile** without impacting other user accounts.
-* **All account users:** if you have **Create/Edit** permissions for Authentication Settings, you can enforce 2FA for all users in Harness. First, you set up 2FA for your own account, and then you can enforce 2FA account-wide in the Harness account's **Login Settings**.
+---
 
-:::info note
-If 2FA is disabled at the account level, you can still enable 2FA for your user account. When an administrator enables the account-level 2FA setting, Harness sends users 2FA emails but does not enable the user-level 2FA settings. Users can enable or disable the user-level setting in their profiles. When a user attempts to sign in to their account, Harness sends a 2FA challenge only if one or both of the settings (the account-level setting and the user-level setting) are enabled. If both settings are disabled, Harness does not send a 2FA challenge.
-:::
+## Before you begin
 
-### Set up two-factor authentication for your profile
+Before you begin, ensure you have the following:
+- **Authentication permissions:** To enforce account-wide 2FA, you need a Harness account with **Create/Edit** permissions on Authentication Settings. Go to <a href="/docs/platform/role-based-access-control/permissions-reference" target="_blank">Permissions reference</a> to review required permissions.
+- **Authenticator app:** Install a 2FA token generator app on your phone, such as Google Authenticator.
 
-1. Click on your **User Profile** icon at the bottom-left below **Account Settings** to go to the Profile page.
-2. The Profile page appears.
-3. Toggle the **Two-Factor Authentication** indicator. The **Enable Two-Factor Authentication** page appears.
-4. Using your smartphone's 2FA token generator app, such as Google Authenticator, scan the QR Code and add it to the list in your app.
-You can now see **Harness-Inc** in your 2FA token generator app, which provides authentication codes.
-2FA token generator apps also include a method for adding a site using a Secret Key in cases where you cannot scan the QR Code. The 2FA dialog includes a Secret Key for those cases.
-5. Select **Enable**. The next time you log in by entering your username and password, you are prompted to provide the 2FA authentication code.
-6. Obtain the code from your 2FA token generator app, and enter it. You can then log into your Harness account.
+---
 
-### Set up account-wide two-factor authentication
+## Set up 2FA for your profile
 
-Once you have set up 2FA for your account, you set it for all users and groups in the account. When 2FA is enforced, account users will experience the following changes:
+To enable 2FA for your own account without affecting other users:
 
-* **New members** will be able to set up 2FA during sign up.
-* **Existing members** who do not have 2FA enabled will receive an email with a QR Code, and instructions on how to set up 2FA.
+1. Select your **User Profile** icon in the bottom-left corner of the Harness UI.
+2. On the Profile page, toggle **Two-Factor Authentication** on. The **Enable Two-Factor Authentication** dialog appears with a QR code.
+3. Open your authenticator app and scan the QR code. The app adds **Harness-Inc** to your token list.
 
-To set up 2FA for all account users and groups, do the following:
+   :::info Cannot scan the QR code?
+   The dialog also displays a Secret Key. Enter this key manually in your authenticator app to add the account.
+   :::
 
-1. Enable 2FA for your account as described in [Set Up Two-Factor Authentication for Your Profile](#set-up-two-factor-authentication-for-your-profile).
+4. Select **Enable**.
 
-2. Select **ACCOUNT SETUP** > **Authentication**. The **Authentication: Configuration** page appears.
+The next time you log in, Harness prompts you for the 2FA code from your authenticator app after you enter your password.
 
-   ![](./static/two-factor-authentication-01.png)
+---
 
-3. Slide the **Enforce Two Factor Authentication** setting on.
+## Enforce 2FA for all account users
 
-   If you have not yet [set up 2FA for your own profile](#set-up-two-factor-authentication-for-your-profile), this prompt reminds you to protect your own login before proceeding:
+An account administrator or a user with the **Create/Edit** permissions to **Authentication Settings** can enforce 2FA for all users in the account. When an administrator enforces account-wide 2FA:
 
-   ![](./static/two-factor-authentication-02.png)
+- **New members** set up 2FA during signup.
+- **Existing members** who have not enabled 2FA receive an email with a QR code and setup instructions.
 
-4. Select **Go to settings** to display a QR Code and secret key that you can store to make sure your own ability to log in:
-![](./static/two-factor-authentication-03.png)
+To enforce 2FA for all users:
 
-5. Return to **ACCOUNT SETUP** > **Authentication** to enable account-wide, two-factor authentication.
-6. Slide the **Enforce Two Factor Authentication** setting on. This prompt asks for a confirmation to enable 2FA for all the users:
+1. Enable 2FA for your own profile as described in [Set up 2FA for your profile](#set-up-2fa-for-your-profile).
+2. Go to **Account Settings** and select **Authentication**. The **Authentication** page appears. 
 
-   ![](./static/two-factor-authentication-04.png)
+   <DocImage path={require('./static/two-factor-authentication-01.png')} alt="Authentication configuration page in Account Settings" title="Click to view full size image" />
+
+3. Toggle **Enforce Two Factor Authentication** on.
+
+   If you have not set up 2FA for your own profile, Harness displays a prompt to protect your login first.
+
+   <DocImage path={require('./static/two-factor-authentication-02.png')} alt="Prompt to set up 2FA for your own profile before enforcing account-wide 2FA" title="Click to view full size image" />
+
+4. If prompted, select **Go to settings** and complete 2FA setup for your profile. Store the QR code and secret key for your account recovery.
+
+   <DocImage path={require('./static/two-factor-authentication-03.png')} alt="QR code and secret key for the administrator 2FA setup" title="Click to view full size image" />
+
+5. Return to **Account Settings** and select **Authentication**.
+6. Toggle **Enforce Two Factor Authentication** on. Harness displays a confirmation dialog:
+
+   <DocImage path={require('./static/two-factor-authentication-04.png')} alt="Confirmation dialog to enforce 2FA for all users in the account" title="Click to view full size image" />
 
 7. Select **Confirm**.
 
-### Reset two-factor authentication
+### How account-level and user-level 2FA settings interact
+Harness evaluates two settings at login: 
+- The **account-level** 2FA setting 
+- The **user-level** 2FA setting 
 
-If a user loses the QR Code, an account admin can reset two-factor authentication and email them a new QR Code and secret key.
+Harness sends a 2FA challenge if **one or both** of these settings are enabled. Harness skips the 2FA challenge only when **both** settings are disabled.
 
-To reset two-factor authentication for a user, do the following:
+- If the 2FA settings is enabled at the account-level, all users receive a 2FA challenge at login, regardless of their user-level setting.
 
-1. In Harness, go to your account, and then select **Account Settings**.
-2. Under **Access Control**, select **Users**.
-3. Select **More Options** (&vellip;) corresponding to the user for which you want to reset two-factor authentication.
+- If the 2FA settings is disabled at the account-level but enabled at the user-level, only that individual user receives a 2FA challenge.
 
-   ![](./static/reset-two-factor-authentication.png)
+When an administrator enables account-level 2FA, Harness sends 2FA setup emails to users but does not change their individual user-level setting. Users can still enable or disable their own user-level setting independently from their profile.
 
-4. Select **Email new Two Factor Auth secret**.
-   The user will receive an email to reset their authentication.
+---
+
+## Reset 2FA for a user
+
+If a user loses access to their authenticator app or QR code, an account administrator can reset 2FA and email them a new QR code and secret key.
+
+To reset 2FA for a user:
+
+1. Go to **Account Settings** and select **Access Control**, then select **Users**.
+2. Locate the user and select **More Options** (&vellip;) next to their name.
+
+   <DocImage path={require('./static/reset-two-factor-authentication.png')} alt="More Options menu showing the option to email a new 2FA secret" title="Click to view full size image" />
+
+3. Select **Email new Two Factor Auth secret**. The user receives an email with a new QR code and secret key to reconfigure their authenticator app.
+
+---
+
+## Related articles
+
+- <a href="/docs/platform/authentication/authentication-overview" target="_blank">Authentication overview</a>: Review all authentication methods available in Harness.
+- <a href="/docs/platform/authentication/switch-account" target="_blank">Switch account</a>: Switch between multiple Harness accounts and understand re-authentication behavior.

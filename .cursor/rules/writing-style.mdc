@@ -12,6 +12,49 @@ These rules apply to all documentation in the `docs/` directory. Follow them whe
 
 ---
 
+## Technical accuracy checklist
+
+Apply these checks to every page:
+
+- **Feature clarity:** The document clearly states what the feature or workflow does.
+- **Version and prerequisites:** Version requirements and prerequisites are documented when feature behavior depends on them.
+- **Reader level:** The intended reader level is appropriate and consistent throughout. Use second person ("you") at all times.
+- **Usefulness:** The usefulness of the feature is explicitly defined on the page.
+- **Complete procedures:** All required procedures within scope are documented.
+- **Optional configurations:** Optional configurations are included where relevant.
+- **Limitations and unsupported scenarios:** Limitations, considerations, or unsupported scenarios are written as a `:::info` or `:::warning` admonition.
+- **UI validation:** UI labels, screenshots, navigations, and buttons match the product.
+- **Step order:** The order of steps matches the actual execution order in the UI.
+- **Expected results:** Expected results and examples are described after key procedures, wherever applicable.
+- **Syntax correctness:** Code formats, placeholder values, and comments are correct wherever they appear.
+
+---
+
+## Writing accuracy checklist
+
+Apply these checks to every page:
+
+- **Consistent product terms:** Use the same product terms throughout the document.
+- **User-facing language:** Replace internal terms with user-facing terms. For example, use "account" instead of "tenant".
+- **Expand abbreviations:** Expand abbreviations at all times.
+- **No contractions:** Write out all words in full (covered in detail below).
+- **Human touch:** Proofread all AI-generated content and add a human touch.
+- **User perspective:** Technical explanations describe behavior from a user perspective.
+- **Glossary:** Complex terms are added to the Glossary as needed.
+- **Screenshot accuracy:** Screenshots across the document are accurate and placed near the steps or relevant section they support.
+- **Heading clarity:** Headings reflect what users should expect in the section.
+- **Heading hierarchy:** Follow heading hierarchies at all times. Never skip levels (for example, do not jump from `##` to `####`).
+- **Logical flow:** Close the loop for users. Create a logical flow between sections, in order of execution, ending with the outcome.
+- **One action per step:** Steps should not combine multiple actions.
+- **Link accuracy:** Links redirect users to the correct document.
+- **Consistent grammar:** Use a consistent grammatical structure throughout the document.
+- **Consistent capitalization:** Follow the capitalization standards (sentence case for headings, proper nouns capitalized).
+- **Simple language:** Use simple language across the document.
+- **Active voice and present tense:** Use the active voice and the present tense at all times.
+- **Short sentences:** Keep sentences concise. Break long sentences into two.
+
+---
+
 ## Voice and tone
 
 Write in a casual, conversational tone. Keep sentences short and in the present tense.

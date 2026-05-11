@@ -1,7 +1,7 @@
 ---
 title: Single Sign-On (SSO) with LDAP
 description: This topic explains how to configure Single Sign-On with LDAP in Harness.
-# sidebar_position: 2
+sidebar_position: 8
 helpdocs_topic_id: 142gh64nux
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

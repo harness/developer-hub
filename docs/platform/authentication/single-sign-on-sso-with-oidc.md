@@ -1,7 +1,7 @@
 ---
 title: Single Sign-On (SSO) with OpenID Connect (OIDC) 
 description: This document explains single sign-on with OIDC provider.
-# sidebar_position: 2
+sidebar_position: 14
 helpdocs_topic_id: mlpksc7s6c
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
