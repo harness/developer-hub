@@ -220,6 +220,20 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## May 2026
+
+### Version 1.144.x <!--May 06, 2026-->
+
+#### Fixed issues
+
+- Fixed a race condition introduced in recent updates to improve system stability and ensure consistent behavior. [PL-71042]
+- Restored missing Redis configuration required for proper RHS functionality. [PL-71001]
+- Fixed an issue where users with partial view permissions on users or user groups received incorrect responses from the delete API. [PL-68628] 
+
+#### New features and enhancements
+
+- New users are now prompted to complete their profile right after signup, including details like company name, full name, job title, and phone number. [PL-70488]
+
 ## April 2026
 
 ### Version 1.143.x <!--April 29, 2026-->
@@ -232,8 +246,6 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - New users are now prompted to complete their profile immediately after signup, including details such as company name, full name, job title, phone number, and other required information. [PL-70488]
-
-
 
 ### Version 1.142.x <!--April 24, 2026-->
 
@@ -268,7 +280,7 @@ No enhancements or fixes were released in this cycle.
 
 #### New features and enhancements
 
-- Introduced [**notifications for service account tokens**](/docs/platform/notifications/centralised-notification#service-account-sa-token-notifications), allowing you to configure notifications for SA token events such as creation, rotation, updates, expiration, deletion, and upcoming expiration across your selected channels. [PL-41008] 
+- Introduced notifications for service account tokens, allowing you to configure alerts for events such as creation, rotation, updates, expiration, deletion, and upcoming expiration across your selected channels. [PL-41008] 
 - Introduced [**project movement across organizations**](/docs/platform/organizations-and-projects/move-projects/overview) (Closed Beta): Move projects between organizations seamlessly while preserving audit and execution history. [PL-41870]
 
 ## March 2026
