@@ -126,6 +126,8 @@ import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md
 
 <StoSettingTargetWorkspace  />
 
+You can also override this to scan a JAR, WAR, or EAR file by specifying the exact file location. For example, `/harness/target/myapp.jar`.
+
 
 
 :::info
