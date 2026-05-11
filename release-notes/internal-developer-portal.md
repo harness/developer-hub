@@ -30,10 +30,76 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2026.5.v1](/release-notes/internal-developer-portal#may---20265v1)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.4.v1](/release-notes/internal-developer-portal#april---20264v1) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.3.v2](/release-notes/internal-developer-portal#march---20263v2) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
-| [2026.3.v1](/release-notes/internal-developer-portal#march---20263v1) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 
+## May - [2026.5.v1]
+
+---
+
+### New Features
+
+#### Entity Details Page: Integrations Overview | [Read Doc](https://developer.harness.io/docs/internal-developer-portal/catalog/create-entity/entity-details)
+
+The entity details page now shows a dedicated card that displays key integration data directly on the entity overview. Platform engineers and developers can see the health and status of an entity's connected integrations at a glance. This comes along with dedicated tabs for `Code Quality`, `Source Code`, and `Incidents` which you can enable using [Layout](/docs/internal-developer-portal/layout-and-appearance/catalog).
+
+The `IntegrationsContent` card on the Overview page of the entity includes the following data:
+
+- **Incidents** - Displays active incidents sourced from the PagerDuty integration.
+- **On-call** - Displays on-call respondents to PagerDuty along with their schedule.
+- **Source Control Management** - Displays open PRs, merged PRs, average cycle time, last published version, and top language sourced from the GitHub integration.
+- **Code Quality** - Displays reliability rating, security rating, SQALE rating, coverage, and technical debt sourced from the SonarQube integration.
+- **DORA Metrics** - Displays deployment frequency, lead time, change failure rate, and mean time to restore for the entity.
+- **Scorecards** - Displays the entity's overall scorecard score and check results.
+
+![Entity Details Page](../docs/internal-developer-portal/static/rn/entity-details-screen.png)
+
+---
+
+#### GitHub Integration: Support for Secondary Entity Kinds | [Read Doc](https://developer.harness.io/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github/#repository-entity)
+
+When configuring [GitHub integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github), you can now select secondary entity kinds to map discovered repository entities to. The data from these kinds surfaces directly on the entity details page, giving platform teams more flexibility in how GitHub content is represented in the catalog. The supported secondary kinds are:
+
+- Commits
+- Issues
+- Pull Requests
+- Repository Stats
+
+![GitHub Secondary Entity Kinds](../docs/internal-developer-portal/static/rn/source-code.png)
+
+---
+
+#### AI Asset: Instructions Tab | [Read Doc](https://developer.harness.io/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github/#view-ai-asset-instructions)
+
+Entity pages for AI Assets now include a dedicated tab named `Instructions` to render the associated `.md` file from GitHub directly within IDP, making it easier for teams to discover and read AI asset documentation without leaving the catalog.
+
+![AI Asset Instructions Tab](../docs/internal-developer-portal/static/rn/skill-renderer.png)
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Blueprints at Organization and Project Levels
+
+Environment Blueprints can now be created and managed at the **Organization** and **Project** scope levels, in addition to the Account level. The blueprint listing page now displays the scope for each blueprint, and managed roles have been updated to include the appropriate blueprint permissions at each scope.
+
+#### Live Sync Status on Integration Pages
+
+The integration entity listing page now polls for sync status automatically every 10 seconds. A sync in progress shows a spinner with start time; a failed sync shows an error badge with details. No manual page reload is needed to see the current state.
+
+#### Relations Graph: Unknown Owner Kind Fixed
+
+The relations graph was showing owner kind as `unknown` when the owner entity did not exist in the catalog. It now correctly falls back to displaying `group`, consistent with the previous behavior. [IDP-8932]
+
+#### Fixes
+
+- Integrations at Organisation and Project scope were defaulting to account-level for all permission checks and API calls. [IDP-8948]
+- Updating an API entity was removing its relations (providesApis, consumesApis). Relations are now preserved correctly on update. [IDP-8305]
+- The Kubernetes integration agent picker was listing custom agents without a valid environment identifier, causing integration creation to fail. [IDP-9152]
+- Integrations that had never synced were incorrectly showing "Sync Failed". These now correctly show "Not synced yet". [IDP-9165]
+
+---
 
 ## April - [2026.4.v1]
 
