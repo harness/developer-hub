@@ -23,7 +23,7 @@ export const docsCards: CardSections = [
         title: "AI Security Agent Support Matrix",
         module: MODULES.aisec,
         description:
-          "Understand which agents support AI Security and how to enable capabilities, such as API Discovery and Threat Monitoring.",
+          "Understand which agents support AI Security and how to enable capabilities, such as AI asset discovery and threat activity.",
         link: "https://docs.traceable.ai/docs/ai-security-agent-support-matrix",
       },
       {

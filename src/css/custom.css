@@ -2816,6 +2816,9 @@ html[data-theme='dark'] .navbar .dropdown__menu .dropdown__section-header {
 }
 
 /* AI for Security & Compliance */
+.navbar .dropdown__link[href*='/docs/ai-security'] {
+  --nav-icon: url('/img/icon-ai-security.svg');
+}
 .navbar .dropdown__link[href*='/docs/appsec-discovery'] {
   --nav-icon: url('/img/icon-api-security-posture.svg');
 }
