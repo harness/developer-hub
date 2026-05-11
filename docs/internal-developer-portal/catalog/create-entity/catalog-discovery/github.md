@@ -191,6 +191,43 @@ The current implementation scans for plugin manifests and `.claude/` directories
 Both asset classes are registered in the IDP Catalog under `AIAsset` kind with their respective types, and are browsable under the **AI Assets** and **AI Dependencies** tabs in the [Catalog](../../../catalog/overview)
 :::
 
+#### View AI Asset Instructions
+ 
+When AI assets of type `skill` or `agent` are imported, IDP automatically fetches their corresponding instruction file (for example, `SKILL.md`) from GitHub and stores it along with the entity. This powers the **Instructions** tab on the entity page as shown below. 
+
+![](./static/instructions.gif)
+<center>Figure 7a: AI Assets Instructions</center>
+
+Additional metadata is also captured as annotations on the entity, including commit count, last commit message, author, and source location. These are visible in the **Entity Inspector** under **Metadata**.
+
+However, this requires you to add an `InstructionsTab` component to your AI Asset layout:
+ 
+1. Go to **Configure** → **Layout** in the IDP sidebar.
+
+2. In **Catalog Entities**, click **AI Asset**.
+
+3. Click **Edit Layout**.
+
+4. Add the following definition (within `tabs` object) to your layout YAML:
+
+   ```yaml
+   - path: /instructions
+     title: Instructions
+     contents:
+       - component: InstructionsTab
+   ```
+
+   ![](./static/layout-edit.gif)
+   <center>Figure 7b: Edit Layout to display Instructions tab on Entity</center>
+ 
+5. Click **Save**.
+
+Once added, the **Instructions** tab appears on each AI asset entity page and renders the instruction file fetched from GitHub.
+ 
+:::info
+The Instructions tab is currently supported for `skill` and `agent` type AI assets. Support for `command` type may be added in a future release.
+:::
+
 
 ### 4. Configure Advanced Settings
 
