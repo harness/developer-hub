@@ -2,7 +2,7 @@
     "label": "Catalog Auto-Discovery",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 2,
+    "position": 3,
     "link": {
       "type": "generated-index",
       "title": "Catalog Auto-Discovery"

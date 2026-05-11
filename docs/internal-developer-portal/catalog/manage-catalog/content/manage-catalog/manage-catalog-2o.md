@@ -127,6 +127,8 @@ You can also edit or delete custom columns in the same **Manage Columns** view. 
 ### Understand Catalog Entity UI
 Whenever you register an entity in your software catalog, you can view all its details from the Catalog Entity page in your Harness IDP UI. Every section on the entity page is uniquely designed to present the most relevant information for the specific type of entity you're viewing.
 
+For a full reference of all tabs, cards, and integration signals available on the entity details page, see [Entity Details Page](/docs/internal-developer-portal/catalog/create-entity/entity-details).
+
 Here’s how to access the catalog entity details page:
 1. In your Harness IDP, navigate to **Catalog**.
 2. Select the entity you want to view. You’ll be redirected to the entity details page.

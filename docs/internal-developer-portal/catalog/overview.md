@@ -82,6 +82,8 @@ Once your entities are registered, you can:
 
 [Learn more about managing your catalog →](/docs/internal-developer-portal/catalog/manage-catalog.md)
 
+To understand everything available on an individual entity page, including the `IntegrationsContent` card, all available tabs, and the Entity Inspector, see the [Entity Details Page](/docs/internal-developer-portal/catalog/create-entity/entity-details) reference.
+
 ---
 
 ## Next Steps
