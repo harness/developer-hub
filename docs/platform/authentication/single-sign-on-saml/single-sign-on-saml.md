@@ -36,7 +36,8 @@ By the end of this topic, you will be able to understand:
 
 ## Before you begin
 
-- **A Harness account with admin permissions:** You need permission to manage Authentication Settings. Go to <a href="/docs/platform/authentication/authentication-overview"target="_blank" >Authentication overview</a> for details.
+Before you begin working with SAML-based single sign-on (SSO) in Harness, ensure you have the following:
+- **A Harness account with admin permissions:** Required to manage Authentication Settings. Go to <a href="/docs/platform/authentication/authentication-overview"target="_blank" >Authentication overview</a> for details.
 - **A SAML identity provider (IdP):** Such as Okta, Microsoft Entra ID, OneLogin, or Keycloak, with admin access to configure a new application integration.
 - **Matching user accounts:** Users must exist in both Harness and the SAML provider with the same email address before SSO can be enabled.
 - **At least two user accounts for testing:** One Harness Administrator account to configure SSO and one regular user account to test the login flow.

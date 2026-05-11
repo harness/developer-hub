@@ -9,23 +9,23 @@ import SCIMurl from '/docs/platform/shared/scimurl.md'
 You can use OneLogin as a SAML identity provider for Harness, allowing OneLogin users to log in to Harness with their existing credentials. Once configured, Harness delegates authentication to OneLogin and can optionally sync OneLogin roles to Harness user groups for automatic access control.
 
 :::info note
-If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank"> Harness Self-Managed Enterprise Edition </a>, your instance must be accessed via an HTTPS load balancer. SAML authentication will fail over HTTP.
+If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer, otherwise SAML authentication will fail over HTTP.
 :::
 
 ---
 
 ## What will you learn in this topic?
 
-By the end of this topic, you will be able to understand:
+By the end of this topic, you will be able to:
 
-- How to configure OneLogin as a SAML SSO provider in Harness.
-- How to assign users, and test OneLogin authorization.
-- How to login to Harness using OneLogin credentials.
+- Configure OneLogin as a SAML SSO provider in Harness.
+- Assign users, and test OneLogin authorization.
+- Login to Harness using OneLogin credentials.
 
 ---
 
 ## Before you begin
-
+Before you configure OneLogin as the SAML identity provider for Harness, ensure you have the following:
 - A Harness account with Account Admin permissions.
 - An existing OneLogin account with admin access to create and configure applications.
 - A <a href="/docs/platform/role-based-access-control/add-user-groups/#create-user-groups-manually" target="_blank" > user group </a> in Harness to link to OneLogin.

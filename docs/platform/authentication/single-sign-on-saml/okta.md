@@ -13,7 +13,7 @@ Use two browser windows or tabs for this process. Open Okta in one tab and open 
 In your Harness tab, <a href="/docs/platform/authentication/authentication-overview#enable-multiple-identity-providers"target="_blank" > Add an SAML Provider</a>.
 
 :::info note
-If you use <a href="/docs/self-managed-enterprise-edition/smp-overview"target="_blank" > Harness Self-Managed Enterprise Edition </a>, your instance must be accessed via an HTTPS load balancer. SAML authentication will fail over HTTP.
+If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer, otherwise SAML authentication will fail over HTTP.
 - Users are not created as part of the SAML SSO integration. Okta user accounts must exist prior to exchanging information between your Okta account and Harness. 
 - Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to <a href="/docs/platform/authentication/single-sign-on-saml/overview"target="_blank"> SAML SSO with Harness </a>.
 :::
@@ -30,7 +30,7 @@ By the end of this topic, you will be able to understand:
 ---
 
 ## Before you begin
-
+Before you configure Okta as the SAML identity provider for Harness, ensure you have the following:
 - A Harness account with Account Admin permissions.
 - An Okta account with admin access.
 - Users already provisioned in Okta, with the same email addresses they will use in Harness.
