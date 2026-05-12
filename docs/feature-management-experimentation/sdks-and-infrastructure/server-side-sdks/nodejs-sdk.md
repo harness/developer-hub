@@ -1,6 +1,7 @@
 ---
 title: Node.js SDK
 sidebar_label: Node.js SDK
+description: Use the Harness FME Node.js SDK for secure, server-side feature management and controlled rollouts in JavaScript backends.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-dependency-on-old-version-of-package-url-parse
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-using-gettreatment-in-localhost-mode-does-not-work-with-then-and-catch-blocks/
@@ -14,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our Node.js SDK. All of our SDKs are open source. Go to our [Node.js SDK GitHub repository](https://github.com/splitio/javascript-client) to learn more.
 
-## Language support
+## Before you begin
 
 The JavaScript SDK supports Node.js version 14.x or later.
 
@@ -101,7 +102,7 @@ Configure the SDK with the SDK key for the FME environment that you would like t
 
 Use the SDK factory client to evaluate treatments.
 
-## Using the SDK
+## Use the SDK
 
 ### Basic use
 
@@ -1723,7 +1724,7 @@ client
 
 It throws the error:
 
-```
+```text
 splitClient.getTreatment(...).then is not a function
 ```
 
@@ -1784,7 +1785,7 @@ var factory = SplitFactory({
 
 The following error is thrown:
 
-```
+```bash
 Cannot find name 'path'
 ```
 

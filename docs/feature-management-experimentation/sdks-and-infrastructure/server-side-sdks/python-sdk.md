@@ -1,6 +1,7 @@
 ---
 title: Python SDK
 sidebar_label: Python SDK
+description: Integrate the Harness FME Python SDK into your server-side applications to manage feature flags and user treatments.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/python-sdk-error-type-argument-1-must-be-string/
 ---
@@ -10,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our Python SDK. All of our SDKs are open source. Go to our [Python SDK GitHub repository](https://github.com/splitio/python-client) to learn more.
 
-## Language support
+## Before you begin
 
 The Python SDK supports Python 3 (3.7.16 or later).
 
@@ -24,15 +25,13 @@ Older SDK versions will return the control treatment for flags using rule-based 
 
 One of Python's great built-in features is the ability to parallelize your code to optimize the execution-performance of any module. You can implement your project in a multi-threaded, multi-process or asyncio mode, depending on what works best for you and your team.
 
-Please note, multiple processes in Python are unable to share memory space, so the setup and instantiation process is different for each mode.
+Since multiple processes in Python are unable to share memory space, the setup and instantiation process is different for each mode. Django projects are multi-process by default.
 
 Jump to the setup process for the mode your application is built in:
 
 * [Multi-threaded SDK initialization](#initialization-multi-threaded-mode)
 * [asyncio SDK initialization](#initialization-asyncio-mode)
 * [Multi-process SDK initialization](#initialization-multi-process-mode)
-
-(Note: Django projects are multi-process by default)
 
 ## Initialization: Multi-threaded mode
 
@@ -122,7 +121,7 @@ loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
 ```
 
-For the following sections, please lookup the `asyncio` tab in each code example block.
+For the following sections, lookup the `asyncio` tab in each code example block.
 
 ## Initialization: Multi-process mode
 
@@ -472,7 +471,7 @@ def post_fork():
 
 For further reading about uwsgi decorators and postfork you can take a look at the [official documentation](https://uwsgi-docs.readthedocs.io/en/latest/PythonDecorators.html#uwsgidecorators.postfork)
 
-## Using the SDK
+## Use the SDK
 
 ### Basic use
 

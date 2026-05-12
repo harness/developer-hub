@@ -1,6 +1,7 @@
 ---
 title: Browser SDK
 sidebar_label: Browser SDK
+description: Set up the Harness FME Browser SDK to implement client-side feature flags and controlled rollouts in web browsers.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -22,7 +23,7 @@ Refer to this [migration guide](https://github.com/splitio/javascript-browser-cl
 Refer to the [**Browser SDK migration guide**](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/browser-sdk-migration) if you are already using our [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) and want to migrate to JavaScript Browser SDK to take advantage of ES modules tree-shaking in your Web application project.
 :::
 
-## Language support
+## Before you begin
 
 The JavaScript Browser SDK supports all major browsers. While the library was built to support ES5 syntax, it depends on native support for ES6 `Promise`, `Map` and `Set` objects, and therefore, you need to **polyfill** them if they are not available in your target browsers.
 
@@ -154,7 +155,7 @@ We recommend instantiating the SDK factory once as a singleton and reusing it th
 
 Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/api-keys) to learn more.
 
-## Using the SDK
+## Use the SDK
 
 ### Basic use
 

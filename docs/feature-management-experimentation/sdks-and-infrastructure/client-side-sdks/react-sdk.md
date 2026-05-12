@@ -1,6 +1,7 @@
 ---
 title: React SDK
 sidebar_label: React SDK
+description: Use the Harness FME React SDK to easily manage feature flags and UI treatments with specialized hooks and components.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-istimeout-prop-not-returning-true-when-react-sdk-times-out
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-is-it-possible-to-get-treatments-outside-the-components
@@ -25,7 +26,7 @@ The deprecation is intended to simplify the API and discourage using old pattern
 Although these components are still working, we recommend migrating to the `SplitFactoryProvider` component and library hooks. Refer to the [migration guide](https://github.com/splitio/react-client/blob/development/MIGRATION-GUIDE.md#migrating-to-react-sdk-v200) for more details.
 :::
 
-## Language support
+## Before you begin
 
 The Harness FME React SDK requires React 16.8.0 or above, since it uses the **React Hooks API** introduced in that version.
 
@@ -204,7 +205,7 @@ We recommend instantiating the SDK factory once as a singleton and reusing it th
 
 Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](/docs/feature-management-experimentation/api-keys) to learn more.
 
-## Using the SDK
+## Use the SDK
 
 ### Basic use
 

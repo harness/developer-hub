@@ -1,6 +1,7 @@
 ---
 title: Angular utilities
 sidebar_label: Angular utilities
+description: Integrate feature management into your Angular applications using the Harness FME Angular SDK and utility components.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +11,7 @@ This guide provides detailed information about our Angular utilities built on to
 
 All of our SDKs are open source. Go to our [Angular Utilities GitHub repository](https://github.com/splitio/angular-sdk-plugin) to see the source code.
 
-## Language support
+## Before you begin
 
 These utilities guarantee support with Angular v18.0.0 or later.
 

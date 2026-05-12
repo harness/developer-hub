@@ -9,7 +9,7 @@ Integrate your Python applications with Harness FME using the <Tooltip id="fme.o
 
 This page walks you through installing, configuring, and using the Python OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your Python applications.
 
-### Prerequisites
+### Before you begin
 
 Before you begin, ensure you have the following:
 

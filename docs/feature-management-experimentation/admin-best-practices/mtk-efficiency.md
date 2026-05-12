@@ -1,6 +1,7 @@
 ---
 title: MTK efficiency
 sidebar_position: 10
+description: Tracks how Monthly Tracked Keys (MTKs) are calculated in Harness FME and explains why MTK counts may vary due to identity handling, anonymous users, and SDK behavior across sessions and devices.
 redirect_from:
   - /docs/feature-management-experimentation/management-and-administration/admin-best-practices/mtk-efficiency
 ---
@@ -27,7 +28,7 @@ To remediate this issue, ensure that the SDK is ready before calling getTreatmen
 
 Harness FME is integrated and the SDK is called directly after creating the factory and without waiting for the SDK_READY event.
 
-```
+```text
 # Pseudocode:
 factory = new SplitFactory(settings);
 client = factory.client();
@@ -36,13 +37,13 @@ treatment = client.getTreatment('SPLIT_NAME');
 
 Notice here that there is no block until ready. All code examples provided by FME on our Help Center include the best practice of blocking until ready. If not blocking, this will cause extra MTKs if done on feature flags that have been deleted from FME’s UI but still remain in code. Normally, deleting a flag from the UI would mean that the SDK does not recognize the flag and will not compute anything. However, when the SDK is not ready, it does not know which flags are configured or not configured, so it sends everything to FME’s backend, counting as MTKs.
 
-### `getTreatment`&nbsp;calls on killed flags or flags with 0% traffic allocation
+### `getTreatment` calls on killed flags or flags with 0% traffic allocation
 
-A feature flag that is killed or ramped down to 0% allocation still evaluates treatments, and those MTKs still get sent back to FME. To resolve this, the flag will have to be removed from code so that getTreatment is not called for them.
+A feature flag that is killed or ramped down to 0% allocation still evaluates treatments, and those MTKs still get sent back to FME. To resolve this, the flag will have to be removed from code so that `getTreatment` is not called for them.
 
 *Example Scenario:*
 
-A team is working on a new feature. After putting it into production, they immediately notice a significant performance degradation and proceed to kill the feature flag. Killing the flag does not stop the evaluation of the flag — those <span class="mark">getTreatment</span> calls still count as MTKs.
+A team is working on a new feature. After putting it into production, they immediately notice a significant performance degradation and proceed to kill the feature flag. Killing the flag does not stop the evaluation of the flag; those `getTreatment` calls still count as MTKs.
 
 ### Automated testing or load testing tools
 
@@ -54,7 +55,7 @@ A team is doing an automated load test of a backend service. The SDK is not set 
 
 ### Use of unstable IDs
 
-Having getTreatment called from a device ID or a randomized UUID can create a significantly different MTK count when compared to a count of unique ‘users.’ This is especially true when not using a cookie or some other way to stabilize the IDs.
+Having `getTreatment` called from a device ID or a randomized UUID can create a significantly different MTK count when compared to a count of unique ‘users.’ This is especially true when not using a cookie or some other way to stabilize the IDs.
 
 *Example Scenario:*
 
@@ -80,7 +81,7 @@ For users that are both anonymous and have a user account, an additional approac
 
 ### Timing the getTreatment call
 
-The call to getTreatment is the generator of MTKs, so it should be called as close as possible to the usage of the returned treatment in code. This way you can ensure best as possible that the treatment call is being used and not wasting an MTK. This is especially relevant for anonymous feature flags. Calling <span class="mark">getTreatment</span> and not using it for a logged in user ID flag is less likely to create an additional MTK simply because it is likely that other flags would be using that logged in user ID as well.
+The call to `getTreatment` is the generator of MTKs, so it should be called as close as possible to the usage of the returned treatment in code. This way you can ensure best as possible that the treatment call is being used and not wasting an MTK. This is especially relevant for anonymous feature flags. Calling `getTreatment` and not using it for a logged in user ID flag is less likely to create an additional MTK simply because it is likely that other flags would be using that logged in user ID as well.
 
 ### Non-ID based targeting
 
@@ -96,11 +97,11 @@ Check for feature flags that are 100% rolled out and remove them from code. Harn
 
 ### Sampling
 
-For anonymous experiments, if you are getting a significant amount of MTKs to [power your experiments](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/), you could consider sampling keys. This is something that would have to be done with code outside of Harness FME's getTreatment call. Non-sampled traffic will not be part of the experiment and will be given a hardcoded treatment. If using this approach, it is not recommended to sample by something such as a time of day, attribute, region, first come/first serve, etc. The recommended approach is to use a mathematical hashing function with a test that can be used to filter out anonymous keys on a percentage basis from Harness FME's track and getTreatment calls.
+For anonymous experiments, if you are getting a significant amount of MTKs to [power your experiments](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/), you could consider sampling keys. This is something that would have to be done with code outside of Harness FME's `getTreatment` call. Non-sampled traffic will not be part of the experiment and will be given a hardcoded treatment. If using this approach, it is not recommended to sample by something such as a time of day, attribute, region, first come/first serve, etc. The recommended approach is to use a mathematical hashing function with a test that can be used to filter out anonymous keys on a percentage basis from Harness FME's `track` and `getTreatment` calls.
 
 #### Code Example for getTreatment
 
-```
+```javascript
 let murmur = require("murmurhash-js")
 const SAMPLE_RATE = 0.1
 const SEED = 199
@@ -116,7 +117,7 @@ let treatment = "off"
 
 #### Code Example for tracking events
 
-```
+```javascript
 if(converted  && ((murmur.murmur3(key, SEED)/MAX_32BIT_INT) < SAMPLE_RATE)) {
 let track = split.track(key,"TRAFFIC_TYPE","EVENT")
 }
@@ -132,7 +133,7 @@ Sometimes called bucketing, this method can be used to group keys into a certain
 
 #### Code Example for getTreatment:
 
-```
+```javascript
 let murmur = require("murmurhash-js")
 const NUM_BUCKETS = 10000
 const SEED = 199
@@ -144,7 +145,7 @@ let treatment = split.getTreatment(bucket_key, "SPLIT_NAME")</mark></p>
 
 #### Code Example for track:
 
-```
+```javascript
 if(converted ) {  
 let track = split.track(bucket_key,"TRAFFIC_TYPE","EVENT")  
 }
@@ -185,13 +186,13 @@ When using the JavaScript or mobile SDKs, configuration options (such as [these]
 
 A number of articles in the Help Center describe why you may be missing or getting improper impression counts in Harness FME, and how to avoid some of these issues:
 
-- [<span class="mark">Block traffic until the SDK is ready</span>](/docs/feature-management-experimentation/sdks-and-infrastructure#using-a-service-for-feature-flags)
+- [Block traffic until the SDK is ready](/docs/feature-management-experimentation/sdks-and-infrastructure#using-a-service-for-feature-flags)
 
-- [<span class="mark">Why are Impressions not showing in Harness FME?</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#impressions-not-showing-in-harness-fme)
+- [Why are Impressions not showing in Harness FME?](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#impressions-not-showing-in-harness-fme)
 
-- [<span class="mark">Javascript SDK on slow networks</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#why-does-the-javascript-sdk-return-not-ready-status-on-slow-networks)
+- [Javascript SDK on slow networks](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#why-does-the-javascript-sdk-return-not-ready-status-on-slow-networks)
 
-- [<span class="mark">Always getting 'Control' treatments</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#always-getting-control-treatments-from-gettreatment)
+- [Always getting 'Control' treatments](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#always-getting-control-treatments-from-gettreatment)
 
 ### Bots or web crawlers
 
@@ -226,11 +227,8 @@ Harness FME can provide you with additional reports to help understand unexpecte
 ## Comparing events and metric results
 
 When comparing events and metric results, it is important to ensure that consistent filters are being applied:
+
 * Time frame: Ensure that your feature flag version matches the time frame that you expect to evaluate events.
 * Targeting rule: Ensure that the number of impressions and events being compared are for users that hit the specific targeting rule selected.
 
-For more information on Metrics review these videos and articles:
-
-- [<u>All About FME Metrics</u>](https://help.split.io/hc/en-us/articles/360042967172-All-About-Split-Metrics)
-
-- [<u>Viewing experiment results</u>](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/)
+For more information, see [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/).

@@ -1,6 +1,7 @@
 ---
 title: Flutter plugin
 sidebar_label: Flutter plugin
+description: Add feature flags and experimentation to your cross-platform mobile apps with the Harness FME Flutter plugin.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +11,7 @@ This guide provides detailed information about our Flutter plugin which is built
 
 All of our SDKs are open source. Go to our [Flutter GitHub repository](https://github.com/splitio/flutter-sdk-plugin) to see the source code.
 
-## Language support
+## Before you begin
 
 This plugin supports Android, iOS, and Web platforms.
 

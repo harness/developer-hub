@@ -1,6 +1,7 @@
 ---
 title: Browser Suite
 sidebar_label: Browser Suite
+description: Implement the Harness FME Browser Suite to leverage combined feature flagging and Real User Monitoring (RUM) in web browsers.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +11,7 @@ This guide provides detailed information about our JavaScript Browser Suite, an 
 
 The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using Browser SDK or Browser RUM Agent can be easily upgraded to Browser Suite, which is designed as a drop-in replacement.
 
-## Language support
+## Before you begin
 
 The JavaScript Browser Suite supports all major browsers. While the library was built to support ES5 syntax, it depends on native support for ES6 Promise. If the Promise object is not available in your target browsers, you will need an ES6 Promise polyfill.
 

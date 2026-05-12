@@ -1,6 +1,7 @@
 ---
 title: .NET SDK
 sidebar_label: .NET SDK
+description: Learn how to set up the Harness FME .NET SDK to manage feature flags in C# and .NET backend environments.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/net-xamarin-which-api-key/
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/net-sdk-build-error-strongly-named-assembly/
@@ -11,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our .NET SDK. All of our SDKs are open source. Go to our [.NET SDK GitHub repository](https://github.com/splitio/dotnet-client) to learn more.
 
-## Language Support
+## Before you begin
 
 This SDK supports the following .NET platform versions:
   - .NET Framework 4.5 and later
@@ -25,10 +26,6 @@ Older SDK versions will return the control treatment for flags using rule-based 
 :::
 
 ## Initialization
-
-:::warning[Important!]
-We unified the source code for Splitio and Splitio-net-core packages in one repository and there is no need to have two packages anymore. The last release of Splitio-net-core was 6.2.3. For current and future releases please use our Splitio package.
-:::
 
 ### 1. Import the SDK into your project
 
@@ -73,7 +70,7 @@ catch (Exception ex)
 
 Now you can start asking the SDK to evaluate treatments for your customers.
 
-## Using the SDK
+## Use the SDK
 
 ### Basic use
 
@@ -965,7 +962,7 @@ Also you can configure proxies by setting the ProxyHost and ProxyPort properties
 
 ### SDK logging
 
-The .NET SDK uses Common.Logging for logging. It allows you to configure different adapters such as log4net or NLog, and you can also write your own adapter by implementing an `ILoggerFactoryAdapter` interface. For more details, go [here](http://netcommon.sourceforge.net/docs/2.1.0/reference/html/ch01.html).
+The .NET SDK uses [Common Logging](http://netcommon.sourceforge.net/docs/2.1.0/reference/html/ch01.html) for logging. It allows you to configure different adapters such as log4net or NLog, and you can also write your own adapter by implementing an `ILoggerFactoryAdapter` interface. 
 
 The following is an example of how to configure NLog and its adapter.
 

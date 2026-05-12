@@ -9,7 +9,7 @@ redirect_from:
 
 This page provides information on how to deploy Java SDK code in AWS Lambda services.
 
-### Prerequisites
+### Before you begin
 
 - Use similar Java SDK code as in the [Java SDK example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Java-SDK).
 - AWS Lambda supports Java 8 runtime only, so ensure you use JDK 1.8.

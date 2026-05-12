@@ -1,6 +1,7 @@
 ---
 title: Browser RUM Agent
 sidebar_label: Browser RUM Agent
+description: Collect real-time performance and user interaction data from web browsers using the Harness FME Browser RUM Agent.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -38,7 +39,7 @@ SplitRumAgent.setup(YOUR_SDK_KEY, {
 See the [Web Vitals](#web-vitals) section for more information about Google Web Vitals metrics collected by the Browser RUM Agent.
 :::
 
-## Language Support
+## Before you begin
 
 FME's Browser RUM Agent is compatible with EcmaScript 5 syntax and therefore supports the majority of today's popular browsers, with the exception of older browsers like IE. We rely on the browser [Beacon API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) support to reliably send information to FME services for processing. For browsers that do not support Beacon API, the RUM Agent defaults to using [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) or [XHR](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) instead. 
 

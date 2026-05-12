@@ -1,6 +1,7 @@
 ---
 title: Java SDK
 sidebar_label: Java SDK
+description: Implement server-side feature flags in Java applications using the Harness FME Java SDK for secure, data-driven rollouts.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-is-there-a-jar-file/
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-time-out-error-nosuchmethoderror-google-common/
@@ -12,13 +13,11 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Overview
-
 This guide provides detailed information about our Java SDK. All of our SDKs are open source. Go to our [Java SDK GitHub repository](https://github.com/splitio/java-client) to see the source code.
 
 If you prefer to use the SDK as a standalone JAR file, it’s available for download from the Maven Central Repository. For example, the JAR for version 4.2.1 can be downloaded [here](https://repo1.maven.org/maven2/io/split/client/java-client/4.2.1/java-client-4.2.1.jar). You can browse all available versions [here](https://repo1.maven.org/maven2/io/split/client/java-client/).
 
-## Language support
+## Before you begin
 
 The Java SDK supports JDK8 and later.
 
@@ -171,7 +170,7 @@ try {
 
 Now you can start asking the SDK to evaluate treatments for your customers.
 
-## Using the SDK
+## Use the SDK
 
 ### Basic use
 
@@ -2040,7 +2039,7 @@ When integrating the Java SDK into a framework that uses Log4J, the SDK outputs 
 
 Yes. The Java SDK respects the `log4j.properties` configuration file used by your Java application. To reduce logging verbosity and set the log level to `ERROR`, add these lines to your `log4j.properties` file: 
 
-```
+```properties
 log4j.logger.split.org.apache = ERROR
 log4j.logger.io.split = ERROR
 ```

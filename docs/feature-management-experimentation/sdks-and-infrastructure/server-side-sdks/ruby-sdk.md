@@ -1,6 +1,7 @@
 ---
 title: Ruby SDK
 sidebar_label: Ruby SDK
+description: Use the Harness FME Ruby SDK to implement server-side feature management and experiments in Ruby on Rails or vanilla Ruby apps.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-error-uninitialized-constant/
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-upgrading-from-4-to-5-plus/
@@ -143,7 +144,7 @@ By doing the above, the SDK recreates the threads for each new worker and preven
 If you are running NGINX with `thread_spawn_method = 'smart'`, use our Redis integration with the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) or contact [support@split.io](mailto:support@split.io) for alternatives to run FME.
 :::
 
-## Using the SDK
+## Use the SDK
 
 ### Basic use
 

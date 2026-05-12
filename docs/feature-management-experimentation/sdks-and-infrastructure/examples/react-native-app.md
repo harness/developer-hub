@@ -1,11 +1,11 @@
 ---
 title: Build a React Native app with the Split Node.js SDK
 sidebar_position: 2
+description: Learn how to integrate the Harness FME Node.js SDK into a React Native application to manage feature flags and implement controlled rollouts.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdk-examples/react-native-app-nodejs/
 ---
 
-## Overview
 This [example GitHub repository](https://github.com/splitio/react-native-sdk-example) is a basic example of a React Native app project using the JavaScript SDK. The project demonstrates how to set up and integrate the Split SDK in a React Native environment, using both Expo and React Native CLI workflows.
 
 In addition, the project was bootstrapped with Expo-CLI using its Managed Workflow.
@@ -31,7 +31,7 @@ When running, you should see a screen like the image below (taken from an Androi
 
 ![](../static/android-example.png)
 
-## Prerequisites
+## Before you begin
 
 You'll need [Node.js](https://nodejs.org/en/download/). We recommend that you use the latest LTS version.
 
@@ -71,8 +71,9 @@ Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
 :::note
 No test cases have been added since this is an example app. If you're looking for how to test with SDK, you can:
 
-* mock the module import, see Jest documentation for that [here](https://facebook.github.io/jest/docs/en/jest-object.html#jestmockmodulename-factory-options)
-* use the localhost (offline) mode of the JavaScript SDK, more information [here](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#localhost-mode)
+* mock the module import. Go to the official [Jest documentation](https://facebook.github.io/jest/docs/en/jest-object.html#jestmockmodulename-factory-options).
+* use the localhost (offline) mode of the [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#localhost-mode).
+
 :::
 
 ### `npm run ios`

@@ -1,6 +1,7 @@
 ---
 title: JavaScript SDK
 sidebar_label: JavaScript SDK
+description: Learn to use the Harness FME JavaScript SDK for client-side feature management across various web frameworks and environments.
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/faqs/why-are-some-users-double-bucketed/
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-localhost-mode-does-not-support-allowlist-keys
@@ -24,7 +25,7 @@ When upgrading, consider that the traffic type is no longer configured for the S
 Refer to the [migration guide](https://github.com/splitio/javascript-client/blob/development/MIGRATION-GUIDE.md) for complete information on upgrading to v11.x.
 :::
 
-## Language support
+## Before you begin
 
 The JavaScript SDK supports all major browsers. While the library was built to support ES5 syntax, it depends on native support for ES6 `Promise`, `Map`, and `Set` objects, and therefore, you need to **polyfill** them if they are not available in your target browsers.
 
@@ -140,12 +141,12 @@ With the SDK package on NPM, you get the SplitIO namespace, which contains usefu
 Feel free to dive into the declaration files if IntelliSense is not enough.
 :::
 
-We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
+Harness recommends instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
 Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](/docs/feature-management-experimentation/api-keys) to learn more.
 
 
-## Using the SDK
+## Use the SDK
  
 ### Basic use
 
@@ -270,6 +271,7 @@ You can pass your attributes in exactly this way to the `client.getTreatments` m
 Attributes can optionally be bound to the client at any time during the SDK lifecycle. These attributes are stored in memory and used in every evaluation to avoid the need to keep the attribute set accessible through the whole app. When an evaluation is called, the attributes provided (if any) at evaluation time are combined with the ones that are already loaded into the SDK memory, with the ones provided at function execution time taking precedence. This enables those attributes to be overridden or hidden for specific evaluations.
 
 An attribute is considered valid if it follows one of the types listed below:
+
 - String
 - Number
 - Boolean
@@ -311,6 +313,7 @@ var result = client.clearAttributes();
 ### Multiple evaluations at once
 
 In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the SDK factory client to do this.
+
 * `getTreatments`: Pass a list of the feature flag names you want treatments for.
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
@@ -730,8 +733,6 @@ You can use the additional configuration parameters below when instantiating the
 To use the SDK in localhost mode, replace the SDK key on `authorizationKey` property with `'localhost'`, as shown in the example below. Note that you can define in the `features` object a feature flag name and its treatment directly or use a map to define both a treatment and a dynamic configuration.
 
 If you define just a string as the value for a feature flag name, any config returned by our SDKs are always null. If you use a map, we return the specified treatment and the specified config (which can also be null).
-
-
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript" label="JavaScript (using CDN)">
@@ -1502,7 +1503,7 @@ One possible root cause is that the JavaScript SDK engine completes fetching tre
 
 This tends to happen for mobile users with slow internet connections.
 
-If the JavaScript code does not properly handle this event—for example, if it only raises an error and exits:
+If the JavaScript code does not properly handle this event, for example, if it only raises an error and exits:
 
 ```javascript
 var client = SdkFactory.client();
@@ -1519,7 +1520,7 @@ this.clientReady = new Promise(function(resolve, reject) {
 There are two possible events:
 
 * If the `SDK_READY` event comes first, the promise resolves, and everything works as expected.
-* If the `SDK_READY_TIMED_OUT` event comes first, the promise rejects and remains rejected, meaning that any `.catch()` attached will always be called—even if the SDK eventually becomes ready later.
+* If the `SDK_READY_TIMED_OUT` event comes first, the promise rejects and remains rejected, meaning that any `.catch()` attached will always be called, even if the SDK eventually becomes ready later.
 
 If you add a `.catch()` that does not return or throw an error, the wrapper code might continue executing as if the SDK is ready, even when it is not. For example:
 
@@ -1554,6 +1555,7 @@ Even if the `SDK_READY_TIMED_OUT` event fires, the SDK might become ready a few 
    Use a custom prefix to prevent data collision across projects.
 
 For more information, see the [API reference documentation](https://docs.split.io/docs/javascript-sdk-overview#section-configuration).
+
 ### CORS Error in streaming call when running the SDK in a Service Worker
 
 When running the JavaScript SDK inside a Service Worker, the SDK’s streaming HTTP call to `streaming.split.io` can be blocked by the browser’s CORS policy.
@@ -1671,9 +1673,9 @@ Steps to reproduce:
 1. Install the SDK: `npm i @splitsoftware/splitio@10.6.0`.
 1. Import via ES module: 
    
-```js
-import { SplitFactory } from '@splitsoftware/splitio';
-```
+   ```js
+   import { SplitFactory } from '@splitsoftware/splitio';
+   ```
 
 1. Run `polymer build`.
 
@@ -1708,13 +1710,14 @@ Increase the `startup.readyTimeout` and `startup.requestTimeoutBeforeReady` valu
 
 1. Measure the fetch duration on a slow network (e.g., using Chrome DevTools to simulate 3G).
 1. Enable SDK debug logging in the browser console:
+
    ```js
    localStorage.splitio_debug = 'on';
    ```
 
 1. Reload the page and look for the debug line:
 
-   ```
+   ```text
    [TIME TRACKER]: [Fetching - Splits] took xxxx ms to finish
    ```
 

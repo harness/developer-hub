@@ -1,6 +1,7 @@
 ---
 title: React Native SDK
 sidebar_label: React Native SDK
+description: Build React Native apps with the Harness FME SDK to manage mobile feature flags and experiments for iOS and Android.
 redirect_from: 
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-react-native
 ---
@@ -18,7 +19,7 @@ All of our SDKs are open source. Go to our [React Native SDK GitHub repository](
 Refer to this [migration guide](https://github.com/splitio/react-native-client/blob/development/MIGRATION-GUIDE.md) for complete information on updating to v1.x.
 :::
 
-## Language support
+## Before you begin
 
 The FME SDK for React Native supports both [React Native bare projects](https://reactnative.dev/docs/getting-started-without-a-framework) (a.k.a. React Native without a framework) and [Expo managed projects](https://docs.expo.dev/get-started/create-a-project/).
 
@@ -121,7 +122,7 @@ We recommend instantiating the SDK factory once as a singleton and reusing it th
 
 Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](/docs/feature-management-experimentation/api-keys) to learn more.
 
-## Using the SDK
+## Use the SDK
  
 ### Basic use
 
@@ -1461,10 +1462,6 @@ factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
 
 ### Usage with React SDK
 
-The [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk) is a wrapper around the JavaScript SDK that provides a more React-friendly API based on React components and hooks. You can use the React Native SDK with the React SDK in your React Native application following this [Usage Guide](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#usage-with-react-native-sdk).
+The [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk) is a wrapper around the JavaScript SDK that provides a more React-friendly API based on React components and hooks. You can use the React Native SDK [with the React SDK in your React Native application](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#usage-with-react-native-sdk).
 
-## Example apps
-
-Here is an example application detailing how to configure and instantiate the Split React Native SDK. 
-
-* [React Native & Expo examples](https://github.com/splitio/react-native-sdk-example)
+For an example application detailing how to configure and instantiate the Split React Native SDK, see the [React Native & Expo examples GitHub repository](https://github.com/splitio/react-native-sdk-example).

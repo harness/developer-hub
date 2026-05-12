@@ -1,6 +1,7 @@
 ---
 title: PHP Thin Client SDK
 sidebar_label: PHP Thin Client SDK
+description: Optimized for PHP environments where persistent connections are limited; manage flags with the Harness FME PHP Thin Client SDK.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -8,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our PHP Thin SDK. All of our SDKs are open source. Go to our [PHP Thin SDK GitHub repository](https://github.com/splitio/php-thin-client) to learn more.
 
-## Language support
+## Before you begin
 
 The PHP Thin SDK supports PHP language version 7.3 and later.
 
@@ -49,7 +50,7 @@ $factory = Factory::withConfig([
 $client = $factory->client();
 ```
 
-## Using the SDK
+## Use the SDK
  
 ### Basic use
 

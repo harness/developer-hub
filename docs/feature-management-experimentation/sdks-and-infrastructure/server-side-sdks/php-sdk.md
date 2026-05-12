@@ -1,6 +1,7 @@
 ---
 title: PHP SDK
 sidebar_label: PHP SDK
+description: Add Harness FME feature flags to your PHP applications for controlled deployments and server-side experimentation.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/php-sdk-why-is-php-unable-to-write-impressions-to-redis/
 ---
@@ -10,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our PHP SDK. All of our SDKs are open source. Go to our [PHP SDK GitHub repository](https://github.com/splitio/php-client) to learn more.
 
-## Language support
+## Before you begin
 
 The PHP SDK supports PHP language version 7.3 and later.
 
@@ -82,7 +83,7 @@ $splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
 $splitClient = $splitFactory->client();
 ```
 
-## Using the SDK
+## Use the SDK
  
 ### Basic use
 

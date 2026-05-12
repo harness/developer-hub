@@ -1,6 +1,7 @@
 ---
 title: Redux SDK
 sidebar_label: Redux SDK
+description: Integrate Harness FME feature flags directly into your Redux state management for seamless feature delivery in web applications.
 redirect_from: 
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/redux-sdk-control-treatment-returned-when-sdk-is-initialized
 ---
@@ -20,7 +21,7 @@ All of our SDKs are open source. Go to our [Redux SDK GitHub repository](https:/
 Refer to the [migration guide](https://github.com/splitio/redux-client/blob/development/MIGRATION-GUIDE.md) for information on upgrading to v2.x.
 :::
 
-## Language support and requirements
+## Before you begin
 
 This SDK is compatible with Redux v3 and later. It requires the [redux-thunk](https://github.com/reduxjs/redux-thunk) package to be installed on the app, which is included by default if your project is using the [Redux Toolkit](https://redux-toolkit.js.org/). This means you don't need to run `npm install redux-thunk` if Redux Toolkit is already installed.
 
@@ -181,7 +182,7 @@ We recommend instantiating the SDK factory once as a singleton and reusing it th
 
 Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/api-keys) to learn more.
 
-## Using the SDK
+## Use the SDK
 
 The SDK via its reducer keeps a portion of the store state up to date. The state data adheres to the following schema:
 

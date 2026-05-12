@@ -1,6 +1,7 @@
 ---
 title: Elixir Thin Client SDK
 sidebar_label: Elixir Thin Client SDK
+description: Set up the Harness FME Elixir SDK to manage server-side feature flags with high performance and low overhead.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -8,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our Elixir Thin SDK. All of our SDKs are open source. Go to our [Elixir Thin SDK GitHub repository](https://github.com/splitio/elixir-thin-client) to learn more.
 
-## Language support
+## Before you begin
 
 The Elixir Thin SDK supports Elixir language version v1.14.0 and later.
 
@@ -97,7 +98,7 @@ end
 </TabItem>
 </Tabs>
 
-## Using the SDK
+## Use the SDK
  
 ### Basic use
 

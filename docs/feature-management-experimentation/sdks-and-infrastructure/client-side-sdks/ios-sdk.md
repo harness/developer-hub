@@ -1,6 +1,7 @@
 ---
 title: iOS SDK
 sidebar_label: iOS SDK
+description: Integrate the Harness FME iOS SDK to manage feature flags and data-driven experiments in Swift and Objective-C apps.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/ios-sdk-runtime-error-jfbcrypt-m-left-shift-of-x-by-y-places
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/ios-sdk-missing-track-method
@@ -11,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our iOS SDK. All of our SDKs are open source. Go to our [iOS SDK GitHub repository](https://github.com/splitio/ios-client) to see the source code.
 
-## Language support
+## Before you begin
 
 This library is compatible with iOS and tvOS deployment target versions 9.0+, macOS 10.11+, and watchOS 7.0+. Xcode 12 and later is also required, but we recommend the minimum version necessary to publish apps on the [AppStore](https://developer.apple.com/news/?id=ib31uj1j). 
 
@@ -84,7 +85,7 @@ let factory = builder.setApiKey(sdkKey).setKey(key).setConfig(config).build()
 let client = factory?.client
 ```
 
-## Using the SDK
+## Use the SDK
 
 ### Basic use
 

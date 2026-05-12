@@ -9,7 +9,7 @@ redirect_from:
 
 This page provides instructions on how to deploy the Split Synchronizer Docker container using Amazon AWS ECS service.
 
-## Prerequisites
+## Before you begin
 
 * AWS CLI installed and configured
 * Docker installed

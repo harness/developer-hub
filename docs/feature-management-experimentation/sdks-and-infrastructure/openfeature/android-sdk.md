@@ -9,7 +9,7 @@ Integrate your Android applications with Harness FME using the <Tooltip id="fme.
 
 This page walks you through installing, configuring, and using the Android OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your Android applications.
 
-### Prerequisites
+### Before you begin
 
 Before you begin, ensure you have the following:
 

@@ -1,6 +1,7 @@
 ---
 title: Android RUM Agent
 sidebar_label: Android RUM Agent
+description: Track user experience metrics and performance data in Android applications with the Harness FME Android RUM Agent.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +11,7 @@ This guide provides detailed information about FME's Real User Monitoring (RUM) 
 
 FME's Android RUM Agent collects events about your users' experience when they use your application and sends this information to FME services. This allows you to measure and analyze the impact of feature flag changes on performance metrics.
 
-## Language Support
+## Before you begin
 
 FME's Android RUM Agent is designed for Android applications written in Java or Kotlin and is compatible with Android SDK versions 15 and later (4.0.3 Ice Cream Sandwich).
 

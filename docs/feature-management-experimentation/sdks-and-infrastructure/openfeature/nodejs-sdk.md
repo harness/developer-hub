@@ -9,7 +9,7 @@ Integrate your Node.js applications with Harness FME using the <Tooltip id="fme.
 
 This page walks you through installing, configuring, and using the Node.js OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your Node.js applications.
 
-### Prerequisites
+### Before you begin
 
 Before you begin, ensure you have the following:
 

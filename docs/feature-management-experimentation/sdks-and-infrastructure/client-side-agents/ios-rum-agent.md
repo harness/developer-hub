@@ -1,6 +1,7 @@
 ---
 title: iOS RUM Agent
 sidebar_label: iOS RUM Agent
+description: Measure and analyze the impact of feature flag changes on iOS app performance with the Harness FME iOS RUM Agent.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +11,7 @@ This guide provides detailed information about FME's Real User Monitoring (RUM) 
 
 FME's iOS RUM Agent collects events about your users' experience when they use your application and sends this information to FME services. This allows you to measure and analyze the impact of feature flag changes on performance metrics.
 
-## Language Support
+## Before you begin
 
 FME's iOS RUM Agent is designed for iOS applications written in Swift and is compatible with iOS SDK versions 12 and later.
 

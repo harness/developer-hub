@@ -1,6 +1,7 @@
 ---
 title: Android Suite
 sidebar_label: Android Suite
+description: Deploy the Harness FME Android Suite for a unified solution combining feature management and performance monitoring in Android applications.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +11,7 @@ This guide provides detailed information about our Android Suite, an SDK designe
 
 The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using Android SDK or Android RUM Agent can be easily upgraded to Android Suite, which is designed as a drop-in replacement.
 
-## Language support
+## Before you begin
 
 This library is designed for Android applications written in Java or Kotlin and is compatible with Android SDK versions 19 and later (4.4 Kit Kat).
 

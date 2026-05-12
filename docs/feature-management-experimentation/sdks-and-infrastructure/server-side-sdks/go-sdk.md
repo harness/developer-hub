@@ -1,6 +1,7 @@
 ---
 title: Go SDK
 sidebar_label: Go SDK
+description: Integrate the Harness FME Go SDK into your backend services for high-concurrency feature management and experimentation.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/go-sdk-error-flushing-storage-queue/
 ---
@@ -10,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our Go SDK. All of our SDKs are open source. Go to our [Go SDK GitHub repository](https://github.com/splitio/go-client) to learn more.
 
-## Language support
+## Before you begin
 
 The Go SDK supports Go language version 1.18 and above. 
 
@@ -102,7 +103,7 @@ func main() {
 
 Now you can start asking the SDK to evaluate treatments for your customers.
 
-## Using the SDK
+## Use the SDK
  
 ### Basic use
 

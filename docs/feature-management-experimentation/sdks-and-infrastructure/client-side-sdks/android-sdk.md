@@ -1,6 +1,7 @@
 ---
 title: Android SDK
 sidebar_label: Android SDK
+description: Learn how to set up the Harness FME Android SDK to manage feature flags and experiments in Android applications.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-calling-client-destroy-does-not-post-impressions
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-duplicate-class-finalizablereferencequeue
@@ -15,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our Android SDK. All of our SDKs are open source. Go to our [Android SDK GitHub repository](https://github.com/splitio/android-client) to see the source code.
 
-## Language support
+## Before you begin
 
 This library is designed for Android applications written in Java or Kotlin and is compatible with Android SDK versions 19 and later (4.4 Kit Kat).
 
@@ -127,7 +128,7 @@ val client: SplitClient = splitFactory.client()
 </Tabs>
 
 
-## Using the SDK
+## Use the SDK
 
 The following explains how to use this SDK.
 
