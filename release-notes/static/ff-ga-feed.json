@@ -1486,5 +1486,17 @@
     "description": "Enables license family classification in SBOMs to classify open-source licenses by their family type for better license compliance management.",
     "gaStartDate": "2026-05-11",
     "module": "Supply Chain Security"
+  },
+  {
+    "flagKey": "IDP_SONARQUBE_INTEGRATION",
+    "description": "Enables the SonarQube integration in Harness IDP, allowing auto-discovery of SonarQube projects and enriching the Software Catalog with code quality metrics, security hotspots, quality gate status, and issue analytics.",
+    "gaStartDate": "2026-05-12",
+    "module": "Internal Developer Portal"
+  },
+  {
+    "flagKey": "IDP_AGENTLESS_AIRBYTE_EXECUTIONS",
+    "description": "Enables agentless workflow execution for Airbyte in Harness IDP",
+    "gaStartDate": "2026-05-12",
+    "module": "Internal Developer Portal"
   }
 ]
