@@ -1498,5 +1498,11 @@
     "description": "Enables agentless workflow execution for Airbyte in Harness IDP",
     "gaStartDate": "2026-05-12",
     "module": "Internal Developer Portal"
+  },
+  {
+    "flagKey": "PIPE_ENABLE_GITHUB_ENTERPRISE_PROVIDER_FLOW",
+    "description": "Enables the GitHub Enterprise provider configuration flow in UI, allowing users to configure their GitHub Enterprise Server instance with OAuth credentials for Git sync and repository access.",
+    "gaStartDate": "2026-05-12",
+    "module": "Pipeline"
   }
 ]
