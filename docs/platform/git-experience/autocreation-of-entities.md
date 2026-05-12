@@ -16,6 +16,13 @@ This differs from [moving inline entities to Git](https://developer.harness.io/d
 Files that are added only in the default branch(main, master etc) of the Git Repo are autocreated.
 :::
 
+## Limitations
+
+Autocreation is **not supported** for Harness Code Repository. This is because autocreation relies on webhooks to detect when files are pushed to your repository, and Harness Code Repository does not currently support webhooks.
+
+If you are using Harness Code Repository to store your YAML files, you will need to create entities manually through the Harness UI or use alternative Git Experience features. Go to [move inline entities to Git](/docs/platform/git-experience/move-inline-entities-to-git/) to migrate existing entities, or go to [enable bidirectional sync](/docs/platform/git-experience/gitexp-bidir-sync-setup/) to configure automatic two-way synchronization.
+
+For autocreation to work, use a supported Git provider that supports webhooks, such as GitHub, GitLab, Bitbucket, or Azure Repos.
 
 ## File Path Convention
 
