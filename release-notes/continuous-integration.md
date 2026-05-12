@@ -122,6 +122,23 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 <!-- April 2026 -->
 
+#### New Features and Enhancements
+
+- **Harness Cloud VM image update: `apt-get update` no longer runs automatically during initialization.** Harness Cloud build machines for Linux (AMD64 and ARM64) now use updated VM images that no longer run `apt-get update` as part of the initialization script. This change reduces build initialization time and removes the dependency on Ubuntu package repositories during startup. If your pipeline installs packages using `apt-get install`, you must run `apt-get update` before the install command to refresh the package index. For example:
+
+  ```yaml
+  - step:
+      type: Run
+      name: Install dependencies
+      spec:
+        shell: Sh
+        command: |
+          sudo apt-get update
+          sudo apt-get install -y <your-packages>
+  ```
+
+  (CI-22331)
+
 #### Fixed Issues
 
 - Fixed an issue where the `CI_REPO_LINK` environment variable was not being passed to the build pod. (CI-20769)
