@@ -37,7 +37,7 @@ The verification process uses the certificate and signature associated with the 
 
 Non-Harness OIDC allows you to use an external identity provider for keyless verification. In this approach, the OIDC token is retrieved during pipeline execution from a configured connector, such as AWS, Azure, or GCP. This token is then used by Cosign to verify the SBOM signature against the identity issued by the external provider.
 
-The verification process checks the SBOM’s signature and certificate to ensure that it was signed by a trusted identity, has not been tampered with, and corresponds to the expected artifact. To use a Non-Harness OIDC provider for verification, you must configure the OIDC connector for keyless signing. For setup instructions, see the [Non-Harness OIDC]() section in the [Generate SBOM for Artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts) documentation.
+The verification process checks the SBOM’s signature and certificate to ensure that it was signed by a trusted identity, has not been tampered with, and corresponds to the expected artifact. To use a Non-Harness OIDC provider for verification, you must configure the OIDC connector for keyless signing. For setup instructions, see the [Non-Harness OIDC](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts/#non-harness-oidc) section in the [Generate SBOM for Artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts) documentation.
 
 </TabItem>
   <TabItem value="Key-based" label="Key-based">
