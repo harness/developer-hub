@@ -5,6 +5,7 @@ keywords: [Notification Settings, Slack notifications, Microsoft Teams notificat
 sidebar_position: 3
 redirect_from:
   - /docs/platform/notifications/notification-settings#get-started-with-pipeline-notifications
+  - /docs/platform/notifications/configure-notifications
 ---
 
 import Tabs from '@theme/Tabs';

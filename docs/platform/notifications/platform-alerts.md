@@ -5,7 +5,7 @@ sidebar_position: 4
 ---
 
 Resource limits can block workflows without warning, and release changes can go unnoticed until they affect your application.
-Platform alerts could prevent this by notifying you directly in the Harness UI, with no external channels or configuration required. You receive them automatically for events such as:
+Platform alerts could prevent this by notifying you directly in the Harness UI, with no external channels or configuration required.
 
 Harness sends these platform alerts automatically for events such as:
 - A new release deploying to your account

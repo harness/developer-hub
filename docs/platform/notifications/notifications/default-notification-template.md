@@ -11,7 +11,7 @@ tags:
   - harness-notifications
 sidebar_position: 3
 redirect_from:
-- /docs/platform/notifications/default-notification-template
+    - /docs/platform/notifications/default-notification-template
 ---
 
 import Tabs from '@theme/Tabs';
