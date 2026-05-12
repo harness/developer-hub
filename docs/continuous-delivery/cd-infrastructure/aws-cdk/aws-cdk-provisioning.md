@@ -4,206 +4,124 @@ description: Provision infra using familiar programming languages with AWS CDK.
 sidebar_position: 1
 sidebar_label: AWS CDK Provisioning
 canonical_url: https://www.harness.io/blog/ci-cd-pipelines-for-aws
+keywords:
+  - aws cdk
+  - cloud development kit
+  - infrastructure as code
+  - aws provisioning
+  - containerized steps
+tags:
+  - continuous delivery
+  - aws
+  - infrastructure
 redirect_from:
   - /docs/continuous-delivery/cd-infrastructure/aws-cdk/aws-cdk
   - /docs/continuous-delivery/cd-infrastructure/aws-cdk
 ---
 
-AWS Cloud Development Kit (AWS CDK) is an open-source software development framework that allows developers to provision AWS infrastructure resources using familiar programming languages, such as Go, Python, Java, C#, etc. CDK simplifies infrastructure as code (IaC) by abstracting away many of the low-level details and providing a higher-level, programmatic approach.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+import DocImage from '@site/src/components/DocImage';
 
-This topic provides steps on using Harness to provision a target AWS environment or resources using AWS CDK.
+AWS Cloud Development Kit (AWS CDK) is an open-source software development framework that allows developers to provision AWS infrastructure resources using familiar programming languages such as Go, Python, Java, and C#. CDK simplifies infrastructure as code (IaC) by abstracting away many of the low-level details and providing a higher-level, programmatic approach. Go to [AWS CDK Developer Guide](https://docs.aws.amazon.com/cdk/v2/guide/home.html) to learn CDK fundamentals.
 
-## Important notes
+This topic provides steps on using Harness to provision a target AWS environment or resources using AWS CDK. You can add AWS CDK provisioning steps to Harness Deploy and Custom stage types, and you can perform ad hoc provisioning or provision the target environment for a deployment as part of the deployment stage.
 
-- You can add AWS CDK provisioning steps to Harness Deploy and Custom stage types.
-- You can perform ad hoc provisioning or provision the target environment for a deployment as part of the deployment stage.
-- AWS OIDC connectors are supported for CDK deployments starting with delegate version 859xx or later.
-- Multi-account deployments are supported, allowing you to deploy to different AWS accounts using a single connector by overriding the region and assuming a different IAM role. For details, see [AWS connector configuration (optional)](#aws-connector-configuration-optional).
-
-## Demo Video
+The following video demonstrates AWS CDK provisioning in Harness:
 
 <DocVideo src="https://www.loom.com/share/5a118a7ace3e49819c697b7131468990?sid=36ae85f0-0a39-4c5c-ba62-0e1a9d52c4de" />
 
-## AWS permissions required
+---
 
-Ensure that the AWS CDK CLI is able to authenticate with the desired AWS account and has the necessary permissions for its provisioning. You can set the access keys, secret keys, and region as environment variables or let the CDK CLI inherit the IAM role from the EKS cluster where the containerized steps run.
-If step group infra points to EKS, a ServiceAccout can be set in the step group **Service Account Name**. This way all containers created in that step group would inherit the permission of the IAM role of the corresponding ServiceAccount.
+## Prerequisites
 
-## Harness roles permissions required
+- **Harness account with Continuous Delivery module enabled:** You need access to Harness with the CD module entitled on your account. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to create an account or access an existing account.
 
-- **Environments:** `View/Create`, `Edit`, `Access`, `Delete`.
+- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** permissions for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). An administrator must assign you a role that includes these permissions. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to configure roles.
 
-## AWS CDK provisioning summary
+- **Environment permissions:** You need **View/Create**, **Edit**, **Access**, and **Delete** permissions for [Environments](/docs/platform/role-based-access-control/permissions-reference#environments).
 
-Harness provisioning is categorized into the following use cases:
+- **AWS account access:** You need access to an AWS account where CDK will provision infrastructure. The AWS CDK CLI must be able to authenticate with the desired AWS account and have the necessary permissions for provisioning. You can set access keys, secret keys, and region as environment variables or let the CDK CLI inherit the IAM role from the EKS cluster where the containerized steps run. If the step group infrastructure points to EKS, a Kubernetes ServiceAccount can be set in the step group **Service Account Name** field. This way all containers created in that step group inherit the IAM role permissions of the corresponding ServiceAccount. Go to [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to understand EKS IAM roles for Kubernetes ServiceAccounts.
 
-1. **Ad hoc provisioning:** temporary and on-demand provisioning of resources for specific tasks or purposes.
-2. **Dynamic infrastructure provisioning:** provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing.
+- **Kubernetes cluster for containerized step groups:** AWS CDK steps run in containerized step groups, which require a Kubernetes cluster and namespace. You need a Harness Kubernetes Cluster connector configured for the cluster that will serve as the runtime infrastructure. Go to [Kubernetes Cluster connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference) to create a connector.
 
-The provisioning pipeline steps are configured the same way for both use cases. These steps are covered later in this topic.
+- **Git repository containing CDK application:** You need a Git repository with your CDK application code. The CDK app defines the infrastructure resources to provision. Go to [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference) to configure a Git connector.
 
-For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+- **Docker registry access (optional):** Harness provides pre-built CDK plugin images on Docker Hub. If you want to use custom images, you need access to a Docker registry. Go to [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to configure a Docker connector.
 
-### Dynamic provisioning steps for different deployment types
+- **Delegate version:** AWS OIDC connectors are supported for CDK deployments starting with delegate version 85900 or later.
 
-Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different script outputs to the Harness infrastructure settings in the pipeline stage.
+    :::info Check if AWS environment is bootstrapped
 
-To see how to set up dynamic provisioning for each deployment type, go to the following topics:
+    CDK requires AWS environments to be bootstrapped before first use. To check if your environment is already bootstrapped, run `aws cloudformation describe-stacks --stack-name CDKToolkit --region <your-region>` in the AWS CLI. If the command returns stack details, the environment is bootstrapped. If it returns an error that the stack does not exist, you need to run the Bootstrap step. Go to [Bootstrapping your AWS environment](https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-bootstrap) to learn about CDK bootstrapping.
 
-- [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
-  - The Kubernetes infrastructure is also used for Helm, Native Helm, and Kustomize deployment types.
-- [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
-- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
-- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
-- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
-- [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
-- [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
-- [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
+    :::
 
-#### Dynamic provisioning example
+---
 
-Here's an AWS CDK TypeScript example that provisions the infrastructure for an ECS deployment and includes the required output of AWS region:
+## Provisioning use cases
 
-```TypeScript
-import * as cdk from 'aws-cdk-lib';
-import * as ecs from 'aws-cdk-lib/aws-ecs';
-import * as ec2 from 'aws-cdk-lib/aws-ec2';
-import * as ecs_patterns from 'aws-cdk-lib/aws-ecs-patterns';
+Harness supports two AWS CDK provisioning patterns: ad hoc provisioning for standalone infrastructure management, and dynamic provisioning to create the target environment as part of your deployment workflow. You can provision infrastructure independently or combine it with Harness deployment services in a single pipeline. Go to [AWS CDK use cases and examples](/docs/continuous-delivery/cd-infrastructure/aws-cdk/aws-cdk-use-cases) to understand provisioning patterns, see code examples, and learn about dynamic provisioning for different deployment types.
 
-class EcsCdkStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+---
 
-    // Define a VPC (Virtual Private Cloud)
-    const vpc = new ec2.Vpc(this, 'MyVpc', {
-      maxAzs: 2, // Specify the number of availability zones
-    });
+## Set up CDK step groups
 
-    // Create an ECS cluster
-    const cluster = new ecs.Cluster(this, 'MyCluster', {
-      vpc,
-    });
+AWS CDK steps in Harness stages must be added in a containerized step group. The steps cannot be selected outside of a containerized step group. Go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) to learn about containerized step group configuration and infrastructure requirements.
 
-    // Define an ECS Fargate service using a sample container image
-    new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'MyFargateService', {
-      cluster,
-      memoryLimitMiB: 512,
-      cpu: 256,
-      taskImageOptions: {
-        image: ecs.ContainerImage.fromRegistry('amazon/amazon-ecs-sample'),
-      },
-    });
+The step group contains the Harness connector to a Kubernetes cluster and namespace hosted in your environment. When the pipeline runs, the step group creates a container inside the cluster. Inside the container, a pod is created for each step in the step group using the image you provide in the step. The steps share a common disk space and can reference the same paths.
 
-    // Define an output for the AWS region
-    new cdk.CfnOutput(this, 'RegionOutput', {
-      value: cdk.Aws.REGION,
-      description: 'AWS region of the stack',
-    });
+When you select AWS CDK as the provisioner on the CD stage **Environment** tab, Harness automatically generates a containerized step group containing the steps needed for AWS CDK. If you add AWS CDK steps to a stage's **Execution** tab, you must add the containerized step group yourself.
 
-    // Define an output for the ECS cluster name
-    new cdk.CfnOutput(this, 'ClusterNameOutput', {
-      value: cluster.clusterName,
-      description: 'Name of the ECS cluster',
-    });
-  }
-}
-
-const app = new cdk.App();
-new EcsCdkStack(app, 'EcsCdkStack');
-
-```
-
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.STACK_NAME.OUTPUT_NAME>`, such as `<+provisioner.EcsCdkStack.RegionOutput>`.
-
-<DocImage path={require('./static/0982655fcd2dfeb4043905e6f878f29c6005dd8d9e0d659898055fb2750d214f.png')} width="40%" height="40%" title="Click to view full size image" />
-
-### No artifact required
-
-You don't need to deploy artifacts via Harness services to use AWS CDK provisioning in a stage.
-
-You can simply set up an AWS CDK provisioner and use it in a stage to provision infrastructure without deploying any artifact.
-
-### Service Instances (SIs) consumption
-
-Harness Service Instances (SIs) aren't consumed and no other licensing is required when a Harness stage uses AWS CDK to provision resources.
-
-When Harness deploys artifacts via Harness services to the provisioned infrastructure in the same stage or pipeline, SI licensing is consumed.
-
-## AWS CDK step group and step order
-
-AWS CDK steps in Harness stages must be added in a [containerized step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups). The steps cannot be selected outside of a containerized step group.
-
-The step group contains the Harness connector to a Kubernetes cluster and namespace hosted in your environment. When the pipeline is run, the step group creates a container inside the cluster. Inside the container, a pod is created for each step in the step group using the image you provide in the step. The steps share a common disk space and can reference the same paths.
-
-When you select AWS CDK as the provisioner on the CD stage **Environment** tab, Harness automatically generates a containerized [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) containing the steps needed for the AWS CDK.
-
-If you add AWS CDK steps to a stage's **Execution** tab, you must add the containerized step group yourself.
-
-### AWS CDK step group settings
+### Configure step group settings
 
 For AWS CDK, the step group setting **Enable container based execution** must be enabled. This setting configures the step group as containerized.
 
-:::tip Info
+In the step group, configure the following mandatory settings:
 
-For more information on containerized step groups, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
-
-In case you face any issues across AWS CDK containerized step groups, please refer to the [Limitations](#limitations) section. 
-
-:::
-
-In the step group, you need to configure the following mandatory settings:
-
-- **Kubernetes Cluster:** Add a [Harness Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference) to connect to the cluster that will be used as the runtime step infrastructure.
+- **Kubernetes Cluster:** Add a Harness Kubernetes Cluster connector to connect to the cluster that will be used as the runtime step infrastructure.
 - **Namespace:** Enter the name of the cluster namespace to use.
 
-### Step order
+### Order your CDK steps
 
-The AWS CDK steps in Harness are similar to the AWS CDK toolkit `cdk` commands. For information on the `cdk` commands, go to [AWS CDK Toolkit (cdk command)](https://docs.aws.amazon.com/cdk/v2/guide/cli.html) from AWS.
-
-The AWS CDK steps in your stage **Environment** or **Execution** typically follow the logical order of the CDK commands:
+The AWS CDK steps in Harness are similar to the AWS CDK toolkit `cdk` commands. The AWS CDK steps in your stage **Environment** or **Execution** typically follow the logical order of the CDK commands. Go to [AWS CDK Toolkit (cdk command)](https://docs.aws.amazon.com/cdk/v2/guide/cli.html) to understand CDK CLI commands.
 
 ![picture 1](static/099abb22f98f11fa6f14026bf9c825bbc5586eb1ea22fe5c1c72668283c8aca8.png)
 
 Inside the step group, the following AWS CDK steps are used:
 
-1. **Git Clone step:** Clones the CDK app repository into the CD stage's workspace.
+The following list summarizes the typical CDK step sequence:
 
-By cloning the repository, you gain access to the necessary code, scripts, or configurations, enabling you to perform various actions and ensure a reliable and controlled deployment.
+1. **Git Clone step:** Clones the CDK app repository into the CD stage workspace. By cloning the repository, you gain access to the necessary code, scripts, or configurations, enabling you to perform various actions and ensure a reliable and controlled deployment. The Git Clone step use case for CDK is described later in this document. Go to [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step) for general information.
 
-The Git Clone step use case for CDK is described later in this document, but for more general information, go to [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step).
+2. **AWS CDK Bootstrap step (optional):** Runs the `cdk bootstrap` command. This step sets up the necessary AWS resources and environment required for deploying CDK applications in a specific AWS region and AWS account. This command is typically run once per AWS account and region to prepare the environment for CDK deployments. If your AWS environment is already bootstrapped, you can skip this step.
 
-1. **AWS CDK Bootstrap step (optional):** Runs the `cdk bootstrap` command.
+3. **AWS CDK Diff step:** Runs the `cdk diff` command. Compares the specified stack and its dependencies with the deployed stacks.
 
-This step sets up the necessary AWS resources and environment required for deploying CDK applications in a specific AWS region and AWS account. This command is typically run once per AWS account and region to prepare the environment for CDK deployments.
+4. **AWS CDK Synth step:** Runs the `cdk synthesize` command. Synthesizes and prints the CloudFormation template for one or more stacks specified in the step.
 
-If the AWS environment is already bootstrapped and has the necessary AWS resources required for deploying CDK applications, you can omit this step. 2. **AWS CDK Diff step:** Runs the `cdk diff` command.
+5. **AWS CDK Deploy step:** Runs the `cdk deploy` command. Deploys the infrastructure defined in your CDK application to your AWS account.
 
-Compares the specified stack and its dependencies with the deployed stacks.
+6. **AWS CDK Destroy step (optional):** Runs the `cdk destroy` command. Deletes the AWS CloudFormation stacks that were previously created by a CDK application.
 
-1. **AWS CDK Synth step:** Runs the `cdk synthesize` command.
-
-Synthesizes and prints the CloudFormation template for one or more stacks specified in the step. 2. **AWS CDK Deploy step:** Runs the `cdk deploy` command.
-
-Deploys the infrastructure defined in your CDK application to your AWS account. 3. **AWS CDK Destroy step (optional):** Runs the `cdk destroy` command.
-
-Deletes the AWS CloudFormation stacks that were previously created by a CDK application. 4. **AWS CDK rollback steps:**
-
-1.  **Git Clone rollback step:** Typically, this step restores the Git branch/tag/commit of repo used in the last successful deployment. You can also choose to clone and branch/tag/commit as part of rollback.
-2.  **AWS CDK Rollback step:** Rolls back the provisioned resources deployed by the failed **CDK Deploy** step to the state of the resources of the last successful deployment.
+7. **AWS CDK rollback steps:**
+   - **Git Clone rollback step:** Typically, this step restores the Git branch/tag/commit of the repository used in the last successful deployment. You can also choose to clone any branch/tag/commit as part of rollback.
+   - **AWS CDK Rollback step:** Rolls back the provisioned resources deployed by the failed CDK Deploy step to the state of the resources from the last successful deployment.
 
 These steps are described in detail below.
 
-## Docker image registry connector and image for all steps
+---
+
+## Configure Docker images for CDK steps
 
 The CDK steps in the step group are containerized. In the **Container Registry** and **Image** settings in each step, you must provide a Harness connector to a container registry and an image for the pod the step uses.
 
-Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.3.0-java-linux-arm64` is the custom image for Java created by Harness. You can use a Harness custom image or create your own.
+Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, and others). They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js, and `harness/aws-cdk-plugin:1.3.0-java-linux-arm64` is the custom image for Java created by Harness. You can use a Harness custom image or create your own.
 
-You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies. You should never override the entry point.
+You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies. You should never override the entry point. The image you use should support the CDK operations you are running in your app.
 
-The image you use should support the CDK operations you are running in your app.
+### Choose a CDK plugin image
 
-## CDK plugin images
+The following table shows example CDK plugin images by runtime. Version numbers are examples and may not reflect the latest available versions. Check the Docker Hub links for the most current image tags.
 
 | **Runtime**    | **Latest base image**                 | **Latest unified pipeline image**     | **CDK version**    |
 |----------------|---------------------------------------|---------------------------------------|--------------------|
@@ -213,6 +131,10 @@ The image you use should support the CDK operations you are running in your app.
 | go | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-go-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-go-linux-arm64/images/sha256-fc54740abfb1fcfeef649ae133ba42f8709f4cc8578868c12575a59ed5b02d3b)                     | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-go-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-go-linux-arm64-unified/images/sha256-4f95dcec76ab0037d6ea7b986adcf7fb4ac9329b23ef86de6fa19ded463630d4) | 2.1027.0 |
 | linux                 | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-linux-arm64/images/sha256-7a3b4136519eebf5dd112ab755bb58b2e8fe2fec7a349e47d94b8727a4e5c1ba)                     | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-linux-arm64-unified/images/sha256-386370b163d75e05909d7a632bb859494f70c3ba469d363f7e8fc5ce29cf3a07) | 2.1027.0 |
 
+**How to choose:**
+- **Language-specific images (dotnet, python, java, go):** Use these if your CDK app is written in that specific language. Each includes the language runtime and CDK CLI.
+- **Base image (linux):** Use this if your CDK app uses Node.js or TypeScript (the default CDK language). The base image already includes Node.js and JavaScript.
+- **Unified pipeline images:** These images include additional tools for use in unified pipelines. If you are uncertain, start with the language-specific base image.
 
 You can access the AWS CDK plugin images from the following repositories:
 
@@ -224,13 +146,26 @@ Harness also supports **`amd64`** architecture for these plugin images. You can 
 
 Harness releases new AWS CDK Plugin images once every 3 months. If you want to use the latest AWS CDK Plugin images, you can build your own image using the [AWS CDK Plugin Image Builder](/docs/continuous-delivery/cd-infrastructure/aws-cdk/cdk-image-build).
 
-
 ### Build your own image
 
-You can also build your own image based on the base image provided by Harness and use it in a step. For example, if your CDK app uses a specific CDK version, you can use the base image provided by Harness and create your own image containing your dependencies. Here is the pipeline and explanation to build your own image: 
+You can also build your own image based on the base image provided by Harness and use it in a step. For example, if your CDK app uses a specific CDK version, you can use the base image provided by Harness and create your own image containing your dependencies.
 
-For more information, go to [Build your own image](/docs/continuous-delivery/cd-infrastructure/aws-cdk/cdk-image-build).
+Go to [Build your own image](/docs/continuous-delivery/cd-infrastructure/aws-cdk/cdk-image-build) to learn how to customize CDK plugin images.
 
+### Supported languages
+
+Harness provides custom images for the following programming languages:
+
+- Java
+- Go
+- Python 3
+- .NET
+
+The base image already includes Node.js and JavaScript.
+
+Navigate to the [DockerHub Repository](https://hub.docker.com/r/harness/aws-cdk-plugin/tags) for the latest image tags for this feature.
+
+---
 
 ## Git Clone step
 
@@ -238,21 +173,23 @@ The Git Clone step is the first stage **Execution** step added to the containeri
 
 ![picture 1](static/099abb22f98f11fa6f14026bf9c825bbc5586eb1ea22fe5c1c72668283c8aca8.png)
 
-The Git Clone step clones the CDK repo containing your CDK app and adds it to a shared space in the container that can be used by all subsequent steps.
+The Git Clone step clones the CDK repository containing your CDK app and adds it to a shared space in the container that can be used by all subsequent steps.
 
-:::note
+:::tip Flexible source management
 
-You can omit the Git Clone step if you have added the app files to the shared space on the container using some other means, such as a script in a Shell Script step.
+Harness supports multiple approaches for providing your CDK application code. While the Git Clone step is the standard approach, you can also add app files to the shared container space using a Shell Script step or other custom methods.
 
 :::
 
-During rollback, the Git Clone rollback step can be used to replace the Git branch/tag/commit that you used in the Git Clone step.
+During rollback, the Git Clone rollback step can be used to replace the Git branch/tag/commit that you used in the Git Clone step. The Git Clone step is documented in detail in [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step), but the key settings for CDK are reviewed here.
 
-The Git Clone step is documented in detail in [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step), but let's review how the key settings for CDK.
+### Configure the Git Clone step
+
+The following settings are required for the Git Clone step:
 
 - **Connector:** Select or add a Harness Git connector for the source control provider hosting the CDK app code repository that you want to use.
 - **Repository name:** If the connector's [URL Type](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference#url-type) is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration. If the connector's **URL Type** is **Account**, then you must specify the name of the code repository that you want to clone into the stage workspace.
-- **Build type:** Select **Git Branch** if you want the step to clone code from a specific branch within the repository, or select **Git Tag** or **Commit SHA** if you want the step to clone code from a specific commit. Based on your selection, specify a **Branch Name**, **Tag Name**, **Commit SHA**.
+- **Build type:** Select **Git Branch** if you want the step to clone code from a specific branch within the repository, or select **Git Tag** or **Commit SHA** if you want the step to clone code from a specific commit. Based on your selection, specify a **Branch Name**, **Tag Name**, or **Commit SHA**.
 
   :::tip
 
@@ -260,65 +197,77 @@ The Git Clone step is documented in detail in [Git Clone step](/docs/continuous-
 
   :::
 
-- **Clone directory:** An optional target path in the stage workspace where you want to clone the repo.
-- **Depth:** The number of commits to fetch when the step clones the repo. The default depth is 0, which fetches all commits from the relevant branch. For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
+- **Clone directory:** An optional target path in the stage workspace where you want to clone the repository.
+- **Depth:** The number of commits to fetch when the step clones the repository. The default depth is 0, which fetches all commits from the relevant branch. Go to the [git clone documentation](https://git-scm.com/docs/git-clone) for more information.
 - **SSL Verify:** If you set this to **True**, which is the default value, the pipeline verifies your Git SSL certificates. The stage fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your stages anyway.
 
-For the remaining settings, see [Step settings common to multiple steps](/docs/continuous-delivery/cd-infrastructure/aws-cdk#step-settings-common-to-multiple-steps) below.
+For the remaining settings, see [Step settings common to multiple steps](#step-settings-common-to-multiple-steps) below.
+
+---
 
 ## AWS CDK Bootstrap step
 
-Runs the `cdk bootstrap` command. For details on bootstrapping, go to [Bootstrapping your AWS environment](https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-bootstrap) from AWS.
+Runs the `cdk bootstrap` command. Go to [Bootstrapping your AWS environment](https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-bootstrap) to understand CDK bootstrapping.
 
 This step sets up the necessary AWS resources and environment required for deploying CDK applications in a specific AWS region and AWS account. This command is typically run once per AWS account and region to prepare the environment for CDK deployments.
 
-If the AWS environment is already bootstrapped and has the necessary AWS resources required for deploying CDK applications, you can omit this step.
+If your AWS environment is already bootstrapped, you can skip this step.
 
-Step settings:
+### Configure the Bootstrap step
+
+The following settings are required for the AWS CDK Bootstrap step:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
 - **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. **App Path** must include the path to the app folder in that directory.
-- **AWS CDK Bootstrap Command Options:** You can add any CDK parameters you can see in the `cdk bootstrap --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
+- **AWS CDK Bootstrap Command Options:** You can add any CDK parameters you can see in the `cdk bootstrap --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. Go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) to learn about CDK parameters.
 
 For the remaining settings, including [AWS connector configuration](#aws-connector-configuration-optional), see [Step settings common to multiple steps](#step-settings-common-to-multiple-steps) below.
+
+---
 
 ## AWS CDK Diff step
 
 Runs the `cdk diff` command to compare the specified stack and its dependencies with the deployed stacks.
 
-Step settings:
+### Configure the Diff step
+
+The following settings are required for the AWS CDK Diff step:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
 - **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
-- **AWS CDK Diff Command Options:** You can add any CDK parameters you can see in the `cdk diff --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
-- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to passed to `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
+- **AWS CDK Diff Command Options:** You can add any CDK parameters you can see in the `cdk diff --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. Go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) to learn about CDK parameters.
+- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to pass to the `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
 
   ![picture 2](static/8be0b8f77211f4eabf068c7b6a19bffb0a1ce86a6fe26b7bc0fc4ed3f1a1d8f3.png)
 
-  If you omit a stack name, it can cause a step failure. If your app uses only one stack, you do not need to enter its name.
+  For multi-stack applications, specify each stack name to avoid step failures. Single-stack applications do not require a stack name.
 
 For the remaining settings, including [AWS connector configuration](#aws-connector-configuration-optional), see [Step settings common to multiple steps](#step-settings-common-to-multiple-steps) below.
+
+---
 
 ## AWS CDK Synth step
 
 Runs the `cdk synthesize` command. Synthesizes and prints the CloudFormation template for one or more stacks specified in the step. In the log for the executed step you will see the JSON file exported, for example, `Exporting template file:  hello-cdk/cdk.out/cdkTest1stack1.template.json`.
 
-Step settings:
+### Configure the Synth step
+
+The following settings are required for the AWS CDK Synth step:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
 - **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
-- **AWS CDK Synth Command Options:** You can add any CDK parameters you can see in the `cdk synthesize --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
-- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to passed to `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
-- **Export Template:** Exports the JSON template(s) for the stacks entered in **Stack Names**. If no stacks are listed in Stack Names, and **Export Template** is enabled, Harness export templates for all stacks in the app.
+- **AWS CDK Synth Command Options:** You can add any CDK parameters you can see in the `cdk synthesize --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. Go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) to learn about CDK parameters.
+- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to pass to the `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
+- **Export Template:** Exports the JSON template(s) for the stacks entered in **Stack Names**. If no stacks are listed in Stack Names, and **Export Template** is enabled, Harness exports templates for all stacks in the app.
 
 For the remaining settings, including [AWS connector configuration](#aws-connector-configuration-optional), see [Step settings common to multiple steps](#step-settings-common-to-multiple-steps) below.
 
 ### Export and reference JSON templates
 
-After this step, synthetized JSON templates will we available in **cdk.out** folder. If the **Export Template** option is selected, the JSON templates for the stacks will exported as step output.
+After this step, synthesized JSON templates will be available in the **cdk.out** folder. If the **Export Template** option is selected, the JSON templates for the stacks will be exported as step output.
 
 You can reference the JSON template from the step output after the step has run using an expression in this format:
 
@@ -336,13 +285,11 @@ You can obtain the expression by copying it from the executed step **Outputs**.
 
 ![picture 3](static/b36f4fa4dce007edfc19a2f807b2d866b2427ea0f51ebdd1714340c037f42396.png)
 
-#### Using the template expression in a script
+### Use the template expression in a script
 
 You can use the expression in a Shell Script step to output the JSON template.
 
-Do not echo the expression. The template is multiline json and contains special characters and this can cause issues with echo.
-
-You can assign the value to a variable like this:
+Do not echo the expression. The template is multiline JSON and contains special characters, and this can cause issues with echo. You can assign the value to a variable like this:
 
 <details>
 <summary>Using cat with the JSON template expression</summary>
@@ -351,84 +298,80 @@ You can assign the value to a variable like this:
 
 </details>
 
+---
+
 ## AWS CDK Deploy step
 
 Runs the `cdk deploy` command to deploy the infrastructure defined in your CDK application to your AWS account.
 
-The CDK Deploy step includes a **Provisioner Identifier** setting to track the provisioning it performs.
+The CDK Deploy step includes a **Provisioner Identifier** setting to track the provisioning it performs. The **Provisioner Identifier** is used by the AWS CDK Rollback step to ensure that the step uses the same parameters and inputs that were used by the last successful `cdk deploy` with the corresponding Provisioner Identifier (in the CDK Deploy step). The **Provisioner Identifier** must be unique per provisioned infrastructure at the Harness project level.
 
-The **Provisioner Identifier** is used by the AWS CDK Rollback step to ensure that the step uses same parameters and inputs that were used by the last successful `cdk deploy` with the corresponding Provisioner Identifier (in the CDK Deploy step).
+If you have made these settings expressions, Harness uses the values it obtains at runtime when it evaluates the expression.
 
-The **Provisioner Identifier** must be unique per provisioned infrastructure at the Harness project level.
+### Configure the Deploy step
 
-If you've made these settings expressions, Harness uses the values it obtains at runtime when it evaluates the expression.
-
-Step settings:
+The following settings are required for the AWS CDK Deploy step:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
-- **Provisioner Identifier:** Enter a unique Id to identify the provisioning performed by this step.
-
-  The **Provisioner Identifier** is a project-wide setting. You can reference it across pipelines in the same project.
-
-  For this reason, it's important that all your project members know the provisioner identifiers. This will prevent one member building a pipeline from accidentally impacting the provisioning of another member's pipeline.
+- **Provisioner Identifier:** Enter a unique ID to identify the provisioning performed by this step. The **Provisioner Identifier** is a project-wide setting. You can reference it across pipelines in the same project. For this reason, it is important that all your project members know the provisioner identifiers. This will prevent one member building a pipeline from accidentally impacting the provisioning of another member's pipeline.
 
 - **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
-- **AWS CDK Deploy Command Options:** You can add any CDK parameters you can see in the `cdk deploy --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
+- **AWS CDK Deploy Command Options:** You can add any CDK parameters you can see in the `cdk deploy --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. Go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) to learn about CDK parameters. The `--all` command can be used to deploy all stacks in the app without having to name them in the **Stack Names** setting.
 
-  The `--all` command can be used to deploy all stacks in the app without having to name them in the **Stack Names** setting.
-
-- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to passed to `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
+- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to pass to the `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
 
   ![picture 2](static/8be0b8f77211f4eabf068c7b6a19bffb0a1ce86a6fe26b7bc0fc4ed3f1a1d8f3.png)
 
-  If you omit a stack name for a multi-stack CDK application, it can cause a step failure. If your app uses only one stack, you do not need to enter its name.
+  For multi-stack applications, specify each stack name to avoid step failures. Single-stack applications do not require a stack name.
 
-- **Parameters:** This setting is the same as the `--parameters` option for `cdk deploy` (for example, `cdk deploy MyStack --parameters uploadBucketName=UploadBucket`).
+- **Parameters:** This setting is the same as the `--parameters` option for `cdk deploy` (for example, `cdk deploy MyStack --parameters uploadBucketName=UploadBucket`). Go to [Specifying AWS CloudFormation parameters](https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-deploy) to learn about CloudFormation parameters.
 
-  For more information, go to [Specifying AWS CloudFormation parameters](https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-deploy) from AWS.
-
-  Add any additional parameters to pass to CloudFormation at deploy time by adding the keys and values in **Parameters**.
-
-  If the CDK app had a single stack, then you can enter the parameter name in **Key** and value in **Value**.
-
-  If the CDK app has multiple stacks, then include the stack name as a prefix to the parameter in **Key** using a colon, in the format `STACK:KEY` (this is similar to the `STACK:KEY=VALUE` format in `cdk deploy --parameters`). For example, `mystack1:uploadBucketName`.
+  Add any additional parameters to pass to CloudFormation at deploy time by adding the keys and values in **Parameters**. If the CDK app has a single stack, then you can enter the parameter name in **Key** and value in **Value**. If the CDK app has multiple stacks, then include the stack name as a prefix to the parameter in **Key** using a colon, in the format `STACK:KEY` (this is similar to the `STACK:KEY=VALUE` format in `cdk deploy --parameters`). For example, `mystack1:uploadBucketName`.
 
   In the log for the Harness CDK Deploy step, you will see the parameters added to the command, like this:
 
   ```
   /usr/local/bin/cdk deploy cdkTest3stack1 cdkTest3stack2 --parameters cdkTest3stack1:sname=stackOneSecretNameStage1ZfBcO4T6Te --parameters cdkTest3stack2:sname=stackTwoSecretNameStage1mEDUcmGTm1 -c stack1_name=cdkTest3stack1 -c stack2_name=cdkTest3stack2 --outputs-file cdk-outputs.json
   ```
-:::note Multi-account deployments
-You can deploy to different AWS accounts using the same connector by configuring the optional AWS connector settings. This allows you to override the region and assume a different IAM role at the step level. For details, see [AWS connector configuration (optional)](#aws-connector-configuration-optional).
-:::
 
+:::note Multi-account deployments
+
+You can deploy to different AWS accounts using the same connector by configuring the optional AWS connector settings. This allows you to override the region and assume a different IAM role at the step level. Go to [AWS connector configuration (optional)](#aws-connector-configuration-optional) for details.
+
+:::
 
 For the remaining settings, including [AWS connector configuration](#aws-connector-configuration-optional), see [Step settings common to multiple steps](#step-settings-common-to-multiple-steps) below.
 
-:::warning
+### Verify successful deployment
 
-Ensure that the user Id used in the Git Clone step and steps that call Git commands in the step group is same as the user Id specified in the [Run as User](#run-as-user) setting. Your step will fail if the user Id used in the Git Clone command and user that calls the Git Clone command is different.
+After the CDK Deploy step completes successfully, CloudFormation stacks are created in your AWS account. To view the deployed resources, go to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation/) and select your region. You will see the stacks listed with their creation status. Select a stack to view the resources it created under the **Resources** tab.
 
-This issue can also occur for existing pipelines for users who have turned on the `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX` feature flag as it changes the behavior of certain settings including `Run as User` when it is not configured. To fix this issue, set `Run as User` in your Git Clone step and CDK Deploy step to `0`.
+:::warning User ID mismatch error
+
+Ensure that the user ID used in the Git Clone step and steps that call Git commands in the step group is the same as the user ID specified in the [Run as User](#run-as-user) setting. Your step will fail if the user ID used in the Git Clone command and the user that calls the Git Clone command are different.
+
+This issue can also occur for existing pipelines for users who have turned on the `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX` feature flag, as it changes the behavior of certain settings including `Run as User` when it is not configured. To fix this issue, set `Run as User` in your Git Clone step and CDK Deploy step to `0`.
+
 :::
 
-:::tip
+:::tip Install dependencies before CDK commands
 
-Currently, there isn’t a direct method to manage application dependencies during the process. It is necessary to install the required dependencies before running the CDK commands. Below are some recommended approaches to handle this:
+CDK commands require application dependencies to be installed beforehand. You can handle dependency installation using one of the following approaches:
 
-1. **Add a Run Step for Installing Dependencies**:  
-Add a *Run Step* prior to the CDK Deploy step where you can execute the commands to install the dependencies, such as `npm install`. This ensures that when the CDK step runs, all necessary dependencies are already installed.
+1. **Add a Run Step for Installing Dependencies:**
+   Add a Run Step prior to the CDK Deploy step where you can execute the commands to install the dependencies, such as `npm install`. This ensures that when the CDK step runs, all necessary dependencies are already installed.
 
-2. **Update the `cdk.json` File**:  
-Update the `cdk.json` file to define a custom build command that includes dependency installation, such as `npm install`, before deployment. For example:
-```json
-{
-"app": "npx ts-node -P tsconfig.json --prefer-ts-exts src/ec2-instance.ts",
-"output": "cdk.out",
-"build": "npm install --verbose && npx projen bundle"
-}
-```
+2. **Update the `cdk.json` File:**
+   Update the `cdk.json` file to define a custom build command that includes dependency installation, such as `npm install`, before deployment. For example:
+   ```json
+   {
+   "app": "npx ts-node -P tsconfig.json --prefer-ts-exts src/ec2-instance.ts",
+   "output": "cdk.out",
+   "build": "npm install --verbose && npx projen bundle"
+   }
+   ```
+
 :::
 
 ### Output variable expressions
@@ -437,15 +380,11 @@ After pipeline execution, the CDK Deploy step **Output** tab displays several ou
 
 ![picture 4](static/29275e4d5bc3a244d2c934e36dd611fb13004a7f3887d277923f22d0236f43b3.png)
 
-#### GIT_COMMIT_ID and LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID
+### GIT_COMMIT_ID and LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID
 
-This is the Git commit Id of the CDK app that was deployed.
+This is the Git commit ID of the CDK app that was deployed. After every successful `cdk deploy`, Harness attempts to obtain the commit SHA from the App path directory. This commit ID is saved and exported in step output `GIT_COMMIT_ID`.
 
-After every successful `cdk deploy`, Harness attempts to obtain the commit SHA from the App path directory. This commit Id is saved and exported in step output `GIT_COMMIT_ID`.
-
-Also, the CDK Deploy step outputs the commit SHA of the latest successful `cdk deploy` from a previous stage execution in the output `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID`.
-
-You can reference this value using the expression:
+Also, the CDK Deploy step outputs the commit SHA of the latest successful `cdk deploy` from a previous stage execution in the output `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID`. You can reference this value using the expression:
 
 ```
 <+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>
@@ -457,7 +396,7 @@ For example:
 <+pipeline.stages.s1.spec.provisioner.steps.test.steps.AwsCdkDeploy_1.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>
 ```
 
-#### Stack(s) outputId
+### Stack(s) outputId
 
 A CDK app stack output is a value or set of values that are exposed by an AWS CloudFormation stack created and managed by your CDK application. These outputs provide a way for other resources or applications to access and use information produced or computed by the CDK stack during its deployment.
 
@@ -471,9 +410,7 @@ new cdk.CfnOutput(this, 'BucketNameOutput', {
 
 ```
 
-Each CDK app stack output Id is listed in the CDK Deploy step **Output** tab.
-
-You can reference this value using the expression:
+Each CDK app stack output ID is listed in the CDK Deploy step **Output** tab. You can reference this value using the expression:
 
 ```
 <+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.cdkOutput.STACK_NAME.OUTPUT_ID>
@@ -485,13 +422,15 @@ For example:
 <+pipeline.stages.s1.spec.provisioner.steps.test.steps.AwsCdkDeploy_1.cdkOutput.cdkTest3stack2.BucketNameOutput>
 ```
 
+---
+
 ## AWS CDK Destroy step
 
-Runs the `cdk destroy` command to destroy one or more specified stacks.
+Runs the `cdk destroy` command to destroy one or more specified stacks. You can use this step to destroy one or more stacks defined in the CDK application.
 
-You can use this step to destroy one or more stacks defined in the CDK application.
+### Configure the Destroy step
 
-Step settings:
+The following settings are required for the AWS CDK Destroy step:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
@@ -501,9 +440,11 @@ Step settings:
 
 For the remaining settings, including [AWS connector configuration](#aws-connector-configuration-optional), see [Step settings common to multiple steps](#step-settings-common-to-multiple-steps) below.
 
+---
+
 ## AWS CDK rollback steps
 
-The CDK Rollback step will run `cdk deploy` using the saved inputs and parameters used at last successful `cdk deploy` from a previous stage execution. The CDK Rollback step references the latest successful deploy using its **Provisioner identifier**.
+The CDK Rollback step runs `cdk deploy` using the saved inputs and parameters used in the last successful `cdk deploy` from a previous stage execution. The CDK Rollback step references the latest successful deploy using its **Provisioner identifier**.
 
 The CDK rollback steps are located in the **Rollback** section of the **Environment** or **Execution** sections where you added your CDK steps.
 
@@ -513,46 +454,49 @@ If you are using rollback steps in a Custom stage **Execution**, there is no **R
 
 :::
 
-### Rollback step group
+Rollback occurs automatically when a deployment failure is detected in the pipeline. Manual rollback can be triggered by running the rollback steps in the **Rollback** section of your stage.
 
-AWS CDK rollback steps in Harness stages must be added in a [containerized step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups). The steps cannot be selected outside of a containerized step group.
+### Configure rollback step group
 
-The step group contains the Harness connector to a Kubernetes cluster and namespace hosted in your environment. When the pipeline is run, the step group creates a container inside the cluster. Inside the container, a pod is created for each step in the step group using the image you provide in the step. The steps share a common disk space and can reference the same paths.
+AWS CDK rollback steps in Harness stages must be added in a containerized step group. The steps cannot be selected outside of a containerized step group. Go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) to learn about containerized step group configuration.
 
-When you select AWS CDK as the provisioner on the CD stage **Environment** tab, Harness automatically generates a containerized [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) in **Rollback** containing the steps needed for the AWS CDK.
+The step group contains the Harness connector to a Kubernetes cluster and namespace hosted in your environment. When the pipeline runs, the step group creates a container inside the cluster. Inside the container, a pod is created for each step in the step group using the image you provide in the step. The steps share a common disk space and can reference the same paths.
 
-### Git Clone step in rollback
+When you select AWS CDK as the provisioner on the CD stage **Environment** tab, Harness automatically generates a containerized step group in **Rollback** containing the steps needed for AWS CDK.
 
-The Git Clone step is simply a Git Clone step used to roll back the Git repo in the container to the branch, tag, or commit SHA that you want to restore in the case of deployment failure.
+### Configure Git Clone step in rollback
 
-Typically, the Git Clone step is used to roll back the app source repo in the container to the last successful commit. You can also add Harness steps to manipulate the repo, such as Shell Script step.
+The Git Clone step is simply a Git Clone step used to roll back the Git repository in the container to the branch, tag, or commit SHA that you want to restore in the case of deployment failure.
 
-Ensure that CDK application on the shared disk space is at the revision you want to rollback. The Git Clone step can be added with the specific commit SHA to use for rollback.
+Typically, the Git Clone step is used to roll back the app source repository in the container to the last successful commit. You can also add Harness steps to manipulate the repository, such as a Shell Script step.
 
-When the CDK Deploy step runs, it outputs the Git commit Id of the CDK app repo commit it used. You can see this in the **Output** of the CDK Deploy step and reference it using the expression in the format `<+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`.
+Ensure that the CDK application on the shared disk space is at the revision you want to roll back to. The Git Clone step can be added with the specific commit SHA to use for rollback.
+
+When the CDK Deploy step runs, it outputs the Git commit ID of the CDK app repository commit it used. You can see this in the **Output** of the CDK Deploy step and reference it using the expression in the format `<+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`.
 
 To ensure that the Git Clone step rolls back to the last successful commit, configure the step as follows:
 
 - **Connector:** Select or add a Harness Git connector for the source control provider hosting the CDK app code repository that you want to use.
 - **Repository Name:** If the connector's **URL Type** is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration. If the connector's **URL Type** is **Account**, then you must specify the name of the code repository that you want to clone into the stage workspace.
 - **Build Type:** Select the branch, tag, or Git commit SHA of the commit you want to use.
-- **Commit SHA:** If you use, **Git Commit SHA**, you can use the `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID` expression from the last _successful_ CDK Deploy step. For example, `<+pipeline.stages.s2.spec.provisioner.steps.test.steps.AwsCdkDeploy_2.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`. In this example, this expression will resolve to the commit SHA from the latest successful execution of the `AwsCdkDeploy_2` step from a previous stage. The Git Clone step will checkout at that specific commit SHA.
+- **Commit SHA:** If you use **Git Commit SHA**, you can use the `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID` expression from the last _successful_ CDK Deploy step. For example, `<+pipeline.stages.s2.spec.provisioner.steps.test.steps.AwsCdkDeploy_2.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`. In this example, this expression will resolve to the commit SHA from the latest successful execution of the `AwsCdkDeploy_2` step from a previous stage. The Git Clone step will check out that specific commit SHA.
 
-  You do not have to use the Git commit used by the last successful CDK Deploy step. You can rollback to any branch, tag, or commit you like.
+  You do not have to use the Git commit used by the last successful CDK Deploy step. You can roll back to any branch, tag, or commit you like.
 
-### AWS CDK Rollback step
+### Configure AWS CDK Rollback step
 
 The CDK Rollback step rolls back the provisioned resources deployed by the CDK Deploy step to the last successful version.
 
-Step settings:
+The following settings are required for the AWS CDK Rollback step:
 
-- **Provisioner Identifier:** The **Provisioner Identifier** setting is used to link CDK Deploy and CDK Rollback steps. In the CDK Rollback step, use the identical **Provisioner Identifier** as the CDK Deploy step to ensure that it rolls back the resources deployed by the failed CDK Deploy step.
-  By using the same **Provisioner Identifier** in both the CDK Deploy and CDK Rollback steps, you ensure that CDK Rollback will uses the data from corresponding `cdk deploy`. After each successful `cdk deploy`, Harness stores the details using the **Provisioner Identifier** so they can be used for rollback.
+- **Provisioner Identifier:** The **Provisioner Identifier** setting is used to link CDK Deploy and CDK Rollback steps. In the CDK Rollback step, use the identical **Provisioner Identifier** as the CDK Deploy step to ensure that it rolls back the resources deployed by the failed CDK Deploy step. By using the same **Provisioner Identifier** in both the CDK Deploy and CDK Rollback steps, you ensure that CDK Rollback uses the data from the corresponding `cdk deploy`. After each successful `cdk deploy`, Harness stores the details using the **Provisioner Identifier** so they can be used for rollback.
 - **Environment Variables:** You can change or add environment variables in your CDK app.
+
+---
 
 ## Step settings common to multiple steps
 
-The followings settings are common to the CDK steps and configure the pods used for each step.
+The following settings are common to the CDK steps and configure the pods used for each step.
 
 ### AWS connector configuration (optional)
 
@@ -568,11 +512,11 @@ These optional settings enable multi-account deployments by allowing you to over
 
 For example, if you have an AWS connector configured for Account A, you can deploy CDK stacks to Account B by providing the Region and Role ARN for Account B in the step configuration. The connector from Account A will assume the specified role in Account B to perform the deployment.
 
-#### Setting up cross-account access
+### Set up cross-account access
 
 To enable cross-account deployments, configure a trust policy on the target account's IAM role. This policy must allow the source account (where your AWS connector is configured) to assume the role.
 
-Here's an example trust policy for the target Role ARN:
+Here is an example trust policy for the target Role ARN:
 
 ```json
 {
@@ -590,63 +534,52 @@ Here's an example trust policy for the target Role ARN:
 }
 ```
 
-Replace `1234xxxx` with the AWS account ID of your source account (the account associated with your Harness AWS connector). The IAM role you specify in **Role ARN** must have sufficient permissions to perform the CDK operations (bootstrap, deploy, destroy, etc.) in the target account.
+Replace `1234xxxx` with the AWS account ID of your source account (the account associated with your Harness AWS connector). The IAM role you specify in **Role ARN** must have sufficient permissions to perform the CDK operations (bootstrap, deploy, destroy, and so on) in the target account. Go to [IAM tutorial: Delegate access across AWS accounts using IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html) to learn about cross-account IAM roles.
 
-### Privileged
+### Additional containerized step settings
 
-Enable this option to run the container with escalated privileges. This is equivalent to running a container with the Docker `--privileged` flag.
+Each CDK step supports additional configuration options common to all containerized steps in Harness, including privileged mode, image pull policy, run as user, resource limits (memory and CPU), environment variables, and advanced settings (delegate selector, conditional execution, failure strategy, looping strategy). Go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) to review containerized step configuration options.
 
-### Image Pull Policy
+---
 
-Select an option to set the pull policy for the image.
+## Troubleshooting
 
-- **Always**: The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
-- **If Not Present**: The image is pulled only if it is not already present locally.
-- **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
+<Troubleshoot
+  issue="AWS CDK step fails when passing Secret output variables from previous containerized step group"
+  mode="docs"
+  fallback="Secret output variables from containerized step groups are not supported as CDK step credentials. Use environment variables or AWS connector configuration instead."
+/>
 
-### Run as User
+<Troubleshoot
+  issue="CDK Deploy step fails with Git context lost error when steps are split across multiple containerized step groups"
+  mode="docs"
+  fallback="Git Clone, CDK Diff, and CDK Deploy steps must be in the same containerized step group. Git context cannot be transferred between step groups."
+/>
 
-The standard `runAsUser` setting for the `securityContext` property. This setting determines the user Id of the user running all commands in the container.
+<Troubleshoot
+  issue="User ID mismatch error in Git Clone step and CDK Deploy step causing step failure"
+  mode="docs"
+  fallback="Ensure that the user ID used in the Git Clone step matches the user ID specified in the Run as User setting. Set Run as User to 0 in both Git Clone and CDK Deploy steps."
+/>
 
-Specify the user ID (UID) under which the container should run.
+<Troubleshoot
+  issue="CDK Deploy step fails when checking if AWS environment is already bootstrapped"
+  mode="docs"
+  fallback="Run aws cloudformation describe-stacks --stack-name CDKToolkit --region your-region in the AWS CLI. If the command returns stack details, the environment is bootstrapped. If it returns an error, run the Bootstrap step."
+/>
 
-### Limit Memory
+<Troubleshoot
+  issue="Output variable expression not resolving in subsequent pipeline steps"
+  mode="docs"
+  fallback="Verify that the expression format matches the documented pattern. Copy the expression from the CDK Deploy step Outputs tab to ensure correct syntax. Check that the step ID, stage ID, and output variable name are correct."
+/>
 
-Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes G or M. You can also use the power-of-two equivalents, Gi or Mi. Do not include spaces when entering a fixed value. The default is 500Mi.
+---
 
-### Limit CPU
+## Next steps
 
-The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as 0.1 or 100m. The default is 400m. For more information, go to Resource units in Kubernetes.
+You have configured AWS CDK provisioning in Harness and understand how to deploy infrastructure using familiar programming languages. You can now provision AWS resources as part of your deployment pipelines or on-demand.
 
-### Environment Variables
-
-You can change or add environment variables used in the container. You must input a **Key** and **Value** for each variable.
-
-Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
-
-### Advanced settings
-
-In **Advanced**, you can use the following options:
-
-- [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-- [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-- [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-- [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-
-### Supported Languages
-
-Harness provides custom images for testing purposes for the following programming languages:
-
-- Java
-- Go
-- Python 3
-- .NET
-  Base image allready contains Node.js and JavaScript installed.
-
-Please navigate to our [DockerHub Repository](https://hub.docker.com/r/harness/aws-cdk-plugin/tags) for the latest image tags for this feature.
-
-## Limitations 
-
-- The AWS CDK step fails if the credentials are passed as output variables of type Secret from a previous containerized step group. Therefore, currently passing Secret output variables to the AWS CDK step from a previous containerized step group is not supported.
-
-- The Git Clone step, CDK diff step, and CDK Deploy step are only supported in the Containerised step group. So when we add the Clone step and CDK diff to one containerized step group and the deploy step to the second containerized step group, the Git context is lost, and the deploy step fails since the Git context can not be transferred between step groups.
+- Go to [Build your own CDK image](/docs/continuous-delivery/cd-infrastructure/aws-cdk/cdk-image-build) to customize CDK plugin images with specific versions and dependencies.
+- Go to [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure) to configure dynamic infrastructure provisioning for Kubernetes deployments.
+- Go to [AWS ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial) to provision ECS infrastructure with CDK and deploy containerized applications.
