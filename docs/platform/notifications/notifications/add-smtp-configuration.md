@@ -1,11 +1,13 @@
 ---
 title: Add SMTP configuration
 description: Explains how to configure SMTP for email-based deployment notifications, approvals, and tracking.
-sidebar_position: 3
+sidebar_position: 5
 helpdocs_topic_id: d43r71g20s
 helpdocs_category_id: y9pmm3ig37
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- /docs/platform/notifications/add-smtp-configuration
 ---
 
 You can send email notifications to Harness User Groups using your SMTP accounts.
@@ -37,7 +39,7 @@ Click **SMTP Configuration** and then click **Setup**.
 
 The SMTP Configuration settings appear.
 
-![](./static/add-smtp-configuration-01.png)
+![](../static/add-smtp-configuration-01.png)
 ### Step 2: Details
 
 Enter **Name** for your SMTP Configuration.
@@ -58,7 +60,7 @@ Click **Continue**.
 
 Enter the username and password for the email account.
 
-![](./static/add-smtp-configuration-credentials.png)
+![](../static/add-smtp-configuration-credentials.png)
 
 Click **Continue**.
 
@@ -66,7 +68,7 @@ Click **Continue**.
 
 In **Delegates Setup**, use [**Selectors**](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#selecting-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
 
-![](./static/smtp-delegate.png)
+![](../static/smtp-delegate.png)
 
 Click **Save and Continue**.
 
@@ -78,12 +80,12 @@ Enter **Subject** and **Body** for the email.
 
 Click **Test**.
 
-![](./static/add-smtp-configuration-03.png)
+![](../static/add-smtp-configuration-03.png)
 Click **Continue** after the test is successful.
 
 SMTP is configured for your account.
 
-![](./static/add-smtp-configuration-04.png)
+![](../static/add-smtp-configuration-04.png)
 
 ### Option: Send Notifications for a User Group using Email
 
@@ -99,11 +101,11 @@ Enter the email address from which you want to send email notifications.
 
 You can also send email notifications to all the members of this user group by selecting **Send email to all users part of this group**.
 
-![](./static/add-smtp-configuration-05.png)
+![](../static/add-smtp-configuration-05.png)
 
 Click **Save**.
 
-![](./static/add-smtp-configuration-06.png)
+![](../static/add-smtp-configuration-06.png)
 
 ### Option: Send Notification for a Pipeline
 
@@ -113,12 +115,12 @@ In Harness, go to your Pipeline and click **Notify**.
 
 Click **Notifications**. The **New Notification** settings appear.
 
-![](./static/add-smtp-configuration-07.png)
+![](../static/add-smtp-configuration-07.png)
 Enter a name for your notification rule and click **Continue**.
 
 Select the Pipeline Events for which you want to send notifications. Click **Continue**.
 
-![](./static/add-smtp-configuration-08.png)
+![](../static/add-smtp-configuration-08.png)
 In **Notification Method**, select **Email**.
 
 Enter comma-separated user email addresses to which you want to send the notifications.
@@ -129,7 +131,7 @@ Click **Test**.
 
 Once the test is successful, click **Finish**.
 
-![](./static/add-smtp-configuration-09.png)
+![](../static/add-smtp-configuration-09.png)
 Your Notification Rule is now listed in Notifications. Post this users will get email notifications when the events listed in the Notification Rule occur.
 
 ### See also

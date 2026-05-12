@@ -193,8 +193,8 @@ You can configure notification channels for Harness to send messages to group me
 3. Select the group you want to edit.
 4. Under **Notification Preferences**, select **Channel**.
 5. Configure the notification settings for the preferred channel:
-   * **Email/Alias:** Enter any group email addresses where Harness can send notifications. For more information, go to [Send Notifications Using Email](../notifications/add-smtp-configuration.md#option-send-notifications-for-a-user-group-using-email).
-   * **Slack Webhook URL:** Enter the Slack channel Incoming Webhook URL. For more information, go to [Send Notifications Using Slack](../notifications/send-notifications-using-slack.md).
+   * **Email/Alias:** Enter any group email addresses where Harness can send notifications. For more information, go to [Send Notifications Using Email](/docs/platform/notifications/notifications/add-smtp-configuration#option-send-notifications-for-a-user-group-using-email).
+   * **Slack Webhook URL:** Enter the Slack channel Incoming Webhook URL. For more information, go to [Send Notifications Using Slack](/docs/platform/notifications/notifications/send-notifications-using-slack).
    * **Microsoft Teams Webhook URL:** Enter the Microsoft Teams incoming webhook URL. For more information, go to [Send notifications to Microsoft Teams](/docs/platform/notifications/send-notifications-to-microsoft-teams/).
    * **PagerDuty Integration Key:** Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can get this key from the integration details in PagerDuty (navigate to **Services** and then **Service Directory**).
 

@@ -1,0 +1,10 @@
+{
+    "label": "Notifications",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "1",
+   "customProps": {
+        "description": "Notifications"
+  }
+}

@@ -1,10 +1,12 @@
 ---
 title: Centralised notification
 description: Configure notifications based on specific rules and conditions in pipelines, delegates, GitOps applications, and other Harness components to keep teams informed of critical events.
-sidebar_position: 3
+sidebar_position: 5
+redirect_from:
+- /docs/platform/notifications/centralised-notification
 ---
 
-import PipeEvents from './static/set_pipeline_events.png';
+import PipeEvents from '../static/set_pipeline_events.png';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import React from 'react';

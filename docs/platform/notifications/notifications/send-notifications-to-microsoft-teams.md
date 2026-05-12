@@ -1,11 +1,13 @@
 ---
 title: Send notifications to Microsoft Teams
 description: This topic explains how to send user group notifications using Microsoft Teams.
-sidebar_position: 4
+sidebar_position: 7
 helpdocs_topic_id: xcb28vgn82
 helpdocs_category_id: y9pmm3ig37
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- /docs/platform/notifications/send-notifications-to-microsoft-teams
 ---
 
 Harness notifies your User Groups of events in Pipelines, and general alerts.
@@ -26,23 +28,23 @@ We assume you have a Microsoft Teams administrator account.
 
 1. In Microsoft Teams, right-click the channel name where you want to send notifications, and select **Workflows** from the menu.
 
-  ![](./static/send-notifications-to-microsoft-teams-10.png)
+  ![](../static/send-notifications-to-microsoft-teams-10.png)
 
 2. In the **Workflows** section, select the workflow **Post to a channel when webhook request is received**.
 
-  ![](./static/send-notifications-to-microsoft-teams-11.png)
+  ![](../static/send-notifications-to-microsoft-teams-11.png)
 
 3. Provide a name for the webhook, then click **Next**.
 
-  ![](./static/send-notifications-to-microsoft-teams-12.png)
+  ![](../static/send-notifications-to-microsoft-teams-12.png)
 
 4. Select the **Team** and **Channel** where you’d like to receive notifications, then click **Add Workflow**.
 
-  ![](./static/send-notifications-to-microsoft-teams-13.png)
+  ![](../static/send-notifications-to-microsoft-teams-13.png)
 
 5. A webhook URL will be generated. Copy this URL for use in Harness.
 
-  ![](./static/send-notifications-to-microsoft-teams-14.png)
+  ![](../static/send-notifications-to-microsoft-teams-14.png)
 
 ### Step 2: Add Webhook to Harness User Group Notification Preferences
 
@@ -76,6 +78,6 @@ You can reference a secret within the Account scope using an expression with `ac
 ```
 Click **Save**.
 
-![](./static/send-notifications-to-microsoft-teams-15.png)
+![](../static/send-notifications-to-microsoft-teams-15.png)
 Now your Microsoft Teams channel will be used to notify this User Group of alerts.
 
