@@ -74,6 +74,35 @@ You can view the agent definition in both Visual and YAML modes. Switch to the *
 
 ---
 
+## Create agents via AI Chat and IDE
+
+In addition to the Harness UI, you can create Worker Agents using **Harness AI Chat** or directly from your **IDE or terminal** via the Harness MCP Server.
+
+### Harness AI Chat
+
+The Harness AI Chat interface supports an interactive agent creation workflow. When you ask the chat to create an agent (such as "Create a PR Review Agent"), it:
+
+1. Checks existing agents in your project to avoid duplicates.
+2. Gathers requirements interactively (review focus, output format, platform).
+3. Generates a complete agent YAML spec.
+4. Presents the spec for your review and approval.
+5. Creates the agent in your project via the Harness Agent API.
+
+This approach is useful for quickly scaffolding agents using natural language without manually filling out each form field.
+
+### IDE and terminal (via Harness MCP)
+
+You can also create and manage Worker Agents from any IDE or terminal that supports MCP, including Cursor, Windsurf, VS Code (Copilot), and Claude Code. With the [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) installed, your IDE gains access to `agent` and `agent_run` resource types, enabling you to:
+
+- **List existing agents:** View all agents in your project.
+- **Create new agents:** Provide the agent YAML spec to create an agent.
+- **Update agent configurations:** Modify instructions, inputs, and environment variables.
+- **Trigger agent runs:** Execute agents and inspect outputs.
+
+Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to install and configure the MCP Server for your IDE or terminal.
+
+---
+
 ## Agent Marketplace
 
 The Worker Agent Catalog includes a **Marketplace** tab and a **Custom** tab. The Marketplace provides pre-built agents maintained by Harness that you can use immediately or fork into custom agents.
@@ -169,15 +198,19 @@ The following default models are available when configuring the connector:
 
 ### OpenAI Connector (coming soon)
 
-OpenAI Connector support is under development. The following models will be available:
+OpenAI Connector support is under development. The following models will be available at launch:
 
 | Model | Description |
 |---|---|
-| GPT-4o | Multimodal flagship model |
-| GPT-4o mini | Lightweight, cost-efficient model |
-| GPT-4.1 | Latest generation model |
-| GPT-4.1 mini | Lightweight latest generation model |
-| GPT-4.1 nano | Ultra-lightweight latest generation model |
+| GPT-4o | Multimodal model (not the latest OpenAI generation) |
+| GPT-4o mini | Lightweight, cost-efficient model (not the latest OpenAI generation) |
+| GPT-4.1 | Previous generation model |
+| GPT-4.1 mini | Lightweight previous generation model |
+| GPT-4.1 nano | Ultra-lightweight previous generation model |
+
+:::info
+These are not the latest OpenAI models (the current generation is GPT-5.x). Support for newer model families will be added in future releases.
+:::
 
 ---
 
@@ -235,6 +268,12 @@ Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness
 ## Configure instructions and Harness expressions
 
 The **Instructions** field is the agent's system prompt. It accepts Harness variable expressions, which allows a single agent definition to operate dynamically across different repositories, branches, accounts, and organizations.
+
+The table below lists expressions commonly used in Worker Agent instructions. For the full list of available variables and expressions, go to:
+
+- [Add a variable](/docs/platform/variables-and-expressions/add-a-variable): Create custom pipeline, stage, and service variables.
+- [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables): Complete reference for all built-in variables including pipeline, stage, step, trigger, and deployment variables.
+- [Harness expressions reference](/docs/platform/variables-and-expressions/harness-expressions-reference): Syntax, usage patterns, and methods for working with expressions.
 
 ### Supported expressions
 
