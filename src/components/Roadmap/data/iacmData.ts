@@ -102,6 +102,12 @@ export const IacmData: Horizon = {
     description: "What has been released recently",
     feature: [
       {
+        tag: [{ value: "Integrations" }],
+        title: "Terragrunt Support",
+        description: "Native Terragrunt support for IaCM Workspaces",
+        link: "/docs/infra-as-code-management/get-started/#terragrunt",
+      },
+      {
         tag: [{ value: "Platform" }],
         title: "IDP plugin enhancements",
         description: "Enhanced IaCM plugin for IDP with rich context on resources, drill downs and High level overview.",
@@ -127,12 +133,6 @@ export const IacmData: Horizon = {
         title: "Private Provider Registry (Beta)",
         description: "Native support to store and manage private providers",
         link: "/docs/infra-as-code-management/registry/provider-registry",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Terragrunt Support (Beta)",
-        description: "Native Terragrunt support for IaCM Workspaces",
-        link: "/docs/infra-as-code-management/get-started/#terragrunt",
       },
       {
         tag: [{ value: "Developer Experience" }],

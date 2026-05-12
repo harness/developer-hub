@@ -1,19 +1,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<CTABanner
-buttonText="Learn more"
-title="Coming soon!"
-tagline="Terragrunt support is currently pending release and will be available soon!"
-link="/docs/infra-as-code-management/get-started#terragrunt"
-closable={true}
-target="_blank"
-/>
-
-:::warning
-Terragrunt support is currently **pending release** and will be available soon!
-:::
-
 :::info Terragrunt in Harness IaCM
 Terragrunt simplifies managing multiple OpenTofu/Terraform modules by orchestrating shared configurations and keeping your infrastructure code consistent across environments.
 
