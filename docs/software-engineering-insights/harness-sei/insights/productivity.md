@@ -1,5 +1,5 @@
 ---
-title: Developer Productivity
+title: Developer Productivity Insights
 description: Measure developer productivity by tracking the velocity, flow, and code quality metrics across your organization.
 sidebar_label: Developer Productivity
 sidebar_position: 2
@@ -10,7 +10,7 @@ redirect_from:
 
 Productivity in SEI 2.0 focuses on understanding the actual work being delivered by developers, the quality of that work, and how effectively teams collaborate to get it done. Rather than measuring activity for its own sake, SEI 2.0 surfaces signals that reflect meaningful engineering output, including work that drives value, improvements to existing code, and areas of potential rework.
 
-## Productivity Insights
+## Use Productivity Insights
 
 The **Productivity** tab on the **Insights** page in SEI 2.0 helps you understand how work flows through your engineering organization, focusing on the quality, velocity, and collaboration behind the code. If your account has multiple Org Trees configured in SEI 2.0, the Org Trees are displayed as tiles at the top of the dashboard.
 
@@ -25,6 +25,24 @@ By surfacing key aspects of the development lifecycle, the **Productivity Insigh
 
 You can analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts.
 
+![](../static/custom-date-range.png)
+
+## AI summaries and recommendations
+ 
+SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Productivity Insights dashboard, including **PR Velocity Per Developer**, **PR Cycle Time**, **Work Completed Per Developer**, **Coding Days Per Developer**, **Number of Comments Per PR**, **Average Time to First Comment**, and **Code Rework**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
+
+![](../static/productivity-7.png)
+
+Each summary includes three sections:
+
+- **Summary**: A narrative of key trends and performance changes for the selected time period.
+- **Actionable Insights**: Data-driven observations explaining contributor behavior, adoption patterns, and productivity outcomes.
+- **Recommendations**: Guidance on how to improve delivery performance and maintain or improve code quality based on observed signals.
+
+By default, the AI Summary you see when you navigate to the Productivity Insights dashboard reflects an organization-wide view, aggregating metrics across all teams in the selected Org Tree on the **Productivity Insights** tab. 
+
+## Explore Productivity Insight metrics
+
 Use the `Showing` dropdown menu to control how values are calculated across all widgets. Available options include `mean`, `median`, `p90`, and `p95`. Click the **Show trendline** checkbox to overlay trendlines across all Productivity visualizations. Trendlines help you assess whether productivity metrics are improving, regressing, or remaining stable over time. 
 
 :::info
@@ -37,23 +55,56 @@ Below is a brief overview of each widget in **Productivity** on the **Insights**
 
 ### PR Velocity Per Dev
 
-**PR Velocity per Dev** represents the average number of pull requests a developer merges in a given time period. It helps you understand how frequently developers are shipping code.
+**PR Velocity per Dev** metrics provide insight into pull request throughput, merge efficiency, and contribution volume across teams and individual developers. These metrics help engineering organizations understand how quickly code changes move through the development lifecycle and identify trends in pull request size, review patterns, and merge activity.
 
 $$
 \text{PR Velocity per Developer} = \frac{\text{Total PRs Merged by all Developers in the team}}{\text{Number of Developers}}
 $$
 
-![PR Velocity per Dev](../static/pr-velocity.png)
+The summary metric highlights pull request throughput trends over time, while the bar chart visualizes the number and distribution of pull requests merged during the selected period.
 
-This widget provides insights into the productivity of individual developers and teams by visualizing the rate at which pull requests (PRs) are completed over time.
+![PR Velocity per Dev](../static/pr-velocity.png "Average PRs merged per developer per week (e.g., 0.21 per week)")
+*A bar chart showing completed PRs per developer per week, segmented by PR Size or Work Type.*
 
-* **Metrics Displayed**: Average PRs merged per developer per week (e.g., 0.13 per week).
-* **Visualization**: A bar chart showing completed PRs per developer per week, segmented by "PR Size" (Small, Medium, Large) or "Work Type" (e.g., Features, Bugs).
+You can explore organization-level and team-level metrics by navigating the Org Tree. For parent nodes (for example, directors or managers above leaf teams), the dashboard displays aggregated pull request metrics across all descendant teams. Switch between **PR Size** (Small, Medium, or Large) and **Work Type** (e.g., Features, Bugs, Missing Tickets, etc.) visualizations in the `Group by` dropdown menu.
 
-The following options are available for this widget:
+To view team-level metrics, click **View Breakdown**. The breakdown view displays pull request activity grouped by team, typically aligned to engineering managers or reporting structures.
 
-  * **Group by**: Allows switching the segmentation between **PR Size** and **Work Type**.
-  * **View Breakdown**: Provides a detailed breakdown of PR velocity by teams or individual developers, and offers a drill down to specific PRs.
+At the leaf-team level, you can access the **PR Velocity Drilldown**, which provides developer-level metrics for pull request throughput, merge efficiency, and code contribution size within the selected time range.
+
+![](../static/productivity-14.png)
+
+The drilldown includes the following metrics:
+
+| Metric                    | Description                                                                             |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| **Developer**             | Name of the individual contributor or developer.                                        |
+| **PRs**                   | Total number of pull requests merged by the developer during the selected period.       |
+| **Work Types**            | Distribution of pull requests associated with Bugs, Features, or Other work categories. |
+| **PR Sizes**              | Distribution of pull requests categorized as Small, Medium, or Large.                   |
+| **Average Time to Merge** | Average duration between PR creation and merge.                                         |
+| **Code Changes**          | Total lines added and removed across merged pull requests.                              |
+
+Developer identities are obfuscated by default. Click the **Eye** icon next to the `Developer` column to toggle obfuscation on or off.
+
+Selecting an individual developer opens a more granular drilldown view showing the pull requests associated with that developer during the selected time range and granularity.
+
+![](../static/productivity-13.png)
+
+The drilldown includes the following metrics:
+
+| Field                       | Description                                                                                        |
+| --------------------------- | -------------------------------------------------------------------------------------------------- |
+| **PR ID**                   | Pull request identifier. Clicking the PR ID opens the pull request in the integrated SCM provider. |
+| **Title**                   | Pull request title.                                                                                |
+| **Author**                  | Developer who created the pull request.                                                            |
+| **Repository**              | Repository associated with the pull request.                                                       |
+| **First Commit Created At** | Timestamp of the first commit associated with the PR.                                              |
+| **Created At**              | Timestamp when the PR was opened.                                                                  |
+| **Merged At**               | Timestamp when the PR was merged.                                                                  |
+| **Cycle Time**              | Total PR cycle time from first commit to merge.                                                    |
+| **Reviewers**               | Review participants and associated review timing metrics.                                          |
+| **Code Changes**            | Total lines added and removed for the PR.                                                          |
 
 <details>
 <summary><strong> Understanding PR Velocity</strong></summary>
@@ -70,23 +121,41 @@ To improve **PR Velocity**, Harness recommends breaking work into smaller change
 
 ### PR Cycle Time
 
-**PR Cycle Time** measures how long it takes for a pull request to progress from the first commit included in the PR through PR creation and merge. This highlights delays across the development and review process and helps identify where workflow friction occurs.
+**PR Cycle Time** metrics provide visibility into how long pull requests take to move from initial development to merge. These metrics help teams identify review bottlenecks, optimize review workflows, and improve delivery efficiency across repositories and engineering teams.
 
 $$
 \text{PR Cycle Time} = \frac{\text{Sum of time spent in each stage (Commit → PR Creation → PR Merge)}}{\text{Number of merged PRs}}
 $$
 
-![](../static/pr-cycle.png)
+The summary metric highlights overall pull request cycle time trends, while the chart visualizes cycle duration across the selected time period.
 
-This widget visualizes the average time it takes for pull requests (PRs) to move from the first commit through PR creation to merge. It helps identify bottlenecks in the PR review and merge process by capturing both coding delays (time between the first commit and PR creation) and review delays (time between PR creation and merge), including time spent in all tracked stages such as coding, review, and other workflow steps.
+![](../static/pr-cycle.png "Average time (e.g., 5d 9h) over the selected period.")
+*A bar chart showing PRs per week, segmented by time spent in the following stages: `PR Creation`, `First Comment`, `Approval`, and `Merge`.*
 
-* **Metrics Displayed**: Average time (e.g., 5d 11h) over the selected period.
-* **Visualization**: A bar chart showing PRs per week, segmented by time spent in stages: **PR Creation**, **First Comment**, **Approval**, and **Merge**.
+You can explore organization-level and team-level metrics using the Org Tree. For parent nodes, the dashboard aggregates pull request cycle metrics across all child teams. Select **Mean**, **Median**, **P90**, **P95** from the `Showing` dropdown menu to update the visualizations.
 
-The following options are available for this widget:
+To access a breakdown of PR cycle time by individual teams, click **View Breakdown**. The breakdown view displays average cycle time metrics grouped by team or reporting structure.
 
-* **Showing Mean**: Displays the average cycle time.
-* **View Breakdown**: Provides a more granular view, typically by team or individual, and includes a table drill down of individual PRs.
+At the leaf-team level, you can access the **PR Cycle Time Drilldown**, which provides pull request-level visibility into review timelines, approval delays, and merge duration.
+
+![](../static/productivity-12.png)
+
+The drilldown includes the following metrics:
+
+| Metric                      | Description                                               |
+| --------------------------- | --------------------------------------------------------- |
+| **PR ID**                   | Identifier associated with the pull request.              |
+| **Title**                   | Pull request title.                                       |
+| **Author**                  | Developer who created the pull request.                   |
+| **Repository**              | Repository associated with the pull request.              |
+| **First Commit Created At** | Timestamp of the first commit associated with the PR.     |
+| **Created At**              | Timestamp when the PR was opened.                         |
+| **Merged At**               | Timestamp when the PR was merged.                         |
+| **Cycle Time** | Total duration between the first commit and PR merge. The **Cycle Time** metric provides additional visibility into review workflow efficiency, including: <br /><br /> - **First Review**: Time between PR creation and the first human review activity. Bot-generated comments are excluded from this calculation to ensure code review reflects actual human engagement. <br /> - **Approval**: Time required to receive approval before merge. <br /><br /> |
+| **Reviewers**               | Review participants and associated review timing metrics. |
+| **Code Changes**            | Total lines added and removed in the PR.                  |
+
+Clicking a PR ID opens the pull request in the integrated SCM provider for deeper investigation and repository-level context.
 
 <details>
 <summary><strong>Understanding PR Cycle Time</strong></summary>
@@ -101,23 +170,52 @@ To improve **PR Cycle Time**, Harness recommends keeping PRs small and focused, 
 
 ### Work Completed Per Developer
 
-**Work Completed per Developer** measures how much meaningful work (such as features, bugs, or uncategorized work) each developer completes in a given time period. It helps you understand output patterns and delivery consistency across teams.
+**Work Completed per Developer** metrics provide visibility into completed work items across teams and developers. These metrics help organizations understand delivery throughput, work distribution, and completion efficiency across work categories.
 
 $$
 \text{Work Completed per Developer} = \frac{\text{Total Completed Work Items}}{\text{Number of Active Developers}}
 $$
 
-![](../static/work-completed.png)
+The summary metric highlights completed work trends over time, while the chart visualizes completed work distribution during the selected period.
 
-This widget tracks the amount of completed work (e.g., features, bugs) per developer over time, offering insights into the output generation.
+![](../static/work-completed.png "Average completed work units per developer per week (e.g., 4.75 per week).")
+*A bar chart showing work completed per developer per week, grouped by work type (e.g. Features) and segmented by complexity: `Simple`, `Medium`, `Complex`, and `Other`.*
 
-* **Metrics Displayed**: Average completed work units per developer per week (e.g., 0.23 per week).
-* **Visualization**: A bar chart showing work completed per developer per week, segmented by complexity: **Simple**, **Medium**, **Complex**, and **Other**.
+You can navigate the Org Tree to analyze completed work metrics across organizational hierarchies. Parent nodes display aggregated metrics across all descendant teams. Select **All**, **Features**, **Bugs**, or **Others** from the `Group by` dropdown menu to update the visualizations.
 
-The following options are available for this widget:
+To analyze team-level metrics, click **View Breakdown**. The breakdown view displays completed work metrics grouped by team.
 
-* **Group by**: Allows you to change the segmentation, for example, by **Features**.
-* **View Breakdown**: Provides a more detailed view by team or individual developers, often with a table drill down of specific completed items.
+At the leaf-team level, you can access the **Work Completed Drilldown**, which provides developer-level metrics for completed work items during the selected time range.
+
+The drilldown includes the following metrics:
+
+| Metric                       | Description                                                          |
+| ---------------------------- | -------------------------------------------------------------------- |
+| **Developer**                | Name of the individual contributor or developer.                     |
+| **Completed**                | Total number of completed work items.                                |
+| **Work Types**               | Distribution of completed Bugs, Features, and Other work categories. |
+| **Average Time to Complete** | Average duration between work creation and completion.               |
+
+Developer identities are obfuscated by default. Click the **Eye** icon next to the `Developer` column to toggle obfuscation on or off.
+
+![](../static/productivity-11.png)
+
+Selecting an individual developer opens a detailed work item view showing all completed work associated with that developer within the selected time range and granularity.
+
+![](../static/productivity-10.png)
+
+The drilldown includes the following metrics:
+
+| Field                | Description                                     |
+| -------------------- | ----------------------------------------------- |
+| **Work ID**          | Identifier for the work item.                   |
+| **Work Type**        | Category associated with the work item.         |
+| **Status**           | Final workflow state of the work item.          |
+| **Created**          | Date the work item was created.                 |
+| **Closed**           | Date the work item was completed or closed.     |
+| **Time to Complete** | Total duration between creation and completion. |
+
+Clicking a work item opens the work item in the integrated Issue Management provider for deeper investigation and context.
 
 <details>
 <summary><strong>Understanding Work Completed per Developer</strong></summary>
@@ -134,22 +232,20 @@ To improve **Work Completed Per Developer**, Harness recommends breaking down la
 
 ### Coding Days Per Developer
 
-**Coding Days per Developer** represents the number of distinct days in which a developer made at least one meaningful code contribution (a commit).
+**Coding Days per Developer** metrics provide visibility into active development participation across teams and individual developers. These metrics help organizations understand coding consistency, engineering engagement, and contribution patterns over time.
 
 $$
 \text{Coding Days per Developer} = \frac{\text{Sum of distinct commit days for all developers}}{\text{Number of Active Developers}}
 $$
 
-![](../static/coding-days.png)
+![](../static/coding-days.png "Average coding days per developer per week (e.g., 0.39 per week).")
+*A bar chart showing the average coding days per developer for each week.*
 
-This widget measures the average number of days developers actively contribute code, indicating consistent engagement and direct contribution volume.
+The summary metric highlights coding activity trends, while the chart visualizes the number of active coding days during the selected period.
 
-* **Metrics Displayed**: Average coding days per developer per week (e.g., 0.23 per week).
-* **Visualization**: A bar chart showing the average coding days per developer for each week.
+You can explore coding activity across organizational hierarchies using the Org Tree. Parent nodes display aggregated coding-day metrics across descendant teams.
 
-The following options are available for this widget:
-
-* **View Breakdown**: Provides a detailed breakdown of coding days by team.
+To analyze team-level coding activity, click **View Breakdown**. The breakdown view displays coding-day metrics grouped by team.
 
 <details>
 <summary><strong>Understanding Coding Days per Developer</strong></summary>
@@ -164,22 +260,20 @@ To improve **Coding Days Per Developer**, Harness recommends encouraging smaller
 
 ### Number of Comments Per PR
 
-**Number of Comments per PR** tracks the average volume of review discussion (comments) on pull requests. SEI counts all review comments (including inline comments and general) on each PR, then averages this across all PRs merged in the selected time period.
+**Number of Comments per PR** metrics provide visibility into pull request discussion activity and collaboration patterns across development teams. These metrics help organizations understand review engagement, collaboration depth, and review communication trends.
 
 $$
 \text{Avg Comments per PR} = \frac{\text{Total Comments on PRs}}{\text{Number of PRs}}
 $$
 
-![](../static/comments.png)
+The summary metric highlights trends in pull request discussion activity, while the chart visualizes average comment volume during the selected period.
 
-This widget gauges the level of collaboration and communication within PRs by tracking the average number of comments per pull request. More comments can indicate active discussion and thorough reviews.
+![](../static/productivity-8.png "Average number of comments per PR (e.g., 0.67 comments).")
+*A bar chart showing the average number of comments per PR for each week.*
 
-* **Metrics Displayed**: Average number of comments per PR (e.g., 2.5 comments).
-* **Visualization**: A bar chart showing the average number of comments per PR for each week.
+You can explore review collaboration metrics across organizational hierarchies using the Org Tree. Parent nodes display aggregated comment metrics across descendant teams.
 
-The following options are available for this widget:
-
-* **View Breakdown**: Provides a detailed breakdown of comment activity by team.
+To analyze review collaboration by team, click **View Breakdown**. The breakdown view displays average pull request comment metrics grouped by team.
 
 <details>
 <summary><strong>Understanding Comments per PR</strong></summary>
@@ -194,22 +288,20 @@ To improve **Number of Comments Per PR**, Harness recommends encouraging teams t
 
 ### Average Time to First Comment
 
-**Average Time to First Comment** measures how quickly reviewers respond to new pull requests. It reflects team responsiveness and the overall efficiency of the review workflow.
+**Average Time to First Comment** metrics provide visibility into pull request responsiveness and review engagement across teams. These metrics help organizations identify review delays, improve reviewer responsiveness, and optimize collaboration workflows.
 
 $$
 \text{Avg Time to First Comment} = \frac{\text{Sum of (Time to First Comment for each PR)}}{\text{Number of PRs}}
 $$
 
-![](../static/average-time.png)
+The summary metric highlights trends in reviewer responsiveness, while the chart visualizes the average duration between pull request creation and the first review comment.
 
-This widget measures the responsiveness of the team by calculating the average time it takes for a pull request to receive its first comment. Faster first comments can indicate efficient review processes.
+![](../static/average-time.png "Average time to first comment (e.g., 2d 19h).")
+*A bar chart showing the average time to first comment for PRs each week.*
 
-* **Metrics Displayed**: Average time to first comment (e.g., 3d 8h).
-* **Visualization**: A bar chart showing the average time to first comment for PRs each week.
+You can analyze review responsiveness across organizational hierarchies using the Org Tree. Parent nodes display aggregated review responsiveness metrics across descendant teams.
 
-The following options are available for this widget:
-
-* **View Breakdown**: Provides a detailed breakdown of first comment times by team.
+To analyze responsiveness by team, click **View Breakdown**. The breakdown view displays average time-to-first-comment metrics grouped by team.
 
 <details>
 <summary><strong>Understanding Average Time to First Comment</strong></summary>
@@ -224,35 +316,67 @@ To improve **Average Time to First Comment**, Harness recommends prioritizing co
 
 ### Code Rework
 
-Code Rework metrics provide insight into the portion of development effort spent rewriting or replacing existing code, and are configured in the [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile). These file-driven metrics show where rework is coming from, who is introducing it, and allow teams to balance delivering new work with maintaining code quality. 
+Code Rework metrics provide insight into the portion of development effort spent rewriting or replacing existing code. These file-driven metrics show where rework is coming from, who is introducing it, and allow teams to balance delivering new work with maintaining code quality. 
 
-![](../static/productivity-3.png)
+Code Rework metrics are configured in the [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile). 
 
-The summary metric highlight trends in code rework and the bar chart displays rework percentages over time. You can hover over a bar for a specific week to see the split of **Recent Rework** versus **Legacy Rework**. 
+$$
+\text{Reworked Lines} = \text{min(Lines Added, Lines Deleted)}
+$$
 
-* **Recent Code**: Code introduced within the past 30 days (configured in the Productivity Profile).
-* **Legacy Code**: Code introduced before the recent-code window.
-* **New Work**: Optional, can be displayed by clicking **Show total distribution**.
+![](../static/productivity-3.png "Percentage of engineering effort spent on reworking code (e.g., 2.25% per week).")
+*A bar chart showing the percentage of engineering effort spent on recent rework, legacy rework, and optional new work distribution.*
+
+The summary metric highlights trends in code rework over time. Hover over a bar for a specific week to view the breakdown between **Recent Rework**, **Legacy Rework**, and **New Work**.
+
+* **Recent Rework**: Code introduced within the past 30 days (configured in the Productivity Profile).
+* **Legacy Rework**: Code introduced before the recent-code window.
+* **New Work**: Net new code additions that are not classified as rework. Optional, can be displayed by clicking **Show total distribution**.
+
+Select **Show total distribution** to include **New Work** alongside recent and legacy rework distributions.
 
 ![](../static/productivity-4.png)
 
-For parent nodes (e.g., directors or managers above leaf teams), the bar chart shows aggregated metrics. To view team-level details, click **View Breakdown** to see metrics aggregated per team (typically by engineering manager), including legacy, recent, and new work (if **Show total distribution** is enabled).
+You can navigate the Org Tree to analyze code rework metrics across organizational hierarchies. Parent nodes display aggregated metrics across all descendant teams.
+
+To analyze team-level metrics, click **View Breakdown**. The breakdown view displays rework metrics grouped by team, typically aligned to engineering managers or reporting structures.
 
 ![](../static/productivity-5.png)
+*Team-level visualization of recent rework, legacy rework, and optional new work distribution.*
 
-You can explore team-level and individual developer metrics by clicking on a team or a leaf node in the Org Tree. At the leaf team level (e.g., an engineering manager's team), you can access the **Code Rework Drilldown**, which displays metrics for individual developers.
+At the leaf-team level, you can access the **Code Rework Drilldown**, which provides developer-level visibility into rework contribution patterns during the selected time range.
 
 ![](../static/productivity-6.png)
+*Developer-level metrics showing contribution to recent and legacy code rework.*
 
-This drilldown provides analysis of who is contributing rework and where it is coming from using the following metrics:
+The drilldown includes the following metrics:
 
-| Metric             | Description                                                                                     |
-|-------------------|-------------------------------------------------------------------------------------------------|
-| **% Rework**       | The percentage of work in the selected time window that involved rework (both recent and legacy). |
-| **% Legacy Rework**| The percentage of rework that was performed on legacy code (older than the recent-code window).   |
-| **% Recent Rework**| The percentage of rework performed on recent code (introduced within the recent-code window).     |
-| **Lines Added**    | The number of lines added in the code changes during the selected period.                         |
-| **Lines Deleted**  | The number of lines deleted in the code changes during the selected period.                       |
-| **Lines Modified** | The number of lines modified (changed but not added or deleted).                                  |
-| **Total Lines**    | The total lines affected (sum of added, deleted, and modified lines).                             |
+| Metric                  | Description                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------------- |
+| **Developer**           | Name of the individual contributor or developer.                                             |
+| **Rework**              | Percentage of total code changes classified as rework during the selected period.            |
+| **Legacy Rework**       | Percentage of rework associated with legacy code introduced before the recent-code window.   |
+| **Recent Rework**       | Percentage of rework associated with recently introduced code within the recent-code window. |
+| **Total Rework Lines**  | Total number of lines classified as reworked code.                                           |
+| **Legacy Rework Lines** | Number of reworked lines associated with legacy code.                                        |
+| **Recent Rework Lines** | Number of reworked lines associated with recently introduced code.                           |
+| **Total Lines**         | Total number of lines affected during the selected period.                                   |
+| **Lines Added**         | Total number of lines added during the selected period.                                      |
+| **Lines Deleted**       | Total number of lines deleted during the selected period.                                    |
 
+Developer identities are obfuscated by default. Click the **Eye** icon next to the `Developer` column to toggle obfuscation on or off.
+
+![](../static/productivity-9.png)
+
+<details> 
+<summary>Understanding Code Rework</summary>
+
+This visualization measures how much engineering effort is spent rewriting or replacing existing code versus introducing entirely new code. On the X-axis is the date (weekly, monthly, or quarterly); on the Y-axis is the percentage of work classified as code rework.
+
+Lower levels of rework generally indicate that teams are spending more effort delivering new functionality rather than revisiting existing implementations. However, elevated rework may also reflect healthy refactoring, modernization efforts, or iterative development cycles.
+
+High levels of **Recent Rework** can indicate requirement churn, unstable implementation patterns, or excessive iteration before completion. High levels of **Legacy Rework** often reflect technical debt reduction or large-scale maintenance initiatives.
+
+To improve **Code Rework**, Harness recommends reducing unnecessary churn through clearer requirements, smaller pull requests, earlier review cycles, and incremental delivery practices.
+
+</details>

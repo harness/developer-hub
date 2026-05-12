@@ -71,7 +71,7 @@ With your org tree in place, configure Teams and begin tracking insights. You ca
 
 * Review & update the developers integration identifiers in the specific teams.
 * Customize & define the performance parameters using the [team settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams).
-* Once setup is complete, you can [view insights at the org tree level](/docs/software-engineering-insights/harness-sei/setup-sei/view-insights/) to understand how your organization is performing overall, or [view insights for a specific team](/docs/software-engineering-insights/harness-sei/setup-sei/view-insights/) to dive deeper into team-level performance data.
+* Once setup is complete, you can [view insights at the org tree level](/docs/software-engineering-insights/harness-sei/insights/) to understand how your organization is performing overall, or [view insights for a specific team](/docs/software-engineering-insights/harness-sei/insights/) to dive deeper into team-level performance data.
 
 ![](../static/efficiency.png)
 
@@ -82,4 +82,4 @@ With your org tree in place, configure Teams and begin tracking insights. You ca
 * [Upload the developer records](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers)
 * [Set up Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree)
 * [Set up & define team settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams)
-* [View insights](/docs/software-engineering-insights/harness-sei/setup-sei/view-insights/)
+* [View insights](/docs/software-engineering-insights/harness-sei/insights/)

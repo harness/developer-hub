@@ -62,7 +62,7 @@ This data model diagram walks through how SEI handles organizational data and in
 * [Org Tree(s)](#org-tree): Developers are grouped based on attributes like `Manager`, `Location`, `Role`, `Employment Type`, or `Project`. Leaf nods of the Org Tree becomes Teams.
 * [Team](#teams): Team Managers are assigned by the SEI Admin at the project level and configure team-specific settings (e.g. Jira projects, Git repos, production services, and pipelines) influenced by associated Profiles.
 * [Profiles](#profiles): Define which insights to enable and how they are computed, and are associated with one or more Org Trees to guide all insights calculations.
-* [Dashboards in Insights](#dashboards-in-insights): The primary way insights are consumed in SEI 2.0. Dashboards are generated using data filtered by Profiles, Teams, and Org Tree context, and are [viewed on the **Insights** page](/docs/software-engineering-insights/harness-sei/setup-sei/view-insights/).
+* [Dashboards in Insights](#dashboards-in-insights): The primary way insights are consumed in SEI 2.0. Dashboards are generated using data filtered by Profiles, Teams, and Org Tree context, and are [viewed on the **Insights** page](/docs/software-engineering-insights/harness-sei/insights/).
 
 :::tip
 The foundation of Harness SEI is the account-level [Integrations setup](/docs/category/configure-integrations) by the SEI Admin. These integrations must be configured before importing developers or creating Org Trees.
@@ -127,7 +127,7 @@ SEI 2.0 supports three main types of Profiles, each optimized for different meas
 - The assigned Profile applies to the **entire Org Tree and all Teams within it**.
 - This ensures consistent measurement and reporting across all organizational units under that tree.
 
-Together, Developers, Org Trees, Teams, and Profiles define how data is collected, grouped, and calculated in SEI 2.0. This data is surfaced in dashboards on the [**Insights** page](/docs/software-engineering-insights/harness-sei/setup-sei/view-insights/).
+Together, Developers, Org Trees, Teams, and Profiles define how data is collected, grouped, and calculated in SEI 2.0. This data is surfaced in dashboards on the [**Insights** page](/docs/software-engineering-insights/harness-sei/insights/).
 
 ### Dashboards in Insights
 

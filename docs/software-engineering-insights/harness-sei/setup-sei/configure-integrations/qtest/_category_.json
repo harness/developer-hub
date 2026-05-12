@@ -1,10 +1,10 @@
 {
-    "label":"ServiceNow",
-    "position": 1,
+    "label":"qTest",
+    "position": 11,
     "collapsible":"true",
     "collapsed":"true",
     "link":{
        "type":"generated-index",
-       "title":"ServiceNow"
+       "title":"qTest"
     }
 }

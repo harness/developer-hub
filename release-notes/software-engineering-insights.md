@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2026-04-24T10:00:10
+date: 2026-05-11T10:00:10
 sidebar_position: 15
 ---
 
@@ -12,13 +12,120 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Software Engineering Insights.
 
-#### Last updated: April 24, 2026
+#### Last updated: May 11, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
+
+## May 2026
+
+### [New Enhancement] PR Cycle Time metrics exclude bot-generated review comments
+----
+#### 2026-05-05
+
+The **Productivity Insights** dashboard in SEI 2.0 now excludes bot-generated review comments from **PR Cycle Time** calculations and all related visualizations. This improves the accuracy of review workflow metrics by ensuring only human-generated review activity is considered.
+
+![](./static/sei/productivity-pr.png)
+
+This change applies to both the aggregated **PR Cycle Time** metric and the **PR Cycle Time Drilldown** view, including `First Review` and `Approval` timing displayed within individual pull request records.
+
+[**PR Cycle Time** metrics](/docs/software-engineering-insights/harness-sei/insights/productivity#pr-cycle-time) reflects the time taken for meaningful human review activity, reducing noise introduced by automated systems, bots, or CI-generated comments. This enhancement ensures consistency in how code review is measured across SEI 2.0.
+
+#### Related documentation
+
+- [Developer Productivity Insights](/docs/software-engineering-insights/harness-sei/insights/productivity#pr-cycle-time)
+- [View Insights](/docs/software-engineering-insights/harness-sei/insights)
+
+### [New Feature] qTest Integration in SEI 2.0
+----
+#### 2026-05-05
+
+SEI 2.0 now includes a qTest integration. This integration allows teams to ingest test management data from qTest Cloud using an API key on the [**Download qTest Resources** page](https://docs.tricentis.com/qtest-saas/content/overview/download_qtest_resources_page.htm). 
+
+Once configured, SEI 2.0 synchronizes test execution and testing activity data to support engineering insights and reporting. You can monitor ingestion activity using ingestion logs, which provide visibility into synchronization status and help troubleshoot data ingestion issues.
+
+#### Related documentation
+
+- [qTest Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/qtest)
+- [Configure Integrations](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/)
+
+### [New Enhancement] ServiceNow Integration and ITSM Configuration in SEI 2.0
+----
+#### 2026-05-05
+
+SEI 2.0 now supports a ServiceNow integration, enabling teams to ingest, normalize, and analyze ITSM data directly within their [Engineering Insights dashboards](/docs/software-engineering-insights/harness-sei/insights/efficiency#using-servicenow-data-in-dora-metrics).
+
+Teams can bring in incident and change request data to improve visibility into delivery performance and operational health. This allows SEI to more accurately interpret engineering metrics such as **Deployment Frequency, Change Failure Rate, and Mean Time to Restore**, by grounding them in real-world operational events.
+
+Once configured, teams can further refine how ServiceNow data is used in metrics calculation on the **Incident Management** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings#configure-team-tool-settings). This includes mapping incident and change request data to specific teams and defining filters that determine which records are included in metric computations.
+
+Once configured, ServiceNow data becomes available across [Efficiency Insights dashboards](/docs/software-engineering-insights/harness-sei/insights/efficiency#using-servicenow-data-in-dora-metrics), where teams can:
+
+- Correlate deployment activity with real-world incidents and change events  
+- Improve accuracy of DORA metrics using ITSM-backed signals  
+- Analyze operational impact of engineering changes  
+- Identify systemic bottlenecks across delivery and incident response workflows  
+
+#### Related documentation
+
+- [ServiceNow Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/servicenow/)
+- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency#using-servicenow-data-in-dora-metrics)
+- [Configure Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings#configure-team-tool-settings)
+
+### [New Enhancement] Enable or disable developer filtering for Lead Time for Changes (LTTC)
+----
+#### 2026-05-05
+
+You can now control whether **Lead Time for Changes (LTTC)** honors [developer filters](#new-feature-metric-level-developer-filtering-in-team-settings) at the team level on the **Developers** tab in Team Settings. This provides more flexibility in how DORA metrics are calculated and attributed. 
+
+![](./static/sei/lttc-filter.png)
+
+When enabled, LTTC includes only work attributed to developers defined by team filters and identity mappings. When disabled, LTTC uses default attribution behavior. This setting is useful when contributors such as engineering managers or [shared developers](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#managing-shared-developers) work across multiple teams but should only impact specific DORA metrics.
+
+#### Related documentation
+
+- [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#applying-metric-level-developer-filters)
+- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency#lead-time-for-changes)
+
+### [New Enhancement] Custom date range on Insights dashboards
+----
+#### 2026-05-05
+
+SEI 2.0 now supports a custom date range across all dashboards on the **Insights** page. This allows you to analyze metrics over any time period beyond the default presets (such as `Last 4 Weeks`, `Last Month`, or `Last Quarter`).
+
+![](./static/sei/custom-date-range.png)
+
+You can click the time range dropdown menu and select **Custom Date Range** to open the date picker. Select a start and end date, and click **Apply** to update all widgets and visualizations on the dashboard. Custom date ranges apply across all Insights dashboards, enabling more flexible reporting and deeper analysis of team performance over time.
+
+#### Related documentation
+
+- [Efficiency Insights](/docs/software-engineering-insights/harness-sei/insights/efficiency)
+- [Productivity Insights](/docs/software-engineering-insights/harness-sei/insights/productivity)
+- [Business Alignment Insights](/docs/software-engineering-insights/harness-sei/insights/business-alignment)
+
+### [New Enhancement] AI Summaries on Insights dashboards
+----
+#### 2026-05-05
+
+SEI 2.0 now includes AI-generated summaries across out-of-the-box Insights dashboards, providing structured, contextual narratives that explain performance trends and highlight actionable opportunities across **Efficiency (DORA)**, **Productivity**, and **Business Alignment** signals.
+
+The **Insights** page automatically generates a structured breakdown of key signals over the selected time range, including a summary, actionable insights, and recommendations. These summaries help teams interpret engineering data without manually analyzing individual charts or visualizations.
+
+![](./static/sei/ai-summary-team-1.png)
+
+AI summaries adapt based on the scope of analysis in the **Org Tree** view:
+
+- At the **organization** level, summaries focus on portfolio-wide delivery patterns such as shifts in throughput, stability of delivery pipelines, and systemic bottlenecks across teams. Recommendations emphasize standardization, governance, and scaling improvements across engineering workflows.
+- At the **team** level, summaries become more execution-focused, highlighting bottlenecks in planning, coding, review, or deployment stages, and surfacing opportunities to improve cycle time, reduce work in progress, and increase delivery consistency.
+
+#### Related documentation
+
+- [Efficiency Insights](/docs/software-engineering-insights/harness-sei/insights/efficiency/#ai-summaries-and-recommendations)
+- [Productivity Insights](/docs/software-engineering-insights/harness-sei/insights/productivity/#ai-summaries-and-recommendations)
+- [Business Alignment Insights](/docs/software-engineering-insights/harness-sei/insights/business-alignment#ai-summaries-and-recommendations)
 
 ## April 2026
 
@@ -92,7 +199,7 @@ To request access to the ServiceNow integration beta experience, contact [Harnes
 #### Related documentation
 
 - [ServiceNow Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow)
-- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency#using-servicenow-data-in-dora-metrics)
+- [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency#using-servicenow-data-in-dora-metrics)
 - [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)
 - [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings)
 

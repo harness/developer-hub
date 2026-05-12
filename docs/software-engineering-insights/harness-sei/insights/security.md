@@ -15,9 +15,13 @@ Security Insights in SEI 2.0 focuses on understanding vulnerability risk across 
 
 This experience is designed to provide a clear, actionable view of security health, whether you're monitoring organization-wide trends or drilling into specific teams and assets. By combining time-based analysis with asset-level filtering, SEI 2.0 helps you identify where risk is accumulating, how quickly vulnerabilities are resolved, and where remediation efforts may need to be prioritized.
 
-You can use the Security Insights dashboard on the **Security** tab of the **Insights** page to analyze vulnerability risk across your application and infrastructure assets. Select a relative time range (such as `Last 3 Months`) and switch between **Weekly**, **Monthly**, or **Quarterly** views.
+Use the Security Insights dashboard on the **Security** tab of the **Insights** page to analyze vulnerability risk across your application and infrastructure assets. 
 
 ![](../static/security-1.png)
+
+You can analyze the data by selecting a time range (including default options such as the last several weeks or months, or a custom date range for more flexible analysis) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts. 
+
+![](../static/custom-date-range.png)
 
 To scope the Security Insights widgets by an asset type, click the `All Assets` dropdown menu and select **All Assets**, **Repositories**, **Container Images**, **IAC Files**, or **CLI**. All metrics and visualizations update automatically based on the selected time range, aggregation, and asset scope. Click the **Show trendline** checkbox to overlay trendlines across all Security visualizations. Trendlines help you assess whether security metrics are improving, regressing, or remaining stable over time. 
 

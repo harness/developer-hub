@@ -26,7 +26,23 @@ By surfacing key DORA metrics, the **Efficiency Insights** dashboard helps teams
 - Track improvements or regressions over time
 - Support data-driven conversations around continuous improvement 
 
-You can switch between the **DORA** or **Sprint Metrics** tabs to access delivery performance and reliability metrics or sprint planning and execution metrics, and analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts. 
+Switch between the **DORA** or **Sprint Metrics** tabs to access delivery performance and reliability metrics or sprint planning and execution metrics, and analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts. 
+
+![](../static/custom-date-range.png)
+
+## AI summaries and recommendations
+
+SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Efficiency Insights dashboard, including **Lead Time for Changes**, **Deployment Frequency**, **Change Failure Rate**, and **Mean Time to Restore**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
+
+![](../static/efficiency-28.png)
+
+Each summary includes three sections:
+
+- **Summary**: A narrative of key trends and performance changes for the selected time period.
+- **Actionable Insights**: Data-driven observations explaining contributing factors behind observed efficiency trends.
+- **Recommendations**: Guidance on how to help teams investigate efficiency bottlenecks, improve delivery flow, and optimize end-to-end execution performance based on observed signals.
+
+By default, the AI Summary you see when you navigate to the Efficiency Insights dashboard reflects an organization-wide view, aggregating metrics across all teams in the selected Org Tree on the **DORA Insights** tab. 
 
 Use the `Showing` dropdown menu to control how values are calculated across all widgets. Available options include `mean`, `median`, `p90`, and `p95`. Click the **Show trendline** checkbox to overlay trendlines across all DORA and Sprint Metrics visualizations. Trendlines help you assess whether performance is improving, regressing, or remaining stable over time. 
 
@@ -135,10 +151,6 @@ To improve **Mean Time to Restore**, Harness recommends improving monitoring and
 </details>
 
 ### Using ServiceNow data in DORA metrics
-
-:::tip
-The ServiceNow integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
-:::
 
 Once you've configured a [ServiceNow integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/), SEI 2.0 uses ServiceNow change requests and incidents as the data source for DORA metrics on the Efficiency Insights dashboard. These records are mapped and filtered based on your configuration on the **Incident Management** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings), and are used to calculate deployment activity, failures, and recovery times.
 

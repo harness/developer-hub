@@ -62,7 +62,7 @@ To select and save integrations:
 
 Once saved, SEI 2.0 aggregates developer activity across all connected SCMs for **Efficiency** and **Productivity** insights, providing a complete picture of team work.
 
-## Review & update developer identifiers
+## Review and update developer identifiers
 
 To measure productivity metrics accurately (e.g., coding days, PR activity), Harness SEI needs to know which developer performed which action in each tool. This is done by mapping each developer's cloud identities across your integrated systems.
 
@@ -149,7 +149,8 @@ The **Advanced Settings** section on the **Developers** tab in **Team Settings**
 
 Use this setting to specify which metrics should calculate results **only from activity attributed to the developers included in this team**, based on developer filters and identity mappings.
 
-- **Productivity** and **Lead Time for Changes** metrics always honor developer filters by default.
+- **Productivity** metrics always honor developer filters by default.
+- **Lead Time for Changes** can be configured to apply or ignore developer filters.
 - Only metrics that are enabled in the team’s active SEI profiles appear in **Advanced Settings**.
 
 To configure metric-level developer filtering:

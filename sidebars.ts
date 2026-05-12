@@ -4655,7 +4655,11 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: 'category',
-        label: 'Insights',
+        label: 'View Insights',
+        link: {
+          type: 'doc',
+          id: 'software-engineering-insights/harness-sei/insights/index',
+        },
         items: [
           { 
             type: 'doc', 

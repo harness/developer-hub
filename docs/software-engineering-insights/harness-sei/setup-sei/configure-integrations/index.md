@@ -59,6 +59,10 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 * [GitHub](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/github/)
 * [GitLab](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/gitlab/)
 
+### Test Management
+
+* [qTest](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/qtest/)
+
 ### CI/CD
 
 * [Harness CI/CD](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/harness/)

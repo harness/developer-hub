@@ -71,4 +71,4 @@ If you're switching over to Harness SEI 2.0 from the SEI 1.0 experience, review 
 |---------|-------------|-------------------|
 | [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) | Learn how teams are created from Org Tree leaf nodes | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) |
 | [Review & update developer identifiers](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) | Review & update the developer identifiers (i.e. integration usernames/account IDs) for your team developers | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) |
-| [View Dashboards and Insights](/docs/software-engineering-insights/harness-sei/setup-sei/view-insights/) | Access prebuilt dashboards and filter insights by team | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/view-insights/) |
+| [View Dashboards and Insights](/docs/software-engineering-insights/harness-sei/insights/) | Access prebuilt dashboards and filter insights by team | [View Setup Guide](/docs/software-engineering-insights/harness-sei/insights/) |

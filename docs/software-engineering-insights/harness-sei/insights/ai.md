@@ -40,9 +40,13 @@ By surfacing key aspects of AI-assisted development, the **AI Insights** dashboa
 - Compare performance trends across assistants, teams, and organizations
 - Focus investment decisions on the tools and teams that deliver the greatest impact
 
+You can analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts. 
+
+![](../static/custom-date-range.png)
+
 ## AI summaries and recommendations
 
-You can analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts. SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. 
+SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the AI Insights dashboard, including **Adoption**, **PR Velocity Per Developer**, **PR Cycle Time**, **Acceptance Rate**, and **Code Rework**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
 
 ![](../static/ai-4.png)
 
@@ -51,8 +55,6 @@ Each summary includes three sections:
 - **Summary**: A narrative of key trends and performance changes for the selected time period.
 - **Actionable Insights**: Data-driven observations explaining contributor behavior, adoption patterns, and productivity outcomes.
 - **Recommendations**: Guidance on how to improve adoption, PR velocity, PR cycle time, and code quality based on observed signals.
-
-AI Summaries are generated using the same metrics available in the AI Insights dashboard, including **Adoption**, **PR Velocity Per Developer**, **PR Cycle Time**, **Acceptance Rate**, and **Code Rework**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
 
 By default, the AI Summary you see when you navigate to the AI Insights dashboard reflects an organization-wide view, aggregating metrics across all teams in the selected Org Tree on the **AI Insights** tab. You can narrow the scope of the AI Summary section in two ways:
 

@@ -3,16 +3,14 @@ title: ServiceNow Integration
 description: Set up the ServiceNow integration to ingest incident and change management data into SEI 2.0.
 sidebar_position: 1
 sidebar_label: ServiceNow
+redirect_from:
+  - /docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::tip
-The ServiceNow integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
-:::
-
-The ServiceNow integration enables SEI 2.0 to ingest incident and change management (ITSM) data from ServiceNow. This integration allows engineering organizations to track, manage, and analyze incidents and change requests in real time, helping teams correlate operational performance with engineering performance metrics in SEI dashboards.
+The ServiceNow integration enables SEI 2.0 to ingest incident and change management (ITSM) data from ServiceNow. This data can be used to track operational performance and correlate incidents and changes with engineering metrics in SEI dashboards.
 
 SEI 2.0 supports the following authentication methods:
 
@@ -130,7 +128,7 @@ The **Custom Fields** tab allows you to map additional ServiceNow fields to SEI.
 
 You can map custom fields by defining filter sets for incident and change request identification on the **Incident Management** tab in [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams/#configure-team-tool-settings).
 
-![](../../../../static/teams-18.png)
+![](../../../static/teams-18.png)
 
 Once configured, these fields are included in data ingestion and become available for filtering and analysis in SEI 2.0.
 

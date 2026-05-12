@@ -31,7 +31,23 @@ Each team defines its own [Business Alignment rules](/docs/software-engineering-
 
 ![](../static/ba-profile-8.png)
 
-You can analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts.
+You can analyze the data by selecting a time range (for example, the last several weeks or months) and a time granularity (weekly, monthly, or quarterly), which determines how the data is grouped and displayed in the charts. 
+
+![](../static/custom-date-range.png)
+
+## AI summaries and recommendations
+
+SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Business Alignment Insights dashboard. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone. 
+
+![](../static/ba-profile-9.png)
+
+Each summary includes three sections:
+
+- **Summary**: A narrative of key trends and performance changes for the selected time period.
+- **Actionable Insights**: Data-driven observations that describe potential contributing factors behind observed work distribution trends.
+- **Recommendations**: Guidance to help teams improve work categorization, strengthen alignment between delivery and business priorities, and increase visibility into effort allocation based on observed signals.
+
+By default, the AI Summary you see when you navigate to the Business Alignment Insights dashboard reflects an organization-wide view, aggregating metrics across all teams in the selected Org Tree on the **Business Alignment Insights** tab. 
 
 Use the `Showing` dropdown menu to control how effort is calculated across all Business Alignment metrics. Available options include **Ticket Count**, **Story Points**, and **Ticket Time Spent**. Changing this setting recalculates all values in the dashboard using the selected effort unit.
 
@@ -42,5 +58,7 @@ Below the summary metrics is a stacked bar chart showing how engineering effort 
 From the top of an Org Tree, click **View Breakdown** to see how Business Alignment is distributed across teams. This view highlights differences in effort allocation between teams. You can also select a specific team from the Org Tree to focus the dashboard on that team's data.
 
 From a team-level view, you can drill down into the underlying ticket data to understand exactly which work contributed to each category. The drilldown table includes the work item ID, summary, project, business category, epic, story points, engineering effort, and assignees. 
+
+![](../static/ba-profile-10.png)
 
 To view a ticket in your issue management system, click the work ticket name in the **Business Alignment Drilldown**. This view helps explain why effort appears in a given category and supports further investigation into alignment decisions.
