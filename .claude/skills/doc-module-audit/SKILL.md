@@ -51,7 +51,7 @@ large modules or when you want to focus on one area.
 
 ---
 
-## Prerequisites
+## Before you begin
 
 This skill runs directly in the `developer-hub` repository.
 
@@ -247,12 +247,12 @@ word(s) that are wrongly capitalized.
 **H-2 — No gerund headings**
 FAIL for any `##` or `###` heading that ends with a word matching `\w+ing` as the final token
 (e.g. "## Configuring the connector", "### Installing delegates").
-Exceptions: `## Troubleshooting`, `## Prerequisites` — these are standard section names.
+Exceptions: `## Troubleshooting`, `## Before you begin` — these are standard section names.
 **Exempt:** FAQ pages (`is_faq: true`) — FAQ category headings are noun phrases by design, not imperatives.
 
 **H-3 — Body content at `##` level**
 WARN if the file uses `##` headings for body sections rather than only the standard landmarks
-(`## Prerequisites`, `## Troubleshooting`, `## Next steps`, `## What will you learn?`,
+(`## Before you begin`, `## Troubleshooting`, `## Next steps`, `## What will you learn?`,
 `## Step N`). Specifically flag when more than 4 `##` headings are present and none of the
 body `##` entries are step headings, suggesting body content is at the wrong heading level.
 **Exempt:** FAQ pages (`is_faq: true`) — `##` is the correct and only heading level for FAQ category groupings.
@@ -290,7 +290,7 @@ WARN for common contractions in the file body. Check for: `don't`, `won't`, `can
 (e.g., `do not` instead of `don't`).
 
 **C-1 — Has at least one landmark section**
-WARN if the file body contains none of: `## Prerequisites`, `## Next steps`,
+WARN if the file body contains none of: `## Before you begin`, `## Next steps`,
 `## Troubleshooting`, `## What will you learn?`. Pages with no landmark sections are likely
 stubs or uncategorized fragments.
 **Exempt:** DMS content files (path contains `/content/`) — landmark sections belong on the
@@ -322,11 +322,11 @@ Run these checks for FAQ pages:
 - FAIL (-15 points) if both `###` headings AND `<details>`/`<FAQ>` tags are present — partial migration
 - FAIL (-15 points) if any `<summary>` line does not end with `?`
 - WARN if `<FAQ>` component is present and the page contains 10 or more questions total
-- WARN if `## Prerequisites`, `## Next steps`, or `## Troubleshooting` sections are present
+- WARN if `## Before you begin`, `## Next steps`, or `## Troubleshooting` sections are present
 
 **ST-1 — Section order**
-WARN if both `## Prerequisites` and `## Next steps` are present but `## Next steps` appears
-before `## Prerequisites` in the file (check line numbers). Prerequisites must come first.
+WARN if both `## Before you begin` and `## Next steps` are present but `## Next steps` appears
+before `## Before you begin` in the file (check line numbers). Before you begin must come first.
 **Exempt:** DMS content files (path contains `/content/`).
 **Exempt:** FAQ pages (`is_faq: true`) — neither section is present in a correctly structured FAQ.
 
@@ -444,12 +444,12 @@ The report file is saved with today's date. The audits directory is created if i
 | S-5 | "please" in body | — | N |
 | S-6 | No intro before list | — | N |
 | S-7 | Contractions (don't, won't, can't, etc.) | — | N |
-| C-1 | No landmark sections (Prerequisites, Next steps, Troubleshooting, What will you learn?) | — | N |
+| C-1 | No landmark sections (Before you begin, Next steps, Troubleshooting, What will you learn?) | — | N |
 | C-2 | Code blocks without language tag | — | N |
 | T-1 | Troubleshoot component not used | — | N |
 | T-2 | ## Introduction heading in body | N | — |
 | T-3 | FAQ structure violations (summary ?, empty body, wrong headings) | N | N |
-| ST-1 | Section order (Next steps before Prerequisites) | — | N |
+| ST-1 | Section order (Next steps before Before you begin) | — | N |
 
 **Top 3 most common issues across this module:**
 1. [Rule + description + count of affected files]

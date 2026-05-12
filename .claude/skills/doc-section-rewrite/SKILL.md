@@ -130,7 +130,7 @@ Then make structural changes in this order:
    **CRITICAL child file structure rules:**
    - **No frontmatter.** Child files must not contain any `---` frontmatter blocks. Strip them completely.
    - **No imports.** Child files must not import any components. The parent page handles all component imports.
-   - **No structural sections.** Child files must NOT contain `## Prerequisites`, `## Troubleshooting`, or `## Next steps` sections. These belong only on the parent page. The DMS injects each selected child file's TOC headings into the parent page's "On this page" panel — including any "Next steps" heading — which causes it to appear repeatedly for every child. Strip those sections from child files and consolidate them on the parent.
+   - **No structural sections.** Child files must NOT contain `## Before you begin`, `## Troubleshooting`, or `## Next steps` sections. These belong only on the parent page. The DMS injects each selected child file's TOC headings into the parent page's "On this page" panel — including any "Next steps" heading — which causes it to appear repeatedly for every child. Strip those sections from child files and consolidate them on the parent.
    - **No embedded components.** Remove any `<Troubleshoot>`, `<FAQ>`, `<HelmMultiManifests>`, or other JSX components from child files. Replace with plain text explanations and links where needed.
    - **Content only.** Child files contain pure instructional "how to" content — just the core steps and explanations specific to that topic.
 
@@ -231,7 +231,7 @@ Use `cat -v` to show non-printing characters, or `hexdump -C <file> | head` to i
    - `## What will you learn?` — add this for any tutorial, how-to, or overview page if
      absent. Use a short bold-label bullet list of key outcomes. Omit only for pure reference
      pages (permissions tables, settings references, API references).
-   - `## Prerequisites` — concise bullets, bold label + link each, no paragraph-length bullets
+   - `## Before you begin` — concise bullets, bold label + link each, no paragraph-length bullets
    - Body content using `###` (not `##`) for procedural sections — this keeps the right-hand
      TOC hierarchical. Reserve `##` only for the structural anchors above.
    - `## Troubleshooting` (if issues exist — use `<Troubleshoot>` components, never static headings)
@@ -268,7 +268,7 @@ Follow all rules from the cursor rules read in Step 1. In particular:
 - "Go to [link] to [do Y]" for all links — never "see" or "refer to"
 - Sentence case headings, imperative form — no gerunds
 - Bold label + colon for list items
-- Prerequisites: concise bullets with a link each, no paragraph-length bullets
+- Before you begin: concise bullets with a link each, no paragraph-length bullets
 - No em dashes
 
 **DMS child file rules — strictly enforced:**
@@ -277,7 +277,7 @@ Follow all rules from the cursor rules read in Step 1. In particular:
 
 - **No imports.** Child files must not import any components (`Troubleshoot`, `FAQ`, `DocImage`, etc.). The parent page handles all imports. If a child file had component usage, remove the component and replace with plain text + links.
 
-- **No `## Prerequisites` in child files.** Prerequisites belong on the parent page only. Consolidate all prerequisite requirements from child files into a single Prerequisites section on the parent.
+- **No `## Before you begin` in child files.** Before you begin belongs on the parent page only. Consolidate all prerequisite requirements from child files into a single Before you begin section on the parent.
 
 - **No `## Troubleshooting` in child files.** Troubleshoot components belong on the parent
   page only. Collect all `<Troubleshoot>` entries from every child file and move them to a

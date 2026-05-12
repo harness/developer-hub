@@ -101,19 +101,19 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 - Questions: Every `<summary>` must end with `?`. No `###` or deeper headings anywhere.
 - Answers: Every `<details>` body must contain at least one full sentence of content.
 - Components: Use static `<details>`/`<summary>` for all entries. Only use `<FAQ>` component if the page has fewer than 10 questions total. Never use `<Troubleshoot>`.
-- Banned sections: No `## Prerequisites`, `## Next steps`, `## Troubleshooting`, `## What will you learn?`, or `## Introduction`.
+- Banned sections: No `## Before you begin`, `## Next steps`, `## Troubleshooting`, `## What will you learn?`, or `## Introduction`.
 - Frontmatter: `sidebar_label: FAQ`, `title: FAQ — [Feature Name]`, `faq` tag required.
 
 **For Instructional pages:**
-- Structure: Frontmatter → Introduction (2-3 paragraphs) → Prerequisites → Step-by-step instructions → Troubleshooting (with Troubleshoot component) → Next steps
+- Structure: Frontmatter → Introduction (2-3 paragraphs) → Before you begin → Step-by-step instructions → Troubleshooting (with Troubleshoot component) → Next steps
 - Headings: Imperative, sentence case ("Create X", "Configure Y")
-- Prerequisites: Account access, RBAC permissions with links to Platform docs
+- Before you begin: Account access, RBAC permissions with links to Platform docs
 - Code examples: Step-by-step, meant to be followed
 
 **For Overview pages:**
 - Structure: Frontmatter → Introduction (2-3 paragraphs) → What you will learn → Optional lightweight prerequisites → Concept sections → Optional FAQs → Related concepts
 - Headings: Descriptive noun phrases, sentence case ("Policy entity types", "How X works")
-- Prerequisites: Optional, knowledge-context only (NO account/RBAC requirements)
+- Before you begin: Optional, knowledge-context only (NO account/RBAC requirements)
 - Code examples: Illustrative reference, meant to be adapted
 
 **Key improvements to apply:**
@@ -130,7 +130,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 
 3. **Section additions (Instructional and Overview pages only — do NOT apply to FAQ pages):**
    - Add "What you will learn" (Overview pages only)
-   - Add Prerequisites (Instructional) or lightweight knowledge prerequisites (Overview, optional)
+   - Add Before you begin (Instructional) or lightweight knowledge prerequisites (Overview, optional)
    - Add Troubleshooting with `<Troubleshoot>` component (Instructional)
    - Add FAQs with `<FAQ>` component (Overview, optional)
    - Add Next steps or Related concepts
@@ -171,7 +171,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 7. **Horizontal rules between sections:**
    - Add `---` (horizontal rule) before each major `##` section heading
    - This provides clear visual separation between sections
-   - Example: `---\n\n## Prerequisites`
+   - Example: `---\n\n## Before you begin`
 
 8. **Structural reorganization:**
    - Follow the template structure exactly
@@ -180,20 +180,20 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 
 9. **Tab TOC duplication fixes:**
    - If the audit report flags "Tab TOC duplication" in the Information architecture section, consider restructuring with DMS
-   - **When tabs have duplicate major sections** (Prerequisites, Troubleshooting, Next steps):
+   - **When tabs have duplicate major sections** (Before you begin, Troubleshooting, Next steps):
      - Create a parent page with: Introduction → DMS component → shared Troubleshooting → shared Next steps
      - Create child files in `content/` (flat structure) with descriptive names: `content/<parent-name>-<approach>.md`
        - Example: parent `provision-database-devops.md` → children `content/provision-terraform.md` and `content/provision-api.md`
        - Do NOT nest as `content/provision-database-devops/terraform.md` — keep content folder flat
      - **DMS child file heading hierarchy:**
        - H1 heading for the section title: `# Provision via Terraform`
-       - `## Prerequisites` (H2 for landmark sections)
+       - `## Before you begin` (H2 for landmark sections)
        - `### Step 1`, `### Step 2`, etc. (H3 for body content/steps — indented in TOC)
        - `#### Request`, `#### Example`, etc. (H4 for substeps under a step)
-       - This creates proper TOC indentation: Prerequisites/Next steps at top level, steps nested beneath
+       - This creates proper TOC indentation: Before you begin/Next steps at top level, steps nested beneath
        - Do NOT use `## Step 1`, `## Step 2` in child files — these should be `###` to create hierarchy
      - **Horizontal rules in child files:**
-       - Add `---` before `## Prerequisites` (after intro)
+       - Add `---` before `## Before you begin` (after intro)
        - Add `---` before each `### Step N` heading
        - Add `---` before any other major `###` sections (Example configuration, Things to note, etc.)
        - This provides clear visual separation between sections, same as regular pages
@@ -231,7 +231,7 @@ After applying changes:
    - Every `<summary>` ends with `?`
    - Every `<details>` body has at least one full sentence (not just a link)
    - No `###` or deeper headings anywhere in the body
-   - No `## Prerequisites`, `## Next steps`, `## Troubleshooting`, or `## What will you learn?` sections
+   - No `## Before you begin`, `## Next steps`, `## Troubleshooting`, or `## What will you learn?` sections
    - `<FAQ>` component only used if total question count is fewer than 10
    - No `<Troubleshoot>` component used
 

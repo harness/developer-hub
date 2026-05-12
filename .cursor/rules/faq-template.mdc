@@ -235,7 +235,7 @@ Long verbatim rehashes of existing doc sections add maintenance burden and fragm
 
 Never include in an FAQ page:
 
-- `## Prerequisites` section
+- `## Before you begin` section
 - `## Next steps` section
 - `## What will you learn?` section
 - `<Troubleshoot>` component (use static `<details>` or `<FAQ>` instead)
@@ -259,4 +259,4 @@ Before publishing, verify:
 - [ ] `<FAQ>` component only used if page has fewer than 10 questions total
 - [ ] No empty categories
 - [ ] No `###` or deeper headings anywhere on the page
-- [ ] No `## Prerequisites`, `## Next steps`, or `## Troubleshooting` sections
+- [ ] No `## Before you begin`, `## Next steps`, or `## Troubleshooting` sections

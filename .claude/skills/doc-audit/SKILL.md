@@ -135,7 +135,7 @@ Read the page file first to assess its type. Check for FAQ first — it is the m
   - Title is action-oriented ("Create", "Configure", "Set up", "Install")
   - Contains step-by-step UI navigation ("Select X, then click Y")
   - Has sequential procedures users follow verbatim
-  - Prerequisites include account access and RBAC permissions
+  - Before you begin include account access and RBAC permissions
 
 - **Informative/Overview page** if:
   - Title is a noun phrase ("OPA Policies", "Workspace Architecture", "Delegate Types")
@@ -186,10 +186,10 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 
 **Completion (30%):** –15 `<details>` body is empty or contains only a link with no context sentence, –10 a category heading has no `<details>` entries, –10 `<FAQ>` component used on a page with 10 or more questions, –5 answer is a verbatim copy of an existing doc section that Ask AI would already surface (should be shortened + linked)
 
-**Editorial (30%):** –15 page does not follow faq-template skeleton (H2 categories + `<details>`/`<summary>`), –10 missing/incorrect frontmatter (must include `sidebar_label: FAQ`, `title: FAQ — X`, `faq` tag, description), –10 non-site-relative links, –10 missing `redirect_from` on a moved page, –10 em dashes / bare link text (S-1, S-3), –5 `<summary>` text does not end with `?`, –5 `###` or deeper heading found in page body, –5 `## Prerequisites`, `## Next steps`, or `## Troubleshooting` section present, –5 link phrasing — see [link], refer to, to learn more (S-2), –5 contractions (S-7), –5 "please" in body (S-5), –5 spelling/grammar
+**Editorial (30%):** –15 page does not follow faq-template skeleton (H2 categories + `<details>`/`<summary>`), –10 missing/incorrect frontmatter (must include `sidebar_label: FAQ`, `title: FAQ — X`, `faq` tag, description), –10 non-site-relative links, –10 missing `redirect_from` on a moved page, –10 em dashes / bare link text (S-1, S-3), –5 `<summary>` text does not end with `?`, –5 `###` or deeper heading found in page body, –5 `## Before you begin`, `## Next steps`, or `## Troubleshooting` section present, –5 link phrasing — see [link], refer to, to learn more (S-2), –5 contractions (S-7), –5 "please" in body (S-5), –5 spelling/grammar
 
 **Key differences for FAQ pages:**
-- No Prerequisites, Next steps, or "What will you learn?" sections required — their absence is not penalised
+- No Before you begin, Next steps, or "What will you learn?" sections required — their absence is not penalised
 - No Troubleshoot component expected — `<details>` is the correct pattern
 - C-1 (landmark sections) does not apply
 - H-2 (gerund headings) does not apply — FAQ categories are noun phrases by design
@@ -214,7 +214,7 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 **Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent bolding, –5 no intro before lists (S-6), –5 “please” in body (S-5), –5 contractions — don’t, won’t, can’t etc. (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
 
 **Key differences for overview pages:**
-- Prerequisites are optional/lightweight (knowledge context only, NOT account/RBAC)
+- Before you begin is optional/lightweight (knowledge context only, NOT account/RBAC)
 - "What you will learn" section is required
 - Headings should be descriptive/noun phrases, NOT imperative verbs
 - Troubleshooting/FAQs are optional
@@ -289,15 +289,15 @@ If none of the above apply, note "No consolidation opportunity identified."
 **Check for duplicate major sections across tabs that create TOC confusion.**
 
 If the page uses `<Tabs>` / `<TabItem>` components, scan all tab contents for duplicate `##` headings — especially:
-- `## Prerequisites`
+- `## Before you begin`
 - `## Troubleshooting`
 - `## Next steps`
 - Step headings (e.g., `## Step 1`, `## Step 2`)
 
-**Problem:** Docusaurus right-hand TOC shows headings from ALL tabs simultaneously, not just the active tab. When multiple tabs contain the same major sections, the TOC displays duplicates (e.g., Prerequisites ×2, Troubleshooting ×2), making it impossible to tell which tab each heading belongs to.
+**Problem:** Docusaurus right-hand TOC shows headings from ALL tabs simultaneously, not just the active tab. When multiple tabs contain the same major sections, the TOC displays duplicates (e.g., Before you begin ×2, Troubleshooting ×2), making it impossible to tell which tab each heading belongs to.
 
 **When to flag:**
-- Two or more tabs each contain `## Prerequisites`, `## Troubleshooting`, or `## Next steps`
+- Two or more tabs each contain `## Before you begin`, `## Troubleshooting`, or `## Next steps`
 - Multiple tabs use the same step heading structure (e.g., both have `## Step 1: X`, `## Step 2: Y`)
 
 **Recommended fix — DMS restructuring:**
@@ -313,7 +313,7 @@ When tabs represent different approaches to the same task (e.g., Terraform vs AP
 **Child pages** (in `content/` subdirectory, flat structure):
 - File naming: `content/<parent-name>-<approach>.md` (e.g., `content/provision-terraform.md`, `content/provision-api.md`)
 - Keep content folder flat — do NOT nest as `content/<parent-name>/<approach>.md`
-- Prerequisites (approach-specific — Terraform needs Terraform CLI, API needs curl)
+- Before you begin (approach-specific — Terraform needs Terraform CLI, API needs curl)
 - Step-by-step instructions (unique to each approach)
 - No Troubleshooting/Next steps sections (those live on parent only)
 - H1 heading allowed (serves as tab section title)
@@ -321,20 +321,20 @@ When tabs represent different approaches to the same task (e.g., Terraform vs AP
 **Benefits:**
 - TOC only shows ONE approach at a time (whichever tile is selected)
 - Shared sections aren't duplicated
-- Prerequisites can still differ by approach
+- Before you begin can still differ by approach
 - URL structure: `parent-page#terraform` and `parent-page#api`
 
 **Example flagging:**
 
 ```markdown
 **Tab TOC duplication detected:**
-- Both "Terraform" and "API" tabs contain `## Prerequisites`
+- Both "Terraform" and "API" tabs contain `## Before you begin`
 - Both tabs contain `## Troubleshooting`
 - Both tabs contain `## Next steps`
 
-**Impact:** Right-hand TOC shows 6 major sections (Prerequisites ×2, Troubleshooting ×2, Next steps ×2), making navigation confusing.
+**Impact:** Right-hand TOC shows 6 major sections (Before you begin ×2, Troubleshooting ×2, Next steps ×2), making navigation confusing.
 
-**Recommendation:** Restructure with DMS — shared sections (Intro, Troubleshooting, Next steps) on parent page, approach-specific content (Prerequisites, Steps) in child pages at `content/provision-terraform.md` and `content/provision-api.md`.
+**Recommendation:** Restructure with DMS — shared sections (Intro, Troubleshooting, Next steps) on parent page, approach-specific content (Before you begin, Steps) in child pages at `content/provision-terraform.md` and `content/provision-api.md`.
 ```
 
 If no duplicate sections are found across tabs, or the page doesn't use tabs, note: "No tab TOC duplication detected."
@@ -547,14 +547,14 @@ The rewritten page must satisfy all of the following before you consider it done
 - `sidebar_label: FAQ`, title `FAQ — [Feature Name]`, `faq` tag present in frontmatter
 - Every `<summary>` ends with `?`
 - Every `<details>` body contains at least one full sentence (not just a link)
-- No `## Prerequisites`, `## Next steps`, `## Troubleshooting`, or `###` headings anywhere on the page
+- No `## Before you begin`, `## Next steps`, `## Troubleshooting`, or `###` headings anywhere on the page
 - `<FAQ>` component only used if page has fewer than 10 questions total
 - No `<Troubleshoot>` component
 
 **For Instructional pages:**
 - Follows doc-structure-template.mdc skeleton exactly (frontmatter → intro → prerequisites →
   step-by-step instructions → Troubleshoot component → Next steps)
-- Prerequisites include account access, RBAC permissions with specific permission names and links
+- Before you begin include account access, RBAC permissions with specific permission names and links
 - All ## and ### headings use sentence case with imperative form ("Create X", "Configure Y")
 - <Troubleshoot> component for common task errors
 
@@ -562,7 +562,7 @@ The rewritten page must satisfy all of the following before you consider it done
 - Follows doc-structure-overview-template.mdc skeleton exactly (frontmatter → intro → What you will learn →
   optional lightweight prerequisites → concept sections → optional FAQs → Related concepts)
 - "What you will learn" section with 3-5 learning outcomes
-- Prerequisites are optional/lightweight (knowledge context only, NOT account/RBAC)
+- Before you begin is optional/lightweight (knowledge context only, NOT account/RBAC)
 - All ## and ### headings use sentence case with descriptive noun phrases ("Policy entity types", "How X works")
 - Optional <FAQ> component for conceptual questions
 

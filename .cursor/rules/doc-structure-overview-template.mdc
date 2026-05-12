@@ -85,7 +85,7 @@ Help readers understand what concepts they'll grasp by the end. Use bold labels 
 
 **Format:** 3-5 bullet points, each with a **bold concept label** and a brief description of what they'll understand.
 
-#### 4. Prerequisites (optional/light for overview pages)
+#### 4. Before you begin (optional/light for overview pages)
 
 Overview pages typically don't need extensive prerequisites since they're not action-oriented. However, you may include:
 
@@ -112,7 +112,7 @@ This guide assumes:
 For background on policy evaluation, go to [Harness governance overview](/docs/platform/governance/overview).
 ```
 
-Alternatively, omit Prerequisites entirely if the page is purely conceptual.
+Alternatively, omit Before you begin entirely if the page is purely conceptual.
 
 #### 5. Main content sections
 
@@ -297,12 +297,12 @@ Now that you understand how OPA policies work in IaCM, you're ready to create an
 |--------|---------------------|---------------------|
 | **Purpose** | Explain concepts, architecture, how things work | Guide through specific tasks or setup |
 | **Title pattern** | Noun phrases: "OPA Policies", "Delegate Architecture" | Action phrases: "Create an OPA policy", "Install a delegate" |
-| **Prerequisites** | Light/optional: knowledge prerequisites only | Required: account access, permissions, setup |
+| **Before you begin** | Light/optional: knowledge prerequisites only | Required: account access, permissions, setup |
 | **Main sections** | Conceptual headings: "How X works", "Entity types" | Imperative headings: "Create X", "Configure Y" |
 | **Code examples** | Illustrative reference, meant to be adapted | Step-by-step, meant to be followed exactly |
 | **Troubleshooting** | FAQs or misconceptions (if any) | Common errors during task execution |
 | **End section** | "Related concepts" or "Learn more" | "Next steps" with what to do next |
-| **Required section** | "What you will learn" (learning outcomes) | Prerequisites (what you need before starting) |
+| **Required section** | "What you will learn" (learning outcomes) | Before you begin (what you need before starting) |
 | **User outcome** | Understands a concept or feature | Has completed a task or configuration |
 
 ---
@@ -326,5 +326,5 @@ Now that you understand how OPA policies work in IaCM, you're ready to create an
 **Hybrid pages:**
 Some pages blend both (e.g., explain a concept, then show how to use it). For these:
 1. Start with overview structure (intro, "What you will learn", concept explanation)
-2. Transition to instructional structure (Prerequisites, step-by-step instructions)
+2. Transition to instructional structure (Before you begin, step-by-step instructions)
 3. Use both templates as reference and adapt section order as needed

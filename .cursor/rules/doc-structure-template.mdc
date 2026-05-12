@@ -17,13 +17,13 @@ Use heading levels so the **in-page table of contents** (Docusaurus right rail) 
 Reserve `##` for the structural blocks that frame the page. Use these headings (omit any section that does not apply):
 
 - **`## What will you learn?`** (optional)
-- **`## Prerequisites`**
+- **`## Before you begin`**
 - **`## Troubleshooting`**
 - **`## Next steps`**
 
 **`###` (H3) and deeper — Body content between those anchors**
 
-Use `###` (and `####` when needed) for procedural chunks, comparisons, grouped steps, and conceptual subsections **between** Prerequisites and Troubleshooting. Prefer **at least** `###` for those stages so the TOC **indents** under the major outline instead of listing many same-level `##` siblings.
+Use `###` (and `####` when needed) for procedural chunks, comparisons, grouped steps, and conceptual subsections **between** Before you begin and Troubleshooting. Prefer **at least** `###` for those stages so the TOC **indents** under the major outline instead of listing many same-level `##` siblings.
 
 This is not a rigid rule for every page, but it should be the default when it keeps the outline intuitive.
 
@@ -34,7 +34,7 @@ This is not a rigid rule for every page, but it should be the default when it ke
 
 **Introduction**
 
-Keep the opening **introduction as normal paragraphs** (no `## Introduction` heading) unless a doc type requires otherwise. The first `##` in the file is often **What will you learn?** or **Prerequisites**.
+Keep the opening **introduction as normal paragraphs** (no `## Introduction` heading) unless a doc type requires otherwise. The first `##` in the file is often **What will you learn?** or **Before you begin**.
 
 ### Standard structure
 
@@ -83,9 +83,9 @@ Optionally include a brief list of key outcomes or topics covered in this guide.
 - **Topic 3:** Additional learning objective.
 ```
 
-#### 3. Prerequisites
+#### 3. Before you begin
 
-List required setup, permissions, or knowledge. **For each prerequisite**, tell the reader how to satisfy it; don't assume they already have it.
+List required setup, permissions, or knowledge. **For each prerequisite**, tell the reader how to satisfy it; don’t assume they already have it.
 
 - **"Module or feature enabled" (e.g. IaCM enabled):** State **where it appears in the UI** when available (e.g. **Infrastructure** > **Infrastructure as Code Management**). For **account access** (sign-up, SaaS vs self-managed, invitations), link to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide)—do **not** ask readers to identify their deployment model up front. Put **if the module does not appear** guidance in a `:::info Contact Harness support:` admonition **indented with four spaces** under that prerequisite bullet so it nests in the list; inside the admonition, link the module get-started page (e.g. [Get started with IaCM](/docs/infra-as-code-management/get-started)), then account administrator or [Harness Support](mailto:support@harness.io). Add **self-hosted enablement** or **what’s supported** links only when the doc’s audience is clearly administrators or advanced users, not first-time onboarding.
 - **Permissions (e.g. "permission to create and run pipelines"):** Name the **specific permissions** (e.g. View, Create/Edit, Execute for Pipelines), link to the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference) (use the relevant anchor, e.g. `#pipelines`), and say **how to get them** (e.g. an administrator must assign a role that includes them) with a link to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and/or [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
@@ -94,7 +94,7 @@ List required setup, permissions, or knowledge. **For each prerequisite**, tell 
 ```markdown
 ---
 
-## Prerequisites
+## Before you begin
 
 - **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
 
@@ -112,9 +112,9 @@ For modules other than IaCM, keep the same pattern: **UI location** when entitle
 
 #### 4. Step-by-step instructions
 
-Use clear sections with **imperative** headers in **sentence case** (e.g. `### Create an inventory`, not gerunds like "Creating an inventory"). Default to **`###`** for procedural blocks so they sit **between** the `##` landmarks (Prerequisites, Troubleshooting, Next steps) and produce a nested TOC, per [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc). Capitalize **proper nouns**: product and technology names (e.g. **Kubernetes**, **Terraform**, **OpenTofu**, **Harness**, **IaCM**, **AWS**) and official **Harness** UI feature names when they are branded or module names.
+Use clear sections with **imperative** headers in **sentence case** (e.g. `### Create an inventory`, not gerunds like "Creating an inventory"). Default to **`###`** for procedural blocks so they sit **between** the `##` landmarks (Before you begin, Troubleshooting, Next steps) and produce a nested TOC, per [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc). Capitalize **proper nouns**: product and technology names (e.g. **Kubernetes**, **Terraform**, **OpenTofu**, **Harness**, **IaCM**, **AWS**) and official **Harness** UI feature names when they are branded or module names.
 
-- **Get started guides — `## Step 1`, `## Step 2`, or `### Step 1`, `### Step 2`:** For **onboarding / get started** pages, you may use numbered step headings to emphasize a short, linear path. Prefer **`### Step N`** when other `##` sections exist on the page; reserve **`## Step N`** for very short guides per the exception in [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc). Use numbered step headings **only** for actionable procedure. Do **not** use step headings for **Prerequisites**, **Troubleshooting**, or **Next steps** (keep those as `## Prerequisites`, `## Troubleshooting`, `## Next steps`). Do not label introductory or conceptual blocks as steps.
+- **Get started guides — `## Step 1`, `## Step 2`, or `### Step 1`, `### Step 2`:** For **onboarding / get started** pages, you may use numbered step headings to emphasize a short, linear path. Prefer **`### Step N`** when other `##` sections exist on the page; reserve **`## Step N`** for very short guides per the exception in [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc). Use numbered step headings **only** for actionable procedure. Do **not** use step headings for **Before you begin**, **Troubleshooting**, or **Next steps** (keep those as `## Before you begin`, `## Troubleshooting`, `## Next steps`). Do not label introductory or conceptual blocks as steps.
 - **Step groups:** When several steps form a logical group (e.g. module details), add a **heading for that group** (e.g. `### Module details`) and nest the steps under it (e.g. `#### Step 1`, `#### Step 2`). Add a **one-line summary** under the group heading so the reader knows what those steps accomplish (e.g. "The following steps (1–3) configure the module name, provider, connector, and storage type.").
 - **Intro before lists:** **Always add a short intro sentence before every numbered or bullet list** that states what the list is for or what the reader is about to do. Do not jump straight into "1. Select...". This helps readers and LLMs understand context (e.g. "On the Execution pipeline step of the wizard, do the following:" then "1. Select a pipeline...").
 - **UI elements:** For **exact** labels as they appear in the product (buttons, menu commands, setting names, strategy options), use **single quotes** (`'Mark as Failed'`) per [writing-style — Buttons and exact UI labels](mdc:writing-style.mdc). **Bold** other clickable or selectable references in steps (tabs, generic field labels) when you are not quoting the literal string; keep the same convention for each type of element throughout the page.
@@ -246,7 +246,7 @@ Wrap up with:
 - **Brief conclusion** (1-2 sentences): Summarize what was accomplished
 - **2-3 related links**: Most logical next actions or related docs
 
-Use **`## Next steps`** as the heading so it stays a top-level TOC entry alongside Prerequisites and Troubleshooting.
+Use **`## Next steps`** as the heading so it stays a top-level TOC entry alongside Before you begin and Troubleshooting.
 
 ```markdown
 ---
@@ -319,7 +319,7 @@ grouping describes management intent, not navigation duplication.
 DMS child files have **different frontmatter requirements** than regular pages:
 - **Frontmatter is optional** — `title` and `description` are not required (they live on the parent page)
 - **H1 headings (`#`) are allowed** — the first heading in a DMS child acts as the section title within its tab
-- **No landmark sections** — `## Prerequisites`, `## Next steps`, and `## Troubleshooting` belong on the parent page only, not in DMS children
+- **No landmark sections** — `## Before you begin`, `## Next steps`, and `## Troubleshooting` belong on the parent page only, not in DMS children
 
 DMS child files are accessed via the parent page URL + a fragment (e.g., `#docker`), not as standalone pages.
 
@@ -340,13 +340,13 @@ If none of these apply, a conventional single page or sidebar navigation is fine
 ### Markdown headings and sidebar
 
 - **No `#` (h1) in the file body.** Do not use a single-hash heading in Markdown. Start the document body at `##`. The page still has an official title via frontmatter `title` (and Docusaurus may render it per theme).
-- **H2 vs H3:** Follow [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc): use `##` for What will you learn?, Prerequisites, Troubleshooting, and Next steps; use `###` and deeper for instructional body content between those anchors so the right-hand TOC is hierarchical.
-- **Sentence case for in-doc headings (`##`, `###`, …):** Capitalize the **first word** only, except for **proper nouns**: technologies (e.g. **Docker**, **Kubernetes**, **GitHub**), **Harness** modules and products (e.g. **IaCM**, **STO**, **CD** when referring to the module), and other trademarked or official names. Examples: `### Create a pipeline`, `### Configure the IaCM plugin`, `### Install a Kubernetes delegate` (when those are procedural sections); `## Prerequisites` for major sections.
+- **H2 vs H3:** Follow [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc): use `##` for What will you learn?, Before you begin, Troubleshooting, and Next steps; use `###` and deeper for instructional body content between those anchors so the right-hand TOC is hierarchical.
+- **Sentence case for in-doc headings (`##`, `###`, …):** Capitalize the **first word** only, except for **proper nouns**: technologies (e.g. **Docker**, **Kubernetes**, **GitHub**), **Harness** modules and products (e.g. **IaCM**, **STO**, **CD** when referring to the module), and other trademarked or official names. Examples: `### Create a pipeline`, `### Configure the IaCM plugin`, `### Install a Kubernetes delegate` (when those are procedural sections); `## Before you begin` for major sections.
 - **Sidebar labels (navigation):** Use **Title Case** — capitalize major words in the left nav. Set this with **`sidebar_label`** when it needs to read differently from `title`, or shape the **`title`** itself in Title Case if it doubles as the sidebar label and matches the nav wording you want.
 
 ### Content guidelines
 
-- **Headers:** Imperative, sentence case; no gerunds in step titles (prefer `### Configure the connector` over `### Configuring the connector`). Exception: concept sections may use noun phrases (`## Troubleshooting`, `## Prerequisites`). **Get started** guides may use `## Step 1` / `### Step 1`, … per [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc)—only for actionable onboarding steps, not for Prerequisites, Troubleshooting, or Next steps. Gerunds are fine for broad concepts like "Understanding CI/CD" when that fits the content.
+- **Headers:** Imperative, sentence case; no gerunds in step titles (prefer `### Configure the connector` over `### Configuring the connector`). Exception: concept sections may use noun phrases (`## Troubleshooting`, `## Before you begin`). **Get started** guides may use `## Step 1` / `### Step 1`, … per [Heading levels and the right-hand TOC](#heading-levels-and-the-right-hand-toc)—only for actionable onboarding steps, not for Before you begin, Troubleshooting, or Next steps. Gerunds are fine for broad concepts like "Understanding CI/CD" when that fits the content.
 - **Lists:** When each item has a concept/action and an explanation, use **Bold label:** description. For simple self-explanatory lists, plain formatting is fine. Always add a short intro sentence before a list that states what the list is for.
 - **No em dashes:** Never use em dashes (`—`) in documentation. Use commas, periods, semicolons, or rewrite sentences. In bullet points with links, use a colon after the link: `- [Link text](/path): Description here.`
 - Keep prerequisites minimal and relevant; link to "how" for each.

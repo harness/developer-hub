@@ -289,7 +289,7 @@ Read every sibling page and extract all `##` and `###` headings. Then:
    rewording. Examples of matches:
    - "Create a connector" ≈ "Add a connector" ≈ "Set up your connector"
    - "Configure the pipeline" ≈ "Configure your pipeline"
-   - "Prerequisites" = "Prerequisites" (exact)
+   - "Before you begin" = "Before you begin" (exact)
 3. **Count recurrence** — how many sibling pages contain each heading group?
 4. **Score the pattern** — if 3 or more heading groups each appear in 3+ sibling pages, those
    pages share a structural pattern. This is the primary signal for synced tabs. Report the

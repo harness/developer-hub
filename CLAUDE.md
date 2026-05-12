@@ -13,7 +13,7 @@ We have **two documentation templates** depending on page type:
 - "Create your first X" guides
 - Setup/installation guides
 - Configuration walkthroughs with UI navigation
-- Structure: Frontmatter → Introduction → Prerequisites → Step-by-step instructions → Troubleshooting → Next steps
+- Structure: Frontmatter → Introduction → Before you begin → Step-by-step instructions → Troubleshooting → Next steps
 
 **Informative/Overview pages** (`.cursor/rules/doc-structure-overview-template.mdc`):
 - Architecture and concept explanations
@@ -48,7 +48,7 @@ Use `sidebar_label` when the left-nav text (Title Case, capitalize major words) 
 ### Standard Sections
 
 1. **Introduction** (1 short paragraph, 2–3 lines): what the user will accomplish and why it matters.
-2. **Prerequisites**: required setup, permissions, or knowledge.
+2. **Before you begin**: required setup, permissions, or knowledge.
 3. **Step-by-step instructions**: use imperative headers in **sentence case** (`## Install dependencies`, not `## Installing dependencies`). Capitalize proper nouns (technologies, Harness modules such as **IaCM**). Do not use `#` in the Markdown body; start at `##`. Add inline `:::tip` callouts for common errors at the relevant step.
 4. **Troubleshooting** (optional): use the `<Troubleshoot>` component — see below.
 5. **Next steps**: 1–2 sentence conclusion + 2–3 related links.
@@ -123,7 +123,7 @@ import { FAQ } from '@site/src/components/AdaptiveAIContent';
 | Configuring the API | Configure the API |
 | Running tests | Run tests |
 
-Exceptions: concept sections like **Troubleshooting** or **Prerequisites** are fine as noun phrases.
+Exceptions: concept sections like **Troubleshooting** or **Before you begin** are fine as noun phrases.
 
 **Overview pages** — Use descriptive noun phrases or "how it works" style:
 
@@ -172,13 +172,13 @@ Use meaningful link text. Never write `[here](url)` or `[this doc](url)`.
 
 ---
 
-## Prerequisites Section Formatting
+## Before you begin Section Formatting
 
-Keep Prerequisites bullets short and scannable — no paragraph-length bullets.
+Keep Before you begin bullets short and scannable — no paragraph-length bullets.
 
 - Bold only the **label** (2–4 words), not the entire sentence.
 - Follow each label with a brief description and a relevant link using "Go to X to Y" phrasing.
-- Detailed logic or configuration steps belong in the page body, not in Prerequisites.
+- Detailed logic or configuration steps belong in the page body, not in Before you begin.
 
 ❌ Too text-heavy:
 ```
